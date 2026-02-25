@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Antibody Developability Assessment | GenoBioTX</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* GenoBioTX-style: clean, professional biotech CRO. Override --primary to match GenoBioTX brand. */
+    :root {
+      --primary: #0d9488;      /* Teal - life science. Use #2563eb for blue if GenoBioTX prefers */
+      --primary-dark: #0f766e;
+      --text: #1f2937;
+      --text-muted: #6b7280;
+      --border: #e5e7eb;
+      --bg: #ffffff;
+      --bg-alt: #f9fafb;
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 16px; line-height: 1.6; color: var(--text); background: var(--bg-alt); }
+    .page-wrap { display: flex; min-height: 100vh; }
+    /* Left sidebar - GenoBioTX nav style */
+    .sidebar { width: 260px; flex-shrink: 0; background: var(--bg); border-right: 1px solid var(--border); padding: 28px 0; position: sticky; top: 0; height: 100vh; overflow-y: auto; }
+    .sidebar h3 { font-size: 12px; font-weight: 600; color: var(--text-muted); margin: 0 24px 16px; text-transform: uppercase; letter-spacing: 1px; }
+    .sidebar nav a { display: block; padding: 12px 24px; color: var(--text); text-decoration: none; font-size: 15px; transition: all 0.2s; border-left: 3px solid transparent; }
+    .sidebar nav a:hover { background: var(--bg-alt); color: var(--primary); }
+    .sidebar nav a.active { background: #f0fdfa; color: var(--primary-dark); border-left-color: var(--primary); font-weight: 500; }
+    /* Main content */
+    .main { flex: 1; padding: 40px 56px 80px; max-width: 920px; }
+    .main h1 { font-size: 32px; font-weight: 700; color: var(--text); margin: 0 0 12px; letter-spacing: -0.02em; }
+    .main .subtitle { font-size: 17px; color: var(--text-muted); margin-bottom: 4px; }
+    .main h2 { font-size: 22px; font-weight: 600; color: var(--text); margin: 48px 0 20px; padding-top: 32px; border-top: 1px solid var(--border); }
+    .main h2:first-of-type { margin-top: 0; padding-top: 0; border-top: none; }
+    .main p { margin: 0 0 16px; color: var(--text); font-size: 16px; }
+    .main ul { margin: 0 0 16px; padding-left: 24px; }
+    .main li { margin-bottom: 10px; color: var(--text); }
+    .main .input-note { font-size: 14px; color: var(--text-muted); margin-top: 8px; }
+    /* Form - card style like GenoBioTX */
+    .form-section { background: var(--bg); border-radius: 12px; padding: 32px; margin-top: 32px; box-shadow: 0 1px 3px rgba(0,0,0,0.06); border: 1px solid var(--border); }
+    .form-row { display: flex; gap: 24px; margin-bottom: 24px; flex-wrap: wrap; }
+    .form-group { flex: 1; min-width: 180px; }
+    .form-group.full { flex: 1 1 100%; }
+    .form-group label { display: block; font-weight: 500; margin-bottom: 8px; color: var(--text); font-size: 14px; }
+    .form-group input, .form-group select, .form-group textarea { width: 100%; padding: 12px 14px; border: 1px solid var(--border); border-radius: 8px; font-size: 14px; font-family: inherit; }
+    .form-group textarea { min-height: 100px; resize: vertical; }
+    .form-group textarea.seq { font-family: 'Consolas', 'Monaco', monospace; font-size: 13px; min-height: 80px; }
+    .form-group input:focus, .form-group select:focus, .form-group textarea:focus { outline: none; border-color: var(--primary); box-shadow: 0 0 0 2px rgba(13,148,136,0.15); }
+    .form-group .hint { font-size: 13px; color: var(--text-muted); margin-top: 6px; }
+    .btn { padding: 14px 28px; background: var(--primary); color: #fff; border: none; border-radius: 8px; font-size: 15px; font-weight: 500; cursor: pointer; }
+    .btn:hover { background: var(--primary-dark); }
+    /* Service checkboxes */
+    .check-group { display: flex; flex-wrap: wrap; gap: 16px; margin: 16px 0; }
+    .check-item { display: flex; align-items: center; gap: 10px; }
+    .check-item input { width: 18px; height: 18px; }
+    .check-item label { margin: 0; font-weight: 400; cursor: pointer; }
+    /* Breadcrumb */
+    .breadcrumb { font-size: 14px; color: var(--text-muted); margin-bottom: 28px; }
+    .breadcrumb a { color: var(--primary); text-decoration: none; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .breadcrumb span { color: #d1d5db; margin: 0 8px; }
+    /* Table - GenoBioTX-style clean table */
+    .table-wrap { overflow-x: auto; margin: 24px 0; border-radius: 6px; border: 1px solid var(--border); }
+    .main table { min-width: 500px; background: var(--bg); }
+    .main table th { background: var(--bg-alt); color: var(--text); font-weight: 600; font-size: 14px; }
+    .main table td { font-size: 14px; color: var(--text); }
+    .main table th, .main table td { padding: 14px 16px; border: 1px solid var(--border); }
+    /* Disclaimer */
+    .disclaimer { font-size: 14px; color: var(--text-muted); font-style: italic; margin-top: 12px; padding: 12px 16px; background: #fffbeb; border-left: 4px solid #f59e0b; border-radius: 0 6px 6px 0; }
+    /* Custom file upload (English labels) */
+    .file-upload-wrap { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+    .file-input-hidden { position: absolute; width: 0.1px; height: 0.1px; opacity: 0; overflow: hidden; z-index: -1; }
+    .file-upload-btn { padding: 10px 18px; background: var(--bg-alt); border: 1px solid var(--border); border-radius: 6px; font-size: 14px; cursor: pointer; color: var(--text); }
+    .file-upload-btn:hover { border-color: var(--primary); color: var(--primary); }
+    .file-upload-name { font-size: 14px; color: var(--text-muted); }
+    /* Responsive - mobile */
+    @media (max-width: 900px) {
+      .page-wrap { flex-direction: column; }
+      .sidebar { width: 100%; height: auto; position: relative; border-right: none; border-bottom: 1px solid #e0e0e0; padding: 16px; }
+      .sidebar h3 { margin: 0 0 12px; }
+      .sidebar nav { display: flex; flex-wrap: wrap; gap: 8px; }
+      .sidebar nav a { display: inline-block; padding: 10px 14px; border-radius: 6px; border-left: none; font-size: 14px; min-height: 44px; box-sizing: border-box; }
+      .main { padding: 20px 16px 48px; max-width: 100%; }
+      .main h1 { font-size: 24px; }
+      .main h2 { font-size: 18px; margin-top: 32px; padding-top: 24px; }
+      .form-section { padding: 20px 16px; margin-left: -16px; margin-right: -16px; border-radius: 0; border-left: none; border-right: none; }
+      .form-row { flex-direction: column; gap: 0; }
+      .form-group { min-width: 100%; }
+      .form-group input, .form-group textarea { font-size: 16px; min-height: 44px; }
+      .form-group textarea { min-height: 100px; }
+      .table-wrap { margin-left: -16px; margin-right: -16px; border-radius: 0; border-left: none; border-right: none; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+      .breadcrumb { font-size: 13px; overflow-wrap: break-word; }
+    }
+    @media (max-width: 480px) {
+      .main { padding: 16px 12px 40px; }
+      .form-section { padding: 16px 12px; margin-left: -12px; margin-right: -12px; }
+      .table-wrap { margin-left: -12px; margin-right: -12px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page-wrap">
+    <aside class="sidebar">
+      <h3>Antibody Developability Assessment</h3>
+      <nav>
+        <a href="#platform" class="nav-link active">Platform</a>
+        <a href="#sequence" class="nav-link">Sequence</a>
+        <a href="#developability" class="nav-link">Developability</a>
+        <a href="#immunogenicity" class="nav-link">Immunogenicity</a>
+        <a href="#structure" class="nav-link">Structure</a>
+        <a href="#affinity-maturation" class="nav-link">Affinity Maturation</a>
+        <a href="#humanization" class="nav-link">Humanization</a>
+        <a href="#full-report" class="nav-link">Full Report</a>
+        <a href="#submit" class="nav-link">Submit Inquiry</a>
+      </nav>
+    </aside>
+
+    <main class="main">
+      <div class="breadcrumb">
+        <a href="/">Home</a><span>/</span><a href="/services/">Services</a><span>/</span>Antibody Developability Assessment
+      </div>
+
+      <h1>Antibody Developability Assessment</h1>
+      <p class="subtitle">Expert-reviewed computational antibody analysis, evaluation, and gene-engineering humanization for drug discovery and development.</p>
+      <p class="disclaimer">Disclaimer: InSynBio in silico analyses are for reference only and do not replace final wet-lab validation. Experimental confirmation is required.</p>
+
+      <!-- Platform -->
+      <h2 id="platform">Platform</h2>
+      <p>The Antibody Developability Assessment platform provides computational analysis, evaluation, gene-engineering humanization, and structure-driven affinity maturation for antibody drug discovery and development. Submit VH/VL or VHH sequences online; our experts deliver structured reports covering numbering, germline retrieval, developability, immunogenicity, structure assessment, interface analysis, humanization design, and affinity maturation.</p>
+      <p>All services are expert-reviewed and delivered offline—typically within 3–5 business days upon project confirmation. Our pipeline is based on 842 clinical antibodies and uses transparent metrics. Humanization employs structure-driven back-mutations and prioritizes germlines from clinical antibodies. Structure assessment is included for all humanization deliverables.</p>
+
+      <!-- Sequence -->
+      <h2 id="sequence">Sequence</h2>
+      <p><strong>Sequence Analysis</strong></p>
+      <ul>
+        <li><strong>Numbering and CDR annotation</strong> — IMGT/Kabat schemes, FR/CDR delineation</li>
+        <li><strong>Germline retrieval</strong> — Nearest germline and identity (%) against 842 clinical antibodies</li>
+        <li><strong>VH/VL pairing</strong> — Co-occurrence frequency in clinical antibodies</li>
+      </ul>
+      <p class="input-note">Input: VH/VL sequences</p>
+
+      <!-- Developability -->
+      <h2 id="developability">Developability</h2>
+      <p><strong>Developability and CMC</strong></p>
+      <ul>
+        <li><strong>Physicochemical</strong> — pI, GRAVY, instability index, net charge</li>
+        <li><strong>SAP</strong> — 9-mer hydrophobic and 7-mer charge aggregation propensity</li>
+        <li><strong>CDR chemical risk</strong> — Deamidation (NG/NS), oxidation (M/W), glycosylation (NxS/T), free Cys</li>
+        <li><strong>TAP</strong> — Total CDR length, PSH, PPC, PNC, SFvCSP (InSynBio in-house implementation with reference thresholds). <em>Requires PDB and CDR sequences.</em></li>
+        <li><strong>CMC design</strong> — pI adjustment, FR-only mutation suggestions</li>
+      </ul>
+      <p class="input-note">Input: VH/VL sequences. For TAP: PDB and CDR sequences are required.</p>
+
+      <!-- Immunogenicity -->
+      <h2 id="immunogenicity">Immunogenicity</h2>
+      <p><strong>Immunogenicity Assessment</strong></p>
+      <ul>
+        <li><strong>MHC-II 27 alleles</strong> — IEDB prediction, FR surface risk assessment</li>
+        <li><strong>Risk clustering</strong> — Agglomerative clustering of high-risk positions</li>
+        <li><strong>Surface immunogenicity</strong> — Parker hydrophilicity; SASA-based analysis (optional when PDB is provided)</li>
+        <li><strong>Germline tolerance</strong> — IGHV/IGKV/IGLV frequency-weighted filter</li>
+      </ul>
+      <p class="input-note">Input: VH/VL sequences (PDB optional)</p>
+
+      <!-- Structure -->
+      <h2 id="structure">Structure</h2>
+      <p><strong>Structure and Interface</strong></p>
+      <ul>
+        <li><strong>Whole antibody (Fab) assessment</strong> — 13-parameter evaluation: VH-VL angle, interface contacts, Vernier SASA, CDR conformation, pLDDT</li>
+        <li><strong>VHH assessment</strong> — Single-domain structure metrics, CDR conformation, pLDDT</li>
+        <li><strong>Antigen-antibody complex assessment</strong> — Antibody-antigen interface: BSA, paratope/epitope residues, H-bonds, salt bridges, hydrophobic contacts</li>
+        <li><strong>Multi-antibody comparison</strong> — Epitope overlap, competition analysis, BSA/SC comparison (on request)</li>
+      </ul>
+      <p class="input-note">Input: PDB (Fab, VHH, or antigen-antibody complex). Antigen chain ID required for interface analysis.</p>
+
+      <!-- Affinity Maturation -->
+      <h2 id="affinity-maturation">Affinity Maturation</h2>
+      <p><strong>Structure-Driven Affinity Maturation</strong></p>
+      <p>Based on existing complex structures. No de novo structure generation required. Structure assessment included for all deliverables.</p>
+      <ul>
+        <li><strong>Antigen-antibody affinity maturation</strong> — CDR redesign on Ab-Ag complex backbone for improved binding</li>
+        <li><strong>Ligand-receptor affinity maturation</strong> — Paratope optimization on ligand-receptor complex for enhanced affinity</li>
+        <li><strong>VHH affinity maturation</strong> — CDR optimization on VHH-antigen complex for single-domain antibodies</li>
+      </ul>
+      <p class="input-note">Input: PDB of existing complex (Ab-Ag, ligand-receptor, or VHH-antigen). Design region (e.g., CDR-H3) specified per project.</p>
+
+      <!-- Humanization -->
+      <h2 id="humanization">Humanization</h2>
+      <p><strong>Gene-Engineering Humanization Services</strong></p>
+      <p>All humanization deliverables include structure assessment. Our VH/VL pipeline employs structure-driven back-mutations and prioritizes germlines derived from 842 clinical antibodies.</p>
+      <div class="table-wrap">
+      <table style="width:100%; border-collapse: collapse;">
+        <thead>
+          <tr>
+            <th>Service</th>
+            <th>Input</th>
+            <th>Technology</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>VH/VL Humanization</strong></td>
+            <td>Mouse VH and VL</td>
+            <td>AbEngineCore V4.4 pipeline. Structure-driven back-mutations with prioritization of germlines from 842 clinical antibodies. CDR grafting with surface reshaping fallback. Structure assessment included.</td>
+          </tr>
+          <tr>
+            <td><strong>VHH Humanization</strong></td>
+            <td>Camelid or llama VHH</td>
+            <td>Integrated approach combining surface reshaping and framework grafting. Preserves CDRs and structural hallmarks. Structure assessment included.</td>
+          </tr>
+          <tr>
+            <td><strong>VH to VHH Conversion</strong></td>
+            <td>Conventional VH (from mAb)</td>
+            <td>CDR grafting onto human VHH scaffold with structure-guided optimization. Expert design service. Structure assessment included.</td>
+          </tr>
+        </tbody>
+      </table>
+      </div>
+
+      <!-- Full Report -->
+      <h2 id="full-report">Full Report</h2>
+      <p><strong>Full Evaluation Report</strong></p>
+      <p>Comprehensive integrated report covering sequence, germline, developability, immunogenicity, structure, and interface analysis. Delivered in Markdown or PDF format, with optional JSON. Typically completed within 3–5 business days upon project confirmation.</p>
+      <p class="input-note">Input: VH/VL sequences (PDB optional)</p>
+
+      <!-- Submit Inquiry + Sequence Form -->
+      <h2 id="submit">Submit Inquiry</h2>
+      <p>Complete the form below with your sequences and requirements. We will review your submission and provide a quote within 1–2 business days.</p>
+
+      <div class="form-section">
+        <form id="inquiry-form" action="#" method="post" onsubmit="return handleSubmit(event)">
+          <h3 style="margin-top: 0; margin-bottom: 20px;">Service Type</h3>
+          <div class="form-group full">
+            <div class="check-group">
+              <div class="check-item"><input type="checkbox" name="service_type" id="st1" value="assessment"><label for="st1">Assessment (Sequence, Developability, Immunogenicity, Structure)</label></div>
+              <div class="check-item"><input type="checkbox" name="service_type" id="st2" value="humanization"><label for="st2">Humanization</label></div>
+            </div>
+          </div>
+
+          <div class="form-group full">
+            <label>Humanization service (if applicable)</label>
+            <div class="check-group">
+              <div class="check-item"><input type="checkbox" name="humanization" id="h1" value="vhvl"><label for="h1">VH/VL Humanization</label></div>
+              <div class="check-item"><input type="checkbox" name="humanization" id="h2" value="vhh"><label for="h2">VHH Humanization</label></div>
+              <div class="check-item"><input type="checkbox" name="humanization" id="h3" value="vh2vhh"><label for="h3">VH to VHH Conversion</label></div>
+            </div>
+          </div>
+
+          <div class="form-group full">
+            <label>Affinity maturation (if applicable)</label>
+            <div class="check-group">
+              <div class="check-item"><input type="checkbox" name="affinity" id="a1" value="ab_ag"><label for="a1">Antigen-antibody</label></div>
+              <div class="check-item"><input type="checkbox" name="affinity" id="a2" value="ligand_receptor"><label for="a2">Ligand-receptor</label></div>
+              <div class="check-item"><input type="checkbox" name="affinity" id="a3" value="vhh"><label for="a3">VHH affinity maturation</label></div>
+            </div>
+          </div>
+
+          <h3 style="margin-top: 24px; margin-bottom: 20px;">Sequence Input</h3>
+
+          <div class="form-group full">
+            <label for="vh">VH sequence (amino acid, single letter)</label>
+            <textarea id="vh" name="vh" class="seq" placeholder="EVQLVESGGGLVQPGGSLRLSCAAS..."></textarea>
+            <span class="hint">Paste the heavy chain variable region sequence (single-letter amino acid code)</span>
+          </div>
+
+          <div class="form-group full">
+            <label for="vl">VL sequence (amino acid, single letter)</label>
+            <textarea id="vl" name="vl" class="seq" placeholder="EIVLTQSPATLSLSPGERATLSC..."></textarea>
+            <span class="hint">Paste the light chain variable region sequence (kappa or lambda). Leave blank for VHH or VH-to-VHH conversion.</span>
+          </div>
+
+          <div class="form-group full">
+            <label>Assessment services (if applicable)</label>
+            <div class="check-group">
+              <div class="check-item"><input type="checkbox" name="services" id="s1" value="sequence"><label for="s1">Sequence</label></div>
+              <div class="check-item"><input type="checkbox" name="services" id="s2" value="developability"><label for="s2">Developability</label></div>
+              <div class="check-item"><input type="checkbox" name="services" id="s3" value="immunogenicity"><label for="s3">Immunogenicity</label></div>
+              <div class="check-item"><input type="checkbox" name="services" id="s4" value="structure"><label for="s4">Structure</label></div>
+              <div class="check-item"><input type="checkbox" name="services" id="s5" value="full"><label for="s5">Full Report</label></div>
+            </div>
+          </div>
+
+          <div class="form-group full">
+            <label for="pdb">Upload PDB file (optional)</label>
+            <div class="file-upload-wrap">
+              <input type="file" id="pdb" name="pdb" accept=".pdb,.cif" class="file-input-hidden">
+              <button type="button" class="file-upload-btn" onclick="document.getElementById('pdb').click()">Choose file</button>
+              <span class="file-upload-name" id="pdb-filename">No file chosen</span>
+            </div>
+            <span class="hint">For structure or interface analysis. Supported formats: .pdb, .cif</span>
+          </div>
+
+          <div class="form-group full">
+            <label for="message">Additional notes or requirements</label>
+            <textarea id="message" name="message" placeholder="e.g., antigen chain ID, CDR scheme preference"></textarea>
+          </div>
+
+          <h3 style="margin-top: 0; margin-bottom: 20px;">Contact Information</h3>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="fname">First Name *</label>
+              <input type="text" id="fname" name="fname" required>
+            </div>
+            <div class="form-group">
+              <label for="lname">Last Name *</label>
+              <input type="text" id="lname" name="lname" required>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="org">Organization *</label>
+              <input type="text" id="org" name="org" required>
+            </div>
+            <div class="form-group">
+              <label for="email">Email *</label>
+              <input type="email" id="email" name="email" required>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="phone">Phone</label>
+              <input type="tel" id="phone" name="phone">
+            </div>
+          </div>
+
+          <div style="margin-top: 24px;">
+            <button type="submit" class="btn">Submit Inquiry</button>
+          </div>
+        </form>
+      </div>
+    </main>
+  </div>
+
+  <script>
+    // Smooth scroll + active nav
+    document.querySelectorAll('.nav-link').forEach(a => {
+      a.addEventListener('click', function(e) {
+        e.preventDefault();
+        const id = this.getAttribute('href').slice(1);
+        document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+        document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+        this.classList.add('active');
+      });
+    });
+
+    // Update active on scroll
+    const sections = ['platform','sequence','developability','immunogenicity','structure','affinity-maturation','humanization','full-report','submit'];
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        const id = entry.target.id;
+        document.querySelectorAll('.nav-link').forEach(a => {
+          a.classList.toggle('active', a.getAttribute('href') === '#' + id);
+        });
+      });
+    }, { rootMargin: '-20% 0px -60% 0px' });
+    sections.forEach(id => {
+      const el = document.getElementById(id);
+      if (el) observer.observe(el);
+    });
+
+    // File upload: show chosen filename in English
+    const fileInput = document.getElementById('pdb');
+    const fileLabel = document.getElementById('pdb-filename');
+    if (fileInput && fileLabel) {
+      fileInput.addEventListener('change', function() {
+        fileLabel.textContent = this.files.length ? this.files[0].name : 'No file chosen';
+      });
+    }
+
+    // Form submit (replace with GenoBioTX inquiry API or form action)
+    function handleSubmit(e) {
+      e.preventDefault();
+      // TODO: Replace with GenoBioTX inquiry API or form action
+      alert('Thank you. Your inquiry has been submitted. We will contact you within 1–2 business days.');
+      return false;
+    }
+  </script>
+</body>
+</html>

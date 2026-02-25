@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Thank you for contacting InSynBio. We will review your inquiry and respond within 3–5 business days.">
+  <title>Thank You | InSynBio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Noto+Sans+SC:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root { --primary: #0d9488; --primary-dark: #0f766e; --text: #1f2937; --text-muted: #6b7280; --border: #e5e7eb; --bg: #ffffff; --bg-alt: #f9fafb; }
+    * { box-sizing: border-box; }
+    body { margin: 0; font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 16px; line-height: 1.6; color: var(--text); background-color: #ffffff; background-image: linear-gradient(to bottom, rgba(255,255,255,0.85) 0%, rgba(255,255,255,0.75) 100%), url('images/hero_banner.png'); background-size: cover; background-position: center; min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 24px; }
+    .container { max-width: 560px; text-align: center; }
+    .brand-logo { font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 600; font-size: 32px; letter-spacing: -0.02em; margin-bottom: 32px; }
+    .brand-logo a { text-decoration: none; color: inherit; }
+    .brand-logo .in { color: var(--text); }
+    .brand-logo .syn { color: var(--primary); font-style: italic; font-weight: 700; }
+    .brand-logo .bio { color: var(--text); }
+    .brand-logo .tagline { font-family: 'Inter', sans-serif; font-size: 10px; font-weight: 500; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1.5px; margin-top: 4px; font-style: normal; }
+    .icon { width: 64px; height: 64px; margin: 0 auto 24px; padding: 16px; background: rgba(13,148,136,0.12); border-radius: 50%; color: var(--primary); }
+    .icon svg { width: 100%; height: 100%; }
+    h1 { font-size: 28px; font-weight: 700; margin: 0 0 16px; color: var(--text); }
+    p { font-size: 17px; color: var(--text-muted); margin: 0 0 12px; line-height: 1.6; }
+    .highlight { color: var(--primary); font-weight: 500; }
+    .btn { display: inline-block; margin-top: 28px; padding: 14px 28px; background: var(--primary); color: #fff; border: none; border-radius: 8px; font-size: 15px; font-weight: 500; text-decoration: none; font-family: inherit; cursor: pointer; transition: background 0.2s; }
+    .btn:hover { background: var(--primary-dark); }
+    .lang-switch { position: absolute; top: 24px; right: 24px; display: flex; gap: 4px; }
+    .lang-switch button { padding: 6px 12px; font-size: 13px; border: 1px solid var(--border); background: var(--bg); color: var(--text-muted); border-radius: 6px; cursor: pointer; font-family: 'Noto Sans SC', 'Inter', sans-serif; transition: all 0.2s; }
+    .lang-switch button:hover { border-color: var(--primary); color: var(--primary); }
+    .lang-switch button.active { background: var(--primary); color: #fff; border-color: var(--primary); }
+    body[data-lang="zh"] .lang-en { display: none !important; }
+    body[data-lang="en"] .lang-zh { display: none !important; }
+    .footer { margin-top: 48px; font-size: 13px; color: var(--text-muted); }
+    .footer a { color: var(--primary); text-decoration: none; }
+    .footer a:hover { text-decoration: underline; }
+  </style>
+</head>
+<body data-lang="en">
+  <div class="lang-switch">
+    <button type="button" class="lang-btn active" data-lang="en">EN</button>
+    <button type="button" class="lang-btn" data-lang="zh">ZH</button>
+  </div>
+
+  <div class="container">
+    <div class="brand-logo">
+      <a href="index.html" style="display: flex; align-items: center; justify-content: center; gap: 10px; text-decoration: none; flex-direction: column;">
+        <div style="display: flex; align-items: center; gap: 10px;">
+          <svg width="40" height="40" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="logo_grad_thanks" x1="0" y1="0" x2="32" y2="32" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#0d9488" />
+                <stop offset="1" stop-color="#2dd4bf" />
+              </linearGradient>
+            </defs>
+            <path d="M7 6L16 18V28" stroke="url(#logo_grad_thanks)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M25 6L16 18" stroke="url(#logo_grad_thanks)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+            <circle cx="7" cy="6" r="2" fill="#0f766e" />
+            <circle cx="25" cy="6" r="2" fill="#0f766e" />
+            <circle cx="16" cy="18" r="2" fill="white" stroke="#0d9488" stroke-width="1.5"/>
+          </svg>
+          <span style="font-family: 'Cormorant Garamond', serif; font-weight: 700; font-size: 32px; color: #1f2937; letter-spacing: -0.02em;">
+            In<span style="color: #0d9488;">Syn</span>Bio
+          </span>
+        </div>
+        <div class="tagline lang-en">AI for Life Sciences</div>
+        <div class="tagline lang-zh">AI 赋能生命科学</div>
+      </a>
+    </div>
+
+    <div class="icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+    </div>
+
+    <h1 class="lang-en">Thank You</h1>
+    <h1 class="lang-zh">感谢提交</h1>
+
+    <p class="lang-en">Your inquiry has been received successfully. We will review your submission and respond within <span class="highlight">3–5 business days</span>.</p>
+    <p class="lang-zh">您的咨询已成功提交。我们将在 <span class="highlight">3–5 个工作日</span> 内审核并回复。</p>
+
+    <p class="lang-en" style="font-size: 14px; margin-top: 16px;">If you have a PDB file to share, please email it to <a href="mailto:contact@insynbio.com" style="color: var(--primary);">contact@insynbio.com</a> and mention your inquiry.</p>
+    <p class="lang-zh" style="font-size: 14px; margin-top: 16px;">如有 PDB 文件需发送，请发至 <a href="mailto:contact@insynbio.com" style="color: var(--primary);">contact@insynbio.com</a> 并注明您的咨询内容。</p>
+
+    <a href="index.html" class="btn lang-en">Back to Home</a>
+    <a href="index.html" class="btn lang-zh">返回首页</a>
+  </div>
+
+  <div class="footer">
+    <span class="lang-en">© 2026 InSynBio · </span><span class="lang-zh">© 2026 InSynBio · </span><a href="https://insynbio.com">insynbio.com</a>
+  </div>
+
+  <script>
+    (function() {
+      const KEY = 'insynbio-lang';
+      function applyLang(lang) {
+        document.body.setAttribute('data-lang', lang);
+        document.querySelectorAll('.lang-btn').forEach(b => {
+          b.classList.toggle('active', b.dataset.lang === lang);
+        });
+        document.title = lang === 'zh' ? '感谢提交 | InSynBio' : 'Thank You | InSynBio';
+      }
+      const saved = localStorage.getItem(KEY);
+      if (saved === 'zh' || saved === 'en') { applyLang(saved); }
+      document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.addEventListener('click', function(e) {
+          e.preventDefault();
+          const lang = this.dataset.lang;
+          localStorage.setItem(KEY, lang);
+          applyLang(lang);
+        });
+      });
+    })();
+  </script>
+</body>
+</html>
