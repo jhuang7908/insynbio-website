@@ -24,7 +24,8 @@
     .nav-dropdown { position: relative; }
     .nav-dropdown > a::after { content: ' ▾'; font-size: 10px; opacity: 0.7; }
     .nav-dropdown .dropdown-menu { position: absolute; top: 100%; left: 0; min-width: 160px; padding: 6px 0; background: var(--bg); border: 1px solid var(--border); border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.08); opacity: 0; visibility: hidden; transform: translateY(-4px); transition: all 0.2s; z-index: 100; }
-    .nav-dropdown:hover .dropdown-menu { opacity: 1; visibility: visible; transform: translateY(0); }
+    .nav-dropdown:hover .dropdown-menu,
+.nav-dropdown:focus-within .dropdown-menu { opacity: 1; visibility: visible; transform: translateY(0); }
     .nav-dropdown .dropdown-menu a { display: block; padding: 10px 16px; font-size: 14px; color: var(--text); border-radius: 0; white-space: nowrap; }
     .nav-dropdown .dropdown-menu a:hover { background: var(--bg-alt); color: var(--primary); }
     .top-header-nav a.cta { background: var(--primary); color: #fff; font-weight: 500; }
@@ -110,7 +111,7 @@
     @media (max-width: 600px) {
       .top-header { padding: 12px 16px; }
       .top-header .slogan { display: none; }
-      .top-header-nav { order: 3; width: 100%; justify-content: flex-start; overflow-x: auto; padding-bottom: 4px; }
+      .top-header-nav { order: 3; width: 100%; justify-content: flex-start; overflow-x: auto; padding-bottom: 4px; -webkit-overflow-scrolling: touch; }
       .top-header-nav a { flex-shrink: 0; font-size: 13px; padding: 6px 10px; }
       .hero { padding: 44px 20px 36px; }
       .hero h1 { font-size: 34px; }
@@ -144,7 +145,7 @@
     </div>
     <nav class="top-header-nav">
       <a href="#about"><span class="lang-en">About Us</span><span class="lang-zh">关于我们</span></a>
-      <div class="nav-dropdown">
+      <div class="nav-dropdown" tabindex="0">
         <a href="#services"><span class="lang-en">Services</span><span class="lang-zh">服务</span></a>
         <div class="dropdown-menu">
           <a href="InSynBio_Antibody_Developability_Assessment_Page.html"><span class="lang-en">Antibody</span><span class="lang-zh">抗体评估</span></a>
