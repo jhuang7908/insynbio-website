@@ -101,6 +101,20 @@
     .site-footer a:hover { text-decoration: underline; }
     .mission-block { background-color: #ffffff; background-image: linear-gradient(to bottom, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0.95) 100%), url('images/hero_banner.png'); background-size: cover; background-position: center; border-radius: 12px; padding: 32px; margin-bottom: 32px; border: 1px solid rgba(13,148,136,0.1); border-left: 4px solid var(--primary); box-shadow: 0 4px 12px rgba(13,148,136,0.05); }
     .mission-block p { margin: 0; font-size: 16px; line-height: 1.7; color: var(--text); }
+    /* Humanization table: card layout on mobile so Technology column wraps nicely */
+    @media (max-width: 768px) {
+      .humanization-table-wrap { overflow: visible; border: none; }
+      .humanization-table-wrap .humanization-table { display: block; }
+      .humanization-table-wrap .humanization-table thead { display: none; }
+      .humanization-table-wrap .humanization-table tbody tr { display: block; margin-bottom: 16px; padding: 16px; background: var(--bg); border: 1px solid var(--border); border-radius: 8px; box-shadow: 0 1px 3px rgba(0,0,0,0.06); }
+      .humanization-table-wrap .humanization-table tbody td { display: block; padding: 10px 0; border: none; border-bottom: 1px solid var(--bg-alt); font-size: 15px; }
+      .humanization-table-wrap .humanization-table tbody tr td:last-child { border-bottom: none; padding-bottom: 0; }
+      .humanization-table-wrap .humanization-table tbody tr td:first-child { padding-top: 0; }
+      .humanization-table-wrap .humanization-table tbody td::before { content: attr(data-label); font-weight: 600; font-size: 11px; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-muted); display: block; margin-bottom: 6px; }
+      body[data-lang="zh"] .humanization-table-wrap .humanization-table tbody td[data-label="Service"]::before { content: "服务"; }
+      body[data-lang="zh"] .humanization-table-wrap .humanization-table tbody td[data-label="Input"]::before { content: "输入"; }
+      body[data-lang="zh"] .humanization-table-wrap .humanization-table tbody td[data-label="Technology"]::before { content: "技术"; }
+    }
     @media (max-width: 900px) {
       .top-header { flex-wrap: wrap; padding: 12px 16px; gap: 10px; }
       .top-header .brand { flex: 1 1 auto; min-width: 0; display: flex; align-items: center; flex-wrap: wrap; gap: 8px; }
@@ -338,8 +352,8 @@
       <p class="lang-zh"><strong>基因工程人源化服务</strong></p>
       <p class="lang-en">All humanization deliverables include structure assessment. Our VH/VL pipeline employs structure-driven back-mutations and prioritizes germlines derived from 1,142 clinical antibody sequences.</p>
       <p class="lang-zh">所有人源化交付物均含结构评估。VH/VL 流程采用结构驱动回突变，优先使用 1,142 条临床抗体序列胚系。</p>
-      <div class="table-wrap">
-      <table style="width:100%; border-collapse: collapse;">
+      <div class="table-wrap humanization-table-wrap">
+      <table class="humanization-table" style="width:100%; border-collapse: collapse;">
         <thead>
           <tr>
             <th><span class="lang-en">Service</span><span class="lang-zh">服务</span></th>
@@ -349,19 +363,19 @@
         </thead>
         <tbody>
           <tr>
-            <td><strong><span class="lang-en">VH/VL Humanization</span><span class="lang-zh">VH/VL 人源化</span></strong></td>
-            <td><span class="lang-en">Mouse VH and VL</span><span class="lang-zh">鼠源 VH 与 VL</span></td>
-            <td><span class="lang-en">AbEngineCore V4.4 pipeline. Structure-driven back-mutations with prioritization of germlines from 1,142 clinical antibody sequences. CDR grafting with surface reshaping fallback. Structure assessment included.</span><span class="lang-zh">AbEngineCore V4.4 流程。结构驱动回突变，优先 842 条临床抗体胚系。CDR 移植 + 表面重塑备选。含结构评估。</span></td>
+            <td data-label="Service"><strong><span class="lang-en">VH/VL Humanization</span><span class="lang-zh">VH/VL 人源化</span></strong></td>
+            <td data-label="Input"><span class="lang-en">Mouse VH and VL</span><span class="lang-zh">鼠源 VH 与 VL</span></td>
+            <td data-label="Technology"><span class="lang-en">AbEngineCore V4.4 pipeline. Structure-driven back-mutations with prioritization of germlines from 1,142 clinical antibody sequences. CDR grafting with surface reshaping fallback. Structure assessment included.</span><span class="lang-zh">AbEngineCore V4.4 流程。结构驱动回突变，优先 842 条临床抗体胚系。CDR 移植 + 表面重塑备选。含结构评估。</span></td>
           </tr>
           <tr>
-            <td><strong><span class="lang-en">VHH Humanization</span><span class="lang-zh">VHH 人源化</span></strong></td>
-            <td><span class="lang-en">Camelid or llama VHH</span><span class="lang-zh">驼源或羊驼 VHH</span></td>
-            <td><span class="lang-en">Integrated approach combining surface reshaping and framework grafting. Preserves CDRs and structural hallmarks. Structure assessment included.</span><span class="lang-zh">表面重塑与框架移植结合。保留 CDR 与结构特征。含结构评估。</span></td>
+            <td data-label="Service"><strong><span class="lang-en">VHH Humanization</span><span class="lang-zh">VHH 人源化</span></strong></td>
+            <td data-label="Input"><span class="lang-en">Camelid or llama VHH</span><span class="lang-zh">驼源或羊驼 VHH</span></td>
+            <td data-label="Technology"><span class="lang-en">Integrated approach combining surface reshaping and framework grafting. Preserves CDRs and structural hallmarks. Structure assessment included.</span><span class="lang-zh">表面重塑与框架移植结合。保留 CDR 与结构特征。含结构评估。</span></td>
           </tr>
           <tr>
-            <td><strong><span class="lang-en">VH to VHH Conversion</span><span class="lang-zh">VH 转 VHH</span></strong></td>
-            <td><span class="lang-en">Conventional VH (from mAb)</span><span class="lang-zh">常规 VH（来自 mAb）</span></td>
-            <td><span class="lang-en">CDR grafting onto human VHH scaffold with structure-guided optimization. Expert design service. Structure assessment included.</span><span class="lang-zh">CDR 移植至人源 VHH 骨架，结构引导优化。专家设计服务。含结构评估。</span></td>
+            <td data-label="Service"><strong><span class="lang-en">VH to VHH Conversion</span><span class="lang-zh">VH 转 VHH</span></strong></td>
+            <td data-label="Input"><span class="lang-en">Conventional VH (from mAb)</span><span class="lang-zh">常规 VH（来自 mAb）</span></td>
+            <td data-label="Technology"><span class="lang-en">CDR grafting onto human VHH scaffold with structure-guided optimization. Expert design service. Structure assessment included.</span><span class="lang-zh">CDR 移植至人源 VHH 骨架，结构引导优化。专家设计服务。含结构评估。</span></td>
           </tr>
         </tbody>
       </table>
