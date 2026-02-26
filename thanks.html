@@ -93,6 +93,7 @@
   <script>
     (function() {
       const KEY = 'insynbio-lang';
+      const ZH_REGIONS = ['CN', 'TW', 'HK', 'MO'];
       function applyLang(lang) {
         document.body.setAttribute('data-lang', lang);
         document.querySelectorAll('.lang-btn').forEach(b => {
@@ -100,8 +101,19 @@
         });
         document.title = lang === 'zh' ? '感谢提交 | InSynBio' : 'Thank You | InSynBio';
       }
-      const saved = localStorage.getItem(KEY);
-      if (saved === 'zh' || saved === 'en') { applyLang(saved); }
+      var saved = localStorage.getItem(KEY);
+      if (saved === 'zh' || saved === 'en') {
+        applyLang(saved);
+      } else {
+        var initial = (navigator.language && navigator.language.toLowerCase().indexOf('zh') === 0) ? 'zh' : 'en';
+        applyLang(initial);
+        fetch('https://ipapi.co/json/').then(function(r) { return r.json(); }).then(function(data) {
+          var code = (data && data.country_code) ? data.country_code.toUpperCase() : '';
+          var lang = ZH_REGIONS.indexOf(code) >= 0 ? 'zh' : 'en';
+          localStorage.setItem(KEY, lang);
+          applyLang(lang);
+        }).catch(function() {});
+      }
       document.querySelectorAll('.lang-btn').forEach(btn => {
         btn.addEventListener('click', function(e) {
           e.preventDefault();

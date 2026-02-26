@@ -71,7 +71,8 @@
     .service-card .icon { width: 44px; height: 44px; background: rgba(13,148,136,0.1); border-radius: 10px; display: flex; align-items: center; justify-content: center; margin-bottom: 16px; color: var(--primary); }
     .service-card h3 { font-size: 17px; font-weight: 600; margin: 0 0 10px; color: var(--text); line-height: 1.3; }
     .service-card p { margin: 0 0 14px; font-size: 14px; color: var(--text-muted); line-height: 1.6; }
-    .service-card .status { display: inline-block; font-size: 12px; font-weight: 600; color: var(--primary); background: rgba(13,148,136,0.08); padding: 2px 9px; border-radius: 20px; margin-bottom: 10px; }
+    .service-card .status { display: inline-block; font-size: 12px; font-weight: 600; color: var(--primary); background: rgba(13,148,136,0.08); padding: 2px 9px; border-radius: 20px; margin-bottom: 10px; text-decoration: none; }
+    .service-card a.status:hover { background: rgba(13,148,136,0.15); color: var(--primary-dark); }
     .service-card .status.coming { color: var(--text-muted); background: rgba(107,114,128,0.08); }
     .service-card a { font-size: 14px; font-weight: 500; color: var(--primary); text-decoration: none; }
     .service-card a:hover { text-decoration: underline; }
@@ -208,7 +209,7 @@
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
         </div>
         <h3><span class="lang-en">Antibody Assessment & Development</span><span class="lang-zh">抗体开发与评估</span></h3>
-        <span class="status"><span class="lang-en">Available</span><span class="lang-zh">已上线</span></span>
+        <a href="InSynBio_Antibody_Developability_Assessment_Page.html#platform" class="status"><span class="lang-en">Available</span><span class="lang-zh">已上线</span></a>
         <p class="lang-en">Sequence analysis, developability, immunogenicity, structure, humanization, affinity maturation.</p>
         <p class="lang-zh">序列分析、可开发性、免疫原性、结构、人源化、亲和力成熟。</p>
         <a href="InSynBio_Antibody_Developability_Assessment_Page.html"><span class="lang-en">Learn more →</span><span class="lang-zh">了解更多 →</span></a>
@@ -317,6 +318,7 @@
     });
     (function() {
       const KEY = 'insynbio-lang';
+      const ZH_REGIONS = ['CN', 'TW', 'HK', 'MO'];
       function applyLang(lang) {
         document.body.setAttribute('data-lang', lang);
         document.querySelectorAll('.lang-btn').forEach(b => {
@@ -324,8 +326,19 @@
         });
         document.title = lang === 'zh' ? 'InSynBio — AI 赋能生命科学' : 'InSynBio — AI for Life Sciences';
       }
-      const saved = localStorage.getItem(KEY);
-      if (saved === 'zh' || saved === 'en') { applyLang(saved); }
+      var saved = localStorage.getItem(KEY);
+      if (saved === 'zh' || saved === 'en') {
+        applyLang(saved);
+      } else {
+        var initial = (navigator.language && navigator.language.toLowerCase().indexOf('zh') === 0) ? 'zh' : 'en';
+        applyLang(initial);
+        fetch('https://ipapi.co/json/').then(function(r) { return r.json(); }).then(function(data) {
+          var code = (data && data.country_code) ? data.country_code.toUpperCase() : '';
+          var lang = ZH_REGIONS.indexOf(code) >= 0 ? 'zh' : 'en';
+          localStorage.setItem(KEY, lang);
+          applyLang(lang);
+        }).catch(function() {});
+      }
       document.querySelectorAll('.lang-btn').forEach(btn => {
         btn.addEventListener('click', function() {
           const lang = this.dataset.lang;
