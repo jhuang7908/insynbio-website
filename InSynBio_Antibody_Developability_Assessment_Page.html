@@ -102,26 +102,18 @@
     .mission-block { background-color: #ffffff; background-image: linear-gradient(to bottom, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0.95) 100%), url('images/hero_banner.png'); background-size: cover; background-position: center; border-radius: 12px; padding: 32px; margin-bottom: 32px; border: 1px solid rgba(13,148,136,0.1); border-left: 4px solid var(--primary); box-shadow: 0 4px 12px rgba(13,148,136,0.05); }
     .mission-block p { margin: 0; font-size: 16px; line-height: 1.7; color: var(--text); }
     @media (max-width: 900px) {
-      .top-header { flex-wrap: wrap; padding: 12px 16px; gap: 12px; }
-      .top-header .brand { flex: 1; }
-      .top-header .slogan { display: none; }
-      .top-header-nav { order: 3; width: 100%; justify-content: flex-start; overflow-x: auto; padding-bottom: 4px; -webkit-overflow-scrolling: touch; }
-      .top-header-nav a { flex-shrink: 0; font-size: 13px; padding: 6px 12px; }
-      .top-header .header-right { order: 2; }
+      .top-header { flex-wrap: wrap; padding: 12px 16px; gap: 10px; }
+      .top-header .brand { flex: 1 1 auto; min-width: 0; display: flex; align-items: center; flex-wrap: wrap; gap: 8px; }
+      .top-header .slogan { display: inline-block !important; font-size: 12px; padding-left: 10px; border-left: 1px solid var(--border); white-space: nowrap; }
+      .top-header .header-right { order: 2; margin-left: auto; }
+      .top-header-nav { order: 3; width: 100%; flex: 1 1 100%; justify-content: flex-start; flex-wrap: wrap; gap: 6px; overflow-x: auto; padding-bottom: 4px; -webkit-overflow-scrolling: touch; border-top: 1px solid var(--border); padding-top: 10px; margin-top: 2px; }
+      .top-header-nav a { flex-shrink: 0; font-size: 13px; padding: 6px 10px; }
       .page-wrap { flex-direction: column; min-height: auto; }
       .sidebar { width: 100%; height: auto; position: relative; border-right: none; border-bottom: 1px solid #e0e0e0; padding: 16px; }
       .sidebar nav { display: flex; flex-wrap: wrap; gap: 8px; }
       .sidebar nav a { display: inline-flex; padding: 8px 12px; border-radius: 6px; border-left: none; }
       .main { padding: 24px 24px 48px; }
       .mission-block { padding: 20px; margin-bottom: 24px; }
-    }
-    @media (max-width: 600px) {
-      .top-header { flex-wrap: wrap; gap: 10px; }
-      .top-header .brand { flex: 1 1 auto; min-width: 0; display: flex; align-items: center; flex-wrap: wrap; gap: 8px; }
-      .top-header .slogan { display: inline-block !important; font-size: 12px; padding-left: 10px; border-left: 1px solid var(--border); white-space: nowrap; }
-      .top-header .header-right { order: 2; margin-left: auto; }
-      .top-header-nav { order: 3; width: 100%; flex: 1 1 100%; justify-content: flex-start; flex-wrap: wrap; gap: 6px; overflow-x: auto; padding-bottom: 4px; -webkit-overflow-scrolling: touch; border-top: 1px solid var(--border); padding-top: 10px; margin-top: 2px; }
-      .top-header-nav a { flex-shrink: 0; font-size: 13px; padding: 6px 10px; }
     }
   </style>
 </head>
