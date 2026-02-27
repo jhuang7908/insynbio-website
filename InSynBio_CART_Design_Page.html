@@ -223,14 +223,14 @@
       <p class="lang-en">Our ACTES platform leverages a proprietary library of <strong>nearly 200 curated components</strong> across 10 categories. We don't just assemble; we match.</p>
       <p class="lang-zh">ACTES 平台基于包含 10 大类、<strong>近 200 个精选元件</strong>的专有库。我们不仅仅是组装，而是精准匹配。</p>
       <ul class="lang-en">
-        <li><strong>Antigen Knowledge Base</strong> — A continuously updated database of <strong>common epitopes</strong>, antigen density thresholds, and heterogeneity profiles to guide precise design.</li>
+        <li><strong>Antigen Knowledge Base</strong> — A continuously updated database of <strong>common epitopes</strong>, <strong>antigen density</strong> thresholds, <strong>heterogeneity</strong> profiles, <strong>disease context</strong> (solid vs. hematologic vs. autoimmune), and <strong>specificity</strong> considerations (e.g. on-target off-tumor risk) to guide precise design.</li>
         <li><strong>Smart Vector Logic</strong> — Algorithmic selection between <strong>Lentiviral</strong> (Standard), <strong>Non-Viral/Transposon</strong> (Large Payload), and <strong>In Vivo LNP</strong> (Accessibility) based on clinical needs.</li>
         <li><strong>Epitope-Hinge Matching</strong> — We measure epitope-to-membrane distance using <strong>AlphaFold2</strong> to select the precise Hinge length (Short/Medium/Long).</li>
         <li><strong>Kinetic Engineering</strong> — We tune Binder affinity (Kd) and off-rates (koff) via computational mutagenesis. We increase affinity for low-density targets, but tune it down for targets like HER2 to spare normal tissues, while ensuring fast dissociation to prevent exhaustion.</li>
         <li><strong>Density-Signaling Logic</strong> — We analyze antigen density to select the optimal Transmembrane (CD8α vs CD28) and Signaling domains (4-1BB vs CD28).</li>
       </ul>
       <ul class="lang-zh">
-        <li><strong>抗原知识库</strong> — 维护持续更新的数据库，包含<strong>常见表位</strong>、抗原密度阈值及异质性图谱，指导精准设计。</li>
+        <li><strong>抗原知识库</strong> — 维护持续更新的数据库，包含<strong>常见表位</strong>、<strong>抗原密度</strong>阈值、<strong>异质性</strong>图谱、<strong>疾病语境</strong>（实体瘤/血液瘤/自身免疫）及<strong>特异性</strong>考量（如 on-target off-tumor 风险），指导精准设计。</li>
         <li><strong>智能载体逻辑</strong> — 根据临床需求算法化选择：<strong>慢病毒</strong> (标准)、<strong>非病毒/转座子</strong> (大载荷) 或 <strong>体内 LNP</strong> (可及性)。</li>
         <li><strong>表位-铰链匹配</strong> — 利用 <strong>AlphaFold2</strong> 测量表位到细胞膜的距离，精准选择铰链长度（短/中/长）。</li>
         <li><strong>动力学工程</strong> — 通过计算突变优化 Binder 亲和力 (Kd) 与解离速率 (koff)。针对低密度靶点提升亲和力；针对 HER2 等靶点下调亲和力以保护正常组织；同时确保快速解离以防止耗竭。</li>
@@ -499,12 +499,13 @@
           </div>
 
           <div class="form-group full">
-            <label><span class="lang-en">Chassis Preference (Optional)</span><span class="lang-zh">底盘偏好（可选）</span></label>
+            <label><span class="lang-en">Chassis / Delivery Preference (Optional)</span><span class="lang-zh">底盘/递送偏好（可选）</span></label>
             <div class="check-group">
-              <div class="check-item"><input type="checkbox" name="chassis" id="c1" value="cart"><label for="c1">CAR-T (αβ)</label></div>
-              <div class="check-item"><input type="checkbox" name="chassis" id="c2" value="carnk"><label for="c2">CAR-NK</label></div>
-              <div class="check-item"><input type="checkbox" name="chassis" id="c3" value="carm"><label for="c3">CAR-M</label></div>
-              <div class="check-item"><input type="checkbox" name="chassis" id="c4" value="gamma"><label for="c4">γδ T</label></div>
+              <div class="check-item"><input type="checkbox" name="chassis" id="c1" value="cart"><label for="c1"><span class="lang-en">CAR-T (αβ)</span><span class="lang-zh">CAR-T (αβ)</span></label></div>
+              <div class="check-item"><input type="checkbox" name="chassis" id="c2" value="carnk"><label for="c2"><span class="lang-en">CAR-NK</span><span class="lang-zh">CAR-NK</span></label></div>
+              <div class="check-item"><input type="checkbox" name="chassis" id="c3" value="carm"><label for="c3"><span class="lang-en">CAR-M</span><span class="lang-zh">CAR-M</span></label></div>
+              <div class="check-item"><input type="checkbox" name="chassis" id="c4" value="gamma"><label for="c4"><span class="lang-en">γδ T</span><span class="lang-zh">γδ T</span></label></div>
+              <div class="check-item"><input type="checkbox" name="chassis" id="c5" value="invivo"><label for="c5"><span class="lang-en">In Vivo CAR (e.g. LNP-mRNA)</span><span class="lang-zh">体内 CAR（如 LNP-mRNA）</span></label></div>
             </div>
           </div>
 
