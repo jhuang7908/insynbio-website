@@ -81,6 +81,8 @@
 - Hallmarks: Kabat 37, 44, 45, 47
 - Vernier: Kabat 27, 28, 29, 30, 47, 49, 71, 73, 78, 93, 94
 
+**编号工具区分：** 本仓库仅使用 **ANARCII**（Python 包 `anarcii`），与经典程序 **ANARCI** 为不同软件。详见 [`ANARCI_VS_ANARCII.md`](./ANARCI_VS_ANARCII.md)。
+
 ---
 
 ## 🔧 **Configuration Files**
