@@ -237,62 +237,62 @@
           <tr>
             <td><strong>1. Binders</strong><br><span style="font-size:12px; color:var(--text-muted);">结合域</span></td>
             <td>Target recognition<br>靶向识别</td>
-            <td>scFv (FMC63, Trastuzumab)<br>Humanized scFv</td>
-            <td><strong>VHH / Nanobody</strong> (Solid tumor)<br><strong>TCR-mimic</strong> (Intracellular targets)<br><strong>In Vivo Delivery</strong> (CD3/CD8 binders)</td>
+            <td>scFv (FMC63, Trastuzumab)<br>Humanized scFv<br>Fab Fragments</td>
+            <td><strong>VHH / Nanobody</strong> (Solid Tumor)<br><strong>TCR-mimic</strong> (Intracellular/pMHC)<br><strong>De Novo Binders</strong> (AI-Generated)<br><strong>Masked Binders</strong> (Pro-CAR)</td>
           </tr>
           <tr>
             <td><strong>2. Hinge Domains</strong><br><span style="font-size:12px; color:var(--text-muted);">铰链域</span></td>
             <td>Epitope distance matching<br>表位距离匹配</td>
-            <td>CD8α Short (45aa)<br>IgG4 Long (230aa)</td>
-            <td><strong>CD28 Medium</strong> (40aa)<br><strong>IgG4-SPLE</strong> (Fc-silenced)<br><strong>Auto-Hinge Logic</strong></td>
+            <td>CD8α Short (45aa)<br>IgG4 Long (228aa)<br>CD28 Medium</td>
+            <td><strong>IgG4-SPLE</strong> (Fc-Null / S228P)<br><strong>Auto-Hinge</strong> (AI-Matched)<br><strong>IgD Hinge</strong> (Protease Resistant)</td>
           </tr>
           <tr>
             <td><strong>3. Transmembrane</strong><br><span style="font-size:12px; color:var(--text-muted);">跨膜域</span></td>
             <td>Membrane anchoring & signaling threshold<br>膜锚定与信号阈值</td>
             <td>CD8α TM (Low tonic)<br>CD28 TM (Lipid raft)</td>
-            <td><strong>CD28 TM</strong> (High sensitivity for low-density targets)<br><strong>In Vivo Optimized TM</strong></td>
+            <td><strong>NKG2D TM</strong> (NK Optimization)<br><strong>DAP10 TM</strong> (Costimulatory)<br><strong>In Vivo Optimized TM</strong></td>
           </tr>
           <tr>
             <td><strong>4. Co-stimulatory</strong><br><span style="font-size:12px; color:var(--text-muted);">共刺激域</span></td>
             <td>Metabolism & Persistence<br>代谢与持久性</td>
             <td>4-1BB (Mitochondrial)<br>CD28 (Glycolytic)</td>
-            <td><strong>OX40 / ICOS</strong> (3G)<br><strong>2B4 / DAP10</strong> (NK specific)<br><strong>4-1BBL</strong> (Self-driving armor)</td>
+            <td><strong>OX40 (CD134)</strong> (Synergy)<br><strong>ICOS</strong> (Th17/Th1)<br><strong>2B4 / DAP10</strong> (NK Specific)<br><strong>4-1BBL</strong> (Self-Driving)</td>
           </tr>
           <tr>
             <td><strong>5. Activation</strong><br><span style="font-size:12px; color:var(--text-muted);">激活域</span></td>
             <td>Killing signal<br>杀伤信号</td>
             <td>CD3ζ (3x ITAM)</td>
-            <td><strong>DAP12</strong> (NK/Macrophage)<br><strong>FcR-γ</strong> (CAR-M phagocytosis)</td>
+            <td><strong>DAP12</strong> (CAR-NK/Macrophage)<br><strong>FcR-γ</strong> (Phagocytosis)<br><strong>CD3ε</strong> (Recruitment)</td>
           </tr>
           <tr>
             <td><strong>6. Armored Payloads</strong><br><span style="font-size:12px; color:var(--text-muted);">铠甲载荷</span></td>
             <td>TME remodeling & Resistance<br>TME 重塑与抵抗</td>
             <td>Secreted IL-12 (TRUCK)</td>
-            <td><strong>TGFB_DNR</strong> (Anti-suppression)<br><strong>Membrane_IL15</strong> (Persistence)<br><strong>GPX4_Enhanced</strong> (Anti-ferroptosis)<br><strong>c-JUN</strong> (Exhaustion reversal)</td>
+            <td><strong>TGFB_DNR</strong> (Anti-Suppression)<br><strong>Membrane_IL15</strong> (Persistence)<br><strong>GPX4_Enhanced</strong> (Anti-Ferroptosis)<br><strong>IL-7 / CCL19</strong> (7x19)<br><strong>c-JUN</strong> (Exhaustion Reversal)</td>
           </tr>
           <tr>
             <td><strong>7. Safety Switches</strong><br><span style="font-size:12px; color:var(--text-muted);">安全开关</span></td>
             <td>Controllable elimination<br>可控清除</td>
             <td>tEGFR (Cetuximab)<br>CD20 Mimotope (Rituximab)</td>
-            <td><strong>iCasp9</strong> (Small molecule, >95% clearance)<br><strong>RQR8</strong> (Dual tag)</td>
+            <td><strong>iCasp9</strong> (Small Molecule, >95%)<br><strong>RQR8</strong> (Dual Tag)<br><strong>Rapamycin-ON</strong> (Inducible)</td>
           </tr>
           <tr>
             <td><strong>8. Logic Gates</strong><br><span style="font-size:12px; color:var(--text-muted);">逻辑门控</span></td>
             <td>Specificity control (AND/NOT)<br>特异性控制</td>
-            <td>Split CAR</td>
-            <td><strong>SynNotch</strong> (Sequential AND)<br><strong>iCAR</strong> (Inhibitory PD-1/CTLA-4)<br><strong>Tandem Dual-Target</strong></td>
+            <td>Tandem CAR (OR Gate)</td>
+            <td><strong>SynNotch</strong> (AND Gate)<br><strong>iCAR</strong> (NOT Gate / PD-1)<br><strong>Split CAR</strong> (Dimerization)<br><strong>LOCKR</strong> (Protein Switch)</td>
           </tr>
           <tr>
             <td><strong>9. Regulatory</strong><br><span style="font-size:12px; color:var(--text-muted);">调控元件</span></td>
             <td>Expression control<br>表达控制</td>
-            <td>EF1α Promoter<br>WPRE</td>
-            <td><strong>NFAT_Response</strong> (Inducible)<br><strong>UCOE</strong> (Anti-silencing)<br><strong>Tet-Off</strong> (Doxycycline control)</td>
+            <td>EF1α Promoter<br>PGK Promoter<br>WPRE</td>
+            <td><strong>NFAT_Response</strong> (Inducible)<br><strong>UCOE</strong> (Anti-Silencing)<br><strong>Tet-On / Tet-Off</strong><br><strong>SFFV</strong> (High Expression)</td>
           </tr>
           <tr>
             <td><strong>10. Leaders & Linkers</strong><br><span style="font-size:12px; color:var(--text-muted);">信号肽与连接子</span></td>
             <td>Secretion & Flexibility<br>分泌与柔性</td>
             <td>CD8α SP<br>G4S (Flexible)</td>
-            <td><strong>EAAAK3</strong> (Rigid separator)<br><strong>IL-2 SP</strong> (Cytokine secretion)</td>
+            <td><strong>IL-2 SP</strong> (Cytokine Secretion)<br><strong>EAAAK3</strong> (Rigid Separator)<br><strong>Whitlow Linker</strong> (Stability)</td>
           </tr>
         </tbody>
       </table>
