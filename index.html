@@ -31,8 +31,9 @@
     .nav-dropdown .dropdown-menu a .menu-title { display: block; font-weight: 600; font-size: 14px; color: var(--text); }
     .nav-dropdown .dropdown-menu a:hover .menu-title { color: var(--primary); }
     .nav-dropdown .dropdown-menu a .menu-desc { display: block; font-size: 12px; color: var(--text-muted); font-weight: 400; margin-top: 2px; }
-    .top-header-nav a.cta { background: var(--primary); color: #fff; font-weight: 500; }
-    .top-header-nav a.cta:hover { background: var(--primary-dark); color: #fff; }
+    .top-header-nav a.active { background: var(--primary); color: #fff; font-weight: 500; }
+    .top-header-nav a.active:hover,
+    .top-header-nav a.active:focus { background: var(--primary-dark); color: #fff; }
     .header-right { display: flex; align-items: center; gap: 16px; }
     .lang-switch { display: flex; gap: 4px; }
     .lang-switch button { padding: 6px 12px; font-size: 13px; border: 1px solid var(--border); background: var(--bg); color: var(--text-muted); border-radius: 6px; cursor: pointer; font-family: 'Noto Sans SC', 'Inter', sans-serif; transition: all 0.2s; }
@@ -175,7 +176,7 @@
         </div>
       </div>
       <a href="#workflow"><span class="lang-en">Workflow</span><span class="lang-zh">流程</span></a>
-      <a href="#contact" class="cta"><span class="lang-en">Contact Us</span><span class="lang-zh">联系我们</span></a>
+      <a href="#contact"><span class="lang-en">Contact Us</span><span class="lang-zh">联系我们</span></a>
     </nav>
     <div class="header-right">
       <div class="lang-switch">
@@ -338,13 +339,25 @@
   </footer>
 
   <script>
+    function setNavActive() {
+      var hash = window.location.hash || '#';
+      document.querySelectorAll('.top-header-nav a[href^="#"]').forEach(function(a) {
+        a.classList.toggle('active', a.getAttribute('href') === hash);
+      });
+    }
+    setNavActive();
+    window.addEventListener('hashchange', setNavActive);
     document.querySelectorAll('.top-header-nav a[href^="#"]').forEach(a => {
       a.addEventListener('click', function(e) {
         const href = this.getAttribute('href');
         if (href === '#') return;
         const id = href.slice(1);
         const el = document.getElementById(id);
-        if (el) { e.preventDefault(); el.scrollIntoView({ behavior: 'smooth' }); }
+        if (el) {
+          e.preventDefault();
+          el.scrollIntoView({ behavior: 'smooth' });
+          setTimeout(function() { window.location.hash = href; }, 100);
+        }
       });
     });
     (function() {
