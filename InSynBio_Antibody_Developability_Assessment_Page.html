@@ -27,8 +27,11 @@
     .nav-dropdown .dropdown-menu { position: absolute; top: 100%; left: 0; min-width: 160px; padding: 6px 0; background: var(--bg); border: 1px solid var(--border); border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.08); opacity: 0; visibility: hidden; transform: translateY(-4px); transition: all 0.2s; z-index: 100; }
     .nav-dropdown:hover .dropdown-menu,
     .nav-dropdown:focus-within .dropdown-menu { opacity: 1; visibility: visible; transform: translateY(0); }
-    .nav-dropdown .dropdown-menu a { display: block; padding: 10px 16px; font-size: 14px; color: var(--text); border-radius: 0; white-space: nowrap; }
-    .nav-dropdown .dropdown-menu a:hover { background: var(--bg-alt); color: var(--primary); }
+    .nav-dropdown .dropdown-menu a { display: block; padding: 10px 16px; color: var(--text); text-decoration: none; line-height: 1.4; border-radius: 0; white-space: normal; }
+    .nav-dropdown .dropdown-menu a:hover { background: var(--bg-alt); }
+    .nav-dropdown .dropdown-menu a .menu-title { display: block; font-weight: 600; font-size: 14px; color: var(--text); }
+    .nav-dropdown .dropdown-menu a:hover .menu-title { color: var(--primary); }
+    .nav-dropdown .dropdown-menu a .menu-desc { display: block; font-size: 12px; color: var(--text-muted); font-weight: 400; margin-top: 2px; }
     .top-header-nav a.cta { background: var(--primary); color: #fff; font-weight: 500; }
     .top-header-nav a.cta:hover { background: var(--primary-dark); color: #fff; }
     .top-header .header-right { display: flex; align-items: center; gap: 16px; }
@@ -103,6 +106,7 @@
     .site-footer a:hover { text-decoration: underline; }
     .mission-block { background-color: #ffffff; background-image: linear-gradient(to bottom, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0.95) 100%), url('images/hero-bg.svg'); background-size: cover; background-position: center; border-radius: 12px; padding: 32px; margin-bottom: 32px; border: 1px solid rgba(13,148,136,0.1); border-left: 4px solid var(--primary); box-shadow: 0 4px 12px rgba(13,148,136,0.05); }
     .mission-block p { margin: 0; font-size: 16px; line-height: 1.7; color: var(--text); }
+    .mission-block p + p { margin-top: 14px; }
     /* Humanization table: card layout on mobile so Technology column wraps nicely */
     @media (max-width: 768px) {
       .humanization-table-wrap { overflow: visible; border: none; }
@@ -211,10 +215,10 @@
 
       <!-- Hero / Mission -->
       <div class="mission-block">
-        <p class="lang-en">InSynBio focuses on AI-assisted drug R&amp;D. We leverage clinical and scientific literature data, combined with machine learning, to deliver AI-driven drug design and evaluation. Our approach integrates computational and experimental workflows (dry-wet combined), supporting clinical translation and drug innovation.</p>
-        <p class="lang-zh">InSynBio 专注 AI 辅助药物研发。我们基于临床与科学文献数据，结合机器学习，提供 AI 驱动的药物设计与评估。采用干湿结合方式，助力临床转化与药物创新。</p>
-        <p class="lang-en">For antibodies, we offer a full in silico pipeline from sequence to report: numbering and CDR annotation, germline retrieval, developability and immunogenicity prediction, structure modeling and interface analysis, structure-driven humanization, and affinity maturation. All deliverables are expert-reviewed and typically delivered within 3–5 business days. <a href="index.html#about">Learn more →</a></p>
-        <p class="lang-zh">在抗体方向，我们提供从序列到报告的完整 in silico 流程：编号与 CDR 注释、胚系检索、可开发性与免疫原性预测、结构建模与界面分析、结构驱动人源化及亲和力成熟。所有交付物经专家审核，通常在 3–5 个工作日内完成。<a href="index.html#about">了解更多 →</a></p>
+        <p class="lang-en"><strong>Antibody Developability Assessment:</strong> Expert-reviewed in silico pipeline from sequence to report. We provide numbering and CDR annotation, germline retrieval, developability and immunogenicity prediction, structure modeling and interface analysis, structure-driven humanization, and affinity maturation.</p>
+        <p class="lang-zh"><strong>抗体可开发性评估：</strong>专家审核的从序列到报告的 in silico 流程。我们提供编号与 CDR 注释、胚系检索、可开发性与免疫原性预测、结构建模与界面分析、结构驱动人源化及亲和力成熟。</p>
+        <p class="lang-en">InSynBio leverages clinical and scientific literature data combined with machine learning; our approach integrates computational and experimental workflows (dry-wet combined), supporting clinical translation. All deliverables are expert-reviewed and typically delivered within 3–5 business days. <a href="index.html#about">Learn more →</a></p>
+        <p class="lang-zh">InSynBio 基于临床与科学文献数据结合机器学习，采用干湿结合的计算与实验流程，助力临床转化。所有交付物经专家审核，通常在 3–5 个工作日内完成。<a href="index.html#about">了解更多 →</a></p>
       </div>
 
       <h1><span class="lang-en">Antibody Developability Assessment</span><span class="lang-zh">抗体可开发性评估</span></h1>
