@@ -41,7 +41,10 @@
     body[data-lang="zh"] .lang-en { display: none !important; }
     body[data-lang="en"] .lang-zh { display: none !important; }
 
-    .hero { padding: 72px 32px 60px; min-height: 380px; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; background-color: #ffffff; background-image: linear-gradient(to bottom, rgba(255,255,255,0.92) 0%, rgba(255,255,255,0.82) 100%), url('images/hero-bg.svg'); background-size: cover; background-position: center; }
+    .hero { padding: 0 32px 60px; min-height: auto; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; background-color: #ffffff; }
+    .hero-banner { width: 100%; max-width: 1100px; margin: 0 auto 32px; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.06); }
+    .hero-banner img { width: 100%; height: auto; display: block; object-fit: cover; max-height: 280px; }
+    .hero .hero-inner { padding-top: 24px; }
     .hero h1 { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 44px; font-weight: 700; margin: 0 0 14px; letter-spacing: -0.02em; }
     .hero .tagline { font-size: 17px; color: var(--text-muted); margin-bottom: 28px; max-width: 540px; margin-left: auto; margin-right: auto; line-height: 1.65; }
     .hero .cta-row { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
@@ -119,7 +122,9 @@
       .top-header .header-right { order: 2; margin-left: auto; }
       .top-header-nav { order: 3; width: 100%; flex: 1 1 100%; justify-content: flex-start; flex-wrap: wrap; gap: 6px; overflow-x: auto; padding-bottom: 4px; -webkit-overflow-scrolling: touch; border-top: 1px solid var(--border); padding-top: 10px; margin-top: 2px; }
       .top-header-nav a { flex-shrink: 0; font-size: 13px; padding: 6px 10px; }
-      .hero { padding: 44px 20px 36px; }
+      .hero { padding: 0 20px 36px; }
+      .hero-banner { margin-bottom: 20px; border-radius: 8px; }
+      .hero-banner img { max-height: 200px; }
       .hero h1 { font-size: 34px; }
       .section { padding: 36px 20px; }
       .workflow-steps { flex-direction: column; flex-wrap: nowrap; }
@@ -150,6 +155,7 @@
       <span class="slogan lang-zh">AI 赋能生命科学</span>
     </div>
     <nav class="top-header-nav">
+      <a href="index.html"><span class="lang-en">Home</span><span class="lang-zh">首页</span></a>
       <a href="#about"><span class="lang-en">About Us</span><span class="lang-zh">关于我们</span></a>
       <div class="nav-dropdown" tabindex="0">
         <a href="#services"><span class="lang-en">Services</span><span class="lang-zh">服务</span></a>
@@ -180,6 +186,10 @@
   </header>
 
   <section class="hero">
+    <div class="hero-banner">
+      <img src="images/hero-bg.svg" alt="" role="presentation">
+    </div>
+    <div class="hero-inner">
     <h1><span class="in">In</span><span class="syn">Syn</span><span class="bio">Bio</span></h1>
     <p class="tagline lang-en">AI-assisted drug R&D. Data from clinical and scientific literature, powered by machine learning—for drug design, evaluation, and innovation.</p>
     <p class="tagline lang-zh">AI 辅助药物研发。基于临床与科学文献数据，结合机器学习，助力药物设计、评估与创新。</p>
@@ -202,6 +212,7 @@
     <div class="cta-row">
       <a href="#services" class="btn"><span class="lang-en">Start Assessment</span><span class="lang-zh">开始项目评估</span></a>
       <a href="#contact" class="btn btn-outline"><span class="lang-en">Contact Us</span><span class="lang-zh">联系我们</span></a>
+    </div>
     </div>
   </section>
 
