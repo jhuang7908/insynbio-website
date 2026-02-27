@@ -48,6 +48,7 @@
     .main .subtitle { font-size: 17px; color: var(--text-muted); margin-bottom: 4px; }
     .main h2 { font-size: 21px; font-weight: 600; color: var(--text); margin: 36px 0 16px; padding-top: 28px; border-top: 1px solid var(--border); }
     .main h2:first-of-type { margin-top: 0; padding-top: 0; border-top: none; }
+    .main h2#library { font-size: 26px; font-weight: 700; }
     .h2-icon { display: inline-flex; align-items: center; justify-content: center; width: 32px; height: 32px; margin-right: 10px; border-radius: 8px; background: rgba(13,148,136,0.12); color: var(--primary); vertical-align: middle; }
     .main p, .main ul, .main li { margin: 0 0 16px; color: var(--text); font-size: 16px; }
     .main ul { padding-left: 24px; }
@@ -77,7 +78,7 @@
     .table-wrap { overflow-x: auto; margin: 24px 0; border-radius: 6px; border: 1px solid var(--border); }
     .main table { min-width: 100%; background: var(--bg); border-collapse: separate; border-spacing: 0; border-radius: 8px; overflow: hidden; border: 1px solid var(--border); }
     .main table th, .main table td { padding: 16px 20px; border: none; border-bottom: 1px solid var(--border); font-size: 15px; color: var(--text); text-align: left; }
-    .main table th { background: #f8fafc; font-weight: 700; color: #0f172a; text-transform: uppercase; font-size: 12px; letter-spacing: 0.05em; }
+    .main table th { background: #f8fafc; font-weight: 700; color: #0f172a; text-transform: uppercase; font-size: 14px; letter-spacing: 0.05em; }
     .main table tr:last-child td { border-bottom: none; }
     .main table tr:hover td { background-color: #f9fafb; }
     .main table th:nth-child(4), .main table td:nth-child(4) { word-break: break-word; white-space: normal; min-width: 180px; }
@@ -252,64 +253,64 @@
         </thead>
         <tbody>
           <tr>
-            <td><span class="lang-en"><strong>1. Binders</strong></span><span class="lang-zh"><strong>1. 结合域</strong></span></td>
+            <td><span class="lang-en"><strong>Binders</strong></span><span class="lang-zh"><strong>结合域</strong></span></td>
             <td><span class="lang-en">Target recognition</span><span class="lang-zh">靶向识别</span></td>
-            <td>scFv (FMC63, Trastuzumab, 14G2a, SS1, m971, 4D5, 225), Humanized scFv, Fab Fragments</td>
-            <td>VHH/Nanobody (Solid Tumor), TCR-mimic (WT1, KRAS, NY-ESO-1, MAGE-A4), Centyrins, DARPins, Ligand-based (IL-13, APRIL), Computational Mask Design (FTO-Focused), Peptide Binders</td>
+            <td><span class="lang-en">scFv (FMC63, Trastuzumab, 14G2a, SS1, m971, 4D5, 225), Humanized scFv, Fab Fragments</span><span class="lang-zh">scFv (FMC63, Trastuzumab, 14G2a, SS1, m971, 4D5, 225)、人源化 scFv、Fab 片段</span></td>
+            <td><span class="lang-en">VHH/Nanobody (Solid Tumor), TCR-mimic (WT1, KRAS, NY-ESO-1, MAGE-A4), Centyrins, DARPins, Ligand-based (IL-13, APRIL), Computational Mask Design (FTO-Focused), Peptide Binders</span><span class="lang-zh">VHH/纳米抗体 (实体瘤)、TCR 模拟 (WT1, KRAS, NY-ESO-1, MAGE-A4)、Centyrins、DARPins、配体类 (IL-13, APRIL)、计算 Mask 设计 (FTO)、多肽 Binder</span></td>
           </tr>
           <tr>
-            <td><span class="lang-en"><strong>2. Hinge</strong></span><span class="lang-zh"><strong>2. 铰链域</strong></span></td>
+            <td><span class="lang-en"><strong>Hinge</strong></span><span class="lang-zh"><strong>铰链域</strong></span></td>
             <td><span class="lang-en">Epitope distance matching</span><span class="lang-zh">表位距离匹配</span></td>
-            <td>CD8α Short (45aa), IgG4 Long (228aa), CD28 Medium, IgG1 Hinge</td>
-            <td>IgG4-SPLE (Fc-Null/S228P), Auto-Hinge (AI-Matched), IgD Hinge (Protease Resistant), CD8α-Long (119aa), Synthetic Flexible Linkers, Rigid EAAAK Linkers</td>
+            <td><span class="lang-en">CD8α Short (45aa), IgG4 Long (228aa), CD28 Medium, IgG1 Hinge</span><span class="lang-zh">CD8α 短 (45aa)、IgG4 长 (228aa)、CD28 中、IgG1 铰链</span></td>
+            <td><span class="lang-en">IgG4-SPLE (Fc-Null/S228P), Auto-Hinge (AI-Matched), IgD Hinge (Protease Resistant), CD8α-Long (119aa), Synthetic Flexible Linkers, Rigid EAAAK Linkers</span><span class="lang-zh">IgG4-SPLE (Fc 空/S228P)、Auto-Hinge (AI 匹配)、IgD 铰链 (抗蛋白酶)、CD8α-长 (119aa)、合成柔性连接子、刚性 EAAAK 连接子</span></td>
           </tr>
           <tr>
-            <td><span class="lang-en"><strong>3. Transmembrane</strong></span><span class="lang-zh"><strong>3. 跨膜域</strong></span></td>
+            <td><span class="lang-en"><strong>Transmembrane</strong></span><span class="lang-zh"><strong>跨膜域</strong></span></td>
             <td><span class="lang-en">Anchoring & signaling threshold</span><span class="lang-zh">膜锚定与信号阈值</span></td>
-            <td>CD8α TM (Low tonic), CD28 TM (Lipid raft), CD4 TM</td>
-            <td>NKG2D TM (NK Optimization), DAP10 TM, DAP12 TM, ICOS TM, OX40 TM, In Vivo Optimized TM (LNP-compatible)</td>
+            <td><span class="lang-en">CD8α TM (Low tonic), CD28 TM (Lipid raft), CD4 TM</span><span class="lang-zh">CD8α 跨膜 (低基底)、CD28 跨膜 (脂筏)、CD4 跨膜</span></td>
+            <td><span class="lang-en">NKG2D TM (NK Optimization), DAP10 TM, DAP12 TM, ICOS TM, OX40 TM, In Vivo Optimized TM (LNP-compatible)</span><span class="lang-zh">NKG2D 跨膜 (NK 优化)、DAP10/DAP12/ICOS/OX40 跨膜、体内优化跨膜 (LNP 兼容)</span></td>
           </tr>
           <tr>
-            <td><span class="lang-en"><strong>4. Co-stimulatory</strong></span><span class="lang-zh"><strong>4. 共刺激域</strong></span></td>
+            <td><span class="lang-en"><strong>Co-stimulatory</strong></span><span class="lang-zh"><strong>共刺激域</strong></span></td>
             <td><span class="lang-en">Metabolism & Persistence</span><span class="lang-zh">代谢与持久性</span></td>
-            <td>4-1BB (Mitochondrial), CD28 (Glycolytic)</td>
-            <td>OX40 (CD134), ICOS (Th17/Th1), 2B4 (CD244), DAP10, CD27, GITR, HVEM, CD40, MyD88, TLR2, 4-1BBL (Self-Driving)</td>
+            <td><span class="lang-en">4-1BB (Mitochondrial), CD28 (Glycolytic)</span><span class="lang-zh">4-1BB (线粒体)、CD28 (糖酵解)</span></td>
+            <td><span class="lang-en">OX40 (CD134), ICOS (Th17/Th1), 2B4 (CD244), DAP10, CD27, GITR, HVEM, CD40, MyD88, TLR2, 4-1BBL (Self-Driving)</span><span class="lang-zh">OX40、ICOS、2B4、DAP10、CD27、GITR、HVEM、CD40、MyD88、TLR2、4-1BBL (自驱动)</span></td>
           </tr>
           <tr>
-            <td><span class="lang-en"><strong>5. Activation</strong></span><span class="lang-zh"><strong>5. 激活域</strong></span></td>
+            <td><span class="lang-en"><strong>Activation</strong></span><span class="lang-zh"><strong>激活域</strong></span></td>
             <td><span class="lang-en">Killing signal</span><span class="lang-zh">杀伤信号</span></td>
-            <td>CD3ζ (3x ITAM)</td>
-            <td>DAP12 (CAR-NK/Macrophage), FcR-γ (Phagocytosis), CD3ε (Recruitment), ZAP70 recruitment motifs, 1XX (Calibrated ITAMs)</td>
+            <td><span class="lang-en">CD3ζ (3x ITAM)</span><span class="lang-zh">CD3ζ (3× ITAM)</span></td>
+            <td><span class="lang-en">DAP12 (CAR-NK/Macrophage), FcR-γ (Phagocytosis), CD3ε (Recruitment), ZAP70 recruitment motifs, 1XX (Calibrated ITAMs)</span><span class="lang-zh">DAP12 (CAR-NK/巨噬细胞)、FcR-γ (吞噬)、CD3ε (招募)、ZAP70 招募 motif、1XX (校准 ITAM)</span></td>
           </tr>
           <tr>
-            <td><span class="lang-en"><strong>6. Armored Payloads</strong></span><span class="lang-zh"><strong>6. 铠甲载荷</strong></span></td>
+            <td><span class="lang-en"><strong>Armored Payloads</strong></span><span class="lang-zh"><strong>铠甲载荷</strong></span></td>
             <td><span class="lang-en">TME remodeling & Resistance</span><span class="lang-zh">TME 重塑与抵抗</span></td>
-            <td>Secreted IL-12 (TRUCK), Constitutive IL-15</td>
-            <td>TGFB_DNR (Anti-Suppression), Membrane_IL15/IL-21, GPX4_Enhanced (Anti-Ferroptosis), IL-7/CCL19 (7x19), c-JUN, HPSE (Heparanase), scFv-PD1 blocker, BiTE secretion</td>
+            <td><span class="lang-en">Secreted IL-12 (TRUCK), Constitutive IL-15</span><span class="lang-zh">分泌型 IL-12 (TRUCK)、组成型 IL-15</span></td>
+            <td><span class="lang-en">TGFB_DNR (Anti-Suppression), Membrane_IL15/IL-21, GPX4_Enhanced (Anti-Ferroptosis), IL-7/CCL19 (7x19), c-JUN, HPSE (Heparanase), scFv-PD1 blocker, BiTE secretion</span><span class="lang-zh">TGFB_DNR (抗抑制)、膜锚定 IL-15/IL-21、GPX4_Enhanced (抗铁死亡)、IL-7/CCL19 (7x19)、c-JUN、HPSE、scFv-PD1 阻断、BiTE 分泌</span></td>
           </tr>
           <tr>
-            <td><span class="lang-en"><strong>7. Safety Switches</strong></span><span class="lang-zh"><strong>7. 安全开关</strong></span></td>
+            <td><span class="lang-en"><strong>Safety Switches</strong></span><span class="lang-zh"><strong>安全开关</strong></span></td>
             <td><span class="lang-en">Controllable elimination</span><span class="lang-zh">可控清除</span></td>
-            <td>tEGFR (Cetuximab), CD20 Mimotope (Rituximab)</td>
-            <td>iCasp9 (Small Molecule, >95%), RQR8 (Dual Tag), Rapamycin-ON, Lenalidomide-ON, HSV-TK, TMPD-inducible</td>
+            <td><span class="lang-en">tEGFR (Cetuximab), CD20 Mimotope (Rituximab)</span><span class="lang-zh">tEGFR (西妥昔单抗清除)、CD20 拟态表位 (利妥昔单抗清除)</span></td>
+            <td><span class="lang-en">iCasp9 (Small Molecule, >95%), RQR8 (Dual Tag), Rapamycin-ON, Lenalidomide-ON, HSV-TK, TMPD-inducible</span><span class="lang-zh">iCasp9 (小分子, >95%)、RQR8 (双标签)、Rapamycin-ON、Lenalidomide-ON、HSV-TK、TMPD 诱导</span></td>
           </tr>
           <tr>
-            <td><span class="lang-en"><strong>8. Logic Gates</strong></span><span class="lang-zh"><strong>8. 逻辑门控</strong></span></td>
+            <td><span class="lang-en"><strong>Logic Gates</strong></span><span class="lang-zh"><strong>逻辑门控</strong></span></td>
             <td><span class="lang-en">Specificity control (AND/NOT)</span><span class="lang-zh">特异性控制</span></td>
-            <td>Tandem CAR (OR Gate)</td>
-            <td>SynNotch (AND Gate), iCAR (NOT Gate/PD-1/CTLA-4), Split CAR (Dimerization), LOCKR (Protein Switch), CLIP-CAR, Universal CAR (BBIR)</td>
+            <td><span class="lang-en">Tandem CAR (OR Gate)</span><span class="lang-zh">串联 CAR (OR 门)</span></td>
+            <td><span class="lang-en">SynNotch (AND Gate), iCAR (NOT Gate/PD-1/CTLA-4), Split CAR (Dimerization), LOCKR (Protein Switch), CLIP-CAR, Universal CAR (BBIR)</span><span class="lang-zh">SynNotch (AND 门)、iCAR (NOT 门/PD-1/CTLA-4)、Split CAR (二聚化)、LOCKR、CLIP-CAR、通用 CAR (BBIR)</span></td>
           </tr>
           <tr>
-            <td><span class="lang-en"><strong>9. Regulatory</strong></span><span class="lang-zh"><strong>9. 调控元件</strong></span></td>
+            <td><span class="lang-en"><strong>Regulatory</strong></span><span class="lang-zh"><strong>调控元件</strong></span></td>
             <td><span class="lang-en">Expression control</span><span class="lang-zh">表达控制</span></td>
-            <td>EF1α Promoter, PGK Promoter, WPRE</td>
-            <td>NFAT_Response (Inducible), UCOE (Anti-Silencing), Tet-On/Tet-Off, SFFV, CMV, SV40, EFS (Compact), JeT promoter</td>
+            <td><span class="lang-en">EF1α Promoter, PGK Promoter, WPRE</span><span class="lang-zh">EF1α 启动子、PGK 启动子、WPRE</span></td>
+            <td><span class="lang-en">NFAT_Response (Inducible), UCOE (Anti-Silencing), Tet-On/Tet-Off, SFFV, CMV, SV40, EFS (Compact), JeT promoter</span><span class="lang-zh">NFAT_Response (诱导型)、UCOE (抗沉默)、Tet-On/Tet-Off、SFFV、CMV、SV40、EFS (紧凑)、JeT 启动子</span></td>
           </tr>
           <tr>
-            <td><span class="lang-en"><strong>10. Leaders & Linkers</strong></span><span class="lang-zh"><strong>10. 信号肽与连接子</strong></span></td>
+            <td><span class="lang-en"><strong>Leaders & Linkers</strong></span><span class="lang-zh"><strong>信号肽与连接子</strong></span></td>
             <td><span class="lang-en">Secretion & Flexibility</span><span class="lang-zh">分泌与柔性</span></td>
-            <td>CD8α SP, GM-CSF SP, G4S (Flexible)</td>
-            <td>IL-2 SP (Secretion), Gaussia SP, EAAAK3 (Rigid), Whitlow Linker, 218 Linker, XTEN, Furin-P2A/T2A/E2A/F2A</td>
+            <td><span class="lang-en">CD8α SP, GM-CSF SP, G4S (Flexible)</span><span class="lang-zh">CD8α 信号肽、GM-CSF 信号肽、G4S (柔性)</span></td>
+            <td><span class="lang-en">IL-2 SP (Secretion), Gaussia SP, EAAAK3 (Rigid), Whitlow Linker, 218 Linker, XTEN, Furin-P2A/T2A/E2A/F2A</span><span class="lang-zh">IL-2 信号肽、Gaussia 信号肽、EAAAK3 (刚性)、Whitlow/218 连接子、XTEN、Furin-P2A/T2A/E2A/F2A</span></td>
           </tr>
         </tbody>
       </table>
