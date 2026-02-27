@@ -77,9 +77,10 @@
     .table-wrap { overflow-x: auto; margin: 24px 0; border-radius: 6px; border: 1px solid var(--border); }
     .main table { min-width: 100%; background: var(--bg); border-collapse: separate; border-spacing: 0; border-radius: 8px; overflow: hidden; border: 1px solid var(--border); }
     .main table th, .main table td { padding: 16px 20px; border: none; border-bottom: 1px solid var(--border); font-size: 15px; color: var(--text); text-align: left; }
-    .main table th { background: #f8fafc; font-weight: 600; color: var(--text-muted); text-transform: uppercase; font-size: 12px; letter-spacing: 0.05em; }
+    .main table th { background: #f8fafc; font-weight: 700; color: #0f172a; text-transform: uppercase; font-size: 12px; letter-spacing: 0.05em; }
     .main table tr:last-child td { border-bottom: none; }
     .main table tr:hover td { background-color: #f9fafb; }
+    .main table th:nth-child(4), .main table td:nth-child(4) { word-break: break-word; white-space: normal; min-width: 180px; }
     .main table .status-link { display: inline-block; font-size: 12px; font-weight: 600; color: var(--primary); background: rgba(13,148,136,0.08); padding: 2px 9px; border-radius: 20px; text-decoration: none; }
     .main table .status-link:hover { background: rgba(13,148,136,0.15); color: var(--primary-dark); }
     .disclaimer { font-size: 14px; color: var(--text-muted); font-style: italic; margin-top: 12px; padding: 12px 16px; background: #fffbeb; border-left: 4px solid #f59e0b; border-radius: 0 6px 6px 0; }
@@ -243,10 +244,10 @@
       <table style="width:100%; border-collapse: collapse; font-size: 13px;">
         <thead>
           <tr>
-            <th style="width: 12%;"><span class="lang-en">Category</span><span class="lang-zh">类别</span></th>
-            <th style="width: 18%;"><span class="lang-en">Function</span><span class="lang-zh">功能</span></th>
-            <th style="width: 35%;"><span class="lang-en">Clinical Standards (Validated)</span><span class="lang-zh">临床标准 (已验证)</span></th>
-            <th style="width: 35%;"><span class="lang-en">Frontier Modalities (Emerging)</span><span class="lang-zh">前沿模态 (新兴)</span></th>
+            <th style="width: 11%;"><span class="lang-en">Category</span><span class="lang-zh">类别</span></th>
+            <th style="width: 16%;"><span class="lang-en">Function</span><span class="lang-zh">功能</span></th>
+            <th style="width: 32%;"><span class="lang-en">Clinical Standards (Validated)</span><span class="lang-zh">临床标准 (已验证)</span></th>
+            <th style="width: 41%; min-width: 200px;"><span class="lang-en">Frontier Modalities (Emerging)</span><span class="lang-zh">前沿模态 (新兴)</span></th>
           </tr>
         </thead>
         <tbody>
@@ -329,8 +330,13 @@
         <tbody>
           <tr>
             <td><strong><span class="lang-en">Solid Tumors (e.g., HCC, Gastric)</span><span class="lang-zh">实体瘤 (如肝癌、胃癌)</span></strong></td>
-            <td><span class="lang-en"><strong>Physical Exclusion</strong> (ECM) & <strong>Immunosuppression</strong> (TGF-β)</span><span class="lang-zh"><strong>物理排斥</strong> (ECM) & <strong>免疫抑制</strong> (TGF-β)</span></td>
-            <td><span class="lang-en"><strong>Matrix-Degrading Synergy:</strong> CAR-M (Macrophage) to degrade ECM + CAR-T armored with <strong>TGFB_DNR</strong> to resist suppression.</span><span class="lang-zh"><strong>基质降解协同：</strong> CAR-M (巨噬细胞) 降解 ECM + 装备 <strong>TGFB_DNR</strong> 的 CAR-T 以抵抗抑制。</span></td>
+            <td><span class="lang-en"><strong>Physical Exclusion</strong> (ECM), <strong>Immunosuppression</strong> (TGF-β) & <strong>On-Target Off-Tumor</strong></span><span class="lang-zh"><strong>物理排斥</strong> (ECM)、<strong>免疫抑制</strong> (TGF-β) 与 <strong>脱靶毒性 (on-target off-tumor)</strong></span></td>
+            <td><span class="lang-en"><strong>Matrix-Degrading Synergy:</strong> CAR-M to degrade ECM + CAR-T armored with <strong>TGFB_DNR</strong>. <strong>Affinity Tuning</strong> (lower Kd on normal-tissue antigens) and <strong>Logic-Gated</strong> recognition to spare healthy tissue.</span><span class="lang-zh"><strong>基质降解协同：</strong> CAR-M 降解 ECM + 装备 <strong>TGFB_DNR</strong> 的 CAR-T。<strong>亲和力调优</strong> 与 <strong>逻辑门控</strong> 识别以保护正常组织。</span></td>
+          </tr>
+          <tr>
+            <td><strong><span class="lang-en">Hematologic / Liquid Tumors (e.g., B-ALL, LBCL)</span><span class="lang-zh">血液瘤 / 液体瘤 (如 B-ALL、LBCL)</span></strong></td>
+            <td><span class="lang-en"><strong>Cytokine Storm (CRS)</strong> & <strong>B-cell Aplasia</strong></span><span class="lang-zh"><strong>细胞因子风暴 (CRS)</strong> 与 <strong>B 细胞再生障碍</strong></span></td>
+            <td><span class="lang-en"><strong>4-1BB-Dominant</strong> (reduced CRS vs CD28), <strong>Safety Switches</strong> (tEGFR, iCasp9) for controllable elimination, <strong>Tuned Affinity</strong> and dose to balance efficacy and toxicity.</span><span class="lang-zh"><strong>4-1BB 主导</strong> (较 CD28 降低 CRS)、<strong>安全开关</strong> (tEGFR, iCasp9) 可控清除、<strong>亲和力与剂量调优</strong> 平衡疗效与毒性。</span></td>
           </tr>
           <tr>
             <td><strong><span class="lang-en">AML / Myeloid Malignancies</span><span class="lang-zh">AML / 髓系恶性肿瘤</span></strong></td>
