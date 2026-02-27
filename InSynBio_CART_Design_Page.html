@@ -177,6 +177,7 @@
         <a href="#library" class="nav-link"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg><span class="lang-en">Component Library</span><span class="lang-zh">元件库</span></a>
         <a href="#strategy" class="nav-link"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg><span class="lang-en">Disease Strategy</span><span class="lang-zh">疾病策略</span></a>
         <a href="#engineering" class="nav-link"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg><span class="lang-en">Engineering</span><span class="lang-zh">工程化模块</span></a>
+        <a href="#example" class="nav-link"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/></svg><span class="lang-en">Case Study</span><span class="lang-zh">设计示例</span></a>
         <a href="#safety" class="nav-link"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg><span class="lang-en">Safety & Efficacy</span><span class="lang-zh">安全与有效性</span></a>
         <a href="#full-report" class="nav-link"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg><span class="lang-en">Full Report</span><span class="lang-zh">完整报告</span></a>
         <a href="#submit" class="nav-link"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg><span class="lang-en">Submit Inquiry</span><span class="lang-zh">提交咨询</span></a>
@@ -207,12 +208,14 @@
         <li><strong>Antigen Knowledge Base</strong> — A continuously updated database of <strong>common epitopes</strong>, antigen density thresholds, and heterogeneity profiles to guide precise design.</li>
         <li><strong>Smart Vector Logic</strong> — Algorithmic selection between <strong>Lentiviral</strong> (Standard), <strong>Non-Viral/Transposon</strong> (Large Payload), and <strong>In Vivo LNP</strong> (Accessibility) based on clinical needs.</li>
         <li><strong>Epitope-Hinge Matching</strong> — We measure epitope-to-membrane distance using <strong>AlphaFold2</strong> to select the precise Hinge length (Short/Medium/Long).</li>
+        <li><strong>Kinetic Engineering</strong> — We tune Binder affinity (Kd) and off-rates (koff) via computational mutagenesis. We increase affinity for low-density targets, but tune it down for targets like HER2 to spare normal tissues, while ensuring fast dissociation to prevent exhaustion.</li>
         <li><strong>Density-Signaling Logic</strong> — We analyze antigen density to select the optimal Transmembrane (CD8α vs CD28) and Signaling domains (4-1BB vs CD28).</li>
       </ul>
       <ul class="lang-zh">
         <li><strong>抗原知识库</strong> — 维护持续更新的数据库，包含<strong>常见表位</strong>、抗原密度阈值及异质性图谱，指导精准设计。</li>
         <li><strong>智能载体逻辑</strong> — 根据临床需求算法化选择：<strong>慢病毒</strong> (标准)、<strong>非病毒/转座子</strong> (大载荷) 或 <strong>体内 LNP</strong> (可及性)。</li>
         <li><strong>表位-铰链匹配</strong> — 利用 <strong>AlphaFold2</strong> 测量表位到细胞膜的距离，精准选择铰链长度（短/中/长）。</li>
+        <li><strong>动力学工程</strong> — 通过计算突变优化 Binder 亲和力 (Kd) 与解离速率 (koff)。针对低密度靶点提升亲和力；针对 HER2 等靶点下调亲和力以保护正常组织；同时确保快速解离以防止耗竭。</li>
         <li><strong>密度-信号逻辑</strong> — 分析抗原密度，选择最优的跨膜域（CD8α vs CD28）与信号域（4-1BB vs CD28）。</li>
       </ul>
 
@@ -340,6 +343,7 @@
         <li><strong>Hinge & TM</strong> — <strong>Auto-Hinge</strong> selection (Short/Medium/Long) matching epitope distance; <strong>CD8α TM</strong> (Low tonic signaling) vs <strong>CD28 TM</strong> (Lipid raft clustering).</li>
         <li><strong>Signaling</strong> — <strong>4-1BB</strong> (Persistence/Memory) vs <strong>CD28</strong> (Rapid activation/Effector).</li>
         <li><strong>Armoring (Payloads)</strong> — <strong>TGFB_DNR</strong> (Anti-suppression), <strong>Membrane_IL15</strong> (Persistence), <strong>GPX4</strong> (Anti-ferroptosis), <strong>Secreted IL-12</strong> (TRUCK).</li>
+        <li><strong>Affinity Tuning</strong> — Computational mutagenesis to tune Kd (e.g., lowering affinity for HER2 to spare normal tissue) and k_off (preventing exhaustion).</li>
         <li><strong>Vector & Capacity</strong> — <strong>Compact VHH</strong> designs to save payload space; <strong>PiggyBac Transposon</strong> support for ultra-large constructs (>10kb) surpassing lentiviral limits.</li>
       </ul>
       <ul class="lang-zh">
@@ -347,8 +351,60 @@
         <li><strong>铰链与跨膜 (Hinge & TM)</strong> — <strong>Auto-Hinge</strong> 选型（短/中/长）匹配表位距离；<strong>CD8α TM</strong> (低基底信号) vs <strong>CD28 TM</strong> (脂筏聚集)。</li>
         <li><strong>信号域 (Signaling)</strong> — <strong>4-1BB</strong> (持久性/记忆) vs <strong>CD28</strong> (快速激活/效应)。</li>
         <li><strong>铠甲 (Armoring)</strong> — <strong>TGFB_DNR</strong> (抗抑制), <strong>Membrane_IL15</strong> (持久性), <strong>GPX4</strong> (抗铁死亡), <strong>分泌型 IL-12</strong> (TRUCK)。</li>
+        <li><strong>亲和力优化 (Affinity Tuning)</strong> — 提供 Kd/koff 微调的计算突变服务（如针对 HER2 下调亲和力以保护正常组织，或调整解离速率防止耗竭）。</li>
         <li><strong>载体与容量 (Vector & Capacity)</strong> — <strong>紧凑型 VHH</strong> 设计节省载荷空间；支持 <strong>PiggyBac 转座子</strong> 系统，突破慢病毒限制，承载超大构建体 (>10kb)。</li>
       </ul>
+
+      <h2 id="example"><span class="h2-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/></svg></span><span class="lang-en">Design Example: GPC3 CAR-T Logic Trace</span><span class="lang-zh">设计示例：GPC3 CAR-T 智慧推演</span></h2>
+      <p class="lang-en">The ACTES engine doesn't just pick parts; it reasons through the biology. Here is the deduction process for a Hepatocellular Carcinoma (HCC) project.</p>
+      <p class="lang-zh">ACTES 引擎不仅是选择元件，更是在进行生物学推理。以下是针对肝细胞癌（HCC）项目的逻辑推演过程。</p>
+      
+      <div class="logic-box" style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 24px; font-family: 'Inter', sans-serif;">
+        <div style="border-bottom: 1px solid #e2e8f0; padding-bottom: 12px; margin-bottom: 16px;">
+            <strong style="color: var(--primary); font-size: 14px; text-transform: uppercase;">Input Parameters</strong><br>
+            <span style="font-family: monospace; color: var(--text-muted);">Target: GPC3 | Indication: Solid Tumor (HCC) | Delivery: Lentiviral</span>
+        </div>
+
+        <div class="step" style="margin-bottom: 16px;">
+            <strong style="color: #0f172a;">Step 1: Structural Topology Analysis</strong><br>
+            <span style="color: var(--text-muted); font-size: 14px;">• Query: Where is the epitope located on GPC3?</span><br>
+            <span style="color: var(--primary); font-weight: 500; font-size: 14px;">→ Result: Membrane Proximal (&lt; 5nm distance).</span><br>
+            <div style="background: rgba(13,148,136,0.1); padding: 8px 12px; border-radius: 6px; margin-top: 6px; font-size: 13px; color: var(--primary-dark);">
+                <strong>💡 AI Decision:</strong> Enforce <strong>CD8α Short Hinge</strong>. <br>
+                <em>Reasoning: A Long Hinge (e.g., IgG4) would push the CAR too far from the target, preventing effective immunological synapse formation.</em>
+            </div>
+        </div>
+
+        <div class="step" style="margin-bottom: 16px;">
+            <strong style="color: #0f172a;">Step 2: TME Counter-Strategy</strong><br>
+            <span style="color: var(--text-muted); font-size: 14px;">• Query: What are the suppression factors in HCC?</span><br>
+            <span style="color: var(--primary); font-weight: 500; font-size: 14px;">→ Result: High TGF-β + Hypoxia.</span><br>
+            <div style="background: rgba(13,148,136,0.1); padding: 8px 12px; border-radius: 6px; margin-top: 6px; font-size: 13px; color: var(--primary-dark);">
+                <strong>💡 AI Decision:</strong> Add <strong>TGFB_DNR</strong> (Dominant Negative Receptor). <br>
+                <em>Reasoning: Shields CAR-T from TGF-β inhibition, converting the "stop" signal into a survival advantage.</em>
+            </div>
+        </div>
+
+        <div class="step" style="margin-bottom: 16px;">
+            <strong style="color: #0f172a;">Step 3: Safety & Toxicity</strong><br>
+            <span style="color: var(--text-muted); font-size: 14px;">• Query: Is GPC3 expressed on normal tissues?</span><br>
+            <span style="color: var(--primary); font-weight: 500; font-size: 14px;">→ Result: Low expression on normal liver/lung.</span><br>
+            <div style="background: rgba(13,148,136,0.1); padding: 8px 12px; border-radius: 6px; margin-top: 6px; font-size: 13px; color: var(--primary-dark);">
+                <strong>💡 AI Decision:</strong> Equip <strong>iCasp9 Safety Switch</strong>. <br>
+                <em>Reasoning: Mandatory fail-safe to terminate therapy in case of severe on-target/off-tumor toxicity.</em>
+            </div>
+        </div>
+
+        <div class="step">
+            <strong style="color: #0f172a;">Step 4: Kinetics Tuning</strong><br>
+            <span style="color: var(--text-muted); font-size: 14px;">• Query: Risk of exhaustion in solid tumor?</span><br>
+            <span style="color: var(--primary); font-weight: 500; font-size: 14px;">→ Result: High. Requires serial killing persistence.</span><br>
+            <div style="background: rgba(13,148,136,0.1); padding: 8px 12px; border-radius: 6px; margin-top: 6px; font-size: 13px; color: var(--primary-dark);">
+                <strong>💡 AI Decision:</strong> Optimize for <strong>Fast Off-Rate (koff)</strong>. <br>
+                <em>Reasoning: Prevents chronic signaling and exhaustion, allowing CAR-T cells to detach and engage multiple tumor targets sequentially.</em>
+            </div>
+        </div>
+      </div>
 
       <h2 id="safety"><span class="h2-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></span><span class="lang-en">Safety & Efficacy</span><span class="lang-zh">安全与有效性</span></h2>
       <p class="lang-en">Safety is engineered into the sequence, not just monitored in the clinic.</p>
@@ -481,7 +537,7 @@
         this.classList.add('active');
       });
     });
-    const sections = ['platform','library','strategy','engineering','safety','full-report','submit','contact'];
+    const sections = ['platform','library','strategy','engineering','example','safety','full-report','submit','contact'];
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (!entry.isIntersecting) return;
