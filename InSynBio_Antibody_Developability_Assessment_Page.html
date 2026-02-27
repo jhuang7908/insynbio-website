@@ -35,6 +35,9 @@
     .top-header-nav a.active { background: var(--primary); color: #fff; font-weight: 500; }
     .top-header-nav a.active:hover,
     .top-header-nav a.active:focus { background: var(--primary-dark); color: #fff; }
+    .top-header-nav a[href="index.html"],
+    .top-header-nav a[href="index.html"].active { background: transparent; color: var(--text-muted); }
+    .top-header-nav a[href="index.html"]:hover { color: var(--primary); background: var(--bg-alt); }
     .top-header .header-right { display: flex; align-items: center; gap: 16px; }
     .top-header .lang-switch { margin: 0; }
     .page-wrap { display: flex; min-height: calc(100vh - 57px); }

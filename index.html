@@ -34,6 +34,9 @@
     .top-header-nav a.active { background: var(--primary); color: #fff; font-weight: 500; }
     .top-header-nav a.active:hover,
     .top-header-nav a.active:focus { background: var(--primary-dark); color: #fff; }
+    .top-header-nav a[href="index.html"],
+    .top-header-nav a[href="index.html"].active { background: transparent; color: var(--text-muted); }
+    .top-header-nav a[href="index.html"]:hover { color: var(--primary); background: var(--bg-alt); }
     .header-right { display: flex; align-items: center; gap: 16px; }
     .lang-switch { display: flex; gap: 4px; }
     .lang-switch button { padding: 6px 12px; font-size: 13px; border: 1px solid var(--border); background: var(--bg); color: var(--text-muted); border-radius: 6px; cursor: pointer; font-family: 'Noto Sans SC', 'Inter', sans-serif; transition: all 0.2s; }
