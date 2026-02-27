@@ -10,6 +10,7 @@
 |------|------|------|------|
 | **scripts/scfv_like_50_linker_anarci_esmfold.py** | Linker 识别、ANARCI、导出 ESMFold 用 FASTA | CSV/Excel（抗体 ID + 序列） | `linker_split_results.json`、**esmfold_input.fasta** |
 | **scripts/run_esmfold_batch_from_fasta.py** | 从 FASTA 批量调用 ESMFold（API 或本地） | 任意 FASTA（单链，如 VH-linker-VL） | 每条序列一个 PDB + 可选 summary CSV |
+| **scripts/run_esmfold_lunsekimig.py** | Lunsekimig (VHH) 造模并输出到 84 条 scFv 同目录 | CSV（antibody_id, sequence） | 同上目录下 `Lunsekimig1.pdb` 等 |
 
 - 84 条「两边有抗体结构」的 FASTA：`data/design_rules/multispecific_linker_pipeline/esmfold_input_two_sided_84.fasta`  
 - 用 84 条造模示例：见下文「84 条批量造模」。
@@ -59,6 +60,24 @@ python scripts/run_esmfold_batch_from_fasta.py \
 ```
 
 或沿用项目内 API 逻辑：读 FASTA（id + 单链序列），对每条 `requests.post("https://api.esmatlas.com/foldSequence/v1/pdb/", data=sequence)`，保存为 `{id}.pdb`（参考上述 `run_esmfold.py`）。
+
+---
+
+## 3.1 Lunsekimig（VHH/nanobody）与 84 条 scFv 放一起造模
+
+**Lunsekimig (SAR443765)** 为抗 TSLP/IL-13 的 NANOBODY®，仅重链（VH-only），可与上述 84 条 VH-linker-VL scFv 一起用 ESMFold 造模，PDB 写入同一目录。
+
+1. **序列来源**：Thera-SAbDab 导出或文献；Lunsekimig1、Lunsekimig2（及可选 Lunsekimig3）各一条重链序列。
+2. **填写 CSV**：`data/design_rules/lunsekimig_esmfold_sequences.csv`，列 `antibody_id`, `sequence`。
+3. **运行**（默认输出到 84 条同目录）：
+
+```bash
+python scripts/run_esmfold_lunsekimig.py
+# 或指定 CSV / 输出目录 / API 或 local
+python scripts/run_esmfold_lunsekimig.py --csv data/design_rules/lunsekimig_esmfold_sequences.csv --out-dir data/design_rules/multispecific_linker_pipeline/esmfold_predictions --method api
+```
+
+脚本会生成 `esmfold_input_lunsekimig.fasta` 并调用 `run_esmfold_batch_from_fasta.py`，产出的 `Lunsekimig1.pdb`、`Lunsekimig2.pdb` 等与 84 条 scFv 的 PDB 同处 `esmfold_predictions/`。
 
 ---
 
