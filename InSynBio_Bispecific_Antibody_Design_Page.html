@@ -5,6 +5,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="InSynBio Bispecific Antibody Engineering Platform — AI-driven design for multispecifics. Nano-Convert (VH-to-VHH), SmartLink optimization, and Virtual CMC for IgG-like pairing.">
   <meta name="keywords" content="bispecific antibody, multispecific, VH to VHH, nanobody, smart linker, IgG-like pairing, knob-in-hole, crossmab, antibody engineering, InSynBio">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://www.insynbio.com/InSynBio_Bispecific_Antibody_Design_Page.html">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.insynbio.com/InSynBio_Bispecific_Antibody_Design_Page.html">
+  <meta property="og:title" content="Bispecific Engineering | InSynBio — AI for Life Sciences">
+  <meta property="og:description" content="InSynBio Bispecific Antibody Engineering Platform — AI-driven design for multispecifics. Nano-Convert (VH-to-VHH), SmartLink optimization, and Virtual CMC for IgG-like pairing.">
+  <meta property="og:image" content="https://www.insynbio.com/images/hero-bg.svg">
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="https://www.insynbio.com/InSynBio_Bispecific_Antibody_Design_Page.html">
+  <meta property="twitter:title" content="Bispecific Engineering | InSynBio — AI for Life Sciences">
+  <meta property="twitter:description" content="InSynBio Bispecific Antibody Engineering Platform — AI-driven design for multispecifics. Nano-Convert (VH-to-VHH), SmartLink optimization, and Virtual CMC for IgG-like pairing.">
+  <meta property="twitter:image" content="https://www.insynbio.com/images/hero-bg.svg">
   <title>Bispecific Engineering | InSynBio — AI for Life Sciences</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -35,8 +47,10 @@
     .top-header-nav a.active { background: var(--primary); color: #fff; font-weight: 500; }
     .top-header-nav a.active:hover,
     .top-header-nav a.active:focus { background: var(--primary-dark); color: #fff; }
-    .top-header-nav a[href="index.html"],
-    .top-header-nav a[href="index.html"].active { background: transparent; color: var(--text-muted); }
+    .top-header-nav a[href="index.html"] { background: transparent; color: var(--text-muted); }
+    .top-header-nav a[href="index.html"].active { background: var(--primary); color: #fff; font-weight: 500; }
+    .top-header-nav a[href="index.html"].active:hover,
+    .top-header-nav a[href="index.html"].active:focus { background: var(--primary-dark); color: #fff; }
     .top-header-nav a[href="index.html"]:hover { color: var(--primary); background: var(--bg-alt); }
     .top-header .header-right { display: flex; align-items: center; gap: 16px; }
     .top-header 
@@ -434,7 +448,7 @@
         const btn = form.querySelector('button[type="submit"]');
         const originalText = btn.innerText;
         btn.disabled = true;
-        btn.innerText = document.body.getAttribute('data-lang') === 'zh' ? '提交中...' : 'Submitting...';
+        btn.innerText = 'Submitting...';
 
         const formData = new FormData(form);
         fetch(form.action, {

@@ -4,10 +4,12 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Thank you for contacting InSynBio. We will review your inquiry and respond within 3–5 business days.">
+  <meta name="robots" content="noindex, follow">
+  <link rel="canonical" href="https://www.insynbio.com/thanks.html">
   <title>Thank You | InSynBio</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Noto+Sans+SC:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
   <style>
     :root { --primary: #0d9488; --primary-dark: #0f766e; --text: #1f2937; --text-muted: #6b7280; --border: #e5e7eb; --bg: #ffffff; --bg-alt: #f9fafb; }
     * { box-sizing: border-box; }
@@ -26,22 +28,12 @@
     .highlight { color: var(--primary); font-weight: 500; }
     .btn { display: inline-block; margin-top: 28px; padding: 14px 28px; background: var(--primary); color: #fff; border: none; border-radius: 8px; font-size: 15px; font-weight: 500; text-decoration: none; font-family: inherit; cursor: pointer; transition: background 0.2s; }
     .btn:hover { background: var(--primary-dark); }
-    .lang-switch { position: absolute; top: 24px; right: 24px; display: flex; gap: 4px; }
-    .lang-switch button { padding: 6px 12px; font-size: 13px; border: 1px solid var(--border); background: var(--bg); color: var(--text-muted); border-radius: 6px; cursor: pointer; font-family: 'Noto Sans SC', 'Inter', sans-serif; transition: all 0.2s; }
-    .lang-switch button:hover { border-color: var(--primary); color: var(--primary); }
-    .lang-switch button.active { background: var(--primary); color: #fff; border-color: var(--primary); }
-    body[data-lang="zh"] .lang-en { display: none !important; }
-    body[data-lang="en"] .lang-zh { display: none !important; }
     .footer { margin-top: 48px; font-size: 13px; color: var(--text-muted); }
     .footer a { color: var(--primary); text-decoration: none; }
     .footer a:hover { text-decoration: underline; }
   </style>
 </head>
-<body data-lang="en">
-  <div class="lang-switch">
-    <button type="button" class="lang-btn active" data-lang="en">EN</button>
-    <button type="button" class="lang-btn" data-lang="zh">ZH</button>
-  </div>
+<body>
 
   <div class="container">
     <div class="brand-logo">
@@ -64,8 +56,7 @@
             In<span style="color: #0d9488;">Syn</span>Bio
           </span>
         </div>
-        <div class="tagline lang-en">AI for Life Sciences</div>
-        <div class="tagline lang-zh">AI 赋能生命科学</div>
+        <div class="tagline">AI for Life Sciences</div>
       </a>
     </div>
 
@@ -73,56 +64,18 @@
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
     </div>
 
-    <h1 class="lang-en">Thank You</h1>
-    <h1 class="lang-zh">感谢提交</h1>
+    <h1>Thank You</h1>
 
-    <p class="lang-en">Your inquiry has been received successfully. We will review your submission and respond within <span class="highlight">3–5 business days</span>.</p>
-    <p class="lang-zh">您的咨询已成功提交。我们将在 <span class="highlight">3–5 个工作日</span> 内审核并回复。</p>
+    <p>Your inquiry has been received successfully. We will review your submission and respond within <span class="highlight">3–5 business days</span>.</p>
 
-    <p class="lang-en" style="font-size: 14px; margin-top: 16px;">If you have a PDB file to share, please email it to <a href="mailto:contact@insynbio.com" style="color: var(--primary);">contact@insynbio.com</a> and mention your inquiry.</p>
-    <p class="lang-zh" style="font-size: 14px; margin-top: 16px;">如有 PDB 文件需发送，请发至 <a href="mailto:contact@insynbio.com" style="color: var(--primary);">contact@insynbio.com</a> 并注明您的咨询内容。</p>
+    <p style="font-size: 14px; margin-top: 16px;">If you have a PDB file to share, please email it to <a href="mailto:contact@insynbio.com" style="color: var(--primary);">contact@insynbio.com</a> and mention your inquiry.</p>
 
-    <a href="index.html" class="btn lang-en">Back to Home</a>
-    <a href="index.html" class="btn lang-zh">返回首页</a>
+    <a href="index.html" class="btn">Back to Home</a>
   </div>
 
   <div class="footer">
-    <span class="lang-en">© 2026 InSynBio · </span><span class="lang-zh">© 2026 InSynBio · </span><a href="https://insynbio.com">insynbio.com</a>
+    © 2026 InSynBio · <a href="https://insynbio.com">insynbio.com</a>
   </div>
 
-  <script>
-    (function() {
-      const KEY = 'insynbio-lang';
-      const ZH_REGIONS = ['CN', 'TW', 'HK', 'MO'];
-      function applyLang(lang) {
-        document.body.setAttribute('data-lang', lang);
-        document.querySelectorAll('.lang-btn').forEach(b => {
-          b.classList.toggle('active', b.dataset.lang === lang);
-        });
-        document.title = lang === 'zh' ? '感谢提交 | InSynBio' : 'Thank You | InSynBio';
-      }
-      var saved = localStorage.getItem(KEY);
-      if (saved === 'zh' || saved === 'en') {
-        applyLang(saved);
-      } else {
-        var initial = (navigator.language && navigator.language.toLowerCase().indexOf('zh') === 0) ? 'zh' : 'en';
-        applyLang(initial);
-        fetch('https://ipapi.co/json/').then(function(r) { return r.json(); }).then(function(data) {
-          var code = (data && data.country_code) ? data.country_code.toUpperCase() : '';
-          var lang = ZH_REGIONS.indexOf(code) >= 0 ? 'zh' : 'en';
-          localStorage.setItem(KEY, lang);
-          applyLang(lang);
-        }).catch(function() {});
-      }
-      document.querySelectorAll('.lang-btn').forEach(btn => {
-        btn.addEventListener('click', function(e) {
-          e.preventDefault();
-          const lang = this.dataset.lang;
-          localStorage.setItem(KEY, lang);
-          applyLang(lang);
-        });
-      });
-    })();
-  </script>
 </body>
 </html>

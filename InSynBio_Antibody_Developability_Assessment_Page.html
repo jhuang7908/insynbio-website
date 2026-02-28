@@ -5,6 +5,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="InSynBio antibody assessment and developability service — sequence analysis, humanization, immunogenicity prediction, structure evaluation, and affinity maturation.">
   <meta name="keywords" content="antibody developability, VHH humanization, immunogenicity, CDR analysis, antibody engineering, InSynBio">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://www.insynbio.com/InSynBio_Antibody_Developability_Assessment_Page.html">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.insynbio.com/InSynBio_Antibody_Developability_Assessment_Page.html">
+  <meta property="og:title" content="Antibody Development & Assessment | InSynBio — AI for Life Sciences">
+  <meta property="og:description" content="InSynBio antibody assessment and developability service — sequence analysis, humanization, immunogenicity prediction, structure evaluation, and affinity maturation.">
+  <meta property="og:image" content="https://www.insynbio.com/images/hero-bg.svg">
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="https://www.insynbio.com/InSynBio_Antibody_Developability_Assessment_Page.html">
+  <meta property="twitter:title" content="Antibody Development & Assessment | InSynBio — AI for Life Sciences">
+  <meta property="twitter:description" content="InSynBio antibody assessment and developability service — sequence analysis, humanization, immunogenicity prediction, structure evaluation, and affinity maturation.">
+  <meta property="twitter:image" content="https://www.insynbio.com/images/hero-bg.svg">
   <title>Services | InSynBio — AI for Life Sciences</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -35,8 +47,10 @@
     .top-header-nav a.active { background: var(--primary); color: #fff; font-weight: 500; }
     .top-header-nav a.active:hover,
     .top-header-nav a.active:focus { background: var(--primary-dark); color: #fff; }
-    .top-header-nav a[href="index.html"],
-    .top-header-nav a[href="index.html"].active { background: transparent; color: var(--text-muted); }
+    .top-header-nav a[href="index.html"] { background: transparent; color: var(--text-muted); }
+    .top-header-nav a[href="index.html"].active { background: var(--primary); color: #fff; font-weight: 500; }
+    .top-header-nav a[href="index.html"].active:hover,
+    .top-header-nav a[href="index.html"].active:focus { background: var(--primary-dark); color: #fff; }
     .top-header-nav a[href="index.html"]:hover { color: var(--primary); background: var(--bg-alt); }
     .top-header .header-right { display: flex; align-items: center; gap: 16px; }
     .top-header 
@@ -116,9 +130,9 @@
       .humanization-table-wrap .humanization-table tbody tr td:last-child { border-bottom: none; padding-bottom: 0; }
       .humanization-table-wrap .humanization-table tbody tr td:first-child { padding-top: 0; }
       .humanization-table-wrap .humanization-table tbody td::before { content: attr(data-label); font-weight: 600; font-size: 11px; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-muted); display: block; margin-bottom: 6px; }
-      body[data-lang="en"] .humanization-table-wrap .humanization-table tbody td[data-label="Service"]::before { content: "服务"; }
-      body[data-lang="en"] .humanization-table-wrap .humanization-table tbody td[data-label="Input"]::before { content: "输入"; }
-      body[data-lang="en"] .humanization-table-wrap .humanization-table tbody td[data-label="Technology"]::before { content: "技术"; }
+      body[data-lang="en"] .humanization-table-wrap .humanization-table tbody td[data-label="Service"]::before { content: "Service"; }
+      body[data-lang="en"] .humanization-table-wrap .humanization-table tbody td[data-label="Input"]::before { content: "Input"; }
+      body[data-lang="en"] .humanization-table-wrap .humanization-table tbody td[data-label="Technology"]::before { content: "Technology"; }
     }
     @media (max-width: 900px) {
       .top-header { flex-wrap: wrap; padding: 12px 16px; gap: 10px; }
@@ -523,7 +537,7 @@
         const btn = form.querySelector('button[type="submit"]');
         const originalText = btn.innerText;
         btn.disabled = true;
-        btn.innerText = document.body.getAttribute('data-lang') === 'zh' ? '提交中...' : 'Submitting...';
+        btn.innerText = 'Submitting...';
 
         const formData = new FormData(form);
         fetch(form.action, {
