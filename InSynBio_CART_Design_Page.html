@@ -39,7 +39,7 @@
     .top-header-nav a[href="index.html"].active { background: transparent; color: var(--text-muted); }
     .top-header-nav a[href="index.html"]:hover { color: var(--primary); background: var(--bg-alt); }
     .top-header .header-right { display: flex; align-items: center; gap: 16px; }
-    .top-header .lang-switch { margin: 0; }
+    .top-header 
     .page-wrap { display: flex; min-height: calc(100vh - 57px); }
     .sidebar { width: 260px; flex-shrink: 0; background: var(--bg); border-right: 1px solid var(--border); padding: 28px 0; position: sticky; top: 0; height: 100vh; overflow-y: auto; }
     .sidebar h3 { font-size: 12px; font-weight: 600; color: var(--text-muted); margin: 0 24px 12px; padding-top: 4px; text-transform: uppercase; letter-spacing: 1px; }
@@ -101,12 +101,7 @@
     .brand-logo .syn { color: var(--primary); font-style: italic; font-weight: 700; }
     .brand-logo .bio { color: var(--text); }
     .brand-logo .tagline { font-family: 'Inter', sans-serif; font-size: 10px; font-weight: 500; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1.5px; margin-top: 4px; font-style: normal; }
-    .lang-switch { display: flex; gap: 4px; margin: 0 24px 20px; }
-    .lang-switch button { padding: 6px 12px; font-size: 13px; border: 1px solid var(--border); background: var(--bg); color: var(--text-muted); border-radius: 6px; cursor: pointer; font-family: 'Noto Sans SC', 'Inter', sans-serif; transition: all 0.2s; }
-    .lang-switch button:hover { border-color: var(--primary); color: var(--primary); }
-    .lang-switch button.active { background: var(--primary); color: #fff; border-color: var(--primary); }
-    body[data-lang="zh"] .lang-en { display: none !important; }
-    body[data-lang="en"] .lang-zh { display: none !important; }
+
     .site-footer { margin-top: 48px; padding-top: 24px; border-top: 1px solid var(--border); font-size: 13px; color: var(--text-muted); text-align: center; }
     .site-footer a { color: var(--primary); text-decoration: none; }
     .site-footer a:hover { text-decoration: underline; }
@@ -152,220 +147,206 @@
           In<span style="color: #0d9488;">Syn</span>Bio
         </span>
       </a>
-      <span class="slogan lang-en">AI for Life Sciences</span>
-      <span class="slogan lang-zh">AI 赋能生命科学</span>
+      <span class="slogan">AI for Life Sciences</span>
+      
     </div>
     <nav class="top-header-nav">
-      <a href="index.html"><span class="lang-en">Home</span><span class="lang-zh">首页</span></a>
-      <a href="index.html#about"><span class="lang-en">About Us</span><span class="lang-zh">关于我们</span></a>
+      <a href="index.html">Home</a>
+      <a href="index.html#about">About Us</a>
       <div class="nav-dropdown" tabindex="0">
-        <a href="index.html#services"><span class="lang-en">Services</span><span class="lang-zh">服务</span></a>
+        <a href="index.html#services">Services</a>
         <div class="dropdown-menu">
           <a href="InSynBio_Antibody_Developability_Assessment_Page.html">
-            <span class="menu-title"><span class="lang-en">Antibody</span><span class="lang-zh">抗体评估</span></span>
-            <span class="menu-desc"><span class="lang-en">Structure-based Development</span><span class="lang-zh">基于结构的抗体开发</span></span>
+            <span class="menu-title">Antibody</span>
+            <span class="menu-desc">Structure-based Development</span>
           </a>
           <a href="#platform">
-            <span class="menu-title"><span class="lang-en">CAR-T</span><span class="lang-zh">CAR-T</span></span>
-            <span class="menu-desc"><span class="lang-en">Smart CAR-T Design</span><span class="lang-zh">智慧 CAR-T 设计</span></span>
+            <span class="menu-title">CAR-T</span>
+            <span class="menu-desc">Smart CAR-T Design</span>
           </a>
           <a href="InSynBio_Bispecific_Antibody_Design_Page.html">
-            <span class="menu-title"><span class="lang-en">Bispecific</span><span class="lang-zh">双特异抗体</span></span>
-            <span class="menu-desc"><span class="lang-en">Multispecific Engineering</span><span class="lang-zh">多特异性工程</span></span>
+            <span class="menu-title">Bispecific</span>
+            <span class="menu-desc">Multispecific Engineering</span>
           </a>
         </div>
       </div>
-      <a href="#submit"><span class="lang-en">Submit Inquiry</span><span class="lang-zh">提交咨询</span></a>
-      <a href="#contact"><span class="lang-en">Contact</span><span class="lang-zh">联系</span></a>
+      <a href="#submit">Submit Inquiry</a>
+      <a href="#contact">Contact</a>
     </nav>
-    <div class="header-right">
-      <div class="lang-switch">
-        <button type="button" class="lang-btn active" data-lang="en">EN</button>
-        <button type="button" class="lang-btn" data-lang="zh">ZH</button>
-      </div>
-    </div>
+    
   </header>
   <div class="page-wrap">
     <aside class="sidebar">
-      <h3 class="lang-en">Smart CAR-T</h3>
-      <h3 class="lang-zh">智慧 CAR-T</h3>
+      <h3>Smart CAR-T</h3>
+      
       <nav>
         <a href="#platform" class="nav-link active">
           <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
-          <span class="lang-en">Platform</span><span class="lang-zh">平台</span>
+          Platform
         </a>
-        <a href="#library" class="nav-link"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg><span class="lang-en">Component Library</span><span class="lang-zh">元件库</span></a>
-        <a href="#strategy" class="nav-link"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg><span class="lang-en">Disease Strategy</span><span class="lang-zh">疾病策略</span></a>
-        <a href="#engineering" class="nav-link"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg><span class="lang-en">Engineering</span><span class="lang-zh">工程化模块</span></a>
-        <a href="#example" class="nav-link"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/></svg><span class="lang-en">Case Study</span><span class="lang-zh">设计示例</span></a>
-        <a href="#safety" class="nav-link"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg><span class="lang-en">Safety & Efficacy</span><span class="lang-zh">安全与有效性</span></a>
-        <a href="#full-report" class="nav-link"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg><span class="lang-en">Full Report</span><span class="lang-zh">完整报告</span></a>
-        <a href="#submit" class="nav-link"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg><span class="lang-en">Submit Inquiry</span><span class="lang-zh">提交咨询</span></a>
-        <a href="#contact" class="nav-link"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg><span class="lang-en">Contact</span><span class="lang-zh">联系方式</span></a>
+        <a href="#library" class="nav-link"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>Component Library</a>
+        <a href="#strategy" class="nav-link"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>Disease Strategy</a>
+        <a href="#engineering" class="nav-link"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>Engineering</a>
+        <a href="#example" class="nav-link"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/></svg>Case Study</a>
+        <a href="#safety" class="nav-link"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>Safety & Efficacy</a>
+        <a href="#full-report" class="nav-link"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>Full Report</a>
+        <a href="#submit" class="nav-link"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>Submit Inquiry</a>
+        <a href="#contact" class="nav-link"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>Contact</a>
       </nav>
     </aside>
     <main class="main">
       <div class="breadcrumb">
-        <a href="index.html"><span class="lang-en">Home</span><span class="lang-zh">首页</span></a><span>/</span><a href="index.html#services"><span class="lang-en">Services</span><span class="lang-zh">服务</span></a><span>/</span><span><span class="lang-en">Smart CAR-T</span><span class="lang-zh">智慧 CAR-T</span></span>
+        <a href="index.html">Home</a><span>/</span><a href="index.html#services">Services</a><span>/</span><span>Smart CAR-T</span>
       </div>
 
       <!-- Hero / Mission (same structure as Antibody page) -->
       <div class="mission-block">
-        <p class="lang-en"><strong>Smart CAR-T Design:</strong> AI-driven end-to-end engineering service. From target selection to sequence design and CRO validation. We provide rational design frameworks for Solid Tumors, Hematologic Malignancies, and Autoimmune Diseases.</p>
-        <p class="lang-zh"><strong>智慧 CAR-T 设计：</strong>AI 驱动的端到端工程服务。从靶点选择到序列设计及 CRO 验证。我们为实体瘤、血液瘤及自身免疫疾病提供理性设计框架。</p>
-        <p class="lang-en">Our ACTES platform combines a proprietary library of nearly 200 curated components with antigen knowledge base, smart vector logic, epitope–hinge matching, and affinity tuning. We support lentiviral, non-viral, and in vivo delivery strategies and offer CRO-ready validation support. <a href="index.html#about">Learn more →</a></p>
-        <p class="lang-zh">ACTES 平台将专有近 200 个精选元件库与抗原知识库、智能载体逻辑、表位–铰链匹配及亲和力调优相结合。我们支持慢病毒、非病毒及体内递送策略，并提供可对接 CRO 的验证支持。<a href="index.html#about">了解更多 →</a></p>
+        <p><strong>Smart CAR-T Design:</strong> AI-driven end-to-end engineering service. From target selection to sequence design and CRO validation. We provide rational design frameworks for Solid Tumors, Hematologic Malignancies, and Autoimmune Diseases.</p>
+        
+        <p>Our ACTES platform combines a proprietary library of nearly 200 curated components with antigen knowledge base, smart vector logic, epitope–hinge matching, and affinity tuning. We support lentiviral, non-viral, and in vivo delivery strategies and offer CRO-ready validation support. <a href="index.html#about">Learn more →</a></p>
+        
       </div>
 
-      <h1><span class="lang-en">Smart CAR-T Design</span><span class="lang-zh">智慧 CAR-T 设计</span></h1>
-      <p class="subtitle lang-en">AI-Driven End-to-End Engineering: From Target to Sequence, From Sequence to System.</p>
-      <p class="subtitle lang-zh">AI 驱动的端到端工程：从靶点到序列，从序列到系统。</p>
-      <p class="disclaimer lang-en">Disclaimer: InSynBio in silico analyses are for reference only and do not replace final wet-lab validation. Experimental confirmation is required.</p>
-      <p class="disclaimer lang-zh">免责声明：InSynBio 的 in silico 分析仅供参考，不能替代最终湿实验验证。需进行实验确认。</p>
+      <h1>Smart CAR-T Design</h1>
+      <p class="subtitle">AI-Driven End-to-End Engineering: From Target to Sequence, From Sequence to System.</p>
+      
+      <p class="disclaimer">Disclaimer: InSynBio in silico analyses are for reference only and do not replace final wet-lab validation. Experimental confirmation is required.</p>
 
-      <h2 id="platform"><span class="h2-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg></span><span class="lang-en">AI-Native Design Platform</span><span class="lang-zh">AI 原生设计平台</span></h2>
-      <p class="lang-en">Our ACTES platform leverages a proprietary library of <strong>nearly 200 curated components</strong> across 10 categories. We don't just assemble; we match.</p>
-      <p class="lang-zh">ACTES 平台基于包含 10 大类、<strong>近 200 个精选元件</strong>的专有库。我们不仅仅是组装，而是精准匹配。</p>
-      <ul class="lang-en">
+      <h2 id="platform"><span class="h2-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg></span>AI-Native Design Platform</h2>
+      <p>Our ACTES platform leverages a proprietary library of <strong>nearly 200 curated components</strong> across 10 categories. We don't just assemble; we match.</p>
+      
+      <ul>
         <li><strong>Antigen Knowledge Base</strong> — A continuously updated database of <strong>common epitopes</strong>, <strong>antigen density</strong> thresholds, <strong>heterogeneity</strong> profiles, <strong>disease context</strong> (solid vs. hematologic vs. autoimmune), and <strong>specificity</strong> considerations (e.g. on-target off-tumor risk) to guide precise design.</li>
         <li><strong>Smart Vector Logic</strong> — Algorithmic selection between <strong>Lentiviral</strong> (Standard), <strong>Non-Viral/Transposon</strong> (Large Payload), and <strong>In Vivo LNP</strong> (Accessibility) based on clinical needs.</li>
         <li><strong>Epitope-Hinge Matching</strong> — We measure epitope-to-membrane distance using <strong>AlphaFold2</strong> to select the precise Hinge length (Short/Medium/Long).</li>
         <li><strong>Kinetic Engineering</strong> — We tune Binder affinity (Kd) and off-rates (koff) via computational mutagenesis. We increase affinity for low-density targets, but tune it down for targets like HER2 to spare normal tissues, while ensuring fast dissociation to prevent exhaustion.</li>
         <li><strong>Density-Signaling Logic</strong> — We analyze antigen density to select the optimal Transmembrane (CD8α vs CD28) and Signaling domains (4-1BB vs CD28).</li>
       </ul>
-      <ul class="lang-zh">
-        <li><strong>抗原知识库</strong> — 维护持续更新的数据库，包含<strong>常见表位</strong>、<strong>抗原密度</strong>阈值、<strong>异质性</strong>图谱、<strong>疾病语境</strong>（实体瘤/血液瘤/自身免疫）及<strong>特异性</strong>考量（如 on-target off-tumor 风险），指导精准设计。</li>
-        <li><strong>智能载体逻辑</strong> — 根据临床需求算法化选择：<strong>慢病毒</strong> (标准)、<strong>非病毒/转座子</strong> (大载荷) 或 <strong>体内 LNP</strong> (可及性)。</li>
-        <li><strong>表位-铰链匹配</strong> — 利用 <strong>AlphaFold2</strong> 测量表位到细胞膜的距离，精准选择铰链长度（短/中/长）。</li>
-        <li><strong>动力学工程</strong> — 通过计算突变优化 Binder 亲和力 (Kd) 与解离速率 (koff)。针对低密度靶点提升亲和力；针对 HER2 等靶点下调亲和力以保护正常组织；同时确保快速解离以防止耗竭。</li>
-        <li><strong>密度-信号逻辑</strong> — 分析抗原密度，选择最优的跨膜域（CD8α vs CD28）与信号域（4-1BB vs CD28）。</li>
-      </ul>
 
-      <h2 id="library"><span class="h2-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg></span><span class="lang-en">Proprietary Component Library</span><span class="lang-zh">专有元件库</span></h2>
-      <p class="lang-en">Our ACTES platform houses a continuously updated library of <strong>nearly 200 curated components</strong> across 10 major categories, spanning clinical standards to frontier modalities.</p>
-      <p class="lang-zh">ACTES 平台拥有一个持续更新的<strong>近 200 个精选元件</strong>库，涵盖 10 大类，从临床标准到前沿模态。</p>
-      
+      <h2 id="library"><span class="h2-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg></span>Proprietary Component Library</h2>
+      <p>Our ACTES platform houses a continuously updated library of <strong>nearly 200 curated components</strong> across 10 major categories, spanning clinical standards to frontier modalities.</p>
+
       <div class="table-wrap">
       <table style="width:100%; border-collapse: collapse; font-size: 13px;">
         <thead>
           <tr>
-            <th style="width: 11%;"><span class="lang-en">Category</span><span class="lang-zh">类别</span></th>
-            <th style="width: 16%;"><span class="lang-en">Function</span><span class="lang-zh">功能</span></th>
-            <th style="width: 32%;"><span class="lang-en">Clinical Standards (Validated)</span><span class="lang-zh">临床标准 (已验证)</span></th>
-            <th style="width: 41%; min-width: 200px;"><span class="lang-en">Frontier Modalities (Emerging)</span><span class="lang-zh">前沿模态 (新兴)</span></th>
+            <th style="width: 11%;">Category</th>
+            <th style="width: 16%;">Function</th>
+            <th style="width: 32%;">Clinical Standards (Validated)</th>
+            <th style="width: 41%; min-width: 200px;">Frontier Modalities (Emerging)</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td><span class="lang-en"><strong>Binders</strong></span><span class="lang-zh"><strong>结合域</strong></span></td>
-            <td><span class="lang-en">Target recognition</span><span class="lang-zh">靶向识别</span></td>
-            <td><span class="lang-en">scFv (FMC63, Trastuzumab, 14G2a, SS1, m971, 4D5, 225), Humanized scFv, Fab Fragments</span><span class="lang-zh">scFv (FMC63, Trastuzumab, 14G2a, SS1, m971, 4D5, 225)、人源化 scFv、Fab 片段</span></td>
-            <td><span class="lang-en">VHH/Nanobody (Solid Tumor), TCR-mimic (WT1, KRAS, NY-ESO-1, MAGE-A4), Centyrins, DARPins, Ligand-based (IL-13, APRIL), Computational Mask Design (FTO-Focused), Peptide Binders</span><span class="lang-zh">VHH/纳米抗体 (实体瘤)、TCR 模拟 (WT1, KRAS, NY-ESO-1, MAGE-A4)、Centyrins、DARPins、配体类 (IL-13, APRIL)、计算 Mask 设计 (FTO)、多肽 Binder</span></td>
+            <td><strong>Binders</strong></td>
+            <td>Target recognition</td>
+            <td>scFv (FMC63, Trastuzumab, 14G2a, SS1, m971, 4D5, 225), Humanized scFv, Fab Fragments</td>
+            <td>VHH/Nanobody (Solid Tumor), TCR-mimic (WT1, KRAS, NY-ESO-1, MAGE-A4), Centyrins, DARPins, Ligand-based (IL-13, APRIL), Computational Mask Design (FTO-Focused), Peptide Binders</td>
           </tr>
           <tr>
-            <td><span class="lang-en"><strong>Hinge</strong></span><span class="lang-zh"><strong>铰链域</strong></span></td>
-            <td><span class="lang-en">Epitope distance matching</span><span class="lang-zh">表位距离匹配</span></td>
-            <td><span class="lang-en">CD8α Short (45aa), IgG4 Long (228aa), CD28 Medium, IgG1 Hinge</span><span class="lang-zh">CD8α 短 (45aa)、IgG4 长 (228aa)、CD28 中、IgG1 铰链</span></td>
-            <td><span class="lang-en">IgG4-SPLE (Fc-Null/S228P), Auto-Hinge (AI-Matched), IgD Hinge (Protease Resistant), CD8α-Long (119aa), Synthetic Flexible Linkers, Rigid EAAAK Linkers</span><span class="lang-zh">IgG4-SPLE (Fc 空/S228P)、Auto-Hinge (AI 匹配)、IgD 铰链 (抗蛋白酶)、CD8α-长 (119aa)、合成柔性连接子、刚性 EAAAK 连接子</span></td>
+            <td><strong>Hinge</strong></td>
+            <td>Epitope distance matching</td>
+            <td>CD8α Short (45aa), IgG4 Long (228aa), CD28 Medium, IgG1 Hinge</td>
+            <td>IgG4-SPLE (Fc-Null/S228P), Auto-Hinge (AI-Matched), IgD Hinge (Protease Resistant), CD8α-Long (119aa), Synthetic Flexible Linkers, Rigid EAAAK Linkers</td>
           </tr>
           <tr>
-            <td><span class="lang-en"><strong>Transmembrane</strong></span><span class="lang-zh"><strong>跨膜域</strong></span></td>
-            <td><span class="lang-en">Anchoring & signaling threshold</span><span class="lang-zh">膜锚定与信号阈值</span></td>
-            <td><span class="lang-en">CD8α TM (Low tonic), CD28 TM (Lipid raft), CD4 TM</span><span class="lang-zh">CD8α 跨膜 (低基底)、CD28 跨膜 (脂筏)、CD4 跨膜</span></td>
-            <td><span class="lang-en">NKG2D TM (NK Optimization), DAP10 TM, DAP12 TM, ICOS TM, OX40 TM, In Vivo Optimized TM (LNP-compatible)</span><span class="lang-zh">NKG2D 跨膜 (NK 优化)、DAP10/DAP12/ICOS/OX40 跨膜、体内优化跨膜 (LNP 兼容)</span></td>
+            <td><strong>Transmembrane</strong></td>
+            <td>Anchoring & signaling threshold</td>
+            <td>CD8α TM (Low tonic), CD28 TM (Lipid raft), CD4 TM</td>
+            <td>NKG2D TM (NK Optimization), DAP10 TM, DAP12 TM, ICOS TM, OX40 TM, In Vivo Optimized TM (LNP-compatible)</td>
           </tr>
           <tr>
-            <td><span class="lang-en"><strong>Co-stimulatory</strong></span><span class="lang-zh"><strong>共刺激域</strong></span></td>
-            <td><span class="lang-en">Metabolism & Persistence</span><span class="lang-zh">代谢与持久性</span></td>
-            <td><span class="lang-en">4-1BB (Mitochondrial), CD28 (Glycolytic)</span><span class="lang-zh">4-1BB (线粒体)、CD28 (糖酵解)</span></td>
-            <td><span class="lang-en">OX40 (CD134), ICOS (Th17/Th1), 2B4 (CD244), DAP10, CD27, GITR, HVEM, CD40, MyD88, TLR2, 4-1BBL (Self-Driving)</span><span class="lang-zh">OX40、ICOS、2B4、DAP10、CD27、GITR、HVEM、CD40、MyD88、TLR2、4-1BBL (自驱动)</span></td>
+            <td><strong>Co-stimulatory</strong></td>
+            <td>Metabolism & Persistence</td>
+            <td>4-1BB (Mitochondrial), CD28 (Glycolytic)</td>
+            <td>OX40 (CD134), ICOS (Th17/Th1), 2B4 (CD244), DAP10, CD27, GITR, HVEM, CD40, MyD88, TLR2, 4-1BBL (Self-Driving)</td>
           </tr>
           <tr>
-            <td><span class="lang-en"><strong>Activation</strong></span><span class="lang-zh"><strong>激活域</strong></span></td>
-            <td><span class="lang-en">Killing signal</span><span class="lang-zh">杀伤信号</span></td>
-            <td><span class="lang-en">CD3ζ (3x ITAM)</span><span class="lang-zh">CD3ζ (3× ITAM)</span></td>
-            <td><span class="lang-en">DAP12 (CAR-NK/Macrophage), FcR-γ (Phagocytosis), CD3ε (Recruitment), ZAP70 recruitment motifs, 1XX (Calibrated ITAMs)</span><span class="lang-zh">DAP12 (CAR-NK/巨噬细胞)、FcR-γ (吞噬)、CD3ε (招募)、ZAP70 招募 motif、1XX (校准 ITAM)</span></td>
+            <td><strong>Activation</strong></td>
+            <td>Killing signal</td>
+            <td>CD3ζ (3x ITAM)</td>
+            <td>DAP12 (CAR-NK/Macrophage), FcR-γ (Phagocytosis), CD3ε (Recruitment), ZAP70 recruitment motifs, 1XX (Calibrated ITAMs)</td>
           </tr>
           <tr>
-            <td><span class="lang-en"><strong>Armored Payloads</strong></span><span class="lang-zh"><strong>铠甲载荷</strong></span></td>
-            <td><span class="lang-en">TME remodeling & Resistance</span><span class="lang-zh">TME 重塑与抵抗</span></td>
-            <td><span class="lang-en">Secreted IL-12 (TRUCK), Constitutive IL-15</span><span class="lang-zh">分泌型 IL-12 (TRUCK)、组成型 IL-15</span></td>
-            <td><span class="lang-en">TGFB_DNR (Anti-Suppression), Membrane_IL15/IL-21, GPX4_Enhanced (Anti-Ferroptosis), IL-7/CCL19 (7x19), c-JUN, HPSE (Heparanase), scFv-PD1 blocker, BiTE secretion</span><span class="lang-zh">TGFB_DNR (抗抑制)、膜锚定 IL-15/IL-21、GPX4_Enhanced (抗铁死亡)、IL-7/CCL19 (7x19)、c-JUN、HPSE、scFv-PD1 阻断、BiTE 分泌</span></td>
+            <td><strong>Armored Payloads</strong></td>
+            <td>TME remodeling & Resistance</td>
+            <td>Secreted IL-12 (TRUCK), Constitutive IL-15</td>
+            <td>TGFB_DNR (Anti-Suppression), Membrane_IL15/IL-21, GPX4_Enhanced (Anti-Ferroptosis), IL-7/CCL19 (7x19), c-JUN, HPSE (Heparanase), scFv-PD1 blocker, BiTE secretion</td>
           </tr>
           <tr>
-            <td><span class="lang-en"><strong>Safety Switches</strong></span><span class="lang-zh"><strong>安全开关</strong></span></td>
-            <td><span class="lang-en">Controllable elimination</span><span class="lang-zh">可控清除</span></td>
-            <td><span class="lang-en">tEGFR (Cetuximab), CD20 Mimotope (Rituximab)</span><span class="lang-zh">tEGFR (西妥昔单抗清除)、CD20 拟态表位 (利妥昔单抗清除)</span></td>
-            <td><span class="lang-en">iCasp9 (Small Molecule, >95%), RQR8 (Dual Tag), Rapamycin-ON, Lenalidomide-ON, HSV-TK, TMPD-inducible</span><span class="lang-zh">iCasp9 (小分子, >95%)、RQR8 (双标签)、Rapamycin-ON、Lenalidomide-ON、HSV-TK、TMPD 诱导</span></td>
+            <td><strong>Safety Switches</strong></td>
+            <td>Controllable elimination</td>
+            <td>tEGFR (Cetuximab), CD20 Mimotope (Rituximab)</td>
+            <td>iCasp9 (Small Molecule, >95%), RQR8 (Dual Tag), Rapamycin-ON, Lenalidomide-ON, HSV-TK, TMPD-inducible</td>
           </tr>
           <tr>
-            <td><span class="lang-en"><strong>Logic Gates</strong></span><span class="lang-zh"><strong>逻辑门控</strong></span></td>
-            <td><span class="lang-en">Specificity control (AND/NOT)</span><span class="lang-zh">特异性控制</span></td>
-            <td><span class="lang-en">Tandem CAR (OR Gate)</span><span class="lang-zh">串联 CAR (OR 门)</span></td>
-            <td><span class="lang-en">SynNotch (AND Gate), iCAR (NOT Gate/PD-1/CTLA-4), Split CAR (Dimerization), LOCKR (Protein Switch), CLIP-CAR, Universal CAR (BBIR)</span><span class="lang-zh">SynNotch (AND 门)、iCAR (NOT 门/PD-1/CTLA-4)、Split CAR (二聚化)、LOCKR、CLIP-CAR、通用 CAR (BBIR)</span></td>
+            <td><strong>Logic Gates</strong></td>
+            <td>Specificity control (AND/NOT)</td>
+            <td>Tandem CAR (OR Gate)</td>
+            <td>SynNotch (AND Gate), iCAR (NOT Gate/PD-1/CTLA-4), Split CAR (Dimerization), LOCKR (Protein Switch), CLIP-CAR, Universal CAR (BBIR)</td>
           </tr>
           <tr>
-            <td><span class="lang-en"><strong>Regulatory</strong></span><span class="lang-zh"><strong>调控元件</strong></span></td>
-            <td><span class="lang-en">Expression control</span><span class="lang-zh">表达控制</span></td>
-            <td><span class="lang-en">EF1α Promoter, PGK Promoter, WPRE</span><span class="lang-zh">EF1α 启动子、PGK 启动子、WPRE</span></td>
-            <td><span class="lang-en">NFAT_Response (Inducible), UCOE (Anti-Silencing), Tet-On/Tet-Off, SFFV, CMV, SV40, EFS (Compact), JeT promoter</span><span class="lang-zh">NFAT_Response (诱导型)、UCOE (抗沉默)、Tet-On/Tet-Off、SFFV、CMV、SV40、EFS (紧凑)、JeT 启动子</span></td>
+            <td><strong>Regulatory</strong></td>
+            <td>Expression control</td>
+            <td>EF1α Promoter, PGK Promoter, WPRE</td>
+            <td>NFAT_Response (Inducible), UCOE (Anti-Silencing), Tet-On/Tet-Off, SFFV, CMV, SV40, EFS (Compact), JeT promoter</td>
           </tr>
           <tr>
-            <td><span class="lang-en"><strong>Leaders & Linkers</strong></span><span class="lang-zh"><strong>信号肽与连接子</strong></span></td>
-            <td><span class="lang-en">Secretion & Flexibility</span><span class="lang-zh">分泌与柔性</span></td>
-            <td><span class="lang-en">CD8α SP, GM-CSF SP, G4S (Flexible)</span><span class="lang-zh">CD8α 信号肽、GM-CSF 信号肽、G4S (柔性)</span></td>
-            <td><span class="lang-en">IL-2 SP (Secretion), Gaussia SP, EAAAK3 (Rigid), Whitlow Linker, 218 Linker, XTEN, Furin-P2A/T2A/E2A/F2A</span><span class="lang-zh">IL-2 信号肽、Gaussia 信号肽、EAAAK3 (刚性)、Whitlow/218 连接子、XTEN、Furin-P2A/T2A/E2A/F2A</span></td>
+            <td><strong>Leaders & Linkers</strong></td>
+            <td>Secretion & Flexibility</td>
+            <td>CD8α SP, GM-CSF SP, G4S (Flexible)</td>
+            <td>IL-2 SP (Secretion), Gaussia SP, EAAAK3 (Rigid), Whitlow Linker, 218 Linker, XTEN, Furin-P2A/T2A/E2A/F2A</td>
           </tr>
         </tbody>
       </table>
       </div>
 
-      <h2 id="strategy"><span class="h2-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></span><span class="lang-en">Therapeutic Architecture Matrix</span><span class="lang-zh">治疗架构矩阵</span></h2>
-      <p class="lang-en">Our AI engine applies deep biological logic to select the optimal architecture. We don't just assemble parts; we design <strong>systems</strong> to overcome specific disease barriers.</p>
-      <p class="lang-zh">我们的 AI 引擎应用深度生物学逻辑来选择最佳架构。我们不只是组装元件，而是设计<strong>系统</strong>以克服特定的疾病障碍。</p>
+      <h2 id="strategy"><span class="h2-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></span>Therapeutic Architecture Matrix</h2>
+      <p>Our AI engine applies deep biological logic to select the optimal architecture. We don't just assemble parts; we design <strong>systems</strong> to overcome specific disease barriers.</p>
+      
       <div class="table-wrap">
       <table style="width:100%; border-collapse: collapse;">
         <thead>
           <tr>
-            <th><span class="lang-en">Disease Context</span><span class="lang-zh">疾病语境</span></th>
-            <th><span class="lang-en">Critical Barriers</span><span class="lang-zh">核心壁垒</span></th>
-            <th><span class="lang-en">Advanced Architectural Solution</span><span class="lang-zh">高级架构方案</span></th>
+            <th>Disease Context</th>
+            <th>Critical Barriers</th>
+            <th>Advanced Architectural Solution</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td><strong><span class="lang-en">Solid Tumors (e.g., HCC, Gastric)</span><span class="lang-zh">实体瘤 (如肝癌、胃癌)</span></strong></td>
-            <td><span class="lang-en"><strong>Physical Exclusion</strong> (ECM), <strong>Immunosuppression</strong> (TGF-β) & <strong>On-Target Off-Tumor</strong></span><span class="lang-zh"><strong>物理排斥</strong> (ECM)、<strong>免疫抑制</strong> (TGF-β) 与 <strong>脱靶毒性 (on-target off-tumor)</strong></span></td>
-            <td><span class="lang-en"><strong>Matrix-Degrading Synergy:</strong> CAR-M to degrade ECM + CAR-T armored with <strong>TGFB_DNR</strong>. <strong>Affinity Tuning</strong> (lower Kd on normal-tissue antigens) and <strong>Logic-Gated</strong> recognition to spare healthy tissue.</span><span class="lang-zh"><strong>基质降解协同：</strong> CAR-M 降解 ECM + 装备 <strong>TGFB_DNR</strong> 的 CAR-T。<strong>亲和力调优</strong> 与 <strong>逻辑门控</strong> 识别以保护正常组织。</span></td>
+            <td><strong>Solid Tumors (e.g., HCC, Gastric)</strong></td>
+            <td><strong>Physical Exclusion</strong> (ECM), <strong>Immunosuppression</strong> (TGF-β) & <strong>On-Target Off-Tumor</strong></td>
+            <td><strong>Matrix-Degrading Synergy:</strong> CAR-M to degrade ECM + CAR-T armored with <strong>TGFB_DNR</strong>. <strong>Affinity Tuning</strong> (lower Kd on normal-tissue antigens) and <strong>Logic-Gated</strong> recognition to spare healthy tissue.</td>
           </tr>
           <tr>
-            <td><strong><span class="lang-en">Hematologic / Liquid Tumors (e.g., B-ALL, LBCL)</span><span class="lang-zh">血液瘤 / 液体瘤 (如 B-ALL、LBCL)</span></strong></td>
-            <td><span class="lang-en"><strong>Cytokine Storm (CRS)</strong> & <strong>B-cell Aplasia</strong></span><span class="lang-zh"><strong>细胞因子风暴 (CRS)</strong> 与 <strong>B 细胞再生障碍</strong></span></td>
-            <td><span class="lang-en"><strong>4-1BB-Dominant</strong> (reduced CRS vs CD28), <strong>Safety Switches</strong> (tEGFR, iCasp9) for controllable elimination, <strong>Tuned Affinity</strong> and dose to balance efficacy and toxicity.</span><span class="lang-zh"><strong>4-1BB 主导</strong> (较 CD28 降低 CRS)、<strong>安全开关</strong> (tEGFR, iCasp9) 可控清除、<strong>亲和力与剂量调优</strong> 平衡疗效与毒性。</span></td>
+            <td><strong>Hematologic / Liquid Tumors (e.g., B-ALL, LBCL)</strong></td>
+            <td><strong>Cytokine Storm (CRS)</strong> & <strong>B-cell Aplasia</strong></td>
+            <td><strong>4-1BB-Dominant</strong> (reduced CRS vs CD28), <strong>Safety Switches</strong> (tEGFR, iCasp9) for controllable elimination, <strong>Tuned Affinity</strong> and dose to balance efficacy and toxicity.</td>
           </tr>
           <tr>
-            <td><strong><span class="lang-en">AML / Myeloid Malignancies</span><span class="lang-zh">AML / 髓系恶性肿瘤</span></strong></td>
-            <td><span class="lang-en"><strong>Shared Toxicity</strong> (Healthy marrow depletion) & <strong>Relapse</strong></span><span class="lang-zh"><strong>共表达毒性</strong> (健康骨髓耗竭) & <strong>复发</strong></span></td>
-            <td><span class="lang-en"><strong>Transient "Hit-and-Run":</strong> <strong>mRNA-LNP In Vivo CAR</strong> for temporary clearance without permanent aplasia, or <strong>Logic-Gated (NOT)</strong> circuits.</span><span class="lang-zh"><strong>瞬时“打了就跑”策略：</strong> <strong>mRNA-LNP 体内 CAR</strong> 实现暂时清除而无永久再生障碍，或采用 <strong>逻辑门控 (NOT)</strong> 电路。</span></td>
+            <td><strong>AML / Myeloid Malignancies</strong></td>
+            <td><strong>Shared Toxicity</strong> (Healthy marrow depletion) & <strong>Relapse</strong></td>
+            <td><strong>Transient "Hit-and-Run":</strong> <strong>mRNA-LNP In Vivo CAR</strong> for temporary clearance without permanent aplasia, or <strong>Logic-Gated (NOT)</strong> circuits.</td>
           </tr>
           <tr>
-            <td><strong><span class="lang-en">Autoimmune (SLE, Lupus)</span><span class="lang-zh">自身免疫 (SLE, 红斑狼疮)</span></strong></td>
-            <td><span class="lang-en"><strong>Systemic Safety</strong> & <strong>B-cell Aplasia</strong> risks</span><span class="lang-zh"><strong>全身安全性</strong> & <strong>B 细胞再生障碍</strong> 风险</span></td>
-            <td><span class="lang-en"><strong>Immune Reset:</strong> <strong>CD8-Sparing CAR-Treg</strong> to induce tolerance, or <strong>Short-Lived mRNA CAR</strong> to deplete B-cells once, allowing immune reboot.</span><span class="lang-zh"><strong>免疫重置：</strong> <strong>CD8-Sparing CAR-Treg</strong> 诱导耐受，或 <strong>短效 mRNA CAR</strong> 单次清除 B 细胞，允许免疫系统重启。</span></td>
+            <td><strong>Autoimmune (SLE, Lupus)</strong></td>
+            <td><strong>Systemic Safety</strong> & <strong>B-cell Aplasia</strong> risks</td>
+            <td><strong>Immune Reset:</strong> <strong>CD8-Sparing CAR-Treg</strong> to induce tolerance, or <strong>Short-Lived mRNA CAR</strong> to deplete B-cells once, allowing immune reboot.</td>
           </tr>
           <tr>
-            <td><strong><span class="lang-en">CNS / Glioblastoma</span><span class="lang-zh">中枢神经 / 胶质母细胞瘤</span></strong></td>
-            <td><span class="lang-en"><strong>Blood-Brain Barrier</strong> & <strong>Neurotoxicity (ICANS)</strong></span><span class="lang-zh"><strong>血脑屏障</strong> & <strong>神经毒性 (ICANS)</strong></span></td>
-            <td><span class="lang-en"><strong>Regional Precision:</strong> <strong>Intracavitary Delivery</strong> (ICV) bypasses BBB. <strong>Hinge/TM Optimization</strong> minimizes tonic signaling to reduce ICANS risk.</span><span class="lang-zh"><strong>区域精准递送：</strong> <strong>腔内递送</strong> (ICV) 绕过血脑屏障。<strong>铰链/跨膜优化</strong> 最小化基底信号以降低 ICANS 风险。</span></td>
+            <td><strong>CNS / Glioblastoma</strong></td>
+            <td><strong>Blood-Brain Barrier</strong> & <strong>Neurotoxicity (ICANS)</strong></td>
+            <td><strong>Regional Precision:</strong> <strong>Intracavitary Delivery</strong> (ICV) bypasses BBB. <strong>Hinge/TM Optimization</strong> minimizes tonic signaling to reduce ICANS risk.</td>
           </tr>
         </tbody>
       </table>
       </div>
 
-      <h2 id="engineering"><span class="h2-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></span><span class="lang-en">Engineering Modules</span><span class="lang-zh">工程化模块</span></h2>
-      <p class="lang-en">We assemble the optimal CAR construct using a validated library of functional domains.</p>
-      <p class="lang-zh">我们使用经过验证的功能域库组装最优 CAR 构建体。</p>
-      <ul class="lang-en">
+      <h2 id="engineering"><span class="h2-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></span>Engineering Modules</h2>
+      <p>We assemble the optimal CAR construct using a validated library of functional domains.</p>
+      
+      <ul>
         <li><strong>Advanced Binders</strong> — <strong>De Novo Mask Design</strong> (Computational FTO), <strong>Logic-Gated</strong> recognition, and <strong>Multi-specifics</strong> (BiTE/TriTE secretion).</li>
         <li><strong>Next-Gen Signaling</strong> — <strong>JAK-STAT</strong> (IL-2Rβ) integration (5th Gen), <strong>BATF3-programming</strong> for stemness, and <strong>Synthetic Costimulation</strong> (e.g., 4-1BBL/CD40L).</li>
         <li><strong>In Vivo Delivery</strong> — <strong>LNP-optimized mRNA</strong> (Transient/Safe), <strong>Viral-Like Particles (VLP)</strong> (Targeted), and <strong>AAV</strong> (Donor Template) vectors.</li>
@@ -374,20 +355,10 @@
         <li><strong>Affinity Tuning</strong> — Computational mutagenesis to tune Kd (e.g., lowering affinity for HER2 to spare normal tissue) and k_off (preventing exhaustion).</li>
         <li><strong>Vector & Capacity</strong> — <strong>Compact VHH</strong> designs to save payload space; <strong>PiggyBac / Sleeping Beauty Transposon</strong> support for ultra-large constructs (>10kb) surpassing lentiviral limits.</li>
       </ul>
-      <ul class="lang-zh">
-        <li><strong>高级结合域 (Advanced Binders)</strong> — <strong>De Novo 屏蔽设计</strong> (计算 FTO) 提升特异性、<strong>逻辑门控</strong>识别及<strong>多特异性</strong> (BiTE/TriTE 分泌) 设计。</li>
-        <li><strong>下一代信号 (Next-Gen Signaling)</strong> — 集成 <strong>JAK-STAT</strong> (IL-2Rβ) 通路 (第五代 CAR)、<strong>BATF3 重编程</strong>维持干性及<strong>合成共刺激</strong> (如 4-1BBL/CD40L)。</li>
-        <li><strong>体内递送 (In Vivo Delivery)</strong> — <strong>LNP 优化 mRNA</strong> (瞬时/安全)、<strong>病毒样颗粒 (VLP)</strong> (靶向递送) 及 <strong>AAV</strong> (供体模板) 载体。</li>
-        <li><strong>异体工程 (Allogeneic Engineering)</strong> — <strong>CRISPR/Cas9</strong> 基因编辑 (TRAC/B2M 敲除) 打造通用型 CAR-T，消除 GvHD 与排斥反应。</li>
-        <li><strong>铠甲 (Armoring)</strong> — <strong>TGFB_DNR</strong> (抗抑制), <strong>Membrane_IL15</strong> (持久性), <strong>GPX4</strong> (抗铁死亡), <strong>分泌型 IL-12</strong> (TRUCK)。</li>
-        <li><strong>亲和力优化 (Affinity Tuning)</strong> — 提供 Kd/koff 微调的计算突变服务（如针对 HER2 下调亲和力以保护正常组织，或调整解离速率防止耗竭）。</li>
-        <li><strong>载体与容量 (Vector & Capacity)</strong> — <strong>紧凑型 VHH</strong> 设计节省载荷空间；支持 <strong>PiggyBac / Sleeping Beauty 转座子</strong> 系统，突破慢病毒限制，承载超大构建体 (>10kb)。</li>
-      </ul>
 
-      <h2 id="example"><span class="h2-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/></svg></span><span class="lang-en">Design Example: GPC3 CAR-T Logic Trace</span><span class="lang-zh">设计示例：GPC3 CAR-T 智慧推演</span></h2>
-      <p class="lang-en">The ACTES engine doesn't just pick parts; it reasons through the biology. Here is the deduction process for a Hepatocellular Carcinoma (HCC) project.</p>
-      <p class="lang-zh">ACTES 引擎不仅是选择元件，更是在进行生物学推理。以下是针对肝细胞癌（HCC）项目的逻辑推演过程。</p>
-      
+      <h2 id="example"><span class="h2-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/></svg></span>Design Example: GPC3 CAR-T Logic Trace</h2>
+      <p>The ACTES engine doesn't just pick parts; it reasons through the biology. Here is the deduction process for a Hepatocellular Carcinoma (HCC) project.</p>
+
       <div class="logic-box" style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 24px; font-family: 'Inter', sans-serif;">
         <div style="border-bottom: 1px solid #e2e8f0; padding-bottom: 12px; margin-bottom: 16px;">
             <strong style="color: var(--primary); font-size: 14px; text-transform: uppercase;">Input Parameters</strong><br>
@@ -435,49 +406,37 @@
         </div>
       </div>
 
-      <h2 id="safety"><span class="h2-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></span><span class="lang-en">Safety & Efficacy</span><span class="lang-zh">安全与有效性</span></h2>
-      <p class="lang-en">Safety is engineered into the sequence, not just monitored in the clinic.</p>
-      <p class="lang-zh">安全性是设计进序列中的，而不仅仅是在临床中监测。</p>
-      <ul class="lang-en">
+      <h2 id="safety"><span class="h2-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></span>Safety & Efficacy</h2>
+      <p>Safety is engineered into the sequence, not just monitored in the clinic.</p>
+      
+      <ul>
         <li><strong>Safety Switches</strong> — <strong>iCasp9</strong> (Standard, >95% clearance), <strong>tEGFR</strong> (ADCC), <strong>RQR8</strong> (CD20 mimotope).</li>
         <li><strong>Logic Gating</strong> — <strong>SynNotch</strong> (AND gate for specificity), <strong>iCAR</strong> (Inhibitory CAR for normal tissue protection).</li>
         <li><strong>Toxicity Management</strong> — 4-1BB to reduce CRS peak; Local delivery to minimize systemic toxicity.</li>
       </ul>
-      <ul class="lang-zh">
-        <li><strong>安全开关</strong> — <strong>iCasp9</strong> (标准, >95% 清除), <strong>tEGFR</strong> (ADCC), <strong>RQR8</strong> (CD20 拟态表位)。</li>
-        <li><strong>逻辑门控</strong> — <strong>SynNotch</strong> (AND 门提升特异性), <strong>iCAR</strong> (抑制型 CAR 保护正常组织)。</li>
-        <li><strong>毒性管理</strong> — 使用 4-1BB 降低 CRS 峰值；局部递送减少全身毒性。</li>
-      </ul>
 
-      <h2 id="full-report"><span class="h2-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg></span><span class="lang-en">Full Design Report</span><span class="lang-zh">完整设计报告</span></h2>
-      <p class="lang-en">We deliver a comprehensive design package ready for synthesis and testing.</p>
-      <p class="lang-zh">我们交付可直接用于合成与测试的完整设计包。</p>
-      <ul class="lang-en">
+      <h2 id="full-report"><span class="h2-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg></span>Full Design Report</h2>
+      <p>We deliver a comprehensive design package ready for synthesis and testing.</p>
+      
+      <ul>
         <li><strong>Construct Sequences</strong> — Optimized DNA/Amino Acid sequences for the full CAR construct (Binder-Hinge-TM-Signaling-Armor).</li>
         <li><strong>Vector Map</strong> — Plasmid/Lentiviral vector design with promoters (EF1α/MSCV) and regulatory elements.</li>
         <li><strong>Rationale</strong> — Detailed explanation of component selection based on disease context and target topology.</li>
         <li><strong>Experimental Plan</strong> — Recommended in vitro (killing, cytokine) and in vivo (mouse model) validation protocols.</li>
       </ul>
-      <ul class="lang-zh">
-        <li><strong>构建体序列</strong> — 完整 CAR 构建体（Binder-铰链-跨膜-信号-铠甲）的优化 DNA/氨基酸序列。</li>
-        <li><strong>载体图谱</strong> — 含启动子 (EF1α/MSCV) 和调控元件的质粒/慢病毒载体设计。</li>
-        <li><strong>设计原理</strong> — 基于疾病背景和抗原拓扑学的组件选择详细说明。</li>
-        <li><strong>实验方案</strong> — 推荐的体外（杀伤、细胞因子）及体内（小鼠模型）验证方案。</li>
-      </ul>
 
-      <h2 id="submit"><span class="h2-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg></span><span class="lang-en">Submit Inquiry</span><span class="lang-zh">提交咨询</span></h2>
-      <p class="lang-en">Tell us about your target and disease indication. We will provide a tailored CAR design proposal.</p>
-      <p class="lang-zh">请告知您的靶点和疾病适应症。我们将提供定制化的 CAR 设计方案。</p>
+      <h2 id="submit"><span class="h2-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg></span>Submit Inquiry</h2>
+      <p>Tell us about your target and disease indication. We will provide a tailored CAR design proposal.</p>
 
       <div class="form-section">
         <form id="inquiry-form" action="https://formspree.io/f/mnjblezr" method="POST">
           <input type="hidden" name="_subject" value="InSynBio CAR-T Inquiry">
           <input type="hidden" name="_next" value="https://insynbio.com/thanks.html">
           
-          <h3 style="margin-top: 0; margin-bottom: 20px;"><span class="lang-en">Project Details</span><span class="lang-zh">项目详情</span></h3>
+          <h3 style="margin-top: 0; margin-bottom: 20px;">Project Details</h3>
           <div class="form-row">
             <div class="form-group">
-              <label><span class="lang-en">Disease Type *</span><span class="lang-zh">疾病类型 *</span></label>
+              <label>Disease Type *</label>
               <select name="disease_type" required>
                 <option value="" disabled selected>Select...</option>
                 <option value="solid">Solid Tumor (实体瘤)</option>
@@ -487,35 +446,35 @@
               </select>
             </div>
             <div class="form-group">
-              <label><span class="lang-en">Target Antigen *</span><span class="lang-zh">靶点抗原 *</span></label>
+              <label>Target Antigen *</label>
               <input type="text" name="target" placeholder="e.g., GPC3, BCMA, CD19" required>
             </div>
           </div>
 
           <div class="form-group full">
-            <label><span class="lang-en">Service Requirements</span><span class="lang-zh">服务需求</span></label>
+            <label>Service Requirements</label>
             <div class="check-group">
-              <div class="check-item"><input type="checkbox" name="services" id="s1" value="design"><label for="s1"><span class="lang-en">De Novo CAR Design</span><span class="lang-zh">从头 CAR 设计</span></label></div>
-              <div class="check-item"><input type="checkbox" name="services" id="s2" value="optimization"><label for="s2"><span class="lang-en">Sequence Optimization (Humanization/Affinity)</span><span class="lang-zh">序列优化（人源化/亲和力）</span></label></div>
-              <div class="check-item"><input type="checkbox" name="services" id="s3" value="cro"><label for="s3"><span class="lang-en">CRO Validation (In vitro/In vivo)</span><span class="lang-zh">CRO 验证（体外/体内）</span></label></div>
-              <div class="check-item"><input type="checkbox" name="services" id="s4" value="full"><label for="s4"><span class="lang-en">Full End-to-End Package</span><span class="lang-zh">完整端到端包</span></label></div>
-              <div class="check-item"><input type="checkbox" name="services" id="s_other" value="other"><label for="s_other"><span class="lang-en">Other / Custom Request</span><span class="lang-zh">其他 / 定制需求</span></label></div>
+              <div class="check-item"><input type="checkbox" name="services" id="s1" value="design"><label for="s1">De Novo CAR Design</label></div>
+              <div class="check-item"><input type="checkbox" name="services" id="s2" value="optimization"><label for="s2">Sequence Optimization (Humanization/Affinity)</label></div>
+              <div class="check-item"><input type="checkbox" name="services" id="s3" value="cro"><label for="s3">CRO Validation (In vitro/In vivo)</label></div>
+              <div class="check-item"><input type="checkbox" name="services" id="s4" value="full"><label for="s4">Full End-to-End Package</label></div>
+              <div class="check-item"><input type="checkbox" name="services" id="s_other" value="other"><label for="s_other">Other / Custom Request</label></div>
             </div>
           </div>
 
           <div class="form-group full">
-            <label><span class="lang-en">Chassis / Delivery Preference (Optional)</span><span class="lang-zh">底盘/递送偏好（可选）</span></label>
+            <label>Chassis / Delivery Preference (Optional)</label>
             <div class="check-group">
-              <div class="check-item"><input type="checkbox" name="chassis" id="c1" value="cart"><label for="c1"><span class="lang-en">CAR-T (αβ)</span><span class="lang-zh">CAR-T (αβ)</span></label></div>
-              <div class="check-item"><input type="checkbox" name="chassis" id="c2" value="carnk"><label for="c2"><span class="lang-en">CAR-NK</span><span class="lang-zh">CAR-NK</span></label></div>
-              <div class="check-item"><input type="checkbox" name="chassis" id="c3" value="carm"><label for="c3"><span class="lang-en">CAR-M</span><span class="lang-zh">CAR-M</span></label></div>
-              <div class="check-item"><input type="checkbox" name="chassis" id="c4" value="gamma"><label for="c4"><span class="lang-en">γδ T</span><span class="lang-zh">γδ T</span></label></div>
-              <div class="check-item"><input type="checkbox" name="chassis" id="c5" value="invivo"><label for="c5"><span class="lang-en">In Vivo CAR (e.g. LNP-mRNA)</span><span class="lang-zh">体内 CAR（如 LNP-mRNA）</span></label></div>
+              <div class="check-item"><input type="checkbox" name="chassis" id="c1" value="cart"><label for="c1">CAR-T (αβ)</label></div>
+              <div class="check-item"><input type="checkbox" name="chassis" id="c2" value="carnk"><label for="c2">CAR-NK</label></div>
+              <div class="check-item"><input type="checkbox" name="chassis" id="c3" value="carm"><label for="c3">CAR-M</label></div>
+              <div class="check-item"><input type="checkbox" name="chassis" id="c4" value="gamma"><label for="c4">γδ T</label></div>
+              <div class="check-item"><input type="checkbox" name="chassis" id="c5" value="invivo"><label for="c5">In Vivo CAR (e.g. LNP-mRNA)</label></div>
             </div>
           </div>
 
           <div class="form-group full">
-            <label for="message"><span class="lang-en">Additional context (e.g., binder sequence, specific constraints)</span><span class="lang-zh">补充背景（如：Binder 序列、特定约束）</span></label>
+            <label for="message">Additional context (e.g., binder sequence, specific constraints)</label>
             <textarea id="message" name="message" placeholder="Describe your project goals..." style="min-height: 100px;"></textarea>
           </div>
           <div class="form-group full" style="margin-top: 16px;">
@@ -523,27 +482,27 @@
               <div class="check-item">
                 <input type="checkbox" name="newsletter" id="newsletter" value="yes">
                 <label for="newsletter">
-                  <span class="lang-en">Join mailing list for news and service updates</span>
-                  <span class="lang-zh">加入邮件组，获取动态与服务更新</span>
+                  Join mailing list for news and service updates
+                  
                 </label>
               </div>
             </div>
           </div>
 
-          <h3 style="margin-top: 24px; margin-bottom: 20px;"><span class="lang-en">Contact Information</span><span class="lang-zh">联系信息</span></h3>
+          <h3 style="margin-top: 24px; margin-bottom: 20px;">Contact Information</h3>
           <div class="form-row">
             <div class="form-group">
-              <label for="fname"><span class="lang-en">First Name *</span><span class="lang-zh">名 *</span></label>
+              <label for="fname">First Name *</label>
               <input type="text" id="fname" name="fname" required>
             </div>
             <div class="form-group">
-              <label for="lname"><span class="lang-en">Last Name *</span><span class="lang-zh">姓 *</span></label>
+              <label for="lname">Last Name *</label>
               <input type="text" id="lname" name="lname" required>
             </div>
           </div>
           <div class="form-row">
             <div class="form-group">
-              <label for="org"><span class="lang-en">Organization *</span><span class="lang-zh">单位 *</span></label>
+              <label for="org">Organization *</label>
               <input type="text" id="org" name="org" required>
             </div>
             <div class="form-group">
@@ -553,18 +512,17 @@
           </div>
           
           <div style="margin-top: 24px;">
-            <button type="submit" class="btn"><span class="lang-en">Submit Inquiry</span><span class="lang-zh">提交咨询</span></button>
+            <button type="submit" class="btn">Submit Inquiry</button>
           </div>
         </form>
       </div>
 
       <!-- Contact -->
-      <h2 id="contact"><span class="h2-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></span><span class="lang-en">Contact</span><span class="lang-zh">联系方式</span></h2>
-      <p class="lang-en">For inquiries, please submit the form above or email us directly:</p>
-      <p class="lang-zh">咨询请使用上方表单或直接发送邮件：</p>
+      <h2 id="contact"><span class="h2-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></span>Contact</h2>
+      <p>For inquiries, please submit the form above or email us directly:</p>
+      
       <p style="margin: 16px 0;"><a href="mailto:contact@insynbio.com" style="font-size: 18px; font-weight: 600; color: var(--primary);">contact@insynbio.com</a></p>
-      <p class="lang-en" style="color: var(--text-muted); font-size: 14px;">We typically respond within 1–2 business days.</p>
-      <p class="lang-zh" style="color: var(--text-muted); font-size: 14px;">我们通常在 1–2 个工作日内回复。</p>
+      <p  style="color: var(--text-muted); font-size: 14px;">We typically respond within 1–2 business days.</p>
       
       <footer class="site-footer">
         <p>© 2026 InSynBio · <a href="https://insynbio.com">insynbio.com</a> · <a href="mailto:contact@insynbio.com">contact@insynbio.com</a></p>
@@ -600,38 +558,7 @@
       });
     }, { rootMargin: '-20% 0px -60% 0px' });
     sections.forEach(id => { const el = document.getElementById(id); if (el) observer.observe(el); });
-    (function() {
-      const KEY = 'insynbio-lang';
-      const ZH_REGIONS = ['CN', 'TW', 'HK', 'MO'];
-      function applyLang(lang) {
-        document.body.setAttribute('data-lang', lang);
-        document.querySelectorAll('.lang-btn').forEach(b => {
-          b.classList.toggle('active', b.dataset.lang === lang);
-        });
-        document.title = lang === 'zh' ? '智慧 CAR-T 设计 | InSynBio' : 'Smart CAR-T Design | InSynBio';
-      }
-      var saved = localStorage.getItem(KEY);
-      if (saved === 'zh' || saved === 'en') {
-        applyLang(saved);
-      } else {
-        var initial = (navigator.language && navigator.language.toLowerCase().indexOf('zh') === 0) ? 'zh' : 'en';
-        applyLang(initial);
-        fetch('https://ipapi.co/json/').then(function(r) { return r.json(); }).then(function(data) {
-          var code = (data && data.country_code) ? data.country_code.toUpperCase() : '';
-          var lang = ZH_REGIONS.indexOf(code) >= 0 ? 'zh' : 'en';
-          localStorage.setItem(KEY, lang);
-          applyLang(lang);
-        }).catch(function() {});
-      }
-      document.querySelectorAll('.lang-btn').forEach(btn => {
-        btn.addEventListener('click', function(e) {
-          e.preventDefault();
-          const lang = this.dataset.lang;
-          localStorage.setItem(KEY, lang);
-          applyLang(lang);
-        });
-      });
-    })();
+    
     // Form submission
     const form = document.getElementById('inquiry-form');
     if (form) {

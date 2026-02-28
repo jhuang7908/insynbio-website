@@ -1,21 +1,21 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="InSynBio Bispecific Antibody Engineering Platform — AI-driven design for multispecifics. Nano-Convert (VH-to-VHH), SmartLink optimization, and Virtual CMC for IgG-like pairing.">
-  <meta name="keywords" content="bispecific antibody, multispecific, VH to VHH, nanobody, smart linker, IgG-like pairing, knob-in-hole, crossmab, antibody engineering, InSynBio">
-  <title>Bispecific Engineering | InSynBio — AI for Life Sciences</title>
+  <meta name="description" content="Therasik Bispecific Antibody Engineering Platform — AI-driven design for multispecifics. Nano-Convert (VH-to-VHH), SmartLink optimization, and Virtual CMC for IgG-like pairing.">
+  <meta name="keywords" content="bispecific antibody, multispecific, VH to VHH, nanobody, smart linker, IgG-like pairing, knob-in-hole, crossmab, antibody engineering, Therasik">
+  <title>Bispecific Engineering | Therasik — AI for Life Sciences</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Noto+Sans+SC:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&family=Noto+Sans+SC:wght@400;500&display=swap" rel="stylesheet">
   <style>
-    :root { --primary: #0d9488; --primary-dark: #0f766e; --text: #1f2937; --text-muted: #6b7280; --border: #e5e7eb; --bg: #ffffff; --bg-alt: #f9fafb; }
+    :root { --primary: #2563eb; --primary-dark: #1e40af; --text: #1f2937; --text-muted: #6b7280; --border: #e5e7eb; --bg: #ffffff; --bg-alt: #f9fafb; }
     * { box-sizing: border-box; }
     body { margin: 0; font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 16px; line-height: 1.6; color: var(--text); background: var(--bg-alt); }
     /* T-shaped: top header + sidebar + main */
     .top-header { display: flex; align-items: center; justify-content: space-between; padding: 10px 24px; background: var(--bg); border-bottom: 1px solid var(--border); flex-shrink: 0; gap: 16px; flex-wrap: wrap; }
-    .top-header .brand { font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 600; font-size: 24px; letter-spacing: -0.02em; display: flex; align-items: center; }
+    .top-header .brand { font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 24px; letter-spacing: -0.02em; display: flex; align-items: center; }
     .top-header .brand a { text-decoration: none; color: inherit; display: flex; align-items: center; gap: 9px; }
     .top-header .brand .syn { color: var(--primary); font-style: italic; font-weight: 700; }
     .top-header .slogan { font-size: 13px; color: var(--text-muted); margin-left: 0; padding-left: 14px; border-left: 1px solid var(--border); font-family: 'Inter', sans-serif; white-space: nowrap; }
@@ -35,11 +35,11 @@
     .top-header-nav a.active { background: var(--primary); color: #fff; font-weight: 500; }
     .top-header-nav a.active:hover,
     .top-header-nav a.active:focus { background: var(--primary-dark); color: #fff; }
-    .top-header-nav a[href="index.html"],
-    .top-header-nav a[href="index.html"].active { background: transparent; color: var(--text-muted); }
-    .top-header-nav a[href="index.html"]:hover { color: var(--primary); background: var(--bg-alt); }
+    .top-header-nav a[href="therasik_index.html"],
+    .top-header-nav a[href="therasik_index.html"].active { background: transparent; color: var(--text-muted); }
+    .top-header-nav a[href="therasik_index.html"]:hover { color: var(--primary); background: var(--bg-alt); }
     .top-header .header-right { display: flex; align-items: center; gap: 16px; }
-    .top-header 
+    .top-header .lang-switch { margin: 0; }
     .page-wrap { display: flex; min-height: calc(100vh - 57px); }
     .sidebar { width: 260px; flex-shrink: 0; background: var(--bg); border-right: 1px solid var(--border); padding: 28px 0; position: sticky; top: 0; height: 100vh; overflow-y: auto; }
     .sidebar h3 { font-size: 12px; font-weight: 600; color: var(--text-muted); margin: 0 24px 12px; padding-top: 4px; text-transform: uppercase; letter-spacing: 1px; }
@@ -68,7 +68,7 @@
     .form-group input:focus, .form-group select:focus, .form-group textarea:focus { outline: none; border-color: var(--primary); box-shadow: 0 0 0 2px rgba(13,148,136,0.15); }
     .form-group .hint { font-size: 13px; color: var(--text-muted); margin-top: 6px; }
     .form-group .hint a { color: var(--primary); }
-    .btn { padding: 14px 28px; background: var(--primary); color: #fff; border: none; border-radius: 8px; font-size: 15px; font-weight: 500; cursor: pointer; }
+    .btn { padding: 14px 28px; background: var(--primary); color: #fff; border: none; border-radius: 30px; font-size: 15px; font-weight: 500; cursor: pointer; }
     .btn:hover { background: var(--primary-dark); }
     .check-group { display: flex; flex-wrap: wrap; gap: 16px; margin: 16px 0; }
     .check-item { display: flex; align-items: center; gap: 10px; }
@@ -92,21 +92,25 @@
     .file-upload-btn { padding: 10px 18px; background: var(--bg-alt); border: 1px solid var(--border); border-radius: 6px; font-size: 14px; cursor: pointer; color: var(--text); }
     .file-upload-btn:hover { border-color: var(--primary); color: var(--primary); }
     .file-upload-name { font-size: 14px; color: var(--text-muted); }
-    .brand-logo { font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 600; font-size: 28px; letter-spacing: -0.02em; line-height: 1.2; margin-bottom: 24px; padding: 0 24px; }
+    .brand-logo { font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 28px; letter-spacing: -0.02em; line-height: 1.2; margin-bottom: 24px; padding: 0 24px; }
     .brand-logo a { text-decoration: none; color: inherit; display: inline-block; transition: opacity 0.2s; }
     .brand-logo a:hover { opacity: 0.85; }
     .brand-logo .in { color: var(--text); }
     .brand-logo .syn { color: var(--primary); font-style: italic; font-weight: 700; }
     .brand-logo .bio { color: var(--text); }
     .brand-logo .tagline { font-family: 'Inter', sans-serif; font-size: 10px; font-weight: 500; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1.5px; margin-top: 4px; font-style: normal; }
-
+    .lang-switch { display: flex; gap: 4px; margin: 0 24px 20px; }
+    .lang-switch button { padding: 6px 12px; font-size: 13px; border: 1px solid var(--border); background: var(--bg); color: var(--text-muted); border-radius: 6px; cursor: pointer; font-family: 'Noto Sans SC', 'Inter', sans-serif; transition: all 0.2s; }
+    .lang-switch button:hover { border-color: var(--primary); color: var(--primary); }
+    .lang-switch button.active { background: var(--primary); color: #fff; border-color: var(--primary); }
+    body[data-lang="zh"] .lang-en { display: none !important; }
+    body[data-lang="zh"] .lang-zh { display: none !important; }
     .site-footer { margin-top: 48px; padding-top: 24px; border-top: 1px solid var(--border); font-size: 13px; color: var(--text-muted); text-align: center; }
     .site-footer a { color: var(--primary); text-decoration: none; }
     .site-footer a:hover { text-decoration: underline; }
     .mission-block { background-color: #ffffff; background-image: linear-gradient(to bottom, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0.95) 100%), url('images/hero-bg.svg'); background-size: cover; background-position: center; border-radius: 12px; padding: 32px; margin-bottom: 32px; border: 1px solid rgba(13,148,136,0.1); border-left: 4px solid var(--primary); box-shadow: 0 4px 12px rgba(13,148,136,0.05); }
     .mission-block p { margin: 0; font-size: 16px; line-height: 1.7; color: var(--text); }
     .mission-block p + p { margin-top: 14px; }
-    
     /* Responsive styles */
     @media (max-width: 900px) {
       .top-header { flex-wrap: wrap; padding: 12px 16px; gap: 10px; }
@@ -124,63 +128,60 @@
     }
   </style>
 </head>
-<body data-lang="en" id="insynbio-body">
+<body data-lang="zh" id="therasik-body">
   <header class="top-header">
     <div class="brand">
-      <a href="index.html" style="display: flex; align-items: center; gap: 10px; text-decoration: none;">
-        <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <a href="therasik_index.html" style="display: flex; align-items: center; gap: 10px; text-decoration: none;">
+        <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink:0">
           <defs>
-            <linearGradient id="logo_grad_2" x1="0" y1="0" x2="32" y2="32" gradientUnits="userSpaceOnUse">
-              <stop stop-color="#0d9488" />
-              <stop offset="1" stop-color="#2dd4bf" />
+            <linearGradient id="logo_grad_new" x1="4" y1="2" x2="28" y2="30" gradientUnits="userSpaceOnUse">
+              <stop stop-color="#2563eb"/>
+              <stop offset="1" stop-color="#60a5fa"/>
             </linearGradient>
           </defs>
-          <path d="M7 6L16 18V28" stroke="url(#logo_grad_2)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-          <path d="M25 6L16 18" stroke="url(#logo_grad_2)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-          <circle cx="7" cy="6" r="2" fill="#0f766e" />
-          <circle cx="25" cy="6" r="2" fill="#0f766e" />
-          <circle cx="16" cy="18" r="2" fill="white" stroke="#0d9488" stroke-width="1.5"/>
+          <path d="M16 3L27.2583 9.5V22.5L16 29L4.74167 22.5V9.5L16 3Z" stroke="url(#logo_grad_new)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="16" cy="16" r="3.5" fill="#1e40af"/>
+          <path d="M16 16L4.74167 9.5M16 16L27.2583 9.5M16 16L16 29" stroke="#2563eb" stroke-width="1.5" stroke-opacity="0.5"/>
         </svg>
         <span style="font-family: 'Cormorant Garamond', serif; font-weight: 700; font-size: 26px; color: #1f2937; letter-spacing: -0.02em;">
-          In<span style="color: #0d9488;">Syn</span>Bio
+          Thera<span style="color: #2563eb;">sik</span>
         </span>
       </a>
-      <span class="slogan">AI for Life Sciences</span>
-      
+      <span class="slogan">AI 赋能生命科学</span>
     </div>
     <nav class="top-header-nav">
-      <a href="index.html">Home</a>
-      <a href="index.html#about">About Us</a>
+      <a href="therasik_index.html">首页</a>
+      <a href="therasik_index.html#about">关于我们</a>
       <div class="nav-dropdown" tabindex="0">
-        <a href="index.html#services">Services</a>
+        <a href="therasik_index.html#services">服务</a>
         <div class="dropdown-menu">
-          <a href="InSynBio_Antibody_Developability_Assessment_Page.html">
-            <span class="menu-title">Antibody</span>
-            <span class="menu-desc">Structure-based Development</span>
+          <a href="Therasik_Antibody_Developability_Assessment_Page.html">
+            <span class="menu-title">抗体评估</span>
+            <span class="menu-desc">基于结构的抗体开发</span>
           </a>
-          <a href="InSynBio_Bispecific_Antibody_Design_Page.html">
-            <span class="menu-title">Bispecific</span>
-            <span class="menu-desc">Multispecific Engineering</span>
+          <a href="Therasik_Bispecific_Antibody_Design_Page.html">
+            <span class="menu-title">双特异抗体</span>
+            <span class="menu-desc">多特异性工程</span>
           </a>
-          <a href="InSynBio_CART_Design_Page.html">
+          <a href="Therasik_CART_Design_Page.html">
             <span class="menu-title">CAR-T</span>
-            <span class="menu-desc">Smart CAR-T Design</span>
+            <span class="menu-desc">智慧 CAR-T 设计</span>
           </a>
         </div>
       </div>
-      <a href="#submit">Submit Inquiry</a>
-      <a href="#contact">Contact</a>
+      <a href="#submit">提交咨询</a>
+      <a href="#contact">联系</a>
     </nav>
-    
+    <div class="header-right">
+    </div>
   </header>
   <div class="page-wrap">
     <aside class="sidebar">
-      <h3>Bispecific Platform</h3>
-      
+      <h3 >双特异性平台</h3>
       <nav>
         <a href="#platform" class="nav-link active">
           <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
-          Platform
+          平台
         </a>
         <a href="#nano-convert" class="nav-link">
           <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 3h5v5M4 20L21 3M21 16v5h-5M15 15l-6 6"/><path d="M4 4l5 5"/></svg>
@@ -192,184 +193,159 @@
         </a>
         <a href="#audit" class="nav-link">
           <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20V10"/><path d="M18 20V4"/><path d="M6 20v-4"/></svg>
-          Structural Audit
+          结构审计
         </a>
         <a href="#virtual-cmc" class="nav-link">
           <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
-          Virtual CMC
+          虚拟 CMC
         </a>
         <a href="#full-report" class="nav-link">
           <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
-          Full Report
+          完整报告
         </a>
         <a href="#submit" class="nav-link">
           <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
-          Submit Inquiry
+          提交咨询
         </a>
         <a href="#contact" class="nav-link">
           <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-          Contact
+          联系方式
         </a>
       </nav>
     </aside>
     <main class="main">
       <div class="breadcrumb">
-        <a href="index.html">Home</a><span>/</span><a href="index.html#services">Services</a><span>/</span><span>Bispecific</span>
+        <a href="therasik_index.html">首页</a><span>/</span><a href="therasik_index.html#services">服务</a><span>/</span><span>双特异抗体</span>
       </div>
-
       <!-- Hero / Mission -->
       <div class="mission-block">
-        <p><strong>Bispecific Engineering Platform:</strong> Navigate the complexity of multispecific design. Our suite includes <strong>Nano-Convert™</strong> (VH-to-VHH) for modular architecture, <strong>SmartLink™</strong> optimization for precise epitope engagement, and <strong>Virtual CMC</strong> to resolve chain mispairing in IgG-like formats.</p>
-        
-        <p>Powered by our <strong>Clinical Knowledge Base of 125+ molecules</strong>. For engineering, we utilize specialized structural benchmarks: <strong>84+ validated linker geometries</strong> (covering scFv & IgG-scFv fusions) and <strong>75+ IgG-like architectures</strong> (including 50 four-arm & 23 common-LC) for pairing risk assessment. <a href="index.html#about">Learn more →</a></p>
-        
+        <p ><strong>双特异抗体工程平台：</strong>驾驭多特异性抗体设计的复杂性。我们的服务套件包含用于模块化架构的 <strong>Nano-Convert™ (VH转VHH)</strong>、用于精准表位结合的 <strong>SmartLink™ (智能连接子)</strong> 优化，以及解决 IgG-like 格式错配风险的 <strong>Virtual CMC (虚拟工艺)</strong>。</p>
+        <p >由包含 <strong>125+ 款临床分子</strong> 的知识库驱动。在工程化方面，我们利用专业的结构基准：用于 scFv 优化的 <strong>84+ 验证 Linker 几何</strong>（覆盖 scFv 及 IgG-scFv 融合），以及用于配对风险评估的 <strong>75+ IgG-like 架构</strong>（含 50 个四臂和 23 个通用轻链）。<a href="therasik_index.html#about">了解更多 →</a></p>
       </div>
-
-      <h1>Bispecific Antibody Engineering</h1>
-      <p class="subtitle">Structure-Guided Design for Next-Generation Multispecifics.</p>
-      
-      <p class="disclaimer">Disclaimer: InSynBio in silico analyses are for reference only and do not replace final wet-lab validation. Experimental confirmation is required.</p>
-
-      <h2 id="platform"><span class="h2-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg></span>AI-Native Design Platform</h2>
-      <p>Our platform integrates clinical data with structural AI to de-risk multispecific development. We don't just model; we benchmark.</p>
-      
-      <ul>
-        <li><strong>Clinical Knowledge Base (125+)</strong> — Comprehensive analysis of 125+ clinical-stage bispecifics to guide target pairing and format selection.</li>
-        <li><strong>Structural Benchmark (84+)</strong> — A proprietary dataset of 84 validated linker geometries (scFv & IgG-scFv fusions) to prevent conformational collapse.</li>
-        <li><strong>CMC Benchmark (75+)</strong> — Deep structural metrics from 75 IgG-like architectures (50 Four-Arm + 23 Common-LC + 2 VHH-IgG) to predict mispairing risks.</li>
+      <h1>双特异性抗体工程</h1>
+      <p class="subtitle">结构引导的下一代多特异性抗体设计。</p>
+      <p class="disclaimer lang-zh">免责声明：Therasik 的 in silico 分析仅供参考，不能替代最终湿实验验证。需进行实验确认。</p>
+      <h2 id="platform"><span class="h2-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg></span>AI 原生设计平台</h2>
+      <p >我们的平台将临床数据与结构 AI 相结合，降低多特异性药物开发风险。我们不仅建模，更提供基准对齐。</p>
+      <ul >
+        <li><strong>临床知识库 (125+)</strong> — 综合分析 125+ 款临床阶段双抗，指导靶点配对与格式选择。</li>
+        <li><strong>结构基准 (84+)</strong> — 包含 84 款验证过的 Linker 几何（scFv 及 IgG-scFv 融合）的专有数据集，防止构象塌陷。</li>
+        <li><strong>CMC 基准 (75+)</strong> — 来自 75 种 IgG-like 架构（50 个四臂 + 23 个通用轻链 + 2 个 VHH-IgG）的深度结构指标，用于预测错配风险。</li>
       </ul>
-
-      <h2 id="nano-convert"><span class="h2-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 3h5v5M4 20L21 3M21 16v5h-5M15 15l-6 6"/><path d="M4 4l5 5"/></svg></span>Nano-Convert™ (VH to VHH)</h2>
-      <p>Unlock the power of Nanobodies from your existing antibody assets. No llama immunization required.</p>
-      
+      <h2 id="nano-convert"><span class="h2-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 3h5v5M4 20L21 3M21 16v5h-5M15 15l-6 6"/><path d="M4 4l5 5"/></svg></span>Nano-Convert™ (VH 转 VHH)</h2>
+      <p >利用现有抗体资产解锁纳米抗体的潜力。无需羊驼免疫。</p>
       <div class="table-wrap">
       <table style="width:100%; border-collapse: collapse;">
         <thead>
           <tr>
-            <th>Feature</th>
-            <th>Description</th>
+            <th>特性</th>
+            <th>描述</th>
           </tr>
         </thead>
         <tbody>
           <tr>
             <td><strong>Camelization</strong></td>
-            <td>Introduction of VHH hallmark mutations (FR2) to solubility VH domains without light chains.</td>
+            <td>引入 VHH 特征突变 (FR2)，使 VH 结构域在无轻链情况下可溶。</td>
           </tr>
           <tr>
             <td><strong>Tier-Based Humanization</strong></td>
-            <td>Proprietary Tier 0-3 system to balance immunogenicity and affinity. Preserves critical Vernier Zone residues.</td>
+            <td>专有的 Tier 0-3 分级系统，平衡免疫原性与亲和力。保留关键 Vernier 区残基。</td>
           </tr>
           <tr>
             <td><strong>Affinity Recovery</strong></td>
-            <td>Structure-guided CDR back-mutations to restore binding lost during scaffold transfer.</td>
+            <td>结构引导的 CDR 回复突变，恢复骨架移植中损失的结合力。</td>
           </tr>
         </tbody>
       </table>
       </div>
-
-      <h2 id="smartlink"><span class="h2-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg></span>SmartLink™ Optimization</h2>
-      <p>Data-driven linker selection, not guesswork. We screen your design against our library of clinical linkers.</p>
-      
-      <ul>
-        <li><strong>Geometry Matching</strong> — Selects linker length (G4S, EAAAK, etc.) based on the precise distance between epitopes.</li>
-        <li><strong>Co-folding Validation</strong> — AlphaFold2 Multimer modeling of the ternary complex (Ab + Ag1 + Ag2) to verify simultaneous binding.</li>
-        <li><strong>Flexibility Scoring</strong> — Balances entropic penalty (too flexible) vs. steric hindrance (too rigid).</li>
+      <h2 id="smartlink"><span class="h2-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg></span>SmartLink™ 智能连接子优化</h2>
+      <p >数据驱动的 Linker 选择，而非猜测。我们将您的设计与临床 Linker 库进行筛选比对。</p>
+      <ul >
+        <li><strong>几何匹配</strong> — 根据表位间的精确距离选择 Linker 长度（G4S, EAAAK 等）。</li>
+        <li><strong>共折叠验证</strong> — 三元复合物（抗体+抗原1+抗原2）的 AlphaFold2 Multimer 建模，验证同时结合能力。</li>
+        <li><strong>柔性评分</strong> — 平衡熵损失（太柔）与空间位阻（太刚）。</li>
       </ul>
-
-      <h2 id="audit"><span class="h2-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20V10"/><path d="M18 20V4"/><path d="M6 20v-4"/></svg></span>Structural Audit</h2>
-      <p>Benchmark your design against clinical-stage therapeutics. Know your risk profile before you clone.</p>
-      
-      <p><strong>Deliverable: The Scoring Card</strong></p>
-      
-      <ul>
-        <li><strong>Stability Score</strong> (pLDDT, PAE)</li>
-        <li><strong>Interface Quality</strong> (BSA, Sc, H-bonds)</li>
-        <li><strong>Domain Orientation</strong> (VH-VL angles vs. clinical distribution)</li>
-        <li><strong>Risk Ranking</strong> (Top 10% / Median / Bottom 10%)</li>
+      <h2 id="audit"><span class="h2-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20V10"/><path d="M18 20V4"/><path d="M6 20v-4"/></svg></span>结构审计</h2>
+      <p >将您的设计与临床阶段药物进行基准对比。在构建克隆前了解风险概况。</p>
+      <p ><strong>交付物：评分卡</strong></p>
+      <ul >
+        <li><strong>稳定性评分</strong> (pLDDT, PAE)</li>
+        <li><strong>界面质量</strong> (BSA, Sc, 氢键)</li>
+        <li><strong>结构域取向</strong> (VH-VL 夹角 vs 临床分布)</li>
+        <li><strong>风险排名</strong> (前 10% / 中位数 / 后 10%)</li>
       </ul>
-
-      <h2 id="virtual-cmc"><span class="h2-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg></span>Virtual CMC</h2>
-      <p>Solve chain mispairing before wet-lab production. Essential for IgG-like formats (CrossMab, KiH).</p>
-      
-      <ul>
-        <li><strong>Mispairing Prediction</strong> — Energy gap calculation between correct (H1L1) and incorrect (H1L2) pairs.</li>
-        <li><strong>Interface Engineering</strong> — Design of charge repulsion (electrostatic steering) or steric complementarity mutations to enforce correct pairing.</li>
-        <li><strong>Developability Check</strong> — Full-spectrum assessment of aggregation (SAP), viscosity, and chemical stability.</li>
+      <h2 id="virtual-cmc"><span class="h2-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg></span>虚拟 CMC</h2>
+      <p >在湿实验生产前解决轻重链错配问题。对 IgG-like 格式（CrossMab, KiH）至关重要。</p>
+      <ul >
+        <li><strong>错配预测</strong> — 计算正确配对 (H1L1) 与错误配对 (H1L2) 之间的能量差。</li>
+        <li><strong>界面工程</strong> — 设计电荷排斥（静电引导）或空间互补突变以强制正确配对。</li>
+        <li><strong>可开发性检查</strong> — 聚集 (SAP)、粘度及化学稳定性的全谱评估。</li>
       </ul>
-
-      <h2 id="full-report"><span class="h2-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg></span>Full Design Report</h2>
-      <p>We deliver a comprehensive design package ready for synthesis.</p>
-      
-      <ul>
-        <li><strong>Optimized Sequences</strong> — DNA/AA sequences for all chains/domains.</li>
-        <li><strong>Structural Models</strong> — PDB files of the predicted bispecific molecule (and complex).</li>
-        <li><strong>Assessment Data</strong> — Detailed scoring cards and risk analysis.</li>
-        <li><strong>Rationale</strong> — Scientific justification for linker selection and mutations.</li>
+      <h2 id="full-report"><span class="h2-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg></span>完整设计报告</h2>
+      <p >我们交付可直接用于合成的完整设计包。</p>
+      <ul >
+        <li><strong>优化序列</strong> — 所有链/结构域的 DNA/氨基酸序列。</li>
+        <li><strong>结构模型</strong> — 预测的双特异性分子（及复合物）的 PDB 文件。</li>
+        <li><strong>评估数据</strong> — 详细的评分卡与风险分析。</li>
+        <li><strong>设计原理</strong> — Linker 选择与突变的科学依据。</li>
       </ul>
-
-      <h2 id="submit"><span class="h2-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg></span>Submit Inquiry</h2>
-      <p>Tell us about your project. We will provide a tailored design proposal.</p>
-
+      <h2 id="submit"><span class="h2-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg></span>提交咨询</h2>
+      <p >请告知您的项目情况。我们将提供定制化的设计方案。</p>
       <div class="form-section">
         <form id="inquiry-form" action="https://formspree.io/f/mnjblezr" method="POST">
-          <input type="hidden" name="_subject" value="InSynBio Bispecific Inquiry">
-          <input type="hidden" name="_next" value="https://insynbio.com/thanks.html">
-          
-          <h3 style="margin-top: 0; margin-bottom: 20px;">Project Scope</h3>
+          <input type="hidden" name="_subject" value="Therasik Bispecific Inquiry">
+          <input type="hidden" name="_next" value="https://therasik.com/thanks.html">
+          <h3 style="margin-top: 0; margin-bottom: 20px;">项目范围</h3>
           <div class="form-group full">
-            <label>Service Interest *</label>
+            <label>服务意向 *</label>
             <div class="check-group">
-              <div class="check-item"><input type="checkbox" name="services" id="s1" value="nano-convert"><label for="s1">Nano-Convert™ (VH to VHH)</label></div>
-              <div class="check-item"><input type="checkbox" name="services" id="s2" value="smartlink"><label for="s2">SmartLink™ Optimization</label></div>
-              <div class="check-item"><input type="checkbox" name="services" id="s3" value="audit"><label for="s3">Structural Audit / Scoring</label></div>
-              <div class="check-item"><input type="checkbox" name="services" id="s4" value="virtual-cmc"><label for="s4">Virtual CMC (IgG-like Pairing)</label></div>
-              <div class="check-item"><input type="checkbox" name="services" id="s5" value="full-design"><label for="s5">Full De Novo Design</label></div>
-              <div class="check-item"><input type="checkbox" name="services" id="s_other" value="other"><label for="s_other">Other / Custom Request</label></div>
-              <div class="check-item"><input type="checkbox" name="services" id="s_other" value="other"><label for="s_other">Other / Custom Request</label></div>
+              <div class="check-item"><input type="checkbox" name="services" id="s1" value="nano-convert"><label for="s1">Nano-Convert™ (VH 转 VHH)</label></div>
+              <div class="check-item"><input type="checkbox" name="services" id="s2" value="smartlink"><label for="s2">SmartLink™ 优化</label></div>
+              <div class="check-item"><input type="checkbox" name="services" id="s3" value="audit"><label for="s3">结构审计 / 评分</label></div>
+              <div class="check-item"><input type="checkbox" name="services" id="s4" value="virtual-cmc"><label for="s4">虚拟 CMC (IgG-like 配对)</label></div>
+              <div class="check-item"><input type="checkbox" name="services" id="s5" value="full-design"><label for="s5">完整从头设计</label></div>
+              <div class="check-item"><input type="checkbox" name="services" id="s_other" value="other"><label for="s_other">其他 / 定制需求</label></div>
+              <div class="check-item"><input type="checkbox" name="services" id="s_other" value="other"><label for="s_other">其他 / 定制需求</label></div>
             </div>
           </div>
-
           <div class="form-row">
             <div class="form-group">
-              <label>Target 1 *</label>
+              <label>靶点 1 *</label>
               <input type="text" name="target1" placeholder="e.g., CD3" required>
             </div>
             <div class="form-group">
-              <label>Target 2 *</label>
-              <input type="text" name="target2" placeholder="e.g., BCMA" required>
+              <label>靶点 2 *</label>
+              <input type="text" name="target2" placeholder="如：BCMA" required>
             </div>
           </div>
-
           <div class="form-group full">
-            <label>Preferred Format (Optional)</label>
+            <label>偏好格式（可选）</label>
             <select name="format">
-              <option value="" disabled selected>Select...</option>
-              <option value="scfv-bite">scFv-based (e.g., BiTE)</option>
-              <option value="igg-like">IgG-like (e.g., KiH, CrossMab)</option>
-              <option value="vhh">VHH-based (e.g., Tandem VHH, VHH-Fc)</option>
-              <option value="unsure">Unsure / Need Recommendation</option>
+              <option value="" disabled selected>请选择...</option>
+              <option value="scfv-bite">scFv 类 (如 BiTE)</option>
+              <option value="igg-like">IgG 类 (如 KiH, CrossMab)</option>
+              <option value="vhh">VHH 类 (如 Tandem VHH, VHH-Fc)</option>
+              <option value="unsure">不确定 / 寻求建议</option>
             </select>
           </div>
-
           <div class="form-group full">
-            <label for="message">Additional context (e.g., sequences, constraints)</label>
-            <textarea id="message" name="message" placeholder="Describe your project goals..." style="min-height: 100px;"></textarea>
+            <label for="message">补充背景（如：序列、约束条件）</label>
+            <textarea id="message" name="message" placeholder="请描述您的项目目标..." style="min-height: 100px;"></textarea>
           </div>
-
-          <h3 style="margin-top: 24px; margin-bottom: 20px;">Contact Information</h3>
+          <h3 style="margin-top: 24px; margin-bottom: 20px;">联系信息</h3>
           <div class="form-row">
             <div class="form-group">
-              <label for="fname">First Name *</label>
+              <label for="fname">名 *</label>
               <input type="text" id="fname" name="fname" required>
             </div>
             <div class="form-group">
-              <label for="lname">Last Name *</label>
+              <label for="lname">姓 *</label>
               <input type="text" id="lname" name="lname" required>
             </div>
           </div>
           <div class="form-row">
             <div class="form-group">
-              <label for="org">Organization *</label>
+              <label for="org">单位 *</label>
               <input type="text" id="org" name="org" required>
             </div>
             <div class="form-group">
@@ -377,22 +353,18 @@
               <input type="email" id="email" name="email" required>
             </div>
           </div>
-          
           <div style="margin-top: 24px;">
-            <button type="submit" class="btn">Submit Inquiry</button>
+            <button type="submit" class="btn">提交咨询</button>
           </div>
         </form>
       </div>
-
       <!-- Contact -->
-      <h2 id="contact"><span class="h2-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></span>Contact</h2>
-      <p>For inquiries, please submit the form above or email us directly:</p>
-      
-      <p style="margin: 16px 0;"><a href="mailto:contact@insynbio.com" style="font-size: 18px; font-weight: 600; color: var(--primary);">contact@insynbio.com</a></p>
-      <p  style="color: var(--text-muted); font-size: 14px;">We typically respond within 1–2 business days.</p>
-      
+      <h2 id="contact"><span class="h2-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></span>联系方式</h2>
+      <p >咨询请使用上方表单或直接发送邮件：</p>
+      <p style="margin: 16px 0;"><a href="mailto:contact@therasik.com" style="font-size: 18px; font-weight: 600; color: var(--primary);">contact@therasik.com</a></p>
+      <p  style="color: var(--text-muted); font-size: 14px;">我们通常在 1–2 个工作日内回复。</p>
       <footer class="site-footer">
-        <p>© 2026 InSynBio · <a href="https://insynbio.com">insynbio.com</a> · <a href="mailto:contact@insynbio.com">contact@insynbio.com</a></p>
+        <p>© 2026 Therasik · <a href="https://therasik.com">therasik.com</a> · <a href="mailto:contact@therasik.com">contact@therasik.com</a></p>
       </footer>
     </main>
   </div>
@@ -435,7 +407,6 @@
         const originalText = btn.innerText;
         btn.disabled = true;
         btn.innerText = document.body.getAttribute('data-lang') === 'zh' ? '提交中...' : 'Submitting...';
-
         const formData = new FormData(form);
         fetch(form.action, {
           method: 'POST',
