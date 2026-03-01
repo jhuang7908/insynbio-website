@@ -132,9 +132,12 @@
     .trust-label { font-size: 13px; color: var(--text-muted); font-weight: 500; letter-spacing: 0.02em; }
     .trust-divider { width: 1px; height: 40px; background: rgba(0,0,0,0.08); flex-shrink: 0; }
 
-    /* Scroll fade-in */
-    .fade-up { opacity: 0; transform: translateY(32px); transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1); }
-    .fade-up.visible { opacity: 1; transform: translateY(0); }
+    /* Scroll fade-in
+       Progressive enhancement: content is visible by default.
+       When JS is available, the `.js` class enables the animation. */
+    .fade-up { opacity: 1; transform: translateY(0); }
+    .js .fade-up { opacity: 0; transform: translateY(32px); transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1); }
+    .js .fade-up.visible { opacity: 1; transform: translateY(0); }
     .fade-up-d1 { transition-delay: 0.1s; }
     .fade-up-d2 { transition-delay: 0.2s; }
     .fade-up-d3 { transition-delay: 0.3s; }
@@ -475,6 +478,27 @@
           </div>
           <div class="case-cta">Sequence module →</div>
         </a>
+
+        <a class="case-card fade-up fade-up-d2" href="InSynBio_Antibody_Developability_Assessment_Page.html#developability">
+          <div class="case-media">
+            <picture>
+              <source srcset="images/case-cmc.webp" type="image/webp">
+              <source srcset="images/case-cmc.png" type="image/png">
+              <img src="images/case-cmc.svg" alt="CMC and aggregation risk placeholder">
+            </picture>
+          </div>
+          <div class="case-body">
+            <span class="case-tag">CMC</span>
+            <div class="case-title">Aggregation & CMC Risk Mitigation</div>
+            <p class="case-desc">Stability-focused redesign to reduce aggregation and chemical liabilities without sacrificing function.</p>
+            <ul class="case-bullets">
+              <li>Surface patch + chemical risk screening</li>
+              <li>FR-only mutation suggestions</li>
+              <li>Deliverable: risk summary + recommended actions</li>
+            </ul>
+          </div>
+          <div class="case-cta">Developability module →</div>
+        </a>
       </div>
     </div>
   </section>
@@ -647,6 +671,7 @@
   </div>
 
   <script>
+    document.documentElement.classList.add('js');
     function setNavActive() {
       var hash = window.location.hash || '';
       var homeLink = document.querySelector('.top-header-nav a[href="index.html"]');
@@ -673,9 +698,7 @@
 
     const fadeObserver = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-        }
+        if (entry.isIntersecting) entry.target.classList.add('visible');
       });
     }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
     document.querySelectorAll('.fade-up').forEach(el => fadeObserver.observe(el));

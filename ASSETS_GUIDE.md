@@ -24,6 +24,7 @@ Add any of these files (recommended: `.webp`) to replace the placeholder automat
 - `docs/images/case-vh2vhh.webp` (or `.png`)
 - `docs/images/case-affinity.webp` (or `.png`)
 - `docs/images/case-cdr.webp` (or `.png`)
+- `docs/images/case-cmc.webp` (or `.png`)
 
 Recommended export:
 
