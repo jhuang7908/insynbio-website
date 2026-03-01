@@ -1,150 +1,39 @@
 <svg width="1200" height="675" viewBox="0 0 1200 675" xmlns="http://www.w3.org/2000/svg">
   <defs>
-    <!-- Background: hint of teal left, warm white right -->
     <linearGradient id="bg" x1="0" y1="0" x2="1200" y2="675" gradientUnits="userSpaceOnUse">
-      <stop offset="0"   stop-color="#edfcf9"/>
-      <stop offset="0.5" stop-color="#ffffff"/>
-      <stop offset="1"   stop-color="#fffbeb"/>
+      <stop offset="0" stop-color="#f0fdfa"/>
+      <stop offset="0.55" stop-color="#ffffff"/>
+      <stop offset="1" stop-color="#ccfbf1"/>
     </linearGradient>
-    <!-- Teal arm gradient -->
-    <linearGradient id="g-teal" x1="600" y1="370" x2="250" y2="155" gradientUnits="userSpaceOnUse">
-      <stop offset="0"   stop-color="#0f766e"/>
-      <stop offset="1"   stop-color="#2dd4bf"/>
+    <linearGradient id="line" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0d9488" stop-opacity="0.70"/>
+      <stop offset="1" stop-color="#2dd4bf" stop-opacity="0.28"/>
     </linearGradient>
-    <!-- Orange arm gradient -->
-    <linearGradient id="g-amber" x1="600" y1="370" x2="950" y2="155" gradientUnits="userSpaceOnUse">
-      <stop offset="0"   stop-color="#b45309"/>
-      <stop offset="1"   stop-color="#fbbf24"/>
-    </linearGradient>
-    <!-- Fc gradient (charcoal) -->
-    <linearGradient id="g-fc" x1="600" y1="370" x2="600" y2="570" gradientUnits="userSpaceOnUse">
-      <stop offset="0"   stop-color="#374151"/>
-      <stop offset="1"   stop-color="#9ca3af"/>
-    </linearGradient>
-    <!-- Antigen A (teal blob) -->
-    <radialGradient id="rg-agA" cx="40%" cy="38%" r="55%">
-      <stop offset="0"   stop-color="#a7f3d0"/>
-      <stop offset="0.6" stop-color="#2dd4bf"/>
-      <stop offset="1"   stop-color="#0d9488"/>
-    </radialGradient>
-    <!-- Antigen B (amber blob) -->
-    <radialGradient id="rg-agB" cx="40%" cy="38%" r="55%">
-      <stop offset="0"   stop-color="#fde68a"/>
-      <stop offset="0.6" stop-color="#fbbf24"/>
-      <stop offset="1"   stop-color="#d97706"/>
-    </radialGradient>
-    <!-- Glow filters -->
-    <filter id="blur-lg"><feGaussianBlur stdDeviation="14"/></filter>
-    <filter id="blur-sm"><feGaussianBlur stdDeviation="5"/></filter>
-    <filter id="ribbon-glow" x="-20%" y="-20%" width="140%" height="140%">
-      <feGaussianBlur stdDeviation="4" result="b"/>
-      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
-    </filter>
-    <!-- Subtle dot grid -->
-    <pattern id="dots" width="22" height="22" patternUnits="userSpaceOnUse">
-      <circle cx="2" cy="2" r="1.1" fill="#9ca3af" opacity="0.09"/>
+    <pattern id="dots" width="18" height="18" patternUnits="userSpaceOnUse">
+      <circle cx="2" cy="2" r="1.2" fill="#0d9488" opacity="0.09"/>
     </pattern>
+    <filter id="soft">
+      <feGaussianBlur stdDeviation="6" result="b"/>
+      <feMerge>
+        <feMergeNode in="b"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
   </defs>
-
-  <!-- Background -->
   <rect width="1200" height="675" fill="url(#bg)"/>
   <rect width="1200" height="675" fill="url(#dots)"/>
-
-  <!-- Ambient zone glows -->
-  <ellipse cx="255" cy="170" rx="180" ry="140" fill="#0d9488" opacity="0.10" filter="url(#blur-lg)"/>
-  <ellipse cx="945" cy="170" rx="180" ry="140" fill="#f59e0b" opacity="0.10" filter="url(#blur-lg)"/>
-
-  <!-- ─── ANTIGEN A (left, teal) ─── -->
-  <g transform="translate(210,138)">
-    <!-- Main protein blob -->
-    <ellipse cx="0" cy="0" rx="60" ry="46" fill="url(#rg-agA)" opacity="0.88"/>
-    <!-- Surface domain highlight -->
-    <ellipse cx="-12" cy="-12" rx="28" ry="20" fill="#a7f3d0" opacity="0.45"/>
-    <!-- β-sheet arrow hint -->
-    <path d="M-32,-8 H16 L24,4 L16,16 H-32 Z" fill="#0d9488" opacity="0.25"/>
-    <path d="M-22,-22 H8 L14,-13 L8,-4 H-22 Z" fill="#2dd4bf" opacity="0.22"/>
-    <!-- Surface loop sketch -->
-    <path d="M-50 10 C-30 -10, 0 -30, 30 -15 S 52 8, 55 22"
-          stroke="#0f766e" stroke-width="2" fill="none" opacity="0.35" stroke-linecap="round"/>
-    <!-- Label -->
-    <text x="-28" y="66" font-family="Inter,-apple-system,sans-serif" font-size="12"
-          fill="#065f46" font-weight="700" letter-spacing="0.8" opacity="0.85">Antigen A</text>
+  <g opacity="0.55" fill="none" stroke="url(#line)" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" filter="url(#soft)">
+    <path d="M210 520 C 340 420, 430 590, 560 500 S 760 320, 920 380 S 1040 520, 1060 420"/>
+    <path d="M250 240 C 420 140, 520 310, 700 210 S 920 120, 1040 160" stroke-width="4" opacity="0.85"/>
   </g>
-
-  <!-- ─── ANTIGEN B (right, amber) — different shape ─── -->
-  <g transform="translate(990,138)">
-    <ellipse cx="0" cy="0" rx="58" ry="44" fill="url(#rg-agB)" opacity="0.88"/>
-    <ellipse cx="-10" cy="-10" rx="26" ry="19" fill="#fde68a" opacity="0.45"/>
-    <!-- β-sheet arrows (different orientation) -->
-    <path d="M-28,4 H20 L28,16 L20,26 H-28 Z" fill="#d97706" opacity="0.25"/>
-    <path d="M-18,-14 H14 L20,-5 L14,4 H-18 Z"  fill="#fbbf24" opacity="0.22"/>
-    <path d="M-48 8 C-28 -12, 2 -28, 28 -14 S 50 6, 52 20"
-          stroke="#b45309" stroke-width="2" fill="none" opacity="0.35" stroke-linecap="round"/>
-    <text x="-26" y="64" font-family="Inter,-apple-system,sans-serif" font-size="12"
-          fill="#78350f" font-weight="700" letter-spacing="0.8" opacity="0.85">Antigen B</text>
+  <g fill="#0d9488" opacity="0.22">
+    <circle cx="560" cy="500" r="12"/>
+    <circle cx="920" cy="380" r="9"/>
+    <circle cx="700" cy="210" r="9"/>
   </g>
-
-  <!-- ─── ANTIBODY RIBBONS ─── -->
-  <!-- Binding glow at tips -->
-  <ellipse cx="268" cy="168" rx="48" ry="38" fill="#0d9488" opacity="0.14" filter="url(#blur-sm)"/>
-  <ellipse cx="932" cy="168" rx="48" ry="38" fill="#f59e0b" opacity="0.14" filter="url(#blur-sm)"/>
-
-  <!-- Left Fab arm — teal (outer heavy chain) -->
-  <path d="M 582 352 C 498 302, 380 236, 288 178"
-        stroke="url(#g-teal)" stroke-width="18" fill="none"
-        stroke-linecap="round" opacity="0.88" filter="url(#ribbon-glow)"/>
-  <!-- Left Fab — light chain (inner, thinner) -->
-  <path d="M 597 360 C 518 314, 406 250, 312 192"
-        stroke="#2dd4bf" stroke-width="9" fill="none"
-        stroke-linecap="round" opacity="0.55"/>
-
-  <!-- Right Fab arm — amber (outer heavy chain) -->
-  <path d="M 618 352 C 702 302, 820 236, 912 178"
-        stroke="url(#g-amber)" stroke-width="18" fill="none"
-        stroke-linecap="round" opacity="0.88" filter="url(#ribbon-glow)"/>
-  <!-- Right Fab — light chain -->
-  <path d="M 603 360 C 682 314, 794 250, 888 192"
-        stroke="#fbbf24" stroke-width="9" fill="none"
-        stroke-linecap="round" opacity="0.55"/>
-
-  <!-- Fc — left strand -->
-  <path d="M 582 372 C 580 430, 577 488, 574 555"
-        stroke="url(#g-fc)" stroke-width="16" fill="none"
-        stroke-linecap="round" opacity="0.82"/>
-  <!-- Fc — right strand -->
-  <path d="M 618 372 C 620 430, 623 488, 626 555"
-        stroke="url(#g-fc)" stroke-width="16" fill="none"
-        stroke-linecap="round" opacity="0.82"/>
-  <!-- CH2/CH3 domain connectors -->
-  <path d="M 576 450 Q 600 442 624 450" stroke="#6b7280" stroke-width="3.5" fill="none" opacity="0.50" stroke-linecap="round"/>
-  <path d="M 575 508 Q 600 500 625 508" stroke="#6b7280" stroke-width="3.5" fill="none" opacity="0.40" stroke-linecap="round"/>
-
-  <!-- Hinge region ellipse -->
-  <ellipse cx="600" cy="365" rx="32" ry="16" fill="#374151" opacity="0.70"/>
-  <ellipse cx="600" cy="365" rx="18" ry="9"  fill="#6b7280" opacity="0.50"/>
-
-  <!-- CDR loops at left tip (teal) -->
-  <g fill="none" stroke="#0f766e" stroke-width="4.5" stroke-linecap="round" opacity="0.75">
-    <path d="M 274 176 Q 266 157, 260 172"/>
-    <path d="M 287 168 Q 281 148, 274 163"/>
+  <g font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">
+    <text x="40" y="72" font-size="14" fill="#0f766e" font-weight="800" letter-spacing="2" opacity="0.9">CASE STUDY</text>
+    <text x="40" y="118" font-size="34" fill="#111827" font-weight="750">Bispecific</text>
+    <text x="40" y="148" font-size="14" fill="#6b7280" font-weight="500">Drop in: images/case-bispecific.webp (or .jpg)</text>
   </g>
-  <!-- CDR loops at right tip (amber) -->
-  <g fill="none" stroke="#b45309" stroke-width="4.5" stroke-linecap="round" opacity="0.75">
-    <path d="M 921 176 Q 930 157, 937 172"/>
-    <path d="M 910 168 Q 917 148, 924 163"/>
-  </g>
-
-  <!-- ─── Color legend ─── -->
-  <g transform="translate(42, 566)">
-    <rect x="0" y="0" width="13" height="13" rx="3" fill="#0d9488"/>
-    <text x="20" y="11" font-family="Inter,-apple-system,sans-serif" font-size="12"
-          fill="#374151" font-weight="600">Arm α — binds Target A</text>
-    <rect x="0" y="22" width="13" height="13" rx="3" fill="#f59e0b"/>
-    <text x="20" y="33" font-family="Inter,-apple-system,sans-serif" font-size="12"
-          fill="#374151" font-weight="600">Arm β — binds Target B</text>
-  </g>
-
-  <!-- Subtle title label -->
-  <text x="42" y="56" font-family="Inter,-apple-system,sans-serif" font-size="12"
-        fill="#0f766e" font-weight="800" letter-spacing="2.5" opacity="0.80">BISPECIFIC ANTIBODY</text>
 </svg>
