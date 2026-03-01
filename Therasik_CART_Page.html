@@ -3,119 +3,130 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Therasik Smart CAR-T Design Service — AI-driven end-to-end engineering for CAR-T, CAR-NK, and CAR-M. From target selection to sequence design and CRO validation.">
-  <meta name="keywords" content="CAR-T design, CAR-NK, CAR-M, smart CAR-T, antibody engineering, immunotherapy, Therasik, AI drug design">
-  <title>Smart CAR-T Design | Therasik — AI for Life Sciences</title>
+  <meta name="description" content="Therasik 智慧 CAR-T 设计服务 — AI 驱动的端到端 CAR-T、CAR-NK 及 CAR-M 工程。从靶点选择到序列设计，再到 CRO 验证。">
+  <meta name="keywords" content="CAR-T设计, CAR-NK, CAR-M, 智慧CAR-T, 抗体工程, 免疫治疗, Therasik, AI药物设计">
+  <meta name="robots" content="index, follow">
+  <title>智慧 CAR-T 设计 | Therasik — 生命科学 AI</title>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&family=Noto+Sans+SC:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Noto+Sans+SC:wght@400;500&display=swap" rel="stylesheet">
   <style>
-    :root { --primary: #2563eb; --primary-dark: #1e40af; --text: #1f2937; --text-muted: #6b7280; --border: #e5e7eb; --bg: #ffffff; --bg-alt: #f9fafb; }
+    :root { --primary: #0d9488; --primary-dark: #0f766e; --text: #111827; --text-muted: #4b5563; --border: #e5e7eb; --bg: #ffffff; --bg-alt: #f9fafb; }
     * { box-sizing: border-box; }
-    body { margin: 0; font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 16px; line-height: 1.6; color: var(--text); background: var(--bg-alt); }
-    /* T-shaped: top header + sidebar + main */
-    .top-header { display: flex; align-items: center; justify-content: space-between; padding: 10px 24px; background: var(--bg); border-bottom: 1px solid var(--border); flex-shrink: 0; gap: 16px; flex-wrap: wrap; }
-    .top-header .brand { font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 24px; letter-spacing: -0.02em; display: flex; align-items: center; }
-    .top-header .brand a { text-decoration: none; color: inherit; display: flex; align-items: center; gap: 9px; }
-    .top-header .brand .syn { color: var(--primary); font-style: italic; font-weight: 700; }
-    .top-header .slogan { font-size: 13px; color: var(--text-muted); margin-left: 0; padding-left: 14px; border-left: 1px solid var(--border); font-family: 'Inter', sans-serif; white-space: nowrap; }
-    .top-header-nav { display: flex; align-items: center; gap: 8px; flex: 1; justify-content: center; }
-    .top-header-nav a { padding: 8px 14px; font-size: 14px; color: var(--text-muted); text-decoration: none; border-radius: 6px; transition: all 0.2s; }
-    .top-header-nav a:hover { color: var(--primary); background: var(--bg-alt); }
+    body { margin: 0; font-family: 'Noto Sans SC', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 16px; line-height: 1.6; color: var(--text); background: var(--bg); -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+    
+    /* Header */
+    .top-header { display: flex; align-items: center; justify-content: space-between; padding: 12px 32px; background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(0,0,0,0.05); flex-wrap: wrap; gap: 12px; position: sticky; top: 0; z-index: 1000; }
+    .top-header .brand { font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 700; font-size: 26px; letter-spacing: -0.03em; display: flex; align-items: center; }
+    .top-header .brand a { text-decoration: none; color: inherit; display: flex; align-items: center; gap: 10px; }
+    .top-header .brand .syn { color: var(--primary); font-style: italic; }
+    .top-header .slogan { font-size: 14px; color: var(--text-muted); margin-left: 0; padding-left: 14px; border-left: 1px solid var(--border); font-family: 'Noto Sans SC', sans-serif; white-space: nowrap; font-weight: 600; letter-spacing: 0.02em; }
+    
+    /* Nav */
+    .top-header-nav { display: flex; align-items: center; gap: 6px; flex: 1; justify-content: center; }
+    .top-header-nav a { padding: 8px 16px; font-size: 15px; color: var(--text-muted); text-decoration: none; border-radius: 20px; transition: all 0.2s ease; font-weight: 600; }
+    .top-header-nav a:hover { color: var(--primary); background: rgba(13,148,136,0.06); }
+    .top-header-nav a.active { background: var(--primary); color: #fff; box-shadow: 0 2px 8px rgba(13,148,136,0.25); }
+    .top-header-nav a.active:hover { background: var(--primary-dark); }
+    
+    /* Nav Dropdown */
     .nav-dropdown { position: relative; }
-    .nav-dropdown > a::after { content: ' ▾'; font-size: 10px; opacity: 0.7; }
-    .nav-dropdown .dropdown-menu { position: absolute; top: 100%; left: 0; min-width: 160px; padding: 6px 0; background: var(--bg); border: 1px solid var(--border); border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.08); opacity: 0; visibility: hidden; transform: translateY(-4px); transition: all 0.2s; z-index: 100; }
-    .nav-dropdown:hover .dropdown-menu,
-    .nav-dropdown:focus-within .dropdown-menu { opacity: 1; visibility: visible; transform: translateY(0); }
-    .nav-dropdown .dropdown-menu a { display: block; padding: 10px 16px; color: var(--text); text-decoration: none; line-height: 1.4; border-radius: 0; white-space: normal; }
+    .nav-dropdown > a::after { content: ' ▾'; font-size: 10px; opacity: 0.6; margin-left: 4px; }
+    .nav-dropdown .dropdown-menu { position: absolute; top: 100%; left: 50%; transform: translateX(-50%) translateY(10px); min-width: 220px; padding: 8px; background: #fff; border: 1px solid rgba(0,0,0,0.06); border-radius: 12px; box-shadow: 0 10px 40px -10px rgba(0,0,0,0.12); opacity: 0; visibility: hidden; transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1); z-index: 100; margin-top: 8px; }
+    .nav-dropdown:hover .dropdown-menu, .nav-dropdown:focus-within .dropdown-menu { opacity: 1; visibility: visible; transform: translateX(-50%) translateY(0); }
+    .nav-dropdown .dropdown-menu a { display: block; padding: 12px 16px; color: var(--text); text-decoration: none; line-height: 1.4; border-radius: 8px; text-align: left; }
     .nav-dropdown .dropdown-menu a:hover { background: var(--bg-alt); }
-    .nav-dropdown .dropdown-menu a .menu-title { display: block; font-weight: 600; font-size: 14px; color: var(--text); }
+    .nav-dropdown .dropdown-menu a .menu-title { display: block; font-weight: 600; font-size: 14px; color: var(--text); margin-bottom: 2px; }
     .nav-dropdown .dropdown-menu a:hover .menu-title { color: var(--primary); }
-    .nav-dropdown .dropdown-menu a .menu-desc { display: block; font-size: 12px; color: var(--text-muted); font-weight: 400; margin-top: 2px; }
-    .top-header-nav a.active { background: var(--primary); color: #fff; font-weight: 500; }
-    .top-header-nav a.active:hover,
-    .top-header-nav a.active:focus { background: var(--primary-dark); color: #fff; }
-    .top-header-nav a[href="therasik_index.html"] { background: transparent; color: var(--text-muted); }
-    .top-header-nav a[href="therasik_index.html"].active { background: var(--primary); color: #fff; font-weight: 500; }
-    .top-header-nav a[href="therasik_index.html"].active:hover,
-    .top-header-nav a[href="therasik_index.html"].active:focus { background: var(--primary-dark); color: #fff; }
-    .top-header-nav a[href="therasik_index.html"]:hover { color: var(--primary); background: var(--bg-alt); }
-    .top-header .header-right { display: flex; align-items: center; gap: 16px; }
-    .top-header .lang-switch { margin: 0; }
-    .page-wrap { display: flex; min-height: calc(100vh - 57px); }
-    .sidebar { width: 260px; flex-shrink: 0; background: var(--bg); border-right: 1px solid var(--border); padding: 28px 0; position: sticky; top: 0; height: 100vh; overflow-y: auto; }
-    .sidebar h3 { font-size: 12px; font-weight: 600; color: var(--text-muted); margin: 0 24px 12px; padding-top: 4px; text-transform: uppercase; letter-spacing: 1px; }
-    .sidebar nav a { display: flex; align-items: center; padding: 12px 24px; color: var(--text); text-decoration: none; font-size: 15px; transition: all 0.2s; border-left: 3px solid transparent; }
-    .sidebar nav a:hover { background: var(--bg-alt); color: var(--primary); }
-    .sidebar nav a.active { background: #f0fdfa; color: var(--primary-dark); border-left-color: var(--primary); font-weight: 500; }
-    .nav-icon { width: 18px; height: 18px; margin-right: 10px; opacity: 0.7; flex-shrink: 0; }
-    .main { flex: 1; padding: 36px 48px 64px; max-width: 920px; }
-    .main h1 { font-size: 32px; font-weight: 700; color: var(--text); margin: 0 0 12px; letter-spacing: -0.02em; }
-    .main .subtitle { font-size: 17px; color: var(--text-muted); margin-bottom: 4px; }
-    .main h2 { font-size: 21px; font-weight: 600; color: var(--text); margin: 36px 0 16px; padding-top: 28px; border-top: 1px solid var(--border); }
+    .nav-dropdown .dropdown-menu a .menu-desc { display: block; font-size: 12px; color: var(--text-muted); font-weight: 400; line-height: 1.4; }
+
+    /* Page Layout */
+    .page-wrap { display: flex; min-height: calc(100vh - 73px); max-width: 1400px; margin: 0 auto; }
+    .sidebar { width: 280px; flex-shrink: 0; background: var(--bg); border-right: 1px solid rgba(0,0,0,0.05); padding: 40px 20px; position: sticky; top: 73px; height: calc(100vh - 73px); overflow-y: auto; }
+    .sidebar h3 { font-size: 12px; font-weight: 700; color: var(--text-muted); margin: 0 16px 16px; text-transform: uppercase; letter-spacing: 1.5px; }
+    .sidebar nav a { display: flex; align-items: center; padding: 12px 16px; color: var(--text-muted); text-decoration: none; font-size: 15px; transition: all 0.2s; border-radius: 8px; margin-bottom: 4px; font-weight: 500; }
+    .sidebar nav a:hover { background: rgba(13,148,136,0.06); color: var(--primary); }
+    .sidebar nav a.active { background: rgba(13,148,136,0.1); color: var(--primary-dark); font-weight: 600; }
+    .nav-icon { width: 18px; height: 18px; margin-right: 12px; opacity: 0.8; flex-shrink: 0; }
+    
+    .main { flex: 1; padding: 60px 60px 100px; max-width: 960px; margin: 0 auto; }
+    .main h1 { font-family: 'Cormorant Garamond', serif; font-size: 48px; font-weight: 700; color: #111827; margin: 0 0 16px; letter-spacing: -0.03em; line-height: 1.1; }
+    .main .subtitle { font-size: 20px; color: #4b5563; margin-bottom: 8px; line-height: 1.6; }
+    .main h2 { font-family: 'Cormorant Garamond', serif; font-size: 32px; font-weight: 600; color: #111827; margin: 56px 0 24px; padding-top: 32px; border-top: 1px solid rgba(0,0,0,0.05); letter-spacing: -0.01em; }
     .main h2:first-of-type { margin-top: 0; padding-top: 0; border-top: none; }
-    .main h2#library { font-size: 26px; font-weight: 700; }
-    .h2-icon { display: inline-flex; align-items: center; justify-content: center; width: 32px; height: 32px; margin-right: 10px; border-radius: 8px; background: rgba(13,148,136,0.12); color: var(--primary); vertical-align: middle; }
-    .main p, .main ul, .main li { margin: 0 0 16px; color: var(--text); font-size: 16px; }
+    .h2-icon { display: inline-flex; align-items: center; justify-content: center; width: 36px; height: 36px; margin-right: 12px; border-radius: 10px; background: rgba(13,148,136,0.1); color: var(--primary); vertical-align: middle; }
+    .main p, .main ul, .main li { margin: 0 0 20px; color: #374151; font-size: 17px; line-height: 1.7; }
     .main ul { padding-left: 24px; }
     .main li { margin-bottom: 10px; }
-    .main .input-note { font-size: 14px; color: var(--text-muted); margin-top: 8px; }
-    .form-section { background: var(--bg); border-radius: 12px; padding: 32px; margin-top: 32px; box-shadow: 0 1px 3px rgba(0,0,0,0.06); border: 1px solid var(--border); }
+    .main .input-note { font-size: 14px; color: #6b7280; margin-top: 8px; font-style: italic; }
+    
+    /* Form */
+    .form-section { background: #fff; border-radius: 16px; padding: 40px; margin-top: 40px; box-shadow: 0 4px 20px rgba(0,0,0,0.03); border: 1px solid rgba(0,0,0,0.06); }
     .form-row { display: flex; gap: 24px; margin-bottom: 24px; flex-wrap: wrap; }
     .form-group { flex: 1; min-width: 180px; }
     .form-group.full { flex: 1 1 100%; }
-    .form-group label { display: block; font-weight: 500; margin-bottom: 8px; color: var(--text); font-size: 14px; }
-    .form-group input, .form-group select, .form-group textarea { width: 100%; padding: 12px 14px; border: 1px solid var(--border); border-radius: 8px; font-size: 14px; font-family: inherit; }
-    .form-group textarea { min-height: 100px; resize: vertical; }
-    .form-group textarea.seq { font-family: 'Consolas', 'Monaco', monospace; font-size: 13px; min-height: 80px; }
-    .form-group input:focus, .form-group select:focus, .form-group textarea:focus { outline: none; border-color: var(--primary); box-shadow: 0 0 0 2px rgba(13,148,136,0.15); }
-    .form-group .hint { font-size: 13px; color: var(--text-muted); margin-top: 6px; }
-    .form-group .hint a { color: var(--primary); }
-    .btn { padding: 14px 28px; background: var(--primary); color: #fff; border: none; border-radius: 30px; font-size: 15px; font-weight: 500; cursor: pointer; }
-    .btn:hover { background: var(--primary-dark); }
+    .form-group label { display: block; font-weight: 600; margin-bottom: 8px; color: #111827; font-size: 14px; }
+    .form-group input, .form-group select, .form-group textarea { width: 100%; padding: 12px 16px; border: 1px solid #d1d5db; border-radius: 8px; font-size: 15px; font-family: inherit; transition: border-color 0.2s, box-shadow 0.2s; }
+    .form-group textarea { min-height: 120px; resize: vertical; }
+    .form-group input:focus, .form-group select:focus, .form-group textarea:focus { outline: none; border-color: var(--primary); box-shadow: 0 0 0 3px rgba(13,148,136,0.15); }
+    .form-group .hint { font-size: 13px; color: #6b7280; margin-top: 6px; }
+    .btn { padding: 14px 32px; background: #0f766e; color: #fff; border: none; border-radius: 8px; font-size: 16px; font-weight: 600; cursor: pointer; transition: all 0.2s; box-shadow: 0 4px 12px rgba(15,118,110,0.30); }
+    .btn:hover { background: #065f46; transform: translateY(-1px); box-shadow: 0 6px 16px rgba(15,118,110,0.40); }
     .check-group { display: flex; flex-wrap: wrap; gap: 16px; margin: 16px 0; }
     .check-item { display: flex; align-items: center; gap: 10px; }
-    .check-item input { width: 18px; height: 18px; }
-    .check-item label { margin: 0; font-weight: 400; cursor: pointer; }
-    .breadcrumb { font-size: 14px; color: var(--text-muted); margin-bottom: 28px; }
-    .breadcrumb a { color: var(--primary); text-decoration: none; }
-    .breadcrumb a:hover { text-decoration: underline; }
+    .check-item input { width: 18px; height: 18px; accent-color: var(--primary); }
+    .check-item label { margin: 0; font-weight: 400; cursor: pointer; color: #374151; font-size: 15px; }
+    
+    .breadcrumb { font-size: 14px; color: #6b7280; margin-bottom: 32px; font-weight: 500; }
+    .breadcrumb a { color: var(--text-muted); text-decoration: none; transition: color 0.2s; }
+    .breadcrumb a:hover { color: var(--primary); }
     .breadcrumb span { color: #d1d5db; margin: 0 8px; }
-    .table-wrap { overflow-x: auto; margin: 24px 0; border-radius: 6px; border: 1px solid var(--border); }
-    .main table { min-width: 100%; background: var(--bg); border-collapse: separate; border-spacing: 0; border-radius: 8px; overflow: hidden; border: 1px solid var(--border); }
-    .main table th, .main table td { padding: 16px 20px; border: none; border-bottom: 1px solid var(--border); font-size: 15px; color: var(--text); text-align: left; }
-    .main table th { background: #f8fafc; font-weight: 700; color: #0f172a; text-transform: uppercase; font-size: 14px; letter-spacing: 0.05em; }
+    
+    .table-wrap { overflow-x: auto; margin: 32px 0; border-radius: 12px; border: 1px solid rgba(0,0,0,0.06); box-shadow: 0 2px 8px rgba(0,0,0,0.02); }
+    .main table { min-width: 100%; background: #fff; border-collapse: collapse; }
+    .main table th, .main table td { padding: 18px 24px; border-bottom: 1px solid rgba(0,0,0,0.05); font-size: 15px; color: #374151; text-align: left; }
+    .main table th { background: #f8fafc; font-weight: 600; color: #111827; text-transform: uppercase; font-size: 12px; letter-spacing: 0.05em; }
     .main table tr:last-child td { border-bottom: none; }
-    .main table tr:hover td { background-color: #f9fafb; }
-    .main table th:nth-child(4), .main table td:nth-child(4) { word-break: break-word; white-space: normal; min-width: 180px; }
-    .main table .status-link { display: inline-block; font-size: 12px; font-weight: 600; color: var(--primary); background: rgba(13,148,136,0.08); padding: 2px 9px; border-radius: 20px; text-decoration: none; }
-    .main table .status-link:hover { background: rgba(13,148,136,0.15); color: var(--primary-dark); }
-    .disclaimer { font-size: 14px; color: var(--text-muted); font-style: italic; margin-top: 12px; padding: 12px 16px; background: #fffbeb; border-left: 4px solid #f59e0b; border-radius: 0 6px 6px 0; }
-    .file-upload-wrap { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
-    .file-input-hidden { position: absolute; width: 0.1px; height: 0.1px; opacity: 0; overflow: hidden; z-index: -1; }
-    .file-upload-btn { padding: 10px 18px; background: var(--bg-alt); border: 1px solid var(--border); border-radius: 6px; font-size: 14px; cursor: pointer; color: var(--text); }
-    .file-upload-btn:hover { border-color: var(--primary); color: var(--primary); }
-    .file-upload-name { font-size: 14px; color: var(--text-muted); }
-    .brand-logo { font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 28px; letter-spacing: -0.02em; line-height: 1.2; margin-bottom: 24px; padding: 0 24px; }
-    .brand-logo a { text-decoration: none; color: inherit; display: inline-block; transition: opacity 0.2s; }
-    .brand-logo a:hover { opacity: 0.85; }
-    .brand-logo .in { color: var(--text); }
-    .brand-logo .syn { color: var(--primary); font-style: italic; font-weight: 700; }
-    .brand-logo .bio { color: var(--text); }
-    .brand-logo .tagline { font-family: 'Inter', sans-serif; font-size: 10px; font-weight: 500; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1.5px; margin-top: 4px; font-style: normal; }
-    .lang-switch { display: flex; gap: 4px; margin: 0 24px 20px; }
-    .lang-switch button { padding: 6px 12px; font-size: 13px; border: 1px solid var(--border); background: var(--bg); color: var(--text-muted); border-radius: 6px; cursor: pointer; font-family: 'Noto Sans SC', 'Inter', sans-serif; transition: all 0.2s; }
-    .lang-switch button:hover { border-color: var(--primary); color: var(--primary); }
-    .lang-switch button.active { background: var(--primary); color: #fff; border-color: var(--primary); }
-    body[data-lang="zh"] .lang-en { display: none !important; }
-    body[data-lang="zh"] .lang-zh { display: none !important; }
-    .site-footer { margin-top: 48px; padding-top: 24px; border-top: 1px solid var(--border); font-size: 13px; color: var(--text-muted); text-align: center; }
-    .site-footer a { color: var(--primary); text-decoration: none; }
-    .site-footer a:hover { text-decoration: underline; }
-    .mission-block { background-color: #ffffff; background-image: linear-gradient(to bottom, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0.95) 100%), url('images/hero-bg.svg'); background-size: cover; background-position: center; border-radius: 12px; padding: 32px; margin-bottom: 32px; border: 1px solid rgba(13,148,136,0.1); border-left: 4px solid var(--primary); box-shadow: 0 4px 12px rgba(13,148,136,0.05); }
-    .mission-block p { margin: 0; font-size: 16px; line-height: 1.7; color: var(--text); }
-    .mission-block p + p { margin-top: 14px; }
-    /* Responsive styles */
+    .main table tr:hover td { background-color: #fcfcfc; }
+    
+    .disclaimer { font-size: 14px; color: #92400e; font-style: italic; margin-top: 16px; padding: 16px 20px; background: #fffbeb; border-left: 4px solid #f59e0b; border-radius: 0 8px 8px 0; }
+    
+    .mission-block { background: linear-gradient(135deg, #f0fdfa 0%, #fff 100%); border: 1px solid rgba(13,148,136,0.1); border-radius: 16px; padding: 32px; margin-bottom: 40px; box-shadow: 0 4px 20px rgba(13,148,136,0.05); position: relative; overflow: hidden; }
+    .mission-block::before { content: ''; position: absolute; top: 0; right: 0; width: 200px; height: 200px; background: radial-gradient(circle, rgba(13,148,136,0.1) 0%, transparent 70%); border-radius: 50%; transform: translate(30%, -30%); pointer-events: none; }
+    .mission-block p { margin: 0; font-size: 17px; line-height: 1.7; color: #111827; position: relative; z-index: 1; }
+    .mission-block p + p { margin-top: 16px; }
+    
+    .site-footer { margin-top: 80px; padding-top: 32px; border-top: 1px solid rgba(0,0,0,0.05); font-size: 14px; color: #9ca3af; text-align: center; }
+    .site-footer a { color: #6b7280; text-decoration: none; transition: color 0.2s; }
+    .site-footer a:hover { color: var(--primary); }
+
+    /* Accordion for component library */
+    .accordion-hint { font-size: 13px; color: var(--text-muted); margin: -8px 0 16px; display: flex; align-items: center; gap: 6px; }
+    .accordion-hint::before { content: ''; display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: var(--primary); opacity: 0.7; flex-shrink: 0; }
+    .accordion { border: 1px solid rgba(0,0,0,0.08); border-radius: 12px; overflow: hidden; margin: 0 0 32px; }
+    .accordion-item { border-bottom: 1px solid rgba(0,0,0,0.06); }
+    .accordion-item:last-child { border-bottom: none; }
+    .accordion-btn { width: 100%; text-align: left; background: #fff; border: none; border-left: 3px solid transparent; padding: 18px 20px; cursor: pointer; display: flex; align-items: center; gap: 14px; transition: background 0.15s, border-color 0.15s; font-family: inherit; }
+    .accordion-btn:hover { background: rgba(13,148,136,0.03); border-left-color: rgba(13,148,136,0.3); }
+    .accordion-btn.open { background: rgba(13,148,136,0.05); border-left-color: var(--primary); }
+    .accordion-btn .cat { font-size: 15px; font-weight: 700; color: #111827; min-width: 140px; }
+    .accordion-btn .fn { font-size: 14px; color: #6b7280; flex: 1; }
+    .accordion-btn .chevron { font-size: 12px; color: #9ca3af; transition: transform 0.25s ease; flex-shrink: 0; margin-left: auto; }
+    .accordion-btn.open .chevron { transform: rotate(180deg); color: var(--primary); }
+    .accordion-body { max-height: 0; overflow: hidden; transition: max-height 0.3s ease, padding 0.2s ease; padding: 0 20px; background: #f8fafc; border-left: 3px solid var(--primary); }
+    .accordion-body.open { max-height: 900px; padding: 14px 20px 18px; }
+    .accordion-body .col-label { font-size: 10.5px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; margin: 12px 0 5px; display: flex; align-items: center; gap: 6px; }
+    .accordion-body .col-label:first-child { margin-top: 0; }
+    .accordion-body .col-label::before { content: ''; width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; }
+    .col-label--fda   { color: #0f766e; } .col-label--fda::before   { background: #0d9488; }
+    .col-label--trial { color: #1d4ed8; } .col-label--trial::before { background: #3b82f6; }
+    .col-label--research { color: #6b7280; } .col-label--research::before { background: #d1d5db; }
+    .accordion-body .col-val { font-size: 15px; color: #374151; line-height: 1.65; margin: 0 0 2px; }
+    /* Component tooltips */
+    .tt { border-bottom: 1px dotted #0d9488; cursor: help; }
+    #tt-box { position: fixed; z-index: 9500; background: #ffffff; color: #1f2937; font-size: 12.5px; line-height: 1.60; padding: 10px 14px; border-radius: 9px; max-width: 295px; pointer-events: none; opacity: 0; transition: opacity 0.15s ease; box-shadow: 0 4px 18px rgba(0,0,0,0.13), 0 1px 4px rgba(0,0,0,0.07); border: 1px solid rgba(13,148,136,0.18); border-left: 3px solid #0d9488; }
+
     @media (max-width: 900px) {
       .top-header { flex-wrap: wrap; padding: 12px 16px; gap: 10px; }
       .top-header .brand { flex: 1 1 auto; min-width: 0; display: flex; align-items: center; flex-wrap: wrap; gap: 8px; }
@@ -127,8 +138,47 @@
       .sidebar { width: 100%; height: auto; position: relative; border-right: none; border-bottom: 1px solid #e0e0e0; padding: 16px; }
       .sidebar nav { display: flex; flex-wrap: wrap; gap: 8px; }
       .sidebar nav a { display: inline-flex; padding: 8px 12px; border-radius: 6px; border-left: none; }
-      .main { padding: 24px 24px 48px; }
-      .mission-block { padding: 20px; margin-bottom: 24px; }
+      .main { padding: 32px 24px 64px; }
+      .mission-block { padding: 24px; margin-bottom: 32px; }
+    }
+
+    /* 手机端：堆叠卡片式表格 + 紧凑布局 */
+    @media (max-width: 600px) {
+      .main { padding: 24px 16px 56px; }
+      .form-section { padding: 24px 16px; }
+      .form-row { flex-direction: column; gap: 16px; }
+      .table-wrap table thead { display: none; }
+      .table-wrap table tbody tr {
+        display: block;
+        margin-bottom: 16px;
+        border: 1px solid rgba(0,0,0,0.08);
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+      }
+      .table-wrap table td {
+        display: block;
+        padding: 10px 16px;
+        font-size: 14px;
+        line-height: 1.6;
+        border-bottom: 1px solid rgba(0,0,0,0.05);
+      }
+      .table-wrap table td::before {
+        content: attr(data-label);
+        display: block;
+        font-size: 10px;
+        font-weight: 700;
+        color: var(--primary);
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        margin-bottom: 3px;
+      }
+      .table-wrap table td:last-child { border-bottom: none; }
+    }
+
+    /* 桌面端段落两端对齐 */
+    @media (min-width: 960px) {
+      .main p, .mission-block p { text-align: justify; text-justify: inter-word; hyphens: auto; }
     }
   </style>
 </head>
@@ -136,22 +186,24 @@
   <header class="top-header">
     <div class="brand">
       <a href="therasik_index.html" style="display: flex; align-items: center; gap: 10px; text-decoration: none;">
-        <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink:0">
+        <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
           <defs>
-            <linearGradient id="logo_grad_new" x1="4" y1="2" x2="28" y2="30" gradientUnits="userSpaceOnUse">
-              <stop stop-color="#2563eb"/>
-              <stop offset="1" stop-color="#60a5fa"/>
+            <linearGradient id="logo_grad_zh" x1="0" y1="0" x2="32" y2="32" gradientUnits="userSpaceOnUse">
+              <stop stop-color="#0d9488" />
+              <stop offset="1" stop-color="#2dd4bf" />
             </linearGradient>
           </defs>
-          <path d="M16 3L27.2583 9.5V22.5L16 29L4.74167 22.5V9.5L16 3Z" stroke="url(#logo_grad_new)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-          <circle cx="16" cy="16" r="3.5" fill="#1e40af"/>
-          <path d="M16 16L4.74167 9.5M16 16L27.2583 9.5M16 16L16 29" stroke="#2563eb" stroke-width="1.5" stroke-opacity="0.5"/>
+          <path d="M7 6L16 18V28" stroke="url(#logo_grad_zh)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M25 6L16 18" stroke="url(#logo_grad_zh)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="7" cy="6" r="2" fill="#0f766e" />
+          <circle cx="25" cy="6" r="2" fill="#0f766e" />
+          <circle cx="16" cy="18" r="2" fill="white" stroke="#0d9488" stroke-width="1.5"/>
         </svg>
         <span style="font-family: 'Cormorant Garamond', serif; font-weight: 700; font-size: 26px; color: #1f2937; letter-spacing: -0.02em;">
-          Thera<span style="color: #2563eb;">sik</span>
+          Thera<span style="color: #0d9488;">sik</span>
         </span>
       </a>
-      <span class="slogan">AI 赋能生命科学</span>
+      <span class="slogan">生命科学 AI</span>
     </div>
     <nav class="top-header-nav">
       <a href="therasik_index.html">首页</a>
@@ -159,308 +211,590 @@
       <div class="nav-dropdown" tabindex="0">
         <a href="therasik_index.html#services">服务</a>
         <div class="dropdown-menu">
-          <a href="Therasik_Antibody_Developability_Assessment_Page.html">
-            <span class="menu-title">抗体评估</span>
+          <a href="Therasik_Antibody_Page.html">
+            <span class="menu-title">抗体</span>
             <span class="menu-desc">基于结构的抗体开发</span>
           </a>
-          <a href="#platform">
+          <a href="Therasik_CART_Page.html">
             <span class="menu-title">CAR-T</span>
             <span class="menu-desc">智慧 CAR-T 设计</span>
           </a>
-          <a href="Therasik_Bispecific_Antibody_Design_Page.html">
-            <span class="menu-title">双特异抗体</span>
+          <a href="Therasik_Bispecific_Page.html">
+            <span class="menu-title">双特异性抗体</span>
             <span class="menu-desc">多特异性工程</span>
           </a>
         </div>
       </div>
       <a href="#submit">提交咨询</a>
-      <a href="#contact">联系</a>
+      <a href="#contact">联系我们</a>
     </nav>
-    <div class="header-right">
-    </div>
   </header>
+
   <div class="page-wrap">
     <aside class="sidebar">
-      <h3 >智慧 CAR-T</h3>
+      <h3>智慧 CAR-T</h3>
       <nav>
         <a href="#platform" class="nav-link active">
           <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
-          平台
+          设计平台
         </a>
         <a href="#library" class="nav-link"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>元件库</a>
-        <a href="#strategy" class="nav-link"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>治疗架构矩阵</a>
-        <a href="#engineering" class="nav-link"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>工程化模块</a>
-        <a href="#example" class="nav-link"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/></svg>设计示例</a>
-        <a href="#safety" class="nav-link"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>安全与有效性</a>
+        <a href="#strategy" class="nav-link"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>疾病策略</a>
+        <a href="#engineering" class="nav-link"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>工程模块</a>
+        <a href="#example" class="nav-link"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/></svg>案例分析</a>
+        <a href="#safety" class="nav-link"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>安全性与有效性</a>
         <a href="#full-report" class="nav-link"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>完整报告</a>
         <a href="#submit" class="nav-link"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>提交咨询</a>
-        <a href="#contact" class="nav-link"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>联系方式</a>
+        <a href="#contact" class="nav-link"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>联系我们</a>
       </nav>
     </aside>
+
     <main class="main">
       <div class="breadcrumb">
-        <a href="therasik_index.html">首页</a><span>/</span><a href="therasik_index.html#services">服务</a><span>/</span><span>智慧 CAR-T</span>
+        <a href="therasik_index.html">首页</a><span>/</span><a href="therasik_index.html#services">← 全部服务</a><span>/</span><span>智慧 CAR-T</span>
       </div>
-      <!-- Hero / Mission (same structure as Antibody page) -->
-      <div class="mission-block">
-        <p ><strong>智慧 CAR-T 设计：</strong>AI 驱动的端到端工程服务。从靶点选择到序列设计及 CRO 验证。我们为实体瘤、血液瘤及自身免疫疾病提供理性设计框架。</p>
-        <p ><strong>ACTES</strong>（基于抗原特征的 CAR-T 智能设计平台）将 180 个精选 CAR-T 设计元件库与抗原知识库、智能载体逻辑、表位–铰链匹配及亲和力调优相结合。每个元件均标注靶点、适应症及临床证据级别，并通过计算共现分析提炼成功构建体的设计规律。我们支持慢病毒、非病毒及体内递送策略，并提供可对接 CRO 的验证支持。<a href="therasik_index.html#about">了解更多 →</a></p>
-      </div>
+
       <h1>智慧 CAR-T 设计</h1>
       <p class="subtitle">AI 驱动的端到端工程：从靶点到序列，从序列到系统。</p>
-      <p class="disclaimer lang-zh">免责声明：Therasik 的 in silico 分析仅供参考，不能替代最终湿实验验证。需进行实验确认。</p>
-      <h2 id="platform"><span class="h2-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg></span>AI 原生设计平台</h2>
-      <p >ACTES 平台基于包含 10 大类、<strong>180 个精选 CAR-T 设计元件</strong>的专有库，每个元件均以靶点、适应症和临床阶段标注，并通过机器学习分析识别在临床成功构建体中反复出现的组件组合。我们不仅仅是组装，而是精准匹配。</p>
-      <ul >
-        <li><strong>抗原知识库</strong> — 维护持续更新的数据库，包含<strong>常见表位</strong>、<strong>抗原密度</strong>阈值、<strong>异质性</strong>图谱、<strong>疾病语境</strong>（实体瘤/血液瘤/自身免疫）及<strong>特异性</strong>考量（如 on-target off-tumor 风险），指导精准设计。</li>
-        <li><strong>智能载体逻辑</strong> — 根据临床需求算法化选择：<strong>慢病毒</strong> (标准)、<strong>非病毒/转座子</strong> (大载荷) 或 <strong>体内 LNP</strong> (可及性)。</li>
-        <li><strong>表位-铰链匹配</strong> — 利用 <strong>AlphaFold2</strong> 测量表位到细胞膜的距离，精准选择铰链长度（短/中/长）。</li>
-        <li><strong>动力学工程</strong> — 通过计算突变优化 Binder 亲和力 (Kd) 与解离速率 (koff)。针对低密度靶点提升亲和力；针对 HER2 等靶点下调亲和力以保护正常组织；同时确保快速解离以防止耗竭。</li>
-        <li><strong>密度-信号逻辑</strong> — 分析抗原密度，选择最优的跨膜域（CD8α vs CD28）与信号域（4-1BB vs CD28）。</li>
-      </ul>
-      <h2 id="library"><span class="h2-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg></span>专有元件库</h2>
-      <p >ACTES 平台拥有一个持续更新的 <strong>180 个精选 CAR-T 设计元件</strong>库，涵盖 10 大类，按 FDA 批准产品元件、临床试验设计及研究阶段前沿模态分级，并标注靶点抗原与疾病适应症。对该数据集的计算共现分析揭示了临床成功构建体中反复出现的设计选择，这些规律为我们的元件推荐提供依据。</p>
-      <div class="table-wrap">
-      <table style="width:100%; border-collapse: collapse; font-size: 13px;">
-        <thead>
-          <tr>
-            <th style="width: 11%;">类别</th>
-            <th style="width: 16%;">功能</th>
-            <th style="width: 32%;">临床标准 (已验证)</th>
-            <th style="width: 41%; min-width: 200px;">前沿模态 (新兴)</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><strong>结合域</strong></td>
-            <td>靶向识别</td>
-            <td>scFv (FMC63, Trastuzumab, 14G2a, SS1, m971, 4D5, 225)、人源化 scFv、Fab 片段</td>
-            <td>VHH/纳米抗体 (实体瘤)、TCR 模拟 (WT1, KRAS, NY-ESO-1, MAGE-A4)、Centyrins、DARPins、配体类 (IL-13, APRIL)、计算 Mask 设计 (FTO)、多肽 Binder</td>
-          </tr>
-          <tr>
-            <td><strong>铰链域</strong></td>
-            <td>表位距离匹配</td>
-            <td>CD8α 短 (45aa)、IgG4 长 (228aa)、CD28 中、IgG1 铰链</td>
-            <td>IgG4-SPLE (Fc 空/S228P)、Auto-Hinge (AI 匹配)、IgD 铰链 (抗蛋白酶)、CD8α-长 (119aa)、合成柔性连接子、刚性 EAAAK 连接子</td>
-          </tr>
-          <tr>
-            <td><strong>跨膜域</strong></td>
-            <td>膜锚定与信号阈值</td>
-            <td>CD8α 跨膜 (低基底)、CD28 跨膜 (脂筏)、CD4 跨膜</td>
-            <td>NKG2D 跨膜 (NK 优化)、DAP10/DAP12/ICOS/OX40 跨膜、体内优化跨膜 (LNP 兼容)</td>
-          </tr>
-          <tr>
-            <td><strong>共刺激域</strong></td>
-            <td>代谢与持久性</td>
-            <td>4-1BB (线粒体)、CD28 (糖酵解)</td>
-            <td>OX40、ICOS、2B4、DAP10、CD27、GITR、HVEM、CD40、MyD88、TLR2、4-1BBL (自驱动)</td>
-          </tr>
-          <tr>
-            <td><strong>激活域</strong></td>
-            <td>杀伤信号</td>
-            <td>CD3ζ (3× ITAM)</td>
-            <td>DAP12 (CAR-NK/巨噬细胞)、FcR-γ (吞噬)、CD3ε (招募)、ZAP70 招募 motif、1XX (校准 ITAM)</td>
-          </tr>
-          <tr>
-            <td><strong>铠甲载荷</strong></td>
-            <td>TME 重塑与抵抗</td>
-            <td>分泌型 IL-12 (TRUCK)、组成型 IL-15</td>
-            <td>TGFB_DNR (抗抑制)、膜锚定 IL-15/IL-21、GPX4_Enhanced (抗铁死亡)、IL-7/CCL19 (7x19)、c-JUN、HPSE、scFv-PD1 阻断、BiTE 分泌</td>
-          </tr>
-          <tr>
-            <td><strong>安全开关</strong></td>
-            <td>可控清除</td>
-            <td>tEGFR (西妥昔单抗清除)、CD20 拟态表位 (利妥昔单抗清除)</td>
-            <td>iCasp9 (小分子, >95%)、RQR8 (双标签)、Rapamycin-ON、Lenalidomide-ON、HSV-TK、TMPD 诱导</td>
-          </tr>
-          <tr>
-            <td><strong>逻辑门控</strong></td>
-            <td>特异性控制</td>
-            <td>串联 CAR (OR 门)</td>
-            <td>SynNotch (AND 门)、iCAR (NOT 门/PD-1/CTLA-4)、Split CAR (二聚化)、LOCKR、CLIP-CAR、通用 CAR (BBIR)</td>
-          </tr>
-          <tr>
-            <td><strong>调控元件</strong></td>
-            <td>表达控制</td>
-            <td>EF1α 启动子、PGK 启动子、WPRE</td>
-            <td>NFAT_Response (诱导型)、UCOE (抗沉默)、Tet-On/Tet-Off、SFFV、CMV、SV40、EFS (紧凑)、JeT 启动子</td>
-          </tr>
-          <tr>
-            <td><strong>信号肽与连接子</strong></td>
-            <td>分泌与柔性</td>
-            <td>CD8α 信号肽、GM-CSF 信号肽、G4S (柔性)</td>
-            <td>IL-2 信号肽、Gaussia 信号肽、EAAAK3 (刚性)、Whitlow/218 连接子、XTEN、Furin-P2A/T2A/E2A/F2A</td>
-          </tr>
-        </tbody>
-      </table>
+
+      <div class="mission-block">
+        <p><strong>AI 驱动的端到端工程服务。</strong>从靶点选择到序列设计，再到 CRO 验证。我们为实体瘤、血液系统肿瘤及自身免疫疾病提供理性设计框架。</p>
+        <p><strong>ACTES</strong>（基于抗原特征的 CAR-T 智能设计平台）以 <strong>180 个精选 CAR-T 设计元件</strong>为基础 — 涵盖结合域、共刺激域、铰链区、跨膜域及信号域 — 每个元件均标注靶抗原、适应症及临床证据级别。我们通过机器学习模式分析提炼跨靶点、跨疾病背景的设计规律，指导每个新构建体的元件选择与调优。<a href="therasik_index.html#about">了解更多 →</a></p>
       </div>
+
+      <p class="disclaimer">免责声明：Therasik 的 in silico 分析仅供参考，不能替代最终湿实验验证，需进行实验确认。</p>
+
+      <h2 id="platform"><span class="h2-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg></span>AI 原生设计平台</h2>
+      <p>ACTES 平台基于 <strong>180 个精选 CAR-T 设计元件</strong>，涵盖 10 大类别。每个元件均以靶点、适应症和临床阶段标注，整体数据集通过计算分析识别临床成功构建体中反复出现的元件组合——以及背后的原因。我们不只是组装；我们精准匹配。</p>
+
+      <ul>
+        <li><strong>抗原知识库</strong> — 持续更新的数据库，涵盖<strong>常见表位</strong>、<strong>抗原密度</strong>阈值、<strong>异质性</strong>图谱、<strong>疾病背景</strong>（实体瘤 vs. 血液瘤 vs. 自身免疫）及<strong>特异性</strong>考量（如 on-target off-tumor 风险），指导精准设计。</li>
+        <li><strong>智能载体逻辑</strong> — 根据临床需求算法化选择：<strong>慢病毒</strong>（标准方案）、<strong>非病毒/转座子</strong>（大载荷）或<strong>体内 LNP</strong>（可及性）。</li>
+        <li><strong>表位-铰链匹配</strong> — 利用 <strong>AlphaFold2</strong> 测量表位到细胞膜的距离，精准选择铰链长度（短/中/长）。</li>
+        <li><strong>动力学工程</strong> — 通过计算突变优化结合域亲和力（Kd）与解离速率（koff）。针对低密度靶点提升亲和力；对 HER2 等靶点则下调亲和力以保护正常组织；同时确保快速解离以防止 T 细胞耗竭。</li>
+        <li><strong>密度-信号逻辑</strong> — 分析抗原密度，选择最优跨膜域（CD8α vs. CD28）与信号域（4-1BB vs. CD28）。</li>
+      </ul>
+
+      <h2 id="library"><span class="h2-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg></span>专有元件库</h2>
+      <p>ACTES 平台拥有一个持续更新的 <strong>180 个精选 CAR-T 设计元件</strong>库，涵盖 10 大类，按 FDA 批准产品元件、临床试验设计及研究阶段前沿模态分级，并标注靶抗原与疾病适应症。对该数据集的计算共现分析揭示了临床成功构建体中反复出现的设计选择，这些规律为元件推荐提供依据。悬停任意元件可查看简要科学说明。</p>
+
+      <p class="accordion-hint">10 大类别 &mdash; 点击展开 &mdash; 悬停查看详情 &mdash; <span style="color:#0d9488;font-weight:700;">●</span> FDA 批准 &nbsp;<span style="color:#3b82f6;font-weight:700;">●</span> 临床试验 &nbsp;<span style="color:#9ca3af;font-weight:700;">●</span> 研究阶段</p>
+      <div class="accordion" id="component-accordion">
+
+        <div class="accordion-item">
+          <button class="accordion-btn open" data-target="acc-binders">
+            <span class="cat">结合域（Binders）</span><span class="fn">靶点识别</span><span class="chevron">▼</span>
+          </button>
+          <div class="accordion-body open" id="acc-binders">
+            <p class="col-label col-label--fda">FDA 批准产品</p>
+            <p class="col-val">
+              <span class="tt" data-tip="抗 CD19 scFv；所有四款 FDA 批准 CD19 CAR-T 的核心结合域：tisagenlecleucel（Kymriah）、axicabtagene ciloleucel（Yescarta）、brexucabtagene autoleucel（Tecartus）及 lisocabtagene maraleucel（Breyanzi）。靶向 CD19 domain A；Kd ~1 nM。">FMC63</span>,
+              <span class="tt" data-tip="idecabtagene vicleucel（Abecma/ide-cel，FDA 2021）中的抗 BCMA scFv；首款获批用于复发/难治性多发性骨髓瘤的 BCMA CAR-T。靶向 BCMA 胞外域；源自 bb2121 项目。">J6M0 / bb2121 (Abecma)</span>,
+              <span class="tt" data-tip="ciltacabtagene autoleucel（Carvykti，FDA 2022）中的双靶位抗 BCMA VHH 对。两个 VHH 域靶向 BCMA 上不重叠的不同表位；双重结合产生皮摩尔级亲合力；BCMA 疗法中临床缓解率最深。">LCAR-B38M (Carvykti)</span>
+            </p>
+            <p class="col-label col-label--trial">临床 / IND 阶段</p>
+            <p class="col-val">
+              <span class="tt" data-tip="另一种抗 CD19 scFv 克隆，VH/VL 框架取向与 FMC63 不同；用于多项欧洲及学术 CAR-T 试验；Kd 相当，表位接触残基不同。">SJ25C1</span>,
+              <span class="tt" data-tip="源自曲妥珠单抗（Herceptin）的抗 HER2 scFv；靶向 ErbB2 胞外域 IV；用于 HER2+ 乳腺癌、胃癌及骨肉瘤的 I/II 期 CAR-T 试验。需监测 on-target 心脏毒性。">Trastuzumab-scFv</span>,
+              <span class="tt" data-tip="曲妥珠单抗人源化前的原始鼠源克隆；靶向相同 HER2 domain IV 表位。在可接受鼠源框架或需亲和力成熟人源化变体时作为模板使用。">4D5</span>,
+              <span class="tt" data-tip="源自西妥昔单抗的抗 EGFR scFv；靶向 EGFR domain III；I/II 期试验涵盖结直肠癌、头颈部鳞癌及非小细胞肺癌。关键挑战：皮肤/消化道正常组织 EGFR 表达需剂量滴定。">225 (Cetuximab-scFv)</span>,
+              <span class="tt" data-tip="抗 GD2 鼠源 scFv；GD2 在神经母细胞瘤、黑色素瘤及小细胞肺癌均匀表达。贝勒医学院等中心已完成 II 期试验；神经母细胞瘤数据集最大。需监测 GD2 阳性痛觉神经纤维病。">14G2a</span>,
+              <span class="tt" data-tip="抗间皮素 scFv；MSLN 在间皮瘤、胰腺癌及卵巢癌过表达。宾夕法尼亚大学与 NCI I 期证实安全性；与检查点阻断联合研究中。实体瘤 CAR 结合域先驱。">SS1</span>,
+              <span class="tt" data-tip="靶向膜近端表位的抗 CD22 scFv；对信号效能至关重要。NIH 儿童肿瘤部 I 期；用于 CD19 治疗后复发 B-ALL；CD19+CD22 序贯双靶向可减少抗原逃逸。">m971</span>,
+              <span class="tt" data-tip="源自达雷妥尤单抗的抗 CD38 scFv；靶向骨髓瘤浆细胞高表达的 CD38。I/II 期多发性骨髓瘤试验；双重机制（直接杀伤 + Fc 效应）；需处理与 CD38+ 红细胞的相互作用。">Anti-CD38 (Daratumumab-scFv)</span>,
+              <span class="tt" data-tip="用于 AML 的抗 CD33 scFv；CD33 在 >80% AML 原始细胞及正常髓系祖细胞表达。I 期试验；on-target 正常髓系毒性导致血液毒性，通过 CAR 后异基因 HSC 移植策略管理。">Anti-CD33</span>,
+              <span class="tt" data-tip="抗 CD123（IL-3Rα）scFv；CD123 在 AML 白血病干细胞及母细胞性浆细胞样树突细胞肿瘤（BPDCN）过表达。多中心 I 期；靶向疾病起始细胞群以实现持久缓解。骨髓抑制需桥接移植。">Anti-CD123 (IL-3Rα)</span>,
+              <span class="tt" data-tip="抗 ROR1 scFv；ROR1 是在 CLL、MCL、三阴性乳腺癌及 NSCLC 中重新表达的孤儿酪氨酸激酶，正常出生后组织中缺失。Fred Hutchinson I 期；早期报告安全性良好。">Anti-ROR1</span>,
+              <span class="tt" data-tip="抗 EGFRvIII scFv L8A4，靶向 EGFR 外显子 2-7 肿瘤特异性缺失突变；约 30% 胶质母细胞瘤（GBM）表达，正常组织缺失。宾大、杜克 I/II 期；肿瘤内抗原异质性是主要耐药机制。">Anti-EGFRvIII (L8A4)</span>,
+              <span class="tt" data-tip="抗 GPC3（磷脂酰肌醇蛋白聚糖-3）scFv GC33；GPC3 在 HCC 及肝母细胞瘤中均匀过表达，正常成人肝脏近乎缺失。晚期 HCC I/II 期；与 PD-1 阻断联合研究中。">Anti-GPC3 (GC33)</span>,
+              <span class="tt" data-tip="靶向低糖基化 TA-MUC1 新表位的抗 MUC1 scFv；构象特异性区分肿瘤 MUC1 与正常重度糖基化 MUC1。乳腺癌、卵巢癌及胰腺癌 I 期。">Anti-MUC1 (HMFG2)</span>,
+              <span class="tt" data-tip="源自人源化 J591 单克隆抗体的抗 PSMA scFv；靶向前列腺癌及肿瘤新生血管过表达的 PSMA 胞外催化域。纪念斯隆凯特琳癌症中心 I/II 期；肾脏和前列腺间质也有表达。">Anti-PSMA (J591-scFv)</span>,
+              <span class="tt" data-tip="MFE-23 抗 CEA scFv，靶向 CEA A3-B3 域交界处；CEA 在结直肠癌（>95%）、胃癌、胰腺癌及肺腺癌中过表达。I/II 期；腹腔内给药以限制肠上皮 on-target 毒性。">Anti-CEA (MFE-23)</span>,
+              <span class="tt" data-tip="抗 CD70 scFv；CD70（TNFSF7）在肾细胞癌、GBM、AML 及部分 T/B 细胞淋巴瘤持续过表达，正常组织仅限于活化淋巴细胞。Fred Hutchinson 肾细胞癌及 AML I 期；较 CD19 靶向减少淋巴清除风险。">Anti-CD70</span>,
+              <span class="tt" data-tip="源自 cAC10（brentuximab vedotin 抗体，FDA 批准 ADC）的抗 CD30 scFv。靶向霍奇金 Reed-Sternberg 细胞及 ALCL 上的 TNFRSF8/CD30。贝勒医学院 I/II 期；复发/难治经典霍奇金淋巴瘤客观缓解，细胞因子释放可控。">Anti-CD30 (cAC10-scFv)</span>,
+              <span class="tt" data-tip="抗 FLT3（CD135）scFv，靶向 FMS 样酪氨酸激酶 3；在 AML 原始细胞（含 FLT3-ITD 突变）及白血病干细胞上表达。I 期试验已注册；采用 CAR 后异基因 HSC 移植策略保护 FLT3+ 正常造血。">Anti-FLT3</span>,
+              <span class="tt" data-tip="两种方案：(1) HLA-A*02:01 限制性 TCR 模拟 scFv，靶向 HCC 细胞呈递的 AFP158-166 肽（NCI I 期）；(2) 传统抗 AFP scFv 用于 AFP 过表达 HCC。AFP 在 >70% HCC 表达；血清分泌 AFP 可能竞争结合。">Anti-AFP (HCC)</span>,
+              <span class="tt" data-tip="将鼠源 CDR 移植到人源 VH/VL 框架，以最小化宿主抗 CAR 免疫反应，同时保留抗原结合亲和力与特异性；所有临床阶段鼠源衍生 CAR 结合域的标准工程步骤。">人源化 scFv</span>,
+              <span class="tt" data-tip="二价抗原结合片段；保留 VH-CH1/VL-CL 结构；相比 scFv 降低紧张性信号传导和 CRS 风险；用于高表达抗原且优选完整 IgG 样结合几何结构的场景。">Fab 片段</span>,
+              <span class="tt" data-tip="15 kDa 骆驼科单域抗体；可接触传统 scFv 无法触及的隐蔽表位；在致密实体瘤基质中穿透性更佳；部分项目（如 GPC3-VHH、BCMA-VHH）已进入 I 期。">VHH / 纳米抗体</span>,
+              <span class="tt" data-tip="HLA 限制性 TCR 模拟 scFv，识别 HLA-A*02:01 呈递的胞内新抗原（WT1、KRAS G12V、NY-ESO-1、MAGE-A4）。WT1 及 NY-ESO-1 项目已进入 I 期；将可靶向空间扩展至完整肿瘤蛋白质组。">TCR 模拟（WT1, NY-ESO-1, KRAS, MAGE-A4）</span>,
+              <span class="tt" data-tip="IL-13 突变体（E13Y）靶向 GBM 过表达的 IL13Rα2；City of Hope I 期通过局部给药在复发 GBM 中显示显著缓解。APRIL 域靶向骨髓瘤中的 BCMA/TACI 亦在试验中。">配体类（IL-13, APRIL）</span>,
+              <span class="tt" data-tip="抗 CD3ε scFv（OKT3 克隆）假型化慢病毒载体，将病毒嗜性重定向至 CD3+ T 细胞，实现体内 CAR 基因递送，无需离体制备。Umoja Biopharma VivoVec 平台核心靶向部分；2023 年 IND 获批；AML I 期试验进行中。">OKT3 scFv（VivoVec / 体内 T 细胞递送）</span>
+            </p>
+            <p class="col-label col-label--research">研究阶段</p>
+            <p class="col-val">
+              <span class="tt" data-tip="单多肽编码两个靶向同一抗原不同表位的 VHH；亲合力驱动的皮摩尔有效亲和力；防止单表位逃逸；Carvykti 建立了临床概念验证；现推广至其他靶点。">VHH 双靶位（Biparatopic）</span>,
+              <span class="tt" data-tip="鲨鱼 IgNAR 衍生的单可变域（~12 kDa）；可结合传统抗体无法接触的酶活性位点和空腔；极强热稳定性；尚无公开 CAR-T 临床项目。">VNAR（鲨鱼 IgNAR）</span>,
+              <span class="tt" data-tip="三螺旋束支架（~7 kDa）；无二硫键；噬菌体展示可达皮摩尔亲和力；超小体积可实现高密度表面载入；仅有临床前 CAR-T 模型数据。">Affibody</span>,
+              <span class="tt" data-tip="纤连蛋白 III 型（10Fn3）支架；无二硫键；在还原条件下稳定；通过核糖体或噬菌体展示进化筛选；已发表临床前 CAR-T 研究，无临床项目。">单体（Monobody / Adnectin）</span>,
+              <span class="tt" data-tip="工程化纤连蛋白 III 型域；皮摩尔亲和力；在还原性胞内环境下热稳定；已在临床前 CAR-T 中验证；无临床项目。">Centyrin</span>,
+              <span class="tt" data-tip="设计的锚蛋白重复蛋白；14-18 kDa；无半胱氨酸；高热稳定性；皮摩尔亲和力；已发表临床前 CAR 研究；临床转化待定。">DARPin</span>,
+              <span class="tt" data-tip="胱氨酸结微蛋白（~4 kDa）；超稳定；抗蛋白酶；适合实体瘤穿透；仅有临床前概念验证。">Knottin</span>,
+              <span class="tt" data-tip="IL-4 靶向胶质瘤/乳腺癌过表达的 IL-4Rα；EGF 通过天然配体作为结合域靶向 EGFR；均利用受体过表达实现选择性；研究阶段。">配体类（IL-4, EGF）</span>,
+              <span class="tt" data-tip="单多肽编码 scFv 和 VHH 以同时靶向双抗原；结合 scFv 靶向范围与纳米抗体紧凑性；仅有临床前双靶点验证。">scFv-VHH 双特异融合</span>,
+              <span class="tt" data-tip="AI 设计的掩蔽肽在健康组织中阻断抗原结合；肿瘤 MMP/uPA 在病灶处选择性切割掩蔽肽；FTO 聚焦设计流程；异种移植模型临床前验证。">计算掩蔽设计</span>,
+              <span class="tt" data-tip="靶向特定表面抗原的短合成肽；免疫原性最低；临床前 CAR-T 模型；适用于抗体类结合域存在正常组织交叉反应的抗原。">多肽结合域</span>,
+              <span class="tt" data-tip="抗 FAP（成纤维细胞活化蛋白）scFv 假型化慢病毒，选择性转导体内 FAP+ 活化成纤维细胞；小鼠心衰模型中证实心脏纤维化逆转。将 CAR-T 逻辑扩展至非免疫基质谱系。">Anti-FAP scFv（体内间质递送）</span>,
+              <span class="tt" data-tip="抗 CD4 scFv 假型化慢病毒载体，无需离体培养即可体内选择性转导 CD4+ 辅助 T 细胞；小鼠及 NHP 模型验证；适用于耐受诱导 CAR 项目和 CD4 导向免疫治疗。">Anti-CD4 scFv（体内递送）</span>,
+              <span class="tt" data-tip="靶向 CD8α 的脂质纳米颗粒或假型化慢病毒载体，实现体内选择性向 CD8+ 细胞毒性 T 细胞递送 CAR 基因；保留 CD4 辅助细胞群；适合以 CTL 为主的实体瘤 CAR 项目。">Anti-CD8α（体内 CTL 选择性递送）</span>,
+              <span class="tt" data-tip="从万亿级 mRNA 展示文库体外进化筛选的结合域；可靶向平坦的蛋白-蛋白相互作用界面；无需免疫；尚无 CAR 临床项目，处于早期发现阶段。">mRNA 展示进化结合域</span>
+            </p>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <button class="accordion-btn" data-target="acc-hinge">
+            <span class="cat">铰链区（Hinge）</span><span class="fn">表位距离匹配</span><span class="chevron">▼</span>
+          </button>
+          <div class="accordion-body" id="acc-hinge">
+            <p class="col-label col-label--fda">FDA 批准产品</p>
+            <p class="col-val">
+              <span class="tt" data-tip="最短 45aa 铰链；抑制紧张性信号传导；与 4-1BB 共刺激优选搭配。存在于 Kymriah、Breyanzi 及 Abecma——批准 CAR-T 产品中使用最广泛的铰链。">CD8α 短铰链（45aa）</span>,
+              <span class="tt" data-tip="半刚性 CD28 衍生铰链；将 CAR 定位于免疫突触脂筏膜微域；自然与 CD28 跨膜域和共刺激域搭配。定义 Yescarta 和 Tecartus 的架构。">CD28 中等铰链</span>,
+              <span class="tt" data-tip="来自 IgG4 CH2-CH3 的 228aa 铰链；使 CAR 能够到达膜远端表位。部分批准产品使用；须配合 S228P 突变防止 Fab 臂交换（参见 IgG4-SPLE）。">IgG4 长铰链（228aa）</span>
+            </p>
+            <p class="col-label col-label--trial">临床 / IND 阶段</p>
+            <p class="col-val">
+              <span class="tt" data-tip="119aa 延长型 CD8α 变体；中等柔性，适用于膜近端靶点且无 IgG4 Fc 受体结合；用于多项 I 期实体瘤 CAR-T 构建体。">CD8α 长铰链（119aa）</span>,
+              <span class="tt" data-tip="S228P 突变消除与循环内源性 IgG4 的 Fab 臂交换；消除脱靶 Fc 受体结合；所有新试验设计中临床首选的 IgG4 变体。">IgG4-SPLE（Fc 无效/S228P）</span>,
+              <span class="tt" data-tip="IgG1 铰链保留 FcγR 结合；通过 ADCC 激活 NK 细胞和巨噬细胞；用于需要互补先天免疫激活的构建体。">IgG1 铰链</span>,
+              <span class="tt" data-tip="短 CD3ε 衍生铰链；结构占用极小；用于需要亚纳米级膜近端抗原结合精度的构建体。">CD3ε 铰链</span>,
+              <span class="tt" data-tip="IgG2 上部铰链；中等刚性；FcγR 结合较 IgG1 减少；用于中等表位高度且需尽量减少脱靶先天激活的场景。">IgG2 铰链</span>
+            </p>
+            <p class="col-label col-label--research">研究阶段</p>
+            <p class="col-val">
+              <span class="tt" data-tip="根据测量的膜上抗原表位高度计算优化铰链长度；最大化每种抗原的免疫突触几何形态；临床前验证中。">Auto-Hinge（AI 匹配）</span>,
+              <span class="tt" data-tip="耐受实体瘤 TME 中 MMP-2/9 金属蛋白酶切割；在其他铰链被蛋白水解降解的环境中保持结构完整性；实体瘤临床前模型。">IgD 铰链（抗蛋白酶）</span>,
+              <span class="tt" data-tip="（Gly₄Ser）n 柔性接头；铰链与结合域间长度可通过重复数调节；用于串联和双特异构建体的柔性精细调节。">合成柔性接头</span>,
+              <span class="tt" data-tip="（EAAAK）n α 螺旋重复；固定域间距离和角度取向；降低串联 scFv 和双特异设计中的抗原桥联风险。">刚性 EAAAK 接头</span>,
+              <span class="tt" data-tip="全反式聚脯氨酸 PPII 螺旋；极强刚性；亚埃精度的表位-互补决定区距离工程；临床前几何优化。">聚脯氨酸螺旋</span>,
+              <span class="tt" data-tip="嵌合铰链融合 CD28 膜近端区域与 IgG4 远端域；脂筏定位 + 延伸触及；临床前双靶点 CAR 模型验证。">CD28-IgG4 嵌合铰链</span>
+            </p>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <button class="accordion-btn" data-target="acc-tm">
+            <span class="cat">跨膜域（Transmembrane）</span><span class="fn">锚定与信号阈值</span><span class="chevron">▼</span>
+          </button>
+          <div class="accordion-body" id="acc-tm">
+            <p class="col-label col-label--fda">FDA 批准产品</p>
+            <p class="col-val">
+              <span class="tt" data-tip="抗原缺失时基础信号传导极低；减少紧张性刺激导致的耗竭；4-1BB 构建体中优选以保持长期持久性。存在于 Kymriah、Breyanzi、Abecma 及 Carvykti。">CD8α TM（低紧张性）</span>,
+              <span class="tt" data-tip="棕榈酰化将 CAR 定位于免疫突触脂筏；加速 T 细胞活化动力学；自然与 CD28 共刺激域搭配。存在于 Yescarta 及 Tecartus。">CD28 TM（脂筏定位）</span>
+            </p>
+            <p class="col-label col-label--trial">临床 / IND 阶段</p>
+            <p class="col-val">
+              <span class="tt" data-tip="CD4 衍生 TM；MHC-II 近端信号阈值；用于 Treg CAR 及 CD4+ T 细胞特异性工程设计；多个临床项目。">CD4 TM</span>,
+              <span class="tt" data-tip="内源性 CD3ζ TM；与 TCR 复合物组分共组装；用于需要完整 TCR 样膜聚集的 CAR；血液肿瘤临床项目。">CD3ζ TM</span>,
+              <span class="tt" data-tip="自然杀伤细胞活化受体 TM；与 DAP10/DAP12 衔接蛋白偶联；激活 PI3K/Vav1；支持 CAR-NK 设计；多个 IND 阶段 CAR-NK 项目。">NKG2D TM（NK）</span>,
+              <span class="tt" data-tip="NK 活化衔接蛋白；通过 YINM 基序招募 Grb2/PI3K；ITAM 非依赖性激活；IND 阶段 CAR-NK 项目。">DAP10 TM</span>,
+              <span class="tt" data-tip="双 TM 和含 ITAM 衔接蛋白；通过 Syk 激酶激活；支持无独立 CD3ζ 的 CAR-NK 及 CAR-M 设计；临床 CAR-NK 试验中。">DAP12 TM</span>,
+              <span class="tt" data-tip="与 ICOS 共刺激配对；通过棕榈酰化脂筏定位激活 PI3K-δ 通路；Th17/Th1 表型偏向；用于多项实体瘤 CAR-T 试验设计。">ICOS TM</span>
+            </p>
+            <p class="col-label col-label--research">研究阶段</p>
+            <p class="col-val">
+              <span class="tt" data-tip="CD8β 衍生 TM；脂质分配与 CD8α 不同；异二聚体构型研究中；临床前紧张性信号降低已证实。">CD8β TM</span>,
+              <span class="tt" data-tip="与 OX40 共刺激配对；TRAF2/5 → Bcl-xL；临床前持久性优势；尚无独立临床项目。">OX40 TM</span>,
+              <span class="tt" data-tip="定位于非脂筏微域；与 4-1BB 胞质域配对；临床前代谢重编程获益已证实。">4-1BB TM</span>,
+              <span class="tt" data-tip="专用于 iCAR 设计；对脱靶抗原结合产生显性 PD-1 抑制制动，保护正常细胞；临床前选择性已证实。">PD-1 TM（iCAR）</span>,
+              <span class="tt" data-tip="针对 LNP mRNA 递送后表面展示优化的序列；无需逆转录病毒制备即可体内 CAR-T；研究/早期 IND 阶段。">体内优化 TM（LNP）</span>
+            </p>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <button class="accordion-btn" data-target="acc-costim">
+            <span class="cat">共刺激域（Co-stimulatory）</span><span class="fn">代谢与持久性</span><span class="chevron">▼</span>
+          </button>
+          <div class="accordion-body" id="acc-costim">
+            <p class="col-label col-label--fda">FDA 批准产品</p>
+            <p class="col-val">
+              <span class="tt" data-tip="激活 TRAF1/2 → NF-κB 和线粒体氧化磷酸化；驱动记忆 T 细胞分化和长期持久性。存在于 Kymriah、Breyanzi、Abecma 及 Carvykti。">4-1BB（线粒体代谢型）</span>,
+              <span class="tt" data-tip="激活 PI3K/Akt/mTOR → 有氧糖酵解；驱动快速效应杀伤和早期细胞因子释放。存在于 Yescarta 及 Tecartus。">CD28（糖酵解型）</span>
+            </p>
+            <p class="col-label col-label--trial">临床 / IND 阶段</p>
+            <p class="col-val">
+              <span class="tt" data-tip="TRAF2/5 → NF-κB；上调 Bcl-xL；Th2 样存活；与 4-1BB 串联协同；多项 I/II 期实体瘤试验。">OX40（CD134）</span>,
+              <span class="tt" data-tip="PI3K-δ 激活 → Th17/Th1 混合表型；共分泌 IL-17 和 IFN-γ；在胶原丰富 TME 中优于 CD28；I 期实体瘤试验。">ICOS（Th17/Th1）</span>,
+              <span class="tt" data-tip="NK 共刺激受体；SAP 介导信号增强细胞毒性，无 ITAM 磷酸化；IND 阶段 CAR-NK 项目。">2B4（CD244）</span>,
+              <span class="tt" data-tip="YINM → Grb2/PI3K；NK 细胞样细胞毒性；与 NKG2D TM 配对；IND 阶段 CAR-NK 项目。">DAP10</span>,
+              <span class="tt" data-tip="TNF 受体家族；NF-κB 存活信号；效应记忆分化；部分 CLL 和实体瘤试验设计中优于 4-1BB。">CD27</span>,
+              <span class="tt" data-tip="通过 TLR/IL-1R 激活 NF-κB；GoCAR 和 SYNC-CAR 构建体中实现非细胞因子依赖的 T 细胞扩增；I 期临床项目。">MyD88</span>,
+              <span class="tt" data-tip="自分泌 4-1BB 环路，无需外源 IL-2；I 期自持 CAR-T 项目；特别用于同种异体设置。">4-1BBL（自驱动）</span>,
+              <span class="tt" data-tip="单多肽中 CD28+4-1BB 串联；结合快速糖酵解与线粒体持久性；第四代双共刺激 CAR I 期试验。">CD28+4-1BB 串联</span>,
+              <span class="tt" data-tip="DR3 → NF-κB/PI3K；Th1/Th17 共刺激；与 4-1BB 联用于实体瘤试验构建体；新兴 IND 阶段数据。">TL1A（TNFSF15）</span>
+            </p>
+            <p class="col-label col-label--research">研究阶段</p>
+            <p class="col-val">
+              <span class="tt" data-tip="TRAF5 → NF-κB；对抗 Treg 抑制；增强 TGF-β/IL-10 丰富 TME 中的效应功能；仅有临床前模型。">GITR</span>,
+              <span class="tt" data-tip="LIGHT-HVEM → NF-κB；逆转 BTLA 抑制检查点；临床前耐竭优势已证实。">HVEM</span>,
+              <span class="tt" data-tip="TRAF6 → NF-κB/PI3K；先天-适应性桥梁；CAR 巨噬细胞（CAR-M）吞噬激活；研究阶段。">CD40</span>,
+              <span class="tt" data-tip="通过 MyD88 激活 NF-κB/MAPK；先天模式识别共刺激；TLR2-CAR 同时杀伤和 PAR 识别；临床前。">TLR2</span>,
+              <span class="tt" data-tip="CAR-T 表面的 TNFSF14 激活肿瘤基质上的 HVEM 和 LTβR；DC 成熟和内皮细胞活化；TME 重塑；临床前。">LIGHT（TNFSF14）</span>,
+              <span class="tt" data-tip="SHIP-1/VAV1 → NF-κB/PI3K；天然 NK 活化受体；CAR-NK TIGIT 阻断配对；研究阶段。">CD226（DNAM-1）</span>,
+              <span class="tt" data-tip="DAP10/Vav1 → PI3K；应激诱导配体（MICA, MICB, ULBP）识别作为共刺激信号；临床前 NKG2D-CAR 模型。">NKG2D 胞质域</span>
+            </p>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <button class="accordion-btn" data-target="acc-act">
+            <span class="cat">激活域（Activation）</span><span class="fn">杀伤信号</span><span class="chevron">▼</span>
+          </button>
+          <div class="accordion-body" id="acc-act">
+            <p class="col-label col-label--fda">FDA 批准产品</p>
+            <p class="col-val">
+              <span class="tt" data-tip="包含 3 个 ITAM（6 个酪氨酸）的经典 CAR 激活域；招募 ZAP70 和 Lck；驱动完整 TCR 样信号传导。存在于全部 6 款 FDA 批准 CAR-T 产品（Kymriah, Yescarta, Tecartus, Breyanzi, Abecma, Carvykti）。">CD3ζ — 3XX（3×ITAM，野生型）</span>
+            </p>
+            <p class="col-label col-label--trial">临床 / IND 阶段</p>
+            <p class="col-val">
+              <span class="tt" data-tip="点突变 CD3ζ，仅保留 1 个功能性 ITAM；在高抗原密度下减少慢性刺激和耗竭；I 期实体瘤试验；持续抗原暴露模型中持久性更优。">1XX（1×ITAM，低信号）</span>,
+              <span class="tt" data-tip="通过 Syk 激酶的含 ITAM 衔接蛋白；CAR-NK 及 CAR-M 构建体的首选激活域；多个 IND 阶段 CAR-NK 项目。">DAP12（CAR-NK/CAR-M）</span>,
+              <span class="tt" data-tip="FcR γ 链在巨噬细胞 CAR（CAR-M）中触发吞噬突触形成；支持针对实体瘤靶点的 ADCP；实体瘤临床 CAR-M 项目。">FcR-γ（吞噬/CAR-M）</span>,
+              <span class="tt" data-tip="招募内源性 CD3 复合物组分；降低激活所需的 CAR 表达量；低密度抗原项目中的替代 TCR 近端策略。">CD3ε（招募型）</span>
+            </p>
+            <p class="col-label col-label--research">研究阶段</p>
+            <p class="col-val">
+              <span class="tt" data-tip="点突变 CD3ζ，保留 2 个功能性 ITAM；中等信号校准；临床前耐竭模型；尚无临床项目。">2XX（2×ITAM，中等信号）</span>,
+              <span class="tt" data-tip="直接 ZAP70 对接基序，绕过 ITAM 磷酸化；更快的激活动力学；超低阈值抗原检测；仅临床前。">ZAP70 招募基序</span>,
+              <span class="tt" data-tip="嵌合 CD3ζ-DAP12 融合；同时激活 ZAP70 和 Syk 通路；单构建体中实现 T/NK 混合激活；临床前。">CD3ζ-DAP12 嵌合体</span>,
+              <span class="tt" data-tip="计算设计的具有优化 ITAM 间距的激活域；改善 ZAP70 招募保真度；临床前信号体优化。">优化 ITAM 间距变体</span>
+            </p>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <button class="accordion-btn" data-target="acc-armor">
+            <span class="cat">装甲载荷（Armored Payloads）</span><span class="fn">TME 重塑与耐药</span><span class="chevron">▼</span>
+          </button>
+          <div class="accordion-body" id="acc-armor">
+            <p class="col-label col-label--trial">临床 / IND 阶段</p>
+            <p class="col-val">
+              <span class="tt" data-tip="第四代 TRUCK CAR；IL-12 分泌逆转 M2 巨噬细胞极化，转化免疫抑制 TME；多项实体瘤 I/II 期试验；NFAT 偶联 IL-12 设计降低全身毒性。">分泌型 IL-12（TRUCK）</span>,
+              <span class="tt" data-tip="自分泌 IL-15 降低 IL-2 依赖性；延长淋巴清除宿主中的 T 细胞持久性；血液瘤和实体瘤 I/II 期试验。">持续型 IL-15</span>,
+              <span class="tt" data-tip="显性负性 TGF-β 受体 II；在 TGF-β 丰富的胰腺癌、结直肠癌及前列腺癌 TME 中完全恢复 CAR-T 功能；I 期试验进行中。">TGFB_DNR（抗抑制）</span>,
+              <span class="tt" data-tip="双载荷：IL-7（存活/记忆）+ CCL19（T 细胞和 DC 招募）；将冷肿瘤转变为热肿瘤；胃癌等实体瘤 I 期试验。">IL-7/CCL19（7×19）</span>,
+              <span class="tt" data-tip="AP-1 过表达对抗 TOX/NR4A 耗竭基因程序；延长慢性刺激下的 CAR-T 功能；实体瘤项目 IND 阶段。">c-JUN（抗耗竭）</span>,
+              <span class="tt" data-tip="肝素酶降解胞外基质中的硫酸乙酰肝素；使 CAR-T 能穿透致密促纤维增生性实体瘤基质；I 期实体瘤项目。">HPSE（肝素酶）</span>
+            </p>
+            <p class="col-label col-label--research">研究阶段</p>
+            <p class="col-val">
+              <span class="tt" data-tip="分泌型 IL-18 激活 TME 中的 NK 细胞、巨噬细胞和 DC；驱动 IFN-γ 产生和 M1 极化；特别有效于冷肿瘤转化。">分泌型 IL-18</span>,
+              <span class="tt" data-tip="表面锚定 IL-21 为 TME 中旁观者 NK 细胞和 B 细胞提供旁分泌支持；促进 NK 细胞毒性和长寿命浆细胞分化。">膜结合型 IL-21</span>,
+              <span class="tt" data-tip="表面锚定 IL-15 提供局部旁分泌支持而无全身毒性；避免可溶性 IL-15 注射引发的 NK 细胞过度活化。">膜结合型 IL-15</span>,
+              <span class="tt" data-tip="GPX4 过表达中和脂质过氧化物；保护 CAR-T 免受多不饱和脂肪酸丰富 TME 中氧化应激诱发的铁死亡。">GPX4（抗铁死亡）</span>,
+              <span class="tt" data-tip="CAR-T 分泌双特异性 T 细胞衔接器，将内源性旁观者 T 细胞重定向至肿瘤；扩大直接 CAR 接触以外的细胞毒杀伤半径；实现对抗原阴性逃逸变体的旁观者杀伤。">BiTE 分泌</span>,
+              <span class="tt" data-tip="LHX2 是同源域转录因子，抑制 T 细胞耗竭并促进干性记忆表型；过表达延长持续抗原压力下的 CAR-T 功能寿命。">LHX2（抗耗竭转录因子）</span>,
+              <span class="tt" data-tip="显性负性 FAS（FADD 缺陷型）阻止 FAS/FASL 介导的活化诱导细胞死亡（AICD）；延长 FasL 表达 TME（包括前列腺癌）中的 CAR-T 存活。">显性负性 FAS</span>
+            </p>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <button class="accordion-btn" data-target="acc-safety">
+            <span class="cat">安全开关（Safety Switches）</span><span class="fn">可控清除</span><span class="chevron">▼</span>
+          </button>
+          <div class="accordion-body" id="acc-safety">
+            <p class="col-label col-label--trial">临床 / IND 阶段</p>
+            <p class="col-val">
+              <span class="tt" data-tip="截短型非信号 EGFR（缺失域 I-III 及胞质尾段）；表达于 CAR-T 表面；通过临床西妥昔单抗输注清除，动力学可滴定；多项 I/II 期试验验证。">tEGFR（西妥昔单抗）</span>,
+              <span class="tt" data-tip="保留更多胞外域表位的截短 EGFR 变体，支持西妥昔单抗和帕尼单抗双抗体清除；tEGFR 表达水平不足时的替代选择。">EGFRt（扩展型）</span>,
+              <span class="tt" data-tip="插入 CAR 构建体的微型 CD20 表位肽（16aa）；支持利妥昔单抗介导的 ADCC 和 CDC 清除，不干扰 CAR 结构；约为 tEGFR 大小的一半。">CD20 模拟表位（利妥昔单抗）</span>,
+              <span class="tt" data-tip="136aa 融合标签，含 CD34 最小表位和 CD20 模拟表位；双功能：抗 CD34 抗体支持临床流式检测和分选；利妥昔单抗支持清除。免疫原性极低。">RQR8（CD34+CD20 双标签）</span>
+            </p>
+            <p class="col-label col-label--trial">临床 / IND 阶段（续）</p>
+            <p class="col-val">
+              <span class="tt" data-tip="化学诱导二聚化（CID）caspase-9 触发快速凋亡；AP1903（rimiducid）给药后 30 min 内清除 >95% CAR-T；细胞内源性、无旁观者效应。I/II 期试验中的金标准安全开关。">iCasp9（AP1903，>95% 清除）</span>
+            </p>
+            <p class="col-label col-label--research">研究阶段</p>
+            <p class="col-val">
+              <span class="tt" data-tip="雷帕霉素诱导的 FKBP-FRB 异二聚化重建分裂 CAR；使用临床批准免疫抑制剂实现药理学 ON/OFF 抗原识别控制；临床前至早期 IND 阶段。">雷帕霉素 ON 分裂 CAR</span>,
+              <span class="tt" data-tip="Cereblon E3 连接酶依赖的降解标签；来那度胺添加触发融合 CAR 蛋白的蛋白酶体降解；使用口服生物可利用的 FDA 批准药物实现剂量依赖性控制。">来那度胺 ON（降解域）</span>,
+              <span class="tt" data-tip="HSV 胸苷激酶将更昔洛韦磷酸化为特异性细胞毒核苷类似物，选择性作用于分裂中的转导 T 细胞；在 HLA 单倍体不合同种异体 T 细胞项目中有成熟临床记录。">HSV-TK / 更昔洛韦</span>,
+              <span class="tt" data-tip="甲氧苄啶稳定化去稳定域（DD-TMP）；无甲氧苄啶时融合 DD 靶向 CAR 蛋白酶体降解；添加 TMP 后稳定并恢复表达。使用广泛耐受的 FDA 批准抗生素实现可滴定控制。">TMPD 诱导（DD-TMP）</span>,
+              <span class="tt" data-tip="二聚化药物调控免疫受体复合体；抗原结合和胞内信号域分布在两条独立链上——仅在雷帕霉素类似物存在时异二聚化重建完整信号；实现完全药物控制的 CAR 活性而不清除 T 细胞。">DARIC（药物控制活性）</span>,
+              <span class="tt" data-tip="抑制转激活转换受体：胞外 PD-1 域捕获 PD-L1+ 肿瘤信号，通过 CD28 或 4-1BB 胞内域转化为共刺激激活信号；将免疫检查点变为肿瘤选择性燃料。">PD-1 转换受体（PD1-CD28）</span>
+            </p>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <button class="accordion-btn" data-target="acc-logic">
+            <span class="cat">逻辑门（Logic Gates）</span><span class="fn">特异性控制（AND/NOT）</span><span class="chevron">▼</span>
+          </button>
+          <div class="accordion-body" id="acc-logic">
+            <p class="col-label col-label--trial">临床 / IND 阶段</p>
+            <p class="col-val">
+              <span class="tt" data-tip="单构建体中双 scFv；OR 逻辑，结合抗原 A 或 B 均可激活；应对肿瘤内抗原异质性和逃逸变体。I/II 期试验涵盖 CD19+CD22、BCMA+CD38 等双靶点组合。">串联 CAR（OR 门）</span>
+            </p>
+            <p class="col-label col-label--research">研究阶段</p>
+            <p class="col-val">
+              <span class="tt" data-tip="合成 Notch 受体识别肿瘤抗原 1 后在转录水平诱导靶向抗原 2 的 CAR 表达；需双阳性抗原同时表达才能触发杀伤——严格的 AND 门肿瘤门控。">SynNotch（AND 门）</span>,
+              <span class="tt" data-tip="抑制型 CAR；结合正常组织保护性抗原时激活 PD-1 或 CTLA-4 胞质域，产生显性抑制制动，保护健康细胞免受脱靶杀伤。">iCAR（NOT 门/PD-1/CTLA-4）</span>,
+              <span class="tt" data-tip="激活和共刺激信号域分布于两条独立多肽链；CID 诱导异二聚化重建完整信号；无小分子二聚化剂时 CAR 活性为零。">分裂 CAR（二聚化）</span>,
+              <span class="tt" data-tip="计算设计的蛋白锁屏蔽 CAR 抗原结合域；肿瘤特异性蛋白酶（uPA、MMP-14）切割锁定肽并暴露 CDR；仅在肿瘤部位激活 CAR。">LOCKR（蛋白开关）</span>,
+              <span class="tt" data-tip="可转换配体非依赖性平台；仅替换衔接分子即可交换结合域；无需重新工程或重新制备基础 CAR 载体即可快速重新靶向。">CLIP-CAR</span>,
+              <span class="tt" data-tip="生物素结合免疫受体；结合预载于肿瘤细胞上的生物素化抗体衔接器；即插即用重新靶向任意可生物素化抗原，无需新载体制备。">通用 CAR（BBIR）</span>,
+              <span class="tt" data-tip="模块化胞外传感器架构；合成受体整合两个胞外抗原输入，通过可编程胞内信号模块传导；可重构的 AND/OR/NOT 逻辑。">MESA（模块化传感器）</span>,
+              <span class="tt" data-tip="蛋白酶激活 CAR；掩蔽域被肿瘤微环境蛋白酶（MMP-2、uPA）蛋白水解切除；CAR 结合域在健康组织中立体位阻屏蔽，在肿瘤部位激活。">ProCAR（蛋白酶激活）</span>,
+              <span class="tt" data-tip="低氧响应启动子元件驱动 CAR 仅在低氧肿瘤微环境（pO₂ < 5 mmHg）中表达；将 CAR 活性限制在肿瘤部位而无全身免疫抑制。">低氧响应 CAR</span>,
+              <span class="tt" data-tip="CAR 触发阈值根据抗原表面密度校准；区分高密度肿瘤细胞与表达同一抗原的低密度正常细胞；通过调节铰链长度和亲和力实现。">抗原密度感应 CAR</span>
+            </p>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <button class="accordion-btn" data-target="acc-reg">
+            <span class="cat">调控元件（Regulatory）</span><span class="fn">表达调控</span><span class="chevron">▼</span>
+          </button>
+          <div class="accordion-body" id="acc-reg">
+            <p class="col-label col-label--fda">FDA 批准产品</p>
+            <p class="col-val">
+              <span class="tt" data-tip="强组成型 EF1α 启动子；耐原代 T 细胞表观遗传沉默；存在于 Kymriah、Breyanzi 及大多数获批慢病毒 CAR-T 载体。">EF1α 启动子</span>,
+              <span class="tt" data-tip="紧凑型 EF1α 短形式（约 230 bp vs 1200 bp）；保留高活性；慢病毒包装容量有限的多顺反子构建体首选；用于 Breyanzi 等。">EFS（紧凑型）</span>,
+              <span class="tt" data-tip="中等强度组成型 PGK 启动子；免疫原性低于 CMV；用于批准产品中安全开关和筛选标记的共表达。">PGK 启动子</span>,
+              <span class="tt" data-tip="转录后调控元件；稳定 mRNA，促进核输出；提升蛋白表达量 2-5 倍；存在于多款批准慢病毒 CAR-T 载体。">WPRE</span>
+            </p>
+            <p class="col-label col-label--trial">临床 / IND 阶段</p>
+            <p class="col-val">
+              <span class="tt" data-tip="造血细胞中强 LTR 衍生启动子；用于 CAR-NK 和 HSC-CAR 项目；EF1α 活性不足时的 IND 阶段替代。">SFFV</span>,
+              <span class="tt" data-tip="CMV 增强子 + CBA 核心；极强泛表达；用于 AAV 递送 CAR 项目；IND 阶段非病毒递送。">CAG（CMV-CBA 混合）</span>,
+              <span class="tt" data-tip="NFAT 响应元件仅在抗原结合时驱动载荷表达；减少组成型细胞因子毒性；IND 阶段装甲 CAR 项目。">NFAT 响应型（诱导型）</span>,
+              <span class="tt" data-tip="泛素染色质开放元件，防止 20+ 次倍增后的表观遗传沉默；长期离体扩增的 IND 阶段项目。">UCOE（抗沉默）</span>,
+              <span class="tt" data-tip="强力霉素诱导/抑制双组分系统；可调节 CAR 表达量；药理学安全管理；IND 阶段试验。">Tet-On / Tet-Off</span>,
+              <span class="tt" data-tip="缺失负调控区的骨髓增殖性肉瘤病毒 LTR；在 T 细胞和 NK 细胞中持续稳定表达；IND 阶段 CAR-NK 和 HSC 项目中 SFFV 的替代方案。">MND（抗沉默 LTR）</span>
+            </p>
+            <p class="col-label col-label--research">研究阶段</p>
+            <p class="col-val">
+              <span class="tt" data-tip="5×NFAT 响应元件阵列；灵敏度高于单个 NFAT-RE；支持超低抗原密度触发的转基因表达；用于精准载荷递送。">NFAT5×（高灵敏度）</span>,
+              <span class="tt" data-tip="3 代 Tet 响应元件；本底泄漏较 Tet-Off 降低；100 倍诱导比；临床强力霉素诱导 CAR 设计的首选，需要严格基础抑制。">TRE3G（第 3 代 Tet）</span>,
+              <span class="tt" data-tip="低氧响应元件驱动启动子；pO₂ < 5 mmHg 时 HIF-1α 激活转录；将 CAR 或载荷表达限制在低氧肿瘤核心，无全身表达。">HRE（低氧驱动）</span>,
+              <span class="tt" data-tip="RNA Pol III 依赖启动子，驱动同一慢病毒载体共表达 shRNA；实现单构建体中 CAR 表达与基因敲减（PD-1、TET2、CISH）同步。">U6（shRNA 共表达）</span>,
+              <span class="tt" data-tip="融合 CMV 增强子与 EF1α 核心的优化混合启动子；以紧凑尺寸接近 CAG 强度；适合脂质纳米颗粒 mRNA 递送和 CRISPR 敲入 CAR 方案。">JeT 启动子</span>
+            </p>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <button class="accordion-btn" data-target="acc-linkers">
+            <span class="cat">信号肽与接头（Leaders &amp; Linkers）</span><span class="fn">分泌与柔性</span><span class="chevron">▼</span>
+          </button>
+          <div class="accordion-body" id="acc-linkers">
+            <p class="col-label col-label--fda">FDA 批准产品</p>
+            <p class="col-val">
+              <span class="tt" data-tip="CAR 表面展示最广泛使用的信号肽；高效 ER 靶向；低免疫原性；存在于绝大多数批准慢病毒 CAR-T 构建体。">CD8α SP</span>,
+              <span class="tt" data-tip="GM-CSF 受体 α 链信号肽；高效分泌信号；当 CD8α SP 的膜结合载荷表面表达不足时选用。">GM-CSF SP</span>,
+              <span class="tt" data-tip="Igκ 轻链前导序列；scFv 和 Fab 结合域的高效 ER 转位；确保正确折叠和二硫键形成；用于批准的 BCMA CAR 产品。">IgK 前导 SP</span>,
+              <span class="tt" data-tip="（Gly₄Ser）n 重复接头；经典 scFv VH-VL 连接器；无二级结构；长度可调 5-25aa；免疫原性极低；用于所有批准 scFv 类 CAR 产品。">G4S — (G₄S)₃ / (G₄S)₄</span>,
+              <span class="tt" data-tip="自剪切 2A 肽，实现接近等摩尔比的多顺反子表达。Furin-P2A 效率 >99%；T2A、E2A、F2A 依次递减。批准产品中 CAR + 安全开关共表达的关键元件。">Furin-P2A / T2A / E2A / F2A</span>
+            </p>
+            <p class="col-label col-label--trial">临床 / IND 阶段</p>
+            <p class="col-val">
+              <span class="tt" data-tip="针对细胞因子和 scFv 载荷优化的分泌信号；可溶性装甲载荷的分泌效率较 CD8α SP 高 5-10 倍；IND 阶段装甲 CAR 项目。">IL-2 SP（分泌型）</span>,
+              <span class="tt" data-tip="三个（EAAAK）α 螺旋重复（约 21aa）；固定域间距离和角度取向；减少串联 scFv 和双特异构建体中的抗原桥联；IND 阶段串联 CAR 设计。">EAAAK3（刚性 α 螺旋）</span>,
+              <span class="tt" data-tip="Whitlow 等设计的 20aa 结构化接头；比 G4S 更少 VH-VL 域错配；临床构建体中聚集倾向 scFv 的首选。">Whitlow 接头（20aa）</span>,
+              <span class="tt" data-tip="18aa 中等长度接头；平衡柔性与间距；VHH-Fc 融合和串联纳米抗体构建体的标准选择。">218 接头（18aa）</span>,
+              <span class="tt" data-tip="亲水性类 PEG 重组多肽；延长分泌型 BiTE 和细胞因子载荷的半衰期；IND 阶段装甲构建体项目。">XTEN（半衰期延长）</span>,
+              <span class="tt" data-tip="EMCV IRES；帽非依赖性翻译第二 ORF；约为上游 ORF 效率的 50-80%；产生未融合的独立蛋白；用于 IND 阶段双转基因构建体。">IRES（双顺反子）</span>
+            </p>
+            <p class="col-label col-label--research">研究阶段</p>
+            <p class="col-val">
+              <span class="tt" data-tip="衍生自 Gaussia 萤光素酶；真核生物中效率最高的分泌信号肽之一；BiTE 分泌和需要最大分泌效率的细胞因子载荷的首选 SP。">Gaussia SP</span>,
+              <span class="tt" data-tip="IL-6 信号肽；针对大型糖蛋白载荷（包括全长抗体和细胞因子融合蛋白）的分泌优化；保持正确 N-糖基化模式。">IL-6 SP</span>,
+              <span class="tt" data-tip="丝氨酸-谷氨酸-丙氨酸重复接头；相同长度下胶体稳定性优于 G4S；高浓度双特异构建体和串联 scFv 的聚集减少。">SEA 接头（抗聚集）</span>,
+              <span class="tt" data-tip="富脯氨酸刚性接头；全反式 PPII 螺旋；每残基精确延伸构型；用于亚埃精度域间定位。">富脯氨酸间隔子</span>
+            </p>
+          </div>
+        </div>
+
+      </div>
+
       <h2 id="strategy"><span class="h2-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></span>治疗架构矩阵</h2>
-      <p >我们的 AI 引擎应用深度生物学逻辑来选择最佳架构。我们不只是组装元件，而是设计<strong>系统</strong>以克服特定的疾病障碍。</p>
+      <p>我们的 AI 引擎运用深度生物学逻辑选择最优架构。我们不只是组装元件，而是设计<strong>系统</strong>来攻克特定的疾病屏障。</p>
+
       <div class="table-wrap">
       <table style="width:100%; border-collapse: collapse;">
         <thead>
           <tr>
-            <th>疾病语境</th>
-            <th>核心壁垒</th>
+            <th>疾病背景</th>
+            <th>核心屏障</th>
             <th>高级架构方案</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td><strong>实体瘤 (如肝癌、胃癌)</strong></td>
-            <td><strong>物理排斥</strong> (ECM)、<strong>免疫抑制</strong> (TGF-β) 与 <strong>脱靶毒性 (on-target off-tumor)</strong></td>
-            <td><strong>基质降解协同：</strong> CAR-M 降解 ECM + 装备 <strong>TGFB_DNR</strong> 的 CAR-T。<strong>亲和力调优</strong> 与 <strong>逻辑门控</strong> 识别以保护正常组织。</td>
+            <td data-label="疾病背景"><strong>实体瘤（如 HCC、胃癌）</strong></td>
+            <td data-label="核心屏障"><strong>物理排斥</strong>（细胞外基质 ECM）、<strong>免疫抑制</strong>（TGF-β）及 <strong>on-target off-tumor</strong></td>
+            <td data-label="高级架构方案"><strong>基质降解协同：</strong>CAR-M 降解 ECM + 配备 <strong>TGFB_DNR</strong> 的装甲 CAR-T。<strong>亲和力调节</strong>（对正常组织抗原降低 Kd）和<strong>逻辑门</strong>识别以保护健康组织。</td>
           </tr>
           <tr>
-            <td><strong>血液瘤 / 液体瘤 (如 B-ALL、LBCL)</strong></td>
-            <td><strong>细胞因子风暴 (CRS)</strong> 与 <strong>B 细胞再生障碍</strong></td>
-            <td><strong>4-1BB 主导</strong> (较 CD28 降低 CRS)、<strong>安全开关</strong> (tEGFR, iCasp9) 可控清除、<strong>亲和力与剂量调优</strong> 平衡疗效与毒性。</td>
+            <td data-label="疾病背景"><strong>血液系统肿瘤（如 B-ALL、LBCL）</strong></td>
+            <td data-label="核心屏障"><strong>细胞因子释放综合征（CRS）</strong>及 <strong>B 细胞再生障碍</strong></td>
+            <td data-label="高级架构方案"><strong>4-1BB 主导</strong>（较 CD28 减少 CRS），<strong>安全开关</strong>（tEGFR、iCasp9）实现可控清除，<strong>亲和力与剂量调节</strong>以平衡疗效与毒性。</td>
           </tr>
           <tr>
-            <td><strong>AML / 髓系恶性肿瘤</strong></td>
-            <td><strong>共表达毒性</strong> (健康骨髓耗竭) & <strong>复发</strong></td>
-            <td><strong>瞬时“打了就跑”策略：</strong> <strong>mRNA-LNP 体内 CAR</strong> 实现暂时清除而无永久再生障碍，或采用 <strong>逻辑门控 (NOT)</strong> 电路。</td>
+            <td data-label="疾病背景"><strong>AML / 髓系恶性肿瘤</strong></td>
+            <td data-label="核心屏障"><strong>共享毒性</strong>（正常骨髓清除）及<strong>复发</strong></td>
+            <td data-label="高级架构方案"><strong>瞬时"打了就跑"：</strong><strong>mRNA-LNP 体内 CAR</strong> 实现临时清除而不造成永久性再障，或使用<strong>逻辑门（NOT）</strong>电路。</td>
           </tr>
           <tr>
-            <td><strong>自身免疫 (SLE, 红斑狼疮)</strong></td>
-            <td><strong>全身安全性</strong> & <strong>B 细胞再生障碍</strong> 风险</td>
-            <td><strong>免疫重置：</strong> <strong>CD8-Sparing CAR-Treg</strong> 诱导耐受，或 <strong>短效 mRNA CAR</strong> 单次清除 B 细胞，允许免疫系统重启。</td>
+            <td data-label="疾病背景"><strong>自身免疫（SLE、狼疮）</strong></td>
+            <td data-label="核心屏障"><strong>全身安全性</strong>及 <strong>B 细胞再生障碍</strong>风险</td>
+            <td data-label="高级架构方案"><strong>免疫重置：</strong><strong>CD8 保护型 CAR-Treg</strong> 诱导耐受，或<strong>短效 mRNA CAR</strong> 一次性清除 B 细胞后允许免疫系统重启。</td>
           </tr>
           <tr>
-            <td><strong>中枢神经 / 胶质母细胞瘤</strong></td>
-            <td><strong>血脑屏障</strong> & <strong>神经毒性 (ICANS)</strong></td>
-            <td><strong>区域精准递送：</strong> <strong>腔内递送</strong> (ICV) 绕过血脑屏障。<strong>铰链/跨膜优化</strong> 最小化基底信号以降低 ICANS 风险。</td>
+            <td data-label="疾病背景"><strong>CNS / 胶质母细胞瘤</strong></td>
+            <td data-label="核心屏障"><strong>血脑屏障</strong>及<strong>神经毒性（ICANS）</strong></td>
+            <td data-label="高级架构方案"><strong>区域精准递送：</strong><strong>脑室内给药（ICV）</strong>绕过血脑屏障。<strong>铰链/跨膜域优化</strong>最小化紧张性信号以降低 ICANS 风险。</td>
           </tr>
         </tbody>
       </table>
       </div>
-      <h2 id="engineering"><span class="h2-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></span>工程化模块</h2>
-      <p >我们使用经过验证的功能域库组装最优 CAR 构建体。</p>
-      <ul >
-        <li><strong>高级结合域 (Advanced Binders)</strong> — <strong>De Novo 屏蔽设计</strong> (计算 FTO) 提升特异性、<strong>逻辑门控</strong>识别及<strong>多特异性</strong> (BiTE/TriTE 分泌) 设计。</li>
-        <li><strong>下一代信号 (Next-Gen Signaling)</strong> — 集成 <strong>JAK-STAT</strong> (IL-2Rβ) 通路 (第五代 CAR)、<strong>BATF3 重编程</strong>维持干性及<strong>合成共刺激</strong> (如 4-1BBL/CD40L)。</li>
-        <li><strong>体内递送 (In Vivo Delivery)</strong> — <strong>LNP 优化 mRNA</strong> (瞬时/安全)、<strong>病毒样颗粒 (VLP)</strong> (靶向递送) 及 <strong>AAV</strong> (供体模板) 载体。</li>
-        <li><strong>异体工程 (Allogeneic Engineering)</strong> — <strong>CRISPR/Cas9</strong> 基因编辑 (TRAC/B2M 敲除) 打造通用型 CAR-T，消除 GvHD 与排斥反应。</li>
-        <li><strong>铠甲 (Armoring)</strong> — <strong>TGFB_DNR</strong> (抗抑制), <strong>Membrane_IL15</strong> (持久性), <strong>GPX4</strong> (抗铁死亡), <strong>分泌型 IL-12</strong> (TRUCK)。</li>
-        <li><strong>亲和力优化 (Affinity Tuning)</strong> — 提供 Kd/koff 微调的计算突变服务（如针对 HER2 下调亲和力以保护正常组织，或调整解离速率防止耗竭）。</li>
-        <li><strong>载体与容量 (Vector & Capacity)</strong> — <strong>紧凑型 VHH</strong> 设计节省载荷空间；支持 <strong>PiggyBac / Sleeping Beauty 转座子</strong> 系统，突破慢病毒限制，承载超大构建体 (>10kb)。</li>
+
+      <h2 id="engineering"><span class="h2-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></span>工程模块</h2>
+      <p>我们运用经验证的功能域库组装最优 CAR 构建体。</p>
+
+      <ul>
+        <li><strong>先进结合域</strong> — <strong>De Novo 掩蔽设计</strong>（计算 FTO），<strong>逻辑门</strong>识别，及<strong>多特异性</strong>（BiTE/TriTE 分泌）。</li>
+        <li><strong>下一代信号传导</strong> — <strong>JAK-STAT</strong>（IL-2Rβ）整合（第 5 代），<strong>BATF3 编程</strong>赋予干性，及<strong>合成共刺激</strong>（如 4-1BBL/CD40L）。</li>
+        <li><strong>体内递送</strong> — <strong>LNP 优化 mRNA</strong>（瞬时/安全），<strong>病毒样颗粒（VLP）</strong>（靶向），及 <strong>AAV</strong>（供体模板）载体。</li>
+        <li><strong>同种异体工程</strong> — <strong>CRISPR/Cas9</strong> 基因编辑（TRAC/B2M KO），用于现货通用 CAR-T，降低 GvHD 和排斥反应。</li>
+        <li><strong>装甲载荷</strong> — <strong>TGFB_DNR</strong>（抗抑制）、<strong>膜结合 IL-15</strong>（持久性）、<strong>GPX4</strong>（抗铁死亡）、<strong>分泌型 IL-12</strong>（TRUCK）。</li>
+        <li><strong>亲和力调节</strong> — 计算突变调节 Kd（如降低 HER2 亲和力保护正常组织）和 koff（防止耗竭）。</li>
+        <li><strong>载体与容量</strong> — <strong>紧凑型 VHH</strong> 设计节省载荷空间；<strong>PiggyBac / Sleeping Beauty 转座子</strong>支持超大构建体（>10kb），超越慢病毒容量限制。</li>
       </ul>
-      <h2 id="example"><span class="h2-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/></svg></span>设计示例：GPC3 CAR-T 智慧推演</h2>
-      <p >ACTES 引擎不仅是选择元件，更是在进行生物学推理。以下是针对肝细胞癌（HCC）项目的逻辑推演过程。</p>
-      <div class="logic-box" style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 24px; font-family: 'Inter', sans-serif;">
+
+      <h2 id="example"><span class="h2-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/></svg></span>案例分析：GPC3 CAR-T 设计逻辑推演</h2>
+      <p>ACTES 引擎不只是选择元件，而是进行生物学推理。以下是针对肝细胞癌（HCC）项目的完整推演过程。</p>
+
+      <div class="logic-box" style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 24px; font-family: 'Noto Sans SC', 'Inter', sans-serif;">
         <div style="border-bottom: 1px solid #e2e8f0; padding-bottom: 12px; margin-bottom: 16px;">
-            <strong style="color: var(--primary); font-size: 14px; text-transform: uppercase;">Input Parameters</strong><br>
-            <span style="font-family: monospace; color: var(--text-muted);">Target: GPC3 | Indication: Solid Tumor (HCC) | Delivery: Lentiviral</span>
+            <strong style="color: var(--primary); font-size: 14px; text-transform: uppercase;">输入参数</strong><br>
+            <span style="font-family: monospace; color: var(--text-muted);">靶点：GPC3 | 适应症：实体瘤（HCC）| 递送：慢病毒</span>
         </div>
+
         <div class="step" style="margin-bottom: 16px;">
-            <strong style="color: #0f172a;">Step 1: Structural Topology Analysis</strong><br>
-            <span style="color: var(--text-muted); font-size: 14px;">• Query: Where is the epitope located on GPC3?</span><br>
-            <span style="color: var(--primary); font-weight: 500; font-size: 14px;">→ Result: Membrane Proximal (&lt; 5nm distance).</span><br>
+            <strong style="color: #0f172a;">第 1 步：结构拓扑分析</strong><br>
+            <span style="color: var(--text-muted); font-size: 14px;">• 查询：GPC3 上表位位置？</span><br>
+            <span style="color: var(--primary); font-weight: 500; font-size: 14px;">→ 结果：靠近细胞膜（距膜距离 &lt; 5nm）</span><br>
             <div style="background: rgba(13,148,136,0.1); padding: 8px 12px; border-radius: 6px; margin-top: 6px; font-size: 13px; color: var(--primary-dark);">
-                <strong>💡 AI Decision:</strong> Enforce <strong>CD8α Short Hinge</strong>. <br>
-                <em>Reasoning: A Long Hinge (e.g., IgG4) would push the CAR too far from the target, preventing effective immunological synapse formation.</em>
+                <strong>💡 AI 决策：</strong>选用 <strong>CD8α 短铰链</strong><br>
+                <em>原因：长铰链（如 IgG4）会使 CAR 远离靶点，阻碍有效免疫突触形成。</em>
             </div>
         </div>
+
         <div class="step" style="margin-bottom: 16px;">
-            <strong style="color: #0f172a;">Step 2: TME Counter-Strategy</strong><br>
-            <span style="color: var(--text-muted); font-size: 14px;">• Query: What are the suppression factors in HCC?</span><br>
-            <span style="color: var(--primary); font-weight: 500; font-size: 14px;">→ Result: High TGF-β + Hypoxia.</span><br>
+            <strong style="color: #0f172a;">第 2 步：TME 对抗策略</strong><br>
+            <span style="color: var(--text-muted); font-size: 14px;">• 查询：HCC 中的免疫抑制因子？</span><br>
+            <span style="color: var(--primary); font-weight: 500; font-size: 14px;">→ 结果：高 TGF-β + 低氧</span><br>
             <div style="background: rgba(13,148,136,0.1); padding: 8px 12px; border-radius: 6px; margin-top: 6px; font-size: 13px; color: var(--primary-dark);">
-                <strong>💡 AI Decision:</strong> Add <strong>TGFB_DNR</strong> (Dominant Negative Receptor). <br>
-                <em>Reasoning: Shields CAR-T from TGF-β inhibition, converting the "stop" signal into a survival advantage.</em>
+                <strong>💡 AI 决策：</strong>添加 <strong>TGFB_DNR</strong>（显性负性受体）<br>
+                <em>原因：屏蔽 CAR-T 免受 TGF-β 抑制，将"停止"信号转化为存活优势。</em>
             </div>
         </div>
+
         <div class="step" style="margin-bottom: 16px;">
-            <strong style="color: #0f172a;">Step 3: Safety & Toxicity</strong><br>
-            <span style="color: var(--text-muted); font-size: 14px;">• Query: Is GPC3 expressed on normal tissues?</span><br>
-            <span style="color: var(--primary); font-weight: 500; font-size: 14px;">→ Result: Low expression on normal liver/lung.</span><br>
+            <strong style="color: #0f172a;">第 3 步：安全性与毒性</strong><br>
+            <span style="color: var(--text-muted); font-size: 14px;">• 查询：GPC3 在正常组织的表达情况？</span><br>
+            <span style="color: var(--primary); font-weight: 500; font-size: 14px;">→ 结果：正常肝脏/肺组织低表达</span><br>
             <div style="background: rgba(13,148,136,0.1); padding: 8px 12px; border-radius: 6px; margin-top: 6px; font-size: 13px; color: var(--primary-dark);">
-                <strong>💡 AI Decision:</strong> Equip <strong>iCasp9 Safety Switch</strong>. <br>
-                <em>Reasoning: Mandatory fail-safe to terminate therapy in case of severe on-target/off-tumor toxicity.</em>
+                <strong>💡 AI 决策：</strong>配备 <strong>iCasp9 安全开关</strong><br>
+                <em>原因：强制性失效保护机制，在发生严重 on-target/off-tumor 毒性时终止治疗。</em>
             </div>
         </div>
+
         <div class="step">
-            <strong style="color: #0f172a;">Step 4: Kinetics Tuning</strong><br>
-            <span style="color: var(--text-muted); font-size: 14px;">• Query: Risk of exhaustion in solid tumor?</span><br>
-            <span style="color: var(--primary); font-weight: 500; font-size: 14px;">→ Result: High. Requires serial killing persistence.</span><br>
+            <strong style="color: #0f172a;">第 4 步：动力学调节</strong><br>
+            <span style="color: var(--text-muted); font-size: 14px;">• 查询：实体瘤中的耗竭风险？</span><br>
+            <span style="color: var(--primary); font-weight: 500; font-size: 14px;">→ 结果：高风险，需要序贯杀伤持久性</span><br>
             <div style="background: rgba(13,148,136,0.1); padding: 8px 12px; border-radius: 6px; margin-top: 6px; font-size: 13px; color: var(--primary-dark);">
-                <strong>💡 AI Decision:</strong> Optimize for <strong>Fast Off-Rate (koff)</strong>. <br>
-                <em>Reasoning: Prevents chronic signaling and exhaustion, allowing CAR-T cells to detach and engage multiple tumor targets sequentially.</em>
+                <strong>💡 AI 决策：</strong>优化<strong>快速解离速率（koff）</strong><br>
+                <em>原因：防止慢性信号传导和耗竭，使 CAR-T 细胞脱离后能序贯结合多个肿瘤靶点。</em>
             </div>
         </div>
       </div>
-      <h2 id="safety"><span class="h2-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></span>安全与有效性</h2>
-      <p >安全性是设计进序列中的，而不仅仅是在临床中监测。</p>
-      <ul >
-        <li><strong>安全开关</strong> — <strong>iCasp9</strong> (标准, >95% 清除), <strong>tEGFR</strong> (ADCC), <strong>RQR8</strong> (CD20 拟态表位)。</li>
-        <li><strong>逻辑门控</strong> — <strong>SynNotch</strong> (AND 门提升特异性), <strong>iCAR</strong> (抑制型 CAR 保护正常组织)。</li>
-        <li><strong>毒性管理</strong> — 使用 4-1BB 降低 CRS 峰值；局部递送减少全身毒性。</li>
+
+      <h2 id="safety"><span class="h2-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></span>安全性与有效性</h2>
+      <p>安全性工程化设计于序列之中，而非仅在临床中监测。</p>
+
+      <ul>
+        <li><strong>安全开关</strong> — <strong>iCasp9</strong>（标准，>95% 清除率）、<strong>tEGFR</strong>（ADCC 清除）、<strong>RQR8</strong>（CD20 模拟表位）。</li>
+        <li><strong>逻辑门控</strong> — <strong>SynNotch</strong>（AND 门增强特异性）、<strong>iCAR</strong>（抑制型 CAR 保护正常组织）。</li>
+        <li><strong>毒性管理</strong> — 4-1BB 降低 CRS 峰值；局部给药减少全身毒性。</li>
       </ul>
+
       <h2 id="full-report"><span class="h2-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg></span>完整设计报告</h2>
-      <p >我们交付可直接用于合成与测试的完整设计包。</p>
-      <ul >
-        <li><strong>构建体序列</strong> — 完整 CAR 构建体（Binder-铰链-跨膜-信号-铠甲）的优化 DNA/氨基酸序列。</li>
-        <li><strong>载体图谱</strong> — 含启动子 (EF1α/MSCV) 和调控元件的质粒/慢病毒载体设计。</li>
-        <li><strong>设计原理</strong> — 基于疾病背景和抗原拓扑学的组件选择详细说明。</li>
+      <p>我们交付一套完整的设计包，可直接用于合成和测试。</p>
+
+      <ul>
+        <li><strong>构建体序列</strong> — 完整 CAR 构建体（结合域-铰链-跨膜-信号-装甲）的优化 DNA/氨基酸序列。</li>
+        <li><strong>载体图谱</strong> — 含启动子（EF1α/MSCV）及调控元件的质粒/慢病毒载体设计。</li>
+        <li><strong>设计依据</strong> — 基于疾病背景和靶点拓扑学的元件选择详细说明。</li>
         <li><strong>实验方案</strong> — 推荐的体外（杀伤、细胞因子）及体内（小鼠模型）验证方案。</li>
       </ul>
+
       <h2 id="submit"><span class="h2-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg></span>提交咨询</h2>
-      <p >请告知您的靶点和疾病适应症。我们将提供定制化的 CAR 设计方案。</p>
+      <p>请告知您的靶点和疾病适应症，我们将提供定制化的 CAR 设计方案。</p>
+
       <div class="form-section">
         <form id="inquiry-form" action="https://formspree.io/f/mnjblezr" method="POST">
-          <input type="hidden" name="_subject" value="Therasik CAR-T Inquiry">
-          <input type="hidden" name="_next" value="https://therasik.com/thanks.html">
+          <input type="hidden" name="_subject" value="Therasik CAR-T 咨询">
+          <input type="hidden" name="_next" value="https://insynbio.com/thanks.html">
+
           <h3 style="margin-top: 0; margin-bottom: 20px;">项目详情</h3>
           <div class="form-row">
             <div class="form-group">
               <label>疾病类型 *</label>
               <select name="disease_type" required>
                 <option value="" disabled selected>请选择...</option>
-                <option value="solid">实体瘤 (Solid Tumor)</option>
-                <option value="liquid">血液瘤 (Hematologic Malignancy)</option>
-                <option value="autoimmune">自身免疫病 (Autoimmune Disease)</option>
-                <option value="other">其他 (Other)</option>
+                <option value="solid">实体瘤</option>
+                <option value="liquid">血液系统恶性肿瘤</option>
+                <option value="autoimmune">自身免疫疾病</option>
+                <option value="other">其他</option>
               </select>
             </div>
             <div class="form-group">
-              <label>靶点抗原 *</label>
-              <input type="text" name="target" placeholder="如：GPC3, BCMA, CD19" required>
+              <label>靶抗原 *</label>
+              <input type="text" name="target" placeholder="如 GPC3、BCMA、CD19" required>
             </div>
           </div>
+
           <div class="form-group full">
             <label>服务需求</label>
             <div class="check-group">
-              <div class="check-item"><input type="checkbox" name="services" id="s1" value="design"><label for="s1">从头 CAR 设计</label></div>
+              <div class="check-item"><input type="checkbox" name="services" id="s1" value="design"><label for="s1">全新 CAR 设计</label></div>
               <div class="check-item"><input type="checkbox" name="services" id="s2" value="optimization"><label for="s2">序列优化（人源化/亲和力）</label></div>
               <div class="check-item"><input type="checkbox" name="services" id="s3" value="cro"><label for="s3">CRO 验证（体外/体内）</label></div>
-              <div class="check-item"><input type="checkbox" name="services" id="s4" value="full"><label for="s4">完整端到端包</label></div>
+              <div class="check-item"><input type="checkbox" name="services" id="s4" value="full"><label for="s4">端到端完整服务包</label></div>
               <div class="check-item"><input type="checkbox" name="services" id="s_other" value="other"><label for="s_other">其他 / 定制需求</label></div>
             </div>
           </div>
+
           <div class="form-group full">
-            <label>底盘/递送偏好（可选）</label>
+            <label>底盘细胞 / 递送方式偏好（可选）</label>
             <div class="check-group">
-              <div class="check-item"><input type="checkbox" name="chassis" id="c1" value="cart"><label for="c1">CAR-T (αβ)</label></div>
+              <div class="check-item"><input type="checkbox" name="chassis" id="c1" value="cart"><label for="c1">CAR-T（αβ）</label></div>
               <div class="check-item"><input type="checkbox" name="chassis" id="c2" value="carnk"><label for="c2">CAR-NK</label></div>
               <div class="check-item"><input type="checkbox" name="chassis" id="c3" value="carm"><label for="c3">CAR-M</label></div>
-              <div class="check-item"><input type="checkbox" name="chassis" id="c4" value="gamma"><label for="c4">γδ T</label></div>
+              <div class="check-item"><input type="checkbox" name="chassis" id="c4" value="gamma"><label for="c4">γδ T 细胞</label></div>
               <div class="check-item"><input type="checkbox" name="chassis" id="c5" value="invivo"><label for="c5">体内 CAR（如 LNP-mRNA）</label></div>
             </div>
           </div>
+
           <div class="form-group full">
-            <label for="message">补充背景（如：Binder 序列、特定约束）</label>
-            <textarea id="message" name="message" placeholder="请描述您的项目目标..." style="min-height: 100px;"></textarea>
+            <label for="message">补充说明（如结合域序列、特殊要求等）</label>
+            <textarea id="message" name="message" placeholder="描述您的项目目标..." style="min-height: 100px;"></textarea>
           </div>
           <div class="form-group full" style="margin-top: 16px;">
             <div class="check-group">
               <div class="check-item">
                 <input type="checkbox" name="newsletter" id="newsletter" value="yes">
-                <label for="newsletter">
-                  加入邮件组，获取动态与服务更新
-                </label>
+                <label for="newsletter">订阅邮件，获取最新动态与服务更新</label>
               </div>
             </div>
           </div>
+
           <h3 style="margin-top: 24px; margin-bottom: 20px;">联系信息</h3>
           <div class="form-row">
             <div class="form-group">
@@ -474,30 +808,94 @@
           </div>
           <div class="form-row">
             <div class="form-group">
-              <label for="org">单位 *</label>
+              <label for="org">机构 *</label>
               <input type="text" id="org" name="org" required>
             </div>
             <div class="form-group">
-              <label for="email">Email *</label>
+              <label for="email">邮箱 *</label>
               <input type="email" id="email" name="email" required>
             </div>
           </div>
+
           <div style="margin-top: 24px;">
             <button type="submit" class="btn">提交咨询</button>
           </div>
         </form>
       </div>
-      <!-- Contact -->
-      <h2 id="contact"><span class="h2-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></span>联系方式</h2>
-      <p >咨询请使用上方表单或直接发送邮件：</p>
-      <p style="margin: 16px 0;"><a href="mailto:contact@therasik.com" style="font-size: 18px; font-weight: 600; color: var(--primary);">contact@therasik.com</a></p>
-      <p  style="color: var(--text-muted); font-size: 14px;">我们通常在 1–2 个工作日内回复。</p>
-      <footer class="site-footer">
-        <p>© 2026 Therasik · <a href="https://therasik.com">therasik.com</a> · <a href="mailto:contact@therasik.com">contact@therasik.com</a></p>
-      </footer>
+
+      <h2 id="contact"><span class="h2-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></span>联系我们</h2>
+      <p>如需咨询，请填写上方表单或直接发送邮件：</p>
+      <p style="margin: 16px 0;"><a href="mailto:contact@insynbio.com" style="font-size: 18px; font-weight: 600; color: var(--primary);">contact@insynbio.com</a></p>
+      <p style="color: var(--text-muted); font-size: 14px;">我们通常在 1–2 个工作日内回复。</p>
+
     </main>
   </div>
+
+  <footer class="site-footer" style="padding: 48px 32px; text-align: center; font-size: 14px; color: #9ca3af; border-top: 1px solid rgba(0,0,0,0.05); background: #fff;">
+    <p style="margin:0;">© 2026 Therasik · <a href="https://insynbio.com" style="color: #6b7280; text-decoration: none;">insynbio.com</a> · <a href="mailto:contact@insynbio.com" style="color: #6b7280; text-decoration: none;">contact@insynbio.com</a></p>
+  </footer>
+
+  <div id="tt-box"></div>
+
   <script>
+    // Component tooltip
+    (function() {
+      const box = document.getElementById('tt-box');
+      function pos(e) {
+        const gap = 16, w = 300, h = box.offsetHeight || 90;
+        let x = e.clientX + gap, y = e.clientY + gap;
+        if (x + w > window.innerWidth)  x = e.clientX - w - gap;
+        if (y + h > window.innerHeight) y = e.clientY - h - gap;
+        box.style.left = x + 'px';
+        box.style.top  = y + 'px';
+      }
+      document.addEventListener('mouseover', function(e) {
+        const t = e.target.closest('.tt');
+        if (!t) return;
+        box.textContent = t.dataset.tip;
+        box.style.opacity = '1';
+        pos(e);
+      });
+      document.addEventListener('mousemove', function(e) {
+        if (box.style.opacity === '1') pos(e);
+      });
+      document.addEventListener('mouseout', function(e) {
+        if (e.target.closest('.tt')) box.style.opacity = '0';
+      });
+    })();
+
+    // Accordion component library
+    document.querySelectorAll('.accordion-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const body = document.getElementById(btn.dataset.target);
+        const isOpen = btn.classList.contains('open');
+        btn.classList.toggle('open', !isOpen);
+        body.classList.toggle('open', !isOpen);
+      });
+    });
+
+    // Auto-collapse open accordion panels 3s after mouse leaves
+    (function() {
+      const DELAY = 3000;
+      const timers = new Map();
+      document.querySelectorAll('.accordion-item').forEach(function(item) {
+        item.addEventListener('mouseenter', function() {
+          if (timers.has(item)) { clearTimeout(timers.get(item)); timers.delete(item); }
+        });
+        item.addEventListener('mouseleave', function() {
+          var btn = item.querySelector('.accordion-btn');
+          if (btn && btn.classList.contains('open')) {
+            timers.set(item, setTimeout(function() {
+              var body = document.getElementById(btn.dataset.target);
+              btn.classList.remove('open');
+              if (body) body.classList.remove('open');
+              timers.delete(item);
+            }, DELAY));
+          }
+        });
+      });
+    })();
+
     function setTopNavActive() {
       var hash = window.location.hash || '';
       document.querySelectorAll('.top-header-nav a[href^="#"]').forEach(function(a) {
@@ -526,7 +924,7 @@
       });
     }, { rootMargin: '-20% 0px -60% 0px' });
     sections.forEach(id => { const el = document.getElementById(id); if (el) observer.observe(el); });
-    
+
     // Form submission
     const form = document.getElementById('inquiry-form');
     if (form) {
@@ -535,7 +933,7 @@
         const btn = form.querySelector('button[type="submit"]');
         const originalText = btn.innerText;
         btn.disabled = true;
-        btn.innerText = document.body.getAttribute('data-lang') === 'zh' ? '提交中...' : 'Submitting...';
+        btn.innerText = '提交中...';
         const formData = new FormData(form);
         fetch(form.action, {
           method: 'POST',
@@ -545,12 +943,12 @@
           if (response.ok) {
             window.location.href = 'thanks.html';
           } else {
-            alert("Oops! There was a problem submitting your form");
+            alert("提交时出现问题，请稍后重试");
             btn.disabled = false;
             btn.innerText = originalText;
           }
         }).catch(error => {
-          alert("Oops! There was a problem submitting your form");
+          alert("提交时出现问题，请稍后重试");
           btn.disabled = false;
           btn.innerText = originalText;
         });
