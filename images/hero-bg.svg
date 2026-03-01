@@ -59,34 +59,35 @@
     <line x1="1335" y1="510" x2="1260" y2="535" />
   </g>
 
-  <!-- Biopharma + AI motifs (edge-only, low contrast) -->
-  <!-- Bio: mini-helix in the upper-right corner -->
-  <g fill="none" stroke="#0d9488" stroke-width="1.6" opacity="0.18">
-    <path d="M1120 92 C1160 60 1200 60 1240 92 C1280 124 1320 124 1360 92" />
-    <path d="M1120 124 C1160 156 1200 156 1240 124 C1280 92 1320 92 1360 124" />
-    <path d="M1160 108 L1200 108" />
-    <path d="M1240 108 L1280 108" />
-    <path d="M1320 108 L1360 108" />
+  <!-- Biopharma + AI motifs (placed in "safe area" to avoid crop by object-fit: cover) -->
+  <!-- Bio: mini-helix (upper-right, but not at the extreme edge) -->
+  <g fill="none" stroke="#0f766e" stroke-width="1.8" opacity="0.26">
+    <path d="M940 92 C980 60 1020 60 1060 92 C1100 124 1140 124 1180 92 C1220 60 1260 60 1300 92" />
+    <path d="M940 124 C980 156 1020 156 1060 124 C1100 92 1140 92 1180 124 C1220 156 1260 156 1300 124" />
+    <path d="M980 108 L1020 108" />
+    <path d="M1060 108 L1100 108" />
+    <path d="M1140 108 L1180 108" />
+    <path d="M1220 108 L1260 108" />
   </g>
 
-  <!-- AI: subtle circuit traces in the lower-left corner -->
-  <g fill="none" stroke="#0d9488" stroke-width="1.35" opacity="0.18" stroke-linecap="round" stroke-linejoin="round">
-    <path d="M120 470 H210 V520 H280" />
-    <path d="M150 500 H230" />
-    <path d="M230 500 V455 H310" />
-    <path d="M190 535 H255 V565" />
+  <!-- AI: subtle circuit traces (lower-left, but not at the extreme edge) -->
+  <g fill="none" stroke="#0f766e" stroke-width="1.55" opacity="0.26" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M260 455 H350 V510 H430" />
+    <path d="M290 485 H370" />
+    <path d="M370 485 V435 H460" />
+    <path d="M320 530 H395 V565" />
   </g>
-  <g fill="#0d9488" opacity="0.22">
-    <circle cx="120" cy="470" r="2.3" />
-    <circle cx="210" cy="470" r="2.0" />
-    <circle cx="210" cy="520" r="2.0" />
-    <circle cx="280" cy="520" r="2.1" />
-    <circle cx="150" cy="500" r="1.8" />
-    <circle cx="230" cy="500" r="1.9" />
-    <circle cx="230" cy="455" r="1.8" />
-    <circle cx="310" cy="455" r="2.0" />
-    <circle cx="190" cy="535" r="1.7" />
-    <circle cx="255" cy="535" r="1.7" />
-    <circle cx="255" cy="565" r="1.7" />
+  <g fill="#0f766e" opacity="0.28">
+    <circle cx="260" cy="455" r="2.4" />
+    <circle cx="350" cy="455" r="2.1" />
+    <circle cx="350" cy="510" r="2.1" />
+    <circle cx="430" cy="510" r="2.2" />
+    <circle cx="290" cy="485" r="1.9" />
+    <circle cx="370" cy="485" r="2.0" />
+    <circle cx="370" cy="435" r="1.9" />
+    <circle cx="460" cy="435" r="2.1" />
+    <circle cx="320" cy="530" r="1.8" />
+    <circle cx="395" cy="530" r="1.8" />
+    <circle cx="395" cy="565" r="1.8" />
   </g>
 </svg>
