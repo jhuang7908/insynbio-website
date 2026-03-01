@@ -110,6 +110,18 @@
     .service-card a:not(.status) { font-size: 15px; font-weight: 600; color: var(--primary); text-decoration: none; display: inline-flex; align-items: center; gap: 4px; }
     .service-card a:not(.status):hover { gap: 8px; transition: gap 0.2s; }
 
+    /* FAQ */
+    .faq-list { display: flex; flex-direction: column; gap: 8px; margin-top: 8px; }
+    .faq-item { border: 1px solid var(--border); border-radius: 10px; overflow: hidden; background: #fff; }
+    .faq-item summary { list-style: none; padding: 18px 24px; font-size: 16px; font-weight: 600; color: #111827; cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+    .faq-item summary::-webkit-details-marker { display: none; }
+    .faq-item summary:hover { background: var(--bg-alt); }
+    .faq-item summary::after { content: "+"; font-size: 20px; font-weight: 400; color: var(--primary); flex-shrink: 0; transition: transform 0.2s; }
+    .faq-item[open] summary { background: rgba(13,148,136,0.04); border-bottom: 1px solid var(--border); }
+    .faq-item[open] summary::after { transform: rotate(45deg); }
+    .faq-body { padding: 16px 24px 20px; font-size: 16px; color: #4b5563; line-height: 1.7; }
+    .faq-body p { margin: 0 0 8px; }
+
     /* Workflow */
     .workflow-steps { display: flex; flex-wrap: nowrap; gap: 0; margin-top: 48px; position: relative; }
     .workflow-step { flex: 1; min-width: 0; padding: 32px 24px; background: #fff; border: 1px solid rgba(0,0,0,0.06); position: relative; transition: all 0.3s; z-index: 1; }
@@ -272,6 +284,7 @@
       </div>
       <a href="#case-studies">Case Studies</a>
       <a href="#workflow">Workflow</a>
+      <a href="#faq">FAQ</a>
       <a href="#contact">Contact Us</a>
     </nav>
     
@@ -626,6 +639,40 @@
           <strong>Publish Benefit</strong>
           <span class="desc">50% rebate on publication</span>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="faq" class="section">
+    <div class="section-inner fade-up">
+      <span class="section-label">FAQ</span>
+      <h2 style="margin-bottom:6px">Frequently Asked Questions</h2>
+      <p style="margin-bottom:32px;color:var(--text-muted)">Common questions about our services, data practices, and process.</p>
+      <div class="faq-list">
+        <details class="faq-item">
+          <summary>What does InSynBio do?</summary>
+          <div class="faq-body"><p>InSynBio is an AI drug R&amp;D company that applies machine learning to clinical-stage therapeutic data — 1,133 antibody sequences and structures, 180 CAR-T design elements, and 125+ bispecifics. We use these datasets to deliver data-driven design recommendations across antibody developability, VHH humanization, bispecific engineering, and CAR-T architecture — and connect projects to experimental validation through CRO partnerships.</p></div>
+        </details>
+        <details class="faq-item">
+          <summary>Is my sequence data kept confidential?</summary>
+          <div class="faq-body"><p>All projects are covered by an NDA before any data is shared. Sequences and project data are transmitted through encrypted channels, never disclosed to third parties, and not retained after the project is complete. Your IP is protected from day one.</p></div>
+        </details>
+        <details class="faq-item">
+          <summary>What formats and sequence types do you accept?</summary>
+          <div class="faq-body"><p>We accept FASTA, GenBank, and IMGT/Kabat-formatted sequences. For structure-enabled analysis, we accept PDB files (experimental or homology models). We work with VH/VL pairs, VHH single domains, bispecific constructs (IgG-based and fragment formats), and CAR constructs. If your sequence is in a non-standard format, just email us and we'll sort it out.</p></div>
+        </details>
+        <details class="faq-item">
+          <summary>How does your clinical dataset give you an advantage?</summary>
+          <div class="faq-body"><p>We trained on what has already succeeded in the clinic, not on synthetic or in-silico generated data. Our antibody dataset covers sequences that have been through IND filing or clinical trials, allowing us to identify the sequence features, structural patterns, and physicochemical properties that correlate with clinical-stage performance — rather than just computational proxies.</p></div>
+        </details>
+        <details class="faq-item">
+          <summary>How do I get started?</summary>
+          <div class="faq-body"><p>Click "Go to Inquiry Form" in the Contact section, or email us directly at <a href="mailto:contact@insynbio.com" style="color:var(--primary);font-weight:500">contact@insynbio.com</a>. We offer a free initial scoping call before any commitment — no sequence required upfront. We typically respond within 1–2 business days.</p></div>
+        </details>
+        <details class="faq-item">
+          <summary>Do you work with international clients?</summary>
+          <div class="faq-body"><p>Yes. We are based in New York and work with clients globally. Most of our engagements are conducted fully remotely — sequence submission, consultation, and report delivery are all handled online. We are experienced with cross-time-zone collaboration and support both English and Chinese communication.</p></div>
+        </details>
       </div>
     </div>
   </section>
