@@ -80,7 +80,7 @@
     .section { margin: 0 auto; padding: 80px 32px; }
     .section-inner { max-width: 860px; margin: 0 auto; }
     .section-wide { max-width: 1140px; margin: 0 auto; }
-    .section-alt { background: #f8fafc; border-top: 1px solid rgba(0,0,0,0.03); border-bottom: 1px solid rgba(0,0,0,0.03); }
+    .section-alt { background: linear-gradient(180deg, #f8fafb 0%, #f0fdfa 100%); border-top: 1px solid rgba(0,0,0,0.03); border-bottom: 1px solid rgba(0,0,0,0.03); }
     .section h2 { font-family: 'Cormorant Garamond', serif; font-size: 42px; font-weight: 600; margin: 0 0 16px; color: #111827; letter-spacing: -0.02em; line-height: 1.1; }
     .section .section-label { font-size: 12px; font-weight: 600; color: var(--primary); text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 16px; display: block; }
     .section p { margin: 0 0 24px; color: #4b5563; font-size: 18px; line-height: 1.7; font-weight: 400; }
@@ -124,11 +124,29 @@
     .contact-card .form-link { display: inline-flex; align-items: center; gap: 8px; margin-top: 24px; padding: 12px 24px; background: #111827; color: #fff; border-radius: 8px; font-size: 14px; font-weight: 500; text-decoration: none; transition: all 0.2s; }
     .contact-card .form-link:hover { background: var(--primary); transform: translateY(-2px); box-shadow: 0 4px 12px rgba(13,148,136,0.3); }
 
+    /* Trust strip */
+    .trust-strip { padding: 40px 32px; background: #fff; border-bottom: 1px solid rgba(0,0,0,0.04); }
+    .trust-inner { max-width: 1140px; margin: 0 auto; display: flex; align-items: center; justify-content: center; gap: 48px; flex-wrap: wrap; }
+    .trust-item { display: flex; flex-direction: column; align-items: center; gap: 6px; text-align: center; }
+    .trust-number { font-family: 'Cormorant Garamond', serif; font-size: 36px; font-weight: 700; color: var(--primary); letter-spacing: -0.03em; line-height: 1; }
+    .trust-label { font-size: 13px; color: var(--text-muted); font-weight: 500; letter-spacing: 0.02em; }
+    .trust-divider { width: 1px; height: 40px; background: rgba(0,0,0,0.08); flex-shrink: 0; }
+
+    /* Scroll fade-in */
+    .fade-up { opacity: 0; transform: translateY(32px); transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1); }
+    .fade-up.visible { opacity: 1; transform: translateY(0); }
+    .fade-up-d1 { transition-delay: 0.1s; }
+    .fade-up-d2 { transition-delay: 0.2s; }
+    .fade-up-d3 { transition-delay: 0.3s; }
+
     .site-footer { padding: 48px 32px; text-align: center; font-size: 14px; color: #9ca3af; border-top: 1px solid rgba(0,0,0,0.05); background: #fff; }
     .site-footer a { color: #6b7280; text-decoration: none; transition: color 0.2s; }
     .site-footer a:hover { color: var(--primary); }
 
     @media (max-width: 900px) {
+      .trust-inner { gap: 24px; }
+      .trust-divider { display: none; }
+      .trust-number { font-size: 28px; }
       .services-grid { grid-template-columns: 1fr; }
       .contact-grid { grid-template-columns: 1fr; }
       .workflow-steps { flex-direction: column; gap: 16px; }
@@ -226,8 +244,32 @@
     </div>
   </section>
 
+  <div class="trust-strip">
+    <div class="trust-inner">
+      <div class="trust-item fade-up">
+        <span class="trust-number">1,142</span>
+        <span class="trust-label">Clinical Antibody Sequences</span>
+      </div>
+      <div class="trust-divider"></div>
+      <div class="trust-item fade-up fade-up-d1">
+        <span class="trust-number">3–5</span>
+        <span class="trust-label">Business Days Turnaround</span>
+      </div>
+      <div class="trust-divider"></div>
+      <div class="trust-item fade-up fade-up-d2">
+        <span class="trust-number">200</span>
+        <span class="trust-label">CAR-T Components</span>
+      </div>
+      <div class="trust-divider"></div>
+      <div class="trust-item fade-up fade-up-d3">
+        <span class="trust-number">125+</span>
+        <span class="trust-label">Clinical Bispecifics Benchmarked</span>
+      </div>
+    </div>
+  </div>
+
   <section id="about" class="section">
-    <div class="section-inner">
+    <div class="section-inner fade-up">
       <span class="section-label">About Us</span>
       <h2 style="margin-bottom:16px">AI for Drug R&amp;D</h2>
       <p>InSynBio focuses on AI-assisted drug R&amp;D. We leverage clinical and scientific literature data, combined with machine learning, to deliver AI-driven drug design and evaluation. Our approach integrates computational and experimental workflows (dry-wet combined), supporting clinical translation and drug innovation.</p>
@@ -250,34 +292,31 @@
       <h2 style="margin-bottom:6px">What We Offer</h2>
       <p style="margin-bottom:0">In silico assessment, design, and development for biotherapeutics.</p>
     <div class="services-grid">
-      <div class="service-card">
+      <div class="service-card fade-up">
         <div class="icon">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
         </div>
         <h3>Antibody Development & Assessment</h3>
         <a href="InSynBio_Antibody_Developability_Assessment_Page.html#platform" class="status">Available</a>
         <p>Sequence analysis, developability, immunogenicity, structure, humanization, affinity maturation.</p>
-        
         <a href="InSynBio_Antibody_Developability_Assessment_Page.html">Learn more →</a>
       </div>
-      <div class="service-card">
+      <div class="service-card fade-up fade-up-d1">
         <div class="icon">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
         </div>
         <h3>Smart CAR-T Design</h3>
         <a href="InSynBio_CART_Design_Page.html" class="status">Available</a>
         <p>End-to-End Service: AI-driven CAR structure design to CRO validation.</p>
-        
         <a href="InSynBio_CART_Design_Page.html">Inquire Now →</a>
       </div>
-      <div class="service-card">
+      <div class="service-card fade-up fade-up-d2">
         <div class="icon">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="3"/><circle cx="18" cy="18" r="3"/><path d="M8.5 8.5l7 7"/></svg>
         </div>
         <h3>Bispecific Antibody Design</h3>
         <a href="InSynBio_Bispecific_Antibody_Design_Page.html" class="status">Available</a>
         <p>BsAb format selection, sequence design, and structural assessment.</p>
-        
         <a href="InSynBio_Bispecific_Antibody_Design_Page.html">Learn more →</a>
       </div>
     </div>
@@ -285,7 +324,7 @@
   </section>
 
   <section id="workflow" class="section">
-    <div class="section-wide">
+    <div class="section-wide fade-up">
       <span class="section-label">Workflow</span>
       <h2 style="margin-bottom:6px">From Inquiry to Delivery</h2>
       <p class="workflow-subtitle" style="margin-bottom:20px;color:var(--text-muted)">Transparent, risk-sharing process.</p>
@@ -320,7 +359,7 @@
   </section>
 
   <section id="contact" class="section section-alt">
-    <div class="section-inner">
+    <div class="section-inner fade-up">
       <span class="section-label">Contact</span>
       <h2 style="margin-bottom:6px">Get in Touch</h2>
       <p style="margin-bottom:0;color:var(--text-muted)">Technical consultation, drug evaluation, and CRO/Biotech collaboration.</p>
@@ -370,7 +409,15 @@
         }
       });
     });
-    
+
+    const fadeObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+    document.querySelectorAll('.fade-up').forEach(el => fadeObserver.observe(el));
   </script>
 </body>
 </html>
