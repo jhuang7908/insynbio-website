@@ -154,6 +154,8 @@
     /* Component tooltips */
     .tt { border-bottom: 1px dotted #0d9488; cursor: help; }
     #tt-box { position: fixed; z-index: 9500; background: #ffffff; color: #1f2937; font-size: 12.5px; line-height: 1.60; padding: 10px 14px; border-radius: 9px; max-width: 295px; pointer-events: none; opacity: 0; transition: opacity 0.15s ease; box-shadow: 0 4px 18px rgba(0,0,0,0.13), 0 1px 4px rgba(0,0,0,0.07); border: 1px solid rgba(13,148,136,0.18); border-left: 3px solid #0d9488; }
+    /* Mobile tooltip: bottom sheet */
+    #tt-box.tt-mobile { position: fixed; left: 0; right: 0; bottom: 0; top: auto; max-width: 100%; width: 100%; border-radius: 16px 16px 0 0; border: none; border-top: 3px solid #0d9488; padding: 20px 24px 36px; font-size: 14px; line-height: 1.75; pointer-events: auto; box-shadow: 0 -4px 24px rgba(0,0,0,0.15); transition: opacity 0.2s ease; }
 
     /* Accordion for component library */
     .accordion { border: 1px solid rgba(0,0,0,0.06); border-radius: 12px; overflow: hidden; margin: 32px 0; }
@@ -819,32 +821,46 @@
     <p style="margin:0;">© 2026 InSynBio · <a href="https://insynbio.com" style="color: #6b7280; text-decoration: none;">insynbio.com</a> · <a href="mailto:contact@insynbio.com" style="color: #6b7280; text-decoration: none;">contact@insynbio.com</a></p>
   </footer>
   <script>
-    // Component tooltip
+    // Component tooltip — desktop: follow cursor; mobile: bottom sheet
     (function() {
       const box = document.createElement('div');
       box.id = 'tt-box';
       document.body.appendChild(box);
-      function pos(e) {
-        const gap = 16, w = 300, h = box.offsetHeight || 90;
-        let x = e.clientX + gap, y = e.clientY + gap;
-        if (x + w > window.innerWidth)  x = e.clientX - w - gap;
-        if (y + h > window.innerHeight) y = e.clientY - h - gap;
-        box.style.left = x + 'px';
-        box.style.top  = y + 'px';
+      const isTouch = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0);
+      if (!isTouch) {
+        function pos(e) {
+          const gap = 16, w = 300, h = box.offsetHeight || 90;
+          let x = e.clientX + gap, y = e.clientY + gap;
+          if (x + w > window.innerWidth)  x = e.clientX - w - gap;
+          if (y + h > window.innerHeight) y = e.clientY - h - gap;
+          box.style.left = x + 'px';
+          box.style.top  = y + 'px';
+        }
+        document.addEventListener('mouseover', function(e) {
+          const t = e.target.closest('.tt');
+          if (!t) return;
+          box.textContent = t.dataset.tip;
+          box.style.opacity = '1';
+          pos(e);
+        });
+        document.addEventListener('mousemove', function(e) {
+          if (box.style.opacity === '1') pos(e);
+        });
+        document.addEventListener('mouseout', function(e) {
+          if (e.target.closest('.tt')) box.style.opacity = '0';
+        });
+      } else {
+        box.classList.add('tt-mobile');
+        let autoClose;
+        document.addEventListener('touchstart', function(e) {
+          const t = e.target.closest('.tt');
+          clearTimeout(autoClose);
+          if (!t) { box.style.opacity = '0'; return; }
+          box.textContent = t.dataset.tip;
+          box.style.opacity = '1';
+          autoClose = setTimeout(function() { box.style.opacity = '0'; }, 4000);
+        }, { passive: true });
       }
-      document.addEventListener('mouseover', function(e) {
-        const t = e.target.closest('.tt');
-        if (!t) return;
-        box.textContent = t.dataset.tip;
-        box.style.opacity = '1';
-        pos(e);
-      });
-      document.addEventListener('mousemove', function(e) {
-        if (box.style.opacity === '1') pos(e);
-      });
-      document.addEventListener('mouseout', function(e) {
-        if (e.target.closest('.tt')) box.style.opacity = '0';
-      });
     })();
 
     // Accordion component library

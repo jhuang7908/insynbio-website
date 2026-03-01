@@ -41,7 +41,8 @@
     .nav-dropdown .dropdown-menu a .menu-desc { display: block; font-size: 12px; color: var(--text-muted); font-weight: 400; line-height: 1.4; }
 
     /* Hero */
-    .hero { position: relative; min-height: 78vh; display: flex; align-items: center; justify-content: center; text-align: center; padding: 56px 24px 72px; overflow: hidden; }
+    .hero { position: relative; min-height: 78vh; display: flex; align-items: center; justify-content: center; text-align: center; padding: 56px 24px 72px; overflow: hidden; background: linear-gradient(135deg, rgba(13,148,136,0.08), rgba(45,212,191,0.06)); }
+    .hero-decor { position: absolute; inset: 0; z-index: 2; pointer-events: none; overflow: hidden; }
     .hero-banner { position: absolute; inset: 0; z-index: 0; opacity: 0.95; filter: contrast(1.03) brightness(1.03) saturate(1.10); }
     .hero-banner img { width: 100%; height: 100%; display: block; object-fit: cover; }
     .hero-overlay { position: absolute; inset: 0; z-index: 1; background: radial-gradient(900px 420px at 50% 36%, rgba(255,255,255,0.92) 0%, rgba(255,255,255,0.74) 44%, rgba(255,255,255,0.16) 68%, rgba(255,255,255,0.00) 86%, rgba(13,148,136,0.06) 100%), linear-gradient(180deg, rgba(13,148,136,0.06) 0%, rgba(255,255,255,0.00) 60%, rgba(255,255,255,0.12) 100%); pointer-events: none; }
@@ -208,18 +209,18 @@
   <header class="top-header">
     <div class="brand">
       <a href="index.html" style="display: flex; align-items: center; gap: 10px; text-decoration: none; color: inherit;">
-        <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink:0">
+        <svg width="34" height="34" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink:0">
           <defs>
-            <linearGradient id="logo_grad_zh_idx" x1="0" y1="0" x2="32" y2="32" gradientUnits="userSpaceOnUse">
-              <stop stop-color="#0d9488"/><stop offset="1" stop-color="#2dd4bf"/>
+            <linearGradient id="logo_grad_zh_idx" x1="0" y1="0" x2="34" y2="34" gradientUnits="userSpaceOnUse">
+              <stop stop-color="#0d9488"/><stop offset="1" stop-color="#065f58"/>
             </linearGradient>
           </defs>
-          <circle cx="16" cy="16" r="13" stroke="url(#logo_grad_zh_idx)" stroke-width="2"/>
-          <line x1="8" y1="12" x2="24" y2="12" stroke="url(#logo_grad_zh_idx)" stroke-width="2.5" stroke-linecap="round"/>
-          <line x1="16" y1="12" x2="16" y2="23" stroke="url(#logo_grad_zh_idx)" stroke-width="2.5" stroke-linecap="round"/>
-          <circle cx="8" cy="12" r="2" fill="#0f766e"/>
-          <circle cx="24" cy="12" r="2" fill="#0f766e"/>
-          <circle cx="16" cy="23" r="2.2" fill="white" stroke="#0d9488" stroke-width="1.5"/>
+          <circle cx="17" cy="17" r="16" fill="url(#logo_grad_zh_idx)"/>
+          <path d="M9 13 H25" stroke="white" stroke-width="2.8" stroke-linecap="round"/>
+          <path d="M17 13 V24" stroke="white" stroke-width="2.8" stroke-linecap="round"/>
+          <circle cx="9" cy="13" r="2.3" fill="white"/>
+          <circle cx="25" cy="13" r="2.3" fill="white"/>
+          <circle cx="17" cy="24" r="2.3" fill="white"/>
         </svg>
         <span style="font-family: 'Cormorant Garamond', serif; font-weight: 700; font-size: 26px; color: #1f2937; letter-spacing: -0.02em;">
           Thera<span style="color: #0d9488;">sik</span>
@@ -259,6 +260,66 @@
       <img src="images/hero-bg.svg" alt="" role="presentation">
     </div>
     <div class="hero-overlay" aria-hidden="true"></div>
+
+    <!-- Decorative motifs: z-index 2 -->
+    <svg class="hero-decor" viewBox="0 0 1440 600" preserveAspectRatio="xMidYMid slice" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+
+      <!-- ANTIBODY SILHOUETTES: upper-right -->
+      <g fill="none" stroke="#0d9488" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M1338 288 C1336 268 1334 248 1337 222" stroke-width="4.5" opacity="0.38"/>
+        <path d="M1358 288 C1360 268 1362 248 1359 222" stroke-width="4.5" opacity="0.38"/>
+        <path d="M1337 222 C1318 210 1288 196 1255 182" stroke-width="3.5" opacity="0.36"/>
+        <path d="M1359 222 C1378 210 1408 196 1432 182" stroke-width="3.5" opacity="0.36"/>
+        <path d="M1255 182 C1232 150 1208 116 1192 80"  stroke-width="3.5" opacity="0.40"/>
+        <path d="M1255 182 C1228 146 1198 108 1178 70"  stroke-width="2.8" opacity="0.32"/>
+        <path d="M1432 182 C1436 148 1438 112 1434 76"  stroke-width="3.5" opacity="0.40"/>
+        <path d="M1432 182 C1440 150 1444 115 1444 78"  stroke-width="2.8" opacity="0.32"/>
+        <ellipse cx="1185" cy="64" rx="20" ry="13" opacity="0.32"/>
+        <path d="M1170 58 Q1176 44 1184 58" stroke-width="1.8" opacity="0.42"/>
+        <path d="M1184 58 Q1190 46 1198 58" stroke-width="1.8" opacity="0.42"/>
+        <ellipse cx="1438" cy="66" rx="20" ry="13" opacity="0.32"/>
+        <path d="M1424 60 Q1430 46 1438 60" stroke-width="1.8" opacity="0.42"/>
+        <path d="M1438 60 Q1444 48 1452 60" stroke-width="1.8" opacity="0.42"/>
+      </g>
+      <g fill="none" stroke="#0d9488" stroke-linecap="round" stroke-linejoin="round" opacity="0.22">
+        <path d="M1268 260 C1266 245 1264 230 1267 210" stroke-width="3.5"/>
+        <path d="M1283 260 C1285 245 1287 230 1284 210" stroke-width="3.5"/>
+        <path d="M1267 210 C1252 200 1228 188 1205 176" stroke-width="2.8"/>
+        <path d="M1284 210 C1299 200 1318 188 1335 176" stroke-width="2.8"/>
+        <path d="M1205 176 C1185 150 1168 122 1155 94"  stroke-width="3.0"/>
+        <path d="M1335 176 C1348 150 1356 120 1352 92"  stroke-width="3.0"/>
+        <ellipse cx="1152" cy="83" rx="16" ry="10"/>
+        <path d="M1141 78 Q1146 68 1153 78" stroke-width="1.6"/>
+        <ellipse cx="1353" cy="84" rx="16" ry="10"/>
+        <path d="M1342 79 Q1347 69 1354 79" stroke-width="1.6"/>
+      </g>
+
+      <!-- AI circuit traces: lower-left -->
+      <g fill="none" stroke="#0d9488" stroke-width="1.8" opacity="0.40" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M0 340  H120 V380 H260 V340 H400"/>
+        <path d="M120 380 V430 H280 V390 H440 V440"/>
+        <path d="M0 460  H140 V420 H300 V470 H460 V430 H520"/>
+        <path d="M140 460 V510 H300 V480"/>
+        <path d="M0 540  H160 V500 H320 V550 H460"/>
+      </g>
+      <g fill="#0d9488" opacity="0.48">
+        <circle cx="0"   cy="340" r="2.8"/><circle cx="120" cy="340" r="3.2"/>
+        <circle cx="120" cy="380" r="3.2"/><circle cx="260" cy="380" r="2.8"/>
+        <circle cx="260" cy="340" r="2.8"/><circle cx="400" cy="340" r="2.8"/>
+        <circle cx="120" cy="430" r="2.8"/><circle cx="280" cy="430" r="2.8"/>
+        <circle cx="280" cy="390" r="2.6"/><circle cx="440" cy="390" r="2.6"/>
+        <circle cx="440" cy="440" r="2.6"/>
+        <circle cx="0"   cy="460" r="2.8"/><circle cx="140" cy="460" r="3.2"/>
+        <circle cx="140" cy="420" r="2.8"/><circle cx="300" cy="420" r="2.8"/>
+        <circle cx="300" cy="470" r="2.8"/><circle cx="460" cy="470" r="2.8"/>
+        <circle cx="460" cy="430" r="2.6"/><circle cx="520" cy="430" r="2.6"/>
+        <circle cx="140" cy="510" r="2.6"/><circle cx="300" cy="510" r="2.6"/>
+        <circle cx="0"   cy="540" r="2.8"/><circle cx="160" cy="540" r="2.8"/>
+        <circle cx="160" cy="500" r="2.8"/><circle cx="320" cy="500" r="2.8"/>
+        <circle cx="320" cy="550" r="2.8"/><circle cx="460" cy="550" r="2.8"/>
+      </g>
+    </svg>
+
     <div class="hero-inner">
       <h1>AI 驱动的药物设计</h1>
       <p class="tagline">从 AI 计算设计到实验验证——全平台端到端，干湿结合，以临床数据驱动生物治疗创新。</p>
