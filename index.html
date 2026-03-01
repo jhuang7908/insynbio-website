@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>InSynBio | AI-Powered Design for Therapeutics</title>
-    <meta name="deployment-id" content="20260301-18">
+    <meta name="deployment-id" content="20260301-19">
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -246,52 +246,51 @@
     </div>
     <div class="hero-overlay" aria-hidden="true"></div>
 
-    <!-- Decorative motifs: above white overlay, z-index 2 -->
-    <!-- DNA helix: upper-right, y:20→300 (~47%); Circuit: lower-left, y:310→570 (~43%) -->
+    <!-- Decorative motifs: z-index 2 -->
     <svg class="hero-decor" viewBox="0 0 1440 600" preserveAspectRatio="xMidYMid slice" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
 
-      <!-- VERTICAL DNA double-helix: right side x:1300-1440, y:20-300 -->
-      <!-- Strand A: oscillates left-right as y increases, period=80px -->
-      <g fill="none" stroke="#0d9488" stroke-width="2.2" opacity="0.44">
-        <path d="M1300 20  C1300 42 1440 38 1440 60
-                          C1440 82 1300 78 1300 100
-                          C1300 122 1440 118 1440 140
-                          C1440 162 1300 158 1300 180
-                          C1300 202 1440 198 1440 220
-                          C1440 242 1300 238 1300 260
-                          C1300 282 1440 278 1440 300"/>
-        <!-- Strand B: phase-shifted by 40px -->
-        <path d="M1440 20  C1440 42 1300 38 1300 60
-                          C1300 82 1440 78 1440 100
-                          C1440 122 1300 118 1300 140
-                          C1300 162 1440 158 1440 180
-                          C1440 202 1300 198 1300 220
-                          C1300 242 1440 238 1440 260
-                          C1440 282 1300 278 1300 300"/>
-      </g>
-      <!-- Rungs at every half-period (y: 20,60,100,...,300) -->
-      <g stroke="#0d9488" stroke-width="1.4" opacity="0.30">
-        <line x1="1300" y1="20"  x2="1440" y2="20"/>
-        <line x1="1300" y1="60"  x2="1440" y2="60"/>
-        <line x1="1300" y1="100" x2="1440" y2="100"/>
-        <line x1="1300" y1="140" x2="1440" y2="140"/>
-        <line x1="1300" y1="180" x2="1440" y2="180"/>
-        <line x1="1300" y1="220" x2="1440" y2="220"/>
-        <line x1="1300" y1="260" x2="1440" y2="260"/>
-        <line x1="1300" y1="300" x2="1440" y2="300"/>
-      </g>
-      <g fill="#0d9488" opacity="0.46">
-        <circle cx="1300" cy="20"  r="3.0"/><circle cx="1440" cy="20"  r="3.0"/>
-        <circle cx="1300" cy="60"  r="3.0"/><circle cx="1440" cy="60"  r="3.0"/>
-        <circle cx="1300" cy="100" r="3.0"/><circle cx="1440" cy="100" r="3.0"/>
-        <circle cx="1300" cy="140" r="3.0"/><circle cx="1440" cy="140" r="3.0"/>
-        <circle cx="1300" cy="180" r="3.0"/><circle cx="1440" cy="180" r="3.0"/>
-        <circle cx="1300" cy="220" r="3.0"/><circle cx="1440" cy="220" r="3.0"/>
-        <circle cx="1300" cy="260" r="3.0"/><circle cx="1440" cy="260" r="3.0"/>
-        <circle cx="1300" cy="300" r="3.0"/><circle cx="1440" cy="300" r="3.0"/>
+      <!-- ANTIBODY SILHOUETTES: upper-right, y:20-290 -->
+      <!-- Antibody 1: main, IgG Y-shape -->
+      <g fill="none" stroke="#0d9488" stroke-linecap="round" stroke-linejoin="round">
+        <!-- Fc stem (two heavy chain C-terminal segments) -->
+        <path d="M1338 288 C1336 268 1334 248 1337 222" stroke-width="4.5" opacity="0.38"/>
+        <path d="M1358 288 C1360 268 1362 248 1359 222" stroke-width="4.5" opacity="0.38"/>
+        <!-- Hinge region spreading to Fab arms -->
+        <path d="M1337 222 C1318 210 1288 196 1255 182" stroke-width="3.5" opacity="0.36"/>
+        <path d="M1359 222 C1378 210 1408 196 1432 182" stroke-width="3.5" opacity="0.36"/>
+        <!-- Left Fab: VH+CH1, angled up-left -->
+        <path d="M1255 182 C1232 150 1208 116 1192 80"  stroke-width="3.5" opacity="0.40"/>
+        <path d="M1255 182 C1228 146 1198 108 1178 70"  stroke-width="2.8" opacity="0.32"/>
+        <!-- Right Fab: angled up-right -->
+        <path d="M1432 182 C1436 148 1438 112 1434 76"  stroke-width="3.5" opacity="0.40"/>
+        <path d="M1432 182 C1440 150 1444 115 1444 78"  stroke-width="2.8" opacity="0.32"/>
+        <!-- Left VH tip: ellipse representing VH/VL domain -->
+        <ellipse cx="1185" cy="64" rx="20" ry="13" opacity="0.32"/>
+        <!-- Left CDR loops (3 small bumps at tip) -->
+        <path d="M1170 58 Q1176 44 1184 58" stroke-width="1.8" opacity="0.42"/>
+        <path d="M1184 58 Q1190 46 1198 58" stroke-width="1.8" opacity="0.42"/>
+        <!-- Right VH tip -->
+        <ellipse cx="1438" cy="66" rx="20" ry="13" opacity="0.32"/>
+        <!-- Right CDR loops -->
+        <path d="M1424 60 Q1430 46 1438 60" stroke-width="1.8" opacity="0.42"/>
+        <path d="M1438 60 Q1444 48 1452 60" stroke-width="1.8" opacity="0.42"/>
       </g>
 
-      <!-- AI circuit traces: lower-left, x:0-520, y:320-570 -->
+      <!-- Antibody 2: smaller, partially behind, slightly more left -->
+      <g fill="none" stroke="#0d9488" stroke-linecap="round" stroke-linejoin="round" opacity="0.22">
+        <path d="M1268 260 C1266 245 1264 230 1267 210" stroke-width="3.5"/>
+        <path d="M1283 260 C1285 245 1287 230 1284 210" stroke-width="3.5"/>
+        <path d="M1267 210 C1252 200 1228 188 1205 176" stroke-width="2.8"/>
+        <path d="M1284 210 C1299 200 1318 188 1335 176" stroke-width="2.8"/>
+        <path d="M1205 176 C1185 150 1168 122 1155 94"  stroke-width="3.0"/>
+        <path d="M1335 176 C1348 150 1356 120 1352 92"  stroke-width="3.0"/>
+        <ellipse cx="1152" cy="83" rx="16" ry="10"/>
+        <path d="M1141 78 Q1146 68 1153 78" stroke-width="1.6"/>
+        <ellipse cx="1353" cy="84" rx="16" ry="10"/>
+        <path d="M1342 79 Q1347 69 1354 79" stroke-width="1.6"/>
+      </g>
+
+      <!-- AI circuit traces: lower-left, y:320-570 -->
       <g fill="none" stroke="#0d9488" stroke-width="1.8" opacity="0.40" stroke-linecap="round" stroke-linejoin="round">
         <path d="M0 340  H120 V380 H260 V340 H400"/>
         <path d="M120 380 V430 H280 V390 H440 V440"/>
@@ -311,7 +310,6 @@
         <circle cx="300" cy="470" r="2.8"/><circle cx="460" cy="470" r="2.8"/>
         <circle cx="460" cy="430" r="2.6"/><circle cx="520" cy="430" r="2.6"/>
         <circle cx="140" cy="510" r="2.6"/><circle cx="300" cy="510" r="2.6"/>
-        <circle cx="300" cy="480" r="2.6"/>
         <circle cx="0"   cy="540" r="2.8"/><circle cx="160" cy="540" r="2.8"/>
         <circle cx="160" cy="500" r="2.8"/><circle cx="320" cy="500" r="2.8"/>
         <circle cx="320" cy="550" r="2.8"/><circle cx="460" cy="550" r="2.8"/>
