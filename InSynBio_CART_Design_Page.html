@@ -117,20 +117,23 @@
     .site-footer a:hover { color: var(--primary); }
 
     /* Accordion for component library */
-    .accordion { border: 1px solid rgba(0,0,0,0.07); border-radius: 12px; overflow: hidden; margin: 24px 0; }
+    .accordion-hint { font-size: 13px; color: var(--text-muted); margin: -8px 0 16px; display: flex; align-items: center; gap: 6px; }
+    .accordion-hint::before { content: ''; display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: var(--primary); opacity: 0.7; flex-shrink: 0; }
+    .accordion { border: 1px solid rgba(0,0,0,0.08); border-radius: 12px; overflow: hidden; margin: 0 0 32px; }
     .accordion-item { border-bottom: 1px solid rgba(0,0,0,0.06); }
     .accordion-item:last-child { border-bottom: none; }
-    .accordion-btn { width: 100%; text-align: left; background: #fff; border: none; padding: 16px 20px; cursor: pointer; display: flex; align-items: center; justify-content: space-between; gap: 12px; transition: background 0.15s; font-family: inherit; }
-    .accordion-btn:hover { background: #f8fafc; }
-    .accordion-btn.open { background: rgba(13,148,136,0.04); }
-    .accordion-btn .cat { font-size: 14px; font-weight: 700; color: #111827; min-width: 110px; }
-    .accordion-btn .fn { font-size: 13px; color: #6b7280; flex: 1; }
-    .accordion-btn .chevron { font-size: 11px; color: #9ca3af; transition: transform 0.2s; flex-shrink: 0; }
-    .accordion-btn.open .chevron { transform: rotate(180deg); }
-    .accordion-body { display: none; padding: 0 20px 18px; background: #fafafa; }
-    .accordion-body.open { display: block; }
-    .accordion-body .col-label { font-size: 11px; font-weight: 700; color: #9ca3af; text-transform: uppercase; letter-spacing: 0.05em; margin: 12px 0 6px; }
-    .accordion-body .col-val { font-size: 14px; color: #374151; line-height: 1.6; margin: 0 0 4px; }
+    .accordion-btn { width: 100%; text-align: left; background: #fff; border: none; border-left: 3px solid transparent; padding: 18px 20px; cursor: pointer; display: flex; align-items: center; gap: 14px; transition: background 0.15s, border-color 0.15s; font-family: inherit; }
+    .accordion-btn:hover { background: rgba(13,148,136,0.03); border-left-color: rgba(13,148,136,0.3); }
+    .accordion-btn.open { background: rgba(13,148,136,0.05); border-left-color: var(--primary); }
+    .accordion-btn .cat { font-size: 15px; font-weight: 700; color: #111827; min-width: 140px; }
+    .accordion-btn .fn { font-size: 14px; color: #6b7280; flex: 1; }
+    .accordion-btn .chevron { font-size: 12px; color: #9ca3af; transition: transform 0.25s ease; flex-shrink: 0; margin-left: auto; }
+    .accordion-btn.open .chevron { transform: rotate(180deg); color: var(--primary); }
+    .accordion-body { max-height: 0; overflow: hidden; transition: max-height 0.3s ease, padding 0.2s ease; padding: 0 20px; background: #f8fafc; border-left: 3px solid var(--primary); }
+    .accordion-body.open { max-height: 400px; padding: 14px 20px 18px; }
+    .accordion-body .col-label { font-size: 11px; font-weight: 700; color: var(--primary); text-transform: uppercase; letter-spacing: 0.08em; margin: 10px 0 5px; }
+    .accordion-body .col-label:first-child { margin-top: 0; }
+    .accordion-body .col-val { font-size: 15px; color: #374151; line-height: 1.65; margin: 0 0 2px; }
 
     /* Accordion for component library */
     .accordion { border: 1px solid rgba(0,0,0,0.06); border-radius: 12px; overflow: hidden; margin: 32px 0; }
@@ -260,6 +263,7 @@
       <h2 id="library"><span class="h2-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg></span>Proprietary Component Library</h2>
       <p>Our ACTES platform houses a continuously updated library of <strong>nearly 200 curated components</strong> across 10 major categories, spanning clinical standards to frontier modalities.</p>
 
+      <p class="accordion-hint">10 component categories &mdash; click any row to expand</p>
       <div class="accordion" id="component-accordion">
 
         <div class="accordion-item">
@@ -616,8 +620,7 @@
     // Accordion component library
     document.querySelectorAll('.accordion-btn').forEach(btn => {
       btn.addEventListener('click', () => {
-        const id = btn.dataset.target;
-        const body = document.getElementById(id);
+        const body = document.getElementById(btn.dataset.target);
         const isOpen = btn.classList.contains('open');
         btn.classList.toggle('open', !isOpen);
         body.classList.toggle('open', !isOpen);
