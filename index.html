@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>InSynBio | AI-Powered Design for Therapeutics</title>
-    <meta name="deployment-id" content="20260301-06">
+    <meta name="deployment-id" content="20260301-07">
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -60,13 +60,17 @@
 
     /* Hero */
     .hero { position: relative; min-height: 78vh; display: flex; align-items: center; justify-content: center; text-align: center; padding: 56px 24px 72px; overflow: hidden; background: linear-gradient(135deg, rgba(13,148,136,0.08), rgba(45,212,191,0.06)); }
-    .hero-banner { position: absolute; inset: 0; z-index: 0; opacity: 1.0; filter: contrast(1.25) brightness(1.02) saturate(1.3); }
+    .hero-banner { position: absolute; inset: 0; z-index: 0; opacity: 1.0; filter: contrast(1.08) brightness(1.02) saturate(1.25); }
     .hero-banner img { width: 100%; height: 100%; display: block; object-fit: cover; }
-    .hero-overlay { position: absolute; inset: 0; z-index: 1; background: radial-gradient(900px 420px at 50% 38%, rgba(255,255,255,0.78) 0%, rgba(255,255,255,0.48) 48%, rgba(255,255,255,0.08) 72%, rgba(13,148,136,0.10) 100%); pointer-events: none; }
-    .hero .hero-inner { position: relative; z-index: 2; max-width: 900px; margin-top: 58px; padding: 28px 28px 26px; border-radius: 18px; background: rgba(255,255,255,0.68); border: 1px solid rgba(255,255,255,0.55); backdrop-filter: blur(10px) saturate(1.15); box-shadow: 0 22px 60px rgba(0,0,0,0.10); }
-    .hero h1 { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 68px; font-weight: 700; margin: 0 0 18px; letter-spacing: -0.03em; color: #0b1220; line-height: 1.08; text-shadow: 0 10px 32px rgba(0,0,0,0.10); }
+    .hero-overlay { position: absolute; inset: 0; z-index: 1; background:
+      radial-gradient(900px 420px at 50% 36%, rgba(255,255,255,0.92) 0%, rgba(255,255,255,0.72) 45%, rgba(255,255,255,0.25) 70%, rgba(13,148,136,0.12) 100%),
+      linear-gradient(180deg, rgba(13,148,136,0.10) 0%, rgba(255,255,255,0.00) 55%, rgba(255,255,255,0.22) 100%);
+      pointer-events: none;
+    }
+    .hero .hero-inner { position: relative; z-index: 2; max-width: 860px; margin-top: 58px; }
+    .hero h1 { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 68px; font-weight: 700; margin: 0 0 18px; letter-spacing: -0.03em; color: #0b1220; line-height: 1.08; text-shadow: 0 14px 40px rgba(0,0,0,0.10); }
     .hero h1 span { display: inline-block; }
-    .hero .tagline { font-size: 20px; color: #1f2937; margin-bottom: 26px; max-width: 680px; margin-left: auto; margin-right: auto; line-height: 1.55; font-weight: 450; text-shadow: 0 10px 26px rgba(0,0,0,0.08); }
+    .hero .tagline { font-size: 20px; color: #1f2937; margin-bottom: 26px; max-width: 680px; margin-left: auto; margin-right: auto; line-height: 1.55; font-weight: 450; text-shadow: 0 12px 30px rgba(0,0,0,0.08); }
     
     .hero-features { display: flex; gap: 12px; justify-content: center; margin-bottom: 28px; flex-wrap: wrap; }
     .feature-item { display: flex; align-items: center; gap: 6px; font-size: 13px; color: var(--text-muted); background: rgba(255,255,255,0.9); padding: 5px 14px; border-radius: 20px; border: 1px solid rgba(0,0,0,0.08); backdrop-filter: blur(4px); font-weight: 500; }
@@ -181,7 +185,6 @@
       .top-header-nav { order: 3; width: 100%; flex: 1 1 100%; justify-content: flex-start; flex-wrap: wrap; gap: 6px; overflow-x: auto; padding-bottom: 4px; -webkit-overflow-scrolling: touch; border-top: 1px solid var(--border); padding-top: 10px; margin-top: 2px; }
       .top-header-nav a { flex-shrink: 0; font-size: 13px; padding: 6px 10px; }
       .hero { min-height: auto; padding: 60px 20px 80px; }
-      .hero .hero-inner { padding: 22px 18px 20px; border-radius: 16px; }
       .hero h1 { font-size: 42px; }
       .section { padding: 48px 20px; }
     }
@@ -238,11 +241,7 @@
 
   <section class="hero">
     <div class="hero-banner">
-      <picture>
-        <source srcset="images/case-humanization.webp" type="image/webp">
-        <source srcset="images/case-humanization.jpg" type="image/jpeg">
-        <img src="images/case-humanization.jpg" alt="" role="presentation">
-      </picture>
+      <img src="images/hero-bg.svg" alt="" role="presentation">
     </div>
     <div class="hero-overlay" aria-hidden="true"></div>
     <div class="hero-inner">
