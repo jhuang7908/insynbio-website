@@ -130,6 +130,45 @@
       .main { padding: 32px 24px 64px; }
       .mission-block { padding: 20px; margin-bottom: 24px; }
     }
+
+    /* Mobile: stacked card table + tighter form */
+    @media (max-width: 600px) {
+      .main { padding: 24px 16px 56px; }
+      .form-section { padding: 24px 16px; }
+      .form-row { flex-direction: column; gap: 16px; }
+      .table-wrap table thead { display: none; }
+      .table-wrap table tbody tr {
+        display: block;
+        margin-bottom: 16px;
+        border: 1px solid rgba(0,0,0,0.08);
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+      }
+      .table-wrap table td {
+        display: block;
+        padding: 10px 16px;
+        font-size: 14px;
+        line-height: 1.6;
+        border-bottom: 1px solid rgba(0,0,0,0.05);
+      }
+      .table-wrap table td::before {
+        content: attr(data-label);
+        display: block;
+        font-size: 10px;
+        font-weight: 700;
+        color: var(--primary);
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        margin-bottom: 3px;
+      }
+      .table-wrap table td:last-child { border-bottom: none; }
+    }
+
+    /* Typography: justify long paragraphs on desktop only */
+    @media (min-width: 960px) {
+      .main p, .mission-block p { text-align: justify; text-justify: inter-word; hyphens: auto; }
+    }
   </style>
 </head>
 <body data-lang="en" id="insynbio-body">
@@ -257,16 +296,16 @@
         </thead>
         <tbody>
           <tr>
-            <td><strong>Camelization</strong></td>
-            <td>Introduction of VHH hallmark mutations (FR2) to stabilize VH domains without light chains.</td>
+            <td data-label="Feature"><strong>Camelization</strong></td>
+            <td data-label="Description">Introduction of VHH hallmark mutations (FR2) to stabilize VH domains without light chains.</td>
           </tr>
           <tr>
-            <td><strong>Tier-Based Humanization</strong></td>
-            <td>Proprietary Tier 0-3 system to balance immunogenicity and affinity. Preserves critical Vernier Zone residues.</td>
+            <td data-label="Feature"><strong>Tier-Based Humanization</strong></td>
+            <td data-label="Description">Proprietary Tier 0-3 system to balance immunogenicity and affinity. Preserves critical Vernier Zone residues.</td>
           </tr>
           <tr>
-            <td><strong>Affinity Recovery</strong></td>
-            <td>Structure-guided CDR back-mutations to restore binding lost during scaffold transfer.</td>
+            <td data-label="Feature"><strong>Affinity Recovery</strong></td>
+            <td data-label="Description">Structure-guided CDR back-mutations to restore binding lost during scaffold transfer.</td>
           </tr>
         </tbody>
       </table>

@@ -131,6 +131,45 @@
       .main { padding: 32px 24px 64px; }
       .mission-block { padding: 24px; margin-bottom: 32px; }
     }
+
+    /* Mobile: stacked card table + tighter form */
+    @media (max-width: 600px) {
+      .main { padding: 24px 16px 56px; }
+      .form-section { padding: 24px 16px; }
+      .form-row { flex-direction: column; gap: 16px; }
+      .humanization-table thead { display: none; }
+      .humanization-table tbody tr {
+        display: block;
+        margin-bottom: 16px;
+        border: 1px solid rgba(0,0,0,0.08);
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+      }
+      .humanization-table td {
+        display: block;
+        padding: 10px 16px;
+        font-size: 14px;
+        line-height: 1.6;
+        border-bottom: 1px solid rgba(0,0,0,0.05);
+      }
+      .humanization-table td::before {
+        content: attr(data-label);
+        display: block;
+        font-size: 10px;
+        font-weight: 700;
+        color: var(--primary);
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        margin-bottom: 3px;
+      }
+      .humanization-table td:last-child { border-bottom: none; }
+    }
+
+    /* Typography: justify long paragraphs on desktop only */
+    @media (min-width: 960px) {
+      .main p, .mission-block p { text-align: justify; text-justify: inter-word; hyphens: auto; }
+    }
   </style>
 </head>
 <body data-lang="en" id="insynbio-body">

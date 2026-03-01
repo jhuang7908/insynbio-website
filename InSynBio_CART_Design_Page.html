@@ -173,6 +173,40 @@
       .mission-block { padding: 24px; margin-bottom: 32px; }
     }
 
+    /* Mobile: stacked card table + tighter layout */
+    @media (max-width: 600px) {
+      .main { padding: 24px 16px 56px; }
+      .form-section { padding: 24px 16px; }
+      .form-row { flex-direction: column; gap: 16px; }
+      .table-wrap table thead { display: none; }
+      .table-wrap table tbody tr {
+        display: block;
+        margin-bottom: 16px;
+        border: 1px solid rgba(0,0,0,0.08);
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+      }
+      .table-wrap table td {
+        display: block;
+        padding: 10px 16px;
+        font-size: 14px;
+        line-height: 1.6;
+        border-bottom: 1px solid rgba(0,0,0,0.05);
+      }
+      .table-wrap table td::before {
+        content: attr(data-label);
+        display: block;
+        font-size: 10px;
+        font-weight: 700;
+        color: var(--primary);
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        margin-bottom: 3px;
+      }
+      .table-wrap table td:last-child { border-bottom: none; }
+    }
+
     /* Typography: justify long paragraphs on desktop only */
     @media (min-width: 960px) {
       .main p, .mission-block p { text-align: justify; text-justify: inter-word; hyphens: auto; }
@@ -536,29 +570,29 @@
         </thead>
         <tbody>
           <tr>
-            <td><strong>Solid Tumors (e.g., HCC, Gastric)</strong></td>
-            <td><strong>Physical Exclusion</strong> (ECM), <strong>Immunosuppression</strong> (TGF-β) & <strong>On-Target Off-Tumor</strong></td>
-            <td><strong>Matrix-Degrading Synergy:</strong> CAR-M to degrade ECM + CAR-T armored with <strong>TGFB_DNR</strong>. <strong>Affinity Tuning</strong> (lower Kd on normal-tissue antigens) and <strong>Logic-Gated</strong> recognition to spare healthy tissue.</td>
+            <td data-label="Disease Context"><strong>Solid Tumors (e.g., HCC, Gastric)</strong></td>
+            <td data-label="Critical Barriers"><strong>Physical Exclusion</strong> (ECM), <strong>Immunosuppression</strong> (TGF-β) & <strong>On-Target Off-Tumor</strong></td>
+            <td data-label="Solution"><strong>Matrix-Degrading Synergy:</strong> CAR-M to degrade ECM + CAR-T armored with <strong>TGFB_DNR</strong>. <strong>Affinity Tuning</strong> (lower Kd on normal-tissue antigens) and <strong>Logic-Gated</strong> recognition to spare healthy tissue.</td>
           </tr>
           <tr>
-            <td><strong>Hematologic / Liquid Tumors (e.g., B-ALL, LBCL)</strong></td>
-            <td><strong>Cytokine Storm (CRS)</strong> & <strong>B-cell Aplasia</strong></td>
-            <td><strong>4-1BB-Dominant</strong> (reduced CRS vs CD28), <strong>Safety Switches</strong> (tEGFR, iCasp9) for controllable elimination, <strong>Tuned Affinity</strong> and dose to balance efficacy and toxicity.</td>
+            <td data-label="Disease Context"><strong>Hematologic / Liquid Tumors (e.g., B-ALL, LBCL)</strong></td>
+            <td data-label="Critical Barriers"><strong>Cytokine Storm (CRS)</strong> & <strong>B-cell Aplasia</strong></td>
+            <td data-label="Solution"><strong>4-1BB-Dominant</strong> (reduced CRS vs CD28), <strong>Safety Switches</strong> (tEGFR, iCasp9) for controllable elimination, <strong>Tuned Affinity</strong> and dose to balance efficacy and toxicity.</td>
           </tr>
           <tr>
-            <td><strong>AML / Myeloid Malignancies</strong></td>
-            <td><strong>Shared Toxicity</strong> (Healthy marrow depletion) & <strong>Relapse</strong></td>
-            <td><strong>Transient "Hit-and-Run":</strong> <strong>mRNA-LNP In Vivo CAR</strong> for temporary clearance without permanent aplasia, or <strong>Logic-Gated (NOT)</strong> circuits.</td>
+            <td data-label="Disease Context"><strong>AML / Myeloid Malignancies</strong></td>
+            <td data-label="Critical Barriers"><strong>Shared Toxicity</strong> (Healthy marrow depletion) & <strong>Relapse</strong></td>
+            <td data-label="Solution"><strong>Transient "Hit-and-Run":</strong> <strong>mRNA-LNP In Vivo CAR</strong> for temporary clearance without permanent aplasia, or <strong>Logic-Gated (NOT)</strong> circuits.</td>
           </tr>
           <tr>
-            <td><strong>Autoimmune (SLE, Lupus)</strong></td>
-            <td><strong>Systemic Safety</strong> & <strong>B-cell Aplasia</strong> risks</td>
-            <td><strong>Immune Reset:</strong> <strong>CD8-Sparing CAR-Treg</strong> to induce tolerance, or <strong>Short-Lived mRNA CAR</strong> to deplete B-cells once, allowing immune reboot.</td>
+            <td data-label="Disease Context"><strong>Autoimmune (SLE, Lupus)</strong></td>
+            <td data-label="Critical Barriers"><strong>Systemic Safety</strong> & <strong>B-cell Aplasia</strong> risks</td>
+            <td data-label="Solution"><strong>Immune Reset:</strong> <strong>CD8-Sparing CAR-Treg</strong> to induce tolerance, or <strong>Short-Lived mRNA CAR</strong> to deplete B-cells once, allowing immune reboot.</td>
           </tr>
           <tr>
-            <td><strong>CNS / Glioblastoma</strong></td>
-            <td><strong>Blood-Brain Barrier</strong> & <strong>Neurotoxicity (ICANS)</strong></td>
-            <td><strong>Regional Precision:</strong> <strong>Intracavitary Delivery</strong> (ICV) bypasses BBB. <strong>Hinge/TM Optimization</strong> minimizes tonic signaling to reduce ICANS risk.</td>
+            <td data-label="Disease Context"><strong>CNS / Glioblastoma</strong></td>
+            <td data-label="Critical Barriers"><strong>Blood-Brain Barrier</strong> & <strong>Neurotoxicity (ICANS)</strong></td>
+            <td data-label="Solution"><strong>Regional Precision:</strong> <strong>Intracavitary Delivery</strong> (ICV) bypasses BBB. <strong>Hinge/TM Optimization</strong> minimizes tonic signaling to reduce ICANS risk.</td>
           </tr>
         </tbody>
       </table>
