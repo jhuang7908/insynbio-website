@@ -34,8 +34,10 @@
     .top-header-nav a.active { background: var(--primary); color: #fff; font-weight: 500; }
     .top-header-nav a.active:hover,
     .top-header-nav a.active:focus { background: var(--primary-dark); color: #fff; }
-    .top-header-nav a[href="therasik_index.html"],
-    .top-header-nav a[href="therasik_index.html"].active { background: transparent; color: var(--text-muted); }
+    .top-header-nav a[href="therasik_index.html"] { background: transparent; color: var(--text-muted); }
+    .top-header-nav a[href="therasik_index.html"].active { background: var(--primary); color: #fff; font-weight: 500; }
+    .top-header-nav a[href="therasik_index.html"].active:hover,
+    .top-header-nav a[href="therasik_index.html"].active:focus { background: var(--primary-dark); color: #fff; }
     .top-header-nav a[href="therasik_index.html"]:hover { color: var(--primary); background: var(--bg-alt); }
     .header-right { display: flex; align-items: center; gap: 16px; }
     .lang-switch { display: flex; gap: 4px; }
@@ -148,7 +150,7 @@
       <span class="slogan">AI 赋能生命科学</span>
     </div>
     <nav class="top-header-nav">
-      <a href="therasik_index.html">首页</a>
+      <a href="therasik_index.html" class="active">首页</a>
       <a href="#about">关于我们</a>
       <div class="nav-dropdown" tabindex="0">
         <a href="#services">服务</a>
@@ -305,9 +307,11 @@
   </footer>
   <script>
     function setNavActive() {
-      var hash = window.location.hash || '#';
+      var hash = window.location.hash || '';
+      var homeLink = document.querySelector('.top-header-nav a[href="therasik_index.html"]');
+      if (homeLink) homeLink.classList.toggle('active', !hash || hash === '#');
       document.querySelectorAll('.top-header-nav a[href^="#"]').forEach(function(a) {
-        a.classList.toggle('active', a.getAttribute('href') === hash);
+        a.classList.toggle('active', hash && a.getAttribute('href') === hash);
       });
     }
     setNavActive();
