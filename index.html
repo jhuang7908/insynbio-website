@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>InSynBio | AI-Powered Design for Therapeutics</title>
-    <meta name="deployment-id" content="20260225-24">
+    <meta name="deployment-id" content="20260225-25">
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -128,8 +128,26 @@
     .contact-card .label { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted); margin-bottom: 12px; display: block; }
     .contact-card a.email { font-family: 'Cormorant Garamond', serif; font-size: 28px; font-weight: 600; color: #111827; text-decoration: none; display: block; margin-bottom: 12px; letter-spacing: -0.02em; transition: color 0.2s; }
     .contact-card a.email:hover { color: var(--primary); }
-    .contact-card .form-link { display: inline-flex; align-items: center; gap: 8px; margin-top: 24px; padding: 12px 24px; background: #0f766e; color: #fff; border-radius: 8px; font-size: 14px; font-weight: 600; text-decoration: none; transition: all 0.2s; box-shadow: 0 4px 12px rgba(15,118,110,0.28); }
+    .contact-card .form-link { display: inline-flex; align-items: center; gap: 8px; margin-top: 24px; padding: 13px 28px; background: #0f766e; color: #fff; border-radius: 8px; font-size: 15px; font-weight: 600; text-decoration: none; border: none; cursor: pointer; transition: all 0.2s; box-shadow: 0 4px 12px rgba(15,118,110,0.28); font-family: inherit; letter-spacing: 0.01em; }
     .contact-card .form-link:hover { background: #065f46; transform: translateY(-2px); box-shadow: 0 6px 16px rgba(15,118,110,0.38); }
+    /* Inquiry modal */
+    .inq-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.42); z-index: 9000; align-items: center; justify-content: center; padding: 24px; }
+    .inq-overlay.open { display: flex; }
+    .inq-modal { background: #fff; border-radius: 16px; width: 100%; max-width: 460px; padding: 36px 32px 28px; box-shadow: 0 20px 60px rgba(0,0,0,0.18); position: relative; animation: inqIn 0.22s ease; }
+    @keyframes inqIn { from { opacity: 0; transform: translateY(12px) scale(0.97); } to { opacity: 1; transform: none; } }
+    .inq-modal .inq-title { font-size: 20px; font-weight: 700; color: #111827; margin: 0 0 6px; letter-spacing: -0.02em; }
+    .inq-modal .inq-sub { font-size: 14px; color: #6b7280; margin: 0 0 24px; }
+    .inq-modal .inq-close { position: absolute; top: 16px; right: 18px; background: none; border: none; font-size: 20px; color: #9ca3af; cursor: pointer; line-height: 1; padding: 4px; transition: color 0.15s; }
+    .inq-modal .inq-close:hover { color: #374151; }
+    .inq-option { display: flex; align-items: center; gap: 14px; padding: 16px 18px; border: 1.5px solid rgba(0,0,0,0.07); border-radius: 10px; margin-bottom: 10px; text-decoration: none; color: #111827; transition: all 0.18s; background: #fff; }
+    .inq-option:last-child { margin-bottom: 0; }
+    .inq-option:hover { border-color: #0f766e; background: #f0fdf9; transform: translateX(3px); }
+    .inq-option .inq-icon { width: 38px; height: 38px; border-radius: 9px; background: #f0fdf9; display: flex; align-items: center; justify-content: center; flex-shrink: 0; color: #0f766e; }
+    .inq-option .inq-option-text { flex: 1; }
+    .inq-option .inq-option-name { font-size: 14px; font-weight: 700; color: #111827; margin: 0 0 2px; }
+    .inq-option .inq-option-desc { font-size: 12px; color: #6b7280; margin: 0; }
+    .inq-option .inq-arrow { color: #9ca3af; font-size: 14px; flex-shrink: 0; transition: color 0.15s; }
+    .inq-option:hover .inq-arrow { color: #0f766e; }
 
     /* Trust strip */
     .trust-strip { padding: 18px 32px; background: #fff; border-bottom: 1px solid rgba(0,0,0,0.04); position: relative; z-index: 5; margin-top: -68px; max-width: 1100px; margin-left: auto; margin-right: auto; border-radius: 16px; box-shadow: 0 10px 40px rgba(0,0,0,0.08); }
@@ -623,34 +641,54 @@
         </div>
         <div class="contact-card">
           <span class="label">Submit an inquiry</span>
-          <p style="font-size: 16px; color: #374151; margin: 0 0 20px;">Select the service area and we'll route your inquiry to the right team.</p>
-          <div style="display: flex; flex-direction: column; gap: 10px;">
-            <a href="InSynBio_Antibody_Developability_Assessment_Page.html#submit" class="form-link" style="justify-content: space-between;">
-              <span style="display:flex;align-items:center;gap:8px;">
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-                Antibody Assessment &amp; Humanization
-              </span>
-              <span style="opacity:0.5;font-size:12px;">→</span>
-            </a>
-            <a href="InSynBio_Bispecific_Antibody_Design_Page.html#submit" class="form-link" style="justify-content: space-between;">
-              <span style="display:flex;align-items:center;gap:8px;">
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="6" cy="6" r="3"/><circle cx="18" cy="18" r="3"/><path d="M8.5 8.5l7 7"/></svg>
-                Bispecific Antibody Design
-              </span>
-              <span style="opacity:0.5;font-size:12px;">→</span>
-            </a>
-            <a href="InSynBio_CART_Design_Page.html#submit" class="form-link" style="justify-content: space-between;">
-              <span style="display:flex;align-items:center;gap:8px;">
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-                Smart CAR-T Design
-              </span>
-              <span style="opacity:0.5;font-size:12px;">→</span>
-            </a>
-          </div>
+          <p style="font-size: 16px; color: #374151; margin: 0 0 24px; line-height: 1.6;">Send us your sequences and project details for a tailored assessment.</p>
+          <button class="form-link" onclick="document.getElementById('inq-overlay').classList.add('open')">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 11.4 19.79 19.79 0 0 1 1.61 2.84 2 2 0 0 1 3.6 .66h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.27a16 16 0 0 0 6 6l.96-.96a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.73 16l.19.92z"/></svg>
+            Go to Inquiry Form
+          </button>
         </div>
       </div>
     </div>
   </section>
+
+  <!-- Inquiry service-selection modal -->
+  <div class="inq-overlay" id="inq-overlay" onclick="if(event.target===this)this.classList.remove('open')">
+    <div class="inq-modal">
+      <button class="inq-close" onclick="document.getElementById('inq-overlay').classList.remove('open')" aria-label="Close">✕</button>
+      <p class="inq-title">Select a Service</p>
+      <p class="inq-sub">We'll route your inquiry to the right team.</p>
+      <a href="InSynBio_Antibody_Developability_Assessment_Page.html#submit" class="inq-option">
+        <span class="inq-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        </span>
+        <span class="inq-option-text">
+          <p class="inq-option-name">Antibody Assessment &amp; Humanization</p>
+          <p class="inq-option-desc">Developability, VH/VL &amp; VHH humanization, immunogenicity</p>
+        </span>
+        <span class="inq-arrow">→</span>
+      </a>
+      <a href="InSynBio_Bispecific_Antibody_Design_Page.html#submit" class="inq-option">
+        <span class="inq-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="3"/><circle cx="18" cy="18" r="3"/><path d="M8.5 8.5l7 7"/></svg>
+        </span>
+        <span class="inq-option-text">
+          <p class="inq-option-name">Bispecific Antibody Design</p>
+          <p class="inq-option-desc">IgG-like, tandem scFv, VHH-Fc dual-targeting formats</p>
+        </span>
+        <span class="inq-arrow">→</span>
+      </a>
+      <a href="InSynBio_CART_Design_Page.html#submit" class="inq-option">
+        <span class="inq-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </span>
+        <span class="inq-option-text">
+          <p class="inq-option-name">Smart CAR-T Design</p>
+          <p class="inq-option-desc">Next-gen CAR architecture, logic-gated &amp; armored CARs</p>
+        </span>
+        <span class="inq-arrow">→</span>
+      </a>
+    </div>
+  </div>
 
   <footer class="site-footer">
     <p>© 2026 InSynBio · <a href="https://insynbio.com">insynbio.com</a> · <a href="mailto:contact@insynbio.com">contact@insynbio.com</a></p>
