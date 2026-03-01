@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>InSynBio | AI-Powered Design for Therapeutics</title>
-    <meta name="deployment-id" content="20260301-22">
+    <meta name="deployment-id" content="20260301-23">
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -175,6 +175,11 @@
     .case-bullets { margin: 0; padding-left: 18px; color: #374151; font-size: 16.5px; line-height: 1.6; }
     .case-bullets li { margin: 0 0 8px; }
     .case-cta { padding: 0 22px 22px; font-size: 14px; font-weight: 650; color: var(--primary); display: inline-flex; align-items: center; gap: 6px; }
+
+    /* Typography: justify long paragraphs on desktop only */
+    @media (min-width: 960px) {
+      .case-desc { text-align: justify; text-justify: inter-word; hyphens: auto; }
+    }
 
     .site-footer { padding: 48px 32px; text-align: center; font-size: 14px; color: #9ca3af; border-top: 1px solid rgba(0,0,0,0.05); background: #fff; }
     .site-footer a { color: #6b7280; text-decoration: none; transition: color 0.2s; }
