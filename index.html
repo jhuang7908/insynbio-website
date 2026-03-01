@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>InSynBio — AI for Life Sciences</title>
+  <title>InSynBio | AI-Powered Design for Therapeutics</title>
+    <meta name="deployment-id" content="20260226-02">
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -41,7 +42,7 @@
     
     /* Nav */
     .top-header-nav { display: flex; align-items: center; gap: 6px; flex: 1; justify-content: center; }
-    .top-header-nav a { padding: 8px 16px; font-size: 14px; color: var(--text-muted); text-decoration: none; border-radius: 20px; transition: all 0.2s ease; font-weight: 500; }
+    .top-header-nav a { padding: 8px 16px; font-size: 16px; color: var(--text-muted); text-decoration: none; border-radius: 20px; transition: all 0.2s ease; font-weight: 500; }
     .top-header-nav a:hover { color: var(--primary); background: rgba(13,148,136,0.06); }
     .top-header-nav a.active { background: var(--primary); color: #fff; box-shadow: 0 2px 8px rgba(13,148,136,0.25); }
     .top-header-nav a.active:hover { background: var(--primary-dark); }
@@ -65,7 +66,7 @@
     .hero .hero-inner { position: relative; z-index: 2; max-width: 780px; }
     .hero h1 { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 72px; font-weight: 600; margin: 0 0 24px; letter-spacing: -0.04em; color: #111827; line-height: 1; }
     .hero h1 span { display: inline-block; }
-    .hero .tagline { font-size: 20px; color: #4b5563; margin-bottom: 40px; max-width: 600px; margin-left: auto; margin-right: auto; line-height: 1.6; font-weight: 400; }
+    .hero .tagline { font-size: 22px; color: #4b5563; margin-bottom: 40px; max-width: 600px; margin-left: auto; margin-right: auto; line-height: 1.6; font-weight: 400; }
     
     .hero-features { display: flex; gap: 16px; justify-content: center; margin-bottom: 40px; flex-wrap: wrap; }
     .feature-item { display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--text-muted); background: rgba(255,255,255,0.8); padding: 6px 14px; border-radius: 20px; border: 1px solid rgba(0,0,0,0.05); backdrop-filter: blur(4px); font-weight: 500; }
@@ -129,7 +130,7 @@
     .trust-inner { max-width: 1140px; margin: 0 auto; display: flex; align-items: center; justify-content: center; gap: 48px; flex-wrap: wrap; }
     .trust-item { display: flex; flex-direction: column; align-items: center; gap: 6px; text-align: center; }
     .trust-number { font-family: 'Cormorant Garamond', serif; font-size: 36px; font-weight: 700; color: var(--primary); letter-spacing: -0.03em; line-height: 1; }
-    .trust-label { font-size: 13px; color: var(--text-muted); font-weight: 500; letter-spacing: 0.02em; }
+    .trust-label { font-size: 16px; color: var(--text-muted); font-weight: 500; letter-spacing: 0.02em; }
     .trust-divider { width: 1px; height: 40px; background: rgba(0,0,0,0.08); flex-shrink: 0; }
 
     /* Scroll fade-in
@@ -151,31 +152,10 @@
     .case-body { padding: 22px 22px 18px; }
     .case-tag { display: inline-flex; align-items: center; gap: 8px; font-size: 11px; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase; color: var(--primary-dark); background: rgba(13,148,136,0.10); border: 1px solid rgba(13,148,136,0.18); padding: 6px 10px; border-radius: 999px; }
     .case-title { margin: 14px 0 10px; font-size: 18px; font-weight: 650; letter-spacing: -0.01em; color: #111827; }
-    .case-desc { margin: 0 0 14px; font-size: 14px; color: #6b7280; line-height: 1.65; }
-    .case-bullets { margin: 0; padding-left: 18px; color: #374151; font-size: 13.5px; line-height: 1.6; }
+    .case-desc { margin: 0 0 14px; font-size: 16px; color: #6b7280; line-height: 1.6; }
+    .case-bullets { margin: 0; padding-left: 18px; color: #374151; font-size: 15.5px; line-height: 1.6; }
     .case-bullets li { margin: 0 0 8px; }
     .case-cta { padding: 0 22px 22px; font-size: 14px; font-weight: 650; color: var(--primary); display: inline-flex; align-items: center; gap: 6px; }
-
-    /* Structure gallery */
-    .gallery-grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 16px; margin-top: 36px; }
-    .gallery-item { grid-column: span 4; background: #fff; border: 1px solid rgba(0,0,0,0.06); border-radius: 14px; overflow: hidden; padding: 0; cursor: pointer; text-align: left; box-shadow: 0 4px 10px rgba(0,0,0,0.03); transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1); }
-    .gallery-item:hover { transform: translateY(-6px); box-shadow: 0 18px 40px rgba(0,0,0,0.08); }
-    .gallery-thumb { aspect-ratio: 16 / 10; background: linear-gradient(135deg, rgba(13,148,136,0.08), rgba(45,212,191,0.06)); }
-    .gallery-thumb picture, .gallery-thumb img { width: 100%; height: 100%; display: block; object-fit: cover; }
-    .gallery-meta { padding: 14px 16px; }
-    .gallery-title { margin: 0 0 4px; font-size: 14px; font-weight: 650; color: #111827; }
-    .gallery-sub { margin: 0; font-size: 12px; color: #6b7280; }
-
-    /* Lightbox */
-    .lightbox { position: fixed; inset: 0; display: none; z-index: 2000; }
-    .lightbox.open { display: block; }
-    .lightbox-backdrop { position: absolute; inset: 0; background: rgba(17,24,39,0.70); }
-    .lightbox-dialog { position: relative; max-width: min(1100px, calc(100vw - 48px)); margin: 40px auto; background: #fff; border-radius: 16px; overflow: hidden; box-shadow: 0 30px 80px rgba(0,0,0,0.35); border: 1px solid rgba(255,255,255,0.12); }
-    .lightbox-img { width: 100%; height: auto; display: block; background: #0b1220; }
-    .lightbox-bar { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 12px 14px; border-top: 1px solid rgba(0,0,0,0.06); }
-    .lightbox-caption { font-size: 13px; color: #374151; font-weight: 500; }
-    .lightbox-close { appearance: none; border: 0; background: rgba(17,24,39,0.06); color: #111827; border-radius: 10px; padding: 8px 10px; cursor: pointer; font-weight: 700; transition: background 0.2s; }
-    .lightbox-close:hover { background: rgba(17,24,39,0.10); }
 
     .site-footer { padding: 48px 32px; text-align: center; font-size: 14px; color: #9ca3af; border-top: 1px solid rgba(0,0,0,0.05); background: #fff; }
     .site-footer a { color: #6b7280; text-decoration: none; transition: color 0.2s; }
@@ -192,8 +172,6 @@
       .workflow-steps { flex-direction: column; gap: 16px; }
       .workflow-step { border-radius: 12px !important; border: 1px solid rgba(0,0,0,0.06); }
       .hero h1 { font-size: 48px; }
-      .gallery-grid { display: grid; grid-template-columns: 1fr; }
-      .gallery-item { grid-column: auto; }
     }
     @media (max-width: 600px) {
       .top-header { padding: 12px 16px; flex-wrap: wrap; gap: 10px; }
@@ -250,7 +228,6 @@
         </div>
       </div>
       <a href="#case-studies">Case Studies</a>
-      <a href="#structures">Structures</a>
       <a href="#workflow">Workflow</a>
       <a href="#contact">Contact Us</a>
     </nav>
@@ -263,7 +240,7 @@
     </div>
     <div class="hero-overlay" aria-hidden="true"></div>
     <div class="hero-inner">
-    <h1>AI-Powered Drug Design</h1>
+    <h1>AI-Powered Design for Therapeutics</h1>
     <p class="tagline">Clinical data meets machine learning. From antibody assessment to CAR-T engineering — accelerating biotherapeutic innovation.</p>
 
     <div class="hero-features">
@@ -370,15 +347,15 @@
   <section id="case-studies" class="section">
     <div class="section-wide">
       <span class="section-label">Case Studies</span>
-      <h2 style="margin-bottom:6px">Real Projects, Real Deliverables</h2>
-      <p style="margin-bottom:0;color:var(--text-muted)">Selected project types we frequently deliver. (Images can be anonymized / de-identified.)</p>
+      <h2 style="margin-bottom:6px">Selected Projects</h2>
+      <p style="margin-bottom:0;color:var(--text-muted)">Representative engagements across biotherapeutic design and evaluation. Visuals are anonymized.</p>
 
       <div class="case-grid">
         <a class="case-card fade-up" href="InSynBio_Antibody_Developability_Assessment_Page.html#humanization">
           <div class="case-media">
             <picture>
               <source srcset="images/case-humanization.webp" type="image/webp">
-              <source srcset="images/case-humanization.png" type="image/png">
+              <source srcset="images/case-humanization.jpg" type="image/jpeg">
               <img src="images/case-humanization.svg" alt="Humanization project placeholder">
             </picture>
           </div>
@@ -399,7 +376,7 @@
           <div class="case-media">
             <picture>
               <source srcset="images/case-assessment.webp" type="image/webp">
-              <source srcset="images/case-assessment.png" type="image/png">
+              <source srcset="images/case-assessment.jpg" type="image/jpeg">
               <img src="images/case-assessment.svg" alt="Antibody assessment placeholder">
             </picture>
           </div>
@@ -420,7 +397,7 @@
           <div class="case-media">
             <picture>
               <source srcset="images/case-vh2vhh.webp" type="image/webp">
-              <source srcset="images/case-vh2vhh.png" type="image/png">
+              <source srcset="images/case-vh2vhh.jpg" type="image/jpeg">
               <img src="images/case-vh2vhh.svg" alt="VH to VHH conversion placeholder">
             </picture>
           </div>
@@ -437,162 +414,68 @@
           <div class="case-cta">Explore Nano-Convert™ →</div>
         </a>
 
-        <a class="case-card fade-up" href="InSynBio_Antibody_Developability_Assessment_Page.html#affinity-maturation">
+        <a class="case-card fade-up" href="#contact">
           <div class="case-media">
             <picture>
-              <source srcset="images/case-affinity.webp" type="image/webp">
-              <source srcset="images/case-affinity.png" type="image/png">
-              <img src="images/case-affinity.svg" alt="Affinity maturation placeholder">
+              <source srcset="images/case-pd1pdl1.webp" type="image/webp">
+              <source srcset="images/case-pd1pdl1.jpg" type="image/jpeg">
+              <img src="images/case-pd1pdl1.svg" alt="PD-1/PD-L1 affinity engineering placeholder">
             </picture>
           </div>
           <div class="case-body">
-            <span class="case-tag">Affinity</span>
-            <div class="case-title">PD‑1 Affinity Maturation</div>
-            <p class="case-desc">Structure-driven CDR redesign to improve binding while controlling developability liabilities.</p>
+            <span class="case-tag">Protein Eng.</span>
+            <div class="case-title">PD‑1 / PD‑L1 Affinity Engineering</div>
+            <p class="case-desc">Protein–protein interface design to tune checkpoint binding, guided by structure and stability constraints.</p>
             <ul class="case-bullets">
-              <li>Complex-structure-guided redesign</li>
-              <li>Risk-aware mutation selection</li>
-              <li>Shortlist candidates for synthesis</li>
+              <li>Interface hotspot selection + mutation design</li>
+              <li>Stability/expressibility filtering</li>
+              <li>Deliverable: ranked variants + rationale</li>
             </ul>
           </div>
-          <div class="case-cta">Affinity maturation →</div>
+          <div class="case-cta">Discuss your target →</div>
         </a>
 
-        <a class="case-card fade-up fade-up-d1" href="InSynBio_Antibody_Developability_Assessment_Page.html#sequence">
+        <a class="case-card fade-up fade-up-d1" href="InSynBio_Bispecific_Antibody_Design_Page.html">
           <div class="case-media">
             <picture>
-              <source srcset="images/case-cdr.webp" type="image/webp">
-              <source srcset="images/case-cdr.png" type="image/png">
-              <img src="images/case-cdr.svg" alt="CDR optimization placeholder">
+              <source srcset="images/case-bispecific.webp" type="image/webp">
+              <source srcset="images/case-bispecific.jpg" type="image/jpeg">
+              <img src="images/case-bispecific.svg" alt="Bispecific antibody design placeholder">
             </picture>
           </div>
           <div class="case-body">
-            <span class="case-tag">De Novo</span>
-            <div class="case-title">CDR Optimization / Synthesis</div>
-            <p class="case-desc">From scratch or from a starting binder—optimize CDRs with structure constraints and developability checks.</p>
+            <span class="case-tag">Bispecific</span>
+            <div class="case-title">Bispecific Antibody Design</div>
+            <p class="case-desc">Format selection and structure-guided engineering to balance geometry, stability, and dual-target engagement.</p>
             <ul class="case-bullets">
-              <li>Design space exploration + filtering</li>
-              <li>Structure plausibility checks</li>
-              <li>Deliverable: ranked sequences + models</li>
+              <li>Format screening + developability checks</li>
+              <li>Interface/angle constraints and linker tuning</li>
+              <li>Deliverable: shortlisted constructs + models</li>
             </ul>
           </div>
-          <div class="case-cta">Sequence module →</div>
+          <div class="case-cta">Bispecific design →</div>
         </a>
 
-        <a class="case-card fade-up fade-up-d2" href="InSynBio_Antibody_Developability_Assessment_Page.html#developability">
+        <a class="case-card fade-up fade-up-d2" href="InSynBio_CART_Design_Page.html#platform">
           <div class="case-media">
             <picture>
-              <source srcset="images/case-cmc.webp" type="image/webp">
-              <source srcset="images/case-cmc.png" type="image/png">
-              <img src="images/case-cmc.svg" alt="CMC and aggregation risk placeholder">
+              <source srcset="images/case-cart.webp" type="image/webp">
+              <source srcset="images/case-cart.jpg" type="image/jpeg">
+              <img src="images/case-cart.svg" alt="CAR-T design placeholder">
             </picture>
           </div>
           <div class="case-body">
-            <span class="case-tag">CMC</span>
-            <div class="case-title">Aggregation & CMC Risk Mitigation</div>
-            <p class="case-desc">Stability-focused redesign to reduce aggregation and chemical liabilities without sacrificing function.</p>
+            <span class="case-tag">CAR‑T</span>
+            <div class="case-title">CAR‑T Design Programs</div>
+            <p class="case-desc">Rational CAR architecture design (binder, spacer, transmembrane, co‑stims) with safety and manufacturability in mind.</p>
             <ul class="case-bullets">
-              <li>Surface patch + chemical risk screening</li>
-              <li>FR-only mutation suggestions</li>
-              <li>Deliverable: risk summary + recommended actions</li>
+              <li>Target & binder selection strategy</li>
+              <li>Architecture screening + risk checks</li>
+              <li>Deliverable: ranked designs + build specs</li>
             </ul>
           </div>
-          <div class="case-cta">Developability module →</div>
+          <div class="case-cta">CAR‑T design →</div>
         </a>
-      </div>
-    </div>
-  </section>
-
-  <section id="structures" class="section section-alt">
-    <div class="section-wide">
-      <span class="section-label">Structure Gallery</span>
-      <h2 style="margin-bottom:6px">Selected Protein Structures</h2>
-      <p style="margin-bottom:0;color:var(--text-muted)">Click any panel to zoom. Replace placeholders by adding `images/structure-*.webp` or `.png`.</p>
-
-      <div class="gallery-grid">
-        <button class="gallery-item fade-up" type="button" data-caption="Humanization: framework & CDR integrity">
-          <div class="gallery-thumb">
-            <picture>
-              <source srcset="images/structure-1.webp" type="image/webp">
-              <source srcset="images/structure-1.png" type="image/png">
-              <img src="images/structure-1.svg" alt="Structure placeholder 1">
-            </picture>
-          </div>
-          <div class="gallery-meta">
-            <p class="gallery-title">Humanization</p>
-            <p class="gallery-sub">Framework optimization</p>
-          </div>
-        </button>
-
-        <button class="gallery-item fade-up fade-up-d1" type="button" data-caption="Developability: surface patches & interface">
-          <div class="gallery-thumb">
-            <picture>
-              <source srcset="images/structure-2.webp" type="image/webp">
-              <source srcset="images/structure-2.png" type="image/png">
-              <img src="images/structure-2.svg" alt="Structure placeholder 2">
-            </picture>
-          </div>
-          <div class="gallery-meta">
-            <p class="gallery-title">Developability</p>
-            <p class="gallery-sub">Surface risk scanning</p>
-          </div>
-        </button>
-
-        <button class="gallery-item fade-up fade-up-d2" type="button" data-caption="VH→VHH conversion: stability & solubility">
-          <div class="gallery-thumb">
-            <picture>
-              <source srcset="images/structure-3.webp" type="image/webp">
-              <source srcset="images/structure-3.png" type="image/png">
-              <img src="images/structure-3.svg" alt="Structure placeholder 3">
-            </picture>
-          </div>
-          <div class="gallery-meta">
-            <p class="gallery-title">VH → VHH</p>
-            <p class="gallery-sub">Conversion & refinement</p>
-          </div>
-        </button>
-
-        <button class="gallery-item fade-up" type="button" data-caption="Affinity maturation: complex-guided redesign">
-          <div class="gallery-thumb">
-            <picture>
-              <source srcset="images/structure-4.webp" type="image/webp">
-              <source srcset="images/structure-4.png" type="image/png">
-              <img src="images/structure-4.svg" alt="Structure placeholder 4">
-            </picture>
-          </div>
-          <div class="gallery-meta">
-            <p class="gallery-title">Affinity</p>
-            <p class="gallery-sub">Complex-guided</p>
-          </div>
-        </button>
-
-        <button class="gallery-item fade-up fade-up-d1" type="button" data-caption="Bispecific: format & linker geometry">
-          <div class="gallery-thumb">
-            <picture>
-              <source srcset="images/structure-5.webp" type="image/webp">
-              <source srcset="images/structure-5.png" type="image/png">
-              <img src="images/structure-5.svg" alt="Structure placeholder 5">
-            </picture>
-          </div>
-          <div class="gallery-meta">
-            <p class="gallery-title">Bispecific</p>
-            <p class="gallery-sub">Linker geometry</p>
-          </div>
-        </button>
-
-        <button class="gallery-item fade-up fade-up-d2" type="button" data-caption="Antibody–antigen interface: paratope/epitope">
-          <div class="gallery-thumb">
-            <picture>
-              <source srcset="images/structure-6.webp" type="image/webp">
-              <source srcset="images/structure-6.png" type="image/png">
-              <img src="images/structure-6.svg" alt="Structure placeholder 6">
-            </picture>
-          </div>
-          <div class="gallery-meta">
-            <p class="gallery-title">Interface</p>
-            <p class="gallery-sub">Paratope / epitope</p>
-          </div>
-        </button>
       </div>
     </div>
   </section>
@@ -659,25 +542,17 @@
     <p>© 2026 InSynBio · <a href="https://insynbio.com">insynbio.com</a> · <a href="mailto:contact@insynbio.com">contact@insynbio.com</a></p>
   </footer>
 
-  <div class="lightbox" id="lightbox" aria-hidden="true">
-    <div class="lightbox-backdrop" data-close></div>
-    <div class="lightbox-dialog" role="dialog" aria-modal="true" aria-label="Structure preview">
-      <img class="lightbox-img" id="lightbox-img" alt="">
-      <div class="lightbox-bar">
-        <div class="lightbox-caption" id="lightbox-caption"></div>
-        <button class="lightbox-close" type="button" aria-label="Close" data-close>Close</button>
-      </div>
-    </div>
-  </div>
-
   <script>
     document.documentElement.classList.add('js');
     function setNavActive() {
       var hash = window.location.hash || '';
       var homeLink = document.querySelector('.top-header-nav a[href="index.html"]');
-      if (homeLink) homeLink.classList.toggle('active', !hash || hash === '#');
+      if (homeLink) homeLink.classList.toggle('active', !hash || hash === '#' || hash === '#home');
       document.querySelectorAll('.top-header-nav a[href^="#"]').forEach(function(a) {
-        a.classList.toggle('active', hash && a.getAttribute('href') === hash);
+        var href = a.getAttribute('href');
+        if (href !== '#') {
+          a.classList.toggle('active', hash === href);
+        }
       });
     }
     setNavActive();
@@ -702,39 +577,6 @@
       });
     }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
     document.querySelectorAll('.fade-up').forEach(el => fadeObserver.observe(el));
-
-    const lightbox = document.getElementById('lightbox');
-    const lightboxImg = document.getElementById('lightbox-img');
-    const lightboxCaption = document.getElementById('lightbox-caption');
-    const closeLightbox = () => {
-      if (!lightbox) return;
-      lightbox.classList.remove('open');
-      lightbox.setAttribute('aria-hidden', 'true');
-      if (lightboxImg) lightboxImg.src = '';
-      if (lightboxCaption) lightboxCaption.textContent = '';
-    };
-
-    document.querySelectorAll('.gallery-item').forEach(btn => {
-      btn.addEventListener('click', () => {
-        const img = btn.querySelector('img');
-        const src = img?.currentSrc || img?.src;
-        const caption = btn.getAttribute('data-caption') || '';
-        if (!src || !lightbox || !lightboxImg) return;
-        lightboxImg.src = src;
-        lightboxImg.alt = caption || 'Structure preview';
-        if (lightboxCaption) lightboxCaption.textContent = caption;
-        lightbox.classList.add('open');
-        lightbox.setAttribute('aria-hidden', 'false');
-      });
-    });
-
-    document.querySelectorAll('[data-close]').forEach(el => {
-      el.addEventListener('click', closeLightbox);
-    });
-
-    window.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') closeLightbox();
-    });
   </script>
 </body>
 </html>
