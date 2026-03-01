@@ -33,8 +33,8 @@
   <!-- Base gradient -->
   <rect width="100%" height="100%" fill="url(#bg-grad)" />
 
-  <!-- Hex grid (subtle) -->
-  <rect width="100%" height="100%" fill="url(#hex-grid)" />
+  <!-- Hex grid (very subtle) -->
+  <rect width="100%" height="100%" fill="url(#hex-grid)" opacity="0.55" />
 
   <!-- Ambient glows -->
   <ellipse cx="300" cy="200" rx="250" ry="200" fill="url(#glow-1)" />
@@ -43,50 +43,19 @@
 
   <!-- Removed: antibody/humanization process visuals (keep background minimal) -->
 
-  <!-- Scattered connection network (center-bottom) -->
-  <g stroke="#0d9488" stroke-width="1" opacity="0.25">
-    <line x1="550" y1="350" x2="680" y2="420" />
-    <line x1="680" y1="420" x2="820" y2="380" />
-    <line x1="820" y1="380" x2="750" y2="500" />
-    <line x1="750" y1="500" x2="600" y2="480" />
-    <line x1="600" y1="480" x2="550" y2="350" />
-    <line x1="680" y1="420" x2="750" y2="500" />
-    <line x1="550" y1="350" x2="820" y2="380" />
+  <!-- Minimal corner ornaments (keep content area clean) -->
+  <g fill="#0d9488" opacity="0.20">
+    <circle cx="120" cy="110" r="2.2" />
+    <circle cx="170" cy="150" r="1.8" />
+    <circle cx="210" cy="95" r="1.4" />
+    <circle cx="1285" cy="465" r="2.2" />
+    <circle cx="1335" cy="510" r="1.7" />
+    <circle cx="1260" cy="535" r="1.3" />
   </g>
-  <g fill="#0d9488" opacity="0.3">
-    <circle cx="550" cy="350" r="4" />
-    <circle cx="680" cy="420" r="5" />
-    <circle cx="820" cy="380" r="4" />
-    <circle cx="750" cy="500" r="3.5" />
-    <circle cx="600" cy="480" r="3" />
-  </g>
-
-  <!-- Floating particles (data points) -->
-  <g fill="#0d9488">
-    <circle cx="100" cy="80" r="2" opacity="0.4" />
-    <circle cx="200" cy="520" r="2.5" opacity="0.3" />
-    <circle cx="500" cy="120" r="1.5" opacity="0.5" />
-    <circle cx="650" cy="200" r="2" opacity="0.35" />
-    <circle cx="800" cy="150" r="1.8" opacity="0.4" />
-    <circle cx="950" cy="280" r="2" opacity="0.3" />
-    <circle cx="1050" cy="450" r="2.5" opacity="0.35" />
-    <circle cx="1200" cy="350" r="1.5" opacity="0.45" />
-    <circle cx="1350" cy="180" r="2" opacity="0.3" />
-    <circle cx="1300" cy="500" r="1.8" opacity="0.4" />
-    <circle cx="450" cy="550" r="2" opacity="0.25" />
-    <circle cx="720" cy="560" r="1.5" opacity="0.3" />
-  </g>
-
-  <!-- Dashed orbit rings -->
-  <g stroke="#0d9488" fill="none" stroke-dasharray="4 8" opacity="0.18">
-    <ellipse cx="300" cy="300" rx="180" ry="200" />
-    <ellipse cx="1080" cy="100" rx="220" ry="60" />
-  </g>
-
-  <!-- Accent dots (bright, sharp) -->
-  <g fill="#0f766e" opacity="0.7">
-    <circle cx="300" cy="320" r="3" />
-    <circle cx="1080" cy="100" r="2.5" />
-    <circle cx="680" cy="420" r="2.5" />
+  <g stroke="#0d9488" stroke-width="1" opacity="0.10">
+    <line x1="120" y1="110" x2="170" y2="150" />
+    <line x1="170" y1="150" x2="210" y2="95" />
+    <line x1="1285" y1="465" x2="1335" y2="510" />
+    <line x1="1335" y1="510" x2="1260" y2="535" />
   </g>
 </svg>
