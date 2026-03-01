@@ -58,4 +58,35 @@
     <line x1="1285" y1="465" x2="1335" y2="510" />
     <line x1="1335" y1="510" x2="1260" y2="535" />
   </g>
+
+  <!-- Biopharma + AI motifs (edge-only, low contrast) -->
+  <!-- Bio: mini-helix in the upper-right corner -->
+  <g fill="none" stroke="#0d9488" stroke-width="1.4" opacity="0.10">
+    <path d="M1120 92 C1160 60 1200 60 1240 92 C1280 124 1320 124 1360 92" />
+    <path d="M1120 124 C1160 156 1200 156 1240 124 C1280 92 1320 92 1360 124" />
+    <path d="M1160 108 L1200 108" />
+    <path d="M1240 108 L1280 108" />
+    <path d="M1320 108 L1360 108" />
+  </g>
+
+  <!-- AI: subtle circuit traces in the lower-left corner -->
+  <g fill="none" stroke="#0d9488" stroke-width="1.2" opacity="0.10" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M120 470 H210 V520 H280" />
+    <path d="M150 500 H230" />
+    <path d="M230 500 V455 H310" />
+    <path d="M190 535 H255 V565" />
+  </g>
+  <g fill="#0d9488" opacity="0.16">
+    <circle cx="120" cy="470" r="2.3" />
+    <circle cx="210" cy="470" r="2.0" />
+    <circle cx="210" cy="520" r="2.0" />
+    <circle cx="280" cy="520" r="2.1" />
+    <circle cx="150" cy="500" r="1.8" />
+    <circle cx="230" cy="500" r="1.9" />
+    <circle cx="230" cy="455" r="1.8" />
+    <circle cx="310" cy="455" r="2.0" />
+    <circle cx="190" cy="535" r="1.7" />
+    <circle cx="255" cy="535" r="1.7" />
+    <circle cx="255" cy="565" r="1.7" />
+  </g>
 </svg>
