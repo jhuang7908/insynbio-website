@@ -172,6 +172,11 @@
       .main { padding: 32px 24px 64px; }
       .mission-block { padding: 24px; margin-bottom: 32px; }
     }
+
+    /* Typography: justify long paragraphs on desktop only */
+    @media (min-width: 960px) {
+      .main p, .mission-block p { text-align: justify; text-justify: inter-word; hyphens: auto; }
+    }
   </style>
 </head>
 <body data-lang="en" id="insynbio-body">
