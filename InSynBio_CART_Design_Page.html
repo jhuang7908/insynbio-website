@@ -87,6 +87,18 @@
     .form-group .hint a { color: var(--primary); font-weight: 500; }
     .btn { padding: 14px 32px; background: #0f766e; color: #fff; border: none; border-radius: 8px; font-size: 16px; font-weight: 600; cursor: pointer; transition: all 0.2s; box-shadow: 0 4px 12px rgba(15,118,110,0.30); }
     .btn:hover { background: #065f46; transform: translateY(-1px); box-shadow: 0 6px 16px rgba(15,118,110,0.40); }
+
+    /* FAQ */
+    .faq-list { margin-top: 20px; display: flex; flex-direction: column; gap: 8px; }
+    .faq-item { border: 1px solid var(--border); border-radius: 10px; overflow: hidden; background: var(--bg); }
+    .faq-item summary { list-style: none; padding: 16px 20px; font-size: 15px; font-weight: 600; color: #111827; cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+    .faq-item summary::-webkit-details-marker { display: none; }
+    .faq-item summary:hover { background: var(--bg-alt); }
+    .faq-item summary::after { content: "+"; font-size: 18px; font-weight: 400; color: var(--primary); flex-shrink: 0; transition: transform 0.2s; }
+    .faq-item[open] summary { background: rgba(13,148,136,0.04); border-bottom: 1px solid var(--border); }
+    .faq-item[open] summary::after { transform: rotate(45deg); }
+    .faq-body { padding: 14px 20px 18px; font-size: 15px; color: #4b5563; line-height: 1.7; }
+    .faq-body p { margin: 0 0 8px; }
     .check-group { display: flex; flex-wrap: wrap; gap: 16px; margin: 16px 0; }
     .check-item { display: flex; align-items: center; gap: 10px; }
     .check-item input { width: 18px; height: 18px; accent-color: var(--primary); }
@@ -278,6 +290,7 @@
         <a href="#safety" class="nav-link"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>Safety & Efficacy</a>
         <a href="#full-report" class="nav-link"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>Full Report</a>
         <a href="#submit" class="nav-link"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>Submit Inquiry</a>
+        <a href="#faq" class="nav-link"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>FAQ</a>
         <a href="#contact" class="nav-link"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>Contact</a>
       </nav>
     </aside>
@@ -772,6 +785,31 @@
         </form>
       </div>
 
+      <!-- FAQ -->
+      <h2 id="faq"><span class="h2-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></span>Frequently Asked Questions</h2>
+      <div class="faq-list">
+        <details class="faq-item">
+          <summary>Is my sequence data kept confidential?</summary>
+          <div class="faq-body"><p>All projects are covered by an NDA prior to any data exchange. Sequences and project data are transmitted via encrypted channels, never shared with third parties, and not retained after project completion. Your IP remains fully protected throughout.</p></div>
+        </details>
+        <details class="faq-item">
+          <summary>What deliverables do I receive?</summary>
+          <div class="faq-body"><p>You receive a full written report covering the CAR design rationale, predicted binding and expression scores, FASTA/IMGT sequence files, structural models where applicable, and a validated summary table. When wet-lab CRO validation is engaged, annotated assay data and result summaries are included.</p></div>
+        </details>
+        <details class="faq-item">
+          <summary>How long does a typical project take?</summary>
+          <div class="faq-body"><p>A computational design and analysis report is typically delivered within 2–3 weeks. End-to-end projects including CRO validation typically run 8–12 weeks depending on assay scope, cell availability, and target complexity.</p></div>
+        </details>
+        <details class="faq-item">
+          <summary>Can you work with non-antibody binders such as DARPins or nanobodies?</summary>
+          <div class="faq-body"><p>Yes. Our ACTES platform supports scFv, VHH (nanobody), and DARPin-based CAR designs, as well as tandem and split-CAR configurations. If you have an existing binder sequence, we can incorporate it directly into the design workflow without starting from scratch.</p></div>
+        </details>
+        <details class="faq-item">
+          <summary>Do you support solid tumor indications?</summary>
+          <div class="faq-body"><p>Yes. Our clinical dataset analysis includes solid tumor targets and disease indications. We can factor in tumor microenvironment (TME) considerations when selecting and optimizing the binder and co-stimulatory module. We are transparent about the additional complexity solid tumor CAR-T carries relative to hematologic malignancies.</p></div>
+        </details>
+      </div>
+
       <!-- Contact -->
       <h2 id="contact"><span class="h2-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></span>Contact</h2>
       <p>For inquiries, please submit the form above or email us directly:</p>
@@ -862,7 +900,7 @@
         this.classList.add('active');
       });
     });
-    const sections = ['platform','library','strategy','engineering','example','safety','full-report','submit','contact'];
+    const sections = ['platform','library','strategy','engineering','example','safety','full-report','submit','faq','contact'];
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (!entry.isIntersecting) return;

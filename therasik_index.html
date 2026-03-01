@@ -153,6 +153,26 @@
     .js .fade-up.visible { opacity: 1; transform: translateY(0); }
     .fade-up-d1 { transition-delay: 0.1s; } .fade-up-d2 { transition-delay: 0.2s; } .fade-up-d3 { transition-delay: 0.3s; }
 
+    /* FAQ Accordion */
+    .faq-list { margin-top: 32px; display: flex; flex-direction: column; gap: 10px; }
+    .faq-item { border: 1px solid var(--border); border-radius: 12px; overflow: hidden; background: #fff; }
+    .faq-item summary { list-style: none; padding: 18px 24px; font-size: 16px; font-weight: 600; color: #111827; cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 12px; transition: background 0.15s; }
+    .faq-item summary::-webkit-details-marker { display: none; }
+    .faq-item summary:hover { background: var(--bg-alt); }
+    .faq-item summary::after { content: "+"; font-size: 20px; font-weight: 400; color: var(--primary); flex-shrink: 0; transition: transform 0.2s; }
+    .faq-item[open] summary { background: rgba(13,148,136,0.04); border-bottom: 1px solid var(--border); }
+    .faq-item[open] summary::after { transform: rotate(45deg); }
+    .faq-body { padding: 16px 24px 20px; font-size: 15px; color: #4b5563; line-height: 1.7; }
+    .faq-body p { margin: 0 0 8px; }
+    .faq-body p:last-child { margin-bottom: 0; }
+    /* NDA note */
+    .nda-note { display: flex; align-items: flex-start; gap: 8px; font-size: 13px; color: #6b7280; margin-top: 16px; padding: 10px 14px; background: rgba(13,148,136,0.04); border: 1px solid rgba(13,148,136,0.12); border-radius: 8px; line-height: 1.5; }
+    .nda-note svg { flex-shrink: 0; margin-top: 1px; stroke: var(--primary); }
+    /* Deliverables checklist */
+    .deliverables { margin: 16px 0 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 8px; }
+    .deliverables li { display: flex; align-items: flex-start; gap: 10px; font-size: 14px; color: #374151; }
+    .deliverables li::before { content: ""; display: inline-block; width: 18px; height: 18px; flex-shrink: 0; background: rgba(13,148,136,0.1); border-radius: 50%; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 24 24' fill='none' stroke='%230d9488' stroke-width='3'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: center; margin-top: 1px; }
+
     /* Typography */
     @media (min-width: 960px) {
       .section-inner p, .highlight p, .case-desc { text-align: justify; text-justify: inter-word; hyphens: auto; }
@@ -187,18 +207,19 @@
 <body data-lang="zh" id="therasik-body">
   <header class="top-header">
     <div class="brand">
-      <a href="therasik_index.html" style="display: flex; align-items: center; gap: 10px; text-decoration: none; color: inherit;">
-        <svg width="28" height="28" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink:0">
+      <a href="index.html" style="display: flex; align-items: center; gap: 10px; text-decoration: none; color: inherit;">
+        <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink:0">
           <defs>
             <linearGradient id="logo_grad_zh_idx" x1="0" y1="0" x2="32" y2="32" gradientUnits="userSpaceOnUse">
               <stop stop-color="#0d9488"/><stop offset="1" stop-color="#2dd4bf"/>
             </linearGradient>
           </defs>
-          <path d="M7 6L16 18V28" stroke="url(#logo_grad_zh_idx)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-          <path d="M25 6L16 18" stroke="url(#logo_grad_zh_idx)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-          <circle cx="7" cy="6" r="2" fill="#0f766e"/>
-          <circle cx="25" cy="6" r="2" fill="#0f766e"/>
-          <circle cx="16" cy="18" r="2" fill="white" stroke="#0d9488" stroke-width="1.5"/>
+          <circle cx="16" cy="16" r="13" stroke="url(#logo_grad_zh_idx)" stroke-width="2"/>
+          <line x1="8" y1="12" x2="24" y2="12" stroke="url(#logo_grad_zh_idx)" stroke-width="2.5" stroke-linecap="round"/>
+          <line x1="16" y1="12" x2="16" y2="23" stroke="url(#logo_grad_zh_idx)" stroke-width="2.5" stroke-linecap="round"/>
+          <circle cx="8" cy="12" r="2" fill="#0f766e"/>
+          <circle cx="24" cy="12" r="2" fill="#0f766e"/>
+          <circle cx="16" cy="23" r="2.2" fill="white" stroke="#0d9488" stroke-width="1.5"/>
         </svg>
         <span style="font-family: 'Cormorant Garamond', serif; font-weight: 700; font-size: 26px; color: #1f2937; letter-spacing: -0.02em;">
           Thera<span style="color: #0d9488;">sik</span>
@@ -207,7 +228,7 @@
       <span class="slogan">生命科学 AI</span>
     </div>
     <nav class="top-header-nav">
-      <a href="therasik_index.html" class="active">首页</a>
+      <a href="index.html" class="active">首页</a>
       <a href="#about">关于我们</a>
       <div class="nav-dropdown" tabindex="0">
         <a href="#services">服务</a>
@@ -228,6 +249,7 @@
       </div>
       <a href="#case-studies">案例</a>
       <a href="#workflow">流程</a>
+      <a href="#faq">FAQ</a>
       <a href="#contact">联系我们</a>
     </nav>
   </header>
@@ -510,7 +532,63 @@
     </div>
   </section>
 
-  <section id="contact" class="section section-alt">
+  <section id="faq" class="section section-alt">
+    <div class="section-inner fade-up">
+      <span class="section-label">常见问题</span>
+      <h2 style="margin-bottom:6px">FAQ</h2>
+      <p style="margin-bottom:0;color:var(--text-muted)">合作前最常被问到的问题。</p>
+      <div class="faq-list">
+
+        <details class="faq-item">
+          <summary>序列数据和项目信息如何保密？</summary>
+          <div class="faq-body">
+            <p>所有合作项目在正式启动前签署 <strong>NDA（保密协议）</strong>。您的序列、靶点信息及项目背景均加密传输，严格保密，不与任何第三方共享。项目结束后，原始序列数据不在我方系统留存。</p>
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary>交付物包含哪些内容？</summary>
+          <div class="faq-body">
+            <p><strong>抗体评估与人源化：</strong>Kabat/IMGT 编号、种系基因归属、CDR 分析、可开发性指标、免疫原性评分、人源化设计方案（3–5 个候选变体）、结构评估报告。</p>
+            <p><strong>CAR-T 设计：</strong>靶点-结合域分析、CAR 架构设计方案（3–5 个候选）、元件选择依据、安全性评估、完整构建体序列、载体图谱、推荐验证方案。</p>
+            <p><strong>双特异性抗体：</strong>格式筛选报告、序列设计方案、结构模型、接头优化建议、可开发性检查。</p>
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary>交付周期是多长？</summary>
+          <div class="faq-body">
+            <p>计算评估与设计报告通常在 <strong>3–5 个工作日</strong>内完成。复杂项目（如多靶点或含结构建模）可能需要 7–10 个工作日，具体在初步评估后确认。</p>
+            <p>对接 CRO 实验验证的周期视合作 CRO 进度而定，我方全程协调跟进。</p>
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary>你们只提供计算服务，还是也做实验？</summary>
+          <div class="faq-body">
+            <p>Therasik 的核心能力是 <strong>AI 计算设计</strong>（干），同时与合作 CRO 建立了稳定的对接机制，可支持从序列设计到体外/体内验证的<strong>端到端全流程</strong>（湿）。客户可选择仅购买计算报告，也可选择干湿结合的完整服务包。</p>
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary>支持哪些抗体格式和物种？</summary>
+          <div class="faq-body">
+            <p>支持 <strong>VH/VL（人、小鼠、兔等来源）</strong>、<strong>VHH（纳米抗体）</strong>、<strong>IgG 全长</strong>、<strong>双特异性（tandem scFv、IgG-like、VHH-Fc 等格式）</strong>，以及 <strong>CAR-T 结合域（scFv、VHH、DARPin 等）</strong>。如有特殊格式需求，欢迎直接咨询。</p>
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary>如果对结果不满意，如何处理？</summary>
+          <div class="faq-body">
+            <p>我们采用<strong>风险共担</strong>定价模型：计算报告交付后，如实验验证结果未达预期，尾款可减免；发表论文后可享受 <strong>50% 返款</strong>。项目启动前会明确范围和预期，全程保持透明沟通。</p>
+          </div>
+        </details>
+
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="section">
     <div class="section-inner fade-up">
       <span class="section-label">联系我们</span>
       <h2 style="margin-bottom:6px">取得联系</h2>
@@ -528,6 +606,10 @@
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 11.4 19.79 19.79 0 0 1 1.61 2.84 2 2 0 0 1 3.6.66h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.27a16 16 0 0 0 6 6l.96-.96a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.73 16l.19.92z"/></svg>
             前往咨询表单
           </button>
+          <p class="nda-note">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+            所有合作项目签署 NDA，序列与项目数据加密传输，不与第三方共享，项目结束后不留存原始数据。
+          </p>
         </div>
       </div>
     </div>
@@ -580,7 +662,7 @@
     document.documentElement.classList.add('js');
     function setNavActive() {
       var hash = window.location.hash || '';
-      var homeLink = document.querySelector('.top-header-nav a[href="therasik_index.html"]');
+      var homeLink = document.querySelector('.top-header-nav a[href="index.html"]');
       if (homeLink) homeLink.classList.toggle('active', !hash || hash === '#' || hash === '#home');
       document.querySelectorAll('.top-header-nav a[href^="#"]').forEach(function(a) {
         var href = a.getAttribute('href');

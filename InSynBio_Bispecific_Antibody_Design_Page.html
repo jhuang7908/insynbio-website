@@ -87,6 +87,18 @@
     .btn { padding: 14px 32px; background: #0f766e; color: #fff; border: none; border-radius: 8px; font-size: 16px; font-weight: 600; cursor: pointer; transition: all 0.2s; box-shadow: 0 4px 12px rgba(15,118,110,0.30); }
     .btn:hover { background: #065f46; transform: translateY(-1px); box-shadow: 0 6px 16px rgba(15,118,110,0.40); }
     .check-group { display: flex; flex-wrap: wrap; gap: 16px; margin: 16px 0; }
+
+    /* FAQ */
+    .faq-list { margin-top: 20px; display: flex; flex-direction: column; gap: 8px; }
+    .faq-item { border: 1px solid var(--border); border-radius: 10px; overflow: hidden; background: var(--bg); }
+    .faq-item summary { list-style: none; padding: 16px 20px; font-size: 15px; font-weight: 600; color: #111827; cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+    .faq-item summary::-webkit-details-marker { display: none; }
+    .faq-item summary:hover { background: var(--bg-alt); }
+    .faq-item summary::after { content: "+"; font-size: 18px; font-weight: 400; color: var(--primary); flex-shrink: 0; transition: transform 0.2s; }
+    .faq-item[open] summary { background: rgba(13,148,136,0.04); border-bottom: 1px solid var(--border); }
+    .faq-item[open] summary::after { transform: rotate(45deg); }
+    .faq-body { padding: 14px 20px 18px; font-size: 15px; color: #4b5563; line-height: 1.7; }
+    .faq-body p { margin: 0 0 8px; }
     .check-item { display: flex; align-items: center; gap: 10px; }
     .check-item input { width: 18px; height: 18px; accent-color: var(--primary); }
     .check-item label { margin: 0; font-weight: 400; cursor: pointer; color: #374151; font-size: 15px; }
@@ -253,6 +265,7 @@
           <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
           Submit Inquiry
         </a>
+        <a href="#faq" class="nav-link"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>FAQ</a>
         <a href="#contact" class="nav-link">
           <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
           Contact
@@ -427,6 +440,31 @@
         </form>
       </div>
 
+      <!-- FAQ -->
+      <h2 id="faq"><span class="h2-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></span>Frequently Asked Questions</h2>
+      <div class="faq-list">
+        <details class="faq-item">
+          <summary>Is my sequence data kept confidential?</summary>
+          <div class="faq-body"><p>All projects are covered by an NDA prior to any data exchange. Sequences and project data are transmitted via encrypted channels, never shared with third parties, and not retained after project completion. Your IP remains fully protected.</p></div>
+        </details>
+        <details class="faq-item">
+          <summary>What deliverables do I receive?</summary>
+          <div class="faq-body"><p>You receive a complete design report covering the selected bispecific format rationale, arm-pairing analysis, chain-mispairing risk assessment, developability metrics for each arm and the assembled molecule, structural model if applicable, and sequence files (FASTA/IMGT). CMC-relevant observations are flagged where applicable.</p></div>
+        </details>
+        <details class="faq-item">
+          <summary>Which bispecific formats do you support?</summary>
+          <div class="faq-body"><p>We support IgG-based formats (knobs-into-holes, CrossMab, BEAT), fragment-based formats (bispecific Fab, DVD-Ig, TandAb), and small-format constructs (BiTE, DART, scFv-Fc fusions). Format selection is informed by our 125+ clinical bispecific dataset analysis.</p></div>
+        </details>
+        <details class="faq-item">
+          <summary>Can you help with CMC-relevant developability for bispecifics?</summary>
+          <div class="faq-body"><p>Yes. Bispecific molecules present unique manufacturability challenges including chain mispairing, aggregation at the heterodimer interface, and asymmetric glycosylation. Our assessment explicitly covers these parameters and provides ranking across candidate format and sequence variants.</p></div>
+        </details>
+        <details class="faq-item">
+          <summary>How long does a bispecific design project take?</summary>
+          <div class="faq-body"><p>A format selection and computational design report is typically delivered in 2–3 weeks. Full end-to-end projects including expression and binding validation run 10–14 weeks depending on the format complexity and assay requirements.</p></div>
+        </details>
+      </div>
+
       <!-- Contact -->
       <h2 id="contact"><span class="h2-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></span>Contact</h2>
       <p>For inquiries, please submit the form above or email us directly:</p>
@@ -457,7 +495,7 @@
         this.classList.add('active');
       });
     });
-    const sections = ['platform','nano-convert','smartlink','audit','virtual-cmc','full-report','submit','contact'];
+    const sections = ['platform','nano-convert','smartlink','audit','virtual-cmc','full-report','submit','faq','contact'];
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (!entry.isIntersecting) return;

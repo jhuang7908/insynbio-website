@@ -35,11 +35,11 @@
     .top-header-nav a.active { background: var(--primary); color: #fff; font-weight: 500; }
     .top-header-nav a.active:hover,
     .top-header-nav a.active:focus { background: var(--primary-dark); color: #fff; }
-    .top-header-nav a[href="therasik_index.html"] { background: transparent; color: var(--text-muted); }
-    .top-header-nav a[href="therasik_index.html"].active { background: var(--primary); color: #fff; font-weight: 500; }
-    .top-header-nav a[href="therasik_index.html"].active:hover,
-    .top-header-nav a[href="therasik_index.html"].active:focus { background: var(--primary-dark); color: #fff; }
-    .top-header-nav a[href="therasik_index.html"]:hover { color: var(--primary); background: var(--bg-alt); }
+    .top-header-nav a[href="index.html"] { background: transparent; color: var(--text-muted); }
+    .top-header-nav a[href="index.html"].active { background: var(--primary); color: #fff; font-weight: 500; }
+    .top-header-nav a[href="index.html"].active:hover,
+    .top-header-nav a[href="index.html"].active:focus { background: var(--primary-dark); color: #fff; }
+    .top-header-nav a[href="index.html"]:hover { color: var(--primary); background: var(--bg-alt); }
     .top-header .header-right { display: flex; align-items: center; gap: 16px; }
     .top-header .lang-switch { margin: 0; }
     .page-wrap { display: flex; min-height: calc(100vh - 57px); }
@@ -107,6 +107,23 @@
     .lang-switch button.active { background: var(--primary); color: #fff; border-color: var(--primary); }
     body[data-lang="zh"] .lang-en { display: none !important; }
     body[data-lang="zh"] .lang-zh { display: none !important; }
+    .nda-note { display: flex; align-items: flex-start; gap: 8px; font-size: 13px; color: #6b7280; margin-top: 16px; padding: 10px 14px; background: rgba(13,148,136,0.04); border: 1px solid rgba(13,148,136,0.12); border-radius: 8px; line-height: 1.5; }
+    .nda-note svg { flex-shrink: 0; margin-top: 1px; stroke: var(--primary); }
+    .deliverables { margin: 12px 0 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 8px; }
+    .deliverables li { display: flex; align-items: flex-start; gap: 10px; font-size: 15px; color: #374151; }
+    .deliverables li .chk { display: inline-flex; align-items: center; justify-content: center; width: 20px; height: 20px; flex-shrink: 0; background: rgba(13,148,136,0.1); border-radius: 50%; margin-top: 1px; }
+    .deliverables li .chk svg { width: 10px; height: 10px; stroke: var(--primary); stroke-width: 3; }
+    .faq-list { margin-top: 20px; display: flex; flex-direction: column; gap: 8px; }
+    .faq-item { border: 1px solid var(--border); border-radius: 10px; overflow: hidden; background: var(--bg); }
+    .faq-item summary { list-style: none; padding: 15px 20px; font-size: 15px; font-weight: 600; color: #111827; cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+    .faq-item summary::-webkit-details-marker { display: none; }
+    .faq-item summary:hover { background: var(--bg-alt); }
+    .faq-item summary::after { content: "+"; font-size: 18px; font-weight: 400; color: var(--primary); flex-shrink: 0; transition: transform 0.2s; }
+    .faq-item[open] summary { background: rgba(13,148,136,0.04); border-bottom: 1px solid var(--border); }
+    .faq-item[open] summary::after { transform: rotate(45deg); }
+    .faq-body { padding: 14px 20px 18px; font-size: 14px; color: #4b5563; line-height: 1.7; }
+    .faq-body p { margin: 0 0 8px; text-align: left !important; }
+    .faq-body p:last-child { margin-bottom: 0; }
     .site-footer { margin-top: 48px; padding-top: 24px; border-top: 1px solid var(--border); font-size: 13px; color: var(--text-muted); text-align: center; }
     .site-footer a { color: var(--primary); text-decoration: none; }
     .site-footer a:hover { text-decoration: underline; }
@@ -146,18 +163,19 @@
 <body data-lang="zh" id="therasik-body">
   <header class="top-header">
     <div class="brand">
-      <a href="therasik_index.html" style="display: flex; align-items: center; gap: 10px; text-decoration: none;">
+      <a href="index.html" style="display: flex; align-items: center; gap: 10px; text-decoration: none;">
         <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink:0">
           <defs>
             <linearGradient id="logo_grad_ab" x1="0" y1="0" x2="32" y2="32" gradientUnits="userSpaceOnUse">
               <stop stop-color="#0d9488"/><stop offset="1" stop-color="#2dd4bf"/>
             </linearGradient>
           </defs>
-          <path d="M7 6L16 18V28" stroke="url(#logo_grad_ab)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-          <path d="M25 6L16 18" stroke="url(#logo_grad_ab)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-          <circle cx="7" cy="6" r="2" fill="#0f766e"/>
-          <circle cx="25" cy="6" r="2" fill="#0f766e"/>
-          <circle cx="16" cy="18" r="2" fill="white" stroke="#0d9488" stroke-width="1.5"/>
+          <circle cx="16" cy="16" r="13" stroke="url(#logo_grad_ab)" stroke-width="2"/>
+          <line x1="8" y1="12" x2="24" y2="12" stroke="url(#logo_grad_ab)" stroke-width="2.5" stroke-linecap="round"/>
+          <line x1="16" y1="12" x2="16" y2="23" stroke="url(#logo_grad_ab)" stroke-width="2.5" stroke-linecap="round"/>
+          <circle cx="8" cy="12" r="2" fill="#0f766e"/>
+          <circle cx="24" cy="12" r="2" fill="#0f766e"/>
+          <circle cx="16" cy="23" r="2.2" fill="white" stroke="#0d9488" stroke-width="1.5"/>
         </svg>
         <span style="font-family: 'Cormorant Garamond', serif; font-weight: 700; font-size: 26px; color: #1f2937; letter-spacing: -0.02em;">
           Thera<span style="color: #0d9488;">sik</span>
@@ -166,10 +184,10 @@
       <span class="slogan">生命科学 AI</span>
     </div>
     <nav class="top-header-nav">
-      <a href="therasik_index.html">首页</a>
-      <a href="therasik_index.html#about">关于我们</a>
+      <a href="index.html">首页</a>
+      <a href="index.html#about">关于我们</a>
       <div class="nav-dropdown" tabindex="0">
-        <a href="therasik_index.html#services">服务</a>
+        <a href="index.html#services">服务</a>
         <div class="dropdown-menu">
           <a href="Therasik_Antibody_Page.html">
             <span class="menu-title">抗体</span>
@@ -209,12 +227,12 @@
     </aside>
     <main class="main">
       <div class="breadcrumb">
-        <a href="therasik_index.html">首页</a><span>/</span><a href="therasik_index.html#services">服务</a><span>/</span><span>抗体评估</span>
+        <a href="index.html">首页</a><span>/</span><a href="index.html#services">服务</a><span>/</span><span>抗体评估</span>
       </div>
       <!-- Hero / Mission -->
       <div class="mission-block">
         <p ><strong>抗体可开发性评估：</strong>专家审核的从序列到报告的 in silico 流程。我们提供编号与 CDR 注释、胚系检索、可开发性与免疫原性预测、结构建模与界面分析、结构驱动人源化及亲和力成熟。</p>
-        <p >Therasik 基于临床与科学文献数据结合机器学习，采用干湿结合的计算与实验流程，助力临床转化。所有交付物经专家审核，通常在 3–5 个工作日内完成。<a href="therasik_index.html#about">了解更多 →</a></p>
+        <p >Therasik 基于临床与科学文献数据结合机器学习，采用干湿结合的计算与实验流程，助力临床转化。所有交付物经专家审核，通常在 3–5 个工作日内完成。<a href="index.html#about">了解更多 →</a></p>
       </div>
       <h1>抗体可开发性评估</h1>
       <p class="subtitle">专家审核的计算抗体分析、评估与基因工程人源化，服务于药物发现与开发。</p>
@@ -302,6 +320,46 @@
       <p ><strong>完整评估报告</strong></p>
       <p >涵盖序列、胚系、可开发性、免疫原性、结构与界面分析的综合报告。Markdown 或 PDF 交付，可选 JSON。通常项目确认后 3–5 个工作日完成。</p>
       <p class="input-note">输入：VH/VL 序列（PDB 可选）</p>
+      <h2 id="deliverables"><span class="h2-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></span>交付内容清单</h2>
+      <p>每份报告包含以下内容，专家审核后交付：</p>
+      <ul class="deliverables">
+        <li><span class="chk"><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><div><strong>Kabat/IMGT 编号结果</strong> — 标准化编号与 CDR 区域划定</div></li>
+        <li><span class="chk"><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><div><strong>种系基因归属</strong> — IGHV/IGKV/IGLV 基因家族及同源性</div></li>
+        <li><span class="chk"><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><div><strong>可开发性指标</strong> — 聚集风险、溶解度、CMC 风险标记与建议</div></li>
+        <li><span class="chk"><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><div><strong>免疫原性评分</strong> — 基于 27 种 HLA 等位基因的风险预测</div></li>
+        <li><span class="chk"><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><div><strong>人源化设计方案（3–5 个候选变体）</strong> — FR 回突变策略、CDR 完整性验证</div></li>
+        <li><span class="chk"><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><div><strong>结构评估</strong>（如提供 PDB）— 界面接触、VH-VL 角度、关键相互作用分析</div></li>
+        <li><span class="chk"><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><div><strong>亲和力成熟建议</strong>（选项）— CDR 突变策略与优先级排序</div></li>
+      </ul>
+
+      <h2 id="faq-ab"><span class="h2-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></span>常见问题</h2>
+      <div class="faq-list">
+        <details class="faq-item">
+          <summary>序列数据如何保密？</summary>
+          <div class="faq-body">
+            <p>提交即触发 NDA 流程，您的序列与项目信息加密传输，不与第三方共享，项目结束后不在我方系统留存原始数据。</p>
+          </div>
+        </details>
+        <details class="faq-item">
+          <summary>支持哪些抗体类型？</summary>
+          <div class="faq-body">
+            <p>支持人源/鼠源/兔源 <strong>VH/VL</strong>、<strong>VHH（纳米抗体）</strong>、IgG 全长，以及来自不同物种的抗体序列。如格式特殊，请在咨询中说明。</p>
+          </div>
+        </details>
+        <details class="faq-item">
+          <summary>交付周期多长？需要提供什么材料？</summary>
+          <div class="faq-body">
+            <p>通常 <strong>3–5 个工作日</strong>。只需提供氨基酸序列（FASTA 或纯文本格式）；如有 PDB 结构文件可一并提供，用于结构层面评估。</p>
+          </div>
+        </details>
+        <details class="faq-item">
+          <summary>人源化后亲和力会下降吗，如何处理？</summary>
+          <div class="faq-body">
+            <p>人源化过程中关键 FR 残基的替换有时影响结合几何构型。我们通过<strong>精准回突变策略</strong>和 CDR 完整性验证将这一风险降至最低，并在报告中标注高风险位点和备选方案。</p>
+          </div>
+        </details>
+      </div>
+
       <h2 id="submit"><span class="h2-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg></span>提交咨询</h2>
       <p >请填写下方表单，提交序列与需求。我们将在 1–2 个工作日内审核并回复报价。</p>
       <div class="form-section">
@@ -403,6 +461,10 @@
           <div style="margin-top: 24px;">
             <button type="submit" class="btn">提交咨询</button>
           </div>
+          <p class="nda-note">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+            提交即触发 NDA 启动流程。您的序列与项目信息严格保密，不与第三方共享，项目结束后不在我方系统留存原始数据。
+          </p>
         </form>
       </div>
       <!-- Contact -->

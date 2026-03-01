@@ -88,6 +88,18 @@
     .btn { padding: 14px 32px; background: #0f766e; color: #fff; border: none; border-radius: 8px; font-size: 16px; font-weight: 600; cursor: pointer; transition: all 0.2s; box-shadow: 0 4px 12px rgba(15,118,110,0.30); }
     .btn:hover { background: #065f46; transform: translateY(-1px); box-shadow: 0 6px 16px rgba(15,118,110,0.40); }
     .check-group { display: flex; flex-wrap: wrap; gap: 16px; margin: 16px 0; }
+
+    /* FAQ */
+    .faq-list { margin-top: 20px; display: flex; flex-direction: column; gap: 8px; }
+    .faq-item { border: 1px solid var(--border); border-radius: 10px; overflow: hidden; background: var(--bg); }
+    .faq-item summary { list-style: none; padding: 16px 20px; font-size: 15px; font-weight: 600; color: #111827; cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+    .faq-item summary::-webkit-details-marker { display: none; }
+    .faq-item summary:hover { background: var(--bg-alt); }
+    .faq-item summary::after { content: "+"; font-size: 18px; font-weight: 400; color: var(--primary); flex-shrink: 0; transition: transform 0.2s; }
+    .faq-item[open] summary { background: rgba(13,148,136,0.04); border-bottom: 1px solid var(--border); }
+    .faq-item[open] summary::after { transform: rotate(45deg); }
+    .faq-body { padding: 14px 20px 18px; font-size: 15px; color: #4b5563; line-height: 1.7; }
+    .faq-body p { margin: 0 0 8px; }
     .check-item { display: flex; align-items: center; gap: 10px; }
     .check-item input { width: 18px; height: 18px; accent-color: var(--primary); }
     .check-item label { margin: 0; font-weight: 400; cursor: pointer; color: #374151; font-size: 15px; }
@@ -235,6 +247,7 @@
         <a href="#humanization" class="nav-link"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>Humanization</a>
         <a href="#full-report" class="nav-link"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>Full Report</a>
         <a href="#submit" class="nav-link"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>Submit Inquiry</a>
+        <a href="#faq" class="nav-link"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>FAQ</a>
         <a href="#contact" class="nav-link"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>Contact</a>
       </nav>
     </aside>
@@ -468,6 +481,31 @@
         </form>
       </div>
 
+      <!-- FAQ -->
+      <h2 id="faq"><span class="h2-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></span>Frequently Asked Questions</h2>
+      <div class="faq-list">
+        <details class="faq-item">
+          <summary>Is my sequence data kept confidential?</summary>
+          <div class="faq-body"><p>All projects are covered by an NDA prior to any data exchange. Sequences and project data are transmitted via encrypted channels, never shared with third parties, and not retained after project completion. Your IP remains fully protected.</p></div>
+        </details>
+        <details class="faq-item">
+          <summary>What deliverables do I receive?</summary>
+          <div class="faq-body"><p>You receive a full written report covering Kabat/IMGT numbering annotation, sequence risk flagging, developability metrics (pI, hydrophobicity, charge), immunogenicity risk assessment, structural model (if PDB is provided), and a priority recommendation table. All raw data tables are included.</p></div>
+        </details>
+        <details class="faq-item">
+          <summary>How long does an assessment take?</summary>
+          <div class="faq-body"><p>A standard antibody developability assessment is typically delivered within 1–2 weeks. If affinity maturation design or humanization optimization is included, turnaround extends to 2–3 weeks depending on the scope.</p></div>
+        </details>
+        <details class="faq-item">
+          <summary>Can you assess VHH / nanobody sequences?</summary>
+          <div class="faq-body"><p>Yes. Our platform handles VH, VL, VHH, and bispecific fragment formats. VHH assessments include framework hallmark analysis, CDR3 loop solvent exposure, and VHH-specific humanization scoring.</p></div>
+        </details>
+        <details class="faq-item">
+          <summary>Do you need a 3D structure, or is sequence enough?</summary>
+          <div class="faq-body"><p>Sequence alone is sufficient for full developability profiling. Providing a PDB structure (experimental or homology model) enables additional surface-exposure and SASA-based immunogenicity analysis, but it is optional.</p></div>
+        </details>
+      </div>
+
       <!-- Contact -->
       <h2 id="contact"><span class="h2-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></span>Contact</h2>
       <p>For inquiries, please submit the form above or email us directly:</p>
@@ -498,7 +536,7 @@
         this.classList.add('active');
       });
     });
-    const sections = ['services','platform','sequence','developability','immunogenicity','structure','affinity-maturation','humanization','full-report','submit','contact'];
+    const sections = ['services','platform','sequence','developability','immunogenicity','structure','affinity-maturation','humanization','full-report','submit','faq','contact'];
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (!entry.isIntersecting) return;
