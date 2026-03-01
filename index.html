@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>InSynBio | AI-Powered Design for Therapeutics</title>
-    <meta name="deployment-id" content="20260301-16">
+    <meta name="deployment-id" content="20260301-17">
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -29,7 +29,7 @@
   <meta property="twitter:description" content="AI-assisted drug R&D. Antibody assessment, developability, humanization, and biotherapeutic design powered by machine learning.">
   <meta property="twitter:image" content="https://www.insynbio.com/images/hero-bg.svg">
   <style>
-    :root { --primary: #0d9488; --primary-dark: #0f766e; --text: #111827; --text-muted: #4b5563; --border: #e5e7eb; --bg: #ffffff; --bg-alt: #f9fafb; }
+    :root { --primary: #0d9488; --primary-dark: #0f766e; --primary-text: #0a7a71; --text: #111827; --text-muted: #4b5563; --border: #e5e7eb; --bg: #ffffff; --bg-alt: #f9fafb; }
     * { box-sizing: border-box; }
     body { margin: 0; font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 16px; line-height: 1.6; color: var(--text); background: var(--bg); -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
     
@@ -89,14 +89,14 @@
     .section-wide { max-width: 1140px; margin: 0 auto; }
     .section-alt { background: linear-gradient(180deg, #f8fafb 0%, #f0fdfa 100%); border-top: 1px solid rgba(0,0,0,0.03); border-bottom: 1px solid rgba(0,0,0,0.03); }
     .section h2 { font-family: 'Cormorant Garamond', serif; font-size: 42px; font-weight: 600; margin: 0 0 16px; color: #111827; letter-spacing: -0.02em; line-height: 1.1; }
-    .section .section-label { font-size: 12px; font-weight: 600; color: var(--primary); text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 16px; display: block; }
+    .section .section-label { font-size: 12px; font-weight: 700; color: var(--primary-text); text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 16px; display: block; }
     .section p { margin: 0 0 24px; color: #4b5563; font-size: 18px; line-height: 1.7; font-weight: 400; }
-    .section .highlight { background: rgba(13,148,136,0.04); border-left: 3px solid var(--primary); padding: 24px 32px; border-radius: 0 12px 12px 0; margin: 32px 0; font-size: 18px; }
+    .section .highlight { background: rgba(13,148,136,0.05); border-left: 4px solid var(--primary-text); padding: 24px 32px; border-radius: 0 12px 12px 0; margin: 32px 0; font-size: 18px; }
 
     /* Stats */
     .stat-strip { display: flex; gap: 32px; flex-wrap: wrap; margin: 32px 0 8px; padding-top: 24px; border-top: 1px solid rgba(0,0,0,0.06); }
     .stat-item { display: flex; align-items: center; gap: 10px; font-size: 14px; color: #374151; font-weight: 500; }
-    .stat-item .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--primary); flex-shrink: 0; box-shadow: 0 0 0 4px rgba(13,148,136,0.1); }
+    .stat-item .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--primary-text); flex-shrink: 0; box-shadow: 0 0 0 4px rgba(10,122,113,0.12); }
 
     /* Services Cards - The "Glass" Look */
     .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 48px; }
@@ -246,13 +246,46 @@
     </div>
     <div class="hero-overlay" aria-hidden="true"></div>
 
-    <!-- Decorative motifs: above white overlay, z-index 2 -->
+    <!-- Decorative motifs: above white overlay, z-index 2, full vertical span -->
     <svg class="hero-decor" viewBox="0 0 1440 600" preserveAspectRatio="xMidYMid slice" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
 
-      <!-- DNA double-helix: spans right half, upper band -->
+      <!-- DNA double-helix: right edge, y:0→600 full vertical -->
       <g fill="none" stroke="#0d9488" stroke-width="2.0" opacity="0.42">
-        <path d="M620 48 C660 16 700 16 740 48 C780 80 820 80 860 48 C900 16 940 16 980 48 C1020 80 1060 80 1100 48 C1140 16 1180 16 1220 48 C1260 80 1300 80 1340 48 C1380 16 1420 16 1440 32"/>
-        <path d="M620 88 C660 120 700 120 740 88 C780 56 820 56 860 88 C900 120 940 120 980 88 C1020 56 1060 56 1100 88 C1140 120 1180 120 1220 88 C1260 56 1300 56 1340 88 C1380 120 1420 120 1440 104"/>
+        <!-- strand A: peaks right -->
+        <path d="M1120 0  C1160 40  1200 40  1240 0"/>
+        <path d="M1120 80 C1160 120 1200 120 1240 80 C1280 40  1320 40  1360 80 C1400 120 1440 120 1440 100"/>
+        <path d="M1120 160 C1160 200 1200 200 1240 160 C1280 120 1320 120 1360 160 C1400 200 1440 200 1440 180"/>
+        <path d="M1120 240 C1160 280 1200 280 1240 240 C1280 200 1320 200 1360 240 C1400 280 1440 280 1440 260"/>
+        <path d="M1120 320 C1160 360 1200 360 1240 320 C1280 280 1320 280 1360 320 C1400 360 1440 360 1440 340"/>
+        <path d="M1120 400 C1160 440 1200 440 1240 400 C1280 360 1320 360 1360 400 C1400 440 1440 440 1440 420"/>
+        <path d="M1120 480 C1160 520 1200 520 1240 480 C1280 440 1320 440 1360 480 C1400 520 1440 520 1440 500"/>
+        <path d="M1120 560 C1160 600 1200 600 1240 560 C1280 520 1320 520 1360 560"/>
+        <!-- strand B: peaks left -->
+        <path d="M1120 40 C1160 0   1200 0   1240 40 C1280 80  1320 80  1360 40 C1400 0   1440 0   1440 20"/>
+        <path d="M1120 120 C1160 80  1200 80  1240 120 C1280 160 1320 160 1360 120 C1400 80  1440 80  1440 100"/>
+        <path d="M1120 200 C1160 160 1200 160 1240 200 C1280 240 1320 240 1360 200 C1400 160 1440 160 1440 180"/>
+        <path d="M1120 280 C1160 240 1200 240 1240 280 C1280 320 1320 320 1360 280 C1400 240 1440 240 1440 260"/>
+        <path d="M1120 360 C1160 320 1200 320 1240 360 C1280 400 1320 400 1360 360 C1400 320 1440 320 1440 340"/>
+        <path d="M1120 440 C1160 400 1200 400 1240 440 C1280 480 1320 480 1360 440 C1400 400 1440 400 1440 420"/>
+        <path d="M1120 520 C1160 480 1200 480 1240 520 C1280 560 1320 560 1360 520 C1400 480 1440 480 1440 500"/>
+      </g>
+      <!-- rungs connecting strands -->
+      <g stroke="#0d9488" stroke-width="1.2" opacity="0.24">
+        <line x1="1160" y1="20"  x2="1160" y2="60"/> <line x1="1200" y1="60"  x2="1200" y2="20"/>
+        <line x1="1240" y1="20"  x2="1240" y2="60"/> <line x1="1280" y1="60"  x2="1280" y2="20"/>
+        <line x1="1320" y1="20"  x2="1320" y2="60"/> <line x1="1360" y1="60"  x2="1360" y2="20"/>
+        <line x1="1160" y1="100" x2="1160" y2="140"/><line x1="1200" y1="140" x2="1200" y2="100"/>
+        <line x1="1240" y1="100" x2="1240" y2="140"/><line x1="1280" y1="140" x2="1280" y2="100"/>
+        <line x1="1320" y1="100" x2="1320" y2="140"/><line x1="1360" y1="140" x2="1360" y2="100"/>
+        <line x1="1160" y1="180" x2="1160" y2="220"/><line x1="1200" y1="220" x2="1200" y2="180"/>
+        <line x1="1240" y1="180" x2="1240" y2="220"/><line x1="1280" y1="220" x2="1280" y2="180"/>
+        <line x1="1160" y1="260" x2="1160" y2="300"/><line x1="1200" y1="300" x2="1200" y2="260"/>
+        <line x1="1240" y1="260" x2="1240" y2="300"/><line x1="1280" y1="300" x2="1280" y2="260"/>
+        <line x1="1160" y1="340" x2="1160" y2="380"/><line x1="1200" y1="380" x2="1200" y2="340"/>
+        <line x1="1240" y1="340" x2="1240" y2="380"/><line x1="1280" y1="380" x2="1280" y2="340"/>
+        <line x1="1160" y1="420" x2="1160" y2="460"/><line x1="1200" y1="460" x2="1200" y2="420"/>
+        <line x1="1240" y1="420" x2="1240" y2="460"/><line x1="1280" y1="460" x2="1280" y2="420"/>
+        <line x1="1160" y1="500" x2="1160" y2="540"/><line x1="1200" y1="540" x2="1200" y2="500"/>
       </g>
       <g fill="none" stroke="#0d9488" stroke-width="1.2" opacity="0.28">
         <line x1="660" y1="32" x2="660" y2="68"/><line x1="700" y1="68" x2="700" y2="32"/>
@@ -276,25 +309,39 @@
         <circle cx="1340" cy="88" r="2.8"/>
       </g>
 
-      <!-- AI circuit traces: spans left half, lower band -->
+      <!-- AI circuit traces: left edge, y:0→600 full vertical -->
       <g fill="none" stroke="#0d9488" stroke-width="1.8" opacity="0.38" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M0 520 H80 V460 H180 V420 H300"/>
-        <path d="M80 460 H160 V510 H280 V480 H400 V440 H520"/>
-        <path d="M180 420 V370 H320 V400 H440"/>
-        <path d="M300 420 H420 V390 H540 V420 H620"/>
+        <path d="M0 60  H100 V120 H220 V80  H340"/>
+        <path d="M100 120 V180 H240 V140 H360 V200"/>
+        <path d="M0 220 H120 V160 H260"/>
+        <path d="M120 220 V280 H260 V240 H380 V300 H500"/>
+        <path d="M0 360 H140 V320 H280 V380 H400"/>
+        <path d="M140 360 V420 H300 V380"/>
+        <path d="M0 480 H160 V440 H300 V500 H420 V460 H540"/>
+        <path d="M160 480 V540 H320 V500"/>
       </g>
       <g fill="#0d9488" opacity="0.46">
-        <circle cx="0"   cy="520" r="2.8"/><circle cx="80"  cy="520" r="2.8"/>
-        <circle cx="80"  cy="460" r="3.0"/><circle cx="180" cy="460" r="3.0"/>
-        <circle cx="180" cy="420" r="3.0"/><circle cx="300" cy="420" r="3.0"/>
-        <circle cx="160" cy="460" r="2.6"/><circle cx="160" cy="510" r="2.6"/>
-        <circle cx="280" cy="510" r="2.6"/><circle cx="280" cy="480" r="2.6"/>
-        <circle cx="400" cy="480" r="2.6"/><circle cx="400" cy="440" r="2.6"/>
-        <circle cx="520" cy="440" r="2.6"/>
-        <circle cx="180" cy="370" r="2.6"/><circle cx="320" cy="370" r="2.6"/>
-        <circle cx="320" cy="400" r="2.6"/><circle cx="440" cy="400" r="2.6"/>
-        <circle cx="420" cy="390" r="2.6"/><circle cx="540" cy="390" r="2.6"/>
-        <circle cx="540" cy="420" r="2.6"/><circle cx="620" cy="420" r="2.6"/>
+        <circle cx="0"   cy="60"  r="2.8"/><circle cx="100" cy="60"  r="3.0"/>
+        <circle cx="100" cy="120" r="3.0"/><circle cx="220" cy="120" r="2.8"/>
+        <circle cx="220" cy="80"  r="2.8"/><circle cx="340" cy="80"  r="2.8"/>
+        <circle cx="100" cy="180" r="2.6"/><circle cx="240" cy="180" r="2.6"/>
+        <circle cx="240" cy="140" r="2.6"/><circle cx="360" cy="140" r="2.6"/>
+        <circle cx="360" cy="200" r="2.6"/>
+        <circle cx="0"   cy="220" r="2.8"/><circle cx="120" cy="220" r="3.0"/>
+        <circle cx="120" cy="160" r="2.8"/><circle cx="260" cy="160" r="2.8"/>
+        <circle cx="120" cy="280" r="3.0"/><circle cx="260" cy="280" r="2.8"/>
+        <circle cx="260" cy="240" r="2.6"/><circle cx="380" cy="240" r="2.6"/>
+        <circle cx="380" cy="300" r="2.6"/><circle cx="500" cy="300" r="2.6"/>
+        <circle cx="0"   cy="360" r="2.8"/><circle cx="140" cy="360" r="3.0"/>
+        <circle cx="140" cy="320" r="2.8"/><circle cx="280" cy="320" r="2.8"/>
+        <circle cx="280" cy="380" r="2.8"/><circle cx="400" cy="380" r="2.8"/>
+        <circle cx="140" cy="420" r="2.6"/><circle cx="300" cy="420" r="2.6"/>
+        <circle cx="0"   cy="480" r="2.8"/><circle cx="160" cy="480" r="3.0"/>
+        <circle cx="160" cy="440" r="2.8"/><circle cx="300" cy="440" r="2.8"/>
+        <circle cx="300" cy="500" r="2.8"/><circle cx="420" cy="500" r="2.8"/>
+        <circle cx="420" cy="460" r="2.6"/><circle cx="540" cy="460" r="2.6"/>
+        <circle cx="160" cy="540" r="2.6"/><circle cx="320" cy="540" r="2.6"/>
+        <circle cx="320" cy="500" r="2.6"/>
       </g>
     </svg>
 
