@@ -116,6 +116,37 @@
     .site-footer a { color: #6b7280; text-decoration: none; transition: color 0.2s; }
     .site-footer a:hover { color: var(--primary); }
 
+    /* Accordion for component library */
+    .accordion { border: 1px solid rgba(0,0,0,0.07); border-radius: 12px; overflow: hidden; margin: 24px 0; }
+    .accordion-item { border-bottom: 1px solid rgba(0,0,0,0.06); }
+    .accordion-item:last-child { border-bottom: none; }
+    .accordion-btn { width: 100%; text-align: left; background: #fff; border: none; padding: 16px 20px; cursor: pointer; display: flex; align-items: center; justify-content: space-between; gap: 12px; transition: background 0.15s; font-family: inherit; }
+    .accordion-btn:hover { background: #f8fafc; }
+    .accordion-btn.open { background: rgba(13,148,136,0.04); }
+    .accordion-btn .cat { font-size: 14px; font-weight: 700; color: #111827; min-width: 110px; }
+    .accordion-btn .fn { font-size: 13px; color: #6b7280; flex: 1; }
+    .accordion-btn .chevron { font-size: 11px; color: #9ca3af; transition: transform 0.2s; flex-shrink: 0; }
+    .accordion-btn.open .chevron { transform: rotate(180deg); }
+    .accordion-body { display: none; padding: 0 20px 18px; background: #fafafa; }
+    .accordion-body.open { display: block; }
+    .accordion-body .col-label { font-size: 11px; font-weight: 700; color: #9ca3af; text-transform: uppercase; letter-spacing: 0.05em; margin: 12px 0 6px; }
+    .accordion-body .col-val { font-size: 14px; color: #374151; line-height: 1.6; margin: 0 0 4px; }
+
+    /* Accordion for component library */
+    .accordion { border: 1px solid rgba(0,0,0,0.06); border-radius: 12px; overflow: hidden; margin: 32px 0; }
+    .accordion-item { border-bottom: 1px solid rgba(0,0,0,0.05); }
+    .accordion-item:last-child { border-bottom: none; }
+    .accordion-trigger { display: flex; align-items: center; justify-content: space-between; width: 100%; padding: 16px 20px; background: #fff; border: none; cursor: pointer; text-align: left; font-size: 15px; font-weight: 600; color: #111827; font-family: inherit; transition: background 0.15s; gap: 12px; }
+    .accordion-trigger:hover { background: #f8fafc; }
+    .accordion-trigger .cat-meta { font-size: 13px; font-weight: 400; color: var(--text-muted); margin-left: 8px; }
+    .accordion-trigger .chevron { flex-shrink: 0; transition: transform 0.25s; color: var(--primary); }
+    .accordion-trigger[aria-expanded="true"] .chevron { transform: rotate(180deg); }
+    .accordion-body { display: none; padding: 0 20px 20px; background: #fafafa; }
+    .accordion-body.open { display: block; }
+    .accordion-body .col-label { font-size: 11px; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.06em; margin: 14px 0 6px; }
+    .accordion-body .col-val { font-size: 14px; color: #374151; line-height: 1.6; }
+    .accordion-body .col-val strong { color: #111827; }
+
     @media (max-width: 900px) {
       .top-header { flex-wrap: wrap; padding: 12px 16px; gap: 10px; }
       .top-header .brand { flex: 1 1 auto; min-width: 0; display: flex; align-items: center; flex-wrap: wrap; gap: 8px; }
@@ -166,7 +197,7 @@
             <span class="menu-title">Antibody</span>
             <span class="menu-desc">Structure-based Development</span>
           </a>
-          <a href="#platform">
+          <a href="InSynBio_CART_Design_Page.html">
             <span class="menu-title">CAR-T</span>
             <span class="menu-desc">Smart CAR-T Design</span>
           </a>
@@ -202,7 +233,7 @@
     </aside>
     <main class="main">
       <div class="breadcrumb">
-        <a href="index.html">Home</a><span>/</span><a href="index.html#services">Services</a><span>/</span><span>Smart CAR-T</span>
+        <a href="index.html">Home</a><span>/</span><a href="index.html#services">← All Services</a><span>/</span><span>Smart CAR-T</span>
       </div>
 
       <h1>Smart CAR-T Design</h1>
@@ -229,79 +260,128 @@
       <h2 id="library"><span class="h2-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg></span>Proprietary Component Library</h2>
       <p>Our ACTES platform houses a continuously updated library of <strong>nearly 200 curated components</strong> across 10 major categories, spanning clinical standards to frontier modalities.</p>
 
-      <div class="table-wrap">
-      <table style="width:100%; border-collapse: collapse; font-size: 13px;">
-        <thead>
-          <tr>
-            <th style="width: 11%;">Category</th>
-            <th style="width: 16%;">Function</th>
-            <th style="width: 32%;">Clinical Standards (Validated)</th>
-            <th style="width: 41%; min-width: 200px;">Frontier Modalities (Emerging)</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><strong>Binders</strong></td>
-            <td>Target recognition</td>
-            <td>scFv (FMC63, Trastuzumab, 14G2a, SS1, m971, 4D5, 225), Humanized scFv, Fab Fragments</td>
-            <td>VHH/Nanobody (Solid Tumor), TCR-mimic (WT1, KRAS, NY-ESO-1, MAGE-A4), Centyrins, DARPins, Ligand-based (IL-13, APRIL), Computational Mask Design (FTO-Focused), Peptide Binders</td>
-          </tr>
-          <tr>
-            <td><strong>Hinge</strong></td>
-            <td>Epitope distance matching</td>
-            <td>CD8α Short (45aa), IgG4 Long (228aa), CD28 Medium, IgG1 Hinge</td>
-            <td>IgG4-SPLE (Fc-Null/S228P), Auto-Hinge (AI-Matched), IgD Hinge (Protease Resistant), CD8α-Long (119aa), Synthetic Flexible Linkers, Rigid EAAAK Linkers</td>
-          </tr>
-          <tr>
-            <td><strong>Transmembrane</strong></td>
-            <td>Anchoring & signaling threshold</td>
-            <td>CD8α TM (Low tonic), CD28 TM (Lipid raft), CD4 TM</td>
-            <td>NKG2D TM (NK Optimization), DAP10 TM, DAP12 TM, ICOS TM, OX40 TM, In Vivo Optimized TM (LNP-compatible)</td>
-          </tr>
-          <tr>
-            <td><strong>Co-stimulatory</strong></td>
-            <td>Metabolism & Persistence</td>
-            <td>4-1BB (Mitochondrial), CD28 (Glycolytic)</td>
-            <td>OX40 (CD134), ICOS (Th17/Th1), 2B4 (CD244), DAP10, CD27, GITR, HVEM, CD40, MyD88, TLR2, 4-1BBL (Self-Driving)</td>
-          </tr>
-          <tr>
-            <td><strong>Activation</strong></td>
-            <td>Killing signal</td>
-            <td>CD3ζ (3x ITAM)</td>
-            <td>DAP12 (CAR-NK/Macrophage), FcR-γ (Phagocytosis), CD3ε (Recruitment), ZAP70 recruitment motifs, 1XX (Calibrated ITAMs)</td>
-          </tr>
-          <tr>
-            <td><strong>Armored Payloads</strong></td>
-            <td>TME remodeling & Resistance</td>
-            <td>Secreted IL-12 (TRUCK), Constitutive IL-15</td>
-            <td>TGFB_DNR (Anti-Suppression), Membrane_IL15/IL-21, GPX4_Enhanced (Anti-Ferroptosis), IL-7/CCL19 (7x19), c-JUN, HPSE (Heparanase), scFv-PD1 blocker, BiTE secretion</td>
-          </tr>
-          <tr>
-            <td><strong>Safety Switches</strong></td>
-            <td>Controllable elimination</td>
-            <td>tEGFR (Cetuximab), CD20 Mimotope (Rituximab)</td>
-            <td>iCasp9 (Small Molecule, >95%), RQR8 (Dual Tag), Rapamycin-ON, Lenalidomide-ON, HSV-TK, TMPD-inducible</td>
-          </tr>
-          <tr>
-            <td><strong>Logic Gates</strong></td>
-            <td>Specificity control (AND/NOT)</td>
-            <td>Tandem CAR (OR Gate)</td>
-            <td>SynNotch (AND Gate), iCAR (NOT Gate/PD-1/CTLA-4), Split CAR (Dimerization), LOCKR (Protein Switch), CLIP-CAR, Universal CAR (BBIR)</td>
-          </tr>
-          <tr>
-            <td><strong>Regulatory</strong></td>
-            <td>Expression control</td>
-            <td>EF1α Promoter, PGK Promoter, WPRE</td>
-            <td>NFAT_Response (Inducible), UCOE (Anti-Silencing), Tet-On/Tet-Off, SFFV, CMV, SV40, EFS (Compact), JeT promoter</td>
-          </tr>
-          <tr>
-            <td><strong>Leaders & Linkers</strong></td>
-            <td>Secretion & Flexibility</td>
-            <td>CD8α SP, GM-CSF SP, G4S (Flexible)</td>
-            <td>IL-2 SP (Secretion), Gaussia SP, EAAAK3 (Rigid), Whitlow Linker, 218 Linker, XTEN, Furin-P2A/T2A/E2A/F2A</td>
-          </tr>
-        </tbody>
-      </table>
+      <div class="accordion" id="component-accordion">
+
+        <div class="accordion-item">
+          <button class="accordion-btn open" data-target="acc-binders">
+            <span class="cat">Binders</span><span class="fn">Target recognition</span><span class="chevron">▼</span>
+          </button>
+          <div class="accordion-body open" id="acc-binders">
+            <p class="col-label">Clinical Standards (Validated)</p>
+            <p class="col-val">scFv (FMC63, Trastuzumab, 14G2a, SS1, m971, 4D5, 225), Humanized scFv, Fab Fragments</p>
+            <p class="col-label">Frontier Modalities (Emerging)</p>
+            <p class="col-val">VHH/Nanobody (Solid Tumor), TCR-mimic (WT1, KRAS, NY-ESO-1, MAGE-A4), Centyrins, DARPins, Ligand-based (IL-13, APRIL), Computational Mask Design (FTO-Focused), Peptide Binders</p>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <button class="accordion-btn" data-target="acc-hinge">
+            <span class="cat">Hinge</span><span class="fn">Epitope distance matching</span><span class="chevron">▼</span>
+          </button>
+          <div class="accordion-body" id="acc-hinge">
+            <p class="col-label">Clinical Standards (Validated)</p>
+            <p class="col-val">CD8α Short (45aa), IgG4 Long (228aa), CD28 Medium, IgG1 Hinge</p>
+            <p class="col-label">Frontier Modalities (Emerging)</p>
+            <p class="col-val">IgG4-SPLE (Fc-Null/S228P), Auto-Hinge (AI-Matched), IgD Hinge (Protease Resistant), CD8α-Long (119aa), Synthetic Flexible Linkers, Rigid EAAAK Linkers</p>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <button class="accordion-btn" data-target="acc-tm">
+            <span class="cat">Transmembrane</span><span class="fn">Anchoring &amp; signaling threshold</span><span class="chevron">▼</span>
+          </button>
+          <div class="accordion-body" id="acc-tm">
+            <p class="col-label">Clinical Standards (Validated)</p>
+            <p class="col-val">CD8α TM (Low tonic), CD28 TM (Lipid raft), CD4 TM</p>
+            <p class="col-label">Frontier Modalities (Emerging)</p>
+            <p class="col-val">NKG2D TM (NK Optimization), DAP10 TM, DAP12 TM, ICOS TM, OX40 TM, In Vivo Optimized TM (LNP-compatible)</p>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <button class="accordion-btn" data-target="acc-costim">
+            <span class="cat">Co-stimulatory</span><span class="fn">Metabolism &amp; Persistence</span><span class="chevron">▼</span>
+          </button>
+          <div class="accordion-body" id="acc-costim">
+            <p class="col-label">Clinical Standards (Validated)</p>
+            <p class="col-val">4-1BB (Mitochondrial), CD28 (Glycolytic)</p>
+            <p class="col-label">Frontier Modalities (Emerging)</p>
+            <p class="col-val">OX40 (CD134), ICOS (Th17/Th1), 2B4 (CD244), DAP10, CD27, GITR, HVEM, CD40, MyD88, TLR2, 4-1BBL (Self-Driving)</p>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <button class="accordion-btn" data-target="acc-act">
+            <span class="cat">Activation</span><span class="fn">Killing signal</span><span class="chevron">▼</span>
+          </button>
+          <div class="accordion-body" id="acc-act">
+            <p class="col-label">Clinical Standards (Validated)</p>
+            <p class="col-val">CD3ζ (3x ITAM)</p>
+            <p class="col-label">Frontier Modalities (Emerging)</p>
+            <p class="col-val">DAP12 (CAR-NK/Macrophage), FcR-γ (Phagocytosis), CD3ε (Recruitment), ZAP70 recruitment motifs, 1XX (Calibrated ITAMs)</p>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <button class="accordion-btn" data-target="acc-armor">
+            <span class="cat">Armored Payloads</span><span class="fn">TME remodeling &amp; Resistance</span><span class="chevron">▼</span>
+          </button>
+          <div class="accordion-body" id="acc-armor">
+            <p class="col-label">Clinical Standards (Validated)</p>
+            <p class="col-val">Secreted IL-12 (TRUCK), Constitutive IL-15</p>
+            <p class="col-label">Frontier Modalities (Emerging)</p>
+            <p class="col-val">TGFB_DNR (Anti-Suppression), Membrane_IL15/IL-21, GPX4_Enhanced (Anti-Ferroptosis), IL-7/CCL19 (7x19), c-JUN, HPSE (Heparanase), scFv-PD1 blocker, BiTE secretion</p>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <button class="accordion-btn" data-target="acc-safety">
+            <span class="cat">Safety Switches</span><span class="fn">Controllable elimination</span><span class="chevron">▼</span>
+          </button>
+          <div class="accordion-body" id="acc-safety">
+            <p class="col-label">Clinical Standards (Validated)</p>
+            <p class="col-val">tEGFR (Cetuximab), CD20 Mimotope (Rituximab)</p>
+            <p class="col-label">Frontier Modalities (Emerging)</p>
+            <p class="col-val">iCasp9 (Small Molecule, &gt;95%), RQR8 (Dual Tag), Rapamycin-ON, Lenalidomide-ON, HSV-TK, TMPD-inducible</p>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <button class="accordion-btn" data-target="acc-logic">
+            <span class="cat">Logic Gates</span><span class="fn">Specificity control (AND/NOT)</span><span class="chevron">▼</span>
+          </button>
+          <div class="accordion-body" id="acc-logic">
+            <p class="col-label">Clinical Standards (Validated)</p>
+            <p class="col-val">Tandem CAR (OR Gate)</p>
+            <p class="col-label">Frontier Modalities (Emerging)</p>
+            <p class="col-val">SynNotch (AND Gate), iCAR (NOT Gate/PD-1/CTLA-4), Split CAR (Dimerization), LOCKR (Protein Switch), CLIP-CAR, Universal CAR (BBIR)</p>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <button class="accordion-btn" data-target="acc-reg">
+            <span class="cat">Regulatory</span><span class="fn">Expression control</span><span class="chevron">▼</span>
+          </button>
+          <div class="accordion-body" id="acc-reg">
+            <p class="col-label">Clinical Standards (Validated)</p>
+            <p class="col-val">EF1α Promoter, PGK Promoter, WPRE</p>
+            <p class="col-label">Frontier Modalities (Emerging)</p>
+            <p class="col-val">NFAT_Response (Inducible), UCOE (Anti-Silencing), Tet-On/Tet-Off, SFFV, CMV, SV40, EFS (Compact), JeT promoter</p>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <button class="accordion-btn" data-target="acc-linkers">
+            <span class="cat">Leaders &amp; Linkers</span><span class="fn">Secretion &amp; Flexibility</span><span class="chevron">▼</span>
+          </button>
+          <div class="accordion-body" id="acc-linkers">
+            <p class="col-label">Clinical Standards (Validated)</p>
+            <p class="col-val">CD8α SP, GM-CSF SP, G4S (Flexible)</p>
+            <p class="col-label">Frontier Modalities (Emerging)</p>
+            <p class="col-val">IL-2 SP (Secretion), Gaussia SP, EAAAK3 (Rigid), Whitlow Linker, 218 Linker, XTEN, Furin-P2A/T2A/E2A/F2A</p>
+          </div>
+        </div>
+
       </div>
 
       <h2 id="strategy"><span class="h2-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></span>Therapeutic Architecture Matrix</h2>
@@ -533,6 +613,17 @@
     <p style="margin:0;">© 2026 InSynBio · <a href="https://insynbio.com" style="color: #6b7280; text-decoration: none;">insynbio.com</a> · <a href="mailto:contact@insynbio.com" style="color: #6b7280; text-decoration: none;">contact@insynbio.com</a></p>
   </footer>
   <script>
+    // Accordion component library
+    document.querySelectorAll('.accordion-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const id = btn.dataset.target;
+        const body = document.getElementById(id);
+        const isOpen = btn.classList.contains('open');
+        btn.classList.toggle('open', !isOpen);
+        body.classList.toggle('open', !isOpen);
+      });
+    });
+
     function setTopNavActive() {
       var hash = window.location.hash || '';
       document.querySelectorAll('.top-header-nav a[href^="#"]').forEach(function(a) {
