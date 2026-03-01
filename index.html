@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>InSynBio | AI-Powered Design for Therapeutics</title>
-    <meta name="deployment-id" content="20260301-17">
+    <meta name="deployment-id" content="20260301-18">
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -246,102 +246,75 @@
     </div>
     <div class="hero-overlay" aria-hidden="true"></div>
 
-    <!-- Decorative motifs: above white overlay, z-index 2, full vertical span -->
+    <!-- Decorative motifs: above white overlay, z-index 2 -->
+    <!-- DNA helix: upper-right, y:20→300 (~47%); Circuit: lower-left, y:310→570 (~43%) -->
     <svg class="hero-decor" viewBox="0 0 1440 600" preserveAspectRatio="xMidYMid slice" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
 
-      <!-- DNA double-helix: right edge, y:0→600 full vertical -->
-      <g fill="none" stroke="#0d9488" stroke-width="2.0" opacity="0.42">
-        <!-- strand A: peaks right -->
-        <path d="M1120 0  C1160 40  1200 40  1240 0"/>
-        <path d="M1120 80 C1160 120 1200 120 1240 80 C1280 40  1320 40  1360 80 C1400 120 1440 120 1440 100"/>
-        <path d="M1120 160 C1160 200 1200 200 1240 160 C1280 120 1320 120 1360 160 C1400 200 1440 200 1440 180"/>
-        <path d="M1120 240 C1160 280 1200 280 1240 240 C1280 200 1320 200 1360 240 C1400 280 1440 280 1440 260"/>
-        <path d="M1120 320 C1160 360 1200 360 1240 320 C1280 280 1320 280 1360 320 C1400 360 1440 360 1440 340"/>
-        <path d="M1120 400 C1160 440 1200 440 1240 400 C1280 360 1320 360 1360 400 C1400 440 1440 440 1440 420"/>
-        <path d="M1120 480 C1160 520 1200 520 1240 480 C1280 440 1320 440 1360 480 C1400 520 1440 520 1440 500"/>
-        <path d="M1120 560 C1160 600 1200 600 1240 560 C1280 520 1320 520 1360 560"/>
-        <!-- strand B: peaks left -->
-        <path d="M1120 40 C1160 0   1200 0   1240 40 C1280 80  1320 80  1360 40 C1400 0   1440 0   1440 20"/>
-        <path d="M1120 120 C1160 80  1200 80  1240 120 C1280 160 1320 160 1360 120 C1400 80  1440 80  1440 100"/>
-        <path d="M1120 200 C1160 160 1200 160 1240 200 C1280 240 1320 240 1360 200 C1400 160 1440 160 1440 180"/>
-        <path d="M1120 280 C1160 240 1200 240 1240 280 C1280 320 1320 320 1360 280 C1400 240 1440 240 1440 260"/>
-        <path d="M1120 360 C1160 320 1200 320 1240 360 C1280 400 1320 400 1360 360 C1400 320 1440 320 1440 340"/>
-        <path d="M1120 440 C1160 400 1200 400 1240 440 C1280 480 1320 480 1360 440 C1400 400 1440 400 1440 420"/>
-        <path d="M1120 520 C1160 480 1200 480 1240 520 C1280 560 1320 560 1360 520 C1400 480 1440 480 1440 500"/>
+      <!-- VERTICAL DNA double-helix: right side x:1300-1440, y:20-300 -->
+      <!-- Strand A: oscillates left-right as y increases, period=80px -->
+      <g fill="none" stroke="#0d9488" stroke-width="2.2" opacity="0.44">
+        <path d="M1300 20  C1300 42 1440 38 1440 60
+                          C1440 82 1300 78 1300 100
+                          C1300 122 1440 118 1440 140
+                          C1440 162 1300 158 1300 180
+                          C1300 202 1440 198 1440 220
+                          C1440 242 1300 238 1300 260
+                          C1300 282 1440 278 1440 300"/>
+        <!-- Strand B: phase-shifted by 40px -->
+        <path d="M1440 20  C1440 42 1300 38 1300 60
+                          C1300 82 1440 78 1440 100
+                          C1440 122 1300 118 1300 140
+                          C1300 162 1440 158 1440 180
+                          C1440 202 1300 198 1300 220
+                          C1300 242 1440 238 1440 260
+                          C1440 282 1300 278 1300 300"/>
       </g>
-      <!-- rungs connecting strands -->
-      <g stroke="#0d9488" stroke-width="1.2" opacity="0.24">
-        <line x1="1160" y1="20"  x2="1160" y2="60"/> <line x1="1200" y1="60"  x2="1200" y2="20"/>
-        <line x1="1240" y1="20"  x2="1240" y2="60"/> <line x1="1280" y1="60"  x2="1280" y2="20"/>
-        <line x1="1320" y1="20"  x2="1320" y2="60"/> <line x1="1360" y1="60"  x2="1360" y2="20"/>
-        <line x1="1160" y1="100" x2="1160" y2="140"/><line x1="1200" y1="140" x2="1200" y2="100"/>
-        <line x1="1240" y1="100" x2="1240" y2="140"/><line x1="1280" y1="140" x2="1280" y2="100"/>
-        <line x1="1320" y1="100" x2="1320" y2="140"/><line x1="1360" y1="140" x2="1360" y2="100"/>
-        <line x1="1160" y1="180" x2="1160" y2="220"/><line x1="1200" y1="220" x2="1200" y2="180"/>
-        <line x1="1240" y1="180" x2="1240" y2="220"/><line x1="1280" y1="220" x2="1280" y2="180"/>
-        <line x1="1160" y1="260" x2="1160" y2="300"/><line x1="1200" y1="300" x2="1200" y2="260"/>
-        <line x1="1240" y1="260" x2="1240" y2="300"/><line x1="1280" y1="300" x2="1280" y2="260"/>
-        <line x1="1160" y1="340" x2="1160" y2="380"/><line x1="1200" y1="380" x2="1200" y2="340"/>
-        <line x1="1240" y1="340" x2="1240" y2="380"/><line x1="1280" y1="380" x2="1280" y2="340"/>
-        <line x1="1160" y1="420" x2="1160" y2="460"/><line x1="1200" y1="460" x2="1200" y2="420"/>
-        <line x1="1240" y1="420" x2="1240" y2="460"/><line x1="1280" y1="460" x2="1280" y2="420"/>
-        <line x1="1160" y1="500" x2="1160" y2="540"/><line x1="1200" y1="540" x2="1200" y2="500"/>
-      </g>
-      <g fill="none" stroke="#0d9488" stroke-width="1.2" opacity="0.28">
-        <line x1="660" y1="32" x2="660" y2="68"/><line x1="700" y1="68" x2="700" y2="32"/>
-        <line x1="740" y1="68" x2="740" y2="32"/><line x1="780" y1="32" x2="780" y2="68"/>
-        <line x1="820" y1="68" x2="820" y2="32"/><line x1="860" y1="32" x2="860" y2="68"/>
-        <line x1="900" y1="68" x2="900" y2="32"/><line x1="940" y1="32" x2="940" y2="68"/>
-        <line x1="980" y1="68" x2="980" y2="32"/><line x1="1020" y1="32" x2="1020" y2="68"/>
-        <line x1="1060" y1="68" x2="1060" y2="32"/><line x1="1100" y1="32" x2="1100" y2="68"/>
-        <line x1="1140" y1="68" x2="1140" y2="32"/><line x1="1180" y1="32" x2="1180" y2="68"/>
-        <line x1="1220" y1="68" x2="1220" y2="32"/><line x1="1260" y1="32" x2="1260" y2="68"/>
-        <line x1="1300" y1="68" x2="1300" y2="32"/><line x1="1340" y1="32" x2="1340" y2="68"/>
-      </g>
-      <g fill="#0d9488" opacity="0.44">
-        <circle cx="620" cy="48" r="2.8"/><circle cx="740" cy="48" r="2.8"/>
-        <circle cx="860" cy="48" r="2.8"/><circle cx="980" cy="48" r="2.8"/>
-        <circle cx="1100" cy="48" r="2.8"/><circle cx="1220" cy="48" r="2.8"/>
-        <circle cx="1340" cy="48" r="2.8"/>
-        <circle cx="620" cy="88" r="2.8"/><circle cx="740" cy="88" r="2.8"/>
-        <circle cx="860" cy="88" r="2.8"/><circle cx="980" cy="88" r="2.8"/>
-        <circle cx="1100" cy="88" r="2.8"/><circle cx="1220" cy="88" r="2.8"/>
-        <circle cx="1340" cy="88" r="2.8"/>
-      </g>
-
-      <!-- AI circuit traces: left edge, y:0→600 full vertical -->
-      <g fill="none" stroke="#0d9488" stroke-width="1.8" opacity="0.38" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M0 60  H100 V120 H220 V80  H340"/>
-        <path d="M100 120 V180 H240 V140 H360 V200"/>
-        <path d="M0 220 H120 V160 H260"/>
-        <path d="M120 220 V280 H260 V240 H380 V300 H500"/>
-        <path d="M0 360 H140 V320 H280 V380 H400"/>
-        <path d="M140 360 V420 H300 V380"/>
-        <path d="M0 480 H160 V440 H300 V500 H420 V460 H540"/>
-        <path d="M160 480 V540 H320 V500"/>
+      <!-- Rungs at every half-period (y: 20,60,100,...,300) -->
+      <g stroke="#0d9488" stroke-width="1.4" opacity="0.30">
+        <line x1="1300" y1="20"  x2="1440" y2="20"/>
+        <line x1="1300" y1="60"  x2="1440" y2="60"/>
+        <line x1="1300" y1="100" x2="1440" y2="100"/>
+        <line x1="1300" y1="140" x2="1440" y2="140"/>
+        <line x1="1300" y1="180" x2="1440" y2="180"/>
+        <line x1="1300" y1="220" x2="1440" y2="220"/>
+        <line x1="1300" y1="260" x2="1440" y2="260"/>
+        <line x1="1300" y1="300" x2="1440" y2="300"/>
       </g>
       <g fill="#0d9488" opacity="0.46">
-        <circle cx="0"   cy="60"  r="2.8"/><circle cx="100" cy="60"  r="3.0"/>
-        <circle cx="100" cy="120" r="3.0"/><circle cx="220" cy="120" r="2.8"/>
-        <circle cx="220" cy="80"  r="2.8"/><circle cx="340" cy="80"  r="2.8"/>
-        <circle cx="100" cy="180" r="2.6"/><circle cx="240" cy="180" r="2.6"/>
-        <circle cx="240" cy="140" r="2.6"/><circle cx="360" cy="140" r="2.6"/>
-        <circle cx="360" cy="200" r="2.6"/>
-        <circle cx="0"   cy="220" r="2.8"/><circle cx="120" cy="220" r="3.0"/>
-        <circle cx="120" cy="160" r="2.8"/><circle cx="260" cy="160" r="2.8"/>
-        <circle cx="120" cy="280" r="3.0"/><circle cx="260" cy="280" r="2.8"/>
-        <circle cx="260" cy="240" r="2.6"/><circle cx="380" cy="240" r="2.6"/>
-        <circle cx="380" cy="300" r="2.6"/><circle cx="500" cy="300" r="2.6"/>
-        <circle cx="0"   cy="360" r="2.8"/><circle cx="140" cy="360" r="3.0"/>
-        <circle cx="140" cy="320" r="2.8"/><circle cx="280" cy="320" r="2.8"/>
-        <circle cx="280" cy="380" r="2.8"/><circle cx="400" cy="380" r="2.8"/>
-        <circle cx="140" cy="420" r="2.6"/><circle cx="300" cy="420" r="2.6"/>
-        <circle cx="0"   cy="480" r="2.8"/><circle cx="160" cy="480" r="3.0"/>
-        <circle cx="160" cy="440" r="2.8"/><circle cx="300" cy="440" r="2.8"/>
-        <circle cx="300" cy="500" r="2.8"/><circle cx="420" cy="500" r="2.8"/>
-        <circle cx="420" cy="460" r="2.6"/><circle cx="540" cy="460" r="2.6"/>
-        <circle cx="160" cy="540" r="2.6"/><circle cx="320" cy="540" r="2.6"/>
-        <circle cx="320" cy="500" r="2.6"/>
+        <circle cx="1300" cy="20"  r="3.0"/><circle cx="1440" cy="20"  r="3.0"/>
+        <circle cx="1300" cy="60"  r="3.0"/><circle cx="1440" cy="60"  r="3.0"/>
+        <circle cx="1300" cy="100" r="3.0"/><circle cx="1440" cy="100" r="3.0"/>
+        <circle cx="1300" cy="140" r="3.0"/><circle cx="1440" cy="140" r="3.0"/>
+        <circle cx="1300" cy="180" r="3.0"/><circle cx="1440" cy="180" r="3.0"/>
+        <circle cx="1300" cy="220" r="3.0"/><circle cx="1440" cy="220" r="3.0"/>
+        <circle cx="1300" cy="260" r="3.0"/><circle cx="1440" cy="260" r="3.0"/>
+        <circle cx="1300" cy="300" r="3.0"/><circle cx="1440" cy="300" r="3.0"/>
+      </g>
+
+      <!-- AI circuit traces: lower-left, x:0-520, y:320-570 -->
+      <g fill="none" stroke="#0d9488" stroke-width="1.8" opacity="0.40" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M0 340  H120 V380 H260 V340 H400"/>
+        <path d="M120 380 V430 H280 V390 H440 V440"/>
+        <path d="M0 460  H140 V420 H300 V470 H460 V430 H520"/>
+        <path d="M140 460 V510 H300 V480"/>
+        <path d="M0 540  H160 V500 H320 V550 H460"/>
+      </g>
+      <g fill="#0d9488" opacity="0.48">
+        <circle cx="0"   cy="340" r="2.8"/><circle cx="120" cy="340" r="3.2"/>
+        <circle cx="120" cy="380" r="3.2"/><circle cx="260" cy="380" r="2.8"/>
+        <circle cx="260" cy="340" r="2.8"/><circle cx="400" cy="340" r="2.8"/>
+        <circle cx="120" cy="430" r="2.8"/><circle cx="280" cy="430" r="2.8"/>
+        <circle cx="280" cy="390" r="2.6"/><circle cx="440" cy="390" r="2.6"/>
+        <circle cx="440" cy="440" r="2.6"/>
+        <circle cx="0"   cy="460" r="2.8"/><circle cx="140" cy="460" r="3.2"/>
+        <circle cx="140" cy="420" r="2.8"/><circle cx="300" cy="420" r="2.8"/>
+        <circle cx="300" cy="470" r="2.8"/><circle cx="460" cy="470" r="2.8"/>
+        <circle cx="460" cy="430" r="2.6"/><circle cx="520" cy="430" r="2.6"/>
+        <circle cx="140" cy="510" r="2.6"/><circle cx="300" cy="510" r="2.6"/>
+        <circle cx="300" cy="480" r="2.6"/>
+        <circle cx="0"   cy="540" r="2.8"/><circle cx="160" cy="540" r="2.8"/>
+        <circle cx="160" cy="500" r="2.8"/><circle cx="320" cy="500" r="2.8"/>
+        <circle cx="320" cy="550" r="2.8"/><circle cx="460" cy="550" r="2.8"/>
       </g>
     </svg>
 
