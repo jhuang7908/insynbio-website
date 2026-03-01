@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>InSynBio | AI-Powered Design for Therapeutics</title>
-    <meta name="deployment-id" content="20260301-15">
+    <meta name="deployment-id" content="20260301-16">
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -29,7 +29,7 @@
   <meta property="twitter:description" content="AI-assisted drug R&D. Antibody assessment, developability, humanization, and biotherapeutic design powered by machine learning.">
   <meta property="twitter:image" content="https://www.insynbio.com/images/hero-bg.svg">
   <style>
-    :root { --primary: #0a6b62; --primary-dark: #065450; --text: #111827; --text-muted: #4b5563; --border: #e5e7eb; --bg: #ffffff; --bg-alt: #f9fafb; }
+    :root { --primary: #0d9488; --primary-dark: #0f766e; --text: #111827; --text-muted: #4b5563; --border: #e5e7eb; --bg: #ffffff; --bg-alt: #f9fafb; }
     * { box-sizing: border-box; }
     body { margin: 0; font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 16px; line-height: 1.6; color: var(--text); background: var(--bg); -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
     
@@ -246,50 +246,55 @@
     </div>
     <div class="hero-overlay" aria-hidden="true"></div>
 
-    <!-- Decorative motifs: above white overlay, z-index 2, well inside safe area -->
+    <!-- Decorative motifs: above white overlay, z-index 2 -->
     <svg class="hero-decor" viewBox="0 0 1440 600" preserveAspectRatio="xMidYMid slice" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
-      <!-- DNA double-helix — upper-right quadrant, well clear of extreme edge -->
-      <g fill="none" stroke="#0a6b62" stroke-width="2.2" opacity="0.45">
-        <path d="M780 55 C820 22 860 22 900 55 C940 88 980 88 1020 55 C1060 22 1100 22 1140 55 C1180 88 1220 88 1260 55"/>
-        <path d="M780 95 C820 128 860 128 900 95 C940 62 980 62 1020 95 C1060 128 1100 128 1140 95 C1180 62 1220 62 1260 95"/>
+
+      <!-- DNA double-helix: spans right half, upper band -->
+      <g fill="none" stroke="#0d9488" stroke-width="2.0" opacity="0.42">
+        <path d="M620 48 C660 16 700 16 740 48 C780 80 820 80 860 48 C900 16 940 16 980 48 C1020 80 1060 80 1100 48 C1140 16 1180 16 1220 48 C1260 80 1300 80 1340 48 C1380 16 1420 16 1440 32"/>
+        <path d="M620 88 C660 120 700 120 740 88 C780 56 820 56 860 88 C900 120 940 120 980 88 C1020 56 1060 56 1100 88 C1140 120 1180 120 1220 88 C1260 56 1300 56 1340 88 C1380 120 1420 120 1440 104"/>
       </g>
-      <g fill="none" stroke="#0a6b62" stroke-width="1.4" opacity="0.32">
-        <line x1="820" y1="75" x2="820" y2="37"/>
-        <line x1="860" y1="37" x2="860" y2="75"/>
-        <line x1="900" y1="75" x2="900" y2="37"/>
-        <line x1="940" y1="37" x2="940" y2="75"/>
-        <line x1="980" y1="75" x2="980" y2="37"/>
-        <line x1="1020" y1="37" x2="1020" y2="75"/>
-        <line x1="1060" y1="75" x2="1060" y2="37"/>
-        <line x1="1100" y1="37" x2="1100" y2="75"/>
-        <line x1="1140" y1="75" x2="1140" y2="37"/>
-        <line x1="1180" y1="37" x2="1180" y2="75"/>
-        <line x1="1220" y1="75" x2="1220" y2="37"/>
+      <g fill="none" stroke="#0d9488" stroke-width="1.2" opacity="0.28">
+        <line x1="660" y1="32" x2="660" y2="68"/><line x1="700" y1="68" x2="700" y2="32"/>
+        <line x1="740" y1="68" x2="740" y2="32"/><line x1="780" y1="32" x2="780" y2="68"/>
+        <line x1="820" y1="68" x2="820" y2="32"/><line x1="860" y1="32" x2="860" y2="68"/>
+        <line x1="900" y1="68" x2="900" y2="32"/><line x1="940" y1="32" x2="940" y2="68"/>
+        <line x1="980" y1="68" x2="980" y2="32"/><line x1="1020" y1="32" x2="1020" y2="68"/>
+        <line x1="1060" y1="68" x2="1060" y2="32"/><line x1="1100" y1="32" x2="1100" y2="68"/>
+        <line x1="1140" y1="68" x2="1140" y2="32"/><line x1="1180" y1="32" x2="1180" y2="68"/>
+        <line x1="1220" y1="68" x2="1220" y2="32"/><line x1="1260" y1="32" x2="1260" y2="68"/>
+        <line x1="1300" y1="68" x2="1300" y2="32"/><line x1="1340" y1="32" x2="1340" y2="68"/>
       </g>
-      <g fill="#0a6b62" opacity="0.48">
-        <circle cx="780" cy="55" r="3.0"/><circle cx="900" cy="55" r="3.0"/>
-        <circle cx="1020" cy="55" r="3.0"/><circle cx="1140" cy="55" r="3.0"/>
-        <circle cx="1260" cy="55" r="3.0"/>
-        <circle cx="780" cy="95" r="3.0"/><circle cx="900" cy="95" r="3.0"/>
-        <circle cx="1020" cy="95" r="3.0"/><circle cx="1140" cy="95" r="3.0"/>
-        <circle cx="1260" cy="95" r="3.0"/>
+      <g fill="#0d9488" opacity="0.44">
+        <circle cx="620" cy="48" r="2.8"/><circle cx="740" cy="48" r="2.8"/>
+        <circle cx="860" cy="48" r="2.8"/><circle cx="980" cy="48" r="2.8"/>
+        <circle cx="1100" cy="48" r="2.8"/><circle cx="1220" cy="48" r="2.8"/>
+        <circle cx="1340" cy="48" r="2.8"/>
+        <circle cx="620" cy="88" r="2.8"/><circle cx="740" cy="88" r="2.8"/>
+        <circle cx="860" cy="88" r="2.8"/><circle cx="980" cy="88" r="2.8"/>
+        <circle cx="1100" cy="88" r="2.8"/><circle cx="1220" cy="88" r="2.8"/>
+        <circle cx="1340" cy="88" r="2.8"/>
       </g>
 
-      <!-- AI circuit traces — lower-left quadrant, pulled in from extreme edge -->
-      <g fill="none" stroke="#0a6b62" stroke-width="2.0" opacity="0.40" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M200 480 H310 V420 H420"/>
-        <path d="M240 480 V540 H360 V510"/>
-        <path d="M360 510 H450 V465 H510"/>
-        <path d="M310 420 V380 H410"/>
+      <!-- AI circuit traces: spans left half, lower band -->
+      <g fill="none" stroke="#0d9488" stroke-width="1.8" opacity="0.38" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M0 520 H80 V460 H180 V420 H300"/>
+        <path d="M80 460 H160 V510 H280 V480 H400 V440 H520"/>
+        <path d="M180 420 V370 H320 V400 H440"/>
+        <path d="M300 420 H420 V390 H540 V420 H620"/>
       </g>
-      <g fill="#0a6b62" opacity="0.50">
-        <circle cx="200" cy="480" r="3.2"/><circle cx="310" cy="480" r="3.2"/>
-        <circle cx="310" cy="420" r="3.2"/><circle cx="420" cy="420" r="3.2"/>
-        <circle cx="240" cy="480" r="2.8"/><circle cx="240" cy="540" r="2.8"/>
-        <circle cx="360" cy="540" r="2.8"/><circle cx="360" cy="510" r="2.8"/>
-        <circle cx="450" cy="510" r="2.8"/><circle cx="450" cy="465" r="2.8"/>
-        <circle cx="510" cy="465" r="2.8"/>
-        <circle cx="310" cy="380" r="2.8"/><circle cx="410" cy="380" r="2.8"/>
+      <g fill="#0d9488" opacity="0.46">
+        <circle cx="0"   cy="520" r="2.8"/><circle cx="80"  cy="520" r="2.8"/>
+        <circle cx="80"  cy="460" r="3.0"/><circle cx="180" cy="460" r="3.0"/>
+        <circle cx="180" cy="420" r="3.0"/><circle cx="300" cy="420" r="3.0"/>
+        <circle cx="160" cy="460" r="2.6"/><circle cx="160" cy="510" r="2.6"/>
+        <circle cx="280" cy="510" r="2.6"/><circle cx="280" cy="480" r="2.6"/>
+        <circle cx="400" cy="480" r="2.6"/><circle cx="400" cy="440" r="2.6"/>
+        <circle cx="520" cy="440" r="2.6"/>
+        <circle cx="180" cy="370" r="2.6"/><circle cx="320" cy="370" r="2.6"/>
+        <circle cx="320" cy="400" r="2.6"/><circle cx="440" cy="400" r="2.6"/>
+        <circle cx="420" cy="390" r="2.6"/><circle cx="540" cy="390" r="2.6"/>
+        <circle cx="540" cy="420" r="2.6"/><circle cx="620" cy="420" r="2.6"/>
       </g>
     </svg>
 
