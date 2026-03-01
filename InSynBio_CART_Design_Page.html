@@ -134,6 +134,9 @@
     .accordion-body .col-label { font-size: 11px; font-weight: 700; color: var(--primary); text-transform: uppercase; letter-spacing: 0.08em; margin: 10px 0 5px; }
     .accordion-body .col-label:first-child { margin-top: 0; }
     .accordion-body .col-val { font-size: 15px; color: #374151; line-height: 1.65; margin: 0 0 2px; }
+    /* Component tooltips */
+    .tt { border-bottom: 1px dotted #0d9488; cursor: help; }
+    #tt-box { position: fixed; z-index: 9500; background: #1a2535; color: #dde4ef; font-size: 12.5px; line-height: 1.58; padding: 10px 14px; border-radius: 9px; max-width: 290px; pointer-events: none; opacity: 0; transition: opacity 0.15s ease; box-shadow: 0 6px 20px rgba(0,0,0,0.30); border-left: 3px solid #0d9488; }
 
     /* Accordion for component library */
     .accordion { border: 1px solid rgba(0,0,0,0.06); border-radius: 12px; overflow: hidden; margin: 32px 0; }
@@ -272,9 +275,21 @@
           </button>
           <div class="accordion-body open" id="acc-binders">
             <p class="col-label">Clinical Standards (Validated)</p>
-            <p class="col-val">scFv (FMC63, Trastuzumab, 14G2a, SS1, m971, 4D5, 225), Humanized scFv, Fab Fragments</p>
+            <p class="col-val">
+              scFv (<span class="tt" data-tip="Anti-CD19 scFv; backbone of tisagenlecleucel and axicabtagene ciloleucel. Targets CD19 domain A; Kd ~1 nM. Reference clone for B-ALL and DLBCL.">FMC63</span>, <span class="tt" data-tip="Anti-HER2 scFv derived from Herceptin. Targets ErbB2 extracellular domain IV; enables HER2+ breast and gastric CAR-T programs.">Trastuzumab</span>, <span class="tt" data-tip="Anti-GD2 murine scFv. GD2 is uniformly expressed on neuroblastoma and melanoma; pioneer binder for pediatric solid tumor CAR-T.">14G2a</span>, <span class="tt" data-tip="Anti-mesothelin scFv. Targets MSLN overexpressed in mesothelioma, pancreatic, and ovarian cancers; first-in-class solid tumor binder.">SS1</span>, <span class="tt" data-tip="Anti-CD22 scFv targeting the membrane-proximal epitope. Epitope proximity to the cell surface is critical for optimal CAR signaling potency in B-ALL.">m971</span>, <span class="tt" data-tip="Humanized anti-HER2 scFv; higher affinity variant with distinct domain III/IV epitope specificity compared with trastuzumab-derived clones.">4D5</span>, <span class="tt" data-tip="Anti-EGFR scFv derived from cetuximab (C225). Targets EGFR domain III; applied in colorectal and HNSCC CAR-T programs.">225</span>),
+              <span class="tt" data-tip="Murine CDRs grafted onto human framework regions to minimize immunogenicity while fully preserving antigen-binding affinity and specificity.">Humanized scFv</span>,
+              <span class="tt" data-tip="Bivalent antigen-binding fragment; larger than scFv; reduces tonic (antigen-independent) signaling and cytokine release syndrome risk.">Fab Fragments</span>
+            </p>
             <p class="col-label">Frontier Modalities (Emerging)</p>
-            <p class="col-val">VHH/Nanobody (Solid Tumor), TCR-mimic (WT1, KRAS, NY-ESO-1, MAGE-A4), Centyrins, DARPins, Ligand-based (IL-13, APRIL), Computational Mask Design (FTO-Focused), Peptide Binders</p>
+            <p class="col-val">
+              <span class="tt" data-tip="15 kDa single-domain antibody from camelids. Accesses cryptic epitopes inaccessible to conventional scFv; superior penetration in dense solid tumor stroma.">VHH/Nanobody (Solid Tumor)</span>,
+              <span class="tt" data-tip="Antibody-like binder recognizing intracellular tumor neoantigens (WT1, KRAS G12V, NY-ESO-1, MAGE-A4) presented on HLA-A*02:01. Expands targetable antigen space to the entire proteome.">TCR-mimic (WT1, KRAS, NY-ESO-1, MAGE-A4)</span>,
+              <span class="tt" data-tip="Engineered fibronectin type III domains; no disulfide bonds; stable under reducing intracellular conditions; picomolar affinity achievable with low immunogenic footprint.">Centyrins</span>,
+              <span class="tt" data-tip="Designed ankyrin repeat proteins; 14–18 kDa; no cysteines required; highly thermostable; picomolar affinity with minimal immunogenicity.">DARPins</span>,
+              <span class="tt" data-tip="Natural receptor ligands as binding domains. IL-13 targets IL13Rα2 overexpressed on glioblastoma; APRIL targets BCMA and TACI in multiple myeloma.">Ligand-based (IL-13, APRIL)</span>,
+              <span class="tt" data-tip="AI-designed masking peptide blocks antigen binding in healthy tissue. Tumor-specific protease cleaves the mask at the lesion site, selectively activating CAR in the TME.">Computational Mask Design (FTO-Focused)</span>,
+              <span class="tt" data-tip="Short synthetic peptides targeting specific surface antigens; minimal immunogenic footprint; engineered for intratumoral selectivity where conventional scFv lacks binding access.">Peptide Binders</span>
+            </p>
           </div>
         </div>
 
@@ -284,9 +299,21 @@
           </button>
           <div class="accordion-body" id="acc-hinge">
             <p class="col-label">Clinical Standards (Validated)</p>
-            <p class="col-val">CD8α Short (45aa), IgG4 Long (228aa), CD28 Medium, IgG1 Hinge</p>
+            <p class="col-val">
+              <span class="tt" data-tip="Minimal 45aa hinge; suppresses tonic (antigen-independent) signaling; preferred with 4-1BB co-stimulation for durable memory T-cell differentiation.">CD8α Short (45aa)</span>,
+              <span class="tt" data-tip="Extended 228aa hinge enables CAR to reach membrane-distal epitopes. Carries homodimerization risk; carefully selected for targets with spatially distant binding domains.">IgG4 Long (228aa)</span>,
+              <span class="tt" data-tip="Semi-rigid hinge that localizes the CAR to lipid rafts at the immunological synapse; pairs naturally with CD28 transmembrane and co-stimulatory domains.">CD28 Medium</span>,
+              <span class="tt" data-tip="IgG1 hinge retains Fc receptor binding; can activate innate immune cells via ADCC. Selected when complementary innate cytotoxicity is therapeutically beneficial.">IgG1 Hinge</span>
+            </p>
             <p class="col-label">Frontier Modalities (Emerging)</p>
-            <p class="col-val">IgG4-SPLE (Fc-Null/S228P), Auto-Hinge (AI-Matched), IgD Hinge (Protease Resistant), CD8α-Long (119aa), Synthetic Flexible Linkers, Rigid EAAAK Linkers</p>
+            <p class="col-val">
+              <span class="tt" data-tip="S228P mutation abolishes Fab-arm exchange with endogenous IgG4. Eliminates off-target Fc receptor engagement while preserving hinge rigidity; preferred for clinical programs.">IgG4-SPLE (Fc-Null/S228P)</span>,
+              <span class="tt" data-tip="Computationally optimized hinge length matched to the height of the target epitope above the membrane; maximizes immunological synapse geometry for each specific antigen.">Auto-Hinge (AI-Matched)</span>,
+              <span class="tt" data-tip="Resistant to matrix metalloprotease cleavage in the solid tumor microenvironment; maintains CAR structural integrity under hostile TME conditions.">IgD Hinge (Protease Resistant)</span>,
+              <span class="tt" data-tip="Extended 119aa CD8α variant; bridges membrane-proximal targets without engaging IgG4 Fc receptors; intermediate flexibility between the 45aa and IgG4 options.">CD8α-Long (119aa)</span>,
+              <span class="tt" data-tip="Custom (Gly-Ser)n-based segments with tunable length and flexibility; used to optimize interdomain geometry in tandem and bispecific constructs.">Synthetic Flexible Linkers</span>,
+              <span class="tt" data-tip="(EAAAK)n α-helical repeats maintain fixed domain separation and orientation; reduce antigen-bridging risk in tandem CAR constructs.">Rigid EAAAK Linkers</span>
+            </p>
           </div>
         </div>
 
@@ -296,9 +323,20 @@
           </button>
           <div class="accordion-body" id="acc-tm">
             <p class="col-label">Clinical Standards (Validated)</p>
-            <p class="col-val">CD8α TM (Low tonic), CD28 TM (Lipid raft), CD4 TM</p>
+            <p class="col-val">
+              <span class="tt" data-tip="Minimal baseline signaling in the absence of antigen; reduces CAR exhaustion from tonic stimulation; preferred in 4-1BB constructs for long-term persistence.">CD8α TM (Low tonic)</span>,
+              <span class="tt" data-tip="Palmitoylation localizes the CAR to immunological synapse lipid rafts; accelerates initial T-cell activation kinetics; pairs naturally with CD28 co-stimulation.">CD28 TM (Lipid raft)</span>,
+              <span class="tt" data-tip="Associated with MHC-II; used in Treg CAR constructs and select regulatory T-cell engineering designs requiring MHC-II-proximal signaling.">CD4 TM</span>
+            </p>
             <p class="col-label">Frontier Modalities (Emerging)</p>
-            <p class="col-val">NKG2D TM (NK Optimization), DAP10 TM, DAP12 TM, ICOS TM, OX40 TM, In Vivo Optimized TM (LNP-compatible)</p>
+            <p class="col-val">
+              <span class="tt" data-tip="Natural killer cell activating receptor TM; couples to DAP10/DAP12 adaptors and activates PI3K/Vav1 pathway; enables CAR-NK cell design.">NKG2D TM (NK Optimization)</span>,
+              <span class="tt" data-tip="NK-cell activating adaptor; pairs with NKG2D to recruit Grb2 and PI3K; used in CAR-NK architectures requiring YINM-motif signaling.">DAP10 TM</span>,
+              <span class="tt" data-tip="Carries its own ITAM; dual function as transmembrane anchor and activation signal via Syk kinase; enables CAR-NK and CAR-macrophage (CAR-M) designs.">DAP12 TM</span>,
+              <span class="tt" data-tip="Pairs naturally with ICOS co-stimulatory domain; activates PI3K-δ pathway; biases CAR-T toward Th17/Th1 memory phenotype for solid tumor trafficking.">ICOS TM</span>,
+              <span class="tt" data-tip="Pairs with OX40 co-stimulation; engages TRAF2/5 signaling; promotes Bcl-xL anti-apoptotic survival and long-term T-cell persistence.">OX40 TM</span>,
+              <span class="tt" data-tip="Engineered for efficient surface display after lipid nanoparticle mRNA delivery; enables non-viral in vivo CAR-T generation without a retroviral vector.">In Vivo Optimized TM (LNP-compatible)</span>
+            </p>
           </div>
         </div>
 
@@ -308,9 +346,24 @@
           </button>
           <div class="accordion-body" id="acc-costim">
             <p class="col-label">Clinical Standards (Validated)</p>
-            <p class="col-val">4-1BB (Mitochondrial), CD28 (Glycolytic)</p>
+            <p class="col-val">
+              <span class="tt" data-tip="Activates TRAF1/2 → NF-κB and mitochondrial oxidative phosphorylation; drives memory T-cell differentiation and long-term persistence. Defining domain of tisagenlecleucel (Kymriah).">4-1BB (Mitochondrial)</span>,
+              <span class="tt" data-tip="Activates PI3K/Akt/mTOR → aerobic glycolysis; drives rapid effector killing and early cytokine release. Defining domain of axicabtagene ciloleucel (Yescarta).">CD28 (Glycolytic)</span>
+            </p>
             <p class="col-label">Frontier Modalities (Emerging)</p>
-            <p class="col-val">OX40 (CD134), ICOS (Th17/Th1), 2B4 (CD244), DAP10, CD27, GITR, HVEM, CD40, MyD88, TLR2, 4-1BBL (Self-Driving)</p>
+            <p class="col-val">
+              <span class="tt" data-tip="TRAF2/5 → NF-κB signaling; upregulates Bcl-xL anti-apoptotic program; synergizes with 4-1BB in tandem constructs for dual persistence and effector benefit.">OX40 (CD134)</span>,
+              <span class="tt" data-tip="PI3K-δ activation biases CAR-T toward a Th17/Th1 hybrid phenotype; enhances solid tumor trafficking via IL-17 and IFN-γ co-secretion.">ICOS (Th17/Th1)</span>,
+              <span class="tt" data-tip="NK-cell co-stimulatory receptor; SAP adaptor-mediated signaling enhances cytotoxicity and cytokine production; used in CAR-NK cell engineering.">2B4 (CD244)</span>,
+              <span class="tt" data-tip="Pairs with NKG2D transmembrane domain; recruits Grb2 and PI3K via YINM motif; activates NK-cell-like cytotoxicity without ITAM phosphorylation.">DAP10</span>,
+              <span class="tt" data-tip="TNF receptor family member; NF-κB-mediated survival signaling; promotes effector memory differentiation and resistance to activation-induced cell death.">CD27</span>,
+              <span class="tt" data-tip="Glucocorticoid-induced TNFR; counteracts Treg-mediated immunosuppression; enhances CAR-T effector function in TGF-β and IL-10-rich tumor microenvironments.">GITR</span>,
+              <span class="tt" data-tip="Herpesvirus entry mediator; LIGHT-HVEM axis activates NF-κB; confers resistance to T-cell exhaustion via reversal of the BTLA inhibitory checkpoint.">HVEM</span>,
+              <span class="tt" data-tip="TRAF6-mediated NF-κB and PI3K activation; bridges innate and adaptive signaling; used in CAR-macrophage designs to boost phagocytic and pro-inflammatory activity.">CD40</span>,
+              <span class="tt" data-tip="Innate immune signaling adaptor; activates NF-κB via TLR/IL-1R pathway; combined with CD3ζ in MyD88/CD40 co-stimulatory fusion constructs for robust effector function.">MyD88</span>,
+              <span class="tt" data-tip="Innate pattern-recognition receptor co-stimulation; activates NF-κB and MAPK; bridges innate-adaptive immunity for CAR-T in infectious disease and solid tumor contexts.">TLR2</span>,
+              <span class="tt" data-tip="Surface-expressed 4-1BB ligand creates an autocrine co-stimulatory loop; provides autonomous persistence without exogenous IL-2 or feeder cell support.">4-1BBL (Self-Driving)</span>
+            </p>
           </div>
         </div>
 
@@ -320,9 +373,17 @@
           </button>
           <div class="accordion-body" id="acc-act">
             <p class="col-label">Clinical Standards (Validated)</p>
-            <p class="col-val">CD3ζ (3x ITAM)</p>
+            <p class="col-val">
+              <span class="tt" data-tip="Canonical CAR activation domain with 6 tyrosines in 3 ITAMs; recruits ZAP70 and Lck upon phosphorylation; drives full TCR-like signal transduction. Present in every FDA-approved CAR-T product.">CD3ζ (3x ITAM)</span>
+            </p>
             <p class="col-label">Frontier Modalities (Emerging)</p>
-            <p class="col-val">DAP12 (CAR-NK/Macrophage), FcR-γ (Phagocytosis), CD3ε (Recruitment), ZAP70 recruitment motifs, 1XX (Calibrated ITAMs)</p>
+            <p class="col-val">
+              <span class="tt" data-tip="ITAM-bearing adaptor protein; preferred activation domain for CAR-NK and CAR-macrophage (CAR-M) constructs; signals via Syk kinase rather than ZAP70.">DAP12 (CAR-NK/Macrophage)</span>,
+              <span class="tt" data-tip="Fc receptor γ-chain; triggers phagocytic cup formation in macrophage CARs (CAR-M); enables antibody-dependent cellular phagocytosis against solid tumor targets.">FcR-γ (Phagocytosis)</span>,
+              <span class="tt" data-tip="Recruits endogenous CD3 complex components to the CAR; reduces required CAR expression level; alternative TCR-proximal signaling strategy for lower-density antigen targets.">CD3ε (Recruitment)</span>,
+              <span class="tt" data-tip="Minimal ZAP70-docking sequences bypass ITAM phosphorylation; potentially faster activation kinetics; studied for ultra-low-threshold antigen detection.">ZAP70 recruitment motifs</span>,
+              <span class="tt" data-tip="Point-mutated CD3ζ with only 1 functional ITAM; deliberately calibrated signal strength reduces chronic stimulation and T-cell exhaustion under persistent antigen exposure in solid tumors.">1XX (Calibrated ITAMs)</span>
+            </p>
           </div>
         </div>
 
@@ -332,9 +393,21 @@
           </button>
           <div class="accordion-body" id="acc-armor">
             <p class="col-label">Clinical Standards (Validated)</p>
-            <p class="col-val">Secreted IL-12 (TRUCK), Constitutive IL-15</p>
+            <p class="col-val">
+              <span class="tt" data-tip="4th-generation armored TRUCK CAR; IL-12 secretion upon antigen encounter remodels immunosuppressive TME by activating innate immune cells and reversing M2 macrophage polarization.">Secreted IL-12 (TRUCK)</span>,
+              <span class="tt" data-tip="Autocrine IL-15 provides tonic cytokine support; reduces dependence on exogenous IL-2; extends T-cell persistence and prevents activation-induced cell death in lymphodepleted hosts.">Constitutive IL-15</span>
+            </p>
             <p class="col-label">Frontier Modalities (Emerging)</p>
-            <p class="col-val">TGFB_DNR (Anti-Suppression), Membrane_IL15/IL-21, GPX4_Enhanced (Anti-Ferroptosis), IL-7/CCL19 (7x19), c-JUN, HPSE (Heparanase), scFv-PD1 blocker, BiTE secretion</p>
+            <p class="col-val">
+              <span class="tt" data-tip="Dominant-negative TGF-β receptor II; binds TGF-β ligand but cannot transduce the suppressive signal; fully restores CAR-T effector function in TGF-β-rich solid tumor microenvironments.">TGFB_DNR (Anti-Suppression)</span>,
+              <span class="tt" data-tip="Surface-anchored cytokines provide localized paracrine co-stimulation; avoids systemic cytokine toxicity while maintaining T-cell survival and NK-cell activation signals.">Membrane_IL15/IL-21</span>,
+              <span class="tt" data-tip="GPX4 overexpression neutralizes lipid hydroperoxides; protects CAR-T from ferroptotic cell death induced by oxidative stress in the polyunsaturated fatty acid-rich tumor microenvironment.">GPX4_Enhanced (Anti-Ferroptosis)</span>,
+              <span class="tt" data-tip="Dual cytokine/chemokine payload; IL-7 maintains T-cell viability and promotes memory; CCL19 recruits endogenous T cells and dendritic cells, converting cold tumors to hot immunogenic lesions.">IL-7/CCL19 (7x19)</span>,
+              <span class="tt" data-tip="AP-1 transcription factor overexpression directly counteracts the exhaustion gene regulatory network; extends functional lifespan of CAR-T under chronic antigen stimulation in solid tumors.">c-JUN</span>,
+              <span class="tt" data-tip="Heparanase enzymatically degrades heparan sulfate in the extracellular matrix; enables CAR-T penetration through dense tumor stroma; critical bottleneck for solid tumor infiltration.">HPSE (Heparanase)</span>,
+              <span class="tt" data-tip="Secreted anti-PD-1 scFv creates localized checkpoint blockade in situ; prevents PD-1/PD-L1-mediated exhaustion without the systemic immune-related adverse events of systemic checkpoint inhibitors.">scFv-PD1 blocker</span>,
+              <span class="tt" data-tip="CAR-T secretes a bispecific T-cell engager that redirects endogenous bystander T cells to tumor; amplifies cytotoxic radius beyond cells in direct CAR contact.">BiTE secretion</span>
+            </p>
           </div>
         </div>
 
@@ -344,9 +417,19 @@
           </button>
           <div class="accordion-body" id="acc-safety">
             <p class="col-label">Clinical Standards (Validated)</p>
-            <p class="col-val">tEGFR (Cetuximab), CD20 Mimotope (Rituximab)</p>
+            <p class="col-val">
+              <span class="tt" data-tip="Truncated non-signaling EGFR expressed on CAR-T surface; depleted by clinical cetuximab infusion with dose-titrable kinetics; validated in multiple clinical trials.">tEGFR (Cetuximab)</span>,
+              <span class="tt" data-tip="Minimal CD20 epitope peptide inserted into CAR construct; enables rituximab-mediated ADCC and CDC depletion of adoptively transferred cells without disrupting CAR function.">CD20 Mimotope (Rituximab)</span>
+            </p>
             <p class="col-label">Frontier Modalities (Emerging)</p>
-            <p class="col-val">iCasp9 (Small Molecule, &gt;95%), RQR8 (Dual Tag), Rapamycin-ON, Lenalidomide-ON, HSV-TK, TMPD-inducible</p>
+            <p class="col-val">
+              <span class="tt" data-tip="Chemically induced dimerization (CID) of caspase-9 triggers rapid apoptosis; eliminates >95% of CAR-T cells within 30 minutes of AP1903 (rimiducid) administration. Gold-standard clinical safety switch.">iCasp9 (Small Molecule, &gt;95%)</span>,
+              <span class="tt" data-tip="Compact 136aa tag combining CD34 and CD20 epitopes; trackable by anti-CD34 flow cytometry and eliminable by rituximab ADCC/CDC; dual purpose in one minimal sequence.">RQR8 (Dual Tag)</span>,
+              <span class="tt" data-tip="Rapamycin-induced heterodimerization reconstitutes a split CAR; provides pharmacological ON/OFF control of antigen recognition with a clinically approved small molecule.">Rapamycin-ON</span>,
+              <span class="tt" data-tip="Cereblon-dependent degron fused to CAR; lenalidomide addition triggers targeted proteasomal degradation of the CAR protein; uses an FDA-approved oral drug for precise dose-dependent control.">Lenalidomide-ON</span>,
+              <span class="tt" data-tip="Herpes simplex virus thymidine kinase; ganciclovir prodrug selectively kills dividing transduced T cells; established clinical track record in allogeneic T-cell safety programs.">HSV-TK</span>,
+              <span class="tt" data-tip="Trimethoprim-inducible destabilizing domain; titratable CAR depletion using an FDA-approved antibiotic; avoids immune responses against viral antigens present in HSV-TK.">TMPD-inducible</span>
+            </p>
           </div>
         </div>
 
@@ -356,9 +439,18 @@
           </button>
           <div class="accordion-body" id="acc-logic">
             <p class="col-label">Clinical Standards (Validated)</p>
-            <p class="col-val">Tandem CAR (OR Gate)</p>
+            <p class="col-val">
+              <span class="tt" data-tip="Dual scFv in a single construct; activates upon binding antigen A or antigen B; addresses antigen heterogeneity and single-antigen escape variants in B-cell malignancies.">Tandem CAR (OR Gate)</span>
+            </p>
             <p class="col-label">Frontier Modalities (Emerging)</p>
-            <p class="col-val">SynNotch (AND Gate), iCAR (NOT Gate/PD-1/CTLA-4), Split CAR (Dimerization), LOCKR (Protein Switch), CLIP-CAR, Universal CAR (BBIR)</p>
+            <p class="col-val">
+              <span class="tt" data-tip="Synthetic Notch receptor recognizes tumor antigen 1 and transcriptionally induces the CAR targeting antigen 2; requires simultaneous dual-positive antigen expression for killing — strict tumor gating.">SynNotch (AND Gate)</span>,
+              <span class="tt" data-tip="Inhibitory CAR; engagement with a normal-tissue antigen (via PD-1 or CTLA-4 intracellular domain) triggers a dominant inhibitory brake, protecting healthy cells from off-tumor killing.">iCAR (NOT Gate/PD-1/CTLA-4)</span>,
+              <span class="tt" data-tip="Activation and co-stimulatory domains are expressed on separate chains; CID-inducible heterodimerization reconstitutes full signaling; zero CAR activity without the small molecule dimerizer.">Split CAR (Dimerization)</span>,
+              <span class="tt" data-tip="Computationally designed protein lock masks the CAR antigen-binding domain; tumor-specific protease cleaves a latch peptide and unmasks the CDRs, activating CAR exclusively at the tumor site.">LOCKR (Protein Switch)</span>,
+              <span class="tt" data-tip="Convertible ligand-independent CAR platform; adaptable antigen targeting by exchanging the adapter molecule without re-engineering the base CAR vector.">CLIP-CAR</span>,
+              <span class="tt" data-tip="Biotin-binding immune receptor; binds biotinylated antibody adapters; enables modular, plug-and-play retargeting to any biotinylatable antigen without manufacturing a new CAR vector.">Universal CAR (BBIR)</span>
+            </p>
           </div>
         </div>
 
@@ -368,9 +460,21 @@
           </button>
           <div class="accordion-body" id="acc-reg">
             <p class="col-label">Clinical Standards (Validated)</p>
-            <p class="col-val">EF1α Promoter, PGK Promoter, WPRE</p>
+            <p class="col-val">
+              <span class="tt" data-tip="Strong, constitutive human elongation factor 1α promoter; high and sustained transgene expression; resistant to epigenetic silencing in primary T cells; preferred for the primary CAR transgene.">EF1α Promoter</span>,
+              <span class="tt" data-tip="Moderate-strength constitutive phosphoglycerate kinase promoter; lower immunogenic profile than CMV; used for co-expression of safety switches or selection markers.">PGK Promoter</span>,
+              <span class="tt" data-tip="Woodchuck hepatitis post-transcriptional regulatory element; 3′ UTR element stabilizes mRNA and enhances nuclear export; increases transgene protein output 2–5× without altering the promoter.">WPRE</span>
+            </p>
             <p class="col-label">Frontier Modalities (Emerging)</p>
-            <p class="col-val">NFAT_Response (Inducible), UCOE (Anti-Silencing), Tet-On/Tet-Off, SFFV, CMV, SV40, EFS (Compact), JeT promoter</p>
+            <p class="col-val">
+              <span class="tt" data-tip="NFAT-driven promoter couples armored payload expression directly to CAR activation events; transgene is expressed only during antigen engagement, reducing basal toxicity.">NFAT_Response (Inducible)</span>,
+              <span class="tt" data-tip="Ubiquitous chromatin-opening element prevents epigenetic silencing during prolonged ex vivo expansion; maintains stable, high transgene expression over many cell doublings.">UCOE (Anti-Silencing)</span>,
+              <span class="tt" data-tip="Doxycycline-inducible (Tet-On) or doxycycline-repressible (Tet-Off) bipartite system; dose-adjustable CAR expression for pharmacological controllability and clinical safety management.">Tet-On/Tet-Off</span>,
+              <span class="tt" data-tip="Spleen focus-forming virus promoter; strong expression in hematopoietic cells; used in CAR-NK and hematopoietic stem cell CAR applications.">SFFV</span>,
+              <span class="tt" data-tip="Cytomegalovirus immediate-early promoter; very high activity; used in research constructs; not preferred clinically due to potential silencing and immune recognition.">CMV</span>,
+              <span class="tt" data-tip="Compact EF1α short promoter; retains high activity in a smaller footprint; preferred for multi-transgene polycistronic constructs where lentiviral vector payload is limiting.">EFS (Compact)</span>,
+              <span class="tt" data-tip="Optimized hybrid promoter combining high activity with minimal size; ideal for lipid nanoparticle-based delivery and CRISPR knock-in CAR approaches where vector capacity is critical.">JeT promoter</span>
+            </p>
           </div>
         </div>
 
@@ -380,9 +484,21 @@
           </button>
           <div class="accordion-body" id="acc-linkers">
             <p class="col-label">Clinical Standards (Validated)</p>
-            <p class="col-val">CD8α SP, GM-CSF SP, G4S (Flexible)</p>
+            <p class="col-val">
+              <span class="tt" data-tip="Most widely used signal peptide for CAR surface display; efficient ER targeting and translocation; low immunogenicity; present in the majority of clinical CAR-T constructs.">CD8α SP</span>,
+              <span class="tt" data-tip="High-efficiency signal peptide derived from GM-CSF receptor; selected when CD8α SP yields suboptimal surface expression in certain vector/cell combinations.">GM-CSF SP</span>,
+              <span class="tt" data-tip="(Gly₄Ser)ₙ repeat linker; canonical scFv VH–VL connector with no secondary structure; length tunable by repeat number; minimal immunogenicity; used in the majority of clinical scFv binders.">G4S (Flexible)</span>
+            </p>
             <p class="col-label">Frontier Modalities (Emerging)</p>
-            <p class="col-val">IL-2 SP (Secretion), Gaussia SP, EAAAK3 (Rigid), Whitlow Linker, 218 Linker, XTEN, Furin-P2A/T2A/E2A/F2A</p>
+            <p class="col-val">
+              <span class="tt" data-tip="Optimized signal peptide for secreted armored payloads; drives efficient translocation of cytokines and antibody fragments through the ER secretory pathway.">IL-2 SP (Secretion)</span>,
+              <span class="tt" data-tip="Derived from Gaussia luciferase; highly efficient for secreted proteins; preferred signal peptide for BiTE and co-stimulatory cytokine payload delivery.">Gaussia SP</span>,
+              <span class="tt" data-tip="Three (EAAAK) α-helical repeats maintain fixed interdomain distance and orientation; reduces antigen bridging in tandem scFv and bispecific CAR constructs.">EAAAK3 (Rigid)</span>,
+              <span class="tt" data-tip="14aa Ser-rich linker; shorter than G4S; used where minimal VH–VL separation is needed to prevent interdomain mispairing in compact single-chain constructs.">Whitlow Linker</span>,
+              <span class="tt" data-tip="18aa intermediate-length linker; balances flexibility and separation; standard choice for VHH-Fc fusions and bispecific antibody assembly.">218 Linker</span>,
+              <span class="tt" data-tip="Unstructured hydrophilic polypeptide; substantially extends circulating half-life of fused secreted proteins; particularly useful in BiTE and cytokine payload constructs.">XTEN</span>,
+              <span class="tt" data-tip="Self-cleaving 2A peptides (Furin-P2A, T2A, E2A, F2A) enable near-equimolar polycistronic expression of multiple proteins from a single ORF without an IRES; essential for CAR plus safety switch co-expression.">Furin-P2A/T2A/E2A/F2A</span>
+            </p>
           </div>
         </div>
 
@@ -617,6 +733,34 @@
     <p style="margin:0;">© 2026 InSynBio · <a href="https://insynbio.com" style="color: #6b7280; text-decoration: none;">insynbio.com</a> · <a href="mailto:contact@insynbio.com" style="color: #6b7280; text-decoration: none;">contact@insynbio.com</a></p>
   </footer>
   <script>
+    // Component tooltip
+    (function() {
+      const box = document.createElement('div');
+      box.id = 'tt-box';
+      document.body.appendChild(box);
+      function pos(e) {
+        const gap = 16, w = 300, h = box.offsetHeight || 90;
+        let x = e.clientX + gap, y = e.clientY + gap;
+        if (x + w > window.innerWidth)  x = e.clientX - w - gap;
+        if (y + h > window.innerHeight) y = e.clientY - h - gap;
+        box.style.left = x + 'px';
+        box.style.top  = y + 'px';
+      }
+      document.addEventListener('mouseover', function(e) {
+        const t = e.target.closest('.tt');
+        if (!t) return;
+        box.textContent = t.dataset.tip;
+        box.style.opacity = '1';
+        pos(e);
+      });
+      document.addEventListener('mousemove', function(e) {
+        if (box.style.opacity === '1') pos(e);
+      });
+      document.addEventListener('mouseout', function(e) {
+        if (e.target.closest('.tt')) box.style.opacity = '0';
+      });
+    })();
+
     // Accordion component library
     document.querySelectorAll('.accordion-btn').forEach(btn => {
       btn.addEventListener('click', () => {
