@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="robots" content="noai, noimageai">
+  <meta name="AI-Training" content="opt-out">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="canonical" href="https://www.insynbio.com/ada_database.html">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://www.insynbio.com/ada_database.html">
+  <meta property="og:title" content="Clinical ADA Database | InSynBio">
+  <meta property="og:description" content="InSynBio's clinical ADA (anti-drug antibody) database: 120+ immunogenicity records from approved and clinical-stage therapeutic antibodies, with incidence rates and risk stratification.">
+  <meta property="og:image" content="https://www.insynbio.com/images/hero-bg.svg">
+  <title>ADA Clinical Reference Database | InSynBio</title>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #0d9488; --primary-dark: #0f766e; --primary-light: #ccfbf1;
+      --text: #111827; --text-muted: #6b7280; --border: #e5e7eb;
+      --bg: #ffffff; --bg-alt: #f9fafb; --bg-alt2: #f0faf8;
+      --card-border: rgba(13,148,136,0.18); --card-shadow: 0 2px 10px rgba(13,148,136,0.08);
+      --tier-a: #065f46; --tier-a-bg: #d1fae5;
+      --tier-b: #1e40af; --tier-b-bg: #dbeafe;
+      --tier-c: #7c2d12; --tier-c-bg: #fee2e2;
+      --risk-high: #b91c1c; --risk-high-bg: #fee2e2;
+      --risk-med: #92400e; --risk-med-bg: #fef3c7;
+      --risk-low: #065f46; --risk-low-bg: #d1fae5;
+      --radius: 8px; --radius-lg: 12px;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Inter', -apple-system, sans-serif; font-size: 14px; line-height: 1.5; color: var(--text); background: var(--bg); -webkit-font-smoothing: antialiased; }
+
+    /* ── Header ── */
+    .top-header { display:flex; align-items:center; justify-content:space-between; padding:12px 28px; background:rgba(255,255,255,0.97); backdrop-filter:blur(12px); border-bottom:2px solid rgba(13,148,136,0.12); position:fixed; width:100%; top:0; z-index:2000; gap:12px; }
+    .brand { font-family:'Cormorant Garamond',Georgia,serif; font-weight:700; font-size:24px; letter-spacing:-0.03em; }
+    .brand a { text-decoration:none; color:inherit; display:flex; align-items:center; gap:8px; }
+    .brand-dot { width:8px; height:8px; border-radius:50%; background:var(--primary); display:inline-block; margin-right:2px; }
+    .brand span.accent { color:var(--primary); }
+    .header-badge { background:var(--bg-alt2); border:1px solid var(--card-border); border-radius:20px; padding:4px 14px; font-size:12px; color:var(--primary-dark); font-weight:600; }
+
+    /* ── Hero ── */
+    .hero { background:linear-gradient(135deg,#f0faf8 0%,#e8f6f3 60%,#f5f5f0 100%); border-bottom:1px solid var(--border); padding:44px 32px 32px; margin-top:58px; }
+    .hero h1 { font-family:'Cormorant Garamond',Georgia,serif; font-size:30px; font-weight:700; color:var(--text); margin-bottom:8px; }
+    .hero p { color:var(--text-muted); font-size:14px; max-width:700px; line-height:1.7; }
+    .hero-meta { display:flex; gap:20px; margin-top:16px; flex-wrap:wrap; }
+    .meta-chip { background:#fff; border:1px solid var(--border); border-radius:20px; padding:5px 14px; font-size:12px; color:var(--text-muted); }
+    .meta-chip b { color:var(--primary-dark); }
+
+    /* ── Controls ── */
+    .controls { background:#fff; border-bottom:1px solid var(--border); padding:14px 28px; display:flex; gap:12px; align-items:center; flex-wrap:wrap; position:sticky; top:58px; z-index:100; box-shadow:0 2px 6px rgba(0,0,0,0.04); }
+    .search-wrap { position:relative; flex:1; min-width:200px; max-width:340px; }
+    .search-wrap input { width:100%; padding:8px 12px 8px 34px; border:1px solid var(--border); border-radius:var(--radius); font-size:13px; background:#fff; color:var(--text); outline:none; transition:border-color 0.2s; }
+    .search-wrap input:focus { border-color:var(--primary); }
+    .search-icon { position:absolute; left:10px; top:50%; transform:translateY(-50%); color:var(--text-muted); font-size:14px; pointer-events:none; }
+    .filter-select { padding:7px 10px; border:1px solid var(--border); border-radius:var(--radius); font-size:12px; color:var(--text); background:#fff; cursor:pointer; outline:none; }
+    .filter-select:focus { border-color:var(--primary); }
+    .btn-reset { padding:7px 14px; border:1px solid var(--border); border-radius:var(--radius); font-size:12px; color:var(--text-muted); background:#fff; cursor:pointer; transition:all 0.15s; }
+    .btn-reset:hover { border-color:var(--primary); color:var(--primary); }
+    .result-count { margin-left:auto; font-size:12px; color:var(--text-muted); white-space:nowrap; }
+
+    /* ── Summary stats row ── */
+    .stats-bar { background:var(--bg-alt); border-bottom:1px solid var(--border); padding:8px 28px; display:flex; gap:24px; flex-wrap:wrap; align-items:center; }
+    .stat-item { font-size:11.5px; color:var(--text-muted); }
+    .stat-item b { color:var(--text); font-size:13px; }
+
+    /* ── Table wrapper ── */
+    .table-wrap { overflow-x:auto; }
+    table { width:100%; border-collapse:collapse; font-size:12.5px; }
+    thead th { background:var(--bg-alt); border-bottom:2px solid var(--border); padding:9px 10px; text-align:left; font-weight:600; font-size:11px; text-transform:uppercase; letter-spacing:0.04em; color:var(--text-muted); white-space:nowrap; cursor:pointer; user-select:none; position:sticky; top:0; }
+    thead th:hover { color:var(--primary); }
+    thead th.sort-asc::after { content:' ▲'; color:var(--primary); }
+    thead th.sort-desc::after { content:' ▼'; color:var(--primary); }
+    tbody tr { border-bottom:1px solid var(--border); transition:background 0.12s; cursor:pointer; }
+    tbody tr:hover { background:var(--bg-alt2); }
+    tbody tr.selected { background:#e0f5f2; }
+    td { padding:8px 10px; vertical-align:middle; }
+    td.name-cell { font-weight:600; color:var(--text); min-width:130px; }
+    td.name-cell small { display:block; font-weight:400; color:var(--text-muted); font-size:11px; }
+    .no-data { padding:48px; text-align:center; color:var(--text-muted); font-size:14px; }
+
+    /* ── Badges ── */
+    .badge { display:inline-block; padding:2px 7px; border-radius:4px; font-size:10.5px; font-weight:600; letter-spacing:0.02em; }
+    .badge-tier-a { background:var(--tier-a-bg); color:var(--tier-a); }
+    .badge-tier-b { background:var(--tier-b-bg); color:var(--tier-b); }
+    .badge-tier-c { background:var(--tier-c-bg); color:var(--tier-c); }
+    .badge-natural { background:#f0fdf4; color:#166534; }
+    .badge-engineered { background:#eff6ff; color:#1e40af; }
+    .badge-vhh { background:#fdf4ff; color:#86198f; }
+    .badge-risk-high { background:var(--risk-high-bg); color:var(--risk-high); }
+    .badge-risk-med { background:var(--risk-med-bg); color:var(--risk-med); }
+    .badge-risk-low { background:var(--risk-low-bg); color:var(--risk-low); }
+
+    /* ADA bar */
+    .ada-cell { min-width:80px; }
+    .ada-val { font-weight:700; }
+    .ada-bar { height:4px; border-radius:2px; background:#e5e7eb; margin-top:3px; overflow:hidden; }
+    .ada-bar-fill { height:100%; border-radius:2px; background:linear-gradient(90deg,var(--primary),#f59e0b,#ef4444); }
+
+    /* Metric pills */
+    .metric { display:inline-flex; align-items:center; gap:3px; font-size:11.5px; }
+    .metric-val { font-weight:600; color:var(--text); }
+    .metric-label { color:var(--text-muted); font-size:10.5px; }
+
+    /* ── Detail panel ── */
+    .detail-backdrop { display:none; position:fixed; inset:0; background:rgba(0,0,0,0.3); z-index:500; }
+    .detail-panel { display:none; position:fixed; right:0; top:0; bottom:0; width:520px; max-width:95vw; background:#fff; border-left:1px solid var(--border); z-index:600; overflow-y:auto; box-shadow:-4px 0 20px rgba(0,0,0,0.1); flex-direction:column; }
+    .detail-panel.open, .detail-backdrop.open { display:flex; }
+    .detail-panel.open { display:flex; }
+    .detail-header { padding:20px 24px 16px; border-bottom:1px solid var(--border); position:sticky; top:0; background:#fff; z-index:10; }
+    .detail-header h2 { font-size:18px; font-weight:700; margin-bottom:4px; }
+    .detail-header .sub { font-size:12px; color:var(--text-muted); }
+    .detail-close { position:absolute; right:20px; top:20px; background:none; border:none; font-size:20px; cursor:pointer; color:var(--text-muted); line-height:1; padding:4px 8px; border-radius:4px; }
+    .detail-close:hover { background:var(--bg-alt); color:var(--text); }
+    .detail-body { padding:20px 24px; flex:1; }
+    .detail-section { margin-bottom:22px; }
+    .detail-section h3 { font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:0.06em; color:var(--primary); margin-bottom:10px; padding-bottom:5px; border-bottom:1px solid var(--primary-light); }
+    .detail-grid { display:grid; grid-template-columns:1fr 1fr; gap:8px 16px; }
+    .detail-item { }
+    .detail-item .dk { font-size:10.5px; color:var(--text-muted); margin-bottom:1px; }
+    .detail-item .dv { font-size:13px; font-weight:500; color:var(--text); word-break:break-word; }
+    .detail-item.wide { grid-column:1 / -1; }
+    .evidence-box { background:var(--bg-alt); border:1px solid var(--border); border-radius:var(--radius); padding:12px; font-size:11.5px; line-height:1.65; color:var(--text-muted); max-height:320px; overflow-y:auto; white-space:pre-wrap; margin-top:6px; }
+    .detail-link { color:var(--primary); font-size:11.5px; word-break:break-all; }
+
+    /* ── Gauge / bar for molecular values ── */
+    .gauge-wrap { display:flex; align-items:center; gap:8px; }
+    .gauge-track { flex:1; height:6px; background:#e5e7eb; border-radius:3px; overflow:hidden; }
+    .gauge-fill { height:100%; border-radius:3px; }
+    .gauge-fill.hydro { background:linear-gradient(90deg,#06b6d4,#0d9488); }
+    .gauge-fill.mhc { background:linear-gradient(90deg,#f59e0b,#ef4444); }
+    .gauge-label { font-size:11px; font-weight:600; min-width:34px; text-align:right; color:var(--text); }
+
+    /* ── Responsive ── */
+    @media(max-width:768px) {
+      .hero { padding:32px 16px 20px; }
+      .controls { padding:10px 14px; }
+      .stats-bar { padding:8px 14px; }
+      .detail-panel { width:100%; }
+    }
+
+    /* col widths */
+    .col-name { min-width:140px; }
+    .col-target { min-width:110px; max-width:150px; }
+    .col-disease { min-width:90px; }
+    .col-ada { min-width:90px; }
+    .col-tier { min-width:62px; text-align:center; }
+    .col-mhc { min-width:80px; text-align:center; }
+    .col-hydro { min-width:95px; }
+    .col-fc { min-width:60px; max-width:110px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+    .col-moa { min-width:130px; max-width:180px; font-size:11px; }
+    .col-route { min-width:55px; text-align:center; }
+    .col-hl { min-width:65px; text-align:right; }
+    .col-assay { min-width:60px; text-align:center; }
+    .badge-moa { background:#e8f4f8; color:#0369a1; border-radius:3px; padding:1px 5px; font-size:10px; font-weight:500; white-space:nowrap; }
+  </style>
+  <meta name="citation_title" content="InSynBio Clinical ADA Database: 120+ Validated Immunogenicity Records for Therapeutic Antibodies">
+  <meta name="citation_author" content="InSynBio">
+  <meta name="citation_publisher" content="InSynBio">
+  <meta name="citation_online_date" content="2026/03/01">
+  <meta name="citation_publication_date" content="2026/03/01">
+  <meta name="citation_language" content="en">
+  <meta name="citation_abstract_html_url" content="https://www.insynbio.com/ada_database.html">
+  <meta name="keywords" content="ADA, anti-drug antibody, immunogenicity database, clinical antibody, ADA incidence, therapeutic antibody, InSynBio">
+</head>
+<body>
+
+<!-- ── Header ── -->
+<header class="top-header">
+  <div class="brand">
+    <a href="index.html">
+      <span class="brand-dot"></span>In<span class="accent">Syn</span>Bio
+    </a>
+  </div>
+  <nav style="display:flex; align-items:center; gap:4px; flex:1; justify-content:center;">
+    <a href="index.html" style="padding:7px 14px; font-size:13px; font-weight:600; color:var(--text-muted); text-decoration:none; border-radius:20px; transition:all 0.2s;" onmouseover="this.style.color='var(--primary)'; this.style.background='rgba(13,148,136,0.06)'" onmouseout="this.style.color='var(--text-muted)'; this.style.background='transparent'">Home</a>
+    <a href="InSynBio_Antibody_Developability_Assessment_Page.html" style="padding:7px 14px; font-size:13px; font-weight:600; color:var(--text-muted); text-decoration:none; border-radius:20px; transition:all 0.2s;" onmouseover="this.style.color='var(--primary)'; this.style.background='rgba(13,148,136,0.06)'" onmouseout="this.style.color='var(--text-muted)'; this.style.background='transparent'">Antibody</a>
+    <a href="immunogenicity_study.html" style="padding:7px 14px; font-size:13px; font-weight:600; color:var(--text-muted); text-decoration:none; border-radius:20px; transition:all 0.2s;" onmouseover="this.style.color='var(--primary)'; this.style.background='rgba(13,148,136,0.06)'" onmouseout="this.style.color='var(--text-muted)'; this.style.background='transparent'">Immunogenicity Study</a>
+    <a href="ada_database.html" style="padding:7px 14px; font-size:13px; font-weight:600; color:#fff; background:var(--primary); border-radius:20px; text-decoration:none; box-shadow:0 2px 8px rgba(13,148,136,0.25);">ADA Database</a>
+  </nav>
+  <div class="header-badge" style="white-space:nowrap;">n = 138 antibodies</div>
+</header>
+
+<!-- ── Hero ── -->
+<section class="hero">
+  <h1>ADA Clinical Reference Database</h1>
+  <p><strong>Web table (accuracy gate):</strong> only antibodies where the on-file evidence excerpt is internally consistent with the headline clinical ADA value and an <code>http(s)</code> primary citation is present (Tier A/B). The InSynBio research master lists 138 antibodies; additional rows remain in the offline CSV for manual excerpt repair. Includes surface immunogenicity metrics, MHC-II epitope profiles, CMC descriptors, and MOA subgroup classification. For comparative analysis only — not a predictive algorithm.</p>
+  <div class="hero-meta">
+    <span class="meta-chip"><b id="stat-total">—</b> web-published</span>
+    <span class="meta-chip">Research panel: <b>138</b> (offline master)</span>
+    <span class="meta-chip">Tier <b>A</b>: PMID/FDA-anchored &nbsp;·&nbsp; Tier <b>B</b>: URL-verified</span>
+    <span class="meta-chip">Last updated: <b>2026-04</b></span>
+    <span class="meta-chip" style="color:#b45309; background:#fef3c7; border-color:#fcd34d;">For internal reference only — not for clinical decision-making</span>
+  </div>
+</section>
+
+<!-- ── Controls ── -->
+<div class="controls">
+  <div class="search-wrap">
+    <span class="search-icon">⌕</span>
+    <input type="text" id="search" placeholder="Search antibody, target, indication…">
+  </div>
+  <select class="filter-select" id="f-origin">
+    <option value="">All origins</option>
+    <option value="natural">Natural (fully human)</option>
+    <option value="engineered">Engineered (humanized)</option>
+  </select>
+  <select class="filter-select" id="f-disease">
+    <option value="">All diseases</option>
+    <option value="autoimmune">Autoimmune</option>
+    <option value="oncology">Oncology</option>
+    <option value="infectious">Infectious</option>
+    <option value="neurology">Neurology</option>
+    <option value="ophthalmology">Ophthalmology</option>
+    <option value="respiratory">Respiratory</option>
+    <option value="metabolic">Metabolic</option>
+    <option value="hematology">Hematology</option>
+  </select>
+  <select class="filter-select" id="f-tier">
+    <option value="">All tiers</option>
+    <option value="A">Tier A only</option>
+    <option value="B">Tier B only</option>
+  </select>
+  <select class="filter-select" id="f-route">
+    <option value="">All routes</option>
+    <option value="IV">IV</option>
+    <option value="SC">SC</option>
+    <option value="IM">IM</option>
+    <option value="IVT">IVT (intravitreal)</option>
+  </select>
+  <select class="filter-select" id="f-risk">
+    <option value="">All MHC-II risk</option>
+    <option value="HIGH">High</option>
+    <option value="MEDIUM">Medium</option>
+    <option value="LOW">Low</option>
+  </select>
+  <select class="filter-select" id="f-moa">
+    <option value="">All MOA classes</option>
+    <option value="anti-FcRn">anti-FcRn</option>
+    <option value="CD20×CD3 bispecific">CD20×CD3 bispecific</option>
+    <option value="BCMA×CD3 bispecific">BCMA×CD3 bispecific</option>
+    <option value="GPRC5D×CD3 bispecific">GPRC5D×CD3 bispecific</option>
+    <option value="DLL3×CD3 bispecific">DLL3×CD3 bispecific</option>
+    <option value="HER2×CD3 bispecific">HER2×CD3 bispecific</option>
+    <option value="T-cell engager (other)">T-cell engager (other)</option>
+    <option value="anti-PD-1">anti-PD-1</option>
+    <option value="anti-PD-L1">anti-PD-L1</option>
+    <option value="anti-CTLA-4">anti-CTLA-4</option>
+    <option value="anti-LAG-3">anti-LAG-3</option>
+    <option value="anti-TNF">anti-TNF</option>
+    <option value="anti-interleukin/cytokine">anti-interleukin/cytokine</option>
+    <option value="anti-VEGF">anti-VEGF</option>
+    <option value="anti-VEGF/Ang-2">anti-VEGF/Ang-2</option>
+    <option value="anti-CD20">anti-CD20</option>
+    <option value="anti-CD38">anti-CD38</option>
+    <option value="anti-CD19">anti-CD19</option>
+    <option value="anti-PCSK9">anti-PCSK9</option>
+    <option value="anti-CGRP">anti-CGRP</option>
+    <option value="anti-amyloid (CNS)">anti-amyloid (CNS)</option>
+    <option value="anti-complement">anti-complement</option>
+    <option value="anti-integrin">anti-integrin</option>
+    <option value="anti-HER2">anti-HER2</option>
+    <option value="anti-EGFR">anti-EGFR</option>
+    <option value="anti-TROP2 (ADC)">anti-TROP2 (ADC)</option>
+    <option value="antiviral/infectious">antiviral/infectious</option>
+  </select>
+  <button class="btn-reset" onclick="resetFilters()">Reset</button>
+  <span class="result-count" id="result-count"></span>
+</div>
+
+<!-- ── Stats bar ── -->
+<div class="stats-bar" id="stats-bar">
+  <div class="stat-item">Showing: <b id="s-count">—</b></div>
+  <div class="stat-item">ADA median: <b id="s-median">—</b></div>
+  <div class="stat-item">ADA range: <b id="s-range">—</b></div>
+  <div class="stat-item">MHC-II net clusters (median): <b id="s-mhc">—</b></div>
+  <div class="stat-item">Hydrophilic surface (median): <b id="s-hydro">—</b></div>
+</div>
+
+<!-- ── Table ── -->
+<div class="table-wrap">
+  <table id="main-table">
+    <thead>
+      <tr>
+        <th class="col-name" data-col="name">Antibody</th>
+        <th class="col-target" data-col="targets">Target</th>
+        <th class="col-disease" data-col="disease_class">Disease</th>
+        <th class="col-ada" data-col="ada_pct">Clinical ADA %</th>
+        <th class="col-tier" data-col="tier">Tier</th>
+        <th class="col-mhc" data-col="mhcii_net_clusters">MHC-II<br><small>net clusters</small></th>
+        <th class="col-hydro" data-col="hydrophilic_frac">Hydrophilic<br><small>surface</small></th>
+        <th class="col-moa" data-col="moa_class">MOA class</th>
+        <th class="col-fc" data-col="fc_isotype">Fc</th>
+        <th class="col-route" data-col="route">Route</th>
+        <th class="col-hl" data-col="half_life">t½ (d)</th>
+        <th class="col-assay" data-col="assay_gen">Assay<br><small>gen</small></th>
+      </tr>
+    </thead>
+    <tbody id="table-body">
+      <tr><td colspan="12" class="no-data">Loading database…</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ── Detail panel ── -->
+<div class="detail-backdrop" id="backdrop" onclick="closeDetail()"></div>
+<div class="detail-panel" id="detail-panel">
+  <div class="detail-header">
+    <h2 id="dp-name">—</h2>
+    <div class="sub" id="dp-sub">—</div>
+    <button class="detail-close" onclick="closeDetail()">✕</button>
+  </div>
+  <div class="detail-body" id="dp-body"></div>
+</div>
+
+<script>
+// ─── Data loading ───────────────────────────────────────────────────────────
+let ALL_DATA = [];
+let filteredData = [];
+let sortCol = 'ada_pct';
+let sortDir = 'desc';
+
+fetch('ada_db_data.json')
+  .then(r => r.json())
+  .then(data => {
+    ALL_DATA = data;
+    document.getElementById('stat-total').textContent = data.length;
+    applyFilters();
+    bindSortHeaders();
+  })
+  .catch(e => {
+    document.getElementById('table-body').innerHTML =
+      '<tr><td colspan="12" class="no-data">⚠ Failed to load ada_db_data.json — ' + e.message + '</td></tr>';
+  });
+
+// ─── Filtering ──────────────────────────────────────────────────────────────
+function applyFilters() {
+  const q = document.getElementById('search').value.toLowerCase().trim();
+  const origin = document.getElementById('f-origin').value;
+  const disease = document.getElementById('f-disease').value;
+  const tier = document.getElementById('f-tier').value;
+  const route = document.getElementById('f-route').value;
+  const risk = document.getElementById('f-risk').value;
+  const moa = document.getElementById('f-moa').value;
+
+  filteredData = ALL_DATA.filter(d => {
+    if (q) {
+      const haystack = [(d.name||''), (d.targets||''), (d.indication||''),
+                        (d.disease_class||''), (d.fc_engineering||''),
+                        (d.moa_class||''), (d.vh_germline||''), (d.vl_germline||'')].join(' ').toLowerCase();
+      if (!haystack.includes(q)) return false;
+    }
+    if (origin && (d.origin||'') !== origin) return false;
+    if (disease && !(d.disease_class||'').toLowerCase().includes(disease)) return false;
+    if (tier && (d.tier||'') !== tier) return false;
+    if (route && !(d.route||'').toUpperCase().includes(route)) return false;
+    if (risk && (d.tcia_risk||'') !== risk) return false;
+    if (moa && (d.moa_class||'') !== moa) return false;
+    return true;
+  });
+
+  sortData();
+  renderTable();
+  updateStats();
+}
+
+function resetFilters() {
+  document.getElementById('search').value = '';
+  ['f-origin','f-disease','f-tier','f-route','f-risk','f-moa'].forEach(id => {
+    document.getElementById(id).value = '';
+  });
+  applyFilters();
+}
+
+['search','f-origin','f-disease','f-tier','f-route','f-risk','f-moa'].forEach(id => {
+  document.getElementById(id).addEventListener('input', applyFilters);
+  document.getElementById(id).addEventListener('change', applyFilters);
+});
+
+// ─── Sorting ────────────────────────────────────────────────────────────────
+function bindSortHeaders() {
+  document.querySelectorAll('thead th[data-col]').forEach(th => {
+    th.addEventListener('click', () => {
+      const col = th.dataset.col;
+      if (sortCol === col) {
+        sortDir = sortDir === 'asc' ? 'desc' : 'asc';
+      } else {
+        sortCol = col;
+        sortDir = 'desc';
+      }
+      document.querySelectorAll('thead th').forEach(t => t.classList.remove('sort-asc','sort-desc'));
+      th.classList.add(sortDir === 'asc' ? 'sort-asc' : 'sort-desc');
+      sortData();
+      renderTable();
+    });
+  });
+  // Set initial sort indicator
+  const initTh = document.querySelector('thead th[data-col="ada_pct"]');
+  if (initTh) initTh.classList.add('sort-desc');
+}
+
+function sortData() {
+  const col = sortCol;
+  const dir = sortDir === 'asc' ? 1 : -1;
+  filteredData.sort((a, b) => {
+    let av = a[col], bv = b[col];
+    if (av === null || av === undefined) av = sortDir === 'asc' ? Infinity : -Infinity;
+    if (bv === null || bv === undefined) bv = sortDir === 'asc' ? Infinity : -Infinity;
+    if (typeof av === 'number' && typeof bv === 'number') return (av - bv) * dir;
+    return String(av).localeCompare(String(bv)) * dir;
+  });
+}
+
+// ─── Rendering ───────────────────────────────────────────────────────────────
+function fmt(v, decimals=1) {
+  if (v === null || v === undefined) return '<span style="color:#d1d5db">—</span>';
+  if (typeof v === 'number') return v.toFixed(decimals);
+  return v;
+}
+
+function tierBadge(t, url) {
+  if (!t) return '<span style="color:#d1d5db">—</span>';
+  const cls = t === 'A' ? 'badge-tier-a' : t === 'B' ? 'badge-tier-b' : 'badge-tier-c';
+  const title = t === 'A' ? 'Tier A: PMID/FDA-anchored — click to view source'
+              : t === 'B' ? 'Tier B: URL-verified — click to view source'
+              : 'Tier C: unverified';
+  if (url && t !== 'C') {
+    return `<a href="${url}" target="_blank" rel="noopener" title="${title}" onclick="event.stopPropagation()"
+      style="display:inline-flex;align-items:center;gap:2px;text-decoration:none;">
+      <span class="badge ${cls}">${t}</span><span style="font-size:9px;opacity:0.6;line-height:1">&#8599;</span>
+    </a>`;
+  }
+  return `<span class="badge ${cls}" title="${title}">${t}</span>`;
+}
+
+// Fc abbreviation map
+function fcShort(isotype, engineering) {
+  const iso = isotype ? 'IgG' + isotype : '';
+  const eng = (engineering || '').toLowerCase();
+  let tag = '';
+  if (!engineering || engineering === 'none' ||
+      engineering.toLowerCase().includes('wild-type')) {
+    tag = '';
+  } else if (eng.includes('yte') || eng.includes('m252')) {
+    tag = 'YTE';
+  } else if (eng.includes('lala') || eng.includes('p329')) {
+    tag = 'LALA';
+  } else if (eng.includes('silenc') || eng.includes('null') || eng.includes('dead')) {
+    tag = 'Fc-null';
+  } else if (eng.includes('afuco') || eng.includes('adcc-enh')) {
+    tag = 'afucos.';
+  } else if (eng.includes('recycl') || eng.includes('halflife') || eng.includes('half-life')) {
+    tag = 'recycling';
+  } else if (eng.includes('peg')) {
+    tag = 'PEGylated';
+  } else if (eng.includes('trivalent') || eng.includes('bispecific') || eng.includes('multivalent')) {
+    tag = 'multivalent';
+  } else if (eng.includes('s239') || eng.includes('i332') || eng.includes('gasdalie')) {
+    tag = 'ADCC+';
+  } else if (eng.includes('enhance')) {
+    tag = 'enhanced';
+  } else if (eng.includes('igg4') || eng.includes('igg2')) {
+    tag = '';
+  } else {
+    // Generic truncation to 10 chars
+    tag = engineering.replace(/\(.*\)/g, '').trim().split(' ').slice(0,2).join(' ');
+    if (tag.length > 12) tag = tag.substring(0, 11) + '…';
+  }
+  return [iso, tag].filter(Boolean).join(' ');
+}
+
+function originBadge(o) {
+  if (!o) return '';
+  if (o === 'natural') return '<span class="badge badge-natural">natural</span>';
+  if (o === 'engineered') return '<span class="badge badge-engineered">humanized</span>';
+  return `<span class="badge">${o}</span>`;
+}
+
+function riskBadge(r) {
+  if (!r) return '';
+  const cls = r === 'HIGH' ? 'badge-risk-high' : r === 'MEDIUM' ? 'badge-risk-med' : 'badge-risk-low';
+  return `<span class="badge ${cls}" style="font-size:10px">${r}</span>`;
+}
+
+function evidenceText(d) {
+  const t = d.evidence_excerpt || d.evidence_text;
+  return (t && String(t).trim()) ? String(t) : '';
+}
+
+function escHtml(s) {
+  return String(s)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;');
+}
+
+function evidenceBoxHtml(d) {
+  const raw = evidenceText(d);
+  if (!raw) return '';
+  const maxLen = 4000;
+  const clipped = raw.length > maxLen ? raw.substring(0, maxLen) + '…' : raw;
+  return `<div class="dk" style="margin-top:8px">Evidence chain excerpt</div><div class="evidence-box">${escHtml(clipped)}</div>`;
+}
+
+function adaBar(pct) {
+  if (pct === null || pct === undefined) return '';
+  const w = Math.min(100, Math.max(0, pct));
+  return `<div class="ada-bar"><div class="ada-bar-fill" style="width:${w}%"></div></div>`;
+}
+
+function hydroGauge(frac) {
+  if (frac === null || frac === undefined) return '<span style="color:#d1d5db">—</span>';
+  const pct = (frac * 100).toFixed(1);
+  const w = Math.min(100, frac * 100);
+  return `<div class="gauge-wrap">
+    <div class="gauge-track"><div class="gauge-fill hydro" style="width:${w}%"></div></div>
+    <span class="gauge-label">${pct}%</span>
+  </div>`;
+}
+
+function mhcGauge(n, nTol) {
+  if (n === null || n === undefined) return '<span style="color:#d1d5db">—</span>';
+  const maxClusters = 15;
+  const w = Math.min(100, (n / maxClusters) * 100);
+  const tolTip = nTol !== null && nTol !== undefined ? ` (${nTol} tolerated)` : '';
+  return `<div class="gauge-wrap" title="Net immunogenic clusters: ${n}${tolTip}">
+    <div class="gauge-track"><div class="gauge-fill mhc" style="width:${w}%"></div></div>
+    <span class="gauge-label">${n}</span>
+  </div>`;
+}
+
+function renderTable() {
+  const tbody = document.getElementById('table-body');
+  if (filteredData.length === 0) {
+    tbody.innerHTML = '<tr><td colspan="12" class="no-data">No antibodies match the current filters.</td></tr>';
+    document.getElementById('result-count').textContent = '0 results';
+    return;
+  }
+  document.getElementById('result-count').textContent = filteredData.length + ' results';
+
+  const rows = filteredData.map((d, i) => {
+    const adaVal = d.ada_pct !== null && d.ada_pct !== undefined
+      ? `<span class="ada-val">${d.ada_pct.toFixed(1)}%</span>${adaBar(d.ada_pct)}`
+      : '<span style="color:#d1d5db">—</span>';
+
+    const fcLabel = fcShort(d.fc_isotype, d.fc_engineering);
+
+    const targetShort = d.targets ? d.targets.split('|').slice(0,2).join('|') : '—';
+
+    return `<tr data-idx="${i}" onclick="openDetail(${i})">
+      <td class="name-cell col-name">${d.name || '—'}<small>${originBadge(d.origin)}</small></td>
+      <td class="col-target" title="${d.targets||''}">${targetShort}</td>
+      <td class="col-disease">${d.disease_class || '—'}</td>
+      <td class="col-ada ada-cell">${adaVal}</td>
+      <td class="col-tier" style="text-align:center">${tierBadge(d.tier, d.citation_url)}</td>
+      <td class="col-mhc">${mhcGauge(d.mhcii_net_clusters, d.mhcii_n_tolerated)}</td>
+      <td class="col-hydro">${hydroGauge(d.hydrophilic_frac)}</td>
+      <td class="col-moa">${d.moa_class ? `<span class="badge-moa">${d.moa_class}</span>` : '—'}</td>
+      <td class="col-fc" style="font-size:11px; color:var(--text-muted)">${fcLabel || '—'}</td>
+      <td class="col-route" style="text-align:center; font-size:11.5px">${d.route ? d.route.replace('IV infusion','IV').replace('intravitreal','IVT') : '—'}</td>
+      <td class="col-hl" style="text-align:right">${d.half_life !== null && d.half_life !== undefined ? d.half_life : '—'}</td>
+      <td class="col-assay" style="text-align:center; font-size:11.5px">${d.assay_gen !== null && d.assay_gen !== undefined ? 'Gen '+d.assay_gen : '—'}</td>
+    </tr>`;
+  });
+  tbody.innerHTML = rows.join('');
+}
+
+// ─── Stats bar ───────────────────────────────────────────────────────────────
+function updateStats() {
+  const adas = filteredData.map(d => d.ada_pct).filter(v => v !== null && v !== undefined).sort((a,b)=>a-b);
+  const mhcs = filteredData.map(d => d.mhcii_net_clusters).filter(v => v !== null && v !== undefined).sort((a,b)=>a-b);
+  const hydros = filteredData.map(d => d.hydrophilic_frac).filter(v => v !== null && v !== undefined).sort((a,b)=>a-b);
+
+  document.getElementById('s-count').textContent = filteredData.length;
+  document.getElementById('s-median').textContent = adas.length ? (adas[Math.floor(adas.length/2)].toFixed(1) + '%') : '—';
+  document.getElementById('s-range').textContent = adas.length ? (adas[0].toFixed(1) + '–' + adas[adas.length-1].toFixed(1) + '%') : '—';
+  document.getElementById('s-mhc').textContent = mhcs.length ? mhcs[Math.floor(mhcs.length/2)] : '—';
+  document.getElementById('s-hydro').textContent = hydros.length ? (hydros[Math.floor(hydros.length/2)]*100).toFixed(1) + '%' : '—';
+}
+
+// ─── Detail panel ────────────────────────────────────────────────────────────
+let selectedIdx = null;
+
+function openDetail(i) {
+  const d = filteredData[i];
+  selectedIdx = i;
+
+  // Highlight row
+  document.querySelectorAll('tbody tr').forEach(tr => tr.classList.remove('selected'));
+  const tr = document.querySelector(`tbody tr[data-idx="${i}"]`);
+  if (tr) tr.classList.add('selected');
+
+  document.getElementById('dp-name').textContent = d.name || '—';
+  document.getElementById('dp-sub').innerHTML = [
+    originBadge(d.origin),
+    d.genetics ? `<span style="font-size:11px;margin-left:4px;color:var(--text-muted)">${d.genetics}</span>` : ''
+  ].join('') + `<span style="font-size:11px;margin-left:8px;color:var(--text-muted)">${d.targets || ''}</span>`;
+
+  const sections = [];
+
+  // ── ADA Evidence
+  sections.push(`
+    <div class="detail-section">
+      <h3>Clinical ADA</h3>
+      <div class="detail-grid">
+        <div class="detail-item">
+          <div class="dk">ADA Incidence</div>
+          <div class="dv" style="font-size:20px;font-weight:700;color:${adaColor(d.ada_pct)}">${d.ada_pct !== null ? d.ada_pct.toFixed(1)+'%' : '—'}</div>
+        </div>
+        <div class="detail-item">
+          <div class="dk">Evidence Tier</div>
+          <div class="dv">${tierBadge(d.tier, d.citation_url)}</div>
+        </div>
+        <div class="detail-item wide">
+          <div class="dk">ADA Display Value</div>
+          <div class="dv" style="font-size:12px">${d.ada_display || '—'}</div>
+        </div>
+        ${d.pmids ? `<div class="detail-item wide"><div class="dk">PMIDs</div><div class="dv" style="font-size:11.5px">${String(d.pmids)}</div></div>` : ''}
+        ${d.citation_url ? `<div class="detail-item wide"><div class="dk">Source URL</div><div class="dv"><a class="detail-link" href="${d.citation_url}" target="_blank">${d.citation_url.split('?')[0]}</a></div></div>` : ''}
+      </div>
+      ${evidenceBoxHtml(d)}
+    </div>`);
+
+  // ── Clinical Context
+  sections.push(`
+    <div class="detail-section">
+      <h3>Clinical Context</h3>
+      <div class="detail-grid">
+        <div class="detail-item"><div class="dk">Indication</div><div class="dv" style="font-size:12px">${d.indication || '—'}</div></div>
+        <div class="detail-item"><div class="dk">Disease Class</div><div class="dv">${d.disease_class || '—'}</div></div>
+        <div class="detail-item"><div class="dk">Route</div><div class="dv">${d.route || '—'}</div></div>
+        <div class="detail-item"><div class="dk">Half-life</div><div class="dv">${d.half_life !== null ? d.half_life+' days' : '—'}</div></div>
+        <div class="detail-item"><div class="dk">Dose</div><div class="dv">${d.dose_mg !== null ? d.dose_mg+' mg' : '—'}</div></div>
+        <div class="detail-item"><div class="dk">Assay Generation</div><div class="dv">${d.assay_gen !== null ? 'Gen '+d.assay_gen : '—'} · ${d.assay_platform||'—'}</div></div>
+        <div class="detail-item"><div class="dk">MTX Co-medication</div><div class="dv">${d.mtx || '—'}</div></div>
+        <div class="detail-item"><div class="dk">Approval Year</div><div class="dv">${d.approval_year || '—'}</div></div>
+        <div class="detail-item"><div class="dk">Fc Isotype</div><div class="dv">${d.fc_isotype ? 'IgG'+d.fc_isotype : '—'}</div></div>
+        <div class="detail-item"><div class="dk">Fc Engineering</div><div class="dv" style="font-size:12px">${d.fc_engineering || '—'}</div></div>
+        <div class="detail-item wide"><div class="dk">Fc Effector Status</div><div class="dv" style="font-size:12px">${d.fc_effector || '—'}</div></div>
+      </div>
+    </div>`);
+
+  // ── MHC-II / Immunogenicity
+  const mhcNetColor = d.mhcii_net_clusters >= 8 ? '#b91c1c' : d.mhcii_net_clusters >= 4 ? '#92400e' : '#065f46';
+  sections.push(`
+    <div class="detail-section">
+      <h3>MHC-II Epitope Profile</h3>
+      <div style="background:var(--bg-alt);border-radius:var(--radius);padding:12px;margin-bottom:10px;">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
+          <span style="font-size:11px;color:var(--text-muted)">Net immunogenic clusters <small>(excl. tolerated)</small></span>
+          <span style="font-size:22px;font-weight:700;color:${mhcNetColor}">${d.mhcii_net_clusters !== null ? d.mhcii_net_clusters : '—'}</span>
+        </div>
+        ${mhcStackBar(d)}
+      </div>
+      <div class="detail-grid">
+        <div class="detail-item"><div class="dk">Total clusters</div><div class="dv">${fmt(d.mhcii_clusters_total,0)}</div></div>
+        <div class="detail-item"><div class="dk">High-binding</div><div class="dv" style="color:#b91c1c;font-weight:600">${fmt(d.mhcii_n_high,0)}</div></div>
+        <div class="detail-item"><div class="dk">Medium-binding</div><div class="dv" style="color:#92400e;font-weight:600">${fmt(d.mhcii_n_medium,0)}</div></div>
+        <div class="detail-item"><div class="dk">Tolerated (silent)</div><div class="dv" style="color:var(--text-muted)">${fmt(d.mhcii_n_tolerated,0)}</div></div>
+        <div class="detail-item"><div class="dk">TCIA Score</div><div class="dv">${d.tcia_score !== null ? d.tcia_score.toFixed(4) : '—'}</div></div>
+        <div class="detail-item"><div class="dk">TCIA Risk Level</div><div class="dv">${riskBadge(d.tcia_risk)}</div></div>
+      </div>
+    </div>`);
+
+  // ── Surface (SASA)
+  const hydroPct = d.hydrophilic_frac !== null ? (d.hydrophilic_frac * 100).toFixed(1) + '%' : '—';
+  const hydroVhPct = d.hydrophilic_vh !== null ? (d.hydrophilic_vh * 100).toFixed(1) + '%' : '—';
+  const hydroVlPct = d.hydrophilic_vl !== null ? (d.hydrophilic_vl * 100).toFixed(1) + '%' : '—';
+  sections.push(`
+    <div class="detail-section">
+      <h3>Surface Immunogenicity (SASA)</h3>
+      <div style="background:var(--bg-alt);border-radius:var(--radius);padding:12px;margin-bottom:10px;">
+        <div style="display:flex;justify-content:space-between;margin-bottom:6px;">
+          <span style="font-size:11px;color:var(--text-muted)">Hydrophilic surface fraction (VH+VL avg)</span>
+          <span style="font-weight:700;font-size:15px;color:var(--primary)">${hydroPct}</span>
+        </div>
+        <div class="gauge-track" style="height:8px"><div class="gauge-fill hydro" style="width:${d.hydrophilic_frac!==null?Math.min(100,d.hydrophilic_frac*100):0}%"></div></div>
+        <div style="font-size:10px;color:var(--text-muted);margin-top:4px">Higher = more hydrophilic surface = lower aggregation risk; lower = more hydrophobic patches = higher aggregation + potential immunogenicity</div>
+      </div>
+      <div class="detail-grid">
+        <div class="detail-item"><div class="dk">VH hydrophilic fraction</div><div class="dv">${hydroVhPct}</div></div>
+        <div class="detail-item"><div class="dk">VL hydrophilic fraction</div><div class="dv">${hydroVlPct}</div></div>
+        <div class="detail-item"><div class="dk">Surface patches (n)</div><div class="dv">${fmt(d.surf_patches,0)}</div></div>
+        <div class="detail-item"><div class="dk">Surface risk</div><div class="dv">${riskBadge(d.surf_risk)}</div></div>
+        <div class="detail-item"><div class="dk">Hydrophobic patch (max9)</div><div class="dv">${d.hydro_patch !== null ? d.hydro_patch.toFixed(3) : '—'}</div></div>
+      </div>
+    </div>`);
+
+  // ── CMC
+  sections.push(`
+    <div class="detail-section">
+      <h3>CMC / Developability</h3>
+      <div class="detail-grid">
+        <div class="detail-item"><div class="dk">pI (isoelectric point)</div><div class="dv">${d.pI !== null ? d.pI.toFixed(2) : '—'}</div></div>
+        <div class="detail-item"><div class="dk">GRAVY (hydrophobicity)</div><div class="dv">${d.gravy !== null ? d.gravy.toFixed(3) : '—'}</div></div>
+        <div class="detail-item"><div class="dk">Instability index</div><div class="dv">${d.instability !== null ? d.instability.toFixed(1) : '—'}</div></div>
+        <div class="detail-item"><div class="dk">Net charge @ pH 7</div><div class="dv">${d.net_charge !== null ? (d.net_charge > 0 ? '+' : '') + d.net_charge : '—'}</div></div>
+        <div class="detail-item"><div class="dk">ADA V2 Score</div><div class="dv">${d.v2_score !== null ? d.v2_score.toFixed(4) : '—'}</div></div>
+        <div class="detail-item"><div class="dk">ADA V2 Risk</div><div class="dv">${riskBadge(d.v2_risk)}</div></div>
+      </div>
+    </div>`);
+
+  // ── Germline
+  sections.push(`
+    <div class="detail-section">
+      <h3>Germline / Sequence</h3>
+      <div class="detail-grid">
+        <div class="detail-item"><div class="dk">VH Germline</div><div class="dv" style="font-family:monospace;font-size:12px">${d.vh_germline||'—'}</div></div>
+        <div class="detail-item"><div class="dk">VH Identity</div><div class="dv">${d.vh_identity !== null ? (d.vh_identity*100).toFixed(1)+'%' : '—'}</div></div>
+        <div class="detail-item"><div class="dk">VL Germline</div><div class="dv" style="font-family:monospace;font-size:12px">${d.vl_germline||'—'}</div></div>
+        <div class="detail-item"><div class="dk">VL Identity</div><div class="dv">${d.vl_identity !== null ? (d.vl_identity*100).toFixed(1)+'%' : '—'}</div></div>
+        <div class="detail-item wide"><div class="dk">CDR-H3</div><div class="dv" style="font-family:monospace;font-size:12px;letter-spacing:0.05em">${d.cdr_h3||'—'}</div></div>
+        <div class="detail-item"><div class="dk">Format</div><div class="dv" style="font-size:12px">${d.format_type||'—'}</div></div>
+      </div>
+    </div>`);
+
+  document.getElementById('dp-body').innerHTML = sections.join('');
+  document.getElementById('detail-panel').classList.add('open');
+  document.getElementById('backdrop').classList.add('open');
+}
+
+function closeDetail() {
+  document.getElementById('detail-panel').classList.remove('open');
+  document.getElementById('backdrop').classList.remove('open');
+  document.querySelectorAll('tbody tr').forEach(tr => tr.classList.remove('selected'));
+}
+
+function adaColor(pct) {
+  if (pct === null || pct === undefined) return '#6b7280';
+  if (pct >= 30) return '#b91c1c';
+  if (pct >= 10) return '#d97706';
+  return '#047857';
+}
+
+function mhcStackBar(d) {
+  const total = (d.mhcii_n_high||0) + (d.mhcii_n_medium||0) + (d.mhcii_n_tolerated||0);
+  if (!total) return '';
+  const highW = (((d.mhcii_n_high||0)/total)*100).toFixed(1);
+  const medW = (((d.mhcii_n_medium||0)/total)*100).toFixed(1);
+  const tolW = (((d.mhcii_n_tolerated||0)/total)*100).toFixed(1);
+  return `
+    <div style="display:flex;border-radius:4px;overflow:hidden;height:10px;gap:1px;margin-top:6px;">
+      <div style="width:${highW}%;background:#ef4444" title="High: ${d.mhcii_n_high||0}"></div>
+      <div style="width:${medW}%;background:#f59e0b" title="Medium: ${d.mhcii_n_medium||0}"></div>
+      <div style="width:${tolW}%;background:#d1d5db" title="Tolerated: ${d.mhcii_n_tolerated||0}"></div>
+    </div>
+    <div style="display:flex;gap:12px;margin-top:4px;font-size:10px;">
+      <span style="color:#ef4444">■ High (${d.mhcii_n_high||0})</span>
+      <span style="color:#f59e0b">■ Medium (${d.mhcii_n_medium||0})</span>
+      <span style="color:#9ca3af">■ Tolerated (${d.mhcii_n_tolerated||0})</span>
+    </div>`;
+}
+
+// ── Keyboard navigation
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') closeDetail();
+  if ((e.key === 'ArrowDown' || e.key === 'ArrowUp') && selectedIdx !== null) {
+    const next = e.key === 'ArrowDown' ? selectedIdx + 1 : selectedIdx - 1;
+    if (next >= 0 && next < filteredData.length) {
+      openDetail(next);
+      const tr = document.querySelector(`tbody tr[data-idx="${next}"]`);
+      if (tr) tr.scrollIntoView({ block: 'nearest' });
+    }
+    e.preventDefault();
+  }
+});
+</script>
+
+<!-- ── Footer note ── -->
+<div style="padding:24px 28px; border-top:1px solid var(--border); background:var(--bg-alt); font-size:11.5px; color:var(--text-muted); line-height:1.7;">
+  <b>Data provenance:</b> Tier A entries are anchored to FDA prescribing information or peer-reviewed PubMed-indexed publications. Tier B entries are URL-verified with confirmed ADA values.
+  MHC-II net clusters = high-binding + medium-binding epitope clusters (tolerated/self-reactive clusters excluded per IEDB Next-Gen EL prediction).
+  Hydrophilic surface fraction = SASA-weighted exposed residue fraction (VH+VL average, computed via FreeSASA).
+  <br><b>Disclaimer:</b> This database is for internal comparative reference only. It does not constitute a clinical prediction tool or medical advice.
+  Clinical ADA rates are strongly confounded by assay generation, route of administration, co-medication, and indication. © InSynBio 2026.
+</div>
+
+</body>
+</html>

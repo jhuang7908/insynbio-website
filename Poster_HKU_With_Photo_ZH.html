@@ -1,0 +1,142 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>学术报告 — 香港大学 | Genomab Biotech</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: "Microsoft JhengHei", "PingFang SC", "Segoe UI", sans-serif;
+      background: #fff;
+      color: #222;
+      padding: 32px 40px 40px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    h1 {
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: #1a5276;
+      margin-bottom: 8px;
+      border-bottom: 2px solid #1a5276;
+      padding-bottom: 8px;
+    }
+    .subtitle { font-size: 0.95rem; color: #555; margin-bottom: 20px; }
+    .meta { font-size: 0.9rem; color: #444; margin-bottom: 24px; line-height: 1.6; }
+    .meta strong { color: #222; }
+    .speaker-block {
+      display: flex;
+      gap: 24px;
+      align-items: flex-start;
+      margin-bottom: 24px;
+      padding: 16px;
+      background: #f8f9fa;
+      border-radius: 8px;
+    }
+    .speaker-photo {
+      flex-shrink: 0;
+      width: 140px;
+      height: 170px;
+      object-fit: cover;
+      border-radius: 6px;
+      border: 1px solid #ddd;
+    }
+    .speaker-bio { flex: 1; font-size: 0.9rem; line-height: 1.65; color: #333; text-align: left; }
+    .speaker-bio p { margin-bottom: 8px; }
+    h2 { font-size: 1.05rem; color: #1a5276; margin: 20px 0 10px; }
+    .abstract { font-size: 0.9rem; line-height: 1.7; color: #333; text-align: justify; }
+    .footer { margin-top: 24px; font-size: 0.85rem; color: #666; text-align: center; }
+  
+    /* Standardized Global Header Styles */
+    .top-header { display: flex; align-items: center; justify-content: space-between; padding: 12px 32px; background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(12px); border-bottom: 2px solid rgba(13, 148, 136, 0.1); position: fixed; width: 100%; top: 0; z-index: 2000; gap: 12px; }
+    .top-header .brand { display: flex; align-items: center; }
+    .top-header .brand a { text-decoration: none; color: inherit; display: flex; align-items: center; gap: 10px; font-family: 'Cormorant Garamond', serif; font-weight: 700; font-size: 26px; }
+    .top-header .slogan { font-size: 14px; color: var(--text-muted); padding-left: 14px; border-left: 1px solid #e5e7eb; margin-left: 0; font-family: 'Inter', sans-serif; white-space: nowrap; font-weight: 600; letter-spacing: 0.02em; }
+    .top-header-nav { display: flex; align-items: center; gap: 6px; }
+    .top-header-nav a { padding: 8px 16px; font-size: 15px; color: var(--text-muted); text-decoration: none; border-radius: 20px; transition: all 0.2s ease; font-weight: 600; }
+    .top-header-nav a:hover { color: var(--primary); background: rgba(13, 148, 136, 0.06); }
+    .nav-dropdown { position: relative; }
+    .nav-dropdown > a::after { content: ' ▾'; font-size: 10px; opacity: 0.6; margin-left: 4px; }
+    .dropdown-menu { position: absolute; top: 100%; left: 50%; transform: translateX(-50%) translateY(10px); min-width: 240px; background: #fff; border: 1px solid rgba(0,0,0,0.06); border-radius: 12px; padding: 8px; box-shadow: 0 10px 40px -10px rgba(0,0,0,0.15); opacity: 0; visibility: hidden; transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1); z-index: 2001; }
+    .nav-dropdown:hover .dropdown-menu { opacity: 1; visibility: visible; transform: translateX(-50%) translateY(0); }
+    .dropdown-menu a { display: block; padding: 12px 14px; color: var(--text); border-radius: 8px; text-decoration: none; text-align: left; }
+    .dropdown-menu a:hover { background: #f9fafb; }
+    .menu-title { display: block; font-weight: 700; font-size: 14px; color: #111827; margin-bottom: 2px; }
+    .menu-desc { display: block; font-size: 12px; color: #6b7280; font-weight: 400; }
+
+        body { padding-top: 72px; }
+    </style>
+</head>
+<body>
+  <header class="top-header">
+    <div class="brand">
+      <a href="index.html">
+        <svg width="34" height="28" viewBox="0 0 32 30" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink:0;">
+          <path d="M16 2L2 10V22L16 28L30 22V10L16 2Z" fill="#0d9488" fill-opacity="0.05" stroke="#0d9488" stroke-width="1" stroke-opacity="0.3"/>
+          <path d="M14.5 24 V 16" stroke="#0d9488" stroke-width="2.5" stroke-linecap="round"/>
+          <path d="M17.5 24 V 16" stroke="#f59e0b" stroke-width="2.5" stroke-linecap="round"/>
+          <line x1="13" y1="19" x2="19" y2="19" stroke="#9ca3af" stroke-width="1.5" stroke-linecap="round"/>
+          <line x1="13" y1="21" x2="19" y2="21" stroke="#9ca3af" stroke-width="1.5" stroke-linecap="round"/>
+          <path d="M14.5 16 L 8 7" stroke="#0d9488" stroke-width="2.5" stroke-linecap="round"/>
+          <path d="M10 16 L 3.5 7" stroke="#2dd4bf" stroke-width="2.5" stroke-linecap="round"/>
+          <path d="M17.5 16 L 24 7" stroke="#f59e0b" stroke-width="2.5" stroke-linecap="round"/>
+          <rect x="21.5" y="3.5" width="5" height="5" rx="1" fill="#f59e0b" transform="rotate(45 24 6)"/>
+        </svg>
+        <span><span style="color:#111827">In</span><span style="color:var(--primary); font-style:italic">Syn</span><span style="color:#111827">Bio</span></span>
+      </a>
+      <span class="slogan">AI for Life Sciences</span>
+    </div>
+    <nav class="top-header-nav">
+      <a href="index.html">Home</a>
+      <a href="index.html#about">About Us</a>
+      <div class="nav-dropdown" tabindex="0">
+        <a href="index.html#services">Services</a>
+        <div class="dropdown-menu">
+          <a href="InSynBio_Antibody_Developability_Assessment_Page.html">
+            <span class="menu-title">Antibody</span>
+            <span class="menu-desc">Structure-based Development</span>
+          </a>
+          <a href="InSynBio_CART_Design_Page.html">
+            <span class="menu-title">CAR-T</span>
+            <span class="menu-desc">Smart CAR-T Design</span>
+          </a>
+          <a href="InSynBio_Bispecific_Antibody_Design_Page.html">
+            <span class="menu-title">Bispecific</span>
+            <span class="menu-desc">Multispecific Engineering</span>
+          </a>
+        </div>
+      </div>
+      <a href="index.html#case-studies">Case Studies</a>
+      <a href="InSynBio_OurTech.html" style="color: var(--primary); font-weight: 700;">Our Tech</a>
+      <a href="index.html#workflow">Workflow</a>
+      <a href="index.html#faq">FAQ</a>
+      <a href="index.html#contact">Contact Us</a>
+    </nav>
+  </header>
+  <h1>学术报告 — 香港大学</h1>
+  <p class="subtitle">下一代免疫系统人源化小鼠及其 InSynBio AI 制药研发平台</p>
+  <div class="meta">
+    <strong>报告人：</strong>黄菁 博士 &nbsp;|&nbsp;
+    <strong>工作单位：</strong>Genomab Biotech（www.genomab.com）&nbsp;|&nbsp;
+    <strong>地点：</strong>香港大学 &nbsp;|&nbsp;
+    <strong>时间：</strong>待定
+  </div>
+
+  <div class="speaker-block">
+    <img src="speaker_photo_hku.png" alt="报告人：黄菁" class="speaker-photo">
+    <div class="speaker-bio">
+      <h2>报告人简介</h2>
+      <p>黄菁博士，2004 年博士毕业于中国科学院动物研究所；2004–2006 年在北京大学医学部师从童坦君院士进行博士后研究；2006 年后赴美，在爱因斯坦医学院、艾伦戴蒙德艾滋病研究所、洛克菲勒大学、哥伦比亚大学等机构有 15 年科研经历；历任美国 Sigma Xi 学会会员、美国遗传学会会员、美国老年科学学会会员，在 <em>Science Translational Medicine</em>、<em>Frontiers in Immunology</em> 等期刊发表 30 余篇学术论文。</p>
+      <p>2019 年创立 Genomab Biotech（www.genomab.com）并担任 CEO。Genomab 致力于下一代免疫系统人源化动物模型与 AI 驱动的新药研发，已开发数十种免疫系统人源化小鼠模型，并构建 InSynBio AI 平台，用于抗体与细胞治疗设计、可开发性评估及转化医学研究。</p>
+    </div>
+  </div>
+
+  <h2>报告摘要</h2>
+  <p class="abstract">
+    本报告将介绍<strong>下一代免疫系统人源化小鼠</strong>及<strong>InSynBio AI 制药研发平台</strong>。第一部分涵盖先进人源化小鼠模型（如 PBMC 人源化、HSC 人源化等）的开发及其在转化医学中的应用，包括临床抗体药物（如检查点抗体、双特异性抗体、ADCC 抗体及自免相关抗体）的药效与安全性评估，溶瘤病毒与 TIL 疗法、实体瘤 CAR-T 药效验证及肿瘤疫苗研究。第二部分将介绍<strong>InSynBio AI 平台</strong>：该平台融合临床与科学文献数据与机器学习，支持 AI 辅助抗体人源化、双特异性与 CAR-T 设计、可开发性评估，以及干湿结合的新药发现与转化流程。报告将阐述下一代人源化模型与 InSynBio AI 平台如何共同支撑临床前验证与 AI 驱动的新药创新。
+  </p>
+
+  <p class="footer">学术报告 · 香港大学 · Genomab Biotech</p>
+</body>
+</html>

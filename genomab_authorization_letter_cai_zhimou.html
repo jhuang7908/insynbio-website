@@ -1,0 +1,591 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Letter of Authorization – Genomab Biotech Inc.</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,600;1,400&family=Inter:wght@400;500;600&display=swap');
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Inter', 'Arial', sans-serif;
+      font-size: 10.5pt;
+      color: #1a1a2e;
+      background: #f5f6fa;
+    }
+
+    .page {
+      width: 210mm;
+      min-height: 297mm;
+      margin: 24px auto;
+      background: #ffffff;
+      padding: 18mm 20mm 16mm 20mm;
+      box-shadow: 0 4px 32px rgba(0,0,0,0.10);
+      border-radius: 3px;
+      position: relative;
+    }
+
+    /* ── Header ── */
+    .header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      border-bottom: 2.5px solid #1b3a8c;
+      padding-bottom: 10px;
+      margin-bottom: 18px;
+    }
+    .header img {
+      height: 52px;
+      object-fit: contain;
+    }
+    .header-info {
+      text-align: right;
+      font-size: 8.5pt;
+      color: #444;
+      line-height: 1.6;
+    }
+    .header-info strong {
+      font-size: 9pt;
+      color: #1b3a8c;
+    }
+
+    /* ── Document title ── */
+    .doc-title {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .doc-title h1 {
+      font-family: 'EB Garamond', Georgia, serif;
+      font-size: 20pt;
+      font-weight: 600;
+      color: #1b3a8c;
+      letter-spacing: 0.04em;
+      margin-bottom: 4px;
+    }
+    .doc-title .subtitle {
+      font-size: 11pt;
+      color: #444;
+      letter-spacing: 0.08em;
+    }
+    .doc-title .ref-line {
+      margin-top: 10px;
+      font-size: 9pt;
+      color: #888;
+    }
+
+    /* ── Meta row ── */
+    .meta-row {
+      display: flex;
+      justify-content: space-between;
+      font-size: 9pt;
+      color: #555;
+      margin-bottom: 18px;
+      border-top: 1px solid #e0e4ef;
+      border-bottom: 1px solid #e0e4ef;
+      padding: 7px 0;
+    }
+
+    /* ── Body text ── */
+    .salutation {
+      margin-bottom: 12px;
+      font-size: 10pt;
+    }
+    .intro {
+      margin-bottom: 18px;
+      line-height: 1.75;
+      text-align: justify;
+    }
+
+    /* ── Section ── */
+    h2 {
+      font-size: 10pt;
+      font-weight: 600;
+      color: #1b3a8c;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin: 18px 0 8px 0;
+      border-left: 3px solid #2eb5d8;
+      padding-left: 8px;
+    }
+    p {
+      line-height: 1.75;
+      margin-bottom: 8px;
+      text-align: justify;
+    }
+
+    /* ── Scope list ── */
+    .scope-list {
+      margin: 0 0 10px 0;
+      padding: 0;
+      list-style: none;
+    }
+    .scope-list li {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 8px;
+      line-height: 1.65;
+    }
+    .scope-list li .bullet {
+      flex-shrink: 0;
+      width: 22px;
+      height: 22px;
+      background: #1b3a8c;
+      color: #fff;
+      font-size: 8pt;
+      font-weight: 600;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 2px;
+    }
+    .scope-list li .content strong {
+      display: block;
+      font-weight: 600;
+      color: #1b3a8c;
+      margin-bottom: 2px;
+    }
+    .scope-list li .content .sub {
+      font-size: 9pt;
+      color: #555;
+      padding-left: 10px;
+      margin-top: 3px;
+    }
+    .scope-list li .content .sub span {
+      display: block;
+    }
+
+    /* ── Limitation bullets ── */
+    .limit-list {
+      margin: 0 0 10px 16px;
+      padding: 0;
+    }
+    .limit-list li {
+      margin-bottom: 6px;
+      line-height: 1.65;
+    }
+
+    /* ── Term box ── */
+    .term-box {
+      background: #f0f4ff;
+      border: 1px solid #c5d0f0;
+      border-radius: 6px;
+      padding: 10px 14px;
+      margin: 8px 0;
+      font-size: 10pt;
+    }
+    .term-box span {
+      font-weight: 600;
+      color: #1b3a8c;
+    }
+
+    /* ── Signature block ── */
+    .signature-block {
+      margin-top: 24px;
+      border-top: 1.5px solid #1b3a8c;
+      padding-top: 16px;
+    }
+    .sig-company {
+      font-size: 11pt;
+      font-weight: 700;
+      color: #1b3a8c;
+      margin-bottom: 22px;
+    }
+    .sig-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin-bottom: 16px;
+    }
+    .sig-field label {
+      display: block;
+      font-size: 8pt;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #888;
+      margin-bottom: 4px;
+    }
+    .sig-field .sig-line {
+      border-bottom: 1px solid #333;
+      height: 28px;
+      margin-bottom: 4px;
+    }
+    .sig-field .sig-value {
+      font-size: 10pt;
+      font-weight: 600;
+      color: #1a1a2e;
+      padding-left: 2px;
+    }
+    .docusign-note {
+      margin-top: 14px;
+      font-size: 8pt;
+      color: #888;
+      border: 1px dashed #c5d0f0;
+      padding: 7px 12px;
+      border-radius: 4px;
+      background: #fafbff;
+    }
+    .docusign-note strong {
+      color: #2a5bd7;
+    }
+
+    /* ── Footer ── */
+    .footer {
+      margin-top: 28px;
+      border-top: 1px solid #e0e4ef;
+      padding-top: 8px;
+      display: flex;
+      justify-content: space-between;
+      font-size: 7.5pt;
+      color: #aaa;
+    }
+
+    @media print {
+      body { background: white; }
+      .page { margin: 0; box-shadow: none; border-radius: 0; }
+    }
+  
+    /* Standardized Global Header Styles */
+    .top-header { display: flex; align-items: center; justify-content: space-between; padding: 12px 32px; background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(12px); border-bottom: 2px solid rgba(13, 148, 136, 0.1); position: fixed; width: 100%; top: 0; z-index: 2000; gap: 12px; }
+    .top-header .brand { display: flex; align-items: center; }
+    .top-header .brand a { text-decoration: none; color: inherit; display: flex; align-items: center; gap: 10px; font-family: 'Cormorant Garamond', serif; font-weight: 700; font-size: 26px; }
+    .top-header .slogan { font-size: 14px; color: var(--text-muted); padding-left: 14px; border-left: 1px solid #e5e7eb; margin-left: 0; font-family: 'Inter', sans-serif; white-space: nowrap; font-weight: 600; letter-spacing: 0.02em; }
+    .top-header-nav { display: flex; align-items: center; gap: 6px; }
+    .top-header-nav a { padding: 8px 16px; font-size: 15px; color: var(--text-muted); text-decoration: none; border-radius: 20px; transition: all 0.2s ease; font-weight: 600; }
+    .top-header-nav a:hover { color: var(--primary); background: rgba(13, 148, 136, 0.06); }
+    .nav-dropdown { position: relative; }
+    .nav-dropdown > a::after { content: ' ▾'; font-size: 10px; opacity: 0.6; margin-left: 4px; }
+    .dropdown-menu { position: absolute; top: 100%; left: 50%; transform: translateX(-50%) translateY(10px); min-width: 240px; background: #fff; border: 1px solid rgba(0,0,0,0.06); border-radius: 12px; padding: 8px; box-shadow: 0 10px 40px -10px rgba(0,0,0,0.15); opacity: 0; visibility: hidden; transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1); z-index: 2001; }
+    .nav-dropdown:hover .dropdown-menu { opacity: 1; visibility: visible; transform: translateX(-50%) translateY(0); }
+    .dropdown-menu a { display: block; padding: 12px 14px; color: var(--text); border-radius: 8px; text-decoration: none; text-align: left; }
+    .dropdown-menu a:hover { background: #f9fafb; }
+    .menu-title { display: block; font-weight: 700; font-size: 14px; color: #111827; margin-bottom: 2px; }
+    .menu-desc { display: block; font-size: 12px; color: #6b7280; font-weight: 400; }
+
+        body { padding-top: 72px; }
+    </style>
+</head>
+<body>
+  <header class="top-header">
+    <div class="brand">
+      <a href="index.html">
+        <svg width="34" height="28" viewBox="0 0 32 30" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink:0;">
+          <path d="M16 2L2 10V22L16 28L30 22V10L16 2Z" fill="#0d9488" fill-opacity="0.05" stroke="#0d9488" stroke-width="1" stroke-opacity="0.3"/>
+          <path d="M14.5 24 V 16" stroke="#0d9488" stroke-width="2.5" stroke-linecap="round"/>
+          <path d="M17.5 24 V 16" stroke="#f59e0b" stroke-width="2.5" stroke-linecap="round"/>
+          <line x1="13" y1="19" x2="19" y2="19" stroke="#9ca3af" stroke-width="1.5" stroke-linecap="round"/>
+          <line x1="13" y1="21" x2="19" y2="21" stroke="#9ca3af" stroke-width="1.5" stroke-linecap="round"/>
+          <path d="M14.5 16 L 8 7" stroke="#0d9488" stroke-width="2.5" stroke-linecap="round"/>
+          <path d="M10 16 L 3.5 7" stroke="#2dd4bf" stroke-width="2.5" stroke-linecap="round"/>
+          <path d="M17.5 16 L 24 7" stroke="#f59e0b" stroke-width="2.5" stroke-linecap="round"/>
+          <rect x="21.5" y="3.5" width="5" height="5" rx="1" fill="#f59e0b" transform="rotate(45 24 6)"/>
+        </svg>
+        <span><span style="color:#111827">In</span><span style="color:var(--primary); font-style:italic">Syn</span><span style="color:#111827">Bio</span></span>
+      </a>
+      <span class="slogan">AI for Life Sciences</span>
+    </div>
+    <nav class="top-header-nav">
+      <a href="index.html">Home</a>
+      <a href="index.html#about">About Us</a>
+      <div class="nav-dropdown" tabindex="0">
+        <a href="index.html#services">Services</a>
+        <div class="dropdown-menu">
+          <a href="InSynBio_Antibody_Developability_Assessment_Page.html">
+            <span class="menu-title">Antibody</span>
+            <span class="menu-desc">Structure-based Development</span>
+          </a>
+          <a href="InSynBio_CART_Design_Page.html">
+            <span class="menu-title">CAR-T</span>
+            <span class="menu-desc">Smart CAR-T Design</span>
+          </a>
+          <a href="InSynBio_Bispecific_Antibody_Design_Page.html">
+            <span class="menu-title">Bispecific</span>
+            <span class="menu-desc">Multispecific Engineering</span>
+          </a>
+        </div>
+      </div>
+      <a href="index.html#case-studies">Case Studies</a>
+      <a href="InSynBio_OurTech.html" style="color: var(--primary); font-weight: 700;">Our Tech</a>
+      <a href="index.html#workflow">Workflow</a>
+      <a href="index.html#faq">FAQ</a>
+      <a href="index.html#contact">Contact Us</a>
+    </nav>
+  </header>
+<div class="page">
+
+  <!-- ══ HEADER ══ -->
+  <div class="header">
+    <img src="images/genomab_logo.png" alt="Genomab Biotech Inc." />
+    <div class="header-info">
+      <strong>Genomab Biotech Inc.</strong><br/>
+      423 W 127th St, New York, NY 10027<br/>
+      United States of America<br/>
+      www.genomab.com
+    </div>
+  </div>
+
+  <!-- ══ TITLE ══ -->
+  <div class="doc-title">
+    <h1>Letter of Authorization</h1>
+    <div class="subtitle">授权书</div>
+    <div class="ref-line">Ref No.: GBI-LOA-2026-001 &nbsp;|&nbsp; Effective: March 1, 2026</div>
+  </div>
+
+  <!-- ══ META ══ -->
+  <div class="meta-row">
+    <span><strong>Date:</strong> March 1, 2026</span>
+    <span><strong>Re:</strong> Appointment of China Industrialization Advisor</span>
+    <span><strong>To:</strong> Professor Zhimou Xue</span>
+  </div>
+
+  <!-- ══ ENGLISH VERSION ══ -->
+  <p class="salutation">To Whom It May Concern,</p>
+
+  <p class="intro">
+    This Letter of Authorization is issued by <strong>Genomab Biotech Inc.</strong> ("the Company"),
+    a biotechnology company incorporated in the State of New York, United States of America,
+    with its principal place of business at 423 W 127th St, New York, NY 10027.
+    The Company focuses on humanized immune system models, antibody engineering, and
+    AI-driven drug design platforms for next-generation biotherapeutics.
+  </p>
+
+  <h2>1. Appointment</h2>
+  <p>
+    The Company hereby formally appoints <strong>Professor Zhimou Xue</strong> as the
+    <strong>China Industrialization Advisor of Genomab Biotech Inc.</strong>,
+    effective March 1, 2026.
+  </p>
+
+  <h2>2. Scope of Authorization</h2>
+  <ul class="scope-list">
+    <li>
+      <div class="bullet">1</div>
+      <div class="content">
+        <strong>Industrial Strategy Development</strong>
+        Provide strategic consulting for the commercialization of humanized immune system model platforms and related technologies in China.
+      </div>
+    </li>
+    <li>
+      <div class="bullet">2</div>
+      <div class="content">
+        <strong>Partnership &amp; Collaboration Development</strong>
+        Facilitate introductions and collaborations with academic institutions, research organizations, pharmaceutical companies, and CRO platforms in China.
+      </div>
+    </li>
+    <li>
+      <div class="bullet">3</div>
+      <div class="content">
+        <strong>Technology Translation &amp; Commercialization</strong>
+        Support the application and commercial deployment of the following technology areas:
+        <div class="sub">
+          <span>• Humanized immune system animal models</span>
+          <span>• Companion animal therapeutics (including pet antibody drug development)</span>
+        </div>
+      </div>
+    </li>
+    <li>
+      <div class="bullet">4</div>
+      <div class="content">
+        <strong>Ecosystem Development</strong>
+        Assist in building an industry network and identifying application scenarios around the Company's core platforms.
+      </div>
+    </li>
+  </ul>
+
+  <h2>3. Limitations</h2>
+  <ul class="limit-list">
+    <li>This authorization is <strong>advisory in nature only</strong> and does not create an employment or labor relationship.</li>
+    <li>Professor Zhimou Xue is <strong>not authorized</strong> to execute contracts, make financial commitments, or assume legal obligations on behalf of the Company without prior written approval.</li>
+    <li>All commercial agreements and major business decisions require formal approval by Genomab Biotech Inc.</li>
+  </ul>
+
+  <h2>4. Term</h2>
+  <div class="term-box">
+    This authorization is effective from <span>March 1, 2026</span> and shall remain in effect through
+    <span>February 28, 2027</span>, unless earlier terminated by written notice.
+    The parties may mutually agree to renew upon expiration.
+  </div>
+
+  <h2>5. Purpose</h2>
+  <p>
+    This Letter is issued to facilitate academic exchanges, industry partnership discussions, and relevant
+    external communications. It does not constitute or replace a legally binding contract.
+  </p>
+
+  <!-- ══ SIGNATURE – EN ══ -->
+  <div class="signature-block">
+    <div class="sig-company">Genomab Biotech Inc.</div>
+    <div class="sig-grid">
+      <div class="sig-field">
+        <label>Authorized Signatory</label>
+        <div class="sig-line"></div>
+        <div class="sig-value">Jing Huang（黄菁）</div>
+      </div>
+      <div class="sig-field">
+        <label>Title</label>
+        <div class="sig-line"></div>
+        <div class="sig-value">Chief Executive Officer (CEO)</div>
+      </div>
+      <div class="sig-field">
+        <label>Date</label>
+        <div class="sig-line"></div>
+        <div class="sig-value">March 1, 2026</div>
+      </div>
+      <div class="sig-field">
+        <label>Email</label>
+        <div class="sig-line"></div>
+        <div class="sig-value">jing@genomab.com</div>
+      </div>
+    </div>
+    <div class="docusign-note">
+      <strong>DocuSign</strong> &nbsp;|&nbsp; Signed electronically via DocuSign &nbsp;|&nbsp;
+      Envelope ID: ________________________________
+    </div>
+  </div>
+
+  <!-- ══ FOOTER – PAGE 1 ══ -->
+  <div class="footer">
+    <span>Genomab Biotech Inc. &nbsp;|&nbsp; 423 W 127th St, New York, NY 10027, USA &nbsp;|&nbsp; www.genomab.com</span>
+    <span>GBI-LOA-2026-001 &nbsp;|&nbsp; Page 1 of 2</span>
+  </div>
+
+</div><!-- end page 1 -->
+
+<!-- ══════════════════════════════════════════ PAGE 2 — CHINESE ══ -->
+<div class="page">
+
+  <!-- ══ HEADER ══ -->
+  <div class="header">
+    <img src="images/genomab_logo.png" alt="Genomab Biotech Inc." />
+    <div class="header-info">
+      <strong>Genomab Biotech Inc.</strong><br/>
+      423 W 127th St, New York, NY 10027<br/>
+      United States of America<br/>
+      www.genomab.com
+    </div>
+  </div>
+
+  <!-- ══ CHINESE VERSION ══ -->
+  <div class="doc-title" style="margin-bottom:14px;">
+    <div class="subtitle" style="font-size:14pt;font-weight:600;color:#1b3a8c;">授权书（中文版）</div>
+    <div class="ref-line">文件编号：GBI-LOA-2026-001 &nbsp;|&nbsp; 生效日期：2026年3月1日</div>
+  </div>
+
+  <div class="meta-row">
+    <span><strong>日期：</strong>2026年3月1日</span>
+    <span><strong>事由：</strong>中国区产业化顾问任命</span>
+    <span><strong>致：</strong>薛智谋教授</span>
+  </div>
+
+  <p class="salutation">致相关方：</p>
+
+  <p class="intro">
+    本授权书由 <strong>Genomab Biotech Inc.</strong>（以下简称"本公司"）签发。
+    本公司为依据美国纽约州法律注册成立的生物技术公司，主要办公地址为
+    423 W 127th St, New York, NY 10027，美国。
+    本公司专注于免疫系统人源化模型、抗体工程及 AI 驱动药物设计平台的研发与产业化。
+  </p>
+
+  <h2>一、任命</h2>
+  <p>
+    本公司特此正式任命 <strong>薛智谋教授</strong> 担任
+    <strong>Genomab Biotech Inc. 中国区产业化顾问（China Industrialization Advisor）</strong>，
+    自 2026年3月1日起生效。
+  </p>
+
+  <h2>二、授权范围</h2>
+  <ul class="scope-list">
+    <li>
+      <div class="bullet">1</div>
+      <div class="content">
+        <strong>产业化战略与路径设计</strong>
+        为免疫系统人源化模型平台及相关技术在中国的产业化提供专业咨询与战略建议。
+      </div>
+    </li>
+    <li>
+      <div class="bullet">2</div>
+      <div class="content">
+        <strong>合作交流与资源整合</strong>
+        推动与中国高校、科研机构、生物医药企业及 CRO 平台的合作交流与资源对接。
+      </div>
+    </li>
+    <li>
+      <div class="bullet">3</div>
+      <div class="content">
+        <strong>技术转化与产业落地</strong>
+        促进以下方向的技术应用与产业化推进：
+        <div class="sub">
+          <span>• 人源化免疫系统动物模型平台</span>
+          <span>• 宠物医药（包括宠物抗体药物开发等）</span>
+        </div>
+      </div>
+    </li>
+    <li>
+      <div class="bullet">4</div>
+      <div class="content">
+        <strong>产业生态构建支持</strong>
+        协助构建围绕公司核心技术的产业合作网络与应用场景。
+      </div>
+    </li>
+  </ul>
+
+  <h2>三、授权限制</h2>
+  <ul class="limit-list">
+    <li>本授权为<strong>顾问性质授权</strong>，不构成本公司与薛智谋教授之间的劳动关系或雇佣关系；</li>
+    <li>未经本公司事先书面授权，薛智谋教授<strong>无权</strong>以本公司名义签署合同、作出财务承诺或承担法律义务；</li>
+    <li>所有商业合作与重大业务决策须经 Genomab Biotech Inc. 正式审批确认。</li>
+  </ul>
+
+  <h2>四、授权期限</h2>
+  <div class="term-box">
+    本授权自 <span>2026年3月1日</span> 起生效，至 <span>2027年2月28日</span> 止。
+    除非一方以书面通知提前终止，期满后双方可协商续签。
+  </div>
+
+  <h2>五、用途说明</h2>
+  <p>
+    本授权书用于学术交流、产业合作沟通及相关对外说明，不作为具有法律约束力合同之替代文件。
+  </p>
+
+  <!-- ══ SIGNATURE – ZH ══ -->
+  <div class="signature-block">
+    <div class="sig-company">Genomab Biotech Inc.</div>
+    <div class="sig-grid">
+      <div class="sig-field">
+        <label>授权签署人 Authorized Signatory</label>
+        <div class="sig-line"></div>
+        <div class="sig-value">Jing Huang（黄菁）</div>
+      </div>
+      <div class="sig-field">
+        <label>职务 Title</label>
+        <div class="sig-line"></div>
+        <div class="sig-value">首席执行官 (CEO)</div>
+      </div>
+      <div class="sig-field">
+        <label>日期 Date</label>
+        <div class="sig-line"></div>
+        <div class="sig-value">2026年3月1日</div>
+      </div>
+      <div class="sig-field">
+        <label>邮箱 Email</label>
+        <div class="sig-line"></div>
+        <div class="sig-value">jing@genomab.com</div>
+      </div>
+    </div>
+    <div class="docusign-note">
+      <strong>DocuSign 电子签名</strong> &nbsp;|&nbsp; 本文件通过 DocuSign 完成电子签署 &nbsp;|&nbsp;
+      Envelope ID: ________________________________
+    </div>
+  </div>
+
+  <!-- ══ FOOTER – PAGE 2 ══ -->
+  <div class="footer">
+    <span>Genomab Biotech Inc. &nbsp;|&nbsp; 423 W 127th St, New York, NY 10027, USA &nbsp;|&nbsp; www.genomab.com</span>
+    <span>GBI-LOA-2026-001 &nbsp;|&nbsp; Page 2 of 2</span>
+  </div>
+
+</div><!-- end page 2 -->
+</body>
+</html>

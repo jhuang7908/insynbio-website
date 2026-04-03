@@ -1,0 +1,142 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Academic Seminar — HKU | Genomab Biotech</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: "Segoe UI", "Microsoft JhengHei", sans-serif;
+      background: #fff;
+      color: #222;
+      padding: 32px 40px 40px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    h1 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #1a5276;
+      margin-bottom: 8px;
+      border-bottom: 2px solid #1a5276;
+      padding-bottom: 8px;
+    }
+    .subtitle { font-size: 0.95rem; color: #555; margin-bottom: 20px; }
+    .meta { font-size: 0.9rem; color: #444; margin-bottom: 24px; line-height: 1.6; }
+    .meta strong { color: #222; }
+    .speaker-block {
+      display: flex;
+      gap: 24px;
+      align-items: flex-start;
+      margin-bottom: 24px;
+      padding: 16px;
+      background: #f8f9fa;
+      border-radius: 8px;
+    }
+    .speaker-photo {
+      flex-shrink: 0;
+      width: 140px;
+      height: 170px;
+      object-fit: cover;
+      border-radius: 6px;
+      border: 1px solid #ddd;
+    }
+    .speaker-bio { flex: 1; font-size: 0.9rem; line-height: 1.65; color: #333; text-align: left; }
+    .speaker-bio p { margin-bottom: 8px; }
+    h2 { font-size: 1.05rem; color: #1a5276; margin: 20px 0 10px; }
+    .abstract { font-size: 0.9rem; line-height: 1.7; color: #333; text-align: justify; }
+    .footer { margin-top: 24px; font-size: 0.85rem; color: #666; text-align: center; }
+  
+    /* Standardized Global Header Styles */
+    .top-header { display: flex; align-items: center; justify-content: space-between; padding: 12px 32px; background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(12px); border-bottom: 2px solid rgba(13, 148, 136, 0.1); position: fixed; width: 100%; top: 0; z-index: 2000; gap: 12px; }
+    .top-header .brand { display: flex; align-items: center; }
+    .top-header .brand a { text-decoration: none; color: inherit; display: flex; align-items: center; gap: 10px; font-family: 'Cormorant Garamond', serif; font-weight: 700; font-size: 26px; }
+    .top-header .slogan { font-size: 14px; color: var(--text-muted); padding-left: 14px; border-left: 1px solid #e5e7eb; margin-left: 0; font-family: 'Inter', sans-serif; white-space: nowrap; font-weight: 600; letter-spacing: 0.02em; }
+    .top-header-nav { display: flex; align-items: center; gap: 6px; }
+    .top-header-nav a { padding: 8px 16px; font-size: 15px; color: var(--text-muted); text-decoration: none; border-radius: 20px; transition: all 0.2s ease; font-weight: 600; }
+    .top-header-nav a:hover { color: var(--primary); background: rgba(13, 148, 136, 0.06); }
+    .nav-dropdown { position: relative; }
+    .nav-dropdown > a::after { content: ' ▾'; font-size: 10px; opacity: 0.6; margin-left: 4px; }
+    .dropdown-menu { position: absolute; top: 100%; left: 50%; transform: translateX(-50%) translateY(10px); min-width: 240px; background: #fff; border: 1px solid rgba(0,0,0,0.06); border-radius: 12px; padding: 8px; box-shadow: 0 10px 40px -10px rgba(0,0,0,0.15); opacity: 0; visibility: hidden; transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1); z-index: 2001; }
+    .nav-dropdown:hover .dropdown-menu { opacity: 1; visibility: visible; transform: translateX(-50%) translateY(0); }
+    .dropdown-menu a { display: block; padding: 12px 14px; color: var(--text); border-radius: 8px; text-decoration: none; text-align: left; }
+    .dropdown-menu a:hover { background: #f9fafb; }
+    .menu-title { display: block; font-weight: 700; font-size: 14px; color: #111827; margin-bottom: 2px; }
+    .menu-desc { display: block; font-size: 12px; color: #6b7280; font-weight: 400; }
+
+        body { padding-top: 72px; }
+    </style>
+</head>
+<body>
+  <header class="top-header">
+    <div class="brand">
+      <a href="index.html">
+        <svg width="34" height="28" viewBox="0 0 32 30" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink:0;">
+          <path d="M16 2L2 10V22L16 28L30 22V10L16 2Z" fill="#0d9488" fill-opacity="0.05" stroke="#0d9488" stroke-width="1" stroke-opacity="0.3"/>
+          <path d="M14.5 24 V 16" stroke="#0d9488" stroke-width="2.5" stroke-linecap="round"/>
+          <path d="M17.5 24 V 16" stroke="#f59e0b" stroke-width="2.5" stroke-linecap="round"/>
+          <line x1="13" y1="19" x2="19" y2="19" stroke="#9ca3af" stroke-width="1.5" stroke-linecap="round"/>
+          <line x1="13" y1="21" x2="19" y2="21" stroke="#9ca3af" stroke-width="1.5" stroke-linecap="round"/>
+          <path d="M14.5 16 L 8 7" stroke="#0d9488" stroke-width="2.5" stroke-linecap="round"/>
+          <path d="M10 16 L 3.5 7" stroke="#2dd4bf" stroke-width="2.5" stroke-linecap="round"/>
+          <path d="M17.5 16 L 24 7" stroke="#f59e0b" stroke-width="2.5" stroke-linecap="round"/>
+          <rect x="21.5" y="3.5" width="5" height="5" rx="1" fill="#f59e0b" transform="rotate(45 24 6)"/>
+        </svg>
+        <span><span style="color:#111827">In</span><span style="color:var(--primary); font-style:italic">Syn</span><span style="color:#111827">Bio</span></span>
+      </a>
+      <span class="slogan">AI for Life Sciences</span>
+    </div>
+    <nav class="top-header-nav">
+      <a href="index.html">Home</a>
+      <a href="index.html#about">About Us</a>
+      <div class="nav-dropdown" tabindex="0">
+        <a href="index.html#services">Services</a>
+        <div class="dropdown-menu">
+          <a href="InSynBio_Antibody_Developability_Assessment_Page.html">
+            <span class="menu-title">Antibody</span>
+            <span class="menu-desc">Structure-based Development</span>
+          </a>
+          <a href="InSynBio_CART_Design_Page.html">
+            <span class="menu-title">CAR-T</span>
+            <span class="menu-desc">Smart CAR-T Design</span>
+          </a>
+          <a href="InSynBio_Bispecific_Antibody_Design_Page.html">
+            <span class="menu-title">Bispecific</span>
+            <span class="menu-desc">Multispecific Engineering</span>
+          </a>
+        </div>
+      </div>
+      <a href="index.html#case-studies">Case Studies</a>
+      <a href="InSynBio_OurTech.html" style="color: var(--primary); font-weight: 700;">Our Tech</a>
+      <a href="index.html#workflow">Workflow</a>
+      <a href="index.html#faq">FAQ</a>
+      <a href="index.html#contact">Contact Us</a>
+    </nav>
+  </header>
+  <h1>Academic Seminar — The University of Hong Kong</h1>
+  <p class="subtitle">Next-Generation Immune System Humanized Mice and the InSynBio AI Drug R&D Platform</p>
+  <div class="meta">
+    <strong>Speaker:</strong> Jing Huang, Ph.D. &nbsp;|&nbsp;
+    <strong>Affiliation:</strong> Genomab Biotech (www.genomab.com) &nbsp;|&nbsp;
+    <strong>Venue:</strong> The University of Hong Kong &nbsp;|&nbsp;
+    <strong>Date & Time:</strong> [To be confirmed]
+  </div>
+
+  <div class="speaker-block">
+    <img src="speaker_photo_hku.png" alt="Speaker: Jing Huang" class="speaker-photo">
+    <div class="speaker-bio">
+      <h2>Speaker Biography</h2>
+      <p>Dr. Jing Huang received her Ph.D. in 2004 from the Institute of Zoology, Chinese Academy of Sciences. From 2004 to 2006 she conducted postdoctoral research at the Peking University Health Science Center under Academician Tanjun Tong. After 2006 she worked in the United States for 15 years at leading institutions including the Albert Einstein College of Medicine, the Aaron Diamond AIDS Research Center, The Rockefeller University, and Columbia University.</p>
+      <p>She is a member of Sigma Xi, the Genetics Society of America, and the American Aging Association, and has published more than 30 papers in journals such as <em>Science Translational Medicine</em> and <em>Frontiers in Immunology</em>. In 2019 she founded Genomab Biotech (www.genomab.com) and serves as CEO. Genomab focuses on next-generation immune system humanized animal models and AI-driven drug R&D. The company has developed dozens of immune system humanized mouse models and the InSynBio AI platform for antibody and cell therapy design, evaluation, and translational research.</p>
+    </div>
+  </div>
+
+  <h2>Abstract</h2>
+  <p class="abstract">
+    This seminar will introduce <strong>next-generation immune system humanized mice</strong> and the <strong>InSynBio AI drug R&D platform</strong>. The first part will cover the development and applications of advanced humanized mouse models (e.g., PBMC-humanized and HSC-based mice) in translational medicine, including efficacy and safety evaluation of antibody drugs (checkpoint inhibitors, bispecifics, ADCC, and autoimmune-related antibodies), oncolytic virus and TIL therapy, CAR-T for solid tumors, and tumor vaccine research. The second part will present the <strong>InSynBio AI platform</strong>, which integrates clinical and scientific data with machine learning to support AI-assisted antibody humanization, bispecific and CAR-T design, developability assessment, and dry-wet combined workflows for drug discovery and translation. The talk will highlight how next-generation humanized models and the InSynBio AI platform together support preclinical validation and AI-driven drug innovation.
+  </p>
+
+  <p class="footer">Academic Seminar · The University of Hong Kong · Genomab Biotech</p>
+</body>
+</html>

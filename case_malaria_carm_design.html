@@ -1,0 +1,823 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Case Study: Anti-CIDRα1 Dual-Binder CAR-Macrophage for High-Parasitemia P. falciparum Malaria | InSynBio</title>
+  <meta name="description" content="Rationally designed CAR-Macrophage construct targeting CIDRα1 on P. falciparum infected red blood cells — every design decision backed by the ACTES 11-layer decision cascade.">
+  <meta name="keywords" content="CAR-M, CAR-macrophage, malaria, P. falciparum, CIDRα1, PfEMP1, phagocytosis, mRNA-LNP, ACTES, dual binder, high parasitemia, InSynBio">
+  <meta name="robots" content="index, follow">
+  <meta name="robots" content="noai, noimageai">
+  <meta name="AI-Training" content="opt-out">
+  <link rel="canonical" href="https://www.insynbio.com/case_malaria_carm_design.html">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.insynbio.com/case_malaria_carm_design.html">
+  <meta property="og:title" content="Anti-CIDRα1 CAR-Macrophage for Malaria | InSynBio Case Study">
+  <meta property="og:description" content="A rationally designed CAR-Macrophage construct addressing high-parasitemia P. falciparum malaria with the ACTES 11-layer decision cascade.">
+  <meta property="og:image" content="https://www.insynbio.com/images/hero-bg.svg">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/lucide@0.378.0/dist/umd/lucide.min.js"></script>
+  <style>
+    :root {
+      --primary: #0d9488; --primary-dark: #0f766e; --primary-light: #5eead4;
+      --accent: #f59e0b; --accent-red: #ef4444;
+      --text: #111827; --text-muted: #4b5563;
+      --border: #e5e7eb; --bg: #f9fafb; --bg-white: #ffffff;
+      --success: #16a34a; --warn: #d97706;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text);
+      line-height: 1.7; -webkit-font-smoothing: antialiased; padding-top: 72px; }
+
+    /* ─── HEADER ─── */
+    .top-header { display: flex; align-items: center; justify-content: space-between;
+      padding: 12px 32px; background: rgba(255,255,255,0.95); backdrop-filter: blur(12px);
+      border-bottom: 2px solid rgba(13,148,136,0.1); position: fixed; width: 100%;
+      top: 0; z-index: 2000; gap: 12px; flex-wrap: wrap; }
+    .top-header .brand { display: flex; align-items: center; }
+    .top-header .brand a { text-decoration: none; display: flex; align-items: center; gap: 10px;
+      font-family: 'Cormorant Garamond', serif; font-weight: 700; font-size: 26px; color: #111827; }
+    .top-header .slogan { font-size: 14px; color: var(--text-muted); padding-left: 14px;
+      border-left: 1px solid var(--border); margin-left: 14px; font-weight: 600;
+      letter-spacing: 0.02em; white-space: nowrap; }
+    .top-header-nav { display: flex; align-items: center; gap: 6px; }
+    .top-header-nav a { padding: 8px 16px; font-size: 15px; color: var(--text-muted);
+      text-decoration: none; border-radius: 20px; transition: all 0.2s; font-weight: 600; }
+    .top-header-nav a:hover { color: var(--primary); background: rgba(13,148,136,0.06); }
+    .nav-dropdown { position: relative; }
+    .nav-dropdown > a::after { content: ' ▾'; font-size: 10px; opacity: 0.6; }
+    .dropdown-menu { position: absolute; top: 100%; left: 50%;
+      transform: translateX(-50%) translateY(10px); min-width: 240px; background: #fff;
+      border: 1px solid rgba(0,0,0,0.06); border-radius: 12px; padding: 10px;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.1); opacity: 0; visibility: hidden;
+      transition: all 0.2s; z-index: 2001; }
+    .nav-dropdown:hover .dropdown-menu { opacity: 1; visibility: visible; transform: translateX(-50%) translateY(0); }
+    .dropdown-menu a { display: block; padding: 12px 14px; color: var(--text); border-radius: 8px;
+      text-decoration: none; text-align: left; }
+    .dropdown-menu a:hover { background: #f9fafb; }
+    .menu-title { display: block; font-weight: 700; font-size: 14px; color: #111827; margin-bottom: 2px; }
+    .menu-desc { display: block; font-size: 12px; color: #6b7280; font-weight: 400; }
+
+    /* ─── HERO ─── */
+    .case-hero { background: url('images/hero-bg.svg') center/cover no-repeat, linear-gradient(135deg, #0d4a44 0%, #0d7a70 55%, #0d9488 100%);
+      padding: 80px 32px 100px; text-align: center; }
+    .hero-inner { max-width: 820px; margin: 0 auto; }
+    .hero-badge { display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.2);
+      color: #a7f3d0; padding: 6px 16px; border-radius: 20px;
+      font-size: 12px; font-weight: 700; letter-spacing: 1.5px;
+      text-transform: uppercase; margin-bottom: 24px; }
+    .case-hero h1 { font-family: 'Cormorant Garamond', serif; font-size: 52px; font-weight: 700;
+      line-height: 1.1; color: #fff; margin-bottom: 20px; letter-spacing: -0.02em; }
+    .case-hero h1 em { color: #6ee7b7; font-style: italic; }
+    .case-hero .subtitle { font-size: 18px; color: #a7f3d0; max-width: 600px;
+      margin: 0 auto 40px; }
+    .hero-stats { display: flex; justify-content: center; flex-wrap: wrap;
+      background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 16px; padding: 24px 32px; max-width: 700px; margin: 0 auto; }
+    .hero-stat { flex: 1; min-width: 120px; padding: 8px 16px; text-align: center;
+      border-right: 1px solid rgba(255,255,255,0.12); }
+    .hero-stat:last-child { border-right: none; }
+    .hero-stat .val { font-size: 28px; font-weight: 800; color: #fff;
+      line-height: 1; margin-bottom: 4px; }
+    .hero-stat .val.green { color: #6ee7b7; }
+    .hero-stat .lbl { font-size: 11px; color: #6ee7b7; font-weight: 600;
+      text-transform: uppercase; letter-spacing: 0.5px; }
+
+    /* ─── LAYOUT ─── */
+    .page-body { padding: 64px 20px 80px; }
+    .container { max-width: 1000px; margin: 0 auto; }
+    section.section { padding: 60px 0; border-top: 1px solid var(--border); }
+    section.section:first-child { border-top: none; padding-top: 0; }
+
+    /* ─── SECTION TITLES ─── */
+    .section-label { display: inline-block; background: rgba(13,148,136,0.08);
+      color: var(--primary); padding: 5px 14px; border-radius: 20px;
+      font-size: 11px; font-weight: 700; letter-spacing: 1.5px;
+      text-transform: uppercase; margin-bottom: 12px; }
+    h2.section-title { font-family: 'Cormorant Garamond', serif; font-size: 36px;
+      font-weight: 700; color: var(--text); margin-bottom: 10px; line-height: 1.15; }
+    h2.section-title span { color: var(--primary); }
+    .section-intro { font-size: 16px; color: var(--text-muted); margin-bottom: 36px; max-width: 680px; }
+
+    /* ─── CARDS ─── */
+    .card { background: var(--bg-white); border: 1px solid var(--border);
+      border-radius: 16px; padding: 32px; box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+      margin-bottom: 24px; transition: transform 0.2s, box-shadow 0.2s; }
+    .card:hover { transform: translateY(-3px); box-shadow: 0 8px 28px rgba(0,0,0,0.09); }
+    .card h3 { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 700;
+      color: var(--text); margin-bottom: 12px; }
+    .card p { font-size: 15px; color: var(--text-muted); margin-bottom: 0; line-height: 1.7; }
+    .card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px; margin: 32px 0; }
+    .card-grid-4 { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      gap: 20px; margin: 32px 0; }
+
+    /* ─── TIMELINE ─── */
+    .timeline { position: relative; padding-left: 32px; margin: 32px 0; }
+    .timeline::before { content: ''; position: absolute; left: 8px; top: 0; bottom: 0;
+      width: 2px; background: linear-gradient(to bottom, var(--primary), var(--primary-light));
+      border-radius: 2px; }
+    .tl-item { position: relative; margin-bottom: 28px; }
+    .tl-item::before { content: ''; position: absolute; left: -28px; top: 6px;
+      width: 12px; height: 12px; border-radius: 50%; background: var(--primary);
+      border: 2px solid white; box-shadow: 0 0 0 3px rgba(13,148,136,0.2); }
+    .tl-step { font-size: 12px; font-weight: 700; color: var(--primary);
+      letter-spacing: 1px; margin-bottom: 3px; text-transform: uppercase; }
+    .tl-text { font-size: 15px; color: var(--text-muted); }
+    .tl-text strong { color: var(--text); }
+
+    /* ─── FLOW ─── */
+    .flow { display: flex; align-items: stretch; justify-content: center;
+      gap: 0; flex-wrap: nowrap; margin: 32px 0; overflow-x: auto; }
+    .flow-step { background: linear-gradient(135deg, rgba(13,148,136,0.08), rgba(94,234,212,0.06));
+      border: 1px solid rgba(13,148,136,0.2); border-radius: 12px; padding: 14px 12px;
+      text-align: center; min-width: 110px; flex: 1;
+      transition: transform 0.2s, box-shadow 0.2s; }
+    .flow-step:hover { transform: translateY(-3px); box-shadow: 0 8px 20px rgba(13,148,136,0.18); }
+    .flow-step .icon { font-size: 22px; width: 40px; height: 40px;
+      background: rgba(13,148,136,0.1); border-radius: 10px;
+      margin: 0 auto 8px; display: flex; align-items: center; justify-content: center; }
+    .flow-step .label { font-size: 11px; font-weight: 700; color: var(--primary);
+      text-transform: uppercase; letter-spacing: 0.8px; }
+    .flow-step .sub { font-size: 10.5px; color: var(--text-muted); margin-top: 3px; }
+    .flow-arrow { color: var(--primary); font-size: 20px; padding: 0 8px; opacity: 0.5;
+      align-self: center; flex-shrink: 0; }
+
+    /* ─── METRICS GRID ─── */
+    .metrics-grid { display: grid; grid-template-columns: repeat(4, 1fr);
+      gap: 12px; margin: 28px 0; }
+    .metric-card { background: var(--bg-white); border: 1px solid var(--border);
+      border-radius: 14px; padding: 22px; text-align: center;
+      transition: transform 0.2s, box-shadow 0.2s; }
+    .metric-card:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(0,0,0,0.08); }
+    .metric-card .metric-val { font-family: 'Cormorant Garamond', serif;
+      font-size: 36px; font-weight: 700; color: var(--primary);
+      line-height: 1; margin-bottom: 6px; }
+    .metric-card .metric-val.warn { color: var(--warn); }
+    .metric-card .metric-val.pass { color: var(--success); }
+    .metric-card .metric-val.neg  { color: var(--accent-red); }
+    .metric-card .metric-label { font-size: 12px; color: var(--text-muted);
+      font-weight: 600; text-transform: uppercase; letter-spacing: 0.8px; }
+    .metric-card .metric-sub { font-size: 11px; color: #9ca3af; margin-top: 4px; }
+
+    /* ─── TABLES ─── */
+    .table-wrap { overflow-x: auto; margin: 24px 0; border-radius: 12px;
+      box-shadow: 0 0 0 1px var(--border); }
+    table { width: 100%; border-collapse: collapse; font-size: 14px; }
+    th { background: #064e3b; color: white; padding: 14px 16px; text-align: left;
+      font-weight: 600; font-size: 12px; letter-spacing: 0.05em; text-transform: uppercase; }
+    th.center, td.center { text-align: center; }
+    td { padding: 12px 16px; border-bottom: 1px solid #f3f4f6;
+      color: var(--text-muted); vertical-align: middle; }
+    tr:last-child td { border-bottom: none; }
+    tr:nth-child(even) td { background: #fafafa; }
+    tbody tr:hover td { background: #f0fdfa !important; }
+    tr.highlight td { background: #f0fdf4 !important; font-weight: 600; }
+    tr.highlight td:first-child { border-left: 3px solid var(--primary); }
+    tr.dim td { opacity: 0.6; }
+    .badge { display: inline-block; padding: 3px 10px; border-radius: 10px;
+      font-size: 11px; font-weight: 700; }
+    .badge.pass { background: #dcfce7; color: #16a34a; }
+    .badge.warn { background: #fef3c7; color: #d97706; }
+    .badge.fail { background: #fee2e2; color: #dc2626; }
+    .badge.info { background: #dbeafe; color: #1d4ed8; }
+    .badge.best { background: rgba(13,148,136,0.1); color: var(--primary-dark); }
+    td strong { color: var(--text); }
+
+    /* ─── COMPARE ─── */
+    .compare-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin: 28px 0; }
+    .compare-col { border-radius: 14px; padding: 28px; }
+    .compare-col.before { background: #fff7ed; border: 1.5px solid #fed7aa; }
+    .compare-col.after  { background: linear-gradient(135deg, rgba(13,148,136,0.06),
+      rgba(94,234,212,0.04)); border: 1.5px solid rgba(13,148,136,0.25); }
+    .compare-col h4 { font-size: 13px; font-weight: 700; margin-bottom: 16px;
+      text-transform: uppercase; letter-spacing: 0.8px; }
+    .compare-col.before h4 { color: #92400e; }
+    .compare-col.after  h4 { color: var(--primary-dark); }
+    .compare-row { display: flex; justify-content: space-between; align-items: center;
+      padding: 10px 0; border-bottom: 1px solid rgba(0,0,0,0.06); font-size: 14px; }
+    .compare-row:last-child { border-bottom: none; }
+    .compare-row .key { color: var(--text-muted); font-size: 13px; }
+    .compare-row .val { font-weight: 700; color: var(--text); }
+    .compare-row .val.green { color: var(--success); }
+    .compare-row .val.red   { color: var(--accent-red); }
+    .compare-row .val.amber { color: var(--warn); }
+
+    /* ─── ALERT BOXES ─── */
+    .alert { border-radius: 10px; padding: 16px 20px; margin: 16px 0; font-size: 14px; }
+    .alert.insight { background: rgba(13,148,136,0.05); border-left: 4px solid var(--primary);
+      color: var(--text); }
+    .alert.warning { background: #fffbeb; border-left: 4px solid #f59e0b; color: #92400e; }
+    .alert.discovery { background: #f0fdf4; border-left: 4px solid #16a34a; color: #14532d; }
+    .alert b { font-weight: 700; }
+
+    /* ─── RESULT BANNER ─── */
+    .result-banner { background: linear-gradient(135deg, #0f766e, #0d9488);
+      border-radius: 16px; padding: 48px 40px; text-align: center; color: white; margin: 40px 0; }
+    .result-banner h3 { font-family: 'Cormorant Garamond', serif; font-size: 16px;
+      font-weight: 600; letter-spacing: 2px; text-transform: uppercase;
+      opacity: 0.8; margin-bottom: 20px; }
+    .result-kpis { display: flex; justify-content: center; flex-wrap: wrap; gap: 32px; margin-bottom: 24px; }
+    .result-kpi .k-val { font-family: 'Cormorant Garamond', serif; font-size: 56px;
+      font-weight: 700; color: #6ee7b7; line-height: 1; }
+    .result-kpi .k-label { font-size: 12px; color: rgba(255,255,255,0.75);
+      text-transform: uppercase; letter-spacing: 0.8px; margin-top: 4px; }
+    .result-banner p { font-size: 15px; opacity: 0.9; max-width: 620px; margin: 0 auto; }
+
+    /* ─── REFERENCES ─── */
+    .ref-list { counter-reset: ref; list-style: none; padding: 0; }
+    .ref-list li { counter-increment: ref; padding: 10px 0; border-bottom: 1px solid #f3f4f6;
+      font-size: 13.5px; color: var(--text-muted); line-height: 1.6; display: flex; align-items: baseline; gap: 10px; }
+    .ref-list li:last-child { border-bottom: none; }
+    .ref-list li::before { content: counter(ref) "."; font-weight: 700; color: var(--primary);
+      min-width: 24px; flex-shrink: 0; }
+    .ref-list li a { color: var(--primary); text-decoration: none; }
+    .ref-list li a:hover { text-decoration: underline; }
+    .badge-verified { display: inline-block; padding: 2px 8px; border-radius: 8px;
+      font-size: 10px; font-weight: 700; background: #dcfce7; color: #16a34a; margin-left: 6px; vertical-align: middle; }
+
+    /* ─── CTA ─── */
+    .cta-section { background: linear-gradient(150deg, #022c22 0%, #064e3b 50%, #065f46 100%);
+      border-radius: 20px; padding: 64px 40px; text-align: center; margin-top: 64px; color: white; }
+    .cta-section h2 { font-family: 'Cormorant Garamond', serif; font-size: 38px;
+      margin-bottom: 12px; color: white; }
+    .cta-section h2 span { color: #6ee7b7; }
+    .cta-section p { color: rgba(255,255,255,0.85); max-width: 500px;
+      margin: 0 auto 28px; font-size: 16px; }
+    .btn-row { display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; }
+    .btn { display: inline-flex; align-items: center; gap: 8px; padding: 14px 28px;
+      border-radius: 8px; font-size: 15px; font-weight: 700; text-decoration: none;
+      transition: all 0.25s; }
+    .btn-primary { background: white; color: var(--primary-dark);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.2); }
+    .btn-primary:hover { background: #f0fdf4; transform: translateY(-2px); }
+    .btn-secondary { background: transparent; color: white; border: 1.5px solid rgba(255,255,255,0.5); }
+    .btn-secondary:hover { background: rgba(255,255,255,0.1); border-color: white; transform: translateY(-2px); }
+
+    /* ─── FOOTER ─── */
+    .site-footer { padding: 32px 20px; text-align: center; font-size: 13px;
+      color: #9ca3af; background: #111827; }
+    .site-footer a { color: #6b7280; text-decoration: none; }
+    .site-footer a:hover { color: var(--primary); }
+
+    /* ─── REVEAL ─── */
+    .reveal { opacity: 0; transform: translateY(24px);
+      transition: all 0.7s cubic-bezier(0.16,1,0.3,1); }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 768px) {
+      .case-hero h1 { font-size: 36px; }
+      .hero-stats { flex-direction: column; }
+      .hero-stat { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.1); }
+      .compare-grid { grid-template-columns: 1fr; }
+      .flow { flex-wrap: wrap; }
+      .flow-step { flex: 1 1 40%; }
+      .flow-arrow { display: none; }
+      .metrics-grid { grid-template-columns: repeat(2, 1fr); }
+      .card-grid-4 { grid-template-columns: repeat(2, 1fr); }
+      .container { padding: 0 16px; }
+      .result-kpis { gap: 20px; }
+    }
+    @media (max-width: 600px) {
+      .top-header { padding: 12px 16px; flex-wrap: wrap; gap: 10px; }
+      .top-header-nav { order: 3; width: 100%; flex-wrap: wrap; gap: 4px;
+        border-top: 1px solid var(--border); padding-top: 8px; margin-top: 2px; }
+      .top-header-nav a { font-size: 13px; padding: 6px 10px; }
+      .case-hero h1 { font-size: 28px; }
+      .metrics-grid { grid-template-columns: 1fr 1fr; }
+      h2.section-title { font-size: 28px; }
+      .card { padding: 20px; }
+      .cta-section { padding: 36px 20px; }
+      .result-kpi .k-val { font-size: 40px; }
+      .card-grid-4 { grid-template-columns: 1fr; }
+    }
+  </style>
+  <meta name="citation_title" content="Rational Design of an Anti-CIDRα1 CAR-Macrophage for Cerebral Malaria Using the ACTES Engine">
+  <meta name="citation_author" content="InSynBio">
+  <meta name="citation_publisher" content="InSynBio">
+  <meta name="citation_online_date" content="2026/02/20">
+  <meta name="citation_publication_date" content="2026/02/20">
+  <meta name="citation_language" content="en">
+  <meta name="citation_abstract_html_url" content="https://www.insynbio.com/case_malaria_carm_design.html">
+</head>
+<body>
+
+<!-- ─── HEADER ─── -->
+<header class="top-header">
+  <div class="brand">
+    <a href="index.html">
+      <svg width="34" height="28" viewBox="0 0 32 30" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink:0;">
+          <path d="M16 2L2 10V22L16 28L30 22V10L16 2Z" fill="#0d9488" fill-opacity="0.05" stroke="#0d9488" stroke-width="1" stroke-opacity="0.3"/>
+          <path d="M14.5 24 V 16" stroke="#0d9488" stroke-width="2.5" stroke-linecap="round"/>
+          <path d="M17.5 24 V 16" stroke="#f59e0b" stroke-width="2.5" stroke-linecap="round"/>
+          <line x1="13" y1="19" x2="19" y2="19" stroke="#9ca3af" stroke-width="1.5" stroke-linecap="round"/>
+          <line x1="13" y1="21" x2="19" y2="21" stroke="#9ca3af" stroke-width="1.5" stroke-linecap="round"/>
+          <path d="M14.5 16 L 8 7" stroke="#0d9488" stroke-width="2.5" stroke-linecap="round"/>
+          <path d="M10 16 L 3.5 7" stroke="#2dd4bf" stroke-width="2.5" stroke-linecap="round"/>
+          <path d="M17.5 16 L 24 7" stroke="#f59e0b" stroke-width="2.5" stroke-linecap="round"/>
+          <rect x="21.5" y="3.5" width="5" height="5" rx="1" fill="#f59e0b" transform="rotate(45 24 6)"/>
+        </svg>
+      <span><span style="color:#111827">In</span><span style="color:var(--primary);font-style:italic">Syn</span><span style="color:#111827">Bio</span></span>
+    </a>
+    <span class="slogan">AI for Life Sciences</span>
+  </div>
+  <nav class="top-header-nav">
+    <a href="index.html">Home</a>
+    <a href="index.html#about">About Us</a>
+    <div class="nav-dropdown" tabindex="0">
+      <a href="index.html#services">Services</a>
+      <div class="dropdown-menu">
+        <a href="InSynBio_Antibody_Developability_Assessment_Page.html">
+          <span class="menu-title">Antibody CMC</span>
+          <span class="menu-desc">Structure-based Developability</span>
+        </a>
+        <a href="InSynBio_CART_Design_Page.html">
+          <span class="menu-title">CAR-T Design</span>
+          <span class="menu-desc">Smart CAR-T Engineering</span>
+        </a>
+        <a href="InSynBio_Bispecific_Antibody_Design_Page.html">
+          <span class="menu-title">Bispecific</span>
+          <span class="menu-desc">Multispecific Engineering</span>
+        </a>
+        <a href="immunogenicity_study.html">
+          <span class="menu-title">Immunogenicity</span>
+          <span class="menu-desc">ADA Prediction &amp; Reference DB</span>
+        </a>
+      </div>
+    </div>
+    <a href="index.html#cases">Case Studies</a>
+    <a href="index.html#contact">Contact</a>
+  </nav>
+</header>
+
+<!-- ─── HERO ─── -->
+<section class="case-hero">
+  <div class="hero-inner">
+    <div class="hero-badge">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+      Case Study &nbsp;·&nbsp; CAR-M Design
+    </div>
+    <h1>Anti-CIDRα1 Dual-Binder<br><em>CAR-Macrophage</em> for High-Parasitemia<br><em>P. falciparum</em> Malaria</h1>
+    <p class="subtitle">A rationally designed CAR-M construct with every decision backed by the ACTES 11-layer decision cascade.</p>
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <div class="val green">6/6</div>
+        <div class="lbl">CIDRα1 Subclasses Covered</div>
+      </div>
+      <div class="hero-stat">
+        <div class="val green">FcRγ</div>
+        <div class="lbl">Macrophage-Native Signal</div>
+      </div>
+      <div class="hero-stat">
+        <div class="val">4-Tier</div>
+        <div class="lbl">Animal Model Strategy</div>
+      </div>
+      <div class="hero-stat">
+        <div class="val">&lt;1h</div>
+        <div class="lbl">mRNA-LNP Deployment</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── BODY ─── -->
+<div class="page-body">
+<div class="container">
+
+  <section class="section reveal" style="border-top:none; padding-top:0;">
+    <span class="section-label">Executive Summary</span>
+    <h2 class="section-title">A Rationally Designed CAR-Macrophage for <span>High-Parasitemia Malaria</span></h2>
+    <p class="section-intro">A 3-minute overview of the problem, approach, and outcome.</p>
+    <div class="card-grid" style="grid-template-columns: repeat(3, 1fr);">
+      <div class="card" style="border-left: 4px solid #ef4444; transform:none;">
+        <h3>The Challenge</h3>
+        <p><em>P. falciparum</em> malaria kills >600,000 people annually. In high-parasitemia cases (>10% iRBC), existing drugs take 24–48h to clear — during which organ failure progresses. Infected red blood cells are <strong>anucleate</strong>, making CAR-T cell therapy impossible (T cells kill via caspase-3 apoptosis, which requires a nucleus).</p>
+      </div>
+      <div class="card" style="border-left: 4px solid var(--primary); transform:none;">
+        <h3>Our Approach</h3>
+        <p>InSynBio's <strong>ACTES 11-layer decision cascade</strong>: systematically evaluated 5 blood-stage antigens → selected CIDRα1 (PfEMP1) as the only viable target. Designed a <strong>dual-binder tandem scFv</strong> (C7 + C74) covering all 6 CIDRα1 subclasses. FcRγ-based signaling for macrophage-native phagocytosis. mRNA-LNP delivery targeting splenic macrophages.</p>
+      </div>
+      <div class="card" style="border-left: 4px solid #16a34a; transform:none;">
+        <h3>Key Outcome</h3>
+        <p>Covers <strong>all 6 CIDRα1 subclasses</strong> with structurally validated binders. <strong>&lt;1 hour</strong> mRNA-LNP deployment timeline. A 4-tier wet lab strategy from C57BL/6 mechanism proof through NHP IND-enabling studies. Var gene switching analysis shows antigen escape is <strong>self-attenuating</strong> in malaria — unlike tumor antigen loss.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- §1 THE CHALLENGE -->
+  <section class="section reveal">
+    <div class="section-label">Disease Biology</div>
+    <h2 class="section-title">Why Macrophages, Not <span>T Cells</span>?</h2>
+    <p class="section-intro">Infected red blood cells (iRBCs) in <em>P. falciparum</em> malaria are 7–8 μm anucleate cells. T cell killing relies on Caspase-3 apoptosis — which requires a nucleus. Phagocytosis by macrophages is the only validated clearance mechanism.</p>
+
+    <div class="compare-grid">
+      <div class="compare-col before">
+        <h4>⚠ Cerebral Malaria Target</h4>
+        <div class="compare-row"><span class="key">Compartment</span><span class="val red">Brain microvasculature</span></div>
+        <div class="compare-row"><span class="key">CAR-M access</span><span class="val red">No — spleen/liver resident</span></div>
+        <div class="compare-row"><span class="key">Verdict</span><span class="val red">Anatomical mismatch</span></div>
+      </div>
+      <div class="compare-col after">
+        <h4>✓ High-Parasitemia Target</h4>
+        <div class="compare-row"><span class="key">Compartment</span><span class="val green">Circulating blood → spleen</span></div>
+        <div class="compare-row"><span class="key">CAR-M access</span><span class="val green">Direct — red pulp macrophages</span></div>
+        <div class="compare-row"><span class="key">Verdict</span><span class="val green">Mechanism-indication match</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- §2 TARGET SELECTION -->
+  <section class="section reveal">
+    <div class="section-label">Antigen Analysis</div>
+    <h2 class="section-title">CIDRα1 — The <span>Only Viable</span> Target</h2>
+    <p class="section-intro">11-layer ACTES decision cascade systematically eliminated 5 competing blood-stage antigens.</p>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Candidate</th>
+            <th>Reason Eliminated</th>
+            <th class="center">Verdict</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="dim">
+            <td><strong>MSP1</strong></td>
+            <td>Exposed &lt;1 min during RBC re-invasion</td>
+            <td class="center"><span class="badge fail">FAIL</span></td>
+          </tr>
+          <tr class="dim">
+            <td><strong>AMA1</strong></td>
+            <td>&gt;200 SNPs → single binder covers &lt;30% isolates</td>
+            <td class="center"><span class="badge fail">FAIL</span></td>
+          </tr>
+          <tr class="dim">
+            <td><strong>PfRH5</strong></td>
+            <td>Merozoite half-life ~60 sec</td>
+            <td class="center"><span class="badge fail">FAIL</span></td>
+          </tr>
+          <tr class="dim">
+            <td><strong>Band 3 oxidative</strong></td>
+            <td>Present on normal RBCs → hemolysis</td>
+            <td class="center"><span class="badge fail">FAIL</span></td>
+          </tr>
+          <tr class="dim">
+            <td><strong>PfSEA-1</strong></td>
+            <td>Complement-dependent, incompatible with CAR-M</td>
+            <td class="center"><span class="badge fail">FAIL</span></td>
+          </tr>
+          <tr class="highlight">
+            <td><strong>CIDRα1</strong></td>
+            <td>Knob surface 30–50 nm; conserved EPCR epitope; C7 + C74 covers all 6 subclasses</td>
+            <td class="center"><span class="badge pass">PASS</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- §3 CONSTRUCT ARCHITECTURE -->
+  <section class="section reveal">
+    <div class="section-label">Engineering</div>
+    <h2 class="section-title">Dual-Binder <span>CAR-M</span> Construct</h2>
+    <p class="section-intro">Tandem scFv design covers all 6 CIDRα1 subclasses with structurally validated components.</p>
+
+    <div class="flow">
+      <div class="flow-step">
+        <div class="label">CD8α SP</div>
+        <div class="sub">Signal peptide</div>
+      </div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">
+        <div class="label">C7 scFv</div>
+        <div class="sub">CIDRα1.1</div>
+      </div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">
+        <div class="label">G₄S₄</div>
+        <div class="sub">Linker 20 aa</div>
+      </div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">
+        <div class="label">C74 scFv</div>
+        <div class="sub">CIDRα1.4–1.8</div>
+      </div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">
+        <div class="label">CD8α Hinge</div>
+        <div class="sub">45 aa</div>
+      </div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">
+        <div class="label">CD8α TM</div>
+        <div class="sub">24 aa</div>
+      </div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">
+        <div class="label">FcRγ cyto</div>
+        <div class="sub">ITAM signal</div>
+      </div>
+    </div>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th class="center">#</th>
+            <th>Component</th>
+            <th class="center">Length</th>
+            <th>Source</th>
+            <th class="center">Tier</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="center">1</td>
+            <td><strong>CD8α Signal Peptide</strong></td>
+            <td class="center">21 aa</td>
+            <td>UniProt P01732</td>
+            <td class="center"><span class="badge pass">T1</span></td>
+          </tr>
+          <tr>
+            <td class="center">2</td>
+            <td><strong>C7 scFv (CIDRα1.1)</strong></td>
+            <td class="center">~240 aa</td>
+            <td>PDB 8VDF</td>
+            <td class="center"><span class="badge info">EXT</span></td>
+          </tr>
+          <tr>
+            <td class="center">3</td>
+            <td><strong>Inter-scFv Linker G₄S₄</strong></td>
+            <td class="center">20 aa</td>
+            <td>Synthetic</td>
+            <td class="center">—</td>
+          </tr>
+          <tr>
+            <td class="center">4</td>
+            <td><strong>C74 scFv (CIDRα1.4–1.8)</strong></td>
+            <td class="center">~246 aa</td>
+            <td>PDB 8VDG</td>
+            <td class="center"><span class="badge info">EXT</span></td>
+          </tr>
+          <tr>
+            <td class="center">5</td>
+            <td><strong>CD8α Hinge</strong></td>
+            <td class="center">45 aa</td>
+            <td>UniProt P01732</td>
+            <td class="center"><span class="badge pass">T1</span></td>
+          </tr>
+          <tr>
+            <td class="center">6</td>
+            <td><strong>CD8α TM</strong></td>
+            <td class="center">24 aa</td>
+            <td>UniProt P01732</td>
+            <td class="center"><span class="badge pass">T1</span></td>
+          </tr>
+          <tr>
+            <td class="center">7</td>
+            <td><strong>FcRγ Cytoplasmic</strong></td>
+            <td class="center">42 aa</td>
+            <td>UniProt P30273</td>
+            <td class="center"><span class="badge warn">T2</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="alert insight">
+      <b>Why FcRγ over CD3ζ?</b> FcRγ is the native phagocytic ITAM in macrophages, coupling to Syk kinase. CD3ζ relies on ZAP70 which is poorly expressed in macrophages. 4-1BB is a T cell co-stimulatory receptor with no validation in macrophage phagocytic context.
+    </div>
+  </section>
+
+  <!-- §4 DELIVERY & TIMING -->
+  <section class="section reveal">
+    <div class="section-label">Pharmacology</div>
+    <h2 class="section-title">ManC-LNP Delivery with <span>Artesunate</span> Timing</h2>
+    <p class="section-intro">mRNA-LNP naturally targets splenic and hepatic macrophages — precisely where iRBCs are filtered.</p>
+
+    <div class="alert warning">
+      <b>Critical Timing Conflict:</b> Artesunate kills parasites but PfEMP1/CIDRα1 degrades on 'pitted' RBCs within 6–12 h. Full-dose artesunate before CAR-M expression = target loss.
+    </div>
+
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-step">Hour 0</div>
+        <div class="tl-text"><strong>mRNA-LNP CAR-M IV</strong> + half-dose artesunate 1.2 mg/kg</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-step">Hour 4–8</div>
+        <div class="tl-text"><strong>CAR-M functional</strong> → phagocytoses iRBC with intact PfEMP1</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-step">Hour 12</div>
+        <div class="tl-text"><strong>Full-dose artesunate 2.4 mg/kg</strong> → synergistic clearance</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-step">Hour 24+</div>
+        <div class="tl-text"><strong>Standard artesunate regimen</strong></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- §5 ANIMAL MODEL STRATEGY -->
+  <section class="section reveal">
+    <div class="section-label">Preclinical</div>
+    <h2 class="section-title">4-Tier <span>Wet Lab</span> Strategy</h2>
+    <p class="section-intro">Each tier answers a distinct question. <em>P. falciparum</em> exclusively infects human red blood cells, constraining model selection.</p>
+
+    <div class="card-grid-4">
+      <div class="card">
+        <h3>Tier 1: C57BL/6</h3>
+        <p><strong>Mechanism proof.</strong> CIDRα1-coated murine RBC. No BSL-3 required. ~3 weeks timeline.</p>
+      </div>
+      <div class="card">
+        <h3>Tier 2: MISTRG6</h3>
+        <p><strong>Human macrophage delivery validation.</strong> &gt;80% human macrophages in spleen. No <em>Pf</em> infection needed.</p>
+      </div>
+      <div class="card">
+        <h3>Tier 3: NBSGW</h3>
+        <p><strong><em>P. falciparum</em> efficacy.</strong> Human CD34+ HSC engraftment. Human RBC 1–5%. IT4 strain infection.</p>
+      </div>
+      <div class="card">
+        <h3>Tier 4: NHP</h3>
+        <p><strong>IND-enabling.</strong> <em>P. knowlesi</em> in cynomolgus macaque. GLP tox + biodistribution.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- §6 IMMUNE EVASION -->
+  <section class="section reveal">
+    <div class="section-label">Risk Analysis</div>
+    <h2 class="section-title">Var Gene Switching — A <span>Self-Limiting</span> Escape</h2>
+    <p class="section-intro">Unlike tumor antigen escape (where antigen-negative tumors retain full lethality), malaria antigen escape is self-attenuating.</p>
+
+    <div class="alert discovery">
+      <b>Key Insight:</b> CIDRα1 is the virulence-determining domain. Parasites that escape CAR-M by switching to non-CIDRα1 var genes lose EPCR binding → lose brain sequestration → lose severe pathology. The immune evasion paradox works <strong>IN FAVOR</strong> of the patient.
+    </div>
+
+    <div class="metrics-grid">
+      <div class="metric-card">
+        <div class="metric-val">0.03–2%</div>
+        <div class="metric-label">Var Switch Rate</div>
+        <div class="metric-sub">per generation</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-val">~48h</div>
+        <div class="metric-label">Generation Time</div>
+        <div class="metric-sub">erythrocytic cycle</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-val">~30%</div>
+        <div class="metric-label">CIDRα1 var Genes</div>
+        <div class="metric-sub">15–20 of ~60</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-val pass">6/6</div>
+        <div class="metric-label">Subclass Coverage</div>
+        <div class="metric-sub">C7 + C74 dual binder</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- §7 COMPETITOR COMPARISON -->
+  <section class="section reveal">
+    <div class="section-label">Strategic Positioning</div>
+    <h2 class="section-title">CAR-M vs. Anti-CIDRα1 <span>Monoclonal Antibody</span></h2>
+    <p class="section-intro">Two complementary modalities addressing distinct clinical niches within severe malaria.</p>
+
+    <div class="compare-grid">
+      <div class="compare-col before">
+        <h4>Anti-CIDRα1 mAb</h4>
+        <div class="compare-row"><span class="key">Mechanism</span><span class="val">Blocks EPCR binding</span></div>
+        <div class="compare-row"><span class="key">Onset</span><span class="val green">Minutes</span></div>
+        <div class="compare-row"><span class="key">Duration</span><span class="val green">~3 weeks</span></div>
+        <div class="compare-row"><span class="key">Clearance</span><span class="val amber">Depends on endogenous FcγR</span></div>
+        <div class="compare-row"><span class="key">Regulatory</span><span class="val green">Established</span></div>
+      </div>
+      <div class="compare-col after">
+        <h4>✓ CAR-M (This Design)</h4>
+        <div class="compare-row"><span class="key">Mechanism</span><span class="val green">Active phagocytosis</span></div>
+        <div class="compare-row"><span class="key">Onset</span><span class="val amber">4–8 h</span></div>
+        <div class="compare-row"><span class="key">Duration</span><span class="val">48–72 h / dose</span></div>
+        <div class="compare-row"><span class="key">Clearance</span><span class="val green">Amplified antigen-specific drive</span></div>
+        <div class="compare-row"><span class="key">Regulatory</span><span class="val amber">Novel gene therapy</span></div>
+      </div>
+    </div>
+
+    <div class="alert insight">
+      <b>Complementary Strategy:</b> The two approaches are complementary: CAR-M for high-parasitemia clearance, mAb for sequestration blockade in cerebral malaria.
+    </div>
+  </section>
+
+  <!-- §8 RESULT BANNER -->
+  <section class="section reveal">
+    <div class="result-banner">
+      <h3>Design Summary</h3>
+      <div class="result-kpis">
+        <div class="result-kpi">
+          <div class="k-val">638</div>
+          <div class="k-label">Total Construct (aa)</div>
+        </div>
+        <div class="result-kpi">
+          <div class="k-val">11</div>
+          <div class="k-label">Decision Layers</div>
+        </div>
+        <div class="result-kpi">
+          <div class="k-val">6/6</div>
+          <div class="k-label">Subclass Coverage</div>
+        </div>
+        <div class="result-kpi">
+          <div class="k-val">4</div>
+          <div class="k-label">Animal Model Tiers</div>
+        </div>
+      </div>
+      <p>A rationally designed CAR-Macrophage construct addressing high-parasitemia <em>P. falciparum</em> malaria — with every design decision backed by the ACTES 11-layer decision cascade.</p>
+    </div>
+  </section>
+
+  <!-- §9 REFERENCES -->
+  <section class="section reveal">
+    <div class="section-label">References</div>
+    <h2 class="section-title">Cited <span>Literature</span></h2>
+    <div class="card" style="padding:28px 32px;">
+      <ol class="ref-list">
+        <li>Reyes RA et al. <em>Nature</em> <strong>636</strong>:182–189 (2024). <a href="https://doi.org/10.1038/s41586-024-08220-3" target="_blank" rel="noopener">DOI: 10.1038/s41586-024-08220-3</a> <span class="badge-verified">✓ Verified</span></li>
+        <li>Turner L et al. <em>Nature</em> <strong>498</strong>:502–505 (2013). <a href="https://doi.org/10.1038/nature12216" target="_blank" rel="noopener">DOI: 10.1038/nature12216</a> <span class="badge-verified">✓ Verified</span></li>
+        <li>Lau CK et al. <em>Cell Host Microbe</em> <strong>17</strong>:118–129 (2015). <a href="https://pubmed.ncbi.nlm.nih.gov/25482433/" target="_blank" rel="noopener">PMID: 25482433</a> <span class="badge-verified">✓ Verified</span></li>
+        <li>Klichinsky M et al. <em>Nat Biotechnol</em> <strong>38</strong>:947–953 (2020). <a href="https://pubmed.ncbi.nlm.nih.gov/32361713/" target="_blank" rel="noopener">PMID: 32361713</a> <span class="badge-verified">✓ Verified</span></li>
+        <li>Morrissey MA et al. <em>eLife</em> <strong>7</strong>:e36688 (2018). <a href="https://pubmed.ncbi.nlm.nih.gov/29862966/" target="_blank" rel="noopener">PMID: 29862966</a> <span class="badge-verified">✓ Verified</span></li>
+        <li>Miller LH et al. <em>Nature</em> <strong>415</strong>:673–679 (2002). <a href="https://pubmed.ncbi.nlm.nih.gov/11832955/" target="_blank" rel="noopener">PMID: 11832955</a> <span class="badge-verified">✓ Verified</span></li>
+        <li>Buffet PA et al. <em>Blood</em> <strong>117</strong>:e1–e8 (2011). <a href="https://pubmed.ncbi.nlm.nih.gov/20852127/" target="_blank" rel="noopener">PMID: 20852127</a> <span class="badge-verified">✓ Verified</span></li>
+        <li>Cheng Q et al. <em>Nat Nanotechnol</em> <strong>15</strong>:313–320 (2020). <a href="https://pubmed.ncbi.nlm.nih.gov/32251383/" target="_blank" rel="noopener">PMID: 32251383</a> <span class="badge-verified">✓ Verified</span></li>
+        <li>Cosgun KN et al. <em>Cell Stem Cell</em> <strong>15</strong>:227–238 (2014). <a href="https://pubmed.ncbi.nlm.nih.gov/25017720/" target="_blank" rel="noopener">PMID: 25017720</a> <span class="badge-verified">✓ Verified</span></li>
+        <li>Hegde M et al. <em>J Clin Invest</em> <strong>126</strong>:3036–3052 (2016). <a href="https://pubmed.ncbi.nlm.nih.gov/27427982/" target="_blank" rel="noopener">PMID: 27427982</a> <span class="badge-verified">✓ Verified</span></li>
+        <li>Gu T et al. <em>Nat Commun</em> (2025). <a href="https://doi.org/10.1038/s41467-025-67674-9" target="_blank" rel="noopener">DOI: 10.1038/s41467-025-67674-9</a> <span class="badge-verified">✓ Verified</span></li>
+        <li>WHO. <em>World Malaria Report 2023.</em> <span class="badge-verified">✓ Verified</span></li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <div class="cta-section reveal">
+    <h2>Need a <span>CAR-M Design</span>?</h2>
+    <p>InSynBio's ACTES Decision Engine provides systematic, evidence-graded cell therapy design.</p>
+    <div class="btn-row">
+      <a href="index.html#contact" class="btn btn-primary">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        Contact Us
+      </a>
+      <a href="index.html#cases" class="btn btn-secondary">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+        View All Case Studies
+      </a>
+    </div>
+  </div>
+
+</div>
+</div>
+
+<!-- ─── FOOTER ─── -->
+<footer class="site-footer">© 2026 InSynBio — Intelligent Synthetic Biology · <a href="index.html">Home</a>  <!-- Cite This Work -->
+  <section style="background:#f9fafb;border-top:1px solid #e5e7eb;padding:28px 0 24px;">
+    <div style="max-width:900px;margin:0 auto;padding:0 24px;">
+      <details style="border:1px solid #e5e7eb;border-radius:10px;background:#fff;padding:0;">
+        <summary style="padding:14px 18px;font-size:13px;font-weight:700;color:#374151;cursor:pointer;list-style:none;display:flex;align-items:center;gap:8px;">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#0d9488" stroke-width="2.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+          Cite This Work
+        </summary>
+        <div style="padding:4px 18px 18px;border-top:1px solid #f3f4f6;">
+          <p style="font-size:12px;color:#6b7280;margin:12px 0 10px;">If you reference this analysis, please cite as:</p>
+          <pre style="background:#f3f4f6;border-radius:8px;padding:14px 16px;font-size:12px;line-height:1.7;overflow-x:auto;color:#111827;margin:0;">@techreport{insynbio2026malaria_carm,
+  title     = {{Rational Design of an Anti-CIDRα1 CAR-Macrophage for Cerebral Malaria Using the ACTES Engine}},
+  author    = {InSynBio},
+  year      = {2026},
+  month     = {feb},
+  institution = {InSynBio},
+  note      = {{CAR-macrophage; PfEMP1 CIDRα1 antigen; cerebral malaria immunotherapy}},
+  url       = {{https://www.insynbio.com/case_malaria_carm_design.html}}
+}</pre>
+          <p style="font-size:11.5px;color:#9ca3af;margin:10px 0 0;">InSynBio computational analyses are for research reference only. Please verify results before clinical application.</p>
+        </div>
+      </details>
+    </div>
+  </section>
+
+  </footer>
+
+<script>
+  lucide.createIcons();
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }});
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>
+

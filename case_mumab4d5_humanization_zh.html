@@ -8,6 +8,13 @@
   <meta name="author" content="Therasik 抗体工程团队" />
   <meta name="description" content="MuMAb4D5 VH/VL 抗体人源化设计报告 — Therasik V4.4.1" />
   <style>
+    :root {
+      --primary: #0d9488; --primary-dark: #0f766e; --primary-light: #5eead4;
+      --accent: #f59e0b; --accent-red: #ef4444;
+      --text: #111827; --text-muted: #4b5563;
+      --border: #e5e7eb; --bg: #f9fafb; --bg-white: #ffffff;
+      --success: #16a34a; --warn: #d97706;
+    }
     /* ── Reset & Base ─────────────────────────────────────────────────── */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
@@ -110,7 +117,7 @@
     .page-wrap {
       max-width: 900px;
       margin: 0 auto;
-      padding: 0 2rem 4rem;
+      padding: 64px 20px 80px;
     }
 
     /* ── TOC strip ────────────────────────────────────────────────────── */
@@ -134,11 +141,10 @@
 
     /* ── Sections ─────────────────────────────────────────────────────── */
     .section {
-      padding-top: 3.5rem;
-      border-top: 1px solid #f3f4f6;
-      margin-top: 3.5rem;
+      padding: 60px 0;
+      border-top: 1px solid var(--border);
     }
-    .section:first-of-type { border-top: none; margin-top: 2.5rem; }
+    section.section:first-child { border-top: none; padding-top: 0; }
     .section-label {
       font-size: 0.7rem;
       font-weight: 700;
@@ -178,18 +184,19 @@
     thead tr { background: #f3f4f6; }
     thead th {
       text-align: left;
-      padding: 0.55rem 0.85rem;
+      padding: 14px 16px;
       font-weight: 600;
-      font-size: 0.78rem;
+      font-size: 12px;
       color: #374151;
-      letter-spacing: 0.01em;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
       border-bottom: 2px solid #e5e7eb;
     }
     tbody td {
-      padding: 0.5rem 0.85rem;
+      padding: 12px 16px;
       border-bottom: 1px solid #f3f4f6;
       color: #374151;
-      vertical-align: top;
+      vertical-align: middle;
     }
     tbody tr:hover td { background: #fafafa; }
 
@@ -453,6 +460,28 @@
     <a href="#sequences">人源化序列</a>
     <a href="#structure">结构分析</a>
     <a href="#conclusions">结论</a>
+  </div>
+
+  <!-- ─── 执行摘要 ─── -->
+  <div class="section" style="border-top:none; padding-top:2rem;">
+    <h2 style="font-family:'Cormorant Garamond',serif; font-size:32px; font-weight:700; color:#111827; margin-bottom:10px; line-height:1.15;">
+      执行摘要：从鼠源抗体到 <span style="color:#0d9488;">临床级人源化设计</span>
+    </h2>
+    <p style="font-size:15px; color:#4b5563; margin-bottom:28px;">3 分钟了解本项目的核心问题、解决方案和关键成果。</p>
+    <div style="display:grid; grid-template-columns: repeat(3, 1fr); gap:20px; margin-bottom:32px;">
+      <div style="background:#fff; border:1px solid #e5e7eb; border-left:4px solid #ef4444; border-radius:14px; padding:28px;">
+        <h3 style="font-size:20px; font-weight:700; color:#111827; margin-bottom:10px;">⚡ 核心挑战</h3>
+        <p style="font-size:14px; color:#4b5563; line-height:1.7;">MuMAb4D5 是一种靶向 HER2 的<strong>鼠源单克隆抗体</strong>——也是曲妥珠单抗（赫赛汀®）的前体。作为鼠源抗体，它会在人体内引发 <strong>HAMA 免疫反应</strong>，无法直接用于临床。挑战在于：如何在保留其精确结合特性的同时完成人源化改造。</p>
+      </div>
+      <div style="background:#fff; border:1px solid #e5e7eb; border-left:4px solid #0d9488; border-radius:14px; padding:28px;">
+        <h3 style="font-size:20px; font-weight:700; color:#111827; margin-bottom:10px;">🔬 我们的方法</h3>
+        <p style="font-size:14px; color:#4b5563; line-height:1.7;">InSynBio <strong>AbEngineCore V4.5.1</strong> 标准化流程：CDR 移植至最优人源胚系框架（IGHV1-69*01 / IGKV1-39*01），Vernier 区域分析识别结构关键回复突变，ABodyBuilder2 结构验证，以及基于 842 个获批临床抗体序列的全面 CMC 评估。</p>
+      </div>
+      <div style="background:#fff; border:1px solid #e5e7eb; border-left:4px solid #16a34a; border-radius:14px; padding:28px;">
+        <h3 style="font-size:20px; font-weight:700; color:#111827; margin-bottom:10px;">✓ 关键成果</h3>
+        <p style="font-size:14px; color:#4b5563; line-height:1.7;">仅需 <strong>零回复突变</strong> 即与临床赫赛汀序列实现 <strong>100% CDR 一致</strong>。VH/VL 角度偏差仅 0.64°。全部 15 项 CMC 参数通过。38/38 质控项全部合格。结果：通过可重复、可审计的计算流程产出的临床级人源化抗体。</p>
+      </div>
+    </div>
   </div>
 
   <!-- 1. 背景 -->
@@ -746,3 +775,4 @@
 
 </body>
 </html>
+

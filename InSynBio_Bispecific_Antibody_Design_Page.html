@@ -6,6 +6,8 @@
   <meta name="description" content="InSynBio Bispecific Antibody Engineering Platform — AI-driven design for multispecifics. Nano-Convert (VH-to-VHH), SmartLink optimization, and Virtual CMC for IgG-like pairing.">
   <meta name="keywords" content="bispecific antibody, multispecific, VH to VHH, nanobody, smart linker, IgG-like pairing, knob-in-hole, crossmab, antibody engineering, InSynBio">
   <meta name="robots" content="index, follow">
+  <meta name="robots" content="noai, noimageai">
+  <meta name="AI-Training" content="opt-out">
   <link rel="canonical" href="https://www.insynbio.com/InSynBio_Bispecific_Antibody_Design_Page.html">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://www.insynbio.com/InSynBio_Bispecific_Antibody_Design_Page.html">
@@ -25,10 +27,12 @@
   <style>
     :root { --primary: #0d9488; --primary-dark: #0f766e; --text: #111827; --text-muted: #4b5563; --border: #e5e7eb; --bg: #ffffff; --bg-alt: #f9fafb; }
     * { box-sizing: border-box; }
-    body { margin: 0; font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 16px; line-height: 1.6; color: var(--text); background: var(--bg); -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+    body { margin: 0; font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 16px; line-height: 1.6; color: var(--text); background: var(--bg); -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; padding-top: 73px; }
     
     /* Header */
-    .top-header { display: flex; align-items: center; justify-content: space-between; padding: 16px 32px; background: rgba(255, 255, 255, 0.9); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(0,0,0,0.05); flex-wrap: wrap; gap: 12px; position: sticky; top: 0; z-index: 1000; }
+    .top-header { display: flex; align-items: center; justify-content: space-between; padding: 12px 32px; background: rgba(255,255,255,0.95); backdrop-filter: blur(12px); border-bottom: 2px solid rgba(13,148,136,0.1); flex-wrap: nowrap; gap: 12px; position: fixed; width: 100%; top: 0; z-index: 2000; }
+    .mobile-menu-btn { display: none; background: none; border: none; padding: 6px; cursor: pointer; color: var(--text); flex-shrink: 0; }
+    .nav-close-btn { display: none; }
     .top-header .brand { font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 700; font-size: 26px; letter-spacing: -0.03em; display: flex; align-items: center; }
     .top-header .brand a { text-decoration: none; color: inherit; display: flex; align-items: center; gap: 10px; }
     .top-header .brand .syn { color: var(--primary); font-style: italic; }
@@ -116,6 +120,10 @@
     .site-footer a { color: #6b7280; text-decoration: none; transition: color 0.2s; }
     .site-footer a:hover { color: var(--primary); }
 
+    @media (max-width: 780px) {
+      .format-grid-row { grid-template-columns: 1fr !important; }
+      .format-grid-header { display: none !important; }
+    }
     @media (max-width: 900px) {
       .top-header { flex-wrap: wrap; padding: 12px 16px; gap: 10px; }
       .top-header .brand { flex: 1 1 auto; min-width: 0; display: flex; align-items: center; flex-wrap: wrap; gap: 8px; }
@@ -130,33 +138,63 @@
       .main { padding: 32px 24px 64px; }
       .mission-block { padding: 20px; margin-bottom: 24px; }
     }
+  
+    @media (max-width: 600px) {
+      .top-header { padding: 12px 16px; flex-wrap: wrap; gap: 10px; }
+      .top-header .brand { flex: 1 1 auto; display: flex; align-items: center; gap: 8px; }
+      .top-header .slogan { font-size: 12px; padding-left: 10px; border-left: 1px solid var(--border); white-space: nowrap; }
+      .top-header-nav { order: 3; width: 100%; flex: 1 1 100%; justify-content: flex-start; flex-wrap: wrap; gap: 4px; overflow-x: auto; padding-bottom: 4px; -webkit-overflow-scrolling: touch; border-top: 1px solid var(--border); padding-top: 8px; margin-top: 2px; }
+      .top-header-nav a { flex-shrink: 0; font-size: 13px; padding: 6px 10px; }
+      .hero-title, h1 { font-size: 32px !important; }
+      h2 { font-size: 26px !important; }
+      .page-hero { padding: 60px 16px 80px; }
+      .container, .section-inner { padding-left: 12px; padding-right: 12px; }
+      .grid-2col, .grid-3col, .services-grid, .features-grid { grid-template-columns: 1fr !important; }
+    }
+    @media (max-width: 768px) {
+      .mobile-menu-btn { display: block; }
+      .top-header { padding: 10px 16px; gap: 0; flex-wrap: nowrap; backdrop-filter: none; }
+      .top-header .brand { flex: 1; min-width: 0; }
+      .top-header .slogan { display: none !important; }
+      .top-header-nav { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; height: 100dvh; background: #fff; flex-direction: column; justify-content: center; align-items: center; gap: 4px; z-index: 9999; opacity: 0; pointer-events: none; transition: opacity 0.25s ease; padding: 24px; overflow-y: auto; }
+      .top-header-nav.open { opacity: 1; pointer-events: auto; }
+      .top-header-nav a { font-size: 18px; padding: 12px 24px; }
+      .top-header-nav .nav-dropdown { display: flex; flex-direction: column; align-items: center; }
+      .top-header-nav .nav-dropdown .dropdown-menu { position: static; transform: none; opacity: 1; visibility: visible; box-shadow: none; border: none; background: transparent; margin-top: 0; padding: 4px 0 0; min-width: auto; display: flex; gap: 0; flex-direction: row; flex-wrap: wrap; justify-content: center; }
+      .top-header-nav .nav-dropdown .dropdown-menu a { padding: 6px 12px; font-size: 14px; }
+      .top-header-nav .nav-dropdown .dropdown-menu a .menu-desc { display: none; }
+      .top-header-nav .nav-dropdown > a::after { display: none; }
+      .nav-close-btn { display: block; position: absolute; top: 16px; right: 20px; background: none; border: none; font-size: 32px; color: var(--text); cursor: pointer; line-height: 1; padding: 4px 8px; }
+      body { padding-top: 52px; }
+    }
   </style>
 </head>
 <body data-lang="en" id="insynbio-body">
   <header class="top-header">
     <div class="brand">
       <a href="index.html" style="display: flex; align-items: center; gap: 10px; text-decoration: none;">
-        <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <linearGradient id="logo_grad_2" x1="0" y1="0" x2="32" y2="32" gradientUnits="userSpaceOnUse">
-              <stop stop-color="#0d9488" />
-              <stop offset="1" stop-color="#2dd4bf" />
-            </linearGradient>
-          </defs>
-          <path d="M7 6L16 18V28" stroke="url(#logo_grad_2)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-          <path d="M25 6L16 18" stroke="url(#logo_grad_2)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-          <circle cx="7" cy="6" r="2" fill="#0f766e" />
-          <circle cx="25" cy="6" r="2" fill="#0f766e" />
-          <circle cx="16" cy="18" r="2" fill="white" stroke="#0d9488" stroke-width="1.5"/>
+        <svg width="34" height="28" viewBox="0 0 32 30" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink:0;">
+          <path d="M16 2L2 10V22L16 28L30 22V10L16 2Z" fill="#0d9488" fill-opacity="0.05" stroke="#0d9488" stroke-width="1" stroke-opacity="0.3"/>
+          <path d="M14.5 24 V 16" stroke="#0d9488" stroke-width="2.5" stroke-linecap="round"/>
+          <path d="M17.5 24 V 16" stroke="#f59e0b" stroke-width="2.5" stroke-linecap="round"/>
+          <line x1="13" y1="19" x2="19" y2="19" stroke="#9ca3af" stroke-width="1.5" stroke-linecap="round"/>
+          <line x1="13" y1="21" x2="19" y2="21" stroke="#9ca3af" stroke-width="1.5" stroke-linecap="round"/>
+          <path d="M14.5 16 L 8 7" stroke="#0d9488" stroke-width="2.5" stroke-linecap="round"/>
+          <path d="M10 16 L 3.5 7" stroke="#2dd4bf" stroke-width="2.5" stroke-linecap="round"/>
+          <path d="M17.5 16 L 24 7" stroke="#f59e0b" stroke-width="2.5" stroke-linecap="round"/>
+          <rect x="21.5" y="3.5" width="5" height="5" rx="1" fill="#f59e0b" transform="rotate(45 24 6)"/>
         </svg>
         <span style="font-family: 'Cormorant Garamond', serif; font-weight: 700; font-size: 26px; color: #1f2937; letter-spacing: -0.02em;">
           In<span style="color: #0d9488;">Syn</span>Bio
         </span>
       </a>
       <span class="slogan">AI for Life Sciences</span>
-      
     </div>
+    <button class="mobile-menu-btn" onclick="document.querySelector('.top-header-nav').classList.toggle('open')" aria-label="Open navigation">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
     <nav class="top-header-nav">
+      <button class="nav-close-btn" onclick="document.querySelector('.top-header-nav').classList.remove('open')" aria-label="Close navigation">✕</button>
       <a href="index.html">Home</a>
       <a href="index.html#about">About Us</a>
       <div class="nav-dropdown" tabindex="0">
@@ -170,16 +208,24 @@
             <span class="menu-title">CAR-T</span>
             <span class="menu-desc">Smart CAR-T Design</span>
           </a>
-          <a href="#platform">
+          <a href="InSynBio_Bispecific_Antibody_Design_Page.html">
             <span class="menu-title">Bispecific</span>
             <span class="menu-desc">Multispecific Engineering</span>
           </a>
+          <a href="immunogenicity_study.html">
+            <span class="menu-title">Immunogenicity</span>
+            <span class="menu-desc">ADA Prediction &amp; Reference DB</span>
+          </a>
+          <a href="vaccine_design.html">
+            <span class="menu-title">Vaccine Design</span>
+            <span class="menu-desc">Neoantigen · Heteroclitic · mRNA</span>
+          </a>
         </div>
       </div>
-      <a href="#submit">Submit Inquiry</a>
-      <a href="#contact">Contact</a>
+      <a href="index.html#case-studies">Case Studies</a>
+      <a href="InSynBio_OurTech.html">Our Tech</a>
+      <a href="#contact">Contact Us</a>
     </nav>
-    
   </header>
   <div class="page-wrap">
     <aside class="sidebar">
@@ -189,6 +235,14 @@
         <a href="#platform" class="nav-link active">
           <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
           Platform
+        </a>
+        <a href="#format-selection" class="nav-link">
+          <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h8m-8 6h16"/></svg>
+          Format Selection
+        </a>
+        <a href="#target-pairing" class="nav-link">
+          <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
+          Target Pairing
         </a>
         <a href="#nano-convert" class="nav-link">
           <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 3h5v5M4 20L21 3M21 16v5h-5M15 15l-6 6"/><path d="M4 4l5 5"/></svg>
@@ -210,6 +264,10 @@
           <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
           Full Report
         </a>
+        <a href="#case-studies" class="nav-link">
+          <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+          Case Studies
+        </a>
         <a href="#submit" class="nav-link">
           <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
           Submit Inquiry
@@ -230,19 +288,249 @@
 
       <div class="mission-block">
         <p><strong>Navigate the complexity of multispecific design.</strong> Our suite includes <strong>Nano-Convert™</strong> (VH-to-VHH) for modular architecture, <strong>SmartLink™</strong> optimization for precise epitope engagement, and <strong>Virtual CMC</strong> to resolve chain mispairing in IgG-like formats.</p>
-        <p>Powered by our <strong>Clinical Knowledge Base of 125+ molecules</strong>, <strong>84+ validated linker geometries</strong>, and <strong>75+ IgG-like architectures</strong> for pairing risk assessment. <a href="index.html#about">Learn more →</a></p>
+        <p>Powered by our <strong>Clinical Knowledge Base of 134+ molecules</strong> (78 IgG-like + 56 BiTE/scFv), <strong>84 validated linker geometries</strong>, and <strong>78 IgG-like structural models</strong> with full CMC metrics for mispairing risk assessment. <a href="index.html#about">Learn more →</a></p>
       </div>
       
       <p class="disclaimer">Disclaimer: InSynBio in silico analyses are for reference only and do not replace final wet-lab validation. Experimental confirmation is required.</p>
 
       <h2 id="platform"><span class="h2-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg></span>AI-Native Design Platform</h2>
-      <p>Our platform integrates clinical data with structural AI to de-risk multispecific development. We don't just model; we benchmark.</p>
-      
-      <ul>
-        <li><strong>Clinical Knowledge Base (125+)</strong> — Comprehensive analysis of 125+ clinical-stage bispecifics to guide target pairing and format selection.</li>
-        <li><strong>Structural Benchmark (84+)</strong> — A proprietary dataset of 84 validated linker geometries (scFv & IgG-scFv fusions) to prevent conformational collapse.</li>
-        <li><strong>CMC Benchmark (75+)</strong> — Deep structural metrics from 75 IgG-like architectures (50 Four-Arm + 23 Common-LC + 2 VHH-IgG) to predict mispairing risks.</li>
-      </ul>
+      <p>Our platform integrates clinical data with structural AI to de-risk multispecific development across every major format — from compact BiTE-like engagers to full IgG-like molecules and nanobody fusions.</p>
+
+      <!-- Primary KPI: master database -->
+      <div style="background:#f0fdfa;border:1px solid rgba(13,148,136,0.25);border-radius:14px;padding:20px 24px;margin:20px 0 0;display:flex;align-items:center;gap:24px;flex-wrap:wrap;">
+        <div style="flex-shrink:0;">
+          <div style="font-size:36px;font-weight:800;color:#0d9488;line-height:1;">134+</div>
+          <div style="font-size:13px;font-weight:700;color:#111827;margin-top:4px;">Clinical-stage bispecifics</div>
+        </div>
+        <div style="font-size:13px;color:#4b5563;line-height:1.6;flex:1;min-width:200px;">
+          Master knowledge base — <strong>78 IgG-like</strong> (KiH, CrossMab, CommonLC, VHH-Fc) and <strong>56 BiTE / scFv</strong> format molecules. Covers format, target pairing, heterodimerization strategy, and regulatory approval status. Updated as new molecules enter trials.
+        </div>
+      </div>
+
+      <!-- Sub-metrics: analytical layers built on the 134 -->
+      <div style="margin:8px 0 28px;padding:0 2px;">
+        <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.7px;color:#9ca3af;margin:0 0 8px 4px;">Analytical layers built on this database</div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:10px;">
+          <div style="background:#fff;border:1px solid #e5e7eb;border-radius:10px;padding:14px 18px;border-left:3px solid #0d9488;">
+            <div style="display:flex;align-items:baseline;gap:8px;">
+              <span style="font-size:22px;font-weight:700;color:#0d9488;">78</span>
+              <span style="font-size:12px;font-weight:600;color:#111827;">IgG-like Fab structural models</span>
+            </div>
+            <div style="font-size:12px;color:#6b7280;margin-top:5px;line-height:1.5;">KiH · CrossMab · CommonLC · VHH-Fc. Each IgG-like molecule modeled at Fab level with CMC metrics (BSA, packing angle, charge complementarity). Foundation of Virtual CMC mispairing scoring.</div>
+          </div>
+          <div style="background:#fff;border:1px solid #e5e7eb;border-radius:10px;padding:14px 18px;border-left:3px solid #14b8a6;">
+            <div style="display:flex;align-items:baseline;gap:8px;">
+              <span style="font-size:22px;font-weight:700;color:#14b8a6;">84</span>
+              <span style="font-size:12px;font-weight:600;color:#111827;">scFv linker conformations</span>
+            </div>
+            <div style="font-size:12px;color:#6b7280;margin-top:5px;line-height:1.5;">ESMFold-predicted BiTE/scFv structures across (G4S)<sub>1–5</sub> and hybrid linker variants. Counts conformations, not molecules. Used by SmartLink™ for geometry matching.</div>
+          </div>
+        </div>
+      </div>
+
+      <h2 id="format-selection"><span class="h2-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h8m-8 6h16"/></svg></span>Bispecific Format Selection</h2>
+      <p>Despite dozens of described bispecific architectures, <strong>clinical approvals concentrate in a handful of formats</strong>. The real decision is not which large format to use — it is which <strong>heterodimerization strategy within the IgG-like framework</strong> best suits your targets, LC compatibility, and production platform.</p>
+
+      <div style="display:flex;flex-direction:column;gap:6px;margin:14px 0 6px;">
+
+        <!-- Header -->
+        <div style="display:grid;grid-template-columns:160px 120px 1fr 170px;gap:8px;padding:6px 14px;font-size:11px;font-weight:700;color:#9ca3af;text-transform:uppercase;letter-spacing:0.6px;">
+          <span>Technology</span><span>Clinical Status</span><span>Key Features &amp; Constraints</span><span>Approved Examples</span>
+        </div>
+
+        <!-- KiH -->
+        <div style="display:grid;grid-template-columns:160px 120px 1fr 170px;gap:8px;align-items:start;padding:10px 14px;background:#f9fafb;border:1px solid #e5e7eb;border-radius:8px;">
+          <div>
+            <div style="font-size:13px;font-weight:700;color:#111827;">Knob-into-Hole (KiH)</div>
+            <div style="font-size:11px;color:#6b7280;margin-top:2px;">Genentech / Roche</div>
+            <svg viewBox="0 0 72 56" xmlns="http://www.w3.org/2000/svg" style="width:64px;height:50px;display:block;margin-top:6px;flex-shrink:0;" aria-hidden="true"><circle cx="13" cy="8" r="6" fill="#e6fffa" stroke="#0d9488" stroke-width="1.2"/><line x1="13" y1="14" x2="28" y2="28" stroke="#0d9488" stroke-width="1.2" stroke-linecap="round"/><circle cx="59" cy="8" r="6" fill="#fff7ed" stroke="#d97706" stroke-width="1.2"/><line x1="59" y1="14" x2="44" y2="28" stroke="#6b7280" stroke-width="1.2" stroke-linecap="round"/><line x1="28" y1="28" x2="44" y2="28" stroke="#9ca3af" stroke-width="1"/><rect x="28" y="31" width="16" height="9" rx="1.5" fill="#f9fafb" stroke="#d1d5db" stroke-width="1"/><rect x="28" y="42" width="16" height="9" rx="1.5" fill="#f3f4f6" stroke="#d1d5db" stroke-width="1"/><circle cx="33" cy="46" r="2.2" fill="#0d9488"/><circle cx="45" cy="46" r="2.2" fill="#f9fafb" stroke="#9ca3af" stroke-width="0.9"/><text x="33" y="55" text-anchor="middle" font-size="5.5" fill="#0d9488" font-family="Inter,sans-serif">●</text><text x="45" y="55" text-anchor="middle" font-size="5.5" fill="#9ca3af" font-family="Inter,sans-serif">○</text></svg>
+          </div>
+          <span style="font-size:11px;font-weight:700;padding:2px 8px;background:#dcfce7;color:#166534;border-radius:10px;width:fit-content;height:fit-content;">✓ Multiple approvals</span>
+          <div style="font-size:12.5px;color:#374151;line-height:1.55;">Steric HC heterodimerization via T366W / T366S/L368A/Y407V mutations. Solves HC mispairing; typically combined with common LC or CrossFab to also solve LC mispairing. Robust, well-characterized, widely licensed.</div>
+          <div style="font-size:12px;color:#0d9488;line-height:1.6;">Mosunetuzumab<br>Glofitamab<br>Faricimab</div>
+        </div>
+
+        <!-- DuoBody -->
+        <div style="display:grid;grid-template-columns:160px 120px 1fr 170px;gap:8px;align-items:start;padding:10px 14px;background:#f9fafb;border:1px solid #e5e7eb;border-radius:8px;">
+          <div>
+            <div style="font-size:13px;font-weight:700;color:#111827;">DuoBody® / DEKK</div>
+            <div style="font-size:11px;color:#6b7280;margin-top:2px;">Genmab (Fab-arm exchange)</div>
+            <svg viewBox="0 0 72 56" xmlns="http://www.w3.org/2000/svg" style="width:64px;height:50px;display:block;margin-top:6px;flex-shrink:0;" aria-hidden="true"><circle cx="13" cy="8" r="6" fill="#e6fffa" stroke="#0d9488" stroke-width="1.2"/><line x1="13" y1="14" x2="28" y2="28" stroke="#0d9488" stroke-width="1.2" stroke-linecap="round"/><circle cx="59" cy="8" r="6" fill="#fff7ed" stroke="#d97706" stroke-width="1.2"/><line x1="59" y1="14" x2="44" y2="28" stroke="#6b7280" stroke-width="1.2" stroke-linecap="round"/><line x1="28" y1="28" x2="44" y2="28" stroke="#9ca3af" stroke-width="1"/><rect x="28" y="31" width="16" height="9" rx="1.5" fill="#f9fafb" stroke="#d1d5db" stroke-width="1"/><rect x="28" y="42" width="16" height="9" rx="1.5" fill="#f3f4f6" stroke="#d1d5db" stroke-width="1"/><text x="36" y="38" text-anchor="middle" font-size="7" fill="#7c3aed" font-weight="600" font-family="Inter,sans-serif">⇄</text><text x="36" y="55" text-anchor="middle" font-size="5.5" fill="#7c3aed" font-family="Inter,sans-serif">FAE</text></svg>
+          </div>
+          <span style="font-size:11px;font-weight:700;padding:2px 8px;background:#dcfce7;color:#166534;border-radius:10px;width:fit-content;height:fit-content;">✓ Multiple approvals</span>
+          <div style="font-size:12.5px;color:#374151;line-height:1.55;">Electrostatic steering (K409R / F405L matched exchange) enables efficient one-step re-dimerization of two parent IgG1s. Requires matching LC or common LC. Yields near-homogeneous heterodimer product. Widely out-licensed by Genmab.</div>
+          <div style="font-size:12px;color:#0d9488;line-height:1.6;">Teclistamab<br>Talquetamab<br>Epcoritamab<br>Linvoseltamab</div>
+        </div>
+
+        <!-- Common LC -->
+        <div style="display:grid;grid-template-columns:160px 120px 1fr 170px;gap:8px;align-items:start;padding:10px 14px;background:#f9fafb;border:1px solid #e5e7eb;border-radius:8px;">
+          <div>
+            <div style="font-size:13px;font-weight:700;color:#111827;">Common Light Chain</div>
+            <div style="font-size:11px;color:#6b7280;margin-top:2px;">J&amp;J / Merus</div>
+            <svg viewBox="0 0 72 56" xmlns="http://www.w3.org/2000/svg" style="width:64px;height:50px;display:block;margin-top:6px;flex-shrink:0;" aria-hidden="true"><path d="M7 4 Q36 -3 65 4" stroke="#9ca3af" stroke-width="1" fill="none" stroke-dasharray="2,1.5"/><text x="36" y="3" text-anchor="middle" font-size="5" fill="#9ca3af" font-family="Inter,sans-serif">shared LC</text><circle cx="13" cy="8" r="6" fill="#e6fffa" stroke="#0d9488" stroke-width="1.2"/><line x1="13" y1="14" x2="28" y2="28" stroke="#0d9488" stroke-width="1.2" stroke-linecap="round"/><circle cx="59" cy="8" r="6" fill="#fff7ed" stroke="#d97706" stroke-width="1.2"/><line x1="59" y1="14" x2="44" y2="28" stroke="#6b7280" stroke-width="1.2" stroke-linecap="round"/><line x1="28" y1="28" x2="44" y2="28" stroke="#9ca3af" stroke-width="1"/><rect x="28" y="31" width="16" height="9" rx="1.5" fill="#f9fafb" stroke="#d1d5db" stroke-width="1"/><rect x="28" y="42" width="16" height="9" rx="1.5" fill="#f3f4f6" stroke="#d1d5db" stroke-width="1"/><text x="36" y="55" text-anchor="middle" font-size="5.5" fill="#6b7280" font-family="Inter,sans-serif">=LC</text></svg>
+          </div>
+          <span style="font-size:11px;font-weight:700;padding:2px 8px;background:#dcfce7;color:#166534;border-radius:10px;width:fit-content;height:fit-content;">✓ Approved</span>
+          <div style="font-size:12.5px;color:#374151;line-height:1.55;">Both Fab arms share one LC sequence. Eliminates LC mispairing without domain crossover. Constraint: shared LC must maintain acceptable affinity for both targets — limits de novo design freedom. Screening against common LC library required.</div>
+          <div style="font-size:12px;color:#0d9488;line-height:1.6;">Amivantamab<br>(EGFR×MET)</div>
+        </div>
+
+        <!-- CrossMab -->
+        <div style="display:grid;grid-template-columns:160px 120px 1fr 170px;gap:8px;align-items:start;padding:10px 14px;background:#f9fafb;border:1px solid #e5e7eb;border-radius:8px;">
+          <div>
+            <div style="font-size:13px;font-weight:700;color:#111827;">CrossMab / CrossFab</div>
+            <div style="font-size:11px;color:#6b7280;margin-top:2px;">Roche — domain crossover</div>
+            <svg viewBox="0 0 72 56" xmlns="http://www.w3.org/2000/svg" style="width:64px;height:50px;display:block;margin-top:6px;flex-shrink:0;" aria-hidden="true"><circle cx="13" cy="8" r="6" fill="#e6fffa" stroke="#0d9488" stroke-width="1.2"/><line x1="13" y1="14" x2="28" y2="28" stroke="#0d9488" stroke-width="1.2" stroke-linecap="round"/><circle cx="59" cy="8" r="6" fill="#fff7ed" stroke="#d97706" stroke-width="1.2"/><line x1="55" y1="4" x2="63" y2="12" stroke="#dc2626" stroke-width="1.2" stroke-linecap="round"/><line x1="63" y1="4" x2="55" y2="12" stroke="#dc2626" stroke-width="1.2" stroke-linecap="round"/><line x1="59" y1="14" x2="44" y2="28" stroke="#6b7280" stroke-width="1.2" stroke-linecap="round"/><line x1="28" y1="28" x2="44" y2="28" stroke="#9ca3af" stroke-width="1"/><rect x="28" y="31" width="16" height="9" rx="1.5" fill="#f9fafb" stroke="#d1d5db" stroke-width="1"/><rect x="28" y="42" width="16" height="9" rx="1.5" fill="#f3f4f6" stroke="#d1d5db" stroke-width="1"/><text x="36" y="55" text-anchor="middle" font-size="5.5" fill="#dc2626" font-family="Inter,sans-serif">domain swap</text></svg>
+          </div>
+          <span style="font-size:11px;font-weight:700;padding:2px 8px;background:#dcfce7;color:#166534;border-radius:10px;width:fit-content;height:fit-content;">✓ Approved</span>
+          <div style="font-size:12.5px;color:#374151;line-height:1.55;">CH1/CL or VH/VL domain swap in one arm prevents LC mispairing via structural incompatibility. Used with KiH for HC heterodimerization. Enables "2+1" formats (two copies of one arm + one copy of the other) for avidity tuning.</div>
+          <div style="font-size:12px;color:#0d9488;line-height:1.6;">Glofitamab (2+1)<br>Faricimab<br>(VEGF-A×ANG-2)</div>
+        </div>
+
+        <!-- BiTE -->
+        <div style="display:grid;grid-template-columns:160px 120px 1fr 170px;gap:8px;align-items:start;padding:10px 14px;background:#fffbeb;border:1px solid #fde68a;border-radius:8px;">
+          <div>
+            <div style="font-size:13px;font-weight:700;color:#111827;">BiTE (tandem scFv)</div>
+            <div style="font-size:11px;color:#9a3412;margin-top:2px;">No Fc</div>
+            <svg viewBox="0 0 72 56" xmlns="http://www.w3.org/2000/svg" style="width:64px;height:50px;display:block;margin-top:6px;flex-shrink:0;" aria-hidden="true"><rect x="2" y="10" width="24" height="18" rx="4" fill="#e6fffa" stroke="#0d9488" stroke-width="1.2"/><text x="14" y="18" text-anchor="middle" font-size="6" fill="#0d9488" font-weight="600" font-family="Inter,sans-serif">scFv</text><text x="14" y="26" text-anchor="middle" font-size="5" fill="#0d9488" font-family="Inter,sans-serif">anti-CD3</text><path d="M26 19 Q36 15 36 19 Q36 23 46 19" stroke="#9ca3af" stroke-width="1" fill="none"/><rect x="46" y="10" width="24" height="18" rx="4" fill="#fff7ed" stroke="#d97706" stroke-width="1.2"/><text x="58" y="18" text-anchor="middle" font-size="6" fill="#d97706" font-weight="600" font-family="Inter,sans-serif">scFv</text><text x="58" y="26" text-anchor="middle" font-size="5" fill="#d97706" font-family="Inter,sans-serif">anti-tumor</text><rect x="22" y="36" width="28" height="12" rx="2" fill="none" stroke="#e5e7eb" stroke-width="1" stroke-dasharray="2,2"/><text x="36" y="44" text-anchor="middle" font-size="5.5" fill="#d1d5db" font-family="Inter,sans-serif">no Fc</text></svg>
+          </div>
+          <span style="font-size:11px;font-weight:700;padding:2px 8px;background:#fef3c7;color:#92400e;border-radius:10px;width:fit-content;height:fit-content;">⚠ 1 approval only</span>
+          <div style="font-size:12.5px;color:#374151;line-height:1.55;">Tandem anti-CD3 + anti-tumor scFv. No Fc: no FcRn recycling → short t½ (hours), requires continuous IV infusion. Severe CRS risk at low doses. New programs strongly favor IgG-like alternatives unless continuous IV is acceptable.</div>
+          <div style="font-size:12px;color:#0d9488;line-height:1.6;">Blinatumomab<br>(CD3×CD19)</div>
+        </div>
+
+        <!-- Bridging -->
+        <div style="display:grid;grid-template-columns:160px 120px 1fr 170px;gap:8px;align-items:start;padding:10px 14px;background:#f9fafb;border:1px solid #e5e7eb;border-radius:8px;">
+          <div>
+            <div style="font-size:13px;font-weight:700;color:#111827;">Asymmetric Bridging IgG</div>
+            <div style="font-size:11px;color:#6b7280;margin-top:2px;">Custom geometry</div>
+            <svg viewBox="0 0 72 56" xmlns="http://www.w3.org/2000/svg" style="width:64px;height:50px;display:block;margin-top:6px;flex-shrink:0;" aria-hidden="true"><circle cx="13" cy="8" r="6" fill="#dbeafe" stroke="#3b82f6" stroke-width="1.2"/><text x="13" y="11" text-anchor="middle" font-size="6" fill="#1d4ed8" font-weight="700" font-family="Inter,sans-serif">T1</text><line x1="13" y1="14" x2="28" y2="28" stroke="#0d9488" stroke-width="1.2" stroke-linecap="round"/><circle cx="59" cy="8" r="6" fill="#fce7f3" stroke="#db2777" stroke-width="1.2"/><text x="59" y="11" text-anchor="middle" font-size="6" fill="#9d174d" font-weight="700" font-family="Inter,sans-serif">T2</text><line x1="59" y1="14" x2="44" y2="28" stroke="#6b7280" stroke-width="1.2" stroke-linecap="round"/><line x1="28" y1="28" x2="44" y2="28" stroke="#9ca3af" stroke-width="1"/><rect x="28" y="31" width="16" height="9" rx="1.5" fill="#f9fafb" stroke="#d1d5db" stroke-width="1"/><rect x="28" y="42" width="16" height="9" rx="1.5" fill="#f3f4f6" stroke="#d1d5db" stroke-width="1"/><text x="36" y="55" text-anchor="middle" font-size="5.5" fill="#6b7280" font-family="Inter,sans-serif">geometry-critical</text></svg>
+          </div>
+          <span style="font-size:11px;font-weight:700;padding:2px 8px;background:#dcfce7;color:#166534;border-radius:10px;width:fit-content;height:fit-content;">✓ Approved</span>
+          <div style="font-size:12.5px;color:#374151;line-height:1.55;">Physically bridges two proteins with precise geometry — not for antigen blockade but enzymatic or receptor relay function. Arm angle and linker length are critical design parameters. SmartLink™ + AF2 Multimer validation mandatory.</div>
+          <div style="font-size:12px;color:#0d9488;line-height:1.6;">Emicizumab<br>(FIXa×FX,<br>Factor VIII mimic)</div>
+        </div>
+
+        <!-- VHH -->
+        <div style="display:grid;grid-template-columns:160px 120px 1fr 170px;gap:8px;align-items:start;padding:10px 14px;background:#fdf4ff;border:1px solid #e9d5ff;border-radius:8px;">
+          <div>
+            <div style="font-size:13px;font-weight:700;color:#111827;">VHH-Fc Fusion</div>
+            <div style="font-size:11px;color:#6b7280;margin-top:2px;">Nanobody-based</div>
+            <svg viewBox="0 0 72 56" xmlns="http://www.w3.org/2000/svg" style="width:64px;height:50px;display:block;margin-top:6px;flex-shrink:0;" aria-hidden="true"><rect x="7" y="3" width="12" height="12" rx="1" fill="#e6fffa" stroke="#0d9488" stroke-width="1.2" transform="rotate(45 13 9)"/><line x1="13" y1="14" x2="28" y2="28" stroke="#0d9488" stroke-width="1.2" stroke-linecap="round"/><rect x="53" y="3" width="12" height="12" rx="1" fill="#fff7ed" stroke="#d97706" stroke-width="1.2" transform="rotate(45 59 9)"/><line x1="59" y1="14" x2="44" y2="28" stroke="#6b7280" stroke-width="1.2" stroke-linecap="round"/><line x1="28" y1="28" x2="44" y2="28" stroke="#9ca3af" stroke-width="1"/><rect x="28" y="31" width="16" height="9" rx="1.5" fill="#f9fafb" stroke="#d1d5db" stroke-width="1"/><rect x="28" y="42" width="16" height="9" rx="1.5" fill="#f3f4f6" stroke="#d1d5db" stroke-width="1"/><text x="36" y="55" text-anchor="middle" font-size="5.5" fill="#7c3aed" font-family="Inter,sans-serif">no mispairing</text></svg>
+          </div>
+          <span style="font-size:11px;font-weight:700;padding:2px 8px;background:#f3e8ff;color:#6d28d9;border-radius:10px;width:fit-content;height:fit-content;">Limited precedent</span>
+          <div style="font-size:12.5px;color:#374151;line-height:1.55;">Tandem VHH or VHH-Fc fusion. No chain mispairing risk; compact size enables access to cryptic epitopes. VHH camelization and humanization required. Clinical approval limited to Japan (Ozoralizumab). Growing interest for CNS / inhaled delivery.</div>
+          <div style="font-size:12px;color:#0d9488;line-height:1.6;">Ozoralizumab<br>(TNF-α, Japan 2022)</div>
+        </div>
+
+      </div>
+      <p style="font-size:13px;color:#6b7280;margin-top:8px;">InSynBio's 134+ clinical database covers all formats above. Format recommendations are included in the Full Design Report.</p>
+
+      <!-- Clinical Format Distribution Chart -->
+      <div style="background:#f9fafb;border:1px solid #e5e7eb;border-radius:14px;padding:24px 28px;margin:20px 0 32px;">
+        <div style="font-size:13px;font-weight:700;color:#111827;margin-bottom:4px;">Approved Bispecific Antibodies by Heterodimerization Strategy</div>
+        <div style="font-size:12px;color:#9ca3af;margin-bottom:20px;">Regulatory approvals (FDA / EMA / PMDA / NMPA) as of April 2026 · n = 14 molecules</div>
+        <svg viewBox="0 0 560 210" xmlns="http://www.w3.org/2000/svg" style="width:100%;min-width:480px;max-width:620px;display:block;font-family:Inter,sans-serif;">
+          <!-- Y axis labels -->
+          <text x="148" y="28"  text-anchor="end" font-size="12" fill="#374151" font-weight="600">DuoBody / DEKK</text>
+          <text x="148" y="66"  text-anchor="end" font-size="12" fill="#374151" font-weight="600">KiH (+ CrossFab / CLC)</text>
+          <text x="148" y="104" text-anchor="end" font-size="12" fill="#374151" font-weight="600">CrossMab / CrossFab</text>
+          <text x="148" y="142" text-anchor="end" font-size="12" fill="#374151" font-weight="600">Common Light Chain</text>
+          <text x="148" y="180" text-anchor="end" font-size="12" fill="#374151" font-weight="600">BiTE (no Fc)</text>
+          <text x="148" y="204" text-anchor="end" font-size="11" fill="#9ca3af">Bridging / VHH-Fc</text>
+
+          <!-- Gridlines -->
+          <line x1="156" y1="8"   x2="156" y2="210" stroke="#e5e7eb" stroke-width="1"/>
+          <line x1="256" y1="8"   x2="256" y2="210" stroke="#e5e7eb" stroke-width="0.5" stroke-dasharray="3,3"/>
+          <line x1="356" y1="8"   x2="356" y2="210" stroke="#e5e7eb" stroke-width="0.5" stroke-dasharray="3,3"/>
+          <line x1="456" y1="8"   x2="456" y2="210" stroke="#e5e7eb" stroke-width="0.5" stroke-dasharray="3,3"/>
+
+          <!-- X axis tick labels -->
+          <text x="156" y="210" text-anchor="middle" font-size="10" fill="#9ca3af">0</text>
+          <text x="256" y="210" text-anchor="middle" font-size="10" fill="#9ca3af">1</text>
+          <text x="356" y="210" text-anchor="middle" font-size="10" fill="#9ca3af">2</text>
+          <text x="456" y="210" text-anchor="middle" font-size="10" fill="#9ca3af">3</text>
+          <text x="556" y="210" text-anchor="middle" font-size="10" fill="#9ca3af">4</text>
+
+          <!-- Bars: scale 100px per molecule -->
+          <!-- DuoBody: 4 → 400px wide -->
+          <rect x="157" y="12"  width="400" height="28" rx="5" fill="#0d9488"/>
+          <text x="563" y="31"  font-size="12" fill="#0d9488" font-weight="700">4</text>
+          <text x="167" y="31" font-size="10.5" fill="#fff" opacity="0.9">Teclistamab · Talquetamab · Epcoritamab · Linvoseltamab</text>
+
+          <!-- KiH: 3 → 300px -->
+          <rect x="157" y="50"  width="300" height="28" rx="5" fill="#0d9488" opacity="0.75"/>
+          <text x="463" y="69"  font-size="12" fill="#0d9488" font-weight="700">3</text>
+          <text x="167" y="69" font-size="10.5" fill="#fff" opacity="0.9">Mosunetuzumab · Glofitamab · Faricimab</text>
+
+          <!-- CrossMab: 2 → 200px -->
+          <rect x="157" y="88"  width="200" height="28" rx="5" fill="#0d9488" opacity="0.55"/>
+          <text x="363" y="107" font-size="12" fill="#0d9488" font-weight="700">2</text>
+          <text x="167" y="107" font-size="10.5" fill="#fff" opacity="0.9">Glofitamab (2+1) · Faricimab</text>
+
+          <!-- Common LC: 1 → 100px -->
+          <rect x="157" y="126" width="100" height="28" rx="5" fill="#0d9488" opacity="0.4"/>
+          <text x="263" y="145" font-size="12" fill="#0d9488" font-weight="700">1</text>
+          <text x="167" y="145" font-size="10.5" fill="#065f46" opacity="0.9">Amivantamab</text>
+
+          <!-- BiTE: 1 → 100px, amber highlight -->
+          <rect x="157" y="164" width="100" height="20" rx="5" fill="#f59e0b" opacity="0.7"/>
+          <text x="263" y="178" font-size="12" fill="#92400e" font-weight="700">1</text>
+          <text x="167" y="178" font-size="10.5" fill="#78350f" opacity="0.9">Blinatumomab</text>
+
+          <!-- Bridging + VHH: 2 → 200px, muted -->
+          <rect x="157" y="192" width="200" height="12" rx="4" fill="#a8a29e" opacity="0.5"/>
+          <text x="363" y="202" font-size="11" fill="#78716c" font-weight="600">2</text>
+          <text x="167" y="202" font-size="10" fill="#57534e">Emicizumab · Ozoralizumab</text>
+        </svg>
+        <div style="margin-top:10px;display:flex;gap:16px;flex-wrap:wrap;">
+          <span style="font-size:11px;display:flex;align-items:center;gap:5px;"><span style="display:inline-block;width:10px;height:10px;border-radius:2px;background:#0d9488;"></span>IgG-like (dominant formats)</span>
+          <span style="font-size:11px;display:flex;align-items:center;gap:5px;"><span style="display:inline-block;width:10px;height:10px;border-radius:2px;background:#f59e0b;"></span>BiTE (no Fc)</span>
+          <span style="font-size:11px;display:flex;align-items:center;gap:5px;"><span style="display:inline-block;width:10px;height:10px;border-radius:2px;background:#a8a29e;"></span>Bridging / VHH-Fc — limited precedent</span>
+        </div>
+        <div style="font-size:11px;color:#9ca3af;margin-top:8px;">Note: some molecules use multiple strategies (e.g. Glofitamab uses both KiH and CrossMab). Counts reflect primary heterodimerization mechanism.</div>
+      </div>
+
+      <h2 id="target-pairing"><span class="h2-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg></span>Target Pairing Strategy</h2>
+      <p>The biology of your target pair determines format, Fc engineering, and expected clinical risk. InSynBio evaluates each pairing against our clinical precedent database before recommending an architecture.</p>
+
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:12px;margin:16px 0 28px;">
+        <div style="border:1px solid #e5e7eb;border-radius:12px;padding:16px 18px;background:#fff;">
+          <div style="font-size:12px;font-weight:700;color:#0d9488;text-transform:uppercase;letter-spacing:0.8px;margin-bottom:8px;">T-cell Redirecting</div>
+          <div style="font-size:14px;font-weight:600;color:#111827;margin-bottom:6px;">Anti-CD3 × Tumor Antigen</div>
+          <div style="font-size:13px;color:#374151;line-height:1.6;margin-bottom:8px;">Engage cytotoxic T-cells independent of TCR specificity. Requires careful CD3 arm affinity tuning to minimize cytokine release syndrome (CRS) risk.</div>
+          <div style="display:flex;flex-wrap:wrap;gap:4px;">
+            <span style="font-size:11px;background:#f0fdf4;color:#166534;padding:2px 8px;border-radius:20px;">Low-affinity CD3 arm preferred</span>
+            <span style="font-size:11px;background:#fff7ed;color:#9a3412;padding:2px 8px;border-radius:20px;">CRS monitoring critical</span>
+          </div>
+        </div>
+        <div style="border:1px solid #e5e7eb;border-radius:12px;padding:16px 18px;background:#fff;">
+          <div style="font-size:12px;font-weight:700;color:#0d9488;text-transform:uppercase;letter-spacing:0.8px;margin-bottom:8px;">NK-cell Engaging</div>
+          <div style="font-size:14px;font-weight:600;color:#111827;margin-bottom:6px;">Anti-CD16a × Tumor Antigen</div>
+          <div style="font-size:13px;color:#374151;line-height:1.6;margin-bottom:8px;">Activate NK cells via CD16a (FcγRIIIa) without T-cell dependence. Lower CRS risk; requires Fc engineering for CD16a binding enhancement.</div>
+          <div style="display:flex;flex-wrap:wrap;gap:4px;">
+            <span style="font-size:11px;background:#f0fdf4;color:#166534;padding:2px 8px;border-radius:20px;">GASDALIE / S239D/I332E Fc</span>
+            <span style="font-size:11px;background:#eff6ff;color:#1e40af;padding:2px 8px;border-radius:20px;">Lower CRS than CD3</span>
+          </div>
+        </div>
+        <div style="border:1px solid #e5e7eb;border-radius:12px;padding:16px 18px;background:#fff;">
+          <div style="font-size:12px;font-weight:700;color:#0d9488;text-transform:uppercase;letter-spacing:0.8px;margin-bottom:8px;">Pathway Co-blockade</div>
+          <div style="font-size:14px;font-weight:600;color:#111827;margin-bottom:6px;">Dual Checkpoint / Growth Factor</div>
+          <div style="font-size:13px;color:#374151;line-height:1.6;margin-bottom:8px;">Simultaneously block two non-redundant immune or oncogenic pathways. Requires effector-silent Fc to avoid immune activation when targeting regulatory checkpoints.</div>
+          <div style="display:flex;flex-wrap:wrap;gap:4px;">
+            <span style="font-size:11px;background:#f0fdf4;color:#166534;padding:2px 8px;border-radius:20px;">LALA / N297A Fc</span>
+            <span style="font-size:11px;background:#fff7ed;color:#9a3412;padding:2px 8px;border-radius:20px;">Synergy validation needed</span>
+          </div>
+        </div>
+        <div style="border:1px solid #e5e7eb;border-radius:12px;padding:16px 18px;background:#fff;">
+          <div style="font-size:12px;font-weight:700;color:#0d9488;text-transform:uppercase;letter-spacing:0.8px;margin-bottom:8px;">Enzyme Bridging</div>
+          <div style="font-size:14px;font-weight:600;color:#111827;margin-bottom:6px;">Co-factor / Receptor Pair</div>
+          <div style="font-size:13px;color:#374151;line-height:1.6;margin-bottom:8px;">Physically bridge two proteins to mimic lost coagulation or signaling function. Geometry-critical — linker length and arm orientation determine activity. Structural modeling is mandatory.</div>
+          <div style="display:flex;flex-wrap:wrap;gap:4px;">
+            <span style="font-size:11px;background:#f5f3ff;color:#6d28d9;padding:2px 8px;border-radius:20px;">SmartLink™ essential</span>
+            <span style="font-size:11px;background:#f0fdf4;color:#166534;padding:2px 8px;border-radius:20px;">AF2 Multimer validation</span>
+          </div>
+        </div>
+      </div>
 
       <h2 id="nano-convert"><span class="h2-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 3h5v5M4 20L21 3M21 16v5h-5M15 15l-6 6"/><path d="M4 4l5 5"/></svg></span>Nano-Convert™ (VH to VHH)</h2>
       <p>Unlock the power of Nanobodies from your existing antibody assets. No llama immunization required.</p>
@@ -294,11 +582,12 @@
       </ul>
 
       <h2 id="virtual-cmc"><span class="h2-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg></span>Virtual CMC</h2>
-      <p>Solve chain mispairing before wet-lab production. Essential for IgG-like formats (CrossMab, KiH).</p>
+      <p>Solve chain mispairing before wet-lab production. Essential for IgG-like formats (CrossMab, KiH). InSynBio applies a <strong>three-layer mispairing audit</strong>: HC selectivity → LC mispairing → VH/VL domain crossover.</p>
       
       <ul>
-        <li><strong>Mispairing Prediction</strong> — Energy gap calculation between correct (H1L1) and incorrect (H1L2) pairs.</li>
-        <li><strong>Interface Engineering</strong> — Design of charge repulsion (electrostatic steering) or steric complementarity mutations to enforce correct pairing.</li>
+        <li><strong>HC Selectivity</strong> — KiH, DuoBody DEKK, DD/KK — evaluated and recommended based on target/format.</li>
+        <li><strong>LC Mispairing</strong> — CrossMab / Common Light Chain compatibility assessment.</li>
+        <li><strong>VH/VL Pairing Stability (VPSA)</strong> — Proprietary assessment of variable domain crossover risk using packing angle, interface BSA, charge complementarity, and mispairing ΔΔG. C-domain engineering alone does not assess this. See <a href="case_bispecific_vhvl_pairing.html" style="color:var(--primary);font-weight:600;">IgG-like Bispecific VPSA Case Study →</a></li>
         <li><strong>Developability Check</strong> — Full-spectrum assessment of aggregation (SAP), viscosity, and chemical stability.</li>
       </ul>
 
@@ -311,6 +600,54 @@
         <li><strong>Assessment Data</strong> — Detailed scoring cards and risk analysis.</li>
         <li><strong>Rationale</strong> — Scientific justification for linker selection and mutations.</li>
       </ul>
+
+      <h2 id="case-studies"><span class="h2-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg></span>Case Studies</h2>
+      <p>Real-world engineering problems solved with our platform — with anonymized data and full methodology transparency.</p>
+
+      <div style="background: linear-gradient(135deg, #f0fdfa 0%, #fff 100%); border: 1px solid rgba(13,148,136,0.15); border-radius: 16px; padding: 32px; margin: 24px 0; box-shadow: 0 4px 20px rgba(13,148,136,0.06); display: flex; gap: 28px; align-items: flex-start; flex-wrap: wrap;">
+        <div style="flex: 0 0 auto; width: 52px; height: 52px; background: rgba(13,148,136,0.1); border-radius: 14px; display: flex; align-items: center; justify-content: center;">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+        </div>
+        <div style="flex: 1; min-width: 240px;">
+          <div style="display:inline-block; background:rgba(13,148,136,0.08); color:var(--primary); padding:4px 12px; border-radius:20px; font-size:11px; font-weight:700; letter-spacing:1.2px; text-transform:uppercase; margin-bottom:10px;">VHH Bispecific · Expression Optimization</div>
+          <h3 style="font-family:'Cormorant Garamond',serif; font-size:22px; font-weight:700; color:#111827; margin:0 0 10px;">Engineering a High-Expression Bispecific Coronavirus Nanobody</h3>
+          <p style="font-size:15px; color:#4b5563; margin:0 0 16px; line-height:1.6;">A VHH-GS-VHH bispecific fusion targeting two independent coronavirus spike proteins showed consistently low yeast secretion. InSynBio's SmartLink™ and VirtualCMC pipeline identified pI-driven ER electrostatic retention as the root cause — and delivered an arm-swap + charged-linker solution that reduced fusion pI by 1.09 units and simultaneously improved cross-coronavirus IC90 by 4.8×.</p>
+          <div style="display:flex; gap:16px; flex-wrap:wrap; margin-bottom:16px;">
+            <span style="font-size:13px; font-weight:700; color:var(--primary);">↓1.09 pI</span>
+            <span style="font-size:13px; color:#9ca3af;">·</span>
+            <span style="font-size:13px; font-weight:700; color:var(--primary);">↓4.0 Net Charge</span>
+            <span style="font-size:13px; color:#9ca3af;">·</span>
+            <span style="font-size:13px; font-weight:700; color:var(--primary);">4.8× Activity Gain</span>
+            <span style="font-size:13px; color:#9ca3af;">·</span>
+            <span style="font-size:13px; font-weight:700; color:var(--primary);">12 VHH Variants</span>
+          </div>
+          <a href="case_bispecific_vhh_expression_optimization.html" style="display:inline-flex; align-items:center; gap:8px; padding:10px 22px; background:var(--primary); color:#fff; border-radius:8px; text-decoration:none; font-size:14px; font-weight:700; box-shadow:0 4px 12px rgba(13,148,136,0.25); transition:all 0.2s;" onmouseover="this.style.background='#0f766e';this.style.transform='translateY(-1px)'" onmouseout="this.style.background='var(--primary)';this.style.transform='none'">
+            Read Full Case Study →
+          </a>
+        </div>
+      </div>
+
+      <!-- IgG-like VPSA Case Study card -->
+      <div style="background:linear-gradient(135deg,#f5f3ff 0%,#ede9fe 40%,#faf5ff 100%);border:1px solid rgba(124,58,237,0.15);border-radius:16px;padding:32px;margin:24px 0;box-shadow:0 4px 20px rgba(124,58,237,0.06);display:flex;gap:28px;align-items:flex-start;flex-wrap:wrap;">
+        <div style="flex:0 0 auto;width:52px;height:52px;background:rgba(124,58,237,0.1);border-radius:14px;display:flex;align-items:center;justify-content:center;">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#7c3aed" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+        </div>
+        <div style="flex:1;min-width:240px;">
+          <div style="display:inline-block;background:rgba(124,58,237,0.08);color:#7c3aed;padding:4px 12px;border-radius:20px;font-size:11px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;margin-bottom:10px;">IgG-like Bispecific · VH/VL Pairing Stability</div>
+          <h3 style="font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:700;color:#111827;margin:0 0 10px;">Faricimab VPSA: Arm-Specific Selectivity in KiH+CrossFab Co-Expression</h3>
+          <p style="font-size:15px;color:#4b5563;margin:0 0 16px;line-height:1.6;">CrossFab addresses LC-level mispairing — but the Fv variable domain interface is a separate layer. InSynBio VPSA analysis of Faricimab (VEGF-A×ANG-2, FDA approved 2022) revealed that Arm A (VH3/Vκ) has strong intrinsic Fv selectivity (156 native salt bridges → 43 in crossover, −72%), while Arm B (VH1/Vλ) relies primarily on CrossFab C-domain architecture. BSA alone would give the opposite conclusion — demonstrating why multi-metric VPSA is required.</p>
+          <div style="display:flex;gap:16px;flex-wrap:wrap;margin-bottom:16px;">
+            <span style="font-size:13px;font-weight:700;color:#7c3aed;">Arm A: 156 → 43 SB (−72%)</span>
+            <span style="font-size:13px;color:#9ca3af;">·</span>
+            <span style="font-size:13px;font-weight:700;color:#7c3aed;">Real Computation</span>
+            <span style="font-size:13px;color:#9ca3af;">·</span>
+            <span style="font-size:13px;font-weight:700;color:#7c3aed;">4 Structural Metrics</span>
+          </div>
+          <a href="case_bispecific_vhvl_pairing.html" style="display:inline-flex;align-items:center;gap:8px;padding:10px 22px;background:#7c3aed;color:#fff;border-radius:8px;text-decoration:none;font-size:14px;font-weight:700;box-shadow:0 4px 12px rgba(124,58,237,0.25);transition:all 0.2s;" onmouseover="this.style.background='#6d28d9';this.style.transform='translateY(-1px)'" onmouseout="this.style.background='#7c3aed';this.style.transform='none'">
+            Read Full Case Study →
+          </a>
+        </div>
+      </div>
 
       <h2 id="submit"><span class="h2-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg></span>Submit Inquiry</h2>
       <p>Tell us about your project. We will provide a tailored design proposal.</p>
@@ -409,6 +746,9 @@
     }
     setTopNavActive();
     window.addEventListener('hashchange', setTopNavActive);
+    document.querySelectorAll('.top-header-nav a').forEach(a => {
+      a.addEventListener('click', () => { document.querySelector('.top-header-nav').classList.remove('open'); });
+    });
     document.querySelectorAll('.nav-link').forEach(a => {
       a.addEventListener('click', function(e) {
         e.preventDefault();
@@ -418,7 +758,7 @@
         this.classList.add('active');
       });
     });
-    const sections = ['platform','nano-convert','smartlink','audit','virtual-cmc','full-report','submit','contact'];
+    const sections = ['platform','format-selection','target-pairing','nano-convert','smartlink','audit','virtual-cmc','full-report','case-studies','submit','contact'];
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (!entry.isIntersecting) return;

@@ -1,0 +1,923 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="InSynBio 138种治疗性抗体免疫原性预测临床研究 — 分层建模，ADA预测，中英文双语报告 | 138-antibody ADA prediction clinical study, bilingual Chinese-English report.">
+  <meta name="keywords" content="antibody immunogenicity, ADA prediction, 抗体免疫原性, ADA预测, therapeutic antibody, MHC-II epitope, InSynBio">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://www.insynbio.com/immunogenicity_study_bilingual.html">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://www.insynbio.com/immunogenicity_study_bilingual.html">
+  <meta property="og:title" content="抗体免疫原性预测 — 138分子临床研究 | InSynBio">
+  <meta property="og:description" content="基于138个已批准/临床阶段治疗性抗体的计算免疫原性分层建模研究，经真实临床ADA数据验证。">
+  <title>抗体免疫原性预测研究 | InSynBio</title>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #0d9488; --primary-dark: #0f766e; --primary-light: #e6f4f1;
+      --text: #111827; --text-muted: #4b5563; --text-light: #6b7280;
+      --border: #e5e7eb; --bg: #ffffff; --bg-alt: #f9fafb;
+      --red: #b91c1c; --blue: #1d4ed8; --green: #15803d; --orange: #b45309;
+      --purple: #7c3aed;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Inter', 'Noto Sans SC', -apple-system, sans-serif; font-size: 16px; line-height: 1.65; color: var(--text); background: var(--bg); -webkit-font-smoothing: antialiased; padding-top: 73px; }
+
+    /* === HEADER === */
+    .top-header { display: flex; align-items: center; justify-content: space-between; padding: 12px 32px; background: rgba(255,255,255,0.96); backdrop-filter: blur(12px); border-bottom: 2px solid rgba(13,148,136,0.1); position: fixed; width: 100%; top: 0; z-index: 2000; gap: 12px; }
+    .brand { font-family: 'Cormorant Garamond', serif; font-weight: 700; font-size: 26px; letter-spacing: -0.03em; }
+    .brand a { text-decoration: none; color: inherit; display: flex; align-items: center; gap: 10px; }
+    .brand .syn { color: var(--primary); font-style: italic; }
+    .slogan { font-size: 13px; color: var(--text-muted); padding-left: 14px; border-left: 1px solid var(--border); font-weight: 500; white-space: nowrap; }
+    .top-nav { display: flex; align-items: center; gap: 6px; flex: 1; justify-content: center; }
+    .top-nav a { padding: 7px 14px; font-size: 14px; color: var(--text-muted); text-decoration: none; border-radius: 20px; transition: all 0.2s; font-weight: 500; }
+    .top-nav a:hover { color: var(--primary); background: rgba(13,148,136,0.06); }
+    .top-nav a.active { background: var(--primary); color: #fff; }
+
+    /* === LANG TOGGLE === */
+    .lang-toggle { display: flex; border: 1px solid var(--border); border-radius: 8px; overflow: hidden; font-size: 13px; flex-shrink: 0; }
+    .lang-toggle button { padding: 6px 14px; border: none; background: transparent; cursor: pointer; font-weight: 600; color: var(--text-muted); transition: all 0.2s; font-family: inherit; }
+    .lang-toggle button.active { background: var(--primary); color: #fff; }
+    .lang-toggle button:hover:not(.active) { background: var(--bg-alt); }
+
+    /* === LANG VISIBILITY === */
+    .zh { display: block; }
+    .en { display: none; }
+    body.en-mode .zh { display: none; }
+    body.en-mode .en { display: block; }
+    /* For inline spans */
+    span.zh, span.en { display: inline; }
+    body.en-mode span.zh { display: none; }
+    body.en-mode span.en { display: inline; }
+
+    /* === HERO === */
+    .page-hero { background: linear-gradient(135deg, #0f766e 0%, #0d9488 45%, #14b8a6 100%); color: #fff; padding: 52px 32px 48px; text-align: center; position: relative; overflow: hidden; }
+    .page-hero::before { content: ''; position: absolute; inset: 0; background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Ccircle cx='30' cy='30' r='20'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"); }
+    .page-hero > * { position: relative; z-index: 1; }
+    .hero-label { font-size: 11px; font-weight: 700; letter-spacing: 2.5px; text-transform: uppercase; opacity: 0.72; margin-bottom: 14px; }
+    .hero-title { font-family: 'Cormorant Garamond', serif; font-size: 44px; font-weight: 700; line-height: 1.1; letter-spacing: -0.02em; max-width: 820px; margin: 0 auto 18px; }
+    .hero-sub { font-size: 17px; opacity: 0.85; max-width: 640px; margin: 0 auto 28px; line-height: 1.65; }
+    .hero-chips { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+    .chip { background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.3); border-radius: 20px; padding: 5px 14px; font-size: 13px; font-weight: 500; }
+
+    /* === LAYOUT === */
+    .page-wrap { display: flex; max-width: 1340px; margin: 0 auto; }
+    .sidebar { width: 256px; flex-shrink: 0; padding: 32px 14px; position: sticky; top: 73px; height: calc(100vh - 73px); overflow-y: auto; border-right: 1px solid var(--border); }
+    .sidebar-label { font-size: 10px; font-weight: 700; color: var(--text-light); text-transform: uppercase; letter-spacing: 1.5px; margin: 0 10px 10px; }
+    .sidebar a { display: flex; align-items: flex-start; gap: 8px; padding: 9px 12px; font-size: 13.5px; color: var(--text-muted); text-decoration: none; border-radius: 8px; margin-bottom: 2px; font-weight: 500; line-height: 1.4; transition: all 0.18s; }
+    .sidebar a .snum { font-size: 11px; color: var(--primary); font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+    .sidebar a:hover { background: rgba(13,148,136,0.07); color: var(--primary); }
+    .sidebar a.active { background: rgba(13,148,136,0.1); color: var(--primary-dark); font-weight: 600; }
+    .sidebar-sep { margin: 14px 10px; border: none; border-top: 1px solid var(--border); }
+    .main { flex: 1; padding: 52px 60px 100px; min-width: 0; }
+
+    /* === SECTION STYLES === */
+    .sec { margin-bottom: 68px; scroll-margin-top: 90px; }
+    .sec-head { margin-bottom: 22px; }
+    .sec-num { font-size: 11px; font-weight: 700; color: var(--primary); letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 6px; }
+    .sec h2 { font-family: 'Cormorant Garamond', serif; font-size: 34px; font-weight: 600; color: #111827; line-height: 1.15; letter-spacing: -0.02em; }
+    .sec h3 { font-size: 17px; font-weight: 600; color: #1f2937; margin: 28px 0 12px; }
+    .sec p { color: var(--text-muted); font-size: 15.5px; line-height: 1.75; margin-bottom: 16px; }
+    .sec ul, .sec ol { margin: 0 0 20px 22px; }
+    .sec li { color: var(--text-muted); font-size: 15.5px; line-height: 1.65; margin-bottom: 8px; }
+    .sec strong { color: var(--text); }
+    em { color: var(--text); font-style: normal; font-weight: 500; }
+
+    /* === KPI CARDS === */
+    .kpi-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin: 24px 0; }
+    .kpi { text-align: center; padding: 22px 14px; background: #fff; border: 1px solid var(--border); border-radius: 12px; box-shadow: 0 1px 4px rgba(0,0,0,.04); }
+    .kpi .val { font-size: 32px; font-weight: 700; line-height: 1; margin-bottom: 8px; }
+    .kpi .lbl { font-size: 12px; color: var(--text-muted); line-height: 1.5; }
+    .kpi-teal .val { color: var(--primary); }
+    .kpi-green .val { color: var(--green); }
+    .kpi-blue .val { color: var(--blue); }
+    .kpi-orange .val { color: var(--orange); }
+
+    /* === INFO CARDS === */
+    .card { background: #fff; border: 1px solid var(--border); border-radius: 12px; padding: 22px 26px; margin-bottom: 18px; }
+    .card-teal { border-left: 4px solid var(--primary); background: rgba(13,148,136,0.025); }
+    .card-green { border-left: 4px solid var(--green); background: #f0fdf4; }
+    .card-amber { border-left: 4px solid #f59e0b; background: #fffbeb; }
+    .card-red { border-left: 4px solid #ef4444; background: #fef2f2; }
+    .card-purple { border-left: 4px solid var(--purple); background: #faf5ff; }
+    .card-slate { background: #f8fafc; border-color: #e2e8f0; }
+
+    /* === TWO-COL GRID === */
+    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 20px 0; }
+
+    /* === FACTOR GRID === */
+    .factor-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; margin: 20px 0; }
+    .fc { border: 1px solid var(--border); border-radius: 10px; padding: 16px 18px; }
+    .fc.covered { border-left: 3px solid var(--primary); }
+    .fc.partial { border-left: 3px solid #f59e0b; }
+    .fc h4 { font-size: 13.5px; font-weight: 700; margin-bottom: 10px; display: flex; align-items: center; gap: 8px; }
+    .fc ul { margin: 0 0 0 14px; }
+    .fc li { font-size: 13px; color: var(--text-muted); margin-bottom: 4px; }
+
+    /* === TABLES === */
+    .tbl-wrap { overflow-x: auto; margin: 14px 0 22px; border-radius: 10px; border: 1px solid var(--border); }
+    table { width: 100%; border-collapse: collapse; font-size: 13.5px; }
+    th { background: rgba(13,148,136,0.07); color: var(--primary-dark); text-align: left; padding: 10px 14px; border-bottom: 2px solid rgba(13,148,136,0.15); font-weight: 600; font-size: 12.5px; letter-spacing: 0.02em; white-space: nowrap; }
+    td { padding: 9px 14px; border-bottom: 1px solid #f0f0f0; color: #374151; vertical-align: middle; }
+    tr:last-child td { border-bottom: none; }
+    tr:nth-child(even) td { background: #fafafa; }
+    tr.best td { background: #f0fdf4 !important; }
+    tr.warn td { background: #fffbeb !important; }
+    tr.bad td { background: #fef9f9 !important; }
+    .rv-pos { color: var(--red); font-weight: 700; }
+    .rv-neg { color: var(--blue); font-weight: 700; }
+    .sig2 { color: var(--green); font-size: 10px; vertical-align: super; font-weight: 700; }
+    .sig1 { color: #0891b2; font-size: 10px; vertical-align: super; font-weight: 700; }
+    .sig0 { color: #9ca3af; font-size: 10px; vertical-align: super; }
+
+    /* === BADGES === */
+    .badge { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 11px; font-weight: 600; white-space: nowrap; }
+    .b-seq { background: #ede9fe; color: #5b21b6; }
+    .b-str { background: #dcfce7; color: #166534; }
+    .b-glyc { background: #fef3c7; color: #92400e; }
+    .b-clin { background: #fee2e2; color: #991b1b; }
+
+    /* === FORMULA === */
+    .formula { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 10px; padding: 20px 24px; font-family: 'Courier New', monospace; font-size: 14px; line-height: 2; margin: 16px 0; overflow-x: auto; color: #1e293b; }
+
+    /* === DIVIDER === */
+    hr.sec-div { border: none; border-top: 1px solid var(--border); margin: 48px 0; }
+
+    /* === BACK BAR === */
+    .back-bar { background: var(--bg-alt); border-top: 1px solid var(--border); padding: 18px 60px; display: flex; align-items: center; gap: 16px; font-size: 14px; color: var(--text-muted); flex-wrap: wrap; }
+    .back-bar a { color: var(--primary); font-weight: 600; text-decoration: none; }
+    .back-bar a:hover { text-decoration: underline; }
+
+    /* === CITATION === */
+    .citation { font-size: 12.5px; color: #6b7280; border-top: 1px solid var(--border); margin-top: 28px; padding-top: 16px; line-height: 1.7; }
+
+    /* === BILINGUAL LABEL === */
+    .biline { font-size: 12px; color: var(--primary); font-weight: 600; letter-spacing: 0.5px; opacity: 0.8; margin-bottom: 2px; display: block; }
+
+    @media (max-width: 1000px) {
+      .sidebar { display: none; }
+      .main { padding: 32px 24px 60px; }
+      .kpi-grid { grid-template-columns: 1fr 1fr; }
+      .factor-grid { grid-template-columns: 1fr; }
+      .grid-2 { grid-template-columns: 1fr; }
+      .hero-title { font-size: 30px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="top-header">
+  <div class="brand">
+    <a href="index.html">In<span class="syn">Syn</span>Bio</a>
+    <span class="slogan">AI for Therapeutics</span>
+  </div>
+  <nav class="top-nav">
+    <a href="index.html">
+      <span class="zh">首页</span><span class="en">Home</span>
+    </a>
+    <a href="InSynBio_Antibody_Developability_Assessment_Page.html" class="active">
+      <span class="zh">服务</span><span class="en">Services</span>
+    </a>
+    <a href="InSynBio_OurTech.html">
+      <span class="zh">技术</span><span class="en">Our Tech</span>
+    </a>
+    <a href="index.html#contact">
+      <span class="zh">联系</span><span class="en">Contact</span>
+    </a>
+  </nav>
+  <div class="lang-toggle">
+    <button class="active" onclick="setLang('zh')">中文</button>
+    <button onclick="setLang('en')">EN</button>
+  </div>
+</header>
+
+<!-- HERO -->
+<div class="page-hero">
+  <div class="hero-label">
+    <span class="zh">临床基准研究 · AbEngineCore 免疫原性模块</span>
+    <span class="en">Clinical Benchmark Study · AbEngineCore Immunogenicity Module</span>
+  </div>
+  <h1 class="hero-title">
+    <span class="zh">治疗性抗体免疫原性预测：<br>138 分子临床研究</span>
+    <span class="en">Predicting Antibody Immunogenicity:<br>A 138-Molecule Clinical Study</span>
+  </h1>
+  <p class="hero-sub">
+    <span class="zh">对 138 个已上市/临床阶段治疗性抗体的抗药抗体（ADA）发生率进行分层计算建模，经真实临床数据验证。</span>
+    <span class="en">Stratified computational modeling of anti-drug antibody (ADA) rates across 138 approved and late-clinical-stage therapeutic antibodies, validated against real-world clinical data.</span>
+  </p>
+  <div class="hero-chips">
+    <span class="chip">
+      <span class="zh">138 个抗体 · 57+ 个特征</span>
+      <span class="en">138 antibodies · 57+ features</span>
+    </span>
+    <span class="chip">
+      <span class="zh">人源化 84 + 全人源 54</span>
+      <span class="en">Humanized 84 + Fully human 54</span>
+    </span>
+    <span class="chip">
+      <span class="zh">LOO 留一法交叉验证</span>
+      <span class="en">Leave-One-Out cross-validation</span>
+    </span>
+    <span class="chip">
+      <span class="zh">2026 年 4 月</span>
+      <span class="en">April 2026</span>
+    </span>
+  </div>
+</div>
+
+<div class="page-wrap">
+
+<!-- SIDEBAR -->
+<aside class="sidebar">
+  <div class="sidebar-label zh">目录</div>
+  <div class="sidebar-label en">Contents</div>
+  <a href="#s1"><span class="snum">01</span><span class="zh">研究概述</span><span class="en">Overview</span></a>
+  <a href="#s2"><span class="snum">02</span><span class="zh">为何分层建模？</span><span class="en">Why Stratify?</span></a>
+  <a href="#s3"><span class="snum">03</span><span class="zh">13 因素框架</span><span class="en">13-Factor Framework</span></a>
+  <a href="#s4"><span class="snum">04</span><span class="zh">特征相关性分析</span><span class="en">Feature Correlations</span></a>
+  <a href="#s5"><span class="snum">05</span><span class="zh">极简模型 LOO 验证</span><span class="en">LOO Model Validation</span></a>
+  <a href="#s6"><span class="snum">06</span><span class="zh">推荐评分公式</span><span class="en">Scoring Formulas</span></a>
+  <a href="#s7"><span class="snum">07</span><span class="zh">生物学解读</span><span class="en">Biological Interpretation</span></a>
+  <a href="#s8"><span class="snum">08</span><span class="zh">局限性与路线图</span><span class="en">Limits & Roadmap</span></a>
+  <a href="#s9"><span class="snum">09</span><span class="zh">抗体数据集</span><span class="en">Antibody Dataset</span></a>
+  <hr class="sidebar-sep">
+  <a href="InSynBio_Antibody_Developability_Assessment_Page.html#immunogenicity" style="font-size:12.5px;">
+    ← <span class="zh">返回免疫原性评估</span><span class="en">Back to Immunogenicity Assessment</span>
+  </a>
+</aside>
+
+<!-- MAIN -->
+<main class="main">
+
+<!-- ===== S1 OVERVIEW ===== -->
+<section class="sec" id="s1">
+  <div class="sec-head">
+    <div class="sec-num">01</div>
+    <h2><span class="zh">研究概述</span><span class="en">Overview</span></h2>
+  </div>
+
+  <div class="zh">
+    <p>抗药抗体（ADA）是生物制剂的主要临床风险之一，可导致疗效下降、药代动力学改变，严重时引发不良反应。然而，不同抗体的 ADA 发生率差异极大——在我们的数据集中从 0% 到 85% 以上，使得预测工作极具挑战性。</p>
+    <p>本研究将 InSynBio <strong>AbEngineCore 免疫原性模块</strong>应用于 138 个拥有临床 ADA 文献记录的治疗性抗体。对每个抗体提取 57+ 个序列、结构、糖基化及临床特征（含新发现的交互项），构建分层预测评分模型，并通过严格的留一法（LOO）交叉验证进行评估。</p>
+  </div>
+  <div class="en">
+    <p>Anti-drug antibodies (ADAs) are a primary clinical risk for biologics — they can reduce efficacy, alter pharmacokinetics, and in rare cases trigger serious adverse events. ADA rates vary enormously across antibodies, from 0% to over 87% in our dataset, making prediction genuinely difficult.</p>
+    <p>This study applies InSynBio's <strong>AbEngineCore Immunogenicity Module</strong> to 138 therapeutic antibodies with documented clinical ADA rates. For each molecule, 57+ sequence, structural, glycosylation, and clinical features were extracted — including novel interaction terms — to build stratified predictive scoring models, validated by strict Leave-One-Out (LOO) cross-validation.</p>
+  </div>
+
+  <div class="kpi-grid">
+    <div class="kpi kpi-teal">
+      <div class="val">138</div>
+      <div class="lbl"><span class="zh">治疗性抗体<br>含临床 ADA 数据</span><span class="en">Therapeutic antibodies<br>with clinical ADA data</span></div>
+    </div>
+    <div class="kpi kpi-blue">
+      <div class="val">57+</div>
+      <div class="lbl"><span class="zh">序列、结构与<br>临床特征</span><span class="en">Sequence, structural &amp;<br>clinical features</span></div>
+    </div>
+    <div class="kpi kpi-green">
+      <div class="val">r = 0.39</div>
+      <div class="lbl"><span class="zh">最佳 LOO 相关性<br>（全人源 GBR, p=0.004）</span><span class="en">Best LOO correlation<br>(fully human GBR, p=0.004)</span></div>
+    </div>
+    <div class="kpi kpi-orange">
+      <div class="val">85%</div>
+      <div class="lbl"><span class="zh">因素覆盖率<br>（11/13 免疫原性因素）</span><span class="en">Factor coverage<br>(11/13 immunogenicity factors)</span></div>
+    </div>
+  </div>
+
+  <div class="card card-teal">
+    <strong><span class="zh">数据集：</span><span class="en">Dataset:</span></strong>
+    <span class="zh">138 个抗体，包含 84 个人源化和 54 个全人源分子。ADA 发生率范围从 0%（Bezlotoxumab, Omalizumab）到 87%（Donanemab），中位数为 4.8%，均值为 10.3%。</span>
+    <span class="en">138 antibodies — 84 humanized and 54 fully human. ADA rates range from 0% (Bezlotoxumab, Omalizumab) to 87% (Donanemab), with a median of 4.8% and mean of 10.3%.</span>
+  </div>
+</section>
+
+<!-- ===== S2 STRATIFICATION ===== -->
+<section class="sec" id="s2">
+  <div class="sec-head">
+    <div class="sec-num">02</div>
+    <h2><span class="zh">为何分层建模？</span><span class="en">Why Stratified Modeling?</span></h2>
+  </div>
+
+  <div class="zh">
+    <p>将 138 个抗体混合建模时，任何单个特征与 ADA 率的最高 Spearman 相关性仅为 r ≤ 0.19。这是预期的结果：<strong>人源化与全人源抗体的免疫原性驱动因素在机制上截然不同。</strong></p>
+  </div>
+  <div class="en">
+    <p>When all 138 antibodies are pooled, the best achievable Spearman correlation is modest (r ≤ 0.19). This is expected: <strong>humanized and fully human antibodies are immunogenic for fundamentally different reasons.</strong></p>
+  </div>
+
+  <div class="grid-2">
+    <div class="card card-teal">
+      <h3 style="margin-top:0;color:var(--primary-dark);font-size:16px;">
+        <span class="zh">人源化抗体（n = 84）</span>
+        <span class="en">Humanized Antibodies (n = 84)</span>
+      </h3>
+      <p style="margin:0;">
+        <span class="zh">ADA 风险主要由<strong>临床与药理环境</strong>驱动：联合免疫抑制用药 × 半衰期交互项（r = −0.20），检测法代际效应。残留的鼠源 CDR 骨架创造了一个基础免疫原性风险，随后被患者管理因素所调节。<em style="font-size:12px;color:#666;">注：41 个新增人源化抗体缺少完整的混杂因素数据，造成信号衰减。</em></span>
+        <span class="en">ADA risk is driven by <strong>clinical and pharmacological context</strong>: co-medication × half-life interaction (r = −0.20), assay generation. Residual murine CDR scaffolds create baseline immunogenic risk, modulated by patient management.<br><em style="font-size:12px;color:#666;">Note: 41 of 84 HU antibodies lack complete confounder data, attenuating signal.</em></span>
+      </p>
+    </div>
+    <div class="card card-purple">
+      <h3 style="margin-top:0;color:var(--purple);font-size:16px;">
+        <span class="zh">全人源抗体（n = 54）</span>
+        <span class="en">Fully Human Antibodies (n = 54)</span>
+      </h3>
+      <p style="margin:0;">
+        <span class="zh">使用人源序列框架，ADA 风险更具本征性——由<strong>强 MHC-II 结合肽计数（r = +0.32）、表位聚集和 VH 生殖系外源性</strong>驱动。与 n=27 相比，n 翻倍至 54 后统计置信度显著提升。</span>
+        <span class="en">With human-sequence frameworks, ADA risk is more intrinsic — driven by <strong>strong MHC-II binder count (r = +0.32), epitope clustering, and VH germline foreignness</strong>. With n doubled from 27 to 54, statistical confidence substantially improves.</span>
+      </p>
+    </div>
+  </div>
+
+  <div class="card card-amber">
+    <strong><span class="zh">数据完整性发现：</span><span class="en">Data completeness insight:</span></strong>
+    <span class="zh">人源化组信号衰减（LOO r: 0.39 → 0.25，随 n 从 43 增至 84）直接量化了记录临床混杂因素的价值。这是优先补全缺失数据的最强理由。</span>
+    <span class="en">The attenuation of HU signal (LOO r: 0.39 → 0.25 as n grows from 43 to 84) directly quantifies the value of recording clinical confounders. This is the strongest argument for completing missing confounder annotations.</span>
+  </div>
+</section>
+
+<!-- ===== S3 13-FACTOR ===== -->
+<section class="sec" id="s3">
+  <div class="sec-head">
+    <div class="sec-num">03</div>
+    <h2><span class="zh">13 因素免疫原性框架</span><span class="en">13-Factor Immunogenicity Framework</span></h2>
+  </div>
+
+  <p>
+    <span class="zh">我们评估了 4 大类 13 个已建立的免疫原性风险因素，并逐一评估其计算覆盖情况。</span>
+    <span class="en">We assessed 13 established immunogenicity risk factors across 4 categories, evaluating computational coverage for each.</span>
+  </p>
+
+  <div class="factor-grid">
+    <div class="fc covered">
+      <h4><span class="badge b-seq"><span class="zh">序列</span><span class="en">Sequence</span></span></h4>
+      <ul>
+        <li><span class="zh">T 细胞表位（MHC-II）✓</span><span class="en">T-cell epitopes (MHC-II) ✓</span></li>
+        <li><span class="zh">Germline 同源性 ✓</span><span class="en">Germline identity ✓</span></li>
+        <li><span class="zh">CDR 长度与组成 ✓</span><span class="en">CDR length &amp; composition ✓</span></li>
+      </ul>
+    </div>
+    <div class="fc covered">
+      <h4><span class="badge b-str"><span class="zh">结构/物理</span><span class="en">Structural / Physical</span></span></h4>
+      <ul>
+        <li><span class="zh">聚集倾向 ✓</span><span class="en">Aggregation propensity ✓</span></li>
+        <li><span class="zh">表面疏水性 ✓（部分覆盖）</span><span class="en">Surface hydrophobicity ✓ (partial coverage)</span></li>
+      </ul>
+    </div>
+    <div class="fc covered">
+      <h4><span class="badge b-glyc"><span class="zh">糖基化</span><span class="en">Glycosylation</span></span></h4>
+      <ul>
+        <li><span class="zh">Fc N297 糖基化状态 ✓</span><span class="en">Fc N297 glycan status ✓</span></li>
+        <li><span class="zh">CDR N-糖基化 motif ✓</span><span class="en">CDR N-glycosylation motifs ✓</span></li>
+      </ul>
+    </div>
+    <div class="fc partial">
+      <h4><span class="badge b-clin"><span class="zh">给药与临床</span><span class="en">Administration &amp; Clinical</span></span></h4>
+      <ul>
+        <li><span class="zh">给药途径 ✓</span><span class="en">Route of administration ✓</span></li>
+        <li><span class="zh">既往 ADA — 数据不可得</span><span class="en">Pre-existing ADA — not available</span></li>
+        <li><span class="zh">疾病状态与靶点生物学 ✓</span><span class="en">Disease state &amp; target biology ✓</span></li>
+        <li><span class="zh">给药频率 ✓</span><span class="en">Dosing frequency ✓</span></li>
+        <li><span class="zh">光氧化（CDR Met/Trp）✓</span><span class="en">Photo-oxidation (CDR Met/Trp) ✓</span></li>
+        <li><span class="zh">辅料佐剂效应 — 数据不可得</span><span class="en">Excipient adjuvancy — not available</span></li>
+      </ul>
+    </div>
+  </div>
+
+  <p>
+    <strong><span class="zh">覆盖率：11/13（85%）。</span><span class="en">Coverage: 11/13 (85%).</span></strong>
+    <span class="zh">既往 ADA 和辅料佐剂效应数据不可得，未纳入系统分析。补充这些数据，尤其是自身免疫适应症人群中的既往 ADA，有望显著提升模型准确性。</span>
+    <span class="en">Pre-existing ADA and excipient adjuvancy data were unavailable. Adding these — particularly pre-existing ADA in autoimmune populations — could meaningfully improve accuracy in future iterations.</span>
+  </p>
+</section>
+
+<!-- ===== S4 CORRELATIONS ===== -->
+<section class="sec" id="s4">
+  <div class="sec-head">
+    <div class="sec-num">04</div>
+    <h2><span class="zh">特征相关性分析</span><span class="en">Feature Correlations with ADA Rate</span></h2>
+  </div>
+
+  <p>
+    <span class="zh">在人源化（n=43）和全人源（n=27）组中分别计算各特征与临床 ADA 率（%）的 Spearman 相关系数。</span>
+    <span class="en">Spearman correlations between each feature and clinical ADA rate (%), computed separately for humanized (n=43) and fully human (n=27) groups.</span>
+  </p>
+
+  <h3><span class="zh">人源化组 — 核心特征</span><span class="en">Humanized Group — Key Features</span></h3>
+  <div class="tbl-wrap">
+  <table>
+    <tr>
+      <th>#</th>
+      <th><span class="zh">特征</span><span class="en">Feature</span></th>
+      <th><span class="zh">类别</span><span class="en">Category</span></th>
+      <th>r</th>
+      <th>p</th>
+      <th><span class="zh">效应方向</span><span class="en">Direction</span></th>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td><span class="zh">免疫抑制联用程度</span><span class="en">Immunosuppressant co-medication</span></td>
+      <td><span class="badge b-clin"><span class="zh">临床</span><span class="en">Clinical</span></span></td>
+      <td class="rv-neg">−0.408</td><td>0.007<span class="sig2">**</span></td>
+      <td><span class="zh">联用↑ → ADA↓</span><span class="en">Co-med ↑ → ADA ↓</span></td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td><span class="zh">甲氨蝶呤（MTX）联用</span><span class="en">MTX co-medication</span></td>
+      <td><span class="badge b-clin"><span class="zh">临床</span><span class="en">Clinical</span></span></td>
+      <td class="rv-neg">−0.402</td><td>0.008<span class="sig2">**</span></td>
+      <td><span class="zh">MTX↑ → ADA↓</span><span class="en">MTX ↑ → ADA ↓</span></td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td><span class="zh">药物半衰期（天）</span><span class="en">Half-life (days)</span></td>
+      <td><span class="badge b-clin"><span class="zh">临床</span><span class="en">Clinical</span></span></td>
+      <td class="rv-neg">−0.348</td><td>0.022<span class="sig1">*</span></td>
+      <td><span class="zh">长半衰期 → ADA↓</span><span class="en">Longer t½ → ADA ↓</span></td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td><span class="zh">CDR-H3 芳香族氨基酸占比</span><span class="en">CDR-H3 aromaticity</span></td>
+      <td><span class="badge b-seq"><span class="zh">序列</span><span class="en">Sequence</span></span></td>
+      <td class="rv-neg">−0.324</td><td>0.034<span class="sig1">*</span></td>
+      <td><span class="zh">芳香族↑ → ADA↓</span><span class="en">Aromatic ↑ → ADA ↓</span></td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td><span class="zh">批准年代</span><span class="en">Approval era</span></td>
+      <td><span class="badge b-clin"><span class="zh">临床</span><span class="en">Clinical</span></span></td>
+      <td class="rv-pos">+0.281</td><td>0.068<span class="sig0">^</span></td>
+      <td><span class="zh">近年批准 → ADA↑（检测灵敏度↑）</span><span class="en">Recent approval → ADA ↑ (assay sensitivity)</span></td>
+    </tr>
+    <tr>
+      <td>6</td>
+      <td><span class="zh">净免疫原性表位负荷</span><span class="en">Net immunogenic burden</span></td>
+      <td><span class="badge b-seq"><span class="zh">序列</span><span class="en">Sequence</span></span></td>
+      <td class="rv-pos">+0.280</td><td>0.069<span class="sig0">^</span></td>
+      <td><span class="zh">净表位↑ → ADA↑</span><span class="en">Net epitopes ↑ → ADA ↑</span></td>
+    </tr>
+    <tr>
+      <td>7</td>
+      <td><span class="zh">免疫耗竭型靶点</span><span class="en">Immune-depleting target</span></td>
+      <td><span class="badge b-clin"><span class="zh">临床</span><span class="en">Clinical</span></span></td>
+      <td class="rv-pos">+0.249</td><td>0.108</td>
+      <td><span class="zh">靶点免疫耗竭 → ADA↑（悖论效应）</span><span class="en">Target depletion → ADA ↑ (paradox)</span></td>
+    </tr>
+  </table>
+  </div>
+
+  <h3><span class="zh">全人源组 — 核心特征</span><span class="en">Fully Human Group — Key Features</span></h3>
+  <div class="tbl-wrap">
+  <table>
+    <tr>
+      <th>#</th>
+      <th><span class="zh">特征</span><span class="en">Feature</span></th>
+      <th><span class="zh">类别</span><span class="en">Category</span></th>
+      <th>r</th>
+      <th>p</th>
+      <th><span class="zh">效应方向</span><span class="en">Direction</span></th>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td><span class="zh">强表位聚集簇数</span><span class="en">Strong epitope clusters (n)</span></td>
+      <td><span class="badge b-seq"><span class="zh">序列</span><span class="en">Sequence</span></span></td>
+      <td class="rv-pos">+0.444</td><td>0.020<span class="sig1">*</span></td>
+      <td><span class="zh">聚集↑ → ADA↑</span><span class="en">Clusters ↑ → ADA ↑</span></td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td><span class="zh">VL 表面亲水分数</span><span class="en">VL surface hydrophilic fraction</span></td>
+      <td><span class="badge b-str"><span class="zh">结构</span><span class="en">Structural</span></span></td>
+      <td class="rv-neg">−0.409</td><td>0.034<span class="sig1">*</span></td>
+      <td><span class="zh">亲水暴露↑ → ADA↓</span><span class="en">Hydrophilic VL ↑ → ADA ↓</span></td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td><span class="zh">CDR 氧化敏感残基（Met/Trp）</span><span class="en">CDR oxidation-sensitive residues</span></td>
+      <td><span class="badge b-str"><span class="zh">结构</span><span class="en">Structural</span></span></td>
+      <td class="rv-neg">−0.396</td><td>0.041<span class="sig1">*</span></td>
+      <td><span class="zh">Met/Trp↑ → ADA↓</span><span class="en">Met/Trp ↑ → ADA ↓</span></td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td><span class="zh">靶点类别生物学</span><span class="en">Target class biology</span></td>
+      <td><span class="badge b-clin"><span class="zh">临床</span><span class="en">Clinical</span></span></td>
+      <td class="rv-neg">−0.382</td><td>0.049<span class="sig1">*</span></td>
+      <td><span class="zh">靶点类别依赖</span><span class="en">Target-class dependent</span></td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td><span class="zh">Vernier 区非人源性</span><span class="en">Vernier zone foreignness</span></td>
+      <td><span class="badge b-seq"><span class="zh">序列</span><span class="en">Sequence</span></span></td>
+      <td class="rv-pos">+0.375</td><td>0.054<span class="sig0">^</span></td>
+      <td><span class="zh">非人源 Vernier → ADA↑</span><span class="en">Non-human Vernier → ADA ↑</span></td>
+    </tr>
+    <tr>
+      <td>6</td>
+      <td><span class="zh">净免疫原性负荷</span><span class="en">Net immunogenic burden</span></td>
+      <td><span class="badge b-seq"><span class="zh">序列</span><span class="en">Sequence</span></span></td>
+      <td class="rv-pos">+0.371</td><td>0.057<span class="sig0">^</span></td>
+      <td><span class="zh">净负荷↑ → ADA↑</span><span class="en">Net burden ↑ → ADA ↑</span></td>
+    </tr>
+    <tr>
+      <td>7</td>
+      <td><span class="zh">强 MHC-II 结合表位数</span><span class="en">Strong MHC-II binders (n)</span></td>
+      <td><span class="badge b-seq"><span class="zh">序列</span><span class="en">Sequence</span></span></td>
+      <td class="rv-pos">+0.355</td><td>0.069<span class="sig0">^</span></td>
+      <td><span class="zh">强结合↑ → ADA↑</span><span class="en">Strong binders ↑ → ADA ↑</span></td>
+    </tr>
+    <tr>
+      <td>8</td>
+      <td><span class="zh">VH germline 同源性</span><span class="en">VH germline identity</span></td>
+      <td><span class="badge b-seq"><span class="zh">序列</span><span class="en">Sequence</span></span></td>
+      <td class="rv-neg">−0.297</td><td>0.133</td>
+      <td><span class="zh">同源性↑ → ADA↓</span><span class="en">Identity ↑ → ADA ↓</span></td>
+    </tr>
+  </table>
+  </div>
+  <p style="font-size:12.5px;color:var(--text-light);">** p &lt; 0.01 &nbsp;·&nbsp; * p &lt; 0.05 &nbsp;·&nbsp; ^ p &lt; 0.10 &nbsp;（Spearman 秩相关）</p>
+
+  <div class="card card-teal">
+    <strong><span class="zh">核心洞察：</span><span class="en">Key insight:</span></strong>
+    <span class="zh">人源化组以<em>临床</em>特征为主导（联用药物、半衰期），全人源组以<em>序列/结构</em>特征为主导（表位聚集、表面亲水性）。这一机制差异验证了分层建模的必要性。</span>
+    <span class="en">The humanized group is dominated by <em>clinical</em> features (co-medications, half-life), while the fully human group is dominated by <em>sequence/structural</em> features (epitope clustering, surface hydrophilicity). This mechanistic divergence justifies separate models.</span>
+  </div>
+</section>
+
+<!-- ===== S5 LOO MODELS ===== -->
+<section class="sec" id="s5">
+  <div class="sec-head">
+    <div class="sec-num">05</div>
+    <h2><span class="zh">极简模型 LOO 交叉验证</span><span class="en">Minimal Models — LOO Validation</span></h2>
+  </div>
+
+  <p>
+    <span class="zh">对每组测试了多种极简特征组合（k=3–5）和三个 L2 正则化水平（λ=0, 0.001, 0.005）。权重通过 <code>scipy.optimize.differential_evolution</code> 自动优化。LOO 验证中每一折独立重新优化权重，确保无信息泄露。</span>
+    <span class="en">Multiple minimal feature combinations (k=3–5) were tested with L2 regularization (λ=0, 0.001, 0.005). Weights optimized by <code>scipy.optimize.differential_evolution</code>. In LOO validation, weights are re-optimized per fold, ensuring no information leakage.</span>
+  </p>
+
+  <h3><span class="zh">人源化组模型（n=43）</span><span class="en">Humanized Group Models (n=43)</span></h3>
+  <div class="tbl-wrap">
+  <table>
+    <tr>
+      <th><span class="zh">模型</span><span class="en">Model</span></th>
+      <th>k</th>
+      <th><span class="zh">特征组合</span><span class="en">Features</span></th>
+      <th><span class="zh">拟合 r</span><span class="en">Fit r</span></th>
+      <th><strong>LOO r</strong></th>
+      <th>LOO p</th>
+    </tr>
+    <tr class="best">
+      <td><strong>HU-A ★</strong></td><td>4</td>
+      <td><span class="zh">免疫抑制 + CDR-H3 芳香族 + 免疫耗竭靶点 + 半衰期</span><span class="en">immuno_sup + CDR-H3 arom + immune_depl + half-life</span></td>
+      <td>0.542</td><td><strong>0.391</strong></td><td><strong>0.010</strong></td>
+    </tr>
+    <tr>
+      <td>HU-C</td><td>5</td>
+      <td><span class="zh">HU-A + 给药途径 × 来源交互</span><span class="en">HU-A + route × origin interaction</span></td>
+      <td>0.560</td><td>0.353</td><td>0.020</td>
+    </tr>
+    <tr>
+      <td>HU-B</td><td>4</td>
+      <td><span class="zh">免疫抑制 + CDR-H3 芳香族 + Fc 糖基化 + 半衰期</span><span class="en">immuno_sup + CDR-H3 arom + Fc glycan + half-life</span></td>
+      <td>0.638</td><td>0.341</td><td>0.025</td>
+    </tr>
+  </table>
+  </div>
+
+  <h3><span class="zh">全人源组模型（n=27）</span><span class="en">Fully Human Group Models (n=27)</span></h3>
+  <div class="tbl-wrap">
+  <table>
+    <tr>
+      <th><span class="zh">模型</span><span class="en">Model</span></th>
+      <th>k</th>
+      <th><span class="zh">特征组合</span><span class="en">Features</span></th>
+      <th><span class="zh">拟合 r</span><span class="en">Fit r</span></th>
+      <th><strong>LOO r</strong></th>
+      <th>LOO p</th>
+    </tr>
+    <tr class="best">
+      <td><strong>FH-A ★</strong></td><td>3</td>
+      <td><span class="zh">表位聚集 + 净免疫负荷 + 强结合表位数</span><span class="en">epitope clusters + net burden + strong binders</span></td>
+      <td>0.441</td><td><strong>0.518</strong></td><td><strong>0.006</strong></td>
+    </tr>
+    <tr>
+      <td>FH-B</td><td>3</td>
+      <td><span class="zh">表位聚集 + 净免疫负荷 + CDR 氧化</span><span class="en">epitope clusters + net burden + CDR oxidation</span></td>
+      <td>0.529</td><td>0.409</td><td>0.034</td>
+    </tr>
+    <tr>
+      <td>FH-F</td><td>4</td>
+      <td><span class="zh">表位聚集 + CDR 氧化 + CDR 疏水性 + VH 同源性</span><span class="en">clusters + CDR oxid + CDR hydro + VH identity</span></td>
+      <td>0.575</td><td>0.383</td><td>0.049</td>
+    </tr>
+    <tr class="warn">
+      <td>FH-C</td><td>4</td>
+      <td><span class="zh">4 特征（含 Vernier 非人源性）</span><span class="en">4 features (with Vernier foreignness)</span></td>
+      <td>0.735</td><td>0.160</td><td>0.426</td>
+    </tr>
+    <tr class="bad">
+      <td>FH-E</td><td>5</td>
+      <td><span class="zh">5 特征混合</span><span class="en">5-feature mix</span></td>
+      <td>0.742</td><td>−0.008</td><td>0.967</td>
+    </tr>
+  </table>
+  </div>
+
+  <div class="card card-green">
+    <strong><span class="zh">最佳结果 FH-A（3 特征）：</span><span class="en">Best result — FH-A (3 features):</span></strong>
+    <span class="zh">LOO r = 0.518（p = 0.006）。值得注意的是，LOO 相关性（0.518）高于拟合相关性（0.441），这在小样本中极为罕见，说明 3 特征 T 细胞表位模型捕捉到了真实的生物学信号，而非统计噪音。</span>
+    <span class="en">LOO r = 0.518 (p = 0.006). Notably, LOO correlation (0.518) exceeds the fitted correlation (0.441) — rarely seen in small clinical datasets — indicating the 3-feature T-cell epitope model captures a genuine biological signal.</span>
+  </div>
+</section>
+
+<!-- ===== S6 FORMULAS ===== -->
+<section class="sec" id="s6">
+  <div class="sec-head">
+    <div class="sec-num">06</div>
+    <h2><span class="zh">推荐评分公式</span><span class="en">Recommended Scoring Formulas</span></h2>
+  </div>
+
+  <h3><span class="zh">人源化抗体评分（HU-A）</span><span class="en">Humanized Antibody Scoring Formula (HU-A)</span></h3>
+  <div class="formula">
+Score<sub>HU</sub> = −10.09 × <strong>immuno_suppression</strong><br>
+         − 11.00 × <strong>CDR-H3_aromaticity</strong><br>
+         + 12.27 × <strong>immune_depleting_target</strong><br>
+         −  0.37 × <strong>half_life_days</strong>
+  </div>
+  <div class="tbl-wrap">
+  <table>
+    <tr>
+      <th><span class="zh">特征</span><span class="en">Feature</span></th>
+      <th><span class="zh">权重</span><span class="en">Weight</span></th>
+      <th><span class="zh">取值范围</span><span class="en">Range</span></th>
+      <th><span class="zh">生物学含义</span><span class="en">Interpretation</span></th>
+    </tr>
+    <tr><td>immuno_suppression</td><td>−10.09</td><td>0 – 1</td>
+        <td><span class="zh">免疫抑制联用评分；MTX/皮质激素减低 ADA</span><span class="en">Co-medication immunosuppression; MTX/steroids reduce ADA</span></td></tr>
+    <tr><td>CDR-H3 aromaticity</td><td>−11.00</td><td>0 – 1</td>
+        <td><span class="zh">CDR-H3 中 Trp/Tyr/Phe 占比；芳香族高 → ADA 低</span><span class="en">Fraction Trp/Tyr/Phe in CDR-H3; higher aromatic content → lower ADA</span></td></tr>
+    <tr><td>immune_depleting_target</td><td>+12.27</td><td>0 / 1</td>
+        <td><span class="zh">靶点是否介导免疫细胞耗竭（如 CD52, CD4）；耗竭释放抗原，触发继发免疫</span><span class="en">Target mediates immune cell depletion (e.g. CD52, CD4); depletion triggers secondary immune activation</span></td></tr>
+    <tr><td>half_life (days)</td><td>−0.37</td><td>3 – 90</td>
+        <td><span class="zh">药物半衰期；长效抗体更好地诱导免疫耐受</span><span class="en">Circulating half-life; longer exposure promotes sustained immune tolerance</span></td></tr>
+  </table>
+  </div>
+  <p style="font-size:13.5px;color:var(--text-muted);">
+    <span class="zh">138 版性能：<strong>LOO r = 0.247（p = 0.027，n = 81）</strong>（信号因 41 个抗体混杂因素缺失而衰减；43 抗体核心集历史结果：r = 0.391）</span>
+    <span class="en">138-panel performance: <strong>LOO r = 0.247 (p = 0.027, n = 81)</strong> (signal attenuated due to missing confounders in 41 new HU antibodies; 43-antibody core historical: r = 0.391)</span>
+  </p>
+
+  <hr class="sec-div">
+
+  <h3><span class="zh">全人源抗体评分（FH-A）</span><span class="en">Fully Human Antibody Scoring Formula (FH-A)</span></h3>
+  <div class="formula">
+Score<sub>FH</sub> = 7.07 × <strong>n_epitope_clusters</strong><br>
+        + 3.20 × <strong>net_immunogenic_burden</strong><br>
+        + 0.046 × <strong>n_strong_MHC-II_binders</strong>
+  </div>
+  <div class="tbl-wrap">
+  <table>
+    <tr>
+      <th><span class="zh">特征</span><span class="en">Feature</span></th>
+      <th><span class="zh">权重</span><span class="en">Weight</span></th>
+      <th><span class="zh">取值范围</span><span class="en">Range</span></th>
+      <th><span class="zh">生物学含义</span><span class="en">Interpretation</span></th>
+    </tr>
+    <tr><td>n_epitope_clusters</td><td>+7.07</td><td>0 – 8</td>
+        <td><span class="zh">强 MHC-II 结合表位的空间聚集簇数；聚集增加 T-B 细胞协作效率</span><span class="en">Count of spatial clusters of strong MHC-II binding peptides; clustering amplifies T-B cell interaction</span></td></tr>
+    <tr><td>net_immunogenic_burden</td><td>+3.20</td><td>≥0</td>
+        <td><span class="zh">强结合表位 − 耐受序列；净正值代表免疫原性压力</span><span class="en">Strong binders minus tolerogenic sequences; net positive = immunogenic pressure</span></td></tr>
+    <tr><td>n_strong_MHC-II_binders</td><td>+0.046</td><td>0 – 30+</td>
+        <td><span class="zh">35-allele DRB1 panel 中强结合表位绝对数；更多强表位 → ADA 高</span><span class="en">Absolute count of strong MHC-II binding peptides across 35-allele DRB1 panel</span></td></tr>
+  </table>
+  </div>
+  <p style="font-size:13.5px;color:var(--text-muted);">
+    <span class="zh">138 版最佳（GBR 非线性模型）：<strong>LOO r = 0.389（p = 0.004，n = 54）</strong>——n 翻倍后统计置信度大幅提升</span>
+    <span class="en">138-panel best (GBR non-linear model): <strong>LOO r = 0.389 (p = 0.004, n = 54)</strong> — substantially more statistical confidence with n doubled from 27 to 54</span>
+  </p>
+</section>
+
+<!-- ===== S7 BIOLOGICAL INTERPRETATION ===== -->
+<section class="sec" id="s7">
+  <div class="sec-head">
+    <div class="sec-num">07</div>
+    <h2><span class="zh">生物学解读</span><span class="en">Biological Interpretation</span></h2>
+  </div>
+
+  <h3><span class="zh">1 · 免疫耗竭靶点悖论</span><span class="en">1 · The Immune-Depleting Target Paradox</span></h3>
+  <p>
+    <span class="zh">在人源化组中，靶向免疫耗竭型抗原（CD52, CD4, CD25）的抗体呈现出悖论性的更高 ADA 率。尽管此类药物耗竭了负责 ADA 的免疫细胞，但靶细胞的大量裂解会释放细胞内抗原和危险相关分子模式（DAMPs），触发强烈的继发性免疫反应，进而克服了短暂的淋巴细胞减少症。Alemtuzumab（抗 CD52，ADA = 85%）是典型案例。</span>
+    <span class="en">Antibodies targeting immune-depleting antigens (CD52, CD4, CD25) paradoxically show higher ADA rates. Although they deplete the very cells responsible for ADA, target-mediated cytolysis releases massive quantities of intracellular antigen and DAMPs, triggering robust secondary immune activation that overrides transient lymphopenia. Alemtuzumab (anti-CD52, ADA = 85%) is the archetypal example.</span>
+  </p>
+
+  <h3><span class="zh">2 · CDR-H3 芳香族与免疫耐受</span><span class="en">2 · CDR-H3 Aromaticity and Immune Tolerance</span></h3>
+  <p>
+    <span class="zh">在人源化组中，CDR-H3 芳香族含量（Trp, Tyr, Phe）与 ADA 率呈负相关（r = −0.324）。一种机制假说：芳香族残基形成能量稳定的抗原结合接触，降低构象柔性，从而减少蛋白水解加工和 MHC-II 装载效率；或芳香族富集的 CDR-H3 环与内源性免疫球蛋白的结构更为相似，激活克隆无应答通路。</span>
+    <span class="en">CDR-H3 aromatic content (Trp, Tyr, Phe) inversely correlates with ADA rates (r = −0.324). One hypothesis: aromatic residues form stable antigen-binding contacts, reducing conformational flexibility and limiting proteolytic processing and MHC-II loading efficiency. Alternatively, aromatic-enriched CDR-H3 loops may resemble endogenous immunoglobulin architecture, activating clonal anergy.</span>
+  </p>
+
+  <h3><span class="zh">3 · 全人源抗体中的 T 细胞表位聚集</span><span class="en">3 · T-Cell Epitope Clustering in Fully Human Antibodies</span></h3>
+  <p>
+    <span class="zh">强 MHC-II 结合肽计数（r = +0.322）和表位聚集簇数是全人源组中最强的 ADA 预测因子（n = 54）。空间聚集的表位增加了 T 细胞与 B 细胞有效协作的概率，尤其是当多个高亲和力表位位于同一个抗原处理片段内时。此发现支持的 CDR 序列工程策略是：<strong>分散而非消除</strong>MHC-II 结合表位。</span>
+    <span class="en">The number of strong MHC-II binders (r = +0.322) and epitope clusters are the strongest predictors in the fully human group (n = 54). Clustered epitopes increase productive T-cell:B-cell cognate interactions. This finding supports CDR engineering strategies aimed at <strong>dispersing rather than eliminating</strong> MHC-II binding peptides.</span>
+  </p>
+
+  <h3><span class="zh">4 · ADA 检测技术的混杂效应</span><span class="en">4 · Assay Technology as a Confound</span></h3>
+  <p>
+    <span class="zh">批准年代（r = +0.281）和检测平台世代（r = +0.259）在人源化组呈正相关。这反映了一个已知的系统性偏差：现代药物耐受型和电化学发光（ECL）检测平台能检测到旧式 ELISA 无法检测的低滴度 ADA，导致近年批准抗体的 ADA 率报告偏高，与分子本身的内在免疫原性无关。</span>
+    <span class="en">Approval era (r = +0.281) and assay generation (r = +0.259) positively correlate with ADA. This reflects a well-known systematic bias: modern drug-tolerant and ECL assays detect lower-titer ADAs missed by older ELISA platforms, inflating reported ADA rates for recently approved antibodies regardless of their intrinsic immunogenicity.</span>
+  </p>
+
+  <h3><span class="zh">5 · 极简模型优于复杂模型</span><span class="en">5 · Minimal Models Outperform Complex Ones</span></h3>
+  <p>
+    <span class="zh">在 138 抗体面板的所有测试配置中，3–5 特征模型在 LOO 交叉验证中一致优于更复杂的模型。在 n = 54–84 的规模下，偏差-方差权衡仍然强烈偏向简洁性，但非线性 GBR 模型（针对全人源组）现在能够以统计显著的置信度捕获交互效应。</span>
+    <span class="en">Across all tested configurations on the 138-antibody panel, 3–5 feature models consistently outperform more complex ones in LOO cross-validation. With n = 54–84, the bias-variance tradeoff still strongly favors parsimony, but non-linear GBR models (for the FH group) can now capture interaction effects with statistically significant confidence.</span>
+  </p>
+</section>
+
+<!-- ===== S8 LIMITATIONS ===== -->
+<section class="sec" id="s8">
+  <div class="sec-head">
+    <div class="sec-num">08</div>
+    <h2><span class="zh">局限性与未来路线图</span><span class="en">Limitations &amp; Future Roadmap</span></h2>
+  </div>
+
+  <div class="card card-amber">
+    <strong><span class="zh">如何使用本模型：</span><span class="en">How to use these models:</span></strong>
+    <span class="zh">评分公式应作为<em>相对风险分层工具</em>，而非精确的临床 ADA 率预测器。最适合在同一项目（相同靶点、适应症、分子格式）内对候选分子进行排序，而非预测具体的 ADA 百分比。</span>
+    <span class="en">Scoring formulas should be interpreted as <em>relative risk stratification tools</em>, not absolute ADA rate predictors. Best applied to rank candidate molecules within the same project (same target, indication, format).</span>
+  </div>
+
+  <h3><span class="zh">当前局限性</span><span class="en">Current Limitations</span></h3>
+  <ul>
+    <li>
+      <strong><span class="zh">样本量有限：</span><span class="en">Sample size: </span></strong>
+      <span class="zh">54 个全人源和 84 个人源化抗体支持 3–5 特征模型，但子组分析仍有统计功效不足的风险。</span>
+      <span class="en">54 fully human and 84 humanized antibodies support 3–5 feature models; subgroup analyses remain underpowered.</span>
+    </li>
+    <li>
+      <strong><span class="zh">ADA 数据异质性：</span><span class="en">ADA data heterogeneity: </span></strong>
+      <span class="zh">不同临床试验的检测方法、cut-off、随访时长差异大，引入显著噪音。</span>
+      <span class="en">ADA rates pooled across trials with different assay sensitivities, cut-points, and follow-up durations.</span>
+    </li>
+    <li>
+      <strong><span class="zh">缺失因素：</span><span class="en">Missing factors: </span></strong>
+      <span class="zh">既往 ADA（特别是抗 PEG 抗体）和辅料佐剂效应数据不可得。</span>
+      <span class="en">Pre-existing ADA (anti-PEG) and excipient adjuvancy data unavailable.</span>
+    </li>
+    <li>
+      <strong><span class="zh">线性假设：</span><span class="en">Linearity assumption: </span></strong>
+      <span class="zh">加权线性评分无法捕获非线性特征交互。</span>
+      <span class="en">Weighted additive scores cannot capture non-linear feature interactions.</span>
+    </li>
+    <li>
+      <strong><span class="zh">3D 结构覆盖：</span><span class="en">3D structural coverage: </span></strong>
+      <span class="zh">VL 表面亲水性（r = −0.409）因结构缺失未进入最终模型。</span>
+      <span class="en">VL surface hydrophilic fraction (r = −0.409) excluded from final model due to incomplete structure availability.</span>
+    </li>
+  </ul>
+
+  <h3><span class="zh">改进路线图</span><span class="en">Planned Improvements</span></h3>
+  <div class="tbl-wrap">
+  <table>
+    <tr>
+      <th><span class="zh">阶段</span><span class="en">Timeline</span></th>
+      <th><span class="zh">行动</span><span class="en">Action</span></th>
+      <th><span class="zh">预期提升</span><span class="en">Expected impact</span></th>
+    </tr>
+    <tr><td><span class="zh">近期</span><span class="en">Near-term</span></td>
+        <td><span class="zh">随 ADA 数据增长扩展至 100+ 抗体</span><span class="en">Expand to 100+ antibodies as new ADA reports emerge</span></td>
+        <td><span class="zh">支持 5–6 特征，LOO 更稳</span><span class="en">Support 5–6 features, stabler LOO</span></td></tr>
+    <tr><td><span class="zh">近期</span><span class="en">Near-term</span></td>
+        <td><span class="zh">补充自身免疫适应症中的既往 ADA 数据</span><span class="en">Supplement pre-existing ADA data in autoimmune indications</span></td>
+        <td><span class="zh">解释人源化组更多变异</span><span class="en">Explain additional variance in humanized group</span></td></tr>
+    <tr><td><span class="zh">中期</span><span class="en">Mid-term</span></td>
+        <td><span class="zh">统一 ADA 数据源（优先 FDA CDER 审评文件）</span><span class="en">Standardize ADA source to FDA CDER review documents</span></td>
+        <td><span class="zh">减少跨试验检测偏差</span><span class="en">Reduce inter-trial assay bias</span></td></tr>
+    <tr><td><span class="zh">中期</span><span class="en">Mid-term</span></td>
+        <td><span class="zh">AF2/ESMFold 预测所有抗体结构 → 完整 3D 覆盖</span><span class="en">AF2/ESMFold for complete 3D structure coverage</span></td>
+        <td><span class="zh">VL 亲水面特征可进入模型</span><span class="en">Enables VL hydrophilic fraction in models</span></td></tr>
+    <tr><td><span class="zh">远期</span><span class="en">Long-term</span></td>
+        <td><span class="zh">n &gt; 100 后使用梯度提升/随机森林非线性模型</span><span class="en">Gradient Boosting / Random Forest after n &gt; 100</span></td>
+        <td><span class="zh">捕获非线性交互，目标 LOO r &gt; 0.6</span><span class="en">Capture non-linear interactions; target LOO r &gt; 0.6</span></td></tr>
+    <tr><td><span class="zh">远期</span><span class="en">Long-term</span></td>
+        <td><span class="zh">每患者 HLA 分型，实现个体化表位权重</span><span class="en">Per-patient HLA typing for individualized epitope weighting</span></td>
+        <td><span class="zh">从群体预测升级为个体化风险评估</span><span class="en">Upgrade from population-level to individualized assessment</span></td></tr>
+  </table>
+  </div>
+</section>
+
+<!-- ===== S9 ANTIBODY LIST ===== -->
+<section class="sec" id="s9">
+  <div class="sec-head">
+    <div class="sec-num">09</div>
+    <h2><span class="zh">抗体数据集</span><span class="en">Antibody Dataset</span></h2>
+  </div>
+  <p>
+    <span class="zh">138 分子数据集的代表性样本，按来源类别和 ADA 率降序排列。完整的 138 条目数据库（含证据链、MHC-II 特征和临床元数据）请查阅 <a href="ada_database.html" style="color:var(--primary);font-weight:600;">ADA 临床数据库</a>。</span>
+    <span class="en">Representative sample from the 138-molecule dataset, sorted by group and descending ADA rate. The complete 138-entry database with evidence chains, MHC-II profiles, and clinical metadata is in the <a href="ada_database.html" style="color:var(--primary);font-weight:600;">ADA Clinical Database</a>.</span>
+  </p>
+
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:16px 0;">
+    <div class="kpi kpi-teal" style="padding:12px;"><div class="val" style="font-size:20px;">138</div><div class="lbl"><span class="zh">总抗体数</span><span class="en">Total</span></div></div>
+    <div class="kpi kpi-blue" style="padding:12px;"><div class="val" style="font-size:20px;">84 / 54</div><div class="lbl"><span class="zh">人源化 / 全人源</span><span class="en">Humanized / Fully human</span></div></div>
+    <div class="kpi kpi-green" style="padding:12px;"><div class="val" style="font-size:20px;">0–87%</div><div class="lbl"><span class="zh">ADA 发生率范围</span><span class="en">ADA rate range</span></div></div>
+  </div>
+
+  <h3><span class="zh">高 ADA 代表性抗体（ADA ≥ 20%）</span><span class="en">High-ADA Examples (ADA ≥ 20%)</span></h3>
+  <div class="tbl-wrap">
+  <table>
+    <tr><th><span class="zh">抗体</span><span class="en">Antibody</span></th><th><span class="zh">来源</span><span class="en">Origin</span></th><th>ADA (%)</th>
+        <th><span class="zh">抗体</span><span class="en">Antibody</span></th><th><span class="zh">来源</span><span class="en">Origin</span></th><th>ADA (%)</th></tr>
+    <tr><td>Donanemab</td><td><span class="zh">人源化</span><span class="en">Humanized</span></td><td>87.0</td><td>Bimekizumab</td><td><span class="zh">人源化</span><span class="en">Humanized</span></td><td>34.0</td></tr>
+    <tr><td>Alemtuzumab</td><td><span class="zh">人源化</span><span class="en">Humanized</span></td><td>85.0</td><td>Adalimumab</td><td><span class="zh">全人源</span><span class="en">Fully human</span></td><td>30.0</td></tr>
+    <tr><td>Brolucizumab</td><td><span class="zh">人源化</span><span class="en">Humanized</span></td><td>52.0</td><td>Atezolizumab</td><td><span class="zh">人源化</span><span class="en">Humanized</span></td><td>30.0</td></tr>
+    <tr><td>Ozoralizumab</td><td><span class="zh">人源化</span><span class="en">Humanized</span></td><td>29.2</td><td>Concizumab</td><td><span class="zh">人源化</span><span class="en">Humanized</span></td><td>25.0</td></tr>
+  </table>
+  </div>
+
+  <h3><span class="zh">低 ADA 代表性抗体（ADA ≤ 2%）</span><span class="en">Low-ADA Examples (ADA ≤ 2%)</span></h3>
+  <div class="tbl-wrap">
+  <table>
+    <tr><th><span class="zh">抗体</span><span class="en">Antibody</span></th><th><span class="zh">来源</span><span class="en">Origin</span></th><th>ADA (%)</th>
+        <th><span class="zh">抗体</span><span class="en">Antibody</span></th><th><span class="zh">来源</span><span class="en">Origin</span></th><th>ADA (%)</th></tr>
+    <tr><td>Bezlotoxumab</td><td><span class="zh">全人源</span><span class="en">Fully human</span></td><td>0.0</td><td>Denosumab</td><td><span class="zh">全人源</span><span class="en">Fully human</span></td><td>1.0</td></tr>
+    <tr><td>Omalizumab</td><td><span class="zh">人源化</span><span class="en">Humanized</span></td><td>0.0</td><td>Bevacizumab</td><td><span class="zh">人源化</span><span class="en">Humanized</span></td><td>0.6</td></tr>
+    <tr><td>Durvalumab</td><td><span class="zh">全人源</span><span class="en">Fully human</span></td><td>0.8</td><td>Fremanezumab</td><td><span class="zh">人源化</span><span class="en">Humanized</span></td><td>0.4</td></tr>
+    <tr><td>Ofatumumab</td><td><span class="zh">全人源</span><span class="en">Fully human</span></td><td>0.2</td><td>Ravulizumab</td><td><span class="zh">人源化</span><span class="en">Humanized</span></td><td>0.5</td></tr>
+  </table>
+  </div>
+
+  <div style="background:#eff6ff;border:1px solid #93c5fd;border-radius:10px;padding:14px 18px;margin:16px 0;display:flex;align-items:center;gap:12px;">
+    <span style="font-size:20px;">📋</span>
+    <div>
+      <strong style="color:#1d4ed8;font-size:14px;"><span class="zh">完整 138 抗体列表（含证据）</span><span class="en">Complete 138-Antibody List with Evidence</span></strong>
+      <p style="margin:4px 0 0;font-size:13px;color:#1e40af;"><span class="zh">完整数据集——包含证据链、MHC-II 聚集数、Fc 工程注释和临床元数据——可在交互式 ADA 数据库中查阅，支持按靶点、给药途径等条件筛选。</span><span class="en">The full dataset including evidence chains, MHC-II cluster counts, Fc engineering annotations, and clinical metadata is available in the interactive ADA database.</span></p>
+      <a href="ada_database.html" style="display:inline-flex;align-items:center;gap:6px;margin-top:8px;padding:7px 16px;background:#1d4ed8;color:#fff;border-radius:7px;font-size:13px;font-weight:600;text-decoration:none;"><span class="zh">打开 ADA 数据库</span><span class="en">Open ADA Database</span> <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+    </div>
+  </div>
+
+  <div class="citation">
+    <strong><span class="zh">方法：</span><span class="en">Methods: </span></strong>
+    <span class="zh">MHC-II 表位预测通过 IEDB NG API（NetMHCIIpan-4.1），使用 35-allele DRB1 panel。CDR/FR 切分使用 ANARCI（Chothia 编号）。表面亲水性使用 FreeSASA + Parker 亲水性标度计算。LOO 验证使用 RidgeCV 和 GBR（Gradient Boosting Regressor）双模型，每折独立训练。</span>
+    <span class="en">MHC-II epitope prediction: IEDB NG API (NetMHCIIpan-4.1), 35-allele DRB1 panel. CDR/FR annotation: ANARCI (Chothia scheme). Surface features: FreeSASA + Parker hydrophilicity. LOO validation: RidgeCV and GBR with per-fold independent training.</span>
+    <br><br>
+    <strong><span class="zh">数据来源：</span><span class="en">Data sources: </span></strong>
+    <span class="zh">TheraSAbDab; FDA/EMA 说明书及 EPAR 文件; Ponce et al. 2009; Shankar et al. 2014; ClinicalTrials.gov。所有 138 条目均经 Tier A/B 证据验证。</span>
+    <span class="en">TheraSAbDab; FDA/EMA prescribing information and EPAR documents; Ponce et al. 2009; Shankar et al. 2014; ClinicalTrials.gov. All 138 entries verified at Tier A/B evidence level.</span>
+    <br><br>
+    <strong><span class="zh">版本：</span><span class="en">Version: </span></strong>
+    AbEngineCore Immunogenicity Module v2.0, April 2026.
+    <span class="zh">参数基于 138 抗体面板重新校准（从 70 抗体核心集扩展）。</span>
+    <span class="en">Parameters recalibrated on 138-antibody panel (expanded from 70-antibody core).</span>
+  </div>
+</section>
+
+</main>
+</div>
+
+<!-- BACK BAR -->
+<div class="back-bar">
+  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+  <a href="InSynBio_Antibody_Developability_Assessment_Page.html#immunogenicity">
+    <span class="zh">返回免疫原性评估页面</span>
+    <span class="en">Back to Immunogenicity Assessment</span>
+  </a>
+  &nbsp;·&nbsp;
+  <a href="immunogenicity_study.html">
+    <span class="zh">英文版报告</span>
+    <span class="en">English-only version</span>
+  </a>
+  &nbsp;·&nbsp;
+  <a href="index.html#contact">
+    <span class="zh">联系我们</span>
+    <span class="en">Contact us</span>
+  </a>
+</div>
+
+<script>
+function setLang(lang) {
+  const btns = document.querySelectorAll('.lang-toggle button');
+  btns.forEach(b => b.classList.remove('active'));
+  if (lang === 'en') {
+    document.body.classList.add('en-mode');
+    btns[1].classList.add('active');
+  } else {
+    document.body.classList.remove('en-mode');
+    btns[0].classList.add('active');
+  }
+  localStorage.setItem('insynbio_lang', lang);
+}
+// Restore language preference
+(function() {
+  const saved = localStorage.getItem('insynbio_lang');
+  if (saved === 'en') setLang('en');
+})();
+</script>
+</body>
+</html>

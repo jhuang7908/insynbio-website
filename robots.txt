@@ -1,4 +1,116 @@
-User-agent: *
+# robots.txt — insynbio.com
+# Last updated: April 2026
+
+# Allow legitimate search engines
+User-agent: Googlebot
 Allow: /
 
+User-agent: Bingbot
+Allow: /
+
+User-agent: Slurp
+Allow: /
+
+User-agent: DuckDuckBot
+Allow: /
+
+# ── Block AI training crawlers ──────────────────────────────────────────────
+
+# OpenAI
+User-agent: GPTBot
+Disallow: /
+
+User-agent: ChatGPT-User
+Disallow: /
+
+User-agent: OAI-SearchBot
+Disallow: /
+
+# Google AI (Gemini / Vertex training)
+User-agent: Google-Extended
+Disallow: /
+
+# Anthropic
+User-agent: anthropic-ai
+Disallow: /
+
+User-agent: ClaudeBot
+Disallow: /
+
+User-agent: Claude-Web
+Disallow: /
+
+# Common Crawl (source for most AI training datasets)
+User-agent: CCBot
+Disallow: /
+
+# Perplexity AI
+User-agent: PerplexityBot
+Disallow: /
+
+# Amazon Alexa / AWS AI
+User-agent: Amazonbot
+Disallow: /
+
+# Meta AI
+User-agent: FacebookBot
+Disallow: /
+
+User-agent: Meta-ExternalAgent
+Disallow: /
+
+# Apple
+User-agent: Applebot-Extended
+Disallow: /
+
+# Cohere
+User-agent: cohere-ai
+Disallow: /
+
+# ByteDance / Doubao
+User-agent: Bytespider
+Disallow: /
+
+# DataForSEO / data harvesters
+User-agent: DataForSeoBot
+Disallow: /
+
+User-agent: MJ12bot
+Disallow: /
+
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: SemrushBot
+Disallow: /
+
+User-agent: DotBot
+Disallow: /
+
+User-agent: BLEXBot
+Disallow: /
+
+# Generic AI / research scrapers
+User-agent: omgilibot
+Disallow: /
+
+User-agent: Omgilibot
+Disallow: /
+
+User-agent: img2dataset
+Disallow: /
+
+User-agent: Diffbot
+Disallow: /
+
+User-agent: YouBot
+Disallow: /
+
+# ── Protect sensitive research pages from all bots ────────────────────────
+User-agent: *
+Disallow: /immunogenicity_study.html
+Disallow: /antibody-guide.html
+Disallow: /component-browser.html
+
+# ── Sitemap ────────────────────────────────────────────────────────────────
 Sitemap: https://www.insynbio.com/sitemap.xml

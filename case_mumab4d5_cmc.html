@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="robots" content="noai, noimageai">
+  <meta name="AI-Training" content="opt-out">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Case Study: muMAb4D5 CMC Developability Assessment | InSynBio</title>
+  <meta name="description" content="Full CMC developability assessment of humanized muMAb4D5 — ADI 77/100, all 15 metrics passed, outperforming Herceptin on immunogenicity.">
+  <link rel="canonical" href="https://www.insynbio.com/case_mumab4d5_cmc.html">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://www.insynbio.com/case_mumab4d5_cmc.html">
+  <meta property="og:title" content="MuMAb4D5 CMC Developability Assessment | InSynBio">
+  <meta property="og:description" content="Full CMC developability report for MuMAb4D5: aggregation propensity, pI, hydrophobic patches, deamidation, oxidation, and CDR post-translational modification risk.">
+  <meta property="og:image" content="https://www.insynbio.com/images/hero-bg.svg">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
+  <script src="https://unpkg.com/lucide@0.378.0/dist/umd/lucide.min.js"></script>
+  <style>
+    :root {
+      --primary: #0d9488; --primary-dark: #0f766e; --primary-light: #5eead4;
+      --text: #111827; --text-muted: #4b5563; --border: #e5e7eb;
+      --bg-white: #ffffff; --bg-light: #f9fafb;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Inter', sans-serif; background: var(--bg-light); color: var(--text); line-height: 1.7; -webkit-font-smoothing: antialiased; padding-top: 72px; }
+
+    /* ─── NAV ─── */
+    .top-header { display: flex; align-items: center; justify-content: space-between; padding: 12px 32px; background: rgba(255,255,255,0.95); backdrop-filter: blur(12px); border-bottom: 2px solid rgba(13,148,136,0.1); position: fixed; width: 100%; top: 0; z-index: 2000; gap: 12px; }
+    .top-header .brand { display: flex; align-items: center; }
+    .top-header .brand a { text-decoration: none; display: flex; align-items: center; gap: 10px; font-family: 'Cormorant Garamond', serif; font-weight: 700; font-size: 26px; color: #111827; }
+    .top-header .slogan { font-size: 14px; color: var(--text-muted); padding-left: 14px; border-left: 1px solid var(--border); margin-left: 14px; font-weight: 600; letter-spacing: 0.02em; white-space: nowrap; }
+    .top-header-nav { display: flex; align-items: center; gap: 6px; }
+    .top-header-nav a { padding: 8px 16px; font-size: 15px; color: var(--text-muted); text-decoration: none; border-radius: 20px; transition: all 0.2s; font-weight: 600; }
+    .top-header-nav a:hover { color: var(--primary); background: rgba(13,148,136,0.06); }
+    .nav-dropdown { position: relative; }
+    .nav-dropdown > a::after { content: ' ▾'; font-size: 10px; opacity: 0.6; }
+    .dropdown-menu { position: absolute; top: 100%; left: 50%; transform: translateX(-50%) translateY(10px); min-width: 240px; background: #fff; border: 1px solid rgba(0,0,0,0.06); border-radius: 12px; padding: 10px; box-shadow: 0 10px 40px rgba(0,0,0,0.1); opacity: 0; visibility: hidden; transition: all 0.2s; z-index: 2001; }
+    .nav-dropdown:hover .dropdown-menu { opacity: 1; visibility: visible; transform: translateX(-50%) translateY(0); }
+    .dropdown-menu a { display: block; padding: 12px 14px; color: var(--text); border-radius: 8px; text-decoration: none; text-align: left; }
+    .dropdown-menu a:hover { background: #f9fafb; }
+    .menu-title { display: block; font-weight: 700; font-size: 14px; color: #111827; margin-bottom: 2px; }
+    .menu-desc { display: block; font-size: 12px; color: #6b7280; font-weight: 400; }
+
+    /* ─── HERO ─── */
+    .case-hero { background: url('images/hero-bg.svg') center/cover no-repeat, linear-gradient(135deg, #0d4a44 0%, #0d7a70 55%, #0d9488 100%); padding: 80px 24px 70px; text-align: center; }
+    .hero-inner { max-width: 860px; margin: 0 auto; }
+    .hero-badge { display: inline-flex; align-items: center; gap: 8px; background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.2); color: #a7f3d0; font-size: 13px; font-weight: 600; padding: 6px 16px; border-radius: 20px; margin-bottom: 24px; }
+    .case-hero h1 { font-family: 'Cormorant Garamond', serif; font-size: clamp(32px,5vw,52px); color: #fff; line-height: 1.15; margin-bottom: 18px; font-weight: 700; }
+    .case-hero h1 em { font-style: italic; color: #6ee7b7; }
+    .subtitle { font-size: 17px; color: #a7f3d0; max-width: 640px; margin: 0 auto 40px; line-height: 1.6; }
+    .hero-stats { display: flex; justify-content: center; flex-wrap: wrap; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.12); border-radius: 16px; padding: 24px 32px; max-width: 700px; margin: 0 auto; }
+    .hero-stat { flex: 1; min-width: 120px; padding: 8px 16px; border-right: 1px solid rgba(255,255,255,0.12); }
+    .hero-stat:last-child { border-right: none; }
+    .hero-stat .val { font-size: 28px; font-weight: 800; color: #fff; line-height: 1; margin-bottom: 4px; }
+    .hero-stat .lbl { font-size: 11px; color: #6ee7b7; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; }
+
+    /* ─── BODY ─── */
+    .page-body { padding: 64px 20px 80px; }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; margin-bottom: 48px; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .section-label { font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 2px; color: var(--primary); margin-bottom: 8px; }
+    .section-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(26px,3.5vw,36px); font-weight: 700; color: var(--text); margin-bottom: 14px; line-height: 1.2; }
+    .section-title span { color: var(--primary); }
+    .section-intro { font-size: 16px; color: var(--text-muted); max-width: 700px; margin-bottom: 28px; line-height: 1.7; }
+
+    /* ─── ADI COMPARE ─── */
+    .adi-compare { display: flex; align-items: stretch; background: var(--bg-white); border: 1px solid var(--border); border-radius: 16px; overflow: hidden; box-shadow: 0 2px 16px rgba(0,0,0,0.05); margin-bottom: 28px; }
+    .adi-card { flex: 1; padding: 32px 28px; text-align: center; }
+    .adi-card.ours { background: #f0fdf4; border-right: 1px solid var(--border); }
+    .adi-card.ref { background: #f9fafb; }
+    .adi-card .adi-label { font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 14px; }
+    .adi-card.ours .adi-label { color: #16a34a; }
+    .adi-card.ref .adi-label { color: #6b7280; }
+    .adi-card .adi-score { font-family: 'Cormorant Garamond', serif; font-size: 64px; font-weight: 700; line-height: 1; margin-bottom: 8px; }
+    .adi-card.ours .adi-score { color: #16a34a; }
+    .adi-card.ref .adi-score { color: #6b7280; }
+    .adi-card .adi-tier { font-size: 14px; font-weight: 700; margin-bottom: 6px; }
+    .adi-card.ours .adi-tier { color: #15803d; }
+    .adi-card.ref .adi-tier { color: #4b5563; }
+    .adi-card .adi-sub { font-size: 12px; color: #9ca3af; line-height: 1.5; }
+    .adi-divider { display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 24px 20px; background: var(--bg-white); min-width: 88px; gap: 6px; }
+    .adi-divider .vs { font-size: 13px; font-weight: 800; color: #9ca3af; letter-spacing: 1px; }
+    .adi-win { display: inline-flex; align-items: center; gap: 4px; background: #dcfce7; color: #15803d; font-size: 11px; font-weight: 700; padding: 3px 8px; border-radius: 20px; margin-top: 4px; }
+
+    /* ─── CMC TABLE ─── */
+    .cmc-table { width: 100%; border-collapse: collapse; border-radius: 12px; overflow: hidden; box-shadow: 0 0 0 1px var(--border); font-size: 14px; }
+    .cmc-table th { background: #064e3b; color: #fff; font-weight: 700; padding: 12px 14px; text-align: left; }
+    .cmc-table td { padding: 10px 14px; border-bottom: 1px solid var(--border); vertical-align: middle; }
+    .cmc-table tr:last-child td { border-bottom: none; }
+    .cmc-table tr:nth-child(even) td { background: #f9fafb; }
+    .cmc-table tbody tr:hover td { background: #f0fdfa !important; }
+    .badge { display: inline-flex; align-items: center; gap: 4px; padding: 3px 10px; border-radius: 20px; font-size: 12px; font-weight: 700; border: 1px solid; }
+    .badge.pass { background: #dcfce7; color: #065f46; border-color: #a7f3d0; }
+    .badge.pass-ex { background: #064e3b; color: #fff; border-color: #064e3b; }
+    .badge.warn { background: #fef3c7; color: #92400e; border-color: #fde68a; }
+    .badge.better { background: #eff6ff; color: #1d4ed8; border-color: #bfdbfe; }
+
+    /* ─── CATEGORY CHART ─── */
+    .chart-wrap { background: var(--bg-white); border: 1px solid var(--border); border-radius: 14px; padding: 28px 24px 20px; box-shadow: 0 2px 12px rgba(0,0,0,0.04); }
+    .chart-title { font-family: 'Cormorant Garamond', serif; font-size: 18px; font-weight: 700; color: #064e3b; margin-bottom: 16px; display: flex; align-items: center; gap: 8px; }
+    .chart-canvas-wrap { position: relative; height: 220px; }
+
+    /* ─── WIN CARDS ─── */
+    .win-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 20px; }
+    .win-card { background: var(--bg-white); border: 1px solid var(--border); border-radius: 12px; padding: 20px 18px; border-top: 3px solid; }
+    .win-card.green { border-top-color: #16a34a; }
+    .win-card.blue { border-top-color: #2563eb; }
+    .win-card.teal { border-top-color: var(--primary); }
+    .win-card .win-icon { display: flex; align-items: center; gap: 8px; margin-bottom: 10px; }
+    .win-card .win-icon i { color: var(--primary); }
+    .win-card h4 { font-size: 14px; font-weight: 700; color: var(--text); margin-bottom: 6px; }
+    .win-card .win-nums { display: flex; align-items: baseline; gap: 10px; margin-bottom: 6px; }
+    .win-card .win-ours { font-family: 'Cormorant Garamond', serif; font-size: 28px; font-weight: 700; }
+    .win-card.green .win-ours { color: #16a34a; }
+    .win-card.blue .win-ours { color: #2563eb; }
+    .win-card.teal .win-ours { color: var(--primary); }
+    .win-card .win-ref { font-size: 13px; color: #9ca3af; }
+    .win-card p { font-size: 12px; color: var(--text-muted); line-height: 1.5; margin: 0; }
+
+    /* ─── OPTIMIZATION ─── */
+    .opt-card { background: var(--bg-white); border: 1px solid var(--border); border-radius: 14px; padding: 28px; display: grid; grid-template-columns: 1fr 1fr; gap: 32px; align-items: start; }
+    .mut-box { background: #f0fdfa; border: 1px solid #a7f3d0; border-radius: 10px; padding: 18px 20px; }
+    .mut-box .mut-code { font-family: 'Consolas','Courier New',monospace; font-size: 22px; font-weight: 700; color: var(--primary); margin-bottom: 8px; }
+    .mut-box .mut-label { font-size: 13px; font-weight: 600; color: var(--primary-dark); margin-bottom: 8px; }
+    .mut-box p { font-size: 13px; color: var(--text-muted); line-height: 1.6; margin: 0; }
+    .opt-results table { width: 100%; border-collapse: collapse; font-size: 14px; }
+    .opt-results th { text-align: left; font-weight: 700; font-size: 12px; text-transform: uppercase; letter-spacing: 0.5px; color: #6b7280; padding: 6px 8px; border-bottom: 2px solid var(--border); }
+    .opt-results td { padding: 10px 8px; border-bottom: 1px solid var(--border); }
+    .opt-results tr:last-child td { border-bottom: none; }
+    .arrow-up { color: #16a34a; font-weight: 700; }
+    .arrow-down { color: #dc2626; font-weight: 700; }
+
+    /* ─── STRUCTURAL METRICS ─── */
+    .metrics-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+    .metric-card { background: var(--bg-white); border: 1px solid var(--border); border-radius: 12px; padding: 20px 16px; text-align: center; border-top: 3px solid #16a34a; }
+    .metric-value { font-family: 'Cormorant Garamond', serif; font-size: 26px; font-weight: 700; color: #16a34a; line-height: 1; margin-bottom: 4px; }
+    .metric-label { font-size: 12px; font-weight: 600; color: var(--text); margin-bottom: 3px; }
+    .metric-threshold { font-size: 11px; color: #9ca3af; }
+
+    /* ─── RESULT BANNER ─── */
+    .result-banner { background: linear-gradient(135deg, #064e3b, #0d9488); border-radius: 16px; padding: 40px; text-align: center; color: white; }
+    .result-banner .score { font-family: 'Cormorant Garamond', serif; font-size: 64px; font-weight: 700; line-height: 1; margin-bottom: 4px; color: #6ee7b7; }
+    .result-banner .score-ref { font-size: 16px; color: rgba(255,255,255,0.55); margin-bottom: 8px; }
+    .result-banner .score-label { font-size: 13px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: #a7f3d0; margin-bottom: 18px; }
+    .result-banner p { font-size: 15px; color: rgba(255,255,255,0.85); max-width: 620px; margin: 0 auto 28px; line-height: 1.7; }
+    .banner-cta { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+    .btn-primary { display: inline-block; background: #fff; color: #065f46; font-weight: 700; font-size: 14px; padding: 12px 24px; border-radius: 8px; text-decoration: none; transition: all 0.2s; }
+    .btn-primary:hover { background: #f0fdf4; transform: translateY(-1px); }
+    .btn-secondary { display: inline-block; background: transparent; color: #fff; font-weight: 700; font-size: 14px; padding: 12px 24px; border-radius: 8px; border: 1.5px solid rgba(255,255,255,0.4); text-decoration: none; transition: all 0.2s; }
+    .btn-secondary:hover { border-color: rgba(255,255,255,0.8); background: rgba(255,255,255,0.08); }
+
+    /* ─── FOOTER ─── */
+    .site-footer { background: #111827; padding: 40px 24px; text-align: center; }
+    .site-footer p { color: #6b7280; font-size: 14px; line-height: 1.6; }
+    .site-footer a { color: #9ca3af; text-decoration: none; }
+    .site-footer a:hover { color: #6ee7b7; }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 768px) {
+      .case-hero { padding: 60px 20px 80px; }
+      .case-hero h1 { font-size: 36px; }
+      .case-hero .subtitle { font-size: 16px; }
+      .hero-stats { flex-direction: column; gap: 0; padding: 16px 20px; max-width: 100%; }
+      .hero-stat { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.12); padding: 12px 0; }
+      .hero-stat:last-child { border-bottom: none; }
+      .adi-compare { flex-direction: column; }
+      .adi-divider { flex-direction: row; padding: 14px 20px; gap: 10px; }
+      .win-grid { grid-template-columns: 1fr; }
+      .opt-card { grid-template-columns: 1fr; }
+      .metrics-grid { grid-template-columns: repeat(2, 1fr); }
+      .top-header .slogan { display: none; }
+      .container { padding: 0 16px; }
+      section.section { padding: 48px 0; }
+    }
+    @media (max-width: 600px) {
+      .top-header { padding: 12px 16px; flex-wrap: wrap; gap: 10px; }
+      .top-header .brand { flex: 1 1 auto; display: flex; align-items: center; gap: 8px; }
+      .top-header .slogan { font-size: 12px; padding-left: 10px; border-left: 1px solid var(--border); white-space: nowrap; }
+      .top-header-nav { order: 3; width: 100%; flex: 1 1 100%; justify-content: flex-start; flex-wrap: wrap; gap: 4px; overflow-x: auto; padding-bottom: 4px; -webkit-overflow-scrolling: touch; border-top: 1px solid var(--border); padding-top: 8px; margin-top: 2px; }
+      .top-header-nav a { flex-shrink: 0; font-size: 13px; padding: 6px 10px; }
+      .case-hero { padding: 48px 16px 64px; }
+      .case-hero h1 { font-size: 28px; }
+      .case-hero .subtitle { font-size: 15px; }
+      .hero-stat .val { font-size: 22px; }
+      .metrics-grid { grid-template-columns: 1fr; }
+      .container { padding: 0 12px; }
+      section.section { padding: 36px 0; }
+      h2 { font-size: 26px !important; }
+    }
+  </style>
+  <meta name="citation_title" content="Computational CMC Developability Assessment of MuMAb4D5: Multi-metric Antibody Manufacturability Analysis">
+  <meta name="citation_author" content="InSynBio">
+  <meta name="citation_publisher" content="InSynBio">
+  <meta name="citation_online_date" content="2026/02/01">
+  <meta name="citation_publication_date" content="2026/02/01">
+  <meta name="citation_language" content="en">
+  <meta name="citation_abstract_html_url" content="https://www.insynbio.com/case_mumab4d5_cmc.html">
+  <meta name="keywords" content="CMC, developability, MuMAb4D5, aggregation, pI, SAP, PSH, deamidation, oxidation, antibody manufacturability, InSynBio">
+</head>
+<body>
+
+  <!-- ─── NAV ─── -->
+  <header class="top-header">
+    <div class="brand">
+      <a href="index.html">
+        <svg width="34" height="28" viewBox="0 0 32 30" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink:0;">
+          <path d="M16 2L2 10V22L16 28L30 22V10L16 2Z" fill="#0d9488" fill-opacity="0.05" stroke="#0d9488" stroke-width="1" stroke-opacity="0.3"/>
+          <path d="M14.5 24 V 16" stroke="#0d9488" stroke-width="2.5" stroke-linecap="round"/>
+          <path d="M17.5 24 V 16" stroke="#f59e0b" stroke-width="2.5" stroke-linecap="round"/>
+          <line x1="13" y1="19" x2="19" y2="19" stroke="#9ca3af" stroke-width="1.5" stroke-linecap="round"/>
+          <line x1="13" y1="21" x2="19" y2="21" stroke="#9ca3af" stroke-width="1.5" stroke-linecap="round"/>
+          <path d="M14.5 16 L 8 7" stroke="#0d9488" stroke-width="2.5" stroke-linecap="round"/>
+          <path d="M10 16 L 3.5 7" stroke="#2dd4bf" stroke-width="2.5" stroke-linecap="round"/>
+          <path d="M17.5 16 L 24 7" stroke="#f59e0b" stroke-width="2.5" stroke-linecap="round"/>
+          <rect x="21.5" y="3.5" width="5" height="5" rx="1" fill="#f59e0b" transform="rotate(45 24 6)"/>
+        </svg>
+        <span><span style="color:#111827">In</span><span style="color:var(--primary);font-style:italic">Syn</span><span style="color:#111827">Bio</span></span>
+      </a>
+      <span class="slogan">AI for Life Sciences</span>
+    </div>
+    <nav class="top-header-nav">
+      <a href="index.html">Home</a>
+      <a href="index.html#about">About Us</a>
+      <div class="nav-dropdown" tabindex="0">
+        <a href="index.html#services">Services</a>
+        <div class="dropdown-menu">
+          <a href="InSynBio_Antibody_Developability_Assessment_Page.html"><span class="menu-title">Antibody</span><span class="menu-desc">Structure-based Development</span></a>
+          <a href="InSynBio_CART_Design_Page.html"><span class="menu-title">CAR-T</span><span class="menu-desc">Smart CAR-T Design</span></a>
+          <a href="InSynBio_Bispecific_Antibody_Design_Page.html"><span class="menu-title">Bispecific</span><span class="menu-desc">Multispecific Engineering</span></a>
+          <a href="immunogenicity_study.html">
+            <span class="menu-title">Immunogenicity</span>
+            <span class="menu-desc">ADA Prediction &amp; Reference DB</span>
+          </a>
+        </div>
+      </div>
+      <a href="index.html#case-studies">Case Studies</a>
+      <a href="InSynBio_OurTech.html">Our Tech</a>
+      <a href="index.html#workflow">Workflow</a>
+      <a href="index.html#faq">FAQ</a>
+      <a href="index.html#contact">Contact Us</a>
+    </nav>
+  </header>
+
+  <!-- ─── HERO ─── -->
+  <section class="case-hero">
+    <div class="hero-inner">
+      <div class="hero-badge">
+        <i data-lucide="flask-conical" style="width:14px;height:14px"></i>
+        Case Study · CMC Developability
+      </div>
+      <h1>muMAb4D5 <em>CMC Assessment</em><br>— Clinical-Grade Validation</h1>
+      <p class="subtitle">All 15 physicochemical parameters passed. Benchmarked against 458 clinical antibodies — and surpassing Herceptin® on immunogenicity safety.</p>
+      <div class="hero-stats">
+        <div class="hero-stat">
+          <div class="val">77/100</div>
+          <div class="lbl">ADI Score</div>
+        </div>
+        <div class="hero-stat">
+          <div class="val">15/15</div>
+          <div class="lbl">Metrics Passed</div>
+        </div>
+        <div class="hero-stat">
+          <div class="val">0.61</div>
+          <div class="lbl">TCIA vs 0.65 Herceptin</div>
+        </div>
+        <div class="hero-stat">
+          <div class="val">1</div>
+          <div class="lbl">Optimization Mutation</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── BODY ─── -->
+  <div class="page-body">
+    <div class="container">
+
+      <!-- SECTION 1: ADI OVERVIEW -->
+      <div class="reveal">
+        <div class="section-label">Executive Summary</div>
+        <h2 class="section-title">Acceptable — <span>Ready for Expression Validation</span></h2>
+        <p class="section-intro">
+          The humanized muMAb4D5 was benchmarked against AbRef-458, a curated dataset of 458 approved or clinical-stage antibodies. All 15 CMC parameters passed. A single framework optimization further improved the chemical stability profile, surpassing Herceptin® in key immunogenicity metrics.
+        </p>
+
+        <div class="adi-compare">
+          <div class="adi-card ours">
+            <div class="adi-label">muMAb4D5 (Optimized)</div>
+            <div class="adi-score">77</div>
+            <div class="adi-tier">Acceptable ✓</div>
+            <div class="adi-sub">All 15 metrics passed<br>TCIA 0.61 · Deamidation: 1 site</div>
+            <div class="adi-win"><i data-lucide="trending-up" style="width:11px;height:11px"></i> Better on immunogenicity</div>
+          </div>
+          <div class="adi-divider">
+            <div class="vs">VS</div>
+            <i data-lucide="bar-chart-2" style="width:20px;height:20px;color:#d1d5db"></i>
+          </div>
+          <div class="adi-card ref">
+            <div class="adi-label">Herceptin® (Reference)</div>
+            <div class="adi-score">81</div>
+            <div class="adi-tier">Excellent</div>
+            <div class="adi-sub">28-year clinical standard<br>TCIA 0.65 · Deamidation: 2 sites</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SECTION 2: 15-PARAMETER TABLE -->
+      <div class="reveal">
+        <div class="section-label">Full Evaluation</div>
+        <h2 class="section-title">15-Parameter <span>CMC Assessment</span></h2>
+        <p class="section-intro">
+          Grouped by clinical relevance: manufacturability, storage stability, chemical degradation risk, and immunogenicity. Benchmarked against AbRef-458 (p5–p95 = PASS).
+        </p>
+        <table class="cmc-table">
+          <thead>
+            <tr><th>Category</th><th>Metric</th><th>Value</th><th>Status</th><th>vs Herceptin</th></tr>
+          </thead>
+          <tbody>
+            <tr><td rowspan="4" style="font-weight:700;color:#064e3b;background:#f0fdfa;border-right:2px solid #a7f3d0;">Manufacturability</td>
+                <td>pI (Isoelectric Point)</td><td>7.86</td><td><span class="badge pass">PASS</span></td><td style="font-size:12px;color:#6b7280;">8.29 <span style="color:#16a34a;font-weight:700;">(ours lower — better formulation window)</span></td></tr>
+            <tr><td>GRAVY Hydrophobicity</td><td>−0.285</td><td><span class="badge pass">PASS</span></td><td style="font-size:12px;color:#6b7280;">−0.312 (comparable)</td></tr>
+            <tr><td>Net Charge (pH 7)</td><td>+1.0</td><td><span class="badge pass">PASS</span></td><td style="font-size:12px;color:#6b7280;">+2.0 <span style="color:#16a34a;font-weight:700;">(ours closer to neutral)</span></td></tr>
+            <tr><td>Surface Aggregation (SAP)</td><td>0 (struct. verified)</td><td><span class="badge pass-ex">EXCELLENT</span></td><td style="font-size:12px;color:#6b7280;">= 0 (same — both excellent)</td></tr>
+            <tr><td rowspan="5" style="font-weight:700;color:#1d4ed8;background:#eff6ff;border-right:2px solid #bfdbfe;">Storage Stability</td>
+                <td>Instability Index</td><td>36.9</td><td><span class="badge pass">PASS</span></td><td style="font-size:12px;color:#6b7280;">35.8 <span style="color:#f59e0b;font-weight:700;">(Herceptin slightly lower)</span></td></tr>
+            <tr><td>Hydrophobic Patches</td><td>0 (struct. verified)</td><td><span class="badge pass-ex">EXCELLENT</span></td><td style="font-size:12px;color:#6b7280;">= 0 (same)</td></tr>
+            <tr><td>Fv Charge Asymmetry</td><td>+14/−13 (near perfect)</td><td><span class="badge pass-ex">EXCELLENT</span></td><td style="font-size:12px;color:#6b7280;">≈ 0 (near symmetric, same quality)</td></tr>
+            <tr><td>Oxidation Sites</td><td>8</td><td><span class="badge pass">PASS</span></td><td style="font-size:12px;color:#6b7280;">7 <span style="color:#f59e0b;font-weight:700;">(Herceptin 1 fewer)</span></td></tr>
+            <tr><td>Glycosylation Sites</td><td>0</td><td><span class="badge pass">PASS</span></td><td style="font-size:12px;color:#6b7280;">= 0 (same)</td></tr>
+            <tr><td rowspan="3" style="font-weight:700;color:#7c3aed;background:#f5f3ff;border-right:2px solid #ddd6fe;">Chemical Degradation</td>
+                <td>Deamidation Sites</td><td>2 → <strong>1</strong> (optimized)</td><td><span class="badge pass">PASS</span></td><td><span class="badge better">✓ Better — Herceptin: 2 sites</span></td></tr>
+            <tr><td>Isomerization Sites</td><td>2</td><td><span class="badge pass">PASS</span></td><td><span class="badge warn">△ Herceptin: 1 site</span></td></tr>
+            <tr><td>Free Cysteine</td><td>0</td><td><span class="badge pass">PASS</span></td><td style="font-size:12px;color:#6b7280;">= 0 (same)</td></tr>
+            <tr><td rowspan="3" style="font-weight:700;color:#dc2626;background:#fff5f5;border-right:2px solid #fecaca;">Immunogenicity</td>
+                <td>T-Cell Epitope Risk (TCIA)</td><td>0.61</td><td><span class="badge pass">PASS</span></td><td><span class="badge better">✓ Better — Herceptin: 0.65</span></td></tr>
+            <tr><td>High-Risk Epitope Count</td><td>21</td><td><span class="badge pass">PASS</span></td><td><span class="badge better">✓ Better — Herceptin: 26</span></td></tr>
+            <tr><td>Germline Humanization</td><td>IGHV3-23 / IGKv1-39</td><td><span class="badge pass">PASS</span></td><td style="font-size:12px;color:#6b7280;">= IGHV3 / Vκ1 (same germline family)</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- SECTION 3: WHERE WE BEAT HERCEPTIN -->
+      <div class="reveal">
+        <div class="section-label">Competitive Advantage</div>
+        <h2 class="section-title">3 Dimensions <span>Better than Herceptin®</span></h2>
+        <p class="section-intro">On immunogenicity safety and chemical degradation risk, the optimized design outperforms the 28-year clinical gold standard.</p>
+        <div class="win-grid">
+          <div class="win-card green">
+            <div class="win-icon"><i data-lucide="shield-check"></i><span style="font-size:12px;font-weight:700;color:var(--text)">T-Cell Epitope Risk</span></div>
+            <div class="win-nums">
+              <span class="win-ours">0.61</span>
+              <span class="win-ref">vs Herceptin 0.65</span>
+            </div>
+            <p>Lower TCIA score indicates reduced probability of triggering anti-drug antibody (ADA) response in patients. Lower is safer.</p>
+          </div>
+          <div class="win-card blue">
+            <div class="win-icon"><i data-lucide="target"></i><span style="font-size:12px;font-weight:700;color:var(--text)">High-Risk Epitope Count</span></div>
+            <div class="win-nums">
+              <span class="win-ours">21</span>
+              <span class="win-ref">vs Herceptin 26</span>
+            </div>
+            <p>5 fewer high-risk MHC-II epitope regions. Herceptin has a reported clinical HAHA rate of 1–6%; this design is predicted to be lower.</p>
+          </div>
+          <div class="win-card teal">
+            <div class="win-icon"><i data-lucide="flask-conical"></i><span style="font-size:12px;font-weight:700;color:var(--text)">Deamidation Sites</span></div>
+            <div class="win-nums">
+              <span class="win-ours">1</span>
+              <span class="win-ref">vs Herceptin 2</span>
+            </div>
+            <p>Reduced from 2 to 1 via VH84 N→Q. Fewer spontaneous chemical modifications during long-term storage — extending shelf-life stability.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- SECTION 4: OPTIMIZATION -->
+      <div class="reveal">
+        <div class="section-label">Optimization</div>
+        <h2 class="section-title">Single Mutation, <span>Measurable Improvement</span></h2>
+        <p class="section-intro">One targeted framework mutation achieves all optimization goals — with zero structural perturbation to the CDR binding geometry.</p>
+        <div class="opt-card">
+          <div>
+            <div class="mut-box">
+              <div class="mut-code">VH FR3 N84 → Q</div>
+              <div class="mut-label">Deamidation Site Elimination</div>
+              <p>Asparagine at position 84 forms part of an NG motif susceptible to spontaneous deamidation in aqueous conditions. Isosteric replacement with Glutamine retains backbone geometry while removing the chemical liability.</p>
+            </div>
+            <div style="margin-top:14px;padding:14px 16px;background:#f9fafb;border-radius:10px;border:1px solid var(--border);">
+              <div style="font-size:12px;font-weight:700;color:#6b7280;margin-bottom:8px;">WHY THIS POSITION IS SAFE</div>
+              <div style="font-size:13px;color:var(--text-muted);line-height:1.6;">FR3 position 84 is outside the Kabat CDR zones and all Vernier-zone residues. N→Q is an isosteric substitution with &lt;0.1 Å side-chain deviation — structurally invisible to the paratope.</div>
+            </div>
+          </div>
+          <div class="opt-results">
+            <table>
+              <thead>
+                <tr><th>Metric</th><th>Before</th><th>After</th><th>Change</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>ADI Score</td><td>76</td><td><strong>77</strong></td><td><span class="arrow-up">+1</span></td></tr>
+                <tr><td>Deamidation Sites</td><td>2</td><td><strong>1</strong></td><td><span class="arrow-up">−1 site</span></td></tr>
+                <tr><td>TCIA Score</td><td>0.74</td><td><strong>0.61</strong></td><td><span class="arrow-up">−17%</span></td></tr>
+                <tr><td>High-Risk Epitopes</td><td>28</td><td><strong>21</strong></td><td><span class="arrow-up">−7</span></td></tr>
+                <tr><td>Structural QA</td><td>PASS</td><td><strong>PASS</strong></td><td>—</td></tr>
+                <tr><td>CDR Identity</td><td>100%</td><td><strong>100%</strong></td><td>—</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- SECTION 5: CATEGORY CHART -->
+      <div class="reveal">
+        <div class="section-label">Category Scores</div>
+        <h2 class="section-title">Dimension-by-Dimension <span>vs Herceptin®</span></h2>
+        <p class="section-intro">Four ADI sub-domains scored against the AbRef-458 distribution. muMAb4D5 leads on aggregation risk; Herceptin leads on overall chemical stability — a 4-point total gap.</p>
+        <div class="chart-wrap">
+          <div class="chart-title">
+            <i data-lucide="bar-chart-2" style="width:18px;height:18px;color:var(--primary)"></i>
+            ADI Sub-Domain Scores (0–100)
+          </div>
+          <div class="chart-canvas-wrap">
+            <canvas id="categoryChart"></canvas>
+          </div>
+        </div>
+      </div>
+
+      <!-- SECTION 6: STRUCTURAL QA -->
+      <div class="reveal">
+        <div class="section-label">Structural Verification</div>
+        <h2 class="section-title">CDR Geometry <span>Fully Preserved</span></h2>
+        <p class="section-intro">3D structural alignment confirms the optimization mutation introduces zero perturbation to the paratope binding geometry.</p>
+        <div class="metrics-grid">
+          <div class="metric-card">
+            <div class="metric-value">0.28 Å</div>
+            <div class="metric-label">Fv Backbone RMSD</div>
+            <div class="metric-threshold">Gate &lt; 1.0 Å</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-value">0.42 Å</div>
+            <div class="metric-label">CDR-H3 Loop RMSD</div>
+            <div class="metric-threshold">Gate &lt; 0.5 Å</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-value">0.14°</div>
+            <div class="metric-label">VH/VL Angle Change</div>
+            <div class="metric-threshold">Gate &lt; 3.0°</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-value">100%</div>
+            <div class="metric-label">Canonical Class Match</div>
+            <div class="metric-threshold">Must match parent</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SECTION 7: CONCLUSION -->
+      <div class="reveal">
+        <div class="result-banner">
+          <div class="score">77 / 100</div>
+          <div class="score-ref">Herceptin® 81 / 100</div>
+          <div class="score-label">ADI Score — Acceptable · Ready for Expression</div>
+          <p>All 15 CMC parameters passed. Immunogenicity risk lower than Herceptin. One targeted framework mutation (VH84 N→Q) cleared the deamidation liability. Cleared for CHO expression validation and preclinical formulation studies.</p>
+          <div class="banner-cta">
+            <a href="case_mumab4d5_humanization_en.html" class="btn-primary">Humanization Case Study</a>
+            <a href="index.html#contact" class="btn-secondary">Discuss Your Antibody</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <p>© 2026 <a href="index.html">InSynBio</a> · AI-Driven Antibody Engineering · <a href="index.html#contact">Contact Us</a></p>
+    <!-- Cite This Work -->
+  <section style="background:#f9fafb;border-top:1px solid #e5e7eb;padding:28px 0 24px;">
+    <div style="max-width:900px;margin:0 auto;padding:0 24px;">
+      <details style="border:1px solid #e5e7eb;border-radius:10px;background:#fff;padding:0;">
+        <summary style="padding:14px 18px;font-size:13px;font-weight:700;color:#374151;cursor:pointer;list-style:none;display:flex;align-items:center;gap:8px;">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#0d9488" stroke-width="2.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+          Cite This Work
+        </summary>
+        <div style="padding:4px 18px 18px;border-top:1px solid #f3f4f6;">
+          <p style="font-size:12px;color:#6b7280;margin:12px 0 10px;">If you reference this analysis, please cite as:</p>
+          <pre style="background:#f3f4f6;border-radius:8px;padding:14px 16px;font-size:12px;line-height:1.7;overflow-x:auto;color:#111827;margin:0;">@techreport{insynbio2026mumab_cmc,
+  title     = {{Computational CMC Developability Assessment of MuMAb4D5: Multi-metric Antibody Manufacturability Analysis}},
+  author    = {InSynBio},
+  year      = {2026},
+  month     = {feb},
+  institution = {InSynBio},
+  note      = {{Aggregation propensity; pI; SAP/PSH patches; PTM risk scoring}},
+  url       = {{https://www.insynbio.com/case_mumab4d5_cmc.html}}
+}</pre>
+          <p style="font-size:11.5px;color:#9ca3af;margin:10px 0 0;">InSynBio computational analyses are for research reference only. Please verify results before clinical application.</p>
+        </div>
+      </details>
+    </div>
+  </section>
+
+  </footer>
+
+  <script>
+  /* Reveal */
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+  /* Category Chart */
+  new Chart(document.getElementById('categoryChart'), {
+    type: 'bar',
+    data: {
+      labels: ['Hydrophobicity\n& Aggregation (30%)', 'Charge\n& Symmetry (25%)', 'Chemical\nStability (25%)', 'Aggregation\nRisk (20%)'],
+      datasets: [
+        {
+          label: 'muMAb4D5 (optimized)',
+          data: [84, 89, 56, 78],
+          backgroundColor: 'rgba(13,148,136,0.75)',
+          borderColor: '#0d9488',
+          borderWidth: 1.5, borderRadius: 5, borderSkipped: false,
+        },
+        {
+          label: 'Herceptin® (reference)',
+          data: [88, 93, 63, 76],
+          backgroundColor: 'rgba(99,102,241,0.55)',
+          borderColor: '#6366f1',
+          borderWidth: 1.5, borderRadius: 5, borderSkipped: false,
+        }
+      ]
+    },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      plugins: {
+        legend: { position: 'top', labels: { font: { family: 'Inter', size: 12, weight: '600' }, padding: 16, boxWidth: 12, boxHeight: 12 } },
+        tooltip: { callbacks: { label: c => ` ${c.dataset.label}: ${c.parsed.y}` } }
+      },
+      scales: {
+        y: { min: 40, max: 100, ticks: { font: { family: 'Inter', size: 11 } }, grid: { color: '#f3f4f6' } },
+        x: { ticks: { font: { family: 'Inter', size: 11, weight: '600' } }, grid: { display: false } }
+      }
+    }
+  });
+
+  lucide.createIcons();
+  </script>
+</body>
+</html>
+

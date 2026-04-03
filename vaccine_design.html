@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="InSynBio EpiDesignCore Vaccine Design Service — neoantigen scanning, TAA heteroclitic design, multi-epitope mRNA assembly, and pMHC-TCR peptide design backed by clinical evidence knowledge bases.">
+  <meta name="keywords" content="vaccine design, neoantigen, heteroclitic design, multi-epitope mRNA, pMHC, TCR, cancer vaccine, InSynBio, AI drug design">
+  <meta name="robots" content="index, follow">
+  <meta name="robots" content="noai, noimageai">
+  <meta name="AI-Training" content="opt-out">
+  <link rel="canonical" href="https://www.insynbio.com/vaccine_design.html">
+  <title>Vaccine Design Service | InSynBio — AI for Life Sciences</title>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
+  <style>
+    :root { --primary: #0d9488; --primary-dark: #0f766e; --text: #111827; --text-muted: #4b5563; --border: #e5e7eb; --bg: #ffffff; --bg-alt: #f9fafb; --bg-alt2: #f3f4f6; }
+    * { box-sizing: border-box; }
+    body { margin: 0; font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 16px; line-height: 1.6; color: var(--text); background: var(--bg); -webkit-font-smoothing: antialiased; padding-top: 73px; }
+
+    /* Header */
+    .top-header { display: flex; align-items: center; justify-content: space-between; padding: 12px 32px; background: rgba(255,255,255,0.95); backdrop-filter: blur(12px); border-bottom: 2px solid rgba(13,148,136,0.1); flex-wrap: nowrap; gap: 12px; position: fixed; width: 100%; top: 0; z-index: 2000; }
+    .mobile-menu-btn { display: none; background: none; border: none; padding: 6px; cursor: pointer; color: var(--text); flex-shrink: 0; }
+    .nav-close-btn { display: none; }
+    .top-header .brand { font-family: 'Cormorant Garamond', serif; font-weight: 700; font-size: 26px; letter-spacing: -0.03em; display: flex; align-items: center; }
+    .top-header .brand a { text-decoration: none; color: inherit; display: flex; align-items: center; gap: 10px; }
+    .top-header .slogan { font-size: 13px; color: var(--text-muted); padding-left: 14px; border-left: 1px solid var(--border); white-space: nowrap; font-weight: 500; letter-spacing: 0.02em; }
+    .top-header-nav { display: flex; align-items: center; gap: 6px; flex: 1; justify-content: center; }
+    .top-header-nav a { padding: 8px 16px; font-size: 14px; color: var(--text-muted); text-decoration: none; border-radius: 20px; transition: all 0.2s; font-weight: 500; }
+    .top-header-nav a:hover { color: var(--primary); background: rgba(13,148,136,0.06); }
+    .top-header-nav a.active { background: var(--primary); color: #fff; box-shadow: 0 2px 8px rgba(13,148,136,0.25); }
+    .nav-dropdown { position: relative; }
+    .nav-dropdown > a::after { content: ' ▾'; font-size: 10px; opacity: 0.6; margin-left: 4px; }
+    .nav-dropdown .dropdown-menu { position: absolute; top: 100%; left: 50%; transform: translateX(-50%) translateY(10px); min-width: 220px; padding: 8px; background: #fff; border: 1px solid rgba(0,0,0,0.06); border-radius: 12px; box-shadow: 0 10px 40px -10px rgba(0,0,0,0.12); opacity: 0; visibility: hidden; transition: all 0.2s cubic-bezier(0.16,1,0.3,1); z-index: 100; margin-top: 8px; }
+    .nav-dropdown:hover .dropdown-menu, .nav-dropdown:focus-within .dropdown-menu { opacity: 1; visibility: visible; transform: translateX(-50%) translateY(0); }
+    .nav-dropdown .dropdown-menu a { display: block; padding: 12px 16px; color: var(--text); text-decoration: none; border-radius: 8px; font-size: 14px; font-weight: 400; background: transparent; }
+    .nav-dropdown .dropdown-menu a:hover { background: var(--bg-alt); }
+    .nav-dropdown .dropdown-menu a .menu-title { display: block; font-weight: 600; font-size: 14px; color: var(--text); margin-bottom: 2px; }
+    .nav-dropdown .dropdown-menu a:hover .menu-title { color: var(--primary); }
+    .nav-dropdown .dropdown-menu a .menu-desc { display: block; font-size: 12px; color: var(--text-muted); line-height: 1.4; }
+
+    /* Layout */
+    .page-wrap { display: flex; min-height: calc(100vh - 73px); max-width: 1400px; margin: 0 auto; }
+    .sidebar { width: 280px; flex-shrink: 0; background: var(--bg); border-right: 1px solid rgba(0,0,0,0.05); padding: 40px 20px; position: sticky; top: 73px; height: calc(100vh - 73px); overflow-y: auto; }
+    .sidebar h3 { font-size: 12px; font-weight: 700; color: var(--text-muted); margin: 0 16px 16px; text-transform: uppercase; letter-spacing: 1.5px; }
+    .sidebar nav a { display: flex; align-items: center; padding: 12px 16px; color: var(--text-muted); text-decoration: none; font-size: 15px; transition: all 0.2s; border-radius: 8px; margin-bottom: 4px; font-weight: 500; }
+    .sidebar nav a:hover { background: rgba(13,148,136,0.06); color: var(--primary); }
+    .sidebar nav a.active { background: rgba(13,148,136,0.1); color: var(--primary-dark); font-weight: 600; }
+    .nav-icon { width: 18px; height: 18px; margin-right: 12px; opacity: 0.8; flex-shrink: 0; }
+    .main { flex: 1; padding: 60px 60px 100px; max-width: 960px; margin: 0 auto; }
+    .main h1 { font-family: 'Cormorant Garamond', serif; font-size: 48px; font-weight: 700; color: #111827; margin: 0 0 16px; letter-spacing: -0.03em; line-height: 1.1; }
+    .main .subtitle { font-size: 20px; color: #4b5563; margin-bottom: 8px; line-height: 1.6; }
+    .main h2 { font-family: 'Cormorant Garamond', serif; font-size: 32px; font-weight: 600; color: #111827; margin: 56px 0 24px; padding-top: 32px; border-top: 1px solid rgba(0,0,0,0.05); letter-spacing: -0.01em; display: flex; align-items: center; }
+    .main h2:first-of-type { margin-top: 0; padding-top: 0; border-top: none; }
+    .h2-icon { display: inline-flex; align-items: center; justify-content: center; width: 36px; height: 36px; margin-right: 12px; border-radius: 10px; background: rgba(13,148,136,0.1); color: var(--primary); vertical-align: middle; flex-shrink: 0; }
+    .main p, .main ul, .main li { margin: 0 0 20px; color: #374151; font-size: 17px; line-height: 1.7; }
+    .main ul { padding-left: 24px; }
+    .main li { margin-bottom: 10px; }
+    .input-note { font-size: 14px; color: #6b7280; margin-top: 8px; font-style: italic; }
+    .breadcrumb { font-size: 14px; color: #6b7280; margin-bottom: 32px; font-weight: 500; }
+    .breadcrumb a { color: var(--text-muted); text-decoration: none; transition: color 0.2s; }
+    .breadcrumb a:hover { color: var(--primary); }
+    .breadcrumb span { color: #d1d5db; margin: 0 8px; }
+    .mission-block { background: linear-gradient(135deg, #f0fdfa 0%, #fff 100%); border: 1px solid rgba(13,148,136,0.1); border-radius: 16px; padding: 32px; margin-bottom: 40px; box-shadow: 0 4px 20px rgba(13,148,136,0.05); position: relative; overflow: hidden; }
+    .mission-block::before { content:''; position:absolute; top:0; right:0; width:200px; height:200px; background:radial-gradient(circle,rgba(13,148,136,0.1) 0%,transparent 70%); border-radius:50%; transform:translate(30%,-30%); pointer-events:none; }
+    .mission-block p { margin:0; font-size:17px; line-height:1.7; color:#111827; position:relative; z-index:1; }
+    .mission-block p + p { margin-top:16px; }
+    .disclaimer { font-size:14px; color:#92400e; font-style:italic; margin-top:16px; padding:16px 20px; background:#fffbeb; border-left:4px solid #f59e0b; border-radius:0 8px 8px 0; }
+
+    /* lib-grid / lib-card */
+    .lib-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 16px; margin: 28px 0; }
+    .lib-card { background:#fff; border:1px solid #e5e7eb; border-radius:12px; padding:20px; transition:all .2s; position:relative; overflow:hidden; }
+    .lib-card:hover { border-color:var(--primary); box-shadow:0 4px 16px rgba(13,148,136,.1); transform:translateY(-2px); }
+    .lib-card .lc-icon { width:36px; height:36px; border-radius:10px; background:rgba(13,148,136,.08); display:flex; align-items:center; justify-content:center; margin-bottom:12px; color:var(--primary); }
+    .lib-card h4 { font-size:15px; font-weight:600; margin:0 0 4px; color:#111827; }
+    .lib-card .lc-count { font-size:12px; font-weight:700; color:var(--primary); background:rgba(13,148,136,.08); display:inline-block; padding:2px 10px; border-radius:20px; margin-bottom:8px; }
+    .lib-card .lc-desc { font-size:13px; color:var(--text-muted); line-height:1.5; margin:0 0 10px; }
+    .lib-card .lc-link { display:inline-flex; align-items:center; gap:4px; font-size:12.5px; font-weight:600; color:var(--primary); text-decoration:none; margin-top:10px; }
+    .lib-card .lc-link:hover { color:var(--primary-dark); }
+
+    /* flow-strip */
+    .flow-strip { display:flex; gap:0; align-items:stretch; margin:40px 0; overflow-x:auto; padding-bottom:8px; }
+    .flow-step { flex:1; min-width:120px; background:#fff; border:1px solid #e5e7eb; border-radius:12px; padding:16px 14px; text-align:center; position:relative; }
+    .flow-step:not(:last-child)::after { content:'→'; position:absolute; right:-14px; top:50%; transform:translateY(-50%); font-size:18px; color:var(--primary); font-weight:700; z-index:2; }
+    .flow-step .fs-num { font-size:11px; font-weight:700; color:#fff; background:var(--primary); width:22px; height:22px; border-radius:50%; display:inline-flex; align-items:center; justify-content:center; margin-bottom:6px; }
+    .flow-step .fs-title { font-size:13px; font-weight:600; color:#111827; margin-bottom:2px; }
+    .flow-step .fs-sub { font-size:11.5px; color:var(--text-muted); line-height:1.4; }
+
+    /* Form */
+    .form-section { background:#fff; border-radius:16px; padding:40px; margin-top:40px; box-shadow:0 4px 20px rgba(0,0,0,0.03); border:1px solid rgba(0,0,0,0.06); }
+    .form-row { display:flex; gap:24px; margin-bottom:24px; flex-wrap:wrap; }
+    .form-group { flex:1; min-width:180px; }
+    .form-group.full { flex:1 1 100%; }
+    .form-group label { display:block; font-weight:600; margin-bottom:8px; color:#111827; font-size:14px; }
+    .form-group input, .form-group select, .form-group textarea { width:100%; padding:12px 16px; border:1px solid #d1d5db; border-radius:8px; font-size:15px; font-family:inherit; transition:border-color .2s,box-shadow .2s; }
+    .form-group textarea { min-height:120px; resize:vertical; }
+    .form-group input:focus, .form-group select:focus, .form-group textarea:focus { outline:none; border-color:var(--primary); box-shadow:0 0 0 3px rgba(13,148,136,0.15); }
+    .btn { padding:14px 32px; background:var(--primary); color:#fff; border:none; border-radius:8px; font-size:16px; font-weight:500; cursor:pointer; transition:all .2s; box-shadow:0 4px 12px rgba(13,148,136,0.25); }
+    .btn:hover { background:var(--primary-dark); transform:translateY(-1px); box-shadow:0 6px 16px rgba(13,148,136,0.35); }
+    .check-group { display:flex; flex-wrap:wrap; gap:16px; margin:16px 0; }
+    .check-item { display:flex; align-items:center; gap:10px; }
+    .check-item input { width:18px; height:18px; accent-color:var(--primary); }
+    .check-item label { margin:0; font-weight:400; cursor:pointer; color:#374151; font-size:15px; }
+
+    /* Table */
+    .table-wrap { overflow-x:auto; margin:20px 0; border-radius:10px; border:1px solid rgba(0,0,0,0.06); box-shadow:0 2px 8px rgba(0,0,0,0.02); }
+    .table-wrap table { width:100%; border-collapse:collapse; font-size:13px; background:#fff; }
+    .table-wrap thead th { background:var(--bg-alt); border-bottom:2px solid var(--border); padding:10px 14px; text-align:left; font-weight:600; font-size:11px; text-transform:uppercase; letter-spacing:.04em; color:var(--text-muted); white-space:nowrap; }
+    .table-wrap tbody tr { border-bottom:1px solid var(--border); }
+    .table-wrap tbody tr:hover { background:var(--bg-alt2); }
+    .table-wrap td { padding:12px 14px; vertical-align:top; font-size:14px; color:#374151; }
+
+    /* Filter / search */
+    .filter-sel { padding:6px 10px; border:1px solid var(--border); border-radius:6px; font-size:13px; color:var(--text); background:#fff; cursor:pointer; }
+    .search-box { padding:8px 14px; border:1px solid var(--border); border-radius:8px; font-size:14px; width:100%; max-width:440px; color:var(--text); transition:border-color .2s; }
+    .search-box:focus { outline:none; border-color:var(--primary); box-shadow:0 0 0 3px rgba(13,148,136,.1); }
+
+    /* epitope tags + badges */
+    .badge { display:inline-block; font-size:10.5px; font-weight:600; padding:2px 8px; border-radius:20px; border:1px solid transparent; white-space:nowrap; }
+    .badge-approved { background:#d1fae5; color:#065f46; }
+    .badge-phase2 { background:#fef3c7; color:#92400e; }
+    .badge-overexpr { background:#ecfdf5; color:#065f46; border-color:#a7f3d0; }
+    .badge-tsa { background:#fce7f3; color:#9d174d; border-color:#fbcfe8; }
+    .epitope-tag { display:inline-block; background:#f1f5f9; border:1px solid #e2e8f0; border-radius:4px; padding:1px 6px; font-family:'Courier New',monospace; font-size:11.5px; color:#334155; margin:2px 2px 2px 0; letter-spacing:.5px; }
+    .hla-tag { background:#eff6ff; border-color:#bfdbfe; color:#1e40af; }
+
+    /* site-footer */
+    .site-footer { padding:48px 32px; text-align:center; font-size:14px; color:#9ca3af; border-top:1px solid rgba(0,0,0,0.05); background:#fff; }
+    .site-footer a { color:#6b7280; text-decoration:none; transition:color .2s; }
+    .site-footer a:hover { color:var(--primary); }
+
+    /* pill link */
+    .pill-link { display:inline-flex; align-items:center; gap:6px; font-size:13px; font-weight:600; text-decoration:none; padding:5px 12px; border-radius:20px; transition:background .15s; }
+    .pill-link-green { color:#0f766e; background:rgba(13,148,136,0.07); border:1px solid rgba(13,148,136,0.2); }
+    .pill-link-green:hover { background:rgba(13,148,136,0.14); }
+    .pill-link-purple { color:#7c3aed; background:rgba(124,58,237,0.07); border:1px solid rgba(124,58,237,0.2); }
+    .pill-link-purple:hover { background:rgba(124,58,237,0.14); }
+    .pill-link-blue { color:#1d4ed8; background:rgba(59,130,246,0.07); border:1px solid rgba(59,130,246,0.2); }
+    .pill-link-blue:hover { background:rgba(59,130,246,0.14); }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .top-header { flex-wrap:wrap; padding:12px 16px; gap:10px; }
+      .top-header .slogan { display:none !important; }
+      .page-wrap { flex-direction:column; }
+      .sidebar { width:100%; height:auto; position:relative; border-right:none; border-bottom:1px solid #e0e0e0; padding:16px; }
+      .sidebar nav { display:flex; flex-wrap:wrap; gap:8px; }
+      .sidebar nav a { display:inline-flex; padding:8px 12px; border-radius:6px; }
+      .main { padding:32px 24px 64px; }
+      .mission-block { padding:24px; }
+      .lib-grid { grid-template-columns:1fr 1fr; gap:12px; }
+      .flow-strip { gap:8px; }
+      .flow-step:not(:last-child)::after { display:none; }
+    }
+    @media (max-width: 768px) {
+      .mobile-menu-btn { display:block; }
+      .top-header { padding:10px 16px; flex-wrap:nowrap; }
+      .top-header-nav { position:fixed; top:0; left:0; width:100vw; height:100vh; background:#fff; flex-direction:column; justify-content:center; align-items:center; gap:4px; z-index:9999; opacity:0; pointer-events:none; transition:opacity .25s; padding:24px; overflow-y:auto; }
+      .top-header-nav.open { opacity:1; pointer-events:auto; }
+      .top-header-nav a { font-size:18px; padding:12px 24px; }
+      .nav-close-btn { display:block; position:absolute; top:16px; right:20px; background:none; border:none; font-size:32px; color:var(--text); cursor:pointer; line-height:1; padding:4px 8px; }
+      body { padding-top:52px; }
+      .lib-grid { grid-template-columns:1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<header class="top-header">
+  <div class="brand">
+    <a href="index.html" style="display:flex;align-items:center;gap:10px;text-decoration:none;">
+      <svg width="34" height="28" viewBox="0 0 32 30" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink:0;">
+        <path d="M16 2L2 10V22L16 28L30 22V10L16 2Z" fill="#0d9488" fill-opacity="0.06" stroke="#0d9488" stroke-width="1.5" stroke-opacity="0.5"/>
+        <path d="M16 18V25" stroke="#0d9488" stroke-width="2.5" stroke-linecap="round"/>
+        <path d="M14.5 14.5L8 8" stroke="#0d9488" stroke-width="2.5" stroke-linecap="round"/>
+        <path d="M11.5 13.5L5.5 7.5" stroke="#2dd4bf" stroke-width="2" stroke-linecap="round"/>
+        <path d="M17.5 14.5L24 8" stroke="#0d9488" stroke-width="2.5" stroke-linecap="round"/>
+        <circle cx="8" cy="8" r="2" fill="#0d9488"/>
+        <circle cx="5.5" cy="7.5" r="1.5" fill="#2dd4bf"/>
+        <rect x="22" y="5" width="5" height="5" rx="1" fill="#f59e0b" transform="rotate(45 24.5 7.5)"/>
+        <circle cx="16" cy="16" r="2.5" fill="white" stroke="#0d9488" stroke-width="2"/>
+      </svg>
+      <span style="font-family:'Cormorant Garamond',serif;font-weight:700;font-size:26px;color:#1f2937;letter-spacing:-0.02em;">In<span style="color:#0d9488;">Syn</span>Bio</span>
+    </a>
+    <span class="slogan">AI for Life Sciences</span>
+  </div>
+  <button class="mobile-menu-btn" onclick="document.querySelector('.top-header-nav').classList.toggle('open')" aria-label="Open navigation">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+  </button>
+  <nav class="top-header-nav">
+    <button class="nav-close-btn" onclick="document.querySelector('.top-header-nav').classList.remove('open')">✕</button>
+    <a href="index.html">Home</a>
+    <a href="index.html#about">About Us</a>
+    <div class="nav-dropdown" tabindex="0">
+      <a href="index.html#services" class="active">Services</a>
+      <div class="dropdown-menu">
+        <a href="InSynBio_Antibody_Developability_Assessment_Page.html">
+          <span class="menu-title">Antibody</span>
+          <span class="menu-desc">Structure-based Developability</span>
+        </a>
+        <a href="InSynBio_CART_Design_Page.html">
+          <span class="menu-title">CAR-T</span>
+          <span class="menu-desc">Smart CAR-T Design</span>
+        </a>
+        <a href="InSynBio_Bispecific_Antibody_Design_Page.html">
+          <span class="menu-title">Bispecific</span>
+          <span class="menu-desc">Multispecific Engineering</span>
+        </a>
+        <a href="immunogenicity_study.html">
+          <span class="menu-title">Immunogenicity</span>
+          <span class="menu-desc">ADA Prediction &amp; Reference DB</span>
+        </a>
+        <a href="vaccine_design.html" style="background:rgba(13,148,136,0.06);">
+          <span class="menu-title" style="color:var(--primary);">Vaccine Design</span>
+          <span class="menu-desc">Neoantigen · Heteroclitic · mRNA</span>
+        </a>
+      </div>
+    </div>
+    <a href="index.html#case-studies">Case Studies</a>
+    <a href="InSynBio_OurTech.html">Our Tech</a>
+    <a href="#contact">Contact Us</a>
+  </nav>
+</header>
+
+<div class="page-wrap">
+  <aside class="sidebar">
+    <h3>Vaccine Design</h3>
+    <nav>
+      <a href="#platform" class="nav-link active">
+        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+        Platform
+      </a>
+      <a href="#neoantigen" class="nav-link">
+        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        Neoantigen Scanning
+      </a>
+      <a href="#heteroclitic" class="nav-link">
+        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/></svg>
+        Heteroclitic TAA Design
+      </a>
+      <a href="#mrna" class="nav-link">
+        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+        Multi-Epitope mRNA
+      </a>
+      <a href="#pmhc-tcr" class="nav-link">
+        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+        pMHC-TCR Design
+      </a>
+      <a href="#evidence" class="nav-link">
+        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+        Evidence Base
+      </a>
+      <a href="#submit" class="nav-link">
+        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+        Submit Inquiry
+      </a>
+      <a href="#contact" class="nav-link">
+        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        Contact
+      </a>
+    </nav>
+  </aside>
+
+  <main class="main">
+    <div class="breadcrumb">
+      <a href="index.html">Home</a><span>/</span><a href="index.html#services">Services</a><span>/</span><span>Vaccine Design</span>
+    </div>
+
+    <h1>Vaccine Design Service</h1>
+    <p class="subtitle">EpiDesignCore — From sequence to synthesis-ready vaccine construct, backed by clinical evidence.</p>
+
+    <div class="mission-block">
+      <p><strong>Expert computational vaccine design from target sequence to deliverable construct.</strong> Our EpiDesignCore platform covers the full spectrum: neoantigen scanning, heteroclitic TAA peptide engineering, multi-epitope mRNA assembly, and pMHC-TCR-guided peptide optimization — all grounded in six curated clinical knowledge bases with traceable literature sources.</p>
+      <p style="font-size:15px;">We deliver ranked epitope shortlists, optimized peptide sequences, annotated mRNA constructs, and evidence-cited rationale reports. All deliverables are expert-reviewed, typically within 3–5 business days. <a href="#submit" style="color:var(--primary);font-weight:600;">Start a project →</a></p>
+    </div>
+
+    <p class="disclaimer">Disclaimer: InSynBio EpiDesignCore analyses are computational and for research reference only. All vaccine candidates require regulatory review and experimental validation before clinical use.</p>
+
+    <!-- PLATFORM -->
+    <h2 id="platform"><span class="h2-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg></span>Platform</h2>
+    <p>The <strong>EpiDesignCore</strong> platform integrates state-of-the-art epitope prediction algorithms with six structured clinical knowledge bases. Every design decision is cross-referenced against IEDB-validated sequences, clinical trial data, and NCI antigen rankings. Four service modules are available independently or as a full pipeline.</p>
+
+    <!-- Workflow SVG -->
+    <div style="margin:28px 0 40px;overflow-x:auto;">
+      <div style="font-size:12px;font-weight:700;color:#9ca3af;text-transform:uppercase;letter-spacing:0.8px;margin-bottom:14px;">Vaccine Design Pipeline</div>
+      <svg viewBox="0 0 840 230" xmlns="http://www.w3.org/2000/svg" style="width:100%;min-width:600px;max-width:860px;display:block;font-family:Inter,sans-serif;">
+        <defs>
+          <marker id="arr" markerWidth="7" markerHeight="5" refX="6" refY="2.5" orient="auto"><path d="M0,0 L7,2.5 L0,5 Z" fill="#9ca3af"/></marker>
+        </defs>
+        <!-- Row 1 -->
+        <rect x="0" y="10" width="145" height="76" rx="9" fill="#f0fdfa" stroke="#0d9488" stroke-width="1.5"/>
+        <text x="72" y="36" text-anchor="middle" font-size="18" fill="#0d9488">①</text>
+        <text x="72" y="56" text-anchor="middle" font-size="11.5" font-weight="700" fill="#0f766e">Sequence Input</text>
+        <text x="72" y="72" text-anchor="middle" font-size="10" fill="#6b7280">Mutation list / protein</text>
+        <line x1="145" y1="48" x2="165" y2="48" stroke="#9ca3af" stroke-width="1.5" marker-end="url(#arr)"/>
+        <rect x="168" y="10" width="145" height="76" rx="9" fill="#f0fdfa" stroke="#0d9488" stroke-width="1.5"/>
+        <text x="240" y="36" text-anchor="middle" font-size="18" fill="#0d9488">②</text>
+        <text x="240" y="56" text-anchor="middle" font-size="11.5" font-weight="700" fill="#0f766e">HLA Typing</text>
+        <text x="240" y="72" text-anchor="middle" font-size="10" fill="#6b7280">HLA-A/B/C · DR / DQ</text>
+        <line x1="313" y1="48" x2="333" y2="48" stroke="#9ca3af" stroke-width="1.5" marker-end="url(#arr)"/>
+        <rect x="336" y="10" width="145" height="76" rx="9" fill="#eff6ff" stroke="#3b82f6" stroke-width="1.5"/>
+        <text x="408" y="36" text-anchor="middle" font-size="18" fill="#3b82f6">③</text>
+        <text x="408" y="56" text-anchor="middle" font-size="11.5" font-weight="700" fill="#1d4ed8">MHC Prediction</text>
+        <text x="408" y="72" text-anchor="middle" font-size="10" fill="#6b7280">MHCflurry · NetMHCpan</text>
+        <line x1="481" y1="48" x2="501" y2="48" stroke="#9ca3af" stroke-width="1.5" marker-end="url(#arr)"/>
+        <rect x="504" y="10" width="145" height="76" rx="9" fill="#eff6ff" stroke="#3b82f6" stroke-width="1.5"/>
+        <text x="576" y="36" text-anchor="middle" font-size="18" fill="#3b82f6">④</text>
+        <text x="576" y="56" text-anchor="middle" font-size="11.5" font-weight="700" fill="#1d4ed8">Epitope Selection</text>
+        <text x="576" y="72" text-anchor="middle" font-size="10" fill="#6b7280">IEDB cross-check · NCI rank</text>
+        <line x1="649" y1="48" x2="669" y2="48" stroke="#9ca3af" stroke-width="1.5" marker-end="url(#arr)"/>
+        <rect x="672" y="10" width="168" height="76" rx="9" fill="#fffbeb" stroke="#f59e0b" stroke-width="1.5"/>
+        <text x="756" y="36" text-anchor="middle" font-size="18" fill="#d97706">⑤</text>
+        <text x="756" y="56" text-anchor="middle" font-size="11.5" font-weight="700" fill="#92400e">Optimization</text>
+        <text x="756" y="72" text-anchor="middle" font-size="10" fill="#6b7280">Heteroclitic / TCR tuning</text>
+        <!-- Row 2 (right to left) -->
+        <line x1="756" y1="86" x2="756" y2="144" stroke="#9ca3af" stroke-width="1.5"/>
+        <line x1="756" y1="144" x2="700" y2="144" stroke="#9ca3af" stroke-width="1.5" marker-end="url(#arr)"/>
+        <rect x="504" y="144" width="168" height="76" rx="9" fill="#fffbeb" stroke="#f59e0b" stroke-width="1.5"/>
+        <text x="588" y="170" text-anchor="middle" font-size="18" fill="#d97706">⑥</text>
+        <text x="588" y="190" text-anchor="middle" font-size="11.5" font-weight="700" fill="#92400e">mRNA Assembly</text>
+        <text x="588" y="206" text-anchor="middle" font-size="10" fill="#6b7280">Linker design · Codon opt.</text>
+        <line x1="504" y1="182" x2="484" y2="182" stroke="#9ca3af" stroke-width="1.5" marker-end="url(#arr)"/>
+        <rect x="336" y="144" width="145" height="76" rx="9" fill="#fdf4ff" stroke="#a855f7" stroke-width="1.5"/>
+        <text x="408" y="170" text-anchor="middle" font-size="18" fill="#a855f7">⑦</text>
+        <text x="408" y="190" text-anchor="middle" font-size="11.5" font-weight="700" fill="#6d28d9">Coverage Analysis</text>
+        <text x="408" y="206" text-anchor="middle" font-size="10" fill="#6b7280">HLA pop. coverage · TCR fit</text>
+        <line x1="336" y1="182" x2="316" y2="182" stroke="#9ca3af" stroke-width="1.5" marker-end="url(#arr)"/>
+        <rect x="168" y="144" width="145" height="76" rx="9" fill="#fdf4ff" stroke="#a855f7" stroke-width="1.5"/>
+        <text x="240" y="170" text-anchor="middle" font-size="18" fill="#a855f7">⑧</text>
+        <text x="240" y="190" text-anchor="middle" font-size="11.5" font-weight="700" fill="#6d28d9">Vector / Adjuvant</text>
+        <text x="240" y="206" text-anchor="middle" font-size="10" fill="#6b7280">Platform recommendation</text>
+        <line x1="168" y1="182" x2="148" y2="182" stroke="#9ca3af" stroke-width="1.5" marker-end="url(#arr)"/>
+        <rect x="0" y="144" width="145" height="76" rx="9" fill="#f0fdf4" stroke="#16a34a" stroke-width="2"/>
+        <text x="72" y="170" text-anchor="middle" font-size="18" fill="#16a34a">⑨</text>
+        <text x="72" y="190" text-anchor="middle" font-size="11.5" font-weight="700" fill="#166534">Full Report</text>
+        <text x="72" y="206" text-anchor="middle" font-size="10" fill="#6b7280">FASTA · GenBank · PDF</text>
+      </svg>
+      <div style="display:flex;gap:16px;flex-wrap:wrap;margin-top:10px;">
+        <span style="font-size:11px;display:flex;align-items:center;gap:5px;"><span style="display:inline-block;width:10px;height:10px;border-radius:2px;background:#0d9488;"></span>Input &amp; Annotation</span>
+        <span style="font-size:11px;display:flex;align-items:center;gap:5px;"><span style="display:inline-block;width:10px;height:10px;border-radius:2px;background:#3b82f6;"></span>MHC Prediction &amp; Selection</span>
+        <span style="font-size:11px;display:flex;align-items:center;gap:5px;"><span style="display:inline-block;width:10px;height:10px;border-radius:2px;background:#f59e0b;"></span>Optimization &amp; Assembly</span>
+        <span style="font-size:11px;display:flex;align-items:center;gap:5px;"><span style="display:inline-block;width:10px;height:10px;border-radius:2px;background:#a855f7;"></span>Coverage &amp; Formulation</span>
+        <span style="font-size:11px;display:flex;align-items:center;gap:5px;"><span style="display:inline-block;width:10px;height:10px;border-radius:2px;background:#16a34a;"></span>Delivery</span>
+      </div>
+    </div>
+
+    <!-- SERVICE 1: NEOANTIGEN -->
+    <h2 id="neoantigen"><span class="h2-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></span>Neoantigen Scanning</h2>
+    <p><strong>Personalized Neoantigen Identification and Prioritization</strong></p>
+    <p>Identify and rank tumor-specific neoantigens from somatic mutations. We combine MHC-I and MHC-II binding prediction with expression filtering, clonal fraction scoring, and IEDB cross-validation to deliver a shortlist of high-confidence neoantigen candidates suitable for personalized vaccine design.</p>
+    <ul>
+      <li><strong>MHC-I binding prediction</strong> — MHCflurry 2.0 + NetMHCpan 4.1; IC50 and %rank for patient HLA type; 8–11 mer peptides</li>
+      <li><strong>MHC-II binding prediction</strong> — NetMHCIIpan 4.0; 15-mer peptides for CD4⁺ T-cell help; HLA-DR allele coverage</li>
+      <li><strong>Neoantigen prioritization</strong> — Binding rank + tumor expression (TPM) + variant allele fraction (VAF); clonal neoantigen preference</li>
+      <li><strong>IEDB cross-validation</strong> — Flag epitopes with known cross-reactivity to self or pathogen antigens; reduce autoimmunity risk</li>
+      <li><strong>Population coverage analysis</strong> — Report HLA A/B/C + DR coverage across major ethnic groups for selected epitopes</li>
+    </ul>
+    <p class="input-note">Input: VCF or mutation list + patient HLA type (4-digit). Tumor expression data (RNA-seq FPKM/TPM) optional but recommended.</p>
+    <div style="display:flex;flex-wrap:wrap;gap:10px;margin-top:12px;">
+      <a href="vaccine_kb_data.html#epitopes" class="pill-link pill-link-green">📊 Browse 250+ validated T-cell epitopes →</a>
+      <a href="vaccine_kb_data.html#taa" class="pill-link pill-link-green">🧬 NCI-ranked TAA reference (30 antigens) →</a>
+    </div>
+
+    <!-- SERVICE 2: HETEROCLITIC -->
+    <h2 id="heteroclitic"><span class="h2-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/></svg></span>Heteroclitic TAA Design</h2>
+    <p><strong>Anchor-Modified Peptide Engineering for Shared Tumor-Associated Antigens</strong></p>
+    <p>Wild-type TAA peptides often bind MHC with low affinity, resulting in weak T-cell activation. Heteroclitic design substitutes anchor residues (P2, P9 for MHC-I; P1, P9 for MHC-II) to improve MHC binding while preserving or enhancing TCR recognition of the unmodified tumor antigen — a strategy validated in clinical vaccine trials (e.g., MART-1/Melan-A ELA→ILA, gp100 g209-2M).</p>
+    <ul>
+      <li><strong>Anchor residue mapping</strong> — MHC contact analysis for patient HLA type; identify P2/P9 anchor positions</li>
+      <li><strong>Substitution library generation</strong> — Generate single and double anchor variants; filter by predicted IC50 (&lt;50 nM target)</li>
+      <li><strong>Cross-reactivity scoring</strong> — Predict TCR activation cross-reactivity against wild-type TAA peptide; prioritize high cross-reactivity candidates</li>
+      <li><strong>Clinical precedent review</strong> — Cross-reference with IEDB and NCI TAA database for published heteroclitic variants</li>
+      <li><strong>Immunogenicity assessment</strong> — MHC-II T-cell epitope risk in modified peptide; flag de novo immunogenicity introduced by substitution</li>
+    </ul>
+    <p class="input-note">Input: Wild-type TAA peptide sequence or antigen gene name + HLA type. Target TAA may be selected from our knowledge base.</p>
+    <div style="display:flex;flex-wrap:wrap;gap:10px;margin-top:12px;">
+      <a href="vaccine_kb_data.html#taa" class="pill-link pill-link-green">🧬 Browse 30 NCI-ranked TAAs (WT epitopes included) →</a>
+    </div>
+
+    <!-- SERVICE 3: mRNA -->
+    <h2 id="mrna"><span class="h2-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg></span>Multi-Epitope mRNA Vaccine Design</h2>
+    <p><strong>Synthesis-Ready mRNA Construct from Selected Epitopes</strong></p>
+    <p>Assemble a multi-epitope mRNA vaccine construct from a prioritized epitope shortlist. We design the linker architecture, optimize codons for human expression (RSCU-based), and annotate the full construct for mRNA-LNP or viral vector delivery — delivering a synthesis-ready FASTA, GenBank file, and rationale report.</p>
+    <ul>
+      <li><strong>Epitope ordering and orientation</strong> — Systematic evaluation of epitope arrangement to minimize junctional epitope formation; MHC binding at junctions flagged</li>
+      <li><strong>Linker design</strong> — MHC-I: AAY (proteasomal cleavage enhancer); MHC-II: GPGPG (flexible, cleavage-permissive); N-terminal adjuvant fusion peptide optional (PADRE, flagellin fragment)</li>
+      <li><strong>Codon optimization</strong> — Human RSCU codon adaptation; CAI target ≥0.80; GC content 50–60%; avoid rare codons, CpG motifs (optional), and restriction sites (BsaI, BsmBI, NotI)</li>
+      <li><strong>5′/3′ UTR design</strong> — Human β-globin 5′ UTR (or synthetic); AES/mtRNR1 3′ UTR scaffold; poly-A tail recommendation</li>
+      <li><strong>Delivery platform recommendation</strong> — mRNA-LNP vs. viral vector (Ad5, MVA) selection with rationale based on target, indication, and cold-chain constraints</li>
+    </ul>
+    <p class="input-note">Input: Finalized epitope list (from neoantigen scanning or heteroclitic design) + target delivery platform preference.</p>
+    <div style="display:flex;flex-wrap:wrap;gap:10px;margin-top:12px;">
+      <a href="vaccine_kb_data.html#vectors" class="pill-link pill-link-blue">🧫 Browse 10 vaccine delivery platforms →</a>
+      <a href="vaccine_kb_data.html#adjuvants" class="pill-link pill-link-blue">⚗️ Browse 10 clinical adjuvants →</a>
+    </div>
+
+    <!-- SERVICE 4: pMHC-TCR -->
+    <h2 id="pmhc-tcr"><span class="h2-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></span>pMHC-TCR Peptide Design</h2>
+    <p><strong>Epitope Optimization for TCR-T Cell Therapy and pMHC Tetramer Design</strong></p>
+    <p>Design peptides that optimally activate defined TCR clones — relevant for TCR-T cell therapy (TCR gene transfer), personalized pMHC tetramers, and vaccine-to-adoptive-cell-transfer bridging strategies. Our clinical TCR database (PDB-verified, Phase I+ or FDA-approved) provides the structural basis for peptide contact analysis and affinity-guided modifications.</p>
+    <ul>
+      <li><strong>TCR-pMHC contact mapping</strong> — CDR3α/CDR3β contact residue analysis from PDB structures; identify peptide positions critical for TCR recognition</li>
+      <li><strong>Peptide variant generation</strong> — Single substitutions at TCR-contact positions; rank variants by predicted TCR binding compatibility while maintaining MHC-I binding (%rank ≤2%)</li>
+      <li><strong>Clinical TCR matching</strong> — Cross-reference target epitope against our 5-clone PDB-verified clinical TCR database; flag existing validated TCRs for the same epitope</li>
+      <li><strong>pMHC tetramer design</strong> — Biotinylation site guidance, MHC allomorph selection, and refolding condition recommendations for tetramer production</li>
+    </ul>
+    <p class="input-note">Input: Target peptide/antigen + HLA allele + desired TCR clone (or matched from database). PDB file of TCR-pMHC complex preferred; modeled if unavailable.</p>
+    <div style="display:flex;flex-wrap:wrap;gap:10px;margin-top:12px;">
+      <a href="vaccine_kb_data.html#tcr" class="pill-link pill-link-purple">🔬 Browse 5 PDB-verified clinical TCR clones →</a>
+      <a href="vaccine_kb_data.html#tcr" class="pill-link pill-link-purple">🧬 Browse Public TCR Motifs (NY-ESO-1, MART-1) →</a>
+    </div>
+
+    <!-- EVIDENCE BASE -->
+    <h2 id="evidence"><span class="h2-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg></span>Clinical Evidence Base</h2>
+    <p>All service modules draw on six curated knowledge bases. Every entry is sourced from published clinical literature, regulatory submissions, IEDB, RCSB PDB, or ClinicalTrials.gov. No AI-generated entries. No uncited scraping.</p>
+
+    <div class="lib-grid">
+      <div class="lib-card">
+        <div class="lc-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div>
+        <h4>Tumor Antigens</h4>
+        <span class="lc-count">30 TAAs</span>
+        <p class="lc-desc">NCI 9-dimension ranked tumor antigens with IEDB-validated HLA epitopes and clinical trial counts. Used in neoantigen scanning and heteroclitic design.</p>
+        <a href="vaccine_kb_data.html#taa" class="lc-link">Browse TAA database →</a>
+      </div>
+      <div class="lib-card">
+        <div class="lc-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div>
+        <h4>Clinical TCR Clones</h4>
+        <span class="lc-count">5 PDB-verified</span>
+        <p class="lc-desc">Only TCR clones used in Phase I+ trials or FDA-approved products. Every CDR3α/CDR3β is traceable to RCSB PDB. Used in pMHC-TCR design.</p>
+        <a href="vaccine_kb_data.html#tcr" class="lc-link">Browse TCR database →</a>
+      </div>
+      <div class="lib-card">
+        <div class="lc-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
+        <h4>T-Cell Epitopes</h4>
+        <span class="lc-count" id="epitopeCountBadge">250+</span>
+        <p class="lc-desc">IEDB-validated MHC-I and MHC-II epitopes from tumor and infectious disease antigens. Searchable by HLA allele and antigen source.</p>
+        <a href="vaccine_kb_data.html#epitopes" class="lc-link">Browse Epitope Explorer →</a>
+      </div>
+      <div class="lib-card">
+        <div class="lc-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+        <h4>Infectious Disease</h4>
+        <span class="lc-count">9 Pathogens</span>
+        <p class="lc-desc">Key antigens from major pathogens with approved and pipeline vaccines — from SARS-CoV-2 Spike to Plasmodium CSP.</p>
+        <a href="vaccine_kb_data.html#infectious" class="lc-link">Browse pathogen antigens →</a>
+      </div>
+      <div class="lib-card">
+        <div class="lc-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg></div>
+        <h4>Delivery Vectors</h4>
+        <span class="lc-count">10 Platforms</span>
+        <p class="lc-desc">mRNA-LNP, adenoviral, MVA, VLP, DNA, protein subunit — engineering parameters, cold chain, and approved product examples.</p>
+        <a href="vaccine_kb_data.html#vectors" class="lc-link">Browse delivery platforms →</a>
+      </div>
+      <div class="lib-card">
+        <div class="lc-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.5 10c-.83 0-1.5-.67-1.5-1.5v-5c0-.83.67-1.5 1.5-1.5s1.5.67 1.5 1.5v5c0 .83-.67 1.5-1.5 1.5z"/><path d="M20.5 10H19V8.5c0-.83.67-1.5 1.5-1.5s1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/><path d="M9.5 14c.83 0 1.5.67 1.5 1.5v5c0 .83-.67 1.5-1.5 1.5S8 21.33 8 20.5v-5c0-.83.67-1.5 1.5-1.5z"/><path d="M3.5 14H5v1.5c0 .83-.67 1.5-1.5 1.5S2 16.33 2 15.5 2.67 14 3.5 14z"/><path d="M14 14.5c0-.83.67-1.5 1.5-1.5h5c.83 0 1.5.67 1.5 1.5s-.67 1.5-1.5 1.5h-5c-.83 0-1.5-.67-1.5-1.5z"/><path d="M15.5 19H14v1.5c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5-.67-1.5-1.5-1.5z"/><path d="M10 9.5C10 8.67 9.33 8 8.5 8h-5C2.67 8 2 8.67 2 9.5S2.67 11 3.5 11h5c.83 0 1.5-.67 1.5-1.5z"/><path d="M8.5 5H10V3.5C10 2.67 9.33 2 8.5 2S7 2.67 7 3.5 7.67 5 8.5 5z"/></svg></div>
+        <h4>Adjuvants</h4>
+        <span class="lc-count">10 Adjuvants</span>
+        <p class="lc-desc">Clinically approved and emerging adjuvants — mechanisms, immune profiles (Th1/Th2/CD8), dose ranges, and approved vaccine pairings.</p>
+        <a href="vaccine_kb_data.html#adjuvants" class="lc-link">Browse adjuvants →</a>
+      </div>
+    </div>
+
+    <!-- SUBMIT INQUIRY -->
+    <h2 id="submit"><span class="h2-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg></span>Submit Inquiry</h2>
+    <p>Tell us about your target antigen, disease indication, and vaccine goals. We will provide a tailored EpiDesignCore proposal within 1–2 business days.</p>
+
+    <div class="form-section">
+      <form id="inquiry-form" action="https://formspree.io/f/mnjblezr" method="POST">
+        <input type="hidden" name="_subject" value="InSynBio Vaccine Design Inquiry">
+        <input type="hidden" name="_next" value="https://insynbio.com/thanks.html">
+
+        <h3 style="margin-top:0;margin-bottom:20px;">Project Details</h3>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Disease Category *</label>
+            <select name="disease_type" required>
+              <option value="" disabled selected>Select…</option>
+              <option value="cancer_neo">Cancer — Personalized Neoantigen</option>
+              <option value="cancer_taa">Cancer — Shared TAA</option>
+              <option value="infectious">Infectious Disease</option>
+              <option value="autoimmune">Autoimmune (Tolerogenic)</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Target Antigen / Mutation *</label>
+            <input type="text" name="target" placeholder="e.g., KRAS G12V, TP53 R175H, SARS-CoV-2 Spike" required>
+          </div>
+        </div>
+
+        <div class="form-group full">
+          <label>Service Modules Required</label>
+          <div class="check-group">
+            <div class="check-item"><input type="checkbox" name="services" id="sv1" value="neoantigen"><label for="sv1">Neoantigen Scanning</label></div>
+            <div class="check-item"><input type="checkbox" name="services" id="sv2" value="heteroclitic"><label for="sv2">Heteroclitic TAA Design</label></div>
+            <div class="check-item"><input type="checkbox" name="services" id="sv3" value="mrna"><label for="sv3">Multi-Epitope mRNA Design</label></div>
+            <div class="check-item"><input type="checkbox" name="services" id="sv4" value="pmhc_tcr"><label for="sv4">pMHC-TCR Peptide Design</label></div>
+            <div class="check-item"><input type="checkbox" name="services" id="sv5" value="full"><label for="sv5">Full Pipeline</label></div>
+            <div class="check-item"><input type="checkbox" name="services" id="sv_other" value="other"><label for="sv_other">Other / Custom</label></div>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label>HLA Type (if known)</label>
+            <input type="text" name="hla_type" placeholder="e.g., HLA-A*02:01, HLA-A*24:02, DR*01:01">
+          </div>
+          <div class="form-group">
+            <label>Delivery Platform Preference</label>
+            <select name="delivery">
+              <option value="" disabled selected>Select…</option>
+              <option value="mrna_lnp">mRNA-LNP</option>
+              <option value="peptide">Synthetic Peptide</option>
+              <option value="viral_vector">Viral Vector (Ad/MVA/AAV)</option>
+              <option value="dna">DNA Vaccine</option>
+              <option value="protein">Recombinant Protein / VLP</option>
+              <option value="undecided">Not yet decided</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group full">
+          <label for="vaccine_message">Additional context (e.g., mutation data, HLA coverage goals, prior trial data)</label>
+          <textarea id="vaccine_message" name="message" placeholder="Describe your vaccine project goals and any constraints…" style="min-height:100px;"></textarea>
+        </div>
+
+        <h3 style="margin-top:24px;margin-bottom:20px;">Contact Information</h3>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="fname">First Name *</label>
+            <input type="text" id="fname" name="fname" required>
+          </div>
+          <div class="form-group">
+            <label for="lname">Last Name *</label>
+            <input type="text" id="lname" name="lname" required>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="org">Organization *</label>
+            <input type="text" id="org" name="org" required>
+          </div>
+          <div class="form-group">
+            <label for="email">Email *</label>
+            <input type="email" id="email" name="email" required>
+          </div>
+        </div>
+        <div class="form-group full" style="margin-top:16px;">
+          <div class="check-group">
+            <div class="check-item">
+              <input type="checkbox" name="newsletter" id="newsletter" value="yes">
+              <label for="newsletter">Join mailing list for updates on vaccine design tools and evidence releases</label>
+            </div>
+          </div>
+        </div>
+        <div style="margin-top:24px;">
+          <button type="submit" class="btn">Submit Inquiry</button>
+        </div>
+      </form>
+    </div>
+
+    <!-- CONTACT -->
+    <h2 id="contact"><span class="h2-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></span>Contact</h2>
+    <p>For project inquiries, submit the form above or email us directly:</p>
+    <p style="margin:16px 0;"><a href="mailto:contact@insynbio.com" style="font-size:18px;font-weight:600;color:var(--primary);">contact@insynbio.com</a></p>
+    <p style="color:var(--text-muted);font-size:14px;">We typically respond within 1–2 business days upon receiving your inquiry.</p>
+
+  </main>
+</div>
+
+<footer class="site-footer">
+  <p style="margin:0;">© 2026 InSynBio · <a href="https://insynbio.com">insynbio.com</a> · <a href="mailto:contact@insynbio.com">contact@insynbio.com</a></p>
+</footer>
+
+<script>
+document.querySelectorAll('.top-header-nav a').forEach(a => {
+  a.addEventListener('click', () => { document.querySelector('.top-header-nav').classList.remove('open'); });
+});
+
+document.querySelectorAll('.nav-link').forEach(a => {
+  a.addEventListener('click', function(e) {
+    e.preventDefault();
+    const id = this.getAttribute('href').slice(1);
+    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+    document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+    this.classList.add('active');
+  });
+});
+
+const sectionIds = ['platform','neoantigen','heteroclitic','mrna','pmhc-tcr','evidence','example','submit','contact'];
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if(!entry.isIntersecting) return;
+    const id = entry.target.id;
+    document.querySelectorAll('.nav-link').forEach(a => {
+      a.classList.toggle('active', a.getAttribute('href') === '#'+id);
+    });
+  });
+}, { rootMargin: '-20% 0px -60% 0px' });
+sectionIds.forEach(id => { const el = document.getElementById(id); if(el) observer.observe(el); });
+
+// Fetch epitope count from data file
+fetch('vaccine_kb_data.json').then(r => r.json()).then(data => {
+  let n = 0;
+  (data.taa||[]).forEach(t => { n += (t.known_epitopes_mhc1||[]).length + (t.known_epitopes_mhc2||[]).length; });
+  (data.infectious||[]).forEach(a => { n += (a.known_epitopes_mhc1||[]).length + (a.known_epitopes_mhc2||[]).length; });
+  const el = document.getElementById('epitopeCountBadge');
+  if(el && n > 0) el.textContent = n + ' epitopes';
+}).catch(() => {});
+
+// Form submission
+const form = document.getElementById('inquiry-form');
+if(form) {
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    const btn = form.querySelector('button[type="submit"]');
+    const orig = btn.innerText;
+    btn.disabled = true; btn.innerText = 'Submitting…';
+    fetch(form.action, {
+      method: 'POST', body: new FormData(form),
+      headers: { 'Accept': 'application/json' }
+    }).then(r => {
+      if(r.ok) { window.location.href = 'thanks.html'; }
+      else { alert('Oops! There was a problem submitting your form.'); btn.disabled=false; btn.innerText=orig; }
+    }).catch(() => { alert('Oops! There was a problem submitting your form.'); btn.disabled=false; btn.innerText=orig; });
+  });
+}
+</script>
+</body>
+</html>

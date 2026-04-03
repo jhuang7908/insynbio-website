@@ -1,0 +1,992 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Case Study: Bispecific Coronavirus Nanobody Expression Engineering | InSynBio</title>
+  <meta name="description" content="How InSynBio's SmartLink™ and VirtualCMC pipeline diagnosed pI-driven ER retention in a dual-coronavirus VHH bispecific and rescued yeast expression through arm selection and charged-linker design.">
+  <meta name="keywords" content="bispecific VHH, nanobody, yeast expression, pI engineering, SmartLink, CMC, coronavirus, MERS, SARS, VHH-GS-VHH, isoelectric point, linker optimization, InSynBio">
+  <meta name="robots" content="index, follow">
+  <meta name="robots" content="noai, noimageai">
+  <meta name="AI-Training" content="opt-out">
+  <link rel="canonical" href="https://www.insynbio.com/case_bispecific_vhh_expression_optimization.html">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.insynbio.com/case_bispecific_vhh_expression_optimization.html">
+  <meta property="og:title" content="Bispecific VHH Expression Optimization | InSynBio Case Study">
+  <meta property="og:description" content="Resolving low yeast expression in a dual-coronavirus VHH bispecific through pI engineering and arm selection.">
+  <meta property="og:image" content="https://www.insynbio.com/images/hero-bg.svg">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/lucide@0.378.0/dist/umd/lucide.min.js"></script>
+  <style>
+    :root {
+      --primary: #0d9488; --primary-dark: #0f766e; --primary-light: #5eead4;
+      --accent: #f59e0b; --accent-red: #ef4444;
+      --text: #111827; --text-muted: #4b5563;
+      --border: #e5e7eb; --bg: #f9fafb; --bg-white: #ffffff;
+      --success: #16a34a; --warn: #d97706;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text);
+      line-height: 1.7; -webkit-font-smoothing: antialiased; padding-top: 72px; }
+
+    /* ─── HEADER ─── */
+    .top-header { display: flex; align-items: center; justify-content: space-between;
+      padding: 12px 32px; background: rgba(255,255,255,0.95); backdrop-filter: blur(12px);
+      border-bottom: 2px solid rgba(13,148,136,0.1); position: fixed; width: 100%;
+      top: 0; z-index: 2000; gap: 12px; flex-wrap: wrap; }
+    .top-header .brand { display: flex; align-items: center; }
+    .top-header .brand a { text-decoration: none; display: flex; align-items: center; gap: 10px;
+      font-family: 'Cormorant Garamond', serif; font-weight: 700; font-size: 26px; color: #111827; }
+    .top-header .slogan { font-size: 14px; color: var(--text-muted); padding-left: 14px;
+      border-left: 1px solid var(--border); margin-left: 14px; font-weight: 600;
+      letter-spacing: 0.02em; white-space: nowrap; }
+    .top-header-nav { display: flex; align-items: center; gap: 6px; }
+    .top-header-nav a { padding: 8px 16px; font-size: 15px; color: var(--text-muted);
+      text-decoration: none; border-radius: 20px; transition: all 0.2s; font-weight: 600; }
+    .top-header-nav a:hover { color: var(--primary); background: rgba(13,148,136,0.06); }
+    .nav-dropdown { position: relative; }
+    .nav-dropdown > a::after { content: ' ▾'; font-size: 10px; opacity: 0.6; }
+    .dropdown-menu { position: absolute; top: 100%; left: 50%;
+      transform: translateX(-50%) translateY(10px); min-width: 240px; background: #fff;
+      border: 1px solid rgba(0,0,0,0.06); border-radius: 12px; padding: 10px;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.1); opacity: 0; visibility: hidden;
+      transition: all 0.2s; z-index: 2001; }
+    .nav-dropdown:hover .dropdown-menu { opacity: 1; visibility: visible; transform: translateX(-50%) translateY(0); }
+    .dropdown-menu a { display: block; padding: 12px 14px; color: var(--text); border-radius: 8px;
+      text-decoration: none; text-align: left; }
+    .dropdown-menu a:hover { background: #f9fafb; }
+    .menu-title { display: block; font-weight: 700; font-size: 14px; color: #111827; margin-bottom: 2px; }
+    .menu-desc { display: block; font-size: 12px; color: #6b7280; font-weight: 400; }
+
+    /* ─── HERO ─── */
+    .case-hero { background: url('images/hero-bg.svg') center/cover no-repeat, linear-gradient(135deg, #0d4a44 0%, #0d7a70 55%, #0d9488 100%);
+      padding: 80px 32px 100px; text-align: center; }
+    .hero-inner { max-width: 820px; margin: 0 auto; }
+    .hero-badge { display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.2);
+      color: #a7f3d0; padding: 6px 16px; border-radius: 20px;
+      font-size: 12px; font-weight: 700; letter-spacing: 1.5px;
+      text-transform: uppercase; margin-bottom: 24px; }
+    .case-hero h1 { font-family: 'Cormorant Garamond', serif; font-size: 52px; font-weight: 700;
+      line-height: 1.1; color: #fff; margin-bottom: 20px; letter-spacing: -0.02em; }
+    .case-hero h1 em { color: #6ee7b7; font-style: italic; }
+    .case-hero .subtitle { font-size: 18px; color: #a7f3d0; max-width: 600px;
+      margin: 0 auto 40px; }
+    .hero-stats { display: flex; justify-content: center; flex-wrap: wrap;
+      background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 16px; padding: 24px 32px; max-width: 700px; margin: 0 auto; }
+    .hero-stat { flex: 1; min-width: 120px; padding: 8px 16px; text-align: center;
+      border-right: 1px solid rgba(255,255,255,0.12); }
+    .hero-stat:last-child { border-right: none; }
+    .hero-stat .val { font-size: 28px; font-weight: 800; color: #fff;
+      line-height: 1; margin-bottom: 4px; }
+    .hero-stat .val.green { color: #6ee7b7; }
+    .hero-stat .lbl { font-size: 11px; color: #6ee7b7; font-weight: 600;
+      text-transform: uppercase; letter-spacing: 0.5px; }
+
+    /* ─── LAYOUT ─── */
+    .page-body { padding: 64px 20px 80px; }
+    .container { max-width: 1000px; margin: 0 auto; }
+    section.section { padding: 60px 0; border-top: 1px solid var(--border); }
+    section.section:first-child { border-top: none; padding-top: 0; }
+
+    /* ─── SECTION TITLES ─── */
+    .section-label { display: inline-block; background: rgba(13,148,136,0.08);
+      color: var(--primary); padding: 5px 14px; border-radius: 20px;
+      font-size: 11px; font-weight: 700; letter-spacing: 1.5px;
+      text-transform: uppercase; margin-bottom: 12px; }
+    h2.section-title { font-family: 'Cormorant Garamond', serif; font-size: 36px;
+      font-weight: 700; color: var(--text); margin-bottom: 10px; line-height: 1.15; }
+    h2.section-title span { color: var(--primary); }
+    .section-intro { font-size: 16px; color: var(--text-muted); margin-bottom: 36px; max-width: 680px; }
+
+    /* ─── CARDS ─── */
+    .card { background: var(--bg-white); border: 1px solid var(--border);
+      border-radius: 16px; padding: 32px; box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+      margin-bottom: 24px; transition: transform 0.2s, box-shadow 0.2s; }
+    .card:hover { transform: translateY(-3px); box-shadow: 0 8px 28px rgba(0,0,0,0.09); }
+    .card h3 { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 700;
+      color: var(--text); margin-bottom: 12px; }
+    .card p { font-size: 15px; color: var(--text-muted); margin-bottom: 0; line-height: 1.7; }
+    .card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px; margin: 32px 0; }
+
+    /* ─── TIMELINE ─── */
+    .timeline { position: relative; padding-left: 32px; margin: 32px 0; }
+    .timeline::before { content: ''; position: absolute; left: 8px; top: 0; bottom: 0;
+      width: 2px; background: linear-gradient(to bottom, var(--primary), var(--primary-light));
+      border-radius: 2px; }
+    .tl-item { position: relative; margin-bottom: 28px; }
+    .tl-item::before { content: ''; position: absolute; left: -28px; top: 6px;
+      width: 12px; height: 12px; border-radius: 50%; background: var(--primary);
+      border: 2px solid white; box-shadow: 0 0 0 3px rgba(13,148,136,0.2); }
+    .tl-step { font-size: 12px; font-weight: 700; color: var(--primary);
+      letter-spacing: 1px; margin-bottom: 3px; text-transform: uppercase; }
+    .tl-text { font-size: 15px; color: var(--text-muted); }
+    .tl-text strong { color: var(--text); }
+
+    /* ─── FLOW ─── */
+    .flow { display: flex; align-items: stretch; justify-content: center;
+      gap: 0; flex-wrap: nowrap; margin: 32px 0; overflow-x: auto; }
+    .flow-step { background: linear-gradient(135deg, rgba(13,148,136,0.08), rgba(94,234,212,0.06));
+      border: 1px solid rgba(13,148,136,0.2); border-radius: 12px; padding: 14px 12px;
+      text-align: center; min-width: 110px; flex: 1;
+      transition: transform 0.2s, box-shadow 0.2s; }
+    .flow-step:hover { transform: translateY(-3px); box-shadow: 0 8px 20px rgba(13,148,136,0.18); }
+    .flow-step .icon { font-size: 22px; width: 40px; height: 40px;
+      background: rgba(13,148,136,0.1); border-radius: 10px;
+      margin: 0 auto 8px; display: flex; align-items: center; justify-content: center; }
+    .flow-step .label { font-size: 11px; font-weight: 700; color: var(--primary);
+      text-transform: uppercase; letter-spacing: 0.8px; }
+    .flow-step .sub { font-size: 10.5px; color: var(--text-muted); margin-top: 3px; }
+    .flow-arrow { color: var(--primary); font-size: 20px; padding: 0 8px; opacity: 0.5;
+      align-self: center; flex-shrink: 0; }
+
+    /* ─── METRICS GRID ─── */
+    .metrics-grid { display: grid; grid-template-columns: repeat(4, 1fr);
+      gap: 12px; margin: 28px 0; }
+    .metric-card { background: var(--bg-white); border: 1px solid var(--border);
+      border-radius: 14px; padding: 22px; text-align: center;
+      transition: transform 0.2s, box-shadow 0.2s; }
+    .metric-card:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(0,0,0,0.08); }
+    .metric-card .metric-val { font-family: 'Cormorant Garamond', serif;
+      font-size: 36px; font-weight: 700; color: var(--primary);
+      line-height: 1; margin-bottom: 6px; }
+    .metric-card .metric-val.warn { color: var(--warn); }
+    .metric-card .metric-val.pass { color: var(--success); }
+    .metric-card .metric-val.neg  { color: var(--accent-red); }
+    .metric-card .metric-label { font-size: 12px; color: var(--text-muted);
+      font-weight: 600; text-transform: uppercase; letter-spacing: 0.8px; }
+    .metric-card .metric-sub { font-size: 11px; color: #9ca3af; margin-top: 4px; }
+
+    /* ─── TABLES ─── */
+    .table-wrap { overflow-x: auto; margin: 24px 0; border-radius: 12px;
+      box-shadow: 0 0 0 1px var(--border); }
+    table { width: 100%; border-collapse: collapse; font-size: 14px; }
+    th { background: #064e3b; color: white; padding: 14px 16px; text-align: left;
+      font-weight: 600; font-size: 12px; letter-spacing: 0.05em; text-transform: uppercase; }
+    th.center, td.center { text-align: center; }
+    td { padding: 12px 16px; border-bottom: 1px solid #f3f4f6;
+      color: var(--text-muted); vertical-align: middle; }
+    tr:last-child td { border-bottom: none; }
+    tr:nth-child(even) td { background: #fafafa; }
+    tbody tr:hover td { background: #f0fdfa !important; }
+    tr.highlight td { background: #f0fdf4 !important; font-weight: 600; }
+    tr.highlight td:first-child { border-left: 3px solid var(--primary); }
+    tr.dim td { opacity: 0.6; }
+    .badge { display: inline-block; padding: 3px 10px; border-radius: 10px;
+      font-size: 11px; font-weight: 700; }
+    .badge.pass { background: #dcfce7; color: #16a34a; }
+    .badge.warn { background: #fef3c7; color: #d97706; }
+    .badge.fail { background: #fee2e2; color: #dc2626; }
+    .badge.info { background: #dbeafe; color: #1d4ed8; }
+    .badge.best { background: rgba(13,148,136,0.1); color: var(--primary-dark); }
+    td strong { color: var(--text); }
+    .star-row { color: #f59e0b; letter-spacing: -2px; }
+
+    /* ─── COMPARE ─── */
+    .compare-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin: 28px 0; }
+    .compare-col { border-radius: 14px; padding: 28px; }
+    .compare-col.before { background: #fff7ed; border: 1.5px solid #fed7aa; }
+    .compare-col.after  { background: linear-gradient(135deg, rgba(13,148,136,0.06),
+      rgba(94,234,212,0.04)); border: 1.5px solid rgba(13,148,136,0.25); }
+    .compare-col h4 { font-size: 13px; font-weight: 700; margin-bottom: 16px;
+      text-transform: uppercase; letter-spacing: 0.8px; }
+    .compare-col.before h4 { color: #92400e; }
+    .compare-col.after  h4 { color: var(--primary-dark); }
+    .compare-row { display: flex; justify-content: space-between; align-items: center;
+      padding: 10px 0; border-bottom: 1px solid rgba(0,0,0,0.06); font-size: 14px; }
+    .compare-row:last-child { border-bottom: none; }
+    .compare-row .key { color: var(--text-muted); font-size: 13px; }
+    .compare-row .val { font-weight: 700; color: var(--text); }
+    .compare-row .val.green { color: var(--success); }
+    .compare-row .val.red   { color: var(--accent-red); }
+    .compare-row .val.amber { color: var(--warn); }
+
+    /* ─── ALERT BOXES ─── */
+    .alert { border-radius: 10px; padding: 16px 20px; margin: 16px 0; font-size: 14px; }
+    .alert.insight { background: rgba(13,148,136,0.05); border-left: 4px solid var(--primary);
+      color: var(--text); }
+    .alert.warning { background: #fffbeb; border-left: 4px solid #f59e0b; color: #92400e; }
+    .alert.discovery { background: #f0fdf4; border-left: 4px solid #16a34a; color: #14532d; }
+    .alert b { font-weight: 700; }
+
+    /* ─── QA ITEMS ─── */
+    .qa-grid { display: grid; grid-template-columns: repeat(2, 1fr);
+      gap: 16px; margin: 24px 0; }
+    .qa-item { display: flex; align-items: flex-start; gap: 14px;
+      background: var(--bg-white); border: 1px solid var(--border);
+      border-radius: 12px; padding: 18px; transition: transform 0.2s, box-shadow 0.2s; }
+    .qa-item:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,0.07); }
+    .qa-icon { flex-shrink: 0; width: 36px; height: 36px;
+      background: rgba(13,148,136,0.08); border-radius: 8px;
+      display: flex; align-items: center; justify-content: center; }
+    .qa-text h4 { font-size: 14px; font-weight: 700; color: var(--text); margin-bottom: 4px; }
+    .qa-text p { font-size: 13px; color: var(--text-muted); margin: 0; line-height: 1.5; }
+
+    /* ─── LINKER CARDS ─── */
+    .linker-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin: 24px 0; }
+    .lk-card { background: var(--bg-white); border: 1px solid var(--border);
+      border-radius: 12px; padding: 18px; text-align: center;
+      transition: transform 0.2s, box-shadow 0.2s; }
+    .lk-card:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,0.07); }
+    .lk-card.recommended { border: 2px solid var(--primary);
+      background: linear-gradient(135deg, rgba(13,148,136,0.06), rgba(94,234,212,0.04)); }
+    .lk-card.rejected { opacity: 0.6; background: #fafafa; }
+    .lk-name { font-weight: 700; font-size: 13px; color: var(--text); margin-bottom: 4px; }
+    .lk-seq  { font-family: 'Consolas', monospace; font-size: 10px; color: var(--text-muted);
+      margin-bottom: 10px; word-break: break-all; background: #f8fafc;
+      border-radius: 4px; padding: 4px 6px; }
+    .lk-pi   { font-family: 'Cormorant Garamond', serif; font-size: 32px;
+      font-weight: 700; line-height: 1; margin-bottom: 2px; }
+    .lk-pi.good { color: var(--success); }
+    .lk-pi.warn { color: var(--warn); }
+    .lk-pi.bad  { color: var(--accent-red); }
+    .lk-note { font-size: 11px; font-weight: 600; margin-top: 6px; }
+    .lk-note.rec  { color: var(--primary); }
+    .lk-note.rej  { color: var(--accent-red); }
+
+    /* ─── RESULT BANNER ─── */
+    .result-banner { background: linear-gradient(135deg, #0f766e, #0d9488);
+      border-radius: 16px; padding: 48px 40px; text-align: center; color: white; margin: 40px 0; }
+    .result-banner h3 { font-family: 'Cormorant Garamond', serif; font-size: 16px;
+      font-weight: 600; letter-spacing: 2px; text-transform: uppercase;
+      opacity: 0.8; margin-bottom: 20px; }
+    .result-kpis { display: flex; justify-content: center; flex-wrap: wrap; gap: 32px; margin-bottom: 24px; }
+    .result-kpi .k-val { font-family: 'Cormorant Garamond', serif; font-size: 56px;
+      font-weight: 700; color: #6ee7b7; line-height: 1; }
+    .result-kpi .k-label { font-size: 12px; color: rgba(255,255,255,0.75);
+      text-transform: uppercase; letter-spacing: 0.8px; margin-top: 4px; }
+    .result-banner p { font-size: 15px; opacity: 0.9; max-width: 580px; margin: 0 auto; }
+
+    /* ─── blockquote ─── */
+    blockquote { border-left: 4px solid var(--primary); padding: 18px 24px;
+      background: rgba(13,148,136,0.04); border-radius: 0 12px 12px 0;
+      font-style: italic; color: var(--text-muted); margin: 28px 0; font-size: 15px; }
+    blockquote cite { font-style: normal; font-size: 12px; color: #9ca3af;
+      display: block; margin-top: 8px; }
+
+    /* ─── CTA ─── */
+    .cta-section { background: linear-gradient(150deg, #022c22 0%, #064e3b 50%, #065f46 100%);
+      border-radius: 20px; padding: 64px 40px; text-align: center; margin-top: 64px; color: white; }
+    .cta-section h2 { font-family: 'Cormorant Garamond', serif; font-size: 38px;
+      margin-bottom: 12px; color: white; }
+    .cta-section h2 span { color: #6ee7b7; }
+    .cta-section p { color: rgba(255,255,255,0.85); max-width: 500px;
+      margin: 0 auto 28px; font-size: 16px; }
+    .btn-row { display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; }
+    .btn { display: inline-flex; align-items: center; gap: 8px; padding: 14px 28px;
+      border-radius: 8px; font-size: 15px; font-weight: 700; text-decoration: none;
+      transition: all 0.25s; }
+    .btn-primary { background: white; color: var(--primary-dark);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.2); }
+    .btn-primary:hover { background: #f0fdf4; transform: translateY(-2px); }
+    .btn-secondary { background: transparent; color: white; border: 1.5px solid rgba(255,255,255,0.5); }
+    .btn-secondary:hover { background: rgba(255,255,255,0.1); border-color: white; transform: translateY(-2px); }
+
+    /* ─── FOOTER ─── */
+    .site-footer { padding: 32px 20px; text-align: center; font-size: 13px;
+      color: #9ca3af; background: #111827; }
+    .site-footer a { color: #6b7280; text-decoration: none; }
+    .site-footer a:hover { color: var(--primary); }
+    .section-divider { border: none; border-top: 1px solid var(--border); margin: 0; }
+
+    /* ─── REVEAL ─── */
+    .reveal { opacity: 0; transform: translateY(24px);
+      transition: all 0.7s cubic-bezier(0.16,1,0.3,1); }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 768px) {
+      .case-hero h1 { font-size: 36px; }
+      .hero-stats { flex-direction: column; }
+      .hero-stat { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.1); }
+      .compare-grid { grid-template-columns: 1fr; }
+      .flow { flex-wrap: wrap; }
+      .flow-step { flex: 1 1 40%; }
+      .flow-arrow { display: none; }
+      .metrics-grid { grid-template-columns: repeat(2, 1fr); }
+      .linker-grid { grid-template-columns: repeat(2, 1fr); }
+      .qa-grid { grid-template-columns: 1fr; }
+      .container { padding: 0 16px; }
+      .result-kpis { gap: 20px; }
+    }
+    @media (max-width: 600px) {
+      .top-header { padding: 12px 16px; flex-wrap: wrap; gap: 10px; }
+      .top-header-nav { order: 3; width: 100%; flex-wrap: wrap; gap: 4px;
+        border-top: 1px solid var(--border); padding-top: 8px; margin-top: 2px; }
+      .top-header-nav a { font-size: 13px; padding: 6px 10px; }
+      .case-hero h1 { font-size: 28px; }
+      .metrics-grid { grid-template-columns: 1fr 1fr; }
+      .linker-grid { grid-template-columns: 1fr 1fr; }
+      h2.section-title { font-size: 28px; }
+      .card { padding: 20px; }
+      .cta-section { padding: 36px 20px; }
+      .result-kpi .k-val { font-size: 40px; }
+    }
+  </style>
+  <meta name="citation_title" content="Engineering Expression Recovery of a Dual-Coronavirus Bispecific VHH via pI Optimization and Charged-Linker Design">
+  <meta name="citation_author" content="InSynBio">
+  <meta name="citation_publisher" content="InSynBio">
+  <meta name="citation_online_date" content="2026/01/15">
+  <meta name="citation_publication_date" content="2026/01/15">
+  <meta name="citation_language" content="en">
+  <meta name="citation_abstract_html_url" content="https://www.insynbio.com/case_bispecific_vhh_expression_optimization.html">
+</head>
+<body>
+
+<!-- ─── HEADER ─── -->
+<header class="top-header">
+  <div class="brand">
+    <a href="index.html">
+      <svg width="34" height="28" viewBox="0 0 32 30" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink:0;">
+          <path d="M16 2L2 10V22L16 28L30 22V10L16 2Z" fill="#0d9488" fill-opacity="0.05" stroke="#0d9488" stroke-width="1" stroke-opacity="0.3"/>
+          <path d="M14.5 24 V 16" stroke="#0d9488" stroke-width="2.5" stroke-linecap="round"/>
+          <path d="M17.5 24 V 16" stroke="#f59e0b" stroke-width="2.5" stroke-linecap="round"/>
+          <line x1="13" y1="19" x2="19" y2="19" stroke="#9ca3af" stroke-width="1.5" stroke-linecap="round"/>
+          <line x1="13" y1="21" x2="19" y2="21" stroke="#9ca3af" stroke-width="1.5" stroke-linecap="round"/>
+          <path d="M14.5 16 L 8 7" stroke="#0d9488" stroke-width="2.5" stroke-linecap="round"/>
+          <path d="M10 16 L 3.5 7" stroke="#2dd4bf" stroke-width="2.5" stroke-linecap="round"/>
+          <path d="M17.5 16 L 24 7" stroke="#f59e0b" stroke-width="2.5" stroke-linecap="round"/>
+          <rect x="21.5" y="3.5" width="5" height="5" rx="1" fill="#f59e0b" transform="rotate(45 24 6)"/>
+        </svg>
+      <span><span style="color:#111827">In</span><span style="color:var(--primary);font-style:italic">Syn</span><span style="color:#111827">Bio</span></span>
+    </a>
+    <span class="slogan">AI for Life Sciences</span>
+  </div>
+  <nav class="top-header-nav">
+    <a href="index.html">Home</a>
+    <a href="index.html#about">About Us</a>
+    <div class="nav-dropdown" tabindex="0">
+      <a href="index.html#services">Services</a>
+      <div class="dropdown-menu">
+        <a href="InSynBio_Antibody_Developability_Assessment_Page.html">
+          <span class="menu-title">Antibody CMC</span>
+          <span class="menu-desc">Structure-based Developability</span>
+        </a>
+        <a href="InSynBio_CART_Design_Page.html">
+          <span class="menu-title">CAR-T Design</span>
+          <span class="menu-desc">Smart CAR-T Engineering</span>
+        </a>
+        <a href="InSynBio_Bispecific_Antibody_Design_Page.html">
+          <span class="menu-title">Bispecific</span>
+          <span class="menu-desc">Multispecific Engineering</span>
+        </a>
+        <a href="immunogenicity_study.html">
+          <span class="menu-title">Immunogenicity</span>
+          <span class="menu-desc">ADA Prediction &amp; Reference DB</span>
+        </a>
+      </div>
+    </div>
+    <a href="index.html#cases">Case Studies</a>
+    <a href="index.html#contact">Contact</a>
+  </nav>
+</header>
+
+<!-- ─── HERO ─── -->
+<section class="case-hero">
+  <div class="hero-inner">
+    <div class="hero-badge">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+      Case Study &nbsp;·&nbsp; Bispecific VHH Engineering
+    </div>
+    <h1>Engineering a <em>High-Expression</em><br>Bispecific Coronavirus Nanobody</h1>
+    <p class="subtitle">Diagnosing pI-driven ER retention and rescuing yeast secretion via arm selection and charged-linker engineering.</p>
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <div class="val green">↓1.09</div>
+        <div class="lbl">pI Reduction</div>
+      </div>
+      <div class="hero-stat">
+        <div class="val green">↓4.0</div>
+        <div class="lbl">Net Charge Units</div>
+      </div>
+      <div class="hero-stat">
+        <div class="val green">4.8×</div>
+        <div class="lbl">Cross-CoV Activity ↑</div>
+      </div>
+      <div class="hero-stat">
+        <div class="val">12</div>
+        <div class="lbl">VHH Variants Analyzed</div>
+      </div>
+      <div class="hero-stat">
+        <div class="val">VHH42</div>
+        <div class="lbl">CMC Reference (n=42)</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── BODY ─── -->
+<div class="page-body">
+<div class="container">
+
+  <section class="section reveal" style="border-top:none; padding-top:0;">
+    <span class="section-label">Executive Summary</span>
+    <h2 class="section-title">Diagnosing pI-Driven ER Retention, <span>Rescuing Yeast Expression</span></h2>
+    <p class="section-intro">A 3-minute overview of the problem, approach, and outcome.</p>
+    <div class="card-grid" style="grid-template-columns: repeat(3, 1fr);">
+      <div class="card" style="border-left: 4px solid #ef4444; transform:none;">
+        <h3>The Challenge</h3>
+        <p>A client's bispecific VHH–GS–VHH construct targeting both <strong>MERS-CoV and SARS-CoV-1</strong> showed potent dual neutralization in vitro — but failed in <strong>Pichia pastoris</strong> yeast expression. The secreted yield was too low for manufacturing scale-up, and the root cause was unknown.</p>
+      </div>
+      <div class="card" style="border-left: 4px solid var(--primary); transform:none;">
+        <h3>Our Approach</h3>
+        <p>InSynBio's <strong>SmartLink™ + VirtualCMC</strong> pipeline: systematic analysis of 12 VHH variants across pI, net charge, hydrophobicity, and linker composition. Diagnosed <strong>pI-driven ER retention</strong> as the bottleneck — the fusion's high pI caused aggregation in the yeast secretory pathway. Designed charged-linker alternatives to rescue secretion.</p>
+      </div>
+      <div class="card" style="border-left: 4px solid #16a34a; transform:none;">
+        <h3>Key Outcome</h3>
+        <p>Reduced pI by <strong>1.09 units</strong> and net charge by <strong>4.0 units</strong> through arm selection + charged-linker engineering. Achieved <strong>4.8× improvement</strong> in cross-coronavirus neutralization activity. Expression rescued with no loss of binding function — ready for manufacturing scale-up.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- OVERVIEW -->
+  <section class="section reveal">
+    <div class="section-label">Background</div>
+    <h2 class="section-title">A Potent Format, a Persistent <span>Expression Bottleneck</span></h2>
+    <p class="section-intro">The client developed a VHH-GS-VHH bispecific nanobody targeting two distinct coronavirus spike proteins. Despite confirmed dual neutralization activity in monovalent format, the fused construct showed consistently low expression yield in yeast — limiting downstream development.</p>
+
+    <div class="card-grid">
+      <div class="card">
+        <h3>🎯 Project Objective</h3>
+        <p>Diagnose the molecular basis of low yeast expression in a VHH-GS-VHH bispecific fusion and provide a sequence-level engineering solution that preserves — or improves — broad coronavirus neutralization activity.</p>
+      </div>
+      <div class="card">
+        <h3>🧬 Format</h3>
+        <p>Bispecific nanobody: <strong>αCoV-A VHH — (G₄S)₃ linker — αCoV-B VHH</strong>. Two humanized VHH arms from independent anti-coronavirus programs, fused via a flexible glycine-serine linker. Expressed in yeast (<em>Pichia pastoris</em> / <em>S. cerevisiae</em>).</p>
+      </div>
+      <div class="card">
+        <h3>📦 Input Data</h3>
+        <p>Multiple humanized VHH variants for each arm, with full sequences and pseudovirus neutralization IC50/IC90 data across a panel of viral variant strains. All molecular identifiers and sequence data are confidential.</p>
+      </div>
+    </div>
+
+    <div class="alert warning">
+      <b>Client Constraint:</b> Target identities, sequences, and proprietary assay details are confidential. All molecular names are anonymized as αCoV-A / αCoV-B; individual variant designators have been removed. This case study presents methodology and anonymized numeric results only.
+    </div>
+  </section>
+
+  <!-- PIPELINE -->
+  <section class="section reveal">
+    <div class="section-label">Methodology</div>
+    <h2 class="section-title">InSynBio <span>SmartLink™ + VirtualCMC</span> Pipeline</h2>
+    <p class="section-intro">A four-stage computational workflow was applied: sequence-level CMC audit of individual VHH arms, root-cause identification for low expression, cross-activity-CMC pairing analysis, and charged-linker engineering.</p>
+
+    <div class="flow">
+      <div class="flow-step">
+        <div class="icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg></div>
+        <div class="label">Sequence Input</div>
+        <div class="sub">12 humanized VHH sequences verified against source</div>
+      </div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">
+        <div class="icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg></div>
+        <div class="label">VHH CMC Audit</div>
+        <div class="sub">15 metrics vs VHH42 reference (n=42)</div>
+      </div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">
+        <div class="icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2"><path d="M12 20V10M18 20V4M6 20v-4"/></svg></div>
+        <div class="label">Fusion CMC</div>
+        <div class="sub">pI matrix: 6 combos × 4 linker designs</div>
+      </div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">
+        <div class="icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg></div>
+        <div class="label">SmartLink™</div>
+        <div class="sub">Charged linker design to lower fusion pI</div>
+      </div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">
+        <div class="icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div>
+        <div class="label">Decision Report</div>
+        <div class="sub">Activity × CMC integrated recommendation</div>
+      </div>
+    </div>
+
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-step">Stage 1 — Individual VHH CMC</div>
+        <div class="tl-text">Computed 15 physicochemical metrics for all 12 VHH variants using <strong>BioPython ProteinAnalysis</strong> (pI, GRAVY, instability index, net charge) and sequence-pattern scanning (deamidation NG/NS motifs, isomerization DG/DS, oxidation M/W sites). Benchmarked against <strong>VHH42 clinical reference database</strong> (n=42 clinical/late-stage humanized nanobodies) using tent-function continuous ADI scoring.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-step">Stage 2 — Expression Root-Cause Analysis</div>
+        <div class="tl-text">All αCoV-A variants clustered at pI 8.99–9.01; the original αCoV-B arm showed pI = 8.59. The initial fusion (original arm pair + (G₄S)₃) computed to pI = 8.94, net charge <strong>+5.0 at pH 7</strong>. ER lumen pH ≈ 7.2; a construct with pI 8.94 retains a net positive charge of approximately +5 under ER conditions, promoting electrostatic adsorption to luminal chaperones (BiP/GRP78, calreticulin) and negatively charged membranes — the mechanistic basis for secretory pathway retention and subsequent ERAD-mediated degradation.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-step">Stage 3 — Arm Selection Optimization</div>
+        <div class="tl-text">Neutralization IC50/IC90 data across virus panels enabled rigorous arm selection. For αCoV-A, the selected variant uniquely achieved full breadth coverage (IC50 ≤ 0.037 µg/mL across all four tested strains) while runner-up variants lost potency against one or more strains. For αCoV-B, cross-coronavirus IC90 analysis revealed a &gt;4-fold potency differential between the selected and original variants — 0.025 µg/mL vs. 0.119 µg/mL on the critical cross-reactive strain.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-step">Stage 4 — SmartLink™ Charged Linker Engineering</div>
+        <div class="tl-text">Five linker designs were evaluated by sequence-level pI computation of the full fusion. Three C-terminal glutamate additions to (G₄S)₃ — yielding the <strong>(G₄S)₃+3E</strong> linker — reduced fusion pI by 0.95 units to 7.85 and net charge from +4.0 to +1.0. Critically, the commonly cited Whitlow linker was found to <em>increase</em> pI (to 8.93) due to its lysine content, and was rejected.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CMC ANALYSIS -->
+  <section class="section reveal">
+    <div class="section-label">CMC Analysis</div>
+    <h2 class="section-title">Individual VHH Developability <span>vs. Clinical Reference</span></h2>
+    <p class="section-intro">Each of the 12 VHH variants was evaluated across 15 CMC metrics. Percentile scoring against the VHH42 clinical reference reveals that high pI — not hydrophobicity or chemical liability — is the primary developability risk shared across both arms.</p>
+
+    <div class="metrics-grid">
+      <div class="metric-card">
+        <div class="metric-val warn">8.99–9.01</div>
+        <div class="metric-label">αCoV-A pI Range</div>
+        <div class="metric-sub">All 6 variants; VHH42 p50 = 8.62</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-val warn">7.00–8.59</div>
+        <div class="metric-label">αCoV-B pI Range</div>
+        <div class="metric-sub">Range 7.00–8.59 across panel</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-val pass">5</div>
+        <div class="metric-label">αCoV-A Oxidation Sites</div>
+        <div class="metric-sub">= VHH42 p50 (5.0) — acceptable</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-val warn">7</div>
+        <div class="metric-label">αCoV-B Oxidation Sites</div>
+        <div class="metric-sub">All variants; above VHH42 p75 (6.0)</div>
+      </div>
+    </div>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Arm / Variant</th>
+            <th class="center">pI</th>
+            <th class="center">Net Charge<br>@pH 7</th>
+            <th class="center">GRAVY</th>
+            <th class="center">Instability<br>Index</th>
+            <th class="center">Deamidation<br>Sites</th>
+            <th class="center">Oxidation<br>Sites</th>
+            <th class="center">ADI<br>Score</th>
+            <th class="center">CMC Rating</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td colspan="9" style="background:#f0fdfa;font-size:12px;font-weight:700;color:#065f46;padding:8px 16px;letter-spacing:.5px;">Target A Arm (αCoV-A) — representative variants</td></tr>
+          <tr class="highlight">
+            <td><strong>αCoV-A, Selected</strong> <span class="badge best">Recommended</span></td>
+            <td class="center"><span class="badge warn">8.99</span></td>
+            <td class="center">+2.8</td>
+            <td class="center">−0.291</td>
+            <td class="center">36.2</td>
+            <td class="center"><span class="badge warn">3</span></td>
+            <td class="center">5</td>
+            <td class="center">57.5</td>
+            <td class="center"><span class="badge warn">Moderate</span></td>
+          </tr>
+          <tr class="dim">
+            <td><strong>αCoV-A, Panel range</strong></td>
+            <td class="center"><span class="badge warn">8.99–9.01</span></td>
+            <td class="center">+2.8</td>
+            <td class="center">−0.26 ~ −0.32</td>
+            <td class="center">36–42</td>
+            <td class="center">2–3</td>
+            <td class="center">5</td>
+            <td class="center">56–61</td>
+            <td class="center"><span class="badge warn">Moderate</span></td>
+          </tr>
+          <tr><td colspan="9" style="background:#f0fdfa;font-size:12px;font-weight:700;color:#065f46;padding:8px 16px;letter-spacing:.5px;">Target B Arm (αCoV-B) — selected vs. original</td></tr>
+          <tr class="highlight">
+            <td><strong>αCoV-B, Selected</strong> <span class="badge best">Recommended</span></td>
+            <td class="center"><span class="badge pass">8.03</span></td>
+            <td class="center">+1.0</td>
+            <td class="center">−0.486</td>
+            <td class="center">39.0</td>
+            <td class="center">2</td>
+            <td class="center"><span class="badge warn">7</span></td>
+            <td class="center">54.5</td>
+            <td class="center"><span class="badge warn">Moderate</span></td>
+          </tr>
+          <tr>
+            <td><strong>αCoV-B, Original</strong> <span class="badge info">Pre-optimization</span></td>
+            <td class="center"><span class="badge warn">8.59</span></td>
+            <td class="center">+2.0</td>
+            <td class="center">−0.487</td>
+            <td class="center">38.3</td>
+            <td class="center">1</td>
+            <td class="center"><span class="badge warn">7</span></td>
+            <td class="center">54.6</td>
+            <td class="center"><span class="badge warn">Moderate</span></td>
+          </tr>
+          <tr><td colspan="9" style="background:#f8fafc;font-size:12px;font-weight:600;color:#6b7280;padding:8px 16px;">VHH42 Clinical Reference (n=42) — benchmark percentiles</td></tr>
+          <tr class="dim">
+            <td><strong>VHH42 p50 (median)</strong></td>
+            <td class="center">8.62</td>
+            <td class="center">+1.4</td>
+            <td class="center">−0.311</td>
+            <td class="center">38.1</td>
+            <td class="center">1.5</td>
+            <td class="center">5.0</td>
+            <td class="center">—</td>
+            <td class="center">—</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="font-size:12px;color:#9ca3af;margin-top:4px;">ADI: continuous tent-function score vs VHH42 reference (p50=100, p25/p75=75, p5/p95=40). "Panel range" row summarizes all αCoV-A variants evaluated; individual data withheld per client confidentiality agreement.</p>
+
+    <div class="alert insight">
+      <b>Key Insight:</b> All αCoV-A variants cluster tightly at pI 8.99–9.01, meaning arm selection within this panel is driven exclusively by activity breadth — the CMC profile is identical. For αCoV-B, the selected arm carries a pI 0.56 units lower than the original, providing both a direct CMC benefit and a significant fusion pI improvement.
+    </div>
+  </section>
+
+  <!-- ROOT CAUSE -->
+  <section class="section reveal">
+    <div class="section-label">Root Cause Analysis</div>
+    <h2 class="section-title">pI-Driven <span>ER Electrostatic Retention</span></h2>
+    <p class="section-intro">The original arm pairing fused with a standard (G₄S)₃ linker was screened for its full-fusion physicochemical profile. The results revealed a compounding charge problem that directly explains low secretion yield.</p>
+
+    <blockquote>
+      "When a protein's isoelectric point exceeds the pH of the secretory pathway lumen (~7.2 in the ER), it carries a net positive charge that promotes non-specific electrostatic adsorption to luminal chaperones and negatively charged membranes — slowing translocation, extending dwell time, and increasing susceptibility to ERAD-mediated degradation."
+      <cite>— InSynBio VirtualCMC Expression Module, mechanistic rationale</cite>
+    </blockquote>
+
+    <div class="compare-grid">
+      <div class="compare-col before">
+        <h4>⚠ Original Combination — Low Expression</h4>
+        <div class="compare-row"><span class="key">Construct</span><span class="val red">αCoV-A (original) + αCoV-B (original) + (G₄S)₃</span></div>
+        <div class="compare-row"><span class="key">Fusion pI</span><span class="val red">8.94</span></div>
+        <div class="compare-row"><span class="key">Net Charge @pH 7</span><span class="val red">+5.0</span></div>
+        <div class="compare-row"><span class="key">Full Length</span><span class="val">254 aa</span></div>
+        <div class="compare-row"><span class="key">ER Charge State</span><span class="val red">+5.0 (highly cationic)</span></div>
+        <div class="compare-row"><span class="key">Predicted Expression</span><span class="val red">Low — ER retained</span></div>
+        <div class="compare-row"><span class="key">αCoV-B Cross-CoV IC90</span><span class="val amber">0.119 µg/mL</span></div>
+      </div>
+      <div class="compare-col after">
+        <h4>✓ Optimized Combination — Predicted High Expression</h4>
+        <div class="compare-row"><span class="key">Construct</span><span class="val green">αCoV-A (selected) + αCoV-B (selected) + (G₄S)₃+3E</span></div>
+        <div class="compare-row"><span class="key">Fusion pI</span><span class="val green">7.85</span></div>
+        <div class="compare-row"><span class="key">Net Charge @pH 7</span><span class="val green">+1.0</span></div>
+        <div class="compare-row"><span class="key">Full Length</span><span class="val">257 aa (+3 aa)</span></div>
+        <div class="compare-row"><span class="key">ER Charge State</span><span class="val green">+1.0 (near-neutral)</span></div>
+        <div class="compare-row"><span class="key">Predicted Expression</span><span class="val green">Improved — below ER threshold</span></div>
+        <div class="compare-row"><span class="key">αCoV-B Cross-CoV IC90</span><span class="val green">0.025 µg/mL (4.8× ↑)</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ACTIVITY -->
+  <section class="section reveal">
+    <div class="section-label">Neutralization Activity</div>
+    <h2 class="section-title">Functional Profiling — <span>Breadth × Potency</span></h2>
+    <p class="section-intro">Activity data drove arm selection independently from CMC. The goal was to identify the variant combination with the best cross-strain coverage for both coronaviruses without compromising CMC-driven expression improvements.</p>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>αCoV-A Arm</th>
+            <th class="center">Prototype<br>IC50 (µg/mL)</th>
+            <th class="center">Variant Strain-2<br>IC50 (µg/mL)</th>
+            <th class="center">Variant Strain-3<br>IC50 (µg/mL)</th>
+            <th class="center">Variant Strain-4<br>IC50 (µg/mL)</th>
+            <th class="center">Full-Breadth<br>Coverage</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="highlight">
+            <td><strong>Selected variant</strong> <span class="badge best">Recommended</span></td>
+            <td class="center">0.027</td>
+            <td class="center">0.053</td>
+            <td class="center">0.011</td>
+            <td class="center">0.037</td>
+            <td class="center"><span class="badge pass">4 / 4 ✓</span></td>
+          </tr>
+          <tr class="dim">
+            <td><strong>Best runner-up</strong></td>
+            <td class="center">0.001</td>
+            <td class="center">0.071</td>
+            <td class="center">0.093</td>
+            <td class="center"><span class="badge warn">0.106</span></td>
+            <td class="center"><span class="badge warn">3 / 4</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="font-size:12px;color:#9ca3af;margin-top:4px;">IC50 units: µg/mL. Pseudovirus neutralization assay. Strain designations and exact variant identities withheld per confidentiality agreement. All αCoV-A variants share an identical CMC profile (pI 8.99–9.01); arm selection is driven purely by neutralization breadth.</p>
+
+    <div class="table-wrap" style="margin-top:24px;">
+      <table>
+        <thead>
+          <tr>
+            <th>αCoV-B Arm</th>
+            <th class="center">Primary Target<br>IC50 (µg/mL)</th>
+            <th class="center">Cross-Coronavirus<br>IC50 (µg/mL)</th>
+            <th class="center">Cross-Coronavirus<br>IC90 (µg/mL)</th>
+            <th class="center">Fold Improvement<br>vs. Original</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="highlight">
+            <td><strong>Selected variant</strong> <span class="badge best">Recommended</span></td>
+            <td class="center">≤0.001</td>
+            <td class="center">≤0.001</td>
+            <td class="center"><strong>0.025</strong></td>
+            <td class="center"><span class="badge pass">4.8× ↑</span></td>
+          </tr>
+          <tr>
+            <td><strong>Original variant</strong> <span class="badge info">Pre-optimization</span></td>
+            <td class="center">≤0.001</td>
+            <td class="center">≤0.001</td>
+            <td class="center">0.119</td>
+            <td class="center">—</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="font-size:12px;color:#9ca3af;margin-top:4px;">Cross-coronavirus IC90 used as primary discriminator for broad-spectrum protection. All primary target IC50 values are at assay lower limit of detection across both variants. Exact variant identities withheld per confidentiality agreement.</p>
+
+    <div class="alert discovery">
+      <b>Dual Benefit Discovery:</b> The activity-optimal αCoV-B arm swap and the CMC-optimal arm swap are the same choice — a rare convergence. Switching arms delivers a <strong>4.8× improvement in cross-coronavirus IC90</strong> (0.025 vs. 0.119 µg/mL) while simultaneously reducing the fusion pI by an additional 0.56 units, compounding the benefit of linker engineering.
+    </div>
+  </section>
+
+  <!-- LINKER ENGINEERING -->
+  <section class="section reveal">
+    <div class="section-label">SmartLink™ Engineering</div>
+    <h2 class="section-title">Charged Linker Design — <span>pI as a Manufacturing Lever</span></h2>
+    <p class="section-intro">Each glutamate residue added to the C-terminus of the (G₄S)₃ linker contributes approximately −1.0 unit of net charge at pH 7, translating to a 0.35–0.45 unit reduction in fusion pI. The linker segment — physically separated from both CDR regions — is the ideal site for charge engineering with minimal risk to antigen binding.</p>
+
+    <div class="linker-grid">
+      <div class="lk-card rejected">
+        <div class="lk-name">(G₄S)₃</div>
+        <div class="lk-seq">GGGGSGGGGSGGGGS</div>
+        <div class="lk-pi bad">8.80</div>
+        <div style="font-size:11px;color:#9ca3af;">Net charge +4.0</div>
+        <div class="lk-note rej">Baseline — low expression</div>
+      </div>
+      <div class="lk-card">
+        <div class="lk-name">(G₄S)₃+2E</div>
+        <div class="lk-seq">GGGGSGGGGSGGGGSEEE</div>
+        <div class="lk-pi warn">8.31</div>
+        <div style="font-size:11px;color:#9ca3af;">Net charge +2.0</div>
+        <div class="lk-note">Conservative option</div>
+      </div>
+      <div class="lk-card recommended">
+        <div class="lk-name" style="color:var(--primary);">(G₄S)₃+3E ⭐</div>
+        <div class="lk-seq" style="background:rgba(13,148,136,0.08);">GGGGSGGGGSGGGGSEEE</div>
+        <div class="lk-pi good">7.85</div>
+        <div style="font-size:11px;color:#0f766e;">Net charge +1.0</div>
+        <div class="lk-note rec">★ Recommended</div>
+      </div>
+      <div class="lk-card rejected">
+        <div class="lk-name">Whitlow</div>
+        <div class="lk-seq">GSTSGSGKPGSGEGSTKG</div>
+        <div class="lk-pi bad">8.93</div>
+        <div style="font-size:11px;color:#9ca3af;">Net charge +5.0</div>
+        <div class="lk-note rej">❌ Rejected — Lys raises pI</div>
+      </div>
+    </div>
+
+    <div class="alert warning">
+      <b>Whitlow Linker Rejection:</b> Despite containing one glutamate, the Whitlow linker (GSTSGSGKPGSGEGSTKG) carries <strong>two lysine residues</strong>, resulting in a net positive charge contribution that actually <em>raises</em> fusion pI to 8.93 — worse than the standard (G₄S)₃ baseline. This counter-intuitive result was only revealed by full-fusion pI computation and would be missed by linker-only analysis.
+    </div>
+
+    <div class="table-wrap" style="margin-top:24px;">
+      <table>
+        <thead>
+          <tr>
+            <th>Combination</th>
+            <th class="center">(G₄S)₃<br>Baseline</th>
+            <th class="center">+2E</th>
+            <th class="center">+3E ⭐</th>
+            <th class="center">+4E</th>
+            <th class="center">Net Charge<br>(+3E)</th>
+            <th class="center">Recommendation</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="highlight">
+            <td><strong>αCoV-A (selected) + αCoV-B (selected)</strong></td>
+            <td class="center"><span class="badge warn">8.80</span></td>
+            <td class="center"><span class="badge warn">8.31</span></td>
+            <td class="center"><span class="badge pass">7.85</span></td>
+            <td class="center"><span class="badge pass">6.99</span></td>
+            <td class="center">+1.0</td>
+            <td class="center"><span class="badge best">Primary</span></td>
+          </tr>
+          <tr>
+            <td><strong>αCoV-A (selected) + αCoV-B (backup)</strong></td>
+            <td class="center"><span class="badge warn">8.80</span></td>
+            <td class="center"><span class="badge warn">8.31</span></td>
+            <td class="center"><span class="badge pass">7.85</span></td>
+            <td class="center"><span class="badge pass">6.99</span></td>
+            <td class="center">+1.0</td>
+            <td class="center"><span class="badge info">Backup</span></td>
+          </tr>
+          <tr class="dim">
+            <td><strong>αCoV-A (selected) + αCoV-B (original)</strong> — pre-optimization</td>
+            <td class="center"><span class="badge fail">8.94</span></td>
+            <td class="center"><span class="badge warn">8.59</span></td>
+            <td class="center"><span class="badge warn">8.31</span></td>
+            <td class="center"><span class="badge pass">7.85</span></td>
+            <td class="center">+2.0</td>
+            <td class="center"><span class="badge warn">Requires +4E</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="font-size:12px;color:#9ca3af;margin-top:4px;">Fusion pI computed by sequence concatenation using BioPython ProteinAnalysis.isoelectric_point(). Verified by independent recalculation (Δ = 0.000).</p>
+  </section>
+
+  <!-- RESULTS -->
+  <section class="section reveal">
+    <div class="section-label">Outcome</div>
+    <h2 class="section-title">Integrated Engineering <span>Outcome</span></h2>
+    <p class="section-intro">The recommended construct addresses all three dimensions simultaneously: expression (pI reduction), activity (arm selection), and manufacturability (CMC risk mitigation).</p>
+
+    <div class="result-banner">
+      <h3>Recommended Construct</h3>
+      <div style="font-family:'Cormorant Garamond',serif; font-size:24px; margin-bottom:24px; color:#a7f3d0;">
+        αCoV-A (Selected) — (G₄S)₃+3E — αCoV-B (Selected) &nbsp;|&nbsp; 257 aa
+      </div>
+      <div class="result-kpis">
+        <div class="result-kpi">
+          <div class="k-val">7.85</div>
+          <div class="k-label">Fusion pI (vs 8.94 original)</div>
+        </div>
+        <div class="result-kpi">
+          <div class="k-val">+1.0</div>
+          <div class="k-label">Net Charge @pH7 (vs +5.0)</div>
+        </div>
+        <div class="result-kpi">
+          <div class="k-val">4.8×</div>
+          <div class="k-label">Cross-CoV IC90 Improvement</div>
+        </div>
+        <div class="result-kpi">
+          <div class="k-val">4/4</div>
+          <div class="k-label">Viral Strains Covered</div>
+        </div>
+      </div>
+      <p>The (G₄S)₃+3E linker deposits three glutamate residues at the C-terminus of the flexible spacer — distal from both CDR regions — reducing fusion pI by 1.09 units and net charge by 4.0 units, while the arm substitution delivers a co-incidental 4.8× gain in cross-coronavirus breadth.</p>
+    </div>
+
+    <div class="qa-grid">
+      <div class="qa-item">
+        <div class="qa-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+        </div>
+        <div class="qa-text">
+          <h4>Expression (Predicted)</h4>
+          <p>Fusion pI 7.85 places the construct below the ER electrostatic retention threshold (~8.5). Net charge reduced from +5.0 to +1.0 at pH 7 minimizes non-specific membrane and chaperone interactions in the secretory pathway.</p>
+        </div>
+      </div>
+      <div class="qa-item">
+        <div class="qa-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        </div>
+        <div class="qa-text">
+          <h4>Activity — Dual Coronavirus</h4>
+          <p>The selected αCoV-A arm maintains IC50 ≤ 0.037 µg/mL across all four tested viral strains — uniquely achieving full-panel breadth coverage. The selected αCoV-B arm achieves cross-coronavirus IC90 = 0.025 µg/mL, the best performer across the evaluated panel by &gt;4-fold.</p>
+        </div>
+      </div>
+      <div class="qa-item">
+        <div class="qa-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <div class="qa-text">
+          <h4>CMC Stability Risks</h4>
+          <p>Flagged risks: the selected αCoV-A arm carries 3 deamidation-susceptible NG/NS motifs (long-term stability concern); the αCoV-B scaffold carries above-median oxidation site count (M/W, structural and shared across the panel). Recommended mitigation: forced-oxidation stress assay + site-directed N→Q evaluation for deamidation.</p>
+        </div>
+      </div>
+      <div class="qa-item">
+        <div class="qa-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><polyline points="19 12 12 19 5 12"/></svg>
+        </div>
+        <div class="qa-text">
+          <h4>Experimental Validation Plan</h4>
+          <p>Recommended parallel expression of three constructs: original combination (control), optimized arm pair with (G₄S)₃+3E linker (primary), and backup candidate with same linker. SEC + SDS-PAGE yield comparison, followed by dual-target neutralization assay on the fusion format.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <div class="cta-section reveal">
+    <div class="section-label" style="background:rgba(255,255,255,0.12);color:rgba(255,255,255,0.9);">Get Started</div>
+    <h2>Bring Your <span>Bispecific Challenge</span> to InSynBio</h2>
+    <p>Whether you're dealing with expression bottlenecks, CMC risk flags, or format selection decisions — our SmartLink™ and VirtualCMC pipeline delivers sequence-level answers in days, not months.</p>
+    <div class="btn-row">
+      <a href="InSynBio_Bispecific_Antibody_Design_Page.html" class="btn btn-primary">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+        Bispecific Engineering Platform
+      </a>
+      <a href="index.html#contact" class="btn btn-secondary">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        Submit Your Case
+      </a>
+    </div>
+  </div>
+
+</div>
+</div>
+
+<!-- ─── FOOTER ─── -->
+<footer class="site-footer">
+  <p>© 2025 InSynBio. All rights reserved. &nbsp;|&nbsp;
+    <a href="index.html">Home</a> &nbsp;·&nbsp;
+    <a href="InSynBio_Bispecific_Antibody_Design_Page.html">Bispecific Platform</a> &nbsp;·&nbsp;
+    <a href="index.html#contact">Contact</a>
+  </p>
+  <p style="margin-top:8px;">Disclaimer: All analyses are in silico and for research reference only. Sequence data in this case study are confidential and anonymized. Experimental validation is required before any development decision.</p>
+  <!-- Cite This Work -->
+  <section style="background:#f9fafb;border-top:1px solid #e5e7eb;padding:28px 0 24px;">
+    <div style="max-width:900px;margin:0 auto;padding:0 24px;">
+      <details style="border:1px solid #e5e7eb;border-radius:10px;background:#fff;padding:0;">
+        <summary style="padding:14px 18px;font-size:13px;font-weight:700;color:#374151;cursor:pointer;list-style:none;display:flex;align-items:center;gap:8px;">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#0d9488" stroke-width="2.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+          Cite This Work
+        </summary>
+        <div style="padding:4px 18px 18px;border-top:1px solid #f3f4f6;">
+          <p style="font-size:12px;color:#6b7280;margin:12px 0 10px;">If you reference this analysis, please cite as:</p>
+          <pre style="background:#f3f4f6;border-radius:8px;padding:14px 16px;font-size:12px;line-height:1.7;overflow-x:auto;color:#111827;margin:0;">@techreport{insynbio2026bispecific_vhh_expr,
+  title     = {{Engineering Expression Recovery of a Dual-Coronavirus Bispecific VHH via pI Optimization and Charged-Linker Design}},
+  author    = {InSynBio},
+  year      = {2026},
+  month     = {jan},
+  institution = {InSynBio},
+  note      = {{pI-driven ER retention rescue; SmartLink charged-linker; yeast expression optimization}},
+  url       = {{https://www.insynbio.com/case_bispecific_vhh_expression_optimization.html}}
+}</pre>
+          <p style="font-size:11.5px;color:#9ca3af;margin:10px 0 0;">InSynBio computational analyses are for research reference only. Please verify results before clinical application.</p>
+        </div>
+      </details>
+    </div>
+  </section>
+
+  </footer>
+
+<script>
+  // Scroll reveal
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  // Sidebar active highlight (if sidebar present)
+  window.addEventListener('scroll', () => {
+    document.querySelectorAll('section[id]').forEach(sec => {
+      const rect = sec.getBoundingClientRect();
+      if (rect.top <= 120 && rect.bottom > 120) {
+        document.querySelectorAll('.sidebar nav a').forEach(a => {
+          a.classList.toggle('active', a.getAttribute('href') === '#' + sec.id);
+        });
+      }
+    });
+  });
+</script>
+</body>
+</html>
+

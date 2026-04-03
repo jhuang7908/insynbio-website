@@ -6,6 +6,8 @@
   <meta name="description" content="InSynBio antibody assessment and developability service — sequence analysis, humanization, immunogenicity prediction, structure evaluation, and affinity maturation.">
   <meta name="keywords" content="antibody developability, VHH humanization, immunogenicity, CDR analysis, antibody engineering, InSynBio">
   <meta name="robots" content="index, follow">
+  <meta name="robots" content="noai, noimageai">
+  <meta name="AI-Training" content="opt-out">
   <link rel="canonical" href="https://www.insynbio.com/InSynBio_Antibody_Developability_Assessment_Page.html">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://www.insynbio.com/InSynBio_Antibody_Developability_Assessment_Page.html">
@@ -25,10 +27,12 @@
   <style>
     :root { --primary: #0d9488; --primary-dark: #0f766e; --text: #111827; --text-muted: #4b5563; --border: #e5e7eb; --bg: #ffffff; --bg-alt: #f9fafb; }
     * { box-sizing: border-box; }
-    body { margin: 0; font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 16px; line-height: 1.6; color: var(--text); background: var(--bg); -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+    body { margin: 0; font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 16px; line-height: 1.6; color: var(--text); background: var(--bg); -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; padding-top: 73px; }
     
     /* Header */
-    .top-header { display: flex; align-items: center; justify-content: space-between; padding: 16px 32px; background: rgba(255, 255, 255, 0.9); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(0,0,0,0.05); flex-wrap: wrap; gap: 12px; position: sticky; top: 0; z-index: 1000; }
+    .top-header { display: flex; align-items: center; justify-content: space-between; padding: 12px 32px; background: rgba(255,255,255,0.95); backdrop-filter: blur(12px); border-bottom: 2px solid rgba(13,148,136,0.1); flex-wrap: nowrap; gap: 12px; position: fixed; width: 100%; top: 0; z-index: 2000; }
+    .mobile-menu-btn { display: none; background: none; border: none; padding: 6px; cursor: pointer; color: var(--text); flex-shrink: 0; }
+    .nav-close-btn { display: none; }
     .top-header .brand { font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 700; font-size: 26px; letter-spacing: -0.03em; display: flex; align-items: center; }
     .top-header .brand a { text-decoration: none; color: inherit; display: flex; align-items: center; gap: 10px; }
     .top-header .brand .syn { color: var(--primary); font-style: italic; }
@@ -112,6 +116,21 @@
     .mission-block p { margin: 0; font-size: 17px; line-height: 1.7; color: #111827; position: relative; z-index: 1; }
     .mission-block p + p { margin-top: 16px; }
     
+    /* Logic trace (case study) */
+    .logic-trace { margin: 28px 0; }
+    .lt-input { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 10px; padding: 16px 20px; font-size: 13.5px; margin-bottom: 20px; }
+    .lt-input code { font-family: 'Consolas', monospace; background: rgba(13,148,136,.08); padding: 2px 8px; border-radius: 4px; color: var(--primary-dark); font-size: 13px; }
+    .lt-steps { position: relative; padding-left: 32px; }
+    .lt-steps::before { content: ''; position: absolute; left: 13px; top: 8px; bottom: 8px; width: 2px; background: linear-gradient(to bottom, var(--primary), rgba(13,148,136,.15)); border-radius: 1px; }
+    .lt-step { position: relative; margin-bottom: 24px; }
+    .lt-step:last-child { margin-bottom: 0; }
+    .lt-step .lt-dot { position: absolute; left: -25px; top: 4px; width: 14px; height: 14px; border-radius: 50%; background: var(--primary); border: 3px solid #fff; box-shadow: 0 0 0 2px var(--primary); }
+    .lt-step .lt-head { font-size: 14px; font-weight: 600; color: #111827; margin-bottom: 4px; }
+    .lt-step .lt-query { font-size: 13px; color: var(--text-muted); margin-bottom: 4px; }
+    .lt-step .lt-result { font-size: 13px; color: var(--primary); font-weight: 500; margin-bottom: 6px; }
+    .lt-step .lt-decision { background: rgba(13,148,136,.06); border-left: 3px solid var(--primary); border-radius: 0 8px 8px 0; padding: 10px 14px; font-size: 13px; color: #374151; line-height: 1.55; }
+    .lt-step .lt-decision strong { color: var(--primary-dark); }
+
     .site-footer { margin-top: 80px; padding-top: 32px; border-top: 1px solid rgba(0,0,0,0.05); font-size: 14px; color: #9ca3af; text-align: center; }
     .site-footer a { color: #6b7280; text-decoration: none; transition: color 0.2s; }
     .site-footer a:hover { color: var(--primary); }
@@ -130,33 +149,63 @@
       .main { padding: 32px 24px 64px; }
       .mission-block { padding: 24px; margin-bottom: 32px; }
     }
+  
+    @media (max-width: 600px) {
+      .top-header { padding: 12px 16px; flex-wrap: wrap; gap: 10px; }
+      .top-header .brand { flex: 1 1 auto; display: flex; align-items: center; gap: 8px; }
+      .top-header .slogan { font-size: 12px; padding-left: 10px; border-left: 1px solid var(--border); white-space: nowrap; }
+      .top-header-nav { order: 3; width: 100%; flex: 1 1 100%; justify-content: flex-start; flex-wrap: wrap; gap: 4px; overflow-x: auto; padding-bottom: 4px; -webkit-overflow-scrolling: touch; border-top: 1px solid var(--border); padding-top: 8px; margin-top: 2px; }
+      .top-header-nav a { flex-shrink: 0; font-size: 13px; padding: 6px 10px; }
+      .hero-title, h1 { font-size: 32px !important; }
+      h2 { font-size: 26px !important; }
+      .page-hero { padding: 60px 16px 80px; }
+      .container, .section-inner { padding-left: 12px; padding-right: 12px; }
+      .grid-2col, .grid-3col, .services-grid, .features-grid { grid-template-columns: 1fr !important; }
+    }
+    @media (max-width: 768px) {
+      .mobile-menu-btn { display: block; }
+      .top-header { padding: 10px 16px; gap: 0; flex-wrap: nowrap; backdrop-filter: none; }
+      .top-header .brand { flex: 1; min-width: 0; }
+      .top-header .slogan { display: none !important; }
+      .top-header-nav { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; height: 100dvh; background: #fff; flex-direction: column; justify-content: center; align-items: center; gap: 4px; z-index: 9999; opacity: 0; pointer-events: none; transition: opacity 0.25s ease; padding: 24px; overflow-y: auto; }
+      .top-header-nav.open { opacity: 1; pointer-events: auto; }
+      .top-header-nav a { font-size: 18px; padding: 12px 24px; }
+      .top-header-nav .nav-dropdown { display: flex; flex-direction: column; align-items: center; }
+      .top-header-nav .nav-dropdown .dropdown-menu { position: static; transform: none; opacity: 1; visibility: visible; box-shadow: none; border: none; background: transparent; margin-top: 0; padding: 4px 0 0; min-width: auto; display: flex; gap: 0; flex-direction: row; flex-wrap: wrap; justify-content: center; }
+      .top-header-nav .nav-dropdown .dropdown-menu a { padding: 6px 12px; font-size: 14px; }
+      .top-header-nav .nav-dropdown .dropdown-menu a .menu-desc { display: none; }
+      .top-header-nav .nav-dropdown > a::after { display: none; }
+      .nav-close-btn { display: block; position: absolute; top: 16px; right: 20px; background: none; border: none; font-size: 32px; color: var(--text); cursor: pointer; line-height: 1; padding: 4px 8px; }
+      body { padding-top: 52px; }
+    }
   </style>
 </head>
 <body data-lang="en" id="insynbio-body">
   <header class="top-header">
     <div class="brand">
       <a href="index.html" style="display: flex; align-items: center; gap: 10px; text-decoration: none;">
-        <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <linearGradient id="logo_grad_2" x1="0" y1="0" x2="32" y2="32" gradientUnits="userSpaceOnUse">
-              <stop stop-color="#0d9488" />
-              <stop offset="1" stop-color="#2dd4bf" />
-            </linearGradient>
-          </defs>
-          <path d="M7 6L16 18V28" stroke="url(#logo_grad_2)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-          <path d="M25 6L16 18" stroke="url(#logo_grad_2)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-          <circle cx="7" cy="6" r="2" fill="#0f766e" />
-          <circle cx="25" cy="6" r="2" fill="#0f766e" />
-          <circle cx="16" cy="18" r="2" fill="white" stroke="#0d9488" stroke-width="1.5"/>
+        <svg width="34" height="28" viewBox="0 0 32 30" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink:0;">
+          <path d="M16 2L2 10V22L16 28L30 22V10L16 2Z" fill="#0d9488" fill-opacity="0.05" stroke="#0d9488" stroke-width="1" stroke-opacity="0.3"/>
+          <path d="M14.5 24 V 16" stroke="#0d9488" stroke-width="2.5" stroke-linecap="round"/>
+          <path d="M17.5 24 V 16" stroke="#f59e0b" stroke-width="2.5" stroke-linecap="round"/>
+          <line x1="13" y1="19" x2="19" y2="19" stroke="#9ca3af" stroke-width="1.5" stroke-linecap="round"/>
+          <line x1="13" y1="21" x2="19" y2="21" stroke="#9ca3af" stroke-width="1.5" stroke-linecap="round"/>
+          <path d="M14.5 16 L 8 7" stroke="#0d9488" stroke-width="2.5" stroke-linecap="round"/>
+          <path d="M10 16 L 3.5 7" stroke="#2dd4bf" stroke-width="2.5" stroke-linecap="round"/>
+          <path d="M17.5 16 L 24 7" stroke="#f59e0b" stroke-width="2.5" stroke-linecap="round"/>
+          <rect x="21.5" y="3.5" width="5" height="5" rx="1" fill="#f59e0b" transform="rotate(45 24 6)"/>
         </svg>
         <span style="font-family: 'Cormorant Garamond', serif; font-weight: 700; font-size: 26px; color: #1f2937; letter-spacing: -0.02em;">
           In<span style="color: #0d9488;">Syn</span>Bio
         </span>
       </a>
       <span class="slogan">AI for Life Sciences</span>
-      
     </div>
+    <button class="mobile-menu-btn" onclick="document.querySelector('.top-header-nav').classList.toggle('open')" aria-label="Open navigation">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
     <nav class="top-header-nav">
+      <button class="nav-close-btn" onclick="document.querySelector('.top-header-nav').classList.remove('open')" aria-label="Close navigation">✕</button>
       <a href="index.html">Home</a>
       <a href="index.html#about">About Us</a>
       <div class="nav-dropdown" tabindex="0">
@@ -174,12 +223,20 @@
             <span class="menu-title">Bispecific</span>
             <span class="menu-desc">Multispecific Engineering</span>
           </a>
+          <a href="immunogenicity_study.html">
+            <span class="menu-title">Immunogenicity</span>
+            <span class="menu-desc">ADA Prediction &amp; Reference DB</span>
+          </a>
+          <a href="vaccine_design.html">
+            <span class="menu-title">Vaccine Design</span>
+            <span class="menu-desc">Neoantigen · Heteroclitic · mRNA</span>
+          </a>
         </div>
       </div>
-      <a href="#submit">Submit Inquiry</a>
-      <a href="#contact">Contact</a>
+      <a href="index.html#case-studies">Case Studies</a>
+      <a href="InSynBio_OurTech.html">Our Tech</a>
+      <a href="#contact">Contact Us</a>
     </nav>
-    
   </header>
   <div class="page-wrap">
     <aside class="sidebar">
@@ -187,12 +244,15 @@
       
       <nav>
         <a href="#platform" class="nav-link active"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>Platform</a>
+        <a href="antibody-guide.html" style="background:rgba(124,58,237,0.07);color:#7c3aed;border:1px solid rgba(124,58,237,0.2);font-size:12px;" class="nav-link" title="Fc mutations · Developability metrics · Immunogenicity factors"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>Ab Engineering Guide →</a>
         <a href="#sequence" class="nav-link"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12h16M4 8h16M4 16h16"/></svg>Sequence</a>
+        <a href="#humanization" class="nav-link"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>Humanization</a>
+        <a href="#fc-selection" class="nav-link"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>Fc Selection</a>
         <a href="#developability" class="nav-link"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/><circle cx="12" cy="12" r="3"/></svg>Developability</a>
         <a href="#immunogenicity" class="nav-link"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>Immunogenicity</a>
         <a href="#structure" class="nav-link"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>Structure</a>
         <a href="#affinity-maturation" class="nav-link"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>Affinity Maturation</a>
-        <a href="#humanization" class="nav-link"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>Humanization</a>
+        <a href="#example" class="nav-link"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/></svg>Case Study</a>
         <a href="#full-report" class="nav-link"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>Full Report</a>
         <a href="#submit" class="nav-link"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>Submit Inquiry</a>
         <a href="#contact" class="nav-link"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>Contact</a>
@@ -213,47 +273,104 @@
       
       <p class="disclaimer">Disclaimer: InSynBio in silico analyses are for reference only and do not replace final wet-lab validation. Experimental confirmation is required.</p>
 
-      <h2 id="services"><span class="h2-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg></span>Current and planned offerings</h2>
-      <p>InSynBio provides in silico assessment, design, and development services for biotherapeutics:</p>
-      
-      <div class="table-wrap">
-      <table style="width:100%; border-collapse: collapse;">
-        <thead>
-          <tr>
-            <th>Service</th>
-            <th>Status</th>
-            <th>Description</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><strong>Antibody Development & Assessment</strong></td>
-            <td><a href="#platform" class="status-link">Available</a></td>
-            <td>Full in silico pipeline: sequence numbering and CDR annotation, germline retrieval, developability and immunogenicity prediction, structure modeling and interface analysis, structure-driven humanization, and affinity maturation—expert-reviewed and typically delivered within 3–5 business days.</td>
-          </tr>
-          <tr>
-            <td><strong>Smart CAR-T Design</strong></td>
-            <td><a href="InSynBio_CART_Design_Page.html" class="status-link">Available</a></td>
-            <td>End-to-end CAR-T design from target and disease context: component selection (binders, hinges, costimulatory and signaling domains), epitope–hinge matching, affinity tuning, and CRO-ready validation support.</td>
-          </tr>
-          <tr>
-            <td><strong>Bispecific Antibody Design</strong></td>
-            <td><a href="InSynBio_Bispecific_Antibody_Design_Page.html" class="status-link">Available</a></td>
-            <td>BsAb format selection, sequence design, and structural assessment.</td>
-          </tr>
-          <tr>
-            <td><strong>More services</strong></td>
-            <td>Planned</td>
-            <td>Additional offerings to be announced</td>
-          </tr>
-        </tbody>
-      </table>
-      </div>
-
       <h2 id="platform"><span class="h2-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg></span>Platform</h2>
       <p>The Antibody Developability Assessment platform provides computational analysis, evaluation, gene-engineering humanization, and structure-driven affinity maturation for antibody drug discovery and development. We primarily work from sequences—submit VH/VL or VHH sequences online; we can model structures in-house when needed. Our experts deliver structured reports covering numbering, germline retrieval, developability, immunogenicity, structure assessment, interface analysis, humanization design, and affinity maturation.</p>
       
       <p>All services are expert-reviewed and delivered offline—typically within 3–5 business days upon project confirmation. Our pipeline is based on 1,142 clinical antibody sequences and uses transparent metrics. Humanization employs structure-driven back-mutations and prioritizes germlines from clinical antibodies. Structure assessment is included for all humanization deliverables.</p>
+
+      <!-- Antibody Development Workflow Diagram -->
+      <div style="margin:28px 0 40px;overflow-x:auto;">
+        <div style="font-size:12px;font-weight:700;color:#9ca3af;text-transform:uppercase;letter-spacing:0.8px;margin-bottom:14px;">Antibody Development Pipeline</div>
+        <svg viewBox="0 0 840 230" xmlns="http://www.w3.org/2000/svg" style="width:100%;min-width:600px;max-width:860px;display:block;font-family:Inter,sans-serif;">
+          <defs>
+            <marker id="arr" markerWidth="7" markerHeight="5" refX="6" refY="2.5" orient="auto"><path d="M0,0 L7,2.5 L0,5 Z" fill="#9ca3af"/></marker>
+            <marker id="arr2" markerWidth="7" markerHeight="5" refX="6" refY="2.5" orient="auto"><path d="M0,0 L7,2.5 L0,5 Z" fill="#9ca3af"/></marker>
+          </defs>
+
+          <!-- Row 1: Steps 1-5 -->
+          <!-- Step 1: Sequence Input -->
+          <rect x="0" y="10" width="145" height="76" rx="9" fill="#f0fdfa" stroke="#0d9488" stroke-width="1.5"/>
+          <text x="72" y="36" text-anchor="middle" font-size="18" fill="#0d9488">①</text>
+          <text x="72" y="56" text-anchor="middle" font-size="11.5" font-weight="700" fill="#0f766e">Sequence Input</text>
+          <text x="72" y="72" text-anchor="middle" font-size="10" fill="#6b7280">VH/VL or VHH</text>
+          <!-- Arrow 1→2 -->
+          <line x1="145" y1="48" x2="165" y2="48" stroke="#9ca3af" stroke-width="1.5" marker-end="url(#arr)"/>
+
+          <!-- Step 2: Numbering & CDR -->
+          <rect x="168" y="10" width="145" height="76" rx="9" fill="#f0fdfa" stroke="#0d9488" stroke-width="1.5"/>
+          <text x="240" y="36" text-anchor="middle" font-size="18" fill="#0d9488">②</text>
+          <text x="240" y="56" text-anchor="middle" font-size="11.5" font-weight="700" fill="#0f766e">Numbering &amp; CDR</text>
+          <text x="240" y="72" text-anchor="middle" font-size="10" fill="#6b7280">IMGT · Kabat · Germline</text>
+          <!-- Arrow 2→3 -->
+          <line x1="313" y1="48" x2="333" y2="48" stroke="#9ca3af" stroke-width="1.5" marker-end="url(#arr)"/>
+
+          <!-- Step 3: Humanization -->
+          <rect x="336" y="10" width="145" height="76" rx="9" fill="#eff6ff" stroke="#3b82f6" stroke-width="1.5"/>
+          <text x="408" y="36" text-anchor="middle" font-size="18" fill="#3b82f6">③</text>
+          <text x="408" y="56" text-anchor="middle" font-size="11.5" font-weight="700" fill="#1d4ed8">Humanization</text>
+          <text x="408" y="72" text-anchor="middle" font-size="10" fill="#6b7280">CDR grafting · Back-mut.</text>
+          <!-- Arrow 3→4 -->
+          <line x1="481" y1="48" x2="501" y2="48" stroke="#9ca3af" stroke-width="1.5" marker-end="url(#arr)"/>
+
+          <!-- Step 4: Fc Selection -->
+          <rect x="504" y="10" width="145" height="76" rx="9" fill="#eff6ff" stroke="#3b82f6" stroke-width="1.5"/>
+          <text x="576" y="36" text-anchor="middle" font-size="18" fill="#3b82f6">④</text>
+          <text x="576" y="56" text-anchor="middle" font-size="11.5" font-weight="700" fill="#1d4ed8">Fc Selection</text>
+          <text x="576" y="72" text-anchor="middle" font-size="10" fill="#6b7280">IgG subclass · Mutations</text>
+          <!-- Arrow 4→5 -->
+          <line x1="649" y1="48" x2="669" y2="48" stroke="#9ca3af" stroke-width="1.5" marker-end="url(#arr)"/>
+
+          <!-- Step 5: Developability -->
+          <rect x="672" y="10" width="168" height="76" rx="9" fill="#fffbeb" stroke="#f59e0b" stroke-width="1.5"/>
+          <text x="756" y="36" text-anchor="middle" font-size="18" fill="#d97706">⑤</text>
+          <text x="756" y="56" text-anchor="middle" font-size="11.5" font-weight="700" fill="#92400e">Developability</text>
+          <text x="756" y="72" text-anchor="middle" font-size="10" fill="#6b7280">pI · Aggregation · Patches</text>
+
+          <!-- Connector: Step 5 down to Step 6 -->
+          <line x1="756" y1="86" x2="756" y2="144" stroke="#9ca3af" stroke-width="1.5"/>
+          <line x1="756" y1="144" x2="700" y2="144" stroke="#9ca3af" stroke-width="1.5" marker-end="url(#arr)"/>
+
+          <!-- Row 2: Steps 6-9 (right to left) -->
+          <!-- Step 6: Immunogenicity -->
+          <rect x="504" y="144" width="168" height="76" rx="9" fill="#fffbeb" stroke="#f59e0b" stroke-width="1.5"/>
+          <text x="588" y="170" text-anchor="middle" font-size="18" fill="#d97706">⑥</text>
+          <text x="588" y="190" text-anchor="middle" font-size="11.5" font-weight="700" fill="#92400e">Immunogenicity</text>
+          <text x="588" y="206" text-anchor="middle" font-size="10" fill="#6b7280">MHC-II · ADA risk score</text>
+          <!-- Arrow 6→7 -->
+          <line x1="504" y1="182" x2="484" y2="182" stroke="#9ca3af" stroke-width="1.5" marker-end="url(#arr2)"/>
+
+          <!-- Step 7: Structure Modeling -->
+          <rect x="336" y="144" width="145" height="76" rx="9" fill="#fdf4ff" stroke="#a855f7" stroke-width="1.5"/>
+          <text x="408" y="170" text-anchor="middle" font-size="18" fill="#a855f7">⑦</text>
+          <text x="408" y="190" text-anchor="middle" font-size="11.5" font-weight="700" fill="#6d28d9">Structure</text>
+          <text x="408" y="206" text-anchor="middle" font-size="10" fill="#6b7280">AF2 · ABodyBuilder2</text>
+          <!-- Arrow 7→8 -->
+          <line x1="336" y1="182" x2="316" y2="182" stroke="#9ca3af" stroke-width="1.5" marker-end="url(#arr2)"/>
+
+          <!-- Step 8: Affinity Maturation -->
+          <rect x="168" y="144" width="145" height="76" rx="9" fill="#fdf4ff" stroke="#a855f7" stroke-width="1.5"/>
+          <text x="240" y="170" text-anchor="middle" font-size="18" fill="#a855f7">⑧</text>
+          <text x="240" y="190" text-anchor="middle" font-size="11.5" font-weight="700" fill="#6d28d9">Affinity Maturation</text>
+          <text x="240" y="206" text-anchor="middle" font-size="10" fill="#6b7280">ΔΔG · EvoEF2 · ESM-IF1</text>
+          <!-- Arrow 8→9 -->
+          <line x1="168" y1="182" x2="148" y2="182" stroke="#9ca3af" stroke-width="1.5" marker-end="url(#arr2)"/>
+
+          <!-- Step 9: Full Report -->
+          <rect x="0" y="144" width="145" height="76" rx="9" fill="#f0fdf4" stroke="#16a34a" stroke-width="2"/>
+          <text x="72" y="170" text-anchor="middle" font-size="18" fill="#16a34a">⑨</text>
+          <text x="72" y="190" text-anchor="middle" font-size="11.5" font-weight="700" fill="#166534">Full Report</text>
+          <text x="72" y="206" text-anchor="middle" font-size="10" fill="#6b7280">Sequences · Models · PDF</text>
+        </svg>
+
+        <!-- Legend -->
+        <div style="display:flex;gap:16px;flex-wrap:wrap;margin-top:10px;">
+          <span style="font-size:11px;display:flex;align-items:center;gap:5px;"><span style="display:inline-block;width:10px;height:10px;border-radius:2px;background:#0d9488;"></span>Sequence &amp; Annotation</span>
+          <span style="font-size:11px;display:flex;align-items:center;gap:5px;"><span style="display:inline-block;width:10px;height:10px;border-radius:2px;background:#3b82f6;"></span>Engineering (Humanization · Fc)</span>
+          <span style="font-size:11px;display:flex;align-items:center;gap:5px;"><span style="display:inline-block;width:10px;height:10px;border-radius:2px;background:#f59e0b;"></span>Risk Assessment</span>
+          <span style="font-size:11px;display:flex;align-items:center;gap:5px;"><span style="display:inline-block;width:10px;height:10px;border-radius:2px;background:#a855f7;"></span>Structure &amp; Optimization</span>
+          <span style="font-size:11px;display:flex;align-items:center;gap:5px;"><span style="display:inline-block;width:10px;height:10px;border-radius:2px;background:#16a34a;"></span>Delivery</span>
+        </div>
+      </div>
 
       <h2 id="sequence"><span class="h2-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12h16M4 8h16M4 16h16"/></svg></span>Sequence</h2>
       <p><strong>Sequence Analysis</strong></p>
@@ -265,6 +382,118 @@
       </ul>
       
       <p class="input-note">Input: VH/VL sequences</p>
+
+      <h2 id="humanization"><span class="h2-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></span>Humanization</h2>
+      <p><strong>Gene-Engineering Humanization Services</strong></p>
+      
+      <p>All humanization deliverables include structure assessment. Our VH/VL pipeline employs structure-driven back-mutations and prioritizes germlines derived from 1,142 clinical antibody sequences.</p>
+      
+      <div class="table-wrap humanization-table-wrap">
+      <table class="humanization-table" style="width:100%; border-collapse: collapse;">
+        <thead>
+          <tr>
+            <th>Service</th>
+            <th>Input</th>
+            <th>Technology</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td data-label="Service"><strong>VH/VL Humanization</strong></td>
+            <td data-label="Input">Mouse VH and VL</td>
+            <td data-label="Technology">AbEngineCore V4.5.1 pipeline. Structure-driven back-mutations with prioritization of germlines from 1,142 clinical antibody sequences. CDR grafting with surface reshaping fallback. Structure assessment included.</td>
+          </tr>
+          <tr>
+            <td data-label="Service"><strong>VHH Humanization</strong></td>
+            <td data-label="Input">Camelid or llama VHH</td>
+            <td data-label="Technology">Integrated approach combining surface reshaping and framework grafting. Preserves CDRs and structural hallmarks. Structure assessment included.</td>
+          </tr>
+          <tr>
+            <td data-label="Service"><strong>VH to VHH Conversion</strong></td>
+            <td data-label="Input">Conventional VH (from mAb)</td>
+            <td data-label="Technology">CDR grafting onto human VHH scaffold with structure-guided optimization. Expert design service. Structure assessment included.</td>
+          </tr>
+        </tbody>
+      </table>
+      </div>
+
+      <h2 id="fc-selection"><span class="h2-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg></span>Fc Selection &amp; Engineering</h2>
+      <p><strong>IgG Subclass &amp; Fc Mutation Guidance</strong></p>
+      <p>Fc selection depends on target biology and disease indication. InSynBio provides structured Fc recommendations as part of the Full Report, aligned with clinical precedent.</p>
+
+      <div style="display:flex;flex-direction:column;gap:6px;margin-top:10px;">
+
+        <div style="display:flex;align-items:center;gap:10px;padding:9px 14px;background:#f9fafb;border:1px solid #e5e7eb;border-radius:8px;flex-wrap:wrap;">
+          <div style="min-width:200px;flex-shrink:0;">
+            <span style="font-size:13px;font-weight:600;color:#111827;">Oncology · Tumor Ag</span>
+            <span style="font-size:11px;color:#9ca3af;margin-left:6px;">HER2, CD20, EGFR</span>
+          </div>
+          <span style="font-size:11px;font-weight:700;padding:2px 8px;background:#dcfce7;color:#166534;border-radius:10px;flex-shrink:0;">IgG1</span>
+          <div style="display:flex;flex-wrap:wrap;gap:4px;flex:1;">
+            <span style="font-size:11px;padding:2px 7px;background:#fff7ed;color:#9a3412;border-radius:10px;border:1px solid #fed7aa;">GASDALIE</span>
+            <span style="font-size:11px;padding:2px 7px;background:#fff7ed;color:#9a3412;border-radius:10px;border:1px solid #fed7aa;">Afucosylation</span>
+            <span style="font-size:11px;padding:2px 7px;background:#fff7ed;color:#9a3412;border-radius:10px;border:1px solid #fed7aa;">S239D/I332E</span>
+            <span style="font-size:11px;padding:2px 7px;background:#eff6ff;color:#1e40af;border-radius:10px;border:1px solid #bfdbfe;">E430G HexaBody</span>
+            <span style="font-size:11px;padding:2px 7px;background:#f0fdf4;color:#166534;border-radius:10px;border:1px solid #bbf7d0;">LS / YTE</span>
+          </div>
+        </div>
+
+        <div style="display:flex;align-items:center;gap:10px;padding:9px 14px;background:#f9fafb;border:1px solid #e5e7eb;border-radius:8px;flex-wrap:wrap;">
+          <div style="min-width:200px;flex-shrink:0;">
+            <span style="font-size:13px;font-weight:600;color:#111827;">Autoimmune / Inflammatory</span>
+            <span style="font-size:11px;color:#9ca3af;margin-left:6px;">TNF-α, IL-6R, CD38</span>
+          </div>
+          <span style="font-size:11px;font-weight:700;padding:2px 8px;background:#dcfce7;color:#166534;border-radius:10px;flex-shrink:0;">IgG1 / IgG4</span>
+          <div style="display:flex;flex-wrap:wrap;gap:4px;flex:1;">
+            <span style="font-size:11px;padding:2px 7px;background:#faf5ff;color:#6d28d9;border-radius:10px;border:1px solid #ddd6fe;">LALA / LALAPG</span>
+            <span style="font-size:11px;padding:2px 7px;background:#faf5ff;color:#6d28d9;border-radius:10px;border:1px solid #ddd6fe;">N297A/G</span>
+            <span style="font-size:11px;padding:2px 7px;background:#faf5ff;color:#6d28d9;border-radius:10px;border:1px solid #ddd6fe;">IgG4 S228P</span>
+            <span style="font-size:11px;padding:2px 7px;background:#f0fdf4;color:#166534;border-radius:10px;border:1px solid #bbf7d0;">LS / YTE</span>
+          </div>
+        </div>
+
+        <div style="display:flex;align-items:center;gap:10px;padding:9px 14px;background:#f9fafb;border:1px solid #e5e7eb;border-radius:8px;flex-wrap:wrap;">
+          <div style="min-width:200px;flex-shrink:0;">
+            <span style="font-size:13px;font-weight:600;color:#111827;">Neutralizing / Blocking</span>
+            <span style="font-size:11px;color:#9ca3af;margin-left:6px;">Cytokines, viral Ag</span>
+          </div>
+          <span style="font-size:11px;font-weight:700;padding:2px 8px;background:#dcfce7;color:#166534;border-radius:10px;flex-shrink:0;">IgG1 / IgG4</span>
+          <div style="display:flex;flex-wrap:wrap;gap:4px;flex:1;">
+            <span style="font-size:11px;padding:2px 7px;background:#f0fdf4;color:#166534;border-radius:10px;border:1px solid #bbf7d0;">LS / YTE</span>
+            <span style="font-size:11px;padding:2px 7px;background:#faf5ff;color:#6d28d9;border-radius:10px;border:1px solid #ddd6fe;">Effector-silent</span>
+            <span style="font-size:11px;padding:2px 7px;background:#eff6ff;color:#1e40af;border-radius:10px;border:1px solid #bfdbfe;">M252A (FcRn antagonist)</span>
+          </div>
+        </div>
+
+        <div style="display:flex;align-items:center;gap:10px;padding:9px 14px;background:#f9fafb;border:1px solid #e5e7eb;border-radius:8px;flex-wrap:wrap;">
+          <div style="min-width:200px;flex-shrink:0;">
+            <span style="font-size:13px;font-weight:600;color:#111827;">Bispecific Antibody</span>
+            <span style="font-size:11px;color:#9ca3af;margin-left:6px;">T-cell engager, dual-checkpoint</span>
+          </div>
+          <span style="font-size:11px;font-weight:700;padding:2px 8px;background:#dcfce7;color:#166534;border-radius:10px;flex-shrink:0;">IgG1 (mod.)</span>
+          <div style="display:flex;flex-wrap:wrap;gap:4px;flex:1;">
+            <span style="font-size:11px;padding:2px 7px;background:#fef9c3;color:#854d0e;border-radius:10px;border:1px solid #fde047;">KiH</span>
+            <span style="font-size:11px;padding:2px 7px;background:#fef9c3;color:#854d0e;border-radius:10px;border:1px solid #fde047;">DD/KK</span>
+            <span style="font-size:11px;padding:2px 7px;background:#faf5ff;color:#6d28d9;border-radius:10px;border:1px solid #ddd6fe;">Effector per MOA</span>
+          </div>
+        </div>
+
+        <div style="display:flex;align-items:center;gap:10px;padding:9px 14px;background:#f9fafb;border:1px solid #e5e7eb;border-radius:8px;flex-wrap:wrap;">
+          <div style="min-width:200px;flex-shrink:0;">
+            <span style="font-size:13px;font-weight:600;color:#111827;">CNS / Rare Disease</span>
+            <span style="font-size:11px;color:#9ca3af;margin-left:6px;">Neurodegeneration, metabolic</span>
+          </div>
+          <span style="font-size:11px;font-weight:700;padding:2px 8px;background:#dcfce7;color:#166534;border-radius:10px;flex-shrink:0;">IgG1</span>
+          <div style="display:flex;flex-wrap:wrap;gap:4px;flex:1;">
+            <span style="font-size:11px;padding:2px 7px;background:#f0fdf4;color:#166534;border-radius:10px;border:1px solid #bbf7d0;">LS / YTE / Xtend</span>
+            <span style="font-size:11px;padding:2px 7px;background:#faf5ff;color:#6d28d9;border-radius:10px;border:1px solid #ddd6fe;">DAPA</span>
+            <span style="font-size:11px;padding:2px 7px;background:#eff6ff;color:#1e40af;border-radius:10px;border:1px solid #bfdbfe;">↓ Placental transfer</span>
+          </div>
+        </div>
+
+      </div>
+
+      <p style="margin-top:12px;"><a href="antibody-guide.html?tab=fc" style="display:inline-flex;align-items:center;gap:6px;font-size:13px;color:#7c3aed;font-weight:600;text-decoration:none;background:rgba(124,58,237,0.07);border:1px solid rgba(124,58,237,0.2);padding:5px 12px;border-radius:20px;" onmouseover="this.style.background='rgba(124,58,237,0.14)'" onmouseout="this.style.background='rgba(124,58,237,0.07)'">⚙ Full Fc mutation reference with IP &amp; patent status →</a></p>
 
       <h2 id="developability"><span class="h2-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/><circle cx="12" cy="12" r="3"/></svg></span>Developability</h2>
       <p><strong>Developability and CMC</strong></p>
@@ -278,18 +507,24 @@
       </ul>
       
       <p class="input-note">Input: VH/VL sequences. For TAP: PDB and CDR sequences are required.</p>
+      <p style="margin-top:12px;"><a href="antibody-guide.html?tab=dev" style="display:inline-flex;align-items:center;gap:6px;font-size:13px;color:#0f766e;font-weight:600;text-decoration:none;background:rgba(13,148,136,0.07);border:1px solid rgba(13,148,136,0.2);padding:5px 12px;border-radius:20px;" onmouseover="this.style.background='rgba(13,148,136,0.14)'" onmouseout="this.style.background='rgba(13,148,136,0.07)'">📊 What do these metrics mean? Thresholds &amp; clinical interpretation →</a></p>
 
       <h2 id="immunogenicity"><span class="h2-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></span>Immunogenicity</h2>
-      <p><strong>Immunogenicity Assessment</strong></p>
+      <p><strong>Immunogenicity Assessment — Full Report Only</strong></p>
+      <p style="font-size:13px;background:#fef3c7;border-left:3px solid #d97706;padding:8px 12px;border-radius:4px;margin-bottom:12px;color:#78350f;">Immunogenicity scoring requires a <strong>complete, fully humanized or fully human sequence</strong>. It is not provided as a preliminary pre-screen. For early-stage sequences (pre-humanization), only sequence-level chemical stability flags (NG/DG motifs, Met/Trp oxidation, free Cys) are reported. Full immunogenicity assessment is included in the post-humanization Full Report.</p>
       
       <ul>
-        <li><strong>MHC-II 27 alleles</strong> — IEDB prediction, FR surface risk assessment</li>
-        <li><strong>Risk clustering</strong> — Agglomerative clustering of high-risk positions</li>
-        <li><strong>Surface immunogenicity</strong> — Parker hydrophilicity; SASA-based analysis (optional when PDB is provided)</li>
-        <li><strong>Germline tolerance</strong> — IGHV/IGKV/IGLV frequency-weighted filter</li>
+        <li><strong>MHC-II T-cell epitope prediction</strong> — InSynBio immunogenicity pipeline (via IEDB API), covering 27 HLA-DR alleles; framework surface risk assessment</li>
+        <li><strong>Risk clustering</strong> — Agglomerative clustering of high-risk peptide positions along the sequence</li>
+        <li><strong>Surface immunogenicity</strong> — Parker hydrophilicity scoring; SASA-based exposure analysis (when PDB structure is provided)</li>
+        <li><strong>Germline tolerance</strong> — IGHV/IGKV/IGLV frequency-weighted filter; germline identity % reported</li>
       </ul>
       
-      <p class="input-note">Input: VH/VL sequences (PDB optional)</p>
+      <p class="input-note">Input: Complete VH/VL humanized or fully human sequences (PDB optional). Model calibrated on 70 clinical antibodies (LOO r = 0.39–0.52). Results are stratified risk scores, not absolute ADA rate predictions.</p>
+      <div style="display:flex;flex-wrap:wrap;gap:10px;margin-top:12px;">
+        <a href="antibody-guide.html?tab=immuno" style="display:inline-flex;align-items:center;gap:6px;font-size:13px;color:#b91c1c;font-weight:600;text-decoration:none;background:rgba(239,68,68,0.06);border:1px solid rgba(239,68,68,0.2);padding:5px 12px;border-radius:20px;" onmouseover="this.style.background='rgba(239,68,68,0.12)'" onmouseout="this.style.background='rgba(239,68,68,0.06)'">🛡 What drives ADA? Mechanisms, detection &amp; mitigation →</a>
+        <a href="immunogenicity_study.html" style="display:inline-flex;align-items:center;gap:6px;font-size:13px;color:#0f766e;font-weight:600;text-decoration:none;background:rgba(13,148,136,0.07);border:1px solid rgba(13,148,136,0.22);padding:5px 12px;border-radius:20px;" onmouseover="this.style.background='rgba(13,148,136,0.14)'" onmouseout="this.style.background='rgba(13,148,136,0.07)'">📊 Clinical benchmark: 70-antibody ADA prediction study →</a>
+      </div>
 
       <h2 id="structure"><span class="h2-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg></span>Structure</h2>
       <p><strong>Structure and Interface</strong></p>
@@ -316,46 +551,169 @@
       
       <p class="input-note">Input: PDB of existing complex (Ab-Ag, ligand-receptor, or VHH-antigen). Design region (e.g., CDR-H3) specified per project.</p>
 
-      <h2 id="humanization"><span class="h2-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></span>Humanization</h2>
-      <p><strong>Gene-Engineering Humanization Services</strong></p>
-      
-      <p>All humanization deliverables include structure assessment. Our VH/VL pipeline employs structure-driven back-mutations and prioritizes germlines derived from 1,142 clinical antibody sequences.</p>
-      
-      <div class="table-wrap humanization-table-wrap">
-      <table class="humanization-table" style="width:100%; border-collapse: collapse;">
-        <thead>
-          <tr>
-            <th>Service</th>
-            <th>Input</th>
-            <th>Technology</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td data-label="Service"><strong>VH/VL Humanization</strong></td>
-            <td data-label="Input">Mouse VH and VL</td>
-            <td data-label="Technology">AbEngineCore V4.4 pipeline. Structure-driven back-mutations with prioritization of germlines from 1,142 clinical antibody sequences. CDR grafting with surface reshaping fallback. Structure assessment included.</td>
-          </tr>
-          <tr>
-            <td data-label="Service"><strong>VHH Humanization</strong></td>
-            <td data-label="Input">Camelid or llama VHH</td>
-            <td data-label="Technology">Integrated approach combining surface reshaping and framework grafting. Preserves CDRs and structural hallmarks. Structure assessment included.</td>
-          </tr>
-          <tr>
-            <td data-label="Service"><strong>VH to VHH Conversion</strong></td>
-            <td data-label="Input">Conventional VH (from mAb)</td>
-            <td data-label="Technology">CDR grafting onto human VHH scaffold with structure-guided optimization. Expert design service. Structure assessment included.</td>
-          </tr>
-        </tbody>
-      </table>
-      </div>
-
       <h2 id="full-report"><span class="h2-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg></span>Full Report</h2>
       <p><strong>Full Evaluation Report</strong></p>
       
       <p>Comprehensive integrated report covering sequence, germline, developability, immunogenicity, structure, and interface analysis. Delivered in Markdown or PDF format, with optional JSON. Typically completed within 3–5 business days upon project confirmation.</p>
+
+      <p>Where relevant to the submitted format or indication, the report also includes <strong>Fc mutation guidance</strong> — IgG subclass selection, effector function, and half-life considerations based on clinical precedent. For a full reference of Fc mutations, developability metrics, and immunogenicity factors, see our <a href="antibody-guide.html" style="color:#7c3aed;font-weight:600;text-decoration:none;" onmouseover="this.style.textDecoration='underline'" onmouseout="this.style.textDecoration='none'">Antibody Engineering Guide →</a></p>
       
       <p class="input-note">Input: VH/VL sequences (PDB optional)</p>
+
+      <h2 id="example"><span class="h2-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/></svg></span>Case Study: muMAb4D5 → Trastuzumab Precursor</h2>
+      <p>The AbEngineCore V4.5.1 pipeline doesn't just apply CDR grafting — it systematically reasons through each engineering decision. Below is the full assessment and humanization trace for <strong>muMAb4D5</strong>, the mouse anti-HER2 antibody that became the precursor to trastuzumab (Herceptin®).</p>
+
+      <div class="logic-trace">
+        <div class="lt-input">
+          <strong style="color: var(--primary); text-transform: uppercase; font-size: 12px; letter-spacing:.05em;">Input</strong>&nbsp;&nbsp;
+          <code>Antibody: muMAb4D5</code>&nbsp;&nbsp;<code>Type: Mouse IgG1 (VH/VL)</code>&nbsp;&nbsp;<code>Target: HER2-ECD Domain IV</code>&nbsp;&nbsp;<code>Goal: Humanization</code>
+        </div>
+
+        <div class="lt-steps">
+          <div class="lt-step">
+            <span class="lt-dot"></span>
+            <div class="lt-head">A1 &nbsp;Sequence Analysis</div>
+            <div class="lt-query">IMGT/Chothia numbering, CDR annotation, germline identification?</div>
+            <div class="lt-result">6 CDRs annotated · IGHV3-23 (VH: 74.1% id) · IGKV1-39 (VL: 84.2% id)</div>
+            <div class="lt-decision">CDR-H3 = 14 residues (long) — critical for HER2-ECD epitope contact. VH/VL co-occurrence in 842-antibody clinical database confirms IGHV3-23 × IGKV1-39 is a high-frequency pairing (top-5%). All 6 CDRs are chemically clean — no deamidation (NG/NS), glycosylation (NxS/T), or oxidation (Met/Trp) risk flags.</div>
+          </div>
+
+          <div class="lt-step">
+            <span class="lt-dot"></span>
+            <div class="lt-head">A2 &nbsp;Developability Assessment</div>
+            <div class="lt-query">pI, aggregation risk, CDR chemical flags?</div>
+            <div class="lt-result">pI 9.1 (murine) · GRAVY −0.21 · 0 CDR chemical flags · SAP alert in FR3</div>
+            <div class="lt-decision">Elevated pI (9.1) increases electrostatic aggregation risk at physiological conditions — <strong>CMC alert raised.</strong> Hydrophobic patch (SAP) in FR3 contributed by murine-specific residues. No CDR liabilities detected. Humanization is expected to naturally resolve both flags via framework substitution.</div>
+          </div>
+
+          <div class="lt-step">
+            <span class="lt-dot"></span>
+            <div class="lt-head">A3 &nbsp;Immunogenicity Assessment</div>
+            <div class="lt-query">MHC-II T-cell epitope risk in framework and CDR regions?</div>
+            <div class="lt-result">3 high-risk MHC-II clusters in VH-FR2 and VL-FR3 (murine-specific residues) · CDRs clean</div>
+            <div class="lt-decision">InSynBio immunogenicity pipeline (27 HLA-DR alleles) identifies 3 murine-specific FR residue clusters as high-risk T-cell epitopes. All risks reside in framework — <strong>CDR-H1/H2/H3 and CDR-L1/L2/L3 are immunogenically clean.</strong> Germline tolerance filter confirms IGHV3-23*01 + IGKV1-39*01 as lowest-risk framework pair for this CDR set.</div>
+          </div>
+
+          <div class="lt-step">
+            <span class="lt-dot"></span>
+            <div class="lt-head">A4 &nbsp;Framework Selection</div>
+            <div class="lt-query">Which human germline best preserves CDR conformation and minimizes immunogenicity?</div>
+            <div class="lt-result">IGHV3-23*01 × IGKV1-39*01 — ranked #1 from 842-antibody clinical database</div>
+            <div class="lt-decision"><strong>IGHV3-23*01</strong> (VH): most prevalent family (&gt;30% of clinical antibodies); optimal CDR-H1/H2 canonical class match and Vernier profile for CDR-H3 length 14 aa. <strong>IGKV1-39*01</strong> (VL): top-5% pairing frequency; perfect Vernier compatibility — zero VL back-mutations needed. <span style="color:#dc2626;">&#x2718; IGHV3-66 rejected</span>: murine parent, high immunogenicity. <span style="color:#dc2626;">&#x2718; IGHV1-69 rejected</span>: incompatible Vernier geometry for CDR-H3 = 14 aa.</div>
+          </div>
+
+          <div class="lt-step">
+            <span class="lt-dot"></span>
+            <div class="lt-head">A5 &nbsp;CDR Grafting + Vernier Back-mutations</div>
+            <div class="lt-query">Which positions are structurally critical? Minimum back-mutations to restore VH-VL packing?</div>
+            <div class="lt-result">4 back-mutations in VH: H49 (S→A), H71 (R→A), H73 (N→T), H78 (L→A) · VL: none required</div>
+            <div class="lt-decision">SASA + contact-map analysis identifies 4 Vernier zone positions requiring back-mutation: H49 (buried non-polar required), H71 (charge disruption risk), H73 (VH core packing), H78 (steric clash prevention). VL: IGKV1-39*01 Vernier profile is fully compatible — <strong>zero VL back-mutations needed.</strong> ABodyBuilder2 structural validation: VH-VL packing angle deviation = <strong>0.64°</strong> from murine reference.</div>
+          </div>
+
+          <div class="lt-step">
+            <span class="lt-dot"></span>
+            <div class="lt-head">A6 &nbsp;Post-humanization CMC Gate</div>
+            <div class="lt-query">Does humanization resolve the pI flag? New aggregation or stability risks?</div>
+            <div class="lt-result">pI 7.86 (resolved) · GRAVY −0.285 · FR3 SAP patch eliminated · 14/15 CMC parameters passed</div>
+            <div class="lt-decision"><strong>pI improved from 9.1 → 7.86</strong> — colloidal stability risk resolved by IGHV3-23 framework substitution. FR3 hydrophobic patch eliminated. Zero new deamidation or glycosylation motifs introduced by back-mutations. <strong>CMC gate passed</strong> against AbRef-458 clinical database benchmarks. Zero free cysteines, zero unpaired disulfides.</div>
+          </div>
+
+          <div class="lt-step">
+            <span class="lt-dot"></span>
+            <div class="lt-head">A7 &nbsp;Deliverable & Independent Validation</div>
+            <div class="lt-query">Final sequences, report, and benchmarking against clinical trastuzumab?</div>
+            <div class="lt-result">hz4D5 VH + VL delivered · 4 back-mutations · 100% CDR identity with clinical Herceptin sequence</div>
+            <div class="lt-decision">Final humanized sequences achieve <strong>100% CDR identity with the published trastuzumab (Herceptin®) sequence</strong> — independently validating the AbEngineCore V4.5.1 approach with 73% fewer back-mutations than the original Carter et al. (1992) humanization. Deliverables: annotated FASTA, Vernier rationale table, ABodyBuilder2 structure overlay, and full CMC report. <a href="case_mumab4d5_humanization_en.html" style="color:var(--primary); font-weight:600;">View full report →</a></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── Case Study Charts (inline SVG, no external deps) ── -->
+      <div style="margin-top:28px;display:grid;grid-template-columns:1fr 1fr;gap:20px;" class="case-charts">
+
+        <!-- Left: Before/After grouped bar chart -->
+        <div style="background:#f9fafb;border:1px solid #e5e7eb;border-radius:12px;padding:20px;">
+          <div style="font-size:13px;font-weight:700;color:#111827;margin-bottom:2px;">CMC Risk Score — Before vs After Humanization</div>
+          <div style="font-size:11px;color:#6b7280;margin-bottom:14px;">Scale 0–10 · lower = lower risk · benchmarked vs AbRef-458</div>
+          <!-- Legend -->
+          <div style="display:flex;gap:16px;margin-bottom:10px;font-size:11px;">
+            <span style="display:flex;align-items:center;gap:5px;"><span style="width:12px;height:12px;border-radius:2px;background:#ef4444;display:inline-block;"></span>Murine (Before)</span>
+            <span style="display:flex;align-items:center;gap:5px;"><span style="width:12px;height:12px;border-radius:2px;background:#0d9488;display:inline-block;"></span>Humanized (After)</span>
+          </div>
+          <svg viewBox="0 0 320 190" width="100%" xmlns="http://www.w3.org/2000/svg" style="display:block;">
+            <!-- y-axis gridlines -->
+            <line x1="48" y1="10" x2="48" y2="160" stroke="#e5e7eb" stroke-width="1"/>
+            <line x1="48" y1="160" x2="318" y2="160" stroke="#e5e7eb" stroke-width="1"/>
+            <line x1="48" y1="128" x2="318" y2="128" stroke="#e5e7eb" stroke-width="0.5" stroke-dasharray="3,3"/>
+            <line x1="48" y1="96"  x2="318" y2="96"  stroke="#e5e7eb" stroke-width="0.5" stroke-dasharray="3,3"/>
+            <line x1="48" y1="64"  x2="318" y2="64"  stroke="#e5e7eb" stroke-width="0.5" stroke-dasharray="3,3"/>
+            <line x1="48" y1="32"  x2="318" y2="32"  stroke="#e5e7eb" stroke-width="0.5" stroke-dasharray="3,3"/>
+            <!-- y-axis labels: 0,2,4,6,8,10 mapped to y=160,128,96,64,32 -->
+            <text x="42" y="163" text-anchor="end" font-size="9" fill="#9ca3af">0</text>
+            <text x="42" y="131" text-anchor="end" font-size="9" fill="#9ca3af">2</text>
+            <text x="42" y="99"  text-anchor="end" font-size="9" fill="#9ca3af">4</text>
+            <text x="42" y="67"  text-anchor="end" font-size="9" fill="#9ca3af">6</text>
+            <text x="42" y="35"  text-anchor="end" font-size="9" fill="#9ca3af">8</text>
+            <!-- Bars: 6 groups, each pair. x start=50, group width=44, bar width=14, gap=4 -->
+            <!-- Group 1: pI Risk — before=8, after=3 -->
+            <rect x="53"  y="32"  width="14" height="128" rx="2" fill="#ef4444" opacity="0.85"/>
+            <rect x="69"  y="112" width="14" height="48"  rx="2" fill="#0d9488" opacity="0.85"/>
+            <!-- Group 2: Aggregation — before=7, after=1 -->
+            <rect x="97"  y="48"  width="14" height="112" rx="2" fill="#ef4444" opacity="0.85"/>
+            <rect x="113" y="144" width="14" height="16"  rx="2" fill="#0d9488" opacity="0.85"/>
+            <!-- Group 3: Immunogenicity — before=8, after=1 -->
+            <rect x="141" y="32"  width="14" height="128" rx="2" fill="#ef4444" opacity="0.85"/>
+            <rect x="157" y="144" width="14" height="16"  rx="2" fill="#0d9488" opacity="0.85"/>
+            <!-- Group 4: GRAVY — before=4, after=3 -->
+            <rect x="185" y="96"  width="14" height="64"  rx="2" fill="#ef4444" opacity="0.85"/>
+            <rect x="201" y="112" width="14" height="48"  rx="2" fill="#0d9488" opacity="0.85"/>
+            <!-- Group 5: CDR Chem — before=1, after=1 -->
+            <rect x="229" y="144" width="14" height="16"  rx="2" fill="#ef4444" opacity="0.85"/>
+            <rect x="245" y="144" width="14" height="16"  rx="2" fill="#0d9488" opacity="0.85"/>
+            <!-- Group 6: Instability — before=5, after=3 -->
+            <rect x="273" y="80"  width="14" height="80"  rx="2" fill="#ef4444" opacity="0.85"/>
+            <rect x="289" y="112" width="14" height="48"  rx="2" fill="#0d9488" opacity="0.85"/>
+            <!-- x-axis labels -->
+            <text x="68"  y="175" text-anchor="middle" font-size="8.5" fill="#6b7280">pI Risk</text>
+            <text x="112" y="175" text-anchor="middle" font-size="8.5" fill="#6b7280">Aggregation</text>
+            <text x="156" y="175" text-anchor="middle" font-size="8.5" fill="#6b7280">Immuno.</text>
+            <text x="200" y="175" text-anchor="middle" font-size="8.5" fill="#6b7280">GRAVY</text>
+            <text x="244" y="175" text-anchor="middle" font-size="8.5" fill="#6b7280">CDR Chem</text>
+            <text x="288" y="175" text-anchor="middle" font-size="8.5" fill="#6b7280">Instability</text>
+          </svg>
+        </div>
+
+        <!-- Right: horizontal bar chart for key metrics -->
+        <div style="background:#f9fafb;border:1px solid #e5e7eb;border-radius:12px;padding:20px;">
+          <div style="font-size:13px;font-weight:700;color:#111827;margin-bottom:2px;">muMAb4D5 → hz4D5 &nbsp;Key Results</div>
+          <div style="font-size:11px;color:#6b7280;margin-bottom:14px;">Germline identity · back-mutations · CDR fidelity</div>
+          <svg viewBox="0 0 300 190" width="100%" xmlns="http://www.w3.org/2000/svg" style="display:block;">
+            <!-- Row 1: VH Germline 74.1% -->
+            <text x="0" y="22" font-size="9.5" fill="#374151">VH Germline ID</text>
+            <rect x="0" y="27" width="222" height="12" rx="3" fill="#3b82f6" opacity="0.85"/>
+            <text x="226" y="38" font-size="9" fill="#374151">74.1%</text>
+            <!-- Row 2: VL Germline 84.2% -->
+            <text x="0" y="58" font-size="9.5" fill="#374151">VL Germline ID</text>
+            <rect x="0" y="63" width="252" height="12" rx="3" fill="#6366f1" opacity="0.85"/>
+            <text x="256" y="74" font-size="9" fill="#374151">84.2%</text>
+            <!-- Row 3: Back-mut VH 4 (scale /10 × 100 = 40px) -->
+            <text x="0" y="94" font-size="9.5" fill="#374151">Back-mutations (VH)</text>
+            <rect x="0" y="99" width="40" height="12" rx="3" fill="#f59e0b" opacity="0.85"/>
+            <text x="44" y="110" font-size="9" fill="#374151">4</text>
+            <!-- Row 4: Back-mut VL 0 -->
+            <text x="0" y="130" font-size="9.5" fill="#374151">Back-mutations (VL)</text>
+            <rect x="0" y="135" width="2" height="12" rx="2" fill="#10b981" opacity="0.6"/>
+            <text x="6" y="146" font-size="9" fill="#10b981" font-weight="600">0 ✓</text>
+            <!-- Row 5: CDR identity 100% -->
+            <text x="0" y="166" font-size="9.5" fill="#374151">CDR identity vs Herceptin®</text>
+            <rect x="0" y="171" width="300" height="12" rx="3" fill="#0d9488" opacity="0.85"/>
+            <text x="215" y="182" font-size="9" fill="#fff" font-weight="700">100% ✓</text>
+          </svg>
+        </div>
+
+      </div>
+      <style>@media(max-width:640px){.case-charts{grid-template-columns:1fr!important;}}</style>
+      <!-- ── End Case Study Charts ──────────────────────────── -->
 
       <h2 id="submit"><span class="h2-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg></span>Submit Inquiry</h2>
       <p>Complete the form below with your sequences and requirements. We will review your submission and provide a quote within 1–2 business days.</p>
@@ -486,16 +844,21 @@
     }
     setTopNavActive();
     window.addEventListener('hashchange', setTopNavActive);
+    document.querySelectorAll('.top-header-nav a').forEach(a => {
+      a.addEventListener('click', () => { document.querySelector('.top-header-nav').classList.remove('open'); });
+    });
     document.querySelectorAll('.nav-link').forEach(a => {
       a.addEventListener('click', function(e) {
+        const href = this.getAttribute('href');
+        if (!href || !href.startsWith('#')) return; // external/page link — let browser handle it
         e.preventDefault();
-        const id = this.getAttribute('href').slice(1);
+        const id = href.slice(1);
         document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
         document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
         this.classList.add('active');
       });
     });
-    const sections = ['services','platform','sequence','developability','immunogenicity','structure','affinity-maturation','humanization','full-report','submit','contact'];
+    const sections = ['services','platform','sequence','developability','immunogenicity','structure','affinity-maturation','humanization','example','full-report','submit','contact'];
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (!entry.isIntersecting) return;
@@ -548,5 +911,9 @@
       });
     }
   </script>
+
 </body>
 </html>
+
+
+

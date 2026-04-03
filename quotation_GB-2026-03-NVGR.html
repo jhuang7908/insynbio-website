@@ -1,0 +1,568 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Quotation GB-2026-03-NVGR — Genomab Biotech Corp</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+      background: #f0f2f5;
+      color: #1a1a2e;
+      padding: 40px 20px;
+    }
+
+    .page {
+      width: 760px;
+      margin: 0 auto;
+      background: #ffffff;
+      border-radius: 4px;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.10);
+      overflow: hidden;
+    }
+
+    /* ── Header ─────────────────────────────── */
+    .header {
+      background: #ffffff;
+      border-bottom: 1px solid #e2e8f0;
+      padding: 28px 48px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+    }
+
+    .company-block { color: #1e293b; }
+
+    .company-logo {
+      display: block;
+      margin-bottom: 10px;
+      height: 40px;
+      width: auto;
+    }
+
+    .company-details {
+      font-size: 11.5px;
+      color: #475569;
+      line-height: 1.85;
+    }
+
+    .company-details a { color: #2563eb; text-decoration: none; }
+    .company-details a:hover { text-decoration: underline; }
+
+    .doc-title-block { text-align: right; }
+
+    .doc-label {
+      font-size: 30px;
+      font-weight: 800;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #0d1b3e;
+      margin-bottom: 10px;
+    }
+
+    .doc-meta {
+      font-size: 11.5px;
+      color: #475569;
+      line-height: 1.9;
+      text-align: right;
+    }
+
+    .doc-meta strong { color: #0f172a; }
+
+    /* ── Accent bar ──────────────────────────── */
+    .accent-bar {
+      height: 4px;
+      background: linear-gradient(90deg, #0d1b3e 0%, #2563eb 60%, #38bdf8 100%);
+    }
+
+    /* ── Body ────────────────────────────────── */
+    .body { padding: 40px 48px; }
+
+    /* Bill To */
+    .bill-section {
+      display: flex;
+      gap: 48px;
+      margin-bottom: 36px;
+    }
+
+    .bill-box {
+      flex: 1;
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 6px;
+      padding: 18px 22px;
+    }
+
+    .section-label {
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: #2563eb;
+      margin-bottom: 10px;
+    }
+
+    .bill-name {
+      font-size: 13.5px;
+      font-weight: 600;
+      color: #0f172a;
+      margin-bottom: 4px;
+    }
+
+    .bill-details {
+      font-size: 12px;
+      color: #475569;
+      line-height: 1.7;
+    }
+
+    /* Project title */
+    .project-box {
+      background: #eff6ff;
+      border-left: 4px solid #2563eb;
+      border-radius: 0 6px 6px 0;
+      padding: 14px 20px;
+      margin-bottom: 32px;
+    }
+
+    .project-box .section-label { margin-bottom: 6px; }
+
+    .project-title-text {
+      font-size: 15px;
+      font-weight: 600;
+      color: #1e3a8a;
+    }
+
+    /* Scope */
+    .scope-section { margin-bottom: 32px; }
+    .scope-section .section-label { margin-bottom: 12px; }
+
+    .scope-list { list-style: none; padding: 0; }
+
+    .scope-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 12.5px;
+      color: #334155;
+      padding: 7px 0;
+      border-bottom: 1px solid #f1f5f9;
+      line-height: 1.5;
+    }
+
+    .scope-list li:last-child { border-bottom: none; }
+
+    .bullet {
+      width: 18px;
+      height: 18px;
+      background: #2563eb;
+      border-radius: 50%;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 1px;
+    }
+
+    .bullet svg { width: 10px; height: 10px; fill: #fff; }
+
+    .scope-note {
+      margin-top: 12px;
+      font-size: 11px;
+      color: #64748b;
+      font-style: italic;
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 5px;
+      padding: 10px 14px;
+    }
+
+    /* Cost table */
+    .cost-section { margin-bottom: 32px; }
+    .cost-section .section-label { margin-bottom: 12px; }
+
+    table.cost-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 12.5px;
+    }
+
+    table.cost-table thead tr {
+      background: #0d1b3e;
+      color: #ffffff;
+    }
+
+    table.cost-table thead th {
+      padding: 11px 16px;
+      text-align: left;
+      font-weight: 600;
+      font-size: 11px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    table.cost-table thead th:last-child { text-align: right; }
+
+    table.cost-table tbody tr { border-bottom: 1px solid #e2e8f0; }
+    table.cost-table tbody tr:hover { background: #f8fafc; }
+
+    table.cost-table tbody td {
+      padding: 12px 16px;
+      color: #334155;
+    }
+
+    table.cost-table tbody td:last-child { text-align: right; }
+
+    .total-row {
+      background: #eff6ff !important;
+      border-top: 2px solid #2563eb !important;
+      border-bottom: none !important;
+    }
+
+    .total-row td {
+      font-weight: 700 !important;
+      color: #1e3a8a !important;
+      font-size: 13.5px !important;
+      padding: 14px 16px !important;
+    }
+
+    /* Payment terms */
+    .payment-section { margin-bottom: 36px; }
+    .payment-section .section-label { margin-bottom: 12px; }
+
+    .payment-list { list-style: none; padding: 0; }
+
+    .payment-list li {
+      font-size: 12px;
+      color: #475569;
+      padding: 6px 0;
+      padding-left: 16px;
+      position: relative;
+      line-height: 1.5;
+    }
+
+    .payment-list li::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      color: #2563eb;
+      font-weight: 700;
+    }
+
+    /* Divider */
+    .divider {
+      height: 1px;
+      background: #e2e8f0;
+      margin: 32px 0;
+    }
+
+    /* Signature */
+    .signature-section {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 40px;
+    }
+
+    .sig-block { flex: 1; }
+
+    .sig-label {
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: #2563eb;
+      margin-bottom: 8px;
+    }
+
+    .sig-name {
+      font-size: 14px;
+      font-weight: 700;
+      color: #0f172a;
+      margin-bottom: 2px;
+    }
+
+    .sig-title {
+      font-size: 11.5px;
+      color: #64748b;
+      margin-bottom: 2px;
+    }
+
+    .sig-company { font-size: 11.5px; color: #64748b; }
+
+    .sig-line-block { flex: 1; }
+
+    .sig-field { margin-bottom: 20px; }
+
+    .sig-field-label {
+      font-size: 10px;
+      color: #94a3b8;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+
+    .sig-field-line {
+      border-bottom: 1.5px solid #cbd5e1;
+      height: 28px;
+      width: 100%;
+    }
+
+    /* Footer */
+    .footer {
+      background: #f8fafc;
+      border-top: 1px solid #e2e8f0;
+      padding: 16px 48px;
+      text-align: center;
+      font-size: 10px;
+      color: #94a3b8;
+      line-height: 1.7;
+    }
+
+    .tax-note {
+      margin-top: 10px;
+      font-size: 10.5px;
+      color: #64748b;
+      font-style: italic;
+      padding: 8px 12px;
+      background: #fffbeb;
+      border: 1px solid #fde68a;
+      border-radius: 4px;
+    }
+
+    /* Print styles */
+    @media print {
+      body { background: #fff; padding: 0; }
+      .page {
+        box-shadow: none;
+        border-radius: 0;
+        width: 100%;
+        max-width: 100%;
+      }
+    }
+  
+    /* Standardized Global Header Styles */
+    .top-header { display: flex; align-items: center; justify-content: space-between; padding: 12px 32px; background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(12px); border-bottom: 2px solid rgba(13, 148, 136, 0.1); position: fixed; width: 100%; top: 0; z-index: 2000; gap: 12px; }
+    .top-header .brand { display: flex; align-items: center; }
+    .top-header .brand a { text-decoration: none; color: inherit; display: flex; align-items: center; gap: 10px; font-family: 'Cormorant Garamond', serif; font-weight: 700; font-size: 26px; }
+    .top-header .slogan { font-size: 14px; color: var(--text-muted); padding-left: 14px; border-left: 1px solid #e5e7eb; margin-left: 0; font-family: 'Inter', sans-serif; white-space: nowrap; font-weight: 600; letter-spacing: 0.02em; }
+    .top-header-nav { display: flex; align-items: center; gap: 6px; }
+    .top-header-nav a { padding: 8px 16px; font-size: 15px; color: var(--text-muted); text-decoration: none; border-radius: 20px; transition: all 0.2s ease; font-weight: 600; }
+    .top-header-nav a:hover { color: var(--primary); background: rgba(13, 148, 136, 0.06); }
+    .nav-dropdown { position: relative; }
+    .nav-dropdown > a::after { content: ' ▾'; font-size: 10px; opacity: 0.6; margin-left: 4px; }
+    .dropdown-menu { position: absolute; top: 100%; left: 50%; transform: translateX(-50%) translateY(10px); min-width: 240px; background: #fff; border: 1px solid rgba(0,0,0,0.06); border-radius: 12px; padding: 8px; box-shadow: 0 10px 40px -10px rgba(0,0,0,0.15); opacity: 0; visibility: hidden; transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1); z-index: 2001; }
+    .nav-dropdown:hover .dropdown-menu { opacity: 1; visibility: visible; transform: translateX(-50%) translateY(0); }
+    .dropdown-menu a { display: block; padding: 12px 14px; color: var(--text); border-radius: 8px; text-decoration: none; text-align: left; }
+    .dropdown-menu a:hover { background: #f9fafb; }
+    .menu-title { display: block; font-weight: 700; font-size: 14px; color: #111827; margin-bottom: 2px; }
+    .menu-desc { display: block; font-size: 12px; color: #6b7280; font-weight: 400; }
+
+        body { padding-top: 72px; }
+    </style>
+</head>
+<body>
+  <header class="top-header">
+    <div class="brand">
+      <a href="index.html">
+        <svg width="34" height="28" viewBox="0 0 32 30" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink:0;">
+          <path d="M16 2L2 10V22L16 28L30 22V10L16 2Z" fill="#0d9488" fill-opacity="0.1" stroke="#0d9488" stroke-width="2.5" />
+          <path d="M7 14L16 19L25 14" stroke="#0d9488" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" />
+          <path d="M16 19V28" stroke="#0d9488" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" />
+          <path d="M7 14L7 6C7 6 10 2 16 2C22 2 25 6 25 6L25 14" stroke="#0d9488" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" />
+          <circle cx="7" cy="6" r="2" fill="#0f766e" />
+          <circle cx="25" cy="6" r="2" fill="#0f766e" />
+          <circle cx="16" cy="18" r="2" fill="white" stroke="#0d9488" stroke-width="1.5" />
+        </svg>
+        <span><span style="color:#111827">In</span><span style="color:var(--primary); font-style:italic">Syn</span><span style="color:#111827">Bio</span></span>
+      </a>
+      <span class="slogan">AI for Life Sciences</span>
+    </div>
+    <nav class="top-header-nav">
+      <a href="index.html">Home</a>
+      <a href="index.html#about">About Us</a>
+      <div class="nav-dropdown" tabindex="0">
+        <a href="index.html#services">Services</a>
+        <div class="dropdown-menu">
+          <a href="InSynBio_Antibody_Developability_Assessment_Page.html">
+            <span class="menu-title">Antibody</span>
+            <span class="menu-desc">Structure-based Development</span>
+          </a>
+          <a href="InSynBio_CART_Design_Page.html">
+            <span class="menu-title">CAR-T</span>
+            <span class="menu-desc">Smart CAR-T Design</span>
+          </a>
+          <a href="InSynBio_Bispecific_Antibody_Design_Page.html">
+            <span class="menu-title">Bispecific</span>
+            <span class="menu-desc">Multispecific Engineering</span>
+          </a>
+        </div>
+      </div>
+      <a href="index.html#case-studies">Case Studies</a>
+      <a href="InSynBio_OurTech.html" style="color: var(--primary); font-weight: 700;">Our Tech</a>
+      <a href="index.html#workflow">Workflow</a>
+      <a href="index.html#faq">FAQ</a>
+      <a href="index.html#contact">Contact Us</a>
+    </nav>
+  </header>
+  <div class="page">
+
+    <!-- Header -->
+    <div class="header">
+      <div class="company-block">
+        <img class="company-logo"
+             src="https://static.wixstatic.com/media/13a1a0_dc10818f76f046858faf09726c3f110c~mv2.png/v1/fill/w_358,h_76,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/image_edited_edited.png"
+             alt="Genomab Biotech Corp">
+        <div class="company-details">
+          C/O Harlem Biospace<br>
+          423 W 127th St, New York, NY 10027<br>
+          Phone: (716) 465-0608 &nbsp;|&nbsp; <a href="https://www.genomab.com" target="_blank">www.genomab.com</a><br>
+          Finance: <a href="mailto:ChristinaL@genomab.com">ChristinaL@genomab.com</a> &nbsp;|&nbsp; CEO: <a href="mailto:jhuang@genomab.com">jhuang@genomab.com</a>
+        </div>
+      </div>
+      <div class="doc-title-block">
+        <div class="doc-label">Quotation</div>
+        <div class="doc-meta">
+          <strong>Quote No.:</strong> GB-2026-03-NVGR<br>
+          <strong>Date:</strong> March 3, 2026<br>
+          <strong>Valid Until:</strong> April 3, 2026
+        </div>
+      </div>
+    </div>
+
+    <div class="accent-bar"></div>
+
+    <!-- Body -->
+    <div class="body">
+
+      <!-- Bill To -->
+      <div class="bill-section">
+        <div class="bill-box">
+          <div class="section-label">Bill To</div>
+          <div class="bill-name">Mayo Clinic</div>
+          <div class="bill-details">
+            Attn: Mohsen Khosravi-Maharlooei, M.D.<br>
+            Department of Immunology and<br>
+            Department of Biochemistry and Molecular Biology<br>
+            Mayo Clinic, Scottsdale, Arizona, USA
+          </div>
+        </div>
+      </div>
+
+      <!-- Project Title -->
+      <div class="project-box">
+        <div class="section-label">Project Description</div>
+        <div class="project-title-text">NVGR Mouse Strain – Re-derivation and Validation Services</div>
+      </div>
+
+      <!-- Scope of Work -->
+      <div class="scope-section">
+        <div class="section-label">Services Included</div>
+        <ul class="scope-list">
+          <li>
+            <span class="bullet">
+              <svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3" stroke="#fff" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+            Embryo re-derivation
+          </li>
+          <li>
+            <span class="bullet">
+              <svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3" stroke="#fff" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+            Colony establishment
+          </li>
+          <li>
+            <span class="bullet">
+              <svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3" stroke="#fff" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+            Genotype verification
+          </li>
+          <li>
+            <span class="bullet">
+              <svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3" stroke="#fff" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+            Basic phenotypic validation
+          </li>
+        </ul>
+        <div class="scope-note">
+          This quotation applies to re-derivation and validation services for one mouse strain (NVGR) only.
+        </div>
+      </div>
+
+      <!-- Financial Summary -->
+      <div class="cost-section">
+        <div class="section-label">Financial Summary</div>
+        <table class="cost-table">
+          <thead>
+            <tr>
+              <th style="width:50px;">Item</th>
+              <th>Description</th>
+              <th style="width:140px;">Amount (USD)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td style="color:#64748b;">1</td>
+              <td>NVGR Re-derivation &amp; Validation</td>
+              <td>$5,000.00</td>
+            </tr>
+            <tr class="total-row">
+              <td colspan="2" style="text-align:right; letter-spacing:0.04em;">TOTAL DUE</td>
+              <td>USD $5,000.00</td>
+            </tr>
+          </tbody>
+        </table>
+        <p class="tax-note">All fees are exclusive of applicable taxes. Tax-exempt organizations must provide a valid exemption certificate prior to invoicing.</p>
+      </div>
+
+      <!-- Terms and Conditions -->
+      <div class="payment-section">
+        <div class="section-label">Terms and Conditions</div>
+        <ul class="payment-list">
+          <li>Full project fee of USD $5,000 due upon invoice issuance following Purchase Order (PO) confirmation</li>
+          <li><strong style="color:#0f172a;">Project initiation will begin upon receipt of payment</strong></li>
+          <li>Payment terms: Net 30 from invoice date</li>
+          <li>Accepted payment methods: Check or ACH wire transfer</li>
+          <li>Wire transfer / ACH instructions will be provided upon PO confirmation</li>
+          <li>This quotation covers re-derivation and validation services only; all other associated costs are not included</li>
+          <li>Pricing valid for 30 days from the date of issue</li>
+        </ul>
+      </div>
+
+      <div class="divider"></div>
+
+      <!-- Signature -->
+      <div class="signature-section">
+        <div class="sig-block">
+          <div class="sig-label">Authorized Representative</div>
+          <div class="sig-name">Jing Huang</div>
+          <div class="sig-title">Chief Executive Officer (CEO)</div>
+          <div class="sig-company">Genomab Biotech Corp</div>
+        </div>
+        <div class="sig-line-block">
+          <div class="sig-field">
+            <div class="sig-field-label">Signature</div>
+            <div class="sig-field-line"></div>
+          </div>
+          <div class="sig-field">
+            <div class="sig-field-label">Date</div>
+            <div class="sig-field-line"></div>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /body -->
+
+    <!-- Footer -->
+    <div class="footer">
+      Genomab Biotech Corp &nbsp;·&nbsp; 423 W 127th St, New York, NY 10027 &nbsp;·&nbsp;
+      ChristinaL@genomab.com &nbsp;·&nbsp; www.genomab.com<br>
+      This quotation is valid for 30 days from the date of issue. All prices are in USD.
+    </div>
+
+  </div><!-- /page -->
+</body>
+</html>
