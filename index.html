@@ -15,7 +15,13 @@
   <meta name="robots" content="noai, noimageai">
   <meta name="AI-Training" content="opt-out">
   <link rel="canonical" href="https://www.insynbio.com/">
-  <script defer data-domain="insynbio.com" src="https://plausible.io/js/script.js"></script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-MWDN9HEPC0"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-MWDN9HEPC0');
+  </script>
 
   <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website">
@@ -729,9 +735,8 @@
   </footer>
 
   <script>
-    window.plausible = window.plausible || function() { (window.plausible.q = window.plausible.q || []).push(arguments); };
     function trackEvent(name, props) {
-      window.plausible(name, props ? { props: props } : undefined);
+      gtag('event', name, props || {});
     }
 
     document.documentElement.classList.add('js');
