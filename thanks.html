@@ -1,12 +1,12 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Thank you for contacting InSynBio. We will review your inquiry and respond within 3–5 business days.">
+  <meta name="description" content="Thank you for contacting InSynBio. Your inquiry has been received and our team will follow up with next steps within 1–2 business days.">
   <meta name="robots" content="noindex, follow">
   <link rel="canonical" href="https://www.insynbio.com/thanks.html">
-  <title>Thank You | InSynBio</title>
+  <title>Inquiry Received | InSynBio</title>
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -15,7 +15,7 @@
     :root { --primary: #0d9488; --primary-dark: #0f766e; --text: #1f2937; --text-muted: #6b7280; --border: #e5e7eb; --bg: #ffffff; --bg-alt: #f9fafb; }
     * { box-sizing: border-box; }
     body { margin: 0; font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 16px; line-height: 1.6; color: var(--text); background-color: #ffffff; background-image: linear-gradient(to bottom, rgba(255,255,255,0.85) 0%, rgba(255,255,255,0.75) 100%), url('images/hero_banner.png'); background-size: cover; background-position: center; min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 24px; }
-    .container { max-width: 560px; text-align: center; }
+    .container { max-width: 760px; text-align: center; }
     .brand-logo { font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 600; font-size: 32px; letter-spacing: -0.02em; margin-bottom: 32px; }
     .brand-logo a { text-decoration: none; color: inherit; }
     .brand-logo .in { color: var(--text); }
@@ -29,19 +29,22 @@
     .highlight { color: var(--primary); font-weight: 500; }
     .btn { display: inline-block; margin-top: 28px; padding: 14px 28px; background: var(--primary); color: #fff; border: none; border-radius: 8px; font-size: 15px; font-weight: 500; text-decoration: none; font-family: inherit; cursor: pointer; transition: background 0.2s; }
     .btn:hover { background: var(--primary-dark); }
+    .next-steps { margin-top: 28px; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; text-align: left; }
+    .step-card { background: rgba(255,255,255,0.88); border: 1px solid rgba(13,148,136,0.12); border-radius: 16px; padding: 18px 18px 16px; box-shadow: 0 12px 28px -24px rgba(13,148,136,0.24); }
+    .step-card strong { display: block; margin-bottom: 6px; color: #111827; font-size: 14px; }
+    .step-card p { margin: 0; font-size: 13px; color: #6b7280; line-height: 1.55; }
+    .cta-row { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+    .btn-secondary { display: inline-block; margin-top: 28px; padding: 14px 28px; background: rgba(13,148,136,0.08); color: var(--primary-dark); border: 1px solid rgba(13,148,136,0.16); border-radius: 8px; font-size: 15px; font-weight: 600; text-decoration: none; }
+    .btn-secondary:hover { background: rgba(13,148,136,0.14); }
     .footer { margin-top: 48px; font-size: 13px; color: var(--text-muted); }
     .footer a { color: var(--primary); text-decoration: none; }
     .footer a:hover { text-decoration: underline; }
   
     @media (max-width: 600px) {
-      .top-header { padding: 12px 16px; flex-wrap: wrap; gap: 10px; }
-      .top-header .brand { flex: 1 1 auto; display: flex; align-items: center; gap: 8px; }
-      .top-header .slogan { font-size: 12px; padding-left: 10px; border-left: 1px solid var(--border); white-space: nowrap; }
-      .top-header-nav { order: 3; width: 100%; flex: 1 1 100%; justify-content: flex-start; flex-wrap: wrap; gap: 4px; overflow-x: auto; padding-bottom: 4px; -webkit-overflow-scrolling: touch; border-top: 1px solid var(--border); padding-top: 8px; margin-top: 2px; }
-      .top-header-nav a { flex-shrink: 0; font-size: 13px; padding: 6px 10px; }
       body { padding: 16px; }
       h1 { font-size: 28px !important; }
       .container { padding: 0 12px; }
+      .next-steps { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -76,13 +79,31 @@
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
     </div>
 
-    <h1>Thank You</h1>
+    <h1>Inquiry Received</h1>
 
-    <p>Your inquiry has been received successfully. We will review your submission and respond within <span class="highlight">3–5 business days</span>.</p>
+    <p>Your inquiry has been received successfully. We will review your submission and respond with recommended next steps within <span class="highlight">1–2 business days</span>.</p>
 
-    <p style="font-size: 14px; margin-top: 16px;">If you have a PDB file to share, please email it to <a href="mailto:contact@insynbio.com" style="color: var(--primary);">contact@insynbio.com</a> and mention your inquiry.</p>
+    <p style="font-size: 14px; margin-top: 16px;">If you would like to share a PDB file, sequence package, or request an NDA before the next exchange, email <a href="mailto:contact@insynbio.com" style="color: var(--primary);">contact@insynbio.com</a>.</p>
 
-    <a href="index.html" class="btn">Back to Home</a>
+    <div class="next-steps">
+      <div class="step-card">
+        <strong>1. Technical review</strong>
+        <p>Our team reviews your project context, target, and requested support area.</p>
+      </div>
+      <div class="step-card">
+        <strong>2. Scope alignment</strong>
+        <p>We follow up with questions, recommended scope, or a suggested work package if needed.</p>
+      </div>
+      <div class="step-card">
+        <strong>3. Secure handoff</strong>
+        <p>Detailed sequence files or structure data can be shared by email after this initial contact.</p>
+      </div>
+    </div>
+
+    <div class="cta-row">
+      <a href="index.html" class="btn">Back to Home</a>
+      <a href="mailto:contact@insynbio.com?subject=Request%20NDA%20-%20InSynBio" class="btn-secondary">Request NDA</a>
+    </div>
   </div>
 
   <div class="footer">

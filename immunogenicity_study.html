@@ -30,10 +30,10 @@
 
     /* === HEADER === */
     .top-header { display: flex; align-items: center; justify-content: space-between; padding: 12px 32px; background: rgba(255,255,255,0.95); backdrop-filter: blur(12px); border-bottom: 2px solid rgba(13,148,136,0.1); position: fixed; width: 100%; top: 0; z-index: 2000; gap: 12px; flex-wrap: wrap; }
-    .top-header .brand { font-family: 'Cormorant Garamond', serif; font-weight: 700; font-size: 26px; letter-spacing: -0.03em; }
-    .top-header .brand a { text-decoration: none; color: inherit; display: flex; align-items: center; gap: 10px; }
+    .top-header .brand { font-family: 'Cormorant Garamond', serif; font-weight: 700; font-size: 26px; letter-spacing: -0.03em; display: flex; align-items: center; flex-wrap: nowrap; min-width: max-content; }
+    .top-header .brand a { text-decoration: none; color: inherit; display: flex; align-items: center; gap: 10px; white-space: nowrap; flex-shrink: 0; }
     .top-header .brand .syn { color: var(--primary); font-style: italic; }
-    .top-header .slogan { font-size: 13px; color: var(--text-muted); padding-left: 14px; border-left: 1px solid var(--border); margin-left: 4px; font-weight: 500; white-space: nowrap; }
+    .top-header .slogan { font-size: 13px; color: var(--text-muted); padding-left: 14px; border-left: 1px solid var(--border); margin-left: 4px; font-weight: 500; white-space: nowrap; display: inline-flex; align-items: center; flex-shrink: 0; }
     .top-header-nav { display: flex; align-items: center; gap: 6px; flex: 1; justify-content: center; }
     .top-header-nav a { padding: 8px 16px; font-size: 14px; color: var(--text-muted); text-decoration: none; border-radius: 20px; transition: all 0.2s; font-weight: 500; }
     .top-header-nav a:hover { color: var(--primary); background: rgba(13,148,136,0.06); }

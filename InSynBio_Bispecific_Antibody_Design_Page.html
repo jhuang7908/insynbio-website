@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="InSynBio Bispecific Antibody Engineering Platform — AI-driven design for multispecifics. Nano-Convert (VH-to-VHH), SmartLink optimization, and Virtual CMC for IgG-like pairing.">
+  <meta name="description" content="Design-ready support for bispecific antibody programs, including multispecific architecture selection, linker strategy, developability review, and expert-guided optimization.">
   <meta name="keywords" content="bispecific antibody, multispecific, VH to VHH, nanobody, smart linker, IgG-like pairing, knob-in-hole, crossmab, antibody engineering, InSynBio">
   <meta name="robots" content="index, follow">
   <meta name="robots" content="noai, noimageai">
@@ -11,15 +11,15 @@
   <link rel="canonical" href="https://www.insynbio.com/InSynBio_Bispecific_Antibody_Design_Page.html">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://www.insynbio.com/InSynBio_Bispecific_Antibody_Design_Page.html">
-  <meta property="og:title" content="Bispecific Engineering | InSynBio — AI for Life Sciences">
-  <meta property="og:description" content="InSynBio Bispecific Antibody Engineering Platform — AI-driven design for multispecifics. Nano-Convert (VH-to-VHH), SmartLink optimization, and Virtual CMC for IgG-like pairing.">
+  <meta property="og:title" content="Bispecific Antibody Design | InSynBio">
+  <meta property="og:description" content="Design-ready support for bispecific antibody programs, including multispecific architecture selection, linker strategy, developability review, and expert-guided optimization.">
   <meta property="og:image" content="https://www.insynbio.com/images/hero-bg.svg">
   <meta property="twitter:card" content="summary_large_image">
   <meta property="twitter:url" content="https://www.insynbio.com/InSynBio_Bispecific_Antibody_Design_Page.html">
-  <meta property="twitter:title" content="Bispecific Engineering | InSynBio — AI for Life Sciences">
-  <meta property="twitter:description" content="InSynBio Bispecific Antibody Engineering Platform — AI-driven design for multispecifics. Nano-Convert (VH-to-VHH), SmartLink optimization, and Virtual CMC for IgG-like pairing.">
+  <meta property="twitter:title" content="Bispecific Antibody Design | InSynBio">
+  <meta property="twitter:description" content="Design-ready support for bispecific antibody programs, including multispecific architecture selection, linker strategy, developability review, and expert-guided optimization.">
   <meta property="twitter:image" content="https://www.insynbio.com/images/hero-bg.svg">
-  <title>Bispecific Engineering | InSynBio — AI for Life Sciences</title>
+  <title>Bispecific Antibody Design | InSynBio</title>
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -33,8 +33,8 @@
     .top-header { display: flex; align-items: center; justify-content: space-between; padding: 12px 32px; background: rgba(255,255,255,0.95); backdrop-filter: blur(12px); border-bottom: 2px solid rgba(13,148,136,0.1); flex-wrap: nowrap; gap: 12px; position: fixed; width: 100%; top: 0; z-index: 2000; }
     .mobile-menu-btn { display: none; background: none; border: none; padding: 6px; cursor: pointer; color: var(--text); flex-shrink: 0; }
     .nav-close-btn { display: none; }
-    .top-header .brand { font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 700; font-size: 26px; letter-spacing: -0.03em; display: flex; align-items: center; }
-    .top-header .brand a { text-decoration: none; color: inherit; display: flex; align-items: center; gap: 10px; }
+    .top-header .brand { font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 700; font-size: 26px; letter-spacing: -0.03em; display: flex; align-items: center; flex-wrap: nowrap; min-width: max-content; }
+    .top-header .brand a { text-decoration: none; color: inherit; display: flex; align-items: center; gap: 10px; white-space: nowrap; flex-shrink: 0; }
     .top-header .brand .syn { color: var(--primary); font-style: italic; }
     .top-header .slogan { font-size: 13px; color: var(--text-muted); margin-left: 0; padding-left: 14px; border-left: 1px solid var(--border); font-family: 'Inter', sans-serif; white-space: nowrap; font-weight: 500; letter-spacing: 0.02em; }
     
@@ -115,6 +115,21 @@
     .mission-block::before { content: ''; position: absolute; top: 0; right: 0; width: 200px; height: 200px; background: radial-gradient(circle, rgba(13,148,136,0.1) 0%, transparent 70%); border-radius: 50%; transform: translate(30%, -30%); pointer-events: none; }
     .mission-block p { margin: 0; font-size: 17px; line-height: 1.7; color: #111827; position: relative; z-index: 1; }
     .mission-block p + p { margin-top: 16px; }
+    .trust-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; margin: 24px 0 36px; }
+    .trust-card { background: linear-gradient(160deg, #ffffff 0%, #f5fbfa 100%); border: 1px solid rgba(13,148,136,0.12); border-radius: 16px; padding: 22px; box-shadow: 0 12px 28px -24px rgba(13,148,136,0.24); }
+    .trust-card .eyebrow { display: block; margin-bottom: 8px; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--primary); }
+    .trust-card h3 { margin: 0 0 8px; font-size: 18px; color: #111827; letter-spacing: -0.01em; }
+    .trust-card p { margin: 0; font-size: 14px; line-height: 1.6; color: #5b6472; }
+    .form-intro { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(260px, 0.9fr); gap: 18px; margin-bottom: 24px; }
+    .form-panel { background: linear-gradient(155deg, #f9fffe 0%, #f3fbf9 100%); border: 1px solid rgba(13,148,136,0.12); border-radius: 16px; padding: 22px; }
+    .form-panel h3 { margin: 0 0 8px; font-size: 18px; color: #111827; }
+    .form-panel p { margin: 0; font-size: 14px; line-height: 1.6; color: #5b6472; }
+    .form-panel ul { margin: 12px 0 0; padding-left: 18px; }
+    .form-panel li { margin: 0 0 8px; font-size: 14px; line-height: 1.55; color: #4b5563; }
+    .form-status { display: none; margin-top: 18px; padding: 14px 16px; border-radius: 12px; font-size: 14px; line-height: 1.5; }
+    .form-status.is-visible { display: block; }
+    .form-status.success { background: #ecfdf5; color: #166534; border: 1px solid #bbf7d0; }
+    .form-status.error { background: #fef2f2; color: #991b1b; border: 1px solid #fecaca; }
     
     .site-footer { margin-top: 80px; padding-top: 32px; border-top: 1px solid rgba(0,0,0,0.05); font-size: 14px; color: #9ca3af; text-align: center; }
     .site-footer a { color: #6b7280; text-decoration: none; transition: color 0.2s; }
@@ -126,7 +141,7 @@
     }
     @media (max-width: 900px) {
       .top-header { flex-wrap: wrap; padding: 12px 16px; gap: 10px; }
-      .top-header .brand { flex: 1 1 auto; min-width: 0; display: flex; align-items: center; flex-wrap: wrap; gap: 8px; }
+      .top-header .brand { flex: 1 1 auto; min-width: 0; display: flex; align-items: center; flex-wrap: nowrap; gap: 8px; }
       .top-header .slogan { display: inline-block !important; font-size: 12px; padding-left: 10px; border-left: 1px solid var(--border); white-space: nowrap; }
       .top-header .header-right { order: 2; margin-left: auto; }
       .top-header-nav { order: 3; width: 100%; flex: 1 1 100%; justify-content: flex-start; flex-wrap: wrap; gap: 6px; overflow-x: auto; padding-bottom: 4px; -webkit-overflow-scrolling: touch; border-top: 1px solid var(--border); padding-top: 10px; margin-top: 2px; }
@@ -137,6 +152,7 @@
       .sidebar nav a { display: inline-flex; padding: 8px 12px; border-radius: 6px; border-left: none; }
       .main { padding: 32px 24px 64px; }
       .mission-block { padding: 20px; margin-bottom: 24px; }
+      .trust-grid, .form-intro { grid-template-columns: 1fr; }
     }
   
     @media (max-width: 600px) {
@@ -284,11 +300,28 @@
       </div>
 
       <h1>Bispecific Antibody Engineering</h1>
-      <p class="subtitle">Structure-Guided Design for Next-Generation Multispecifics.</p>
+      <p class="subtitle">Decision-ready bispecific design support for teams comparing format, pairing risk, linker strategy, and manufacturability.</p>
 
       <div class="mission-block">
-        <p><strong>Navigate the complexity of multispecific design.</strong> Our suite includes <strong>Nano-Convert™</strong> (VH-to-VHH) for modular architecture, <strong>SmartLink™</strong> optimization for precise epitope engagement, and <strong>Virtual CMC</strong> to resolve chain mispairing in IgG-like formats.</p>
-        <p>Powered by our <strong>Clinical Knowledge Base of 134+ molecules</strong> (78 IgG-like + 56 BiTE/scFv), <strong>84 validated linker geometries</strong>, and <strong>78 IgG-like structural models</strong> with full CMC metrics for mispairing risk assessment. <a href="index.html#about">Learn more →</a></p>
+        <p><strong>Navigate the complexity of multispecific design with clearer technical tradeoffs.</strong> Our suite includes <strong>Nano-Convert™</strong> (VH-to-VHH) for modular architecture, <strong>SmartLink™</strong> optimization for precise epitope engagement, and <strong>Virtual CMC</strong> to resolve chain mispairing in IgG-like formats.</p>
+        <p>Powered by our <strong>clinical knowledge base of 134+ molecules</strong>, <strong>84 validated linker geometries</strong>, and <strong>78 IgG-like structural models</strong>, this service is built for teams deciding which architecture is most likely to survive development. <a href="index.html#about">Learn more →</a></p>
+      </div>
+      <div class="trust-grid">
+        <div class="trust-card">
+          <span class="eyebrow">Best For</span>
+          <h3>Format And Pairing Decisions</h3>
+          <p>Use this when you need to compare IgG-like, scFv, or VHH-based multispecific strategies before investing in cloning and expression.</p>
+        </div>
+        <div class="trust-card">
+          <span class="eyebrow">What You Receive</span>
+          <h3>Actionable Design Guidance</h3>
+          <p>Expect a clearer recommendation on format, linker, pairing stability, and manufacturability risk, not just raw structural output.</p>
+        </div>
+        <div class="trust-card">
+          <span class="eyebrow">How To Start</span>
+          <h3>Program Context First</h3>
+          <p>You can begin with targets and design constraints now, then share sequences after NDA review or technical follow-up if needed.</p>
+        </div>
       </div>
       
       <p class="disclaimer">Disclaimer: InSynBio in silico analyses are for reference only and do not replace final wet-lab validation. Experimental confirmation is required.</p>
@@ -649,13 +682,29 @@
         </div>
       </div>
 
-      <h2 id="submit"><span class="h2-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg></span>Submit Inquiry</h2>
-      <p>Tell us about your project. We will provide a tailored design proposal.</p>
+      <h2 id="submit"><span class="h2-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg></span>Start Your Inquiry</h2>
+      <p>Start with your targets and design goal. Detailed sequence-level constraints can be added immediately or shared after follow-up.</p>
 
       <div class="form-section">
         <form id="inquiry-form" action="https://formspree.io/f/mnjblezr" method="POST">
           <input type="hidden" name="_subject" value="InSynBio Bispecific Inquiry">
           <input type="hidden" name="_next" value="https://insynbio.com/thanks.html">
+          <input type="hidden" name="source_page" value="InSynBio_Bispecific_Antibody_Design_Page.html">
+
+          <div class="form-intro">
+            <div class="form-panel">
+              <h3>What to submit first</h3>
+              <p>Tell us the two targets, preferred format if any, and the main issue you want solved: format selection, linker geometry, pairing stability, or full design.</p>
+            </div>
+            <div class="form-panel">
+              <h3>Typical output</h3>
+              <ul>
+                <li>Format recommendation with precedent context</li>
+                <li>Pairing and mispairing risk assessment</li>
+                <li>Linker and design next-step guidance</li>
+              </ul>
+            </div>
+          </div>
           
           <h3 style="margin-top: 0; margin-bottom: 20px;">Project Scope</h3>
           <div class="form-group full">
@@ -700,12 +749,12 @@
           <h3 style="margin-top: 24px; margin-bottom: 20px;">Contact Information</h3>
           <div class="form-row">
             <div class="form-group">
-              <label for="fname">First Name *</label>
-              <input type="text" id="fname" name="fname" required>
+              <label for="fname">First Name</label>
+              <input type="text" id="fname" name="fname">
             </div>
             <div class="form-group">
-              <label for="lname">Last Name *</label>
-              <input type="text" id="lname" name="lname" required>
+              <label for="lname">Last Name</label>
+              <input type="text" id="lname" name="lname">
             </div>
           </div>
           <div class="form-row">
@@ -719,6 +768,7 @@
             </div>
           </div>
           
+          <div id="form-status" class="form-status" aria-live="polite"></div>
           <div style="margin-top: 24px;">
             <button type="submit" class="btn">Submit Inquiry</button>
           </div>
@@ -727,7 +777,7 @@
 
       <!-- Contact -->
       <h2 id="contact"><span class="h2-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></span>Contact</h2>
-      <p>For inquiries, please submit the form above or email us directly:</p>
+      <p>For project inquiries, submit the form above or email us directly for an NDA or early discussion:</p>
       
       <p style="margin: 16px 0;"><a href="mailto:contact@insynbio.com" style="font-size: 18px; font-weight: 600; color: var(--primary);">contact@insynbio.com</a></p>
       <p  style="color: var(--text-muted); font-size: 14px;">We typically respond within 1–2 business days.</p>
@@ -773,12 +823,19 @@
     // Form submission
     const form = document.getElementById('inquiry-form');
     if (form) {
+      const status = document.getElementById('form-status');
+      const setStatus = (message, type) => {
+        if (!status) return;
+        status.textContent = message;
+        status.className = 'form-status is-visible ' + type;
+      };
       form.addEventListener('submit', function(e) {
         e.preventDefault();
         const btn = form.querySelector('button[type="submit"]');
         const originalText = btn.innerText;
         btn.disabled = true;
         btn.innerText = 'Submitting...';
+        setStatus('Submitting your inquiry...', 'success');
 
         const formData = new FormData(form);
         fetch(form.action, {
@@ -787,14 +844,15 @@
           headers: { 'Accept': 'application/json' }
         }).then(response => {
           if (response.ok) {
+            setStatus('Inquiry received. Redirecting to the confirmation page...', 'success');
             window.location.href = 'thanks.html';
           } else {
-            alert("Oops! There was a problem submitting your form");
+            setStatus('There was a problem submitting your form. Please email contact@insynbio.com if the issue continues.', 'error');
             btn.disabled = false;
             btn.innerText = originalText;
           }
         }).catch(error => {
-          alert("Oops! There was a problem submitting your form");
+          setStatus('There was a problem submitting your form. Please email contact@insynbio.com if the issue continues.', 'error');
           btn.disabled = false;
           btn.innerText = originalText;
         });

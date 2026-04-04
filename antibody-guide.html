@@ -24,8 +24,8 @@
 
     /* ── Header ── */
     .top-header{display:flex;align-items:center;justify-content:space-between;padding:12px 32px;background:rgba(255,255,255,0.95);backdrop-filter:blur(12px);border-bottom:2px solid rgba(13,148,136,0.1);flex-wrap:nowrap;gap:12px;position:fixed;width:100%;top:0;z-index:2000;}
-    .brand a{text-decoration:none;color:inherit;display:flex;align-items:center;gap:10px;}
-    .slogan{font-size:13px;color:var(--text-muted);padding-left:14px;border-left:1px solid var(--border);white-space:nowrap;font-weight:500;letter-spacing:.02em;}
+    .brand{display:flex;align-items:center;gap:0;flex-wrap:nowrap;min-width:max-content;}.brand a{text-decoration:none;color:inherit;display:flex;align-items:center;gap:10px;white-space:nowrap;flex-shrink:0;}
+    .slogan{font-size:13px;color:var(--text-muted);padding-left:14px;border-left:1px solid var(--border);white-space:nowrap;font-weight:500;letter-spacing:.02em;display:inline-flex;align-items:center;flex-shrink:0;}
     .top-header-nav{display:flex;align-items:center;gap:6px;}
     .top-header-nav a{padding:7px 14px;font-size:14px;color:var(--text-muted);text-decoration:none;border-radius:20px;transition:all .2s;font-weight:500;}
     .top-header-nav a:hover{color:var(--primary);background:rgba(13,148,136,.06);}
