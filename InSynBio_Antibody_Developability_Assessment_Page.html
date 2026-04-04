@@ -9,6 +9,7 @@
   <meta name="robots" content="noai, noimageai">
   <meta name="AI-Training" content="opt-out">
   <link rel="canonical" href="https://www.insynbio.com/InSynBio_Antibody_Developability_Assessment_Page.html">
+  <script defer data-domain="insynbio.com" src="https://plausible.io/js/script.js"></script>
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://www.insynbio.com/InSynBio_Antibody_Developability_Assessment_Page.html">
   <meta property="og:title" content="Antibody Developability Assessment | InSynBio">
@@ -987,6 +988,11 @@
     <p style="margin:0;">© 2026 InSynBio · <a href="https://insynbio.com" style="color: #6b7280; text-decoration: none;">insynbio.com</a> · <a href="mailto:contact@insynbio.com" style="color: #6b7280; text-decoration: none;">contact@insynbio.com</a></p>
   </footer>
   <script>
+    window.plausible = window.plausible || function() { (window.plausible.q = window.plausible.q || []).push(arguments); };
+    function trackEvent(name, props) {
+      window.plausible(name, props ? { props: props } : undefined);
+    }
+
     function setTopNavActive() {
       var hash = window.location.hash || '';
       document.querySelectorAll('.top-header-nav a[href^="#"]').forEach(function(a) {
@@ -997,6 +1003,26 @@
     window.addEventListener('hashchange', setTopNavActive);
     document.querySelectorAll('.top-header-nav a').forEach(a => {
       a.addEventListener('click', () => { document.querySelector('.top-header-nav').classList.remove('open'); });
+    });
+    document.querySelectorAll('.nav-dropdown .dropdown-menu a').forEach(a => {
+      a.addEventListener('click', function() {
+        const title = this.querySelector('.menu-title');
+        trackEvent('service_nav_click', {
+          page: 'antibody_assessment',
+          location: 'header_nav',
+          service: title ? title.textContent.trim() : this.textContent.trim()
+        });
+      });
+    });
+    document.querySelectorAll('a[href*="Request%20NDA"]').forEach(a => {
+      a.addEventListener('click', function() {
+        trackEvent('nda_click', { page: 'antibody_assessment', location: 'service_page' });
+      });
+    });
+    document.querySelectorAll('a[href*="Request%20Sample%20Report"]').forEach(a => {
+      a.addEventListener('click', function() {
+        trackEvent('sample_report_click', { page: 'antibody_assessment', location: 'service_page' });
+      });
     });
     document.querySelectorAll('.nav-link').forEach(a => {
       a.addEventListener('click', function(e) {
@@ -1025,12 +1051,19 @@
     // Handle AJAX submission to allow local testing redirection
     const form = document.getElementById('inquiry-form');
     if (form) {
+      let formStarted = false;
       const status = document.getElementById('form-status');
       const setStatus = (message, type) => {
         if (!status) return;
         status.textContent = message;
         status.className = 'form-status is-visible ' + type;
       };
+
+      form.addEventListener('focusin', function() {
+        if (formStarted) return;
+        formStarted = true;
+        trackEvent('form_start', { page: 'antibody_assessment', form: 'inquiry_form' });
+      });
 
       form.addEventListener('submit', function(e) {
         e.preventDefault();
@@ -1049,6 +1082,7 @@
           }
         }).then(response => {
           if (response.ok) {
+            trackEvent('form_submit_success', { page: 'antibody_assessment', form: 'inquiry_form' });
             setStatus('Inquiry received. Redirecting to the confirmation page...', 'success');
             window.location.href = 'thanks.html';
           } else {

@@ -6,6 +6,7 @@
   <meta name="description" content="Thank you for contacting InSynBio. Your inquiry has been received and our team will follow up with next steps within 1–2 business days.">
   <meta name="robots" content="noindex, follow">
   <link rel="canonical" href="https://www.insynbio.com/thanks.html">
+  <script defer data-domain="insynbio.com" src="https://plausible.io/js/script.js"></script>
   <title>Inquiry Received | InSynBio</title>
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -110,5 +111,25 @@
     © 2026 InSynBio · <a href="https://insynbio.com">insynbio.com</a>
   </div>
 
+  <script>
+    window.plausible = window.plausible || function() { (window.plausible.q = window.plausible.q || []).push(arguments); };
+    window.plausible('thanks_page_view', {
+      props: {
+        page: 'thanks',
+        form: 'inquiry_form'
+      }
+    });
+
+    document.querySelectorAll('a[href*="Request%20NDA"]').forEach(function(a) {
+      a.addEventListener('click', function() {
+        window.plausible('nda_click', {
+          props: {
+            page: 'thanks',
+            location: 'confirmation_page'
+          }
+        });
+      });
+    });
+  </script>
 </body>
 </html>

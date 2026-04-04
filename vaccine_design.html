@@ -9,6 +9,7 @@
   <meta name="robots" content="noai, noimageai">
   <meta name="AI-Training" content="opt-out">
   <link rel="canonical" href="https://www.insynbio.com/vaccine_design.html">
+  <script defer data-domain="insynbio.com" src="https://plausible.io/js/script.js"></script>
   <meta property="og:title" content="Vaccine and Epitope Design Support | InSynBio">
   <meta property="og:description" content="Evidence-guided vaccine and epitope design support for neoantigen, TAA, and multi-epitope programs, with practical prioritization for translational teams.">
   <meta property="twitter:title" content="Vaccine and Epitope Design Support | InSynBio">
@@ -627,8 +628,24 @@
 </footer>
 
 <script>
+window.plausible = window.plausible || function() { (window.plausible.q = window.plausible.q || []).push(arguments); };
+function trackEvent(name, props) {
+  window.plausible(name, props ? { props: props } : undefined);
+}
+
 document.querySelectorAll('.top-header-nav a').forEach(a => {
   a.addEventListener('click', () => { document.querySelector('.top-header-nav').classList.remove('open'); });
+});
+
+document.querySelectorAll('.nav-dropdown .dropdown-menu a').forEach(a => {
+  a.addEventListener('click', function() {
+    const title = this.querySelector('.menu-title');
+    trackEvent('service_nav_click', {
+      page: 'vaccine_design',
+      location: 'header_nav',
+      service: title ? title.textContent.trim() : this.textContent.trim()
+    });
+  });
 });
 
 document.querySelectorAll('.nav-link').forEach(a => {
@@ -665,12 +682,18 @@ fetch('vaccine_kb_data.json').then(r => r.json()).then(data => {
 // Form submission
 const form = document.getElementById('inquiry-form');
 if(form) {
+  let formStarted = false;
   const status = document.getElementById('form-status');
   const setStatus = (message, type) => {
     if(!status) return;
     status.textContent = message;
     status.className = 'form-status is-visible ' + type;
   };
+  form.addEventListener('focusin', function() {
+    if (formStarted) return;
+    formStarted = true;
+    trackEvent('form_start', { page: 'vaccine_design', form: 'inquiry_form' });
+  });
   form.addEventListener('submit', function(e) {
     e.preventDefault();
     const btn = form.querySelector('button[type="submit"]');
@@ -681,7 +704,7 @@ if(form) {
       method: 'POST', body: new FormData(form),
       headers: { 'Accept': 'application/json' }
     }).then(r => {
-      if(r.ok) { setStatus('Inquiry received. Redirecting to the confirmation page...', 'success'); window.location.href = 'thanks.html'; }
+      if(r.ok) { trackEvent('form_submit_success', { page: 'vaccine_design', form: 'inquiry_form' }); setStatus('Inquiry received. Redirecting to the confirmation page...', 'success'); window.location.href = 'thanks.html'; }
       else { setStatus('There was a problem submitting your form. Please email contact@insynbio.com if the issue continues.', 'error'); btn.disabled=false; btn.innerText=orig; }
     }).catch(() => { setStatus('There was a problem submitting your form. Please email contact@insynbio.com if the issue continues.', 'error'); btn.disabled=false; btn.innerText=orig; });
   });

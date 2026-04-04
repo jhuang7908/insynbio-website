@@ -15,6 +15,7 @@
   <meta name="robots" content="noai, noimageai">
   <meta name="AI-Training" content="opt-out">
   <link rel="canonical" href="https://www.insynbio.com/">
+  <script defer data-domain="insynbio.com" src="https://plausible.io/js/script.js"></script>
 
   <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website">
@@ -89,9 +90,7 @@
     .hero .hero-inner { position: relative; z-index: 2; max-width: 780px; }
     .hero h1 { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 58px; font-weight: 600; margin: 0 0 16px; letter-spacing: -0.04em; color: #ffffff; line-height: 1.05; }
     .hero h1 span { display: inline-block; }
-    .hero-eyebrow { display: block; margin-bottom: 14px; color: rgba(255,255,255,0.9); font-size: 12px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; }
-    .hero .tagline { font-size: 18px; color: rgba(255,255,255,0.87); margin-bottom: 14px; max-width: 700px; margin-left: auto; margin-right: auto; line-height: 1.6; font-weight: 400; }
-    .hero-subcopy { margin: 0 auto 24px; max-width: 640px; font-size: 15px; color: rgba(255,255,255,0.76); line-height: 1.65; }
+    .hero .tagline { font-size: 18px; color: rgba(255,255,255,0.85); margin-bottom: 24px; max-width: 580px; margin-left: auto; margin-right: auto; line-height: 1.6; font-weight: 400; }
     
     .hero-features { display: flex; gap: 12px; justify-content: center; margin-bottom: 24px; flex-wrap: wrap; }
     .feature-item { display: flex; align-items: center; gap: 8px; font-size: 13px; color: rgba(255,255,255,0.92); background: rgba(255,255,255,0.12); padding: 6px 14px; border-radius: 20px; border: 1px solid rgba(255,255,255,0.22); backdrop-filter: blur(6px); font-weight: 500; }
@@ -328,15 +327,13 @@
     </div>
     <div class="hero-overlay" aria-hidden="true"></div>
     <div class="hero-inner">
-    <div class="hero-eyebrow">For Biotech, Pharma, And CRO Teams</div>
-    <h1>AI-Powered Design For Antibody And Cell Therapy Programs</h1>
-    <p class="tagline">Expert-reviewed humanization, developability, immunogenicity, and structure-guided optimization grounded in real clinical benchmarks.</p>
-    <p class="hero-subcopy">Move from sequence or target concept to a decision-ready report in days, not weeks, with transparent rationale, practical deliverables, and optional CRO handoff support.</p>
+    <h1>AI-Powered Design for Therapeutics</h1>
+    <p class="tagline">Clinical data meets machine learning. From antibody humanization to CAR-T engineering for oncology and infectious disease - accelerating biotherapeutic innovation.</p>
 
     <div class="hero-features">
       <div class="feature-item">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0d9488" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
-        Expert-Reviewed Reports
+        AI-Driven Design
       </div>
       <div class="feature-item">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0d9488" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
@@ -344,13 +341,13 @@
       </div>
       <div class="feature-item">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0d9488" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
-        Typical Turnaround: 3-5 Business Days
+        Expert-Reviewed Reports
       </div>
     </div>
 
     <div class="cta-row">
-      <a href="InSynBio_Antibody_Developability_Assessment_Page.html#submit" class="btn">Start Project Intake</a>
-      <a href="mailto:contact@insynbio.com?subject=Request%20Sample%20Report%20-%20InSynBio" class="btn btn-outline">Request Sample Report</a>
+      <a href="InSynBio_Antibody_Developability_Assessment_Page.html#submit" class="btn">Start Assessment</a>
+      <a href="#contact" class="btn btn-outline">Contact Us</a>
     </div>
     </div>
   </section>
@@ -732,6 +729,11 @@
   </footer>
 
   <script>
+    window.plausible = window.plausible || function() { (window.plausible.q = window.plausible.q || []).push(arguments); };
+    function trackEvent(name, props) {
+      window.plausible(name, props ? { props: props } : undefined);
+    }
+
     document.documentElement.classList.add('js');
     function setNavActive() {
       var hash = window.location.hash || '';
@@ -763,6 +765,31 @@
     document.querySelectorAll('.top-header-nav a').forEach(a => {
       a.addEventListener('click', () => {
         document.querySelector('.top-header-nav').classList.remove('open');
+      });
+    });
+
+    document.querySelectorAll('.nav-dropdown .dropdown-menu a').forEach(a => {
+      a.addEventListener('click', function() {
+        const title = this.querySelector('.menu-title');
+        trackEvent('service_nav_click', {
+          page: 'home',
+          location: 'header_nav',
+          service: title ? title.textContent.trim() : this.textContent.trim()
+        });
+      });
+    });
+
+    [
+      { selector: '.hero .btn[href*="InSynBio_Antibody_Developability_Assessment_Page.html"]', cta: 'start_assessment' },
+      { selector: '.hero .btn-outline[href="#contact"]', cta: 'contact_us' },
+      { selector: 'a[href*="Request%20NDA"]', cta: 'request_nda' },
+      { selector: 'a[href*="Request%20Sample%20Report"]', cta: 'request_sample_report' }
+    ].forEach(item => {
+      document.querySelectorAll(item.selector).forEach(link => {
+        link.addEventListener('click', function() {
+          const eventName = item.cta === 'request_nda' ? 'nda_click' : item.cta === 'request_sample_report' ? 'sample_report_click' : 'hero_cta_click';
+          trackEvent(eventName, { page: 'home', cta: item.cta });
+        });
       });
     });
 
