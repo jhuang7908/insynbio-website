@@ -61,7 +61,7 @@ JSON 输出：
 
 修改 `audit_result.py`：
 - 验证 scaffold 库存在与版本（sha256）
-- 验证 ANARCII + IMGT 编号 provenance
+- 验证 ANARCI + IMGT 编号 provenance
 - 验证 scaffold 比对是 IMGT position-level
 - 验证 safe_variants 的 diff_vs_scaffold 与序列一致（可反向复现）
 

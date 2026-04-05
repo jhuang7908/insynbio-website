@@ -23,7 +23,7 @@
 
 ---
 
-## B. germline 是否完成 IMGT 编号（ANARCII）
+## B. germline 是否完成 IMGT 编号（ANARCI）
 
 **结论**: 不通过
 
@@ -36,7 +36,7 @@
 - 是否在具体业务JSON中存在`germline_numbering`或等价字段: ❌ 不存在
 - 是否包含IMGT position → residue 映射: ❌ 不存在
 
-**最终审计判定**: 业务JSON文件中不存在`germline_numbering`字段，无法证明germline序列已通过ANARCII进行IMGT编号。
+**最终审计判定**: 业务JSON文件中不存在`germline_numbering`字段，无法证明germline序列已通过ANARCI进行IMGT编号。
 
 ---
 

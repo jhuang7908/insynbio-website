@@ -91,7 +91,7 @@ python scripts/prepare_thera_dataset.py
 
 **Processing**:
 - QC: Validates VH/VL sequences (20 aa + gaps, length checks)
-- ANARCII IMGT numbering for all sequences
+- ANARCI IMGT numbering for all sequences
 - FR1-FR3 extraction and germline matching (best identity)
 - Representative selection prioritizing canonical diversity
 

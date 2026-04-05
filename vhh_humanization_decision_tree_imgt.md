@@ -3,10 +3,10 @@
 
 ## Step 0 — Quality Control (输入质控)
 *   **Target**: VHH / Heavy-chain only V-domain.
-*   **Validation**: Must pass ANARCII IMGT numbering without major truncation.
+*   **Validation**: Must pass ANARCI IMGT numbering without major truncation.
 *   **Chain Filter**: If detected as VL (κ/λ), exit this tree and redirect to "Chain Classification/Split" module.
 *   **目标**：VHH / 仅重链 V 结构域。
-*   **验证**：必须通过 ANARCII IMGT 编号，无明显截断。
+*   **验证**：必须通过 ANARCI IMGT 编号，无明显截断。
 *   **链过滤**：若判别为 VL (κ/λ)，退出此决策树，进入“链型判别/切分”模块。
 
 ---

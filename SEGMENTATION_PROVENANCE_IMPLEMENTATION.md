@@ -17,7 +17,7 @@
   - `provenance`: 方法学溯源信息
 
 **Fallback机制**:
-1. 优先使用 `anarcii`（ANARCII包）
+1. 优先使用 `anarcii`（ANARCI包）
 2. Fallback 1: 使用 `anarci`（ANARCI包）
 3. Fallback 2: 使用 `regex_minimal`（启发式切分）
 

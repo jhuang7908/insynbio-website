@@ -14,7 +14,7 @@
 
 | 能力 | 支持状态 | 说明 |
 |------|----------|------|
-| **ANARCI 编号** | ✅ 已实现 | 使用 ANARCI/ANARCII 对 VH/VL 序列进行编号；支持 IMGT、Kabat  schemes |
+| **ANARCI 编号** | ✅ 已实现 | 使用 ANARCI/ANARCI 对 VH/VL 序列进行编号；支持 IMGT、Kabat  schemes |
 | **IMGT 编号** | ✅ 已实现 | 作为 pipeline 内部标准（`config/vh_vl_humanization_v44.json` 中 `numbering_scheme: IMGT`）；CDR 区间按 IMGT 定义（26–38 / 55–65 / 105–117） |
 | **Kabat 编号** | ✅ 已实现 | 客户报告与克隆设计统一使用 Kabat；通过 `core/humanization/kabat_utils.kabat_from_anarcii()` 转换，插入码按 `(pos, ins)` 保留 |
 | **双编号 QA** | ✅ 已实现 | Phase 1 HARD GATE：ANARCI(IMGT) + ANARCI(Kabat) 独立编号，按 `sequence_index` 对齐，插入码一致性校验 |

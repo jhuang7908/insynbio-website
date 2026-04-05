@@ -15,7 +15,7 @@
 - **CPU**: 多核处理器（推荐8核+）
 - **内存**: 8GB+ (推荐16GB+)
 - **存储**: 10GB+ 可用空间
-- **GPU**: 可选（ANARCII支持CPU模式）
+- **GPU**: 可选（ANARCI支持CPU模式）
 
 ## 二、依赖包
 
@@ -24,9 +24,9 @@
 ```python
 # 必需依赖
 anarcii>=1.0.0          # IMGT编号（语言模型版本）
-torch>=1.10.0           # PyTorch（ANARCII依赖）
+torch>=1.10.0           # PyTorch（ANARCI依赖）
 numpy>=1.20.0           # 数值计算
-gemmi>=0.5.0            # 结构生物信息学（ANARCII依赖）
+gemmi>=0.5.0            # 结构生物信息学（ANARCI依赖）
 
 # 可选依赖
 anarci                 # 传统ANARCI（HMM版本，备用）
@@ -302,7 +302,7 @@ python scripts/alpaca_vhh_classifier.py
 - `data/germlines/vicugna_pacos_ig_aa/alpaca_ighv_vhh_label.tsv`
 
 **算法**:
-- IMGT编号（ANARCII）
+- IMGT编号（ANARCI）
 - FR2 hallmark位置识别
 - VHH评分（基于37, 44, 45, 47位置）
 
@@ -517,7 +517,7 @@ python scripts/generate_affinity_optimization_suggestions.py \
 **函数**: `imgt_number_anarcii(seq) -> List[Dict]`
 
 **算法**:
-- 使用ANARCII（语言模型版本）
+- 使用ANARCI（语言模型版本）
 - 返回标准化格式：`[{"pos": int, "ins_code": str, "aa": str, ...}]`
 
 **特点**:
@@ -863,8 +863,8 @@ python script.py --config config.yaml
 | **VHH-SAFE方案** | `'A'` | `core/vhh_humanization.py` |
 | **Top K** | `3` | `core/vhh_humanization.py` |
 | **最大突变数** | `5` | `scripts/generate_affinity_optimization_suggestions.py` |
-| **ANARCII模式** | `'accuracy'` | `core/numbering/imgt_anarcii.py` |
-| **ANARCII CPU** | `True` | `core/numbering/imgt_anarcii.py` |
+| **ANARCI模式** | `'accuracy'` | `core/numbering/imgt_anarcii.py` |
+| **ANARCI CPU** | `True` | `core/numbering/imgt_anarcii.py` |
 | **Batch Size** | `32` | `core/numbering/imgt_anarcii.py` |
 
 ## 八、完整工作流程
@@ -973,15 +973,15 @@ python scripts/score_vhh_safe_templates.py
 ## 十一、常见问题
 
 ### 1. IMGT编号失败
-**原因**: ANARCII模型未加载或序列格式问题
-**解决**: 检查ANARCII安装，使用备用方法（ANARCI/abnumber）
+**原因**: ANARCI模型未加载或序列格式问题
+**解决**: 检查ANARCI安装，使用备用方法（ANARCI/abnumber）
 
 ### 2. 路径错误
 **原因**: 硬编码路径不匹配
 **解决**: 检查文件是否存在，使用相对路径
 
 ### 3. 内存不足
-**原因**: ANARCII模型加载占用内存
+**原因**: ANARCI模型加载占用内存
 **解决**: 使用CPU模式，减少batch_size
 
 ### 4. 编码错误（Windows）
@@ -1076,7 +1076,7 @@ def validate_scaffold_library(json_file):
 - 延迟加载（lazy loading）
 
 ### 2. 批处理
-- ANARCII支持batch_size参数
+- ANARCI支持batch_size参数
 - 序列批量处理
 
 ### 3. 缓存

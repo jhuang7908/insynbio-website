@@ -49,8 +49,8 @@ python scripts/prepare_thera_dataset.py
    - Length checks (80-150 aa for VH, 70-130 aa for VL)
    - Removes entries with both chains missing or invalid
 
-2. **ANARCII IMGT Numbering**:
-   - Numbers all VH/VL sequences using ANARCII (IMGT scheme)
+2. **ANARCI IMGT Numbering**:
+   - Numbers all VH/VL sequences using ANARCI (IMGT scheme)
    - Extracts FR1-FR3 sequences from numbering results
 
 3. **Germline Matching**:
@@ -199,7 +199,7 @@ python scripts/compare_canonical_to_thera_sabdab.py `
 
 ## Notes
 
-- **ANARCII Required**: The preparation script requires ANARCII for IMGT numbering. Install with: `pip install anarcii`
+- **ANARCI Required**: The preparation script requires ANARCI for IMGT numbering. Install with: `pip install anarcii`
 - **Framework Library Dependency**: Germline matching uses `fr_sequence_fr1_fr3` from framework library YAML files
 - **Representative Selection**: Currently prioritizes identity scores. Future versions may prioritize canonical class diversity.
 - **L3 Caution**: L3 canonical classes are included in frequency reports but excluded from strict JSD calculations (see report disclaimer).

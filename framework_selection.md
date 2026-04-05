@@ -44,8 +44,8 @@ The Framework Selection module provides automated selection of human antibody fr
 Production-grade framework selection engine:
 
 - `load_framework_library()`: Loads VH/VL frameworks from YAML
-- `compute_query_features()`: Extracts features from ANARCII numbering (CDR-H3 length, etc.)
-- `extract_query_fr1_fr3()`: Extracts FR1-FR3 sequence from ANARCII numbering using IMGT ranges
+- `compute_query_features()`: Extracts features from ANARCI numbering (CDR-H3 length, etc.)
+- `extract_query_fr1_fr3()`: Extracts FR1-FR3 sequence from ANARCI numbering using IMGT ranges
 - `calculate_fr_identity()`: Computes FR1-FR3 identity score (0.0 to 1.0)
 - `compute_cdr3_risk_penalty()`: Calculates CDR3 length risk penalty based on framework's cdr3_policy
 - `check_canonical_match()`: Checks canonical envelope compatibility
@@ -136,7 +136,7 @@ See `tests/test_framework_selection.py` for:
 
 ## Future Enhancements
 
-- Extract query canonical classes from ANARCII output
+- Extract query canonical classes from ANARCI output
 - Compute predicted pI from sequence
 - Assess aggregation risk from sequence features
 - Detect format (scFv, bispecific) from input metadata

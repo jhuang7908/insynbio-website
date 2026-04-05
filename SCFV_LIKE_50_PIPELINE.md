@@ -1,10 +1,10 @@
-# 50 条 scFv-like 双抗：ANARCII 切分、Linker 识别、ESMFold 造模
+# 50 条 scFv-like 双抗：ANARCI 切分、Linker 识别、ESMFold 造模
 
 ## 可行性
 
 | 步骤 | 可行 | 说明 |
 |------|------|------|
-| **ANARCII 切分** | ✅ | 对 linker 切分后的 VH、VL 分别跑 ANARCII 编号（需安装 anarcii 包） |
+| **ANARCI 切分** | ✅ | 对 linker 切分后的 VH、VL 分别跑 ANARCI 编号（需安装 anarcii 包） |
 | **Linker 序列识别** | ✅ | 用已知模式（G4S、EAAAK）正则匹配，切出 VH / VL 段 |
 | **ESMFold 造模** | ✅ | 整链序列导出 FASTA 后，用 ESMFold 单链预测即可 |
 
@@ -43,7 +43,7 @@ python scripts/scfv_like_50_linker_anarci_esmfold.py \
 
 可选：
 
-- `--skip-anarcii`：只做 linker 识别和 FASTA 导出，不跑 ANARCII。
+- `--skip-anarcii`：只做 linker 识别和 FASTA 导出，不跑 ANARCI。
 - `--id-json <path>`：指定要处理的抗体 ID 列表（JSON 中需有 `antibody_ids`）。不指定时默认用 50 条 scFv-like；若用「所有代 linker 的多特异」列表见下文。
 
 ### 所有代 linker 的多特异（99 条）
@@ -71,7 +71,7 @@ python scripts/scfv_like_50_linker_anarci_esmfold.py \
 
 ### 3. 输出
 
-- `out-dir/linker_split_results.json`：每条 antibody_id 的 linker 识别结果（linker 名称、切分长度、ANARCII 是否成功等）。
+- `out-dir/linker_split_results.json`：每条 antibody_id 的 linker 识别结果（linker 名称、切分长度、ANARCI 是否成功等）。
 - `out-dir/esmfold_input.fasta`：整链序列，供 ESMFold 批量造模。
 
 ### 4. ESMFold 造模

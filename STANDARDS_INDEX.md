@@ -214,7 +214,7 @@ missing  = spec.validate_content(content_dict)           # list missing fields
 - Hallmarks: Kabat 37, 44, 45, 47
 - Vernier: Kabat 27, 28, 29, 30, 47, 49, 71, 73, 78, 93, 94
 
-**编号工具区分：** 本仓库仅使用 **ANARCII**（Python 包 `anarcii`），与经典程序 **ANARCI** 为不同软件。详见 [`ANARCI_VS_ANARCII.md`](./ANARCI_VS_ANARCII.md)。
+**编号工具：** 本仓库使用 **ANARCI**（基于深度学习的抗体编号工具）。详见相关技术文档。
 
 ---
 
@@ -433,8 +433,8 @@ Before submitting any humanization design, verify:
 | Cohort lock | 70 INNs from `confirmed_ada.json` ∩ Thera genetics filter | `scripts/analyze_70_human_humanized_germline_ada.py` |
 | Field completeness | Thera match, Target, phase, conditions, heavy (+ bispec) sequence for all 70 | `scripts/_report_confirmed70_completeness.py` |
 | Sequences (extended) | Per-arm + atlas fallbacks in `confirmed70_sequences_full.csv` | `scripts/build_confirmed70_sequences_full.py` |
-| IMGT numbering + FR split | ANARCII rows for every chain (incl. bispecific arm2, Ozoralizumab arm3 ALB8) | `data/thera_sabdab/out/anarcii_numbering_70.csv`; `scripts/run_anarcii_numbering_70.py`; `scripts/append_ozoralizumab_vh3_anarcii.py` |
-| Germline | 842 INN where available; else IMGT `aa_translated` on Thera sequence; OGRDB columns from ANARCII FR match; naive-blood **V-gene population priors** (κ/λ-weighted VL) | `confirmed70_human_humanized_germline_ada.csv`; `data/germlines/population_usage/`; `core/resources/germline_population_usage.py` |
+| IMGT numbering + FR split | ANARCI rows for every chain (incl. bispecific arm2, Ozoralizumab arm3 ALB8) | `data/thera_sabdab/out/anarcii_numbering_70.csv`; `scripts/run_anarcii_numbering_70.py`; `scripts/append_ozoralizumab_vh3_anarcii.py` |
+| Germline | 842 INN where available; else IMGT `aa_translated` on Thera sequence; OGRDB columns from ANARCI FR match; naive-blood **V-gene population priors** (κ/λ-weighted VL) | `confirmed70_human_humanized_germline_ada.csv`; `data/germlines/population_usage/`; `core/resources/germline_population_usage.py` |
 | Structure path | Every drug has a resolved relative PDB path | `confirmed70_structure_atlas_supplement.csv`; `scripts/supplement_confirmed70_atlas_structures.py` |
 | Germline ↔ ADA (exploratory) | Analysis snapshot + Spearman / Kruskal summaries | `data/thera_sabdab/out/germline_ada_panel/`; `scripts/build_germline_ada_correlation_library.py` |
 

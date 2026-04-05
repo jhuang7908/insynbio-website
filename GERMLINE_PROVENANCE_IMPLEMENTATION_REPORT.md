@@ -8,7 +8,7 @@
 
 ## 📋 执行摘要
 
-本次实现完成了4个指令，建立了完整的germline库provenance追踪和IMGT编号证明机制，确保所有germline相关结论都能通过库文件、hash、IMGT编号表和ANARCII provenance反向复现。
+本次实现完成了4个指令，建立了完整的germline库provenance追踪和IMGT编号证明机制，确保所有germline相关结论都能通过库文件、hash、IMGT编号表和ANARCI provenance反向复现。
 
 **目标**: 不是"看起来像有"，而是"在JSON中留下不可否认的证据"。
 
@@ -77,9 +77,9 @@
 ### 核心功能
 
 #### 1. `number_germline_sequence_anarcii(sequence, template_id, scheme)`
-- **功能**: 使用ANARCII对germline序列进行IMGT编号
+- **功能**: 使用ANARCI对germline序列进行IMGT编号
 - **特性**:
-  - 支持ANARCII和ANARCI fallback
+  - 支持ANARCI和ANARCI fallback
   - 根据IMGT位置号判断区域（FR1: 1-26, CDR1: 27-38, FR2: 39-55, CDR2: 56-65, FR3: 66-104, CDR3: 105-117, FR4: 118-128）
   - 生成positions和boundaries
 
@@ -127,14 +127,14 @@
 
 ---
 
-## 🎯 指令3：证明「IMGT 编号是通过 ANARCII 完成的」
+## 🎯 指令3：证明「IMGT 编号是通过 ANARCI 完成的」
 
 ### 实现模块
 - **文件**: `core/segmentation/germline_numbering.py`
 
 ### 核心实现
 
-- **方法检测**: 自动检测ANARCII可用性
+- **方法检测**: 自动检测ANARCI可用性
 - **版本读取**: 从`anarcii.__version__`读取（不hardcode）
 - **Fallback处理**: 如果fallback到ANARCI，显式标记为`"fallback:anarci"`
 - **Provenance生成**: 生成完整的`numbering_provenance`字段
@@ -201,7 +201,7 @@ assert "germline_numbering" in json_data
 assert json_data["germline_numbering"]["scheme"] == "imgt"
 ```
 
-#### Rule C: ANARCII证明验证
+#### Rule C: ANARCI证明验证
 ```python
 assert json_data["germline_numbering"]["numbering_provenance"]["method"] == "anarcii"
 ```
@@ -297,7 +297,7 @@ assert json_data["germline_numbering"]["numbering_provenance"]["method"] == "ana
 │  │  └─ 指令1: 库provenance              │
 │  ├─ 对germline模板进行IMGT编号          │
 │  │  ├─ 指令2: IMGT编号                  │
-│  │  └─ 指令3: ANARCII provenance        │
+│  │  └─ 指令3: ANARCI provenance        │
 │  └─ 生成prepared_result                 │
 └─────────────────────────────────────────┘
                     │
@@ -306,7 +306,7 @@ assert json_data["germline_numbering"]["numbering_provenance"]["method"] == "ana
 │  Step 3: validate_json_for_delivery()   │
 │  ├─ Rule A: 验证库provenance            │
 │  ├─ Rule B: 验证IMGT编号                │
-│  └─ Rule C: 验证ANARCII方法             │
+│  └─ Rule C: 验证ANARCI方法             │
 └─────────────────────────────────────────┘
                     │
                     ▼
@@ -359,7 +359,7 @@ if not is_valid:
 
 - ✅ **库存在证明**: SHA256哈希证明库文件真实存在
 - ✅ **IMGT编号证明**: 完整的positions和boundaries证明进行了编号
-- ✅ **ANARCII方法证明**: package_version从实际安装读取，method明确标记
+- ✅ **ANARCI方法证明**: package_version从实际安装读取，method明确标记
 
 ### 数据完整性
 

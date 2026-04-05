@@ -7,7 +7,7 @@
     "status": "completed"
   },
   "executive_summary": {
-    "objective": "实现4个指令，证明germline库真实存在、进行了IMGT编号、通过ANARCII完成，并建立强制QA门禁",
+    "objective": "实现4个指令，证明germline库真实存在、进行了IMGT编号、通过ANARCI完成，并建立强制QA门禁",
     "implementation_status": "✅ 全部完成",
     "total_instructions": 4,
     "completed_instructions": 4,
@@ -66,9 +66,9 @@
     "functions": [
       {
         "name": "number_germline_sequence_anarcii",
-        "purpose": "使用ANARCII对germline序列进行IMGT编号",
+        "purpose": "使用ANARCI对germline序列进行IMGT编号",
         "features": [
-          "支持ANARCII和ANARCI fallback",
+          "支持ANARCI和ANARCI fallback",
           "根据IMGT位置号判断区域（FR1/CDR1/FR2/CDR2/FR3/CDR3/FR4）",
           "生成positions和boundaries"
         ]
@@ -114,11 +114,11 @@
     }
   },
   "instruction_3": {
-    "title": "证明「IMGT 编号是通过 ANARCII 完成的」",
+    "title": "证明「IMGT 编号是通过 ANARCI 完成的」",
     "status": "completed",
     "module": "core/segmentation/germline_numbering.py",
     "implementation": {
-      "method_detection": "自动检测ANARCII可用性",
+      "method_detection": "自动检测ANARCI可用性",
       "version_reading": "从anarcii.__version__读取（不hardcode）",
       "fallback_handling": "如果fallback到ANARCI，显式标记为'fallback:anarci'",
       "provenance_generation": "生成完整的numbering_provenance字段"
@@ -190,7 +190,7 @@
         ]
       },
       "rule_c": {
-        "description": "ANARCII证明验证",
+        "description": "ANARCI证明验证",
         "assertions": [
           "assert json_data['germline_numbering']['numbering_provenance']['method'] == 'anarcii'"
         ]

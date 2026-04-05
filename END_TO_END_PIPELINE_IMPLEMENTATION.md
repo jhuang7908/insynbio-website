@@ -68,7 +68,7 @@ projects/EGFR_7D12_VHH/
 
 ---
 
-### Step 2：目标序列 IMGT 切分（ANARCII，必须）
+### Step 2：目标序列 IMGT 切分（ANARCI，必须）
 
 **真实运算**:
 - 用 `anarcii`（不是 `anarci`）对目标序列做 IMGT 编号 + FR/CDR 边界
@@ -125,7 +125,7 @@ projects/EGFR_7D12_VHH/
 
 ---
 
-### Step 4：对 germline 库进行 IMGT 编号（ANARCII，至少对候选/或全库）
+### Step 4：对 germline 库进行 IMGT 编号（ANARCI，至少对候选/或全库）
 
 **真实运算**:
 - 用 `anarcii + IMGT` 对 germline 库进行编号

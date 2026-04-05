@@ -89,7 +89,7 @@ from core.utils.fallback import mark_fallback, is_fallback, get_fallback_info
 template = {"template_id": "HUMAN_VH3_SCF_01"}
 mark_fallback(
     template,
-    reason="ANARCII numbering failed",
+    reason="ANARCI numbering failed",
     ftype="numbering",
     severity="warning"
 )
@@ -331,13 +331,13 @@ combined_score = (
 **旧代码:**
 ```python
 template['fallback'] = True
-template['fallback_reason'] = "ANARCII failed"
+template['fallback_reason'] = "ANARCI failed"
 ```
 
 **新代码:**
 ```python
 from core.utils.fallback import mark_fallback
-mark_fallback(template, "ANARCII numbering failed", "numbering", "warning")
+mark_fallback(template, "ANARCI numbering failed", "numbering", "warning")
 ```
 
 ## 八、配置最佳实践

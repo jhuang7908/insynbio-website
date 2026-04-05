@@ -146,7 +146,7 @@ assert "germline_numbering" in json_data
 assert json_data["germline_numbering"]["scheme"] == "imgt"
 ```
 
-### Rule C: ANARCII proof
+### Rule C: ANARCI proof
 ```python
 assert json_data["germline_numbering"]["numbering_provenance"]["method"] == "anarcii"
 ```
@@ -160,7 +160,7 @@ assert json_data["germline_numbering"]["numbering_provenance"]["method"] == "ana
 | 审计项 | 预期结论 |
 |--------|----------|
 | germline 库存在与版本 | ✅ 通过 |
-| germline IMGT 编号（ANARCII） | ✅ 通过 |
+| germline IMGT 编号（ANARCI） | ✅ 通过 |
 | 总体结论 | ✅ 全部通过 |
 
 ---
@@ -169,7 +169,7 @@ assert json_data["germline_numbering"]["numbering_provenance"]["method"] == "ana
 
 **当前不是"算法没实现"，而是"证据没写入业务JSON"。**
 
-只要把库级provenance和ANARCII编号结果写进业务JSON，并加QA门禁，即可一次性补齐证据链并通过审计。
+只要把库级provenance和ANARCI编号结果写进业务JSON，并加QA门禁，即可一次性补齐证据链并通过审计。
 
 ---
 
