@@ -1,0 +1,42 @@
+/**
+ * Therasik top header: pair with css/insynbio-mobile-nav.css
+ * Use: <header class="top-header insynbio-mnav-header therasik-mnav-header">
+ * DOM order: .brand → .top-header-nav → .header-right → .mobile-menu-btn
+ */
+header.therasik-mnav-header.insynbio-mnav-header .mobile-menu-btn {
+  order: 4;
+}
+
+header.therasik-mnav-header.insynbio-mnav-header .header-right {
+  order: 3;
+}
+
+header.therasik-mnav-header.insynbio-mnav-header .top-header-nav {
+  order: 2;
+}
+
+header.therasik-mnav-header.insynbio-mnav-header .brand {
+  order: 1;
+}
+
+@media (max-width: 960px) {
+  header.therasik-mnav-header.insynbio-mnav-header .brand {
+    flex: 1;
+    min-width: 0;
+    order: 1;
+  }
+
+  header.therasik-mnav-header.insynbio-mnav-header .header-right {
+    order: 2;
+    margin-left: 0;
+    flex-shrink: 0;
+  }
+
+  header.therasik-mnav-header.insynbio-mnav-header .mobile-menu-btn {
+    order: 3;
+  }
+
+  header.therasik-mnav-header.insynbio-mnav-header .top-header-nav {
+    order: 5;
+  }
+}

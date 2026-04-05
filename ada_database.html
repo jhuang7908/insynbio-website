@@ -16,6 +16,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/insynbio-mobile-nav.css">
   <style>
     :root {
       --primary: #0d9488; --primary-dark: #0f766e; --primary-light: #ccfbf1;
@@ -34,7 +35,11 @@
     body { font-family: 'Inter', -apple-system, sans-serif; font-size: 14px; line-height: 1.5; color: var(--text); background: var(--bg); -webkit-font-smoothing: antialiased; }
 
     /* ── Header ── */
-    .top-header { display:flex; align-items:center; justify-content:space-between; padding:12px 28px; background:rgba(255,255,255,0.97); backdrop-filter:blur(12px); border-bottom:2px solid rgba(13,148,136,0.12); position:fixed; width:100%; top:0; z-index:2000; gap:12px; }
+    .top-header { display:flex; align-items:center; justify-content:space-between; padding:12px 28px; background:rgba(255,255,255,0.97); backdrop-filter:blur(12px); border-bottom:2px solid rgba(13,148,136,0.12); position:fixed; width:100%; top:0; z-index:2000; gap:12px; flex-wrap:nowrap; }
+    .top-header-nav { display:flex; align-items:center; justify-content:center; gap:4px; flex:1; flex-wrap:wrap; }
+    .top-header-nav a { padding:7px 14px; font-size:13px; font-weight:600; color:var(--text-muted); text-decoration:none; border-radius:20px; transition:all 0.2s; }
+    .top-header-nav a:hover { color:var(--primary); background:rgba(13,148,136,0.06); }
+    .top-header-nav a.nav-active { color:#fff; background:var(--primary); box-shadow:0 2px 8px rgba(13,148,136,0.25); }
     .brand { font-family:'Cormorant Garamond',Georgia,serif; font-weight:700; font-size:24px; letter-spacing:-0.03em; }
     .brand a { text-decoration:none; color:inherit; display:flex; align-items:center; gap:8px; }
     .brand-dot { width:8px; height:8px; border-radius:50%; background:var(--primary); display:inline-block; margin-right:2px; }
@@ -168,17 +173,21 @@
 <body>
 
 <!-- ── Header ── -->
-<header class="top-header">
+<header class="top-header insynbio-mnav-header">
   <div class="brand">
     <a href="index.html">
       <span class="brand-dot"></span>In<span class="accent">Syn</span>Bio
     </a>
   </div>
-  <nav style="display:flex; align-items:center; gap:4px; flex:1; justify-content:center;">
-    <a href="index.html" style="padding:7px 14px; font-size:13px; font-weight:600; color:var(--text-muted); text-decoration:none; border-radius:20px; transition:all 0.2s;" onmouseover="this.style.color='var(--primary)'; this.style.background='rgba(13,148,136,0.06)'" onmouseout="this.style.color='var(--text-muted)'; this.style.background='transparent'">Home</a>
-    <a href="InSynBio_Antibody_Developability_Assessment_Page.html" style="padding:7px 14px; font-size:13px; font-weight:600; color:var(--text-muted); text-decoration:none; border-radius:20px; transition:all 0.2s;" onmouseover="this.style.color='var(--primary)'; this.style.background='rgba(13,148,136,0.06)'" onmouseout="this.style.color='var(--text-muted)'; this.style.background='transparent'">Antibody</a>
-    <a href="immunogenicity_study.html" style="padding:7px 14px; font-size:13px; font-weight:600; color:var(--text-muted); text-decoration:none; border-radius:20px; transition:all 0.2s;" onmouseover="this.style.color='var(--primary)'; this.style.background='rgba(13,148,136,0.06)'" onmouseout="this.style.color='var(--text-muted)'; this.style.background='transparent'">Immunogenicity Study</a>
-    <a href="ada_database.html" style="padding:7px 14px; font-size:13px; font-weight:600; color:#fff; background:var(--primary); border-radius:20px; text-decoration:none; box-shadow:0 2px 8px rgba(13,148,136,0.25);">ADA Database</a>
+  <button type="button" class="mobile-menu-btn" aria-label="Open menu" onclick="document.querySelector('.top-header-nav').classList.add('open')">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+  </button>
+  <nav class="top-header-nav">
+    <button type="button" class="nav-close-btn" aria-label="Close menu" onclick="this.parentElement.classList.remove('open')">&times;</button>
+    <a href="index.html">Home</a>
+    <a href="InSynBio_Antibody_Developability_Assessment_Page.html">Antibody</a>
+    <a href="immunogenicity_study.html">Immunogenicity Study</a>
+    <a href="ada_database.html" class="nav-active">ADA Database</a>
   </nav>
   <div class="header-badge" style="white-space:nowrap;">n = 138 antibodies</div>
 </header>

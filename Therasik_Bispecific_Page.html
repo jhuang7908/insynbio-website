@@ -6,9 +6,19 @@
   <meta name="description" content="Therasik Bispecific Antibody Engineering Platform — AI-driven design for multispecifics. Nano-Convert (VH-to-VHH), SmartLink optimization, and Virtual CMC for IgG-like pairing.">
   <meta name="keywords" content="bispecific antibody, multispecific, VH to VHH, nanobody, smart linker, IgG-like pairing, knob-in-hole, crossmab, antibody engineering, Therasik">
   <title>Bispecific Engineering | Therasik — AI for Life Sciences</title>
+  <!-- GA4: Stream "AI驱动的药物设计" · https://www.therasik.com · Stream ID 14308410859 · G-F0S2HLBZ0B -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-F0S2HLBZ0B"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-F0S2HLBZ0B');
+  </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&family=Noto+Sans+SC:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/insynbio-mobile-nav.css">
+  <link rel="stylesheet" href="css/therasik-mobile-nav.css">
   <style>
     :root { --primary: #2563eb; --primary-dark: #1e40af; --text: #1f2937; --text-muted: #6b7280; --border: #e5e7eb; --bg: #ffffff; --bg-alt: #f9fafb; }
     * { box-sizing: border-box; }
@@ -119,8 +129,6 @@
       .top-header .brand { flex: 1 1 auto; min-width: 0; display: flex; align-items: center; flex-wrap: wrap; gap: 8px; }
       .top-header .slogan { display: inline-block !important; font-size: 12px; padding-left: 10px; border-left: 1px solid var(--border); white-space: nowrap; }
       .top-header .header-right { order: 2; margin-left: auto; }
-      .top-header-nav { order: 3; width: 100%; flex: 1 1 100%; justify-content: flex-start; flex-wrap: wrap; gap: 6px; overflow-x: auto; padding-bottom: 4px; -webkit-overflow-scrolling: touch; border-top: 1px solid var(--border); padding-top: 10px; margin-top: 2px; }
-      .top-header-nav a { flex-shrink: 0; font-size: 13px; padding: 6px 10px; }
       .page-wrap { flex-direction: column; min-height: auto; }
       .sidebar { width: 100%; height: auto; position: relative; border-right: none; border-bottom: 1px solid #e0e0e0; padding: 16px; }
       .sidebar nav { display: flex; flex-wrap: wrap; gap: 8px; }
@@ -131,7 +139,7 @@
   </style>
 </head>
 <body data-lang="zh" id="therasik-body">
-  <header class="top-header">
+  <header class="top-header insynbio-mnav-header therasik-mnav-header">
     <div class="brand">
       <a href="therasik_index.html" style="display: flex; align-items: center; gap: 10px; text-decoration: none;">
         <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink:0">
@@ -151,31 +159,11 @@
       </a>
       <span class="slogan">AI 赋能生命科学</span>
     </div>
-    <nav class="top-header-nav">
-      <a href="therasik_index.html">首页</a>
-      <a href="therasik_index.html#about">关于我们</a>
-      <div class="nav-dropdown" tabindex="0">
-        <a href="therasik_index.html#services">服务</a>
-        <div class="dropdown-menu">
-          <a href="Therasik_Antibody_Developability_Assessment_Page.html">
-            <span class="menu-title">抗体评估</span>
-            <span class="menu-desc">基于结构的抗体开发</span>
-          </a>
-          <a href="Therasik_Bispecific_Antibody_Design_Page.html">
-            <span class="menu-title">双特异抗体</span>
-            <span class="menu-desc">多特异性工程</span>
-          </a>
-          <a href="Therasik_CART_Design_Page.html">
-            <span class="menu-title">CAR-T</span>
-            <span class="menu-desc">智慧 CAR-T 设计</span>
-          </a>
-        </div>
-      </div>
-      <a href="#submit">提交咨询</a>
-      <a href="#contact">联系</a>
-    </nav>
-    <div class="header-right">
-    </div>
+    <nav class="top-header-nav" id="mirrored-therasik-nav"></nav>
+    <div class="header-right"></div>
+    <button type="button" class="mobile-menu-btn" aria-label="打开菜单" onclick="document.querySelector('header.therasik-mnav-header .top-header-nav').classList.add('open')">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
   </header>
   <div class="page-wrap">
     <aside class="sidebar">
@@ -370,6 +358,11 @@
       </footer>
     </main>
   </div>
+  <script src="js/site-nav-mirror-config.js"></script>
+  <script src="js/site-nav-mirror-render.js"></script>
+  <script>
+    SiteNavMirror.render(document.getElementById('mirrored-therasik-nav'), { site: 'therasik', layout: 'therasikService', activeService: 'bispecific' });
+  </script>
   <script>
     function setTopNavActive() {
       var hash = window.location.hash || '';
@@ -379,6 +372,13 @@
     }
     setTopNavActive();
     window.addEventListener('hashchange', setTopNavActive);
+    document.querySelectorAll('.top-header-nav a').forEach(function (a) {
+      a.addEventListener('click', function () {
+        var nav = document.querySelector('header.therasik-mnav-header .top-header-nav');
+        if (nav) nav.classList.remove('open');
+      });
+    });
+
     document.querySelectorAll('.nav-link').forEach(a => {
       a.addEventListener('click', function(e) {
         e.preventDefault();

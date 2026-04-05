@@ -1,0 +1,203 @@
+/**
+ * InSynBio — shared mobile navigation (hamburger + full-screen overlay).
+ * Add class `insynbio-mnav-header` to <header class="top-header"> and include
+ * .mobile-menu-btn + .nav-close-btn per index.html pattern.
+ * For vaccine KB bar: use `insynbio-mnav-topbar` on .top-bar.
+ */
+header.insynbio-mnav-header .mobile-menu-btn,
+.insynbio-mnav-topbar .mobile-menu-btn {
+  display: none;
+  background: none;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 6px 8px;
+  cursor: pointer;
+  color: #111827;
+  line-height: 0;
+  flex-shrink: 0;
+}
+
+header.insynbio-mnav-header .nav-close-btn,
+.insynbio-mnav-topbar .nav-close-btn {
+  display: none;
+  position: absolute;
+  top: 16px;
+  right: 20px;
+  background: none;
+  border: none;
+  font-size: 32px;
+  color: #111827;
+  cursor: pointer;
+  line-height: 1;
+  padding: 4px 8px;
+  z-index: 10000;
+}
+
+/* Desktop: center main nav between brand and optional right slot */
+header.insynbio-mnav-header .top-header-nav {
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: nowrap;
+}
+
+@media (max-width: 960px) {
+  header.insynbio-mnav-header {
+    flex-wrap: nowrap;
+    padding: 10px 14px !important;
+    gap: 8px;
+    align-items: center;
+  }
+
+  header.insynbio-mnav-header .brand {
+    flex: 1;
+    min-width: 0;
+  }
+
+  header.insynbio-mnav-header .slogan {
+    display: none !important;
+  }
+
+  header.insynbio-mnav-header .mobile-menu-btn {
+    display: block !important;
+  }
+
+  header.insynbio-mnav-header .top-header-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    height: 100dvh;
+    margin: 0;
+    padding: 24px;
+    background: #fff;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 4px;
+    z-index: 9999;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.25s ease;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    box-sizing: border-box;
+  }
+
+  header.insynbio-mnav-header .top-header-nav.open {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  header.insynbio-mnav-header .top-header-nav a {
+    font-size: 17px;
+    padding: 12px 20px;
+  }
+
+  header.insynbio-mnav-header .nav-dropdown {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  header.insynbio-mnav-header .nav-dropdown .dropdown-menu {
+    position: static;
+    transform: none;
+    opacity: 1;
+    visibility: visible;
+    box-shadow: none;
+    border: none;
+    background: transparent;
+    margin-top: 0;
+    padding: 4px 0 0;
+    min-width: auto;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0;
+  }
+
+  header.insynbio-mnav-header .nav-dropdown .dropdown-menu a {
+    padding: 6px 12px;
+    font-size: 14px;
+  }
+
+  header.insynbio-mnav-header .nav-dropdown .dropdown-menu a .menu-desc {
+    display: none;
+  }
+
+  header.insynbio-mnav-header .nav-dropdown > a::after {
+    display: none;
+  }
+
+  header.insynbio-mnav-header .nav-close-btn {
+    display: block;
+  }
+
+  /* Optional right-side badge (e.g. ADA DB): keep on bar, allow shrink */
+  header.insynbio-mnav-header .header-badge {
+    flex-shrink: 0;
+    max-width: 42vw;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 11px;
+    padding: 4px 10px;
+  }
+}
+
+/* ── Compact top bar (vaccine KB) ── */
+@media (max-width: 960px) {
+  .insynbio-mnav-topbar .mobile-menu-btn {
+    display: block !important;
+  }
+
+  .insynbio-mnav-topbar .brand {
+    min-width: 0;
+    flex: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .insynbio-mnav-topbar nav.top-header-nav,
+  .insynbio-mnav-topbar > nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    height: 100dvh;
+    margin: 0;
+    padding: 24px;
+    background: #fff;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    z-index: 9999;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.25s ease;
+    overflow-y: auto;
+    box-sizing: border-box;
+  }
+
+  .insynbio-mnav-topbar nav.top-header-nav.open,
+  .insynbio-mnav-topbar > nav.open {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .insynbio-mnav-topbar nav.top-header-nav a,
+  .insynbio-mnav-topbar > nav a {
+    font-size: 16px;
+    padding: 10px 18px;
+  }
+
+  .insynbio-mnav-topbar .nav-close-btn {
+    display: block;
+  }
+}

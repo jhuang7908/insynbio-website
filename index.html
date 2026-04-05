@@ -15,12 +15,12 @@
   <meta name="robots" content="noai, noimageai">
   <meta name="AI-Training" content="opt-out">
   <link rel="canonical" href="https://www.insynbio.com/">
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-MWDN9HEPC0"></script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-F0S2HLBZ0B"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
-    gtag('config', 'G-MWDN9HEPC0');
+    gtag('config', 'G-F0S2HLBZ0B');
   </script>
 
   <!-- Open Graph / Facebook -->
@@ -39,6 +39,7 @@
   <script type="application/ld+json">
   {"@context":"https://schema.org","@type":"Organization","name":"InSynBio","url":"https://www.insynbio.com","logo":"https://www.insynbio.com/favicon.svg","description":"AI-powered biotherapeutic design: antibody humanization, VHH nanobody engineering, CAR-T design, and bispecific optimization.","email":"contact@insynbio.com"}
   </script>
+  <!-- [1] Numbering (FAQPage JSON-LD): public name ANARCI; implementation uses Python package anarcii (distinct from legacy ANARCI where applicable). -->
   <script type="application/ld+json">
   {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
     {"@type":"Question","name":"What information do I need to provide to start a project?","acceptedAnswer":{"@type":"Answer","text":"For antibody humanization or VHH design: VH/VL (or VHH) amino acid sequences in FASTA format, target antigen name, and any known affinity data. For CMC assessment: sequence files only."}},
@@ -46,7 +47,7 @@
     {"@type":"Question","name":"What does the final report include?","acceptedAnswer":{"@type":"Answer","text":"Final designed sequences (FASTA), full rationale for each design decision, structure prediction results, CMC developability metrics, immunogenicity risk assessment, and an executive summary."}},
     {"@type":"Question","name":"Do you offer wet lab validation?","acceptedAnswer":{"@type":"Answer","text":"Our core service is computational. We partner with CRO laboratories for expression, binding assays, and stability testing."}},
     {"@type":"Question","name":"Is my sequence data kept confidential?","acceptedAnswer":{"@type":"Answer","text":"Yes. All submitted sequences and project data are treated as strictly confidential. We sign NDAs prior to project initiation."}},
-    {"@type":"Question","name":"What AI tools and databases does InSynBio use?","acceptedAnswer":{"@type":"Answer","text":"AbEngineCore integrates ANARCII, ABodyBuilder2, a 842-antibody clinical germline database, CMC benchmarking against AbRef-458, and IEDB API-based prediction EL immunogenicity prediction (via IEDB Next-Gen API)."}}
+    {"@type":"Question","name":"What AI tools and databases does InSynBio use?","acceptedAnswer":{"@type":"Answer","text":"AbEngineCore integrates ANARCI, ABodyBuilder2, a 842-antibody clinical germline database, CMC benchmarking against AbRef-458, and IEDB API-based prediction EL immunogenicity prediction (via IEDB Next-Gen API)."}}
   ]}
   </script>
   <style>
@@ -289,43 +290,13 @@
     <button class="mobile-menu-btn" aria-label="Open menu" onclick="document.querySelector('.top-header-nav').classList.add('open')">
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
     </button>
-    <nav class="top-header-nav">
-      <button class="nav-close-btn" aria-label="Close menu" onclick="this.parentElement.classList.remove('open')">&times;</button>
-      <a href="index.html" class="active">Home</a>
-      <a href="#about">About Us</a>
-      <div class="nav-dropdown" tabindex="0">
-        <a href="#services">Services</a>
-        <div class="dropdown-menu">
-          <a href="InSynBio_Antibody_Developability_Assessment_Page.html">
-            <span class="menu-title">Antibody</span>
-            <span class="menu-desc">Structure-based Development</span>
-          </a>
-          <a href="InSynBio_CART_Design_Page.html">
-            <span class="menu-title">CAR-T</span>
-            <span class="menu-desc">Smart CAR-T Design</span>
-          </a>
-          <a href="InSynBio_Bispecific_Antibody_Design_Page.html">
-            <span class="menu-title">Bispecific</span>
-            <span class="menu-desc">Multispecific Engineering</span>
-          </a>
-          <a href="immunogenicity_study.html">
-            <span class="menu-title">Immunogenicity</span>
-            <span class="menu-desc">ADA Prediction & Reference DB</span>
-          </a>
-          <a href="vaccine_design.html">
-            <span class="menu-title">Vaccine Design</span>
-            <span class="menu-desc">Neoantigen · Heteroclitic · mRNA</span>
-          </a>
-        </div>
-      </div>
-      <a href="#case-studies">Case Studies</a>
-      <a href="InSynBio_OurTech.html">Our Tech</a>
-      <a href="#workflow">Workflow</a>
-      <a href="#faq">FAQ</a>
-      <a href="#contact">Contact Us</a>
-    </nav>
-    
+    <nav class="top-header-nav" id="mirrored-top-nav"></nav>
   </header>
+  <script src="js/site-nav-mirror-config.js"></script>
+  <script src="js/site-nav-mirror-render.js"></script>
+  <script>
+    SiteNavMirror.render(document.getElementById('mirrored-top-nav'), { site: 'insynbio', layout: 'insynbioIndex' });
+  </script>
 
   <section class="hero">
     <div class="hero-banner">
@@ -428,7 +399,7 @@
 
       <p style="margin-bottom:14px;font-size:14px;color:#6b7280;line-height:1.6;"><strong style="color:#0f766e;">In</strong>telligent &nbsp;·&nbsp; <strong style="color:#0f766e;">Syn</strong>ergy &nbsp;·&nbsp; <strong style="color:#0f766e;">Bio</strong>logy means pairing machine learning with domain expertise, so teams get outputs they can actually act on.</p>
 
-      <p style="margin-bottom:16px;">What sets InSynBio apart is that our platform is calibrated against <strong>real clinical outcomes</strong>, not only synthetic or hypothetical datasets. We maintain a curated base of <strong>1,142 approved and clinical-stage antibody sequences</strong>, <strong>120+ validated immunogenicity records</strong>, and <strong>134+ bispecific benchmarks</strong>, then translate those references into reports built for project planning, partner updates, and internal review.</p>
+      <p style="margin-bottom:16px;">What sets InSynBio apart is that our platform is calibrated against <strong>real clinical outcomes</strong>, not only synthetic or hypothetical datasets. We maintain a curated base of <strong>1,142 approved and clinical-stage antibody sequences</strong> (including <strong>42 clinical-stage VHH</strong> nanobody references), <strong>109 MHC class I/II epitope records</strong> in the EpiDesignCore vaccine knowledge base, <strong>458 Fc-bearing clinical antibodies</strong> for CMC benchmarking (AbRef-458), <strong>120+ validated immunogenicity records</strong>, and <strong>134+ bispecific benchmarks</strong>, then translate those references into reports built for project planning, partner updates, and internal review.</p>
 
       <p style="margin-bottom:16px;font-size:14px;color:#4b5563;">Founded by scientists from <strong>Columbia University</strong> and <strong>Rockefeller University</strong>, with expertise in immunology, therapeutic antibody development, and vaccine biology.</p>
 
@@ -721,9 +692,10 @@
           <p class="faq-answer">Yes. All submitted sequences and project data are treated as strictly confidential. We are happy to sign an NDA prior to project initiation. Data is used solely for the purposes of the contracted project and is not shared with third parties.</p>
         </details>
 
+        <!-- [2] Same as [1]: visible FAQ mirrors JSON-LD; public ANARCI, engine anarcii. -->
         <details class="faq-item">
           <summary class="faq-summary">What AI tools and databases does InSynBio use? <span style="color:var(--primary);font-size:20px;font-weight:300;">+</span></summary>
-          <p class="faq-answer">Our AbEngineCore platform integrates: deep-learning antibody numbering (<strong>ANARCII</strong>), structure prediction (<strong>AlphaFold2</strong>, <strong>ABodyBuilder2</strong>, <strong>HADDOCK3</strong>), de novo sequence design (<strong>ProteinMPNN</strong>, <strong>RFdiffusion</strong>), a curated 1,142-antibody clinical germline database, CMC benchmarking against AbRef-458, and MHC-II immunogenicity prediction via <strong>IEDB API-based prediction</strong> EL mode (IEDB API, 27 HLA-DR alleles). See <a href="InSynBio_OurTech.html" style="color:var(--primary);font-weight:600;">Our Tech</a> for full details.</p>
+          <p class="faq-answer">Our AbEngineCore platform integrates: deep-learning antibody numbering (<strong>ANARCI</strong>), structure prediction (<strong>AlphaFold2</strong>, <strong>ABodyBuilder2</strong>, <strong>HADDOCK3</strong>), de novo sequence design (<strong>ProteinMPNN</strong>, <strong>RFdiffusion</strong>), a curated 1,142-antibody clinical germline database, CMC benchmarking against AbRef-458, and MHC-II immunogenicity prediction via <strong>IEDB API-based prediction</strong> EL mode (IEDB API, 27 HLA-DR alleles). See <a href="InSynBio_OurTech.html" style="color:var(--primary);font-weight:600;">Our Tech</a> for full details.</p>
         </details>
 
       </div>

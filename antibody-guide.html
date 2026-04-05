@@ -17,6 +17,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/insynbio-mobile-nav.css">
   <style>
     :root{--primary:#0d9488;--primary-dark:#0f766e;--text:#111827;--text-muted:#4b5563;--border:#e5e7eb;--bg:#fff;--bg-alt:#f9fafb;}
     *{box-sizing:border-box;}
@@ -68,22 +69,24 @@
     /* ── Cards ── */
     .comp-card{background:#fff;border:1px solid var(--border);border-radius:10px;padding:16px;cursor:pointer;transition:all .2s;position:relative;}
     .comp-card:hover{border-color:rgba(13,148,136,.4);box-shadow:0 4px 16px rgba(13,148,136,.08);transform:translateY(-1px);}
-    .comp-card:not(.collapsed){border-color:var(--primary);box-shadow:0 4px 20px rgba(13,148,136,.08);}
+    .comp-card.expanded{border-color:var(--primary);box-shadow:0 4px 20px rgba(13,148,136,.12);}
     .cc-top{display:flex;align-items:flex-start;justify-content:space-between;gap:8px;}
     .cc-name{font-size:14px;font-weight:700;color:#111827;line-height:1.35;flex:1;min-width:0;word-break:break-word;}
     .cc-alias{font-size:11px;color:#9ca3af;font-weight:400;font-family:'Consolas',monospace;word-break:break-all;}
     .cc-meta{display:flex;gap:6px;align-items:center;margin-top:8px;flex-wrap:wrap;}
-    .cc-brief{font-size:13px;color:var(--text-muted);margin-top:6px;line-height:1.4;}
-    .comp-card.collapsed .cc-brief{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;}
+    .cc-brief{font-size:13px;color:var(--text-muted);margin-top:6px;line-height:1.4;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;}
+    .comp-card.expanded .cc-brief{display:block;-webkit-line-clamp:unset;overflow:visible;}
     .cc-examples{font-size:11.5px;margin-top:6px;line-height:1.5;}
     .cc-examples .ex-approved{color:#0f766e;font-weight:600;}
     .cc-examples .ex-trial{color:#1d4ed8;}
 
-    .cc-detail{display:block;margin-top:14px;padding-top:12px;border-top:1px solid var(--border);}
-    .comp-card.collapsed .cc-detail{display:none;}
+    .cc-detail{display:none;margin-top:14px;padding-top:12px;border-top:1px solid var(--border);}
+    .comp-card.expanded .cc-detail{display:block;}
+    .cc-detail .collapse-bar{height:3px;background:#e5f7f5;border-radius:2px;margin-bottom:12px;overflow:hidden;}
+    .cc-detail .collapse-progress{height:100%;width:100%;background:var(--primary);border-radius:2px;}
     .expand-toggle{font-size:11px;color:var(--primary);font-weight:600;float:right;margin-top:2px;user-select:none;}
-    .comp-card.collapsed .expand-toggle::after{content:'▼ Show';}
-    .comp-card:not(.collapsed) .expand-toggle::after{content:'▲ Hide';}
+    .comp-card .expand-toggle::after{content:'▼ Expand';}
+    .comp-card.expanded .expand-toggle::after{content:'▲ Collapse';}
     .detail-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px 20px;}
     .detail-full{grid-column:1/-1;}
     .dl{font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--primary);margin-bottom:3px;}
@@ -114,6 +117,9 @@
     .domain-note{background:linear-gradient(135deg,#f0fdfa,#fff);border:1px solid rgba(13,148,136,.15);border-radius:12px;padding:20px 24px;margin-bottom:28px;}
     .domain-note p{margin:0;font-size:15px;color:#374151;line-height:1.65;}
     .domain-note strong{color:var(--primary-dark);}
+    .page-card-hint{font-size:14px;color:#4b5563;margin:12px 0 0;max-width:720px;line-height:1.6;padding:12px 14px;background:rgba(13,148,136,.06);border:1px solid rgba(13,148,136,.12);border-radius:10px;}
+    .page-card-hint a{color:var(--primary);font-weight:600;text-decoration:none;}
+    .page-card-hint a:hover{text-decoration:underline;}
 
     @media(max-width:900px){
       .top-header{padding:10px 16px;}
@@ -124,7 +130,6 @@
       .card-grid{grid-template-columns:1fr 1fr;gap:10px;}
       .detail-grid{grid-template-columns:1fr;}
       .detail-full{grid-column:1;}
-      .top-header-nav{display:none;}
     }
     @media(max-width:520px){
       .card-grid{grid-template-columns:1fr;}
@@ -179,7 +184,7 @@
 </head>
 <body>
 
-<header class="top-header">
+<header class="top-header insynbio-mnav-header">
   <div class="brand">
     <a href="index.html" style="display:flex;align-items:center;gap:10px;text-decoration:none;">
       <svg width="34" height="28" viewBox="0 0 32 30" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink:0;">
@@ -197,7 +202,11 @@
     </a>
     <span class="slogan">AI for Life Sciences</span>
   </div>
+  <button type="button" class="mobile-menu-btn" aria-label="Open menu" onclick="document.querySelector('.top-header-nav').classList.add('open')">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+  </button>
   <nav class="top-header-nav">
+    <button type="button" class="nav-close-btn" aria-label="Close menu" onclick="this.parentElement.classList.remove('open')">&times;</button>
     <a href="index.html">Home</a>
     <a href="InSynBio_Antibody_Developability_Assessment_Page.html">Antibody Services</a>
     <a href="InSynBio_Antibody_Developability_Assessment_Page.html#submit">Submit Inquiry</a>
@@ -211,6 +220,7 @@
   </a>
   <h1>Antibody Engineering Reference</h1>
   <p>A curated knowledge base covering <strong>Fc engineering mutations</strong>, <strong>developability assessment metrics</strong>, and <strong>immunogenicity risk factors</strong> — designed to help scientists and clients understand our reports.</p>
+  <p class="page-card-hint">Each entry is an <strong>expandable card</strong> (default collapsed, same pattern as the <a href="component-browser.html">CAR component library</a>): <strong>click the card</strong> to show mechanism text, references, and IP notes; a teal accent bar appears above the detail block. The top-right control reads &ldquo;▼ Expand&rdquo; / &ldquo;▲ Collapse&rdquo;. Clicks on links do not toggle the card.</p>
   <div class="domain-tabs">
     <button class="dtab active" data-domain="fc" onclick="switchDomain('fc',this)">⚙ Fc Mutations</button>
     <button class="dtab" data-domain="dev" onclick="switchDomain('dev',this)">📊 Developability Metrics</button>
@@ -282,6 +292,7 @@
 // DATA
 // ═══════════════════════════════════════════════════════════
 
+// Fc engineering entries: 21 (fc1–fc18 plus fc13b / fc13c / fc14b)
 const FC_DATA = [
   // ── FcRn Binding / Half-life Extension ──────────────────
   {id:'fc1', cat:'FcRn Binding / Half-life', tier:'T1',
@@ -965,7 +976,7 @@ function renderFcCard(d) {
       <div class="dv" style="margin-top:6px;"><strong>Holder:</strong> ${hl(ip.holder)}<br><strong>Key Patent(s):</strong> ${hl(ip.key)}<br><strong>Expiry:</strong> ${hl(ip.expiry)}<br><strong style="color:#374151;">Design-around / Workaround:</strong> ${hl(ip.workaround)}</div>
     </div>` : '';
   return `
-    <div class="comp-card" id="card-${d.id}" onclick="toggleCard('${d.id}')">
+    <div class="comp-card" id="card-${d.id}" onclick="toggleCard(event, '${d.id}')">
       <div class="cc-top">
         <div class="cc-name">${hl(d.name)}<br><span class="cc-alias">${hl(d.alias)}</span></div>
         <div style="display:flex;align-items:center;gap:6px;flex-shrink:0;">${ipc ? ipBadge : ''}<span class="tier tier-${d.tier}">${TIER_LABEL[d.tier]}</span><span class="expand-toggle"></span></div>
@@ -976,6 +987,7 @@ function renderFcCard(d) {
       <div class="cc-brief">${hl(d.brief)}</div>
       ${d.examples.length ? `<div class="cc-examples">${exHtml}</div>` : ''}
       <div class="cc-detail">
+        <div class="collapse-bar"><div class="collapse-progress"></div></div>
         <div class="detail-grid">
           <div class="detail-full"><div class="dl">Mechanism</div><div class="dv">${hl(d.mechanism)}</div></div>
           <div><div class="dl">Receptors / Targets Affected</div><div class="dv">${hl(d.receptors)}</div></div>
@@ -989,7 +1001,7 @@ function renderFcCard(d) {
 
 function renderDevCard(d) {
   return `
-    <div class="comp-card" id="card-${d.id}" onclick="toggleCard('${d.id}')">
+    <div class="comp-card" id="card-${d.id}" onclick="toggleCard(event, '${d.id}')">
       <div class="cc-top">
         <div class="cc-name">${hl(d.name)}<br><span class="cc-alias" style="font-family:inherit;">${hl(d.alias)}</span></div>
         <div style="display:flex;align-items:center;gap:6px;flex-shrink:0;"><span class="risk-badge ${RISK_CLASS[d.risk]}">${RISK_LABEL[d.risk]}</span><span class="expand-toggle"></span></div>
@@ -1000,6 +1012,7 @@ function renderDevCard(d) {
       </div>
       <div class="cc-brief">${hl(d.brief)}</div>
       <div class="cc-detail">
+        <div class="collapse-bar"><div class="collapse-progress"></div></div>
         <div class="detail-grid">
           <div><div class="dl">How It Is Calculated</div><div class="dv">${hl(d.calc)}</div></div>
           <div><div class="dl">InSynBio Threshold / Flag</div><div class="dv">${hl(d.threshold)}</div></div>
@@ -1012,7 +1025,7 @@ function renderDevCard(d) {
 
 function renderImmunoCard(d) {
   return `
-    <div class="comp-card" id="card-${d.id}" onclick="toggleCard('${d.id}')">
+    <div class="comp-card" id="card-${d.id}" onclick="toggleCard(event, '${d.id}')">
       <div class="cc-top">
         <div class="cc-name">${hl(d.name)}<br><span class="cc-alias" style="font-family:inherit;">${hl(d.alias)}</span></div>
         <div style="display:flex;align-items:center;gap:6px;flex-shrink:0;"><span class="risk-badge ${RISK_CLASS[d.risk]}">${RISK_LABEL[d.risk]}</span><span class="expand-toggle"></span></div>
@@ -1022,6 +1035,7 @@ function renderImmunoCard(d) {
       </div>
       <div class="cc-brief">${hl(d.brief)}</div>
       <div class="cc-detail">
+        <div class="collapse-bar"><div class="collapse-progress"></div></div>
         <div class="detail-grid">
           <div class="detail-full"><div class="dl">Mechanism</div><div class="dv">${hl(d.mechanism)}</div></div>
           <div><div class="dl">Detection Methods</div><div class="dv">${hl(d.detection)}</div></div>
@@ -1034,7 +1048,7 @@ function renderImmunoCard(d) {
 
 function renderWetCard(d) {
   return `
-    <div class="comp-card" id="card-${d.id}" onclick="toggleCard('${d.id}')">
+    <div class="comp-card" id="card-${d.id}" onclick="toggleCard(event, '${d.id}')">
       <div class="cc-top">
         <div class="cc-name">${hl(d.name)}<br><span class="cc-alias">${hl(d.alias)}</span></div>
         <div style="display:flex;align-items:center;gap:6px;flex-shrink:0;"><span class="expand-toggle"></span></div>
@@ -1044,6 +1058,7 @@ function renderWetCard(d) {
       </div>
       <div class="cc-brief">${hl(d.brief)}</div>
       <div class="cc-detail">
+        <div class="collapse-bar"><div class="collapse-progress"></div></div>
         <div class="detail-grid">
           <div class="detail-full"><div class="dl">Assay Principle</div><div class="dv">${hl(d.principle)}</div></div>
           <div><div class="dl">Key Readout / Parameters</div><div class="dv">${hl(d.readout)}</div></div>
@@ -1108,9 +1123,12 @@ function renderGrid() {
 // ═══════════════════════════════════════════════════════════
 // INTERACTIONS
 // ═══════════════════════════════════════════════════════════
-function toggleCard(id) {
+function toggleCard(ev, id) {
+  if (ev && ev.target && typeof ev.target.closest === 'function') {
+    if (ev.target.closest('a, button, input, select, textarea, label')) return;
+  }
   const el = document.getElementById('card-' + id);
-  if (el) el.classList.toggle('collapsed');
+  if (el) el.classList.toggle('expanded');
 }
 
 function switchDomain(domain, btn) {

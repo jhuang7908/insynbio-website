@@ -11,6 +11,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/insynbio-mobile-nav.css">
   <style>
     :root { --primary:#0d9488; --primary-dark:#0f766e; --text:#111827; --text-muted:#4b5563; --border:#e5e7eb; --bg:#ffffff; --bg-alt:#f9fafb; --bg-alt2:#f3f4f6; }
     * { box-sizing:border-box; }
@@ -91,17 +92,21 @@
     .section-title { font-family:'Cormorant Garamond',serif; font-size:24px; font-weight:600; color:var(--text); margin:0 0 6px; }
     .section-desc { color:var(--text-muted); font-size:13.5px; margin-bottom:16px; max-width:700px; }
 
-    @media(max-width:700px) { .card-grid { grid-template-columns:1fr; } .page { padding:24px 16px 60px; } }
+    @media(max-width:700px) { .card-grid { grid-template-columns:1fr; } .page { padding:24px 16px 60px; } .top-bar { padding:10px 14px; } }
   </style>
 </head>
 <body>
 
-<div class="top-bar">
+<div class="top-bar insynbio-mnav-topbar">
   <a href="vaccine_design.html" class="brand">
     <svg width="24" height="20" viewBox="0 0 32 30" fill="none"><path d="M16 2L2 10V22L16 28L30 22V10L16 2Z" fill="#0d9488" fill-opacity="0.08" stroke="#0d9488" stroke-width="1.5" stroke-opacity="0.5"/><circle cx="16" cy="16" r="2.5" fill="white" stroke="#0d9488" stroke-width="2"/></svg>
     In<span>Syn</span>Bio
   </a>
-  <nav>
+  <button type="button" class="mobile-menu-btn" aria-label="Open menu" onclick="document.querySelector('.insynbio-mnav-topbar .top-header-nav').classList.add('open')">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+  </button>
+  <nav class="top-header-nav">
+    <button type="button" class="nav-close-btn" aria-label="Close menu" onclick="this.parentElement.classList.remove('open')">&times;</button>
     <a href="vaccine_design.html" class="back">← Vaccine Design Service</a>
     <a href="index.html">Home</a>
     <a href="InSynBio_Antibody_Developability_Assessment_Page.html">Antibody</a>
@@ -175,7 +180,7 @@
   <!-- TCR -->
   <div class="tab-panel" id="panel-tcr">
     <h2 class="section-title">Validated TCR-pMHC Pairs</h2>
-    <p class="section-desc"><strong style="color:#059669">Clinical-grade, PDB-verified only</strong> — TCR clones in Phase I+ trials or FDA-approved products. Every CDR3α/CDR3β traceable to RCSB PDB. No AI-generated data.</p>
+    <p class="section-desc"><strong style="color:#059669">Clinical-grade validation</strong> — TCR clones from Phase I+ trials or FDA-approved therapies. Rows link to RCSB when a matching public TCR–pMHC structure exists; otherwise the source column reflects primary trial or publication citations (for example, approved bispecifics without a deposited therapeutic TCR–pMHC). No AI-generated data.</p>
     <div style="margin:12px 0 16px;display:flex;gap:10px;flex-wrap:wrap">
       <select class="filter-sel" id="tcrSourceFilter"><option value="">All sources</option><option value="tumor">Tumor</option><option value="viral">Viral</option></select>
       <select class="filter-sel" id="tcrClinFilter"><option value="">All stages</option><option value="clinical">Clinical / Approved</option><option value="structure">With PDB</option></select>

@@ -17,6 +17,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/insynbio-mobile-nav.css">
   <!-- Lucide Icons (free, CDN) -->
   <script src="https://unpkg.com/lucide@0.378.0/dist/umd/lucide.min.js"></script>
   <style>
@@ -369,8 +370,6 @@
       .top-header { padding: 12px 16px; flex-wrap: wrap; gap: 10px; }
       .top-header .brand { flex: 1 1 auto; display: flex; align-items: center; gap: 8px; }
       .top-header .slogan { font-size: 12px; padding-left: 10px; border-left: 1px solid var(--border); white-space: nowrap; }
-      .top-header-nav { order: 3; width: 100%; flex: 1 1 100%; justify-content: flex-start; flex-wrap: wrap; gap: 4px; overflow-x: auto; padding-bottom: 4px; -webkit-overflow-scrolling: touch; border-top: 1px solid var(--border); padding-top: 8px; margin-top: 2px; }
-      .top-header-nav a { flex-shrink: 0; font-size: 13px; padding: 6px 10px; }
       .case-hero { padding: 48px 16px 64px; }
       .case-hero h1 { font-size: 28px; }
       .case-hero .subtitle { font-size: 15px; }
@@ -393,7 +392,7 @@
 <body>
 
   <!-- ─── HEADER ─── -->
-  <header class="top-header">
+  <header class="top-header insynbio-mnav-header">
     <div class="brand">
       <a href="index.html">
         <svg width="34" height="28" viewBox="0 0 32 30" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink:0;">
@@ -411,7 +410,11 @@
       </a>
       <span class="slogan">AI for Life Sciences</span>
     </div>
+    <button type="button" class="mobile-menu-btn" aria-label="Open menu" onclick="document.querySelector('header.insynbio-mnav-header .top-header-nav').classList.add('open')">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
     <nav class="top-header-nav">
+      <button type="button" class="nav-close-btn" aria-label="Close menu" onclick="this.parentElement.classList.remove('open')">&times;</button>
       <a href="index.html">Home</a>
       <a href="index.html#about">About Us</a>
       <div class="nav-dropdown" tabindex="0">
