@@ -5,14 +5,14 @@
   <meta name="robots" content="noai, noimageai">
   <meta name="AI-Training" content="opt-out">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="InSynBio clinical study: immunogenicity prediction across 138 therapeutic antibodies — stratified modeling, ADA rate correlation, feature analysis, and predictive scoring models.">
+  <meta name="description" content="InSynBio clinical study: immunogenicity prediction across 138 therapeutic antibodies &mdash; stratified modeling, ADA rate correlation, feature analysis, and predictive scoring models.">
   <meta name="keywords" content="antibody immunogenicity, ADA prediction, therapeutic antibody, MHCII epitope, T-cell epitope, clinical ADA, InSynBio">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://www.insynbio.com/immunogenicity_study.html">
   <meta property="og:type" content="article">
   <meta property="og:url" content="https://www.insynbio.com/immunogenicity_study.html">
   <meta property="og:title" content="Immunogenicity Prediction Study: 138 Clinical Antibodies | InSynBio">
-  <meta property="og:description" content="Stratified computational immunogenicity modeling across 138 approved/clinical-stage antibodies — validated against real-world ADA rates.">
+  <meta property="og:description" content="Stratified computational immunogenicity modeling across 138 approved/clinical-stage antibodies &mdash; validated against real-world ADA rates.">
   <title>Immunogenicity Prediction Study | InSynBio</title>
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -42,7 +42,7 @@
     .mobile-menu-btn { display: none; background: none; border: none; padding: 6px; cursor: pointer; color: var(--text); flex-shrink: 0; }
     .nav-close-btn { display: none; }
     .nav-dropdown { position: relative; }
-    .nav-dropdown > a::after { content: ' ▾'; font-size: 10px; opacity: 0.6; margin-left: 4px; }
+    .nav-dropdown > a::after { content: ' &#9662;'; font-size: 10px; opacity: 0.6; margin-left: 4px; }
     .nav-dropdown .dropdown-menu { position: absolute; top: 100%; left: 50%; transform: translateX(-50%) translateY(10px); min-width: 220px; padding: 8px; background: #fff; border: 1px solid rgba(0,0,0,0.06); border-radius: 12px; box-shadow: 0 10px 40px -10px rgba(0,0,0,0.12); opacity: 0; visibility: hidden; transition: all 0.2s cubic-bezier(0.16,1,0.3,1); z-index: 100; margin-top: 8px; }
     .nav-dropdown:hover .dropdown-menu, .nav-dropdown:focus-within .dropdown-menu { opacity: 1; visibility: visible; transform: translateX(-50%) translateY(0); }
     .nav-dropdown .dropdown-menu a { display: block; padding: 12px 16px; color: var(--text); text-decoration: none; border-radius: 8px; font-size: 14px; font-weight: 400; background: transparent; }
@@ -84,8 +84,6 @@
     @media (max-width: 480px) {
       .sitemap-grid { grid-template-columns: 1fr; }
     }
-  </style>
-
 
     /* === LAYOUT === */
     .page-wrap { display: flex; max-width: 1320px; margin: 0 auto; }
@@ -216,7 +214,7 @@
     <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
   </button>
   <nav class="top-header-nav">
-    <button class="nav-close-btn" onclick="document.querySelector('.top-header-nav').classList.remove('open')" aria-label="Close navigation">✕</button>
+    <button class="nav-close-btn" onclick="document.querySelector('.top-header-nav').classList.remove('open')" aria-label="Close navigation">&#10005;</button>
     <a href="index.html">Home</a>
     <a href="index.html#about">About Us</a>
     <div class="nav-dropdown" tabindex="0">
@@ -240,7 +238,7 @@
         </a>
         <a href="vaccine_design.html">
           <span class="menu-title">Vaccine Design</span>
-          <span class="menu-desc">Neoantigen · Heteroclitic · mRNA</span>
+          <span class="menu-desc">Neoantigen &middot; Heteroclitic &middot; mRNA</span>
         </a>
       </div>
     </div>
@@ -259,7 +257,7 @@
   <a href="ada_database.html" style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;padding:11px 14px;background:linear-gradient(135deg,#f0faf8,#e8f6f3);border:1.5px solid rgba(13,148,136,0.25);border-radius:10px;text-decoration:none;color:var(--primary-dark);">
     <span>
       <span style="display:block;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;color:var(--primary);margin-bottom:2px;">ADA Database</span>
-      <span style="font-size:12px;font-weight:600;">138 antibodies →</span>
+      <span style="font-size:12px;font-weight:600;">138 antibodies &rarr;</span>
     </span>
     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
   </a>
@@ -291,19 +289,19 @@
   <p style="font-size:18px;color:#4b5563;margin:0 0 20px;line-height:1.6;">Stratified computational benchmark across 138 approved and clinical-stage therapeutic antibodies, validated against real-world ADA rates.</p>
   <div style="background:#f0fdf4;border-left:4px solid #0d9488;padding:20px 24px;border-radius:0 12px 12px 0;margin:0 0 20px;">
     <p style="margin:0 0 10px;color:#374151;font-size:16px;line-height:1.7;"><strong>Clinical knowledge base study for the AbEngineCore Immunogenicity Module.</strong> Spearman correlation analysis and leave-one-out (LOO) cross-validation spanning 84 humanized and 54 fully human antibodies. Covers 57+ features: MHC-II epitope burden, CDR-H3 composition, surface hydrophobicity, Fc engineering, and clinical confounders (route, comedication, half-life).</p>
-    <p style="margin:0;color:#374151;font-size:16px;line-height:1.7;">Results inform immunogenicity risk scoring for new antibody candidates. The complete 138-antibody reference dataset — with evidence chains, epitope profiles, and clinical metadata — is available in the <a href="ada_database.html" style="color:#0d9488;font-weight:600;">ADA Clinical Database →</a></p>
+    <p style="margin:0;color:#374151;font-size:16px;line-height:1.7;">Results inform immunogenicity risk scoring for new antibody candidates. The complete 138-antibody reference dataset &mdash; with evidence chains, epitope profiles, and clinical metadata &mdash; is available in the <a href="ada_database.html" style="color:#0d9488;font-weight:600;">ADA Clinical Database &rarr;</a></p>
   </div>
   <p style="font-size:13px;color:#9ca3af;margin:0 0 32px;font-style:italic;">Disclaimer: In silico analyses are exploratory correlations for research use only and do not replace clinical validation. Internal reference only.</p>
 
   <!-- Dataset context banner -->
   <div style="display:flex;gap:12px;margin-bottom:20px;flex-wrap:wrap;">
     <div style="flex:2;min-width:260px;background:#f0fdf4;border:1px solid #86efac;border-radius:10px;padding:14px 18px;">
-      <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;color:#15803d;margin-bottom:4px;">This Study — 138 Antibodies</div>
+      <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;color:#15803d;margin-bottom:4px;">This Study &mdash; 138 Antibodies</div>
       <div style="font-size:13px;color:#166534;line-height:1.5;">Expanded panel: 84 humanized + 54 fully human. All ADA values FDA/EMA-verified, Tier A/B evidence. Sequence, structural, glycosylation, and clinical confounder features extracted. Used for Spearman correlation analysis and LOO model validation.</div>
     </div>
     <div style="flex:1;min-width:200px;background:#eff6ff;border:1px solid #93c5fd;border-radius:10px;padding:14px 18px;display:flex;flex-direction:column;justify-content:space-between;">
       <div>
-        <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;color:#1d4ed8;margin-bottom:4px;">ADA Database — Full 138 Entries</div>
+        <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;color:#1d4ed8;margin-bottom:4px;">ADA Database &mdash; Full 138 Entries</div>
         <div style="font-size:13px;color:#1e40af;line-height:1.5;">Evidence-graded ADA data for all 138 antibodies. Browse, filter, and compare by modality, target, and ADA rate.</div>
       </div>
       <a href="ada_database.html" style="display:inline-flex;align-items:center;gap:4px;margin-top:8px;font-weight:600;color:#1d4ed8;text-decoration:none;font-size:12px;">Browse ADA Database <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
@@ -313,17 +311,17 @@
   <!-- 1. OVERVIEW -->
   <!-- Analysis Note Banner -->
   <div style="background:#f0f9ff;border:1.5px solid #38bdf8;border-radius:10px;padding:14px 20px;margin-bottom:32px;display:flex;align-items:flex-start;gap:12px;">
-    <span style="font-size:20px;flex-shrink:0;">ℹ️</span>
+    <span style="font-size:20px;flex-shrink:0;">&#8505;&#65039;</span>
     <div>
-      <strong style="color:#0c4a6e;font-size:14px;">Exploratory Correlations — Expanded 138-Antibody Panel (April 2026)</strong>
-      <p style="margin:4px 0 0;font-size:13px;color:#075985;line-height:1.5;">This report reflects analysis of the full 138-antibody panel. Results should be interpreted as <em>exploratory correlations</em>, not validated clinical predictors. Clinical confounders (immunosuppressant co-medication, half-life, route) are partially missing for 41 newly added humanized antibodies, which attenuates the HU-group signal — this quantifies the value of complete confounder recording. Do not use these models for regulatory submissions without independent validation.</p>
+      <strong style="color:#0c4a6e;font-size:14px;">Exploratory Correlations &mdash; Expanded 138-Antibody Panel (April 2026)</strong>
+      <p style="margin:4px 0 0;font-size:13px;color:#075985;line-height:1.5;">This report reflects analysis of the full 138-antibody panel. Results should be interpreted as <em>exploratory correlations</em>, not validated clinical predictors. Clinical confounders (immunosuppressant co-medication, half-life, route) are partially missing for 41 newly added humanized antibodies, which attenuates the HU-group signal &mdash; this quantifies the value of complete confounder recording. Do not use these models for regulatory submissions without independent validation.</p>
     </div>
   </div>
 
   <section id="overview">
     <h2><span class="num">01</span>Overview</h2>
     <p>
-      Anti-drug antibodies (ADAs) are a primary clinical risk for biologic therapeutics. They can reduce efficacy, alter pharmacokinetics, and in rare cases cause serious adverse events. Yet ADA rates vary enormously across antibodies — from 0% to over 85% in our dataset — making prediction genuinely difficult.
+      Anti-drug antibodies (ADAs) are a primary clinical risk for biologic therapeutics. They can reduce efficacy, alter pharmacokinetics, and in rare cases cause serious adverse events. Yet ADA rates vary enormously across antibodies &mdash; from 0% to over 85% in our dataset &mdash; making prediction genuinely difficult.
     </p>
     <p>
       This study applies InSynBio's <strong>AbEngineCore Immunogenicity Module</strong> to 138 approved or late-clinical-stage therapeutic antibodies with documented ADA rates from FDA/EMA labels and peer-reviewed sources. For each antibody, we extracted a comprehensive set of sequence, structural, glycosylation, and clinical features, and built stratified predictive scoring models validated by strict Leave-One-Out (LOO) cross-validation.
@@ -367,14 +365,14 @@
       </div>
       <div class="card" style="border-left:4px solid #9333ea;background:#faf5ff;">
         <h3 style="margin-top:0;color:#7e22ce;">Fully Human Antibodies (n = 54)</h3>
-        <p style="margin-bottom:0;">With human-sequence frameworks, ADA risk is more intrinsic — driven by <strong>T-cell epitope clustering (r = +0.32), immunogenic burden, and germline foreignness</strong>. Clinical confounders have less impact since ADA must overcome central or peripheral tolerance. Doubling from n=27 to n=54 substantially strengthens statistical confidence.</p>
+        <p style="margin-bottom:0;">With human-sequence frameworks, ADA risk is more intrinsic &mdash; driven by <strong>T-cell epitope clustering (r = +0.32), immunogenic burden, and germline foreignness</strong>. Clinical confounders have less impact since ADA must overcome central or peripheral tolerance. Doubling from n=27 to n=54 substantially strengthens statistical confidence.</p>
       </div>
     </div>
 
-    <p>Pooling the two groups dilutes group-specific signals. Separate minimal models — rigorously constrained to 3–5 features and validated by LOO cross-validation — capture these distinct mechanisms more faithfully.</p>
+    <p>Pooling the two groups dilutes group-specific signals. Separate minimal models &mdash; rigorously constrained to 3&ndash;5 features and validated by LOO cross-validation &mdash; capture these distinct mechanisms more faithfully.</p>
 
     <div class="card card-amber">
-      <strong>Data completeness insight:</strong> The attenuation of HU signal (LOO r: 0.39 → 0.25 as n grows from 43 to 84) directly quantifies the value of recording clinical confounders. For the 41 new HU antibodies lacking full confounder annotation, the signal disappears. This is a key validation of our confounder-first HU modeling strategy.
+      <strong>Data completeness insight:</strong> The attenuation of HU signal (LOO r: 0.39 &rarr; 0.25 as n grows from 43 to 84) directly quantifies the value of recording clinical confounders. For the 41 new HU antibodies lacking full confounder annotation, the signal disappears. This is a key validation of our confounder-first HU modeling strategy.
     </div>
   </section>
 
@@ -410,11 +408,11 @@
         <h4><span class="badge badge-clin">Administration &amp; Clinical</span></h4>
         <ul>
           <li>Route of administration &#10003;</li>
-          <li>Pre-existing ADA &#8212; <em>not available</em></li>
+          <li>Pre-existing ADA &mdash; <em>not available</em></li>
           <li>Disease state &amp; target biology &#10003;</li>
           <li>Dosing frequency &#10003;</li>
           <li>Photo-oxidation (CDR Met/Trp) &#10003;</li>
-          <li>Excipient adjuvancy &#8212; <em>not available</em></li>
+          <li>Excipient adjuvancy &mdash; <em>not available</em></li>
         </ul>
       </div>
     </div>
@@ -461,37 +459,37 @@
 
     <!-- SVG: Top feature correlations — updated for 138-panel -->
     <h3 style="margin-top:32px;">Feature Correlation Summary — Top Signals by Group</h3>
-    <p style="font-size:12px;color:#6b7280;margin-top:-8px;margin-bottom:16px;">Spearman r with clinical ADA rate &nbsp;·&nbsp; <span style="display:inline-flex;align-items:center;gap:4px;"><span style="width:10px;height:10px;border-radius:2px;background:#0d9488;display:inline-block;"></span> Protective factor (r &lt; 0)</span> &nbsp; <span style="display:inline-flex;align-items:center;gap:4px;"><span style="width:10px;height:10px;border-radius:2px;background:#f59e0b;display:inline-block;"></span> Risk factor (r &gt; 0)</span></p>
+    <p style="font-size:12px;color:#6b7280;margin-top:-8px;margin-bottom:16px;">Spearman r with clinical ADA rate &nbsp;&middot;&nbsp; <span style="display:inline-flex;align-items:center;gap:4px;"><span style="width:10px;height:10px;border-radius:2px;background:#0d9488;display:inline-block;"></span> Protective factor (r &lt; 0)</span> &nbsp; <span style="display:inline-flex;align-items:center;gap:4px;"><span style="width:10px;height:10px;border-radius:2px;background:#f59e0b;display:inline-block;"></span> Risk factor (r &gt; 0)</span></p>
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:4px;" class="corr-charts">
 
       <!-- Humanized Group (n=84): scale 300px per r=1.0 unit, zero line x=170 -->
       <div style="background:#f9fafb;border:1px solid #e5e7eb;border-radius:12px;padding:18px 14px 14px;">
         <div style="font-size:13px;font-weight:700;color:#111827;margin-bottom:2px;">Humanized Group (n = 84)</div>
-        <div style="font-size:11px;color:#6b7280;margin-bottom:10px;">Clinical interaction terms dominate · signal attenuated by missing confounder data</div>
+        <div style="font-size:11px;color:#6b7280;margin-bottom:10px;">Clinical interaction terms dominate &middot; signal attenuated by missing confounder data</div>
         <svg viewBox="0 0 420 188" width="100%" style="min-width:360px;" xmlns="http://www.w3.org/2000/svg">
           <line x1="170" y1="4" x2="170" y2="162" stroke="#d1fae5" stroke-width="1.5"/>
           <line x1="26"  y1="162" x2="410" y2="162" stroke="#e5e7eb" stroke-width="1"/>
           <text x="170" y="174" text-anchor="middle" font-size="9" fill="#9ca3af">0</text>
-          <text x="80"  y="174" text-anchor="middle" font-size="9" fill="#9ca3af">−0.2</text>
+          <text x="80"  y="174" text-anchor="middle" font-size="9" fill="#9ca3af">&minus;0.2</text>
           <text x="260" y="174" text-anchor="middle" font-size="9" fill="#9ca3af">+0.2</text>
           <line x1="110" y1="158" x2="110" y2="164" stroke="#e5e7eb" stroke-width="1"/>
           <line x1="230" y1="158" x2="230" y2="164" stroke="#e5e7eb" stroke-width="1"/>
-          <!-- Supp×HL r=−0.201 → 60px left → x=110, w=60 -->
+          <!-- Supp&times;HL r=&minus;0.201 &rarr; 60px left &rarr; x=110, w=60 -->
           <rect x="110" y="8"  width="60"  height="20" rx="3" fill="#0d9488" opacity="0.85"/>
-          <text x="163" y="22" text-anchor="end" font-size="10" fill="#111827">Suppressor × half-life</text>
-          <!-- Immuno_supp r=−0.198 → 59px → x=111 -->
+          <text x="163" y="22" text-anchor="end" font-size="10" fill="#111827">Suppressor &times; half-life</text>
+          <!-- Immuno_supp r=&minus;0.198 &rarr; 59px &rarr; x=111 -->
           <rect x="111" y="34" width="59"  height="20" rx="3" fill="#0d9488" opacity="0.75"/>
           <text x="163" y="48" text-anchor="end" font-size="10" fill="#111827">Immunosuppressant</text>
-          <!-- Assay gen r=+0.188 → 56px right -->
+          <!-- Assay gen r=+0.188 &rarr; 56px right -->
           <rect x="170" y="60" width="56"  height="20" rx="3" fill="#f59e0b" opacity="0.80"/>
           <text x="163" y="74" text-anchor="end" font-size="10" fill="#111827">Assay generation</text>
-          <!-- CDR-H3 len r=−0.180 → 54px left → x=116 -->
+          <!-- CDR-H3 len r=&minus;0.180 &rarr; 54px left &rarr; x=116 -->
           <rect x="116" y="86" width="54"  height="20" rx="3" fill="#0d9488" opacity="0.60"/>
           <text x="163" y="100" text-anchor="end" font-size="10" fill="#111827">CDR-H3 length</text>
-          <!-- Inv HL r=+0.176 → 53px right -->
+          <!-- Inv HL r=+0.176 &rarr; 53px right -->
           <rect x="170" y="112" width="53"  height="20" rx="3" fill="#f59e0b" opacity="0.65"/>
-          <text x="163" y="126" text-anchor="end" font-size="10" fill="#111827">Inv. half-life (1/t½)</text>
-          <!-- SC route r=+0.120 → 36px right -->
+          <text x="163" y="126" text-anchor="end" font-size="10" fill="#111827">Inv. half-life (1/t&frac12;)</text>
+          <!-- SC route r=+0.120 &rarr; 36px right -->
           <rect x="170" y="138" width="36"  height="20" rx="3" fill="#f59e0b" opacity="0.50"/>
           <text x="163" y="152" text-anchor="end" font-size="10" fill="#111827">SC route</text>
         </svg>
@@ -500,31 +498,31 @@
       <!-- Fully Human Group (n=54) -->
       <div style="background:#f9fafb;border:1px solid #e5e7eb;border-radius:12px;padding:18px 14px 14px;">
         <div style="font-size:13px;font-weight:700;color:#111827;margin-bottom:2px;">Fully Human Group (n = 54)</div>
-        <div style="font-size:11px;color:#6b7280;margin-bottom:10px;">Sequence features dominate · n doubled from 27 → 54</div>
+        <div style="font-size:11px;color:#6b7280;margin-bottom:10px;">Sequence features dominate &middot; n doubled from 27 &rarr; 54</div>
         <svg viewBox="0 0 420 188" width="100%" style="min-width:360px;" xmlns="http://www.w3.org/2000/svg">
           <line x1="170" y1="4" x2="170" y2="162" stroke="#d1fae5" stroke-width="1.5"/>
           <line x1="26"  y1="162" x2="410" y2="162" stroke="#e5e7eb" stroke-width="1"/>
           <text x="170" y="174" text-anchor="middle" font-size="9" fill="#9ca3af">0</text>
-          <text x="80"  y="174" text-anchor="middle" font-size="9" fill="#9ca3af">−0.3</text>
+          <text x="80"  y="174" text-anchor="middle" font-size="9" fill="#9ca3af">&minus;0.3</text>
           <text x="260" y="174" text-anchor="middle" font-size="9" fill="#9ca3af">+0.3</text>
           <line x1="110" y1="158" x2="110" y2="164" stroke="#e5e7eb" stroke-width="1"/>
           <line x1="230" y1="158" x2="230" y2="164" stroke="#e5e7eb" stroke-width="1"/>
-          <!-- Strong binders r=+0.322 → 97px right -->
+          <!-- Strong binders r=+0.322 &rarr; 97px right -->
           <rect x="170" y="8"  width="97"  height="20" rx="3" fill="#f59e0b" opacity="0.90"/>
           <text x="163" y="22" text-anchor="end" font-size="10" fill="#111827">Strong MHC-II binders</text>
-          <!-- Binders×(1-supp) r=+0.318 → 95px right -->
+          <!-- Binders&times;(1-supp) r=+0.318 &rarr; 95px right -->
           <rect x="170" y="34" width="95"  height="20" rx="3" fill="#f59e0b" opacity="0.85"/>
-          <text x="163" y="48" text-anchor="end" font-size="10" fill="#111827">Binders × no-suppressor</text>
-          <!-- Route×clusters r=+0.280 → 84px right -->
+          <text x="163" y="48" text-anchor="end" font-size="10" fill="#111827">Binders &times; no-suppressor</text>
+          <!-- Route&times;clusters r=+0.280 &rarr; 84px right -->
           <rect x="170" y="60" width="84"  height="20" rx="3" fill="#f59e0b" opacity="0.75"/>
-          <text x="163" y="74" text-anchor="end" font-size="10" fill="#111827">Route × clusters</text>
-          <!-- Net burden r=+0.252 → 76px right -->
+          <text x="163" y="74" text-anchor="end" font-size="10" fill="#111827">Route &times; clusters</text>
+          <!-- Net burden r=+0.252 &rarr; 76px right -->
           <rect x="170" y="86" width="76"  height="20" rx="3" fill="#f59e0b" opacity="0.65"/>
           <text x="163" y="100" text-anchor="end" font-size="10" fill="#111827">Net epitope burden</text>
-          <!-- N clusters r=+0.235 → 71px right -->
+          <!-- N clusters r=+0.235 &rarr; 71px right -->
           <rect x="170" y="112" width="71"  height="20" rx="3" fill="#f59e0b" opacity="0.60"/>
           <text x="163" y="126" text-anchor="end" font-size="10" fill="#111827">Epitope clusters (n)</text>
-          <!-- VH identity r=−0.217 → 65px left → x=105 -->
+          <!-- VH identity r=&minus;0.217 &rarr; 65px left &rarr; x=105 -->
           <rect x="105" y="138" width="65"  height="20" rx="3" fill="#0d9488" opacity="0.65"/>
           <text x="163" y="152" text-anchor="end" font-size="10" fill="#111827">VH germline identity</text>
         </svg>
@@ -545,9 +543,9 @@
     <div class="table-wrap">
     <table>
       <tr><th>Model</th><th>k</th><th>Algorithm</th><th>Key Features</th><th>LOO r</th><th>LOO p</th></tr>
-      <tr class="best"><td><strong>HU-138-5f &#9733;</strong></td><td>5</td><td>RidgeCV</td><td>supp×HL + assay_gen + supp + HL_inv + cdrh3_len</td><td><strong>0.247</strong></td><td><strong>0.027</strong></td></tr>
-      <tr><td>HU-138-4f</td><td>4</td><td>RidgeCV</td><td>supp×HL + assay_gen + HL_inv + cdrh3_len</td><td>0.218</td><td>0.052</td></tr>
-      <tr><td>HU-138-3f</td><td>3</td><td>RidgeCV</td><td>supp×HL + assay_gen + HL_inv</td><td>0.185</td><td>0.100</td></tr>
+      <tr class="best"><td><strong>HU-138-5f &#9733;</strong></td><td>5</td><td>RidgeCV</td><td>supp&times;HL + assay_gen + supp + HL_inv + cdrh3_len</td><td><strong>0.247</strong></td><td><strong>0.027</strong></td></tr>
+      <tr><td>HU-138-4f</td><td>4</td><td>RidgeCV</td><td>supp&times;HL + assay_gen + HL_inv + cdrh3_len</td><td>0.218</td><td>0.052</td></tr>
+      <tr><td>HU-138-3f</td><td>3</td><td>RidgeCV</td><td>supp&times;HL + assay_gen + HL_inv</td><td>0.185</td><td>0.100</td></tr>
       <tr><td>HU-baseline</td><td>3</td><td>RidgeCV</td><td>immuno_supp + half_life + assay_gen</td><td>0.140</td><td>0.214</td></tr>
     </table>
     </div>
@@ -557,59 +555,59 @@
     <div class="table-wrap">
     <table>
       <tr><th>Model</th><th>k</th><th>Algorithm</th><th>Key Features</th><th>LOO r</th><th>LOO p</th></tr>
-      <tr class="best"><td><strong>FH-138-GBR-4f &#9733;</strong></td><td>4</td><td>GBR</td><td>net_burden + (1&minus;VH_id)×burden + VH_id + assay×clusters</td><td><strong>0.389</strong></td><td><strong>0.004</strong></td></tr>
-      <tr><td>FH-138-4f</td><td>4</td><td>RidgeCV</td><td>strong_binders + binders×(1&minus;supp) + route×clusters + VH_id</td><td>0.298</td><td>0.029</td></tr>
-      <tr><td>FH-138-3f</td><td>3</td><td>RidgeCV</td><td>net_burden + strong_binders + route×clusters</td><td>0.248</td><td>0.071</td></tr>
+      <tr class="best"><td><strong>FH-138-GBR-4f &#9733;</strong></td><td>4</td><td>GBR</td><td>net_burden + (1&minus;VH_id)&times;burden + VH_id + assay&times;clusters</td><td><strong>0.389</strong></td><td><strong>0.004</strong></td></tr>
+      <tr><td>FH-138-4f</td><td>4</td><td>RidgeCV</td><td>strong_binders + binders&times;(1&minus;supp) + route&times;clusters + VH_id</td><td>0.298</td><td>0.029</td></tr>
+      <tr><td>FH-138-3f</td><td>3</td><td>RidgeCV</td><td>net_burden + strong_binders + route&times;clusters</td><td>0.248</td><td>0.071</td></tr>
       <tr><td>FH-baseline</td><td>3</td><td>RidgeCV</td><td>n_clusters + net_burden + VH_id</td><td>0.122</td><td>0.381</td></tr>
     </table>
     </div>
 
     <div class="card card-green">
-      <strong>Best result — FH-138-GBR-4f (n = 54, GBR):</strong> LOO r = 0.389 (p = 0.004). With n doubled from 27 to 54, the statistical confidence substantially improves over the 27-antibody model. The GBR non-linear model outperforms Ridge by capturing multiplicative effects between germline foreignness and immunogenic burden — consistent with a threshold-gated T-cell priming mechanism.
+      <strong>Best result &mdash; FH-138-GBR-4f (n = 54, GBR):</strong> LOO r = 0.389 (p = 0.004). With n doubled from 27 to 54, the statistical confidence substantially improves over the 27-antibody model. The GBR non-linear model outperforms Ridge by capturing multiplicative effects between germline foreignness and immunogenic burden &mdash; consistent with a threshold-gated T-cell priming mechanism.
     </div>
 
-    <!-- SVG: Model LOO performance — 138-panel -->
+    <!-- SVG: Model LOO performance &mdash; 138-panel -->
     <h3 style="margin-top:28px;">Model Validation Performance (LOO Spearman r)</h3>
     <div style="background:#f9fafb;border:1px solid #e5e7eb;border-radius:12px;padding:18px;margin-top:12px;overflow-x:auto;-webkit-overflow-scrolling:touch;">
-      <div style="font-size:11px;color:#6b7280;margin-bottom:12px;">LOO r — higher = better generalization · ★ = recommended model · dashed = baseline</div>
+      <div style="font-size:11px;color:#6b7280;margin-bottom:12px;">LOO r &mdash; higher = better generalization &middot; &#9733; = recommended model &middot; dashed = baseline</div>
       <svg viewBox="0 0 560 170" width="100%" style="min-width:480px;" xmlns="http://www.w3.org/2000/svg">
         <!-- gridlines -->
         <line x1="60" y1="10" x2="60" y2="128" stroke="#e5e7eb" stroke-width="1"/>
         <line x1="60" y1="128" x2="545" y2="128" stroke="#e5e7eb" stroke-width="1"/>
         <line x1="60" y1="92"  x2="545" y2="92"  stroke="#e5e7eb" stroke-width="0.5" stroke-dasharray="3,3"/>
         <line x1="60" y1="56"  x2="545" y2="56"  stroke="#e5e7eb" stroke-width="0.5" stroke-dasharray="3,3"/>
-        <!-- y-axis labels: 0=128, 0.2=92, 0.4=56 — scale: 1 unit = 180px -->
+        <!-- y-axis labels: 0=128, 0.2=92, 0.4=56 &mdash; scale: 1 unit = 180px -->
         <text x="54" y="130" text-anchor="end" font-size="9" fill="#9ca3af">0</text>
         <text x="54" y="94"  text-anchor="end" font-size="9" fill="#9ca3af">0.2</text>
         <text x="54" y="58"  text-anchor="end" font-size="9" fill="#9ca3af">0.4</text>
-        <!-- HU-138-5f LOO=0.247 → h=44 → y=84 -->
+        <!-- HU-138-5f LOO=0.247 &rarr; h=44 &rarr; y=84 -->
         <rect x="75"  y="84"  width="55" height="44" rx="3" fill="#0d9488" opacity="0.90"/>
-        <text x="102" y="78"  text-anchor="middle" font-size="9" fill="#0f766e" font-weight="700">0.247 ★</text>
+        <text x="102" y="78"  text-anchor="middle" font-size="9" fill="#0f766e" font-weight="700">0.247 &#9733;</text>
         <text x="102" y="144" text-anchor="middle" font-size="9" fill="#374151">HU-5f</text>
-        <!-- HU-138-4f LOO=0.218 → h=39 → y=89 -->
+        <!-- HU-138-4f LOO=0.218 &rarr; h=39 &rarr; y=89 -->
         <rect x="145" y="89"  width="55" height="39" rx="3" fill="#0d9488" opacity="0.60"/>
         <text x="172" y="83"  text-anchor="middle" font-size="9" fill="#374151">0.218</text>
         <text x="172" y="144" text-anchor="middle" font-size="9" fill="#374151">HU-4f</text>
-        <!-- HU-baseline LOO=0.140 → h=25 → y=103 — dashed border -->
+        <!-- HU-baseline LOO=0.140 &rarr; h=25 &rarr; y=103 &mdash; dashed border -->
         <rect x="215" y="103" width="55" height="25" rx="3" fill="none" stroke="#0d9488" stroke-width="1.5" stroke-dasharray="3,2"/>
         <text x="242" y="97"  text-anchor="middle" font-size="9" fill="#374151">0.140</text>
         <text x="242" y="144" text-anchor="middle" font-size="9" fill="#374151">HU-base</text>
         <!-- divider -->
         <line x1="295" y1="10" x2="295" y2="135" stroke="#d1d5db" stroke-width="1" stroke-dasharray="4,3"/>
         <text x="295" y="155" text-anchor="middle" font-size="8" fill="#9ca3af">Humanized | Fully Human</text>
-        <!-- FH-138-GBR-4f LOO=0.389 → h=70 → y=58 -->
+        <!-- FH-138-GBR-4f LOO=0.389 &rarr; h=70 &rarr; y=58 -->
         <rect x="310" y="58"  width="55" height="70" rx="3" fill="#7c3aed" opacity="0.85"/>
-        <text x="337" y="52"  text-anchor="middle" font-size="9" fill="#5b21b6" font-weight="700">0.389 ★</text>
+        <text x="337" y="52"  text-anchor="middle" font-size="9" fill="#5b21b6" font-weight="700">0.389 &#9733;</text>
         <text x="337" y="144" text-anchor="middle" font-size="9" fill="#374151">FH-GBR-4f</text>
-        <!-- FH-138-4f LOO=0.298 → h=54 → y=74 -->
+        <!-- FH-138-4f LOO=0.298 &rarr; h=54 &rarr; y=74 -->
         <rect x="380" y="74"  width="55" height="54" rx="3" fill="#0d9488" opacity="0.70"/>
         <text x="407" y="68"  text-anchor="middle" font-size="9" fill="#374151">0.298</text>
         <text x="407" y="144" text-anchor="middle" font-size="9" fill="#374151">FH-4f</text>
-        <!-- FH-138-3f LOO=0.248 → h=45 → y=83 -->
+        <!-- FH-138-3f LOO=0.248 &rarr; h=45 &rarr; y=83 -->
         <rect x="450" y="83"  width="55" height="45" rx="3" fill="#0d9488" opacity="0.50"/>
         <text x="477" y="77"  text-anchor="middle" font-size="9" fill="#374151">0.248</text>
         <text x="477" y="144" text-anchor="middle" font-size="9" fill="#374151">FH-3f</text>
-        <!-- FH-baseline LOO=0.122 → h=22 — dashed -->
+        <!-- FH-baseline LOO=0.122 &rarr; h=22 &mdash; dashed -->
         <rect x="510" y="106" width="30" height="22" rx="3" fill="none" stroke="#0d9488" stroke-width="1.5" stroke-dasharray="3,2"/>
         <text x="525" y="100" text-anchor="middle" font-size="9" fill="#374151">0.12</text>
         <text x="525" y="144" text-anchor="middle" font-size="9" fill="#374151">FH-base</text>
@@ -642,14 +640,14 @@
   <section id="interpretation">
     <h2><span class="num">07</span>Biological Interpretation</h2>
 
-    <h3>1 · The Immune-Depleting Target Paradox</h3>
+    <h3>1 &middot; The Immune-Depleting Target Paradox</h3>
     <p>
-      In the humanized group, antibodies targeting immune-depleting antigens (CD52, CD4, CD25) show paradoxically <em>higher</em> ADA rates — despite depleting the very immune cells responsible for ADA. The mechanistic explanation: target-mediated cytolysis releases large quantities of intracellular antigen and danger-associated molecular patterns (DAMPs), triggering a robust secondary immune activation that can override the transient lymphopenia. Alemtuzumab (anti-CD52, ADA = 85%) and Daclizumab (anti-CD25, ADA = 12%) exemplify this effect.
+      In the humanized group, antibodies targeting immune-depleting antigens (CD52, CD4, CD25) show paradoxically <em>higher</em> ADA rates &mdash; despite depleting the very immune cells responsible for ADA. The mechanistic explanation: target-mediated cytolysis releases large quantities of intracellular antigen and danger-associated molecular patterns (DAMPs), triggering a robust secondary immune activation that can override the transient lymphopenia. Alemtuzumab (anti-CD52, ADA = 85%) and Daclizumab (anti-CD25, ADA = 12%) exemplify this effect.
     </p>
 
-    <h3>2 · CDR-H3 Aromaticity and Immune Tolerance</h3>
+    <h3>2 &middot; CDR-H3 Aromaticity and Immune Tolerance</h3>
     <p>
-      Higher CDR-H3 aromatic content (Trp, Tyr, Phe) correlates inversely with ADA rates in the humanized group (r = &minus;0.324). One mechanistic hypothesis: aromatic residues form energetically stable antigen-binding contacts, reducing conformational flexibility — which in turn may limit proteolytic processing and MHC-II loading efficiency. Alternatively, aromatic-enriched CDR-H3 loops may resemble endogenous immunoglobulin architectures, activating clonal anergy pathways.
+      Higher CDR-H3 aromatic content (Trp, Tyr, Phe) correlates inversely with ADA rates in the humanized group (r = &minus;0.324). One mechanistic hypothesis: aromatic residues form energetically stable antigen-binding contacts, reducing conformational flexibility &mdash; which in turn may limit proteolytic processing and MHC-II loading efficiency. Alternatively, aromatic-enriched CDR-H3 loops may resemble endogenous immunoglobulin architectures, activating clonal anergy pathways.
     </p>
 
     <h3>3 · T-Cell Epitope Clustering in Fully Human Antibodies</h3>
@@ -662,9 +660,9 @@
       Assay generation (r = +0.188) is a positive correlate of ADA in the humanized group (138-panel). This reflects a well-known systematic bias: modern drug-tolerant and electrochemiluminescence (ECL) assays detect lower-titer and lower-affinity ADAs that older ELISA platforms would miss. This inflates reported ADA rates for recently approved antibodies irrespective of their intrinsic immunogenicity.
     </p>
 
-    <h3>5 · Minimal Models Outperform Complex Ones</h3>
+    <h3>5 &middot; Minimal Models Outperform Complex Ones</h3>
     <p>
-      Across all tested configurations, parsimonious models (fewer features) consistently outperform complex ones in LOO cross-validation. With small clinical datasets (n = 27–43), the bias-variance tradeoff strongly favors parsimony — models with too many features collapse to near-zero generalization, a fundamental constraint of real-world clinical immunogenicity data.
+      Across all tested configurations, parsimonious models (fewer features) consistently outperform complex ones in LOO cross-validation. With small clinical datasets (n = 27&ndash;43), the bias-variance tradeoff strongly favors parsimony &mdash; models with too many features collapse to near-zero generalization, a fundamental constraint of real-world clinical immunogenicity data.
     </p>
   </section>
 
@@ -678,12 +676,12 @@
 
     <h3>Current Limitations</h3>
     <ul>
-      <li><strong>Sample size:</strong> 54 fully human and 84 humanized antibodies allow 3–5 feature models; however, subgroup analyses remain underpowered. LOO validation is conservative but appropriate for this scale.</li>
+      <li><strong>Sample size:</strong> 54 fully human and 84 humanized antibodies allow 3&ndash;5 feature models; however, subgroup analyses remain underpowered. LOO validation is conservative but appropriate for this scale.</li>
       <li><strong>ADA data heterogeneity:</strong> ADA rates pooled across trials with different assay sensitivities, cut-points, follow-up durations, and patient populations introduce substantial noise.</li>
       <li><strong>Missing factors:</strong> Pre-existing ADA (particularly anti-PEG antibodies) and excipient adjuvancy data were unavailable for systematic inclusion.</li>
       <li><strong>Linearity assumption:</strong> Weighted additive scores cannot capture non-linear feature interactions that may operate in real immunological pathways.</li>
       <li><strong>3D structural coverage:</strong> SASA-based surface features could not enter the final model because structure availability was incomplete for a subset of the 138 antibodies.</li>
-      <li><strong>Missing confounders (41 HU antibodies):</strong> The signal attenuation in the expanded HU group (LOO r: 0.39 → 0.25) directly quantifies the penalty of missing immunosuppressant co-medication and half-life data. Completing these fields is the single highest-impact data action.</li>
+      <li><strong>Missing confounders (41 HU antibodies):</strong> The signal attenuation in the expanded HU group (LOO r: 0.39 &rarr; 0.25) directly quantifies the penalty of missing immunosuppressant co-medication and half-life data. Completing these fields is the single highest-impact data action.</li>
     </ul>
 
     <h3>Planned Improvements</h3>
@@ -704,7 +702,7 @@
   <div class="citation" style="margin-top:48px;">
     <strong>Data sources:</strong> TheraSAbDab (Raybould et al., 2020); FDA/EMA prescribing information and EPAR documents; Ponce et al., Bioanalysis 2009; Shankar et al., AAPS J 2014; Hwang &amp; Foote, Vaccines 2005; ClinicalTrials.gov study reports. ADA rates represent treatment-emergent ADA incidence as reported in the primary clinical indication.<br><br>
     <strong>Methods:</strong> MHC-II epitope prediction via InSynBio computational immunogenicity pipeline. CDR/FR annotation via standard Chothia numbering. Surface feature analysis from structural modeling. Statistical validation: Leave-One-Out cross-validation (RidgeCV and GBR) ensuring no information leakage between training and test.<br><br>
-    <strong>Version:</strong> AbEngineCore Immunogenicity Module v2.0, April 2026. Dataset: 138 antibodies, Tier A/B evidence. For the full annotated dataset, see the <a href="ada_database.html" style="color:var(--primary);font-weight:600;">ADA Clinical Database →</a>
+    <strong>Version:</strong> AbEngineCore Immunogenicity Module v2.0, April 2026. Dataset: 138 antibodies, Tier A/B evidence. For the full annotated dataset, see the <a href="ada_database.html" style="color:var(--primary);font-weight:600;">ADA Clinical Database &rarr;</a>
   </div>
 
 </main>
@@ -728,7 +726,7 @@
         <li><a href="InSynBio_Antibody_Developability_Assessment_Page.html">Developability Assessment</a></li>
         <li><a href="InSynBio_Bispecific_Antibody_Design_Page.html">Bispecific Engineering</a></li>
         <li><a href="immunogenicity_study.html">Immunogenicity Research</a></li>
-        <li><a href="vaccine_design.html">Vaccine & Epitope Design</a></li>
+        <li><a href="vaccine_design.html">Vaccine &amp; Epitope Design</a></li>
       </ul>
     </div>
     <div class="sitemap-col">
