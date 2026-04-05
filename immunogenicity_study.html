@@ -58,7 +58,33 @@
       .top-header-nav.open { opacity: 1; pointer-events: auto; }
       .top-header-nav a { font-size: 18px; padding: 12px 24px; }
       .nav-close-btn { display: block; position: absolute; top: 16px; right: 20px; background: none; border: none; font-size: 32px; color: var(--text); cursor: pointer; line-height: 1; padding: 4px 8px; }
+      .page-wrap { flex-direction: column; }
+      .sidebar { width: 100%; height: auto; position: relative; border-right: none; border-bottom: 1px solid var(--border); padding: 16px; top: 0; }
+      .sidebar h3 { margin: 0 8px 12px; }
+      .sidebar nav { display: flex; flex-wrap: wrap; gap: 8px; }
+      .sidebar a { display: inline-flex; padding: 8px 12px; border: 1px solid var(--border); margin-bottom: 0; font-size: 13px; }
+      .sidebar a.active { border-color: var(--primary); }
+      .main { padding: 32px 20px 64px; }
+      .main h2 { font-size: 28px; }
+      .kpi-row { grid-template-columns: 1fr 1fr; }
     }
+
+    /* Footer Sitemap */
+    .footer-sitemap { background: #f9fafb; border-top: 1px solid #e5e7eb; padding: 60px 32px 40px; }
+    .sitemap-grid { max-width: 1140px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; text-align: left; }
+    .sitemap-col h4 { font-size: 14px; font-weight: 700; color: #111827; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 20px; }
+    .sitemap-col ul { list-style: none; padding: 0; margin: 0; }
+    .sitemap-col ul li { margin-bottom: 12px; }
+    .sitemap-col ul li a { color: #4b5563; text-decoration: none; font-size: 14px; transition: color 0.2s; }
+    .sitemap-col ul li a:hover { color: var(--primary); }
+    @media (max-width: 768px) {
+      .footer-sitemap { padding: 40px 24px; }
+      .sitemap-grid { grid-template-columns: 1fr 1fr; gap: 30px; }
+    }
+    @media (max-width: 480px) {
+      .sitemap-grid { grid-template-columns: 1fr; }
+    }
+  </style>
 
 
     /* === LAYOUT === */
@@ -684,23 +710,44 @@
 </main>
 </div>
 
-<!-- DATABASE CTA -->
-<div style="background:linear-gradient(135deg,#f0faf8 0%,#e8f6f3 100%); border-top:1px solid rgba(13,148,136,0.15); border-bottom:1px solid rgba(13,148,136,0.12); padding:32px; text-align:center;">
-  <div style="max-width:620px; margin:0 auto;">
-    <div style="font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:0.1em; color:#0d9488; margin-bottom:8px;">Reference Database</div>
-    <h3 style="font-family:'Cormorant Garamond',Georgia,serif; font-size:24px; font-weight:700; color:#111827; margin:0 0 10px; letter-spacing:-0.02em;">ADA Clinical Reference Database (n=138)</h3>
-    <p style="font-size:14px; color:#6b7280; margin:0 0 20px; line-height:1.65;">Browse all 138 antibodies with MHC-II cluster profiles, SASA-based hydrophilic surface fractions, Fc engineering, clinical ADA rates, and evidence chains — filterable by target, disease class, route, and more.</p>
-    <a href="ada_database.html" style="display:inline-flex; align-items:center; gap:8px; padding:11px 24px; background:#0d9488; color:#fff; border-radius:8px; font-size:14px; font-weight:600; text-decoration:none; box-shadow:0 4px 12px rgba(13,148,136,0.3); transition:all 0.2s;"
-       onmouseover="this.style.background='#0f766e'; this.style.transform='translateY(-2px)'"
-       onmouseout="this.style.background='#0d9488'; this.style.transform='translateY(0)'">
-      Browse the Database
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-    </a>
-    <div style="margin-top:12px; font-size:11.5px; color:#9ca3af;">Tier A: PMID/FDA-anchored &nbsp;·&nbsp; Tier B: URL-verified &nbsp;·&nbsp; Internal reference only</div>
+<section class="footer-sitemap">
+  <div class="sitemap-grid">
+    <div class="sitemap-col">
+      <h4>Platform</h4>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="index.html#about">About Us</a></li>
+        <li><a href="InSynBio_OurTech.html">Our Technology</a></li>
+        <li><a href="index.html#case-studies">Case Studies</a></li>
+        <li><a href="index.html#faq">FAQ</a></li>
+      </ul>
+    </div>
+    <div class="sitemap-col">
+      <h4>Antibody Services</h4>
+      <ul>
+        <li><a href="InSynBio_Antibody_Developability_Assessment_Page.html">Developability Assessment</a></li>
+        <li><a href="InSynBio_Bispecific_Antibody_Design_Page.html">Bispecific Engineering</a></li>
+        <li><a href="immunogenicity_study.html">Immunogenicity Research</a></li>
+        <li><a href="vaccine_design.html">Vaccine & Epitope Design</a></li>
+      </ul>
+    </div>
+    <div class="sitemap-col">
+      <h4>Cell Therapy</h4>
+      <ul>
+        <li><a href="InSynBio_CART_Design_Page.html">Smart CAR-T Design</a></li>
+        <li><a href="case_malaria_carm_design.html">CAR-Macrophage Case</a></li>
+      </ul>
+    </div>
+    <div class="sitemap-col">
+      <h4>Contact</h4>
+      <ul>
+        <li><a href="index.html#contact">Contact Us</a></li>
+        <li><a href="mailto:contact@insynbio.com">contact@insynbio.com</a></li>
+      </ul>
+    </div>
   </div>
-</div>
+</section>
 
-<!-- BACK BAR -->
 <div class="back-bar">
   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
   <a href="InSynBio_Antibody_Developability_Assessment_Page.html#immunogenicity">Back to Immunogenicity Assessment</a>

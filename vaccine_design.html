@@ -166,19 +166,27 @@
     .pill-link-blue:hover { background:rgba(59,130,246,0.14); }
 
     /* Responsive */
+    @media (max-width: 1024px) {
+      .sidebar { width: 240px; }
+      .main { padding: 40px 32px; }
+    }
     @media (max-width: 900px) {
       .top-header { flex-wrap:wrap; padding:12px 16px; gap:10px; }
       .top-header .slogan { display:none !important; }
       .page-wrap { flex-direction:column; }
-      .sidebar { width:100%; height:auto; position:relative; border-right:none; border-bottom:1px solid #e0e0e0; padding:16px; }
-      .sidebar nav { display:flex; flex-wrap:wrap; gap:8px; }
-      .sidebar nav a { display:inline-flex; padding:8px 12px; border-radius:6px; }
-      .main { padding:32px 24px 64px; }
+      .sidebar { width:100%; height:auto; position:relative; border-right:none; border-bottom:1px solid #e0e0e0; padding:16px; top: 0; }
+      .sidebar h3 { margin: 0 12px 12px; }
+      .sidebar nav { display:flex; flex-wrap:wrap; gap:8px; padding: 0 12px; }
+      .sidebar nav a { display:inline-flex; padding:8px 12px; border-radius:6px; margin-bottom: 0; font-size: 14px; border: 1px solid var(--border); }
+      .sidebar nav a.active { border-color: var(--primary); }
+      .main { padding:32px 20px 64px; }
       .mission-block { padding:24px; }
       .trust-grid, .form-intro { grid-template-columns:1fr; }
       .lib-grid { grid-template-columns:1fr 1fr; gap:12px; }
       .flow-strip { gap:8px; }
       .flow-step:not(:last-child)::after { display:none; }
+      .main h1 { font-size: 36px; }
+      .main h2 { font-size: 28px; margin: 40px 0 20px; }
     }
     @media (max-width: 768px) {
       .mobile-menu-btn { display:block; }
@@ -189,6 +197,24 @@
       .nav-close-btn { display:block; position:absolute; top:16px; right:20px; background:none; border:none; font-size:32px; color:var(--text); cursor:pointer; line-height:1; padding:4px 8px; }
       body { padding-top:52px; }
       .lib-grid { grid-template-columns:1fr; }
+      .form-section { padding: 24px; }
+      .form-row { gap: 16px; }
+    }
+
+    /* Footer Sitemap */
+    .footer-sitemap { background: #f9fafb; border-top: 1px solid #e5e7eb; padding: 60px 32px 40px; }
+    .sitemap-grid { max-width: 1140px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; text-align: left; }
+    .sitemap-col h4 { font-size: 14px; font-weight: 700; color: #111827; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 20px; }
+    .sitemap-col ul { list-style: none; padding: 0; margin: 0; }
+    .sitemap-col ul li { margin-bottom: 12px; }
+    .sitemap-col ul li a { color: #4b5563; text-decoration: none; font-size: 14px; transition: color 0.2s; }
+    .sitemap-col ul li a:hover { color: var(--primary); }
+    @media (max-width: 768px) {
+      .footer-sitemap { padding: 40px 24px; }
+      .sitemap-grid { grid-template-columns: 1fr 1fr; gap: 30px; }
+    }
+    @media (max-width: 480px) {
+      .sitemap-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -628,6 +654,44 @@
 
   </main>
 </div>
+
+<section class="footer-sitemap">
+  <div class="sitemap-grid">
+    <div class="sitemap-col">
+      <h4>Platform</h4>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="index.html#about">About Us</a></li>
+        <li><a href="InSynBio_OurTech.html">Our Technology</a></li>
+        <li><a href="index.html#case-studies">Case Studies</a></li>
+        <li><a href="index.html#faq">FAQ</a></li>
+      </ul>
+    </div>
+    <div class="sitemap-col">
+      <h4>Antibody Services</h4>
+      <ul>
+        <li><a href="InSynBio_Antibody_Developability_Assessment_Page.html">Developability Assessment</a></li>
+        <li><a href="InSynBio_Bispecific_Antibody_Design_Page.html">Bispecific Engineering</a></li>
+        <li><a href="immunogenicity_study.html">Immunogenicity Research</a></li>
+        <li><a href="vaccine_design.html">Vaccine & Epitope Design</a></li>
+      </ul>
+    </div>
+    <div class="sitemap-col">
+      <h4>Cell Therapy</h4>
+      <ul>
+        <li><a href="InSynBio_CART_Design_Page.html">Smart CAR-T Design</a></li>
+        <li><a href="case_malaria_carm_design.html">CAR-Macrophage Case</a></li>
+      </ul>
+    </div>
+    <div class="sitemap-col">
+      <h4>Contact</h4>
+      <ul>
+        <li><a href="#contact">Contact Us</a></li>
+        <li><a href="mailto:contact@insynbio.com">contact@insynbio.com</a></li>
+      </ul>
+    </div>
+  </div>
+</section>
 
 <footer class="site-footer">
   <p style="margin:0;">© 2026 InSynBio · <a href="https://insynbio.com">insynbio.com</a> · <a href="mailto:contact@insynbio.com">contact@insynbio.com</a></p>
