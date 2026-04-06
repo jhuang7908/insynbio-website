@@ -12,12 +12,16 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
-<style>
-  :root { --primary:#0d9488; --primary-dark:#0f766e; --text:#111827; --text-muted:#4b5563; --border:#e5e7eb; --bg:#ffffff; --bg-alt:#f9fafb; --bg-alt2:#f3f4f6; }
-  * { box-sizing:border-box; }
-  body { margin:0; font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif; font-size:15px; line-height:1.6; color:var(--text); background:var(--bg); -webkit-font-smoothing:antialiased; padding-top:60px; }
+  <style>
+    :root { --primary: #0d9488; --primary-dark: #0f766e; --text: #111827; --text-muted: #4b5563; --border: #e5e7eb; --bg: #ffffff; --bg-alt: #f9fafb; --bg-alt2: #f3f4f6; }
+    * { box-sizing: border-box; }
+    body { margin: 0; font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 15px; line-height: 1.6; color: var(--text); background: var(--bg); -webkit-font-smoothing: antialiased; padding-top: 60px; }
 
-  /* ── Top bar — matches vaccine_kb / antibody-guide ── */
+    @media print {
+      body { display: none !important; }
+    }
+
+    /* ── Top bar — matches vaccine_kb / antibody-guide ── */
   .top-bar { display:flex; align-items:center; justify-content:space-between; padding:10px 28px; background:rgba(255,255,255,0.95); backdrop-filter:blur(12px); border-bottom:2px solid rgba(13,148,136,0.1); position:fixed; width:100%; top:0; z-index:2000; }
   .top-bar .brand { font-family:'Cormorant Garamond',serif; font-weight:700; font-size:22px; color:#1f2937; text-decoration:none; display:flex; align-items:center; gap:8px; }
   .top-bar .brand span { color:#0d9488; }
@@ -7698,6 +7702,18 @@
 </div>
 
 <script>
+// Security: Anti-copy, Anti-right-click, Anti-print
+(function() {
+  document.addEventListener('contextmenu', e => e.preventDefault());
+  document.addEventListener('selectstart', e => e.preventDefault());
+  document.addEventListener('copy', e => e.preventDefault());
+  document.addEventListener('keydown', e => {
+    if ((e.ctrlKey || e.metaKey) && (e.key === 'c' || e.key === 'p' || e.key === 's' || e.key === 'u')) {
+      e.preventDefault();
+    }
+  });
+})();
+
 /* ── Card toggle with auto-collapse countdown ── */
 function toggleCard(card) {
   var wasExpanded = card.classList.contains('expanded');

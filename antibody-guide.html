@@ -17,16 +17,19 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/insynbio-mobile-nav.css">
   <style>
     :root{--primary:#0d9488;--primary-dark:#0f766e;--text:#111827;--text-muted:#4b5563;--border:#e5e7eb;--bg:#fff;--bg-alt:#f9fafb;}
     *{box-sizing:border-box;}
     body{margin:0;font-family:'Inter',-apple-system,sans-serif;font-size:15px;line-height:1.6;color:var(--text);background:var(--bg-alt);-webkit-font-smoothing:antialiased;}
 
+    @media print {
+      body { display: none !important; }
+    }
+
     /* ── Header ── */
     .top-header{display:flex;align-items:center;justify-content:space-between;padding:12px 32px;background:rgba(255,255,255,0.95);backdrop-filter:blur(12px);border-bottom:2px solid rgba(13,148,136,0.1);flex-wrap:nowrap;gap:12px;position:fixed;width:100%;top:0;z-index:2000;}
-    .brand{display:flex;align-items:center;gap:0;flex-wrap:nowrap;min-width:max-content;}.brand a{text-decoration:none;color:inherit;display:flex;align-items:center;gap:10px;white-space:nowrap;flex-shrink:0;}
-    .slogan{font-size:13px;color:var(--text-muted);padding-left:14px;border-left:1px solid var(--border);white-space:nowrap;font-weight:500;letter-spacing:.02em;display:inline-flex;align-items:center;flex-shrink:0;}
+    .brand a{text-decoration:none;color:inherit;display:flex;align-items:center;gap:10px;}
+    .slogan{font-size:13px;color:var(--text-muted);padding-left:14px;border-left:1px solid var(--border);white-space:nowrap;font-weight:500;letter-spacing:.02em;}
     .top-header-nav{display:flex;align-items:center;gap:6px;}
     .top-header-nav a{padding:7px 14px;font-size:14px;color:var(--text-muted);text-decoration:none;border-radius:20px;transition:all .2s;font-weight:500;}
     .top-header-nav a:hover{color:var(--primary);background:rgba(13,148,136,.06);}
@@ -130,6 +133,7 @@
       .card-grid{grid-template-columns:1fr 1fr;gap:10px;}
       .detail-grid{grid-template-columns:1fr;}
       .detail-full{grid-column:1;}
+      .top-header-nav{display:none;}
     }
     @media(max-width:520px){
       .card-grid{grid-template-columns:1fr;}
@@ -184,7 +188,7 @@
 </head>
 <body>
 
-<header class="top-header insynbio-mnav-header">
+<header class="top-header">
   <div class="brand">
     <a href="index.html" style="display:flex;align-items:center;gap:10px;text-decoration:none;">
       <svg width="34" height="28" viewBox="0 0 32 30" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink:0;">
@@ -202,13 +206,11 @@
     </a>
     <span class="slogan">AI for Life Sciences</span>
   </div>
-  <button type="button" class="mobile-menu-btn" aria-label="Open menu" onclick="document.querySelector('.top-header-nav').classList.add('open')">
-    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
-  </button>
   <nav class="top-header-nav">
-    <button type="button" class="nav-close-btn" aria-label="Close menu" onclick="this.parentElement.classList.remove('open')">&times;</button>
     <a href="index.html">Home</a>
     <a href="InSynBio_Antibody_Developability_Assessment_Page.html">Antibody Services</a>
+    <a href="InSynBio_ADC_Design_Page.html">ADC Design</a>
+    <a href="InSynBio_CART_Design_Page.html">CAR-T</a>
     <a href="InSynBio_Antibody_Developability_Assessment_Page.html#submit">Submit Inquiry</a>
   </nav>
 </header>
@@ -288,6 +290,18 @@
 </footer>
 
 <script>
+// Security: Anti-copy, Anti-right-click, Anti-print
+(function() {
+  document.addEventListener('contextmenu', e => e.preventDefault());
+  document.addEventListener('selectstart', e => e.preventDefault());
+  document.addEventListener('copy', e => e.preventDefault());
+  document.addEventListener('keydown', e => {
+    if ((e.ctrlKey || e.metaKey) && (e.key === 'c' || e.key === 'p' || e.key === 's' || e.key === 'u')) {
+      e.preventDefault();
+    }
+  });
+})();
+
 // ═══════════════════════════════════════════════════════════
 // DATA
 // ═══════════════════════════════════════════════════════════

@@ -11,11 +11,15 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/insynbio-mobile-nav.css">
   <style>
     :root { --primary:#0d9488; --primary-dark:#0f766e; --text:#111827; --text-muted:#4b5563; --border:#e5e7eb; --bg:#ffffff; --bg-alt:#f9fafb; --bg-alt2:#f3f4f6; }
     * { box-sizing:border-box; }
     body { margin:0; font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif; font-size:15px; line-height:1.6; color:var(--text); background:var(--bg); -webkit-font-smoothing:antialiased; padding-top:60px; }
+
+    @media print {
+      body { display: none !important; }
+    }
+
     .top-bar { display:flex; align-items:center; justify-content:space-between; padding:10px 28px; background:rgba(255,255,255,0.95); backdrop-filter:blur(12px); border-bottom:2px solid rgba(13,148,136,0.1); position:fixed; width:100%; top:0; z-index:2000; }
     .top-bar .brand { font-family:'Cormorant Garamond',serif; font-weight:700; font-size:22px; color:#1f2937; text-decoration:none; display:flex; align-items:center; gap:8px; }
     .top-bar .brand span { color:#0d9488; }
@@ -102,24 +106,21 @@
     .section-title { font-family:'Cormorant Garamond',serif; font-size:24px; font-weight:600; color:var(--text); margin:0 0 6px; }
     .section-desc { color:var(--text-muted); font-size:13.5px; margin-bottom:16px; max-width:700px; }
 
-    @media(max-width:700px) { .card-grid { grid-template-columns:1fr; } .page { padding:24px 16px 60px; } .top-bar { padding:10px 14px; } }
+    @media(max-width:700px) { .card-grid { grid-template-columns:1fr; } .page { padding:24px 16px 60px; } }
   </style>
 </head>
 <body>
 
-<div class="top-bar insynbio-mnav-topbar">
+<div class="top-bar">
   <a href="vaccine_design.html" class="brand">
     <svg width="24" height="20" viewBox="0 0 32 30" fill="none"><path d="M16 2L2 10V22L16 28L30 22V10L16 2Z" fill="#0d9488" fill-opacity="0.08" stroke="#0d9488" stroke-width="1.5" stroke-opacity="0.5"/><circle cx="16" cy="16" r="2.5" fill="white" stroke="#0d9488" stroke-width="2"/></svg>
     In<span>Syn</span>Bio
   </a>
-  <button type="button" class="mobile-menu-btn" aria-label="Open menu" onclick="document.querySelector('.insynbio-mnav-topbar .top-header-nav').classList.add('open')">
-    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
-  </button>
-  <nav class="top-header-nav">
-    <button type="button" class="nav-close-btn" aria-label="Close menu" onclick="this.parentElement.classList.remove('open')">&times;</button>
+  <nav>
     <a href="vaccine_design.html" class="back">← Vaccine Design Service</a>
     <a href="index.html">Home</a>
     <a href="InSynBio_Antibody_Developability_Assessment_Page.html">Antibody</a>
+    <a href="InSynBio_ADC_Design_Page.html">ADC Design</a>
     <a href="InSynBio_CART_Design_Page.html">CAR-T</a>
   </nav>
 </div>
@@ -236,6 +237,18 @@
 </div>
 
 <script>
+// Security: Anti-copy, Anti-right-click, Anti-print
+(function() {
+  document.addEventListener('contextmenu', e => e.preventDefault());
+  document.addEventListener('selectstart', e => e.preventDefault());
+  document.addEventListener('copy', e => e.preventDefault());
+  document.addEventListener('keydown', e => {
+    if ((e.ctrlKey || e.metaKey) && (e.key === 'c' || e.key === 'p' || e.key === 's' || e.key === 'u')) {
+      e.preventDefault();
+    }
+  });
+})();
+
 let DATA = {};
 
 function specBadge(s){const map={TSA:'badge-tsa',CTA:'badge-cta',overexpressed:'badge-overexpr',differentiation:'badge-diff',oncofetal:'badge-oncofetal',viral:'badge-viral'};const cls=Object.entries(map).find(([k])=>s.toLowerCase().includes(k));return`<span class="badge ${cls?cls[1]:'badge-overexpr'}">${s}</span>`;}
