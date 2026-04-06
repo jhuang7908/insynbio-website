@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="InSynBio Smart ADC Design Service — AI-driven end-to-end engineering for Antibody-Drug Conjugates. From target profiling to linker-payload matching and CMC validation.">
+  <meta name="keywords" content="ADC design, Antibody-Drug Conjugate, PROTAC ADC, ISAC, antibody engineering, immunotherapy, InSynBio, AI drug design">
+  <meta name="robots" content="index, follow">
+  <meta name="robots" content="noai, noimageai">
+  <meta name="AI-Training" content="opt-out">
+  <link rel="canonical" href="https://www.insynbio.com/InSynBio_ADC_Design_Page.html">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.insynbio.com/InSynBio_ADC_Design_Page.html">
+  <meta property="og:title" content="Smart ADC Design | InSynBio — AI for Life Sciences">
+  <meta property="og:description" content="InSynBio Smart ADC Design Service — AI-driven end-to-end engineering for Antibody-Drug Conjugates. From target profiling to linker-payload matching and CMC validation.">
+  <meta property="og:image" content="https://www.insynbio.com/images/hero-bg.svg">
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="https://www.insynbio.com/InSynBio_ADC_Design_Page.html">
+  <meta property="twitter:title" content="Smart ADC Design | InSynBio — AI for Life Sciences">
+  <meta property="twitter:description" content="InSynBio Smart ADC Design Service — AI-driven end-to-end engineering for Antibody-Drug Conjugates. From target profiling to linker-payload matching and CMC validation.">
+  <meta property="twitter:image" content="https://www.insynbio.com/images/hero-bg.svg">
+  <title>Smart ADC Design | InSynBio — AI for Life Sciences</title>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Noto+Sans+SC:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root { --primary: #0d9488; --primary-dark: #0f766e; --text: #111827; --text-muted: #4b5563; --border: #e5e7eb; --bg: #ffffff; --bg-alt: #f9fafb; }
+    * { box-sizing: border-box; }
+    body { margin: 0; font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 16px; line-height: 1.6; color: var(--text); background: var(--bg); -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; padding-top: 73px; }
+    
+    /* Header */
+    .top-header { display: flex; align-items: center; justify-content: space-between; padding: 12px 32px; background: rgba(255,255,255,0.95); backdrop-filter: blur(12px); border-bottom: 2px solid rgba(13,148,136,0.1); flex-wrap: nowrap; gap: 12px; position: fixed; width: 100%; top: 0; z-index: 2000; }
+    .mobile-menu-btn { display: none; background: none; border: none; padding: 6px; cursor: pointer; color: var(--text); flex-shrink: 0; }
+    .nav-close-btn { display: none; }
+    .top-header .brand { font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 700; font-size: 26px; letter-spacing: -0.03em; display: flex; align-items: center; }
+    .top-header .brand a { text-decoration: none; color: inherit; display: flex; align-items: center; gap: 10px; }
+    .top-header .brand .syn { color: var(--primary); font-style: italic; }
+    .top-header .slogan { font-size: 13px; color: var(--text-muted); margin-left: 0; padding-left: 14px; border-left: 1px solid var(--border); font-family: 'Inter', sans-serif; white-space: nowrap; font-weight: 500; letter-spacing: 0.02em; }
+    
+    /* Nav */
+    .top-header-nav { display: flex; align-items: center; gap: 6px; flex: 1; justify-content: center; }
+    .top-header-nav a { padding: 8px 16px; font-size: 14px; color: var(--text-muted); text-decoration: none; border-radius: 20px; transition: all 0.2s ease; font-weight: 500; }
+    .top-header-nav a:hover { color: var(--primary); background: rgba(13,148,136,0.06); }
+    .top-header-nav a.active { background: var(--primary); color: #fff; box-shadow: 0 2px 8px rgba(13,148,136,0.25); }
+    .top-header-nav a.active:hover { background: var(--primary-dark); }
+    
+    /* Nav Dropdown */
+    .nav-dropdown { position: relative; }
+    .nav-dropdown > a::after { content: ' ▾'; font-size: 10px; opacity: 0.6; margin-left: 4px; }
+    .nav-dropdown .dropdown-menu { position: absolute; top: 100%; left: 50%; transform: translateX(-50%) translateY(10px); min-width: 220px; padding: 8px; background: #fff; border: 1px solid rgba(0,0,0,0.06); border-radius: 12px; box-shadow: 0 10px 40px -10px rgba(0,0,0,0.12); opacity: 0; visibility: hidden; transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1); z-index: 100; margin-top: 8px; }
+    .nav-dropdown:hover .dropdown-menu, .nav-dropdown:focus-within .dropdown-menu { opacity: 1; visibility: visible; transform: translateX(-50%) translateY(0); }
+    .nav-dropdown .dropdown-menu a { display: block; padding: 12px 16px; color: var(--text); text-decoration: none; line-height: 1.4; border-radius: 8px; text-align: left; }
+    .nav-dropdown .dropdown-menu a:hover { background: var(--bg-alt); }
+    .nav-dropdown .dropdown-menu a .menu-title { display: block; font-weight: 600; font-size: 14px; color: var(--text); margin-bottom: 2px; }
+    .nav-dropdown .dropdown-menu a:hover .menu-title { color: var(--primary); }
+    .nav-dropdown .dropdown-menu a .menu-desc { display: block; font-size: 12px; color: var(--text-muted); font-weight: 400; line-height: 1.4; }
+
+    /* Page Layout */
+    .page-wrap { display: flex; min-height: calc(100vh - 73px); max-width: 1400px; margin: 0 auto; }
+    .sidebar { width: 280px; flex-shrink: 0; background: var(--bg); border-right: 1px solid rgba(0,0,0,0.05); padding: 40px 20px; position: sticky; top: 73px; height: calc(100vh - 73px); overflow-y: auto; }
+    .sidebar h3 { font-size: 12px; font-weight: 700; color: var(--text-muted); margin: 0 16px 16px; text-transform: uppercase; letter-spacing: 1.5px; }
+    .sidebar nav a { display: flex; align-items: center; padding: 12px 16px; color: var(--text-muted); text-decoration: none; font-size: 15px; transition: all 0.2s; border-radius: 8px; margin-bottom: 4px; font-weight: 500; }
+    .sidebar nav a:hover { background: rgba(13,148,136,0.06); color: var(--primary); }
+    .sidebar nav a.active { background: rgba(13,148,136,0.1); color: var(--primary-dark); font-weight: 600; }
+    .nav-icon { width: 18px; height: 18px; margin-right: 12px; opacity: 0.8; flex-shrink: 0; }
+    
+    .main { flex: 1; padding: 60px 60px 100px; max-width: 960px; margin: 0 auto; }
+    .main h1 { font-family: 'Cormorant Garamond', serif; font-size: 48px; font-weight: 700; color: #111827; margin: 0 0 16px; letter-spacing: -0.03em; line-height: 1.1; }
+    .main .subtitle { font-size: 20px; color: #4b5563; margin-bottom: 8px; line-height: 1.6; }
+    .main h2 { font-family: 'Cormorant Garamond', serif; font-size: 32px; font-weight: 600; color: #111827; margin: 56px 0 24px; padding-top: 32px; border-top: 1px solid rgba(0,0,0,0.05); letter-spacing: -0.01em; }
+    .main h2:first-of-type { margin-top: 0; padding-top: 0; border-top: none; }
+    .h2-icon { display: inline-flex; align-items: center; justify-content: center; width: 36px; height: 36px; margin-right: 12px; border-radius: 10px; background: rgba(13,148,136,0.1); color: var(--primary); vertical-align: middle; }
+    .main p, .main ul, .main li { margin: 0 0 20px; color: #374151; font-size: 17px; line-height: 1.7; }
+    .main ul { padding-left: 24px; }
+    .main li { margin-bottom: 10px; }
+    
+    /* Form */
+    .form-section { background: #fff; border-radius: 16px; padding: 40px; margin-top: 40px; box-shadow: 0 4px 20px rgba(0,0,0,0.03); border: 1px solid rgba(0,0,0,0.06); }
+    .form-row { display: flex; gap: 24px; margin-bottom: 24px; flex-wrap: wrap; }
+    .form-group { flex: 1; min-width: 180px; }
+    .form-group.full { flex: 1 1 100%; }
+    .form-group label { display: block; font-weight: 600; margin-bottom: 8px; color: #111827; font-size: 14px; }
+    .form-group input, .form-group select, .form-group textarea { width: 100%; padding: 12px 16px; border: 1px solid #d1d5db; border-radius: 8px; font-size: 15px; font-family: inherit; transition: border-color 0.2s, box-shadow 0.2s; }
+    .form-group textarea { min-height: 120px; resize: vertical; }
+    .form-group input:focus, .form-group select:focus, .form-group textarea:focus { outline: none; border-color: var(--primary); box-shadow: 0 0 0 3px rgba(13,148,136,0.15); }
+    .btn { padding: 14px 32px; background: var(--primary); color: #fff; border: none; border-radius: 8px; font-size: 16px; font-weight: 500; cursor: pointer; transition: all 0.2s; box-shadow: 0 4px 12px rgba(13,148,136,0.25); }
+    .btn:hover { background: var(--primary-dark); transform: translateY(-1px); box-shadow: 0 6px 16px rgba(13,148,136,0.35); }
+    
+    .breadcrumb { font-size: 14px; color: #6b7280; margin-bottom: 32px; font-weight: 500; }
+    .breadcrumb a { color: var(--text-muted); text-decoration: none; transition: color 0.2s; }
+    .breadcrumb a:hover { color: var(--primary); }
+    .breadcrumb span { color: #d1d5db; margin: 0 8px; }
+    
+    .table-wrap { overflow-x: auto; margin: 32px 0; border-radius: 12px; border: 1px solid rgba(0,0,0,0.06); box-shadow: 0 2px 8px rgba(0,0,0,0.02); }
+    .main table { min-width: 100%; background: #fff; border-collapse: collapse; }
+    .main table th, .main table td { padding: 18px 24px; border-bottom: 1px solid rgba(0,0,0,0.05); font-size: 15px; color: #374151; text-align: left; }
+    .main table th { background: #f8fafc; font-weight: 600; color: #111827; text-transform: uppercase; font-size: 12px; letter-spacing: 0.05em; }
+    .main table tr:last-child td { border-bottom: none; }
+    .main table tr:hover td { background-color: #fcfcfc; }
+    
+    .mission-block { background: linear-gradient(135deg, #f0fdfa 0%, #fff 100%); border: 1px solid rgba(13,148,136,0.1); border-radius: 16px; padding: 32px; margin-bottom: 40px; box-shadow: 0 4px 20px rgba(13,148,136,0.05); position: relative; overflow: hidden; }
+    .mission-block::before { content: ''; position: absolute; top: 0; right: 0; width: 200px; height: 200px; background: radial-gradient(circle, rgba(13,148,136,0.1) 0%, transparent 70%); border-radius: 50%; transform: translate(30%, -30%); pointer-events: none; }
+    .mission-block p { margin: 0; font-size: 17px; line-height: 1.7; color: #111827; position: relative; z-index: 1; }
+    .mission-block p + p { margin-top: 16px; }
+
+    /* ── Component card grid ── */
+    .lib-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 16px; margin: 28px 0; }
+    .lib-card { background: #fff; border: 1px solid #e5e7eb; border-radius: 12px; padding: 20px; transition: all .2s; position: relative; overflow: hidden; }
+    .lib-card:hover { border-color: var(--primary); box-shadow: 0 4px 16px rgba(13,148,136,.1); transform: translateY(-2px); }
+    .lib-card .lc-icon { width: 36px; height: 36px; border-radius: 10px; background: rgba(13,148,136,.08); display: flex; align-items: center; justify-content: center; margin-bottom: 12px; color: var(--primary); }
+    .lib-card h4 { font-size: 15px; font-weight: 600; margin: 0 0 4px; color: #111827; }
+    .lib-card .lc-count { font-size: 12px; font-weight: 700; color: var(--primary); background: rgba(13,148,136,.08); display: inline-block; padding: 2px 10px; border-radius: 20px; margin-bottom: 8px; }
+    .lib-card .lc-desc { font-size: 13px; color: var(--text-muted); line-height: 1.5; margin: 0 0 10px; }
+    .lib-card .lc-examples { font-size: 12px; color: #6b7280; line-height: 1.4; }
+    .lib-card .lc-examples strong { color: #374151; }
+
+    /* ── ACTES flow diagram ── */
+    .flow-strip { display: flex; gap: 0; align-items: stretch; margin: 40px 0; overflow-x: auto; padding-bottom: 8px; }
+    .flow-step { flex: 1; min-width: 130px; background: #fff; border: 1px solid #e5e7eb; border-radius: 12px; padding: 16px 14px; text-align: center; position: relative; }
+    .flow-step:not(:last-child)::after { content: '→'; position: absolute; right: -14px; top: 50%; transform: translateY(-50%); font-size: 18px; color: var(--primary); font-weight: 700; z-index: 2; }
+    .flow-step .fs-num { font-size: 11px; font-weight: 700; color: #fff; background: var(--primary); width: 22px; height: 22px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; margin-bottom: 6px; }
+    .flow-step .fs-title { font-size: 13px; font-weight: 600; color: #111827; margin-bottom: 2px; }
+    .flow-step .fs-sub { font-size: 11.5px; color: var(--text-muted); line-height: 1.4; }
+
+    /* ── Logic trace visual ── */
+    .logic-trace { margin: 28px 0; }
+    .lt-input { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 10px; padding: 16px 20px; font-size: 13.5px; margin-bottom: 20px; }
+    .lt-input code { font-family: 'Consolas', monospace; background: rgba(13,148,136,.08); padding: 2px 8px; border-radius: 4px; color: var(--primary-dark); font-size: 13px; }
+    .lt-steps { position: relative; padding-left: 32px; }
+    .lt-steps::before { content: ''; position: absolute; left: 13px; top: 8px; bottom: 8px; width: 2px; background: linear-gradient(to bottom, var(--primary), rgba(13,148,136,.15)); border-radius: 1px; }
+    .lt-step { position: relative; margin-bottom: 24px; }
+    .lt-step:last-child { margin-bottom: 0; }
+    .lt-step .lt-dot { position: absolute; left: -25px; top: 4px; width: 14px; height: 14px; border-radius: 50%; background: var(--primary); border: 3px solid #fff; box-shadow: 0 0 0 2px var(--primary); }
+    .lt-step .lt-head { font-size: 14px; font-weight: 600; color: #111827; margin-bottom: 4px; }
+    .lt-step .lt-query { font-size: 13px; color: var(--text-muted); margin-bottom: 4px; }
+    .lt-step .lt-result { font-size: 13px; color: var(--primary); font-weight: 500; margin-bottom: 6px; }
+    .lt-step .lt-decision { background: rgba(13,148,136,.06); border-left: 3px solid var(--primary); border-radius: 0 8px 8px 0; padding: 10px 14px; font-size: 13px; color: #374151; line-height: 1.55; }
+    .lt-step .lt-decision strong { color: var(--primary-dark); }
+
+    .site-footer { margin-top: 80px; padding-top: 32px; border-top: 1px solid rgba(0,0,0,0.05); font-size: 14px; color: #9ca3af; text-align: center; }
+
+    @media (max-width: 768px) {
+      .lib-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
+      .flow-strip { gap: 8px; }
+      .flow-step:not(:last-child)::after { display: none; }
+    }
+    @media (max-width: 480px) {
+      .lib-grid { grid-template-columns: 1fr; }
+    }
+    .site-footer a { color: #6b7280; text-decoration: none; transition: color 0.2s; }
+    .site-footer a:hover { color: var(--primary); }
+
+    @media (max-width: 900px) {
+      .top-header { flex-wrap: wrap; padding: 12px 16px; gap: 10px; }
+      .top-header .brand { flex: 1 1 auto; min-width: 0; display: flex; align-items: center; flex-wrap: wrap; gap: 8px; }
+      .top-header .slogan { display: inline-block !important; font-size: 12px; padding-left: 10px; border-left: 1px solid var(--border); white-space: nowrap; }
+      .top-header-nav { order: 3; width: 100%; flex: 1 1 100%; justify-content: flex-start; flex-wrap: wrap; gap: 6px; overflow-x: auto; padding-bottom: 4px; -webkit-overflow-scrolling: touch; border-top: 1px solid var(--border); padding-top: 10px; margin-top: 2px; }
+      .top-header-nav a { flex-shrink: 0; font-size: 13px; padding: 6px 10px; }
+      .page-wrap { flex-direction: column; min-height: auto; }
+      .sidebar { width: 100%; height: auto; position: relative; border-right: none; border-bottom: 1px solid #e0e0e0; padding: 16px; }
+      .sidebar nav { display: flex; flex-wrap: wrap; gap: 8px; }
+      .sidebar nav a { display: inline-flex; padding: 8px 12px; border-radius: 6px; border-left: none; }
+      .main { padding: 32px 24px 64px; }
+      .mission-block { padding: 24px; margin-bottom: 32px; }
+    }
+  
+    @media (max-width: 600px) {
+      .top-header { padding: 12px 16px; flex-wrap: wrap; gap: 10px; }
+      .top-header .brand { flex: 1 1 auto; display: flex; align-items: center; gap: 8px; }
+      .top-header .slogan { font-size: 12px; padding-left: 10px; border-left: 1px solid var(--border); white-space: nowrap; }
+      .top-header-nav { order: 3; width: 100%; flex: 1 1 100%; justify-content: flex-start; flex-wrap: wrap; gap: 4px; overflow-x: auto; padding-bottom: 4px; -webkit-overflow-scrolling: touch; border-top: 1px solid var(--border); padding-top: 8px; margin-top: 2px; }
+      .top-header-nav a { flex-shrink: 0; font-size: 13px; padding: 6px 10px; }
+      .hero-title, h1 { font-size: 32px !important; }
+      h2 { font-size: 26px !important; }
+    }
+    @media (max-width: 768px) {
+      .mobile-menu-btn { display: block; }
+      .top-header { padding: 10px 16px; gap: 0; flex-wrap: nowrap; backdrop-filter: none; }
+      .top-header .brand { flex: 1; min-width: 0; }
+      .top-header .slogan { display: none !important; }
+      .top-header-nav { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; height: 100dvh; background: #fff; flex-direction: column; justify-content: center; align-items: center; gap: 4px; z-index: 9999; opacity: 0; pointer-events: none; transition: opacity 0.25s ease; padding: 24px; overflow-y: auto; }
+      .top-header-nav.open { opacity: 1; pointer-events: auto; }
+      .top-header-nav a { font-size: 18px; padding: 12px 24px; }
+      .top-header-nav .nav-dropdown { display: flex; flex-direction: column; align-items: center; }
+      .top-header-nav .nav-dropdown .dropdown-menu { position: static; transform: none; opacity: 1; visibility: visible; box-shadow: none; border: none; background: transparent; margin-top: 0; padding: 4px 0 0; min-width: auto; display: flex; gap: 0; flex-direction: row; flex-wrap: wrap; justify-content: center; }
+      .top-header-nav .nav-dropdown .dropdown-menu a { padding: 6px 12px; font-size: 14px; }
+      .top-header-nav .nav-dropdown .dropdown-menu a .menu-desc { display: none; }
+      .top-header-nav .nav-dropdown > a::after { display: none; }
+      .nav-close-btn { display: block; position: absolute; top: 16px; right: 20px; background: none; border: none; font-size: 32px; color: var(--text); cursor: pointer; line-height: 1; padding: 4px 8px; }
+      body { padding-top: 52px; }
+    }
+  </style>
+</head>
+<body data-lang="en" id="insynbio-body">
+  <header class="top-header">
+    <div class="brand">
+      <a href="index.html" style="display: flex; align-items: center; gap: 10px; text-decoration: none;">
+        <svg width="34" height="28" viewBox="0 0 32 30" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink:0;">
+          <path d="M16 2L2 10V22L16 28L30 22V10L16 2Z" fill="#0d9488" fill-opacity="0.05" stroke="#0d9488" stroke-width="1" stroke-opacity="0.3"/>
+          <path d="M14.5 24 V 16" stroke="#0d9488" stroke-width="2.5" stroke-linecap="round"/>
+          <path d="M17.5 24 V 16" stroke="#f59e0b" stroke-width="2.5" stroke-linecap="round"/>
+          <line x1="13" y1="19" x2="19" y2="19" stroke="#9ca3af" stroke-width="1.5" stroke-linecap="round"/>
+          <line x1="13" y1="21" x2="19" y2="21" stroke="#9ca3af" stroke-width="1.5" stroke-linecap="round"/>
+          <path d="M14.5 16 L 8 7" stroke="#0d9488" stroke-width="2.5" stroke-linecap="round"/>
+          <path d="M10 16 L 3.5 7" stroke="#2dd4bf" stroke-width="2.5" stroke-linecap="round"/>
+          <path d="M17.5 16 L 24 7" stroke="#f59e0b" stroke-width="2.5" stroke-linecap="round"/>
+          <rect x="21.5" y="3.5" width="5" height="5" rx="1" fill="#f59e0b" transform="rotate(45 24 6)"/>
+        </svg>
+        <span style="font-family: 'Cormorant Garamond', serif; font-weight: 700; font-size: 26px; color: #1f2937; letter-spacing: -0.02em;">
+          In<span style="color: #0d9488;">Syn</span>Bio
+        </span>
+      </a>
+      <span class="slogan">AI for Life Sciences</span>
+    </div>
+    <button class="mobile-menu-btn" onclick="document.querySelector('.top-header-nav').classList.toggle('open')" aria-label="Open navigation">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+    <nav class="top-header-nav">
+      <button class="nav-close-btn" onclick="document.querySelector('.top-header-nav').classList.remove('open')" aria-label="Close navigation">✕</button>
+      <a href="index.html">Home</a>
+      <a href="index.html#about">About Us</a>
+      <div class="nav-dropdown" tabindex="0">
+        <a href="index.html#services" class="active">Services</a>
+        <div class="dropdown-menu">
+          <a href="InSynBio_Antibody_Developability_Assessment_Page.html">
+            <span class="menu-title">Antibody</span>
+            <span class="menu-desc">Structure-based Development</span>
+          </a>
+          <a href="InSynBio_ADC_Design_Page.html">
+            <span class="menu-title">ADC Design</span>
+            <span class="menu-desc">Smart Antibody-Drug Conjugates</span>
+          </a>
+          <a href="InSynBio_CART_Design_Page.html">
+            <span class="menu-title">CAR-T</span>
+            <span class="menu-desc">Smart CAR-T Design</span>
+          </a>
+          <a href="InSynBio_Bispecific_Antibody_Design_Page.html">
+            <span class="menu-title">Bispecific</span>
+            <span class="menu-desc">Multispecific Engineering</span>
+          </a>
+          <a href="immunogenicity_study.html">
+            <span class="menu-title">Immunogenicity</span>
+            <span class="menu-desc">ADA Prediction &amp; Reference DB</span>
+          </a>
+        </div>
+      </div>
+      <a href="index.html#case-studies">Case Studies</a>
+      <a href="InSynBio_OurTech.html">Our Tech</a>
+      <a href="#contact">Contact Us</a>
+    </nav>
+  </header>
+  
+  <div class="page-wrap">
+    <aside class="sidebar">
+      <h3>Smart ADC Design</h3>
+      <nav>
+        <a href="#platform" class="nav-link active">
+          <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+          Platform
+        </a>
+        <a href="#knowledge-base" class="nav-link"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>ADC Knowledge Base</a>
+        <a href="adc_database.html" style="background:rgba(13,148,136,0.08);color:var(--primary);border:1px solid rgba(13,148,136,0.2);font-size:13px;" class="nav-link"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>Browse All 199 Elements →</a>
+        <a href="#strategy" class="nav-link"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>Design Strategies</a>
+        <a href="#cmc" class="nav-link"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>CMC Solutions</a>
+        <a href="#example" class="nav-link"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/></svg>Case Study</a>
+        <a href="#pipeline" class="nav-link"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="17 1 21 5 17 9"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><polyline points="7 23 3 19 7 15"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg>Design → Clinic</a>
+        <a href="#submit" class="nav-link"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>Submit Inquiry</a>
+      </nav>
+    </aside>
+    
+    <main class="main">
+      <div class="breadcrumb">
+        <a href="index.html">Home</a><span>/</span><a href="index.html#services">Services</a><span>/</span><span>Smart ADC Design</span>
+      </div>
+
+      <h1 id="platform">Intelligent Antibody-Drug Conjugate (ADC) Design</h1>
+      <p class="subtitle">AI-driven end-to-end engineering for next-generation ADCs. From target profiling to linker-payload matching, conjugation technology selection, and CMC validation.</p>
+
+      <div class="mission-block">
+        <p><strong>The Therapeutic Window Challenge:</strong> ADCs are complex multi-component systems where clinical success is defined by the delicate balance of target specificity, linker stability, and payload potency. A single mismatch—such as pairing a highly hydrophobic payload with a high DAR conjugation method—can lead to aggregation, premature clearance, and severe off-target toxicity.</p>
+        <p>Our proprietary <strong>ADC Decision Engine</strong> leverages a comprehensive, QA-audited knowledge base of <strong>199+ validated components</strong> and <strong>30+ clinical programs</strong> to design best-in-class and first-in-class ADCs. We navigate the vast combinatorial space to recommend designs that maximize efficacy while strictly adhering to safety and CMC constraints.</p>
+      </div>
+
+      <h2 id="knowledge-base"><span class="h2-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg></span>The InSynBio ADC Knowledge Base</h2>
+      <p>Our AI recommendations are grounded in a rigorously curated, continuously updated database encompassing clinical precedents, structural chemistry (SMILES), and patent landscapes (FTO).</p>
+      
+      <div class="lib-grid">
+        <div class="lib-card">
+          <div class="lc-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="4"/></svg></div>
+          <h4>Target Antigens</h4>
+          <span class="lc-count">53 Profiles</span>
+          <p class="lc-desc">Detailed mapping of expression density, internalization, heterogeneity, off-tumor risk, and normal tissue expression across solid, liquid, autoimmune, and neurological indications.</p>
+          <p class="lc-examples">e.g., <strong>CLDN18.2</strong>, <strong>TROP-2</strong>, <strong>GPC3</strong>, <strong>Nectin-4</strong></p>
+          <a href="adc_database.html#antigens" class="lc-link">View Antigens →</a>
+        </div>
+        <div class="lib-card">
+          <div class="lc-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div>
+          <h4>Binders</h4>
+          <span class="lc-count">4 Formats</span>
+          <p class="lc-desc">Antibody formats optimized for tumor penetration, half-life, and Fc-effector function (ADCC/CDC).</p>
+          <p class="lc-examples">e.g., <strong>IgG1</strong>, <strong>IgG4</strong>, <strong>Bispecific</strong>, <strong>VHH/Nanobody</strong></p>
+          <a href="adc_database.html#binders" class="lc-link">View Binders →</a>
+        </div>
+        <div class="lib-card">
+          <div class="lc-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/></svg></div>
+          <h4>Linkers</h4>
+          <span class="lc-count">22 Formats</span>
+          <p class="lc-desc">Cleavable (protease, pH, disulfide) and non-cleavable linkers, matched to antigen internalization kinetics.</p>
+          <p class="lc-examples">e.g., <strong>mc-vc-PABC</strong>, <strong>GGFG</strong>, <strong>TMALIN</strong></p>
+          <a href="adc_database.html#linkers" class="lc-link">View Linkers →</a>
+        </div>
+        <div class="lib-card">
+          <div class="lc-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.24 12.24a6 6 0 0 0-8.49-8.49L5 10.5V19h8.5z"/><line x1="16" y1="8" x2="2" y2="22"/><line x1="17.5" y1="15" x2="9" y2="6.5"/></svg></div>
+          <h4>Payloads</h4>
+          <span class="lc-count">32 Molecules (11 Classes)</span>
+          <p class="lc-desc">From classic cytotoxins to emerging modalities. Includes SMILES structures and class toxicity profiles.</p>
+          <p class="lc-examples">e.g., <strong>DXd (TOP1i)</strong>, <strong>PROTACs</strong>, <strong>Radionuclides</strong>, <strong>ISACs</strong></p>
+          <a href="adc_database.html#payloads" class="lc-link">View Payloads →</a>
+        </div>
+        <div class="lib-card">
+          <div class="lc-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg></div>
+          <h4>Conjugation Tech</h4>
+          <span class="lc-count">21 Platforms</span>
+          <p class="lc-desc">From stochastic cysteine to site-specific enzymatic (FGE, Sortase) and glycan remodeling, with FTO analysis.</p>
+          <p class="lc-examples">e.g., <strong>iLDC</strong>, <strong>SMARTag</strong>, <strong>GlycoConnect</strong></p>
+          <a href="adc_database.html#conjugation" class="lc-link">View Conjugation Tech →</a>
+        </div>
+        <div class="lib-card">
+          <div class="lc-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></div>
+          <h4>Clinical Programs</h4>
+          <span class="lc-count">100 Precedents</span>
+          <p class="lc-desc">Comprehensive database of approved and late-stage ADCs, including sequence data, DAR, and failure analysis.</p>
+          <p class="lc-examples">e.g., <strong>Enhertu</strong>, <strong>Trodelvy</strong>, <strong>IBI343</strong></p>
+          <a href="adc_database.html#programs" class="lc-link">View Clinical DB →</a>
+        </div>
+      </div>
+
+      <h2 id="strategy"><span class="h2-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></span>Design Strategies</h2>
+      <p>Our engine supports multiple design paradigms depending on your clinical goals and risk tolerance:</p>
+      <ul>
+        <li><strong>Fast-Follower / Best-in-Class:</strong> Targeting validated antigens (e.g., HER2, TROP-2) with optimized linker-payloads (like DXd or TMALIN) to improve the therapeutic window over existing approved ADCs.</li>
+        <li><strong>First-in-Class (Novel Modalities):</strong> Designing for emerging targets (e.g., CLDN6, GPC3) or utilizing novel payloads such as <strong>PROTACs</strong> (to overcome small molecule resistance) or <strong>ISACs</strong> (Immune-stimulating ADCs for cold tumors).</li>
+        <li><strong>Bispecific ADCs:</strong> Dual-targeting (e.g., EGFR x HER3) to enhance tumor specificity, improve internalization, and overcome bypass resistance mechanisms.</li>
+        <li><strong>Masked ADCs (Probody):</strong> Utilizing peptide masks cleaved only in the tumor microenvironment to safely target antigens widely expressed on normal tissues.</li>
+      </ul>
+
+      <h2 id="cmc"><span class="h2-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></span>In Silico CMC & Manufacturability Solutions</h2>
+      <p>ADC manufacturing is notoriously complex due to the risk of aggregation, premature payload shedding, and high Drug-to-Antibody Ratio (DAR) heterogeneity. Our <strong>In Silico CMC Engine</strong> predicts and mitigates these risks before physical synthesis:</p>
+      <ul>
+        <li><strong>Hydrophobicity & Aggregation Prediction:</strong> Calculates the overall LogP of the Linker-Payload construct. If a highly hydrophobic payload (e.g., PBD) is paired with a high DAR target, the engine automatically recommends hydrophilic linkers (e.g., PEG spacers or GGFG) or restricts the maximum DAR to prevent High Molecular Weight (HMW) aggregation.</li>
+        <li><strong>DAR Homogeneity Optimization:</strong> Evaluates the trade-offs between conjugation technologies. For ultra-potent payloads requiring strict DAR 2.0, we recommend site-specific methods (e.g., THIOMAB, SMARTag, or GlycoConnect) over stochastic cysteine/lysine coupling to minimize un-conjugated antibody and overly toxic high-DAR species.</li>
+        <li><strong>Plasma Stability Modeling:</strong> Assesses linker vulnerability to extracellular proteases or spontaneous deconjugation (e.g., maleimide exchange with serum albumin), recommending rigidified linkers or alternative chemistries to ensure the payload reaches the tumor microenvironment.</li>
+      </ul>
+
+      <h2 id="example"><span class="h2-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/></svg></span>Case Study: Intelligent Design for Gastric Cancer</h2>
+      <p>Gastric cancer presents a unique challenge due to extreme inter- and intra-tumoral heterogeneity. Here is how the InSynBio ADC Decision Engine navigates the design space compared to historical clinical approaches.</p>
+
+      <div class="logic-trace">
+        <div class="lt-input">
+          <strong>Input Query:</strong> <code>disease_type="solid_tumor"</code>, <code>disease_subtype="gastric"</code>, <code>target="CLDN18.2"</code>, <code>proliferation="high"</code>
+        </div>
+        <div class="lt-steps">
+          <div class="lt-step">
+            <div class="lt-dot"></div>
+            <div class="lt-head">Layer 1: Target Antigen Profiling (CLDN18.2)</div>
+            <div class="lt-query">Internalization: Moderate/Slow | Shedding: Very Low | Heterogeneity: High</div>
+            <div class="lt-result">Decision: Mandatory Bystander Effect (AX-01)</div>
+            <div class="lt-decision"><strong>Rationale:</strong> CLDN18.2 is a tight-junction protein with sequestered epitopes, leading to moderate internalization. Gastric adenocarcinoma shows high intra-tumoral heterogeneity. To ensure efficacy in CLDN18.2-low regions, the payload must be membrane-permeable.</div>
+          </div>
+          <div class="lt-step">
+            <div class="lt-dot"></div>
+            <div class="lt-head">Layer 2: Payload Selection (TOP1i vs. MMAE)</div>
+            <div class="lt-query">Tumor Proliferation Index: High (Ki-67 > 50%)</div>
+            <div class="lt-result">Selected: TOP1i (e.g., DXd, SHR169106)</div>
+            <div class="lt-decision"><strong>Rationale:</strong> TOP1 inhibitors (DNA damaging) are highly S-phase specific and more effective in rapidly proliferating gastric tumors than tubulin inhibitors. They also provide a superior bystander effect profile for this indication.</div>
+          </div>
+          <div class="lt-step">
+            <div class="lt-dot"></div>
+            <div class="lt-head">Layer 3: Linker & DAR Optimization</div>
+            <div class="lt-query">Stability vs. Release Efficiency</div>
+            <div class="lt-result">Selected: GGFG (Tetrapeptide) | DAR: 8.0</div>
+            <div class="lt-decision"><strong>Rationale:</strong> High DAR (8.0) is recommended to maximize payload delivery per internalization event. A highly hydrophilic GGFG or K-Link is required to maintain CMC stability and prevent aggregation at this high drug load.</div>
+          </div>
+          <div class="lt-step">
+            <div class="lt-dot"></div>
+            <div class="lt-head">Layer 4: Competitive Benchmarking</div>
+            <div class="lt-query">Comparison with IBI343, CMG901, SHR-A1904</div>
+            <div class="lt-result">Recommendation: Site-Specific High-DAR TOP1i</div>
+            <div class="lt-decision"><strong>Differentiation:</strong> While IBI343 uses a similar high-DAR TOP1i strategy, we recommend <strong>site-specific conjugation</strong> (e.g., engineered Cys) to improve homogeneity and widen the therapeutic window compared to the stochastic mixtures used in earlier generation assets.</div>
+          </div>
+        </div>
+      </div>
+
+      <h2 id="pipeline"><span class="h2-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="17 1 21 5 17 9"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><polyline points="7 23 3 19 7 15"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg></span>From Design to Clinic</h2>
+      <p>We provide a comprehensive pipeline to validate the AI-generated ADC designs, moving from in silico modeling to IND-enabling studies.</p>
+      
+      <div class="flow-strip">
+        <div class="flow-step">
+          <div class="fs-num">1</div>
+          <div class="fs-title">AI Design</div>
+          <div class="fs-sub">Target profiling, FTO check, Linker-Payload matching</div>
+        </div>
+        <div class="flow-step">
+          <div class="fs-num">2</div>
+          <div class="fs-title">In Silico CMC</div>
+          <div class="fs-sub">Aggregation risk (LogP), DAR homogeneity modeling</div>
+        </div>
+        <div class="flow-step">
+          <div class="fs-num">3</div>
+          <div class="fs-title">In Vitro Assays</div>
+          <div class="fs-sub">Internalization (pHrodo), Bystander effect, Plasma stability</div>
+        </div>
+        <div class="flow-step">
+          <div class="fs-num">4</div>
+          <div class="fs-title">In Vivo Efficacy</div>
+          <div class="fs-sub">CDX/PDX models, PK/PD (Intact ADC vs Free Payload)</div>
+        </div>
+        <div class="flow-step">
+          <div class="fs-num">5</div>
+          <div class="fs-title">Tox & IND</div>
+          <div class="fs-sub">NHP GLP Toxicology, ADA Immunogenicity assessment</div>
+        </div>
+      </div>
+
+      <h2 id="submit"><span class="h2-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg></span>Submit Your ADC Inquiry</h2>
+      <p>Provide your target or indication, and our ADC Decision Engine will generate a ranked list of optimal Linker-Payload and Conjugation strategies.</p>
+      
+      <div class="form-section">
+        <form action="#" method="POST">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="disease">Target Indication</label>
+              <select id="disease" name="disease">
+                <option value="solid_tumor">Solid Tumor (e.g., Breast, NSCLC, Gastric)</option>
+                <option value="liquid_tumor">Hematologic Malignancy (e.g., DLBCL, AML)</option>
+                <option value="autoimmune">Autoimmune Disease</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="target_antigen">Target Antigen (Optional)</label>
+              <input type="text" id="target_antigen" name="target_antigen" placeholder="e.g., HER2, TROP-2, CLDN6">
+            </div>
+          </div>
+          
+          <div class="form-row">
+            <div class="form-group full">
+              <label>Design Strategy Preference</label>
+              <div class="check-group">
+                <div class="check-item"><input type="radio" name="strategy" id="strat_fast" checked><label for="strat_fast">Fast-Follower (Validated Payloads)</label></div>
+                <div class="check-item"><input type="radio" name="strategy" id="strat_first"><label for="strat_first">First-in-Class (Novel Payloads e.g., PROTAC/ISAC)</label></div>
+                <div class="check-item"><input type="radio" name="strategy" id="strat_bisp"><label for="strat_bisp">Bispecific ADC</label></div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="form-row">
+            <div class="form-group full">
+              <label for="project_details">Project Details & Constraints</label>
+              <textarea id="project_details" name="project_details" placeholder="Describe your specific requirements, such as desired DAR, CMC limitations, or patent (FTO) concerns..."></textarea>
+            </div>
+          </div>
+          
+          <button type="submit" class="btn">Generate ADC Proposal</button>
+        </form>
+      </div>
+
+    </main>
+  </div>
+
+  <footer class="site-footer">
+    <div style="max-width:1200px; margin:0 auto; padding: 0 32px 32px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:20px;">
+      <div>&copy; 2026 InSynBio. All rights reserved.</div>
+      <div style="display:flex; gap:24px;">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+        <a href="#contact">Contact Support</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Smooth scrolling for sidebar links
+    document.querySelectorAll('.sidebar nav a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const targetId = this.getAttribute('href').substring(1);
+        const targetEl = document.getElementById(targetId);
+        if (targetEl) {
+          window.scrollTo({
+            top: targetEl.offsetTop - 90,
+            behavior: 'smooth'
+          });
+          document.querySelectorAll('.sidebar nav a').forEach(a => a.classList.remove('active'));
+          this.classList.add('active');
+        }
+      });
+    });
+  </script>
+</body>
+</html>
