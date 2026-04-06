@@ -3,43 +3,35 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>InSynBio | Expert Design Support for Antibody and Cell Therapy Programs</title>
+  <title>InSynBio | AI-Powered Design for Therapeutics</title>
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
-  <meta name="description" content="InSynBio helps biotech, pharma, and CRO teams accelerate antibody and cell therapy programs with expert-reviewed humanization, developability, immunogenicity, and structure-guided design support.">
+  <meta name="description" content="InSynBio — AI-assisted drug R&D. Antibody assessment, developability, humanization, and biotherapeutic design powered by machine learning.">
   <meta name="keywords" content="InSynBio, AI drug design, antibody assessment, VHH humanization, biotherapeutics, developability, CAR-T, bispecific antibody, CADD, AIDD">
   <meta name="author" content="InSynBio">
   <meta name="robots" content="index, follow">
   <meta name="robots" content="noai, noimageai">
   <meta name="AI-Training" content="opt-out">
   <link rel="canonical" href="https://www.insynbio.com/">
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-F0S2HLBZ0B"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-F0S2HLBZ0B');
-  </script>
 
   <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://www.insynbio.com/">
-  <meta property="og:title" content="InSynBio | Expert Design Support for Antibody and Cell Therapy Programs">
-  <meta property="og:description" content="Expert-reviewed support for biotech, pharma, and CRO teams across humanization, developability, immunogenicity, and structure-guided therapeutic design.">
+  <meta property="og:title" content="InSynBio — AI for Life Sciences">
+  <meta property="og:description" content="AI-assisted drug R&D. Antibody assessment, developability, humanization, and biotherapeutic design powered by machine learning.">
   <meta property="og:image" content="https://www.insynbio.com/images/hero-bg.svg">
 
   <!-- Twitter -->
   <meta property="twitter:card" content="summary_large_image">
   <meta property="twitter:url" content="https://www.insynbio.com/">
-  <meta property="twitter:title" content="InSynBio | Expert Design Support for Antibody and Cell Therapy Programs">
-  <meta property="twitter:description" content="Expert-reviewed support for biotech, pharma, and CRO teams across humanization, developability, immunogenicity, and structure-guided therapeutic design.">
+  <meta property="twitter:title" content="InSynBio — AI for Life Sciences">
+  <meta property="twitter:description" content="AI-assisted drug R&D. Antibody assessment, developability, humanization, and biotherapeutic design powered by machine learning.">
   <meta property="twitter:image" content="https://www.insynbio.com/images/hero-bg.svg">
   <script type="application/ld+json">
   {"@context":"https://schema.org","@type":"Organization","name":"InSynBio","url":"https://www.insynbio.com","logo":"https://www.insynbio.com/favicon.svg","description":"AI-powered biotherapeutic design: antibody humanization, VHH nanobody engineering, CAR-T design, and bispecific optimization.","email":"contact@insynbio.com"}
   </script>
-  <!-- [1] Numbering (FAQPage JSON-LD): public name ANARCI; implementation uses Python package anarcii (distinct from legacy ANARCI where applicable). -->
   <script type="application/ld+json">
   {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
     {"@type":"Question","name":"What information do I need to provide to start a project?","acceptedAnswer":{"@type":"Answer","text":"For antibody humanization or VHH design: VH/VL (or VHH) amino acid sequences in FASTA format, target antigen name, and any known affinity data. For CMC assessment: sequence files only."}},
@@ -47,7 +39,7 @@
     {"@type":"Question","name":"What does the final report include?","acceptedAnswer":{"@type":"Answer","text":"Final designed sequences (FASTA), full rationale for each design decision, structure prediction results, CMC developability metrics, immunogenicity risk assessment, and an executive summary."}},
     {"@type":"Question","name":"Do you offer wet lab validation?","acceptedAnswer":{"@type":"Answer","text":"Our core service is computational. We partner with CRO laboratories for expression, binding assays, and stability testing."}},
     {"@type":"Question","name":"Is my sequence data kept confidential?","acceptedAnswer":{"@type":"Answer","text":"Yes. All submitted sequences and project data are treated as strictly confidential. We sign NDAs prior to project initiation."}},
-    {"@type":"Question","name":"What AI tools and databases does InSynBio use?","acceptedAnswer":{"@type":"Answer","text":"AbEngineCore integrates ANARCI, ABodyBuilder2, a 842-antibody clinical germline database, CMC benchmarking against 458 clinical engineered humanized antibodies and 21 key clinical Fc records, and IEDB API-based prediction EL immunogenicity prediction (via IEDB Next-Gen API)."}}
+    {"@type":"Question","name":"What AI tools and databases does InSynBio use?","acceptedAnswer":{"@type":"Answer","text":"AbEngineCore integrates ANARCI, ABodyBuilder2, a 842-antibody clinical germline database, CMC benchmarking against AbRef-458, and IEDB API-based prediction EL immunogenicity prediction (via IEDB Next-Gen API)."}}
   ]}
   </script>
   <style>
@@ -64,10 +56,10 @@
     
     /* Header */
     .top-header { display: flex; align-items: center; justify-content: space-between; padding: 12px 32px; background: rgba(255,255,255,0.95); backdrop-filter: blur(12px); border-bottom: 2px solid rgba(13,148,136,0.1); position: fixed; width: 100%; top: 0; z-index: 2000; gap: 12px; flex-wrap: wrap; }
-    .top-header .brand { font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 700; font-size: 26px; letter-spacing: -0.03em; display: flex; align-items: center; flex-wrap: nowrap; min-width: max-content; }
-    .top-header .brand a { text-decoration: none; color: inherit; display: flex; align-items: center; gap: 10px; white-space: nowrap; flex-shrink: 0; }
+    .top-header .brand { font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 700; font-size: 26px; letter-spacing: -0.03em; display: flex; align-items: center; }
+    .top-header .brand a { text-decoration: none; color: inherit; display: flex; align-items: center; gap: 10px; }
     .top-header .brand .syn { color: var(--primary); font-style: italic; }
-    .top-header .slogan { font-size: 14px; color: var(--text-muted); padding-left: 14px; border-left: 1px solid var(--border); margin-left: 14px; font-weight: 600; letter-spacing: 0.02em; white-space: nowrap; display: inline-flex; align-items: center; flex-shrink: 0; }
+    .top-header .slogan { font-size: 14px; color: var(--text-muted); padding-left: 14px; border-left: 1px solid var(--border); margin-left: 14px; font-weight: 600; letter-spacing: 0.02em; white-space: nowrap; }
     .mobile-menu-btn { display: none; background: none; border: 1px solid var(--border); border-radius: 8px; padding: 6px 8px; cursor: pointer; color: var(--text); line-height: 0; }
     .nav-close-btn { display: none; }
     
@@ -117,18 +109,6 @@
     .section .section-label { font-size: 11px; font-weight: 600; color: var(--primary); text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 8px; display: block; }
     .section p { margin: 0 0 16px; color: #4b5563; font-size: 16px; line-height: 1.65; font-weight: 400; }
     .section .highlight { background: rgba(13,148,136,0.08); border-left: 3px solid var(--primary); padding: 16px 24px; border-radius: 0 12px 12px 0; margin: 20px 0; font-size: 15px; }
-    .section-intro { max-width: 760px; }
-    .split-intro { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(280px, 0.8fr); gap: 18px; align-items: stretch; }
-    .proof-panel { background: linear-gradient(160deg, #ffffff 0%, #f3fbf9 100%); border: 1px solid rgba(13,148,136,0.14); border-radius: 18px; padding: 24px; box-shadow: 0 12px 32px -20px rgba(13,148,136,0.25); position: relative; overflow: hidden; }
-    .proof-panel::before { content: ''; position: absolute; inset: 0 auto auto 0; width: 100%; height: 3px; background: linear-gradient(90deg, #0d9488 0%, rgba(13,148,136,0.2) 72%, rgba(13,148,136,0) 100%); }
-    .proof-panel h3 { margin: 0 0 10px; font-size: 18px; color: #111827; letter-spacing: -0.01em; }
-    .proof-panel ul { margin: 0; padding-left: 18px; color: #4b5563; }
-    .proof-panel li { margin-bottom: 8px; font-size: 14px; line-height: 1.55; }
-    .mini-cta-row { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 18px; }
-    .mini-cta { display: inline-flex; align-items: center; justify-content: center; padding: 10px 16px; border-radius: 10px; background: #111827; color: #fff; text-decoration: none; font-size: 13px; font-weight: 600; transition: all 0.2s ease; }
-    .mini-cta:hover { background: var(--primary); transform: translateY(-1px); }
-    .mini-cta.alt { background: rgba(13,148,136,0.09); color: var(--primary-dark); border: 1px solid rgba(13,148,136,0.18); }
-    .mini-cta.alt:hover { background: rgba(13,148,136,0.14); }
     #about.section { background: linear-gradient(180deg, #f5faf9 0%, #fafdfc 100%); border-bottom: 1px solid rgba(13,148,136,0.06); }
     #case-studies.section { background: linear-gradient(180deg, #fafdfc 0%, #f6faf8 100%); border-bottom: 1px solid rgba(13,148,136,0.06); }
     #workflow.section { background: linear-gradient(180deg, #f7faf9 0%, #fafdfc 100%); border-bottom: 1px solid rgba(13,148,136,0.06); }
@@ -137,17 +117,10 @@
     .stat-strip { display: flex; gap: 20px; flex-wrap: wrap; margin: 20px 0 4px; padding-top: 16px; border-top: 1px solid rgba(0,0,0,0.06); }
     .stat-item { display: flex; align-items: center; gap: 10px; font-size: 14px; color: #374151; font-weight: 500; }
     .stat-item .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--primary); flex-shrink: 0; box-shadow: 0 0 0 4px rgba(13,148,136,0.1); }
-    .buyer-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; margin-top: 28px; }
-    .buyer-card { background: rgba(255,255,255,0.92); border: 1px solid rgba(13,148,136,0.12); border-radius: 16px; padding: 22px 22px 20px; box-shadow: 0 8px 24px -18px rgba(13,148,136,0.2); position: relative; overflow: hidden; }
-    .buyer-card::before { content: ''; position: absolute; top: 0; left: 22px; right: 22px; height: 2px; background: linear-gradient(90deg, rgba(13,148,136,0.9), rgba(13,148,136,0.15)); }
-    .buyer-card .eyebrow { font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--primary); margin-bottom: 10px; display: block; }
-    .buyer-card h3 { margin: 0 0 8px; font-size: 18px; color: #111827; letter-spacing: -0.01em; }
-    .buyer-card p { margin: 0; font-size: 14px; color: #5b6472; line-height: 1.6; }
 
     /* Services Cards - The "Glass" Look */
     .services-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 16px; margin-top: 28px; }
     .service-card { background: var(--card-surface); border: 1px solid var(--card-border); border-radius: 14px; padding: 28px 24px; transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); position: relative; overflow: hidden; box-shadow: var(--card-shadow); }
-    .service-card::before { content: ''; position: absolute; inset: 0 0 auto 0; height: 2px; background: linear-gradient(90deg, rgba(13,148,136,0.95), rgba(13,148,136,0.18)); opacity: 0.85; }
     .service-card:hover { transform: translateY(-8px); box-shadow: 0 16px 36px -8px rgba(13, 148, 136, 0.14), 0 8px 16px -4px rgba(0, 0, 0, 0.06); border-color: var(--card-border-hover); }
     .service-card .icon { width: 44px; height: 44px; background: rgba(13,148,136,0.08); border-radius: 11px; display: flex; align-items: center; justify-content: center; margin-bottom: 14px; color: var(--primary); transition: transform 0.3s ease; }
     .service-card:hover .icon { transform: scale(1.1); background: var(--primary); color: #fff; }
@@ -228,8 +201,6 @@
       .workflow-steps { flex-direction: column; gap: 16px; }
       .workflow-step { border-radius: 12px !important; border: 1px solid var(--card-border) !important; }
       .hero h1 { font-size: 40px; }
-      .split-intro { grid-template-columns: 1fr; }
-      .buyer-grid { grid-template-columns: 1fr; }
     }
     @media (max-width: 768px) {
       .mobile-menu-btn { display: block; }
@@ -290,13 +261,47 @@
     <button class="mobile-menu-btn" aria-label="Open menu" onclick="document.querySelector('.top-header-nav').classList.add('open')">
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
     </button>
-    <nav class="top-header-nav" id="mirrored-top-nav"></nav>
+    <nav class="top-header-nav">
+      <button class="nav-close-btn" aria-label="Close menu" onclick="this.parentElement.classList.remove('open')">&times;</button>
+      <a href="index.html" class="active">Home</a>
+      <a href="#about">About Us</a>
+      <div class="nav-dropdown" tabindex="0">
+        <a href="#services">Services</a>
+        <div class="dropdown-menu">
+          <a href="InSynBio_Antibody_Developability_Assessment_Page.html">
+            <span class="menu-title">Antibody</span>
+            <span class="menu-desc">Structure-based Development</span>
+          </a>
+          <a href="InSynBio_ADC_Design_Page.html">
+            <span class="menu-title">ADC Design</span>
+            <span class="menu-desc">Smart Antibody-Drug Conjugates</span>
+          </a>
+          <a href="InSynBio_CART_Design_Page.html">
+            <span class="menu-title">CAR-T</span>
+            <span class="menu-desc">Smart CAR-T Design</span>
+          </a>
+          <a href="InSynBio_Bispecific_Antibody_Design_Page.html">
+            <span class="menu-title">Bispecific</span>
+            <span class="menu-desc">Multispecific Engineering</span>
+          </a>
+          <a href="immunogenicity_study.html">
+            <span class="menu-title">Immunogenicity</span>
+            <span class="menu-desc">ADA Prediction & Reference DB</span>
+          </a>
+          <a href="vaccine_design.html">
+            <span class="menu-title">Vaccine Design</span>
+            <span class="menu-desc">Neoantigen · Heteroclitic · mRNA</span>
+          </a>
+        </div>
+      </div>
+      <a href="#case-studies">Case Studies</a>
+      <a href="InSynBio_OurTech.html">Our Tech</a>
+      <a href="#workflow">Workflow</a>
+      <a href="#faq">FAQ</a>
+      <a href="#contact">Contact Us</a>
+    </nav>
+    
   </header>
-  <script src="js/site-nav-mirror-config.js"></script>
-  <script src="js/site-nav-mirror-render.js"></script>
-  <script>
-    SiteNavMirror.render(document.getElementById('mirrored-top-nav'), { site: 'insynbio', layout: 'insynbioIndex' });
-  </script>
 
   <section class="hero">
     <div class="hero-banner">
@@ -304,8 +309,8 @@
     </div>
     <div class="hero-overlay" aria-hidden="true"></div>
     <div class="hero-inner">
-    <h1>Clinical Data-Guided AI Design and Assessment</h1>
-    <p class="tagline">Clinical data meets machine learning. From antibody humanization to CAR-T engineering for oncology and infectious disease - accelerating biotherapeutic innovation.</p>
+    <h1>AI-Powered Design for Therapeutics</h1>
+    <p class="tagline">Clinical data meets machine learning. From antibody humanization to CAR-T engineering for oncology and infectious disease — accelerating biotherapeutic innovation.</p>
 
     <div class="hero-features">
       <div class="feature-item">
@@ -333,15 +338,15 @@
     <div class="trust-inner">
       <div class="trust-item fade-up">
         <span class="trust-number">1,142</span>
-        <span class="trust-label">Clinical Antibody Sequence Library</span>
+        <span class="trust-label">Clinical Antibody Sequences</span>
       </div>
       <div class="trust-item fade-up fade-up-d1">
-        <span class="trust-number">458</span>
-        <span class="trust-label">Clinical Engineered Humanized Antibodies</span>
+        <span class="trust-number">120+</span>
+        <span class="trust-label">Clinical ADA Records</span>
       </div>
       <div class="trust-item fade-up fade-up-d2">
-        <span class="trust-number">21</span>
-        <span class="trust-label">Clinical Fc Records</span>
+        <span class="trust-number">237</span>
+        <span class="trust-label">CAR‑T Components</span>
       </div>
       <div class="trust-item fade-up fade-up-d3">
         <span class="trust-number">134+</span>
@@ -350,63 +355,21 @@
     </div>
   </div>
 
-  <section class="section">
-    <div class="section-wide fade-up">
-      <span class="section-label">Who We Help</span>
-      <div class="split-intro">
-        <div class="section-intro">
-          <h2 style="margin-bottom:8px">Built For Teams Making High-Stakes Molecule Decisions</h2>
-          <p>InSynBio is best suited for teams that need a credible technical answer quickly: whether you are triaging antibody liabilities, preparing a humanization strategy, evaluating a bispecific format, or pressure-testing a CAR design before wet-lab work.</p>
-          <div class="buyer-grid">
-            <div class="buyer-card">
-              <span class="eyebrow">Biotech</span>
-              <h3>Discovery And Preclinical Programs</h3>
-              <p>Prioritize the most promising sequences before committing expression, assay, and optimization budgets.</p>
-            </div>
-            <div class="buyer-card">
-              <span class="eyebrow">Pharma</span>
-              <h3>Portfolio Risk Reduction</h3>
-              <p>Bring benchmarked structure, immunogenicity, and developability views into internal go or no-go reviews.</p>
-            </div>
-            <div class="buyer-card">
-              <span class="eyebrow">CRO</span>
-              <h3>Faster Technical Scoping</h3>
-              <p>Support partner-facing projects with expert-reviewed recommendations and clearer handoff packages.</p>
-            </div>
-          </div>
-        </div>
-        <aside class="proof-panel">
-          <h3>Why buyers trust the output</h3>
-          <ul>
-            <li>Clinical-benchmark framing instead of black-box scoring alone.</li>
-            <li>Sample-report style deliverables with rationale, metrics, and next-step guidance.</li>
-            <li>NDA-friendly workflow for confidential sequence review.</li>
-            <li>Optional CRO coordination after dry-lab assessment.</li>
-          </ul>
-          <div class="mini-cta-row">
-            <a class="mini-cta" href="#contact">Book Consultation</a>
-            <a class="mini-cta alt" href="mailto:contact@insynbio.com?subject=Request%20NDA%20-%20InSynBio">Request NDA</a>
-          </div>
-        </aside>
-      </div>
-    </div>
-  </section>
-
   <section id="about" class="section">
     <div class="section-inner fade-up">
       <span class="section-label">About Us</span>
-      <h2 style="margin-bottom:8px">Clinical Data-Driven Design, Presented For Decision Makers</h2>
+      <h2 style="margin-bottom:8px">Clinical Data-Driven AI Drug Design</h2>
 
-      <p style="margin-bottom:14px;font-size:14px;color:#6b7280;line-height:1.6;"><strong style="color:#0f766e;">In</strong>telligent &nbsp;·&nbsp; <strong style="color:#0f766e;">Syn</strong>ergy &nbsp;·&nbsp; <strong style="color:#0f766e;">Bio</strong>logy means pairing machine learning with domain expertise, so teams get outputs they can actually act on.</p>
+      <p style="margin-bottom:14px;font-size:14px;color:#6b7280;line-height:1.6;"><strong style="color:#0f766e;">In</strong>telligent &nbsp;·&nbsp; <strong style="color:#0f766e;">Syn</strong>ergy &nbsp;·&nbsp; <strong style="color:#0f766e;">Bio</strong>logy — AI and machine learning, dry-wet integration, and deep domain biology working in concert. Computational predictions guide experiments; clinical data grounds and validates every model.</p>
 
-      <p style="margin-bottom:16px;">What sets InSynBio apart is that our platform is calibrated against <strong>real clinical outcomes</strong>, not only synthetic or hypothetical datasets. We maintain a curated base of <strong>1,142 clinical antibody sequence library</strong> (including <strong>42 clinical-stage VHH</strong> nanobody references), <strong>109 MHC class I/II epitope records</strong> in the EpiDesignCore vaccine knowledge base, <strong>458 clinical engineered humanized antibodies (ML)</strong> for CMC calibration, <strong>21 key clinical Fc records</strong>, <strong>120+ validated immunogenicity records</strong>, and <strong>134+ bispecific benchmarks</strong>, then translate those references into reports built for project planning, partner updates, and internal review.</p>
+      <p style="margin-bottom:16px;">What sets InSynBio apart: our AI is not trained on synthetic or hypothetical sequences — it is calibrated against <strong>real clinical outcomes</strong>. We maintain a curated database of <strong>1,142 clinical antibody sequence library</strong>, <strong>120+ validated immunogenicity (ADA) records</strong>, and <strong>134+ clinical bispecific benchmarks</strong>. Every design recommendation is traceable to molecules that have been tested in humans. Structure prediction uses <strong>AlphaFold2</strong>, <strong>ABodyBuilder2</strong>, and <strong>HADDOCK3</strong>; de novo design integrates <strong>ProteinMPNN</strong> and <strong>RFdiffusion</strong>.</p>
 
       <p style="margin-bottom:16px;font-size:14px;color:#4b5563;">Founded by scientists from <strong>Columbia University</strong> and <strong>Rockefeller University</strong>, with expertise in immunology, therapeutic antibody development, and vaccine biology.</p>
 
       <div class="stat-strip">
-        <span class="stat-item"><span class="dot"></span>Decision-ready reporting for program teams</span>
-        <span class="stat-item"><span class="dot"></span>120+ ADA records for immunogenicity calibration</span>
-        <span class="stat-item"><span class="dot"></span>Expert-reviewed recommendations, not raw model output</span>
+        <span class="stat-item"><span class="dot"></span>1,142 clinical sequences — training &amp; benchmarking</span>
+        <span class="stat-item"><span class="dot"></span>120+ ADA records — immunogenicity calibration</span>
+        <span class="stat-item"><span class="dot"></span>Dry-wet integrated · Expert-reviewed</span>
       </div>
 
       <div style="display:flex;flex-wrap:wrap;gap:8px;margin:16px 0 0;">
@@ -422,17 +385,26 @@
   <section id="services" class="section section-alt">
     <div class="section-wide">
       <span class="section-label">Services</span>
-      <h2 style="margin-bottom:6px">Where Teams Typically Start</h2>
-      <p style="margin-bottom:0">Choose the entry point that matches your current bottleneck, then expand into deeper optimization if needed.</p>
+      <h2 style="margin-bottom:6px">What We Offer</h2>
+      <p style="margin-bottom:0">In silico assessment, design, and development for biotherapeutics.</p>
     <div class="services-grid">
       <div class="service-card fade-up">
+        <div class="icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.24 12.24a6 6 0 0 0-8.49-8.49L5 10.5V19h8.5z"/><line x1="16" y1="8" x2="2" y2="22"/><line x1="17.5" y1="15" x2="9" y2="6.5"/></svg>
+        </div>
+        <h3>Smart ADC Design</h3>
+        <a href="InSynBio_ADC_Design_Page.html" class="status">Available</a>
+        <p>End-to-End Engineering: AI-driven linker-payload matching, TME-specific cleavage optimization, and site-specific conjugation. 199+ element library.</p>
+        <a href="InSynBio_ADC_Design_Page.html">Inquire Now →</a>
+      </div>
+      <div class="service-card fade-up fade-up-d1">
         <div class="icon">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
         </div>
         <h3>Antibody Development & Assessment</h3>
         <a href="InSynBio_Antibody_Developability_Assessment_Page.html#platform" class="status">Available</a>
-        <p>Best for teams that need humanization, developability, immunogenicity, and structural assessment in one expert-reviewed package.</p>
-        <a href="InSynBio_Antibody_Developability_Assessment_Page.html">Explore antibody services →</a>
+        <p>Sequence analysis, developability, immunogenicity, structure, humanization, affinity maturation.</p>
+        <a href="InSynBio_Antibody_Developability_Assessment_Page.html">Learn more →</a>
       </div>
       <div class="service-card fade-up fade-up-d1">
         <div class="icon">
@@ -440,8 +412,8 @@
         </div>
         <h3>Smart CAR-T Design</h3>
         <a href="InSynBio_CART_Design_Page.html" class="status">Available</a>
-        <p>For groups evaluating construct architecture, binder pairing, and translational design tradeoffs before experimental build-out.</p>
-        <a href="InSynBio_CART_Design_Page.html">Explore CAR-T design →</a>
+        <p>End-to-End Service: AI-driven CAR structure design for solid tumors, hematologic malignancies, autoimmune, and infectious diseases. 237-component proprietary library.</p>
+        <a href="InSynBio_CART_Design_Page.html">Inquire Now →</a>
       </div>
       <div class="service-card fade-up fade-up-d2">
         <div class="icon">
@@ -449,8 +421,8 @@
         </div>
         <h3>Bispecific Antibody Design</h3>
         <a href="InSynBio_Bispecific_Antibody_Design_Page.html" class="status">Available</a>
-        <p>For teams comparing format, arm pairing, and manufacturability risk across multispecific concepts.</p>
-        <a href="InSynBio_Bispecific_Antibody_Design_Page.html">Explore bispecific design →</a>
+        <p>BsAb format selection, sequence design, and structural assessment.</p>
+        <a href="InSynBio_Bispecific_Antibody_Design_Page.html">Learn more →</a>
       </div>
       <div class="service-card fade-up fade-up-d2">
         <div class="icon">
@@ -458,8 +430,8 @@
         </div>
         <h3>Vaccine Design</h3>
         <a href="vaccine_design.html" class="status">Available</a>
-        <p>For oncology and infectious disease programs that need epitope selection and translational design support backed by curated knowledge bases.</p>
-        <a href="vaccine_design.html">Explore vaccine design →</a>
+        <p>Neoantigen scanning, TAA heteroclitic design, multi-epitope mRNA assembly, and pMHC-TCR peptide design — backed by 6 clinical knowledge bases.</p>
+        <a href="vaccine_design.html">Learn more →</a>
       </div>
     </div>
     </div>
@@ -468,8 +440,8 @@
   <section id="case-studies" class="section">
     <div class="section-wide">
       <span class="section-label">Case Studies</span>
-      <h2 style="margin-bottom:6px">Proof That Reads Like Outcomes, Not Hype</h2>
-      <p style="margin-bottom:0;color:var(--text-muted)">Selected examples showing how InSynBio supports faster decisions, lower developability risk, and clearer next steps.</p>
+      <h2 style="margin-bottom:6px">Selected Projects</h2>
+      <p style="margin-bottom:0;color:var(--text-muted)">Representative engagements across biotherapeutic design and evaluation.</p>
 
       <div class="case-grid">
         <a class="case-card fade-up" href="case_mumab4d5_humanization_en.html">
@@ -482,8 +454,8 @@
           </div>
           <div class="case-body">
             <span class="case-tag">Humanization</span>
-            <div class="case-title">Reduced Humanization Complexity To 4 Back-Mutations</div>
-            <p class="case-desc">A clinically grounded humanization strategy preserved 100% CDR identity while minimizing re-engineering burden.</p>
+            <div class="case-title">muMAb4D5 → Herceptin Precursor Humanization</div>
+            <p class="case-desc">Systematic re-humanization of the world's most clinically validated antibody using AbEngineCore V4.5.1 — with only 4 back-mutations and 100% CDR retention.</p>
             <ul class="case-bullets">
               <li>IGHV3-23*01 + IGKV1-39*01 — clinically validated pair</li>
               <li>VH/VL angle Δ 0.64° · RMSD gates all passed</li>
@@ -503,8 +475,8 @@
           </div>
           <div class="case-body">
             <span class="case-tag">CMC / Developability</span>
-            <div class="case-title">Resolved CMC Risk Before Wet-Lab Optimization</div>
-            <p class="case-desc">A benchmarked developability review identified a focused optimization path without disrupting structural integrity.</p>
+            <div class="case-title">muMAb4D5 CMC Developability &amp; Optimization</div>
+            <p class="case-desc">Full 15-parameter CMC evaluation benchmarked against AbRef-458 — all metrics passed, outperforming Herceptin® on immunogenicity and deamidation risk.</p>
             <ul class="case-bullets">
               <li>ADI score: 77/100 (Acceptable) · Herceptin® 81/100</li>
               <li>TCIA 0.61 vs Herceptin 0.65 — better immunogenicity</li>
@@ -524,8 +496,8 @@
           </div>
           <div class="case-body">
             <span class="case-tag">VH → VHH</span>
-            <div class="case-title">Converted A Conventional VH Into A Competitive VHH Lead</div>
-            <p class="case-desc">The design preserved CDRs, improved surface properties, and exceeded a clinical VHH reference on key CMC metrics.</p>
+            <div class="case-title">muMAb4D5 VH → Humanized VHH Nanobody</div>
+            <p class="case-desc">HER2-targeting nanobody engineered from muMAb4D5 VH — 100% CDR preservation, SASA-guided surface reshaping, surpassing the clinical anti-HER2 VHH reference on all key CMC metrics.</p>
             <ul class="case-bullets">
               <li>VHH_ADI 66.66 · beats Anti-HER2-VHH1 (63.17)</li>
               <li>Global RMSD 0.054 Å · CDR1/2/3 fully intact</li>
@@ -545,8 +517,8 @@
           </div>
           <div class="case-body">
             <span class="case-tag">Affinity Maturation</span>
-            <div class="case-title">Found A Higher-Affinity Variant Without Backbone Drift</div>
-            <p class="case-desc">A multi-constraint maturation workflow surfaced an epistatic improvement with stronger interface quality and preserved geometry.</p>
+            <div class="case-title">VGRW-SR-R2 HER2 VHH Affinity Maturation</div>
+            <p class="case-desc">247 mutations screened across 5 dimensions — epistatic double mutant G49A+F112L discovered with −3.32 kcal/mol improvement, +70% interface contacts, 0.000 Å backbone RMSD.</p>
             <ul class="case-bullets">
               <li>Exhaustive interface scan (13 sites × 19 AA)</li>
               <li>5D filtering: energy, stability, fitness, conservation, CMC</li>
@@ -566,8 +538,8 @@
           </div>
           <div class="case-body">
             <span class="case-tag">Bispecific VHH</span>
-            <div class="case-title">Improved Bispecific Expression Through Smarter Arm Selection</div>
-            <p class="case-desc">The design workflow resolved a low-secretion construct by tuning pI, linker choice, and fusion architecture.</p>
+            <div class="case-title">Engineering a High-Expression Bispecific Coronavirus Nanobody</div>
+            <p class="case-desc">SmartLink™ + VirtualCMC resolved low yeast secretion in a dual-coronavirus VHH-GS-VHH fusion — via pI engineering and arm selection.</p>
             <ul class="case-bullets">
               <li>pI reduced by 1.09 units · net charge −4.0</li>
               <li>Cross-coronavirus IC90 improved 4.8× by arm swap</li>
@@ -587,8 +559,8 @@
           </div>
           <div class="case-body">
             <span class="case-tag">CAR‑M Design</span>
-            <div class="case-title">Designed A Broader-Coverage CAR-M Concept Faster</div>
-            <p class="case-desc">An ACTES-guided design strategy combined dual-binder coverage, delivery logic, and preclinical planning into one package.</p>
+            <div class="case-title">Anti-CIDRα1 CAR-Macrophage for P. falciparum Malaria</div>
+            <p class="case-desc">ACTES 11-layer decision cascade designed a dual-binder CAR-M targeting all 6 CIDRα1 subclasses — with mRNA-LNP delivery and 4-tier preclinical strategy.</p>
             <ul class="case-bullets">
               <li>Dual-binder tandem scFv (C7 + C74) covers 6 subclasses</li>
               <li>FcRγ macrophage-native signaling · mRNA-LNP &lt;1h deploy</li>
@@ -604,33 +576,33 @@
   <section id="workflow" class="section">
     <div class="section-wide fade-up">
       <span class="section-label">Workflow</span>
-      <h2 style="margin-bottom:6px">From First Conversation To Deliverable</h2>
-      <p class="workflow-subtitle" style="margin-bottom:20px;color:var(--text-muted)">A clearer commercial path for scientific teams evaluating fit, scope, and delivery.</p>
+      <h2 style="margin-bottom:6px">From Inquiry to Delivery</h2>
+      <p class="workflow-subtitle" style="margin-bottom:20px;color:var(--text-muted)">Transparent, risk-sharing process.</p>
       <div class="workflow-steps">
         <div class="workflow-step">
           <div class="num">1</div>
-          <strong>Project Review</strong>
-          <span class="desc">We review the molecule, goal, and decision context.</span>
+          <strong>Free Assessment</strong>
+          <span class="desc">Scoping before commitment</span>
         </div>
         <div class="workflow-step">
           <div class="num">2</div>
-          <strong>Scope Alignment</strong>
-          <span class="desc">You receive a recommended work package, timeline, and inputs list.</span>
+          <strong>Payment</strong>
+          <span class="desc">Confirm &amp; pay upfront</span>
         </div>
         <div class="workflow-step">
           <div class="num">3</div>
-          <strong>Analysis</strong>
-          <span class="desc">InSynBio runs the computational workflow and expert review.</span>
+          <strong>Delivery</strong>
+          <span class="desc">Expert-reviewed report</span>
         </div>
         <div class="workflow-step">
           <div class="num">4</div>
-          <strong>Delivery</strong>
-          <span class="desc">You receive a report with rationale, metrics, and recommended next steps.</span>
+          <strong>Final Payment</strong>
+          <span class="desc">Waived on validation</span>
         </div>
         <div class="workflow-step">
           <div class="num">5</div>
-          <strong>Follow-On Support</strong>
-          <span class="desc">Optional iteration, CRO handoff, or deeper design work.</span>
+          <strong>Publish Benefit</strong>
+          <span class="desc">50% rebate on publication</span>
         </div>
       </div>
     </div>
@@ -640,19 +612,19 @@
     <div class="section-inner fade-up">
       <span class="section-label">Contact</span>
       <h2 style="margin-bottom:6px">Get in Touch</h2>
-      <p style="margin-bottom:0;color:var(--text-muted)">Choose the contact path that matches your stage: low-friction conversation first, or full project intake if you are ready.</p>
+      <p style="margin-bottom:0;color:var(--text-muted)">Technical consultation, drug evaluation, and CRO/Biotech collaboration.</p>
       <div class="contact-grid">
         <div class="contact-card">
-          <span class="label">Book a consultation</span>
+          <span class="label">Email us directly</span>
           <a href="mailto:contact@insynbio.com" class="email">contact@insynbio.com</a>
-          <p class="hint">Use email for a quick discussion, NDA request, or sample report request. We typically respond within 1-2 business days.</p>
+          <p class="hint">We typically respond within 1–2 business days.</p>
         </div>
         <div class="contact-card">
-          <span class="label">Start project intake</span>
-          <p style="font-size: 16px; color: #374151; margin: 0 0 12px;">Share your program context, target, and available inputs for a scoped recommendation.</p>
+          <span class="label">Submit an inquiry</span>
+          <p style="font-size: 16px; color: #374151; margin: 0 0 12px;">Send us your sequences and project details for a tailored assessment.</p>
           <a href="InSynBio_Antibody_Developability_Assessment_Page.html#submit" class="form-link">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
-            Open Inquiry Form
+            Go to Inquiry Form
           </a>
         </div>
       </div>
@@ -692,10 +664,9 @@
           <p class="faq-answer">Yes. All submitted sequences and project data are treated as strictly confidential. We are happy to sign an NDA prior to project initiation. Data is used solely for the purposes of the contracted project and is not shared with third parties.</p>
         </details>
 
-        <!-- [2] Same as [1]: visible FAQ mirrors JSON-LD; public ANARCI, engine anarcii. -->
         <details class="faq-item">
           <summary class="faq-summary">What AI tools and databases does InSynBio use? <span style="color:var(--primary);font-size:20px;font-weight:300;">+</span></summary>
-          <p class="faq-answer">Our AbEngineCore platform integrates: deep-learning antibody numbering (<strong>ANARCI</strong>), structure prediction (<strong>AlphaFold2</strong>, <strong>ABodyBuilder2</strong>, <strong>HADDOCK3</strong>), de novo sequence design (<strong>ProteinMPNN</strong>, <strong>RFdiffusion</strong>), a curated 1,142-antibody clinical germline database, CMC benchmarking against 458 clinical engineered humanized antibodies and 21 key clinical Fc records, and MHC-II immunogenicity prediction via <strong>IEDB API-based prediction</strong> EL mode (IEDB API, 27 HLA-DR alleles). See <a href="InSynBio_OurTech.html" style="color:var(--primary);font-weight:600;">Our Tech</a> for full details.</p>
+          <p class="faq-answer">Our AbEngineCore platform integrates: deep-learning antibody numbering (<strong>ANARCI</strong>), structure prediction (<strong>AlphaFold2</strong>, <strong>ABodyBuilder2</strong>, <strong>HADDOCK3</strong>), de novo sequence design (<strong>ProteinMPNN</strong>, <strong>RFdiffusion</strong>), a curated 1,142-antibody clinical germline database, CMC benchmarking against AbRef-458, and MHC-II immunogenicity prediction via <strong>IEDB API-based prediction</strong> EL mode (IEDB API, 27 HLA-DR alleles). See <a href="InSynBio_OurTech.html" style="color:var(--primary);font-weight:600;">Our Tech</a> for full details.</p>
         </details>
 
       </div>
@@ -707,10 +678,6 @@
   </footer>
 
   <script>
-    function trackEvent(name, props) {
-      gtag('event', name, props || {});
-    }
-
     document.documentElement.classList.add('js');
     function setNavActive() {
       var hash = window.location.hash || '';
@@ -742,31 +709,6 @@
     document.querySelectorAll('.top-header-nav a').forEach(a => {
       a.addEventListener('click', () => {
         document.querySelector('.top-header-nav').classList.remove('open');
-      });
-    });
-
-    document.querySelectorAll('.nav-dropdown .dropdown-menu a').forEach(a => {
-      a.addEventListener('click', function() {
-        const title = this.querySelector('.menu-title');
-        trackEvent('service_nav_click', {
-          page: 'home',
-          location: 'header_nav',
-          service: title ? title.textContent.trim() : this.textContent.trim()
-        });
-      });
-    });
-
-    [
-      { selector: '.hero .btn[href*="InSynBio_Antibody_Developability_Assessment_Page.html"]', cta: 'start_assessment' },
-      { selector: '.hero .btn-outline[href="#contact"]', cta: 'contact_us' },
-      { selector: 'a[href*="Request%20NDA"]', cta: 'request_nda' },
-      { selector: 'a[href*="Request%20Sample%20Report"]', cta: 'request_sample_report' }
-    ].forEach(item => {
-      document.querySelectorAll(item.selector).forEach(link => {
-        link.addEventListener('click', function() {
-          const eventName = item.cta === 'request_nda' ? 'nda_click' : item.cta === 'request_sample_report' ? 'sample_report_click' : 'hero_cta_click';
-          trackEvent(eventName, { page: 'home', cta: item.cta });
-        });
       });
     });
 
