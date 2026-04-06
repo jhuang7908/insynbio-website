@@ -3,24 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Evidence-guided vaccine and epitope design support for neoantigen, TAA, and multi-epitope programs, with practical prioritization for translational teams.">
+  <meta name="description" content="InSynBio EpiDesignCore Vaccine Design Service — neoantigen scanning, TAA heteroclitic design, multi-epitope mRNA assembly, and pMHC-TCR peptide design backed by clinical evidence knowledge bases.">
   <meta name="keywords" content="vaccine design, neoantigen, heteroclitic design, multi-epitope mRNA, pMHC, TCR, cancer vaccine, InSynBio, AI drug design">
   <meta name="robots" content="index, follow">
   <meta name="robots" content="noai, noimageai">
   <meta name="AI-Training" content="opt-out">
   <link rel="canonical" href="https://www.insynbio.com/vaccine_design.html">
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-F0S2HLBZ0B"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-F0S2HLBZ0B');
-  </script>
-  <meta property="og:title" content="Vaccine and Epitope Design Support | InSynBio">
-  <meta property="og:description" content="Evidence-guided vaccine and epitope design support for neoantigen, TAA, and multi-epitope programs, with practical prioritization for translational teams.">
-  <meta property="twitter:title" content="Vaccine and Epitope Design Support | InSynBio">
-  <meta property="twitter:description" content="Evidence-guided vaccine and epitope design support for neoantigen, TAA, and multi-epitope programs, with practical prioritization for translational teams.">
-  <title>Vaccine and Epitope Design Support | InSynBio</title>
+  <title>Vaccine Design Service | InSynBio — AI for Life Sciences</title>
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -35,7 +24,7 @@
     .mobile-menu-btn { display: none; background: none; border: none; padding: 6px; cursor: pointer; color: var(--text); flex-shrink: 0; }
     .nav-close-btn { display: none; }
     .top-header .brand { font-family: 'Cormorant Garamond', serif; font-weight: 700; font-size: 26px; letter-spacing: -0.03em; display: flex; align-items: center; }
-    .top-header .brand a { text-decoration: none; color: inherit; display: flex; align-items: center; gap: 10px; white-space: nowrap; flex-shrink: 0; }
+    .top-header .brand a { text-decoration: none; color: inherit; display: flex; align-items: center; gap: 10px; }
     .top-header .slogan { font-size: 13px; color: var(--text-muted); padding-left: 14px; border-left: 1px solid var(--border); white-space: nowrap; font-weight: 500; letter-spacing: 0.02em; }
     .top-header-nav { display: flex; align-items: center; gap: 6px; flex: 1; justify-content: center; }
     .top-header-nav a { padding: 8px 16px; font-size: 14px; color: var(--text-muted); text-decoration: none; border-radius: 20px; transition: all 0.2s; font-weight: 500; }
@@ -78,21 +67,6 @@
     .mission-block p { margin:0; font-size:17px; line-height:1.7; color:#111827; position:relative; z-index:1; }
     .mission-block p + p { margin-top:16px; }
     .disclaimer { font-size:14px; color:#92400e; font-style:italic; margin-top:16px; padding:16px 20px; background:#fffbeb; border-left:4px solid #f59e0b; border-radius:0 8px 8px 0; }
-    .trust-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:16px; margin:24px 0 36px; }
-    .trust-card { background:linear-gradient(160deg,#ffffff 0%,#f5fbfa 100%); border:1px solid rgba(13,148,136,0.12); border-radius:16px; padding:22px; box-shadow:0 12px 28px -24px rgba(13,148,136,0.24); }
-    .trust-card .eyebrow { display:block; margin-bottom:8px; font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; color:var(--primary); }
-    .trust-card h3 { margin:0 0 8px; font-size:18px; color:#111827; letter-spacing:-0.01em; }
-    .trust-card p { margin:0; font-size:14px; line-height:1.6; color:#5b6472; }
-    .form-intro { display:grid; grid-template-columns:minmax(0,1.1fr) minmax(260px,0.9fr); gap:18px; margin-bottom:24px; }
-    .form-panel { background:linear-gradient(155deg,#f9fffe 0%,#f3fbf9 100%); border:1px solid rgba(13,148,136,0.12); border-radius:16px; padding:22px; }
-    .form-panel h3 { margin:0 0 8px; font-size:18px; color:#111827; }
-    .form-panel p { margin:0; font-size:14px; line-height:1.6; color:#5b6472; }
-    .form-panel ul { margin:12px 0 0; padding-left:18px; }
-    .form-panel li { margin:0 0 8px; font-size:14px; line-height:1.55; color:#4b5563; }
-    .form-status { display:none; margin-top:18px; padding:14px 16px; border-radius:12px; font-size:14px; line-height:1.5; }
-    .form-status.is-visible { display:block; }
-    .form-status.success { background:#ecfdf5; color:#166534; border:1px solid #bbf7d0; }
-    .form-status.error { background:#fef2f2; color:#991b1b; border:1px solid #fecaca; }
 
     /* lib-grid / lib-card */
     .lib-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 16px; margin: 28px 0; }
@@ -166,27 +140,18 @@
     .pill-link-blue:hover { background:rgba(59,130,246,0.14); }
 
     /* Responsive */
-    @media (max-width: 1024px) {
-      .sidebar { width: 240px; }
-      .main { padding: 40px 32px; }
-    }
     @media (max-width: 900px) {
       .top-header { flex-wrap:wrap; padding:12px 16px; gap:10px; }
       .top-header .slogan { display:none !important; }
       .page-wrap { flex-direction:column; }
-      .sidebar { width:100%; height:auto; position:relative; border-right:none; border-bottom:1px solid #e0e0e0; padding:16px; top: 0; }
-      .sidebar h3 { margin: 0 12px 12px; }
-      .sidebar nav { display:flex; flex-wrap:wrap; gap:8px; padding: 0 12px; }
-      .sidebar nav a { display:inline-flex; padding:8px 12px; border-radius:6px; margin-bottom: 0; font-size: 14px; border: 1px solid var(--border); }
-      .sidebar nav a.active { border-color: var(--primary); }
-      .main { padding:32px 20px 64px; }
+      .sidebar { width:100%; height:auto; position:relative; border-right:none; border-bottom:1px solid #e0e0e0; padding:16px; }
+      .sidebar nav { display:flex; flex-wrap:wrap; gap:8px; }
+      .sidebar nav a { display:inline-flex; padding:8px 12px; border-radius:6px; }
+      .main { padding:32px 24px 64px; }
       .mission-block { padding:24px; }
-      .trust-grid, .form-intro { grid-template-columns:1fr; }
       .lib-grid { grid-template-columns:1fr 1fr; gap:12px; }
       .flow-strip { gap:8px; }
       .flow-step:not(:last-child)::after { display:none; }
-      .main h1 { font-size: 36px; }
-      .main h2 { font-size: 28px; margin: 40px 0 20px; }
     }
     @media (max-width: 768px) {
       .mobile-menu-btn { display:block; }
@@ -197,24 +162,6 @@
       .nav-close-btn { display:block; position:absolute; top:16px; right:20px; background:none; border:none; font-size:32px; color:var(--text); cursor:pointer; line-height:1; padding:4px 8px; }
       body { padding-top:52px; }
       .lib-grid { grid-template-columns:1fr; }
-      .form-section { padding: 24px; }
-      .form-row { gap: 16px; }
-    }
-
-    /* Footer Sitemap */
-    .footer-sitemap { background: #f9fafb; border-top: 1px solid #e5e7eb; padding: 60px 32px 40px; }
-    .sitemap-grid { max-width: 1140px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; text-align: left; }
-    .sitemap-col h4 { font-size: 14px; font-weight: 700; color: #111827; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 20px; }
-    .sitemap-col ul { list-style: none; padding: 0; margin: 0; }
-    .sitemap-col ul li { margin-bottom: 12px; }
-    .sitemap-col ul li a { color: #4b5563; text-decoration: none; font-size: 14px; transition: color 0.2s; }
-    .sitemap-col ul li a:hover { color: var(--primary); }
-    @media (max-width: 768px) {
-      .footer-sitemap { padding: 40px 24px; }
-      .sitemap-grid { grid-template-columns: 1fr 1fr; gap: 30px; }
-    }
-    @media (max-width: 480px) {
-      .sitemap-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -250,7 +197,11 @@
       <div class="dropdown-menu">
         <a href="InSynBio_Antibody_Developability_Assessment_Page.html">
           <span class="menu-title">Antibody</span>
-          <span class="menu-desc">Structure-based Developability</span>
+          <span class="menu-desc">Structure-based Development</span>
+        </a>
+        <a href="InSynBio_ADC_Design_Page.html">
+          <span class="menu-title">ADC Design</span>
+          <span class="menu-desc">Smart Antibody-Drug Conjugates</span>
         </a>
         <a href="InSynBio_CART_Design_Page.html">
           <span class="menu-title">CAR-T</span>
@@ -259,10 +210,6 @@
         <a href="InSynBio_Bispecific_Antibody_Design_Page.html">
           <span class="menu-title">Bispecific</span>
           <span class="menu-desc">Multispecific Engineering</span>
-        </a>
-        <a href="immunogenicity_study.html">
-          <span class="menu-title">Immunogenicity</span>
-          <span class="menu-desc">ADA Prediction &amp; Reference DB</span>
         </a>
         <a href="vaccine_design.html" style="background:rgba(13,148,136,0.06);">
           <span class="menu-title" style="color:var(--primary);">Vaccine Design</span>
@@ -321,28 +268,11 @@
     </div>
 
     <h1>Vaccine Design Service</h1>
-    <p class="subtitle">Decision-ready vaccine design support spanning neoantigen discovery, heteroclitic engineering, mRNA assembly, and pMHC-TCR optimization.</p>
+    <p class="subtitle">EpiDesignCore — From sequence to synthesis-ready vaccine construct, backed by clinical evidence.</p>
 
     <div class="mission-block">
-      <p><strong>Expert computational vaccine design from target sequence to deliverable construct.</strong> Our EpiDesignCore platform covers neoantigen scanning, heteroclitic TAA peptide engineering, multi-epitope mRNA assembly, and pMHC-TCR-guided peptide optimization — all grounded in curated clinical knowledge bases with traceable literature sources.</p>
-      <p style="font-size:15px;">We deliver ranked epitope shortlists, optimized peptide sequences, annotated constructs, and evidence-cited rationale reports for teams deciding what to advance next. <a href="#submit" style="color:var(--primary);font-weight:600;">Start a project →</a></p>
-    </div>
-    <div class="trust-grid">
-      <div class="trust-card">
-        <span class="eyebrow">Best For</span>
-        <h3>Programs Prioritizing Antigens And Epitopes</h3>
-        <p>Use this service when you need a clearer recommendation on neoantigens, shared TAAs, or translational vaccine construct strategy.</p>
-      </div>
-      <div class="trust-card">
-        <span class="eyebrow">What You Receive</span>
-        <h3>Evidence-Backed Design Output</h3>
-        <p>Expect ranked epitope candidates, construct guidance, and rationale that can support internal review or CRO handoff.</p>
-      </div>
-      <div class="trust-card">
-        <span class="eyebrow">How To Start</span>
-        <h3>Context Before Full Data Upload</h3>
-        <p>You can begin with disease category, target antigen, and platform intent, then add mutation lists or HLA detail as the project progresses.</p>
-      </div>
+      <p><strong>Expert computational vaccine design from target sequence to deliverable construct.</strong> Our EpiDesignCore platform covers the full spectrum: neoantigen scanning, heteroclitic TAA peptide engineering, multi-epitope mRNA assembly, and pMHC-TCR-guided peptide optimization — all grounded in six curated clinical knowledge bases with traceable literature sources.</p>
+      <p style="font-size:15px;">We deliver ranked epitope shortlists, optimized peptide sequences, annotated mRNA constructs, and evidence-cited rationale reports. All deliverables are expert-reviewed, typically within 3–5 business days. <a href="#submit" style="color:var(--primary);font-weight:600;">Start a project →</a></p>
     </div>
 
     <p class="disclaimer">Disclaimer: InSynBio EpiDesignCore analyses are computational and for research reference only. All vaccine candidates require regulatory review and experimental validation before clinical use.</p>
@@ -531,29 +461,13 @@
     </div>
 
     <!-- SUBMIT INQUIRY -->
-    <h2 id="submit"><span class="h2-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg></span>Start Your Inquiry</h2>
-    <p>Start with disease area, target antigen, and vaccine goal. Detailed mutation or HLA data can be added immediately or after follow-up.</p>
+    <h2 id="submit"><span class="h2-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg></span>Submit Inquiry</h2>
+    <p>Tell us about your target antigen, disease indication, and vaccine goals. We will provide a tailored EpiDesignCore proposal within 1–2 business days.</p>
 
     <div class="form-section">
       <form id="inquiry-form" action="https://formspree.io/f/mnjblezr" method="POST">
         <input type="hidden" name="_subject" value="InSynBio Vaccine Design Inquiry">
         <input type="hidden" name="_next" value="https://insynbio.com/thanks.html">
-        <input type="hidden" name="source_page" value="vaccine_design.html">
-
-        <div class="form-intro">
-          <div class="form-panel">
-            <h3>What to submit first</h3>
-            <p>Tell us the disease category, antigen or mutation of interest, and which module you need: neoantigen, heteroclitic design, mRNA assembly, or the full pipeline.</p>
-          </div>
-          <div class="form-panel">
-            <h3>Typical output</h3>
-            <ul>
-              <li>Ranked epitope or peptide candidates</li>
-              <li>Construct and delivery platform guidance</li>
-              <li>Evidence-backed rationale for next steps</li>
-            </ul>
-          </div>
-        </div>
 
         <h3 style="margin-top:0;margin-bottom:20px;">Project Details</h3>
         <div class="form-row">
@@ -613,12 +527,12 @@
         <h3 style="margin-top:24px;margin-bottom:20px;">Contact Information</h3>
         <div class="form-row">
           <div class="form-group">
-            <label for="fname">First Name</label>
-            <input type="text" id="fname" name="fname">
+            <label for="fname">First Name *</label>
+            <input type="text" id="fname" name="fname" required>
           </div>
           <div class="form-group">
-            <label for="lname">Last Name</label>
-            <input type="text" id="lname" name="lname">
+            <label for="lname">Last Name *</label>
+            <input type="text" id="lname" name="lname" required>
           </div>
         </div>
         <div class="form-row">
@@ -639,7 +553,6 @@
             </div>
           </div>
         </div>
-        <div id="form-status" class="form-status" aria-live="polite"></div>
         <div style="margin-top:24px;">
           <button type="submit" class="btn">Submit Inquiry</button>
         </div>
@@ -648,73 +561,20 @@
 
     <!-- CONTACT -->
     <h2 id="contact"><span class="h2-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></span>Contact</h2>
-    <p>For project inquiries, submit the form above or email us directly for an NDA or early discussion:</p>
+    <p>For project inquiries, submit the form above or email us directly:</p>
     <p style="margin:16px 0;"><a href="mailto:contact@insynbio.com" style="font-size:18px;font-weight:600;color:var(--primary);">contact@insynbio.com</a></p>
     <p style="color:var(--text-muted);font-size:14px;">We typically respond within 1–2 business days upon receiving your inquiry.</p>
 
   </main>
 </div>
 
-<section class="footer-sitemap">
-  <div class="sitemap-grid">
-    <div class="sitemap-col">
-      <h4>Platform</h4>
-      <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="index.html#about">About Us</a></li>
-        <li><a href="InSynBio_OurTech.html">Our Technology</a></li>
-        <li><a href="index.html#case-studies">Case Studies</a></li>
-        <li><a href="index.html#faq">FAQ</a></li>
-      </ul>
-    </div>
-    <div class="sitemap-col">
-      <h4>Antibody Services</h4>
-      <ul>
-        <li><a href="InSynBio_Antibody_Developability_Assessment_Page.html">Developability Assessment</a></li>
-        <li><a href="InSynBio_Bispecific_Antibody_Design_Page.html">Bispecific Engineering</a></li>
-        <li><a href="immunogenicity_study.html">Immunogenicity Research</a></li>
-        <li><a href="vaccine_design.html">Vaccine & Epitope Design</a></li>
-      </ul>
-    </div>
-    <div class="sitemap-col">
-      <h4>Cell Therapy</h4>
-      <ul>
-        <li><a href="InSynBio_CART_Design_Page.html">Smart CAR-T Design</a></li>
-        <li><a href="case_malaria_carm_design.html">CAR-Macrophage Case</a></li>
-      </ul>
-    </div>
-    <div class="sitemap-col">
-      <h4>Contact</h4>
-      <ul>
-        <li><a href="#contact">Contact Us</a></li>
-        <li><a href="mailto:contact@insynbio.com">contact@insynbio.com</a></li>
-      </ul>
-    </div>
-  </div>
-</section>
-
 <footer class="site-footer">
   <p style="margin:0;">© 2026 InSynBio · <a href="https://insynbio.com">insynbio.com</a> · <a href="mailto:contact@insynbio.com">contact@insynbio.com</a></p>
 </footer>
 
 <script>
-function trackEvent(name, props) {
-  gtag('event', name, props || {});
-}
-
 document.querySelectorAll('.top-header-nav a').forEach(a => {
   a.addEventListener('click', () => { document.querySelector('.top-header-nav').classList.remove('open'); });
-});
-
-document.querySelectorAll('.nav-dropdown .dropdown-menu a').forEach(a => {
-  a.addEventListener('click', function() {
-    const title = this.querySelector('.menu-title');
-    trackEvent('service_nav_click', {
-      page: 'vaccine_design',
-      location: 'header_nav',
-      service: title ? title.textContent.trim() : this.textContent.trim()
-    });
-  });
 });
 
 document.querySelectorAll('.nav-link').forEach(a => {
@@ -751,31 +611,18 @@ fetch('vaccine_kb_data.json').then(r => r.json()).then(data => {
 // Form submission
 const form = document.getElementById('inquiry-form');
 if(form) {
-  let formStarted = false;
-  const status = document.getElementById('form-status');
-  const setStatus = (message, type) => {
-    if(!status) return;
-    status.textContent = message;
-    status.className = 'form-status is-visible ' + type;
-  };
-  form.addEventListener('focusin', function() {
-    if (formStarted) return;
-    formStarted = true;
-    trackEvent('form_start', { page: 'vaccine_design', form: 'inquiry_form' });
-  });
   form.addEventListener('submit', function(e) {
     e.preventDefault();
     const btn = form.querySelector('button[type="submit"]');
     const orig = btn.innerText;
-    btn.disabled = true; btn.innerText = 'Submitting...';
-    setStatus('Submitting your inquiry...', 'success');
+    btn.disabled = true; btn.innerText = 'Submitting…';
     fetch(form.action, {
       method: 'POST', body: new FormData(form),
       headers: { 'Accept': 'application/json' }
     }).then(r => {
-      if(r.ok) { trackEvent('form_submit_success', { page: 'vaccine_design', form: 'inquiry_form' }); setStatus('Inquiry received. Redirecting to the confirmation page...', 'success'); window.location.href = 'thanks.html'; }
-      else { setStatus('There was a problem submitting your form. Please email contact@insynbio.com if the issue continues.', 'error'); btn.disabled=false; btn.innerText=orig; }
-    }).catch(() => { setStatus('There was a problem submitting your form. Please email contact@insynbio.com if the issue continues.', 'error'); btn.disabled=false; btn.innerText=orig; });
+      if(r.ok) { window.location.href = 'thanks.html'; }
+      else { alert('Oops! There was a problem submitting your form.'); btn.disabled=false; btn.innerText=orig; }
+    }).catch(() => { alert('Oops! There was a problem submitting your form.'); btn.disabled=false; btn.innerText=orig; });
   });
 }
 </script>

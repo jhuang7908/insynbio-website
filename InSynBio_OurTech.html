@@ -13,7 +13,6 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Outfit:wght@500;700&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="css/insynbio-mobile-nav.css">
     <style>
         :root {
             --primary: #0d9488;
@@ -64,8 +63,8 @@
 
     /* Global Header (Verified Alignment) */
     .top-header { display: flex; align-items: center; justify-content: space-between; padding: 16px 32px; background: rgba(255, 255, 255, 0.9); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(0,0,0,0.05); flex-wrap: wrap; gap: 12px; position: sticky; top: 0; z-index: 1000; }
-    .top-header .brand { font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 700; font-size: 26px; letter-spacing: -0.03em; display: flex; align-items: center; flex-wrap: nowrap; min-width: max-content; }
-    .top-header .brand a { text-decoration: none; color: inherit; display: flex; align-items: center; gap: 10px; white-space: nowrap; flex-shrink: 0; }
+    .top-header .brand { font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 700; font-size: 26px; letter-spacing: -0.03em; display: flex; align-items: center; }
+    .top-header .brand a { text-decoration: none; color: inherit; display: flex; align-items: center; gap: 10px; }
     .top-header .brand .syn { color: var(--primary); font-style: italic; }
     .top-header .slogan { font-size: 13px; color: var(--text-muted); margin-left: 0; padding-left: 14px; border-left: 1px solid var(--border); font-family: 'Inter', sans-serif; white-space: nowrap; font-weight: 500; letter-spacing: 0.02em; }
     .top-header-nav { display: flex; align-items: center; gap: 6px; flex: 1; justify-content: center; }
@@ -319,8 +318,11 @@
         }
 
         @media (max-width: 600px) {
-            .top-header { padding: 12px 16px; }
-            .top-header .brand { min-width: 0; }
+            .top-header { padding: 12px 16px; flex-wrap: wrap; gap: 10px; }
+            .top-header .brand { flex: 1 1 auto; min-width: 0; display: flex; align-items: center; gap: 8px; }
+            .top-header .slogan { font-size: 12px; padding-left: 10px; border-left: 1px solid var(--border); white-space: nowrap; }
+            .top-header-nav { order: 3; width: 100%; flex: 1 1 100%; justify-content: flex-start; flex-wrap: wrap; gap: 4px; overflow-x: auto; padding-bottom: 4px; -webkit-overflow-scrolling: touch; border-top: 1px solid var(--border); padding-top: 8px; margin-top: 2px; }
+            .top-header-nav a { flex-shrink: 0; font-size: 13px; padding: 6px 10px; }
             .container { padding: 0 16px; }
             .section { padding: 48px 0; }
             h1, h2 { font-size: 28px; }
@@ -336,7 +338,7 @@
 
 <body>
 
-    <header class="top-header insynbio-mnav-header">
+    <header class="top-header">
     <div class="brand">
       <a href="index.html" style="display: flex; align-items: center; gap: 10px; text-decoration: none; color: inherit;">
         <svg width="34" height="28" viewBox="0 0 32 30" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink:0;">
@@ -354,19 +356,19 @@
       </a>
       <span class="slogan">AI for Life Sciences</span>
     </div>
-    <button type="button" class="mobile-menu-btn" aria-label="Open menu" onclick="document.querySelector('.top-header-nav').classList.add('open')">
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
-    </button>
     <nav class="top-header-nav">
-      <button type="button" class="nav-close-btn" aria-label="Close menu" onclick="this.parentElement.classList.remove('open')">&times;</button>
       <a href="index.html">Home</a>
       <a href="index.html#about">About Us</a>
       <div class="nav-dropdown" tabindex="0">
-        <a href="index.html#services">Services</a>
+        <a href="index.html#services" class="active">Services</a>
         <div class="dropdown-menu">
           <a href="InSynBio_Antibody_Developability_Assessment_Page.html">
             <span class="menu-title">Antibody</span>
             <span class="menu-desc">Structure-based Development</span>
+          </a>
+          <a href="InSynBio_ADC_Design_Page.html">
+            <span class="menu-title">ADC Design</span>
+            <span class="menu-desc">Smart Antibody-Drug Conjugates</span>
           </a>
           <a href="InSynBio_CART_Design_Page.html">
             <span class="menu-title">CAR-T</span>
@@ -375,10 +377,6 @@
           <a href="InSynBio_Bispecific_Antibody_Design_Page.html">
             <span class="menu-title">Bispecific</span>
             <span class="menu-desc">Multispecific Engineering</span>
-          </a>
-          <a href="immunogenicity_study.html">
-            <span class="menu-title">Immunogenicity</span>
-            <span class="menu-desc">ADA Prediction &amp; Reference DB</span>
           </a>
           <a href="vaccine_design.html">
             <span class="menu-title">Vaccine Design</span>
@@ -439,7 +437,7 @@
                     <p class="lead-text">Defining the boundaries of next-gen biotherapeutics using clinical performance
                         as the ultimate benchmark.</p>
                     <ul class="bullet-list">
-                        <li><strong>Dataset:</strong> Trained on over 1,133+ clinical antibody sequence library, with <strong>42 clinical-stage VHH</strong> references, <strong>109 MHC-I/II epitope records</strong> (EpiDesignCore KB), and <strong>458 clinical engineered humanized antibodies (ML)</strong> for CMC calibration, including <strong>21 key clinical Fc records</strong>.</li>
+                        <li><strong>Dataset:</strong> Trained on over 1,133+ clinical-stage engineered humanized antibodies.</li>
                         <li><strong>Spectrum:</strong> Native support for IgG, VHH (Nanobodies), and Bispecific formats.
                         </li>
                         <li><strong>Benchmarking:</strong> Every design phase is compared against successful clinical

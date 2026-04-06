@@ -176,20 +176,51 @@
     <a href="index.html">In<span class="syn">Syn</span>Bio</a>
     <span class="slogan">AI for Therapeutics</span>
   </div>
-  <nav class="top-nav">
-    <a href="index.html">
-      <span class="zh">首页</span><span class="en">Home</span>
-    </a>
-    <a href="InSynBio_Antibody_Developability_Assessment_Page.html" class="active">
-      <span class="zh">服务</span><span class="en">Services</span>
-    </a>
-    <a href="InSynBio_OurTech.html">
-      <span class="zh">技术</span><span class="en">Our Tech</span>
-    </a>
-    <a href="index.html#contact">
-      <span class="zh">联系</span><span class="en">Contact</span>
-    </a>
-  </nav>
+    <nav class="top-nav">
+      <a href="index.html">
+        <span class="zh">首页</span><span class="en">Home</span>
+      </a>
+      <div class="nav-dropdown" style="position:relative;display:inline-block;">
+        <a href="InSynBio_Antibody_Developability_Assessment_Page.html" class="active" style="display:flex;align-items:center;gap:4px;">
+          <span class="zh">服务</span><span class="en">Services</span><span style="font-size:10px;opacity:0.6;">▾</span>
+        </a>
+        <div class="dropdown-menu" style="position:absolute;top:100%;left:50%;transform:translateX(-50%);min-width:220px;background:#fff;border:1px solid var(--border);border-radius:12px;box-shadow:0 10px 40px -10px rgba(0,0,0,0.12);padding:8px;z-index:100;display:none;">
+          <style>
+            .nav-dropdown:hover .dropdown-menu { display: block !important; }
+            .dropdown-menu a { display: block !important; padding: 12px 16px !important; border-radius: 8px !important; text-align: left !important; }
+            .dropdown-menu a:hover { background: var(--bg-alt) !important; }
+            .menu-title { display: block; font-weight: 600; font-size: 14px; color: var(--text); margin-bottom: 2px; }
+            .menu-desc { display: block; font-size: 12px; color: var(--text-muted); font-weight: 400; line-height: 1.4; }
+          </style>
+          <a href="InSynBio_Antibody_Developability_Assessment_Page.html">
+            <span class="menu-title">Antibody</span>
+            <span class="menu-desc">Structure-based Development</span>
+          </a>
+          <a href="InSynBio_ADC_Design_Page.html">
+            <span class="menu-title">ADC Design</span>
+            <span class="menu-desc">Smart Antibody-Drug Conjugates</span>
+          </a>
+          <a href="InSynBio_CART_Design_Page.html">
+            <span class="menu-title">CAR-T</span>
+            <span class="menu-desc">Smart CAR-T Design</span>
+          </a>
+          <a href="InSynBio_Bispecific_Antibody_Design_Page.html">
+            <span class="menu-title">Bispecific</span>
+            <span class="menu-desc">Multispecific Engineering</span>
+          </a>
+          <a href="vaccine_design.html">
+            <span class="menu-title">Vaccine Design</span>
+            <span class="menu-desc">Neoantigen · Heteroclitic · mRNA</span>
+          </a>
+        </div>
+      </div>
+      <a href="InSynBio_OurTech.html">
+        <span class="zh">技术</span><span class="en">Our Tech</span>
+      </a>
+      <a href="index.html#contact">
+        <span class="zh">联系</span><span class="en">Contact</span>
+      </a>
+    </nav>
   <div class="lang-toggle">
     <button class="active" onclick="setLang('zh')">中文</button>
     <button onclick="setLang('en')">EN</button>
