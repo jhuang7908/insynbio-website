@@ -344,6 +344,20 @@
     .meta-chip { background: rgba(255,255,255,0.85); border: 1px solid rgba(13,148,136,0.18); border-radius: 20px; padding: 5px 14px; font-size: 12px; color: var(--text-muted); }
     .meta-chip b { color: var(--primary-dark); }
 
+  
+    /* Verification status badges */
+    .vbadge { display:inline-flex;align-items:center;gap:4px;font-size:10.5px;
+      font-weight:600;padding:2px 7px;border-radius:10px;margin-left:6px;
+      vertical-align:middle;letter-spacing:0.02em; }
+    .vbadge-verified    { background:#d1fae5;color:#065f46; }
+    .vbadge-ctx         { background:#dbeafe;color:#1e40af; }
+    .vbadge-uncertain   { background:#fef3c7;color:#92400e; }
+    .vbadge-live        { background:#f3f4f6;color:#374151; }
+    .vbadge-unreachable { background:#fee2e2;color:#991b1b; }
+    .verify-note { font-size:11px;color:#6b7280;line-height:1.55;
+      margin-top:6px;padding:6px 10px;background:#f9fafb;
+      border-left:3px solid #e5e7eb;border-radius:0 4px 4px 0; }
+
   </style>
   <meta name="citation_title" content="InSynBio Clinical ADA Database: 120+ Validated Immunogenicity Records for Therapeutic Antibodies">
   <meta name="citation_author" content="InSynBio">
@@ -820,7 +834,8 @@ function openDetail(i) {
   document.getElementById('dp-name').textContent = d.name || '—';
   document.getElementById('dp-sub').innerHTML = [
     originBadge(d.origin),
-    d.genetics ? `<span style="font-size:11px;margin-left:4px;color:var(--text-muted)">${d.genetics}</span>` : ''
+    d.genetics ? `<span style="font-size:11px;margin-left:4px;color:var(--text-muted)">${d.genetics}</span>` : '',
+    verifyBadge(d),
   ].join('') + `<span style="font-size:11px;margin-left:8px;color:var(--text-muted)">${d.targets || ''}</span>`;
 
   const sections = [];
@@ -852,6 +867,7 @@ function openDetail(i) {
         ${d.citation_url ? `<div class="detail-item wide"><div class="dk">Source URL</div><div class="dv"><a class="detail-link" href="${d.citation_url}" target="_blank" onclick="event.stopPropagation()">${d.citation_url.split('?')[0]}</a></div></div>` : ''}
       </div>
       ${evidenceBoxHtml(d)}
+      ${d.verify_note ? `<div class="verify-note" style="margin-top:8px"><strong>🔬 Verification note:</strong> ${escHtml(d.verify_note)}</div>` : ''}
     `));
 
   // ── Clinical Context
@@ -971,6 +987,30 @@ function openDetail(i) {
   document.getElementById('dp-body').innerHTML = sections.join('');
   document.getElementById('detail-panel').classList.add('open');
   document.getElementById('backdrop').classList.add('open');
+}
+
+
+function verifyBadge(d) {
+  const vs = d.verify_status || '';
+  const note = d.verify_note || '';
+  if (!vs) return '';
+  let cls, icon, label;
+  if (vs === 'VERIFIED') {
+    cls = 'vbadge-verified'; icon = '✓'; label = 'Verified';
+  } else if (vs === 'VERIFIED_WITH_CONTEXT') {
+    cls = 'vbadge-ctx'; icon = '✓'; label = 'Verified (context)';
+  } else if (vs === 'UNCERTAIN') {
+    cls = 'vbadge-uncertain'; icon = '⚠'; label = 'Uncertain';
+  } else if (vs === 'SOURCE_LIVE') {
+    cls = 'vbadge-live'; icon = '○'; label = 'Source live';
+  } else if (vs === 'SOURCE_UNREACHABLE') {
+    cls = 'vbadge-unreachable'; icon = '✕'; label = 'Source unreachable';
+  } else {
+    cls = 'vbadge-live'; icon = '?'; label = vs;
+  }
+  const noteHtml = note
+    ? `<div class="verify-note"><strong>Verification note:</strong> ${escHtml(note)}</div>` : '';
+  return `<span class="vbadge ${cls}">${icon} ${label}</span>${noteHtml}`;
 }
 
 function closeDetail() {
