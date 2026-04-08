@@ -1,6 +1,6 @@
 {
  "metadata": {
-  "generated": "2026-04-02",
+  "generated": "2026-04-07",
   "total_elements": 237,
   "categories": [
    "Antigen Binder",
@@ -3003,10 +3003,10 @@
    ],
    "design_notes": "VHH single domain antibody (nanobody) — no linker/VL needed. Compact design: SP + VHH + Hinge + TM + Costim + CD3ζ. Confirm EGFRvIII specificity — VHH may cross-react with wt-EGFR depending on epitope.",
    "tier_justification": "Anti-EGFRvIII VHH CAR-T Phase I in GBM: NCT03170141, NCT01109095",
-   "length_aa": 133,
-   "source": "PDB 4KRL anti-EGFR VHH 133aa; camelid VHH crystal structure",
+   "length_aa": 124,
+   "source": "PDB 4KRL chain B (7D12 anti-EGFR VHH); expression His-tag (ALEHHHHHH) removed — 124 aa functional VHH",
    "source_method": "PDB crystal structure 4KRL VHH",
-   "sequence_origin": "[PDB crystal structure 4KRL VHH] PDB 4KRL anti-EGFR VHH 133aa; camelid VHH crystal structure",
+   "sequence_origin": "[PDB 4KRL] Anti-EGFR VHH 124 aa (His-tag removed from deposited construct); crystal Schmitz et al. Structure 2013",
    "clinical_refs": [
     "NCT01109095",
     "NCT03170141"
