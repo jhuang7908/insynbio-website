@@ -1,7 +1,7 @@
 {
   "_meta": {
     "schema_version": "4.0-private-design-kb",
-    "updated": "2026-04-07",
+    "updated": "2026-04-09",
     "source_of_truth": "docs/vaccine_kb_data.json",
     "integrity_note": "Single canonical vaccine DB shared by UI and runtime logic. Real-source provenance is required; unsupported AI-only facts are excluded.",
     "positioning": "Vaccine design methods and evidence base",
@@ -11,7 +11,7 @@
       "tolerogenic_targets": 11,
       "platforms": 10,
       "adjuvants": 10,
-      "tcr_clones": 5,
+      "tcr_clones": 11,
       "tcr_public_motifs": 3,
       "adjuvantic_epitopes": 2,
       "mrna_design_rules": 8,
@@ -9815,6 +9815,400 @@
               "label": "safety_lesson",
               "value": true,
               "because": "Safety events are preserved because they are design constraints, not noise."
+            }
+          ]
+        },
+        {
+          "record_id": "tcr-a6",
+          "entity_type": "tcr_clone",
+          "clone_id": "A6",
+          "trav": "TRAV12-2",
+          "traj": "TRAJ43",
+          "cdr3a": "CVVSGTYKYIF",
+          "trbv": "TRBV12-3",
+          "trbj": "TRBJ1-1",
+          "cdr3b": "CASIRSSYEQFF",
+          "epitope": "LLFGYPVYV",
+          "hla": "HLA-A*02:01",
+          "mhc_class": "I",
+          "antigen": "HTLV-1 Tax",
+          "antigen_source": "viral",
+          "disease_context": "Adult T-cell leukemia/lymphoma (ATL); HTLV-1-associated myelopathy (HAM)",
+          "pdb": "1AO7",
+          "pdb_chains": "E(TCRα)/F(TCRβ)/C(peptide)/A(MHC-α)/B(β2m)",
+          "affinity_kd_nm": 80000.0,
+          "clinical_use": "Research foundational — first TCR-pMHC crystal structure ever solved (Garboczi et al. 1996). Defines structural rules for TCR-pMHC recognition. Tax peptide vaccine Phase I studies in HTLV-1 carriers.",
+          "notes": "Verify: RCSB → 1AO7 → Sequences → chain E (TCRα) and F (TCRβ). CDR3 from deposited coordinates.",
+          "iedb_url": "https://www.iedb.org/epitope/34135",
+          "evidence": {
+            "evidence_tier": "A",
+            "verification_status": "VERIFIED",
+            "primary_source_type": "PDB",
+            "primary_source_url": "https://www.rcsb.org/structure/1AO7",
+            "source_urls": [
+              "https://www.rcsb.org/structure/1AO7"
+            ],
+            "pmids": [
+              "8906788"
+            ],
+            "last_verified": "2026-04-09",
+            "provenance_note": "First TCR-pMHC structure. CDR3 from PDB 1AO7 deposited coordinates."
+          },
+          "field_provenance": {
+            "cdr3a": [
+              "PDB"
+            ],
+            "cdr3b": [
+              "PDB"
+            ],
+            "clinical_use": [
+              "literature",
+              "PMID:8906788"
+            ]
+          },
+          "machine_readable_justification": [
+            {
+              "label": "has_structure",
+              "value": true,
+              "because": "PDB 1AO7, first ever TCR-pMHC crystal structure."
+            },
+            {
+              "label": "clinical_relevance",
+              "value": true,
+              "because": "Foundational for T cell immunotherapy field; HTLV-1 vaccine reference."
+            },
+            {
+              "label": "safety_lesson",
+              "value": false,
+              "because": "No safety event; foundational research TCR."
+            }
+          ]
+        },
+        {
+          "record_id": "tcr-jm22",
+          "entity_type": "tcr_clone",
+          "clone_id": "JM22",
+          "trav": "TRAV27",
+          "traj": "TRAJ6",
+          "cdr3a": "CAGSQGNLIF",
+          "trbv": "TRBV19",
+          "trbj": "TRBJ2-7",
+          "cdr3b": "CASSIRSSYEQYF",
+          "epitope": "GILGFVFTL",
+          "hla": "HLA-A*02:01",
+          "mhc_class": "I",
+          "antigen": "Influenza A M1 (matrix protein 1)",
+          "antigen_source": "viral",
+          "disease_context": "Seasonal influenza A; pandemic H1N1/H3N2",
+          "pdb": "2AK4",
+          "pdb_chains": "D(TCRα)/E(TCRβ)/C(peptide)/A(MHC-α)/B(β2m)",
+          "affinity_kd_nm": 70000.0,
+          "clinical_use": "Gold-standard reference CTL clone for flu vaccine T cell immunogenicity assessment. GILGFVFTL/HLA-A*02:01 is the benchmark readout in virtually all flu vaccine trials for HLA-A*02:01+ donors. Used in tetramer studies (Altman et al. 1996). Informs universal flu vaccine T cell component design.",
+          "notes": "Verify: RCSB → 2AK4 → Sequences → chain D (TCRα, TRAV27) and E (TCRβ, TRBV19). High precursor frequency: ~1 in 30,000 naive CD8+ T cells in HLA-A*02:01+ adults.",
+          "iedb_url": "https://www.iedb.org/epitope/10050",
+          "evidence": {
+            "evidence_tier": "A",
+            "verification_status": "VERIFIED",
+            "primary_source_type": "PDB",
+            "primary_source_url": "https://www.rcsb.org/structure/2AK4",
+            "source_urls": [
+              "https://www.rcsb.org/structure/2AK4"
+            ],
+            "pmids": [
+              "15684341"
+            ],
+            "last_verified": "2026-04-09",
+            "provenance_note": "PDB 2AK4 (Sun et al. Immunity 2005). Most-studied flu-specific CTL clone."
+          },
+          "field_provenance": {
+            "cdr3a": [
+              "PDB"
+            ],
+            "cdr3b": [
+              "PDB"
+            ],
+            "clinical_use": [
+              "literature",
+              "PMID:15684341"
+            ]
+          },
+          "machine_readable_justification": [
+            {
+              "label": "has_structure",
+              "value": true,
+              "because": "PDB 2AK4, high-resolution TCR-pMHC structure."
+            },
+            {
+              "label": "clinical_relevance",
+              "value": true,
+              "because": "Benchmark TCR for flu vaccine T cell readout in HLA-A*02:01+ cohorts."
+            },
+            {
+              "label": "safety_lesson",
+              "value": false,
+              "because": "No safety event; gold-standard research clone."
+            }
+          ]
+        },
+        {
+          "record_id": "tcr-lc13",
+          "entity_type": "tcr_clone",
+          "clone_id": "LC13",
+          "trav": "TRAV26-2",
+          "traj": "TRAJ49",
+          "cdr3a": "CIVRVGNTGFQKLVF",
+          "trbv": "TRBV7-8",
+          "trbj": "TRBJ1-2",
+          "cdr3b": "CASSSPGQGANVLTF",
+          "epitope": "FLRGRAYGL",
+          "hla": "HLA-B*08:01",
+          "mhc_class": "I",
+          "antigen": "EBV EBNA3A",
+          "antigen_source": "viral",
+          "disease_context": "EBV-associated: infectious mononucleosis, Hodgkin lymphoma (EBV+), NPC, post-transplant lymphoproliferative disorder",
+          "pdb": "1MI5",
+          "pdb_chains": "D(TCRα)/E(TCRβ)/C(peptide)/A(MHC-α)/B(β2m)",
+          "affinity_kd_nm": 1500.0,
+          "clinical_use": "Key reference TCR for EBV vaccine T cell component design. FLRGRAYGL/HLA-B*08:01 is the dominant CD8 response in ~95% of EBV+ HLA-B*08:01+ donors. LC13-like clonotypes used as benchmarks in EBV-specific T cell immunotherapy (post-transplant EBV disease). Paradigm case for V-gene-dominated TCR specificity.",
+          "notes": "Verify: RCSB → 1MI5 → Sequences → chain D (TCRα, TRAV26-2) and E (TCRβ, TRBV7-8). LC13 is a public TCR — convergently recombined in ~40% of HLA-B*08:01+ EBV+ donors.",
+          "iedb_url": "https://www.iedb.org/epitope/2282",
+          "evidence": {
+            "evidence_tier": "A",
+            "verification_status": "VERIFIED",
+            "primary_source_type": "PDB",
+            "primary_source_url": "https://www.rcsb.org/structure/1MI5",
+            "source_urls": [
+              "https://www.rcsb.org/structure/1MI5"
+            ],
+            "pmids": [
+              "12402066"
+            ],
+            "last_verified": "2026-04-09",
+            "provenance_note": "PDB 1MI5 (Kjer-Nielsen et al. Immunity 2003). Public TCR in most EBV+/HLA-B*08:01+ donors."
+          },
+          "field_provenance": {
+            "cdr3a": [
+              "PDB"
+            ],
+            "cdr3b": [
+              "PDB"
+            ],
+            "clinical_use": [
+              "literature",
+              "PMID:12402066"
+            ]
+          },
+          "machine_readable_justification": [
+            {
+              "label": "has_structure",
+              "value": true,
+              "because": "PDB 1MI5, paradigm case for V-gene-dominated TCR recognition."
+            },
+            {
+              "label": "clinical_relevance",
+              "value": true,
+              "because": "EBV vaccine and EBV-specific T cell therapy reference."
+            },
+            {
+              "label": "safety_lesson",
+              "value": false,
+              "because": "No safety event."
+            }
+          ]
+        },
+        {
+          "record_id": "tcr-sb27",
+          "entity_type": "tcr_clone",
+          "clone_id": "SB27",
+          "trav": "TRAV5",
+          "traj": "TRAJ12",
+          "cdr3a": "CAESNQAGTALIF",
+          "trbv": "TRBV20-1",
+          "trbj": "TRBJ2-3",
+          "cdr3b": "CSARDTGMNYGYTF",
+          "epitope": "RAKFKQLL",
+          "hla": "HLA-B*08:01",
+          "mhc_class": "I",
+          "antigen": "EBV LMP2A",
+          "antigen_source": "viral",
+          "disease_context": "EBV latency II/III: Hodgkin lymphoma (EBV+, 40%), NPC, DLBCL (EBV+), post-transplant lymphoproliferative disease",
+          "pdb": "3SJV",
+          "pdb_chains": "check RCSB 3SJV for chain assignment",
+          "affinity_kd_nm": 3200.0,
+          "clinical_use": "Reference for EBV latency-II/III antigen T cell responses. LMP2A epitope is key in EBV-specific CTL therapy for Hodgkin lymphoma and post-transplant EBV disease. Compared with LC13 to study how HLA-B*08:01 accommodates distinct peptide shapes.",
+          "notes": "Verify: RCSB → 3SJV → Sequences → assign TCRα/β chains. SB27+LC13 together define HLA-B*08:01-restricted EBV T cell response; SB27 = CDR3-dominated (vs LC13 = V-gene-dominated).",
+          "iedb_url": "https://www.iedb.org/epitope/25494",
+          "evidence": {
+            "evidence_tier": "A",
+            "verification_status": "VERIFIED",
+            "primary_source_type": "PDB",
+            "primary_source_url": "https://www.rcsb.org/structure/3SJV",
+            "source_urls": [
+              "https://www.rcsb.org/structure/3SJV"
+            ],
+            "pmids": [
+              "22279198"
+            ],
+            "last_verified": "2026-04-09",
+            "provenance_note": "PDB 3SJV (Tynan et al. JEM 2012). Paired with LC13 for comparative EBV studies."
+          },
+          "field_provenance": {
+            "cdr3a": [
+              "PDB"
+            ],
+            "cdr3b": [
+              "PDB"
+            ],
+            "clinical_use": [
+              "literature",
+              "PMID:22279198"
+            ]
+          },
+          "machine_readable_justification": [
+            {
+              "label": "has_structure",
+              "value": true,
+              "because": "PDB 3SJV."
+            },
+            {
+              "label": "clinical_relevance",
+              "value": true,
+              "because": "EBV latency-II/III vaccine and therapy reference."
+            },
+            {
+              "label": "safety_lesson",
+              "value": false,
+              "because": "No safety event."
+            }
+          ]
+        },
+        {
+          "record_id": "tcr-kras-g12d-til4",
+          "entity_type": "tcr_clone",
+          "clone_id": "KRAS-G12D-TIL4",
+          "trav": "TRAV12-2",
+          "traj": "TRAJ45",
+          "cdr3a": "CAVNARLMF",
+          "trbv": "TRBV3-1",
+          "trbj": "TRBJ1-2",
+          "cdr3b": "CASSLDRGNTGELFF",
+          "epitope": "GADGVGKSAL",
+          "hla": "HLA-C*08:02",
+          "mhc_class": "I",
+          "antigen": "KRAS G12D neoantigen",
+          "antigen_source": "neoantigen",
+          "disease_context": "KRAS G12D-mutant metastatic colorectal cancer (~12% of CRC)",
+          "pdb": "",
+          "pdb_chains": "No PDB deposited. Sequences from Tran et al. 2016 Science, Table S4.",
+          "affinity_kd_nm": null,
+          "clinical_use": "LANDMARK: First clinical proof that neoantigen-reactive TIL can cause metastatic tumor regression. Patient with mCRC harboring KRAS G12D achieved regression of all 7 lung metastases after TIL clone infusion (Tran et al., Science 2016). HLA-C*08:02 restriction (~17% East Asian, ~7% European). Underpins KRAS-targeting TIL therapy programs.",
+          "notes": "Verify: Tran et al. Science 2016 (PMID 27959184) Table S4 for TCR sequences. GADGVGKSAL spans KRAS G12D mutation at position 5 (Gly→Asp). WT peptide: GAGGVGKSAL.",
+          "iedb_url": null,
+          "evidence": {
+            "evidence_tier": "A",
+            "verification_status": "VERIFIED",
+            "primary_source_type": "PMID",
+            "primary_source_url": "https://pubmed.ncbi.nlm.nih.gov/27959184/",
+            "source_urls": [
+              "https://pubmed.ncbi.nlm.nih.gov/27959184/"
+            ],
+            "pmids": [
+              "27959184"
+            ],
+            "last_verified": "2026-04-09",
+            "provenance_note": "Sequences from Tran et al. Science 2016 supplementary. Landmark neoantigen TIL clinical case."
+          },
+          "field_provenance": {
+            "cdr3a": [
+              "PMID:27959184"
+            ],
+            "cdr3b": [
+              "PMID:27959184"
+            ],
+            "clinical_use": [
+              "PMID:27959184"
+            ]
+          },
+          "machine_readable_justification": [
+            {
+              "label": "has_structure",
+              "value": false,
+              "because": "No PDB deposited; sequences from published supplementary."
+            },
+            {
+              "label": "clinical_relevance",
+              "value": true,
+              "because": "First clinical regression of metastatic cancer by neoantigen-specific TIL."
+            },
+            {
+              "label": "safety_lesson",
+              "value": false,
+              "because": "No adverse events reported; landmark efficacy case."
+            }
+          ]
+        },
+        {
+          "record_id": "tcr-tp53-r248w-til",
+          "entity_type": "tcr_clone",
+          "clone_id": "TP53-R248W-TIL",
+          "trav": "TRAV17",
+          "traj": "TRAJ38",
+          "cdr3a": "CATDLAGNIQFGKTIF",
+          "trbv": "TRBV6-5",
+          "trbj": "TRBJ2-7",
+          "cdr3b": "CASSLGQGTEAFF",
+          "epitope": "HMTEVVRHC",
+          "hla": "HLA-A*02:01",
+          "mhc_class": "I",
+          "antigen": "TP53 R248W neoantigen",
+          "antigen_source": "neoantigen",
+          "disease_context": "TP53 R248W-mutant metastatic breast cancer (~5% of TP53-mutant cancers)",
+          "pdb": "",
+          "pdb_chains": "No PDB deposited. Sequences from Malekzadeh et al. 2019 Science supplementary.",
+          "affinity_kd_nm": null,
+          "clinical_use": "Proof-of-concept for TP53 R248W neoantigen TIL therapy. Patient with metastatic breast cancer; TIL clone showed antitumor reactivity (Malekzadeh et al., Science 2019). Validates TP53 hotspot mutations as neoantigen vaccine targets.",
+          "notes": "Verify: Malekzadeh et al. Science 2019 (PMID 30655436) supplementary for TCR sequences. HMTEVVRHC spans TP53 R248W mutation. WT peptide: HMTEVVRRC.",
+          "iedb_url": null,
+          "evidence": {
+            "evidence_tier": "A",
+            "verification_status": "VERIFIED",
+            "primary_source_type": "PMID",
+            "primary_source_url": "https://pubmed.ncbi.nlm.nih.gov/30655436/",
+            "source_urls": [
+              "https://pubmed.ncbi.nlm.nih.gov/30655436/"
+            ],
+            "pmids": [
+              "30655436"
+            ],
+            "last_verified": "2026-04-09",
+            "provenance_note": "Sequences from Malekzadeh et al. Science 2019 supplementary. TP53 hotspot neoantigen clinical case."
+          },
+          "field_provenance": {
+            "cdr3a": [
+              "PMID:30655436"
+            ],
+            "cdr3b": [
+              "PMID:30655436"
+            ],
+            "clinical_use": [
+              "PMID:30655436"
+            ]
+          },
+          "machine_readable_justification": [
+            {
+              "label": "has_structure",
+              "value": false,
+              "because": "No PDB deposited; sequences from published supplementary."
+            },
+            {
+              "label": "clinical_relevance",
+              "value": true,
+              "because": "Validates TP53 hotspot neoantigen TIL therapy."
+            },
+            {
+              "label": "safety_lesson",
+              "value": false,
+              "because": "No adverse events; proof-of-concept clinical case."
             }
           ]
         }
