@@ -293,6 +293,13 @@
       letter-spacing:.06em;
       color:var(--muted);
     }
+    /* TCR clone card styles */
+    .tcr-meta { display:grid; grid-template-columns:1fr 1fr; gap:5px 12px; font-size:12px; color:#334155; margin-top:8px; }
+    .tcr-meta strong { color:#0f172a; margin-right:4px; }
+    .tcr-link { font-size:11px; font-weight:700; color:var(--primary-dark); text-decoration:none;
+                padding:3px 10px; border:1px solid rgba(13,148,136,.25); border-radius:999px; white-space:nowrap; }
+    .tcr-link:hover { background:var(--accent); }
+
     .stack {
       display:grid;
       gap:18px;
@@ -489,10 +496,7 @@
         <div class="subsection">
           <h3>Validated TCR Clones</h3>
           <p>Only sequence-anchored records with explicit provenance are kept in the main clone table.</p>
-          <div class="table-wrap searchable-group"><table>
-            <thead><tr><th>Clone</th><th>Antigen</th><th>Epitope</th><th>HLA</th><th>PDB</th><th>Clinical</th></tr></thead>
-            <tbody id="tcrCloneRows"></tbody>
-          </table></div>
+          <div class="grid searchable-group" id="tcrCardGrid"></div>
         </div>
         <div class="subsection">
           <h3>TCR Design Rules</h3>
@@ -698,17 +702,46 @@
       })).join('');
     }
 
-    function renderTcrRows(items) {
-      return items.map((item) => `
-        <tr class="searchable" data-search="${esc(JSON.stringify(item)).toLowerCase()}">
-          <td>${esc(item.clone_id)}</td>
-          <td>${esc(item.antigen)}</td>
-          <td>${esc(item.epitope)}</td>
-          <td>${esc(item.hla)}</td>
-          <td>${item.pdb ? `<a href="https://www.rcsb.org/structure/${item.pdb}" target="_blank">${esc(item.pdb)}</a>` : '-'}</td>
-          <td>${esc(item.clinical_use)}</td>
-        </tr>
-      `).join('');
+    function renderTcrCards(items) {
+      return items.map((item) => {
+        const kd = item.affinity_kd_nm
+          ? (item.affinity_kd_nm >= 1000 ? (item.affinity_kd_nm/1000).toFixed(1)+' µM' : item.affinity_kd_nm+' nM')
+          : '—';
+        const cdr3 = (item.cdr3a || item.cdr3b)
+          ? `<div style="margin-top:6px;font-size:11px;color:#64748b">
+               ${item.cdr3a ? 'CDR3α: <span style="font-family:monospace">' + esc(item.cdr3a) + '</span>' : ''}
+               ${item.cdr3a && item.cdr3b ? ' · ' : ''}
+               ${item.cdr3b ? 'CDR3β: <span style="font-family:monospace">' + esc(item.cdr3b) + '</span>' : ''}
+             </div>` : '';
+        const links = [
+          item.pdb ? `<a class="tcr-link" href="https://www.rcsb.org/structure/${item.pdb}" target="_blank">PDB: ${esc(item.pdb)}</a>` : '',
+          (item.evidence && item.evidence.pmids && item.evidence.pmids.length)
+            ? `<a class="tcr-link" href="https://pubmed.ncbi.nlm.nih.gov/${item.evidence.pmids[0]}/" target="_blank">PMID: ${item.evidence.pmids[0]}</a>` : '',
+        ].filter(Boolean).join('');
+        return detailsCard({
+          title: item.clone_id,
+          subtitle: item.antigen,
+          badges: [
+            badge(item.hla || '—'),
+            badge(`MHC-${item.mhc_class || 'I'}`),
+          ],
+          summary: item.epitope,
+          searchText: JSON.stringify(item),
+          body: `
+            <div class="tcr-meta">
+              <div><strong>TRAV</strong> ${esc(item.trav || '—')}</div>
+              <div><strong>TRBV</strong> ${esc(item.trbv || '—')}</div>
+              <div><strong>TRAJ</strong> ${esc(item.traj || '—')}</div>
+              <div><strong>TRBJ</strong> ${esc(item.trbj || '—')}</div>
+              <div><strong>Kd</strong> ${kd}</div>
+              <div><strong>Context</strong> ${esc((item.disease_context || '').slice(0, 40))}${(item.disease_context||'').length>40?'…':''}</div>
+            </div>
+            ${cdr3}
+            ${item.clinical_use ? `<div style="font-size:11px;color:#4b5563;margin-top:8px;border-top:1px solid #e5e7eb;padding-top:8px">${esc(item.clinical_use)}</div>` : ''}
+            ${links ? `<div style="margin-top:8px;display:flex;gap:8px;flex-wrap:wrap">${links}</div>` : ''}
+          `,
+        });
+      }).join('');
     }
 
     function renderRuleCards(items) {
@@ -858,7 +891,7 @@
       document.getElementById('tumorGrid').innerHTML = renderTumorCards(modules.antigens.tumor);
       document.getElementById('infectiousGrid').innerHTML = renderInfectiousCards(modules.antigens.infectious);
       document.getElementById('tolerogenicGrid').innerHTML = renderTolerogenicCards(modules.antigens.tolerogenic);
-      document.getElementById('tcrCloneRows').innerHTML = renderTcrRows(modules.tcr.clones);
+      document.getElementById('tcrCardGrid').innerHTML = renderTcrCards(modules.tcr.clones);
       document.getElementById('tcrRuleGrid').innerHTML = renderRuleCards(modules.tcr.design_rules);
       document.getElementById('tcrMotifGrid').innerHTML = renderMotifCards(modules.tcr.public_motifs);
       document.getElementById('platformGrid').innerHTML = renderDeliveryCards(modules.delivery.platforms, 'platform');
