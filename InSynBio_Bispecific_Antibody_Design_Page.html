@@ -236,7 +236,7 @@
           <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
           Platform
         </a>
-        <a href="#format-selection" class="nav-link">
+        <a href="#format-select" class="nav-link">
           <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h8m-8 6h16"/></svg>
           Format Selection
         </a>
@@ -328,7 +328,7 @@
         </div>
       </div>
 
-      <h2 id="format-selection"><span class="h2-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h8m-8 6h16"/></svg></span>Bispecific Format Selection</h2>
+      <h2 id="format-select"><span class="h2-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h8m-8 6h16"/></svg></span>Bispecific Format Selection</h2>
       <p>Despite dozens of described bispecific architectures, <strong>clinical approvals concentrate in a handful of formats</strong>. The real decision is not which large format to use — it is which <strong>heterodimerization strategy within the IgG-like framework</strong> best suits your targets, LC compatibility, and production platform.</p>
 
       <div style="display:flex;flex-direction:column;gap:6px;margin:14px 0 6px;">
@@ -693,29 +693,29 @@
           </div>
 
           <div class="form-group full">
-            <label for="message">Additional context (e.g., sequences, constraints)</label>
-            <textarea id="message" name="message" placeholder="Describe your project goals..." style="min-height: 100px;"></textarea>
+            <label for="bs_message">Additional context (e.g., sequences, constraints)</label>
+            <textarea id="bs_message" name="message" placeholder="Describe your project goals..." style="min-height: 100px;"></textarea>
           </div>
 
           <h3 style="margin-top: 24px; margin-bottom: 20px;">Contact Information</h3>
           <div class="form-row">
             <div class="form-group">
-              <label for="fname">First Name *</label>
-              <input type="text" id="fname" name="fname" required>
+              <label for="bs_fname">First Name *</label>
+              <input type="text" id="bs_fname" name="fname" required>
             </div>
             <div class="form-group">
-              <label for="lname">Last Name *</label>
-              <input type="text" id="lname" name="lname" required>
+              <label for="bs_lname">Last Name *</label>
+              <input type="text" id="bs_lname" name="lname" required>
             </div>
           </div>
           <div class="form-row">
             <div class="form-group">
-              <label for="org">Organization *</label>
-              <input type="text" id="org" name="org" required>
+              <label for="bs_org">Organization *</label>
+              <input type="text" id="bs_org" name="org" required>
             </div>
             <div class="form-group">
-              <label for="email">Email *</label>
-              <input type="email" id="email" name="email" required>
+              <label for="bs_email">Email *</label>
+              <input type="email" id="bs_email" name="email" required>
             </div>
           </div>
           
@@ -758,7 +758,7 @@
         this.classList.add('active');
       });
     });
-    const sections = ['platform','format-selection','target-pairing','nano-convert','smartlink','audit','virtual-cmc','full-report','case-studies','submit','contact'];
+    const sections = ['platform','format-select','target-pairing','nano-convert','smartlink','audit','virtual-cmc','full-report','case-studies','submit','contact'];
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (!entry.isIntersecting) return;

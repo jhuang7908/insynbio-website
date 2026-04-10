@@ -257,14 +257,15 @@
     </a>
     <h3>Contents</h3>
     <nav>
-      <a href="#overview">Overview</a>
-      <a href="#rationale">Why Stratified?</a>
-      <a href="#factors">13-Factor Framework</a>
-      <a href="#correlations">Feature Correlations</a>
-      <a href="#models">Predictive Models</a>
+      <a href="#study">Study Overview</a>
+      <a href="#platform">Modeling Platform</a>
+      <a href="#prediction">Prediction Models</a>
+      <a href="#database">Clinical Correlations</a>
       <a href="#formulas">Model Formulas</a>
       <a href="#interpretation">Biological Interpretation</a>
       <a href="#limits">Limitations</a>
+      <a href="#submit">Submit Inquiry</a>
+      <a href="#contact">Contact</a>
     </nav>
     <hr class="sep">
     <a href="InSynBio_Antibody_Developability_Assessment_Page.html#immunogenicity" style="color:var(--primary);font-size:13px;">&#8592; Back to Immunogenicity Assessment</a>
@@ -314,6 +315,7 @@
     </div>
   </div>
 
+  <span id="study"></span>
   <section id="overview">
     <h2><span class="num">01</span>Overview</h2>
     <p>
@@ -348,6 +350,7 @@
   </section>
 
   <!-- 2. RATIONALE FOR STRATIFICATION -->
+  <span id="platform"></span>
   <section id="rationale">
     <h2><span class="num">02</span>Why Stratified Modeling?</h2>
     <p>
@@ -417,6 +420,7 @@
   </section>
 
   <!-- 4. FEATURE CORRELATIONS -->
+  <span id="database"></span>
   <section id="correlations">
     <h2><span class="num">04</span>Feature Correlations with ADA Rate</h2>
     <p>Spearman correlations between each feature and clinical ADA rate (%), computed separately for humanized (n = 84) and fully human (n = 54) groups. New interaction terms (e.g., immunosuppressant × half-life) were discovered in the expanded dataset.</p>
@@ -529,6 +533,7 @@
   </section>
 
   <!-- 5. MODELS -->
+  <span id="prediction"></span>
   <section id="models">
     <h2><span class="num">05</span>Minimal Models — LOO Validation</h2>
     <p>
@@ -692,6 +697,43 @@
       <tr><td>Long-term</td><td>Per-patient HLA typing integration for individualized epitope weighting</td><td>Upgrade from population-level to individualized risk assessment</td></tr>
     </table>
     </div>
+  </section>
+
+  <section id="submit">
+    <h2><span class="num">09</span>Submit Inquiry</h2>
+    <p>Share your antibody sequences or project context to receive an immunogenicity assessment proposal.</p>
+    <div class="card card-teal">
+      <form id="inquiry-form" action="https://formspree.io/f/mnjblezr" method="POST">
+        <input type="hidden" name="_subject" value="InSynBio Immunogenicity Inquiry">
+        <input type="hidden" name="_next" value="https://insynbio.com/thanks.html">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+          <div>
+            <label for="vh" style="display:block;font-weight:600;font-size:13px;margin-bottom:6px;">VH Sequence</label>
+            <textarea id="vh" name="vh_sequence" placeholder="EVQL..." style="width:100%;min-height:96px;padding:10px;border:1px solid #d1d5db;border-radius:8px;"></textarea>
+          </div>
+          <div>
+            <label for="vl" style="display:block;font-weight:600;font-size:13px;margin-bottom:6px;">VL Sequence</label>
+            <textarea id="vl" name="vl_sequence" placeholder="DIQMT..." style="width:100%;min-height:96px;padding:10px;border:1px solid #d1d5db;border-radius:8px;"></textarea>
+          </div>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px;">
+          <div><label for="fname" style="display:block;font-weight:600;font-size:13px;margin-bottom:6px;">First Name *</label><input id="fname" name="fname" required style="width:100%;padding:10px;border:1px solid #d1d5db;border-radius:8px;"></div>
+          <div><label for="lname" style="display:block;font-weight:600;font-size:13px;margin-bottom:6px;">Last Name *</label><input id="lname" name="lname" required style="width:100%;padding:10px;border:1px solid #d1d5db;border-radius:8px;"></div>
+          <div><label for="org" style="display:block;font-weight:600;font-size:13px;margin-bottom:6px;">Organization *</label><input id="org" name="org" required style="width:100%;padding:10px;border:1px solid #d1d5db;border-radius:8px;"></div>
+          <div><label for="email" style="display:block;font-weight:600;font-size:13px;margin-bottom:6px;">Email *</label><input id="email" name="email" type="email" required style="width:100%;padding:10px;border:1px solid #d1d5db;border-radius:8px;"></div>
+        </div>
+        <div style="margin-top:12px;">
+          <label for="message" style="display:block;font-weight:600;font-size:13px;margin-bottom:6px;">Project Message</label>
+          <textarea id="message" name="message" placeholder="Target, indication, constraints, expected timeline..." style="width:100%;min-height:92px;padding:10px;border:1px solid #d1d5db;border-radius:8px;"></textarea>
+        </div>
+        <button type="submit" class="btn" style="margin-top:14px;">Submit Inquiry</button>
+      </form>
+    </div>
+  </section>
+
+  <section id="contact">
+    <h2><span class="num">10</span>Contact</h2>
+    <p>For direct support, email us at <a href="mailto:contact@insynbio.com" style="color:var(--primary);font-weight:600;">contact@insynbio.com</a>.</p>
   </section>
 
   <!-- Citation moved from removed Section 09 -->

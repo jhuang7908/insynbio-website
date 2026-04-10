@@ -518,6 +518,10 @@
       </div>
 
       <h2 id="library"><span class="h2-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg></span>Proprietary Component Library</h2>
+      <div style="display:none;" aria-hidden="true">
+        <span id="acc-binders"></span><span id="acc-hinge"></span><span id="acc-tm"></span><span id="acc-costim"></span><span id="acc-act"></span>
+        <span id="acc-armor"></span><span id="acc-safety"></span><span id="acc-reg"></span><span id="acc-linkers"></span><span id="acc-logic"></span>
+      </div>
       <p><strong>237</strong> sequence-verified elements across <strong>12 categories</strong>, evidence-graded against published clinical data. Click any card for representative examples.</p>
 
       <div class="lib-grid">
@@ -960,15 +964,15 @@
       <p>Tell us about your target and disease indication. We will provide a tailored CAR design proposal.</p>
 
       <div class="form-section">
-        <form id="inquiry-form" action="https://formspree.io/f/mnjblezr" method="POST">
+        <form id="cart-inquiry-form" action="https://formspree.io/f/mnjblezr" method="POST">
           <input type="hidden" name="_subject" value="InSynBio CAR-T Inquiry">
           <input type="hidden" name="_next" value="https://insynbio.com/thanks.html">
           
           <h3 style="margin-top: 0; margin-bottom: 20px;">Project Details</h3>
           <div class="form-row">
             <div class="form-group">
-              <label>Disease Type *</label>
-              <select name="disease_type" required>
+              <label for="cart-disease">Disease Type *</label>
+              <select id="cart-disease" name="disease_type" required>
                 <option value="" disabled selected>Select...</option>
                 <option value="solid">Solid Tumor</option>
                 <option value="liquid">Hematologic Malignancy</option>
@@ -1006,8 +1010,8 @@
           </div>
 
           <div class="form-group full">
-            <label for="message">Additional context (e.g., binder sequence, specific constraints)</label>
-            <textarea id="message" name="message" placeholder="Describe your project goals..." style="min-height: 100px;"></textarea>
+            <label for="cart-message">Additional context (e.g., binder sequence, specific constraints)</label>
+            <textarea id="cart-message" name="message" placeholder="Describe your project goals..." style="min-height: 100px;"></textarea>
           </div>
           <div class="form-group full" style="margin-top: 16px;">
             <div class="check-group">
@@ -1024,22 +1028,22 @@
           <h3 style="margin-top: 24px; margin-bottom: 20px;">Contact Information</h3>
           <div class="form-row">
             <div class="form-group">
-              <label for="fname">First Name *</label>
-              <input type="text" id="fname" name="fname" required>
+              <label for="cart-fname">First Name *</label>
+              <input type="text" id="cart-fname" name="fname" required>
             </div>
             <div class="form-group">
-              <label for="lname">Last Name *</label>
-              <input type="text" id="lname" name="lname" required>
+              <label for="cart-lname">Last Name *</label>
+              <input type="text" id="cart-lname" name="lname" required>
             </div>
           </div>
           <div class="form-row">
             <div class="form-group">
-              <label for="org">Organization *</label>
-              <input type="text" id="org" name="org" required>
+              <label for="cart-org">Organization *</label>
+              <input type="text" id="cart-org" name="org" required>
             </div>
             <div class="form-group">
-              <label for="email">Email *</label>
-              <input type="email" id="email" name="email" required>
+              <label for="cart-email">Email *</label>
+              <input type="email" id="cart-email" name="email" required>
             </div>
           </div>
           
@@ -1135,7 +1139,7 @@
     sections.forEach(id => { const el = document.getElementById(id); if (el) observer.observe(el); });
     
     // Form submission
-    const form = document.getElementById('inquiry-form');
+    const form = document.getElementById('cart-inquiry-form');
     if (form) {
       form.addEventListener('submit', function(e) {
         e.preventDefault();

@@ -30,8 +30,8 @@
     
     /* Header */
     .top-header { display: flex; align-items: center; justify-content: space-between; padding: 12px 32px; background: rgba(255,255,255,0.95); backdrop-filter: blur(12px); border-bottom: 2px solid rgba(13,148,136,0.1); position: fixed; width: 100%; top: 0; z-index: 2000; gap: 12px; flex-wrap: wrap; }
-    .top-header .brand { font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 700; font-size: 26px; letter-spacing: -0.03em; display: flex; align-items: center; }
-    .top-header .brand a { text-decoration: none; color: #111827; display: flex; align-items: center; gap: 10px; }
+    .top-header .brand { font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 700; font-size: 26px; letter-spacing: -0.03em; display: flex; align-items: center; flex-wrap: nowrap; min-width: max-content; white-space: nowrap; }
+    .top-header .brand a { text-decoration: none; color: #111827; display: flex; align-items: center; gap: 10px; white-space: nowrap; flex-shrink: 0; }
     .top-header .brand .accent { color: var(--primary); font-style: italic; font-weight: 700; }
     .top-header .slogan { font-size: 14px; color: var(--text-muted); padding-left: 14px; border-left: 1px solid var(--border); margin-left: 14px; font-weight: 600; white-space: nowrap; display: inline-flex; align-items: center; flex-shrink: 0; }
     .mobile-menu-btn { display: none; background: none; border: 1px solid var(--border); border-radius: 8px; padding: 6px 8px; cursor: pointer; color: var(--text); line-height: 0; }
@@ -146,8 +146,8 @@
     }
     @media (max-width: 600px) {
       .top-header { padding: 12px 16px; flex-wrap: wrap; gap: 10px; }
-      .top-header .brand { font-size: 26px; }
-      .top-header .slogan { font-size: 14px; }
+      .top-header .brand { font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 700; font-size: 26px; letter-spacing: -0.03em; display: flex; align-items: center; flex-wrap: nowrap; min-width: max-content; white-space: nowrap; }
+      .top-header .slogan { font-size: 14px; color: var(--text-muted); padding-left: 14px; border-left: 1px solid var(--border); margin-left: 14px; font-weight: 600; white-space: nowrap; display: inline-flex; align-items: center; flex-shrink: 0; }
       .top-header-nav { width: 100%; flex: 1 1 100%; justify-content: flex-start; flex-wrap: wrap; gap: 6px; overflow-x: auto; padding-bottom: 4px; border-top: 1px solid var(--border); padding-top: 10px; margin-top: 2px; }
       .top-header-nav a { flex-shrink: 0; font-size: 13px; padding: 6px 10px; }
       .hero h1 { font-size: 34px; }
@@ -164,7 +164,11 @@
       </a>
       <span class="slogan">AI for Life Sciences</span>
     </div>
+    <button class="mobile-menu-btn" aria-label="Open menu" onclick="document.querySelector('.top-header-nav').classList.add('open')">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
     <nav class="top-header-nav">
+      <button class="nav-close-btn" aria-label="Close menu" onclick="this.parentElement.classList.remove('open')">&times;</button>
       <a href="index.html" class="active">Home</a>
       <div class="nav-dropdown" tabindex="0">
         <a href="#services">AI Drug Design</a>
@@ -258,8 +262,22 @@
         </div>
       </div>
       <a href="InSynBio_OurTech.html">Our Tech</a>
+      <div class="nav-dropdown" tabindex="0">
+        <a href="#about">About Us</a>
+        <div class="dropdown-menu">
+          <a href="#about">
+            <span class="menu-title">About InSynBio</span>
+            <span class="menu-desc">Team background & mission</span>
+          </a>
+          <a href="#workflow">
+            <span class="menu-title">Workflow</span>
+            <span class="menu-desc">From inquiry to delivery</span>
+          </a>
+        </div>
+      </div>
       <a href="#contact">Contact Us</a>
     </nav>
+    <div class="header-right"></div>
   </header>
 
   <section class="hero">
@@ -350,11 +368,56 @@
         </div>
       </div>
 
-      <div class="highlight">
-        <p style="margin:0;font-size:14px;line-height: 1.55;">
+      <!-- Data assets -->
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:28px;">
+        <div style="background:linear-gradient(135deg,#e6faf7,#d4f3ed);border-radius:12px;padding:18px 14px;border-left:3px solid #0d9488;">
+          <div style="font-size:24px;font-weight:700;color:#0d4a43;font-family:'Cormorant Garamond',serif;">1,142</div>
+          <div style="font-size:12px;color:#2d6a61;margin-top:4px;font-weight:600;">Clinical Antibody Sequences</div>
+          <div style="font-size:11px;color:#4b5563;margin-top:6px;line-height:1.4;">VH/VL, VHH, and multi-format, annotated by clinical stage</div>
+        </div>
+        <div style="background:linear-gradient(135deg,#e6faf7,#d4f3ed);border-radius:12px;padding:18px 14px;border-left:3px solid #0d9488;">
+          <div style="font-size:24px;font-weight:700;color:#0d4a43;font-family:'Cormorant Garamond',serif;">237</div>
+          <div style="font-size:12px;color:#2d6a61;margin-top:4px;font-weight:600;">CAR-T Design Elements</div>
+          <div style="font-size:11px;color:#4b5563;margin-top:6px;line-height:1.4;">ACTES system components incl. scFv, hinge, and co-stim domains</div>
+        </div>
+        <div style="background:linear-gradient(135deg,#e6faf7,#d4f3ed);border-radius:12px;padding:18px 14px;border-left:3px solid #0d9488;">
+          <div style="font-size:24px;font-weight:700;color:#0d4a43;font-family:'Cormorant Garamond',serif;">100</div>
+          <div style="font-size:12px;color:#2d6a61;margin-top:4px;font-weight:600;">Clinical ADC Programs</div>
+          <div style="font-size:11px;color:#4b5563;margin-top:6px;line-height:1.4;">Deep clinical params (ORR/PFS/dose/toxicity)</div>
+        </div>
+        <div style="background:linear-gradient(135deg,#e6faf7,#d4f3ed);border-radius:12px;padding:18px 14px;border-left:3px solid #0d9488;">
+          <div style="font-size:24px;font-weight:700;color:#0d4a43;font-family:'Cormorant Garamond',serif;">134+</div>
+          <div style="font-size:12px;color:#2d6a61;margin-top:4px;font-weight:600;">Bispecific CMC Benchmarks</div>
+          <div style="font-size:11px;color:#4b5563;margin-top:6px;line-height:1.4;">Symmetric & asymmetric formats, calibrated for expression & pairing</div>
+        </div>
+      </div>
+
+      <!-- Differentiation -->
+      <h3 style="font-size:16px;color:var(--text);margin:0 0 14px;font-weight:600;">How We Differ from Generic AI Tools or Traditional CROs</h3>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:28px;">
+        <div style="display:flex;gap:12px;align-items:flex-start;">
+          <span style="width:20px;height:20px;border-radius:50%;background:#0d9488;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px;"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>
+          <div><strong style="font-size:14px;display:block;margin-bottom:2px;">Clinical traceability, not synthetic assumptions</strong><span style="font-size:13px;color:var(--text-muted);">All benchmarks from FDA/EMA-approved or clinical-stage molecules, not random synthetic sequences.</span></div>
+        </div>
+        <div style="display:flex;gap:12px;align-items:flex-start;">
+          <span style="width:20px;height:20px;border-radius:50%;background:#0d9488;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px;"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>
+          <div><strong style="font-size:14px;display:block;margin-bottom:2px;">Expert review, not black-box scoring</strong><span style="font-size:13px;color:var(--text-muted);">Every report includes actionable recommendations and design rationale, delivered in 3–5 business days.</span></div>
+        </div>
+        <div style="display:flex;gap:12px;align-items:flex-start;">
+          <span style="width:20px;height:20px;border-radius:50%;background:#0d9488;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px;"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>
+          <div><strong style="font-size:14px;display:block;margin-bottom:2px;">Multi-tool AI chain synergy</strong><span style="font-size:13px;color:var(--text-muted);">AlphaFold2, HADDOCK3, ProteinMPNN and 8+ tools combined by scenario, not a single model.</span></div>
+        </div>
+        <div style="display:flex;gap:12px;align-items:flex-start;">
+          <span style="width:20px;height:20px;border-radius:50%;background:#0d9488;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px;"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>
+          <div><strong style="font-size:14px;display:block;margin-bottom:2px;">Confidentiality-first, NDA upfront</strong><span style="font-size:13px;color:var(--text-muted);">Sequences can be shared after NDA signing; no sensitive disclosure required to start.</span></div>
+        </div>
+      </div>
+
+      <div class="highlight" style="display:flex;gap:16px;align-items:center;flex-wrap:wrap;">
+        <p style="margin:0;flex:1;min-width:260px;font-size:14px;line-height: 1.55;">
           <strong>Core Tech Stack:</strong> AlphaFold2 · ABodyBuilder2 · HADDOCK3 · ProteinMPNN · RFdiffusion · ThermoMPNN · IEDB · EvoEF2 · PRODIGY — Multi-tool ΔΔG consensus analysis with expert review.
         </p>
-        <a href="InSynBio_OurTech.html" style="display:inline-flex;align-items:center;gap:6px;margin-top:12px;color:var(--primary);font-weight:600;text-decoration:none;">View Full Tech Platform →</a>
+        <a href="InSynBio_OurTech.html" style="display:inline-flex;align-items:center;gap:6px;padding:10px 18px;background:#0d9488;color:#fff;border-radius:8px;font-size:14px;font-weight:600;text-decoration:none;flex-shrink:0;white-space:nowrap;">View Full Tech Platform →</a>
       </div>
     </div>
   </section>
@@ -437,62 +500,170 @@
       <h2>Featured Case Studies</h2>
       <div class="case-grid">
         <!-- Humanization -->
-        <a class="case-card" href="case_mumab4d5_humanization_en.html">
-          <div class="case-media"><img src="images/case-humanization.svg" alt="Humanization"></div>
+        <a class="case-card fade-up" href="case_mumab4d5_humanization_en.html">
+          <div class="case-media">
+            <picture>
+              <source srcset="images/case-humanization.webp" type="image/webp">
+              <source srcset="images/case-humanization.jpg" type="image/jpeg">
+              <img src="images/case-humanization.jpg" alt="muMAb4D5 Humanization" loading="lazy">
+            </picture>
+          </div>
           <div class="case-body">
             <span class="case-tag">Humanization</span>
             <div class="case-title">muMAb4D5 → Herceptin Humanization</div>
             <p class="case-desc">Systematic re-humanization using AbEngineCore V4.5.1 — 4 back-mutations, 100% CDR retention.</p>
+            <ul class="case-bullets">
+              <li>IGHV3-23*01 + IGKV1-39*01 — clinically validated pairing</li>
+              <li>VH/VL angle deviation 0.64° · all RMSD metrics passed</li>
+              <li>Overall design quality: 4.3 / 5 ⭐</li>
+            </ul>
           </div>
           <div class="case-cta">Read Case →</div>
         </a>
         <!-- CMC -->
-        <a class="case-card" href="case_mumab4d5_cmc.html">
-          <div class="case-media"><img src="images/case-assessment.svg" alt="CMC"></div>
+        <a class="case-card fade-up fade-up-d1" href="case_mumab4d5_cmc.html">
+          <div class="case-media">
+            <picture>
+              <source srcset="images/case-assessment.webp" type="image/webp">
+              <source srcset="images/case-assessment.jpg" type="image/jpeg">
+              <img src="images/case-assessment.jpg" alt="muMAb4D5 CMC Assessment" loading="lazy">
+            </picture>
+          </div>
           <div class="case-body">
             <span class="case-tag">CMC Assessment</span>
             <div class="case-title">muMAb4D5 CMC Optimization</div>
-            <p class="case-desc">15-parameter evaluation benchmarked against AbRef-458 — metrics passed.</p>
+            <p class="case-desc">15-parameter evaluation benchmarked against AbRef-458 — all metrics passed.</p>
+            <ul class="case-bullets">
+              <li>ADI score 77/100 (Acceptable) · Herceptin® 81/100</li>
+              <li>TCIA 0.61 vs Herceptin 0.65 — lower immunogenicity</li>
+              <li>Single mutation VH84 N→Q · 0.28 Å Fv RMSD</li>
+            </ul>
           </div>
           <div class="case-cta">Read Case →</div>
         </a>
         <!-- VHH -->
-        <a class="case-card" href="case_mumab4d5_vhh_en.html">
-          <div class="case-media"><img src="images/case-vh2vhh.svg" alt="VHH"></div>
+        <a class="case-card fade-up fade-up-d2" href="case_mumab4d5_vhh_en.html">
+          <div class="case-media">
+            <picture>
+              <source srcset="images/case-vh2vhh.webp" type="image/webp">
+              <source srcset="images/case-vh2vhh.jpg" type="image/jpeg">
+              <img src="images/case-vh2vhh.jpg" alt="VH to VHH Nanobody" loading="lazy">
+            </picture>
+          </div>
           <div class="case-body">
             <span class="case-tag">VH → VHH</span>
-            <div class="case-title">muMAb4D5 VH → Humanized VHH</div>
-            <p class="case-desc">HER2-targeting nanobody engineered from VH — SASA-guided surface reshaping.</p>
+            <div class="case-title">muMAb4D5 VH → Humanized VHH Nanobody</div>
+            <p class="case-desc">HER2-targeting nanobody engineered from muMAb4D5 VH — 100% CDR retention, SASA-guided surface reshaping.</p>
+            <ul class="case-bullets">
+              <li>VHH_ADI 66.66 · outperforms Anti-HER2-VHH1 (63.17)</li>
+              <li>Global RMSD 0.054 Å · CDR1/2/3 structure fully retained</li>
+              <li>No Stealth mutations needed · one-step VGRW conversion</li>
+            </ul>
           </div>
           <div class="case-cta">Read Case →</div>
         </a>
         <!-- VAM -->
-        <a class="case-card" href="case_vgrw_sr_r2_affinity_maturation.html">
-          <div class="case-media"><img src="images/case-affinity-maturation.svg" alt="VAM"></div>
+        <a class="case-card fade-up" href="case_vgrw_sr_r2_affinity_maturation.html">
+          <div class="case-media">
+            <picture>
+              <source srcset="images/case-affinity-maturation.webp" type="image/webp">
+              <source srcset="images/case-affinity-maturation.jpg" type="image/jpeg">
+              <img src="images/case-affinity-maturation.jpg" alt="VHH Affinity Maturation" loading="lazy">
+            </picture>
+          </div>
           <div class="case-body">
             <span class="case-tag">Affinity Maturation</span>
             <div class="case-title">HER2 VHH Affinity Maturation</div>
             <p class="case-desc">Binding energy improved −3.32 kcal/mol via epistatic double mutant G49A+F112L.</p>
+            <ul class="case-bullets">
+              <li>6-tool ΔΔG consensus: EvoEF2 + PRODIGY + ThermoMPNN</li>
+              <li>Top variant: −3.32 kcal/mol · CDR stability preserved</li>
+              <li>Phase 2 ProteinMPNN redesign · 0 frozen CDR positions</li>
+            </ul>
+          </div>
+          <div class="case-cta">Read Case →</div>
+        </a>
+        <!-- Bispecific -->
+        <a class="case-card fade-up fade-up-d1" href="case_bispecific_vhh_expression_optimization.html">
+          <div class="case-media">
+            <picture>
+              <source srcset="images/case-bispecific.webp" type="image/webp">
+              <source srcset="images/case-bispecific.jpg" type="image/jpeg">
+              <img src="images/case-bispecific.jpg" alt="Bispecific VHH" loading="lazy">
+            </picture>
+          </div>
+          <div class="case-body">
+            <span class="case-tag">Bispecific Engineering</span>
+            <div class="case-title">Bispecific VHH Expression Optimization</div>
+            <p class="case-desc">pI engineering with linker tuning delivered stronger cross-variant expression profile.</p>
+            <ul class="case-bullets">
+              <li>pI shift from 8.2 → 6.8 · improved colloidal stability</li>
+              <li>4.8× IC90 boost across cross-variant panel</li>
+              <li>GS-8 linker selected over (G4S)3 for optimal flexibility</li>
+            </ul>
+          </div>
+          <div class="case-cta">Read Case →</div>
+        </a>
+        <!-- CAR-M -->
+        <a class="case-card fade-up fade-up-d2" href="case_malaria_carm_design.html">
+          <div class="case-media">
+            <picture>
+              <source srcset="images/case-cart.webp" type="image/webp">
+              <source srcset="images/case-cart.jpg" type="image/jpeg">
+              <img src="images/case-cart.jpg" alt="CAR-Macrophage Design" loading="lazy">
+            </picture>
+          </div>
+          <div class="case-body">
+            <span class="case-tag">Cell Therapy Design</span>
+            <div class="case-title">Anti-CIDRα1 CAR-Macrophage Design</div>
+            <p class="case-desc">Dual-binder CAR-M architecture for malaria antigen targeting and functional activation.</p>
+            <ul class="case-bullets">
+              <li>CIDRα1.4 + CIDRα1.7 dual-domain binder architecture</li>
+              <li>TLR4 intracellular domain · M1 polarization validated</li>
+              <li>ACTES-guided component selection across 237 elements</li>
+            </ul>
           </div>
           <div class="case-cta">Read Case →</div>
         </a>
         <!-- Fentanyl -->
-        <a class="case-card" href="case_fentanyl_hapten_vam.html">
-          <div class="case-media"><img src="images/case-fentanyl-vam.svg" alt="Fentanyl"></div>
+        <a class="case-card fade-up" href="case_fentanyl_hapten_vam.html">
+          <div class="case-media">
+            <picture>
+              <source srcset="images/case-fentanyl-vam.webp" type="image/webp">
+              <source srcset="images/case-fentanyl-vam.png" type="image/png">
+              <img src="images/case-fentanyl-vam.png" alt="Fentanyl Hapten VAM" loading="lazy">
+            </picture>
+          </div>
           <div class="case-body">
-            <span class="case-tag">🔒 Client · Hapten VAM</span>
+            <span class="case-tag">Hapten VAM</span>
             <div class="case-title">Fentanyl Hapten Virtual Affinity Maturation</div>
             <p class="case-desc">Scenario D optimization — achieved −5.53 kcal/mol improvement in binding energy.</p>
+            <ul class="case-bullets">
+              <li>HADDOCK3 docking score −68.4 kcal/mol (best)</li>
+              <li>ProteinMPNN CDR3 redesign · 6-tool consensus verified</li>
+              <li>Thermal stability ΔTm +3.8°C · no aggregation risk</li>
+            </ul>
           </div>
           <div class="case-cta">Read Case →</div>
         </a>
         <!-- PD-L1 -->
-        <a class="case-card" href="case_pdl1_epitope_analysis.html">
-          <div class="case-media"><img src="images/case-pdl1-panel.svg" alt="PD-L1"></div>
+        <a class="case-card fade-up fade-up-d1" href="case_pdl1_epitope_analysis.html">
+          <div class="case-media">
+            <picture>
+              <source srcset="images/case-pdl1-panel.webp" type="image/webp">
+              <source srcset="images/case-pdl1-panel.png" type="image/png">
+              <img src="images/case-pdl1-panel.png" alt="PD-L1 Epitope Analysis" loading="lazy">
+            </picture>
+          </div>
           <div class="case-body">
-            <span class="case-tag">🔒 Client · Epitope Analysis</span>
+            <span class="case-tag">Epitope Analysis</span>
             <div class="case-title">PD-L1 Dual-Clone Epitope Mapping</div>
             <p class="case-desc">Classification of blocking vs. non-blocking clones via structural modeling.</p>
+            <ul class="case-bullets">
+              <li>Ab1 (blocking) · Ab2 (non-blocking) — structural proof</li>
+              <li>PRODIGY ΔG −10.8 vs −7.3 kcal/mol · epitope resolved</li>
+              <li>PD-1/PD-L1 interface overlap mapped at residue level</li>
+            </ul>
           </div>
           <div class="case-cta">Read Case →</div>
         </a>
