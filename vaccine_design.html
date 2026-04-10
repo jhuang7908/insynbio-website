@@ -157,6 +157,12 @@
       .flow-strip { gap:8px; }
       .flow-step:not(:last-child)::after { display:none; }
     }
+    .main-intro { background: linear-gradient(135deg, #0d9488 0%, #0f766e 50%, #134e4a 100%); color: #fff; padding: 36px 40px 32px; border-radius: 16px; margin-bottom: 32px; }
+    .main-intro .breadcrumb { margin-bottom: 16px; font-size: 13px; opacity: 0.8; }
+    .main-intro .breadcrumb a { color: rgba(255,255,255,0.85); text-decoration: none; }
+    .main-intro .breadcrumb span { color: rgba(255,255,255,0.5); margin: 0 6px; }
+    .main-intro h1 { font-size: 32px; font-weight: 700; margin: 0 0 14px; color: #fff; }
+    .main-intro p { font-size: 15px; opacity: 0.9; line-height: 1.6; margin: 0; }
     @media (max-width: 768px) {
       .mobile-menu-btn { display:block; }
       .top-header { padding:10px 16px; flex-wrap:nowrap; }
@@ -267,12 +273,13 @@
   </aside>
 
   <main class="main">
-    <div class="breadcrumb">
-      <a href="index.html">Home</a><span>/</span><a href="index.html#services">Services</a><span>/</span><span>Vaccine Design</span>
+    <div class="main-intro">
+      <div class="breadcrumb">
+        <a href="index.html">Home</a><span>/</span><a href="index.html#services">AI Drug Design</a><span>/</span><span>Vaccine Design</span>
+      </div>
+      <h1>Vaccine Design Service</h1>
+      <p>EpiDesignCore — From sequence to synthesis-ready vaccine construct, backed by clinical evidence. Neoantigen scanning, heteroclitic TAA engineering, multi-epitope mRNA assembly, and pMHC-TCR-guided peptide optimization.</p>
     </div>
-
-    <h1>Vaccine Design Service</h1>
-    <p class="subtitle">EpiDesignCore — From sequence to synthesis-ready vaccine construct, backed by clinical evidence.</p>
 
     <div class="mission-block">
       <p><strong>Expert computational vaccine design from target sequence to deliverable construct.</strong> Our EpiDesignCore platform covers the full spectrum: neoantigen scanning, heteroclitic TAA peptide engineering, multi-epitope mRNA assembly, and pMHC-TCR-guided peptide optimization — all grounded in six curated clinical knowledge bases with traceable literature sources.</p>

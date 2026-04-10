@@ -151,6 +151,22 @@
       .container, .section-inner { padding-left: 12px; padding-right: 12px; }
       .grid-2col, .grid-3col, .services-grid, .features-grid { grid-template-columns: 1fr !important; }
     }
+    .main-intro { background: linear-gradient(135deg, #0d9488 0%, #0f766e 50%, #134e4a 100%); color: #fff; padding: 36px 40px 32px; border-radius: 16px; margin-bottom: 32px; }
+    .main-intro .breadcrumb { margin-bottom: 16px; font-size: 13px; opacity: 0.8; }
+    .main-intro .breadcrumb a { color: rgba(255,255,255,0.85); text-decoration: none; }
+    .main-intro .breadcrumb span { color: rgba(255,255,255,0.5); margin: 0 6px; }
+    .main-intro h1 { font-size: 32px; font-weight: 700; margin: 0 0 14px; color: #fff; }
+    .main-intro p { font-size: 15px; opacity: 0.9; line-height: 1.6; margin: 0; }
+    ul.deliverables { list-style: none; padding: 0; margin: 20px 0; display: flex; flex-direction: column; gap: 10px; }
+    ul.deliverables li { display: flex; align-items: flex-start; gap: 12px; background: #f0fdfa; border: 1px solid rgba(13,148,136,0.15); border-radius: 10px; padding: 12px 16px; }
+    ul.deliverables li .chk { flex-shrink: 0; width: 22px; height: 22px; background: #0d9488; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-top: 1px; }
+    ul.deliverables li .chk svg { width: 12px; height: 12px; stroke: #fff; stroke-width: 2.5; }
+    .faq-list { display: flex; flex-direction: column; gap: 10px; margin: 20px 0; }
+    .faq-item { border: 1px solid #e2e8f0; border-radius: 10px; overflow: hidden; }
+    .faq-item summary { padding: 14px 18px; font-weight: 600; cursor: pointer; list-style: none; color: #111827; font-size: 15px; }
+    .faq-item summary::-webkit-details-marker { display: none; }
+    .faq-item[open] summary { background: #f0fdfa; color: #0f766e; }
+    .faq-body { padding: 0 18px 14px; font-size: 14px; color: #4b5563; line-height: 1.65; }
     @media (max-width: 768px) {
       .mobile-menu-btn { display: block; }
       .top-header { padding: 10px 16px; gap: 0; flex-wrap: nowrap; backdrop-filter: none; }
@@ -264,10 +280,12 @@
           <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
           Full Report
         </a>
+        <a href="#deliverables" class="nav-link"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>Deliverables</a>
         <a href="#case-studies" class="nav-link">
           <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
           Case Studies
         </a>
+        <a href="#faq-bs" class="nav-link"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/></svg>FAQ</a>
         <a href="#submit" class="nav-link">
           <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
           Submit Inquiry
@@ -279,12 +297,13 @@
       </nav>
     </aside>
     <main class="main">
-      <div class="breadcrumb">
-        <a href="index.html">Home</a><span>/</span><a href="index.html#services">Services</a><span>/</span><span>Bispecific</span>
+      <div class="main-intro">
+        <div class="breadcrumb">
+          <a href="index.html">Home</a><span>/</span><a href="index.html#services">AI Drug Design</a><span>/</span><span>Bispecific Antibody Engineering</span>
+        </div>
+        <h1>Bispecific Antibody Engineering</h1>
+        <p>Structure-guided design for next-generation multispecifics. Powered by a clinical knowledge base of 134+ bispecific molecules, Nano-Convert™ (VH-to-VHH), SmartLink™ linker optimization, and Virtual CMC for chain mispairing resolution.</p>
       </div>
-
-      <h1>Bispecific Antibody Engineering</h1>
-      <p class="subtitle">Structure-Guided Design for Next-Generation Multispecifics.</p>
 
       <div class="mission-block">
         <p><strong>Navigate the complexity of multispecific design.</strong> Our suite includes <strong>Nano-Convert™</strong> (VH-to-VHH) for modular architecture, <strong>SmartLink™</strong> optimization for precise epitope engagement, and <strong>Virtual CMC</strong> to resolve chain mispairing in IgG-like formats.</p>
@@ -601,7 +620,18 @@
         <li><strong>Rationale</strong> — Scientific justification for linker selection and mutations.</li>
       </ul>
 
-      <h2 id="case-studies"><span class="h2-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg></span>Case Studies</h2>
+      <h2 id="deliverables"><span class="h2-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></span>Deliverables Checklist</h2>
+      <p>Each report includes the following items, reviewed by an expert before delivery:</p>
+      <ul class="deliverables">
+        <li><span class="chk"><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><div><strong>Format Selection Report</strong> — Format analysis based on 125+ clinical bispecific data (IgG-like, tandem scFv, VHH-Fc, etc.)</div></li>
+        <li><span class="chk"><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><div><strong>Sequence Design Proposals (3–5 candidates)</strong> — Dual-arm sequences, linker design, CH1/CL pairing strategy</div></li>
+        <li><span class="chk"><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><div><strong>Structural Models</strong> — Dual-arm geometry evaluation, VH-VL/VHH angles, interface contact analysis</div></li>
+        <li><span class="chk"><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><div><strong>Linker Optimization Recommendations</strong> — Flexible/rigid linker selection, length optimization, stability prediction</div></li>
+        <li><span class="chk"><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><div><strong>Developability Check</strong> — Aggregation propensity, pI, thermal stability prediction, CMC risk flags</div></li>
+        <li><span class="chk"><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><div><strong>VH→VHH Conversion Plan</strong> (optional) — Camelization engineering sites, stability verification</div></li>
+      </ul>
+
+      <h2 id="case-studies"><span class="h2-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg></span>Case Studies</h2>
       <p>Real-world engineering problems solved with our platform — with anonymized data and full methodology transparency.</p>
 
       <div style="background: linear-gradient(135deg, #f0fdfa 0%, #fff 100%); border: 1px solid rgba(13,148,136,0.15); border-radius: 16px; padding: 32px; margin: 24px 0; box-shadow: 0 4px 20px rgba(13,148,136,0.06); display: flex; gap: 28px; align-items: flex-start; flex-wrap: wrap;">
@@ -647,6 +677,28 @@
             Read Full Case Study →
           </a>
         </div>
+      </div>
+
+      <h2 id="faq-bs"><span class="h2-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></span>Common Questions</h2>
+      <div class="faq-list">
+        <details class="faq-item">
+          <summary>What materials do I need to provide for a bispecific antibody design project?</summary>
+          <div class="faq-body">
+            <p>Simply provide the amino acid sequences (VH/VL or VHH) for both arms and target information. If you already have monospecific antibodies, they can be used as the starting point for bispecific conversion.</p>
+          </div>
+        </details>
+        <details class="faq-item">
+          <summary>How is the most suitable bispecific format selected?</summary>
+          <div class="faq-body">
+            <p>Format selection depends on the nature of the targets, required effector functions, and clinical stage. We perform format matching based on our <strong>125+ clinical bispecific database</strong> and provide selection rationale with comparative analysis in the report.</p>
+          </div>
+        </details>
+        <details class="faq-item">
+          <summary>How is my sequence data kept confidential?</summary>
+          <div class="faq-body">
+            <p>An NDA process is triggered upon submission. Your sequences and project information are encrypted in transit, not shared with third parties, and raw data is not retained in our systems after project completion.</p>
+          </div>
+        </details>
       </div>
 
       <h2 id="submit"><span class="h2-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg></span>Submit Inquiry</h2>

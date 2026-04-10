@@ -125,6 +125,12 @@
     .flow-step .fs-sub { font-size: 11.5px; color: var(--text-muted); line-height: 1.4; }
 
     /* ── Logic trace visual ── */
+    /* ── Green Intro Header ── */
+    .main-intro { margin: -60px -60px 40px; padding: 36px 60px 28px; background: repeating-linear-gradient(135deg,transparent,transparent 14px,rgba(13,148,136,0.055) 14px,rgba(13,148,136,0.055) 15px), linear-gradient(135deg,#e6faf7 0%,#d4f3ed 45%,#eaf7f3 100%); border-bottom: 4px solid #0d9488; }
+    .main-intro .breadcrumb { margin-bottom: 20px; }
+    .main-intro h1 { font-family: 'Cormorant Garamond',serif; font-size: 38px; font-weight: 700; color: #0d4a43; margin: 0 0 10px; letter-spacing: -0.02em; line-height: 1.15; }
+    .main-intro > p { color: #2d6a61; font-size: 15px; line-height: 1.65; max-width: 640px; margin: 0; }
+    @media(max-width:900px){ .main-intro { margin:-32px -24px 32px; padding:28px 24px 24px; } .main-intro h1 { font-size:28px; } }
     .logic-trace { margin: 28px 0; }
     .lt-input { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 10px; padding: 16px 20px; font-size: 13.5px; margin-bottom: 20px; }
     .lt-input code { font-family: 'Consolas', monospace; background: rgba(13,148,136,.08); padding: 2px 8px; border-radius: 4px; color: var(--primary-dark); font-size: 13px; }
@@ -271,16 +277,145 @@
     </aside>
     
     <main class="main">
-      <div class="breadcrumb">
-        <a href="index.html">Home</a><span>/</span><a href="index.html#services">Services</a><span>/</span><span>Smart ADC Design</span>
+      <div class="main-intro" id="overview">
+        <div class="breadcrumb">
+          <a href="index.html">Home</a><span>/</span><a href="index.html#services">AI Drug Design</a><span>/</span><span>Smart ADC Design</span>
+        </div>
+        <h1>Smart ADC Design</h1>
+        <p>AI-driven end-to-end ADC engineering platform integrating target analysis, linker-payload matching, and CMC developability assessment. Backed by 100 clinical ADC programs (12 approved + 88 in trials), systematically optimizing the efficacy-safety balance of conjugation strategies.</p>
       </div>
 
-      <h1 id="platform">Intelligent Antibody-Drug Conjugate (ADC) Design</h1>
-      <p class="subtitle">AI-driven end-to-end engineering for next-generation ADCs. From target profiling to linker-payload matching, conjugation technology selection, and CMC validation.</p>
-
       <div class="mission-block">
-        <p><strong>The Therapeutic Window Challenge:</strong> ADCs are complex multi-component systems where clinical success is defined by the delicate balance of target specificity, linker stability, and payload potency. A single mismatch—such as pairing a highly hydrophobic payload with a high DAR conjugation method—can lead to aggregation, premature clearance, and severe off-target toxicity.</p>
-        <p>Our proprietary <strong>ADC Decision Engine</strong> leverages a comprehensive, QA-audited knowledge base of <strong>199+ validated components</strong> and <strong>30+ clinical programs</strong> to design best-in-class and first-in-class ADCs. We navigate the vast combinatorial space to recommend designs that maximize efficacy while strictly adhering to safety and CMC constraints.</p>
+        <p>InSynBio's Smart ADC Design platform combines large-scale clinical data with advanced computational models to provide optimized conjugation strategies. We focus not only on cytotoxic potency but also use AI to predict ADC systemic stability and off-target risk.</p>
+        <p>Our proprietary <strong>ADC Decision Engine</strong> leverages a QA-audited knowledge base of <strong>199+ validated components</strong> and <strong>100 clinical programs</strong> to design best-in-class and first-in-class ADCs.</p>
+      </div>
+
+      <!-- ═══ KNOWLEDGE BASE OVERVIEW ═══ -->
+      <h2 id="knowledge-base"><span class="h2-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg></span>Knowledge Base: Design Patterns from 100 Clinical ADC Programs</h2>
+      <p>Our platform contains a structured knowledge base spanning the full clinical ADC spectrum from Phase I to approved products. Below are core database statistics and key design pattern summaries.</p>
+
+      <!-- Stats Row -->
+      <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin:20px 0 32px;">
+        <div style="text-align:center;background:linear-gradient(135deg,#f0fdf4,#dcfce7);border:1px solid #bbf7d0;border-radius:12px;padding:16px 10px;">
+          <div style="font-size:28px;font-weight:800;color:#065f46;letter-spacing:-1px;">100</div>
+          <div style="font-size:11px;font-weight:600;color:#047857;margin-top:4px;text-transform:uppercase;letter-spacing:0.5px;">Clinical Programs</div>
+          <div style="font-size:10px;color:#6b7280;margin-top:2px;">12 approved</div>
+        </div>
+        <div style="text-align:center;background:linear-gradient(135deg,#eff6ff,#dbeafe);border:1px solid #bfdbfe;border-radius:12px;padding:16px 10px;">
+          <div style="font-size:28px;font-weight:800;color:#1e40af;letter-spacing:-1px;">78</div>
+          <div style="font-size:11px;font-weight:600;color:#1d4ed8;margin-top:4px;text-transform:uppercase;letter-spacing:0.5px;">Target Antigens</div>
+          <div style="font-size:10px;color:#6b7280;margin-top:2px;">With internalization rate tier</div>
+        </div>
+        <div style="text-align:center;background:linear-gradient(135deg,#fefce8,#fef9c3);border:1px solid #fde68a;border-radius:12px;padding:16px 10px;">
+          <div style="font-size:28px;font-weight:800;color:#92400e;letter-spacing:-1px;">32</div>
+          <div style="font-size:11px;font-weight:600;color:#b45309;margin-top:4px;text-transform:uppercase;letter-spacing:0.5px;">Payload Molecules</div>
+          <div style="font-size:10px;color:#6b7280;margin-top:2px;">11 MOA classes</div>
+        </div>
+        <div style="text-align:center;background:linear-gradient(135deg,#fdf4ff,#f3e8ff);border:1px solid #e9d5ff;border-radius:12px;padding:16px 10px;">
+          <div style="font-size:28px;font-weight:800;color:#6b21a8;letter-spacing:-1px;">22</div>
+          <div style="font-size:11px;font-weight:600;color:#7c3aed;margin-top:4px;text-transform:uppercase;letter-spacing:0.5px;">Linker Types</div>
+          <div style="font-size:10px;color:#6b7280;margin-top:2px;">Cleavable / Non-cleavable</div>
+        </div>
+        <div style="text-align:center;background:linear-gradient(135deg,#fff7ed,#fed7aa);border:1px solid #fdba74;border-radius:12px;padding:16px 10px;">
+          <div style="font-size:28px;font-weight:800;color:#c2410c;letter-spacing:-1px;">23</div>
+          <div style="font-size:11px;font-weight:600;color:#ea580c;margin-top:4px;text-transform:uppercase;letter-spacing:0.5px;">Conjugation Techs</div>
+          <div style="font-size:10px;color:#6b7280;margin-top:2px;">Stochastic / Site-specific</div>
+        </div>
+      </div>
+
+      <!-- A: Top Antigens -->
+      <h3 style="font-size:18px;font-weight:700;color:#111827;margin:32px 0 14px;border-left:4px solid #0d9488;padding-left:12px;">A. Top Target Antigens (Top 15) — Tier Classification</h3>
+      <p style="font-size:14px;color:#6b7280;margin-bottom:14px;">Composite score based on clinical validation (Tier), internalization rate (ke), and off-target risk. Tier-1 = marketed ADC approved; Tier-2 = late-stage clinical validation; Tier-3 = early/exploratory.</p>
+      <div style="overflow-x:auto;border-radius:10px;box-shadow:0 0 0 1px #e5e7eb;margin-bottom:12px;">
+        <table style="width:100%;border-collapse:collapse;font-size:13px;">
+          <thead>
+            <tr style="background:#0d9488;color:white;">
+              <th style="padding:10px 12px;text-align:left;">Antigen</th>
+              <th style="padding:10px 12px;text-align:center;">Tier</th>
+              <th style="padding:10px 12px;text-align:left;">Indication</th>
+              <th style="padding:10px 12px;text-align:center;">Internalization</th>
+              <th style="padding:10px 12px;text-align:center;">Off-target Risk</th>
+              <th style="padding:10px 12px;text-align:left;">Approved Drug</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="background:#f0fdf4;"><td style="padding:9px 12px;font-weight:700;border-bottom:1px solid #f3f4f6;">HER2</td><td style="padding:9px 12px;text-align:center;border-bottom:1px solid #f3f4f6;"><span style="background:#dcfce7;color:#065f46;padding:2px 8px;border-radius:6px;font-size:11px;font-weight:700;">Tier-1</span></td><td style="padding:9px 12px;border-bottom:1px solid #f3f4f6;">Solid tumors (Breast, Gastric)</td><td style="padding:9px 12px;text-align:center;border-bottom:1px solid #f3f4f6;"><span style="color:#f59e0b;font-weight:600;">Moderate</span></td><td style="padding:9px 12px;text-align:center;border-bottom:1px solid #f3f4f6;"><span style="color:#f59e0b;font-weight:600;">Moderate</span></td><td style="padding:9px 12px;border-bottom:1px solid #f3f4f6;font-size:12px;">T-DXd (Enhertu), T-DM1 (Kadcyla)</td></tr>
+            <tr><td style="padding:9px 12px;font-weight:700;border-bottom:1px solid #f3f4f6;">TROP2</td><td style="padding:9px 12px;text-align:center;border-bottom:1px solid #f3f4f6;"><span style="background:#dcfce7;color:#065f46;padding:2px 8px;border-radius:6px;font-size:11px;font-weight:700;">Tier-1</span></td><td style="padding:9px 12px;border-bottom:1px solid #f3f4f6;">Solid tumors (TNBC, NSCLC)</td><td style="padding:9px 12px;text-align:center;border-bottom:1px solid #f3f4f6;"><span style="color:#0d9488;font-weight:600;">Moderate-High</span></td><td style="padding:9px 12px;text-align:center;border-bottom:1px solid #f3f4f6;"><span style="color:#f59e0b;font-weight:600;">Moderate</span></td><td style="padding:9px 12px;border-bottom:1px solid #f3f4f6;font-size:12px;">Sacituzumab gov. (Trodelvy), Dato-DXd</td></tr>
+            <tr style="background:#f9fafb;"><td style="padding:9px 12px;font-weight:700;border-bottom:1px solid #f3f4f6;">CD30</td><td style="padding:9px 12px;text-align:center;border-bottom:1px solid #f3f4f6;"><span style="background:#dcfce7;color:#065f46;padding:2px 8px;border-radius:6px;font-size:11px;font-weight:700;">Tier-1</span></td><td style="padding:9px 12px;border-bottom:1px solid #f3f4f6;">Hematologic (HL, ALCL)</td><td style="padding:9px 12px;text-align:center;border-bottom:1px solid #f3f4f6;"><span style="color:#16a34a;font-weight:600;">High</span></td><td style="padding:9px 12px;text-align:center;border-bottom:1px solid #f3f4f6;"><span style="color:#16a34a;font-weight:600;">Low</span></td><td style="padding:9px 12px;border-bottom:1px solid #f3f4f6;font-size:12px;">Brentuximab vedotin (Adcetris)</td></tr>
+            <tr><td style="padding:9px 12px;font-weight:700;border-bottom:1px solid #f3f4f6;">Nectin-4</td><td style="padding:9px 12px;text-align:center;border-bottom:1px solid #f3f4f6;"><span style="background:#dcfce7;color:#065f46;padding:2px 8px;border-radius:6px;font-size:11px;font-weight:700;">Tier-1</span></td><td style="padding:9px 12px;border-bottom:1px solid #f3f4f6;">Solid tumors (Urothelial)</td><td style="padding:9px 12px;text-align:center;border-bottom:1px solid #f3f4f6;"><span style="color:#16a34a;font-weight:600;">High</span></td><td style="padding:9px 12px;text-align:center;border-bottom:1px solid #f3f4f6;"><span style="color:#16a34a;font-weight:600;">Low</span></td><td style="padding:9px 12px;border-bottom:1px solid #f3f4f6;font-size:12px;">Enfortumab vedotin (Padcev)</td></tr>
+            <tr style="background:#f9fafb;"><td style="padding:9px 12px;font-weight:700;border-bottom:1px solid #f3f4f6;">FRα</td><td style="padding:9px 12px;text-align:center;border-bottom:1px solid #f3f4f6;"><span style="background:#dcfce7;color:#065f46;padding:2px 8px;border-radius:6px;font-size:11px;font-weight:700;">Tier-1</span></td><td style="padding:9px 12px;border-bottom:1px solid #f3f4f6;">Solid tumors (Ovarian)</td><td style="padding:9px 12px;text-align:center;border-bottom:1px solid #f3f4f6;"><span style="color:#16a34a;font-weight:600;">High</span></td><td style="padding:9px 12px;text-align:center;border-bottom:1px solid #f3f4f6;"><span style="color:#16a34a;font-weight:600;">Low</span></td><td style="padding:9px 12px;border-bottom:1px solid #f3f4f6;font-size:12px;">Mirvetuximab soravtansine (Elahere)</td></tr>
+            <tr><td style="padding:9px 12px;font-weight:700;border-bottom:1px solid #f3f4f6;">EGFR</td><td style="padding:9px 12px;text-align:center;border-bottom:1px solid #f3f4f6;"><span style="background:#dbeafe;color:#1e40af;padding:2px 8px;border-radius:6px;font-size:11px;font-weight:700;">Tier-2</span></td><td style="padding:9px 12px;border-bottom:1px solid #f3f4f6;">Solid tumors (NSCLC, CRC)</td><td style="padding:9px 12px;text-align:center;border-bottom:1px solid #f3f4f6;"><span style="color:#f59e0b;font-weight:600;">Moderate</span></td><td style="padding:9px 12px;text-align:center;border-bottom:1px solid #f3f4f6;"><span style="color:#ef4444;font-weight:600;">High</span></td><td style="padding:9px 12px;border-bottom:1px solid #f3f4f6;font-size:12px;">Multiple Ph II/III (AZ, Amgen)</td></tr>
+            <tr style="background:#f9fafb;"><td style="padding:9px 12px;font-weight:700;border-bottom:1px solid #f3f4f6;">CLDN18.2</td><td style="padding:9px 12px;text-align:center;border-bottom:1px solid #f3f4f6;"><span style="background:#dbeafe;color:#1e40af;padding:2px 8px;border-radius:6px;font-size:11px;font-weight:700;">Tier-2</span></td><td style="padding:9px 12px;border-bottom:1px solid #f3f4f6;">Solid tumors (Gastric, Pancreatic)</td><td style="padding:9px 12px;text-align:center;border-bottom:1px solid #f3f4f6;"><span style="color:#f59e0b;font-weight:600;">Moderate</span></td><td style="padding:9px 12px;text-align:center;border-bottom:1px solid #f3f4f6;"><span style="color:#16a34a;font-weight:600;">Low</span></td><td style="padding:9px 12px;border-bottom:1px solid #f3f4f6;font-size:12px;">CMG901, SYSA1801 (Ph II/III)</td></tr>
+            <tr><td style="padding:9px 12px;font-weight:700;border-bottom:1px solid #f3f4f6;">B7-H3</td><td style="padding:9px 12px;text-align:center;border-bottom:1px solid #f3f4f6;"><span style="background:#dbeafe;color:#1e40af;padding:2px 8px;border-radius:6px;font-size:11px;font-weight:700;">Tier-2</span></td><td style="padding:9px 12px;border-bottom:1px solid #f3f4f6;">Solid tumors (Prostate, Brain)</td><td style="padding:9px 12px;text-align:center;border-bottom:1px solid #f3f4f6;"><span style="color:#0d9488;font-weight:600;">Moderate-High</span></td><td style="padding:9px 12px;text-align:center;border-bottom:1px solid #f3f4f6;"><span style="color:#f59e0b;font-weight:600;">Moderate</span></td><td style="padding:9px 12px;border-bottom:1px solid #f3f4f6;font-size:12px;">Ifinatamab deruxtecan, DS-7300a (Ph II)</td></tr>
+            <tr style="background:#f9fafb;"><td style="padding:9px 12px;font-weight:700;">BCMA</td><td style="padding:9px 12px;text-align:center;"><span style="background:#dbeafe;color:#1e40af;padding:2px 8px;border-radius:6px;font-size:11px;font-weight:700;">Tier-2</span></td><td style="padding:9px 12px;">Hematologic (MM)</td><td style="padding:9px 12px;text-align:center;"><span style="color:#16a34a;font-weight:600;">High</span></td><td style="padding:9px 12px;text-align:center;"><span style="color:#16a34a;font-weight:600;">Low</span></td><td style="padding:9px 12px;font-size:12px;">Belantamab mafodotin (withdrawn, under re-evaluation)</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- B: Payload Classes -->
+      <h3 style="font-size:18px;font-weight:700;color:#111827;margin:36px 0 14px;border-left:4px solid #0d9488;padding-left:12px;">B. Payload Classes &amp; Key Design Parameters</h3>
+      <p style="font-size:14px;color:#6b7280;margin-bottom:14px;">Platform covers 32 payload molecules across 11 MOA classes. LogP, optimal DAR, and bystander effect capacity vary significantly by class, directly dictating linker type selection and high-DAR feasibility.</p>
+      <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-bottom:16px;">
+        <div style="background:#fef9c3;border:1px solid #fde68a;border-radius:10px;padding:14px 16px;">
+          <div style="font-weight:700;font-size:14px;color:#92400e;margin-bottom:8px;">① Tubulin Inhibitors</div>
+          <div style="font-size:12px;color:#374151;line-height:1.55;">Examples: <strong>MMAE</strong> (LogP 3.2), <strong>MMAF</strong> (LogP 2.8), <strong>DM1/DM4</strong> (LogP 2.0–2.8)<br>Optimal DAR: 3–4 (high LogP; DAR &gt; 4 risks aggregation)<br>Bystander effect: <span style="color:#f59e0b;font-weight:600;">Moderate</span> | DLT: Peripheral neuropathy</div>
+        </div>
+        <div style="background:#d1fae5;border:1px solid #6ee7b7;border-radius:10px;padding:14px 16px;">
+          <div style="font-weight:700;font-size:14px;color:#065f46;margin-bottom:8px;">② TOP1 Inhibitors (TOP1i)</div>
+          <div style="font-size:12px;color:#374151;line-height:1.55;">Examples: <strong>DXd</strong> (LogP 1.3), <strong>SN-38</strong> (LogP −0.37), <strong>Exatecan</strong> (LogP −0.2)<br>Optimal DAR: 4–8 (hydrophilic; high DAR CMC acceptable)<br>Bystander effect: <span style="color:#16a34a;font-weight:600;">Strong</span> | DLT: Myelosuppression, ILD (DXd)</div>
+        </div>
+        <div style="background:#fee2e2;border:1px solid #fca5a5;border-radius:10px;padding:14px 16px;">
+          <div style="font-weight:700;font-size:14px;color:#991b1b;margin-bottom:8px;">③ DNA Damaging Agents</div>
+          <div style="font-size:12px;color:#374151;line-height:1.55;">Examples: <strong>Calicheamicin</strong>, <strong>PBD dimers</strong>, <strong>Duocarmycin</strong><br>Optimal DAR: 2–2.5 (ultra-potent; &lt;pM; DAR &gt; 2 uncontrollable toxicity)<br>Bystander effect: <span style="color:#f59e0b;font-weight:600;">Weak</span> | DLT: Severe hepatotoxicity</div>
+        </div>
+        <div style="background:#ede9fe;border:1px solid #c4b5fd;border-radius:10px;padding:14px 16px;">
+          <div style="font-weight:700;font-size:14px;color:#5b21b6;margin-bottom:8px;">④ ISAC — Immunostimulatory ADCs</div>
+          <div style="font-size:12px;color:#374151;line-height:1.55;">Examples: TLR7/8 agonists (resiquimod), STING agonists, CpG ODN<br>DAR: 2–4; Mechanism: Activates intratumoral APCs → adaptive immunity<br>Bystander: <span style="color:#16a34a;font-weight:600;">Strong (immune activation)</span> | Status: Early exploration</div>
+        </div>
+        <div style="background:#f0f9ff;border:1px solid #bae6fd;border-radius:10px;padding:14px 16px;">
+          <div style="font-weight:700;font-size:14px;color:#0c4a6e;margin-bottom:8px;">⑤ Radionuclide Conjugates (RDC)</div>
+          <div style="font-size:12px;color:#374151;line-height:1.55;">Examples: <strong>Lu-177</strong>, <strong>Ac-225</strong> (α-particle), <strong>Y-90</strong><br>DAR: N/A (chelator 1:1 labeling) | Internalization not required<br>Crossfire overcomes antigen heterogeneity</div>
+        </div>
+        <div style="background:#fff7ed;border:1px solid #fdba74;border-radius:10px;padding:14px 16px;">
+          <div style="font-weight:700;font-size:14px;color:#9a3412;margin-bottom:8px;">⑥ Novel Payloads (6 classes)</div>
+          <div style="font-size:12px;color:#374151;line-height:1.55;"><strong>Protein toxins</strong>: Ricin-A, PE24 — high immunogenicity<br><strong>RNA Pol II inhibitors</strong>: Amatoxin — cell-cycle independent<br><strong>Bcl-xL inhibitors</strong>: AZ1208 derivatives — apoptosis pathway<br><strong>PROTAC</strong>: Targeted protein degradation (exploratory)</div>
+        </div>
+      </div>
+
+      <!-- C: Linker Types -->
+      <h3 style="font-size:18px;font-weight:700;color:#111827;margin:32px 0 14px;border-left:4px solid #0d9488;padding-left:12px;">C. Linker Types &amp; Plasma Stability</h3>
+      <p style="font-size:14px;color:#6b7280;margin-bottom:14px;">Linker chemistry determines payload release timing and location. 22 linkers divide into cleavable (4 subtypes) and non-cleavable (2 subtypes); selection strategy based on antigen internalization rate and lysosomal environment.</p>
+      <div style="overflow-x:auto;border-radius:10px;box-shadow:0 0 0 1px #e5e7eb;margin-bottom:12px;">
+        <table style="width:100%;border-collapse:collapse;font-size:13px;">
+          <thead>
+            <tr style="background:#374151;color:white;">
+              <th style="padding:10px 12px;text-align:left;">Category</th>
+              <th style="padding:10px 12px;text-align:left;">Subtype / Example</th>
+              <th style="padding:10px 12px;text-align:left;">Release Mechanism</th>
+              <th style="padding:10px 12px;text-align:center;">Plasma t½</th>
+              <th style="padding:10px 12px;text-align:left;">Paired Payload</th>
+              <th style="padding:10px 12px;text-align:left;">Clinical Example</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="background:#f8fafc;"><td rowspan="4" style="padding:9px 12px;font-weight:700;color:#0d9488;border-bottom:1px solid #e5e7eb;vertical-align:top;border-right:2px solid #e5e7eb;">Cleavable</td><td style="padding:9px 12px;font-weight:600;border-bottom:1px solid #f3f4f6;">Protease-sensitive<br><small style="color:#6b7280;">vc-PABC, GGFG</small></td><td style="padding:9px 12px;border-bottom:1px solid #f3f4f6;font-size:12px;">Lysosomal Cathepsin-B cleaves Val-Cit peptide bond</td><td style="padding:9px 12px;text-align:center;border-bottom:1px solid #f3f4f6;"><span style="color:#16a34a;font-weight:600;">&gt;72 h</span></td><td style="padding:9px 12px;border-bottom:1px solid #f3f4f6;font-size:12px;">MMAE (vc-PABC), DXd (GGFG)</td><td style="padding:9px 12px;border-bottom:1px solid #f3f4f6;font-size:11px;color:#6b7280;">Adcetris, Enhertu, Padcev</td></tr>
+            <tr><td style="padding:9px 12px;font-weight:600;border-bottom:1px solid #f3f4f6;">pH-sensitive<br><small style="color:#6b7280;">CL2A, hydrazone</small></td><td style="padding:9px 12px;border-bottom:1px solid #f3f4f6;font-size:12px;">pH 4.5–5.0 (lysosomal) carbonate/hydrazone hydrolysis</td><td style="padding:9px 12px;text-align:center;border-bottom:1px solid #f3f4f6;"><span style="color:#f59e0b;font-weight:600;">24–48 h</span></td><td style="padding:9px 12px;border-bottom:1px solid #f3f4f6;font-size:12px;">SN-38 (CL2A), Calicheamicin (hydrazone)</td><td style="padding:9px 12px;border-bottom:1px solid #f3f4f6;font-size:11px;color:#6b7280;">Trodelvy, Mylotarg</td></tr>
+            <tr style="background:#f8fafc;"><td style="padding:9px 12px;font-weight:600;border-bottom:1px solid #f3f4f6;">Disulfide<br><small style="color:#6b7280;">SPDB, SSNPB</small></td><td style="padding:9px 12px;border-bottom:1px solid #f3f4f6;font-size:12px;">High intracellular reducing environment (GSH 1–10 mM) cleaves</td><td style="padding:9px 12px;text-align:center;border-bottom:1px solid #f3f4f6;"><span style="color:#f59e0b;font-weight:600;">24–72 h</span></td><td style="padding:9px 12px;border-bottom:1px solid #f3f4f6;font-size:12px;">DM4 (SPDB)</td><td style="padding:9px 12px;border-bottom:1px solid #f3f4f6;font-size:11px;color:#6b7280;">SAR3419 (Ph II)</td></tr>
+            <tr><td style="padding:9px 12px;font-weight:600;border-bottom:2px solid #e5e7eb;">β-Glucuronidase<br><small style="color:#6b7280;">Glucuronide-PABC</small></td><td style="padding:9px 12px;border-bottom:2px solid #e5e7eb;font-size:12px;">Lysosomal β-glucuronidase cleaves glycosidic bond</td><td style="padding:9px 12px;text-align:center;border-bottom:2px solid #e5e7eb;"><span style="color:#16a34a;font-weight:600;">&gt;96 h</span></td><td style="padding:9px 12px;border-bottom:2px solid #e5e7eb;font-size:12px;">Hydrophilic payloads (CL2A alternative)</td><td style="padding:9px 12px;border-bottom:2px solid #e5e7eb;font-size:11px;color:#6b7280;">IMMU-130 (Ph II)</td></tr>
+            <tr style="background:#f8fafc;"><td rowspan="2" style="padding:9px 12px;font-weight:700;color:#6b7280;border-bottom:1px solid #e5e7eb;vertical-align:top;border-right:2px solid #e5e7eb;">Non-Cleavable</td><td style="padding:9px 12px;font-weight:600;border-bottom:1px solid #f3f4f6;">Thioether<br><small style="color:#6b7280;">SMCC/MCC</small></td><td style="padding:9px 12px;border-bottom:1px solid #f3f4f6;font-size:12px;">Complete lysosomal antibody degradation releases DM1-Lys metabolite</td><td style="padding:9px 12px;text-align:center;border-bottom:1px solid #f3f4f6;"><span style="color:#16a34a;font-weight:600;">&gt;7 days</span></td><td style="padding:9px 12px;border-bottom:1px solid #f3f4f6;font-size:12px;">DM1 (SMCC)</td><td style="padding:9px 12px;border-bottom:1px solid #f3f4f6;font-size:11px;color:#6b7280;">Kadcyla (T-DM1)</td></tr>
+            <tr><td style="padding:9px 12px;font-weight:600;">Maleimide<br><small style="color:#6b7280;">mcMMAF</small></td><td style="padding:9px 12px;font-size:12px;">Releases MMAF-Cys after antibody degradation; MMAF non-membrane-permeable</td><td style="padding:9px 12px;text-align:center;"><span style="color:#16a34a;font-weight:600;">&gt;7 days</span></td><td style="padding:9px 12px;font-size:12px;">MMAF (charged, low bystander effect)</td><td style="padding:9px 12px;font-size:11px;color:#6b7280;">DCDT2980S (Ph II)</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p style="font-size:12px;color:#9ca3af;margin-bottom:8px;">Note: Non-cleavable linkers require complete antibody degradation for active metabolite release; demand high internalization rate (ke &gt; 0.15 h⁻¹); no bystander effect — best for high-antigen-homogeneity targets.</p>
+
+      <!-- DB Link -->
+      <div style="background:linear-gradient(135deg,#ecfdf5,#d1fae5);border:1px solid #a7f3d0;border-radius:12px;padding:20px 24px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;margin-top:8px;">
+        <div>
+          <div style="font-weight:700;font-size:15px;color:#065f46;">Full Database Query</div>
+          <div style="font-size:13px;color:#047857;margin-top:4px;">Browse all 100 clinical ADC programs by target, payload, DAR, and view failure analysis for each terminated program</div>
+        </div>
+        <a href="adc_database.html" style="display:inline-flex;align-items:center;gap:8px;background:#0d9488;color:white;padding:10px 20px;border-radius:8px;text-decoration:none;font-weight:600;font-size:14px;white-space:nowrap;">View Full ADC Database →</a>
       </div>
 
       <h2 id="knowledge-base"><span class="h2-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg></span>The InSynBio ADC Knowledge Base</h2>
@@ -424,45 +559,61 @@
         </div>
       </div>
 
-      <h2 id="submit"><span class="h2-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg></span>Submit Your ADC Inquiry</h2>
-      <p>Provide your target or indication, and our ADC Decision Engine will generate a ranked list of optimal Linker-Payload and Conjugation strategies.</p>
+      <h2 id="submit"><span class="h2-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg></span>Submit ADC Design Inquiry</h2>
+      <p>Provide your target or indication, and our ADC Decision Engine will generate an optimized linker-payload and conjugation strategy recommendation for you.</p>
       
       <div class="form-section">
-        <form action="#" method="POST">
+        <form id="adc-inquiry-form" action="https://formspree.io/f/mnjblezr" method="POST">
+          <input type="hidden" name="_subject" value="InSynBio ADC Design Inquiry">
+          <input type="hidden" name="_next" value="https://insynbio.com/thanks.html">
+          <input type="hidden" name="source_page" value="InSynBio_ADC_Design_Page.html">
+          <input type="hidden" name="page_title" value="Smart ADC Design">
           <div class="form-row">
             <div class="form-group">
               <label for="disease">Target Indication</label>
               <select id="disease" name="disease">
+                <option value="">Select indication</option>
                 <option value="solid_tumor">Solid Tumor (e.g., Breast, NSCLC, Gastric)</option>
                 <option value="liquid_tumor">Hematologic Malignancy (e.g., DLBCL, AML)</option>
                 <option value="autoimmune">Autoimmune Disease</option>
+                <option value="other">Other</option>
               </select>
             </div>
             <div class="form-group">
               <label for="target_antigen">Target Antigen (Optional)</label>
-              <input type="text" id="target_antigen" name="target_antigen" placeholder="e.g., HER2, TROP-2, CLDN6">
+              <input type="text" id="target_antigen" name="target_antigen" placeholder="e.g., HER2, TROP-2, CLDN18.2">
             </div>
           </div>
-          
           <div class="form-row">
             <div class="form-group full">
               <label>Design Strategy Preference</label>
               <div class="check-group">
-                <div class="check-item"><input type="radio" name="strategy" id="strat_fast" checked><label for="strat_fast">Fast-Follower (Validated Payloads)</label></div>
-                <div class="check-item"><input type="radio" name="strategy" id="strat_first"><label for="strat_first">First-in-Class (Novel Payloads e.g., PROTAC/ISAC)</label></div>
-                <div class="check-item"><input type="radio" name="strategy" id="strat_bisp"><label for="strat_bisp">Bispecific ADC</label></div>
+                <div class="check-item"><input type="radio" name="strategy" id="strat_fast" value="fast_follower"><label for="strat_fast">Fast-Follower (Validated payloads)</label></div>
+                <div class="check-item"><input type="radio" name="strategy" id="strat_first" value="first_in_class"><label for="strat_first">First-in-Class (Novel payloads, e.g., PROTAC/ISAC)</label></div>
+                <div class="check-item"><input type="radio" name="strategy" id="strat_bisp" value="bispecific"><label for="strat_bisp">Bispecific ADC</label></div>
               </div>
             </div>
           </div>
-          
           <div class="form-row">
             <div class="form-group full">
-              <label for="project_details">Project Details & Constraints</label>
-              <textarea id="project_details" name="project_details" placeholder="Describe your specific requirements, such as desired DAR, CMC limitations, or patent (FTO) concerns..."></textarea>
+              <label for="project_details">Project Details &amp; Constraints</label>
+              <textarea id="project_details" name="project_details" placeholder="Describe your requirements: desired DAR, CMC constraints, FTO concerns, available antibody sequences, etc."></textarea>
             </div>
           </div>
-          
-          <button type="submit" class="btn">Generate ADC Proposal</button>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="org">Organization *</label>
+              <input type="text" id="org" name="org" required>
+            </div>
+            <div class="form-group">
+              <label for="email">Work Email *</label>
+              <input type="email" id="email" name="email" required>
+            </div>
+          </div>
+          <div style="margin-top:8px;">
+            <button type="submit" class="btn">Submit ADC Inquiry</button>
+            <p style="font-size:13px;color:#6b7280;margin-top:12px;">We typically respond within 1–2 business days with an initial design recommendation.</p>
+          </div>
         </form>
       </div>
 

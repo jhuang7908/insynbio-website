@@ -135,6 +135,63 @@
     .site-footer a { color: #6b7280; text-decoration: none; transition: color 0.2s; }
     .site-footer a:hover { color: var(--primary); }
 
+    /* ── Green Intro Header ── */
+    .main-intro { margin: -60px -60px 40px; padding: 36px 60px 28px; background: repeating-linear-gradient(135deg, transparent, transparent 14px, rgba(13,148,136,0.055) 14px, rgba(13,148,136,0.055) 15px), linear-gradient(135deg, #e6faf7 0%, #d4f3ed 45%, #eaf7f3 100%); border-bottom: 4px solid #0d9488; }
+    .main-intro .breadcrumb { margin-bottom: 20px; }
+    .main-intro h1 { font-family: 'Cormorant Garamond', serif; font-size: 38px; font-weight: 700; color: #0d4a43; margin: 0 0 10px; letter-spacing: -0.02em; line-height: 1.15; }
+    .main-intro > p { color: #2d6a61; font-size: 15px; line-height: 1.65; max-width: 640px; margin: 0; }
+    @media (max-width: 900px) { .main-intro { margin: -32px -24px 32px; padding: 28px 24px 24px; } .main-intro h1 { font-size: 28px; } }
+
+    /* ── Trust Grid ── */
+    .trust-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; margin: 24px 0 36px; }
+    .trust-card { background: linear-gradient(160deg, #fff 0%, #f0fdf9 100%); border: 1px solid rgba(13,148,136,0.12); border-radius: 16px; padding: 22px; box-shadow: 0 12px 28px -24px rgba(13,148,136,0.24); position: relative; overflow: hidden; }
+    .trust-card::before { content: ''; position: absolute; inset: 0 0 auto 0; height: 2px; background: linear-gradient(90deg, rgba(13,148,136,0.95), rgba(13,148,136,0.18)); }
+    .trust-card .eyebrow { display: block; margin-bottom: 8px; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--primary); }
+    .trust-card h3 { margin: 0 0 8px; font-size: 18px; color: #111827; letter-spacing: -0.01em; }
+    .trust-card p { margin: 0; font-size: 14px; line-height: 1.5; color: #5b6472; }
+    @media (max-width: 900px) { .trust-grid { grid-template-columns: 1fr; } }
+
+    /* ── Quick Proof ── */
+    .quick-proof { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; margin: 24px 0 0; }
+    .quick-proof-item { background: #fff; border: 1px solid rgba(13,148,136,0.1); border-radius: 14px; padding: 18px 16px; position: relative; overflow: hidden; }
+    .quick-proof-item::before { content: ''; position: absolute; inset: auto 0 0 0; height: 3px; background: linear-gradient(90deg, rgba(13,148,136,0.95), rgba(13,148,136,0.15)); }
+    .quick-proof-item strong { display: block; font-family: 'Cormorant Garamond', serif; font-size: 28px; line-height: 1; color: var(--primary); margin-bottom: 6px; }
+    .quick-proof-item span { display: block; font-size: 12px; font-weight: 600; color: #5b6472; letter-spacing: 0.03em; text-transform: uppercase; line-height: 1.4; }
+    @media (max-width: 900px) { .quick-proof { grid-template-columns: repeat(2, 1fr); } }
+
+    /* ── Mission Actions ── */
+    .mission-actions { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 22px; }
+    .btn-secondary { display: inline-flex; align-items: center; justify-content: center; padding: 12px 18px; border-radius: 999px; border: 1px solid rgba(13,148,136,0.18); background: rgba(13,148,136,0.08); color: var(--primary-dark); text-decoration: none; font-size: 14px; font-weight: 600; transition: all 0.2s ease; }
+    .btn-secondary:hover { background: rgba(13,148,136,0.14); transform: translateY(-1px); }
+
+    /* ── Form improvements ── */
+    .form-intro { display: grid; grid-template-columns: minmax(0,1.1fr) minmax(260px,0.9fr); gap: 18px; margin-bottom: 24px; }
+    .form-panel { background: linear-gradient(155deg,#f9fbff 0%,#f3f7fb 100%); border: 1px solid rgba(13,148,136,0.12); border-radius: 16px; padding: 22px; position: relative; overflow: hidden; }
+    .form-panel::before { content: ''; position: absolute; inset: 0 auto auto 0; width: 100%; height: 2px; background: linear-gradient(90deg,rgba(13,148,136,0.9),rgba(13,148,136,0.18)); }
+    .form-panel h3 { margin: 0 0 8px; font-size: 18px; color: #111827; }
+    .form-panel p { margin: 0; font-size: 14px; line-height: 1.5; color: #5b6472; }
+    .form-panel ul { margin: 12px 0 0; padding-left: 18px; }
+    .form-panel li { margin: 0 0 8px; font-size: 14px; line-height: 1.55; color: #4b5563; }
+    .form-block { padding: 24px; border: 1px solid rgba(0,0,0,0.06); border-radius: 16px; background: #fff; }
+    .form-block + .form-block { margin-top: 18px; }
+    .form-block h3 { margin: 0 0 8px; font-size: 20px; color: #111827; letter-spacing: -0.01em; }
+    .form-block p { margin: 0 0 12px; font-size: 14px; color: #5b6472; line-height: 1.5; }
+    .form-section-title { margin: 0 0 16px; font-size: 12px; font-weight: 700; color: var(--primary); letter-spacing: 0.08em; text-transform: uppercase; }
+    .intake-note { margin-top: 18px; padding: 16px 18px; background: rgba(13,148,136,0.06); border: 1px solid rgba(13,148,136,0.14); border-radius: 12px; font-size: 14px; color: #374151; }
+    .intake-note strong { color: var(--primary-dark); }
+    .technical-details { margin-top: 18px; border: 1px solid rgba(13,148,136,0.12); border-radius: 16px; background: linear-gradient(180deg,#fbfcfe 0%,#f5f8fb 100%); overflow: hidden; }
+    .technical-details summary { cursor: pointer; list-style: none; padding: 18px 22px; font-size: 16px; font-weight: 600; color: #111827; display: flex; align-items: center; justify-content: space-between; }
+    .technical-details summary::-webkit-details-marker { display: none; }
+    .technical-details[open] summary { border-bottom: 1px solid rgba(13,148,136,0.1); }
+    .technical-details summary span { font-size: 13px; font-weight: 500; color: var(--text-muted); }
+    .technical-details-body { padding: 22px; }
+    .form-status { display: none; margin-top: 18px; padding: 14px 16px; border-radius: 12px; font-size: 14px; line-height: 1.5; }
+    .form-status.is-visible { display: block; }
+    .form-status.success { background: #ecfdf5; color: #166534; border: 1px solid #bbf7d0; }
+    .form-status.error { background: #fef2f2; color: #991b1b; border: 1px solid #fecaca; }
+    .submit-note { margin-top: 14px; font-size: 13px; color: #6b7280; }
+    @media (max-width: 900px) { .form-intro { grid-template-columns: 1fr; } }
+
     @media (max-width: 900px) {
       .top-header { flex-wrap: wrap; padding: 12px 16px; gap: 10px; }
       .top-header .brand { flex: 1 1 auto; min-width: 0; display: flex; align-items: center; flex-wrap: wrap; gap: 8px; }
@@ -259,19 +316,50 @@
       </nav>
     </aside>
     <main class="main">
-      <div class="breadcrumb">
-        <a href="index.html">Home</a><span>/</span><a href="index.html#services">Services</a><span>/</span><span>Antibody</span>
+      <div class="main-intro">
+        <div class="breadcrumb">
+          <a href="index.html">Home</a><span>/</span><a href="index.html#services">AI Drug Design</a><span>/</span><span>Antibody R&amp;D &amp; Assessment</span>
+        </div>
+        <h1>Antibody R&amp;D &amp; Assessment</h1>
+        <p>AI-driven sequence analysis, developability assessment, immunogenicity prediction, and humanization engineering — from candidate screening to full pre-clinical support. Backed by 1,142 clinical antibody benchmarks and a 6-tool ΔΔG virtual affinity maturation system.</p>
       </div>
-
-      <h1>Antibody Developability Assessment</h1>
-      <p class="subtitle">Expert-reviewed computational antibody analysis, evaluation, and gene-engineering humanization for drug discovery and development.</p>
 
       <div class="mission-block">
-        <p><strong>Expert-reviewed in silico pipeline from sequence to report.</strong> We provide numbering and CDR annotation, germline retrieval, developability and immunogenicity prediction, structure modeling and interface analysis, structure-driven humanization, and affinity maturation.</p>
-        <p>All deliverables are expert-reviewed and typically delivered within 3–5 business days. <a href="index.html#about">Learn more →</a></p>
+        <p><strong>Expert-reviewed in silico pipeline from sequence to report.</strong> We help teams judge whether an antibody is ready to advance, which risks need mitigation, and where humanization or optimization can deliver the greatest project impact.</p>
+        <p>All deliverables are expert-reviewed and typically delivered within 3–5 business days. You may submit project background now; sequences can be shared immediately or after NDA review. <a href="index.html#about" style="color:var(--primary);font-weight:600;">Learn more →</a></p>
+        <div class="mission-actions">
+          <a class="btn-secondary" href="mailto:contact@insynbio.com?subject=Sample Report Request — InSynBio" id="sample-report-btn">Request Sample Report</a>
+          <a class="btn-secondary" href="mailto:contact@insynbio.com?subject=NDA Request — InSynBio" id="nda-btn">Request NDA</a>
+        </div>
       </div>
-      
-      <p class="disclaimer">Disclaimer: InSynBio in silico analyses are for reference only and do not replace final wet-lab validation. Experimental confirmation is required.</p>
+      <p style="margin:-12px 0 28px;"><a href="antibody-guide.html" style="display:inline-flex;align-items:center;gap:6px;font-size:13px;color:#7c3aed;font-weight:600;text-decoration:none;background:rgba(124,58,237,0.07);border:1px solid rgba(124,58,237,0.2);padding:6px 12px;border-radius:20px;">📘 Browse Antibody Engineering Reference Guide: Fc mutations, developability metrics &amp; immunogenicity →</a></p>
+
+      <div class="trust-grid">
+        <div class="trust-card">
+          <span class="eyebrow">Use Case</span>
+          <h3>Fast Technical Decision-making</h3>
+          <p>For teams needing a reliable assessment of humanization risk, developability bottlenecks, or structural optimization direction before committing more wet-lab resources.</p>
+        </div>
+        <div class="trust-card">
+          <span class="eyebrow">Deliverables</span>
+          <h3>Report-grade Output</h3>
+          <p>Annotated sequence analysis, benchmarked risk metrics, engineering rationale, and recommended next steps — suitable for scientific teams and management review.</p>
+        </div>
+        <div class="trust-card">
+          <span class="eyebrow">How to Start</span>
+          <h3>Low-friction First Contact</h3>
+          <p>Submit project goals and available inputs now. Sequences and PDB files can be attached immediately or shared via confidential follow-up email.</p>
+        </div>
+      </div>
+
+      <div class="quick-proof">
+        <div class="quick-proof-item"><strong>3–5</strong><span>Business days typical delivery</span></div>
+        <div class="quick-proof-item"><strong>1,142</strong><span>Clinical antibody sequence benchmarks</span></div>
+        <div class="quick-proof-item"><strong>138</strong><span>Clinical ADA immunogenicity records</span></div>
+        <div class="quick-proof-item"><strong>NDA</strong><span>Can be signed before sharing sequences</span></div>
+      </div>
+
+      <p class="disclaimer" style="margin-top:24px;">Disclaimer: InSynBio in silico analyses are for reference only and do not replace final wet-lab validation. Experimental confirmation is required before clinical decision-making.</p>
 
       <h2 id="platform"><span class="h2-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg></span>Platform</h2>
       <p>The Antibody Developability Assessment platform provides computational analysis, evaluation, gene-engineering humanization, and structure-driven affinity maturation for antibody drug discovery and development. We primarily work from sequences—submit VH/VL or VHH sequences online; we can model structures in-house when needed. Our experts deliver structured reports covering numbering, germline retrieval, developability, immunogenicity, structure assessment, interface analysis, humanization design, and affinity maturation.</p>
@@ -716,109 +804,146 @@
       <!-- ── End Case Study Charts ──────────────────────────── -->
 
       <h2 id="submit"><span class="h2-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg></span>Submit Inquiry</h2>
-      <p>Complete the form below with your sequences and requirements. We will review your submission and provide a quote within 1–2 business days.</p>
+      <p>Start with your project background and required support. Technical inputs can be submitted now or added later — it won't affect your initial conversation.</p>
 
-      <div class="form-section">
-        <!-- Form submits to Formspree -->
+      <div style="margin-top:0;">
         <form id="inquiry-form" action="https://formspree.io/f/mnjblezr" method="POST">
-          <input type="hidden" name="_subject" value="InSynBio Inquiry">
+          <input type="hidden" name="_subject" value="InSynBio Antibody Assessment Inquiry">
           <input type="hidden" name="_next" value="https://insynbio.com/thanks.html">
-          <h3 style="margin-top: 0; margin-bottom: 20px;">Service Type</h3>
-          <div class="form-group full">
-            <div class="check-group">
-              <div class="check-item"><input type="checkbox" name="service_type" id="st1" value="assessment"><label for="st1">Assessment (Sequence, Developability, Immunogenicity, Structure)</label></div>
-              <div class="check-item"><input type="checkbox" name="service_type" id="st2" value="humanization"><label for="st2">Humanization</label></div>
+          <input type="hidden" name="source_page" value="InSynBio_Antibody_Developability_Assessment_Page.html">
+          <input type="hidden" name="page_title" value="Antibody R&D & Assessment">
+
+          <div class="form-intro">
+            <div class="form-panel">
+              <h3>Start with what your team needs to decide</h3>
+              <p>Tell us the molecule type, project goals, and available inputs. If your team prefers confidentiality, sequences can be shared after NDA or in a follow-up email.</p>
+            </div>
+            <div class="form-panel">
+              <h3>Typical deliverables include</h3>
+              <ul>
+                <li>Humanization &amp; developability assessment summary</li>
+                <li>Structured metrics with benchmark context</li>
+                <li>Recommended engineering options for next steps</li>
+              </ul>
             </div>
           </div>
-          <div class="form-group full">
-            <label>Humanization service (if applicable)</label>
-            <div class="check-group">
-              <div class="check-item"><input type="checkbox" name="humanization" id="h1" value="vhvl"><label for="h1">VH/VL Humanization</label></div>
-              <div class="check-item"><input type="checkbox" name="humanization" id="h2" value="vhh"><label for="h2">VHH Humanization</label></div>
-              <div class="check-item"><input type="checkbox" name="humanization" id="h3" value="vh2vhh"><label for="h3">VH to VHH Conversion</label></div>
-            </div>
-          </div>
-          <div class="form-group full">
-            <label>Affinity maturation (if applicable)</label>
-            <div class="check-group">
-              <div class="check-item"><input type="checkbox" name="affinity" id="a1" value="ab_ag"><label for="a1">Antigen-antibody</label></div>
-              <div class="check-item"><input type="checkbox" name="affinity" id="a2" value="ligand_receptor"><label for="a2">Ligand-receptor</label></div>
-              <div class="check-item"><input type="checkbox" name="affinity" id="a3" value="vhh"><label for="a3">VHH affinity maturation</label></div>
-            </div>
-          </div>
-          <h3 style="margin-top: 24px; margin-bottom: 20px;">Sequence Input</h3>
-          <div class="form-group full">
-            <label for="vh">VH sequence (amino acid, single letter)</label>
-            <textarea id="vh" name="vh" class="seq" placeholder="EVQLVESGGGLVQPGGSLRLSCAAS..."></textarea>
-            Paste the heavy chain variable region sequence (single-letter amino acid code)
-            
-          </div>
-          <div class="form-group full">
-            <label for="vl">VL sequence (amino acid, single letter)</label>
-            <textarea id="vl" name="vl" class="seq" placeholder="EIVLTQSPATLSLSPGERATLSC..."></textarea>
-            Paste the light chain variable region sequence (kappa or lambda). Leave blank for VHH or VH-to-VHH conversion.
-            
-          </div>
-          <div class="form-group full">
-            <label>Assessment services (if applicable)</label>
-            <div class="check-group">
-              <div class="check-item"><input type="checkbox" name="services" id="s1" value="sequence"><label for="s1">Sequence</label></div>
-              <div class="check-item"><input type="checkbox" name="services" id="s2" value="developability"><label for="s2">Developability</label></div>
-              <div class="check-item"><input type="checkbox" name="services" id="s3" value="immunogenicity"><label for="s3">Immunogenicity</label></div>
-              <div class="check-item"><input type="checkbox" name="services" id="s4" value="structure"><label for="s4">Structure</label></div>
-              <div class="check-item"><input type="checkbox" name="services" id="s5" value="full"><label for="s5">Full Report</label></div>
-              <div class="check-item"><input type="checkbox" name="services" id="s_other" value="other"><label for="s_other">Other / Custom Request</label></div>
-            </div>
-          </div>
-          <div class="form-group full">
-            <label>PDB file (optional)</label>
-            <p class="hint" style="margin: 0 0 8px;">We primarily work from sequences and can model structures in-house. If you have a PDB file for structure or interface analysis, please email it to <a href="mailto:contact@insynbio.com">contact@insynbio.com</a> and mention your inquiry in the subject or body.</p>
-            
-          </div>
-          <div class="form-group full">
-            <label for="message">Additional notes or requirements</label>
-            <textarea id="message" name="message" placeholder="e.g., antigen chain ID, CDR scheme preference"></textarea>
-          </div>
-          <h3 style="margin-top: 0; margin-bottom: 20px;">Contact Information</h3>
-          <div class="form-row">
-            <div class="form-group">
-              <label for="fname">First Name *</label>
-              <input type="text" id="fname" name="fname" required>
-            </div>
-            <div class="form-group">
-              <label for="lname">Last Name *</label>
-              <input type="text" id="lname" name="lname" required>
-            </div>
-          </div>
-          <div class="form-row">
-            <div class="form-group">
-              <label for="org">Organization *</label>
-              <input type="text" id="org" name="org" required>
-            </div>
-            <div class="form-group">
-              <label for="email">Email *</label>
-              <input type="email" id="email" name="email" required>
-            </div>
-          </div>
-          <div class="form-row">
-            <div class="form-group">
-              <label for="phone">Phone</label>
-              <input type="tel" id="phone" name="phone">
-            </div>
-          </div>
-          <div class="form-group full" style="margin-top: 16px;">
-            <div class="check-group">
-              <div class="check-item">
-                <input type="checkbox" name="newsletter" id="newsletter" value="yes">
-                <label for="newsletter">
-                  Subscribe to our newsletter for updates
-                  
-                </label>
+
+          <div class="form-block">
+            <div class="form-section-title">Step 1</div>
+            <h3>Project Overview</h3>
+            <p>This is the minimum information needed to assess fit and respond with next steps.</p>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="project_type">Project Type *</label>
+                <select id="project_type" name="project_type" required>
+                  <option value="">Select project type</option>
+                  <option value="assessment">Antibody Assessment</option>
+                  <option value="humanization">VH/VL Humanization</option>
+                  <option value="vhh_humanization">VHH Humanization</option>
+                  <option value="vh_to_vhh">VH → VHH Conversion</option>
+                  <option value="affinity_maturation">Affinity Maturation</option>
+                  <option value="custom">Other / Custom</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="program_stage">Program Stage</label>
+                <select id="program_stage" name="program_stage">
+                  <option value="">Select stage</option>
+                  <option value="discovery">Discovery</option>
+                  <option value="lead_optimization">Lead Optimization</option>
+                  <option value="preclinical">Preclinical</option>
+                  <option value="due_diligence">Due Diligence / Assessment</option>
+                  <option value="other">Other</option>
+                </select>
               </div>
             </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="org">Organization *</label>
+                <input type="text" id="org" name="org" required>
+              </div>
+              <div class="form-group">
+                <label for="email">Work Email *</label>
+                <input type="email" id="email" name="email" required>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="fname">First Name</label>
+                <input type="text" id="fname" name="fname">
+              </div>
+              <div class="form-group">
+                <label for="lname">Last Name</label>
+                <input type="text" id="lname" name="lname">
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group full">
+                <label for="message">Project Description</label>
+                <textarea id="message" name="message" placeholder="Describe the molecule, target, project goals, and what decision your team needs to make."></textarea>
+              </div>
+            </div>
+            <div class="intake-note"><strong>Low friction start:</strong> You can submit without attaching sequence data. We'll confirm scope first, then follow up for confidential technical inputs.</div>
           </div>
-          <div style="margin-top: 24px;">
+
+          <details class="technical-details">
+            <summary>Step 2: Add Technical Details <span>Optional for first contact</span></summary>
+            <div class="technical-details-body">
+              <div class="form-row">
+                <div class="form-group full">
+                  <label>Service Type</label>
+                  <div class="check-group">
+                    <div class="check-item"><input type="checkbox" name="service_type" id="st1" value="assessment"><label for="st1">Assessment (Sequence, Developability, Immunogenicity, Structure)</label></div>
+                    <div class="check-item"><input type="checkbox" name="service_type" id="st2" value="humanization"><label for="st2">Humanization</label></div>
+                  </div>
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group full">
+                  <label>Humanization service (if applicable)</label>
+                  <div class="check-group">
+                    <div class="check-item"><input type="checkbox" name="humanization" id="h1" value="vhvl"><label for="h1">VH/VL Humanization</label></div>
+                    <div class="check-item"><input type="checkbox" name="humanization" id="h2" value="vhh"><label for="h2">VHH Humanization</label></div>
+                    <div class="check-item"><input type="checkbox" name="humanization" id="h3" value="vh2vhh"><label for="h3">VH → VHH Conversion</label></div>
+                  </div>
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group full">
+                  <label>Affinity maturation (if applicable)</label>
+                  <div class="check-group">
+                    <div class="check-item"><input type="checkbox" name="affinity" id="a1" value="ab_ag"><label for="a1">Antigen-antibody</label></div>
+                    <div class="check-item"><input type="checkbox" name="affinity" id="a2" value="ligand_receptor"><label for="a2">Ligand-receptor</label></div>
+                    <div class="check-item"><input type="checkbox" name="affinity" id="a3" value="vhh"><label for="a3">VHH affinity maturation</label></div>
+                  </div>
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group full">
+                  <label for="vh">VH Sequence (single-letter amino acid)</label>
+                  <textarea id="vh" name="vh" class="seq" placeholder="EVQLVESGGGLVQPGGSLRLSCAAS..."></textarea>
+                  <div class="hint">Paste the heavy chain variable region sequence.</div>
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group full">
+                  <label for="vl">VL Sequence (single-letter amino acid)</label>
+                  <textarea id="vl" name="vl" class="seq" placeholder="EIVLTQSPATLSLSPGERATLSC..."></textarea>
+                  <div class="hint">Paste the light chain variable region sequence. Leave blank for VHH or VH→VHH conversion.</div>
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group full">
+                  <div class="hint" style="margin:0;">To submit a PDB file, email it to <a href="mailto:contact@insynbio.com" style="color:var(--primary);">contact@insynbio.com</a> and reference your inquiry.</div>
+                </div>
+              </div>
+            </div>
+          </details>
+
+          <div id="form-status" class="form-status" aria-live="polite"></div>
+          <div style="margin-top:24px;">
             <button type="submit" class="btn">Submit Inquiry</button>
+            <div class="submit-note">We typically respond within 1–2 business days. Sequences can be attached now or shared after NDA review.</div>
           </div>
         </form>
       </div>

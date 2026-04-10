@@ -162,6 +162,40 @@
 
     .site-footer { margin-top: 80px; padding-top: 32px; border-top: 1px solid rgba(0,0,0,0.05); font-size: 14px; color: #9ca3af; text-align: center; }
 
+    /* ── Green Intro Header ── */
+    .main-intro { margin: -60px -60px 40px; padding: 36px 60px 28px; background: repeating-linear-gradient(135deg,transparent,transparent 14px,rgba(13,148,136,0.055) 14px,rgba(13,148,136,0.055) 15px), linear-gradient(135deg,#e6faf7 0%,#d4f3ed 45%,#eaf7f3 100%); border-bottom: 4px solid #0d9488; }
+    .main-intro .breadcrumb { margin-bottom: 20px; }
+    .main-intro h1 { font-family: 'Cormorant Garamond',serif; font-size: 38px; font-weight: 700; color: #0d4a43; margin: 0 0 10px; letter-spacing: -0.02em; line-height: 1.15; }
+    .main-intro > p { color: #2d6a61; font-size: 15px; line-height: 1.65; max-width: 640px; margin: 0; }
+    @media(max-width:900px){ .main-intro { margin:-32px -24px 32px; padding:28px 24px 24px; } .main-intro h1 { font-size:28px; } }
+
+    /* ── Deliverables checklist ── */
+    ul.deliverables { list-style: none; padding: 0; margin: 0; }
+    ul.deliverables li { display: flex; align-items: flex-start; gap: 14px; padding: 14px 0; border-bottom: 1px solid rgba(0,0,0,0.05); font-size: 15px; }
+    ul.deliverables li:last-child { border-bottom: none; }
+    ul.deliverables .chk { flex-shrink: 0; width: 24px; height: 24px; border-radius: 50%; background: #0d9488; display: flex; align-items: center; justify-content: center; margin-top: 2px; }
+    ul.deliverables .chk svg { width: 14px; height: 14px; stroke: white; stroke-width: 2.5; }
+
+    /* ── FAQ ── */
+    .faq-list { margin: 20px 0; }
+    .faq-item { border: 1px solid rgba(0,0,0,0.07); border-radius: 12px; margin-bottom: 10px; overflow: hidden; }
+    .faq-item summary { cursor: pointer; list-style: none; padding: 16px 20px; font-size: 15px; font-weight: 600; color: #111827; display: flex; align-items: center; justify-content: space-between; }
+    .faq-item summary::-webkit-details-marker { display: none; }
+    .faq-item summary::after { content: '+'; font-size: 20px; color: var(--primary); }
+    .faq-item[open] summary::after { content: '−'; }
+    .faq-body { padding: 0 20px 16px; font-size: 14px; color: #374151; line-height: 1.6; }
+    .faq-body p { margin: 0; }
+
+    /* ── Method box ── */
+    .method-box { background: #f9fafb; border: 1px solid #e5e7eb; border-radius: 14px; padding: 24px; margin: 24px 0; }
+    .method-box h4 { font-size: 16px; font-weight: 700; color: #111827; margin: 0 0 18px; }
+    .method-steps { display: flex; flex-direction: column; gap: 14px; }
+    .method-step { display: flex; align-items: flex-start; gap: 14px; }
+    .step-num { flex-shrink: 0; width: 32px; height: 32px; border-radius: 50%; background: var(--primary); color: white; font-size: 14px; font-weight: 700; display: flex; align-items: center; justify-content: center; }
+    .step-content { flex: 1; }
+    .step-content strong { display: block; font-size: 14px; font-weight: 600; color: #111827; margin-bottom: 3px; }
+    .step-content span { font-size: 13px; color: #4b5563; line-height: 1.5; }
+
     @media (max-width: 768px) {
       .lib-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
       .flow-strip { gap: 8px; }
@@ -291,21 +325,52 @@
         <a href="#engineering" class="nav-link"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>Engineering</a>
         <a href="#example" class="nav-link"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/></svg>Case Study</a>
         <a href="#pipeline" class="nav-link"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="17 1 21 5 17 9"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><polyline points="7 23 3 19 7 15"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg>Design → Clinic</a>
+        <a href="#safety" class="nav-link"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>Safety &amp; Efficacy</a>
+        <a href="#full-report" class="nav-link"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>Deliverables</a>
+        <a href="#methodology" class="nav-link"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>Methodology</a>
+        <a href="#faq-cart" class="nav-link"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/></svg>FAQ</a>
         <a href="#submit" class="nav-link"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>Submit Inquiry</a>
         <a href="#contact" class="nav-link"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>Contact</a>
       </nav>
     </aside>
     <main class="main">
-      <div class="breadcrumb">
-        <a href="index.html">Home</a><span>/</span><a href="index.html#services">Services</a><span>/</span><span>Smart CAR-T</span>
+      <div class="main-intro">
+        <div class="breadcrumb">
+          <a href="index.html">Home</a><span>/</span><a href="index.html#services">AI Drug Design</a><span>/</span><span>Smart CAR-T Design</span>
+        </div>
+        <h1>Smart CAR-T Design</h1>
+        <p>AI-driven end-to-end CAR engineering: from target to optimized sequence, from sequence to system. Powered by the ACTES platform with 237 proprietary clinical components and AI-guided architecture selection.</p>
       </div>
-
-      <h1>Smart CAR-T Design</h1>
-      <p class="subtitle">AI-Driven End-to-End Engineering: From Target to Sequence, From Sequence to System.</p>
 
       <div class="mission-block">
         <p><strong>From target to optimized sequence in days, not months.</strong> Our ACTES platform combines a 237-element proprietary library with AI reasoning to design CARs for oncology, autoimmune disease, and infectious disease.</p>
         <p style="font-size:15px;">We deliver construct sequences, vector maps, rationale reports, and experimental plans — ready for synthesis and CRO validation. <a href="#submit" style="color:var(--primary); font-weight:600;">Start a project →</a></p>
+      </div>
+
+      <h2 id="decision"><span class="h2-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></span>ACTES Intelligent Decision Engine</h2>
+      <p>The core logic of the ACTES Decision Engine: <strong>antigen features drive architecture selection</strong> — not the reverse. The engine uses clinical co-occurrence data from 237 components with antigen attribute analysis to generate personalized construct recommendations:</p>
+      <ul>
+        <li><strong>① Antigen Profiling:</strong> Integrates antigen density, epitope location (membrane-distal vs. membrane-proximal), heterogeneity, and normal tissue expression to generate target feasibility scores.</li>
+        <li><strong>② Cell Therapy Modality Selection:</strong> Auto-routes to CAR-T (adaptive immunity), CAR-NK (innate + allogeneic), or CAR-M (stroma remodeling) based on disease type and microenvironment characteristics.</li>
+        <li><strong>③ Signaling Domain-Density Matching:</strong> Low-density antigens → CD28 co-stimulation (rapid activation); high-density antigens → 4-1BB (persistence); ultra-low density → tandem dual signaling.</li>
+        <li><strong>④ Hinge-Epitope Spatial Matching:</strong> AlphaFold2-predicted epitope-to-membrane distance auto-selects short/medium/long hinge to avoid immunological synapse geometric mismatch.</li>
+        <li><strong>⑤ Affinity Engineering:</strong> High normal-tissue targets (HER2, EGFR) → affinity attenuation to protect normal tissue; low-density targets (GPC3) → affinity enhancement for recognition efficiency.</li>
+        <li><strong>⑥ Solid Tumor Barrier Response:</strong> Solid tumor indication auto-triggers armoring modules (TGFB_DNR, IL-7/CCL19 secretion), stroma co-targeting (CAR-M), and chemokine receptor expression.</li>
+        <li><strong>⑦ Safety Switch Selection:</strong> iCasp9 (rapid elimination, &gt;95% clearance), EGFRt (ADCC-mediated elimination), or logic-gated SynNotch AND-gate matched to target safety window.</li>
+        <li><strong>⑧ Delivery Vector &amp; Manufacturing Path:</strong> Lentivirus, non-viral transposon, or in vivo LNP delivery selected based on CAR gene size and clinical scenario.</li>
+      </ul>
+      <div style="background:linear-gradient(135deg,#eff6ff,#eef2ff);border:1px solid #bfdbfe;border-radius:12px;padding:24px 28px;margin:32px 0;">
+        <h3 style="font-family:'Cormorant Garamond',serif;font-size:22px;margin:0 0 16px;color:#1e40af;">Decision Engine: Disease Features Drive Architecture Selection</h3>
+        <table style="width:100%;border-collapse:collapse;font-size:13px;background:#fff;border-radius:8px;overflow:hidden;">
+          <thead><tr style="background:#2563eb;color:#fff;"><th style="padding:10px 14px;text-align:left;font-weight:600;">Disease / Target Feature</th><th style="padding:10px 14px;text-align:left;font-weight:600;">Core Challenge</th><th style="padding:10px 14px;text-align:left;font-weight:600;">Engine-Recommended Path</th></tr></thead>
+          <tbody>
+            <tr style="border-bottom:1px solid #e5e7eb;"><td style="padding:10px 14px;font-weight:600;">Solid tumor + immunosuppressive TME</td><td style="padding:10px 14px;color:#dc2626;">Insufficient T-cell infiltration + TGF-β suppression</td><td style="padding:10px 14px;color:#16a34a;">Armored CAR-T (TGFB_DNR + chemokine receptor) + CAR-M stroma co-targeting</td></tr>
+            <tr style="border-bottom:1px solid #e5e7eb;"><td style="padding:10px 14px;font-weight:600;">Low-density antigen (&lt;1,000/cell)</td><td style="padding:10px 14px;color:#dc2626;">T-cell activation threshold insufficient</td><td style="padding:10px 14px;color:#16a34a;">High-affinity scFv + CD28 rapid activation + short hinge to reduce spatial loss</td></tr>
+            <tr style="border-bottom:1px solid #e5e7eb;"><td style="padding:10px 14px;font-weight:600;">Normal tissue cross-expression target</td><td style="padding:10px 14px;color:#dc2626;">On-target / off-tumor toxicity</td><td style="padding:10px 14px;color:#16a34a;">Affinity attenuation + SynNotch AND logic gate + iCasp9 safety switch</td></tr>
+            <tr><td style="padding:10px 14px;font-weight:600;">Antigen escape / high heterogeneity</td><td style="padding:10px 14px;color:#dc2626;">Single-target resistance</td><td style="padding:10px 14px;color:#16a34a;">Tandem CAR (OR-gate dual-target) or secreted BiTE + multi-target coverage</td></tr>
+          </tbody>
+        </table>
+        <p style="font-size:12px;color:#6b7280;margin:12px 0 0;">Data source: ACTES component library 237 components × clinical co-occurrence analysis · <a href="adc_database.html" style="color:#2563eb;text-decoration:underline;">Browse full component library →</a></p>
       </div>
       
       <p class="disclaimer">Disclaimer: InSynBio in silico analyses are for reference only and do not replace final wet-lab validation. Experimental confirmation is required.</p>
@@ -958,6 +1023,106 @@
             We connect you with vetted CRO partners in China, US, and EU. Alternatively, use your own lab — our deliverables are CRO-agnostic.
           </div>
         </div>
+      </div>
+
+      <h2 id="safety"><span class="h2-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></span>Safety &amp; Efficacy</h2>
+      <p>Safety is engineered into the sequence — not just monitored in the clinic.</p>
+
+      <ul>
+        <li><strong>Safety Switches</strong> — <strong>iCasp9</strong> (standard, &gt;95% elimination), <strong>tEGFR</strong> (ADCC-mediated clearance), <strong>RQR8</strong> (CD20 mimotope).</li>
+        <li><strong>Logic Gating</strong> — <strong>SynNotch</strong> (AND-gate for enhanced specificity), <strong>iCAR</strong> (inhibitory CAR to protect normal tissue).</li>
+        <li><strong>Toxicity Management</strong> — 4-1BB co-stimulation reduces CRS peak; locoregional delivery minimizes systemic toxicity.</li>
+      </ul>
+
+      <h2 id="full-report"><span class="h2-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg></span>Deliverables Checklist</h2>
+      <p>We deliver a complete design package ready for synthesis and CRO validation.</p>
+
+      <ul class="deliverables">
+        <li><span class="chk"><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><div><strong>Target &amp; Binding Domain Analysis Report</strong> — Antigen expression profile, off-target risk, binding domain format rationale</div></li>
+        <li><span class="chk"><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><div><strong>CAR Architecture Design Proposals (3–5 candidates)</strong> — Component combinations, hinge/transmembrane domain, co-stimulatory domain selection</div></li>
+        <li><span class="chk"><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><div><strong>Complete Construct Sequences</strong> — Optimized DNA/amino acid sequences (including signal peptide, linker, armoring elements)</div></li>
+        <li><span class="chk"><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><div><strong>Vector Maps</strong> — Plasmid/lentiviral vector design with promoter (EF1α/MSCV) and regulatory elements</div></li>
+        <li><span class="chk"><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><div><strong>Safety Assessment</strong> — On-target/off-tumor risk evaluation, safety switch recommendations</div></li>
+        <li><span class="chk"><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><div><strong>Experimental Validation Plan</strong> — Recommended in vitro (killing assay, cytokines) and in vivo (mouse model) verification workflow</div></li>
+        <li><span class="chk"><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><div><strong>Detailed Component Selection Rationale</strong> — Design logic based on 237-component clinical database</div></li>
+      </ul>
+
+      <h2 id="methodology"><span class="h2-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></span>Technical Methodology</h2>
+      <p>ACTES (Antigen-Characteristic-based T-cell Engineering System) is powered by a database of <strong>237 clinical CAR-T components</strong>. Combining machine learning and structural bioinformatics, it aligns antigen features, disease context, and engineering constraints to systematically identify the optimal architecture for each project.</p>
+
+      <div class="method-box">
+        <h4>ACTES Design Workflow (5-Step Process)</h4>
+        <div class="method-steps">
+          <div class="method-step">
+            <div class="step-num">1</div>
+            <div class="step-content">
+              <strong>Antigen Feature Analysis</strong>
+              <span>Expression profile, epitope accessibility, tumor vs. normal tissue differential expression; on-target/off-tumor risk assessment to determine logic gating necessity</span>
+            </div>
+          </div>
+          <div class="method-step">
+            <div class="step-num">2</div>
+            <div class="step-content">
+              <strong>Binding Domain Matching</strong>
+              <span>Screen binding domain formats (scFv / VHH / DARPin) from clinical database with high match to target and disease type; assess affinity range and dissociation rate requirements</span>
+            </div>
+          </div>
+          <div class="method-step">
+            <div class="step-num">3</div>
+            <div class="step-content">
+              <strong>Architecture Combination Design</strong>
+              <span>Hinge-transmembrane-co-stimulatory domain combination optimization; strategy differentiation by disease type (hematologic / solid tumor / autoimmune); CRS/GvHD risk simulation</span>
+            </div>
+          </div>
+          <div class="method-step">
+            <div class="step-num">4</div>
+            <div class="step-content">
+              <strong>Safety &amp; Persistence Engineering</strong>
+              <span>Safety switch integration (iCasp9 / tEGFR / RQR8); exhaustion risk assessment; armoring element selection (IL-15/21, PD-1 DN, TGFβ barrier)</span>
+            </div>
+          </div>
+          <div class="method-step">
+            <div class="step-num">5</div>
+            <div class="step-content">
+              <strong>Validation Plan Design</strong>
+              <span>Recommend in vitro (killing curves, cytokine profiling) and in vivo (PDX/syngeneic models) validation checkpoints; seamless integration with partner CROs</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <h2 id="faq-cart"><span class="h2-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></span>Common Questions</h2>
+      <div class="faq-list">
+        <details class="faq-item">
+          <summary>How do I start a CAR-T design project?</summary>
+          <div class="faq-body">
+            <p>Complete the inquiry form below, provide your target antigen and disease indication, and we will complete a free preliminary assessment within <strong>1–2 business days</strong>. Formal project kickoff follows scope confirmation.</p>
+          </div>
+        </details>
+        <details class="faq-item">
+          <summary>Can I optimize an existing binding domain sequence?</summary>
+          <div class="faq-body">
+            <p>Yes. Provide your existing scFv or VHH sequence and we will perform humanization, affinity optimization, and match it to the best-fit CAR architecture — no need to design a new binding domain from scratch.</p>
+          </div>
+        </details>
+        <details class="faq-item">
+          <summary>What are the timeline and pricing?</summary>
+          <div class="faq-body">
+            <p>Computational design reports are typically delivered within <strong>5–10 business days</strong>. Pricing is project-specific based on complexity (number of targets, structural modeling scope, CRO integration). Initial consultation is free; a quote is issued after scope confirmation.</p>
+          </div>
+        </details>
+        <details class="faq-item">
+          <summary>What cell chassis and delivery modalities are supported?</summary>
+          <div class="faq-body">
+            <p>We support CAR-T (αβ), CAR-NK, CAR-M, γδ T cells, and emerging in vivo CAR (LNP-mRNA delivery). We recommend the most suitable chassis based on clinical stage and indication.</p>
+          </div>
+        </details>
+        <details class="faq-item">
+          <summary>How is sequence and project information kept confidential?</summary>
+          <div class="faq-body">
+            <p>An NDA is signed before project initiation. Your targets, sequences, and all project information are encrypted in transit and not shared with third parties. Raw data is not retained in our systems after project completion.</p>
+          </div>
+        </details>
       </div>
 
       <h2 id="submit"><span class="h2-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg></span>Submit Inquiry</h2>
