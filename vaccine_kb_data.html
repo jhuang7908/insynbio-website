@@ -70,29 +70,11 @@
     .page {
       max-width:1240px;
       margin:0 auto;
-      padding:32px 22px 72px;
+      padding:24px 22px 72px;
     }
-    .hero {
-      background:linear-gradient(135deg, #e6faf7 0%, #f8fffd 58%, #f3f8ff 100%);
-      border:1px solid rgba(13,148,136,.14);
-      border-radius:24px;
-      padding:28px 28px 24px;
-      margin-bottom:22px;
-    }
-    .hero h1 {
-      margin:0 0 10px;
-      font-size:38px;
-      letter-spacing:-.03em;
-      line-height:1.1;
-      font-family:Georgia, "Times New Roman", serif;
-      color:#0f172a;
-    }
-    .hero p {
-      margin:0;
-      max-width:880px;
-      font-size:16px;
-      color:#244b45;
-    }
+    .hero,.page-header {background:repeating-linear-gradient(135deg,transparent,transparent 14px,rgba(13,148,136,0.055) 14px,rgba(13,148,136,0.055) 15px),linear-gradient(135deg,#e6faf7 0%,#d4f3ed 45%,#eaf7f3 100%);border-top:4px solid #0d9488;border-bottom:1px solid rgba(13,148,136,0.18);padding:36px 40px 28px;margin-top:0;}
+    .hero h1 {font-family:'Cormorant Garamond',serif;font-size:38px;font-weight:700;margin:0 0 10px;letter-spacing:-.02em;color:#0d4a43;}
+    .hero p {color:#2d6a61;font-size:15px;margin:0 0 16px;max-width:720px;line-height:1.65;}
     .integrity {
       margin-top:16px;
       padding:12px 14px;
@@ -443,13 +425,13 @@
     </div>
     <a href="index.html#contact">Contact Us</a>
   </nav>
-</header>
-  <main class="page">
-    <section class="hero">
+<div class="page-header">
       <h1>Vaccine Design Methods & Evidence Base</h1>
       <p>A private-knowledge-base style interface for decision support: ranked antigens, infectious comparators, tolerogenic targets, TCR-guided rules, multi-epitope mRNA logic, benchmark realism, and dry-wet learning patterns.</p>
       <div class="integrity">Single canonical database shared by site pages and runtime design logic. Records keep explicit evidence tier, verification status, and machine-readable justification. Broad infectious and tolerogenic tracks are restored as first-class modules.</div>
-    </section>
+    </div>
+</header>
+  <main class="page">
 
     <section class="stats" id="stats"></section>
 
