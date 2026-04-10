@@ -30,14 +30,37 @@
     .top-header{display:flex;align-items:center;justify-content:space-between;padding:12px 32px;background:rgba(255,255,255,0.95);backdrop-filter:blur(12px);border-bottom:2px solid rgba(13,148,136,0.1);flex-wrap:nowrap;gap:12px;position:fixed;width:100%;top:0;z-index:2000;}
     .brand a{text-decoration:none;color:inherit;display:flex;align-items:center;gap:10px;}
     .slogan{font-size:13px;color:var(--text-muted);padding-left:14px;border-left:1px solid var(--border);white-space:nowrap;font-weight:500;letter-spacing:.02em;}
-    .top-header-nav{display:flex;align-items:center;gap:6px;}
-    .top-header-nav a{padding:7px 14px;font-size:14px;color:var(--text-muted);text-decoration:none;border-radius:20px;transition:all .2s;font-weight:500;}
-    .top-header-nav a:hover{color:var(--primary);background:rgba(13,148,136,.06);}
+    /* ── Nav dropdowns ── */
+    .mobile-menu-btn { display: none; background: none; border: none; padding: 6px; cursor: pointer; color: var(--text); flex-shrink: 0; }
+    .nav-close-btn { display: none; }
+    .top-header-nav { display: flex; align-items: center; gap: 6px; flex: 1; justify-content: center; }
+    .top-header-nav a { padding: 8px 16px; font-size: 14px; color: var(--text-muted); text-decoration: none; border-radius: 20px; transition: all 0.2s; font-weight: 500; }
+    .top-header-nav a:hover { color: var(--primary); background: rgba(13,148,136,0.06); }
+    .top-header-nav a.active { background: var(--primary); color: #fff; box-shadow: 0 2px 8px rgba(13,148,136,0.25); }
+    .nav-dropdown { position: relative; }
+    .nav-dropdown > a::after { content: ' \25be'; font-size: 10px; opacity: 0.6; margin-left: 4px; }
+    .nav-dropdown .dropdown-menu { position: absolute; top: 100%; left: 50%; transform: translateX(-50%) translateY(10px); min-width: 220px; padding: 8px; background: #fff; border: 1px solid rgba(0,0,0,0.06); border-radius: 12px; box-shadow: 0 10px 40px -10px rgba(0,0,0,0.12); opacity: 0; visibility: hidden; transition: all 0.2s cubic-bezier(0.16,1,0.3,1); z-index: 100; margin-top: 8px; }
+    .nav-dropdown:hover .dropdown-menu, .nav-dropdown:focus-within .dropdown-menu { opacity: 1; visibility: visible; transform: translateX(-50%) translateY(0); }
+    .nav-dropdown .dropdown-menu a { display: block; padding: 12px 16px; color: var(--text); text-decoration: none; border-radius: 8px; font-size: 14px; font-weight: 400; background: transparent; }
+    .nav-dropdown .dropdown-menu a:hover { background: var(--bg-alt); }
+    .nav-dropdown .dropdown-menu a .menu-title { display: block; font-weight: 600; font-size: 14px; color: var(--text); margin-bottom: 2px; }
+    .nav-dropdown .dropdown-menu a:hover .menu-title { color: var(--primary); }
+    .nav-dropdown .dropdown-menu a .menu-desc { display: block; font-size: 12px; color: var(--text-muted); line-height: 1.4; }
+    @media (max-width: 768px) {
+      .mobile-menu-btn { display: block; }
+      .top-header { padding: 10px 16px !important; flex-wrap: nowrap !important; }
+      .top-header-nav { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: #fff; flex-direction: column; justify-content: center; align-items: center; gap: 4px; z-index: 9999; opacity: 0; pointer-events: none; transition: opacity .25s; padding: 24px; overflow-y: auto; }
+      .top-header-nav.open { opacity: 1; pointer-events: auto; }
+      .top-header-nav a { font-size: 18px; padding: 12px 24px; }
+      .nav-close-btn { display: block; position: absolute; top: 16px; right: 20px; background: none; border: none; font-size: 32px; color: var(--text); cursor: pointer; line-height: 1; padding: 4px 8px; }
+      .nav-dropdown .dropdown-menu { position: static; transform: none; opacity: 1; visibility: visible; box-shadow: none; border: none; padding: 0; width: 100%; }
+      .nav-dropdown > a::after { display: none; }
+    }
 
     /* ── Page header ── */
-    .page-header{background:linear-gradient(135deg,#f0fdfa 0%,#fff 80%);border-bottom:1px solid rgba(13,148,136,.1);padding:48px 40px 32px;margin-top:52px;}
-    .page-header h1{font-family:'Cormorant Garamond',serif;font-size:42px;font-weight:700;margin:0 0 10px;letter-spacing:-.02em;color:#111827;}
-    .page-header p{color:var(--text-muted);font-size:17px;margin:0 0 20px;max-width:700px;line-height:1.65;}
+    .page-header{background:repeating-linear-gradient(135deg,transparent,transparent 14px,rgba(13,148,136,0.055) 14px,rgba(13,148,136,0.055) 15px),linear-gradient(135deg,#e6faf7 0%,#d4f3ed 45%,#eaf7f3 100%);border-top:4px solid #0d9488;border-bottom:1px solid rgba(13,148,136,0.18);padding:36px 40px 28px;margin-top:52px;}
+    .page-header h1{font-family:'Cormorant Garamond',serif;font-size:38px;font-weight:700;margin:0 0 10px;letter-spacing:-.02em;color:#0d4a43;}
+    .page-header p{color:#2d6a61;font-size:15px;margin:0 0 16px;max-width:720px;line-height:1.65;}
     .back-link{font-size:14px;color:var(--primary);text-decoration:none;font-weight:500;display:inline-flex;align-items:center;gap:6px;margin-bottom:16px;}
     .back-link:hover{color:var(--primary-dark);}
     .domain-tabs{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px;}
@@ -124,9 +147,7 @@
     .domain-note{background:linear-gradient(135deg,#f0fdfa,#fff);border:1px solid rgba(13,148,136,.15);border-radius:12px;padding:20px 24px;margin-bottom:28px;}
     .domain-note p{margin:0;font-size:15px;color:#374151;line-height:1.65;}
     .domain-note strong{color:var(--primary-dark);}
-    .page-card-hint{font-size:14px;color:#4b5563;margin:12px 0 0;max-width:720px;line-height:1.6;padding:12px 14px;background:rgba(13,148,136,.06);border:1px solid rgba(13,148,136,.12);border-radius:10px;}
-    .page-card-hint a{color:var(--primary);font-weight:600;text-decoration:none;}
-    .page-card-hint a:hover{text-decoration:underline;}
+
 
     @media(min-width:1600px){
       .card-grid{grid-template-columns:repeat(4,minmax(0,1fr));}
@@ -332,7 +353,6 @@
   </a>
   <h1>Antibody Engineering Reference</h1>
   <p>A curated knowledge base covering <strong>Fc engineering mutations</strong>, <strong>developability assessment metrics</strong>, and <strong>immunogenicity risk factors</strong> — designed to help scientists and clients understand our reports.</p>
-  <p class="page-card-hint">Each entry is an <strong>expandable card</strong> (default collapsed, same pattern as the <a href="component-browser.html">CAR component library</a>): <strong>click the card</strong> to show mechanism text, references, and IP notes; a teal accent bar appears above the detail block. The top-right control reads &ldquo;▼ Expand&rdquo; / &ldquo;▲ Collapse&rdquo;. Clicks on links do not toggle the card.</p>
   <div class="domain-tabs">
     <button class="dtab active" data-domain="fc" onclick="switchDomain('fc',this)">⚙ Fc Mutations</button>
     <button class="dtab" data-domain="dev" onclick="switchDomain('dev',this)">📊 Developability Metrics</button>
