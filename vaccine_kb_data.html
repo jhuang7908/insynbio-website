@@ -73,8 +73,10 @@
       padding:24px 22px 72px;
     }
     .hero,.page-header {background:repeating-linear-gradient(135deg,transparent,transparent 14px,rgba(13,148,136,0.055) 14px,rgba(13,148,136,0.055) 15px),linear-gradient(135deg,#e6faf7 0%,#d4f3ed 45%,#eaf7f3 100%);border-top:4px solid #0d9488;border-bottom:1px solid rgba(13,148,136,0.18);padding:36px 40px 28px;margin-top:0;}
-    .hero h1 {font-family:'Cormorant Garamond',serif;font-size:38px;font-weight:700;margin:0 0 10px;letter-spacing:-.02em;color:#0d4a43;}
-    .hero p {color:#2d6a61;font-size:15px;margin:0 0 16px;max-width:720px;line-height:1.65;}
+    .hero h1, .page-header h1 {font-family:'Cormorant Garamond',serif;font-size:38px;font-weight:700;margin:0 0 10px;letter-spacing:-.02em;color:#0d4a43;}
+    .hero p, .page-header p {color:#2d6a61;font-size:15px;margin:0 0 16px;max-width:720px;line-height:1.65;}
+    .back-link{font-size:14px;color:var(--primary);text-decoration:none;font-weight:500;display:inline-flex;align-items:center;gap:6px;margin-bottom:16px;}
+    .back-link:hover{color:var(--primary-dark);}
     .integrity {
       margin-top:16px;
       padding:12px 14px;
@@ -320,8 +322,8 @@
       .topbar { height:58px; padding:0 14px; }
       .brand { font-size:22px; }
       .topnav a { padding:7px 10px; font-size:12px; }
-      .hero { padding:22px 18px; }
-      .hero h1 { font-size:30px; }
+      .hero, .page-header { padding:22px 18px; }
+      .hero h1, .page-header h1 { font-size:30px; }
       .page { padding:18px 14px 56px; }
     }
   
@@ -427,8 +429,12 @@
   </nav>
 </header>
 <div class="page-header">
-  <h1>Vaccine Design Methods & Evidence Base</h1>
-  <p>A private-knowledge-base style interface for decision support: ranked antigens, infectious comparators, tolerogenic targets, TCR-guided rules, multi-epitope mRNA logic, benchmark realism, and dry-wet learning patterns.</p>
+  <a href="vaccine_design.html" class="back-link">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+    Vaccine Design Services
+  </a>
+  <h1>Vaccine Design Knowledge Base</h1>
+  <p>Ranked antigen evidence across tumor, infectious, and tolerogenic tracks — with TCR co-stimulation data, multi-epitope mRNA logic, delivery platform selection, HLA population coverage, and benchmark dry-wet learning patterns. Each record carries explicit evidence tier, verification status, and machine-readable justification.</p>
   <div class="integrity">Single canonical database shared by site pages and runtime design logic. Records keep explicit evidence tier, verification status, and machine-readable justification. Broad infectious and tolerogenic tracks are restored as first-class modules.</div>
 </div>
 <main class="page">

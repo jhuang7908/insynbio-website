@@ -38,6 +38,8 @@
   .page-header{background:repeating-linear-gradient(135deg,transparent,transparent 14px,rgba(13,148,136,0.055) 14px,rgba(13,148,136,0.055) 15px),linear-gradient(135deg,#e6faf7 0%,#d4f3ed 45%,#eaf7f3 100%);border-top:4px solid #0d9488;border-bottom:1px solid rgba(13,148,136,0.18);padding:36px 40px 28px;margin-bottom:0;}
   .page-header h1 {font-family:'Cormorant Garamond',serif;font-size:38px;font-weight:700;margin:0 0 10px;letter-spacing:-.02em;color:#0d4a43;}
   .page-header p {color:#2d6a61;font-size:15px;margin:0 0 16px;max-width:720px;line-height:1.65;}
+  .back-link{font-size:14px;color:var(--primary);text-decoration:none;font-weight:500;display:inline-flex;align-items:center;gap:6px;margin-bottom:16px;}
+  .back-link:hover{color:var(--primary-dark);}
   .page-card-hint { font-size:14px; color:#4b5563; margin:12px 0 0; max-width:720px; line-height:1.6; padding:12px 14px; background:rgba(13,148,136,.06); border:1px solid rgba(13,148,136,.12); border-radius:10px; }
   .page-card-hint a { color:var(--primary); font-weight:600; text-decoration:none; }
 
@@ -210,18 +212,21 @@
   </nav>
 </header>
 <div class="page-header">
-    <h1>ADC Knowledge Base</h1>
-    <p>Comprehensive reference database covering <strong>100 clinical programs</strong>, <strong>78 target antigens</strong>, <strong>32 payloads (11 mechanism classes)</strong>, <strong>22 linkers</strong>, and <strong>23 conjugation technologies</strong> — with chemical structures, patent status, and failure analysis.</p>
-    <p class="page-card-hint">Each entry is an <strong>expandable card</strong> (same pattern as the <a href="antibody-guide.html">antibody engineering reference</a> and <a href="vaccine_kb_data.html">vaccine knowledge base</a>): <strong>click the card</strong> to show full details; a teal accent bar appears above the detail block. The control reads &ldquo;&#x25BC; Expand&rdquo; / &ldquo;&#x25B2; Collapse&rdquo;.</p>
-  </div>
+  <a href="InSynBio_ADC_Design_Page.html" class="back-link">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+    Smart ADC Design
+  </a>
+  <h1>ADC Clinical Reference Database</h1>
+  <p>Comprehensive reference database covering <strong>100</strong> clinical ADC programs, <strong>79</strong> target antigens, <strong>38</strong> payloads (<strong>11</strong> mechanism classes), <strong>29</strong> linkers, and <strong>23</strong> conjugation technologies — spanning Phase I to approved products. Each record includes chemical structures, DAR values, patent status, and failure analysis to support target selection, payload matching, linker optimization, and conjugation strategy decisions.</p>
+</div>
 <div class="page">
 
   <!-- Tab bar — horizontal underline, same as vaccine_kb -->
   <div class="tabs-bar">
     <button class="tab-btn active" data-tab="programs">Clinical Programs (100)</button>
-    <button class="tab-btn" data-tab="antigens">Target Antigens (78)</button>
-    <button class="tab-btn" data-tab="payloads">Payloads (32)</button>
-    <button class="tab-btn" data-tab="linkers">Linkers (22)</button>
+    <button class="tab-btn" data-tab="antigens">Target Antigens (79)</button>
+    <button class="tab-btn" data-tab="payloads">Payloads (38)</button>
+    <button class="tab-btn" data-tab="linkers">Linkers (29)</button>
     <button class="tab-btn" data-tab="conjugation">Conjugation Tech (23)</button>
     <button class="tab-btn" data-tab="experiments">Validation Assays (9)</button>
   </div>
