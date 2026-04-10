@@ -5134,17 +5134,18 @@
       <input class="search-box" id="searchPayloads" type="text" placeholder="Search payload name, class…">
       <select class="filter-sel" id="filterPayloadCls">
         <option value="">All mechanism classes</option>
-        <option value="Tubulin Inhibitor">Tubulin Inhibitors</option>
-        <option value="Topoisomerase I Inhibitor">Topoisomerase I Inhibitors</option>
-        <option value="DNA Damaging Agent">DNA Damaging Agents</option>
-        <option value="RNA Polymerase Inhibitor">RNA Polymerase Inhibitors</option>
-        <option value="Spliceosome Inhibitor">Spliceosome Inhibitors</option>
-        <option value="Kinesin Inhibitor">Kinesin Inhibitors</option>
-        <option value="Protein Toxin">Protein Toxins</option>
-        <option value="Radionuclide">Radionuclides</option>
+        <option value="Bcl Xl Inhibitors">Bcl-xL Inhibitors</option>
+        <option value="Dna Damaging Agents">DNA Damaging Agents</option>
         <option value="ISACs">ISACs (Immune Stimulating)</option>
+        <option value="Ksp Inhibitors">KSP Inhibitors</option>
+        <option value="Oligonucleotide">Oligonucleotides (siRNA/ASO)</option>
         <option value="PROTACs">PROTACs (Degraders)</option>
-        <option value="Oligonucleotide">Oligonucleotides</option>
+        <option value="Protein Toxins">Protein Toxins</option>
+        <option value="Radionuclides">Radionuclides</option>
+        <option value="Rna Polymerase Ii Inhibitors">RNA Pol II Inhibitors</option>
+        <option value="Spliceosome Inhibitors">Spliceosome Inhibitors</option>
+        <option value="Topoisomerase I Inhibitors">Topoisomerase I Inhibitors</option>
+        <option value="Tubulin Inhibitors">Tubulin Inhibitors</option>
       </select>
       <span class="result-count" id="countPayloads"></span>
     </div>
@@ -5829,7 +5830,7 @@
     </div>
   </div>
 </div>
-<div class="card" onclick="toggleCard(this)" data-cls="Immune Stimulatory Agonists" data-search="tlr7-agonist-1 immune stimulatory agonists high all phases (innate immune activation)">
+<div class="card" onclick="toggleCard(this)" data-cls="ISACs" data-search="tlr7-agonist-1 immune stimulatory agonists high all phases (innate immune activation)">
   <div class="card-header">
     <div class="card-title">TLR7-agonist-1</div>
     <span class="badge badge-payload">Immune Stimulatory Agonists</span>
@@ -5863,7 +5864,7 @@
     </div>
   </div>
 </div>
-<div class="card" onclick="toggleCard(this)" data-cls="Immune Stimulatory Agonists" data-search="sting-agonist-1 immune stimulatory agonists high all phases (innate immune activation)">
+<div class="card" onclick="toggleCard(this)" data-cls="ISACs" data-search="sting-agonist-1 immune stimulatory agonists high all phases (innate immune activation)">
   <div class="card-header">
     <div class="card-title">STING-agonist-1</div>
     <span class="badge badge-payload">Immune Stimulatory Agonists</span>
@@ -6297,7 +6298,7 @@
     </div>
   </div>
 </div>
-<div class="card" onclick="toggleCard(this)" data-cls="Radionuclide" data-search="actinium-225 radionuclide alpha-emitter radioimmunotherapy targeted">
+<div class="card" onclick="toggleCard(this)" data-cls="Radionuclides" data-search="actinium-225 radionuclide alpha-emitter radioimmunotherapy targeted">
   <div class="card-header">
     <div class="card-title">Actinium-225 Chelate
       <div style="display:flex;gap:5px;align-items:center;margin-top:4px"><span class="badge" style="background:#cce5ff;color:#004085;border:1px solid #b8daff;font-size:9px">Patent: Institution / Emerging</span></div>
@@ -6325,7 +6326,7 @@
     </div>
   </div>
 </div>
-<div class="card" onclick="toggleCard(this)" data-cls="Protein Toxin" data-search="pe38 pseudomonas exotoxin a protein toxin immunotoxin bacterial">
+<div class="card" onclick="toggleCard(this)" data-cls="Protein Toxins" data-search="pe38 pseudomonas exotoxin a protein toxin immunotoxin bacterial">
   <div class="card-header">
     <div class="card-title">Pseudomonas Exotoxin A Fragment (PE38)
       <div style="display:flex;gap:5px;align-items:center;margin-top:4px"><span class="badge" style="background:#fff3cd;color:#856404;border:1px solid #ffeeba;font-size:9px">Patent: NIH / Academic</span></div>
@@ -6419,20 +6420,19 @@
       <input class="search-box" id="searchLinkers" type="text" placeholder="Search linker name, mechanism…">
       <select class="filter-sel" id="filterLinkerType">
         <option value="">All types</option>
-        <option value="Protease-cleavable">Protease-cleavable</option>
-        <option value="Glucuronidase-cleavable">Glucuronidase-cleavable</option>
-        <option value="pH-cleavable">pH-cleavable</option>
-        <option value="Disulfide-cleavable">Disulfide-cleavable</option>
-        <option value="Non-cleavable">Non-cleavable</option>
         <option value="Conditional Activation">Conditional Activation</option>
+        <option value="Disulfide-cleavable">Disulfide-cleavable</option>
+        <option value="Enzymatic-cleavable">Enzymatic-cleavable (Protease/Glucuronidase/Other)</option>
+        <option value="Glucuronidase-cleavable">Glucuronidase-cleavable</option>
+        <option value="Non-cleavable">Non-cleavable</option>
       </select>
       <span class="result-count" id="countLinkers"></span>
     </div>
     <div class="card-grid" id="gridLinkers">
-<div class="card" onclick="toggleCard(this)" data-ltype="Cleavable" data-search="mc-val-cit-pabc cleavable cathepsin b cleavage">
+<div class="card" onclick="toggleCard(this)" data-ltype="Enzymatic-cleavable" data-search="mc-val-cit-pabc cleavable cathepsin b cleavage">
   <div class="card-header">
     <div class="card-title">mc-val-cit-PABC</div>
-    <span class="badge badge-linker">Cleavable</span>
+    <span class="badge badge-linker">Enzymatic-cleavable</span>
   </div>
   <div class="card-body">
     <div class="cc-brief">Plasma t½: &gt;7 days (very stable in hum… · Enzyme: Cathepsin B (lysosomal cy…</div>
@@ -6460,10 +6460,10 @@
     </div>
   </div>
 </div>
-<div class="card" onclick="toggleCard(this)" data-ltype="Cleavable" data-search="ggfg cleavable cathepsin cleavage">
+<div class="card" onclick="toggleCard(this)" data-ltype="Enzymatic-cleavable" data-search="ggfg cleavable cathepsin cleavage">
   <div class="card-header">
     <div class="card-title">GGFG</div>
-    <span class="badge badge-linker">Cleavable</span>
+    <span class="badge badge-linker">Enzymatic-cleavable</span>
   </div>
   <div class="card-body">
     <div class="cc-brief">Plasma t½: &gt;7 days (highly stable in h… · Enzyme: Lysosomal cathepsins (B, …</div>
@@ -6491,10 +6491,10 @@
     </div>
   </div>
 </div>
-<div class="card" onclick="toggleCard(this)" data-ltype="Cleavable" data-search="glucuronide-mmae cleavable various">
+<div class="card" onclick="toggleCard(this)" data-ltype="Enzymatic-cleavable" data-search="glucuronide-mmae cleavable various">
   <div class="card-header">
     <div class="card-title">Glucuronide-MMAE</div>
-    <span class="badge badge-linker">Cleavable</span>
+    <span class="badge badge-linker">Enzymatic-cleavable</span>
   </div>
   <div class="card-body">
     <div class="cc-brief">Plasma t½: &gt;7 days (beta-glucuronidase… · Enzyme: β-Glucuronidase (lysosoma…</div>
@@ -6522,10 +6522,10 @@
     </div>
   </div>
 </div>
-<div class="card" onclick="toggleCard(this)" data-ltype="Cleavable" data-search="peg4-vc-pabc cleavable various">
+<div class="card" onclick="toggleCard(this)" data-ltype="Enzymatic-cleavable" data-search="peg4-vc-pabc cleavable various">
   <div class="card-header">
     <div class="card-title">PEG4-vc-PABC</div>
-    <span class="badge badge-linker">Cleavable</span>
+    <span class="badge badge-linker">Enzymatic-cleavable</span>
   </div>
   <div class="card-body">
     <div class="cc-brief">Plasma t½: &gt;7 days · Enzyme: Cathepsin B</div>
@@ -6553,10 +6553,10 @@
     </div>
   </div>
 </div>
-<div class="card" onclick="toggleCard(this)" data-ltype="Cleavable" data-search="va-pabc cleavable various">
+<div class="card" onclick="toggleCard(this)" data-ltype="Enzymatic-cleavable" data-search="va-pabc cleavable various">
   <div class="card-header">
     <div class="card-title">VA-PABC</div>
-    <span class="badge badge-linker">Cleavable</span>
+    <span class="badge badge-linker">Enzymatic-cleavable</span>
   </div>
   <div class="card-body">
     <div class="cc-brief">Plasma t½: &gt;7 days (similar stability … · Enzyme: Cathepsin B (slightly fas…</div>
@@ -6584,10 +6584,10 @@
     </div>
   </div>
 </div>
-<div class="card" onclick="toggleCard(this)" data-ltype="Cleavable" data-search="pyrophosphate-diester cleavable various">
+<div class="card" onclick="toggleCard(this)" data-ltype="Enzymatic-cleavable" data-search="pyrophosphate-diester cleavable various">
   <div class="card-header">
     <div class="card-title">Pyrophosphate-diester</div>
-    <span class="badge badge-linker">Cleavable</span>
+    <span class="badge badge-linker">Enzymatic-cleavable</span>
   </div>
   <div class="card-body">
     <div class="cc-brief">Plasma t½: Moderate (hours to days; hydro… · Enzyme: Phosphodiesterase (intrac…</div>
@@ -6615,10 +6615,10 @@
     </div>
   </div>
 </div>
-<div class="card" onclick="toggleCard(this)" data-ltype="Cleavable" data-search="legumain-cleavable cleavable various">
+<div class="card" onclick="toggleCard(this)" data-ltype="Enzymatic-cleavable" data-search="legumain-cleavable cleavable various">
   <div class="card-header">
     <div class="card-title">Legumain-cleavable</div>
-    <span class="badge badge-linker">Cleavable</span>
+    <span class="badge badge-linker">Enzymatic-cleavable</span>
   </div>
   <div class="card-body">
     <div class="cc-brief">Plasma t½: &gt;7 days (legumain not prese… · Enzyme: Legumain (Asn-specific cy…</div>
@@ -6646,10 +6646,10 @@
     </div>
   </div>
 </div>
-<div class="card" onclick="toggleCard(this)" data-ltype="Cleavable" data-search="beta-galactoside-cleavable cleavable various">
+<div class="card" onclick="toggleCard(this)" data-ltype="Enzymatic-cleavable" data-search="beta-galactoside-cleavable cleavable various">
   <div class="card-header">
     <div class="card-title">beta-galactoside-cleavable</div>
-    <span class="badge badge-linker">Cleavable</span>
+    <span class="badge badge-linker">Enzymatic-cleavable</span>
   </div>
   <div class="card-body">
     <div class="cc-brief">Plasma t½: &gt;7 days (beta-galactosidase… · Enzyme: β-Galactosidase (lysosoma…</div>
@@ -6677,10 +6677,10 @@
     </div>
   </div>
 </div>
-<div class="card" onclick="toggleCard(this)" data-ltype="Cleavable" data-search="sulfatase-cleavable cleavable various">
+<div class="card" onclick="toggleCard(this)" data-ltype="Enzymatic-cleavable" data-search="sulfatase-cleavable cleavable various">
   <div class="card-header">
     <div class="card-title">Sulfatase-cleavable</div>
-    <span class="badge badge-linker">Cleavable</span>
+    <span class="badge badge-linker">Enzymatic-cleavable</span>
   </div>
   <div class="card-body">
     <div class="cc-brief">Plasma t½: &gt;7 days · Enzyme: Sulfatase (lysosomal aryl…</div>
@@ -6708,10 +6708,10 @@
     </div>
   </div>
 </div>
-<div class="card" onclick="toggleCard(this)" data-ltype="Cleavable" data-search="phosphatase-cleavable cleavable various">
+<div class="card" onclick="toggleCard(this)" data-ltype="Enzymatic-cleavable" data-search="phosphatase-cleavable cleavable various">
   <div class="card-header">
     <div class="card-title">Phosphatase-cleavable</div>
-    <span class="badge badge-linker">Cleavable</span>
+    <span class="badge badge-linker">Enzymatic-cleavable</span>
   </div>
   <div class="card-body">
     <div class="cc-brief">Plasma t½: Short (hours) — phosphatases p… · Enzyme: Alkaline/acid phosphatase…</div>
@@ -6739,10 +6739,10 @@
     </div>
   </div>
 </div>
-<div class="card" onclick="toggleCard(this)" data-ltype="Cleavable" data-search="mal-peg2-v-cit-pab cleavable various">
+<div class="card" onclick="toggleCard(this)" data-ltype="Enzymatic-cleavable" data-search="mal-peg2-v-cit-pab cleavable various">
   <div class="card-header">
     <div class="card-title">Mal-PEG2-V-Cit-PAB</div>
-    <span class="badge badge-linker">Cleavable</span>
+    <span class="badge badge-linker">Enzymatic-cleavable</span>
   </div>
   <div class="card-body">
     <div class="cc-brief">Plasma t½: &gt;7 days · Enzyme: Cathepsin B</div>
@@ -6770,10 +6770,10 @@
     </div>
   </div>
 </div>
-<div class="card" onclick="toggleCard(this)" data-ltype="Cleavable" data-search="fmoc-vc-pabc cleavable various">
+<div class="card" onclick="toggleCard(this)" data-ltype="Enzymatic-cleavable" data-search="fmoc-vc-pabc cleavable various">
   <div class="card-header">
     <div class="card-title">Fmoc-vc-PABC</div>
-    <span class="badge badge-linker">Cleavable</span>
+    <span class="badge badge-linker">Enzymatic-cleavable</span>
   </div>
   <div class="card-body">
     <div class="cc-brief">Plasma t½: Unknown — Fmoc is base-labile;… · Enzyme: Cathepsin B (after Fmoc d…</div>
@@ -6801,10 +6801,10 @@
     </div>
   </div>
 </div>
-<div class="card" onclick="toggleCard(this)" data-ltype="Cleavable" data-search="dde-vc-pabc cleavable various">
+<div class="card" onclick="toggleCard(this)" data-ltype="Enzymatic-cleavable" data-search="dde-vc-pabc cleavable various">
   <div class="card-header">
     <div class="card-title">Dde-vc-PABC</div>
-    <span class="badge badge-linker">Cleavable</span>
+    <span class="badge badge-linker">Enzymatic-cleavable</span>
   </div>
   <div class="card-body">
     <div class="cc-brief">Plasma t½: Unknown — Dde is hydrazine-lab… · Enzyme: Cathepsin B (after Dde de…</div>
@@ -6832,10 +6832,10 @@
     </div>
   </div>
 </div>
-<div class="card" onclick="toggleCard(this)" data-ltype="Cleavable" data-search="hydrazone-disulfide cleavable various">
+<div class="card" onclick="toggleCard(this)" data-ltype="Enzymatic-cleavable" data-search="hydrazone-disulfide cleavable various">
   <div class="card-header">
     <div class="card-title">Hydrazone-disulfide</div>
-    <span class="badge badge-linker">Cleavable</span>
+    <span class="badge badge-linker">Enzymatic-cleavable</span>
   </div>
   <div class="card-body">
     <div class="cc-brief">Plasma t½: Short (hours) — hydrazone is a… · Enzyme: pH-dependent hydrolysis (…</div>
@@ -6863,10 +6863,10 @@
     </div>
   </div>
 </div>
-<div class="card" onclick="toggleCard(this)" data-ltype="Cleavable" data-search="thioether-cleavable cleavable various">
+<div class="card" onclick="toggleCard(this)" data-ltype="Enzymatic-cleavable" data-search="thioether-cleavable cleavable various">
   <div class="card-header">
     <div class="card-title">Thioether-cleavable</div>
-    <span class="badge badge-linker">Cleavable</span>
+    <span class="badge badge-linker">Enzymatic-cleavable</span>
   </div>
   <div class="card-body">
     <div class="cc-brief">Plasma t½: Variable · Enzyme: Intracellular thiol (GSH-…</div>
@@ -6894,10 +6894,10 @@
     </div>
   </div>
 </div>
-<div class="card" onclick="toggleCard(this)" data-ltype="Cleavable" data-search="peptide-mmaf cleavable various">
+<div class="card" onclick="toggleCard(this)" data-ltype="Enzymatic-cleavable" data-search="peptide-mmaf cleavable various">
   <div class="card-header">
     <div class="card-title">Peptide-MMAF</div>
-    <span class="badge badge-linker">Cleavable</span>
+    <span class="badge badge-linker">Enzymatic-cleavable</span>
   </div>
   <div class="card-body">
     <div class="cc-brief">Plasma t½: &gt;7 days · Enzyme: Cathepsin B or other lyso…</div>
@@ -6925,10 +6925,10 @@
     </div>
   </div>
 </div>
-<div class="card" onclick="toggleCard(this)" data-ltype="Cleavable" data-search="peg8-vc-pabc cleavable various">
+<div class="card" onclick="toggleCard(this)" data-ltype="Enzymatic-cleavable" data-search="peg8-vc-pabc cleavable various">
   <div class="card-header">
     <div class="card-title">PEG8-vc-PABC</div>
-    <span class="badge badge-linker">Cleavable</span>
+    <span class="badge badge-linker">Enzymatic-cleavable</span>
   </div>
   <div class="card-body">
     <div class="cc-brief">Plasma t½: &gt;7 days · Enzyme: Cathepsin B</div>
@@ -6956,10 +6956,10 @@
     </div>
   </div>
 </div>
-<div class="card" onclick="toggleCard(this)" data-ltype="Cleavable" data-search="val-cit-pab-oh cleavable various">
+<div class="card" onclick="toggleCard(this)" data-ltype="Enzymatic-cleavable" data-search="val-cit-pab-oh cleavable various">
   <div class="card-header">
     <div class="card-title">Val-Cit-PAB-OH</div>
-    <span class="badge badge-linker">Cleavable</span>
+    <span class="badge badge-linker">Enzymatic-cleavable</span>
   </div>
   <div class="card-body">
     <div class="cc-brief">Plasma t½: &gt;7 days · Enzyme: Cathepsin B</div>
@@ -6987,10 +6987,10 @@
     </div>
   </div>
 </div>
-<div class="card" onclick="toggleCard(this)" data-ltype="Cleavable" data-search="mc-val-cit-pab-pnp cleavable various">
+<div class="card" onclick="toggleCard(this)" data-ltype="Enzymatic-cleavable" data-search="mc-val-cit-pab-pnp cleavable various">
   <div class="card-header">
     <div class="card-title">mc-Val-Cit-PAB-PNP</div>
-    <span class="badge badge-linker">Cleavable</span>
+    <span class="badge badge-linker">Enzymatic-cleavable</span>
   </div>
   <div class="card-body">
     <div class="cc-brief">Plasma t½: &gt;7 days · Enzyme: Cathepsin B</div>
@@ -7018,10 +7018,10 @@
     </div>
   </div>
 </div>
-<div class="card" onclick="toggleCard(this)" data-ltype="Cleavable" data-search="mal-peg4-nhs cleavable various">
+<div class="card" onclick="toggleCard(this)" data-ltype="Enzymatic-cleavable" data-search="mal-peg4-nhs cleavable various">
   <div class="card-header">
     <div class="card-title">Mal-PEG4-NHS</div>
-    <span class="badge badge-linker">Cleavable</span>
+    <span class="badge badge-linker">Enzymatic-cleavable</span>
   </div>
   <div class="card-body">
     <div class="cc-brief">Plasma t½: &gt;7 days (non-cleavable cros… · Enzyme: None (non-cleavable space…</div>
@@ -7049,10 +7049,10 @@
     </div>
   </div>
 </div>
-<div class="card" onclick="toggleCard(this)" data-ltype="Cleavable" data-search="smpeg24 cleavable various">
+<div class="card" onclick="toggleCard(this)" data-ltype="Enzymatic-cleavable" data-search="smpeg24 cleavable various">
   <div class="card-header">
     <div class="card-title">SMPEG24</div>
-    <span class="badge badge-linker">Cleavable</span>
+    <span class="badge badge-linker">Enzymatic-cleavable</span>
   </div>
   <div class="card-body">
     <div class="cc-brief">Plasma t½: &gt;7 days (non-cleavable) · Enzyme: None (non-cleavable PEG-m…</div>
@@ -7080,10 +7080,10 @@
     </div>
   </div>
 </div>
-<div class="card" onclick="toggleCard(this)" data-ltype="Cleavable" data-search="sulfo-smcc cleavable various">
+<div class="card" onclick="toggleCard(this)" data-ltype="Enzymatic-cleavable" data-search="sulfo-smcc cleavable various">
   <div class="card-header">
     <div class="card-title">Sulfo-SMCC</div>
-    <span class="badge badge-linker">Cleavable</span>
+    <span class="badge badge-linker">Enzymatic-cleavable</span>
   </div>
   <div class="card-body">
     <div class="cc-brief">Plasma t½: &gt;10 days (non-cleavable thi… · Enzyme: None — non-cleavable. Req…</div>
@@ -7953,7 +7953,7 @@
       <input class="search-box" id="searchExp" type="text" placeholder="Search assay, method…">
       <span class="result-count" id="countExp"></span>
     </div>
-    <div id="gridExp">
+    <div class="card-grid" id="gridExp">
 <h3 class="section-title" style="font-size:20px;margin:20px 0 8px">In Vitro Assays</h3>
 <div class="card" onclick="toggleCard(this)" data-search="binding_affinity spr (biacore), bli (octet), flow cytometry (facs)">
   <div class="card-header">
