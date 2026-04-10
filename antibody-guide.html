@@ -1361,7 +1361,7 @@ function renderGrid() {
         <h2>${hl(cat)}</h2>
         <span class="cat-count">${cards.length}</span>
       </div>
-      <div class="card-grid">${cards.map(d => dom.card(d)).join('')}</div>
+      <div class="card-grid">${cards.map(d => { try { return dom.card(d); } catch(e) { return '<div style="padding:10px;background:#fef2f2;color:#b91c1c;border-radius:6px;font-size:12px;">Card error [' + (d.id||'?') + ']: ' + e.message + '</div>'; } }).join('')}</div>
     </div>`;
   }
   if (dom.extraHtmlBottom) html += dom.extraHtmlBottom();
@@ -1516,8 +1516,14 @@ if (urlTab && DOMAINS[urlTab]) {
   });
   if (urlTab !== 'fc') document.getElementById('tier-filter').style.display = 'none';
 }
-updateCatFilter();
-renderGrid();
+try {
+  updateCatFilter();
+  renderGrid();
+} catch(err) {
+  console.error('renderGrid init error:', err);
+  const gc = document.getElementById('grid-container');
+  if (gc) gc.innerHTML = '<div style="padding:24px;background:#fef2f2;border:1px solid #fecaca;border-radius:8px;color:#b91c1c;font-size:13px;font-family:monospace;"><strong>JS Error (please report):</strong><br>' + err.toString() + '<br><br>' + (err.stack||'').replace(/\n/g,'<br>') + '</div>';
+}
 </script>
 </body>
 </html>
