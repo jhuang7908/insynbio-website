@@ -249,12 +249,15 @@
         </svg>
         <span><span style="color:#111827">In</span><span style="color:var(--primary);font-style:italic">Syn</span><span style="color:#111827">Bio</span></span>
       </a>
-      <span class="slogan">AI for Life Sciences</span>
-    </div>
+  </div>
+  <span class="slogan">AI for Life Sciences</span>
     <button type="button" class="mobile-menu-btn" aria-label="Open menu" onclick="document.querySelector('header.insynbio-mnav-header .top-header-nav').classList.add('open')">
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
     </button>
-    <nav class="top-header-nav">
+    <button class="mobile-menu-btn" onclick="document.querySelector('.top-header-nav').classList.toggle('open')" aria-label="Open navigation">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+  </button>
+  <nav class="top-header-nav">
     <button class="nav-close-btn" onclick="document.querySelector('.top-header-nav').classList.remove('open')">&#10005;</button>
     <a href="index.html">Home</a>
     <div class="nav-dropdown" tabindex="0">
