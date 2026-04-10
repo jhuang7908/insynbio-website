@@ -110,6 +110,23 @@
     .pf-tool { font-size: 10.5px; font-family: monospace; font-weight: 700; color: var(--primary); background: rgba(13,148,136,0.08); border-radius: 4px; padding: 2px 6px; display: inline-block; margin-bottom: 4px; }
     .pf-desc { font-size: 11px; color: #64748b; line-height: 1.3; }
 
+    /* ── Sequence & Case Study Styling ── */
+    .seq-table { width: 100%; border-collapse: collapse; font-family: 'Courier New', Consolas, monospace; font-size: 12px; margin: 10px 0; }
+    .seq-table th { background: #1e293b; color: #94a3b8; padding: 6px 10px; text-align: left; font-size: 11px; letter-spacing: 0.04em; text-transform: uppercase; font-family: 'Inter', sans-serif; }
+    .seq-table td { padding: 5px 10px; border-bottom: 1px solid #e2e8f0; color: #1e293b; }
+    .seq-table tr:hover td { background: #f1f5f9; }
+    .seq-table .pep { color: #0d9488; font-weight: 700; letter-spacing: 0.08em; }
+    .seq-table .allele { color: #6366f1; font-weight: 500; }
+    .seq-table .ic50-low { color: #16a34a; font-weight: 600; }
+    .seq-table .ic50-mid { color: #ca8a04; font-weight: 600; }
+    .seq-table .mut-pos { background: #fef3c7; border-radius: 2px; padding: 0 2px; font-weight: 700; }
+    .seq-block { background: #0f172a; color: #7dd3fc; font-family: 'Courier New', Consolas, monospace; font-size: 11.5px; padding: 14px 16px; border-radius: 8px; margin: 8px 0; word-break: break-all; line-height: 1.55; }
+    .seq-block .label { color: #94a3b8; font-size: 10px; display: block; margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.06em; font-family: 'Inter', sans-serif; }
+    .seq-block .nt { color: #86efac; }
+    .seq-block .motif { color: #fbbf24; }
+    .seq-block .signal { color: #f472b6; }
+    .logic-note { font-size: 12px; color: #64748b; font-style: italic; margin: 6px 0; padding: 6px 10px; border-left: 3px solid #cbd5e1; background: #f8fafc; border-radius: 0 4px 4px 0; line-height: 1.55; }
+
     /* flow-strip */
     .flow-strip { display:flex; gap:0; align-items:stretch; margin:40px 0; overflow-x:auto; padding-bottom:8px; }
     .flow-step { flex:1; min-width:120px; background:#fff; border:1px solid #e5e7eb; border-radius:12px; padding:16px 14px; text-align:center; position:relative; }
@@ -655,6 +672,7 @@
               <tr><td>CD4-4</td><td class="pep">VVVGADGVGKSALTIQ</td><td class="allele">HLA-DRB1*03:01</td><td class="ic50-mid">~490 nM</td><td>IEDB cross-reference</td></tr>
             </tbody>
           </table>
+          <p class="logic-note">⚠️ MHC-II prediction accuracy is lower than MHC-I (no fixed anchor positions). "~" values in the table are IEDB tool estimates. Full client reports include raw IEDB JSON output. E6/E7 IC50 values are from published literature — independent MHCflurry validation for HLA-A*24:02 and HLA-B*40:01 is recommended.</p>
         </div>
         <div class="logic-decision"><strong>✓ Step 1 Output:</strong> 8 MHC-I epitopes (4 MHCflurry + 4 Lit); 4 MHC-II epitopes (IEDB). Population HLA coverage ~70% (Asia) / ~65% (Global).</div>
       </div>
