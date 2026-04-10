@@ -67,16 +67,17 @@
     .cat-header{display:flex;align-items:center;gap:12px;margin-bottom:16px;padding-bottom:10px;border-bottom:2px solid var(--border);}
     .cat-header h2{font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:700;margin:0;color:#111827;letter-spacing:-.01em;}
     .cat-header .cat-count{font-size:12px;font-weight:700;color:var(--primary);background:rgba(13,148,136,.08);padding:2px 10px;border-radius:20px;}
-    .card-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(380px,1fr));gap:16px;}
+    .card-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;}
 
     /* ── Cards ── */
     .comp-card{background:#fff;border:1px solid var(--border);border-radius:10px;padding:16px;cursor:pointer;transition:all .3s cubic-bezier(0.4, 0, 0.2, 1);position:relative;overflow:hidden;}
     .comp-card:hover{border-color:rgba(13,148,136,.4);box-shadow:0 4px 16px rgba(13,148,136,.08);transform:translateY(-1px);}
     .comp-card.expanded{border-color:var(--primary);box-shadow:0 4px 20px rgba(13,148,136,.12);}
-    .cc-top{display:flex;align-items:flex-start;justify-content:space-between;gap:8px;}
-    .cc-name{font-size:14px;font-weight:700;color:#111827;line-height:1.35;flex:1;min-width:0;word-break:break-word;}
-    .cc-alias{font-size:11px;color:#9ca3af;font-weight:400;font-family:'Consolas',monospace;word-break:break-all;}
-    .cc-meta{display:flex;gap:6px;align-items:center;margin-top:8px;flex-wrap:wrap;}
+    .cc-top{display:flex;flex-direction:column;align-items:stretch;gap:6px;}
+    .cc-name{font-size:14px;font-weight:700;color:#111827;line-height:1.35;word-break:normal;overflow-wrap:anywhere;}
+    .cc-alias{font-size:11px;color:#9ca3af;font-weight:400;font-family:'Consolas',monospace;overflow-wrap:anywhere;}
+    .cc-actions{display:flex;align-items:center;justify-content:space-between;gap:6px;flex-wrap:wrap;}
+    .cc-meta{display:flex;gap:6px;align-items:center;margin-top:6px;flex-wrap:wrap;}
     .cc-brief{font-size:13px;color:var(--text-muted);margin-top:6px;line-height:1.4;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;transition:all .3s ease;}
     .comp-card.expanded .cc-brief{display:block;-webkit-line-clamp:unset;overflow:visible;}
     .cc-examples{font-size:11.5px;margin-top:6px;line-height:1.5;}
@@ -90,7 +91,7 @@
     .cc-detail .collapse-progress{height:100%;width:100%;background:var(--primary);border-radius:2px;transform:translateX(-100%);transition:transform 3s linear;}
     .comp-card.expanded .collapse-progress{transform:translateX(0);}
     
-    .expand-toggle{font-size:11px;color:var(--primary);font-weight:600;float:right;margin-top:2px;user-select:none;}
+    .expand-toggle{font-size:11px;color:var(--primary);font-weight:600;user-select:none;flex-shrink:0;}
     .comp-card .expand-toggle::after{content:'▼ Expand';}
     .comp-card.expanded .expand-toggle::after{content:'▲ Collapse';}
     .detail-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px 20px;}
@@ -127,19 +128,22 @@
     .page-card-hint a{color:var(--primary);font-weight:600;text-decoration:none;}
     .page-card-hint a:hover{text-decoration:underline;}
 
+    @media(min-width:1600px){
+      .card-grid{grid-template-columns:repeat(4,minmax(0,1fr));}
+    }
+    @media(max-width:1100px){
+      .card-grid{grid-template-columns:repeat(2,1fr);}
+    }
     @media(max-width:900px){
       .top-header{padding:10px 16px;}
       .page-header{padding:28px 16px 24px;margin-top:48px;}
       .page-header h1{font-size:28px;}
       .controls{padding:12px 16px;top:48px;}
       .grid-container{padding:20px 16px 60px;}
-      .card-grid{grid-template-columns:1fr 1fr;gap:10px;}
+      .card-grid{grid-template-columns:1fr;gap:10px;}
       .detail-grid{grid-template-columns:1fr;}
       .detail-full{grid-column:1;}
       .top-header-nav{display:none;}
-    }
-    @media(max-width:520px){
-      .card-grid{grid-template-columns:1fr;}
     }
   </style>
   <script>
@@ -1059,6 +1063,7 @@ const DOMAINS = {
   },
   fc: {
     data: FC_DATA,
+    extraHtmlTop: renderFcSelectionGuide,
     note: '<strong>Fc Engineering Mutations</strong> — Each mutation entry shows its regulatory evidence tier (T1: approved drugs, T2: clinical trials, T3: preclinical), mechanism, affected receptors, commercial examples, and <strong>IP/patent status</strong> with design-around guidance. Use the category filter to focus on a specific engineering goal.<br><span style="font-size:12px;color:#6b7280;margin-top:6px;display:block;">⚖ <strong>IP status key:</strong> <span style="background:#f0fdf4;color:#166534;border:1px solid #bbf7d0;padding:1px 7px;border-radius:10px;font-weight:700;">Public Domain / Expired</span> = freely usable &nbsp;·&nbsp; <span style="background:#fffbeb;color:#92400e;border:1px solid #fde68a;padding:1px 7px;border-radius:10px;font-weight:700;">Expiring Soon</span> = core patent expiring within ~3 years &nbsp;·&nbsp; <span style="background:#fef2f2;color:#b91c1c;border:1px solid #fecaca;padding:1px 7px;border-radius:10px;font-weight:700;">Active Patent</span> = in-force protection; license or design-around required. &nbsp;<em>For commercial use, always conduct a full Freedom-to-Operate (FTO) analysis in your target jurisdictions — patent status varies by country and continuation filings.</em></span><br><span style="font-size:12px;color:#6b7280;margin-top:4px;display:block;">📌 Mutations use <strong>EU numbering</strong> (Edelman). For full IgG1/IgG2/IgG4 Fc sequences: <a href="https://www.imgt.org/IMGTrepertoire/Proteins/protein/human/IGH/IGHC/Hu_IGHCall.html" target="_blank" rel="noopener" style="color:var(--primary);font-weight:600;">IMGT IgHC database →</a> &nbsp;|&nbsp; <a href="https://www.uniprot.org/uniprotkb/P01857" target="_blank" rel="noopener" style="color:var(--primary);font-weight:600;">UniProt IgG1 (P01857) →</a> &nbsp;|&nbsp; <a href="https://www.ncbi.nlm.nih.gov/protein/NP_000149" target="_blank" rel="noopener" style="color:var(--primary);font-weight:600;">NCBI RefSeq →</a></span>',
     catField: 'cat',
     cats: [...new Set(FC_DATA.map(d=>d.cat))],
@@ -1077,6 +1082,7 @@ const DOMAINS = {
   },
   immuno: {
     data: IMMUNO_DATA,
+    extraHtmlBottom: renderFcAdaStats,
     note: '<strong>Immunogenicity Risk Factors</strong> — 13 key determinants of anti-drug antibody (ADA) formation. Organized into: sequence-based (addressable by humanization/design), structural/physical (addressable by engineering), glycosylation, and clinical/formulation factors (patient- or process-dependent).<br><span style="font-size:12px;color:#6b7280;margin-top:6px;display:block;">⚠ <strong>Risk level definition (ADA context):</strong> <span style="color:#b91c1c;font-weight:700;">High</span> = directly associated with significantly increased ADA incidence in clinical data (e.g., T-cell epitopes, aggregates, SC route). <span style="color:#92400e;font-weight:700;">Medium</span> = contributes to ADA risk but effect size depends on indication, dose, and patient immune status. <span style="color:#166534;font-weight:700;">Low</span> = minor or indirect contribution. ⚠ Clinical factors (route, disease state, dosing) reflect patient/design decisions — not intrinsic sequence defects.</span>',
     catField: 'cat',
     cats: [...new Set(IMMUNO_DATA.map(d=>d.cat))],
@@ -1094,6 +1100,63 @@ const DOMAINS = {
     card: renderWetCard,
   },
 };
+
+// ═══════════════════════════════════════════════════════════
+// EXTRA HTML SECTIONS (Fc Selection Guide + ADA Stats)
+// ═══════════════════════════════════════════════════════════
+function renderFcSelectionGuide() {
+  return `<div style="background:#fafafa;border:1px solid #e5e7eb;border-radius:12px;padding:20px;font-size:13px;margin-bottom:24px;">
+    <div style="font-weight:700;margin-bottom:12px;color:#374151">📌 Fc Selection Quick Reference</div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px">
+      <div style="padding:14px;background:#fff;border-radius:8px;border-left:3px solid #0d9488"><div style="font-weight:700;font-size:12px;margin-bottom:4px">ADCC / CDC Required</div><div style="font-size:12px;color:#6b7280">IgG1 wild-type, or GASDALIE (S239D/I332E) enhanced; monitor infusion reaction risk</div></div>
+      <div style="padding:14px;background:#fff;border-radius:8px;border-left:3px solid #7c3aed"><div style="font-weight:700;font-size:12px;margin-bottom:4px">Effector Function Ablation</div><div style="font-size:12px;color:#6b7280">LALA (L234A/L235A) or P329G; IgG4+S228P as alternative; standard for checkpoint inhibitors</div></div>
+      <div style="padding:14px;background:#fff;border-radius:8px;border-left:3px solid #059669"><div style="font-weight:700;font-size:12px;margin-bottom:4px">Half-life Extension</div><div style="font-size:12px;color:#6b7280">LS (M428L/N434S) or YTE (M252Y/S254T/T256E); preferred for SC long-acting; note placental transfer</div></div>
+      <div style="padding:14px;background:#fff;border-radius:8px;border-left:3px solid #d97706"><div style="font-weight:700;font-size:12px;margin-bottom:4px">Bispecific Antibody</div><div style="font-size:12px;color:#6b7280">Knob-into-Hole + disulfide optimization; or DuoBody F405L/K409R; monitor heterodimer purity</div></div>
+    </div>
+  </div>`;
+}
+
+const FC_ADA_STATS = [
+  {grp:'IgG1 Wild-type (Normal Effector)', n:67, median:5.0, min:0.0, max:87.0, low_risk_n:45, color:'#0d9488', note:'Most common format; ADA rate heavily influenced by route of administration and indication'},
+  {grp:'IgG2 / IgG4 (Reduced Effector)',  n:39, median:5.6, min:0.0, max:42.9, low_risk_n:24, color:'#0891b2', note:'IgG4 often used for SC dosing; median ADA similar to IgG1'},
+  {grp:'Fc Silenced (LALA/N297)',           n:7,  median:2.0, min:0.8, max:30.0, low_risk_n:5,  color:'#7c3aed', note:'Ablating effector function reduces immune activation but does not directly lower antigenicity'},
+  {grp:'ADCC-Enhanced',                     n:1,  median:13.0,min:13.0,max:13.0, low_risk_n:0,  color:'#b91c1c', note:'Very limited dataset (n=1) — use for reference only'},
+  {grp:'Half-life Extended (YTE/LS)',        n:10, median:5.0, min:0.4, max:85.0, low_risk_n:6,  color:'#059669', note:'YTE/LS used for long-acting SC regimens; extended exposure may increase cumulative ADA'},
+  {grp:'ADC (Antibody-Drug Conjugate)',      n:14, median:7.6, min:0.0, max:17.0, low_risk_n:8,  color:'#d97706', note:'ADC scaffold does not intrinsically raise ADA; payload conjugation increases immune complex risk'},
+];
+
+function renderFcAdaStats() {
+  let html = `<div class="domain-note"><p><strong>Fc Engineering × Clinical ADA Impact</strong> — Statistical analysis of InSynBio\'s 138-entry clinical ADA database stratified by Fc format. Data sourced from FDA/EMA labels and PMID-verified literature (Tier A/B evidence). ADA incidence is affected by multiple confounders (route, indication, assay generation, co-immunosuppression) — this analysis is for Fc selection guidance only and does not replace molecule-specific literature review.</p></div>`;
+  html += `<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px;margin-bottom:28px;">`;
+  FC_ADA_STATS.forEach(s => {
+    const barW = Math.min(100, s.median * 1.8);
+    const lowPct = Math.round(100 * s.low_risk_n / s.n);
+    html += `<div style="background:#fff;border:1px solid #e5e7eb;border-radius:12px;padding:20px;border-top:3px solid ${s.color}">
+      <div style="font-size:13px;font-weight:700;color:${s.color};margin-bottom:12px">${s.grp}</div>
+      <div style="font-size:11px;color:#6b7280;margin-bottom:4px">Median ADA Rate</div>
+      <div style="font-size:28px;font-weight:700;color:${s.color};font-family:'Cormorant Garamond',serif;margin-bottom:6px">${s.median.toFixed(1)}%</div>
+      <div style="background:#f3f4f6;border-radius:4px;height:6px;margin-bottom:10px"><div style="width:${barW}%;background:${s.color};border-radius:4px;height:6px"></div></div>
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;font-size:11px;margin-bottom:10px">
+        <div style="text-align:center"><div style="font-weight:700">${s.n}</div><div style="color:#9ca3af">Records</div></div>
+        <div style="text-align:center"><div style="font-weight:700">${s.min.toFixed(1)}–${s.max.toFixed(1)}%</div><div style="color:#9ca3af">Range</div></div>
+        <div style="text-align:center"><div style="font-weight:700;color:#059669">${lowPct}%</div><div style="color:#9ca3af" title="% with ADA &lt; 5%">Low-risk</div></div>
+      </div>
+      <div style="font-size:11px;color:#6b7280;border-top:1px solid #f3f4f6;padding-top:8px;line-height:1.5">${s.note}</div>
+    </div>`;
+  });
+  html += `</div>`;
+  html += `<div style="background:#f0fdf9;border:1px solid rgba(13,148,136,0.2);border-radius:12px;padding:20px;font-size:13px;line-height:1.8;margin-bottom:20px">
+    <div style="font-weight:700;color:#0d4a43;margin-bottom:10px">⚠ Key Interpretation Notes</div>
+    <ul style="margin:0;padding-left:18px;color:#374151">
+      <li><strong>Assay generation bias:</strong> Gen 1 ELISA sensitivity is ~10× lower than Gen 3 ECL; cross-generation comparisons should be treated with caution</li>
+      <li><strong>Route of administration:</strong> SC dosing yields ADA rates ~2–5× higher than IV; Fc format and route are often co-selected (e.g., YTE for SC long-acting)</li>
+      <li><strong>Indication bias:</strong> Oncology patients are immunocompromised, systematically lowering ADA; autoimmune patients on MTX can reduce ADA by 60–90%</li>
+      <li><strong>Sample size limitations:</strong> Fc Silenced (n=7) and ADCC-Enhanced (n=1) have limited statistical power — consult primary literature</li>
+      <li><strong>Causality direction:</strong> Fc format modulates ADA indirectly through half-life, effector function, and immune activation — not through direct sequence antigenicity</li>
+    </ul>
+  </div>`;
+  return html;
+}
 
 // ═══════════════════════════════════════════════════════════
 // RENDER HELPERS
@@ -1131,8 +1194,8 @@ function renderFcCard(d) {
   return `
     <div class="comp-card" id="card-${d.id}" onclick="toggleCard(event, '${d.id}')" onmouseleave="handleMouseLeave('${d.id}')">
       <div class="cc-top">
-        <div class="cc-name">${hl(d.name)}<br><span class="cc-alias">${hl(d.alias)}</span></div>
-        <div style="display:flex;align-items:center;gap:6px;flex-shrink:0;">${ipc ? ipBadge : ''}<span class="tier tier-${d.tier}">${TIER_LABEL[d.tier]}</span><span class="expand-toggle"></span></div>
+        <div class="cc-name">${hl(d.name)}${d.alias ? `<br><span class="cc-alias">${hl(d.alias)}</span>` : ''}</div>
+        <div class="cc-actions">${ipc ? ipBadge : ''}<span class="tier tier-${d.tier}">${TIER_LABEL[d.tier]}</span><span class="expand-toggle"></span></div>
       </div>
       <div class="cc-meta">
         <span class="cat-chip">${hl(d.cat)}</span>
@@ -1156,8 +1219,8 @@ function renderDevCard(d) {
   return `
     <div class="comp-card" id="card-${d.id}" onclick="toggleCard(event, '${d.id}')" onmouseleave="handleMouseLeave('${d.id}')">
       <div class="cc-top">
-        <div class="cc-name">${hl(d.name)}<br><span class="cc-alias" style="font-family:inherit;">${hl(d.alias)}</span></div>
-        <div style="display:flex;align-items:center;gap:6px;flex-shrink:0;"><span class="risk-badge ${RISK_CLASS[d.risk]}">${RISK_LABEL[d.risk]}</span><span class="expand-toggle"></span></div>
+        <div class="cc-name">${hl(d.name)}${d.alias ? `<br><span class="cc-alias" style="font-family:inherit;">${hl(d.alias)}</span>` : ''}</div>
+        <div class="cc-actions"><span class="risk-badge ${RISK_CLASS[d.risk]}">${RISK_LABEL[d.risk]}</span><span class="expand-toggle"></span></div>
       </div>
       <div class="cc-meta">
         <span class="cat-chip">${hl(d.cat)}</span>
@@ -1180,8 +1243,8 @@ function renderImmunoCard(d) {
   return `
     <div class="comp-card" id="card-${d.id}" onclick="toggleCard(event, '${d.id}')" onmouseleave="handleMouseLeave('${d.id}')">
       <div class="cc-top">
-        <div class="cc-name">${hl(d.name)}<br><span class="cc-alias" style="font-family:inherit;">${hl(d.alias)}</span></div>
-        <div style="display:flex;align-items:center;gap:6px;flex-shrink:0;"><span class="risk-badge ${RISK_CLASS[d.risk]}">${RISK_LABEL[d.risk]}</span><span class="expand-toggle"></span></div>
+        <div class="cc-name">${hl(d.name)}${d.alias ? `<br><span class="cc-alias" style="font-family:inherit;">${hl(d.alias)}</span>` : ''}</div>
+        <div class="cc-actions"><span class="risk-badge ${RISK_CLASS[d.risk]}">${RISK_LABEL[d.risk]}</span><span class="expand-toggle"></span></div>
       </div>
       <div class="cc-meta">
         <span class="cat-chip">${hl(d.cat)}</span>
@@ -1203,8 +1266,8 @@ function renderWetCard(d) {
   return `
     <div class="comp-card" id="card-${d.id}" onclick="toggleCard(event, '${d.id}')" onmouseleave="handleMouseLeave('${d.id}')">
       <div class="cc-top">
-        <div class="cc-name">${hl(d.name)}<br><span class="cc-alias">${hl(d.alias)}</span></div>
-        <div style="display:flex;align-items:center;gap:6px;flex-shrink:0;"><span class="expand-toggle"></span></div>
+        <div class="cc-name">${hl(d.name)}${d.alias ? `<br><span class="cc-alias">${hl(d.alias)}</span>` : ''}</div>
+        <div class="cc-actions"><span class="expand-toggle"></span></div>
       </div>
       <div class="cc-meta">
         <span class="cat-chip">${hl(d.cat)}</span>
@@ -1260,6 +1323,7 @@ function renderGrid() {
   es.style.display = 'none';
 
   let html = `<div class="domain-note"><p>${dom.note}</p></div>`;
+  if (dom.extraHtmlTop) html += dom.extraHtmlTop();
   for (const [cat, cards] of Object.entries(groups)) {
     html += `<div class="cat-section">
       <div class="cat-header">
@@ -1269,6 +1333,7 @@ function renderGrid() {
       <div class="card-grid">${cards.map(d => dom.card(d)).join('')}</div>
     </div>`;
   }
+  if (dom.extraHtmlBottom) html += dom.extraHtmlBottom();
   gc.innerHTML = html;
   document.getElementById('stats-chip').textContent = `${filtered.length} / ${data.length} entries`;
 }
