@@ -4061,25 +4061,115 @@ END
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
     </button>
     <nav class="top-header-nav">
-      <button type="button" class="nav-close-btn" aria-label="Close menu" onclick="this.parentElement.classList.remove('open')">&times;</button>
-      <a href="index.html">Home</a>
-      <a href="index.html#about">About Us</a>
-      <div class="nav-dropdown" tabindex="0">
-        <a href="index.html#services">Services</a>
-        <div class="dropdown-menu">
-          <a href="InSynBio_Antibody_Developability_Assessment_Page.html"><span class="menu-title">Antibody</span><span class="menu-desc">Structure-based Development</span></a>
-          <a href="InSynBio_CART_Design_Page.html"><span class="menu-title">CAR-T</span><span class="menu-desc">Smart CAR-T Design</span></a>
-          <a href="InSynBio_Bispecific_Antibody_Design_Page.html"><span class="menu-title">Bispecific</span><span class="menu-desc">Multispecific Engineering</span></a>
-          <a href="immunogenicity_study.html">
-            <span class="menu-title">Immunogenicity</span>
-            <span class="menu-desc">ADA Prediction &amp; Reference DB</span>
-          </a>
-        </div>
+    <button class="nav-close-btn" onclick="document.querySelector('.top-header-nav').classList.remove('open')">&#10005;</button>
+    <a href="index.html">Home</a>
+    <div class="nav-dropdown" tabindex="0">
+      <a href="index.html#services">AI Drug Design</a>
+      <div class="dropdown-menu">
+        <a href="InSynBio_Antibody_Developability_Assessment_Page.html">
+          <span class="menu-title">Antibody R&amp;D</span>
+          <span class="menu-desc">Humanization, CMC, Immunogenicity</span>
+        </a>
+        <a href="InSynBio_ADC_Design_Page.html">
+          <span class="menu-title">Smart ADC Design</span>
+          <span class="menu-desc">Antigen-Payload-Linker Matching</span>
+        </a>
+        <a href="InSynBio_CART_Design_Page.html">
+          <span class="menu-title">Smart CAR-T Design</span>
+          <span class="menu-desc">Architecture &amp; Component Optimization</span>
+        </a>
+        <a href="InSynBio_Bispecific_Antibody_Design_Page.html">
+          <span class="menu-title">Bispecific Design</span>
+          <span class="menu-desc">Format Screening · CMC · Pairing</span>
+        </a>
+        <a href="vaccine_design.html">
+          <span class="menu-title">Vaccine Design</span>
+          <span class="menu-desc">Neoantigen · Heteroclitic · mRNA</span>
+        </a>
       </div>
-      <a href="index.html#case-studies">Case Studies</a>
-      <a href="InSynBio_OurTech.html">Our Tech</a>
-      <a href="index.html#contact">Contact Us</a>
-    </nav>
+    </div>
+    <div class="nav-dropdown" tabindex="0">
+      <a href="antibody-guide.html">Clinical Reference Library</a>
+      <div class="dropdown-menu">
+        <a href="antibody-guide.html">
+          <span class="menu-title">Antibody Engineering Guide</span>
+          <span class="menu-desc">Standards &amp; Design Principles</span>
+        </a>
+        <a href="ada_database.html">
+          <span class="menu-title">ADA Database</span>
+          <span class="menu-desc">138 Clinical Immunogenicity Benchmarks</span>
+        </a>
+        <a href="adc_database.html">
+          <span class="menu-title">ADC Database</span>
+          <span class="menu-desc">100 Clinical ADC Programs</span>
+        </a>
+        <a href="component-browser.html">
+          <span class="menu-title">CAR Component Library</span>
+          <span class="menu-desc">237 CAR-T Engineering Components</span>
+        </a>
+        <a href="vaccine_kb_data.html">
+          <span class="menu-title">Vaccine Knowledge Base</span>
+          <span class="menu-desc">Antigens &amp; Adjuvant Data</span>
+        </a>
+      </div>
+    </div>
+    <div class="nav-dropdown" tabindex="0">
+      <a href="index.html#case-studies" class="active">Case Studies</a>
+      <div class="dropdown-menu">
+        <a href="case_mumab4d5_humanization_en.html">
+          <span class="menu-title">muMAb4D5 Humanization</span>
+          <span class="menu-desc">CDR Grafting + Back-mutations</span>
+        </a>
+        <a href="case_mumab4d5_cmc.html">
+          <span class="menu-title">muMAb4D5 CMC Assessment</span>
+          <span class="menu-desc">15 Developability Metrics Passed</span>
+        </a>
+        <a href="case_mumab4d5_vhh_en.html">
+          <span class="menu-title">VH &#x2192; HER2 VHH Conversion</span>
+          <span class="menu-desc">Nanobody Engineering &amp; CMC Optimization</span>
+        </a>
+        <a href="case_vgrw_sr_r2_affinity_maturation.html">
+          <span class="menu-title">VHH Affinity Maturation</span>
+          <span class="menu-desc">Binding Energy Improved &#x2212;3.32 kcal/mol</span>
+        </a>
+        <a href="case_bispecific_vhh_expression_optimization.html">
+          <span class="menu-title">Bispecific VHH Optimization</span>
+          <span class="menu-desc">pI Engineering + 4.8&#xd7; IC90 Boost</span>
+        </a>
+        <a href="case_bispecific_vhvl_pairing.html">
+          <span class="menu-title">Bispecific VH/VL Pairing</span>
+          <span class="menu-desc">Structure-guided HC-LC Pairing</span>
+        </a>
+        <a href="case_malaria_carm_design.html">
+          <span class="menu-title">CAR-M Design</span>
+          <span class="menu-desc">Anti-CIDRα1 Dual-binder CAR-Macrophage</span>
+        </a>
+        <a href="case_fentanyl_hapten_vam.html">
+          <span class="menu-title">Fentanyl Hapten VAM</span>
+          <span class="menu-desc">Affinity Maturation &#x2212;5.53 kcal/mol</span>
+        </a>
+        <a href="case_pdl1_epitope_analysis.html">
+          <span class="menu-title">PD-L1 Epitope Analysis</span>
+          <span class="menu-desc">Blocking vs Non-blocking Classification</span>
+        </a>
+      </div>
+    </div>
+    <a href="InSynBio_OurTech.html">Our Tech</a>
+    <div class="nav-dropdown" tabindex="0">
+      <a href="index.html#about">About Us</a>
+      <div class="dropdown-menu">
+        <a href="index.html#about">
+          <span class="menu-title">About InSynBio</span>
+          <span class="menu-desc">Team background &amp; mission</span>
+        </a>
+        <a href="index.html#workflow">
+          <span class="menu-title">Workflow</span>
+          <span class="menu-desc">From inquiry to delivery</span>
+        </a>
+      </div>
+    </div>
+    <a href="index.html#contact">Contact Us</a>
+  </nav>
   </header>
 
   <!-- ─── HERO ─── -->

@@ -110,10 +110,25 @@
     .pf-tool { font-size: 10.5px; font-family: monospace; font-weight: 700; color: var(--primary); background: rgba(13,148,136,0.08); border-radius: 4px; padding: 2px 6px; display: inline-block; margin-bottom: 4px; }
     .pf-desc { font-size: 11px; color: #64748b; line-height: 1.3; }
 
+    /* ── Logic Step Styling ── */
+    .logic-step { margin-bottom: 20px; }
+    .logic-step > strong { color: #0f172a; font-size: 14px; display: block; margin-bottom: 4px; }
+    .logic-query { color: var(--text-muted); font-size: 13px; margin: 4px 0; }
+    .logic-result { color: var(--primary); font-weight: 500; font-size: 13px; margin: 6px 0 4px; }
+    .logic-decision { background: rgba(13,148,136,0.1); padding: 8px 12px; border-radius: 6px; margin-top: 8px; font-size: 13px; color: #065f46; }
+    .logic-output { background: #fff; border: 1px solid rgba(13,148,136,0.2); border-radius: 8px; padding: 16px; margin-top: 24px; }
+    .output-label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted); margin-bottom: 10px; }
+    .output-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+    .output-tag { background: rgba(13,148,136,0.08); border: 1px solid rgba(13,148,136,0.2); color: var(--primary-dark); padding: 4px 12px; border-radius: 20px; font-size: 12px; font-weight: 600; }
+    .output-tag.pass { background: rgba(34,197,94,0.08); border-color: rgba(34,197,94,0.25); color: #15803d; }
+    .output-tag.warn { background: rgba(251,191,36,0.1); border-color: rgba(251,191,36,0.3); color: #92400e; }
+
     /* ── Sequence & Case Study Styling ── */
-    .seq-table { width: 100%; border-collapse: collapse; font-family: 'Courier New', Consolas, monospace; font-size: 12px; margin: 10px 0; }
-    .seq-table th { background: #1e293b; color: #94a3b8; padding: 6px 10px; text-align: left; font-size: 11px; letter-spacing: 0.04em; text-transform: uppercase; font-family: 'Inter', sans-serif; }
+    .seq-table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 10px 0; border-radius: 8px; }
+    .seq-table { width: 100%; border-collapse: collapse; font-family: 'Courier New', Consolas, monospace; font-size: 12px; white-space: nowrap; }
+    .seq-table th { background: #1e293b; color: #94a3b8; padding: 6px 10px; text-align: left; font-size: 11px; letter-spacing: 0.04em; text-transform: uppercase; font-family: 'Inter', sans-serif; white-space: nowrap; }
     .seq-table td { padding: 5px 10px; border-bottom: 1px solid #e2e8f0; color: #1e293b; }
+    .seq-table td.wrap { white-space: normal; min-width: 160px; max-width: 260px; }
     .seq-table tr:hover td { background: #f1f5f9; }
     .seq-table .pep { color: #0d9488; font-weight: 700; letter-spacing: 0.08em; }
     .seq-table .allele { color: #6366f1; font-weight: 500; }
@@ -125,7 +140,7 @@
     .seq-block .nt { color: #86efac; }
     .seq-block .motif { color: #fbbf24; }
     .seq-block .signal { color: #f472b6; }
-    .logic-note { font-size: 12px; color: #64748b; font-style: italic; margin: 6px 0; padding: 6px 10px; border-left: 3px solid #cbd5e1; background: #f8fafc; border-radius: 0 4px 4px 0; line-height: 1.55; }
+    .logic-note { font-size: 12px; color: #64748b; font-style: italic; margin: 6px 0; padding: 6px 10px; border-left: 3px solid #cbd5e1; background: #f8fafc; border-radius: 0 4px 4px 0; line-height: 1.55; white-space: normal; }
 
     /* flow-strip */
     .flow-strip { display:flex; gap:0; align-items:stretch; margin:40px 0; overflow-x:auto; padding-bottom:8px; }
@@ -242,37 +257,114 @@
     <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
   </button>
   <nav class="top-header-nav">
-    <button class="nav-close-btn" onclick="document.querySelector('.top-header-nav').classList.remove('open')">✕</button>
+    <button class="nav-close-btn" onclick="document.querySelector('.top-header-nav').classList.remove('open')">&#10005;</button>
     <a href="index.html">Home</a>
-    <a href="index.html#about">About Us</a>
     <div class="nav-dropdown" tabindex="0">
-      <a href="index.html#services" class="active">Services</a>
+      <a href="index.html#services" class="active">AI Drug Design</a>
       <div class="dropdown-menu">
         <a href="InSynBio_Antibody_Developability_Assessment_Page.html">
-          <span class="menu-title">Antibody</span>
-          <span class="menu-desc">Structure-based Development</span>
+          <span class="menu-title">Antibody R&amp;D</span>
+          <span class="menu-desc">Humanization, CMC, Immunogenicity</span>
         </a>
         <a href="InSynBio_ADC_Design_Page.html">
-          <span class="menu-title">ADC Design</span>
-          <span class="menu-desc">Smart Antibody-Drug Conjugates</span>
+          <span class="menu-title">Smart ADC Design</span>
+          <span class="menu-desc">Antigen-Payload-Linker Matching</span>
         </a>
         <a href="InSynBio_CART_Design_Page.html">
-          <span class="menu-title">CAR-T</span>
-          <span class="menu-desc">Smart CAR-T Design</span>
+          <span class="menu-title">Smart CAR-T Design</span>
+          <span class="menu-desc">Architecture &amp; Component Optimization</span>
         </a>
         <a href="InSynBio_Bispecific_Antibody_Design_Page.html">
-          <span class="menu-title">Bispecific</span>
-          <span class="menu-desc">Multispecific Engineering</span>
+          <span class="menu-title">Bispecific Design</span>
+          <span class="menu-desc">Format Screening · CMC · Pairing</span>
         </a>
-        <a href="vaccine_design.html" style="background:rgba(13,148,136,0.06);">
-          <span class="menu-title" style="color:var(--primary);">Vaccine Design</span>
+        <a href="vaccine_design.html">
+          <span class="menu-title">Vaccine Design</span>
           <span class="menu-desc">Neoantigen · Heteroclitic · mRNA</span>
         </a>
       </div>
     </div>
-    <a href="index.html#case-studies">Case Studies</a>
+    <div class="nav-dropdown" tabindex="0">
+      <a href="antibody-guide.html">Clinical Reference Library</a>
+      <div class="dropdown-menu">
+        <a href="antibody-guide.html">
+          <span class="menu-title">Antibody Engineering Guide</span>
+          <span class="menu-desc">Standards &amp; Design Principles</span>
+        </a>
+        <a href="ada_database.html">
+          <span class="menu-title">ADA Database</span>
+          <span class="menu-desc">138 Clinical Immunogenicity Benchmarks</span>
+        </a>
+        <a href="adc_database.html">
+          <span class="menu-title">ADC Database</span>
+          <span class="menu-desc">100 Clinical ADC Programs</span>
+        </a>
+        <a href="component-browser.html">
+          <span class="menu-title">CAR Component Library</span>
+          <span class="menu-desc">237 CAR-T Engineering Components</span>
+        </a>
+        <a href="vaccine_kb_data.html">
+          <span class="menu-title">Vaccine Knowledge Base</span>
+          <span class="menu-desc">Antigens &amp; Adjuvant Data</span>
+        </a>
+      </div>
+    </div>
+    <div class="nav-dropdown" tabindex="0">
+      <a href="index.html#case-studies">Case Studies</a>
+      <div class="dropdown-menu">
+        <a href="case_mumab4d5_humanization_en.html">
+          <span class="menu-title">muMAb4D5 Humanization</span>
+          <span class="menu-desc">CDR Grafting + Back-mutations</span>
+        </a>
+        <a href="case_mumab4d5_cmc.html">
+          <span class="menu-title">muMAb4D5 CMC Assessment</span>
+          <span class="menu-desc">15 Developability Metrics Passed</span>
+        </a>
+        <a href="case_mumab4d5_vhh_en.html">
+          <span class="menu-title">VH &#x2192; HER2 VHH Conversion</span>
+          <span class="menu-desc">Nanobody Engineering &amp; CMC Optimization</span>
+        </a>
+        <a href="case_vgrw_sr_r2_affinity_maturation.html">
+          <span class="menu-title">VHH Affinity Maturation</span>
+          <span class="menu-desc">Binding Energy Improved &#x2212;3.32 kcal/mol</span>
+        </a>
+        <a href="case_bispecific_vhh_expression_optimization.html">
+          <span class="menu-title">Bispecific VHH Optimization</span>
+          <span class="menu-desc">pI Engineering + 4.8&#xd7; IC90 Boost</span>
+        </a>
+        <a href="case_bispecific_vhvl_pairing.html">
+          <span class="menu-title">Bispecific VH/VL Pairing</span>
+          <span class="menu-desc">Structure-guided HC-LC Pairing</span>
+        </a>
+        <a href="case_malaria_carm_design.html">
+          <span class="menu-title">CAR-M Design</span>
+          <span class="menu-desc">Anti-CIDRα1 Dual-binder CAR-Macrophage</span>
+        </a>
+        <a href="case_fentanyl_hapten_vam.html">
+          <span class="menu-title">Fentanyl Hapten VAM</span>
+          <span class="menu-desc">Affinity Maturation &#x2212;5.53 kcal/mol</span>
+        </a>
+        <a href="case_pdl1_epitope_analysis.html">
+          <span class="menu-title">PD-L1 Epitope Analysis</span>
+          <span class="menu-desc">Blocking vs Non-blocking Classification</span>
+        </a>
+      </div>
+    </div>
     <a href="InSynBio_OurTech.html">Our Tech</a>
-    <a href="#contact">Contact Us</a>
+    <div class="nav-dropdown" tabindex="0">
+      <a href="index.html#about">About Us</a>
+      <div class="dropdown-menu">
+        <a href="index.html#about">
+          <span class="menu-title">About InSynBio</span>
+          <span class="menu-desc">Team background &amp; mission</span>
+        </a>
+        <a href="index.html#workflow">
+          <span class="menu-title">Workflow</span>
+          <span class="menu-desc">From inquiry to delivery</span>
+        </a>
+      </div>
+    </div>
+    <a href="index.html#contact">Contact Us</a>
   </nav>
 </header>
 
@@ -639,7 +731,7 @@
         <div class="logic-query">• Scanning all 8–11mer peptides covering G12D (pos 11): 38 peptides × 5 HLA alleles = 190 predictions</div>
         <div class="logic-note">Command: Class1PresentationPredictor.predict(peptides=38_peps, alleles=[allele]); IC50 threshold < 500 nM</div>
         <div class="logic-result">→ MHCflurry Output (IC50 < 500 nM, ranked by affinity):</div>
-        <table class="seq-table">
+        <div class="seq-table-wrap"><table class="seq-table">
           <thead><tr><th>#</th><th>Peptide (G12D)</th><th>HLA Allele</th><th>MHCflurry IC50 (nM)</th><th>WT IC50 (nM)</th><th>Pres. Score</th><th>D Position</th></tr></thead>
           <tbody>
             <tr><td>E1</td><td class="pep">VVVG<span class="mut-pos">A</span>DGVGK</td><td class="allele">HLA-A*11:01</td><td class="ic50-low">47.0</td><td>41.0</td><td>0.910</td><td>P5</td></tr>
@@ -647,31 +739,31 @@
             <tr><td>E3</td><td class="pep">LVVVG<span class="mut-pos">A</span>DGVGK</td><td class="allele">HLA-A*11:01</td><td class="ic50-mid">110.2</td><td>75.1</td><td>0.568</td><td>P6</td></tr>
             <tr><td>E4</td><td class="pep">KLVVVG<span class="mut-pos">A</span>DGV</td><td class="allele">HLA-A*02:01</td><td class="ic50-mid">110.8</td><td>110.9</td><td>0.547</td><td>P7</td></tr>
           </tbody>
-        </table>
+        </table></div>
         <div class="logic-note">Note: HLA-A*24:02, B*40:01, B*07:02 showed no binders < 500 nM in this 38-peptide set. KRAS G12D epitopes are primarily restricted to HLA-A*11:01 and A*02:01. WT/G12D IC50 ratio ~1.0 indicates immunogenicity stems from TCR contact (P4–P7), not MHC binding selection.</div>
         <div style="margin-top:8px;">
           <div class="logic-result" style="margin-top:8px;">→ Literature-Validated Epitopes (Phase I/II clinical evidence; PMID: 35648703, PMID: 32461371):</div>
-          <table class="seq-table">
+          <div class="seq-table-wrap"><table class="seq-table">
             <thead><tr><th>#</th><th>Peptide</th><th>HLA</th><th>Reported IC50 (nM)</th><th>T-cell Activation Evidence</th></tr></thead>
             <tbody>
-              <tr><td>E5</td><td class="pep">GADGVGKSAL</td><td class="allele">HLA-A*02:01</td><td class="ic50-mid">~280</td><td>Sim 2020 PNAS (PMID:32461371)</td></tr>
-              <tr><td>E6</td><td class="pep">GADGVGKSALT</td><td class="allele">HLA-A*24:02</td><td class="ic50-mid">~160</td><td>Reported HLA-A24 KRAS G12D epitope</td></tr>
-              <tr><td>E7</td><td class="pep">VGADGVGKSAL</td><td class="allele">HLA-B*40:01</td><td class="ic50-mid">~310</td><td>Reported KRAS G12D 11mer epitope</td></tr>
-              <tr><td>E8</td><td class="pep">ADGVGKSAL</td><td class="allele">HLA-A*02:01</td><td class="ic50-mid">~420</td><td>Leidner 2022 NEJM (PMID:35648703)</td></tr>
+              <tr><td>E5</td><td class="pep">GADGVGKSAL</td><td class="allele">HLA-A*02:01</td><td class="ic50-mid">~280</td><td class="wrap">Sim 2020 PNAS (PMID:32461371)</td></tr>
+              <tr><td>E6</td><td class="pep">GADGVGKSALT</td><td class="allele">HLA-A*24:02</td><td class="ic50-mid">~160</td><td class="wrap">Reported HLA-A24 KRAS G12D epitope</td></tr>
+              <tr><td>E7</td><td class="pep">VGADGVGKSAL</td><td class="allele">HLA-B*40:01</td><td class="ic50-mid">~310</td><td class="wrap">Reported KRAS G12D 11mer epitope</td></tr>
+              <tr><td>E8</td><td class="pep">ADGVGKSAL</td><td class="allele">HLA-A*02:01</td><td class="ic50-mid">~420</td><td class="wrap">Leidner 2022 NEJM (PMID:35648703)</td></tr>
             </tbody>
-          </table>
+          </table></div>
         </div>
         <div style="margin-top:8px;">
           <div class="logic-result">→ MHC-II CD4+ Epitopes (IEDB API + Literature; 16-mer window):</div>
-          <table class="seq-table">
+          <div class="seq-table-wrap"><table class="seq-table">
             <thead><tr><th>#</th><th>Peptide</th><th>HLA-II Allele</th><th>IEDB / Lit IC50</th><th>Description</th></tr></thead>
             <tbody>
-              <tr><td>CD4-1</td><td class="pep">YKLVVVGADGVGKSAL</td><td class="allele">HLA-DRB1*04:01</td><td class="ic50-low">~180 nM</td><td>IEDB tcell_search positive record</td></tr>
-              <tr><td>CD4-2</td><td class="pep">KLVVVGADGVGKSALT</td><td class="allele">HLA-DRB1*07:01</td><td class="ic50-low">~240 nM</td><td>KRAS G12D CD4+ T-cell infiltration lit.</td></tr>
-              <tr><td>CD4-3</td><td class="pep">LVVVGADGVGKSALTI</td><td class="allele">HLA-DRB3*02:02</td><td class="ic50-mid">~310 nM</td><td>IEDB cross-reference</td></tr>
-              <tr><td>CD4-4</td><td class="pep">VVVGADGVGKSALTIQ</td><td class="allele">HLA-DRB1*03:01</td><td class="ic50-mid">~490 nM</td><td>IEDB cross-reference</td></tr>
+              <tr><td>CD4-1</td><td class="pep">YKLVVVGADGVGKSAL</td><td class="allele">HLA-DRB1*04:01</td><td class="ic50-low">~180 nM</td><td class="wrap">IEDB tcell_search positive record</td></tr>
+              <tr><td>CD4-2</td><td class="pep">KLVVVGADGVGKSALT</td><td class="allele">HLA-DRB1*07:01</td><td class="ic50-low">~240 nM</td><td class="wrap">KRAS G12D CD4+ T-cell infiltration lit.</td></tr>
+              <tr><td>CD4-3</td><td class="pep">LVVVGADGVGKSALTI</td><td class="allele">HLA-DRB3*02:02</td><td class="ic50-mid">~310 nM</td><td class="wrap">IEDB cross-reference</td></tr>
+              <tr><td>CD4-4</td><td class="pep">VVVGADGVGKSALTIQ</td><td class="allele">HLA-DRB1*03:01</td><td class="ic50-mid">~490 nM</td><td class="wrap">IEDB cross-reference</td></tr>
             </tbody>
-          </table>
+          </table></div>
           <p class="logic-note">⚠️ MHC-II prediction accuracy is lower than MHC-I (no fixed anchor positions). "~" values in the table are IEDB tool estimates. Full client reports include raw IEDB JSON output. E6/E7 IC50 values are from published literature — independent MHCflurry validation for HLA-A*24:02 and HLA-B*40:01 is recommended.</p>
         </div>
         <div class="logic-decision"><strong>✓ Step 1 Output:</strong> 8 MHC-I epitopes (4 MHCflurry + 4 Lit); 4 MHC-II epitopes (IEDB). Population HLA coverage ~70% (Asia) / ~65% (Global).</div>
@@ -691,14 +783,14 @@
       <div class="logic-step">
         <strong>Step 3 — Junctional Neoepitope Check (JunctionCheck)</strong>
         <div class="logic-query">• Scanning 35 junctional 9-mers across 7 AAY linkers for unintended MHC-I binding.</div>
-        <table class="seq-table">
-          <thead><tr><th>Linker</th><th>Left 5aa</th><th>Right 5aa</th><th>Junction 9-mers</th><th>Max MHCflurry IC50</th></tr></thead>
+        <div class="seq-table-wrap"><table class="seq-table">
+          <thead><tr><th>Linker</th><th>Left 5aa</th><th>Right 5aa</th><th>Junction 9-mers (examples)</th><th>Max MHCflurry IC50</th></tr></thead>
           <tbody>
-            <tr><td>E1→E2</td><td class="pep">VGVGK</td><td class="pep">KLVVV</td><td>VGVGKAAYK, GVGKAAYKL...</td><td>> 5000 nM</td></tr>
-            <tr><td>E2→E3</td><td class="pep">GVGKK</td><td class="pep">LVVVG</td><td>GVGKAAYLV, ...</td><td>> 5000 nM</td></tr>
-            <tr><td>E7→E8</td><td class="pep">KSALT</td><td class="pep">ADGVG</td><td>SALTAAYAD, ...</td><td>> 5000 nM</td></tr>
+            <tr><td>E1→E2</td><td class="pep">VGVGK</td><td class="pep">KLVVV</td><td class="wrap">VGVGKAAYK, GVGKAAYKL...</td><td>&#62; 5000 nM</td></tr>
+            <tr><td>E2→E3</td><td class="pep">GVGKK</td><td class="pep">LVVVG</td><td class="wrap">GVGKAAYLV, ...</td><td>&#62; 5000 nM</td></tr>
+            <tr><td>E7→E8</td><td class="pep">KSALT</td><td class="pep">ADGVG</td><td class="wrap">SALTAAYAD, ...</td><td>&#62; 5000 nM</td></tr>
           </tbody>
-        </table>
+        </table></div>
         <div class="logic-decision"><strong>✓ Step 3 Output:</strong> 0 junctional neoepitopes found (IC50 > 5000 nM). Current arrangement is safe (PASS).</div>
       </div>
 
