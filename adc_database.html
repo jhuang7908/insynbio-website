@@ -63,7 +63,7 @@
   .section-desc { color:var(--text-muted); font-size:13.5px; margin-bottom:16px; max-width:700px; }
 
   /* ── Card grid — matches vaccine_kb (280px min) ── */
-  .card-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(280px,1fr)); gap:14px; }
+  .card-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(280px,1fr)); gap:14px; width:100%; }
 
   /* ── Cards — matches vaccine_kb + antibody-guide expand pattern ── */
   .card { background:#fff; border:1px solid var(--border); border-radius:10px; overflow:hidden; transition:box-shadow .15s,border-color .15s; cursor:pointer; }
@@ -7953,8 +7953,10 @@
       <input class="search-box" id="searchExp" type="text" placeholder="Search assay, method…">
       <span class="result-count" id="countExp"></span>
     </div>
-    <div class="card-grid" id="gridExp">
-<h3 class="section-title" style="font-size:20px;margin:20px 0 8px">In Vitro Assays</h3>
+    <div>
+      <h3 class="section-title" style="font-size:20px;margin:0 0 10px">In Vitro Assays</h3>
+      <p class="section-desc" style="margin-bottom:14px">Binding, internalization, cytotoxicity, DAR stability, and bystander effect methods for ADC characterization in cell-based systems.</p>
+      <div class="card-grid" id="gridExpInVitro">
 <div class="card" onclick="toggleCard(this)" data-search="binding_affinity spr (biacore), bli (octet), flow cytometry (facs)">
   <div class="card-header">
     <div class="card-title">Binding Affinity</div>
@@ -8087,7 +8089,12 @@
     </div>
   </div>
 </div>
-<h3 class="section-title" style="font-size:20px;margin:20px 0 8px">In Vivo Assays</h3>
+      </div><!-- /gridExpInVitro -->
+    </div>
+    <div style="margin-top:36px">
+      <h3 class="section-title" style="font-size:20px;margin:0 0 10px">In Vivo Assays</h3>
+      <p class="section-desc" style="margin-bottom:14px">Efficacy, PK/PD, tolerability, and biodistribution models for ADC development in mouse and non-human primate.</p>
+      <div class="card-grid" id="gridExpInVivo">
 <div class="card" onclick="toggleCard(this)" data-search="efficacy_models cdx (cell line-derived xenograft), pdx (patient-derived xenograft)">
   <div class="card-header">
     <div class="card-title">Efficacy Models</div>
@@ -8154,7 +8161,7 @@
     </div>
   </div>
 </div>
-
+      </div><!-- /gridExpInVivo -->
     </div>
   </div>
 </div>
@@ -8282,9 +8289,8 @@ function filterActiveTab() {
       break;
     case 'experiments':
       var q = document.getElementById('searchExp').value.toLowerCase();
-      var cards = document.querySelectorAll('#gridExp .card');
       var n = 0;
-      cards.forEach(function(c) {
+      document.querySelectorAll('#gridExpInVitro .card, #gridExpInVivo .card').forEach(function(c) {
         var show = !q || (c.dataset.search || '').includes(q);
         c.classList.toggle('hidden', !show);
         if (show) n++;
