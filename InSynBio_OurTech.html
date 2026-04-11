@@ -83,6 +83,13 @@
     .feature-list li { display: flex; align-items: flex-start; gap: 12px; font-size: 15px; color: #374151; line-height: 1.5; }
     .feature-list li::before { content: ''; display: inline-block; width: 20px; height: 20px; flex-shrink: 0; background: rgba(13,148,136,0.1); border-radius: 50%; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 24 24' fill='none' stroke='%230d9488' stroke-width='3'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: center; margin-top: 2px; }
 
+    /* Capability cards */
+    .cap-card { background: #fff; border: 1px solid var(--border); border-radius: 12px; padding: 16px; border-top: 3px solid; transition: transform 0.2s, box-shadow 0.2s; }
+    .cap-card:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(0,0,0,0.07); }
+    .cap-icon { width: 34px; height: 34px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 16px; margin-bottom: 10px; }
+    .cap-title { font-size: 14px; font-weight: 700; color: #111827; margin-bottom: 5px; line-height: 1.3; }
+    .cap-desc { font-size: 12.5px; color: #6b7280; line-height: 1.5; }
+
     .cta-section { background: linear-gradient(135deg, #0f766e 0%, #0d9488 100%); color: #fff; padding: 72px 32px; text-align: center; }
     .cta-section h2 { font-family: 'Cormorant Garamond', serif; font-size: 40px; font-weight: 700; margin: 0 0 16px; letter-spacing: -0.02em; }
     .cta-section p { font-size: 17px; color: rgba(255,255,255,0.85); margin: 0 0 32px; max-width: 560px; margin-left: auto; margin-right: auto; }
@@ -372,31 +379,115 @@
   <div class="container">
     <span class="section-label">Capabilities</span>
     <h2 class="section-h2">Full Spectrum <span>Assessment</span></h2>
-    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; margin-top: 24px;">
-      <div>
-        <h3 style="font-size: 20px; font-weight: 600; margin: 0 0 16px; color: #111827;">Antibody Assessment</h3>
-        <ul class="feature-list">
-          <li><strong>Sequence Analysis</strong> — Kabat/IMGT numbering, CDR definition, germline assignment</li>
-          <li><strong>CMC Developability</strong> — pI, hydrophobicity, SAP, TAP, chemical modification risks</li>
-          <li><strong>Immunogenicity</strong> — MHC-II 27 allele prediction, surface risk assessment</li>
-          <li><strong>Structural Analysis</strong> — VH-VL angle, interface contacts, paratope/epitope analysis</li>
-          <li><strong>VH/VL Humanization</strong> — Structure-driven back-mutations, 842 clinical germlines prioritized</li>
-          <li><strong>VHH Humanization</strong> — Surface reshaping and framework grafting with structural assessment</li>
-          <li><strong>VH → VHH Conversion</strong> — CDR-preserved camelization engineering</li>
-          <li><strong>Affinity Maturation</strong> — ΔΔG scanning, 5D filtering, epistatic synergy analysis</li>
-        </ul>
+    <p style="color:#4b5563;font-size:16px;max-width:680px;line-height:1.6;margin:0 0 32px;">Every module is calibrated against clinical reference data — not theoretical benchmarks. Select any combination of capabilities for your project.</p>
+
+    <!-- Category: Antibody Engineering -->
+    <div style="margin-bottom:28px;">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px;">
+        <span style="display:inline-block;width:4px;height:20px;background:var(--primary);border-radius:2px;"></span>
+        <h3 style="font-size:14px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--primary);margin:0;">Antibody Engineering</h3>
       </div>
-      <div>
-        <h3 style="font-size: 20px; font-weight: 600; margin: 0 0 16px; color: #111827;">Cell Therapy & Multispecifics</h3>
-        <ul class="feature-list">
-          <li><strong>CAR-T Architecture Design</strong> — Binder, spacer, transmembrane, and costimulatory domain selection</li>
-          <li><strong>CAR Component Benchmarking</strong> — Comparison against 237 clinical CAR components</li>
-          <li><strong>Bispecific Format Screening</strong> — Developability benchmarks for 134+ clinical formats</li>
-          <li><strong>Linker Design</strong> — Flexible/rigid linker selection and length optimization</li>
-          <li><strong>pI Engineering</strong> — Dual-chain charge asymmetry design for improved purification</li>
-          <li><strong>Vaccine Design</strong> — Neoantigen screening, heteroclitic optimization, multi-epitope mRNA</li>
-          <li><strong>Immunogenicity Database</strong> — 138 ADA records, clinical immunogenicity rate correlation</li>
-        </ul>
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px;">
+        <div class="cap-card" style="border-top-color:#0d9488;">
+          <div class="cap-icon" style="background:rgba(13,148,136,0.1);color:#0d9488;">🧬</div>
+          <div class="cap-title">VH/VL Humanization</div>
+          <div class="cap-desc">CDR grafting + structure-driven back-mutations, 842 clinical germlines</div>
+        </div>
+        <div class="cap-card" style="border-top-color:#0d9488;">
+          <div class="cap-icon" style="background:rgba(13,148,136,0.1);color:#0d9488;">🔬</div>
+          <div class="cap-title">VHH Humanization</div>
+          <div class="cap-desc">Surface reshaping, framework grafting, structural QA, 29-item checklist</div>
+        </div>
+        <div class="cap-card" style="border-top-color:#0d9488;">
+          <div class="cap-icon" style="background:rgba(13,148,136,0.1);color:#0d9488;">⚡</div>
+          <div class="cap-title">Affinity Maturation</div>
+          <div class="cap-desc">ΔΔG scanning, 6-tool consensus, 5D filtering, epistatic synergy analysis</div>
+        </div>
+        <div class="cap-card" style="border-top-color:#0d9488;">
+          <div class="cap-icon" style="background:rgba(13,148,136,0.1);color:#0d9488;">🔄</div>
+          <div class="cap-title">VH → VHH Conversion</div>
+          <div class="cap-desc">CDR-preserved camelization, hallmark residue engineering (VGRW)</div>
+        </div>
+        <div class="cap-card" style="border-top-color:#0d9488;">
+          <div class="cap-icon" style="background:rgba(13,148,136,0.1);color:#0d9488;">🏗️</div>
+          <div class="cap-title">Sequence Analysis</div>
+          <div class="cap-desc">Kabat/IMGT numbering, CDR definition, germline assignment via ANARCI</div>
+        </div>
+        <div class="cap-card" style="border-top-color:#0d9488;">
+          <div class="cap-icon" style="background:rgba(13,148,136,0.1);color:#0d9488;">🔭</div>
+          <div class="cap-title">Structural Analysis</div>
+          <div class="cap-desc">VH-VL packing angle, interface contacts, paratope/epitope precision mapping</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Category: Developability & Safety -->
+    <div style="margin-bottom:28px;">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px;">
+        <span style="display:inline-block;width:4px;height:20px;background:#d97706;border-radius:2px;"></span>
+        <h3 style="font-size:14px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:#d97706;margin:0;">CMC &amp; Developability</h3>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px;">
+        <div class="cap-card" style="border-top-color:#d97706;">
+          <div class="cap-icon" style="background:rgba(217,119,6,0.1);color:#d97706;">📊</div>
+          <div class="cap-title">CMC Assessment</div>
+          <div class="cap-desc">pI, hydrophobicity, SAP, TAP — benchmarked vs. AbRef-458 clinical database</div>
+        </div>
+        <div class="cap-card" style="border-top-color:#d97706;">
+          <div class="cap-icon" style="background:rgba(217,119,6,0.1);color:#d97706;">🛡️</div>
+          <div class="cap-title">Immunogenicity</div>
+          <div class="cap-desc">MHC-II 27-allele prediction, TCIA score, T-cell epitope hotspot mapping</div>
+        </div>
+        <div class="cap-card" style="border-top-color:#d97706;">
+          <div class="cap-icon" style="background:rgba(217,119,6,0.1);color:#d97706;">⚗️</div>
+          <div class="cap-title">Chemical Liability Scan</div>
+          <div class="cap-desc">Deamidation, isomerization, oxidation, free-Cys, glycosylation site flags</div>
+        </div>
+        <div class="cap-card" style="border-top-color:#d97706;">
+          <div class="cap-icon" style="background:rgba(217,119,6,0.1);color:#d97706;">🧪</div>
+          <div class="cap-title">ADA Database</div>
+          <div class="cap-desc">138 validated clinical ADA records for immunogenicity rate benchmarking</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Category: Therapy & Multispecifics -->
+    <div>
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px;">
+        <span style="display:inline-block;width:4px;height:20px;background:#7c3aed;border-radius:2px;"></span>
+        <h3 style="font-size:14px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:#7c3aed;margin:0;">Therapy Design &amp; Multispecifics</h3>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px;">
+        <div class="cap-card" style="border-top-color:#7c3aed;">
+          <div class="cap-icon" style="background:rgba(124,58,237,0.1);color:#7c3aed;">🎯</div>
+          <div class="cap-title">CAR-T Architecture</div>
+          <div class="cap-desc">Binder, spacer, TM domain, costimulatory selection vs. 237 clinical components</div>
+        </div>
+        <div class="cap-card" style="border-top-color:#7c3aed;">
+          <div class="cap-icon" style="background:rgba(124,58,237,0.1);color:#7c3aed;">🔗</div>
+          <div class="cap-title">ADC Design</div>
+          <div class="cap-desc">Antigen-linker-payload matching, 100 clinical ADC programs as reference</div>
+        </div>
+        <div class="cap-card" style="border-top-color:#7c3aed;">
+          <div class="cap-icon" style="background:rgba(124,58,237,0.1);color:#7c3aed;">↔️</div>
+          <div class="cap-title">Bispecific Screening</div>
+          <div class="cap-desc">Format selection and CMC benchmarks for 134+ clinical bispecific formats</div>
+        </div>
+        <div class="cap-card" style="border-top-color:#7c3aed;">
+          <div class="cap-icon" style="background:rgba(124,58,237,0.1);color:#7c3aed;">💉</div>
+          <div class="cap-title">Vaccine Design</div>
+          <div class="cap-desc">Neoantigen screening, heteroclitic peptide optimization, multi-epitope mRNA design</div>
+        </div>
+        <div class="cap-card" style="border-top-color:#7c3aed;">
+          <div class="cap-icon" style="background:rgba(124,58,237,0.1);color:#7c3aed;">⚖️</div>
+          <div class="cap-title">pI Engineering</div>
+          <div class="cap-desc">Dual-chain charge asymmetry design for purification and colloidal stability</div>
+        </div>
+        <div class="cap-card" style="border-top-color:#7c3aed;">
+          <div class="cap-icon" style="background:rgba(124,58,237,0.1);color:#7c3aed;">🔀</div>
+          <div class="cap-title">Linker Design</div>
+          <div class="cap-desc">Flexible/rigid linker selection and length optimization for multispecific formats</div>
+        </div>
       </div>
     </div>
   </div>

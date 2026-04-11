@@ -389,10 +389,95 @@
       <h2 class="section-title">Antibody–Fentanyl <span>Binding Pocket</span> 3D Structure</h2>
       <div class="struct-panel">
         <div class="struct-inner">
-          <div class="struct-svg-wrap" style="background:#111827; padding:0; overflow:hidden; min-height:320px; display:flex; align-items:center; justify-content:center;">
-            <img src="images/case-fentanyl-structure.png"
-                 alt="Ab278 antibody with fentanyl binding pocket electrostatic surface"
-                 style="width:100%; max-width:440px; height:auto; display:block; object-fit:contain;">
+          <div class="struct-svg-wrap" style="background:#0f172a; padding:20px; overflow:hidden; min-height:320px; display:flex; align-items:center; justify-content:center;">
+            <svg viewBox="0 0 420 300" width="100%" style="max-width:420px;" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Antibody CDR pocket binding schematic">
+              <defs>
+                <radialGradient id="pocketGrad" cx="50%" cy="50%" r="50%">
+                  <stop offset="0%" stop-color="#fbbf24" stop-opacity="0.18"/>
+                  <stop offset="100%" stop-color="#0f172a" stop-opacity="0"/>
+                </radialGradient>
+                <filter id="glow"><feGaussianBlur stdDeviation="2.5" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+                <filter id="softglow"><feGaussianBlur stdDeviation="4" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+              </defs>
+
+              <!-- Background glow at pocket center -->
+              <ellipse cx="210" cy="150" rx="70" ry="55" fill="url(#pocketGrad)"/>
+
+              <!-- VH domain (top, blue region) -->
+              <path d="M60,30 Q110,20 160,40 Q190,50 210,80 Q230,110 210,130 Q190,145 160,138 Q120,130 90,110 Q55,88 60,30Z" fill="#1e3a5f" stroke="#3b82f6" stroke-width="1.5" opacity="0.85"/>
+              <text x="108" y="78" font-family="'Consolas',monospace" font-size="11" fill="#93c5fd" font-weight="600">VH</text>
+              <text x="88" y="91" font-family="'Consolas',monospace" font-size="9.5" fill="#60a5fa">CDR3</text>
+
+              <!-- VL domain (bottom, red region) -->
+              <path d="M60,270 Q110,280 160,260 Q190,250 210,220 Q230,190 210,170 Q190,155 160,162 Q120,170 90,190 Q55,212 60,270Z" fill="#3d1515" stroke="#f87171" stroke-width="1.5" opacity="0.85"/>
+              <text x="108" y="230" font-family="'Consolas',monospace" font-size="11" fill="#fca5a5" font-weight="600">VL</text>
+              <text x="88" y="215" font-family="'Consolas',monospace" font-size="9.5" fill="#f87171">CDR3</text>
+
+              <!-- VH domain right side -->
+              <path d="M360,30 Q310,20 260,40 Q230,50 210,80 Q190,110 210,130 Q230,145 260,138 Q300,130 330,110 Q365,88 360,30Z" fill="#1e3a5f" stroke="#3b82f6" stroke-width="1.5" opacity="0.85"/>
+              <text x="282" y="78" font-family="'Consolas',monospace" font-size="11" fill="#93c5fd" font-weight="600">VH</text>
+
+              <!-- VL domain right side -->
+              <path d="M360,270 Q310,280 260,260 Q230,250 210,220 Q190,190 210,170 Q230,155 260,162 Q300,170 330,190 Q365,212 360,270Z" fill="#3d1515" stroke="#f87171" stroke-width="1.5" opacity="0.85"/>
+              <text x="282" y="230" font-family="'Consolas',monospace" font-size="11" fill="#fca5a5" font-weight="600">VL</text>
+
+              <!-- Pocket opening indicator lines -->
+              <line x1="160" y1="138" x2="160" y2="162" stroke="#64748b" stroke-width="1" stroke-dasharray="3,3"/>
+              <line x1="260" y1="138" x2="260" y2="162" stroke="#64748b" stroke-width="1" stroke-dasharray="3,3"/>
+
+              <!-- Fentanyl molecule (simplified) in pocket center -->
+              <g filter="url(#softglow)" transform="translate(210,150)">
+                <!-- Benzene ring -->
+                <polygon points="0,-20 17,-10 17,10 0,20 -17,10 -17,-10" fill="none" stroke="#fbbf24" stroke-width="2"/>
+                <!-- Piperidine ring (N-containing) -->
+                <circle cx="0" cy="0" r="9" fill="#fbbf24" fill-opacity="0.25" stroke="#fbbf24" stroke-width="1.5"/>
+                <!-- N atom -->
+                <circle cx="0" cy="0" r="3.5" fill="#a78bfa"/>
+                <text x="3" y="-1.5" font-family="monospace" font-size="6" fill="#c4b5fd">N</text>
+                <!-- Side chain dots -->
+                <circle cx="26" cy="-14" r="4" fill="#fbbf24" fill-opacity="0.6"/>
+                <circle cx="26" cy="14" r="4" fill="#fbbf24" fill-opacity="0.6"/>
+                <circle cx="-26" cy="-14" r="4" fill="#fbbf24" fill-opacity="0.6"/>
+                <circle cx="-26" cy="14" r="4" fill="#fbbf24" fill-opacity="0.6"/>
+                <!-- Bond lines -->
+                <line x1="9" y1="0" x2="22" y2="-13" stroke="#fbbf24" stroke-width="1.2"/>
+                <line x1="9" y1="0" x2="22" y2="13" stroke="#fbbf24" stroke-width="1.2"/>
+                <line x1="-9" y1="0" x2="-22" y2="-13" stroke="#fbbf24" stroke-width="1.2"/>
+                <line x1="-9" y1="0" x2="-22" y2="13" stroke="#fbbf24" stroke-width="1.2"/>
+              </g>
+
+              <!-- Residue labels H:W107 mutation site -->
+              <circle cx="178" cy="133" r="6" fill="#7c3aed" stroke="#a78bfa" stroke-width="1.5" filter="url(#glow)"/>
+              <text x="153" y="125" font-family="monospace" font-size="9" fill="#c4b5fd" font-weight="700">H:W107I</text>
+              <line x1="178" y1="127" x2="190" y2="115" stroke="#a78bfa" stroke-width="0.8" stroke-dasharray="2,2"/>
+
+              <!-- Residue labels L:N116 mutation site -->
+              <circle cx="178" cy="167" r="6" fill="#dc2626" stroke="#fca5a5" stroke-width="1.5" filter="url(#glow)"/>
+              <text x="153" y="180" font-family="monospace" font-size="9" fill="#fca5a5" font-weight="700">L:N116E</text>
+              <line x1="178" y1="173" x2="190" y2="183" stroke="#f87171" stroke-width="0.8" stroke-dasharray="2,2"/>
+
+              <!-- Right side mutation labels -->
+              <circle cx="242" cy="133" r="6" fill="#7c3aed" stroke="#a78bfa" stroke-width="1.5" filter="url(#glow)"/>
+              <circle cx="242" cy="167" r="6" fill="#dc2626" stroke="#fca5a5" stroke-width="1.5" filter="url(#glow)"/>
+
+              <!-- Interaction arrows / bonds to fentanyl -->
+              <line x1="184" y1="133" x2="195" y2="138" stroke="#a78bfa" stroke-width="1.5" stroke-dasharray="2,1.5" opacity="0.7"/>
+              <line x1="184" y1="167" x2="195" y2="162" stroke="#f87171" stroke-width="1.5" stroke-dasharray="2,1.5" opacity="0.7"/>
+              <line x1="236" y1="133" x2="225" y2="138" stroke="#a78bfa" stroke-width="1.5" stroke-dasharray="2,1.5" opacity="0.7"/>
+              <line x1="236" y1="167" x2="225" y2="162" stroke="#f87171" stroke-width="1.5" stroke-dasharray="2,1.5" opacity="0.7"/>
+
+              <!-- Labels -->
+              <text x="210" y="16" font-family="'Inter',sans-serif" font-size="11" fill="#94a3b8" text-anchor="middle" font-style="italic">VH/VL Interface CDR Pocket</text>
+              <text x="210" y="292" font-family="'Inter',sans-serif" font-size="10" fill="#64748b" text-anchor="middle">Schematic · Sequence confidential per NDA</text>
+
+              <!-- Legend dots bottom right -->
+              <circle cx="280" cy="258" r="5" fill="#fbbf24"/>
+              <text x="290" y="262" font-family="monospace" font-size="9" fill="#94a3b8">Fentanyl</text>
+              <circle cx="280" cy="272" r="5" fill="#7c3aed"/>
+              <text x="290" y="276" font-family="monospace" font-size="9" fill="#94a3b8">H:W107I (ΔΔG −2.40)</text>
+              <circle cx="280" cy="286" r="5" fill="#dc2626"/>
+              <text x="290" y="290" font-family="monospace" font-size="9" fill="#94a3b8">L:N116E (ΔΔG −2.55)</text>
+            </svg>
           </div>
           <div class="struct-legend" style="padding:22px 24px;">
             <h4>Binding Pocket Structure Interpretation</h4>
