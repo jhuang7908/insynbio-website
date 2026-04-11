@@ -1,0 +1,3930 @@
+[
+  {
+    "pmid": "37148484",
+    "drug": "Anifrolumab",
+    "title": "Clinical Pharmacokinetics, Pharmacodynamics, and Immunogenicity of Anifrolumab.",
+    "relevant": true,
+    "error": null,
+    "file": "ada_db_data.json"
+  },
+  {
+    "pmid": "41163220",
+    "drug": "Astegolimab",
+    "title": "Safety and tolerability of astegolimab, an anti-ST2 monoclonal antibody: a narrative review.",
+    "relevant": true,
+    "error": null,
+    "file": "ada_db_data.json"
+  },
+  {
+    "pmid": "32376702",
+    "drug": "Bezlotoxumab",
+    "title": "Genetic Association Reveals Protection against Recurrence of Clostridium difficile Infection with Bezlotoxumab Treatment.",
+    "relevant": true,
+    "error": null,
+    "file": "ada_db_data.json"
+  },
+  {
+    "pmid": "29516365",
+    "drug": "Brodalumab",
+    "title": "Brodalumab: A Review in Moderate to Severe Plaque Psoriasis.",
+    "relevant": true,
+    "error": null,
+    "file": "ada_db_data.json"
+  },
+  {
+    "pmid": "36072994",
+    "drug": "Burosumab",
+    "title": "Long-term Burosumab Administration Is Safe and Effective in Adults With X-linked Hypophosphatemia.",
+    "relevant": true,
+    "error": null,
+    "file": "ada_db_data.json"
+  },
+  {
+    "pmid": "27119439",
+    "drug": "Canakinumab",
+    "title": "Pharmacokinetics and Pharmacodynamics of Canakinumab in Patients With Systemic Juvenile Idiopathic Arthritis.",
+    "relevant": true,
+    "error": null,
+    "file": "ada_db_data.json"
+  },
+  {
+    "pmid": "37656820",
+    "drug": "Cemiplimab",
+    "title": "Immunogenicity of Cemiplimab: Low Incidence of Antidrug Antibodies and Cut-Point Suitability Across Tumor Types.",
+    "relevant": true,
+    "error": null,
+    "file": "ada_db_data.json"
+  },
+  {
+    "pmid": "40799036",
+    "drug": "Cilgavimab",
+    "title": "Safety, Tolerability, and Pharmacokinetics of the Long-Acting SARS-CoV-2-Neutralizing Monoclonal Antibody Combination AZD7442 (Tixagevimab/Cilgavimab) in Healthy Chinese Adults.",
+    "relevant": true,
+    "error": null,
+    "file": "ada_db_data.json"
+  },
+  {
+    "pmid": "38477751",
+    "drug": "Denosumab",
+    "title": "Equivalence trial of proposed denosumab biosimilar GP2411 and reference denosumab in postmenopausal osteoporosis: the ROSALIA study.",
+    "relevant": true,
+    "error": null,
+    "file": "ada_db_data.json"
+  },
+  {
+    "pmid": "37566240",
+    "drug": "Durvalumab",
+    "title": "Safety, Immunologic, and Clinical Activity of Durvalumab in Combination with Olaparib or Cediranib in Advanced Leiomyosarcoma: Results of the DAPPER Clinical Trial.",
+    "relevant": true,
+    "error": null,
+    "file": "ada_db_data.json"
+  },
+  {
+    "pmid": "16503742",
+    "drug": "Efalizumab",
+    "title": "Efalizumab: a review of events reported during clinical trials and side effects.",
+    "relevant": true,
+    "error": null,
+    "file": "ada_db_data.json"
+  },
+  {
+    "pmid": "33991512",
+    "drug": "Enfortumab",
+    "title": "Enfortumab vedotin after PD-1 or PD-L1 inhibitors in cisplatin-ineligible patients with advanced urothelial carcinoma (EV‑201): a multicentre, single-arm, phase 2 trial.",
+    "relevant": true,
+    "error": null,
+    "file": "ada_db_data.json"
+  },
+  {
+    "pmid": "19560810",
+    "drug": "Golimumab",
+    "title": "Golimumab in patients with active rheumatoid arthritis after treatment with tumour necrosis factor alpha inhibitors (GO-AFTER study): a multicentre, randomised, double-blind, placebo-controlled, phase III trial.",
+    "relevant": true,
+    "error": null,
+    "file": "ada_db_data.json"
+  },
+  {
+    "pmid": "28057360",
+    "drug": "Guselkumab",
+    "title": "Efficacy and safety of guselkumab, an anti-interleukin-23 monoclonal antibody, compared with adalimumab for the continuous treatment of patients with moderate to severe psoriasis: Results from the phase III, double-blinded, placebo- and active comparator-controlled VOYAGE 1 trial.",
+    "relevant": true,
+    "error": null,
+    "file": "ada_db_data.json"
+  },
+  {
+    "pmid": "30480729",
+    "drug": "Lanadelumab",
+    "title": "Effect of Lanadelumab Compared With Placebo on Prevention of Hereditary Angioedema Attacks: A Randomized Clinical Trial.",
+    "relevant": true,
+    "error": null,
+    "file": "ada_db_data.json"
+  },
+  {
+    "pmid": "20197484",
+    "drug": "Necitumumab",
+    "title": "A phase I pharmacologic study of necitumumab (IMC-11F8), a fully human IgG1 monoclonal antibody directed against EGFR in patients with advanced solid malignancies.",
+    "relevant": true,
+    "error": null,
+    "file": "ada_db_data.json"
+  },
+  {
+    "pmid": "35235726",
+    "drug": "Nirsevimab",
+    "title": "Nirsevimab for Prevention of RSV in Healthy Late-Preterm and Term Infants.",
+    "relevant": true,
+    "error": null,
+    "file": "ada_db_data.json"
+  },
+  {
+    "pmid": "37450172",
+    "drug": "Ofatumumab",
+    "title": "The Development of Ofatumumab, a Fully Human Anti-CD20 Monoclonal Antibody for Practical Use in Relapsing Multiple Sclerosis Treatment.",
+    "relevant": true,
+    "error": null,
+    "file": "ada_db_data.json"
+  },
+  {
+    "pmid": "17470858",
+    "drug": "Panitumumab",
+    "title": "Open-label phase III trial of panitumumab plus best supportive care compared with best supportive care alone in patients with chemotherapy-refractory metastatic colorectal cancer.",
+    "relevant": true,
+    "error": null,
+    "file": "ada_db_data.json"
+  },
+  {
+    "pmid": "34915576",
+    "drug": "Sarilumab",
+    "title": "Immunogenicity of sarilumab and impact on safety and efficacy in Japanese patients with rheumatoid arthritis: analysis of two Phase 3 randomised clinical trials.",
+    "relevant": true,
+    "error": null,
+    "file": "ada_db_data.json"
+  },
+  {
+    "pmid": "39187158",
+    "drug": "Teprotumumab",
+    "title": "Effects of Teprotumumab and Role of Human Leukocyte Antigens Markers in Patients With Thyroid Eye Disease.",
+    "relevant": true,
+    "error": null,
+    "file": "ada_db_data.json"
+  },
+  {
+    "pmid": "33571457",
+    "drug": "Tisotumab",
+    "title": "Established and novel therapeutic options for autoimmune hepatitis.",
+    "relevant": false,
+    "error": null,
+    "file": "ada_db_data.json"
+  },
+  {
+    "pmid": "40799036",
+    "drug": "Tixagevimab",
+    "title": "Safety, Tolerability, and Pharmacokinetics of the Long-Acting SARS-CoV-2-Neutralizing Monoclonal Antibody Combination AZD7442 (Tixagevimab/Cilgavimab) in Healthy Chinese Adults.",
+    "relevant": true,
+    "error": null,
+    "file": "ada_db_data.json"
+  },
+  {
+    "pmid": "30649752",
+    "drug": "Tralokinumab",
+    "title": "Evaluation of Antibody Properties and Clinically Relevant Immunogenicity, Anaphylaxis, and Hypersensitivity Reactions in Two Phase III Trials of Tralokinumab in Severe, Uncontrolled Asthma.",
+    "relevant": true,
+    "error": null,
+    "file": "ada_db_data.json"
+  },
+  {
+    "pmid": "33618023",
+    "drug": "Ustekinumab",
+    "title": "Five-Year Efficacy and Safety of Ustekinumab Treatment in Crohn's Disease: The IM-UNITI Trial.",
+    "relevant": true,
+    "error": null,
+    "file": "ada_db_data.json"
+  },
+  {
+    "pmid": "30144037",
+    "drug": "Alemtuzumab",
+    "title": "Clinical pharmacology of alemtuzumab, an anti-CD52 immunomodulator, in multiple sclerosis.",
+    "relevant": true,
+    "error": null,
+    "file": "ada_db_data.json"
+  },
+  {
+    "pmid": "37268157",
+    "drug": "Atezolizumab",
+    "title": "IMscin001 Part 2: a randomised phase III, open-label, multicentre study examining the pharmacokinetics, efficacy, immunogenicity, and safety of atezolizumab subcutaneous versus intravenous administration in previously treated locally advanced or metastatic non-small-cell lung cancer and pharmacokinetics comparison with other approved indications.",
+    "relevant": true,
+    "error": null,
+    "file": "ada_db_data.json"
+  },
+  {
+    "pmid": "38367194",
+    "drug": "Benralizumab",
+    "title": "Benralizumab does not elicit therapeutic effect in patients with chronic spontaneous urticaria: results from the phase IIb multinational randomized double-blind placebo-controlled ARROYO trial.",
+    "relevant": true,
+    "error": null,
+    "file": "ada_db_data.json"
+  },
+  {
+    "pmid": "15175435",
+    "drug": "Bevacizumab",
+    "title": "Bevacizumab plus irinotecan, fluorouracil, and leucovorin for metastatic colorectal cancer.",
+    "relevant": true,
+    "error": null,
+    "file": "ada_db_data.json"
+  },
+  {
+    "pmid": "33549193",
+    "drug": "Bimekizumab",
+    "title": "Bimekizumab versus ustekinumab for the treatment of moderate to severe plaque psoriasis (BE VIVID): efficacy and safety from a 52-week, multicentre, double-blind, active comparator and placebo controlled phase 3 trial.",
+    "relevant": true,
+    "error": null,
+    "file": "ada_db_data.json"
+  },
+  {
+    "pmid": "31056336",
+    "drug": "Camrelizumab",
+    "title": "Phenotypic relationships, genetic parameters, genome-wide associations, and identification of potential candidate genes for ketosis and fat-to-protein ratio in German Holstein cows.",
+    "relevant": false,
+    "error": null,
+    "file": "ada_db_data.json"
+  },
+  {
+    "pmid": "31783773",
+    "drug": "Certolizumab",
+    "title": "Associations between certolizumab pegol serum levels, anti-drug antibodies and treatment response in patients with inflammatory joint diseases: data from the NOR-DMARD study.",
+    "relevant": true,
+    "error": null,
+    "file": "ada_db_data.json"
+  },
+  {
+    "pmid": "38796655",
+    "drug": "Clazakizumab",
+    "title": "IL-6 inhibition with clazakizumab in patients receiving maintenance dialysis: a randomized phase 2b trial.",
+    "relevant": true,
+    "error": null,
+    "file": "ada_db_data.json"
+  },
+  {
+    "pmid": "39521008",
+    "drug": "Concizumab",
+    "title": "Concizumab prophylaxis in people with haemophilia A or haemophilia B without inhibitors (explorer8): a prospective, multicentre, open-label, randomised, phase 3a trial.",
+    "relevant": true,
+    "error": null,
+    "file": "ada_db_data.json"
+  },
+  {
+    "pmid": "26873229",
+    "drug": "Daclizumab",
+    "title": "Population Pharmacokinetics of Daclizumab High-Yield Process in Healthy Volunteers and Subjects with Multiple Sclerosis: Analysis of Phase I-III Clinical Trials.",
+    "relevant": true,
+    "error": null,
+    "file": "ada_db_data.json"
+  },
+  {
+    "pmid": "40401504",
+    "drug": "Dazukibart",
+    "title": "Pharmacokinetics, Safety, and Tolerability of Single-Dose Dazukibart in Healthy Adults in China and Japan: Results From 2 Randomized, Double-Blind, Phase 1 Studies.",
+    "relevant": true,
+    "error": null,
+    "file": "ada_db_data.json"
+  },
+  {
+    "pmid": "37459141",
+    "drug": "Donanemab",
+    "title": "Donanemab in Early Symptomatic Alzheimer Disease: The TRAILBLAZER-ALZ 2 Randomized Clinical Trial.",
+    "relevant": true,
+    "error": null,
+    "file": "ada_db_data.json"
+  },
+  {
+    "pmid": "34324079",
+    "drug": "Dostarlimab",
+    "title": "An Integrated Analysis of Dostarlimab Immunogenicity.",
+    "relevant": true,
+    "error": null,
+    "file": "ada_db_data.json"
+  },
+  {
+    "pmid": "38127586",
+    "drug": "Emicizumab",
+    "title": "Emicizumab prophylaxis in infants with hemophilia A (HAVEN 7): primary analysis of a phase 3b open-label trial.",
+    "relevant": true,
+    "error": null,
+    "file": "ada_db_data.json"
+  },
+  {
+    "pmid": "32075406",
+    "drug": "Eptinezumab",
+    "title": "Eptinezumab in episodic migraine: A randomized, double-blind, placebo-controlled study (PROMISE-1).",
+    "relevant": true,
+    "error": null,
+    "file": "ada_db_data.json"
+  },
+  {
+    "pmid": "40481373",
+    "drug": "Etrolizumab",
+    "title": "Factors Impacting the Immunogenicity of Etrolizumab & Clinical Consequences.",
+    "relevant": true,
+    "error": null,
+    "file": "ada_db_data.json"
+  },
+  {
+    "pmid": "35085501",
+    "drug": "Faricimab",
+    "title": "Beyond anti-VEGF: can faricimab reduce treatment burden for retinal disease?",
+    "relevant": true,
+    "error": null,
+    "file": "ada_db_data.json"
+  },
+  {
+    "pmid": "31427046",
+    "drug": "Fremanezumab",
+    "title": "Fremanezumab versus placebo for migraine prevention in patients with documented failure to up to four migraine preventive medication classes (FOCUS): a randomised, double-blind, placebo-controlled, phase 3b trial.",
+    "relevant": true,
+    "error": null,
+    "file": "ada_db_data.json"
+  },
+  {
+    "pmid": "35633025",
+    "drug": "Galcanezumab",
+    "title": "Long-term open-label safety study of galcanezumab in patients with episodic or chronic cluster headache.",
+    "relevant": true,
+    "error": null,
+    "file": "ada_db_data.json"
+  },
+  {
+    "pmid": "28963724",
+    "drug": "Itolizumab",
+    "title": "The anti-CD6 antibody itolizumab provides clinical benefit without lymphopenia in rheumatoid arthritis patients: results from a 6-month, open-label Phase I clinical trial.",
+    "relevant": true,
+    "error": null,
+    "file": "ada_db_data.json"
+  },
+  {
+    "pmid": "26072109",
+    "drug": "Ixekizumab",
+    "title": "Comparison of ixekizumab with etanercept or placebo in moderate-to-severe psoriasis (UNCOVER-2 and UNCOVER-3): results from two phase 3 randomised trials.",
+    "relevant": true,
+    "error": null,
+    "file": "ada_db_data.json"
+  },
+  {
+    "pmid": "36449413",
+    "drug": "Lecanemab",
+    "title": "Lecanemab in Early Alzheimer's Disease.",
+    "relevant": true,
+    "error": null,
+    "file": "ada_db_data.json"
+  },
+  {
+    "pmid": "30359681",
+    "drug": "Mepolizumab",
+    "title": "Assessment of the long-term safety of mepolizumab and durability of clinical response in patients with severe eosinophilic asthma.",
+    "relevant": true,
+    "error": null,
+    "file": "ada_db_data.json"
+  },
+  {
+    "pmid": "17761550",
+    "drug": "Natalizumab",
+    "title": "The incidence and significance of anti-natalizumab antibodies: results from AFFIRM and SENTINEL.",
+    "relevant": true,
+    "error": null,
+    "file": "ada_db_data.json"
+  },
+  {
+    "pmid": "39136011",
+    "drug": "Omalizumab",
+    "title": "Efficacy and safety of a proposed omalizumab biosimilar compared to the reference product in the management of uncontrolled moderate-to-severe allergic asthma: a multicenter, phase III, randomized, double-blind, equivalency clinical trial.",
+    "relevant": true,
+    "error": null,
+    "file": "ada_db_data.json"
+  },
+  {
+    "pmid": "36197757",
+    "drug": "Ozoralizumab",
+    "title": "Efficacy and safety of the anti-TNF multivalent NANOBODY® compound ozoralizumab in patients with rheumatoid arthritis and an inadequate response to methotrexate: A 52-week result of a Phase II/III study (OHZORA trial).",
+    "relevant": true,
+    "error": null,
+    "file": "ada_db_data.json"
+  },
+  {
+    "pmid": "26027431",
+    "drug": "Pembrolizumab",
+    "title": "Combined Nivolumab and Ipilimumab or Monotherapy in Untreated Melanoma.",
+    "relevant": false,
+    "error": null,
+    "file": "ada_db_data.json"
+  },
+  {
+    "pmid": "36374913",
+    "drug": "Ranibizumab",
+    "title": "Efficacy and safety of a new ranibizumab biosimilar CKD-701 using a pro re nata treatment regimen in neovascular age-related macular degeneration: A phase 3 randomized clinical trial.",
+    "relevant": true,
+    "error": null,
+    "file": "ada_db_data.json"
+  },
+  {
+    "pmid": "30511862",
+    "drug": "Ravulizumab",
+    "title": "Criegee Intermediate Reaction with Alcohol Is Enhanced by a Single Water Molecule.",
+    "relevant": false,
+    "error": null,
+    "file": "ada_db_data.json"
+  },
+  {
+    "pmid": "28411872",
+    "drug": "Risankizumab",
+    "title": "Induction therapy with the selective interleukin-23 inhibitor risankizumab in patients with moderate-to-severe Crohn's disease: a randomised, double-blind, placebo-controlled phase 2 study.",
+    "relevant": true,
+    "error": null,
+    "file": "ada_db_data.json"
+  },
+  {
+    "pmid": "30785690",
+    "drug": "Sacituzumab",
+    "title": "[Levels of sex hormones, sex hormone binding globulin, antisperm antibodies and dopamine in postmanopausal women of nomadic and settled aboriginal and local caucasoid populations of the arctic territories.].",
+    "relevant": false,
+    "error": null,
+    "file": "ada_db_data.json"
+  },
+  {
+    "pmid": "37851532",
+    "drug": "Tarlatamab",
+    "title": "Biomechanical Evaluation of Tracheal Needle Puncture Forces: Comparative Analysis of Annular Ligaments and Tracheal Cartilage.",
+    "relevant": false,
+    "error": null,
+    "file": "ada_db_data.json"
+  },
+  {
+    "pmid": "28596043",
+    "drug": "Tildrakizumab",
+    "title": "Tildrakizumab versus placebo or etanercept for chronic plaque psoriasis (reSURFACE 1 and reSURFACE 2): results from two randomised controlled, phase 3 trials.",
+    "relevant": true,
+    "error": null,
+    "file": "ada_db_data.json"
+  },
+  {
+    "pmid": "38258678",
+    "drug": "Tocilizumab",
+    "title": "Comparing tocilizumab biosimilar BAT1806/BIIB800 with reference tocilizumab in patients with moderate-to-severe rheumatoid arthritis with an inadequate response to methotrexate: a phase 3, randomised, multicentre, double-blind, active-controlled clinical trial.",
+    "relevant": true,
+    "error": null,
+    "file": "ada_db_data.json"
+  },
+  {
+    "pmid": "41953639",
+    "drug": "Toripalimab",
+    "title": "Neoadjuvant Toripalimab Plus Axitinib for Nonmetastatic Clear Cell Renal Cell Carcinoma With Tumor Thrombus: A Combined Analysis of Two Phase II Clinical Trials.",
+    "relevant": true,
+    "error": null,
+    "file": "ada_db_data.json"
+  },
+  {
+    "pmid": "11248153",
+    "drug": "Trastuzumab",
+    "title": "Use of chemotherapy plus a monoclonal antibody against HER2 for metastatic breast cancer that overexpresses HER2.",
+    "relevant": true,
+    "error": null,
+    "file": "ada_db_data.json"
+  },
+  {
+    "pmid": "33908636",
+    "drug": "Vedolizumab",
+    "title": "Vedolizumab Immunogenicity With Long-Term or Interrupted Treatment of Patients With Inflammatory Bowel Disease.",
+    "relevant": true,
+    "error": null,
+    "file": "ada_db_data.json"
+  },
+  {
+    "pmid": "38348690",
+    "drug": "Zenocutuzumab",
+    "title": "The phase I/II eNRGy trial: Zenocutuzumab in patients with cancers harboring NRG1 gene fusions.",
+    "relevant": true,
+    "error": null,
+    "file": "ada_db_data.json"
+  },
+  {
+    "pmid": "27582220",
+    "drug": "Aducanumab",
+    "title": "The antibody aducanumab reduces Aβ plaques in Alzheimer's disease.",
+    "relevant": true,
+    "error": null,
+    "file": "ada_db_data.json"
+  },
+  {
+    "pmid": "33113296",
+    "drug": "Bamlanivimab",
+    "title": "Percutaneous Tracheostomy.",
+    "relevant": false,
+    "error": null,
+    "file": "ada_db_data.json"
+  },
+  {
+    "pmid": "24117862",
+    "drug": "Belimumab",
+    "title": "The pharmacokinetics and safety profiles of belimumab after single subcutaneous and intravenous doses in healthy Japanese volunteers.",
+    "relevant": true,
+    "error": null,
+    "file": "ada_db_data.json"
+  },
+  {
+    "pmid": "33439225",
+    "drug": "Bimagrumab",
+    "title": "Therapists Donate Their Time to Counsel Distressed Health Care Workers.",
+    "relevant": false,
+    "error": null,
+    "file": "ada_db_data.json"
+  },
+  {
+    "pmid": "38325376",
+    "drug": "Crovalimab",
+    "title": "Sequential activity of CA1 hippocampal cells constitutes a temporal memory map for associative learning in mice.",
+    "relevant": false,
+    "error": null,
+    "file": "ada_db_data.json"
+  },
+  {
+    "pmid": "26314760",
+    "drug": "Daratumumab",
+    "title": "Experimental treatments of endometriosis.",
+    "relevant": false,
+    "error": null,
+    "file": "ada_db_data.json"
+  },
+  {
+    "pmid": "39588375",
+    "drug": "Dupilumab",
+    "title": "Immunogenicity of dupilumab in adult and pediatric patients with atopic dermatitis.",
+    "relevant": true,
+    "error": null,
+    "file": "ada_db_data.json"
+  },
+  {
+    "pmid": "39111557",
+    "drug": "Ebronucimab",
+    "title": "Ebronucimab in Chinese patients with hypercholesterolemia---A randomized double-blind placebo-controlled phase 3 trial to evaluate the efficacy and safety of ebronucimab.",
+    "relevant": true,
+    "error": null,
+    "file": "ada_db_data.json"
+  },
+  {
+    "pmid": "32374957",
+    "drug": "Emapalumab",
+    "title": "Once Upon a Time…the Hero Sheltered in Place.",
+    "relevant": false,
+    "error": null,
+    "file": "ada_db_data.json"
+  },
+  {
+    "pmid": "35406884",
+    "drug": "Enuzovimab",
+    "title": "Antioxidants and Phytohormones Act in Coordination to Regulate Sage Response to Long Term Ozone Exposure.",
+    "relevant": false,
+    "error": null,
+    "file": "ada_db_data.json"
+  },
+  {
+    "pmid": "32813945",
+    "drug": "Evinacumab",
+    "title": "When Prescribing Isn't Enough - Pharmacy-Level Barriers to Buprenorphine Access.",
+    "relevant": false,
+    "error": null,
+    "file": "ada_db_data.json"
+  },
+  {
+    "pmid": "28988500",
+    "drug": "Evolocumab",
+    "title": "A safety evaluation of evolocumab.",
+    "relevant": true,
+    "error": null,
+    "file": "ada_db_data.json"
+  },
+  {
+    "pmid": "24590506",
+    "drug": "Fulranumab",
+    "title": "Development of a method that eliminates false-positive results due to nerve growth factor interference in the assessment of fulranumab immunogenicity.",
+    "relevant": true,
+    "error": null,
+    "file": "ada_db_data.json"
+  },
+  {
+    "pmid": "36812454",
+    "drug": "Garadacimab",
+    "title": "Alliance for Hippocratic Medicine v. FDA - Dobbs's Collateral Consequences for Pharmaceutical Regulation.",
+    "relevant": false,
+    "error": null,
+    "file": "ada_db_data.json"
+  },
+  {
+    "pmid": "26028407",
+    "drug": "Nivolumab",
+    "title": "Nivolumab versus Docetaxel in Advanced Squamous-Cell Non-Small-Cell Lung Cancer.",
+    "relevant": true,
+    "error": null,
+    "file": "ada_db_data.json"
+  },
+  {
+    "pmid": "28620891",
+    "drug": "Olaratumab",
+    "title": "Population Pharmacokinetic Modeling of Olaratumab, an Anti-PDGFRα Human Monoclonal Antibody, in Patients with Advanced and/or Metastatic Cancer.",
+    "relevant": true,
+    "error": null,
+    "file": "ada_db_data.json"
+  },
+  {
+    "pmid": "38634803",
+    "drug": "Pemivibart",
+    "title": "Re: \"Factors associated with favorable outcomes in cardiac arrest and target temperature management\" by Kimura et al.",
+    "relevant": false,
+    "error": null,
+    "file": "ada_db_data.json"
+  },
+  {
+    "pmid": "31142504",
+    "drug": "Ramucirumab",
+    "title": "A Phase Ib/II Study of Ramucirumab in Combination with Emibetuzumab in Patients with Advanced Cancer.",
+    "relevant": true,
+    "error": null,
+    "file": "ada_db_data.json"
+  },
+  {
+    "pmid": "34764055",
+    "drug": "Regdanvimab",
+    "title": "Unusual oral mucosal ulceration post allogenic hematopoietic stem cell transplantation.",
+    "relevant": false,
+    "error": null,
+    "file": "ada_db_data.json"
+  },
+  {
+    "pmid": "39224901",
+    "drug": "Secukinumab",
+    "title": "A Randomized, Double-Blind, Parallel-Group Phase I Study Comparing the Pharmacokinetics, Safety, and Immunogenicity of CMAB015, a Candidate Secukinumab Biosimilar, with Its Reference Product Cosentyx(®) in Healthy Chinese Male Subjects.",
+    "relevant": true,
+    "error": null,
+    "file": "ada_db_data.json"
+  },
+  {
+    "pmid": "30655001",
+    "drug": "Sintilimab",
+    "title": "Journal of Psychosomatic Research Editor's Year in Review.",
+    "relevant": false,
+    "error": null,
+    "file": "ada_db_data.json"
+  },
+  {
+    "pmid": "37454068",
+    "drug": "Tafolecimab",
+    "title": "The relationship of maternal hepatitis B e antigen and response to vaccination of infants born to women with chronic infection.",
+    "relevant": false,
+    "error": null,
+    "file": "ada_db_data.json"
+  },
+  {
+    "pmid": "31960624",
+    "drug": "Tezepelumab",
+    "title": "A Phase 1, Randomized, Placebo-Controlled Study to Evaluate the Safety, Tolerability, Pharmacokinetics, and Immunogenicity of Subcutaneous Tezepelumab in Healthy Japanese Men.",
+    "relevant": true,
+    "error": null,
+    "file": "ada_db_data.json"
+  },
+  {
+    "pmid": "36215738",
+    "drug": "Tremelimumab",
+    "title": "Using genetic markers for detection and subtyping of the emerging Salmonella enterica subspecies enterica serotype Muenchen.",
+    "relevant": false,
+    "error": null,
+    "file": "ada_db_data.json"
+  },
+  {
+    "pmid": "31859550",
+    "drug": "Belantamab",
+    "title": "ALTERED RETINAL PERFUSION IN PATIENTS WITH INACTIVE GRAVES OPHTHALMOPATHY USING OPTICAL COHERENCE TOMOGRAPHY ANGIOGRAPHY.",
+    "relevant": false,
+    "error": null,
+    "file": "ada_db_data.json"
+  },
+  {
+    "pmid": "35406884",
+    "drug": "Budigalimab",
+    "title": "Antioxidants and Phytohormones Act in Coordination to Regulate Sage Response to Long Term Ozone Exposure.",
+    "relevant": false,
+    "error": null,
+    "file": "ada_db_data.json"
+  },
+  {
+    "pmid": "27959701",
+    "drug": "Crizanlizumab",
+    "title": "Crizanlizumab for the Prevention of Pain Crises in Sickle Cell Disease.",
+    "relevant": true,
+    "error": null,
+    "file": "ada_db_data.json"
+  },
+  {
+    "pmid": "41461999",
+    "drug": "Depemokimab",
+    "title": "Safety and Tolerability of Twice-Yearly Depemokimab in Patients with Asthma and Chronic Rhinosinusitis with Nasal Polyps: Pooled Results from SWIFT-1/-2 and ANCHOR-1/-2.",
+    "relevant": true,
+    "error": null,
+    "file": "ada_db_data.json"
+  },
+  {
+    "pmid": "40592848",
+    "drug": "Domvanalimab",
+    "title": "Dual TIGIT and PD-1 blockade with domvanalimab plus zimberelimab in hepatocellular carcinoma refractory to anti-PD-1 therapies: the phase 2 LIVERTI trial.",
+    "relevant": true,
+    "error": null,
+    "file": "ada_db_data.json"
+  },
+  {
+    "pmid": "39171864",
+    "drug": "Eculizumab",
+    "title": "Comparative clinical efficacy and safety of biosimilar ABP 959 and eculizumab reference product in patients with paroxysmal nocturnal hemoglobinuria.",
+    "relevant": true,
+    "error": null,
+    "file": "ada_db_data.json"
+  },
+  {
+    "pmid": "38191982",
+    "drug": "Elezanumab",
+    "title": "Comparability of Elezanumab Safety, Tolerability, and Pharmacokinetics in Healthy Japanese, Chinese, and White Participants.",
+    "relevant": true,
+    "error": null,
+    "file": "ada_db_data.json"
+  },
+  {
+    "pmid": "26039608",
+    "drug": "Elotuzumab",
+    "title": "Outcomes of pregnancy after bariatric surgery.",
+    "relevant": false,
+    "error": null,
+    "file": "ada_db_data.json"
+  },
+  {
+    "pmid": "17390341",
+    "drug": "Etaracizumab",
+    "title": "Effects of Vitaxin, a novel therapeutic in trial for metastatic bone tumors, on osteoclast functions in vitro.",
+    "relevant": false,
+    "error": null,
+    "file": "ada_db_data.json"
+  },
+  {
+    "pmid": "39105497",
+    "drug": "Exidavnemab",
+    "title": "Safety, Tolerability, and Pharmacokinetics of Single Doses of Exidavnemab (BAN0805), an Anti-α-Synuclein Antibody, in Healthy Western, Caucasian, Japanese, and Han Chinese Adults.",
+    "relevant": true,
+    "error": null,
+    "file": "ada_db_data.json"
+  },
+  {
+    "pmid": "40668662",
+    "drug": "Favezelimab",
+    "title": "Estimating efficacy of favezelimab plus pembrolizumab relative to pembrolizumab in anti-PD-1-refractory Hodgkin lymphoma.",
+    "relevant": true,
+    "error": null,
+    "file": "ada_db_data.json"
+  },
+  {
+    "pmid": "36892676",
+    "drug": "Gemtuzumab",
+    "title": "A phase IV study evaluating QT interval, pharmacokinetics, and safety following fractionated dosing of gemtuzumab ozogamicin in patients with relapsed/refractory CD33-positive acute myeloid leukemia.",
+    "relevant": true,
+    "error": null,
+    "file": "ada_db_data.json"
+  },
+  {
+    "pmid": "29694819",
+    "drug": "Ibalizumab",
+    "title": "Prenatal Correction of X-Linked Hypohidrotic Ectodermal Dysplasia.",
+    "relevant": false,
+    "error": null,
+    "file": "ada_db_data.json"
+  },
+  {
+    "pmid": "31495647",
+    "drug": "Inebilizumab",
+    "title": "Effectiveness of educational intervention of oral health for special needs on knowledge of dental students in Saudi Arabia.",
+    "relevant": false,
+    "error": null,
+    "file": "ada_db_data.json"
+  },
+  {
+    "pmid": "21848463",
+    "drug": "Lebrikizumab",
+    "title": "Malpractice risk according to physician specialty.",
+    "relevant": false,
+    "error": null,
+    "file": "ada_db_data.json"
+  },
+  {
+    "pmid": "32169464",
+    "drug": "Leronlimab",
+    "title": "Effects of the DAG analogue 1,2-dioctanoyl-sn-glycerol (DiC8) on nicotine- and clothianidin-evoked currents through α-bungarotoxin-insensitive nicotinic acetylcholine receptors expressed on cockroach neurosecretory cells.",
+    "relevant": false,
+    "error": null,
+    "file": "ada_db_data.json"
+  },
+  {
+    "pmid": "33120155",
+    "drug": "Levilimab",
+    "title": "Cadmium enhances conjugative plasmid transfer to a fresh water microbial community.",
+    "relevant": false,
+    "error": null,
+    "file": "ada_db_data.json"
+  },
+  {
+    "pmid": "31242369",
+    "drug": "Mirikizumab",
+    "title": "Immune Checkpoint Blockade plus Axitinib for Renal-Cell Carcinoma.",
+    "relevant": false,
+    "error": null,
+    "file": "ada_db_data.json"
+  },
+  {
+    "pmid": "31801624",
+    "drug": "Mogamulizumab",
+    "title": "A phase Ib study of utomilumab (PF-05082566) in combination with mogamulizumab in patients with advanced solid tumors.",
+    "relevant": true,
+    "error": null,
+    "file": "ada_db_data.json"
+  },
+  {
+    "pmid": "28249145",
+    "drug": "Nemolizumab",
+    "title": "Gene Therapy in a Patient with Sickle Cell Disease.",
+    "relevant": false,
+    "error": null,
+    "file": "ada_db_data.json"
+  },
+  {
+    "pmid": "15374928",
+    "drug": "Nimotuzumab",
+    "title": "Dispersed HIV positive asylum seekers need care throughout UK.",
+    "relevant": false,
+    "error": null,
+    "file": "ada_db_data.json"
+  },
+  {
+    "pmid": "26967902",
+    "drug": "Obinutuzumab",
+    "title": "Treating chronic lymphocytic leukemia with obinutuzumab: safety and efficacy considerations.",
+    "relevant": true,
+    "error": null,
+    "file": "ada_db_data.json"
+  },
+  {
+    "pmid": "39460719",
+    "drug": "Ocrelizumab",
+    "title": "Subcutaneous ocrelizumab in multiple sclerosis: Results of the Phase 1b OCARINA I study.",
+    "relevant": true,
+    "error": null,
+    "file": "ada_db_data.json"
+  },
+  {
+    "pmid": "36109142",
+    "drug": "Olokizumab",
+    "title": "Olokizumab, a monoclonal antibody against interleukin-6, in combination with methotrexate in patients with rheumatoid arthritis inadequately controlled by tumour necrosis factor inhibitor therapy: efficacy and safety results of a randomised controlled phase III study.",
+    "relevant": true,
+    "error": null,
+    "file": "ada_db_data.json"
+  },
+  {
+    "pmid": "9732761",
+    "drug": "Palivizumab",
+    "title": "[Spindle-cell hemangioendothelioma with monomelic and multifocal form in a child].",
+    "relevant": false,
+    "error": null,
+    "file": "ada_db_data.json"
+  },
+  {
+    "pmid": "34415358",
+    "drug": "Penpulimab",
+    "title": "Intraoperative radiotherapy with low-energy x-rays after neurosurgical resection of brain metastases-an Augsburg University Medical Center experience.",
+    "relevant": false,
+    "error": null,
+    "file": "ada_db_data.json"
+  },
+  {
+    "pmid": "34607519",
+    "drug": "Pertuzumab",
+    "title": "A randomized, double-blind, single-dose, single-center, parallel phase I clinical study comparing the pharmacokinetics, immunogenicity, safety, and tolerance of pertuzumab injection and Perjeta® in healthy Chinese male subjects.",
+    "relevant": true,
+    "error": null,
+    "file": "ada_db_data.json"
+  },
+  {
+    "pmid": "31166880",
+    "drug": "Polatuzumab",
+    "title": "Altered Expression of Astrocyte-Related Receptors and Channels Correlates With Epileptogenesis in Hippocampal Sclerosis.",
+    "relevant": false,
+    "error": null,
+    "file": "ada_db_data.json"
+  },
+  {
+    "pmid": "37260341",
+    "drug": "Recaticimab",
+    "title": "To Broaden or Not to Broaden? Answers on Appropriate Antimicrobial Escalations for Pediatric Hematopoietic Cell Transplant Patients Remain Out of Reach.",
+    "relevant": false,
+    "error": null,
+    "file": "ada_db_data.json"
+  },
+  {
+    "pmid": "37656420",
+    "drug": "Rozanolixizumab",
+    "title": "Rozanolixizumab: First Approval.",
+    "relevant": true,
+    "error": null,
+    "file": "ada_db_data.json"
+  },
+  {
+    "pmid": "34936739",
+    "drug": "Spesolimab",
+    "title": "Trial of Spesolimab for Generalized Pustular Psoriasis.",
+    "relevant": true,
+    "error": null,
+    "file": "ada_db_data.json"
+  },
+  {
+    "pmid": "35388666",
+    "drug": "Sutimlimab",
+    "title": "Oral Tebipenem Pivoxil Hydrobromide in Complicated Urinary Tract Infection.",
+    "relevant": false,
+    "error": null,
+    "file": "ada_db_data.json"
+  },
+  {
+    "pmid": "32544301",
+    "drug": "Tafasitamab",
+    "title": "Edition 39.5.",
+    "relevant": false,
+    "error": null,
+    "file": "ada_db_data.json"
+  },
+  {
+    "pmid": "35388666",
+    "drug": "Tagitanlimab",
+    "title": "Oral Tebipenem Pivoxil Hydrobromide in Complicated Urinary Tract Infection.",
+    "relevant": false,
+    "error": null,
+    "file": "ada_db_data.json"
+  },
+  {
+    "pmid": "31454068",
+    "drug": "Timigutuzumab",
+    "title": "Pain Management in Nursing Home Residents: Findings from a Pilot Effectiveness-Implementation Study.",
+    "relevant": false,
+    "error": null,
+    "file": "ada_db_data.json"
+  },
+  {
+    "pmid": "33939642",
+    "drug": "Vunakizumab",
+    "title": "Predictors and Outcomes of Dengue-Associated Acute Kidney Injury.",
+    "relevant": false,
+    "error": null,
+    "file": "ada_db_data.json"
+  },
+  {
+    "pmid": "41290206",
+    "drug": "Nipocalimab",
+    "title": "Design of a Phase 3, Multicenter, Randomized, Open-Label Study of Nipocalimab or IVIG and Prednisone in Pregnancies at Risk for Fetal and Neonatal Alloimmune Thrombocytopenia.",
+    "relevant": true,
+    "error": null,
+    "file": "ada_db_data.json"
+  },
+  {
+    "pmid": "39708278",
+    "drug": "Epcoritamab",
+    "title": "Population Pharmacokinetics of Epcoritamab Following Subcutaneous Administration in Relapsed or Refractory B Cell Non-Hodgkin Lymphoma.",
+    "relevant": true,
+    "error": null,
+    "file": "ada_db_data.json"
+  },
+  {
+    "pmid": "28554950",
+    "title": "Ectopic tooth: an unusual cause of headache.",
+    "relevant": false,
+    "error": null,
+    "file": "adc_database.html",
+    "context_sample": "><a href=\"https://clinicaltrials.gov/search?query=PMID: 28554950\" target=\"_blank\" onclick=\"event.sto"
+  },
+  {
+    "pmid": "28554950",
+    "title": "Ectopic tooth: an unusual cause of headache.",
+    "relevant": false,
+    "error": null,
+    "file": "adc_database.html",
+    "context_sample": "t.stopPropagation()\" style=\"color:var(--primary)\">PMID: 28554950</a></span></div>\n      \n    </div>"
+  },
+  {
+    "pmid": "21135266",
+    "title": "Reduced melanoma after regular sunscreen use: randomized trial follow-up.",
+    "relevant": false,
+    "error": null,
+    "file": "adc_database.html",
+    "context_sample": "><a href=\"https://clinicaltrials.gov/search?query=PMID: 21135266\" target=\"_blank\" onclick=\"event.sto"
+  },
+  {
+    "pmid": "21135266",
+    "title": "Reduced melanoma after regular sunscreen use: randomized trial follow-up.",
+    "relevant": false,
+    "error": null,
+    "file": "adc_database.html",
+    "context_sample": "t.stopPropagation()\" style=\"color:var(--primary)\">PMID: 21135266</a></span></div>\n      \n    </div>"
+  },
+  {
+    "pmid": "22713502",
+    "title": "Neurodevelopmental outcomes of twins.",
+    "relevant": false,
+    "error": null,
+    "file": "adc_database.html",
+    "context_sample": "><a href=\"https://clinicaltrials.gov/search?query=PMID: 22713502\" target=\"_blank\" onclick=\"event.sto"
+  },
+  {
+    "pmid": "22713502",
+    "title": "Neurodevelopmental outcomes of twins.",
+    "relevant": false,
+    "error": null,
+    "file": "adc_database.html",
+    "context_sample": "t.stopPropagation()\" style=\"color:var(--primary)\">PMID: 22713502</a></span></div>\n      \n    </div>"
+  },
+  {
+    "pmid": "11060331",
+    "title": "Current applications of genetic technology in predisposition testing and microsatellite instability assays.",
+    "relevant": false,
+    "error": null,
+    "file": "adc_database.html",
+    "context_sample": "><a href=\"https://clinicaltrials.gov/search?query=PMID: 11060331\" target=\"_blank\" onclick=\"event.sto"
+  },
+  {
+    "pmid": "11060331",
+    "title": "Current applications of genetic technology in predisposition testing and microsatellite instability assays.",
+    "relevant": false,
+    "error": null,
+    "file": "adc_database.html",
+    "context_sample": "t.stopPropagation()\" style=\"color:var(--primary)\">PMID: 11060331</a></span></div>\n      \n    </div>"
+  },
+  {
+    "pmid": "32320577",
+    "title": "Anifrolumab in Systemic Lupus Erythematosus. Reply.",
+    "relevant": false,
+    "error": null,
+    "file": "adc_database.html",
+    "context_sample": "><a href=\"https://clinicaltrials.gov/search?query=PMID: 32320577\" target=\"_blank\" onclick=\"event.sto"
+  },
+  {
+    "pmid": "32320577",
+    "title": "Anifrolumab in Systemic Lupus Erythematosus. Reply.",
+    "relevant": false,
+    "error": null,
+    "file": "adc_database.html",
+    "context_sample": "t.stopPropagation()\" style=\"color:var(--primary)\">PMID: 32320577</a></span></div>\n      \n    </div>"
+  },
+  {
+    "pmid": "31103038",
+    "title": "Small obliquely oriented cortical cerebellar infarctions are associated with cardioembolic stroke.",
+    "relevant": false,
+    "error": null,
+    "file": "adc_database.html",
+    "context_sample": "><a href=\"https://clinicaltrials.gov/search?query=PMID: 31103038\" target=\"_blank\" onclick=\"event.sto"
+  },
+  {
+    "pmid": "31103038",
+    "title": "Small obliquely oriented cortical cerebellar infarctions are associated with cardioembolic stroke.",
+    "relevant": false,
+    "error": null,
+    "file": "adc_database.html",
+    "context_sample": "t.stopPropagation()\" style=\"color:var(--primary)\">PMID: 31103038</a></span></div>\n      \n    </div>"
+  },
+  {
+    "pmid": "31063838",
+    "title": "Fabrication of doxycycline-loaded electrospun PCL/PEO membranes for a potential drug delivery system.",
+    "relevant": false,
+    "error": null,
+    "file": "adc_database.html",
+    "context_sample": "><a href=\"https://clinicaltrials.gov/search?query=PMID: 31063838\" target=\"_blank\" onclick=\"event.sto"
+  },
+  {
+    "pmid": "31063838",
+    "title": "Fabrication of doxycycline-loaded electrospun PCL/PEO membranes for a potential drug delivery system.",
+    "relevant": false,
+    "error": null,
+    "file": "adc_database.html",
+    "context_sample": "t.stopPropagation()\" style=\"color:var(--primary)\">PMID: 31063838</a></span></div>\n      \n    </div>"
+  },
+  {
+    "pmid": "33852827",
+    "title": "Immunometabolism the CyTOF way.",
+    "relevant": false,
+    "error": null,
+    "file": "adc_database.html",
+    "context_sample": "><a href=\"https://clinicaltrials.gov/search?query=PMID: 33852827\" target=\"_blank\" onclick=\"event.sto"
+  },
+  {
+    "pmid": "33852827",
+    "title": "Immunometabolism the CyTOF way.",
+    "relevant": false,
+    "error": null,
+    "file": "adc_database.html",
+    "context_sample": "t.stopPropagation()\" style=\"color:var(--primary)\">PMID: 33852827</a></span></div>\n      \n    </div>"
+  },
+  {
+    "pmid": "36445704",
+    "title": "Treatment Sequencing Patterns and Associated Direct Medical Costs of Metastatic Breast Cancer Care in the United States, 2011 to 2021.",
+    "relevant": false,
+    "error": null,
+    "file": "adc_database.html",
+    "context_sample": "><a href=\"https://clinicaltrials.gov/search?query=PMID: 36445704\" target=\"_blank\" onclick=\"event.sto"
+  },
+  {
+    "pmid": "36445704",
+    "title": "Treatment Sequencing Patterns and Associated Direct Medical Costs of Metastatic Breast Cancer Care in the United States, 2011 to 2021.",
+    "relevant": false,
+    "error": null,
+    "file": "adc_database.html",
+    "context_sample": "t.stopPropagation()\" style=\"color:var(--primary)\">PMID: 36445704</a></span></div>\n      \n    </div>"
+  },
+  {
+    "pmid": "32023444",
+    "title": "A Nervous Breakdown that May Stop Autoimmune Diabetes.",
+    "relevant": false,
+    "error": null,
+    "file": "adc_database.html",
+    "context_sample": "><a href=\"https://clinicaltrials.gov/search?query=PMID: 32023444\" target=\"_blank\" onclick=\"event.sto"
+  },
+  {
+    "pmid": "32023444",
+    "title": "A Nervous Breakdown that May Stop Autoimmune Diabetes.",
+    "relevant": false,
+    "error": null,
+    "file": "adc_database.html",
+    "context_sample": "t.stopPropagation()\" style=\"color:var(--primary)\">PMID: 32023444</a></span></div>\n      \n    </div>"
+  },
+  {
+    "pmid": "33831346",
+    "title": "The utilisation of CytB and COI barcodes for the identification of bloodmeals and Culicoides species (Diptera: Ceratopogonidae) reveals a variety of novel wildlife hosts in South Africa.",
+    "relevant": false,
+    "error": null,
+    "file": "adc_database.html",
+    "context_sample": "><a href=\"https://clinicaltrials.gov/search?query=PMID: 33831346\" target=\"_blank\" onclick=\"event.sto"
+  },
+  {
+    "pmid": "33831346",
+    "title": "The utilisation of CytB and COI barcodes for the identification of bloodmeals and Culicoides species (Diptera: Ceratopogonidae) reveals a variety of novel wildlife hosts in South Africa.",
+    "relevant": false,
+    "error": null,
+    "file": "adc_database.html",
+    "context_sample": "t.stopPropagation()\" style=\"color:var(--primary)\">PMID: 33831346</a></span></div>\n      \n    </div>"
+  },
+  {
+    "pmid": "34534433",
+    "title": "A Scalable Artificial Neuron Based on Ultrathin Two-Dimensional Titanium Oxide.",
+    "relevant": false,
+    "error": null,
+    "file": "adc_database.html",
+    "context_sample": "Humanized IgG1 antibody targeting HER2. Evidence: PMID:34534433.</span></div>\n      <div class=\"info"
+  },
+  {
+    "pmid": "34186361",
+    "title": "Water intake and risk of type 2 diabetes: A systematic review and meta-analysis of observational studies.",
+    "relevant": false,
+    "error": null,
+    "file": "adc_database.html",
+    "context_sample": "Humanized IgG1 antibody targeting HER3. Evidence: PMID:34186361.</span></div>\n      <div class=\"info"
+  },
+  {
+    "pmid": "38346294",
+    "title": "Impact of Acute Alcohol Consumption on Sexuality: A Look at Psychological Mechanisms.",
+    "relevant": false,
+    "error": null,
+    "file": "adc_database.html",
+    "context_sample": "manized IgG1 antibody targeting TROP-2. Evidence: PMID:38346294.</span></div>\n      <div class=\"info"
+  },
+  {
+    "pmid": "34711587",
+    "title": "Covid-19: Trump's \"distraction\" by the 2020 election led to thousands of deaths, says pandemic response adviser.",
+    "relevant": false,
+    "error": null,
+    "file": "adc_database.html",
+    "context_sample": "y (clone DS-6000) targeting Cadherin-6. Evidence: PMID:34711587.</span></div>\n      <div class=\"info"
+  },
+  {
+    "pmid": "36045843",
+    "title": "Coagulation profile and platelet parameters in pregnancy induced hypertension cases and normotensive pregnancies: A cross-sectional study.",
+    "relevant": false,
+    "error": null,
+    "file": "adc_database.html",
+    "context_sample": "ue\">Targets HER3. Fast Track for NSCLC. Evidence: PMID:36045843.</span></div>\n      <div class=\"info"
+  },
+  {
+    "pmid": "36800443",
+    "title": "SGN-CD228A Is an Investigational CD228-Directed Antibody-Drug Conjugate with Potent Antitumor Activity across a Wide Spectrum of Preclinical Solid Tumor Models.",
+    "relevant": false,
+    "error": null,
+    "file": "adc_database.html",
+    "context_sample": "antibody (clone hL49) targeting CD228. Evidence: PMID:36800443.</span></div>\n      <div class=\"info"
+  },
+  {
+    "pmid": "37619980",
+    "title": "SGN-B6A: A New Vedotin Antibody-Drug Conjugate Directed to Integrin Beta-6 for Multiple Carcinoma Indications.",
+    "relevant": false,
+    "error": null,
+    "file": "adc_database.html",
+    "context_sample": "\">Targets Integrin beta-6. Vedotin ADC. Evidence: PMID:37619980.</span></div>\n      <div class=\"info"
+  },
+  {
+    "pmid": "29236700",
+    "title": "A component-based system for agricultural drought monitoring by remote sensing.",
+    "relevant": false,
+    "error": null,
+    "file": "adc_database.html",
+    "context_sample": "s=\"info-label\">Ref</span><span class=\"info-value\">PMID:29236700 (T-DXd DESTINY-Breast01)</span></div"
+  },
+  {
+    "pmid": "35320644",
+    "title": "Trastuzumab Deruxtecan versus Trastuzumab Emtansine for Breast Cancer.",
+    "relevant": false,
+    "error": null,
+    "file": "adc_database.html",
+    "context_sample": "s=\"info-label\">Ref</span><span class=\"info-value\">PMID:35320644 (T-DXd HER2-low DESTINY-Breast04)</s"
+  },
+  {
+    "pmid": "32897654",
+    "title": "Using a home oxygen weaning protocol and pCO(2) to evaluate outcomes for infants with bronchopulmonary dysplasia discharged on home oxygen.",
+    "relevant": false,
+    "error": null,
+    "file": "adc_database.html",
+    "context_sample": "s=\"info-label\">Ref</span><span class=\"info-value\">PMID:32897654 (ASCENT sacituzumab)</span></div><di"
+  },
+  {
+    "pmid": "33942582",
+    "title": "Experience of International Air Transportation and Subsequent Lung Transplant in a Patient with COVID-19-associated Acute Respiratory Distress Syndrome: a Case Report.",
+    "relevant": false,
+    "error": null,
+    "file": "adc_database.html",
+    "context_sample": "s=\"info-label\">Ref</span><span class=\"info-value\">PMID:33942582 (TROPHY-U-01)</span></div><div class"
+  },
+  {
+    "pmid": "31912758",
+    "title": "Preliminary clinical outcomes of a short-term low-intensity Early Start Denver Model implemented in the Taiwanese public health system.",
+    "relevant": false,
+    "error": null,
+    "file": "adc_database.html",
+    "context_sample": "s=\"info-label\">Ref</span><span class=\"info-value\">PMID:31912758 (EV-201)</span></div><div class=\"inf"
+  },
+  {
+    "pmid": "32930499",
+    "title": "Dose-reducing fluoroscopic system decreases patient but not occupational radiation exposure in chronic total occlusion intervention.",
+    "relevant": false,
+    "error": null,
+    "file": "adc_database.html",
+    "context_sample": "s=\"info-label\">Ref</span><span class=\"info-value\">PMID:32930499 (EV-301)</span></div><div class=\"inf"
+  },
+  {
+    "pmid": "37357149",
+    "title": "Impacts of nutrition counseling on depression and obesity: A scoping review.",
+    "relevant": false,
+    "error": null,
+    "file": "adc_database.html",
+    "context_sample": "s=\"info-label\">Ref</span><span class=\"info-value\">PMID:37357149</span></div>\n    </div>\n  </div>\n</d"
+  },
+  {
+    "pmid": "34506330",
+    "title": "Predictors and Long-Term Impact of De Novo Aortic Regurgitation in Continuous Flow Left Ventricular Assist Devices Using Vena Contracta.",
+    "relevant": false,
+    "error": null,
+    "file": "adc_database.html",
+    "context_sample": "s=\"info-label\">Ref</span><span class=\"info-value\">PMID:34506330 (Tisotumab vedotin innovaTV 204)</sp"
+  },
+  {
+    "pmid": "22891273",
+    "title": "The coding genome of splenic marginal zone lymphoma: activation of NOTCH2 and other pathways regulating marginal zone development.",
+    "relevant": false,
+    "error": null,
+    "file": "adc_database.html",
+    "context_sample": "s=\"info-label\">Ref</span><span class=\"info-value\">PMID:22891273 (BV HL pivotal)</span></div><div cla"
+  },
+  {
+    "pmid": "23233704",
+    "title": "Prognostic significance of progesterone receptor-positive tumor cells within immunohistochemically defined luminal A breast cancer.",
+    "relevant": false,
+    "error": null,
+    "file": "adc_database.html",
+    "context_sample": "s=\"info-label\">Ref</span><span class=\"info-value\">PMID:23233704 (BV ALCL)</span></div><div class=\"in"
+  },
+  {
+    "pmid": "11283486",
+    "title": "[Littoral hemangioma of the spleen].",
+    "relevant": false,
+    "error": null,
+    "file": "adc_database.html",
+    "context_sample": "s=\"info-label\">Ref</span><span class=\"info-value\">PMID:11283486 (Mylotarg Phase III)</span></div><di"
+  },
+  {
+    "pmid": "28825710",
+    "title": "Metals induce transient folding and activation of the twister ribozyme.",
+    "relevant": false,
+    "error": null,
+    "file": "adc_database.html",
+    "context_sample": "s=\"info-label\">Ref</span><span class=\"info-value\">PMID:28825710 (Mylotarg re-approval AML)</span></d"
+  },
+  {
+    "pmid": "31913613",
+    "title": "(18)F-Trifluoromethanesulfinate Enables Direct C-H (18)F-Trifluoromethylation of Native Aromatic Residues in Peptides.",
+    "relevant": false,
+    "error": null,
+    "file": "adc_database.html",
+    "context_sample": "s=\"info-label\">Ref</span><span class=\"info-value\">PMID:31913613 (polatuzumab POLARIX)</span></div><d"
+  },
+  {
+    "pmid": "27069000",
+    "title": "Fulminant hepatic failure from hepatitis E in a non-pregnant female traveller.",
+    "relevant": false,
+    "error": null,
+    "file": "adc_database.html",
+    "context_sample": "s=\"info-label\">Ref</span><span class=\"info-value\">PMID:27069000 (polatuzumab Phase II)</span></div><"
+  },
+  {
+    "pmid": "28329763",
+    "title": "The allosteric inhibitor ABL001 enables dual targeting of BCR-ABL1.",
+    "relevant": false,
+    "error": null,
+    "file": "adc_database.html",
+    "context_sample": "s=\"info-label\">Ref</span><span class=\"info-value\">PMID:28329763 (loncastuximab DLBCL)</span></div><d"
+  },
+  {
+    "pmid": "34289523",
+    "title": "David M. Lubman-The University of Michigan-A retrospective in research.",
+    "relevant": false,
+    "error": null,
+    "file": "adc_database.html",
+    "context_sample": "s=\"info-label\">Ref</span><span class=\"info-value\">PMID:34289523</span></div>\n    </div>\n  </div>\n</d"
+  },
+  {
+    "pmid": "33493423",
+    "title": "The ARREST Pneumonia Clinical Trial. Rationale and Design.",
+    "relevant": false,
+    "error": null,
+    "file": "adc_database.html",
+    "context_sample": "s=\"info-label\">Ref</span><span class=\"info-value\">PMID:33493423 (belantamab DREAMM-2)</span></div><d"
+  },
+  {
+    "pmid": "33417826",
+    "title": "Evaluation of a Phenotypic Algorithm to Direct Carbapenemase Testing in Pseudomonas aeruginosa: Validation in a Multicenter German Cohort.",
+    "relevant": false,
+    "error": null,
+    "file": "adc_database.html",
+    "context_sample": "s=\"info-label\">Ref</span><span class=\"info-value\">PMID:33417826 (BCMA target review)</span></div><di"
+  },
+  {
+    "pmid": "34373294",
+    "title": "Developing a collaborative learning framework for resilience in healthcare: a study protocol.",
+    "relevant": false,
+    "error": null,
+    "file": "adc_database.html",
+    "context_sample": "s=\"info-label\">Ref</span><span class=\"info-value\">PMID:34373294 (ifinatamab deruxtecan B7-H3)</span>"
+  },
+  {
+    "pmid": "28951488",
+    "title": "The RING-Type E3 Ligase XBAT35.2 Is Involved in Cell Death Induction and Pathogen Response.",
+    "relevant": false,
+    "error": null,
+    "file": "adc_database.html",
+    "context_sample": "s=\"info-label\">Ref</span><span class=\"info-value\">PMID:28951488 (B7-H3 tumor expression)</span></div"
+  },
+  {
+    "pmid": "26028407",
+    "title": "Nivolumab versus Docetaxel in Advanced Squamous-Cell Non-Small-Cell Lung Cancer.",
+    "relevant": false,
+    "error": null,
+    "file": "adc_database.html",
+    "context_sample": "s=\"info-label\">Ref</span><span class=\"info-value\">PMID:26028407 (DLL3 SCLC expression)</span></div><"
+  },
+  {
+    "pmid": "29539427",
+    "title": "Bimodal CD40/Fas-Dependent Crosstalk between iNKT Cells and Tumor-Associated Macrophages Impairs Prostate Cancer Progression.",
+    "relevant": false,
+    "error": null,
+    "file": "adc_database.html",
+    "context_sample": "s=\"info-label\">Ref</span><span class=\"info-value\">PMID:29539427 (Rova-T Phase 1)</span></div><div cl"
+  },
+  {
+    "pmid": "33547437",
+    "title": "Mysterious einsteinium spills its secrets.",
+    "relevant": false,
+    "error": null,
+    "file": "adc_database.html",
+    "context_sample": "s=\"info-label\">Ref</span><span class=\"info-value\">PMID:33547437 (TAHOE Phase 3 failure)</span></div>"
+  },
+  {
+    "pmid": "25877877",
+    "title": "Aberrant Expression of proPTPRN2 in Cancer Cells Confers Resistance to Apoptosis.",
+    "relevant": false,
+    "error": null,
+    "file": "adc_database.html",
+    "context_sample": "s=\"info-label\">Ref</span><span class=\"info-value\">PMID:25877877 (telisotuzumab Phase 1)</span></div>"
+  },
+  {
+    "pmid": "34186361",
+    "title": "Water intake and risk of type 2 diabetes: A systematic review and meta-analysis of observational studies.",
+    "relevant": false,
+    "error": null,
+    "file": "adc_database.html",
+    "context_sample": "s=\"info-label\">Ref</span><span class=\"info-value\">PMID:34186361 (Phase 2 NSCLC)</span></div><div cla"
+  },
+  {
+    "pmid": "30380360",
+    "title": "Effect of environmental constraints on multi-segment coordination patterns during the tennis service in expert performers.",
+    "relevant": false,
+    "error": null,
+    "file": "adc_database.html",
+    "context_sample": "s=\"info-label\">Ref</span><span class=\"info-value\">PMID:30380360 (besylomab ALL)</span></div><div cla"
+  },
+  {
+    "pmid": "34289523",
+    "title": "David M. Lubman-The University of Michigan-A retrospective in research.",
+    "relevant": false,
+    "error": null,
+    "file": "adc_database.html",
+    "context_sample": "s=\"info-label\">Ref</span><span class=\"info-value\">PMID:34289523 (loncastuximab DLBCL)</span></div>"
+  },
+  {
+    "pmid": "36884217",
+    "title": "Preclinical Efficacy of the Antibody-Drug Conjugate CLDN6-23-ADC for the Treatment of CLDN6-Positive Solid Tumors.",
+    "relevant": false,
+    "error": null,
+    "file": "adc_database.html",
+    "context_sample": "s=\"info-label\">Ref</span><span class=\"info-value\">PMID:36884217</span></div><div class=\"info-row\" st"
+  },
+  {
+    "pmid": "10233360",
+    "title": "Recruitment of primitive peripheral blood cells: synergism of interleukin 12 with interleukin 6 and stem cell factor.",
+    "relevant": false,
+    "error": null,
+    "file": "adc_database.html",
+    "context_sample": "s=\"info-label\">Ref</span><span class=\"info-value\">PMID:10233360</span></div>\n    </div>\n  </div>\n</d"
+  },
+  {
+    "pmid": "18378562",
+    "title": "Closing the gaps: a full scan of the intestinal expression of p-glycoprotein, breast cancer resistance protein, and multidrug resistance-associated protein 2 in male and female rats.",
+    "relevant": false,
+    "error": null,
+    "file": "adc_database.html",
+    "context_sample": "s=\"info-label\">Ref</span><span class=\"info-value\">PMID:18378562 (GPC3 HCC expression)</span></div><d"
+  },
+  {
+    "pmid": "28539397",
+    "title": "Variations on a theme: species differences in synaptic connectivity do not predict central pattern generator activity.",
+    "relevant": false,
+    "error": null,
+    "file": "adc_database.html",
+    "context_sample": "s=\"info-label\">Ref</span><span class=\"info-value\">PMID:28539397 (codrituzumab HCC)</span></div><div"
+  },
+  {
+    "pmid": "34380756",
+    "title": "Emergence of robust self-organized undulatory swimming based on local hydrodynamic force sensing.",
+    "relevant": false,
+    "error": null,
+    "file": "adc_database.html",
+    "context_sample": "s=\"info-label\">Ref</span><span class=\"info-value\">PMID:34380756 (GPC3 ADC review)</span></div>\n    <"
+  },
+  {
+    "pmid": "37196158",
+    "title": "Preclinical Evaluation of 9MW2821, a Site-Specific Monomethyl Auristatin E-based Antibody-Drug Conjugate for Treatment of Nectin-4-expressing Cancers.",
+    "relevant": false,
+    "error": null,
+    "file": "adc_database.html",
+    "context_sample": "s=\"info-label\">Ref</span><span class=\"info-value\">PMID:37196158</span></div>\n    </div>\n  </div>\n</d"
+  },
+  {
+    "pmid": "28334839",
+    "title": "",
+    "relevant": false,
+    "error": "cannot get document summary",
+    "file": "adc_database.html",
+    "context_sample": "s=\"info-label\">Ref</span><span class=\"info-value\">PMID:28334839</span></div>\n    </div>\n  </div>\n</d"
+  },
+  {
+    "pmid": "34711587",
+    "title": "Covid-19: Trump's \"distraction\" by the 2020 election led to thousands of deaths, says pandemic response adviser.",
+    "relevant": false,
+    "error": null,
+    "file": "adc_database.html",
+    "context_sample": "s=\"info-label\">Ref</span><span class=\"info-value\">PMID:34711587</span></div><div class=\"info-row\" st"
+  },
+  {
+    "pmid": "34789493",
+    "title": "Total hip arthroplasty versus hemiarthroplasty for displaced femoral neck fracture: a protocol for an overview of systematic reviews.",
+    "relevant": false,
+    "error": null,
+    "file": "adc_database.html",
+    "context_sample": "s=\"info-label\">Ref</span><span class=\"info-value\">PMID:34789493 (tusamitamab Phase 2)</span></div><d"
+  },
+  {
+    "pmid": "29233830",
+    "title": "Placental abruption leading to hysterectomy.",
+    "relevant": false,
+    "error": null,
+    "file": "adc_database.html",
+    "context_sample": "s=\"info-label\">Ref</span><span class=\"info-value\">PMID:29233830 (CEACAM5 expression review)</span></"
+  },
+  {
+    "pmid": "26275529",
+    "title": "In vivo Functional Evaluation of Increased Brain Delivery of the Opioid Peptide DAMGO by Glutathione-PEGylated Liposomes.",
+    "relevant": false,
+    "error": null,
+    "file": "adc_database.html",
+    "context_sample": "s=\"info-label\">Ref</span><span class=\"info-value\">PMID:26275529 (anetumab ravtansine)</span></div><d"
+  },
+  {
+    "pmid": "30530824",
+    "title": "Can solid-phase assays replace immunofluorescence for ANA screening?",
+    "relevant": false,
+    "error": null,
+    "file": "adc_database.html",
+    "context_sample": "s=\"info-label\">Ref</span><span class=\"info-value\">PMID:30530824 (Mesothelin internalization challeng"
+  },
+  {
+    "pmid": "33273122",
+    "title": "A dual role for α-synuclein in facilitation and depression of dopamine release from substantia nigra neurons in vivo.",
+    "relevant": false,
+    "error": null,
+    "file": "adc_database.html",
+    "context_sample": "s=\"info-label\">Ref</span><span class=\"info-value\">PMID:33273122</span></div>\n    </div>\n  </div>\n</d"
+  },
+  {
+    "pmid": "8765048",
+    "title": "Threonine 80 on HLA-B27 confers protection against lysis by a group of natural killer clones.",
+    "relevant": false,
+    "error": null,
+    "file": "adc_database.html",
+    "context_sample": "s=\"info-label\">Ref</span><span class=\"info-value\">PMID:8765048 (MUC1 shedding mechanism)</span></div"
+  },
+  {
+    "pmid": "28947957",
+    "title": "Cooperative but distinct early co-signaling events originate from ERBB2 and ERBB1 receptors upon trastuzumab treatment in breast cancer cells.",
+    "relevant": false,
+    "error": null,
+    "file": "adc_database.html",
+    "context_sample": "s=\"info-label\">Ref</span><span class=\"info-value\">PMID:28947957 (TA-MUC1 ADC)</span></div><div class"
+  },
+  {
+    "pmid": "29844174",
+    "title": "Face recognition accuracy of forensic examiners, superrecognizers, and face recognition algorithms.",
+    "relevant": false,
+    "error": null,
+    "file": "adc_database.html",
+    "context_sample": "s=\"info-label\">Ref</span><span class=\"info-value\">PMID:29844174 (MUC1 ADC review)</span></div>\n    <"
+  },
+  {
+    "pmid": "30126844",
+    "title": "Liver-secreted RBP4 does not impair glucose homeostasis in mice.",
+    "relevant": false,
+    "error": null,
+    "file": "adc_database.html",
+    "context_sample": "s=\"info-label\">Ref</span><span class=\"info-value\">PMID:30126844 (DMUC5754A Ph1)</span></div><div cla"
+  },
+  {
+    "pmid": "17932349",
+    "title": "Erythropoietin and its receptor in breast cancer: correlation with steroid receptors and outcome.",
+    "relevant": false,
+    "error": null,
+    "file": "adc_database.html",
+    "context_sample": "s=\"info-label\">Ref</span><span class=\"info-value\">PMID:17932349 (MUC16 shedding)</span></div>\n    </"
+  },
+  {
+    "pmid": "34711642",
+    "title": "Relationship between body composition, exercise capacity and health-related quality of life in idiopathic pulmonary fibrosis.",
+    "relevant": false,
+    "error": null,
+    "file": "adc_database.html",
+    "context_sample": "s=\"info-label\">Ref</span><span class=\"info-value\">PMID:34711642 (Zilovertamab vedotin)</span></div><"
+  },
+  {
+    "pmid": "33658172",
+    "title": "The prevalence of malocclusion is higher in schoolchildren with signs of hyperactivity.",
+    "relevant": false,
+    "error": null,
+    "file": "adc_database.html",
+    "context_sample": "s=\"info-label\">Ref</span><span class=\"info-value\">PMID:33658172 (VLS-101)</span></div>\n    </div>"
+  },
+  {
+    "pmid": "30546250",
+    "title": "Investigating the influence of ubiquinone blood level on the abilities of children with specific learning disorder.",
+    "relevant": false,
+    "error": null,
+    "file": "adc_database.html",
+    "context_sample": "s=\"info-label\">Ref</span><span class=\"info-value\">PMID:30546250</span></div>\n    </div>\n  </div>\n</d"
+  },
+  {
+    "pmid": "25957392",
+    "title": "SF3B1 mutation identifies a distinct subset of myelodysplastic syndrome with ring sideroblasts.",
+    "relevant": false,
+    "error": null,
+    "file": "adc_database.html",
+    "context_sample": "s=\"info-label\">Ref</span><span class=\"info-value\">PMID:25957392</span></div>\n    </div>\n  </div>\n</d"
+  },
+  {
+    "pmid": "23963802",
+    "title": "Vitamin E δ-tocotrienol prolongs survival in the LSL-KrasG12D/+;LSL-Trp53R172H/+;Pdx-1-Cre (KPC) transgenic mouse model of pancreatic cancer.",
+    "relevant": false,
+    "error": null,
+    "file": "adc_database.html",
+    "context_sample": "s=\"info-label\">Ref</span><span class=\"info-value\">PMID:23963802</span></div>\n    </div>\n  </div>\n</d"
+  },
+  {
+    "pmid": "36800443",
+    "title": "SGN-CD228A Is an Investigational CD228-Directed Antibody-Drug Conjugate with Potent Antitumor Activity across a Wide Spectrum of Preclinical Solid Tumor Models.",
+    "relevant": false,
+    "error": null,
+    "file": "adc_database.html",
+    "context_sample": "s=\"info-label\">Ref</span><span class=\"info-value\">PMID:36800443</span></div>\n    </div>\n  </div>\n</d"
+  },
+  {
+    "pmid": "37945842",
+    "title": "",
+    "relevant": false,
+    "error": "cannot get document summary",
+    "file": "adc_database.html",
+    "context_sample": "s=\"info-label\">Ref</span><span class=\"info-value\">PMID:37945842</span></div>\n    </div>\n  </div>\n</d"
+  },
+  {
+    "pmid": "22740452",
+    "title": "Intracellular cyclophilin A is an important Ca(2+) regulator in platelets and critically involved in arterial thrombus formation.",
+    "relevant": false,
+    "error": null,
+    "file": "adc_database.html",
+    "context_sample": "s=\"info-label\">Ref</span><span class=\"info-value\">PMID:22740452</span></div>\n    </div>\n  </div>\n</d"
+  },
+  {
+    "pmid": "28334839",
+    "title": "",
+    "relevant": false,
+    "error": "cannot get document summary",
+    "file": "adc_database.html",
+    "context_sample": "s=\"info-label\">Ref</span><span class=\"info-value\">PMID:28334839</span></div>\n    </div>\n  </div>\n</d"
+  },
+  {
+    "pmid": "27760882",
+    "title": "Low-Phosphate Induction of Plastidal Stromules Is Dependent on Strigolactones But Not on the Canonical Strigolactone Signaling Component MAX2.",
+    "relevant": false,
+    "error": null,
+    "file": "adc_database.html",
+    "context_sample": "s=\"info-label\">Ref</span><span class=\"info-value\">PMID:27760882</span></div>\n    </div>\n  </div>\n</d"
+  },
+  {
+    "pmid": "31611324",
+    "title": "Does thrombectomy inhibit effect of ischaemic postconditioning in STEMI? True or not?",
+    "relevant": false,
+    "error": null,
+    "file": "adc_database.html",
+    "context_sample": "s=\"info-label\">Ref</span><span class=\"info-value\">PMID:31611324</span></div>\n    </div>\n  </div>\n</d"
+  },
+  {
+    "pmid": "29162666",
+    "title": "Molecular characterization and expression analysis of CSαβ defensin genes from the scorpion Mesobuthus martensii.",
+    "relevant": false,
+    "error": null,
+    "file": "adc_database.html",
+    "context_sample": "s=\"info-label\">Ref</span><span class=\"info-value\">PMID:29162666</span></div>\n    </div>\n  </div>\n</d"
+  },
+  {
+    "pmid": "32041721",
+    "title": "Bilateral chest wall mesenchymal hamartomas masquerading as fetal hydrops in utero.",
+    "relevant": false,
+    "error": null,
+    "file": "adc_database.html",
+    "context_sample": "s=\"info-label\">Ref</span><span class=\"info-value\">PMID:32041721</span></div>\n    </div>\n  </div>\n</d"
+  },
+  {
+    "pmid": "27458193",
+    "title": "Consistently Inconsistent-Bone Marrow Mononuclear Stem Cell Therapy Following Acute Myocardial Infarction: A Decade Later.",
+    "relevant": false,
+    "error": null,
+    "file": "adc_database.html",
+    "context_sample": "s=\"info-label\">Ref</span><span class=\"info-value\">PMID:27458193</span></div>\n    </div>\n  </div>\n</d"
+  },
+  {
+    "pmid": "31164375",
+    "title": "Can real-time feedback improve the simulated infant cardiopulmonary resuscitation performance of basic life support and lay rescuers?",
+    "relevant": false,
+    "error": null,
+    "file": "adc_database.html",
+    "context_sample": "s=\"info-label\">Ref</span><span class=\"info-value\">PMID:31164375</span></div>\n    </div>\n  </div>\n</d"
+  },
+  {
+    "pmid": "17001294",
+    "title": "Inflammation and apoptosis genes and the risk of restenosis after percutaneous coronary intervention.",
+    "relevant": false,
+    "error": null,
+    "file": "adc_database.html",
+    "context_sample": "s=\"info-label\">Ref</span><span class=\"info-value\">PMID:17001294 (B7-H4 breast/ovarian)</span></div><"
+  },
+  {
+    "pmid": "34599012",
+    "title": "SNMMI and ACGME Equity Matters Initiative.",
+    "relevant": false,
+    "error": null,
+    "file": "adc_database.html",
+    "context_sample": "s=\"info-label\">Ref</span><span class=\"info-value\">PMID:34599012 (AZD8205 Phase 1)</span></div><div c"
+  },
+  {
+    "pmid": "28935674",
+    "title": "Expression of Concern: Suppression of intestinal tumorigenesis in Apc mutant mice upon Musashi-1 deletion. J. Cell Sci. doi: 10.1242/jcs.197574.",
+    "relevant": false,
+    "error": null,
+    "file": "adc_database.html",
+    "context_sample": "s=\"info-label\">Ref</span><span class=\"info-value\">PMID:28935674</span></div>\n    </div>\n  </div>\n</d"
+  },
+  {
+    "pmid": "30102631",
+    "title": "Gastric Bypass Surgery Reduces De Novo Cases of Type 2 Diabetes to Population Levels: A Nationwide Cohort Study From Sweden.",
+    "relevant": false,
+    "error": null,
+    "file": "adc_database.html",
+    "context_sample": "s=\"info-label\">Ref</span><span class=\"info-value\">PMID:30102631</span></div>\n    </div>\n  </div>\n</d"
+  },
+  {
+    "pmid": "24658681",
+    "title": "Identification of glycosylated regions in pneumococcal PspA conjugated to serotype 6B capsular polysaccharide.",
+    "relevant": false,
+    "error": null,
+    "file": "adc_database.html",
+    "context_sample": "s=\"info-label\">Ref</span><span class=\"info-value\">PMID:24658681</span></div>\n    </div>\n  </div>\n</d"
+  },
+  {
+    "pmid": "23963802",
+    "title": "Vitamin E δ-tocotrienol prolongs survival in the LSL-KrasG12D/+;LSL-Trp53R172H/+;Pdx-1-Cre (KPC) transgenic mouse model of pancreatic cancer.",
+    "relevant": false,
+    "error": null,
+    "file": "adc_database.html",
+    "context_sample": "s=\"info-label\">Ref</span><span class=\"info-value\">PMID:23963802 (indatuximab Phase 1)</span></div><d"
+  },
+  {
+    "pmid": "16239570",
+    "title": "Uropathogenic Escherichia coli flagella aid in efficient urinary tract colonization.",
+    "relevant": false,
+    "error": null,
+    "file": "adc_database.html",
+    "context_sample": "s=\"info-label\">Ref</span><span class=\"info-value\">PMID:16239570 (CD138 shedding mechanism)</span></d"
+  },
+  {
+    "pmid": "28438881",
+    "title": "Prevalence of Congenital Cytomegalovirus Infection Assessed Through Viral Genome Detection in Dried Blood Spots in Children with Autism Spectrum Disorders.",
+    "relevant": false,
+    "error": null,
+    "file": "adc_database.html",
+    "context_sample": "s=\"info-label\">Ref</span><span class=\"info-value\">PMID:28438881 (CD138 shedding in ADC context)</spa"
+  },
+  {
+    "pmid": "23293052",
+    "title": "Crystalline structural intermediates of a breathing metal-organic framework that functions as a luminescent sensor and gas reservoir.",
+    "relevant": false,
+    "error": null,
+    "file": "adc_database.html",
+    "context_sample": "s=\"info-label\">Ref</span><span class=\"info-value\">PMID:23293052 (FcRH5 myeloma)</span></div><div cla"
+  },
+  {
+    "pmid": "35584508",
+    "title": "Emerging and reemerging forms of Trypanosoma cruzi transmission.",
+    "relevant": false,
+    "error": null,
+    "file": "adc_database.html",
+    "context_sample": "s=\"info-label\">Ref</span><span class=\"info-value\">PMID:35584508 (cevostamab Phase 1)</span></div>"
+  },
+  {
+    "pmid": "28028218",
+    "title": "High fishery catches through trophic cascades in China.",
+    "relevant": false,
+    "error": null,
+    "file": "adc_database.html",
+    "context_sample": "s=\"info-label\">Ref</span><span class=\"info-value\">PMID:28028218 (GPRC5D myeloma)</span></div><div cl"
+  },
+  {
+    "pmid": "37342928",
+    "title": "Marburg Virus Disease in Ghana.",
+    "relevant": false,
+    "error": null,
+    "file": "adc_database.html",
+    "context_sample": "s=\"info-label\">Ref</span><span class=\"info-value\">PMID:37342928 (talquetamab Phase 1)</span></div><d"
+  },
+  {
+    "pmid": "19228616",
+    "title": "Commercial versus social goals of tracking what doctors do.",
+    "relevant": false,
+    "error": null,
+    "file": "adc_database.html",
+    "context_sample": "s=\"info-label\">Ref</span><span class=\"info-value\">PMID:19228616 (CLL-1 AML LSC expression)</span></d"
+  },
+  {
+    "pmid": "34083779",
+    "title": "Cyclic polyacetylene.",
+    "relevant": false,
+    "error": null,
+    "file": "adc_database.html",
+    "context_sample": "s=\"info-label\">Ref</span><span class=\"info-value\">PMID:34083779 (DCLL9718A Phase 1)</span></div><div"
+  },
+  {
+    "pmid": "24574511",
+    "title": "",
+    "relevant": false,
+    "error": "cannot get document summary",
+    "file": "adc_database.html",
+    "context_sample": "s=\"info-label\">Ref</span><span class=\"info-value\">PMID:24574511 (STEAP1 prostate expression)</span><"
+  },
+  {
+    "pmid": "27760882",
+    "title": "Low-Phosphate Induction of Plastidal Stromules Is Dependent on Strigolactones But Not on the Canonical Strigolactone Signaling Component MAX2.",
+    "relevant": false,
+    "error": null,
+    "file": "adc_database.html",
+    "context_sample": "s=\"info-label\">Ref</span><span class=\"info-value\">PMID:27760882 (vandortuzumab Phase 1)</span></div>"
+  },
+  {
+    "pmid": "11756185",
+    "title": "Ataxia telangiectasia mutated-deficient B-cell chronic lymphocytic leukemia occurs in pregerminal center cells and results in defective damage response and unrepaired chromosome damage.",
+    "relevant": false,
+    "error": null,
+    "file": "adc_database.html",
+    "context_sample": "s=\"info-label\">Ref</span><span class=\"info-value\">PMID:11756185 (CD20 non-internalizing)</span></div"
+  },
+  {
+    "pmid": "23940257",
+    "title": "Coreceptor affinity for MHC defines peptide specificity requirements for TCR interaction with coagonist peptide-MHC.",
+    "relevant": false,
+    "error": null,
+    "file": "adc_database.html",
+    "context_sample": "s=\"info-label\">Ref</span><span class=\"info-value\">PMID:23940257 (SAR3419 Phase 2 failure)</span></di"
+  },
+  {
+    "pmid": "22740452",
+    "title": "Intracellular cyclophilin A is an important Ca(2+) regulator in platelets and critically involved in arterial thrombus formation.",
+    "relevant": false,
+    "error": null,
+    "file": "adc_database.html",
+    "context_sample": "s=\"info-label\">Ref</span><span class=\"info-value\">PMID:22740452 (CD20 internalization engineering)</"
+  },
+  {
+    "pmid": "25957392",
+    "title": "SF3B1 mutation identifies a distinct subset of myelodysplastic syndrome with ring sideroblasts.",
+    "relevant": false,
+    "error": null,
+    "file": "adc_database.html",
+    "context_sample": "s=\"info-label\">Ref</span><span class=\"info-value\">PMID:25957392 (daratumumab Phase 1)</span></div><d"
+  },
+  {
+    "pmid": "30559322",
+    "title": "Duox1 Regulates Primary B Cell Function under the Influence of IL-4 through BCR-Mediated Generation of Hydrogen Peroxide.",
+    "relevant": false,
+    "error": null,
+    "file": "adc_database.html",
+    "context_sample": "s=\"info-label\">Ref</span><span class=\"info-value\">PMID:30559322 (CD38 ADC concept)</span></div><div"
+  },
+  {
+    "pmid": "19448626",
+    "title": "Local auxin biosynthesis modulates gradient-directed planar polarity in Arabidopsis.",
+    "relevant": false,
+    "error": null,
+    "file": "adc_database.html",
+    "context_sample": "s=\"info-label\">Ref</span><span class=\"info-value\">PMID:19448626 (CD47 phagocytosis signal)</span></d"
+  },
+  {
+    "pmid": "33503420",
+    "title": "The immunodominant and neutralization linear epitopes for SARS-CoV-2.",
+    "relevant": false,
+    "error": null,
+    "file": "adc_database.html",
+    "context_sample": "s=\"info-label\">Ref</span><span class=\"info-value\">PMID:33503420 (magrolimab Phase 3 AML)</span></div"
+  },
+  {
+    "pmid": "35569421",
+    "title": "pXRF on printed circuit boards: Methodology, applications, and challenges.",
+    "relevant": false,
+    "error": null,
+    "file": "adc_database.html",
+    "context_sample": "s=\"info-label\">Ref</span><span class=\"info-value\">PMID:35569421 (CD47 ADC challenges)</span></div>"
+  },
+  {
+    "pmid": "18669269",
+    "title": "[Activation of elicitor defensive properties by systemic signal molecules during the interaction between potato and Phytophthora].",
+    "relevant": false,
+    "error": null,
+    "file": "adc_database.html",
+    "context_sample": "s=\"info-label\">Ref</span><span class=\"info-value\">PMID:18669269 (EGFR internalization mechanisms)</s"
+  },
+  {
+    "pmid": "22461862",
+    "title": "Hysterectomy is mostly unnecessary.",
+    "relevant": false,
+    "error": null,
+    "file": "adc_database.html",
+    "context_sample": "s=\"info-label\">Ref</span><span class=\"info-value\">PMID:22461862 (EGFR ADC review)</span></div><div c"
+  },
+  {
+    "pmid": "36334297",
+    "title": "Anatomical predictors of difficult left internal carotid artery navigation in transradial access for neurointervention.",
+    "relevant": false,
+    "error": null,
+    "file": "adc_database.html",
+    "context_sample": "s=\"info-label\">Ref</span><span class=\"info-value\">PMID:36334297 (MRG003 EGFR ADC Ph2)</span></div>"
+  },
+  {
+    "pmid": "17332358",
+    "title": "Homeodomain-interacting protein kinase 2 is the ionizing radiation-activated p53 serine 46 kinase and is regulated by ATM.",
+    "relevant": false,
+    "error": null,
+    "file": "adc_database.html",
+    "context_sample": "s=\"info-label\">Ref</span><span class=\"info-value\">PMID:17332358 (EGFRvIII GBM characterization)</spa"
+  },
+  {
+    "pmid": "26272984",
+    "title": "motifbreakR: an R/Bioconductor package for predicting variant effects at transcription factor binding sites.",
+    "relevant": false,
+    "error": null,
+    "file": "adc_database.html",
+    "context_sample": "s=\"info-label\">Ref</span><span class=\"info-value\">PMID:26272984 (ABT-806 EGFRvIII ADC)</span></div>"
+  },
+  {
+    "pmid": "26369699",
+    "title": "BMI Affects the Relationship between Long Chain N-3 Polyunsaturated Fatty Acid Intake and Stroke Risk: a Meta-Analysis.",
+    "relevant": false,
+    "error": null,
+    "file": "adc_database.html",
+    "context_sample": "s=\"info-label\">Ref</span><span class=\"info-value\">PMID:26369699 (IMGN632 preclinical)</span></div><d"
+  },
+  {
+    "pmid": "33159180",
+    "title": "Leptin receptor, a surface marker for a subset of highly engrafting long-term functional hematopoietic stem cells.",
+    "relevant": false,
+    "error": null,
+    "file": "adc_database.html",
+    "context_sample": "s=\"info-label\">Ref</span><span class=\"info-value\">PMID:33159180 (pivekimab CD123 ADC Ph1)</span></di"
+  },
+  {
+    "pmid": "26275529",
+    "title": "In vivo Functional Evaluation of Increased Brain Delivery of the Opioid Peptide DAMGO by Glutathione-PEGylated Liposomes.",
+    "relevant": false,
+    "error": null,
+    "file": "adc_database.html",
+    "context_sample": "s=\"info-label\">Ref</span><span class=\"info-value\">PMID:26275529 (anetumab ravtansine)</span></div><d"
+  },
+  {
+    "pmid": "30530824",
+    "title": "Can solid-phase assays replace immunofluorescence for ANA screening?",
+    "relevant": false,
+    "error": null,
+    "file": "adc_database.html",
+    "context_sample": "s=\"info-label\">Ref</span><span class=\"info-value\">PMID:30530824 (Mesothelin internalization challeng"
+  },
+  {
+    "pmid": "33273122",
+    "title": "A dual role for α-synuclein in facilitation and depression of dopamine release from substantia nigra neurons in vivo.",
+    "relevant": false,
+    "error": null,
+    "file": "adc_database.html",
+    "context_sample": "s=\"info-label\">Ref</span><span class=\"info-value\">PMID:33273122</span></div>\n    </div>\n  </div>\n</d"
+  },
+  {
+    "pmid": "37357149",
+    "title": "Impacts of nutrition counseling on depression and obesity: A scoping review.",
+    "relevant": false,
+    "error": null,
+    "file": "adc_database.html",
+    "context_sample": "s=\"info-label\">Ref</span><span class=\"info-value\">PMID:37357149</span></div>\n    </div>\n  </div>\n</d"
+  },
+  {
+    "pmid": "34135861",
+    "title": "Clinical, Biological, Radiological Pathological and Immediate Post-Operative Remission of Sparsely and Densely Granulated Corticotroph Pituitary Tumors: A Retrospective Study of a Cohort of 277 Patients With Cushing's Disease.",
+    "relevant": false,
+    "error": null,
+    "file": "adc_database.html",
+    "context_sample": "s=\"info-label\">Ref</span><span class=\"info-value\">PMID:34135861 (GD2 ADC review)</span></div><div cl"
+  },
+  {
+    "pmid": "30510034",
+    "title": "A systematic review examining the impact of redirecting low-acuity patients seeking emergency department care: is the juice worth the squeeze?",
+    "relevant": false,
+    "error": null,
+    "file": "adc_database.html",
+    "context_sample": "s=\"info-label\">Ref</span><span class=\"info-value\">PMID:30510034 (GD2 breast cancer)</span></div>"
+  },
+  {
+    "pmid": "31897654",
+    "title": "Umbilicus and the rectus sheath: a study using human fetuses.",
+    "relevant": false,
+    "error": null,
+    "file": "adc_database.html",
+    "context_sample": "s=\"info-label\">Ref</span><span class=\"info-value\">PMID:31897654</span></div><div class=\"info-row\" st"
+  },
+  {
+    "pmid": "22108849",
+    "title": "A stereo-controlled access to functionalized macrolactams via an aza-Claisen rearrangement.",
+    "relevant": false,
+    "error": null,
+    "file": "adc_database.html",
+    "context_sample": "s=\"info-label\">Ref</span><span class=\"info-value\">PMID:22108849</span></div>\n    </div>\n  </div>\n</d"
+  },
+  {
+    "pmid": "30397169",
+    "title": "Does T Cell Activation Require a Quorum of Lymphocytes?",
+    "relevant": false,
+    "error": null,
+    "file": "adc_database.html",
+    "context_sample": "s=\"info-label\">Ref</span><span class=\"info-value\">PMID:30397169</span></div>\n    </div>\n  </div>\n</d"
+  },
+  {
+    "pmid": "23700264",
+    "title": "A study of tropomyosin's role in cardiac function and disease using thin-filament reconstituted myocardium.",
+    "relevant": false,
+    "error": null,
+    "file": "adc_database.html",
+    "context_sample": "s=\"info-label\">Ref</span><span class=\"info-value\">PMID:23700264</span></div>\n    </div>\n  </div>\n</d"
+  },
+  {
+    "pmid": "28935674",
+    "title": "Expression of Concern: Suppression of intestinal tumorigenesis in Apc mutant mice upon Musashi-1 deletion. J. Cell Sci. doi: 10.1242/jcs.197574.",
+    "relevant": false,
+    "error": null,
+    "file": "adc_database.html",
+    "context_sample": "s=\"info-label\">Ref</span><span class=\"info-value\">PMID:28935674</span></div>\n    </div>\n  </div>\n</d"
+  },
+  {
+    "pmid": "37196158",
+    "title": "Preclinical Evaluation of 9MW2821, a Site-Specific Monomethyl Auristatin E-based Antibody-Drug Conjugate for Treatment of Nectin-4-expressing Cancers.",
+    "relevant": false,
+    "error": null,
+    "file": "adc_database.html",
+    "context_sample": "s=\"info-label\">Ref</span><span class=\"info-value\">PMID:37196158</span></div>\n    </div>\n  </div>\n</d"
+  },
+  {
+    "pmid": "37452145",
+    "title": "Alkalized lidocaine in a tapered cuff suppresses endotracheal tube-induced hemodynamic changes: a randomized controlled trial.",
+    "relevant": false,
+    "error": null,
+    "file": "adc_database.html",
+    "context_sample": "s=\"info-label\">Ref</span><span class=\"info-value\">PMID:37452145</span></div>\n    </div>\n  </div>\n</d"
+  },
+  {
+    "pmid": "22699451",
+    "title": "Successful xenografts of AML3 samples in immunodeficient NOD/shi-SCID IL2Rγ⁻/⁻ mice.",
+    "relevant": false,
+    "error": null,
+    "file": "adc_database.html",
+    "context_sample": "s=\"info-label\">Ref</span><span class=\"info-value\">PMID:22699451</span></div>\n    </div>\n  </div>\n</d"
+  },
+  {
+    "pmid": "28332312",
+    "title": "Antitumor activity of chLpMab-2, a human-mouse chimeric cancer-specific antihuman podoplanin antibody, via antibody-dependent cellular cytotoxicity.",
+    "relevant": false,
+    "error": null,
+    "file": "adc_database.html",
+    "context_sample": "s=\"info-label\">Ref</span><span class=\"info-value\">PMID:28332312</span></div>\n    </div>\n  </div>\n</d"
+  },
+  {
+    "pmid": "23264543",
+    "title": "Quantifying the relative risk of sex offenders: risk ratios for static-99R.",
+    "relevant": false,
+    "error": null,
+    "file": "adc_database.html",
+    "context_sample": "s=\"info-label\">Ref</span><span class=\"info-value\">PMID:23264543 (FGFR2 gastric cancer)</span></div><"
+  },
+  {
+    "pmid": "35636936",
+    "title": "Analysis of the economic effects on biopsychosocial homeostasis from a three-dimensional probability measurement system.",
+    "relevant": false,
+    "error": null,
+    "file": "adc_database.html",
+    "context_sample": "s=\"info-label\">Ref</span><span class=\"info-value\">PMID:35636936 (bemarituzumab Phase 2)</span></div>"
+  },
+  {
+    "pmid": "27458193",
+    "title": "Consistently Inconsistent-Bone Marrow Mononuclear Stem Cell Therapy Following Acute Myocardial Infarction: A Decade Later.",
+    "relevant": false,
+    "error": null,
+    "file": "adc_database.html",
+    "context_sample": "s=\"info-label\">Ref</span><span class=\"info-value\">PMID:27458193</span></div>\n    </div>\n  </div>\n</d"
+  },
+  {
+    "pmid": "15611492",
+    "title": "Narrative review: hepatobiliary disease in type 2 diabetes mellitus.",
+    "relevant": false,
+    "error": null,
+    "file": "adc_database.html",
+    "context_sample": "s=\"info-label\">Ref</span><span class=\"info-value\">PMID:15611492 (IL-13Ra2 GBM expression)</span></di"
+  },
+  {
+    "pmid": "22105345",
+    "title": "Dissolved organic carbon reduces the toxicity of aluminum to three tropical freshwater organisms.",
+    "relevant": false,
+    "error": null,
+    "file": "adc_database.html",
+    "context_sample": "s=\"info-label\">Ref</span><span class=\"info-value\">PMID:22105345 (IL-13 immunotoxin GBM Phase 3)</spa"
+  },
+  {
+    "pmid": "31857336",
+    "title": "Maximising and evaluating the uptake, use and impact of golf and health studies.",
+    "relevant": false,
+    "error": null,
+    "file": "adc_database.html",
+    "context_sample": "s=\"info-label\">Ref</span><span class=\"info-value\">PMID:31857336 (IL-13Ra2 ADC review)</span></div>"
+  },
+  {
+    "pmid": "27880927",
+    "title": "Very low risk ST-segment elevation myocardial infarction? It exists and may be easily identified.",
+    "relevant": false,
+    "error": null,
+    "file": "adc_database.html",
+    "context_sample": "s=\"info-label\">Ref</span><span class=\"info-value\">PMID:27880927 (SEZ6 SCLC expression)</span></div><"
+  },
+  {
+    "pmid": "31611324",
+    "title": "Does thrombectomy inhibit effect of ischaemic postconditioning in STEMI? True or not?",
+    "relevant": false,
+    "error": null,
+    "file": "adc_database.html",
+    "context_sample": "s=\"info-label\">Ref</span><span class=\"info-value\">PMID:31611324</span></div>\n    </div>\n  </div>\n</d"
+  },
+  {
+    "pmid": "30906522",
+    "title": "Bilateral antrochoanal polyp: report of a new case and systematic review of the literature.",
+    "relevant": false,
+    "error": null,
+    "file": "adc_database.html",
+    "context_sample": "s=\"info-label\">Ref</span><span class=\"info-value\">PMID:30906522</span></div>\n    </div>\n  </div>\n</d"
+  },
+  {
+    "pmid": "30948512",
+    "title": "Amyloid-β oligomers have a profound detergent-like effect on lipid membrane bilayers, imaged by atomic force and electron microscopy.",
+    "relevant": false,
+    "error": null,
+    "file": "adc_database.html",
+    "context_sample": "s=\"info-label\">Ref</span><span class=\"info-value\">PMID:30948512</span></div>\n    </div>\n  </div>\n</d"
+  },
+  {
+    "pmid": "34077175",
+    "title": "Aminofutalosine Deaminase in the Menaquinone Pathway of Helicobacter pylori.",
+    "relevant": false,
+    "error": null,
+    "file": "adc_database.html",
+    "context_sample": "s=\"info-label\">Ref</span><span class=\"info-value\">PMID:34077175</span></div>\n    </div>\n  </div>\n</d"
+  },
+  {
+    "pmid": "34373294",
+    "title": "Developing a collaborative learning framework for resilience in healthcare: a study protocol.",
+    "relevant": false,
+    "error": null,
+    "file": "adc_database.html",
+    "context_sample": "s=\"info-label\">Ref</span><span class=\"info-value\">PMID:34373294 (ifinatamab deruxtecan B7-H3)</span>"
+  },
+  {
+    "pmid": "28951488",
+    "title": "The RING-Type E3 Ligase XBAT35.2 Is Involved in Cell Death Induction and Pathogen Response.",
+    "relevant": false,
+    "error": null,
+    "file": "adc_database.html",
+    "context_sample": "s=\"info-label\">Ref</span><span class=\"info-value\">PMID:28951488 (B7-H3 tumor expression)</span></div"
+  },
+  {
+    "pmid": "38507467",
+    "title": "An anti-TNF-glucocorticoid receptor modulator antibody-drug conjugate is efficacious against immune-mediated inflammatory diseases.",
+    "relevant": true,
+    "error": null,
+    "file": "adc_database.html",
+    "context_sample": "s=\"info-label\">Ref</span><span class=\"info-value\">PMID:38507467</span></div>\n    </div>\n  </div>\n</d"
+  },
+  {
+    "pmid": "37301885",
+    "title": "A pilot study of lymphodepletion intensity for peripheral blood mononuclear cell-derived neoantigen-specific CD8 + T cell therapy in patients with advanced solid tumors.",
+    "relevant": false,
+    "error": null,
+    "file": "adc_database.html",
+    "context_sample": "s=\"info-label\">Ref</span><span class=\"info-value\">PMID:37301885 (SPOTLIGHT trial)</span></div><div c"
+  },
+  {
+    "pmid": "37301884",
+    "title": "Influence of slope angle on deposit morphology and propagation of laboratory landslides.",
+    "relevant": false,
+    "error": null,
+    "file": "adc_database.html",
+    "context_sample": "s=\"info-label\">Ref</span><span class=\"info-value\">PMID:37301884 (GLOW trial)</span></div><div class="
+  },
+  {
+    "pmid": "35418259",
+    "title": "Stress is a Latent Construct: Exploring the Differential Experience of Stress and Discrimination on Depressive Symptoms Among Black Older Adults.",
+    "relevant": false,
+    "error": null,
+    "file": "adc_database.html",
+    "context_sample": "s=\"info-label\">Ref</span><span class=\"info-value\">PMID:35418259 (CLDN18.2 ADC review)</span></div>"
+  },
+  {
+    "pmid": "28546337",
+    "title": "PET-Guided Evaluation and Optimization of Internalized Antibody-Drug Conjugates Targeting Erythropoietin-Producing Hepatoma A2 Receptor.",
+    "relevant": false,
+    "error": null,
+    "file": "adc_database.html",
+    "context_sample": "s=\"info-label\">Ref</span><span class=\"info-value\">PMID:28546337</span></div>\n    </div>\n  </div>\n</d"
+  },
+  {
+    "pmid": "12873544",
+    "title": "Pulmonary transplantation for cystic fibrosis: pre-transplant recipient characteristics in patients dying of peri-operative sepsis.",
+    "relevant": false,
+    "error": null,
+    "file": "adc_database.html",
+    "context_sample": "s=\"info-label\">Ref</span><span class=\"info-value\">PMID:12873544 (original MMAE ADC)</span></div><div"
+  },
+  {
+    "pmid": "22399561",
+    "title": "Changes in self-reported energy balance behaviours and body mass index during a mass media campaign.",
+    "relevant": false,
+    "error": null,
+    "file": "adc_database.html",
+    "context_sample": "s=\"info-label\">Ref</span><span class=\"info-value\">PMID:22399561 (MMAE DLT)</span></div><div class=\"i"
+  },
+  {
+    "pmid": "26058450",
+    "title": "Haemophilia care in Central and Eastern Europe: challenges and ways forward from clinicians' perspective.",
+    "relevant": false,
+    "error": null,
+    "file": "adc_database.html",
+    "context_sample": "s=\"info-label\">Ref</span><span class=\"info-value\">PMID:26058450 (DXd drug design)</span></div><div c"
+  },
+  {
+    "pmid": "29236700",
+    "title": "A component-based system for agricultural drought monitoring by remote sensing.",
+    "relevant": false,
+    "error": null,
+    "file": "adc_database.html",
+    "context_sample": "s=\"info-label\">Ref</span><span class=\"info-value\">PMID:29236700 (DESTINY-Breast01)</span></div><div"
+  },
+  {
+    "pmid": "22542113",
+    "title": "Progesterone and preterm birth prevention: translating clinical trials data into clinical practice.",
+    "relevant": false,
+    "error": null,
+    "file": "adc_database.html",
+    "context_sample": "s=\"info-label\">Ref</span><span class=\"info-value\">PMID:22542113</span></div>\n      <div class=\"info-"
+  },
+  {
+    "pmid": "16450923",
+    "title": "Readiness of paediatric audiology services for newborn hearing screening: findings and implications from the programme in England.",
+    "relevant": false,
+    "error": null,
+    "file": "adc_database.html",
+    "context_sample": "s=\"info-label\">Ref</span><span class=\"info-value\">PMID:16450923 (MMAF vs MMAE mechanism)</span></div"
+  },
+  {
+    "pmid": "24867892",
+    "title": "Use and performance of the Melody Transcatheter Pulmonary Valve in native and postsurgical, nonconduit right ventricular outflow tracts.",
+    "relevant": false,
+    "error": null,
+    "file": "adc_database.html",
+    "context_sample": "s=\"info-label\">Ref</span><span class=\"info-value\">PMID:24867892</span></div>\n      <div class=\"info-"
+  },
+  {
+    "pmid": "22765894",
+    "title": "The design, synthesis, and biological evaluation of potent receptor tyrosine kinase inhibitors.",
+    "relevant": false,
+    "error": null,
+    "file": "adc_database.html",
+    "context_sample": "s=\"info-label\">Ref</span><span class=\"info-value\">PMID:22765894</span></div>\n      <div class=\"info-"
+  },
+  {
+    "pmid": "26068579",
+    "title": "Asthma Bronchiale and Exercise-Induced Bronchoconstriction.",
+    "relevant": false,
+    "error": null,
+    "file": "adc_database.html",
+    "context_sample": "s=\"info-label\">Ref</span><span class=\"info-value\">PMID:26068579</span></div>\n      <div class=\"info-"
+  },
+  {
+    "pmid": "11814056",
+    "title": "Sphingolipids in mammalian cell signalling.",
+    "relevant": false,
+    "error": null,
+    "file": "adc_database.html",
+    "context_sample": "s=\"info-label\">Ref</span><span class=\"info-value\">PMID:11814056</span></div>\n      <div class=\"info-"
+  },
+  {
+    "pmid": "21821736",
+    "title": "Q172H replacement overcomes effects on the metabolism of cyclophosphamide and efavirenz caused by CYP2B6 variant with Arg262.",
+    "relevant": false,
+    "error": null,
+    "file": "adc_database.html",
+    "context_sample": "s=\"info-label\">Ref</span><span class=\"info-value\">PMID:21821736</span></div>\n      <div class=\"info-"
+  },
+  {
+    "pmid": "26013320",
+    "title": "Somatic concerns, depressive traits, atherosclerosis and the incidence of cardiovascular disease in ageing Finnish men.",
+    "relevant": false,
+    "error": null,
+    "file": "adc_database.html",
+    "context_sample": "s=\"info-label\">Ref</span><span class=\"info-value\">PMID:26013320 (IGN ADC)</span></div><div class=\"in"
+  },
+  {
+    "pmid": "31813763",
+    "title": "A pharmacist-led medicines review intervention in community-dwelling Māori older adults- a feasibility study protocol.",
+    "relevant": false,
+    "error": null,
+    "file": "adc_database.html",
+    "context_sample": "s=\"info-label\">Ref</span><span class=\"info-value\">PMID:31813763 (IMGN632 CD123)</span></div>\n      <"
+  },
+  {
+    "pmid": "26058450",
+    "title": "Haemophilia care in Central and Eastern Europe: challenges and ways forward from clinicians' perspective.",
+    "relevant": false,
+    "error": null,
+    "file": "adc_database.html",
+    "context_sample": "s=\"info-label\">Ref</span><span class=\"info-value\">PMID:26058450 (Exatecan → DXd conversion)</span></"
+  },
+  {
+    "pmid": "20215052",
+    "title": "Tyrosinase inactivation in its action on dopa.",
+    "relevant": false,
+    "error": null,
+    "file": "adc_database.html",
+    "context_sample": "s=\"info-label\">Ref</span><span class=\"info-value\">PMID:20215052</span></div>\n      <div class=\"info-"
+  },
+  {
+    "pmid": "24284813",
+    "title": "Influence of spatial distribution and size of clones on the realized outcrossing rate of the marsh cinquefoil (Comarum palustre).",
+    "relevant": false,
+    "error": null,
+    "file": "adc_database.html",
+    "context_sample": "s=\"info-label\">Ref</span><span class=\"info-value\">PMID:24284813</span></div>\n      <div class=\"info-"
+  },
+  {
+    "pmid": "22406981",
+    "title": "Mapping QTL for resistance to eyespot of wheat in Aegilops longissima.",
+    "relevant": false,
+    "error": null,
+    "file": "adc_database.html",
+    "context_sample": "s=\"info-label\">Ref</span><span class=\"info-value\">PMID:22406981 (Amanitin ADC concept)</span></div><"
+  },
+  {
+    "pmid": "31697395",
+    "title": "Promoting Behavioral Change in Mobile Health Interventions for Older Adults: A Scoping Review.",
+    "relevant": false,
+    "error": null,
+    "file": "adc_database.html",
+    "context_sample": "s=\"info-label\">Ref</span><span class=\"info-value\">PMID:31697395 (HDP-101 BCMA amanitin ADC)</span></"
+  },
+  {
+    "pmid": "27164163",
+    "title": "Tri(1-adamantyl)phosphine: Expanding the Boundary of Electron-Releasing Character Available to Organophosphorus Compounds.",
+    "relevant": false,
+    "error": null,
+    "file": "adc_database.html",
+    "context_sample": "s=\"info-label\">Ref</span><span class=\"info-value\">PMID:27164163</span></div>\n      <div class=\"info-"
+  },
+  {
+    "pmid": "17898714",
+    "title": "Methylation of histone H3R2 by PRMT6 and H3K4 by an MLL complex are mutually exclusive.",
+    "relevant": false,
+    "error": null,
+    "file": "adc_database.html",
+    "context_sample": "s=\"info-label\">Ref</span><span class=\"info-value\">PMID:17898714</span></div>\n      <div class=\"info-"
+  },
+  {
+    "pmid": "31371393",
+    "title": "Crystal structures of plant inorganic pyrophosphatase, an enzyme with a moonlighting autoproteolytic activity.",
+    "relevant": false,
+    "error": null,
+    "file": "adc_database.html",
+    "context_sample": "s=\"info-label\">Ref</span><span class=\"info-value\">PMID:31371393</span></div>\n      <div class=\"info-"
+  },
+  {
+    "pmid": "17350563",
+    "title": "Indian pharma enters the global arena.",
+    "relevant": false,
+    "error": null,
+    "file": "adc_database.html",
+    "context_sample": "s=\"info-label\">Ref</span><span class=\"info-value\">PMID:17350563</span></div>\n      <div class=\"info-"
+  },
+  {
+    "pmid": "29212923",
+    "title": "Response inhibition activates distinct motor cortical inhibitory processes.",
+    "relevant": false,
+    "error": null,
+    "file": "adc_database.html",
+    "context_sample": "s=\"info-label\">Ref</span><span class=\"info-value\">PMID:29212923 (Bcl-xL ADC concept)</span></div>"
+  },
+  {
+    "pmid": "33028661",
+    "title": "COVID-19 Trial Enrollment for Those Who Cannot Consent: Ethical Challenges Posed by a Pandemic.",
+    "relevant": false,
+    "error": null,
+    "file": "adc_database.html",
+    "context_sample": "s=\"info-label\">Ref</span><span class=\"info-value\">PMID:33028661 (ISAC concept)</span></div><div clas"
+  },
+  {
+    "pmid": "34906459",
+    "title": "DNA methylation episignature testing improves molecular diagnosis of Mendelian chromatinopathies.",
+    "relevant": false,
+    "error": null,
+    "file": "adc_database.html",
+    "context_sample": "s=\"info-label\">Ref</span><span class=\"info-value\">PMID:34906459 (BDC-1001 HER2 ISAC)</span></div>"
+  },
+  {
+    "pmid": "35314666",
+    "title": "Pre-Transplant Peripheral Lymphocyte Subsets Predict Pneumonia After Renal Transplantation.",
+    "relevant": false,
+    "error": null,
+    "file": "adc_database.html",
+    "context_sample": "s=\"info-label\">Ref</span><span class=\"info-value\">PMID:35314666 (STING-ADC overview)</span></div>"
+  },
+  {
+    "pmid": "26187766",
+    "title": "An equation to calculate the actual methylene middle parameter as a function of temperature.",
+    "relevant": false,
+    "error": null,
+    "file": "adc_database.html",
+    "context_sample": "s=\"info-label\">Ref</span><span class=\"info-value\">PMID:26187766 (Thorium-227 Targeted Thorium Conjug"
+  },
+  {
+    "pmid": "35219975",
+    "title": "Re-imagining 'the patient': Linked lives and lessons from genomic medicine.",
+    "relevant": false,
+    "error": null,
+    "file": "adc_database.html",
+    "context_sample": "s=\"info-label\">Ref</span><span class=\"info-value\">PMID:35219975 (Phase I PSMA-TTC)</span></div>"
+  },
+  {
+    "pmid": "27048580",
+    "title": "Results from the Survey of Antibiotic Resistance (SOAR) 2012-14 in Thailand, India, South Korea and Singapore.",
+    "relevant": false,
+    "error": null,
+    "file": "adc_database.html",
+    "context_sample": "s=\"info-label\">Ref</span><span class=\"info-value\">PMID:27048580</span></div>\n      <div class=\"info-"
+  },
+  {
+    "pmid": "23700264",
+    "title": "A study of tropomyosin's role in cardiac function and disease using thin-filament reconstituted myocardium.",
+    "relevant": false,
+    "error": null,
+    "file": "adc_database.html",
+    "context_sample": "s=\"info-label\">Ref</span><span class=\"info-value\">PMID:23700264 (Alpharadin/Xofigo)</span></div>"
+  },
+  {
+    "pmid": "33303579",
+    "title": "Systemic and intravesical adoptive cell therapy of tumor-reactive T cells can decrease bladder tumor growth in vivo.",
+    "relevant": false,
+    "error": null,
+    "file": "adc_database.html",
+    "context_sample": "s=\"info-label\">Ref</span><span class=\"info-value\">PMID:33303579 (Pb-212 TAT)</span></div>\n      <div"
+  },
+  {
+    "pmid": "11773748",
+    "title": "",
+    "relevant": false,
+    "error": "cannot get document summary",
+    "file": "adc_database.html",
+    "context_sample": "s=\"info-label\">Ref</span><span class=\"info-value\">PMID:11773748</span></div>\n      <div class=\"info-"
+  },
+  {
+    "pmid": "2665776",
+    "title": "The role of lymphokines in common variable hypogammaglobulinemia.",
+    "relevant": false,
+    "error": null,
+    "file": "adc_database.html",
+    "context_sample": "s=\"info-label\">Ref</span><span class=\"info-value\">PMID:2665776 (Saporin immunotoxins)</span></div>"
+  },
+  {
+    "pmid": "6261600",
+    "title": "[Clinical aspects, diagnosis and treatment of trophoblastic disease in Bulgaria in the period of 1971-1975].",
+    "relevant": false,
+    "error": null,
+    "file": "adc_database.html",
+    "context_sample": "s=\"info-label\">Ref</span><span class=\"info-value\">PMID:6261600</span></div>\n      <div class=\"info-r"
+  },
+  {
+    "pmid": "8267523",
+    "title": "[Genetic and epidemiologic studies on alcoholic liver diseases].",
+    "relevant": false,
+    "error": null,
+    "file": "adc_database.html",
+    "context_sample": "s=\"info-label\">Ref</span><span class=\"info-value\">PMID:8267523 (DT mechanism)</span></div><div class"
+  },
+  {
+    "pmid": "9092568",
+    "title": "Cloning and functional expression of a brain peptide/histidine transporter.",
+    "relevant": false,
+    "error": null,
+    "file": "adc_database.html",
+    "context_sample": "s=\"info-label\">Ref</span><span class=\"info-value\">PMID:9092568 (ricin immunotoxins review)</span></d"
+  },
+  {
+    "pmid": "27217292",
+    "title": "WFITN ethics charter.",
+    "relevant": false,
+    "error": null,
+    "file": "adc_database.html",
+    "context_sample": "s=\"info-label\">Ref</span><span class=\"info-value\">PMID:27217292</span></div>\n      <div class=\"info-"
+  },
+  {
+    "pmid": "32134256",
+    "title": "Chimeric siRNA-DNA Surfactants for the Enhanced Delivery and Sustained Cytotoxicity of a Gold(III) Metallodrug.",
+    "relevant": false,
+    "error": null,
+    "file": "adc_database.html",
+    "context_sample": "s=\"info-label\">Ref</span><span class=\"info-value\">PMID:32134256 (First DAC report)</span></div>"
+  },
+  {
+    "pmid": "33649601",
+    "title": "Oncohistone mutations enhance chromatin remodeling and alter cell fates.",
+    "relevant": false,
+    "error": null,
+    "file": "adc_database.html",
+    "context_sample": "s=\"info-label\">Ref</span><span class=\"info-value\">PMID:33649601 (ISAC clinical data)</span></div>"
+  },
+  {
+    "pmid": "29601203",
+    "title": "Crystallography and Molecular Arrangement of Polymorphic Monolayer J-Aggregates of a Cyanine Dye: Multiangle Polarized Light Fluorescence Optical Microscopy Study.",
+    "relevant": false,
+    "error": null,
+    "file": "adc_database.html",
+    "context_sample": "s=\"info-label\">Ref</span><span class=\"info-value\">PMID:29601203 (Ac-225 clinical)</span></div>\n    <"
+  },
+  {
+    "pmid": "28619709",
+    "title": "Loss of FAM46C Promotes Cell Survival in Myeloma.",
+    "relevant": false,
+    "error": null,
+    "file": "adc_database.html",
+    "context_sample": "s=\"info-label\">Ref</span><span class=\"info-value\">PMID:28619709 (Lumoxiti approval)</span></div>"
+  },
+  {
+    "pmid": "34091710",
+    "title": "Enhancing sensitivity of QCM for dengue type 1 virus detection using graphene-based polymer composites.",
+    "relevant": false,
+    "error": null,
+    "file": "adc_database.html",
+    "context_sample": "s=\"info-label\">Ref</span><span class=\"info-value\">PMID:34091710 (ARC review)</span></div>\n    </div>"
+  },
+  {
+    "pmid": "32929266",
+    "title": "Single-cell transcriptomic atlas of the human endometrium during the menstrual cycle.",
+    "relevant": false,
+    "error": null,
+    "file": "adc_database.html",
+    "context_sample": "s=\"info-label\">Ref</span><span class=\"info-value\">PMID:32929266 (ASO-antibody conjugates)</span></di"
+  },
+  {
+    "pmid": "12873544",
+    "title": "Pulmonary transplantation for cystic fibrosis: pre-transplant recipient characteristics in patients dying of peri-operative sepsis.",
+    "relevant": false,
+    "error": null,
+    "file": "adc_database.html",
+    "context_sample": "s=\"info-label\">Ref</span><span class=\"info-value\">PMID:12873544</span></div><div class=\"info-row\" st"
+  },
+  {
+    "pmid": "26058450",
+    "title": "Haemophilia care in Central and Eastern Europe: challenges and ways forward from clinicians' perspective.",
+    "relevant": false,
+    "error": null,
+    "file": "adc_database.html",
+    "context_sample": "s=\"info-label\">Ref</span><span class=\"info-value\">PMID:26058450</span></div><div class=\"info-row\" st"
+  },
+  {
+    "pmid": "16955513",
+    "title": "Identification of alkaline proteins that are differentially expressed in an overgrowth-mediated growth arrest and cell death of Escherichia coli by proteomic methodologies.",
+    "relevant": false,
+    "error": null,
+    "file": "adc_database.html",
+    "context_sample": "s=\"info-label\">Ref</span><span class=\"info-value\">PMID:16955513 (beta-glucuronide linker)</span></di"
+  },
+  {
+    "pmid": "21478267",
+    "title": "FOXD3 regulates migration properties and Rnd3 expression in melanoma cells.",
+    "relevant": false,
+    "error": null,
+    "file": "adc_database.html",
+    "context_sample": "s=\"info-label\">Ref</span><span class=\"info-value\">PMID:21478267</span></div>\n      <div class=\"info-"
+  },
+  {
+    "pmid": "26700026",
+    "title": "Patient journey to a specialist amyotrophic lateral sclerosis multidisciplinary clinic: an exploratory study.",
+    "relevant": false,
+    "error": null,
+    "file": "adc_database.html",
+    "context_sample": "s=\"info-label\">Ref</span><span class=\"info-value\">PMID:26700026 (Val-Ala design)</span></div><div cl"
+  },
+  {
+    "pmid": "16814772",
+    "title": "Neuroprotective effect of hyperbaric oxygen therapy monitored by MR-imaging after embolic stroke in rats.",
+    "relevant": false,
+    "error": null,
+    "file": "adc_database.html",
+    "context_sample": "s=\"info-label\">Ref</span><span class=\"info-value\">PMID:16814772 (T-DM1 design)</span></div><div clas"
+  },
+  {
+    "pmid": "24631280",
+    "title": "MRI findings in Duane's ocular retraction syndrome.",
+    "relevant": false,
+    "error": null,
+    "file": "adc_database.html",
+    "context_sample": "s=\"info-label\">Ref</span><span class=\"info-value\">PMID:24631280 (Kadcyla/DM1 linker chemistry)</span"
+  },
+  {
+    "pmid": "22544701",
+    "title": "MT1-MMP plays a critical role in hematopoiesis by regulating HIF-mediated chemokine/cytokine gene transcription within niche cells.",
+    "relevant": false,
+    "error": null,
+    "file": "adc_database.html",
+    "context_sample": "s=\"info-label\">Ref</span><span class=\"info-value\">PMID:22544701 (DM1 linker comparison)</span></div>"
+  },
+  {
+    "pmid": "33888590",
+    "title": "A Look Inside: Oral Sampling for Detection of Non-oral Infectious Diseases.",
+    "relevant": false,
+    "error": null,
+    "file": "adc_database.html",
+    "context_sample": "s=\"info-label\">Ref</span><span class=\"info-value\">PMID:33888590 (Mersana Dolaflexin)</span></div>"
+  },
+  {
+    "pmid": "33170115",
+    "title": "Nursing personality and features in children with autism spectrum disorder aged 0-2: an exploratory case-control study.",
+    "relevant": false,
+    "error": null,
+    "file": "adc_database.html",
+    "context_sample": "s=\"info-label\">Ref</span><span class=\"info-value\">PMID:33170115 (Trodelvy ASCENT trial)</span></div>"
+  },
+  {
+    "pmid": "25031149",
+    "title": "Management of children with severe acute malnutrition.",
+    "relevant": false,
+    "error": null,
+    "file": "adc_database.html",
+    "context_sample": "s=\"info-label\">Ref</span><span class=\"info-value\">PMID:25031149 (non-cleavable ADC review)</span></d"
+  },
+  {
+    "pmid": "31564619",
+    "title": "Influence of surgical technique on residual cholesteatoma location and prevalence.",
+    "relevant": false,
+    "error": null,
+    "file": "adc_database.html",
+    "context_sample": "s=\"info-label\">Ref</span><span class=\"info-value\">PMID:31564619 (site-specific lysine conjugation)</"
+  },
+  {
+    "pmid": "31235653",
+    "title": "The Purinergic System as a Pharmacological Target for the Treatment of Immune-Mediated Inflammatory Diseases.",
+    "relevant": false,
+    "error": null,
+    "file": "adc_database.html",
+    "context_sample": "s=\"info-label\">Ref</span><span class=\"info-value\">PMID:31235653 (Probody clinical results)</span></d"
+  },
+  {
+    "pmid": "26554950",
+    "title": "The Protective Effects of Different Sources of Maternal Selenium on Oxidative Stressed Chick Embryo Liver.",
+    "relevant": false,
+    "error": null,
+    "file": "adc_database.html",
+    "context_sample": "s=\"info-label\">Ref</span><span class=\"info-value\">PMID:26554950</span></div><div class=\"info-row\" st"
+  },
+  {
+    "pmid": "30356154",
+    "title": "Interspecies cross-feeding orchestrates carbon degradation in the rumen ecosystem.",
+    "relevant": false,
+    "error": null,
+    "file": "adc_database.html",
+    "context_sample": "s=\"info-label\">Ref</span><span class=\"info-value\">PMID:30356154</span></div>\n    </div>\n  </div>\n</d"
+  },
+  {
+    "pmid": "25133814",
+    "title": "Granulomatosis with polyangiitis (Wegener's granulomatosis) with hard palate and bronchial perforations treated with rituximab - a case report.",
+    "relevant": false,
+    "error": null,
+    "file": "adc_database.html",
+    "context_sample": "s=\"info-label\">Ref</span><span class=\"info-value\">PMID:25133814</span></div><div class=\"info-row\" st"
+  },
+  {
+    "pmid": "27064340",
+    "title": "Cu-Catalyzed Sequential Dehydrogenation-Conjugate Addition for β-Functionalization of Saturated Ketones: Scope and Mechanism.",
+    "relevant": false,
+    "error": null,
+    "file": "adc_database.html",
+    "context_sample": "s=\"info-label\">Ref</span><span class=\"info-value\">PMID:27064340</span></div>\n    </div>\n  </div>\n</d"
+  },
+  {
+    "pmid": "18552842",
+    "title": "The orexigenic hormone ghrelin defends against depressive symptoms of chronic stress.",
+    "relevant": false,
+    "error": null,
+    "file": "adc_database.html",
+    "context_sample": "s=\"info-label\">Ref</span><span class=\"info-value\">PMID:18552842</span></div><div class=\"info-row\" st"
+  },
+  {
+    "pmid": "24703513",
+    "title": "Foot posture, leg length discrepancy and low back pain--their relationship and clinical management using foot orthoses--an overview.",
+    "relevant": false,
+    "error": null,
+    "file": "adc_database.html",
+    "context_sample": "s=\"info-label\">Ref</span><span class=\"info-value\">PMID:24703513</span></div>\n    </div>\n  </div>\n</d"
+  },
+  {
+    "pmid": "24912431",
+    "title": "The WHIM-like CXCR4(S338X) somatic mutation activates AKT and ERK, and promotes resistance to ibrutinib and other agents used in the treatment of Waldenstrom's Macroglobulinemia.",
+    "relevant": false,
+    "error": null,
+    "file": "adc_database.html",
+    "context_sample": "s=\"info-label\">Ref</span><span class=\"info-value\">PMID:24912431</span></div><div class=\"info-row\" st"
+  },
+  {
+    "pmid": "31110004",
+    "title": "Design of self-assembly dipeptide hydrogels and machine learning via their chemical features.",
+    "relevant": false,
+    "error": null,
+    "file": "adc_database.html",
+    "context_sample": "s=\"info-label\">Ref</span><span class=\"info-value\">PMID:31110004</span></div>\n    </div>\n  </div>\n</d"
+  },
+  {
+    "pmid": "31110004",
+    "title": "Design of self-assembly dipeptide hydrogels and machine learning via their chemical features.",
+    "relevant": false,
+    "error": null,
+    "file": "adc_database.html",
+    "context_sample": "s=\"info-label\">Ref</span><span class=\"info-value\">PMID:31110004</span></div>\n    </div>\n  </div>\n</d"
+  },
+  {
+    "pmid": "12873544",
+    "title": "Pulmonary transplantation for cystic fibrosis: pre-transplant recipient characteristics in patients dying of peri-operative sepsis.",
+    "relevant": false,
+    "error": null,
+    "file": "adc_database.html",
+    "context_sample": "s=\"info-label\">Ref</span><span class=\"info-value\">PMID:12873544</span></div><div class=\"info-row\" st"
+  },
+  {
+    "pmid": "22399561",
+    "title": "Changes in self-reported energy balance behaviours and body mass index during a mass media campaign.",
+    "relevant": false,
+    "error": null,
+    "file": "adc_database.html",
+    "context_sample": "s=\"info-label\">Ref</span><span class=\"info-value\">PMID:22399561</span></div>\n    </div>\n  </div>\n</d"
+  },
+  {
+    "pmid": "16814772",
+    "title": "Neuroprotective effect of hyperbaric oxygen therapy monitored by MR-imaging after embolic stroke in rats.",
+    "relevant": false,
+    "error": null,
+    "file": "adc_database.html",
+    "context_sample": "s=\"info-label\">Ref</span><span class=\"info-value\">PMID:16814772</span></div><div class=\"info-row\" st"
+  },
+  {
+    "pmid": "22646630",
+    "title": "Preoperative chemoradiotherapy for esophageal or junctional cancer.",
+    "relevant": false,
+    "error": null,
+    "file": "adc_database.html",
+    "context_sample": "s=\"info-label\">Ref</span><span class=\"info-value\">PMID:22646630</span></div>\n    </div>\n  </div>\n</d"
+  },
+  {
+    "pmid": "25654301",
+    "title": "",
+    "relevant": false,
+    "error": "cannot get document summary",
+    "file": "adc_database.html",
+    "context_sample": "s=\"info-label\">Ref</span><span class=\"info-value\">PMID:25654301</span></div>\n    </div>\n  </div>\n</d"
+  },
+  {
+    "pmid": "33454211",
+    "title": "Consistent results of non-invasive PGT-A of human embryos using two different techniques for chromosomal analysis.",
+    "relevant": false,
+    "error": null,
+    "file": "adc_database.html",
+    "context_sample": "s=\"info-label\">Ref</span><span class=\"info-value\">PMID:33454211</span></div>\n    </div>\n  </div>\n</d"
+  },
+  {
+    "pmid": "22108849",
+    "title": "A stereo-controlled access to functionalized macrolactams via an aza-Claisen rearrangement.",
+    "relevant": false,
+    "error": null,
+    "file": "adc_database.html",
+    "context_sample": "s=\"info-label\">Ref</span><span class=\"info-value\">PMID:22108849</span></div>\n    </div>\n  </div>\n</d"
+  },
+  {
+    "pmid": "30356154",
+    "title": "Interspecies cross-feeding orchestrates carbon degradation in the rumen ecosystem.",
+    "relevant": false,
+    "error": null,
+    "file": "adc_database.html",
+    "context_sample": "s=\"info-label\">Ref</span><span class=\"info-value\">PMID:30356154</span></div>\n    </div>\n  </div>\n</d"
+  },
+  {
+    "pmid": "12873544",
+    "title": "Pulmonary transplantation for cystic fibrosis: pre-transplant recipient characteristics in patients dying of peri-operative sepsis.",
+    "relevant": false,
+    "error": null,
+    "file": "adc_database.html",
+    "context_sample": "s=\"info-label\">Ref</span><span class=\"info-value\">PMID:12873544</span></div>\n    </div>\n  </div>\n</d"
+  },
+  {
+    "pmid": "26058450",
+    "title": "Haemophilia care in Central and Eastern Europe: challenges and ways forward from clinicians' perspective.",
+    "relevant": false,
+    "error": null,
+    "file": "adc_database.html",
+    "context_sample": "s=\"info-label\">Ref</span><span class=\"info-value\">PMID:26058450</span></div>\n    </div>\n  </div>\n</d"
+  },
+  {
+    "pmid": "22399561",
+    "title": "Changes in self-reported energy balance behaviours and body mass index during a mass media campaign.",
+    "relevant": false,
+    "error": null,
+    "file": "adc_database.html",
+    "context_sample": "s=\"info-label\">Ref</span><span class=\"info-value\">PMID:22399561</span></div>\n    </div>\n  </div>\n</d"
+  },
+  {
+    "pmid": "16955513",
+    "title": "Identification of alkaline proteins that are differentially expressed in an overgrowth-mediated growth arrest and cell death of Escherichia coli by proteomic methodologies.",
+    "relevant": false,
+    "error": null,
+    "file": "adc_database.html",
+    "context_sample": "s=\"info-label\">Ref</span><span class=\"info-value\">PMID:16955513</span></div>\n    </div>\n  </div>\n</d"
+  },
+  {
+    "pmid": "31657864",
+    "title": "Pharmacokinetic basis for dosing high-dose methotrexate in infants and young children with malignant brain tumours.",
+    "relevant": false,
+    "error": null,
+    "file": "antibody-guide.html",
+    "context_sample": "bitor) | Linker: GGFG (Tetrapeptide)', ref:'<span>PMID: 31657864</span> · <span>Patents: US8039469,"
+  },
+  {
+    "pmid": "21135266",
+    "title": "Reduced melanoma after regular sunscreen use: randomized trial follow-up.",
+    "relevant": false,
+    "error": null,
+    "file": "antibody-guide.html",
+    "context_sample": "inhibitor) | Linker: mc-val-cit-PABC', ref:'<span>PMID: 21135266</span> · <span>Patents: US7090843,"
+  },
+  {
+    "pmid": "22713502",
+    "title": "Neurodevelopmental outcomes of twins.",
+    "relevant": false,
+    "error": null,
+    "file": "antibody-guide.html",
+    "context_sample": "bitor (Maytansinoid)) | Linker: SMCC', ref:'<span>PMID: 22713502</span> · <span>Patents: US5208020,"
+  },
+  {
+    "pmid": "11060331",
+    "title": "Current applications of genetic technology in predisposition testing and microsatellite instability assays.",
+    "relevant": false,
+    "error": null,
+    "file": "antibody-guide.html",
+    "context_sample": "(DNA-damaging agent) | Linker: AcBut', ref:'<span>PMID: 11060331</span> · <span>Patents: US5773001,"
+  },
+  {
+    "pmid": "30785690",
+    "title": "[Levels of sex hormones, sex hormone binding globulin, antisperm antibodies and dopamine in postmanopausal women of nomadic and settled aboriginal and local caucasoid populations of the arctic territories.].",
+    "relevant": false,
+    "error": null,
+    "file": "antibody-guide.html",
+    "context_sample": "somerase I inhibitor) | Linker: CL2A', ref:'<span>PMID: 30785690</span> · <span>Patents: US7238785,"
+  },
+  {
+    "pmid": "33991512",
+    "title": "Enfortumab vedotin after PD-1 or PD-L1 inhibitors in cisplatin-ineligible patients with advanced urothelial carcinoma (EV‑201): a multicentre, single-arm, phase 2 trial.",
+    "relevant": false,
+    "error": null,
+    "file": "antibody-guide.html",
+    "context_sample": "inhibitor) | Linker: mc-val-cit-PABC', ref:'<span>PMID: 33991512</span> · <span>Patents: US9393323,"
+  },
+  {
+    "pmid": "31166880",
+    "title": "Altered Expression of Astrocyte-Related Receptors and Channels Correlates With Epileptogenesis in Hippocampal Sclerosis.",
+    "relevant": false,
+    "error": null,
+    "file": "antibody-guide.html",
+    "context_sample": "inhibitor) | Linker: mc-val-cit-PABC', ref:'<span>PMID: 31166880</span> · <span>Patents: US8021661,"
+  },
+  {
+    "pmid": "33429118",
+    "title": "PGE2 vs PGF2α in human parturition.",
+    "relevant": false,
+    "error": null,
+    "file": "antibody-guide.html",
+    "context_sample": "lkylator) | Linker: PEG-Val-Ala-PABC', ref:'<span>PMID: 33429118</span> · <span>Patents: US8871908,"
+  },
+  {
+    "pmid": "37133587",
+    "title": "Neonatal Seizures.",
+    "relevant": false,
+    "error": null,
+    "file": "antibody-guide.html",
+    "context_sample": "(Maytansinoid)) | Linker: Sulfo-SPDB', ref:'<span>PMID: 37133587</span> · <span>Patents: US8557966,"
+  },
+  {
+    "pmid": "31859550",
+    "title": "ALTERED RETINAL PERFUSION IN PATIENTS WITH INACTIVE GRAVES OPHTHALMOPATHY USING OPTICAL COHERENCE TOMOGRAPHY ANGIOGRAPHY.",
+    "relevant": false,
+    "error": null,
+    "file": "antibody-guide.html",
+    "context_sample": "MAF (Tubulin inhibitor) | Linker: mc', ref:'<span>PMID: 31859550</span> · <span>Patents: US9273141,"
+  },
+  {
+    "pmid": "33571457",
+    "title": "Established and novel therapeutic options for autoimmune hepatitis.",
+    "relevant": false,
+    "error": null,
+    "file": "antibody-guide.html",
+    "context_sample": "inhibitor) | Linker: mc-val-cit-PABC', ref:'<span>PMID: 33571457</span> · <span>Patents: US9168314,"
+  },
+  {
+    "pmid": "39186361",
+    "title": "Intestinal Malrotation in a Patient with Gastric Cancer during Laparoscopic Total Gastrectomy: A Case Report.",
+    "relevant": false,
+    "error": null,
+    "file": "antibody-guide.html",
+    "context_sample": "somerase I inhibitor) | Linker: GGFG', ref:'<span>PMID: 39186361, NCT05280470</span> · <span>Patents"
+  },
+  {
+    "pmid": "34711587",
+    "title": "Covid-19: Trump's \"distraction\" by the 2020 election led to thousands of deaths, says pandemic response adviser.",
+    "relevant": false,
+    "error": null,
+    "file": "antibody-guide.html",
+    "context_sample": "bitor) | Linker: GGFG (Tetrapeptide)', ref:'<span>PMID: 34711587, REJOICE-Ovarian01</span>', tier:'T"
+  },
+  {
+    "pmid": "36045843",
+    "title": "Coagulation profile and platelet parameters in pregnancy induced hypertension cases and normotensive pregnancies: A cross-sectional study.",
+    "relevant": false,
+    "error": null,
+    "file": "antibody-guide.html",
+    "context_sample": "sm:'Targets HER3. Fast Track for NSCLC. Evidence: PMID:36045843. <br><br> <strong>Clinical Profile:<"
+  },
+  {
+    "pmid": "36800443",
+    "title": "SGN-CD228A Is an Investigational CD228-Directed Antibody-Drug Conjugate with Potent Antitumor Activity across a Wide Spectrum of Preclinical Solid Tumor Models.",
+    "relevant": false,
+    "error": null,
+    "file": "antibody-guide.html",
+    "context_sample": "antibody (clone hL49) targeting CD228. Evidence: PMID:36800443. <br><br> <strong>Clinical Profile:<"
+  },
+  {
+    "pmid": "37619980",
+    "title": "SGN-B6A: A New Vedotin Antibody-Drug Conjugate Directed to Integrin Beta-6 for Multiple Carcinoma Indications.",
+    "relevant": false,
+    "error": null,
+    "file": "antibody-guide.html",
+    "context_sample": ":'Targets Integrin beta-6. Vedotin ADC. Evidence: PMID:37619980. <br><br> <strong>Clinical Profile:<"
+  },
+  {
+    "pmid": "12873544",
+    "title": "Pulmonary transplantation for cystic fibrosis: pre-transplant recipient characteristics in patients dying of peri-operative sepsis.",
+    "relevant": false,
+    "error": null,
+    "file": "antibody-guide.html",
+    "context_sample": "standard protease-cleavable linker.', examples:[\"PMID:12873544\", \"FDA label: Adcetris, Polivy, Padc"
+  },
+  {
+    "pmid": "12873544",
+    "title": "Pulmonary transplantation for cystic fibrosis: pre-transplant recipient characteristics in patients dying of peri-operative sepsis.",
+    "relevant": false,
+    "error": null,
+    "file": "antibody-guide.html",
+    "context_sample": "nts significantly improve solubility', ref:'<span>PMID:12873544</span> · <span>FDA label: Adcetris,"
+  },
+  {
+    "pmid": "26058450",
+    "title": "Haemophilia care in Central and Eastern Europe: challenges and ways forward from clinicians' perspective.",
+    "relevant": false,
+    "error": null,
+    "file": "antibody-guide.html",
+    "context_sample": "used in Daiichi Sankyo DXd platform.', examples:[\"PMID:26058450\", \"FDA label: Enhertu, Dato-DXd\"], m"
+  },
+  {
+    "pmid": "26058450",
+    "title": "Haemophilia care in Central and Eastern Europe: challenges and ways forward from clinicians' perspective.",
+    "relevant": false,
+    "error": null,
+    "file": "antibody-guide.html",
+    "context_sample": "key advantage for high-DAR DXd ADCs)', ref:'<span>PMID:26058450</span> · <span>FDA label: Enhertu, D"
+  },
+  {
+    "pmid": "12873544",
+    "title": "Pulmonary transplantation for cystic fibrosis: pre-transplant recipient characteristics in patients dying of peri-operative sepsis.",
+    "relevant": false,
+    "error": null,
+    "file": "antibody-guide.html",
+    "context_sample": "or', brief:'Monomethyl auristatin E.', examples:[\"PMID:12873544 (original MMAE ADC)\", \"PMID:22399561"
+  },
+  {
+    "pmid": "22399561",
+    "title": "Changes in self-reported energy balance behaviours and body mass index during a mass media campaign.",
+    "relevant": false,
+    "error": null,
+    "file": "antibody-guide.html",
+    "context_sample": ", examples:[\"PMID:12873544 (original MMAE ADC)\", \"PMID:22399561 (MMAE DLT)\", \"FDA label: Adcetris, P"
+  },
+  {
+    "pmid": "12873544",
+    "title": "Pulmonary transplantation for cystic fibrosis: pre-transplant recipient characteristics in patients dying of peri-operative sepsis.",
+    "relevant": false,
+    "error": null,
+    "file": "antibody-guide.html",
+    "context_sample": "enia/febrile neutropenia', 'Fatigue'], ref:'<span>PMID:12873544 (original MMAE ADC)</span> · <span>P"
+  },
+  {
+    "pmid": "22399561",
+    "title": "Changes in self-reported energy balance behaviours and body mass index during a mass media campaign.",
+    "relevant": false,
+    "error": null,
+    "file": "antibody-guide.html",
+    "context_sample": ">PMID:12873544 (original MMAE ADC)</span> · <span>PMID:22399561 (MMAE DLT)</span> · <span>FDA label:"
+  },
+  {
+    "pmid": "26058450",
+    "title": "Haemophilia care in Central and Eastern Europe: challenges and ways forward from clinicians' perspective.",
+    "relevant": false,
+    "error": null,
+    "file": "antibody-guide.html",
+    "context_sample": "ivative (Topoisomerase I inhibitor).', examples:[\"PMID:26058450 (DXd drug design)\", \"PMID:29236700 ("
+  },
+  {
+    "pmid": "29236700",
+    "title": "A component-based system for agricultural drought monitoring by remote sensing.",
+    "relevant": false,
+    "error": null,
+    "file": "antibody-guide.html",
+    "context_sample": ".', examples:[\"PMID:26058450 (DXd drug design)\", \"PMID:29236700 (DESTINY-Breast01)\", \"FDA label: Enh"
+  },
+  {
+    "pmid": "26058450",
+    "title": "Haemophilia care in Central and Eastern Europe: challenges and ways forward from clinicians' perspective.",
+    "relevant": false,
+    "error": null,
+    "file": "antibody-guide.html",
+    "context_sample": "Nausea/vomiting', 'Myelosuppression'], ref:'<span>PMID:26058450 (DXd drug design)</span> · <span>PMI"
+  },
+  {
+    "pmid": "29236700",
+    "title": "A component-based system for agricultural drought monitoring by remote sensing.",
+    "relevant": false,
+    "error": null,
+    "file": "antibody-guide.html",
+    "context_sample": "an>PMID:26058450 (DXd drug design)</span> · <span>PMID:29236700 (DESTINY-Breast01)</span> · <span>FD"
+  },
+  {
+    "pmid": "16955513",
+    "title": "Identification of alkaline proteins that are differentially expressed in an overgrowth-mediated growth arrest and cell death of Escherichia coli by proteomic methodologies.",
+    "relevant": false,
+    "error": null,
+    "file": "antibody-guide.html",
+    "context_sample": "sosomes and tumor microenvironment).', examples:[\"PMID:16955513 (beta-glucuronide linker)\", \"PMID:21"
+  },
+  {
+    "pmid": "21478267",
+    "title": "FOXD3 regulates migration properties and Rnd3 expression in melanoma cells.",
+    "relevant": false,
+    "error": null,
+    "file": "antibody-guide.html",
+    "context_sample": "ples:[\"PMID:16955513 (beta-glucuronide linker)\", \"PMID:21478267\"], mechanism:'Various', receptors:'E"
+  },
+  {
+    "pmid": "16955513",
+    "title": "Identification of alkaline proteins that are differentially expressed in an overgrowth-mediated growth arrest and cell death of Escherichia coli by proteomic methodologies.",
+    "relevant": false,
+    "error": null,
+    "file": "antibody-guide.html",
+    "context_sample": "PK compared to vc-PABC at same DAR.', ref:'<span>PMID:16955513 (beta-glucuronide linker)</span> · <"
+  },
+  {
+    "pmid": "21478267",
+    "title": "FOXD3 regulates migration properties and Rnd3 expression in melanoma cells.",
+    "relevant": false,
+    "error": null,
+    "file": "antibody-guide.html",
+    "context_sample": "16955513 (beta-glucuronide linker)</span> · <span>PMID:21478267</span>'},\n{id:'adccompl101', cat:'Li"
+  },
+  {
+    "pmid": "26700026",
+    "title": "Patient journey to a specialist amyotrophic lateral sclerosis multidisciplinary clinic: an exploratory study.",
+    "relevant": false,
+    "error": null,
+    "file": "antibody-guide.html",
+    "context_sample": "e', brief:'Valine-Alanine dipeptide.', examples:[\"PMID:26700026 (Val-Ala design)\", \"FDA label: Zynlo"
+  },
+  {
+    "pmid": "26700026",
+    "title": "Patient journey to a specialist amyotrophic lateral sclerosis multidisciplinary clinic: an exploratory study.",
+    "relevant": false,
+    "error": null,
+    "file": "antibody-guide.html",
+    "context_sample": "like PBDs and indolinobenzazepines.', ref:'<span>PMID:26700026 (Val-Ala design)</span> · <span>FDA"
+  },
+  {
+    "pmid": "16814772",
+    "title": "Neuroprotective effect of hyperbaric oxygen therapy monitored by MR-imaging after embolic stroke in rats.",
+    "relevant": false,
+    "error": null,
+    "file": "antibody-guide.html",
+    "context_sample": "ssic non-cleavable thioether linker.', examples:[\"PMID:16814772 (T-DM1 design)\", \"FDA label: Kadcyla"
+  },
+  {
+    "pmid": "16814772",
+    "title": "Neuroprotective effect of hyperbaric oxygen therapy monitored by MR-imaging after embolic stroke in rats.",
+    "relevant": false,
+    "error": null,
+    "file": "antibody-guide.html",
+    "context_sample": "earance by increased hydrophobicity)', ref:'<span>PMID:16814772 (T-DM1 design)</span> · <span>FDA la"
+  },
+  {
+    "pmid": "22542113",
+    "title": "Progesterone and preterm birth prevention: translating clinical trials data into clinical practice.",
+    "relevant": false,
+    "error": null,
+    "file": "antibody-guide.html",
+    "context_sample": "clinical or investigational payload.', examples:[\"PMID:22542113\"], mechanism:'Auristatin analog, mon"
+  },
+  {
+    "pmid": "22542113",
+    "title": "Progesterone and preterm birth prevention: translating clinical trials data into clinical practice.",
+    "relevant": false,
+    "error": null,
+    "file": "antibody-guide.html",
+    "context_sample": "eripheral neuropathy', 'Neutropenia'], ref:'<span>PMID:22542113</span>'},\n{id:'adccompp101', cat:'Pa"
+  },
+  {
+    "pmid": "16450923",
+    "title": "Readiness of paediatric audiology services for newborn hearing screening: findings and implications from the programme in England.",
+    "relevant": false,
+    "error": null,
+    "file": "antibody-guide.html",
+    "context_sample": "', brief:'Charged tubulin inhibitor.', examples:[\"PMID:16450923 (MMAF vs MMAE mechanism)\", \"FDA labe"
+  },
+  {
+    "pmid": "16450923",
+    "title": "Readiness of paediatric audiology services for newborn hearing screening: findings and implications from the programme in England.",
+    "relevant": false,
+    "error": null,
+    "file": "antibody-guide.html",
+    "context_sample": "ipheral neuropathy (less than MMAE)'], ref:'<span>PMID:16450923 (MMAF vs MMAE mechanism)</span> · <s"
+  },
+  {
+    "pmid": "24867892",
+    "title": "Use and performance of the Melody Transcatheter Pulmonary Valve in native and postsurgical, nonconduit right ventricular outflow tracts.",
+    "relevant": false,
+    "error": null,
+    "file": "antibody-guide.html",
+    "context_sample": "clinical or investigational payload.', examples:[\"PMID:24867892\"], mechanism:'Novel auristatin deriv"
+  },
+  {
+    "pmid": "24867892",
+    "title": "Use and performance of the Melody Transcatheter Pulmonary Valve in native and postsurgical, nonconduit right ventricular outflow tracts.",
+    "relevant": false,
+    "error": null,
+    "file": "antibody-guide.html",
+    "context_sample": "s:['Nausea', 'Peripheral neuropathy'], ref:'<span>PMID:24867892</span>'},\n{id:'adccompp104', cat:'Pa"
+  },
+  {
+    "pmid": "22765894",
+    "title": "The design, synthesis, and biological evaluation of potent receptor tyrosine kinase inhibitors.",
+    "relevant": false,
+    "error": null,
+    "file": "antibody-guide.html",
+    "context_sample": "clinical or investigational payload.', examples:[\"PMID:22765894\"], mechanism:'Highly potent tubulin"
+  },
+  {
+    "pmid": "22765894",
+    "title": "The design, synthesis, and biological evaluation of potent receptor tyrosine kinase inhibitors.",
+    "relevant": false,
+    "error": null,
+    "file": "antibody-guide.html",
+    "context_sample": "uppression', 'Peripheral neuropathy'], ref:'<span>PMID:22765894</span>'},\n{id:'adccompp105', cat:'Pa"
+  },
+  {
+    "pmid": "26068579",
+    "title": "Asthma Bronchiale and Exercise-Induced Bronchoconstriction.",
+    "relevant": false,
+    "error": null,
+    "file": "antibody-guide.html",
+    "context_sample": "clinical or investigational payload.', examples:[\"PMID:26068579\"], mechanism:'Synthetic tubulysin an"
+  },
+  {
+    "pmid": "26068579",
+    "title": "Asthma Bronchiale and Exercise-Induced Bronchoconstriction.",
+    "relevant": false,
+    "error": null,
+    "file": "antibody-guide.html",
+    "context_sample": "s:['Myelosuppression', 'GI toxicity'], ref:'<span>PMID:26068579</span>'},\n{id:'adccompp106', cat:'Pa"
+  },
+  {
+    "pmid": "11814056",
+    "title": "Sphingolipids in mammalian cell signalling.",
+    "relevant": false,
+    "error": null,
+    "file": "antibody-guide.html",
+    "context_sample": "clinical or investigational payload.', examples:[\"PMID:11814056\"], mechanism:'Ultra-potent tubulin i"
+  },
+  {
+    "pmid": "11814056",
+    "title": "Sphingolipids in mammalian cell signalling.",
+    "relevant": false,
+    "error": null,
+    "file": "antibody-guide.html",
+    "context_sample": "eral neuropathy', 'Myelosuppression'], ref:'<span>PMID:11814056</span>'},\n{id:'adccompp107', cat:'Pa"
+  },
+  {
+    "pmid": "21821736",
+    "title": "Q172H replacement overcomes effects on the metabolism of cyclophosphamide and efavirenz caused by CYP2B6 variant with Arg262.",
+    "relevant": false,
+    "error": null,
+    "file": "antibody-guide.html",
+    "context_sample": "clinical or investigational payload.', examples:[\"PMID:21821736\"], mechanism:'Ultra-potent nemorubic"
+  },
+  {
+    "pmid": "21821736",
+    "title": "Q172H replacement overcomes effects on the metabolism of cyclophosphamide and efavirenz caused by CYP2B6 variant with Arg262.",
+    "relevant": false,
+    "error": null,
+    "file": "antibody-guide.html",
+    "context_sample": "ardiotoxicity (anthracycline-class)'], ref:'<span>PMID:21821736</span>'},\n{id:'adccompp108', cat:'Pa"
+  },
+  {
+    "pmid": "26013320",
+    "title": "Somatic concerns, depressive traits, atherosclerosis and the incidence of cardiovascular disease in ageing Finnish men.",
+    "relevant": false,
+    "error": null,
+    "file": "antibody-guide.html",
+    "context_sample": "iazepine DNA-alkylating agent (IGN).', examples:[\"PMID:26013320 (IGN ADC)\", \"PMID:31813763 (IMGN632"
+  },
+  {
+    "pmid": "31813763",
+    "title": "A pharmacist-led medicines review intervention in community-dwelling Māori older adults- a feasibility study protocol.",
+    "relevant": false,
+    "error": null,
+    "file": "antibody-guide.html",
+    "context_sample": "nt (IGN).', examples:[\"PMID:26013320 (IGN ADC)\", \"PMID:31813763 (IMGN632 CD123)\"], mechanism:'Indoli"
+  },
+  {
+    "pmid": "26013320",
+    "title": "Somatic concerns, depressive traits, atherosclerosis and the incidence of cardiovascular disease in ageing Finnish men.",
+    "relevant": false,
+    "error": null,
+    "file": "antibody-guide.html",
+    "context_sample": "cytopenia', 'Delayed hepatotoxicity'], ref:'<span>PMID:26013320 (IGN ADC)</span> · <span>PMID:318137"
+  },
+  {
+    "pmid": "31813763",
+    "title": "A pharmacist-led medicines review intervention in community-dwelling Māori older adults- a feasibility study protocol.",
+    "relevant": false,
+    "error": null,
+    "file": "antibody-guide.html",
+    "context_sample": "ref:'<span>PMID:26013320 (IGN ADC)</span> · <span>PMID:31813763 (IMGN632 CD123)</span>'},\n{id:'adcco"
+  },
+  {
+    "pmid": "26058450",
+    "title": "Haemophilia care in Central and Eastern Europe: challenges and ways forward from clinicians' perspective.",
+    "relevant": false,
+    "error": null,
+    "file": "antibody-guide.html",
+    "context_sample": "clinical or investigational payload.', examples:[\"PMID:26058450 (Exatecan → DXd conversion)\"], mecha"
+  },
+  {
+    "pmid": "26058450",
+    "title": "Haemophilia care in Central and Eastern Europe: challenges and ways forward from clinicians' perspective.",
+    "relevant": false,
+    "error": null,
+    "file": "antibody-guide.html",
+    "context_sample": "iarrhea)', 'ILD risk similar to DXd'], ref:'<span>PMID:26058450 (Exatecan → DXd conversion)</span>'}"
+  },
+  {
+    "pmid": "20215052",
+    "title": "Tyrosinase inactivation in its action on dopa.",
+    "relevant": false,
+    "error": null,
+    "file": "antibody-guide.html",
+    "context_sample": "clinical or investigational payload.', examples:[\"PMID:20215052\"], mechanism:'Korean-developed campt"
+  },
+  {
+    "pmid": "20215052",
+    "title": "Tyrosinase inactivation in its action on dopa.",
+    "relevant": false,
+    "error": null,
+    "file": "antibody-guide.html",
+    "context_sample": "s:['Myelosuppression', 'GI toxicity'], ref:'<span>PMID:20215052</span>'},\n{id:'adccompp111', cat:'Pa"
+  },
+  {
+    "pmid": "24284813",
+    "title": "Influence of spatial distribution and size of clones on the realized outcrossing rate of the marsh cinquefoil (Comarum palustre).",
+    "relevant": false,
+    "error": null,
+    "file": "antibody-guide.html",
+    "context_sample": "clinical or investigational payload.', examples:[\"PMID:24284813\"], mechanism:'Camptothecin analog. L"
+  },
+  {
+    "pmid": "24284813",
+    "title": "Influence of spatial distribution and size of clones on the realized outcrossing rate of the marsh cinquefoil (Comarum palustre).",
+    "relevant": false,
+    "error": null,
+    "file": "antibody-guide.html",
+    "context_sample": "tradeoffs:['Severe myelosuppression'], ref:'<span>PMID:24284813</span>'},\n{id:'adccompp112', cat:'Pa"
+  },
+  {
+    "pmid": "22406981",
+    "title": "Mapping QTL for resistance to eyespot of wheat in Aegilops longissima.",
+    "relevant": false,
+    "error": null,
+    "file": "antibody-guide.html",
+    "context_sample": "brief:'RNA Polymerase II inhibitor.', examples:[\"PMID:22406981 (Amanitin ADC concept)\", \"PMID:31697"
+  },
+  {
+    "pmid": "31697395",
+    "title": "Promoting Behavioral Change in Mobile Health Interventions for Older Adults: A Scoping Review.",
+    "relevant": false,
+    "error": null,
+    "file": "antibody-guide.html",
+    "context_sample": "xamples:[\"PMID:22406981 (Amanitin ADC concept)\", \"PMID:31697395 (HDP-101 BCMA amanitin ADC)\"], mecha"
+  },
+  {
+    "pmid": "22406981",
+    "title": "Mapping QTL for resistance to eyespot of wheat in Aegilops longissima.",
+    "relevant": false,
+    "error": null,
+    "file": "antibody-guide.html",
+    "context_sample": "with free drug)', 'Myelosuppression'], ref:'<span>PMID:22406981 (Amanitin ADC concept)</span> · <spa"
+  },
+  {
+    "pmid": "31697395",
+    "title": "Promoting Behavioral Change in Mobile Health Interventions for Older Adults: A Scoping Review.",
+    "relevant": false,
+    "error": null,
+    "file": "antibody-guide.html",
+    "context_sample": "ID:22406981 (Amanitin ADC concept)</span> · <span>PMID:31697395 (HDP-101 BCMA amanitin ADC)</span>'}"
+  },
+  {
+    "pmid": "27164163",
+    "title": "Tri(1-adamantyl)phosphine: Expanding the Boundary of Electron-Releasing Character Available to Organophosphorus Compounds.",
+    "relevant": false,
+    "error": null,
+    "file": "antibody-guide.html",
+    "context_sample": "clinical or investigational payload.', examples:[\"PMID:27164163\"], mechanism:'Spliceosome inhibitor"
+  },
+  {
+    "pmid": "27164163",
+    "title": "Tri(1-adamantyl)phosphine: Expanding the Boundary of Electron-Releasing Character Available to Organophosphorus Compounds.",
+    "relevant": false,
+    "error": null,
+    "file": "antibody-guide.html",
+    "context_sample": "s:['Myelosuppression', 'GI toxicity'], ref:'<span>PMID:27164163</span>'},\n{id:'adccompp114', cat:'Pa"
+  },
+  {
+    "pmid": "17898714",
+    "title": "Methylation of histone H3R2 by PRMT6 and H3K4 by an MLL complex are mutually exclusive.",
+    "relevant": false,
+    "error": null,
+    "file": "antibody-guide.html",
+    "context_sample": "clinical or investigational payload.', examples:[\"PMID:17898714\"], mechanism:'Spliceosome inhibitor"
+  },
+  {
+    "pmid": "17898714",
+    "title": "Methylation of histone H3R2 by PRMT6 and H3K4 by an MLL complex are mutually exclusive.",
+    "relevant": false,
+    "error": null,
+    "file": "antibody-guide.html",
+    "context_sample": "1 nM', tradeoffs:['Myelosuppression'], ref:'<span>PMID:17898714</span>'},\n{id:'adccompp115', cat:'Pa"
+  },
+  {
+    "pmid": "31371393",
+    "title": "Crystal structures of plant inorganic pyrophosphatase, an enzyme with a moonlighting autoproteolytic activity.",
+    "relevant": false,
+    "error": null,
+    "file": "antibody-guide.html",
+    "context_sample": "clinical or investigational payload.', examples:[\"PMID:31371393\"], mechanism:'Kinesin Spindle Protei"
+  },
+  {
+    "pmid": "31371393",
+    "title": "Crystal structures of plant inorganic pyrophosphatase, an enzyme with a moonlighting autoproteolytic activity.",
+    "relevant": false,
+    "error": null,
+    "file": "antibody-guide.html",
+    "context_sample": "less than MMAE)', 'Myelosuppression'], ref:'<span>PMID:31371393</span>'},\n{id:'adccompp116', cat:'Pa"
+  },
+  {
+    "pmid": "17350563",
+    "title": "Indian pharma enters the global arena.",
+    "relevant": false,
+    "error": null,
+    "file": "antibody-guide.html",
+    "context_sample": "clinical or investigational payload.', examples:[\"PMID:17350563\"], mechanism:'KSP (Eg5) inhibitor. B"
+  },
+  {
+    "pmid": "17350563",
+    "title": "Indian pharma enters the global arena.",
+    "relevant": false,
+    "error": null,
+    "file": "antibody-guide.html",
+    "context_sample": "s:['Myelosuppression', 'GI toxicity'], ref:'<span>PMID:17350563</span>'},\n{id:'adccompp117', cat:'Pa"
+  },
+  {
+    "pmid": "29212923",
+    "title": "Response inhibition activates distinct motor cortical inhibitory processes.",
+    "relevant": false,
+    "error": null,
+    "file": "antibody-guide.html",
+    "context_sample": "clinical or investigational payload.', examples:[\"PMID:29212923 (Bcl-xL ADC concept)\"], mechanism:'B"
+  },
+  {
+    "pmid": "29212923",
+    "title": "Response inhibition activates distinct motor cortical inhibitory processes.",
+    "relevant": false,
+    "error": null,
+    "file": "antibody-guide.html",
+    "context_sample": "Bcl-xL on platelets)', 'Neutropenia'], ref:'<span>PMID:29212923 (Bcl-xL ADC concept)</span>'},\n{id:'"
+  },
+  {
+    "pmid": "33028661",
+    "title": "COVID-19 Trial Enrollment for Those Who Cannot Consent: Ethical Challenges Posed by a Pandemic.",
+    "relevant": false,
+    "error": null,
+    "file": "antibody-guide.html",
+    "context_sample": "clinical or investigational payload.', examples:[\"PMID:33028661 (ISAC concept)\", \"PMID:34906459 (BDC"
+  },
+  {
+    "pmid": "34906459",
+    "title": "DNA methylation episignature testing improves molecular diagnosis of Mendelian chromatinopathies.",
+    "relevant": false,
+    "error": null,
+    "file": "antibody-guide.html",
+    "context_sample": "oad.', examples:[\"PMID:33028661 (ISAC concept)\", \"PMID:34906459 (BDC-1001 HER2 ISAC)\"], mechanism:'T"
+  },
+  {
+    "pmid": "33028661",
+    "title": "COVID-19 Trial Enrollment for Those Who Cannot Consent: Ethical Challenges Posed by a Pandemic.",
+    "relevant": false,
+    "error": null,
+    "file": "antibody-guide.html",
+    "context_sample": "rome (CRS)', 'Systemic inflammation'], ref:'<span>PMID:33028661 (ISAC concept)</span> · <span>PMID:3"
+  },
+  {
+    "pmid": "34906459",
+    "title": "DNA methylation episignature testing improves molecular diagnosis of Mendelian chromatinopathies.",
+    "relevant": false,
+    "error": null,
+    "file": "antibody-guide.html",
+    "context_sample": "<span>PMID:33028661 (ISAC concept)</span> · <span>PMID:34906459 (BDC-1001 HER2 ISAC)</span>'},\n{id:'"
+  },
+  {
+    "pmid": "35314666",
+    "title": "Pre-Transplant Peripheral Lymphocyte Subsets Predict Pneumonia After Renal Transplantation.",
+    "relevant": false,
+    "error": null,
+    "file": "antibody-guide.html",
+    "context_sample": "clinical or investigational payload.', examples:[\"PMID:35314666 (STING-ADC overview)\"], mechanism:'S"
+  },
+  {
+    "pmid": "35314666",
+    "title": "Pre-Transplant Peripheral Lymphocyte Subsets Predict Pneumonia After Renal Transplantation.",
+    "relevant": false,
+    "error": null,
+    "file": "antibody-guide.html",
+    "context_sample": "on causing autoimmune-like toxicity'], ref:'<span>PMID:35314666 (STING-ADC overview)</span>'},\n{id:'"
+  },
+  {
+    "pmid": "26187766",
+    "title": "An equation to calculate the actual methylene middle parameter as a function of temperature.",
+    "relevant": false,
+    "error": null,
+    "file": "antibody-guide.html",
+    "context_sample": "argeted Alpha Therapy (TAT) payload.', examples:[\"PMID:26187766 (Thorium-227 Targeted Thorium Conjug"
+  },
+  {
+    "pmid": "35219975",
+    "title": "Re-imagining 'the patient': Linked lives and lessons from genomic medicine.",
+    "relevant": false,
+    "error": null,
+    "file": "antibody-guide.html",
+    "context_sample": "7766 (Thorium-227 Targeted Thorium Conjugates)\", \"PMID:35219975 (Phase I PSMA-TTC)\"], mechanism:'Alp"
+  },
+  {
+    "pmid": "26187766",
+    "title": "An equation to calculate the actual methylene middle parameter as a function of temperature.",
+    "relevant": false,
+    "error": null,
+    "file": "antibody-guide.html",
+    "context_sample": "city if unbound thorium is released'], ref:'<span>PMID:26187766 (Thorium-227 Targeted Thorium Conjug"
+  },
+  {
+    "pmid": "35219975",
+    "title": "Re-imagining 'the patient': Linked lives and lessons from genomic medicine.",
+    "relevant": false,
+    "error": null,
+    "file": "antibody-guide.html",
+    "context_sample": "m-227 Targeted Thorium Conjugates)</span> · <span>PMID:35219975 (Phase I PSMA-TTC)</span>'},\n{id:'ad"
+  },
+  {
+    "pmid": "27048580",
+    "title": "Results from the Survey of Antibiotic Resistance (SOAR) 2012-14 in Thailand, India, South Korea and Singapore.",
+    "relevant": false,
+    "error": null,
+    "file": "antibody-guide.html",
+    "context_sample": "clinical or investigational payload.', examples:[\"PMID:27048580\"], mechanism:'Alpha-emitter (t1/2 ="
+  },
+  {
+    "pmid": "27048580",
+    "title": "Results from the Survey of Antibiotic Resistance (SOAR) 2012-14 in Thailand, India, South Korea and Singapore.",
+    "relevant": false,
+    "error": null,
+    "file": "antibody-guide.html",
+    "context_sample": "tection)', 'Bone marrow suppression'], ref:'<span>PMID:27048580</span>'},\n{id:'adccompp122', cat:'Pa"
+  },
+  {
+    "pmid": "23700264",
+    "title": "A study of tropomyosin's role in cardiac function and disease using thin-filament reconstituted myocardium.",
+    "relevant": false,
+    "error": null,
+    "file": "antibody-guide.html",
+    "context_sample": "clinical or investigational payload.', examples:[\"PMID:23700264 (Alpharadin/Xofigo)\"], mechanism:'Ca"
+  },
+  {
+    "pmid": "23700264",
+    "title": "A study of tropomyosin's role in cardiac function and disease using thin-filament reconstituted myocardium.",
+    "relevant": false,
+    "error": null,
+    "file": "antibody-guide.html",
+    "context_sample": "e marrow suppression', 'GI toxicity'], ref:'<span>PMID:23700264 (Alpharadin/Xofigo)</span>'},\n{id:'a"
+  },
+  {
+    "pmid": "33303579",
+    "title": "Systemic and intravesical adoptive cell therapy of tumor-reactive T cells can decrease bladder tumor growth in vivo.",
+    "relevant": false,
+    "error": null,
+    "file": "antibody-guide.html",
+    "context_sample": "clinical or investigational payload.', examples:[\"PMID:33303579 (Pb-212 TAT)\"], mechanism:'Alpha-in-"
+  },
+  {
+    "pmid": "33303579",
+    "title": "Systemic and intravesical adoptive cell therapy of tumor-reactive T cells can decrease bladder tumor growth in vivo.",
+    "relevant": false,
+    "error": null,
+    "file": "antibody-guide.html",
+    "context_sample": "arrow suppression', 'Renal toxicity'], ref:'<span>PMID:33303579 (Pb-212 TAT)</span>'},\n{id:'adccompp"
+  },
+  {
+    "pmid": "11773748",
+    "title": "",
+    "relevant": false,
+    "error": "cannot get document summary",
+    "file": "antibody-guide.html",
+    "context_sample": "clinical or investigational payload.', examples:[\"PMID:11773748\"], mechanism:'Alpha emitter (t1/2 ="
+  },
+  {
+    "pmid": "11773748",
+    "title": "",
+    "relevant": false,
+    "error": "cannot get document summary",
+    "file": "antibody-guide.html",
+    "context_sample": "toxicity', 'Bone marrow suppression'], ref:'<span>PMID:11773748</span>'},\n{id:'adccompp125', cat:'Pa"
+  },
+  {
+    "pmid": "2665776",
+    "title": "The role of lymphokines in common variable hypogammaglobulinemia.",
+    "relevant": false,
+    "error": null,
+    "file": "antibody-guide.html",
+    "context_sample": "clinical or investigational payload.', examples:[\"PMID:2665776 (Saporin immunotoxins)\"], mechanism:'"
+  },
+  {
+    "pmid": "2665776",
+    "title": "The role of lymphokines in common variable hypogammaglobulinemia.",
+    "relevant": false,
+    "error": null,
+    "file": "antibody-guide.html",
+    "context_sample": "taken up', 'Vascular leak syndrome'], ref:'<span>PMID:2665776 (Saporin immunotoxins)</span>'},\n{id:"
+  },
+  {
+    "pmid": "6261600",
+    "title": "[Clinical aspects, diagnosis and treatment of trophoblastic disease in Bulgaria in the period of 1971-1975].",
+    "relevant": false,
+    "error": null,
+    "file": "antibody-guide.html",
+    "context_sample": "clinical or investigational payload.', examples:[\"PMID:6261600\"], mechanism:'Type I RIP (ribosome-in"
+  },
+  {
+    "pmid": "6261600",
+    "title": "[Clinical aspects, diagnosis and treatment of trophoblastic disease in Bulgaria in the period of 1971-1975].",
+    "relevant": false,
+    "error": null,
+    "file": "antibody-guide.html",
+    "context_sample": "otoxicity', 'Vascular leak syndrome'], ref:'<span>PMID:6261600</span>'},\n{id:'adccompp127', cat:'Pay"
+  },
+  {
+    "pmid": "8267523",
+    "title": "[Genetic and epidemiologic studies on alcoholic liver diseases].",
+    "relevant": false,
+    "error": null,
+    "file": "antibody-guide.html",
+    "context_sample": "clinical or investigational payload.', examples:[\"PMID:8267523 (DT mechanism)\", \"FDA label: Ontak (d"
+  },
+  {
+    "pmid": "8267523",
+    "title": "[Genetic and epidemiologic studies on alcoholic liver diseases].",
+    "relevant": false,
+    "error": null,
+    "file": "antibody-guide.html",
+    "context_sample": "otoxicity', 'Vascular leak syndrome'], ref:'<span>PMID:8267523 (DT mechanism)</span> · <span>FDA lab"
+  },
+  {
+    "pmid": "9092568",
+    "title": "Cloning and functional expression of a brain peptide/histidine transporter.",
+    "relevant": false,
+    "error": null,
+    "file": "antibody-guide.html",
+    "context_sample": "clinical or investigational payload.', examples:[\"PMID:9092568 (ricin immunotoxins review)\"], mechan"
+  },
+  {
+    "pmid": "9092568",
+    "title": "Cloning and functional expression of a brain peptide/histidine transporter.",
+    "relevant": false,
+    "error": null,
+    "file": "antibody-guide.html",
+    "context_sample": "nicity', 'Hemolytic uremic syndrome'], ref:'<span>PMID:9092568 (ricin immunotoxins review)</span>'},"
+  },
+  {
+    "pmid": "27217292",
+    "title": "WFITN ethics charter.",
+    "relevant": false,
+    "error": null,
+    "file": "antibody-guide.html",
+    "context_sample": "clinical or investigational payload.', examples:[\"PMID:27217292\"], mechanism:'N-glycosidase (similar"
+  },
+  {
+    "pmid": "27217292",
+    "title": "WFITN ethics charter.",
+    "relevant": false,
+    "error": null,
+    "file": "antibody-guide.html",
+    "context_sample": ", 'Renal toxicity', 'Immunogenicity'], ref:'<span>PMID:27217292</span>'},\n];\n\nconst FC_DATA = [\n{id:"
+  },
+  {
+    "pmid": "16614067",
+    "title": "Vailulu'u Seamount, Samoa: Life and death on an active submarine volcano.",
+    "relevant": false,
+    "error": null,
+    "file": "antibody-guide.html",
+    "context_sample": "ubmed.ncbi.nlm.nih.gov/16614067/\" target=\"_blank\">PMID 16614067</a> · <a href=\"https://pubmed.ncbi.n"
+  },
+  {
+    "pmid": "20173738",
+    "title": "Sister chromosome pairing maintains heterozygosity in parthenogenetic lizards.",
+    "relevant": false,
+    "error": null,
+    "file": "antibody-guide.html",
+    "context_sample": "ubmed.ncbi.nlm.nih.gov/20173738/\" target=\"_blank\">PMID 20173738</a>', ip:{holder:'AstraZeneca (MedIm"
+  },
+  {
+    "pmid": "12165561",
+    "title": "A missense mutation disrupting a dibasic prohormone processing site in pro-opiomelanocortin (POMC) increases susceptibility to early-onset obesity through a novel molecular mechanism.",
+    "relevant": false,
+    "error": null,
+    "file": "antibody-guide.html",
+    "context_sample": "ubmed.ncbi.nlm.nih.gov/12165561/\" target=\"_blank\">PMID 12165561</a> · <a href=\"https://pubmed.ncbi.n"
+  },
+  {
+    "pmid": "23896478",
+    "title": "β-Lactam antibiotics targeting PBP1 selectively enhance daptomycin activity against methicillin-resistant Staphylococcus aureus.",
+    "relevant": false,
+    "error": null,
+    "file": "antibody-guide.html",
+    "context_sample": "ubmed.ncbi.nlm.nih.gov/23896478/\" target=\"_blank\">PMID 23896478</a>', ip:{holder:'AstraZeneca (MedIm"
+  },
+  {
+    "pmid": "11602730",
+    "title": "Fine definition of the epitope on the gp41 glycoprotein of human immunodeficiency virus type 1 for the neutralizing monoclonal antibody 2F5.",
+    "relevant": false,
+    "error": null,
+    "file": "antibody-guide.html",
+    "context_sample": "ubmed.ncbi.nlm.nih.gov/11602730/\" target=\"_blank\">PMID 11602730</a> · <a href=\"https://pubmed.ncbi.n"
+  },
+  {
+    "pmid": "3260844",
+    "title": "Factors influencing the cytotoxicity of anti-bacterial sera for lymphocytes from ankylosing spondylitis patients.",
+    "relevant": false,
+    "error": null,
+    "file": "antibody-guide.html",
+    "context_sample": "pubmed.ncbi.nlm.nih.gov/3260844/\" target=\"_blank\">PMID 3260844</a>', ip:{holder:'Public Domain', sta"
+  },
+  {
+    "pmid": "26976769",
+    "title": "Lactate clearance and mortality in septic patients with hepatic dysfunction.",
+    "relevant": false,
+    "error": null,
+    "file": "antibody-guide.html",
+    "context_sample": "ubmed.ncbi.nlm.nih.gov/26976769/\" target=\"_blank\">PMID 26976769</a> · <a href=\"https://pubmed.ncbi.n"
+  },
+  {
+    "pmid": "28003361",
+    "title": "Thioredoxin-1 Selectively Activates Transglutaminase 2 in the Extracellular Matrix of the Small Intestine: IMPLICATIONS FOR CELIAC DISEASE.",
+    "relevant": false,
+    "error": null,
+    "file": "antibody-guide.html",
+    "context_sample": "ubmed.ncbi.nlm.nih.gov/28003361/\" target=\"_blank\">PMID 28003361</a>', ip:{holder:'Roche (Genentech)'"
+  },
+  {
+    "pmid": "16537476",
+    "title": "Engineered antibody Fc variants with enhanced effector function.",
+    "relevant": false,
+    "error": null,
+    "file": "antibody-guide.html",
+    "context_sample": "ubmed.ncbi.nlm.nih.gov/16537476/\" target=\"_blank\">PMID 16537476</a> · <a href=\"https://pubmed.ncbi.n"
+  },
+  {
+    "pmid": "17283120",
+    "title": "Tbx3 is a downstream target of the Wnt/beta-catenin pathway and a critical mediator of beta-catenin survival functions in liver cancer.",
+    "relevant": false,
+    "error": null,
+    "file": "antibody-guide.html",
+    "context_sample": "ubmed.ncbi.nlm.nih.gov/17283120/\" target=\"_blank\">PMID 17283120</a>', ip:{holder:'Xencor', status:'A"
+  },
+  {
+    "pmid": "11916992",
+    "title": "Effects of temperature on sustained swimming performance and swimming kinematics of the chub mackerel Scomber japonicus.",
+    "relevant": false,
+    "error": null,
+    "file": "antibody-guide.html",
+    "context_sample": "ubmed.ncbi.nlm.nih.gov/11916992/\" target=\"_blank\">PMID 11916992</a> · <a href=\"https://pubmed.ncbi.n"
+  },
+  {
+    "pmid": "16615187",
+    "title": "Deaths from Clostridium sordellii after medical abortion.",
+    "relevant": false,
+    "error": null,
+    "file": "antibody-guide.html",
+    "context_sample": "ubmed.ncbi.nlm.nih.gov/16615187/\" target=\"_blank\">PMID 16615187</a>', ip:{holder:'Kyowa Kirin / Roch"
+  },
+  {
+    "pmid": "25473098",
+    "title": "MAP kinase p38α regulates type III interferon (IFN-λ1) gene expression in human monocyte-derived dendritic cells in response to RNA stimulation.",
+    "relevant": true,
+    "error": null,
+    "file": "antibody-guide.html",
+    "context_sample": "ubmed.ncbi.nlm.nih.gov/25473098/\" target=\"_blank\">PMID 25473098</a> · <a href=\"https://pubmed.ncbi.n"
+  },
+  {
+    "pmid": "27298261",
+    "title": "Anatomy of the Ophthalmic Artery: Embryological Consideration.",
+    "relevant": false,
+    "error": null,
+    "file": "antibody-guide.html",
+    "context_sample": "ubmed.ncbi.nlm.nih.gov/27298261/\" target=\"_blank\">PMID 27298261</a>', ip:{holder:'Genmab', status:'A"
+  },
+  {
+    "pmid": "8875953",
+    "title": "Mutations in the ligand-binding domain of the kit receptor: an uncommon site in human piebaldism.",
+    "relevant": false,
+    "error": null,
+    "file": "antibody-guide.html",
+    "context_sample": "pubmed.ncbi.nlm.nih.gov/8875953/\" target=\"_blank\">PMID 8875953</a> · <a href=\"https://pubmed.ncbi.nl"
+  },
+  {
+    "pmid": "9731797",
+    "title": "Malignant fibrous histiocytoma of the heart producing interleukin-6.",
+    "relevant": false,
+    "error": null,
+    "file": "antibody-guide.html",
+    "context_sample": "pubmed.ncbi.nlm.nih.gov/9731797/\" target=\"_blank\">PMID 9731797</a>', ip:{holder:'Genentech', status:"
+  },
+  {
+    "pmid": "21441456",
+    "title": "IL-21 promotes skin recruitment of CD4(+) cells and drives IFN-γ-dependent epidermal hyperplasia.",
+    "relevant": false,
+    "error": null,
+    "file": "antibody-guide.html",
+    "context_sample": "ubmed.ncbi.nlm.nih.gov/21441456/\" target=\"_blank\">PMID 21441456</a> · <a href=\"https://pubmed.ncbi.n"
+  },
+  {
+    "pmid": "28003361",
+    "title": "Thioredoxin-1 Selectively Activates Transglutaminase 2 in the Extracellular Matrix of the Small Intestine: IMPLICATIONS FOR CELIAC DISEASE.",
+    "relevant": false,
+    "error": null,
+    "file": "antibody-guide.html",
+    "context_sample": "ubmed.ncbi.nlm.nih.gov/28003361/\" target=\"_blank\">PMID 28003361</a>', ip:{holder:'Xencor', status:'A"
+  },
+  {
+    "pmid": "2471552",
+    "title": "Intracellular degradation of bleomycin hydrolase in two Chinese hamster cell lines in relation to their peplomycin susceptibility.",
+    "relevant": false,
+    "error": null,
+    "file": "antibody-guide.html",
+    "context_sample": "pubmed.ncbi.nlm.nih.gov/2471552/\" target=\"_blank\">PMID 2471552</a>', ip:{holder:'Public Domain', sta"
+  },
+  {
+    "pmid": "20173738",
+    "title": "Sister chromosome pairing maintains heterozygosity in parthenogenetic lizards.",
+    "relevant": false,
+    "error": null,
+    "file": "antibody-guide.html",
+    "context_sample": "ubmed.ncbi.nlm.nih.gov/20173738/\" target=\"_blank\">PMID 20173738</a>', ip:{holder:'Momenta (J&J)', st"
+  },
+  {
+    "pmid": "26976769",
+    "title": "Lactate clearance and mortality in septic patients with hepatic dysfunction.",
+    "relevant": false,
+    "error": null,
+    "file": "antibody-guide.html",
+    "context_sample": "ubmed.ncbi.nlm.nih.gov/26976769/\" target=\"_blank\">PMID 26976769</a>'},\n{id:'fcdapa', cat:'Effector S"
+  },
+  {
+    "pmid": "11096108",
+    "title": "High resolution mapping of the binding site on human IgG1 for Fc gamma RI, Fc gamma RII, Fc gamma RIII, and FcRn and design of IgG1 variants with improved binding to the Fc gamma R.",
+    "relevant": false,
+    "error": null,
+    "file": "antibody-guide.html",
+    "context_sample": "ubmed.ncbi.nlm.nih.gov/11096108/\" target=\"_blank\">PMID 11096108</a>', ip:{holder:'AstraZeneca', stat"
+  },
+  {
+    "pmid": "16537476",
+    "title": "Engineered antibody Fc variants with enhanced effector function.",
+    "relevant": false,
+    "error": null,
+    "file": "antibody-guide.html",
+    "context_sample": "ubmed.ncbi.nlm.nih.gov/16537476/\" target=\"_blank\">PMID 16537476</a>', ip:{holder:'Xencor', status:'A"
+  },
+  {
+    "pmid": "11096108",
+    "title": "High resolution mapping of the binding site on human IgG1 for Fc gamma RI, Fc gamma RII, Fc gamma RIII, and FcRn and design of IgG1 variants with improved binding to the Fc gamma R.",
+    "relevant": false,
+    "error": null,
+    "file": "antibody-guide.html",
+    "context_sample": "ubmed.ncbi.nlm.nih.gov/11096108/\" target=\"_blank\">PMID 11096108</a>'},\n{id:'fce345k', cat:'CDC Enhan"
+  },
+  {
+    "pmid": "25473098",
+    "title": "MAP kinase p38α regulates type III interferon (IFN-λ1) gene expression in human monocyte-derived dendritic cells in response to RNA stimulation.",
+    "relevant": true,
+    "error": null,
+    "file": "antibody-guide.html",
+    "context_sample": "ubmed.ncbi.nlm.nih.gov/25473098/\" target=\"_blank\">PMID 25473098</a>', ip:{holder:'Genmab', status:'A"
+  },
+  {
+    "pmid": "23389682",
+    "title": "Novel registration for microcomputed tomography and bioluminescence imaging based on iterated optimal projection.",
+    "relevant": false,
+    "error": null,
+    "file": "antibody-guide.html",
+    "context_sample": "ubmed.ncbi.nlm.nih.gov/23389682/\" target=\"_blank\">PMID 23389682</a>'},\n{id:'fcs228p', cat:'Subclass"
+  },
+  {
+    "pmid": "19749776",
+    "title": "",
+    "relevant": false,
+    "error": "cannot get document summary",
+    "file": "antibody-guide.html",
+    "context_sample": "ubmed.ncbi.nlm.nih.gov/19749776/\" target=\"_blank\">PMID 19749776</a>'},\n{id:'fce430gs440y', cat:'CDC"
+  },
+  {
+    "pmid": "29538065",
+    "title": "",
+    "relevant": false,
+    "error": "cannot get document summary",
+    "file": "antibody-guide.html",
+    "context_sample": "ubmed.ncbi.nlm.nih.gov/29538065/\" target=\"_blank\">PMID 29538065</a>'},\n{id:'fcddkk', cat:'Bispecific"
+  },
+  {
+    "pmid": "20159975",
+    "title": "Rapid modulation of the organic anion transporting polypeptide 2B1 (OATP2B1, SLCO2B1) function by protein kinase C-mediated internalization.",
+    "relevant": false,
+    "error": null,
+    "file": "antibody-guide.html",
+    "context_sample": "ubmed.ncbi.nlm.nih.gov/20159975/\" target=\"_blank\">PMID 20159975</a>', ip:{holder:'Genmab / Amgen', s"
+  },
+  {
+    "pmid": "20139433",
+    "title": "LQAS: User Beware.",
+    "relevant": false,
+    "error": null,
+    "file": "antibody-guide.html",
+    "context_sample": "ubmed.ncbi.nlm.nih.gov/20139433/\" target=\"_blank\">PMID 20139433</a>', ip:{holder:'Merck KGaA', statu"
+  },
+  {
+    "pmid": "11238752",
+    "title": "Folate status during pregnancy in women is improved by long-term high vegetable intake compared with the average western diet.",
+    "relevant": false,
+    "error": null,
+    "file": "antibody-guide.html",
+    "context_sample": "ubmed.ncbi.nlm.nih.gov/11238752/\" target=\"_blank\">PMID 11238752</a>'},\n{id:'fch435r', cat:'Purificat"
+  },
+  {
+    "pmid": "11532822",
+    "title": "Antidepressant selection and economic outcome: a review of methods and studies from clinical practice.",
+    "relevant": false,
+    "error": null,
+    "file": "antibody-guide.html",
+    "context_sample": "ubmed.ncbi.nlm.nih.gov/11532822/\" target=\"_blank\">PMID 11532822</a>'},\n{id:'fcrecycling', cat:'Half-"
+  },
+  {
+    "pmid": "20943719",
+    "title": "The tyrosine kinase inhibitor ZD6474 blocks proliferation of RET mutant medullary thyroid carcinoma cells.",
+    "relevant": false,
+    "error": null,
+    "file": "antibody-guide.html",
+    "context_sample": "ubmed.ncbi.nlm.nih.gov/20943719/\" target=\"_blank\">PMID 20943719</a>'},\n{id:'fcl328w', cat:'FcgammaRI"
+  },
+  {
+    "pmid": "21441456",
+    "title": "IL-21 promotes skin recruitment of CD4(+) cells and drives IFN-γ-dependent epidermal hyperplasia.",
+    "relevant": false,
+    "error": null,
+    "file": "antibody-guide.html",
+    "context_sample": "ubmed.ncbi.nlm.nih.gov/21441456/\" target=\"_blank\">PMID 21441456</a>'},\n];\n\nconst DEV_DATA = [\n  // ─"
+  }
+]

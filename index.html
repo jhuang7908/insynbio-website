@@ -145,12 +145,16 @@
       .case-grid { grid-template-columns: 1fr; }
     }
     @media (max-width: 600px) {
-      .top-header { padding: 12px 16px; flex-wrap: wrap; gap: 10px; }
-      .top-header .brand { font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 700; font-size: 26px; letter-spacing: -0.03em; display: flex; align-items: center; flex-wrap: nowrap; min-width: max-content; white-space: nowrap; }
-      .top-header .slogan { font-size: 14px; color: var(--text-muted); padding-left: 14px; border-left: 1px solid var(--border); margin-left: 14px; font-weight: 600; white-space: nowrap; display: inline-flex; align-items: center; flex-shrink: 0; }
-      .top-header-nav { width: 100%; flex: 1 1 100%; justify-content: flex-start; flex-wrap: wrap; gap: 6px; overflow-x: auto; padding-bottom: 4px; border-top: 1px solid var(--border); padding-top: 10px; margin-top: 2px; }
-      .top-header-nav a { flex-shrink: 0; font-size: 13px; padding: 6px 10px; }
-      .hero h1 { font-size: 34px; }
+      .mobile-menu-btn { display: block; }
+      .top-header { padding: 10px 16px; flex-wrap: nowrap; }
+      .top-header .slogan { font-size: 13px; padding-left: 10px; margin-left: 10px; }
+      .top-header-nav { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: #fff; flex-direction: column; justify-content: center; align-items: center; gap: 4px; z-index: 9999; opacity: 0; pointer-events: none; transition: opacity 0.25s; padding: 24px; overflow-y: auto; }
+      .top-header-nav.open { opacity: 1; pointer-events: auto; }
+      .top-header-nav a { font-size: 18px; padding: 12px 24px; }
+      .nav-close-btn { display: block; position: absolute; top: 16px; right: 20px; background: none; border: none; font-size: 32px; color: var(--text); cursor: pointer; line-height: 1; padding: 4px 8px; }
+      body { padding-top: 52px; }
+      .hero { min-height: 360px; padding: 36px 20px 44px; }
+      .hero h1 { font-size: 30px; letter-spacing: -0.02em; }
       .workflow-steps { flex-direction: column; flex-wrap: nowrap; }
       .workflow-step { min-width: auto; }
     }
