@@ -3,8 +3,19 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="color-scheme" content="light only">
-  <style>:root { color-scheme: light only; }</style>
+  <meta name="color-scheme" content="only light">
+  <style>
+  :root { color-scheme: only light; }
+  /* Block Android Chrome forced dark mode */
+  html { background: #ffffff !important; }
+  body { background: #ffffff !important; color: #111827 !important; }
+  @media (prefers-color-scheme: dark) {
+    html, body { background: #ffffff !important; color: #111827 !important; }
+    .top-header { background: rgba(255,255,255,0.98) !important; }
+    .top-header .brand a, .top-header .brand a span { color: #111827 !important; }
+    .top-header-nav a, .std-top-nav a { color: #4b5563 !important; }
+  }
+</style>
 <meta name="description" content="InSynBio ADC Knowledge Base — 100 clinical programs, 78 target antigens, 32 payloads, 22 linkers, 23 conjugation technologies with expandable detail cards.">
 <meta name="robots" content="noai, noimageai">
 <meta name="AI-Training" content="opt-out">

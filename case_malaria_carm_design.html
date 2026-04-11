@@ -3,8 +3,19 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="color-scheme" content="light only">
-  <style>:root { color-scheme: light only; }</style>
+  <meta name="color-scheme" content="only light">
+  <style>
+  :root { color-scheme: only light; }
+  /* Block Android Chrome forced dark mode */
+  html { background: #ffffff !important; }
+  body { background: #ffffff !important; color: #111827 !important; }
+  @media (prefers-color-scheme: dark) {
+    html, body { background: #ffffff !important; color: #111827 !important; }
+    .top-header { background: rgba(255,255,255,0.98) !important; }
+    .top-header .brand a, .top-header .brand a span { color: #111827 !important; }
+    .top-header-nav a, .std-top-nav a { color: #4b5563 !important; }
+  }
+</style>
   <title>Case Study: Anti-CIDRα1 Dual-Binder CAR-Macrophage for High-Parasitemia P. falciparum Malaria | InSynBio</title>
   <meta name="description" content="Rationally designed CAR-Macrophage construct targeting CIDRα1 on P. falciparum infected red blood cells — every design decision backed by the ACTES 11-layer decision cascade.">
   <meta name="keywords" content="CAR-M, CAR-macrophage, malaria, P. falciparum, CIDRα1, PfEMP1, phagocytosis, mRNA-LNP, ACTES, dual binder, high parasitemia, InSynBio">
