@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -35,7 +35,7 @@
     .top-header .brand a { text-decoration: none; display: flex; align-items: center; gap: 10px; font-family: 'Cormorant Garamond', serif; font-weight: 700; font-size: 26px; color: #111827; }
     .top-header .slogan { font-size: 14px; color: var(--text-muted); padding-left: 14px; border-left: 1px solid var(--border); margin-left: 14px; font-weight: 600; letter-spacing: 0.02em; white-space: nowrap; display: inline-flex; align-items: center; flex-shrink: 0; }
     .top-header-nav { display: flex; align-items: center; gap: 6px; }
-    .top-header-nav a { padding: 8px 16px; font-size: 15px; color: var(--text-muted); text-decoration: none; border-radius: 20px; transition: all 0.2s; font-weight: 600; }
+    .top-header-nav a { padding: 7px 14px; font-size: 14px; color: var(--text-muted); text-decoration: none; border-radius: 20px; transition: all 0.2s; font-weight: 600; }
     .top-header-nav a:hover { color: var(--primary); background: rgba(13,148,136,0.06); }
     .nav-dropdown { position: relative; }
     .nav-dropdown > a::after { content: ' ▾'; font-size: 10px; opacity: 0.6; }
@@ -53,7 +53,7 @@
     .case-hero h1 { font-family: 'Cormorant Garamond', serif; font-size: clamp(32px,5vw,52px); color: #fff; line-height: 1.15; margin-bottom: 18px; font-weight: 700; }
     .case-hero h1 em { font-style: italic; color: #6ee7b7; }
     .subtitle { font-size: 17px; color: #a7f3d0; max-width: 660px; margin: 0 auto 40px; line-height: 1.6; }
-    .hero-stats { display: flex; justify-content: center; flex-wrap: nowrap; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.12); border-radius: 16px; padding: 20px 8px; max-width: 940px; margin: 0 auto; overflow-x: auto; }
+    .hero-stats { display: flex; justify-content: center; flex-wrap: nowrap; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.12); border-radius: 16px; padding: 16px 8px; max-width: 940px; margin: 0 auto; overflow-x: auto; }
     .hero-stat { flex: 1; min-width: 0; padding: 6px 10px; border-right: 1px solid rgba(255,255,255,0.12); text-align: center; }
     .hero-stat:last-child { border-right: none; }
     .hero-stat .val { font-size: clamp(18px,2.2vw,26px); font-weight: 800; color: #fff; line-height: 1; margin-bottom: 3px; white-space: nowrap; }
@@ -64,14 +64,14 @@
     .eval-amber  { background: rgba(245,158,11,0.25); color: #fde68a; border: 1px solid rgba(245,158,11,0.35); }
 
     /* ─── BODY ─── */
-    .page-body { padding: 64px 20px 80px; }
+    .page-body { padding: 48px 20px 64px; }
     .container { max-width: 1020px; margin: 0 auto; }
     .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; margin-bottom: 52px; }
     .reveal.visible { opacity: 1; transform: translateY(0); }
     .section-label { font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 2px; color: var(--primary); margin-bottom: 8px; }
     .section-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(26px,3.5vw,36px); font-weight: 700; color: var(--text); margin-bottom: 14px; line-height: 1.2; }
     .section-title span { color: #4338ca; }
-    .section-intro { font-size: 16px; color: var(--text-muted); max-width: 720px; margin-bottom: 28px; line-height: 1.7; }
+    .section-intro { font-size: 15px; color: var(--text-muted); max-width: 720px; margin-bottom: 24px; line-height: 1.55; }
 
     /* ─── EXEC SUMMARY CARDS ─── */
     .card-grid { display: grid; gap: 20px; }
@@ -159,7 +159,7 @@
 
     /* ─── STRUCTURAL METRICS ─── */
     .metrics-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
-    .metric-card { background: var(--bg-white); border: 1px solid var(--border); border-radius: 12px; padding: 20px 16px; text-align: center; border-top: 3px solid #7c3aed; }
+    .metric-card { background: var(--bg-white); border: 1px solid var(--border); border-radius: 12px; padding: 18px 14px; text-align: center; border-top: 3px solid #7c3aed; }
     .metric-value { font-family: 'Cormorant Garamond', serif; font-size: 26px; font-weight: 700; color: #7c3aed; line-height: 1; margin-bottom: 4px; }
     .metric-label { font-size: 12px; font-weight: 600; color: var(--text); margin-bottom: 3px; }
     .metric-threshold { font-size: 11px; color: #9ca3af; }
