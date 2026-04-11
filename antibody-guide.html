@@ -1,9 +1,7 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="robots" content="noai, noimageai">
-  <meta name="AI-Training" content="opt-out">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="InSynBio Antibody Engineering Reference — Fc mutation library, developability metrics, and immunogenicity factors.">
   <link rel="canonical" href="https://www.insynbio.com/antibody-guide.html">
@@ -195,15 +193,6 @@
       }
     })();
 
-    // Disable right-click on data tables and SVG charts
-    document.addEventListener('DOMContentLoaded', function() {
-      document.querySelectorAll('table, svg, .kpi-row, .card').forEach(function(el) {
-        el.addEventListener('contextmenu', function(e) { e.preventDefault(); });
-      });
-      // Add copyright watermark to page title in source
-      var c = document.createComment(' © 2026 InSynBio. All rights reserved. Unauthorized reproduction or scraping of this content is prohibited. contact@insynbio.com ');
-      document.head.appendChild(c);
-    });
   </script>
   <meta name="citation_title" content="Antibody Engineering Reference: Fc Mutations, Developability Assessment Metrics, and Immunogenicity Factors">
   <meta name="citation_author" content="InSynBio">
@@ -423,18 +412,6 @@
 </footer>
 
 <script>
-// Security: Anti-copy, Anti-right-click, Anti-print
-(function() {
-  document.addEventListener('contextmenu', e => e.preventDefault());
-  document.addEventListener('selectstart', e => e.preventDefault());
-  document.addEventListener('copy', e => e.preventDefault());
-  document.addEventListener('keydown', e => {
-    if ((e.ctrlKey || e.metaKey) && (e.key === 'c' || e.key === 'p' || e.key === 's' || e.key === 'u')) {
-      e.preventDefault();
-    }
-  });
-})();
-
 // ═══════════════════════════════════════════════════════════
 // DATA
 // ═══════════════════════════════════════════════════════════
