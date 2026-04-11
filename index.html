@@ -110,22 +110,10 @@
     .workflow-step strong { display: block; margin-bottom: 6px; font-size: 15px; font-weight: 600; color: var(--text); position: relative; z-index: 1; padding-right: 28px; }
     .workflow-step span.desc { font-size: 15px; color: var(--text-muted); display: block; line-height: 1.5; position: relative; z-index: 1; }
 
-    /* Case studies — carousel */
-    .case-carousel-wrap { position: relative; margin-top: 28px; }
-    .case-track-overflow { overflow: hidden; }
-    .case-track { display: flex; gap: 16px; transition: transform 0.46s cubic-bezier(0.16, 1, 0.3, 1); will-change: transform; }
-    .case-card { flex: 0 0 calc((100% - 32px) / 3); min-width: 0; display: flex; flex-direction: column; background: var(--card-surface-solid); border: 1px solid var(--card-border); border-radius: 16px; overflow: hidden; text-decoration: none; color: inherit; box-shadow: var(--card-shadow); transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.2s ease; }
+    /* Case studies — 3×3 grid */
+    .case-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 28px; }
+    .case-card { display: flex; flex-direction: column; background: var(--card-surface-solid); border: 1px solid var(--card-border); border-radius: 16px; overflow: hidden; text-decoration: none; color: inherit; box-shadow: var(--card-shadow); transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.2s ease; }
     .case-card:hover { transform: translateY(-6px); box-shadow: 0 14px 36px -6px rgba(13, 148, 136, 0.15), 0 8px 20px rgba(0,0,0,0.06); border-color: var(--card-border-hover); }
-    .carousel-btn { position: absolute; top: 42%; transform: translateY(-50%); z-index: 10; width: 42px; height: 42px; border-radius: 50%; background: #fff; border: 1.5px solid rgba(0,0,0,0.10); box-shadow: 0 4px 16px rgba(0,0,0,0.09); cursor: pointer; display: flex; align-items: center; justify-content: center; color: #374151; transition: all 0.2s; padding: 0; }
-    .carousel-btn:hover { background: var(--primary); color: #fff; border-color: var(--primary); box-shadow: 0 6px 20px rgba(13,148,136,0.25); }
-    .carousel-btn:disabled { opacity: 0.25; pointer-events: none; }
-    .carousel-btn.prev { left: -21px; }
-    .carousel-btn.next { right: -21px; }
-    .carousel-footer { display: flex; align-items: center; justify-content: center; gap: 20px; margin-top: 22px; }
-    .carousel-dots { display: flex; gap: 7px; }
-    .carousel-dot { width: 7px; height: 7px; border-radius: 50%; background: #d1d5db; border: none; cursor: pointer; padding: 0; transition: all 0.22s; }
-    .carousel-dot.active { width: 22px; border-radius: 4px; background: var(--primary); }
-    .carousel-counter { font-size: 13px; color: var(--text-muted); font-weight: 500; min-width: 40px; }
     .case-media { width: 100%; aspect-ratio: 16 / 9; background: linear-gradient(135deg, rgba(13,148,136,0.08), rgba(45,212,191,0.06)); position: relative; }
     .case-media img { width: 100%; height: 100%; display: block; object-fit: cover; }
     .case-body { padding: 16px 18px 12px; background: rgba(255,255,255,0.45); }
@@ -147,20 +135,16 @@
     .site-footer { padding: 28px 32px; text-align: center; font-size: 13px; color: var(--text-muted); border-top: 1px solid var(--border); }
     .site-footer a { color: var(--primary); text-decoration: none; }
 
-    @media (max-width: 640px) {
-      .case-card { flex: 0 0 88%; }
-      .carousel-btn.prev { left: -8px; }
-      .carousel-btn.next { right: -8px; }
-    }
     @media (max-width: 900px) {
       .services-grid { grid-template-columns: 1fr; }
       .contact-grid { grid-template-columns: 1fr; }
-      .case-card { flex: 0 0 calc((100% - 16px) / 2); }
-      .carousel-btn.prev { left: -12px; }
-      .carousel-btn.next { right: -12px; }
+      .case-grid { grid-template-columns: repeat(2, 1fr); }
       .workflow-steps { flex-wrap: wrap; }
       .workflow-step { min-width: 45%; border-radius: 8px !important; border: 1px solid var(--border); border-top: 3px solid var(--border); margin-bottom: 8px; }
       .workflow-step:not(:last-child)::after { display: none; }
+    }
+    @media (max-width: 560px) {
+      .case-grid { grid-template-columns: 1fr; }
     }
     @media (max-width: 600px) {
       .top-header { padding: 12px 16px; flex-wrap: wrap; gap: 10px; }
@@ -519,12 +503,7 @@
     <div class="section-wide">
       <span class="section-label">Project Cases</span>
       <h2>Featured Case Studies</h2>
-      <div class="case-carousel-wrap">
-        <button class="carousel-btn prev" aria-label="Previous cases" disabled>
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
-        </button>
-        <div class="case-track-overflow">
-          <div class="case-track">
+      <div class="case-grid">
         <!-- Humanization -->
         <a class="case-card fade-up" href="case_mumab4d5_humanization_en.html">
           <div class="case-media">
@@ -702,16 +681,7 @@
           </div>
           <div class="case-cta">Read Case →</div>
         </a>
-          </div><!-- /.case-track -->
-        </div><!-- /.case-track-overflow -->
-        <button class="carousel-btn next" aria-label="Next cases">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
-        </button>
-      </div><!-- /.case-carousel-wrap -->
-      <div class="carousel-footer">
-        <div class="carousel-dots" id="carousel-dots"></div>
-        <span class="carousel-counter" id="carousel-counter"></span>
-      </div>
+      </div><!-- /.case-grid -->
     </div>
   </section>
 
@@ -758,73 +728,6 @@
         }
       });
     });
-  </script>
-  <script>
-    (function () {
-      const track    = document.querySelector('.case-track');
-      const overflow = document.querySelector('.case-track-overflow');
-      const cards    = Array.from(track.querySelectorAll('.case-card'));
-      const btnPrev  = document.querySelector('.carousel-btn.prev');
-      const btnNext  = document.querySelector('.carousel-btn.next');
-      const dotsEl   = document.getElementById('carousel-dots');
-      const counter  = document.getElementById('carousel-counter');
-      const TOTAL    = cards.length;
-      let cur = 0;
-
-      function visibleCount() {
-        const w = window.innerWidth;
-        if (w <= 640) return 1;
-        if (w <= 900) return 2;
-        return 3;
-      }
-
-      function maxPages() { return Math.ceil(TOTAL / visibleCount()); }
-
-      function buildDots() {
-        dotsEl.innerHTML = '';
-        const pages = maxPages();
-        for (let i = 0; i < pages; i++) {
-          const d = document.createElement('button');
-          d.className = 'carousel-dot' + (i === 0 ? ' active' : '');
-          d.setAttribute('aria-label', 'Go to page ' + (i + 1));
-          d.addEventListener('click', () => { cur = i * visibleCount(); update(); });
-          dotsEl.appendChild(d);
-        }
-      }
-
-      function update() {
-        const vis  = visibleCount();
-        const maxI = Math.max(0, TOTAL - vis);
-        cur = Math.min(cur, maxI);
-
-        // Calculate card pixel width from rendered DOM
-        const gap   = 16;
-        const trackW = overflow.clientWidth;
-        const cardW  = (trackW - gap * (vis - 1)) / vis;
-        const slide  = cardW + gap;
-
-        track.style.transform = 'translateX(-' + (cur * slide) + 'px)';
-
-        btnPrev.disabled = cur === 0;
-        btnNext.disabled = cur >= maxI;
-
-        // Dots
-        const activePage = Math.floor(cur / vis);
-        dotsEl.querySelectorAll('.carousel-dot').forEach((d, i) =>
-          d.classList.toggle('active', i === activePage)
-        );
-
-        counter.textContent = (cur + 1) + ' – ' + Math.min(cur + vis, TOTAL) + ' / ' + TOTAL;
-      }
-
-      btnPrev.addEventListener('click', () => { cur = Math.max(0, cur - 1); update(); });
-      btnNext.addEventListener('click', () => { cur = Math.min(TOTAL - visibleCount(), cur + 1); update(); });
-
-      window.addEventListener('resize', () => { buildDots(); update(); });
-
-      buildDots();
-      update();
-    })();
   </script>
 </body>
 </html>
