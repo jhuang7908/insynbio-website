@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="robots" content="index, follow, noai, noimageai">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Structure-Guided CDR Redesign and Affinity Re-maturation | InSynBio</title>
+  <meta name="description" content="Starting from the SR-R2 champion VHH, we expand sequence space via structure-constrained generative CDR reconstruction, followed by physics-guided re-maturation to achieve 3.75 nM affinity.">
+  <link rel="canonical" href="https://www.insynbio.com/case_vgrw_cdr_redesign_remat.html">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Structure-Guided CDR Redesign and Affinity Re-maturation | InSynBio">
+  <meta property="og:description" content="De novo CDR redesign + physics-guided re-maturation of HER2 anti-VHH. 6-node evolutionary assessment with 15+ parameters including SC, contact residues, and pI engineering.">
+  <meta property="og:image" content="https://www.insynbio.com/images/case-cdr-redesign.svg">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Cormorant+Garamond:wght@500;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
+  <script src="https://unpkg.com/lucide@0.378.0/dist/umd/lucide.min.js"></script>
+  <style>
+    :root {
+      --primary: #0d9488; --primary-dark: #0f766e; --primary-light: #ccfbf1;
+      --amber: #d97706; --violet: #7c3aed; --indigo: #4338ca; --rose: #e11d48;
+      --text: #111827; --text-muted: #4b5563; --border: #e5e7eb;
+      --bg: #ffffff; --bg-alt: #f9fafb;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Inter', sans-serif; color: var(--text); background: var(--bg-alt); line-height: 1.7; -webkit-font-smoothing: antialiased; padding-top: 72px; }
+    a { color: inherit; }
+
+    /* ─── NAV ─── */
+    .top-header { display: flex; align-items: center; justify-content: space-between; padding: 12px 32px; background: rgba(255,255,255,0.97); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(13,148,136,0.12); position: fixed; top: 0; width: 100%; z-index: 2000; gap: 12px; }
+    .brand a { text-decoration: none; font-family: 'Cormorant Garamond',serif; font-size: 26px; font-weight: 700; color: #111827; }
+    .brand .accent { color: var(--primary); }
+    .top-header .slogan { font-size: 13px; color: var(--text-muted); padding-left: 14px; border-left: 1px solid var(--border); margin-left: 12px; font-weight: 600; white-space: nowrap; }
+    .top-header-nav { display: flex; align-items: center; gap: 6px; flex: 1; justify-content: center; }
+    .top-header-nav a { padding: 8px 16px; font-size: 15px; color: var(--text-muted); text-decoration: none; border-radius: 20px; transition: all 0.2s ease; font-weight: 600; }
+    .top-header-nav a:hover, .top-header-nav a.active { color: var(--primary); background: rgba(13,148,136,0.06); }
+    .nav-dropdown { position: relative; }
+    .nav-dropdown > a::after { content: ' ▾'; font-size: 10px; opacity: 0.6; margin-left: 4px; }
+    .nav-dropdown .dropdown-menu { position: absolute; top: 100%; left: 50%; transform: translateX(-50%) translateY(10px); min-width: 220px; padding: 8px; background: #fff; border: 1px solid rgba(0,0,0,0.06); border-radius: 12px; box-shadow: 0 10px 40px -10px rgba(0,0,0,0.12); opacity: 0; visibility: hidden; transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1); z-index: 100; margin-top: 8px; }
+    .nav-dropdown:hover .dropdown-menu, .nav-dropdown:focus-within .dropdown-menu { opacity: 1; visibility: visible; transform: translateX(-50%) translateY(0); }
+    .nav-dropdown .dropdown-menu a { display: block; padding: 12px 16px; color: var(--text); text-decoration: none; line-height: 1.4; border-radius: 8px; text-align: left; }
+    .nav-dropdown .dropdown-menu a:hover { background: #f8fafc; }
+    .nav-dropdown .dropdown-menu a .menu-title { display: block; font-weight: 600; font-size: 14px; color: var(--text); margin-bottom: 2px; }
+    .nav-dropdown .dropdown-menu a:hover .menu-title { color: var(--primary); }
+    .nav-dropdown .dropdown-menu a .menu-desc { display: block; font-size: 12px; color: var(--text-muted); font-weight: 400; line-height: 1.4; }
+    @media (max-width: 768px) { .top-header .slogan { display: none; } }
+
+    /* ─── HERO ─── */
+    .case-hero { background: url('images/hero-bg.svg') center/cover no-repeat, linear-gradient(135deg, #042f2e 0%, #065f46 45%, #0d9488 100%); padding: 48px 24px 56px; text-align: center; position: relative; overflow: hidden; }
+    .case-hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 60% 40%, rgba(99,255,210,0.08) 0%, transparent 60%); }
+    .hero-inner { max-width: 1020px; margin: 0 auto; position: relative; }
+    .hero-badge { display: inline-flex; align-items: center; gap: 8px; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.18); color: #6ee7b7; font-size: 12px; font-weight: 700; padding: 5px 14px; border-radius: 20px; margin-bottom: 18px; letter-spacing: 0.05em; }
+    .hero-badge.amber { color: #fde68a; border-color: rgba(251,191,36,0.3); background: rgba(251,191,36,0.08); }
+    .hero-title { font-family: 'Cormorant Garamond',serif; font-size: clamp(28px,5vw,46px); color: #fff; font-weight: 700; line-height: 1.15; margin-bottom: 14px; }
+    .hero-title em { color: #6ee7b7; font-style: italic; }
+    .hero-sub { font-size: 16px; color: rgba(167,243,208,0.9); max-width: 720px; margin: 0 auto 28px; line-height: 1.65; }
+    .hero-stats { display: flex; flex-wrap: nowrap; justify-content: center; background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.12); border-radius: 14px; padding: 16px 8px; max-width: 960px; margin: 0 auto; overflow-x: auto; gap: 0; }
+    .hero-stat { flex: 1; min-width: 0; padding: 6px 10px; border-right: 1px solid rgba(255,255,255,0.1); text-align: center; }
+    .hero-stat:last-child { border-right: none; }
+    .hero-stat .val { font-size: clamp(17px,2.2vw,24px); font-weight: 800; color: #fff; line-height: 1; margin-bottom: 2px; white-space: nowrap; }
+    .hero-stat .lbl { font-size: 9.5px; color: #6ee7b7; font-weight: 700; text-transform: uppercase; letter-spacing: 0.4px; line-height: 1.3; }
+    .eval { display: inline-flex; align-items: center; font-size: 10px; font-weight: 700; padding: 2px 6px; border-radius: 20px; margin-top: 3px; }
+    .ev-g { background: rgba(16,185,129,0.2); color: #6ee7b7; border: 1px solid rgba(16,185,129,0.3); }
+    .ev-a { background: rgba(245,158,11,0.2); color: #fde68a; border: 1px solid rgba(245,158,11,0.3); }
+    .ev-t { background: rgba(20,184,166,0.2); color: #5eead4; border: 1px solid rgba(20,184,166,0.3); }
+
+    /* ─── LAYOUT ─── */
+    .page { max-width: 1020px; margin: 0 auto; padding: 48px 20px 80px; }
+    .card { background: var(--bg); border: 1px solid var(--border); border-radius: 16px; padding: 28px 32px; margin-bottom: 24px; box-shadow: 0 2px 12px rgba(0,0,0,0.04); }
+    .card:hover { box-shadow: 0 4px 20px rgba(0,0,0,0.07); transition: box-shadow 0.25s; }
+    .section-label { font-size: 10px; font-weight: 800; text-transform: uppercase; letter-spacing: 2px; color: var(--primary); margin-bottom: 4px; display: block; }
+    .section-title { font-family: 'Cormorant Garamond',serif; font-size: clamp(22px,3vw,30px); font-weight: 700; color: var(--text); margin-bottom: 8px; line-height: 1.2; }
+    .section-intro { font-size: 14.5px; color: var(--text-muted); max-width: 820px; margin-bottom: 18px; line-height: 1.65; }
+    .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.55s ease, transform 0.55s ease; }
+    .reveal.visible { opacity: 1; transform: none; }
+
+    /* ─── PREDECESSOR LINK ─── */
+    .pred-bar { display: flex; align-items: center; gap: 20px; background: linear-gradient(135deg, #1e1b4b, #312e81); border-radius: 12px; padding: 16px 20px; margin-bottom: 24px; text-decoration: none; transition: opacity 0.2s; }
+    .pred-bar:hover { opacity: 0.9; }
+    .pred-icon { width: 40px; height: 40px; background: rgba(165,180,252,0.15); border-radius: 10px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .pred-bar-text { flex: 1; }
+    .pred-bar-text .pt-label { font-size: 9px; font-weight: 800; text-transform: uppercase; letter-spacing: 2px; color: #a5b4fc; margin-bottom: 2px; }
+    .pred-bar-text .pt-title { font-size: 14px; font-weight: 700; color: #e0e7ff; line-height: 1.3; }
+    .pred-bar-text .pt-sub { font-size: 11px; color: #a5b4fc; }
+    .pred-bar-link { font-size: 12px; font-weight: 700; color: #c7d2fe; white-space: nowrap; }
+
+    /* ─── PIPELINE ─── */
+    .pipeline-flow { display: grid; grid-template-columns: repeat(4,1fr); gap: 10px; }
+    .pipe-step { background: var(--bg); border: 1px solid var(--border); border-radius: 10px; padding: 14px 12px; text-align: center; border-top: 3px solid var(--primary); }
+    .pipe-step.amber { border-top-color: var(--amber); }
+    .pipe-step.violet { border-top-color: var(--violet); }
+    .pipe-step .sn { display: inline-flex; align-items: center; justify-content: center; width: 22px; height: 22px; border-radius: 50%; background: var(--primary); color: #fff; font-size: 11px; font-weight: 700; margin-bottom: 6px; }
+    .pipe-step.amber .sn { background: var(--amber); }
+    .pipe-step.violet .sn { background: var(--violet); }
+    .pipe-step h4 { font-size: 12px; font-weight: 700; margin-bottom: 3px; }
+    .pipe-step p { font-size: 11px; color: var(--text-muted); line-height: 1.4; margin: 0; }
+
+    /* ─── METRICS GRID ─── */
+    .metrics-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 10px; margin-bottom: 0; }
+    .metric-card { background: var(--bg); border: 1px solid var(--border); border-radius: 10px; padding: 14px 12px; text-align: center; border-top: 3px solid var(--violet); }
+    .metric-card.teal  { border-top-color: var(--primary); }
+    .metric-card.green { border-top-color: #16a34a; }
+    .metric-card.amber { border-top-color: var(--amber); }
+    .metric-card.rose  { border-top-color: var(--rose); }
+    .mv { font-family: 'Cormorant Garamond',serif; font-size: 26px; font-weight: 700; color: var(--violet); line-height: 1; margin-bottom: 3px; }
+    .metric-card.teal  .mv { color: var(--primary); }
+    .metric-card.green .mv { color: #16a34a; }
+    .metric-card.amber .mv { color: var(--amber); }
+    .metric-card.rose  .mv { color: var(--rose); }
+    .ml { font-size: 11.5px; font-weight: 700; color: var(--text); margin-bottom: 2px; }
+    .ms { font-size: 10.5px; color: #9ca3af; }
+
+    /* ─── EVOLUTION NODES ─── */
+    .evo-track { display: flex; gap: 8px; overflow-x: auto; padding-bottom: 8px; align-items: stretch; }
+    .evo-node { flex: 0 0 155px; background: var(--bg); border: 1px solid var(--border); border-radius: 12px; padding: 14px 12px; }
+    .evo-node.n-blue   { border-color: #93c5fd; background: #eff6ff; }
+    .evo-node.n-red    { border-color: #fca5a5; background: #fff5f5; }
+    .evo-node.n-green  { border-color: #86efac; background: #f0fdf4; }
+    .evo-node.n-violet { border-color: #c4b5fd; background: #f5f3ff; border-width: 2px; }
+    .evo-stage { font-size: 8.5px; font-weight: 800; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 3px; }
+    .n-blue   .evo-stage { color: #1d4ed8; } .n-red .evo-stage { color: #b91c1c; }
+    .n-green  .evo-stage { color: #15803d; } .n-violet .evo-stage { color: #5b21b6; }
+    .evo-name { font-family: 'Cormorant Garamond',serif; font-size: 13px; font-weight: 700; margin-bottom: 5px; line-height: 1.2; }
+    .evo-kd { font-size: 20px; font-weight: 800; line-height: 1; margin-bottom: 1px; }
+    .n-blue .evo-kd { color: #1d4ed8; } .n-red .evo-kd { color: #b91c1c; }
+    .n-green .evo-kd { color: #15803d; } .n-violet .evo-kd { color: #5b21b6; }
+    .evo-unit { font-size: 9.5px; color: #9ca3af; font-weight: 600; }
+    .evo-extra { font-size: 10.5px; color: var(--text-muted); margin-top: 4px; border-top: 1px solid rgba(0,0,0,0.06); padding-top: 4px; }
+    .evo-arr { display: flex; align-items: center; justify-content: center; padding-top: 22px; color: #d1d5db; font-size: 20px; flex-shrink: 0; }
+
+    /* ─── DATA TABLE ─── */
+    .dt { width: 100%; border-collapse: collapse; font-size: 12.5px; border-radius: 12px; overflow: hidden; box-shadow: 0 0 0 1px var(--border); }
+    .dt th { background: #1e1b4b; color: #fff; padding: 9px 10px; text-align: center; font-size: 10.5px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; white-space: nowrap; }
+    .dt th.tl { text-align: left; }
+    .dt td { padding: 9px 10px; border-bottom: 1px solid var(--border); text-align: center; vertical-align: middle; white-space: nowrap; }
+    .dt td.tl { text-align: left; white-space: normal; }
+    .dt tr:last-child td { border-bottom: none; }
+    .dt tr:nth-child(even) td { background: #fafafa; }
+    .dt tbody tr:hover td { background: #f5f3ff !important; }
+    .dt .r-best td { background: #f5f3ff !important; font-weight: 700; }
+    .dt .r-drop td { background: #fff5f5 !important; }
+    .dt .r-blue td { background: #eff6ff !important; }
+
+    /* ─── BADGES ─── */
+    .badge { display: inline-flex; align-items: center; padding: 2px 7px; border-radius: 20px; font-size: 11px; font-weight: 700; border: 1px solid; white-space: nowrap; }
+    .b-pass   { background: #dcfce7; color: #065f46; border-color: #a7f3d0; }
+    .b-best   { background: #ede9fe; color: #5b21b6; border-color: #c4b5fd; }
+    .b-warn   { background: #fef3c7; color: #92400e; border-color: #fde68a; }
+    .b-fail   { background: #fee2e2; color: #991b1b; border-color: #fca5a5; }
+    .b-blue   { background: #dbeafe; color: #1e40af; border-color: #93c5fd; }
+    .b-green  { background: #d1fae5; color: #065f46; border-color: #6ee7b7; }
+    .b-neutral{ background: #f3f4f6; color: #4b5563; border-color: #d1d5db; }
+    .mono { font-family: 'Consolas','Courier New',monospace; font-size: 12px; }
+
+    /* ─── ALERT BOXES ─── */
+    .alert-box { border-radius: 12px; padding: 16px 20px; margin-top: 16px; }
+    .alert-red  { background: linear-gradient(135deg,#fef2f2,#fff5f5); border: 2px solid #fca5a5; }
+    .alert-grn  { background: linear-gradient(135deg,#f0fdf4,#ecfdf5); border: 2px solid #86efac; }
+    .alert-amb  { background: linear-gradient(135deg,#fffbeb,#fef3c7); border: 2px solid #fcd34d; }
+    .alert-vlt  { background: linear-gradient(135deg,#f5f3ff,#ede9fe); border: 2px solid #c4b5fd; }
+    .alert-box .at { font-size: 13.5px; font-weight: 700; margin-bottom: 7px; display: flex; align-items: center; gap: 8px; }
+    .alert-red  .at { color: #991b1b; }
+    .alert-grn  .at { color: #166534; }
+    .alert-amb  .at { color: #92400e; }
+    .alert-vlt  .at { color: #4c1d95; }
+    .alert-box p { font-size: 13px; line-height: 1.6; margin-bottom: 6px; }
+    .alert-box p:last-child { margin-bottom: 0; }
+
+    /* ─── SEQ BLOCK ─── */
+    .seq-block { background: #1e1b4b; border-radius: 8px; padding: 12px 14px; font-family: 'Consolas','Courier New',monospace; font-size: 11.5px; color: #e0e7ff; line-height: 2; overflow-x: auto; margin-top: 10px; }
+    .seq-block .sh { color: #a5b4fc; font-size: 11px; margin-bottom: 3px; }
+    .sh-y { color: #fde68a; font-weight: 800; }
+    .sh-r { color: #fca5a5; font-weight: 800; }
+    .sh-g { color: #6ee7b7; font-weight: 800; }
+    .sh-fr{ color: #cbd5e1; opacity: 0.6; }
+
+    /* ─── CHART ─── */
+    .chart-wrap { background: var(--bg); border: 1px solid var(--border); border-radius: 12px; padding: 16px; }
+    .chart-title { font-family: 'Cormorant Garamond',serif; font-size: 15px; font-weight: 700; color: #1e1b4b; margin-bottom: 10px; }
+    .chart-wrap canvas { height: 200px !important; }
+    .chart-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+
+    /* ─── REFERENCE LIST ─── */
+    .ref-list { list-style: none; padding: 0; counter-reset: ref; }
+    .ref-list li { counter-increment: ref; padding: 5px 0 5px 28px; border-bottom: 1px solid #f3f4f6; font-size: 12.5px; color: var(--text-muted); line-height: 1.5; position: relative; }
+    .ref-list li:last-child { border-bottom: none; }
+    .ref-list li::before { content: '[' counter(ref) ']'; position: absolute; left: 0; font-weight: 700; color: var(--primary); font-size: 11px; top: 6px; }
+
+    /* ─── INFO GRID ─── */
+    .info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .info-box { background: var(--bg); border: 1px solid var(--border); border-radius: 12px; padding: 16px; }
+    .info-box h4 { font-size: 13px; font-weight: 700; margin-bottom: 8px; display: flex; align-items: center; gap: 7px; }
+    .info-box ul { list-style: none; padding: 0; }
+    .info-box ul li { font-size: 12.5px; color: var(--text-muted); padding: 4px 0; border-bottom: 1px solid #f3f4f6; display: flex; gap: 7px; line-height: 1.45; }
+    .info-box ul li:last-child { border-bottom: none; }
+    .info-box ul li::before { content: '›'; color: var(--primary); font-weight: 800; flex-shrink: 0; }
+
+    /* ─── RESULT BANNER ─── */
+    .result-banner { background: linear-gradient(135deg,#1e1b4b,#312e81); border-radius: 14px; padding: 28px; text-align: center; color: #fff; }
+    .rb-score { font-family: 'Cormorant Garamond',serif; font-size: 40px; font-weight: 700; color: #a5b4fc; line-height: 1; margin-bottom: 4px; }
+    .rb-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: #c7d2fe; margin-bottom: 12px; }
+    .rb-p { font-size: 13.5px; color: rgba(255,255,255,0.85); max-width: 680px; margin: 0 auto 20px; line-height: 1.65; }
+    .rb-cta { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+    .btn-w { display: inline-block; background: #fff; color: #312e81; font-weight: 700; font-size: 13px; padding: 11px 22px; border-radius: 8px; text-decoration: none; }
+    .btn-w:hover { background: #eef2ff; }
+    .btn-t { display: inline-block; background: transparent; color: #fff; font-weight: 700; font-size: 13px; padding: 11px 22px; border-radius: 8px; border: 1.5px solid rgba(255,255,255,0.35); text-decoration: none; }
+    .btn-t:hover { border-color: rgba(255,255,255,0.7); }
+
+    /* ─── FOOTER ─── */
+    .site-footer { background: #111827; padding: 36px 24px; text-align: center; }
+    .site-footer p { color: #6b7280; font-size: 13px; }
+    .site-footer a { color: #9ca3af; text-decoration: none; }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 820px) {
+      .pipeline-flow { grid-template-columns: repeat(2,1fr); }
+      .metrics-grid  { grid-template-columns: repeat(2,1fr); }
+      .info-grid     { grid-template-columns: 1fr; }
+      .chart-grid    { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 540px) {
+      .card { padding: 20px 16px; }
+      .hero-stats { flex-wrap: wrap; }
+      .hero-stat { flex: 0 0 calc(50% - 1px); border-right: none; border-bottom: 1px solid rgba(255,255,255,0.1); }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ─── HEADER ─── -->
+<header class="top-header">
+  <div class="brand">
+    <a href="index.html">
+      <span style="color:#111827">In</span><span class="accent">Syn</span><span style="color:#111827">Bio</span>
+    </a>
+  </div>
+  <span class="slogan">AI for Life Sciences</span>
+  <nav class="top-header-nav">
+    <a href="index.html">Home</a>
+    <div class="nav-dropdown" tabindex="0">
+      <a href="index.html#services">AI Drug Design</a>
+      <div class="dropdown-menu">
+        <a href="InSynBio_Antibody_Developability_Assessment_Page.html"><span class="menu-title">Antibody R&amp;D</span><span class="menu-desc">Humanization, CMC, Immunogenicity</span></a>
+        <a href="InSynBio_ADC_Design_Page.html"><span class="menu-title">Smart ADC Design</span><span class="menu-desc">Antigen-Payload-Linker Matching</span></a>
+        <a href="InSynBio_CART_Design_Page.html"><span class="menu-title">Smart CAR-T Design</span><span class="menu-desc">Architecture &amp; Component Optimization</span></a>
+        <a href="InSynBio_Bispecific_Antibody_Design_Page.html"><span class="menu-title">Bispecific Design</span><span class="menu-desc">Format Screening &middot; CMC &middot; Pairing</span></a>
+        <a href="vaccine_design.html"><span class="menu-title">Vaccine Design</span><span class="menu-desc">Neoantigen &middot; Heteroclitic &middot; mRNA</span></a>
+      </div>
+    </div>
+    <div class="nav-dropdown" tabindex="0">
+      <a href="antibody-guide.html">Clinical Reference Library</a>
+      <div class="dropdown-menu">
+        <a href="antibody-guide.html"><span class="menu-title">Antibody Engineering Guide</span><span class="menu-desc">Standards &amp; Design Principles</span></a>
+        <a href="ada_database.html"><span class="menu-title">ADA Database</span><span class="menu-desc">138 Clinical Immunogenicity Benchmarks</span></a>
+        <a href="adc_database.html"><span class="menu-title">ADC Database</span><span class="menu-desc">100 Clinical ADC Programs</span></a>
+        <a href="component-browser.html"><span class="menu-title">CAR Component Library</span><span class="menu-desc">237 CAR-T Engineering Components</span></a>
+        <a href="vaccine_kb_data.html"><span class="menu-title">Vaccine Knowledge Base</span><span class="menu-desc">Antigens &amp; Adjuvant Data</span></a>
+      </div>
+    </div>
+    <div class="nav-dropdown" tabindex="0">
+      <a href="index.html#case-studies" class="active">Case Studies</a>
+      <div class="dropdown-menu">
+        <a href="case_mumab4d5_humanization_en.html"><span class="menu-title">muMAb4D5 Humanization</span><span class="menu-desc">CDR Grafting + Back-mutations</span></a>
+        <a href="case_mumab4d5_cmc.html"><span class="menu-title">muMAb4D5 CMC Assessment</span><span class="menu-desc">15 Developability Metrics Passed</span></a>
+        <a href="case_mumab4d5_vhh_en.html"><span class="menu-title">VH &#x2192; HER2 VHH Conversion</span><span class="menu-desc">Nanobody Engineering &amp; CMC</span></a>
+        <a href="case_vgrw_sr_r2_affinity_maturation.html"><span class="menu-title">VHH Affinity Maturation</span><span class="menu-desc">Binding Energy &#x2212;3.32 kcal/mol</span></a>
+        <a href="case_bispecific_vhh_expression_optimization.html"><span class="menu-title">Bispecific VHH Optimization</span><span class="menu-desc">pI Engineering + 4.8&#xd7; IC90 Boost</span></a>
+        <a href="case_malaria_carm_design.html"><span class="menu-title">CAR-M Design</span><span class="menu-desc">Anti-CIDRα1 Dual-binder CAR-Macrophage</span></a>
+        <a href="case_fentanyl_hapten_vam.html"><span class="menu-title">Fentanyl Hapten VAM</span><span class="menu-desc">Affinity Maturation &#x2212;5.53 kcal/mol</span></a>
+        <a href="case_pdl1_epitope_analysis.html"><span class="menu-title">PD-L1 Epitope Analysis</span><span class="menu-desc">Blocking vs Non-blocking Classification</span></a>
+      </div>
+    </div>
+    <a href="InSynBio_OurTech.html">Our Tech</a>
+    <a href="index.html#contact">Contact Us</a>
+  </nav>
+</header>
+
+<!-- ─── HERO ─── -->
+<section class="case-hero">
+  <div class="hero-inner">
+    <div class="hero-badge amber">Series Report Vol.2 · Follow-up Case</div>
+    <h1 class="hero-title">Structure-Guided <em>CDR Redesign</em><br>and Affinity Re-maturation</h1>
+    <p class="hero-sub">Starting from the SR-R2 champion VHH, we apply structure-constrained generative AI for de novo CDR2/CDR3 sequence reconstruction to expand patent space. Addressing the "affinity valley" caused by redesign, we employ physics-guided re-maturation to recover affinity to 3.75 nM — a 13-fold improvement over the redesign starting point.</p>
+    <div class="hero-stats">
+      <div class="hero-stat"><div class="val">6 Nodes</div><div class="lbl">Evolution Chain</div><div class="eval ev-t">VH→VHH to 4-mutant</div></div>
+      <div class="hero-stat"><div class="val">3.75 nM</div><div class="lbl">Super Combo Kd</div><div class="eval ev-g">13× Recovery</div></div>
+      <div class="hero-stat"><div class="val">−50.7</div><div class="lbl">MM/GBSA ΔG (kcal/mol)</div><div class="eval ev-t">vs Redesign −32.2</div></div>
+      <div class="hero-stat"><div class="val">80→68</div><div class="lbl">Interface Contacts</div><div class="eval ev-a">12 Lost in Redesign</div></div>
+      <div class="hero-stat"><div class="val">0.65→0.58</div><div class="lbl">Shape Comp. (SC)</div><div class="eval ev-a">Redesign Drop</div></div>
+      <div class="hero-stat"><div class="val">55%</div><div class="lbl">CDR2+3 Polymorphism</div><div class="eval ev-g">16/29 Sites Changed</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── BODY ─── -->
+<main class="page">
+
+  <!-- Predecessor link -->
+  <div class="reveal">
+    <a class="pred-bar" href="case_vgrw_sr_r2_affinity_maturation.html">
+      <div class="pred-icon">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#a5b4fc" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+      </div>
+      <div class="pred-bar-text">
+        <div class="pt-label">Predecessor Report</div>
+        <div class="pt-title">VGRW-SR-R2 HER2 VHH Virtual Affinity Maturation — Discovery of G49A+F112L</div>
+        <div class="pt-sub">247 Mutations · 5D Filtering · Kd 0.54 nM · This case starts from these results</div>
+      </div>
+      <span class="pred-bar-link">View Predecessor →</span>
+    </a>
+  </div>
+
+  <!-- Background -->
+  <div class="reveal">
+    <div class="card">
+      <span class="section-label">Background &amp; Rationale</span>
+      <div class="section-title">Why Re-design CDRs After Affinity Maturation?</div>
+      <p class="section-intro">The SR-R2 G49A+F112L champion achieves sub-nanomolar binding; however, its CDR similarity to the original murine scaffold remains high — a potential liability for freedom-to-operate (FTO). De novo CDR redesign using structure-constrained generative models diversifies sequence space while preserving the binding scaffold. This work establishes a re-maturation workflow that recovers affinity without reverting to original sequences.</p>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+        <div>
+          <p style="font-size:12.5px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:#4b5563;margin-bottom:8px;">Strategic Objectives</p>
+          <ul style="list-style:none;padding:0;">
+            <li style="font-size:13px;color:#374151;padding:5px 0;border-bottom:1px solid #f3f4f6;display:flex;gap:8px;"><span style="color:var(--primary);font-weight:800;">›</span> Expand CDR sequence space for FTO and patent differentiation</li>
+            <li style="font-size:13px;color:#374151;padding:5px 0;border-bottom:1px solid #f3f4f6;display:flex;gap:8px;"><span style="color:var(--primary);font-weight:800;">›</span> Maintain HER2 domain IV epitope overlap (structural constraint)</li>
+            <li style="font-size:13px;color:#374151;padding:5px 0;border-bottom:1px solid #f3f4f6;display:flex;gap:8px;"><span style="color:var(--primary);font-weight:800;">›</span> Recover binding affinity via physics-guided re-maturation</li>
+            <li style="font-size:13px;color:#374151;padding:5px 0;display:flex;gap:8px;"><span style="color:var(--primary);font-weight:800;">›</span> Reduce CDR-associated immunogenicity risk</li>
+          </ul>
+        </div>
+        <div>
+          <p style="font-size:12.5px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:#4b5563;margin-bottom:8px;">Clinical Relevance</p>
+          <p style="font-size:13px;color:#374151;line-height:1.6;">CDR redesign is critical for camelid-derived VHHs where original sequences may trigger ADA responses. Redesigning CDRs with human germline-like patterns while maintaining affinity is an emerging strategy for "CDR-humanized" nanobodies with improved clinical safety profiles.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Evolutionary Lineage -->
+  <div class="reveal">
+    <div class="card">
+      <span class="section-label">Evolutionary Lineage</span>
+      <div class="section-title">Six-Node Engineering Journey</div>
+      <p class="section-intro">Three distinct phases span the lineage. The Kd trajectory reflects the fundamental tension between CDR diversity and binding fitness.</p>
+      <div class="evo-track">
+        <div class="evo-node n-blue"><div class="evo-stage">Phase I · Hum.</div><div class="evo-name">VGRW-SR<br><small style="font-size:9.5px;opacity:0.6">VH→VHH</small></div><div class="evo-kd">0.89</div><div class="evo-unit">nM Kd</div><div class="evo-extra">−57.15 kcal/mol<br>80 contacts</div></div>
+        <div class="evo-arr">→</div>
+        <div class="evo-node n-blue"><div class="evo-stage">Phase I · 1st VAM</div><div class="evo-name">SR-R2<br><small style="font-size:9.5px;opacity:0.6">G49A+F112L</small></div><div class="evo-kd">0.54</div><div class="evo-unit">nM Kd</div><div class="evo-extra">−63.75 kcal/mol<br>80 contacts</div></div>
+        <div class="evo-arr">→</div>
+        <div class="evo-node n-red"><div class="evo-stage">Phase II · Redesign</div><div class="evo-name">WT-0838<br><small style="font-size:9.5px;opacity:0.6">MPNN CDR2/3</small></div><div class="evo-kd">49.75</div><div class="evo-unit">nM Kd ↓</div><div class="evo-extra">−32.16 kcal/mol<br>68 contacts</div></div>
+        <div class="evo-arr">→</div>
+        <div class="evo-node n-green"><div class="evo-stage">Phase III · Re-VAM</div><div class="evo-name">A64K<br><small style="font-size:9.5px;opacity:0.6">Single</small></div><div class="evo-kd">17.78</div><div class="evo-unit">nM Kd</div><div class="evo-extra">−47.35 kcal/mol<br>70 contacts</div></div>
+        <div class="evo-arr">→</div>
+        <div class="evo-node n-green"><div class="evo-stage">Phase III · Re-VAM</div><div class="evo-name">W55R+L64K<br><small style="font-size:9.5px;opacity:0.6">Double</small></div><div class="evo-kd">10.57</div><div class="evo-unit">nM Kd</div><div class="evo-extra">−52.00 kcal/mol<br>~72 contacts</div></div>
+        <div class="evo-arr">→</div>
+        <div class="evo-node n-violet"><div class="evo-stage">Phase III · Super ★</div><div class="evo-name">Super Combo<br><small style="font-size:9.5px;opacity:0.6">4-mutant</small></div><div class="evo-kd">3.75</div><div class="evo-unit">nM Kd</div><div class="evo-extra">−50.72 kcal/mol<br>~76 contacts</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CDR Redesign Method -->
+  <div class="reveal">
+    <div class="card">
+      <span class="section-label">Phase II — Structure-Constrained CDR Redesign</span>
+      <div class="section-title">Generative AI Redesign on the SR-R2 Scaffold</div>
+      <p class="section-intro">CDR2 and CDR3 loops were designated for redesign while framework residues were frozen. A structure-aware generative model produced 150+ candidates, ranked against four mandatory selection gates.</p>
+
+      <div style="border:2px solid var(--primary);border-radius:12px;overflow:hidden;margin-bottom:18px;">
+        <div style="background:var(--primary);padding:8px 16px;display:flex;align-items:center;gap:8px;">
+          <span style="color:white;font-size:11.5px;font-weight:800;text-transform:uppercase;letter-spacing:1.5px;">Candidate Selection Gates</span>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(4,1fr);background:var(--bg-alt);">
+          <div style="padding:14px 16px;border-right:1px solid var(--border);">
+            <div style="font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:1px;color:#5b21b6;margin-bottom:5px;">① Diversity</div>
+            <div style="font-size:12.5px;font-weight:700;color:var(--text);">Polymorphism ≥ 60%</div>
+            <div style="margin-top:6px;font-size:11px;color:#059669;font-weight:700;">✓ Pass: 75%</div>
+          </div>
+          <div style="padding:14px 16px;border-right:1px solid var(--border);">
+            <div style="font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:1px;color:#0f766e;margin-bottom:5px;">② Fidelity</div>
+            <div style="font-size:12.5px;font-weight:700;color:var(--text);">Backbone RMSD ≤ 0.9 Å</div>
+            <div style="margin-top:6px;font-size:11px;color:#059669;font-weight:700;">✓ Pass: 0.72 Å / 0.45 Å</div>
+          </div>
+          <div style="padding:14px 16px;border-right:1px solid var(--border);">
+            <div style="font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:1px;color:#b45309;margin-bottom:5px;">③ Tolerance</div>
+            <div style="font-size:12.5px;font-weight:700;color:var(--text);">ΔG Loss &lt; 60%</div>
+            <div style="margin-top:6px;font-size:11px;color:#d97706;font-weight:700;">⚠ Borderline: 50%</div>
+          </div>
+          <div style="padding:14px 16px;">
+            <div style="font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:1px;color:#7c3aed;margin-bottom:5px;">④ CMC</div>
+            <div style="font-size:12.5px;font-weight:700;color:var(--text);">ADI ≥ Moderate</div>
+            <div style="margin-top:6px;font-size:11px;color:#059669;font-weight:700;">✓ Pass: Excellent</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="alert-box alert-red">
+        <div class="at">The Affinity Valley: Interface Contacts Collapsed from 80 to 68</div>
+        <p>Generative models optimize for sequence naturalness, not binding energy. Upon redesign, contact count dropped 15%, salt bridges fell from 92 to 40, and Kd degraded 92-fold to 49.75 nM. Re-maturation is mandatory.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- CDR Polymorphism -->
+  <div class="reveal">
+    <div class="card">
+      <span class="section-label">CDR Polymorphism Analysis</span>
+      <div class="section-title">CDR Sequence Diversity — Quantified from Designed Sequence</div>
+      <p class="section-intro">Identity is calculated by aligning Chothia PDB residue numbers. Green = identical; Red = changed.</p>
+
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:16px;">
+        <div style="background:linear-gradient(135deg,#f5f3ff,#ede9fe);border:1px solid #c4b5fd;border-radius:10px;padding:14px;text-align:center;">
+          <div style="font-size:22px;font-weight:700;color:#5b21b6;line-height:1;">7 / 17</div>
+          <div style="font-size:11.5px;font-weight:700;color:#3b0764;margin-top:4px;">CDR2 Identity</div>
+          <div style="font-size:11px;color:#7c3aed;margin-top:2px;">41% · 10 Sites Changed</div>
+        </div>
+        <div style="background:linear-gradient(135deg,#ecfdf5,#d1fae5);border:1px solid #6ee7b7;border-radius:10px;padding:14px;text-align:center;">
+          <div style="font-size:22px;font-weight:700;color:#065f46;line-height:1;">6 / 12</div>
+          <div style="font-size:11.5px;font-weight:700;color:#14532d;margin-top:4px;">CDR3 Identity</div>
+          <div style="font-size:11px;color:#059669;margin-top:2px;">50% · 6 Sites Changed</div>
+        </div>
+        <div style="background:linear-gradient(135deg,#eff6ff,#dbeafe);border:1px solid #93c5fd;border-radius:10px;padding:14px;text-align:center;">
+          <div style="font-size:22px;font-weight:700;color:#1e40af;line-height:1;">16 / 29</div>
+          <div style="font-size:11.5px;font-weight:700;color:#1e3a8a;margin-top:4px;">Combined Change</div>
+          <div style="font-size:11px;color:#2563eb;margin-top:2px;">55% Polymorphism</div>
+        </div>
+      </div>
+
+      <div class="alert-box alert-grn">
+        <div class="at">FTO & Patent Independence</div>
+        <p>With 55% polymorphism across CDR2+3 and a core variable region change of >30%, the redesign achieves substantial novelty for patent protection, shifting the chemical profile from aromatic-rich to aliphatic-charged.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Re-maturation -->
+  <div class="reveal">
+    <div class="card">
+      <span class="section-label">Phase III — Physics-Guided Re-maturation</span>
+      <div class="section-title">Recovering the Interface Through Targeted Polar Mutations</div>
+      <p class="section-intro">We applied a polar-priority algorithm to WT-0838. Standard mutations required ΔΔG < −0.5 kcal/mol, while polar substitutions (Arg, Tyr, His) used a relaxed threshold with mandatory PRODIGY re-validation.</p>
+
+      <div class="alert-box alert-grn">
+        <div class="at">Key Insight: Salt Bridge Recovery</div>
+        <p><strong>L64K:</strong> Directly restores electrostatic interaction with HER2, recovering +15.2 kcal/mol in MM/GBSA. <strong>W55R:</strong> Initially rejected by standard gates, but Arg guanidinium enables bifurcated H-bonding, validated by PRODIGY recheck.</p>
+      </div>
+
+      <div class="metrics-grid" style="margin-top:16px;">
+        <div class="metric-card"><div class="mv">+15.2</div><div class="ml">ΔΔG Recovery (kcal/mol)</div><div class="ms">L64K vs WT-0838</div></div>
+        <div class="metric-card teal"><div class="mv">10.57</div><div class="ml">nM Kd (Double)</div><div class="ms">W55R+L64K</div></div>
+        <div class="metric-card green"><div class="mv">3.75</div><div class="ml">nM Kd (Super Combo)</div><div class="ms">Best Prediction</div></div>
+        <div class="metric-card amber"><div class="mv">13×</div><div class="ml">Kd Improvement</div><div class="ms">Super vs WT-0838</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Full Table -->
+  <div class="reveal">
+    <div class="card">
+      <span class="section-label">15-Parameter Assessment</span>
+      <div class="section-title">Full Multi-Dimensional Evaluation — All 6 Nodes</div>
+      <div style="overflow-x:auto;">
+        <table class="dt">
+          <thead>
+            <tr>
+              <th class="tl">Node</th>
+              <th class="tl">Stage / Key Mut.</th>
+              <th>MM/GBSA ΔG</th>
+              <th>PRODIGY ΔG</th>
+              <th>Kd (nM)</th>
+              <th>BSA (Å²)</th>
+              <th>Contacts</th>
+              <th>H-Bonds</th>
+              <th>Salt Bridges</th>
+              <th>SC</th>
+              <th>pI</th>
+              <th>ADI Grade</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="r-blue">
+              <td class="tl"><strong>VGRW-SR</strong></td>
+              <td class="tl">VH→VHH baseline</td>
+              <td>−57.15</td><td>−12.34</td><td>0.89</td>
+              <td>781.7</td><td>80</td><td>20</td><td>92</td>
+              <td>~0.66</td><td>8.57</td><td>Excellent</td>
+            </tr>
+            <tr class="r-blue">
+              <td class="tl"><strong>SR-R2</strong></td>
+              <td class="tl">G49A + F112L</td>
+              <td>−63.75</td><td>−12.63</td><td>0.54</td>
+              <td>822.9</td><td>80</td><td>18</td><td>92</td>
+              <td>~0.68</td><td>8.57</td><td>Excellent</td>
+            </tr>
+            <tr class="r-drop">
+              <td class="tl"><strong>WT-0838</strong></td>
+              <td class="tl">De novo CDR2/3</td>
+              <td>−32.16</td><td>−9.96</td><td>49.75</td>
+              <td>720.5</td><td>68</td><td>7</td><td>40</td>
+              <td>~0.58</td><td>8.93</td><td>Excellent</td>
+            </tr>
+            <tr class="r-best">
+              <td class="tl"><strong>Super Combo ★</strong></td>
+              <td class="tl">4-mutant combo</td>
+              <td>−50.72</td><td>−11.49</td><td><strong>3.75</strong></td>
+              <td>787.5</td><td>~76</td><td>11</td><td>41</td>
+              <td>~0.65</td><td>9.17</td><td>★ Champion</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- Charts -->
+  <div class="reveal">
+    <div class="chart-grid">
+      <div class="chart-wrap">
+        <div class="chart-title">Binding Energy Trajectory</div>
+        <canvas id="energyChart"></canvas>
+      </div>
+      <div class="chart-wrap">
+        <div class="chart-title">Interface Recovery</div>
+        <canvas id="contactChart"></canvas>
+      </div>
+    </div>
+  </div>
+
+  <!-- pI Engineering -->
+  <div class="reveal">
+    <div class="card">
+      <span class="section-label">Future Outlook — CMC Optimization</span>
+      <div class="section-title">Framework Region pI Engineering: Target pI &lt; 9.0</div>
+      <p class="section-intro">Super Combo achieving 3.75 nM carries pI 9.17 (WARN zone). We propose FR1 K13T + K19T mutations to restore pI to ~8.57 without compromising affinity.</p>
+      <div class="alert-box alert-amb">
+        <div class="at">Projected Outcome</div>
+        <p>K13T + K19T: pI 9.17 → ~8.57 (PASS zone). ADI Grade improves to PASS. CMC compatibility significantly enhanced for purification and stability.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Result Banner -->
+  <div class="reveal">
+    <div class="result-banner">
+      <div class="rb-score">3.75 nM — 13× Affinity Recovery</div>
+      <div class="rb-label">CDR Redesign + Re-maturation Series</div>
+      <p class="rb-p">This evolution from sub-nM binding through the redesign valley to 3.75 nM demonstrates that high sequence diversity and high affinity are achievable simultaneously through physics-informed re-maturation.</p>
+      <div class="rb-cta">
+        <a href="case_vgrw_sr_r2_affinity_maturation.html" class="btn-w">← Predecessor: SR-R2 VAM</a>
+        <a href="index.html#contact" class="btn-t">Contact Us</a>
+      </div>
+    </div>
+  </div>
+
+</main>
+
+<footer class="site-footer">
+  <p>© 2026 <a href="index.html">InSynBio</a> · AI-Driven Antibody Engineering · Research Use Only</p>
+</footer>
+
+<script>
+const obs = new IntersectionObserver(e => e.forEach(x => { if (x.isIntersecting) x.target.classList.add('visible'); }), { threshold: 0.06 });
+document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+const NODES = ['VGRW-SR','SR-R2','WT-0838','A64K','W55R+L64K','Super ★'];
+const COLORS = ['rgba(59,130,246,0.75)','rgba(29,78,216,0.85)','rgba(220,38,38,0.7)','rgba(34,197,94,0.7)','rgba(21,128,61,0.85)','rgba(124,58,237,0.9)'];
+const BORDER = ['#3b82f6','#1d4ed8','#dc2626','#16a34a','#15803d','#5b21b6'];
+
+new Chart(document.getElementById('energyChart'), {
+  type: 'line',
+  data: {
+    labels: NODES,
+    datasets: [
+      { label: 'MM/GBSA ΔG', data: [-57.15,-63.75,-32.16,-47.35,-52.00,-50.72], borderColor: '#7c3aed', backgroundColor: 'rgba(124,58,237,0.06)', fill: true, tension: 0.3 },
+      { label: 'PRODIGY ΔG', data: [-12.34,-12.63,-9.96,-10.57,-10.87,-11.49], borderColor: '#0d9488', borderDash: [5,3], fill: false, tension: 0.3 }
+    ]
+  },
+  options: { responsive: true, plugins: { legend: { position: 'top' } } }
+});
+
+new Chart(document.getElementById('contactChart'), {
+  type: 'bar',
+  data: {
+    labels: NODES,
+    datasets: [{ label: 'Contacts', data: [80,80,68,70,72,76], backgroundColor: COLORS, borderColor: BORDER, borderWidth: 1.5 }]
+  },
+  options: { responsive: true }
+});
+</script>
+</body>
+</html>
