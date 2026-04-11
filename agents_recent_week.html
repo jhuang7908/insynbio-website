@@ -1,9 +1,12 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Agents — 最近一周的对话记录</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
   <style>
     * { box-sizing: border-box; }
     body { margin: 0; font-family: "Segoe UI", "Microsoft JhengHei", sans-serif; background: #fafafa; color: #1c1917; min-height: 100vh; display: flex; ; overflow-x: hidden; }
@@ -179,17 +182,8 @@
 <body>
   <header class="top-header">
     <div class="brand">
-      <a href="index.html">
-        <svg width="34" height="28" viewBox="0 0 32 30" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink:0;">
-          <path d="M16 2L2 10V22L16 28L30 22V10L16 2Z" fill="#0d9488" fill-opacity="0.1" stroke="#0d9488" stroke-width="2.5" />
-          <path d="M7 14L16 19L25 14" stroke="#0d9488" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" />
-          <path d="M16 19V28" stroke="#0d9488" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" />
-          <path d="M7 14L7 6C7 6 10 2 16 2C22 2 25 6 25 6L25 14" stroke="#0d9488" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" />
-          <circle cx="7" cy="6" r="2" fill="#0f766e" />
-          <circle cx="25" cy="6" r="2" fill="#0f766e" />
-          <circle cx="16" cy="18" r="2" fill="white" stroke="#0d9488" stroke-width="1.5" />
-        </svg>
-        <span><span style="color:#111827">In</span><span style="color:var(--primary); font-style:italic">Syn</span><span style="color:#111827">Bio</span></span>
+      <a href="index.html" style="text-decoration:none;color:#111827;display:flex;align-items:center;gap:3px;font-size:22px;font-weight:700;white-space:nowrap;flex-shrink:0;font-family:'Space Grotesk','Inter',sans-serif;">
+        <span style="color:inherit">In</span><span style="color:#0d9488;font-style:italic;font-weight:700">Syn</span><span style="color:inherit">Bio</span>
       </a>
   <span class="slogan">AI for Life Sciences</span></div>
     <button class="mobile-menu-btn" onclick="document.querySelector('.top-header-nav').classList.toggle('open')" aria-label="Open navigation">

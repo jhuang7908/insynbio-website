@@ -10,7 +10,7 @@
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
   <style>
     :root{--primary:#0d9488;--primary-dark:#0f766e;--text:#111827;--text-muted:#4b5563;--border:#e5e7eb;--bg:#fff;--bg-alt:#f9fafb;}
     *{box-sizing:border-box;}
@@ -250,10 +250,9 @@
 <body>
 <header class="top-header">
   <div class="brand">
-    <a href="index.html">
-      <svg width="30" height="30" viewBox="0 0 32 32" fill="none"><defs><linearGradient id="lg" x1="0" y1="0" x2="32" y2="32" gradientUnits="userSpaceOnUse"><stop stop-color="#0d9488"/><stop offset="1" stop-color="#2dd4bf"/></linearGradient></defs><path d="M7 6L16 18V28" stroke="url(#lg)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><path d="M25 6L16 18" stroke="url(#lg)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><circle cx="7" cy="6" r="2" fill="#0f766e"/><circle cx="25" cy="6" r="2" fill="#0f766e"/><circle cx="16" cy="18" r="2" fill="white" stroke="#0d9488" stroke-width="1.5"/></svg>
-      <span style="font-family:'Cormorant Garamond',serif;font-weight:700;font-size:24px;color:#1f2937;letter-spacing:-.02em;">In<span style="color:#0d9488;">Syn</span>Bio</span>
-    </a>
+    <a href="index.html" style="text-decoration:none;color:#111827;display:flex;align-items:center;gap:3px;font-size:22px;font-weight:700;white-space:nowrap;flex-shrink:0;font-family:'Space Grotesk','Inter',sans-serif;">
+        <span style="color:inherit">In</span><span style="color:#0d9488;font-style:italic;font-weight:700">Syn</span><span style="color:inherit">Bio</span>
+      </a>
   <span class="slogan">AI for Life Sciences</span></div>
   <button class="mobile-menu-btn" onclick="document.querySelector('.top-header-nav').classList.toggle('open')" aria-label="Open navigation">
     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
