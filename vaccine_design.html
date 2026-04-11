@@ -15,14 +15,14 @@
   <style>
     :root { --primary: #0d9488; --primary-dark: #0f766e; --text: #111827; --text-muted: #4b5563; --border: #e5e7eb; --bg: #ffffff; --bg-alt: #f9fafb; --bg-alt2: #f3f4f6; }
     * { box-sizing: border-box; }
-    body { margin: 0; font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 16px; line-height: 1.6; color: var(--text); background: var(--bg); -webkit-font-smoothing: antialiased; padding-top: 73px; }
+    body { margin: 0; font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 16px; line-height: 1.6; color: var(--text); background: var(--bg); -webkit-font-smoothing: antialiased; padding-top: 73px; ; overflow-x: hidden; }
 
     @media print {
-      body { display: none !important; }
+      body { display: none !important; ; overflow-x: hidden; }
     }
 
     /* Header */
-    .top-header { display: flex; align-items: center; justify-content: space-between; padding: 12px 32px; background: rgba(255,255,255,0.95); backdrop-filter: blur(12px); border-bottom: 2px solid rgba(13,148,136,0.1); flex-wrap: nowrap; gap: 12px; position: fixed; width: 100%; top: 0; z-index: 2000; }
+    .top-header { display: flex; align-items: center; justify-content: space-between; padding: 12px 32px; background: rgba(255,255,255,0.95); backdrop-filter: blur(12px); border-bottom: 2px solid rgba(13,148,136,0.1); flex-wrap: nowrap; gap: 12px; position: fixed; width: 100%; top: 0; z-index: 2000;  left: 0; right: 0; width: auto; z-index: 2000; }
     .mobile-menu-btn { display: none; background: none; border: none; padding: 6px; cursor: pointer; color: var(--text); flex-shrink: 0; }
     .nav-close-btn { display: none; }
     .top-header .brand { font-family: 'Cormorant Garamond', serif; font-weight: 700; font-size: 26px; letter-spacing: -0.03em; display: flex; align-items: center; }
@@ -226,9 +226,30 @@
       .top-header-nav.open { opacity:1; pointer-events:auto; }
       .top-header-nav a { font-size:18px; padding:12px 24px; }
       .nav-close-btn { display:block; position:absolute; top:16px; right:20px; background:none; border:none; font-size:32px; color:var(--text); cursor:pointer; line-height:1; padding:4px 8px; }
-      body { padding-top:52px; }
+      body { padding-top:52px; ; overflow-x: hidden; }
       .lib-grid { grid-template-columns:1fr; }
     }
+  
+    @media (max-width: 768px) {
+      .top-header { padding: 10px 16px !important; flex-wrap: nowrap !important; }
+      .mobile-menu-btn, .std-mobile-btn { display: block !important; }
+      .top-header-nav, .std-top-nav { 
+        position: fixed !important; top: 0 !important; left: 0 !important; 
+        width: 100vw !important; height: 100vh !important; 
+        background: #fff !important; flex-direction: column !important; 
+        justify-content: center !important; align-items: center !important; 
+        gap: 8px !important; z-index: 9999 !important; 
+        opacity: 0; pointer-events: none; transition: opacity 0.25s; 
+        padding: 24px !important; overflow-y: auto !important; 
+        display: flex !important;
+      }
+      .top-header-nav.open, .std-top-nav.open { opacity: 1 !important; pointer-events: auto !important; }
+      .top-header-nav a, .std-top-nav a { font-size: 18px !important; padding: 12px 24px !important; }
+      .nav-close-btn, .std-nav-close { display: block !important; position: absolute !important; top: 16px !important; right: 20px !important; background: none !important; border: none !important; font-size: 32px !important; color: #111827 !important; cursor: pointer !important; }
+      .nav-dropdown .dropdown-menu, .std-nav-dd .std-dd-menu { position: static !important; transform: none !important; opacity: 1 !important; visibility: visible !important; box-shadow: none !important; border: none !important; padding: 0 !important; width: 100% !important; text-align: center !important; }
+      .nav-dropdown > a::after, .std-nav-dd > a::after { display: none !important; }
+    }
+    
   </style>
 </head>
 <body>
