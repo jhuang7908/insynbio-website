@@ -192,6 +192,35 @@
       section.section { padding: 36px 0; }
       h2 { font-size: 26px !important; }
     }
+
+    /* ─── MOBILE BUTTON (hidden by default) ─── */
+    .mobile-menu-btn { display: none; background: none; border: 1px solid var(--border); border-radius: 8px; padding: 6px 8px; cursor: pointer; color: var(--text); line-height: 0; }
+    .nav-close-btn   { display: none; }
+
+    @media (max-width: 860px) {
+      .top-header .slogan { display: none; }
+    }
+    @media (max-width: 680px) {
+      .mobile-menu-btn { display: block; }
+      .top-header { padding: 10px 16px; flex-wrap: nowrap; }
+      .top-header-nav {
+        position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+        background: #fff; flex-direction: column; justify-content: center;
+        align-items: center; gap: 4px; z-index: 9999;
+        opacity: 0; pointer-events: none; transition: opacity 0.25s;
+        padding: 24px; overflow-y: auto;
+      }
+      .top-header-nav.open { opacity: 1; pointer-events: auto; }
+      .top-header-nav a { font-size: 18px; padding: 12px 24px; }
+      .nav-close-btn {
+        display: block; position: absolute; top: 16px; right: 20px;
+        background: none; border: none; font-size: 32px; color: var(--text);
+        cursor: pointer; line-height: 1; padding: 4px 8px;
+      }
+      .nav-dropdown .dropdown-menu { display: none !important; }
+      .nav-dropdown > a::after { content: ''; }
+    }
+
   </style>
   <meta name="citation_title" content="Computational CMC Developability Assessment of MuMAb4D5: Multi-metric Antibody Manufacturability Analysis">
   <meta name="citation_author" content="InSynBio">
