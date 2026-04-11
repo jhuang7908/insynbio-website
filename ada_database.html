@@ -32,7 +32,7 @@
       --radius: 8px; --radius-lg: 12px;
     }
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    body { font-family: 'Inter', -apple-system, sans-serif; font-size: 14px; line-height: 1.5; color: var(--text); background: var(--bg); -webkit-font-smoothing: antialiased; ;padding-top:52px;; overflow-x: hidden; }
+    body { font-family: 'Inter', -apple-system, sans-serif; font-size: 14px; line-height: 1.5; color: var(--text); background: var(--bg); -webkit-font-smoothing: antialiased; ;padding-top: 72px;; overflow-x: hidden; }
 
     @media print {
       body { display: none !important; ; overflow-x: hidden; }
@@ -163,10 +163,10 @@
   
     /* ── Standard top header ── */
     
-    .std-slogan { font-size:13px; color:var(--text-muted,#6b7280); padding-left:14px; border-left:1px solid var(--border,#e5e7eb); white-space:nowrap; font-weight:500; letter-spacing:.02em; flex-shrink:0; }
+    
     .std-mobile-btn { display:none; background:none; border:none; padding:6px; cursor:pointer; color:var(--text,#111827); flex-shrink:0; }
     .std-nav-close { display:none; }
-    .std-top-nav { display:flex; align-items:center; gap:6px; flex:1; justify-content:center; }
+    
     .std-top-nav > a, .std-nav-dd > a { padding:8px 16px; font-size:14px; color:var(--text-muted,#6b7280); text-decoration:none; border-radius:20px; transition:all .2s; font-weight:500; }
     .std-top-nav > a:hover, .std-nav-dd > a:hover { color:var(--primary,#0d9488); background:rgba(13,148,136,.06); }
     .std-active { background:var(--primary,#0d9488) !important; color:#fff !important; box-shadow:0 2px 8px rgba(13,148,136,.25); }
@@ -182,7 +182,7 @@
     @media (max-width:768px) {
       .std-mobile-btn { display:block; }
       
-      .std-top-nav { position:fixed; top:0; left:0; width:100vw; height:100vh; background:#fff; flex-direction:column; justify-content:center; align-items:center; gap:4px; z-index:9999; opacity:0; pointer-events:none; transition:opacity .25s; padding:24px; overflow-y:auto; }
+      
       .std-top-nav.open { opacity:1; pointer-events:auto; }
       .std-top-nav > a, .std-nav-dd > a { font-size:18px; padding:12px 24px; }
       .std-nav-close { display:block; position:absolute; top:16px; right:20px; background:none; border:none; font-size:32px; color:var(--text,#111827); cursor:pointer; line-height:1; padding:4px 8px; }
@@ -193,16 +193,7 @@
     @media (max-width: 768px) {
       
       .mobile-menu-btn, .std-mobile-btn { display: block !important; }
-      .top-header-nav, .std-top-nav { 
-        position: fixed !important; top: 0 !important; left: 0 !important; 
-        width: 100vw !important; height: 100vh !important; 
-        background: #fff !important; flex-direction: column !important; 
-        justify-content: center !important; align-items: center !important; 
-        gap: 8px !important; z-index: 9999 !important; 
-        opacity: 0; pointer-events: none; transition: opacity 0.25s; 
-        padding: 24px !important; overflow-y: auto !important; 
-        display: flex !important;
-      }
+      .top-header-nav, 
       .top-header-nav.open, .std-top-nav.open { opacity: 1 !important; pointer-events: auto !important; }
       .top-header-nav a, .std-top-nav a { font-size: 18px !important; padding: 12px 24px !important; }
       .nav-close-btn, .std-nav-close { display: block !important; position: absolute !important; top: 16px !important; right: 20px !important; background: none !important; border: none !important; font-size: 32px !important; color: #111827 !important; cursor: pointer !important; }
@@ -216,41 +207,124 @@
     thead, tbody, tr { width: 100%; }
     
   
-    .top-header { 
-      position: fixed !important; 
-      top: 0 !important; 
-      left: 0 !important; 
-      right: 0 !important; 
-      width: 100% !important; 
-      margin: 0 !important;
-      padding: 12px 32px !important;
-      background: rgba(255,255,255,0.95);
-      backdrop-filter: blur(12px);
-      border-bottom: 2px solid rgba(13,148,136,0.1);
-      display: flex !important;
-      align-items: center !important;
-      justify-content: space-between !important;
-      box-sizing: border-box !important;
-      z-index: 2000 !important;
-    }
+    
     @media (max-width: 768px) {
-      .top-header { padding: 10px 16px !important; }
+      
       .std-slogan, .slogan { display: none !important; }
       .mobile-menu-btn, .std-mobile-btn { display: block !important; margin-left: auto !important; }
     }
     
   
     @media (min-width: 769px) {
+      .top-header-nav, 
+    }
+    
+  
+    /* --- Robust Header System V2 --- */
+    .top-header {
+      position: fixed !important;
+      top: 0 !important;
+      left: 0 !important;
+      right: 0 !important;
+      width: 100% !important;
+      height: 72px !important;
+      background: rgba(255,255,255,0.97) !important;
+      backdrop-filter: blur(12px) !important;
+      border-bottom: 1px solid rgba(13,148,136,0.1) !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: space-between !important;
+      padding: 0 32px !important;
+      box-sizing: border-box !important;
+      z-index: 9999 !important;
+      flex-wrap: nowrap !important;
+    }
+    .top-header .brand {
+      display: flex !important;
+      align-items: center !important;
+      gap: 12px !important;
+      flex-shrink: 0 !important;
+    }
+    .top-header .brand a {
+      display: flex !important;
+      align-items: center !important;
+      text-decoration: none !important;
+    }
+    .top-header .slogan, .top-header .std-slogan {
+      font-size: 13px !important;
+      color: #6b7280 !important;
+      padding-left: 12px !important;
+      border-left: 1px solid #e5e7eb !important;
+      margin-left: 4px !important;
+      white-space: nowrap !important;
+      display: inline-block !important;
+      font-weight: 500 !important;
+    }
+    .top-header-nav, .std-top-nav {
+      display: flex !important;
+      align-items: center !important;
+      gap: 6px !important;
+      margin-left: auto !important;
+      margin-right: 10px !important;
+      flex-direction: row !important;
+      position: static !important;
+      width: auto !important;
+      height: auto !important;
+      background: transparent !important;
+      opacity: 1 !important;
+      pointer-events: auto !important;
+    }
+    .mobile-menu-btn, .std-mobile-btn {
+      display: none !important;
+    }
+
+    @media (max-width: 768px) {
+      .top-header {
+        height: 64px !important;
+        padding: 0 16px !important;
+      }
+      .top-header .slogan, .top-header .std-slogan {
+        display: none !important;
+      }
+      .mobile-menu-btn, .std-mobile-btn {
+        display: block !important;
+        margin-left: auto !important;
+        background: none !important;
+        border: 1px solid #e5e7eb !important;
+        border-radius: 8px !important;
+        padding: 6px 10px !important;
+        cursor: pointer !important;
+      }
       .top-header-nav, .std-top-nav {
-        display: flex !important;
+        position: fixed !important;
+        top: 0 !important;
+        left: 0 !important;
+        width: 100vw !important;
+        height: 100vh !important;
+        background: #fff !important;
+        flex-direction: column !important;
+        justify-content: center !important;
+        align-items: center !important;
+        gap: 16px !important;
+        margin: 0 !important;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.25s ease;
+        z-index: 10000 !important;
+      }
+      .top-header-nav.open, .std-top-nav.open {
         opacity: 1 !important;
         pointer-events: auto !important;
-        position: static !important;
-        width: auto !important;
-        height: auto !important;
-        background: transparent !important;
-        flex-direction: row !important;
-        padding: 0 !important;
+      }
+      .nav-close-btn, .std-nav-close {
+        display: block !important;
+        position: absolute !important;
+        top: 20px !important;
+        right: 20px !important;
+        font-size: 32px !important;
+        background: none !important;
+        border: none !important;
+        cursor: pointer !important;
       }
     }
     
@@ -283,8 +357,7 @@
       </svg>
       <span style="font-family:'Cormorant Garamond',serif;font-weight:700;font-size:24px;color:#1f2937;letter-spacing:-.02em;">In<span style="color:#0d9488;">Syn</span>Bio</span>
     </a>
-  </div>
-  <span class="std-slogan">AI for Life Sciences</span>
+  <span class="std-slogan">AI for Life Sciences</span></div>
   <button class="std-mobile-btn" onclick="document.querySelector('.std-top-nav').classList.toggle('open')" aria-label="Open navigation">
     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
   </button>

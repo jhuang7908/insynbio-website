@@ -25,7 +25,7 @@
       --purple: #7c3aed;
     }
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    body { font-family: 'Inter', 'Noto Sans SC', -apple-system, sans-serif; font-size: 16px; line-height: 1.65; color: var(--text); background: var(--bg); -webkit-font-smoothing: antialiased; padding-top: 73px; ; overflow-x: hidden; }
+    body { font-family: 'Inter', 'Noto Sans SC', -apple-system, sans-serif; font-size: 16px; line-height: 1.65; color: var(--text); background: var(--bg); -webkit-font-smoothing: antialiased; padding-top: 72px; ; overflow-x: hidden; }
 
     /* === HEADER === */
     
@@ -162,7 +162,7 @@
     .back-bar a:hover { text-decoration: underline; }
 
     /* === CITATION === */
-    .citation { font-size: 12.5px; color: #6b7280; border-top: 1px solid var(--border); margin-top: 28px; padding-top: 16px; line-height: 1.7; }
+    .citation { font-size: 12.5px; color: #6b7280; border-top: 1px solid var(--border); margin-top: 28px; padding-top: 72px; line-height: 1.7; }
 
     /* === BILINGUAL LABEL === */
     .biline { font-size: 12px; color: var(--primary); font-weight: 600; letter-spacing: 0.5px; opacity: 0.8; margin-bottom: 2px; display: block; }
@@ -181,41 +181,124 @@
     thead, tbody, tr { width: 100%; }
     
   
-    .top-header { 
-      position: fixed !important; 
-      top: 0 !important; 
-      left: 0 !important; 
-      right: 0 !important; 
-      width: 100% !important; 
-      margin: 0 !important;
-      padding: 12px 32px !important;
-      background: rgba(255,255,255,0.95);
-      backdrop-filter: blur(12px);
-      border-bottom: 2px solid rgba(13,148,136,0.1);
-      display: flex !important;
-      align-items: center !important;
-      justify-content: space-between !important;
-      box-sizing: border-box !important;
-      z-index: 2000 !important;
-    }
+    
     @media (max-width: 768px) {
-      .top-header { padding: 10px 16px !important; }
+      
       .std-slogan, .slogan { display: none !important; }
       .mobile-menu-btn, .std-mobile-btn { display: block !important; margin-left: auto !important; }
     }
     
   
     @media (min-width: 769px) {
+      .top-header-nav, 
+    }
+    
+  
+    /* --- Robust Header System V2 --- */
+    .top-header {
+      position: fixed !important;
+      top: 0 !important;
+      left: 0 !important;
+      right: 0 !important;
+      width: 100% !important;
+      height: 72px !important;
+      background: rgba(255,255,255,0.97) !important;
+      backdrop-filter: blur(12px) !important;
+      border-bottom: 1px solid rgba(13,148,136,0.1) !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: space-between !important;
+      padding: 0 32px !important;
+      box-sizing: border-box !important;
+      z-index: 9999 !important;
+      flex-wrap: nowrap !important;
+    }
+    .top-header .brand {
+      display: flex !important;
+      align-items: center !important;
+      gap: 12px !important;
+      flex-shrink: 0 !important;
+    }
+    .top-header .brand a {
+      display: flex !important;
+      align-items: center !important;
+      text-decoration: none !important;
+    }
+    .top-header .slogan, .top-header .std-slogan {
+      font-size: 13px !important;
+      color: #6b7280 !important;
+      padding-left: 12px !important;
+      border-left: 1px solid #e5e7eb !important;
+      margin-left: 4px !important;
+      white-space: nowrap !important;
+      display: inline-block !important;
+      font-weight: 500 !important;
+    }
+    .top-header-nav, .std-top-nav {
+      display: flex !important;
+      align-items: center !important;
+      gap: 6px !important;
+      margin-left: auto !important;
+      margin-right: 10px !important;
+      flex-direction: row !important;
+      position: static !important;
+      width: auto !important;
+      height: auto !important;
+      background: transparent !important;
+      opacity: 1 !important;
+      pointer-events: auto !important;
+    }
+    .mobile-menu-btn, .std-mobile-btn {
+      display: none !important;
+    }
+
+    @media (max-width: 768px) {
+      .top-header {
+        height: 64px !important;
+        padding: 0 16px !important;
+      }
+      .top-header .slogan, .top-header .std-slogan {
+        display: none !important;
+      }
+      .mobile-menu-btn, .std-mobile-btn {
+        display: block !important;
+        margin-left: auto !important;
+        background: none !important;
+        border: 1px solid #e5e7eb !important;
+        border-radius: 8px !important;
+        padding: 6px 10px !important;
+        cursor: pointer !important;
+      }
       .top-header-nav, .std-top-nav {
-        display: flex !important;
+        position: fixed !important;
+        top: 0 !important;
+        left: 0 !important;
+        width: 100vw !important;
+        height: 100vh !important;
+        background: #fff !important;
+        flex-direction: column !important;
+        justify-content: center !important;
+        align-items: center !important;
+        gap: 16px !important;
+        margin: 0 !important;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.25s ease;
+        z-index: 10000 !important;
+      }
+      .top-header-nav.open, .std-top-nav.open {
         opacity: 1 !important;
         pointer-events: auto !important;
-        position: static !important;
-        width: auto !important;
-        height: auto !important;
-        background: transparent !important;
-        flex-direction: row !important;
-        padding: 0 !important;
+      }
+      .nav-close-btn, .std-nav-close {
+        display: block !important;
+        position: absolute !important;
+        top: 20px !important;
+        right: 20px !important;
+        font-size: 32px !important;
+        background: none !important;
+        border: none !important;
+        cursor: pointer !important;
       }
     }
     
@@ -227,8 +310,7 @@
 <header class="top-header">
   <div class="brand">
     <a href="index.html">In<span class="syn">Syn</span>Bio</a>
-  </div>
-  <span class="slogan">AI for Therapeutics</span>
+  <span class="slogan">AI for Therapeutics</span></div>
     <nav class="top-nav">
       <a href="index.html">
         <span class="zh">首页</span><span class="en">Home</span>
