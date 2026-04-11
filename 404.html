@@ -91,6 +91,45 @@
     table { display: block; width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; }
     thead, tbody, tr { width: 100%; }
     
+  
+    .top-header { 
+      position: fixed !important; 
+      top: 0 !important; 
+      left: 0 !important; 
+      right: 0 !important; 
+      width: 100% !important; 
+      margin: 0 !important;
+      padding: 12px 32px !important;
+      background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(12px);
+      border-bottom: 2px solid rgba(13,148,136,0.1);
+      display: flex !important;
+      align-items: center !important;
+      justify-content: space-between !important;
+      box-sizing: border-box !important;
+      z-index: 2000 !important;
+    }
+    @media (max-width: 768px) {
+      .top-header { padding: 10px 16px !important; }
+      .std-slogan, .slogan { display: none !important; }
+      .mobile-menu-btn, .std-mobile-btn { display: block !important; margin-left: auto !important; }
+    }
+    
+  
+    @media (min-width: 769px) {
+      .top-header-nav, .std-top-nav {
+        display: flex !important;
+        opacity: 1 !important;
+        pointer-events: auto !important;
+        position: static !important;
+        width: auto !important;
+        height: auto !important;
+        background: transparent !important;
+        flex-direction: row !important;
+        padding: 0 !important;
+      }
+    }
+    
   </style>
 </head>
 <body>

@@ -33,10 +33,7 @@
       line-height: 1.7; -webkit-font-smoothing: antialiased; padding-top: 72px; ; overflow-x: hidden; }
 
     /* ─── HEADER ─── */
-    .top-header { display: flex; align-items: center; justify-content: space-between;
-      padding: 12px 32px; background: rgba(255,255,255,0.95); backdrop-filter: blur(12px);
-      border-bottom: 2px solid rgba(13,148,136,0.1); position: fixed; width: 100%;
-      top: 0; z-index: 2000; gap: 12px; flex-wrap: wrap;  left: 0; right: 0; width: auto; z-index: 2000;  left: 0 !important; right: 0 !important; width: auto !important; position: fixed !important;}
+    
     .top-header .brand { display: flex; align-items: center; flex-wrap: nowrap; min-width: max-content; }
     .top-header .brand a { text-decoration: none; display: flex; align-items: center; gap: 10px;
       font-family: 'Cormorant Garamond', serif; font-weight: 700; font-size: 26px; color: #111827; }
@@ -315,7 +312,7 @@
       .result-kpis { gap: 20px; }
     }
     @media (max-width: 600px) {
-      .top-header { padding: 12px 16px; flex-wrap: wrap; gap: 10px; }
+      
       .case-hero h1 { font-size: 28px; }
       .metrics-grid { grid-template-columns: 1fr 1fr; }
       .linker-grid { grid-template-columns: 1fr 1fr; }
@@ -334,7 +331,7 @@
     }
     @media (max-width: 680px) {
       .mobile-menu-btn { display: block; }
-      .top-header { padding: 10px 16px; flex-wrap: nowrap; }
+      
       .top-header-nav {
         position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
         background: #fff; flex-direction: column; justify-content: center;
@@ -355,7 +352,7 @@
 
   
     @media (max-width: 768px) {
-      .top-header { padding: 10px 16px !important; flex-wrap: nowrap !important; }
+      
       .mobile-menu-btn, .std-mobile-btn { display: block !important; }
       .top-header-nav, .std-top-nav { 
         position: fixed !important; top: 0 !important; left: 0 !important; 
@@ -378,6 +375,45 @@
     /* Global responsive table fix */
     table { display: block; width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; }
     thead, tbody, tr { width: 100%; }
+    
+  
+    .top-header { 
+      position: fixed !important; 
+      top: 0 !important; 
+      left: 0 !important; 
+      right: 0 !important; 
+      width: 100% !important; 
+      margin: 0 !important;
+      padding: 12px 32px !important;
+      background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(12px);
+      border-bottom: 2px solid rgba(13,148,136,0.1);
+      display: flex !important;
+      align-items: center !important;
+      justify-content: space-between !important;
+      box-sizing: border-box !important;
+      z-index: 2000 !important;
+    }
+    @media (max-width: 768px) {
+      .top-header { padding: 10px 16px !important; }
+      .std-slogan, .slogan { display: none !important; }
+      .mobile-menu-btn, .std-mobile-btn { display: block !important; margin-left: auto !important; }
+    }
+    
+  
+    @media (min-width: 769px) {
+      .top-header-nav, .std-top-nav {
+        display: flex !important;
+        opacity: 1 !important;
+        pointer-events: auto !important;
+        position: static !important;
+        width: auto !important;
+        height: auto !important;
+        background: transparent !important;
+        flex-direction: row !important;
+        padding: 0 !important;
+      }
+    }
     
   </style>
   <meta name="citation_title" content="Engineering Expression Recovery of a Dual-Coronavirus Bispecific VHH via pI Optimization and Charged-Linker Design">
