@@ -390,331 +390,134 @@
     }
 
   
-    @media (max-width: 768px) {
-      
-      .mobile-menu-btn, .std-mobile-btn { display: block !important; }
-      .top-header-nav, 
-      .top-header-nav.open, .std-top-nav.open { opacity: 1 !important; pointer-events: auto !important; }
-      .top-header-nav a, .std-top-nav a { font-size: 18px !important; padding: 12px 24px !important; }
-      .nav-close-btn, .std-nav-close { display: block !important; position: absolute !important; top: 16px !important; right: 20px !important; background: none !important; border: none !important; font-size: 32px !important; color: #111827 !important; cursor: pointer !important; }
-      .nav-dropdown .dropdown-menu, .std-nav-dd .std-dd-menu { display: none !important; }
-      .nav-dropdown > a::after, .std-nav-dd > a::after { display: none !important; }
+
+    /* ===== HEADER (clean single block) ===== */
+    .top-header {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      width: 100%;
+      height: 64px;
+      background: rgba(255,255,255,0.98);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(13,148,136,0.1);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 28px;
+      box-sizing: border-box;
+      z-index: 9999;
+      flex-wrap: nowrap;
     }
-    
-  
-    /* Global responsive table fix */
+    .top-header .brand { display: flex; align-items: center; gap: 8px; flex-shrink: 0; }
+    .top-header .brand a {
+      text-decoration: none; color: #111827;
+      display: flex; align-items: center; gap: 3px;
+      font-size: 18px; font-weight: 700;
+      white-space: nowrap; flex-shrink: 0;
+    }
+    .top-header .brand a span { color: #111827; }
+    .top-header .brand .accent { color: #0d9488; font-style: italic; font-weight: 700; }
+    .top-header .slogan, .top-header .std-slogan {
+      font-size: 13px; color: #6b7280;
+      padding-left: 12px; border-left: 1px solid #e5e7eb; margin-left: 4px;
+      white-space: nowrap; display: inline-block; font-weight: 500; flex-shrink: 0;
+    }
+    .mobile-menu-btn, .std-mobile-btn {
+      display: none; background: none;
+      border: 1px solid #e5e7eb; border-radius: 8px;
+      padding: 6px 8px; cursor: pointer; color: #111827; line-height: 0;
+    }
+    .nav-close-btn, .std-nav-close { display: none; }
+    .top-header-nav, .std-top-nav {
+      display: flex; align-items: center; gap: 4px; margin-left: auto;
+    }
+    .top-header-nav a, .std-top-nav a {
+      padding: 7px 13px; font-size: 14px; color: #4b5563;
+      text-decoration: none; border-radius: 20px;
+      transition: all 0.2s ease; font-weight: 600;
+    }
+    .top-header-nav a:hover, .std-top-nav a:hover { color: #0d9488; background: rgba(13,148,136,0.06); }
+    .top-header-nav a.active, .std-top-nav a.active { background: #0d9488; color: #fff; }
+    .nav-dropdown, .std-nav-dd { position: relative; }
+    .nav-dropdown > a::after, .std-nav-dd > a::after { content: ' ▾'; font-size: 10px; opacity: 0.6; margin-left: 2px; }
+    .nav-dropdown .dropdown-menu, .std-nav-dd .std-dd-menu {
+      position: absolute; top: 100%; left: 50%;
+      transform: translateX(-50%) translateY(10px);
+      min-width: 220px; max-height: 80vh; overflow-y: auto;
+      padding: 8px; background: #fff;
+      border: 1px solid rgba(0,0,0,0.06); border-radius: 12px;
+      box-shadow: 0 10px 40px -10px rgba(0,0,0,0.12);
+      opacity: 0; visibility: hidden;
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+      z-index: 100; margin-top: 8px;
+    }
+    .nav-dropdown:hover .dropdown-menu, .nav-dropdown:focus-within .dropdown-menu,
+    .std-nav-dd:hover .std-dd-menu, .std-nav-dd:focus-within .std-dd-menu {
+      opacity: 1; visibility: visible; transform: translateX(-50%) translateY(0);
+    }
+    .nav-dropdown .dropdown-menu a, .std-nav-dd .std-dd-menu a {
+      display: block; padding: 12px 16px; color: #111827;
+      text-decoration: none; line-height: 1.4; border-radius: 8px; text-align: left;
+    }
+    .nav-dropdown .dropdown-menu a:hover, .std-nav-dd .std-dd-menu a:hover { background: #f9fafb; }
+    .nav-dropdown .dropdown-menu a .menu-title, .std-nav-dd .std-dd-menu a .menu-title {
+      display: block; font-weight: 600; font-size: 14px; color: #111827; margin-bottom: 2px;
+    }
+    .nav-dropdown .dropdown-menu a:hover .menu-title, .std-nav-dd .std-dd-menu a:hover .menu-title { color: #0d9488; }
+    .nav-dropdown .dropdown-menu a .menu-desc, .std-nav-dd .std-dd-menu a .menu-desc {
+      display: block; font-size: 12px; color: #6b7280; font-weight: 400; line-height: 1.4;
+    }
+    /* ── Mobile nav ────────────────────────────────── */
+    @media (max-width: 768px) {
+      body { padding-top: 64px; }
+      .top-header { padding: 0 20px; }
+      .top-header .slogan, .top-header .std-slogan { display: none; }
+      .mobile-menu-btn, .std-mobile-btn {
+        display: block;
+        margin-left: auto;
+        color: #111827;
+        border: 1px solid #e5e7eb;
+        border-radius: 8px;
+        padding: 6px 10px;
+        cursor: pointer;
+        background: none;
+      }
+      .top-header-nav, .std-top-nav {
+        position: fixed;
+        top: 0; left: 0;
+        width: 100vw; height: 100vh;
+        background: #fff;
+        flex-direction: column;
+        justify-content: center; align-items: center;
+        gap: 8px;
+        margin: 0;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.25s ease;
+        z-index: 10000;
+      }
+      .top-header-nav.open, .std-top-nav.open {
+        opacity: 1;
+        pointer-events: auto;
+      }
+      .top-header-nav a, .std-top-nav a {
+        font-size: 18px; padding: 10px 24px; color: #111827;
+      }
+      .top-header-nav a:hover, .std-top-nav a:hover { color: #0d9488; background: rgba(13,148,136,0.06); }
+      .top-header-nav a.active, .std-top-nav a.active { background: #0d9488; color: #fff; }
+      .nav-close-btn, .std-nav-close {
+        display: block; position: absolute; top: 20px; right: 20px;
+        background: none; border: none; font-size: 32px; color: #111827; cursor: pointer;
+        line-height: 1; padding: 4px 8px;
+      }
+      .nav-dropdown .dropdown-menu, .std-nav-dd .std-dd-menu { display: none; }
+      .nav-dropdown > a::after, .std-nav-dd > a::after { display: none; }
+    }
+    /* ── Overflow protection ───────────────────────── */
+    html, body { max-width: 100%; overflow-x: hidden; }
     table { display: block; width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; }
     thead, tbody, tr { width: 100%; }
-    
-  
-    
-    @media (max-width: 768px) {
-      
-      .std-slogan, .slogan { display: none !important; }
-      .mobile-menu-btn, .std-mobile-btn { display: block !important; margin-left: auto !important; }
-    }
-    
-  
-    @media (min-width: 769px) {
-      .top-header-nav, 
-    }
-    
-  
-    
-    .top-header .brand {
-      display: flex !important;
-      align-items: center !important;
-      gap: 12px !important;
-      flex-shrink: 0 !important;
-    }
-    .top-header .brand a {
-      display: flex !important;
-      align-items: center !important;
-      text-decoration: none !important;
-    }
-    .top-header .slogan, .top-header .std-slogan {
-      font-size: 13px !important;
-      color: #6b7280 !important;
-      padding-left: 12px !important;
-      border-left: 1px solid #e5e7eb !important;
-      margin-left: 4px !important;
-      white-space: nowrap !important;
-      display: inline-block !important;
-      font-weight: 500 !important;
-    }
-    .top-header-nav, .std-top-nav {
-      display: flex !important;
-      align-items: center !important;
-      gap: 6px !important;
-      margin-left: auto !important;
-      margin-right: 10px !important;
-      flex-direction: row !important;
-      position: static !important;
-      width: auto !important;
-      height: auto !important;
-      background: transparent !important;
-      opacity: 1 !important;
-      pointer-events: auto !important;
-    }
-    .mobile-menu-btn, .std-mobile-btn {
-      display: none !important;
-    }
 
-    @media (max-width: 768px) {
-      .top-header {
-        height: 64px !important;
-        padding: 0 16px !important;
-      }
-      .top-header .slogan, .top-header .std-slogan {
-        display: none !important;
-      }
-      .mobile-menu-btn, .std-mobile-btn {
-        display: block !important;
-        margin-left: auto !important;
-        background: none !important;
-        border: 1px solid #e5e7eb !important;
-        border-radius: 8px !important;
-        padding: 6px 10px !important;
-        cursor: pointer !important;
-      }
-      .top-header-nav, .std-top-nav {
-        position: fixed !important;
-        top: 0 !important;
-        left: 0 !important;
-        width: 100vw !important;
-        height: 100vh !important;
-        background: #fff !important;
-        flex-direction: column !important;
-        justify-content: center !important;
-        align-items: center !important;
-        gap: 16px !important;
-        margin: 0 !important;
-        opacity: 0;
-        pointer-events: none;
-        transition: opacity 0.25s ease;
-        z-index: 10000 !important;
-      }
-      .top-header-nav.open, .std-top-nav.open {
-        opacity: 1 !important;
-        pointer-events: auto !important;
-      }
-      .nav-close-btn, .std-nav-close {
-        display: block !important;
-        position: absolute !important;
-        top: 20px !important;
-        right: 20px !important;
-        font-size: 32px !important;
-        background: none !important;
-        border: none !important;
-        cursor: pointer !important;
-      }
-    }
-    
-  
-    /* --- Robust White Header for Subpages --- */
-    .top-header {
-      position: fixed !important;
-      top: 0 !important;
-      left: 0 !important;
-      right: 0 !important;
-      width: 100% !important;
-      height: 72px !important;
-      background: rgba(255,255,255,0.97) !important;
-      backdrop-filter: blur(12px) !important;
-      border-bottom: 1px solid rgba(13,148,136,0.1) !important;
-      display: flex !important;
-      align-items: center !important;
-      justify-content: space-between !important;
-      padding: 0 32px !important;
-      box-sizing: border-box !important;
-      z-index: 9999 !important;
-      flex-wrap: nowrap !important;
-    }
-    .top-header-nav, .std-top-nav {
-      display: flex !important;
-      align-items: center !important;
-      gap: 6px !important;
-      margin-left: auto !important;
-      margin-right: 10px !important;
-      flex-direction: row !important;
-      position: static !important;
-      width: auto !important;
-      height: auto !important;
-      background: transparent !important;
-      opacity: 1 !important;
-      pointer-events: auto !important;
-    }
-    @media (max-width: 768px) {
-      .top-header { height: 64px !important; padding: 0 16px !important; }
-      .mobile-menu-btn, .std-mobile-btn { margin-left: auto !important; display: block !important; }
-      .top-header .slogan, .top-header .std-slogan { display: none !important; }
-      .top-header-nav, .std-top-nav {
-        position: fixed !important; top: 0 !important; left: 0 !important;
-        width: 100vw !important; height: 100vh !important;
-        background: #fff !important; flex-direction: column !important;
-        justify-content: center !important; align-items: center !important;
-        opacity: 0; pointer-events: none; transition: opacity 0.25s ease;
-      }
-      .top-header-nav.open, .std-top-nav.open { opacity: 1 !important; pointer-events: auto !important; }
-    }
-    
-  
-    
-    .top-header .brand {
-      display: flex !important;
-      align-items: center !important;
-      gap: 12px !important;
-      flex-shrink: 0 !important;
-    }
-    .top-header .brand a {
-      display: flex !important;
-      align-items: center !important;
-      text-decoration: none !important;
-      color: #111827 !important; /* Logo text back to Dark */
-    }
-    .top-header .brand .accent { color: #0d9488 !important; }
-    .top-header .slogan, .top-header .std-slogan {
-      font-size: 13px !important;
-      color: #6b7280 !important;
-      padding-left: 12px !important;
-      border-left: 1px solid #e5e7eb !important;
-      margin-left: 4px !important;
-      white-space: nowrap !important;
-      display: inline-block !important;
-      font-weight: 500 !important;
-    }
-    .top-header-nav, .std-top-nav {
-      display: flex !important;
-      align-items: center !important;
-      gap: 6px !important;
-      margin-left: auto !important;
-      margin-right: 10px !important;
-      flex-direction: row !important;
-      position: static !important;
-      width: auto !important;
-      height: auto !important;
-      background: transparent !important;
-      opacity: 1 !important;
-      pointer-events: auto !important;
-    }
-    .top-header-nav a, .std-top-nav a { color: #4b5563 !important; }
-    .top-header-nav a:hover, .std-top-nav a:hover { color: #0d9488 !important; }
-    .mobile-menu-btn, .std-mobile-btn {
-      display: none !important;
-    }
-
-    @media (max-width: 768px) {
-      .top-header {
-        height: 64px !important;
-        padding: 0 24px !important; /* Match Hero padding */
-      }
-      .top-header .slogan, .top-header .std-slogan {
-        display: none !important;
-      }
-      .mobile-menu-btn, .std-mobile-btn {
-        display: block !important;
-        margin-left: auto !important;
-        background: none !important;
-        border: 1px solid #e5e7eb !important;
-        border-radius: 8px !important;
-        padding: 6px 10px !important;
-        cursor: pointer !important;
-        color: #111827 !important;
-      }
-      .top-header-nav, .std-top-nav {
-        position: fixed !important;
-        top: 0 !important;
-        left: 0 !important;
-        width: 100vw !important;
-        height: 100vh !important;
-        background: #fff !important;
-        flex-direction: column !important;
-        justify-content: center !important;
-        align-items: center !important;
-        gap: 16px !important;
-        margin: 0 !important;
-        opacity: 0;
-        pointer-events: none;
-        transition: opacity 0.25s ease;
-        z-index: 10000 !important;
-      }
-      .top-header-nav.open, .std-top-nav.open {
-        opacity: 1 !important;
-        pointer-events: auto !important;
-      }
-      .top-header-nav a, .std-top-nav a { font-size: 18px !important; color: #111827 !important; }
-    }
-    
-    html, body {
-      max-width: 100% !important;
-      overflow-x: hidden !important;
-      position: relative !important;
-    }
-    
-  
-    /* --- Robust Header System V6 --- */
-    .top-header {
-      position: fixed !important;
-      top: 0 !important;
-      left: 0 !important;
-      right: 0 !important;
-      width: 100% !important;
-      height: 68px !important;
-      background: rgba(255,255,255,0.98) !important;
-      backdrop-filter: blur(12px) !important;
-      border-bottom: 1px solid rgba(13,148,136,0.1) !important;
-      display: flex !important;
-      align-items: center !important;
-      justify-content: space-between !important;
-      padding: 0 32px !important;
-      box-sizing: border-box !important;
-      z-index: 9999 !important;
-      flex-wrap: nowrap !important;
-    }
-    .top-header .brand {
-      display: flex !important;
-      align-items: center !important;
-      gap: 14px !important;
-      flex-shrink: 0 !important;
-    }
-    .top-header .brand a {
-      display: flex !important;
-      align-items: center !important;
-      text-decoration: none !important;
-      font-size: 17px !important;
-      font-weight: 700 !important;
-      color: #111827 !important; /* Force dark color for 'In' and 'Bio' */
-    }
-    .top-header .brand a span { 
-      color: #111827 !important; /* Ensure spans inside link are also dark */
-    }
-    .top-header .brand .accent { 
-      color: #0d9488 !important; 
-      font-style: italic !important;
-    }
-    .top-header .slogan, .top-header .std-slogan {
-      font-size: 15px !important; /* Increased slogan size */
-      color: #4b5563 !important;
-      padding-left: 14px !important;
-      border-left: 1px solid #e5e7eb !important;
-      margin-left: 6px !important;
-      white-space: nowrap !important;
-      display: inline-block !important;
-      font-weight: 500 !important;
-    }
-    .top-header-nav, .std-top-nav {
-      display: flex !important;
-      align-items: center !important;
-      gap: 10px !important;
-      margin-left: auto !important;
-      margin-right: 10px !important;
-    }
-    .top-header-nav a, .std-top-nav a { 
-      font-size: 15px !important;
-      color: #374151 !important; 
-      font-weight: 600 !important;
-    }
-    
   </style>
   <meta name="citation_title" content="VH/VL Murine Antibody Humanization: MuMAb4D5 Case Study Using the AbEngineCore V4.5 Pipeline">
   <meta name="citation_author" content="InSynBio">
@@ -905,11 +708,11 @@
           </div>
           <div class="card" style="border-left: 4px solid var(--primary); transform:none;">
             <h3>Our Approach</h3>
-            <p>InSynBio's <strong>AbEngineCore V4.5.1</strong> pipeline: systematic CDR grafting onto the optimal human germline (IGHV1-69*01 / IGKV1-39*01), Vernier zone analysis to identify structurally critical back-mutations, ABodyBuilder2 structural validation, and full CMC assessment — all benchmarked against 842 curated clinical antibody sequences.</p>
+            <p>InSynBio's <strong>AbEngineCore V4.5.1</strong> pipeline: systematic CDR grafting onto the optimal human germline (IGHV1-69*01 / IGKV1-39*01), Vernier zone analysis to identify structurally critical back-mutations, ABodyBuilder2 structural validation, and format-matched CMC benchmarking against clinical antibody reference sets. For this <strong>VH/VL antibody</strong>, we benchmark against clinically advancing humanized antibody distributions rather than applying VHH or bispecific standards.</p>
           </div>
           <div class="card" style="border-left: 4px solid #16a34a; transform:none;">
             <h3>Key Outcome</h3>
-            <p>Achieved <strong>100% CDR identity</strong> with the clinical Herceptin sequence using only <strong>4 back-mutations</strong>. VH/VL packing angle deviation of just 0.64°. All 15 CMC parameters passed. The result is a humanized antibody indistinguishable from the $10B blockbuster — produced by a reproducible, auditable computational pipeline.</p>
+            <p>Achieved <strong>100% CDR identity</strong> with the clinical Herceptin sequence using only <strong>4 back-mutations</strong>. VH/VL packing angle deviation of just 0.64°. All 15 CMC parameters passed. The result is not a speculative “failure prediction,” but a documented return into the clinically acceptable VH/VL range defined by real benchmark antibodies, with actionable AI-supported optimization logic.</p>
           </div>
         </div>
       </section>
@@ -919,7 +722,7 @@
         <div class="section-label">Background</div>
         <h2 class="section-title">A 30-Year Clinical <span>Benchmark</span></h2>
         <p class="section-intro">
-          muMAb4D5 is a murine monoclonal antibody targeting the human HER2 receptor. Its humanized descendant, trastuzumab (Herceptin®), has been the gold standard for HER2-positive breast cancer treatment for over 28 years — generating ~$10 billion in annual sales and treating millions of patients worldwide.
+          muMAb4D5 is a murine monoclonal antibody targeting the human HER2 receptor. Its humanized descendant, trastuzumab (Herceptin®), has been the gold standard for HER2-positive breast cancer treatment for over 28 years — generating ~$10 billion in annual sales and treating millions of patients worldwide. The key question in this case is not whether one can define a universal “bad molecule,” but whether a redesigned <strong>VH/VL antibody</strong> has re-entered the clinical-quality range established by comparable molecules that actually advanced.
         </p>
 
         <div class="card">
@@ -952,7 +755,7 @@
         <div class="section-label">Methodology</div>
         <h2 class="section-title">AbEngineCore <span>V4.5 Pipeline</span></h2>
         <p class="section-intro">
-          Our platform replaces empirical guesswork with a reproducible, data-driven workflow — grounded in 842 curated clinical antibody sequences.
+          Our platform replaces empirical guesswork with a reproducible, data-driven workflow — grounded in 842 curated clinical antibody sequences and format-specific benchmark logic. VH/VL, VHH, and bispecific antibodies are not judged by the same CMC reference ranges, because the acceptable developability profile depends on the molecular format.
         </p>
 
         <div class="flow">
@@ -1094,7 +897,7 @@ GSGTDFTLTISSLQPEDFATYYCQQHYTTPPTFGGGTKLEIK
         <div class="section-label">Results</div>
         <h2 class="section-title">Structural &amp; CMC <span>Quality Gates</span></h2>
         <p class="section-intro">
-          All mandatory hard gates passed. Structure predicted by ABodyBuilder2; CMC benchmarked against AbRef-458 (n=458 clinical humanized antibodies).
+          All mandatory hard gates passed. Structure predicted by ABodyBuilder2; CMC benchmarked against AbRef-458 (n=458 clinical humanized antibodies). This is a VH/VL-specific benchmark layer; VHH and bispecific programs are assessed against different clinical reference populations and different gate logic.
         </p>
 
         <!-- Structural QA -->
