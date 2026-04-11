@@ -49,22 +49,7 @@
     .footer { margin-top: 24px; font-size: 0.85rem; color: #666; text-align: center; }
   
     /* Standardized Global Header Styles */
-    
-    .top-header { 
-      position: fixed !important; 
-      top: 0 !important; 
-      left: 0 !important; 
-      right: 0 !important; 
-      width: 100% !important; 
-      margin: 0 !important;
-      padding: 12px 32px !important;
-      box-sizing: border-box !important;
-      z-index: 2000 !important;
-    }
-    @media (max-width: 768px) {
-      .top-header { padding: 10px 16px !important; }
-    }
-    
+    .top-header { display: flex; align-items: center; justify-content: space-between; padding: 12px 32px; background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(12px); border-bottom: 2px solid rgba(13, 148, 136, 0.1); position: fixed; width: 100%; top: 0; z-index: 2000; gap: 12px;  left: 0 !important; right: 0 !important; width: auto !important; position: fixed !important;}
     .top-header .brand { display: flex; align-items: center; flex-wrap: nowrap; min-width: max-content; }
     .top-header .brand a { text-decoration: none; color: inherit; display: flex; align-items: center; gap: 10px; font-family: 'Cormorant Garamond', serif; font-weight: 700; font-size: 26px; }
     .top-header .slogan { font-size: 14px; color: var(--text-muted); padding-left: 14px; border-left: 1px solid #e5e7eb; margin-left: 0; font-family: 'Inter', sans-serif; white-space: nowrap; font-weight: 600; letter-spacing: 0.02em; }
@@ -85,17 +70,6 @@
     /* Global responsive table fix */
     table { display: block; width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; }
     thead, tbody, tr { width: 100%; }
-    
-  
-    @media (max-width: 768px) {
-      .std-mobile-btn, .mobile-menu-btn { 
-        margin-left: auto !important; 
-        display: block !important;
-      }
-      .std-slogan, .slogan {
-        display: none !important; /* Hide slogan on small mobile to save space if needed, or keep it */
-      }
-    }
     
   </style>
 </head>

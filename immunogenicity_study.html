@@ -27,22 +27,7 @@
     body { font-family: 'Inter', -apple-system, sans-serif; font-size: 16px; line-height: 1.65; color: var(--text); background: var(--bg); -webkit-font-smoothing: antialiased; padding-top: 73px; ; overflow-x: hidden; }
 
     /* === HEADER === */
-    
-    .top-header { 
-      position: fixed !important; 
-      top: 0 !important; 
-      left: 0 !important; 
-      right: 0 !important; 
-      width: 100% !important; 
-      margin: 0 !important;
-      padding: 12px 32px !important;
-      box-sizing: border-box !important;
-      z-index: 2000 !important;
-    }
-    @media (max-width: 768px) {
-      .top-header { padding: 10px 16px !important; }
-    }
-    
+    .top-header { display: flex; align-items: center; justify-content: space-between; padding: 12px 32px; background: rgba(255,255,255,0.95); backdrop-filter: blur(12px); border-bottom: 2px solid rgba(13,148,136,0.1); position: fixed; width: 100%; top: 0; z-index: 2000; gap: 12px; flex-wrap: wrap;  left: 0 !important; right: 0 !important; width: auto !important; position: fixed !important;}
     .top-header .brand { font-family: 'Cormorant Garamond', serif; font-weight: 700; font-size: 26px; letter-spacing: -0.03em; display: flex; align-items: center; flex-wrap: nowrap; min-width: max-content; }
     .top-header .brand a { text-decoration: none; color: inherit; display: flex; align-items: center; gap: 10px; white-space: nowrap; flex-shrink: 0; }
     .top-header .brand .syn { color: var(--primary); font-style: italic; }
@@ -158,22 +143,7 @@
 
     @media (max-width: 900px) {
       .mobile-menu-btn { display: block; }
-      
-    .top-header { 
-      position: fixed !important; 
-      top: 0 !important; 
-      left: 0 !important; 
-      right: 0 !important; 
-      width: 100% !important; 
-      margin: 0 !important;
-      padding: 12px 32px !important;
-      box-sizing: border-box !important;
-      z-index: 2000 !important;
-    }
-    @media (max-width: 768px) {
-      .top-header { padding: 10px 16px !important; }
-    }
-    
+      .top-header { padding: 10px 16px !important; flex-wrap: nowrap !important; }
       .top-header .slogan { display: none !important; }
       .top-header-nav { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: #fff; flex-direction: column; justify-content: center; align-items: center; gap: 4px; z-index: 9999; opacity: 0; pointer-events: none; transition: opacity 0.25s; padding: 24px; overflow-y: auto; }
       .top-header-nav.open { opacity: 1; pointer-events: auto; }
@@ -204,17 +174,6 @@
     /* Global responsive table fix */
     table { display: block; width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; }
     thead, tbody, tr { width: 100%; }
-    
-  
-    @media (max-width: 768px) {
-      .std-mobile-btn, .mobile-menu-btn { 
-        margin-left: auto !important; 
-        display: block !important;
-      }
-      .std-slogan, .slogan {
-        display: none !important; /* Hide slogan on small mobile to save space if needed, or keep it */
-      }
-    }
     
   </style>
   <meta name="citation_title" content="Multi-metric Immunogenicity Risk Assessment for Therapeutic Antibodies: T-cell Epitope Analysis and ADA Prediction">
@@ -650,17 +609,6 @@
     /* Global responsive table fix */
     table { display: block; width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; }
     thead, tbody, tr { width: 100%; }
-    
-  
-    @media (max-width: 768px) {
-      .std-mobile-btn, .mobile-menu-btn { 
-        margin-left: auto !important; 
-        display: block !important;
-      }
-      .std-slogan, .slogan {
-        display: none !important; /* Hide slogan on small mobile to save space if needed, or keep it */
-      }
-    }
     
   </style>
   </section>
