@@ -22,7 +22,22 @@
     }
 
     /* Header */
-    .top-header { display: flex; align-items: center; justify-content: space-between; padding: 12px 32px; background: rgba(255,255,255,0.95); backdrop-filter: blur(12px); border-bottom: 2px solid rgba(13,148,136,0.1); flex-wrap: nowrap; gap: 12px; position: fixed; width: 100%; top: 0; z-index: 2000;  left: 0; right: 0; width: auto; z-index: 2000;  left: 0 !important; right: 0 !important; width: auto !important; position: fixed !important;}
+    
+    .top-header { 
+      position: fixed !important; 
+      top: 0 !important; 
+      left: 0 !important; 
+      right: 0 !important; 
+      width: 100% !important; 
+      margin: 0 !important;
+      padding: 12px 32px !important;
+      box-sizing: border-box !important;
+      z-index: 2000 !important;
+    }
+    @media (max-width: 768px) {
+      .top-header { padding: 10px 16px !important; }
+    }
+    
     .mobile-menu-btn { display: none; background: none; border: none; padding: 6px; cursor: pointer; color: var(--text); flex-shrink: 0; }
     .nav-close-btn { display: none; }
     .top-header .brand { font-family: 'Cormorant Garamond', serif; font-weight: 700; font-size: 26px; letter-spacing: -0.03em; display: flex; align-items: center; }
@@ -202,7 +217,22 @@
 
     /* Responsive */
     @media (max-width: 900px) {
-      .top-header { flex-wrap:wrap; padding:12px 16px; gap:10px; }
+      
+    .top-header { 
+      position: fixed !important; 
+      top: 0 !important; 
+      left: 0 !important; 
+      right: 0 !important; 
+      width: 100% !important; 
+      margin: 0 !important;
+      padding: 12px 32px !important;
+      box-sizing: border-box !important;
+      z-index: 2000 !important;
+    }
+    @media (max-width: 768px) {
+      .top-header { padding: 10px 16px !important; }
+    }
+    
       .top-header .slogan { display:none !important; }
       .page-wrap { flex-direction:column; }
       .sidebar { width:100%; height:auto; position:relative; border-right:none; border-bottom:1px solid #e0e0e0; padding:16px; }
@@ -221,7 +251,22 @@
     @media (max-width: 900px) { .main-intro { margin: -32px -24px 32px; padding: 28px 24px 24px; } .main-intro h1 { font-size: 28px; } }
     @media (max-width: 768px) {
       .mobile-menu-btn { display:block; }
-      .top-header { padding:10px 16px; flex-wrap:nowrap; }
+      
+    .top-header { 
+      position: fixed !important; 
+      top: 0 !important; 
+      left: 0 !important; 
+      right: 0 !important; 
+      width: 100% !important; 
+      margin: 0 !important;
+      padding: 12px 32px !important;
+      box-sizing: border-box !important;
+      z-index: 2000 !important;
+    }
+    @media (max-width: 768px) {
+      .top-header { padding: 10px 16px !important; }
+    }
+    
       .top-header-nav { position:fixed; top:0; left:0; width:100vw; height:100vh; background:#fff; flex-direction:column; justify-content:center; align-items:center; gap:4px; z-index:9999; opacity:0; pointer-events:none; transition:opacity .25s; padding:24px; overflow-y:auto; }
       .top-header-nav.open { opacity:1; pointer-events:auto; }
       .top-header-nav a { font-size:18px; padding:12px 24px; }
@@ -231,7 +276,22 @@
     }
   
     @media (max-width: 768px) {
-      .top-header { padding: 10px 16px !important; flex-wrap: nowrap !important; }
+      
+    .top-header { 
+      position: fixed !important; 
+      top: 0 !important; 
+      left: 0 !important; 
+      right: 0 !important; 
+      width: 100% !important; 
+      margin: 0 !important;
+      padding: 12px 32px !important;
+      box-sizing: border-box !important;
+      z-index: 2000 !important;
+    }
+    @media (max-width: 768px) {
+      .top-header { padding: 10px 16px !important; }
+    }
+    
       .mobile-menu-btn, .std-mobile-btn { display: block !important; }
       .top-header-nav, .std-top-nav { 
         position: fixed !important; top: 0 !important; left: 0 !important; 
@@ -254,6 +314,17 @@
     /* Global responsive table fix */
     table { display: block; width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; }
     thead, tbody, tr { width: 100%; }
+    
+  
+    @media (max-width: 768px) {
+      .std-mobile-btn, .mobile-menu-btn { 
+        margin-left: auto !important; 
+        display: block !important;
+      }
+      .std-slogan, .slogan {
+        display: none !important; /* Hide slogan on small mobile to save space if needed, or keep it */
+      }
+    }
     
   </style>
 </head>

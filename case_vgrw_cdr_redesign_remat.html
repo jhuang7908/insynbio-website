@@ -29,7 +29,22 @@
     a { color: inherit; }
 
     /* ─── NAV ─── */
-    .top-header { display: flex; align-items: center; justify-content: space-between; padding: 12px 32px; background: rgba(255,255,255,0.97); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(13,148,136,0.12); position: fixed; top: 0; width: 100%; z-index: 2000; gap: 12px;  left: 0; right: 0; width: auto; z-index: 2000;  left: 0 !important; right: 0 !important; width: auto !important; position: fixed !important;}
+    
+    .top-header { 
+      position: fixed !important; 
+      top: 0 !important; 
+      left: 0 !important; 
+      right: 0 !important; 
+      width: 100% !important; 
+      margin: 0 !important;
+      padding: 12px 32px !important;
+      box-sizing: border-box !important;
+      z-index: 2000 !important;
+    }
+    @media (max-width: 768px) {
+      .top-header { padding: 10px 16px !important; }
+    }
+    
     .brand a { text-decoration: none; font-family: 'Cormorant Garamond',serif; font-size: 26px; font-weight: 700; color: #111827; }
     .brand .accent { color: var(--primary); }
     .top-header .slogan { font-size: 13px; color: var(--text-muted); padding-left: 14px; border-left: 1px solid var(--border); margin-left: 12px; font-weight: 600; white-space: nowrap; }
@@ -227,7 +242,22 @@
     }
   
     @media (max-width: 768px) {
-      .top-header { padding: 10px 16px !important; flex-wrap: nowrap !important; }
+      
+    .top-header { 
+      position: fixed !important; 
+      top: 0 !important; 
+      left: 0 !important; 
+      right: 0 !important; 
+      width: 100% !important; 
+      margin: 0 !important;
+      padding: 12px 32px !important;
+      box-sizing: border-box !important;
+      z-index: 2000 !important;
+    }
+    @media (max-width: 768px) {
+      .top-header { padding: 10px 16px !important; }
+    }
+    
       .mobile-menu-btn, .std-mobile-btn { display: block !important; }
       .top-header-nav, .std-top-nav { 
         position: fixed !important; top: 0 !important; left: 0 !important; 
@@ -250,6 +280,17 @@
     /* Global responsive table fix */
     table { display: block; width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; }
     thead, tbody, tr { width: 100%; }
+    
+  
+    @media (max-width: 768px) {
+      .std-mobile-btn, .mobile-menu-btn { 
+        margin-left: auto !important; 
+        display: block !important;
+      }
+      .std-slogan, .slogan {
+        display: none !important; /* Hide slogan on small mobile to save space if needed, or keep it */
+      }
+    }
     
   </style>
 </head>
