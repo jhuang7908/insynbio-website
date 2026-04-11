@@ -24,10 +24,10 @@
       --red: #b91c1c; --blue: #1d4ed8; --green: #15803d; --orange: #b45309;
     }
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    body { font-family: 'Inter', -apple-system, sans-serif; font-size: 16px; line-height: 1.65; color: var(--text); background: var(--bg); -webkit-font-smoothing: antialiased; padding-top: 73px; }
+    body { font-family: 'Inter', -apple-system, sans-serif; font-size: 16px; line-height: 1.65; color: var(--text); background: var(--bg); -webkit-font-smoothing: antialiased; padding-top: 73px; ; overflow-x: hidden; }
 
     /* === HEADER === */
-    .top-header { display: flex; align-items: center; justify-content: space-between; padding: 12px 32px; background: rgba(255,255,255,0.95); backdrop-filter: blur(12px); border-bottom: 2px solid rgba(13,148,136,0.1); position: fixed; width: 100%; top: 0; z-index: 2000; gap: 12px; flex-wrap: wrap; }
+    .top-header { display: flex; align-items: center; justify-content: space-between; padding: 12px 32px; background: rgba(255,255,255,0.95); backdrop-filter: blur(12px); border-bottom: 2px solid rgba(13,148,136,0.1); position: fixed; width: 100%; top: 0; z-index: 2000; gap: 12px; flex-wrap: wrap;  left: 0 !important; right: 0 !important; width: auto !important; position: fixed !important;}
     .top-header .brand { font-family: 'Cormorant Garamond', serif; font-weight: 700; font-size: 26px; letter-spacing: -0.03em; display: flex; align-items: center; flex-wrap: nowrap; min-width: max-content; }
     .top-header .brand a { text-decoration: none; color: inherit; display: flex; align-items: center; gap: 10px; white-space: nowrap; flex-shrink: 0; }
     .top-header .brand .syn { color: var(--primary); font-style: italic; }
@@ -170,6 +170,11 @@
     @media (max-width: 640px) {
       .charts-grid { grid-template-columns: 1fr !important; }
     }
+  
+    /* Global responsive table fix */
+    table { display: block; width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+    thead, tbody, tr { width: 100%; }
+    
   </style>
   <meta name="citation_title" content="Multi-metric Immunogenicity Risk Assessment for Therapeutic Antibodies: T-cell Epitope Analysis and ADA Prediction">
   <meta name="citation_author" content="InSynBio">
@@ -600,7 +605,12 @@
       </div>
 
     </div>
-    <style>@media(max-width:640px){.corr-charts{grid-template-columns:1fr!important;}}</style>
+    <style>@media(max-width:640px){.corr-charts{grid-template-columns:1fr!important;}}
+    /* Global responsive table fix */
+    table { display: block; width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+    thead, tbody, tr { width: 100%; }
+    
+  </style>
   </section>
 
   <!-- 5. MODELS -->

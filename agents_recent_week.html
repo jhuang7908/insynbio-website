@@ -6,7 +6,7 @@
   <title>Agents — 最近一周的对话记录</title>
   <style>
     * { box-sizing: border-box; }
-    body { margin: 0; font-family: "Segoe UI", "Microsoft JhengHei", sans-serif; background: #fafafa; color: #1c1917; min-height: 100vh; display: flex; }
+    body { margin: 0; font-family: "Segoe UI", "Microsoft JhengHei", sans-serif; background: #fafafa; color: #1c1917; min-height: 100vh; display: flex; ; overflow-x: hidden; }
     .page-header { position: fixed; top: 0; left: 0; right: 0; height: 48px; background: #f3f4f6; border-bottom: 1px solid #e5e7eb; display: flex; align-items: center; padding: 0 1.25rem; font-weight: 600; z-index: 10; }
     .sidebar { width: 300px; min-width: 300px; background: #f9fafb; border-right: 1px solid #e5e7eb; padding: 1rem 0; margin-top: 48px; display: flex; flex-direction: column; }
     .sidebar-title { padding: 0.5rem 1.25rem; font-size: 0.85rem; font-weight: 700; color: #374151; }
@@ -26,7 +26,7 @@
     .record-panel .file-hint { margin-top: 1rem; font-size: 0.8rem; color: #6b7280; font-family: ui-monospace, monospace; }
   
     /* Standardized Global Header Styles */
-    .top-header { display: flex; align-items: center; justify-content: space-between; padding: 12px 32px; background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(12px); border-bottom: 2px solid rgba(13, 148, 136, 0.1); position: fixed; width: 100%; top: 0; z-index: 2000; gap: 12px; }
+    .top-header { display: flex; align-items: center; justify-content: space-between; padding: 12px 32px; background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(12px); border-bottom: 2px solid rgba(13, 148, 136, 0.1); position: fixed; width: 100%; top: 0; z-index: 2000; gap: 12px;  left: 0 !important; right: 0 !important; width: auto !important; position: fixed !important;}
     .top-header .brand { display: flex; align-items: center; flex-wrap: nowrap; min-width: max-content; }
     .top-header .brand a { text-decoration: none; color: inherit; display: flex; align-items: center; gap: 10px; font-family: 'Cormorant Garamond', serif; font-weight: 700; font-size: 26px; }
     .top-header .slogan { font-size: 14px; color: var(--text-muted); padding-left: 14px; border-left: 1px solid #e5e7eb; margin-left: 0; font-family: 'Inter', sans-serif; white-space: nowrap; font-weight: 600; letter-spacing: 0.02em; }
@@ -42,8 +42,13 @@
     .menu-title { display: block; font-weight: 700; font-size: 14px; color: #111827; margin-bottom: 2px; }
     .menu-desc { display: block; font-size: 12px; color: #6b7280; font-weight: 400; }
 
-        body { padding-top: 72px; }
-    </style>
+        body { padding-top: 72px; ; overflow-x: hidden; }
+    
+    /* Global responsive table fix */
+    table { display: block; width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+    thead, tbody, tr { width: 100%; }
+    
+  </style>
 </head>
 <body>
   <header class="top-header">

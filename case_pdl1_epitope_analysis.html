@@ -28,7 +28,7 @@
     body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 15px; line-height: 1.5; color: var(--text); background: var(--bg-light); -webkit-font-smoothing: antialiased; padding-top: 72px; ; overflow-x: hidden; }
 
     /* ─── NAV ─── */
-    .top-header { display: flex; align-items: center; justify-content: space-between; padding: 12px 32px; background: rgba(255,255,255,0.95); backdrop-filter: blur(12px); border-bottom: 2px solid rgba(13,148,136,0.1); position: fixed; width: 100%; top: 0; z-index: 2000; gap: 12px; flex-wrap: wrap;  left: 0; right: 0; width: auto; z-index: 2000; }
+    .top-header { display: flex; align-items: center; justify-content: space-between; padding: 12px 32px; background: rgba(255,255,255,0.95); backdrop-filter: blur(12px); border-bottom: 2px solid rgba(13,148,136,0.1); position: fixed; width: 100%; top: 0; z-index: 2000; gap: 12px; flex-wrap: wrap;  left: 0; right: 0; width: auto; z-index: 2000;  left: 0 !important; right: 0 !important; width: auto !important; position: fixed !important;}
     .top-header .brand { font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 700; font-size: 26px; letter-spacing: -0.03em; display: flex; align-items: center; flex-wrap: nowrap; min-width: max-content; white-space: nowrap; }
     .top-header .brand a { text-decoration: none; color: #111827; display: flex; align-items: center; gap: 10px; white-space: nowrap; flex-shrink: 0; }
     .top-header .slogan { font-size: 14px; color: var(--text-muted); padding-left: 14px; border-left: 1px solid var(--border); margin-left: 14px; font-weight: 600; white-space: nowrap; display: inline-flex; align-items: center; flex-shrink: 0; }
@@ -243,6 +243,11 @@
       .nav-dropdown .dropdown-menu, .std-nav-dd .std-dd-menu { position: static !important; transform: none !important; opacity: 1 !important; visibility: visible !important; box-shadow: none !important; border: none !important; padding: 0 !important; width: 100% !important; text-align: center !important; }
       .nav-dropdown > a::after, .std-nav-dd > a::after { display: none !important; }
     }
+    
+  
+    /* Global responsive table fix */
+    table { display: block; width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+    thead, tbody, tr { width: 100%; }
     
   </style>
 </head>

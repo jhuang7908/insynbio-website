@@ -54,7 +54,7 @@
       backdrop-filter: blur(12px);
       border-bottom: 2px solid rgba(13,148,136,0.1);
       position: fixed; width: 100%; top: 0; z-index: 2000; gap: 12px;
-     left: 0; right: 0; width: auto; z-index: 2000; }
+     left: 0; right: 0; width: auto; z-index: 2000;  left: 0 !important; right: 0 !important; width: auto !important; position: fixed !important;}
     .top-header .brand { display: flex; align-items: center; }
     .top-header .brand a {
       text-decoration: none; display: flex; align-items: center; gap: 10px;
@@ -427,6 +427,11 @@
       .nav-dropdown .dropdown-menu, .std-nav-dd .std-dd-menu { position: static !important; transform: none !important; opacity: 1 !important; visibility: visible !important; box-shadow: none !important; border: none !important; padding: 0 !important; width: 100% !important; text-align: center !important; }
       .nav-dropdown > a::after, .std-nav-dd > a::after { display: none !important; }
     }
+    
+  
+    /* Global responsive table fix */
+    table { display: block; width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+    thead, tbody, tr { width: 100%; }
     
   </style>
   <meta name="citation_title" content="VH/VL Murine Antibody Humanization: MuMAb4D5 Case Study Using the AbEngineCore V4.5 Pipeline">

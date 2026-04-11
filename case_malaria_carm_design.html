@@ -36,7 +36,7 @@
     .top-header { display: flex; align-items: center; justify-content: space-between;
       padding: 12px 32px; background: rgba(255,255,255,0.95); backdrop-filter: blur(12px);
       border-bottom: 2px solid rgba(13,148,136,0.1); position: fixed; width: 100%;
-      top: 0; z-index: 2000; gap: 12px; flex-wrap: wrap;  left: 0; right: 0; width: auto; z-index: 2000; }
+      top: 0; z-index: 2000; gap: 12px; flex-wrap: wrap;  left: 0; right: 0; width: auto; z-index: 2000;  left: 0 !important; right: 0 !important; width: auto !important; position: fixed !important;}
     .top-header .brand { display: flex; align-items: center; flex-wrap: nowrap; min-width: max-content; }
     .top-header .brand a { text-decoration: none; display: flex; align-items: center; gap: 10px;
       font-family: 'Cormorant Garamond', serif; font-weight: 700; font-size: 26px; color: #111827; }
@@ -342,6 +342,11 @@
       .nav-dropdown .dropdown-menu, .std-nav-dd .std-dd-menu { position: static !important; transform: none !important; opacity: 1 !important; visibility: visible !important; box-shadow: none !important; border: none !important; padding: 0 !important; width: 100% !important; text-align: center !important; }
       .nav-dropdown > a::after, .std-nav-dd > a::after { display: none !important; }
     }
+    
+  
+    /* Global responsive table fix */
+    table { display: block; width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+    thead, tbody, tr { width: 100%; }
     
   </style>
   <meta name="citation_title" content="Rational Design of an Anti-CIDRα1 CAR-Macrophage for Cerebral Malaria Using the ACTES Engine">
