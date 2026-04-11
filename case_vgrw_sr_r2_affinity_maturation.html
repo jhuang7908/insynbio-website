@@ -26,7 +26,7 @@
       --bg-white: #ffffff; --bg-light: #f9fafb;
     }
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    body { font-family: 'Inter', sans-serif; background: var(--bg-light); color: var(--text); line-height: 1.7; -webkit-font-smoothing: antialiased; padding-top: 80px; ; overflow-x: hidden; }
+    body { font-family: 'Inter', sans-serif; background: var(--bg-light); color: var(--text); line-height: 1.7; -webkit-font-smoothing: antialiased; padding-top: 68px; overflow-x: hidden; }
 
     /* ─── NAV ─── */
     
@@ -249,7 +249,7 @@
       .top-header-nav.open, .std-top-nav.open { opacity: 1 !important; pointer-events: auto !important; }
       .top-header-nav a, .std-top-nav a { font-size: 18px !important; padding: 12px 24px !important; }
       .nav-close-btn, .std-nav-close { display: block !important; position: absolute !important; top: 16px !important; right: 20px !important; background: none !important; border: none !important; font-size: 32px !important; color: #111827 !important; cursor: pointer !important; }
-      .nav-dropdown .dropdown-menu, .std-nav-dd .std-dd-menu { position: static !important; transform: none !important; opacity: 1 !important; visibility: visible !important; box-shadow: none !important; border: none !important; padding: 0 !important; width: 100% !important; text-align: center !important; }
+      .nav-dropdown .dropdown-menu, .std-nav-dd .std-dd-menu { display: none !important; }
       .nav-dropdown > a::after, .std-nav-dd > a::after { display: none !important; }
     }
     
@@ -511,7 +511,7 @@
       left: 0 !important;
       right: 0 !important;
       width: 100% !important;
-      height: 80px !important; /* Increased height slightly for larger logo */
+      height: 68px !important;
       background: rgba(255,255,255,0.98) !important;
       backdrop-filter: blur(12px) !important;
       border-bottom: 1px solid rgba(13,148,136,0.1) !important;
@@ -533,7 +533,7 @@
       display: flex !important;
       align-items: center !important;
       text-decoration: none !important;
-      font-size: 28px !important; /* Increased font size */
+      font-size: 17px !important;
       font-weight: 700 !important;
       color: #111827 !important; /* Force dark color for 'In' and 'Bio' */
     }
