@@ -284,25 +284,7 @@
     }
     
   
-    /* --- Robust Header System V2 --- */
-    .top-header {
-      position: fixed !important;
-      top: 0 !important;
-      left: 0 !important;
-      right: 0 !important;
-      width: 100% !important;
-      height: 72px !important;
-      background: rgba(255,255,255,0.97) !important;
-      backdrop-filter: blur(12px) !important;
-      border-bottom: 1px solid rgba(13,148,136,0.1) !important;
-      display: flex !important;
-      align-items: center !important;
-      justify-content: space-between !important;
-      padding: 0 32px !important;
-      box-sizing: border-box !important;
-      z-index: 9999 !important;
-      flex-wrap: nowrap !important;
-    }
+    
     .top-header .brand {
       display: flex !important;
       align-items: center !important;
@@ -390,6 +372,54 @@
         border: none !important;
         cursor: pointer !important;
       }
+    }
+    
+  
+    /* --- Robust White Header for Subpages --- */
+    .top-header {
+      position: fixed !important;
+      top: 0 !important;
+      left: 0 !important;
+      right: 0 !important;
+      width: 100% !important;
+      height: 72px !important;
+      background: rgba(255,255,255,0.97) !important;
+      backdrop-filter: blur(12px) !important;
+      border-bottom: 1px solid rgba(13,148,136,0.1) !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: space-between !important;
+      padding: 0 32px !important;
+      box-sizing: border-box !important;
+      z-index: 9999 !important;
+      flex-wrap: nowrap !important;
+    }
+    .top-header-nav, .std-top-nav {
+      display: flex !important;
+      align-items: center !important;
+      gap: 6px !important;
+      margin-left: auto !important;
+      margin-right: 10px !important;
+      flex-direction: row !important;
+      position: static !important;
+      width: auto !important;
+      height: auto !important;
+      background: transparent !important;
+      opacity: 1 !important;
+      pointer-events: auto !important;
+    }
+    @media (max-width: 768px) {
+      .top-header { height: 64px !important; padding: 0 16px !important; }
+      .mobile-menu-btn, .std-mobile-btn { margin-left: auto !important; display: block !important; }
+      .top-header .slogan, .top-header .std-slogan { display: none !important; }
+      .top-header-nav, .std-top-nav {
+        position: fixed !important; top: 0 !important; left: 0 !important;
+        width: 100vw !important; height: 100vh !important;
+        background: #fff !important; flex-direction: column !important;
+        justify-content: center !important; align-items: center !important;
+        opacity: 0; pointer-events: none; transition: opacity 0.25s ease;
+      }
+      .top-header-nav.open, .std-top-nav.open { opacity: 1 !important; pointer-events: auto !important; }
     }
     
   </style>
