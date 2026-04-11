@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Case Study: PD-L1 Dual-Clone Epitope Structure Analysis | InSynBio</title>
+  <meta name="description" content="Client project: AF2-Multimer structural modeling of two anti-PD-L1 antibody clones to precisely map binding epitopes, reveal blocking vs. non-blocking configurations, and validate cross-species binding similarity for two distinct development pathways.">
+  <link rel="canonical" href="https://www.insynbio.com/case_pdl1_epitope_analysis.html">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://www.insynbio.com/case_pdl1_epitope_analysis.html">
+  <meta property="og:title" content="PD-L1 Dual-Clone Epitope Analysis | InSynBio">
+  <meta property="og:description" content="AF2 structural modeling reveals distinct binding configurations of two PD-L1 antibodies, elucidates blocking vs. non-blocking mechanism differences, and provides structural rationale for ADC and immune checkpoint development pathways.">
+  <meta property="og:image" content="https://www.insynbio.com/images/case-pdl1-panel.png">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
+  <script src="https://unpkg.com/lucide@0.378.0/dist/umd/lucide.min.js"></script>
+  <style>
+    :root {
+      --primary: #0d9488; --primary-dark: #0f766e; --primary-light: #5eead4;
+      --amber: #d97706; --violet: #7c3aed;
+      --text: #111827; --text-muted: #4b5563; --border: #e5e7eb;
+      --bg-white: #ffffff; --bg-light: #f9fafb;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 15px; line-height: 1.5; color: var(--text); background: var(--bg-light); -webkit-font-smoothing: antialiased; padding-top: 72px; }
+
+    /* ─── NAV ─── */
+    .top-header { display: flex; align-items: center; justify-content: space-between; padding: 12px 32px; background: rgba(255,255,255,0.95); backdrop-filter: blur(12px); border-bottom: 2px solid rgba(13,148,136,0.1); position: fixed; width: 100%; top: 0; z-index: 2000; gap: 12px; flex-wrap: wrap; }
+    .top-header .brand { font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 700; font-size: 26px; letter-spacing: -0.03em; display: flex; align-items: center; flex-wrap: nowrap; min-width: max-content; white-space: nowrap; }
+    .top-header .brand a { text-decoration: none; color: #111827; display: flex; align-items: center; gap: 10px; white-space: nowrap; flex-shrink: 0; }
+    .top-header .slogan { font-size: 14px; color: var(--text-muted); padding-left: 14px; border-left: 1px solid var(--border); margin-left: 14px; font-weight: 600; white-space: nowrap; display: inline-flex; align-items: center; flex-shrink: 0; }
+    .mobile-menu-btn { display: none; background: none; border: 1px solid var(--border); border-radius: 8px; padding: 6px 8px; cursor: pointer; color: var(--text); line-height: 0; }
+    .nav-close-btn { display: none; }
+    .top-header-nav { display: flex; align-items: center; gap: 6px; flex: 1; justify-content: center; }
+    .top-header-nav a { padding: 8px 16px; font-size: 15px; color: var(--text-muted); text-decoration: none; border-radius: 20px; transition: all 0.2s ease; font-weight: 600; }
+    .top-header-nav a:hover, .top-header-nav a.active { color: var(--primary); background: rgba(13,148,136,0.06); }
+    .nav-dropdown { position: relative; }
+    .nav-dropdown > a::after { content: ' ▾'; font-size: 10px; opacity: 0.6; margin-left: 4px; }
+    .nav-dropdown .dropdown-menu { position: absolute; top: 100%; left: 50%; transform: translateX(-50%) translateY(10px); min-width: 220px; padding: 8px; background: #fff; border: 1px solid rgba(0,0,0,0.06); border-radius: 12px; box-shadow: 0 10px 40px -10px rgba(0,0,0,0.12); opacity: 0; visibility: hidden; transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1); z-index: 100; margin-top: 8px; }
+    .nav-dropdown:hover .dropdown-menu, .nav-dropdown:focus-within .dropdown-menu { opacity: 1; visibility: visible; transform: translateX(-50%) translateY(0); }
+    .nav-dropdown .dropdown-menu a { display: block; padding: 12px 16px; color: var(--text); text-decoration: none; line-height: 1.4; border-radius: 8px; text-align: left; }
+    .nav-dropdown .dropdown-menu a:hover { background: #f8fafc; }
+    .nav-dropdown .dropdown-menu a .menu-title { display: block; font-weight: 600; font-size: 14px; color: var(--text); margin-bottom: 2px; }
+    .nav-dropdown .dropdown-menu a:hover .menu-title { color: var(--primary); }
+    .nav-dropdown .dropdown-menu a .menu-desc { display: block; font-size: 12px; color: var(--text-muted); font-weight: 400; line-height: 1.4; }
+    .header-right { display: flex; align-items: center; gap: 16px; }
+
+    /* ─── HERO ─── */
+    .case-hero { background: url('images/hero-bg.svg') center/cover no-repeat, linear-gradient(135deg, #1e1b4b 0%, #4c1d95 55%, #7c3aed 100%); padding: 48px 24px; text-align: center; }
+    .hero-inner { max-width: 1000px; margin: 0 auto; }
+    .hero-badge { display: inline-flex; align-items: center; gap: 8px; background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.2); color: #ddd6fe; font-size: 13px; font-weight: 600; padding: 6px 16px; border-radius: 20px; margin-bottom: 14px; }
+    .hero-badge-conf { display: inline-flex; align-items: center; gap: 8px; background: rgba(245,158,11,0.2); border: 1px solid rgba(245,158,11,0.35); color: #fde68a; font-size: 12px; font-weight: 600; padding: 4px 12px; border-radius: 20px; margin-left: 8px; }
+    .case-hero h1 { font-family: 'Cormorant Garamond', serif; font-size: clamp(28px,4.5vw,46px); color: #fff; line-height: 1.12; margin-bottom: 10px; font-weight: 700; }
+    .case-hero h1 em { font-style: italic; color: #c4b5fd; }
+    .subtitle { font-size: 17px; color: #ddd6fe; max-width: 720px; margin: 0 auto 20px; line-height: 1.55; }
+    .hero-stats { display: flex; justify-content: center; flex-wrap: nowrap; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.12); border-radius: 16px; padding: 14px 8px; max-width: 900px; margin: 0 auto; overflow-x: auto; }
+    .hero-stat { flex: 1; min-width: 0; padding: 6px 10px; border-right: 1px solid rgba(255,255,255,0.12); text-align: center; }
+    .hero-stat:last-child { border-right: none; }
+    .hero-stat .val { font-size: clamp(18px,2.2vw,26px); font-weight: 800; color: #fff; line-height: 1; margin-bottom: 3px; white-space: nowrap; }
+    .hero-stat .lbl { font-size: 9.5px; color: #c4b5fd; font-weight: 600; text-transform: uppercase; letter-spacing: 0.3px; line-height: 1.3; margin-bottom: 5px; }
+    .hero-stat .eval { display: inline-flex; align-items: center; gap: 3px; font-size: 10px; font-weight: 700; padding: 2px 7px; border-radius: 20px; white-space: nowrap; }
+    .eval-green  { background: rgba(16,185,129,0.25); color: #6ee7b7; border: 1px solid rgba(16,185,129,0.35); }
+    .eval-violet { background: rgba(124,58,237,0.3); color: #ddd6fe; border: 1px solid rgba(124,58,237,0.5); }
+    .eval-amber  { background: rgba(245,158,11,0.25); color: #fde68a; border: 1px solid rgba(245,158,11,0.35); }
+
+    /* ─── BODY ─── */
+    .page-body { padding: 40px 20px 60px; }
+    .container { max-width: 1020px; margin: 0 auto; }
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; margin-bottom: 24px; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .section-label { font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 2px; color: var(--violet); margin-bottom: 4px; }
+    .section-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(20px, 2.5vw, 26px); font-weight: 700; color: var(--text); margin-bottom: 6px; line-height: 1.2; }
+    .section-title span { color: var(--violet); }
+    .section-intro { font-size: 13.5px; color: var(--text-muted); max-width: 720px; margin-bottom: 14px; line-height: 1.5; }
+
+    /* ─── CARD GRID ─── */
+    .card-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 14px; }
+    .card { background: var(--bg-white); border: 1px solid var(--border); border-radius: 12px; padding: 18px 16px; }
+    .card h3 { font-size: 14px; font-weight: 700; color: var(--text); margin-bottom: 8px; }
+    .card p { font-size: 13px; color: var(--text-muted); line-height: 1.5; }
+
+    /* ─── ADVANTAGE CARDS ─── */
+    .adv-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+    .adv-card { background: var(--bg-white); border: 1px solid var(--border); border-radius: 12px; padding: 16px; border-top: 3px solid; }
+    .adv-card.purple { border-top-color: var(--violet); }
+    .adv-card.teal   { border-top-color: var(--primary); }
+    .adv-card.amber  { border-top-color: var(--amber); }
+    .adv-card h4 { font-size: 13px; font-weight: 700; color: var(--text); margin-bottom: 5px; }
+    .adv-card p { font-size: 12.5px; color: var(--text-muted); line-height: 1.5; }
+
+    /* ─── COMPARE GRID ─── */
+    .compare-grid { display: grid; grid-template-columns: 1fr; gap: 24px; }
+    .compare-col { padding: 24px; border-radius: 16px; border: 1px solid var(--border); }
+    .compare-col.ab1 { background: #faf5ff; }
+    .compare-col.ab2 { background: #f0fdf4; }
+    .compare-col h4 { font-size: 18px; font-weight: 700; margin-bottom: 16px; }
+    .compare-col.ab1 h4 { color: #6d28d9; }
+    .compare-col.ab2 h4 { color: #065f46; }
+    .compare-img-wrap { background:#fff; border-radius:12px; padding:16px; margin-bottom:20px; border:1px solid #e5e7eb; box-shadow: 0 4px 20px rgba(0,0,0,0.05); }
+    .compare-img-wrap img { width:100%; max-width:1000px; margin:0 auto; border-radius:8px; display:block; }
+    .compare-row { display: flex; justify-content: space-between; align-items: center; padding: 10px 0; border-bottom: 1px solid rgba(0,0,0,0.05); font-size: 14px; gap: 12px; }
+    .compare-row:last-child { border-bottom: none; }
+    .compare-row .ck { color: var(--text-muted); font-size: 13px; font-weight: 500; }
+    .compare-row .cv { font-weight: 700; color: var(--text); }
+    .compare-row .cv.violet { color: #7c3aed; }
+    .compare-row .cv.green  { color: #065f46; }
+
+    /* ─── PATHWAY CARDS ─── */
+    .pathway-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .pathway-card { border-radius: 14px; padding: 22px 20px; border: 2px solid; }
+    .pathway-card.adc { background: linear-gradient(135deg, #faf5ff, #ede9fe); border-color: #c4b5fd; }
+    .pathway-card.ici { background: linear-gradient(135deg, #f0fdf4, #dcfce7); border-color: #86efac; }
+    .pathway-card .path-tag { font-size: 10px; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 6px; }
+    .pathway-card.adc .path-tag { color: #7c3aed; }
+    .pathway-card.ici .path-tag { color: #065f46; }
+    .pathway-card h3 { font-family: 'Cormorant Garamond', serif; font-size: 20px; font-weight: 700; margin-bottom: 4px; }
+    .pathway-card.adc h3 { color: #4c1d95; }
+    .pathway-card.ici h3 { color: #064e3b; }
+    .pathway-card .path-sub { font-size: 12px; font-weight: 600; margin-bottom: 12px; }
+    .pathway-card.adc .path-sub { color: #8b5cf6; }
+    .pathway-card.ici .path-sub { color: #059669; }
+    .pathway-card ul { list-style: none; padding: 0; }
+    .pathway-card ul li { font-size: 12.5px; color: var(--text-muted); padding: 4px 0; border-bottom: 1px solid rgba(0,0,0,0.06); display: flex; gap: 8px; }
+    .pathway-card ul li:last-child { border-bottom: none; }
+    .pathway-card ul li::before { content: '›'; font-weight: 800; margin-top: 1px; flex-shrink: 0; }
+    .pathway-card.adc ul li::before { color: #7c3aed; }
+    .pathway-card.ici ul li::before { color: #059669; }
+
+    /* ─── METRICS GRID ─── */
+    .metrics-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
+    .metric-card { background: var(--bg-white); border: 1px solid var(--border); border-radius: 10px; padding: 14px 12px; text-align: center; border-top: 3px solid var(--violet); }
+    .metric-card.green { border-top-color: #16a34a; }
+    .metric-value { font-family: 'Cormorant Garamond', serif; font-size: 24px; font-weight: 700; color: var(--violet); line-height: 1; margin-bottom: 3px; }
+    .metric-card.green .metric-value { color: #16a34a; }
+    .metric-label { font-size: 11.5px; font-weight: 600; color: var(--text); margin-bottom: 2px; }
+    .metric-sub { font-size: 10.5px; color: #9ca3af; }
+
+    /* ─── DATA TABLE ─── */
+    .data-table { width: 100%; border-collapse: collapse; border-radius: 12px; overflow: hidden; box-shadow: 0 0 0 1px var(--border); font-size: 13.5px; }
+    .data-table th { background: #4c1d95; color: #fff; font-weight: 700; padding: 10px 14px; text-align: left; font-size: 12px; letter-spacing: 0.05em; text-transform: uppercase; }
+    .data-table td { padding: 11px 14px; border-bottom: 1px solid var(--border); vertical-align: middle; }
+    .data-table tr:last-child td { border-bottom: none; }
+    .data-table tr:nth-child(even) td { background: #fafafa; }
+    .data-table tbody tr:hover td { background: #f5f3ff !important; }
+    .data-table td.ab1 { color: #6d28d9; font-weight: 700; }
+    .data-table td.ab2 { color: #065f46; font-weight: 700; }
+
+    /* ─── BADGES ─── */
+    .badge { display: inline-flex; align-items: center; gap: 4px; padding: 2px 8px; border-radius: 20px; font-size: 11px; font-weight: 700; border: 1px solid; }
+    .badge.pass    { background: #dcfce7; color: #065f46; border-color: #a7f3d0; }
+    .badge.best    { background: #ede9fe; color: #4c1d95; border-color: #c4b5fd; }
+    .badge.neutral { background: #f3f4f6; color: #4b5563; border-color: #d1d5db; }
+    .badge.warn    { background: #fef3c7; color: #78350f; border-color: #fde68a; }
+
+    /* ─── CHART ─── */
+    .chart-wrap { background: var(--bg-white); border: 1px solid var(--border); border-radius: 12px; padding: 16px 16px 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.04); }
+    .chart-title { font-family: 'Cormorant Garamond', serif; font-size: 16px; font-weight: 700; color: #4c1d95; margin-bottom: 10px; display: flex; align-items: center; gap: 8px; }
+    .chart-canvas-wrap { position: relative; height: 200px; }
+    .chart-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+
+    /* ─── INFO BOXES ─── */
+    .info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .info-box { background: var(--bg-white); border: 1px solid var(--border); border-radius: 12px; padding: 16px; }
+    .info-box h4 { font-size: 14px; font-weight: 700; color: var(--text); margin-bottom: 8px; display: flex; align-items: center; gap: 8px; }
+    .info-box ul { list-style: none; padding: 0; }
+    .info-box ul li { font-size: 12.5px; color: var(--text-muted); padding: 4px 0; border-bottom: 1px solid #f3f4f6; line-height: 1.45; }
+    .info-box ul li:last-child { border-bottom: none; }
+
+    /* ─── SPECIES PANEL ─── */
+    .species-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .species-card { background: var(--bg-white); border: 1px solid var(--border); border-radius: 12px; padding: 18px 16px; border-left: 4px solid; }
+    .species-card.human  { border-left-color: #7c3aed; }
+    .species-card.monkey { border-left-color: var(--primary); }
+    .species-card h4 { font-size: 14px; font-weight: 700; margin-bottom: 10px; }
+    .species-card.human h4  { color: #7c3aed; }
+    .species-card.monkey h4 { color: var(--primary); }
+    .species-card p { font-size: 13px; color: var(--text-muted); line-height: 1.5; }
+
+    /* ─── EPITOPE MAP ─── */
+    .epitope-legend { display: flex; gap: 20px; flex-wrap: wrap; margin-bottom: 12px; }
+    .ep-item { display: flex; align-items: center; gap: 6px; font-size: 12.5px; color: var(--text-muted); }
+    .ep-dot { width: 12px; height: 12px; border-radius: 3px; flex-shrink: 0; }
+
+    /* ─── CONFIDENTIAL NOTICE ─── */
+    .conf-notice { background: linear-gradient(135deg, #fffbeb, #fff7ed); border: 1.5px solid #fde68a; border-radius: 10px; padding: 12px 16px; font-size: 12.5px; color: #78350f; display: flex; align-items: flex-start; gap: 10px; line-height: 1.5; }
+
+    /* ─── RESULT BANNER ─── */
+    .result-banner { background: linear-gradient(135deg, #1e1b4b, #4c1d95); border-radius: 14px; padding: 28px; text-align: center; color: white; }
+    .result-banner .score { font-family: 'Cormorant Garamond', serif; font-size: 42px; font-weight: 700; line-height: 1; margin-bottom: 4px; color: #c4b5fd; }
+    .result-banner .score-sub { font-size: 13px; color: rgba(255,255,255,0.5); margin-bottom: 4px; }
+    .result-banner .score-label { font-size: 12px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: #a5b4fc; margin-bottom: 14px; }
+    .result-banner p { font-size: 13.5px; color: rgba(255,255,255,0.85); max-width: 640px; margin: 0 auto 20px; line-height: 1.65; }
+    .banner-cta { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+    .btn-primary   { display: inline-block; background: #fff; color: #4c1d95; font-weight: 700; font-size: 14px; padding: 12px 24px; border-radius: 8px; text-decoration: none; transition: all 0.2s; }
+    .btn-primary:hover { background: #ede9fe; }
+    .btn-secondary { display: inline-block; background: transparent; color: #fff; font-weight: 700; font-size: 14px; padding: 12px 24px; border-radius: 8px; border: 1.5px solid rgba(255,255,255,0.4); text-decoration: none; transition: all 0.2s; }
+    .btn-secondary:hover { border-color: rgba(255,255,255,0.8); background: rgba(255,255,255,0.08); }
+
+    /* ─── FOOTER ─── */
+    .site-footer { background: #111827; padding: 40px 24px; text-align: center; }
+    .site-footer p { color: #6b7280; font-size: 14px; }
+    .site-footer a { color: #9ca3af; text-decoration: none; }
+    .site-footer a:hover { color: #c4b5fd; }
+
+    @media (max-width: 768px) {
+      .hero-stats { flex-wrap: wrap; }
+      .hero-stat { flex: 0 0 calc(50% - 1px); border-right: none; border-bottom: 1px solid rgba(255,255,255,0.12); }
+      .adv-grid, .info-grid, .pathway-grid, .species-grid, .chart-grid { grid-template-columns: 1fr; }
+      .card-grid { grid-template-columns: 1fr; }
+      .metrics-grid { grid-template-columns: repeat(2, 1fr); }
+      .top-header .slogan { display: none; }
+    }
+    @media (max-width: 600px) {
+      .mobile-menu-btn { display: block; }
+      .top-header { padding: 10px 16px; flex-wrap: nowrap; }
+      .top-header-nav { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: #fff; flex-direction: column; justify-content: center; align-items: center; gap: 4px; z-index: 9999; opacity: 0; pointer-events: none; transition: opacity 0.25s; padding: 24px; overflow-y: auto; }
+      .top-header-nav.open { opacity: 1; pointer-events: auto; }
+      .top-header-nav a { font-size: 18px; padding: 12px 24px; }
+      .nav-close-btn { display: block; position: absolute; top: 16px; right: 20px; background: none; border: none; font-size: 32px; color: var(--text); cursor: pointer; line-height: 1; padding: 4px 8px; }
+      .header-right { display: none; }
+      .metrics-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ─── HEADER ─── -->
+<header class="top-header">
+  <div class="brand">
+    <a href="index.html">
+      <svg width="34" height="28" viewBox="0 0 32 30" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink:0;">
+        <path d="M16 2L2 10V22L16 28L30 22V10L16 2Z" fill="#0d9488" fill-opacity="0.05" stroke="#0d9488" stroke-width="1" stroke-opacity="0.3"/>
+        <path d="M14.5 24 V 16" stroke="#0d9488" stroke-width="2.5" stroke-linecap="round"/>
+        <path d="M17.5 24 V 16" stroke="#f59e0b" stroke-width="2.5" stroke-linecap="round"/>
+        <line x1="13" y1="19" x2="19" y2="19" stroke="#9ca3af" stroke-width="1.5" stroke-linecap="round"/>
+        <line x1="13" y1="21" x2="19" y2="21" stroke="#9ca3af" stroke-width="1.5" stroke-linecap="round"/>
+        <path d="M14.5 16 L 8 7" stroke="#0d9488" stroke-width="2.5" stroke-linecap="round"/>
+        <path d="M10 16 L 3.5 7" stroke="#2dd4bf" stroke-width="2.5" stroke-linecap="round"/>
+        <path d="M17.5 16 L 24 7" stroke="#f59e0b" stroke-width="2.5" stroke-linecap="round"/>
+        <rect x="21.5" y="3.5" width="5" height="5" rx="1" fill="#f59e0b" transform="rotate(45 24 6)"/>
+      </svg>
+      <span><span style="color:#111827">In</span><span style="color:var(--primary);font-style:italic">Syn</span><span style="color:#111827">Bio</span></span>
+    </a>
+  </div>
+  <span class="slogan">AI for Life Sciences</span>
+  <button class="mobile-menu-btn" onclick="document.querySelector('.top-header-nav').classList.toggle('open')" aria-label="Open navigation">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+  </button>
+  <nav class="top-header-nav">
+    <button class="nav-close-btn" onclick="document.querySelector('.top-header-nav').classList.remove('open')">&#10005;</button>
+    <a href="index.html">Home</a>
+    <div class="nav-dropdown" tabindex="0">
+      <a href="index.html#services">AI Drug Design</a>
+      <div class="dropdown-menu">
+        <a href="InSynBio_Antibody_Developability_Assessment_Page.html"><span class="menu-title">Antibody R&amp;D</span><span class="menu-desc">Humanization, CMC, Immunogenicity</span></a>
+        <a href="InSynBio_ADC_Design_Page.html"><span class="menu-title">Smart ADC Design</span><span class="menu-desc">Antigen-Payload-Linker Matching</span></a>
+        <a href="InSynBio_CART_Design_Page.html"><span class="menu-title">Smart CAR-T Design</span><span class="menu-desc">Architecture &amp; Component Optimization</span></a>
+        <a href="InSynBio_Bispecific_Antibody_Design_Page.html"><span class="menu-title">Bispecific Design</span><span class="menu-desc">Format Screening &middot; CMC &middot; Pairing</span></a>
+        <a href="vaccine_design.html"><span class="menu-title">Vaccine Design</span><span class="menu-desc">Neoantigen &middot; Heteroclitic &middot; mRNA</span></a>
+      </div>
+    </div>
+    <div class="nav-dropdown" tabindex="0">
+      <a href="antibody-guide.html">Clinical Reference Library</a>
+      <div class="dropdown-menu">
+        <a href="antibody-guide.html"><span class="menu-title">Antibody Engineering Guide</span><span class="menu-desc">Standards &amp; Design Principles</span></a>
+        <a href="ada_database.html"><span class="menu-title">ADA Database</span><span class="menu-desc">138 Clinical Immunogenicity Benchmarks</span></a>
+        <a href="adc_database.html"><span class="menu-title">ADC Database</span><span class="menu-desc">100 Clinical ADC Programs</span></a>
+        <a href="component-browser.html"><span class="menu-title">CAR Component Library</span><span class="menu-desc">237 CAR-T Engineering Components</span></a>
+        <a href="vaccine_kb_data.html"><span class="menu-title">Vaccine Knowledge Base</span><span class="menu-desc">Antigens &amp; Adjuvant Data</span></a>
+      </div>
+    </div>
+    <div class="nav-dropdown" tabindex="0">
+      <a href="index.html#case-studies" class="active">Case Studies</a>
+      <div class="dropdown-menu">
+        <a href="case_mumab4d5_humanization_en.html"><span class="menu-title">muMAb4D5 Humanization</span><span class="menu-desc">CDR Grafting + Back-mutations</span></a>
+        <a href="case_mumab4d5_cmc.html"><span class="menu-title">muMAb4D5 CMC Assessment</span><span class="menu-desc">15 Developability Metrics Passed</span></a>
+        <a href="case_mumab4d5_vhh_en.html"><span class="menu-title">VH &#x2192; HER2 VHH Conversion</span><span class="menu-desc">Nanobody Engineering &amp; CMC</span></a>
+        <a href="case_vgrw_sr_r2_affinity_maturation.html"><span class="menu-title">VHH Affinity Maturation</span><span class="menu-desc">Binding Energy &#x2212;3.32 kcal/mol</span></a>
+        <a href="case_bispecific_vhh_expression_optimization.html"><span class="menu-title">Bispecific VHH Optimization</span><span class="menu-desc">pI Engineering + 4.8&#xd7; IC90 Boost</span></a>
+        <a href="case_malaria_carm_design.html"><span class="menu-title">CAR-M Design</span><span class="menu-desc">Anti-CIDRα1 Dual-binder CAR-Macrophage</span></a>
+        <a href="case_fentanyl_hapten_vam.html"><span class="menu-title">Fentanyl Hapten VAM</span><span class="menu-desc">Affinity Maturation &#x2212;5.53 kcal/mol</span></a>
+        <a href="case_pdl1_epitope_analysis.html"><span class="menu-title">PD-L1 Epitope Analysis</span><span class="menu-desc">Blocking vs Non-blocking Classification</span></a>
+      </div>
+    </div>
+    <a href="InSynBio_OurTech.html">Our Tech</a>
+    <div class="nav-dropdown" tabindex="0">
+      <a href="index.html#about">About Us</a>
+      <div class="dropdown-menu">
+        <a href="index.html#about"><span class="menu-title">About InSynBio</span><span class="menu-desc">Team background &amp; mission</span></a>
+        <a href="index.html#workflow"><span class="menu-title">Workflow</span><span class="menu-desc">From inquiry to delivery</span></a>
+      </div>
+    </div>
+    <a href="index.html#contact">Contact Us</a>
+  </nav>
+  <div class="header-right"></div>
+</header>
+
+<!-- ─── HERO ─── -->
+<section class="case-hero">
+  <div class="hero-inner">
+    <div style="margin-bottom:12px;">
+      <span class="hero-badge">🧬 Case Study · PD-L1 Epitope Structure Analysis · ISB-EPT-2026-001</span>
+      <span class="hero-badge-conf">🔒 Confidential Client Project</span>
+    </div>
+    <h1>PD-L1 <em>Dual-Clone Dual-Epitope</em><br>Structural Analysis &amp; Pathway Classification</h1>
+    <p class="subtitle">AF2-Multimer structural modeling precisely maps PD-L1 binding epitopes of two client antibodies, reveals lateral (non-blocking) vs. frontal (blocking) configurational differences, validates human/cynomolgus cross-species binding conservation, and provides structural rationale for both ADC and immune checkpoint development pathways.</p>
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <div class="val">2</div>
+        <div class="lbl">Antibody Clones</div>
+        <span class="eval eval-violet">Distinct Epitope Configs</span>
+      </div>
+      <div class="hero-stat">
+        <div class="val">14</div>
+        <div class="lbl">Shared Epitope Residues</div>
+        <span class="eval eval-violet">Core PD-1 Binding Region</span>
+      </div>
+      <div class="hero-stat">
+        <div class="val">2</div>
+        <div class="lbl">Species Validated</div>
+        <span class="eval eval-green">✓ Human + Cynomolgus</span>
+      </div>
+      <div class="hero-stat">
+        <div class="val">1941 Å²</div>
+        <div class="lbl">Ab1 Interface Area</div>
+        <span class="eval eval-violet">Lateral Extension Binding</span>
+      </div>
+      <div class="hero-stat">
+        <div class="val">2</div>
+        <div class="lbl">Development Pathways</div>
+        <span class="eval eval-green">ADC + Checkpoint</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── BODY ─── -->
+<div class="page-body">
+<div class="container">
+
+  <!-- Confidentiality Notice -->
+  <div class="conf-notice reveal" style="margin-bottom: 28px;">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#d97706" stroke-width="2.5"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+    <span>This case is a client engagement. Antibody sequences, clone IDs, and target indications have been anonymized. Structural images and computational values derive from AF2-Multimer predictive modeling for methodology demonstration only; no proprietary information is disclosed.</span>
+  </div>
+
+  <!-- Executive Summary -->
+  <section class="section reveal" style="border-top:none; padding-top:0;">
+    <span class="section-label">Executive Summary</span>
+    <h2 class="section-title">Same Target, <span>Two Binding Configurations, Two Development Pathways</span></h2>
+    <p class="section-intro">Two anti-PD-L1 antibody clones provided by the client exhibit different in vitro blocking activity — one shows minimal PD-1/PD-L1 inhibition; the other demonstrates strong competitive inhibition. Structural modeling reveals the molecular mechanism and validates cross-species applicability.</p>
+    <div class="card-grid">
+      <div class="card" style="border-left: 4px solid #ef4444;">
+        <h3>Challenge</h3>
+        <p>The client has two binding-validated anti-PD-L1 antibody clones with markedly different PD-1 blocking activities. The molecular mechanism is unknown. The goal: explain the functional difference at the structural level when sequence alone cannot, and provide scientific rationale for two distinct development pathways.</p>
+      </div>
+      <div class="card" style="border-left: 4px solid var(--violet);">
+        <h3>Approach</h3>
+        <p>Used <strong>AF2-Multimer</strong> to independently model complexes of both antibodies with human PD-L1 and cynomolgus PD-L1. Calculated detailed interface parameters (BSA, shape complementarity, H-bonds, salt bridges), mapped epitope residues, and analyzed overlap with PD-1 competitive binding sites and spatial configurations.</p>
+      </div>
+      <div class="card" style="border-left: 4px solid #16a34a;">
+        <h3>Key Findings</h3>
+        <p><strong>Ab1 binds laterally to the PD-L1 IgC domain extension</strong>, not directly occluding the PD-1 binding face — suitable for ADC development with strong tumor targeting and reduced immune-related AEs. <strong>Ab2 engages the IgV core frontally</strong>, directly competing with PD-1 — ideal for immune checkpoint inhibitor development. Human/cynomolgus binding sites are highly conserved, supporting NHP studies.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Background -->
+  <div class="reveal">
+    <div class="section-label">Project Background</div>
+    <h2 class="section-title">PD-L1's <span>Dual Therapeutic Role</span></h2>
+    <p class="section-intro">PD-L1 is a central mediator of tumor immune evasion, highly expressed on tumor cell surfaces, and a key target for both ADC and immune checkpoint inhibitor development. The two development pathways place fundamentally different requirements on antibody binding site location.</p>
+    <div class="adv-grid">
+      <div class="adv-card purple">
+        <h4>🎯 ADC Target Pathway</h4>
+        <p>Non-blocking antibodies bind outside the PD-1 competitive region, without disrupting immune regulation, delivering cytotoxic payloads precisely to PD-L1-overexpressing tumor cells. Compared to blocking ADCs, the risk of immune-related adverse events (irAEs) is lower with a wider safety window.</p>
+      </div>
+      <div class="adv-card teal">
+        <h4>🛡 Immune Checkpoint Pathway</h4>
+        <p>Blocking antibodies directly occupy the PD-1 binding interface on PD-L1, lifting the tumor cell suppression of T cell activation and reactivating the immune system's tumor killing. Atezolizumab and Durvalumab are approved antibodies of this pathway.</p>
+      </div>
+      <div class="adv-card amber">
+        <h4>🔬 Structure Defines Function</h4>
+        <p>The key differentiator between the two pathways is epitope location and binding configuration — not affinity level. AF2 structural modeling provides structure-level evidence to classify clones before experimental validation, substantially shortening the development decision cycle.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Structural Analysis -->
+  <div class="reveal">
+    <div class="section-label">Structural Visualization</div>
+    <h2 class="section-title">Binding Configuration Comparison: <span>Frontal Engagement vs. Lateral Binding</span></h2>
+    <p class="section-intro">AF2-Multimer predicted complex structures clearly reveal the distinct binding orientations of the two antibodies on PD-L1. This geometric difference directly determines their blocking activity and development direction.</p>
+
+    <div class="compare-grid" style="margin-bottom: 32px;">
+      <div class="compare-col ab1">
+        <h4>Ab1 (Non-blocking / ADC Candidate)</h4>
+        <div class="compare-img-wrap">
+          <img src="images/case-pdl1-ab1.jpg" alt="Ab1 lateral binding configuration">
+          <p style="font-size:13px; color:#6b7280; margin-top:12px; text-align:center; font-weight:500;">Ab1 binds the lateral face of PD-L1 IgV and extends to IgC domain, not occluding the PD-1 binding core</p>
+        </div>
+        <div style="max-width:1000px; margin:0 auto;">
+          <div class="compare-row"><span class="ck">Binding Configuration</span><span class="cv violet">Lateral Extension</span></div>
+          <div class="compare-row"><span class="ck">PD-1 Competition</span><span class="cv">Minimal Steric Clash</span></div>
+          <div class="compare-row"><span class="ck">Key Advantage</span><span class="cv">Tumor targeting without immune disruption</span></div>
+        </div>
+      </div>
+
+      <div class="compare-col ab2">
+        <h4>Ab2 (Blocking / Immune Checkpoint)</h4>
+        <div class="compare-img-wrap">
+          <img src="images/case-pdl1-ab2.jpg" alt="Ab2 frontal engagement configuration">
+          <p style="font-size:13px; color:#6b7280; margin-top:12px; text-align:center; font-weight:500;">Ab2 engages the PD-L1 IgV core frontally, directly occupying the PD-1 binding interface</p>
+        </div>
+        <div style="max-width:1000px; margin:0 auto;">
+          <div class="compare-row"><span class="ck">Binding Configuration</span><span class="cv green">Frontal Engagement</span></div>
+          <div class="compare-row"><span class="ck">PD-1 Competition</span><span class="cv">Strong Competitive Inhibition</span></div>
+          <div class="compare-row"><span class="ck">Key Advantage</span><span class="cv">Directly relieves immune suppression</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-label">Interface Parameters</div>
+    <div class="metrics-grid" style="margin-bottom:14px;">
+      <div class="metric-card">
+        <div class="metric-value">1941</div>
+        <div class="metric-label">Ab1 Interface Area (Å²)</div>
+        <div class="metric-sub">Lateral extension binding</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-value">1795</div>
+        <div class="metric-label">Ab2 Interface Area (Å²)</div>
+        <div class="metric-sub">IgV core concentrated</div>
+      </div>
+      <div class="metric-card green">
+        <div class="metric-value">14</div>
+        <div class="metric-label">Shared Epitope Residues</div>
+        <div class="metric-sub">PD-1 core coverage region</div>
+      </div>
+      <div class="metric-card green">
+        <div class="metric-value">0.749/0.768</div>
+        <div class="metric-label">Shape Complementarity SC</div>
+        <div class="metric-sub">Ab1 / Ab2 — both excellent</div>
+      </div>
+    </div>
+
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>Interface Metric</th>
+          <th>Ab1 (Non-blocking)</th>
+          <th>Ab2 (Blocking)</th>
+          <th>Functional Significance</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Buried Surface Area (BSA)</td><td class="ab1">1941.5 Å²</td><td class="ab2">1795.2 Å²</td><td>Ab1 has overall larger interface</td></tr>
+        <tr><td>Shape Complementarity (SC)</td><td class="ab1">0.749</td><td class="ab2">0.768</td><td>Both show excellent fit quality</td></tr>
+        <tr><td>VH Chain Contribution</td><td class="ab1">22 residues (71%)</td><td class="ab2">15 residues (62.5%)</td><td>Ab1 more dependent on heavy chain</td></tr>
+        <tr><td>VL Chain Contribution</td><td class="ab1">9 residues (29%)</td><td class="ab2">9 residues (37.5%)</td><td>Light chain contributions comparable</td></tr>
+        <tr><td>Hydrogen Bonds</td><td class="ab1">32 pairs</td><td class="ab2">20 pairs</td><td>Ab1 has denser polar contacts</td></tr>
+        <tr><td>Salt Bridges</td><td class="ab1">2 pairs</td><td class="ab2">5 pairs</td><td>Ab2 has stronger electrostatic interactions</td></tr>
+        <tr><td>Hydrophobic Contacts</td><td class="ab1">6</td><td class="ab2">11</td><td>Ab2 more hydrophobically driven</td></tr>
+        <tr><td>Total Atomic Contacts</td><td class="ab1">755</td><td class="ab2">455</td><td>Ab1 contacts broader but more diffuse</td></tr>
+        <tr><td>Epitope Residues</td><td class="ab1">26</td><td class="ab2">23</td><td>Ab1 has wider epitope</td></tr>
+        <tr><td>Binding Region</td><td class="ab1">IgV + IgC Extension</td><td class="ab2">IgV Core Region</td><td><strong>Key Distinction</strong></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Epitope Differentiation -->
+  <div class="reveal">
+    <div class="section-label">Epitope Classification</div>
+    <h2 class="section-title">Epitope Overlap and <span>Differential Region Mapping</span></h2>
+    <p class="section-intro">Both antibodies share 14 residues in the PD-L1 IgV core region (covering key PD-1 binding positions), but their unique contact regions determine fundamentally different functions. Ab1 extends further to the lateral IgC domain face; Ab2 goes deep into the N-terminal IgV groove.</p>
+
+    <div class="epitope-legend">
+      <div class="ep-item"><div class="ep-dot" style="background:#d4a017;"></div><span>Shared (14): 38TYR, 40GLU, 42GLU, 43ASP, 45ASN, 48GLN, 58VAL, 95ARG, 97MET, 103ALA, 104ASP, 105TYR, 106LYS, 107ARG</span></div>
+      <div class="ep-item"><div class="ep-dot" style="background:#ef4444;"></div><span>Ab1 Unique (12): IgC extension — 91ALA, 92GLY, 93VAL, 94TYR, 108–111, 171LYS, etc.</span></div>
+      <div class="ep-item"><div class="ep-dot" style="background:#3b82f6;"></div><span>Ab2 Unique (9): IgV N-terminal groove — 1PHE, 36ILE, 50VAL, 51HIS, 53GLU, 55ASP, etc.</span></div>
+    </div>
+
+    <div class="chart-grid" style="margin-bottom:14px;">
+      <div class="chart-wrap">
+        <div class="chart-title">Interface Parameter Comparison</div>
+        <div class="chart-canvas-wrap"><canvas id="interfaceChart"></canvas></div>
+      </div>
+      <div class="chart-wrap">
+        <div class="chart-title">Epitope Distribution</div>
+        <div class="chart-canvas-wrap"><canvas id="epitopeChart"></canvas></div>
+      </div>
+    </div>
+
+    <div class="info-grid">
+      <div class="info-box">
+        <h4 style="color:#7c3aed;">Ab1 — Lateral Binding (Non-blocking)</h4>
+        <ul>
+          <li>Epitope extends to IgC domain lateral face (91–111, 171), far from PD-1 binding face</li>
+          <li>Extensive H-bonds (32 pairs) maintain broad but relatively flat contact network</li>
+          <li>Binding angle from the lateral face of PD-L1; does not occlude PD-1 binding groove</li>
+          <li>Low spatial competition with PD-1 → non-blocking or weakly blocking profile</li>
+          <li><strong>Recommended pathway: ADC</strong> (precise targeting, fewer side effects)</li>
+        </ul>
+      </div>
+      <div class="info-box">
+        <h4 style="color:#065f46;">Ab2 — Frontal Engagement (Blocking)</h4>
+        <ul>
+          <li>Epitope concentrated in IgV core, including N-terminal groove (1PHE, 36ILE)</li>
+          <li>5 salt bridges + 11 hydrophobic contacts provide strong directional binding force</li>
+          <li>Binding angle frontally covers PD-1 binding interface (CC′ and FG loops)</li>
+          <li>Directly competes with key PD-1 residues (R113, M115, D122 corresponding sites)</li>
+          <li><strong>Recommended pathway: Immune Checkpoint Inhibitor</strong></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Cross-species Validation -->
+  <div class="reveal">
+    <div class="section-label">Cross-Species Validation</div>
+    <h2 class="section-title">Human / Cynomolgus PD-L1 <span>Binding Site Conservation</span></h2>
+    <p class="section-intro">Preclinical drug development typically requires non-human primate (NHP) toxicology data. AF2 modeling validated binding of both antibodies to both human and cynomolgus PD-L1, providing structural justification for NHP study design.</p>
+    <div class="species-grid">
+      <div class="species-card human">
+        <h4>🧬 Human PD-L1 (Homo sapiens)</h4>
+        <p>AF2 modeled complex structures show high-confidence binding interfaces for both Ab1 and Ab2 (ipTM > 0.70). Core epitope residues 38TYR, 40GLU, 95ARG, 97MET, and segment 104–107 are fully covered with excellent shape complementarity.</p>
+      </div>
+      <div class="species-card monkey">
+        <h4>🐒 Cynomolgus PD-L1 (Macaca fascicularis)</h4>
+        <p>Cynomolgus PD-L1 shares high sequence homology with human PD-L1 in the key epitope segment (IgV domain 38–107). AF2 modeling shows both antibodies adopt highly similar binding poses to cynomolgus vs. human PD-L1, with conserved binding sites — supporting NHP pharmacology, toxicology, and safety study designs.</p>
+      </div>
+    </div>
+    <div style="background:#f0fdf4; border:1px solid #a7f3d0; border-radius:10px; padding:14px 18px; margin-top:14px; font-size:13px; color:#065f46; line-height:1.5;">
+      <strong>Cross-Species Conclusion:</strong> Binding epitopes of both antibodies are highly conserved between human and cynomolgus PD-L1. Structural predictions support pharmacodynamic, toxicological, and safety assessment in cynomolgus macaque models, meeting the species relevance requirements for IND filing.
+    </div>
+  </div>
+
+  <!-- Application Pathways -->
+  <div class="reveal">
+    <div class="section-label">Development Strategy</div>
+    <h2 class="section-title">Structure-Defined <span>Dual-Pathway Development</span></h2>
+    <p class="section-intro">Based on structural analysis, the two antibodies each enter distinct development pathways that maximize their respective clinical value.</p>
+    <div class="pathway-grid">
+      <div class="pathway-card adc">
+        <div class="path-tag">Pathway A · Non-blocking</div>
+        <h3>Ab1 → PD-L1 ADC</h3>
+        <p class="path-sub">Lateral epitope · No PD-1 competition · Low irAE risk</p>
+        <ul>
+          <li>Binds PD-L1 IgC lateral region; does not block PD-1/PD-L1 signaling pathway</li>
+          <li>Precisely targets PD-L1-overexpressing tumor cells for cytotoxic payload internalization</li>
+          <li>Avoids systemic T cell activation; fewer immune-related adverse events (irAEs) expected</li>
+          <li>High potential for combination with existing checkpoint inhibitors (complementary mechanism)</li>
+          <li>Suitable for NSCLC, TNBC, and other PD-L1-high indications</li>
+        </ul>
+      </div>
+      <div class="pathway-card ici">
+        <div class="path-tag">Pathway B · Blocking</div>
+        <h3>Ab2 → Immune Checkpoint Inhibitor</h3>
+        <p class="path-sub">IgV core epitope · Direct PD-1 competition · Classic immune activation</p>
+        <ul>
+          <li>Frontally covers the PD-1 binding interface; competitively blocks PD-1/PD-L1 interaction</li>
+          <li>Lifts tumor inhibition of T cell activation; reactivates anti-tumor immunity</li>
+          <li>Mechanism similar to Atezolizumab (Tecentriq) and Durvalumab (Imfinzi)</li>
+          <li>IgV core binding ensures high epitope conservation across clonal variants</li>
+          <li>Can be developed as monoclonal or bispecific antibody (combined with CTLA-4, LAG3, etc.)</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Methodology -->
+  <div class="reveal">
+    <div class="section-label">Methods &amp; Limitations</div>
+    <h2 class="section-title">Prediction Reliability <span>and Experimental Validation</span></h2>
+    <p class="section-intro">AF2 structural analysis provides high-quality directional guidance, but experimental validation is required before all critical decisions.</p>
+    <div class="info-grid">
+      <div class="info-box">
+        <h4>AF2 Modeling Reliability</h4>
+        <ul>
+          <li>Ab2 complex ipTM = 0.720, pTM = 0.770 — high-confidence interface prediction</li>
+          <li>Both antibody VH/VL pLDDT > 91 — very high structural prediction confidence</li>
+          <li>BSA and shape complementarity (SC) robustly describe overall interface character</li>
+          <li>5 Å contact threshold is permissive; peripheral residues (e.g., IgC tail) may include false positives</li>
+          <li>Interpret IgV domain (1–127) epitopes as primary; IgC extension as supplementary</li>
+        </ul>
+      </div>
+      <div class="info-box">
+        <h4>Recommended Experimental Validation</h4>
+        <ul>
+          <li>Competition ELISA: PD-1-Fc vs. both antibodies for PD-L1 binding; quantify % blocking</li>
+          <li>BLI / SPR: determine binding kinetics (kon, koff, KD) and PD-1 competitive potency</li>
+          <li>Epitope binning: confirm whether the two antibodies have independent (non-competing) epitopes</li>
+          <li>Cross-species: separately assess binding affinity to human vs. cynomolgus PD-L1-ECD</li>
+          <li>Functional assay: MLR to confirm T cell activation for the blocking clone</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Result Banner -->
+  <div class="reveal">
+    <div class="result-banner">
+      <div class="score">2 Pathways</div>
+      <div class="score-sub">One target · Two clones · Two epitope configurations · Two development tracks</div>
+      <div class="score-label">Structure-Guided · Epitope Precision Mapping · Cross-Species Validated · Pathways Defined</div>
+      <p>AF2 structural modeling precisely locates the distinct binding configurations of two PD-L1 antibodies, elucidates the molecular basis of lateral non-blocking (ADC) vs. frontal blocking (checkpoint inhibitor), and confirms cross-species binding site conservation for NHP studies. Two antibodies targeting the same molecule ultimately enter two complementary high-value development pathways.</p>
+      <div class="banner-cta">
+        <a href="InSynBio_ADC_Design_Page.html" class="btn-primary">ADC Design Services</a>
+        <a href="InSynBio_Antibody_Developability_Assessment_Page.html" class="btn-secondary">Antibody Design &amp; Assessment</a>
+        <a href="case_fentanyl_hapten_vam.html" class="btn-secondary">Fentanyl VAM Case</a>
+        <a href="index.html#contact" class="btn-secondary">Inquire About Your Project</a>
+      </div>
+    </div>
+  </div>
+
+</div>
+</div>
+
+<!-- ─── FOOTER ─── -->
+<footer class="site-footer">
+  <p>© 2026 <a href="index.html">InSynBio</a> · AI-Driven Antibody Engineering · Report ID: ISB-EPT-2026-001 · <a href="index.html#contact">Contact Us</a></p>
+  <p style="margin-top:8px; font-size:12px;">Disclaimer: All analyses are based on computational predictions. Structural images and workflow content are anonymized. Experimental validation is required before clinical decision-making.</p>
+</footer>
+
+<script>
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+  if (typeof lucide !== 'undefined') lucide.createIcons();
+
+  new Chart(document.getElementById('interfaceChart'), {
+    type: 'bar',
+    data: {
+      labels: ['BSA (Å²/10)', 'H-bonds', 'Salt Bridges', 'Hydrophobic', 'Contacts/100'],
+      datasets: [
+        { label: 'Ab1 (Non-blocking)', data: [194.15, 32, 2, 6, 7.55], backgroundColor: 'rgba(124,58,237,0.65)', borderColor: '#7c3aed', borderWidth: 1.5, borderRadius: 5 },
+        { label: 'Ab2 (Blocking)',     data: [179.52, 20, 5, 11, 4.55], backgroundColor: 'rgba(5,150,105,0.65)',   borderColor: '#059669', borderWidth: 1.5, borderRadius: 5 }
+      ]
+    },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      plugins: {
+        legend: { position: 'top', labels: { font: { family: 'Inter', size: 11 }, boxWidth: 12 } },
+        tooltip: { callbacks: { label: c => ` ${c.dataset.label}: ${c.parsed.y}` } }
+      },
+      scales: {
+        y: { ticks: { font: { family: 'Inter', size: 10 } }, grid: { color: '#f3f4f6' } },
+        x: { ticks: { font: { family: 'Inter', size: 10 } }, grid: { display: false } }
+      }
+    }
+  });
+
+  new Chart(document.getElementById('epitopeChart'), {
+    type: 'doughnut',
+    data: {
+      labels: ['Shared (14)', 'Ab1 Unique (12)', 'Ab2 Unique (9)'],
+      datasets: [{
+        data: [14, 12, 9],
+        backgroundColor: ['rgba(212,160,23,0.75)', 'rgba(239,68,68,0.70)', 'rgba(59,130,246,0.70)'],
+        borderColor: ['#d4a017', '#ef4444', '#3b82f6'],
+        borderWidth: 2
+      }]
+    },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      plugins: {
+        legend: { position: 'bottom', labels: { font: { family: 'Inter', size: 10 }, boxWidth: 12, padding: 8 } },
+        tooltip: { callbacks: { label: c => ` ${c.label}: ${c.parsed} residues` } }
+      },
+      cutout: '55%'
+    }
+  });
+</script>
+</body>
+</html>
