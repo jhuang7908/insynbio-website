@@ -1,0 +1,299 @@
+{
+  "missing_pmid_records": [
+    "Erenumab",
+    "Brolucizumab",
+    "Naxitamab",
+    "Reslizumab",
+    "Retifanlimab",
+    "Romosozumab",
+    "Atoltivimab",
+    "Clesrovimab",
+    "Relatlimab",
+    "Axatilimab",
+    "Satralizumab",
+    "Elranatamab"
+  ],
+  "pubmed_errors": [],
+  "title_mismatches": [
+    {
+      "pmid": "9732761",
+      "drug": "Palivizumab",
+      "title": "[Spindle-cell hemangioendothelioma with monomelic and multifocal form in a child]."
+    },
+    {
+      "pmid": "11248153",
+      "drug": "Trastuzumab",
+      "title": "Use of chemotherapy plus a monoclonal antibody against HER2 for metastatic breast cancer that overexpresses HER2."
+    },
+    {
+      "pmid": "15374928",
+      "drug": "Nimotuzumab",
+      "title": "Dispersed HIV positive asylum seekers need care throughout UK."
+    },
+    {
+      "pmid": "17050868",
+      "drug": "Panitumumab",
+      "title": "Excessive toxicity when treating central tumors in a phase II study of stereotactic body radiation therapy for medically inoperable early-stage lung cancer."
+    },
+    {
+      "pmid": "17390341",
+      "drug": "Etaracizumab",
+      "title": "Effects of Vitaxin, a novel therapeutic in trial for metastatic bone tumors, on osteoclast functions in vitro."
+    },
+    {
+      "pmid": "19147238",
+      "drug": "Golimumab",
+      "title": "Two years adherence to anti-osteoporotic medications in postmenopausal Israeli women."
+    },
+    {
+      "pmid": "21848463",
+      "drug": "Lebrikizumab",
+      "title": "Malpractice risk according to physician specialty."
+    },
+    {
+      "pmid": "22455692",
+      "drug": "Ixekizumab",
+      "title": "[Clinical analysis of 15 cases of malignant ovarian germ cell tumors with lung metastasis]."
+    },
+    {
+      "pmid": "22641384",
+      "drug": "Itolizumab",
+      "title": "Adenovirus-mediated tissue-targeted expression of the CDglyTk gene for the treatment of breast cancer."
+    },
+    {
+      "pmid": "25724531",
+      "drug": "Concizumab",
+      "title": "Gene mdpC plays a regulatory role in the methyl-tert-butyl ether degradation pathway of Methylibium petroleiphilum strain PM1."
+    },
+    {
+      "pmid": "26027431",
+      "drug": "Pembrolizumab",
+      "title": "Combined Nivolumab and Ipilimumab or Monotherapy in Untreated Melanoma."
+    },
+    {
+      "pmid": "26039608",
+      "drug": "Elotuzumab",
+      "title": "Outcomes of pregnancy after bariatric surgery."
+    },
+    {
+      "pmid": "26314760",
+      "drug": "Daratumumab",
+      "title": "Experimental treatments of endometriosis."
+    },
+    {
+      "pmid": "27581529",
+      "drug": "Aducanumab",
+      "title": "Antiplatelet strategies in elderly people: still a long way to go."
+    },
+    {
+      "pmid": "27751709",
+      "drug": "Guselkumab",
+      "title": "The association of hyperglycemia and diabetes mellitus and the risk of chemotherapy-induced neutropenia among cancer patients: A systematic review with meta-analysis."
+    },
+    {
+      "pmid": "28249145",
+      "drug": "Nemolizumab",
+      "title": "Gene Therapy in a Patient with Sickle Cell Disease."
+    },
+    {
+      "pmid": "29185868",
+      "drug": "Fremanezumab",
+      "title": "Three case studies of nonparaneoplastic limbic encephalitis (NPLE) in young adult males: Onset, course, and recovery following rehabilitation services."
+    },
+    {
+      "pmid": "29694819",
+      "drug": "Ibalizumab",
+      "title": "Prenatal Correction of X-Linked Hypohidrotic Ectodermal Dysplasia."
+    },
+    {
+      "pmid": "30462573",
+      "drug": "Lanadelumab",
+      "title": "An endogenous chemorepellent directs cell movement by inhibiting pseudopods at one side of cells."
+    },
+    {
+      "pmid": "30511862",
+      "drug": "Ravulizumab",
+      "title": "Criegee Intermediate Reaction with Alcohol Is Enhanced by a Single Water Molecule."
+    },
+    {
+      "pmid": "30655000",
+      "drug": "Toripalimab",
+      "title": "Attachment security and existential distress among patients with advanced cancer."
+    },
+    {
+      "pmid": "30655001",
+      "drug": "Sintilimab",
+      "title": "Journal of Psychosomatic Research Editor's Year in Review."
+    },
+    {
+      "pmid": "30785690",
+      "drug": "Sacituzumab",
+      "title": "[Levels of sex hormones, sex hormone binding globulin, antisperm antibodies and dopamine in postmanopausal women of nomadic and settled aboriginal and local caucasoid populations of the arctic territories.]."
+    },
+    {
+      "pmid": "31056336",
+      "drug": "Camrelizumab",
+      "title": "Phenotypic relationships, genetic parameters, genome-wide associations, and identification of potential candidate genes for ketosis and fat-to-protein ratio in German Holstein cows."
+    },
+    {
+      "pmid": "31166880",
+      "drug": "Polatuzumab",
+      "title": "Altered Expression of Astrocyte-Related Receptors and Channels Correlates With Epileptogenesis in Hippocampal Sclerosis."
+    },
+    {
+      "pmid": "31242369",
+      "drug": "Mirikizumab",
+      "title": "Immune Checkpoint Blockade plus Axitinib for Renal-Cell Carcinoma."
+    },
+    {
+      "pmid": "31454068",
+      "drug": "Timigutuzumab",
+      "title": "Pain Management in Nursing Home Residents: Findings from a Pilot Effectiveness-Implementation Study."
+    },
+    {
+      "pmid": "31495647",
+      "drug": "Inebilizumab",
+      "title": "Effectiveness of educational intervention of oral health for special needs on knowledge of dental students in Saudi Arabia."
+    },
+    {
+      "pmid": "31640535",
+      "drug": "Eptinezumab",
+      "title": "\"Trouble in Paradigm\" and the Social Norms Approach to Violence Prevention."
+    },
+    {
+      "pmid": "31743593",
+      "drug": "Enfortumab",
+      "title": "Organismal Aging and Oxidants beyond Macromolecules Damage."
+    },
+    {
+      "pmid": "31859550",
+      "drug": "Belantamab",
+      "title": "ALTERED RETINAL PERFUSION IN PATIENTS WITH INACTIVE GRAVES OPHTHALMOPATHY USING OPTICAL COHERENCE TOMOGRAPHY ANGIOGRAPHY."
+    },
+    {
+      "pmid": "32116130",
+      "drug": "Nirsevimab",
+      "title": "Insight of druggable cannabinoids against estrogen receptor β in breast cancer."
+    },
+    {
+      "pmid": "32169464",
+      "drug": "Leronlimab",
+      "title": "Effects of the DAG analogue 1,2-dioctanoyl-sn-glycerol (DiC8) on nicotine- and clothianidin-evoked currents through α-bungarotoxin-insensitive nicotinic acetylcholine receptors expressed on cockroach neurosecretory cells."
+    },
+    {
+      "pmid": "32374957",
+      "drug": "Emapalumab",
+      "title": "Once Upon a Time…the Hero Sheltered in Place."
+    },
+    {
+      "pmid": "32544301",
+      "drug": "Tafasitamab",
+      "title": "Edition 39.5."
+    },
+    {
+      "pmid": "32813945",
+      "drug": "Evinacumab",
+      "title": "When Prescribing Isn't Enough - Pharmacy-Level Barriers to Buprenorphine Access."
+    },
+    {
+      "pmid": "33113296",
+      "drug": "Bamlanivimab",
+      "title": "Percutaneous Tracheostomy."
+    },
+    {
+      "pmid": "33120155",
+      "drug": "Levilimab",
+      "title": "Cadmium enhances conjugative plasmid transfer to a fresh water microbial community."
+    },
+    {
+      "pmid": "33439225",
+      "drug": "Bimagrumab",
+      "title": "Therapists Donate Their Time to Counsel Distressed Health Care Workers."
+    },
+    {
+      "pmid": "33571457",
+      "drug": "Tisotumab",
+      "title": "Established and novel therapeutic options for autoimmune hepatitis."
+    },
+    {
+      "pmid": "33939642",
+      "drug": "Vunakizumab",
+      "title": "Predictors and Outcomes of Dengue-Associated Acute Kidney Injury."
+    },
+    {
+      "pmid": "34154068",
+      "drug": "Clazakizumab",
+      "title": "Study of a laser echo in an inhomogeneous dust environment with a continuous field Monte Carlo radiative transfer model."
+    },
+    {
+      "pmid": "34415358",
+      "drug": "Penpulimab",
+      "title": "Intraoperative radiotherapy with low-energy x-rays after neurosurgical resection of brain metastases-an Augsburg University Medical Center experience."
+    },
+    {
+      "pmid": "34764055",
+      "drug": "Regdanvimab",
+      "title": "Unusual oral mucosal ulceration post allogenic hematopoietic stem cell transplantation."
+    },
+    {
+      "pmid": "35388666",
+      "drug": "Sutimlimab",
+      "title": "Oral Tebipenem Pivoxil Hydrobromide in Complicated Urinary Tract Infection."
+    },
+    {
+      "pmid": "35388666",
+      "drug": "Tagitanlimab",
+      "title": "Oral Tebipenem Pivoxil Hydrobromide in Complicated Urinary Tract Infection."
+    },
+    {
+      "pmid": "35406884",
+      "drug": "Enuzovimab",
+      "title": "Antioxidants and Phytohormones Act in Coordination to Regulate Sage Response to Long Term Ozone Exposure."
+    },
+    {
+      "pmid": "35406884",
+      "drug": "Budigalimab",
+      "title": "Antioxidants and Phytohormones Act in Coordination to Regulate Sage Response to Long Term Ozone Exposure."
+    },
+    {
+      "pmid": "35941019",
+      "drug": "Ozoralizumab",
+      "title": "The Role of Critical Consciousness and Inclusive Curricula in Adolescents and Young Adults' Wellbeing: A Call for Critical Multicultural Education."
+    },
+    {
+      "pmid": "36215738",
+      "drug": "Tremelimumab",
+      "title": "Using genetic markers for detection and subtyping of the emerging Salmonella enterica subspecies enterica serotype Muenchen."
+    },
+    {
+      "pmid": "36812454",
+      "drug": "Garadacimab",
+      "title": "Alliance for Hippocratic Medicine v. FDA - Dobbs's Collateral Consequences for Pharmaceutical Regulation."
+    },
+    {
+      "pmid": "37260341",
+      "drug": "Recaticimab",
+      "title": "To Broaden or Not to Broaden? Answers on Appropriate Antimicrobial Escalations for Pediatric Hematopoietic Cell Transplant Patients Remain Out of Reach."
+    },
+    {
+      "pmid": "37454068",
+      "drug": "Tafolecimab",
+      "title": "The relationship of maternal hepatitis B e antigen and response to vaccination of infants born to women with chronic infection."
+    },
+    {
+      "pmid": "37851532",
+      "drug": "Tarlatamab",
+      "title": "Biomechanical Evaluation of Tracheal Needle Puncture Forces: Comparative Analysis of Annular Ligaments and Tracheal Cartilage."
+    },
+    {
+      "pmid": "38325376",
+      "drug": "Crovalimab",
+      "title": "Sequential activity of CA1 hippocampal cells constitutes a temporal memory map for associative learning in mice."
+    },
+    {
+      "pmid": "38634803",
+      "drug": "Pemivibart",
+      "title": "Re: \"Factors associated with favorable outcomes in cardiac arrest and target temperature management\" by Kimura et al."
+    }
+  ]
+}

@@ -1,0 +1,1855 @@
+{
+  "files": {
+    "ada_database.html": [],
+    "ada_db_data.json": [
+      "16503742",
+      "17390341",
+      "17761550",
+      "20197484",
+      "22070868",
+      "22576171",
+      "23089571",
+      "24117862",
+      "24590506",
+      "26179019",
+      "26873229",
+      "26967902",
+      "27119439",
+      "27372567",
+      "27863164",
+      "27959701",
+      "28070715",
+      "28620891",
+      "28988500",
+      "29131896",
+      "29260507",
+      "29516365",
+      "29854862",
+      "30089618",
+      "30144037",
+      "30153139",
+      "30265425",
+      "30289238",
+      "30352551",
+      "30359681",
+      "30367836",
+      "30382392",
+      "30621725",
+      "30649752",
+      "30715054",
+      "30916381",
+      "31138300",
+      "31142504",
+      "31180181",
+      "31201130",
+      "31711027",
+      "31783773",
+      "31801624",
+      "31806488",
+      "31960624",
+      "32203083",
+      "32251791",
+      "32333849",
+      "32376702",
+      "32387475",
+      "32401365",
+      "32767679",
+      "32819305",
+      "33361324",
+      "33388064",
+      "33446255",
+      "33446410",
+      "33462941",
+      "33524450",
+      "33528553",
+      "33618023",
+      "33789009",
+      "33837950",
+      "33908636",
+      "34183044",
+      "34276736",
+      "34276766",
+      "34324079",
+      "34416201",
+      "34540688",
+      "34607519",
+      "34687214",
+      "34915576",
+      "34932102",
+      "35246887",
+      "35326524",
+      "35326846",
+      "35633025",
+      "35636444",
+      "35962528",
+      "36072994",
+      "36109142",
+      "36374913",
+      "36892676",
+      "36948505",
+      "37148484",
+      "37268157",
+      "37450172",
+      "37566240",
+      "37656420",
+      "37656820",
+      "37932155",
+      "38127586",
+      "38191982",
+      "38258678",
+      "38348690",
+      "38367194",
+      "38477751",
+      "38584166",
+      "38995690",
+      "39105497",
+      "39111557",
+      "39136011",
+      "39171864",
+      "39187158",
+      "39224901",
+      "39366752",
+      "39460719",
+      "39530574",
+      "39588375",
+      "39708278",
+      "39751937",
+      "39793935",
+      "39866124",
+      "40401504",
+      "40481373",
+      "40580805",
+      "40592848",
+      "40645179",
+      "40668662",
+      "40799036",
+      "41054153",
+      "41163220",
+      "41290206",
+      "41461999"
+    ],
+    "adc_database.html": [
+      "10233360",
+      "11060331",
+      "11283486",
+      "11756185",
+      "11773748",
+      "11814056",
+      "12873544",
+      "15611492",
+      "16239570",
+      "16450923",
+      "16814772",
+      "16955513",
+      "17001294",
+      "17332358",
+      "17350563",
+      "17898714",
+      "17932349",
+      "18378562",
+      "18552842",
+      "18669269",
+      "19228616",
+      "19448626",
+      "20215052",
+      "21135266",
+      "21478267",
+      "21821736",
+      "22105345",
+      "22108849",
+      "22399561",
+      "22406981",
+      "22461862",
+      "22542113",
+      "22544701",
+      "22646630",
+      "22699451",
+      "22713502",
+      "22740452",
+      "22765894",
+      "22891273",
+      "23233704",
+      "23264543",
+      "23293052",
+      "23700264",
+      "23940257",
+      "23963802",
+      "24284813",
+      "24574511",
+      "24631280",
+      "24658681",
+      "24703513",
+      "24867892",
+      "24912431",
+      "25031149",
+      "25133814",
+      "25654301",
+      "25877877",
+      "25957392",
+      "26013320",
+      "26028407",
+      "26058450",
+      "26068579",
+      "26187766",
+      "26272984",
+      "26275529",
+      "26369699",
+      "26554950",
+      "2665776",
+      "26700026",
+      "27048580",
+      "27064340",
+      "27069000",
+      "27164163",
+      "27217292",
+      "27458193",
+      "27760882",
+      "27880927",
+      "28028218",
+      "28329763",
+      "28332312",
+      "28334839",
+      "28438881",
+      "28539397",
+      "28546337",
+      "28554950",
+      "28619709",
+      "28825710",
+      "28935674",
+      "28947957",
+      "28951488",
+      "29162666",
+      "29212923",
+      "29233830",
+      "29236700",
+      "29539427",
+      "29601203",
+      "29844174",
+      "30102631",
+      "30126844",
+      "30356154",
+      "30380360",
+      "30397169",
+      "30510034",
+      "30530824",
+      "30546250",
+      "30559322",
+      "30906522",
+      "30948512",
+      "31063838",
+      "31103038",
+      "31110004",
+      "31164375",
+      "31235653",
+      "31371393",
+      "31564619",
+      "31611324",
+      "31697395",
+      "31813763",
+      "31857336",
+      "31897654",
+      "31912758",
+      "31913613",
+      "32023444",
+      "32041721",
+      "32134256",
+      "32320577",
+      "32897654",
+      "32929266",
+      "32930499",
+      "33028661",
+      "33159180",
+      "33170115",
+      "33273122",
+      "33303579",
+      "33417826",
+      "33454211",
+      "33493423",
+      "33503420",
+      "33547437",
+      "33649601",
+      "33658172",
+      "33831346",
+      "33852827",
+      "33888590",
+      "33942582",
+      "34077175",
+      "34083779",
+      "34091710",
+      "34135861",
+      "34186361",
+      "34289523",
+      "34373294",
+      "34380756",
+      "34506330",
+      "34534433",
+      "34599012",
+      "34711587",
+      "34711642",
+      "34789493",
+      "34906459",
+      "35219975",
+      "35314666",
+      "35320644",
+      "35418259",
+      "35569421",
+      "35584508",
+      "35636936",
+      "36045843",
+      "36334297",
+      "36445704",
+      "36800443",
+      "36884217",
+      "37196158",
+      "37301884",
+      "37301885",
+      "37342928",
+      "37357149",
+      "37452145",
+      "37619980",
+      "37945842",
+      "38346294",
+      "38507467",
+      "6261600",
+      "8267523",
+      "8765048",
+      "9092568"
+    ],
+    "vaccine_kb_data.html": [],
+    "vaccine_kb_data.json": [
+      "12402066",
+      "15684341",
+      "19723653",
+      "22279198",
+      "27959184",
+      "28678778",
+      "30655436",
+      "7895164",
+      "8906788"
+    ],
+    "antibody-guide.html": [
+      "11060331",
+      "11096108",
+      "11238752",
+      "11532822",
+      "11602730",
+      "11773748",
+      "11814056",
+      "11916992",
+      "12165561",
+      "12873544",
+      "16450923",
+      "16537476",
+      "16614067",
+      "16615187",
+      "16814772",
+      "16955513",
+      "17283120",
+      "17350563",
+      "17898714",
+      "19749776",
+      "20139433",
+      "20159975",
+      "20173738",
+      "20215052",
+      "20943719",
+      "21135266",
+      "21441456",
+      "21478267",
+      "21821736",
+      "22399561",
+      "22406981",
+      "22542113",
+      "22713502",
+      "22765894",
+      "23389682",
+      "23700264",
+      "23896478",
+      "24284813",
+      "2471552",
+      "24867892",
+      "25473098",
+      "26013320",
+      "26058450",
+      "26068579",
+      "26187766",
+      "2665776",
+      "26700026",
+      "26976769",
+      "27048580",
+      "27164163",
+      "27217292",
+      "27298261",
+      "28003361",
+      "28554950",
+      "29212923",
+      "29236700",
+      "29538065",
+      "31063838",
+      "31103038",
+      "31371393",
+      "31697395",
+      "31813763",
+      "32023444",
+      "32320577",
+      "3260844",
+      "33028661",
+      "33303579",
+      "33831346",
+      "33852827",
+      "34711587",
+      "34906459",
+      "35219975",
+      "35314666",
+      "36045843",
+      "36445704",
+      "36800443",
+      "37619980",
+      "39186361",
+      "6261600",
+      "8267523",
+      "8875953",
+      "9092568",
+      "9731797"
+    ],
+    "component-browser.html": [
+      "34516736",
+      "38243600"
+    ],
+    "car_kb_data_public.json": [
+      "10364280",
+      "11779416",
+      "11875433",
+      "14737178",
+      "14765119",
+      "15109397",
+      "15153592",
+      "15475573",
+      "16224276",
+      "17033567",
+      "17363559",
+      "19252503",
+      "19259074",
+      "20679730",
+      "2121594",
+      "21559507",
+      "21715312",
+      "22013103",
+      "22241791",
+      "22955919",
+      "23325584",
+      "23434733",
+      "23741007",
+      "24013198",
+      "24240169",
+      "24755406",
+      "25117924",
+      "25250572",
+      "25866972",
+      "2839268",
+      "28431249",
+      "28459453",
+      "3000824",
+      "30170622",
+      "30232283",
+      "30674538",
+      "30778241",
+      "30778258",
+      "30814741",
+      "30820032",
+      "31207603",
+      "31451679",
+      "31607499",
+      "31624173",
+      "32601408",
+      "32780534",
+      "32822578",
+      "34385304",
+      "34385707",
+      "34516736",
+      "34562310",
+      "34990280",
+      "35382530",
+      "3582969",
+      "35931020",
+      "36109635",
+      "37230085",
+      "37289910",
+      "37587344",
+      "37938587",
+      "38243600",
+      "7952271",
+      "9160743",
+      "9383242"
+    ],
+    "car_kb_public.json": [
+      "20179677",
+      "20354568",
+      "22060164",
+      "23771773",
+      "24336504",
+      "25416277",
+      "25482433",
+      "25800760",
+      "26999600",
+      "27482888",
+      "28521086",
+      "29385370",
+      "30108335",
+      "30275568",
+      "30988127",
+      "31136781",
+      "31285351",
+      "31802004",
+      "31900437",
+      "32242358",
+      "32325412",
+      "34266984",
+      "34516736",
+      "34757064",
+      "34901232",
+      "34990237",
+      "34990280",
+      "36109639",
+      "38243600",
+      "39059405",
+      "39920391"
+    ],
+    "component_library_public.json": [
+      "34516736",
+      "38243600"
+    ]
+  },
+  "total_unique": 439,
+  "pubmed_ok": 430,
+  "pubmed_failed": [
+    "11773748",
+    "19749776",
+    "24574511",
+    "25117924",
+    "25654301",
+    "27959184",
+    "28334839",
+    "29538065",
+    "37945842"
+  ],
+  "titles": {
+    "2121594": {
+      "title": "A novel transvection phenomenon affecting the white gene of Drosophila melanogaster."
+    },
+    "2471552": {
+      "title": "Intracellular degradation of bleomycin hydrolase in two Chinese hamster cell lines in relation to their peplomycin susceptibility."
+    },
+    "2665776": {
+      "title": "The role of lymphokines in common variable hypogammaglobulinemia."
+    },
+    "2839268": {
+      "title": "Mu-, but not delta-, opioid receptor-mediated antinociception in mice is attenuated by gamma-irradiation."
+    },
+    "3000824": {
+      "title": "Kinetics of 125I-ubiquitin conjugation with and liberation from rabbit reticulocyte stroma."
+    },
+    "3260844": {
+      "title": "Factors influencing the cytotoxicity of anti-bacterial sera for lymphocytes from ankylosing spondylitis patients."
+    },
+    "3582969": {
+      "title": "The geriatric patient and general hospital psychiatry."
+    },
+    "6261600": {
+      "title": "[Clinical aspects, diagnosis and treatment of trophoblastic disease in Bulgaria in the period of 1971-1975]."
+    },
+    "7895164": {
+      "title": "Development of high potency universal DR-restricted helper epitopes by modification of high affinity DR-blocking peptides."
+    },
+    "7952271": {
+      "title": "Membrane arachidonic acid concentration correlates with age and induction of long-term potentiation in the dentate gyrus in the rat."
+    },
+    "8267523": {
+      "title": "[Genetic and epidemiologic studies on alcoholic liver diseases]."
+    },
+    "8765048": {
+      "title": "Threonine 80 on HLA-B27 confers protection against lysis by a group of natural killer clones."
+    },
+    "8875953": {
+      "title": "Mutations in the ligand-binding domain of the kit receptor: an uncommon site in human piebaldism."
+    },
+    "8906788": {
+      "title": "Structure of the complex between human T-cell receptor, viral peptide and HLA-A2."
+    },
+    "9092568": {
+      "title": "Cloning and functional expression of a brain peptide/histidine transporter."
+    },
+    "9160743": {
+      "title": "Condensins, chromosome condensation protein complexes containing XCAP-C, XCAP-E and a Xenopus homolog of the Drosophila Barren protein."
+    },
+    "9383242": {
+      "title": "Responses of human MG-63 osteosarcoma cell line and human osteoblast-like cells to pulsed electromagnetic fields."
+    },
+    "9731797": {
+      "title": "Malignant fibrous histiocytoma of the heart producing interleukin-6."
+    },
+    "10233360": {
+      "title": "Recruitment of primitive peripheral blood cells: synergism of interleukin 12 with interleukin 6 and stem cell factor."
+    },
+    "10364280": {
+      "title": "p53-Independent and -dependent requirements for E1B-55K in adenovirus type 5 replication."
+    },
+    "11060331": {
+      "title": "Current applications of genetic technology in predisposition testing and microsatellite instability assays."
+    },
+    "11096108": {
+      "title": "High resolution mapping of the binding site on human IgG1 for Fc gamma RI, Fc gamma RII, Fc gamma RIII, and FcRn and design of IgG1 variants with improved binding to the Fc gamma R."
+    },
+    "11238752": {
+      "title": "Folate status during pregnancy in women is improved by long-term high vegetable intake compared with the average western diet."
+    },
+    "11283486": {
+      "title": "[Littoral hemangioma of the spleen]."
+    },
+    "11532822": {
+      "title": "Antidepressant selection and economic outcome: a review of methods and studies from clinical practice."
+    },
+    "11602730": {
+      "title": "Fine definition of the epitope on the gp41 glycoprotein of human immunodeficiency virus type 1 for the neutralizing monoclonal antibody 2F5."
+    },
+    "11756185": {
+      "title": "Ataxia telangiectasia mutated-deficient B-cell chronic lymphocytic leukemia occurs in pregerminal center cells and results in defective damage response and unrepaired chromosome damage."
+    },
+    "11773748": {
+      "error": "cannot get document summary"
+    },
+    "11779416": {
+      "title": "Adenoviral vectors do not induce, inhibit, or potentiate human platelet aggregation."
+    },
+    "11814056": {
+      "title": "Sphingolipids in mammalian cell signalling."
+    },
+    "11875433": {
+      "title": "Phosphoproteome analysis by mass spectrometry and its application to Saccharomyces cerevisiae."
+    },
+    "11916992": {
+      "title": "Effects of temperature on sustained swimming performance and swimming kinematics of the chub mackerel Scomber japonicus."
+    },
+    "12165561": {
+      "title": "A missense mutation disrupting a dibasic prohormone processing site in pro-opiomelanocortin (POMC) increases susceptibility to early-onset obesity through a novel molecular mechanism."
+    },
+    "12402066": {
+      "title": "Serum soluble interleukin-2 receptor (IL-2R) and immunohistochemical staining of IL-2R/Tac antigen in colorectal cancer."
+    },
+    "12873544": {
+      "title": "Pulmonary transplantation for cystic fibrosis: pre-transplant recipient characteristics in patients dying of peri-operative sepsis."
+    },
+    "14737178": {
+      "title": "JAK/STAT, Raf/MEK/ERK, PI3K/Akt and BCR-ABL in cell cycle progression and leukemogenesis."
+    },
+    "14765119": {
+      "title": "An extracellular aspartic protease functions in Arabidopsis disease resistance signaling."
+    },
+    "15109397": {
+      "title": "Costs and risk factors for ventilator-associated pneumonia in a Turkish university hospital's intensive care unit: a case-control study."
+    },
+    "15153592": {
+      "title": "Foot problems in older patients: a focused podogeriatric assessment study in ambulatory care."
+    },
+    "15475573": {
+      "title": "Vascular endothelial cell cyclic nucleotide phosphodiesterases and regulated cell migration: implications in angiogenesis."
+    },
+    "15611492": {
+      "title": "Narrative review: hepatobiliary disease in type 2 diabetes mellitus."
+    },
+    "15684341": {
+      "title": "Nestin expression and clonal analysis of islet-derived epithelial monolayers: insight into nestin-expressing cell heterogeneity and differentiation potential."
+    },
+    "16224276": {
+      "title": "Inability of a fusion protein of IL-2 and diphtheria toxin (Denileukin Diftitox, DAB389IL-2, ONTAK) to eliminate regulatory T lymphocytes in patients with melanoma."
+    },
+    "16239570": {
+      "title": "Uropathogenic Escherichia coli flagella aid in efficient urinary tract colonization."
+    },
+    "16450923": {
+      "title": "Readiness of paediatric audiology services for newborn hearing screening: findings and implications from the programme in England."
+    },
+    "16503742": {
+      "title": "Efalizumab: a review of events reported during clinical trials and side effects."
+    },
+    "16537476": {
+      "title": "Engineered antibody Fc variants with enhanced effector function."
+    },
+    "16614067": {
+      "title": "Vailulu'u Seamount, Samoa: Life and death on an active submarine volcano."
+    },
+    "16615187": {
+      "title": "Deaths from Clostridium sordellii after medical abortion."
+    },
+    "16814772": {
+      "title": "Neuroprotective effect of hyperbaric oxygen therapy monitored by MR-imaging after embolic stroke in rats."
+    },
+    "16955513": {
+      "title": "Identification of alkaline proteins that are differentially expressed in an overgrowth-mediated growth arrest and cell death of Escherichia coli by proteomic methodologies."
+    },
+    "17001294": {
+      "title": "Inflammation and apoptosis genes and the risk of restenosis after percutaneous coronary intervention."
+    },
+    "17033567": {
+      "title": "Do trauma centers have the capacity to respond to disasters?"
+    },
+    "17283120": {
+      "title": "Tbx3 is a downstream target of the Wnt/beta-catenin pathway and a critical mediator of beta-catenin survival functions in liver cancer."
+    },
+    "17332358": {
+      "title": "Homeodomain-interacting protein kinase 2 is the ionizing radiation-activated p53 serine 46 kinase and is regulated by ATM."
+    },
+    "17350563": {
+      "title": "Indian pharma enters the global arena."
+    },
+    "17363559": {
+      "title": "Extrathymic generation of tumor-specific T cells from genetically engineered human hematopoietic stem cells via Notch signaling."
+    },
+    "17390341": {
+      "title": "Effects of Vitaxin, a novel therapeutic in trial for metastatic bone tumors, on osteoclast functions in vitro."
+    },
+    "17761550": {
+      "title": "The incidence and significance of anti-natalizumab antibodies: results from AFFIRM and SENTINEL."
+    },
+    "17898714": {
+      "title": "Methylation of histone H3R2 by PRMT6 and H3K4 by an MLL complex are mutually exclusive."
+    },
+    "17932349": {
+      "title": "Erythropoietin and its receptor in breast cancer: correlation with steroid receptors and outcome."
+    },
+    "18378562": {
+      "title": "Closing the gaps: a full scan of the intestinal expression of p-glycoprotein, breast cancer resistance protein, and multidrug resistance-associated protein 2 in male and female rats."
+    },
+    "18552842": {
+      "title": "The orexigenic hormone ghrelin defends against depressive symptoms of chronic stress."
+    },
+    "18669269": {
+      "title": "[Activation of elicitor defensive properties by systemic signal molecules during the interaction between potato and Phytophthora]."
+    },
+    "19228616": {
+      "title": "Commercial versus social goals of tracking what doctors do."
+    },
+    "19252503": {
+      "title": "Autophagy enhances the efficacy of BCG vaccine by increasing peptide presentation in mouse dendritic cells."
+    },
+    "19259074": {
+      "title": "A population-based case-control study of potential risk factors for IBD."
+    },
+    "19448626": {
+      "title": "Local auxin biosynthesis modulates gradient-directed planar polarity in Arabidopsis."
+    },
+    "19723653": {
+      "title": "The prioritization of cancer antigens: a national cancer institute pilot project for the acceleration of translational research."
+    },
+    "19749776": {
+      "error": "cannot get document summary"
+    },
+    "20139433": {
+      "title": "LQAS: User Beware."
+    },
+    "20159975": {
+      "title": "Rapid modulation of the organic anion transporting polypeptide 2B1 (OATP2B1, SLCO2B1) function by protein kinase C-mediated internalization."
+    },
+    "20173738": {
+      "title": "Sister chromosome pairing maintains heterozygosity in parthenogenetic lizards."
+    },
+    "20179677": {
+      "title": "Case report of a serious adverse event following the administration of T cells transduced with a chimeric antigen receptor recognizing ERBB2."
+    },
+    "20197484": {
+      "title": "A phase I pharmacologic study of necitumumab (IMC-11F8), a fully human IgG1 monoclonal antibody directed against EGFR in patients with advanced solid malignancies."
+    },
+    "20215052": {
+      "title": "Tyrosinase inactivation in its action on dopa."
+    },
+    "20354568": {
+      "title": "INSIG2 is Associated with Lower Gain in Weight-for-Length Between Birth and Age 6 Months."
+    },
+    "20679730": {
+      "title": "Mice deficient in MCT8 reveal a mechanism regulating thyroid hormone secretion."
+    },
+    "20943719": {
+      "title": "The tyrosine kinase inhibitor ZD6474 blocks proliferation of RET mutant medullary thyroid carcinoma cells."
+    },
+    "21135266": {
+      "title": "Reduced melanoma after regular sunscreen use: randomized trial follow-up."
+    },
+    "21441456": {
+      "title": "IL-21 promotes skin recruitment of CD4(+) cells and drives IFN-γ-dependent epidermal hyperplasia."
+    },
+    "21478267": {
+      "title": "FOXD3 regulates migration properties and Rnd3 expression in melanoma cells."
+    },
+    "21559507": {
+      "title": "Transplantation of adult mouse iPS cell-derived photoreceptor precursors restores retinal structure and function in degenerative mice."
+    },
+    "21715312": {
+      "title": "AF1q/MLLT11 regulates the emergence of human prothymocytes through cooperative interaction with the Notch signaling pathway."
+    },
+    "21821736": {
+      "title": "Q172H replacement overcomes effects on the metabolism of cyclophosphamide and efavirenz caused by CYP2B6 variant with Arg262."
+    },
+    "22013103": {
+      "title": "Deficit in anterior pituitary function and variable immune deficiency (DAVID) in children presenting with adrenocorticotropin deficiency and severe infections."
+    },
+    "22060164": {
+      "title": "The value of carcass weight, fat depth measures and eye muscle area for predicting the percentage yield of saleable meat in Australian grass-fed beef carcasses for Japan."
+    },
+    "22070868": {
+      "title": "Immunogenicity of panitumumab in combination chemotherapy clinical trials."
+    },
+    "22105345": {
+      "title": "Dissolved organic carbon reduces the toxicity of aluminum to three tropical freshwater organisms."
+    },
+    "22108849": {
+      "title": "A stereo-controlled access to functionalized macrolactams via an aza-Claisen rearrangement."
+    },
+    "22241791": {
+      "title": "High-risk ovarian cancer based on 126-gene expression signature is uniquely characterized by downregulation of antigen presentation pathway."
+    },
+    "22279198": {
+      "title": "Patient doses using multidetector computed tomography scanners in Kenya."
+    },
+    "22399561": {
+      "title": "Changes in self-reported energy balance behaviours and body mass index during a mass media campaign."
+    },
+    "22406981": {
+      "title": "Mapping QTL for resistance to eyespot of wheat in Aegilops longissima."
+    },
+    "22461862": {
+      "title": "Hysterectomy is mostly unnecessary."
+    },
+    "22542113": {
+      "title": "Progesterone and preterm birth prevention: translating clinical trials data into clinical practice."
+    },
+    "22544701": {
+      "title": "MT1-MMP plays a critical role in hematopoiesis by regulating HIF-mediated chemokine/cytokine gene transcription within niche cells."
+    },
+    "22576171": {
+      "title": "The Hematopoietic Expression Viewer: expanding mobile apps as a scientific tool."
+    },
+    "22646630": {
+      "title": "Preoperative chemoradiotherapy for esophageal or junctional cancer."
+    },
+    "22699451": {
+      "title": "Successful xenografts of AML3 samples in immunodeficient NOD/shi-SCID IL2Rγ⁻/⁻ mice."
+    },
+    "22713502": {
+      "title": "Neurodevelopmental outcomes of twins."
+    },
+    "22740452": {
+      "title": "Intracellular cyclophilin A is an important Ca(2+) regulator in platelets and critically involved in arterial thrombus formation."
+    },
+    "22765894": {
+      "title": "The design, synthesis, and biological evaluation of potent receptor tyrosine kinase inhibitors."
+    },
+    "22891273": {
+      "title": "The coding genome of splenic marginal zone lymphoma: activation of NOTCH2 and other pathways regulating marginal zone development."
+    },
+    "22955919": {
+      "title": "HLA-haploidentical bone marrow transplantation with posttransplant cyclophosphamide expands the donor pool for patients with sickle cell disease."
+    },
+    "23089571": {
+      "title": "Factors contributing to initial weight loss among adolescents with polycystic ovary syndrome."
+    },
+    "23233704": {
+      "title": "Prognostic significance of progesterone receptor-positive tumor cells within immunohistochemically defined luminal A breast cancer."
+    },
+    "23264543": {
+      "title": "Quantifying the relative risk of sex offenders: risk ratios for static-99R."
+    },
+    "23293052": {
+      "title": "Crystalline structural intermediates of a breathing metal-organic framework that functions as a luminescent sensor and gas reservoir."
+    },
+    "23325584": {
+      "title": "Cost-effectiveness of provider-based HIV partner notification in urban Malawi."
+    },
+    "23389682": {
+      "title": "Novel registration for microcomputed tomography and bioluminescence imaging based on iterated optimal projection."
+    },
+    "23434733": {
+      "title": "Multicenter phase I trial of the mitogen-activated protein kinase 1/2 inhibitor BAY 86-9766 in patients with advanced cancer."
+    },
+    "23700264": {
+      "title": "A study of tropomyosin's role in cardiac function and disease using thin-filament reconstituted myocardium."
+    },
+    "23741007": {
+      "title": "Loss of endothelial protein C receptors links coagulation and inflammation to parasite sequestration in cerebral malaria in African children."
+    },
+    "23771773": {
+      "title": "Cell-free repair of small cartilage defects in the Goettinger minipig: the effects of BMP-7 continuously released by poly(lactic-co-glycolid acid) microspheres."
+    },
+    "23896478": {
+      "title": "β-Lactam antibiotics targeting PBP1 selectively enhance daptomycin activity against methicillin-resistant Staphylococcus aureus."
+    },
+    "23940257": {
+      "title": "Coreceptor affinity for MHC defines peptide specificity requirements for TCR interaction with coagonist peptide-MHC."
+    },
+    "23963802": {
+      "title": "Vitamin E δ-tocotrienol prolongs survival in the LSL-KrasG12D/+;LSL-Trp53R172H/+;Pdx-1-Cre (KPC) transgenic mouse model of pancreatic cancer."
+    },
+    "24013198": {
+      "title": "Locus-specific editing of histone modifications at endogenous enhancers."
+    },
+    "24117862": {
+      "title": "The pharmacokinetics and safety profiles of belimumab after single subcutaneous and intravenous doses in healthy Japanese volunteers."
+    },
+    "24240169": {
+      "title": "KMT2D maintains neoplastic cell proliferation and global histone H3 lysine 4 monomethylation."
+    },
+    "24284813": {
+      "title": "Influence of spatial distribution and size of clones on the realized outcrossing rate of the marsh cinquefoil (Comarum palustre)."
+    },
+    "24336504": {
+      "title": "The two faces of Hippo: targeting the Hippo pathway for regenerative medicine and cancer treatment."
+    },
+    "24574511": {
+      "error": "cannot get document summary"
+    },
+    "24590506": {
+      "title": "Development of a method that eliminates false-positive results due to nerve growth factor interference in the assessment of fulranumab immunogenicity."
+    },
+    "24631280": {
+      "title": "MRI findings in Duane's ocular retraction syndrome."
+    },
+    "24658681": {
+      "title": "Identification of glycosylated regions in pneumococcal PspA conjugated to serotype 6B capsular polysaccharide."
+    },
+    "24703513": {
+      "title": "Foot posture, leg length discrepancy and low back pain--their relationship and clinical management using foot orthoses--an overview."
+    },
+    "24755406": {
+      "title": "The covariation of independent and dependant variables in neurofeedback: a proposal framework to identify cognitive processes and brain activity variables."
+    },
+    "24867892": {
+      "title": "Use and performance of the Melody Transcatheter Pulmonary Valve in native and postsurgical, nonconduit right ventricular outflow tracts."
+    },
+    "24912431": {
+      "title": "The WHIM-like CXCR4(S338X) somatic mutation activates AKT and ERK, and promotes resistance to ibrutinib and other agents used in the treatment of Waldenstrom's Macroglobulinemia."
+    },
+    "25031149": {
+      "title": "Management of children with severe acute malnutrition."
+    },
+    "25117924": {
+      "error": "cannot get document summary"
+    },
+    "25133814": {
+      "title": "Granulomatosis with polyangiitis (Wegener's granulomatosis) with hard palate and bronchial perforations treated with rituximab - a case report."
+    },
+    "25250572": {
+      "title": "Hyperkalemic hypertension-associated cullin 3 promotes WNK signaling by degrading KLHL3."
+    },
+    "25416277": {
+      "title": "Dnmt3a loss predisposes murine hematopoietic stem cells to malignant transformation."
+    },
+    "25473098": {
+      "title": "MAP kinase p38α regulates type III interferon (IFN-λ1) gene expression in human monocyte-derived dendritic cells in response to RNA stimulation."
+    },
+    "25482433": {
+      "title": "Structural conservation despite huge sequence diversity allows EPCR binding by the PfEMP1 family implicated in severe childhood malaria."
+    },
+    "25654301": {
+      "error": "cannot get document summary"
+    },
+    "25800760": {
+      "title": "Human Epidermal Growth Factor Receptor 2 (HER2) -Specific Chimeric Antigen Receptor-Modified T Cells for the Immunotherapy of HER2-Positive Sarcoma."
+    },
+    "25866972": {
+      "title": "TIGIT and PD-1 impair tumor antigen-specific CD8⁺ T cells in melanoma patients."
+    },
+    "25877877": {
+      "title": "Aberrant Expression of proPTPRN2 in Cancer Cells Confers Resistance to Apoptosis."
+    },
+    "25957392": {
+      "title": "SF3B1 mutation identifies a distinct subset of myelodysplastic syndrome with ring sideroblasts."
+    },
+    "26013320": {
+      "title": "Somatic concerns, depressive traits, atherosclerosis and the incidence of cardiovascular disease in ageing Finnish men."
+    },
+    "26028407": {
+      "title": "Nivolumab versus Docetaxel in Advanced Squamous-Cell Non-Small-Cell Lung Cancer."
+    },
+    "26058450": {
+      "title": "Haemophilia care in Central and Eastern Europe: challenges and ways forward from clinicians' perspective."
+    },
+    "26068579": {
+      "title": "Asthma Bronchiale and Exercise-Induced Bronchoconstriction."
+    },
+    "26179019": {
+      "title": "In Reply."
+    },
+    "26187766": {
+      "title": "An equation to calculate the actual methylene middle parameter as a function of temperature."
+    },
+    "26272984": {
+      "title": "motifbreakR: an R/Bioconductor package for predicting variant effects at transcription factor binding sites."
+    },
+    "26275529": {
+      "title": "In vivo Functional Evaluation of Increased Brain Delivery of the Opioid Peptide DAMGO by Glutathione-PEGylated Liposomes."
+    },
+    "26369699": {
+      "title": "BMI Affects the Relationship between Long Chain N-3 Polyunsaturated Fatty Acid Intake and Stroke Risk: a Meta-Analysis."
+    },
+    "26554950": {
+      "title": "The Protective Effects of Different Sources of Maternal Selenium on Oxidative Stressed Chick Embryo Liver."
+    },
+    "26700026": {
+      "title": "Patient journey to a specialist amyotrophic lateral sclerosis multidisciplinary clinic: an exploratory study."
+    },
+    "26873229": {
+      "title": "Population Pharmacokinetics of Daclizumab High-Yield Process in Healthy Volunteers and Subjects with Multiple Sclerosis: Analysis of Phase I-III Clinical Trials."
+    },
+    "26967902": {
+      "title": "Treating chronic lymphocytic leukemia with obinutuzumab: safety and efficacy considerations."
+    },
+    "26976769": {
+      "title": "Lactate clearance and mortality in septic patients with hepatic dysfunction."
+    },
+    "26999600": {
+      "title": "Alloantigen-specific regulatory T cells generated with a chimeric antigen receptor."
+    },
+    "27048580": {
+      "title": "Results from the Survey of Antibiotic Resistance (SOAR) 2012-14 in Thailand, India, South Korea and Singapore."
+    },
+    "27064340": {
+      "title": "Cu-Catalyzed Sequential Dehydrogenation-Conjugate Addition for β-Functionalization of Saturated Ketones: Scope and Mechanism."
+    },
+    "27069000": {
+      "title": "Fulminant hepatic failure from hepatitis E in a non-pregnant female traveller."
+    },
+    "27119439": {
+      "title": "Pharmacokinetics and Pharmacodynamics of Canakinumab in Patients With Systemic Juvenile Idiopathic Arthritis."
+    },
+    "27164163": {
+      "title": "Tri(1-adamantyl)phosphine: Expanding the Boundary of Electron-Releasing Character Available to Organophosphorus Compounds."
+    },
+    "27217292": {
+      "title": "WFITN ethics charter."
+    },
+    "27298261": {
+      "title": "Anatomy of the Ophthalmic Artery: Embryological Consideration."
+    },
+    "27372567": {
+      "title": "Traffic-related air pollution exposure is associated with allergic sensitization, asthma, and poor lung function in middle age."
+    },
+    "27458193": {
+      "title": "Consistently Inconsistent-Bone Marrow Mononuclear Stem Cell Therapy Following Acute Myocardial Infarction: A Decade Later."
+    },
+    "27482888": {
+      "title": "Phase I trials using Sleeping Beauty to generate CD19-specific CAR T cells."
+    },
+    "27760882": {
+      "title": "Low-Phosphate Induction of Plastidal Stromules Is Dependent on Strigolactones But Not on the Canonical Strigolactone Signaling Component MAX2."
+    },
+    "27863164": {
+      "title": "Telerheumatology: A Systematic Review."
+    },
+    "27880927": {
+      "title": "Very low risk ST-segment elevation myocardial infarction? It exists and may be easily identified."
+    },
+    "27959184": {
+      "error": "cannot get document summary"
+    },
+    "27959701": {
+      "title": "Crizanlizumab for the Prevention of Pain Crises in Sickle Cell Disease."
+    },
+    "28003361": {
+      "title": "Thioredoxin-1 Selectively Activates Transglutaminase 2 in the Extracellular Matrix of the Small Intestine: IMPLICATIONS FOR CELIAC DISEASE."
+    },
+    "28028218": {
+      "title": "High fishery catches through trophic cascades in China."
+    },
+    "28070715": {
+      "title": "An Integrated Assessment of the Effects of Immunogenicity on the Pharmacokinetics, Safety, and Efficacy of Elotuzumab."
+    },
+    "28329763": {
+      "title": "The allosteric inhibitor ABL001 enables dual targeting of BCR-ABL1."
+    },
+    "28332312": {
+      "title": "Antitumor activity of chLpMab-2, a human-mouse chimeric cancer-specific antihuman podoplanin antibody, via antibody-dependent cellular cytotoxicity."
+    },
+    "28334839": {
+      "error": "cannot get document summary"
+    },
+    "28431249": {
+      "title": "Macrophages Facilitate Electrical Conduction in the Heart."
+    },
+    "28438881": {
+      "title": "Prevalence of Congenital Cytomegalovirus Infection Assessed Through Viral Genome Detection in Dried Blood Spots in Children with Autism Spectrum Disorders."
+    },
+    "28459453": {
+      "title": "The Nephila clavipes genome highlights the diversity of spider silk genes and their complex expression."
+    },
+    "28521086": {
+      "title": "A Computational Exploration of H(2)S and CO(2) Capture by Ionic Liquids Based on α-Amino Acid Anion and N(7),N(9)-Dimethyladeninium Cation."
+    },
+    "28539397": {
+      "title": "Variations on a theme: species differences in synaptic connectivity do not predict central pattern generator activity."
+    },
+    "28546337": {
+      "title": "PET-Guided Evaluation and Optimization of Internalized Antibody-Drug Conjugates Targeting Erythropoietin-Producing Hepatoma A2 Receptor."
+    },
+    "28554950": {
+      "title": "Ectopic tooth: an unusual cause of headache."
+    },
+    "28619709": {
+      "title": "Loss of FAM46C Promotes Cell Survival in Myeloma."
+    },
+    "28620891": {
+      "title": "Population Pharmacokinetic Modeling of Olaratumab, an Anti-PDGFRα Human Monoclonal Antibody, in Patients with Advanced and/or Metastatic Cancer."
+    },
+    "28678778": {
+      "title": "An immunogenic personal neoantigen vaccine for patients with melanoma."
+    },
+    "28825710": {
+      "title": "Metals induce transient folding and activation of the twister ribozyme."
+    },
+    "28935674": {
+      "title": "Expression of Concern: Suppression of intestinal tumorigenesis in Apc mutant mice upon Musashi-1 deletion. J. Cell Sci. doi: 10.1242/jcs.197574."
+    },
+    "28947957": {
+      "title": "Cooperative but distinct early co-signaling events originate from ERBB2 and ERBB1 receptors upon trastuzumab treatment in breast cancer cells."
+    },
+    "28951488": {
+      "title": "The RING-Type E3 Ligase XBAT35.2 Is Involved in Cell Death Induction and Pathogen Response."
+    },
+    "28988500": {
+      "title": "A safety evaluation of evolocumab."
+    },
+    "29131896": {
+      "title": "Association of Coded Severity With Readmission Reduction After the Hospital Readmissions Reduction Program."
+    },
+    "29162666": {
+      "title": "Molecular characterization and expression analysis of CSαβ defensin genes from the scorpion Mesobuthus martensii."
+    },
+    "29212923": {
+      "title": "Response inhibition activates distinct motor cortical inhibitory processes."
+    },
+    "29233830": {
+      "title": "Placental abruption leading to hysterectomy."
+    },
+    "29236700": {
+      "title": "A component-based system for agricultural drought monitoring by remote sensing."
+    },
+    "29260507": {
+      "title": "Safety and efficacy of daratumumab in combination with bortezomib and dexamethasone in Japanese patients with relapsed or refractory multiple myeloma."
+    },
+    "29385370": {
+      "title": "Tisagenlecleucel in Children and Young Adults with B-Cell Lymphoblastic Leukemia."
+    },
+    "29516365": {
+      "title": "Brodalumab: A Review in Moderate to Severe Plaque Psoriasis."
+    },
+    "29538065": {
+      "error": "cannot get document summary"
+    },
+    "29539427": {
+      "title": "Bimodal CD40/Fas-Dependent Crosstalk between iNKT Cells and Tumor-Associated Macrophages Impairs Prostate Cancer Progression."
+    },
+    "29601203": {
+      "title": "Crystallography and Molecular Arrangement of Polymorphic Monolayer J-Aggregates of a Cyanine Dye: Multiangle Polarized Light Fluorescence Optical Microscopy Study."
+    },
+    "29844174": {
+      "title": "Face recognition accuracy of forensic examiners, superrecognizers, and face recognition algorithms."
+    },
+    "29854862": {
+      "title": "Infection and Rerupture After Surgical Repair of Achilles Tendons."
+    },
+    "30089618": {
+      "title": "Practice guideline update recommendations summary: Disorders of consciousness: Report of the Guideline Development, Dissemination, and Implementation Subcommittee of the American Academy of Neurology; the American Congress of Rehabilitation Medicine; and the National Institute on Disability, Independent Living, and Rehabilitation Research."
+    },
+    "30102631": {
+      "title": "Gastric Bypass Surgery Reduces De Novo Cases of Type 2 Diabetes to Population Levels: A Nationwide Cohort Study From Sweden."
+    },
+    "30108335": {
+      "title": "Regulation of microRNA function in animals."
+    },
+    "30126844": {
+      "title": "Liver-secreted RBP4 does not impair glucose homeostasis in mice."
+    },
+    "30144037": {
+      "title": "Clinical pharmacology of alemtuzumab, an anti-CD52 immunomodulator, in multiple sclerosis."
+    },
+    "30153139": {
+      "title": "Uncommon Imaging Findings of Inflammatory Myofibroblastic Tumor: Report of a Rare Case With Both Omentum and Mesentery Involvement in the Abdominal Cavity."
+    },
+    "30170622": {
+      "title": "Neurologic immune-related adverse events associated with adjuvant ipilimumab: report of two cases."
+    },
+    "30232283": {
+      "title": "Chronic infection stunts macrophage heterogeneity and disrupts immune-mediated myogenesis."
+    },
+    "30265425": {
+      "title": "Expanding access to buprenorphine treatment in rural areas with the use of telemedicine."
+    },
+    "30275568": {
+      "title": "Induction of resistance to chimeric antigen receptor T cell therapy by transduction of a single leukemic B cell."
+    },
+    "30289238": {
+      "title": "Ultraviolet Irradiation Treatment for Enhanced Sodium Storage Performance Based on Wide-Interlayer-Spacing Hollow C@MoS(2)@CN Nanospheres."
+    },
+    "30352551": {
+      "title": "Identification and characterization of NF-Y gene family in walnut (Juglans regia L.)."
+    },
+    "30356154": {
+      "title": "Interspecies cross-feeding orchestrates carbon degradation in the rumen ecosystem."
+    },
+    "30359681": {
+      "title": "Assessment of the long-term safety of mepolizumab and durability of clinical response in patients with severe eosinophilic asthma."
+    },
+    "30367836": {
+      "title": "What Are the Benefits of a Sustained Virologic Response to Direct-Acting Antiviral Therapy for Hepatitis C Virus Infection?"
+    },
+    "30380360": {
+      "title": "Effect of environmental constraints on multi-segment coordination patterns during the tennis service in expert performers."
+    },
+    "30382392": {
+      "title": "Sensorimotor training and whole-body vibration training have the potential to reduce motor and sensory symptoms of chemotherapy-induced peripheral neuropathy-a randomized controlled pilot trial."
+    },
+    "30397169": {
+      "title": "Does T Cell Activation Require a Quorum of Lymphocytes?"
+    },
+    "30510034": {
+      "title": "A systematic review examining the impact of redirecting low-acuity patients seeking emergency department care: is the juice worth the squeeze?"
+    },
+    "30530824": {
+      "title": "Can solid-phase assays replace immunofluorescence for ANA screening?"
+    },
+    "30546250": {
+      "title": "Investigating the influence of ubiquinone blood level on the abilities of children with specific learning disorder."
+    },
+    "30559322": {
+      "title": "Duox1 Regulates Primary B Cell Function under the Influence of IL-4 through BCR-Mediated Generation of Hydrogen Peroxide."
+    },
+    "30621725": {
+      "title": "Gastroesophageal junction Paneth cell carcinoma with extensive cystic and secretory features - case report and literature review."
+    },
+    "30649752": {
+      "title": "Evaluation of Antibody Properties and Clinically Relevant Immunogenicity, Anaphylaxis, and Hypersensitivity Reactions in Two Phase III Trials of Tralokinumab in Severe, Uncontrolled Asthma."
+    },
+    "30655436": {
+      "title": "Airborne in the era of climate change."
+    },
+    "30674538": {
+      "title": "Coverage-Versus-Length Plots, a Simple Quality Control Step for de Novo Yeast Genome Sequence Assemblies."
+    },
+    "30715054": {
+      "title": "A Study on An EMG Sensor with High Gain and Low Noise for Measuring Human Muscular Movement Patterns for Smart Healthcare."
+    },
+    "30778241": {
+      "title": "c-Maf-dependent T(reg) cell control of intestinal T(H)17 cells and IgA establishes host-microbiota homeostasis."
+    },
+    "30778258": {
+      "title": "Stable isotope variations of daily precipitation from 2014-2018 in the central United States."
+    },
+    "30814741": {
+      "title": "Proteomics identifies new therapeutic targets of early-stage hepatocellular carcinoma."
+    },
+    "30820032": {
+      "title": "Interrater and intrarater reliability of ventilatory thresholds determined in individuals with spinal cord injury."
+    },
+    "30906522": {
+      "title": "Bilateral antrochoanal polyp: report of a new case and systematic review of the literature."
+    },
+    "30916381": {
+      "title": "Assessment of the effects of immunogenicity on the pharmacokinetics, efficacy and safety of tildrakizumab."
+    },
+    "30948512": {
+      "title": "Amyloid-β oligomers have a profound detergent-like effect on lipid membrane bilayers, imaged by atomic force and electron microscopy."
+    },
+    "30988127": {
+      "title": "Peripheral Manifestations in Spondyloarthritis and their Effect: An Ancillary Analysis of the ASAS-COMOSPA Study."
+    },
+    "31063838": {
+      "title": "Fabrication of doxycycline-loaded electrospun PCL/PEO membranes for a potential drug delivery system."
+    },
+    "31103038": {
+      "title": "Small obliquely oriented cortical cerebellar infarctions are associated with cardioembolic stroke."
+    },
+    "31110004": {
+      "title": "Design of self-assembly dipeptide hydrogels and machine learning via their chemical features."
+    },
+    "31136781": {
+      "title": "CD123 CAR T cells for the treatment of myelodysplastic syndrome."
+    },
+    "31138300": {
+      "title": "Methodological approaches to the study of cancer risk in the vicinity of pollution sources: the experience of a population-based case-control study of childhood cancer."
+    },
+    "31142504": {
+      "title": "A Phase Ib/II Study of Ramucirumab in Combination with Emibetuzumab in Patients with Advanced Cancer."
+    },
+    "31164375": {
+      "title": "Can real-time feedback improve the simulated infant cardiopulmonary resuscitation performance of basic life support and lay rescuers?"
+    },
+    "31180181": {
+      "title": "Silencing of HLA class I on primary human hepatocytes as a novel strategy for reduction in alloreactivity."
+    },
+    "31201130": {
+      "title": "Burden of dengue infection in India, 2017: a cross-sectional population based serosurvey."
+    },
+    "31207603": {
+      "title": "TOX transcriptionally and epigenetically programs CD8(+) T cell exhaustion."
+    },
+    "31235653": {
+      "title": "The Purinergic System as a Pharmacological Target for the Treatment of Immune-Mediated Inflammatory Diseases."
+    },
+    "31285351": {
+      "title": "Trophic control of cryptic coralline algal diversity."
+    },
+    "31371393": {
+      "title": "Crystal structures of plant inorganic pyrophosphatase, an enzyme with a moonlighting autoproteolytic activity."
+    },
+    "31451679": {
+      "title": "Plummer-Vinson Syndrome and Heart Failure: An Unusual Association in an African American Woman."
+    },
+    "31564619": {
+      "title": "Influence of surgical technique on residual cholesteatoma location and prevalence."
+    },
+    "31607499": {
+      "title": "Vaginal cuff brachytherapy in the adjuvant setting for patients with high-risk early-stage cervical cancer."
+    },
+    "31611324": {
+      "title": "Does thrombectomy inhibit effect of ischaemic postconditioning in STEMI? True or not?"
+    },
+    "31624173": {
+      "title": "Genome Sequence of Oxalobacter formigenes Strain SSYG-15."
+    },
+    "31697395": {
+      "title": "Promoting Behavioral Change in Mobile Health Interventions for Older Adults: A Scoping Review."
+    },
+    "31711027": {
+      "title": "Rapid single-step synthesis of porous carbon from an agricultural waste for energy storage application."
+    },
+    "31783773": {
+      "title": "Associations between certolizumab pegol serum levels, anti-drug antibodies and treatment response in patients with inflammatory joint diseases: data from the NOR-DMARD study."
+    },
+    "31801624": {
+      "title": "A phase Ib study of utomilumab (PF-05082566) in combination with mogamulizumab in patients with advanced solid tumors."
+    },
+    "31802004": {
+      "title": "c-Jun overexpression in CAR T cells induces exhaustion resistance."
+    },
+    "31806488": {
+      "title": "Traumatic brain injury and homelessness: from prevalence to prevention."
+    },
+    "31813763": {
+      "title": "A pharmacist-led medicines review intervention in community-dwelling Māori older adults- a feasibility study protocol."
+    },
+    "31857336": {
+      "title": "Maximising and evaluating the uptake, use and impact of golf and health studies."
+    },
+    "31897654": {
+      "title": "Umbilicus and the rectus sheath: a study using human fetuses."
+    },
+    "31900437": {
+      "title": "Outcomes and complications of iris-fixated intraocular lenses in cases with inadequate capsular support and complex ophthalmic history."
+    },
+    "31912758": {
+      "title": "Preliminary clinical outcomes of a short-term low-intensity Early Start Denver Model implemented in the Taiwanese public health system."
+    },
+    "31913613": {
+      "title": "(18)F-Trifluoromethanesulfinate Enables Direct C-H (18)F-Trifluoromethylation of Native Aromatic Residues in Peptides."
+    },
+    "31960624": {
+      "title": "A Phase 1, Randomized, Placebo-Controlled Study to Evaluate the Safety, Tolerability, Pharmacokinetics, and Immunogenicity of Subcutaneous Tezepelumab in Healthy Japanese Men."
+    },
+    "32023444": {
+      "title": "A Nervous Breakdown that May Stop Autoimmune Diabetes."
+    },
+    "32041721": {
+      "title": "Bilateral chest wall mesenchymal hamartomas masquerading as fetal hydrops in utero."
+    },
+    "32134256": {
+      "title": "Chimeric siRNA-DNA Surfactants for the Enhanced Delivery and Sustained Cytotoxicity of a Gold(III) Metallodrug."
+    },
+    "32203083": {
+      "title": "FSHR ablation induces depression-like behaviors."
+    },
+    "32242358": {
+      "title": "KTE-X19 CAR T-Cell Therapy in Relapsed or Refractory Mantle-Cell Lymphoma."
+    },
+    "32251791": {
+      "title": "A first case of meningitis/encephalitis associated with SARS-Coronavirus-2."
+    },
+    "32320577": {
+      "title": "Anifrolumab in Systemic Lupus Erythematosus. Reply."
+    },
+    "32325412": {
+      "title": "Laparoscopic paraduodenal hernia repair with bioabsorbable mesh: A case of a novel technique for a rare cause of bowel obstruction."
+    },
+    "32333849": {
+      "title": "Acute Type A Aortic Dissection During the COVID-19 Outbreak."
+    },
+    "32376702": {
+      "title": "Genetic Association Reveals Protection against Recurrence of Clostridium difficile Infection with Bezlotoxumab Treatment."
+    },
+    "32387475": {
+      "title": "Imiquimod suppresses respiratory syncytial virus (RSV) replication via PKA pathway and reduces RSV induced-inflammation and viral load in mice lungs."
+    },
+    "32401365": {
+      "title": "A suite of polymerase chain reaction-based peptide tagging plasmids for epitope-targeted enzymatic functionalization of yeast proteins."
+    },
+    "32601408": {
+      "title": "Synthesis of a d(1)-titanium fluoride kagome lattice antiferromagnet."
+    },
+    "32767679": {
+      "title": "A phase I, randomized, double-blind study to assess the safety, tolerability and efficacy of the topical RORC2 inverse agonist PF-06763809 in participants with mild-to-moderate plaque psoriasis."
+    },
+    "32780534": {
+      "title": "Enantiospecific Solid Solution Formation Triggers the Propagation of Homochirality."
+    },
+    "32819305": {
+      "title": "Randomized double-blind clinical trial comparing safety and efficacy of the biosimilar BCD-022 with reference trastuzumab."
+    },
+    "32822578": {
+      "title": "Should I Stay or Should I Go: eIF3 Remains Ribosome Associated and Is Required for Elongation."
+    },
+    "32897654": {
+      "title": "Using a home oxygen weaning protocol and pCO(2) to evaluate outcomes for infants with bronchopulmonary dysplasia discharged on home oxygen."
+    },
+    "32929266": {
+      "title": "Single-cell transcriptomic atlas of the human endometrium during the menstrual cycle."
+    },
+    "32930499": {
+      "title": "Dose-reducing fluoroscopic system decreases patient but not occupational radiation exposure in chronic total occlusion intervention."
+    },
+    "33028661": {
+      "title": "COVID-19 Trial Enrollment for Those Who Cannot Consent: Ethical Challenges Posed by a Pandemic."
+    },
+    "33159180": {
+      "title": "Leptin receptor, a surface marker for a subset of highly engrafting long-term functional hematopoietic stem cells."
+    },
+    "33170115": {
+      "title": "Nursing personality and features in children with autism spectrum disorder aged 0-2: an exploratory case-control study."
+    },
+    "33273122": {
+      "title": "A dual role for α-synuclein in facilitation and depression of dopamine release from substantia nigra neurons in vivo."
+    },
+    "33303579": {
+      "title": "Systemic and intravesical adoptive cell therapy of tumor-reactive T cells can decrease bladder tumor growth in vivo."
+    },
+    "33361324": {
+      "title": "Simultaneous Presence of Bacteriochlorophyll and Xanthorhodopsin Genes in a Freshwater Bacterium."
+    },
+    "33388064": {
+      "title": "Validity and reliability of the Self-Care Activities Screening Scale (SASS-14) during COVID-19 lockdown."
+    },
+    "33417826": {
+      "title": "Evaluation of a Phenotypic Algorithm to Direct Carbapenemase Testing in Pseudomonas aeruginosa: Validation in a Multicenter German Cohort."
+    },
+    "33446255": {
+      "title": "Exome sequencing enables diagnosis of X-linked hypohidrotic ectodermal dysplasia in patient with eosinophilic esophagitis and severe atopy."
+    },
+    "33446410": {
+      "title": "2021 Update to the 2017 ACC Expert Consensus Decision Pathway for Optimization of Heart Failure Treatment: Answers to 10 Pivotal Issues About Heart Failure With Reduced Ejection Fraction: A Report of the American College of Cardiology Solution Set Oversight Committee."
+    },
+    "33454211": {
+      "title": "Consistent results of non-invasive PGT-A of human embryos using two different techniques for chromosomal analysis."
+    },
+    "33462941": {
+      "title": "Severity of liver fibrosis using shear wave elastography is influenced by hepatic necroinflammation in chronic hepatitis patients, but not in cirrhotic patients."
+    },
+    "33493423": {
+      "title": "The ARREST Pneumonia Clinical Trial. Rationale and Design."
+    },
+    "33503420": {
+      "title": "The immunodominant and neutralization linear epitopes for SARS-CoV-2."
+    },
+    "33524450": {
+      "title": "New technique to evaluate decontamination methods for filtering facepiece respirators."
+    },
+    "33528553": {
+      "title": "Assessment of Incidence and Factors Associated With Severe Maternal Morbidity After Delivery Discharge Among Women in the US."
+    },
+    "33547437": {
+      "title": "Mysterious einsteinium spills its secrets."
+    },
+    "33618023": {
+      "title": "Five-Year Efficacy and Safety of Ustekinumab Treatment in Crohn's Disease: The IM-UNITI Trial."
+    },
+    "33649601": {
+      "title": "Oncohistone mutations enhance chromatin remodeling and alter cell fates."
+    },
+    "33658172": {
+      "title": "The prevalence of malocclusion is higher in schoolchildren with signs of hyperactivity."
+    },
+    "33789009": {
+      "title": "Sotatercept for the Treatment of Pulmonary Arterial Hypertension."
+    },
+    "33831346": {
+      "title": "The utilisation of CytB and COI barcodes for the identification of bloodmeals and Culicoides species (Diptera: Ceratopogonidae) reveals a variety of novel wildlife hosts in South Africa."
+    },
+    "33837950": {
+      "title": "Single-port robotic-assisted simple prostatectomy is associated with decreased post-operative narcotic use in a propensity score matched analysis."
+    },
+    "33852827": {
+      "title": "Immunometabolism the CyTOF way."
+    },
+    "33888590": {
+      "title": "A Look Inside: Oral Sampling for Detection of Non-oral Infectious Diseases."
+    },
+    "33908636": {
+      "title": "Vedolizumab Immunogenicity With Long-Term or Interrupted Treatment of Patients With Inflammatory Bowel Disease."
+    },
+    "33942582": {
+      "title": "Experience of International Air Transportation and Subsequent Lung Transplant in a Patient with COVID-19-associated Acute Respiratory Distress Syndrome: a Case Report."
+    },
+    "34077175": {
+      "title": "Aminofutalosine Deaminase in the Menaquinone Pathway of Helicobacter pylori."
+    },
+    "34083779": {
+      "title": "Cyclic polyacetylene."
+    },
+    "34091710": {
+      "title": "Enhancing sensitivity of QCM for dengue type 1 virus detection using graphene-based polymer composites."
+    },
+    "34135861": {
+      "title": "Clinical, Biological, Radiological Pathological and Immediate Post-Operative Remission of Sparsely and Densely Granulated Corticotroph Pituitary Tumors: A Retrospective Study of a Cohort of 277 Patients With Cushing's Disease."
+    },
+    "34183044": {
+      "title": "Gene expression analysis in EBV-infected ataxia-telangiectasia cell lines by RNA-sequencing reveals protein synthesis defect and immune abnormalities."
+    },
+    "34186361": {
+      "title": "Water intake and risk of type 2 diabetes: A systematic review and meta-analysis of observational studies."
+    },
+    "34266984": {
+      "title": "A Phase I Trial of Regional Mesothelin-Targeted CAR T-cell Therapy in Patients with Malignant Pleural Disease, in Combination with the Anti-PD-1 Agent Pembrolizumab."
+    },
+    "34276736": {
+      "title": "Structural Modeling and in planta Complementation Studies Link Mutated Residues of the Medicago truncatula Nitrate Transporter NPF1.7 to Functionality in Root Nodules."
+    },
+    "34276766": {
+      "title": "Biomarker Categorization in Transcriptomic Meta-Analysis by Concordant Patterns With Application to Pan-Cancer Studies."
+    },
+    "34289523": {
+      "title": "David M. Lubman-The University of Michigan-A retrospective in research."
+    },
+    "34324079": {
+      "title": "An Integrated Analysis of Dostarlimab Immunogenicity."
+    },
+    "34373294": {
+      "title": "Developing a collaborative learning framework for resilience in healthcare: a study protocol."
+    },
+    "34380756": {
+      "title": "Emergence of robust self-organized undulatory swimming based on local hydrodynamic force sensing."
+    },
+    "34385304": {
+      "title": "HMGB1 released from nociceptors mediates inflammation."
+    },
+    "34385707": {
+      "title": "Safety and efficacy of anti-tau monoclonal antibody gosuranemab in progressive supranuclear palsy: a phase 2, randomized, placebo-controlled trial."
+    },
+    "34416201": {
+      "title": "The rising preterm birth rate in China: a cause for concern."
+    },
+    "34506330": {
+      "title": "Predictors and Long-Term Impact of De Novo Aortic Regurgitation in Continuous Flow Left Ventricular Assist Devices Using Vena Contracta."
+    },
+    "34516736": {
+      "title": "Ligand-Driven Grain Engineering of High Mobility Two-Dimensional Perovskite Thin-Film Transistors."
+    },
+    "34534433": {
+      "title": "A Scalable Artificial Neuron Based on Ultrathin Two-Dimensional Titanium Oxide."
+    },
+    "34540688": {
+      "title": "Virtual Surgical Planning of Deep Circumflex Iliac Artery Flap for Midface Reconstruction."
+    },
+    "34562310": {
+      "title": "A framework to guide dose & regimen strategy for clinical drug development."
+    },
+    "34599012": {
+      "title": "SNMMI and ACGME Equity Matters Initiative."
+    },
+    "34607519": {
+      "title": "A randomized, double-blind, single-dose, single-center, parallel phase I clinical study comparing the pharmacokinetics, immunogenicity, safety, and tolerance of pertuzumab injection and Perjeta® in healthy Chinese male subjects."
+    },
+    "34687214": {
+      "title": "Bimekizumab for the treatment of moderate-to-severe plaque psoriasis: efficacy, safety, pharmacokinetics, pharmacodynamics and transcriptomics from a phase IIa, randomized, double-blind multicentre study."
+    },
+    "34711587": {
+      "title": "Covid-19: Trump's \"distraction\" by the 2020 election led to thousands of deaths, says pandemic response adviser."
+    },
+    "34711642": {
+      "title": "Relationship between body composition, exercise capacity and health-related quality of life in idiopathic pulmonary fibrosis."
+    },
+    "34757064": {
+      "title": "Hypogammaglobulinemia After Chimeric Antigen Receptor (CAR) T-Cell Therapy: Characteristics, Management, and Future Directions."
+    },
+    "34789493": {
+      "title": "Total hip arthroplasty versus hemiarthroplasty for displaced femoral neck fracture: a protocol for an overview of systematic reviews."
+    },
+    "34901232": {
+      "title": "Clinical Application of Individualized Pulmonary Bi-Orifice for the Reconstruction of Right Ventricular Outflow Tract in Tetralogy of Fallot."
+    },
+    "34906459": {
+      "title": "DNA methylation episignature testing improves molecular diagnosis of Mendelian chromatinopathies."
+    },
+    "34915576": {
+      "title": "Immunogenicity of sarilumab and impact on safety and efficacy in Japanese patients with rheumatoid arthritis: analysis of two Phase 3 randomised clinical trials."
+    },
+    "34932102": {
+      "title": "A Randomized Phase 1/2 Study of a Respiratory Syncytial Virus Prefusion F Vaccine."
+    },
+    "34990237": {
+      "title": "CAR T cells produced in vivo to treat cardiac injury."
+    },
+    "34990280": {
+      "title": "Improving Code Status Documentation Rates Using Communication Skills Training in Vascular Surgery: A Quality Improvement Initiative."
+    },
+    "35219975": {
+      "title": "Re-imagining 'the patient': Linked lives and lessons from genomic medicine."
+    },
+    "35246887": {
+      "title": "Anti-drug antibodies of IL-23 inhibitors for psoriasis: a systematic review."
+    },
+    "35314666": {
+      "title": "Pre-Transplant Peripheral Lymphocyte Subsets Predict Pneumonia After Renal Transplantation."
+    },
+    "35320644": {
+      "title": "Trastuzumab Deruxtecan versus Trastuzumab Emtansine for Breast Cancer."
+    },
+    "35326524": {
+      "title": "The Role of Endoscopic Ultrasonography in the Diagnosis and Staging of Pancreatic Cancer."
+    },
+    "35326846": {
+      "title": "Awareness of Antimicrobial Resistance and Associated Factors among Layer Poultry Farmers in Zambia: Implications for Surveillance and Antimicrobial Stewardship Programs."
+    },
+    "35382530": {
+      "title": "Realization of user-friendly bioanalytical tools to quantify and monitor critical components in bio-industrial processes through conceptual design."
+    },
+    "35418259": {
+      "title": "Stress is a Latent Construct: Exploring the Differential Experience of Stress and Discrimination on Depressive Symptoms Among Black Older Adults."
+    },
+    "35569421": {
+      "title": "pXRF on printed circuit boards: Methodology, applications, and challenges."
+    },
+    "35584508": {
+      "title": "Emerging and reemerging forms of Trypanosoma cruzi transmission."
+    },
+    "35633025": {
+      "title": "Long-term open-label safety study of galcanezumab in patients with episodic or chronic cluster headache."
+    },
+    "35636444": {
+      "title": "Upfront FOLFOXIRI plus bevacizumab with or without atezolizumab in the treatment of patients with metastatic colorectal cancer (AtezoTRIBE): a multicentre, open-label, randomised, controlled, phase 2 trial."
+    },
+    "35636936": {
+      "title": "Analysis of the economic effects on biopsychosocial homeostasis from a three-dimensional probability measurement system."
+    },
+    "35931020": {
+      "title": "Targeted suppression of human IBD-associated gut microbiota commensals by phage consortia for treatment of intestinal inflammation."
+    },
+    "35962528": {
+      "title": "A Review of Tisotumab Vedotin-tftv in Recurrent or Metastatic Cervical Cancer."
+    },
+    "36045843": {
+      "title": "Coagulation profile and platelet parameters in pregnancy induced hypertension cases and normotensive pregnancies: A cross-sectional study."
+    },
+    "36072994": {
+      "title": "Long-term Burosumab Administration Is Safe and Effective in Adults With X-linked Hypophosphatemia."
+    },
+    "36109142": {
+      "title": "Olokizumab, a monoclonal antibody against interleukin-6, in combination with methotrexate in patients with rheumatoid arthritis inadequately controlled by tumour necrosis factor inhibitor therapy: efficacy and safety results of a randomised controlled phase III study."
+    },
+    "36109635": {
+      "title": "Multimodal biomedical AI."
+    },
+    "36109639": {
+      "title": "Anti-CD19 CAR T cell therapy for refractory systemic lupus erythematosus."
+    },
+    "36334297": {
+      "title": "Anatomical predictors of difficult left internal carotid artery navigation in transradial access for neurointervention."
+    },
+    "36374913": {
+      "title": "Efficacy and safety of a new ranibizumab biosimilar CKD-701 using a pro re nata treatment regimen in neovascular age-related macular degeneration: A phase 3 randomized clinical trial."
+    },
+    "36445704": {
+      "title": "Treatment Sequencing Patterns and Associated Direct Medical Costs of Metastatic Breast Cancer Care in the United States, 2011 to 2021."
+    },
+    "36800443": {
+      "title": "SGN-CD228A Is an Investigational CD228-Directed Antibody-Drug Conjugate with Potent Antitumor Activity across a Wide Spectrum of Preclinical Solid Tumor Models."
+    },
+    "36884217": {
+      "title": "Preclinical Efficacy of the Antibody-Drug Conjugate CLDN6-23-ADC for the Treatment of CLDN6-Positive Solid Tumors."
+    },
+    "36892676": {
+      "title": "A phase IV study evaluating QT interval, pharmacokinetics, and safety following fractionated dosing of gemtuzumab ozogamicin in patients with relapsed/refractory CD33-positive acute myeloid leukemia."
+    },
+    "36948505": {
+      "title": "First-in-human, phase 1 study of PF-06753512, a vaccine-based immunotherapy regimen (VBIR), in non-metastatic hormone-sensitive biochemical recurrence and metastatic castration-resistant prostate cancer (mCRPC)."
+    },
+    "37148484": {
+      "title": "Clinical Pharmacokinetics, Pharmacodynamics, and Immunogenicity of Anifrolumab."
+    },
+    "37196158": {
+      "title": "Preclinical Evaluation of 9MW2821, a Site-Specific Monomethyl Auristatin E-based Antibody-Drug Conjugate for Treatment of Nectin-4-expressing Cancers."
+    },
+    "37230085": {
+      "title": "Time for action, not words: the urgent rebuilding of New Zealand's mental health workforce."
+    },
+    "37268157": {
+      "title": "IMscin001 Part 2: a randomised phase III, open-label, multicentre study examining the pharmacokinetics, efficacy, immunogenicity, and safety of atezolizumab subcutaneous versus intravenous administration in previously treated locally advanced or metastatic non-small-cell lung cancer and pharmacokinetics comparison with other approved indications."
+    },
+    "37289910": {
+      "title": "Correction to: Psychiatric Illness and Substance Abuse: Unaddressed Factors in Burn Injury."
+    },
+    "37301884": {
+      "title": "Influence of slope angle on deposit morphology and propagation of laboratory landslides."
+    },
+    "37301885": {
+      "title": "A pilot study of lymphodepletion intensity for peripheral blood mononuclear cell-derived neoantigen-specific CD8 + T cell therapy in patients with advanced solid tumors."
+    },
+    "37342928": {
+      "title": "Marburg Virus Disease in Ghana."
+    },
+    "37357149": {
+      "title": "Impacts of nutrition counseling on depression and obesity: A scoping review."
+    },
+    "37450172": {
+      "title": "The Development of Ofatumumab, a Fully Human Anti-CD20 Monoclonal Antibody for Practical Use in Relapsing Multiple Sclerosis Treatment."
+    },
+    "37452145": {
+      "title": "Alkalized lidocaine in a tapered cuff suppresses endotracheal tube-induced hemodynamic changes: a randomized controlled trial."
+    },
+    "37566240": {
+      "title": "Safety, Immunologic, and Clinical Activity of Durvalumab in Combination with Olaparib or Cediranib in Advanced Leiomyosarcoma: Results of the DAPPER Clinical Trial."
+    },
+    "37587344": {
+      "title": "Global methane emissions from rivers and streams."
+    },
+    "37619980": {
+      "title": "SGN-B6A: A New Vedotin Antibody-Drug Conjugate Directed to Integrin Beta-6 for Multiple Carcinoma Indications."
+    },
+    "37656420": {
+      "title": "Rozanolixizumab: First Approval."
+    },
+    "37656820": {
+      "title": "Immunogenicity of Cemiplimab: Low Incidence of Antidrug Antibodies and Cut-Point Suitability Across Tumor Types."
+    },
+    "37932155": {
+      "title": "Clinical Bridging From Prefilled Syringe to On-body Injector for Risankizumab in Crohn's Disease."
+    },
+    "37938587": {
+      "title": "DOES - A multimodal dataset for supervised and unsupervised analysis of steel scrap."
+    },
+    "37945842": {
+      "error": "cannot get document summary"
+    },
+    "38127586": {
+      "title": "Emicizumab prophylaxis in infants with hemophilia A (HAVEN 7): primary analysis of a phase 3b open-label trial."
+    },
+    "38191982": {
+      "title": "Comparability of Elezanumab Safety, Tolerability, and Pharmacokinetics in Healthy Japanese, Chinese, and White Participants."
+    },
+    "38243600": {
+      "title": "Preclinical evaluation of a novel CAR-T therapy utilizing a scFv antibody highly specific to MAGE-A4(p230-239)/HLA-A∗02:01 complex."
+    },
+    "38258678": {
+      "title": "Comparing tocilizumab biosimilar BAT1806/BIIB800 with reference tocilizumab in patients with moderate-to-severe rheumatoid arthritis with an inadequate response to methotrexate: a phase 3, randomised, multicentre, double-blind, active-controlled clinical trial."
+    },
+    "38346294": {
+      "title": "Impact of Acute Alcohol Consumption on Sexuality: A Look at Psychological Mechanisms."
+    },
+    "38348690": {
+      "title": "The phase I/II eNRGy trial: Zenocutuzumab in patients with cancers harboring NRG1 gene fusions."
+    },
+    "38367194": {
+      "title": "Benralizumab does not elicit therapeutic effect in patients with chronic spontaneous urticaria: results from the phase IIb multinational randomized double-blind placebo-controlled ARROYO trial."
+    },
+    "38477751": {
+      "title": "Equivalence trial of proposed denosumab biosimilar GP2411 and reference denosumab in postmenopausal osteoporosis: the ROSALIA study."
+    },
+    "38507467": {
+      "title": "An anti-TNF-glucocorticoid receptor modulator antibody-drug conjugate is efficacious against immune-mediated inflammatory diseases."
+    },
+    "38584166": {
+      "title": "Personalized neoantigen vaccine and pembrolizumab in advanced hepatocellular carcinoma: a phase 1/2 trial."
+    },
+    "38995690": {
+      "title": "New Therapies for Highly Sensitized Patients on the Waiting List."
+    },
+    "39059405": {
+      "title": "Anti-BCMA/GPRC5D bispecific CAR T cells in patients with relapsed or refractory multiple myeloma: a single-arm, single-centre, phase 1 trial."
+    },
+    "39105497": {
+      "title": "Safety, Tolerability, and Pharmacokinetics of Single Doses of Exidavnemab (BAN0805), an Anti-α-Synuclein Antibody, in Healthy Western, Caucasian, Japanese, and Han Chinese Adults."
+    },
+    "39111557": {
+      "title": "Ebronucimab in Chinese patients with hypercholesterolemia---A randomized double-blind placebo-controlled phase 3 trial to evaluate the efficacy and safety of ebronucimab."
+    },
+    "39136011": {
+      "title": "Efficacy and safety of a proposed omalizumab biosimilar compared to the reference product in the management of uncontrolled moderate-to-severe allergic asthma: a multicenter, phase III, randomized, double-blind, equivalency clinical trial."
+    },
+    "39171864": {
+      "title": "Comparative clinical efficacy and safety of biosimilar ABP 959 and eculizumab reference product in patients with paroxysmal nocturnal hemoglobinuria."
+    },
+    "39186361": {
+      "title": "Intestinal Malrotation in a Patient with Gastric Cancer during Laparoscopic Total Gastrectomy: A Case Report."
+    },
+    "39187158": {
+      "title": "Effects of Teprotumumab and Role of Human Leukocyte Antigens Markers in Patients With Thyroid Eye Disease."
+    },
+    "39224901": {
+      "title": "A Randomized, Double-Blind, Parallel-Group Phase I Study Comparing the Pharmacokinetics, Safety, and Immunogenicity of CMAB015, a Candidate Secukinumab Biosimilar, with Its Reference Product Cosentyx(®) in Healthy Chinese Male Subjects."
+    },
+    "39366752": {
+      "title": "Toripalimab in combination with HBM4003, an anti-CTLA-4 heavy chain-only antibody, in advanced melanoma and other solid tumors: an open-label phase I trial."
+    },
+    "39460719": {
+      "title": "Subcutaneous ocrelizumab in multiple sclerosis: Results of the Phase 1b OCARINA I study."
+    },
+    "39530574": {
+      "title": "Phase 2 Trial of Enfortumab Vedotin in Patients With Previously Treated Locally Advanced or Metastatic Urothelial Carcinoma in China."
+    },
+    "39588375": {
+      "title": "Immunogenicity of dupilumab in adult and pediatric patients with atopic dermatitis."
+    },
+    "39708278": {
+      "title": "Population Pharmacokinetics of Epcoritamab Following Subcutaneous Administration in Relapsed or Refractory B Cell Non-Hodgkin Lymphoma."
+    },
+    "39751937": {
+      "title": "Efficacy and safety of PD-1 blockade-activated neoantigen specific cellular therapy for advanced relapsed non-small cell lung cancer."
+    },
+    "39793935": {
+      "title": "Population pharmacokinetics and pharmacodynamics of HFB30132A, a monoclonal antibody against SARS-CoV-2, in healthy Chinese and US subjects."
+    },
+    "39866124": {
+      "title": "Efficacy, Safety, Pharmacokinetics, and Immunogenicity of ABBV-154 in Adults With Glucocorticoid-Dependent Polymyalgia Rheumatica: A Phase 2, Randomized, Double-Blind, Placebo-Controlled Trial."
+    },
+    "39920391": {
+      "title": "CAR-macrophage therapy for HER2-overexpressing advanced solid tumors: a phase 1 trial."
+    },
+    "40401504": {
+      "title": "Pharmacokinetics, Safety, and Tolerability of Single-Dose Dazukibart in Healthy Adults in China and Japan: Results From 2 Randomized, Double-Blind, Phase 1 Studies."
+    },
+    "40481373": {
+      "title": "Factors Impacting the Immunogenicity of Etrolizumab & Clinical Consequences."
+    },
+    "40580805": {
+      "title": "Therapeutic advances in sarcopenia management: From traditional interventions to personalized medicine."
+    },
+    "40592848": {
+      "title": "Dual TIGIT and PD-1 blockade with domvanalimab plus zimberelimab in hepatocellular carcinoma refractory to anti-PD-1 therapies: the phase 2 LIVERTI trial."
+    },
+    "40645179": {
+      "title": "A multi-adjuvant personal neoantigen vaccine generates potent immunity in melanoma."
+    },
+    "40668662": {
+      "title": "Estimating efficacy of favezelimab plus pembrolizumab relative to pembrolizumab in anti-PD-1-refractory Hodgkin lymphoma."
+    },
+    "40799036": {
+      "title": "Safety, Tolerability, and Pharmacokinetics of the Long-Acting SARS-CoV-2-Neutralizing Monoclonal Antibody Combination AZD7442 (Tixagevimab/Cilgavimab) in Healthy Chinese Adults."
+    },
+    "41054153": {
+      "title": "Global safety profile of PD-1/PD-L1 inhibitors in hepatic autoimmune disorders: A global disproportionality analysis."
+    },
+    "41163220": {
+      "title": "Safety and tolerability of astegolimab, an anti-ST2 monoclonal antibody: a narrative review."
+    },
+    "41290206": {
+      "title": "Design of a Phase 3, Multicenter, Randomized, Open-Label Study of Nipocalimab or IVIG and Prednisone in Pregnancies at Risk for Fetal and Neonatal Alloimmune Thrombocytopenia."
+    },
+    "41461999": {
+      "title": "Safety and Tolerability of Twice-Yearly Depemokimab in Patients with Asthma and Chronic Rhinosinusitis with Nasal Polyps: Pooled Results from SWIFT-1/-2 and ANCHOR-1/-2."
+    }
+  }
+}

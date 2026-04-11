@@ -3900,9 +3900,9 @@
           "evidence_tier": "T1",
           "verification_status": "VERIFIED",
           "primary_source_type": "Literature/UniProt",
-          "primary_source_url": "https://pubmed.ncbi.nlm.nih.gov/Kim et al. Gene 1990; 2121594/",
+          "primary_source_url": "https://pubmed.ncbi.nlm.nih.gov/Gubb et al. Genetics 1990; 2121594/",
           "pmids": [
-            "Kim et al. Gene 1990; 2121594"
+            "Gubb et al. Genetics 1990; 2121594"
           ],
           "last_verified": "2026-04-07",
           "provenance_note": "NCBI J02585 (human EEF1A1 locus) bp 1-1200 promoter region; Huang MT J Biol Chem 1987;262:15928"

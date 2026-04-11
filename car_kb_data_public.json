@@ -4924,7 +4924,7 @@
       },
       "design_notes": "Full-length EF1α promoter (1200bp). Provides strong constitutive expression in T cells. Use EF1a_Short_EFS (212bp) for size-constrained vectors.",
       "references": [
-        "Kim et al. Gene 1990; PMID:2121594"
+        "Gubb et al. Genetics 1990; PMID:2121594"
       ],
       "gene_annotation": {
         "gene_symbol": "EEF1A1",
