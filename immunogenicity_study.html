@@ -24,7 +24,7 @@
       --red: #b91c1c; --blue: #1d4ed8; --green: #15803d; --orange: #b45309;
     }
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    body { font-family: 'Inter', -apple-system, sans-serif; font-size: 16px; line-height: 1.65; color: var(--text); background: var(--bg); -webkit-font-smoothing: antialiased; padding-top: 72px; ; overflow-x: hidden; }
+    body { font-family: 'Inter', -apple-system, sans-serif; font-size: 16px; line-height: 1.65; color: var(--text); background: var(--bg); -webkit-font-smoothing: antialiased; padding-top: 80px; ; overflow-x: hidden; }
 
     /* === HEADER === */
     
@@ -61,7 +61,7 @@
 
     /* === CONTENT === */
     .main section { margin-bottom: 64px; }
-    .main h2 { font-family: 'Cormorant Garamond', serif; font-size: 34px; font-weight: 600; color: #111827; margin: 0 0 20px; letter-spacing: -0.02em; padding-top: 72px; line-height: 1.15; }
+    .main h2 { font-family: 'Cormorant Garamond', serif; font-size: 34px; font-weight: 600; color: #111827; margin: 0 0 20px; letter-spacing: -0.02em; padding-top: 80px; line-height: 1.15; }
     .main h2 .num { color: var(--primary); font-size: 22px; font-weight: 400; font-family: 'Inter', sans-serif; margin-right: 6px; }
     .main h3 { font-size: 17px; font-weight: 600; color: #111827; margin: 28px 0 12px; }
     .main p { margin: 0 0 18px; color: var(--text-muted); font-size: 16px; line-height: 1.7; }
@@ -130,7 +130,7 @@
     .back-bar a:hover { text-decoration: underline; }
 
     /* === CITATION === */
-    .citation { font-size: 13px; color: #6b7280; border-top: 1px solid var(--border); margin-top: 32px; padding-top: 72px; line-height: 1.6; }
+    .citation { font-size: 13px; color: #6b7280; border-top: 1px solid var(--border); margin-top: 32px; padding-top: 80px; line-height: 1.6; }
 
     /* Footer Sitemap */
     .footer-sitemap { background: #f9fafb; border-top: 1px solid #e5e7eb; padding: 60px 32px 40px; }
@@ -328,25 +328,7 @@
     }
     
   
-    /* --- Robust Header System V5 --- */
-    .top-header {
-      position: fixed !important;
-      top: 0 !important;
-      left: 0 !important;
-      right: 0 !important;
-      width: 100% !important;
-      height: 72px !important;
-      background: rgba(255,255,255,0.98) !important; /* Reverted to White */
-      backdrop-filter: blur(12px) !important;
-      border-bottom: 1px solid rgba(13,148,136,0.1) !important;
-      display: flex !important;
-      align-items: center !important;
-      justify-content: space-between !important;
-      padding: 0 32px !important;
-      box-sizing: border-box !important;
-      z-index: 9999 !important;
-      flex-wrap: nowrap !important;
-    }
+    
     .top-header .brand {
       display: flex !important;
       align-items: center !important;
@@ -436,6 +418,70 @@
       max-width: 100% !important;
       overflow-x: hidden !important;
       position: relative !important;
+    }
+    
+  
+    /* --- Robust Header System V6 --- */
+    .top-header {
+      position: fixed !important;
+      top: 0 !important;
+      left: 0 !important;
+      right: 0 !important;
+      width: 100% !important;
+      height: 80px !important; /* Increased height slightly for larger logo */
+      background: rgba(255,255,255,0.98) !important;
+      backdrop-filter: blur(12px) !important;
+      border-bottom: 1px solid rgba(13,148,136,0.1) !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: space-between !important;
+      padding: 0 32px !important;
+      box-sizing: border-box !important;
+      z-index: 9999 !important;
+      flex-wrap: nowrap !important;
+    }
+    .top-header .brand {
+      display: flex !important;
+      align-items: center !important;
+      gap: 14px !important;
+      flex-shrink: 0 !important;
+    }
+    .top-header .brand a {
+      display: flex !important;
+      align-items: center !important;
+      text-decoration: none !important;
+      font-size: 28px !important; /* Increased font size */
+      font-weight: 700 !important;
+      color: #111827 !important; /* Force dark color for 'In' and 'Bio' */
+    }
+    .top-header .brand a span { 
+      color: #111827 !important; /* Ensure spans inside link are also dark */
+    }
+    .top-header .brand .accent { 
+      color: #0d9488 !important; 
+      font-style: italic !important;
+    }
+    .top-header .slogan, .top-header .std-slogan {
+      font-size: 15px !important; /* Increased slogan size */
+      color: #4b5563 !important;
+      padding-left: 14px !important;
+      border-left: 1px solid #e5e7eb !important;
+      margin-left: 6px !important;
+      white-space: nowrap !important;
+      display: inline-block !important;
+      font-weight: 500 !important;
+    }
+    .top-header-nav, .std-top-nav {
+      display: flex !important;
+      align-items: center !important;
+      gap: 10px !important;
+      margin-left: auto !important;
+      margin-right: 10px !important;
+    }
+    .top-header-nav a, .std-top-nav a { 
+      font-size: 15px !important;
+      color: #374151 !important; 
+      font-weight: 600 !important;
     }
     
   </style>
@@ -1025,25 +1071,7 @@
     }
     
   
-    /* --- Robust Header System V5 --- */
-    .top-header {
-      position: fixed !important;
-      top: 0 !important;
-      left: 0 !important;
-      right: 0 !important;
-      width: 100% !important;
-      height: 72px !important;
-      background: rgba(255,255,255,0.98) !important; /* Reverted to White */
-      backdrop-filter: blur(12px) !important;
-      border-bottom: 1px solid rgba(13,148,136,0.1) !important;
-      display: flex !important;
-      align-items: center !important;
-      justify-content: space-between !important;
-      padding: 0 32px !important;
-      box-sizing: border-box !important;
-      z-index: 9999 !important;
-      flex-wrap: nowrap !important;
-    }
+    
     .top-header .brand {
       display: flex !important;
       align-items: center !important;
@@ -1133,6 +1161,70 @@
       max-width: 100% !important;
       overflow-x: hidden !important;
       position: relative !important;
+    }
+    
+  
+    /* --- Robust Header System V6 --- */
+    .top-header {
+      position: fixed !important;
+      top: 0 !important;
+      left: 0 !important;
+      right: 0 !important;
+      width: 100% !important;
+      height: 80px !important; /* Increased height slightly for larger logo */
+      background: rgba(255,255,255,0.98) !important;
+      backdrop-filter: blur(12px) !important;
+      border-bottom: 1px solid rgba(13,148,136,0.1) !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: space-between !important;
+      padding: 0 32px !important;
+      box-sizing: border-box !important;
+      z-index: 9999 !important;
+      flex-wrap: nowrap !important;
+    }
+    .top-header .brand {
+      display: flex !important;
+      align-items: center !important;
+      gap: 14px !important;
+      flex-shrink: 0 !important;
+    }
+    .top-header .brand a {
+      display: flex !important;
+      align-items: center !important;
+      text-decoration: none !important;
+      font-size: 28px !important; /* Increased font size */
+      font-weight: 700 !important;
+      color: #111827 !important; /* Force dark color for 'In' and 'Bio' */
+    }
+    .top-header .brand a span { 
+      color: #111827 !important; /* Ensure spans inside link are also dark */
+    }
+    .top-header .brand .accent { 
+      color: #0d9488 !important; 
+      font-style: italic !important;
+    }
+    .top-header .slogan, .top-header .std-slogan {
+      font-size: 15px !important; /* Increased slogan size */
+      color: #4b5563 !important;
+      padding-left: 14px !important;
+      border-left: 1px solid #e5e7eb !important;
+      margin-left: 6px !important;
+      white-space: nowrap !important;
+      display: inline-block !important;
+      font-weight: 500 !important;
+    }
+    .top-header-nav, .std-top-nav {
+      display: flex !important;
+      align-items: center !important;
+      gap: 10px !important;
+      margin-left: auto !important;
+      margin-right: 10px !important;
+    }
+    .top-header-nav a, .std-top-nav a { 
+      font-size: 15px !important;
+      color: #374151 !important; 
+      font-weight: 600 !important;
     }
     
   </style>
