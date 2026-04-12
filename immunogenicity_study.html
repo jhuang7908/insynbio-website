@@ -3,16 +3,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <meta name="description" content="InSynBio clinical study: immunogenicity prediction across 138 therapeutic antibodies &mdash; stratified modeling, ADA rate correlation, feature analysis, and predictive scoring models.">
-  <meta name="keywords" content="antibody immunogenicity, ADA prediction, therapeutic antibody, MHCII epitope, T-cell epitope, clinical ADA, InSynBio">
+  <meta name="description" content="InSynBio immunogenicity research: 138-antibody ADA clinical study, FH/HU dual-track ADA V2 scoring model, and MHC-II prediction calibrated to real-world clinical ADA rates.">
+  <meta name="keywords" content="antibody immunogenicity, ADA prediction, therapeutic antibody, MHCII epitope, T-cell epitope, clinical ADA, InSynBio, ADA V2">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://www.insynbio.com/immunogenicity_study.html">
   <meta property="og:type" content="article">
   <meta property="og:url" content="https://www.insynbio.com/immunogenicity_study.html">
-  <meta property="og:title" content="Immunogenicity Prediction Study: 138 Clinical Antibodies | InSynBio">
-  <meta property="og:description" content="Stratified computational immunogenicity modeling across 138 approved/clinical-stage antibodies &mdash; validated against real-world ADA rates.">
-  <title>Immunogenicity Prediction Study | InSynBio</title>
+  <meta property="og:title" content="Immunogenicity Research: 138 Clinical Antibodies | InSynBio">
+  <meta property="og:description" content="Stratified computational immunogenicity modeling across 138 approved/clinical-stage antibodies — calibrated against real-world ADA rates.">
+  <title>Immunogenicity Research | InSynBio — AI for Life Sciences</title>
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -25,500 +24,668 @@
       --red: #b91c1c; --blue: #1d4ed8; --green: #15803d; --orange: #b45309;
     }
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    body { font-family: 'Inter', -apple-system, sans-serif; font-size: 16px; line-height: 1.65; color: var(--text); background: var(--bg); -webkit-font-smoothing: antialiased; padding-top: 68px; overflow-x: hidden; }
+    body { font-family: 'Inter', -apple-system, sans-serif; font-size: 16px; line-height: 1.65; color: var(--text); background: var(--bg); -webkit-font-smoothing: antialiased; padding-top: 72px; overflow-x: hidden; }
 
-    /* === HEADER === */
-    
-    
-    .top-header .brand a { text-decoration: none; color: inherit; display: flex; align-items: center; gap: 10px; white-space: nowrap; flex-shrink: 0; }
-    .top-header .brand .syn { color: var(--primary); font-style: italic; }
-    
-    
-    .top-header-nav a { padding: 8px 16px; font-size: 14px; color: var(--text-muted); text-decoration: none; border-radius: 20px; transition: all 0.2s; font-weight: 500; }
-    .top-header-nav a:hover { color: var(--primary); background: rgba(13,148,136,0.06); }
-    .top-header-nav a.active { background: var(--primary); color: #fff; box-shadow: 0 2px 8px rgba(13,148,136,0.25); }
-    .top-header-nav a.active:hover { background: var(--primary-dark); }
-    .mobile-menu-btn { display: none; background: none; border: none; padding: 6px; cursor: pointer; color: var(--text); flex-shrink: 0; }
-    .nav-close-btn { display: none; }
-    .nav-dropdown { position: relative; }
-    .nav-dropdown > a::after { content: ' \25be'; font-size: 10px; opacity: 0.6; margin-left: 4px; }
-    .nav-dropdown .dropdown-menu { position: absolute; top: 100%; left: 50%; transform: translateX(-50%) translateY(10px); min-width: 220px; max-height: 80vh; overflow-y: auto; padding: 8px; background: #fff; border: 1px solid rgba(0,0,0,0.06); border-radius: 12px; box-shadow: 0 10px 40px -10px rgba(0,0,0,0.12); opacity: 0; visibility: hidden; transition: all 0.2s cubic-bezier(0.16,1,0.3,1); z-index: 100; margin-top: 8px; }
-    .nav-dropdown:hover .dropdown-menu, .nav-dropdown:focus-within .dropdown-menu { opacity: 1; visibility: visible; transform: translateX(-50%) translateY(0); }
-    .nav-dropdown .dropdown-menu a { display: block; padding: 12px 16px; color: var(--text); text-decoration: none; border-radius: 8px; font-size: 14px; font-weight: 400; background: transparent; }
-    .nav-dropdown .dropdown-menu a:hover { background: var(--bg-alt); }
-    .nav-dropdown .dropdown-menu a .menu-title { display: block; font-weight: 600; font-size: 14px; color: var(--text); margin-bottom: 2px; }
-    .nav-dropdown .dropdown-menu a:hover .menu-title { color: var(--primary); }
-    .nav-dropdown .dropdown-menu a .menu-desc { display: block; font-size: 12px; color: var(--text-muted); line-height: 1.4; }
-
-    /* === LAYOUT === */
-    .page-wrap { display: flex; max-width: 1320px; margin: 0 auto; }
-    .sidebar { width: 260px; flex-shrink: 0; padding: 36px 16px; position: sticky; top: 73px; height: calc(100vh - 73px); overflow-y: auto; border-right: 1px solid var(--border); }
-    .sidebar h3 { font-size: 11px; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1.5px; margin: 0 8px 12px; }
-    .sidebar a { display: block; padding: 9px 12px; font-size: 14px; color: var(--text-muted); text-decoration: none; border-radius: 8px; margin-bottom: 2px; font-weight: 500; transition: all 0.2s; }
-    .sidebar a:hover { background: rgba(13,148,136,0.07); color: var(--primary); }
-    .sidebar a.active { background: rgba(13,148,136,0.1); color: var(--primary-dark); font-weight: 600; }
-    .sidebar .sep { margin: 12px 12px 12px; border: none; border-top: 1px solid var(--border); }
-    .main { flex: 1; padding: 56px 60px 100px; min-width: 0; }
-
-    /* === CONTENT === */
-    .main section { margin-bottom: 64px; }
-    .main h2 { font-family: 'Cormorant Garamond', serif; font-size: 34px; font-weight: 600; color: #111827; margin: 0 0 20px; letter-spacing: -0.02em; padding-top: 80px; line-height: 1.15; }
-    .main h2 .num { color: var(--primary); font-size: 22px; font-weight: 400; font-family: 'Inter', sans-serif; margin-right: 6px; }
-    .main h3 { font-size: 17px; font-weight: 600; color: #111827; margin: 28px 0 12px; }
-    .main p { margin: 0 0 18px; color: var(--text-muted); font-size: 16px; line-height: 1.7; }
-    .main ul, .main ol { margin: 0 0 20px 24px; color: var(--text-muted); }
-    .main li { margin-bottom: 8px; font-size: 16px; line-height: 1.6; }
-    .main strong { color: var(--text); }
-
-    /* === CARDS & BLOCKS === */
-    .card { background: #fff; border: 1px solid var(--border); border-radius: 12px; padding: 24px 28px; margin-bottom: 20px; }
-    .card-teal { border-left: 4px solid var(--primary); background: rgba(13,148,136,0.03); }
-    .card-green { border-left: 4px solid var(--green); background: #f0fdf4; }
-    .card-red { border-left: 4px solid #ef4444; background: #fef2f2; }
-    .card-amber { border-left: 4px solid #f59e0b; background: #fffbeb; }
-    .card-slate { background: #f8fafc; border: 1px solid #e2e8f0; }
-
-    .kpi-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 16px; margin: 24px 0; }
-    .kpi { text-align: center; padding: 24px 16px; background: #fff; border: 1px solid var(--border); border-radius: 12px; }
-    .kpi .val { font-size: 36px; font-weight: 700; line-height: 1; }
-    .kpi .lbl { font-size: 12px; color: var(--text-muted); margin-top: 6px; line-height: 1.4; }
-    .kpi-green .val { color: var(--green); }
-    .kpi-teal .val { color: var(--primary); }
-    .kpi-blue .val { color: var(--blue); }
-    .kpi-orange .val { color: var(--orange); }
-
-    /* === TABLES === */
-    .table-wrap { overflow-x: auto; margin: 16px 0 24px; }
-    table { width: 100%; border-collapse: collapse; font-size: 14px; }
-    th { background: rgba(13,148,136,0.07); color: var(--primary-dark); text-align: left; padding: 10px 14px; border-bottom: 2px solid rgba(13,148,136,0.15); font-weight: 600; white-space: nowrap; font-size: 13px; letter-spacing: 0.01em; }
-    td { padding: 9px 14px; border-bottom: 1px solid var(--border); color: #374151; vertical-align: middle; }
-    tr:nth-child(even) td { background: #fafafa; }
-    tr.best td { background: #f0fdf4 !important; }
-    tr.warn td { background: #fffbeb !important; }
-    tr.bad td { background: #fef2f2 !important; }
-    .r-pos { color: var(--red); font-weight: 700; }
-    .r-neg { color: var(--blue); font-weight: 700; }
-    .sig2 { color: var(--green); font-size: 11px; vertical-align: super; font-weight: 700; }
-    .sig1 { color: var(--primary); font-size: 11px; vertical-align: super; font-weight: 700; }
-    .sig0 { color: #9ca3af; font-size: 11px; vertical-align: super; }
-    .badge { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 11px; font-weight: 600; }
-    .badge-seq { background: #ede9fe; color: #5b21b6; }
-    .badge-struct { background: #dcfce7; color: #166534; }
-    .badge-glyc { background: #fef3c7; color: #92400e; }
-    .badge-clin { background: #fee2e2; color: #991b1b; }
-    .badge-best { background: #d1fae5; color: #065f46; border: 1px solid #6ee7b7; }
-    .badge-warn { background: #fef3c7; color: #78350f; border: 1px solid #fcd34d; }
-
-    /* === FORMULA BOX === */
-    .formula-box { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 10px; padding: 20px 24px; font-family: 'Courier New', monospace; font-size: 14px; line-height: 1.9; margin: 16px 0; overflow-x: auto; color: #1e293b; }
-    .formula-box .comment { color: #94a3b8; font-style: italic; font-family: 'Inter', sans-serif; font-size: 12px; }
-
-    /* === FACTOR GRID === */
-    .factor-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 14px; margin: 20px 0; }
-    .factor-card { border: 1px solid var(--border); border-radius: 10px; padding: 16px 20px; background: #fff; }
-    .factor-card h4 { font-size: 14px; font-weight: 600; margin-bottom: 8px; display: flex; align-items: center; gap: 8px; }
-    .factor-card ul { margin: 0 0 0 16px; }
-    .factor-card li { font-size: 13px; color: var(--text-muted); margin-bottom: 3px; }
-    .fc-covered { border-left: 3px solid var(--primary); }
-    .fc-missing { border-left: 3px solid #d1d5db; opacity: 0.7; }
-
-    /* === GRADIENT DIVIDER === */
-    .divider { border: none; border-top: 1px solid var(--border); margin: 48px 0; }
-
-    /* === FOOTER BACK LINK === */
-    .back-bar { background: var(--bg-alt); border-top: 1px solid var(--border); padding: 20px 60px; display: flex; align-items: center; gap: 12px; font-size: 14px; color: var(--text-muted); }
-    .back-bar a { color: var(--primary); font-weight: 600; text-decoration: none; }
-    .back-bar a:hover { text-decoration: underline; }
-
-    /* === CITATION === */
-    .citation { font-size: 13px; color: #6b7280; border-top: 1px solid var(--border); margin-top: 32px; padding-top: 80px; line-height: 1.6; }
-
-    /* Footer Sitemap */
-    .footer-sitemap { background: #f9fafb; border-top: 1px solid #e5e7eb; padding: 60px 32px 40px; }
-    .sitemap-grid { max-width: 1140px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; text-align: left; }
-    .sitemap-col h4 { font-size: 14px; font-weight: 700; color: #111827; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 20px; }
-    .sitemap-col ul { list-style: none; padding: 0; margin: 0; }
-    .sitemap-col ul li { margin-bottom: 12px; }
-    .sitemap-col ul li a { color: #4b5563; text-decoration: none; font-size: 14px; transition: color 0.2s; }
-    .sitemap-col ul li a:hover { color: var(--primary); }
-
-    @media (max-width: 900px) {
-      .mobile-menu-btn { display: block; }
-      
-      
-      
-      .top-header-nav.open { opacity: 1; pointer-events: auto; }
-      .top-header-nav a { font-size: 18px; padding: 12px 24px; }
-      .nav-close-btn { display: block; position: absolute; top: 16px; right: 20px; background: none; border: none; font-size: 32px; color: var(--text); cursor: pointer; line-height: 1; padding: 4px 8px; }
-      
-      .page-wrap { flex-direction: column; }
-      .sidebar { width: 100%; height: auto; position: relative; border-right: none; border-bottom: 1px solid var(--border); padding: 16px; top: 0; display: block; }
-      .sidebar h3 { margin: 0 12px 12px; display: block; }
-      .sidebar nav { display: flex; flex-wrap: wrap; gap: 8px; padding: 0 12px; }
-      .sidebar a { display: inline-flex; padding: 8px 12px; border: 1px solid var(--border); margin-bottom: 0; font-size: 14px; border-radius: 6px; }
-      .sidebar a.active { border-color: var(--primary); }
-      
-      .main { padding: 32px 20px 64px; }
-      .main h2 { font-size: 28px; }
-      .kpi-row { grid-template-columns: 1fr 1fr; }
-      
-      .footer-sitemap { padding: 40px 24px; }
-      .sitemap-grid { grid-template-columns: 1fr 1fr; gap: 30px; }
-    }
-    @media (max-width: 480px) {
-      .sitemap-grid { grid-template-columns: 1fr; }
-    }
-    @media (max-width: 640px) {
-      .charts-grid { grid-template-columns: 1fr !important; }
-    }
-  
-    
-
-    /* ===== HEADER (clean single block) ===== */
+    /* ===== HEADER ===== */
     .top-header {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      width: 100%;
-      height: 72px;
-      background: rgba(255,255,255,0.98);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid rgba(13,148,136,0.1);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0 32px;
-      box-sizing: border-box;
-      z-index: 9999;
-      flex-wrap: nowrap;
+      position: fixed; top: 0; left: 0; right: 0; width: 100%;
+      height: 72px; background: rgba(255,255,255,0.98); backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(13,148,136,0.1); display: flex; align-items: center;
+      justify-content: space-between; padding: 0 32px; box-sizing: border-box;
+      z-index: 9999; flex-wrap: nowrap;
     }
     .top-header .brand { display: flex; align-items: center; gap: 8px; flex-shrink: 0; }
-    .top-header .brand a {
-      text-decoration: none; color: #111827;
-      display: flex; align-items: center; gap: 3px;
-      font-size: 22px; font-weight: 700;
-      white-space: nowrap; flex-shrink: 0;
-      font-family: 'Space Grotesk', 'Inter', sans-serif;
-    }
+    .top-header .brand a { text-decoration: none; color: #111827; display: flex; align-items: center; gap: 3px; font-size: 22px; font-weight: 700; white-space: nowrap; flex-shrink: 0; font-family: 'Space Grotesk','Inter',sans-serif; }
     .top-header .brand a span { color: #111827; }
     .top-header .brand .accent { color: #0d9488; font-style: italic; font-weight: 700; }
-    .top-header .slogan, .top-header .std-slogan {
-      font-size: 14px; color: #6b7280;
-      padding-left: 14px; border-left: 1px solid #e5e7eb; margin-left: 6px;
-      white-space: nowrap; display: inline-block; font-weight: 500; flex-shrink: 0;
-    }
-    .mobile-menu-btn, .std-mobile-btn {
-      display: none; background: none;
-      border: 1px solid #e5e7eb; border-radius: 8px;
-      padding: 6px 8px; cursor: pointer; color: #111827; line-height: 0;
-    }
-    .nav-close-btn, .std-nav-close { display: none; }
-    .top-header-nav, .std-top-nav {
-      display: flex; align-items: center; gap: 4px; margin-left: auto;
-    }
-    .top-header-nav a, .std-top-nav a {
-      padding: 7px 13px; font-size: 14px; color: #4b5563;
-      text-decoration: none; border-radius: 20px;
-      transition: all 0.2s ease; font-weight: 600;
-    }
-    .top-header-nav a:hover, .std-top-nav a:hover { color: #0d9488; background: rgba(13,148,136,0.06); }
-    .top-header-nav a.active, .std-top-nav a.active { background: #0d9488; color: #fff; }
-    .nav-dropdown, .std-nav-dd { position: relative; }
-    .nav-dropdown > a::after, .std-nav-dd > a::after { content: ' ▾'; font-size: 10px; opacity: 0.6; margin-left: 2px; }
-    .nav-dropdown .dropdown-menu, .std-nav-dd .std-dd-menu {
-      position: absolute; top: 100%; left: 50%;
-      transform: translateX(-50%) translateY(10px);
-      min-width: 220px; max-height: 80vh; overflow-y: auto;
-      padding: 8px; background: #fff;
+    .top-header .slogan { font-size: 14px; color: #6b7280; padding-left: 14px; border-left: 1px solid #e5e7eb; margin-left: 6px; white-space: nowrap; display: inline-block; font-weight: 500; flex-shrink: 0; }
+    .mobile-menu-btn { display: none; background: none; border: 1px solid #e5e7eb; border-radius: 8px; padding: 6px 8px; cursor: pointer; color: #111827; line-height: 0; }
+    .nav-close-btn { display: none; }
+    .top-header-nav { display: flex; align-items: center; gap: 4px; margin-left: auto; }
+    .top-header-nav a { padding: 7px 13px; font-size: 14px; color: #4b5563; text-decoration: none; border-radius: 20px; transition: all 0.2s ease; font-weight: 600; }
+    .top-header-nav a:hover { color: #0d9488; background: rgba(13,148,136,0.06); }
+    .top-header-nav a.active { background: #0d9488; color: #fff; }
+    .nav-dropdown { position: relative; }
+    .nav-dropdown > a::after { content: ' ▾'; font-size: 10px; opacity: 0.6; margin-left: 2px; }
+    .nav-dropdown .dropdown-menu {
+      position: absolute; top: 100%; left: 50%; transform: translateX(-50%) translateY(10px);
+      min-width: 240px; max-height: 80vh; overflow-y: auto; padding: 8px; background: #fff;
       border: 1px solid rgba(0,0,0,0.06); border-radius: 12px;
       box-shadow: 0 10px 40px -10px rgba(0,0,0,0.12);
-      opacity: 0; visibility: hidden;
-      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
-      z-index: 100; margin-top: 8px;
+      opacity: 0; visibility: hidden; transition: all 0.2s cubic-bezier(0.16,1,0.3,1); z-index: 100; margin-top: 8px;
     }
-    .nav-dropdown:hover .dropdown-menu, .nav-dropdown:focus-within .dropdown-menu,
-    .std-nav-dd:hover .std-dd-menu, .std-nav-dd:focus-within .std-dd-menu {
-      opacity: 1; visibility: visible; transform: translateX(-50%) translateY(0);
-    }
-    .nav-dropdown .dropdown-menu a, .std-nav-dd .std-dd-menu a {
-      display: block; padding: 12px 16px; color: #111827;
-      text-decoration: none; line-height: 1.4; border-radius: 8px; text-align: left;
-    }
-    .nav-dropdown .dropdown-menu a:hover, .std-nav-dd .std-dd-menu a:hover { background: #f9fafb; }
-    .nav-dropdown .dropdown-menu a .menu-title, .std-nav-dd .std-dd-menu a .menu-title {
-      display: block; font-weight: 600; font-size: 14px; color: #111827; margin-bottom: 2px;
-    }
-    .nav-dropdown .dropdown-menu a:hover .menu-title, .std-nav-dd .std-dd-menu a:hover .menu-title { color: #0d9488; }
-    .nav-dropdown .dropdown-menu a .menu-desc, .std-nav-dd .std-dd-menu a .menu-desc {
-      display: block; font-size: 12px; color: #6b7280; font-weight: 400; line-height: 1.4;
-    }
-    /* ── Mobile nav ────────────────────────────────── */
+    .nav-dropdown:hover .dropdown-menu, .nav-dropdown:focus-within .dropdown-menu { opacity: 1; visibility: visible; transform: translateX(-50%) translateY(0); }
+    .nav-dropdown .dropdown-menu a { display: block; padding: 10px 14px; color: #111827; text-decoration: none; border-radius: 8px; line-height: 1.4; }
+    .nav-dropdown .dropdown-menu a:hover { background: #f9fafb; }
+    .nav-dropdown .dropdown-menu a .menu-title { display: block; font-weight: 600; font-size: 14px; color: #111827; margin-bottom: 2px; }
+    .nav-dropdown .dropdown-menu a:hover .menu-title { color: #0d9488; }
+    .nav-dropdown .dropdown-menu a .menu-desc { display: block; font-size: 12px; color: #6b7280; font-weight: 400; line-height: 1.4; }
     @media (max-width: 768px) {
       body { padding-top: 64px; }
       .top-header { padding: 0 20px; }
-      .top-header .slogan, .top-header .std-slogan { display: none; }
-      .mobile-menu-btn, .std-mobile-btn {
-        display: block;
-        margin-left: auto;
-        color: #111827;
-        border: 1px solid #e5e7eb;
-        border-radius: 8px;
-        padding: 6px 10px;
-        cursor: pointer;
-        background: none;
-      }
-      .top-header-nav, .std-top-nav {
-        position: fixed;
-        top: 0; left: 0;
-        width: 100vw; height: 100vh;
-        background: #fff;
-        flex-direction: column;
-        justify-content: center; align-items: center;
-        gap: 8px;
-        margin: 0;
-        opacity: 0;
-        pointer-events: none;
-        transition: opacity 0.25s ease;
-        z-index: 10000;
-      }
-      .top-header-nav.open, .std-top-nav.open {
-        opacity: 1;
-        pointer-events: auto;
-      }
-      .top-header-nav a, .std-top-nav a {
-        font-size: 18px; padding: 10px 24px; color: #111827;
-      }
-      .top-header-nav a:hover, .std-top-nav a:hover { color: #0d9488; background: rgba(13,148,136,0.06); }
-      .top-header-nav a.active, .std-top-nav a.active { background: #0d9488; color: #fff; }
-      .nav-close-btn, .std-nav-close {
-        display: block; position: absolute; top: 20px; right: 20px;
-        background: none; border: none; font-size: 32px; color: #111827; cursor: pointer;
-        line-height: 1; padding: 4px 8px;
-      }
-      .nav-dropdown .dropdown-menu, .std-nav-dd .std-dd-menu { display: none; }
-      .nav-dropdown > a::after, .std-nav-dd > a::after { display: none; }
+      .top-header .slogan { display: none; }
+      .mobile-menu-btn { display: block; margin-left: auto; }
+      .top-header-nav { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: #fff; flex-direction: column; justify-content: center; align-items: center; gap: 8px; margin: 0; opacity: 0; pointer-events: none; transition: opacity 0.25s ease; z-index: 10000; }
+      .top-header-nav.open { opacity: 1; pointer-events: auto; }
+      .top-header-nav a { font-size: 18px; padding: 10px 24px; color: #111827; }
+      .nav-close-btn { display: block; position: absolute; top: 20px; right: 20px; background: none; border: none; font-size: 32px; color: #111827; cursor: pointer; line-height: 1; padding: 4px 8px; }
+      .nav-dropdown .dropdown-menu { display: none; }
+      .nav-dropdown > a::after { display: none; }
     }
-    /* ── Overflow protection ───────────────────────── */
     html, body { max-width: 100%; overflow-x: hidden; }
-    table { display: block; width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; }
-    thead, tbody, tr { width: 100%; }
 
+    /* ===== PAGE TAB NAV ===== */
+    .page-tabs { background: #fff; border-bottom: 1px solid var(--border); position: sticky; top: 72px; z-index: 200; display: flex; gap: 0; overflow-x: auto; -webkit-overflow-scrolling: touch; padding: 0 32px; }
+    .page-tabs a { display: block; padding: 14px 20px; font-size: 14px; font-weight: 500; color: var(--text-muted); text-decoration: none; border-bottom: 2px solid transparent; white-space: nowrap; transition: all 0.2s; }
+    .page-tabs a:hover { color: var(--primary); }
+    .page-tabs a.active { color: var(--primary); border-bottom-color: var(--primary); font-weight: 600; }
+    @media (max-width: 768px) { .page-tabs { padding: 0 16px; top: 64px; } .page-tabs a { padding: 12px 14px; font-size: 13px; } }
+
+    /* ===== HERO INTRO ===== */
+    .page-intro { background: linear-gradient(135deg, #e6faf7 0%, #d4f3ed 50%, #eaf7f3 100%); border-bottom: 1px solid rgba(13,148,136,0.15); padding: 40px 40px 32px; }
+    .breadcrumb { font-size: 13px; color: #6b7280; margin-bottom: 14px; }
+    .breadcrumb a { color: #0d9488; text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .page-intro p { font-size: 16px; color: #1f5c55; line-height: 1.7; max-width: 800px; margin-bottom: 20px; }
+    .page-intro p strong { color: #0d4a43; }
+    .intro-btns { display: flex; gap: 12px; flex-wrap: wrap; }
+    .btn-primary { display: inline-flex; align-items: center; gap: 6px; background: #0d9488; color: #fff; padding: 10px 20px; border-radius: 8px; font-size: 14px; font-weight: 600; text-decoration: none; transition: background 0.2s; }
+    .btn-primary:hover { background: #0f766e; }
+    .btn-outline { display: inline-flex; align-items: center; gap: 6px; background: rgba(255,255,255,0.8); color: #0d9488; border: 1.5px solid #0d9488; padding: 10px 20px; border-radius: 8px; font-size: 14px; font-weight: 600; text-decoration: none; transition: all 0.2s; }
+    .btn-outline:hover { background: #fff; }
+
+    /* ===== MAIN CONTENT ===== */
+    .page-content { max-width: 1100px; margin: 0 auto; padding: 48px 40px 100px; }
+    @media (max-width: 768px) { .page-content { padding: 32px 20px 60px; } .page-intro { padding: 28px 20px 24px; } }
+
+    h1 { font-family: 'Cormorant Garamond', serif; font-size: 38px; font-weight: 700; color: #0d4a43; margin: 0 0 12px; letter-spacing: -0.02em; line-height: 1.15; }
+    h2 { font-family: 'Cormorant Garamond', serif; font-size: 30px; font-weight: 600; color: #111827; margin: 56px 0 16px; letter-spacing: -0.01em; display: flex; align-items: center; gap: 10px; }
+    h2 .icon { width: 28px; height: 28px; background: rgba(13,148,136,0.1); border-radius: 8px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    h3 { font-size: 18px; font-weight: 600; color: #111827; margin: 28px 0 12px; }
+    p { margin: 0 0 16px; color: var(--text-muted); line-height: 1.7; }
+    p strong { color: var(--text); }
+
+    /* ===== KPI CARDS ===== */
+    .feature-cards { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; margin: 24px 0 40px; }
+    .feature-card { background: #fff; border: 1px solid var(--border); border-radius: 14px; padding: 24px; }
+    .feature-card .fc-label { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted); margin-bottom: 8px; }
+    .feature-card h3 { font-size: 17px; font-weight: 700; color: #111827; margin: 0; }
+    .feature-card p { font-size: 14px; color: var(--text-muted); margin: 6px 0 0; line-height: 1.55; }
+    @media (max-width: 768px) { .feature-cards { grid-template-columns: 1fr; } }
+
+    .kpi-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(150px,1fr)); gap: 16px; margin: 24px 0; }
+    .kpi-card { text-align: center; padding: 24px 12px; background: #fff; border: 1px solid var(--border); border-radius: 12px; }
+    .kpi-card .val { font-size: 36px; font-weight: 700; color: var(--primary); line-height: 1; }
+    .kpi-card .lbl { font-size: 12px; color: var(--text-muted); margin-top: 6px; line-height: 1.4; }
+
+    /* ===== TRACK CARDS (FH / HU) ===== */
+    .track-header { display: flex; align-items: center; gap: 14px; padding: 20px 24px; border-radius: 14px 14px 0 0; border: 1px solid var(--border); border-bottom: none; }
+    .track-body { border: 1px solid var(--border); border-top: none; border-radius: 0 0 14px 14px; padding: 24px; margin-bottom: 36px; }
+    .track-badge { font-size: 13px; font-weight: 700; padding: 4px 12px; border-radius: 20px; }
+    .track-fh .track-header { background: rgba(124,58,237,0.04); }
+    .track-fh .track-badge { background: rgba(124,58,237,0.1); color: #5b21b6; }
+    .track-hu .track-header { background: rgba(13,148,136,0.04); }
+    .track-hu .track-badge { background: rgba(13,148,136,0.1); color: #0f766e; }
+
+    .factor-list { display: grid; grid-template-columns: repeat(auto-fit,minmax(220px,1fr)); gap: 14px; margin: 20px 0; }
+    .factor { background: var(--bg-alt); border: 1px solid var(--border); border-radius: 10px; padding: 16px 18px; }
+    .factor-num { font-size: 11px; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 4px; }
+    .factor-title { font-size: 14px; font-weight: 700; color: var(--text); margin-bottom: 4px; }
+    .factor-badge { display: inline-block; font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 4px; background: rgba(13,148,136,0.08); color: var(--primary-dark); margin-bottom: 6px; }
+    .factor-rho { font-size: 13px; font-weight: 600; color: var(--primary-dark); }
+    .factor p { font-size: 13px; color: var(--text-muted); margin: 4px 0 0; line-height: 1.5; }
+
+    .score-box { margin-top: 20px; padding: 16px 20px; background: rgba(13,148,136,0.05); border: 1px solid rgba(13,148,136,0.2); border-radius: 10px; }
+    .score-box .score-label { font-size: 13px; font-weight: 600; color: var(--text-muted); margin-bottom: 4px; }
+    .score-box .score-val { font-size: 20px; font-weight: 700; color: var(--primary-dark); }
+    .score-box .score-sig { font-size: 13px; color: #15803d; font-weight: 600; margin-top: 2px; }
+
+    /* ===== CHART PLACEHOLDER ===== */
+    .chart-ph { background: var(--bg-alt); border: 1px solid var(--border); border-radius: 10px; padding: 32px 20px; text-align: center; color: var(--text-muted); font-size: 13px; margin: 16px 0; min-height: 160px; display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 8px; }
+    .chart-ph .chart-icon { font-size: 28px; opacity: 0.4; }
+    .chart-ph .chart-title { font-weight: 600; font-size: 14px; color: var(--text); }
+    .charts-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 16px 0; }
+    @media (max-width: 640px) { .charts-row { grid-template-columns: 1fr; } }
+
+    /* ===== TABLE ===== */
+    .table-wrap { overflow-x: auto; margin: 16px 0 24px; border-radius: 10px; border: 1px solid var(--border); }
+    table { width: 100%; border-collapse: collapse; font-size: 14px; }
+    th { background: rgba(13,148,136,0.07); color: var(--primary-dark); text-align: left; padding: 11px 16px; border-bottom: 2px solid rgba(13,148,136,0.15); font-weight: 600; white-space: nowrap; font-size: 13px; }
+    td { padding: 10px 16px; border-bottom: 1px solid var(--border); color: #374151; vertical-align: middle; }
+    tr:last-child td { border-bottom: none; }
+    tr.best td { background: #f0fdf4 !important; }
+    .r-pos { color: var(--primary-dark); font-weight: 700; }
+    .sig { color: #15803d; font-size: 11px; vertical-align: super; font-weight: 700; }
+
+    /* ===== CARDS ===== */
+    .card { background: #fff; border: 1px solid var(--border); border-radius: 12px; padding: 24px 28px; margin-bottom: 20px; }
+    .card-teal { border-left: 4px solid var(--primary); background: rgba(13,148,136,0.03); }
+    .card-amber { border-left: 4px solid #f59e0b; background: #fffbeb; }
+    .card-note { background: #eff6ff; border: 1px solid #bfdbfe; border-radius: 8px; padding: 12px 16px; font-size: 13px; color: #1e40af; margin: 12px 0; line-height: 1.6; }
+
+    /* ===== METHOD LIST ===== */
+    .method-list { list-style: none; padding: 0; }
+    .method-list li { padding: 14px 0; border-bottom: 1px solid var(--border); display: flex; gap: 14px; align-items: flex-start; }
+    .method-list li:last-child { border-bottom: none; }
+    .method-dot { width: 8px; height: 8px; background: var(--primary); border-radius: 50%; flex-shrink: 0; margin-top: 6px; }
+    .method-list li p { margin: 0; font-size: 15px; }
+
+    /* ===== DB BULLETS ===== */
+    .db-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 20px 0; }
+    .db-item { background: var(--bg-alt); border: 1px solid var(--border); border-radius: 10px; padding: 16px 20px; }
+    .db-item .db-label { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.8px; color: var(--text-muted); margin-bottom: 4px; }
+    .db-item p { font-size: 14px; color: var(--text); margin: 0; }
+    @media (max-width: 640px) { .db-grid { grid-template-columns: 1fr; } }
+
+    /* ===== INQUIRY FORM ===== */
+    .form-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    @media (max-width: 600px) { .form-grid-2 { grid-template-columns: 1fr; } }
+    .form-field label { display: block; font-weight: 600; font-size: 13px; margin-bottom: 6px; color: var(--text); }
+    .form-field input, .form-field textarea { width: 100%; padding: 10px 14px; border: 1px solid #d1d5db; border-radius: 8px; font-size: 14px; font-family: inherit; transition: border-color 0.2s; }
+    .form-field input:focus, .form-field textarea:focus { outline: none; border-color: var(--primary); box-shadow: 0 0 0 3px rgba(13,148,136,0.1); }
+    .form-field textarea { min-height: 96px; resize: vertical; }
+    .form-note { font-size: 12px; color: var(--text-muted); margin-top: 8px; line-height: 1.5; }
+    .btn-submit { margin-top: 16px; background: var(--primary); color: #fff; border: none; padding: 12px 28px; border-radius: 8px; font-size: 15px; font-weight: 600; cursor: pointer; font-family: inherit; transition: background 0.2s; }
+    .btn-submit:hover { background: var(--primary-dark); }
+
+    /* ===== FOOTER ===== */
+    .footer-sitemap { background: #f9fafb; border-top: 1px solid #e5e7eb; padding: 60px 32px 40px; }
+    .sitemap-grid { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit,minmax(200px,1fr)); gap: 40px; }
+    .sitemap-col h4 { font-size: 13px; font-weight: 700; color: #111827; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 16px; }
+    .sitemap-col ul { list-style: none; padding: 0; }
+    .sitemap-col ul li { margin-bottom: 10px; }
+    .sitemap-col ul li a { color: #4b5563; text-decoration: none; font-size: 14px; transition: color 0.2s; }
+    .sitemap-col ul li a:hover { color: var(--primary); }
+    .back-bar { background: var(--bg-alt); border-top: 1px solid var(--border); padding: 16px 32px; display: flex; align-items: center; gap: 10px; font-size: 13px; color: var(--text-muted); flex-wrap: wrap; }
+    .back-bar a { color: var(--primary); font-weight: 600; text-decoration: none; }
+    .back-bar a:hover { text-decoration: underline; }
+    .footer-copy { background: var(--bg-alt); padding: 20px 32px; font-size: 13px; color: var(--text-muted); border-top: 1px solid var(--border); }
+    .divider { border: none; border-top: 1px solid var(--border); margin: 48px 0; }
+
+    /* ===== UPDATE NOTE ===== */
+    .update-tag { display: inline-block; background: #d1fae5; color: #065f46; font-size: 12px; font-weight: 700; padding: 2px 10px; border-radius: 20px; margin-bottom: 8px; }
   </style>
-  </section>
+</head>
+<body>
 
-  <!-- 5. MODELS -->
-  <span id="prediction"></span>
-  <section id="models">
-    <h2><span class="num">05</span>Minimal Models — LOO Validation</h2>
-    <p>
-      For each group, we evaluated parsimonious feature sets using both regularized linear regression (RidgeCV) and gradient boosting (GBR) to capture non-linear interaction effects. Models are validated by strict Leave-One-Out cross-validation — no information leakage between training and test. New interaction features (suppressor × half-life; epitope burden × germline foreignness) were identified in the expanded 138-antibody panel.
-    </p>
-
-    <h3>Humanized Group Models (n = 84)</h3>
-    <div class="table-wrap">
-    <table>
-      <tr><th>Model</th><th>k</th><th>Algorithm</th><th>Key Features</th><th>LOO r</th><th>LOO p</th></tr>
-      <tr class="best"><td><strong>HU-138-5f &#9733;</strong></td><td>5</td><td>RidgeCV</td><td>supp&times;HL + assay_gen + supp + HL_inv + cdrh3_len</td><td><strong>0.247</strong></td><td><strong>0.027</strong></td></tr>
-      <tr><td>HU-138-4f</td><td>4</td><td>RidgeCV</td><td>supp&times;HL + assay_gen + HL_inv + cdrh3_len</td><td>0.218</td><td>0.052</td></tr>
-      <tr><td>HU-138-3f</td><td>3</td><td>RidgeCV</td><td>supp&times;HL + assay_gen + HL_inv</td><td>0.185</td><td>0.100</td></tr>
-      <tr><td>HU-baseline</td><td>3</td><td>RidgeCV</td><td>immuno_supp + half_life + assay_gen</td><td>0.140</td><td>0.214</td></tr>
-    </table>
-    </div>
-    <p style="font-size:12px;color:#9ca3af;margin-top:4px;">LOO r attenuated vs. 43-antibody core (r=0.391) due to missing confounder data for 41 new HU antibodies. Within the 43-antibody core, the historical signal remains intact.</p>
-
-    <h3>Fully Human Group Models (n = 54)</h3>
-    <div class="table-wrap">
-    <table>
-      <tr><th>Model</th><th>k</th><th>Algorithm</th><th>Key Features</th><th>LOO r</th><th>LOO p</th></tr>
-      <tr class="best"><td><strong>FH-138-GBR-4f &#9733;</strong></td><td>4</td><td>GBR</td><td>net_burden + (1&minus;VH_id)&times;burden + VH_id + assay&times;clusters</td><td><strong>0.389</strong></td><td><strong>0.004</strong></td></tr>
-      <tr><td>FH-138-4f</td><td>4</td><td>RidgeCV</td><td>strong_binders + binders&times;(1&minus;supp) + route&times;clusters + VH_id</td><td>0.298</td><td>0.029</td></tr>
-      <tr><td>FH-138-3f</td><td>3</td><td>RidgeCV</td><td>net_burden + strong_binders + route&times;clusters</td><td>0.248</td><td>0.071</td></tr>
-      <tr><td>FH-baseline</td><td>3</td><td>RidgeCV</td><td>n_clusters + net_burden + VH_id</td><td>0.122</td><td>0.381</td></tr>
-    </table>
-    </div>
-
-    <div class="card card-green">
-      <strong>Best result &mdash; FH-138-GBR-4f (n = 54, GBR):</strong> LOO r = 0.389 (p = 0.004). With n doubled from 27 to 54, the statistical confidence substantially improves over the 27-antibody model. The GBR non-linear model outperforms Ridge by capturing multiplicative effects between germline foreignness and immunogenic burden &mdash; consistent with a threshold-gated T-cell priming mechanism.
-    </div>
-
-    <!-- SVG: Model LOO performance &mdash; 138-panel -->
-    <h3 style="margin-top:28px;">Model Validation Performance (LOO Spearman r)</h3>
-    <div style="background:#f9fafb;border:1px solid #e5e7eb;border-radius:12px;padding:18px;margin-top:12px;overflow-x:auto;-webkit-overflow-scrolling:touch;">
-      <div style="font-size:11px;color:#6b7280;margin-bottom:12px;">LOO r &mdash; higher = better generalization &middot; &#9733; = recommended model &middot; dashed = baseline</div>
-      <svg viewBox="0 0 560 170" width="100%" style="min-width:480px;" xmlns="http://www.w3.org/2000/svg">
-        <!-- gridlines -->
-        <line x1="60" y1="10" x2="60" y2="128" stroke="#e5e7eb" stroke-width="1"/>
-        <line x1="60" y1="128" x2="545" y2="128" stroke="#e5e7eb" stroke-width="1"/>
-        <line x1="60" y1="92"  x2="545" y2="92"  stroke="#e5e7eb" stroke-width="0.5" stroke-dasharray="3,3"/>
-        <line x1="60" y1="56"  x2="545" y2="56"  stroke="#e5e7eb" stroke-width="0.5" stroke-dasharray="3,3"/>
-        <!-- y-axis labels: 0=128, 0.2=92, 0.4=56 &mdash; scale: 1 unit = 180px -->
-        <text x="54" y="130" text-anchor="end" font-size="9" fill="#9ca3af">0</text>
-        <text x="54" y="94"  text-anchor="end" font-size="9" fill="#9ca3af">0.2</text>
-        <text x="54" y="58"  text-anchor="end" font-size="9" fill="#9ca3af">0.4</text>
-        <!-- HU-138-5f LOO=0.247 &rarr; h=44 &rarr; y=84 -->
-        <rect x="75"  y="84"  width="55" height="44" rx="3" fill="#0d9488" opacity="0.90"/>
-        <text x="102" y="78"  text-anchor="middle" font-size="9" fill="#0f766e" font-weight="700">0.247 &#9733;</text>
-        <text x="102" y="144" text-anchor="middle" font-size="9" fill="#374151">HU-5f</text>
-        <!-- HU-138-4f LOO=0.218 &rarr; h=39 &rarr; y=89 -->
-        <rect x="145" y="89"  width="55" height="39" rx="3" fill="#0d9488" opacity="0.60"/>
-        <text x="172" y="83"  text-anchor="middle" font-size="9" fill="#374151">0.218</text>
-        <text x="172" y="144" text-anchor="middle" font-size="9" fill="#374151">HU-4f</text>
-        <!-- HU-baseline LOO=0.140 &rarr; h=25 &rarr; y=103 &mdash; dashed border -->
-        <rect x="215" y="103" width="55" height="25" rx="3" fill="none" stroke="#0d9488" stroke-width="1.5" stroke-dasharray="3,2"/>
-        <text x="242" y="97"  text-anchor="middle" font-size="9" fill="#374151">0.140</text>
-        <text x="242" y="144" text-anchor="middle" font-size="9" fill="#374151">HU-base</text>
-        <!-- divider -->
-        <line x1="295" y1="10" x2="295" y2="135" stroke="#d1d5db" stroke-width="1" stroke-dasharray="4,3"/>
-        <text x="295" y="155" text-anchor="middle" font-size="8" fill="#9ca3af">Humanized | Fully Human</text>
-        <!-- FH-138-GBR-4f LOO=0.389 &rarr; h=70 &rarr; y=58 -->
-        <rect x="310" y="58"  width="55" height="70" rx="3" fill="#7c3aed" opacity="0.85"/>
-        <text x="337" y="52"  text-anchor="middle" font-size="9" fill="#5b21b6" font-weight="700">0.389 &#9733;</text>
-        <text x="337" y="144" text-anchor="middle" font-size="9" fill="#374151">FH-GBR-4f</text>
-        <!-- FH-138-4f LOO=0.298 &rarr; h=54 &rarr; y=74 -->
-        <rect x="380" y="74"  width="55" height="54" rx="3" fill="#0d9488" opacity="0.70"/>
-        <text x="407" y="68"  text-anchor="middle" font-size="9" fill="#374151">0.298</text>
-        <text x="407" y="144" text-anchor="middle" font-size="9" fill="#374151">FH-4f</text>
-        <!-- FH-138-3f LOO=0.248 &rarr; h=45 &rarr; y=83 -->
-        <rect x="450" y="83"  width="55" height="45" rx="3" fill="#0d9488" opacity="0.50"/>
-        <text x="477" y="77"  text-anchor="middle" font-size="9" fill="#374151">0.248</text>
-        <text x="477" y="144" text-anchor="middle" font-size="9" fill="#374151">FH-3f</text>
-        <!-- FH-baseline LOO=0.122 &rarr; h=22 &mdash; dashed -->
-        <rect x="510" y="106" width="30" height="22" rx="3" fill="none" stroke="#0d9488" stroke-width="1.5" stroke-dasharray="3,2"/>
-        <text x="525" y="100" text-anchor="middle" font-size="9" fill="#374151">0.12</text>
-        <text x="525" y="144" text-anchor="middle" font-size="9" fill="#374151">FH-base</text>
-        <!-- legend -->
-        <rect x="65" y="158" width="10" height="8" rx="2" fill="#7c3aed" opacity="0.85"/>
-        <text x="78" y="165" font-size="8" fill="#374151">GBR (non-linear)</text>
-        <rect x="165" y="158" width="10" height="8" rx="2" fill="#0d9488" opacity="0.75"/>
-        <text x="178" y="165" font-size="8" fill="#374151">RidgeCV (linear)</text>
-        <rect x="260" y="158" width="10" height="8" rx="2" fill="none" stroke="#0d9488" stroke-width="1.5" stroke-dasharray="3,2"/>
-        <text x="273" y="165" font-size="8" fill="#374151">Baseline</text>
+<!-- ── HEADER ── -->
+<header class="top-header">
+  <div class="brand">
+    <a href="index.html">
+      <svg width="34" height="28" viewBox="0 0 32 30" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink:0;">
+        <path d="M16 2L2 10V22L16 28L30 22V10L16 2Z" fill="#0d9488" fill-opacity="0.05" stroke="#0d9488" stroke-width="1" stroke-opacity="0.3"/>
+        <path d="M14.5 24 V 16" stroke="#0d9488" stroke-width="2.5" stroke-linecap="round"/>
+        <path d="M17.5 24 V 16" stroke="#f59e0b" stroke-width="2.5" stroke-linecap="round"/>
+        <line x1="13" y1="19" x2="19" y2="19" stroke="#9ca3af" stroke-width="1.5" stroke-linecap="round"/>
+        <line x1="13" y1="21" x2="19" y2="21" stroke="#9ca3af" stroke-width="1.5" stroke-linecap="round"/>
+        <path d="M14.5 16 L 8 7" stroke="#0d9488" stroke-width="2.5" stroke-linecap="round"/>
+        <path d="M10 16 L 3.5 7" stroke="#2dd4bf" stroke-width="2.5" stroke-linecap="round"/>
+        <path d="M17.5 16 L 24 7" stroke="#f59e0b" stroke-width="2.5" stroke-linecap="round"/>
+        <rect x="21.5" y="3.5" width="5" height="5" rx="1" fill="#f59e0b" transform="rotate(45 24 6)"/>
       </svg>
-    </div>
-  </section>
-
-  <!-- 6. SCORING MODEL NOTE -->
-  <section id="formulas">
-    <h2><span class="num">06</span>Immunogenicity Scoring Model</h2>
-    <div class="card card-teal">
-      <p style="margin:0;">InSynBio applies proprietary weighted scoring models separately to humanized and fully human antibodies, integrating sequence, structural, and clinical context features. Model parameters are calibrated on the current clinical dataset and will be updated as additional ADA data are incorporated.</p>
-      <p style="margin:12px 0 0;font-size:13px;color:var(--text-muted);">Scoring formulas and feature weights are internal to the InSynBio platform and are not disclosed. Results are delivered as stratified risk scores (Low / Moderate / High) in client reports.</p>
-    </div>
-    <div class="kpi-row" style="margin-top:20px;">
-      <div class="kpi kpi-green"><div class="val">0.247</div><div class="lbl">Humanized model<br>LOO r (p = 0.027, n = 81)</div></div>
-      <div class="kpi kpi-green"><div class="val">0.389</div><div class="lbl">Fully human GBR<br>LOO r (p = 0.004, n = 54)</div></div>
-      <div class="kpi"><div class="val">3–5</div><div class="lbl">Features per model<br>(parsimony principle)</div></div>
-    </div>
-  </section>
-
-  <!-- 7. BIOLOGICAL INTERPRETATION -->
-  <section id="interpretation">
-    <h2><span class="num">07</span>Biological Interpretation</h2>
-
-    <h3>1 &middot; The Immune-Depleting Target Paradox</h3>
-    <p>
-      In the humanized group, antibodies targeting immune-depleting antigens (CD52, CD4, CD25) show paradoxically <em>higher</em> ADA rates &mdash; despite depleting the very immune cells responsible for ADA. The mechanistic explanation: target-mediated cytolysis releases large quantities of intracellular antigen and danger-associated molecular patterns (DAMPs), triggering a robust secondary immune activation that can override the transient lymphopenia. Alemtuzumab (anti-CD52, ADA = 85%) and Daclizumab (anti-CD25, ADA = 12%) exemplify this effect.
-    </p>
-
-    <h3>2 &middot; CDR-H3 Aromaticity and Immune Tolerance</h3>
-    <p>
-      Higher CDR-H3 aromatic content (Trp, Tyr, Phe) correlates inversely with ADA rates in the humanized group (r = &minus;0.324). One mechanistic hypothesis: aromatic residues form energetically stable antigen-binding contacts, reducing conformational flexibility &mdash; which in turn may limit proteolytic processing and MHC-II loading efficiency. Alternatively, aromatic-enriched CDR-H3 loops may resemble endogenous immunoglobulin architectures, activating clonal anergy pathways.
-    </p>
-
-    <h3>3 · T-Cell Epitope Clustering in Fully Human Antibodies</h3>
-    <p>
-      The number of strong MHC-II binders (r = +0.322) and strong epitope clusters are the strongest predictors of ADA in the fully human group. Spatially clustered epitopes increase the probability of productive T-cell:B-cell cognate interactions, particularly when multiple high-affinity peptides fall within a single antigen-processing fragment. This finding supports CDR sequence engineering strategies aimed at <strong>dispersing rather than eliminating</strong> MHC-II binding peptides.
-    </p>
-
-    <h3>4 · Assay Technology as a Confound</h3>
-    <p>
-      Assay generation (r = +0.188) is a positive correlate of ADA in the humanized group (138-panel). This reflects a well-known systematic bias: modern drug-tolerant and electrochemiluminescence (ECL) assays detect lower-titer and lower-affinity ADAs that older ELISA platforms would miss. This inflates reported ADA rates for recently approved antibodies irrespective of their intrinsic immunogenicity.
-    </p>
-
-    <h3>5 &middot; Minimal Models Outperform Complex Ones</h3>
-    <p>
-      Across all tested configurations, parsimonious models (fewer features) consistently outperform complex ones in LOO cross-validation. With small clinical datasets (n = 27&ndash;43), the bias-variance tradeoff strongly favors parsimony &mdash; models with too many features collapse to near-zero generalization, a fundamental constraint of real-world clinical immunogenicity data.
-    </p>
-  </section>
-
-  <!-- 8. LIMITATIONS -->
-  <section id="limits">
-    <h2><span class="num">08</span>Limitations &amp; Future Roadmap</h2>
-
-    <div class="card card-amber" style="margin-bottom:24px;">
-      <strong>How to use these models:</strong> The scoring formulas should be interpreted as <em>relative risk stratification tools</em>, not absolute ADA rate predictors. They are best applied to rank candidate molecules within the same project (same target, indication, format) rather than to generate a specific clinical ADA percentage.
-    </div>
-
-    <h3>Current Limitations</h3>
-    <ul>
-      <li><strong>Sample size:</strong> 54 fully human and 84 humanized antibodies allow 3&ndash;5 feature models; however, subgroup analyses remain underpowered. LOO validation is conservative but appropriate for this scale.</li>
-      <li><strong>ADA data heterogeneity:</strong> ADA rates pooled across trials with different assay sensitivities, cut-points, follow-up durations, and patient populations introduce substantial noise.</li>
-      <li><strong>Missing factors:</strong> Pre-existing ADA (particularly anti-PEG antibodies) and excipient adjuvancy data were unavailable for systematic inclusion.</li>
-      <li><strong>Linearity assumption:</strong> Weighted additive scores cannot capture non-linear feature interactions that may operate in real immunological pathways.</li>
-      <li><strong>3D structural coverage:</strong> SASA-based surface features could not enter the final model because structure availability was incomplete for a subset of the 138 antibodies.</li>
-      <li><strong>Missing confounders (41 HU antibodies):</strong> The signal attenuation in the expanded HU group (LOO r: 0.39 &rarr; 0.25) directly quantifies the penalty of missing immunosuppressant co-medication and half-life data. Completing these fields is the single highest-impact data action.</li>
-    </ul>
-
-    <h3>Planned Improvements</h3>
-    <div class="table-wrap">
-    <table>
-      <tr><th>Timeline</th><th>Action</th><th>Expected impact</th></tr>
-      <tr><td>Near-term</td><td>Complete confounder data (immuno-suppression, half-life) for 41 newly added HU antibodies</td><td>Restore HU LOO r to ≥ 0.39; critical priority</td></tr>
-      <tr><td>Near-term</td><td>Supplement pre-existing ADA data, especially anti-drug antibody prevalence in autoimmune indications</td><td>Explain additional variance in humanized group</td></tr>
-      <tr><td>Mid-term</td><td>Standardize ADA data source (FDA CDER review documents as primary)</td><td>Reduce inter-trial assay bias</td></tr>
-      <tr><td>Mid-term</td><td>Apply AF2 / ESMFold to generate missing 3D structures for complete surface feature coverage</td><td>Enable structural features in FH model</td></tr>
-      <tr><td>Long-term</td><td>Expand GBR and ensemble models as dataset scales beyond 200 antibodies</td><td>Capture higher-order interactions; improved LOO generalization</td></tr>
-      <tr><td>Long-term</td><td>Per-patient HLA typing integration for individualized epitope weighting</td><td>Upgrade from population-level to individualized risk assessment</td></tr>
-    </table>
-    </div>
-  </section>
-
-  <section id="submit">
-    <h2><span class="num">09</span>Submit Inquiry</h2>
-    <p>Share your antibody sequences or project context to receive an immunogenicity assessment proposal.</p>
-    <div class="card card-teal">
-      <form id="inquiry-form" action="https://formspree.io/f/mnjblezr" method="POST">
-        <input type="hidden" name="_subject" value="InSynBio Immunogenicity Inquiry">
-        <input type="hidden" name="_next" value="https://insynbio.com/thanks.html">
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
-          <div>
-            <label for="vh" style="display:block;font-weight:600;font-size:13px;margin-bottom:6px;">VH Sequence</label>
-            <textarea id="vh" name="vh_sequence" placeholder="EVQL..." style="width:100%;min-height:96px;padding:10px;border:1px solid #d1d5db;border-radius:8px;"></textarea>
-          </div>
-          <div>
-            <label for="vl" style="display:block;font-weight:600;font-size:13px;margin-bottom:6px;">VL Sequence</label>
-            <textarea id="vl" name="vl_sequence" placeholder="DIQMT..." style="width:100%;min-height:96px;padding:10px;border:1px solid #d1d5db;border-radius:8px;"></textarea>
-          </div>
-        </div>
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px;">
-          <div><label for="fname" style="display:block;font-weight:600;font-size:13px;margin-bottom:6px;">First Name *</label><input id="fname" name="fname" required style="width:100%;padding:10px;border:1px solid #d1d5db;border-radius:8px;"></div>
-          <div><label for="lname" style="display:block;font-weight:600;font-size:13px;margin-bottom:6px;">Last Name *</label><input id="lname" name="lname" required style="width:100%;padding:10px;border:1px solid #d1d5db;border-radius:8px;"></div>
-          <div><label for="org" style="display:block;font-weight:600;font-size:13px;margin-bottom:6px;">Organization *</label><input id="org" name="org" required style="width:100%;padding:10px;border:1px solid #d1d5db;border-radius:8px;"></div>
-          <div><label for="email" style="display:block;font-weight:600;font-size:13px;margin-bottom:6px;">Email *</label><input id="email" name="email" type="email" required style="width:100%;padding:10px;border:1px solid #d1d5db;border-radius:8px;"></div>
-        </div>
-        <div style="margin-top:12px;">
-          <label for="message" style="display:block;font-weight:600;font-size:13px;margin-bottom:6px;">Project Message</label>
-          <textarea id="message" name="message" placeholder="Target, indication, constraints, expected timeline..." style="width:100%;min-height:92px;padding:10px;border:1px solid #d1d5db;border-radius:8px;"></textarea>
-        </div>
-        <button type="submit" class="btn" style="margin-top:14px;">Submit Inquiry</button>
-      </form>
-    </div>
-  </section>
-
-  <section id="contact">
-    <h2><span class="num">10</span>Contact</h2>
-    <p>For direct support, email us at <a href="mailto:contact@insynbio.com" style="color:var(--primary);font-weight:600;">contact@insynbio.com</a>.</p>
-  </section>
-
-  <!-- Citation moved from removed Section 09 -->
-  <div class="citation" style="margin-top:48px;">
-    <strong>Data sources:</strong> TheraSAbDab (Raybould et al., 2020); FDA/EMA prescribing information and EPAR documents; Ponce et al., Bioanalysis 2009; Shankar et al., AAPS J 2014; Hwang &amp; Foote, Vaccines 2005; ClinicalTrials.gov study reports. ADA rates represent treatment-emergent ADA incidence as reported in the primary clinical indication.<br><br>
-    <strong>Methods:</strong> MHC-II epitope prediction via InSynBio computational immunogenicity pipeline. CDR/FR annotation via standard Chothia numbering. Surface feature analysis from structural modeling. Statistical validation: Leave-One-Out cross-validation (RidgeCV and GBR) ensuring no information leakage between training and test.<br><br>
-    <strong>Version:</strong> AbEngineCore Immunogenicity Module v2.0, April 2026. Dataset: 138 antibodies, Tier A/B evidence. For the full annotated dataset, see the <a href="ada_database.html" style="color:var(--primary);font-weight:600;">ADA Clinical Database &rarr;</a>
+      <span>In</span><span class="accent">Syn</span><span>Bio</span>
+    </a>
+    <span class="slogan">AI for Life Sciences</span>
   </div>
+  <button class="mobile-menu-btn" onclick="document.querySelector('.top-header-nav').classList.toggle('open')" aria-label="Open navigation">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+  </button>
+  <nav class="top-header-nav">
+    <button class="nav-close-btn" onclick="document.querySelector('.top-header-nav').classList.remove('open')">&#10005;</button>
+    <a href="index.html">Home</a>
+    <div class="nav-dropdown" tabindex="0">
+      <a href="index.html#services">AI Drug Design</a>
+      <div class="dropdown-menu">
+        <a href="InSynBio_Antibody_Developability_Assessment_Page.html"><span class="menu-title">Antibody R&amp;D</span><span class="menu-desc">Humanization, CMC, Immunogenicity</span></a>
+        <a href="InSynBio_ADC_Design_Page.html"><span class="menu-title">Smart ADC Design</span><span class="menu-desc">Antigen-Payload-Linker Matching</span></a>
+        <a href="InSynBio_CART_Design_Page.html"><span class="menu-title">Smart CAR-T Design</span><span class="menu-desc">Architecture &amp; Component Optimization</span></a>
+        <a href="InSynBio_Bispecific_Antibody_Design_Page.html"><span class="menu-title">Bispecific Design</span><span class="menu-desc">Format Screening · CMC · Pairing</span></a>
+        <a href="vaccine_design.html"><span class="menu-title">Vaccine Design</span><span class="menu-desc">Neoantigen · Heteroclitic · mRNA</span></a>
+      </div>
+    </div>
+    <div class="nav-dropdown" tabindex="0">
+      <a href="antibody-guide.html" class="active">Clinical Reference Library</a>
+      <div class="dropdown-menu">
+        <a href="antibody-guide.html"><span class="menu-title">Antibody Engineering Guide</span><span class="menu-desc">Standards &amp; Design Principles</span></a>
+        <a href="ada_database.html"><span class="menu-title">ADA Database</span><span class="menu-desc">138 Clinical Immunogenicity Benchmarks</span></a>
+        <a href="adc_database.html"><span class="menu-title">ADC Database</span><span class="menu-desc">100 Clinical ADC Programs</span></a>
+        <a href="component-browser.html"><span class="menu-title">CAR Component Library</span><span class="menu-desc">237 CAR-T Engineering Components</span></a>
+        <a href="vaccine_kb_data.html"><span class="menu-title">Vaccine Knowledge Base</span><span class="menu-desc">Antigens &amp; Adjuvant Data</span></a>
+        <a href="immunogenicity_study.html"><span class="menu-title">Immunogenicity Research</span><span class="menu-desc">138-Antibody ADA Study &amp; Prediction</span></a>
+      </div>
+    </div>
+    <div class="nav-dropdown" tabindex="0">
+      <a href="index.html#case-studies">Case Studies</a>
+      <div class="dropdown-menu">
+        <a href="case_mumab4d5_humanization_en.html"><span class="menu-title">muMAb4D5 Humanization</span><span class="menu-desc">CDR Grafting + Back-mutations</span></a>
+        <a href="case_mumab4d5_cmc.html"><span class="menu-title">muMAb4D5 CMC Assessment</span><span class="menu-desc">15 Developability Metrics Passed</span></a>
+        <a href="case_mumab4d5_vhh_en.html"><span class="menu-title">VH → HER2 VHH Conversion</span><span class="menu-desc">Nanobody Engineering &amp; CMC Optimization</span></a>
+        <a href="case_vgrw_sr_r2_affinity_maturation.html"><span class="menu-title">VHH Affinity Maturation</span><span class="menu-desc">Binding Energy Improved −3.32 kcal/mol</span></a>
+        <a href="case_vgrw_cdr_redesign_remat.html"><span class="menu-title">CDR Redesign &amp; Re-maturation</span><span class="menu-desc">Generative AI redesign · 13× affinity recovery</span></a>
+        <a href="case_bispecific_vhh_expression_optimization.html"><span class="menu-title">Bispecific VHH Optimization</span><span class="menu-desc">pI Engineering + 4.8× IC90 Boost</span></a>
+        <a href="case_malaria_carm_design.html"><span class="menu-title">CAR-M Design</span><span class="menu-desc">Anti-CIDRα1 Dual-binder CAR-Macrophage</span></a>
+        <a href="case_fentanyl_hapten_vam.html"><span class="menu-title">Fentanyl Hapten VAM</span><span class="menu-desc">Affinity Maturation −5.53 kcal/mol</span></a>
+        <a href="case_pdl1_epitope_analysis.html"><span class="menu-title">PD-L1 Epitope Analysis</span><span class="menu-desc">Blocking vs Non-blocking Classification</span></a>
+      </div>
+    </div>
+    <a href="InSynBio_OurTech.html">Our Tech</a>
+    <div class="nav-dropdown" tabindex="0">
+      <a href="index.html#about">About Us</a>
+      <div class="dropdown-menu">
+        <a href="index.html#about"><span class="menu-title">About InSynBio</span><span class="menu-desc">Team background &amp; mission</span></a>
+        <a href="index.html#workflow"><span class="menu-title">Workflow</span><span class="menu-desc">From inquiry to delivery</span></a>
+      </div>
+    </div>
+    <a href="index.html#contact" style="background:#0d9488;color:#fff;border-radius:20px;padding:7px 16px;">Contact Us</a>
+  </nav>
+</header>
 
-</main>
+<!-- ── PAGE TAB NAV ── -->
+<nav class="page-tabs" id="page-tabs">
+  <a href="#overview" class="active" onclick="setTab(this)">Platform Overview</a>
+  <a href="#research" onclick="setTab(this)">Research Summary</a>
+  <a href="#methods" onclick="setTab(this)">Prediction Methods</a>
+  <a href="#ada-db" onclick="setTab(this)">ADA Database</a>
+  <a href="#submit" onclick="setTab(this)">Submit Inquiry</a>
+</nav>
+
+<!-- ── HERO INTRO ── -->
+<div class="page-intro">
+  <div class="breadcrumb">
+    <a href="index.html">Home</a> / <a href="InSynBio_Antibody_Developability_Assessment_Page.html">AI Drug Design</a> / Immunogenicity Research
+  </div>
+  <p><strong>Clinically calibrated immunogenicity assessment:</strong> Our platform uses 138 real-world ADA clinical records as a reference baseline, providing richer context than purely computational scoring — helping teams identify high-risk epitopes early and develop mitigation strategies.</p>
+  <p style="margin-bottom:20px;">Supports evaluation of any therapeutic antibody sequence, including humanized candidates, VHH nanobodies, and bispecific formats. Results benchmarked against 138 clinical antibodies' historical ADA rates; typically delivered within 3–5 business days.</p>
+  <div class="intro-btns">
+    <a href="ada_database.html" class="btn-primary">Browse ADA Reference Database</a>
+    <a href="#submit" class="btn-outline">Submit Inquiry</a>
+  </div>
 </div>
 
+<!-- ── MAIN CONTENT ── -->
+<div class="page-content">
+
+  <!-- ── OVERVIEW ── -->
+  <span id="overview"></span>
+  <h1>Immunogenicity Prediction &amp; ADA Research</h1>
+  <p style="font-size:17px;color:#374151;margin-bottom:28px;">Clinically benchmarked assessment of therapeutic antibody immunogenicity against real-world ADA data.</p>
+
+  <div class="feature-cards">
+    <div class="feature-card">
+      <div class="fc-label">Data Foundation</div>
+      <h3>138 ADA Records</h3>
+      <p>Real-world immunogenicity data from approved and clinical-stage therapeutic antibodies, spanning multiple indications and dosing regimens.</p>
+    </div>
+    <div class="feature-card">
+      <div class="fc-label">Prediction Coverage</div>
+      <h3>27 HLA-DR Alleles</h3>
+      <p>MHC-II binding prediction via IEDB API, covering the major global HLA-DR alleles to capture population-wide risk.</p>
+    </div>
+    <div class="feature-card">
+      <div class="fc-label">Stratified Analysis</div>
+      <h3>Multi-dimensional Risk Score</h3>
+      <p>Sequence, structure, surface exposure, and germline distance integrated into a composite risk score, calibrated against clinical ADA rates.</p>
+    </div>
+  </div>
+
+  <!-- ── RESEARCH SUMMARY ── -->
+  <span id="research"></span>
+  <h2>
+    <span class="icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0d9488" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></span>
+    Research Summary
+  </h2>
+  <p>The InSynBio immunogenicity study analyzed <strong>138 therapeutic antibodies</strong> — including monoclonal antibodies, fusion proteins, and antibody fragments — establishing a correlation model between computational immunogenicity prediction and clinical ADA rates.</p>
+
+  <div class="kpi-grid">
+    <div class="kpi-card"><div class="val">138</div><div class="lbl">Therapeutic antibodies<br>approved &amp; clinical stage</div></div>
+    <div class="kpi-card"><div class="val">138</div><div class="lbl">Validated clinical<br>ADA records</div></div>
+    <div class="kpi-card"><div class="val">31</div><div class="lbl">Feature dimensions<br>(sequence, structure, CMC, clinical)</div></div>
+    <div class="kpi-card"><div class="val">27</div><div class="lbl">HLA-DR alleles<br>covered</div></div>
+    <div class="kpi-card"><div class="val">TCIA</div><div class="lbl">T-Cell Immunogenicity<br>Composite Score</div></div>
+    <div class="kpi-card"><div class="val" style="font-size:22px;padding-top:4px;">Tier A/B</div><div class="lbl">73% data from<br>FDA/EMA labels</div></div>
+  </div>
+
+  <p>Our research reveals that immunogenicity risk in <strong>fully human (FH)</strong> and <strong>humanized (HU)</strong> antibodies is driven by fundamentally different mechanisms. We therefore established the <strong>ADA V2 Dual-Track Prediction Model</strong>, using separate evaluation parameters and weighting systems for each category.</p>
+
+  <h3>Figure 1 — ADA Incidence Distribution: All 138 / Humanized (HU) / Fully Human (FH)</h3>
+  <div class="chart-ph">
+    <div class="chart-icon">📊</div>
+    <div class="chart-title">ADA Rate Distribution</div>
+    <div>Histogram of ADA incidence across all 138 antibodies, stratified by HU / FH / chimeric</div>
+  </div>
+
+  <h3>Figure 2 — ADA Distribution by Humanization Strategy, Assay Method, Dosing Route &amp; Fc Subclass</h3>
+  <div class="charts-row">
+    <div class="chart-ph">
+      <div class="chart-icon">📦</div>
+      <div class="chart-title">ADA Boxplots — By Category</div>
+      <div>Stratified boxplots by humanization strategy, assay generation, route, and IgG subclass</div>
+    </div>
+    <div class="chart-ph">
+      <div class="chart-icon">📈</div>
+      <div class="chart-title">Spearman Correlation Heatmap</div>
+      <div>Figure 3 — 31-feature Spearman ρ vs ADA rate: all features, FH, and HU subsets</div>
+    </div>
+  </div>
+
+  <!-- FH TRACK -->
+  <div class="track-fh" style="margin-top:40px;">
+    <div class="track-header">
+      <span class="track-badge">FH</span>
+      <div>
+        <div style="font-size:15px;font-weight:700;color:#111827;">Fully Human Antibodies · FH</div>
+        <div style="font-size:13px;color:#6b7280;margin-top:2px;">Structural defects are the primary immunogenicity driver</div>
+      </div>
+    </div>
+    <div class="track-body">
+      <p>Fully human antibodies are obtained via phage display or transgenic mouse platforms. Their CDRs evolve through somatic hypermutation (SHM), with fully human frameworks. ADA risk does not stem from foreign sequences, but from <strong>physical defects in the molecular structure itself</strong>: interface instability and exposed hydrophobic patches.</p>
+
+      <div class="factor-list">
+        <div class="factor">
+          <div class="factor-num">① Interface Stability · Weight 35%</div>
+          <div class="factor-badge">ρ = +0.369</div>
+          <p>VH-VL contact count · p=0.007 <strong>(highly significant)</strong>. Fewer interface contacts → higher dissociation risk → significantly elevated ADA.</p>
+        </div>
+        <div class="factor">
+          <div class="factor-num">② Surface Hydrophobicity · Weight 30%</div>
+          <div class="factor-badge">ρ = +0.311</div>
+          <p>Surface hydrophobic patch count · p=0.024. Hydrophobic patches induce aggregation and activate APC presentation — primary FH immunogenicity mechanism.</p>
+        </div>
+        <div class="factor">
+          <div class="factor-num">③ VL Germline Deviation · Weight 20%</div>
+          <div class="factor-badge">ρ = +0.264</div>
+          <p>VL germline identity (inverted) · p=0.056. Greater SHM divergence from the human repertoire → higher ADA risk.</p>
+        </div>
+        <div class="factor">
+          <div class="factor-num">④ MHC-II Epitopes · Weight 10%</div>
+          <div class="factor-badge">ρ = +0.134</div>
+          <p>MHC-II strong-binding peptide count. SHM-derived epitopes are the ultimate ADA trigger, though in FH their effect is attenuated by background tolerance.</p>
+        </div>
+      </div>
+
+      <div class="score-box">
+        <div class="score-label">FH Composite Score</div>
+        <div class="score-val">ρ = +0.310</div>
+        <div class="score-sig">p = 0.024 · n = 53 · Statistically significant ✓</div>
+      </div>
+
+      <div class="card-note" style="margin-top:16px;">
+        <strong>ADA V2 Dual-Track Calibration (April 2026):</strong> FH-specific score corrected two weighting errors: ① Interface contact normalization ceiling raised 60 → 100 (FH mean ≈ 71; old standard compressed nearly all FH antibodies to I = 1.0, losing discriminatory power); ② VL germline deviation changed to <strong>(1 − VL_identity) × 0.20</strong> (old adjustment range was only ±0.004, near-zero contribution). After correction, FH composite score first reached statistical significance, positively correlated with clinical ADA (p = 0.024), matching the strongest single predictor.
+      </div>
+
+      <h3 style="margin-top:28px;">Figure 4 — FH Antibodies: Interface Contacts, Germline Deviation, Hydrophobic Patches &amp; MHC-II Epitopes</h3>
+      <div class="chart-ph">
+        <div class="chart-icon">🔵</div>
+        <div class="chart-title">FH Scatter Analysis</div>
+        <div>4-panel scatter: each feature vs. ADA rate with Spearman ρ annotation</div>
+      </div>
+
+      <p style="margin-top:16px;font-size:14px;"><strong>Key Conclusion:</strong> Fully human antibody immunogenicity directly reflects molecular design quality — reducing interface anomalies, controlling SHM extent, and minimizing hydrophobic patches are the three core paths to lower ADA risk. High-sensitivity assays (Tiered/ECL) more clearly reveal T-cell epitope contributions.</p>
+    </div>
+  </div>
+
+  <!-- HU TRACK -->
+  <div class="track-hu">
+    <div class="track-header">
+      <span class="track-badge">HU</span>
+      <div>
+        <div style="font-size:15px;font-weight:700;color:#111827;">Humanized Antibodies · HU</div>
+        <div style="font-size:13px;color:#6b7280;margin-top:2px;">Design-induced risk: Vernier Zone &amp; CDR junction epitopes</div>
+      </div>
+    </div>
+    <div class="track-body">
+      <p>Humanized antibodies graft murine CDRs onto human frameworks. ADA risk comes not only from foreign CDR peptides, but also from three engineering-specific "design traps": <strong>Vernier Zone residues, CDR-FR junction epitopes, and humanization-induced molecular instability.</strong> Clinical interventions (e.g., MTX co-administration) significantly suppress apparent ADA, making molecular-level correlation signals statistically weaker — exactly why HU assessment requires a dedicated system.</p>
+
+      <div class="factor-list">
+        <div class="factor">
+          <div class="factor-num">① Vernier Zone Audit · Weight 25%</div>
+          <div class="factor-badge">Deep Scan</div>
+          <p>Vernier Zone lies below CDR loops (VH:27–30, 47–49, 67–71; VL:35–36, 46–49). Buried murine residues release hydrophobic anchor peptides upon proteolytic degradation, captured by MHC-II with high affinity.</p>
+        </div>
+        <div class="factor">
+          <div class="factor-num">② CDR-FR Junction Epitopes · Weight 15%</div>
+          <div class="factor-badge">Junction</div>
+          <p>CDR (murine) / FR (human) junctions create "hybrid peptides" never found in natural sequences — these Junction Epitopes are immunogenicity triggers unique to humanized antibodies.</p>
+        </div>
+        <div class="factor">
+          <div class="factor-num">③ Aggregation Propensity · Weight 20%</div>
+          <div class="factor-badge">ρ = +0.196</div>
+          <p>Aggregation motif count · p=0.110 (HU high-sensitivity subset, n=73). Improper Vernier zone handling disrupts hydrophobic core balance — the strongest physical mechanism triggering ADA.</p>
+        </div>
+        <div class="factor">
+          <div class="factor-num">④ Germline Identity · Weight 30%</div>
+          <div class="factor-badge">Identity</div>
+          <p>VH/VL germline homology assessment against 842 clinical antibody reference database. Ensures framework "human similarity" compliance baseline.</p>
+        </div>
+        <div class="factor">
+          <div class="factor-num">⑤ Instability Correction · Weight 10%</div>
+          <div class="factor-badge">Baseline</div>
+          <p>Thermodynamic instability coefficient and clinical background correction (e.g., immunosuppressant co-medication), as final risk expectation adjustment.</p>
+        </div>
+      </div>
+
+      <h3 style="margin-top:24px;">Figure 5 — HU Antibodies: Aggregation Motifs, Germline Identity, Instability &amp; TCIA Score</h3>
+      <div class="chart-ph">
+        <div class="chart-icon">🟢</div>
+        <div class="chart-title">HU Scatter Analysis</div>
+        <div>4-panel scatter for HU subset: each feature vs. ADA rate with Spearman ρ annotation</div>
+      </div>
+
+      <p style="margin-top:16px;font-size:14px;"><strong>Key Conclusion:</strong> Clinical ADA in humanized antibodies is suppressed by immunosuppressants and other management measures, masking true molecular-level risk. The InSynBio HU-specific system bypasses this interference by directly assessing "design quality" — whether Vernier Zone and Junction peptides generate strong T-cell signals after degradation is the core dimension for evaluating HU immunogenicity risk.</p>
+    </div>
+  </div>
+
+  <!-- ADA V2.1 BENCHMARK -->
+  <h2>
+    <span class="icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0d9488" stroke-width="2"><path d="M18 20V10M12 20V4M6 20v-6"/></svg></span>
+    ADA V2.1 Composite Score: FH vs HU Predictive Power
+  </h2>
+
+  <p>The ADA V2.1 composite score integrates multi-dimensional features into a single risk indicator. In the FH subset, the composite score shows a statistically significant positive correlation with clinical ADA (ρ = +0.308, p = 0.025), further improved over V2.0.</p>
+
+  <div class="update-tag">April 2026 Data Validation</div>
+  <p>Key improvement in this weight update: based on FH deep-scan results, interface contact density (I) weight raised from 20% → 35%, surface patch (P) weight raised from 25% → 30%, and a FH-specific Midpoint correction (0.32) introduced for balanced risk stratification. In the HU subset, apparent signals are suppressed by widespread clinical immunosuppressant use (ρ ≈ 0) — exactly validating the necessity of the dual-track approach.</p>
+
+  <h3>Figure 6 — ADA V2 Composite Score vs Clinical ADA: FH vs HU Comparison</h3>
+  <div class="charts-row">
+    <div class="chart-ph">
+      <div class="chart-icon">📉</div>
+      <div class="chart-title">Score Distribution</div>
+      <div>Figure 6a — ADA V2 risk score distribution by FH / HU / ALL groups</div>
+    </div>
+    <div class="chart-ph">
+      <div class="chart-icon">📈</div>
+      <div class="chart-title">ROC Curves</div>
+      <div>Figure 6b — ROC curves (FH AUC=0.690 / HU AUC=0.505)</div>
+    </div>
+  </div>
+  <div class="charts-row">
+    <div class="chart-ph">
+      <div class="chart-icon">🟦</div>
+      <div class="chart-title">Confusion Matrices</div>
+      <div>Figure 6c — Confusion matrix (HIGH risk prediction vs clinical ADA &gt;10%) — ALL / FH / HU</div>
+    </div>
+    <div class="chart-ph">
+      <div class="chart-icon">🔴</div>
+      <div class="chart-title">Score vs ADA Scatter</div>
+      <div>Figure 6d — Scatter plot: ADA V2 composite score vs clinical ADA incidence</div>
+    </div>
+  </div>
+
+  <h3 style="margin-top:32px;">ADA V2 Dual-Track Benchmark — 138 Clinical Records</h3>
+  <div class="table-wrap">
+    <table>
+      <tr><th>Track</th><th>n</th><th>ρ (Spearman)</th><th>p-value</th><th>AUC-ROC</th><th>Balanced Acc.</th><th>Sensitivity</th><th>Specificity</th></tr>
+      <tr><td>All (ALL)</td><td>129</td><td>+0.088</td><td>0.319</td><td>0.511</td><td>0.505</td><td>0.310</td><td>0.701</td></tr>
+      <tr class="best"><td><strong>FH Fully Human ✓</strong></td><td>53</td><td class="r-pos">+0.308<span class="sig">*</span></td><td>0.025</td><td>0.690</td><td>0.566</td><td>0.727</td><td>0.405</td></tr>
+      <tr><td>HU Humanized</td><td>76</td><td>+0.058</td><td>0.618</td><td>0.505</td><td>0.524</td><td>0.226</td><td>0.822</td></tr>
+    </table>
+  </div>
+  <p style="font-size:13px;color:#9ca3af;margin-top:4px;">* Clinical ADA &gt;10% = positive; HIGH risk grade = predicted positive. FH track reached statistical significance. HU signal suppressed by clinical immunosuppressants (see HU-specific analysis).</p>
+
+  <h3>Validated LOO Models (Leave-One-Out Cross-Validation)</h3>
+  <div class="table-wrap">
+    <table>
+      <tr><th>Model</th><th>n</th><th>Algorithm</th><th>Key Features</th><th>LOO r</th><th>LOO p</th></tr>
+      <tr class="best"><td><strong>HU-138-5f ★</strong></td><td>84</td><td>RidgeCV</td><td>supp×HL + assay_gen + supp + HL_inv + cdrh3_len</td><td class="r-pos">0.247</td><td>0.027</td></tr>
+      <tr class="best"><td><strong>FH-138-GBR-4f ★</strong></td><td>54</td><td>GBR</td><td>net_burden + (1−VH_id)×burden + VH_id + assay×clusters</td><td class="r-pos">0.389</td><td>0.004</td></tr>
+    </table>
+  </div>
+
+  <div class="card card-teal" style="margin-top:20px;">
+    <strong>CMC Developability Features: Shared Risk Across FH and HU</strong><br>
+    <p style="margin:8px 0 0;">Regardless of FH or HU, <strong>aggregation motifs and hydrophobic patches</strong> maintain positive correlation in the full panel (ρ = +0.177, p = 0.045), providing shared immunological risk criteria for early CMC screening. Assay method stratification (Kruskal-Wallis p = 0.852) confirms this correlation is unaffected by assay generational bias.</p>
+  </div>
+
+  <h3 style="margin-top:28px;">Figure 7 — CMC Developability Features vs ADA: Cross-format Association</h3>
+  <div class="chart-ph">
+    <div class="chart-icon">⚗️</div>
+    <div class="chart-title">CMC vs ADA</div>
+    <div>Aggregation motifs, deamidation sites, etc. vs ADA incidence across antibody formats</div>
+  </div>
+
+  <!-- PREDICTION METHODS -->
+  <span id="methods"></span>
+  <h2>
+    <span class="icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0d9488" stroke-width="2"><path d="M9 3H5a2 2 0 0 0-2 2v4m6-6h10a2 2 0 0 1 2 2v4M9 3v18m0 0h10a2 2 0 0 0 2-2V9M9 21H5a2 2 0 0 0-2-2V9m0 0h18"/></svg></span>
+    Prediction Methods
+  </h2>
+
+  <p>The InSynBio immunogenicity assessment integrates complementary multi-layer analyses, with the final report automatically switching between FH/HU-specific weighting systems based on antibody type:</p>
+
+  <ul class="method-list">
+    <li>
+      <span class="method-dot"></span>
+      <p><strong>IEDB MHC-II Deep Scan</strong> — Covers 27 HLA-DR alleles; <strong>HU-specific</strong> additionally scans Vernier Zone (~10 positions per VH/VL) and CDR-FR junctions (5 residues at each CDR end) for degradation peptides.</p>
+    </li>
+    <li>
+      <span class="method-dot"></span>
+      <p><strong>Risk Site Clustering</strong> — Identifies spatially clustered T-cell epitope hotspots, distinguishing isolated weak signals from functional strong epitope clusters.</p>
+    </li>
+    <li>
+      <span class="method-dot"></span>
+      <p><strong>Surface Exposure Assessment</strong> — Parker hydrophilicity scoring + SASA analysis (when PDB provided); FH-specific focuses on surface hydrophobic patch count.</p>
+    </li>
+    <li>
+      <span class="method-dot"></span>
+      <p><strong>Germline Tolerance Filtering</strong> — IGHV/IGKV/IGLV frequency-weighted filter identifying non-self human residues; HU-specific additionally evaluates Vernier Zone residue humanization degree.</p>
+    </li>
+    <li>
+      <span class="method-dot"></span>
+      <p><strong>ADA V2 Dual-Track Composite Score</strong> — Automatically selects the FH or HU weight matrix based on input sequence type, outputs stratified risk scores (Low / Moderate / High), benchmarked against 138 clinical records.</p>
+    </li>
+  </ul>
+
+  <p>All scores are benchmarked against 138 clinical records in the InSynBio ADA database, providing percentile ranking and reference comparisons (e.g., Herceptin®, Humira® benchmarks).</p>
+
+  <div class="card-note">
+    <strong>April 2026 Data Validation</strong> — Latest high-sensitivity assay stratification analysis (n=122, ECL/Tiered) confirms: FH system's interface stability signal (ρ=+0.339, p=0.018) and MHC-II epitope signal (ρ=+0.425, p=0.034) remain statistically significant after removing assay bias, confirming ADA V2 dual-track robustness. 8/8 previously significant features maintain consistent direction across the full sample.
+  </div>
+
+  <!-- ADA DATABASE SECTION -->
+  <span id="ada-db"></span>
+  <h2>
+    <span class="icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0d9488" stroke-width="2"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg></span>
+    ADA Reference Database
+  </h2>
+
+  <p>The InSynBio ADA database is the calibration foundation of our immunogenicity assessment, containing ADA data from clinical studies and post-marketing surveillance:</p>
+
+  <div class="db-grid">
+    <div class="db-item">
+      <div class="db-label">Format Coverage</div>
+      <p>Monoclonal antibodies (IgG1/2/4), Fab fragments, fusion proteins, bispecific antibodies</p>
+    </div>
+    <div class="db-item">
+      <div class="db-label">Indication Coverage</div>
+      <p>Oncology, autoimmune, metabolic disease, neurological disorders</p>
+    </div>
+    <div class="db-item">
+      <div class="db-label">Data Dimensions</div>
+      <p>ADA incidence, neutralizing antibody ratio, dosing regimen, co-medication information</p>
+    </div>
+    <div class="db-item">
+      <div class="db-label">Humanization Degree</div>
+      <p>Chimeric, CDR grafted, fully humanized — all categories represented with samples</p>
+    </div>
+  </div>
+
+  <p>This database enables our prediction models to perform stratified calibration for specific therapeutic categories and molecular formats.</p>
+
+  <div style="margin-top:20px;">
+    <a href="ada_database.html" class="btn-primary">Browse ADA Reference Database →</a>
+  </div>
+
+  <!-- SUBMIT INQUIRY -->
+  <span id="submit"></span>
+  <h2>
+    <span class="icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0d9488" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.07 13.07 19.79 19.79 0 0 1 1 4.18 2 2 0 0 1 2.98 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21 17z"/></svg></span>
+    Submit Immunogenicity Assessment Inquiry
+  </h2>
+
+  <p>Submit your antibody sequences to receive a clinically benchmarked immunogenicity assessment report.</p>
+
+  <div class="card card-teal">
+    <form id="inquiry-form" action="https://formspree.io/f/mnjblezr" method="POST">
+      <input type="hidden" name="_subject" value="InSynBio Immunogenicity Inquiry">
+      <input type="hidden" name="_next" value="https://insynbio.com/thanks.html">
+
+      <div class="form-grid-2" style="margin-bottom:14px;">
+        <div class="form-field">
+          <label for="fname">First Name *</label>
+          <input id="fname" name="fname" required placeholder="First name">
+        </div>
+        <div class="form-field">
+          <label for="lname">Last Name *</label>
+          <input id="lname" name="lname" required placeholder="Last name">
+        </div>
+        <div class="form-field">
+          <label for="org">Organization *</label>
+          <input id="org" name="org" required placeholder="Company / Institution">
+        </div>
+        <div class="form-field">
+          <label for="email">Email *</label>
+          <input id="email" name="email" type="email" required placeholder="work@example.com">
+        </div>
+      </div>
+
+      <div class="form-grid-2" style="margin-bottom:14px;">
+        <div class="form-field">
+          <label for="vh">VH Sequence (amino acid, single-letter)</label>
+          <textarea id="vh" name="vh_sequence" placeholder="EVQLVESGGGLVQPGG..."></textarea>
+        </div>
+        <div class="form-field">
+          <label for="vl">VL Sequence (optional — leave blank for VHH)</label>
+          <textarea id="vl" name="vl_sequence" placeholder="DIQMTQSPSSLSASVG..."></textarea>
+        </div>
+      </div>
+
+      <div class="form-field" style="margin-bottom:14px;">
+        <label for="message">Additional Notes (target antigen, indication, known ADA data, etc.)</label>
+        <textarea id="message" name="message" placeholder="e.g., Anti-TNFα IgG1, RA indication, no prior ADA data..."></textarea>
+      </div>
+
+      <button type="submit" class="btn-submit">Submit Immunogenicity Inquiry</button>
+      <p class="form-note">Submission initiates NDA onboarding. Your sequences and project information are strictly confidential and not shared with third parties. Raw data is not retained after project completion.</p>
+    </form>
+  </div>
+
+  <hr class="divider">
+
+  <h2 style="font-size:22px;margin-top:32px;">Contact</h2>
+  <p>For inquiries, email us directly: <a href="mailto:contact@insynbio.com" style="color:var(--primary);font-weight:600;">contact@insynbio.com</a></p>
+  <p style="font-size:14px;color:#9ca3af;">We typically respond within 1–2 business days.</p>
+
+  <div style="margin-top:20px;font-size:13px;color:#9ca3af;border-top:1px solid var(--border);padding-top:24px;">
+    <strong>Data sources:</strong> TheraSAbDab (Raybould et al., 2020); FDA/EMA prescribing information and EPAR documents; Ponce et al., Bioanalysis 2009; Shankar et al., AAPS J 2014; Hwang &amp; Foote, Vaccines 2005.<br>
+    <strong>Methods:</strong> MHC-II epitope prediction via InSynBio computational immunogenicity pipeline. CDR/FR annotation via Chothia numbering. LOO cross-validation (RidgeCV and GBR).<br>
+    <strong>Version:</strong> AbEngineCore Immunogenicity Module v2.1, April 2026. Dataset: 138 antibodies, Tier A/B evidence.
+    See <a href="ada_database.html" style="color:var(--primary);font-weight:600;">ADA Clinical Database →</a>
+  </div>
+
+</div><!-- end page-content -->
+
+<!-- ── FOOTER ── -->
 <section class="footer-sitemap">
   <div class="sitemap-grid">
     <div class="sitemap-col">
@@ -528,7 +695,6 @@
         <li><a href="index.html#about">About Us</a></li>
         <li><a href="InSynBio_OurTech.html">Our Technology</a></li>
         <li><a href="index.html#case-studies">Case Studies</a></li>
-        <li><a href="index.html#faq">FAQ</a></li>
       </ul>
     </div>
     <div class="sitemap-col">
@@ -537,14 +703,16 @@
         <li><a href="InSynBio_Antibody_Developability_Assessment_Page.html">Developability Assessment</a></li>
         <li><a href="InSynBio_Bispecific_Antibody_Design_Page.html">Bispecific Engineering</a></li>
         <li><a href="immunogenicity_study.html">Immunogenicity Research</a></li>
-        <li><a href="vaccine_design.html">Vaccine &amp; Epitope Design</a></li>
+        <li><a href="vaccine_design.html">Vaccine Design</a></li>
       </ul>
     </div>
     <div class="sitemap-col">
-      <h4>Cell Therapy</h4>
+      <h4>Clinical Reference</h4>
       <ul>
-        <li><a href="InSynBio_CART_Design_Page.html">Smart CAR-T Design</a></li>
-        <li><a href="case_malaria_carm_design.html">CAR-Macrophage Case</a></li>
+        <li><a href="antibody-guide.html">Antibody Engineering Guide</a></li>
+        <li><a href="ada_database.html">ADA Database</a></li>
+        <li><a href="adc_database.html">ADC Database</a></li>
+        <li><a href="component-browser.html">CAR Component Library</a></li>
       </ul>
     </div>
     <div class="sitemap-col">
@@ -558,15 +726,33 @@
 </section>
 
 <div class="back-bar">
-  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
   <a href="InSynBio_Antibody_Developability_Assessment_Page.html#immunogenicity">Back to Immunogenicity Assessment</a>
-  &nbsp;&middot;&nbsp;
+  &nbsp;·&nbsp;
   <a href="ada_database.html">ADA Reference Database</a>
-  &nbsp;&middot;&nbsp;
+  &nbsp;·&nbsp;
   <a href="index.html">InSynBio Home</a>
-  &nbsp;&middot;&nbsp;
-  <a href="index.html#contact">Contact us about your antibody project</a>
 </div>
+<div class="footer-copy">© 2026 InSynBio · insynbio.com · contact@insynbio.com</div>
 
+<script>
+function setTab(el) {
+  document.querySelectorAll('.page-tabs a').forEach(a => a.classList.remove('active'));
+  el.classList.add('active');
+}
+// Highlight active tab on scroll
+const sections = ['overview','research','methods','ada-db','submit'];
+const tabs = document.querySelectorAll('.page-tabs a');
+window.addEventListener('scroll', function() {
+  let cur = 'overview';
+  sections.forEach(id => {
+    const el = document.getElementById(id);
+    if (el && el.getBoundingClientRect().top < 160) cur = id;
+  });
+  tabs.forEach(t => {
+    t.classList.toggle('active', t.getAttribute('href') === '#' + cur);
+  });
+}, { passive: true });
+</script>
 </body>
 </html>
