@@ -139,6 +139,39 @@ h2.slide-title span{color:#5eead4;}
 .nav-dots{position:fixed;right:16px;top:50%;transform:translateY(-50%);z-index:9999;display:flex;flex-direction:column;gap:8px;}
 .nav-dot{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,0.2);border:none;cursor:pointer;transition:all 0.3s;padding:0;}
 .nav-dot.active{background:#5eead4;transform:scale(1.4);}
+
+/* ── Deep White Overrides ── */
+.bg-white { background: #f8fafc; color: #111827; }
+.bg-white h1.hero-title, .bg-white h2.slide-title, .bg-white .brand-name { color: #111827; }
+.bg-white .slide-subtitle, .bg-white .brand-slogan { color: #4b5563; border-color: #cbd5e1; }
+.bg-white .school-badge { color: #4b5563; border-color: #cbd5e1; background: #fff; }
+.bg-white p, .bg-white li, .bg-white td { color: #4b5563 !important; }
+.bg-white strong { color: #111827 !important; }
+.bg-white .label-white { color: #0d9488; }
+.bg-white .label-teal { color: #0d9488; }
+.bg-white .data-label { color: #4b5563; }
+.bg-white .data-num { color: #0d9488; }
+.bg-white .compare-table th { color: #6b7280; border-bottom: 2px solid #e5e7eb; }
+.bg-white .compare-table td { border-bottom: 1px solid #f1f5f9; }
+.bg-white .pipe-step { background: #fff; border: 1px solid #e2e8f0; }
+.bg-white .pipe-step::after { color: #9ca3af; }
+.bg-white .pipe-step strong { color: #111827 !important; }
+.bg-white .pipe-step span { color: #6b7280 !important; }
+.bg-white .pipe-step .step-n { color: #2dd4bf; }
+.bg-white .case-mini { background: #fff; border: 1px solid #e2e8f0; border-left-width: 4px; }
+.bg-white .case-mini h4, .bg-white .case-mini a { color: #111827 !important; }
+.bg-white .quote-box { background: #f0fdfa; border-left: 4px solid #0d9488; }
+.bg-white .quote-box p { color: #0f766e !important; }
+.bg-white .cta-primary { background: #0d9488; color: #fff; border: 1px solid #0d9488; }
+.bg-white .cta-outline { border-color: #0d9488; color: #0d9488; }
+.bg-white .cta-outline:hover { background: #f0fdfa; border-color: #0d9488; color:#0d9488;}
+.bg-white .slide-num { color: #9ca3af; }
+.nav-dot { background: #d1d5db; border: none; } 
+.nav-dot.active { background: #0d9488; }
+.bg-white .card div { color: #4b5563 !important; }
+.bg-white .card div[style*="font-size:14px"] { color: #111827 !important; }
+.bg-white .card div[style*="font-size:11px"] { color: #0d9488 !important; }
+
 </style>
 </head>
 <body>
@@ -147,7 +180,7 @@ h2.slide-title span{color:#5eead4;}
 <div class="nav-dots" id="navDots"></div>
 
 <!-- ===================== SLIDE 1: COVER ===================== -->
-<section class="slide bg-gradient" id="s1">
+<section class="slide bg-white" id="s1">
   <div class="slide-inner" style="text-align:center;">
     <div class="brand-row" style="justify-content:center;">
       <span class="brand-name">In<span class="accent">Syn</span>Bio</span>
@@ -169,7 +202,7 @@ h2.slide-title span{color:#5eead4;}
 </section>
 
 <!-- ===================== SLIDE 2: PAIN POINTS ===================== -->
-<section class="slide bg-deep" id="s2">
+<section class="slide bg-white" id="s2">
   <div class="slide-inner">
     <span class="label label-teal">Industry Challenge</span>
     <h2 class="slide-title">Three Major <span>"Black Boxes"</span> in Biologics Development</h2>
@@ -196,7 +229,7 @@ h2.slide-title span{color:#5eead4;}
 </section>
 
 <!-- ===================== SLIDE 3: DIFFERENTIATION ===================== -->
-<section class="slide bg-dark" id="s3">
+<section class="slide bg-white" id="s3">
   <div class="slide-inner">
     <span class="label label-teal">Our Position</span>
     <h2 class="slide-title">We are not a tool vendor, but a <span>Decision System</span></h2>
@@ -219,7 +252,7 @@ h2.slide-title span{color:#5eead4;}
 </section>
 
 <!-- ===================== SLIDE 4: DATA MOAT ===================== -->
-<section class="slide bg-gradient" id="s4">
+<section class="slide bg-white" id="s4">
   <div class="slide-inner">
     <span class="label label-white">Core Moat</span>
     <h2 class="slide-title">Our Exclusive Moat — <span>Clinical Data Foundation</span></h2>
@@ -243,7 +276,7 @@ h2.slide-title span{color:#5eead4;}
 </section>
 
 <!-- ===================== SLIDE 5: CMC FIREWALL ===================== -->
-<section class="slide bg-deep" id="s5">
+<section class="slide bg-white" id="s5">
   <div class="slide-inner">
     <span class="label label-teal">Reliability</span>
     <h2 class="slide-title">CMC Firewall — <span>15 Dimensions × 4 Directions</span></h2>
@@ -274,7 +307,7 @@ h2.slide-title span{color:#5eead4;}
 </section>
 
 <!-- ===================== SLIDE 6: ADA ===================== -->
-<section class="slide bg-dark" id="s6">
+<section class="slide bg-white" id="s6">
   <div class="slide-inner">
     <span class="label label-teal">Immunogenicity</span>
     <h2 class="slide-title">ADA Immunogenicity — <span>Candid Confrontation, Multi-Dimensional Benchmarking</span></h2>
@@ -301,7 +334,7 @@ h2.slide-title span{color:#5eead4;}
 </section>
 
 <!-- ===================== SLIDE 7: ANTIBODY ENGINEERING ===================== -->
-<section class="slide bg-gradient" id="s7">
+<section class="slide bg-white" id="s7">
   <div class="slide-inner">
     <span class="label label-white">Services I</span>
     <h2 class="slide-title">Antibody Engineering <span>Core Services</span></h2>
@@ -328,7 +361,7 @@ h2.slide-title span{color:#5eead4;}
 </section>
 
 <!-- ===================== SLIDE 8: COMPLEX MODALITIES ===================== -->
-<section class="slide bg-deep" id="s8">
+<section class="slide bg-white" id="s8">
   <div class="slide-inner">
     <span class="label label-teal">Services II</span>
     <h2 class="slide-title">Complex Modality <span>Design Platforms</span></h2>
@@ -355,7 +388,7 @@ h2.slide-title span{color:#5eead4;}
 </section>
 
 <!-- ===================== SLIDE 9: DELIVERY ===================== -->
-<section class="slide bg-dark" id="s9">
+<section class="slide bg-white" id="s9">
   <div class="slide-inner">
     <span class="label label-teal">Deliverables</span>
     <h2 class="slide-title">Comprehensive Deliverables — <span>Beyond Raw Data: Actionable Realities</span></h2>
@@ -388,7 +421,7 @@ h2.slide-title span{color:#5eead4;}
 </section>
 
 <!-- ===================== SLIDE 10: CASE STUDIES 1 ===================== -->
-<section class="slide bg-gradient" id="s10">
+<section class="slide bg-white" id="s10">
   <div class="slide-inner">
     <span class="label label-white">Case Studies I</span>
     <h2 class="slide-title">Real-world Success Cases — <span>End-to-End Pipeline Executions</span></h2>
@@ -451,7 +484,7 @@ h2.slide-title span{color:#5eead4;}
 </section>
 
 <!-- ===================== SLIDE 11: CASE STUDIES 2 ===================== -->
-<section class="slide bg-deep" id="s11">
+<section class="slide bg-white" id="s11">
   <div class="slide-inner">
     <span class="label label-teal">Case Studies II</span>
     <h2 class="slide-title">Navigating Multimodal <span>Complex Scenarios</span></h2>
@@ -477,7 +510,7 @@ h2.slide-title span{color:#5eead4;}
 </section>
 
 <!-- ===================== SLIDE 12: TECH ARSENAL ===================== -->
-<section class="slide bg-dark" id="s12">
+<section class="slide bg-white" id="s12">
   <div class="slide-inner">
     <span class="label label-teal">Tech Arsenal</span>
     <h2 class="slide-title">AbEngineCore — <span>The 30+ Suite Decision Matrix Engine</span></h2>
@@ -530,7 +563,7 @@ h2.slide-title span{color:#5eead4;}
 </section>
 
 <!-- ===================== SLIDE 13: COOPERATION ===================== -->
-<section class="slide bg-gradient" id="s13">
+<section class="slide bg-white" id="s13">
   <div class="slide-inner">
     <span class="label label-white">Cooperation</span>
     <h2 class="slide-title">Transparent & Flexible <span>Partnership Structuring</span></h2>
@@ -561,7 +594,7 @@ h2.slide-title span{color:#5eead4;}
 </section>
 
 <!-- ===================== SLIDE 14: CTA ===================== -->
-<section class="slide bg-deep" id="s14">
+<section class="slide bg-white" id="s14">
   <div class="slide-inner" style="text-align:center;">
     <span class="label label-teal">Let's Connect</span>
     <h2 class="slide-title" style="font-size:52px;">Your Next Step Begins With a Single Email</h2>
