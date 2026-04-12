@@ -15,22 +15,22 @@ body{font-family:'Inter',sans-serif;color:var(--text);background:#0f172a;-webkit
 
 /* ── Slide System ── */
 .slide{width:100vw;height:100vh;scroll-snap-align:start;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;padding:60px 80px;}
-.slide-inner{max-width:1100px;width:100%;z-index:2;}
-.slide-num{position:absolute;bottom:24px;right:32px;font-size:13px;color:rgba(255,255,255,0.25);font-weight:600;font-family:'Space Grotesk',sans-serif;}
+.slide-inner{max-width:1300px;width:100%;z-index:2;}
+.slide-num{position:absolute;bottom:24px;right:32px;font-size:18px;color:rgba(255,255,255,0.25);font-weight:600;font-family:'Space Grotesk',sans-serif;}
 
 /* ── Typography ── */
-.label{font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:2.5px;margin-bottom:12px;display:block;}
+.label{font-size:15px;font-weight:800;text-transform:uppercase;letter-spacing:2.5px;margin-bottom:12px;display:block;}
 .label-teal{color:#5eead4;}
-.label-white{color:rgba(255,255,255,0.5);}
-h1.hero-title{font-family:'Cormorant Garamond',serif;font-size:64px;font-weight:700;line-height:1.05;letter-spacing:-0.03em;color:#fff;margin-bottom:20px;}
+.label-white{color:rgba(255,255,255,0.75);}
+h1.hero-title{font-family:'Cormorant Garamond',serif;font-size:80px;font-weight:700;line-height:1.05;letter-spacing:-0.03em;color:#fff;margin-bottom:20px;}
 h1.hero-title em{color:#5eead4;font-style:italic;}
-h2.slide-title{font-family:'Cormorant Garamond',serif;font-size:44px;font-weight:700;line-height:1.1;letter-spacing:-0.02em;color:#fff;margin-bottom:16px;}
+h2.slide-title{font-family:'Cormorant Garamond',serif;font-size:59px;font-weight:700;line-height:1.1;letter-spacing:-0.02em;color:#fff;margin-bottom:16px;}
 h2.slide-title span{color:#5eead4;}
-.slide-subtitle{font-size:17px;color:rgba(255,255,255,0.7);max-width:700px;line-height:1.6;margin-bottom:32px;}
+.slide-subtitle{font-size:23px;color:rgba(255,255,255,0.9);max-width:960px;line-height:1.6;margin-bottom:32px;}
 
 /* ── Backgrounds ── */
 .bg-dark{background:linear-gradient(135deg,#0f172a 0%,#1e293b 100%);}
-.bg-gradient{background:linear-gradient(135deg,#0d4a44 0%,#0d7a70 55%,#0d9488 100%);}
+.bg-gradient{background:linear-gradient(135deg,#0a3632 0%,#0c5e56 60%,#0f766e 100%);}
 .bg-deep{background:linear-gradient(135deg,#020617 0%,#0f172a 50%,#1e293b 100%);}
 .bg-violet{background:linear-gradient(135deg,#1e1b4b 0%,#312e81 100%);}
 body.mode-light{background:#f8fafc;color:var(--text);}
@@ -45,9 +45,9 @@ body.mode-light .slide-subtitle{color:var(--text-muted);}
 .g2{grid-template-columns:repeat(2,1fr);}
 .card{background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:14px;padding:22px 20px;backdrop-filter:blur(8px);transition:transform 0.3s,box-shadow 0.3s;}
 .card:hover{transform:translateY(-4px);box-shadow:0 12px 32px rgba(0,0,0,0.3);}
-.card h3{font-size:16px;font-weight:700;color:#fff;margin-bottom:8px;display:flex;align-items:center;gap:8px;}
-.card p{font-size:13px;color:rgba(255,255,255,0.65);line-height:1.55;}
-.card-icon{font-size:20px;}
+.card h3{font-size:22px;font-weight:700;color:#fff;margin-bottom:8px;display:flex;align-items:center;gap:8px;}
+.card p{font-size:18px;color:rgba(255,255,255,0.85);line-height:1.55;}
+.card-icon{font-size:27px;}
 .card-accent{border-top:3px solid;}
 .card-teal{border-top-color:var(--primary);}
 .card-amber{border-top-color:var(--amber);}
@@ -62,34 +62,34 @@ body.mode-light .card p{color:var(--text-muted);}
 
 /* ── Data number cards ── */
 .data-card{background:linear-gradient(135deg,rgba(13,148,136,0.12),rgba(13,148,136,0.04));border:1px solid rgba(13,148,136,0.2);border-radius:12px;padding:18px 14px;text-align:center;}
-.data-num{font-family:'Cormorant Garamond',serif;font-size:36px;font-weight:700;color:#5eead4;line-height:1;margin-bottom:4px;}
-.data-label{font-size:11px;color:rgba(255,255,255,0.6);font-weight:600;line-height:1.35;}
+.data-num{font-family:'Cormorant Garamond',serif;font-size:49px;font-weight:700;color:#5eead4;line-height:1;margin-bottom:4px;}
+.data-label{font-size:15px;color:rgba(255,255,255,0.95);font-weight:600;line-height:1.35;}
 
 /* ── Comparison table ── */
-.compare-table{width:100%;border-collapse:collapse;font-size:13px;}
-.compare-table th{padding:12px 16px;text-align:left;font-size:11px;text-transform:uppercase;letter-spacing:0.08em;color:rgba(255,255,255,0.4);border-bottom:1px solid rgba(255,255,255,0.1);}
-.compare-table td{padding:12px 16px;border-bottom:1px solid rgba(255,255,255,0.06);color:rgba(255,255,255,0.7);}
+.compare-table{width:100%;border-collapse:collapse;font-size:18px;}
+.compare-table th{padding:12px 16px;text-align:left;font-size:15px;text-transform:uppercase;letter-spacing:0.08em;color:rgba(255,255,255,0.85);border-bottom:1px solid rgba(255,255,255,0.1);}
+.compare-table td{padding:12px 16px;border-bottom:1px solid rgba(255,255,255,0.06);color:rgba(255,255,255,0.9);}
 .compare-table td:last-child{color:#5eead4;font-weight:700;}
 .compare-table tr:hover td{background:rgba(13,148,136,0.06);}
 
 /* ── Badge ── */
-.badge{display:inline-block;padding:3px 10px;border-radius:20px;font-size:10px;font-weight:700;letter-spacing:0.05em;}
+.badge{display:inline-block;padding:3px 10px;border-radius:20px;font-size:14px;font-weight:700;letter-spacing:0.05em;}
 .badge-pass{background:rgba(16,185,129,0.2);color:#6ee7b7;border:1px solid rgba(16,185,129,0.3);}
 .badge-warn{background:rgba(245,158,11,0.2);color:#fde68a;border:1px solid rgba(245,158,11,0.3);}
 
 /* ── Pain point icons ── */
-.pain-icon{width:48px;height:48px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:24px;margin-bottom:12px;}
+.pain-icon{width:48px;height:48px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:32px;margin-bottom:12px;}
 .pain-red{background:rgba(239,68,68,0.15);}
 .pain-amber{background:rgba(245,158,11,0.15);}
 .pain-violet{background:rgba(124,58,237,0.15);}
 
 /* ── Brand ── */
 .brand-row{display:flex;align-items:center;gap:12px;margin-bottom:8px;}
-.brand-name{font-family:'Space Grotesk',sans-serif;font-size:28px;font-weight:700;color:#fff;}
+.brand-name{font-family:'Space Grotesk',sans-serif;font-size:38px;font-weight:700;color:#fff;}
 .brand-name .accent{color:#0d9488;font-style:italic;}
-.brand-slogan{font-size:13px;color:rgba(255,255,255,0.4);padding-left:14px;border-left:1px solid rgba(255,255,255,0.15);}
+.brand-slogan{font-size:18px;color:rgba(255,255,255,0.85);padding-left:14px;border-left:1px solid rgba(255,255,255,0.15);}
 .school-row{display:flex;gap:24px;align-items:center;margin-top:20px;}
-.school-badge{background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:10px;padding:10px 18px;font-size:12px;color:rgba(255,255,255,0.6);font-weight:600;}
+.school-badge{background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:10px;padding:10px 18px;font-size:16px;color:rgba(255,255,255,0.95);font-weight:600;}
 
 /* ── Pipeline ── */
 .pipe-row{display:flex;gap:0;align-items:stretch;}
@@ -97,34 +97,34 @@ body.mode-light .card p{color:var(--text-muted);}
 .pipe-step:first-child{border-radius:10px 0 0 10px;}
 .pipe-step:last-child{border-radius:0 10px 10px 0;}
 .pipe-step:not(:last-child){border-right:none;}
-.pipe-step:not(:last-child)::after{content:"→";position:absolute;right:-10px;top:50%;transform:translateY(-50%);color:rgba(255,255,255,0.2);font-size:16px;z-index:2;}
-.pipe-step .step-n{font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:700;color:rgba(94,234,212,0.3);line-height:1;}
-.pipe-step strong{display:block;font-size:12px;color:#fff;margin-top:4px;}
-.pipe-step span{font-size:10px;color:rgba(255,255,255,0.45);display:block;margin-top:2px;}
+.pipe-step:not(:last-child)::after{content:"→";position:absolute;right:-10px;top:50%;transform:translateY(-50%);color:rgba(255,255,255,0.2);font-size:22px;z-index:2;}
+.pipe-step .step-n{font-family:'Cormorant Garamond',serif;font-size:38px;font-weight:700;color:rgba(94,234,212,0.3);line-height:1;}
+.pipe-step strong{display:block;font-size:16px;color:#fff;margin-top:4px;}
+.pipe-step span{font-size:14px;color:rgba(255,255,255,0.85);display:block;margin-top:2px;}
 
 /* ── Case mini cards ── */
 .case-mini{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);border-radius:12px;padding:16px;border-left:3px solid var(--primary);}
-.case-mini h4{font-size:14px;font-weight:700;color:#fff;margin-bottom:6px;}
+.case-mini h4{font-size:19px;font-weight:700;color:#fff;margin-bottom:6px;}
 .case-mini ul{list-style:none;padding:0;}
-.case-mini ul li{font-size:11.5px;color:rgba(255,255,255,0.55);padding:2px 0;display:flex;align-items:flex-start;gap:6px;}
+.case-mini ul li{font-size:16px;color:rgba(255,255,255,0.75);padding:2px 0;display:flex;align-items:flex-start;gap:6px;}
 .case-mini ul li::before{content:"›";color:#5eead4;font-weight:800;}
 
 /* ── Highlight quote ── */
 .quote-box{border-left:4px solid #5eead4;padding:16px 20px;background:rgba(13,148,136,0.06);border-radius:0 10px 10px 0;margin-top:24px;}
-.quote-box p{font-size:15px;color:rgba(255,255,255,0.8);font-style:italic;line-height:1.6;}
+.quote-box p{font-size:20px;color:rgba(255,255,255,0.95);font-style:italic;line-height:1.6;}
 
 /* ── CTA ── */
-.cta-btn{display:inline-flex;align-items:center;gap:8px;padding:14px 28px;border-radius:8px;font-size:15px;font-weight:700;text-decoration:none;transition:all 0.2s;}
+.cta-btn{display:inline-flex;align-items:center;gap:8px;padding:14px 28px;border-radius:8px;font-size:20px;font-weight:700;text-decoration:none;transition:all 0.2s;}
 .cta-primary{background:#fff;color:var(--primary-dark);box-shadow:0 4px 20px rgba(0,0,0,0.2);}
 .cta-primary:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(0,0,0,0.3);}
-.cta-outline{background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,0.4);}
+.cta-outline{background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,0.85);}
 .cta-outline:hover{border-color:#fff;background:rgba(255,255,255,0.08);}
 
 /* ── Responsive ── */
 @media(max-width:900px){
   .slide{padding:32px 24px;}
-  h1.hero-title{font-size:36px;}
-  h2.slide-title{font-size:30px;}
+  h1.hero-title{font-size:49px;}
+  h2.slide-title{font-size:40px;}
   .g3,.g4,.g5{grid-template-columns:1fr 1fr;}
   .pipe-row{flex-wrap:wrap;}
   .pipe-step{flex:1 1 45%;border-radius:8px!important;border:1px solid rgba(255,255,255,0.08)!important;margin:4px;}
@@ -132,7 +132,7 @@ body.mode-light .card p{color:var(--text-muted);}
 }
 @media(max-width:600px){
   .g3,.g4,.g5,.g2{grid-template-columns:1fr;}
-  h1.hero-title{font-size:28px;}
+  h1.hero-title{font-size:38px;}
 }
 
 /* ── Nav dots ── */
@@ -169,15 +169,15 @@ body.mode-light .slide-num { color: #9ca3af; }
 .nav-dot { background: #d1d5db; border: none; } 
 .nav-dot.active { background: #0d9488; }
 body.mode-light .card div { color: #4b5563 !important; }
-body.mode-light .card div[style*="font-size:14px"] { color: #111827 !important; }
-body.mode-light .card div[style*="font-size:11px"] { color: #0d9488 !important; }
+body.mode-light .card div[style*="font-size:19px"] { color: #111827 !important; }
+body.mode-light .card div[style*="font-size:15px"] { color: #0d9488 !important; }
 
 body.mode-light #themeToggle { background:#f1f5f9; border-color:#cbd5e1; color:#0d9488; }
 </style>
 </head>
 <body>
 
-<button id="themeToggle" onclick="document.body.classList.toggle('mode-light')" style="position:fixed;top:20px;right:20px;z-index:9999;padding:8px 14px;border-radius:20px;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);color:#9ca3af;cursor:pointer;font-family:'Inter',sans-serif;font-weight:600;font-size:12px;backdrop-filter:blur(4px);transition:all 0.3s;">🌓 Theme Switch</button>
+<button id="themeToggle" onclick="document.body.classList.toggle('mode-light')" style="position:fixed;top:20px;right:20px;z-index:9999;padding:8px 14px;border-radius:20px;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);color:#9ca3af;cursor:pointer;font-family:'Inter',sans-serif;font-weight:600;font-size:16px;backdrop-filter:blur(4px);transition:all 0.3s;">🌓 Theme Switch</button>
 
 <!-- Nav dots -->
 <div class="nav-dots" id="navDots"></div>
@@ -192,7 +192,7 @@ body.mode-light #themeToggle { background:#f1f5f9; border-color:#cbd5e1; color:#
     <h1 class="hero-title" style="margin-top:24px;">
       Clinical Data-Guided<br><em>AI Biotherapeutic Decision System</em>
     </h1>
-    <p class="slide-subtitle" style="margin:0 auto 28px;text-align:center;max-width:640px;">
+    <p class="slide-subtitle" style="margin:0 auto 28px;text-align:center;max-width:960px;">
       Integrating immunology expertise, clinical benchmarking libraries, and an expansive AI toolchain<br>to provide actionable decision support for biotherapeutic development—beyond isolated algorithm scoring.
     </p>
     <div class="school-row" style="justify-content:center;">
@@ -240,11 +240,11 @@ body.mode-light #themeToggle { background:#f1f5f9; border-color:#cbd5e1; color:#
     <table class="compare-table">
       <thead><tr><th></th><th>Pure AI Tool Platforms</th><th>Traditional CROs</th><th style="color:#5eead4">InSynBio</th></tr></thead>
       <tbody>
-        <tr><td style="color:rgba(255,255,255,0.4)">Output</td><td>Scores / CSV files</td><td>Experimental data</td><td>Actionable decision reports with expert interpretation</td></tr>
-        <tr><td style="color:rgba(255,255,255,0.4)">Benchmark</td><td>No clinical control</td><td>Experience-based</td><td>Benchmarked against 1,142 clinical antibody sequences</td></tr>
-        <tr><td style="color:rgba(255,255,255,0.4)">Turnaround</td><td>Minutes (Unverified)</td><td>Months</td><td>3–5 business days · Expert panel reviewed</td></tr>
-        <tr><td style="color:rgba(255,255,255,0.4)">Data Security</td><td>Uncertain</td><td>NDA protected</td><td>NDA-first · Sequences isolated from public training</td></tr>
-        <tr><td style="color:rgba(255,255,255,0.4)">Methodology</td><td>Single models</td><td>Single assays</td><td>Scenario-based orchestration of 30+ AI tools</td></tr>
+        <tr><td style="color:rgba(255,255,255,0.85)">Output</td><td>Scores / CSV files</td><td>Experimental data</td><td>Actionable decision reports with expert interpretation</td></tr>
+        <tr><td style="color:rgba(255,255,255,0.85)">Benchmark</td><td>No clinical control</td><td>Experience-based</td><td>Benchmarked against 1,142 clinical antibody sequences</td></tr>
+        <tr><td style="color:rgba(255,255,255,0.85)">Turnaround</td><td>Minutes (Unverified)</td><td>Months</td><td>3–5 business days · Expert panel reviewed</td></tr>
+        <tr><td style="color:rgba(255,255,255,0.85)">Data Security</td><td>Uncertain</td><td>NDA protected</td><td>NDA-first · Sequences isolated from public training</td></tr>
+        <tr><td style="color:rgba(255,255,255,0.85)">Methodology</td><td>Single models</td><td>Single assays</td><td>Scenario-based orchestration of 30+ AI tools</td></tr>
       </tbody>
     </table>
     <div class="quote-box">
@@ -519,46 +519,46 @@ body.mode-light #themeToggle { background:#f1f5f9; border-color:#cbd5e1; color:#
     <h2 class="slide-title">AbEngineCore — <span>The 30+ Suite Decision Matrix Engine</span></h2>
     <div class="card-grid g4" style="margin-bottom:20px;">
       <div class="card" style="text-align:center;padding:16px;">
-        <div style="font-size:11px;color:#5eead4;font-weight:700;margin-bottom:6px;">Structural Prediction</div>
-        <div style="font-size:14px;font-weight:700;color:#fff;">AlphaFold2</div>
-        <div style="font-size:14px;font-weight:700;color:#fff;">ABodyBuilder2</div>
+        <div style="font-size:15px;color:#5eead4;font-weight:700;margin-bottom:6px;">Structural Prediction</div>
+        <div style="font-size:19px;font-weight:700;color:#fff;">AlphaFold2</div>
+        <div style="font-size:19px;font-weight:700;color:#fff;">ABodyBuilder2</div>
       </div>
       <div class="card" style="text-align:center;padding:16px;">
-        <div style="font-size:11px;color:#fde68a;font-weight:700;margin-bottom:6px;">Molecular Docking</div>
-        <div style="font-size:14px;font-weight:700;color:#fff;">HADDOCK3</div>
-        <div style="font-size:14px;font-weight:700;color:#fff;">MM/GBSA</div>
+        <div style="font-size:15px;color:#fde68a;font-weight:700;margin-bottom:6px;">Molecular Docking</div>
+        <div style="font-size:19px;font-weight:700;color:#fff;">HADDOCK3</div>
+        <div style="font-size:19px;font-weight:700;color:#fff;">MM/GBSA</div>
       </div>
       <div class="card" style="text-align:center;padding:16px;">
-        <div style="font-size:11px;color:#c4b5fd;font-weight:700;margin-bottom:6px;">Generative Sequence Design</div>
-        <div style="font-size:14px;font-weight:700;color:#fff;">ProteinMPNN</div>
-        <div style="font-size:14px;font-weight:700;color:#fff;">RFdiffusion</div>
+        <div style="font-size:15px;color:#c4b5fd;font-weight:700;margin-bottom:6px;">Generative Sequence Design</div>
+        <div style="font-size:19px;font-weight:700;color:#fff;">ProteinMPNN</div>
+        <div style="font-size:19px;font-weight:700;color:#fff;">RFdiffusion</div>
       </div>
       <div class="card" style="text-align:center;padding:16px;">
-        <div style="font-size:11px;color:#6ee7b7;font-weight:700;margin-bottom:6px;">Stability Profiles & Affinity Metrics</div>
-        <div style="font-size:14px;font-weight:700;color:#fff;">ThermoMPNN</div>
-        <div style="font-size:14px;font-weight:700;color:#fff;">EvoEF2 · PRODIGY</div>
+        <div style="font-size:15px;color:#6ee7b7;font-weight:700;margin-bottom:6px;">Stability Profiles & Affinity Metrics</div>
+        <div style="font-size:19px;font-weight:700;color:#fff;">ThermoMPNN</div>
+        <div style="font-size:19px;font-weight:700;color:#fff;">EvoEF2 · PRODIGY</div>
       </div>
     </div>
     <div class="card-grid g4">
       <div class="card" style="text-align:center;padding:16px;">
-        <div style="font-size:11px;color:#f9a8d4;font-weight:700;margin-bottom:6px;">Immunogenicity Detection</div>
-        <div style="font-size:14px;font-weight:700;color:#fff;">IEDB API</div>
-        <div style="font-size:12px;color:rgba(255,255,255,0.5);">27 HLA-DR alleles</div>
+        <div style="font-size:15px;color:#f9a8d4;font-weight:700;margin-bottom:6px;">Immunogenicity Detection</div>
+        <div style="font-size:19px;font-weight:700;color:#fff;">IEDB API</div>
+        <div style="font-size:16px;color:rgba(255,255,255,0.75);">27 HLA-DR alleles</div>
       </div>
       <div class="card" style="text-align:center;padding:16px;">
-        <div style="font-size:11px;color:#93c5fd;font-weight:700;margin-bottom:6px;">Core Sequence Annotations</div>
-        <div style="font-size:14px;font-weight:700;color:#fff;">ANARCI</div>
-        <div style="font-size:12px;color:rgba(255,255,255,0.5);">Kabat / IMGT</div>
+        <div style="font-size:15px;color:#93c5fd;font-weight:700;margin-bottom:6px;">Core Sequence Annotations</div>
+        <div style="font-size:19px;font-weight:700;color:#fff;">ANARCI</div>
+        <div style="font-size:16px;color:rgba(255,255,255,0.75);">Kabat / IMGT</div>
       </div>
       <div class="card" style="text-align:center;padding:16px;">
-        <div style="font-size:11px;color:#fde68a;font-weight:700;margin-bottom:6px;">Overall Sequence Biological Fitness</div>
-        <div style="font-size:14px;font-weight:700;color:#fff;">AntiFold</div>
-        <div style="font-size:14px;font-weight:700;color:#fff;">ESM-IF1</div>
+        <div style="font-size:15px;color:#fde68a;font-weight:700;margin-bottom:6px;">Overall Sequence Biological Fitness</div>
+        <div style="font-size:19px;font-weight:700;color:#fff;">AntiFold</div>
+        <div style="font-size:19px;font-weight:700;color:#fff;">ESM-IF1</div>
       </div>
       <div class="card" style="text-align:center;padding:16px;">
-        <div style="font-size:11px;color:#5eead4;font-weight:700;margin-bottom:6px;">Diffusion-based Modeling Output</div>
-        <div style="font-size:14px;font-weight:700;color:#fff;">RFdiffusion</div>
-        <div style="font-size:12px;color:rgba(255,255,255,0.5);">De novo scaffold</div>
+        <div style="font-size:15px;color:#5eead4;font-weight:700;margin-bottom:6px;">Diffusion-based Modeling Output</div>
+        <div style="font-size:19px;font-weight:700;color:#fff;">RFdiffusion</div>
+        <div style="font-size:16px;color:rgba(255,255,255,0.75);">De novo scaffold</div>
       </div>
     </div>
   </div>
@@ -575,20 +575,20 @@ body.mode-light #themeToggle { background:#f1f5f9; border-color:#cbd5e1; color:#
         <h3>📋 On-Demand Tactical Sprints</h3>
         <p style="margin-bottom:12px;">Specialized modules surgically aimed at individualized molecular assessments, extensive humanization drives, and direct affinity maturation maneuvers.</p>
         <ul style="list-style:none;padding:0;">
-          <li style="font-size:13px;color:rgba(255,255,255,0.65);padding:4px 0;display:flex;gap:8px;"><span style="color:#5eead4;">→</span> Formally submit your query sequence via secure email → Institute a comprehensive Non-Disclosure Agreement (NDA)</li>
-          <li style="font-size:13px;color:rgba(255,255,255,0.65);padding:4px 0;display:flex;gap:8px;"><span style="color:#5eead4;">→</span> Confident 3–5 day delivery cadence of highly-detailed, expert-curated analytical manifests</li>
-          <li style="font-size:13px;color:rgba(255,255,255,0.65);padding:4px 0;display:flex;gap:8px;"><span style="color:#5eead4;">→</span> Outstanding deliverables strictly backed by customer satisfaction—conditional balance waivers if rigorous standards fall materially short</li>
-          <li style="font-size:13px;color:rgba(255,255,255,0.65);padding:4px 0;display:flex;gap:8px;"><span style="color:#5eead4;">→</span> Fostering academic collaboration granting a solid 50% project cost refund upon prominent peer-reviewed publication attribution</li>
+          <li style="font-size:18px;color:rgba(255,255,255,0.85);padding:4px 0;display:flex;gap:8px;"><span style="color:#5eead4;">→</span> Formally submit your query sequence via secure email → Institute a comprehensive Non-Disclosure Agreement (NDA)</li>
+          <li style="font-size:18px;color:rgba(255,255,255,0.85);padding:4px 0;display:flex;gap:8px;"><span style="color:#5eead4;">→</span> Confident 3–5 day delivery cadence of highly-detailed, expert-curated analytical manifests</li>
+          <li style="font-size:18px;color:rgba(255,255,255,0.85);padding:4px 0;display:flex;gap:8px;"><span style="color:#5eead4;">→</span> Outstanding deliverables strictly backed by customer satisfaction—conditional balance waivers if rigorous standards fall materially short</li>
+          <li style="font-size:18px;color:rgba(255,255,255,0.85);padding:4px 0;display:flex;gap:8px;"><span style="color:#5eead4;">→</span> Fostering academic collaboration granting a solid 50% project cost refund upon prominent peer-reviewed publication attribution</li>
         </ul>
       </div>
       <div class="card" style="border-top:3px solid #fde68a;">
         <h3>🤝 Sustained Enterprise AI Consultants</h3>
         <p style="margin-bottom:12px;">Secured through Monthly or Quarterly retainers actively immersing deeply into your organization's core pipeline progression, effectively serving as an integrated elite "External Brain".</p>
         <ul style="list-style:none;padding:0;">
-          <li style="font-size:13px;color:rgba(255,255,255,0.65);padding:4px 0;display:flex;gap:8px;"><span style="color:#fde68a;">→</span> Granted unchecked on-demand capitalization of our complete computational toolbox array and exclusive robust clincal database archives</li>
-          <li style="font-size:13px;color:rgba(255,255,255,0.65);padding:4px 0;display:flex;gap:8px;"><span style="color:#fde68a;">→</span> Available explicit participation and expert input framing pivotal internal operational R&D strategic sessions</li>
-          <li style="font-size:13px;color:rgba(255,255,255,0.65);padding:4px 0;display:flex;gap:8px;"><span style="color:#fde68a;">→</span> Representing unequivocally the most optimal strategic investment option guiding long-term sustained pipeline resilience</li>
-          <li style="font-size:13px;color:rgba(255,255,255,0.65);padding:4px 0;display:flex;gap:8px;"><span style="color:#fde68a;">→</span> Operates heavily under NDA-first confidentiality guarantees rigidly ensuring your private assets perpetually bypass communal public AI training layers</li>
+          <li style="font-size:18px;color:rgba(255,255,255,0.85);padding:4px 0;display:flex;gap:8px;"><span style="color:#fde68a;">→</span> Granted unchecked on-demand capitalization of our complete computational toolbox array and exclusive robust clincal database archives</li>
+          <li style="font-size:18px;color:rgba(255,255,255,0.85);padding:4px 0;display:flex;gap:8px;"><span style="color:#fde68a;">→</span> Available explicit participation and expert input framing pivotal internal operational R&D strategic sessions</li>
+          <li style="font-size:18px;color:rgba(255,255,255,0.85);padding:4px 0;display:flex;gap:8px;"><span style="color:#fde68a;">→</span> Representing unequivocally the most optimal strategic investment option guiding long-term sustained pipeline resilience</li>
+          <li style="font-size:18px;color:rgba(255,255,255,0.85);padding:4px 0;display:flex;gap:8px;"><span style="color:#fde68a;">→</span> Operates heavily under NDA-first confidentiality guarantees rigidly ensuring your private assets perpetually bypass communal public AI training layers</li>
         </ul>
       </div>
     </div>
@@ -600,20 +600,20 @@ body.mode-light #themeToggle { background:#f1f5f9; border-color:#cbd5e1; color:#
 <section class="slide bg-deep" id="s14">
   <div class="slide-inner" style="text-align:center;">
     <span class="label label-teal">Let's Connect</span>
-    <h2 class="slide-title" style="font-size:52px;">Your Next Step Begins With a Single Email</h2>
+    <h2 class="slide-title" style="font-size:70px;">Your Next Step Begins With a Single Email</h2>
     <p class="slide-subtitle" style="margin:0 auto 20px;text-align:center;">
       We remain decidedly distinct from a conventional AI software subscription—we are your dedicated, invested strategic biotherapeutic R&D decision partners.<br>
       Our foremost directive is delivering clinical judgment alongside you; not merely computing background script operations.
     </p>
-    <p style="font-size:15px;color:rgba(255,255,255,0.5);margin-bottom:8px;">Charting Future Horizons: Masterminding AI De novo Protein Conceptualization — Methodically severing dependencies on rigid natural scaffold parameters to pioneer entirely untethered, pristine binding interfaces.</p>
+    <p style="font-size:20px;color:rgba(255,255,255,0.75);margin-bottom:8px;">Charting Future Horizons: Masterminding AI De novo Protein Conceptualization — Methodically severing dependencies on rigid natural scaffold parameters to pioneer entirely untethered, pristine binding interfaces.</p>
     <div style="margin-top:32px;display:flex;gap:16px;justify-content:center;flex-wrap:wrap;">
       <a href="mailto:contact@insynbio.com" class="cta-btn cta-primary">📧 contact@insynbio.com</a>
       <a href="https://www.insynbio.com" target="_blank" class="cta-btn cta-outline">🌐 www.insynbio.com</a>
     </div>
     <div class="brand-row" style="justify-content:center;margin-top:40px;">
-      <span class="brand-name" style="font-size:36px;">In<span class="accent">Syn</span>Bio</span>
+      <span class="brand-name" style="font-size:49px;">In<span class="accent">Syn</span>Bio</span>
     </div>
-    <p style="font-size:12px;color:rgba(255,255,255,0.25);margin-top:12px;">© 2026 InSynBio · AI for Life Sciences</p>
+    <p style="font-size:16px;color:rgba(255,255,255,0.25);margin-top:12px;">© 2026 InSynBio · AI for Life Sciences</p>
   </div>
   <div class="slide-num">14 / 14</div>
 </section>
