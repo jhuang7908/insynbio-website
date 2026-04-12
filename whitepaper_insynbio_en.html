@@ -1,0 +1,1192 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Space+Grotesk:ital,wght@0,500;0,600;0,700;1,700&display=swap" rel="stylesheet">
+  <title>InSynBio Service Whitepaper 2026 · AI-Assisted Biologics R&D Decision Support</title>
+  <style>
+    /* ══════════════════════ TOKENS ══════════════════════ */
+    :root{
+      --t9:#004d40;--t8:#00695c;--t7:#00796b;--t6:#00897b;--t5:#26a69a;--t3:#4db6ac;--t1:#e0f2f1;--t0:#e0f2f1;
+      --r7:#c62828;--r6:#d32f2f;--r1:#ffebee;
+      --a6:#d97706;--a5:#f59e0b;--a0:#fffbeb;
+      --b7:#1565c0;--b1:#e3f2fd;
+      --g9:#0f172a;--g8:#1e293b;--g7:#334155;--g5:#64748b;--g3:#cbd5e1;--g1:#f8fafc;
+      --wh:#ffffff;
+    }
+    /* ══════════════════════ BASE ══════════════════════ */
+    *{box-sizing:border-box;margin:0;padding:0;}
+    body{
+      font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
+      font-size:14px;line-height:1.7;color:var(--g9);background:#fff;
+      -webkit-font-smoothing:antialiased;
+    }
+    .doc{max-width:820px;margin:0 auto;}
+
+    /* ══════════════════════ SECTION SHELLS ══════════════════════ */
+    .pg{padding:40px 36px;}
+    .pg-cover{
+      background:#f0fdfa;
+      border-top:5px solid var(--t6);
+      position:relative;overflow:hidden;
+    }
+    /* Cover light-bg — all text dark */
+    .pg-cover h1{color:var(--t7);}
+    .pg-cover h1 em{color:var(--t5);}
+    .pg-cover .cover-sub{color:var(--g7);}
+    .pg-cover .cover-brand{color:var(--t7);}
+    .pg-cover .cover-brand b{color:var(--t5);font-style:italic;}
+    .pg-cover .cover-foot{color:var(--g5);border-color:var(--g3);}
+    .pg-cover .lbl{background:var(--t1);color:var(--t7);}
+    /* Problem cards — white on light */
+    .prob3{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:16px 0;}
+    .prob-card{background:#fff;border:1.5px solid var(--t3);border-radius:10px;padding:13px 12px;box-shadow:0 2px 8px rgba(13,148,136,.06);}
+    .pc-ico{font-size:20px;margin-bottom:6px;}
+    .pc-t{font-size:12px;font-weight:800;color:var(--g9);margin-bottom:4px;}
+    .pc-d{font-size:10.5px;color:var(--g7);line-height:1.5;}
+    /* About-us band — white on light */
+    .about-band{background:#fff;border:1.5px solid var(--t3);border-radius:12px;padding:14px 16px;margin:12px 0;box-shadow:0 2px 8px rgba(13,148,136,.06);}
+    .ab-title{font-size:10px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--t6);margin-bottom:6px;}
+    .ab-txt{font-size:12px;color:var(--g7);line-height:1.65;margin-bottom:8px;}
+    .ab-tags{display:flex;gap:8px;flex-wrap:wrap;}
+    .ab-tag{font-size:11px;color:var(--t7);font-weight:700;}
+    /* Stats strip — white cards */
+    .cv-stats{display:grid;grid-template-columns:repeat(6,1fr);gap:6px;margin:12px 0;}
+    .cv-stat{text-align:center;background:#fff;border-radius:8px;padding:8px 4px;border:1.5px solid var(--t3);}
+    .cv-sn{font-size:20px;font-weight:900;color:var(--t6);line-height:1;display:block;}
+    .cv-sl{font-size:9px;color:var(--g5);margin-top:2px;display:block;line-height:1.3;}
+    /* Service chips */
+    .cv-chips{display:flex;flex-wrap:wrap;gap:5px;margin:8px 0 16px;}
+    .cv-chip{font-size:10.5px;font-weight:700;padding:3px 10px;border-radius:14px;background:var(--t0);color:var(--t7);border:1px solid var(--t3);}
+    /* Comparison table (S1) */
+    .cmp-table{width:100%;border-collapse:separate;border-spacing:10px 0;margin-top:14px;table-layout:fixed;}
+    .cmp-col{border-radius:12px;padding:2px;background:#fff;border:1.5px solid var(--g3);vertical-align:top;}
+    .cmp-col.cmp-ai,.cmp-col.cmp-cro{background:#f8fafc;}
+    .cmp-col.cmp-us{background:linear-gradient(170deg,var(--t1) 0%,var(--t0) 100%);border-left:3px solid var(--t5);border-right:3px solid var(--t5);}
+    .cmp-table th{padding:16px 14px 0;font-weight:normal;}
+    .cmp-table td{padding:0 14px;}
+    .cmp-hd{font-size:14px;font-weight:900;text-align:center;margin-bottom:3px;}
+    .cmp-ai .cmp-hd,.cmp-cro .cmp-hd{color:var(--g9);}
+    .cmp-us .cmp-hd{color:var(--t7);}
+    .cmp-sub{font-size:10px;font-weight:600;text-align:center;padding:2px 8px;border-radius:10px;margin-bottom:10px;display:block;}
+    .cmp-ai .cmp-sub,.cmp-cro .cmp-sub{color:var(--g5);background:var(--g3);}
+    .cmp-us .cmp-sub{color:var(--t6);background:rgba(13,148,136,.12);}
+    .cmp-row{display:flex;align-items:flex-start;gap:5px;font-size:11.5px;padding:6px 0;border-bottom:1px solid rgba(0,0,0,.05);line-height:1.5;}
+    .cmp-us .cmp-row{border-bottom-color:rgba(13,148,136,.15);}
+    .cmp-table tr:last-child .cmp-row{border:none;padding-bottom:14px;}
+    .cmp-row .ck{color:var(--t5);font-weight:900;font-size:13px;flex-shrink:0;}
+    .cmp-row .cx{color:#ef4444;font-weight:900;font-size:13px;flex-shrink:0;}
+    .cmp-us .cmp-row .ck{color:var(--t6);}
+    .cmp-ai .cmp-row em,.cmp-cro .cmp-row em{font-style:normal;color:var(--g7);}
+    .cmp-us .cmp-row em{font-style:normal;color:var(--g7);}
+    .pg-wh{background:#fff;}
+    .pg-lt{background:var(--t0);}
+    .pg-g1{background:var(--g1);}
+    .pg-dk{background:var(--g8);color:#fff;}
+    .pg-cta{background:linear-gradient(160deg,var(--t0) 0%,#e6faf7 100%);}
+
+    /* ══════════════════════ LABELS ══════════════════════ */
+    .lbl{
+      display:inline-flex;align-items:center;gap:6px;
+      font-size:10px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;
+      color:var(--t7);background:var(--t1);padding:3px 12px;border-radius:20px;margin-bottom:12px;
+    }
+    .pg-dk .lbl,.pg-cta .lbl{background:rgba(13,148,136,.12);color:var(--t7);}
+    .pg-dk .lbl{background:rgba(255,255,255,.12);color:#a7f3d0;}
+
+    /* ══════════════════════ HEADINGS ══════════════════════ */
+    h1{font-size:30px;font-weight:900;line-height:1.4;letter-spacing:-.03em;color:var(--t7);margin-bottom:14px;}
+    h1 em{display:inline-block;margin-top:8px;font-style:normal;color:var(--t5);}
+    h2{font-size:19px;font-weight:900;line-height:1.4;letter-spacing:-.02em;color:var(--g9);margin-bottom:14px;}
+    h2 em{display:inline-block;margin-top:6px;font-style:normal;color:var(--t6);}
+    h3{font-size:14px;font-weight:800;color:var(--g9);margin-bottom:6px;}
+    .pg-dk h2{color:#fff;}
+    .pg-dk h2 em{color:#6ee7b7;}
+
+    /* ══════════════════════ DIVIDER ══════════════════════ */
+    .div{height:3px;background:linear-gradient(90deg,var(--t6) 0%,var(--t5) 60%,transparent 100%);}
+
+    /* ══════════════════════ COVER LAYOUT ══════════════════════ */
+    .cover-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:start;}
+    .cover-sub{font-size:13.5px;color:var(--g7);line-height:1.65;margin-bottom:18px;}
+    .cover-badge{
+      display:inline-block;font-size:11px;font-weight:700;
+      border:1.5px solid var(--t3);border-radius:20px;
+      padding:3px 12px;color:var(--t7);background:var(--t0);margin-right:5px;margin-bottom:6px;
+    }
+    .cover-stats{
+      display:grid;grid-template-columns:repeat(3,1fr);gap:8px;
+      margin-top:16px;border-top:2px solid var(--t1);padding-top:14px;
+    }
+    .cs-item{text-align:center;background:var(--t0);border-radius:8px;padding:8px 4px;}
+    .cs-n{font-size:24px;font-weight:900;color:var(--t6);line-height:1;}
+    .cs-l{font-size:10px;color:var(--g5);margin-top:3px;}
+    .cover-foot{
+      margin-top:16px;display:flex;align-items:center;justify-content:space-between;
+      font-size:11px;color:var(--g5);border-top:1px solid var(--g3);padding-top:12px;
+    }
+    .cover-brand{font-size:20px;font-weight:900;color:var(--t7);}
+    .cover-brand b{color:var(--t5);font-style:italic;}
+
+    /* ══════════════════════ CAPABILITY WHEEL (cover SVG) ══════════════════════ */
+    .cap-wheel{text-align:center;}
+    .cap-wheel svg{display:block;margin:0 auto;max-width:100%;height:auto;}
+
+    /* ══════════════════════ DIFF TABLE (3-col) ══════════════════════ */
+    .diff3{display:grid;grid-template-columns:1fr 1.2fr 1fr;gap:0;border-radius:14px;overflow:hidden;border:2px solid var(--t6);}
+    .d-col{padding:18px 14px;}
+    .d-col-ai{background:#f8fafc;}
+    .d-col-us{background:var(--t7);color:#fff;}
+    .d-col-cro{background:#f8fafc;}
+    .d-col h3{font-size:13px;margin-bottom:4px;text-align:center;}
+    .d-col-us h3{color:#fff;}
+    .d-sub{font-size:10px;font-weight:600;text-align:center;padding:3px 8px;border-radius:10px;margin-bottom:12px;display:block;}
+    .d-col-ai .d-sub{color:var(--b7);background:var(--b1);}
+    .d-col-us .d-sub{color:#a7f3d0;background:rgba(255,255,255,.12);}
+    .d-col-cro .d-sub{color:var(--g7);background:var(--g3);}
+    .d-row{display:flex;align-items:flex-start;gap:6px;font-size:12px;padding:4px 0;border-bottom:1px solid rgba(0,0,0,.05);}
+    .d-col-us .d-row{border-bottom-color:rgba(255,255,255,.12);}
+    .d-row:last-child{border:none;padding-bottom:0;}
+    .d-ok{color:#0d9488;font-weight:900;flex-shrink:0;font-size:14px;}
+    .d-no{color:#ef4444;font-weight:900;flex-shrink:0;font-size:14px;}
+    .d-col-us .d-ok{color:#6ee7b7;}
+    .d-col-us .d-no{color:#fca5a5;}
+    .d-row span{color:inherit;font-size:12px;line-height:1.5;flex:1;}
+    .d-col-us .d-row span{color:rgba(255,255,255,.88);}
+    .d-col-ai .d-row span,.d-col-cro .d-row span{color:var(--g7);}
+
+    /* ══════════════════════ SERVICE PIPELINE ══════════════════════ */
+    .svc-chain{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:12px;}
+    .sc-card{
+      background:#fff;border-radius:10px;border:1.5px solid var(--g3);overflow:hidden;
+      transition:box-shadow .2s;
+    }
+    .sc-hd{display:flex;align-items:center;gap:6px;padding:6px 8px;border-bottom:1px solid var(--g3);}
+    .sc-ico{width:26px;height:26px;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0;}
+    .sc-ico-t{background:var(--t1);}
+    .sc-ico-b{background:var(--b1);}
+    .sc-ico-o{background:#ffedd5;}
+    .sc-ico-r{background:var(--r1);}
+    .sc-ico-p{background:#fae8ff;}
+    .sc-ico-g{background:var(--g1);}
+    .sc-name{font-size:11.5px;font-weight:900;color:var(--t8);line-height:1.2;}
+    .sc-en{font-size:8.5px;color:var(--g5);font-weight:500;line-height:1.1;margin-top:2px;}
+    .sc-body{padding:6px 8px;}
+    .sc-pts{list-style:none;padding:0;margin:0;}
+    .sc-pts li{font-size:10.5px;color:var(--g7);padding:2px 0 2px 10px;position:relative;line-height:1.3;}
+    .sc-pts li::before{content:'·';position:absolute;left:2px;color:var(--t6);font-weight:900;font-size:14px;top:-2px;}
+    .sc-tag{display:inline-block;font-size:8px;font-weight:700;padding:1px 6px;border-radius:8px;margin-top:4px;margin-right:3px;}
+    .tag-t{background:var(--t1);color:var(--t7);}
+    .tag-b{background:var(--b1);color:var(--b7);}
+    .tag-o{background:#ffedd5;color:#9a3412;}
+    .tag-r{background:var(--r1);color:var(--r7);}
+
+    /* ══════════════════════ DATABASE GRID ══════════════════════ */
+    .db6{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;}
+    .db-card{
+      background:#fff;border-radius:10px;border:1.5px solid var(--g3);padding:14px 12px;
+      position:relative;overflow:hidden;
+    }
+    .db-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;}
+    .db-card.c-t::before{background:var(--t6);}
+    .db-card.c-r::before{background:var(--r6);}
+    .db-card.c-b::before{background:var(--b7);}
+    .db-card.c-o::before{background:var(--a5);}
+    .db-card.c-p::before{background:#9333ea;}
+    .db-card.c-g::before{background:var(--g7);}
+    .db-n{font-size:28px;font-weight:900;color:var(--g9);line-height:1;margin-bottom:2px;}
+    .db-n.c-t{color:var(--t6);}
+    .db-n.c-r{color:var(--r6);}
+    .db-n.c-b{color:var(--b7);}
+    .db-n.c-o{color:var(--a6);}
+    .db-n.c-p{color:#9333ea;}
+    .db-n.c-g{color:var(--g7);}
+    .db-label{font-size:12px;font-weight:800;color:var(--g9);margin-bottom:4px;display:block;}
+    .db-desc{font-size:10px;color:var(--g7);line-height:1.3;}
+    .rare-badge{
+      display:inline-block;font-size:9px;font-weight:800;letter-spacing:.06em;
+      text-transform:uppercase;background:var(--r6);color:#fff;padding:2px 7px;border-radius:8px;
+      margin-left:4px;vertical-align:middle;
+    }
+    .qual-badge{
+      display:inline-block;font-size:9px;font-weight:800;letter-spacing:.06em;
+      background:var(--t6);color:#fff;padding:2px 7px;border-radius:8px;
+      margin-left:4px;vertical-align:middle;
+    }
+    .comp-badge{
+      display:inline-block;font-size:9px;font-weight:800;letter-spacing:.06em;
+      background:#9333ea;color:#fff;padding:2px 7px;border-radius:8px;
+      margin-left:4px;vertical-align:middle;
+    }
+
+    /* ══════════════════════ TOOLS LIST ══════════════════════ */
+    .tool-cats{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+    .tool-cat{background:var(--g1);border-radius:10px;padding:12px 12px;}
+    .tc-head{font-size:11px;font-weight:800;color:var(--t7);margin-bottom:6px;text-transform:uppercase;letter-spacing:.08em;}
+    .tc-tags{display:flex;flex-wrap:wrap;gap:4px;}
+    .tc-tag{font-size:10.5px;color:var(--g8);background:#fff;border:1px solid var(--g3);border-radius:6px;padding:2px 7px;font-weight:600;}
+    .tc-tag.ih{background:#f0fdf4;border-color:var(--t5);color:var(--t7);font-weight:700;}
+    .tc-tag.ih::before{content:"★ ";font-size:8px;}
+
+    /* ══════════════════════ CASES 3x3 ══════════════════════ */
+    .cases9{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;}
+    .case-card{
+      background:#fff;border-radius:10px;border:1.5px solid var(--g3);
+      overflow:hidden;position:relative;
+    }
+    .case-hd{padding:10px 65px 8px 12px;border-bottom:1px solid var(--g3);}
+    .case-type{
+      display:inline-block;font-size:8.5px;font-weight:800;letter-spacing:.04em;
+      text-transform:uppercase;padding:2px 6px;border-radius:6px;margin-bottom:4px;
+    }
+    .ct-ab{background:var(--t1);color:var(--t7);}
+    .ct-cro{background:#fae8ff;color:#7e22ce;}
+    .ct-clt{background:#fef3c7;color:#92400e;}
+    .case-title{font-size:11.5px;font-weight:900;color:var(--t8);line-height:1.2;}
+    .case-body{padding:6px 10px;}
+    .case-result{font-size:11px;color:var(--t6);font-weight:800;margin-bottom:4px;}
+    .case-detail{font-size:10px;color:var(--g7);line-height:1.3;}
+    .case-impact{font-size:10px;color:var(--t7);font-weight:700;margin-top:5px;padding-top:5px;border-top:1px dashed var(--t3);line-height:1.4;}
+    .case-impact::before{content:"→ ";font-weight:900;}
+    .case-badge{
+      position:absolute;top:8px;right:8px;
+      font-size:8px;font-weight:800;padding:2px 6px;border-radius:6px;
+    }
+    .cb-client{background:var(--r1);color:var(--r6);}
+    .cb-demo{background:var(--t1);color:var(--t7);}
+    .cb-clt{background:var(--r1);color:var(--r6);}
+
+    /* ══════════════════════ PROCESS ══════════════════════ */
+    .proc5{display:grid;grid-template-columns:repeat(5,1fr);gap:0;margin:16px 0;}
+    .proc5-step{text-align:center;position:relative;}
+    .proc5-step::after{
+      content:'→';position:absolute;right:-8px;top:18px;
+      font-size:16px;color:var(--t5);font-weight:900;
+    }
+    .proc5-step:last-child::after{display:none;}
+    .p5-ico{width:40px;height:40px;border-radius:8px;background:var(--t1);border:2px solid var(--t5);display:flex;align-items:center;justify-content:center;margin:0 auto 8px;font-size:16px;}
+    .p5-t{font-size:11px;font-weight:800;color:var(--g9);margin-bottom:3px;}
+    .p5-d{font-size:9.5px;color:var(--g5);line-height:1.4;}
+
+    /* ══════════════════════ CONTACTS ══════════════════════ */
+    .cc3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-top:18px;}
+    .cc{background:#fff;border:1.5px solid var(--t3);border-radius:10px;padding:14px 12px;text-align:center;}
+    .cc.pri{background:var(--t0);border-color:var(--t5);box-shadow:0 2px 14px rgba(13,148,136,.18);}
+    .cc-ico{font-size:22px;margin-bottom:6px;}
+    .cc-lbl{font-size:9px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;margin-bottom:4px;}
+    .cc.pri .cc-lbl{color:var(--t6);}
+    .cc:not(.pri) .cc-lbl{color:var(--g5);}
+    .cc-val{font-size:13px;font-weight:800;}
+    .cc.pri .cc-val{color:var(--t7);}
+    .cc:not(.pri) .cc-val{color:var(--g9);}
+    .cc-hint{font-size:10px;margin-top:2px;}
+    .cc.pri .cc-hint{color:var(--t7);}
+    .cc:not(.pri) .cc-hint{color:var(--g5);}
+
+    /* ══════════════════════ MISC ══════════════════════ */
+    .pq{border-left:3px solid var(--t6);padding:8px 12px;background:var(--t0);border-radius:0 8px 8px 0;margin:12px 0;font-size:12.5px;font-weight:600;color:var(--t7);font-style:italic;line-height:1.6;}
+    .risk-note{background:var(--r1);border:1px solid #fca5a5;border-radius:10px;padding:10px 14px;font-size:12px;color:var(--r7);margin:10px 0;}
+    .risk-note b{color:var(--r6);}
+    .cols2{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
+
+    /* ══════════════════════ MOBILE ══════════════════════ */
+    @media(max-width:640px){
+      .pg{padding:28px 16px;}
+      .cols2,.tool-cats{grid-template-columns:1fr;}
+      .prob3,.db6,.cases9{grid-template-columns:1fr 1fr;}
+      .cv-stats{grid-template-columns:repeat(3,1fr);}
+      .svc-chain{grid-template-columns:1fr 1fr;}
+      .proc5{grid-template-columns:1fr 1fr;}
+      .cc3{grid-template-columns:1fr;}
+      h1{font-size:22px;}h2{font-size:16px;}
+    }
+
+    /* ══════════════════════ PRINT ══════════════════════ */
+    @media print{
+      /* ── Base ── */
+      *{-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+      body{font-size:12.5px;line-height:1.6;}
+      .doc{max-width:100%;}
+      .div{display:none;}
+
+      /* ── Heading spacing optimization ── */
+      h2 { line-height: 1.5; margin-bottom: 12px !important; }
+      h2 em { display: inline-block; margin-top: 6px; }
+
+      /* ── Allow natural pagination, protect cards from being cut ── */
+      .case-card, .db-card, .sc-card, .prob-card, .tool-cat, .proc5-step, .cc {
+        page-break-inside: avoid;
+        break-inside: avoid;
+      }
+
+      /* ── Moderately adjust padding for compact layout ── */
+      .pg { padding: 20px 24px !important; }
+      #s0 { padding: 30px 30px 20px !important; }
+
+      /* ── Reduce spacing of some large elements ── */
+      .prob3 { margin: 12px 0 !important; }
+      .about-band { margin: 12px 0 !important; padding: 12px 16px !important; }
+      .cv-stats { margin: 12px 0 !important; }
+      .cmp-table { margin-bottom: 12px !important; }
+      .svc-chain { margin-bottom: 12px !important; }
+      .db6 { margin-bottom: 12px !important; }
+      .cases9 { gap: 8px !important; }
+
+      /* ── Restore some font sizes to avoid being too large ── */
+      #s0 h1 { font-size: 26px !important; line-height: 1.4 !important; }
+      .db-n { font-size: 22px !important; }
+      .p5-ico{background:#ccfbf1 !important;border-color:#14b8a6 !important;color:#0f766e !important;}
+
+      @page{size:A4 portrait;margin:12mm 10mm;}
+    }
+  </style>
+</head>
+<body>
+<div class="doc">
+
+<!-- ════════════════════════════════════════
+     COVER — Dark Teal Background, Rich Info
+════════════════════════════════════════ -->
+<div id="s0" class="pg pg-cover" style="padding:36px 38px 28px;">
+
+  <!-- Rich biotech abstract background: circuit · neural · DNA · antibody -->
+  <svg style="position:absolute;inset:0;width:100%;height:100%;pointer-events:none;"
+       viewBox="0 0 820 640" preserveAspectRatio="xMidYMid slice"
+       xmlns="http://www.w3.org/2000/svg">
+
+    <!-- ① CIRCUIT BOARD — top-left corner -->
+    <g opacity=".1" transform="translate(10,28)" stroke="#0d9488" fill="#0d9488" stroke-linecap="square">
+      <line x1="0"   y1="0"   x2="185" y2="0"   stroke-width="1" fill="none"/>
+      <line x1="0"   y1="38"  x2="155" y2="38"  stroke-width="1" fill="none"/>
+      <line x1="30"  y1="76"  x2="185" y2="76"  stroke-width="1" fill="none"/>
+      <line x1="0"   y1="114" x2="125" y2="114" stroke-width="1" fill="none"/>
+      <line x1="38"  y1="0"   x2="38"  y2="145" stroke-width="1" fill="none"/>
+      <line x1="78"  y1="0"   x2="78"  y2="145" stroke-width="1" fill="none"/>
+      <line x1="118" y1="0"   x2="118" y2="114" stroke-width="1" fill="none"/>
+      <line x1="158" y1="0"   x2="158" y2="76"  stroke-width="1" fill="none"/>
+      <!-- Square pads -->
+      <rect x="34"  y="-4"  width="8" height="8" rx="1"/>
+      <rect x="74"  y="-4"  width="8" height="8" rx="1"/>
+      <rect x="74"  y="34"  width="8" height="8" rx="1"/>
+      <rect x="114" y="34"  width="8" height="8" rx="1"/>
+      <rect x="154" y="72"  width="8" height="8" rx="1"/>
+      <rect x="34"  y="72"  width="8" height="8" rx="1"/>
+      <rect x="114" y="110" width="8" height="8" rx="1"/>
+      <!-- Circular vias -->
+      <circle cx="118" cy="0"  r="4" fill="#0d9488"/>
+      <circle cx="78"  cy="76" r="4" fill="#0d9488"/>
+      <circle cx="38"  cy="38" r="3" fill="#0d9488"/>
+      <circle cx="158" cy="38" r="3" fill="#0d9488"/>
+      <!-- IC chip -->
+      <rect x="85" y="45" width="26" height="18" rx="2" fill="none" stroke-width="1.2"/>
+      <line x1="85" y1="50" x2="78" y2="50" stroke-width="1" fill="none"/>
+      <line x1="85" y1="57" x2="78" y2="57" stroke-width="1" fill="none"/>
+      <line x1="111" y1="50" x2="118" y2="50" stroke-width="1" fill="none"/>
+      <line x1="111" y1="57" x2="118" y2="57" stroke-width="1" fill="none"/>
+      <!-- Resistor-like component -->
+      <rect x="42" y="104" width="20" height="10" rx="2" fill="none" stroke-width="1"/>
+      <line x1="38" y1="109" x2="42" y2="109" stroke-width="1" fill="none"/>
+      <line x1="62" y1="109" x2="68" y2="109" stroke-width="1" fill="none"/>
+    </g>
+
+    <!-- ② NEURAL NETWORK / BRAIN — top center–right -->
+    <g opacity=".09" stroke="#0d9488" fill="#0d9488">
+      <circle cx="310" cy="42"  r="5.5" fill="none" stroke-width="1.3"/>
+      <circle cx="370" cy="20"  r="4"   fill="none" stroke-width="1.1"/>
+      <circle cx="430" cy="52"  r="6.5" fill="none" stroke-width="1.3"/>
+      <circle cx="492" cy="18"  r="4"   fill="none" stroke-width="1.1"/>
+      <circle cx="550" cy="58"  r="5.5" fill="none" stroke-width="1.3"/>
+      <circle cx="610" cy="28"  r="4"   fill="none" stroke-width="1.1"/>
+      <circle cx="340" cy="88"  r="3.5" fill="none" stroke-width="1"/>
+      <circle cx="480" cy="92"  r="3.5" fill="none" stroke-width="1"/>
+      <circle cx="580" cy="85"  r="3"   fill="none" stroke-width="1"/>
+      <!-- Filled accent nodes -->
+      <circle cx="430" cy="52"  r="3" fill="#0d9488" opacity=".4"/>
+      <circle cx="310" cy="42"  r="2.5" fill="#0d9488" opacity=".3"/>
+      <!-- Connections: main chain -->
+      <line x1="310" y1="42"  x2="370" y2="20"  stroke-width="0.8"/>
+      <line x1="370" y1="20"  x2="430" y2="52"  stroke-width="0.8"/>
+      <line x1="430" y1="52"  x2="492" y2="18"  stroke-width="0.8"/>
+      <line x1="492" y1="18"  x2="550" y2="58"  stroke-width="0.8"/>
+      <line x1="550" y1="58"  x2="610" y2="28"  stroke-width="0.8"/>
+      <!-- Cross connections -->
+      <line x1="310" y1="42"  x2="430" y2="52"  stroke-width="0.5"/>
+      <line x1="370" y1="20"  x2="492" y2="18"  stroke-width="0.5"/>
+      <line x1="430" y1="52"  x2="550" y2="58"  stroke-width="0.5"/>
+      <!-- Down branches -->
+      <line x1="310" y1="42"  x2="340" y2="88"  stroke-width="0.7"/>
+      <line x1="430" y1="52"  x2="340" y2="88"  stroke-width="0.6"/>
+      <line x1="430" y1="52"  x2="480" y2="92"  stroke-width="0.7"/>
+      <line x1="550" y1="58"  x2="480" y2="92"  stroke-width="0.6"/>
+      <line x1="550" y1="58"  x2="580" y2="85"  stroke-width="0.7"/>
+      <line x1="610" y1="28"  x2="580" y2="85"  stroke-width="0.6"/>
+    </g>
+
+    <!-- ③ DNA DOUBLE HELIX — right edge, vertical -->
+    <g opacity=".12" stroke="#0d9488" fill="none" stroke-linecap="round">
+      <!-- Strand A: curves right-left-right -->
+      <path d="M776,115
+               Q795,148 776,180  Q757,212 776,244
+               Q795,276 776,308  Q757,340 776,372
+               Q795,404 776,436  Q757,468 776,500  Q795,532 776,560"
+            stroke-width="1.6"/>
+      <!-- Strand B: mirror, curves left-right-left -->
+      <path d="M776,115
+               Q757,148 776,180  Q795,212 776,244
+               Q757,276 776,308  Q795,340 776,372
+               Q757,404 776,436  Q795,468 776,500  Q757,532 776,560"
+            stroke-width="1.6"/>
+      <!-- Base pairs — at helix maxima (where strands are farthest apart) -->
+      <line x1="757" y1="148" x2="795" y2="148" stroke-width="1"/>
+      <line x1="757" y1="162" x2="795" y2="162" stroke-width="0.7"/>
+      <line x1="757" y1="212" x2="795" y2="212" stroke-width="1"/>
+      <line x1="757" y1="226" x2="795" y2="226" stroke-width="0.7"/>
+      <line x1="757" y1="276" x2="795" y2="276" stroke-width="1"/>
+      <line x1="757" y1="290" x2="795" y2="290" stroke-width="0.7"/>
+      <line x1="757" y1="340" x2="795" y2="340" stroke-width="1"/>
+      <line x1="757" y1="354" x2="795" y2="354" stroke-width="0.7"/>
+      <line x1="757" y1="404" x2="795" y2="404" stroke-width="1"/>
+      <line x1="757" y1="418" x2="795" y2="418" stroke-width="0.7"/>
+      <line x1="757" y1="468" x2="795" y2="468" stroke-width="1"/>
+      <line x1="757" y1="482" x2="795" y2="482" stroke-width="0.7"/>
+      <line x1="757" y1="532" x2="795" y2="532" stroke-width="1"/>
+      <!-- Nodes at crossing points -->
+      <circle cx="776" cy="115" r="3"   fill="#0d9488" opacity=".7"/>
+      <circle cx="776" cy="180" r="2.5" fill="#0d9488" opacity=".5"/>
+      <circle cx="776" cy="244" r="2.5" fill="#0d9488" opacity=".5"/>
+      <circle cx="776" cy="308" r="3"   fill="#0d9488" opacity=".7"/>
+      <circle cx="776" cy="372" r="2.5" fill="#0d9488" opacity=".5"/>
+      <circle cx="776" cy="436" r="2.5" fill="#0d9488" opacity=".5"/>
+      <circle cx="776" cy="500" r="3"   fill="#0d9488" opacity=".7"/>
+    </g>
+
+    <!-- ④ ANTIBODY Y-SHAPE — bottom left -->
+    <g opacity=".1" transform="translate(22,452)" stroke="#0d9488" fill="none"
+       stroke-linecap="round" stroke-linejoin="round">
+      <!-- CH3 domain (lower Fc) -->
+      <rect x="44" y="110" width="36" height="24" rx="11" stroke-width="1.8"/>
+      <!-- CH2 domain (upper Fc) -->
+      <rect x="44" y="80"  width="36" height="24" rx="11" stroke-width="1.8"/>
+      <!-- Hinge stem -->
+      <line x1="62" y1="80" x2="62" y2="66" stroke-width="2.2"/>
+      <!-- Left Fab arm path -->
+      <path d="M62,66 C46,57 26,38 10,10" stroke-width="2"/>
+      <!-- Right Fab arm path -->
+      <path d="M62,66 C78,57 98,38 114,10" stroke-width="2"/>
+      <!-- Left variable domain (Fab tip) -->
+      <ellipse cx="8"   cy="5"  rx="14" ry="9"  stroke-width="1.6"/>
+      <!-- Right variable domain (Fab tip) -->
+      <ellipse cx="116" cy="5"  rx="14" ry="9"  stroke-width="1.6"/>
+      <!-- Left CL/CH1 constant region suggestion -->
+      <path d="M10,10 C4,22 6,34 14,40"  stroke-width="1.3"/>
+      <!-- Right CL/CH1 constant region suggestion -->
+      <path d="M114,10 C120,22 118,34 110,40" stroke-width="1.3"/>
+      <!-- Hinge disulfide bridge suggestion -->
+      <line x1="50" y1="68" x2="74" y2="68" stroke-width="1.3"/>
+    </g>
+
+  </svg>
+
+  <!-- Top bar -->
+  <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:22px;position:relative;z-index:1;">
+    <div class="cover-brand" style="font-family: 'Space Grotesk', 'Inter', sans-serif;"><span style="color:inherit">In</span><b style="color:#0d9488;font-style:italic;font-weight:700;">Syn</b><span style="color:inherit">Bio</span> <span style="font-size:11px;font-weight:400;color:var(--g5);margin-left:8px;">Service Whitepaper · 2026</span></div>
+    <div style="font-size:11px;color:var(--g5);text-align:right;line-height:1.6;">
+      www.insynbio.com<br>contact@insynbio.com
+    </div>
+  </div>
+
+  <!-- Hero: what we do -->
+  <div style="position:relative;z-index:1;max-width:760px;">
+    <h1 style="font-size:28px;margin-bottom:8px;">AI-Assisted Biologics R&D Decision Support<br><em>Solving problems, not just showcasing tools</em></h1>
+    <p class="cover-sub" style="font-size:13.5px;max-width:640px;margin-bottom:0;">
+      InSynBio integrates <strong style="color:var(--t7);">AI Analysis + 6 Proprietary Clinical Databases + Expert Judgment</strong> to provide end-to-end decision support from sequence to report for antibody, bispecific, CAR-T, and vaccine development teams—systematically identifying and mitigating R&D failure risks before entering the wet lab.
+    </p>
+  </div>
+
+  <!-- 3 problems we solve -->
+  <div class="prob3" style="position:relative;z-index:1;">
+    <div class="prob-card">
+      <div class="pc-ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg></div>
+      <div class="pc-t">CMC Developability Gap</div>
+      <div class="pc-d">CMC boundaries are not considered during sequence optimization, exposing gaps only at the IND stage, leading to ~30% of candidates failing pre-clinically.</div>
+      <div style="font-size:10px;color:var(--r6);font-weight:700;margin-top:5px;">Cost: 6–18 months of wasted development cycles</div>
+    </div>
+    <div class="prob-card">
+      <div class="pc-ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 7A3 3 0 0 0 8 7v8a3 3 0 0 0 6 0V7z"/><path d="M8 11h6"/><path d="M18 21H6"/><path d="M15 21v-4a4 4 0 0 0-4-4H8"/></svg></div>
+      <div class="pc-t">Delayed Immunogenicity Risk</div>
+      <div class="pc-d">Inadequate humanization and unscreened T-cell epitopes trigger ADA signals only during animal trials, forcing a complete restart.</div>
+      <div style="font-size:10px;color:var(--r6);font-weight:700;margin-top:5px;">Cost: Failed animal trials = million-dollar reinvestment</div>
+    </div>
+    <div class="prob-card">
+      <div class="pc-ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg></div>
+      <div class="pc-t">Format Selection Relies on Experience</div>
+      <div class="pc-d">Selection of bispecific / ADC / CAR components lacks clinical data support, leading to poor reproducibility and unquantifiable risks when taking the wrong direction.</div>
+      <div style="font-size:10px;color:var(--r6);font-weight:700;margin-top:5px;">Cost: Format errors mean redoing the entire pipeline</div>
+    </div>
+  </div>
+
+  <!-- Our solution line -->
+  <div style="position:relative;z-index:1;background:#fff;border:2px solid var(--t5);border-radius:10px;padding:11px 16px;margin-bottom:14px;display:flex;align-items:center;gap:12px;box-shadow:0 2px 10px rgba(13,148,136,.1);">
+    <span style="font-size:22px;color:var(--t6);"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="6"></circle><circle cx="12" cy="12" r="2"></circle></svg></span>
+    <p style="font-size:12.5px;color:var(--g7);line-height:1.55;margin:0;">
+      <strong style="color:var(--t7);">Our Solution:</strong> Intervene before the wet lab—using 25+ AI tools for rapid analysis, 6 clinical databases for format-specific benchmarking, and expert judgment for actionable recommendations. <strong style="color:var(--t7);">Not just scores, but directions. Not just tools, but a moat.</strong>
+    </p>
+  </div>
+
+  <!-- About us -->
+  <div class="about-band" style="position:relative;z-index:1;">
+    <div class="ab-title">About the InSynBio Team</div>
+    <p class="ab-txt">
+      The core team comes from <strong style="color:var(--g9);">Albert Einstein College of Medicine, Columbia University, and Rockefeller University</strong>, with immunology backgrounds and over a decade of practical experience in biologics development. We focus on combining computational AI with deep immunological knowledge, having served multiple Biotech companies and research teams with full computational analysis delivery from antibody humanization to neoantigen vaccines.
+    </p>
+    <div class="ab-tags">
+      <span class="ab-tag"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;margin-right:2px;margin-top:-2px;"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>Albert Einstein College of Medicine</span>
+      <span class="ab-tag"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;margin-right:2px;margin-top:-2px;"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>Columbia University</span>
+      <span class="ab-tag"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;margin-right:2px;margin-top:-2px;"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>Rockefeller University</span>
+      <span class="ab-tag"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;margin-right:2px;margin-top:-2px;"><path d="M15 2v20"/><path d="M9 2v20"/><path d="M9 22c3 0 6-3 6-6"/><path d="M15 2c-3 0-6 3-6 6"/><path d="M9 6h6"/><path d="M9 10h6"/><path d="M9 14h6"/><path d="M9 18h6"/></svg>Immunology Expertise</span>
+      <span class="ab-tag"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;margin-right:2px;margin-top:-2px;"><path d="M14 4L3.5 14.5a2.12 2.12 0 0 0 0 3l.5.5a2.12 2.12 0 0 0 3 0L17.5 7.5"/><path d="M12 8l4 4"/><path d="M2 22l3-3"/></svg>10+ Years Biologics Dev</span>
+      <span class="ab-tag"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;margin-right:2px;margin-top:-2px;"><rect x="3" y="11" width="18" height="10" rx="2"/><circle cx="12" cy="5" r="2"/><path d="M12 7v4"/><line x1="8" y1="16" x2="8" y2="16"/><line x1="16" y1="16" x2="16" y2="16"/></svg>AI Engineering</span>
+    </div>
+  </div>
+
+  <!-- Key numbers strip -->
+  <div class="cv-stats" style="position:relative;z-index:1;">
+    <div class="cv-stat"><span class="cv-sn">1,142</span><span class="cv-sl">Clinical Antibody<br>Reference Sequences</span></div>
+    <div class="cv-stat"><span class="cv-sn">138</span><span class="cv-sl">Rare ADA<br>Immune Records</span></div>
+    <div class="cv-stat"><span class="cv-sn">20+</span><span class="cv-sl">AI Analysis<br>Tools</span></div>
+    <div class="cv-stat"><span class="cv-sn">9</span><span class="cv-sl">Complete<br>Case Studies</span></div>
+    <div class="cv-stat"><span class="cv-sn">100+</span><span class="cv-sl">ADC Clinical<br>Projects</span></div>
+    <div class="cv-stat"><span class="cv-sn">3–5 Days</span><span class="cv-sl">Expert-Reviewed<br>Delivery</span></div>
+  </div>
+
+  <!-- Service chips -->
+  <div class="cv-chips" style="position:relative;z-index:1;">
+    <span class="cv-chip">VH/VL Humanization</span>
+    <span class="cv-chip">VHH Humanization</span>
+    <span class="cv-chip">VH→VHH Conversion</span>
+    <span class="cv-chip">CMC Developability</span>
+    <span class="cv-chip">Virtual Affinity Maturation</span>
+    <span class="cv-chip">CDR Redesign</span>
+    <span class="cv-chip">Immunogenicity / ADA</span>
+    <span class="cv-chip">Bispecific Antibodies</span>
+    <span class="cv-chip">ADC Evaluation</span>
+    <span class="cv-chip">CAR-T / NK</span>
+    <span class="cv-chip">Vaccine / Neoantigen</span>
+  </div>
+
+</div>
+<div class="div"></div>
+
+<!-- ════════════════════════════════════════
+     S1 · The Essential Difference Between Us, AI Tool Platforms, and CROs
+════════════════════════════════════════ -->
+<div id="s1" class="pg pg-lt">
+  <div class="lbl">01 · Differentiated Positioning</div>
+  <h2 style="margin-bottom:6px;">How does AI truly serve biologics R&D?<br><em>Not tools, not experiments — it's decision support</em></h2>
+  <p style="font-size:13px;color:var(--g7);margin-bottom:16px;line-height:1.7;">
+    Providing AI tools alone, without clinical data and expert judgment, yields scores that cannot guide decisions. Relying solely on CRO experiments without pre-wet-lab direction means every trial-and-error burns money and time.InSynBio  offers a third path: <strong>Using 1,142 clinical sequences as a benchmarking baseline, 25+ tools for cross-validation to eliminate single-tool bias, and immunological expert interpretation to make reports directly actionable.</strong> These three capabilities are indispensable and hard to replicate.
+  </p>
+
+  <table class="cmp-table" cellspacing="0" cellpadding="0">
+    <thead>
+      <tr>
+        <th class="cmp-col cmp-ai">
+          <div class="cmp-hd">AI Tool Platforms</div>
+          <span class="cmp-sub">Rosetta · ESMfold · Online Services</span>
+        </th>
+        <th class="cmp-col cmp-us">
+          <div class="cmp-hd">InSynBio</div>
+          <span class="cmp-sub">AI + Clinical Data + Expert Judgment</span>
+          <div style="display:flex;gap:4px;flex-wrap:wrap;margin:6px 0 2px;justify-content:center;">
+            <span style="font-size:8.5px;background:var(--t6);color:#fff;border-radius:5px;padding:1px 6px;font-weight:800;"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;margin-right:2px;margin-top:-2px;"><rect x="3" y="11" width="18" height="10" rx="2"/><circle cx="12" cy="5" r="2"/><path d="M12 7v4"/><line x1="8" y1="16" x2="8" y2="16"/><line x1="16" y1="16" x2="16" y2="16"/></svg> AI</span>
+            <span style="font-size:8.5px;background:var(--t6);color:#fff;border-radius:5px;padding:1px 6px;font-weight:800;"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;margin-right:2px;margin-top:-2px;"><ellipse cx="12" cy="5" rx="9" ry="3"></ellipse><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path></svg> Clinical Data</span>
+            <span style="font-size:8.5px;background:var(--t6);color:#fff;border-radius:5px;padding:1px 6px;font-weight:800;"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;margin-right:2px;margin-top:-2px;"><path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96.44 2.5 2.5 0 0 1-2.96-3.08 3 3 0 0 1-.34-5.58 2.5 2.5 0 0 1 1.32-4.24 2.5 2.5 0 0 1 1.98-3A2.5 2.5 0 0 1 9.5 2Z"/><path d="M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96.44 2.5 2.5 0 0 0 2.96-3.08 3 3 0 0 0 .34-5.58 2.5 2.5 0 0 0-1.32-4.24 2.5 2.5 0 0 0-1.98-3A2.5 2.5 0 0 0 14.5 2Z"/></svg> Expert</span>
+          </div>
+        </th>
+        <th class="cmp-col cmp-cro">
+          <div class="cmp-hd">Traditional CROs</div>
+          <span class="cmp-sub">Wet Lab Outsourcing</span>
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="cmp-col cmp-ai"><div class="cmp-row"><span class="ck">✓</span><em>Fast automation</em></div></td>
+        <td class="cmp-col cmp-us"><div class="cmp-row"><span class="ck">✓</span><em>25+ AI tools running synergistically</em></div></td>
+        <td class="cmp-col cmp-cro"><div class="cmp-row"><span class="ck">✓</span><em>Direct wet lab validation</em></div></td>
+      </tr>
+      <tr>
+        <td class="cmp-col cmp-ai"><div class="cmp-row"><span class="ck">✓</span><em>Partially open-source</em></div></td>
+        <td class="cmp-col cmp-us"><div class="cmp-row"><span class="ck">✓</span><em>6 Proprietary Clinical Databases</em></div></td>
+        <td class="cmp-col cmp-cro"><div class="cmp-row"><span class="ck">✓</span><em>GMP · Regulatory support</em></div></td>
+      </tr>
+      <tr>
+        <td class="cmp-col cmp-ai"><div class="cmp-row"><span class="cx">✗</span><em>No clinical format benchmarking data</em></div></td>
+        <td class="cmp-col cmp-us"><div class="cmp-row"><span class="ck">✓</span><em>Format-specific benchmarking (VHH/VH-VL/BsAb)</em></div></td>
+        <td class="cmp-col cmp-cro"><div class="cmp-row"><span class="cx">✗</span><em>No early computational risk screening</em></div></td>
+      </tr>
+      <tr>
+        <td class="cmp-col cmp-ai"><div class="cmp-row"><span class="cx">✗</span><em>No Expert Interpretation and Review</em></div></td>
+        <td class="cmp-col cmp-us"><div class="cmp-row"><span class="ck">✓</span><em>Full Review by Immunology Experts</em></div></td>
+        <td class="cmp-col cmp-cro"><div class="cmp-row"><span class="cx">✗</span><em>High cost (10–100× computational)</em></div></td>
+      </tr>
+      <tr>
+        <td class="cmp-col cmp-ai"><div class="cmp-row"><span class="cx">✗</span><em>Single tool, no integrated judgment</em></div></td>
+        <td class="cmp-col cmp-us"><div class="cmp-row"><span class="ck">✓</span><em>Actionable optimization advice, not isolated scores</em></div></td>
+        <td class="cmp-col cmp-cro"><div class="cmp-row"><span class="cx">✗</span><em>Cycle takes weeks to months</em></div></td>
+      </tr>
+      <tr>
+        <td class="cmp-col cmp-ai"><div class="cmp-row"><span class="cx">✗</span><em>Outputs scores, no actionable advice</em></div></td>
+        <td class="cmp-col cmp-us"><div class="cmp-row"><span class="ck">✓</span><em>3–5 business days delivery</em></div></td>
+        <td class="cmp-col cmp-cro"><div class="cmp-row"><span class="cx">✗</span><em>Cannot identify CMC risks before experiments</em></div></td>
+      </tr>
+      <tr>
+        <td class="cmp-col cmp-ai"><div class="cmp-row"><span class="cx">✗</span><em>No rare ADA / ADC data</em></div></td>
+        <td class="cmp-col cmp-us"><div class="cmp-row"><span class="ck">✓</span><em>138 rare ADA data records</em></div></td>
+        <td class="cmp-col cmp-cro"><div class="cmp-row"><span class="cx">✗</span><em>No clinical sequence benchmarking baseline</em></div></td>
+      </tr>
+      <tr>
+        <td class="cmp-col cmp-ai" style="border-radius:0 0 0 12px;"><div class="cmp-row"><span class="cx">✗</span><em>No domain background knowledge support</em></div></td>
+        <td class="cmp-col cmp-us"><div class="cmp-row"><span class="ck">✓</span><em>10+ Years Biologics Dev Background</em></div></td>
+        <td class="cmp-col cmp-cro" style="border-radius:0 0 12px 0;"><div class="cmp-row"><span class="cx">✗</span><em>No computational optimization advice provided</em></div></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="pq" style="margin-top:14px;">
+    Optimal Path: First use InSynBio to identify key risks and determine directions at the computational layer, then advance high-confidence candidates to wet lab validation—spending the CRO budget on what matters, not on trial-and-error.
+  </div>
+</div>
+<div class="div"></div>
+
+<!-- ════════════════════════════════════════
+     S2 · Full Service Pipeline (10 services, 2 groups)
+════════════════════════════════════════ -->
+<div id="s2" class="pg pg-lt">
+  <div class="lbl">02 · Service Scope</div>
+  <h2 style="margin-bottom:6px;">From Sequence to Report — <em>10 Full-Pipeline Services</em></h2>
+  <p style="font-size:12.5px;color:var(--g7);margin-bottom:18px;">A single team, one integrated report. Each service can be commissioned independently or combined into an end-to-end project.</p>
+
+  <!-- Group 1: Antibody Engineering -->
+  <h3 style="font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:var(--t7);margin-bottom:10px;font-weight:800;">
+    ▸ Antibody Engineering
+  </h3>
+  <div class="svc-chain" style="margin-bottom:20px;">
+    <div class="sc-card">
+      <div class="sc-hd"><div class="sc-ico sc-ico-t"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 2v20"/><path d="M9 2v20"/><path d="M9 22c3 0 6-3 6-6"/><path d="M15 2c-3 0-6 3-6 6"/><path d="M9 6h6"/><path d="M9 10h6"/><path d="M9 14h6"/><path d="M9 18h6"/></svg></div><div><div class="sc-name">Antibody Humanization</div><div class="sc-en">VH/VL Humanization</div></div></div>
+      <div class="sc-body">
+        <ul class="sc-pts">
+          <li>CDR Grafting + Vernier Zone Analysis</li>
+          <li>1,142 clinical sequence format benchmarking</li>
+          <li>Precise back-mutations + conformational validation</li>
+        </ul>
+        <span class="sc-tag tag-t">VH/VL</span><span class="sc-tag tag-t">mAb</span>
+      </div>
+    </div>
+    <div class="sc-card">
+      <div class="sc-hd"><div class="sc-ico sc-ico-b"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="12" rx="6" ry="10"/></svg></div><div><div class="sc-name">VHH Humanization / Conversion</div><div class="sc-en">VHH · VH→VHH</div></div></div>
+      <div class="sc-body">
+        <ul class="sc-pts">
+          <li>29-Item VHH-Specific Checklist</li>
+          <li>VH→VHH Structural Conversion Design</li>
+          <li>Preserve CDR binding while improving developability</li>
+        </ul>
+        <span class="sc-tag tag-b">VHH</span><span class="sc-tag tag-b">Nanobody</span>
+      </div>
+    </div>
+    <div class="sc-card">
+      <div class="sc-hd"><div class="sc-ico sc-ico-o"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg></div><div><div class="sc-name">CMC Developability Assessment</div><div class="sc-en">Developability · 15 Metrics</div></div></div>
+      <div class="sc-body">
+        <ul class="sc-pts">
+          <li>Comprehensive scan of 15 metrics (pI · Hydrophobicity · Charge)</li>
+          <li><b>Format-Specific</b>: VH/VL / VHH / Bispecific individual benchmarking</li>
+          <li>Shortcoming identification + AI optimization advice</li>
+        </ul>
+        <span class="sc-tag tag-o">CMC</span><span class="sc-tag tag-o">Clinical Benchmark</span>
+      </div>
+    </div>
+    <div class="sc-card">
+      <div class="sc-hd"><div class="sc-ico sc-ico-t"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div><div><div class="sc-name">Virtual Affinity Maturation</div><div class="sc-en">VAM · ΔΔG 6-Tool</div></div></div>
+      <div class="sc-body">
+        <ul class="sc-pts">
+          <li>EvoEF2 / PRODIGY / FoldX / ThermoMPNN</li>
+          <li>AntiFold / ESM-IF1 / MM-GBSA Synergy</li>
+          <li>Mutation heatmap + Multi-structure consensus screening</li>
+        </ul>
+        <span class="sc-tag tag-t">ΔΔG</span><span class="sc-tag tag-t">Affinity</span>
+      </div>
+    </div>
+    <div class="sc-card">
+      <div class="sc-hd"><div class="sc-ico sc-ico-b"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><line x1="20" y1="4" x2="8.12" y2="15.88"/><line x1="14.47" y1="14.48" x2="20" y2="20"/><line x1="8.12" y1="8.12" x2="12" y2="12"/></svg></div><div><div class="sc-name">CDR Redesign</div><div class="sc-en">CDR Redesign · ProteinMPNN</div></div></div>
+      <div class="sc-body">
+        <ul class="sc-pts">
+          <li>ProteinMPNN diverse sequence generation</li>
+          <li>CDR conformation anchor maintenance, RMSD monitoring</li>
+          <li>Shannon polymorphism scoring + Affinity filtering</li>
+        </ul>
+        <span class="sc-tag tag-b">ProteinMPNN</span><span class="sc-tag tag-b">CDR</span>
+      </div>
+    </div>
+    <div class="sc-card">
+      <div class="sc-hd"><div class="sc-ico sc-ico-r"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 7A3 3 0 0 0 8 7v8a3 3 0 0 0 6 0V7z"/><path d="M8 11h6"/><path d="M18 21H6"/><path d="M15 21v-4a4 4 0 0 0-4-4H8"/></svg></div><div><div class="sc-name">Immunogenicity and ADA Risk</div><div class="sc-en">Immunogenicity · ADA DB</div></div></div>
+      <div class="sc-body">
+        <ul class="sc-pts">
+          <li>T-cell epitope screening, 27 HLA-DR coverage</li>
+          <li>Benchmarking against 138 <b>Rare ADA Database</b> records</li>
+          <li>Immunogenicity hotspot localization + Mutation risk reduction</li>
+        </ul>
+        <span class="sc-tag tag-r">ADA</span><span class="sc-tag tag-r">T-cell Epitope</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Group 2: Modality Extension -->
+  <h3 style="font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:var(--t7);margin-bottom:10px;font-weight:800;">
+    ▸ Modality Extension
+  </h3>
+  <div class="svc-chain">
+    <div class="sc-card">
+      <div class="sc-hd"><div class="sc-ico sc-ico-t"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg></div><div><div class="sc-name">Bispecific Antibodies</div><div class="sc-en">Bispecific · 134+ Molecules</div></div></div>
+      <div class="sc-body">
+        <ul class="sc-pts">
+          <li>134+ Clinical Bispecifics + 84 Linker Library</li>
+          <li>Format screening · Pairing stability · CMC mismatch</li>
+          <li>78 IgG-like structural model validation</li>
+        </ul>
+        <span class="sc-tag tag-t">Bispecific</span><span class="sc-tag tag-t">SmartLink</span>
+      </div>
+    </div>
+    <div class="sc-card">
+      <div class="sc-hd"><div class="sc-ico sc-ico-o"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div><div><div class="sc-name">ADC Design & Evaluation</div><div class="sc-en">ADC · 100+ Clinical Projects</div></div></div>
+      <div class="sc-body">
+        <ul class="sc-pts">
+          <li>100+ ADC clinical project database</li>
+          <li>Linker / Payload / DAR Optimization</li>
+          <li>Conjugation site screening + Stability assessment</li>
+        </ul>
+        <span class="sc-tag tag-o">ADC</span><span class="sc-tag tag-o">Linker</span>
+      </div>
+    </div>
+    <div class="sc-card">
+      <div class="sc-hd"><div class="sc-ico sc-ico-b"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg></div><div><div class="sc-name">CAR-T / NK / M Design</div><div class="sc-en">CAR Immunotherapy · 237 Parts</div></div></div>
+      <div class="sc-body">
+        <ul class="sc-pts">
+          <li>237 Selected components, 12-category system architecture</li>
+          <li>Hinge / Costimulatory domain rational optimization</li>
+          <li>Solid tumor penetration · Safety switch design</li>
+        </ul>
+        <span class="sc-tag tag-b">CAR-T</span><span class="sc-tag tag-b">CAR-NK</span>
+      </div>
+    </div>
+    <div class="sc-card" style="grid-column:span 1;">
+      <div class="sc-hd"><div class="sc-ico sc-ico-r"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2l4 4"/><path d="M17 7l-3-3"/><path d="M19 9l-3-3"/><path d="M14 4L3.5 14.5a2.12 2.12 0 0 0 0 3l.5.5a2.12 2.12 0 0 0 3 0L17.5 7.5"/><path d="M12 8l4 4"/><path d="M2 22l3-3"/></svg></div><div><div class="sc-name">Vaccine / Neoantigen Design</div><div class="sc-en">Vaccine · Neoantigen · mRNA</div></div></div>
+      <div class="sc-body">
+        <ul class="sc-pts">
+          <li>KRAS G12D · EBV and other target cases</li>
+          <li>100+ IEDB validated epitopes, MHC-I/II</li>
+          <li>Multi-epitope mRNA assembly + GC optimization</li>
+        </ul>
+        <span class="sc-tag tag-r">mRNA</span><span class="sc-tag tag-r">Neoantigen</span>
+      </div>
+    </div>
+
+    <!-- Card 5: De novo protein AI design (Research Topic) -->
+    <div class="sc-card" style="border:1.5px dashed #a855f7;background:#fdfaff;">
+      <div class="sc-hd" style="background:#fdf4ff;">
+        <div class="sc-ico" style="background:#fae8ff;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/><line x1="2" y1="12" x2="22" y2="12"/></svg></div>
+        <div style="flex:1;min-width:0;">
+          <div class="sc-name" style="white-space:normal;word-break:break-word;">De Novo Protein Drug Design</div>
+          <div class="sc-en" style="white-space:normal;word-break:break-word;">De Novo Protein Drug Design</div>
+        </div>
+        <span style="font-size:9px;font-weight:800;color:#7e22ce;background:#fae8ff;border:1px solid #a855f7;border-radius:8px;padding:2px 7px;white-space:nowrap;flex-shrink:0;margin-left:auto;">Research Topic</span>
+      </div>
+      <div class="sc-body">
+        <ul class="sc-pts">
+          <li>RFdiffusion · ProteinMPNN · AlphaFold2 synergistic generation</li>
+          <li>Independent of existing scaffolds, exploring novel binding sequence spaces</li>
+          <li>De novo design + structure prediction validation + developability pre-assessment</li>
+        </ul>
+        <span class="sc-tag" style="background:#fae8ff;color:#7e22ce;">De Novo</span>
+        <span class="sc-tag" style="background:#fae8ff;color:#7e22ce;">RFdiffusion</span>
+        <span class="sc-tag" style="background:#fef3c7;color:#92400e;">Research · Collaborative Exploration</span>
+      </div>
+    </div>
+
+    <!-- Card 6: TCR-restricted epitope immunopotentiation (research) -->
+    <div class="sc-card" style="border:1.5px dashed var(--t5);background:#fafffe;">
+      <div class="sc-hd" style="background:var(--t0);">
+        <div class="sc-ico" style="background:var(--t1);"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div>
+        <div style="flex:1;min-width:0;">
+          <div class="sc-name" style="white-space:normal;word-break:break-word;">TCR-Restricted Epitope Immunopotentiation</div>
+          <div class="sc-en" style="white-space:normal;word-break:break-word;">TCR-Restricted Epitope Immunopotentiation</div>
+        </div>
+        <span style="font-size:9px;font-weight:800;color:var(--t7);background:var(--t1);border:1px solid var(--t5);border-radius:8px;padding:2px 7px;white-space:nowrap;flex-shrink:0;margin-left:auto;">Research Topic</span>
+      </div>
+      <div class="sc-body">
+        <ul class="sc-pts">
+          <li>Binding energy optimization of TCR recognizing pMHC epitopes</li>
+          <li>Enhancing T-cell immune response, multi-HLA coverage strategy</li>
+          <li>pMHC-TCR interface AI analysis and mutation design</li>
+        </ul>
+        <span class="sc-tag tag-t">TCR-pMHC</span>
+        <span class="sc-tag tag-t">Immune Enhancement</span>
+        <span class="sc-tag" style="background:#fef3c7;color:#92400e;">Research · Collaborative Exploration</span>
+      </div>
+    </div>
+
+  </div>
+</div>
+<div class="div"></div>
+
+<!-- ════════════════════════════════════════
+     S3 · 6 Proprietary Databases + 25+ AI Tools
+════════════════════════════════════════ -->
+<div id="s3" class="pg pg-wh">
+  <div class="lbl">03 · Core Assets</div>
+  <h2 style="margin-bottom:6px;">6 Proprietary Databases + <em>25+ AI Tools</em></h2>
+  <p style="font-size:12.5px;color:var(--g7);margin-bottom:16px;">
+    This is an asset portfolio that other AI platforms and CROs cannot replicate—not a simple integration of public tools, but clinically validated proprietary databases and synergistic AI analysis capabilities.
+  </p>
+
+  <!-- 6 Databases -->
+  <div class="db6" style="margin-bottom:18px;">
+    <div class="db-card c-t">
+      <div class="db-n c-t">1,142 <span class="qual-badge">Premium</span></div>
+      <span class="db-label">Clinical Antibody Sequence Database</span>
+      <div class="db-desc">Covers VH/VL, VHH, and bispecific formats, classified benchmarking, with clinical status annotations</div>
+    </div>
+    <div class="db-card c-r">
+      <div class="db-n c-r">138 <span class="rare-badge">Rare</span></div>
+      <span class="db-label">ADA Immunogenicity Record Database</span>
+      <div class="db-desc">Curated clinical ADA events, the only proprietary reference baseline for anti-drug antibody risk judgment</div>
+    </div>
+    <div class="db-card c-b">
+      <div class="db-n c-b">100+ <span style="font-size:16px;vertical-align:middle;">🔥</span></div>
+      <span class="db-label">ADC Clinical Project Database</span>
+      <div class="db-desc">Full coverage of Linkers, Payloads, DARs, and targets, supporting rational ADC format selection</div>
+    </div>
+    <div class="db-card c-o">
+      <div class="db-n c-o">134+</div>
+      <span class="db-label">Bispecific Molecule Database</span>
+      <div class="db-desc">Clinical bispecific formats · 84 validated Linkers · 78 IgG-like structural models</div>
+    </div>
+    <div class="db-card c-p">
+      <div class="db-n c-p">237 <span class="comp-badge">Comprehensive</span></div>
+      <span class="db-label">CAR Component Database</span>
+      <div class="db-desc">Systematic classification of 12 component categories, supporting CAR-T / NK / Macrophage tri-modality design</div>
+    </div>
+    <div class="db-card c-g">
+      <div class="db-n c-g">100+</div>
+      <span class="db-label">IEDB Validated Vaccine Epitopes</span>
+      <div class="db-desc">27 HLA-DR coverage, MHC-I/II dual screening, supported by clinical tumor neoantigen cases</div>
+    </div>
+  </div>
+
+  <!-- AI Tools by category -->
+  <h3 style="font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:var(--t7);margin-bottom:10px;font-weight:800;">
+    ▸ AI Tool Matrix (25+ Tools · 5 In-House Modules, 6 Categories)<span style="font-size:9px;background:var(--t1);color:var(--t7);border:1px solid var(--t4);border-radius:6px;padding:1px 6px;margin-left:6px;font-weight:700;letter-spacing:0;text-transform:none;">★ In-House Module</span>
+  </h3>
+  <div class="tool-cats">
+    <div class="tool-cat">
+      <div class="tc-head">Structure Prediction · Molecular Docking</div>
+      <div class="tc-tags">
+        <span class="tc-tag">ABodyBuilder2</span>
+        <span class="tc-tag">AlphaFold2</span>
+        <span class="tc-tag">ANARCI / AbNum</span>
+        <span class="tc-tag">HADDOCK3</span>
+      </div>
+    </div>
+    <div class="tool-cat">
+      <div class="tc-head">Energy Calculation · Affinity</div>
+      <div class="tc-tags">
+        <span class="tc-tag">EvoEF2</span>
+        <span class="tc-tag">PRODIGY</span>
+        <span class="tc-tag">FoldX</span>
+        <span class="tc-tag">ThermoMPNN</span>
+        <span class="tc-tag">AntiFold</span>
+        <span class="tc-tag">ESM-IF1</span>
+        <span class="tc-tag">MM/GBSA</span>
+        <span class="tc-tag">OpenMM</span>
+      </div>
+    </div>
+    <div class="tool-cat">
+      <div class="tc-head">CMC · Developability</div>
+      <div class="tc-tags">
+        <span class="tc-tag ih">AbEvaluator</span>
+        <span class="tc-tag">TAP</span>
+        <span class="tc-tag">AbLang</span>
+        <span class="tc-tag">SAP / PSH</span>
+        <span class="tc-tag">pI · GRAVY · CDR Liability</span>
+      </div>
+    </div>
+    <div class="tool-cat">
+      <div class="tc-head">Immunogenicity Assessment <span style="font-size:9px;color:var(--t6);font-weight:800;">★ In-House</span></div>
+      <div class="tc-tags">
+        <span class="tc-tag">IEDB API</span>
+        <span class="tc-tag ih">MHC-II Analyzer</span>
+        <span class="tc-tag ih">ADA Risk Scorer</span>
+        <span class="tc-tag ih">Surface Immunogenicity Detection</span>
+      </div>
+    </div>
+    <div class="tool-cat">
+      <div class="tc-head">Vaccine Epitope Design <span style="font-size:9px;color:var(--t6);font-weight:800;">★ In-House</span></div>
+      <div class="tc-tags">
+        <span class="tc-tag ih">Multi-Epitope Assembler</span>
+        <span class="tc-tag ih">Neoantigen Scanner</span>
+        <span class="tc-tag">MHCflurry 2.0</span>
+        <span class="tc-tag ih">Heteroclitic Designer</span>
+        <span class="tc-tag ih">Codon Optimizer</span>
+        <span class="tc-tag ih">Epitope Prioritization Scoring</span>
+      </div>
+    </div>
+    <div class="tool-cat">
+      <div class="tc-head">CDR Design · De Novo Generation</div>
+      <div class="tc-tags">
+        <span class="tc-tag">ProteinMPNN</span>
+        <span class="tc-tag">ESM-2</span>
+        <span class="tc-tag" style="color:var(--g5);border-style:dashed;">RFdiffusion</span>
+        <span class="tc-tag" style="color:var(--g5);border-style:dashed;">AfDesign</span>
+        <span class="tc-tag" style="color:var(--g5);border-style:dashed;">BindCraft</span>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="div"></div>
+
+<!-- ════════════════════════════════════════
+     S4 · 9 Complete Cases
+════════════════════════════════════════ -->
+<div id="s4" class="pg pg-g1">
+  <div class="lbl">04 · Real-World Cases</div>
+  <h2 style="margin-bottom:6px;">9 Complete Cases — <em>Covering All Service Types</em></h2>
+  <p style="font-size:12.5px;color:var(--g7);margin-bottom:16px;">
+    Includes published methodological cases and several anonymized client projects. Reports available upon request (under NDA).
+  </p>
+
+  <div class="cases9">
+
+    <!-- 1 -->
+    <div class="case-card">
+      <span class="case-badge cb-demo">Case Demo</span>
+      <div class="case-hd">
+        <span class="case-type ct-ab">Humanization</span>
+        <div class="case-title">muMAb4D5 → Herceptin Humanization</div>
+      </div>
+      <div class="case-body">
+        <div class="case-result">4 Back-mutations · 15/15 CMC ✓</div>
+        <div class="case-detail">Systematic re-humanization using AbEngineCore V4.5.1 — 4 back-mutations, 100% CDR retention.</div>
+        <div class="case-impact">Avoid wrong frameworks entering synthesis, saving 2–4 weeks of rework and re-commissioning costs</div>
+      </div>
+    </div>
+
+    <!-- 2 -->
+    <div class="case-card">
+      <span class="case-badge cb-demo">Case Demo</span>
+      <div class="case-hd">
+        <span class="case-type ct-ab">CMC Assessment</span>
+        <div class="case-title">muMAb4D5 CMC Optimization</div>
+      </div>
+      <div class="case-body">
+        <div class="case-result">All 15 Parameters Passed · AbRef-458</div>
+        <div class="case-detail">15-parameter evaluation benchmarked against AbRef-458 — all metrics passed.</div>
+        <div class="case-impact">Pre-clinically confirm candidate developability, reducing Phase I immunogenicity risks</div>
+      </div>
+    </div>
+
+    <!-- 3 -->
+    <div class="case-card">
+      <span class="case-badge cb-demo">Case Demo</span>
+      <div class="case-hd">
+        <span class="case-type ct-ab">VH → VHH</span>
+        <div class="case-title">muMAb4D5 VH → Humanized VHH Nanobody</div>
+      </div>
+      <div class="case-body">
+        <div class="case-result">HER2 Affinity Retained · VGRW_SR_R2</div>
+        <div class="case-detail">HER2-targeting nanobody engineered from muMAb4D5 VH — 100% CDR retention, SASA-guided surface reshaping.</div>
+        <div class="case-impact">Structure and function combined: affinity retained + thermal stability improved, directly advancing pre-IND optimization</div>
+      </div>
+    </div>
+
+    <!-- 4 -->
+    <div class="case-card">
+      <span class="case-badge cb-demo">Case Demo</span>
+      <div class="case-hd">
+        <span class="case-type ct-ab">Affinity Maturation</span>
+        <div class="case-title">HER2 VHH Affinity Maturation</div>
+      </div>
+      <div class="case-body">
+        <div class="case-result">Exhaustive interface scanning · 247 mutations</div>
+        <div class="case-detail">Binding energy improved −3.32 kcal/mol via epistatic double mutant G49A+F112L.</div>
+        <div class="case-impact">Computational pre-screening replaces random mutation library screening, saving 60–80% in synthesis and expression costs</div>
+      </div>
+    </div>
+
+    <!-- 5 -->
+    <div class="case-card">
+      <span class="case-badge cb-demo">Case Demo</span>
+      <div class="case-hd">
+        <span class="case-type ct-ab">CDR Redesign</span>
+        <div class="case-title">Structure-Guided CDR Redesign</div>
+      </div>
+      <div class="case-body">
+        <div class="case-result">De novo CDR2/CDR3 sequence reconstruction</div>
+        <div class="case-detail">De novo sequence reconstruction + re-maturation to recover 3.75 nM affinity.</div>
+        <div class="case-impact">87 diverse candidate sequences, avoiding sequence diversity bottlenecks and patent infringement</div>
+      </div>
+    </div>
+
+    <!-- 6 -->
+    <div class="case-card">
+      <span class="case-badge cb-demo">Case Demo</span>
+      <div class="case-hd">
+        <span class="case-type ct-ab">Bispecific Engineering</span>
+        <div class="case-title">Bispecific VHH Expression Optimization</div>
+      </div>
+      <div class="case-body">
+        <div class="case-result">Expression Optimization · Multivalent Format</div>
+        <div class="case-detail">pI engineering with linker tuning delivered stronger cross-variant expression profile.</div>
+        <div class="case-impact">Rapid response to viral mutations through modular nanobody assembly and expression tuning</div>
+      </div>
+    </div>
+
+    <!-- 7 -->
+    <div class="case-card">
+      <span class="case-badge cb-demo">Case Demo</span>
+      <div class="case-hd">
+        <span class="case-type ct-ab">Cell Therapy Design</span>
+        <div class="case-title">Anti-CIDRα1 CAR-Macrophage Design</div>
+      </div>
+      <div class="case-body">
+        <div class="case-result">High-Parasitemia P. falciparum Malaria</div>
+        <div class="case-detail">Dual-binder CAR-M architecture for malaria antigen targeting and functional activation.</div>
+        <div class="case-impact">Novel CAR-M modality for infectious diseases, expanding beyond traditional oncology applications</div>
+      </div>
+    </div>
+
+    <!-- 8 -->
+    <div class="case-card">
+      <span class="case-badge cb-clt">Client Project</span>
+      <div class="case-hd">
+        <span class="case-type ct-ab">Hapten VAM</span>
+        <div class="case-title">Fentanyl Hapten Virtual Affinity Maturation</div>
+      </div>
+      <div class="case-body">
+        <div class="case-result">ΔΔG Consensus −5.53 kcal/mol</div>
+        <div class="case-detail">Scenario D optimization — achieved −5.53 kcal/mol improvement in binding energy.</div>
+        <div class="case-impact">Identified a synergistic pair, saving 60–80% in synthesis and expression costs</div>
+      </div>
+    </div>
+
+    <!-- 9 -->
+    <div class="case-card">
+      <span class="case-badge cb-clt">Client Project</span>
+      <div class="case-hd">
+        <span class="case-type ct-clt">Epitope Analysis</span>
+        <div class="case-title">PD-L1 Dual-Clone Epitope Mapping</div>
+      </div>
+      <div class="case-body">
+        <div class="case-result">Lateral (non-blocking) vs. frontal (blocking)</div>
+        <div class="case-detail">Classification of blocking vs. non-blocking clones via structural modeling.</div>
+        <div class="case-impact">Exposed shortcomings 3–6 months early, completing fixes before IND, avoiding passive pre-clinical elimination</div>
+      </div>
+    </div>
+
+  </div>
+
+  <p style="font-size:11px;color:var(--g5);margin-top:12px;text-align:center;font-style:italic;">
+    Full reports available upon request under NDA · Client Project data has been anonymized
+  </p>
+</div>
+<div class="div"></div>
+
+<!-- ════════════════════════════════════════
+     S5 · Collaboration Process + CTA
+════════════════════════════════════════ -->
+<div id="s5" class="pg pg-cta">
+  <div class="lbl">05 · Collaboration Model</div>
+  <h2 style="margin-bottom:6px;">Starting with <em>One Email</em></h2>
+  <p style="font-size:13px;color:var(--g7);margin-bottom:16px;">
+    No formal documents required upfront. Let's discuss the project background first, and we will determine the scope of analysis. <strong style="color:var(--t7);">All projects sign an NDA before starting</strong>—your sequences, targets, and data are legally protected and kept strictly confidential, never disclosed to third parties, and never used for training or public release.
+  </p>
+
+  <!-- Two service modes -->
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:18px;">
+    <div style="background:#fff;border-radius:12px;padding:14px 16px;border:1.5px solid var(--t3);border-top:3px solid var(--t6);">
+      <div style="font-size:13px;font-weight:900;color:var(--g9);margin-bottom:6px;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;margin-right:4px;margin-top:-2px;"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg> Project-Based Service</div>
+      <ul style="list-style:none;padding:0;margin:0;">
+        <li style="font-size:12px;color:var(--g7);padding:3px 0 3px 12px;position:relative;"><span style="position:absolute;left:2px;color:var(--t6);font-weight:900;">·</span>Single commission, clear scope and deliverables</li>
+        <li style="font-size:12px;color:var(--g7);padding:3px 0 3px 12px;position:relative;"><span style="position:absolute;left:2px;color:var(--t6);font-weight:900;">·</span>3–5 business days Expert-reviewed report</li>
+        <li style="font-size:12px;color:var(--g7);padding:3px 0 3px 12px;position:relative;"><span style="position:absolute;left:2px;color:var(--t6);font-weight:900;">·</span>NDA protection · Milestone billing</li>
+        <li style="font-size:12px;color:var(--g7);padding:3px 0 3px 12px;position:relative;"><span style="position:absolute;left:2px;color:var(--t6);font-weight:900;">·</span>Balance waived if objectives are not met</li>
+      </ul>
+    </div>
+    <div style="background:#fff;border-radius:12px;padding:14px 16px;border:1.5px solid var(--t3);border-top:3px solid var(--t5);">
+      <div style="font-size:13px;font-weight:900;color:var(--g9);margin-bottom:6px;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;margin-right:4px;margin-top:-2px;"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg> Resident AI Consultant</div>
+      <ul style="list-style:none;padding:0;margin:0;">
+        <li style="font-size:12px;color:var(--g7);padding:3px 0 3px 12px;position:relative;"><span style="position:absolute;left:2px;color:var(--t6);font-weight:900;">·</span>Monthly / quarterly retainer, continuous decision support</li>
+        <li style="font-size:12px;color:var(--g7);padding:3px 0 3px 12px;position:relative;"><span style="position:absolute;left:2px;color:var(--t6);font-weight:900;">·</span>Participate in R&D meetings, real-time AI analysis response</li>
+        <li style="font-size:12px;color:var(--g7);padding:3px 0 3px 12px;position:relative;"><span style="position:absolute;left:2px;color:var(--t6);font-weight:900;">·</span>Multi-project parallel support, flexible allocation</li>
+        <li style="font-size:12px;color:var(--g7);padding:3px 0 3px 12px;position:relative;"><span style="position:absolute;left:2px;color:var(--t6);font-weight:900;">·</span>Suitable for Biotech teams with continuous R&D pipelines</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 5-step process with NDA -->
+  <div class="proc5">
+    <div class="proc5-step">
+      <div class="p5-ico"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v10z"></path></svg></div>
+      <div class="p5-t">Free Initial Assessment</div>
+      <div class="p5-d">Explain the project via email, feedback same or next day</div>
+    </div>
+    <div class="proc5-step">
+      <div class="p5-ico"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg></div>
+      <div class="p5-t">Sign NDA</div>
+      <div class="p5-d">Sequences, targets, and data are legally protected, not leaked, not used for training</div>
+    </div>
+    <div class="proc5-step">
+      <div class="p5-ico"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path><rect x="8" y="2" width="8" height="4" rx="1" ry="1"></rect></svg></div>
+      <div class="p5-t">Confirm Scope</div>
+      <div class="p5-d">Analysis format, tool selection, deliverable agreement</div>
+    </div>
+    <div class="proc5-step">
+      <div class="p5-ico"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 7A3 3 0 0 0 8 7v8a3 3 0 0 0 6 0V7z"/><path d="M8 11h6"/><path d="M18 21H6"/><path d="M15 21v-4a4 4 0 0 0-4-4H8"/></svg></div>
+      <div class="p5-t">AI + Expert Review</div>
+      <div class="p5-d">25+ Tools running, Expert full-process review of the report</div>
+    </div>
+    <div class="proc5-step">
+      <div class="p5-ico"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg></div>
+      <div class="p5-t">3-5 Days Delivery</div>
+      <div class="p5-d">Full report + recommendations · Balance waived if objectives are not met</div>
+    </div>
+  </div>
+
+  <div class="cc3">
+    <div class="cc pri">
+      <div class="cc-ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v10z"></path></svg></div>
+      <div class="cc-lbl">Preferred · Quick Response</div>
+      <div class="cc-val">contact@insynbio.com</div>
+      <div class="cc-hint">Email us with your inquiry</div>
+    </div>
+    <div class="cc">
+      <div class="cc-ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg></div>
+      <div class="cc-lbl">Formal Project / NDA</div>
+      <div class="cc-val">contact@insynbio.com</div>
+      <div class="cc-hint">Formal commission or NDA signing</div>
+    </div>
+    <div class="cc">
+      <div class="cc-ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg></div>
+      <div class="cc-lbl">Online Platform</div>
+      <div class="cc-val">www.insynbio.com</div>
+      <div class="cc-hint">Service details · Online project submission</div>
+    </div>
+  </div>
+
+  <p style="font-size:10.5px;color:var(--g5);margin-top:18px;text-align:center;">
+    This document is based on computational analysis and public Clinical Data, does not constitute clinical decision advice, and is for R&D reference only. © 2026 InSynBio
+  </p>
+</div>
+
+</div><!-- /doc -->
+</body>
+</html>
