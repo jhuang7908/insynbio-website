@@ -74,36 +74,46 @@
     }
     html, body { max-width: 100%; overflow-x: hidden; }
 
-    /* ===== PAGE TAB NAV ===== */
-    .page-tabs { background: #fff; border-bottom: 1px solid var(--border); position: sticky; top: 72px; z-index: 200; display: flex; gap: 0; overflow-x: auto; -webkit-overflow-scrolling: touch; padding: 0 32px; }
-    .page-tabs a { display: block; padding: 14px 20px; font-size: 14px; font-weight: 500; color: var(--text-muted); text-decoration: none; border-bottom: 2px solid transparent; white-space: nowrap; transition: all 0.2s; }
-    .page-tabs a:hover { color: var(--primary); }
-    .page-tabs a.active { color: var(--primary); border-bottom-color: var(--primary); font-weight: 600; }
-    @media (max-width: 768px) { .page-tabs { padding: 0 16px; top: 64px; } .page-tabs a { padding: 12px 14px; font-size: 13px; } }
-
-    /* ===== HERO INTRO ===== */
-    .page-intro { background: linear-gradient(135deg, #e6faf7 0%, #d4f3ed 50%, #eaf7f3 100%); border-bottom: 1px solid rgba(13,148,136,0.15); padding: 40px 40px 32px; }
-    .breadcrumb { font-size: 13px; color: #6b7280; margin-bottom: 14px; }
-    .breadcrumb a { color: #0d9488; text-decoration: none; font-weight: 500; }
-    .breadcrumb a:hover { text-decoration: underline; }
-    .page-intro p { font-size: 16px; color: #1f5c55; line-height: 1.7; max-width: 800px; margin-bottom: 20px; }
-    .page-intro p strong { color: #0d4a43; }
-    .intro-btns { display: flex; gap: 12px; flex-wrap: wrap; }
-    .btn-primary { display: inline-flex; align-items: center; gap: 6px; background: #0d9488; color: #fff; padding: 10px 20px; border-radius: 8px; font-size: 14px; font-weight: 600; text-decoration: none; transition: background 0.2s; }
-    .btn-primary:hover { background: #0f766e; }
-    .btn-outline { display: inline-flex; align-items: center; gap: 6px; background: rgba(255,255,255,0.8); color: #0d9488; border: 1.5px solid #0d9488; padding: 10px 20px; border-radius: 8px; font-size: 14px; font-weight: 600; text-decoration: none; transition: all 0.2s; }
-    .btn-outline:hover { background: #fff; }
+    /* ===== SIDEBAR LAYOUT ===== */
+    .page-wrap { display: flex; min-height: calc(100vh - 72px); max-width: 1400px; margin: 0 auto; }
+    .sidebar { width: 260px; flex-shrink: 0; background: var(--bg); border-right: 1px solid rgba(0,0,0,0.05); padding: 40px 16px; position: sticky; top: 72px; height: calc(100vh - 72px); overflow-y: auto; }
+    .sidebar h3 { font-size: 11px; font-weight: 700; color: var(--text-muted); margin: 0 16px 16px; text-transform: uppercase; letter-spacing: 1.5px; }
+    .sidebar nav a { display: flex; align-items: center; padding: 11px 16px; color: var(--text-muted); text-decoration: none; font-size: 14px; transition: all 0.2s; border-radius: 8px; margin-bottom: 4px; font-weight: 500; }
+    .sidebar nav a:hover { background: rgba(13,148,136,0.06); color: var(--primary); }
+    .sidebar nav a.active { background: rgba(13,148,136,0.1); color: var(--primary-dark); font-weight: 600; }
+    .nav-icon { width: 17px; height: 17px; margin-right: 11px; opacity: 0.75; flex-shrink: 0; }
 
     /* ===== MAIN CONTENT ===== */
-    .page-content { max-width: 1100px; margin: 0 auto; padding: 48px 40px 100px; }
-    @media (max-width: 768px) { .page-content { padding: 32px 20px 60px; } .page-intro { padding: 28px 20px 24px; } }
+    .main { flex: 1; padding: 56px 60px 100px; max-width: 960px; min-width: 0; }
+    @media (max-width: 900px) {
+      .page-wrap { flex-direction: column; }
+      .sidebar { width: 100%; height: auto; position: relative; border-right: none; border-bottom: 1px solid var(--border); padding: 16px; top: 0; }
+      .sidebar h3 { display: inline; margin: 0 8px 0 0; }
+      .sidebar nav { display: flex; flex-wrap: wrap; gap: 4px; }
+      .sidebar nav a { padding: 7px 12px; border: 1px solid var(--border); font-size: 13px; margin-bottom: 0; }
+      .main { padding: 32px 20px 60px; }
+    }
 
-    h1 { font-family: 'Cormorant Garamond', serif; font-size: 38px; font-weight: 700; color: #0d4a43; margin: 0 0 12px; letter-spacing: -0.02em; line-height: 1.15; }
-    h2 { font-family: 'Cormorant Garamond', serif; font-size: 30px; font-weight: 600; color: #111827; margin: 56px 0 16px; letter-spacing: -0.01em; display: flex; align-items: center; gap: 10px; }
-    h2 .icon { width: 28px; height: 28px; background: rgba(13,148,136,0.1); border-radius: 8px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
-    h3 { font-size: 18px; font-weight: 600; color: #111827; margin: 28px 0 12px; }
-    p { margin: 0 0 16px; color: var(--text-muted); line-height: 1.7; }
-    p strong { color: var(--text); }
+    /* ===== HERO INTRO BLOCK ===== */
+    .mission-block { background: linear-gradient(135deg, #f0fdfa 0%, #fff 100%); border: 1px solid rgba(13,148,136,0.12); border-radius: 16px; padding: 32px; margin-bottom: 40px; box-shadow: 0 4px 20px rgba(13,148,136,0.05); }
+    .mission-block p { margin: 0; font-size: 16px; line-height: 1.65; color: #111827; }
+    .mission-block p + p { margin-top: 14px; }
+    .breadcrumb { font-size: 13px; color: #6b7280; margin-bottom: 28px; }
+    .breadcrumb a { color: var(--text-muted); text-decoration: none; }
+    .breadcrumb a:hover { color: var(--primary); }
+    .breadcrumb span { margin: 0 6px; }
+    .btn-primary { display: inline-flex; align-items: center; gap: 6px; background: #0d9488; color: #fff; padding: 10px 20px; border-radius: 8px; font-size: 14px; font-weight: 600; text-decoration: none; transition: all 0.2s; box-shadow: 0 4px 12px rgba(13,148,136,0.25); }
+    .btn-primary:hover { background: #0f766e; transform: translateY(-1px); }
+    .btn-outline { display: inline-flex; align-items: center; gap: 6px; background: #fff; color: #0d9488; border: 1.5px solid #0d9488; padding: 10px 20px; border-radius: 8px; font-size: 14px; font-weight: 600; text-decoration: none; transition: all 0.2s; }
+    .btn-outline:hover { background: rgba(13,148,136,0.05); transform: translateY(-1px); }
+
+    .main h1 { font-family: 'Cormorant Garamond', serif; font-size: 44px; font-weight: 700; color: #111827; margin: 0 0 16px; letter-spacing: -0.03em; line-height: 1.1; }
+    .main h2 { font-family: 'Cormorant Garamond', serif; font-size: 30px; font-weight: 600; color: #111827; margin: 56px 0 20px; padding-top: 28px; border-top: 1px solid rgba(0,0,0,0.05); letter-spacing: -0.01em; display: flex; align-items: center; gap: 10px; }
+    .main h2:first-of-type { margin-top: 0; padding-top: 0; border-top: none; }
+    .main h2 .icon { width: 36px; height: 36px; background: rgba(13,148,136,0.1); border-radius: 10px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; color: var(--primary); }
+    .main h3 { font-size: 17px; font-weight: 600; color: #111827; margin: 24px 0 10px; }
+    .main p { margin: 0 0 18px; color: #374151; font-size: 15px; line-height: 1.65; }
+    .main p strong { color: var(--text); }
 
     /* ===== KPI CARDS ===== */
     .feature-cards { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; margin: 24px 0 40px; }
@@ -280,34 +290,56 @@
   </nav>
 </header>
 
-<!-- ── PAGE TAB NAV ── -->
-<nav class="page-tabs" id="page-tabs">
-  <a href="#overview" class="active" onclick="setTab(this)">Platform Overview</a>
-  <a href="#research" onclick="setTab(this)">Research Summary</a>
-  <a href="#methods" onclick="setTab(this)">Prediction Methods</a>
-  <a href="#ada-db" onclick="setTab(this)">ADA Database</a>
-  <a href="#submit" onclick="setTab(this)">Submit Inquiry</a>
-</nav>
+<div class="page-wrap">
 
-<!-- ── HERO INTRO ── -->
-<div class="page-intro">
-  <div class="breadcrumb">
-    <a href="index.html">Home</a> / <a href="InSynBio_Antibody_Developability_Assessment_Page.html">AI Drug Design</a> / Immunogenicity Research
-  </div>
-  <p><strong>Clinically calibrated immunogenicity assessment:</strong> Our platform uses 138 real-world ADA clinical records as a reference baseline, providing richer context than purely computational scoring — helping teams identify high-risk epitopes early and develop mitigation strategies.</p>
-  <p style="margin-bottom:20px;">Supports evaluation of any therapeutic antibody sequence, including humanized candidates, VHH nanobodies, and bispecific formats. Results benchmarked against 138 clinical antibodies' historical ADA rates; typically delivered within 3–5 business days.</p>
-  <div class="intro-btns">
-    <a href="ada_database.html" class="btn-primary">Browse ADA Reference Database</a>
-    <a href="#submit" class="btn-outline">Submit Inquiry</a>
-  </div>
-</div>
+<!-- ── SIDEBAR ── -->
+<aside class="sidebar">
+  <h3>Immunogenicity</h3>
+  <nav>
+    <a href="#platform" class="nav-link active">
+      <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+      Platform Overview
+    </a>
+    <a href="#study" class="nav-link">
+      <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+      Research Summary
+    </a>
+    <a href="#prediction" class="nav-link">
+      <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+      Prediction Methods
+    </a>
+    <a href="#database" class="nav-link">
+      <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
+      ADA Database
+    </a>
+    <a href="#submit" class="nav-link">
+      <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+      Submit Inquiry
+    </a>
+  </nav>
+</aside>
 
 <!-- ── MAIN CONTENT ── -->
-<div class="page-content">
+<main class="main">
 
-  <!-- ── OVERVIEW ── -->
-  <span id="overview"></span>
-  <h1>Immunogenicity Prediction &amp; ADA Research</h1>
+  <div class="breadcrumb">
+    <a href="index.html">Home</a><span>/</span><a href="InSynBio_Antibody_Developability_Assessment_Page.html">AI Drug Design</a><span>/</span><span>Immunogenicity Research</span>
+  </div>
+
+  <div class="mission-block">
+    <p><strong>Clinically calibrated immunogenicity assessment:</strong> Our platform uses 138 real-world ADA clinical records as a reference baseline, providing richer context than purely computational scoring — helping teams identify high-risk epitopes early and develop mitigation strategies.</p>
+    <p>Supports evaluation of any therapeutic antibody sequence, including humanized candidates, VHH nanobodies, and bispecific formats. Results benchmarked against 138 clinical antibodies' historical ADA rates; typically delivered within 3–5 business days.</p>
+    <div style="margin-top:20px;display:flex;gap:12px;flex-wrap:wrap;">
+      <a href="ada_database.html" class="btn-primary">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
+        Browse ADA Reference Database
+      </a>
+      <a href="#submit" class="btn-outline">Submit Inquiry</a>
+    </div>
+  </div>
+
+  <!-- OVERVIEW -->
+  <h1 id="platform">Immunogenicity Prediction &amp; ADA Research</h1>
   <p style="font-size:17px;color:#374151;margin-bottom:28px;">Clinically benchmarked assessment of therapeutic antibody immunogenicity against real-world ADA data.</p>
 
   <div class="feature-cards">
@@ -329,7 +361,7 @@
   </div>
 
   <!-- ── RESEARCH SUMMARY ── -->
-  <span id="research"></span>
+  <span id="study"></span>
   <h2>
     <span class="icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0d9488" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></span>
     Research Summary
@@ -535,7 +567,7 @@
   </div>
 
   <!-- PREDICTION METHODS -->
-  <span id="methods"></span>
+  <span id="prediction"></span>
   <h2>
     <span class="icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0d9488" stroke-width="2"><path d="M9 3H5a2 2 0 0 0-2 2v4m6-6h10a2 2 0 0 1 2 2v4M9 3v18m0 0h10a2 2 0 0 0 2-2V9M9 21H5a2 2 0 0 0-2-2V9m0 0h18"/></svg></span>
     Prediction Methods
@@ -573,7 +605,7 @@
   </div>
 
   <!-- ADA DATABASE SECTION -->
-  <span id="ada-db"></span>
+  <span id="database"></span>
   <h2>
     <span class="icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0d9488" stroke-width="2"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg></span>
     ADA Reference Database
@@ -673,76 +705,36 @@
     See <a href="ada_database.html" style="color:var(--primary);font-weight:600;">ADA Clinical Database →</a>
   </div>
 
-</div><!-- end page-content -->
+  <footer style="margin-top:60px;padding-top:32px;border-top:1px solid var(--border);font-size:13px;color:#9ca3af;">
+    <p>© 2026 InSynBio · <a href="https://insynbio.com" style="color:var(--primary);">insynbio.com</a> · <a href="mailto:contact@insynbio.com" style="color:var(--primary);">contact@insynbio.com</a></p>
+  </footer>
 
-<!-- ── FOOTER ── -->
-<section class="footer-sitemap">
-  <div class="sitemap-grid">
-    <div class="sitemap-col">
-      <h4>Platform</h4>
-      <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="index.html#about">About Us</a></li>
-        <li><a href="InSynBio_OurTech.html">Our Technology</a></li>
-        <li><a href="index.html#case-studies">Case Studies</a></li>
-      </ul>
-    </div>
-    <div class="sitemap-col">
-      <h4>Antibody Services</h4>
-      <ul>
-        <li><a href="InSynBio_Antibody_Developability_Assessment_Page.html">Developability Assessment</a></li>
-        <li><a href="InSynBio_Bispecific_Antibody_Design_Page.html">Bispecific Engineering</a></li>
-        <li><a href="immunogenicity_study.html">Immunogenicity Research</a></li>
-        <li><a href="vaccine_design.html">Vaccine Design</a></li>
-      </ul>
-    </div>
-    <div class="sitemap-col">
-      <h4>Clinical Reference</h4>
-      <ul>
-        <li><a href="antibody-guide.html">Antibody Engineering Guide</a></li>
-        <li><a href="ada_database.html">ADA Database</a></li>
-        <li><a href="adc_database.html">ADC Database</a></li>
-        <li><a href="component-browser.html">CAR Component Library</a></li>
-      </ul>
-    </div>
-    <div class="sitemap-col">
-      <h4>Contact</h4>
-      <ul>
-        <li><a href="index.html#contact">Contact Us</a></li>
-        <li><a href="mailto:contact@insynbio.com">contact@insynbio.com</a></li>
-      </ul>
-    </div>
-  </div>
-</section>
-
-<div class="back-bar">
-  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
-  <a href="InSynBio_Antibody_Developability_Assessment_Page.html#immunogenicity">Back to Immunogenicity Assessment</a>
-  &nbsp;·&nbsp;
-  <a href="ada_database.html">ADA Reference Database</a>
-  &nbsp;·&nbsp;
-  <a href="index.html">InSynBio Home</a>
-</div>
-<div class="footer-copy">© 2026 InSynBio · insynbio.com · contact@insynbio.com</div>
+</main>
+</div><!-- end page-wrap -->
 
 <script>
-function setTab(el) {
-  document.querySelectorAll('.page-tabs a').forEach(a => a.classList.remove('active'));
-  el.classList.add('active');
-}
-// Highlight active tab on scroll
-const sections = ['overview','research','methods','ada-db','submit'];
-const tabs = document.querySelectorAll('.page-tabs a');
-window.addEventListener('scroll', function() {
-  let cur = 'overview';
-  sections.forEach(id => {
-    const el = document.getElementById(id);
-    if (el && el.getBoundingClientRect().top < 160) cur = id;
+  // Sidebar nav smooth scroll + active state
+  document.querySelectorAll('.nav-link').forEach(a => {
+    a.addEventListener('click', function(e) {
+      e.preventDefault();
+      const id = this.getAttribute('href').slice(1);
+      document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+      document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+      this.classList.add('active');
+    });
   });
-  tabs.forEach(t => {
-    t.classList.toggle('active', t.getAttribute('href') === '#' + cur);
-  });
-}, { passive: true });
+  // Scrollspy
+  const sections = ['platform','study','prediction','database','submit'];
+  window.addEventListener('scroll', function() {
+    let cur = 'platform';
+    sections.forEach(id => {
+      const el = document.getElementById(id);
+      if (el && el.getBoundingClientRect().top < 160) cur = id;
+    });
+    document.querySelectorAll('.nav-link').forEach(a => {
+      a.classList.toggle('active', a.getAttribute('href') === '#' + cur);
+    });
+  }, { passive: true });
 </script>
 </body>
 </html>
