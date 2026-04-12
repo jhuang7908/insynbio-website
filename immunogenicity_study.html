@@ -347,25 +347,14 @@
 
   <p>Our research reveals that immunogenicity risk in <strong>fully human (FH)</strong> and <strong>humanized (HU)</strong> antibodies is driven by fundamentally different mechanisms. We therefore established the <strong>ADA V2 Dual-Track Prediction Model</strong>, using separate evaluation parameters and weighting systems for each category.</p>
 
-  <h3>Figure 1 — ADA Incidence Distribution: All 138 / Humanized (HU) / Fully Human (FH)</h3>
-  <div class="chart-ph">
-    <div class="chart-icon">📊</div>
-    <div class="chart-title">ADA Rate Distribution</div>
-    <div>Histogram of ADA incidence across all 138 antibodies, stratified by HU / FH / chimeric</div>
+  <div style="margin:32px 0;text-align:center;">
+    <h3 style="margin-bottom:14px;">Figure 1 — ADA Incidence Distribution: All 138 / Humanized (HU) / Fully Human (FH)</h3>
+    <img src="images/ada_study/fig1_ada_distribution.png" alt="ADA Incidence Distribution" style="max-width:100%;width:1000px;height:auto;border-radius:12px;box-shadow:0 4px 20px rgba(0,0,0,0.08);">
   </div>
 
-  <h3>Figure 2 — ADA Distribution by Humanization Strategy, Assay Method, Dosing Route &amp; Fc Subclass</h3>
-  <div class="charts-row">
-    <div class="chart-ph">
-      <div class="chart-icon">📦</div>
-      <div class="chart-title">ADA Boxplots — By Category</div>
-      <div>Stratified boxplots by humanization strategy, assay generation, route, and IgG subclass</div>
-    </div>
-    <div class="chart-ph">
-      <div class="chart-icon">📈</div>
-      <div class="chart-title">Spearman Correlation Heatmap</div>
-      <div>Figure 3 — 31-feature Spearman ρ vs ADA rate: all features, FH, and HU subsets</div>
-    </div>
+  <div style="margin:32px 0;text-align:center;">
+    <h3 style="margin-bottom:14px;">Figure 2 — ADA Distribution by Humanization Strategy, Assay Method, Dosing Route &amp; Fc Subclass</h3>
+    <img src="images/ada_study/fig2_ada_boxplots.png" alt="ADA Distribution Boxplots" style="max-width:100%;width:1000px;height:auto;border-radius:12px;box-shadow:0 4px 20px rgba(0,0,0,0.08);">
   </div>
 
   <!-- FH TRACK -->
@@ -413,11 +402,13 @@
         <strong>ADA V2 Dual-Track Calibration (April 2026):</strong> FH-specific score corrected two weighting errors: ① Interface contact normalization ceiling raised 60 → 100 (FH mean ≈ 71; old standard compressed nearly all FH antibodies to I = 1.0, losing discriminatory power); ② VL germline deviation changed to <strong>(1 − VL_identity) × 0.20</strong> (old adjustment range was only ±0.004, near-zero contribution). After correction, FH composite score first reached statistical significance, positively correlated with clinical ADA (p = 0.024), matching the strongest single predictor.
       </div>
 
-      <h3 style="margin-top:28px;">Figure 4 — FH Antibodies: Interface Contacts, Germline Deviation, Hydrophobic Patches &amp; MHC-II Epitopes</h3>
-      <div class="chart-ph">
-        <div class="chart-icon">🔵</div>
-        <div class="chart-title">FH Scatter Analysis</div>
-        <div>4-panel scatter: each feature vs. ADA rate with Spearman ρ annotation</div>
+      <div style="margin:24px 0;text-align:center;">
+        <h3 style="margin-bottom:12px;">Figure 3 — 31-Feature Spearman Correlation Panorama vs ADA Incidence</h3>
+        <img src="images/ada_study/fig3_correlation_heatmap.png" alt="Spearman Correlation Heatmap" style="max-width:100%;width:1000px;height:auto;border-radius:12px;box-shadow:0 4px 20px rgba(0,0,0,0.08);">
+      </div>
+      <div style="margin:24px 0;text-align:center;">
+        <h3 style="margin-bottom:12px;">Figure 4 — FH Antibodies: Interface Contacts, Germline Deviation, Hydrophobic Patches &amp; MHC-II Epitopes</h3>
+        <img src="images/ada_study/fig4_scatter_key_features.png" alt="FH Scatter Analysis" style="max-width:100%;width:1000px;height:auto;border-radius:12px;box-shadow:0 4px 20px rgba(0,0,0,0.08);">
       </div>
 
       <p style="margin-top:16px;font-size:14px;"><strong>Key Conclusion:</strong> Fully human antibody immunogenicity directly reflects molecular design quality — reducing interface anomalies, controlling SHM extent, and minimizing hydrophobic patches are the three core paths to lower ADA risk. High-sensitivity assays (Tiered/ECL) more clearly reveal T-cell epitope contributions.</p>
@@ -464,11 +455,9 @@
         </div>
       </div>
 
-      <h3 style="margin-top:24px;">Figure 5 — HU Antibodies: Aggregation Motifs, Germline Identity, Instability &amp; TCIA Score</h3>
-      <div class="chart-ph">
-        <div class="chart-icon">🟢</div>
-        <div class="chart-title">HU Scatter Analysis</div>
-        <div>4-panel scatter for HU subset: each feature vs. ADA rate with Spearman ρ annotation</div>
+      <div style="margin:24px 0;text-align:center;">
+        <h3 style="margin-bottom:12px;">Figure 5 — HU Antibodies: Aggregation Motifs, Germline Identity, Instability &amp; TCIA Score</h3>
+        <img src="images/ada_study/fig5_hu_scatter.png" alt="HU Scatter Analysis" style="max-width:100%;width:1000px;height:auto;border-radius:12px;box-shadow:0 4px 20px rgba(0,0,0,0.08);">
       </div>
 
       <p style="margin-top:16px;font-size:14px;"><strong>Key Conclusion:</strong> Clinical ADA in humanized antibodies is suppressed by immunosuppressants and other management measures, masking true molecular-level risk. The InSynBio HU-specific system bypasses this interference by directly assessing "design quality" — whether Vernier Zone and Junction peptides generate strong T-cell signals after degradation is the core dimension for evaluating HU immunogenicity risk.</p>
@@ -486,29 +475,32 @@
   <div class="update-tag">April 2026 Data Validation</div>
   <p>Key improvement in this weight update: based on FH deep-scan results, interface contact density (I) weight raised from 20% → 35%, surface patch (P) weight raised from 25% → 30%, and a FH-specific Midpoint correction (0.32) introduced for balanced risk stratification. In the HU subset, apparent signals are suppressed by widespread clinical immunosuppressant use (ρ ≈ 0) — exactly validating the necessity of the dual-track approach.</p>
 
-  <h3>Figure 6 — ADA V2 Composite Score vs Clinical ADA: FH vs HU Comparison</h3>
-  <div class="charts-row">
-    <div class="chart-ph">
-      <div class="chart-icon">📉</div>
-      <div class="chart-title">Score Distribution</div>
-      <div>Figure 6a — ADA V2 risk score distribution by FH / HU / ALL groups</div>
-    </div>
-    <div class="chart-ph">
-      <div class="chart-icon">📈</div>
-      <div class="chart-title">ROC Curves</div>
-      <div>Figure 6b — ROC curves (FH AUC=0.690 / HU AUC=0.505)</div>
-    </div>
+  <div style="margin:24px 0;text-align:center;">
+    <h3 style="margin-bottom:12px;">Figure 6 — ADA V2 Composite Score vs Clinical ADA: FH vs HU Comparison</h3>
+    <img src="images/ada_study/fig7_ada_v2_composite.png" alt="ADA V2 Composite Score" style="max-width:100%;width:1000px;height:auto;border-radius:12px;box-shadow:0 4px 20px rgba(0,0,0,0.08);">
   </div>
-  <div class="charts-row">
-    <div class="chart-ph">
-      <div class="chart-icon">🟦</div>
-      <div class="chart-title">Confusion Matrices</div>
-      <div>Figure 6c — Confusion matrix (HIGH risk prediction vs clinical ADA &gt;10%) — ALL / FH / HU</div>
+
+  <div style="background:#fff;padding:24px;border-radius:12px;border:1px solid var(--border);box-shadow:0 2px 12px rgba(0,0,0,0.04);text-align:center;margin-bottom:20px;">
+    <img src="images/immuno/fig_benchmark_score_dist.png" alt="Score Distribution" style="width:100%;height:auto;display:block;border-radius:4px;">
+  </div>
+
+  <div style="background:#fff;padding:24px;border-radius:12px;border:1px solid var(--border);box-shadow:0 2px 12px rgba(0,0,0,0.04);text-align:center;margin-bottom:20px;">
+    <p style="font-size:15px;font-weight:700;color:#111827;margin:0 0 14px;">Figure 6c — Confusion Matrix (HIGH Risk Prediction vs Clinical ADA &gt;10%) — ALL / FH / HU</p>
+    <img src="images/immuno/fig_benchmark_confusion.png" alt="Confusion Matrices" style="width:100%;max-width:900px;height:auto;display:block;margin:0 auto;border-radius:4px;">
+  </div>
+
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:20px;">
+    <div style="background:#fff;padding:20px;border-radius:12px;border:1px solid var(--border);box-shadow:0 2px 12px rgba(0,0,0,0.04);text-align:center;">
+      <p style="font-size:14px;font-weight:700;color:#111827;margin:0 0 12px;">Figure 6b — ROC Curves (FH AUC=0.690 / HU AUC=0.505)</p>
+      <div style="height:320px;display:flex;align-items:center;justify-content:center;background:#fafafa;border-radius:6px;overflow:hidden;">
+        <img src="images/immuno/fig_benchmark_roc.png" alt="ROC Curves" style="max-width:100%;max-height:100%;object-fit:contain;display:block;">
+      </div>
     </div>
-    <div class="chart-ph">
-      <div class="chart-icon">🔴</div>
-      <div class="chart-title">Score vs ADA Scatter</div>
-      <div>Figure 6d — Scatter plot: ADA V2 composite score vs clinical ADA incidence</div>
+    <div style="background:#fff;padding:20px;border-radius:12px;border:1px solid var(--border);box-shadow:0 2px 12px rgba(0,0,0,0.04);text-align:center;">
+      <p style="font-size:14px;font-weight:700;color:#111827;margin:0 0 12px;">Figure 6d — Scatter: ADA V2 Composite Score vs Clinical ADA Incidence</p>
+      <div style="height:320px;display:flex;align-items:center;justify-content:center;background:#fafafa;border-radius:6px;overflow:hidden;">
+        <img src="images/immuno/fig_benchmark_scatter_fh_hu.png" alt="Score vs ADA Scatter" style="max-width:100%;max-height:100%;object-fit:contain;display:block;">
+      </div>
     </div>
   </div>
 
@@ -537,11 +529,9 @@
     <p style="margin:8px 0 0;">Regardless of FH or HU, <strong>aggregation motifs and hydrophobic patches</strong> maintain positive correlation in the full panel (ρ = +0.177, p = 0.045), providing shared immunological risk criteria for early CMC screening. Assay method stratification (Kruskal-Wallis p = 0.852) confirms this correlation is unaffected by assay generational bias.</p>
   </div>
 
-  <h3 style="margin-top:28px;">Figure 7 — CMC Developability Features vs ADA: Cross-format Association</h3>
-  <div class="chart-ph">
-    <div class="chart-icon">⚗️</div>
-    <div class="chart-title">CMC vs ADA</div>
-    <div>Aggregation motifs, deamidation sites, etc. vs ADA incidence across antibody formats</div>
+  <div style="margin:24px 0;text-align:center;">
+    <h3 style="margin-bottom:12px;">Figure 7 — CMC Developability Features vs ADA: Cross-format Association</h3>
+    <img src="images/ada_study/fig8_cmc_vs_ada.png" alt="CMC vs ADA" style="max-width:100%;width:1000px;height:auto;border-radius:12px;box-shadow:0 4px 20px rgba(0,0,0,0.08);">
   </div>
 
   <!-- PREDICTION METHODS -->
