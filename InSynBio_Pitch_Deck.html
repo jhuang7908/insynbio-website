@@ -284,6 +284,38 @@ body.mode-light .nav-dot.active { background: #0d9488 !important; }
 /* — Theme toggle — */
 body.mode-light #themeToggle { background: #f0faf7 !important; border-color: #b4d9d0 !important; color: #0d9488 !important; }
 
+/* — Cover slide light mode: dot-grid pattern + fix white text — */
+body.mode-light #s1 {
+  background:
+    radial-gradient(circle, rgba(13,148,136,0.13) 1.5px, transparent 1.5px),
+    #faf7f2 !important;
+  background-size: 26px 26px, 100% 100% !important;
+}
+body.mode-light #s1 canvas { opacity: 0.06 !important; }
+.cover-meta { margin-top:60px; font-size:18px; color:rgba(255,255,255,0.72); line-height:1.8; text-align:center; }
+.cover-meta strong { color:#fff; }
+body.mode-light .cover-meta { color: #374151; }
+body.mode-light .cover-meta strong { color: #1c3330 !important; }
+body.mode-light #s1 h1.hero-title { color: #1c3330 !important; }
+body.mode-light #s1 h1.hero-title em { color: #0d9488 !important; }
+body.mode-light #s1 .slide-subtitle { color: #374151 !important; }
+body.mode-light #s1 .slide-num { color: #9ca3af !important; }
+
+/* — Engineering pipeline light mode — */
+body.mode-light .eng-pipe-bar { background: #e0f3ee; border-color: #9dcec5; }
+body.mode-light .eng-pipe-num { color: #0d9488 !important; }
+body.mode-light .eng-pipe-label { color: #1c3330 !important; }
+body.mode-light .eng-pipe-arrow { color: #7ab8af !important; }
+body.mode-light .eng-pipe-final { background: #c4e5de !important; border-color: #0d9488 !important; }
+body.mode-light .eng-pipe-final .eng-pipe-label { color: #0a5c55 !important; font-weight:900; }
+
+/* — Card inline white text global fix — */
+body.mode-light .card strong { color: #1c3330 !important; }
+body.mode-light .card h4 { color: #1c3330 !important; }
+body.mode-light .card a { color: #0d9488 !important; }
+body.mode-light .slide h4 { color: #1c3330 !important; }
+body.mode-light .slide li::before { color: #0d9488 !important; }
+
 </style>
 </head>
 <body>
@@ -404,10 +436,10 @@ body.mode-light #themeToggle { background: #f0faf7 !important; border-color: #b4
     </p>
     
     
-    <div style="margin-top: 60px; font-size: 18px; color: rgba(255,255,255,0.7); line-height: 1.8; text-align:center;">
-      <div><strong style="color:#ffffff;">Presenter:</strong> [Name / Title]</div>
-      <div><strong style="color:#ffffff;">Date:</strong> [YYYY-MM-DD]</div>
-      <div><strong style="color:#ffffff;">Location:</strong> [Event / Online]</div>
+    <div class="cover-meta">
+      <div><strong>Presenter:</strong> Jing Huang, Ph.D.</div>
+      <div><strong>Date:</strong> 2026-04</div>
+      <div><strong>Field:</strong> AI-Powered Drug Design</div>
     </div>
   </div>
   <div class="slide-num">01 / 15</div>
@@ -423,7 +455,7 @@ body.mode-light #themeToggle { background: #f0faf7 !important; border-color: #b4
     <div class="card-grid g2" style="margin-bottom: 24px;">
       <div class="card card-accent card-teal">
         <h3 style="font-size:24px;">🎓 Academic Pedigree</h3>
-        <p style="font-size:18px;">Postdoctoral Research & Fellowships at elite US institutions.<br><br><strong style="color:#fff;">• Columbia University</strong><br><strong style="color:#fff;">• Rockefeller University</strong><br><strong style="color:#fff;">• Albert Einstein College of Medicine</strong><br>
+        <p style="font-size:18px;">Ph.D. and research experience across leading institutions:<br><br><strong style="color:#fff;">• Chinese Academy of Sciences (Ph.D.)</strong><br><strong style="color:#fff;">• Columbia University (Researcher)</strong><br><strong style="color:#fff;">• Rockefeller University (Researcher)</strong><br>
         </p>
       </div>
       <div class="card card-accent card-amber">
