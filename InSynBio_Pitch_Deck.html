@@ -143,6 +143,14 @@ body.mode-light .card p{color:#374151 !important;}
 .nav-dot{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,0.2);border:none;cursor:pointer;transition:all 0.3s;padding:0;}
 .nav-dot.active{background:#5eead4;transform:scale(1.4);}
 
+/* ── Engineering pipeline bar ── */
+.eng-pipe-bar { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); }
+.eng-pipe-item { flex: 1; text-align: center; }
+.eng-pipe-num { font-family:'Space Grotesk',sans-serif; font-size:20px; color:#5eead4; font-weight:800; margin-bottom:4px; }
+.eng-pipe-label { font-size:15px; font-weight:700; color:#fff; }
+.eng-pipe-arrow { color:rgba(255,255,255,0.2); font-size:18px; }
+.eng-pipe-final { flex:1.2; background:rgba(13,148,136,0.15); border:1px solid #0d9488; border-radius:8px; padding:12px 5px; }
+
 /* ── Dark mode legibility ── */
 .slide-subtitle { color: rgba(255,255,255,0.92) !important; font-weight: 500; text-shadow: 0 1px 8px rgba(0,0,0,0.25) !important; opacity: 1 !important; }
 .card p { color: rgba(255,255,255,0.9) !important; opacity: 1 !important; line-height: 1.6 !important; }
@@ -715,40 +723,40 @@ body.mode-light #themeToggle { background: #f0faf7 !important; border-color: #b4
     <h2 class="slide-title">Standardized <span>Engineering & SOP Matrix</span></h2>
     
     <!-- Top Section: 7-Step Linear Pipeline -->
-    <div style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; padding: 24px 20px; display: flex; justify-content: space-between; align-items: center; margin-bottom: 32px; gap: 8px;">
-      <div style="flex: 1; text-align: center;">
-        <div style="font-family:'Space Grotesk', sans-serif; font-size: 20px; color: #5eead4; font-weight:800; margin-bottom: 4px;">1</div>
-        <div style="font-size: 15px; font-weight: 700; color: #fff;">Seq Analysis</div>
+    <div class="eng-pipe-bar" style="border-radius: 12px; padding: 24px 20px; display: flex; justify-content: space-between; align-items: center; margin-bottom: 32px; gap: 8px;">
+      <div class="eng-pipe-item">
+        <div class="eng-pipe-num">1</div>
+        <div class="eng-pipe-label">Seq Analysis</div>
       </div>
-      <div style="color: rgba(255,255,255,0.15); font-size: 18px;">→</div>
-      <div style="flex: 1; text-align: center;">
-        <div style="font-family:'Space Grotesk', sans-serif; font-size: 20px; color: #5eead4; font-weight:800; margin-bottom: 4px;">2</div>
-        <div style="font-size: 15px; font-weight: 700; color: #fff;">Humanization</div>
+      <div class="eng-pipe-arrow">→</div>
+      <div class="eng-pipe-item">
+        <div class="eng-pipe-num">2</div>
+        <div class="eng-pipe-label">Humanization</div>
       </div>
-      <div style="color: rgba(255,255,255,0.15); font-size: 18px;">→</div>
-      <div style="flex: 1; text-align: center;">
-        <div style="font-family:'Space Grotesk', sans-serif; font-size: 20px; color: #5eead4; font-weight:800; margin-bottom: 4px;">3</div>
-        <div style="font-size: 15px; font-weight: 700; color: #fff;">Structure & Epi.</div>
+      <div class="eng-pipe-arrow">→</div>
+      <div class="eng-pipe-item">
+        <div class="eng-pipe-num">3</div>
+        <div class="eng-pipe-label">Structure & Epi.</div>
       </div>
-      <div style="color: rgba(255,255,255,0.15); font-size: 18px;">→</div>
-      <div style="flex: 1; text-align: center;">
-        <div style="font-family:'Space Grotesk', sans-serif; font-size: 20px; color: #5eead4; font-weight:800; margin-bottom: 4px;">4</div>
-        <div style="font-size: 15px; font-weight: 700; color: #fff;">Affinity VAM</div>
+      <div class="eng-pipe-arrow">→</div>
+      <div class="eng-pipe-item">
+        <div class="eng-pipe-num">4</div>
+        <div class="eng-pipe-label">Affinity VAM</div>
       </div>
-      <div style="color: rgba(255,255,255,0.15); font-size: 18px;">→</div>
-      <div style="flex: 1; text-align: center;">
-        <div style="font-family:'Space Grotesk', sans-serif; font-size: 20px; color: #5eead4; font-weight:800; margin-bottom: 4px;">5</div>
-        <div style="font-size: 15px; font-weight: 700; color: #fff;">CMC Check</div>
+      <div class="eng-pipe-arrow">→</div>
+      <div class="eng-pipe-item">
+        <div class="eng-pipe-num">5</div>
+        <div class="eng-pipe-label">CMC Check</div>
       </div>
-      <div style="color: rgba(255,255,255,0.15); font-size: 18px;">→</div>
-      <div style="flex: 1; text-align: center;">
-        <div style="font-family:'Space Grotesk', sans-serif; font-size: 20px; color: #5eead4; font-weight:800; margin-bottom: 4px;">6</div>
-        <div style="font-size: 15px; font-weight: 700; color: #fff;">Clinical Bench</div>
+      <div class="eng-pipe-arrow">→</div>
+      <div class="eng-pipe-item">
+        <div class="eng-pipe-num">6</div>
+        <div class="eng-pipe-label">Clinical Bench</div>
       </div>
-      <div style="color: rgba(255,255,255,0.15); font-size: 18px;">→</div>
-      <div style="flex: 1.2; text-align: center; background: rgba(13,148,136,0.15); border: 1px solid #0d9488; border-radius: 8px; padding: 12px 5px;">
-        <div style="font-family:'Space Grotesk', sans-serif; font-size: 20px; color: #5eead4; font-weight: 800; margin-bottom: 4px;">7</div>
-        <div style="font-size: 15px; font-weight: 800; color: #fff;">Final report</div>
+      <div class="eng-pipe-arrow">→</div>
+      <div class="eng-pipe-item eng-pipe-final">
+        <div class="eng-pipe-num">7</div>
+        <div class="eng-pipe-label">Final report</div>
       </div>
     </div>
 
@@ -832,7 +840,7 @@ body.mode-light #themeToggle { background: #f0faf7 !important; border-color: #b4
     <h2 class="slide-title">Smart Engineering — <span>Intelligent Drug Design Systems</span></h2>
 
     <!-- Row 3: 3 Design Systems (3-Col Grid) -->
-    <div style="font-size:14px; color:#f59e0b; font-weight:800; margin-bottom:12px; text-transform:uppercase;">III. Intelligent & Smart Drug Design (智能 / 智慧药物设计)</div>
+    <div style="font-size:14px; color:#f59e0b; font-weight:800; margin-bottom:12px; text-transform:uppercase;">III. Intelligent Drug Design</div>
     <div class="card-grid g3" style="margin-bottom:40px; gap:16px;">
       <div class="card" style="border-left: 3px solid #f59e0b; padding:24px; background:rgba(255,255,255,0.02); display:flex; flex-direction:column; justify-content:space-between;">
         <div>
