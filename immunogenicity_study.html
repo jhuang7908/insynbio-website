@@ -140,13 +140,13 @@
     .track-hu .track-header { background: rgba(13,148,136,0.04); }
     .track-hu .track-badge { background: rgba(13,148,136,0.1); color: #0f766e; }
 
-    .factor-list { display: grid; grid-template-columns: repeat(auto-fit,minmax(220px,1fr)); gap: 14px; margin: 20px 0; }
-    .factor { background: var(--bg-alt); border: 1px solid var(--border); border-radius: 10px; padding: 16px 18px; }
-    .factor-num { font-size: 11px; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 4px; }
-    .factor-title { font-size: 14px; font-weight: 700; color: var(--text); margin-bottom: 4px; }
+    .factor-list { display: grid; grid-template-columns: repeat(4,1fr); gap: 12px; margin: 20px 0; }
+    .factor-list-5 { grid-template-columns: repeat(5,1fr) !important; }
+    .factor { background: var(--bg-alt); border: 1px solid var(--border); border-radius: 10px; padding: 14px 15px; }
+    .factor-num { font-size: 10px; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.7px; margin-bottom: 6px; }
     .factor-badge { display: inline-block; font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 4px; background: rgba(13,148,136,0.08); color: var(--primary-dark); margin-bottom: 6px; }
-    .factor-rho { font-size: 13px; font-weight: 600; color: var(--primary-dark); }
-    .factor p { font-size: 13px; color: var(--text-muted); margin: 4px 0 0; line-height: 1.5; }
+    .factor p { font-size: 12.5px; color: var(--text-muted); margin: 5px 0 0; line-height: 1.5; }
+    @media (max-width: 900px) { .factor-list, .factor-list-5 { grid-template-columns: 1fr 1fr !important; } }
 
     .score-box { margin-top: 20px; padding: 16px 20px; background: rgba(13,148,136,0.05); border: 1px solid rgba(13,148,136,0.2); border-radius: 10px; }
     .score-box .score-label { font-size: 13px; font-weight: 600; color: var(--text-muted); margin-bottom: 4px; }
@@ -443,24 +443,24 @@
 
       <div class="factor-list">
         <div class="factor">
-          <div class="factor-num">① Interface Stability · Weight 35%</div>
-          <div class="factor-badge">ρ = +0.369</div>
-          <p>VH-VL contact count · p=0.007 <strong>(highly significant)</strong>. Fewer interface contacts → higher dissociation risk → significantly elevated ADA.</p>
+          <div class="factor-num">① Interface Stability · 35%</div>
+          <div class="factor-badge">ρ = +0.369 · p=0.007</div>
+          <p>VH-VL contact count. Fewer contacts → higher dissociation risk → elevated ADA. <strong>Highly significant.</strong></p>
         </div>
         <div class="factor">
-          <div class="factor-num">② Surface Hydrophobicity · Weight 30%</div>
-          <div class="factor-badge">ρ = +0.311</div>
-          <p>Surface hydrophobic patch count · p=0.024. Hydrophobic patches induce aggregation and activate APC presentation — primary FH immunogenicity mechanism.</p>
+          <div class="factor-num">② Surface Hydrophobicity · 30%</div>
+          <div class="factor-badge">ρ = +0.311 · p=0.024</div>
+          <p>Hydrophobic patch count. Patches trigger aggregation and APC presentation — primary FH risk driver.</p>
         </div>
         <div class="factor">
-          <div class="factor-num">③ VL Germline Deviation · Weight 20%</div>
-          <div class="factor-badge">ρ = +0.264</div>
-          <p>VL germline identity (inverted) · p=0.056. Greater SHM divergence from the human repertoire → higher ADA risk.</p>
+          <div class="factor-num">③ VL Germline Deviation · 20%</div>
+          <div class="factor-badge">ρ = +0.264 · p=0.056</div>
+          <p>Inverted VL germline identity. Greater SHM divergence from human repertoire → higher ADA risk.</p>
         </div>
         <div class="factor">
-          <div class="factor-num">④ MHC-II Epitopes · Weight 10%</div>
+          <div class="factor-num">④ MHC-II Epitopes · 10%</div>
           <div class="factor-badge">ρ = +0.134</div>
-          <p>MHC-II strong-binding peptide count. SHM-derived epitopes are the ultimate ADA trigger, though in FH their effect is attenuated by background tolerance.</p>
+          <p>Strong-binding peptide count. SHM-derived epitopes trigger ADA, attenuated by background tolerance in FH.</p>
         </div>
       </div>
 
@@ -499,31 +499,31 @@
     <div class="track-body">
       <p>Humanized antibodies graft murine CDRs onto human frameworks. ADA risk comes not only from foreign CDR peptides, but also from three engineering-specific "design traps": <strong>Vernier Zone residues, CDR-FR junction epitopes, and humanization-induced molecular instability.</strong> Clinical interventions (e.g., MTX co-administration) significantly suppress apparent ADA, making molecular-level correlation signals statistically weaker — exactly why HU assessment requires a dedicated system.</p>
 
-      <div class="factor-list">
+      <div class="factor-list factor-list-5">
         <div class="factor">
-          <div class="factor-num">① Vernier Zone Audit · Weight 25%</div>
+          <div class="factor-num">① Vernier Zone · 25%</div>
           <div class="factor-badge">Deep Scan</div>
-          <p>Vernier Zone lies below CDR loops (VH:27–30, 47–49, 67–71; VL:35–36, 46–49). Buried murine residues release hydrophobic anchor peptides upon proteolytic degradation, captured by MHC-II with high affinity.</p>
+          <p>Buried murine Vernier residues (VH:27–30, 47–49, 67–71; VL:35–36, 46–49) release MHC-II anchor peptides upon degradation.</p>
         </div>
         <div class="factor">
-          <div class="factor-num">② CDR-FR Junction Epitopes · Weight 15%</div>
+          <div class="factor-num">② CDR-FR Junction · 15%</div>
           <div class="factor-badge">Junction</div>
-          <p>CDR (murine) / FR (human) junctions create "hybrid peptides" never found in natural sequences — these Junction Epitopes are immunogenicity triggers unique to humanized antibodies.</p>
+          <p>CDR/FR junctions form hybrid peptides absent from natural sequences — unique immunogenicity triggers in humanized antibodies.</p>
         </div>
         <div class="factor">
-          <div class="factor-num">③ Aggregation Propensity · Weight 20%</div>
+          <div class="factor-num">③ Aggregation · 20%</div>
           <div class="factor-badge">ρ = +0.196</div>
-          <p>Aggregation motif count · p=0.110 (HU high-sensitivity subset, n=73). Improper Vernier zone handling disrupts hydrophobic core balance — the strongest physical mechanism triggering ADA.</p>
+          <p>Aggregation motif count (n=73, HU high-sensitivity). Vernier mishandling disrupts the hydrophobic core — primary ADA trigger.</p>
         </div>
         <div class="factor">
-          <div class="factor-num">④ Germline Identity · Weight 30%</div>
+          <div class="factor-num">④ Germline Identity · 30%</div>
           <div class="factor-badge">Identity</div>
-          <p>VH/VL germline homology assessment against 842 clinical antibody reference database. Ensures framework "human similarity" compliance baseline.</p>
+          <p>VH/VL homology vs. 842-antibody reference database. Quantifies framework "human likeness" compliance.</p>
         </div>
         <div class="factor">
-          <div class="factor-num">⑤ Instability Correction · Weight 10%</div>
+          <div class="factor-num">⑤ Instability Correction · 10%</div>
           <div class="factor-badge">Baseline</div>
-          <p>Thermodynamic instability coefficient and clinical background correction (e.g., immunosuppressant co-medication), as final risk expectation adjustment.</p>
+          <p>Thermodynamic instability + clinical background correction (e.g., immunosuppressant use) for final risk adjustment.</p>
         </div>
       </div>
 
