@@ -353,8 +353,8 @@
     </div>
     <div class="feature-card">
       <div class="fc-label">Prediction Coverage</div>
-      <h3>27 HLA-DR Alleles</h3>
-      <p>MHC-II binding prediction via IEDB API, covering the major global HLA-DR alleles to capture population-wide risk.</p>
+      <h3>35 HLA-DRB1 Alleles</h3>
+      <p>MHC-II binding prediction via IEDB API, covering 35 HLA-DRB1 alleles to capture broader population-wide risk.</p>
     </div>
     <div class="feature-card">
       <div class="fc-label">Stratified Analysis</div>
@@ -576,7 +576,8 @@
     </div>
   </div>
 
-  <h3 style="margin-top:32px;">ADA V2 Dual-Track Benchmark — 138 Clinical Records</h3>
+  <h3 style="margin-top:32px;">ADA V2 Dual-Track Benchmark — 129 Comparable Clinical Records</h3>
+  <p style="font-size:13px;color:#4b5563;line-height:1.7;margin:0 0 14px;">Two readouts are reported separately here. The <strong>table below</strong> summarizes track-level correlation metrics using the benchmark endpoint definition, whereas <strong>Figure 6c</strong> fixes the cutoff at <strong>0.646 as a HIGH-only threshold</strong> to show strict triage behavior. These are related but not identical statistics.</p>
   <div class="table-wrap">
     <table>
       <tr><th>Track</th><th>n</th><th>ρ (Spearman)</th><th>p-value</th><th>AUC-ROC</th><th>Balanced Acc.</th><th>Sensitivity</th><th>Specificity</th></tr>
@@ -585,7 +586,19 @@
       <tr><td>HU Humanized</td><td>76</td><td>+0.058</td><td>0.618</td><td>0.505</td><td>0.524</td><td>0.226</td><td>0.822</td></tr>
     </table>
   </div>
-  <p style="font-size:13px;color:#9ca3af;margin-top:4px;">* Clinical ADA &gt;10% = positive; HIGH risk grade = predicted positive. FH track reached statistical significance. HU signal suppressed by clinical immunosuppressants (see HU-specific analysis).</p>
+  <p style="font-size:13px;color:#9ca3af;margin-top:4px;">* Clinical ADA &gt;10% = positive. The sensitivity/specificity values in this table come from the benchmark endpoint definition and should not be read as identical to the HIGH-only 0.646 confusion-matrix detection rates shown in Figure 6c.</p>
+
+  <div class="card" style="margin-top:20px;background:#f8fafc;border:1px solid #e2e8f0;">
+    <strong>How to read the 0.646 threshold in Figure 6c</strong><br>
+    <p style="margin:10px 0 0;line-height:1.7;"><strong>FH:</strong> at a strict HIGH threshold of 0.646, detection of clinical <strong>ADA &gt;10%</strong> is <strong>100% (13/13)</strong>; the high-ADA proportion in the low-score group is <strong>0% (0/11)</strong>; and the high-ADA proportion within the high-score group is <strong>31.0% (13/42)</strong>. This makes the FH branch useful as a conservative rule-out screen.</p>
+    <p style="margin:10px 0 0;line-height:1.7;"><strong>HU:</strong> under the same threshold, detection of clinical <strong>ADA &gt;10%</strong> is <strong>37.1% (13/35)</strong>; the high-ADA proportion in the low-score group is <strong>41.5% (22/53)</strong>; and the high-ADA proportion within the high-score group is <strong>56.5% (13/23)</strong>. HU therefore still shows enrichment, but with stronger clinical-noise suppression.</p>
+  </div>
+
+  <div class="card" style="margin-top:20px;background:#fff7ed;border:1px solid #fed7aa;">
+    <strong>Comparable-to-EpiVax statement</strong><br>
+    <p style="margin:10px 0 0;line-height:1.7;">This page does <strong>not</strong> present a public head-to-head run against EpiVax on the exact same antibody panel, assay stratification, and ADA endpoint definition, so we do not make a numeric “better than EpiVax” claim here.</p>
+    <p style="margin:10px 0 0;line-height:1.7;">What we can state more rigorously is that, under <strong>comparable conditions</strong> such as fully human antibodies, high-sensitivity ADA assays, and sequence/epitope-centered risk ranking, the FH branch of ADA V2 operates in a similar comparison frame to EpiVax-like sequence models. The difference is that ADA V2 additionally integrates <strong>SASA exposure</strong>, <strong>VH-VL interface stability</strong>, and a <strong>CMC veto</strong>, so it should be described as an expanded model rather than a strict apples-to-apples replica.</p>
+  </div>
 
   <h3>Validated LOO Models (Leave-One-Out Cross-Validation)</h3>
   <div class="table-wrap">
@@ -618,7 +631,7 @@
   <ul class="method-list">
     <li>
       <span class="method-dot"></span>
-      <p><strong>IEDB MHC-II Deep Scan</strong> — Covers 27 HLA-DR alleles; <strong>HU-specific</strong> additionally scans Vernier Zone (~10 positions per VH/VL) and CDR-FR junctions (5 residues at each CDR end) for degradation peptides.</p>
+      <p><strong>IEDB MHC-II Deep Scan</strong> — Covers <strong>35 HLA-DRB1 alleles</strong>; <strong>HU-specific</strong> additionally scans Vernier Zone (~10 positions per VH/VL) and CDR-FR junctions (5 residues at each CDR end) for degradation peptides.</p>
     </li>
     <li>
       <span class="method-dot"></span>
@@ -638,7 +651,7 @@
     </li>
   </ul>
 
-  <p>All scores are benchmarked against 138 clinical records in the InSynBio ADA database, providing percentile ranking and reference comparisons (e.g., Herceptin®, Humira® benchmarks).</p>
+  <p>All scores are benchmarked against 138 clinical records in the InSynBio ADA database; the track-level benchmark shown on this page uses the 129 records with comparable endpoint completeness, providing percentile ranking and reference comparisons (e.g., Herceptin®, Humira® benchmarks).</p>
 
   <div class="card-note">
     <strong>April 2026 Data Validation</strong> — Latest high-sensitivity assay stratification analysis (n=122, ECL/Tiered) confirms: FH system's interface stability signal (ρ=+0.339, p=0.018) and MHC-II epitope signal (ρ=+0.425, p=0.034) remain statistically significant after removing assay bias, confirming ADA V2 dual-track robustness. 8/8 previously significant features maintain consistent direction across the full sample.
