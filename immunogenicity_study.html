@@ -123,12 +123,12 @@
     .feature-card p { font-size: 14px; color: var(--text-muted); margin: 6px 0 0; line-height: 1.55; }
     @media (max-width: 768px) { .feature-cards { grid-template-columns: 1fr; } }
 
-    .kpi-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; margin: 24px 0; }
-    .kpi-card { background: linear-gradient(160deg,#fff 0%,#f5fbfa 100%); border: 1px solid rgba(13,148,136,0.14); border-radius: 14px; padding: 24px 22px; box-shadow: 0 4px 20px -12px rgba(13,148,136,0.22); }
-    .kpi-card .eyebrow { display: block; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--primary); margin-bottom: 8px; }
-    .kpi-card .val { font-family: 'Cormorant Garamond', serif; font-size: 42px; font-weight: 700; color: #111827; line-height: 1; margin-bottom: 6px; }
-    .kpi-card .title { font-size: 15px; font-weight: 600; color: #111827; margin-bottom: 6px; }
-    .kpi-card .desc { font-size: 13px; color: var(--text-muted); line-height: 1.5; }
+    .kpi-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 12px; margin: 20px 0; }
+    .kpi-card { background: linear-gradient(160deg,#fff 0%,#f5fbfa 100%); border: 1px solid rgba(13,148,136,0.14); border-radius: 12px; padding: 16px 18px; box-shadow: 0 4px 16px -10px rgba(13,148,136,0.2); }
+    .kpi-card .eyebrow { display: block; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--primary); margin-bottom: 4px; }
+    .kpi-card .val { font-family: 'Cormorant Garamond', serif; font-size: 34px; font-weight: 700; color: #111827; line-height: 1; margin-bottom: 4px; }
+    .kpi-card .title { font-size: 13px; font-weight: 600; color: #111827; margin-bottom: 4px; }
+    .kpi-card .desc { font-size: 12px; color: var(--text-muted); line-height: 1.5; }
     @media (max-width: 640px) { .kpi-grid { grid-template-columns: 1fr 1fr; } }
 
     /* ===== TRACK CARDS (FH / HU) ===== */
@@ -377,42 +377,42 @@
       <span class="eyebrow">Dataset Size</span>
       <div class="val">138</div>
       <div class="title">Therapeutic Antibodies</div>
-      <div class="desc">Approved and clinical-stage mAbs, fusion proteins, and antibody fragments spanning oncology, autoimmune, metabolic, and neurological indications.</div>
+      <div class="desc">Approved &amp; clinical-stage mAbs, fusion proteins, and fragments across oncology, autoimmune, and neurological indications.</div>
     </div>
 
     <div class="kpi-card">
       <span class="eyebrow">ADA Records</span>
       <div class="val">138</div>
-      <div class="title">Validated Clinical ADA Events</div>
-      <div class="desc">Real-world anti-drug antibody incidence rates sourced from FDA/EMA prescribing information (Tier A) and peer-reviewed clinical studies (Tier B). 73% from official labels.</div>
+      <div class="title">Validated ADA Events</div>
+      <div class="desc">Real-world ADA incidence from FDA/EMA labels (Tier A, 73%) and peer-reviewed clinical studies (Tier B, 27%).</div>
     </div>
 
     <div class="kpi-card">
       <span class="eyebrow">Feature Space</span>
       <div class="val">31</div>
       <div class="title">Analytical Dimensions</div>
-      <div class="desc">Covering sequence (germline identity, CDR-H3 length, aromatic content), structural (VH-VL contacts, SASA, hydrophobic patches), CMC (aggregation motifs, deamidation), and clinical (assay generation, immunosuppression, half-life) features.</div>
+      <div class="desc">Sequence, structural (VH-VL contacts, SASA, patches), CMC (aggregation, deamidation), and clinical covariates.</div>
     </div>
 
     <div class="kpi-card">
       <span class="eyebrow">MHC-II Coverage</span>
       <div class="val">27</div>
       <div class="title">HLA-DR Alleles</div>
-      <div class="desc">IEDB API-based MHC-II binding prediction covering the major global HLA-DR alleles. HU-specific scanning additionally covers Vernier Zone degradation peptides and CDR-FR junction epitopes.</div>
+      <div class="desc">IEDB-based binding prediction across major global alleles; HU scanning extends to Vernier Zone and CDR-FR junction peptides.</div>
     </div>
 
     <div class="kpi-card">
       <span class="eyebrow">Scoring Model</span>
-      <div class="val" style="font-size:34px;">TCIA</div>
-      <div class="title">T-Cell Immunogenicity Composite Score</div>
-      <div class="desc">Dual-track ADA V2 model: separate FH and HU scoring matrices, each calibrated on clinical ADA data. FH track ρ = +0.308 (p = 0.025); validated by LOO cross-validation on n = 138 antibodies.</div>
+      <div class="val" style="font-size:28px;">TCIA</div>
+      <div class="title">Dual-Track Composite Score</div>
+      <div class="desc">Separate FH and HU matrices calibrated on clinical data. FH track: ρ = +0.308, p = 0.025; LOO-validated on n = 138.</div>
     </div>
 
     <div class="kpi-card">
       <span class="eyebrow">Evidence Quality</span>
-      <div class="val" style="font-size:30px;">Tier A/B</div>
+      <div class="val" style="font-size:24px;">Tier A/B</div>
       <div class="title">Clinical Evidence Standard</div>
-      <div class="desc">73% of ADA records sourced directly from FDA/EMA official prescribing information (Tier A). Remaining 27% from peer-reviewed publications with validated assay methods (ECL/Tiered/ELISA).</div>
+      <div class="desc">73% from official FDA/EMA prescribing information; 27% from publications using ECL/Tiered/ELISA assays.</div>
     </div>
 
   </div>
