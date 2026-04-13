@@ -38,9 +38,7 @@ h2.slide-title span{color:#5eead4;}
 .bg-gradient{background:linear-gradient(135deg,#0a3632 0%,#0c5e56 60%,#0f766e 100%);}
 .bg-deep{background:linear-gradient(135deg,#020617 0%,#0f172a 50%,#1e293b 100%);}
 .bg-violet{background:linear-gradient(135deg,#1e1b4b 0%,#312e81 100%);}
-body.mode-light{background:#f8fafc;color:var(--text);}
-body.mode-light h2.slide-title{color:var(--text);}
-body.mode-light .slide-subtitle{color:var(--text-muted);}
+body.mode-light{background:#faf7f2;color:#1c3330;}
 
 /* ── Cards ── */
 .card-grid{display:grid;gap:16px;}
@@ -60,10 +58,10 @@ body.mode-light .slide-subtitle{color:var(--text-muted);}
 .card-violet{border-top-color:var(--violet);}
 .card-green{border-top-color:var(--green);}
 
-/* White bg cards */
-body.mode-light .card{background:#fff;border:1px solid #e2e8f0;box-shadow:0 2px 12px rgba(0,0,0,0.06);}
-body.mode-light .card h3{color:var(--text);}
-body.mode-light .card p{color:var(--text-muted);}
+/* Light mode card base */
+body.mode-light .card{background:#fff !important;border:1px solid #cce4de !important;box-shadow:0 2px 14px rgba(13,148,136,0.08) !important;backdrop-filter:none !important;}
+body.mode-light .card h3{color:#1c3330 !important;}
+body.mode-light .card p{color:#374151 !important;}
 
 /* ── Data number cards ── */
 .data-card{background:linear-gradient(135deg,rgba(13,148,136,0.12),rgba(13,148,136,0.04));border:1px solid rgba(13,148,136,0.2);border-radius:12px;padding:18px 14px;text-align:center;}
@@ -145,61 +143,16 @@ body.mode-light .card p{color:var(--text-muted);}
 .nav-dot{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,0.2);border:none;cursor:pointer;transition:all 0.3s;padding:0;}
 .nav-dot.active{background:#5eead4;transform:scale(1.4);}
 
-/* ── Deep White Overrides ── */
-body.mode-light .slide { background: #f8fafc; color: #111827; }
-body.mode-light h1.hero-title, body.mode-light h2.slide-title, body.mode-light .brand-name { color: #111827; }
-body.mode-light .slide-subtitle, body.mode-light .brand-slogan { color: #4b5563; border-color: #cbd5e1; }
-body.mode-light .school-badge { color: #4b5563; border-color: #cbd5e1; background: #fff; }
-body.mode-light p, body.mode-light li, body.mode-light td { color: #4b5563 !important; }
-body.mode-light strong { color: #111827 !important; }
-body.mode-light .label-white { color: #0d9488; }
-body.mode-light .label-teal { color: #0d9488; }
-body.mode-light .data-label { color: #4b5563; }
-body.mode-light .data-num { color: #0d9488; }
-body.mode-light .compare-table th { color: #6b7280; border-bottom: 2px solid #e5e7eb; }
-body.mode-light .compare-table td { border-bottom: 1px solid #f1f5f9; }
-body.mode-light .pipe-step { background: #fff; border: 1px solid #e2e8f0; }
-body.mode-light .pipe-step::after { color: #9ca3af; }
-body.mode-light .pipe-step strong { color: #111827 !important; }
-body.mode-light .pipe-step span { color: #6b7280 !important; }
-body.mode-light .pipe-step .step-n { color: #2dd4bf; }
-body.mode-light .case-mini { background: #fff; border: 1px solid #e2e8f0; border-left-width: 4px; }
-body.mode-light .case-mini h4, body.mode-light .case-mini a { color: #111827 !important; }
-body.mode-light .quote-box { background: #f0fdfa; border-left: 4px solid #0d9488; }
-body.mode-light .quote-box p { color: #0f766e !important; }
-body.mode-light .cta-primary { background: #0d9488; color: #fff; border: 1px solid #0d9488; }
-body.mode-light .cta-outline { border-color: #0d9488; color: #0d9488; }
-body.mode-light .cta-outline:hover { background: #f0fdfa; border-color: #0d9488; color:#0d9488;}
-body.mode-light .slide-num { color: #9ca3af; }
-.nav-dot { background: #d1d5db; border: none; } 
-.nav-dot.active { background: #0d9488; }
-body.mode-light .card div { color: #4b5563 !important; }
-body.mode-light .card div[style*="font-size:19px"] { color: #111827 !important; }
-body.mode-light .card div[style*="font-size:15px"] { color: #0d9488 !important; }
+/* ── Dark mode legibility ── */
+.slide-subtitle { color: rgba(255,255,255,0.92) !important; font-weight: 500; text-shadow: 0 1px 8px rgba(0,0,0,0.25) !important; opacity: 1 !important; }
+.card p { color: rgba(255,255,255,0.9) !important; opacity: 1 !important; line-height: 1.6 !important; }
 
-body.mode-light #themeToggle { background:#f1f5f9; border-color:#cbd5e1; color:#0d9488; }
-
-/* ── Rhythmic Light/Dark System ── */
-.slide-green { background: #f8fafc !important; color: #1f2937 !important; }
-.slide-green h1.hero-title, .slide-green h2.slide-title { color: #111827 !important; }
-.slide-green .slide-subtitle, .slide-green .brand-slogan { color: #4b5563 !important; border-color: #cbd5e1 !important; }
-.slide-green .label-teal { color: #0d9488 !important; }
-.slide-green .label-white { color: #4b5563 !important; }
-.slide-green .card { background: #ffffff !important; border: 1px solid #e2e8f0 !important; box-shadow: 0 4px 12px rgba(0,0,0,0.05) !important; }
-.slide-green .card h3 { color: #111827 !important; }
-.slide-green .card p { color: #4b5563 !important; }
-.slide-green .data-card { background: #fff !important; border: 1px solid #e2e8f0 !important; }
-.slide-green .data-num { color: #0d9488 !important; }
-.slide-green .data-label { color: #4b5563 !important; }
-.slide-green .quote-box { background: #f0fdfa !important; border-left-color: #0d9488 !important; }
-.slide-green .quote-box p { color: #115e59 !important; }
-.slide-green .slide-num { color: #9ca3af !important; }
-
-
-/* ── Brand Rhythm: Green & Dark ── */
-.slide-green { background: linear-gradient(135deg, #0a3632 0%, #0d9488 45%, #115e59 100%) !important; color: #fff !important; }
+/* ── Dark mode slide-green (teal gradient) ── */
+.slide-green { background: linear-gradient(135deg, #094741 0%, #0d9488 50%, #115e59 100%) !important; color: #fff !important; }
+.slide-green h2.slide-title { color: #fff !important; }
 .slide-green h2.slide-title span { color: #fde68a !important; }
 .slide-green .label-teal { color: #fff !important; border-bottom: 2px solid #5eead4; display: inline-block; padding-bottom: 2px; }
+.slide-green .slide-subtitle { color: #fdfdfd !important; text-shadow: 0 1px 4px rgba(0,0,0,0.4) !important; }
 .slide-green .card { background: rgba(255,255,255,0.08) !important; border: 1px solid rgba(255,255,255,0.15) !important; backdrop-filter: blur(12px) !important; }
 .slide-green .card h3, .slide-green .card h4 { color: #fff !important; }
 .slide-green .card p { color: rgba(255,255,255,0.9) !important; }
@@ -209,14 +162,119 @@ body.mode-light #themeToggle { background:#f1f5f9; border-color:#cbd5e1; color:#
 .slide-green .data-num { color: #fde68a !important; }
 .slide-green .pipe-step { background: rgba(255,255,255,0.05) !important; }
 .slide-green .pipe-step .step-n { color: #fde68a !important; opacity: 0.6; }
+.slide-green .slide-num { color: rgba(255,255,255,0.35) !important; }
 
+/* ── Nav dots (universal) ── */
+.nav-dot { background: rgba(255,255,255,0.2); border: none; }
+.nav-dot.active { background: #0d9488; transform: scale(1.4); }
 
-/* ── Legibility & Contrast Enhancements ── */
-.slide-subtitle { color: #ffffff !important; font-weight: 500; text-shadow: 0 2px 10px rgba(0,0,0,0.3) !important; opacity: 1 !important; }
-.card p { color: #ffffff !important; opacity: 1 !important; line-height: 1.6 !important; }
-.slide-green .slide-subtitle { color: #fdfdfd !important; text-shadow: 0 1px 4px rgba(0,0,0,0.4) !important; }
-.slide-green .card p { color: rgba(255,255,255,0.95) !important; }
-.slide-green { background: linear-gradient(135deg, #094741 0%, #0d9488 50%, #115e59 100%) !important; }
+/* ══════════════════════════════════════════════
+   LIGHT MODE — 乳白 Cream + Sage Alternation
+   Cream  slides: #faf7f2  (warm ivory)
+   Sage   slides: #e4f2ee  (soft mint, slide-green)
+   Heading:  #1c3330  Body: #374151  Strong: #1c3330
+   Teal accent: #0d9488  / #0c7a70
+   ══════════════════════════════════════════════ */
+
+/* — Base — */
+body.mode-light { background: #faf7f2 !important; color: #1c3330; }
+body.mode-light .slide { background: #faf7f2 !important; color: #1c3330 !important; }
+
+/* — Sage alternating slides — */
+body.mode-light .slide.slide-green { background: #e4f2ee !important; color: #1c3330 !important; }
+
+/* — Typography — */
+body.mode-light h1.hero-title,
+body.mode-light h2.slide-title,
+body.mode-light .brand-name { color: #1c3330 !important; }
+body.mode-light h2.slide-title span { color: #0d9488 !important; }
+body.mode-light h1.hero-title em { color: #0d9488 !important; }
+body.mode-light .slide-subtitle { color: #374151 !important; text-shadow: none !important; }
+body.mode-light .brand-slogan { color: #4b5563 !important; border-color: #b8d9d2 !important; }
+body.mode-light p { color: #374151 !important; }
+body.mode-light li { color: #374151 !important; }
+body.mode-light td { color: #374151 !important; }
+body.mode-light strong { color: #1c3330 !important; }
+body.mode-light .slide-num { color: #9ca3af !important; }
+
+/* — Labels — */
+body.mode-light .label-teal { color: #0d9488 !important; border-bottom: none !important; padding-bottom: 0 !important; }
+body.mode-light .label-white { color: #0d9488 !important; }
+
+/* — Cream slide cards — */
+body.mode-light .slide .card { background: #ffffff !important; border: 1px solid #cce4de !important; box-shadow: 0 3px 14px rgba(13,148,136,0.09) !important; backdrop-filter: none !important; }
+body.mode-light .slide .card h3 { color: #1c3330 !important; }
+body.mode-light .slide .card h4 { color: #1c3330 !important; }
+body.mode-light .slide .card p { color: #374151 !important; }
+body.mode-light .card div { color: #374151 !important; }
+body.mode-light .card div[style*="font-size:19px"] { color: #1c3330 !important; }
+body.mode-light .card div[style*="font-size:15px"] { color: #0d9488 !important; }
+
+/* — Sage slide cards — */
+body.mode-light .slide.slide-green .card { background: #f0faf7 !important; border: 1px solid #b4d9d0 !important; box-shadow: 0 3px 14px rgba(13,148,136,0.12) !important; backdrop-filter: none !important; }
+body.mode-light .slide.slide-green .card h3 { color: #1c3330 !important; }
+body.mode-light .slide.slide-green .card h4 { color: #1c3330 !important; }
+body.mode-light .slide.slide-green .card p { color: #374151 !important; }
+body.mode-light .slide.slide-green .slide-subtitle { color: #374151 !important; text-shadow: none !important; }
+body.mode-light .slide.slide-green h2.slide-title { color: #1c3330 !important; }
+body.mode-light .slide.slide-green h2.slide-title span { color: #0d9488 !important; }
+body.mode-light .slide.slide-green .label-teal { color: #0d9488 !important; border-bottom: none !important; }
+body.mode-light .slide.slide-green .label-white { color: #0d9488 !important; }
+body.mode-light .slide.slide-green p { color: #374151 !important; }
+body.mode-light .slide.slide-green li { color: #374151 !important; }
+body.mode-light .slide.slide-green strong { color: #1c3330 !important; }
+body.mode-light .slide.slide-green .slide-num { color: #7aafa8 !important; }
+
+/* — Data cards — */
+body.mode-light .data-card { background: #edf8f5 !important; border: 1px solid #b4d9d0 !important; }
+body.mode-light .data-num { color: #0c7a70 !important; }
+body.mode-light .data-label { color: #374151 !important; }
+body.mode-light .slide.slide-green .data-card { background: #ddf0eb !important; border-color: #9dcec5 !important; }
+body.mode-light .slide.slide-green .data-num { color: #0a6a62 !important; }
+
+/* — Compare table — */
+body.mode-light .compare-table th { color: #374151 !important; border-bottom: 2px solid #b4d9d0 !important; }
+body.mode-light .compare-table td { border-bottom: 1px solid #d0e8e3 !important; }
+body.mode-light .compare-table td:last-child { color: #0d9488 !important; }
+body.mode-light .compare-table tr:hover td { background: rgba(13,148,136,0.05) !important; }
+
+/* — Badges — */
+body.mode-light .badge-pass { background: #d1fae5; color: #065f46; border-color: #a7f3d0; }
+body.mode-light .badge-warn { background: #fef3c7; color: #78350f; border-color: #fde68a; }
+
+/* — School badges — */
+body.mode-light .school-badge { color: #374151 !important; border-color: #b8d9d2 !important; background: #f5faf8 !important; }
+
+/* — Pipeline steps — */
+body.mode-light .pipe-step { background: #ffffff !important; border: 1px solid #cce4de !important; }
+body.mode-light .pipe-step::after { color: #9ca3af !important; }
+body.mode-light .pipe-step strong { color: #1c3330 !important; }
+body.mode-light .pipe-step span { color: #4b5563 !important; }
+body.mode-light .pipe-step .step-n { color: #0d9488 !important; opacity: 0.5; }
+body.mode-light .slide.slide-green .pipe-step { background: #ddf0eb !important; border-color: #9dcec5 !important; }
+
+/* — Case mini cards — */
+body.mode-light .case-mini { background: #ffffff !important; border: 1px solid #cce4de !important; border-left: 4px solid #0d9488 !important; }
+body.mode-light .case-mini h4 { color: #1c3330 !important; }
+body.mode-light .case-mini a { color: #0d9488 !important; }
+
+/* — Quote boxes — */
+body.mode-light .quote-box { background: #e8f5f2 !important; border-left: 4px solid #0d9488 !important; }
+body.mode-light .quote-box p { color: #0f5f58 !important; }
+body.mode-light .slide.slide-green .quote-box { background: #d5ece7 !important; border-left-color: #0a6a62 !important; }
+body.mode-light .slide.slide-green .quote-box p { color: #0a4f49 !important; }
+
+/* — CTA buttons — */
+body.mode-light .cta-primary { background: #0d9488 !important; color: #fff !important; border: 1px solid #0d9488 !important; }
+body.mode-light .cta-outline { border-color: #0d9488 !important; color: #0d9488 !important; background: transparent !important; }
+body.mode-light .cta-outline:hover { background: #e8f5f2 !important; }
+
+/* — Nav dots in light mode — */
+body.mode-light .nav-dot { background: #b4d9d0 !important; }
+body.mode-light .nav-dot.active { background: #0d9488 !important; }
+
+/* — Theme toggle — */
+body.mode-light #themeToggle { background: #f0faf7 !important; border-color: #b4d9d0 !important; color: #0d9488 !important; }
 
 </style>
 </head>
