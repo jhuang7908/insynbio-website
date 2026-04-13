@@ -680,12 +680,22 @@
       <p style="font-size:13px;background:#fef3c7;border-left:3px solid #d97706;padding:8px 12px;border-radius:4px;margin-bottom:12px;color:#78350f;">Immunogenicity scoring requires a <strong>complete, fully humanized or fully human sequence</strong>. It is not provided as a preliminary pre-screen. For early-stage sequences (pre-humanization), only sequence-level chemical stability flags (NG/DG motifs, Met/Trp oxidation, free Cys) are reported. Full immunogenicity assessment is included in the post-humanization Full Report.</p>
       
       <ul>
-        <li><strong>MHC-II T-cell epitope prediction</strong> — InSynBio immunogenicity pipeline (via IEDB API), covering 27 HLA-DR alleles; framework surface risk assessment</li>
-        <li><strong>Risk clustering</strong> — Agglomerative clustering of high-risk peptide positions along the sequence</li>
+        <li><strong>MHC-II T-cell epitope prediction</strong> — InSynBio in-house immunogenicity pipeline (via IEDB API), covering <strong>35 HLA-DRB1 alleles</strong>; CDR/FR localization; framework surface risk assessment</li>
+        <li><strong>Risk clustering</strong> — Spatial hotspot clustering of high-risk peptide positions</li>
         <li><strong>Surface immunogenicity</strong> — Parker hydrophilicity scoring; SASA-based exposure analysis (when PDB structure is provided)</li>
         <li><strong>Germline tolerance</strong> — IGHV/IGKV/IGLV frequency-weighted filter; germline identity % reported</li>
       </ul>
-      
+      <!-- In-house tools -->
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:16px 0;">
+        <div style="background:rgba(249,168,212,0.07);border:1px solid rgba(249,168,212,0.3);border-radius:8px;padding:12px 14px;">
+          <div style="font-size:11px;color:#be185d;font-weight:800;text-transform:uppercase;letter-spacing:0.04em;margin-bottom:7px;">🔬 In-House Tool · MHC-II Epitope Analyzer</div>
+          <p style="font-size:13px;color:#374151;margin:0;line-height:1.55;">35 HLA-DRB1 alleles · CDR/FR localization · Germline tolerance anchor-core filtering · Spatial hotspot clustering · Population-weighted net immunogenic burden score</p>
+        </div>
+        <div style="background:rgba(13,148,136,0.06);border:1px solid rgba(13,148,136,0.22);border-radius:8px;padding:12px 14px;">
+          <div style="font-size:11px;color:#0f766e;font-weight:800;text-transform:uppercase;letter-spacing:0.04em;margin-bottom:7px;">📊 In-House Tool · ADA Risk Scorer V2.1</div>
+          <p style="font-size:13px;color:#374151;margin:0;line-height:1.55;">Dual-track FH/HU model · 5-component composite score (Germline distance · Exposure · VH-VL interface · Epitope count · Surface hydrophilic patches) · Calibrated on 138 clinical mAbs · Clinical scenario adjustment (route / indication / assay)</p>
+        </div>
+      </div>
       <p class="input-note">Input: Complete VH/VL humanized or fully human sequences (PDB optional). Model calibrated on 138 clinical antibodies (LOO r = 0.42–0.58). Results are stratified risk scores, not absolute ADA rate predictions.</p>
       <div style="display:flex;flex-wrap:wrap;gap:10px;margin-top:12px;">
         <a href="immunogenicity_study.html" style="display:inline-flex;align-items:center;gap:6px;font-size:13px;color:#b91c1c;font-weight:600;text-decoration:none;background:rgba(239,68,68,0.06);border:1px solid rgba(239,68,68,0.2);padding:5px 12px;border-radius:20px;" onmouseover="this.style.background='rgba(239,68,68,0.12)'" onmouseout="this.style.background='rgba(239,68,68,0.06)'">🛡 What drives ADA? Mechanisms, detection &amp; mitigation →</a>
