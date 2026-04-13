@@ -828,40 +828,43 @@ body.mode-light .slide li::before { color: #0d9488 !important; }
 </section>
 
 <!-- ===================== SLIDE 09: ADA IMMUNOGENICITY ===================== -->
-<section class="slide slide-green" id="s8">
-  <div class="slide-inner">
-    <span class="label label-teal">Immunogenicity</span>
-    <h2 class="slide-title" style="font-size:38px;margin-bottom:8px;">ADA Immunogenicity — <span>Multi-Dimensional Benchmarking</span></h2>
-    <p class="slide-subtitle" style="font-size:16px;line-height:1.45;margin-bottom:8px;">ADA is extremely difficult to accurately predict. A multi-dimensional comparison against analogous clinical molecules is the only reliable anchor—we refuse to mislead with 100% foresight.</p>
-    <div class="card-grid g3" style="margin-bottom:8px;gap:10px;">
-      <div class="card card-accent card-teal" style="padding:14px 16px;">
-        <h3 style="font-size:17px;margin-bottom:6px;">🧬 Sequence Dimension</h3>
-        <p style="font-size:14px;line-height:1.45;">MHC-II 35 HLA-DRB1 T-Cell Epitope Scanning · Risk Site Curating Clustering · Parker Hydrophilicity Filtering</p>
+<section class="slide slide-green" id="s8" style="align-items:stretch;">
+  <div class="slide-inner" style="display:flex;flex-direction:column;">
+    <!-- Top block: fixed height -->
+    <div style="flex-shrink:0;">
+      <span class="label label-teal">Immunogenicity</span>
+      <h2 class="slide-title" style="font-size:40px;margin-bottom:10px;">ADA Immunogenicity — <span>Multi-Dimensional Benchmarking</span></h2>
+      <p class="slide-subtitle" style="font-size:17px;line-height:1.5;margin-bottom:12px;">ADA is extremely difficult to accurately predict. A multi-dimensional comparison against analogous clinical molecules is the only reliable anchor—we refuse to mislead with 100% foresight.</p>
+      <div class="card-grid g3" style="margin-bottom:10px;gap:12px;">
+        <div class="card card-accent card-teal" style="padding:16px 18px;">
+          <h3 style="font-size:17px;margin-bottom:6px;">🧬 Sequence Dimension</h3>
+          <p style="font-size:14px;line-height:1.5;">MHC-II 35 HLA-DRB1 T-Cell Epitope Scanning · Risk Site Curating Clustering · Parker Hydrophilicity Filtering</p>
+        </div>
+        <div class="card card-accent card-amber" style="padding:16px 18px;">
+          <h3 style="font-size:17px;margin-bottom:6px;">🔬 Structure + Germline</h3>
+          <p style="font-size:14px;line-height:1.5;">Historical ADA rates comparing analogous germlines · Surface Immunogenicity (SASA) · Germline Tolerance Validation</p>
+        </div>
+        <div class="card card-accent card-violet" style="padding:16px 18px;">
+          <h3 style="font-size:17px;margin-bottom:6px;">📋 Clinical Verification</h3>
+          <p style="font-size:14px;line-height:1.5;"><strong style="color:#fff;">138 actual antibody drugs</strong> with clinical ADA data · multi-parameter benchmarking · <a href='https://insynbio.com/ada_database.html' target='_blank' style='color:#5eead4;font-size:13px;'>View Report →</a></p>
+        </div>
       </div>
-      <div class="card card-accent card-amber" style="padding:14px 16px;">
-        <h3 style="font-size:17px;margin-bottom:6px;">🔬 Structure + Germline</h3>
-        <p style="font-size:14px;line-height:1.45;">Historical ADA rates comparing analogous germlines · Surface Immunogenicity (SASA) · Germline Tolerance Validation</p>
-      </div>
-      <div class="card card-accent card-violet" style="padding:14px 16px;">
-        <h3 style="font-size:17px;margin-bottom:6px;">📋 Clinical Verification</h3>
-        <p style="font-size:14px;line-height:1.45;"><strong style="color:#fff;">138 actual antibody drugs</strong> with clinical ADA data · multi-parameter benchmarking · <a href='https://insynbio.com/ada_database.html' target='_blank' style='color:#5eead4;font-size:13px;'>View Report →</a></p>
+      <div class="quote-box" style="margin-top:0;padding:10px 18px;">
+        <p style="font-size:15px;line-height:1.5;">"We cannot guarantee absolute zero immunogenicity, but rigorously supported by the most comprehensive clinical data supply chain, we aim to minimize the relative risk to the industry's lowest achievable level."</p>
       </div>
     </div>
-    <div class="quote-box" style="margin-top:8px;padding:8px 16px;">
-      <p style="font-size:14px;line-height:1.5;">"We cannot guarantee absolute zero immunogenicity, but rigorously supported by the most comprehensive clinical data supply chain, we aim to minimize the relative risk to the industry's lowest achievable level."</p>
-    </div>
-    <!-- Benchmark figures: ROC (1/3) + Confusion Matrix (2/3) -->
-    <div style="margin-top:8px;display:grid;grid-template-columns:1fr 2fr;gap:10px;align-items:stretch;">
+    <!-- Figure strip: flex:1 fills ALL remaining vertical space -->
+    <div style="flex:1;margin-top:12px;display:grid;grid-template-columns:1fr 2fr;gap:12px;min-height:0;">
       <div style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:10px;padding:8px 10px;text-align:center;display:flex;flex-direction:column;">
         <p style="font-size:10px;color:rgba(255,255,255,0.5);margin-bottom:4px;text-transform:uppercase;letter-spacing:1px;flex-shrink:0;">Fig 6b — ROC · FH AUC 0.690</p>
-        <div style="flex:1;display:flex;align-items:center;justify-content:center;overflow:hidden;border-radius:4px;background:rgba(0,0,0,0.3);min-height:165px;">
-          <img src="../images/immuno/fig_benchmark_roc.png" alt="ROC Curves" style="max-width:100%;max-height:185px;object-fit:contain;">
+        <div style="flex:1;display:flex;align-items:center;justify-content:center;overflow:hidden;border-radius:4px;background:rgba(0,0,0,0.3);min-height:0;">
+          <img src="../images/immuno/fig_benchmark_roc.png" alt="ROC Curves" style="max-width:100%;max-height:100%;object-fit:contain;">
         </div>
       </div>
       <div style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:10px;padding:8px 10px;text-align:center;display:flex;flex-direction:column;">
         <p style="font-size:10px;color:rgba(255,255,255,0.5);margin-bottom:4px;text-transform:uppercase;letter-spacing:1px;flex-shrink:0;">Fig 6c — Confusion Matrix @0.646 · FH Sensitivity 100% · <a href="https://insynbio.com/immunogenicity_study.html" target="_blank" style="color:#5eead4;">Full Report →</a></p>
-        <div style="flex:1;display:flex;align-items:center;justify-content:center;overflow:hidden;border-radius:4px;background:rgba(0,0,0,0.3);min-height:165px;">
-          <img src="../images/immuno/fig_benchmark_confusion.png" alt="Confusion Matrices" style="max-width:100%;max-height:185px;object-fit:contain;">
+        <div style="flex:1;display:flex;align-items:center;justify-content:center;overflow:hidden;border-radius:4px;background:rgba(0,0,0,0.3);min-height:0;">
+          <img src="../images/immuno/fig_benchmark_confusion.png" alt="Confusion Matrices" style="max-width:100%;max-height:100%;object-fit:contain;">
         </div>
       </div>
     </div>
