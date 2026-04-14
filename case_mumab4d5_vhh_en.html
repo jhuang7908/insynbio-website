@@ -381,6 +381,130 @@
     thead, tbody, tr { width: 100%; }
 
   </style>
+</head>
+<body>
+<!-- ─── HEADER ─── -->
+<header class="top-header">
+  <div class="brand">
+    <a href="index.html">
+      <svg width="34" height="28" viewBox="0 0 32 30" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink:0;">
+        <path d="M16 2L2 10V22L16 28L30 22V10L16 2Z" fill="#0d9488" fill-opacity="0.05" stroke="#0d9488" stroke-width="1" stroke-opacity="0.3"/>
+        <path d="M14.5 24 V 16" stroke="#0d9488" stroke-width="2.5" stroke-linecap="round"/>
+        <path d="M17.5 24 V 16" stroke="#f59e0b" stroke-width="2.5" stroke-linecap="round"/>
+        <line x1="13" y1="19" x2="19" y2="19" stroke="#9ca3af" stroke-width="1.5" stroke-linecap="round"/>
+        <line x1="13" y1="21" x2="19" y2="21" stroke="#9ca3af" stroke-width="1.5" stroke-linecap="round"/>
+        <path d="M14.5 16 L 8 7" stroke="#0d9488" stroke-width="2.5" stroke-linecap="round"/>
+        <path d="M10 16 L 3.5 7" stroke="#2dd4bf" stroke-width="2.5" stroke-linecap="round"/>
+        <path d="M17.5 16 L 24 7" stroke="#f59e0b" stroke-width="2.5" stroke-linecap="round"/>
+        <rect x="21.5" y="3.5" width="5" height="5" rx="1" fill="#f59e0b" transform="rotate(45 24 6)"/>
+      </svg>
+      <span><span style="color:#111827">In</span><span style="color:var(--primary);font-style:italic">Syn</span><span style="color:#111827">Bio</span></span>
+    </a>
+  <span class="slogan">AI for Life Sciences</span></div>
+  <button class="mobile-menu-btn" onclick="document.querySelector('.top-header-nav').classList.toggle('open')" aria-label="Open navigation">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+  </button>
+  <nav class="top-header-nav">
+    <button class="nav-close-btn" onclick="document.querySelector('.top-header-nav').classList.remove('open')">&#10005;</button>
+    <a href="index.html">Home</a>
+    <div class="nav-dropdown" tabindex="0">
+      <a href="index.html#services">AI Drug Design</a>
+      <div class="dropdown-menu">
+        <a href="InSynBio_Antibody_Developability_Assessment_Page.html"><span class="menu-title">Antibody R&amp;D</span><span class="menu-desc">Humanization, CMC, Immunogenicity</span></a>
+        <a href="InSynBio_ADC_Design_Page.html"><span class="menu-title">Smart ADC Design</span><span class="menu-desc">Antigen-Payload-Linker Matching</span></a>
+        <a href="InSynBio_CART_Design_Page.html"><span class="menu-title">Smart CAR-T Design</span><span class="menu-desc">Architecture &amp; Component Optimization</span></a>
+        <a href="InSynBio_Bispecific_Antibody_Design_Page.html"><span class="menu-title">Bispecific Design</span><span class="menu-desc">Format Screening &middot; CMC &middot; Pairing</span></a>
+        <a href="vaccine_design.html"><span class="menu-title">Vaccine Design</span><span class="menu-desc">Neoantigen &middot; Heteroclitic &middot; mRNA</span></a>
+      </div>
+    </div>
+    <div class="nav-dropdown" tabindex="0">
+      <a href="antibody-guide.html">Clinical Reference Library</a>
+      <div class="dropdown-menu">
+        <a href="antibody-guide.html"><span class="menu-title">Antibody Engineering Guide</span><span class="menu-desc">Standards &amp; Design Principles</span></a>
+        <a href="ada_database.html"><span class="menu-title">ADA Database</span><span class="menu-desc">138 Clinical Immunogenicity Benchmarks</span></a>
+        <a href="adc_database.html"><span class="menu-title">ADC Database</span><span class="menu-desc">100 Clinical ADC Programs</span></a>
+        <a href="component-browser.html"><span class="menu-title">CAR Component Library</span><span class="menu-desc">237 CAR-T Engineering Components</span></a>
+        <a href="vaccine_kb_data.html"><span class="menu-title">Vaccine Knowledge Base</span><span class="menu-desc">Antigens &amp; Adjuvant Data</span></a>
+        <a href="immunogenicity_study.html"><span class="menu-title">Immunogenicity Research</span><span class="std-md">138-Antibody ADA Study &amp; Prediction</span></a>
+      </div>
+    </div>
+    <div class="nav-dropdown" tabindex="0">
+      <a href="index.html#case-studies" class="active">Case Studies</a>
+      <div class="dropdown-menu">
+        <a href="case_mumab4d5_humanization_en.html"><span class="menu-title">muMAb4D5 Humanization</span><span class="menu-desc">CDR Grafting + Back-mutations</span></a>
+        <a href="case_mumab4d5_cmc.html"><span class="menu-title">muMAb4D5 CMC Assessment</span><span class="menu-desc">15 Developability Metrics Passed</span></a>
+        <a href="case_mumab4d5_vhh_en.html"><span class="menu-title">VH &#x2192; HER2 VHH Conversion</span><span class="menu-desc">Nanobody Engineering &amp; CMC Optimization</span></a>
+        <a href="case_vgrw_sr_r2_affinity_maturation.html"><span class="menu-title">VHH Affinity Maturation</span><span class="menu-desc">Binding Energy Improved &#x2212;3.32 kcal/mol</span></a>
+        <a href="case_vgrw_cdr_redesign_remat.html"><span class="menu-title">CDR Redesign &amp; Re-maturation</span><span class="menu-desc">Generative AI redesign &#xb7; 13&#xd7; affinity recovery</span></a>
+        <a href="case_bispecific_vhh_expression_optimization.html"><span class="menu-title">Bispecific VHH Optimization</span><span class="menu-desc">pI Engineering + 4.8&#xd7; IC90 Boost</span></a>
+        <a href="case_malaria_carm_design.html"><span class="menu-title">CAR-M Design</span><span class="menu-desc">Anti-CIDRα1 Dual-binder CAR-Macrophage</span></a>
+        <a href="case_fentanyl_hapten_vam.html"><span class="menu-title">Fentanyl Hapten VAM</span><span class="menu-desc">Affinity Maturation &#x2212;5.53 kcal/mol</span></a>
+        <a href="case_pdl1_epitope_analysis.html"><span class="menu-title">PD-L1 Epitope Analysis</span><span class="menu-desc">Blocking vs Non-blocking Classification</span></a>
+      </div>
+    </div>
+    <a href="InSynBio_OurTech.html">Our Tech</a>
+    <div class="nav-dropdown" tabindex="0">
+      <a href="index.html#about">About Us</a>
+      <div class="dropdown-menu">
+        <a href="index.html#about"><span class="menu-title">Company Profile</span><span class="menu-desc">Team &amp; Mission</span></a>
+        <a href="index.html#workflow"><span class="menu-title">Service Workflow</span><span class="menu-desc">Consultation to Delivery</span></a>
+      </div>
+    </div>
+    <a href="index.html#contact">Contact</a>
+  </nav>
+  <div class="header-right"></div>
+</header>
+
+<!-- ─── HERO ─── -->
+<section class="case-hero">
+  <div class="hero-inner">
+    <div class="hero-badge">
+      <i data-lucide="dna" style="width:14px;height:14px"></i>
+      Case Study · VH → VHH Nanobody Design
+    </div>
+    <h1>muMAb4D5 <em>VH → Humanized VHH</em><br>Single-Domain Engineering</h1>
+    <p class="subtitle">Converting muMAb4D5 VH into a functional HER2-targeting nanobody: 100% CDR preservation with structure-guided surface reshaping, surpassing clinical anti-HER2 VHH benchmarks.</p>
+      <div class="hero-stats">
+        <div class="hero-stat">
+          <div class="val">66.66</div>
+          <div class="lbl">VHH ADI Score</div>
+          <span class="eval eval-green">✓ PASS &gt;55</span>
+        </div>
+        <div class="hero-stat">
+          <div class="val">0.054 Å</div>
+          <div class="lbl">Structural RMSD</div>
+          <span class="eval eval-green">✓ EXCELLENT &lt;1.5Å</span>
+        </div>
+        <div class="hero-stat">
+          <div class="val">3/3</div>
+          <div class="lbl">CDR Preservation</div>
+          <span class="eval eval-green">✓ 100%</span>
+        </div>
+        <div class="hero-stat">
+          <div class="val">19/19</div>
+          <div class="lbl">Epitope Overlap</div>
+          <span class="eval eval-green">✓ Complete</span>
+        </div>
+        <div class="hero-stat">
+          <div class="val">0.671</div>
+          <div class="lbl">DockQ</div>
+          <span class="eval eval-teal">★ Medium-High</span>
+        </div>
+        <div class="hero-stat">
+          <div class="val">1524 Å²</div>
+          <div class="lbl">BSA</div>
+          <span class="eval eval-green">✓ Strong Interface</span>
+        </div>
+        <div class="hero-stat">
+          <div class="val">−4532</div>
+          <div class="lbl">MM-GBSA kcal/mol</div>
+          <span class="eval eval-green">✓ Most stable</span>
+        </div>
+      </div>
+  </div>
+</section>
+
+
         <script>
         var _viewer3d = null;
         var _surfaceOn = false;
