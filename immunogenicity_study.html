@@ -296,7 +296,7 @@
 <div class="page-wrap">
 
 <!-- ── SIDEBAR ── -->
-<aside class="sidebar">
+  <aside class="sidebar">
   <h3>Immunogenicity</h3>
   <nav>
     <a href="#platform" class="nav-link active">
@@ -319,8 +319,8 @@
       <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
       Submit Inquiry
     </a>
-  </nav>
-</aside>
+    </nav>
+  </aside>
 
 <!-- ── MAIN CONTENT ── -->
 <main class="main">
@@ -375,31 +375,31 @@
 
     <div class="kpi-card">
       <span class="eyebrow">Dataset Size</span>
-      <div class="val">138</div>
+        <div class="val">138</div>
       <div class="title">Therapeutic Antibodies</div>
       <div class="desc">Approved &amp; clinical-stage mAbs, fusion proteins, and fragments across oncology, autoimmune, and neurological indications.</div>
-    </div>
+      </div>
 
     <div class="kpi-card">
       <span class="eyebrow">ADA Records</span>
       <div class="val">138</div>
       <div class="title">Validated ADA Events</div>
       <div class="desc">Real-world ADA incidence from FDA/EMA labels (Tier A, 73%) and peer-reviewed clinical studies (Tier B, 27%).</div>
-    </div>
+      </div>
 
     <div class="kpi-card">
       <span class="eyebrow">Feature Space</span>
       <div class="val">31</div>
       <div class="title">Analytical Dimensions</div>
       <div class="desc">Sequence, structural (VH-VL contacts, SASA, patches), CMC (aggregation, deamidation), and clinical covariates.</div>
-    </div>
+      </div>
 
     <div class="kpi-card">
       <span class="eyebrow">MHC-II Coverage</span>
       <div class="val">27</div>
       <div class="title">HLA-DR Alleles</div>
       <div class="desc">IEDB-based binding prediction across major global alleles; HU scanning extends to Vernier Zone and CDR-FR junction peptides.</div>
-    </div>
+      </div>
 
     <div class="kpi-card">
       <span class="eyebrow">Scoring Model</span>
@@ -427,7 +427,7 @@
   <div style="margin:32px 0;text-align:center;">
     <h3 style="margin-bottom:14px;">Figure 2 — ADA Distribution by Humanization Strategy, Assay Method, Dosing Route &amp; Fc Subclass</h3>
     <img src="images/ada_study/fig2_ada_boxplots.png" alt="ADA Distribution Boxplots" style="max-width:100%;width:1000px;height:auto;border-radius:12px;box-shadow:0 4px 20px rgba(0,0,0,0.08);">
-  </div>
+      </div>
 
   <!-- FH TRACK -->
   <div class="track-fh" style="margin-top:40px;">
@@ -461,7 +461,7 @@
           <div class="factor-num">④ MHC-II Epitopes · 10%</div>
           <div class="factor-badge">ρ = +0.134</div>
           <p>Strong-binding peptide count. SHM-derived epitopes trigger ADA, attenuated by background tolerance in FH.</p>
-        </div>
+    </div>
       </div>
 
       <div class="score-box">
@@ -481,7 +481,7 @@
       <div style="margin:24px 0;text-align:center;">
         <h3 style="margin-bottom:12px;">Figure 4 — FH Antibodies: Interface Contacts, Germline Deviation, Hydrophobic Patches &amp; MHC-II Epitopes</h3>
         <img src="images/ada_study/fig4_scatter_key_features.png" alt="FH Scatter Analysis" style="max-width:100%;width:1000px;height:auto;border-radius:12px;box-shadow:0 4px 20px rgba(0,0,0,0.08);">
-      </div>
+    </div>
 
       <p style="margin-top:16px;font-size:14px;"><strong>Key Conclusion:</strong> Fully human antibody immunogenicity directly reflects molecular design quality — reducing interface anomalies, controlling SHM extent, and minimizing hydrophobic patches are the three core paths to lower ADA risk. High-sensitivity assays (Tiered/ECL) more clearly reveal T-cell epitope contributions.</p>
     </div>
@@ -554,7 +554,7 @@
 
   <div style="background:#fff;padding:24px;border-radius:12px;border:1px solid var(--border);box-shadow:0 2px 12px rgba(0,0,0,0.04);text-align:center;margin-bottom:20px;">
     <img src="images/immuno/fig_benchmark_score_dist.png" alt="Score Distribution" style="width:100%;height:auto;display:block;border-radius:4px;">
-  </div>
+    </div>
 
   <div style="background:#fff;padding:24px;border-radius:12px;border:1px solid var(--border);box-shadow:0 2px 12px rgba(0,0,0,0.04);text-align:center;margin-bottom:20px;">
     <p style="font-size:15px;font-weight:700;color:#111827;margin:0 0 14px;">Figure 6c — Confusion Matrix (HIGH Risk Prediction vs Clinical ADA &gt;10%) — ALL / FH / HU</p>
@@ -579,14 +579,14 @@
 
   <h3 style="margin-top:32px;">ADA V2 Dual-Track Benchmark — 129 Comparable Clinical Records</h3>
   <p style="font-size:13px;color:#4b5563;line-height:1.7;margin:0 0 14px;">Two readouts are reported separately here. The <strong>table below</strong> summarizes track-level correlation metrics using the benchmark endpoint definition, whereas <strong>Figure 6c</strong> fixes the cutoff at <strong>0.646 as a HIGH-only threshold</strong> to show strict triage behavior. These are related but not identical statistics.</p>
-  <div class="table-wrap">
+    <div class="table-wrap">
     <table>
       <tr><th>Track</th><th>n</th><th>ρ (Spearman)</th><th>p-value</th><th>AUC-ROC</th><th>Balanced Acc.</th><th>Sensitivity</th><th>Specificity</th></tr>
       <tr><td>All (ALL)</td><td>129</td><td>+0.088</td><td>0.319</td><td>0.511</td><td>0.505</td><td>0.310</td><td>0.701</td></tr>
       <tr class="best"><td><strong>FH Fully Human ✓</strong></td><td>53</td><td class="r-pos">+0.308<span class="sig">*</span></td><td>0.025</td><td>0.690</td><td>0.566</td><td>0.727</td><td>0.405</td></tr>
       <tr><td>HU Humanized</td><td>76</td><td>+0.058</td><td>0.618</td><td>0.505</td><td>0.524</td><td>0.226</td><td>0.822</td></tr>
     </table>
-  </div>
+    </div>
   <p style="font-size:13px;color:#9ca3af;margin-top:4px;">* Clinical ADA &gt;10% = positive. The sensitivity/specificity values in this table come from the benchmark endpoint definition and should not be read as identical to the HIGH-only 0.646 confusion-matrix detection rates shown in Figure 6c.</p>
 
   <div class="card" style="margin-top:20px;background:#f8fafc;border:1px solid #e2e8f0;">
@@ -602,13 +602,13 @@
   </div>
 
   <h3>Validated LOO Models (Leave-One-Out Cross-Validation)</h3>
-  <div class="table-wrap">
+    <div class="table-wrap">
     <table>
       <tr><th>Model</th><th>n</th><th>Algorithm</th><th>Key Features</th><th>LOO r</th><th>LOO p</th></tr>
       <tr class="best"><td><strong>HU-138-5f ★</strong></td><td>84</td><td>RidgeCV</td><td>supp×HL + assay_gen + supp + HL_inv + cdrh3_len</td><td class="r-pos">0.247</td><td>0.027</td></tr>
       <tr class="best"><td><strong>FH-138-GBR-4f ★</strong></td><td>54</td><td>GBR</td><td>net_burden + (1−VH_id)×burden + VH_id + assay×clusters</td><td class="r-pos">0.389</td><td>0.004</td></tr>
     </table>
-  </div>
+    </div>
 
   <div class="card card-teal" style="margin-top:20px;">
     <strong>CMC Developability Features: Shared Risk Across FH and HU</strong><br>
@@ -656,7 +656,7 @@
 
   <div class="card-note">
     <strong>April 2026 Data Validation</strong> — Latest high-sensitivity assay stratification analysis (n=122, ECL/Tiered) confirms: FH system's interface stability signal (ρ=+0.339, p=0.018) and MHC-II epitope signal (ρ=+0.425, p=0.034) remain statistically significant after removing assay bias, confirming ADA V2 dual-track robustness. 8/8 previously significant features maintain consistent direction across the full sample.
-  </div>
+    </div>
 
   <!-- ADA DATABASE SECTION -->
   <span id="database"></span>
@@ -684,13 +684,13 @@
       <div class="db-label">Humanization Degree</div>
       <p>Chimeric, CDR grafted, fully humanized — all categories represented with samples</p>
     </div>
-  </div>
+    </div>
 
   <p>This database enables our prediction models to perform stratified calibration for specific therapeutic categories and molecular formats.</p>
 
   <div style="margin-top:20px;">
     <a href="ada_database.html" class="btn-primary">Browse ADA Reference Database →</a>
-  </div>
+    </div>
 
   <!-- SUBMIT INQUIRY -->
   <span id="submit"></span>
@@ -701,10 +701,10 @@
 
   <p>Submit your antibody sequences to receive a clinically benchmarked immunogenicity assessment report.</p>
 
-  <div class="card card-teal">
-    <form id="inquiry-form" action="https://formspree.io/f/mnjblezr" method="POST">
-      <input type="hidden" name="_subject" value="InSynBio Immunogenicity Inquiry">
-      <input type="hidden" name="_next" value="https://insynbio.com/thanks.html">
+    <div class="card card-teal">
+      <form id="inquiry-form" action="https://formspree.io/f/mnjblezr" method="POST">
+        <input type="hidden" name="_subject" value="InSynBio Immunogenicity Inquiry">
+        <input type="hidden" name="_next" value="https://insynbio.com/thanks.html">
 
       <div class="form-grid-2" style="margin-bottom:14px;">
         <div class="form-field">
@@ -714,11 +714,11 @@
         <div class="form-field">
           <label for="lname">Last Name *</label>
           <input id="lname" name="lname" required placeholder="Last name">
-        </div>
+          </div>
         <div class="form-field">
           <label for="org">Organization *</label>
           <input id="org" name="org" required placeholder="Company / Institution">
-        </div>
+          </div>
         <div class="form-field">
           <label for="email">Email *</label>
           <input id="email" name="email" type="email" required placeholder="work@example.com">
@@ -743,8 +743,8 @@
 
       <button type="submit" class="btn-submit">Submit Immunogenicity Inquiry</button>
       <p class="form-note">Submission initiates NDA onboarding. Your sequences and project information are strictly confidential and not shared with third parties. Raw data is not retained after project completion.</p>
-    </form>
-  </div>
+      </form>
+    </div>
 
   <hr class="divider">
 

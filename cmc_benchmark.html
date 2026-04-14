@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="InSynBio Antibody CMC Developability Benchmark: multi-format ADI scoring and parameter reference ranges across 934 clinical-stage antibody sequences (VH/VL ×840, VHH ×42, scFv ×52).">
+  <meta name="keywords" content="antibody CMC, developability, ADI score, pI, GRAVY, aggregation, VH/VL, VHH, scFv, InSynBio AbEvaluator, clinical benchmark">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://www.insynbio.com/cmc_benchmark.html">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://www.insynbio.com/cmc_benchmark.html">
+  <meta property="og:title" content="Antibody CMC Developability Benchmark | InSynBio">
+  <meta property="og:description" content="934 clinical antibody sequences — ADI scoring and CMC parameter panorama: VH/VL, VHH, scFv three-format comparison.">
+  <title>CMC Developability Benchmark | InSynBio — AI for Life Sciences</title>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+  <style>
+    :root { --primary: #0d9488; --primary-dark: #0f766e; --accent: #6d28d9; --accent-light: #ede9fe; --text: #111827; --text-muted: #4b5563; --border: #e5e7eb; --bg: #ffffff; --bg-alt: #f9fafb;
+      --vhvl: #0d9488; --vhh: #6d28d9; --scfv: #d97706; }
+    * { box-sizing: border-box; }
+    body { margin: 0; font-family: 'Inter', -apple-system, sans-serif; font-size: 15px; line-height: 1.6; color: var(--text); background: var(--bg); -webkit-font-smoothing: antialiased; padding-top: 72px; }
+
+    /* Header */
+    .top-header { position: fixed; top: 0; left: 0; right: 0; height: 72px; background: rgba(255,255,255,0.98); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(13,148,136,0.1); display: flex; align-items: center; justify-content: space-between; padding: 0 32px; z-index: 9999; }
+    .top-header .brand { display: flex; align-items: center; gap: 8px; flex-shrink: 0; }
+    .top-header .brand a { text-decoration: none; color: #111827; display: flex; align-items: center; gap: 3px; font-size: 22px; font-weight: 700; font-family: 'Space Grotesk','Inter',sans-serif; }
+    .top-header .brand .accent { color: #0d9488; font-style: italic; }
+    .top-header .slogan { font-size: 14px; color: #6b7280; padding-left: 14px; border-left: 1px solid #e5e7eb; margin-left: 6px; font-weight: 500; }
+    .mobile-menu-btn { display: none; background: none; border: 1px solid #e5e7eb; border-radius: 8px; padding: 6px 8px; cursor: pointer; color: #111827; line-height: 0; }
+    .nav-close-btn { display: none; }
+    .top-header-nav { display: flex; align-items: center; gap: 4px; margin-left: auto; }
+    .top-header-nav a { padding: 7px 13px; font-size: 14px; color: #4b5563; text-decoration: none; border-radius: 20px; transition: all 0.2s; font-weight: 600; }
+    .top-header-nav a:hover { color: #0d9488; background: rgba(13,148,136,0.06); }
+    .top-header-nav a.active { background: #0d9488; color: #fff; }
+    .nav-dropdown { position: relative; }
+    .nav-dropdown > a::after { content: ' ▾'; font-size: 10px; opacity: 0.6; margin-left: 2px; }
+    .nav-dropdown .dropdown-menu { position: absolute; top: 100%; left: 50%; transform: translateX(-50%) translateY(10px); min-width: 240px; padding: 8px; background: #fff; border: 1px solid rgba(0,0,0,0.06); border-radius: 12px; box-shadow: 0 10px 40px -10px rgba(0,0,0,0.12); opacity: 0; visibility: hidden; transition: all 0.2s cubic-bezier(0.16,1,0.3,1); z-index: 100; margin-top: 8px; }
+    .nav-dropdown:hover .dropdown-menu, .nav-dropdown:focus-within .dropdown-menu { opacity: 1; visibility: visible; transform: translateX(-50%) translateY(0); }
+    .nav-dropdown .dropdown-menu a { display: block; padding: 10px 14px; color: #111827; text-decoration: none; border-radius: 8px; }
+    .nav-dropdown .dropdown-menu a:hover { background: #f9fafb; }
+    .nav-dropdown .dropdown-menu a .menu-title { display: block; font-weight: 600; font-size: 14px; margin-bottom: 2px; }
+    .nav-dropdown .dropdown-menu a:hover .menu-title { color: #0d9488; }
+    .nav-dropdown .dropdown-menu a .menu-desc { display: block; font-size: 12px; color: #6b7280; line-height: 1.4; }
+    @media (max-width: 768px) {
+      .top-header .slogan { display: none; }
+      .mobile-menu-btn { display: block; margin-left: auto; }
+      .top-header-nav { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: #fff; flex-direction: column; justify-content: center; align-items: center; gap: 8px; margin: 0; opacity: 0; pointer-events: none; transition: opacity 0.25s; z-index: 10000; }
+      .top-header-nav.open { opacity: 1; pointer-events: auto; }
+      .nav-close-btn { display: block; position: absolute; top: 20px; right: 20px; background: none; border: none; font-size: 32px; color: #111827; cursor: pointer; padding: 4px 8px; }
+      .nav-dropdown .dropdown-menu { display: none; }
+    }
+
+    /* Layout */
+    .page-wrap { display: flex; min-height: calc(100vh - 72px); max-width: 1400px; margin: 0 auto; }
+    .sidebar { width: 260px; flex-shrink: 0; background: var(--bg); border-right: 1px solid rgba(0,0,0,0.05); padding: 40px 16px; position: sticky; top: 72px; height: calc(100vh - 72px); overflow-y: auto; }
+    .sidebar h3 { font-size: 11px; font-weight: 700; color: var(--text-muted); margin: 0 12px 12px; text-transform: uppercase; letter-spacing: 1.5px; }
+    .sidebar nav a { display: flex; align-items: center; padding: 10px 14px; color: var(--text-muted); text-decoration: none; font-size: 14px; transition: all 0.2s; border-radius: 8px; margin-bottom: 2px; font-weight: 500; }
+    .sidebar nav a:hover { background: rgba(13,148,136,0.06); color: var(--primary); }
+    .sidebar nav a.active { background: rgba(13,148,136,0.1); color: var(--primary-dark); font-weight: 600; }
+    .main { flex: 1; padding: 60px 60px 100px; max-width: 940px; }
+    .main h1 { font-family: 'Cormorant Garamond', serif; font-size: 42px; font-weight: 700; color: #111827; margin: 0 0 14px; letter-spacing: -0.03em; line-height: 1.1; }
+    .main h2 { font-size: 22px; font-weight: 700; color: #111827; margin: 2.5rem 0 1rem; padding-bottom: 0.5rem; border-bottom: 2px solid var(--border); }
+    .main h3 { font-size: 17px; font-weight: 700; color: #111827; margin: 1.5rem 0 0.75rem; }
+    .lead { font-size: 16px; color: var(--text-muted); line-height: 1.7; margin: 0 0 2rem; }
+    p { margin: 0 0 1rem; color: #374151; }
+
+    /* Tags */
+    .tag { display: inline-block; padding: 3px 10px; border-radius: 20px; font-size: 12px; font-weight: 600; }
+    .tag-teal { background: rgba(13,148,136,0.1); color: var(--primary-dark); }
+    .tag-purple { background: rgba(109,40,217,0.1); color: #6d28d9; }
+    .tag-amber { background: rgba(217,119,6,0.1); color: #b45309; }
+    .tag-gray { background: #f3f4f6; color: #6b7280; }
+
+    /* KPI grid */
+    .kpi-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1rem; margin: 1.5rem 0; }
+    .kpi-card { border-radius: 12px; padding: 1.25rem 1.5rem; border: 1px solid; }
+    .kpi-card.vhvl { border-color: rgba(13,148,136,0.25); background: rgba(13,148,136,0.04); }
+    .kpi-card.vhh { border-color: rgba(109,40,217,0.25); background: rgba(109,40,217,0.04); }
+    .kpi-card.scfv { border-color: rgba(217,119,6,0.25); background: rgba(217,119,6,0.04); }
+    .kpi-label { font-size: 12px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 8px; }
+    .kpi-card.vhvl .kpi-label { color: var(--primary-dark); }
+    .kpi-card.vhh .kpi-label { color: #6d28d9; }
+    .kpi-card.scfv .kpi-label { color: #b45309; }
+    .kpi-value { font-size: 36px; font-weight: 700; font-variant-numeric: tabular-nums; line-height: 1; }
+    .kpi-card.vhvl .kpi-value { color: var(--primary); }
+    .kpi-card.vhh .kpi-value { color: #7c3aed; }
+    .kpi-card.scfv .kpi-value { color: #d97706; }
+    .kpi-sub { font-size: 13px; color: var(--text-muted); margin-top: 6px; }
+    .kpi-meta { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 10px; }
+    .kpi-meta span { font-size: 12px; font-weight: 600; padding: 2px 8px; border-radius: 12px; }
+
+    /* Charts */
+    .chart-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin: 1.5rem 0; }
+    .chart-box { background: var(--bg-alt); border-radius: 12px; padding: 1.25rem; border: 1px solid var(--border); }
+    .chart-box h4 { font-size: 13px; font-weight: 700; color: var(--text-muted); margin: 0 0 1rem; text-transform: uppercase; letter-spacing: 0.5px; }
+    .chart-full { background: var(--bg-alt); border-radius: 12px; padding: 1.25rem; border: 1px solid var(--border); margin: 1.5rem 0; }
+    .chart-full h4 { font-size: 13px; font-weight: 700; color: var(--text-muted); margin: 0 0 1rem; text-transform: uppercase; letter-spacing: 0.5px; }
+
+    /* Table */
+    table { width: 100%; border-collapse: collapse; font-size: 14px; margin: 1rem 0; }
+    th { background: #f9fafb; padding: 10px 14px; text-align: left; font-size: 12px; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; border-bottom: 2px solid var(--border); }
+    td { padding: 10px 14px; border-bottom: 1px solid var(--border); vertical-align: middle; }
+    tr:last-child td { border-bottom: none; }
+    tr:hover td { background: #f9fafb; }
+
+    /* Grade badges */
+    .grade-excellent { background: #dcfce7; color: #166534; padding: 2px 10px; border-radius: 20px; font-size: 12px; font-weight: 700; }
+    .grade-acceptable { background: #dbeafe; color: #1e40af; padding: 2px 10px; border-radius: 20px; font-size: 12px; font-weight: 700; }
+    .grade-moderate { background: #fef3c7; color: #92400e; padding: 2px 10px; border-radius: 20px; font-size: 12px; font-weight: 700; }
+    .grade-high { background: #fee2e2; color: #991b1b; padding: 2px 10px; border-radius: 20px; font-size: 12px; font-weight: 700; }
+
+    /* Insight box */
+    .insight { background: linear-gradient(135deg,#f0fdf4 0%,#ecfdf5 100%); border: 1px solid rgba(13,148,136,0.2); border-left: 4px solid var(--primary); border-radius: 0 12px 12px 0; padding: 1rem 1.25rem; margin: 1.25rem 0; }
+    .insight.purple { background: linear-gradient(135deg,#faf5ff 0%,#f3e8ff 100%); border-color: rgba(109,40,217,0.2); border-left-color: #7c3aed; }
+    .insight.amber { background: linear-gradient(135deg,#fffbeb 0%,#fef3c7 100%); border-color: rgba(217,119,6,0.2); border-left-color: #d97706; }
+    .insight strong { font-weight: 700; }
+    .insight p { margin: 0; font-size: 14px; color: #374151; }
+
+    .fmt-dot { display: inline-block; width: 10px; height: 10px; border-radius: 50%; margin-right: 6px; }
+
+    .report-footer { background: #f9fafb; border-top: 1px solid var(--border); padding: 2rem 60px; text-align: center; margin-top: 3rem; }
+    .report-footer p { font-size: 13px; color: var(--text-muted); margin: 0 0 1rem; }
+
+    .grade-legend { display: flex; gap: 16px; flex-wrap: wrap; margin: 0.5rem 0 1.5rem; font-size: 13px; }
+    .grade-legend span { display: flex; align-items: center; gap: 6px; }
+    .legend-dot { width: 12px; height: 12px; border-radius: 3px; flex-shrink: 0; }
+
+    .breadcrumb { font-size: 13px; color: var(--text-muted); margin-bottom: 28px; }
+    .breadcrumb a { color: var(--text-muted); text-decoration: none; }
+    .breadcrumb a:hover { color: var(--primary); }
+    .breadcrumb span { margin: 0 6px; }
+
+    @media (max-width: 900px) {
+      .main { padding: 30px 20px 60px; }
+      .kpi-grid { grid-template-columns: 1fr; }
+      .chart-row { grid-template-columns: 1fr; }
+      .sidebar { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Header -->
+<header class="top-header">
+  <div class="brand">
+    <a href="index.html"><span>InSyn</span><span class="accent">Bio</span></a>
+    <span class="slogan">AI for Life Sciences</span>
+  </div>
+  <button class="mobile-menu-btn" onclick="document.querySelector('.top-header-nav').classList.toggle('open')" aria-label="Open navigation">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+  </button>
+  <nav class="top-header-nav">
+    <button class="nav-close-btn" onclick="document.querySelector('.top-header-nav').classList.remove('open')">&#10005;</button>
+    <a href="index.html">Home</a>
+    <div class="nav-dropdown" tabindex="0">
+      <a href="index.html#services">AI Drug Design</a>
+      <div class="dropdown-menu">
+        <a href="InSynBio_Antibody_Developability_Assessment_Page.html"><span class="menu-title">Antibody R&amp;D</span><span class="menu-desc">Humanization, CMC, Immunogenicity</span></a>
+        <a href="InSynBio_ADC_Design_Page.html"><span class="menu-title">Smart ADC Design</span><span class="menu-desc">Antigen-Payload-Linker Matching</span></a>
+        <a href="InSynBio_CART_Design_Page.html"><span class="menu-title">Smart CAR-T Design</span><span class="menu-desc">Architecture &amp; Component Optimization</span></a>
+        <a href="InSynBio_Bispecific_Antibody_Design_Page.html"><span class="menu-title">Bispecific Antibody Design</span><span class="menu-desc">Format Screening · CMC · Pairing</span></a>
+      </div>
+    </div>
+    <div class="nav-dropdown" tabindex="0">
+      <a href="antibody-guide.html" class="active">Clinical Reference Library</a>
+      <div class="dropdown-menu">
+        <a href="antibody-guide.html"><span class="menu-title">Antibody Engineering Guide</span><span class="menu-desc">Standards &amp; Design Principles</span></a>
+        <a href="ada_database.html"><span class="menu-title">ADA Database</span><span class="menu-desc">138 Clinical Immunogenicity Benchmarks</span></a>
+        <a href="adc_database.html"><span class="menu-title">ADC Database</span><span class="menu-desc">100 Clinical ADC Programs</span></a>
+        <a href="component-browser.html"><span class="menu-title">CAR Component Library</span><span class="menu-desc">237 CAR-T Engineering Components</span></a>
+      </div>
+    </div>
+    <a href="InSynBio_OurTech.html">Our Technology</a>
+    <a href="index.html#contact">Contact</a>
+  </nav>
+</header>
+
+<div class="page-wrap">
+
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <h3>Contents</h3>
+    <nav>
+      <a href="#overview" class="active">📊 Study Overview</a>
+      <a href="#adi">🏆 ADI Composite Score</a>
+      <a href="#category">📐 Four-Dimension Scores</a>
+      <a href="#vhvl">🔵 VH/VL IgG</a>
+      <a href="#vhh">🟣 VHH Nanobody</a>
+      <a href="#scfv">🟠 scFv Single-Chain</a>
+      <a href="#params">📋 Key Parameter Comparison</a>
+      <a href="#guidance">🎯 Practical Guide</a>
+    </nav>
+    <div style="margin-top:2rem;padding:12px 14px;background:rgba(13,148,136,0.06);border-radius:10px;">
+      <div style="font-size:11px;font-weight:700;color:var(--primary-dark);text-transform:uppercase;letter-spacing:1px;margin-bottom:8px;">Data Assets</div>
+      <div style="font-size:13px;color:var(--text-muted);line-height:1.6;">
+        <div><span style="color:var(--vhvl);font-weight:700;">■</span> VH/VL × 840</div>
+        <div><span style="color:var(--vhh);font-weight:700;">■</span> VHH × 42</div>
+        <div><span style="color:var(--scfv);font-weight:700;">■</span> scFv × 52</div>
+        <div style="margin-top:6px;font-size:12px;">Total <strong>934</strong> clinical sequences</div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Main content -->
+  <main class="main">
+
+    <div class="breadcrumb">
+      <a href="index.html">Home</a><span>/</span><a href="InSynBio_Antibody_Developability_Assessment_Page.html">Antibody R&amp;D</a><span>/</span><span>CMC Developability Benchmark</span>
+    </div>
+
+    <!-- Hero -->
+    <div style="margin-bottom:2rem;">
+      <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px;">
+        <span class="tag tag-teal">CMC Developability</span>
+        <span class="tag tag-purple">Large-Scale Benchmark</span>
+        <span class="tag tag-gray">934 Clinical Sequences</span>
+        <span class="tag tag-gray">InSynBio AbEvaluator V1.1</span>
+      </div>
+      <h1>Antibody CMC Developability<br><em style="color:var(--primary);font-style:italic;">Three-Format Panoramic Benchmark</em></h1>
+      <p class="lead">Based on <strong>934 clinical-stage therapeutic antibody sequences</strong> (VH/VL×840, VHH×42, scFv×52), systematically scored across four CMC dimensions using InSynBio AbEvaluator to establish industry-level developability reference ranges. Whether your molecule is a conventional IgG, nanobody, or scFv scaffold, use this benchmark for a <strong>pre-development checkup</strong> — data-driven identification of high-risk candidates before entering costly CMC development workflows.</p>
+      <div style="margin:1.5rem 0;padding:1.5rem 2rem;background:linear-gradient(135deg,#ecfdf5 0%,#f0fdf4 100%);border:1px solid rgba(13,148,136,0.2);border-radius:16px;display:flex;align-items:center;gap:1.5rem;">
+        <div style="font-size:48px;flex-shrink:0;">🩺</div>
+        <div>
+          <div style="font-size:18px;font-weight:700;color:#065f46;margin-bottom:6px;">Like a Population Health Checkup — for Your Antibody</div>
+          <p style="font-size:14px;color:#374151;margin:0;line-height:1.7;">Just as a medical checkup compares your results against healthy population reference ranges, this antibody checkup compares your candidate against the CMC parameter distributions of <strong>antibodies that have already entered clinical trials</strong>. Different formats (IgG / VHH / scFv) each have their own "normal value ranges" — a pI value normal in an IgG context may be elevated in a VHH context. This benchmark identifies high-risk candidates before CMC development begins, <strong>avoiding hundreds of thousands to millions in wasted development costs</strong>.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Section 1: Overview KPIs -->
+    <h2 id="overview">Study Overview</h2>
+    <div class="kpi-grid">
+      <div class="kpi-card vhvl">
+        <div class="kpi-label">VH/VL IgG</div>
+        <div class="kpi-value">840</div>
+        <div class="kpi-sub">Clinical humanized + fully human antibody sequences</div>
+        <div class="kpi-meta">
+          <span style="background:rgba(13,148,136,0.15);color:#065f46;">Reference: AbRef-458</span>
+          <span style="background:#f0fdf4;color:#166534;">9 CMC parameters</span>
+        </div>
+      </div>
+      <div class="kpi-card vhh">
+        <div class="kpi-label">VHH Nanobody</div>
+        <div class="kpi-value">42</div>
+        <div class="kpi-sub">Clinical-stage camelid single-domain antibodies</div>
+        <div class="kpi-meta">
+          <span style="background:rgba(109,40,217,0.12);color:#5b21b6;">Reference: VHH-42</span>
+          <span style="background:#f5f3ff;color:#4c1d95;">14 CMC parameters</span>
+        </div>
+      </div>
+      <div class="kpi-card scfv">
+        <div class="kpi-label">scFv Single-Chain</div>
+        <div class="kpi-value">52</div>
+        <div class="kpi-sub">Clinical / late-stage development scFv</div>
+        <div class="kpi-meta">
+          <span style="background:rgba(217,119,6,0.12);color:#92400e;">Reference: scFv-52</span>
+          <span style="background:#fffbeb;color:#78350f;">12 CMC parameters</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="insight">
+      <p><strong>Design Philosophy:</strong> Each format uses its own clinical distribution as the reference benchmark. VH/VL corresponds to AbRef-458 percentiles; VHH uses VHH-42 clinical threshold gating; scFv uses scFv-52 percentile distributions. <strong>Cross-format direct ADI comparison requires caution</strong> — each format has a different reference population; ADI reflects relative position within its own format.</p>
+    </div>
+
+    <!-- Section 2: ADI -->
+    <h2 id="adi">ADI Composite Developability Index</h2>
+
+    <p>ADI (Antibody Developability Index) is a weighted composite score from 0 to 100. The scoring algorithm is based on InSynBio's proprietary multi-dimensional weighting model, integrating four CMC dimensions. Weighting coefficients are calibrated by clinical data regression (specific weights are proprietary and not disclosed):</p>
+    <table>
+      <thead><tr><th>Dimension</th><th>Parameters</th><th>Scoring Logic</th></tr></thead>
+      <tbody>
+        <tr><td>🟦 Hydrophobicity</td><td>GRAVY, hydrophobic patch (max 9-mer), SAP aggregation propensity score</td><td>Piecewise linear scoring by reference population percentile</td></tr>
+        <tr><td>🟩 Charge Distribution</td><td>pI, net charge at pH 7, charge patch (max 7-mer)</td><td>Symmetric tent function; full score at p50</td></tr>
+        <tr><td>🟨 Chemical Modification Risk</td><td>N-glycosylation, deamidation (NG/NS), isomerization (DG/DS), oxidation, free Cys</td><td>Fewer sites = better score</td></tr>
+        <tr><td>🟥 Aggregation Risk</td><td>Aggregation motif count, hydrophobic cluster count, instability index</td><td>Multi-dimensional composite gating</td></tr>
+      </tbody>
+    </table>
+
+    <!-- ADI distribution chart -->
+    <div class="chart-full">
+      <h4>Three-Format ADI Distribution Comparison</h4>
+      <canvas id="adiDistChart" height="110"></canvas>
+    </div>
+
+    <!-- ADI summary table -->
+    <table>
+      <thead>
+        <tr><th>Format</th><th>n</th><th>ADI Mean</th><th>Median</th><th>Min</th><th>Max</th><th>Excellent ≥80</th><th>Acceptable 60–80</th><th>Moderate Risk 40–60</th><th>High Risk &lt;40</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="fmt-dot" style="background:var(--vhvl);"></span><strong>VH/VL</strong></td>
+          <td>840</td><td><strong>66.6</strong></td><td>67.5</td><td>34.5</td><td>90.2</td>
+          <td><span class="grade-excellent">50 (6%)</span></td>
+          <td><span class="grade-acceptable">575 (68%)</span></td>
+          <td><span class="grade-moderate">211 (25%)</span></td>
+          <td><span class="grade-high">4 (1%)</span></td>
+        </tr>
+        <tr>
+          <td><span class="fmt-dot" style="background:var(--vhh);"></span><strong>VHH</strong></td>
+          <td>42</td><td><strong>65.9</strong></td><td>66.1</td><td>53.1</td><td>82.0</td>
+          <td><span class="grade-excellent">3 (8%)</span></td>
+          <td><span class="grade-acceptable">26 (67%)</span></td>
+          <td><span class="grade-moderate">10 (26%)</span></td>
+          <td><span class="grade-high">0</span></td>
+        </tr>
+        <tr>
+          <td><span class="fmt-dot" style="background:var(--scfv);"></span><strong>scFv</strong></td>
+          <td>52</td><td><strong>63.1</strong></td><td>62.3</td><td>48.0</td><td>76.0</td>
+          <td><span class="grade-excellent">0</span></td>
+          <td><span class="grade-acceptable">37 (71%)</span></td>
+          <td><span class="grade-moderate">15 (29%)</span></td>
+          <td><span class="grade-high">0</span></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="grade-legend">
+      <span><span class="legend-dot" style="background:#dcfce7;border:1px solid #16a34a;"></span> Excellent ≥80</span>
+      <span><span class="legend-dot" style="background:#dbeafe;border:1px solid #3b82f6;"></span> Acceptable 60–80</span>
+      <span><span class="legend-dot" style="background:#fef3c7;border:1px solid #f59e0b;"></span> Moderate Risk 40–60</span>
+      <span><span class="legend-dot" style="background:#fee2e2;border:1px solid #ef4444;"></span> High Risk &lt;40</span>
+    </div>
+
+    <div class="insight">
+      <p><strong>Key Finding:</strong> All three formats are dominated by the "acceptable" range (60–80), accounting for 67–71% of sequences, showing that clinical-stage antibodies display consistent CMC characteristics within their own format reference framework. scFv has no "excellent" entries — reflecting scFv's inherently greater chemical modification exposure (dual CDR set + linker region), not a selection quality issue.</p>
+    </div>
+
+    <!-- Section 3: Category Scores -->
+    <h2 id="category">Four-Dimension Category Scores</h2>
+
+    <div class="chart-row">
+      <div class="chart-box">
+        <h4>Four-Dimension Radar by Format</h4>
+        <canvas id="radarChart" height="200"></canvas>
+      </div>
+      <div class="chart-box">
+        <h4>Category Scores by Format</h4>
+        <canvas id="catBarChart" height="200"></canvas>
+      </div>
+    </div>
+
+    <table>
+      <thead><tr><th>Format</th><th>🟦 Hydrophobicity</th><th>🟩 Charge</th><th>🟨 Chemical Mod.</th><th>🟥 Aggregation</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><span class="fmt-dot" style="background:var(--vhvl);"></span><strong>VH/VL</strong></td>
+          <td>70.2</td><td>70.4</td><td>65.4</td><td>57.9</td>
+        </tr>
+        <tr>
+          <td><span class="fmt-dot" style="background:var(--vhh);"></span><strong>VHH</strong></td>
+          <td>70.9</td><td>69.6</td><td><strong style="color:#0d9488;">70.4 ★</strong></td><td><strong style="color:#dc2626;">48.0 ⚠</strong></td>
+        </tr>
+        <tr>
+          <td><span class="fmt-dot" style="background:var(--scfv);"></span><strong>scFv</strong></td>
+          <td><strong style="color:#dc2626;">61.3 ⚠</strong></td><td>67.7</td><td><strong style="color:#dc2626;">59.4 ⚠</strong></td><td>64.6</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="insight purple">
+      <p><strong>VHH Aggregation Score Lower (48.0):</strong> Clinical VHH sequences commonly carry more aggregation motifs (mean 3.7 vs. 0–2 for VH/VL), driven by CDR3 length and its tendency to form atypical secondary structures. However, VHH's excellent chemical modification score (70.4) compensates — this is the molecular basis for nanobodies' superior thermal stability.</p>
+    </div>
+    <div class="insight amber">
+      <p><strong>scFv Hydrophobicity and Chemical Modification Lower:</strong> scFv concatenates VH and VL into a single chain, exposing a larger hydrophobic surface (no VH-VL interface shielding), while dual CDR sets double the total count of chemical modification sites (deamidation, isomerization). The (G₄S)₃ linker is itself highly hydrophilic and introduces no additional risk.</p>
+    </div>
+
+    <!-- Section 4: VH/VL -->
+    <h2 id="vhvl"><span class="fmt-dot" style="background:var(--vhvl);width:14px;height:14px;display:inline-block;vertical-align:middle;margin-right:4px;border-radius:50%;"></span>VH/VL IgG — 840-Sequence Reference Ranges</h2>
+
+    <p>Reference population: <strong>AbRef-458</strong> (458 clinical humanized IgGs) as gating benchmark; additional 382 fully-human antibodies included as comparative population. ADI means: humanized 67.6 vs. fully human 65.4 — no significant difference.</p>
+
+    <table>
+      <thead><tr><th>Parameter</th><th>Mean</th><th>p5</th><th>p25</th><th>p50</th><th>p75</th><th>p95</th><th>Gating Range (PASS)</th></tr></thead>
+      <tbody>
+        <tr><td>pI</td><td>7.76</td><td>5.20</td><td>6.80</td><td>8.30</td><td>8.80</td><td>9.09</td><td>5.2 – 9.1</td></tr>
+        <tr><td>GRAVY</td><td>−0.312</td><td>−0.475</td><td>−0.389</td><td>−0.339</td><td>−0.267</td><td>−0.192</td><td>−0.475 – −0.192</td></tr>
+        <tr><td>Instability Index</td><td>39.2</td><td>27.7</td><td>33.5</td><td>37.8</td><td>42.9</td><td>47.1</td><td>&lt; 47.1</td></tr>
+        <tr><td>Net Charge pH 7</td><td>+1.5</td><td>−3.4</td><td>−0.2</td><td>+1.9</td><td>+4.1</td><td>+5.9</td><td>−3.4 – +5.9</td></tr>
+        <tr><td>Aggregation Motifs</td><td>0.3</td><td>0</td><td>0</td><td>0</td><td>0</td><td>2</td><td>≤ 2</td></tr>
+        <tr><td>Deamidation Sites</td><td>0.9</td><td>0</td><td>0</td><td>1</td><td>1</td><td>3</td><td>≤ 3</td></tr>
+        <tr><td>Isomerization Sites</td><td>0.9</td><td>0</td><td>0</td><td>1</td><td>2</td><td>3</td><td>≤ 3</td></tr>
+      </tbody>
+    </table>
+
+    <div class="insight">
+      <p><strong>VH/VL Key Features:</strong> Median aggregation motif count is 0 — clinical IgG frameworks have been evolutionarily optimized, with inherently minimal aggregation propensity. pI shows bimodal distribution (~5–6 or 8–9), corresponding to different expression and purification strategy choices. The lower aggregation risk dimension score (57.9) is primarily driven by local hydrophobicity at VH-VL interface contact residues.</p>
+    </div>
+
+    <!-- Section 5: VHH -->
+    <h2 id="vhh"><span class="fmt-dot" style="background:var(--vhh);width:14px;height:14px;display:inline-block;vertical-align:middle;margin-right:4px;border-radius:50%;"></span>VHH Nanobody — 42-Sequence Reference Ranges</h2>
+
+    <p>Reference population: <strong>VHH-42</strong> (42 clinical and clinical-grade VHH sequences). VHH uses threshold-based gating scoring (PASS/WARN/FAIL) rather than continuous percentile scoring.</p>
+
+    <table>
+      <thead><tr><th>Parameter</th><th>Mean</th><th>p5</th><th>p25</th><th>p50</th><th>p75</th><th>p95</th><th>Clinical Threshold WARN</th></tr></thead>
+      <tbody>
+        <tr><td>pI</td><td>7.5</td><td>4.8</td><td>5.1</td><td>8.6</td><td>9.0</td><td>9.1</td><td>&gt; 9.5</td></tr>
+        <tr><td>GRAVY</td><td>−0.285</td><td>−0.481</td><td>−0.368</td><td>−0.293</td><td>−0.208</td><td>−0.106</td><td>&gt; −0.05</td></tr>
+        <tr><td>Instability Index</td><td>37.9</td><td>23.0</td><td>33.6</td><td>39.0</td><td>44.3</td><td>46.5</td><td>&gt; 50</td></tr>
+        <tr><td>Net Charge pH 7</td><td>+0.9</td><td>−3.2</td><td>−2.0</td><td>+1.8</td><td>+2.8</td><td>+3.9</td><td>&gt; 7</td></tr>
+        <tr><td>Aggregation Motifs</td><td>3.7</td><td>2</td><td>3</td><td>4</td><td>4</td><td>5</td><td>&gt; 5</td></tr>
+        <tr><td>Deamidation Sites</td><td>1.4</td><td>0.1</td><td>1.0</td><td>1.5</td><td>2.0</td><td>2.0</td><td>&gt; 3</td></tr>
+        <tr><td>Isomerization Sites</td><td>1.3</td><td>0</td><td>1.0</td><td>1.0</td><td>2.0</td><td>2.0</td><td>&gt; 3</td></tr>
+        <tr><td>Free Cys</td><td>0.24</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1.95</td><td>&gt; 1</td></tr>
+        <tr><td>Oxidation Sites (M/W)</td><td>5.0</td><td>4</td><td>4</td><td>5</td><td>6</td><td>6</td><td>&gt; 7</td></tr>
+      </tbody>
+    </table>
+
+    <div class="insight purple">
+      <p><strong>VHH Key Features:</strong> VHH mean aggregation motifs (3.7) is significantly higher than VH/VL (0.3) — an inherent cost of exposed CDR3 long-loop, clinically demonstrated to be acceptable. No VHH sample falls in the "high risk" category, confirming that clinical VHH candidates have undergone thorough developability screening. The best chemical modification score (70.4) reflects that single-chain VHH has less total deamidation/isomerization exposure than Fv.</p>
+    </div>
+
+    <!-- Section 6: scFv -->
+    <h2 id="scfv"><span class="fmt-dot" style="background:var(--scfv);width:14px;height:14px;display:inline-block;vertical-align:middle;margin-right:4px;border-radius:50%;"></span>scFv Single-Chain Antibody — 52-Sequence Reference Ranges</h2>
+
+    <p>Reference population: <strong>scFv-52</strong> (52 clinical / late-stage development scFv sequences, 95% in VH-(G₄S)₃-VL orientation, linker length 15 aa).</p>
+
+    <table>
+      <thead><tr><th>Parameter</th><th>Mean</th><th>p5</th><th>p25</th><th>p50</th><th>p75</th><th>p95</th><th>PASS Range</th></tr></thead>
+      <tbody>
+        <tr><td>pI</td><td>7.54</td><td>5.08</td><td>6.39</td><td>8.32</td><td>8.66</td><td>9.01</td><td>5.1 – 9.0</td></tr>
+        <tr><td>GRAVY</td><td>−0.323</td><td>−0.484</td><td>−0.383</td><td>−0.355</td><td>−0.274</td><td>−0.162</td><td>−0.484 – −0.162</td></tr>
+        <tr><td>Instability Index</td><td>41.4</td><td>34.0</td><td>38.0</td><td>41.1</td><td>44.2</td><td>50.1</td><td>&lt; 50.1</td></tr>
+        <tr><td>Net Charge pH 7</td><td>+1.3</td><td>−4.1</td><td>−0.4</td><td>+2.0</td><td>+3.6</td><td>+4.9</td><td>−4.1 – +4.9</td></tr>
+        <tr><td>Aggregation Motifs</td><td>3.3</td><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td><td>≤ 5</td></tr>
+        <tr><td>Deamidation Sites</td><td>1.5</td><td>0</td><td>0.75</td><td>1.5</td><td>2</td><td>3.5</td><td>≤ 3.5</td></tr>
+        <tr><td>Isomerization Sites</td><td>2.0</td><td>1</td><td>1</td><td>2</td><td>3</td><td>4</td><td>≤ 4</td></tr>
+        <tr><td>Oxidation Sites (M/W)</td><td>8.9</td><td>6.6</td><td>7</td><td>9</td><td>10</td><td>12</td><td>≤ 12</td></tr>
+        <tr><td>Full-chain Length</td><td>244 aa</td><td>238</td><td>241</td><td>244</td><td>247</td><td>250</td><td>238–250 aa</td></tr>
+      </tbody>
+    </table>
+
+    <div class="insight amber">
+      <p><strong>scFv Key Features:</strong> Instability index mean (41.4) is higher than VH/VL (39.2) and VHH (37.9), reflecting the inherent slightly lower thermal stability of single-chain structures. Oxidation sites mean (8.9) is highest, as scFv contains the full complement of VH+VL M/W residues. scFv has neither high-risk nor excellent samples — a "concentrated acceptable range" format, with optimization space focused on hydrophobicity and chemical modification dimensions.</p>
+    </div>
+
+    <!-- Section 7: Parameter comparison -->
+    <h2 id="params">Key Parameter Cross-Format Comparison</h2>
+
+    <div class="chart-full">
+      <h4>Core CMC Parameters — Three-Format Comparison (Means)</h4>
+      <canvas id="paramChart" height="100"></canvas>
+    </div>
+
+    <table>
+      <thead><tr><th>Parameter</th><th>VH/VL</th><th>VHH</th><th>scFv</th><th>Interpretation</th></tr></thead>
+      <tbody>
+        <tr><td>ADI Mean</td><td>66.6</td><td>65.9</td><td>63.1</td><td>All three formats close; scFv slightly lower due to inherent structural factors</td></tr>
+        <tr><td>pI Mean</td><td>7.76</td><td>7.51</td><td>7.54</td><td>All in neutral range; VH/VL slightly more basic</td></tr>
+        <tr><td>GRAVY Mean</td><td>−0.312</td><td>−0.285</td><td>−0.323</td><td>VHH most hydrophilic; scFv slightly more hydrophobic due to linker contribution</td></tr>
+        <tr><td>Instability Index</td><td>39.2</td><td>37.9</td><td>41.4</td><td>VHH most stable; scFv slightly higher but within threshold</td></tr>
+        <tr><td>Aggregation Motifs (mean)</td><td>0.3</td><td>3.7</td><td>3.3</td><td>VH/VL essentially motif-free; VHH/scFv require monitoring</td></tr>
+        <tr><td>Deamidation Sites</td><td>0.9</td><td>1.4</td><td>1.5</td><td>VHH/scFv slightly higher due to longer CDR3</td></tr>
+      </tbody>
+    </table>
+
+    <!-- Section 8: Guidance -->
+    <h2 id="guidance">Practical Guide: How to Use This Benchmark for Your Antibody Checkup</h2>
+
+    <h3>Checkup Workflow</h3>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin:1rem 0;">
+      <div style="background:#f0fdf4;border-radius:10px;padding:1rem;border:1px solid #bbf7d0;text-align:center;">
+        <div style="font-size:24px;margin-bottom:6px;">①</div>
+        <div style="font-weight:700;font-size:13px;color:#065f46;">Identify Format</div>
+        <div style="font-size:12px;color:#4b5563;margin-top:4px;">VH/VL / VHH / scFv — select corresponding benchmark</div>
+      </div>
+      <div style="background:#f5f3ff;border-radius:10px;padding:1rem;border:1px solid #ddd6fe;text-align:center;">
+        <div style="font-size:24px;margin-bottom:6px;">②</div>
+        <div style="font-weight:700;font-size:13px;color:#4c1d95;">Submit Sequence</div>
+        <div style="font-size:12px;color:#4b5563;margin-top:4px;">AbEvaluator computes 15 CMC parameters</div>
+      </div>
+      <div style="background:#fffbeb;border-radius:10px;padding:1rem;border:1px solid #fde68a;text-align:center;">
+        <div style="font-size:24px;margin-bottom:6px;">③</div>
+        <div style="font-weight:700;font-size:13px;color:#78350f;">Compare Reference Ranges</div>
+        <div style="font-size:12px;color:#4b5563;margin-top:4px;">Parameters within p5–p95 = PASS</div>
+      </div>
+      <div style="background:#eff6ff;border-radius:10px;padding:1rem;border:1px solid #bfdbfe;text-align:center;">
+        <div style="font-size:24px;margin-bottom:6px;">④</div>
+        <div style="font-weight:700;font-size:13px;color:#1e40af;">Interpret ADI Score</div>
+        <div style="font-size:12px;color:#4b5563;margin-top:4px;">≥60 clears the gate for next development stage</div>
+      </div>
+    </div>
+
+    <h3>Format Selection and CMC Risk Impact</h3>
+    <table>
+      <thead><tr><th>Risk Factor</th><th>VH/VL</th><th>VHH</th><th>scFv</th></tr></thead>
+      <tbody>
+        <tr><td>Aggregation Risk</td><td>🟢 Low</td><td>🟡 Medium (long CDR3)</td><td>🟡 Medium (hydrophobic exposure)</td></tr>
+        <tr><td>Chemical Modification Sites</td><td>🟢 Low</td><td>🟢 Low</td><td>🟡 Medium (dual CDR)</td></tr>
+        <tr><td>Thermal Stability</td><td>🟢 Good</td><td>🟢 Excellent</td><td>🟡 Slightly lower</td></tr>
+        <tr><td>Manufacturing Process</td><td>🟢 Mature</td><td>🟢 Simple (single-chain)</td><td>🟡 Folding risk</td></tr>
+        <tr><td>Immunogenicity</td><td>🟢 Optimized</td><td>🟡 Humanization assessment needed</td><td>🟢 Comparable to VH/VL</td></tr>
+        <tr><td>Half-Life</td><td>🟢 Long (FcRn)</td><td>🔴 Short (requires Fc fusion or modification)</td><td>🔴 Short (requires Fc fusion)</td></tr>
+      </tbody>
+    </table>
+
+    <div class="insight">
+      <p><strong>ADI Score Interpretation:</strong> ADI ≥ 80 = Excellent (recommend fast-tracking); 60–80 = Acceptable (normal clinical development range); 40–60 = Moderate Risk (recommend optimizing WARN parameters at candidate selection stage); &lt;40 = High Risk (recommend systematic improvement during humanization or CDR optimization). Note: ADI scoring is sequence-based only and does not replace experimental Tm measurement, concentrated aggregation assays, or manufacturing process validation.</p>
+    </div>
+
+    <!-- CTA -->
+    <div style="margin-top:3rem;padding:2rem;background:linear-gradient(135deg,#f0fdf4,#ecfdf5);border-radius:16px;border:1px solid rgba(13,148,136,0.15);text-align:center;">
+      <div style="font-size:20px;font-weight:700;margin-bottom:8px;">🩺 Run a CMC Checkup for Your Antibody</div>
+      <p style="color:var(--text-muted);margin:0 0 1.5rem;">Submit your antibody sequence for a complete AbEvaluator CMC Developability Checkup Report (PDF + JSON): each parameter benchmarked against same-format clinical antibody reference ranges, with PASS / WARN / FAIL annotations and actionable FR region optimization recommendations. <strong>Screen before CMC development begins — reduce late-stage process failure risk.</strong></p>
+      <a href="index.html#contact" style="display:inline-flex;align-items:center;gap:8px;padding:14px 32px;background:var(--primary);color:#fff;border-radius:10px;font-size:15px;font-weight:700;text-decoration:none;box-shadow:0 4px 14px rgba(13,148,136,0.3);transition:all 0.2s;" onmouseover="this.style.background='#0f766e'" onmouseout="this.style.background='#0d9488'">
+        Submit Developability Assessment Inquiry →
+      </a>
+    </div>
+
+  </main>
+</div>
+
+<!-- Footer -->
+<div class="report-footer">
+  <p>Data Source: InSynBio AbEngineCore V1.1 | Reference Libraries: AbRef-458 (VH/VL), VHH-42 (VHH), scFv-52 (scFv)</p>
+  <p>© 2026 InSynBio. Data in this report are statistical reference ranges and do not constitute clinical development advice.</p>
+  <div style="display:flex;justify-content:center;gap:16px;flex-wrap:wrap;">
+    <a href="antibody-guide.html" style="color:var(--primary);text-decoration:none;font-weight:600;">Antibody Engineering Services</a>
+    <a href="vam_benchmark.html" style="color:var(--primary);text-decoration:none;font-weight:600;">VAM Benchmark Study</a>
+    <a href="adc_database.html" style="color:var(--primary);text-decoration:none;font-weight:600;">ADC Database</a>
+  </div>
+</div>
+
+<!-- Charts -->
+<script>
+const VHVL_COLOR = 'rgba(13,148,136,0.8)';
+const VHH_COLOR  = 'rgba(109,40,217,0.8)';
+const SCFV_COLOR = 'rgba(217,119,6,0.8)';
+
+new Chart(document.getElementById('adiDistChart'), {
+  type: 'bar',
+  data: {
+    labels: ['High Risk <40','Moderate Risk 40–60','Acceptable 60–80','Excellent ≥80'],
+    datasets: [
+      { label:'VH/VL (n=840)', data:[4,211,575,50], backgroundColor:VHVL_COLOR, borderRadius:6 },
+      { label:'VHH (n=42)',    data:[0,10,26,3],   backgroundColor:VHH_COLOR,  borderRadius:6 },
+      { label:'scFv (n=52)',   data:[0,15,37,0],   backgroundColor:SCFV_COLOR, borderRadius:6 },
+    ]
+  },
+  options:{
+    responsive:true, plugins:{legend:{position:'bottom'}},
+    scales:{
+      x:{grid:{display:false}},
+      y:{grid:{color:'rgba(0,0,0,0.05)'},title:{display:true,text:'Sequence Count'}}
+    }
+  }
+});
+
+new Chart(document.getElementById('radarChart'), {
+  type: 'radar',
+  data: {
+    labels: ['Hydrophobicity','Charge','Chemical Mod.','Aggregation'],
+    datasets: [
+      { label:'VH/VL', data:[70.2,70.4,65.4,57.9], borderColor:'rgba(13,148,136,0.9)', backgroundColor:'rgba(13,148,136,0.12)', pointBackgroundColor:'rgba(13,148,136,0.9)', borderWidth:2 },
+      { label:'VHH',   data:[70.9,69.6,70.4,48.0], borderColor:'rgba(109,40,217,0.9)', backgroundColor:'rgba(109,40,217,0.12)', pointBackgroundColor:'rgba(109,40,217,0.9)', borderWidth:2 },
+      { label:'scFv',  data:[61.3,67.7,59.4,64.6], borderColor:'rgba(217,119,6,0.9)', backgroundColor:'rgba(217,119,6,0.12)', pointBackgroundColor:'rgba(217,119,6,0.9)', borderWidth:2 },
+    ]
+  },
+  options:{
+    responsive:true, plugins:{legend:{position:'bottom'}},
+    scales:{r:{min:40,max:80,ticks:{stepSize:10,font:{size:11}},grid:{color:'rgba(0,0,0,0.06)'},pointLabels:{font:{size:12,weight:'600'}}}}
+  }
+});
+
+new Chart(document.getElementById('catBarChart'), {
+  type: 'bar',
+  data: {
+    labels:['Hydrophobicity','Charge','Chemical Mod.','Aggregation'],
+    datasets:[
+      { label:'VH/VL', data:[70.2,70.4,65.4,57.9], backgroundColor:VHVL_COLOR, borderRadius:6 },
+      { label:'VHH',   data:[70.9,69.6,70.4,48.0], backgroundColor:VHH_COLOR,  borderRadius:6 },
+      { label:'scFv',  data:[61.3,67.7,59.4,64.6], backgroundColor:SCFV_COLOR, borderRadius:6 },
+    ]
+  },
+  options:{
+    indexAxis:'y', responsive:true, plugins:{legend:{position:'bottom'}},
+    scales:{
+      x:{min:0,max:100,grid:{color:'rgba(0,0,0,0.05)'},ticks:{stepSize:20}},
+      y:{grid:{display:false}}
+    }
+  }
+});
+
+new Chart(document.getElementById('paramChart'), {
+  type: 'bar',
+  data: {
+    labels:['pI Mean','−GRAVY×100','Instability Index/10','Aggregation Motifs×10'],
+    datasets:[
+      { label:'VH/VL', data:[7.76, 31.2, 3.92, 3.0], backgroundColor:VHVL_COLOR, borderRadius:6 },
+      { label:'VHH',   data:[7.51, 28.5, 3.79, 37.0], backgroundColor:VHH_COLOR, borderRadius:6 },
+      { label:'scFv',  data:[7.54, 32.3, 4.14, 33.0], backgroundColor:SCFV_COLOR, borderRadius:6 },
+    ]
+  },
+  options:{
+    responsive:true, plugins:{legend:{position:'bottom'}},
+    scales:{
+      x:{grid:{display:false}},
+      y:{grid:{color:'rgba(0,0,0,0.05)'}}
+    }
+  }
+});
+
+// Sidebar active on scroll
+document.querySelectorAll('.top-header-nav a').forEach(a => {
+  a.addEventListener('click', () => document.querySelector('.top-header-nav').classList.remove('open'));
+});
+const sections = document.querySelectorAll('h2[id]');
+const navLinks = document.querySelectorAll('.sidebar nav a');
+const observer = new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      navLinks.forEach(l=>l.classList.remove('active'));
+      const l = document.querySelector('.sidebar nav a[href="#'+e.target.id+'"]');
+      if(l) l.classList.add('active');
+    }
+  });
+},{rootMargin:'-20% 0px -70% 0px'});
+sections.forEach(s=>observer.observe(s));
+</script>
+</body>
+</html>
