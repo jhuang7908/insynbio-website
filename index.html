@@ -104,6 +104,7 @@
     .nav-dropdown .dropdown-menu a .menu-desc, .std-nav-dd .std-dd-menu a .menu-desc {
       display: block; font-size: 12px; color: #6b7280; font-weight: 400; line-height: 1.4;
     }
+    
     /* ── Mobile nav ────────────────────────────────── */
     @media (max-width: 768px) {
       body { padding-top: 64px; }
@@ -125,37 +126,79 @@
         width: 100vw; height: 100vh;
         background: #fff;
         flex-direction: column;
-        justify-content: center; align-items: center;
-        gap: 8px;
+        justify-content: flex-start;
+        align-items: stretch;
+        gap: 0;
         margin: 0;
+        padding: 72px 0 40px;
         opacity: 0;
+        visibility: hidden;
         pointer-events: none;
-        transition: opacity 0.25s ease;
+        transition: opacity 0.25s ease, visibility 0.25s;
         z-index: 10000;
+        overflow-y: auto;
       }
       .top-header-nav.open, .std-top-nav.open {
         opacity: 1;
+        visibility: visible;
         pointer-events: auto;
       }
-      .top-header-nav a, .std-top-nav a {
-        font-size: 18px; padding: 10px 24px; color: #111827;
+      body:has(.top-header-nav.open) { overflow: hidden !important; }
+      
+      .top-header-nav > a, .std-top-nav > a {
+        display: block;
+        text-align: center;
+        font-size: 18px; padding: 16px 24px; color: #111827;
+        border-bottom: 1px solid #f3f4f6;
+        border-radius: 0;
       }
-      .top-header-nav a:hover, .std-top-nav a:hover { color: #0d9488; background: rgba(13,148,136,0.06); }
-      .top-header-nav a.active, .std-top-nav a.active { background: #0d9488; color: #fff; }
+      .top-header-nav > a:hover, .std-top-nav > a:hover { color: #0d9488; background: transparent; }
+      .top-header-nav > a.active, .std-top-nav > a.active { background: transparent; color: #0d9488; }
+      
       .nav-close-btn, .std-nav-close {
-        display: block; position: absolute; top: 20px; right: 20px;
-        background: none; border: none; font-size: 32px; color: #111827; cursor: pointer;
-        line-height: 1; padding: 4px 8px;
+        display: flex; position: absolute; top: 16px; right: 16px;
+        background: #f3f4f6; border: none; font-size: 24px; color: #111827; cursor: pointer;
+        width: 44px; height: 44px; border-radius: 50%;
+        align-items: center; justify-content: center;
       }
-      .nav-dropdown .dropdown-menu, .std-nav-dd .std-dd-menu { display: none; }
-      .nav-dropdown > a::after, .std-nav-dd > a::after { display: none; }
+      
+      .nav-dropdown { width: 100%; text-align: center; }
+      .nav-dropdown > a {
+        display: block;
+        font-size: 18px; padding: 16px 24px; color: #111827;
+        border-bottom: 1px solid #f3f4f6;
+        border-radius: 0;
+      }
+      .nav-dropdown .dropdown-menu, .std-nav-dd .std-dd-menu { 
+        display: block !important;
+        position: static !important;
+        transform: none !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+        box-shadow: none !important;
+        width: 100% !important;
+        background: #f9fafb !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        border: none !important;
+        border-bottom: 1px solid #f3f4f6 !important;
+        max-height: none !important;
+      }
+      .nav-dropdown .dropdown-menu a {
+        display: block;
+        font-size: 15px; padding: 14px 24px; text-align: left;
+        border-bottom: 1px solid #f3f4f6;
+        border-radius: 0;
+      }
+      .nav-dropdown > a::after, .std-nav-dd > a::after { display: inline-block; }
     }
+
     /* ── Overflow protection ───────────────────────── */
     html, body { max-width: 100%; overflow-x: hidden; }
     table { display: block; width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; }
     thead, tbody, tr { width: 100%; }
 
-        /* Hero */
+    /* Hero */
     .hero { position: relative; min-height: 440px; display: flex; align-items: center; justify-content: center; text-align: center; padding: 56px 24px 64px; overflow: hidden; }
     .hero-banner { position: absolute; inset: 0; z-index: 0; opacity: 1.0; }
     .hero-banner img { width: 100%; height: 100%; display: block; object-fit: cover; }
@@ -333,7 +376,7 @@
         </div>
       </div>
       <div class="nav-dropdown" tabindex="0">
-        <a href="#case-studies">Case Studies</a>
+      <a href="#case-studies">Case Studies</a>
         <div class="dropdown-menu">
           <a href="case_mumab4d5_humanization_en.html">
             <span class="menu-title">muMAb4D5 Humanization</span>
@@ -400,24 +443,24 @@
     <div class="hero-inner">
       <h1>AI-Powered Drug R&D and Design</h1>
       <p class="tagline">AI-assisted drug discovery. Grounded in clinical and scientific data, powered by machine learning for biotherapeutic design, assessment, and innovation.</p>
-      <div class="hero-features">
-        <div class="feature-item">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0d9488" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
-          AI-Driven Design
-        </div>
-        <div class="feature-item">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0d9488" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+    <div class="hero-features">
+      <div class="feature-item">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0d9488" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+        AI-Driven Design
+      </div>
+      <div class="feature-item">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0d9488" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
           Clinical Validation
-        </div>
-        <div class="feature-item">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0d9488" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+      </div>
+      <div class="feature-item">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0d9488" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
           End-to-End Service
         </div>
       </div>
-      <div class="cta-row">
+    <div class="cta-row">
         <a href="#services" class="btn">Start Assessment</a>
-        <a href="#contact" class="btn btn-outline">Contact Us</a>
-      </div>
+      <a href="#contact" class="btn btn-outline">Contact Us</a>
+    </div>
     </div>
   </section>
 
@@ -547,36 +590,36 @@
     <div class="section-wide">
       <span class="section-label">AI Drug Design</span>
       <h2>Design Services</h2>
-      <div class="services-grid">
+    <div class="services-grid">
         <div class="service-card">
           <div class="icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
           <h3>Antibody R&D & Assessment</h3>
           <span class="status">Available</span>
           <p>Sequence analysis, CMC assessment, immunogenicity prediction, humanization, and affinity maturation.</p>
-          <a href="InSynBio_Antibody_Developability_Assessment_Page.html">Learn more →</a>
+        <a href="InSynBio_Antibody_Developability_Assessment_Page.html">Learn more →</a>
         </div>
         <div class="service-card">
           <div class="icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg></div>
-          <h3>Smart ADC Design</h3>
+        <h3>Smart ADC Design</h3>
           <span class="status">Available</span>
           <p>8-step intelligent recommendation for Antigen-Payload-Linker matching based on 100 clinical programs.</p>
           <a href="InSynBio_ADC_Design_Page.html">Design Now →</a>
         </div>
         <div class="service-card">
           <div class="icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg></div>
-          <h3>Smart CAR-T Design</h3>
+        <h3>Smart CAR-T Design</h3>
           <span class="status">Available</span>
           <p>ACTES engine-driven architecture design, affinity tuning, and safety assessment.</p>
-          <a href="InSynBio_CART_Design_Page.html">Inquire Now →</a>
+        <a href="InSynBio_CART_Design_Page.html">Inquire Now →</a>
         </div>
         <div class="service-card">
           <div class="icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path></svg></div>
-          <h3>Vaccine Design</h3>
+        <h3>Vaccine Design</h3>
           <span class="status">Available</span>
           <p>Computational epitope prediction, adjuvant matching, and peptide/mRNA vaccine design.</p>
-          <a href="vaccine_design.html">Learn more →</a>
-        </div>
+        <a href="vaccine_design.html">Learn more →</a>
       </div>
+    </div>
     </div>
   </section>
 
@@ -863,7 +906,7 @@
               <li>PRODIGY ΔG −10.8 vs −7.3 kcal/mol · epitope resolved</li>
               <li>PD-1/PD-L1 interface overlap mapped at residue level</li>
             </ul>
-          </div>
+      </div>
           <div class="case-cta">Read Case →</div>
         </a>
       </div><!-- /.case-grid -->
@@ -914,5 +957,52 @@
       });
     });
   </script>
+
+  <script>
+    (function() {
+      function setNavActive() {
+        var hash = window.location.hash || '';
+        var homeLink = document.querySelector('.top-header-nav a[href="index.html"]');
+        if (homeLink) homeLink.classList.toggle('active', !hash || hash === '#');
+        document.querySelectorAll('.top-header-nav a[href*="#"]').forEach(function(a) {
+          var href = a.getAttribute('href');
+          var anchor = href.includes('#') ? href.split('#')[1] : '';
+          a.classList.toggle('active', anchor && hash === '#' + anchor);
+        });
+      }
+      window.addEventListener('hashchange', setNavActive);
+      setNavActive();
+
+      document.querySelectorAll('.top-header-nav a').forEach(function(a) {
+        a.addEventListener('click', function(e) {
+          var href = this.getAttribute('href');
+          if (!href || href === '#') return;
+          var hashIdx = href.indexOf('#');
+          if (hashIdx === -1) return;
+          
+          var targetId = href.substring(hashIdx + 1);
+          var targetEl = document.getElementById(targetId);
+          
+          if (targetEl && (window.location.pathname.endsWith('index.html') || window.location.pathname === '/' || href.startsWith('#'))) {
+            e.preventDefault();
+            document.querySelector('.top-header-nav').classList.remove('open');
+            targetEl.scrollIntoView({ behavior: 'smooth' });
+            history.pushState(null, null, '#' + targetId);
+          }
+        });
+      });
+
+      function syncNavDropdownTabindex() {
+        var mobile = window.matchMedia('(max-width: 768px)').matches;
+        document.querySelectorAll('.top-header-nav .nav-dropdown').forEach(function(el) {
+          if (mobile) el.removeAttribute('tabindex');
+          else el.setAttribute('tabindex', '0');
+        });
+      }
+      syncNavDropdownTabindex();
+      window.addEventListener('resize', syncNavDropdownTabindex);
+    })();
+  </script>
+
 </body>
 </html>

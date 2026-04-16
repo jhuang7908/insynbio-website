@@ -477,5 +477,52 @@ document.addEventListener('DOMContentLoaded', () => {
 // Original Canvas Logic is already at the top for Slide 1
 </script>
 
+
+  <script>
+    (function() {
+      function setNavActive() {
+        var hash = window.location.hash || '';
+        var homeLink = document.querySelector('.top-header-nav a[href="index.html"]');
+        if (homeLink) homeLink.classList.toggle('active', !hash || hash === '#');
+        document.querySelectorAll('.top-header-nav a[href*="#"]').forEach(function(a) {
+          var href = a.getAttribute('href');
+          var anchor = href.includes('#') ? href.split('#')[1] : '';
+          a.classList.toggle('active', anchor && hash === '#' + anchor);
+        });
+      }
+      window.addEventListener('hashchange', setNavActive);
+      setNavActive();
+
+      document.querySelectorAll('.top-header-nav a').forEach(function(a) {
+        a.addEventListener('click', function(e) {
+          var href = this.getAttribute('href');
+          if (!href || href === '#') return;
+          var hashIdx = href.indexOf('#');
+          if (hashIdx === -1) return;
+          
+          var targetId = href.substring(hashIdx + 1);
+          var targetEl = document.getElementById(targetId);
+          
+          if (targetEl && (window.location.pathname.endsWith('index.html') || window.location.pathname === '/' || href.startsWith('#'))) {
+            e.preventDefault();
+            document.querySelector('.top-header-nav').classList.remove('open');
+            targetEl.scrollIntoView({ behavior: 'smooth' });
+            history.pushState(null, null, '#' + targetId);
+          }
+        });
+      });
+
+      function syncNavDropdownTabindex() {
+        var mobile = window.matchMedia('(max-width: 768px)').matches;
+        document.querySelectorAll('.top-header-nav .nav-dropdown').forEach(function(el) {
+          if (mobile) el.removeAttribute('tabindex');
+          else el.setAttribute('tabindex', '0');
+        });
+      }
+      syncNavDropdownTabindex();
+      window.addEventListener('resize', syncNavDropdownTabindex);
+    })();
+  </script>
+
 </body>
 </html>

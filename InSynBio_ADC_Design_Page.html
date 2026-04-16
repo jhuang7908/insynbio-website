@@ -274,6 +274,7 @@
     .nav-dropdown .dropdown-menu a .menu-desc, .std-nav-dd .std-dd-menu a .menu-desc {
       display: block; font-size: 12px; color: #6b7280; font-weight: 400; line-height: 1.4;
     }
+    
     /* ── Mobile nav ────────────────────────────────── */
     @media (max-width: 768px) {
       body { padding-top: 64px; }
@@ -295,31 +296,73 @@
         width: 100vw; height: 100vh;
         background: #fff;
         flex-direction: column;
-        justify-content: center; align-items: center;
-        gap: 8px;
+        justify-content: flex-start;
+        align-items: stretch;
+        gap: 0;
         margin: 0;
+        padding: 72px 0 40px;
         opacity: 0;
+        visibility: hidden;
         pointer-events: none;
-        transition: opacity 0.25s ease;
+        transition: opacity 0.25s ease, visibility 0.25s;
         z-index: 10000;
+        overflow-y: auto;
       }
       .top-header-nav.open, .std-top-nav.open {
         opacity: 1;
+        visibility: visible;
         pointer-events: auto;
       }
-      .top-header-nav a, .std-top-nav a {
-        font-size: 18px; padding: 10px 24px; color: #111827;
+      body:has(.top-header-nav.open) { overflow: hidden !important; }
+      
+      .top-header-nav > a, .std-top-nav > a {
+        display: block;
+        text-align: center;
+        font-size: 18px; padding: 16px 24px; color: #111827;
+        border-bottom: 1px solid #f3f4f6;
+        border-radius: 0;
       }
-      .top-header-nav a:hover, .std-top-nav a:hover { color: #0d9488; background: rgba(13,148,136,0.06); }
-      .top-header-nav a.active, .std-top-nav a.active { background: #0d9488; color: #fff; }
+      .top-header-nav > a:hover, .std-top-nav > a:hover { color: #0d9488; background: transparent; }
+      .top-header-nav > a.active, .std-top-nav > a.active { background: transparent; color: #0d9488; }
+      
       .nav-close-btn, .std-nav-close {
-        display: block; position: absolute; top: 20px; right: 20px;
-        background: none; border: none; font-size: 32px; color: #111827; cursor: pointer;
-        line-height: 1; padding: 4px 8px;
+        display: flex; position: absolute; top: 16px; right: 16px;
+        background: #f3f4f6; border: none; font-size: 24px; color: #111827; cursor: pointer;
+        width: 44px; height: 44px; border-radius: 50%;
+        align-items: center; justify-content: center;
       }
-      .nav-dropdown .dropdown-menu, .std-nav-dd .std-dd-menu { display: none; }
-      .nav-dropdown > a::after, .std-nav-dd > a::after { display: none; }
+      
+      .nav-dropdown { width: 100%; text-align: center; }
+      .nav-dropdown > a {
+        display: block;
+        font-size: 18px; padding: 16px 24px; color: #111827;
+        border-bottom: 1px solid #f3f4f6;
+        border-radius: 0;
+      }
+      .nav-dropdown .dropdown-menu, .std-nav-dd .std-dd-menu { 
+        display: block !important;
+        position: static !important;
+        transform: none !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+        box-shadow: none !important;
+        width: 100% !important;
+        background: #f9fafb !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        border: none !important;
+        border-bottom: 1px solid #f3f4f6 !important;
+        max-height: none !important;
+      }
+      .nav-dropdown .dropdown-menu a {
+        display: block;
+        font-size: 15px; padding: 14px 24px; text-align: left;
+        border-bottom: 1px solid #f3f4f6;
+        border-radius: 0;
+      }
+      .nav-dropdown > a::after, .std-nav-dd > a::after { display: inline-block; }
     }
+
     /* ── Overflow protection ───────────────────────── */
     html, body { max-width: 100%; overflow-x: hidden; }
     table { display: block; width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; }
@@ -854,6 +897,53 @@
       });
     });
   </script>
+
+  <script>
+    (function() {
+      function setNavActive() {
+        var hash = window.location.hash || '';
+        var homeLink = document.querySelector('.top-header-nav a[href="index.html"]');
+        if (homeLink) homeLink.classList.toggle('active', !hash || hash === '#');
+        document.querySelectorAll('.top-header-nav a[href*="#"]').forEach(function(a) {
+          var href = a.getAttribute('href');
+          var anchor = href.includes('#') ? href.split('#')[1] : '';
+          a.classList.toggle('active', anchor && hash === '#' + anchor);
+        });
+      }
+      window.addEventListener('hashchange', setNavActive);
+      setNavActive();
+
+      document.querySelectorAll('.top-header-nav a').forEach(function(a) {
+        a.addEventListener('click', function(e) {
+          var href = this.getAttribute('href');
+          if (!href || href === '#') return;
+          var hashIdx = href.indexOf('#');
+          if (hashIdx === -1) return;
+          
+          var targetId = href.substring(hashIdx + 1);
+          var targetEl = document.getElementById(targetId);
+          
+          if (targetEl && (window.location.pathname.endsWith('index.html') || window.location.pathname === '/' || href.startsWith('#'))) {
+            e.preventDefault();
+            document.querySelector('.top-header-nav').classList.remove('open');
+            targetEl.scrollIntoView({ behavior: 'smooth' });
+            history.pushState(null, null, '#' + targetId);
+          }
+        });
+      });
+
+      function syncNavDropdownTabindex() {
+        var mobile = window.matchMedia('(max-width: 768px)').matches;
+        document.querySelectorAll('.top-header-nav .nav-dropdown').forEach(function(el) {
+          if (mobile) el.removeAttribute('tabindex');
+          else el.setAttribute('tabindex', '0');
+        });
+      }
+      syncNavDropdownTabindex();
+      window.addEventListener('resize', syncNavDropdownTabindex);
+    })();
+  </script>
+
 </body>
 </html>
 </html>
