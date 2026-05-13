@@ -792,29 +792,21 @@ function apiJoin(path) {
   const raw = (path || "").replace(/^\/+/, "");
   const meta = document.querySelector("meta[name=\"insynbio-api-base\"]");
   let base = "";
-  if (  meta && meta.content && String(meta.content).trim()) {
+  if (meta && meta.content && String(meta.content).trim()) {
     base = String(meta.content).trim().replace(/\/$/, "");
   } else if (typeof window.__INSYNBIO_API_BASE__ === "string" && window.__INSYNBIO_API_BASE__.trim()) {
     base = window.__INSYNBIO_API_BASE__.trim().replace(/\/$/, "");
   } else {
-    // Check user-configured endpoint saved in localStorage (ngrok / cloudflared tunnel or LAN IP)
     const saved = _getUserApiEndpoint();
     if (saved) {
       base = saved;
-    } else if (
-      (location.hostname === "localhost" || location.hostname === "127.0.0.1") &&
-      /^(5173|5174|3000|4173)$/.test(location.port)
-    ) {
-      base = location.protocol + "//" + location.hostname + ":8001";
     } else if (location.hostname === "localhost" || location.hostname === "127.0.0.1") {
-      base = location.protocol + "//" + location.hostname + ":8001";
+      // Default to current port for same-origin API
+      base = location.origin;
     }
-    // NOTE: When served from https://insynbio.com, browsers block requests to http://localhost
-    // due to Mixed Content and Private Network Access policies.
-    // The user MUST configure an HTTPS tunnel endpoint (e.g., ngrok) via the API Settings panel.
   }
-  if (!base) return "/" + raw;
-  return base.replace(/\/$/, "") + "/" + raw;
+  if (!base) return "/api/" + raw;
+  return base.replace(/\/$/, "") + "/api/" + raw;
 }
 
 /** One line when POST /annotate returns 404 — context-specific, no wrong “set meta” on :8001. */
