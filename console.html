@@ -5075,7 +5075,197 @@ async function cancelCmcRun() {
   }
 }
 
+/**
+ * Quick Predict for optimized sequences (sequence-only, no structure prediction).
+ */
+async function quickPredictOptimized(jobId) {
+  if (!_lastCmcResult || !_lastCmcResult.result) {
+    alert("No result available for prediction.");
+    return;
+  }
+  const r = _lastCmcResult.result;
+  const rb = r.regular_ab_developability || {};
+  const frSuggestions = Array.isArray(rb.fr_modification_suggestions) ? rb.fr_modification_suggestions : [];
+  
+  if (!frSuggestions.length) {
+    alert("No mutation suggestions found to predict.");
+    return;
+  }
+
+  const vh = (r.vh_sequence || "").trim();
+  const vl = (r.vl_sequence || "").trim();
+  
+  // Aggregate all mutations
+  const allMuts = [];
+  const seenSites = new Set();
+  frSuggestions.forEach(s => {
+    const sc = s.sequence_candidates;
+    if (!sc) return;
+    [sc.fr_positive_charge_sites, sc.fr_negative_charge_sites, sc.fr_instability_sites].forEach(sites => {
+      (sites || []).forEach(p => {
+        const key = `${p.chain}-${p.index_1}-${p.from_aa}-${p.to_aa_hint}`;
+        if (p.index_1 && !seenSites.has(key)) {
+          allMuts.push({chain: p.chain, pos: p.index_1, from: p.from_aa, to: p.to_aa_hint});
+          seenSites.add(key);
+        }
+      });
+    });
+    (sc.fr_hydrophobic_runs || []).forEach(run => {
+      (run.per_residue || []).forEach(p => {
+        const key = `${run.chain}-${p.index_1}-${p.from_aa}-${p.to_aa_hint}`;
+        if (p.index_1 && !seenSites.has(key)) {
+          allMuts.push({chain: run.chain, pos: p.index_1, from: p.from_aa, to: p.to_aa_hint});
+          seenSites.add(key);
+        }
+      });
+    });
+  });
+
+  if (!allMuts.length) {
+    alert("No valid mutation sites found.");
+    return;
+  }
+
+  // Apply mutations
+  let mutVh = vh;
+  let mutVl = vl;
+  allMuts.forEach(m => {
+    const idx = m.pos - 1;
+    if (m.chain === "VH" || m.chain === "H") {
+      if (idx >= 0 && idx < mutVh.length) {
+        mutVh = mutVh.substring(0, idx) + m.to + mutVh.substring(idx + 1);
+      }
+    } else if (m.chain === "VL" || m.chain === "L") {
+      if (idx >= 0 && idx < mutVl.length) {
+        mutVl = mutVl.substring(0, idx) + m.to + mutVl.substring(idx + 1);
+      }
+    }
+  });
+
+  const resDiv = document.getElementById(`quick-predict-result-${jobId}`);
+  if (resDiv) {
+    resDiv.style.display = "block";
+    resDiv.innerHTML = `<span class="muted">Predicting optimized metrics (sequence-only)…</span>`;
+  }
+
+  try {
+    const response = await apiFetch(apiJoin("cmc/igg"), {
+      method: "POST",
+      headers: {"Content-Type": "application/json"},
+      body: JSON.stringify({
+        vh_sequence: mutVh,
+        vl_sequence: mutVl,
+        antibody_type: r.antibody_type || "IgG1",
+        project_name: (r.project_name || "optimized") + "-quick",
+        report_format: "html",
+        predict_fv_structure: false,
+        smart_cmc: false
+      })
+    });
+    if (!response.ok) {
+      const errText = await response.text();
+      throw new Error(`Prediction failed: ${response.status} ${errText.slice(0, 100)}`);
+    }
+    const data = await response.json();
+    const res = data.result || {};
+    
+    // Before values
+    const clinicalScore = r.clinical_score != null ? r.clinical_score : null;
+    const beforeAdi = rb.developability_index ?? r.developability_index ?? clinicalScore;
+    const beforePi = r.pI_fab ?? "—";
+    const paramRows = Array.isArray(rb.parameters) ? rb.parameters : [];
+    const beforePncParam = paramRows.find(p => p.key === "pnc");
+    const beforePnc = beforePncParam ? beforePncParam.value : "—";
+
+    // After values
+    const optAdi = res.developability_index ?? res.clinical_score ?? "—";
+    const optPi = res.pI_fab ?? "—";
+    const optRb = res.regular_ab_developability || {};
+    const optParamRows = Array.isArray(optRb.parameters) ? optRb.parameters : [];
+    
+    // Identify target metrics from suggestions
+    const targetMetrics = new Set(frSuggestions.map(s => {
+      const t = (s.target || "").toLowerCase();
+      if (t.includes("negative charge")) return "pnc";
+      if (t.includes("positive charge")) return "ppc";
+      if (t.includes("hydrophobic patch")) return "psh";
+      if (t.includes("instability")) return "instability_index";
+      return null;
+    }).filter(Boolean));
+
+    // Compare all parameters to find improvements and regressions
+    const comparison = [];
+    const beforeParams = Array.isArray(rb.parameters) ? rb.parameters : [];
+    
+    beforeParams.forEach(bp => {
+      const ap = optParamRows.find(p => p.key === bp.key);
+      if (!ap) return;
+      
+      const changed = bp.value !== ap.value;
+      const riskWorsened = (bp.risk === "PASS" && (ap.risk === "MODERATE" || ap.risk === "HIGH")) || 
+                           (bp.risk === "MODERATE" && ap.risk === "HIGH");
+      const isTarget = targetMetrics.has(bp.key);
+
+      if (changed || isTarget || riskWorsened) {
+        comparison.push({
+          label: bp.label || bp.key,
+          key: bp.key,
+          before: bp.value,
+          after: ap.value,
+          beforeRisk: bp.risk,
+          afterRisk: ap.risk,
+          isTarget,
+          worsened: riskWorsened
+        });
+      }
+    });
+
+    const fmt = (v) => typeof v === 'number' ? v.toFixed(1) : v;
+    const riskColor = (r) => r === "HIGH" ? "var(--fail)" : (r === "MODERATE" ? "var(--warn)" : "var(--pass)");
+
+    if (resDiv) {
+      let compHtml = comparison.map(c => `
+        <div style="display:grid;grid-template-columns:140px 1fr;gap:10px;font-size:11px;padding:4px 0;border-bottom:1px solid rgba(255,255,255,0.05)">
+          <div class="muted">${c.label}${c.isTarget ? ' <span style="color:var(--accent);font-size:9px">[Target]</span>' : ''}</div>
+          <div>
+            <span style="color:${riskColor(c.beforeRisk)}">${fmt(c.before)}</span> 
+            <span class="muted">→</span> 
+            <strong style="color:${c.worsened ? 'var(--fail)' : riskColor(c.afterRisk)}">${fmt(c.after)}</strong>
+            ${c.worsened ? ' <span style="color:var(--fail);font-size:9px">⚠ Regression</span>' : ''}
+          </div>
+        </div>
+      `).join("");
+
+      resDiv.innerHTML = `
+        <div style="display:flex;flex-direction:column;gap:10px">
+          <div style="display:flex;justify-content:space-between;align-items:center">
+            <div style="color:var(--pass);font-weight:600;font-size:12px">Optimization Impact Analysis:</div>
+            <div class="muted" style="font-size:9px">ADI: ${fmt(beforeAdi)} → <strong style="color:var(--accent)">${fmt(optAdi)}</strong></div>
+          </div>
+          
+          <div style="background:rgba(255,255,255,0.03);padding:10px;border-radius:6px;border:1px solid rgba(255,255,255,0.05)">
+            ${compHtml || '<div class="muted">No significant metric changes detected.</div>'}
+          </div>
+
+          ${comparison.some(c => c.worsened) ? `
+            <div style="padding:8px;background:rgba(248,81,73,0.1);border:1px solid var(--fail);border-radius:4px;color:var(--fail);font-size:10px">
+              <strong>Warning:</strong> Some critical metrics worsened after optimization. Review trade-offs before proceeding.
+            </div>
+          ` : `
+            <div style="color:var(--pass);font-size:10px">✓ No critical regressions detected in other CMC parameters.</div>
+          `}
+        </div>
+      `;
+    }
+  } catch (err) {
+    console.error("Quick Predict Error:", err);
+    if (resDiv) resDiv.innerHTML = `<span class="fail">Error: ${err.message}</span>`;
+  }
+}
+
+let _lastCmcResult = null;
 function renderCmcIggResult(data, service, demoId, sequenceName) {
+  _lastCmcResult = data;
   const r = (data && data.result) || data || {};
   const displayName = r.project_name || sequenceName || "customer-vhvl";
   const rb = r.regular_ab_developability || {};
@@ -5253,8 +5443,12 @@ function renderCmcIggResult(data, service, demoId, sequenceName) {
           if (!allMuts.length) return "";
           const cells = allMuts.map(m => `<span style="font-family:monospace;font-size:12px;padding:3px 8px;background:rgba(201,162,39,.12);border-radius:3px;white-space:nowrap">${escapeHtml(m.chain || "")} <strong>${m.pos}</strong> ${escapeHtml(m.from||"")}→<strong style="color:#c9a227;font-size:13px">${escapeHtml(m.to||"")}</strong>${m.motif ? ` <span style="color:var(--warn);font-size:9px">[${escapeHtml(m.motif)}]</span>` : ""} <span style="color:var(--muted);font-size:9px">${escapeHtml(m.region||"")}</span></span>`).join(" ");
           return `<div style="margin-bottom:12px;padding:10px 12px;background:rgba(201,162,39,.07);border:1px solid rgba(201,162,39,.22);border-radius:5px">
-            <div style="font-size:11px;font-weight:600;color:var(--warn);margin-bottom:8px">Consolidated mutation suggestions (${allMuts.length} site${allMuts.length > 1 ? "s" : ""}):</div>
+            <div style="font-size:11px;font-weight:600;color:var(--warn);margin-bottom:8px;display:flex;justify-content:space-between;align-items:center">
+              <span>Consolidated mutation suggestions (${allMuts.length} site${allMuts.length > 1 ? "s" : ""}):</span>
+              <button class="btn btn-sm" onclick="quickPredictOptimized('${data.job_id}')" style="font-size:10px;padding:2px 8px;background:var(--accent);color:white;border:none;border-radius:3px;cursor:pointer">Quick Predict</button>
+            </div>
             <div style="display:flex;gap:8px;flex-wrap:wrap;line-height:2">${cells}</div>
+            <div id="quick-predict-result-${data.job_id}" style="margin-top:10px;padding:10px;background:rgba(33,199,217,.08);border:1px solid rgba(33,199,217,.2);border-radius:5px;display:none"></div>
           </div>`;
         })()}
         ${frSuggestions.length ? `
