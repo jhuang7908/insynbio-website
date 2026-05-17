@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- insynbio-console-v722-vh2vhh-advisory-contrast -->
+<!-- insynbio-console-v723-ighv3-gate-fix-no-algo-leak -->
 <!-- [FORCED RELOAD 2026-05-17 14:50] -->
 <html lang="en">
 <head>
@@ -3735,7 +3735,7 @@ const VH2VHH_SOURCE_NOTES = {
     color: "#2563eb", darkColor: "#60a5fa", bg: "rgba(59,130,246,0.06)", border: "rgba(59,130,246,0.25)",
     icon: "🔵",
     title: "Path C1 — Framework-preserving camelization",
-    body: "Human / humanized VH with intact IGHV framework. Hallmark mutations (Kabat 45 default, 44/47 rescue-only per V1.8.17 rules) are applied to the existing human framework. Lowest risk path — germline similarity is high and immunogenicity baseline is low.",
+    body: "Human / humanized VH with intact IGHV framework. Proprietary framework-zone mutations are applied to convert the VH-VL interface to a single-domain-compatible surface. Lowest risk path — germline similarity is high and immunogenicity baseline is low.",
     vam: "medium", vamColor: "#b56300",
     tip: "Verify CDR conformation (RMSD) post-conversion. VAM recommended if binding Kd > 10 nM."
   },
@@ -11562,7 +11562,7 @@ function renderVhToVhhResult(data, service, demoId) {
             </table>
             <div style="padding:0 12px 10px">
               <span style="font-size:11px;color:var(--muted);font-weight:700;margin-right:10px">Total FR mutations: ${totalFrMut}</span>
-              <span style="font-size:11px;color:var(--muted)">Framework mutations include core hallmark substitutions (e.g., Kabat 45/47) to restore VH-VL interface solubility, alongside proprietary surface-patch modifications governed by structural gating (V1.8.17). Specific mutation paths depend on the source VH family and baseline developability profile.</span>
+              <span style="font-size:11px;color:var(--muted)">Framework mutations restore VH-VL interface compatibility for single-domain display, alongside proprietary surface-patch modifications governed by structural gating. Specific mutation paths depend on the source VH family and baseline developability profile.</span>
               ${r.conversion_error ? `<div style="color:var(--fail);font-size:11px;margin-top:4px">Mutation engine warning: ${escapeHtml(r.conversion_error)}</div>` : ""}
             </div>
           `;
