@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- insynbio-console-v724-teplizumab-cd3-demo -->
+<!-- insynbio-console-v725-immuno-text-fix -->
 <!-- [FORCED RELOAD 2026-05-17 14:50] -->
 <html lang="en">
 <head>
@@ -3706,7 +3706,7 @@ function renderVhToVhhForm(service) {
       <div class="panel-label">Demo &amp; Input</div>
       <div style="background:var(--panel-2); border:1px solid var(--line-2); padding:10px 12px; border-radius:6px; margin-bottom:15px; font-size:11.5px; color:var(--text); line-height:1.5;">
         <strong style="color:var(--warn)">Domain Restriction:</strong> The VH to VHH conversion algorithm is restricted to the <strong>IGHV3 family (Human or Murine)</strong>, as natural VHHs are evolutionarily derived from IGHV3. Sequences from other structural families (e.g., IGHV1, IGHV4) exhibit severe framework mismatch and are rejected by the pre-flight check.
-        <div style="margin-top:8px;color:var(--muted);font-size:11px;"><strong>Versioning:</strong> Algorithm standard <strong>V1.8.17</strong> (<code>VH_TO_VHH_CONVERSION_STANDARD_V1.8.md</code>). This Console path runs deployment branch <strong>V1.8.17.IGHV3</strong> — same rules plus the IGHV3-only gateway on <code>/vh_to_vhh</code> endpoints.</div>
+        <div style="margin-top:8px;color:var(--muted);font-size:11px;"><strong>Versioning:</strong> Algorithm standard <strong>V1.8.17</strong>. This Console path runs deployment branch <strong>V1.8.17.IGHV3</strong> — same standard rules plus the IGHV3-family gateway on conversion endpoints.</div>
       </div>
       <div class="form-grid">
         <div class="field"><label>Demo case</label><select id="vh2vhh-demo" onchange="loadServiceDemo()"></select></div>
