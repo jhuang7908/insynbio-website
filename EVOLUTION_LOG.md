@@ -40,6 +40,41 @@ TYPE 可选值:
 
 ## 进化记录
 
+### [EXECUTED] 2026-05-16 — VHH Humanization V5.0: Structure-Driven + DeepFR-CTX Fallback
+
+**Source:** Owner strategic direction (2026-05-16 chat). Approved by Owner ("全部批准 V5.0 升级") immediately following the PROPOSAL entry below.
+**Status:** EXECUTED 2026-05-16 by Agent.
+
+**Five Mandatory Changes (all approved):**
+1. **Template library: clinical-VHH only** — drop the 90 synthetic VH3-SAFE templates. Real clinical VHH (n=42, expansion welcome) is the sole authorized source.
+2. **FR identity cutoff lowered 0.70 → 0.65** — aligned with conventional antibody humanization. Permissive 0.60 available via `ABENGINECORE_VHH_PERMISSIVE_CUTOFF=1` with audit log.
+3. **Hallmark CDR3+SAP/pI decision tree** — FULL (CDR3≥17aa AND SAP>0.714) / PARTIAL (CDR3 12–17aa AND pI≤9.0) / MINIMAL (CDR3<12aa AND net_basic≤4). Replaces V4.0 static "always preserve 37/44/45/47".
+4. **Non-Hallmark back-mutation: structure + DeepFR-CTX driven** — mandatory IgFold/ABodyBuilder2 structure prediction → SASA + CDR-distance → DeepFR-CTX 9-mer voting → dynamic Tier per template. Static Tier 1/2 lists become fallback when structure prediction unavailable.
+5. **No-template fallback: DeepFR-CTX-VHH 9-aa context voting** — replaces V4.0 fixed-substitution surface reshaping table. G/P/C hard-protected. PTM motif veto. Charge-class flip veto. ΔSAP filter. Uses `config/clinical_842_9mer_db.json`.
+
+**Files modified (LOCKED files, modified under approval):**
+- `docs/VHH_HUMANIZATION_DESIGN_STANDARD.md` — version 1.0 → 5.0; added V5.0 section with Five Mandatory Changes + V5.0 Quality Gates; extended Version History table.
+- `config/standards_ssot.json` — `vhh_humanization_path_a` V4.0 → V5.0; added `clinical_842_9mer_db.json` to config_files.
+- `config/abenginecore_registry.json` — release_id V4.0 → V5.0; added `structure_prediction_required`, `structure_predictors`, `deepfr_ctx_integration` blocks; new `version_mapping.V5.0_VHH_Humanization`; V4.0 marked superseded_by V5.0.
+- `config/tier_system_config.json` — version 1.0 → 5.0; added top-level `v5_runtime` block (fr_identity_cutoff, hallmark_decision_v5, dynamic_tier_formula, structure_prediction, deepfr_ctx_integration, no_template_fallback, template_library).
+- `core/scaffolds.py` — `load_human_vhh_safe_templates()` returns `[]` by default in V5.0. Legacy override via env `ABENGINECORE_ALLOW_VH3_SAFE_LEGACY=1`.
+- `core/vhh_humanization.py` — `select_human_templates()` FR cutoff 0.65; VH3-SAFE fallback path returns `([], {"v5_no_template_fallback_required": True})`; `surface_reshaping_trigger()` replaced V2.2 fixed-substitution table with V5.0 DeepFR-CTX-VHH 9-mer voting helpers (`_v5_load_9mer_db`, `_v5_vote_for_position`, `_v5_introduces_ptm_motif`, `_v5_charge_class`); G/P/C hard-protected; PTM motif veto; charge-class flip veto; ΔSAP filter.
+
+**Verification:**
+- All modified files pass syntactic validation (`ast.parse` for Python, `json.loads` for configs).
+- Linter on `core/vhh_humanization.py`: clean.
+- V4.0 prescreen gates retained (CDR3 hard ≥25aa, soft ≥20aa; SAP hard >0.771; pI hard >9.5).
+
+**Backward compatibility:**
+- Strategy names S1/S2/S3 retained (now dynamic-Tier ranges instead of static position lists).
+- Static Tier 0/1/2/3 lists retained in `tier_system_config.json` as fallback when structure prediction is unavailable.
+- Legacy VH3-SAFE library accessible via env var for archival reproducibility only.
+
+**PROPOSAL Source (preserved for audit trail):**
+The original PROPOSAL entry (with full rationale, risk/adversarial check, and owner action requested) was logged 2026-05-16. Owner replied "全部批准 V5.0 升级" — full approval of all five parts. The PROPOSAL and APPROVED states are folded into this EXECUTED entry for the on-disk EVOLUTION_LOG (since the working copy was reset to HEAD before re-applying, the intermediate states are documented in the chat transcript).
+
+---
+
 ### [OBSERVATION] 2026-04-01 — PAG1 短肽场景 PRODIGY 无鉴别力
 - **来源案例:** PAG1 Virtual Affinity Maturation (7m_humanPAG1)
 - **观察:** PRODIGY 对 32 aa 短肽抗原 36 个突变的 ΔΔG 范围仅 0.78 kcal/mol，无法区分有益/有害突变。原因是界面接触数太少，ML 回归模型缺乏分辨率。

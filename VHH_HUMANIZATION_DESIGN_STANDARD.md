@@ -1,8 +1,105 @@
 # VHH Humanization Design Standard
 
-**Version:** 1.0  
-**Date:** 2026-01-03  
-**Status:** OFFICIAL STANDARD - DO NOT MODIFY WITHOUT APPROVAL
+**Version:** 5.0  
+**Date:** 2026-05-16  
+**Status:** OFFICIAL STANDARD - DO NOT MODIFY WITHOUT APPROVAL  
+**Supersedes:** V4.0 (2026-05-06), V3.0, V2.x series, V1.0
+
+---
+
+## ⭐ V5.0 STRUCTURE-DRIVEN UPGRADE (2026-05-16)
+
+V5.0 is a strategic upgrade approved by the Owner (Evolution Log entry 2026-05-16) that replaces V4.0's static template-and-Tier system with a structure-aware, context-driven design. **All five V5.0 changes are mandatory for new VHH humanization runs:**
+
+### V5.0 Change 1 — Template library: clinical-VHH only
+
+- **Drop the 90 synthetic VH3-SAFE templates.** Real clinical VHH templates (currently n=42, expansion welcome) are the only authoritative source.
+- **Rationale:** The clinical VHH universe is concentrated; synthetic VH3-SAFE templates do not reflect real human B-cell repertoire and have created repeated developability mismatches.
+- **Impact:** `load_human_vhh_safe_templates()` is deprecated. `select_human_templates()` raises an error rather than falling back to VH3-SAFE.
+
+### V5.0 Change 2 — FR identity cutoff lowered to 0.65
+
+- **Cutoff:** `framework_identity >= 0.65` (was 0.70 in V4.0).
+- **Rationale:** Aligned with conventional antibody humanization practice (~0.65). The V4.0 0.70 threshold rejected legitimate clinical-VHH matches that were 0.65–0.70.
+- **Permissive mode:** `--fr-cutoff 0.60` available for difficult cases (logged in QA audit as `permissive_cutoff_invoked`).
+- **Gate:** `key_position_score >= 0.5` (Hallmark + Vernier anchor match) remains a hard floor regardless of cutoff.
+
+### V5.0 Change 3 — Hallmark decisions driven by CDR3 length + hydrophobicity
+
+The static "always preserve 37/44/45/47" rule from V4.0 is replaced with a decision tree (aligned with V1.8.17 VH→VHH conversion Stealth logic):
+
+| Donor profile | Hallmark policy |
+|---|---|
+| `CDR3 ≥ 17 aa` **AND** `SAP > 0.714` | **FULL Hallmark preservation** (37+44+45+47, camelid-like FR2 retained for solubility) |
+| `CDR3 12–17 aa` **AND** `pI ≤ 9.0` | **PARTIAL Hallmark preservation** (37+44 only, balanced) |
+| `CDR3 < 12 aa` **AND** charge load low (`net_basic ≤ 4`) | **MINIMAL Hallmark preservation** (37 only, closer to human VH3) |
+
+Hallmark conditional table is loaded from `tier_system_config.json` block `hallmark_decision_v5`.
+
+### V5.0 Change 4 — Non-Hallmark back-mutation: structure + DeepFR-CTX driven
+
+The static Tier 1 (8 positions) and Tier 2 (14 positions) lists from V4.0 are **deprecated as the primary driver**. Per-template structure prediction is **mandatory**.
+
+**Mandatory pipeline:**
+
+1. Run **IgFold or ABodyBuilder2** on the humanized intermediate (donor CDRs + selected human FR).
+2. Compute per-FR-residue **SASA** (rel) and **CDR-loop distance** (Å).
+3. Apply **DeepFR-CTX** `apply_ctx_guard()` to vote on retention vs. humanization using the 9-mer clinical context database.
+4. Generate a **per-template dynamic Tier** based on:
+   - `dynamic_tier(pos) = α × static_v4_tier + β × (1 / SASA_rel) + γ × (1 / CDR_distance)` where α=0.4, β=0.3, γ=0.3.
+   - Position with `dynamic_tier >= 0.7` → preserve in S1/S2/S3
+   - `0.4 <= dynamic_tier < 0.7` → preserve in S2/S3
+   - `dynamic_tier < 0.4` → humanize freely
+
+5. CDR preservation invariant remains absolute (rule unchanged).
+
+### V5.0 Change 5 — No-template fallback: DeepFR-CTX-VHH 9-aa context voting
+
+When no clinical-VHH template meets the cutoff and the donor fails feasibility prescreen, the V4.0 fixed-substitution surface reshaping table (F→Y, L→S, …) is replaced with **DeepFR-CTX-VHH 9-mer voting**:
+
+1. **Hard-protected residues:** G, P, C (never substituted).
+2. For each FR position (skip CDR, skip Hallmark-mandatory by V5.0 Change 3, skip Vernier anchor 94, skip Tier 0):
+   - Compute 9-mer windows overlapping the position.
+   - Score all 20 amino acids by clinical 9-mer frequency (database: `config/clinical_842_9mer_db.json`).
+3. Pick the highest-scoring AA that:
+   - Reduces local SAP (Δ ≤ −0.01), AND
+   - Does not introduce PTM motif (NG, NS, DG, DP, QG, …), AND
+   - Does not flip charge category (neutral→neutral; D/E→D/E), AND
+   - Is not the original residue.
+4. Iterate until SAP enters strategy-permitted band OR no improving candidate exists (max 10 iterations).
+
+---
+
+## 📊 V5.0 Compatibility with V4.0 Strategy Names
+
+V5.0 retains S1/S2/S3 names for backward compatibility but redefines them as dynamic-Tier ranges, not static position lists:
+
+| Strategy | V4.0 (static) | V5.0 (dynamic) |
+|---|---|---|
+| **S1** | Tier 0 only (7 positions) | Dynamic Tier ≥ 0.7 + Hallmark policy |
+| **S2** | Tier 0 + 1 (15 positions) | Dynamic Tier ≥ 0.4 + Hallmark policy |
+| **S3** | Tier 0 + 1 + 2 (29 positions) | Dynamic Tier > 0 + Hallmark policy (Conservative) |
+
+Expected mutation counts and humanization% become **per-sequence**, not fixed.
+
+---
+
+## 🔒 V5.0 Mandatory Quality Gates
+
+Before delivering any V5.0 humanization output:
+
+- [ ] Template was selected from clinical-VHH library only (NO VH3-SAFE).
+- [ ] FR identity ≥ 0.65 (or permissive cutoff logged in QA audit).
+- [ ] Hallmark policy (Change 3) recorded: `FULL`, `PARTIAL`, or `MINIMAL`.
+- [ ] IgFold/ABodyBuilder2 structure prediction completed (PDB cached).
+- [ ] SASA + CDR-distance per FR residue recorded in result.json.
+- [ ] DeepFR-CTX guard log attached (`ctx_guard_decisions`).
+- [ ] CDRs 100% preserved (CDR1/CDR2/CDR3 invariant).
+- [ ] If surface reshaping fallback was used: 9-aa context voting log attached.
+
+V4.0 quality gates (CDR3 hard ≥ 25 aa, SAP hard > 0.771) are **retained** as feasibility prescreen.
+
+---
 
 ---
 
@@ -24,7 +121,7 @@ This document defines the **fixed, non-negotiable rules** for VHH humanization d
 
 ## 📊 **Tier Classification System**
 
-### **Tier 0: CRITICAL (禁止人源化)**
+### **Tier 0: CRITICAL **
 
 **Definition:** Positions that are absolutely essential for VHH function and CDR geometry. Must be preserved in ALL strategies.
 
@@ -45,7 +142,7 @@ This document defines the **fixed, non-negotiable rules** for VHH humanization d
 
 ---
 
-### **Tier 1: HIGH PRIORITY (强烈推荐保留)**
+### **Tier 1: HIGH PRIORITY **
 
 **Definition:** Positions critical for structural stability and CDR support. Strongly recommended for functional retention.
 
@@ -67,7 +164,7 @@ This document defines the **fixed, non-negotiable rules** for VHH humanization d
 
 ---
 
-### **Tier 2: MEDIUM PRIORITY (可选保留)**
+### **Tier 2: MEDIUM PRIORITY **
 
 **Definition:** Positions that contribute to stability and function but are less critical. Optional for conservative strategies.
 
@@ -83,7 +180,7 @@ This document defines the **fixed, non-negotiable rules** for VHH humanization d
 
 ---
 
-### **Tier 3: LOW PRIORITY (最低优先级)**
+### **Tier 3: LOW PRIORITY **
 
 **Definition:** Positions far from CDRs with minimal functional impact. Generally humanized.
 
@@ -267,6 +364,10 @@ Before finalizing any humanization design, verify:
 | Version | Date | Changes | Approver |
 |---------|------|---------|----------|
 | 1.0 | 2026-01-03 | Initial standard creation | System |
+| 2.x | 2026-01–02 | Tier system refinements (V2.0–V2.8 series) | Owner |
+| 3.0 | 2026-03 | Database-B integration, V2.2 Primary Selector (42 clinical VHH) | Owner |
+| 4.0 | 2026-05-06 | VHH68_CMC_Benchmark_v1.0 prescreen gates (CDR3 ≥25aa, SAP >0.771) | Owner |
+| **5.0** | **2026-05-16** | **Structure-driven Tier + DeepFR-CTX fallback; drop VH3-SAFE; FR cutoff 0.70→0.65; Hallmark decision tree by CDR3+SAP** | **Owner (Evolution Log 2026-05-16)** |
 
 **Modification Policy:**
 - Any changes to Tier definitions require formal review
