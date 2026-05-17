@@ -66,8 +66,8 @@
 ---
 
 ### 1. **VH/VL Antibody Humanization Design Standard** ⭐ CURRENT — V4.4
-**File:** [`VH_VL_HUMANIZATION_STANDARD_V4.4.md`](./VH_VL_HUMANIZATION_STANDARD_V4.4.md)（Checklist 优化版）  
-**Full narrative:** [`VH_VL_HUMANIZATION_STANDARD_V4.3.md`](./VH_VL_HUMANIZATION_STANDARD_V4.3.md)（正文规则）  
+**File:** [`VH_VL_HUMANIZATION_STANDARD_V4.4.md`](./VH_VL_HUMANIZATION_STANDARD_V4.4.md)（Checklist ）  
+**Full narrative:** [`VH_VL_HUMANIZATION_STANDARD_V4.3.md`](./VH_VL_HUMANIZATION_STANDARD_V4.3.md)  
 **Purpose:** FIXED RULES for conventional VH/VL antibody humanization — structure-based, semi-automated  
 **Applies to:** All VH/VL humanization projects (e.g., 4B12, any mouse IgG/IgM)  
 **Status:** **MANDATORY — DO NOT DEVIATE**  
@@ -88,6 +88,28 @@
 
 ---
 
+### 1b. **VH → VHH Conversion Standard** ⭐ CURRENT — V1.8.17
+**File:** [`VH_TO_VHH_CONVERSION_STANDARD_V1.8.md`](./VH_TO_VHH_CONVERSION_STANDARD_V1.8.md)  
+**Purpose:** FIXED RULES for converting conventional VH to single-domain VHH — Hallmark/Stealth engineering, AbNatiV Δ gating, sdAb adaptation, Expressibility Verdict Gate, Smart-CMC Integration, VL-safety SASA gate (V1.8.16 lineage), Stealth tier net_basic/pI routing (V1.8.17)  
+**Applies to:** Path C1 (human VH) and Path C2 (murine VH dual engineering)  
+**Status:** **MANDATORY — V1.8.17** (SSOT/registry aligned 2026-05-17; standard header dated 2026-05-16)
+
+**Console / public API deployment branch:** **`V1.8.17.IGHV3`** — same V1.8.17 algorithm standard with **IGHV3-family-only** pre-flight on `POST /vh_to_vhh/*` (see `api/routers/vh_to_vhh.py`). Offline or alternate entry points may run V1.8.17 without that gateway restriction.
+
+**Key Components (V1.8.17):**
+- ✅ **AbNatiV Δ Gate:** $\Delta < -0.074$ triggers FAIL; ensures global sequence naturalness (unchanged from V1.8.4).
+- ✅ **Phase 2 Hallmark (simplified):** K45R is the sole default hallmark (86% in cohort); K44E/K47F are rescue-only (CDR3≥15 AND compactness>6.5 Å).
+- ✅ **Phase 3 Stealth:** Kabat K-gated positions retained; **V1.8.17** adds net_basic/pI-conditional Stealth tiering (NONE/MINIMAL/STANDARD/FULL) per standard § revisions (CD3 Fv structural audit lineage).
+- ✅ **[V1.8.16] VL-safety SASA gate:** Structure-measured SASA on hallmark zone after engineering (aa-type-aware; threshold in standard §1a.2).
+- ✅ **Phase 4.5 sdAb Adaptation:** L18S disabled; F68Y only if K68=F; Adaptive pI-tune (K73Q fallback); Path C2 CDR Cys-Gate (C100AS).
+- ✅ **Phase 5 pI Regulation:** Target pI 5.5–8.5 (unchanged).
+- ✅ **Expressibility Verdict Gate:** CDR3 length + compactness + AbNatiV Δ composite gate; FAIL → sequence not publishable as deliverable.
+- ✅ **Smart-CMC Integration (V1.8.8 lineage):** Aggregation-motif lookahead and CDR-driven hydrophobic patch detection for converted sequences.
+
+**Configuration:** [`../config/abenginecore_registry.json`](../config/abenginecore_registry.json) (`vh_to_vhh_conversion_path_b2_c`, `release_id` **V1.8.17_VH_to_VHH_Conversion**); SSOT [`../config/standards_ssot.json`](../config/standards_ssot.json)
+
+---
+
 ### 2. **Report Generation Standard** ⭐ CURRENT — V4.1
 **File:** [`CURSOR_REPORT_ENGINE_V4_1_SPEC.md`](./CURSOR_REPORT_ENGINE_V4_1_SPEC.md)  
 **Legacy:** [`CURSOR_REPORT_ENGINE_V3.md`](./CURSOR_REPORT_ENGINE_V3.md)  
@@ -96,7 +118,7 @@
 **Status:** MANDATORY
 
 **Key Requirements (V4.1):**
-- Dual report system (Client 灰箱 + Developer 透明)
+- Dual report system (Client  + Developer )
 - 13 mandatory chapters for humanization reports
 - Tier-based mutation classification (Tier 0–3)
 - Three final sequences (Seq1=T1, Seq2=T1+T2, Seq3=T1+T3)
@@ -112,10 +134,10 @@
 **Status:** **MANDATORY — all new reports must use this framework**
 
 **Architecture:**
-- `core/reporting/spec.py` — Report metadata contract (`ReportSpec` v1.1): id, project, family, audience, version, date, confidentiality; **per-family `CHAPTER_SKELETONS`; `chapter_schema()`; `validate_content()` for BioChatter integration**
+- `core/reporting/spec.py` — Report metadata contract (`ReportSpec` v1.1): id, project, family, audience, version, date, confidentiality; **per-family `CHAPTER_SKELETONS`; `chapter_schema`; `validate_content` for BioChatter integration**
 - `core/reporting/theme.py` — Visual token singleton (`THEME`): colors, fonts, spacing, page chrome constants
 - `core/reporting/theme_reportlab.py` — ReportLab style adapter (`RL`): ParagraphStyles, TableStyles, page header/footer, cover page
-- `core/reporting/render.py` — Unified rendering API: `render_pdf()`, `render_html()`, `write_report_bundle()`
+- `core/reporting/render.py` — Unified rendering API: `render_pdf`, `render_html`, `write_report_bundle`
 - `scripts/report_cli.py` — CLI entry point: `python scripts/report_cli.py pdf|html|bundle <input.md>`
 
 **Key Visual Tokens (single source — `theme.py`):**
@@ -214,7 +236,7 @@ missing  = spec.validate_content(content_dict)           # list missing fields
 - Hallmarks: Kabat 37, 44, 45, 47
 - Vernier: Kabat 27, 28, 29, 30, 47, 49, 71, 73, 78, 93, 94
 
-**编号工具：** 本仓库使用 **ANARCI**（基于深度学习的抗体编号工具）。详见相关技术文档。
+**：**  **ANARCI**。。
 
 ---
 
@@ -451,19 +473,19 @@ Before submitting any humanization design, verify:
 
 ### File Classification
 
-| 分类 | Agent 权限 | 文件 |
+|  | Agent  |  |
 |------|-----------|------|
-| 🔒 LOCKED | 只读 | Standards, configs, governance, core scripts |
-| 📝 APPEND-ONLY | 追加 | `EVOLUTION_LOG.md` |
-| ⚙️ TUNABLE | 提案后执行 | 工具阈值, 场景参数 |
-| 🔧 PROJECT | 自由 | `projects/`, `delivery_*/`, `output/` |
+| 🔒 LOCKED |  | Standards, configs, governance, core scripts |
+| 📝 APPEND-ONLY |  | `EVOLUTION_LOG.md` |
+| ⚙️ TUNABLE |  | ,  |
+| 🔧 PROJECT |  | `projects/`, `delivery_*/`, `output/` |
 
 ### Evolution Protocol
 
-1. **OBSERVE** → Agent 向 `EVOLUTION_LOG.md` 追加 `[OBSERVATION]`（自动，无需许可）
-2. **PROPOSE** → Agent 向 `EVOLUTION_LOG.md` 追加 `[PROPOSAL]`（不得修改标准）
-3. **APPROVE** → 所有者审批（"批准/升级/确认执行"）
-4. **EXECUTE** → Agent 执行修改 + 版本号更新 + CHANGELOG
+1. **OBSERVE** → Agent  `EVOLUTION_LOG.md`  `[OBSERVATION]`（，）
+2. **PROPOSE** → Agent  `EVOLUTION_LOG.md`  `[PROPOSAL]`
+3. **APPROVE** → （"//"）
+4. **EXECUTE** → Agent  +  + CHANGELOG
 
 ---
 
@@ -487,11 +509,11 @@ Before submitting any humanization design, verify:
 |------|----------|---------|---------|
 | 2026-04-03 | De Novo CDR Design | 5.0 | Three-Question tool framework (§2), T1.5 EvoEF2 Clash gate (§4.4/§5.5), multi-CDR/CDR3 extended pipeline (§7), adaptive routing engine (§9), HADDOCK3 integration rules (§7.4), checkpoint/resume runner, `fast_clash_check.py` module |
 | 2026-04-03 | De Novo CDR Design | 4.0 | T0.0 PTM mandatory gate, conditional ImmuneBuilder/AbLang, V2 MPNN sampling, root position philosophy, PRODIGY deprecated |
-| 2026-04-02 | Unified Report Visual Standard | 1.1 | spec.py v1.1: per-family CHAPTER_SKELETONS (8 families × ordered ChapterEntry), chapter_schema(), validate_content() for BioChatter; CURSOR_REPORT_ENGINE V4.1 promoted to docs/ as primary Report Generation Standard |
+| 2026-04-02 | Unified Report Visual Standard | 1.1 | spec.py v1.1: per-family CHAPTER_SKELETONS (8 families × ordered ChapterEntry), chapter_schema, validate_content for BioChatter; CURSOR_REPORT_ENGINE V4.1 promoted to docs/ as primary Report Generation Standard |
 | 2026-04-02 | Unified Report Visual Standard | 1.0 | Initial creation — `core/reporting/` framework: spec.py (metadata contract), theme.py (visual tokens), theme_reportlab.py (RL adapter), render.py (API), report_cli.py (CLI); migrated VAM + CAR-M + md_to_pdf; audit script |
 | 2026-04-01 | Bispecific VHH CMC | 1.0 | Initial creation — 4-phase workflow, VHH42 ref, 14-gate system, flag-discrete ADI, SmartLink™ linker panel, ER expression model; `core/cmc/bispecific_cmc_engine.py` + `vhh_cmc_engine.py` |
 | 2026-04-01 | STANDARDS_INDEX | — | Confirmed-70: downstream-analysis gates + germline–ADA exploratory library (`germline_ada_panel/`) |
-| 2026-04-01 | AbEngineCore Governance | 1.1.0 | Evolution protocol (§三-B), file classification, EVOLUTION_LOG.md, VAM + EpiDesign locked files |
+| 2026-04-01 | AbEngineCore Governance | 1.1.0 | Evolution protocol (§-B), file classification, EVOLUTION_LOG.md, VAM + EpiDesign locked files |
 | 2026-04-01 | Virtual Affinity Maturation | 1.0 | Initial creation — 3-scenario VAM workflow, 6-tool chain, PAG1 benchmark, HADDOCK3 pipeline |
 | 2026-04-01 | EpiDesignCore | 1.0 | Initial creation — pMHC-TCR peptide antigen design system (parallel to AbEngineCore) |
 | 2026-02-18 | VH/VL Humanization Design | 4.4 | Checklist expansion — germline validation, 5.2b canonical class, VL BM declaration, IEDB status, L2 rationale |
