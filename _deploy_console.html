@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- insynbio-console-v723-ighv3-gate-fix-no-algo-leak -->
+<!-- insynbio-console-v724-teplizumab-cd3-demo -->
 <!-- [FORCED RELOAD 2026-05-17 14:50] -->
 <html lang="en">
 <head>
@@ -1563,7 +1563,7 @@ const REGISTRY = {
       reportVersion: "V1.8.17",
       reportCatalogKey: "vh_to_vhh",
       runner: "vh-to-vhh",
-      demos: ["tislelizumab-vh"],
+      demos: ["tislelizumab-vh", "teplizumab-vh"],
     },
     "cdna-optimization-vhh": {
       module: "vhh-engineering",
@@ -1846,6 +1846,12 @@ const DEMOS = {
     summary: "Humanized anti-PD-1 VH (IGHV3-66, PDB 7CGW) — Priority 1 VH→VHH benchmark; CDR-H3 10 aa, CMC-favorable. Externally validated by Mirzaei et al. 2025.",
     type: "vh",
     seq: "QVQLQESGPGLVKPSETLSLTCTVSGFSLTSYGVHWIRQPPGKGLEWIGVIYADGSTNYNPSLKSRVTISKDTSKNQVSLKLSSVTAADTAVYYCARAYGNYWYIDVWGQGTTVTVSS",
+  },
+  "teplizumab-vh": {
+    label: "Teplizumab VH (CD3ε, Tzield)",
+    summary: "Humanized anti-CD3ε VH (IGHV3-23, FDA-approved T1D) — CDR3 10 aa with unpaired Cys (Cys-gate demo); pI 8.93; 4-mutation conversion: Cys-gate + pI-correction + Hallmark reshaping. InSynBio CD3 VH→VHH Batch 20260515.",
+    type: "vh",
+    seq: "QVQLVQSGGGVVQPGRSLRLSCKASGYTFTRYTMHWVRQAPGKGLEWIGYINPSRGYTNYNQKVKDRFTISRDNSKNTAFLQMDSLRPEDTGVYFCARYYDDHYCLDYWGQGTPVTVSS",
   },
   "pembrolizumab-vh": {
     label: "Pembrolizumab VH (PD-1, Keytruda)",
@@ -4579,7 +4585,8 @@ function resolveDemoTargetService(demoId) {
   if (demoId === "alpaca-vhh") return "vhh-humanization";
   if (demoId === "mumab4d5-vh" || demoId === "toripalimab-vh"
       || demoId === "tislelizumab-vh" || demoId === "pembrolizumab-vh"
-      || demoId === "camrelizumab-vh" || demoId === "nivolumab-vh") {
+      || demoId === "camrelizumab-vh" || demoId === "nivolumab-vh"
+      || demoId === "teplizumab-vh") {
     return "vh-to-vhh-conversion";
   }
   return null;
