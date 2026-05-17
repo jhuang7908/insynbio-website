@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- insynbio-console-v722-vh2vhh-advisory-contrast -->
+<!-- insynbio-console-v726-cdna-forward-routing -->
 <!-- [FORCED RELOAD 2026-05-17 14:50] -->
 <html lang="en">
 <head>
@@ -1550,7 +1550,7 @@ const REGISTRY = {
       reportVersion: "V1.8.17",
       reportCatalogKey: "vh_to_vhh",
       runner: "vh-to-vhh",
-      demos: ["tislelizumab-vh"],
+      demos: ["tislelizumab-vh", "teplizumab-vh"],
     },
     "cdna-optimization-vhh": {
       module: "vhh-engineering",
@@ -1833,6 +1833,12 @@ const DEMOS = {
     summary: "Humanized anti-PD-1 VH (IGHV3-66, PDB 7CGW) — Priority 1 VH→VHH benchmark; CDR-H3 10 aa, CMC-favorable. Externally validated by Mirzaei et al. 2025.",
     type: "vh",
     seq: "QVQLQESGPGLVKPSETLSLTCTVSGFSLTSYGVHWIRQPPGKGLEWIGVIYADGSTNYNPSLKSRVTISKDTSKNQVSLKLSSVTAADTAVYYCARAYGNYWYIDVWGQGTTVTVSS",
+  },
+  "teplizumab-vh": {
+    label: "Teplizumab VH (CD3ε, Tzield)",
+    summary: "Humanized anti-CD3ε VH (IGHV3-23, FDA-approved T1D) — CDR3 10 aa with unpaired Cys (Cys-gate demo); pI 8.93; 4-mutation conversion: Cys-gate + pI-correction + Hallmark reshaping. InSynBio CD3 VH→VHH Batch 20260515.",
+    type: "vh",
+    seq: "QVQLVQSGGGVVQPGRSLRLSCKASGYTFTRYTMHWVRQAPGKGLEWIGYINPSRGYTNYNQKVKDRFTISRDNSKNTAFLQMDSLRPEDTGVYFCARYYDDHYCLDYWGQGTPVTVSS",
   },
   "pembrolizumab-vh": {
     label: "Pembrolizumab VH (PD-1, Keytruda)",
@@ -3687,7 +3693,7 @@ function renderVhToVhhForm(service) {
       <div class="panel-label">Demo &amp; Input</div>
       <div style="background:var(--panel-2); border:1px solid var(--line-2); padding:10px 12px; border-radius:6px; margin-bottom:15px; font-size:11.5px; color:var(--text); line-height:1.5;">
         <strong style="color:var(--warn)">Domain Restriction:</strong> The VH to VHH conversion algorithm is restricted to the <strong>IGHV3 family (Human or Murine)</strong>, as natural VHHs are evolutionarily derived from IGHV3. Sequences from other structural families (e.g., IGHV1, IGHV4) exhibit severe framework mismatch and are rejected by the pre-flight check.
-        <div style="margin-top:8px;color:var(--muted);font-size:11px;"><strong>Versioning:</strong> Algorithm standard <strong>V1.8.17</strong> (<code>VH_TO_VHH_CONVERSION_STANDARD_V1.8.md</code>). This Console path runs deployment branch <strong>V1.8.17.IGHV3</strong> — same rules plus the IGHV3-only gateway on <code>/vh_to_vhh</code> endpoints.</div>
+        <div style="margin-top:8px;color:var(--muted);font-size:11px;"><strong>Versioning:</strong> Algorithm standard <strong>V1.8.17</strong>. This Console path runs deployment branch <strong>V1.8.17.IGHV3</strong> — same standard rules plus the IGHV3-family gateway on conversion endpoints.</div>
       </div>
       <div class="form-grid">
         <div class="field"><label>Demo case</label><select id="vh2vhh-demo" onchange="loadServiceDemo()"></select></div>
@@ -3722,7 +3728,7 @@ const VH2VHH_SOURCE_NOTES = {
     color: "#2563eb", darkColor: "#60a5fa", bg: "rgba(59,130,246,0.06)", border: "rgba(59,130,246,0.25)",
     icon: "🔵",
     title: "Path C1 — Framework-preserving camelization",
-    body: "Human / humanized VH with intact IGHV framework. Hallmark mutations (Kabat 45 default, 44/47 rescue-only per V1.8.17 rules) are applied to the existing human framework. Lowest risk path — germline similarity is high and immunogenicity baseline is low.",
+    body: "Human / humanized VH with intact IGHV framework. Proprietary framework-zone mutations are applied to convert the VH-VL interface to a single-domain-compatible surface. Lowest risk path — germline similarity is high and immunogenicity baseline is low.",
     vam: "medium", vamColor: "#b56300",
     tip: "Verify CDR conformation (RMSD) post-conversion. VAM recommended if binding Kd > 10 nM."
   },
@@ -3997,7 +4003,9 @@ function renderCdnaOptimizationForm(service) {
       ${assemblyBlock}
       <div class="button-row">
         <button class="btn" onclick="loadServiceDemo()">Load Demo</button>
-        ${isVhh ? `<button type="button" class="btn" onclick="fillCdnaVhhFromLastHumanization()">Use last humanized VHH</button>` : ""}
+        ${isVhh
+          ? `<button type="button" class="btn" onclick="fillCdnaVhhFromLastHumanization()">Use last humanized VHH</button>`
+          : `<button type="button" class="btn" onclick="fillCdnaIggFromLastHumanization()">Use last humanized VH/VL</button>`}
         <button class="btn primary" onclick="runCurrentService()">Optimize cDNA</button>
       </div>
       <p class="helper" style="margin-top:10px;line-height:1.5;border-left:3px solid rgba(148,163,184,.45);padding-left:10px">
@@ -4566,7 +4574,8 @@ function resolveDemoTargetService(demoId) {
   if (demoId === "alpaca-vhh") return "vhh-humanization";
   if (demoId === "mumab4d5-vh" || demoId === "toripalimab-vh"
       || demoId === "tislelizumab-vh" || demoId === "pembrolizumab-vh"
-      || demoId === "camrelizumab-vh" || demoId === "nivolumab-vh") {
+      || demoId === "camrelizumab-vh" || demoId === "nivolumab-vh"
+      || demoId === "teplizumab-vh") {
     return "vh-to-vhh-conversion";
   }
   return null;
@@ -6429,9 +6438,10 @@ function renderVhvlResult(data, service, demoId) {
           return `<div style="margin-top:14px;display:flex;flex-wrap:wrap;gap:8px;align-items:center">
             <span class="panel-label" style="margin-right:4px">Downloads:</span>${links}</div>`;
         })()}
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px;max-width:920px">
+        <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-top:12px;max-width:920px">
           <button type="button" class="btn offline-btn" onclick="goToAf2MultimerWithLastHumanization(false)">AF2 Multimer &amp; Complex</button>
           <button type="button" class="btn" style="border-color:var(--accent);color:var(--accent)" onclick="goToCmcIggWithLastHumanization()">Go to IgG CMC Snapshot</button>
+          <button type="button" class="btn" style="border-color:#22d3ee;color:#22d3ee" onclick="goToCdnaWithLastHumanization(false)">cDNA Optimization (IgG) →</button>
         </div>
       </div>
     </section>
@@ -8861,7 +8871,26 @@ function renderCmcIggResult(data, service, demoId, sequenceName) {
         <div class="result-body"><pre style="font-size:10px;white-space:pre-wrap;color:var(--fail)">${escapeHtml(data.report_error || data.result.report_error)}</pre></div>
       </section>`
     : "";
-  setOutput(cmcMetadataPanel + inputSeqPanel + fvPanel + abref458Banner + reportErrNote + sourceAwarePanel + specificBody);
+  // Stash CMC input sequences so the downstream cDNA routing button can forward them
+  window._lastCmcInputVh = (r.vh_sequence || "").trim();
+  window._lastCmcInputVl = (r.vl_sequence || "").trim();
+  window._lastCmcInputName = (r.project_name || sequenceName || "").trim();
+  const cmcDownstreamPanel = `
+    <section class="result-panel" style="border-color:rgba(34,211,238,.25)">
+      <div class="result-title" style="background:rgba(34,211,238,.05)">
+        <strong style="color:#22d3ee">Downstream: cDNA Optimization</strong>
+        <span style="font-size:11px;color:var(--muted)">Carry assessed VH/VL directly to IgG cDNA assembly</span>
+      </div>
+      <div class="result-body">
+        <p style="font-size:11px;color:var(--muted);margin:0 0 10px">
+          Assemble full human IgG (signal peptide + VH + CH1 + hinge + Fc; VL + CL) and codon-optimize for HEK293 / CHO / E. coli using the sequences evaluated above.
+        </p>
+        <div class="button-row">
+          <button type="button" class="btn" style="border-color:#22d3ee;color:#22d3ee" onclick="goToCdnaFromCmcIgg()">cDNA Optimization (IgG) →</button>
+        </div>
+      </div>
+    </section>`;
+  setOutput(cmcMetadataPanel + inputSeqPanel + fvPanel + abref458Banner + reportErrNote + sourceAwarePanel + specificBody + cmcDownstreamPanel);
   updateResultRail({
     status: r.overall_status || "DONE",
     summaryTitle: `${service.label} completed`,
@@ -9307,9 +9336,10 @@ function renderVhhHumanizationResult(data, service, demoId) {
           return `<div style="margin-top:14px;display:flex;flex-wrap:wrap;gap:8px;align-items:center">
             <span class="panel-label" style="margin-right:4px">Downloads:</span>${links}</div>`;
         })()}
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px;max-width:920px">
+        <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-top:12px;max-width:920px">
           <button type="button" class="btn offline-btn" onclick="goToAf2MultimerWithLastHumanization(true)">AF2 Multimer &amp; Complex</button>
           <button type="button" class="btn" style="border-color:var(--accent);color:var(--accent)" onclick="goToVhhCmcWithLastHumanization()">Go to VHH CMC Snapshot</button>
+          <button type="button" class="btn" style="border-color:#22d3ee;color:#22d3ee" onclick="goToCdnaWithLastHumanization(true)">cDNA Optimization (VHH) →</button>
         </div>
       </div>
     </section>
@@ -10134,7 +10164,25 @@ function renderVhhCmcResult(data, service, demoId) {
         SAP_score: m.SAP_score, ADI: resObj.adi_score, adi_grade: resObj.adi_grade,
       },
     })}
+
+    <section class="result-panel" style="border-color:rgba(34,211,238,.25)">
+      <div class="result-title" style="background:rgba(34,211,238,.05)">
+        <strong style="color:#22d3ee">Downstream: cDNA Optimization</strong>
+        <span style="font-size:11px;color:var(--muted)">Carry assessed VHH directly to cDNA assembly</span>
+      </div>
+      <div class="result-body">
+        <p style="font-size:11px;color:var(--muted);margin:0 0 10px">
+          Assemble VHH construct (signal peptide + optional fusion tag) and codon-optimize for HEK293 / CHO / E. coli using the sequence evaluated above.
+        </p>
+        <div class="button-row">
+          <button type="button" class="btn" style="border-color:#22d3ee;color:#22d3ee" onclick="goToCdnaFromCmcVhh()">cDNA Optimization (VHH) →</button>
+        </div>
+      </div>
+    </section>
   `);
+  // Stash VHH CMC input sequence for downstream cDNA routing
+  window._lastCmcInputVhh  = (resObj.sequence || "").trim();
+  window._lastCmcInputName = (nameStr || "").trim();
 
   const railA24 = (isEngVH && a24Sim)
     ? {label: "EngVH Sim", value: `${(a24Sim.score*100).toFixed(0)}% (${a24Sim.score_band})`, tone: a24Sim.score_band === "high" ? "ok" : a24Sim.score_band === "medium" ? "warn" : "fail"}
@@ -11410,6 +11458,7 @@ function renderVhToVhhResult(data, service, demoId) {
         <p style="font-size:11px;color:var(--muted);margin-top:8px">Mutated positions shown in <span style="color:#c9a227;font-weight:700">amber</span>. Verify activity by SPR/BLI before advancing.</p>
         <div class="button-row" style="margin-top:10px;flex-wrap:wrap">
           <button type="button" class="btn" style="border-color:var(--accent);color:var(--accent)" onclick="goToVhhCmcWithLastHumanization()">Run VHH CMC Snapshot →</button>
+          <button type="button" class="btn" style="border-color:#22d3ee;color:#22d3ee" onclick="goToCdnaWithLastHumanization(true)">cDNA Optimization (VHH) →</button>
         </div>
       </div>
     </section>`;
@@ -11549,7 +11598,7 @@ function renderVhToVhhResult(data, service, demoId) {
             </table>
             <div style="padding:0 12px 10px">
               <span style="font-size:11px;color:var(--muted);font-weight:700;margin-right:10px">Total FR mutations: ${totalFrMut}</span>
-              <span style="font-size:11px;color:var(--muted)">Framework mutations include core hallmark substitutions (e.g., Kabat 45/47) to restore VH-VL interface solubility, alongside proprietary surface-patch modifications governed by structural gating (V1.8.17). Specific mutation paths depend on the source VH family and baseline developability profile.</span>
+              <span style="font-size:11px;color:var(--muted)">Framework mutations restore VH-VL interface compatibility for single-domain display, alongside proprietary surface-patch modifications governed by structural gating. Specific mutation paths depend on the source VH family and baseline developability profile.</span>
               ${r.conversion_error ? `<div style="color:var(--fail);font-size:11px;margin-top:4px">Mutation engine warning: ${escapeHtml(r.conversion_error)}</div>` : ""}
             </div>
           `;
@@ -11569,6 +11618,7 @@ function renderVhToVhhResult(data, service, demoId) {
         <p style="font-size:11px;color:var(--muted);margin-top:8px">Mutated positions shown in <span style="color:#c9a227;font-weight:700">amber</span>. Verify activity by SPR/BLI before advancing.</p>
         <div class="button-row" style="margin-top:10px;flex-wrap:wrap">
           <button type="button" class="btn" style="border-color:var(--accent);color:var(--accent)" onclick="goToVhhCmcWithLastHumanization()">Run VHH CMC Snapshot →</button>
+          <button type="button" class="btn" style="border-color:#22d3ee;color:#22d3ee" onclick="goToCdnaWithLastHumanization(true)">cDNA Optimization (VHH) →</button>
         </div>
       </div>
     </section>`}
@@ -13012,6 +13062,83 @@ function fillCdnaVhhFromLastHumanization() {
   if (helper) {
     helper.textContent = "Loaded VHH sequence from the latest humanization result in this browser session.";
   }
+}
+
+/** Pre-fill IgG cDNA form from last VH/VL humanization stored in sessionStorage. */
+function fillCdnaIggFromLastHumanization() {
+  let vh = "", vl = "", name = "";
+  try {
+    vh   = sessionStorage.getItem("insynbio_last_humanized_vh") || "";
+    vl   = sessionStorage.getItem("insynbio_last_humanized_vl") || "";
+    name = sessionStorage.getItem("insynbio_last_humanized_name") || "";
+  } catch (e) {}
+  const seqEl  = document.getElementById("cdna-seq");
+  const vlEl   = document.getElementById("cdna-vl");
+  const nameEl = document.getElementById("cdna-name");
+  if (!seqEl) return;
+  if (!String(vh).trim()) {
+    window.alert("No humanized VH/VL found in this browser session. Run VH/VL Humanization first, then use this button.");
+    return;
+  }
+  seqEl.value = String(vh).trim();
+  if (vlEl) vlEl.value = String(vl).trim();
+  if (nameEl && name) nameEl.value = name;
+  const helper = document.getElementById("cdna-helper");
+  if (helper) helper.textContent = "Loaded VH/VL sequences from the latest humanization result in this browser session.";
+}
+
+/** Navigate to cDNA optimization and pre-fill the last humanized sequence. */
+function goToCdnaWithLastHumanization(isVhh) {
+  activateService(isVhh ? "cdna-optimization-vhh" : "cdna-optimization-igg");
+  setTimeout(() => {
+    if (isVhh) fillCdnaVhhFromLastHumanization();
+    else fillCdnaIggFromLastHumanization();
+  }, 250);
+}
+
+/** Navigate to IgG cDNA optimization and pre-fill from last CMC run. */
+function goToCdnaFromCmcIgg() {
+  const vh   = (window._lastCmcInputVh   || "").trim();
+  const vl   = (window._lastCmcInputVl   || "").trim();
+  const name = (window._lastCmcInputName || "").trim();
+  if (!vh) {
+    window.alert("No IgG CMC sequences cached in this browser session. Run CMC assessment first.");
+    return;
+  }
+  activateService("cdna-optimization-igg");
+  setTimeout(() => {
+    const seqEl  = document.getElementById("cdna-seq");
+    const vlEl   = document.getElementById("cdna-vl");
+    const nameEl = document.getElementById("cdna-name");
+    if (seqEl) seqEl.value = vh;
+    if (vlEl)  vlEl.value  = vl;
+    if (nameEl && name) nameEl.value = name;
+    const helper = document.getElementById("cdna-helper");
+    if (helper) helper.textContent = "Sequences pre-filled from the CMC assessment result in this browser session.";
+    const shell = document.querySelector(".service-shell");
+    if (shell) shell.scrollIntoView({ behavior: "smooth", block: "start" });
+  }, 250);
+}
+
+/** Navigate to VHH cDNA optimization and pre-fill from last VHH CMC run. */
+function goToCdnaFromCmcVhh() {
+  const vhh  = (window._lastCmcInputVhh  || "").trim();
+  const name = (window._lastCmcInputName || "").trim();
+  if (!vhh) {
+    window.alert("No VHH CMC sequence cached in this browser session. Run VHH CMC assessment first.");
+    return;
+  }
+  activateService("cdna-optimization-vhh");
+  setTimeout(() => {
+    const seqEl  = document.getElementById("cdna-seq");
+    const nameEl = document.getElementById("cdna-name");
+    if (seqEl) seqEl.value = vhh;
+    if (nameEl && name) nameEl.value = name;
+    const helper = document.getElementById("cdna-helper");
+    if (helper) helper.textContent = "VHH sequence pre-filled from the CMC assessment result in this browser session.";
+    const shell = document.querySelector(".service-shell");
+    if (shell) shell.scrollIntoView({ behavior: "smooth", block: "start" });
+  }, 250);
 }
 
 function goToAf2MultimerWithLastHumanization(useVhhMode) {
