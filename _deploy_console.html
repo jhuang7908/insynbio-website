@@ -4000,90 +4000,51 @@ function renderCartAssemblerForm(service) {
 
       <!-- ══════════ IN VIVO CAR PANEL ══════════ -->
       <div id="cart-invivo-panel" style="display:none;margin-bottom:18px">
-        <div style="padding:12px 14px;background:linear-gradient(135deg,#1a1a2e 0%,#16213e 100%);border-radius:8px;border:1px solid #ef4444;margin-bottom:12px">
-          <div style="font-size:12px;font-weight:700;color:#fca5a5;margin-bottom:3px">⚡ In Vivo CAR — No Ex Vivo Manufacturing Required</div>
-          <div style="font-size:10px;color:#94a3b8;line-height:1.5">
-            LNP-mRNA delivery or viral-vector–mediated in situ CAR-T generation. Browse binders by disease indication (Level 2), then filter by effector cell platform (Level 3).
-            Selecting a binder auto-populates the Binder slot in the assembly form below.
-          </div>
+
+        <!-- Disease context card (updated by JS per active service) -->
+        <div id="cart-invivo-context" class="offline-scope-card" style="margin-bottom:14px">
+          <h4 style="display:flex;align-items:center;gap:8px">
+            <span id="cart-invivo-ctx-icon">⚡</span>
+            <span id="cart-invivo-ctx-title">In Vivo CAR — No Ex Vivo Manufacturing</span>
+          </h4>
+          <p id="cart-invivo-ctx-body" style="margin-top:4px">
+            LNP-mRNA or viral-vector delivery generates CAR-T cells in situ. Select an indication from the left panel,
+            then browse curated binders below. Click any card to populate the Binder slot in the assembly form.
+          </p>
+          <div id="cart-invivo-ctx-note" style="display:none;margin-top:8px;padding:6px 10px;border-radius:5px;border:1px solid var(--warn);background:rgba(212,167,44,.06);font-size:10px;color:var(--muted);line-height:1.6"></div>
         </div>
 
-        <!-- Level 2: Disease tabs -->
-        <div style="margin-bottom:8px;font-size:10px;font-weight:600;color:var(--muted);letter-spacing:.05em">LEVEL 2 — SELECT INDICATION / DISEASE</div>
-        <div id="cart-invivo-disease-tabs" style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px">
-          <button type="button" class="__cart_ivd" data-disease="" data-label="All"
-            onclick="_cartInVivoSetDisease(this)"
-            style="padding:5px 12px;border-radius:16px;border:1px solid var(--accent);background:var(--accent);color:#fff;font-size:11px;font-weight:600;cursor:pointer">
-            All (24)
-          </button>
-          <button type="button" class="__cart_ivd" data-disease="Solid Tumor" data-label="Solid Tumor"
-            onclick="_cartInVivoSetDisease(this)"
-            style="padding:5px 12px;border-radius:16px;border:1px solid var(--border);background:var(--surface);font-size:11px;cursor:pointer">
-            🫁 Solid Tumor <span style="opacity:.6">(8)</span>
-          </button>
-          <button type="button" class="__cart_ivd" data-disease="Hematologic (Liquid Tumor)" data-label="Hematologic"
-            onclick="_cartInVivoSetDisease(this)"
-            style="padding:5px 12px;border-radius:16px;border:1px solid var(--border);background:var(--surface);font-size:11px;cursor:pointer">
-            🩸 Blood Cancer <span style="opacity:.6">(5)</span>
-          </button>
-          <button type="button" class="__cart_ivd" data-disease="Neurological (CNS/Glioma)" data-label="Neuro/CNS"
-            onclick="_cartInVivoSetDisease(this)"
-            style="padding:5px 12px;border-radius:16px;border:1px solid var(--border);background:var(--surface);font-size:11px;cursor:pointer">
-            🧠 Neuro / CNS <span style="opacity:.6">(1)</span>
-          </button>
-          <button type="button" class="__cart_ivd" data-disease="Autoimmune (Self-Tolerance/CAAR)" data-label="Autoimmune"
-            onclick="_cartInVivoSetDisease(this)"
-            style="padding:5px 12px;border-radius:16px;border:1px solid var(--border);background:var(--surface);font-size:11px;cursor:pointer">
-            🛡 Autoimmune <span style="opacity:.6">(1)</span>
-          </button>
-          <button type="button" class="__cart_ivd" data-disease="General/Multi-Target" data-label="General"
-            onclick="_cartInVivoSetDisease(this)"
-            style="padding:5px 12px;border-radius:16px;border:1px solid var(--border);background:var(--surface);font-size:11px;cursor:pointer">
-            🎯 Multi-Target <span style="opacity:.6">(2)</span>
-          </button>
-          <span style="display:inline-flex;align-items:center;font-size:10px;color:var(--muted);padding:0 4px">│</span>
-          <button type="button" class="__cart_ivd" data-disease="LNP/mRNA Targeting Ligand" data-label="LNP Ligands"
-            onclick="_cartInVivoSetDisease(this)"
-            style="padding:5px 12px;border-radius:16px;border:1px solid var(--border);background:var(--surface);font-size:11px;cursor:pointer">
-            📦 LNP Ligands <span style="opacity:.6">(3)</span>
-          </button>
-          <button type="button" class="__cart_ivd" data-disease="mRNA Stability Element" data-label="mRNA Stability"
-            onclick="_cartInVivoSetDisease(this)"
-            style="padding:5px 12px;border-radius:16px;border:1px solid var(--border);background:var(--surface);font-size:11px;cursor:pointer">
-            🧬 mRNA Stability <span style="opacity:.6">(3)</span>
-          </button>
-        </div>
-
-        <!-- Level 3: Cell / Vehicle filter -->
-        <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px">
-          <div style="font-size:10px;font-weight:600;color:var(--muted);letter-spacing:.05em;white-space:nowrap">LEVEL 3 — CELL / PLATFORM:</div>
-          <div id="cart-invivo-vehicle-tabs" style="display:flex;flex-wrap:wrap;gap:5px">
-            <button type="button" class="__cart_ivv" data-vehicle=""
-              onclick="_cartInVivoSetVehicle(this)"
-              style="padding:3px 10px;border-radius:4px;border:1px solid var(--accent);background:var(--accent);color:#fff;font-size:10px;cursor:pointer">All</button>
-            <button type="button" class="__cart_ivv" data-vehicle="CAR-T"
-              onclick="_cartInVivoSetVehicle(this)"
-              style="padding:3px 10px;border-radius:4px;border:1px solid var(--border);background:var(--surface);font-size:10px;cursor:pointer">CAR-T</button>
-            <button type="button" class="__cart_ivv" data-vehicle="CAR-T (LNP-mRNA)"
-              onclick="_cartInVivoSetVehicle(this)"
-              style="padding:3px 10px;border-radius:4px;border:1px solid var(--border);background:var(--surface);font-size:10px;cursor:pointer">CAR-T (LNP-mRNA)</button>
-            <button type="button" class="__cart_ivv" data-vehicle="mRNA element"
-              onclick="_cartInVivoSetVehicle(this)"
-              style="padding:3px 10px;border-radius:4px;border:1px solid var(--border);background:var(--surface);font-size:10px;cursor:pointer">mRNA Elements</button>
-          </div>
+        <!-- Level 3: Cell / Platform filter -->
+        <div class="panel-label" style="margin-bottom:6px">Platform / Effector Cell</div>
+        <div id="cart-invivo-vehicle-tabs" style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:16px">
+          <button type="button" class="__cart_ivv service-btn" data-vehicle=""
+            onclick="_cartInVivoSetVehicle(this)"
+            style="padding:4px 12px;font-size:11px;border-radius:14px;background:var(--accent);color:#fff;border:1px solid var(--accent)">All</button>
+          <button type="button" class="__cart_ivv service-btn" data-vehicle="CAR-T"
+            onclick="_cartInVivoSetVehicle(this)"
+            style="padding:4px 12px;font-size:11px;border-radius:14px">CAR-T (Viral / Direct)</button>
+          <button type="button" class="__cart_ivv service-btn" data-vehicle="CAR-T (LNP-mRNA)"
+            onclick="_cartInVivoSetVehicle(this)"
+            style="padding:4px 12px;font-size:11px;border-radius:14px">CAR-T (LNP-mRNA)</button>
+          <button type="button" class="__cart_ivv service-btn" data-vehicle="mRNA element"
+            onclick="_cartInVivoSetVehicle(this)"
+            style="padding:4px 12px;font-size:11px;border-radius:14px">mRNA Elements</button>
         </div>
 
         <!-- Component cards grid -->
-        <div id="cart-invivo-cards" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:8px;min-height:100px">
-          <div style="color:var(--muted);font-size:12px;grid-column:1/-1;text-align:center;padding:30px">Loading In Vivo components…</div>
+        <div class="panel-label" style="margin-bottom:8px">Curated Binders — click to add to Binder slot</div>
+        <div id="cart-invivo-cards" class="method-grid" style="grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:8px;min-height:80px">
+          <div style="color:var(--muted);font-size:12px;grid-column:1/-1;text-align:center;padding:28px">Loading…</div>
         </div>
 
         <!-- Selected binder chip -->
-        <div id="cart-invivo-selected" style="display:none;margin-top:10px;padding:8px 12px;background:color-mix(in srgb,var(--accent) 10%,var(--bg));border:1px solid var(--accent);border-radius:6px;font-size:11px">
-          <span style="color:var(--muted)">Selected for Binder slot:</span>
+        <div id="cart-invivo-selected" style="display:none;margin-top:10px;padding:8px 12px;border:1px solid var(--accent);border-radius:6px;font-size:11px;background:var(--panel)">
+          <span style="color:var(--muted)">Added to slot:</span>
           <strong id="cart-invivo-selected-name" style="color:var(--accent);margin:0 6px"></strong>
-          <button type="button" onclick="_cartInVivoClearSelected()" style="font-size:10px;background:transparent;border:none;color:var(--muted);cursor:pointer">✕ clear</button>
+          <button type="button" onclick="_cartInVivoClearSelected()" style="font-size:10px;background:transparent;border:none;color:var(--muted);cursor:pointer">✕</button>
         </div>
+
+        <hr style="border:none;border-top:1px solid var(--line);margin:16px 0">
       </div>
 
       <!-- ══════════ EX VIVO PANEL (Pre-filters) ══════════ -->
@@ -12244,11 +12205,12 @@ function _cartInVivoSetDisease(btn) {
   window.__CART_INVIVO_DISEASE = btn.dataset.disease || '';
   document.querySelectorAll('.__cart_ivd').forEach(b => {
     const active = b === btn;
-    b.style.background   = active ? 'var(--accent)' : 'var(--surface)';
+    b.style.background   = active ? 'var(--accent)' : '';
     b.style.color        = active ? '#fff'           : '';
-    b.style.borderColor  = active ? 'var(--accent)'  : 'var(--border)';
+    b.style.borderColor  = active ? 'var(--accent)'  : '';
     b.style.fontWeight   = active ? '600'            : '';
   });
+  _cartInVivoUpdateContext(window.__CART_INVIVO_DISEASE);
   _cartInVivoRenderCards();
 }
 
@@ -12261,6 +12223,81 @@ function _cartInVivoSetVehicle(btn) {
     b.style.borderColor = active ? 'var(--accent)' : 'var(--border)';
   });
   _cartInVivoRenderCards();
+}
+
+// Disease context metadata for the info card
+const _CART_INVIVO_CTX = {
+  'Solid Tumor': {
+    icon: '🫁', title: 'In Vivo CAR — Solid Tumor',
+    body: 'LNP-mRNA delivery targets circulating T cells (CD5/CD4-LNP) which then home to solid tumor sites. ' +
+          'Key targets: EpCAM (CRC/gastric), AFP (HCC), Mesothelin (PDAC/mesothelioma), PSMA (prostate), HER3, GPC1.',
+    note: '⚠ Solid tumors require Armored design: co-deliver IL-7/IL-15 or PD-L1 dominant-negative payload ' +
+          '(same LNP) to overcome immunosuppressive TME. Add an Armored Payload slot below.',
+  },
+  'Hematologic (Liquid Tumor)': {
+    icon: '🩸', title: 'In Vivo CAR — Blood Cancer / Hematologic',
+    body: 'Best clinical rationale for In Vivo CAR. Targets: ROR1 (CLL/ALL), CD123 (AML), FLT3 (AML/ALL), ' +
+          'GPRC5D (multiple myeloma), CD44v6 (AML/MM). LNP-mRNA delivery provides transient CAR expression; ' +
+          're-dosing is feasible without manufacturing lag.',
+    note: '',
+  },
+  'Neurological (CNS/Glioma)': {
+    icon: '🧠', title: 'In Vivo CAR — Neurological / CNS / Glioma',
+    body: 'GD2-targeting CAR for GBM and DIPG. CNS delivery requires intrathecal or intraventricular LNP ' +
+          'administration or AAV-mediated locoregional delivery. BBB penetration with systemic LNP is under investigation.',
+    note: '⚠ CNS delivery route (intrathecal vs systemic) critically affects dosing and safety. ' +
+          'Armored co-delivery (IL-15) recommended for GBM TME.',
+  },
+  'Autoimmune (Self-Tolerance/CAAR)': {
+    icon: '🛡', title: 'In Vivo CAR — Autoimmune / CAAR-T',
+    body: 'CAAR (Chimeric AutoAntibody Receptor) platform. OKT3 humanized scFv targets auto-reactive B cells. ' +
+          'In Vivo delivery via CD4/CD8-targeted LNP generates CAAR-T cells without patient leukopheresis.',
+    note: '',
+  },
+  'General/Multi-Target': {
+    icon: '🎯', title: 'In Vivo CAR — Multi-Target / General',
+    body: 'DLL3 (neuroendocrine tumors, SCLC) and CXCR4 (AML stem cells, lymphoma). ' +
+          'CXCR4-targeting CAR is notable for direct competition with native CXCR4-CXCL12 signaling in bone marrow niche.',
+    note: '',
+  },
+  'LNP/mRNA Targeting Ligand': {
+    icon: '📦', title: 'LNP Targeting Ligands — T Cell Surface Markers',
+    body: 'Anti-CD5 scFv, anti-CD4 scFv, and anti-CD8 scFv conjugated to LNP surface direct mRNA payload ' +
+          'to specific T cell subpopulations. CD5 targets all T cells; CD4 selects helper T; CD8 selects cytotoxic T. ' +
+          'Add to the In-Vivo Module optional slot.',
+    note: '',
+  },
+  'mRNA Stability Element': {
+    icon: '🧬', title: 'mRNA 3\'UTR Stability Elements',
+    body: 'HBA1 3\'UTR (alpha-globin, high stability, endogenous), HBB 3\'UTR (beta-globin), ' +
+          'and AES-3UTR (synthetic, optimized for LNP-mRNA). ' +
+          'Extend CAR mRNA half-life from hours to days in vivo. Add to the In-Vivo Module optional slot.',
+    note: '',
+  },
+};
+
+function _cartInVivoUpdateContext(disease) {
+  const ctx = _CART_INVIVO_CTX[disease] || {
+    icon:'⚡', title:'In Vivo CAR — No Ex Vivo Manufacturing',
+    body:'LNP-mRNA or viral-vector delivery generates CAR-T cells in situ. Select an indication from the left panel, ' +
+         'then browse curated binders below. Click any card to populate the Binder slot in the assembly form.',
+    note:'',
+  };
+  const icon = document.getElementById('cart-invivo-ctx-icon');
+  const title = document.getElementById('cart-invivo-ctx-title');
+  const body = document.getElementById('cart-invivo-ctx-body');
+  const note = document.getElementById('cart-invivo-ctx-note');
+  if(icon)  icon.textContent  = ctx.icon;
+  if(title) title.textContent = ctx.title;
+  if(body)  body.textContent  = ctx.body;
+  if(note) {
+    if(ctx.note) {
+      note.textContent  = ctx.note;
+      note.style.display = '';
+    } else {
+      note.style.display = 'none';
+    }
+  }
 }
 
 function _cartInVivoRenderCards() {
@@ -12284,48 +12321,37 @@ function _cartInVivoRenderCards() {
     if(vehicle) cards = cards.filter(c => c.vehicle === vehicle);
   }
 
-  const TIER_BG = {T1:'#16a34a',T2:'#2563eb',T3:'#9333ea'};
-  const ROLE_ICON = {
-    'CAR-T (LNP-mRNA)':'📦', 'CAR-T':'🧬', 'mRNA element':'🔡',
-  };
-
+  const TIER_COLOR = {T1:'var(--pass)',T2:'var(--accent)',T3:'var(--muted)'};
   const isBinder = c => !['LNP/mRNA Targeting Ligand','mRNA Stability Element','Expression Control'].includes(c.subcategory);
   const slotFor  = c => isBinder(c) ? 'binder' : 'invivo';
-  const slotLbl  = c => isBinder(c) ? 'Binder' : 'In-Vivo Module';
+  const slotLbl  = c => isBinder(c) ? 'Binder slot' : 'In-Vivo Module slot';
 
   container.innerHTML = cards.map(c => {
-    const tc   = TIER_BG[c.tier] || '#666';
-    const icon = ROLE_ICON[c.vehicle] || '🔬';
+    const tc  = TIER_COLOR[c.tier] || 'var(--muted)';
     const sKey = slotFor(c);
     const sLbl = slotLbl(c);
-    const nameShort = (c.name || c.id).replace(/ scFv| VHH/i,'');
-    const target = c.target ? ('<div style="font-size:10px;color:var(--muted)">🎯 ' + c.target + '</div>') : '';
-    const lenTxt = c.length ? (c.length + ' aa') : '';
-    const trials = (c.clinical_trials||[]).length ? ('<div style="font-size:9px;color:#f59e0b;margin-top:2px">▶ ' + c.clinical_trials.length + ' trials</div>') : '';
-    const vLabel = (c.vehicle && c.vehicle !== 'CAR-T') ? ('<div style="font-size:9px;color:#818cf8;margin-top:2px">' + icon + ' ' + c.vehicle + '</div>') : '';
-    const safeName = (c.name||c.id).replace(/\\/g,'\\\\').replace(/'/g,"\\'").replace(/`/g,'\\`');
+    const nameShort = (c.name || c.id).replace(/ scFv| VHH| \(.*\)/gi,'');
+    const targetRow = c.target ? '<div class="k" style="margin-top:4px">Target: <span style="color:var(--text)">' + c.target + '</span></div>' : '';
+    const lenRow    = c.length ? '<div class="k">' + c.length + ' aa</div>' : '';
+    const trialBadge = (c.clinical_trials||[]).length
+      ? '<span style="font-size:9px;color:var(--warn);margin-left:4px">▶ ' + c.clinical_trials.length + ' trials</span>' : '';
+    const safeName = (c.name||c.id).replace(/\\/g,'\\\\').replace(/'/g,"\\'");
 
-    return `<div
-      style="background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:12px;cursor:pointer;transition:border-color .15s,box-shadow .15s"
-      onmouseenter="this.style.borderColor='var(--accent)';this.style.boxShadow='0 0 0 2px rgba(99,102,241,.2)'"
-      onmouseleave="this.style.borderColor='var(--border)';this.style.boxShadow=''"
-      onclick="_cartInVivoSelectComp('${c.id}','${safeName}','${sKey}')">
-      <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:5px">
-        <span style="font-size:11px;font-weight:600;line-height:1.3">${nameShort}</span>
-        <span style="font-size:9px;font-weight:700;color:${tc};border:1px solid ${tc};border-radius:3px;padding:1px 5px;flex-shrink:0;margin-left:6px">${c.tier}</span>
-      </div>
-      ${target}
-      <div style="font-size:10px;color:var(--muted)">${c.subcategory||''}</div>
-      ${lenTxt ? '<div style="font-size:10px;color:var(--muted)">' + lenTxt + '</div>' : ''}
-      ${vLabel}${trials}
-      <div style="margin-top:8px;padding-top:6px;border-top:1px solid var(--border);text-align:right;font-size:10px;color:var(--accent);font-weight:600">
-        ＋ Add to ${sLbl} →
-      </div>
-    </div>`;
+    return '<div class="method-card" style="cursor:pointer;transition:border-color .15s"' +
+      ' onmouseenter="this.style.borderColor=\'var(--accent)\'"' +
+      ' onmouseleave="this.style.borderColor=\'var(--line)\'"' +
+      ' onclick="_cartInVivoSelectComp(\'' + c.id + '\',\'' + safeName + '\',\'' + sKey + '\')">' +
+      '<div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:4px">' +
+        '<span style="font-weight:600;font-size:12px">' + nameShort + '</span>' +
+        '<span style="font-size:9px;font-weight:700;color:' + tc + ';border:1px solid ' + tc + ';border-radius:3px;padding:1px 5px;margin-left:6px;flex-shrink:0">' + c.tier + trialBadge + '</span>' +
+      '</div>' +
+      targetRow + lenRow +
+      '<div style="margin-top:8px;padding-top:6px;border-top:1px solid var(--line);font-size:10px;color:var(--accent);font-weight:600;text-align:right">+ ' + sLbl + ' →</div>' +
+    '</div>';
   }).join('');
 
   if(!cards.length) {
-    container.innerHTML = '<div style="color:var(--muted);font-size:12px;grid-column:1/-1;text-align:center;padding:30px">No components match this filter.</div>';
+    container.innerHTML = '<div style="color:var(--muted);font-size:12px;grid-column:1/-1;text-align:center;padding:28px">No components match this filter.</div>';
   }
 }
 
@@ -12367,6 +12393,7 @@ function _cartHydrateInVivo(service) {
   _cartInitForm().then(() => {
     _cartSetDeliveryMode('invivo');
     const disease = (service && service.invivoDisease) || '';
+    _cartInVivoUpdateContext(disease);
     if(disease) {
       const btn = document.querySelector('.__cart_ivd[data-disease="' + disease + '"]');
       if(btn) _cartInVivoSetDisease(btn);
