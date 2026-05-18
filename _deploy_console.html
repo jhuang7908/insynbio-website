@@ -3809,46 +3809,74 @@ function renderCmcBispecificForm(service) {
 }
 
 function renderCartAssemblerForm(service) {
-  // Each slot binds to a category in the CAR-T registry.
-  // mode = "db" (pick from registry) | "custom" (paste sequence)
-  const slots = [
-    {key:"binder",     label:"Antigen Binder",        cat:"Antigen Binder",        required:true,  desc:"scFv / VHH / peptide ligand against the tumor antigen"},
-    {key:"hinge",      label:"Hinge / Spacer",        cat:"Hinge & Spacer",        required:true,  desc:"Flexible spacer that exposes the binder above the cell surface"},
-    {key:"tm",         label:"Transmembrane (TM)",    cat:"Transmembrane Domain",  required:true,  desc:"Anchors the receptor in the plasma membrane; CD8α/CD28 most common"},
-    {key:"costim",     label:"Costimulatory Domain",  cat:"Costimulatory Domain",  required:true,  desc:"4-1BB → persistence; CD28 → potency; tandem allowed (3rd-gen)"},
-    {key:"activation", label:"Primary Signaling",     cat:"Primary Signaling Domain", required:true, desc:"CD3ζ (canonical) or FcRγ (CAR-M); contains the ITAMs"},
+  const SLOTS = [
+    {key:"binder",     label:"① Antigen Binder",      cat:"Antigen Binder",           required:true,  desc:"scFv / VHH / peptide ligand that binds the tumor antigen. Target specificity determines which cancer(s) the therapy can treat."},
+    {key:"hinge",      label:"② Hinge / Spacer",       cat:"Hinge & Spacer",           required:true,  desc:"Flexible extracellular spacer that lifts the binder above the cell surface and modulates epitope accessibility. Length affects synapse formation."},
+    {key:"tm",         label:"③ Transmembrane (TM)",   cat:"Transmembrane Domain",     required:true,  desc:"Single-pass domain that anchors the receptor in the plasma membrane. CD8α-TM (stability) vs CD28-TM (signaling) are the two clinical standards."},
+    {key:"costim",     label:"④ Costimulatory",        cat:"Costimulatory Domain",     required:true,  desc:"Provides the second signal for T-cell activation. 4-1BB → long-term persistence (Kymriah); CD28 → rapid proliferation (Yescarta). Tandem = 3rd-gen."},
+    {key:"activation", label:"⑤ Primary Signaling",   cat:"Primary Signaling Domain", required:true,  desc:"ITAM-bearing cytoplasmic tail providing signal 1. CD3ζ is canonical (3 ITAMs). FcRγ used for CAR-Macrophage constructs."},
   ];
-  const optionalSlots = [
-    {key:"sp",       label:"Signal Peptide",        cat:"Signal Peptide",        desc:"Drives surface expression; CD8α-SP / GM-CSF-SP / Granulin-SP"},
-    {key:"linker",   label:"Inter-domain Linker",   cat:"Linker & Peptide",      desc:"Inserted between binder and hinge or between tandem costims"},
-    {key:"safety",   label:"Safety Switch",         cat:"Safety Switch",         desc:"iCasp9 / EGFRt / RQR8 — elimination handle for adverse events"},
-    {key:"armored",  label:"Armored Payload",       cat:"Armored Payload",       desc:"Co-expressed cytokine / engager (IL-7/IL-15/IL-12/CCL19...) — solid-tumor empowerment"},
-    {key:"reg",      label:"Regulatory Element",    cat:"Regulatory Element",    desc:"2A peptides, IRES, promoters — multi-cistronic regulation"},
-    {key:"logic",    label:"Logic Gate / Switch",   cat:"Logic Gate & Switch",   desc:"synNotch / SUPRA / SynNotch-CAR / iCAR — Boolean / split logic"},
-    {key:"invivo",   label:"In-Vivo CAR Module",    cat:"In-Vivo CAR Module",    desc:"In situ generation modules (LNP / LV / AAV CD5-LNP, anti-CD19 LNP, etc.)"},
+  const OPT_SLOTS = [
+    {key:"sp",      label:"Signal Peptide",        cat:"Signal Peptide",      desc:"Routes the nascent CAR protein to the ER/surface. CD8α-SP is used in all 6 FDA-approved CAR-T products."},
+    {key:"linker",  label:"Inter-domain Linker",   cat:"Linker & Peptide",    desc:"Inserted between VH and VL in scFv (G4S variants) or between tandem costimulatory domains."},
+    {key:"safety",  label:"Safety Switch",         cat:"Safety Switch",       desc:"iCasp9, EGFRt, or RQR8 — controllable elimination handle for on-target toxicity or cytokine storm."},
+    {key:"armored", label:"Armored Payload",       cat:"Armored Payload",     desc:"Co-expressed cytokine or engager (IL-7/IL-15/IL-12/CCL19/PD-L1-blocker). Critical for solid-tumor TME penetration."},
+    {key:"reg",     label:"Regulatory Element",    cat:"Regulatory Element",  desc:"2A ribosomal skip peptides, IRES, or promoters for multi-cistronic constructs."},
+    {key:"logic",   label:"Logic Gate / Switch",   cat:"Logic Gate & Switch", desc:"SynNotch, iCAR, SUPRA — Boolean AND/NOT logic gates, combinatorial antigen targeting, or titratable control."},
+    {key:"invivo",  label:"In-Vivo CAR Module",    cat:"In-Vivo CAR Module",  desc:"LNP / LV / AAV delivery components for in situ CAR-T generation without ex-vivo manufacturing."},
+    {key:"engmod",  label:"Engineering Module",    cat:"Engineering Module",  desc:"Allogeneic KO guides (TRAC/B2M), anti-exhaustion factors, CAR-Treg stability modules, tumor homing receptors."},
   ];
-  const allSlots = [...slots, ...optionalSlots];
-  const slotsJson = JSON.stringify(allSlots).replace(/</g,'\\u003c');
+  const ALL_SLOTS = [...SLOTS, ...OPT_SLOTS];
+  const slotsJson = JSON.stringify(ALL_SLOTS).replace(/</g,'\\u003c');
 
-  const slotHtml = (s, optional) => `
-    <div class="field ${optional ? '' : 'full'}" data-cart-slot="${s.key}">
-      <label style="display:flex;align-items:center;gap:8px;justify-content:space-between">
-        <span>
-          ${s.label}${s.required ? ' <span style="color:var(--fail);font-size:10px">*</span>' : ''}
-          <span class="__cart_help" data-tip="${s.desc}" style="margin-left:4px;color:var(--muted);cursor:help;font-size:10px;border:1px solid var(--muted);border-radius:50%;padding:0 4px">?</span>
-        </span>
-        <span style="font-size:10px;display:inline-flex;gap:4px">
-          <button type="button" class="__cart_mode_btn" data-mode="db" data-slot="${s.key}" onclick="_cartSetMode('${s.key}','db')" style="padding:2px 8px;border-radius:4px;border:1px solid var(--border);background:var(--accent);color:#fff;cursor:pointer">Pick from DB</button>
-          <button type="button" class="__cart_mode_btn" data-mode="custom" data-slot="${s.key}" onclick="_cartSetMode('${s.key}','custom')" style="padding:2px 8px;border-radius:4px;border:1px solid var(--border);background:transparent;cursor:pointer">Custom sequence</button>
-        </span>
-      </label>
-      <div data-cart-mode-pane="db" data-slot="${s.key}">
-        <select id="cart-pick-${s.key}" class="__cart_db_select" data-slot="${s.key}" data-cat="${s.cat}" onmouseover="_cartShowOptionTip(this, event)" onmousemove="_cartShowOptionTip(this, event)" onmouseleave="_cartHideOptionTip()" style="width:100%">
-          <option value="">— Loading from registry —</option>
-        </select>
+  const slotCard = (s, optional) => `
+    <div class="__cart_slot_card" data-cart-slot="${s.key}" style="background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:14px 16px;margin-bottom:10px">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:10px">
+        <div>
+          <span style="font-weight:600;font-size:13px">${s.label}</span>
+          ${s.required ? ' <span style="color:var(--fail);font-size:10px;vertical-align:super">required</span>' : ''}
+          <div style="font-size:11px;color:var(--muted);margin-top:3px;max-width:480px;line-height:1.5">${s.desc}</div>
+        </div>
+        <div style="display:flex;gap:4px;flex-shrink:0;margin-left:12px">
+          <button type="button" onclick="_cartSetMode('${s.key}','db')" class="__cart_mode_btn" data-slot="${s.key}" data-mode="db" style="padding:3px 10px;border-radius:4px;border:1px solid var(--accent);background:var(--accent);color:#fff;font-size:11px;cursor:pointer">DB</button>
+          <button type="button" onclick="_cartSetMode('${s.key}','custom')" class="__cart_mode_btn" data-slot="${s.key}" data-mode="custom" style="padding:3px 10px;border-radius:4px;border:1px solid var(--border);background:transparent;font-size:11px;cursor:pointer">Custom</button>
+        </div>
       </div>
+
+      <!-- DB mode: subcategory → component (3-level) -->
+      <div data-cart-mode-pane="db" data-slot="${s.key}">
+        <div style="display:grid;grid-template-columns:1fr 2fr;gap:8px">
+          <div>
+            <label style="font-size:10px;color:var(--muted);display:block;margin-bottom:4px">Sub-type</label>
+            <select id="cart-subcat-${s.key}" data-slot="${s.key}"
+              onchange="_cartSubcatChanged('${s.key}')"
+              style="width:100%;font-size:12px">
+              <option value="">— All sub-types —</option>
+            </select>
+          </div>
+          <div>
+            <label style="font-size:10px;color:var(--muted);display:block;margin-bottom:4px">Component <span style="opacity:.5">(hover for details)</span></label>
+            <select id="cart-pick-${s.key}" data-slot="${s.key}" data-cat="${s.cat}"
+              onchange="_cartUpdateTopology()"
+              onmouseover="_cartShowOptionTip(this,event)"
+              onmousemove="_cartShowOptionTip(this,event)"
+              onmouseleave="_cartHideOptionTip()"
+              style="width:100%;font-size:12px">
+              <option value="">— Loading —</option>
+            </select>
+          </div>
+        </div>
+        <div id="cart-pick-info-${s.key}" style="margin-top:6px;font-size:10px;color:var(--muted);min-height:14px"></div>
+      </div>
+
+      <!-- Custom mode: paste sequence -->
       <div data-cart-mode-pane="custom" data-slot="${s.key}" style="display:none">
-        <textarea id="cart-custom-${s.key}" rows="2" placeholder="Paste amino-acid sequence (non-AA chars are stripped)"></textarea>
+        <label style="font-size:10px;color:var(--muted);display:block;margin-bottom:4px">Paste amino-acid sequence</label>
+        <textarea id="cart-custom-${s.key}" rows="3"
+          placeholder="MALPVTALL... (non-AA chars stripped automatically)"
+          oninput="_cartUpdateTopology()"
+          style="width:100%;font-family:var(--font-mono,monospace);font-size:11px"></textarea>
+        <div style="margin-top:4px;font-size:10px;color:var(--muted)">Length: <span id="cart-custom-len-${s.key}">0</span> aa</div>
       </div>
     </div>
   `;
@@ -3857,78 +3885,87 @@ function renderCartAssemblerForm(service) {
     <section class="surface panel">
       <div class="panel-label">CAR-T Construct Assembler</div>
 
-      <!-- DB stats banner -->
-      <div id="cart-stats-banner" style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px;font-size:11px"></div>
+      <!-- Stats banner -->
+      <div id="cart-stats-banner" style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px;font-size:11px"></div>
 
-      <p style="color:var(--muted);font-size:12px;line-height:1.65;margin-bottom:8px">
-        Pick clinically tiered components from the InSynBio SSOT registry (244 curated elements covering CAR-T / CAR-NK / CAR-M / CAR-Treg / γδ-T / iPSC / Universal modalities), or paste your own sequence. Use the pre-filters to narrow each slot to your modality and indication. Hover any option for source, target, indications, and trial provenance.
-      </p>
-
-      <!-- Pre-filter row -->
-      <div class="form-grid" style="margin-bottom:8px">
-        <div class="field">
-          <label>Indication pre-filter <span class="__cart_help" data-tip="Filters every dropdown to components tagged for this disease setting." style="margin-left:4px;color:var(--muted);cursor:help">?</span></label>
-          <select id="cart-flt-indication" onchange="_cartReloadAllCatalogs()">
+      <!-- Pre-filters -->
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:8px;margin-bottom:14px;padding:12px;background:var(--bg);border-radius:6px;border:1px solid var(--border)">
+        <div>
+          <label style="font-size:10px;color:var(--muted);display:block;margin-bottom:4px">Indication <span class="__cart_help" data-tip="Filters all dropdowns to elements tagged for this disease setting.">?</span></label>
+          <select id="cart-flt-indication" onchange="_cartReloadAllCatalogs()" style="width:100%;font-size:12px">
             <option value="">All indications</option>
             <option value="Solid Tumor">Solid Tumor (75)</option>
             <option value="Hematologic">Hematologic (76)</option>
             <option value="Autoimmune">Autoimmune (11)</option>
-            <option value="Research">Research</option>
           </select>
         </div>
-        <div class="field">
-          <label>Cell type pre-filter <span class="__cart_help" data-tip="Restricts to elements validated for this effector cell platform." style="margin-left:4px;color:var(--muted);cursor:help">?</span></label>
-          <select id="cart-flt-celltype" onchange="_cartReloadAllCatalogs()">
-            <option value="">All cell types</option>
-            <option value="CAR-T">CAR-T (102)</option>
-            <option value="CAR-NK">CAR-NK (34)</option>
-            <option value="CAR-M">CAR-M (6)</option>
-            <option value="CAR-Treg">CAR-Treg (5)</option>
-            <option value="γδ T">γδ T (8)</option>
-            <option value="iPSC-CAR">iPSC-CAR (1)</option>
-            <option value="Universal">Universal allogeneic (37)</option>
+        <div>
+          <label style="font-size:10px;color:var(--muted);display:block;margin-bottom:4px">Cell type <span class="__cart_help" data-tip="Restricts to elements validated for this effector cell platform.">?</span></label>
+          <select id="cart-flt-celltype" onchange="_cartReloadAllCatalogs()" style="width:100%;font-size:12px">
+            <option value="">All types</option>
+            <option value="CAR-T">CAR-T</option>
+            <option value="CAR-NK">CAR-NK</option>
+            <option value="CAR-M">CAR-M</option>
+            <option value="CAR-Treg">CAR-Treg</option>
+            <option value="γδ T">γδ T</option>
+            <option value="Universal">Universal</option>
           </select>
         </div>
-        <div class="field">
-          <label>Min. Tier <span class="__cart_help" data-tip="T1 = FDA/EMA approved · T2 = clinical trial / IND · T3 = peer-reviewed research." style="margin-left:4px;color:var(--muted);cursor:help">?</span></label>
-          <select id="cart-flt-tier" onchange="_cartReloadAllCatalogs()">
-            <option value="">All tiers (T1 + T2 + T3)</option>
-            <option value="T1">T1 only — FDA approved (28)</option>
-            <option value="T2">T2 only — Clinical/IND (122)</option>
-            <option value="T3">T3 only — Research (94)</option>
+        <div>
+          <label style="font-size:10px;color:var(--muted);display:block;margin-bottom:4px">Tier <span class="__cart_help" data-tip="T1 = FDA/EMA approved · T2 = clinical/IND · T3 = research only.">?</span></label>
+          <select id="cart-flt-tier" onchange="_cartReloadAllCatalogs()" style="width:100%;font-size:12px">
+            <option value="">T1 + T2 + T3</option>
+            <option value="T1">T1 — FDA approved</option>
+            <option value="T2">T2 — Clinical/IND</option>
+            <option value="T3">T3 — Research</option>
           </select>
         </div>
-        <div class="field">
-          <label>Demo case</label>
-          <select id="cart-assembler-demo" onchange="loadServiceDemo()"></select>
+        <div>
+          <label style="font-size:10px;color:var(--muted);display:block;margin-bottom:4px">Demo case</label>
+          <select id="cart-assembler-demo" onchange="loadServiceDemo()" style="width:100%;font-size:12px"></select>
         </div>
       </div>
 
-      <div class="form-grid">
-        <div class="field full">
-          <label>Construct name <span class="muted" style="font-weight:400;font-size:11px">(optional)</span></label>
-          <input type="text" id="cart-assembler-name" placeholder="e.g. CD19-BBz-CAR" maxlength="120" style="font-family:var(--font-mono,monospace)">
-        </div>
-        ${slots.map(s => slotHtml(s, false)).join('')}
+      <!-- Construct topology diagram -->
+      <div id="cart-topology-diagram" style="display:flex;align-items:center;flex-wrap:nowrap;gap:0;overflow-x:auto;margin-bottom:20px;padding:10px 4px;background:var(--bg);border-radius:6px;border:1px solid var(--border)">
+        <span style="font-size:10px;color:var(--muted);margin-right:8px;white-space:nowrap">N→C:</span>
+        ${['binder','hinge','tm','costim','activation'].map((k,i) => `
+          <div id="cart-topo-${k}" data-topo-slot="${k}" style="padding:5px 10px;border-radius:4px;background:var(--surface);border:1px solid var(--border);font-size:10px;white-space:nowrap;transition:all .2s;opacity:.4" title="${k}">—</div>
+          ${i<4 ? '<span style="font-size:12px;color:var(--muted);padding:0 2px">→</span>' : ''}
+        `).join('')}
+        <span style="font-size:10px;color:var(--muted);margin-left:8px" id="cart-topo-total"></span>
       </div>
 
-      <details style="margin-top:18px">
-        <summary style="cursor:pointer;font-weight:600;font-size:12px">Advanced / Optional modules (Signal peptide, Linker, Safety switch, Armored payload, Regulatory, Logic gate, In-vivo)</summary>
-        <div class="form-grid" style="margin-top:10px">
-          ${optionalSlots.map(s => slotHtml(s, true)).join('')}
-        </div>
+      <!-- Construct name -->
+      <div style="margin-bottom:12px">
+        <label style="font-size:12px;font-weight:600">Construct name <span style="font-weight:400;color:var(--muted);font-size:11px">(optional)</span></label>
+        <input type="text" id="cart-assembler-name" placeholder="e.g. CD19-BBz-CAR" maxlength="120"
+          style="width:100%;margin-top:4px;font-family:var(--font-mono,monospace)">
+      </div>
+
+      <!-- Required slots -->
+      <div style="margin-bottom:6px;font-size:11px;font-weight:600;color:var(--muted);letter-spacing:.04em">REQUIRED MODULES (5)</div>
+      ${SLOTS.map(s => slotCard(s, false)).join('')}
+
+      <!-- Optional slots -->
+      <details style="margin-top:6px">
+        <summary style="cursor:pointer;font-size:12px;font-weight:600;padding:10px 0;color:var(--accent)">
+          ＋ Optional / Advanced modules (Signal Peptide · Linker · Safety Switch · Armored Payload · Regulatory · Logic Gate · In-Vivo · Engineering)
+        </summary>
+        <div style="margin-top:8px;font-size:11px;color:var(--muted);margin-bottom:8px">Add for 3rd-gen, armored, allogeneic, or in-vivo constructs. Each slot is independent.</div>
+        ${OPT_SLOTS.map(s => slotCard(s, true)).join('')}
       </details>
 
       <div class="actions" style="margin-top:24px">
-        <button class="btn primary" onclick="runCurrentService()">Run CAR-T Assembler</button>
+        <button class="btn primary" onclick="runCurrentService()" style="font-size:13px;padding:10px 28px">Assemble CAR-T Construct →</button>
       </div>
 
-      <!-- Floating tooltip portal -->
-      <div id="__cart_option_tip" style="position:fixed;z-index:9999;display:none;max-width:340px;padding:10px 12px;background:#1f2937;color:#f3f4f6;font-size:11px;line-height:1.5;border-radius:6px;box-shadow:0 8px 24px rgba(0,0,0,.3);white-space:pre-wrap;pointer-events:none"></div>
+      <!-- Floating tooltip portal (shared) -->
+      <div id="__cart_option_tip" style="position:fixed;z-index:9999;display:none;max-width:360px;padding:10px 14px;background:#1a2332;color:#e2e8f0;font-size:11px;line-height:1.6;border-radius:8px;box-shadow:0 8px 32px rgba(0,0,0,.4);pointer-events:none"></div>
     </section>
     <script>
-      window.__CART_SLOTS = ${slotsJson};
-      window.__CART_CATALOG_CACHE = window.__CART_CATALOG_CACHE || {};
+      window.__CART_ALL_SLOTS = ${slotsJson};
+      window.__CART_GROUPED_CACHE = window.__CART_GROUPED_CACHE || {};
       _cartInitForm();
     </script>
   `;
@@ -4682,7 +4719,11 @@ function hydrateService(service) {
     },
     "cmc-bispecific": () => { fillDemoSelect("bs-cmc-demo", service.demos); loadServiceDemo(); updateCmcCredits(); },
     "bispecific-assembler": () => { fillDemoSelect("bs-assembler-demo", service.demos, true); loadServiceDemo(); },
-    "car-t-assembler": () => { fillDemoSelect("cart-assembler-demo", service.demos, true); if (typeof _cartInitForm === 'function') _cartInitForm(); loadServiceDemo(); },
+    "car-t-assembler": () => {
+      fillDemoSelect("cart-assembler-demo", service.demos, true);
+      // form re-renders on activate; _cartInitForm is called from the <script> in the rendered HTML
+      loadServiceDemo();
+    },
     "bispecific-analyzer": () => {
       fillDemoSelect("bs-analyzer-demo", service.demos, true);
       loadServiceDemo();
@@ -4993,15 +5034,16 @@ function loadServiceDemo() {
     const demoId = document.getElementById("cart-assembler-demo")?.value;
     const setSlot = (slotKey, value) => {
       if (!value) return;
-      // Prefer DB pick if id exists; otherwise drop into custom textarea
       const pick = document.getElementById('cart-pick-'+slotKey);
-      const custom = document.getElementById('cart-custom-'+slotKey);
+      // If option already loaded, select it
       if (pick && Array.from(pick.options).some(o => o.value === value)) {
         pick.value = value;
-        if (typeof _cartSetMode === 'function') _cartSetMode(slotKey,'db');
-      } else if (custom) {
-        custom.value = value;
-        if (typeof _cartSetMode === 'function') _cartSetMode(slotKey,'custom');
+        if (typeof _cartSetMode === 'function') _cartSetMode(slotKey, 'db');
+        if (typeof _cartUpdatePickInfo === 'function') _cartUpdatePickInfo(slotKey);
+      } else {
+        // fallback to custom mode
+        const custom = document.getElementById('cart-custom-'+slotKey);
+        if (custom) { custom.value = value; if (typeof _cartSetMode === 'function') _cartSetMode(slotKey, 'custom'); }
       }
     };
     if (!demoId) {
@@ -5009,15 +5051,22 @@ function loadServiceDemo() {
         const pick = document.getElementById('cart-pick-'+k); if (pick) pick.value = '';
         const custom = document.getElementById('cart-custom-'+k); if (custom) custom.value = '';
       });
+      if (typeof _cartUpdateTopology === 'function') _cartUpdateTopology();
       return;
     }
     const demo = DEMOS[demoId];
     if (!demo) return;
+    // Reset subcategory to "all" first so option is visible
+    ['binder','hinge','tm','costim','activation'].forEach(k => {
+      const sc = document.getElementById('cart-subcat-'+k); if (sc) sc.value = '';
+      if (typeof _cartBuildComponentDropdown === 'function') _cartBuildComponentDropdown(k,'');
+    });
     setSlot('binder', demo.binder);
     setSlot('hinge', demo.hinge);
     setSlot('tm', demo.tm);
     setSlot('costim', demo.costim);
     setSlot('activation', demo.activation);
+    if (typeof _cartUpdateTopology === 'function') _cartUpdateTopology();
   } else if (service.runner === "bispecific-analyzer") {
     const demoId = document.getElementById("bs-analyzer-demo").value;
     if (!demoId) {
@@ -11794,13 +11843,14 @@ function _bsAssemblerDownloadHtml() {
   document.body.appendChild(a); a.click(); document.body.removeChild(a);
 }
 
-// ── CAR-T helpers (DB-driven slot UI) ─────────────────────────────────────────
+// ── CAR-T Assembler — 3-level UI helpers ──────────────────────────────────────
 async function _cartInitForm() {
   await _cartLoadStats();
+  (window.__CART_ALL_SLOTS||[]).forEach(s => _cartSetMode(s.key,'db',true));
   await _cartReloadAllCatalogs();
-  // default every slot to "db" mode visually
-  (window.__CART_SLOTS||[]).forEach(s => _cartSetMode(s.key,'db', true));
+  _cartUpdateTopology();
 }
+
 async function _cartLoadStats() {
   try {
     const r = await fetch(apiJoin('cart/stats'));
@@ -11808,18 +11858,18 @@ async function _cartLoadStats() {
     const s = await r.json();
     const bar = document.getElementById('cart-stats-banner');
     if(!bar) return;
-    const chip = (t,c)=>`<span style="padding:3px 8px;border-radius:12px;background:${c};color:#fff">${t}</span>`;
-    const cats = s.by_category||{};
-    const tiers = s.by_tier||{};
+    const chip = (t,c) => `<span style="padding:2px 8px;border-radius:12px;background:${c};color:#fff">${t}</span>`;
+    const t=s.by_tier||{}, cats=s.by_category||{};
     bar.innerHTML = [
-      chip(`SSOT · ${s.total} components`, '#0f766e'),
-      chip(`T1 · ${tiers.T1||0} approved`, '#15803d'),
-      chip(`T2 · ${tiers.T2||0} clinical`, '#1d4ed8'),
-      chip(`T3 · ${tiers.T3||0} research`, '#7c3aed'),
-      chip(`${Object.keys(cats).length} categories`, '#475569'),
+      chip(`SSOT · ${s.total} components`,'#0f766e'),
+      chip(`T1 · ${t.T1||0} approved`,'#15803d'),
+      chip(`T2 · ${t.T2||0} clinical`,'#1d4ed8'),
+      chip(`T3 · ${t.T3||0} research`,'#7c3aed'),
+      chip(`${Object.keys(cats).length} categories`,'#475569'),
     ].join(' ');
   } catch(e){}
 }
+
 function _cartGetFilters() {
   return {
     indication: document.getElementById('cart-flt-indication')?.value||'',
@@ -11827,108 +11877,217 @@ function _cartGetFilters() {
     tier:       document.getElementById('cart-flt-tier')?.value||'',
   };
 }
+
 async function _cartReloadAllCatalogs() {
-  const slots = window.__CART_SLOTS||[];
-  await Promise.all(slots.map(s => _cartLoadCatalog(s.key, s.cat)));
+  const slots = window.__CART_ALL_SLOTS||[];
+  await Promise.all(slots.map(s => _cartLoadGrouped(s.key, s.cat)));
 }
-async function _cartLoadCatalog(slotKey, category) {
+
+async function _cartLoadGrouped(slotKey, category) {
   const f = _cartGetFilters();
-  const params = new URLSearchParams();
-  params.set('category', category);
-  if(f.indication) params.set('indication', f.indication);
-  if(f.cell_type)  params.set('cell_type', f.cell_type);
-  if(f.tier)       params.set('tier', f.tier);
-  // Many binders are STUB-only in the registry — keep them visible for visibility
-  params.set('verified_only', 'false');
-  const url = apiJoin('cart/catalog?' + params.toString());
-  const sel = document.getElementById('cart-pick-'+slotKey);
-  if(!sel) return;
+  const p = new URLSearchParams({ category, verified_only:'false' });
+  if(f.indication) p.set('indication', f.indication);
+  if(f.cell_type)  p.set('cell_type',  f.cell_type);
+  if(f.tier)       p.set('tier',       f.tier);
   try {
-    const r = await fetch(url);
-    if(!r.ok) { sel.innerHTML = '<option value="">(catalog unavailable)</option>'; return; }
+    const r = await fetch(apiJoin('cart/catalog_grouped?' + p));
+    if(!r.ok) throw new Error('catalog_grouped unavailable');
     const data = await r.json();
-    const items = data.items || [];
-    window.__CART_CATALOG_CACHE[slotKey] = {};
-    const opts = [`<option value="">— Select ${escapeHtml(category)} (${items.length} available) —</option>`];
-    items.forEach(it => {
-      window.__CART_CATALOG_CACHE[slotKey][it.id] = it;
-      const tierTag = it.tier ? `[${it.tier}]` : '';
-      const lenTag  = (it.length!=null) ? `${it.length}aa` : '';
-      const tgt = it.target ? ` — ${it.target}` : '';
-      const stub = (it.sequence_status && it.sequence_status !== 'VERIFIED') ? ' (stub)' : '';
-      opts.push(`<option value="${escapeHtml(it.id)}">${tierTag} ${escapeHtml(it.name||it.id)}${escapeHtml(tgt)} · ${lenTag}${stub}</option>`);
-    });
-    sel.innerHTML = opts.join('');
+    window.__CART_GROUPED_CACHE[slotKey] = data;
+    _cartBuildSubcatDropdown(slotKey, data);
+    _cartBuildComponentDropdown(slotKey, '');
   } catch(e) {
-    sel.innerHTML = '<option value="">(catalog fetch error — backend reachable?)</option>';
+    const sel = document.getElementById('cart-subcat-'+slotKey);
+    if(sel) sel.innerHTML = '<option value="">(unavailable)</option>';
   }
 }
+
+function _cartBuildSubcatDropdown(slotKey, data) {
+  const sel = document.getElementById('cart-subcat-'+slotKey);
+  if(!sel) return;
+  const subs = data.subcategories||[];
+  const total = data.count||0;
+  sel.innerHTML = `<option value="">— All sub-types (${total}) —</option>`
+    + subs.map(s => {
+        const cnt = (data.by_subcategory[s]||[]).length;
+        return `<option value="${escapeHtml(s)}">${escapeHtml(s)} (${cnt})</option>`;
+      }).join('');
+}
+
+function _cartBuildComponentDropdown(slotKey, subcatFilter) {
+  const sel = document.getElementById('cart-pick-'+slotKey);
+  if(!sel) return;
+  const data = window.__CART_GROUPED_CACHE[slotKey];
+  if(!data) { sel.innerHTML = '<option value="">— Loading —</option>'; return; }
+  let items = [];
+  if(subcatFilter && data.by_subcategory && data.by_subcategory[subcatFilter]) {
+    items = data.by_subcategory[subcatFilter];
+  } else {
+    // all items, flat
+    for(const list of Object.values(data.by_subcategory||{})) items.push(...list);
+    // sort by tier then name
+    const tr = {T1:0,T2:1,T3:2};
+    items.sort((a,b)=>(tr[a.tier]??9)-(tr[b.tier]??9)||(a.name||'').localeCompare(b.name||''));
+  }
+  const count = items.length;
+  const cat = data.filters?.category||'';
+  sel.innerHTML = `<option value="">— Select ${escapeHtml(cat)} (${count}) —</option>`
+    + items.map(it => {
+        const tTag = it.tier?`[${it.tier}] `:'';
+        const tgt  = it.target ? ` · ${it.target}` : '';
+        const len  = it.length!=null ? ` · ${it.length}aa` : '';
+        const stub = it.sequence_status && it.sequence_status!=='VERIFIED' ? ' ⚠stub' : '';
+        return `<option value="${escapeHtml(it.id)}">${tTag}${escapeHtml(it.name||it.id)}${escapeHtml(tgt)}${len}${stub}</option>`;
+      }).join('');
+  // update inline info for current selection
+  _cartUpdatePickInfo(slotKey);
+}
+
+function _cartSubcatChanged(slotKey) {
+  const sub = document.getElementById('cart-subcat-'+slotKey)?.value||'';
+  _cartBuildComponentDropdown(slotKey, sub);
+  _cartUpdateTopology();
+}
+
+function _cartUpdatePickInfo(slotKey) {
+  const it = _cartGetSelectedItem(slotKey);
+  const el = document.getElementById('cart-pick-info-'+slotKey);
+  if(!el) return;
+  if(!it) { el.innerHTML=''; return; }
+  const parts = [];
+  if(it.tier) parts.push(`<span style="color:${it.tier==='T1'?'#15803d':it.tier==='T2'?'#1d4ed8':'#7c3aed'};font-weight:600">${it.tier}</span>`);
+  if(it.length) parts.push(`${it.length} aa`);
+  if(it.target) parts.push(`Target: ${escapeHtml(it.target)}`);
+  if((it.indications||[]).length) parts.push((it.indications||[]).join(' / '));
+  if((it.approval_products||[]).length) parts.push(`Approved: ${(it.approval_products||[]).slice(0,3).join(', ')}`);
+  el.innerHTML = parts.join(' &nbsp;·&nbsp; ');
+}
+
+function _cartGetSelectedItem(slotKey) {
+  const sel = document.getElementById('cart-pick-'+slotKey);
+  if(!sel || !sel.value) return null;
+  const data = window.__CART_GROUPED_CACHE[slotKey];
+  if(!data) return null;
+  for(const list of Object.values(data.by_subcategory||{})) {
+    const it = list.find(x=>x.id===sel.value);
+    if(it) return it;
+  }
+  return null;
+}
+
 function _cartSetMode(slotKey, mode, silent) {
   document.querySelectorAll(`[data-cart-mode-pane][data-slot="${slotKey}"]`).forEach(el => {
-    el.style.display = (el.getAttribute('data-cart-mode-pane') === mode) ? '' : 'none';
+    el.style.display = el.getAttribute('data-cart-mode-pane')===mode ? '' : 'none';
   });
   document.querySelectorAll(`.__cart_mode_btn[data-slot="${slotKey}"]`).forEach(btn => {
-    const isActive = btn.getAttribute('data-mode') === mode;
-    btn.style.background = isActive ? 'var(--accent)' : 'transparent';
-    btn.style.color      = isActive ? '#fff' : '';
+    const active = btn.getAttribute('data-mode')===mode;
+    btn.style.background = active ? 'var(--accent)' : 'transparent';
+    btn.style.color      = active ? '#fff' : '';
+    btn.style.borderColor = active ? 'var(--accent)' : 'var(--border)';
   });
+  if(!silent) _cartUpdateTopology();
 }
+
+function _cartSlotValue(slotKey) {
+  const dbPane = document.querySelector(`[data-cart-mode-pane="db"][data-slot="${slotKey}"]`);
+  if(dbPane && dbPane.style.display!=='none') {
+    return document.getElementById('cart-pick-'+slotKey)?.value||'';
+  }
+  return document.getElementById('cart-custom-'+slotKey)?.value||'';
+}
+
+function _cartUpdateTopology() {
+  const REQUIRED = ['binder','hinge','tm','costim','activation'];
+  const LABELS   = {binder:'Binder', hinge:'Hinge', tm:'TM', costim:'Costim', activation:'CD3ζ'};
+  let total = 0;
+  REQUIRED.forEach(k => {
+    const box = document.getElementById('cart-topo-'+k);
+    if(!box) return;
+    const val = _cartSlotValue(k).trim();
+    const dbPane = document.querySelector(`[data-cart-mode-pane="db"][data-slot="${k}"]`);
+    const useDB = dbPane && dbPane.style.display!=='none';
+    let label = LABELS[k];
+    let filled = false;
+    if(useDB && val) {
+      const it = _cartGetSelectedItem(k);
+      label = it ? (it.name||it.id).split(' ').slice(0,3).join(' ') : val;
+      filled = true;
+    } else if(!useDB && val.trim()) {
+      label = `Custom (${val.replace(/[^A-Za-z]/g,'').length}aa)`;
+      filled = true;
+    }
+    box.textContent = label;
+    box.style.opacity = filled ? '1' : '0.35';
+    box.style.background = filled ? 'var(--accent)' : 'var(--surface)';
+    box.style.color = filled ? '#fff' : '';
+    box.style.borderColor = filled ? 'var(--accent)' : 'var(--border)';
+    if(filled) total++;
+  });
+  const totEl = document.getElementById('cart-topo-total');
+  if(totEl) totEl.textContent = total === REQUIRED.length ? `✓ ${total}/${REQUIRED.length} slots filled` : `${total}/${REQUIRED.length} slots filled`;
+}
+
 function _cartShowOptionTip(selEl, evt) {
   const tip = document.getElementById('__cart_option_tip');
-  if(!tip || !selEl) return;
+  if(!tip || !selEl || !selEl.value) { if(tip) tip.style.display='none'; return; }
   const slotKey = selEl.getAttribute('data-slot');
-  const id = selEl.value;
-  const cache = (window.__CART_CATALOG_CACHE||{})[slotKey] || {};
-  const it = cache[id];
+  const data = window.__CART_GROUPED_CACHE[slotKey];
+  if(!data) { tip.style.display='none'; return; }
+  let it = null;
+  for(const list of Object.values(data.by_subcategory||{})) {
+    it = list.find(x=>x.id===selEl.value);
+    if(it) break;
+  }
   if(!it) { tip.style.display='none'; return; }
   const lines = [];
-  lines.push(`<b>${escapeHtml(it.name||it.id)}</b> &nbsp;<span style="opacity:.7">${escapeHtml(it.id)}</span>`);
-  if(it.tier) lines.push(`Tier ${escapeHtml(it.tier)}${it.length?` · ${it.length} aa`:''}${it.subcategory?` · ${escapeHtml(it.subcategory)}`:''}`);
-  if(it.target) lines.push(`Target: ${escapeHtml(it.target)}`);
-  if((it.indications||[]).length) lines.push(`Indication: ${(it.indications||[]).map(escapeHtml).join(', ')}`);
-  if((it.cell_types||[]).length)  lines.push(`Cells: ${(it.cell_types||[]).map(escapeHtml).join(', ')}`);
-  if(it.role)   lines.push(`Role: ${escapeHtml(it.role)}`);
-  if((it.approval_products||[]).length) lines.push(`Approved in: ${(it.approval_products||[]).slice(0,4).map(escapeHtml).join(', ')}`);
-  if((it.clinical_trials||[]).length)   lines.push(`Trials: ${(it.clinical_trials||[]).slice(0,3).map(escapeHtml).join(', ')}`);
-  if(it.source) lines.push(`Source: ${escapeHtml(it.source)}`);
+  const tierColor = it.tier==='T1'?'#4ade80':it.tier==='T2'?'#60a5fa':'#c084fc';
+  lines.push(`<b>${escapeHtml(it.name||it.id)}</b> &nbsp;<span style="opacity:.5;font-size:10px">${escapeHtml(it.id)}</span>`);
+  lines.push(`<span style="color:${tierColor}">Tier ${escapeHtml(it.tier||'?')}</span>${it.length?` · ${it.length} aa`:''}${it.subcategory?` · <i>${escapeHtml(it.subcategory)}</i>`:''}`);
+  if(it.target) lines.push(`<b>Target:</b> ${escapeHtml(it.target)}`);
+  if((it.indications||[]).length) lines.push(`<b>Indication:</b> ${(it.indications||[]).map(escapeHtml).join(', ')}`);
+  if((it.cell_types||[]).length)  lines.push(`<b>Cells:</b> ${(it.cell_types||[]).map(escapeHtml).join(', ')}`);
+  if(it.role)   lines.push(`<b>Role:</b> ${escapeHtml(it.role)}`);
+  if((it.approval_products||[]).length) lines.push(`<b>Approved in:</b> ${(it.approval_products||[]).slice(0,4).map(escapeHtml).join(', ')}`);
+  if((it.clinical_trials||[]).length)   lines.push(`<b>Trials:</b> ${(it.clinical_trials||[]).slice(0,3).map(escapeHtml).join(', ')}`);
+  if(it.source) lines.push(`<b>Source:</b> ${escapeHtml(it.source)}`);
+  if(it.sequence_status && it.sequence_status!=='VERIFIED') lines.push(`<span style="color:#f87171">⚠ sequence_status: ${escapeHtml(it.sequence_status)}</span>`);
   tip.innerHTML = lines.join('<br>');
   tip.style.display = 'block';
-  const x = (evt?.clientX||0) + 16;
-  const y = (evt?.clientY||0) + 16;
-  tip.style.left = Math.min(x, window.innerWidth - 360) + 'px';
-  tip.style.top  = Math.min(y, window.innerHeight - 220) + 'px';
+  tip.style.left = Math.min((evt?.clientX||0)+16, window.innerWidth-380)+'px';
+  tip.style.top  = Math.min((evt?.clientY||0)+16, window.innerHeight-260)+'px';
+  _cartUpdatePickInfo(slotKey);
+  _cartUpdateTopology();
 }
+
 function _cartHideOptionTip() {
   const tip = document.getElementById('__cart_option_tip');
   if(tip) tip.style.display='none';
 }
-// Tiny help-icon tooltip (reuses the same portal)
-document.addEventListener('mouseover', (e) => {
-  const t = e.target.closest && e.target.closest('.__cart_help');
+
+// Help icon tooltip — delegated
+document.addEventListener('mouseover', evt => {
+  const t = evt.target.closest && evt.target.closest('.__cart_help');
   if(!t) return;
   const tip = document.getElementById('__cart_option_tip');
   if(!tip) return;
   tip.innerHTML = escapeHtml(t.getAttribute('data-tip')||'');
-  tip.style.display = 'block';
-  tip.style.left = Math.min(e.clientX + 14, window.innerWidth - 360) + 'px';
-  tip.style.top  = Math.min(e.clientY + 14, window.innerHeight - 200) + 'px';
+  tip.style.display='block';
+  tip.style.left = Math.min(evt.clientX+14, window.innerWidth-380)+'px';
+  tip.style.top  = Math.min(evt.clientY+14, window.innerHeight-200)+'px';
 });
-document.addEventListener('mouseout', (e) => {
-  const t = e.target.closest && e.target.closest('.__cart_help');
-  if(t) _cartHideOptionTip();
+document.addEventListener('mouseout', evt => {
+  if(evt.target.closest && evt.target.closest('.__cart_help')) _cartHideOptionTip();
 });
-function _cartSlotValue(slotKey) {
-  // Determine which mode is active and return the value (id from DB or custom seq)
-  const dbPane = document.querySelector(`[data-cart-mode-pane="db"][data-slot="${slotKey}"]`);
-  const customPane = document.querySelector(`[data-cart-mode-pane="custom"][data-slot="${slotKey}"]`);
-  if(dbPane && dbPane.style.display !== 'none') {
-    return document.getElementById('cart-pick-'+slotKey)?.value || '';
-  }
-  if(customPane && customPane.style.display !== 'none') {
-    return document.getElementById('cart-custom-'+slotKey)?.value || '';
-  }
-  return '';
-}
+
+// Custom seq length counter
+document.addEventListener('input', evt => {
+  const ta = evt.target;
+  if(!ta.id || !ta.id.startsWith('cart-custom-')) return;
+  const slotKey = ta.id.replace('cart-custom-','');
+  const lenEl = document.getElementById('cart-custom-len-'+slotKey);
+  if(lenEl) lenEl.textContent = ta.value.replace(/[^A-Za-z]/g,'').length;
+  _cartUpdateTopology();
+});
 
 async function runCartAssembler(service) {
   const binder = _cartSlotValue('binder');
