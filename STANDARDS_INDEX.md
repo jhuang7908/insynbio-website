@@ -24,6 +24,21 @@
 
 ---
 
+### 0a. **CAR-T Design Standard** ⭐ NEW — V1.0
+**File:** [`CART_DESIGN_STANDARD_V1.0.md`](./CART_DESIGN_STANDARD_V1.0.md)
+**Purpose:** FIXED RULES for CAR-T construct assembly, component selection, and sequence validation.
+**Applies to:** All Cell Therapy (CAR-T, CAR-NK, CAR-M) engineering projects
+**Status:** **MANDATORY — DO NOT DEVIATE**
+**⚠️ PARALLEL SYSTEM to AbEngineCore**
+
+**Key Components (V1.0):**
+- ✅ **High-Quality SSOT Library:** 244 curated components (Binder, Hinge, TM, Costim, Activation, Armored, etc.) from `CART_LIBRARY_V3`.
+- ✅ **Component Admission Criteria:** Strict tracking of Tiers (T1/T2/T3), sequences, structural domain limits, and provenance.
+- ✅ **Dual-Axis Classification:** Technical axis (In vivo, Allogeneic, Armored) × Disease axis (Solid Tumor, Hematologic).
+- ✅ **Rules-Driven Assembly Engine:** Validated component compatibilities (e.g. CD8a hinge + TM pairing) and structural constraints.
+
+---
+
 ### 0b. **De Novo CDR Design & Patent Escape Standard** ⭐ CURRENT — V5.0
 **File:** [`DE_NOVO_CDR_DESIGN_STANDARD.md`](./DE_NOVO_CDR_DESIGN_STANDARD.md)
 **Purpose:** FIXED RULES for automated CDR redesign and patent escape — ProteinMPNN sequence generation, multi-gate filtering, EvoEF2 interface clash detection, conditional ImmuneBuilder/HADDOCK3, adaptive pipeline routing
