@@ -1616,7 +1616,7 @@ const REGISTRY = {
       underlyingStandard: "CAR-T Design Standard V1.0",
       reportVersion: "1.0",
       runner: "car-t-assembler",
-      demos: ["cd19-28z-car", "her2-bbz-car"]
+      demos: ["cd19-28z-car", "cd19-bbz-car", "her2-bbz-car"]
     },
     // ── CMC ──────────────────────────────────────────────────────────────
     "igg-cmc-snapshot": {
@@ -1946,6 +1946,33 @@ const DEMOS = {
     arm1Target: "Target_A",
     arm2Target: "Target_B",
     linker: "(G4S)3",
+  },
+  "cd19-28z-car": {
+    label: "CD19-28z CAR (Yescarta-like, 2nd gen)",
+    summary: "FMC63 anti-CD19 scFv · CD28 hinge · CD28 TM · CD28 costim · CD3ζ — Yescarta/Tecartus-style construct (axicabtagene ciloleucel) used clinically for DLBCL.",
+    binder: "FMC63_scFv",
+    hinge: "CD28_Medium",
+    tm: "CD28_TM",
+    costim: "CD28_cyto",
+    activation: "CD3z_cyto",
+  },
+  "cd19-bbz-car": {
+    label: "CD19-BBz CAR (Kymriah-like, 2nd gen)",
+    summary: "FMC63 anti-CD19 scFv · CD8α long hinge · CD8α TM · 4-1BB costim · CD3ζ — Kymriah-style construct (tisagenlecleucel) used clinically for B-ALL / DLBCL.",
+    binder: "FMC63_scFv",
+    hinge: "CD8a_Long",
+    tm: "CD8a_TM",
+    costim: "4-1BB_cyto",
+    activation: "CD3z_cyto",
+  },
+  "her2-bbz-car": {
+    label: "HER2-BBz CAR (Trastuzumab scFv, 2nd gen)",
+    summary: "Anti-HER2 (Trastuzumab) scFv · CD8α long hinge · CD8α TM · 4-1BB costim · CD3ζ — solid-tumor research construct against HER2-positive carcinomas.",
+    binder: "Trastuzumab_scFv",
+    hinge: "CD8a_Long",
+    tm: "CD8a_TM",
+    costim: "4-1BB_cyto",
+    activation: "CD3z_cyto",
   },
   "teclistamab-bsab": {
     label: "Teclistamab (BCMAxCD3, DuetMab)",
@@ -3782,40 +3809,128 @@ function renderCmcBispecificForm(service) {
 }
 
 function renderCartAssemblerForm(service) {
+  // Each slot binds to a category in the CAR-T registry.
+  // mode = "db" (pick from registry) | "custom" (paste sequence)
+  const slots = [
+    {key:"binder",     label:"Antigen Binder",        cat:"Antigen Binder",        required:true,  desc:"scFv / VHH / peptide ligand against the tumor antigen"},
+    {key:"hinge",      label:"Hinge / Spacer",        cat:"Hinge & Spacer",        required:true,  desc:"Flexible spacer that exposes the binder above the cell surface"},
+    {key:"tm",         label:"Transmembrane (TM)",    cat:"Transmembrane Domain",  required:true,  desc:"Anchors the receptor in the plasma membrane; CD8α/CD28 most common"},
+    {key:"costim",     label:"Costimulatory Domain",  cat:"Costimulatory Domain",  required:true,  desc:"4-1BB → persistence; CD28 → potency; tandem allowed (3rd-gen)"},
+    {key:"activation", label:"Primary Signaling",     cat:"Primary Signaling Domain", required:true, desc:"CD3ζ (canonical) or FcRγ (CAR-M); contains the ITAMs"},
+  ];
+  const optionalSlots = [
+    {key:"sp",       label:"Signal Peptide",        cat:"Signal Peptide",        desc:"Drives surface expression; CD8α-SP / GM-CSF-SP / Granulin-SP"},
+    {key:"linker",   label:"Inter-domain Linker",   cat:"Linker & Peptide",      desc:"Inserted between binder and hinge or between tandem costims"},
+    {key:"safety",   label:"Safety Switch",         cat:"Safety Switch",         desc:"iCasp9 / EGFRt / RQR8 — elimination handle for adverse events"},
+    {key:"armored",  label:"Armored Payload",       cat:"Armored Payload",       desc:"Co-expressed cytokine / engager (IL-7/IL-15/IL-12/CCL19...) — solid-tumor empowerment"},
+    {key:"reg",      label:"Regulatory Element",    cat:"Regulatory Element",    desc:"2A peptides, IRES, promoters — multi-cistronic regulation"},
+    {key:"logic",    label:"Logic Gate / Switch",   cat:"Logic Gate & Switch",   desc:"synNotch / SUPRA / SynNotch-CAR / iCAR — Boolean / split logic"},
+    {key:"invivo",   label:"In-Vivo CAR Module",    cat:"In-Vivo CAR Module",    desc:"In situ generation modules (LNP / LV / AAV CD5-LNP, anti-CD19 LNP, etc.)"},
+  ];
+  const allSlots = [...slots, ...optionalSlots];
+  const slotsJson = JSON.stringify(allSlots).replace(/</g,'\\u003c');
+
+  const slotHtml = (s, optional) => `
+    <div class="field ${optional ? '' : 'full'}" data-cart-slot="${s.key}">
+      <label style="display:flex;align-items:center;gap:8px;justify-content:space-between">
+        <span>
+          ${s.label}${s.required ? ' <span style="color:var(--fail);font-size:10px">*</span>' : ''}
+          <span class="__cart_help" data-tip="${s.desc}" style="margin-left:4px;color:var(--muted);cursor:help;font-size:10px;border:1px solid var(--muted);border-radius:50%;padding:0 4px">?</span>
+        </span>
+        <span style="font-size:10px;display:inline-flex;gap:4px">
+          <button type="button" class="__cart_mode_btn" data-mode="db" data-slot="${s.key}" onclick="_cartSetMode('${s.key}','db')" style="padding:2px 8px;border-radius:4px;border:1px solid var(--border);background:var(--accent);color:#fff;cursor:pointer">Pick from DB</button>
+          <button type="button" class="__cart_mode_btn" data-mode="custom" data-slot="${s.key}" onclick="_cartSetMode('${s.key}','custom')" style="padding:2px 8px;border-radius:4px;border:1px solid var(--border);background:transparent;cursor:pointer">Custom sequence</button>
+        </span>
+      </label>
+      <div data-cart-mode-pane="db" data-slot="${s.key}">
+        <select id="cart-pick-${s.key}" class="__cart_db_select" data-slot="${s.key}" data-cat="${s.cat}" onmouseover="_cartShowOptionTip(this, event)" onmousemove="_cartShowOptionTip(this, event)" onmouseleave="_cartHideOptionTip()" style="width:100%">
+          <option value="">— Loading from registry —</option>
+        </select>
+      </div>
+      <div data-cart-mode-pane="custom" data-slot="${s.key}" style="display:none">
+        <textarea id="cart-custom-${s.key}" rows="2" placeholder="Paste amino-acid sequence (non-AA chars are stripped)"></textarea>
+      </div>
+    </div>
+  `;
+
   return `
     <section class="surface panel">
-      <div class="panel-label">CAR-T Construct Components</div>
-      <p style="color:var(--muted);font-size:12px;line-height:1.65;margin-bottom:12px">
-        Provide sequences for the CAR-T components to assemble a full construct. Standard components (e.g. CD8a hinge, 4-1BB) can be specified by ID if known to the internal database, or by full amino acid sequence.
+      <div class="panel-label">CAR-T Construct Assembler</div>
+
+      <!-- DB stats banner -->
+      <div id="cart-stats-banner" style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px;font-size:11px"></div>
+
+      <p style="color:var(--muted);font-size:12px;line-height:1.65;margin-bottom:8px">
+        Pick clinically tiered components from the InSynBio SSOT registry (244 curated elements covering CAR-T / CAR-NK / CAR-M / CAR-Treg / γδ-T / iPSC / Universal modalities), or paste your own sequence. Use the pre-filters to narrow each slot to your modality and indication. Hover any option for source, target, indications, and trial provenance.
       </p>
-      <div class="form-grid">
-        <div class="field"><label>Demo case</label><select id="cart-assembler-demo" onchange="loadServiceDemo()"></select></div>
-        <div class="field full"><label>Construct name <span class="muted" style="font-weight:400;font-size:11px">(optional)</span></label><input type="text" id="cart-assembler-name" placeholder="e.g. CD19-BBz-CAR" maxlength="120" style="font-family:var(--font-mono,monospace)"></div>
-        <div class="field full">
-          <label>Binder Domain (scFv, VHH, or peptide)</label>
-          <textarea id="cart-assembler-binder" rows="3" placeholder="Sequence (e.g. FMC63 scFv)"></textarea>
+
+      <!-- Pre-filter row -->
+      <div class="form-grid" style="margin-bottom:8px">
+        <div class="field">
+          <label>Indication pre-filter <span class="__cart_help" data-tip="Filters every dropdown to components tagged for this disease setting." style="margin-left:4px;color:var(--muted);cursor:help">?</span></label>
+          <select id="cart-flt-indication" onchange="_cartReloadAllCatalogs()">
+            <option value="">All indications</option>
+            <option value="Solid Tumor">Solid Tumor (75)</option>
+            <option value="Hematologic">Hematologic (76)</option>
+            <option value="Autoimmune">Autoimmune (11)</option>
+            <option value="Research">Research</option>
+          </select>
         </div>
         <div class="field">
-          <label>Hinge Domain</label>
-          <textarea id="cart-assembler-hinge" rows="2" placeholder="CD8a, CD28, IgG1, etc."></textarea>
+          <label>Cell type pre-filter <span class="__cart_help" data-tip="Restricts to elements validated for this effector cell platform." style="margin-left:4px;color:var(--muted);cursor:help">?</span></label>
+          <select id="cart-flt-celltype" onchange="_cartReloadAllCatalogs()">
+            <option value="">All cell types</option>
+            <option value="CAR-T">CAR-T (102)</option>
+            <option value="CAR-NK">CAR-NK (34)</option>
+            <option value="CAR-M">CAR-M (6)</option>
+            <option value="CAR-Treg">CAR-Treg (5)</option>
+            <option value="γδ T">γδ T (8)</option>
+            <option value="iPSC-CAR">iPSC-CAR (1)</option>
+            <option value="Universal">Universal allogeneic (37)</option>
+          </select>
         </div>
         <div class="field">
-          <label>Transmembrane Domain (TM)</label>
-          <textarea id="cart-assembler-tm" rows="2" placeholder="CD8a, CD28, etc."></textarea>
+          <label>Min. Tier <span class="__cart_help" data-tip="T1 = FDA/EMA approved · T2 = clinical trial / IND · T3 = peer-reviewed research." style="margin-left:4px;color:var(--muted);cursor:help">?</span></label>
+          <select id="cart-flt-tier" onchange="_cartReloadAllCatalogs()">
+            <option value="">All tiers (T1 + T2 + T3)</option>
+            <option value="T1">T1 only — FDA approved (28)</option>
+            <option value="T2">T2 only — Clinical/IND (122)</option>
+            <option value="T3">T3 only — Research (94)</option>
+          </select>
         </div>
         <div class="field">
-          <label>Co-stimulatory Domain(s)</label>
-          <textarea id="cart-assembler-costim" rows="2" placeholder="4-1BB, CD28, OX40 (separate by comma if multiple IDs)"></textarea>
-        </div>
-        <div class="field">
-          <label>Activation Domain</label>
-          <textarea id="cart-assembler-activation" rows="2" placeholder="CD3z (default)"></textarea>
+          <label>Demo case</label>
+          <select id="cart-assembler-demo" onchange="loadServiceDemo()"></select>
         </div>
       </div>
+
+      <div class="form-grid">
+        <div class="field full">
+          <label>Construct name <span class="muted" style="font-weight:400;font-size:11px">(optional)</span></label>
+          <input type="text" id="cart-assembler-name" placeholder="e.g. CD19-BBz-CAR" maxlength="120" style="font-family:var(--font-mono,monospace)">
+        </div>
+        ${slots.map(s => slotHtml(s, false)).join('')}
+      </div>
+
+      <details style="margin-top:18px">
+        <summary style="cursor:pointer;font-weight:600;font-size:12px">Advanced / Optional modules (Signal peptide, Linker, Safety switch, Armored payload, Regulatory, Logic gate, In-vivo)</summary>
+        <div class="form-grid" style="margin-top:10px">
+          ${optionalSlots.map(s => slotHtml(s, true)).join('')}
+        </div>
+      </details>
+
       <div class="actions" style="margin-top:24px">
         <button class="btn primary" onclick="runCurrentService()">Run CAR-T Assembler</button>
       </div>
+
+      <!-- Floating tooltip portal -->
+      <div id="__cart_option_tip" style="position:fixed;z-index:9999;display:none;max-width:340px;padding:10px 12px;background:#1f2937;color:#f3f4f6;font-size:11px;line-height:1.5;border-radius:6px;box-shadow:0 8px 24px rgba(0,0,0,.3);white-space:pre-wrap;pointer-events:none"></div>
     </section>
+    <script>
+      window.__CART_SLOTS = ${slotsJson};
+      window.__CART_CATALOG_CACHE = window.__CART_CATALOG_CACHE || {};
+      _cartInitForm();
+    </script>
   `;
 }
 
@@ -4567,7 +4682,7 @@ function hydrateService(service) {
     },
     "cmc-bispecific": () => { fillDemoSelect("bs-cmc-demo", service.demos); loadServiceDemo(); updateCmcCredits(); },
     "bispecific-assembler": () => { fillDemoSelect("bs-assembler-demo", service.demos, true); loadServiceDemo(); },
-    "car-t-assembler": () => { fillDemoSelect("cart-assembler-demo", service.demos, true); loadServiceDemo(); },
+    "car-t-assembler": () => { fillDemoSelect("cart-assembler-demo", service.demos, true); if (typeof _cartInitForm === 'function') _cartInitForm(); loadServiceDemo(); },
     "bispecific-analyzer": () => {
       fillDemoSelect("bs-analyzer-demo", service.demos, true);
       loadServiceDemo();
@@ -4875,22 +4990,34 @@ function loadServiceDemo() {
     document.getElementById("bs-assembler-vl-b").value = demo.vl_b || "";
     document.getElementById("bs-assembler-format").value = demo.format || "crossmab";
   } else if (service.runner === "car-t-assembler") {
-    const demoId = document.getElementById("cart-assembler-demo").value;
+    const demoId = document.getElementById("cart-assembler-demo")?.value;
+    const setSlot = (slotKey, value) => {
+      if (!value) return;
+      // Prefer DB pick if id exists; otherwise drop into custom textarea
+      const pick = document.getElementById('cart-pick-'+slotKey);
+      const custom = document.getElementById('cart-custom-'+slotKey);
+      if (pick && Array.from(pick.options).some(o => o.value === value)) {
+        pick.value = value;
+        if (typeof _cartSetMode === 'function') _cartSetMode(slotKey,'db');
+      } else if (custom) {
+        custom.value = value;
+        if (typeof _cartSetMode === 'function') _cartSetMode(slotKey,'custom');
+      }
+    };
     if (!demoId) {
-      document.getElementById("cart-assembler-binder").value = "";
-      document.getElementById("cart-assembler-hinge").value = "";
-      document.getElementById("cart-assembler-tm").value = "";
-      document.getElementById("cart-assembler-costim").value = "";
-      document.getElementById("cart-assembler-activation").value = "";
+      ['binder','hinge','tm','costim','activation'].forEach(k => {
+        const pick = document.getElementById('cart-pick-'+k); if (pick) pick.value = '';
+        const custom = document.getElementById('cart-custom-'+k); if (custom) custom.value = '';
+      });
       return;
     }
     const demo = DEMOS[demoId];
     if (!demo) return;
-    document.getElementById("cart-assembler-binder").value = demo.binder || "";
-    document.getElementById("cart-assembler-hinge").value = demo.hinge || "";
-    document.getElementById("cart-assembler-tm").value = demo.tm || "";
-    document.getElementById("cart-assembler-costim").value = demo.costim || "";
-    document.getElementById("cart-assembler-activation").value = demo.activation || "";
+    setSlot('binder', demo.binder);
+    setSlot('hinge', demo.hinge);
+    setSlot('tm', demo.tm);
+    setSlot('costim', demo.costim);
+    setSlot('activation', demo.activation);
   } else if (service.runner === "bispecific-analyzer") {
     const demoId = document.getElementById("bs-analyzer-demo").value;
     if (!demoId) {
@@ -11667,24 +11794,160 @@ function _bsAssemblerDownloadHtml() {
   document.body.appendChild(a); a.click(); document.body.removeChild(a);
 }
 
+// ── CAR-T helpers (DB-driven slot UI) ─────────────────────────────────────────
+async function _cartInitForm() {
+  await _cartLoadStats();
+  await _cartReloadAllCatalogs();
+  // default every slot to "db" mode visually
+  (window.__CART_SLOTS||[]).forEach(s => _cartSetMode(s.key,'db', true));
+}
+async function _cartLoadStats() {
+  try {
+    const r = await fetch(apiJoin('cart/stats'));
+    if(!r.ok) return;
+    const s = await r.json();
+    const bar = document.getElementById('cart-stats-banner');
+    if(!bar) return;
+    const chip = (t,c)=>`<span style="padding:3px 8px;border-radius:12px;background:${c};color:#fff">${t}</span>`;
+    const cats = s.by_category||{};
+    const tiers = s.by_tier||{};
+    bar.innerHTML = [
+      chip(`SSOT · ${s.total} components`, '#0f766e'),
+      chip(`T1 · ${tiers.T1||0} approved`, '#15803d'),
+      chip(`T2 · ${tiers.T2||0} clinical`, '#1d4ed8'),
+      chip(`T3 · ${tiers.T3||0} research`, '#7c3aed'),
+      chip(`${Object.keys(cats).length} categories`, '#475569'),
+    ].join(' ');
+  } catch(e){}
+}
+function _cartGetFilters() {
+  return {
+    indication: document.getElementById('cart-flt-indication')?.value||'',
+    cell_type:  document.getElementById('cart-flt-celltype')?.value||'',
+    tier:       document.getElementById('cart-flt-tier')?.value||'',
+  };
+}
+async function _cartReloadAllCatalogs() {
+  const slots = window.__CART_SLOTS||[];
+  await Promise.all(slots.map(s => _cartLoadCatalog(s.key, s.cat)));
+}
+async function _cartLoadCatalog(slotKey, category) {
+  const f = _cartGetFilters();
+  const params = new URLSearchParams();
+  params.set('category', category);
+  if(f.indication) params.set('indication', f.indication);
+  if(f.cell_type)  params.set('cell_type', f.cell_type);
+  if(f.tier)       params.set('tier', f.tier);
+  // Many binders are STUB-only in the registry — keep them visible for visibility
+  params.set('verified_only', 'false');
+  const url = apiJoin('cart/catalog?' + params.toString());
+  const sel = document.getElementById('cart-pick-'+slotKey);
+  if(!sel) return;
+  try {
+    const r = await fetch(url);
+    if(!r.ok) { sel.innerHTML = '<option value="">(catalog unavailable)</option>'; return; }
+    const data = await r.json();
+    const items = data.items || [];
+    window.__CART_CATALOG_CACHE[slotKey] = {};
+    const opts = [`<option value="">— Select ${escapeHtml(category)} (${items.length} available) —</option>`];
+    items.forEach(it => {
+      window.__CART_CATALOG_CACHE[slotKey][it.id] = it;
+      const tierTag = it.tier ? `[${it.tier}]` : '';
+      const lenTag  = (it.length!=null) ? `${it.length}aa` : '';
+      const tgt = it.target ? ` — ${it.target}` : '';
+      const stub = (it.sequence_status && it.sequence_status !== 'VERIFIED') ? ' (stub)' : '';
+      opts.push(`<option value="${escapeHtml(it.id)}">${tierTag} ${escapeHtml(it.name||it.id)}${escapeHtml(tgt)} · ${lenTag}${stub}</option>`);
+    });
+    sel.innerHTML = opts.join('');
+  } catch(e) {
+    sel.innerHTML = '<option value="">(catalog fetch error — backend reachable?)</option>';
+  }
+}
+function _cartSetMode(slotKey, mode, silent) {
+  document.querySelectorAll(`[data-cart-mode-pane][data-slot="${slotKey}"]`).forEach(el => {
+    el.style.display = (el.getAttribute('data-cart-mode-pane') === mode) ? '' : 'none';
+  });
+  document.querySelectorAll(`.__cart_mode_btn[data-slot="${slotKey}"]`).forEach(btn => {
+    const isActive = btn.getAttribute('data-mode') === mode;
+    btn.style.background = isActive ? 'var(--accent)' : 'transparent';
+    btn.style.color      = isActive ? '#fff' : '';
+  });
+}
+function _cartShowOptionTip(selEl, evt) {
+  const tip = document.getElementById('__cart_option_tip');
+  if(!tip || !selEl) return;
+  const slotKey = selEl.getAttribute('data-slot');
+  const id = selEl.value;
+  const cache = (window.__CART_CATALOG_CACHE||{})[slotKey] || {};
+  const it = cache[id];
+  if(!it) { tip.style.display='none'; return; }
+  const lines = [];
+  lines.push(`<b>${escapeHtml(it.name||it.id)}</b> &nbsp;<span style="opacity:.7">${escapeHtml(it.id)}</span>`);
+  if(it.tier) lines.push(`Tier ${escapeHtml(it.tier)}${it.length?` · ${it.length} aa`:''}${it.subcategory?` · ${escapeHtml(it.subcategory)}`:''}`);
+  if(it.target) lines.push(`Target: ${escapeHtml(it.target)}`);
+  if((it.indications||[]).length) lines.push(`Indication: ${(it.indications||[]).map(escapeHtml).join(', ')}`);
+  if((it.cell_types||[]).length)  lines.push(`Cells: ${(it.cell_types||[]).map(escapeHtml).join(', ')}`);
+  if(it.role)   lines.push(`Role: ${escapeHtml(it.role)}`);
+  if((it.approval_products||[]).length) lines.push(`Approved in: ${(it.approval_products||[]).slice(0,4).map(escapeHtml).join(', ')}`);
+  if((it.clinical_trials||[]).length)   lines.push(`Trials: ${(it.clinical_trials||[]).slice(0,3).map(escapeHtml).join(', ')}`);
+  if(it.source) lines.push(`Source: ${escapeHtml(it.source)}`);
+  tip.innerHTML = lines.join('<br>');
+  tip.style.display = 'block';
+  const x = (evt?.clientX||0) + 16;
+  const y = (evt?.clientY||0) + 16;
+  tip.style.left = Math.min(x, window.innerWidth - 360) + 'px';
+  tip.style.top  = Math.min(y, window.innerHeight - 220) + 'px';
+}
+function _cartHideOptionTip() {
+  const tip = document.getElementById('__cart_option_tip');
+  if(tip) tip.style.display='none';
+}
+// Tiny help-icon tooltip (reuses the same portal)
+document.addEventListener('mouseover', (e) => {
+  const t = e.target.closest && e.target.closest('.__cart_help');
+  if(!t) return;
+  const tip = document.getElementById('__cart_option_tip');
+  if(!tip) return;
+  tip.innerHTML = escapeHtml(t.getAttribute('data-tip')||'');
+  tip.style.display = 'block';
+  tip.style.left = Math.min(e.clientX + 14, window.innerWidth - 360) + 'px';
+  tip.style.top  = Math.min(e.clientY + 14, window.innerHeight - 200) + 'px';
+});
+document.addEventListener('mouseout', (e) => {
+  const t = e.target.closest && e.target.closest('.__cart_help');
+  if(t) _cartHideOptionTip();
+});
+function _cartSlotValue(slotKey) {
+  // Determine which mode is active and return the value (id from DB or custom seq)
+  const dbPane = document.querySelector(`[data-cart-mode-pane="db"][data-slot="${slotKey}"]`);
+  const customPane = document.querySelector(`[data-cart-mode-pane="custom"][data-slot="${slotKey}"]`);
+  if(dbPane && dbPane.style.display !== 'none') {
+    return document.getElementById('cart-pick-'+slotKey)?.value || '';
+  }
+  if(customPane && customPane.style.display !== 'none') {
+    return document.getElementById('cart-custom-'+slotKey)?.value || '';
+  }
+  return '';
+}
+
 async function runCartAssembler(service) {
-  const binder = document.getElementById("cart-assembler-binder")?.value||"";
-  const hinge = document.getElementById("cart-assembler-hinge")?.value||"";
-  const tm = document.getElementById("cart-assembler-tm")?.value||"";
-  const costim = document.getElementById("cart-assembler-costim")?.value||"";
-  const act = document.getElementById("cart-assembler-activation")?.value||"";
+  const binder = _cartSlotValue('binder');
+  const hinge  = _cartSlotValue('hinge');
+  const tm     = _cartSlotValue('tm');
+  const costim = _cartSlotValue('costim');
+  const act    = _cartSlotValue('activation');
   const projName = (document.getElementById("cart-assembler-name")?.value||"CAR").trim()||"CAR";
 
-  if (!binder.trim()) { setOutput(errorPanel("Binder domain sequence is required.")); return; }
-  if (!hinge.trim()) { setOutput(errorPanel("Hinge domain sequence/ID is required.")); return; }
-  if (!tm.trim()) { setOutput(errorPanel("TM domain sequence/ID is required.")); return; }
-  if (!costim.trim()) { setOutput(errorPanel("Costimulatory domain sequence/ID is required.")); return; }
-  if (!act.trim()) { setOutput(errorPanel("Activation domain sequence/ID is required.")); return; }
+  if (!binder.trim()) { setOutput(errorPanel("Binder domain is required (pick from DB or paste sequence).")); return; }
+  if (!hinge.trim()) { setOutput(errorPanel("Hinge domain is required.")); return; }
+  if (!tm.trim()) { setOutput(errorPanel("TM domain is required.")); return; }
+  if (!costim.trim()) { setOutput(errorPanel("Costimulatory domain is required.")); return; }
+  if (!act.trim()) { setOutput(errorPanel("Activation domain is required.")); return; }
   
   setOutput(`<div style="padding:24px;text-align:center"><div class="spinner"></div><div style="margin-top:16px;color:var(--muted)">Assembling CAR-T construct ${escapeHtml(projName)}...</div></div>`);
 
   try {
-    const res = await fetch("/cart/assemble", {
+    const res = await fetch(apiJoin("cart/assemble"), {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
