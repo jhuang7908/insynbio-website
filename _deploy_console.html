@@ -1385,6 +1385,10 @@ const REGISTRY = {
       tier: "online",
       services: [
         "car-t-assembler",
+        "cart-exvivo-bb",
+        "cart-exvivo-28",
+        "cart-exvivo-armored",
+        "cart-exvivo-allo",
         "cart-invivo-solid",
         "cart-invivo-blood",
         "cart-invivo-neuro",
@@ -1514,7 +1518,7 @@ const REGISTRY = {
     // ── VHH Engineering ──────────────────────────────────────────────────
     "vhh-structural": {
       module: "vhh-engineering",
-      navGroup: "structure",
+      navGroup: "vhh-structure",
       label: "Structure (VHH)",
       subtitle: "NanoBodyBuilder2 · pLDDT · PDB download",
       computeMode: "Lite",
@@ -1528,6 +1532,7 @@ const REGISTRY = {
     },
     "vhh-segmentation": {
       module: "vhh-engineering",
+      navGroup: "vhh-segmentation",
       label: "VHH Segmentation & Germline",
       subtitle: "CDR / FR / hallmark check",
       computeMode: "Lite",
@@ -1541,6 +1546,7 @@ const REGISTRY = {
     },
     "vhh-humanization": {
       module: "vhh-engineering",
+      navGroup: "vhh-humanization",
       label: "VHH Humanization",
       subtitle: "camelid · V5.0 structure-guided",
       computeMode: "Lite",
@@ -1555,6 +1561,7 @@ const REGISTRY = {
     },
     "vhh-recheck": {
       module: "vhh-engineering",
+      navGroup: "vhh-humanization",
       label: "VHH Recheck",
       subtitle: "customer sequence virtual QA",
       computeMode: "Lite",
@@ -1569,6 +1576,7 @@ const REGISTRY = {
     },
     "vh-to-vhh-conversion": {
       module: "vhh-engineering",
+      navGroup: "vhh-workflow",
       label: "VH to VHH Conversion",
       subtitle: "Proprietary Reshaping V1.8.17",
       computeMode: "Server full pipeline (Async)",
@@ -1597,6 +1605,7 @@ const REGISTRY = {
     },
     "cdna-optimization-vhh": {
       module: "vhh-engineering",
+      navGroup: "vhh-workflow",
       label: "cDNA Optimization",
       subtitle: "HEK293 / yeast / bacterial",
       computeMode: "Lite",
@@ -1612,16 +1621,76 @@ const REGISTRY = {
     "car-t-assembler": {
       module: "car-t-design",
       navGroup: "exvivo",
-      label: "Ex Vivo CAR",
-      subtitle: "Construct assembly",
+      label: "Custom / Free Design",
+      subtitle: "All slots open",
       computeMode: "Lite",
       credits: 5000,
-      description: "Assemble CAR-T constructs (binder, hinge, transmembrane, costimulatory domains) using the 11-layer CAR standard framework. Validates compatibility and generates full sequences.",
+      description: "Free-form CAR-T construct assembly — all 5 required slots and 8 optional slots open. Select any combination of binder, hinge, TM, costimulatory, and signaling domain.",
       analysisVersion: "v1.0",
       underlyingStandard: "CAR-T Design Standard V1.0",
       reportVersion: "1.0",
       runner: "car-t-assembler",
       demos: ["cd19-28z-car", "cd19-bbz-car", "her2-bbz-car"]
+    },
+    "cart-exvivo-bb": {
+      module: "car-t-design",
+      navGroup: "exvivo",
+      label: "2nd Gen · 4-1BB (BBζ)",
+      subtitle: "Long persistence · Kymriah-like",
+      computeMode: "Lite",
+      credits: 5000,
+      description: "2nd-generation CAR with 4-1BB costimulatory domain. Clinical gold standard for long-term T cell persistence and memory formation. Reference: Kymriah (tisagenlecleucel) — FDA approved 2017.",
+      analysisVersion: "v1.0",
+      underlyingStandard: "CAR-T Design Standard V1.0",
+      reportVersion: "1.0",
+      runner: "car-t-assembler",
+      exvivoArch: "bb",
+      demos: ["cd19-bbz-car"]
+    },
+    "cart-exvivo-28": {
+      module: "car-t-design",
+      navGroup: "exvivo",
+      label: "2nd Gen · CD28 (CD28ζ)",
+      subtitle: "Rapid expansion · Yescarta-like",
+      computeMode: "Lite",
+      credits: 5000,
+      description: "2nd-generation CAR with CD28 costimulatory domain. Drives rapid T cell expansion and short-term efficacy. Reference: Yescarta (axicabtagene ciloleucel) — FDA approved 2017.",
+      analysisVersion: "v1.0",
+      underlyingStandard: "CAR-T Design Standard V1.0",
+      reportVersion: "1.0",
+      runner: "car-t-assembler",
+      exvivoArch: "cd28",
+      demos: ["cd19-28z-car"]
+    },
+    "cart-exvivo-armored": {
+      module: "car-t-design",
+      navGroup: "exvivo",
+      label: "Armored / 3rd Gen",
+      subtitle: "Cytokine payload · TME penetration",
+      computeMode: "Lite",
+      credits: 5000,
+      description: "Armored CAR (3rd-gen or cytokine co-expressing): add IL-7, IL-15, IL-12, or PD-L1 dominant-negative via 2A peptide linkage. Key strategy for solid tumor TME overcoming and anti-exhaustion.",
+      analysisVersion: "v1.0",
+      underlyingStandard: "CAR-T Design Standard V1.0",
+      reportVersion: "1.0",
+      runner: "car-t-assembler",
+      exvivoArch: "armored",
+      demos: ["her2-bbz-car"]
+    },
+    "cart-exvivo-allo": {
+      module: "car-t-design",
+      navGroup: "exvivo",
+      label: "Allogeneic (Off-the-Shelf)",
+      subtitle: "TRAC KO · universal donor",
+      computeMode: "Lite",
+      credits: 5000,
+      description: "Allogeneic CAR-T from universal donor: TRAC KO (eliminates TCR/GvHD), B2M KO (HLA-I evasion), optional PD-1 KO. Enables off-the-shelf manufacturing without patient leukapheresis.",
+      analysisVersion: "v1.0",
+      underlyingStandard: "CAR-T Design Standard V1.0",
+      reportVersion: "1.0",
+      runner: "car-t-assembler",
+      exvivoArch: "allo",
+      demos: []
     },
     "cart-invivo-solid": {
       module: "car-t-design",
@@ -2085,6 +2154,13 @@ const RAE_SERVICE_GROUPS = [
 const CART_SERVICE_GROUPS = [
   { id: "exvivo",  label: "Ex Vivo CAR" },
   { id: "invivo",  label: "🔥 In Vivo CAR" },
+];
+
+const VHH_SERVICE_GROUPS = [
+  { id: "vhh-segmentation", label: "1 · Segmentation" },
+  { id: "vhh-structure",    label: "2 · Structure" },
+  { id: "vhh-humanization", label: "3 · Humanization" },
+  { id: "vhh-workflow",     label: "Conversion & Output" },
 ];
 
 const state = {
@@ -3018,6 +3094,23 @@ function renderSidebar() {
       }).join("");
       return `<div class="service-group"><div class="service-group-label">${g.label}</div>${buttons}</div>`;
     }).join("");
+  } else if (currentModule.id === "vhh-engineering") {
+    serviceNav.innerHTML = VHH_SERVICE_GROUPS.map((g) => {
+      const ids = currentModule.services.filter((sid) => {
+        const s = REGISTRY.services[sid];
+        return s && s.navGroup === g.id;
+      });
+      if (!ids.length) return "";
+      const buttons = ids.map((serviceId) => {
+        const service = REGISTRY.services[serviceId];
+        return `
+      <button class="service-btn ${serviceId === state.service ? "active" : ""}" onclick="activateService('${serviceId}')">
+        ${service.label}
+        <span class="service-sub">${service.subtitle}</span>
+      </button>`;
+      }).join("");
+      return `<div class="service-group"><div class="service-group-label">${g.label}</div>${buttons}</div>`;
+    }).join("");
   } else if (currentModule.id === "car-t-design") {
     serviceNav.innerHTML = CART_SERVICE_GROUPS.map((g) => {
       const ids = currentModule.services.filter((sid) => {
@@ -3357,6 +3450,10 @@ function renderServicePanel(service) {
     case "vh-to-vhh":         formBlock = renderVhToVhhForm(service); break;
     case "bispecific-assembler": formBlock = renderBispecificAssemblerForm(service); break;
     case "car-t-assembler":
+    case "cart-exvivo-bb":
+    case "cart-exvivo-28":
+    case "cart-exvivo-armored":
+    case "cart-exvivo-allo":
     case "cart-invivo-solid":
     case "cart-invivo-blood":
     case "cart-invivo-neuro":
@@ -3996,7 +4093,10 @@ function renderCartAssemblerForm(service) {
       <div class="panel-label">CAR-T Construct Assembler</div>
 
       <!-- Stats banner -->
-      <div id="cart-stats-banner" style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px;font-size:11px"></div>
+      <div id="cart-stats-banner" style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:8px;font-size:11px"></div>
+
+      <!-- Architecture context banner (Ex Vivo sub-services) -->
+      <div id="cart-exvivo-arch-banner" style="display:none;margin-bottom:12px;padding:8px 12px;border-radius:6px;border:1px solid var(--line);background:var(--panel);font-size:11px;color:var(--muted);line-height:1.6"></div>
 
       <!-- ══════════ IN VIVO CAR PANEL ══════════ -->
       <div id="cart-invivo-panel" style="display:none;margin-bottom:18px">
@@ -4885,6 +4985,10 @@ function hydrateService(service) {
       fillDemoSelect("cart-assembler-demo", service.demos, true);
       loadServiceDemo();
     },
+    "cart-exvivo-bb":     () => _cartHydrateExVivo(service),
+    "cart-exvivo-28":     () => _cartHydrateExVivo(service),
+    "cart-exvivo-armored":() => _cartHydrateExVivo(service),
+    "cart-exvivo-allo":   () => _cartHydrateExVivo(service),
     "cart-invivo-solid":  () => _cartHydrateInVivo(service),
     "cart-invivo-blood":  () => _cartHydrateInVivo(service),
     "cart-invivo-neuro":  () => _cartHydrateInVivo(service),
@@ -12169,19 +12273,18 @@ window.__CART_INVIVO_DISEASE = '';
 window.__CART_INVIVO_VEHICLE = '';
 
 function _cartSetDeliveryMode(mode) {
-  const exvBtnEl = document.getElementById('cart-tlbtn-exvivo');
-  const ivBtnEl  = document.getElementById('cart-tlbtn-invivo');
   const exvPanel = document.getElementById('cart-exvivo-panel');
   const ivPanel  = document.getElementById('cart-invivo-panel');
-  if(!exvBtnEl || !ivBtnEl || !exvPanel || !ivPanel) return;
+  if(!exvPanel || !ivPanel) return;
 
   const isInVivo = (mode === 'invivo');
-  exvBtnEl.style.background = isInVivo ? 'var(--surface)' : 'var(--accent)';
-  exvBtnEl.style.color      = isInVivo ? 'var(--text)'    : '#fff';
-  ivBtnEl.style.background  = isInVivo ? '#ef4444'        : 'var(--surface)';
-  ivBtnEl.style.color       = isInVivo ? '#fff'           : 'var(--text)';
-  exvPanel.style.display    = isInVivo ? 'none' : '';
-  ivPanel.style.display     = isInVivo ? '' : 'none';
+  exvPanel.style.display = isInVivo ? 'none' : '';
+  ivPanel.style.display  = isInVivo ? '' : 'none';
+  // Hide arch banner when switching to invivo; exvivo hydration shows it selectively
+  if(isInVivo) {
+    const ab = document.getElementById('cart-exvivo-arch-banner');
+    if(ab) ab.style.display = 'none';
+  }
 
   if(isInVivo && !window.__CART_INVIVO_DATA) {
     _cartInVivoLoad();
@@ -12383,6 +12486,37 @@ function _cartInVivoSelectComp(id, name, slotKey) {
 function _cartInVivoClearSelected() {
   const chip = document.getElementById('cart-invivo-selected');
   if(chip) chip.style.display = 'none';
+}
+
+// Called from hydrateService for cart-exvivo-* architecture routes
+function _cartHydrateExVivo(service) {
+  const demoId = (service.demos && service.demos[0]) || '';
+  fillDemoSelect('cart-assembler-demo', service.demos || [], true);
+  _cartInitForm().then(() => {
+    _cartSetDeliveryMode('exvivo');
+    // Show an architecture context banner if available
+    const arch = service.exvivoArch || '';
+    const banner = document.getElementById('cart-exvivo-arch-banner');
+    if(banner) {
+      const INFO = {
+        bb:      { icon:'🔵', note:'4-1BB costimulation → superior T cell persistence and memory. Reference archetype: Kymriah (tisagenlecleucel). Recommended costim slot: 4-1BB.' },
+        cd28:    { icon:'🟠', note:'CD28 costimulation → rapid expansion, high early peak. Reference archetype: Yescarta (axicabtagene ciloleucel). Recommended costim slot: CD28.' },
+        armored: { icon:'🛡', note:'Armored / 3rd-gen CAR: add IL-7, IL-15, or dual costim (4-1BB + CD28) for TME penetration and anti-exhaustion. Use the Armored Payload optional slot.' },
+        allo:    { icon:'🧬', note:'Allogeneic design: TRAC KO eliminates TCR-mediated GvHD; B2M KO reduces HLA-I recognition. Add Engineering Module slot for CRISPR KO guide sequences.' },
+      };
+      const i = INFO[arch];
+      if(i) {
+        banner.innerHTML = '<span style="margin-right:6px">' + i.icon + '</span>' + i.note;
+        banner.style.display = '';
+      } else {
+        banner.style.display = 'none';
+      }
+    }
+    if(demoId) {
+      const sel = document.getElementById('cart-assembler-demo');
+      if(sel) { sel.value = demoId; loadServiceDemo(); }
+    }
+  });
 }
 
 // Called from hydrateService for cart-invivo-* routes
