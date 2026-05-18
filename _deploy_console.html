@@ -1,6 +1,6 @@
 <!DOCTYPE html>
-<!-- insynbio-console-v725-immuno-text-fix -->
-<!-- [FORCED RELOAD 2026-05-17 14:50] -->
+<!-- insynbio-console-v747-expanded-signal-peptides -->
+<!-- [FORCED RELOAD 2026-05-18 10:30] -->
 <html lang="en">
 <head>
 
@@ -1094,7 +1094,8 @@ html:not(.theme-beige) .rail .meta-item .k { color: #a8c4db; }
   </aside>
 </div>
 
-<script>
+
+  <script>
 function cycleTheme() {
   const themes = ['dark', 'beige', 'gruvbox'];
   const current = localStorage.getItem('insynbio-console-theme') || 'dark';
@@ -1369,6 +1370,24 @@ const REGISTRY = {
       ],
     },
     {
+      id: "bispecific-engineering",
+      label: "Bispecific Engineering",
+      subtitle: "Format assembly",
+      tier: "online",
+      services: [
+        "bispecific-assembler",
+      ],
+    },
+    {
+      id: "car-t-design",
+      label: "CAR-T Engineer",
+      subtitle: "Cell therapy design",
+      tier: "online",
+      services: [
+        "car-t-assembler",
+      ],
+    },
+    {
       id: "cmc",
       label: "CMC / Developability",
       subtitle: "Clinical Reference",
@@ -1376,16 +1395,8 @@ const REGISTRY = {
       services: [
         "igg-cmc-snapshot",
         "vhh-cmc-snapshot",
+        "bispecific-analyzer",
         // "bispecific-vhh-cmc",  // hidden 2026-05-13: pending tandem-construct ESMFold integration; backend & service def preserved
-      ],
-    },
-    {
-      id: "pet-engineering",
-      label: "Pet Antibody Engineering",
-      subtitle: "dog · cat caninization / felinization",
-      tier: "internal",
-      services: [
-        "petization",
       ],
     },
     {
@@ -1565,6 +1576,20 @@ const REGISTRY = {
       runner: "vh-to-vhh",
       demos: ["tislelizumab-vh", "teplizumab-vh"],
     },
+    "bispecific-assembler": {
+      module: "bispecific-engineering",
+      navGroup: "workflow",
+      label: "Bispecific Assembler",
+      subtitle: "Format & linker assembly",
+      computeMode: "Lite",
+      credits: 5000,
+      description: "Assemble two target binders (VH/VL or VHH) into a single bispecific antibody format (e.g. CrossMab, Tandem scFv, BiTE). Provides FASTA outputs with appropriate linkers and constant region scaffolds.",
+      analysisVersion: "v1.0",
+      underlyingStandard: "Bispecific Design Framework V1.0",
+      reportVersion: "1.0",
+      runner: "bispecific-assembler",
+      demos: ["teclistamab-bsab", "mosunetuzumab-bsab"]
+    },
     "cdna-optimization-vhh": {
       module: "vhh-engineering",
       label: "cDNA Optimization",
@@ -1578,6 +1603,20 @@ const REGISTRY = {
       runner: "cdna-optimization",
       chainType: "vhh",
       demos: ["alpaca-vhh"],
+    },
+    "car-t-assembler": {
+      module: "car-t-design",
+      navGroup: "workflow",
+      label: "CAR-T Assembler",
+      subtitle: "Construct design & routing",
+      computeMode: "Lite",
+      credits: 5000,
+      description: "Assemble CAR-T constructs (binder, hinge, transmembrane, costimulatory domains) using the 11-layer CAR standard framework. Validates compatibility and generates full sequences.",
+      analysisVersion: "v1.0",
+      underlyingStandard: "CAR-T Design Standard V1.0",
+      reportVersion: "1.0",
+      runner: "car-t-assembler",
+      demos: ["cd19-28z-car", "her2-bbz-car"]
     },
     // ── CMC ──────────────────────────────────────────────────────────────
     "igg-cmc-snapshot": {
@@ -1610,6 +1649,20 @@ const REGISTRY = {
       runner: "cmc-vhh",
       refDb: "VHH clinical",
       demos: ["humanized-vhh-eval", "nanobody-origin-scab"],
+    },
+    "bispecific-analyzer": {
+      module: "cmc",
+      navGroup: "workflow",
+      label: "Bispecific Analyzer",
+      subtitle: "Pairing QA & CMC",
+      computeMode: "Server full pipeline (Async)",
+      credits: 15000,
+      description: "In-depth QA and CMC evaluation for bispecific formats. For IgG-like bispecifics (e.g., CrossMab), computes Pairing Selectivity Index (PSI) using Fv pairing rules, assembly angles, and electrostatic asymmetry to predict chain mispairing risk.",
+      analysisVersion: "v1.0",
+      underlyingStandard: "Bispecific Structure & Services Mapping V1.0",
+      reportVersion: "1.0",
+      runner: "bispecific-analyzer",
+      demos: ["teclistamab-bsab", "mosunetuzumab-bsab"]
     },
     "bispecific-vhh-cmc": {
       module: "cmc",
@@ -1894,6 +1947,24 @@ const DEMOS = {
     arm2Target: "Target_B",
     linker: "(G4S)3",
   },
+  "teclistamab-bsab": {
+    label: "Teclistamab (BCMAxCD3, DuetMab)",
+    summary: "Teclistamab (Janssen) — BCMA x CD3 bispecific using DuetMab format (IgG4). Contains engineered CH1/CL mutations to facilitate correct chain pairing.",
+    type: "bispecific_vhvl", format: "duetmab",
+    vh_a: "QVQLVQSGAEVKKPGSSVKVSCKASGGTFSSYAISWVRQAPGQGLEWMGGIIPIFGTANYAQKFQGRVTITADESTSTAYMELSSLRSEDTAVYYCARAPNYLFHSVIGAFDIWGQGTMVTVSS",
+    vl_a: "DIQMTQSPSSLSASVGDRVTITCRASQGISSWLAWYQQKPEKAPKSLIYAASSLQSGVPSRFSGSGSGTDFTLTISSLQPEDFATYYCQQYNSYPYTFGQGTKLEIK",
+    vh_b: "QVQLVQSGAEVKKPGASVKVSCKASGYTFTRYTMHWVRQAPGQGLEWIGYINPSRGYTNYNQKVKDRVTITTDTSASTAYMELSSLRSEDTAVYYCARYYDDHYCLDYWGQGTLVTVSS",
+    vl_b: "DIQMTQSPSSLSASVGDRVTITCRASQDIRNYLNWYQQKPGKAPKLLIYYTSKLHSGVPSRFSGSGSGTDYTLTISSLQPEDFATYYCQQGNTLPWTFGQGTKVEIK"
+  },
+  "mosunetuzumab-bsab": {
+    label: "Mosunetuzumab (CD20xCD3, CrossMab)",
+    summary: "Mosunetuzumab (Roche) — CD20 x CD3 bispecific using CrossMab format (IgG1 KiH). Relies on CH1-CL domain exchange on one arm to prevent light chain mispairing.",
+    type: "bispecific_vhvl", format: "crossmab",
+    vh_a: "EVQLVESGGGLVQPGGSLRLSCAASGYTFTSYNMHWVRQAPGKGLEWIGAIYPGNGDTSYNQKFKGRATISVDKSKNTLYLQMNSLRAEDTAVYYCARSNYYGSSYWFFDVWGQGTLVTVSS",
+    vl_a: "DIVMTQTPLSLPVTPGEPASISCRSSKSLLHSNGITYLYWYLQKPGQSPQLLIYQMSNLVSGVPDRFSGSGSGTDFTLKISRVEAEDVGVYYCAQNLELPYTFGGGTKVEIK",
+    vh_b: "EVQLVESGGGLVQPGGSLKLSCAASGFTFNKYAMNWVRQAPGKGLEWVARIRSKYNNYATYYADSVKDRFTISRDDSKNTAYLQMNNLKTEDTAVYYCVRHGNFGNSYISYWAYWGQGTLVTVSS",
+    vl_b: "QTVVTQEPSLTVSPGGTVTLTCGSSTGAVTSGNYPNWVQQKPGQAPRGLIGGTKFLAPGTPARFSGSLLGGKAALTLSGVQPEDEAEYYCVLWYSNRWVFGGGTKLTVL"
+  },
 };
 
 /** Sidebar groups for Regular Antibody Engineering (workflow order). */
@@ -1989,10 +2060,19 @@ function walletStorageKey() {
   return LS_CREDITS;
 }
 
-function isAdminIdentity() {
-  const ident = currentBillingIdentity();
-  return (ident.server && ["admin", "owner"].includes(String(ident.type || "").toLowerCase()))
-    || (ident.gate && String(ident.id || "").toLowerCase() === "admin");
+/** Server Bearer wallet shows ∞ balance when unlimited flag is set, or forced for role `admin`. */
+function serverWalletShowsInfinityBalance() {
+  if (!state.serverMode) return false;
+  const r = String(state.serverRole || "").toLowerCase();
+  if (r === "admin") return true;
+  return !!state.serverUnlimited;
+}
+
+function creditsInfinityParenLabel() {
+  const r = String(state.serverRole || "").toLowerCase();
+  if (r === "admin") return "admin";
+  if (r === "owner") return "owner";
+  return "unlimited";
 }
 
 function currentRunLocation() {
@@ -2892,12 +2972,10 @@ function updateTopbar() {
   if (railAccCont) railAccCont.style.display = "block";
   const credEl = document.getElementById("top-credits");
   if (credEl) {
-    if (isAdminIdentity()) {
-      credEl.textContent = "Credits · ∞ (admin)";
-    } else if (state.serverMode && state.serverUnlimited) {
-      credEl.textContent = "Credits · ∞ (unlimited)";
+    if (serverWalletShowsInfinityBalance()) {
+      credEl.textContent = `Credits · ∞ (${creditsInfinityParenLabel()})`;
     } else {
-      credEl.textContent = `Credits · ${state.credits.toLocaleString("en-US")}`;
+      credEl.textContent = `Credits · ${Number(state.credits || 0).toLocaleString("en-US")}`;
     }
   }
   updateAuthUi();
@@ -3143,8 +3221,11 @@ function renderServicePanel(service) {
     case "recheck-vhh":       formBlock = renderRecheckVhhForm(service); break;
     case "vhh-structural":    formBlock = renderVhhStructuralForm(service); break;
     case "cmc-vhh":           formBlock = renderVhhCmcForm(service); break;
+    case "bispecific-analyzer": formBlock = renderBispecificAnalyzerForm(service); break;
     case "cmc-bispecific":    formBlock = renderCmcBispecificForm(service); break;
     case "vh-to-vhh":         formBlock = renderVhToVhhForm(service); break;
+    case "bispecific-assembler": formBlock = renderBispecificAssemblerForm(service); break;
+    case "car-t-assembler": formBlock = renderCartAssemblerForm(service); break;
     case "segmentation-vhvl": formBlock = renderSegmentationVhvlForm(service); break;
     case "vhh-segmentation":  formBlock = renderVhhSegmentationForm(service); break;
     case "cdna-optimization": formBlock = renderCdnaOptimizationForm(service); break;
@@ -3700,6 +3781,205 @@ function renderCmcBispecificForm(service) {
   `;
 }
 
+function renderCartAssemblerForm(service) {
+  return `
+    <section class="surface panel">
+      <div class="panel-label">CAR-T Construct Components</div>
+      <p style="color:var(--muted);font-size:12px;line-height:1.65;margin-bottom:12px">
+        Provide sequences for the CAR-T components to assemble a full construct. Standard components (e.g. CD8a hinge, 4-1BB) can be specified by ID if known to the internal database, or by full amino acid sequence.
+      </p>
+      <div class="form-grid">
+        <div class="field"><label>Demo case</label><select id="cart-assembler-demo" onchange="loadServiceDemo()"></select></div>
+        <div class="field full"><label>Construct name <span class="muted" style="font-weight:400;font-size:11px">(optional)</span></label><input type="text" id="cart-assembler-name" placeholder="e.g. CD19-BBz-CAR" maxlength="120" style="font-family:var(--font-mono,monospace)"></div>
+        <div class="field full">
+          <label>Binder Domain (scFv, VHH, or peptide)</label>
+          <textarea id="cart-assembler-binder" rows="3" placeholder="Sequence (e.g. FMC63 scFv)"></textarea>
+        </div>
+        <div class="field">
+          <label>Hinge Domain</label>
+          <textarea id="cart-assembler-hinge" rows="2" placeholder="CD8a, CD28, IgG1, etc."></textarea>
+        </div>
+        <div class="field">
+          <label>Transmembrane Domain (TM)</label>
+          <textarea id="cart-assembler-tm" rows="2" placeholder="CD8a, CD28, etc."></textarea>
+        </div>
+        <div class="field">
+          <label>Co-stimulatory Domain(s)</label>
+          <textarea id="cart-assembler-costim" rows="2" placeholder="4-1BB, CD28, OX40 (separate by comma if multiple IDs)"></textarea>
+        </div>
+        <div class="field">
+          <label>Activation Domain</label>
+          <textarea id="cart-assembler-activation" rows="2" placeholder="CD3z (default)"></textarea>
+        </div>
+      </div>
+      <div class="actions" style="margin-top:24px">
+        <button class="btn primary" onclick="runCurrentService()">Run CAR-T Assembler</button>
+      </div>
+    </section>
+  `;
+}
+
+function renderBispecificAssemblerForm(service) {
+  return `
+    <section class="surface panel">
+      <div class="panel-label">Design &amp; Format Selection</div>
+      <p style="color:var(--muted);font-size:12px;line-height:1.65;margin-bottom:12px">
+        Select a bispecific antibody format and provide the binder sequences. This tool will assemble the full FASTA sequences for all required chains (e.g. heavy and light chains for both arms) using standard scaffolds and linkers. No structural or CMC evaluation is performed here; use this to quickly generate sequences for downstream analysis.
+      </p>
+      <div class="form-grid">
+        <div class="field"><label>Demo case</label><select id="bs-assembler-demo" onchange="loadServiceDemo()"></select></div>
+        <div class="field full"><label>Construct / project name <span class="muted" style="font-weight:400;font-size:11px">(optional)</span></label><input type="text" id="bs-assembler-name" placeholder="e.g. BsAb-2026-01" maxlength="120" style="font-family:var(--font-mono,monospace)"></div>
+        <div class="field full">
+          <label>Bispecific Format</label>
+          <select id="bs-assembler-format" onchange="_bsFormatChanged()">
+            <option value="crossmab">CrossMab (IgG-like, CH1-CL exchange)</option>
+            <option value="kih">Knob-in-Hole (IgG-like, Fc modification only)</option>
+            <option value="duetmab">DuetMab / Ortho-Fab (IgG-like, CH1-CL engineered)</option>
+            <option value="common_lc">Common Light Chain (IgG-like, shared VL)</option>
+            <option value="tandem_scfv">Tandem scFv (2–5 scFv)</option>
+            <option value="tandem_vhh">Tandem VHH (2–5 sdAb)</option>
+            <option value="mixed_tandem">Mixed scFv–VHH tandem</option>
+          </select>
+        </div>
+        <div class="field full">
+          <label>Fc Scaffold (for IgG-like formats)</label>
+          <select id="bs-assembler-fc">
+            <option value="igg1_kih">IgG1 Knob-in-Hole (L234A/L235A silenced)</option>
+            <option value="igg4_kih">IgG4 Knob-in-Hole (S228P silenced)</option>
+            <option value="igg1_wt">IgG1 Wild-Type (ADCC/CDC active)</option>
+            <option value="none">None (Fv/Fab assembly only)</option>
+          </select>
+        </div>
+        <div class="field"><label>Binder A VH <span style="font-weight:400;font-size:11px;color:var(--muted)">(or VHH-1)</span></label><textarea id="bs-assembler-vh-a" rows="3" placeholder="Target A Heavy Chain V-region (or VHH-1)"></textarea></div>
+        <div class="field" id="bs-vla-wrap">
+          <label>Binder A VL <span id="bs-vla-label" style="font-weight:400;font-size:11px;color:var(--muted)">(or shared CLC)</span></label>
+          <textarea id="bs-assembler-vl-a" rows="3" placeholder="Target A Light Chain V-region (or shared CLC)"></textarea>
+        </div>
+        <div class="field"><label>Binder B VH <span style="font-weight:400;font-size:11px;color:var(--muted)">(or VHH-2)</span></label><textarea id="bs-assembler-vh-b" rows="3" placeholder="Target B Heavy Chain V-region (or VHH-2)"></textarea></div>
+        <!-- VL-B and CLC-row occupy the same bottom-right cell; they swap based on format -->
+        <div class="field" id="bs-vlb-row"><label>Binder B VL <span style="font-weight:400;font-size:11px;color:var(--muted)">(leave blank for CLC/VHH)</span></label><textarea id="bs-assembler-vl-b" rows="3" placeholder="Target B Light Chain V-region"></textarea></div>
+        <div class="field" id="bs-clc-row" style="display:none">
+          <label>Common Light Chain (CLC) <span style="font-weight:400;font-size:11px;color:var(--muted)">— auto-fills Binder A VL above</span></label>
+          <select id="bs-assembler-clc" onchange="_bsClcPresetChanged()" style="margin-bottom:5px">
+            <option value="custom">Custom — enter VL in Binder A VL field</option>
+            <option value="igkv1_39">IGKV1-39*01 (κ0 · Merus Biclonics · most used)</option>
+            <option value="igkv3_20">IGKV3-20*01 (alternative κ · unencumbered)</option>
+            <option value="igkv1d_39">IGKV1D-39*01 (δ-κ hybrid · T-cell engagers)</option>
+          </select>
+          <span style="font-size:9.5px;color:var(--muted);line-height:1.4;display:block">⚠ Germline CLC may reduce one arm's affinity. Conduct FTO before clinical filing. If affinity loss: recommend VAM or phage/yeast display re-maturation.</span>
+        </div>
+        <!-- Linker selector — shown for tandem formats -->
+        <div class="field full" id="bs-linker-row" style="display:none">
+          <label>Linker <span style="font-weight:400;font-size:11px;color:var(--muted)">(between domains)</span></label>
+          <select id="bs-assembler-linker">
+            <option value="g4s3">（G4S)3 — GGGGSGGGGSGGGGGS · 15 aa · standard flexible</option>
+            <option value="g4s4">（G4S)4 — GGGGSGGGGSGGGGSGGGGGS · 20 aa · extra flexible</option>
+            <option value="g4s5">（G4S)5 — 25 aa · for larger domain separations</option>
+            <option value="whitlow">Whitlow — GSTSGSGKPGSGEGSTKG · 18 aa · semi-flexible</option>
+            <option value="g4s1">（G4S)1 — GGGGS · 5 aa · minimal, compact</option>
+            <option value="rigid">Rigid (EAAAK)3 · 15 aa · structured separation</option>
+          </select>
+        </div>
+        <!-- Tandem extra binders (C, D, E) — shown for tandem/mixed formats -->
+        <div id="bs-tandem-extra" style="display:none">
+          <div class="field full" style="padding:4px 0">
+            <div id="bs-binder-c-row" style="display:none;display:contents"><!-- inserted by JS --></div>
+            <div id="bs-binder-d-row" style="display:none;display:contents"><!-- inserted by JS --></div>
+            <div id="bs-binder-e-row" style="display:none;display:contents"><!-- inserted by JS --></div>
+          </div>
+          <div class="field full">
+            <button class="btn" id="bs-add-binder-btn" onclick="_bsAddBinder()" style="font-size:11px;padding:4px 12px">＋ Add Binder (up to 5)</button>
+          </div>
+        </div>
+        <!-- Steering row — visibility + label controlled by _bsFormatChanged() -->
+        <div class="field full" id="bs-steering-row">
+          <label id="bs-steering-label">Electrostatic Steering <span style="font-weight:400;font-size:11px;color:var(--muted)">(VH/VL Fv interface · KiH/DuetMab)</span></label>
+          <select id="bs-assembler-steering">
+            <option value="none">None</option>
+            <option value="vh_vl_interface">VH/VL Interface Charge Mutations — Q39E on VH-A · Q38K on VL-A · Q39K on VH-B · Q38E on VL-B</option>
+          </select>
+          <p id="bs-steering-note" style="font-size:10.5px;color:var(--muted);margin-top:4px;line-height:1.55;display:none"></p>
+        </div>
+      </div>
+      <!-- Expression / cDNA options -->
+      <div style="border-top:1px solid var(--line);margin-top:10px;padding-top:10px">
+        <div style="font-size:11px;font-weight:600;color:var(--muted);margin-bottom:8px;letter-spacing:0.04em">EXPRESSION &amp; cDNA OPTIONS</div>
+        <div class="form-grid" style="gap:8px">
+          <div class="field">
+            <label>Signal Peptide <span style="font-weight:400;font-size:11px;color:var(--muted)">(prepended to each chain)</span></label>
+            <select id="bs-signal-peptide" onchange="_bsSignalPeptideChanged()">
+              <option value="none">None (No Signal Peptide)</option>
+              <option value="human">Human Antibody SP (IgH/Igκ)</option>
+              <option value="mouse">Mouse Antibody SP (IgH/Igκ)</option>
+              <option value="il2">IL-2 Signal Peptide</option>
+              <option value="tpa">tPA Signal Peptide</option>
+              <option value="custom">Custom Sequence...</option>
+            </select>
+            <input type="text" id="bs-signal-custom" placeholder="Custom signal peptide (amino acid sequence)" style="display:none;margin-top:4px;font-family:var(--mono);font-size:11px" maxlength="60">
+          </div>
+          <div class="field">
+            <label>cDNA / Codon Optimization</label>
+            <select id="bs-codon-host">
+              <option value="cho">CHO (Chinese Hamster Ovary)</option>
+              <option value="hek293t">HEK 293T (transient mammalian)</option>
+              <option value="ecoli" data-vhh-only="1">E. coli K12 (VHH / sdAb only)</option>
+              <option value="pichia" data-vhh-only="1">Pichia pastoris / Komagataella (VHH only)</option>
+              <option value="none">None — protein sequence only</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      
+      <div class="button-row" style="margin-top:14px;flex-wrap:wrap;align-items:center">
+        <button class="btn" onclick="loadServiceDemo()">Load Demo</button>
+        <button class="btn primary" onclick="runCurrentService()">Assemble Sequences</button>
+      </div>
+      <div class="status-box" id="service-status"></div>
+    </section>
+    <section class="workspace-output" id="workspace-output"></section>
+  `;
+}
+
+function renderBispecificAnalyzerForm(service) {
+  return `
+    <section class="surface panel">
+      <div class="panel-label">Bispecific Pairing &amp; CMC Analysis</div>
+      <p style="color:var(--muted);font-size:12px;line-height:1.65;margin-bottom:12px">
+        Provide the Fv sequences of both binders. The system runs <strong>MiniCMC</strong> per arm (p-AbNatiV, AbLang2, ImmuneBuilder), a <strong>4-way pairing selectivity</strong> analysis, <strong>CDR liability scan</strong>, and format-specific verification to assess pairing stability and manufacturability.
+      </p>
+      <div class="form-grid">
+        <div class="field"><label>Demo case</label><select id="bs-analyzer-demo" onchange="loadServiceDemo()"></select></div>
+        <div class="field"><label>Format <span style="font-weight:400;font-size:11px;color:var(--muted)">(from Assembler)</span></label>
+          <select id="bs-analyzer-format">
+            <option value="crossmab">CrossMab</option>
+            <option value="kih">KiH (Knobs-into-Holes)</option>
+            <option value="duetmab">DuetMab / Ortho-Fab</option>
+            <option value="common_lc">Common Light Chain</option>
+            <option value="tandem_scfv">Tandem scFv</option>
+            <option value="tandem_vhh">Tandem VHH</option>
+            <option value="mixed_tandem">Mixed scFv–VHH</option>
+            <option value="unknown">Unknown / Not specified</option>
+          </select>
+        </div>
+        <div class="field full"><label>Construct / project name <span class="muted" style="font-weight:400;font-size:11px">(optional)</span></label>
+          <input type="text" id="bs-analyzer-name" placeholder="e.g. BsAb-2026-01" maxlength="120" style="font-family:var(--font-mono,monospace)">
+        </div>
+        <div class="field"><label>Binder A VH</label><textarea id="bs-analyzer-vh-a" rows="3" placeholder="Amino acid sequence…"></textarea></div>
+        <div class="field"><label>Binder A VL</label><textarea id="bs-analyzer-vl-a" rows="3" placeholder="Leave blank for VHH/sdAb…"></textarea></div>
+        <div class="field"><label>Binder B VH</label><textarea id="bs-analyzer-vh-b" rows="3" placeholder="Amino acid sequence…"></textarea></div>
+        <div class="field"><label>Binder B VL</label><textarea id="bs-analyzer-vl-b" rows="3" placeholder="Leave blank for VHH/sdAb…"></textarea></div>
+      </div>
+      <div class="button-row" style="margin-top:14px;flex-wrap:wrap;align-items:center">
+        <button class="btn" onclick="loadServiceDemo()">Load Demo</button>
+        <button class="btn primary" onclick="runCurrentService()">Run Bispecific Analyzer</button>
+        <button type="button" class="btn" id="bs-analyzer-cancel-btn" style="display:none" onclick="_bsAnalyzerCancel()">Cancel</button>
+      </div>
+      <div class="status-box" id="service-status"></div>
+    </section>
+    <section class="workspace-output" id="workspace-output"></section>
+  `;
+}
+
 function renderVhToVhhForm(service) {
   return `
     <section class="surface panel">
@@ -4016,7 +4296,9 @@ function renderCdnaOptimizationForm(service) {
       ${assemblyBlock}
       <div class="button-row">
         <button class="btn" onclick="loadServiceDemo()">Load Demo</button>
-        ${isVhh ? `<button type="button" class="btn" onclick="fillCdnaVhhFromLastHumanization()">Use last humanized VHH</button>` : ""}
+        ${isVhh
+          ? `<button type="button" class="btn" onclick="fillCdnaVhhFromLastHumanization()">Use last humanized VHH</button>`
+          : `<button type="button" class="btn" onclick="fillCdnaIggFromLastHumanization()">Use last humanized VH/VL</button>`}
         <button class="btn primary" onclick="runCurrentService()">Optimize cDNA</button>
       </div>
       <p class="helper" style="margin-top:10px;line-height:1.5;border-left:3px solid rgba(148,163,184,.45);padding-left:10px">
@@ -4284,6 +4566,25 @@ function hydrateService(service) {
       if (typeof toggleCdnaIggAssembly === "function") toggleCdnaIggAssembly();
     },
     "cmc-bispecific": () => { fillDemoSelect("bs-cmc-demo", service.demos); loadServiceDemo(); updateCmcCredits(); },
+    "bispecific-assembler": () => { fillDemoSelect("bs-assembler-demo", service.demos, true); loadServiceDemo(); },
+    "car-t-assembler": () => { fillDemoSelect("cart-assembler-demo", service.demos, true); loadServiceDemo(); },
+    "bispecific-analyzer": () => {
+      fillDemoSelect("bs-analyzer-demo", service.demos, true);
+      loadServiceDemo();
+      if (state._bsFromAssembler) {
+        const d = state._bsFromAssembler;
+        if (d.vha) document.getElementById("bs-analyzer-vh-a").value = d.vha;
+        if (d.vla) document.getElementById("bs-analyzer-vl-a").value = d.vla;
+        if (d.vhb) document.getElementById("bs-analyzer-vh-b").value = d.vhb;
+        if (d.vlb) document.getElementById("bs-analyzer-vl-b").value = d.vlb;
+        if (d.format) { const el = document.getElementById("bs-analyzer-format"); if(el) el.value = d.format; }
+        if (d.proj) { const el = document.getElementById("bs-analyzer-name"); if(el) el.value = d.proj; }
+        const autoRun = d.autoRun;
+        state._bsFromAssembler = null;
+        document.getElementById("bs-analyzer-demo").value = "";
+        if (autoRun) setTimeout(() => runCurrentService(), 200);
+      }
+    },
   };
   const fn = runners[service.runner];
   if (fn) fn();
@@ -4299,10 +4600,11 @@ function hydrateService(service) {
   }, 100);
 }
 
-function fillDemoSelect(id, demoIds) {
+function fillDemoSelect(id, demoIds, withCustom) {
   const el = document.getElementById(id);
   if (!el) return;
-  el.innerHTML = demoIds.map(demoId => `<option value="${demoId}">${DEMOS[demoId].label}</option>`).join("");
+  const customOpt = withCustom ? `<option value="">── Custom / Client Sequence ──</option>` : "";
+  el.innerHTML = customOpt + demoIds.map(demoId => `<option value="${demoId}">${DEMOS[demoId].label}</option>`).join("");
 }
 
 function cmcOriginLabel(value) {
@@ -4556,6 +4858,54 @@ function loadServiceDemo() {
     document.getElementById("bs-cmc-helper").textContent = demo.summary;
     const originSel = document.getElementById("bs-cmc-origin");
     if (originSel) originSel.value = demo.sdab_origin || "camelid_vhh";
+  } else if (service.runner === "bispecific-assembler") {
+    const demoId = document.getElementById("bs-assembler-demo").value;
+    if (!demoId) {
+      document.getElementById("bs-assembler-vh-a").value = "";
+      document.getElementById("bs-assembler-vl-a").value = "";
+      document.getElementById("bs-assembler-vh-b").value = "";
+      document.getElementById("bs-assembler-vl-b").value = "";
+      return;
+    }
+    const demo = DEMOS[demoId];
+    if (!demo) return;
+    document.getElementById("bs-assembler-vh-a").value = demo.vh_a || "";
+    document.getElementById("bs-assembler-vl-a").value = demo.vl_a || "";
+    document.getElementById("bs-assembler-vh-b").value = demo.vh_b || "";
+    document.getElementById("bs-assembler-vl-b").value = demo.vl_b || "";
+    document.getElementById("bs-assembler-format").value = demo.format || "crossmab";
+  } else if (service.runner === "car-t-assembler") {
+    const demoId = document.getElementById("cart-assembler-demo").value;
+    if (!demoId) {
+      document.getElementById("cart-assembler-binder").value = "";
+      document.getElementById("cart-assembler-hinge").value = "";
+      document.getElementById("cart-assembler-tm").value = "";
+      document.getElementById("cart-assembler-costim").value = "";
+      document.getElementById("cart-assembler-activation").value = "";
+      return;
+    }
+    const demo = DEMOS[demoId];
+    if (!demo) return;
+    document.getElementById("cart-assembler-binder").value = demo.binder || "";
+    document.getElementById("cart-assembler-hinge").value = demo.hinge || "";
+    document.getElementById("cart-assembler-tm").value = demo.tm || "";
+    document.getElementById("cart-assembler-costim").value = demo.costim || "";
+    document.getElementById("cart-assembler-activation").value = demo.activation || "";
+  } else if (service.runner === "bispecific-analyzer") {
+    const demoId = document.getElementById("bs-analyzer-demo").value;
+    if (!demoId) {
+      document.getElementById("bs-analyzer-vh-a").value = "";
+      document.getElementById("bs-analyzer-vl-a").value = "";
+      document.getElementById("bs-analyzer-vh-b").value = "";
+      document.getElementById("bs-analyzer-vl-b").value = "";
+      return;
+    }
+    const demo = DEMOS[demoId];
+    if (!demo) return;
+    document.getElementById("bs-analyzer-vh-a").value = demo.vh_a || "";
+    document.getElementById("bs-analyzer-vl-a").value = demo.vl_a || "";
+    document.getElementById("bs-analyzer-vh-b").value = demo.vh_b || "";
+    document.getElementById("bs-analyzer-vl-b").value = demo.vl_b || "";
   }
   syncRememberedDonorFromCurrentForm();
 }
@@ -4572,6 +4922,8 @@ function openDemoInService(serviceId, demoId) {
     else if (service.runner === "recheck-vhh") document.getElementById("rchk-vhh-demo").value = demoId;
     else if (service.runner === "cmc-vhh") document.getElementById("vhh-cmc-demo").value = demoId;
     else if (service.runner === "vh-to-vhh") document.getElementById("vh2vhh-demo").value = demoId;
+    else if (service.runner === "bispecific-assembler") document.getElementById("bs-assembler-demo").value = demoId;
+    else if (service.runner === "bispecific-analyzer") document.getElementById("bs-analyzer-demo").value = demoId;
     else if (service.runner === "segmentation-vhvl") document.getElementById("seg-demo").value = demoId;
     else if (service.runner === "vhh-segmentation") document.getElementById("vhh-seg-demo").value = demoId;
     loadServiceDemo();
@@ -4676,7 +5028,7 @@ function showMetricTip(anchor) {
   if (!tip) {
     tip = document.createElement("div");
     tip.id = "__metric_tip_float";
-    tip.style.cssText = "position:fixed;background:#1a2030;color:#e2e8f0;border-radius:7px;padding:10px 14px;font-size:12px;line-height:1.6;max-width:300px;z-index:99999;pointer-events:none;box-shadow:0 6px 20px rgba(0,0,0,.5);border:1px solid rgba(255,255,255,.1);display:none";
+    tip.style.cssText = "position:fixed;background:#1a2030;color:#e2e8f0;border-radius:7px;padding:10px 14px;font-size:12px;line-height:1.6;max-width:300px;z-index:99999;pointer-events:none;box-shadow:0 6px 20px rgba(0,0,0,.5);border:1px solid rgba(255,255,255,.1);display:none;white-space:pre-wrap;";
     document.body.appendChild(tip);
   }
   const raw = anchor.getAttribute("data-tip") || "";
@@ -4821,7 +5173,7 @@ function buildLedgerRailHtml() {
   try {
     const arr = _billingLedgerRows();
     const ident = currentBillingIdentity();
-    const balance = isAdminIdentity() || (state.serverMode && state.serverUnlimited) ? "∞" : state.credits.toLocaleString("en-US");
+    const balance = serverWalletShowsInfinityBalance() ? "∞" : Number(state.credits || 0).toLocaleString("en-US");
     const accountKind = ident.server ? "Account" : ident.gate ? "Gate" : "Guest";
     const accountLine = `${accountKind} · ${ident.id}`;
     if (!Array.isArray(arr) || !arr.length) {
@@ -5042,6 +5394,9 @@ async function runCurrentService() {
   if (service.runner === "vhh-segmentation") return await runVhhSegmentation(service);
   if (service.runner === "cdna-optimization") return await runCdnaOptimization(service);
   if (service.runner === "cmc-bispecific") return runCmcBispecific(service);
+  if (service.runner === "bispecific-assembler") return runBispecificAssembler(service);
+  if (service.runner === "car-t-assembler") return runCartAssembler(service);
+  if (service.runner === "bispecific-analyzer") return runBispecificAnalyzer(service);
   if (service.runner === "petization") return runPetization(service);
 }
 
@@ -6449,9 +6804,10 @@ function renderVhvlResult(data, service, demoId) {
           return `<div style="margin-top:14px;display:flex;flex-wrap:wrap;gap:8px;align-items:center">
             <span class="panel-label" style="margin-right:4px">Downloads:</span>${links}</div>`;
         })()}
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px;max-width:920px">
+        <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-top:12px;max-width:920px">
           <button type="button" class="btn offline-btn" onclick="goToAf2MultimerWithLastHumanization(false)">AF2 Multimer &amp; Complex</button>
           <button type="button" class="btn" style="border-color:var(--accent);color:var(--accent)" onclick="goToCmcIggWithLastHumanization()">Go to IgG CMC Snapshot</button>
+          <button type="button" class="btn" style="border-color:#22d3ee;color:#22d3ee" onclick="goToCdnaWithLastHumanization(false)">cDNA Optimization (IgG) →</button>
         </div>
       </div>
     </section>
@@ -8881,7 +9237,26 @@ function renderCmcIggResult(data, service, demoId, sequenceName) {
         <div class="result-body"><pre style="font-size:10px;white-space:pre-wrap;color:var(--fail)">${escapeHtml(data.report_error || data.result.report_error)}</pre></div>
       </section>`
     : "";
-  setOutput(cmcMetadataPanel + inputSeqPanel + fvPanel + abref458Banner + reportErrNote + sourceAwarePanel + specificBody);
+  // Stash CMC input sequences so the downstream cDNA routing button can forward them
+  window._lastCmcInputVh = (r.vh_sequence || "").trim();
+  window._lastCmcInputVl = (r.vl_sequence || "").trim();
+  window._lastCmcInputName = (r.project_name || sequenceName || "").trim();
+  const cmcDownstreamPanel = `
+    <section class="result-panel" style="border-color:rgba(34,211,238,.25)">
+      <div class="result-title" style="background:rgba(34,211,238,.05)">
+        <strong style="color:#22d3ee">Downstream: cDNA Optimization</strong>
+        <span style="font-size:11px;color:var(--muted)">Carry assessed VH/VL directly to IgG cDNA assembly</span>
+      </div>
+      <div class="result-body">
+        <p style="font-size:11px;color:var(--muted);margin:0 0 10px">
+          Assemble full human IgG (signal peptide + VH + CH1 + hinge + Fc; VL + CL) and codon-optimize for HEK293 / CHO / E. coli using the sequences evaluated above.
+        </p>
+        <div class="button-row">
+          <button type="button" class="btn" style="border-color:#22d3ee;color:#22d3ee" onclick="goToCdnaFromCmcIgg()">cDNA Optimization (IgG) →</button>
+        </div>
+      </div>
+    </section>`;
+  setOutput(cmcMetadataPanel + inputSeqPanel + fvPanel + abref458Banner + reportErrNote + sourceAwarePanel + specificBody + cmcDownstreamPanel);
   updateResultRail({
     status: r.overall_status || "DONE",
     summaryTitle: `${service.label} completed`,
@@ -9327,9 +9702,10 @@ function renderVhhHumanizationResult(data, service, demoId) {
           return `<div style="margin-top:14px;display:flex;flex-wrap:wrap;gap:8px;align-items:center">
             <span class="panel-label" style="margin-right:4px">Downloads:</span>${links}</div>`;
         })()}
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px;max-width:920px">
+        <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-top:12px;max-width:920px">
           <button type="button" class="btn offline-btn" onclick="goToAf2MultimerWithLastHumanization(true)">AF2 Multimer &amp; Complex</button>
           <button type="button" class="btn" style="border-color:var(--accent);color:var(--accent)" onclick="goToVhhCmcWithLastHumanization()">Go to VHH CMC Snapshot</button>
+          <button type="button" class="btn" style="border-color:#22d3ee;color:#22d3ee" onclick="goToCdnaWithLastHumanization(true)">cDNA Optimization (VHH) →</button>
         </div>
       </div>
     </section>
@@ -10154,7 +10530,25 @@ function renderVhhCmcResult(data, service, demoId) {
         SAP_score: m.SAP_score, ADI: resObj.adi_score, adi_grade: resObj.adi_grade,
       },
     })}
+
+    <section class="result-panel" style="border-color:rgba(34,211,238,.25)">
+      <div class="result-title" style="background:rgba(34,211,238,.05)">
+        <strong style="color:#22d3ee">Downstream: cDNA Optimization</strong>
+        <span style="font-size:11px;color:var(--muted)">Carry assessed VHH directly to cDNA assembly</span>
+      </div>
+      <div class="result-body">
+        <p style="font-size:11px;color:var(--muted);margin:0 0 10px">
+          Assemble VHH construct (signal peptide + optional fusion tag) and codon-optimize for HEK293 / CHO / E. coli using the sequence evaluated above.
+        </p>
+        <div class="button-row">
+          <button type="button" class="btn" style="border-color:#22d3ee;color:#22d3ee" onclick="goToCdnaFromCmcVhh()">cDNA Optimization (VHH) →</button>
+        </div>
+      </div>
+    </section>
   `);
+  // Stash VHH CMC input sequence for downstream cDNA routing
+  window._lastCmcInputVhh  = (resObj.sequence || "").trim();
+  window._lastCmcInputName = (nameStr || "").trim();
 
   const railA24 = (isEngVH && a24Sim)
     ? {label: "EngVH Sim", value: `${(a24Sim.score*100).toFixed(0)}% (${a24Sim.score_band})`, tone: a24Sim.score_band === "high" ? "ok" : a24Sim.score_band === "medium" ? "warn" : "fail"}
@@ -10876,6 +11270,1534 @@ async function cancelBsCmc() {
   setOutput(`<div class="muted" style="padding:12px">Bispecific CMC cancelled.</div>`);
 }
 
+// ─── Bispecific scaffold: IgG1/IgG4 constant regions + KiH mutations ─────────
+// ─── CLC preset VL sequences (human germline, publicly available) ─────────────
+const _BS_CLC = {
+  igkv1_39:  "DIQMTQSPSSLSASVGDRVTITCRASQSISSYLNWYQQKPGKAPKLLIYAASSLQSGVPSRFSGSGSGTDFTLTISSLQPEDFATYYCQQSYSTPPTFGQGTKVEIK",
+  igkv3_20:  "EIVLTQSPATLSLSPGERATLSCRASKGVSTSGYSYLHWYQQKPGQAPRLLIYLASYLESGVPARFSGSGSGTDFTLTISSLEPEDFAVYYCQHSRDLPLTFGGGTKVEIK",
+  igkv1d_39: "DIQMTQSPSSLSASVGDRVTITCRASQSISSYLNWYQQKPGKAPKLLIYAASSLQSGVPSRFSGSGSGTDFTLTISSLQPEDFATYYCQQSYSTPLTFGQGTKVEIK",
+};
+
+// VL-A save/restore across format switches (so common_lc CLC never permanently wipes user's VL)
+let _bsVlaSaved   = "";
+let _bsPrevFormat = "";
+
+function _bsFormatChanged() {
+  const fmt = document.getElementById("bs-assembler-format")?.value;
+  const vla = document.getElementById("bs-assembler-vl-a");
+
+  // Entering common_lc: save current VL-A and CLEAR it for fresh input
+  if(_bsPrevFormat !== "common_lc" && fmt === "common_lc") {
+    _bsVlaSaved = vla?.value || "";
+    const clcSel = document.getElementById("bs-assembler-clc");
+    if(clcSel) clcSel.value = "custom"; 
+    if(vla) vla.value = ""; // Clear A-VL as requested for custom common chain
+  }
+  // Leaving common_lc: restore original VL-A if current is empty or a preset
+  if(_bsPrevFormat === "common_lc" && fmt !== "common_lc") {
+    const isPreset = Object.values(_BS_CLC).includes(vla?.value);
+    if(vla && (!vla.value.trim() || isPreset)) {
+      vla.value = _bsVlaSaved;
+    }
+  }
+  _bsPrevFormat = fmt;
+  const clcRow     = document.getElementById("bs-clc-row");
+  const vlbRow     = document.getElementById("bs-vlb-row");
+  const steerRow   = document.getElementById("bs-steering-row");
+  const steerLabel = document.getElementById("bs-steering-label");
+  const steeringNote = document.getElementById("bs-steering-note");
+  const steeringSel  = document.getElementById("bs-assembler-steering");
+  const linkerRow  = document.getElementById("bs-linker-row");
+  const tandemExtra= document.getElementById("bs-tandem-extra");
+  const fcRow      = document.querySelector(".field.full select#bs-assembler-fc")?.closest(".field.full");
+
+  const isTandem = ["tandem_scfv","tandem_vhh","mixed_tandem"].includes(fmt);
+  const isIgG    = ["crossmab","kih","duetmab","common_lc"].includes(fmt);
+
+  // CLC row (bottom-right cell) swaps with VL-B
+  if(clcRow) clcRow.style.display = fmt==="common_lc" ? "" : "none";
+
+  // VL-B row: hide for common_lc, tandem_vhh, mixed_tandem
+  if(vlbRow) vlbRow.style.display = (fmt==="common_lc"||fmt==="tandem_vhh"||fmt==="mixed_tandem") ? "none" : "";
+
+  // Fc row: hide for tandem formats
+  if(fcRow) fcRow.style.display = isTandem ? "none" : "";
+
+  // Linker + tandem extra binders
+  if(linkerRow)  linkerRow.style.display  = isTandem ? "" : "none";
+  if(tandemExtra) tandemExtra.style.display = isTandem ? "" : "none";
+  if(isTandem) { _bsBinderCount = 2; const btn=document.getElementById("bs-add-binder-btn"); if(btn){btn.disabled=false;} }
+
+  // Codon options — filter E.coli / Pichia for non-VHH
+  _bsUpdateCodonOptions();
+
+  // Steering row linkage
+  const steeringApplicable = ["kih","duetmab"].includes(fmt);
+  const steeringOptional   = fmt==="crossmab";
+  const steeringNA         = ["common_lc","tandem_scfv","tandem_vhh","mixed_tandem"].includes(fmt);
+
+  if(steeringNA){
+    if(steerRow)  steerRow.style.display = "none";
+    if(steeringSel) steeringSel.value = "none";
+  } else if(steeringOptional){
+    if(steerRow)  steerRow.style.display = "";
+    if(steerLabel) steerLabel.innerHTML = `Electrostatic Steering <span style="font-weight:400;font-size:11px;color:var(--muted)">(optional for CrossMab — domain exchange already enforces pairing)</span>`;
+    if(steeringNote){
+      steeringNote.textContent = "CrossMab already enforces cognate pairing via CH1-CL domain exchange. Fv steering is optional additional insurance. Patent note: Roche/Genentech hold core patents for CH1-CL interface version (WO2014/131694).";
+      steeringNote.style.display = "";
+    }
+  } else if(steeringApplicable){
+    if(steerRow)  steerRow.style.display = "";
+    if(steerLabel) steerLabel.innerHTML = `Electrostatic Steering <span style="font-weight:400;font-size:11px;color:#e67e22;font-weight:600">— Recommended for ${fmt==="kih"?"KiH":"DuetMab"}</span>`;
+    if(steeringNote){
+      steeringNote.innerHTML = `${fmt==="kih"?"KiH":"DuetMab"} alone does not address light chain mispairing. Fv steering is the most effective complement. <strong>Patent note:</strong> Roche/Genentech CH1-CL interface version is covered by WO2014/131694 (US9587020). The VH/VL Fv interface variant (Kabat 39/38) has lighter published patent coverage — FTO analysis recommended before clinical filing.`;
+      steeringNote.style.display = "";
+    }
+  } else {
+    if(steerRow)  steerRow.style.display = "";
+    if(steerLabel) steerLabel.innerHTML = `Electrostatic Steering <span style="font-weight:400;font-size:11px;color:var(--muted)">(VH/VL Fv interface)</span>`;
+    if(steeringNote) steeringNote.style.display = "none";
+  }
+}
+
+function _bsClcPresetChanged() {
+  const preset = document.getElementById("bs-assembler-clc")?.value;
+  const vlAField = document.getElementById("bs-assembler-vl-a");
+  if(!vlAField) return;
+  if(preset && preset !== "custom" && _BS_CLC[preset]) {
+    // Save current if it's not a preset and not empty
+    if(!Object.values(_BS_CLC).includes(vlAField.value) && vlAField.value.trim()) {
+      _bsVlaSaved = vlAField.value;
+    }
+    vlAField.value = _BS_CLC[preset];
+  } else if(preset === "custom") {
+    // Clear A-VL as requested for custom common chain input
+    vlAField.value = "";
+    vlAField.focus();
+  }
+}
+
+const _BS_SC = (function(){
+  const CH3_IgG1 = "GQPREPQVYTLPPSREEMTKNQVSLTCLVKGFYPSDIAVEWESNGQPENNYKTTPPVLDSDGSFFLYSKLTVDKSRWQQGNVFSCSVMHEALHNHYTQKSLSLSPGK";
+  const CH3_IgG4 = "GQPREPQVYTLPPSQEEMTKNQVSLTCLVKGFYPSDIAVEWESNGQPENNYKTTPPVLDSDGSFFLYSRLTVDKSRWQEGNVFSCSVMHEALHNHYTQKSLSLSLGK";
+  function applyMuts(base, muts){ const a=base.split(""); for(const[i,c]of muts)a[i]=c; return a.join(""); }
+  return {
+    CH1:     "ASTKGPSVFPLAPSSKSTSGGTAALGCLVKDYFPEPVTVSWNSGALTSGVHTFPAVLQSSGLYSLSSVVTVPSSSLGTQTYICNVNHKPSNTKVDK",
+    CL_k:    "RTVAAPSVFIFPPSDEQLKSGTASVVCLLNNFYPREAKVQWKVDNALQSGNSQESVTEQDSKDSTYSLSSTLTLSKADYEKHKVYACEVTHQGLSSPVTKSFNRGEC",
+    hng1:    "EPKSCDKTHTCPPCPAP",
+    ch2_lala:"EAAGGPSVFLFPPKPKDTLMISRTPEVTCVVVDVSHEDPEVKFNWYVDGVEVHNAKTKPREEQYNSTYRVVSVLTVLHQDWLNGKEYKCKVSNKALPAPIEKTISKAK",
+    hng4:    "ESKYGPPCPPCPAPEF",
+    ch2_igg4:"GGPSVFLFPPKPKDTLMISRTPEVTCVVVDVSQEDPEVQFNWYVDGVEVHNAKTKPREEQFNSTYRVVSVLTVLHQDWLNGKEYKCKVSNKGLPSSIEKTISKAK",
+    ch3_1wt: CH3_IgG1,
+    ch3_1knb:applyMuts(CH3_IgG1,[[25,"W"]]),
+    ch3_1hle:applyMuts(CH3_IgG1,[[25,"S"],[27,"A"],[66,"V"]]),
+    ch3_4wt: CH3_IgG4,
+    ch3_4knb:applyMuts(CH3_IgG4,[[25,"W"]]),
+    ch3_4hle:applyMuts(CH3_IgG4,[[25,"S"],[27,"A"],[66,"V"]]),
+    KNB:[{i:25,note:"T366W · Knob"}],
+    HLE:[{i:25,note:"T366S · Hole"},{i:27,note:"L368A · Hole"},{i:66,note:"Y407V · Hole"}],
+    LALA:[{i:1,note:"L234A · LALA silent"},{i:2,note:"L235A · LALA silent"}],
+  };
+})();
+
+// Render a colored, mutation-highlighted sequence from segments
+// Each segment: {seq, label, color, muts:[{i,note}], steer:[{i,note}]}
+// muts → red highlight (applied mutations); steer → orange highlight (steering target positions)
+function _bsColorSeq(segments){
+  let html="";
+  for(const seg of segments){
+    const c=seg.color||"#ccc";
+    const mutMap  = new Map((seg.muts ||[]).map(m=>[m.i,m.note]));
+    const steerMap= new Map((seg.steer||[]).map(m=>[m.i,m.note]));
+    let buf="";
+    for(let i=0;i<seg.seq.length;i++){
+      const aa=seg.seq[i];
+      if(mutMap.has(i)){
+        if(buf){html+=`<span style="color:${c}">${buf}</span>`;buf="";}
+        html+=`<span class="mut" style="background:#e03131;color:#fff;border-radius:2px;font-weight:700;padding:0 1px;cursor:help" title="${escapeHtml(mutMap.get(i))}">${aa}</span>`;
+      } else if(steerMap.has(i)){
+        if(buf){html+=`<span style="color:${c}">${buf}</span>`;buf="";}
+        html+=`<span class="steer" style="background:#f39c12;color:#fff;border-radius:2px;font-weight:700;padding:0 1px;cursor:help" title="${escapeHtml(steerMap.get(i))}">${aa}</span>`;
+      } else { buf+=aa; }
+    }
+    if(buf)html+=`<span style="color:${c}">${buf}</span>`;
+  }
+  return html;
+}
+
+// QA: sanitize and validate a single sequence
+function _bsQaSeq(raw, label) {
+  const VALID = new Set("ACDEFGHIKLMNPQRSTVWY");
+  const up = (raw||"").toUpperCase().replace(/[\s\r\n]/g,"");
+  const cleaned = up.replace(/[^A-Z]/g,"");
+  const warnings=[], errors=[];
+  const removed = up.length - cleaned.length;
+  if(removed>0) warnings.push(`${label}: ${removed} non-letter character(s) stripped.`);
+  const badChars = [...cleaned].filter(c=>!VALID.has(c));
+  if(badChars.length) errors.push(`${label}: ${badChars.length} invalid amino acid character(s): ${[...new Set(badChars)].join(",")}.`);
+  if(/^[ATCG\s]+$/.test((raw||"").replace(/[\r\n]/g," ")) && cleaned.length>30)
+    warnings.push(`${label}: input looks like DNA — check that you pasted a protein (AA) sequence.`);
+  if(cleaned.length<70) errors.push(`${label}: sequence too short (${cleaned.length} aa, minimum 70).`);
+  if(cleaned.length>250) warnings.push(`${label}: unusually long (${cleaned.length} aa, expected ≤ 150). Verify input.`);
+  return {seq: cleaned, ok: errors.length===0, warnings, errors};
+}
+
+function _bsLegendPill(label,color){
+  return `<span style="display:inline-flex;align-items:center;gap:4px;font-size:10px;padding:2px 7px;border-radius:10px;background:${color}22;border:1px solid ${color}66;color:${color};font-family:var(--mono)">${label}</span>`;
+}
+
+// ── Linker sequences ─────────────────────────────────────────────────────────
+const _BS_LINKERS = {
+  g4s3:    "GGGGSGGGGSGGGGGS",
+  g4s4:    "GGGGSGGGGSGGGGSGGGGGS",
+  g4s5:    "GGGGSGGGGSGGGGSGGGGSGGGGS",
+  whitlow: "GSTSGSGKPGSGEGSTKG",
+  g4s1:    "GGGGS",
+  rigid:   "EAAAKEAAAKEAAAK"
+};
+
+// ── Signal Peptides ─────────────────────────────────────────────────────────
+const _BS_SIGNALS = {
+  none:  { hc: "", lc: "" },
+  human: { hc: "MGWSCIILFLVATATGVHS", lc: "METDTLLLWVLLLWVPGSTGD" }, // Human IgH / Igκ
+  mouse: { hc: "MGWSCIILFLVATATGVHS", lc: "METDTLLLWVLLLWVPGSTGD" }, // Mouse IgH / Igκ
+  il2:   { hc: "MYRMQLLSCIALSLALVTNS", lc: "MYRMQLLSCIALSLALVTNS" },
+  tpa:   { hc: "MDAMKRGLCCVLLLCGAVFVSPS", lc: "MDAMKRGLCCVLLLCGAVFVSPS" }
+};
+
+// ── Codon tables ─────────────────────────────────────────────────────────────
+// CHO (Chinese Hamster Ovary) — high-expression mammalian preferred codons
+const _BS_CODON_CHO    = {A:"GCC",R:"AGG",N:"AAC",D:"GAC",C:"TGC",Q:"CAG",E:"GAG",G:"GGC",H:"CAC",I:"ATC",L:"CTG",K:"AAG",M:"ATG",F:"TTC",P:"CCC",S:"AGC",T:"ACC",W:"TGG",Y:"TAC",V:"GTG"};
+// HEK293T — essentially same preferred codons as human/CHO
+const _BS_CODON_293T   = {A:"GCC",R:"AGG",N:"AAC",D:"GAC",C:"TGC",Q:"CAG",E:"GAG",G:"GGG",H:"CAC",I:"ATC",L:"CTG",K:"AAG",M:"ATG",F:"TTC",P:"CCC",S:"AGC",T:"ACC",W:"TGG",Y:"TAC",V:"GTG"};
+// E. coli K12
+const _BS_CODON_ECOLI  = {A:"GCG",R:"CGT",N:"AAC",D:"GAT",C:"TGC",Q:"CAG",E:"GAA",G:"GGC",H:"CAT",I:"ATT",L:"CTG",K:"AAA",M:"ATG",F:"TTT",P:"CCG",S:"AGC",T:"ACC",W:"TGG",Y:"TAT",V:"GTG"};
+// Pichia pastoris / Komagataella phaffii
+const _BS_CODON_PICHIA = {A:"GCT",R:"AGA",N:"AAT",D:"GAT",C:"TGT",Q:"CAA",E:"GAA",G:"GGT",H:"CAT",I:"ATT",L:"TTG",K:"AAG",M:"ATG",F:"TTT",P:"CCA",S:"TCT",T:"ACT",W:"TGG",Y:"TAT",V:"GTT"};
+
+function _bsBackTranslate(protSeq, table) {
+  return [...protSeq.toUpperCase()].map(aa => table[aa] || "NNN").join("");
+}
+
+function _bsSignalPeptideChanged() {
+  const v = document.getElementById("bs-signal-peptide")?.value;
+  const inp = document.getElementById("bs-signal-custom");
+  if(inp) inp.style.display = v === "custom" ? "" : "none";
+}
+
+// ── Extra binder management for tandem formats ───────────────────────────────
+let _bsBinderCount = 2;
+const _BS_BINDER_LABELS = {c:"C", d:"D", e:"E"};
+function _bsAddBinder() {
+  if(_bsBinderCount >= 5) return;
+  _bsBinderCount++;
+  const lc = ["c","d","e"][_bsBinderCount - 3]; // 3→c, 4→d, 5→e
+  const fmt = document.getElementById("bs-assembler-format")?.value || "";
+  const isVhh = ["tandem_vhh"].includes(fmt);
+  const isScfv = ["tandem_scfv"].includes(fmt);
+  const isMixed = fmt === "mixed_tandem";
+  const rowId = `bs-binder-${lc}-row`;
+  let rowEl = document.getElementById(rowId);
+  if(!rowEl) {
+    const container = document.getElementById("bs-tandem-extra")?.querySelector(".field.full");
+    if(container) {
+      const div = document.createElement("div");
+      div.id = rowId;
+      div.style.display = "contents";
+      const n = _bsBinderCount;
+      const vhhLabel = `VHH-${n} (sdAb)`;
+      const vhLabel  = `Binder ${lc.toUpperCase()} VH`;
+      const vlLabel  = `Binder ${lc.toUpperCase()} VL`;
+      div.innerHTML = `<div class="field"><label>${isVhh ? vhhLabel : (isMixed ? `Binder ${lc.toUpperCase()} VH or VHH` : vhLabel)}</label><textarea id="bs-assembler-vh-${lc}" rows="3" placeholder="VH or VHH sequence"></textarea></div>`
+        + (!isVhh ? `<div class="field"><label>${vlLabel} <span style="font-weight:400;font-size:11px;color:var(--muted)">(scFv)</span></label><textarea id="bs-assembler-vl-${lc}" rows="3" placeholder="VL for scFv (leave blank for VHH)"></textarea></div>` : `<div class="field"></div>`);
+      container.appendChild(div);
+    }
+  } else {
+    rowEl.style.display = "contents";
+  }
+  if(_bsBinderCount >= 5) {
+    const btn = document.getElementById("bs-add-binder-btn");
+    if(btn) btn.disabled = true;
+  }
+}
+
+function _bsUpdateCodonOptions() {
+  const fmt = document.getElementById("bs-assembler-format")?.value || "";
+  const isVhhOnly = ["tandem_vhh","mixed_tandem"].includes(fmt);
+  const sel = document.getElementById("bs-codon-host");
+  if(!sel) return;
+  [...sel.options].forEach(opt => {
+    if(opt.dataset.vhhOnly === "1") {
+      opt.disabled = !isVhhOnly;
+      opt.style.color = isVhhOnly ? "" : "var(--muted)";
+    }
+  });
+  if(!isVhhOnly && ["ecoli","pichia"].includes(sel.value)) sel.value = "cho";
+}
+
+function _bsChainWithCdna(block, cdna, sigLabel, hostLabel) {
+  const blockStr = block.toString();
+  if(!cdna) return blockStr;
+  const sigNote = sigLabel ? `<span style="color:#9b59b6;font-weight:600">${escapeHtml(sigLabel)}</span> + ` : "";
+  const toggleId = `cdna-${Math.random().toString(36).substr(2,6)}`;
+  return `<div style="margin-bottom:14px">
+    ${blockStr.replace('margin-bottom:14px;', 'margin-bottom:0;')}
+    <div style="border:1px solid var(--line);border-top:none;border-radius:0 0 8px 8px;padding:6px 10px 8px;background:var(--panel-1);overflow:hidden">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:2px">
+        <div style="font-size:10px;font-weight:600;color:var(--muted);letter-spacing:0.04em">▸ cDNA · ${cdna.length} nt · ${sigNote}${escapeHtml(hostLabel)}</div>
+        <button class="btn" style="font-size:9px;padding:1px 8px;height:18px;line-height:1" onclick="const el=document.getElementById('${toggleId}'); el.style.display=el.style.display==='none'?'':'none'; this.textContent=el.style.display==='none'?'Show cDNA':'Hide cDNA'">Show cDNA</button>
+      </div>
+      <div id="${toggleId}" style="display:none;font-family:var(--mono);font-size:10px;line-height:1.7;word-break:break-all;color:#2d6a4f;margin-top:5px;border-top:1px dashed var(--line);padding-top:5px">${cdna}</div>
+    </div>
+  </div>`;
+}
+
+function _bsChainBlock(chainName, segments, domainNames){
+  const fullSeq = segments.map(s=>s.seq).join("");
+  const legend = segments.map(s=>_bsLegendPill(s.label,s.color||"#888")).join(" ");
+  const colored = _bsColorSeq(segments);
+  const mutCount = segments.reduce((n,s)=>(n+(s.muts||[]).length),0);
+  const div = document.createElement("div");
+  div.innerHTML = `<div style="margin-bottom:14px;border:1px solid var(--line);border-radius:8px;overflow:hidden">
+    <div style="display:flex;justify-content:space-between;align-items:center;padding:7px 12px;background:var(--panel-3);border-bottom:1px solid var(--line)">
+      <strong style="font-size:12px">${chainName}</strong>
+      <span style="font-size:10.5px;color:var(--muted);font-family:var(--mono)">${fullSeq.length} aa${mutCount?" · <span style='color:#e03131'>"+mutCount+" mutations</span>":""}</span>
+    </div>
+    <div style="padding:6px 10px;border-bottom:1px solid var(--line-2);display:flex;flex-wrap:wrap;gap:5px">${legend}</div>
+    <div style="padding:8px 10px;font-family:var(--mono);font-size:11px;line-height:1.7;word-break:break-all;background:var(--panel-2)">${colored}</div>
+  </div>`;
+  const block = div.innerHTML;
+  // Attach segments for report generation
+  const wrapper = {
+    toString: () => block,
+    _segments: segments
+  };
+  return wrapper;
+}
+
+function _bsAssemblerDownloadHtml() {
+  const d = window._bsReport;
+  if(!d) return;
+  const ts = new Date().toLocaleString();
+
+  // Re-use coloring logic for standalone HTML
+  function colorSeqHtml(segments) {
+    if(!segments || !segments.length) return "";
+    let html="";
+    for(const seg of segments){
+      const c=seg.color||"#888";
+      const mutMap  = new Map((seg.muts ||[]).map(m=>[m.i,m.note]));
+      const steerMap= new Map((seg.steer||[]).map(m=>[m.i,m.note]));
+      let buf="";
+      for(let i=0;i<seg.seq.length;i++){
+        const aa=seg.seq[i];
+        if(mutMap.has(i)){
+          if(buf){html+=`<span style="color:${c}">${buf}</span>`;buf="";}
+          html+=`<span class="mut" title="${escapeHtml(mutMap.get(i))}">${aa}</span>`;
+        } else if(steerMap.has(i)){
+          if(buf){html+=`<span style="color:${c}">${buf}</span>`;buf="";}
+          html+=`<span class="steer" title="${escapeHtml(steerMap.get(i))}">${aa}</span>`;
+        } else { buf+=aa; }
+      }
+      if(buf)html+=`<span style="color:${c}">${buf}</span>`;
+    }
+    return `<div style="font-family:monospace;font-size:10px;line-height:1.6;word-break:break-all;white-space:pre-wrap">${html}</div>`;
+  }
+
+  const chainHtml = d.chains.map((c, idx) => {
+    const cdnaId = `cdna-${idx}`;
+    const cdnaSection = c.cdna ? `
+      <div style="padding:6px 12px 10px;background:#f0fff4;border-top:1px solid #c3e6cb">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:3px">
+          <div style="font-size:10px;font-weight:700;color:#276749;letter-spacing:0.05em">▸ cDNA · ${c.cdna.length} nt${c.sigLabel?" · SP: "+c.sigLabel:""} · ${c.hostLabel||"Optimized"}</div>
+          <button style="font-size:9px;padding:1px 6px;cursor:pointer" onclick="const el=document.getElementById('${cdnaId}'); el.style.display=el.style.display==='none'?'':'none'; this.textContent=el.style.display==='none'?'Show cDNA':'Hide cDNA'">Show cDNA</button>
+        </div>
+        <div id="${cdnaId}" style="display:none;font-family:monospace;font-size:10px;line-height:1.7;word-break:break-all;color:#155724;border-top:1px dashed #c3e6cb;margin-top:4px;padding-top:4px">${escapeHtml(c.cdna)}</div>
+      </div>` : "";
+    return `<div class="chain">
+      <div class="chain-head"><span>${escapeHtml(c.id)}</span><span>${c.seq.length} aa</span></div>
+      <div class="chain-seq">${colorSeqHtml(c.segments)}</div>${cdnaSection}
+    </div>`;
+  }).join("");
+
+  const html = `<!DOCTYPE html><html><head><meta charset="UTF-8"><title>${escapeHtml(d.proj)} — Bispecific Assembly Report</title>
+  <style>
+    body{font-family:Arial,sans-serif;margin:32px;color:#222;background:#fff;font-size:13px}
+    h1{font-size:18px;border-bottom:2px solid #4a90e2;padding-bottom:6px}
+    h2{font-size:14px;color:#4a90e2;margin-top:24px;margin-bottom:8px}
+    .chain{margin:14px 0;border:1px solid #ddd;border-radius:6px;overflow:hidden}
+    .chain-head{background:#f5f5f5;padding:7px 12px;display:flex;justify-content:space-between;font-size:12px;font-weight:600;border-bottom:1px solid #ddd}
+    .chain-seq{padding:10px 12px;font-family:monospace;font-size:10px;line-height:1.6;word-break:break-all;white-space:pre-wrap;color:#1a1a1a}
+    .meta{display:flex;gap:12px;margin:12px 0;flex-wrap:wrap}
+    .meta-item{background:#f8f8f8;padding:7px 12px;border-radius:6px;border:1px solid #eee}
+    .meta-item .k{font-size:10px;color:#888;text-transform:uppercase;margin-bottom:2px}
+    .meta-item .v{font-size:13px;font-weight:600}
+    .legend{display:flex;flex-wrap:wrap;gap:6px;margin:10px 0 6px;font-size:10px}
+    .pill{display:inline-block;border-radius:3px;padding:2px 8px;color:#fff;font-weight:600}
+    .note{background:#fff8e1;border:1px solid #ffe082;border-radius:6px;padding:10px 14px;margin:10px 0;font-size:12px;line-height:1.6}
+    .domain-VH-A{color:#4a90e2}.domain-VL-A{color:#27ae60}.domain-VH-B{color:#5b6abf}.domain-VL-B{color:#43a047}
+    .domain-CH1{color:#e67e22}.domain-CL{color:#9b59b6}.domain-Hinge{color:#e74c3c}.domain-CH2{color:#f39c12}.domain-CH3{color:#1abc9c}.domain-Linker{color:#95a5a6}
+    .mut{background:#e03131;color:#fff;border-radius:2px;padding:0 2px;font-weight:700}
+    .steer{background:#f39c12;color:#fff;border-radius:2px;padding:0 2px;font-weight:700}
+  </style></head><body>
+  <h1>${escapeHtml(d.proj)} — Bispecific Assembly Report</h1>
+  <p style="color:#888;font-size:11px">Generated: ${ts} · Format: ${escapeHtml(d.format)} · Fc: ${escapeHtml(d.fc)} · <em>InSynBio AbEngineCore Bispecific Assembler</em></p>
+  <div class="meta">
+    ${[["Format",d.format],["Fc Scaffold",d.fc],["Steering",d.steering||"None"],["Chains",d.chains.length]].map(([k,v])=>`<div class="meta-item"><div class="k">${k}</div><div class="v">${v}</div></div>`).join("")}
+  </div>
+  <div class="legend">
+    ${[["VH-A","#4a90e2"],["VL-A","#27ae60"],["VH-B","#5b6abf"],["VL-B","#43a047"],["CH1","#e67e22"],["CL-κ","#9b59b6"],["Hinge","#e74c3c"],["CH2","#f39c12"],["CH3","#1abc9c"],["Linker","#95a5a6"]].map(([l,c])=>`<span class="pill" style="background:${c}">${l}</span>`).join("")}
+    <span class="pill" style="background:#e03131">Mutation</span>
+    <span class="pill" style="background:#2d6a4f">cDNA</span>
+  </div>
+  <h2>Assembled Chains</h2>
+  ${chainHtml}
+  <h2>FASTA Output (Protein & cDNA)</h2>
+  <details style="border:1px solid #eee; border-radius:6px; padding:10px; background:#f9f9f9;">
+    <summary style="cursor:pointer; font-weight:bold; color:#4a90e2; outline:none;">
+      Click to expand FASTA sequences
+    </summary>
+    <pre style="font-size:10px; word-break:break-all; white-space:pre-wrap; margin-top:10px; background:none; border:none; padding:0;">${escapeHtml(d.fasta)}</pre>
+  </details>
+  ${d.notes.length?`<h2>Assembly Notes</h2><ul style="font-size:12px;line-height:1.7">${d.notes.map(n=>`<li>${escapeHtml(n)}</li>`).join("")}</ul>`:""}</body></html>`;
+  const blob = new Blob([html],{type:"text/html"});
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(blob);
+  a.download = (d.proj||"BsAb")+"_assembly_report.html";
+  document.body.appendChild(a); a.click(); document.body.removeChild(a);
+}
+
+async function runCartAssembler(service) {
+  const binder = document.getElementById("cart-assembler-binder")?.value||"";
+  const hinge = document.getElementById("cart-assembler-hinge")?.value||"";
+  const tm = document.getElementById("cart-assembler-tm")?.value||"";
+  const costim = document.getElementById("cart-assembler-costim")?.value||"";
+  const act = document.getElementById("cart-assembler-activation")?.value||"";
+  const projName = (document.getElementById("cart-assembler-name")?.value||"CAR").trim()||"CAR";
+
+  if (!binder.trim()) { setOutput(errorPanel("Binder domain sequence is required.")); return; }
+  if (!hinge.trim()) { setOutput(errorPanel("Hinge domain sequence/ID is required.")); return; }
+  if (!tm.trim()) { setOutput(errorPanel("TM domain sequence/ID is required.")); return; }
+  if (!costim.trim()) { setOutput(errorPanel("Costimulatory domain sequence/ID is required.")); return; }
+  if (!act.trim()) { setOutput(errorPanel("Activation domain sequence/ID is required.")); return; }
+  
+  setOutput(`<div style="padding:24px;text-align:center"><div class="spinner"></div><div style="margin-top:16px;color:var(--muted)">Assembling CAR-T construct ${escapeHtml(projName)}...</div></div>`);
+
+  try {
+    const res = await fetch("/cart/assemble", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        project_name: projName,
+        binder, hinge, tm, costim, activation: act
+      })
+    });
+    if (!res.ok) {
+      const err = await res.json().catch(() => ({}));
+      setOutput(errorPanel(err.detail || "Assembly failed on backend."));
+      return;
+    }
+    const data = await res.json();
+    const ts = new Date().toISOString().replace(/T/g, ' ').substring(0,19);
+
+    let compHtml = data.components.map(c => {
+      let wHtml = c.warnings.length ? `<div style="color:var(--warn);margin-top:4px;font-size:10px">${c.warnings.map(escapeHtml).join("<br>")}</div>` : "";
+      return `
+        <div class="meta-item" style="display:flex;flex-direction:column;align-items:flex-start">
+          <div style="display:flex;justify-content:space-between;width:100%">
+            <span style="font-weight:600">${escapeHtml(c.category)}</span>
+            <span style="color:var(--muted)">Tier: ${escapeHtml(c.tier)} | Source: ${escapeHtml(c.source)}</span>
+          </div>
+          <div style="margin-top:4px">${escapeHtml(c.resolved_name)}</div>
+          <div style="font-size:10px;color:var(--muted);font-family:var(--font-mono);word-break:break-all;margin-top:4px">${escapeHtml(c.sequence)}</div>
+          ${wHtml}
+        </div>
+      `;
+    }).join("");
+
+    let warnHtml = "";
+    if (data.assembly_warnings.length) {
+      warnHtml = `
+        <div style="margin-top:16px;padding:12px;border:1px solid var(--warn);border-radius:6px;background:rgba(245,159,0,0.05)">
+          <div style="color:var(--warn);font-weight:600;font-size:12px;margin-bottom:6px">Assembly Warnings</div>
+          <ul style="margin:0 0 0 16px;font-size:11px;color:var(--warn)">
+            ${data.assembly_warnings.map(w => `<li>${escapeHtml(w)}</li>`).join("")}
+          </ul>
+        </div>
+      `;
+    }
+
+    let html = `
+      <section class="result-panel">
+        <div class="result-title"><strong>${escapeHtml(data.construct_name)} — CAR-T Assembly</strong><span class="run-status ${data.overall_status.toLowerCase() === 'pass' ? 'pass' : 'warn'}">${data.overall_status}</span></div>
+        
+        <div class="meta-list" style="margin-top:16px">
+          <div class="meta-item"><span>Construct</span><span>${escapeHtml(data.construct_name)}</span></div>
+          <div class="meta-item"><span>Total Length</span><span>${data.full_sequence.length} aa</span></div>
+          <div class="meta-item"><span>Generated</span><span>${ts}</span></div>
+        </div>
+
+        <div style="margin-top:16px">
+          <div style="font-weight:600;font-size:12px;margin-bottom:8px">Components Resolved</div>
+          <div class="meta-list">${compHtml}</div>
+        </div>
+        
+        ${warnHtml}
+
+        <div style="margin-top:16px">
+          <div style="font-weight:600;font-size:12px;margin-bottom:8px">Assembled FASTA</div>
+          <div class="seq-container">
+            <div class="seq-box mono" style="white-space:pre-wrap;word-break:break-all">${escapeHtml(data.full_sequence)}</div>
+          </div>
+        </div>
+        
+        <div style="margin-top:16px;display:flex;gap:8px">
+          <button class="btn" onclick="navigator.clipboard.writeText('>'+${JSON.stringify(data.construct_name)}+'\\n'+${JSON.stringify(data.full_sequence)});alert('FASTA copied to clipboard')">Copy FASTA</button>
+        </div>
+      </section>
+    `;
+    setOutput(html);
+  } catch (err) {
+    setOutput(errorPanel(err.message));
+  }
+}
+
+async function runBispecificAssembler(service) {
+  const rawVhA = document.getElementById("bs-assembler-vh-a")?.value||"";
+  const rawVlA = document.getElementById("bs-assembler-vl-a")?.value||"";
+  const rawVhB = document.getElementById("bs-assembler-vh-b")?.value||"";
+  const rawVlB = document.getElementById("bs-assembler-vl-b")?.value||"";
+  const format  = document.getElementById("bs-assembler-format")?.value||"crossmab";
+  const fc      = document.getElementById("bs-assembler-fc")?.value||"igg1_kih";
+  const steering= document.getElementById("bs-assembler-steering")?.value||"none";
+  const proj    = (document.getElementById("bs-assembler-name")?.value||"BsAb").trim()||"BsAb";
+
+  if(!rawVhA.trim()){ setOutput(errorPanel("Binder A VH is required.")); return; }
+  if(!rawVhB.trim()){ setOutput(errorPanel("Binder B VH is required.")); return; }
+
+  // ── QA / sanitize ────────────────────────────────────────────────────────
+  const qaA  = _bsQaSeq(rawVhA, "VH-A");
+  const qaVlA= _bsQaSeq(rawVlA, "VL-A");
+  const qaB  = _bsQaSeq(rawVhB, "VH-B");
+  const qaVlB= _bsQaSeq(rawVlB, "VL-B");
+  const allQa= [qaA, qaVlA, qaB, qaVlB].filter(q=>q.seq.length>0);
+  const qaErrors   = allQa.flatMap(q=>q.errors);
+  const qaWarnings = allQa.flatMap(q=>q.warnings);
+  if(qaErrors.length){
+    setOutput(`<div style="border:1px solid var(--fail);padding:12px;border-radius:8px;background:rgba(224,49,49,0.06)">
+      <strong style="color:var(--fail)">Input QA Failed</strong><ul style="margin:6px 0 0 16px;color:var(--fail);font-size:12px">
+      ${qaErrors.map(e=>`<li>${escapeHtml(e)}</li>`).join("")}</ul></div>`);
+    return;
+  }
+  const vha = qaA.seq, vla = qaVlA.seq, vhb = qaB.seq, vlb = qaVlB.seq;
+
+  // ── Apply Electrostatic steering mutations if selected ───────────────────
+  const steeringOn = steering==="vh_vl_interface";
+  let mvha = vha, mvla = vla, mvhb = vhb, mvlb = vlb;
+  if(steeringOn) {
+    // Arm A: VH Q39E (idx 38), VL Q38K (idx 37)
+    if(mvha.length > 38) mvha = mvha.substring(0,38) + "E" + mvha.substring(39);
+    if(mvla.length > 37) mvla = mvla.substring(0,37) + "K" + mvla.substring(38);
+    // Arm B: VH Q39K (idx 38), VL Q38E (idx 37)
+    if(mvhb.length > 38) mvhb = mvhb.substring(0,38) + "K" + mvhb.substring(39);
+    if(mvlb.length > 37) mvlb = mvlb.substring(0,37) + "E" + mvlb.substring(38);
+  }
+
+  const SC=_BS_SC, linkerKey=document.getElementById("bs-assembler-linker")?.value||"g4s3";
+  const linker = _BS_LINKERS[linkerKey] || _BS_LINKERS.g4s3;
+  const G4S3 = linker; // use selected linker throughout
+  const isIgG4 = fc==="igg4_kih";
+  const hng   = isIgG4 ? SC.hng4 : SC.hng1;
+  const ch2   = isIgG4 ? SC.ch2_igg4 : SC.ch2_lala;
+  const ch3Knb= isIgG4 ? SC.ch3_4knb : SC.ch3_1knb;
+  const ch3Hle= isIgG4 ? SC.ch3_4hle : SC.ch3_1hle;
+  const ch2MutNotes = isIgG4 ? [{i:0,note:"S228P · hinge stabilization"}] : SC.LALA;
+  const useFc = fc !== "none";
+
+  // ── Electrostatic steering target positions (Kabat 39 in VH ≈ linear index 38; Kabat 38 in VL ≈ linear index 37) ──
+  // Arm A: VH-A Q39→E, VL-A Q38→K; Arm B: VH-B Q39→K, VL-B Q38→E (opposite charges → prevent crosspairing)
+  const steerVhA = steeringOn ? [{i:38, note:"Kabat 39 · Applied Q39E (Arm A electrostatic steering — negative charge attracts VL-A K38)"}] : [];
+  const steerVlA = steeringOn ? [{i:37, note:"Kabat 38 · Applied Q38K (Arm A electrostatic steering — positive charge attracts VH-A E39)"}] : [];
+  const steerVhB = steeringOn ? [{i:38, note:"Kabat 39 · Applied Q39K (Arm B — opposite charge vs Arm A, repels VL-A)"}] : [];
+  const steerVlB = steeringOn ? [{i:37, note:"Kabat 38 · Applied Q38E (Arm B — opposite charge vs Arm A, repels VH-A)"}] : [];
+
+  // ── Color palette ──────────────────────────────────────────────────────────
+  const CLR={vhA:"#4a90e2",vlA:"#27ae60",vhB:"#5b6abf",vlB:"#43a047",
+    ch1:"#e67e22",cl:"#9b59b6",hng:"#e74c3c",ch2:"#f39c12",ch3:"#1abc9c",lnk:"#95a5a6"};
+
+  let chains=[], chainBlocks=[], notes=[];
+
+  if(format==="tandem_scfv"){
+    if(!mvla||!mvlb){ setOutput(errorPanel("Tandem scFv requires both VL sequences.")); return; }
+    // Collect extra binders C-E
+    const extraBinders = [];
+    for(const lc of ["c","d","e"]) {
+      const vh = (document.getElementById(`bs-assembler-vh-${lc}`)?.value||"").trim();
+      const vl = (document.getElementById(`bs-assembler-vl-${lc}`)?.value||"").trim();
+      if(vh) extraBinders.push({vh: _bsQaSeq(vh,`VH-${lc.toUpperCase()}`).seq, vl: vl ? _bsQaSeq(vl,`VL-${lc.toUpperCase()}`).seq : ""});
+    }
+    const allPairs = [{vh:mvha,vl:mvla},{vh:mvhb,vl:mvlb},...extraBinders];
+    const segs = [];
+    const vhColors = [CLR.vhA,CLR.vhB,"#a29bfe","#fd79a8","#e17055"];
+    const vlColors = [CLR.vlA,CLR.vlB,"#6c5ce7","#e84393","#d63031"];
+    allPairs.forEach((p,i) => {
+      if(i>0) segs.push({seq:G4S3,label:"Linker",color:CLR.lnk});
+      const lbl = String.fromCharCode(65+i);
+      const sVh = i===0?steerVhA:(i===1?steerVhB:[]);
+      const sVl = i===0?steerVlA:(i===1?steerVlB:[]);
+      segs.push({seq:p.vh,label:`VH-${lbl}`,color:vhColors[i]||"#888",steer:sVh});
+      if(p.vl) { 
+        segs.push({seq:G4S3,label:"Linker",color:CLR.lnk},{seq:p.vl,label:`VL-${lbl}`,color:vlColors[i]||"#aaa",steer:sVl}); 
+      }
+    });
+    const seq = segs.map(s=>s.seq).join("");
+    chains=[{id:`${proj}_scFv_tandem`,seq}];
+    chainBlocks=[_bsChainBlock(`${proj} — scFv Tandem (${allPairs.length}×)`,segs)];
+    notes=[`${allPairs.length}-arm scFv tandem chain. Linker: ${linkerKey.toUpperCase()} (${G4S3.length} aa).`+ (steeringOn?" Electrostatic steering applied to Arm A/B.":"")];
+
+  } else if(format==="tandem_vhh"){
+    // Collect extra binders C-E
+    const extraVhhs = [];
+    for(const lc of ["c","d","e"]) {
+      const vh = (document.getElementById(`bs-assembler-vh-${lc}`)?.value||"").trim();
+      if(vh) extraVhhs.push({vh: _bsQaSeq(vh,`VHH-${(extraVhhs.length+3)}`).seq});
+    }
+    const allVhhs = [mvha, mvhb, ...extraVhhs.map(e=>e.vh)];
+    const vhhColors = [CLR.vhA,CLR.vhB,"#a29bfe","#fd79a8","#e17055"];
+    const segs = [];
+    allVhhs.forEach((v,i) => {
+      if(i>0) segs.push({seq:G4S3,label:"Linker",color:CLR.lnk});
+      const sVh = i===0?steerVhA:(i===1?steerVhB:[]);
+      segs.push({seq:v,label:`VHH-${i+1}`,color:vhhColors[i]||"#888",steer:sVh});
+    });
+    const seq = segs.map(s=>s.seq).join("");
+    chains=[{id:`${proj}_VHH_tandem`,seq}];
+    chainBlocks=[_bsChainBlock(`${proj} — VHH Tandem (${allVhhs.length}×)`,segs)];
+    notes=[`${allVhhs.length}-arm VHH tandem. Linker: ${linkerKey.toUpperCase()} (${G4S3.length} aa).`+ (steeringOn?" Electrostatic steering applied to Arm A/B.":""),"Append Fc or albumin-binding domain for half-life extension."];
+
+  } else if(format==="mixed_tandem"){
+    // Mixed: Binder A as scFv (VH-A+VL-A), Binder B as VHH (VH-B), optional C-E
+    const segs = [];
+    const vhhColors = [CLR.vhB,"#a29bfe","#fd79a8","#e17055"];
+    // Arm A scFv
+    segs.push({seq:mvha,label:"VH-A",color:CLR.vhA,steer:steerVhA});
+    if(mvla) { segs.push({seq:G4S3,label:"Linker",color:CLR.lnk},{seq:mvla,label:"VL-A",color:CLR.vlA,steer:steerVlA}); }
+    // Arm B VHH
+    segs.push({seq:G4S3,label:"Linker",color:CLR.lnk},{seq:mvhb,label:"VHH-B",color:vhhColors[0],steer:steerVhB});
+    // Extra C-E
+    let vhhIdx=1;
+    for(const lc of ["c","d","e"]) {
+      const vh = (document.getElementById(`bs-assembler-vh-${lc}`)?.value||"").trim();
+      if(vh) { segs.push({seq:G4S3,label:"Linker",color:CLR.lnk},{seq:_bsQaSeq(vh,`VHH-${lc.toUpperCase()}`).seq,label:`VHH-${lc.toUpperCase()}`,color:vhhColors[vhhIdx++]||"#888"}); }
+    }
+    const seq = segs.map(s=>s.seq).join("");
+    chains=[{id:`${proj}_mixed_scFv_VHH`,seq}];
+    chainBlocks=[_bsChainBlock(`${proj} — Mixed scFv–VHH Tandem`,segs)];
+    notes=["Mixed scFv–VHH tandem: Arm A as scFv (VH+linker+VL), additional arms as VHH sdAb." + (steeringOn?" Electrostatic steering applied to Arm A/B.":"")];
+
+  } else if(format==="common_lc"){
+    if(!mvla){ setOutput(errorPanel("Common LC format: enter shared VL in Binder A VL field.")); return; }
+    const hcASeq=useFc?mvha+SC.CH1+hng+ch2+ch3Knb:mvha+SC.CH1;
+    const hcBSeq=useFc?mvhb+SC.CH1+hng+ch2+ch3Hle:mvhb+SC.CH1;
+    const lcSeq=mvla+SC.CL_k;
+    const hcASegs=[{seq:mvha,label:"VH-A",color:CLR.vhA,steer:steerVhA},{seq:SC.CH1,label:"CH1",color:CLR.ch1}];
+    const hcBSegs=[{seq:mvhb,label:"VH-B",color:CLR.vhB,steer:steerVhB},{seq:SC.CH1,label:"CH1",color:CLR.ch1}];
+    if(useFc){
+      hcASegs.push({seq:hng,label:"Hinge",color:CLR.hng},{seq:ch2,label:"CH2",color:CLR.ch2,muts:ch2MutNotes},{seq:ch3Knb,label:"CH3-Knob",color:CLR.ch3,muts:SC.KNB});
+      hcBSegs.push({seq:hng,label:"Hinge",color:CLR.hng},{seq:ch2,label:"CH2",color:CLR.ch2,muts:ch2MutNotes},{seq:ch3Hle,label:"CH3-Hole",color:CLR.ch3,muts:SC.HLE});
+    }
+    const lcSegs=[{seq:mvla,label:"VL-common",color:CLR.vlA,steer:steerVlA},{seq:SC.CL_k,label:"CL-κ",color:CLR.cl}];
+    chains=[{id:`${proj}_HC_A`,seq:hcASeq},{id:`${proj}_HC_B`,seq:hcBSeq},{id:`${proj}_LC_common`,seq:lcSeq}];
+    chainBlocks=[_bsChainBlock("HC_A (Knob)",hcASegs),_bsChainBlock("HC_B (Hole)",hcBSegs),_bsChainBlock("LC_common (shared)",lcSegs)];
+    notes=["Common LC: both arms share one VL — eliminates light chain mispairing." + (steeringOn?" Electrostatic steering applied to Arm A/B.":""),"HC_A T366W (Knob) · HC_B T366S/L368A/Y407V (Hole)."];
+
+  } else {
+    if(!mvla){ setOutput(errorPanel("IgG-like formats require Binder A VL.")); return; }
+    if(!mvlb){ setOutput(errorPanel("IgG-like formats require Binder B VL.")); return; }
+    const isCrossMab=format==="crossmab", isDuet=format==="duetmab";
+    const hcACh1=isCrossMab?SC.CL_k:SC.CH1, hcACh1L=isCrossMab?"CL-κ (CrossMab)":"CH1", hcACh1C=isCrossMab?CLR.cl:CLR.ch1;
+    const lcACl =isCrossMab?SC.CH1:SC.CL_k,  lcAClL =isCrossMab?"CH1 (CrossMab)":"CL-κ",  lcAClC =isCrossMab?CLR.ch1:CLR.cl;
+    const steeringNote=steeringOn?" + Electrostatic Steering":"";
+    const hcASeq=useFc?mvha+hcACh1+hng+ch2+ch3Knb:mvha+hcACh1;
+    const lcASeq=mvla+lcACl;
+    const hcBSeq=useFc?mvhb+SC.CH1+hng+ch2+ch3Hle:mvhb+SC.CH1;
+    const lcBSeq=mvlb+SC.CL_k;
+    const hcASegs=[{seq:mvha,label:"VH-A",color:CLR.vhA,steer:steerVhA},{seq:hcACh1,label:hcACh1L,color:hcACh1C}];
+    const lcASegs=[{seq:mvla,label:"VL-A",color:CLR.vlA,steer:steerVlA},{seq:lcACl,label:lcAClL,color:lcAClC}];
+    const hcBSegs=[{seq:mvhb,label:"VH-B",color:CLR.vhB,steer:steerVhB},{seq:SC.CH1,label:"CH1",color:CLR.ch1}];
+    const lcBSegs=[{seq:mvlb,label:"VL-B",color:CLR.vlB,steer:steerVlB},{seq:SC.CL_k,label:"CL-κ",color:CLR.cl}];
+    if(useFc){
+      hcASegs.push({seq:hng,label:"Hinge",color:CLR.hng},{seq:ch2,label:"CH2",color:CLR.ch2,muts:ch2MutNotes},{seq:ch3Knb,label:"CH3-Knob",color:CLR.ch3,muts:SC.KNB});
+      hcBSegs.push({seq:hng,label:"Hinge",color:CLR.hng},{seq:ch2,label:"CH2",color:CLR.ch2,muts:ch2MutNotes},{seq:ch3Hle,label:"CH3-Hole",color:CLR.ch3,muts:SC.HLE});
+    }
+    chains=[{id:`${proj}_HC_A`,seq:hcASeq},{id:`${proj}_LC_A`,seq:lcASeq},{id:`${proj}_HC_B`,seq:hcBSeq},{id:`${proj}_LC_B`,seq:lcBSeq}];
+    chainBlocks=[_bsChainBlock("HC_A (Knob)"+steeringNote,hcASegs),_bsChainBlock("LC_A",lcASegs),_bsChainBlock("HC_B (Hole)",hcBSegs),_bsChainBlock("LC_B",lcBSegs)];
+    if(isCrossMab) notes=["CrossMab: HC_A uses CL (domain exchange); LC_A uses CH1. Enforces cognate HC_A·LC_A pairing.","HC_A T366W (Knob) · HC_B T366S/L368A/Y407V (Hole). LALA: L234A/L235A (silenced Fc)."];
+    else if(isDuet) notes=["DuetMab: CH1/CL interface locked with engineered disulfide (S183C/V133C). Combine with KiH Fc."];
+    else notes=["KiH: T366W Knob (HC_A) · T366S/L368A/Y407V Hole (HC_B). Consider adding Electrostatic Steering for light chain selectivity."];
+    if(steeringOn) notes.push("Electrostatic Steering: Applied Q39E/Q38K to Arm A and Q39K/Q38E to Arm B. Hover over red highlighted residues for details.");
+  }
+
+  const FORMAT_LABELS={crossmab:"CrossMab",kih:"KiH",duetmab:"DuetMab",common_lc:"Common LC",tandem_scfv:"Tandem scFv",tandem_vhh:"Tandem VHH",mixed_tandem:"Mixed scFv-VHH"};
+  const FC_LABELS={igg1_kih:"IgG1 KiH · LALA silenced",igg4_kih:"IgG4 KiH · S228P",igg1_wt:"IgG1 WT",none:"Fv only"};
+
+  // ── Signal peptide + cDNA ──────────────────────────────────────────────────
+  const sigKey   = document.getElementById("bs-signal-peptide")?.value || "none";
+  const sigGroup = _BS_SIGNALS[sigKey] || _BS_SIGNALS.none;
+  const sigProtCustom = sigKey === "custom" ? (document.getElementById("bs-signal-custom")?.value||"").toUpperCase().replace(/[^A-Z]/g,"") : "";
+  const codonHost= document.getElementById("bs-codon-host")?.value || "cho";
+  const CODON_MAP = {cho:_BS_CODON_CHO, hek293t:_BS_CODON_293T, ecoli:_BS_CODON_ECOLI, pichia:_BS_CODON_PICHIA};
+  const codonTable = CODON_MAP[codonHost] || _BS_CODON_CHO;
+  const HOST_LABELS = {cho:"CHO optimized",hek293t:"HEK 293T optimized",ecoli:"E. coli K12 optimized",pichia:"Pichia pastoris optimized"};
+  const hostLabel  = HOST_LABELS[codonHost] || "CHO optimized";
+  const sigLabel   = sigKey !== "none" ? (sigKey === "custom" ? "Custom SP" : {human:"Human Antibody SP",mouse:"Mouse Antibody SP",il2:"IL-2",tpa:"tPA"}[sigKey]) : "";
+
+  // Build per-chain SP strings (HC vs LC)
+  const spForChain = chains.map(c => {
+    if (sigKey === "none") return "";
+    if (sigKey === "custom") return sigProtCustom;
+    const isLc = c.id.includes("_LC");
+    return isLc ? sigGroup.lc : sigGroup.hc;
+  });
+
+  const cdnaForChain = codonHost !== "none"
+    ? chains.map((c, i) => _bsBackTranslate(spForChain[i] + c.seq, codonTable))
+    : chains.map(() => "");
+
+  const fasta = chains.map((c, i) => {
+    const protSeq = spForChain[i] ? spForChain[i] + c.seq : c.seq;
+    let block = `>${c.id} [Protein${spForChain[i] ? " · SP included" : ""}]\n${protSeq}`;
+    if (cdnaForChain[i]) {
+      block += `\n>${c.id} [cDNA - ${hostLabel}]\n${cdnaForChain[i]}`;
+    }
+    return block;
+  }).join("\n\n");
+
+  // Prepend SP segment to each chain block for visual display
+  const chainBlocksWithSp = chainBlocks.map((blk, i) => {
+    const sp = spForChain[i];
+    if (!sp) return blk;
+    const spSeg = { label: "SP", seq: sp, color: "#9b59b6" };
+    const newSegs = [spSeg, ...(blk._segments || [])];
+    return _bsChainBlock(chains[i].id, newSegs, []);
+  });
+
+  const finalChainBlocks = chainBlocksWithSp.map((blk, i) =>
+    _bsChainWithCdna(blk, cdnaForChain[i], sigLabel, hostLabel)
+  );
+
+  window._bsReport={proj,format:FORMAT_LABELS[format]||format,fc:FC_LABELS[fc]||fc,steering,
+    chains:chains.map((c,i)=>({...c,cdna:cdnaForChain[i],sigLabel,hostLabel,segments:chainBlocksWithSp[i]._segments})),fasta,notes};
+  window._bsAssemblerFasta=fasta; window._bsAssemblerProjName=proj;
+  window._bsAssemblerVhA=mvha; window._bsAssemblerVlA=mvla;
+  window._bsAssemblerVhB=mvhb; window._bsAssemblerVlB=mvlb;
+
+  // QA banner
+  const qaBannerHtml = qaWarnings.length ? `<div style="border:1px solid var(--warn);padding:8px 12px;border-radius:6px;background:rgba(243,156,18,0.08);font-size:11.5px;margin-bottom:10px;color:var(--warn)">
+    <strong>QA Notices:</strong><ul style="margin:4px 0 0 14px">${qaWarnings.map(w=>`<li>${escapeHtml(w)}</li>`).join("")}</ul></div>` : "";
+
+  const mutLegend=`<div style="margin-top:8px;display:flex;align-items:center;gap:6px;flex-wrap:wrap;font-size:10px;color:var(--muted)">
+    ${[["VH-A","#4a90e2"],["VL-A","#27ae60"],["VH-B","#5b6abf"],["VL-B","#43a047"],["CH1","#e67e22"],["CL-κ","#9b59b6"],["Hinge","#e74c3c"],["CH2","#f39c12"],["CH3","#1abc9c"],["Linker","#95a5a6"]].map(([l,c])=>_bsLegendPill(l,c)).join("")}
+    <span style="background:#e03131;color:#fff;border-radius:3px;padding:1px 7px;font-weight:700">Mutation</span>
+    ${steeringOn?`<span style="background:#f39c12;color:#fff;border-radius:3px;padding:1px 7px;font-weight:700">Steering target</span>`:""}
+    ${sigLabel?`<span style="background:#9b59b6;color:#fff;border-radius:3px;padding:1px 7px">Signal Peptide</span>`:""}
+  </div>`;
+
+  const summaryRow=`<div style="display:flex;flex-wrap:wrap;gap:5px;margin-bottom:8px;font-size:11px">
+    ${[["Format",FORMAT_LABELS[format]||format],["Fc",FC_LABELS[fc]||fc],["Chains",chains.length],["HC_A",chains[0]?.seq.length+" aa"],["HC_B",(chains[2]?.seq.length||chains[1]?.seq.length)+" aa"]].map(([k,v])=>`<span style="padding:2px 8px;background:var(--panel-3);border:1px solid var(--line);border-radius:10px"><strong>${k}:</strong> ${escapeHtml(String(v))}</span>`).join("")}
+  </div>`;
+
+  const notesHtml=notes.length?`<div style="margin-top:10px;padding:10px 12px;border:1px solid var(--line-2);border-radius:6px;font-size:11.5px;color:var(--muted);background:var(--panel-2);line-height:1.65"><ul style="margin:0 0 0 14px">${notes.map(n=>`<li>${escapeHtml(n)}</li>`).join("")}</ul></div>`:"";
+
+  setOutput(`
+    <section class="result-panel">
+      <div class="result-title"><strong>${escapeHtml(proj)} — Bispecific Assembly</strong><span class="run-status pass">COMPLETE</span></div>
+      <div class="result-body">
+        ${qaBannerHtml}${summaryRow}${mutLegend}
+        <div style="margin:12px 0">${finalChainBlocks.join("")}</div>
+        <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:4px">
+          <button class="btn" onclick="_bsAssemblerDownloadFasta()">Download FASTA</button>
+          <button class="btn" onclick="_bsAssemblerDownloadHtml()">Download HTML Report</button>
+          <button class="btn" onclick="_bsAssemblerSendToAnalyzer()">Send to Bispecific Analyzer →</button>
+        </div>${notesHtml}
+      </div>
+    </section>
+  `);
+}
+
+
+function _bsAssemblerDownloadFasta() {
+  const fasta = window._bsAssemblerFasta;
+  if(!fasta) return;
+  const name = (window._bsAssemblerProjName||"BsAb")+"_assembled.fasta";
+  const blob = new Blob([fasta],{type:"text/plain"});
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(blob); a.download = name;
+  document.body.appendChild(a); a.click(); document.body.removeChild(a);
+}
+
+function _bsAssemblerSendToAnalyzer() {
+  state._bsFromAssembler = {
+    vha: window._bsAssemblerVhA, vla: window._bsAssemblerVlA,
+    vhb: window._bsAssemblerVhB, vlb: window._bsAssemblerVlB,
+    format: document.getElementById("bs-assembler-format")?.value || "unknown",
+    proj: window._bsAssemblerProjName || "BsAb",
+    autoRun: true,
+  };
+  activateService("bispecific-analyzer");
+}
+
+// ── Bispecific Analyzer helpers ───────────────────────────────────────────────
+let _bsAnalyzerAbortCtrl = null;
+
+function _bsAnalyzerCancel() {
+  if (_bsAnalyzerAbortCtrl) { _bsAnalyzerAbortCtrl.abort(); _bsAnalyzerAbortCtrl = null; }
+}
+
+const _BS_METRIC_INFO = {
+  fv_pi: { label:"Fv pI", def:"Isoelectric point of the Fv domain (VH+VL combined). Affects solubility, aggregation, and purification behaviour.", source:"AbRef-458 (n=458)", pass:"5.2–9.1", warn:"4.8–5.2 / 9.1–9.5", fail:"<4.8 or >9.5", note:"p5=5.20, p95=9.09" },
+  net_charge: { label:"Net charge (pH7)", def:"Sum of charged residues in the Fv at physiological pH. Highly positive charge correlates with poor PK/tissue stickiness.", source:"AbRef-458 (n=458)", pass:"−3.4 to +5.9", warn:"+5.9 to +8 / −5 to −3.4", fail:"<−5 or >+8", note:"p5=−3.38, p95=+5.88" },
+  gravy: { label:"GRAVY index", def:"Grand Average of Hydropathicity across the Fv. More negative = more hydrophilic = better solubility.", source:"AbRef-458 (n=458)", pass:"−0.48 to −0.19", warn:"−0.19 to 0", fail:">0", note:"All clinical antibodies <0. Mean=−0.34" },
+  instability: { label:"Instability index", def:"Guruprasad instability index. <40 predicts a stable protein in solution.", source:"AbRef-458 (n=458)", pass:"<47.1", warn:"47.1–55", fail:">55", note:"p95=47.1. Classical stable cutoff=40" },
+  paired_humanness: { label:"p-AbNatiV Paired Humanness", def:"Deep-learning score (0–1) for how closely the VH+VL pair resembles the human antibody repertoire. Engineered antibodies cluster at 0.69–0.90.", source:"p-AbNatiV2; AbRef-458 (n=458)", pass:"≥0.69", warn:"0.50–0.69", fail:"<0.50", note:"AbRef-458 p5=0.69, p50=0.83" },
+  vh_humanness: { label:"VH Humanness", def:"p-AbNatiV2 score for the VH chain alone against human germline repertoire.", source:"p-AbNatiV2; AbRef-458 (n=458)", pass:"≥0.65", warn:"0.50–0.65", fail:"<0.50", note:"AbRef-458 p5=0.65, mean=0.79" },
+  vl_humanness: { label:"VL Humanness", def:"p-AbNatiV2 score for the VL chain alone against human germline repertoire.", source:"p-AbNatiV2; AbRef-458 (n=458)", pass:"≥0.62", warn:"0.50–0.62", fail:"<0.50", note:"AbRef-458 p5=0.62, mean=0.81" },
+  hydro_patch: { label:"Max Hydrophobic Patch (9-mer)", def:"Largest surface hydrophobic patch in a 9-residue window. Indicator of aggregation hot-spots.", source:"AbRef-458 (n=458)", pass:"≤0.78", warn:"0.78–0.95", fail:">0.95", note:"AbRef-458 p95=0.78. Note: this is normalised score, not SAP" },
+  cdr_h3_length: { label:"CDR-H3 Length", def:"Length of CDR-H3 loop (IMGT definition). Very long CDR-H3 (>19 aa) increases structural instability and production difficulty.", source:"AbRef-458 CDR physchem (n=458)", pass:"7–16", warn:"17–19", fail:">19", note:"AbRef-458: mean=12, p95=16, p99=19" },
+  cdr_h3_gravy: { label:"CDR-H3 GRAVY", def:"Hydrophobicity of CDR-H3. Hydrophobic CDR-H3 promotes aggregation and polyreactivity.", source:"AbRef-458 CDR physchem (n=458)", pass:"−1.57 to +0.21", warn:"+0.21 to +0.78", fail:">+0.78", note:"p5=−1.57, p95=+0.21, p99=+0.78" },
+  cdr_h3_charge: { label:"CDR-H3 Net Charge (pH7)", def:"Net charge within CDR-H3. Highly charged CDR-H3 may increase polyreactivity.", source:"AbRef-458 CDR physchem (n=458)", pass:"−2 to +2", warn:"±3", fail:"≥±4", note:"p5=−2, p95=+2" },
+  cdr_liabilities: { label:"CDR Liability Count", def:"Sequence motifs in CDR regions prone to chemical degradation: deamidation (NG,NS), isomerization (DG,DS), oxidation (M,W). CDR changes are typically not designable.", source:"AbRef-458 CDR physchem (n=458)", pass:"0–1", warn:"2", fail:"≥3", note:"AbRef-458 mean=1.1 total" },
+  fvca: { label:"Fv Charge Asymmetry (cognate)", def:"Difference in net charge between VH and VL (|charge_VH − charge_VL|). High asymmetry correlates with correct Fv pairing selectivity.", source:"AbRef-458 (n=458)", pass:"0.08–6.18", warn:"6.18–9", fail:">9 or =0", note:"AbRef-458 p5=0.08, p95=6.18, mean=2.45" },
+  pairing_likelihood: { label:"p-AbNatiV Pairing Likelihood", def:"Probability score (raw, 0–0.01 range) that this specific VH+VL pair is observed in the human antibody repertoire. Higher = more native pairing.", source:"p-AbNatiV2; AbRef-458 (n=458)", pass:"≥0.0001", warn:"0–0.0001", fail:"=0 or error", note:"AbRef-458 p10=0.0001, p50=0.0065. Note: scale 0–0.01, NOT 0–1" },
+  fv_plddt: { label:"Fv pLDDT (ImmuneBuilder)", def:"Mean predicted local distance difference test score for the modelled Fv structure. Proxy for structural confidence and correct fold.", source:"ImmuneBuilder (ABodyBuilder2)", pass:"≥85", warn:"70–85", fail:"<70", note:"Industry standard; no internal DB yet" },
+  delta_pi: { label:"ΔpI (Arm A vs B)", def:"Absolute difference in pI between Arm A and Arm B Fv regions. A ΔpI ≥1.0 enables IEX chromatography separation of the bispecific from homodimers during purification.", source:"Industry (IEX purification theory)", pass:"≥1.0", warn:"0.5–1.0", fail:"<0.5", note:"Recommended by Roche/MedImmune CrossMab strategy" },
+  pairing_selectivity: { label:"Pairing Selectivity Δ (4-way)", def:"Difference in p-AbNatiV pairing_likelihood between the cognate pair and the mispaired combination. A positive Δ means the correct pairing is more native than mispairing.", source:"p-AbNatiV2 × 4 combinations", pass:"Δ>0.0015", warn:"Δ 0.0005–0.0015", fail:"Δ≤0.0005", note:"Thresholds from p-AbNatiV scale (0–0.01); AbRef-458 reference" },
+  cross_charge_mismatch: { label:"Cross-pairing Charge Mismatch", def:"Fv charge asymmetry of the MISPAIRED combination (VH-A+VL-B). If the mispaired asymmetry is similar to the cognate, the cell cannot discriminate correct pairing.", source:"Igawa 2010; charge asymmetry proxy", pass:"Δ≥4 vs cognate", warn:"Δ 2–4", fail:"Δ<2", note:"Higher = more distinguishable = lower mispairing risk" },
+  format_verify: { label:"Format Engineering Verification", def:"Sequence-level check that the required format-specific mutations are present: KiH (T366W/Y407V), LALA (L234A+L235A), S228P (IgG4), CrossMab (CL/CH1 topology), Common LC (VL identity ≥98%).", source:"Sequence motif scan", pass:"All motifs detected", warn:"Partial", fail:"Key motif missing", note:"Only applicable to assembled full-chain sequences" },
+  aggregation_proxy: { label:"Aggregation Propensity Proxy", def:"Composite score: hydrophobic patch + CDR-H3 length penalty + free Cys. Longer hydrophobic CDR-H3 in an exposed conformation drives non-specific aggregation.", source:"AbRef-458 CDR + global stats", pass:"Low risk", warn:"Moderate", fail:"High risk", note:"Composite; no single threshold" },
+};
+
+function _bsMetricTooltip(key) {
+  // Used for inline elements outside of cards (like table headers)
+  const info = _BS_METRIC_INFO[key];
+  if (!info) return "";
+  const rawTip = info.def;
+  const safeTip = String(rawTip).replace(/&/g,"&amp;").replace(/"/g,"&quot;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
+  return `<span style="font-size:9px;opacity:0.6;margin-left:4px;cursor:help;border:1px solid var(--line);border-radius:50%;width:12px;height:12px;display:inline-flex;align-items:center;justify-content:center" data-tip="${safeTip}" onmouseenter="showMetricTip(this)" onmouseleave="hideMetricTip()">?</span>`;
+}
+
+function _bsMetricCard(key, value, status, extra) {
+  const info = _BS_METRIC_INFO[key] || {label: key};
+  const cls = (status||"pass").toLowerCase();
+  const clsColor = cls==="fail"?"#e03131":cls==="warn"?"#f39c12":"#2b9a66";
+  const rawTip = info.def || "";
+  const safeTip = String(rawTip).replace(/&/g,"&amp;").replace(/"/g,"&quot;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
+
+  return `<div style="background:var(--panel-2);border:1px solid var(--line);border-radius:8px;padding:10px 12px;min-width:140px;flex:1" data-tip="${safeTip}" onmouseenter="showMetricTip(this)" onmouseleave="hideMetricTip()">
+    <div style="font-size:10px;color:var(--muted);margin-bottom:3px;display:flex;align-items:center">${escapeHtml(info.label)} <span style="font-size:9px;opacity:0.6;margin-left:4px;cursor:help;border:1px solid var(--line);border-radius:50%;width:12px;height:12px;display:inline-flex;align-items:center;justify-content:center">?</span></div>
+    <div style="display:flex;align-items:center;gap:6px">
+      <span style="font-size:15px;font-weight:700;font-family:var(--mono);color:var(--text)">${escapeHtml(String(value??'N/A'))}</span>
+      <span style="font-size:10px;font-weight:700;padding:1px 6px;border-radius:3px;background:${clsColor}22;color:${clsColor};border:1px solid ${clsColor}44">${cls.toUpperCase()}</span>
+    </div>
+    ${extra?`<div style="font-size:10px;color:var(--muted);margin-top:2px">${extra}</div>`:""}
+  </div>`;
+}
+
+function _bsSectionHeader(title, status) {
+  const cls = (status||"pass").toLowerCase();
+  const clsColor = cls==="fail"?"#e03131":cls==="warn"?"#f39c12":"#2b9a66";
+  return `<div style="display:flex;align-items:center;gap:8px;margin:16px 0 8px">
+    <strong style="font-size:12px;letter-spacing:0.05em;text-transform:uppercase;color:var(--text)">${title}</strong>
+    <span style="font-size:10px;font-weight:700;padding:2px 8px;border-radius:10px;background:${clsColor}22;color:${clsColor};border:1px solid ${clsColor}44">${cls.toUpperCase()}</span>
+  </div>`;
+}
+
+function _bsSeqAnalysis(seq) {
+  if (!seq) return {charge:0, pi:null, gravy:null, hydro:null};
+  const pKa={D:3.9,E:4.1,H:6.0,C:8.3,Y:10.1,K:10.5,R:12.5};
+  const cnt={};
+  for(const aa of seq.toUpperCase()) cnt[aa]=(cnt[aa]||0)+1;
+  let charge=0;
+  for(const aa of seq.toUpperCase()){if("KRH".includes(aa))charge++;else if("DE".includes(aa))charge--;}
+  let lo=0,hi=14,ph=7;
+  for(let i=0;i<50;i++){ph=(lo+hi)/2;let q=1/(1+Math.pow(10,ph-8.0))-1/(1+Math.pow(10,3.1-ph));for(const[aa,pK]of Object.entries(pKa)){const n=cnt[aa]||0;if("KRH".includes(aa))q+=n/(1+Math.pow(10,ph-pK));else q-=n/(1+Math.pow(10,pK-ph));}if(q>0)lo=ph;else hi=ph;}
+  const kd={A:1.8,C:2.5,D:-3.5,E:-3.5,F:2.8,G:-0.4,H:-3.2,I:4.5,K:-3.9,L:3.8,M:1.9,N:-3.5,P:-1.6,Q:-3.5,R:-4.5,S:-0.8,T:-0.7,V:4.2,W:-0.9,Y:-1.3};
+  let gsum=0;for(const aa of seq.toUpperCase())gsum+=(kd[aa]||0);
+  const gravy=Math.round((gsum/seq.length)*1000)/1000;
+  
+  const hSet = "AILMFWV";
+  let maxP = 0;
+  const s = seq.toUpperCase();
+  if (s.length < 9) {
+    let hs = 0; for(const aa of s) if(hSet.includes(aa)) hs++;
+    maxP = s.length ? hs / 9 : 0;
+  } else {
+    for (let i = 0; i <= s.length - 9; i++) {
+      let hs = 0;
+      for (let j = 0; j < 9; j++) if(hSet.includes(s[i+j])) hs++;
+      if (hs/9 > maxP) maxP = hs/9;
+    }
+  }
+  return {charge,pi:Math.round(ph*10)/10,gravy,hydro_max:Math.round(maxP*1000)/1000};
+}
+
+function _bsCDRAnalysis(seq) {
+  if(!seq)return{cdr3_len:null,cdr3_charge:null,cdr3_gravy:null,cdr3_hydro_run:null,liabilities:0};
+  // Heuristic CDR-H3: find CXXXXXXXXXXXX[WY] pattern (Chothia-like)
+  const s=seq.toUpperCase();
+  let cdr3="";
+  const m=s.match(/C([A-Z]{6,22})[WY][GS]/);
+  if(m) cdr3=m[1];
+  const charge=(cdr3.match(/[KRH]/g)||[]).length-(cdr3.match(/[DE]/g)||[]).length;
+  const kd={A:1.8,C:2.5,D:-3.5,E:-3.5,F:2.8,G:-0.4,H:-3.2,I:4.5,K:-3.9,L:3.8,M:1.9,N:-3.5,P:-1.6,Q:-3.5,R:-4.5,S:-0.8,T:-0.7,V:4.2,W:-0.9,Y:-1.3};
+  let gsum=0;if(cdr3)for(const aa of cdr3)gsum+=(kd[aa]||0);
+  const gravy=cdr3?Math.round((gsum/cdr3.length)*1000)/1000:null;
+  const hyd={I:1,V:1,L:1,F:1,M:1,A:1,C:1};
+  let maxR=0,run=0;if(cdr3)for(const aa of cdr3){if(hyd[aa]){run++;maxR=Math.max(maxR,run);}else run=0;}
+  const liab=(s.match(/NG|NS|DG|DS/g)||[]).length+(cdr3.match(/[MW]/g)||[]).length;
+  return {cdr3_len:cdr3.length||null,cdr3_charge:cdr3?charge:null,cdr3_gravy:gravy,cdr3_hydro_run:maxR||null,liabilities:liab};
+}
+
+function _bsStatusFromThresholds(val, pass_lo, pass_hi) {
+  if(val===null||val===undefined)return"warn";
+  if(val>=pass_lo&&val<=pass_hi)return"pass";
+  return"fail";
+}
+
+async function runBispecificAnalyzer(service) {
+  const vha = normalizeSeq(document.getElementById("bs-analyzer-vh-a")?.value || "");
+  const vla = normalizeSeq(document.getElementById("bs-analyzer-vl-a")?.value || "");
+  const vhb = normalizeSeq(document.getElementById("bs-analyzer-vh-b")?.value || "");
+  const vlb = normalizeSeq(document.getElementById("bs-analyzer-vl-b")?.value || "");
+  const format = document.getElementById("bs-analyzer-format")?.value || "unknown";
+  const projName = (document.getElementById("bs-analyzer-name")?.value || "BsAb").trim() || "BsAb";
+  const _dbgRunId = `bs-${Date.now()}`;
+
+  // #region agent log
+  fetch('http://127.0.0.1:7328/ingest/ebd0c18b-8baf-475a-acf4-d0ae5fe7d6eb',{method:'POST',headers:{'Content-Type':'application/json','X-Debug-Session-Id':'69c7d1'},body:JSON.stringify({sessionId:'69c7d1',runId:_dbgRunId,hypothesisId:'H2',location:'api/static/console.html:runBispecificAnalyzer:entry',message:'Bispecific analyzer input snapshot',data:{projName,format,lens:{vha:vha.length,vla:vla.length,vhb:vhb.length,vlb:vlb.length},starts:{vha:vha.slice(0,8),vla:vla.slice(0,8),vhb:vhb.slice(0,8),vlb:vlb.slice(0,8)}},timestamp:Date.now()})}).catch(()=>{});
+  // #endregion
+
+  if (!vha || !vhb) { setOutput(errorPanel("Binder A VH and Binder B VH are required.")); return; }
+
+  _bsAnalyzerAbortCtrl = new AbortController();
+  const signal = _bsAnalyzerAbortCtrl.signal;
+  const cancelBtn = document.getElementById("bs-analyzer-cancel-btn");
+  if (cancelBtn) cancelBtn.style.display = "inline-flex";
+
+  // ── Pre-compute sequence-level metrics ─────────────────────────────────────
+  const seqA = _bsSeqAnalysis(vha + (vla||""));
+  const seqB = _bsSeqAnalysis(vhb + (vlb||""));
+  const cdrA = _bsCDRAnalysis(vha);
+  const cdrB = _bsCDRAnalysis(vhb);
+  const fvcaA = vla ? seqA.charge - _bsSeqAnalysis(vla).charge : null;
+  const fvcaB = vlb ? seqB.charge - _bsSeqAnalysis(vlb).charge : null;
+  const crossCA_AB = vla && vlb ? (_bsSeqAnalysis(vha+(vlb||"")).charge - _bsSeqAnalysis(vlb).charge) : null;
+  const crossCA_BA = vla && vlb ? (_bsSeqAnalysis(vhb+(vla||"")).charge - _bsSeqAnalysis(vla).charge) : null;
+  const fvcaA_abs = fvcaA!==null ? Math.abs(fvcaA) : null;
+  const fvcaB_abs = fvcaB!==null ? Math.abs(fvcaB) : null;
+  const crossA_abs = crossCA_AB!==null ? Math.abs(crossCA_AB) : null;
+  const crossB_abs = crossCA_BA!==null ? Math.abs(crossCA_BA) : null;
+  const deltaPi = (seqA.pi !== null && seqB.pi !== null) ? Math.round(Math.abs(seqA.pi - seqB.pi)*10)/10 : null;
+
+  function showProg(pct, msg) { setRunning(msg, pct); setOutput(""); }
+  showProg(5, "Starting backend analysis…");
+
+  let cmcA = null, cmcB = null, pairingResult = null;
+
+  try {
+    // ── Parallel: 2× CMC IgG + 1× pairing score ────────────────────────────
+    showProg(10, "Submitting Arm A CMC, Arm B CMC, and 4-way pairing jobs…");
+    const hd = {"Content-Type":"application/json"};
+
+    const [rA, rB, rP] = await Promise.all([
+      apiFetch(apiJoin("cmc/igg/async"), {method:"POST",headers:hd,signal,body:JSON.stringify({vh_sequence:vha,vl_sequence:vla||"",antibody_type:"therapeutic_regular_antibody",project_name:projName+"_ArmA",report_format:"html",predict_fv_structure:true})}),
+      apiFetch(apiJoin("cmc/igg/async"), {method:"POST",headers:hd,signal,body:JSON.stringify({vh_sequence:vhb,vl_sequence:vlb||"",antibody_type:"therapeutic_regular_antibody",project_name:projName+"_ArmB",report_format:"html",predict_fv_structure:true})}),
+      apiFetch(apiJoin("cmc/bispecific_pairing_score"), {method:"POST",headers:hd,signal,body:JSON.stringify({vh_a:vha,vl_a:vla||"",vh_b:vhb,vl_b:vlb||"",project_name:projName})}),
+    ]);
+    // #region agent log
+    fetch('http://127.0.0.1:7328/ingest/ebd0c18b-8baf-475a-acf4-d0ae5fe7d6eb',{method:'POST',headers:{'Content-Type':'application/json','X-Debug-Session-Id':'69c7d1'},body:JSON.stringify({sessionId:'69c7d1',runId:_dbgRunId,hypothesisId:'H3',location:'api/static/console.html:runBispecificAnalyzer:submit',message:'Backend submission HTTP status',data:{armA:rA.status,armB:rB.status,pairing:rP.status},timestamp:Date.now()})}).catch(()=>{});
+    // #endregion
+
+    if (!rA.ok || !rB.ok) throw new Error(`CMC job submission failed (A:${rA.status} B:${rB.status})`);
+    const jA = await rA.json();
+    const jB = await rB.json();
+
+    if (rP.ok) pairingResult = await rP.json();
+    // #region agent log
+    fetch('http://127.0.0.1:7328/ingest/ebd0c18b-8baf-475a-acf4-d0ae5fe7d6eb',{method:'POST',headers:{'Content-Type':'application/json','X-Debug-Session-Id':'69c7d1'},body:JSON.stringify({sessionId:'69c7d1',runId:_dbgRunId,hypothesisId:'H1',location:'api/static/console.html:runBispecificAnalyzer:pairingResult',message:'Pairing endpoint payload summary',data:{hasPairing:!!pairingResult,cognateAError:pairingResult?.pairs?.cognate_a?.error||null,cognateBError:pairingResult?.pairs?.cognate_b?.error||null},timestamp:Date.now()})}).catch(()=>{});
+    // #endregion
+
+    // Poll Arm A and Arm B concurrently
+    async function pollJob(jobId, label) {
+      for (let i=0; i<200; i++) {
+        if (signal.aborted) throw new Error("cancelled");
+        await new Promise(r=>setTimeout(r,3000));
+        const pr = await apiFetch(apiJoin(`jobs/${jobId}`), {signal});
+        if (!pr.ok) throw new Error(`Poll failed for ${label}`);
+        const d = await pr.json();
+        showProg(15 + (i*1.5 > 60 ? 60 : i*1.5), `${label}: ${d.progress_note || d.status} (${d.progress||0}%)`);
+        if (["done","failed","cancelled"].includes((d.status||"").toLowerCase())) return d;
+      }
+      throw new Error(`${label} timed out`);
+    }
+
+    showProg(15, "Running structure prediction for both arms (may take 1–3 min)…");
+    const [pollA, pollB] = await Promise.all([
+      pollJob(jA.job_id, "Arm A"),
+      pollJob(jB.job_id, "Arm B"),
+    ]);
+    // #region agent log
+    fetch('http://127.0.0.1:7328/ingest/ebd0c18b-8baf-475a-acf4-d0ae5fe7d6eb',{method:'POST',headers:{'Content-Type':'application/json','X-Debug-Session-Id':'69c7d1'},body:JSON.stringify({sessionId:'69c7d1',runId:_dbgRunId,hypothesisId:'H3',location:'api/static/console.html:runBispecificAnalyzer:pollDone',message:'CMC poll terminal statuses',data:{armA:{status:pollA?.status,error:pollA?.error||null,hasResult:!!pollA?.result},armB:{status:pollB?.status,error:pollB?.error||null,hasResult:!!pollB?.result}},timestamp:Date.now()})}).catch(()=>{});
+    // #endregion
+
+    if (pollA.status === "done") cmcA = pollA.result || {};
+    else if (pollA.status === "failed") missingMetricNotes.push(`Arm A CMC job failed: ${pollA.error || "Unknown error"}`);
+    
+    if (pollB.status === "done") cmcB = pollB.result || {};
+    else if (pollB.status === "failed") missingMetricNotes.push(`Arm B CMC job failed: ${pollB.error || "Unknown error"}`);
+
+  } catch(err) {
+    clearRunning();
+    if (cancelBtn) cancelBtn.style.display = "none";
+    if (err.message === "cancelled" || (err.name && err.name === "AbortError")) {
+      setOutput(`<div style="padding:12px;color:var(--muted)">Analysis cancelled.</div>`);
+      return;
+    }
+    // Fallback to sequence-only if backend unavailable
+    cmcA = null; cmcB = null;
+    setOutput(`<div style="border:1px solid var(--warn);padding:10px 12px;border-radius:6px;background:rgba(243,156,18,0.07);font-size:12px;color:var(--warn);margin-bottom:10px"><strong>Backend unavailable:</strong> ${escapeHtml(err.message)} — showing sequence-level analysis only.</div>`);
+  }
+
+  clearRunning();
+  if (cancelBtn) cancelBtn.style.display = "none";
+
+  // ── Flag helpers ───────────────────────────────────────────────────────────
+  function fPi(v){ if(v===null||v===undefined)return{v:"N/A",s:"warn"}; if(v>=5.2&&v<=9.1)return{v,s:"pass"}; if(v>=4.8&&v<=9.5)return{v,s:"warn"}; return{v,s:"fail"}; }
+  function fCharge(v){ if(v===null)return{v:"N/A",s:"warn"}; if(v>=-3.4&&v<=5.9)return{v,s:"pass"}; if(v>=-5&&v<=8)return{v,s:"warn"}; return{v,s:"fail"}; }
+  function fGravy(v){ if(v===null)return{v:"N/A",s:"warn"}; if(v<=-0.19)return{v,s:"pass"}; if(v<=0)return{v,s:"warn"}; return{v,s:"fail"}; }
+  function fInstab(v){ if(v===null)return{v:"N/A",s:"warn"}; if(v<=47.1)return{v,s:"pass"}; if(v<=55)return{v,s:"warn"}; return{v,s:"fail"}; }
+  function fHuman(v,lo=0.69){ if(v===null||v===undefined)return{v:"N/A",s:"warn"}; if(v>=lo)return{v:v.toFixed(3),s:"pass"}; if(v>=0.5)return{v:v.toFixed(3),s:"warn"}; return{v:v.toFixed(3),s:"fail"}; }
+  function fPairingLik(v){ if(v===null||v===undefined)return{v:"N/A",s:"warn"}; if(v>=0.0001)return{v:v.toFixed(5),s:"pass"}; if(v>0)return{v:v.toFixed(5),s:"warn"}; return{v:"0",s:"fail"}; }
+  function fHydro(v){ if(v===null)return{v:"N/A",s:"warn"}; if(v<=0.78)return{v,s:"pass"}; if(v<=0.95)return{v,s:"warn"}; return{v,s:"fail"}; }
+  function fCDRLen(v){ if(v===null)return{v:"N/A",s:"warn"}; if(v>=7&&v<=16)return{v,s:"pass"}; if(v<=19)return{v,s:"warn"}; return{v,s:"fail"}; }
+  function fCDRCharge(v){ if(v===null)return{v:"N/A",s:"warn"}; if(Math.abs(v)<=2)return{v,s:"pass"}; if(Math.abs(v)<=3)return{v,s:"warn"}; return{v,s:"fail"}; }
+  function fCDRGravy(v){ if(v===null)return{v:"N/A",s:"warn"}; if(v<=0.21)return{v,s:"pass"}; if(v<=0.78)return{v,s:"warn"}; return{v,s:"fail"}; }
+  function fLiab(v){ if(v===0||v===1)return{v,s:"pass"}; if(v===2)return{v,s:"warn"}; return{v,s:"fail"}; }
+  function fFVCA(v){ if(v===null)return{v:"N/A",s:"warn"}; const a=Math.abs(v); if(a<=6.18)return{v:(v>0?"+":"")+v,s:"pass"}; if(a<=9)return{v:(v>0?"+":"")+v,s:"warn"}; return{v:(v>0?"+":"")+v,s:"fail"}; }
+  function fDeltaPi(v){ if(v===null)return{v:"N/A",s:"warn"}; if(v>=1.0)return{v,s:"pass"}; if(v>=0.5)return{v,s:"warn"}; return{v,s:"fail"}; }
+  function fPairingDelta(v){ if(v===null)return{v:"N/A",s:"warn"}; if(v>0.0015)return{v:v.toFixed(5),s:"pass"}; if(v>0.0005)return{v:v.toFixed(5),s:"warn"}; return{v:v.toFixed(5),s:"fail"}; }
+  function fCrossCharge(cogAbs, crossAbs){ if(cogAbs===null||crossAbs===null)return{v:"N/A",s:"warn"}; const d=cogAbs-crossAbs; if(d>=4)return{v:d.toFixed(1),s:"pass"}; if(d>=2)return{v:d.toFixed(1),s:"warn"}; return{v:d.toFixed(1),s:"fail"}; }
+  function worstOf(...statuses){ if(statuses.includes("fail"))return"fail"; if(statuses.includes("warn"))return"warn"; return"pass"; }
+
+  // Extract backend results
+  const aPI = cmcA?.pI_fab ?? seqA.pi;
+  const bPI = cmcB?.pI_fab ?? seqB.pi;
+  const aGravy = cmcA?.GRAVY ?? seqA.gravy;
+  const bGravy = cmcB?.GRAVY ?? seqB.gravy;
+  const aInstab = cmcA?.instability_index ?? null;
+  const bInstab = cmcB?.instability_index ?? null;
+  const aCharge = cmcA?.net_charge_pH7 ?? seqA.charge;
+  const bCharge = cmcB?.net_charge_pH7 ?? seqB.charge;
+  const aHydro = cmcA?.hydro_patch_max9 ?? seqA.hydro_max;
+  const bHydro = cmcB?.hydro_patch_max9 ?? seqB.hydro_max;
+  const aPairedH = pairingResult?.pairs?.cognate_a?.paired_humanness ?? cmcA?.p_abnativ2?.paired_humanness ?? null;
+  const bPairedH = pairingResult?.pairs?.cognate_b?.paired_humanness ?? cmcB?.p_abnativ2?.paired_humanness ?? null;
+  const aVHH = pairingResult?.pairs?.cognate_a?.vh_humanness ?? cmcA?.p_abnativ2?.vh_humanness ?? null;
+  const bVHH = pairingResult?.pairs?.cognate_b?.vh_humanness ?? cmcB?.p_abnativ2?.vh_humanness ?? null;
+  const aVLH = pairingResult?.pairs?.cognate_a?.vl_humanness ?? cmcA?.p_abnativ2?.vl_humanness ?? null;
+  const bVLH = pairingResult?.pairs?.cognate_b?.vl_humanness ?? cmcB?.p_abnativ2?.vl_humanness ?? null;
+  const aPairLik = pairingResult?.pairs?.cognate_a?.pairing_likelihood ?? cmcA?.p_abnativ2?.pairing_likelihood ?? null;
+  const bPairLik = pairingResult?.pairs?.cognate_b?.pairing_likelihood ?? cmcB?.p_abnativ2?.pairing_likelihood ?? null;
+  const aPLDDT = cmcA?.fv_plddt ?? cmcA?.mean_plddt ?? null;
+  const bPLDDT = cmcB?.fv_plddt ?? cmcB?.mean_plddt ?? null;
+  const aTotalLiab = (cmcA?.n_deamidation??0)+(cmcA?.n_isomerization??0);
+  const bTotalLiab = (cmcB?.n_deamidation??0)+(cmcB?.n_isomerization??0);
+
+  const pairingRisk = pairingResult?.overall_pairing_risk ?? "N/A";
+  const pairingDeltaA = pairingResult?.pairing_selectivity_delta_a ?? null;
+  const pairingDeltaB = pairingResult?.pairing_selectivity_delta_b ?? null;
+  const misAB_lik = pairingResult?.pairs?.mispaired_ab?.pairing_likelihood ?? null;
+  const misBA_lik = pairingResult?.pairs?.mispaired_ba?.pairing_likelihood ?? null;
+  const missingMetricNotes = [];
+  if (cmcA?.p_abnativ2?.error) missingMetricNotes.push(`Arm A p-AbNatiV (CMC): ${cmcA.p_abnativ2.error}`);
+  if (cmcB?.p_abnativ2?.error) missingMetricNotes.push(`Arm B p-AbNatiV (CMC): ${cmcB.p_abnativ2.error}`);
+  if (cmcA?._modules?.developability?.error) missingMetricNotes.push(`Arm A Developability Error: ${cmcA._modules.developability.error}`);
+  if (cmcB?._modules?.developability?.error) missingMetricNotes.push(`Arm B Developability Error: ${cmcB._modules.developability.error}`);
+  if (cmcA?._modules?.developability?.status === "SKIPPED") missingMetricNotes.push(`Arm A Developability: ${cmcA._modules.developability.reason}`);
+  if (cmcB?._modules?.developability?.status === "SKIPPED") missingMetricNotes.push(`Arm B Developability: ${cmcB._modules.developability.reason}`);
+  if (pairingResult?.pairs?.cognate_a?.error) missingMetricNotes.push(`Arm A p-AbNatiV (pairing endpoint): ${pairingResult.pairs.cognate_a.error}`);
+  if (pairingResult?.pairs?.cognate_b?.error) missingMetricNotes.push(`Arm B p-AbNatiV (pairing endpoint): ${pairingResult.pairs.cognate_b.error}`);
+  if (aPairedH === null || bPairedH === null || aPairLik === null || bPairLik === null || aVHH === null || bVHH === null || aVLH === null || bVLH === null) {
+    missingMetricNotes.push("Some p-AbNatiV metrics are unavailable in current run; see backend/tool status.");
+  }
+  // #region agent log
+  fetch('http://127.0.0.1:7328/ingest/ebd0c18b-8baf-475a-acf4-d0ae5fe7d6eb',{method:'POST',headers:{'Content-Type':'application/json','X-Debug-Session-Id':'69c7d1'},body:JSON.stringify({sessionId:'69c7d1',runId:_dbgRunId,hypothesisId:'H4',location:'api/static/console.html:runBispecificAnalyzer:finalMetrics',message:'Final metric availability snapshot',data:{nullFlags:{aInstab:aInstab===null,bInstab:bInstab===null,aPairedH:aPairedH===null,bPairedH:bPairedH===null,aVHH:aVHH===null,bVHH:bVHH===null,aVLH:aVLH===null,bVLH:bVLH===null,aPairLik:aPairLik===null,bPairLik:bPairLik===null},missingMetricNotes},timestamp:Date.now()})}).catch(()=>{});
+  // #endregion
+
+  // ── Format verification ────────────────────────────────────────────────────
+  function verifyFormat(format, vha, vla, vhb, vlb) {
+    const notes = [];
+    let status = "pass";
+    const fullHCA = (vha||"")+(vla||"");
+    const fullHCB = (vhb||"")+(vlb||"");
+    const combined = fullHCA+fullHCB;
+    if (["kih","crossmab","duetmab"].includes(format)) {
+      const hasKnob = /T366W/i.test(combined) || combined.includes("W") && combined.includes("T366");
+      const hasHole = /T366S.*L368A.*Y407V|Y407V.*L368A.*T366S/i.test(combined);
+      if (!hasKnob && !hasHole) { notes.push("KiH mutations (T366W / Y407V+T366S+L368A) not detected in sequences — verify full-length HC is provided."); status="warn"; }
+    }
+    if (["kih","crossmab","duetmab"].includes(format)) {
+      const lala = (combined.match(/L[^L]*L/g)||[]).length;
+      if (!combined.includes("LALA") && !(combined[233]==="A"&&combined[234]==="A")) {
+        notes.push("LALA silencing (L234A+L235A) not confirmed — ensure Fc effector function is silenced for bispecific safety."); if(status!=="fail")status="warn";
+      }
+    }
+    if (format==="common_lc" && vla && vlb) {
+      let matches=0;
+      const len=Math.min(vla.length,vlb.length);
+      for(let i=0;i<len;i++) if(vla[i]===vlb[i]) matches++;
+      const identity = Math.round(matches/len*100);
+      if(identity<98){notes.push(`Common LC: VL-A vs VL-B identity = ${identity}% (need ≥98% for reliable common LC strategy).`); status="fail";}
+      else notes.push(`Common LC: VL identity = ${identity}% ✓`);
+    }
+    if (format==="crossmab") notes.push("CrossMab: Domain-swap topology check requires full-length HC with CL domain. Verify CL is on HC-A.");
+    if (!notes.length) notes.push("Format engineering check: Fv-only sequences provided — full-chain verification requires assembled HC/LC.");
+    return {notes, status};
+  }
+  const fmtCheck = verifyFormat(format, vha, vla, vhb, vlb);
+
+  // ── Aggregation proxy ──────────────────────────────────────────────────────
+  function aggProxy(cdr, hyd) {
+    let risk=0;
+    if(cdr.cdr3_len>16)risk++;
+    if(cdr.cdr3_hydro_run>=3)risk++;
+    if(hyd>0.78)risk++;
+    if(cdr.liabilities>=2)risk++;
+    return risk===0?"pass":risk===1?"warn":"fail";
+  }
+  const aggA = aggProxy(cdrA, aHydro??seqA.hydro_max);
+  const aggB = aggProxy(cdrB, bHydro??seqB.hydro_max);
+
+  // ── Remediation ────────────────────────────────────────────────────────────
+  const remItems = [];
+  const highPairingRisk = pairingRisk==="HIGH" || (pairingDeltaA!==null && pairingDeltaA<=0.0005);
+  if (highPairingRisk && !["crossmab","duetmab"].includes(format)) {
+    remItems.push({cls:"fail",msg:"<strong>High mispairing risk detected.</strong> The current format does not enforce LC pairing. <strong>Recommend switching to CrossMab or DuetMab</strong>, which use domain exchange (CrossMab) or orthogonal Fab geometry (DuetMab) to physically prevent light chain mispairing. Combined with KiH, mispairing rate typically drops to &lt;2%."});
+  }
+  if (highPairingRisk && format==="crossmab") {
+    remItems.push({cls:"warn",msg:"<strong>CrossMab is active but pairing risk remains HIGH.</strong> Consider adding Electrostatic Steering (Q39E/K+Q38K/E) as a secondary layer to further reduce light chain exchange."});
+  }
+  if (format==="common_lc" && vla && vlb) {
+    const id=Math.round(((vla.split("").filter((c,i)=>c===vlb[i]).length)/Math.min(vla.length,vlb.length))*100);
+    if(id<98) remItems.push({cls:"fail",msg:`<strong>Common LC incompatible:</strong> VL-A vs VL-B identity = ${id}% (need ≥98%). Switch to CrossMab or choose a commercially available common LC (e.g. IGKV1-39 or IGKV3-20).`});
+  }
+  if (deltaPi!==null && deltaPi<0.5) remItems.push({cls:"warn",msg:`<strong>Low ΔpI (${deltaPi}):</strong> Arms A and B have similar pI, making IEX purification of bispecific from homodimers difficult. Consider pI engineering on one arm or use CrossMab + KiH for improved separation.`});
+
+  // ── Render ─────────────────────────────────────────────────────────────────
+  const fmtLabel = {crossmab:"CrossMab",kih:"KiH",duetmab:"DuetMab",common_lc:"Common LC",tandem_scfv:"Tandem scFv",tandem_vhh:"Tandem VHH",mixed_tandem:"Mixed scFv-VHH",unknown:"Unknown"}[format]||format;
+
+  const cmcAStatus = worstOf(fPi(aPI).s,fCharge(aCharge).s,fGravy(aGravy).s,fInstab(aInstab).s,fHuman(aPairedH).s,fLiab(aTotalLiab).s);
+  const cmcBStatus = worstOf(fPi(bPI).s,fCharge(bCharge).s,fGravy(bGravy).s,fInstab(bInstab).s,fHuman(bPairedH).s,fLiab(bTotalLiab).s);
+  const cdrAStatus = worstOf(fCDRLen(cdrA.cdr3_len).s,fCDRCharge(cdrA.cdr3_charge).s,fCDRGravy(cdrA.cdr3_gravy).s,fLiab(cdrA.liabilities).s);
+  const cdrBStatus = worstOf(fCDRLen(cdrB.cdr3_len).s,fCDRCharge(cdrB.cdr3_charge).s,fCDRGravy(cdrB.cdr3_gravy).s,fLiab(cdrB.liabilities).s);
+  const pairAStatus = worstOf(fFVCA(fvcaA).s,fPairingLik(aPairLik).s);
+  const pairBStatus = worstOf(fFVCA(fvcaB).s,fPairingLik(bPairLik).s);
+  const bsStatus = worstOf(fDeltaPi(deltaPi).s,fPairingDelta(pairingDeltaA).s,fPairingDelta(pairingDeltaB).s,fmtCheck.status);
+  const overallStatus = worstOf(cmcAStatus,cmcBStatus,cdrAStatus,cdrBStatus,pairAStatus,pairBStatus,bsStatus);
+
+  function cardsRow(...cards){ return `<div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:6px">${cards.join("")}</div>`; }
+
+  const html = `
+    <section class="result-panel">
+      <div class="result-title"><strong>${escapeHtml(projName)} — Bispecific Analysis</strong><span style="font-size:11px;color:var(--muted);margin-left:8px">${escapeHtml(fmtLabel)}</span><span class="run-status ${overallStatus}">${overallStatus.toUpperCase()}</span></div>
+      <div class="result-body">
+
+        ${_bsSectionHeader("① MiniCMC — Arm A", cmcAStatus)}
+        ${cardsRow(
+          _bsMetricCard("fv_pi", fPi(aPI).v, fPi(aPI).s),
+          _bsMetricCard("net_charge", fCharge(aCharge).v, fCharge(aCharge).s),
+          _bsMetricCard("gravy", fGravy(aGravy).v, fGravy(aGravy).s),
+          _bsMetricCard("instability", aInstab!==null?Math.round(aInstab*10)/10:"N/A", fInstab(aInstab).s),
+        )}
+        ${cardsRow(
+          _bsMetricCard("paired_humanness", fHuman(aPairedH).v, fHuman(aPairedH).s),
+          _bsMetricCard("vh_humanness", fHuman(aVHH,0.65).v, fHuman(aVHH,0.65).s),
+          _bsMetricCard("vl_humanness", fHuman(aVLH,0.62).v, fHuman(aVLH,0.62).s),
+          _bsMetricCard("hydro_patch", fHydro(aHydro).v, fHydro(aHydro).s),
+        )}
+
+        ${_bsSectionHeader("① MiniCMC — Arm B", cmcBStatus)}
+        ${cardsRow(
+          _bsMetricCard("fv_pi", fPi(bPI).v, fPi(bPI).s),
+          _bsMetricCard("net_charge", fCharge(bCharge).v, fCharge(bCharge).s),
+          _bsMetricCard("gravy", fGravy(bGravy).v, fGravy(bGravy).s),
+          _bsMetricCard("instability", bInstab!==null?Math.round(bInstab*10)/10:"N/A", fInstab(bInstab).s),
+        )}
+        ${cardsRow(
+          _bsMetricCard("paired_humanness", fHuman(bPairedH).v, fHuman(bPairedH).s),
+          _bsMetricCard("vh_humanness", fHuman(bVHH,0.65).v, fHuman(bVHH,0.65).s),
+          _bsMetricCard("vl_humanness", fHuman(bVLH,0.62).v, fHuman(bVLH,0.62).s),
+          _bsMetricCard("hydro_patch", fHydro(bHydro).v, fHydro(bHydro).s),
+        )}
+
+        ${_bsSectionHeader("② CDR Analysis — Arm A / Arm B", worstOf(cdrAStatus,cdrBStatus))}
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+          <div>
+            <div style="font-size:10px;color:var(--muted);margin-bottom:5px;font-weight:600">Arm A</div>
+            ${cardsRow(_bsMetricCard("cdr_h3_length",fCDRLen(cdrA.cdr3_len).v,fCDRLen(cdrA.cdr3_len).s,"IMGT heuristic"),_bsMetricCard("cdr_h3_charge",fCDRCharge(cdrA.cdr3_charge).v,fCDRCharge(cdrA.cdr3_charge).s))}
+            ${cardsRow(_bsMetricCard("cdr_h3_gravy",fCDRGravy(cdrA.cdr3_gravy).v,fCDRGravy(cdrA.cdr3_gravy).s),_bsMetricCard("cdr_liabilities",fLiab(cdrA.liabilities).v,fLiab(cdrA.liabilities).s))}
+          </div>
+          <div>
+            <div style="font-size:10px;color:var(--muted);margin-bottom:5px;font-weight:600">Arm B</div>
+            ${cardsRow(_bsMetricCard("cdr_h3_length",fCDRLen(cdrB.cdr3_len).v,fCDRLen(cdrB.cdr3_len).s,"IMGT heuristic"),_bsMetricCard("cdr_h3_charge",fCDRCharge(cdrB.cdr3_charge).v,fCDRCharge(cdrB.cdr3_charge).s))}
+            ${cardsRow(_bsMetricCard("cdr_h3_gravy",fCDRGravy(cdrB.cdr3_gravy).v,fCDRGravy(cdrB.cdr3_gravy).s),_bsMetricCard("cdr_liabilities",fLiab(cdrB.liabilities).v,fLiab(cdrB.liabilities).s))}
+          </div>
+        </div>
+
+        ${_bsSectionHeader("③ VH/VL Pairing — Cognate Arms", worstOf(pairAStatus,pairBStatus))}
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+          <div>
+            <div style="font-size:10px;color:var(--muted);margin-bottom:5px;font-weight:600">Arm A (VH-A + VL-A)</div>
+            ${cardsRow(_bsMetricCard("fvca",fFVCA(fvcaA).v,fFVCA(fvcaA).s),_bsMetricCard("pairing_likelihood",fPairingLik(aPairLik).v,fPairingLik(aPairLik).s))}
+            ${aPLDDT!==null?cardsRow(_bsMetricCard("fv_plddt",Math.round(aPLDDT*10)/10,aPLDDT>=85?"pass":aPLDDT>=70?"warn":"fail")):""}
+          </div>
+          <div>
+            <div style="font-size:10px;color:var(--muted);margin-bottom:5px;font-weight:600">Arm B (VH-B + VL-B)</div>
+            ${cardsRow(_bsMetricCard("fvca",fFVCA(fvcaB).v,fFVCA(fvcaB).s),_bsMetricCard("pairing_likelihood",fPairingLik(bPairLik).v,fPairingLik(bPairLik).s))}
+            ${bPLDDT!==null?cardsRow(_bsMetricCard("fv_plddt",Math.round(bPLDDT*10)/10,bPLDDT>=85?"pass":bPLDDT>=70?"warn":"fail")):""}
+          </div>
+        </div>
+        ${(vla && vlb) ? `
+          <div style="margin-top:8px;background:var(--panel-2);border:1px solid var(--line);border-radius:8px;padding:10px 12px">
+            <div style="font-size:10.5px;font-weight:600;margin-bottom:6px;display:flex;align-items:center">4-Way Pairing Selectivity (p-AbNatiV)${_bsMetricTooltip("pairing_selectivity")}</div>
+            <table style="width:100%;border-collapse:collapse;font-size:11.5px">
+              <thead><tr style="background:var(--panel-3)">
+                <th style="padding:4px 8px;text-align:left;font-weight:500">Pair</th>
+                <th style="padding:4px 8px;text-align:left">Type</th>
+                <th style="padding:4px 8px;text-align:left;display:flex;align-items:center">Pairing Likelihood${_bsMetricTooltip("pairing_likelihood")}</th>
+                <th style="padding:4px 8px;text-align:left">Selectivity Δ${_bsMetricTooltip("pairing_selectivity")}</th>
+              </tr></thead>
+              <tbody>
+                <tr><td style="padding:4px 8px;font-family:var(--mono)">VH-A + VL-A</td><td style="padding:4px 8px"><span class="badge pass">Cognate A</span></td><td style="padding:4px 8px;font-family:var(--mono)">${fPairingLik(aPairLik).v}</td><td style="padding:4px 8px">${(pairingDeltaA!==null?fPairingDelta(pairingDeltaA).v:"—")}</td></tr>
+                <tr><td style="padding:4px 8px;font-family:var(--mono)">VH-B + VL-B</td><td style="padding:4px 8px"><span class="badge pass">Cognate B</span></td><td style="padding:4px 8px;font-family:var(--mono)">${fPairingLik(bPairLik).v}</td><td style="padding:4px 8px">${(pairingDeltaB!==null?fPairingDelta(pairingDeltaB).v:"—")}</td></tr>
+                <tr><td style="padding:4px 8px;font-family:var(--mono)">VH-A + VL-B</td><td style="padding:4px 8px"><span class="badge warn">Mispaired</span></td><td style="padding:4px 8px;font-family:var(--mono)">${fPairingLik(misAB_lik).v}</td><td style="padding:4px 8px">—</td></tr>
+                <tr><td style="padding:4px 8px;font-family:var(--mono)">VH-B + VL-A</td><td style="padding:4px 8px"><span class="badge warn">Mispaired</span></td><td style="padding:4px 8px;font-family:var(--mono)">${fPairingLik(misBA_lik).v}</td><td style="padding:4px 8px">—</td></tr>
+              </tbody>
+            </table>
+            <div style="margin-top:6px;font-size:10.5px;color:var(--muted);background:rgba(0,0,0,0.02);padding:6px 8px;border-radius:4px;border:1px dashed var(--line-2)">
+              <strong>How to read this table:</strong> <em>Pairing Likelihood</em> indicates the repertoire probability of a given VH/VL pairing (higher is better). <em>Selectivity Δ</em> is the difference between the Cognate pair likelihood and the corresponding Mispaired likelihood. A <strong>negative or very low Δ</strong> indicates a high risk that the VH chain will incorrectly pair with the wrong VL chain during co-expression.
+            </div>
+            <div style="margin-top:6px;font-size:10.5px;color:var(--muted)">Overall pairing risk: <strong style="color:${pairingRisk==="LOW"?"#2b9a66":pairingRisk==="MODERATE"?"#f39c12":"#e03131"}">${pairingRisk}</strong> ${pairingResult?"(p-AbNatiV2)":"(pairing backend error — charge proxy used)"}</div>
+          </div>` : `<div style="font-size:11px;color:var(--muted);margin-top:6px;padding:8px 12px;background:var(--panel-2);border-radius:6px">No VL sequences provided — pairing selectivity analysis skipped.</div>`}
+
+        ${_bsSectionHeader("④ Bispecific Pairing & Stability", bsStatus)}
+        ${cardsRow(
+          _bsMetricCard("delta_pi", fDeltaPi(deltaPi).v, fDeltaPi(deltaPi).s, `Arm A pI: ${seqA.pi}  Arm B pI: ${seqB.pi}`),
+          _bsMetricCard("pairing_selectivity", pairingDeltaA!==null?fPairingDelta(pairingDeltaA).v:"N/A", pairingDeltaA!==null?fPairingDelta(pairingDeltaA).s:"warn", "Arm A selectivity"),
+          _bsMetricCard("pairing_selectivity", pairingDeltaB!==null?fPairingDelta(pairingDeltaB).v:"N/A", pairingDeltaB!==null?fPairingDelta(pairingDeltaB).s:"warn", "Arm B selectivity"),
+        )}
+        ${cardsRow(
+          _bsMetricCard("aggregation_proxy", aggA==="pass"?"Low":aggA==="warn"?"Moderate":"High", aggA, "Arm A"),
+          _bsMetricCard("aggregation_proxy", aggB==="pass"?"Low":aggB==="warn"?"Moderate":"High", aggB, "Arm B"),
+          _bsMetricCard("format_verify", fmtCheck.status==="pass"?"OK":fmtCheck.status==="warn"?"Review":"Issue", fmtCheck.status),
+        )}
+        <div style="margin-top:8px;padding:8px 12px;border:1px solid var(--line-2);border-radius:6px;font-size:11px;color:var(--muted);background:var(--panel-2)">
+          <strong style="color:var(--text)">Format check notes:</strong>
+          <ul style="margin:4px 0 0 14px">${fmtCheck.notes.map(n=>`<li>${n}</li>`).join("")}</ul>
+        </div>
+
+        ${remItems.length ? `
+          <div style="margin-top:14px">
+            <div style="font-size:11.5px;font-weight:700;margin-bottom:6px;letter-spacing:0.04em;text-transform:uppercase">Format Remediation Recommendations</div>
+            ${remItems.map(r=>`<div style="border:1px solid ${r.cls==="fail"?"#e03131":"#f39c12"};background:${r.cls==="fail"?"rgba(224,49,49,0.06)":"rgba(243,156,18,0.06)"};padding:9px 12px;border-radius:6px;font-size:12px;color:var(--text);margin-bottom:6px;line-height:1.6">${r.msg}</div>`).join("")}
+          </div>` : ""}
+
+        ${missingMetricNotes.length ? `
+          <div style="margin-top:10px;padding:9px 12px;border:1px solid #f39c12;background:rgba(243,156,18,0.08);border-radius:6px;font-size:11px;color:var(--text)">
+            <strong>Metric availability notes:</strong>
+            <ul style="margin:6px 0 0 16px">${missingMetricNotes.map(x=>`<li>${escapeHtml(String(x))}</li>`).join("")}</ul>
+          </div>` : ""}
+
+        <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:14px">
+          <button class="btn" onclick="_bsAnalyzerViewReport()">View HTML Report</button>
+          <button class="btn" onclick="_bsAnalyzerDownloadReport()">Save HTML Report</button>
+          <button class="btn" onclick="_bsAnalyzerDownloadPackage()">Download ZIP (with Structures)</button>
+        </div>
+      </div>
+    </section>`;
+
+  // Store for download
+  window._bsAnalyzerResult = {
+    projName, format, fmtLabel, vha, vla, vhb, vlb,
+    cmcA, cmcB, pairingResult, seqA, seqB, cdrA, cdrB,
+    fmtCheck, remItems, overallStatus, missingMetricNotes,
+    resolved: { aPairedH, bPairedH, aVHH, bVHH, aVLH, bVLH, aPairLik, bPairLik, pairingDeltaA, pairingDeltaB, pairingRisk },
+    ts: new Date().toLocaleString()
+  };
+
+  setOutput(html);
+}
+
+// ── Bispecific Analyzer — Download Report ────────────────────────────────────
+function _bsAnalyzerDownloadReport() {
+  const d = window._bsAnalyzerResult;
+  if (!d) { alert("No analysis results available. Run the analyzer first."); return; }
+
+  function metricSection(label, metrics) {
+    return `<div style="margin-bottom:16px">
+      <h3 style="font-size:13px;margin:0 0 8px;padding:6px 10px;background:#f1f3f4;border-radius:4px">${label}</h3>
+      <div style="display:flex;flex-wrap:wrap;gap:8px">
+        ${metrics.map(m => {
+          const cls = m.s==="fail"?"#c0392b":m.s==="warn"?"#e67e22":"#1a7f5a";
+          return `<div style="border:1px solid #ddd;border-radius:6px;padding:8px 12px;min-width:130px;flex:1;background:#fff">
+            <div style="font-size:10px;color:#666;margin-bottom:2px">${m.label}</div>
+            <div style="display:flex;align-items:center;gap:6px">
+              <span style="font-size:14px;font-weight:700;font-family:monospace">${m.value}</span>
+              <span style="font-size:10px;font-weight:700;padding:1px 6px;border-radius:3px;background:${cls}22;color:${cls};border:1px solid ${cls}44">${(m.s||"pass").toUpperCase()}</span>
+            </div>
+          </div>`;
+        }).join("")}
+      </div>
+    </div>`;
+  }
+
+  const na = v => v!==null&&v!==undefined ? v : "N/A";
+  const pp = (v, n=3) => (v!==null&&v!==undefined) ? parseFloat(v).toFixed(n) : "N/A";
+
+  function pf(v, thFn) { const r = thFn(v); return {label: "", value: na(r.v), s: r.s}; }
+
+  // Mini-helper: same flag functions as in the analyzer
+  function _fHum(v,lo=0.69){ if(v===null||v===undefined)return{v:"N/A",s:"warn"}; if(v>=lo)return{v:parseFloat(v).toFixed(3),s:"pass"}; if(v>=0.5)return{v:parseFloat(v).toFixed(3),s:"warn"}; return{v:parseFloat(v).toFixed(3),s:"fail"}; }
+  function _fPi(v){ if(v===null||v===undefined)return{v:"N/A",s:"warn"}; if(v>=5.2&&v<=9.1)return{v,s:"pass"}; if(v>=4.8&&v<=9.5)return{v,s:"warn"}; return{v,s:"fail"}; }
+  function _fCharge(v){ if(v===null||v===undefined)return{v:"N/A",s:"warn"}; if(v>=-3.4&&v<=5.9)return{v,s:"pass"}; if(v>=-5&&v<=8)return{v,s:"warn"}; return{v,s:"fail"}; }
+  function _fGravy(v){ if(v===null||v===undefined)return{v:"N/A",s:"warn"}; if(v<=-0.19)return{v,s:"pass"}; if(v<=0)return{v,s:"warn"}; return{v,s:"fail"}; }
+  function _fInstab(v){ if(v===null||v===undefined)return{v:"N/A",s:"warn"}; if(v<=47.1)return{v,s:"pass"}; if(v<=55)return{v,s:"warn"}; return{v,s:"fail"}; }
+  function _fPairLik(v){ if(v===null||v===undefined)return{v:"N/A",s:"warn"}; if(v>=0.0001)return{v:parseFloat(v).toFixed(5),s:"pass"}; if(v>0)return{v:parseFloat(v).toFixed(5),s:"warn"}; return{v:"0",s:"fail"}; }
+  function _fLiab(v){ if(v===0||v===1)return{v,s:"pass"}; if(v===2)return{v,s:"warn"}; return{v,s:"fail"}; }
+  function _fPairDelta(v){ if(v===null||v===undefined)return{v:"N/A",s:"warn"}; if(v>0.0015)return{v:parseFloat(v).toFixed(5),s:"pass"}; if(v>0.0005)return{v:parseFloat(v).toFixed(5),s:"warn"}; return{v:parseFloat(v).toFixed(5),s:"fail"}; }
+  function _fDeltaPi(v){ if(v===null||v===undefined)return{v:"N/A",s:"warn"}; if(v>=1.0)return{v,s:"pass"}; if(v>=0.5)return{v,s:"warn"}; return{v,s:"fail"}; }
+
+  const cmcA = d.cmcA||{}, cmcB = d.cmcB||{};
+  const rr = d.resolved || {};
+  const pa = d.pairingResult;
+
+  const deltaPI = (d.seqA.pi!==null&&d.seqB.pi!==null) ? Math.round(Math.abs(d.seqA.pi-d.seqB.pi)*10)/10 : null;
+
+  const htmlReport = `<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="robots" content="noindex,nofollow">
+<title>${d.projName} — Bispecific Analysis Report</title>
+<style>
+  body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;font-size:13px;color:#222;max-width:900px;margin:32px auto;padding:0 24px;line-height:1.6}
+  h1{font-size:20px;margin-bottom:4px}h2{font-size:15px;border-bottom:1px solid #ddd;padding-bottom:4px}
+  h3{font-size:13px;margin:12px 0 6px}
+  table{width:100%;border-collapse:collapse;font-size:11.5px;margin-bottom:10px}
+  th,td{padding:5px 8px;border:1px solid #ddd;text-align:left}
+  th{background:#f5f5f5;font-weight:600}
+  .badge-pass{background:#d4edda;color:#1a7f5a;padding:1px 7px;border-radius:3px;font-size:10px;font-weight:700}
+  .badge-warn{background:#fff3cd;color:#856404;padding:1px 7px;border-radius:3px;font-size:10px;font-weight:700}
+  .badge-fail{background:#f8d7da;color:#721c24;padding:1px 7px;border-radius:3px;font-size:10px;font-weight:700}
+  .section{margin-bottom:20px}
+  pre{background:#f5f5f5;padding:10px;border-radius:4px;font-size:11px;overflow-x:auto;white-space:pre-wrap;word-break:break-all}
+  .warn-box{border:1px solid #f39c12;background:#fffbe6;padding:8px 12px;border-radius:5px;margin-bottom:8px;font-size:12px}
+  .fail-box{border:1px solid #e03131;background:#fff5f5;padding:8px 12px;border-radius:5px;margin-bottom:8px;font-size:12px}
+  footer{font-size:10px;color:#888;margin-top:30px;border-top:1px solid #eee;padding-top:8px}
+</style>
+</head>
+<body>
+<h1>Bispecific Antibody Analysis Report</h1>
+<p><strong>Project:</strong> ${d.projName} &nbsp;|&nbsp; <strong>Format:</strong> ${d.fmtLabel} &nbsp;|&nbsp; <strong>Status:</strong> <span class="badge-${d.overallStatus}">${d.overallStatus.toUpperCase()}</span></p>
+<p style="font-size:11px;color:#666">Generated: ${d.ts} &nbsp;|&nbsp; InSynBio AbEngineCore — Bispecific Analyzer</p>
+<hr>
+
+<div class="section">
+<h2>§1 — MiniCMC: Arm A</h2>
+<table><thead><tr><th>Metric</th><th>Value</th><th>Status</th><th>Reference (AbRef-458)</th></tr></thead><tbody>
+<tr><td>Fv pI</td><td>${na(cmcA.pI_fab??d.seqA.pi)}</td><td><span class="badge-${_fPi(cmcA.pI_fab??d.seqA.pi).s}">${_fPi(cmcA.pI_fab??d.seqA.pi).s.toUpperCase()}</span></td><td>p5=5.20, p95=9.09</td></tr>
+<tr><td>Net charge (pH7)</td><td>${na(cmcA.net_charge_pH7??d.seqA.charge)}</td><td><span class="badge-${_fCharge(cmcA.net_charge_pH7??d.seqA.charge).s}">${_fCharge(cmcA.net_charge_pH7??d.seqA.charge).s.toUpperCase()}</span></td><td>p5=−3.38, p95=+5.88</td></tr>
+<tr><td>GRAVY index</td><td>${na(cmcA.GRAVY??d.seqA.gravy)}</td><td><span class="badge-${_fGravy(cmcA.GRAVY??d.seqA.gravy).s}">${_fGravy(cmcA.GRAVY??d.seqA.gravy).s.toUpperCase()}</span></td><td>Mean=−0.34; clinical: all&lt;0</td></tr>
+<tr><td>Instability index</td><td>${na(cmcA.instability_index)}</td><td><span class="badge-${_fInstab(cmcA.instability_index).s}">${_fInstab(cmcA.instability_index).s.toUpperCase()}</span></td><td>p95=47.1; stable &lt;40</td></tr>
+<tr><td>Paired humanness (p-AbNatiV)</td><td>${_fHum(rr.aPairedH ?? cmcA.p_abnativ2?.paired_humanness).v}</td><td><span class="badge-${_fHum(rr.aPairedH ?? cmcA.p_abnativ2?.paired_humanness).s}">${_fHum(rr.aPairedH ?? cmcA.p_abnativ2?.paired_humanness).s.toUpperCase()}</span></td><td>p5=0.69, p50=0.83</td></tr>
+<tr><td>VH humanness (p-AbNatiV)</td><td>${_fHum(rr.aVHH ?? cmcA.p_abnativ2?.vh_humanness, 0.65).v}</td><td><span class="badge-${_fHum(rr.aVHH ?? cmcA.p_abnativ2?.vh_humanness, 0.65).s}">${_fHum(rr.aVHH ?? cmcA.p_abnativ2?.vh_humanness, 0.65).s.toUpperCase()}</span></td><td>p5=0.65</td></tr>
+<tr><td>VL humanness (p-AbNatiV)</td><td>${_fHum(rr.aVLH ?? cmcA.p_abnativ2?.vl_humanness, 0.62).v}</td><td><span class="badge-${_fHum(rr.aVLH ?? cmcA.p_abnativ2?.vl_humanness, 0.62).s}">${_fHum(rr.aVLH ?? cmcA.p_abnativ2?.vl_humanness, 0.62).s.toUpperCase()}</span></td><td>p5=0.62</td></tr>
+<tr><td>Pairing likelihood (p-AbNatiV)</td><td>${na(rr.aPairLik ?? cmcA.p_abnativ2?.pairing_likelihood)}</td><td><span class="badge-${_fPairLik(rr.aPairLik ?? cmcA.p_abnativ2?.pairing_likelihood).s}">${_fPairLik(rr.aPairLik ?? cmcA.p_abnativ2?.pairing_likelihood).s.toUpperCase()}</span></td><td>p10=0.0001, p50=0.0065</td></tr>
+<tr><td>CDR liabilities count</td><td>${_fLiab((cmcA.n_deamidation||0)+(cmcA.n_isomerization||0)).v}</td><td><span class="badge-${_fLiab((cmcA.n_deamidation||0)+(cmcA.n_isomerization||0)).s}">${_fLiab((cmcA.n_deamidation||0)+(cmcA.n_isomerization||0)).s.toUpperCase()}</span></td><td>Mean=1.1; flag≥3</td></tr>
+</tbody></table>
+</div>
+
+<div class="section">
+<h2>§2 — MiniCMC: Arm B</h2>
+<table><thead><tr><th>Metric</th><th>Value</th><th>Status</th><th>Reference (AbRef-458)</th></tr></thead><tbody>
+<tr><td>Fv pI</td><td>${na(cmcB.pI_fab??d.seqB.pi)}</td><td><span class="badge-${_fPi(cmcB.pI_fab??d.seqB.pi).s}">${_fPi(cmcB.pI_fab??d.seqB.pi).s.toUpperCase()}</span></td><td>p5=5.20, p95=9.09</td></tr>
+<tr><td>Net charge (pH7)</td><td>${na(cmcB.net_charge_pH7??d.seqB.charge)}</td><td><span class="badge-${_fCharge(cmcB.net_charge_pH7??d.seqB.charge).s}">${_fCharge(cmcB.net_charge_pH7??d.seqB.charge).s.toUpperCase()}</span></td><td>p5=−3.38, p95=+5.88</td></tr>
+<tr><td>GRAVY index</td><td>${na(cmcB.GRAVY??d.seqB.gravy)}</td><td><span class="badge-${_fGravy(cmcB.GRAVY??d.seqB.gravy).s}">${_fGravy(cmcB.GRAVY??d.seqB.gravy).s.toUpperCase()}</span></td><td>Mean=−0.34; clinical: all&lt;0</td></tr>
+<tr><td>Instability index</td><td>${na(cmcB.instability_index)}</td><td><span class="badge-${_fInstab(cmcB.instability_index).s}">${_fInstab(cmcB.instability_index).s.toUpperCase()}</span></td><td>p95=47.1; stable &lt;40</td></tr>
+<tr><td>Paired humanness (p-AbNatiV)</td><td>${_fHum(rr.bPairedH ?? cmcB.p_abnativ2?.paired_humanness).v}</td><td><span class="badge-${_fHum(rr.bPairedH ?? cmcB.p_abnativ2?.paired_humanness).s}">${_fHum(rr.bPairedH ?? cmcB.p_abnativ2?.paired_humanness).s.toUpperCase()}</span></td><td>p5=0.69, p50=0.83</td></tr>
+<tr><td>VH humanness (p-AbNatiV)</td><td>${_fHum(rr.bVHH ?? cmcB.p_abnativ2?.vh_humanness, 0.65).v}</td><td><span class="badge-${_fHum(rr.bVHH ?? cmcB.p_abnativ2?.vh_humanness, 0.65).s}">${_fHum(rr.bVHH ?? cmcB.p_abnativ2?.vh_humanness, 0.65).s.toUpperCase()}</span></td><td>p5=0.65</td></tr>
+<tr><td>VL humanness (p-AbNatiV)</td><td>${_fHum(rr.bVLH ?? cmcB.p_abnativ2?.vl_humanness, 0.62).v}</td><td><span class="badge-${_fHum(rr.bVLH ?? cmcB.p_abnativ2?.vl_humanness, 0.62).s}">${_fHum(rr.bVLH ?? cmcB.p_abnativ2?.vl_humanness, 0.62).s.toUpperCase()}</span></td><td>p5=0.62</td></tr>
+<tr><td>Pairing likelihood (p-AbNatiV)</td><td>${na(rr.bPairLik ?? cmcB.p_abnativ2?.pairing_likelihood)}</td><td><span class="badge-${_fPairLik(rr.bPairLik ?? cmcB.p_abnativ2?.pairing_likelihood).s}">${_fPairLik(rr.bPairLik ?? cmcB.p_abnativ2?.pairing_likelihood).s.toUpperCase()}</span></td><td>p10=0.0001, p50=0.0065</td></tr>
+<tr><td>CDR liabilities count</td><td>${_fLiab((cmcB.n_deamidation||0)+(cmcB.n_isomerization||0)).v}</td><td><span class="badge-${_fLiab((cmcB.n_deamidation||0)+(cmcB.n_isomerization||0)).s}">${_fLiab((cmcB.n_deamidation||0)+(cmcB.n_isomerization||0)).s.toUpperCase()}</span></td><td>Mean=1.1; flag≥3</td></tr>
+</tbody></table>
+</div>
+
+<div class="section">
+<h2>§3 — CDR Analysis</h2>
+<table><thead><tr><th>Metric</th><th>Arm A</th><th>Arm B</th><th>Reference</th></tr></thead><tbody>
+<tr><td>CDR-H3 length (heuristic)</td><td>${na(d.cdrA.cdr3_len)} aa</td><td>${na(d.cdrB.cdr3_len)} aa</td><td>Mean=12, flag&gt;16; extreme&gt;19</td></tr>
+<tr><td>CDR-H3 net charge</td><td>${na(d.cdrA.cdr3_charge)}</td><td>${na(d.cdrB.cdr3_charge)}</td><td>flag |charge|&gt;3</td></tr>
+<tr><td>CDR-H3 GRAVY</td><td>${na(d.cdrA.cdr3_gravy)}</td><td>${na(d.cdrB.cdr3_gravy)}</td><td>flag &gt;0.21</td></tr>
+<tr><td>CDR-H3 hydrophobic run</td><td>${na(d.cdrA.cdr3_hydro_run)}</td><td>${na(d.cdrB.cdr3_hydro_run)}</td><td>flag &gt;3</td></tr>
+<tr><td>CDR liabilities (NG/NS/DG/DS/M/W)</td><td>${na(d.cdrA.liabilities)}</td><td>${na(d.cdrB.liabilities)}</td><td>flag ≥3</td></tr>
+</tbody></table>
+</div>
+
+<div class="section">
+<h2>§4 — VH/VL Pairing &amp; Bispecific Selectivity</h2>
+<table><thead><tr><th>Pair</th><th>Type</th><th>Pairing Likelihood (p-AbNatiV)</th><th>Selectivity Δ</th></tr></thead><tbody>
+<tr><td>VH-A + VL-A</td><td>Cognate A</td><td>${na(pa?.pairs?.cognate_a?.pairing_likelihood ?? rr.aPairLik)}</td><td>${_fPairDelta(pa?.pairing_selectivity_delta_a ?? rr.pairingDeltaA).v}</td></tr>
+<tr><td>VH-B + VL-B</td><td>Cognate B</td><td>${na(pa?.pairs?.cognate_b?.pairing_likelihood ?? rr.bPairLik)}</td><td>${_fPairDelta(pa?.pairing_selectivity_delta_b ?? rr.pairingDeltaB).v}</td></tr>
+<tr><td>VH-A + VL-B</td><td>Mispaired</td><td>${na(pa?.pairs?.mispaired_ab?.pairing_likelihood)}</td><td>—</td></tr>
+<tr><td>VH-B + VL-A</td><td>Mispaired</td><td>${na(pa?.pairs?.mispaired_ba?.pairing_likelihood)}</td><td>—</td></tr>
+</tbody></table>
+<p><strong>Overall pairing risk:</strong> ${pa?.overall_pairing_risk || rr.pairingRisk || "N/A"} &nbsp;|&nbsp; <strong>ΔpI (Arm A vs B):</strong> ${_fDeltaPi(deltaPI).v} <span class="badge-${_fDeltaPi(deltaPI).s}">${(_fDeltaPi(deltaPI).s).toUpperCase()}</span></p>
+</div>
+
+<div class="section">
+<h2>§5 — Format Engineering Check</h2>
+<p><strong>Format:</strong> ${d.fmtLabel} &nbsp;|&nbsp; <strong>Status:</strong> <span class="badge-${d.fmtCheck.status}">${d.fmtCheck.status.toUpperCase()}</span></p>
+<ul>${d.fmtCheck.notes.map(n=>`<li>${n}</li>`).join("")}</ul>
+</div>
+
+${d.remItems.length ? `<div class="section">
+<h2>§6 — Remediation Recommendations</h2>
+${d.remItems.map(r=>`<div class="${r.cls}-box">${r.msg}</div>`).join("")}
+</div>` : ""}
+
+${d.missingMetricNotes && d.missingMetricNotes.length ? `<div class="section">
+<h2>§6b — Metric Availability Notes</h2>
+<ul>${d.missingMetricNotes.map(n=>`<li>${escapeHtml(String(n))}</li>`).join("")}</ul>
+</div>` : ""}
+
+<div class="section">
+<h2>§7 — Sequences (FASTA)</h2>
+<pre>>VH-A_${escapeHtml(d.projName)}
+${d.vha}
+
+>VL-A_${escapeHtml(d.projName)}
+${d.vla||"(not provided — VHH/sdAb)"}
+
+>VH-B_${escapeHtml(d.projName)}
+${d.vhb}
+
+>VL-B_${escapeHtml(d.projName)}
+${d.vlb||"(not provided — VHH/sdAb)"}</pre>
+</div>
+
+<footer>InSynBio AbEngineCore — Bispecific Analyzer &nbsp;|&nbsp; For internal research use only &nbsp;|&nbsp; ${d.ts}</footer>
+</body>
+</html>`;
+
+  const blob = new Blob([htmlReport], {type:"text/html"});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url; a.download = `${d.projName.replace(/[^a-zA-Z0-9_-]/g,"_")}_bispecific_analysis.html`;
+  document.body.appendChild(a); a.click();
+  setTimeout(() => { URL.revokeObjectURL(url); a.remove(); }, 1000);
+}
+
+async function _bsAnalyzerDownloadPackage() {
+  const d = window._bsAnalyzerResult;
+  if (!d) { alert("No analysis results available. Run the analyzer first."); return; }
+
+  // Load JSZip dynamically
+  if (typeof JSZip === "undefined") {
+    try {
+      await new Promise((resolve, reject) => {
+        const s = document.createElement("script");
+        s.src = "https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js";
+        s.onload = resolve;
+        s.onerror = reject;
+        document.head.appendChild(s);
+      });
+    } catch(e) {
+      alert("Failed to load JSZip from cdnjs. Cannot create ZIP. Please download the HTML report instead.");
+      return;
+    }
+  }
+
+  const zip = new JSZip();
+  const base = d.projName.replace(/[^a-zA-Z0-9_-]/g,"_");
+
+  const fasta = [
+    `>VH-A_${d.projName}\n${d.vha}`,
+    d.vla ? `>VL-A_${d.projName}\n${d.vla}` : `>VH-A_${d.projName}_NOTE: VL not provided (VHH/sdAb)`,
+    `>VH-B_${d.projName}\n${d.vhb}`,
+    d.vlb ? `>VL-B_${d.projName}\n${d.vlb}` : `>VH-B_${d.projName}_NOTE: VL not provided (VHH/sdAb)`,
+  ].join("\n\n");
+  zip.file(`${base}_sequences.fasta`, fasta);
+
+  // HTML Report
+  const html = _buildBsAnalyzerHtml(d);
+  zip.file(`${base}_report.html`, html);
+
+  // Readme
+  const readme = `Bispecific Analysis Package
+===========================
+Project: ${d.projName}
+Format:  ${d.fmtLabel}
+Status:  ${d.overallStatus.toUpperCase()}
+Generated: ${d.ts}
+
+Files in this package
+---------------------
+1. ${base}_sequences.fasta  — Fv sequences of both binders (VH-A, VL-A, VH-B, VL-B)
+2. ${base}_report.html      — Full analysis report (open in browser)
+3. ${base}_ArmA.pdb / ${base}_ArmB.pdb — Predicted Fv structures (if available)
+4. README.txt       — This file
+
+Analysis Summary
+----------------
+Format check: ${d.fmtCheck.status.toUpperCase()}
+${d.fmtCheck.notes.map(n=>" - "+n).join("\n")}
+
+Pairing risk: ${d.pairingResult?.overall_pairing_risk||d.resolved?.pairingRisk||"N/A"}
+
+${d.remItems.length ? "Remediation needed:\n"+d.remItems.map(r=>" - "+r.msg.replace(/<[^>]+>/g,"")).join("\n") : "No critical remediation actions required."}
+
+InSynBio AbEngineCore — Internal Engineering Use Only
+`;
+  zip.file("README.txt", readme);
+
+  // Structures
+  const apiBase = typeof getApiBase === "function" ? getApiBase() : (window._apiBase || "");
+  async function fetchPdb(url) {
+    if (!url) return null;
+    try {
+      const absUrl = url.startsWith("http") ? url : (apiBase.replace(/\/$/, "") + url);
+      const resp = await fetch(absUrl);
+      if (resp.ok) return await resp.blob();
+    } catch(e) {}
+    return null;
+  }
+  
+  const pdbA_url = d.cmcA?.fv_structure?.pdb_url || d.cmcA?.structure_metrics?.pdb_url;
+  const pdbA = await fetchPdb(pdbA_url);
+  if (pdbA) zip.file(`${base}_ArmA.pdb`, pdbA);
+  
+  const pdbB_url = d.cmcB?.fv_structure?.pdb_url || d.cmcB?.structure_metrics?.pdb_url;
+  const pdbB = await fetchPdb(pdbB_url);
+  if (pdbB) zip.file(`${base}_ArmB.pdb`, pdbB);
+
+  const content = await zip.generateAsync({type:"blob"});
+  const url = URL.createObjectURL(content);
+  const a = document.createElement("a");
+  a.href = url; a.download = `${base}_Bispecific_Package.zip`;
+  document.body.appendChild(a); a.click();
+  setTimeout(() => { URL.revokeObjectURL(url); a.remove(); }, 1000);
+}
+
 async function runCmcBispecific(service) {
   if (_bsCmcAbortCtrl && !_bsCmcAbortCtrl.signal.aborted) _bsCmcAbortCtrl.abort();
   _bsCmcAbortCtrl = new AbortController();
@@ -11430,6 +13352,7 @@ function renderVhToVhhResult(data, service, demoId) {
         <p style="font-size:11px;color:var(--muted);margin-top:8px">Mutated positions shown in <span style="color:#c9a227;font-weight:700">amber</span>. Verify activity by SPR/BLI before advancing.</p>
         <div class="button-row" style="margin-top:10px;flex-wrap:wrap">
           <button type="button" class="btn" style="border-color:var(--accent);color:var(--accent)" onclick="goToVhhCmcWithLastHumanization()">Run VHH CMC Snapshot →</button>
+          <button type="button" class="btn" style="border-color:#22d3ee;color:#22d3ee" onclick="goToCdnaWithLastHumanization(true)">cDNA Optimization (VHH) →</button>
         </div>
       </div>
     </section>`;
@@ -11589,6 +13512,7 @@ function renderVhToVhhResult(data, service, demoId) {
         <p style="font-size:11px;color:var(--muted);margin-top:8px">Mutated positions shown in <span style="color:#c9a227;font-weight:700">amber</span>. Verify activity by SPR/BLI before advancing.</p>
         <div class="button-row" style="margin-top:10px;flex-wrap:wrap">
           <button type="button" class="btn" style="border-color:var(--accent);color:var(--accent)" onclick="goToVhhCmcWithLastHumanization()">Run VHH CMC Snapshot →</button>
+          <button type="button" class="btn" style="border-color:#22d3ee;color:#22d3ee" onclick="goToCdnaWithLastHumanization(true)">cDNA Optimization (VHH) →</button>
         </div>
       </div>
     </section>`}
@@ -13032,6 +14956,83 @@ function fillCdnaVhhFromLastHumanization() {
   if (helper) {
     helper.textContent = "Loaded VHH sequence from the latest humanization result in this browser session.";
   }
+}
+
+/** Pre-fill IgG cDNA form from last VH/VL humanization stored in sessionStorage. */
+function fillCdnaIggFromLastHumanization() {
+  let vh = "", vl = "", name = "";
+  try {
+    vh   = sessionStorage.getItem("insynbio_last_humanized_vh") || "";
+    vl   = sessionStorage.getItem("insynbio_last_humanized_vl") || "";
+    name = sessionStorage.getItem("insynbio_last_humanized_name") || "";
+  } catch (e) {}
+  const seqEl  = document.getElementById("cdna-seq");
+  const vlEl   = document.getElementById("cdna-vl");
+  const nameEl = document.getElementById("cdna-name");
+  if (!seqEl) return;
+  if (!String(vh).trim()) {
+    window.alert("No humanized VH/VL found in this browser session. Run VH/VL Humanization first, then use this button.");
+    return;
+  }
+  seqEl.value = String(vh).trim();
+  if (vlEl) vlEl.value = String(vl).trim();
+  if (nameEl && name) nameEl.value = name;
+  const helper = document.getElementById("cdna-helper");
+  if (helper) helper.textContent = "Loaded VH/VL sequences from the latest humanization result in this browser session.";
+}
+
+/** Navigate to cDNA optimization and pre-fill the last humanized sequence. */
+function goToCdnaWithLastHumanization(isVhh) {
+  activateService(isVhh ? "cdna-optimization-vhh" : "cdna-optimization-igg");
+  setTimeout(() => {
+    if (isVhh) fillCdnaVhhFromLastHumanization();
+    else fillCdnaIggFromLastHumanization();
+  }, 250);
+}
+
+/** Navigate to IgG cDNA optimization and pre-fill from last CMC run. */
+function goToCdnaFromCmcIgg() {
+  const vh   = (window._lastCmcInputVh   || "").trim();
+  const vl   = (window._lastCmcInputVl   || "").trim();
+  const name = (window._lastCmcInputName || "").trim();
+  if (!vh) {
+    window.alert("No IgG CMC sequences cached in this browser session. Run CMC assessment first.");
+    return;
+  }
+  activateService("cdna-optimization-igg");
+  setTimeout(() => {
+    const seqEl  = document.getElementById("cdna-seq");
+    const vlEl   = document.getElementById("cdna-vl");
+    const nameEl = document.getElementById("cdna-name");
+    if (seqEl) seqEl.value = vh;
+    if (vlEl)  vlEl.value  = vl;
+    if (nameEl && name) nameEl.value = name;
+    const helper = document.getElementById("cdna-helper");
+    if (helper) helper.textContent = "Sequences pre-filled from the CMC assessment result in this browser session.";
+    const shell = document.querySelector(".service-shell");
+    if (shell) shell.scrollIntoView({ behavior: "smooth", block: "start" });
+  }, 250);
+}
+
+/** Navigate to VHH cDNA optimization and pre-fill from last VHH CMC run. */
+function goToCdnaFromCmcVhh() {
+  const vhh  = (window._lastCmcInputVhh  || "").trim();
+  const name = (window._lastCmcInputName || "").trim();
+  if (!vhh) {
+    window.alert("No VHH CMC sequence cached in this browser session. Run VHH CMC assessment first.");
+    return;
+  }
+  activateService("cdna-optimization-vhh");
+  setTimeout(() => {
+    const seqEl  = document.getElementById("cdna-seq");
+    const nameEl = document.getElementById("cdna-name");
+    if (seqEl) seqEl.value = vhh;
+    if (nameEl && name) nameEl.value = name;
+    const helper = document.getElementById("cdna-helper");
+    if (helper) helper.textContent = "VHH sequence pre-filled from the CMC assessment result in this browser session.";
+    const shell = document.querySelector(".service-shell");
+    if (shell) shell.scrollIntoView({ behavior: "smooth", block: "start" });
+  }, 250);
 }
 
 function goToAf2MultimerWithLastHumanization(useVhhMode) {
