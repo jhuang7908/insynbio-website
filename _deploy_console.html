@@ -1385,6 +1385,11 @@ const REGISTRY = {
       tier: "online",
       services: [
         "car-t-assembler",
+        "cart-invivo-solid",
+        "cart-invivo-blood",
+        "cart-invivo-neuro",
+        "cart-invivo-auto",
+        "cart-invivo-multi",
       ],
     },
     {
@@ -1606,9 +1611,9 @@ const REGISTRY = {
     },
     "car-t-assembler": {
       module: "car-t-design",
-      navGroup: "workflow",
-      label: "CAR-T Assembler",
-      subtitle: "Construct design & routing",
+      navGroup: "exvivo",
+      label: "Ex Vivo CAR",
+      subtitle: "Construct assembly",
       computeMode: "Lite",
       credits: 5000,
       description: "Assemble CAR-T constructs (binder, hinge, transmembrane, costimulatory domains) using the 11-layer CAR standard framework. Validates compatibility and generates full sequences.",
@@ -1617,6 +1622,81 @@ const REGISTRY = {
       reportVersion: "1.0",
       runner: "car-t-assembler",
       demos: ["cd19-28z-car", "cd19-bbz-car", "her2-bbz-car"]
+    },
+    "cart-invivo-solid": {
+      module: "car-t-design",
+      navGroup: "invivo",
+      label: "🫁 Solid Tumor",
+      subtitle: "In Vivo · LNP-mRNA",
+      computeMode: "Lite",
+      credits: 5000,
+      description: "In Vivo CAR binder library for solid tumor indications — EpCAM, AFP, CEA, GPC1, PSCA, PSMA, HER3, Mesothelin. LNP-mRNA delivery; no ex vivo manufacturing.",
+      analysisVersion: "v1.0",
+      underlyingStandard: "CAR-T Design Standard V1.0",
+      reportVersion: "1.0",
+      runner: "car-t-assembler",
+      invivoDisease: "Solid Tumor",
+      demos: ["cd19-28z-car"]
+    },
+    "cart-invivo-blood": {
+      module: "car-t-design",
+      navGroup: "invivo",
+      label: "🩸 Blood Cancer",
+      subtitle: "In Vivo · Hematologic",
+      computeMode: "Lite",
+      credits: 5000,
+      description: "In Vivo CAR binder library for hematologic malignancies — ROR1, CD123, FLT3, GPRC5D, CD44v6.",
+      analysisVersion: "v1.0",
+      underlyingStandard: "CAR-T Design Standard V1.0",
+      reportVersion: "1.0",
+      runner: "car-t-assembler",
+      invivoDisease: "Hematologic (Liquid Tumor)",
+      demos: ["cd19-bbz-car"]
+    },
+    "cart-invivo-neuro": {
+      module: "car-t-design",
+      navGroup: "invivo",
+      label: "🧠 Neuro / CNS",
+      subtitle: "In Vivo · CNS / Glioma",
+      computeMode: "Lite",
+      credits: 5000,
+      description: "In Vivo CAR for CNS / Glioma — GD2 scFv targeting GD2-positive tumors such as GBM and DIPG.",
+      analysisVersion: "v1.0",
+      underlyingStandard: "CAR-T Design Standard V1.0",
+      reportVersion: "1.0",
+      runner: "car-t-assembler",
+      invivoDisease: "Neurological (CNS/Glioma)",
+      demos: []
+    },
+    "cart-invivo-auto": {
+      module: "car-t-design",
+      navGroup: "invivo",
+      label: "🛡 Autoimmune",
+      subtitle: "In Vivo · CAAR-T",
+      computeMode: "Lite",
+      credits: 5000,
+      description: "In Vivo CAAR-T for autoimmune diseases — OKT3 humanized scFv for self-tolerance engineering (CAAR-T platform).",
+      analysisVersion: "v1.0",
+      underlyingStandard: "CAR-T Design Standard V1.0",
+      reportVersion: "1.0",
+      runner: "car-t-assembler",
+      invivoDisease: "Autoimmune (Self-Tolerance/CAAR)",
+      demos: []
+    },
+    "cart-invivo-multi": {
+      module: "car-t-design",
+      navGroup: "invivo",
+      label: "🎯 Multi-Target",
+      subtitle: "In Vivo · Broad / DLL3 · CXCR4",
+      computeMode: "Lite",
+      credits: 5000,
+      description: "In Vivo CAR for multi-indication or dual-target strategies — DLL3 (neuroendocrine / SCLC) and CXCR4 (AML / lymphoma stem cells).",
+      analysisVersion: "v1.0",
+      underlyingStandard: "CAR-T Design Standard V1.0",
+      reportVersion: "1.0",
+      runner: "car-t-assembler",
+      invivoDisease: "General/Multi-Target",
+      demos: []
     },
     // ── CMC ──────────────────────────────────────────────────────────────
     "igg-cmc-snapshot": {
@@ -2000,6 +2080,11 @@ const RAE_SERVICE_GROUPS = [
   { id: "structure", label: "2 · Structure" },
   { id: "humanization", label: "3 · Humanization" },
   { id: "workflow", label: "Workflow & reports" },
+];
+
+const CART_SERVICE_GROUPS = [
+  { id: "exvivo",  label: "Ex Vivo CAR" },
+  { id: "invivo",  label: "🔥 In Vivo CAR" },
 ];
 
 const state = {
@@ -2933,6 +3018,25 @@ function renderSidebar() {
       }).join("");
       return `<div class="service-group"><div class="service-group-label">${g.label}</div>${buttons}</div>`;
     }).join("");
+  } else if (currentModule.id === "car-t-design") {
+    serviceNav.innerHTML = CART_SERVICE_GROUPS.map((g) => {
+      const ids = currentModule.services.filter((sid) => {
+        const s = REGISTRY.services[sid];
+        return s && s.navGroup === g.id;
+      });
+      if (!ids.length) return "";
+      const buttons = ids.map((serviceId) => {
+        const service = REGISTRY.services[serviceId];
+        return `
+      <button class="service-btn ${serviceId === state.service ? "active" : ""}" onclick="activateService('${serviceId}')">
+        ${service.label}
+        <span class="service-sub">${service.subtitle}</span>
+      </button>`;
+      }).join("");
+      const isHot = g.id === "invivo";
+      const groupStyle = isHot ? 'border-left:2px solid #ef4444;padding-left:6px;margin-left:2px' : '';
+      return `<div class="service-group" style="${groupStyle}"><div class="service-group-label">${g.label}</div>${buttons}</div>`;
+    }).join("");
   } else {
     serviceNav.innerHTML = currentModule.services.map(serviceId => {
       const service = REGISTRY.services[serviceId];
@@ -3252,7 +3356,13 @@ function renderServicePanel(service) {
     case "cmc-bispecific":    formBlock = renderCmcBispecificForm(service); break;
     case "vh-to-vhh":         formBlock = renderVhToVhhForm(service); break;
     case "bispecific-assembler": formBlock = renderBispecificAssemblerForm(service); break;
-    case "car-t-assembler": formBlock = renderCartAssemblerForm(service); break;
+    case "car-t-assembler":
+    case "cart-invivo-solid":
+    case "cart-invivo-blood":
+    case "cart-invivo-neuro":
+    case "cart-invivo-auto":
+    case "cart-invivo-multi":
+      formBlock = renderCartAssemblerForm(service); break;
     case "segmentation-vhvl": formBlock = renderSegmentationVhvlForm(service); break;
     case "vhh-segmentation":  formBlock = renderVhhSegmentationForm(service); break;
     case "cdna-optimization": formBlock = renderCdnaOptimizationForm(service); break;
@@ -3887,20 +3997,6 @@ function renderCartAssemblerForm(service) {
 
       <!-- Stats banner -->
       <div id="cart-stats-banner" style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px;font-size:11px"></div>
-
-      <!-- ══════════ TOP-LEVEL MODE TOGGLE ══════════ -->
-      <div style="display:flex;gap:0;margin-bottom:16px;border:1px solid var(--border);border-radius:8px;overflow:hidden;width:fit-content">
-        <button id="cart-tlbtn-exvivo" type="button"
-          onclick="_cartSetDeliveryMode('exvivo')"
-          style="padding:8px 20px;font-size:12px;font-weight:600;border:none;cursor:pointer;background:var(--accent);color:#fff;border-radius:0;transition:all .2s">
-          🔬 Ex Vivo CAR
-        </button>
-        <button id="cart-tlbtn-invivo" type="button"
-          onclick="_cartSetDeliveryMode('invivo')"
-          style="padding:8px 20px;font-size:12px;font-weight:600;border:none;cursor:pointer;background:var(--surface);color:var(--text);border-radius:0;transition:all .2s;border-left:1px solid var(--border)">
-          🔥 In Vivo CAR&nbsp;<span style="font-size:9px;background:#ef4444;color:#fff;padding:1px 5px;border-radius:10px;vertical-align:middle">HOT</span>
-        </button>
-      </div>
 
       <!-- ══════════ IN VIVO CAR PANEL ══════════ -->
       <div id="cart-invivo-panel" style="display:none;margin-bottom:18px">
@@ -4826,9 +4922,13 @@ function hydrateService(service) {
     "bispecific-assembler": () => { fillDemoSelect("bs-assembler-demo", service.demos, true); loadServiceDemo(); },
     "car-t-assembler": () => {
       fillDemoSelect("cart-assembler-demo", service.demos, true);
-      // form re-renders on activate; _cartInitForm is called from the <script> in the rendered HTML
       loadServiceDemo();
     },
+    "cart-invivo-solid":  () => _cartHydrateInVivo(service),
+    "cart-invivo-blood":  () => _cartHydrateInVivo(service),
+    "cart-invivo-neuro":  () => _cartHydrateInVivo(service),
+    "cart-invivo-auto":   () => _cartHydrateInVivo(service),
+    "cart-invivo-multi":  () => _cartHydrateInVivo(service),
     "bispecific-analyzer": () => {
       fillDemoSelect("bs-analyzer-demo", service.demos, true);
       loadServiceDemo();
@@ -12257,6 +12357,21 @@ function _cartInVivoSelectComp(id, name, slotKey) {
 function _cartInVivoClearSelected() {
   const chip = document.getElementById('cart-invivo-selected');
   if(chip) chip.style.display = 'none';
+}
+
+// Called from hydrateService for cart-invivo-* routes
+// Initialises the assembler form in In Vivo mode, pre-selects the disease.
+function _cartHydrateInVivo(service) {
+  const baseService = REGISTRY.services['car-t-assembler'];
+  fillDemoSelect('cart-assembler-demo', (baseService && baseService.demos) || [], true);
+  _cartInitForm().then(() => {
+    _cartSetDeliveryMode('invivo');
+    const disease = (service && service.invivoDisease) || '';
+    if(disease) {
+      const btn = document.querySelector('.__cart_ivd[data-disease="' + disease + '"]');
+      if(btn) _cartInVivoSetDisease(btn);
+    }
+  });
 }
 
 function _cartUpdateTopology() {
