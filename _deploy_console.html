@@ -1679,7 +1679,7 @@ const REGISTRY = {
     "cart-invivo-solid": {
       module: "car-t-design",
       navGroup: "invivo",
-      label: "🫁 Solid Tumor",
+      label: "Solid Tumor",
       subtitle: "In Vivo · LNP-mRNA",
       computeMode: "Lite",
       credits: 5000,
@@ -1694,7 +1694,7 @@ const REGISTRY = {
     "cart-invivo-blood": {
       module: "car-t-design",
       navGroup: "invivo",
-      label: "🩸 Blood Cancer",
+      label: "Blood Cancer",
       subtitle: "In Vivo · Hematologic",
       computeMode: "Lite",
       credits: 5000,
@@ -1709,7 +1709,7 @@ const REGISTRY = {
     "cart-invivo-neuro": {
       module: "car-t-design",
       navGroup: "invivo",
-      label: "🧠 Neuro / CNS",
+      label: "Neuro / CNS",
       subtitle: "In Vivo · CNS / Glioma",
       computeMode: "Lite",
       credits: 5000,
@@ -1724,7 +1724,7 @@ const REGISTRY = {
     "cart-invivo-auto": {
       module: "car-t-design",
       navGroup: "invivo",
-      label: "🛡 Autoimmune",
+      label: "Autoimmune",
       subtitle: "In Vivo · CAAR-T",
       computeMode: "Lite",
       credits: 5000,
@@ -1739,7 +1739,7 @@ const REGISTRY = {
     "cart-invivo-multi": {
       module: "car-t-design",
       navGroup: "invivo",
-      label: "🎯 Multi-Target",
+      label: "Multi-Target",
       subtitle: "In Vivo · Broad / DLL3 · CXCR4",
       computeMode: "Lite",
       credits: 5000,
@@ -4020,12 +4020,14 @@ function renderCartAssemblerForm(service) {
   const slotsJson = JSON.stringify(ALL_SLOTS).replace(/</g,'\\u003c');
 
   const slotCard = (s, optional) => `
-    <div class="__cart_slot_card" data-cart-slot="${s.key}" style="background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:14px 16px;margin-bottom:10px">
+    <div class="__cart_slot_card" data-cart-slot="${s.key}" style="background:var(--surface);border:1px solid var(--border);border-left:3px solid ${optional ? 'var(--border)' : 'var(--accent)'};border-radius:8px;padding:14px 16px;margin-bottom:10px">
       <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:10px">
         <div>
-          <span style="font-weight:600;font-size:13px">${s.label}</span>
-          ${s.required ? ' <span style="color:var(--fail);font-size:10px;vertical-align:super">required</span>' : ''}
-          <div style="font-size:11px;color:var(--muted);margin-top:3px;max-width:480px;line-height:1.5">${s.desc}</div>
+          <div style="display:flex;align-items:center;gap:8px;margin-bottom:4px">
+            <span style="font-weight:700;font-size:14px;color:var(--text)">${s.label}</span>
+            ${s.required ? '<span style="font-size:10px;font-weight:600;color:var(--fail);padding:1px 6px;border:1px solid var(--fail);border-radius:3px;opacity:.8">required</span>' : ''}
+          </div>
+          <div style="font-size:11px;color:var(--muted);max-width:520px;line-height:1.5">${s.desc}</div>
         </div>
         <div style="display:flex;gap:4px;flex-shrink:0;margin-left:12px">
           <button type="button" onclick="_cartSetMode('${s.key}','db')" class="__cart_mode_btn" data-slot="${s.key}" data-mode="db" style="padding:3px 10px;border-radius:4px;border:1px solid var(--accent);background:var(--accent);color:#fff;font-size:11px;cursor:pointer">DB</button>
@@ -4172,13 +4174,22 @@ function renderCartAssemblerForm(service) {
       </div><!-- /cart-exvivo-panel -->
 
       <!-- Construct topology diagram -->
-      <div id="cart-topology-diagram" style="display:flex;align-items:center;flex-wrap:nowrap;gap:0;overflow-x:auto;margin-bottom:20px;padding:10px 4px;background:var(--bg);border-radius:6px;border:1px solid var(--border)">
-        <span style="font-size:10px;color:var(--muted);margin-right:8px;white-space:nowrap">N→C:</span>
-        ${['binder','hinge','tm','costim','activation'].map((k,i) => `
-          <div id="cart-topo-${k}" data-topo-slot="${k}" style="padding:5px 10px;border-radius:4px;background:var(--surface);border:1px solid var(--border);font-size:10px;white-space:nowrap;transition:all .2s;opacity:.4" title="${k}">—</div>
-          ${i<4 ? '<span style="font-size:12px;color:var(--muted);padding:0 2px">→</span>' : ''}
+      <div id="cart-topology-diagram" style="display:flex;align-items:center;flex-wrap:nowrap;gap:0;overflow-x:auto;margin-bottom:20px;padding:12px 8px;background:var(--bg);border-radius:6px;border:1px solid var(--border)">
+        <span style="font-size:10px;color:var(--muted);margin-right:10px;white-space:nowrap;font-weight:600">N→C</span>
+        ${[
+          {k:'binder',     name:'Binder'},
+          {k:'hinge',      name:'Hinge'},
+          {k:'tm',         name:'TM'},
+          {k:'costim',     name:'Costim'},
+          {k:'activation', name:'CD3ζ'},
+        ].map(({k,name},i) => `
+          <div style="display:flex;flex-direction:column;align-items:center;gap:2px">
+            <div style="font-size:9px;color:var(--muted);font-weight:600;text-transform:uppercase;letter-spacing:.04em">${name}</div>
+            <div id="cart-topo-${k}" data-topo-slot="${k}" style="padding:4px 12px;border-radius:4px;background:var(--surface);border:1px solid var(--border);font-size:11px;white-space:nowrap;transition:all .2s;opacity:.4;min-width:60px;text-align:center" title="${k}">—</div>
+          </div>
+          ${i<4 ? '<span style="font-size:14px;color:var(--muted);padding:0 4px;margin-top:14px">→</span>' : ''}
         `).join('')}
-        <span style="font-size:10px;color:var(--muted);margin-left:8px" id="cart-topo-total"></span>
+        <span style="font-size:10px;color:var(--muted);margin-left:12px;margin-top:14px" id="cart-topo-total"></span>
       </div>
 
       <!-- Construct name -->
@@ -4189,16 +4200,26 @@ function renderCartAssemblerForm(service) {
       </div>
 
       <!-- Required slots -->
-      <div style="margin-bottom:6px;font-size:11px;font-weight:600;color:var(--muted);letter-spacing:.04em">REQUIRED MODULES (5)</div>
+      <div style="display:flex;align-items:center;gap:10px;margin:18px 0 10px">
+        <div style="font-size:12px;font-weight:700;color:var(--text);letter-spacing:.06em;text-transform:uppercase">Core Modules</div>
+        <div style="flex:1;height:1px;background:var(--border)"></div>
+        <div style="font-size:10px;color:var(--muted)">5 required · must all be filled</div>
+      </div>
       ${SLOTS.map(s => slotCard(s, false)).join('')}
 
       <!-- Optional slots -->
-      <details style="margin-top:6px">
-        <summary style="cursor:pointer;font-size:12px;font-weight:600;padding:10px 0;color:var(--accent)">
-          ＋ Optional / Advanced modules (Signal Peptide · Linker · Safety Switch · Armored Payload · Regulatory · Logic Gate · In-Vivo · Engineering)
+      <div style="display:flex;align-items:center;gap:10px;margin:18px 0 10px">
+        <div style="font-size:12px;font-weight:700;color:var(--text);letter-spacing:.06em;text-transform:uppercase">Advanced Modules</div>
+        <div style="flex:1;height:1px;background:var(--border)"></div>
+        <div style="font-size:10px;color:var(--muted)">optional · 3rd-gen / armored / allogeneic / in-vivo</div>
+      </div>
+      <details>
+        <summary style="cursor:pointer;font-size:12px;color:var(--accent);padding:8px 0">
+          Show / hide — Signal Peptide · Linker · Safety Switch · Armored Payload · Regulatory · Logic Gate · In-Vivo · Engineering Module
         </summary>
-        <div style="margin-top:8px;font-size:11px;color:var(--muted);margin-bottom:8px">Add for 3rd-gen, armored, allogeneic, or in-vivo constructs. Each slot is independent.</div>
+        <div style="margin-top:10px">
         ${OPT_SLOTS.map(s => slotCard(s, true)).join('')}
+        </div>
       </details>
 
       <div class="actions" style="margin-top:24px">
