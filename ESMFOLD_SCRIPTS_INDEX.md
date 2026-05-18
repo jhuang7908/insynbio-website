@@ -1,56 +1,56 @@
-# ESMFold 相关脚本索引
+# ESMFold 
 
-本仓库中与 **ESMFold 造模 / 结构预测** 相关的脚本与用法汇总，便于复用和对比。
+ **ESMFold  / ** ，。
 
 ---
 
-## 1. 通用 / 设计规则（scFv linker 流程）
+## 1.  / （scFv linker ）
 
-| 脚本 | 作用 | 输入 | 输出 |
+|  |  |  |  |
 |------|------|------|------|
-| **scripts/scfv_like_50_linker_anarci_esmfold.py** | Linker 识别、ANARCI、导出 ESMFold 用 FASTA | CSV/Excel（抗体 ID + 序列） | `linker_split_results.json`、**esmfold_input.fasta** |
-| **scripts/run_esmfold_batch_from_fasta.py** | 从 FASTA 批量调用 ESMFold（API 或本地） | 任意 FASTA（单链，如 VH-linker-VL） | 每条序列一个 PDB + 可选 summary CSV |
-| **scripts/run_esmfold_lunsekimig.py** | Lunsekimig (VHH) 造模并输出到 84 条 scFv 同目录 | CSV（antibody_id, sequence） | 同上目录下 `Lunsekimig1.pdb` 等 |
+| **scripts/scfv_like_50_linker_anarci_esmfold.py** | Linker 、ANARCI、 ESMFold  FASTA | CSV/Excel（ ID + ） | `linker_split_results.json`、**esmfold_input.fasta** |
+| **scripts/run_esmfold_batch_from_fasta.py** |  FASTA  ESMFold（API ） |  FASTA（， VH-linker-VL） |  PDB +  summary CSV |
+| **scripts/run_esmfold_lunsekimig.py** | Lunsekimig (VHH)  84  scFv  | CSV（antibody_id, sequence） |  `Lunsekimig1.pdb`  |
 
-- 84 条「两边有抗体结构」的 FASTA：`data/design_rules/multispecific_linker_pipeline/esmfold_input_two_sided_84.fasta`  
-- 用 84 条造模示例：见下文「84 条批量造模」。
+- 84 「」 FASTA：`data/design_rules/multispecific_linker_pipeline/esmfold_input_two_sided_84.fasta`  
+-  84 ：「84 」。
 
 ---
 
-## 2. 项目内 ESMFold 脚本（类似分析）
+## 2.  ESMFold 
 
-### 2.1 使用 ESMFold API（无需本地 GPU）
+### 2.1  ESMFold API（ GPU）
 
-| 脚本 | 输入格式 | 说明 |
+|  |  |  |
 |------|----------|------|
-| **projects/pembrolizumab/design_rounds/round1_H2_H3edge/h3only_mpnn_temp_sweep/20260129_083507/T0.05/run_esmfold.py** | FASTA：`>id`，序列为 `VH:VL`（冒号分隔） | 内部拼成 VH+G4S3+VL 后调 API，保存 `{id}.pdb` |
-| **projects/pembrolizumab/design_rounds/round2_codesign_H3L3/run_esmfold_round2.py** | CSV：`id, vh_seq, vl_seq` | API 或本地；拼成 full_seq=vh+vl（无 linker）后预测，并做 pLDDT/接触分析 |
-| **projects/pembrolizumab/run_esmfold_comparison.py** | 项目内比较用 | 调 ESMFold API |
-| **projects/pembrolizumab/design_rounds/round1_H2_H3edge/run_vl_esmfold.py** | VL 相关 | 调 ESMFold API |
+| **projects/pembrolizumab/design_rounds/round1_H2_H3edge/h3only_mpnn_temp_sweep/20260129_083507/T0.05/run_esmfold.py** | FASTA：`>id`， `VH:VL` |  VH+G4S3+VL  API， `{id}.pdb` |
+| **projects/pembrolizumab/design_rounds/round2_codesign_H3L3/run_esmfold_round2.py** | CSV：`id, vh_seq, vl_seq` | API ； full_seq=vh+vl（ linker）， pLDDT/ |
+| **projects/pembrolizumab/run_esmfold_comparison.py** |  |  ESMFold API |
+| **projects/pembrolizumab/design_rounds/round1_H2_H3edge/run_vl_esmfold.py** | VL  |  ESMFold API |
 
-### 2.2 使用本地 ESMFold（fair-esm）
+### 2.2  ESMFold（fair-esm）
 
-| 脚本 | 输入格式 | 说明 |
+|  |  |  |
 |------|----------|------|
-| **projects/pembrolizumab/design_rounds/round1_H2_H3edge/run_esmfold_gate1.py** | FASTA：`>id`，序列 `VH:VL` | 本地 `esm.pretrained.esmfold_v1()`，预测后做 pLDDT、clash、interface contacts 和综合打分，输出 Top10 |
+| **projects/pembrolizumab/design_rounds/round1_H2_H3edge/run_esmfold_gate1.py** | FASTA：`>id`， `VH:VL` |  `esm.pretrained.esmfold_v1`， pLDDT、clash、interface contacts ， Top10 |
 
-### 2.3 结构分析（基于 ESMFold 产出的 PDB）
+### 2.3 （ ESMFold  PDB）
 
-| 脚本 | 作用 |
+|  |  |
 |------|------|
-| **projects/pembrolizumab/design_rounds/round1_H2_H3edge/superpose_vh_structures.py** | 将 ESMFold 预测的 VH 叠到参考复合物上 |
-| **projects/pembrolizumab/design_rounds/round1_H2_H3edge/h3only_mpnn_temp_sweep/.../calc_vh_only_rmsd.py** | 从 ESMFold PDB 提 VH，算 RMSD |
-| **projects/pembrolizumab/design_rounds/round1_H2_H3edge/h3only_mpnn_temp_sweep/.../analyze_esmfold_structures.py** | 分析 ESMFold 结构 |
-| **projects/pembrolizumab/calc_domain_rmsd.py** | ESMFold 预测的 Fv 域 RMSD 等 |
+| **projects/pembrolizumab/design_rounds/round1_H2_H3edge/superpose_vh_structures.py** |  ESMFold  VH  |
+| **projects/pembrolizumab/design_rounds/round1_H2_H3edge/h3only_mpnn_temp_sweep/.../calc_vh_only_rmsd.py** |  ESMFold PDB  VH， RMSD |
+| **projects/pembrolizumab/design_rounds/round1_H2_H3edge/h3only_mpnn_temp_sweep/.../analyze_esmfold_structures.py** |  ESMFold  |
+| **projects/pembrolizumab/calc_domain_rmsd.py** | ESMFold  Fv  RMSD  |
 
 ---
 
-## 3. 84 条（两边有抗体结构）批量造模
+## 3. 84 
 
 - **FASTA**：`data/design_rules/multispecific_linker_pipeline/esmfold_input_two_sided_84.fasta`  
-  每条已是单链 **VH + (G4S)3 + VL**，无需再拼 linker。
+   **VH + (G4S)3 + VL**， linker。
 
-**推荐**：使用仓库内通用脚本（若已添加）：
+****：：
 
 ```bash
 python scripts/run_esmfold_batch_from_fasta.py \
@@ -59,33 +59,33 @@ python scripts/run_esmfold_batch_from_fasta.py \
   --method api
 ```
 
-或沿用项目内 API 逻辑：读 FASTA（id + 单链序列），对每条 `requests.post("https://api.esmatlas.com/foldSequence/v1/pdb/", data=sequence)`，保存为 `{id}.pdb`（参考上述 `run_esmfold.py`）。
+ API ： FASTA（id + ）， `requests.post("https://api.esmatlas.com/foldSequence/v1/pdb/", data=sequence)`， `{id}.pdb`（ `run_esmfold.py`）。
 
 ---
 
-## 3.1 Lunsekimig（VHH/nanobody）与 84 条 scFv 放一起造模
+## 3.1 Lunsekimig（VHH/nanobody） 84  scFv 
 
-**Lunsekimig (SAR443765)** 为抗 TSLP/IL-13 的 NANOBODY®，仅重链（VH-only），可与上述 84 条 VH-linker-VL scFv 一起用 ESMFold 造模，PDB 写入同一目录。
+**Lunsekimig (SAR443765)**  TSLP/IL-13  NANOBODY®，（VH-only）， 84  VH-linker-VL scFv  ESMFold ，PDB 。
 
-1. **序列来源**：Thera-SAbDab 导出或文献；Lunsekimig1、Lunsekimig2（及可选 Lunsekimig3）各一条重链序列。
-2. **填写 CSV**：`data/design_rules/lunsekimig_esmfold_sequences.csv`，列 `antibody_id`, `sequence`。
-3. **运行**（默认输出到 84 条同目录）：
+1. ****：Thera-SAbDab ；Lunsekimig1、Lunsekimig2（ Lunsekimig3）。
+2. ** CSV**：`data/design_rules/lunsekimig_esmfold_sequences.csv`， `antibody_id`, `sequence`。
+3. ****（ 84 ）：
 
 ```bash
 python scripts/run_esmfold_lunsekimig.py
-# 或指定 CSV / 输出目录 / API 或 local
+#  CSV /  / API  local
 python scripts/run_esmfold_lunsekimig.py --csv data/design_rules/lunsekimig_esmfold_sequences.csv --out-dir data/design_rules/multispecific_linker_pipeline/esmfold_predictions --method api
 ```
 
-脚本会生成 `esmfold_input_lunsekimig.fasta` 并调用 `run_esmfold_batch_from_fasta.py`，产出的 `Lunsekimig1.pdb`、`Lunsekimig2.pdb` 等与 84 条 scFv 的 PDB 同处 `esmfold_predictions/`。
+ `esmfold_input_lunsekimig.fasta`  `run_esmfold_batch_from_fasta.py`， `Lunsekimig1.pdb`、`Lunsekimig2.pdb`  84  scFv  PDB  `esmfold_predictions/`。
 
 ---
 
-## 4. API 与依赖
+## 4. API 
 
-- **ESMFold API**：`https://api.esmatlas.com/foldSequence/v1/pdb/`，POST body = 纯序列（单链）。
-- **本地**：`pip install fair-esm`，`esm.pretrained.esmfold_v1()`，`model.infer_pdb(sequence)`。
+- **ESMFold API**：`https://api.esmatlas.com/foldSequence/v1/pdb/`，POST body = 。
+- ****：`pip install fair-esm`，`esm.pretrained.esmfold_v1`，`model.infer_pdb(sequence)`。
 
-与「84 条、两边有抗体结构、(G4S)3 linker、造模」最接近的既有实现是：  
-**round1_H2_H3edge/.../T0.05/run_esmfold.py**（API + FASTA），以及 **run_esmfold_gate1.py**（本地 + 质量分析）。  
-84 条 FASTA 已是单链，可直接作为 API/本地预测的输入，无需再按 VH:VL 拆分或拼接。
+「84 、、(G4S)3 linker、」：  
+**round1_H2_H3edge/.../T0.05/run_esmfold.py**（API + FASTA）， **run_esmfold_gate1.py**（ + ）。  
+84  FASTA ， API/， VH:VL 。

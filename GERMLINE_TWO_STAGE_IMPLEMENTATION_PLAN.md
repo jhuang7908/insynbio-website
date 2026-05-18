@@ -1,71 +1,71 @@
-# Germline 选择两阶段实现计划
+# Germline 
 
-## 目标
+## 
 
-将 germline 选择拆分成两个阶段：
-- **Stage 1**: 从 scaffold 库中选择最佳 scaffold
-- **Stage 2**: 基于选中的 scaffold，生成 SAFE_A/B/C 三个固定工程化版本
+ germline ：
+- **Stage 1**:  scaffold  scaffold
+- **Stage 2**:  scaffold， SAFE_A/B/C 
 
-## 实现步骤
+## 
 
-### 1. 修改 Step 3：加载 Scaffold 库（而不是 SAFE 模板库）
+### 1.  Step 3： Scaffold （ SAFE ）
 
-- 修改 `step3_load_germline_library` 或创建新的 `step3_load_scaffold_library`
-- 加载 `human_vh3_scaffolds.json`
-- 返回 scaffold 数据和 provenance
+-  `step3_load_germline_library`  `step3_load_scaffold_library`
+-  `human_vh3_scaffolds.json`
+-  scaffold  provenance
 
-### 2. Stage 1：Scaffold 选择
+### 2. Stage 1：Scaffold 
 
-创建新函数：
-- `stage1_select_best_scaffold()`
-  - 输入：目标 VHH 的 IMGT 编号、scaffold 库
-  - 对每个 scaffold 的 consensus 序列进行 IMGT 编号
-  - 与目标 VHH 进行比对（IMGT position-level FR identity，mask CDR）
-  - 输出：top10 scaffolds, selected_scaffold, region_counts/mismatches
+：
+- `stage1_select_best_scaffold`
+  - ： VHH  IMGT 、scaffold 
+  -  scaffold  consensus  IMGT 
+  -  VHH （IMGT position-level FR identity，mask CDR）
+  - ：top10 scaffolds, selected_scaffold, region_counts/mismatches
 
-JSON 输出：
+JSON ：
 - `scaffold_library_provenance`
 - `scaffold_alignment_provenance`
 - `scaffold_ranked_top10`
 - `scaffold_selected`
 
-### 3. Stage 2：SAFE A/B/C 生成
+### 3. Stage 2：SAFE A/B/C 
 
-创建新函数：
-- `stage2_generate_safe_variants()`
-  - 输入：selected_scaffold
-  - 对选中的 scaffold 应用 SAFE_A/B/C 工程化规则
-  - 生成三个固定版本（不做再比对）
-  - 输出：每个版本的 template_id, FR-only 序列, diff_vs_scaffold, physiology_explanations
+：
+- `stage2_generate_safe_variants`
+  - ：selected_scaffold
+  -  scaffold  SAFE_A/B/C 
+  - 
+  - ： template_id, FR-only , diff_vs_scaffold, physiology_explanations
 
-JSON 输出：
+JSON ：
 - `safe_strategy_definitions`
-- `safe_variants` (A/B/C 三个模板的序列与差异表)
+- `safe_variants` (A/B/C )
 - `safe_variant_explanations`
 
-### 4. 更新主流程
+### 4. 
 
-修改 `main()` 函数：
-- Step 3: 加载 scaffold 库
-- Stage 1: Scaffold 选择
-- Stage 2: SAFE A/B/C 生成
-- 停止在 germline 选择阶段（不进入后续 CMC/免疫原性/开发性章节）
+ `main` ：
+- Step 3:  scaffold 
+- Stage 1: Scaffold 
+- Stage 2: SAFE A/B/C 
+-  germline （ CMC//）
 
-### 5. 更新报告渲染
+### 5. 
 
-修改 `render_md_from_json()`：
-- 拆成两部分：Scaffold 选择 + SAFE A/B/C 策略差异
-- 明确声明 A/B/C 是"工程化强度选择"，不是再次人源化方案
+ `render_md_from_json`：
+- ：Scaffold  + SAFE A/B/C 
+-  A/B/C ""，
 
-### 6. 更新审计逻辑
+### 6. 
 
-修改 `audit_result.py`：
-- 验证 scaffold 库存在与版本（sha256）
-- 验证 ANARCI + IMGT 编号 provenance
-- 验证 scaffold 比对是 IMGT position-level
-- 验证 safe_variants 的 diff_vs_scaffold 与序列一致（可反向复现）
+ `audit_result.py`：
+-  scaffold （sha256）
+-  ANARCI + IMGT  provenance
+-  scaffold  IMGT position-level
+-  safe_variants  diff_vs_scaffold 
 
-## 关键函数签名
+## 
 
 ```python
 def stage1_select_best_scaffold(
@@ -75,7 +75,7 @@ def stage1_select_best_scaffold(
     min_length: int = 70,
 ) -> Dict[str, Any]:
     """
-    Stage 1: 从 scaffold 库中选择最佳 scaffold
+    Stage 1:  scaffold  scaffold
     
     Returns:
         {
@@ -91,7 +91,7 @@ def stage2_generate_safe_variants(
     scaffold_numbering: Dict[str, Dict[str, Any]],
 ) -> Dict[str, Any]:
     """
-    Stage 2: 基于选中的 scaffold 生成 SAFE_A/B/C 三个固定工程化版本
+    Stage 2:  scaffold  SAFE_A/B/C 
     
     Returns:
         {
@@ -106,15 +106,15 @@ def stage2_generate_safe_variants(
     """
 ```
 
-## 注意事项
+## 
 
-1. **Scaffold 库格式**：`human_vh3_scaffolds.json` 是列表，每个元素包含 `scaffold_id`, `consensus` (fr1, fr2, fr3, fr4, framework_full), `n_members`, `member_ids`
+1. **Scaffold **：`human_vh3_scaffolds.json` ， `scaffold_id`, `consensus` (fr1, fr2, fr3, fr4, framework_full), `n_members`, `member_ids`
 
-2. **SAFE 工程化规则**：从 `SAFE_PLAN_DEFINITIONS` 获取，需要基于完整框架序列进行 IMGT 编号才能准确定位 FR2 中的位置
+2. **SAFE **： `SAFE_PLAN_DEFINITIONS` ， IMGT  FR2 
 
-3. **不做再比对**：Stage 2 直接生成三个版本，不进行比对选择
+3. ****：Stage 2 ，
 
-4. **证据链完整性**：所有步骤必须有 provenance 和 evidence
+4. ****： provenance  evidence
 
 
 

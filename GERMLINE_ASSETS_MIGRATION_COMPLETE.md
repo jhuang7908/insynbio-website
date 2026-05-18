@@ -1,37 +1,37 @@
-# Germline Assets 迁移完成报告
+# Germline Assets 
 
-## ✅ 迁移状态：已完成
+## ✅ ：
 
-**日期**: 2025-12-13  
-**版本**: v1_clean
+****: 2025-12-13  
+****: v1_clean
 
-## 完成的工作
+## 
 
-### 1. 创建统一加载接口
+### 1. 
 
-**文件**: `core/germline_assets_loader.py`
+****: `core/germline_assets_loader.py`
 
-提供统一的 germline 资产加载接口：
+ germline ：
 
-- `load_clean_germline_assets()` - 迭代器方式加载
-- `load_all_clean_germline_assets()` - 列表方式加载
-- `load_germline_by_id()` - 按 ID 加载单条记录
-- `load_canonical_proxy_clusters()` - 加载 clusters
-- `load_canonical_proxy_lookup()` - 加载 lookup table
-- `get_germline_assets_path()` - 获取文件路径
-- `validate_germline_assets_directory()` - 验证目录结构
+- `load_clean_germline_assets` - 
+- `load_all_clean_germline_assets` - 
+- `load_germline_by_id` -  ID 
+- `load_canonical_proxy_clusters` -  clusters
+- `load_canonical_proxy_lookup` -  lookup table
+- `get_germline_assets_path` - 
+- `validate_germline_assets_directory` - 
 
-### 2. 更新所有相关脚本
+### 2. 
 
-已更新的脚本：
+：
 
-- ✅ `scripts/build_canonical_proxy_layer.py` - 更新默认路径
-- ✅ `scripts/build_canonical_proxy_assets.py` - 更新所有路径
-- ✅ `scripts/verify_canonical_proxy_output.py` - 使用统一接口
-- ✅ `scripts/check_clean_germline_assets.py` - 更新路径
-- ✅ `scripts/example_use_canonical_proxy.py` - 使用统一接口
+- ✅ `scripts/build_canonical_proxy_layer.py` - 
+- ✅ `scripts/build_canonical_proxy_assets.py` - 
+- ✅ `scripts/verify_canonical_proxy_output.py` - 
+- ✅ `scripts/check_clean_germline_assets.py` - 
+- ✅ `scripts/example_use_canonical_proxy.py` - 
 
-### 3. 目录结构
+### 3. 
 
 ```
 data/germlines/v1_clean/
@@ -49,19 +49,19 @@ data/germlines/v1_clean/
     └── canonical_proxy_qc.csv                     ✅
 ```
 
-### 4. 验证结果
+### 4. 
 
-运行 `scripts/verify_germline_assets_migration.py` 验证：
+ `scripts/verify_germline_assets_migration.py` ：
 
-- ✅ 目录结构完整
-- ✅ manifest.json 可正常加载
-- ✅ Clean assets 可正常加载 (443 条)
-- ✅ Proxy assets 可正常加载 (443 条)
-- ✅ Canonical proxy lookup 可正常加载
+- ✅ 
+- ✅ manifest.json 
+- ✅ Clean assets  (443 )
+- ✅ Proxy assets  (443 )
+- ✅ Canonical proxy lookup 
 
-## 使用指南
+## 
 
-### 基本用法
+### 
 
 ```python
 from core.germline_assets_loader import (
@@ -70,75 +70,75 @@ from core.germline_assets_loader import (
     load_canonical_proxy_lookup,
 )
 
-# 加载所有 clean assets
+#  clean assets
 assets = load_all_clean_germline_assets(include_canonical_proxy=False)
 
-# 加载带 canonical_proxy 注解的版本
+#  canonical_proxy 
 assets_with_proxy = load_all_clean_germline_assets(include_canonical_proxy=True)
 
-# 按 ID 加载
+#  ID 
 asset = load_germline_by_id("M99641|IGHV1-18*01|Homo", include_canonical_proxy=True)
 
-# 加载 lookup table
-lookup = load_canonical_proxy_lookup()
+#  lookup table
+lookup = load_canonical_proxy_lookup
 ```
 
-### 验证目录结构
+### 
 
 ```python
 from core.germline_assets_loader import validate_germline_assets_directory
 
-is_valid, errors = validate_germline_assets_directory()
+is_valid, errors = validate_germline_assets_directory
 if not is_valid:
     for error in errors:
         print(f"❌ {error}")
 ```
 
-## 重要原则
+## 
 
-### ✅ 必须遵守
+### ✅ 
 
-1. **所有模块必须从 `data/germlines/v1_clean/` 读取**
-2. **使用 `core.germline_assets_loader` 统一接口**
-3. **不再从 `output/` 读取 germline 相关文件**
+1. ** `data/germlines/v1_clean/` **
+2. ** `core.germline_assets_loader` **
+3. ** `output/`  germline **
 
-### ❌ 禁止
+### ❌ 
 
-1. **禁止硬编码 `output/` 路径**
-2. **禁止直接读取 `output/germline_assets_clean.jsonl`**
-3. **禁止绕过统一加载接口**
+1. ** `output/` **
+2. ** `output/germline_assets_clean.jsonl`**
+3. ****
 
-## 待更新模块（如需要）
+## 
 
-以下模块在使用 germline 数据时，应更新为使用统一接口：
+ germline ，：
 
-1. **Scaffold 选择模块**
-   - `scripts/stage12_germline_selection.py` - 如果从 germline assets 加载
+1. **Scaffold **
+   - `scripts/stage12_germline_selection.py` -  germline assets 
 
-2. **报告生成模块**
-   - 所有报告生成脚本应使用 `load_clean_germline_assets()`
+2. ****
+   -  `load_clean_germline_assets`
 
-3. **分析模块**
-   - Vernier / CMC / Immunogenicity 分析应使用统一接口
+3. ****
+   - Vernier / CMC / Immunogenicity 
 
-## 验证命令
+## 
 
 ```bash
-# 验证迁移状态
+# 
 python scripts/verify_germline_assets_migration.py
 
-# 验证目录结构
-python -c "from core.germline_assets_loader import validate_germline_assets_directory; is_valid, errors = validate_germline_assets_directory(); print('✅ 通过' if is_valid else f'❌ {len(errors)} 个问题')"
+# 
+python -c "from core.germline_assets_loader import validate_germline_assets_directory; is_valid, errors = validate_germline_assets_directory; print('✅ ' if is_valid else f'❌ {len(errors)} ')"
 ```
 
-## 总结
+## 
 
-✅ **迁移已完成**  
-✅ **统一接口已建立**  
-✅ **所有验证通过**  
-✅ **系统已进入"工程化正轨"**
+✅ ****  
+✅ ****  
+✅ ****  
+✅ **""**
 
-从现在开始，所有模块统一从 `data/germlines/v1_clean/` 读取 germline 数据，不再依赖 `output/` 目录。
+， `data/germlines/v1_clean/`  germline ， `output/` 。
 
 
 

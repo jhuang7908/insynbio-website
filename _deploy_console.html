@@ -1385,10 +1385,9 @@ const REGISTRY = {
       tier: "online",
       services: [
         "car-t-assembler",
-        "cart-exvivo-bb",
-        "cart-exvivo-28",
-        "cart-exvivo-armored",
-        "cart-exvivo-allo",
+        "cart-exvivo-hema",
+        "cart-exvivo-solid",
+        "cart-exvivo-auto",
         "cart-invivo-solid",
         "cart-invivo-blood",
         "cart-invivo-neuro",
@@ -1632,64 +1631,49 @@ const REGISTRY = {
       runner: "car-t-assembler",
       demos: ["cd19-28z-car", "cd19-bbz-car", "her2-bbz-car"]
     },
-    "cart-exvivo-bb": {
+    "cart-exvivo-hema": {
       module: "car-t-design",
       navGroup: "exvivo",
-      label: "2nd Gen · 4-1BB (BBζ)",
-      subtitle: "Long persistence · Kymriah-like",
+      label: "🩸 Hematologic",
+      subtitle: "Ex Vivo · Blood Cancer",
       computeMode: "Lite",
       credits: 5000,
-      description: "2nd-generation CAR with 4-1BB costimulatory domain. Clinical gold standard for long-term T cell persistence and memory formation. Reference: Kymriah (tisagenlecleucel) — FDA approved 2017.",
+      description: "Ex Vivo CAR-T for hematologic malignancies. 13 curated binders: CD19 (FMC63/SJ25C1), BCMA (JNJ-68284528 VHH), CD38 (Daratumumab), CD22 (m971), CD20, NKG2D, APRIL, WT1-TCRmimic and more.",
       analysisVersion: "v1.0",
       underlyingStandard: "CAR-T Design Standard V1.0",
       reportVersion: "1.0",
       runner: "car-t-assembler",
-      exvivoArch: "bb",
-      demos: ["cd19-bbz-car"]
+      exvivoDisease: "Hematologic",
+      demos: ["cd19-bbz-car", "cd19-28z-car"]
     },
-    "cart-exvivo-28": {
+    "cart-exvivo-solid": {
       module: "car-t-design",
       navGroup: "exvivo",
-      label: "2nd Gen · CD28 (CD28ζ)",
-      subtitle: "Rapid expansion · Yescarta-like",
+      label: "🫁 Solid Tumor",
+      subtitle: "Ex Vivo · Solid Cancer",
       computeMode: "Lite",
       credits: 5000,
-      description: "2nd-generation CAR with CD28 costimulatory domain. Drives rapid T cell expansion and short-term efficacy. Reference: Yescarta (axicabtagene ciloleucel) — FDA approved 2017.",
+      description: "Ex Vivo CAR-T for solid tumors. 12 curated binders: HER2 (Trastuzumab scFv), Mesothelin (SS1), GD2 (14G2a/ch14.18), GPC3 (YP7), FRα (MOv19), EGFR (Cetuximab), NKG2D, MAGE-A4 TCRmimic and more.",
       analysisVersion: "v1.0",
       underlyingStandard: "CAR-T Design Standard V1.0",
       reportVersion: "1.0",
       runner: "car-t-assembler",
-      exvivoArch: "cd28",
-      demos: ["cd19-28z-car"]
-    },
-    "cart-exvivo-armored": {
-      module: "car-t-design",
-      navGroup: "exvivo",
-      label: "Armored / 3rd Gen",
-      subtitle: "Cytokine payload · TME penetration",
-      computeMode: "Lite",
-      credits: 5000,
-      description: "Armored CAR (3rd-gen or cytokine co-expressing): add IL-7, IL-15, IL-12, or PD-L1 dominant-negative via 2A peptide linkage. Key strategy for solid tumor TME overcoming and anti-exhaustion.",
-      analysisVersion: "v1.0",
-      underlyingStandard: "CAR-T Design Standard V1.0",
-      reportVersion: "1.0",
-      runner: "car-t-assembler",
-      exvivoArch: "armored",
+      exvivoDisease: "Solid Tumor",
       demos: ["her2-bbz-car"]
     },
-    "cart-exvivo-allo": {
+    "cart-exvivo-auto": {
       module: "car-t-design",
       navGroup: "exvivo",
-      label: "Allogeneic (Off-the-Shelf)",
-      subtitle: "TRAC KO · universal donor",
+      label: "🛡 Autoimmune",
+      subtitle: "Ex Vivo · CAAR-T / tolerance",
       computeMode: "Lite",
       credits: 5000,
-      description: "Allogeneic CAR-T from universal donor: TRAC KO (eliminates TCR/GvHD), B2M KO (HLA-I evasion), optional PD-1 KO. Enables off-the-shelf manufacturing without patient leukapheresis.",
+      description: "Ex Vivo CAAR-T and B-cell–targeting CAR for autoimmune diseases: CD19 for B cell depletion in SLE/MS/RA, and CAAR constructs for antigen-specific self-tolerance.",
       analysisVersion: "v1.0",
       underlyingStandard: "CAR-T Design Standard V1.0",
       reportVersion: "1.0",
       runner: "car-t-assembler",
-      exvivoArch: "allo",
+      exvivoDisease: "Autoimmune",
       demos: []
     },
     "cart-invivo-solid": {
@@ -2145,22 +2129,22 @@ const DEMOS = {
 
 /** Sidebar groups for Regular Antibody Engineering (workflow order). */
 const RAE_SERVICE_GROUPS = [
-  { id: "segmentation", label: "1 · Segmentation" },
-  { id: "structure", label: "2 · Structure" },
-  { id: "humanization", label: "3 · Humanization" },
-  { id: "workflow", label: "Workflow & reports" },
+  { id: "segmentation", label: "① Segmentation & Numbering" },
+  { id: "structure",    label: "② Structure" },
+  { id: "humanization", label: "③ Humanization" },
+  { id: "workflow",     label: "⚙ Workflow & Reports" },
 ];
 
 const CART_SERVICE_GROUPS = [
-  { id: "exvivo",  label: "Ex Vivo CAR" },
-  { id: "invivo",  label: "🔥 In Vivo CAR" },
+  { id: "exvivo", label: "🔬 Ex Vivo CAR" },
+  { id: "invivo", label: "🔥 In Vivo CAR" },
 ];
 
 const VHH_SERVICE_GROUPS = [
-  { id: "vhh-segmentation", label: "1 · Segmentation" },
-  { id: "vhh-structure",    label: "2 · Structure" },
-  { id: "vhh-humanization", label: "3 · Humanization" },
-  { id: "vhh-workflow",     label: "Conversion & Output" },
+  { id: "vhh-segmentation", label: "① Segmentation" },
+  { id: "vhh-structure",    label: "② Structure" },
+  { id: "vhh-humanization", label: "③ Humanization" },
+  { id: "vhh-workflow",     label: "⚙ Conversion & Output" },
 ];
 
 const state = {
@@ -3450,10 +3434,9 @@ function renderServicePanel(service) {
     case "vh-to-vhh":         formBlock = renderVhToVhhForm(service); break;
     case "bispecific-assembler": formBlock = renderBispecificAssemblerForm(service); break;
     case "car-t-assembler":
-    case "cart-exvivo-bb":
-    case "cart-exvivo-28":
-    case "cart-exvivo-armored":
-    case "cart-exvivo-allo":
+    case "cart-exvivo-hema":
+    case "cart-exvivo-solid":
+    case "cart-exvivo-auto":
     case "cart-invivo-solid":
     case "cart-invivo-blood":
     case "cart-invivo-neuro":
@@ -4985,10 +4968,9 @@ function hydrateService(service) {
       fillDemoSelect("cart-assembler-demo", service.demos, true);
       loadServiceDemo();
     },
-    "cart-exvivo-bb":     () => _cartHydrateExVivo(service),
-    "cart-exvivo-28":     () => _cartHydrateExVivo(service),
-    "cart-exvivo-armored":() => _cartHydrateExVivo(service),
-    "cart-exvivo-allo":   () => _cartHydrateExVivo(service),
+    "cart-exvivo-hema":   () => _cartHydrateExVivoDisease(service),
+    "cart-exvivo-solid":  () => _cartHydrateExVivoDisease(service),
+    "cart-exvivo-auto":   () => _cartHydrateExVivoDisease(service),
     "cart-invivo-solid":  () => _cartHydrateInVivo(service),
     "cart-invivo-blood":  () => _cartHydrateInVivo(service),
     "cart-invivo-neuro":  () => _cartHydrateInVivo(service),
@@ -12515,6 +12497,43 @@ function _cartHydrateExVivo(service) {
     if(demoId) {
       const sel = document.getElementById('cart-assembler-demo');
       if(sel) { sel.value = demoId; loadServiceDemo(); }
+    }
+  });
+}
+
+// Called from hydrateService for cart-exvivo-hema / solid / auto routes
+// Initialises the assembler form in Ex Vivo mode and pre-filters by disease indication.
+function _cartHydrateExVivoDisease(service) {
+  const disease  = (service && service.exvivoDisease) || '';
+  const demoId   = (service.demos && service.demos[0]) || '';
+  fillDemoSelect('cart-assembler-demo', service.demos || [], true);
+  _cartInitForm().then(() => {
+    _cartSetDeliveryMode('exvivo');
+    // Apply indication filter so catalog dropdowns show only relevant binders
+    const fltEl = document.getElementById('cart-flt-indication');
+    if (fltEl) {
+      fltEl.value = disease;
+      fltEl.dispatchEvent(new Event('change'));
+    }
+    // Show disease context banner
+    const banner = document.getElementById('cart-exvivo-arch-banner');
+    if (banner) {
+      const INFO = {
+        'Hematologic': { icon:'🩸', note:'Ex Vivo CAR-T for blood cancers — 13 curated binders available (CD19 FMC63/SJ25C1, BCMA JNJ-VHH, CD38, CD22, CD20, NKG2D, APRIL, WT1-TCRmimic …). Recommended costimulation: 4-1BB for long persistence or CD28 for rapid expansion.' },
+        'Solid Tumor':  { icon:'🫁', note:'Ex Vivo CAR-T for solid tumors — 12 curated binders available (HER2 Trastuzumab scFv, Mesothelin SS1, GD2, GPC3, FRα, EGFR, NKG2D, MAGE-A4-TCRmimic …). Consider Armored / cytokine payload for TME penetration.' },
+        'Autoimmune':   { icon:'🛡', note:'CAAR-T and B cell depletion for autoimmune disease — CD19-targeting for SLE/MS/RA, CAAR designs for antigen-specific tolerance. 2 curated binders available.' },
+      };
+      const i = INFO[disease];
+      if (i) {
+        banner.innerHTML = '<span style="margin-right:6px">' + i.icon + '</span>' + i.note;
+        banner.style.display = '';
+      } else {
+        banner.style.display = 'none';
+      }
+    }
+    if (demoId) {
+      const sel = document.getElementById('cart-assembler-demo');
+      if (sel) { sel.value = demoId; loadServiceDemo(); }
     }
   });
 }

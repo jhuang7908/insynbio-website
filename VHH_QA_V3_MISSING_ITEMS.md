@@ -1,48 +1,48 @@
-# VHH QA v3.0 缺项补充文档
+# VHH QA v3.0 
 
-**日期**: 2025年12月10日  
-**版本**: v3.0.2  
-**状态**: ✅ 已完成
-
----
-
-## 补充概述
-
-针对CRO报告的核心需求，补充了3个关键缺项：
-1. 序列标号（mutation map）
-2. 构象风险总结（Conformation Risk Summary）
-3. 实验建议（Experimental Recommendations）
+****: 20251210  
+****: v3.0.2  
+****: ✅ 
 
 ---
 
-## 缺项1：序列标号（Mutation Map）✅
+## 
 
-### 功能描述
+CRO，3：
+1. （mutation map）
+2. （Conformation Risk Summary）
+3. （Experimental Recommendations）
 
-生成完整的突变映射表，包括：
-- FR1–FR2–FR3–FR4 的序号（IMGT位置范围）
-- 每个突变的 IMGT 位置
-- 每个突变的分类
+---
 
-### 实现文件
+## 1：（Mutation Map）✅
+
+### 
+
+，：
+- FR1–FR2–FR3–FR4 （IMGT）
+-  IMGT 
+- 
+
+### 
 
 `core/vhh_qa_mutation_map.py`
 
-### 突变分类
+### 
 
-1. **germline_adoption**: 采用germline序列
-   - 判断：人源化后氨基酸与模板germline序列一致
+1. **germline_adoption**: germline
+   - ：germline
 
-2. **structure_preserving**: 结构保守性突变
-   - 判断：保守性氨基酸替换（BLOSUM62高分替换）
+2. **structure_preserving**: 
+   - ：（BLOSUM62）
 
-3. **risk_induced**: 风险诱导突变
-   - 判断：引入高风险氨基酸（deamidation, oxidation, isomerization hotspots）
+3. **risk_induced**: 
+   - ：（deamidation, oxidation, isomerization hotspots）
 
-4. **deviation_from_germline**: 偏离germline
-   - 判断：为了保留VHH特征而偏离germline序列
+4. **deviation_from_germline**: germline
+   - ：VHHgermline
 
-### 输出结构
+### 
 
 ```python
 mutation_map = {
@@ -88,35 +88,35 @@ mutation_map = {
 }
 ```
 
-### 集成位置
+### 
 
-在`validate_vhh_humanization_result_v3()`中自动生成，包含在`qa_v3["mutation_map"]`中。
+`validate_vhh_humanization_result_v3`，`qa_v3["mutation_map"]`。
 
 ---
 
-## 缺项2：构象风险总结（Conformation Risk Summary）✅
+## 2：（Conformation Risk Summary）✅
 
-### 功能描述
+### 
 
-生成CRO可读的构象风险总结，包括：
-- CDR3 anchor（IMGT 101/102）稳定性
-- FR2 hydrophilic patch保留情况
+CRO，：
+- CDR3 anchor（IMGT 101/102）
+- FR2 hydrophilic patch
 - CDR1 torsion compatibility
 - Overall structural feasibility
 
-### 实现文件
+### 
 
 `core/vhh_qa_conformation_risk.py`
 
-### 评估指标
+### 
 
-#### 1. CDR3 Anchor稳定性
+#### 1. CDR3 Anchor
 
-**评估方法**:
-- 检查anchor位置（IMGT 101-102）的保守性
-- 保守残基加分，高风险残基扣分
+****:
+- anchor（IMGT 101-102）
+- ，
 
-**输出**:
+****:
 ```python
 {
     "stability": "high/medium/low",
@@ -129,13 +129,13 @@ mutation_map = {
 }
 ```
 
-#### 2. FR2 Hydrophilic Patch保留情况
+#### 2. FR2 Hydrophilic Patch
 
-**评估方法**:
-- 检查VHH hallmark位置（44, 45）的亲水性
-- 计算亲水性残基保留比例
+****:
+- VHH hallmark（44, 45）
+- 
 
-**输出**:
+****:
 ```python
 {
     "retention": "high/medium/low",
@@ -150,11 +150,11 @@ mutation_map = {
 
 #### 3. CDR1 Torsion Compatibility
 
-**评估方法**:
-- 基于CDR1长度（rule set v3.0）
-- 检查FR1末尾和FR2起始的边界残基兼容性
+****:
+- CDR1（rule set v3.0）
+- FR1FR2
 
-**输出**:
+****:
 ```python
 {
     "compatibility": "acceptable/marginal/poor",
@@ -170,11 +170,11 @@ mutation_map = {
 
 #### 4. Overall Structural Feasibility
 
-**计算方法**:
-- 综合CDR3 anchor、FR2 patch、CDR1 torsion的分数
-- 考虑structural_compat和grafting_impact（如果有qa_v3结果）
+****:
+- CDR3 anchor、FR2 patch、CDR1 torsion
+- structural_compatgrafting_impact（qa_v3）
 
-**输出**:
+****:
 ```python
 {
     "score": 85.0,  # 0-100
@@ -182,7 +182,7 @@ mutation_map = {
 }
 ```
 
-### 输出结构
+### 
 
 ```python
 conformation_risk_summary = {
@@ -196,69 +196,69 @@ conformation_risk_summary = {
 }
 ```
 
-### 集成位置
+### 
 
-在`validate_vhh_humanization_result_v3()`中自动生成，包含在`qa_v3["conformation_risk_summary"]`中。
+`validate_vhh_humanization_result_v3`，`qa_v3["conformation_risk_summary"]`。
 
 ---
 
-## 缺项3：实验建议（Experimental Recommendations）✅
+## 3：（Experimental Recommendations）✅
 
-### 功能描述
+### 
 
-基于QA v3.0结果生成实验建议，包括：
-- 是否需要再优化（directed evolution）
-- 是否建议酵母展示验证
-- 是否需要多模板对照
-- 是否需要测 ΔTm / ΔΔG
+QA v3.0，：
+- （directed evolution）
+- 
+- 
+-  ΔTm / ΔΔG
 
-### 实现文件
+### 
 
 `core/vhh_qa_experimental_recommendations.py`
 
-### 建议类型
+### 
 
 #### 1. Directed Evolution
 
-**触发条件**:
+****:
 - Grafting impact normalized score ≥ 0.4
-- Structural compatibility有ERROR
+- Structural compatibilityERROR
 
-**优先级**: high
+****: high
 
-**建议内容**: "高结构风险或grafting impact，建议通过directed evolution优化"
+****: "grafting impact，directed evolution"
 
-#### 2. 酵母展示验证
+#### 2. 
 
-**触发条件**:
+****:
 - Biological feasibility < 80
-- Ranking sanity有ERROR
+- Ranking sanityERROR
 - Grafting impact normalized score ≥ 0.2
 
-**优先级**: high (feasibility < 70) 或 medium
+****: high (feasibility < 70)  medium
 
-**建议内容**: "生物可行性评分较低或存在结构风险，建议通过酵母展示验证结合活性和亲和性"
+****: "，"
 
-#### 3. 多模板对照
+#### 3. 
 
-**触发条件**:
-- Ranking sanity有ERROR或WARNING
+****:
+- Ranking sanityERRORWARNING
 
-**优先级**: medium
+****: medium
 
-**建议内容**: "模板排名存在可疑问题，建议进行多模板对照实验"
+****: "，"
 
-#### 4. 热力学分析（ΔTm / ΔΔG）
+#### 4. （ΔTm / ΔΔG）
 
-**触发条件**:
+****:
 - Overall structural feasibility < 70
 - Grafting impact normalized score ≥ 0.3
 
-**优先级**: high (feasibility < 60) 或 medium
+****: high (feasibility < 60)  medium
 
-**建议内容**: "构象风险较高，建议通过热力学分析（ΔTm/ΔΔG）评估结构稳定性"
+****: "，（ΔTm/ΔΔG）"
 
-### 输出结构
+### 
 
 ```python
 experimental_recommendations = {
@@ -286,13 +286,13 @@ experimental_recommendations = {
 }
 ```
 
-### 集成位置
+### 
 
-在`validate_vhh_humanization_result_v3()`中自动生成，包含在`qa_v3["experimental_recommendations"]`中。
+`validate_vhh_humanization_result_v3`，`qa_v3["experimental_recommendations"]`。
 
 ---
 
-## 完整qa_v3结构（更新后）
+## qa_v3
 
 ```python
 qa_v3 = {
@@ -311,18 +311,18 @@ qa_v3 = {
         "risk_level": "low/medium/high"
     },
     "metadata": {...},
-    "mutation_map": {  # 新增
+    "mutation_map": {  # 
         "regions": {...},
         "mutations_by_category": {...},
         "summary": {...}
     },
-    "conformation_risk_summary": {  # 新增
+    "conformation_risk_summary": {  # 
         "cdr3_anchor_stability": {...},
         "fr2_hydrophilic_patch": {...},
         "cdr1_torsion_compatibility": {...},
         "overall_structural_feasibility": {...}
     },
-    "experimental_recommendations": {  # 新增
+    "experimental_recommendations": {  # 
         "directed_evolution": {...},
         "yeast_display_validation": {...},
         "multi_template_comparison": {...},
@@ -334,23 +334,23 @@ qa_v3 = {
 
 ---
 
-## 文件清单
+## 
 
-### 新增文件
+### 
 
-1. ✅ `core/vhh_qa_mutation_map.py` - 突变映射生成
-2. ✅ `core/vhh_qa_conformation_risk.py` - 构象风险总结
-3. ✅ `core/vhh_qa_experimental_recommendations.py` - 实验建议生成
+1. ✅ `core/vhh_qa_mutation_map.py` - 
+2. ✅ `core/vhh_qa_conformation_risk.py` - 
+3. ✅ `core/vhh_qa_experimental_recommendations.py` - 
 
-### 修改文件
+### 
 
-1. ✅ `core/vhh_qa_validation.py` - 集成3个新模块到qa_v3结构
+1. ✅ `core/vhh_qa_validation.py` - 3qa_v3
 
 ---
 
-## 使用示例
+## 
 
-### 基本使用
+### 
 
 ```python
 from core.vhh_qa_validation import validate_vhh_humanization_result_v3
@@ -367,39 +367,39 @@ result = {
 
 qa_v3 = validate_vhh_humanization_result_v3(result, strict=True)
 
-# 访问mutation map
+# mutation map
 mutation_map = qa_v3["mutation_map"]
-print(f"总突变数: {mutation_map['summary']['total_mutations']}")
+print(f": {mutation_map['summary']['total_mutations']}")
 print(f"Germline adoption: {mutation_map['summary']['by_category']['germline_adoption']}")
 
-# 访问构象风险总结
+# 
 conformation_risk = qa_v3["conformation_risk_summary"]
-print(f"CDR3 anchor稳定性: {conformation_risk['cdr3_anchor_stability']['stability']}")
+print(f"CDR3 anchor: {conformation_risk['cdr3_anchor_stability']['stability']}")
 print(f"Overall structural feasibility: {conformation_risk['overall_structural_feasibility']['score']}/100")
 
-# 访问实验建议
+# 
 recommendations = qa_v3["experimental_recommendations"]
 if recommendations["yeast_display_validation"]["recommended"]:
-    print(f"建议进行酵母展示验证: {recommendations['yeast_display_validation']['reason']}")
+    print(f": {recommendations['yeast_display_validation']['reason']}")
 ```
 
 ---
 
-## 总结
+## 
 
-✅ **3个缺项全部补充完成**
+✅ **3**
 
-1. ✅ 序列标号（mutation map）- 完整的突变映射和分类
-2. ✅ 构象风险总结 - CRO可读的构象风险评估
-3. ✅ 实验建议 - 基于QA结果的实验建议
+1. ✅ （mutation map）- 
+2. ✅  - CRO
+3. ✅  - QA
 
-**CRO报告完整性**: ✅ 已完善  
-**系统状态**: ✅ 生产就绪
+**CRO**: ✅   
+****: ✅ 
 
 ---
 
-**文档版本**: 1.0  
-**最后更新**: 2025年12月10日
+****: 1.0  
+****: 20251210
 
 
 

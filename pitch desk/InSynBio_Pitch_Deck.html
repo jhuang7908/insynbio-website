@@ -278,7 +278,7 @@ body.mode-light .card p{color:#374151 !important;}
 .nav-dot.active { background: #0d9488; transform: scale(1.4); }
 
 /* ══════════════════════════════════════════════
-   LIGHT MODE — 乳白 Cream + Sage Alternation
+   LIGHT MODE —  Cream + Sage Alternation
    Cream  slides: #faf7f2  (warm ivory)
    Sage   slides: #e4f2ee  (soft mint, slide-green)
    Heading:  #1c3330  Body: #374151  Strong: #1c3330
@@ -436,29 +436,29 @@ body.mode-light .slide li::before { color: #0d9488 !important; }
 
   <canvas id="tech-canvas" style="position:absolute; top:0; left:0; width:100%; height:100%; z-index:1; opacity:0.85; mix-blend-mode:screen; pointer-events:none;"></canvas>
   <script>
-    (function(){
+    (function{
       const canvas = document.getElementById('tech-canvas');
       if(!canvas) return;
       const ctx = canvas.getContext('2d');
       let width, height;
-      function resize() {
+      function resize {
         width = canvas.width = window.innerWidth;
         height = canvas.height = window.innerHeight;
       }
       window.addEventListener('resize', resize);
-      resize();
+      resize;
 
       const particles = [];
       for(let i=0; i<60; i++) {
         particles.push({
-          x: Math.random() * 2000, y: Math.random() * 1200,
-          vx: (Math.random() - 0.5) * 0.3, vy: (Math.random() - 0.5) * 0.3,
-          r: Math.random() * 2 + 0.5
+          x: Math.random * 2000, y: Math.random * 1200,
+          vx: (Math.random - 0.5) * 0.3, vy: (Math.random - 0.5) * 0.3,
+          r: Math.random * 2 + 0.5
         });
       }
 
       let time = 0;
-      function draw() {
+      function draw {
         if (!document.getElementById('tech-canvas')) return;
         ctx.clearRect(0, 0, width, height);
         time += 0.012;
@@ -470,16 +470,16 @@ body.mode-light .slide li::before { color: #0d9488 !important; }
           if(p.x < 0 || p.x > width) p.vx *= -1;
           if(p.y < 0 || p.y > height) p.vy *= -1;
           
-          ctx.beginPath();
+          ctx.beginPath;
           ctx.arc(p.x, p.y, p.r, 0, Math.PI*2);
           ctx.fillStyle = 'rgba(94, 234, 212, 0.4)';
-          ctx.fill();
+          ctx.fill;
 
           for(let j=i+1; j<particles.length; j++) {
             let p2 = particles[j];
             let dist = Math.hypot(p.x - p2.x, p.y - p2.y);
             if(dist < 150) {
-              ctx.beginPath();
+              ctx.beginPath;
               ctx.moveTo(p.x, p.y);
               // Draw 90-degree circuit-like pathways rather than organic lines
               if (Math.abs(p.x - p2.x) > Math.abs(p.y - p2.y)) {
@@ -489,7 +489,7 @@ body.mode-light .slide li::before { color: #0d9488 !important; }
               }
               ctx.strokeStyle = `rgba(14, 165, 233, ${0.1 * (1 - dist/150)})`;
               ctx.lineWidth = 0.8;
-              ctx.stroke();
+              ctx.stroke;
             }
           }
         }
@@ -501,27 +501,27 @@ body.mode-light .slide li::before { color: #0d9488 !important; }
           const offset = (y * 0.01) - time * 2;
           const x1 = centerX + Math.sin(offset) * 35;
           const x2 = centerX + Math.sin(offset + Math.PI) * 35;
-          ctx.beginPath(); ctx.moveTo(x1, y); ctx.lineTo(x2, y);
-          ctx.strokeStyle = 'rgba(94, 234, 212, 0.15)'; ctx.stroke();
-          ctx.beginPath(); ctx.arc(x1, y, 2, 0, Math.PI*2); ctx.fillStyle = 'rgba(14, 165, 233, 0.4)'; ctx.fill();
-          ctx.beginPath(); ctx.arc(x2, y, 2, 0, Math.PI*2); ctx.fillStyle = 'rgba(94, 234, 212, 0.4)'; ctx.fill();
+          ctx.beginPath; ctx.moveTo(x1, y); ctx.lineTo(x2, y);
+          ctx.strokeStyle = 'rgba(94, 234, 212, 0.15)'; ctx.stroke;
+          ctx.beginPath; ctx.arc(x1, y, 2, 0, Math.PI*2); ctx.fillStyle = 'rgba(14, 165, 233, 0.4)'; ctx.fill;
+          ctx.beginPath; ctx.arc(x2, y, 2, 0, Math.PI*2); ctx.fillStyle = 'rgba(94, 234, 212, 0.4)'; ctx.fill;
         }
         
         // 3. Abstract Antibodies (Floating in logic space)
         const drawAb = (bx, by, scale, rot) => {
-          ctx.save();
+          ctx.save;
           ctx.translate(bx, by);
           ctx.rotate(rot + Math.sin(time)*0.1);
           ctx.scale(scale, scale);
-          ctx.beginPath();
+          ctx.beginPath;
           ctx.moveTo(0, 45); ctx.lineTo(0, 0); // Trunk
           ctx.lineTo(-30, -40); ctx.moveTo(0, 0); ctx.lineTo(30, -40); // Arms
           ctx.strokeStyle = 'rgba(255, 255, 255, 0.08)';
           ctx.lineWidth = 6; ctx.lineCap = 'round'; ctx.lineJoin = 'round';
-          ctx.stroke();
-          ctx.beginPath(); ctx.moveTo(-15, -15); ctx.lineTo(15, -15); // Disulfide bond
-          ctx.strokeStyle = 'rgba(94, 234, 212, 0.2)'; ctx.lineWidth = 2; ctx.stroke();
-          ctx.restore();
+          ctx.stroke;
+          ctx.beginPath; ctx.moveTo(-15, -15); ctx.lineTo(15, -15); // Disulfide bond
+          ctx.strokeStyle = 'rgba(94, 234, 212, 0.2)'; ctx.lineWidth = 2; ctx.stroke;
+          ctx.restore;
         };
         
         drawAb(width * 0.88, height * 0.4 + Math.sin(time*1.5)*30, 1.4, 0.2);
@@ -529,8 +529,8 @@ body.mode-light .slide li::before { color: #0d9488 !important; }
 
         requestAnimationFrame(draw);
       }
-      draw();
-    })();
+      draw;
+    });
   </script>
 
   <div class="slide-inner" style="justify-content:center; align-items:center; text-align:center;">
@@ -1103,7 +1103,7 @@ body.mode-light .slide li::before { color: #0d9488 !important; }
 const slides=document.querySelectorAll('.slide');
 const dotsC=document.getElementById('navDots');
 dotsC.innerHTML = '';
-slides.forEach((_,i)=>{const b=document.createElement('button');b.className='nav-dot';b.onclick=()=>slides[i].scrollIntoView({behavior:'smooth'});dotsC.appendChild(b);});
+slides.forEach((_,i)=>{const b=document.createElement('button');b.className='nav-dot';b.onclick==>slides[i].scrollIntoView({behavior:'smooth'});dotsC.appendChild(b);});
 const dots=dotsC.querySelectorAll('.nav-dot');
 const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){const idx=[...slides].indexOf(e.target);dots.forEach((d,i)=>d.classList.toggle('active',i===idx));}});},{threshold:0.55});
 slides.forEach(s=>obs.observe(s));
@@ -1111,8 +1111,8 @@ slides.forEach(s=>obs.observe(s));
 // Keyboard nav
 document.addEventListener('keydown',e=>{
   const cur=[...dots].findIndex(d=>d.classList.contains('active'));
-  if(e.key==='ArrowDown'||e.key===' '||e.key==='PageDown'){e.preventDefault();if(cur<slides.length-1)slides[cur+1].scrollIntoView({behavior:'smooth'});}
-  if(e.key==='ArrowUp'||e.key==='PageUp'){e.preventDefault();if(cur>0)slides[cur-1].scrollIntoView({behavior:'smooth'});}
+  if(e.key==='ArrowDown'||e.key===' '||e.key==='PageDown'){e.preventDefault;if(cur<slides.length-1)slides[cur+1].scrollIntoView({behavior:'smooth'});}
+  if(e.key==='ArrowUp'||e.key==='PageUp'){e.preventDefault;if(cur>0)slides[cur-1].scrollIntoView({behavior:'smooth'});}
 });
 </script>
 </body>

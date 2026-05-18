@@ -1,15 +1,15 @@
 
 // Security: Anti-copy, Anti-right-click, Anti-print
-(function() {
-  document.addEventListener('contextmenu', e => e.preventDefault());
-  document.addEventListener('selectstart', e => e.preventDefault());
-  document.addEventListener('copy', e => e.preventDefault());
+(function {
+  document.addEventListener('contextmenu', e => e.preventDefault);
+  document.addEventListener('selectstart', e => e.preventDefault);
+  document.addEventListener('copy', e => e.preventDefault);
   document.addEventListener('keydown', e => {
     if ((e.ctrlKey || e.metaKey) && (e.key === 'c' || e.key === 'p' || e.key === 's' || e.key === 'u')) {
-      e.preventDefault();
+      e.preventDefault;
     }
   });
-})();
+});
 
 // ═══════════════════════════════════════════════════════════
 // DATA
@@ -48,7 +48,7 @@ const ADC_CLINICAL_DATA = [
 {id:'adcprogt2016', cat:'Claudin18.2', name:'CMG901 (AZD0901)', alias:'Keymed / AstraZeneca | Claudin18.2', brief:'Gastric Cancer', examples:["MMAE", "mc-val-cit-PABC"], mechanism:'First CLDN18.2 ADC to show clinical signal. Licensed to AstraZeneca for $1.1B. vc-PABC-MMAE platform. <br><br> <strong>Clinical Profile:</strong><br>• ORR: 35% overall, 48% (2.2mg/kg) | PFS: 4.8 mo<br>• Grade 3+ AE: 55% | Common: Nausea, Anemia, Neutropenia<br>• ADA: Not Reported<br>• Dose: 2.2 - 3.0 mg/kg (Q3W)', receptors:'Target: Claudin18.2 (DAR: 4.0)', tradeoffs:'Payload: MMAE (tubulin_inhibitors) | Linker: mc-val-cit-PABC', ref:'<span>NCT04805307</span> · <span>Patents: CN111004321, US11773177</span>', tier:'T2'},
 {id:'adcprogt2017', cat:'HER2', name:'ARX788', alias:'Ambrx / NovoCodex | HER2', brief:'HER2+ Breast Cancer, Gastric Cancer', examples:["AS269 (Tubulin inhibitor)", "Non-cleavable (PEG-AS)"], mechanism:'{\'physical_consistency\': \'pass\', \'logic_check\': \'Site-specific DAR 2 using pAF; highly stable non-cleavable linker.\'} <br><br> <strong>Clinical Profile:</strong><br>• ORR: TBD | PFS: TBD<br>• Grade 3+ AE: TBD | Common: TBD<br>• ADA: TBD<br>• Dose: TBD (TBD)', receptors:'Target: HER2 (DAR: 2.0)', tradeoffs:'Payload: AS269 (Tubulin inhibitor) (tubulin_inhibitors) | Linker: Non-cleavable (PEG-AS)', ref:'<span>NCT04829604</span>', tier:'T2'},
 {id:'adcprogt3002', cat:'CD166 (ALCAM)', name:'Praluzatamab ravtansine (CX-2009)', alias:'CytomX Therapeutics | CD166 (ALCAM)', brief:'Breast Cancer', examples:["DM4", "SPDB"], mechanism:' <br><br> <strong>Clinical Profile:</strong><br>• ORR: TBD | PFS: TBD<br>• Grade 3+ AE: TBD | Common: TBD<br>• ADA: TBD<br>• Dose: TBD (TBD)', receptors:'Target: CD166 (ALCAM) (DAR: 3.5)', tradeoffs:'Payload: DM4 (N/A) | Linker: SPDB', ref:'<span>NCT03149549</span>', tier:'T3'},
-{id:'adcprogt2018', cat:'HER3', name:'YL201 / BNT326', alias:'MediLink (宜联) / BioNTech | HER3', brief:'NSCLC, Breast Cancer', examples:["TOP1i", "TMALIN"], mechanism:'{\'physical_consistency\': \'pass\', \'logic_check\': \'Utilizes TMALIN platform for TME-specific extracellular cleavage, overcoming low internalization of some targets.\'} <br><br> <strong>Clinical Profile:</strong><br>• ORR: TBD | PFS: TBD<br>• Grade 3+ AE: TBD | Common: TBD<br>• ADA: TBD<br>• Dose: TBD (TBD)', receptors:'Target: HER3 (DAR: 8.0)', tradeoffs:'Payload: TOP1i (N/A) | Linker: TMALIN', ref:'<span>NCT05653752</span>', tier:'T2'},
+{id:'adcprogt2018', cat:'HER3', name:'YL201 / BNT326', alias:'MediLink  / BioNTech | HER3', brief:'NSCLC, Breast Cancer', examples:["TOP1i", "TMALIN"], mechanism:'{\'physical_consistency\': \'pass\', \'logic_check\': \'Utilizes TMALIN platform for TME-specific extracellular cleavage, overcoming low internalization of some targets.\'} <br><br> <strong>Clinical Profile:</strong><br>• ORR: TBD | PFS: TBD<br>• Grade 3+ AE: TBD | Common: TBD<br>• ADA: TBD<br>• Dose: TBD (TBD)', receptors:'Target: HER3 (DAR: 8.0)', tradeoffs:'Payload: TOP1i (N/A) | Linker: TMALIN', ref:'<span>NCT05653752</span>', tier:'T2'},
 {id:'adcprogt2200', cat:'CDH6', name:'Raludotatug deruxtecan (DS-6000)', alias:'Daiichi Sankyo | CDH6', brief:'Platinum-resistant Ovarian Cancer, Peritoneal/Fallopian Tube Cancer', examples:["DXd", "GGFG (Tetrapeptide)"], mechanism:'Phase 2 REJOICE-Ovarian01: 50.0% ORR at 5.6 mg/kg dose. Moving to Phase 3 vs chemotherapy. CDH6-directed ADC with DXd platform. <br><br> <strong>Clinical Profile:</strong><br>• ORR: 50.0% | PFS: TBD<br>• Grade 3+ AE: Moderate | Common: Nausea, Anemia, Asthenia<br>• ADA: Low<br>• Dose: 5.6 mg/kg (Q3W)', receptors:'Target: CDH6 (DAR: 8.0)', tradeoffs:'Payload: DXd (Topoisomerase I Inhibitor) | Linker: GGFG (Tetrapeptide)', ref:'<span>PMID: 34711587, REJOICE-Ovarian01</span>', tier:'T2'},
 {id:'adcprogt2201', cat:'TA-MUC1', name:'DS-3939a (DS-3939)', alias:'Daiichi Sankyo | TA-MUC1', brief:'TA-MUC1-expressing Advanced Solid Tumors', examples:["DXd", "GGFG (Tetrapeptide)"], mechanism:'Targeting MUC1 using the validated DXd platform. <br><br> <strong>Clinical Profile:</strong><br>• ORR: TBD | PFS: TBD<br>• Grade 3+ AE: TBD | Common: TBD<br>• ADA: TBD<br>• Dose: TBD (TBD)', receptors:'Target: TA-MUC1 (DAR: 8.0)', tradeoffs:'Payload: DXd (Topoisomerase I Inhibitor) | Linker: GGFG (Tetrapeptide)', ref:'<span>N/A</span>', tier:'T2'},
 {id:'adcprogt2202', cat:'CLDN18.2', name:'Kelun-Biotech SKB315 (SKB315)', alias:'Kelun-Biotech | CLDN18.2', brief:'CLDN18.2-expressing Advanced Solid Tumors', examples:["KL610015 (Topo1i)", "K-Link (Cleavable)"], mechanism:'Targets CLDN18.2. Kelun\'s proprietary Topo1i platform (K-Link). <br><br> <strong>Clinical Profile:</strong><br>• ORR: TBD | PFS: TBD<br>• Grade 3+ AE: TBD | Common: TBD<br>• ADA: TBD<br>• Dose: TBD (TBD)', receptors:'Target: CLDN18.2 (DAR: 7.4)', tradeoffs:'Payload: KL610015 (Topo1i) (Topoisomerase I Inhibitor) | Linker: K-Link (Cleavable)', ref:'<span>N/A</span> · <span>Patents: CN113174005, WO2021147926</span>', tier:'T2'},
@@ -646,7 +646,7 @@ const DOMAINS = {
     data: ADC_CLINICAL_DATA,
     note: '<strong>Clinical ADC Registry</strong> — Comprehensive database of approved and clinical-stage Antibody-Drug Conjugates. Includes target, conjugation tech, DAR, and latest clinical results.',
     catField: 'cat',
-    cats: [...new Set(ADC_CLINICAL_DATA.map(d=>d.cat))].sort(),
+    cats: [...new Set(ADC_CLINICAL_DATA.map(d=>d.cat))].sort,
     showTier: true,
     filterLabel: 'All Targets',
     card: renderFcCard,
@@ -703,7 +703,7 @@ const DOMAINS = {
 // ═══════════════════════════════════════════════════════════
 // EXTRA HTML SECTIONS (Fc Selection Guide + ADA Stats)
 // ═══════════════════════════════════════════════════════════
-function renderFcSelectionGuide() {
+function renderFcSelectionGuide {
   return `<div style="background:#fafafa;border:1px solid #e5e7eb;border-radius:12px;padding:20px;font-size:13px;margin-bottom:24px;">
     <div style="font-weight:700;margin-bottom:12px;color:#374151">📌 Fc Selection Quick Reference</div>
     <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px">
@@ -724,7 +724,7 @@ const FC_ADA_STATS = [
   {grp:'ADC (Antibody-Drug Conjugate)',      n:14, median:7.6, min:0.0, max:17.0, low_risk_n:8,  color:'#d97706', note:'ADC scaffold does not intrinsically raise ADA; payload conjugation increases immune complex risk'},
 ];
 
-function renderFcAdaStats() {
+function renderFcAdaStats {
   let html = `<div class="domain-note"><p><strong>Fc Engineering × Clinical ADA Impact</strong> — Statistical analysis of InSynBio\'s 138-entry clinical ADA database stratified by Fc format. Data sourced from FDA/EMA labels and PMID-verified literature (Tier A/B evidence). ADA incidence is affected by multiple confounders (route, indication, assay generation, co-immunosuppression) — this analysis is for Fc selection guidance only and does not replace molecule-specific literature review.</p></div>`;
   html += `<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px;margin-bottom:28px;">`;
   FC_ADA_STATS.forEach(s => {
@@ -762,7 +762,7 @@ function renderFcAdaStats() {
 // ═══════════════════════════════════════════════════════════
 function hl(text) {
   if (!searchTerm || !text) return text;
-  const re = new RegExp('(' + searchTerm.replace(/[.*+?^${}()|[\]\\]/g,'\\$&') + ')', 'gi');
+  const re = new RegExp('(' + searchTerm.replace(/[.*+?^${}|[\]\\]/g,'\\$&') + ')', 'gi');
   return text.replace(re, '<mark>$1</mark>');
 }
 
@@ -779,7 +779,7 @@ const IP_STATUS = {
 
 function resolveIpStatus(status) {
   if (!status) return null;
-  const s = status.toLowerCase();
+  const s = status.toLowerCase;
   if (s.includes('public')) return IP_STATUS.public;
   if (s.includes('expir') && s.includes('active')) return IP_STATUS.expiring;
   if (s.includes('active')) return IP_STATUS.active;
@@ -790,7 +790,7 @@ function resolveIpStatus(status) {
 
 function renderFcCard(d) {
   const exHtml = (d.examples || []).map(e => {
-    const cls = e.toLowerCase().includes('fda') ? 'ex-approved' : 'ex-trial';
+    const cls = e.toLowerCase.includes('fda') ? 'ex-approved' : 'ex-trial';
     return `<span class="${cls}">${hl(e)}</span>`;
   }).join(' · ');
   const ip = d.ip;
@@ -899,10 +899,10 @@ function renderWetCard(d) {
 // ═══════════════════════════════════════════════════════════
 // RENDER GRID
 // ═══════════════════════════════════════════════════════════
-function renderGrid() {
+function renderGrid {
   const dom = DOMAINS[currentDomain];
   const data = dom.data;
-  const q = searchTerm.toLowerCase();
+  const q = searchTerm.toLowerCase;
 
   const filtered = data.filter(d => {
     const matchCat = !catFilter || d.cat === catFilter;
@@ -911,7 +911,7 @@ function renderGrid() {
       d.mechanism || '', d.examples ? d.examples.join(' ') : '',
       d.interp || '', d.detection || '', d.mitigation || '',
       d.principle || '', d.readout || '', d.compLink || '', d.context || '',
-      d.ip ? `${d.ip.holder} ${d.ip.key} ${d.ip.workaround} ${d.ip.status}` : ''].some(f => f.toLowerCase().includes(q));
+      d.ip ? `${d.ip.holder} ${d.ip.key} ${d.ip.workaround} ${d.ip.status}` : ''].some(f => f.toLowerCase.includes(q));
     return matchCat && matchTier && matchSearch;
   });
 
@@ -933,7 +933,7 @@ function renderGrid() {
   es.style.display = 'none';
 
   let html = `<div class="domain-note"><p>${dom.note}</p></div>`;
-  if (dom.extraHtmlTop) html += dom.extraHtmlTop();
+  if (dom.extraHtmlTop) html += dom.extraHtmlTop;
   for (const [cat, cards] of Object.entries(groups)) {
     html += `<div class="cat-section">
       <div class="cat-header">
@@ -943,7 +943,7 @@ function renderGrid() {
       <div class="card-grid">${cards.map(d => dom.card(d)).join('')}</div>
     </div>`;
   }
-  if (dom.extraHtmlBottom) html += dom.extraHtmlBottom();
+  if (dom.extraHtmlBottom) html += dom.extraHtmlBottom;
   gc.innerHTML = html;
   document.getElementById('stats-chip').textContent = `${filtered.length} / ${data.length} entries`;
 }
@@ -975,7 +975,7 @@ function toggleCard(ev, id) {
       if (!el.dataset.hoverBound) {
         el.dataset.hoverBound = 'true';
         
-        el.addEventListener('mouseenter', () => {
+        el.addEventListener('mouseenter',  => {
           if (!el.classList.contains('expanded')) return;
           if (collapseTimers[id]) {
             clearTimeout(collapseTimers[id]);
@@ -987,7 +987,7 @@ function toggleCard(ev, id) {
           }
         });
         
-        el.addEventListener('mouseleave', () => {
+        el.addEventListener('mouseleave',  => {
           if (!el.classList.contains('expanded')) return;
           
           // Start the 3-second countdown
@@ -999,7 +999,7 @@ function toggleCard(ev, id) {
             progress.style.width = '0%';
           }
           
-          collapseTimers[id] = setTimeout(() => {
+          collapseTimers[id] = setTimeout( => {
             el.classList.remove('expanded');
             if (progress) {
               progress.style.transition = 'none';
@@ -1035,14 +1035,14 @@ function switchDomain(domain, btn) {
   document.getElementById('cat-filter').value = '';
   document.querySelectorAll('.dtab').forEach(b => b.classList.remove('active'));
   btn.classList.add('active');
-  updateCatFilter();
+  updateCatFilter;
   const tierEl = document.getElementById('tier-filter');
   tierEl.style.display = (domain === 'fc') ? '' : 'none';
-  renderGrid();
-  updateClearBtn();
+  renderGrid;
+  updateClearBtn;
 }
 
-function updateCatFilter() {
+function updateCatFilter {
   const dom = DOMAINS[currentDomain];
   const sel = document.getElementById('cat-filter');
   sel.innerHTML = `<option value="">${dom.filterLabel}</option>`;
@@ -1053,37 +1053,37 @@ function updateCatFilter() {
   });
 }
 
-function clearFilters() {
+function clearFilters {
   searchTerm = '';
   catFilter = '';
   tierFilter = '';
   document.getElementById('search-input').value = '';
   document.getElementById('cat-filter').value = '';
   document.getElementById('tier-filter').value = '';
-  updateClearBtn();
-  renderGrid();
+  updateClearBtn;
+  renderGrid;
 }
 
-function updateClearBtn() {
+function updateClearBtn {
   const hasFilter = searchTerm || catFilter || tierFilter;
   document.getElementById('clear-btn').classList.toggle('visible', !!hasFilter);
 }
 
 // ── Event listeners ──────────────────────────────────────
 document.getElementById('search-input').addEventListener('input', e => {
-  searchTerm = e.target.value.trim();
-  updateClearBtn();
-  renderGrid();
+  searchTerm = e.target.value.trim;
+  updateClearBtn;
+  renderGrid;
 });
 document.getElementById('cat-filter').addEventListener('change', e => {
   catFilter = e.target.value;
-  updateClearBtn();
-  renderGrid();
+  updateClearBtn;
+  renderGrid;
 });
 document.getElementById('tier-filter').addEventListener('change', e => {
   tierFilter = e.target.value;
-  updateClearBtn();
-  renderGrid();
+  updateClearBtn;
+  renderGrid;
 });
 
 // ── Init: handle ?tab= URL param ─────────────────────────
@@ -1095,5 +1095,5 @@ if (urlTab && DOMAINS[urlTab]) {
   });
   if (urlTab !== 'fc') document.getElementById('tier-filter').style.display = 'none';
 }
-updateCatFilter();
-renderGrid();
+updateCatFilter;
+renderGrid;

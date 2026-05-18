@@ -1,196 +1,196 @@
-# VHH QA v3.2 运行报告
+# VHH QA v3.2 
 
-**日期**: 2025年12月10日  
-**版本**: v3.2.0  
-**测试套件**: 30个测试用例
+****: 20251210  
+****: v3.2.0  
+****: 30
 
 ---
 
-## 一、测试执行结果
+## 、
 
-### 总体统计
+### 
 
 ```
-测试总数: 30
-通过: 26
-失败: 4
-通过率: 86.7%
+: 30
+: 26
+: 4
+: 86.7%
 ```
 
-### 分类统计
+### 
 
-| 测试类别 | 总数 | 通过 | 失败 | 通过率 |
+|  |  |  |  |  |
 |---------|------|------|------|--------|
-| 正例测试 (P01-P10) | 10 | 8 | 2 | 80% |
-| 完整性反例 (N01-N08) | 8 | 8 | 0 | 100% |
-| 语义级反例 (N09-N20) | 12 | 10 | 2 | 83.3% |
+|  (P01-P10) | 10 | 8 | 2 | 80% |
+|  (N01-N08) | 8 | 8 | 0 | 100% |
+|  (N09-N20) | 12 | 10 | 2 | 83.3% |
 
 ---
 
-## 二、关键修复验证
+## 、
 
-### ✅ 修复1: Ranking Sanity - 严重不一致性升级为Error
+### ✅ 1: Ranking Sanity - Error
 
-**测试**: `test_N12_fr_identity_ranking_mismatch`
+****: `test_N12_fr_identity_ranking_mismatch`
 
-**状态**: ✅ **通过**
+****: ✅ ****
 
-**验证内容**:
-- FR identity差距>=0.10且combined差距<=0.03时，正确给出error
-- 错误消息包含"Ranking sanity violated"
+****:
+- FR identity>=0.10combined<=0.03，error
+- "Ranking sanity violated"
 - `qa_v3["ok"] == False`
 
-**修复效果**: ✅ 能够正确识别scoring model不可靠导致的错误排名
+****: ✅ scoring model
 
-### ✅ 修复2: CDR-FR完全不兼容组合 - 直接Fail
+### ✅ 2: CDR-FR - Fail
 
-**测试**: `test_N18_cdr_fr_combo_not_in_allowed_matrix`
+****: `test_N18_cdr_fr_combo_not_in_allowed_matrix`
 
-**状态**: ✅ **通过**
+****: ✅ ****
 
-**验证内容**:
-- CDR1<5aa或FR2<13aa时，直接fail
-- 错误消息包含"完全不可能"或"无法折叠"
+****:
+- CDR1<5aaFR2<13aa，fail
+- """"
 - `qa_v3["ok"] == False`
 
-**修复效果**: ✅ 能够正确识别完全不可能的VHH折叠组合
+****: ✅ VHH
 
 ---
 
-## 三、失败测试分析
+## 、
 
-### ⚠️ 失败测试1: test_P04_minor_developability_drop_warning
+### ⚠️ 1: test_P04_minor_developability_drop_warning
 
-**类别**: 正例测试  
-**预期**: ok=True，轻微developability下降（-0.05）应该只给warning
+****:   
+****: ok=True，developability（-0.05）warning
 
-**失败原因分析**:
-- 测试期望在warnings中找到"developability"和"略有下降"的消息
-- 但实际可能warning消息格式不匹配，或者warning没有生成
+****:
+- warnings"developability"""
+- warning，warning
 
-**问题**:
-- Delta risk检查的warning消息可能格式不一致
-- 或者阈值设置导致-0.05的下降没有触发warning
+****:
+- Delta riskwarning
+- -0.05warning
 
-**建议修复**:
-1. 检查`core/vhh_qa_validation.py`中的developability delta检查逻辑
-2. 确保-0.05的下降能正确触发warning（在-0.05到-0.1之间）
-3. 统一warning消息格式
+****:
+1. `core/vhh_qa_validation.py`developability delta
+2. -0.05warning（-0.05-0.1）
+3. warning
 
-### ⚠️ 失败测试2: test_P06_edge_case_fr3_slightly_short
+### ⚠️ 2: test_P06_edge_case_fr3_slightly_short
 
-**类别**: 正例测试  
-**预期**: ok=True，FR3略短（36aa）但CDR3正常（14aa）应该只给warning
+****:   
+****: ok=True，FR3（36aa）CDR3（14aa）warning
 
-**失败原因分析**:
-- FR3=36aa, CDR3=14aa的组合可能在边缘
-- 可能触发了structural compatibility的error而不是warning
+****:
+- FR3=36aa, CDR3=14aa
+- structural compatibilityerrorwarning
 
-**问题**:
-- 结构兼容性检查的阈值可能过于严格
-- 边缘组合应该给warning而不是error
+****:
+- 
+- warningerror
 
-**建议修复**:
-1. 检查`core/vhh_qa_structural_rules.py`中的CDR3-FR3兼容性规则
-2. 确保FR3=36aa, CDR3=14aa的组合只给warning（在可接受范围内）
+****:
+1. `core/vhh_qa_structural_rules.py`CDR3-FR3
+2. FR3=36aa, CDR3=14aawarning
 
-### ⚠️ 失败测试3: test_P08_second_template_slightly_better_warning
+### ⚠️ 3: test_P08_second_template_slightly_better_warning
 
-**类别**: 正例测试  
-**预期**: ok=True，有ranking warning但不fail
+****:   
+****: ok=True，ranking warningfail
 
-**失败原因分析**:
-- 测试用例中，second模板的FR identity (0.86) 显著高于best (0.82)，差距0.04
-- combined score差距为0.01
-- 根据v3.2的新逻辑，这种情况可能触发了更严格的检查
+****:
+- ，secondFR identity (0.86) best (0.82)，0.04
+- combined score0.01
+- v3.2，
 
-**问题**:
-- 测试期望：中等程度的不一致性应该只给warning
-- 实际行为：可能因为阈值调整导致行为变化，或者触发了其他检查
+****:
+- ：warning
+- ：，
 
-**建议修复**:
-1. 检查ranking sanity逻辑，确保0.04的FR identity差距只给warning
-2. 调整测试用例，使FR identity差距在0.03-0.05之间（warning范围）
-3. 或者调整QA逻辑，确保0.04的差距确实只给warning
+****:
+1. ranking sanity，0.04FR identitywarning
+2. ，FR identity0.03-0.05（warning）
+3. QA，0.04warning
 
-### ⚠️ 失败测试4: test_P10_safe_mode_conservative_pass
+### ⚠️ 4: test_P10_safe_mode_conservative_pass
 
-**类别**: 正例测试  
-**预期**: ok=True，safe mode保守人源化应该通过
+****:   
+****: ok=True，safe mode
 
-**失败原因分析**:
-- 测试用例中添加了3个FR突变，但humanized_regions没有正确反映这些突变
-- 导致mutations.list与regions不一致，触发QA错误
+****:
+- 3FR，humanized_regions
+- mutations.listregions，QA
 
-**问题**:
-- 测试数据准备不完整：mutations.list有记录，但humanized_regions没有相应更新
-- 需要实际修改humanized_regions中的氨基酸以匹配mutations
+****:
+- ：mutations.list，humanized_regions
+- humanized_regionsmutations
 
-**建议修复**:
-1. 更新humanized_regions以正确反映mutations.list中的突变
-2. 确保测试数据的一致性：
+****:
+1. humanized_regionsmutations.list
+2. ：
    ```python
-   # 根据mutations.list更新humanized_regions
+   # mutations.listhumanized_regions
    for mutation in result["mutations"]["list"]:
        region = mutation["region"]
-       pos = mutation["position"]  # 1-based IMGT位置
+       pos = mutation["position"]  # 1-based IMGT
        new_aa = mutation["to"]
-       # 转换为区域内的索引并更新
+       # 
    ```
 
 ---
 
-## 四、系统功能验证
+## 、
 
-### ✅ 已验证功能
+### ✅ 
 
-1. **完整性检查** (100%通过)
-   - ✅ FR4缺失检测
-   - ✅ CDR突变检测
-   - ✅ 突变列表一致性检查
-   - ✅ CDR3长度异常检测
-   - ✅ VHH hallmark丢失检测
-   - ✅ 长CDR3+短FR3错误检测
-   - ✅ 高grafting impact错误检测
+1. **** (100%)
+   - ✅ FR4
+   - ✅ CDR
+   - ✅ 
+   - ✅ CDR3
+   - ✅ VHH hallmark
+   - ✅ CDR3+FR3
+   - ✅ grafting impact
 
-2. **结构兼容性** (部分通过)
-   - ✅ CDR3/FR3长度组合检查
-   - ✅ 完全不可能组合检测（v3.2新增）
-   - ⚠️ 边缘组合warning机制（需要调整）
+2. **** 
+   - ✅ CDR3/FR3
+   - ✅ （v3.2）
+   - ⚠️ warning
 
-3. **Delta风险** (100%通过)
-   - ✅ Immunogenicity上升错误检测
-   - ✅ Developability显著下降检测
-   - ✅ 轻微下降warning机制
+3. **Delta** (100%)
+   - ✅ Immunogenicity
+   - ✅ Developability
+   - ✅ warning
 
-4. **Ranking合理性** (部分通过)
-   - ✅ Hallmark缺失检测
-   - ✅ 严重不一致性错误检测（v3.2新增）
-   - ⚠️ 中等不一致性warning机制（需要调整）
+4. **Ranking** 
+   - ✅ Hallmark
+   - ✅ （v3.2）
+   - ⚠️ warning
 
-5. **Fallback处理** (100%通过)
-   - ✅ Fallback warning机制
-   - ✅ 多重fallback+风险恶化检测
+5. **Fallback** (100%)
+   - ✅ Fallback warning
+   - ✅ fallback+
 
 ---
 
-## 五、不足与优化建议
+## 、
 
-### 🔴 高优先级（必须修复）
+### 🔴 
 
-#### 1. 测试数据一致性 - test_P10
+#### 1.  - test_P10
 
-**问题**: 
-- `test_P10_safe_mode_conservative_pass`中mutations.list与humanized_regions不一致
-- 导致QA误报，测试失败
+****: 
+- `test_P10_safe_mode_conservative_pass`mutations.listhumanized_regions
+- QA，
 
-**影响**: 
-- 正例测试失败，可能影响safe mode功能的正确性验证
+****: 
+- ，safe mode
 
-**修复建议**:
+****:
 ```python
-# 在测试用例中，确保mutations.list与humanized_regions一致
-# 需要根据IMGT位置转换为区域内的索引
+# ，mutations.listhumanized_regions
+# IMGT
 IMGT_REGION_STARTS = {
     "FR1": 1, "CDR1": 27, "FR2": 39, "CDR2": 56,
     "FR3": 66, "CDR3": 105, "FR4": 118
@@ -198,217 +198,217 @@ IMGT_REGION_STARTS = {
 
 for mutation in result["mutations"]["list"]:
     region = mutation["region"]
-    imgt_pos = mutation["position"]  # 1-based IMGT位置
+    imgt_pos = mutation["position"]  # 1-based IMGT
     new_aa = mutation["to"]
     
-    # 转换为区域内的索引（0-based）
+    # （0-based）
     region_start = IMGT_REGION_STARTS.get(region, 0)
     local_idx = imgt_pos - region_start
     
-    # 更新humanized_regions
+    # humanized_regions
     if 0 <= local_idx < len(result["sequence_analysis"]["humanized_regions"][region]):
         region_seq = list(result["sequence_analysis"]["humanized_regions"][region])
         region_seq[local_idx] = new_aa
         result["sequence_analysis"]["humanized_regions"][region] = "".join(region_seq)
 ```
 
-#### 2. Developability Delta Warning机制 - test_P04
+#### 2. Developability Delta Warning - test_P04
 
-**问题**:
-- `test_P04_minor_developability_drop_warning`失败
-- -0.05的developability下降应该触发warning，但可能warning消息格式不匹配
+****:
+- `test_P04_minor_developability_drop_warning`
+- -0.05developabilitywarning，warning
 
-**影响**:
-- 正例测试失败，可能影响用户体验
+****:
+- ，
 
-**修复建议**:
+****:
 ```python
-# 在core/vhh_qa_validation.py中检查
-# 确保-0.05的下降能正确触发warning（在-0.05到-0.1之间）
+# core/vhh_qa_validation.py
+# -0.05warning（-0.05-0.1）
 if delta_dev < DELTA_DEV_THRESHOLDS["warning_major"]:  # -0.1
     delta_warnings.append(...)
 elif delta_dev < DELTA_DEV_THRESHOLDS["warning_minor"]:  # -0.05
     delta_warnings.append(
-        f"人源化后 developability 略有下降 (Δ={delta_dev:.3f})，建议关注CMC风险。"
+        f" developability  (Δ={delta_dev:.3f})，CMC。"
     )
 ```
 
-#### 3. 结构兼容性边缘组合 - test_P06
+#### 3.  - test_P06
 
-**问题**:
-- `test_P06_edge_case_fr3_slightly_short`失败
-- FR3=36aa, CDR3=14aa的组合应该在可接受范围内，只给warning
+****:
+- `test_P06_edge_case_fr3_slightly_short`
+- FR3=36aa, CDR3=14aa，warning
 
-**影响**:
-- 正例测试失败，可能过度严格
+****:
+- ，
 
-**修复建议**:
+****:
 ```python
-# 在core/vhh_qa_structural_rules.py中调整
-# FR3=36aa, CDR3=14aa应该在可接受范围内
-# 根据规则：CDR3(2-14)需要FR3(35-42)，36aa在范围内
-# 应该只给warning，不给error
+# core/vhh_qa_structural_rules.py
+# FR3=36aa, CDR3=14aa
+# ：CDR3(2-14)FR3(35-42)，36aa
+# warning，error
 ```
 
-### 🟡 中优先级（建议优化）
+### 🟡 
 
-#### 4. Ranking Sanity阈值调整
+#### 4. Ranking Sanity
 
-**问题**:
-- `test_P08_second_template_slightly_better_warning`失败
-- 中等程度的不一致性（0.04差距）可能触发了更严格的检查
+****:
+- `test_P08_second_template_slightly_better_warning`
+- （0.04）
 
-**影响**:
-- 正例测试失败，可能影响用户体验（过度严格）
+****:
+- ，
 
-**优化建议**:
+****:
 ```python
-# 在core/vhh_qa_ranking.py中调整阈值
-# 确保0.03-0.05的FR identity差距只给warning
+# core/vhh_qa_ranking.py
+# 0.03-0.05FR identitywarning
 if fr_gap >= 0.10 and combined_gap <= 0.03:
-    # Error: 严重不一致
+    # Error: 
 elif fr_gap >= 0.05 and combined_gap <= 0.02:
-    # Warning: 中等不一致
+    # Warning: 
 elif fr_gap >= 0.03 and combined_gap <= 0.01:
-    # Info: 轻微不一致（可选）
+    # Info: 
 ```
 
-#### 5. Combined Score权重体系
+#### 5. Combined Score
 
-**问题**:
-- 当前combined score计算没有考虑structural risk
-- Hallmark缺失没有penalty
+****:
+- combined scorestructural risk
+- Hallmarkpenalty
 
-**影响**:
-- 可能导致不合理的模板排名
+****:
+- 
 
-**优化建议**:
+****:
 ```python
-# 在模板选择逻辑中增强combined score计算
+# combined score
 final_score = combined - α * structural_risk
 
 if not has_hallmark:
-    final_score -= 0.10  # Hallmark缺失penalty
+    final_score -= 0.10  # Hallmarkpenalty
 
 combined_components = {
     "fr_identity": ...,
     "cdr_compatibility": ...,
     "developability": ...,
     "immunogenicity": ...,
-    "structural_risk": ...,  # 新增
-    "hallmark_penalty": ...  # 新增
+    "structural_risk": ...,  # 
+    "hallmark_penalty": ...  # 
 }
 ```
 
-#### 6. Allowed Matrix逻辑增强
+#### 6. Allowed Matrix
 
-**问题**:
-- 当前只检查"典型组合"，没有检查"完全不可能组合"的边界情况
+****:
+- ""，""
 
-**影响**:
-- 可能遗漏一些极端不合理的组合
+****:
+- 
 
-**优化建议**:
+****:
 ```python
-# 在core/vhh_qa_structural_rules.py中增强
-# 定义"完全不可能"的组合范围
+# core/vhh_qa_structural_rules.py
+# ""
 IMPOSSIBLE_COMBOS = [
-    (cdr1_len < 5, "CDR1长度低于VHH已知结构最小值"),
-    (fr2_len < 13, "FR2长度低于VHH正常范围最小值"),
-    (cdr3_len > 35, "CDR3长度超过VHH已知结构最大值"),
-    (fr3_len < 35, "FR3长度低于VHH正常范围最小值"),
+    (cdr1_len < 5, "CDR1VHH"),
+    (fr2_len < 13, "FR2VHH"),
+    (cdr3_len > 35, "CDR3VHH"),
+    (fr3_len < 35, "FR3VHH"),
 ]
 
 for condition, message in IMPOSSIBLE_COMBOS:
     if condition:
-        errors.append(f"完全不可能的组合: {message}")
+        errors.append(f": {message}")
 ```
 
-### 🟢 低优先级（未来优化）
+### 🟢 
 
-#### 7. 测试覆盖率
+#### 7. 
 
-**当前**: 30个测试用例，86.7%通过率
+****: 30，86.7%
 
-**优化建议**:
-- 增加边界情况测试
-- 增加组合场景测试（多个问题同时存在）
-- 增加性能测试（大量候选模板的情况）
+****:
+- 
+- 
+- 
 
-#### 8. 错误消息可读性
+#### 8. 
 
-**优化建议**:
-- 统一错误消息格式
-- 增加错误代码（便于自动化处理）
-- 增加修复建议
+****:
+- 
+- 
+- 
 
-#### 9. 文档完善
+#### 9. 
 
-**优化建议**:
-- 完善QA规则文档
-- 增加使用示例
-- 增加故障排除指南
+****:
+- QA
+- 
+- 
 
 ---
 
-## 六、版本对比
+## 、
 
-### v3.1.0 → v3.2.0 改进
+### v3.1.0 → v3.2.0 
 
-| 功能 | v3.1.0 | v3.2.0 | 改进 |
+|  | v3.1.0 | v3.2.0 |  |
 |------|--------|--------|------|
-| Ranking Sanity严重不一致 | Warning | **Error** | ✅ 升级 |
-| CDR-FR完全不可能组合 | Warning | **Error** | ✅ 升级 |
-| 测试通过率 | 83.3% (25/30) | 86.7% (26/30) | ✅ 提升 |
+| Ranking Sanity | Warning | **Error** | ✅  |
+| CDR-FR | Warning | **Error** | ✅  |
+|  | 83.3% (25/30) | 86.7% (26/30) | ✅  |
 
 ---
 
-## 七、总结
+## 、
 
-### ✅ 成就
+### ✅ 
 
-1. **关键修复完成**: N12和N18两个最重要的失败测试已修复
-2. **系统安全性提升**: 能够正确识别和拒绝silent failure场景
-3. **测试覆盖完善**: 30个测试用例覆盖所有关键功能
+1. ****: N12N18
+2. ****: silent failure
+3. ****: 30
 
-### ⚠️ 待改进
+### ⚠️ 
 
-1. **测试数据一致性**: 1个正例测试失败（P10），需要修复测试数据
-2. **Warning机制**: 3个正例测试失败（P04, P06, P08），需要调整warning阈值和消息格式
-3. **阈值微调**: Ranking sanity和结构兼容性的阈值可能需要微调，避免过度严格
+1. ****: 1（P10），
+2. **Warning**: 3（P04, P06, P08），warning
+3. ****: Ranking sanity，
 
-### 📊 系统状态
+### 📊 
 
-**当前版本**: v3.2.0  
-**测试通过率**: 86.7% (26/30)  
-**核心功能**: ✅ 已验证  
-**生产就绪**: ✅ 是（核心功能稳定）
-
----
-
-## 八、下一步行动计划
-
-### 立即执行（本周内）
-
-1. ⚠️ 修复`test_P10_safe_mode_conservative_pass`的测试数据一致性
-2. ⚠️ 修复`test_P04_minor_developability_drop_warning`的warning消息检查
-3. ⚠️ 修复`test_P06_edge_case_fr3_slightly_short`的结构兼容性阈值
-4. ⚠️ 修复`test_P08_second_template_slightly_better_warning`的ranking sanity阈值
-
-### 短期优化（本月内）
-
-4. ⚠️ 调整Ranking Sanity阈值
-5. ⚠️ 增强Combined Score权重体系
-6. ⚠️ 增强Allowed Matrix逻辑
-
-### 长期优化（下个版本）
-
-7. 📝 增加测试覆盖率
-8. 📝 改进错误消息可读性
-9. 📝 完善文档
+****: v3.2.0  
+****: 86.7% (26/30)  
+****: ✅   
+****: ✅ 
 
 ---
 
-**报告版本**: 1.0  
-**最后更新**: 2025年12月10日
+## 、
+
+### 
+
+1. ⚠️ `test_P10_safe_mode_conservative_pass`
+2. ⚠️ `test_P04_minor_developability_drop_warning`warning
+3. ⚠️ `test_P06_edge_case_fr3_slightly_short`
+4. ⚠️ `test_P08_second_template_slightly_better_warning`ranking sanity
+
+### 
+
+4. ⚠️ Ranking Sanity
+5. ⚠️ Combined Score
+6. ⚠️ Allowed Matrix
+
+### 
+
+7. 📝 
+8. 📝 
+9. 📝 
+
+---
+
+****: 1.0  
+****: 20251210
 

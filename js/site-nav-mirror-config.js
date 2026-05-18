@@ -2,7 +2,7 @@
  * Single source of truth for mirrored TOP navigation: InSynBio (EN) vs Therasik (ZH).
  * Update ONLY this file when adding, removing, reordering service lines, or changing URLs.
  *
- * Therasik "技术平台" product pages (Therasik_*_Page.html) intentionally stay DISTINCT:
+ * Therasik "" product pages (Therasik_*_Page.html) intentionally stay DISTINCT:
  * T-layout, sidebar TOC, mission blocks, forms, and Chinese technical copy are NOT driven
  * by this file and must remain editorially independent from InSynBio landing pages.
  */
@@ -19,8 +19,8 @@
         },
         therasik: {
           href: 'Therasik_Antibody_Page.html',
-          title: '抗体评估',
-          desc: '基于结构的抗体开发',
+          title: '',
+          desc: '',
         },
       },
       {
@@ -33,7 +33,7 @@
         therasik: {
           href: 'Therasik_CART_Page.html',
           title: 'CAR-T',
-          desc: '智慧 CAR-T 设计',
+          desc: ' CAR-T ',
         },
       },
       {
@@ -45,8 +45,8 @@
         },
         therasik: {
           href: 'Therasik_Bispecific_Page.html',
-          title: '双特异抗体',
-          desc: '多特异性工程',
+          title: '',
+          desc: '',
         },
       },
     ],

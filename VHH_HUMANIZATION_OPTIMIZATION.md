@@ -1,53 +1,53 @@
-# VHH人源化系统优化方案
+# VHH
 
-## 概述
+## 
 
-本文档记录了对VHH人源化系统的优化升级，目标是让系统"更稳、更准、更好用、更能卖钱"。
+VHH，"、、、"。
 
-## 一、匹配与人源化算法优化
+## 、
 
-### 1. CDR兼容性软过滤（已完成）
+### 1. CDR
 
-**改进前**：
-- 使用固定阈值0.7进行硬过滤
-- 没有fallback机制
+****：
+- 0.7
+- fallback
 
-**改进后**：
-- **硬过滤阈值**（`hard_min_cdr_score = 0.3`）：低于此分数的模板直接排除（除非极端CDR3模式）
-- **软过滤阈值**（`soft_min_cdr_score = 0.5`）：低于此分数的模板不作为首选，只能出现在backup列表
-- **Fallback机制**：如果primary列表为空，自动使用backup列表，并标记`cdr_compatibility_fallback = True`
+****：
+- ****（`hard_min_cdr_score = 0.3`）：（CDR3）
+- ****（`soft_min_cdr_score = 0.5`）：，backup
+- **Fallback**：primary，backup，`cdr_compatibility_fallback = True`
 
-**实现逻辑**：
+****：
 ```python
-# 将候选分为primary和backup
+# primarybackup
 primary = [t for t in candidates if t["cdr_compatibility"]["score"] >= soft_min]
 backup = [t for t in candidates if t["cdr_compatibility"]["score"] < soft_min]
 
 if not primary:
-    # fallback：允许使用backup，但标记
+    # fallback：backup，
     primary = backup
     quality_flags["cdr_compatibility_fallback"] = True
 ```
 
-**效果**：
-- 普通VHH会自然落到"框架+构型"都不错的模板
-- 特殊VHH会触发`cdr_compatibility_fallback`标志，提示需要人工审查
+****：
+- VHH"+"
+- VHH`cdr_compatibility_fallback`，
 
-### 2. 显式综合评分公式（已完成）
+### 2. 
 
-**改进前**：
-- 公式：`0.6 * structure_match_score + 0.4 * dev_score`
-- 其中`structure_match_score = framework_identity × cdr_compatibility_score × key_position_score`
-- 没有显式展示评分细节
+****：
+- ：`0.6 * structure_match_score + 0.4 * dev_score`
+- `structure_match_score = framework_identity × cdr_compatibility_score × key_position_score`
+- 
 
-**改进后**：
-- **新公式**：`combined_score = 0.5 * framework_identity + 0.25 * cdr_compatibility_score + 0.25 * dev_score`
-- **Fallback惩罚**：
-  - 模板fallback：`combined_score *= 0.8`
-  - 编号fallback：`combined_score *= 0.9`
-- **显式评分详情**：在结果中直接展示所有评分组件
+****：
+- ****：`combined_score = 0.5 * framework_identity + 0.25 * cdr_compatibility_score + 0.25 * dev_score`
+- **Fallback**：
+  - fallback：`combined_score *= 0.8`
+  - fallback：`combined_score *= 0.9`
+- ****：
 
-**输出格式**：
+****：
 ```json
 {
   "scoring": {
@@ -61,23 +61,23 @@ if not primary:
 }
 ```
 
-**优势**：
-- 评分过程完全透明
-- 便于调试和优化
-- 便于向用户解释
+****：
+- 
+- 
+- 
 
-### 3. 极端CDR3特例模式（已完成）
+### 3. CDR3
 
-**触发条件**：
-- CDR3长度 >= 20
-- 或CDR3中Cys数量 >= 3
+****：
+- CDR3 >= 20
+- CDR3Cys >= 3
 
-**特殊处理**：
-- 强制`top_k >= 10`（增加候选数量）
-- 要求`cdr_compatibility_score >= 0.4`才能进入primary
-- 输出显式风险标志
+****：
+- `top_k >= 10`
+- `cdr_compatibility_score >= 0.4`primary
+- 
 
-**输出格式**：
+****：
 ```json
 {
   "risk_flags": {
@@ -87,23 +87,23 @@ if not primary:
 }
 ```
 
-**效果**：
-- 高价值或高风险项目提前标红
-- 有助于整体风控
+****：
+- 
+- 
 
-## 二、Developability / 免疫原性模块升级
+## 、Developability / 
 
-### 1. 模板分级系统（已完成）
+### 1. 
 
-**分级标准**：
+****：
 
-| 等级 | 条件 | 说明 |
+|  |  |  |
 |------|------|------|
-| **A级** | `dev_score >= 0.8` 且无高危liabilities | 最佳模板，优先使用 |
-| **B级** | `0.6 <= dev_score < 0.8` 或有个别可控风险 | 可用，但需注意风险 |
-| **C级** | `dev_score < 0.6` 或有≥2个高危位点 | 高风险，需谨慎使用 |
+| **A** | `dev_score >= 0.8` liabilities | ， |
+| **B** | `0.6 <= dev_score < 0.8`  | ， |
+| **C** | `dev_score < 0.6` ≥2 | ， |
 
-**实现**：
+****：
 ```python
 def grade_developability(score: float, liabilities: List[Dict[str, Any]]) -> str:
     high_risk_count = sum(1 for liab in liabilities 
@@ -117,7 +117,7 @@ def grade_developability(score: float, liabilities: List[Dict[str, Any]]) -> str
     return 'B'
 ```
 
-**模板JSON格式**：
+**JSON**：
 ```json
 {
   "developability": {
@@ -129,24 +129,24 @@ def grade_developability(score: float, liabilities: List[Dict[str, Any]]) -> str
 }
 ```
 
-**模板选择策略**：
-- 默认优先选A级模板
-- 若只剩B/C级，自动在报告中增加"Developability risk: medium/high"字段
+****：
+- A
+- B/C，"Developability risk: medium/high"
 
-### 2. FR区静态免疫原性屏蔽（已完成）
+### 2. FR
 
-**原理**：
-- CDR的免疫原性需要case by case分析（大坑）
-- FR区可以预先做评估（相对安全）
+****：
+- CDRcase by case
+- FR
 
-**实现**：
-- 对每个Human VHH-SAFE模板的`framework_full`进行HLA hotspot计数
-- 基于简化的HLA-II结合motif模式：
-  - 带电残基密集区域（DERK连续3+）
-  - 芳香族残基密集区域（FWY连续2+）
-  - 已知的常见HLA-II结合motif
+****：
+- Human VHH-SAFE`framework_full`HLA hotspot
+- HLA-IImotif：
+  - （DERK3+）
+  - （FWY2+）
+  - HLA-IImotif
 
-**输出格式**：
+****：
 ```json
 {
   "immunogenicity": {
@@ -160,32 +160,32 @@ def grade_developability(score: float, liabilities: List[Dict[str, Any]]) -> str
         "risk": "medium"
       }
     ],
-    "recommendation": "FR区免疫原性风险低，适合用于人源化"
+    "recommendation": "FR，"
   }
 }
 ```
 
-**风险评估**：
-- **low**: 无热点或热点很少
-- **medium**: 1个高危热点或3+个中危热点
-- **high**: 2+个高危热点或5+个总热点
+****：
+- **low**: 
+- **medium**: 13+
+- **high**: 2+5+
 
-**模板选择规则**：
-- 首选`fr_immuno_risk=low`
-- 如果选到了medium/high，在报告中标注"FR免疫原性待进一步验证"
+****：
+- `fr_immuno_risk=low`
+- medium/high，"FR"
 
-### 3. 模板排序优化
+### 3. 
 
-**改进前**：
-- 仅按综合得分排序
+****：
+- 
 
-**改进后**：
-- 多因子排序：
-  1. Developability等级（A > B > C）
-  2. FR免疫原性风险（low > medium > high）
-  3. 综合得分
+****：
+- ：
+  1. Developability（A > B > C）
+  2. FR（low > medium > high）
+  3. 
 
-**实现**：
+****：
 ```python
 def sort_key(item):
     combined = calculate_combined_score(item)
@@ -198,9 +198,9 @@ def sort_key(item):
     return (grade_priority, immuno_priority, combined)
 ```
 
-## 三、结果输出增强
+## 、
 
-### 新增字段
+### 
 
 **quality_flags**：
 ```json
@@ -214,7 +214,7 @@ def sort_key(item):
 }
 ```
 
-**best_match新增字段**：
+**best_match**：
 ```json
 {
   "developability": {
@@ -237,20 +237,20 @@ def sort_key(item):
 }
 ```
 
-## 四、使用示例
+## 、
 
-### 运行模板评分（包含分级和免疫原性）
+### 
 
 ```bash
 python scripts/score_vhh_safe_templates.py
 ```
 
-**输出**：
-- 更新`human_vh3_vhh_safe_templates.json`，添加：
+****：
+- `human_vh3_vhh_safe_templates.json`，：
   - `developability.grade`（A/B/C）
-  - `immunogenicity`字段
+  - `immunogenicity`
 
-### 人源化（自动使用分级和免疫原性信息）
+### 
 
 ```python
 from core.vhh_humanization import humanize_vhh
@@ -261,40 +261,40 @@ result = humanize_vhh(
     top_k=3
 )
 
-# 查看结果
-print("Developability等级:", result['best_match']['developability']['grade'])
-print("FR免疫原性风险:", result['best_match']['immunogenicity']['fr_immuno_risk'])
-print("质量标志:", result['quality_flags'])
+# 
+print("Developability:", result['best_match']['developability']['grade'])
+print("FR:", result['best_match']['immunogenicity']['fr_immuno_risk'])
+print(":", result['quality_flags'])
 ```
 
-## 五、优势总结
+## 、
 
-### 1. 更稳
-- CDR兼容性软过滤，避免过度过滤
-- Fallback机制，确保总能返回结果
-- 极端CDR3特例处理，提前识别高风险项目
+### 1. 
+- CDR，
+- Fallback，
+- CDR3，
 
-### 2. 更准
-- 显式评分公式，过程透明
-- 多因子排序（等级+风险+得分）
-- FR区免疫原性预筛选
+### 2. 
+- ，
+- （++）
+- FR
 
-### 3. 更好用
-- 详细的质量标志和风险提示
-- 分级系统，便于用户理解
-- 完整的评分详情
+### 3. 
+- 
+- ，
+- 
 
-### 4. 更能卖钱
-- 专业的风险评估
-- 透明的评分机制
-- 完整的质量保证体系
+### 4. 
+- 
+- 
+- 
 
-## 六、后续优化方向
+## 、
 
-1. **CDR免疫原性分析**（case by case，需要完整HLA预测）
-2. **机器学习模型**（基于历史数据预测成功率）
-3. **结构预测集成**（AlphaFold2预测，更精准的构型匹配）
-4. **能量计算**（结合自由能变化预测）
+1. **CDR**（case by case，HLA）
+2. ****
+3. ****（AlphaFold2，）
+4. ****
 
 
 

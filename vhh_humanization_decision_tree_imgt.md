@@ -1,17 +1,17 @@
 # VHH Humanization Decision Tree (IMGT-Only Standard)
-# VHH 人源化设计决策树 (仅限 IMGT 标准)
+# VHH  ( IMGT )
 
-## Step 0 — Quality Control (输入质控)
+## Step 0 — Quality Control 
 *   **Target**: VHH / Heavy-chain only V-domain.
 *   **Validation**: Must pass ANARCI IMGT numbering without major truncation.
 *   **Chain Filter**: If detected as VL (κ/λ), exit this tree and redirect to "Chain Classification/Split" module.
-*   **目标**：VHH / 仅重链 V 结构域。
-*   **验证**：必须通过 ANARCI IMGT 编号，无明显截断。
-*   **链过滤**：若判别为 VL (κ/λ)，退出此决策树，进入“链型判别/切分”模块。
+*   ****：VHH /  V 。
+*   ****： ANARCI IMGT ，。
+*   ****： VL (κ/λ)，，“/”。
 
 ---
 
-## Step 1 — H1/H2 Canonical Determination (构型判别)
+## Step 1 — H1/H2 Canonical Determination 
 *   **Identification**: Calculate North–Dunbrack classes for H1 and H2 using IMGT CDR1/CDR2 boundaries.
 *   **Primary Split (H2-Driven)**:
     *   **Flow A: H2 = H2-9-1 (Short H2 Subspace)**
@@ -23,7 +23,7 @@
 
 ---
 
-## Step 2 — Template Pool Selection (模板池选择)
+## Step 2 — Template Pool Selection 
 *   **Principle**: Match canonical subspace first, then rank by identity and quality.
 *   **Pool Definitions**:
     *   **Pool-S (Stable Basin)**: For H2-10-1 / H1-13-1. Primarily VH3-based human VHH-friendly scaffolds (e.g., IGHV3-23, IGHV3-30).
@@ -38,7 +38,7 @@
 
 ---
 
-## Step 3 — Strategy Recommendation (策略推荐)
+## Step 3 — Strategy Recommendation 
 *   **Inputs**: H2 class, `vh_identity_global`, CDR3 Features (len, vector), Mutation Burden (hallmark, vernier, other).
 
 ### 1. Recommend BM (Human Framework + Necessary Back-mutation)
@@ -61,7 +61,7 @@
 
 ---
 
-## Step 4 — Back-mutation (BM) Tiering (修复优先级)
+## Step 4 — Back-mutation (BM) Tiering 
 *   **Goal**: Structural/folding support, not "reverting everything."
 
 | Tier | Priority | Positions (IMGT) | Strategy / Action |
@@ -73,13 +73,13 @@
 
 ---
 
-## Limitations (局限性说明)
+## Limitations 
 *   **ND-dependent v2-lite** inferred from Slice-3 only; will be validated/expanded with Slice-1 VH in later release.
-*   **ND-dependent v2-lite** 仅基于 Slice-3 数据推断；将在后续版本中使用 Slice-1 VH 数据进行验证和扩展。
+*   **ND-dependent v2-lite**  Slice-3 ； Slice-1 VH 。
 
 ---
 
-## Final Output (结论生成)
+## Final Output 
 1.  **H1/H2 Canonical Signature**: (e.g., H1-13-1 / H2-10-1).
 2.  **Template Pool + Top Templates**: (Pool-S or Pool-H2-9).
 3.  **Strategy Recommendation**: (BM / SR / Native) + Triggering Rationale.

@@ -1,13 +1,13 @@
-# 🎨 颜色方案 — 快速开始 (3分钟)
+# 🎨  —  (3)
 
-## 🚀 最快上手
+## 🚀 
 
-### 步骤 1：查看所有方案
+###  1：
 ```bash
 python scripts/color_scheme_manager.py list
 ```
 
-输出：
+：
 ```
 Available Color Schemes
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -21,70 +21,70 @@ Available Color Schemes
   • contrasting  → High contrast (cyan/yellow/magenta)
 ```
 
-### 步骤 2：用预设方案着色
+###  2：
 ```bash
-# 默认 Rainbow
+#  Rainbow
 python scripts/colorize_interface_pdb.py \
     --pdb vhh_her2.pdb --ab_chains A --ag_chain B \
     --output interface.pdb
 
-# Publication 方案（推荐论文）
+# Publication 
 python scripts/colorize_interface_pdb.py \
     --pdb vhh_her2.pdb --ab_chains A --ag_chain B \
     --scheme publication \
     --output interface_pub.pdb
 
-# Dark 方案（暗色背景）
+# Dark 
 python scripts/colorize_interface_pdb.py \
     --pdb vhh_her2.pdb --ab_chains A --ag_chain B \
     --scheme dark \
     --output interface_dark.pdb
 ```
 
-### 步骤 3：在 PyMOL 中查看
+###  3： PyMOL 
 ```
 File → Open → interface_pub.pdb
-# 运行脚本中生成的 .pml 文件，或手动输入：
+#  .pml ，：
 spectrum b, magenta blue orange gray, 5, 95
 show surface; set transparency, 0.3
 ```
 
 ---
 
-## 🎨 8 种方案对照表
+## 🎨 8 
 
-| 方案 | 用途 | 推荐场景 |
+|  |  |  |
 |------|------|---------|
-| 🌈 **Rainbow** | 彩虹梯度 | 一般展示、清晰对比 |
-| 🔬 **Scientific** | 能量风格 | 学术、热力学意义 |
-| 📊 **Publication** | 出版级 | **期刊论文** ⭐ |
-| 🌙 **Dark** | 深色主题 | 黑色背景、演讲 |
-| 🔥 **Thermal** | 热力梯度 | 结合热力学 |
-| 🍰 **Pastel** | 柔和配色 | 长期观看舒适 |
-| ⬜ **Grayscale** | 黑白 | **打印输出** ⭐ |
-| 🎯 **Contrasting** | 极高对比 | 极端可视化需求 |
+| 🌈 **Rainbow** |  | 、 |
+| 🔬 **Scientific** |  | 、 |
+| 📊 **Publication** |  | **** ⭐ |
+| 🌙 **Dark** |  | 、 |
+| 🔥 **Thermal** |  |  |
+| 🍰 **Pastel** |  |  |
+| ⬜ **Grayscale** |  | **** ⭐ |
+| 🎯 **Contrasting** |  |  |
 
 ---
 
-## 🛠️ 3 分钟创建自定义方案
+## 🛠️ 3 
 
-### 第 1 步：生成模板
+###  1 ：
 ```bash
 python scripts/color_scheme_manager.py template my_scheme.json
 ```
 
-### 第 2 步：编辑 `my_scheme.json`
+###  2 ： `my_scheme.json`
 
-只需改这 4 个地方：
+ 4 ：
 
 ```json
 {
-  "scheme_name": "My Custom",  // ← 改这个
+  "scheme_name": "My Custom",  // ← 
   "roles": {
     "cdr": {
-      "color_name": "Red",     // ← 改这个
-      "hex_code": "#FF0000",   // ← 或这个（HEX 码）
-      "pymol_name": "red"      // ← 或这个（PyMOL 名）
+      "color_name": "Red",     // ← 
+      "hex_code": "#FF0000",   // ← （HEX ）
+      "pymol_name": "red"      // ← （PyMOL ）
     },
     "framework": {
       "color_name": "Blue",
@@ -105,7 +105,7 @@ python scripts/color_scheme_manager.py template my_scheme.json
 }
 ```
 
-### 第 3 步：使用自定义方案
+###  3 ：
 ```bash
 python scripts/colorize_interface_pdb.py \
     --pdb vhh_her2.pdb \
@@ -116,54 +116,54 @@ python scripts/colorize_interface_pdb.py \
 
 ---
 
-## 📋 常用颜色名
+## 📋 
 
-### 基础颜色
+### 
 ```
 red, green, blue, yellow, cyan, magenta, 
 white, black, gray, orange, purple
 ```
 
-### 扩展颜色
+### 
 ```
 pink, teal, navy, maroon, olive, lime,
 aqua, salmon, khaki, gold, plum, violet
 ```
 
-### PyMOL 特殊名
+### PyMOL 
 ```
 firebrick, crimson, darkorange, steelblue,
 cadetblue, mediumaquamarine, darkseagreen
 ```
 
-或直接用 HEX 码：
+ HEX ：
 ```
-"#FF0000"  (红)
-"#00FF00"  (绿)
-"#0000FF"  (蓝)
-"#FFFF00"  (黄)
-"#00FFFF"  (青)
-"#FF00FF"  (品红)
+"#FF0000"  
+"#00FF00"  
+"#0000FF"  
+"#FFFF00"  
+"#00FFFF"  
+"#FF00FF"  
 ```
 
 ---
 
-## 💾 在脚本中集成
+## 💾 
 
 ```python
 from color_scheme_manager import SchemeManager
 from colorize_interface_pdb import InterfaceColorizer
 
-# 加载方案
+# 
 scheme = SchemeManager.get_scheme("publication")
 
-# 创建着色器
+# 
 colorizer = InterfaceColorizer(
     "complex.pdb",
     color_scheme=scheme
 )
 
-# 处理
+# 
 colorizer.compute_interfaces(["A"], "B")
 colorizer.assign_bfactors(["A"], "B")
 colorizer.save_colored_pdb("output.pdb")
@@ -171,9 +171,9 @@ colorizer.save_colored_pdb("output.pdb")
 
 ---
 
-## ✨ 酷炫技巧
+## ✨ 
 
-### 快速对比所有方案
+### 
 ```bash
 for s in rainbow scientific publication dark thermal pastel grayscale contrasting
 do
@@ -184,19 +184,19 @@ do
 done
 ```
 
-然后在 PyMOL 中一个一个打开对比。
+ PyMOL 。
 
-### 导出所有预设方案为 JSON
+###  JSON
 ```bash
 python scripts/color_scheme_manager.py export ./schemes/
 ```
 
-### 查看某个方案的完整详情
+### 
 ```bash
 python scripts/color_scheme_manager.py show publication
 ```
 
-输出：
+：
 ```
 ============================================================
 Scheme: publication
@@ -215,9 +215,9 @@ Magenta    (B-factor 90–99)
 
 ---
 
-## 🎯 推荐组合
+## 🎯 
 
-### 📰 论文投稿
+### 📰 
 ```bash
 python scripts/colorize_interface_pdb.py \
     --scheme publication \
@@ -226,7 +226,7 @@ python scripts/colorize_interface_pdb.py \
     --output figure.pdb
 ```
 
-### 🖨️ 黑白打印
+### 🖨️ 
 ```bash
 python scripts/colorize_interface_pdb.py \
     --scheme grayscale \
@@ -235,7 +235,7 @@ python scripts/colorize_interface_pdb.py \
     --output print.pdb
 ```
 
-### 🎤 演讲展示（暗背景）
+### 🎤 
 ```bash
 python scripts/colorize_interface_pdb.py \
     --scheme dark \
@@ -244,7 +244,7 @@ python scripts/colorize_interface_pdb.py \
     --output presentation.pdb
 ```
 
-### 🔬 学术讲座
+### 🔬 
 ```bash
 python scripts/colorize_interface_pdb.py \
     --scheme scientific \
@@ -255,6 +255,6 @@ python scripts/colorize_interface_pdb.py \
 
 ---
 
-📖 **详细指南：** `docs/COLOR_SCHEME_GUIDE.md`
+📖 **：** `docs/COLOR_SCHEME_GUIDE.md`
 
-生成时间：2026-03-27
+：2026-03-27

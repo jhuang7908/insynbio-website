@@ -53,7 +53,7 @@ Logic: S1 closest to human, S3 closest to camelid
 
 ---
 
-### **Strategy 2 (S2): Balanced ("半人半驼" for FR2)**
+### **Strategy 2 (S2): Balanced ("" for FR2)**
 
 **Target:** Balance humanization and functional retention
 
@@ -66,7 +66,7 @@ Logic: S1 closest to human, S3 closest to camelid
 
 **Characteristics:**
 - Humanization: ~87%
-- FR2 coverage: 8/16 = 50% ✓ ("半人半驼")
+- FR2 coverage: 8/16 = 50% ✓ ("")
   - Inner (buried): Camelid → structural stability
   - Outer (surface): Human → reduced immunogenicity
 - Risk: MEDIUM (balanced)
@@ -87,7 +87,7 @@ Logic: S1 closest to human, S3 closest to camelid
 
 ---
 
-### **Strategy 3 (S3): Conservative (FR2 "全驼")**
+### **Strategy 3 (S3): Conservative (FR2 "")**
 
 **Target:** Maximum functional retention, closest to original camelid
 
@@ -100,7 +100,7 @@ Logic: S1 closest to human, S3 closest to camelid
 
 **Characteristics:**
 - Humanization: ~75%
-- FR2 coverage: 16/16 = 100% ✓ ("全驼")
+- FR2 coverage: 16/16 = 100% ✓ ("")
   - **Complete FR2 preservation**
   - Includes both buried AND surface positions
 - Risk: LOW (functional risk minimized)
@@ -128,8 +128,8 @@ Logic: S1 closest to human, S3 closest to camelid
 Strategy  Mutations  Humanization  FR2 Strategy         Risk    Scenario
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 S1        7          94%           25% (Hallmarks)      HIGH    High humanization req.
-S2        15         87%           50% (半人半驼)✓      MEDIUM  Standard practice ⭐
-S3        29         75%           100% (全驼)✓         LOW     Maximum function
+S2        15         87%           50% ✓      MEDIUM  Standard practice ⭐
+S3        29         75%           100% ✓         LOW     Maximum function
 
 Gradient: 7 → 15 → 29 (back-mutations increase)
           94% → 87% → 75% (humanization decreases)
@@ -243,7 +243,7 @@ Gradient: 7 → 15 → 29 (back-mutations increase)
 
 ---
 
-### **3. FR2 "半人半驼" Strategy - ✅ RATIONAL**
+### **3. FR2 "" Strategy - ✅ RATIONAL**
 
 **S2 FR2 Design:**
 - **Preserve buried (8 positions):** Structural integrity
@@ -258,7 +258,7 @@ Gradient: 7 → 15 → 29 (back-mutations increase)
 
 ---
 
-### **4. FR2 "全驼" Strategy - ✅ PRECEDENTED**
+### **4. FR2 "" Strategy - ✅ PRECEDENTED**
 
 **S3 FR2 Complete Preservation:**
 - **All 16 FR2 positions retained**
@@ -289,8 +289,8 @@ CDR3-IMGT (94-106): 100% original in ALL strategies
 ### **Rule 3: FR2 Strategy Definition**
 ```
 S1: FR2 Hallmarks only (4/16 = 25%)
-S2: FR2 Hallmarks + Buried (8/16 = 50%) = "半人半驼"
-S3: FR2 Complete (16/16 = 100%) = "全驼"
+S2: FR2 Hallmarks + Buried (8/16 = 50%) = ""
+S3: FR2 Complete (16/16 = 100%) = ""
 ```
 
 ### **Rule 4: Tier Application**

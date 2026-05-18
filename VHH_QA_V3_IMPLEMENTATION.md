@@ -1,36 +1,36 @@
-# VHH QA v3.0 实施文档
+# VHH QA v3.0 
 
-**日期**: 2025年12月10日  
-**版本**: v3.0.0  
-**状态**: ✅ 已完成
-
----
-
-## 概述
-
-QA v3.0在现有VHH QA基础上，增加了3类高阶自检：
-1. FR–CDR几何/构型兼容性检查
-2. CDR grafting影响分析（边界与anchor位点风险）
-3. 模板选择与打分的合理性验证（ranking sanity + explainability）
-
-并将这些结果整合进统一的`qa_v3`结构，决定最终status与报告展示。
+****: 20251210  
+****: v3.0.0  
+****: ✅ 
 
 ---
 
-## 模块1：FR–CDR几何/构型兼容性QA（Structural Compatibility QA）
+## 
 
-### 核心思想
+QA v3.0VHH QA，3：
+1. FR–CDR/
+2. CDR grafting（anchor）
+3. （ranking sanity + explainability）
 
-不是所有FR/模板都能"物理上承载"某个CDR构型。我们需要一个轻量级规则系统来做：
-**CDR 长度/构型 ↔ FR 长度/特征 的匹配验证**
+`qa_v3`，status。
 
-### 实现文件
+---
+
+## 1：FR–CDR/QA（Structural Compatibility QA）
+
+### 
+
+FR/""CDR。：
+**CDR / ↔ FR / **
+
+### 
 
 `core/vhh_qa_structural_rules.py`
 
-### 允许组合矩阵
+### 
 
-#### CDR1–FR2 组合规则
+#### CDR1–FR2 
 
 ```python
 ALLOWED_VHH_CDR1_FR2_COMBOS = [
@@ -41,7 +41,7 @@ ALLOWED_VHH_CDR1_FR2_COMBOS = [
 ]
 ```
 
-#### CDR3–FR3 组合规则
+#### CDR3–FR3 
 
 ```python
 ALLOWED_VHH_CDR3_FR3_COMBOS = [
@@ -51,15 +51,15 @@ ALLOWED_VHH_CDR3_FR3_COMBOS = [
 ]
 ```
 
-### 检查逻辑
+### 
 
-- **CDR1–FR2**: 检查长度组合是否在允许范围内
+- **CDR1–FR2**: 
 - **CDR3–FR3**: 
-  - 超长CDR3（≥15aa）但FR3短（<38aa）→ **ERROR**
-  - 其他非典型组合 → **WARNING**
-- **CDR2**: 检查与FR2/FR3的组合
+  - CDR3（≥15aa）FR3（<38aa）→ **ERROR**
+  -  → **WARNING**
+- **CDR2**: FR2/FR3
 
-### 输出
+### 
 
 ```python
 checks["structural_compat"] = {
@@ -71,40 +71,40 @@ checks["structural_compat"] = {
 
 ---
 
-## 模块2：CDR Grafting影响分析（Grafting Impact QA）
+## 2：CDR Grafting（Grafting Impact QA）
 
-### 核心思想
+### 
 
-分析FR–CDR接口位点的理化性质变化，评估grafting对结构的影响。
+FR–CDR，grafting。
 
-### 实现文件
+### 
 
 `core/vhh_qa_grafting.py`
 
-### FR–CDR接口位点
+### FR–CDR
 
-基于IMGT索引：
+IMGT：
 
 ```python
 FR_CDR_INTERFACE_POSITIONS = {
-    "CDR1": [25, 26, 27, 28, 29],  # FR1/CDR1 边界附近
-    "CDR2": [52, 53, 54, 55],      # FR2/CDR2 邻近
-    "CDR3": [94, 95, 96, 101, 102] # FR3/CDR3 anchor/邻近
+    "CDR1": [25, 26, 27, 28, 29],  # FR1/CDR1 
+    "CDR2": [52, 53, 54, 55],      # FR2/CDR2 
+    "CDR3": [94, 95, 96, 101, 102] # FR3/CDR3 anchor/
 }
 ```
 
-### 冲击评分规则
+### 
 
-对每个接口位点：
-- **理化性质类别变化**（hydrophobic ↔ polar ↔ charged）: +2分
-- **体积变化大**（small ↔ large）: +1分
+：
+- ****（hydrophobic ↔ polar ↔ charged）: +2
+- ****（small ↔ large）: +1
 
-### 阈值
+### 
 
-- `impact_score >= 6`: **ERROR** - 可能严重影响亲和力或折叠
-- `impact_score >= 3`: **WARNING** - 建议进行结构建模和功能验证
+- `impact_score >= 6`: **ERROR** - 
+- `impact_score >= 3`: **WARNING** - 
 
-### 输出
+### 
 
 ```python
 checks["grafting_impact"] = {
@@ -128,31 +128,31 @@ checks["grafting_impact"] = {
 
 ---
 
-## 模块3：模板选择与排名合理性QA（Ranking Sanity & Explainability）
+## 3：QA（Ranking Sanity & Explainability）
 
-### 核心思想
+### 
 
-避免"某个模板因为打分bug排到第1，但从理性上看根本不该是第一"。
+"bug1，"。
 
-### 实现文件
+### 
 
 `core/vhh_qa_ranking.py`
 
-### 检查规则
+### 
 
-#### 规则1：排位与关键指标不矛盾
+#### 1：
 
-- **情况1**: FR identity差距很大（≥5%），但combined score差距很小（≤0.02）
-  → **WARNING**: 建议人工复核打分权重
+- **1**: FR identity（≥5%），combined score（≤0.02）
+  → **WARNING**: 
 
-- **情况2**: 最佳模板缺少VHH hallmark，而次优模板具备
-  → **ERROR**: 这在VHH人源化中通常不可接受
+- **2**: VHH hallmark，
+  → **ERROR**: VHH
 
-#### 规则2：Score vector自洽检查
+#### 2：Score vector
 
-检查combined score是否与子分数一致（预留接口，当前简化处理）
+combined score（，）
 
-### 输出
+### 
 
 ```python
 checks["ranking_sanity"] = {
@@ -172,27 +172,27 @@ checks["ranking_sanity"] = {
 
 ---
 
-## 模块4：Δ Developability / Δ Immunogenicity 方向性检查
+## 4：Δ Developability / Δ Immunogenicity 
 
-### 核心思想
+### 
 
-人源化后风险必须降低：
-- **Δ Developability ≥ 0**（必须提升或保持）
-- **Δ Immunogenicity ≤ 0**（必须降低或保持）
+：
+- **Δ Developability ≥ 0**
+- **Δ Immunogenicity ≤ 0**
 
-### 检查规则
+### 
 
 #### Developability
 
-- `delta < -0.1`: **WARNING** - 明显下降，建议谨慎采用
-- `delta < -0.05`: **WARNING** - 略有下降，建议关注CMC风险
+- `delta < -0.1`: **WARNING** - ，
+- `delta < -0.05`: **WARNING** - ，CMC
 
 #### Immunogenicity
 
-- `delta > 0`: **ERROR** - 风险升高，人源化策略失败
-- `delta == 0 and risk == "high"`: **WARNING** - 风险仍为high
+- `delta > 0`: **ERROR** - ，
+- `delta == 0 and risk == "high"`: **WARNING** - high
 
-### 输出
+### 
 
 ```python
 checks["delta_risk"] = {
@@ -208,7 +208,7 @@ checks["delta_risk"] = {
         "immunogenicity": {
             "original": str,  # "low"/"medium"/"high"
             "humanized": str,
-            "delta": int  # 风险等级差值
+            "delta": int  # 
         }
     }
 }
@@ -216,9 +216,9 @@ checks["delta_risk"] = {
 
 ---
 
-## 模块5：统一qa_v3结构与集成
+## 5：qa_v3
 
-### qa_v3结构
+### qa_v3
 
 ```python
 qa_v3 = {
@@ -226,11 +226,11 @@ qa_v3 = {
     "errors": [str],
     "warnings": [str],
     "checks": {
-        "integrity": {...},          # v2时代的区域/长度/CDR禁突变
-        "structural_compat": {...},  # 模块1
-        "grafting_impact": {...},    # 模块2
-        "ranking_sanity": {...},     # 模块3
-        "delta_risk": {...},         # 模块4
+        "integrity": {...},          # v2//CDR
+        "structural_compat": {...},  # 1
+        "grafting_impact": {...},    # 2
+        "ranking_sanity": {...},     # 3
+        "delta_risk": {...},         # 4
     },
     "summary_score": {
         "biological_feasibility": float,   # 0–100
@@ -239,21 +239,21 @@ qa_v3 = {
 }
 ```
 
-### Summary Score计算
+### Summary Score
 
-**生物可行性评分（0-100）**:
-- 基础分: 100
-- 每个error扣10分（最多扣50分）
-- 每个warning扣3分（最多扣30分）
-- grafting impact_score >= 6: 扣20分
-- grafting impact_score >= 3: 扣10分
+**（0-100）**:
+- : 100
+- error10（50）
+- warning3（30）
+- grafting impact_score >= 6: 20
+- grafting impact_score >= 3: 10
 
-**风险等级**:
+****:
 - `biological_feasibility >= 80`: "low"
 - `biological_feasibility >= 60`: "medium"
 - `biological_feasibility < 60`: "high"
 
-### Status决定
+### Status
 
 ```python
 if not qa_v3["ok"]:
@@ -264,48 +264,48 @@ else:
 
 ---
 
-## 集成方式
+## 
 
-### 在humanize_vhh_with_qa中使用
+### humanize_vhh_with_qa
 
 ```python
 from core.vhh_qa_validation import validate_vhh_humanization_result_v3
 
-# QA验证 - 使用v3.0
+# QA - v3.0
 qa_result = validate_vhh_humanization_result_v3(json_data, strict=strict_qa)
-result["qa"] = qa_result  # 保持向后兼容
-result["qa_v3"] = qa_result  # v3.0结构
+result["qa"] = qa_result  # 
+result["qa_v3"] = qa_result  # v3.0
 ```
 
-### 报告生成
+### 
 
-对`status != "OK"`的结果，只生成QA失败报告。
+`status != "OK"`，QA。
 
-对`OK`的结果，在CRO报告里增加小节：
-- "模板选择合理性"
-- "FR–CDR结构兼容性"
-- "Δ Developability / Δ Immunogenicity 总结"
-
----
-
-## 文件清单
-
-### 新增文件
-
-1. ✅ `core/vhh_qa_structural_rules.py` - 结构兼容性规则
-2. ✅ `core/vhh_qa_grafting.py` - Grafting影响分析
-3. ✅ `core/vhh_qa_ranking.py` - 排名合理性验证
-
-### 修改文件
-
-1. ✅ `core/vhh_qa_validation.py` - 添加`validate_vhh_humanization_result_v3()`
-2. ✅ `core/vhh_humanization_with_qa.py` - 集成v3.0
+`OK`，CRO：
+- ""
+- "FR–CDR"
+- "Δ Developability / Δ Immunogenicity "
 
 ---
 
-## 使用示例
+## 
 
-### 基本使用
+### 
+
+1. ✅ `core/vhh_qa_structural_rules.py` - 
+2. ✅ `core/vhh_qa_grafting.py` - Grafting
+3. ✅ `core/vhh_qa_ranking.py` - 
+
+### 
+
+1. ✅ `core/vhh_qa_validation.py` - `validate_vhh_humanization_result_v3`
+2. ✅ `core/vhh_humanization_with_qa.py` - v3.0
+
+---
+
+## 
+
+### 
 
 ```python
 from core.vhh_qa_validation import validate_vhh_humanization_result_v3
@@ -324,36 +324,36 @@ result = {
 
 qa_v3 = validate_vhh_humanization_result_v3(result, strict=True)
 
-print(f"QA状态: {'通过' if qa_v3['ok'] else '失败'}")
-print(f"生物可行性: {qa_v3['summary_score']['biological_feasibility']}")
-print(f"风险等级: {qa_v3['summary_score']['risk_level']}")
+print(f"QA: {'' if qa_v3['ok'] else ''}")
+print(f": {qa_v3['summary_score']['biological_feasibility']}")
+print(f": {qa_v3['summary_score']['risk_level']}")
 
-# 查看各模块检查结果
-for check_name, check_result in qa_v3["checks"].items():
+# 
+for check_name, check_result in qa_v3["checks"].items:
     if not check_result.get("ok", True):
-        print(f"{check_name}: 失败")
+        print(f"{check_name}: ")
         for error in check_result.get("errors", []):
             print(f"  ❌ {error}")
 ```
 
 ---
 
-## 总结
+## 
 
-✅ **QA v3.0全部模块实施完成**
+✅ **QA v3.0**
 
-1. ✅ FR–CDR几何/构型兼容性检查
-2. ✅ CDR grafting影响分析
-3. ✅ 模板选择与排名合理性验证
-4. ✅ Δ Developability/Immunogenicity方向性检查
-5. ✅ 统一qa_v3结构与集成
+1. ✅ FR–CDR/
+2. ✅ CDR grafting
+3. ✅ 
+4. ✅ Δ Developability/Immunogenicity
+5. ✅ qa_v3
 
-**系统状态**: ✅ 生产就绪
+****: ✅ 
 
 ---
 
-**文档版本**: 1.0  
-**最后更新**: 2025年12月10日
+****: 1.0  
+****: 20251210
 
 
 

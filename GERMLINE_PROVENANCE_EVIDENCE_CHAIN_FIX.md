@@ -1,56 +1,56 @@
-# Germline Provenance 证据链补齐方案
+# Germline Provenance 
 
-**日期**: 2025-12-12  
-**目标**: 确保germline_library_provenance和germline_numbering字段强制写入业务JSON
-
----
-
-## 问题分析
-
-### 审计缺口
-1. **A项（germline库provenance）**: 业务JSON中完全缺失`germline_library_provenance`字段
-2. **B项（germline IMGT编号）**: 业务JSON中完全缺失`germline_numbering`字段
-
-### 根本原因
-- 代码已实现，但`prepare_json_data()`中失败时只记录error，不阻止流程
-- 保存JSON前未强制验证这些字段存在
-- 验证器已实现，但未在保存前调用
+****: 2025-12-12  
+****: germline_library_provenancegermline_numberingJSON
 
 ---
 
-## 修复方案
+## 
 
-### 1. 强制生成（不允许失败）
+### 
+1. **A（germlineprovenance）**: JSON`germline_library_provenance`
+2. **B（germline IMGT）**: JSON`germline_numbering`
 
-**文件**: `core/json_data_preparer.py`
+### 
+- ，`prepare_json_data`error，
+- JSON
+- ，
 
-**修改**:
-- 移除try-except中的error记录逻辑
-- 如果生成失败，直接抛出异常
-- 添加字段完整性检查
+---
+
+## 
+
+### 1. 
+
+****: `core/json_data_preparer.py`
+
+****:
+- try-excepterror
+- ，
+- 
 
 ```python
-# 指令1：构建germline_library_provenance（证明库真实存在）
-# 强制要求：必须成功，失败则抛出异常
+# 1：germline_library_provenance
+# ：，
 from core.germline_library_provenance import build_germline_library_provenance
 json_data["germline_library_provenance"] = build_germline_library_provenance(json_data)
 
-# 验证germline_library_provenance必须包含sha256
+# germline_library_provenancesha256
 if not json_data["germline_library_provenance"].get("sha256"):
-    raise ValueError("germline_library_provenance.sha256 缺失或为空")
+    raise ValueError("germline_library_provenance.sha256 ")
 
-# 指令2和3：对germline模板进行IMGT编号
-# 强制要求：必须成功，失败则抛出异常
+# 23：germlineIMGT
+# ：，
 from core.segmentation.germline_numbering import number_germline_templates
 json_data["germline_numbering"] = number_germline_templates(json_data)
 
-# 验证germline_numbering必须包含numbering_provenance
+# germline_numberingnumbering_provenance
 if "error" in json_data["germline_numbering"]:
-    raise ValueError("germline_numbering生成失败")
+    raise ValueError("germline_numbering")
 
 numbering_provenance = json_data["germline_numbering"].get("numbering_provenance")
 if not numbering_provenance:
-    raise ValueError("germline_numbering.numbering_provenance 缺失")
+    raise ValueError("germline_numbering.numbering_provenance ")
 
 if numbering_provenance.get("method") != "anarcii":
     method = numbering_provenance.get("method", "unknown")
@@ -58,54 +58,54 @@ if numbering_provenance.get("method") != "anarcii":
         raise ValueError(f"method = '{method}' != 'anarcii'")
 ```
 
-### 2. 保存前强制验证
+### 2. 
 
-**文件**: `scripts/run_egfr_full_pipeline_v4_1.py`
+****: `scripts/run_egfr_full_pipeline_v4_1.py`
 
-**修改**:
-- 在保存JSON之前调用`validate_json_for_delivery()`
-- 验证失败时直接抛出异常，阻止保存
+****:
+- JSON`validate_json_for_delivery`
+- ，
 
 ```python
-# 准备JSON数据
+# JSON
 prepared_result = prepare_json_data(result, "REPORT")
 
-# 强制验证：在保存JSON之前验证germline_library_provenance和germline_numbering
+# ：JSONgermline_library_provenancegermline_numbering
 from core.segmentation.json_validator import validate_json_for_delivery
 is_valid, errors = validate_json_for_delivery(prepared_result, strict=True)
 
 if not is_valid:
-    print(f"❌ JSON验证失败，不允许保存：")
+    print(f"❌ JSON，：")
     for error in errors:
         print(f"  - {error}")
-    raise ValueError("JSON验证失败：germline_library_provenance或germline_numbering缺失或不完整")
+    raise ValueError("JSON：germline_library_provenancegermline_numbering")
 
-# 只有验证通过才保存
+# 
 json.dump(prepared_result, ...)
 ```
 
-### 3. 验证器增强
+### 3. 
 
-**文件**: `core/segmentation/json_validator.py`
+****: `core/segmentation/json_validator.py`
 
-**修改**:
-- 增强错误信息，明确标注"字段不存在"vs"字段不完整"
-- 检查error字段，如果存在则直接失败
+****:
+- ，""vs""
+- error，
 
 ---
 
-## 预期效果
+## 
 
-### 修复前
+### 
 ```json
 {
   "germline": {...},
-  // ❌ 缺失 germline_library_provenance
-  // ❌ 缺失 germline_numbering
+  // ❌  germline_library_provenance
+  // ❌  germline_numbering
 }
 ```
 
-### 修复后
+### 
 ```json
 {
   "germline": {...},
@@ -132,7 +132,7 @@ json.dump(prepared_result, ...)
 
 ---
 
-## QA门禁规则
+## QA
 
 ### Rule A: Germline library proof
 ```python
@@ -151,32 +151,32 @@ assert json_data["germline_numbering"]["scheme"] == "imgt"
 assert json_data["germline_numbering"]["numbering_provenance"]["method"] == "anarcii"
 ```
 
-**不满足任一条 → 不生成报告**
+** → **
 
 ---
 
-## 修改后的审计预期结果
+## 
 
-| 审计项 | 预期结论 |
+|  |  |
 |--------|----------|
-| germline 库存在与版本 | ✅ 通过 |
-| germline IMGT 编号（ANARCI） | ✅ 通过 |
-| 总体结论 | ✅ 全部通过 |
+| germline  | ✅  |
+| germline IMGT （ANARCI） | ✅  |
+|  | ✅  |
 
 ---
 
-## 关键总结
+## 
 
-**当前不是"算法没实现"，而是"证据没写入业务JSON"。**
+**""，"JSON"。**
 
-只要把库级provenance和ANARCI编号结果写进业务JSON，并加QA门禁，即可一次性补齐证据链并通过审计。
+provenanceANARCIJSON，QA，。
 
 ---
 
-**修改文件清单**:
-1. `core/json_data_preparer.py` - 强制生成，不允许失败
-2. `scripts/run_egfr_full_pipeline_v4_1.py` - 保存前强制验证
-3. `core/segmentation/json_validator.py` - 增强验证器错误信息
+****:
+1. `core/json_data_preparer.py` - ，
+2. `scripts/run_egfr_full_pipeline_v4_1.py` - 
+3. `core/segmentation/json_validator.py` - 
 
 
 

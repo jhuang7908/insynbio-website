@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- insynbio-console-v726-cdna-forward-routing -->
+<!-- insynbio-console-v727-credits-role-label-fix -->
 <!-- [FORCED RELOAD 2026-05-17 14:50] -->
 <html lang="en">
 <head>
@@ -1976,10 +1976,19 @@ function walletStorageKey() {
   return LS_CREDITS;
 }
 
-function isAdminIdentity() {
-  const ident = currentBillingIdentity();
-  return (ident.server && ["admin", "owner"].includes(String(ident.type || "").toLowerCase()))
-    || (ident.gate && String(ident.id || "").toLowerCase() === "admin");
+/** Server Bearer wallet shows ∞ balance when unlimited flag is set, or forced for role `admin`. */
+function serverWalletShowsInfinityBalance() {
+  if (!state.serverMode) return false;
+  const r = String(state.serverRole || "").toLowerCase();
+  if (r === "admin") return true;
+  return !!state.serverUnlimited;
+}
+
+function creditsInfinityParenLabel() {
+  const r = String(state.serverRole || "").toLowerCase();
+  if (r === "admin") return "admin";
+  if (r === "owner") return "owner";
+  return "unlimited";
 }
 
 function currentRunLocation() {
@@ -2879,12 +2888,10 @@ function updateTopbar() {
   if (railAccCont) railAccCont.style.display = "block";
   const credEl = document.getElementById("top-credits");
   if (credEl) {
-    if (isAdminIdentity()) {
-      credEl.textContent = "Credits · ∞ (admin)";
-    } else if (state.serverMode && state.serverUnlimited) {
-      credEl.textContent = "Credits · ∞ (unlimited)";
+    if (serverWalletShowsInfinityBalance()) {
+      credEl.textContent = `Credits · ∞ (${creditsInfinityParenLabel()})`;
     } else {
-      credEl.textContent = `Credits · ${state.credits.toLocaleString("en-US")}`;
+      credEl.textContent = `Credits · ${Number(state.credits || 0).toLocaleString("en-US")}`;
     }
   }
   updateAuthUi();
@@ -4810,7 +4817,7 @@ function buildLedgerRailHtml() {
   try {
     const arr = _billingLedgerRows();
     const ident = currentBillingIdentity();
-    const balance = isAdminIdentity() || (state.serverMode && state.serverUnlimited) ? "∞" : state.credits.toLocaleString("en-US");
+    const balance = serverWalletShowsInfinityBalance() ? "∞" : Number(state.credits || 0).toLocaleString("en-US");
     const accountKind = ident.server ? "Account" : ident.gate ? "Gate" : "Guest";
     const accountLine = `${accountKind} · ${ident.id}`;
     if (!Array.isArray(arr) || !arr.length) {

@@ -1,31 +1,31 @@
-# 自定义颜色方案完全指南
+# 
 
-## 🎨 可用的预设方案
+## 🎨 
 
-### 快速预览
+### 
 
 ```bash
-# 列出所有方案
+# 
 python scripts/color_scheme_manager.py list
 
-# 查看某个方案详情
+# 
 python scripts/color_scheme_manager.py show rainbow
 python scripts/color_scheme_manager.py show publication
 ```
 
 ---
 
-## 8 种内置方案详解
+## 8 
 
-### 1️⃣ **Rainbow** 🌈 (默认)
-经典彩虹梯度：从红到紫
+### 1️⃣ **Rainbow** 🌈 
+：
 ```
-CDR (B=95)         🔴 红
-Framework (B=55)   🔵 青
-Antigen (B=75)     🟡 黄
-Other (B=5)        ⚪ 白
+CDR (B=95)         🔴 
+Framework (B=55)   🔵 
+Antigen (B=75)     🟡 
+Other (B=5)        ⚪ 
 ```
-**适用场景：** 一般展示、清晰对比
+**：** 、
 
 **PyMOL：**
 ```
@@ -35,92 +35,92 @@ spectrum b, red cyan yellow white, 5, 95
 ---
 
 ### 2️⃣ **Scientific** 🔬
-科学级配色：能量风格
+：
 ```
-CDR (B=95)         🔴 红 (高能)
-Framework (B=55)   🔵 蓝 (低能)
-Antigen (B=75)     🟢 绿 (中能)
-Other (B=5)        ⚪ 白 (背景)
+CDR (B=95)         🔴  
+Framework (B=55)   🔵  
+Antigen (B=75)     🟢  
+Other (B=5)        ⚪  
 ```
-**适用场景：** 学术论文、热力学概念
+**：** 、
 
 ---
 
 ### 3️⃣ **Publication** 📊
-出版级配色：印刷友好
+：
 ```
-CDR (B=95)         💜 品红 (#CC0066)
-Framework (B=55)   🔵 蓝 (深 #0033CC)
-Antigen (B=75)     🟠 橙 (#FF8800)
-Other (B=5)        ⚫ 灰
+CDR (B=95)         💜  (#CC0066)
+Framework (B=55)   🔵  ( #0033CC)
+Antigen (B=75)     🟠  (#FF8800)
+Other (B=5)        ⚫ 
 ```
-**适用场景：** 期刊论文、会议演讲（推荐！）
+**：** 、（！）
 
 ---
 
 ### 4️⃣ **Dark** 🌙
-深色主题：黑色背景友好
+：
 ```
-CDR (B=95)         💜 品红 (亮)
-Framework (B=55)   🔵 青 (亮)
-Antigen (B=75)     🟡 黄 (亮)
-Other (B=5)        ⬛ 黑
+CDR (B=95)         💜  
+Framework (B=55)   🔵  
+Antigen (B=75)     🟡  
+Other (B=5)        ⬛ 
 ```
-**适用场景：** 暗黑主题演讲、黑色背景
+**：** 、
 
 ---
 
 ### 5️⃣ **Thermal** 🔥
-热力梯度：蓝(冷)→红(热)
+：→
 ```
-CDR (B=95)         🔴 红 (热)
-Framework (B=55)   🟢 绿 (温)
-Antigen (B=75)     🟠 橙 (温)
-Other (B=5)        🔵 蓝 (冷)
+CDR (B=95)         🔴  
+Framework (B=55)   🟢  
+Antigen (B=75)     🟠  
+Other (B=5)        🔵  
 ```
-**适用场景：** 结合热力学意义的可视化
+**：** 
 
 ---
 
 ### 6️⃣ **Pastel** 🍰
-柔和配色：温和易看
+：
 ```
-CDR (B=95)         🍑 浅红
-Framework (B=55)   🧊 浅蓝
-Antigen (B=75)     🧅 浅橙
-Other (B=5)        🩶 浅灰
+CDR (B=95)         🍑 
+Framework (B=55)   🧊 
+Antigen (B=75)     🧅 
+Other (B=5)        🩶 
 ```
-**适用场景：** 用户界面、长期盯看展示
+**：** 、
 
 ---
 
 ### 7️⃣ **Grayscale** ⬜
-灰度：黑白打印
+：
 ```
-CDR (B=95)         ⬛ 黑 (darkest)
-Framework (B=55)   🩶 深灰
-Antigen (B=75)     🩶 中灰
-Other (B=5)        ⚪ 浅灰
+CDR (B=95)         ⬛  (darkest)
+Framework (B=55)   🩶 
+Antigen (B=75)     🩶 
+Other (B=5)        ⚪ 
 ```
-**适用场景：** B&W 打印、黑白论文
+**：** B&W 、
 
 ---
 
 ### 8️⃣ **Contrasting** 🎯
-高对比：三原色
+：
 ```
-CDR (B=95)         💜 品红 (#FF00FF)
-Framework (B=55)   🔵 青 (#00FFFF)
-Antigen (B=75)     🟡 黄 (#FFFF00)
-Other (B=5)        ⚪ 白
+CDR (B=95)         💜  (#FF00FF)
+Framework (B=55)   🔵  (#00FFFF)
+Antigen (B=75)     🟡  (#FFFF00)
+Other (B=5)        ⚪ 
 ```
-**适用场景：** 极端高对比需求、色盲友好（部分）
+**：** 、
 
 ---
 
-## 🎨 使用预设方案
+## 🎨 
 
-### 示例 1：使用 Publication 方案
+###  1： Publication 
 
 ```bash
 python scripts/colorize_interface_pdb.py \
@@ -131,12 +131,12 @@ python scripts/colorize_interface_pdb.py \
     --output interface_pub.pdb
 ```
 
-然后在 PyMOL 中：
+ PyMOL ：
 ```
 spectrum b, magenta blue orange gray, 5, 95
 ```
 
-### 示例 2：使用 Dark 方案（暗色背景）
+###  2： Dark 
 
 ```bash
 python scripts/colorize_interface_pdb.py \
@@ -147,7 +147,7 @@ python scripts/colorize_interface_pdb.py \
     --output interface_dark.pdb
 ```
 
-### 示例 3：使用 Grayscale 方案（打印）
+###  3： Grayscale 
 
 ```bash
 python scripts/colorize_interface_pdb.py \
@@ -160,15 +160,15 @@ python scripts/colorize_interface_pdb.py \
 
 ---
 
-## 🛠️ 创建自定义方案
+## 🛠️ 
 
-### 步骤 1：生成模板
+###  1：
 
 ```bash
 python scripts/color_scheme_manager.py template my_colors.json
 ```
 
-生成的 `my_colors.json`：
+ `my_colors.json`：
 ```json
 {
   "scheme_name": "my_custom_scheme",
@@ -219,25 +219,25 @@ python scripts/color_scheme_manager.py template my_colors.json
 }
 ```
 
-### 步骤 2：修改颜色
+###  2：
 
-编辑 `my_colors.json` 中的以下字段：
+ `my_colors.json` ：
 
-#### 字段说明
+#### 
 
-| 字段 | 说明 | 示例 |
+|  |  |  |
 |------|------|------|
-| `scheme_name` | 方案名称 | `"Publication Red-Blue"` |
-| `description` | 描述 | `"For journal Nature Methods"` |
-| `bfactor_min`/`max` | B-factor 范围 | `90-99` for CDR |
-| `color_name` | 颜色名称（显示用）| `"Crimson"` |
-| `hex_code` | 十六进制颜色码 | `"#DC143C"` |
-| `pymol_name` | PyMOL 颜色名 | `"red"`, `"blue"`, `"orange"` |
-| `chimera_name` | ChimeraX 颜色名 | 同 PyMOL |
-| `description` | 角色描述 | `"CDR hot spots"` |
-| `priority` | 显示优先级 | 越高越重要 |
+| `scheme_name` |  | `"Publication Red-Blue"` |
+| `description` |  | `"For journal Nature Methods"` |
+| `bfactor_min`/`max` | B-factor  | `90-99` for CDR |
+| `color_name` | | `"Crimson"` |
+| `hex_code` |  | `"#DC143C"` |
+| `pymol_name` | PyMOL  | `"red"`, `"blue"`, `"orange"` |
+| `chimera_name` | ChimeraX  |  PyMOL |
+| `description` |  | `"CDR hot spots"` |
+| `priority` |  |  |
 
-#### 常见 PyMOL/Chimera 颜色名
+####  PyMOL/Chimera 
 
 ```
 Basic:
@@ -262,7 +262,7 @@ Named (PyMOL):
   gold, orange, darkorange, orangered, red, crimson
 ```
 
-### 步骤 3：使用自定义方案
+###  3：
 
 ```bash
 python scripts/colorize_interface_pdb.py \
@@ -275,9 +275,9 @@ python scripts/colorize_interface_pdb.py \
 
 ---
 
-## 💡 创意配色方案示例
+## 💡 
 
-### 例 1：论文投稿风格（Nature Methods）
+###  1：（Nature Methods）
 
 ```json
 {
@@ -320,7 +320,7 @@ python scripts/colorize_interface_pdb.py \
 }
 ```
 
-### 例 2：色盲友好方案（Deuteranopia）
+###  2：（Deuteranopia）
 
 ```json
 {
@@ -359,7 +359,7 @@ python scripts/colorize_interface_pdb.py \
 }
 ```
 
-### 例 3：极简主义（只用两色）
+###  3：
 
 ```json
 {
@@ -400,37 +400,37 @@ python scripts/colorize_interface_pdb.py \
 
 ---
 
-## 🔄 B-factor 范围调优
+## 🔄 B-factor 
 
-B-factor 范围影响 PyMOL/Chimera 的颜色梯度平滑度。
+B-factor  PyMOL/Chimera 。
 
-### 推荐配置
+### 
 
-**紧密范围**（快速颜色变化）：
+****：
 ```
-CDR:       90-99   (紧)
-Framework: 50-59   (紧)
-Antigen:   70-79   (紧)
-Other:     0-20    (宽)
+CDR:       90-99   
+Framework: 50-59   
+Antigen:   70-79   
+Other:     0-20    
 ```
 
-**宽松范围**（平滑梯度）：
+****：
 ```
-CDR:       80-99   (宽)
-Framework: 40-59   (宽)
-Antigen:   60-79   (宽)
-Other:     0-30    (宽)
+CDR:       80-99   
+Framework: 40-59   
+Antigen:   60-79   
+Other:     0-30    
 ```
 
 ---
 
-## 📤 导出所有方案为文件
+## 📤 
 
 ```bash
 python scripts/color_scheme_manager.py export ./my_schemes/
 ```
 
-生成：
+：
 ```
 my_schemes/
 ├── rainbow.json
@@ -443,7 +443,7 @@ my_schemes/
 └── contrasting.json
 ```
 
-然后可以一个一个尝试：
+：
 ```bash
 python scripts/colorize_interface_pdb.py \
     --pdb complex.pdb \
@@ -453,9 +453,9 @@ python scripts/colorize_interface_pdb.py \
 
 ---
 
-## 🎯 快速对比多个方案
+## 🎯 
 
-创建对比脚本 `compare_schemes.sh`：
+ `compare_schemes.sh`：
 
 ```bash
 #!/bin/bash
@@ -478,46 +478,46 @@ echo "   spectrum b, ..."
 
 ---
 
-## 📋 颜色方案选择建议
+## 📋 
 
-| 场景 | 推荐方案 | 理由 |
+|  |  |  |
 |------|---------|------|
-| 期刊论文 | Publication | 专业、印刷友好 |
-| 学术报告 | Scientific | 能量风格合理 |
-| 暗色背景 | Dark | 高对比度 |
-| 黑白打印 | Grayscale | 完美可读性 |
-| 通用展示 | Rainbow | 清晰对比 |
-| 色盲友好 | Contrasting | CMY 配色 |
-| 柔和看着 | Pastel | 长期观看舒适 |
+|  | Publication | 、 |
+|  | Scientific |  |
+|  | Dark |  |
+|  | Grayscale |  |
+|  | Rainbow |  |
+|  | Contrasting | CMY  |
+|  | Pastel |  |
 
 ---
 
-## 🐍 在 Python 中使用
+## 🐍  Python 
 
 ```python
 from color_scheme_manager import SchemeManager, ColorScheme
 from colorize_interface_pdb import InterfaceColorizer
 
-# 方法 1：使用预设方案
+#  1：
 scheme = SchemeManager.get_scheme("publication")
 
-# 方法 2：加载自定义方案
+#  2：
 scheme = SchemeManager.load_custom_scheme("my_colors.json")
 
-# 创建着色器并应用方案
+# 
 colorizer = InterfaceColorizer(
     "complex.pdb",
     color_scheme=scheme
 )
 
-# 查看方案详情
-scheme.print_summary()
+# 
+scheme.print_summary
 
-# 获取 PyMOL 命令
-pymol_cmd = scheme.to_pymol_spectrum()
+#  PyMOL 
+pymol_cmd = scheme.to_pymol_spectrum
 print(f"PyMOL: {pymol_cmd}")
 ```
 
 ---
 
-生成时间：2026-03-27 | 自动生成工具集
+：2026-03-27 | 

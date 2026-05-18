@@ -51,7 +51,7 @@
       }
     }
     var svcAnchor = site === 'therasik' ? 'therasik_index.html#services' : '#services';
-    var svcLabel = site === 'therasik' ? '服务' : 'Services';
+    var svcLabel = site === 'therasik' ? '' : 'Services';
     return (
       '<div class="nav-dropdown" tabindex="0">' +
       '<a href="' +
@@ -66,7 +66,7 @@
   }
 
   function closeBtn(site) {
-    var label = site === 'therasik' ? '关闭菜单' : 'Close menu';
+    var label = site === 'therasik' ? '' : 'Close menu';
     return (
       '<button type="button" class="nav-close-btn" aria-label="' +
       esc(label) +
@@ -93,19 +93,19 @@
       );
     } else if (layout === 'therasikIndex') {
       parts.push(
-        '<a href="therasik_index.html" class="active">首页</a>',
-        '<a href="#about">关于我们</a>',
+        '<a href="therasik_index.html" class="active"></a>',
+        '<a href="#about"></a>',
         servicesDropdown('therasik', options),
-        '<a href="#workflow">流程</a>',
-        '<a href="#contact">联系我们</a>'
+        '<a href="#workflow"></a>',
+        '<a href="#contact"></a>'
       );
     } else if (layout === 'therasikService') {
       parts.push(
-        '<a href="therasik_index.html">首页</a>',
-        '<a href="therasik_index.html#about">关于我们</a>',
+        '<a href="therasik_index.html"></a>',
+        '<a href="therasik_index.html#about"></a>',
         servicesDropdown('therasik', options),
-        '<a href="#submit">提交咨询</a>',
-        '<a href="#contact">联系</a>'
+        '<a href="#submit"></a>',
+        '<a href="#contact"></a>'
       );
     }
 

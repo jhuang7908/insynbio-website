@@ -493,7 +493,7 @@
       <div class="sig-field">
         <label>Authorized Signatory</label>
         <div class="sig-line"></div>
-        <div class="sig-value">Jing Huang（黄菁）</div>
+        <div class="sig-value">Jing Huang</div>
       </div>
       <div class="sig-field">
         <label>Title</label>
@@ -525,8 +525,8 @@
 </div>
 
   <script>
-    (function() {
-      function setNavActive() {
+    (function {
+      function setNavActive {
         var hash = window.location.hash || '';
         var homeLink = document.querySelector('.top-header-nav a[href="index.html"]');
         if (homeLink) homeLink.classList.toggle('active', !hash || hash === '#');
@@ -537,7 +537,7 @@
         });
       }
       window.addEventListener('hashchange', setNavActive);
-      setNavActive();
+      setNavActive;
 
       document.querySelectorAll('.top-header-nav a').forEach(function(a) {
         a.addEventListener('click', function(e) {
@@ -550,7 +550,7 @@
           var targetEl = document.getElementById(targetId);
           
           if (targetEl && (window.location.pathname.endsWith('index.html') || window.location.pathname === '/' || href.startsWith('#'))) {
-            e.preventDefault();
+            e.preventDefault;
             document.querySelector('.top-header-nav').classList.remove('open');
             targetEl.scrollIntoView({ behavior: 'smooth' });
             history.pushState(null, null, '#' + targetId);
@@ -558,16 +558,16 @@
         });
       });
 
-      function syncNavDropdownTabindex() {
+      function syncNavDropdownTabindex {
         var mobile = window.matchMedia('(max-width: 768px)').matches;
         document.querySelectorAll('.top-header-nav .nav-dropdown').forEach(function(el) {
           if (mobile) el.removeAttribute('tabindex');
           else el.setAttribute('tabindex', '0');
         });
       }
-      syncNavDropdownTabindex();
+      syncNavDropdownTabindex;
       window.addEventListener('resize', syncNavDropdownTabindex);
-    })();
+    });
   </script>
 
 </body>

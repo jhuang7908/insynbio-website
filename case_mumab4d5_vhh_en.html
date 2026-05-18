@@ -662,7 +662,7 @@
         var her2_shared   = [557,558,560,561,569,570,571,572,573,579,591,593,596,598,600,602,603,604,605];
         var her2_vhh_only = [532,534,542,559,575,592,601,606,607];
 
-        function init3DViewer() {
+        function init3DViewer {
           var el = document.getElementById('viewer3d');
           if (typeof $3Dmol === 'undefined') {
             el.style.background = '#1e293b';
@@ -673,92 +673,92 @@
           _viewer3d = $3Dmol.createViewer(el, {backgroundColor:'#0f172a', antialias:true});
           // Use native fetch — no jQuery dependency
           fetch('vhh_her2_view.pdb')
-            .then(function(r){ return r.ok ? r.text() : Promise.reject(r.status); })
+            .then(function(r){ return r.ok ? r.text : Promise.reject(r.status); })
             .then(function(data){
               _viewer3d.addModel(data, 'pdb');
-              applyStyles3D();
-              _viewer3d.zoomTo();       // full complex view
+              applyStyles3D;
+              _viewer3d.zoomTo;       // full complex view
               _viewer3d.zoom(0.9);      // slight pullback so nothing is clipped
-              _viewer3d.render();
+              _viewer3d.render;
               document.getElementById('viewer3d-loading').style.display='none';
               document.getElementById('viewer3d-labels').style.display='flex';
             })
             .catch(function(err){
               console.warn('fetch failed:', err, '— trying $3Dmol.download');
-              $3Dmol.download('url:vhh_her2_view.pdb', _viewer3d, {}, function(){
-                applyStyles3D();
-                _viewer3d.zoomTo();
+              $3Dmol.download('url:vhh_her2_view.pdb', _viewer3d, {}, function{
+                applyStyles3D;
+                _viewer3d.zoomTo;
                 _viewer3d.zoom(0.9);
-                _viewer3d.render();
+                _viewer3d.render;
                 document.getElementById('viewer3d-loading').style.display='none';
                 document.getElementById('viewer3d-labels').style.display='flex';
               });
             });
         }
 
-        function applyStyles3D() {
+        function applyStyles3D {
           if (!_viewer3d) return;
           // --- VHH (Chain A) ---
-          // FR backbone: 深紫 — 明显区分
+          // FR backbone:  — 
           _viewer3d.setStyle({chain:'A'}, {cartoon:{color:'#9933FF', thickness:0.8, opacity:0.85}});
-          // CDR1: 鲜红 — 区分明显
+          // CDR1:  — 
           vhh_cdr1.forEach(function(r){
             _viewer3d.setStyle({chain:'A',resi:r}, {cartoon:{color:'#FF3333', thickness:1.0, opacity:0.95}});
           });
-          // CDR2: 明青 — 主要结合区
+          // CDR2:  — 
           vhh_cdr2.forEach(function(r){
             _viewer3d.setStyle({chain:'A',resi:r}, {stick:{colorscheme:'cyanCarbon',radius:0.25}, cartoon:{color:'#00DDFF',thickness:1.2, opacity:0.95}});
           });
-          // CDR3: 品红 — 清晰区分
+          // CDR3:  — 
           vhh_cdr3.forEach(function(r){
             _viewer3d.setStyle({chain:'A',resi:r}, {stick:{colorscheme:'magentaCarbon',radius:0.25}, cartoon:{color:'#FF00FF',thickness:1.2, opacity:0.95}});
           });
-          // FR contact residues: 亮绿
+          // FR contact residues: 
           vhh_fr_contact.forEach(function(r){
             _viewer3d.setStyle({chain:'A',resi:r}, {stick:{colorscheme:'greenCarbon',radius:0.25}, cartoon:{color:'#00FF99',thickness:1.0, opacity:0.95}});
           });
           // --- HER2 (Chain B) ---
-          // Non-contact backbone: 亮橙
+          // Non-contact backbone: 
           _viewer3d.setStyle({chain:'B'}, {cartoon:{color:'#FFAA00', thickness:0.7, opacity:0.65}});
-          // Shared epitope: 亮黄
+          // Shared epitope: 
           her2_shared.forEach(function(r){
             _viewer3d.setStyle({chain:'B',resi:r}, {stick:{colorscheme:'orangeCarbon',radius:0.25}, cartoon:{color:'#FFFF33',opacity:0.95,thickness:0.9}});
           });
-          // VHH-unique contacts: 青绿
+          // VHH-unique contacts: 
           her2_vhh_only.forEach(function(r){
             _viewer3d.setStyle({chain:'B',resi:r}, {stick:{colorscheme:'greenCarbon',radius:0.25}, cartoon:{color:'#33FFFF',opacity:0.95,thickness:0.9}});
           });
         }
 
-        function resetView3D() {
+        function resetView3D {
           if (!_viewer3d) return;
-          _viewer3d.zoomTo();        // show full VHH + HER2 complex
-          _viewer3d.zoom(0.9); _viewer3d.render();
+          _viewer3d.zoomTo;        // show full VHH + HER2 complex
+          _viewer3d.zoom(0.9); _viewer3d.render;
         }
 
-        function focusInterface3D() {
+        function focusInterface3D {
           if (!_viewer3d) return;
           // zoom to CDR2+CDR3+FR contacts on VHH + epitope on HER2
           var ifaceA = vhh_cdr2.concat(vhh_cdr3).concat(vhh_fr_contact);
           var ifaceB = her2_shared.concat(her2_vhh_only);
           _viewer3d.zoomTo({chain:'A', resi:ifaceA});
-          _viewer3d.zoom(1.1); _viewer3d.render();
+          _viewer3d.zoom(1.1); _viewer3d.render;
         }
 
-        function toggleSurface3D() {
+        function toggleSurface3D {
           if (!_viewer3d) return;
           var btn = document.getElementById('surfBtn');
           if (_surfaceOn) {
-            _viewer3d.removeAllSurfaces(); _surfaceOn=false; btn.textContent='◻ Surface';
-            applyStyles3D(); _viewer3d.render();
+            _viewer3d.removeAllSurfaces; _surfaceOn=false; btn.textContent='◻ Surface';
+            applyStyles3D; _viewer3d.render;
           } else {
             _viewer3d.addSurface($3Dmol.SurfaceType.VDW, {opacity:0.35, color:'#94a3b8'}, {chain:'A'});
             _viewer3d.addSurface($3Dmol.SurfaceType.VDW, {opacity:0.2,  color:'#475569'}, {chain:'B'});
-            _surfaceOn=true; btn.textContent='✕ Surface'; _viewer3d.render();
+            _surfaceOn=true; btn.textContent='✕ Surface'; _viewer3d.render;
           }
         }
 
-        function toggleSidechains3D() {
+        function toggleSidechains3D {
           if (!_viewer3d) return;
           var btn = document.getElementById('sidBtn');
           if (_sidechainsOn) {
@@ -792,16 +792,16 @@
             btn.style.color = '#0f766e';
             btn.textContent = '🔗 Sidechains';
           }
-          _viewer3d.render();
+          _viewer3d.render;
         }
 
         // Init after 3Dmol loads — poll every 300ms up to 15s
         var _3dmolCheckCount = 0;
-        var _3dmolTimer = setInterval(function(){
+        var _3dmolTimer = setInterval(function{
           _3dmolCheckCount++;
           if (typeof $3Dmol !== 'undefined') {
             clearInterval(_3dmolTimer);
-            init3DViewer();
+            init3DViewer;
           } else if (_3dmolCheckCount > 50) {
             clearInterval(_3dmolTimer);
             // CDN failed — show fallback message
@@ -1082,7 +1082,7 @@
           </div>
           <div class="metric-card green">
             <div class="metric-value">100%</div>
-            <div class="metric-label">CDR 保留 vs Parent</div>
+            <div class="metric-label">CDR  vs Parent</div>
             <div class="metric-threshold">Kabat + Chothia verified</div>
           </div>
           <div class="metric-card green">
@@ -1209,14 +1209,14 @@
     }
   });
 
-  lucide.createIcons();
+  lucide.createIcons;
   </script>
 
     
 
   <script>
-    (function() {
-      function setNavActive() {
+    (function {
+      function setNavActive {
         var hash = window.location.hash || '';
         var homeLink = document.querySelector('.top-header-nav a[href="index.html"]');
         if (homeLink) homeLink.classList.toggle('active', !hash || hash === '#');
@@ -1227,7 +1227,7 @@
         });
       }
       window.addEventListener('hashchange', setNavActive);
-      setNavActive();
+      setNavActive;
 
       document.querySelectorAll('.top-header-nav a').forEach(function(a) {
         a.addEventListener('click', function(e) {
@@ -1240,7 +1240,7 @@
           var targetEl = document.getElementById(targetId);
           
           if (targetEl && (window.location.pathname.endsWith('index.html') || window.location.pathname === '/' || href.startsWith('#'))) {
-            e.preventDefault();
+            e.preventDefault;
             document.querySelector('.top-header-nav').classList.remove('open');
             targetEl.scrollIntoView({ behavior: 'smooth' });
             history.pushState(null, null, '#' + targetId);
@@ -1248,16 +1248,16 @@
         });
       });
 
-      function syncNavDropdownTabindex() {
+      function syncNavDropdownTabindex {
         var mobile = window.matchMedia('(max-width: 768px)').matches;
         document.querySelectorAll('.top-header-nav .nav-dropdown').forEach(function(el) {
           if (mobile) el.removeAttribute('tabindex');
           else el.setAttribute('tabindex', '0');
         });
       }
-      syncNavDropdownTabindex();
+      syncNavDropdownTabindex;
       window.addEventListener('resize', syncNavDropdownTabindex);
-    })();
+    });
   </script>
 
 </body>
