@@ -64,7 +64,12 @@ input:focus { border-color: #21c7d9; }
     <label for="user">Username</label>
     <input id="user" name="user" type="text" autocomplete="username" placeholder="e.g. zhanglab" autofocus />
     <label for="pass">Password</label>
-    <input id="pass" name="pass" type="password" autocomplete="current-password" placeholder="••••••••••" />
+    <div style="position:relative">
+      <input id="pass" name="pass" type="password" autocomplete="current-password" placeholder="••••••••••" style="padding-right:38px" />
+      <button type="button" onclick="togglePassVis()" tabindex="-1"
+        style="position:absolute;right:9px;top:50%;transform:translateY(-50%);background:none;border:none;cursor:pointer;color:#8ea0b8;font-size:15px;line-height:1;padding:2px"
+        title="Show / hide password" id="pass-vis-btn">👁</button>
+    </div>
   </div>
   <div id="register-fields" style="display:none">
     <label for="reg-email">Email Address</label>
@@ -118,6 +123,14 @@ input:focus { border-color: #21c7d9; }
 var LS_AUTH = "insynbio_gate_auth";
 var LS_ROLE = "insynbio_gate_role";
 var mode = "login"; // login, register, verify, forgotUser, forgotPassword, resetPassword
+
+function togglePassVis() {
+  var inp = document.getElementById("pass");
+  var btn = document.getElementById("pass-vis-btn");
+  if (!inp) return;
+  if (inp.type === "password") { inp.type = "text"; btn.textContent = "🙈"; }
+  else { inp.type = "password"; btn.textContent = "👁"; }
+}
 
 function hideAllModes() {
   ["login-fields", "register-fields", "verify-fields", "forgot-user-fields", "forgot-password-fields", "reset-password-fields"].forEach(function(id) {
