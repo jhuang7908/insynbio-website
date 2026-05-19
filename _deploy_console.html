@@ -4092,7 +4092,21 @@ function renderCartAssemblerForm(service) {
       <!-- Architecture context banner (Ex Vivo sub-services) -->
       <div id="cart-exvivo-arch-banner" style="display:none;margin-bottom:12px;padding:8px 12px;border-radius:6px;border:1px solid var(--line);background:var(--panel);font-size:11px;color:var(--muted);line-height:1.6"></div>
 
-      <!-- ══════════ IN VIVO CAR PANEL ══════════ -->
+      <!-- ══════════ STEP 1: Project Setup (shared, always visible) ══════════ -->
+      <div style="margin-bottom:6px;font-size:11px;font-weight:600;color:var(--muted);letter-spacing:.04em;text-transform:uppercase">STEP 1 — Project Setup</div>
+      <div style="display:grid;grid-template-columns:2fr 1fr;gap:12px;margin-bottom:20px;padding:12px;background:var(--bg);border-radius:6px;border:1px solid var(--border)">
+        <div>
+          <label style="font-size:10px;color:var(--muted);display:block;margin-bottom:4px">Construct name <span style="font-weight:400;color:var(--muted);font-size:10px">(optional)</span></label>
+          <input type="text" id="cart-assembler-name" placeholder="e.g. CD19-BBz-CAR" maxlength="120"
+            style="width:100%;font-family:var(--font-mono,monospace)">
+        </div>
+        <div>
+          <label style="font-size:10px;color:var(--muted);display:block;margin-bottom:4px">Demo case</label>
+          <select id="cart-assembler-demo" onchange="loadServiceDemo()" style="width:100%;font-size:12px"></select>
+        </div>
+      </div>
+
+      <!-- ══════════ IN VIVO CAR PANEL (contains its own STEP 2) ══════════ -->
       <div id="cart-invivo-panel" style="display:none;margin-bottom:18px">
 
         <!-- Disease context card (updated by JS per active service) -->
@@ -4108,8 +4122,11 @@ function renderCartAssemblerForm(service) {
           <div id="cart-invivo-ctx-note" style="display:none;margin-top:8px;padding:6px 10px;border-radius:5px;border:1px solid var(--warn);background:rgba(212,167,44,.06);font-size:10px;color:var(--muted);line-height:1.6"></div>
         </div>
 
-        <!-- Level 3: Cell / Platform filter -->
-        <div class="panel-label" style="margin-bottom:6px">Platform / Effector Cell</div>
+        <!-- ── STEP 2 (In Vivo): Choose Delivery Platform & Binder ── -->
+        <div style="margin-bottom:6px;font-size:11px;font-weight:600;color:var(--muted);letter-spacing:.04em;text-transform:uppercase">STEP 2 — Choose Delivery Platform & Binder</div>
+
+        <!-- Sub-step 2a: Cell / Platform filter -->
+        <div class="panel-label" style="margin:8px 0 6px">2a · Platform / Effector Cell</div>
         <div id="cart-invivo-vehicle-tabs" style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:16px">
           <button type="button" class="__cart_ivv service-btn" data-vehicle=""
             onclick="_cartInVivoSetVehicle(this)"
@@ -4125,8 +4142,27 @@ function renderCartAssemblerForm(service) {
             style="padding:4px 12px;font-size:11px;border-radius:14px">mRNA Elements</button>
         </div>
 
-        <!-- Component cards grid -->
-        <div class="panel-label" style="margin-bottom:8px">Curated Binders — click to add to Binder slot</div>
+        <!-- Sub-step 2b: LNP-surface Targeting Antibody (not part of CAR, but defines which cell type receives the mRNA) -->
+        <div class="panel-label" style="margin:8px 0 6px">2b · LNP-surface Targeting Antibody <span style="font-weight:400;color:var(--muted);font-size:10px">(routes mRNA to specific immune cell type — not part of the CAR construct)</span></div>
+        <div style="display:grid;grid-template-columns:2fr 1fr;gap:8px;padding:10px;background:var(--bg);border:1px solid var(--border);border-radius:6px;margin-bottom:16px">
+          <div>
+            <label style="font-size:10px;color:var(--muted);display:block;margin-bottom:4px">Cell-targeting scFv on LNP surface</label>
+            <select id="cart-invivo-targeting-pick" onchange="_cartInVivoTargetingChanged()" style="width:100%;font-size:12px">
+              <option value="">— Loading targeting antibodies —</option>
+            </select>
+          </div>
+          <div>
+            <label style="font-size:10px;color:var(--muted);display:block;margin-bottom:4px">Or paste custom</label>
+            <button type="button" onclick="_cartInVivoToggleCustomTargeting()" style="width:100%;padding:6px 10px;font-size:11px;background:transparent;border:1px solid var(--border);border-radius:4px;cursor:pointer">+ Custom sequence</button>
+          </div>
+        </div>
+        <div id="cart-invivo-targeting-custom-wrap" style="display:none;margin-bottom:16px;padding:10px;background:var(--bg);border:1px solid var(--border);border-radius:6px">
+          <label style="font-size:10px;color:var(--muted);display:block;margin-bottom:4px">Custom LNP targeting antibody sequence (AA)</label>
+          <textarea id="cart-invivo-targeting-custom" rows="3" placeholder="DIVMTQSPATLSVSPGERATLSC… (non-AA chars stripped)" style="width:100%;font-family:var(--font-mono,monospace);font-size:11px"></textarea>
+        </div>
+
+        <!-- Sub-step 2c: Curated binder cards -->
+        <div class="panel-label" style="margin:8px 0 6px">2c · Antigen Binder — click a card or paste your own below</div>
         <div id="cart-invivo-cards" class="method-grid" style="grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:8px;min-height:80px">
           <div style="color:var(--muted);font-size:12px;grid-column:1/-1;text-align:center;padding:28px">Loading…</div>
         </div>
@@ -4138,24 +4174,23 @@ function renderCartAssemblerForm(service) {
           <button type="button" onclick="_cartInVivoClearSelected()" style="font-size:10px;background:transparent;border:none;color:var(--muted);cursor:pointer">✕</button>
         </div>
 
+        <!-- Custom binder paste for In Vivo -->
+        <details style="margin-top:12px">
+          <summary style="cursor:pointer;font-size:11px;color:var(--accent);padding:6px 0;font-weight:600">+ Use my own binder sequence (paste custom scFv / VHH)</summary>
+          <div style="margin-top:8px;padding:10px;background:var(--bg);border:1px solid var(--border);border-radius:6px">
+            <label style="font-size:10px;color:var(--muted);display:block;margin-bottom:4px">Custom binder sequence (AA)</label>
+            <textarea id="cart-invivo-binder-custom" rows="4"
+              placeholder="EVQLVESGGGLVQPGGSLRLSCAASGFTFS… (paste your scFv or VHH; non-AA chars stripped)"
+              oninput="_cartInVivoBinderCustomChanged()"
+              style="width:100%;font-family:var(--font-mono,monospace);font-size:11px"></textarea>
+            <div style="margin-top:4px;font-size:10px;color:var(--muted)">Length: <span id="cart-invivo-binder-custom-len">0</span> aa. Will be used as the Antigen Binder.</div>
+          </div>
+        </details>
+
         <hr style="border:none;border-top:1px solid var(--line);margin:16px 0">
       </div>
 
-      <!-- ══════════ STEP 1: Project Setup ══════════ -->
-      <div style="margin-bottom:6px;font-size:11px;font-weight:600;color:var(--muted);letter-spacing:.04em;text-transform:uppercase">STEP 1 — Project Setup</div>
-      <div style="display:grid;grid-template-columns:2fr 1fr;gap:12px;margin-bottom:20px;padding:12px;background:var(--bg);border-radius:6px;border:1px solid var(--border)">
-        <div>
-          <label style="font-size:10px;color:var(--muted);display:block;margin-bottom:4px">Construct name <span style="font-weight:400;color:var(--muted);font-size:10px">(optional)</span></label>
-          <input type="text" id="cart-assembler-name" placeholder="e.g. CD19-BBz-CAR" maxlength="120"
-            style="width:100%;font-family:var(--font-mono,monospace)">
-        </div>
-        <div>
-          <label style="font-size:10px;color:var(--muted);display:block;margin-bottom:4px">Demo case</label>
-          <select id="cart-assembler-demo" onchange="loadServiceDemo()" style="width:100%;font-size:12px"></select>
-        </div>
-      </div>
-
-      <!-- ══════════ STEP 2: Filter Component Library ══════════ -->
+      <!-- ══════════ STEP 2 (Ex Vivo / Custom): Filter Component Library ══════════ -->
       <div id="cart-exvivo-panel">
       <div style="margin-bottom:6px;font-size:11px;font-weight:600;color:var(--muted);letter-spacing:.04em;text-transform:uppercase">STEP 2 — Filter the Component Library</div>
       <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-bottom:24px;padding:12px;background:var(--bg);border-radius:6px;border:1px solid var(--border)">
@@ -12332,9 +12367,76 @@ async function _cartInVivoLoad() {
     if(!r.ok) { container.innerHTML='<div style="color:var(--fail);padding:20px">Failed to load In-Vivo data.</div>'; return; }
     window.__CART_INVIVO_DATA = await r.json();
     _cartInVivoRenderCards();
+    _cartInVivoLoadTargeting();
   } catch(e) {
     if(container) container.innerHTML = '<div style="color:var(--fail);padding:20px">Network error: ' + e.message + '</div>';
   }
+}
+
+// Load LNP-surface targeting antibodies (CD5/CD8/CD4 scFv that direct LNP to
+// specific T-cell subsets — distinct from the CAR antigen binder).
+async function _cartInVivoLoadTargeting() {
+  const sel = document.getElementById('cart-invivo-targeting-pick');
+  if (!sel) return;
+  try {
+    const r = await fetch(apiJoin('cart/catalog_grouped?category=In-Vivo%20CAR%20Module&verified_only=false'));
+    if (!r.ok) throw new Error('targeting unavailable');
+    const data = await r.json();
+    const ligands = (data.by_subcategory && data.by_subcategory['LNP/mRNA Targeting Ligand']) || [];
+    if (!ligands.length) {
+      sel.innerHTML = '<option value="">(No targeting antibodies in DB)</option>';
+      return;
+    }
+    sel.innerHTML = '<option value="">— None / Skip targeting —</option>'
+      + ligands.map(it => {
+          const len = it.length != null ? ' · ' + it.length + ' aa' : '';
+          return '<option value="' + escapeHtml(it.id) + '" data-name="' + escapeHtml(it.name||it.id) + '">'
+            + escapeHtml(it.name || it.id) + len + '</option>';
+        }).join('');
+    window.__CART_INVIVO_TARGETING_DATA = ligands;
+  } catch (e) {
+    sel.innerHTML = '<option value="">(Network error)</option>';
+  }
+}
+
+function _cartInVivoTargetingChanged() {
+  const sel = document.getElementById('cart-invivo-targeting-pick');
+  if (!sel) return;
+  // Selecting a curated ligand clears any custom paste
+  if (sel.value) {
+    const wrap = document.getElementById('cart-invivo-targeting-custom-wrap');
+    const ta   = document.getElementById('cart-invivo-targeting-custom');
+    if (wrap) wrap.style.display = 'none';
+    if (ta)   ta.value = '';
+  }
+}
+
+function _cartInVivoToggleCustomTargeting() {
+  const wrap = document.getElementById('cart-invivo-targeting-custom-wrap');
+  if (!wrap) return;
+  const showing = wrap.style.display !== 'none';
+  wrap.style.display = showing ? 'none' : '';
+  if (!showing) {
+    // Selecting custom path clears the DB picker
+    const sel = document.getElementById('cart-invivo-targeting-pick');
+    if (sel) sel.value = '';
+  }
+}
+
+// User pastes their own binder in In-Vivo mode. Wire it into the (hidden)
+// Step-3 Antigen Binder slot so the assembler picks it up downstream.
+function _cartInVivoBinderCustomChanged() {
+  const ta = document.getElementById('cart-invivo-binder-custom');
+  if (!ta) return;
+  const cleaned = (ta.value || '').replace(/[^A-Za-z]/g, '').toUpperCase();
+  const lenEl = document.getElementById('cart-invivo-binder-custom-len');
+  if (lenEl) lenEl.textContent = cleaned.length;
+  // Mirror into the hidden Custom textarea of the binder slot
+  const target = document.getElementById('cart-custom-binder');
+  if (target) target.value = cleaned;
+  // Switch the binder slot to Custom mode (so the assembler reads the textarea)
+  if (typeof _cartSetMode === 'function') _cartSetMode('binder', 'custom', true);
+  if (typeof _cartUpdateTopology === 'function') _cartUpdateTopology();
 }
 
 function _cartInVivoSetDisease(btn) {
