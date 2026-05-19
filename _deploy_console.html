@@ -4205,9 +4205,9 @@ function renderCartAssemblerForm(service) {
         <div style="flex:1;height:1px;background:var(--border)"></div>
         <div style="font-size:10px;color:var(--muted)">optional · 3rd-gen / armored / allogeneic / in-vivo</div>
       </div>
-      <details>
+      <details open>
         <summary style="cursor:pointer;font-size:12px;color:var(--accent);padding:8px 0;font-weight:600">
-          ▶ Show / hide — Signal Peptide · Linker · Safety Switch · Armored Payload · Regulatory · Logic Gate · In-Vivo · Engineering Module
+          ▼ Show / hide — Signal Peptide · Linker · Safety Switch · Armored Payload · Regulatory · Logic Gate · In-Vivo · Engineering Module
         </summary>
         <div style="margin-top:10px">
         ${OPT_SLOTS.map(s => slotCard(s, true)).join('')}
