@@ -1619,7 +1619,7 @@ const REGISTRY = {
     },
     "car-t-assembler": {
       module: "car-t-design",
-      navGroup: "exvivo",
+      navGroup: "custom",
       label: "Custom / Free Design",
       subtitle: "All slots open",
       computeMode: "Lite",
@@ -2136,6 +2136,7 @@ const RAE_SERVICE_GROUPS = [
 ];
 
 const CART_SERVICE_GROUPS = [
+  { id: "custom", label: "Custom / Free Design" },
   { id: "exvivo", label: "Ex Vivo CAR" },
   { id: "invivo", label: "In Vivo CAR" },
 ];
@@ -4132,17 +4133,31 @@ function renderCartAssemblerForm(service) {
         <hr style="border:none;border-top:1px solid var(--line);margin:16px 0">
       </div>
 
-      <!-- ══════════ EX VIVO PANEL (Pre-filters) ══════════ -->
+      <!-- ══════════ STEP 1: Project Setup ══════════ -->
+      <div style="margin-bottom:6px;font-size:11px;font-weight:600;color:var(--muted);letter-spacing:.04em;text-transform:uppercase">STEP 1 — Project Setup</div>
+      <div style="display:grid;grid-template-columns:2fr 1fr;gap:12px;margin-bottom:20px;padding:12px;background:var(--bg);border-radius:6px;border:1px solid var(--border)">
+        <div>
+          <label style="font-size:10px;color:var(--muted);display:block;margin-bottom:4px">Construct name <span style="font-weight:400;color:var(--muted);font-size:10px">(optional)</span></label>
+          <input type="text" id="cart-assembler-name" placeholder="e.g. CD19-BBz-CAR" maxlength="120"
+            style="width:100%;font-family:var(--font-mono,monospace)">
+        </div>
+        <div>
+          <label style="font-size:10px;color:var(--muted);display:block;margin-bottom:4px">Demo case</label>
+          <select id="cart-assembler-demo" onchange="loadServiceDemo()" style="width:100%;font-size:12px"></select>
+        </div>
+      </div>
+
+      <!-- ══════════ STEP 2: Filter Component Library ══════════ -->
       <div id="cart-exvivo-panel">
-      <!-- Pre-filters -->
-      <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:8px;margin-bottom:14px;padding:12px;background:var(--bg);border-radius:6px;border:1px solid var(--border)">
+      <div style="margin-bottom:6px;font-size:11px;font-weight:600;color:var(--muted);letter-spacing:.04em;text-transform:uppercase">STEP 2 — Filter the Component Library</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-bottom:24px;padding:12px;background:var(--bg);border-radius:6px;border:1px solid var(--border)">
         <div>
           <label style="font-size:10px;color:var(--muted);display:block;margin-bottom:4px">Indication <span class="__cart_help" data-tip="Filters all dropdowns to elements tagged for this disease setting.">?</span></label>
           <select id="cart-flt-indication" onchange="_cartReloadAllCatalogs()" style="width:100%;font-size:12px">
             <option value="">All indications</option>
-            <option value="Solid Tumor">Solid Tumor (75)</option>
-            <option value="Hematologic">Hematologic (76)</option>
-            <option value="Autoimmune">Autoimmune (11)</option>
+            <option value="Solid Tumor">Solid Tumor</option>
+            <option value="Hematologic">Hematologic</option>
+            <option value="Autoimmune">Autoimmune</option>
           </select>
         </div>
         <div>
@@ -4166,13 +4181,42 @@ function renderCartAssemblerForm(service) {
             <option value="T3">T3 — Research</option>
           </select>
         </div>
-        <div>
-          <label style="font-size:10px;color:var(--muted);display:block;margin-bottom:4px">Demo case</label>
-          <select id="cart-assembler-demo" onchange="loadServiceDemo()" style="width:100%;font-size:12px"></select>
-        </div>
       </div>
       </div><!-- /cart-exvivo-panel -->
 
+      <!-- ══════════ STEP 3: Build Construct ══════════ -->
+      <div style="margin-bottom:12px;font-size:11px;font-weight:600;color:var(--text);letter-spacing:.04em;text-transform:uppercase">STEP 3 — Build the Construct (N → C terminus)</div>
+      
+      <!-- Group 1: Extracellular -->
+      <div style="margin:16px 0 8px;padding-left:8px;border-left:3px solid var(--border);color:var(--muted);font-size:11px;font-weight:600;letter-spacing:.05em;text-transform:uppercase">Extracellular Domain</div>
+      ${SLOTS.slice(0, 2).map(s => slotCard(s, false)).join('')}
+      
+      <!-- Group 2: Membrane -->
+      <div style="margin:20px 0 8px;padding-left:8px;border-left:3px solid var(--border);color:var(--muted);font-size:11px;font-weight:600;letter-spacing:.05em;text-transform:uppercase">Membrane Anchor</div>
+      ${SLOTS.slice(2, 3).map(s => slotCard(s, false)).join('')}
+
+      <!-- Group 3: Intracellular Signaling -->
+      <div style="margin:20px 0 8px;padding-left:8px;border-left:3px solid var(--border);color:var(--muted);font-size:11px;font-weight:600;letter-spacing:.05em;text-transform:uppercase">Intracellular Signaling</div>
+      ${SLOTS.slice(3, 5).map(s => slotCard(s, false)).join('')}
+
+      <!-- Optional slots -->
+      <div style="display:flex;align-items:center;gap:10px;margin:24px 0 10px">
+        <div style="font-size:12px;font-weight:700;color:var(--text);letter-spacing:.06em;text-transform:uppercase">Advanced Modules</div>
+        <div style="flex:1;height:1px;background:var(--border)"></div>
+        <div style="font-size:10px;color:var(--muted)">optional · 3rd-gen / armored / allogeneic / in-vivo</div>
+      </div>
+      <details>
+        <summary style="cursor:pointer;font-size:12px;color:var(--accent);padding:8px 0;font-weight:600">
+          ▶ Show / hide — Signal Peptide · Linker · Safety Switch · Armored Payload · Regulatory · Logic Gate · In-Vivo · Engineering Module
+        </summary>
+        <div style="margin-top:10px">
+        ${OPT_SLOTS.map(s => slotCard(s, true)).join('')}
+        </div>
+      </details>
+
+      <!-- ══════════ STEP 4: Review & Assemble ══════════ -->
+      <div style="margin-top:32px;margin-bottom:12px;font-size:11px;font-weight:600;color:var(--text);letter-spacing:.04em;text-transform:uppercase">STEP 4 — Review & Assemble</div>
+      
       <!-- Construct topology diagram -->
       <div id="cart-topology-diagram" style="display:flex;align-items:center;flex-wrap:nowrap;gap:0;overflow-x:auto;margin-bottom:20px;padding:12px 8px;background:var(--bg);border-radius:6px;border:1px solid var(--border)">
         <span style="font-size:10px;color:var(--muted);margin-right:10px;white-space:nowrap;font-weight:600">N→C</span>
@@ -4192,37 +4236,7 @@ function renderCartAssemblerForm(service) {
         <span style="font-size:10px;color:var(--muted);margin-left:12px;margin-top:14px" id="cart-topo-total"></span>
       </div>
 
-      <!-- Construct name -->
-      <div style="margin-bottom:12px">
-        <label style="font-size:12px;font-weight:600">Construct name <span style="font-weight:400;color:var(--muted);font-size:11px">(optional)</span></label>
-        <input type="text" id="cart-assembler-name" placeholder="e.g. CD19-BBz-CAR" maxlength="120"
-          style="width:100%;margin-top:4px;font-family:var(--font-mono,monospace)">
-      </div>
-
-      <!-- Required slots -->
-      <div style="display:flex;align-items:center;gap:10px;margin:18px 0 10px">
-        <div style="font-size:12px;font-weight:700;color:var(--text);letter-spacing:.06em;text-transform:uppercase">Core Modules</div>
-        <div style="flex:1;height:1px;background:var(--border)"></div>
-        <div style="font-size:10px;color:var(--muted)">5 required · must all be filled</div>
-      </div>
-      ${SLOTS.map(s => slotCard(s, false)).join('')}
-
-      <!-- Optional slots -->
-      <div style="display:flex;align-items:center;gap:10px;margin:18px 0 10px">
-        <div style="font-size:12px;font-weight:700;color:var(--text);letter-spacing:.06em;text-transform:uppercase">Advanced Modules</div>
-        <div style="flex:1;height:1px;background:var(--border)"></div>
-        <div style="font-size:10px;color:var(--muted)">optional · 3rd-gen / armored / allogeneic / in-vivo</div>
-      </div>
-      <details>
-        <summary style="cursor:pointer;font-size:12px;color:var(--accent);padding:8px 0">
-          Show / hide — Signal Peptide · Linker · Safety Switch · Armored Payload · Regulatory · Logic Gate · In-Vivo · Engineering Module
-        </summary>
-        <div style="margin-top:10px">
-        ${OPT_SLOTS.map(s => slotCard(s, true)).join('')}
-        </div>
-      </details>
-
-      <div class="actions" style="margin-top:24px">
+      <div class="actions" style="margin-top:12px">
         <button class="btn primary" onclick="runCurrentService()" style="font-size:13px;padding:10px 28px">Assemble CAR-T Construct →</button>
       </div>
 
