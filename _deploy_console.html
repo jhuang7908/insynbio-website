@@ -12311,6 +12311,14 @@ function _cartSetDeliveryMode(mode) {
     if(ab) ab.style.display = 'none';
   }
 
+  // In In Vivo mode, the curated binder cards above replace the Step-3 Binder
+  // slot — hide it to remove redundancy. Other slots (Hinge / TM / Costim /
+  // CD3ζ / Advanced) remain visible because In Vivo CAR still needs them.
+  const binderCard = document.querySelector('[data-cart-slot="binder"]');
+  if (binderCard) binderCard.style.display = isInVivo ? 'none' : '';
+  // Hide the "Extracellular Domain" group header label only when Hinge is the
+  // single remaining slot in that group (still want it labeled), so we keep it.
+
   if(isInVivo && !window.__CART_INVIVO_DATA) {
     _cartInVivoLoad();
   }
