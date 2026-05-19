@@ -3999,26 +3999,34 @@ function renderCmcBispecificForm(service) {
   `;
 }
 
+// Module-scope slot definitions. Hoisted out of renderCartAssemblerForm so that
+// _cartInitForm() can iterate them without depending on an inline <script> tag
+// (which never executes when the form is injected via innerHTML).
+const CART_SLOTS = [
+  {key:"binder",     label:"① Antigen Binder",      cat:"Antigen Binder",           required:true,  desc:"scFv / VHH / peptide ligand that binds the tumor antigen. Target specificity determines which cancer(s) the therapy can treat."},
+  {key:"hinge",      label:"② Hinge / Spacer",       cat:"Hinge & Spacer",           required:true,  desc:"Flexible extracellular spacer that lifts the binder above the cell surface and modulates epitope accessibility. Length affects synapse formation."},
+  {key:"tm",         label:"③ Transmembrane (TM)",   cat:"Transmembrane Domain",     required:true,  desc:"Single-pass domain that anchors the receptor in the plasma membrane. CD8α-TM (stability) vs CD28-TM (signaling) are the two clinical standards."},
+  {key:"costim",     label:"④ Costimulatory",        cat:"Costimulatory Domain",     required:true,  desc:"Provides the second signal for T-cell activation. 4-1BB → long-term persistence (Kymriah); CD28 → rapid proliferation (Yescarta). Tandem = 3rd-gen."},
+  {key:"activation", label:"⑤ Primary Signaling",   cat:"Primary Signaling Domain", required:true,  desc:"ITAM-bearing cytoplasmic tail providing signal 1. CD3ζ is canonical (3 ITAMs). FcRγ used for CAR-Macrophage constructs."},
+];
+const CART_OPT_SLOTS = [
+  {key:"sp",      label:"Signal Peptide",        cat:"Signal Peptide",      desc:"Routes the nascent CAR protein to the ER/surface. CD8α-SP is used in all 6 FDA-approved CAR-T products."},
+  {key:"linker",  label:"Inter-domain Linker",   cat:"Linker & Peptide",    desc:"Inserted between VH and VL in scFv (G4S variants) or between tandem costimulatory domains."},
+  {key:"safety",  label:"Safety Switch",         cat:"Safety Switch",       desc:"iCasp9, EGFRt, or RQR8 — controllable elimination handle for on-target toxicity or cytokine storm."},
+  {key:"armored", label:"Armored Payload",       cat:"Armored Payload",     desc:"Co-expressed cytokine or engager (IL-7/IL-15/IL-12/CCL19/PD-L1-blocker). Critical for solid-tumor TME penetration."},
+  {key:"reg",     label:"Regulatory Element",    cat:"Regulatory Element",  desc:"2A ribosomal skip peptides, IRES, or promoters for multi-cistronic constructs."},
+  {key:"logic",   label:"Logic Gate / Switch",   cat:"Logic Gate & Switch", desc:"SynNotch, iCAR, SUPRA — Boolean AND/NOT logic gates, combinatorial antigen targeting, or titratable control."},
+  {key:"invivo",  label:"In-Vivo CAR Module",    cat:"In-Vivo CAR Module",  desc:"LNP / LV / AAV delivery components for in situ CAR-T generation without ex-vivo manufacturing."},
+  {key:"engmod",  label:"Engineering Module",    cat:"Engineering Module",  desc:"Allogeneic KO guides (TRAC/B2M), anti-exhaustion factors, CAR-Treg stability modules, tumor homing receptors."},
+];
+const CART_ALL_SLOTS = [...CART_SLOTS, ...CART_OPT_SLOTS];
+// Populate the legacy global so the rest of the code keeps working.
+window.__CART_ALL_SLOTS = CART_ALL_SLOTS;
+window.__CART_GROUPED_CACHE = window.__CART_GROUPED_CACHE || {};
+
 function renderCartAssemblerForm(service) {
-  const SLOTS = [
-    {key:"binder",     label:"① Antigen Binder",      cat:"Antigen Binder",           required:true,  desc:"scFv / VHH / peptide ligand that binds the tumor antigen. Target specificity determines which cancer(s) the therapy can treat."},
-    {key:"hinge",      label:"② Hinge / Spacer",       cat:"Hinge & Spacer",           required:true,  desc:"Flexible extracellular spacer that lifts the binder above the cell surface and modulates epitope accessibility. Length affects synapse formation."},
-    {key:"tm",         label:"③ Transmembrane (TM)",   cat:"Transmembrane Domain",     required:true,  desc:"Single-pass domain that anchors the receptor in the plasma membrane. CD8α-TM (stability) vs CD28-TM (signaling) are the two clinical standards."},
-    {key:"costim",     label:"④ Costimulatory",        cat:"Costimulatory Domain",     required:true,  desc:"Provides the second signal for T-cell activation. 4-1BB → long-term persistence (Kymriah); CD28 → rapid proliferation (Yescarta). Tandem = 3rd-gen."},
-    {key:"activation", label:"⑤ Primary Signaling",   cat:"Primary Signaling Domain", required:true,  desc:"ITAM-bearing cytoplasmic tail providing signal 1. CD3ζ is canonical (3 ITAMs). FcRγ used for CAR-Macrophage constructs."},
-  ];
-  const OPT_SLOTS = [
-    {key:"sp",      label:"Signal Peptide",        cat:"Signal Peptide",      desc:"Routes the nascent CAR protein to the ER/surface. CD8α-SP is used in all 6 FDA-approved CAR-T products."},
-    {key:"linker",  label:"Inter-domain Linker",   cat:"Linker & Peptide",    desc:"Inserted between VH and VL in scFv (G4S variants) or between tandem costimulatory domains."},
-    {key:"safety",  label:"Safety Switch",         cat:"Safety Switch",       desc:"iCasp9, EGFRt, or RQR8 — controllable elimination handle for on-target toxicity or cytokine storm."},
-    {key:"armored", label:"Armored Payload",       cat:"Armored Payload",     desc:"Co-expressed cytokine or engager (IL-7/IL-15/IL-12/CCL19/PD-L1-blocker). Critical for solid-tumor TME penetration."},
-    {key:"reg",     label:"Regulatory Element",    cat:"Regulatory Element",  desc:"2A ribosomal skip peptides, IRES, or promoters for multi-cistronic constructs."},
-    {key:"logic",   label:"Logic Gate / Switch",   cat:"Logic Gate & Switch", desc:"SynNotch, iCAR, SUPRA — Boolean AND/NOT logic gates, combinatorial antigen targeting, or titratable control."},
-    {key:"invivo",  label:"In-Vivo CAR Module",    cat:"In-Vivo CAR Module",  desc:"LNP / LV / AAV delivery components for in situ CAR-T generation without ex-vivo manufacturing."},
-    {key:"engmod",  label:"Engineering Module",    cat:"Engineering Module",  desc:"Allogeneic KO guides (TRAC/B2M), anti-exhaustion factors, CAR-Treg stability modules, tumor homing receptors."},
-  ];
-  const ALL_SLOTS = [...SLOTS, ...OPT_SLOTS];
-  const slotsJson = JSON.stringify(ALL_SLOTS).replace(/</g,'\\u003c');
+  const SLOTS = CART_SLOTS;
+  const OPT_SLOTS = CART_OPT_SLOTS;
 
   const slotCard = (s, optional) => `
     <div class="__cart_slot_card" data-cart-slot="${s.key}" style="background:var(--surface);border:1px solid var(--border);border-left:3px solid ${optional ? 'var(--border)' : 'var(--accent)'};border-radius:8px;padding:14px 16px;margin-bottom:10px">
@@ -4243,12 +4251,10 @@ function renderCartAssemblerForm(service) {
       <!-- Floating tooltip portal (shared) -->
       <div id="__cart_option_tip" style="position:fixed;z-index:9999;display:none;max-width:360px;padding:10px 14px;background:#1a2332;color:#e2e8f0;font-size:11px;line-height:1.6;border-radius:8px;box-shadow:0 8px 32px rgba(0,0,0,.4);pointer-events:none"></div>
     </section>
-    <script>
-      window.__CART_ALL_SLOTS = ${slotsJson};
-      window.__CART_GROUPED_CACHE = window.__CART_GROUPED_CACHE || {};
-      _cartInitForm();
-    <\/script>
   `;
+  // Note: _cartInitForm() is invoked by the per-service hydrate functions
+  // (_cartHydrateExVivo / _cartHydrateExVivoDisease / _cartHydrateInVivo).
+  // We no longer rely on an inline <script> here because innerHTML strips it.
 }
 
 function renderBispecificAssemblerForm(service) {
