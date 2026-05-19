@@ -5000,17 +5000,17 @@ function hydrateService(service) {
     "cmc-bispecific": () => { fillDemoSelect("bs-cmc-demo", service.demos); loadServiceDemo(); updateCmcCredits(); },
     "bispecific-assembler": () => { fillDemoSelect("bs-assembler-demo", service.demos, true); loadServiceDemo(); },
     "car-t-assembler": () => {
-      fillDemoSelect("cart-assembler-demo", service.demos, true);
-      loadServiceDemo();
+      // All 9 CAR-T services share runner="car-t-assembler" but need different
+      // hydration paths. Discriminate by the fields each service definition carries.
+      if (service && service.invivoDisease) {
+        _cartHydrateInVivo(service);
+      } else if (service && service.exvivoDisease) {
+        _cartHydrateExVivoDisease(service);
+      } else {
+        // Custom / Free Design — no preset disease
+        _cartHydrateExVivo(service);
+      }
     },
-    "cart-exvivo-hema":   () => _cartHydrateExVivoDisease(service),
-    "cart-exvivo-solid":  () => _cartHydrateExVivoDisease(service),
-    "cart-exvivo-auto":   () => _cartHydrateExVivoDisease(service),
-    "cart-invivo-solid":  () => _cartHydrateInVivo(service),
-    "cart-invivo-blood":  () => _cartHydrateInVivo(service),
-    "cart-invivo-neuro":  () => _cartHydrateInVivo(service),
-    "cart-invivo-auto":   () => _cartHydrateInVivo(service),
-    "cart-invivo-multi":  () => _cartHydrateInVivo(service),
     "bispecific-analyzer": () => {
       fillDemoSelect("bs-analyzer-demo", service.demos, true);
       loadServiceDemo();
@@ -12507,41 +12507,25 @@ function _cartInVivoClearSelected() {
   if(chip) chip.style.display = 'none';
 }
 
-// Called from hydrateService for cart-exvivo-* architecture routes
+// Called from hydrateService for the generic 'Custom / Free Design' route.
+// No preset disease — all 3 filter dropdowns (Indication, Cell type, Tier) shown,
+// banner hidden, catalog dropdowns fully populated.
 function _cartHydrateExVivo(service) {
   const demoId = (service.demos && service.demos[0]) || '';
   fillDemoSelect('cart-assembler-demo', service.demos || [], true);
   _cartInitForm().then(() => {
     _cartSetDeliveryMode('exvivo');
-    // Ensure indication dropdown is visible for Custom/Free Design
     const indContainer = document.getElementById('cart-flt-indication-container');
     const fltEl = document.getElementById('cart-flt-indication');
     if (indContainer && fltEl) {
       indContainer.style.display = '';
       fltEl.value = '';
-      fltEl.dispatchEvent(new Event('change'));
     }
-    // Show an architecture context banner if available
-    const arch = service.exvivoArch || '';
     const banner = document.getElementById('cart-exvivo-arch-banner');
-    if(banner) {
-      const INFO = {
-        bb:      { icon:'🔵', note:'4-1BB costimulation → superior T cell persistence and memory. Reference archetype: Kymriah (tisagenlecleucel). Recommended costim slot: 4-1BB.' },
-        cd28:    { icon:'🟠', note:'CD28 costimulation → rapid expansion, high early peak. Reference archetype: Yescarta (axicabtagene ciloleucel). Recommended costim slot: CD28.' },
-        armored: { icon:'🛡', note:'Armored / 3rd-gen CAR: add IL-7, IL-15, or dual costim (4-1BB + CD28) for TME penetration and anti-exhaustion. Use the Armored Payload optional slot.' },
-        allo:    { icon:'🧬', note:'Allogeneic design: TRAC KO eliminates TCR-mediated GvHD; B2M KO reduces HLA-I recognition. Add Engineering Module slot for CRISPR KO guide sequences.' },
-      };
-      const i = INFO[arch];
-      if(i) {
-        banner.innerHTML = '<span style="margin-right:6px">' + i.icon + '</span>' + i.note;
-        banner.style.display = '';
-      } else {
-        banner.style.display = 'none';
-      }
-    }
-    if(demoId) {
+    if (banner) banner.style.display = 'none';
+    if (demoId) {
       const sel = document.getElementById('cart-assembler-demo');
-      if(sel) { sel.value = demoId; loadServiceDemo(); }
+      if (sel) { sel.value = demoId; loadServiceDemo(); }
     }
   });
 }
