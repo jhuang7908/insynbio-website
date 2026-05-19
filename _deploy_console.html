@@ -4151,7 +4151,7 @@ function renderCartAssemblerForm(service) {
       <div id="cart-exvivo-panel">
       <div style="margin-bottom:6px;font-size:11px;font-weight:600;color:var(--muted);letter-spacing:.04em;text-transform:uppercase">STEP 2 — Filter the Component Library</div>
       <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-bottom:24px;padding:12px;background:var(--bg);border-radius:6px;border:1px solid var(--border)">
-        <div>
+        <div id="cart-flt-indication-container">
           <label style="font-size:10px;color:var(--muted);display:block;margin-bottom:4px">Indication <span class="__cart_help" data-tip="Filters all dropdowns to elements tagged for this disease setting.">?</span></label>
           <select id="cart-flt-indication" onchange="_cartReloadAllCatalogs()" style="width:100%;font-size:12px">
             <option value="">All indications</option>
@@ -12184,8 +12184,10 @@ async function _cartLoadGrouped(slotKey, category) {
     _cartBuildSubcatDropdown(slotKey, data);
     _cartBuildComponentDropdown(slotKey, '');
   } catch(e) {
-    const sel = document.getElementById('cart-subcat-'+slotKey);
-    if(sel) sel.innerHTML = '<option value="">(unavailable)</option>';
+    const selSub = document.getElementById('cart-subcat-'+slotKey);
+    if(selSub) selSub.innerHTML = '<option value="">(Network Error)</option>';
+    const selComp = document.getElementById('cart-pick-'+slotKey);
+    if(selComp) selComp.innerHTML = '<option value="">(Network Error - Ensure API is running)</option>';
   }
 }
 
@@ -12511,6 +12513,14 @@ function _cartHydrateExVivo(service) {
   fillDemoSelect('cart-assembler-demo', service.demos || [], true);
   _cartInitForm().then(() => {
     _cartSetDeliveryMode('exvivo');
+    // Ensure indication dropdown is visible for Custom/Free Design
+    const indContainer = document.getElementById('cart-flt-indication-container');
+    const fltEl = document.getElementById('cart-flt-indication');
+    if (indContainer && fltEl) {
+      indContainer.style.display = '';
+      fltEl.value = '';
+      fltEl.dispatchEvent(new Event('change'));
+    }
     // Show an architecture context banner if available
     const arch = service.exvivoArch || '';
     const banner = document.getElementById('cart-exvivo-arch-banner');
@@ -12544,10 +12554,17 @@ function _cartHydrateExVivoDisease(service) {
   fillDemoSelect('cart-assembler-demo', service.demos || [], true);
   _cartInitForm().then(() => {
     _cartSetDeliveryMode('exvivo');
-    // Apply indication filter so catalog dropdowns show only relevant binders
+    // Hide indication dropdown container if disease is preset
+    const indContainer = document.getElementById('cart-flt-indication-container');
     const fltEl = document.getElementById('cart-flt-indication');
-    if (fltEl) {
-      fltEl.value = disease;
+    if (indContainer && fltEl) {
+      if (disease) {
+        indContainer.style.display = 'none';
+        fltEl.value = disease;
+      } else {
+        indContainer.style.display = '';
+        fltEl.value = '';
+      }
       fltEl.dispatchEvent(new Event('change'));
     }
     // Show disease context banner
