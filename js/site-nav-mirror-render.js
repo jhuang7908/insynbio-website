@@ -90,7 +90,7 @@
         '<a href="#workflow">Workflow</a>',
         '<a href="#faq">FAQ</a>',
         '<a href="#contact">Contact Us</a>',
-        '<a href="https://console.insynbio.com" target="_blank" rel="noopener noreferrer" style="color:var(--primary);font-weight:600;">Console Login →</a>'
+        '<a href="https://console.insynbio.com" target="_blank" rel="noopener noreferrer" style="color:var(--primary);font-weight:600;">AI Platform Login →</a>'
       );
     } else if (layout === 'therasikIndex') {
       parts.push(
