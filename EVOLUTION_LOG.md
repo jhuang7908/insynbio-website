@@ -40,6 +40,49 @@ TYPE 可选值:
 
 ## 进化记录
 
+### [OBSERVATION] 2026-05-20 — Therasik 多租户邮件链路：sync handler ContextVar 丢失 + Private Email SMTP
+
+- **来源案例:** `console.therasik.com` 注册 / 验证码 / 忘记密码 / 找回用户名 邮件错发为 InSynBio 品牌（`contact@insynbio.com`），且 Therasik 验证码在 Therasik DB 中存在但 `verify-email` 始终返回 `Invalid or expired`。
+- **观察:**
+  1. **租户绑定丢失**：`api/routers/auth.py` 的 `_tenant_scope` 仅作为 APIRouter 依赖项设置 `ContextVar`。FastAPI 把同步 handler 调度到线程池执行，依赖项里设置的 `ContextVar` 不会随线程切换传递；`register()` 因在函数体内再次调用 `_bind_tenant()` 而正确写入 `therasik_auth.db`，但 `verify_email` / `forgot_username` / `forgot_password` / `reset_password` / `me` / `gate_me` / `debit` / `ledger` 等同步 handler 未在函数体内绑定 → 实际查询了默认 `insynbio_auth.db`，导致验证码、找回用户名一律命中 InSynBio 账号（如同邮箱下的 `Jhuang78`）。
+  2. **邮件品牌硬编码**：`auth_db.send_verification_email()` / `send_service_email()` 硬编码 `INSYNBIO_SMTP_*` 与 `contact@insynbio.com` 文案，没有按租户切换发件人 / 主题 / 正文。
+  3. **Therasik Private Email 网络与认证**：Hetzner 节点出站到 `mail.privateemail.com:465` 超时；改用 587 + STARTTLS 可达；`535 authentication failed` 实际原因是 `/etc/abenginecore/env` 中 `THERASIK_SMTP_PASS` 留了占位文本（`YOUR_REAL_PASSWORD`），替换为 Namecheap Private Email 真实密码后登录成功。
+  4. **运维侧次生事故**：手动跑 `uvicorn` 调试时未停 `abenginecore.service`，导致两个进程抢占 127.0.0.1:8000，systemd 进入 `address already in use` 重启循环，业务 `RESET_CODE[...]` 日志因此从未落到 `/tmp/uvicorn.log`，误判为应用 bug。
+- **修复实施（已 push 至 commit `4d494f8`）:**
+  - `api/routers/auth.py`：所有同步 handler 在访问 `auth_db` 前显式 `_bind_tenant(request)`；新增 `POST /api/auth/resend-verification`；`verify-email` 改用 `_user_lookup`（兼容用户名/邮箱）并规范化 6 位数字；`forgot-username`、`forgot-password` / `reset-password` 按租户输出品牌化主题与正文。
+  - `api/auth_db.py`：新增 `_mail_profile()` / `get_mail_brand()`；Therasik 默认 `mail.privateemail.com:465`、发件人 `contact@therasik.com`、中英双语正文；InSynBio 保留原品牌；Therasik **不再回退** InSynBio SMTP，未配置时打印 `[AUTH][therasik] ... SMTP not configured; set THERASIK_SMTP_PASS ...`。
+  - `api/static/therasik_login.html`：验证页显示账号（只读）、`sessionStorage` 缓存 pending 用户名、新增「重新发送验证码 / Resend Code」按钮。
+  - `scripts/start_api_server.sh`：在 systemd 示例段补充 `THERASIK_SMTP_*` 与 `INSYNBIO_SMTP_*` 注释。
+  - 服务器侧：`/etc/abenginecore/env`（0600）通过 `EnvironmentFile=` 注入；`THERASIK_SMTP_PORT=587`，密码使用 Namecheap Private Email 真实密码。
+- **建议:**
+  1. **跨同步 handler 的租户绑定写法应作为约定**：任何同步路由（不只是 auth），只要访问 `auth_db` 或其它租户感知模块，都必须在函数体首行 `_bind_tenant(request)`，仅靠 APIRouter 依赖项不可靠（FastAPI threadpool ContextVar 行为）。建议以注释/PR 检查的方式约束，避免未来回归。
+  2. **`/api/health` 增加 `tenant_resolver_ok` / `therasik_smtp_configured` 自检字段**，便于一次性判定租户路由与 SMTP 是否健康；当前需要靠手动 `grep RESET_CODE[therasik]` 推断。
+  3. **域名邮件认证**：建议给 `therasik.com` 加 SPF (`include:spf.privateemail.com`) / DKIM (Namecheap 控制台启用) / DMARC，避免 Gmail 投递率波动；本次首封 `contact@therasik.com` 邮件能直接到达收件箱已是良好基线，但缺 SPF/DKIM 长期存在被退/进垃圾箱风险。
+  4. **运维规程**：明确「`systemctl stop abenginecore` → 手动 uvicorn → Ctrl+C → `systemctl start abenginecore`」次序，禁止 systemd 与手动实例并存；可在 `docs/operations/` 增加一段说明，避免 ghost 进程再发生。
+- **影响范围:**
+  - `api/routers/auth.py`、`api/auth_db.py`、`api/static/therasik_login.html`、`scripts/start_api_server.sh`（实现已上线 commit `4d494f8`）。
+  - 运维侧 `/etc/abenginecore/env`、systemd `override.conf`（已添加 `EnvironmentFile=`）。
+  - `docs/VHVL_WEB_CONSOLE_CONTRACT.md` 可能需追加「Therasik 多租户邮件 / Private Email」段落与第 5 节版本可见性中的租户标识；属 LOCKED 文件，待 Owner 批准后再更新。
+- **状态:** LOGGED（实现已部署并经端到端验证：`contact@therasik.com` 双语验证码邮件到达 `mail.jing.huang@gmail.com`，用户名 `jhuang71` 匹配 Therasik 租户）。
+
+---
+
+### [EXECUTED] 2026-05-20 — 发布 `docs/operations/VHVL_WEB_CONSOLE_CONTRACT.md`（多租户契约 §7）
+
+**Source:** Owner approval ("批准") following the 2026-05-20 OBSERVATION entry above.
+**Status:** EXECUTED 2026-05-20 by Agent.
+
+**Change:**
+- 新增 `docs/operations/VHVL_WEB_CONSOLE_CONTRACT.md`（先前缺失；workspace rule `vhvl-web-console-contract.mdc` 早已引用该路径）。
+- 文件以 §0–§10 章节正式记录 VH/VL Web Console 单一事实源（SSOT），其中 §7 系统化记录多租户架构（租户解析、`_bind_tenant` 必须性、SQLite 隔离、邮件品牌矩阵、Private Email 配置、SPF/DKIM/DMARC 建议），§8 写入运维纪律（禁止 ghost uvicorn、部署流程、Therasik 邮件冒烟测试）。
+- 未触碰其它 LOCKED 文件；与已上线的 commit `4d494f8` 一一对应。
+
+**Verification:**
+- 文件路径与 `vhvl-web-console-contract.mdc` 中的引用一致。
+- Markdown 解析无破坏性符号；与现有 `docs/CURSOR_REPORT_ENGINE_V4_1_SPEC.md` 引用方式一致。
+
+---
+
 ### [EXECUTED] 2026-05-16 — VHH Humanization V5.0: Structure-Driven + DeepFR-CTX Fallback
 
 **Source:** Owner strategic direction (2026-05-16 chat). Approved by Owner ("全部批准 V5.0 升级") immediately following the PROPOSAL entry below.
