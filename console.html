@@ -1060,28 +1060,108 @@ html:not(.theme-beige) .rail .meta-item .k { color: #a8c4db; }
   </main>
 
   <div class="shell-h-splitter" id="split-rail" title="Drag to resize right rail width"></div>
-  <aside class="rail">
-    <div class="rail-section" id="rail-version-panel">
-      <div class="rail-title">System Versions</div>
-      <div class="rail-card" style="display:flex;flex-direction:column;gap:6px">
-        <div style="display:none; margin-bottom:4px; padding:6px 10px; background:rgba(var(--accent-rgb),0.1); border:1px solid var(--accent); border-radius:6px; font-weight:700; color:var(--accent)" id="rail-account-container">
-          <div style="font-size:10px; opacity:0.7; text-transform:uppercase; margin-bottom:2px">Logged in as</div>
-          <div id="rail-account-id" style="font-size:13px"></div>
+  <aside class="rail" id="right-rail">
+    <div class="rail-tabs" style="display:flex; border-bottom:1px solid var(--line); margin-bottom:14px; flex-shrink:0;">
+      <button id="rail-tab-results" class="rail-tab" onclick="switchRailTab('results')" style="flex:1; padding:10px; background:transparent; border:none; border-bottom:2px solid var(--accent); color:var(--text); font-weight:600; cursor:pointer;">Results</button>
+      <button id="rail-tab-chat" class="rail-tab" onclick="switchRailTab('chat')" style="flex:1; padding:10px; background:transparent; border:none; border-bottom:2px solid transparent; color:var(--muted); font-weight:600; cursor:pointer;">AI Assistant</button>
+    </div>
+
+    <div id="rail-results-panel" style="display:block;">
+      <div class="rail-section" id="rail-version-panel">
+        <div class="rail-title">System Versions</div>
+        <div class="rail-card" style="display:flex;flex-direction:column;gap:6px">
+          <div style="display:none; margin-bottom:4px; padding:6px 10px; background:rgba(var(--accent-rgb),0.1); border:1px solid var(--accent); border-radius:6px; font-weight:700; color:var(--accent)" id="rail-account-container">
+            <div style="font-size:10px; opacity:0.7; text-transform:uppercase; margin-bottom:2px">Logged in as</div>
+            <div id="rail-account-id" style="font-size:13px"></div>
+          </div>
+          <div class="status-chip" id="top-ui-build" style="border:none;padding:0;background:transparent;border-radius:0;white-space:normal">UI · loading</div>
+          <div class="status-chip" id="top-backend-release" style="border:none;padding:0;background:transparent;border-radius:0;white-space:normal" title="">Release · loading</div>
+          <div class="status-chip live" id="top-api-version" style="border:none;padding:0;background:transparent;border-radius:0;white-space:normal">API · loading</div>
+          <div class="status-chip" id="top-protocol-version" style="border:none;padding:0;background:transparent;border-radius:0;white-space:normal">Protocol · —</div>
+          <div class="status-chip" id="top-analysis-version" style="border:none;padding:0;background:transparent;border-radius:0;white-space:normal">Analysis · —</div>
+          <div class="status-chip" id="top-report-format-version" style="border:none;padding:0;background:transparent;border-radius:0;white-space:normal" title="Suite report shell from GET /health report_format_version">Report format · —</div>
+          <div class="status-chip" id="top-service-report-version" style="border:none;padding:0;background:transparent;border-radius:0;white-space:normal" title="This workflow’s service content report version (GET /health service_report_versions)">Service report · —</div>
         </div>
-        <div class="status-chip" id="top-ui-build" style="border:none;padding:0;background:transparent;border-radius:0;white-space:normal">UI · loading</div>
-        <div class="status-chip" id="top-backend-release" style="border:none;padding:0;background:transparent;border-radius:0;white-space:normal" title="">Release · loading</div>
-        <div class="status-chip live" id="top-api-version" style="border:none;padding:0;background:transparent;border-radius:0;white-space:normal">API · loading</div>
-        <div class="status-chip" id="top-protocol-version" style="border:none;padding:0;background:transparent;border-radius:0;white-space:normal">Protocol · —</div>
-        <div class="status-chip" id="top-analysis-version" style="border:none;padding:0;background:transparent;border-radius:0;white-space:normal">Analysis · —</div>
-        <div class="status-chip" id="top-report-format-version" style="border:none;padding:0;background:transparent;border-radius:0;white-space:normal" title="Suite report shell from GET /health report_format_version">Report format · —</div>
-        <div class="status-chip" id="top-service-report-version" style="border:none;padding:0;background:transparent;border-radius:0;white-space:normal" title="This workflow’s service content report version (GET /health service_report_versions)">Service report · —</div>
+      </div>
+      <div id="result-rail"></div>
+    </div>
+
+    <div id="rail-chat-panel" style="display:none; flex-direction:column; height:calc(100% - 50px);">
+      <style>
+        .insynbio-assistant-body { display:flex; flex-direction:column; gap:14px; padding:4px 2px; }
+        .insynbio-assistant-msg { position:relative; max-width:88%; padding:9px 12px; border-radius:12px; font-size:13px; line-height:1.55; word-wrap:break-word; }
+        .insynbio-assistant-msg.user { align-self:flex-end; background:rgba(var(--accent-rgb),0.18); border:1px solid rgba(var(--accent-rgb),0.45); color:var(--text); border-bottom-right-radius:3px; }
+        .insynbio-assistant-msg.bot  { align-self:flex-start; background:var(--panel); border:1px solid var(--line); color:var(--text); border-bottom-left-radius:3px; }
+        .insynbio-assistant-msg .meta-toggle { position:absolute; bottom:-7px; right:6px; width:16px; height:16px; border-radius:50%; background:var(--bg); border:1px solid var(--line); color:var(--muted); font-size:9px; line-height:14px; text-align:center; cursor:pointer; opacity:0.55; user-select:none; }
+        .insynbio-assistant-msg .meta-toggle:hover { opacity:1; color:var(--accent); }
+        .insynbio-assistant-msg .meta { display:none; margin-top:6px; padding-top:5px; border-top:1px dashed var(--line); font-size:10px; color:var(--muted); }
+        .insynbio-assistant-msg .meta.show { display:block; }
+        .insynbio-assistant-msg .ts { font-size:9.5px; color:var(--muted); opacity:0.7; margin-top:3px; text-align:right; }
+        .insynbio-assistant-msg.user .ts { text-align:right; }
+        .insynbio-assistant-msg.bot .ts { text-align:left; }
+      </style>
+      <!-- Chat toolbar -->
+      <div style="display:flex; align-items:center; justify-content:space-between; padding-bottom:8px; margin-bottom:8px; border-bottom:1px solid var(--line); flex-shrink:0;">
+        <div style="font-size:11px; color:var(--muted);">Latest 100 messages saved locally</div>
+        <div style="display:flex; gap:6px;">
+          <button type="button" class="btn link" onclick="downloadInSynBioChat()" title="Export chat as HTML" style="font-size:11px; padding:3px 8px;">⬇ HTML</button>
+          <button type="button" class="btn link" onclick="clearInSynBioChat()" title="Clear history" style="font-size:11px; padding:3px 8px; color:var(--muted);">Clear</button>
+        </div>
+      </div>
+      <div class="insynbio-assistant-body" id="insynbio-assistant-log" style="flex:1; overflow-y:auto; padding:0; margin-bottom:14px;">
+        <div class="insynbio-assistant-msg bot" data-greeting="1">
+          I am <strong>InSynBio</strong>, your professional antibody engineering assistant. I can interpret results, explain bioinformatics terms, and guide your next steps.
+          <div class="meta show" style="display:block; border-top:none; padding-top:4px; opacity:0.75;">Brief (1 credit) · Detailed (2 credits) · Attach HTML report</div>
+        </div>
+      </div>
+      <div class="insynbio-assistant-foot" style="border-top:1px solid var(--line); padding-top:14px; display:flex; flex-direction:column; gap:10px;">
+        <div class="insynbio-assistant-modes" style="display:flex; gap:12px; font-size:11px; color:var(--muted); align-items:center; flex-wrap:wrap;">
+          <label style="cursor:pointer; display:flex; align-items:center; gap:4px;"><input type="radio" name="insynbio-assistant-mode" value="brief" checked> Brief</label>
+          <label style="cursor:pointer; display:flex; align-items:center; gap:4px;"><input type="radio" name="insynbio-assistant-mode" value="detail"> Detailed</label>
+          <label class="btn link" style="font-size:11px; padding:2px 8px; cursor:pointer; border:1px solid var(--line); border-radius:4px;">
+            📎 Attach Report
+            <input type="file" id="insynbio-assistant-file" accept=".html,.htm" style="display:none" onchange="attachInSynBioReport(event)">
+          </label>
+          <span id="insynbio-assistant-attachment" style="font-size:10px; color:var(--accent);"></span>
+          <button type="button" id="insynbio-assistant-clear-attach" onclick="clearInSynBioAttachment()" style="display:none; background:transparent; border:none; color:var(--muted); cursor:pointer; font-size:11px;">Clear</button>
+        </div>
+        <textarea id="insynbio-assistant-input" placeholder="Ask a question, e.g., what does this WARN mean?" maxlength="500" style="width:100%; min-height:80px; background:var(--bg); color:var(--text); border:1px solid var(--line); border-radius:6px; padding:8px 10px; font-size:12px; resize:none;"></textarea>
+        <div style="display:flex; align-items:center; justify-content:space-between;">
+          <button type="button" class="btn primary" id="insynbio-assistant-send" onclick="sendInSynBioAssistant()" style="padding:6px 16px;">Send</button>
+          <span id="insynbio-assistant-status" style="font-size:10px; color:var(--muted);"></span>
+        </div>
+        <div style="font-size:10px; color:var(--muted); line-height:1.4;">AI interpretations are for reference only; official conclusions are based on reports. Attached reports are redacted before upload.</div>
       </div>
     </div>
-    <div id="result-rail"></div>
   </aside>
 </div>
 
 <script>
+function switchRailTab(tab) {
+  const btnRes = document.getElementById('rail-tab-results');
+  const btnChat = document.getElementById('rail-tab-chat');
+  const pnlRes = document.getElementById('rail-results-panel');
+  const pnlChat = document.getElementById('rail-chat-panel');
+  
+  if (!btnRes || !btnChat || !pnlRes || !pnlChat) return;
+
+  if (tab === 'results') {
+    btnRes.style.color = 'var(--text)';
+    btnRes.style.borderBottom = '2px solid var(--accent)';
+    btnChat.style.color = 'var(--muted)';
+    btnChat.style.borderBottom = '2px solid transparent';
+    pnlRes.style.display = 'block';
+    pnlChat.style.display = 'none';
+  } else {
+    btnChat.style.color = 'var(--text)';
+    btnChat.style.borderBottom = '2px solid var(--accent)';
+    btnRes.style.color = 'var(--muted)';
+    btnRes.style.borderBottom = '2px solid transparent';
+    pnlRes.style.display = 'none';
+    pnlChat.style.display = 'flex';
+  }
+}
+
 function cycleTheme() {
   const themes = ['dark', 'beige', 'gruvbox'];
   const current = localStorage.getItem('insynbio-console-theme') || 'dark';
@@ -14447,6 +14527,303 @@ function renderPetizationResult(r, name, service) {
     if (origLoad) origLoad.apply(this, arguments);
   };
 })();
+
+// --- InSynBio AI Assistant logic ---
+const INSYNBIO_HISTORY_KEY = "insynbio_assistant_history_v1";
+
+function _insynbioAssistantMode() {
+  const radios = document.getElementsByName("insynbio-assistant-mode");
+  for (const r of radios) { if (r.checked) return r.value; }
+  return "brief";
+}
+
+function saveInSynBioHistory(role, html, meta, ts) {
+  try {
+    let history = JSON.parse(localStorage.getItem(INSYNBIO_HISTORY_KEY) || "[]");
+    history.push({ role, html, meta, ts });
+    if (history.length > 100) history.shift();
+    localStorage.setItem(INSYNBIO_HISTORY_KEY, JSON.stringify(history));
+  } catch (e) {}
+}
+
+function restoreInSynBioHistory() {
+  try {
+    const history = JSON.parse(localStorage.getItem(INSYNBIO_HISTORY_KEY) || "[]");
+    const log = document.getElementById("insynbio-assistant-log");
+    if (!log) return;
+    if (history.length > 0) log.innerHTML = "";
+    for (const m of history) {
+      _appendInSynBioAssistantMsg(m.role, m.html, m.meta, m.ts, true);
+    }
+  } catch (e) {}
+}
+
+function _appendInSynBioAssistantMsg(role, html, meta, ts, skipSave) {
+  const log = document.getElementById("insynbio-assistant-log");
+  if (!log) return;
+  const stamp = ts || Date.now();
+  const pad = n => String(n).padStart(2, "0");
+  const d = new Date(stamp);
+  const timeStr = pad(d.getHours()) + ":" + pad(d.getMinutes());
+  
+  const div = document.createElement("div");
+  div.className = "insynbio-assistant-msg " + (role === "user" ? "user" : "bot");
+  let body = html;
+  if (meta) {
+    body += '<div class="meta-toggle" onclick="this.nextElementSibling.classList.toggle(\'show\')">?</div>';
+    body += '<div class="meta">' + meta + '</div>';
+  }
+  body += '<div class="ts">' + timeStr + '</div>';
+  div.innerHTML = body;
+  div.dataset.ts = String(stamp);
+  log.appendChild(div);
+  log.scrollTop = log.scrollHeight;
+  if (!skipSave) {
+    saveInSynBioHistory(role, html, meta, stamp);
+  }
+}
+
+function clearInSynBioChat() {
+  if (!confirm("Clear local chat history? This cannot be undone.")) return;
+  try { localStorage.removeItem(INSYNBIO_HISTORY_KEY); } catch (e) {}
+  const log = document.getElementById("insynbio-assistant-log");
+  if (log) {
+    log.innerHTML = '<div class="insynbio-assistant-msg bot" data-greeting="1">' +
+      'I am <strong>InSynBio</strong>, your professional antibody engineering assistant. I can interpret results, explain bioinformatics terms, and guide your next steps.' +
+      '<div class="meta show" style="display:block; border-top:none; padding-top:4px; opacity:0.75;">Brief (1 credit) · Detailed (2 credits) · Attach HTML report</div>' +
+      '</div>';
+  }
+}
+
+function downloadInSynBioChat() {
+  let history = [];
+  try { history = JSON.parse(localStorage.getItem(INSYNBIO_HISTORY_KEY) || "[]"); } catch (e) {}
+  if (!history.length) {
+    alert("No chat history to export.");
+    return;
+  }
+  const now = new Date();
+  const pad = n => String(n).padStart(2, "0");
+  const fileTs = now.getFullYear() + pad(now.getMonth() + 1) + pad(now.getDate()) + "-" + pad(now.getHours()) + pad(now.getMinutes());
+  const fmtDate = function(ts) {
+    try {
+      const d = new Date(ts);
+      return d.getFullYear() + "-" + pad(d.getMonth() + 1) + "-" + pad(d.getDate()) + " " +
+             pad(d.getHours()) + ":" + pad(d.getMinutes()) + ":" + pad(d.getSeconds());
+    } catch (e) { return ""; }
+  };
+  let body = "";
+  for (const m of history) {
+    const cls = m.role === "user" ? "user" : "bot";
+    const who = m.role === "user" ? "User" : "InSynBio";
+    body += '<div class="msg ' + cls + '">';
+    body += '<div class="hdr"><span class="who">' + who + '</span><span class="ts">' + escapeHtml(fmtDate(m.ts)) + '</span></div>';
+    body += '<div class="body">' + (m.html || "") + '</div>';
+    if (m.meta) body += '<div class="meta">' + escapeHtml(m.meta) + '</div>';
+    body += '</div>';
+  }
+  const html =
+    '<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8">' +
+    '<title>InSynBio Chat Export — ' + escapeHtml(fmtDate(now.getTime())) + '</title>' +
+    '<style>' +
+    'body{margin:0;background:#f8fafc;color:#0c1222;font:14px/1.6 "Inter",system-ui,sans-serif;-webkit-font-smoothing:antialiased}' +
+    'main{max-width:780px;margin:32px auto;padding:24px;background:#fff;border:1px solid #e2e8f0;border-radius:12px;box-shadow:0 1px 4px rgba(15,23,42,.05)}' +
+    'h1{margin:0 0 4px;color:#0ea5b7;font-size:20px}' +
+    '.subtitle{color:#64748b;font-size:12px;margin-bottom:24px;padding-bottom:14px;border-bottom:1px solid #e2e8f0}' +
+    '.msg{margin:0 0 16px;padding:10px 14px;border-radius:10px;border:1px solid #e2e8f0}' +
+    '.msg.user{background:#ecfeff;border-color:#a5f3fc;margin-left:48px}' +
+    '.msg.bot{background:#f8fafc;margin-right:48px}' +
+    '.hdr{display:flex;justify-content:space-between;font-size:11px;color:#64748b;margin-bottom:6px;font-weight:600}' +
+    '.who{color:#0ea5b7}' +
+    '.body{font-size:13.5px;line-height:1.65;color:#0c1222;white-space:pre-wrap}' +
+    '.meta{margin-top:6px;padding-top:5px;border-top:1px dashed #cbd5e1;font-size:10.5px;color:#94a3b8}' +
+    'footer{margin-top:24px;padding-top:12px;border-top:1px solid #e2e8f0;font-size:11px;color:#94a3b8;text-align:center}' +
+    '</style></head><body><main>' +
+    '<h1>InSynBio Chat Export</h1>' +
+    '<div class="subtitle">Exported at ' + escapeHtml(fmtDate(now.getTime())) + ' · ' + history.length + ' messages</div>' +
+    body +
+    '<footer>InSynBio Console · AI interpretations are for reference only.</footer>' +
+    '</main></body></html>';
+  const blob = new Blob([html], { type: "text/html;charset=utf-8" });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = "insynbio-chat-" + fileTs + ".html";
+  document.body.appendChild(a);
+  a.click();
+  setTimeout(() => { document.body.removeChild(a); URL.revokeObjectURL(url); }, 100);
+}
+
+const _INSYNBIO_FORBIDDEN = [
+  "ProteinMPNN","IgFold","ANARCII","ANARCI","EvoEF2","AntiFold","ESM-IF1","ESMFold","ESM2",
+  "ThermoMPNN","OpenMM","PDBFixer","HADDOCK3","HADDOCK","AbLang","ImmuneBuilder",
+  "ABodyBuilder2","ABodyBuilder","NanoBodyBuilder2","NanoBodyBuilder","PRODIGY",
+  "LinearDesign","LinearFold","EpiScan","NetMHCpan","AutoDock","AlphaFold","RoseTTAFold",
+  "AbNatiV","abenginecore","abenginecore_registry","tools_registry",
+  "vh_vl_humanization_v","vhh_humanization","config/abenginecore"
+];
+function _insynbioRedact(text) {
+  if (!text) return "";
+  let out = String(text);
+  for (const t of _INSYNBIO_FORBIDDEN) {
+    try {
+      const re = new RegExp(t.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"), "gi");
+      out = out.replace(re, "[internal-module]");
+    } catch (e) {}
+  }
+  out = out.replace(/[ \t]+/g, " ").replace(/\n{3,}/g, "\n\n");
+  return out;
+}
+function _insynbioExtractFromHtml(htmlStr) {
+  try {
+    const doc = new DOMParser().parseFromString(htmlStr, "text/html");
+    doc.querySelectorAll("script,style,noscript,svg,canvas,iframe").forEach(n => n.remove());
+    let body = doc.body ? doc.body.innerText : doc.documentElement.innerText || "";
+    return _insynbioRedact(body).trim();
+  } catch (e) {
+    return _insynbioRedact(htmlStr).trim();
+  }
+}
+async function attachInSynBioReport(ev) {
+  const f = ev.target.files && ev.target.files[0];
+  const label = document.getElementById("insynbio-assistant-attachment");
+  const clearBtn = document.getElementById("insynbio-assistant-clear-attach");
+  if (!f) { return; }
+  if (f.size > 2 * 1024 * 1024) {
+    if (label) label.textContent = "File too large (>2MB)";
+    ev.target.value = "";
+    return;
+  }
+  try {
+    const raw = await f.text();
+    const cleaned = _insynbioExtractFromHtml(raw);
+    const excerpt = cleaned.slice(0, 6000);
+    state.assistantReportContext = state.assistantReportContext || {};
+    state.assistantReportContext.report_text = excerpt;
+    state.assistantReportContext.summary = state.assistantReportContext.summary
+      || ("Attached report: " + f.name);
+    if (label) label.textContent = "Attached " + f.name + " · " + excerpt.length + " chars (redacted)";
+    if (clearBtn) clearBtn.style.display = "inline";
+  } catch (e) {
+    if (label) label.textContent = "Parse failed: " + String(e);
+  } finally {
+    ev.target.value = "";
+  }
+}
+function clearInSynBioAttachment() {
+  if (state.assistantReportContext) {
+    delete state.assistantReportContext.report_text;
+  }
+  const label = document.getElementById("insynbio-assistant-attachment");
+  const clearBtn = document.getElementById("insynbio-assistant-clear-attach");
+  if (label) label.textContent = "";
+  if (clearBtn) clearBtn.style.display = "none";
+}
+
+async function sendInSynBioAssistant() {
+  const input = document.getElementById("insynbio-assistant-input");
+  const statusEl = document.getElementById("insynbio-assistant-status");
+  const btn = document.getElementById("insynbio-assistant-send");
+  const msg = (input && input.value || "").trim();
+  if (!msg) return;
+  const token = sessionStorage.getItem("insynbio_access_token") || localStorage.getItem("insynbio_access_token");
+  if (!token) {
+    openAuthModal();
+    if (statusEl) statusEl.textContent = "Please login first";
+    return;
+  }
+  const mode = _insynbioAssistantMode();
+  _appendInSynBioAssistantMsg("user", escapeHtml(msg), "");
+  if (input) input.value = "";
+  if (btn) btn.disabled = true;
+  if (statusEl) statusEl.textContent = "Requesting…";
+  try {
+    const r = await apiFetch(apiJoin("assistant/chat?site=insynbio"), {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer " + token,
+      },
+      body: JSON.stringify({
+        message: msg,
+        mode: mode,
+        report_context: state.assistantReportContext || null,
+      }),
+    });
+    const d = await r.json().catch(() => ({}));
+    if (!r.ok) {
+      const err = d.detail || d.message || ("HTTP " + r.status);
+      _appendInSynBioAssistantMsg("bot", escapeHtml(String(err)), "No credits charged or refunded");
+      if (statusEl) statusEl.textContent = "";
+      if (btn) btn.disabled = false;
+      return;
+    }
+    _appendInSynBioAssistantMsg(
+      "bot",
+      escapeHtml(d.answer || ""),
+      (d.char_count || 0) + " chars · charged " + (d.credits_charged || 0) + " credit · balance " + (d.balance ?? "—")
+    );
+    if (typeof d.balance === "number") {
+      state.credits = d.balance;
+      const credEl = document.getElementById("top-credits");
+      if (credEl) credEl.textContent = "Credits · " + d.balance;
+      const rcEl = document.getElementById("rail-account-credits");
+      if (rcEl) rcEl.textContent = d.balance.toLocaleString();
+    }
+    if (statusEl) statusEl.textContent = "";
+  } catch (e) {
+    _appendInSynBioAssistantMsg("bot", escapeHtml(String(e)), "");
+    if (statusEl) statusEl.textContent = "";
+  }
+  if (btn) btn.disabled = false;
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  restoreInSynBioHistory();
+  
+  // Create tooltip button
+  const tooltip = document.createElement("button");
+  tooltip.id = "insynbio-ask-tooltip";
+  tooltip.className = "btn primary";
+  tooltip.style.cssText = "position:absolute; display:none; z-index:9999; font-size:11px; padding:4px 8px; box-shadow:0 4px 6px rgba(0,0,0,0.1); border-radius:4px; pointer-events:auto; cursor:pointer; font-weight:600; white-space:nowrap;";
+  tooltip.innerHTML = "💬 Ask InSynBio";
+  document.body.appendChild(tooltip);
+
+  let selectedText = "";
+
+  document.addEventListener("mouseup", (e) => {
+    if (e.target.closest('#insynbio-ask-tooltip') || e.target.closest('#rail-chat-panel')) return;
+    const selection = window.getSelection();
+    selectedText = selection.toString().trim();
+    if (selectedText && selectedText.length > 1 && selectedText.length < 1500) {
+      tooltip.style.left = (e.pageX + 8) + "px";
+      tooltip.style.top = (e.pageY - 24) + "px";
+      tooltip.style.display = "block";
+    } else {
+      tooltip.style.display = "none";
+    }
+  });
+
+  document.addEventListener("mousedown", (e) => {
+    if (e.target.closest('#insynbio-ask-tooltip')) return;
+    tooltip.style.display = "none";
+  });
+
+  tooltip.addEventListener("click", (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    tooltip.style.display = "none";
+    if (selectedText) {
+      if (typeof switchRailTab === 'function') switchRailTab('chat');
+      const input = document.getElementById("insynbio-assistant-input");
+      if (input) {
+        input.value = `> ${selectedText}\n\n`;
+        input.focus();
+        input.setSelectionRange(input.value.length, input.value.length);
+      }
+    }
+  });
+});
 </script>
 </body>
 </html>
