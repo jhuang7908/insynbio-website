@@ -67,6 +67,36 @@ TYPE 可选值:
 
 ---
 
+### [EXECUTED] 2026-05-20 — Therasik 控制台：CSS 外置 + Build 注释规范化（最小可上线 PR）
+
+**Source:** Owner instruction ("先按 §6 + §3 出一个最小可上线 PR")，落实 2026-05-20 OBSERVATION 中提出的 §3 / §6 优化建议。
+**Status:** EXECUTED 2026-05-20 by Agent.
+
+**Change:**
+- `api/static/therasik_console.html`：
+  - 顶部 build 注释规范化：删除冗余 `<!-- therasik-console-v798-... -->` 与 `<!-- [FORCED RELOAD 2026-05-20 23:10] -->`，统一为契约 §1 要求的 `<!-- console build v800 2026-05-20 (...) -->`。
+  - 主 `<style>` 块（原 lines 15–956，940 行 CSS）抽出至外部样式表，HTML 内仅保留 `<link rel="stylesheet" href="/assets/therasik/console.v800.css">`。HTML 体积由 20302 → 19360 行（≈ 1.1 MB → 0.9 MB）。
+  - 两处小 `<style>` 块（原行号 16530–16545 / 20005–20041）按最小变更原则保留内联，下一轮 PR 处理。
+  - 内联 `<script>` 块整体未触动，属下一轮 §3 范围。
+- `api/static/assets/therasik/console.v800.css`：新增，940 行；内容与原内联 CSS 字节对应。
+- `api/main.py`：紧随 `app.mount("/api", api_app)` 之后新增 `/assets` 静态挂载：`app.mount("/assets", StaticFiles(directory=ROOT/"api"/"static"/"assets"))`；仅当目录存在时挂载，避免历史镜像启动失败。
+- `docs/operations/VHVL_WEB_CONSOLE_CONTRACT.md`：§10 追加本次变更条目。
+- 未触碰 `api/static/console.html`（InSynBio 一侧本轮不动）。
+- 未改动租户邮件、`_localize_therasik_html`、`/api/tfiles` 等链路。
+
+**Verification:**
+- 本地 `python -m py_compile api/main.py` 通过。
+- HTML 行数差 −942 与「940 行 CSS + 开闭 `<style>` 2 行 − 1 行新 `<link>` + 顶部 3 行新注释/`<html>` 取代原 4 行（净 −1）」一致。
+- 保留 `<meta name="insynbio-public-locale" content="__INSYNBIO_PUBLIC_LOCALE__">` 等占位符，`api/main.py` GET / 路由依旧做服务端 `replace`，未受影响。
+- 缓存策略：HTML 仍 `Cache-Control: no-store`；CSS 走默认 StaticFiles 行为（Last-Modified + ETag），文件名带 `v800` 版本位实现版本切换。
+
+**Backward compatibility:**
+- 若部署后 `assets/` 目录尚未存在（极少数极旧镜像），代码不会注册 `/assets` 挂载，HTML 仍会请求该 URL → 浏览器拿到 404 → 页面无样式。
+  - 规避：部署前确保 `git pull` 已拉到 `api/static/assets/therasik/console.v800.css`。
+  - 回退：恢复 `api/static/therasik_console.html` 与 `api/main.py` 即可，新增 CSS 文件不影响其它逻辑。
+
+---
+
 ### [EXECUTED] 2026-05-20 — 发布 `docs/operations/VHVL_WEB_CONSOLE_CONTRACT.md`（多租户契约 §7）
 
 **Source:** Owner approval ("批准") following the 2026-05-20 OBSERVATION entry above.

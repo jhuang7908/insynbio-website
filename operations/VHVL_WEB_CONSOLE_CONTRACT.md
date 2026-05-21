@@ -193,3 +193,4 @@ Same recommendation applies to `insynbio.com`. These are infrastructure changes 
 | Date | Change | Reference |
 |------|--------|-----------|
 | 2026-05-20 | Initial publication. Codifies multi-tenant (InSynBio + Therasik) separation, Therasik Private Email SMTP, sync-handler `_bind_tenant` rule. | EVOLUTION_LOG entry 2026-05-20; commit `4d494f8` |
+| 2026-05-20 | Therasik console: build comment normalized to canonical form; main CSS extracted to `/assets/therasik/console.v800.css` and served via `app.mount("/assets", ...)`. HTML response still `no-store`; CSS gets browser cache. No behavior change. | EVOLUTION_LOG entry 2026-05-20 (CSS externalization) |
