@@ -1414,7 +1414,7 @@ const REGISTRY = {
       label: "VH/VL Humanization",
       subtitle: "mouse · rat",
       computeMode: "Lite",
-      credits: 15000,
+      credits: 20000,
       description: "Humanize donor VH/VL pairs (mouse or rat) via the AbEngineCore VH/VL workflow.",
       analysisVersion: "v5.5.1",
       underlyingStandard: "VH/VL Humanization Standard V5.5.1",
@@ -1430,7 +1430,7 @@ const REGISTRY = {
       label: "VH/VL Recheck",
       subtitle: "customer sequence virtual QA",
       computeMode: "Lite",
-      credits: 1500,
+      credits: 5000,
       description: "Virtual recheck for customer-submitted humanized VH/VL against donor VH/VL. Includes input QC and cleaning audit, optional structure conservation, mini-CMC, HPR, and paired Fv naturalness.",
       analysisVersion: "recheck_v1",
       underlyingStandard: "VH/VL Humanization Standard V5.5.1",
@@ -1445,7 +1445,7 @@ const REGISTRY = {
       label: "Segmentation & Germline",
       subtitle: "CDR / FR · IMGT · Kabat · Chothia",
       computeMode: "Lite",
-      credits: 200,
+      credits: 500,
       description: "VH/VL FR–CDR split via server numbering (IMGT/Kabat/Chothia); optional germline species library. IMGT-only heuristic when server is off.",
       analysisVersion: "AbEngineCore Numbering v1.5",
       underlyingStandard: "VH/VL Humanization Standard V5.5.1",
@@ -1459,7 +1459,7 @@ const REGISTRY = {
       label: "Structure (Fv)",
       subtitle: "ImmuneBuilder ABodyBuilder2 · demo / paste / FASTA",
       computeMode: "Lite",
-      credits: 800,
+      credits: 1000,
       description: "Predict Fv coordinates from VH+VL sequences using ImmuneBuilder ABodyBuilder2. Load a demo, paste sequences, or upload / paste multi-pair FASTA; results return as downloadable PDBs (async job).",
       analysisVersion: "ImmuneBuilder ABodyBuilder2",
       underlyingStandard: "VH/VL Humanization Standard (structure QC phase)",
@@ -1473,7 +1473,7 @@ const REGISTRY = {
       label: "cDNA Optimization",
       subtitle: "SP · Fc · CL · then codons",
       computeMode: "Lite",
-      credits: 300,
+      credits: 500,
       description: "Assemble full human IgG heavy/light chains (optional signal peptide + VH/CH1 + hinge/Fc + VL/CL), then codon-optimize expression cDNA for HEK293 / CHO / E. coli.",
       analysisVersion: "AbEngineCore cDNA v1.0",
       underlyingStandard: "Expression Codon Optimization Standard v1.0",
@@ -1489,7 +1489,7 @@ const REGISTRY = {
       label: "Structure (VHH)",
       subtitle: "NanoBodyBuilder2 · pLDDT · PDB download",
       computeMode: "Lite",
-      credits: 600,
+      credits: 1000,
       description: "Predict 3D structure of a VHH nanobody using NanoBodyBuilder2. Returns pLDDT confidence, downloadable PDB, and CDR loop quality. Use after humanization or conversion to verify CDR fold.",
       analysisVersion: "NanoBodyBuilder2 (ImmuneBuilder)",
       underlyingStandard: "VHH Humanization Design Standard V3.2 (Structure QC phase)",
@@ -1502,7 +1502,7 @@ const REGISTRY = {
       label: "VHH Segmentation & Germline",
       subtitle: "CDR / FR / hallmark check",
       computeMode: "Lite",
-      credits: 200,
+      credits: 500,
       description: "Segment a VHH/nanobody with the same ANARCI-class stack as VH/VL: IMGT / Kabat / Chothia, per-residue numbering table, optional closest IGHV vs species library, IMGT hallmark sites.",
       analysisVersion: "AbEngineCore Numbering v1.5",
       underlyingStandard: "VHH Humanization Design Standard v2.0",
@@ -1515,7 +1515,7 @@ const REGISTRY = {
       label: "VHH Humanization",
       subtitle: "camelid · V5.0 structure-guided",
       computeMode: "Lite",
-      credits: 30000,
+      credits: 40000,
       description: "Humanize camelid VHH nanobody sequence using V5.0 clinical framework library. Outputs a single humanized lead with FR/CDR comparison, mini-CMC, naturalness scoring, and structure QC.",
       analysisVersion: "v5.0",
       underlyingStandard: "VHH Humanization Design Standard V5.0",
@@ -1529,7 +1529,7 @@ const REGISTRY = {
       label: "VHH Recheck",
       subtitle: "customer sequence virtual QA",
       computeMode: "Lite",
-      credits: 1500,
+      credits: 5000,
       description: "Virtual recheck for customer-submitted humanized VHH against donor VHH. Includes input QC and cleaning audit, optional structure conservation, mini-CMC, HPR, and single-domain naturalness.",
       analysisVersion: "recheck_v1",
       underlyingStandard: "VHH Humanization Design Standard V4.0",
@@ -1557,7 +1557,7 @@ const REGISTRY = {
       label: "cDNA Optimization",
       subtitle: "HEK293 / yeast / bacterial",
       computeMode: "Lite",
-      credits: 300,
+      credits: 500,
       description: "Generate a host-optimized cDNA for VHH/nanobody with codon usage adapted for HEK293, yeast, or bacterial expression.",
       analysisVersion: "AbEngineCore cDNA v1.0",
       underlyingStandard: "Expression Codon Optimization Standard v1.0",
@@ -1572,7 +1572,7 @@ const REGISTRY = {
       label: "IgG CMC Snapshot",
       subtitle: "Clinical reference benchmarked",
       computeMode: "Lite (Sync)",
-      credits: 3500,
+      credits: 5000,
       description: "Rapid CMC developability screen for conventional IgG/VH+VL. Clinical score, percentile rank, and summary status benchmarked against curated clinical reference cohorts.",
       analysisVersion: "CMC Developability Standard v1.4.0",
       underlyingStandard: "CMC Developability Standard v1.4.0",
@@ -1588,7 +1588,7 @@ const REGISTRY = {
       label: "VHH CMC Snapshot",
       subtitle: "VHH clinical panel benchmarked",
       computeMode: "Lite (Sync)",
-      credits: 3500,
+      credits: 5000,
       description: "Rapid CMC developability screen for VHH / single-domain antibody (sdAb / HCAb-style) sequences. Demo coverage includes a 7D12 humanized VHH example (anti-EGFR, PDB 4KRL family) and Porustobart (HBM4003) — a Harbour HCAb-platform anti-CTLA-4 single-domain antibody. Gate Score, percentile rank, and liability summary are benchmarked against source-matched VHH/HCAb clinical reference panels.",
       analysisVersion: "CMC Developability Standard v1.4.0",
       underlyingStandard: "CMC Developability Standard v1.4.0",
@@ -1603,7 +1603,7 @@ const REGISTRY = {
       label: "Bispecific VHH CMC",
       subtitle: "tandem VHH + linker",
       computeMode: "Lite (Sync)",
-      credits: 3500,
+      credits: 5000,
       description: "Per-arm VHH developability (vs VHH clinical panel) plus fusion pI, arm pI delta, ER expression score, and SmartLink-style linker recommendation for VHH-linker-VHH constructs.",
       analysisVersion: "Bispecific VHH CMC v1.0",
       underlyingStandard: "Bispecific VHH CMC Standard v1.0",
@@ -3238,7 +3238,7 @@ function renderVhvlForm(service) {
           <div class="field full">
             <label style="display: flex; align-items: flex-start; gap: 8px; cursor: pointer; color: var(--text);">
               <input type="radio" name="vhvl-run-mode" id="vhvl-run-mode-quick" value="quick_preview" style="width: 16px; height: 16px; margin-top: 2px;" onchange="updateDynamicCost()">
-              <span><strong>Quick Preview</strong> <span style="font-size:10px;color:#059669;background:#dcfce7;padding:1px 6px;border-radius:4px;margin-left:6px;border:1px solid #bbf7d0;font-weight:600">6,000 Credits</span></span>
+              <span><strong>Quick Preview</strong> <span style="font-size:10px;color:#059669;background:#dcfce7;padding:1px 6px;border-radius:4px;margin-left:6px;border:1px solid #bbf7d0;font-weight:600">8,000 Credits</span></span>
             </label>
             <p class="helper" style="margin-top: 4px; font-size: 11px; color: var(--muted);">
               Fast draft run for input checks and workflow preview. Structure QC is skipped; no RMSD/pLDDT/angle evidence. Not for final delivery.
@@ -3247,7 +3247,7 @@ function renderVhvlForm(service) {
           <div class="field full">
             <label style="display: flex; align-items: flex-start; gap: 8px; cursor: pointer; color: var(--text);">
               <input type="radio" name="vhvl-run-mode" id="vhvl-run-mode-standard" value="standard_delivery" checked style="width: 16px; height: 16px; margin-top: 2px;" onchange="updateDynamicCost()">
-              <span><strong>Standard Delivery</strong> <span style="font-size:10px;color:#d97706;background:#fef3c7;padding:1px 6px;border-radius:4px;margin-left:6px;border:1px solid #fde68a;font-weight:600">15,000 Credits</span></span>
+              <span><strong>Standard Delivery</strong> <span style="font-size:10px;color:#d97706;background:#fef3c7;padding:1px 6px;border-radius:4px;margin-left:6px;border:1px solid #fde68a;font-weight:600">20,000 Credits</span></span>
             </label>
             <p class="helper" style="margin-top: 4px; font-size: 11px; color: var(--muted);">
               Recommended customer setting. Runs structure QC and allows the CDR-preserving FR surface route when compatibility is low or QC is advisory.
@@ -3256,7 +3256,7 @@ function renderVhvlForm(service) {
           <div class="field full">
             <label style="display: flex; align-items: flex-start; gap: 8px; cursor: pointer; color: var(--text);">
               <input type="radio" name="vhvl-run-mode" id="vhvl-run-mode-enhanced" value="enhanced_rescue" style="width: 16px; height: 16px; margin-top: 2px;" onchange="updateDynamicCost()">
-              <span><strong>Enhanced Rescue Evaluation</strong> <span style="font-size:10px;color:#c026d3;background:#fce7f3;padding:1px 6px;border-radius:4px;margin-left:6px;border:1px solid #fbcfe8;font-weight:600">30,000 Credits</span></span>
+              <span><strong>Enhanced Rescue Evaluation</strong> <span style="font-size:10px;color:#c026d3;background:#fce7f3;padding:1px 6px;border-radius:4px;margin-left:6px;border:1px solid #fbcfe8;font-weight:600">40,000 Credits</span></span>
             </label>
             <p class="helper" style="margin-top: 4px; font-size: 11px; color: var(--muted);">
               Use when the standard route is WARN/FAIL or framework compatibility is low. Evaluates additional rescue routes; not guaranteed to outperform Standard Delivery.
@@ -3504,7 +3504,7 @@ function renderVhhHumanizationForm(service) {
           <div class="field full">
             <label style="display:flex;align-items:flex-start;gap:8px;cursor:pointer;color:var(--text);">
               <input type="radio" name="vhh-run-mode" id="vhh-run-mode-standard" value="standard_delivery" checked style="width:16px;height:16px;margin-top:2px;" onchange="updateDynamicCost()">
-              <span><strong>Standard Delivery</strong> <span style="font-size:10px;color:#d97706;background:#fef3c7;padding:1px 6px;border-radius:4px;margin-left:6px;border:1px solid #fde68a;font-weight:600">30,000 Credits</span></span>
+              <span><strong>Standard Delivery</strong> <span style="font-size:10px;color:#d97706;background:#fef3c7;padding:1px 6px;border-radius:4px;margin-left:6px;border:1px solid #fde68a;font-weight:600">40,000 Credits</span></span>
             </label>
             <p class="helper" style="margin-top:4px;font-size:11px;color:var(--muted);">
               Recommended setting. Runs V5.0 dynamic Hallmark selection, NanoBodyBuilder2 structure QC, mini-CMC, HPR Index, and AbNatiV VH/VHH naturalness scoring.
@@ -3513,7 +3513,7 @@ function renderVhhHumanizationForm(service) {
           <div class="field full">
             <label style="display:flex;align-items:flex-start;gap:8px;cursor:pointer;color:var(--text);">
               <input type="radio" name="vhh-run-mode" id="vhh-run-mode-enhanced" value="enhanced_rescue" style="width:16px;height:16px;margin-top:2px;" onchange="updateDynamicCost()">
-              <span><strong>Enhanced Rescue Evaluation</strong> <span style="font-size:10px;color:#c026d3;background:#fce7f3;padding:1px 6px;border-radius:4px;margin-left:6px;border:1px solid #fbcfe8;font-weight:600">60,000 Credits</span></span>
+              <span><strong>Enhanced Rescue Evaluation</strong> <span style="font-size:10px;color:#c026d3;background:#fce7f3;padding:1px 6px;border-radius:4px;margin-left:6px;border:1px solid #fbcfe8;font-weight:600">80,000 Credits</span></span>
             </label>
             <p class="helper" style="margin-top:4px;font-size:11px;color:var(--muted);">
               Use when the standard route is WARN/FAIL or framework compatibility is low. Applies full Hallmark preservation and activates advanced surface humanization routing. Not guaranteed to outperform Standard Delivery.
