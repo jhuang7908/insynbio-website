@@ -452,5 +452,26 @@ The original PROPOSAL entry (with full rationale, risk/adversarial check, and ow
 
 ---
 
+### [EXECUTED] 2026-05-20 — Therasik 控制台主题对比度补丁 (console v810)
+- **来源案例:** Therasik 控制台 UI 自查（Gruvbox/Beige 主题文本对比度不足）
+- **观察:**
+  - Gruvbox 主题 `--muted: #a89984` 在 `--panel: #3c3836` 上对比度仅 ~3.7:1，低于 WCAG AA 4.5:1。
+  - Gruvbox `conversion-advisory.severity-medium` 标题使用 `#fe8019`，在 panel 上对比度 ~3.7:1。
+  - Beige (Solarized) `--accent: #b58900` 用作 brand / chip / 序列文本时，在 `#fdf6e3` 上对比度 ~3.4:1，AA 小字不通过。
+  - 原生 `<select>` 的 `<option>` 浏览器层默认配色与暗色主题相冲，部分 OS 显示为浅灰底深色字。
+  - 占位符（`::placeholder`）在 Firefox 下默认 `opacity:.7`，进一步压低对比度。
+  - 缺少 `prefers-contrast: more` 与 `@media print` 回退。
+- **修复:**
+  - 新增 `api/static/assets/therasik/console.v810.css`，在 `v800.css` 基础上追加"Contrast Pass v810"层（仅追加，不修改既有规则），文件约 41.7 KB / 1085 行。
+  - 提升默认主题 `--muted` 至 `#a0b1c8`（panel-2 上 6.3:1）；Gruvbox `--muted` 至 `#bdae93`（panel 上 4.8:1，bg 上 6.5:1）。
+  - Beige 主题对所有"以 accent 作前景文本"的元素（brand, chip.accent, db-badge-title, status-chip.user-id, seq-box pre, seg-region.cdr .rname 等）显式覆写为 `#7c5e00`（5.8:1）。
+  - 为 `<select> option / optgroup / option:disabled` 按主题显式声明 color/background。
+  - 为 `::placeholder` 设置主题感知颜色并 `opacity:1`。
+  - 新增 `:focus-visible` 2px 外轮廓（WCAG 2.4.11）。
+  - 新增 `@media (prefers-contrast: more)` 与 `@media print` 兜底。
+  - `api/static/therasik_console.html` 顶部构建注释升至 `v810`，`<link rel="stylesheet">` 指向 `console.v810.css`。
+- **影响范围:** Therasik 公开控制台（`console.therasik.com`）UI 显示层；不影响 InSynBio `console.html`、API、JSON 报告契约或任何 LOCKED 标准文件。`v800.css` 暂保留以兼容已加载的浏览器标签页。
+- **状态:** EXECUTED
+
 <!-- APPEND NEW ENTRIES ABOVE THIS LINE -->
 <!-- Agent: 在此行上方追加新条目。不得修改或删除上方任何已有条目。 -->
