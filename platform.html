@@ -25,15 +25,7 @@
     .wrap { max-width: 1000px; margin: 0 auto; }
     h1 { font-size: 26px; font-weight: 900; color: var(--primary-dark); margin-bottom: 8px; }
     .sub { font-size: 14px; color: var(--muted); line-height: 1.55; max-width: 720px; }
-    .hub-note {
-      margin-top: 14px; padding: 12px 14px; background: var(--bg);
-      border: 1px solid #99f6e4; border-radius: 10px; font-size: 12px; color: var(--muted); line-height: 1.55;
-    }
-    .status-table { width: 100%; margin-top: 10px; border-collapse: collapse; font-size: 11px; }
-    .status-table th, .status-table td { text-align: left; padding: 4px 6px; border-bottom: 1px solid var(--border); }
-    .status-table th { color: var(--primary-dark); font-weight: 700; }
-    .server-map { margin-top: 10px; font-size: 11px; color: #6b7280; font-family: ui-monospace, monospace; line-height: 1.6; }
-    .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 14px; margin-top: 22px; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 14px; margin-top: 26px; }
     .card {
       background: var(--bg); border: 1.5px solid var(--border); border-radius: 14px;
       padding: 18px 16px; text-decoration: none; color: inherit;
@@ -51,7 +43,6 @@
     .badge-beta { background: #fef3c7; color: #92400e; }
     .badge-mvp { background: #dbeafe; color: #1e40af; }
     .badge-planned { background: #f3f4f6; color: #6b7280; }
-    .badge-oss { background: #eff6ff; color: #1d4ed8; margin-left: 4px; }
     footer { margin-top: 28px; padding-top: 14px; border-top: 1px solid var(--border); font-size: 11px; color: #9ca3af; line-height: 1.6; }
     footer a { color: var(--primary); font-weight: 600; }
   </style>
@@ -64,70 +55,50 @@
   <div class="wrap">
     <h1>Research platform modules</h1>
     <p class="sub">
-      One <strong>project ID</strong> links design, writing, lab methods, grants, literature, and IP search — for papers, CRO packages, notebooks, and invention disclosure.
-    </p>
-    <p class="hub-note">
-      <strong>Systems of record (open integrations):</strong> AbEngineCore · Zotero · OpenAlex · protocols.io · eLabFTW · NIH RePORTER · patent &amp; sequence databases (Module 6).
-      <table class="status-table" aria-label="Module rollout status">
-        <thead><tr><th>Module</th><th>Entry</th><th>Status</th></tr></thead>
-        <tbody id="module-status-tbody">
-          <tr data-module="1"><td>1 Design</td><td><a href="https://console.insynbio.com">console.insynbio.com</a></td><td data-status-cell>Live</td></tr>
-          <tr data-module="2"><td>2 Writing</td><td><a href="https://write.insynbio.com/?entry=writing&amp;doc=manuscript">write ?entry=writing</a></td><td data-status-cell>Live</td></tr>
-          <tr data-module="3"><td>3 Lab / SOP</td><td><a href="https://write.insynbio.com/?entry=lab">write ?entry=lab</a> · <a href="https://lab.insynbio.com">lab</a></td><td data-status-cell>MVP</td></tr>
-          <tr data-module="4"><td>4 Grant</td><td><a href="https://write.insynbio.com/?entry=grant&amp;doc=grant">write ?entry=grant</a></td><td data-status-cell>MVP</td></tr>
-          <tr data-module="5"><td>5 Literature</td><td><a href="https://write.insynbio.com/?entry=literature">write ?entry=literature</a></td><td data-status-cell>MVP</td></tr>
-          <tr data-module="6"><td>6 Patent &amp; sequence IP</td><td><a href="https://write.insynbio.com/?entry=patents">write ?entry=patents</a></td><td data-status-cell>MVP</td></tr>
-        </tbody>
-      </table>
-      <div class="server-map">
-        <a href="https://www.insynbio.com/platform.html">www.insynbio.com</a> → GitHub Pages (this page)<br>
-        console / write / lab → VPS (nginx → ports 8000 / 8100 / eLabFTW)
-      </div>
+      One <strong>project ID</strong> connects design, writing, lab SOP, grants, literature, and IP search in a single InSynBio workspace.
     </p>
 
     <div class="grid" id="module-card-grid">
       <a class="card" data-module="1" href="https://console.insynbio.com" target="_blank" rel="noopener">
         <span class="card-num">Module 1</span>
         <span class="card-title">AI drug &amp; antibody design</span>
-        <span class="card-desc">Humanization, CMC, virtual affinity maturation, structure QC, VHH / IgG workflows — AbEngineCore engine + console.</span>
-        <span class="card-meta">console.insynbio.com <span class="badge badge-live" data-module-badge>Live</span></span>
+        <span class="card-desc">Design, optimize, and evaluate antibody candidates with sequence, CMC, and structure-aware workflows.</span>
+        <span class="card-meta">Design workspace <span class="badge badge-live" data-module-badge>Live</span></span>
       </a>
       <a class="card" data-module="2" href="https://write.insynbio.com/?entry=writing&amp;doc=manuscript" target="_blank" rel="noopener">
         <span class="card-num">Module 2</span>
         <span class="card-title">Scientific writing</span>
-        <span class="card-desc">IMRaD, reviews, lab SOP manuscripts. Plan → Polish, Facts Summary, Zotero library, methods from protocols.io.</span>
-        <span class="card-meta">write.insynbio.com <span class="badge badge-live" data-module-badge>Live</span></span>
+        <span class="card-desc">Turn study facts, methods, references, and project notes into structured manuscripts and internal documents.</span>
+        <span class="card-meta">Writing workspace <span class="badge badge-live" data-module-badge>Live</span></span>
       </a>
-      <a class="card" data-module="3" href="https://write.insynbio.com" target="_blank" rel="noopener">
+      <a class="card" data-module="3" href="https://write.insynbio.com/?entry=lab" target="_blank" rel="noopener">
         <span class="card-num">Module 3</span>
         <span class="card-title">Lab · SOP · experiment records</span>
-        <span class="card-desc">SOP system-of-record on protocols.io workspace <code>insynbio</code>; eLabFTW ELN for reagents &amp; experiments → Facts. Build SOPs in workspace; sync to writing.</span>
-        <span class="card-meta">write + lab.insynbio.com <span class="badge badge-mvp" data-module-badge>MVP</span><span class="badge badge-oss">protocols.io · eLabFTW</span></span>
+        <span class="card-desc">Manage lab SOP drafting, experiment context, reagent facts, and protocol checks from the InSynBio interface.</span>
+        <span class="card-meta">Lab workspace <span class="badge badge-mvp" data-module-badge>MVP</span></span>
       </a>
       <a class="card" data-module="4" href="https://write.insynbio.com/?entry=grant&amp;doc=grant" target="_blank" rel="noopener">
         <span class="card-num">Module 4</span>
         <span class="card-title">Grant proposals</span>
-        <span class="card-desc">NIH R01 &amp; SBIR Phase I templates, budget rules, structured Facts — opens Grant mode (not the same screen as Manuscript writing).</span>
-        <span class="card-meta">write ?entry=grant <span class="badge badge-mvp" data-module-badge>MVP</span></span>
+        <span class="card-desc">Build proposal plans, aims, research strategy sections, budgets, and review-ready grant materials.</span>
+        <span class="card-meta">Grant workspace <span class="badge badge-mvp" data-module-badge>MVP</span></span>
       </a>
       <a class="card" data-module="5" href="https://write.insynbio.com/?entry=literature" target="_blank" rel="noopener">
         <span class="card-num">Module 5</span>
         <span class="card-title">Literature radar</span>
-        <span class="card-desc">OpenAlex search in References, Zotero sync, per-project library — import hits to Facts Summary.</span>
-        <span class="card-meta">write → References <span class="badge badge-mvp" data-module-badge>MVP</span><span class="badge badge-oss">OpenAlex · Zotero</span></span>
+        <span class="card-desc">Search, organize, and reuse project literature so evidence can flow into writing and planning tasks.</span>
+        <span class="card-meta">Literature workspace <span class="badge badge-mvp" data-module-badge>MVP</span></span>
       </a>
       <a class="card" data-module="6" href="https://write.insynbio.com/?entry=patents" target="_blank" rel="noopener" id="module-6">
         <span class="card-num">Module 6</span>
         <span class="card-title">Patent &amp; sequence IP search</span>
-        <span class="card-desc">Prior-art patent search plus sequence keyword lookup — results feed Facts and FTO memos (not legal advice).</span>
-        <span class="card-meta">write → References → Patents <span class="badge badge-mvp" data-module-badge>MVP</span><span class="badge badge-oss">USPTO · Lens · Espacenet</span></span>
+        <span class="card-desc">Run project-level prior-art and sequence-oriented searches to support invention review and IP notes.</span>
+        <span class="card-meta">IP workspace <span class="badge badge-mvp" data-module-badge>MVP</span></span>
       </a>
     </div>
 
     <footer>
-      Status sync: <span id="status-sync-note">loading…</span> from <a href="https://write.insynbio.com/platform/modules/status" target="_blank" rel="noopener">write API</a>.<br>
-      Mirror: <a href="https://write.insynbio.com/platform" target="_blank" rel="noopener">write.insynbio.com/platform</a>.<br>
-      © 2026 InSynBio — R&amp;D planning only; not regulatory, legal, or FTO advice.
+      © 2026 InSynBio — R&amp;D planning workspace. Not regulatory, legal, or FTO advice.
     </footer>
   </div>
   <script>
@@ -150,11 +121,6 @@
     function apply(mods) {
       mods.forEach(function (m) {
         var id = String(m.id);
-        var row = document.querySelector('tr[data-module="' + id + '"]');
-        if (row) {
-          var cell = row.querySelector('[data-status-cell]');
-          if (cell) cell.textContent = label(m.status);
-        }
         var card = document.querySelector('.card[data-module="' + id + '"]');
         if (card) {
           var b = card.querySelector('[data-module-badge]');
@@ -170,13 +136,8 @@
       .then(function (r) { return r.json(); })
       .then(function (d) {
         apply(d.modules || []);
-        var el = document.getElementById('status-sync-note');
-        if (el) el.textContent = 'updated ' + new Date().toISOString().slice(0, 16) + 'Z · v' + (d.platform_version || '?');
       })
-      .catch(function () {
-        var el = document.getElementById('status-sync-note');
-        if (el) el.textContent = 'static badges (API unreachable)';
-      });
+      .catch(function () {});
   })();
   </script>
 </body>
