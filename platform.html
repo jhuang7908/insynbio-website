@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="InSynBio research platform — five modules: AI design, scientific writing, lab records, grants, literature radar.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://www.insynbio.com/platform.html">
+  <title>InSynBio Platform — Five Research Modules</title>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <style>
+    :root {
+      --primary: #0d9488; --primary-dark: #0f766e; --text: #111827; --muted: #4b5563; --border: #e5e7eb; --bg: #fff; --bg-alt: #f0fdfa;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: Inter, 'Segoe UI', system-ui, sans-serif;
+      background: linear-gradient(165deg, var(--bg-alt) 0%, var(--bg) 50%);
+      color: var(--text); min-height: 100vh; padding: 24px 16px 40px;
+    }
+    .top { max-width: 960px; margin: 0 auto 20px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; }
+    .top a { color: var(--primary); font-weight: 600; text-decoration: none; font-size: 14px; }
+    .top a:hover { text-decoration: underline; }
+    .wrap { max-width: 960px; margin: 0 auto; }
+    h1 { font-size: 26px; font-weight: 900; color: var(--primary-dark); margin-bottom: 8px; }
+    .sub { font-size: 14px; color: var(--muted); line-height: 1.55; max-width: 680px; }
+    .hub-note {
+      margin-top: 14px; padding: 12px 14px; background: var(--bg);
+      border: 1px solid #99f6e4; border-radius: 10px; font-size: 12px; color: var(--muted); line-height: 1.55;
+    }
+    .server-map { margin-top: 10px; font-size: 11px; color: #6b7280; font-family: ui-monospace, monospace; line-height: 1.6; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 14px; margin-top: 22px; }
+    .card {
+      background: var(--bg); border: 1.5px solid var(--border); border-radius: 14px;
+      padding: 18px 16px; text-decoration: none; color: inherit;
+      display: flex; flex-direction: column; gap: 8px;
+      transition: border-color .15s, box-shadow .15s;
+    }
+    .card:hover:not(.soon) { border-color: var(--primary); box-shadow: 0 6px 20px rgba(13,148,136,.12); }
+    .card.soon { opacity: .85; pointer-events: none; }
+    .card-num { font-size: 10px; font-weight: 800; letter-spacing: .1em; color: var(--primary); text-transform: uppercase; }
+    .card-title { font-size: 16px; font-weight: 800; }
+    .card-desc { font-size: 12px; color: var(--muted); line-height: 1.5; flex: 1; }
+    .card-meta { font-size: 10px; color: #9ca3af; }
+    .badge { display: inline-block; font-size: 9px; font-weight: 800; padding: 2px 8px; border-radius: 10px; text-transform: uppercase; }
+    .badge-live { background: #ccfbf1; color: var(--primary-dark); }
+    .badge-planned { background: #f3f4f6; color: #6b7280; }
+    .badge-oss { background: #eff6ff; color: #1d4ed8; margin-left: 4px; }
+    footer { margin-top: 28px; padding-top: 14px; border-top: 1px solid var(--border); font-size: 11px; color: #9ca3af; line-height: 1.6; }
+    footer a { color: var(--primary); font-weight: 600; }
+  </style>
+</head>
+<body>
+  <div class="top">
+    <a href="index.html">← InSynBio Home</a>
+    <a href="https://console.insynbio.com" target="_blank" rel="noopener">Console login →</a>
+  </div>
+  <div class="wrap">
+    <h1>Research platform modules</h1>
+    <p class="sub">
+      One <strong>project ID</strong> links literature, reagents, methods, and data across tools — for papers, grants, lab notebooks, and prior-art / invention disclosure.
+    </p>
+    <p class="hub-note">
+      <strong>Open-source integrations:</strong> Zotero + OpenAlex (literature), eLabFTW (lab/SOP/reagents), NIH RePORTER / SBIR (grant landscape).
+      <div class="server-map">
+        www.insynbio.com → GitHub Pages (this page)<br>
+        console / write → VPS 157.180.91.72 (nginx → apps on ports 8000 / 8100)
+      </div>
+    </p>
+
+    <div class="grid">
+      <a class="card" href="https://console.insynbio.com" target="_blank" rel="noopener">
+        <span class="card-num">Module 1</span>
+        <span class="card-title">AI drug &amp; antibody design</span>
+        <span class="card-desc">Humanization, CMC, affinity maturation, structure QC — AbEngineCore.</span>
+        <span class="card-meta">console.insynbio.com <span class="badge badge-live">Live</span></span>
+      </a>
+      <a class="card" href="https://write.insynbio.com" target="_blank" rel="noopener">
+        <span class="card-num">Module 2</span>
+        <span class="card-title">Scientific writing</span>
+        <span class="card-desc">IMRaD, reviews, protocols, lab SOP. Facts, Zotero library per project.</span>
+        <span class="card-meta">write.insynbio.com <span class="badge badge-live">Live</span></span>
+      </a>
+      <a class="card soon" href="#" aria-disabled="true">
+        <span class="card-num">Module 3</span>
+        <span class="card-title">Lab · SOP · experiment records</span>
+        <span class="card-desc">eLabFTW on VPS: notebook, reagent DB, equipment booking → sync to writing Facts.</span>
+        <span class="card-meta">lab.insynbio.com <span class="badge badge-planned">Planned</span><span class="badge badge-oss">eLabFTW</span></span>
+      </a>
+      <a class="card" href="https://write.insynbio.com" target="_blank" rel="noopener">
+        <span class="card-num">Module 4</span>
+        <span class="card-title">Grant proposals</span>
+        <span class="card-desc">NIH R01 &amp; SBIR Phase I — budget rules; verify amounts against current NOFO.</span>
+        <span class="card-meta">write → Grant <span class="badge badge-live">MVP</span></span>
+      </a>
+      <a class="card soon" href="#" aria-disabled="true">
+        <span class="card-num">Module 5</span>
+        <span class="card-title">Literature radar</span>
+        <span class="card-desc">OpenAlex + PubMed watchlists, digests, prior-art packs.</span>
+        <span class="card-meta">library <span class="badge badge-planned">Planned</span><span class="badge badge-oss">OpenAlex</span></span>
+      </a>
+    </div>
+
+    <footer>
+      Also on VPS: <a href="https://write.insynbio.com/platform" target="_blank" rel="noopener">write.insynbio.com/platform</a> (same hub, for logged-in users).<br>
+      © 2026 InSynBio — R&amp;D planning only; not regulatory or legal advice.
+    </footer>
+  </div>
+</body>
+</html>
