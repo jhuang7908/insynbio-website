@@ -65,64 +65,45 @@
   <div class="wrap">
     <h1>Research platform modules</h1>
     <p class="sub">
-      <strong>Module 1 (Design)</strong> stays on the existing <a href="https://console.insynbio.com" target="_blank" rel="noopener">InSynBio Console</a> — production service, not modified here.
-      Modules <strong>2–6</strong> are developed via this portal (<code>platform.html</code>) and <a href="https://write.insynbio.com">write.insynbio.com</a>, linked by one <strong>project ID</strong>.
+      Modules <strong>1–6</strong> are developed via this portal (<code>platform.html</code>) and <a href="https://write.insynbio.com">write.insynbio.com</a>, linked by one <strong>project ID</strong>.
       Rollout: <strong>3 Lab</strong> → <strong>4 Literature</strong> → <strong>5 IP</strong> → <strong>6 Research Administration</strong> (last).
-    </p>
-    <p class="hub-note">
-      <strong>Systems of record (open integrations):</strong> AbEngineCore · Zotero · OpenAlex · protocols.io · eLabFTW · NIH RePORTER · patent &amp; sequence databases (Module 5).
-      <table class="status-table" aria-label="Module rollout status">
-        <thead><tr><th>Module</th><th>Entry</th><th>Status</th></tr></thead>
-        <tbody id="module-status-tbody">
-          <tr data-module="1"><td>1 Design</td><td><a href="https://console.insynbio.com">console.insynbio.com</a></td><td data-status-cell>Live</td></tr>
-          <tr data-module="2"><td>2 Writing</td><td><a href="https://write.insynbio.com/?entry=writing&amp;doc=manuscript">write ?entry=writing</a></td><td data-status-cell>Live</td></tr>
-          <tr data-module="3"><td>3 Lab / SOP</td><td><a href="https://write.insynbio.com/?entry=lab">write ?entry=lab</a> · <a href="https://lab.insynbio.com">lab</a></td><td data-status-cell>MVP</td></tr>
-          <tr data-module="4"><td>4 Literature</td><td><a href="https://write.insynbio.com/?entry=literature">write ?entry=literature</a></td><td data-status-cell>MVP</td></tr>
-          <tr data-module="5"><td>5 Patent &amp; sequence IP</td><td><a href="https://write.insynbio.com/?entry=patents">write ?entry=patents</a></td><td data-status-cell>MVP</td></tr>
-          <tr data-module="6"><td>6 Research Administration</td><td><a href="https://write.insynbio.com/?entry=grant&amp;doc=grant">write ?entry=grant</a></td><td data-status-cell>Planned last</td></tr>
-        </tbody>
-      </table>
-      <div class="server-map">
-        <a href="https://www.insynbio.com/platform.html">www.insynbio.com</a> → GitHub Pages (this page)<br>
-        console / write / lab → VPS (nginx → ports 8000 / 8100 / eLabFTW)
-      </div>
     </p>
 
     <div class="grid" id="module-card-grid">
       <a class="card" data-module="1" href="https://console.insynbio.com" target="_blank" rel="noopener">
         <span class="card-num">Module 1</span>
         <span class="card-title">AI drug &amp; antibody design</span>
-        <span class="card-desc">Humanization, CMC, virtual affinity maturation, structure QC, VHH / IgG workflows — AbEngineCore engine + console.</span>
+        <span class="card-desc">Humanization, CMC, virtual affinity maturation, structure QC, VHH / IgG workflows.</span>
         <span class="card-meta">console.insynbio.com <span class="badge badge-live" data-module-badge>Live</span></span>
       </a>
       <a class="card" data-module="2" href="https://write.insynbio.com/?entry=writing&amp;doc=manuscript" target="_blank" rel="noopener">
         <span class="card-num">Module 2</span>
         <span class="card-title">Scientific writing</span>
-        <span class="card-desc">IMRaD, reviews, lab SOP manuscripts. Plan → Polish, Facts Summary, Zotero library, methods from protocols.io.</span>
+        <span class="card-desc">IMRaD, reviews, lab SOP manuscripts. Plan → Polish, Facts Summary, and methods import.</span>
         <span class="card-meta">write.insynbio.com <span class="badge badge-live" data-module-badge>Live</span></span>
       </a>
       <a class="card" data-module="3" href="https://write.insynbio.com" target="_blank" rel="noopener">
         <span class="card-num">Module 3</span>
         <span class="card-title">Lab · SOP · experiment records</span>
-        <span class="card-desc">SOP system-of-record on protocols.io workspace <code>insynbio</code>; eLabFTW ELN for reagents &amp; experiments → Facts. Build SOPs in workspace; sync to writing.</span>
-        <span class="card-meta">write ?entry=lab · lab.insynbio.com <span class="badge badge-mvp" data-module-badge>MVP</span><span class="badge badge-oss">protocols.io · eLabFTW</span></span>
+        <span class="card-desc">SOP system-of-record; ELN for reagents &amp; experiments → Facts. Build SOPs in workspace; sync to writing.</span>
+        <span class="card-meta">write ?entry=lab · lab.insynbio.com <span class="badge badge-mvp" data-module-badge>MVP</span></span>
       </a>
       <a class="card" data-module="4" href="https://write.insynbio.com/?entry=literature" target="_blank" rel="noopener">
         <span class="card-num">Module 4</span>
         <span class="card-title">Literature radar</span>
-        <span class="card-desc">OpenAlex search in References, Zotero sync, per-project library — import hits to Facts Summary.</span>
-        <span class="card-meta">write ?entry=literature <span class="badge badge-mvp" data-module-badge>MVP</span><span class="badge badge-oss">OpenAlex · Zotero</span></span>
+        <span class="card-desc">Search in References, per-project library — import hits to Facts Summary.</span>
+        <span class="card-meta">write ?entry=literature <span class="badge badge-mvp" data-module-badge>MVP</span></span>
       </a>
       <a class="card" data-module="5" href="https://write.insynbio.com/?entry=patents" target="_blank" rel="noopener">
         <span class="card-num">Module 5</span>
         <span class="card-title">Patent &amp; sequence IP search</span>
-        <span class="card-desc">Prior-art patent search plus sequence keyword lookup — results feed Facts and FTO memos (not legal advice).</span>
-        <span class="card-meta">write ?entry=patents <span class="badge badge-mvp" data-module-badge>MVP</span><span class="badge badge-oss">USPTO · Lens · Espacenet</span></span>
+        <span class="card-desc">Prior-art patent search plus sequence keyword lookup — results feed Facts and FTO memos.</span>
+        <span class="card-meta">write ?entry=patents <span class="badge badge-mvp" data-module-badge>MVP</span></span>
       </a>
       <a class="card" data-module="6" href="https://write.insynbio.com/?entry=grant&amp;doc=grant" target="_blank" rel="noopener">
         <span class="card-num">Module 6</span>
         <span class="card-title">Research Administration</span>
-        <span class="card-desc">Grant applications, budget, team progress reports (from Lab), literature digests, member accounts (TeamID + email). Ships last.</span>
+        <span class="card-desc">Grant applications, budget, team progress reports (from Lab), literature digests, member accounts. Ships last.</span>
         <span class="card-meta">write ?entry=grant <span class="badge badge-mvp" data-module-badge>Planned last</span></span>
       </a>
     </div>
@@ -153,11 +134,6 @@
     function apply(mods) {
       mods.forEach(function (m) {
         var id = String(m.id);
-        var row = document.querySelector('tr[data-module="' + id + '"]');
-        if (row) {
-          var cell = row.querySelector('[data-status-cell]');
-          if (cell) cell.textContent = label(m.status);
-        }
         document.querySelectorAll('[data-module="' + id + '"] .badge[data-module-badge]').forEach(function (b) {
           b.className = badgeClass(m.status);
           b.textContent = label(m.status);
