@@ -1,257 +1,174 @@
 <!DOCTYPE html>
-<!-- insynbio-platform-ide-v1.0 2026-06-02 -->
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="InSynBio research platform — six modules, unified IDE entry, English UI.">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="InSynBio research platform — six modules: AI design, scientific writing, lab SOP, literature, patent and sequence IP, research administration.">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://insynbio.com/platform.html">
-  <title>InSynBio Platform</title>
+  <title>InSynBio Platform — Six Research Modules</title>
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <style>
     :root {
-      --bg:#090d16; --panel:#0f1726; --panel-2:#111c2e;
-      --line:#253246; --text:#e5edf7; --muted:#8ea0b8;
-      --accent:#21c7d9; --accent-2:#0ea5b7;
-      --pass:#3fb950; --warn:#d4a72c;
-      --mono:"JetBrains Mono",Consolas,monospace;
-      --sans:system-ui,"Segoe UI",sans-serif;
-      --sidebar-w:248px;
+      --primary: #0d9488; --primary-dark: #0f766e; --text: #111827; --muted: #4b5563;
+      --border: #e5e7eb; --bg: #fff; --bg-alt: #f0fdfa;
     }
-    *{box-sizing:border-box;margin:0;padding:0}
-    html,body{min-height:100%;background:var(--bg);color:var(--text);font:14px/1.5 var(--sans)}
-    a{color:var(--accent);text-decoration:none}
-    a:hover{text-decoration:underline}
-    .shell{display:flex;flex-direction:column;min-height:100vh}
-    .topbar{
-      height:48px;display:flex;align-items:center;gap:14px;padding:0 16px;
-      border-bottom:1px solid var(--line);background:var(--panel);flex-shrink:0;
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: Inter, 'Segoe UI', system-ui, sans-serif;
+      background: linear-gradient(165deg, var(--bg-alt) 0%, var(--bg) 50%);
+      color: var(--text); min-height: 100vh; padding: 24px 16px 40px;
     }
-    .brand{display:flex;align-items:center;gap:10px;font-weight:800;font-size:15px}
-    .brand-mark{width:28px;height:28px;border-radius:8px;background:linear-gradient(135deg,var(--accent),var(--accent-2));display:flex;align-items:center;justify-content:center;font-size:11px;color:#041018;font-weight:900}
-    .topbar-spacer{flex:1}
-    .topbar a{font-size:12px;color:var(--muted);font-weight:600}
-    .topbar a:hover{color:var(--accent)}
-    .pill{font-size:10px;padding:3px 9px;border-radius:20px;border:1px solid var(--line);color:var(--muted)}
-    .body{display:flex;flex:1;min-height:0}
-    .sidebar{
-      width:var(--sidebar-w);flex-shrink:0;border-right:1px solid var(--line);
-      background:var(--panel);display:flex;flex-direction:column;overflow:hidden;
+    .top { max-width: 1000px; margin: 0 auto 20px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; }
+    .top a { color: var(--primary); font-weight: 600; text-decoration: none; font-size: 14px; }
+    .top a:hover { text-decoration: underline; }
+    .wrap { max-width: 1000px; margin: 0 auto; }
+    h1 { font-size: 26px; font-weight: 900; color: var(--primary-dark); margin-bottom: 8px; }
+    .sub { font-size: 14px; color: var(--muted); line-height: 1.55; max-width: 720px; }
+    .hub-note {
+      margin-top: 14px; padding: 12px 14px; background: var(--bg);
+      border: 1px solid #99f6e4; border-radius: 10px; font-size: 12px; color: var(--muted); line-height: 1.55;
     }
-    .sidebar-hd{padding:12px 14px 8px;font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
-    .mod-list{flex:1;overflow-y:auto;padding:6px 8px 12px}
-    .mod-btn{
-      width:100%;text-align:left;border:1px solid transparent;background:transparent;
-      color:var(--text);padding:10px 11px;border-radius:8px;cursor:pointer;margin-bottom:4px;
-      display:flex;flex-direction:column;gap:3px;
+    .status-table { width: 100%; margin-top: 10px; border-collapse: collapse; font-size: 11px; }
+    .status-table th, .status-table td { text-align: left; padding: 4px 6px; border-bottom: 1px solid var(--border); }
+    .status-table th { color: var(--primary-dark); font-weight: 700; }
+    .server-map { margin-top: 10px; font-size: 11px; color: #6b7280; font-family: ui-monospace, monospace; line-height: 1.6; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 14px; margin-top: 22px; }
+    .card {
+      background: var(--bg); border: 1.5px solid var(--border); border-radius: 14px;
+      padding: 18px 16px; text-decoration: none; color: inherit;
+      display: flex; flex-direction: column; gap: 8px;
+      transition: border-color .15s, box-shadow .15s;
     }
-    .mod-btn:hover{background:rgba(33,199,217,.06);border-color:var(--line)}
-    .mod-btn.active{background:rgba(33,199,217,.1);border-color:rgba(33,199,217,.35)}
-    .mod-btn-top{display:flex;align-items:center;justify-content:space-between;gap:6px}
-    .mod-num{font-size:10px;font-weight:800;color:var(--accent);letter-spacing:.06em}
-    .mod-title{font-size:13px;font-weight:700}
-    .mod-sub{font-size:10px;color:var(--muted);line-height:1.35}
-    .badge{font-size:9px;font-weight:800;padding:2px 7px;border-radius:10px;text-transform:uppercase;flex-shrink:0}
-    .badge-live{background:rgba(63,185,80,.15);color:var(--pass)}
-    .badge-mvp{background:rgba(33,199,217,.12);color:var(--accent)}
-    .badge-beta{background:rgba(212,167,44,.15);color:var(--warn)}
-    .badge-planned{background:rgba(142,160,184,.12);color:var(--muted)}
-    .sidebar-ft{padding:10px 12px;border-top:1px solid var(--line);font-size:10px;color:var(--muted);line-height:1.45}
-    .main{flex:1;overflow-y:auto;padding:20px 22px 28px}
-    .main h1{font-size:22px;font-weight:800;margin-bottom:6px}
-    .lead{color:var(--muted);font-size:13px;max-width:640px;line-height:1.55;margin-bottom:18px}
-    .rollout{font-size:11px;color:var(--accent);margin-bottom:18px;font-family:var(--mono)}
-    .panel{
-      background:var(--panel);border:1px solid var(--line);border-radius:12px;
-      padding:18px 20px;max-width:720px;
-    }
-    .panel h2{font-size:15px;margin-bottom:8px}
-    .panel p{font-size:12px;color:var(--muted);line-height:1.55;margin-bottom:12px}
-    .api-row{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px}
-    .api-tag{font-size:10px;padding:3px 8px;border-radius:6px;background:var(--panel-2);border:1px solid var(--line);color:var(--muted);font-family:var(--mono)}
-    .actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:4px}
-    .btn{
-      display:inline-flex;align-items:center;gap:6px;padding:8px 14px;border-radius:8px;
-      font-size:12px;font-weight:700;border:1px solid var(--line);background:var(--panel-2);
-      color:var(--text);cursor:pointer;text-decoration:none;
-    }
-    .btn:hover{border-color:var(--accent);color:var(--accent)}
-    .btn.primary{background:var(--accent);border-color:var(--accent);color:#041018}
-    .btn.primary:hover{filter:brightness(1.05);color:#041018;text-decoration:none}
-    .meta-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:14px;font-size:11px}
-    .meta-grid dt{color:var(--muted);font-weight:600}
-    .meta-grid dd{font-family:var(--mono);color:var(--text);word-break:break-all}
-    footer.main-ft{margin-top:24px;font-size:10px;color:var(--muted);line-height:1.5}
+    .card:hover:not(.soon) { border-color: var(--primary); box-shadow: 0 6px 20px rgba(13,148,136,.12); }
+    .card.soon { opacity: .88; cursor: default; }
+    .card-num { font-size: 10px; font-weight: 800; letter-spacing: .1em; color: var(--primary); text-transform: uppercase; }
+    .card-title { font-size: 16px; font-weight: 800; }
+    .card-desc { font-size: 12px; color: var(--muted); line-height: 1.5; flex: 1; }
+    .card-meta { font-size: 10px; color: #9ca3af; }
+    .badge { display: inline-block; font-size: 9px; font-weight: 800; padding: 2px 8px; border-radius: 10px; text-transform: uppercase; }
+    .badge-live { background: #ccfbf1; color: var(--primary-dark); }
+    .badge-beta { background: #fef3c7; color: #92400e; }
+    .badge-mvp { background: #dbeafe; color: #1e40af; }
+    .badge-planned { background: #f3f4f6; color: #6b7280; }
+    .badge-oss { background: #eff6ff; color: #1d4ed8; margin-left: 4px; }
+    footer { margin-top: 28px; padding-top: 14px; border-top: 1px solid var(--border); font-size: 11px; color: #9ca3af; line-height: 1.6; }
+    footer a { color: var(--primary); font-weight: 600; }
   </style>
 </head>
 <body>
-<div class="shell">
-  <header class="topbar">
-    <div class="brand">
-      <div class="brand-mark">IS</div>
-      <span>InSynBio Platform</span>
-    </div>
-    <span class="pill" id="sync-pill">Status: loading</span>
-    <span class="topbar-spacer"></span>
-    <a href="https://www.insynbio.com/">Home</a>
-    <a href="https://console.insynbio.com" target="_blank" rel="noopener">Console</a>
-    <a href="https://write.insynbio.com/" target="_blank" rel="noopener">Write</a>
-  </header>
-  <div class="body">
-    <aside class="sidebar">
-      <div class="sidebar-hd">Modules</div>
-      <div class="mod-list" id="mod-list"></div>
-      <div class="sidebar-ft">
-        Rollout: 3 Lab → 4 Literature → 5 IP → 6 Research Administration.<br>
-        <span id="sync-time"></span>
-      </div>
-    </aside>
-    <main class="main" id="main">
-      <h1 id="detail-title">Select a module</h1>
-      <p class="lead" id="detail-lead">Unified IDE entry for design, writing, lab, literature, IP, and research administration. One project ID links assets across modules.</p>
-      <p class="rollout">Delivery order: Module 3 → 4 → 5 → 6 (Module 6 last).</p>
-      <div class="panel" id="detail-panel">
-        <p>Choose a module in the sidebar to open its MVP workspace.</p>
-      </div>
-      <footer class="main-ft">R&amp;D planning only — not regulatory, legal, or FTO advice. Internal JSON/Markdown stores are not user-facing; lab reports export as HTML (Print → PDF).</footer>
-    </main>
+  <div class="top">
+    <a href="index.html">← InSynBio Home</a>
+    <a href="https://console.insynbio.com" target="_blank" rel="noopener">Console login →</a>
   </div>
-</div>
-<script>
-(function () {
-  var API = (location.hostname === 'write.insynbio.com')
-    ? '/platform/modules/status'
-    : 'https://write.insynbio.com/platform/modules/status';
+  <div class="wrap">
+    <h1>Research platform modules</h1>
+    <p class="sub">
+      One <strong>project ID</strong> links design, writing, lab, literature, IP, and research administration — rollout: <strong>3 Lab</strong> → <strong>4 Literature</strong> → <strong>5 IP</strong> → <strong>6 Research Administration</strong> (last).
+    </p>
+    <p class="hub-note">
+      <strong>Systems of record (open integrations):</strong> AbEngineCore · Zotero · OpenAlex · protocols.io · eLabFTW · NIH RePORTER · patent &amp; sequence databases (Module 5).
+      <table class="status-table" aria-label="Module rollout status">
+        <thead><tr><th>Module</th><th>Entry</th><th>Status</th></tr></thead>
+        <tbody id="module-status-tbody">
+          <tr data-module="1"><td>1 Design</td><td><a href="https://console.insynbio.com">console.insynbio.com</a></td><td data-status-cell>Live</td></tr>
+          <tr data-module="2"><td>2 Writing</td><td><a href="https://write.insynbio.com/?entry=writing&amp;doc=manuscript">write ?entry=writing</a></td><td data-status-cell>Live</td></tr>
+          <tr data-module="3"><td>3 Lab / SOP</td><td><a href="https://write.insynbio.com/?entry=lab">write ?entry=lab</a> · <a href="https://lab.insynbio.com">lab</a></td><td data-status-cell>MVP</td></tr>
+          <tr data-module="4"><td>4 Literature</td><td><a href="https://write.insynbio.com/?entry=literature">write ?entry=literature</a></td><td data-status-cell>MVP</td></tr>
+          <tr data-module="5"><td>5 Patent &amp; sequence IP</td><td><a href="https://write.insynbio.com/?entry=patents">write ?entry=patents</a></td><td data-status-cell>MVP</td></tr>
+          <tr data-module="6"><td>6 Research Administration</td><td><a href="https://write.insynbio.com/?entry=grant&amp;doc=grant">write ?entry=grant</a></td><td data-status-cell>Planned last</td></tr>
+        </tbody>
+      </table>
+      <div class="server-map">
+        <a href="https://www.insynbio.com/platform.html">www.insynbio.com</a> → GitHub Pages (this page)<br>
+        console / write / lab → VPS (nginx → ports 8000 / 8100 / eLabFTW)
+      </div>
+    </p>
 
-  var MODULES = [
-    {
-      id: 1, key: 'design', title: 'Design',
-      sub: 'Antibody & protein engineering',
-      desc: 'Humanization, CMC, virtual affinity maturation, structure QC, VHH and IgG workflows via AbEngineCore.',
-      url: 'https://console.insynbio.com',
-      external: true,
-      apis: ['AbEngineCore API', 'console.insynbio.com'],
-      openLabel: 'Open Console'
-    },
-    {
-      id: 2, key: 'writing', title: 'Writing',
-      sub: 'Manuscripts & internal docs',
-      desc: 'Plan → draft → polish, Facts Summary, Zotero library, journal profiles, protocols.io methods import.',
-      url: 'https://write.insynbio.com/?entry=writing&doc=manuscript',
-      apis: ['/draft', '/polish', '/library/*', 'Zotero'],
-      openLabel: 'Open Writing IDE'
-    },
-    {
-      id: 3, key: 'lab', title: 'Lab',
-      sub: 'SOP · ELN · experiment data',
-      desc: 'IDE for SOP builder, protocols.io search, reagent inventory, experimental data, HTML progress reports.',
-      url: 'https://write.insynbio.com/lab-ide',
-      apis: ['/lab/*', 'protocols.io', 'eLabFTW'],
-      openLabel: 'Open Lab IDE'
-    },
-    {
-      id: 4, key: 'library', title: 'Literature',
-      sub: 'OpenAlex & Zotero',
-      desc: 'Search literature, import to Facts, per-project library. Watchlists and email digest planned (Module 4 rollout).',
-      url: 'https://write.insynbio.com/?entry=literature',
-      apis: ['/library/openalex/search', 'Zotero import'],
-      openLabel: 'Open Literature'
-    },
-    {
-      id: 5, key: 'ip', title: 'Patent & sequence IP',
-      sub: 'Prior art & sequence lookup',
-      desc: 'Patent search (USPTO ODP when configured), sequence IP lookup, Facts export for FTO notes.',
-      url: 'https://write.insynbio.com/?entry=patents',
-      apis: ['/ip/patent/search', '/ip/sequence/search'],
-      openLabel: 'Open IP Search'
-    },
-    {
-      id: 6, key: 'research_admin', title: 'Research Administration',
-      sub: 'Grants · budget · team · members',
-      desc: 'Grant applications (NIH R01 / SBIR MVP), team lab progress, budget Facts, literature digests, member accounts. Full module ships last.',
-      url: 'https://write.insynbio.com/?entry=grant&doc=grant',
-      apis: ['/lab/progress_reports', 'Grant templates', 'Hub project_id'],
-      openLabel: 'Open Research Admin'
+    <div class="grid" id="module-card-grid">
+      <a class="card" data-module="1" href="https://console.insynbio.com" target="_blank" rel="noopener">
+        <span class="card-num">Module 1</span>
+        <span class="card-title">AI drug &amp; antibody design</span>
+        <span class="card-desc">Humanization, CMC, virtual affinity maturation, structure QC, VHH / IgG workflows — AbEngineCore engine + console.</span>
+        <span class="card-meta">console.insynbio.com <span class="badge badge-live" data-module-badge>Live</span></span>
+      </a>
+      <a class="card" data-module="2" href="https://write.insynbio.com/?entry=writing&amp;doc=manuscript" target="_blank" rel="noopener">
+        <span class="card-num">Module 2</span>
+        <span class="card-title">Scientific writing</span>
+        <span class="card-desc">IMRaD, reviews, lab SOP manuscripts. Plan → Polish, Facts Summary, Zotero library, methods from protocols.io.</span>
+        <span class="card-meta">write.insynbio.com <span class="badge badge-live" data-module-badge>Live</span></span>
+      </a>
+      <a class="card" data-module="3" href="https://write.insynbio.com" target="_blank" rel="noopener">
+        <span class="card-num">Module 3</span>
+        <span class="card-title">Lab · SOP · experiment records</span>
+        <span class="card-desc">SOP system-of-record on protocols.io workspace <code>insynbio</code>; eLabFTW ELN for reagents &amp; experiments → Facts. Build SOPs in workspace; sync to writing.</span>
+        <span class="card-meta">write ?entry=lab · lab.insynbio.com <span class="badge badge-mvp" data-module-badge>MVP</span><span class="badge badge-oss">protocols.io · eLabFTW</span></span>
+      </a>
+      <a class="card" data-module="4" href="https://write.insynbio.com/?entry=literature" target="_blank" rel="noopener">
+        <span class="card-num">Module 4</span>
+        <span class="card-title">Literature radar</span>
+        <span class="card-desc">OpenAlex search in References, Zotero sync, per-project library — import hits to Facts Summary.</span>
+        <span class="card-meta">write ?entry=literature <span class="badge badge-mvp" data-module-badge>MVP</span><span class="badge badge-oss">OpenAlex · Zotero</span></span>
+      </a>
+      <a class="card" data-module="5" href="https://write.insynbio.com/?entry=patents" target="_blank" rel="noopener">
+        <span class="card-num">Module 5</span>
+        <span class="card-title">Patent &amp; sequence IP search</span>
+        <span class="card-desc">Prior-art patent search plus sequence keyword lookup — results feed Facts and FTO memos (not legal advice).</span>
+        <span class="card-meta">write ?entry=patents <span class="badge badge-mvp" data-module-badge>MVP</span><span class="badge badge-oss">USPTO · Lens · Espacenet</span></span>
+      </a>
+      <a class="card" data-module="6" href="https://write.insynbio.com/?entry=grant&amp;doc=grant" target="_blank" rel="noopener">
+        <span class="card-num">Module 6</span>
+        <span class="card-title">Research Administration</span>
+        <span class="card-desc">Grant applications, budget, team progress reports (from Lab), literature digests, member accounts (TeamID + email). Ships last.</span>
+        <span class="card-meta">write ?entry=grant <span class="badge badge-mvp" data-module-badge>Planned last</span></span>
+      </a>
+    </div>
+
+    <footer>
+      Status sync: <span id="status-sync-note">loading…</span> from <a href="https://write.insynbio.com/platform/modules/status" target="_blank" rel="noopener">write API</a>.<br>
+      Mirror: <a href="https://write.insynbio.com/platform" target="_blank" rel="noopener">write.insynbio.com/platform</a>.<br>
+      © 2026 InSynBio — R&amp;D planning only; not regulatory, legal, or FTO advice.
+    </footer>
+  </div>
+  <script>
+  (function () {
+    var API = 'https://write.insynbio.com/platform/modules/status';
+    function label(st) {
+      var s = (st || 'mvp').toLowerCase();
+      if (s === 'live') return 'Live';
+      if (s === 'beta') return 'Beta';
+      if (s === 'planned') return 'Planned';
+      return 'MVP';
     }
-  ];
-
-  var statusMap = {};
-  var activeId = 3;
-
-  function label(st) {
-    var s = (st || 'mvp').toLowerCase();
-    if (s === 'live') return ['Live', 'badge-live'];
-    if (s === 'beta') return ['Beta', 'badge-beta'];
-    if (s === 'planned') return ['Planned last', 'badge-planned'];
-    return ['MVP', 'badge-mvp'];
-  }
-
-  function renderSidebar() {
-    var box = document.getElementById('mod-list');
-    box.innerHTML = MODULES.map(function (m) {
-      var st = statusMap[m.id] || 'mvp';
-      var lb = label(st);
-      return '<button type="button" class="mod-btn' + (m.id === activeId ? ' active' : '') + '" data-id="' + m.id + '">' +
-        '<div class="mod-btn-top"><span class="mod-num">Module ' + m.id + '</span><span class="badge ' + lb[1] + '">' + lb[0] + '</span></div>' +
-        '<span class="mod-title">' + m.title + '</span>' +
-        '<span class="mod-sub">' + m.sub + '</span></button>';
-    }).join('');
-    box.querySelectorAll('.mod-btn').forEach(function (btn) {
-      btn.addEventListener('click', function () {
-        activeId = parseInt(btn.getAttribute('data-id'), 10);
-        renderSidebar();
-        renderDetail();
+    function badgeClass(st) {
+      var s = (st || 'mvp').toLowerCase();
+      if (s === 'live') return 'badge badge-live';
+      if (s === 'beta') return 'badge badge-beta';
+      if (s === 'planned') return 'badge badge-planned';
+      return 'badge badge-mvp';
+    }
+    function apply(mods) {
+      mods.forEach(function (m) {
+        var id = String(m.id);
+        var row = document.querySelector('tr[data-module="' + id + '"]');
+        if (row) {
+          var cell = row.querySelector('[data-status-cell]');
+          if (cell) cell.textContent = label(m.status);
+        }
+        document.querySelectorAll('[data-module="' + id + '"] .badge[data-module-badge]').forEach(function (b) {
+          b.className = badgeClass(m.status);
+          b.textContent = label(m.status);
+        });
       });
-    });
-  }
-
-  function renderDetail() {
-    var m = MODULES.find(function (x) { return x.id === activeId; });
-    if (!m) return;
-    var st = statusMap[m.id] || 'mvp';
-    var lb = label(st);
-    document.getElementById('detail-title').textContent = 'Module ' + m.id + ' · ' + m.title;
-    document.getElementById('detail-lead').textContent = m.desc;
-    var apiTags = (m.apis || []).map(function (a) { return '<span class="api-tag">' + a + '</span>'; }).join('');
-    var extra = '';
-    if (m.id === 3 && statusMap.elabftw !== undefined) {
-      extra = '<dl class="meta-grid"><dt>eLabFTW</dt><dd>' + (statusMap.elabftw ? 'connected' : 'not configured') + '</dd>' +
-        '<dt>protocols.io</dt><dd>' + (statusMap.protocolsio ? 'connected' : 'not configured') + '</dd></dl>';
+      var note = document.getElementById('status-sync-note');
+      if (note) note.textContent = 'synced ' + new Date().toLocaleTimeString();
     }
-    document.getElementById('detail-panel').innerHTML =
-      '<h2>' + m.title + ' <span class="badge ' + lb[1] + '">' + lb[0] + '</span></h2>' +
-      '<p>' + m.desc + '</p>' +
-      '<div class="api-row">' + apiTags + '</div>' +
-      '<div class="actions">' +
-      '<a class="btn primary" href="' + m.url + '" target="_blank" rel="noopener">' + m.openLabel + ' →</a>' +
-      (m.id === 2 ? '<a class="btn" href="https://write.insynbio.com/lab-ide" target="_blank" rel="noopener">Lab IDE</a>' : '') +
-      '</div>' + extra;
-  }
-
-  function applyStatus(data) {
-    (data.modules || []).forEach(function (m) {
-      statusMap[m.id] = m.status;
-      if (m.id === 3) {
-        statusMap.elabftw = m.elabftw;
-        statusMap.protocolsio = m.protocolsio;
-      }
-    });
-    document.getElementById('sync-pill').textContent = 'Status: synced';
-    document.getElementById('sync-time').textContent = 'Updated ' + new Date().toLocaleString('en-GB', { hour12: false });
-    renderSidebar();
-    renderDetail();
-  }
-
-  renderSidebar();
-  renderDetail();
-
-  fetch(API).then(function (r) { return r.json(); }).then(applyStatus).catch(function () {
-    document.getElementById('sync-pill').textContent = 'Status: offline (defaults)';
-    renderSidebar();
-    renderDetail();
-  });
-})();
-</script>
+    fetch(API).then(function (r) { return r.json(); }).then(function (d) { apply(d.modules || []); })
+      .catch(function () {
+        var note = document.getElementById('status-sync-note');
+        if (note) note.textContent = 'offline (static labels)';
+      });
+  })();
+  </script>
 </body>
 </html>
