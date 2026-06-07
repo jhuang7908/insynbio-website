@@ -141,14 +141,15 @@
       <div class="modal-options">
         <label>音质</label>
         <select id="ttsModelSelect">
+          <option value="tts-1">快速 (tts-1) · 推荐</option>
           <option value="tts-1-hd">高音质 (tts-1-hd)</option>
-          <option value="tts-1">快速 (tts-1)</option>
         </select>
         <label>语速</label>
         <select id="ttsSpeedSelect">
           <option value="0.92">较慢 0.92</option>
-          <option value="1.0" selected>正常 1.0</option>
-          <option value="1.08">稍快 1.08</option>
+          <option value="1.0">正常 1.0</option>
+          <option value="1.05" selected>稍快 1.05 · 推荐</option>
+          <option value="1.08">更快 1.08</option>
         </select>
       </div>
       <div class="modal-actions">
@@ -186,15 +187,22 @@
       if (saved && TTS_VOICES.includes(saved)) return saved;
       return "onyx";
     })();
-    let ttsModel = params.get("tts_model") === "tts-1" ? "tts-1"
-      : (localStorage.getItem("ppt-voice-model") === "tts-1" ? "tts-1" : "tts-1-hd");
+    let ttsModel = (() => {
+      const q = params.get("tts_model");
+      if (q === "tts-1-hd" || q === "tts-1") return q;
+      const saved = localStorage.getItem("ppt-voice-model");
+      if (saved === "tts-1-hd" || saved === "tts-1") return saved;
+      return "tts-1";
+    })();
     let ttsSpeed = (() => {
       const fromUrl = parseFloat(params.get("speed") || "");
       if (!Number.isNaN(fromUrl)) return Math.min(2, Math.max(0.5, fromUrl));
       const saved = parseFloat(localStorage.getItem("ppt-voice-speed") || "");
       if (!Number.isNaN(saved)) return Math.min(2, Math.max(0.5, saved));
-      return 1.0;
+      return 1.05;
     })();
+    const SLIDE_PAUSE_MS = 250;
+    const TTS_MAX_CHARS = 4096;
     const State = { IDLE: "idle", LISTENING: "listening", SPEAKING: "speaking", THINKING: "thinking" };
 
     let state = State.IDLE;
@@ -259,8 +267,9 @@
       return text.split(/(?<=[。！？；\n])/g).map((s) => s.trim()).filter(Boolean);
     }
 
-    /** Fewer TTS round-trips → less pause between phrases */
-    function chunkForTts(text, maxLen = 320) {
+    /** One API call per slide when script fits in TTS_MAX_CHARS */
+    function chunkForTts(text, maxLen = TTS_MAX_CHARS) {
+      if (!text || text.length <= maxLen) return [text];
       const sentences = splitSentences(text);
       const chunks = [];
       let buf = "";
@@ -343,6 +352,18 @@
       return typeof AbortSignal.any === "function" ? AbortSignal.any(signals) : signals[0];
     }
 
+    async function fetchCloudAudioPrefetch(text) {
+      const res = await fetch(`${TTS_API}/speak`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ text, voice: ttsVoice, model: ttsModel, speed: ttsSpeed }),
+        signal: typeof AbortSignal.timeout === "function" ? AbortSignal.timeout(90000) : undefined,
+      });
+      if (!res.ok) throw new Error(`TTS ${res.status}`);
+      const blob = await res.blob();
+      return URL.createObjectURL(blob);
+    }
+
     async function fetchCloudAudioUrl(sentence, gen) {
       if (gen !== speakGen) throw new DOMException("Aborted", "AbortError");
       const res = await fetch(`${TTS_API}/speak`, {
@@ -355,6 +376,21 @@
       const blob = await res.blob();
       if (gen !== speakGen) throw new DOMException("Aborted", "AbortError");
       return URL.createObjectURL(blob);
+    }
+
+    function prefetchSlideAudio(slideIndex) {
+      if (slideIndex < 0 || slideIndex >= slides.length || !useCloudTts || !TTS_API) return;
+      const script = slides[slideIndex]?.script;
+      if (!script) return;
+      const key = `slide:${slideIndex}`;
+      if (ttsPrefetch.cache.has(key)) return;
+      ttsPrefetch.cache.set(
+        key,
+        fetchCloudAudioPrefetch(script).catch((e) => {
+          ttsPrefetch.cache.delete(key);
+          throw e;
+        })
+      );
     }
 
     function prefetchCloudChunk(sentence, key, gen) {
@@ -465,10 +501,10 @@
       return "播报中";
     }
 
-    async function speakParts(parts, { trackNarration = false, startAt = 0, deckLabel = "" } = {}) {
+    async function speakParts(parts, { trackNarration = false, startAt = 0, deckLabel = "", slideIndex = null } = {}) {
       const gen = ++speakGen;
       abortCtrl = new AbortController();
-      clearTtsPrefetch(gen);
+      if (startAt === 0) clearTtsPrefetch(gen);
       if (trackNarration) {
         narration = { active: true, parts, index: startAt };
       }
@@ -481,10 +517,13 @@
           if (abortCtrl.signal.aborted || gen !== speakGen) break;
           if (trackNarration) narration.index = i;
           const progress = parts.length > 1 ? `第 ${i + 1}/${parts.length} 段` : "";
-          if (useCloudTts && TTS_API && i + 1 < parts.length) {
+          const cacheKey = slideIndex != null && parts.length === 1 ? `slide:${slideIndex}` : `${gen}:${i}`;
+          if (slideIndex != null && presentation.active) {
+            prefetchSlideAudio(slideIndex + 1);
+          } else if (useCloudTts && TTS_API && i + 1 < parts.length) {
             prefetchCloudChunk(parts[i + 1], `${gen}:${i + 1}`, gen);
           }
-          await speakOne(parts[i], gen, `${gen}:${i}`, progress);
+          await speakOne(parts[i], gen, cacheKey, progress);
           spoke++;
         }
         finishedAll = gen === speakGen && spoke === parts.length - startAt && parts.length > 0;
@@ -533,7 +572,7 @@
       updateActionButtons();
       primePlayerOnClick();
       showError("");
-      speakStream(s, { trackNarration: true, startAt: 0 });
+      speakStream(s, { trackNarration: true, startAt: 0, slideIndex: currentSlide });
     }
 
     function getDeckIntro() {
@@ -561,7 +600,7 @@
         endPresentation("全部讲完 · 感谢聆听");
         return;
       }
-      await delay(500);
+      await delay(200);
       const ok = await speakAside(outro, "结束语 · 欢迎提问", "结束");
       if (!presentation.active || !ok) return;
       const wantQa = listenEnabled;
@@ -587,16 +626,18 @@
       if (!script) return presentSlide(slideIndex + 1);
 
       setState(State.SPEAKING, `第 ${slideIndex + 1}/${slides.length} 页 · 自动翻页`, "演讲");
-      const done = await speakStream(script, { trackNarration: true, startAt: 0, deckLabel: "演讲" });
+      prefetchSlideAudio(slideIndex);
+      const done = await speakStream(script, {
+        trackNarration: true, startAt: 0, deckLabel: "演讲", slideIndex,
+      });
       if (!presentation.active) return;
-      if (!done) return; // interrupted — resume hook will continue
+      if (!done) return;
 
       if (slideIndex >= slides.length - 1) {
-        if (!done) return;
         await speakOutroIfNeeded();
         return;
       }
-      await delay(700);
+      await delay(SLIDE_PAUSE_MS);
       return presentSlide(slideIndex + 1);
     }
 
@@ -605,14 +646,16 @@
       updatePresentButton();
       primePlayerOnClick();
       showError("");
+      prefetchSlideAudio(from);
       if (from === 0) {
         const intro = getDeckIntro();
         if (intro) {
           currentSlide = 0;
           renderSlide();
+          prefetchSlideAudio(0);
           const ok = await speakAside(intro, "开场白", "开场");
           if (!presentation.active || !ok) return;
-          await delay(600);
+          await delay(SLIDE_PAUSE_MS);
         }
       }
       await presentSlide(from);
@@ -625,7 +668,7 @@
         await speakOutroIfNeeded();
         return;
       }
-      await delay(500);
+      await delay(SLIDE_PAUSE_MS);
       await presentSlide(next);
     }
 
@@ -937,9 +980,9 @@
     function initVoicePicker() {
       $("ttsModelSelect").value = ttsModel;
       const speedSel = $("ttsSpeedSelect");
-      if (!["0.92", "1.0", "1.08"].includes(String(ttsSpeed))) {
+      if (!["0.92", "1.0", "1.05", "1.08"].includes(String(ttsSpeed))) {
         speedSel.innerHTML = `<option value="${ttsSpeed}">自定义 ${ttsSpeed}</option>` +
-          `<option value="0.92">较慢 0.92</option><option value="1.0">正常 1.0</option><option value="1.08">稍快 1.08</option>`;
+          `<option value="0.92">较慢 0.92</option><option value="1.0">正常 1.0</option><option value="1.05">稍快 1.05</option><option value="1.08">更快 1.08</option>`;
       }
       speedSel.value = String(ttsSpeed);
       updateVoiceLabel();
