@@ -59,6 +59,24 @@
     .hint { font-size: 0.75rem; color: var(--muted); margin-bottom: 12px; }
     .hint code { color: var(--accent); }
     .toggle-row { display: flex; align-items: center; gap: 8px; font-size: 0.78rem; color: var(--muted); margin-top: 8px; }
+    .voice-bar { display: flex; align-items: center; justify-content: space-between; gap: 8px; padding: 8px 12px; background: var(--panel); border: 1px solid var(--border); border-radius: 10px; margin-bottom: 12px; font-size: 0.82rem; }
+    .voice-bar span { color: var(--muted); flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .voice-bar .btn { flex-shrink: 0; padding: 6px 12px; }
+    .modal { position: fixed; inset: 0; z-index: 1000; display: flex; align-items: center; justify-content: center; padding: 16px; }
+    .modal[hidden] { display: none; }
+    .modal-backdrop { position: absolute; inset: 0; background: rgba(0,0,0,0.65); }
+    .modal-box { position: relative; width: min(420px, 100%); max-height: 90vh; overflow-y: auto; background: var(--panel); border: 1px solid var(--border); border-radius: 12px; padding: 16px; box-shadow: 0 16px 48px rgba(0,0,0,0.45); }
+    .modal-box h3 { font-size: 1rem; margin-bottom: 12px; }
+    .voice-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 12px; }
+    .voice-card { padding: 10px 12px; background: var(--bg); border: 2px solid var(--border); border-radius: 8px; cursor: pointer; text-align: left; transition: border-color 0.15s; }
+    .voice-card:hover { border-color: var(--accent); }
+    .voice-card.selected { border-color: var(--accent); background: rgba(59,130,246,0.12); }
+    .voice-card .name { font-size: 0.88rem; font-weight: 600; display: block; }
+    .voice-card .id { font-size: 0.72rem; color: var(--muted); margin-top: 2px; }
+    .modal-actions { display: flex; gap: 8px; margin-top: 12px; }
+    .modal-actions .btn { flex: 1; }
+    .modal-options label { display: block; font-size: 0.75rem; color: var(--muted); margin: 8px 0 4px; }
+    .modal-options select { width: 100%; padding: 7px 9px; background: var(--bg); border: 1px solid var(--border); border-radius: 6px; color: var(--text); font-size: 0.82rem; }
   </style>
 </head>
 <body>
@@ -92,31 +110,16 @@
         <button type="button" class="btn" id="btnListen">提问</button>
         <button type="button" class="btn danger" id="btnStop">停止</button>
       </div>
+      <div class="voice-bar">
+        <span id="voiceCurrentLabel">播音员：onyx · 男声 · 稳重</span>
+        <button type="button" class="btn" id="btnOpenVoiceModal">选择播音员</button>
+      </div>
       <div class="panel"><h2>讲解脚本</h2><p class="script" id="scriptText">—</p></div>
       <div class="panel"><h2>常见问题（也可直接问）</h2><div class="faq-list" id="faqList"></div></div>
       <div class="panel">
         <h2>对话</h2>
         <div class="transcript" id="transcript">等待语音输入…</div>
         <div class="reply" id="reply" hidden></div>
-      </div>
-      <div class="panel settings" style="margin-bottom:12px">
-        <h2>播音员</h2>
-        <label>云端语音（OpenAI · 6 位）</label>
-        <div class="voice-row">
-          <select id="voiceSelect" aria-label="选择播音员"></select>
-          <button type="button" class="btn" id="btnVoicePreview">试听</button>
-        </div>
-        <label>音质</label>
-        <select id="ttsModelSelect">
-          <option value="tts-1-hd">高音质 (tts-1-hd)</option>
-          <option value="tts-1">快速 (tts-1)</option>
-        </select>
-        <label>语速</label>
-        <select id="ttsSpeedSelect">
-          <option value="0.92">较慢 0.92</option>
-          <option value="1.0" selected>正常 1.0</option>
-          <option value="1.08">稍快 1.08</option>
-        </select>
       </div>
       <details class="panel settings">
         <summary>可选：接入 LLM（回答更灵活）</summary>
@@ -129,6 +132,31 @@
         <label class="toggle-row"><input type="checkbox" id="autoResume" checked /> 答完自动续讲剩余内容</label>
       </details>
     </aside>
+  </div>
+  <div id="voiceModal" class="modal" hidden role="dialog" aria-labelledby="voiceModalTitle" aria-modal="true">
+    <div class="modal-backdrop" id="voiceModalBackdrop"></div>
+    <div class="modal-box">
+      <h3 id="voiceModalTitle">选择播音员（OpenAI · 6 位）</h3>
+      <div class="voice-grid" id="voiceGrid"></div>
+      <div class="modal-options">
+        <label>音质</label>
+        <select id="ttsModelSelect">
+          <option value="tts-1-hd">高音质 (tts-1-hd)</option>
+          <option value="tts-1">快速 (tts-1)</option>
+        </select>
+        <label>语速</label>
+        <select id="ttsSpeedSelect">
+          <option value="0.92">较慢 0.92</option>
+          <option value="1.0" selected>正常 1.0</option>
+          <option value="1.08">稍快 1.08</option>
+        </select>
+      </div>
+      <div class="modal-actions">
+        <button type="button" class="btn" id="btnVoicePreview">试听</button>
+        <button type="button" class="btn primary" id="btnVoiceConfirm">确定</button>
+        <button type="button" class="btn" id="btnVoiceClose">取消</button>
+      </div>
+    </div>
   </div>
   <script>
     const params = new URLSearchParams(location.search);
@@ -868,33 +896,57 @@
       $("deckSub").textContent = `${base} · 播音员：${ttsVoice}（${VOICE_LABELS[ttsVoice] || ttsVoice}）`;
     }
 
-    function initVoicePicker() {
-      const sel = $("voiceSelect");
-      sel.innerHTML = "";
+    function updateVoiceLabel() {
+      const el = $("voiceCurrentLabel");
+      if (el) el.textContent = `播音员：${ttsVoice} · ${VOICE_LABELS[ttsVoice] || ttsVoice}`;
+      appendVoiceToSub();
+    }
+
+    function openVoiceModal() {
+      $("voiceModal").hidden = false;
+      renderVoiceCards();
+      $("ttsModelSelect").value = ttsModel;
+      $("ttsSpeedSelect").value = String(ttsSpeed);
+    }
+
+    function closeVoiceModal() {
+      $("voiceModal").hidden = true;
+    }
+
+    function selectVoice(id) {
+      if (!TTS_VOICES.includes(id)) return;
+      ttsVoice = id;
+      localStorage.setItem("ppt-voice-voice", ttsVoice);
+      renderVoiceCards();
+      updateVoiceLabel();
+    }
+
+    function renderVoiceCards() {
+      const grid = $("voiceGrid");
+      grid.innerHTML = "";
       for (const id of TTS_VOICES) {
-        const opt = document.createElement("option");
-        opt.value = id;
-        opt.textContent = `${VOICE_LABELS[id]} — ${id}`;
-        sel.appendChild(opt);
+        const card = document.createElement("button");
+        card.type = "button";
+        card.className = "voice-card" + (id === ttsVoice ? " selected" : "");
+        card.innerHTML = `<span class="name">${VOICE_LABELS[id]}</span><span class="id">${id}</span>`;
+        card.addEventListener("click", () => selectVoice(id));
+        grid.appendChild(card);
       }
-      sel.value = ttsVoice;
+    }
+
+    function initVoicePicker() {
       $("ttsModelSelect").value = ttsModel;
       const speedSel = $("ttsSpeedSelect");
-      const speedOpts = ["0.92", "1.0", "1.08"];
-      if (!speedOpts.includes(String(ttsSpeed))) {
-        const opt = document.createElement("option");
-        opt.value = String(ttsSpeed);
-        opt.textContent = `自定义 ${ttsSpeed}`;
-        opt.selected = true;
-        speedSel.appendChild(opt);
-      } else {
-        speedSel.value = String(ttsSpeed);
+      if (!["0.92", "1.0", "1.08"].includes(String(ttsSpeed))) {
+        speedSel.innerHTML = `<option value="${ttsSpeed}">自定义 ${ttsSpeed}</option>` +
+          `<option value="0.92">较慢 0.92</option><option value="1.0">正常 1.0</option><option value="1.08">稍快 1.08</option>`;
       }
-      sel.addEventListener("change", () => {
-        ttsVoice = sel.value;
-        localStorage.setItem("ppt-voice-voice", ttsVoice);
-        appendVoiceToSub();
-      });
+      speedSel.value = String(ttsSpeed);
+      updateVoiceLabel();
+      $("btnOpenVoiceModal").addEventListener("click", openVoiceModal);
+      $("btnVoiceClose").addEventListener("click", closeVoiceModal);
+      $("voiceModalBackdrop").addEventListener("click", closeVoiceModal);
+      $("btnVoiceConfirm").addEventListener("click", closeVoiceModal);
       $("ttsModelSelect").addEventListener("change", (e) => {
         ttsModel = e.target.value;
         localStorage.setItem("ppt-voice-model", ttsModel);
@@ -938,10 +990,14 @@
     $("btnStop").addEventListener("click", () => hardStop(true));
 
     document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") {
+        if (!$("voiceModal").hidden) { closeVoiceModal(); return; }
+        hardStop(true);
+        return;
+      }
       if (e.key === "ArrowRight") $("btnNext").click();
       if (e.key === "ArrowLeft") $("btnPrev").click();
       if (e.key === " ") { e.preventDefault(); $("btnPresent").click(); }
-      if (e.key === "Escape") hardStop(true);
     });
 
     speechSynthesis.onvoiceschanged = () => getZhVoice();
