@@ -35,7 +35,9 @@
     .btn.danger { border-color: var(--danger); color: var(--danger); }
     .btn:disabled { opacity: 0.4; cursor: not-allowed; }
     .slide-num { flex: 1; text-align: center; font-weight: 600; }
-    .actions { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .actions { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 12px; }
+    .actions .span2 { grid-column: span 2; }
+    .actions .btn { width: 100%; text-align: center; }
     .panel { background: var(--panel); border: 1px solid var(--border); border-radius: 10px; padding: 12px; margin-bottom: 12px; }
     .panel h2 { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); margin-bottom: 8px; }
     .script { line-height: 1.6; font-size: 0.88rem; max-height: 160px; overflow-y: auto; }
@@ -49,6 +51,10 @@
     .settings summary { cursor: pointer; color: var(--muted); font-size: 0.82rem; }
     .settings label { display: block; font-size: 0.75rem; color: var(--muted); margin: 8px 0 4px; }
     .settings input { width: 100%; padding: 7px 9px; background: var(--bg); border: 1px solid var(--border); border-radius: 6px; color: var(--text); font-size: 0.82rem; }
+    .settings select { width: 100%; padding: 7px 9px; background: var(--bg); border: 1px solid var(--border); border-radius: 6px; color: var(--text); font-size: 0.82rem; }
+    .voice-row { display: flex; gap: 8px; align-items: center; margin-top: 4px; }
+    .voice-row select { flex: 1; }
+    .voice-row .btn { flex-shrink: 0; padding: 7px 10px; }
     .unsupported { color: var(--danger); font-size: 0.82rem; display: none; margin-bottom: 8px; padding: 8px 10px; background: rgba(239,68,68,0.12); border-radius: 8px; line-height: 1.45; }
     .hint { font-size: 0.75rem; color: var(--muted); margin-bottom: 12px; }
     .hint code { color: var(--accent); }
@@ -62,7 +68,7 @@
       <p class="sub" id="deckSub">幻灯片 + 语音讲解 + 可打断问答</p>
       <div class="slide-stage"><img id="slideImage" alt="当前幻灯片" /></div>
       <p class="slide-title" id="slideTitle">—</p>
-      <p class="hint">← → 翻页 · 空格本页 · 「全场演讲」自动翻页连讲 · Esc 停止</p>
+      <p class="hint">← → 翻页 · 空格全场演讲 · Esc 停止</p>
     </section>
     <aside>
       <p class="unsupported" id="unsupported"></p>
@@ -79,10 +85,11 @@
         <button type="button" id="btnNext">下一页</button>
       </div>
       <div class="actions">
-        <button type="button" class="btn primary" id="btnPresent">全场演讲</button>
-        <button type="button" class="btn" id="btnSpeak">讲解本页</button>
-        <button type="button" class="btn" id="btnListen">连续聆听</button>
-        <button type="button" class="btn" id="btnResume">继续讲解</button>
+        <button type="button" class="btn primary span2" id="btnPresent">全场演讲</button>
+        <button type="button" class="btn" id="btnSpeak">讲本页</button>
+        <button type="button" class="btn" id="btnContinue" hidden>继续</button>
+        <button type="button" class="btn" id="btnRestart" hidden>重新讲解</button>
+        <button type="button" class="btn" id="btnListen">提问</button>
         <button type="button" class="btn danger" id="btnStop">停止</button>
       </div>
       <div class="panel"><h2>讲解脚本</h2><p class="script" id="scriptText">—</p></div>
@@ -91,6 +98,25 @@
         <h2>对话</h2>
         <div class="transcript" id="transcript">等待语音输入…</div>
         <div class="reply" id="reply" hidden></div>
+      </div>
+      <div class="panel settings" style="margin-bottom:12px">
+        <h2>播音员</h2>
+        <label>云端语音（OpenAI · 6 位）</label>
+        <div class="voice-row">
+          <select id="voiceSelect" aria-label="选择播音员"></select>
+          <button type="button" class="btn" id="btnVoicePreview">试听</button>
+        </div>
+        <label>音质</label>
+        <select id="ttsModelSelect">
+          <option value="tts-1-hd">高音质 (tts-1-hd)</option>
+          <option value="tts-1">快速 (tts-1)</option>
+        </select>
+        <label>语速</label>
+        <select id="ttsSpeedSelect">
+          <option value="0.92">较慢 0.92</option>
+          <option value="1.0" selected>正常 1.0</option>
+          <option value="1.08">稍快 1.08</option>
+        </select>
       </div>
       <details class="panel settings">
         <summary>可选：接入 LLM（回答更灵活）</summary>
@@ -116,6 +142,31 @@
       return "";
     })();
     const SILENT_WAV = "data:audio/wav;base64,UklGRigAAABXQVZFZm10IBIAAAABAAEARKwAAIhYAQACABAAZGF0YQQAAAAAAA==";
+    const TTS_VOICES = ["alloy", "echo", "fable", "onyx", "nova", "shimmer"];
+    const VOICE_LABELS = {
+      onyx: "男声 · 稳重",
+      echo: "男声 · 清晰",
+      fable: "叙事 · 英式",
+      alloy: "中性 · 通用",
+      nova: "女声 · 明亮",
+      shimmer: "女声 · 柔和",
+    };
+    let ttsVoice = (() => {
+      const fromUrl = params.get("voice")?.toLowerCase();
+      if (fromUrl && TTS_VOICES.includes(fromUrl)) return fromUrl;
+      const saved = localStorage.getItem("ppt-voice-voice");
+      if (saved && TTS_VOICES.includes(saved)) return saved;
+      return "onyx";
+    })();
+    let ttsModel = params.get("tts_model") === "tts-1" ? "tts-1"
+      : (localStorage.getItem("ppt-voice-model") === "tts-1" ? "tts-1" : "tts-1-hd");
+    let ttsSpeed = (() => {
+      const fromUrl = parseFloat(params.get("speed") || "");
+      if (!Number.isNaN(fromUrl)) return Math.min(2, Math.max(0.5, fromUrl));
+      const saved = parseFloat(localStorage.getItem("ppt-voice-speed") || "");
+      if (!Number.isNaN(saved)) return Math.min(2, Math.max(0.5, saved));
+      return 1.0;
+    })();
     const State = { IDLE: "idle", LISTENING: "listening", SPEAKING: "speaking", THINKING: "thinking" };
 
     let state = State.IDLE;
@@ -156,6 +207,20 @@
       const labels = { idle: "待命", listening: "聆听中", speaking: "播报中", thinking: "思考中" };
       $("statusLabel").textContent = labelOverride || labels[s] || s;
       if (hint !== undefined) $("statusHint").textContent = hint;
+      updateActionButtons();
+    }
+
+    function updateActionButtons() {
+      const canContinue = narration.active && narration.index < narration.parts.length && state !== State.SPEAKING;
+      const speaking = state === State.SPEAKING;
+      $("btnContinue").hidden = !canContinue;
+      $("btnSpeak").hidden = canContinue || speaking;
+      $("btnRestart").hidden = !speaking && !canContinue;
+      $("btnPresent").textContent = presentation.active ? "停止演讲" : "全场演讲";
+      $("btnPresent").classList.toggle("primary", !presentation.active);
+      $("btnPresent").classList.toggle("danger", presentation.active);
+      $("btnListen").textContent = listenEnabled ? "停止提问" : "提问";
+      $("btnListen").classList.toggle("primary", listenEnabled);
     }
 
     function getZhVoice() {
@@ -255,7 +320,7 @@
       const res = await fetch(`${TTS_API}/speak`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ text: sentence, voice: "onyx", model: "tts-1-hd", speed: 1.0 }),
+        body: JSON.stringify({ text: sentence, voice: ttsVoice, model: ttsModel, speed: ttsSpeed }),
         signal: mergeAbortSignals(),
       });
       if (!res.ok) throw new Error(`TTS ${res.status}`);
@@ -419,14 +484,28 @@
     }
 
     function updatePresentButton() {
-      const btn = $("btnPresent");
-      if (presentation.active) {
-        btn.textContent = "演讲进行中…";
-        btn.classList.add("primary");
-      } else {
-        btn.textContent = "全场演讲";
-        btn.classList.remove("primary");
+      updateActionButtons();
+    }
+
+    function speakCurrentSlide({ restart = false } = {}) {
+      const s = slides[currentSlide]?.script;
+      if (!s) {
+        showError("本页没有讲解脚本，请检查 slides.json");
+        return;
       }
+      if (restart) {
+        speakGen++;
+        clearTtsPrefetch(speakGen);
+        abortCtrl?.abort();
+        synth.cancel();
+        stopPlayer();
+        narration = { active: false, parts: [], index: 0 };
+      }
+      presentation.active = false;
+      updateActionButtons();
+      primePlayerOnClick();
+      showError("");
+      speakStream(s, { trackNarration: true, startAt: 0 });
     }
 
     function getDeckIntro() {
@@ -575,6 +654,7 @@
         faqEl.appendChild(chip);
       });
       narration = { active: false, parts: [], index: 0 };
+      updateActionButtons();
     }
 
     function scoreFaq(userText, item) {
@@ -773,18 +853,61 @@
 
     function toggleListen() {
       listenEnabled = !listenEnabled;
-      const btn = $("btnListen");
       if (listenEnabled) {
-        btn.textContent = "停止聆听";
-        btn.classList.add("primary");
         setState(State.LISTENING, "请提问 — 打断后会现场回答");
         try { recognition.start(); } catch (_) {}
       } else {
-        btn.textContent = "连续聆听";
-        btn.classList.remove("primary");
         recognition?.stop();
-        setState(State.IDLE);
+        setState(State.IDLE, "提问已关闭");
       }
+      updateActionButtons();
+    }
+
+    function appendVoiceToSub() {
+      const base = $("deckSub").textContent.replace(/ · 播音员：.*$/, "").replace(/ · 云端语音 OK · .*$/, "");
+      $("deckSub").textContent = `${base} · 播音员：${ttsVoice}（${VOICE_LABELS[ttsVoice] || ttsVoice}）`;
+    }
+
+    function initVoicePicker() {
+      const sel = $("voiceSelect");
+      sel.innerHTML = "";
+      for (const id of TTS_VOICES) {
+        const opt = document.createElement("option");
+        opt.value = id;
+        opt.textContent = `${VOICE_LABELS[id]} — ${id}`;
+        sel.appendChild(opt);
+      }
+      sel.value = ttsVoice;
+      $("ttsModelSelect").value = ttsModel;
+      const speedSel = $("ttsSpeedSelect");
+      const speedOpts = ["0.92", "1.0", "1.08"];
+      if (!speedOpts.includes(String(ttsSpeed))) {
+        const opt = document.createElement("option");
+        opt.value = String(ttsSpeed);
+        opt.textContent = `自定义 ${ttsSpeed}`;
+        opt.selected = true;
+        speedSel.appendChild(opt);
+      } else {
+        speedSel.value = String(ttsSpeed);
+      }
+      sel.addEventListener("change", () => {
+        ttsVoice = sel.value;
+        localStorage.setItem("ppt-voice-voice", ttsVoice);
+        appendVoiceToSub();
+      });
+      $("ttsModelSelect").addEventListener("change", (e) => {
+        ttsModel = e.target.value;
+        localStorage.setItem("ppt-voice-model", ttsModel);
+      });
+      speedSel.addEventListener("change", (e) => {
+        ttsSpeed = parseFloat(e.target.value) || 1.0;
+        localStorage.setItem("ppt-voice-speed", String(ttsSpeed));
+      });
+      $("btnVoicePreview").addEventListener("click", () => {
+        presentation.active = false;
+        primePlayerOnClick();
+        speakParts(["各位好，这是当前播音员试听。"], { deckLabel: "试听" });
+      });
     }
 
     async function loadDeck() {
@@ -805,23 +928,13 @@
       if (presentation.active) { hardStop(true); return; }
       startPresentation(currentSlide);
     });
-    $("btnSpeak").addEventListener("click", () => {
-      presentation.active = false;
-      updatePresentButton();
-      const s = slides[currentSlide]?.script;
-      if (!s) {
-        showError("本页没有讲解脚本，请检查 slides.json");
-        return;
-      }
-      primePlayerOnClick();
-      showError("");
-      speakStream(s, { trackNarration: true, startAt: 0 });
-    });
-    $("btnListen").addEventListener("click", toggleListen);
-    $("btnResume").addEventListener("click", async () => {
+    $("btnSpeak").addEventListener("click", () => speakCurrentSlide());
+    $("btnContinue").addEventListener("click", async () => {
       await resumeNarration();
       await continuePresentationIfNeeded();
     });
+    $("btnRestart").addEventListener("click", () => speakCurrentSlide({ restart: true }));
+    $("btnListen").addEventListener("click", toggleListen);
     $("btnStop").addEventListener("click", () => hardStop(true));
 
     document.addEventListener("keydown", (e) => {
@@ -833,16 +946,19 @@
 
     speechSynthesis.onvoiceschanged = () => getZhVoice();
     initRecognition();
+    initVoicePicker();
     loadDeck().then(async () => {
       if (TTS_API) {
         try {
           const h = await fetch(`${TTS_API}/health`);
           const j = await h.json();
-          if (j.has_key) $("deckSub").textContent += " · 云端语音 OK";
-          else $("deckSub").textContent += " · 云端语音未配置，用浏览器音";
+          if (j.has_key) appendVoiceToSub();
+          else $("deckSub").textContent += " · 云端未配置，用浏览器音";
         } catch (_) {
           useCloudTts = false;
         }
+      } else {
+        appendVoiceToSub();
       }
     }).catch((e) => { $("deckSub").textContent = "加载失败：" + e.message; console.error(e); });
   </script>
