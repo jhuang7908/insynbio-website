@@ -67,12 +67,28 @@
     .modal-backdrop { position: absolute; inset: 0; background: rgba(0,0,0,0.65); }
     .modal-box { position: relative; width: min(420px, 100%); max-height: 90vh; overflow-y: auto; background: var(--panel); border: 1px solid var(--border); border-radius: 12px; padding: 16px; box-shadow: 0 16px 48px rgba(0,0,0,0.45); }
     .modal-box h3 { font-size: 1rem; margin-bottom: 12px; }
-    .voice-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 12px; }
-    .voice-card { padding: 10px 12px; background: var(--bg); border: 2px solid var(--border); border-radius: 8px; cursor: pointer; text-align: left; transition: border-color 0.15s; }
-    .voice-card:hover { border-color: var(--accent); }
-    .voice-card.selected { border-color: var(--accent); background: rgba(59,130,246,0.12); }
-    .voice-card .name { font-size: 0.88rem; font-weight: 600; display: block; }
-    .voice-card .id { font-size: 0.72rem; color: var(--muted); margin-top: 2px; }
+    .voice-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 12px; }
+    .voice-card {
+      position: relative; padding: 12px 12px 12px 36px; background: #243044; border: 2px solid #3d4f6a;
+      border-radius: 8px; cursor: pointer; text-align: left; transition: border-color 0.15s, background 0.15s, box-shadow 0.15s;
+      color: var(--text);
+    }
+    .voice-card:not(.selected):hover { border-color: #6b8cae; background: #2a3850; }
+    .voice-card.selected {
+      border-color: #3b82f6; background: rgba(59,130,246,0.22);
+      box-shadow: 0 0 0 1px rgba(59,130,246,0.45), inset 0 0 0 1px rgba(255,255,255,0.06);
+    }
+    .voice-card.selected:hover { border-color: #60a5fa; }
+    .voice-card .mark {
+      position: absolute; left: 10px; top: 50%; transform: translateY(-50%);
+      width: 18px; height: 18px; border-radius: 50%; border: 2px solid #6b8cae;
+      background: transparent; font-size: 0.65rem; line-height: 14px; text-align: center; color: transparent;
+    }
+    .voice-card.selected .mark { border-color: #3b82f6; background: #3b82f6; color: #fff; }
+    .voice-card .name { font-size: 0.88rem; font-weight: 600; display: block; color: #f1f5f9; }
+    .voice-card .id { font-size: 0.72rem; color: #94a3b8; margin-top: 3px; display: block; }
+    .voice-card.selected .name { color: #fff; }
+    .voice-card.selected .id { color: #bfdbfe; }
     .modal-actions { display: flex; gap: 8px; margin-top: 12px; }
     .modal-actions .btn { flex: 1; }
     .modal-options label { display: block; font-size: 0.75rem; color: var(--muted); margin: 8px 0 4px; }
@@ -137,7 +153,7 @@
     <div class="modal-backdrop" id="voiceModalBackdrop"></div>
     <div class="modal-box">
       <h3 id="voiceModalTitle">选择播音员（OpenAI · 6 位）</h3>
-      <div class="voice-grid" id="voiceGrid"></div>
+      <div class="voice-grid" id="voiceGrid" role="radiogroup" aria-label="播音员"></div>
       <div class="modal-options">
         <label>音质</label>
         <select id="ttsModelSelect">
@@ -171,7 +187,7 @@
       return "";
     })();
     const SILENT_WAV = "data:audio/wav;base64,UklGRigAAABXQVZFZm10IBIAAAABAAEARKwAAIhYAQACABAAZGF0YQQAAAAAAA==";
-    const TTS_VOICES = ["alloy", "echo", "fable", "onyx", "nova", "shimmer"];
+    const TTS_VOICES = ["onyx", "echo", "fable", "alloy", "nova", "shimmer"];
     const VOICE_LABELS = {
       onyx: "男声 · 稳重",
       echo: "男声 · 清晰",
@@ -968,10 +984,13 @@
       const grid = $("voiceGrid");
       grid.innerHTML = "";
       for (const id of TTS_VOICES) {
+        const selected = id === ttsVoice;
         const card = document.createElement("button");
         card.type = "button";
-        card.className = "voice-card" + (id === ttsVoice ? " selected" : "");
-        card.innerHTML = `<span class="name">${VOICE_LABELS[id]}</span><span class="id">${id}</span>`;
+        card.className = "voice-card" + (selected ? " selected" : "");
+        card.setAttribute("role", "radio");
+        card.setAttribute("aria-checked", selected ? "true" : "false");
+        card.innerHTML = `<span class="mark" aria-hidden="true">${selected ? "✓" : ""}</span><span class="name">${VOICE_LABELS[id]}</span><span class="id">${id}</span>`;
         card.addEventListener("click", () => selectVoice(id));
         grid.appendChild(card);
       }
