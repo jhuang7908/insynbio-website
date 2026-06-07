@@ -146,6 +146,7 @@
         <label>Model</label>
         <input type="text" id="apiModel" value="gpt-4o-mini" />
         <label class="toggle-row"><input type="checkbox" id="autoResume" checked /> 答完自动续讲剩余内容</label>
+        <label class="toggle-row"><input type="checkbox" id="qaAutoListen" checked /> 演讲/讲本页时自动开麦克风</label>
       </details>
     </aside>
   </div>
@@ -240,6 +241,7 @@
     let audioPrimed = false;
     let lastPlayError = "";
     let presentation = { active: false };
+    let qaAutoListen = localStorage.getItem("ppt-voice-qa-auto") !== "0";
 
     const delay = (ms) => new Promise((r) => setTimeout(r, ms));
 
@@ -512,9 +514,18 @@
     }
 
     function speakingHint(trackNarration) {
-      if (trackNarration && listenEnabled) return "可随时提问 · 答完自动续讲";
-      if (trackNarration) return "播放中 · 提问请先点「连续聆听」";
+      if (trackNarration && listenEnabled) return "可随时语音提问 · 答完自动续讲";
+      if (trackNarration) return "播放中 · 点「提问」可打断";
       return "播报中";
+    }
+
+    function ensureListen(on, hint) {
+      if (on && !listenEnabled) {
+        listenEnabled = true;
+        try { recognition?.start(); } catch (_) {}
+        updateActionButtons();
+      }
+      if (hint && listenEnabled) setState(state, hint);
     }
 
     async function speakParts(parts, { trackNarration = false, startAt = 0, deckLabel = "", slideIndex = null } = {}) {
@@ -588,6 +599,7 @@
       updateActionButtons();
       primePlayerOnClick();
       showError("");
+      if (qaAutoListen) ensureListen(true);
       speakStream(s, { trackNarration: true, startAt: 0, slideIndex: currentSlide });
     }
 
@@ -662,6 +674,7 @@
       updatePresentButton();
       primePlayerOnClick();
       showError("");
+      if (qaAutoListen) ensureListen(true);
       prefetchSlideAudio(from);
       if (from === 0) {
         const intro = getDeckIntro();
@@ -842,11 +855,24 @@
 
     function isEcho(text) {
       if (!text || text.length < 2) return true;
-      if (state === State.SPEAKING && Date.now() - ttsStartedAt < 2200) return true;
+      if (state === State.SPEAKING && Date.now() - ttsStartedAt < 1200) return true;
       const n = normalize(text);
       const chunk = normalize(lastSpokenChunk);
-      if (chunk && chunk.length > 6 && (chunk.includes(n) || n.includes(chunk.slice(0, Math.min(12, chunk.length))))) return true;
+      if (!chunk || chunk.length < 8) return false;
+      // Whole-slide TTS: do not block real questions that share keywords with script
+      if (chunk.length > 80) {
+        return n.length >= 12 && chunk.includes(n) && n.length / chunk.length > 0.55;
+      }
+      if (chunk === n) return true;
+      if (n.length >= 10 && chunk.includes(n)) return true;
       return false;
+    }
+
+    function shouldInterrupt(text) {
+      if (!text || text.length < 2 || !listenEnabled || state !== State.SPEAKING) return false;
+      if (isEcho(text)) return false;
+      if (RESUME_RE.test(text) || STOP_RE.test(text) || NEXT_RE.test(text) || PREV_RE.test(text)) return true;
+      return text.trim().length >= 2;
     }
 
     async function handleUserText(text, { fromClick = false } = {}) {
@@ -915,19 +941,28 @@
           if (r.isFinal) final += r[0].transcript;
           else interim += r[0].transcript;
         }
+        const live = (final || interim).trim();
+        if (live && listenEnabled) {
+          if (shouldInterrupt(live) && state === State.SPEAKING) {
+            interruptForQuestion();
+          }
+        }
         if (final && final.trim().length >= 2) {
           const ft = final.trim();
           $("transcript").innerHTML = `<span class="final">${escapeHtml(ft)}</span>`;
-          if (state === State.SPEAKING && listenEnabled && !isEcho(ft)) {
-            interruptForQuestion();
-          }
           if (listenEnabled) handleUserText(ft);
         } else if (interim && listenEnabled) {
           $("transcript").innerHTML = `<span class="interim">${escapeHtml(interim)}</span>`;
         }
       };
       recognition.onerror = (e) => {
-        if (e.error !== "no-speech" && e.error !== "aborted") console.warn(e.error);
+        if (e.error === "not-allowed") {
+          showError("麦克风未授权：请在浏览器地址栏允许麦克风，再点「提问」");
+          listenEnabled = false;
+          updateActionButtons();
+        } else if (e.error !== "no-speech" && e.error !== "aborted") {
+          console.warn(e.error);
+        }
       };
       recognition.onend = () => {
         if (listenEnabled) try { recognition.start(); } catch (_) {}
@@ -939,9 +974,13 @@
     }
 
     function toggleListen() {
-      listenEnabled = !listenEnabled;
+      const turningOn = !listenEnabled;
+      if (turningOn && state === State.SPEAKING) {
+        interruptForQuestion();
+      }
+      listenEnabled = turningOn;
       if (listenEnabled) {
-        setState(State.LISTENING, "请提问 — 打断后会现场回答");
+        setState(State.LISTENING, "请提问 — 可直接说话打断");
         try { recognition.start(); } catch (_) {}
       } else {
         recognition?.stop();
@@ -1065,6 +1104,11 @@
     speechSynthesis.onvoiceschanged = () => getZhVoice();
     initRecognition();
     initVoicePicker();
+    $("qaAutoListen").checked = qaAutoListen;
+    $("qaAutoListen").addEventListener("change", (e) => {
+      qaAutoListen = e.target.checked;
+      localStorage.setItem("ppt-voice-qa-auto", qaAutoListen ? "1" : "0");
+    });
     loadDeck().then(async () => {
       if (TTS_API) {
         try {
