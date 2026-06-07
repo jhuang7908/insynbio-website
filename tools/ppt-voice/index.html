@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PPT 语音播放器</title>
+  <style>
+    :root {
+      --bg: #0f1419;
+      --panel: #1a2332;
+      --border: #2d3a4f;
+      --text: #e8edf4;
+      --muted: #8b9cb3;
+      --accent: #3b82f6;
+      --accent-dim: #2563eb33;
+      --ok: #22c55e;
+      --warn: #f59e0b;
+      --danger: #ef4444;
+      --speaking: #8b5cf6;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      padding: 16px;
+    }
+    .layout {
+      display: grid;
+      grid-template-columns: 1fr 380px;
+      gap: 16px;
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+    @media (max-width: 960px) {
+      .layout { grid-template-columns: 1fr; }
+    }
+    h1 { font-size: 1.15rem; font-weight: 600; }
+    .sub { color: var(--muted); font-size: 0.82rem; margin: 4px 0 12px; }
+    .slide-stage {
+      background: #000;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      overflow: hidden;
+      aspect-ratio: 16 / 9;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .slide-stage img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+    .slide-title {
+      margin-top: 10px;
+      font-size: 0.85rem;
+      color: var(--muted);
+      line-height: 1.4;
+    }
+    .status-bar {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 14px;
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      margin-bottom: 12px;
+    }
+    .dot {
+      width: 10px; height: 10px; border-radius: 50%;
+      background: var(--muted);
+      flex-shrink: 0;
+    }
+    .dot.idle { background: var(--muted); }
+    .dot.listening { background: var(--ok); box-shadow: 0 0 8px var(--ok); animation: pulse 1.2s infinite; }
+    .dot.speaking { background: var(--speaking); box-shadow: 0 0 8px var(--speaking); animation: pulse 0.8s infinite; }
+    .dot.thinking { background: var(--warn); animation: pulse 1s infinite; }
+    @keyframes pulse { 50% { opacity: 0.5; } }
+    .status-text { font-size: 0.85rem; }
+    .status-text small { color: var(--muted); display: block; margin-top: 2px; font-size: 0.75rem; }
+    .slide-nav {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 12px;
+    }
+    .slide-nav button, .btn {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 8px 12px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 0.82rem;
+    }
+    .slide-nav button:hover, .btn:hover { border-color: var(--accent); }
+    .btn.primary { background: var(--accent); border-color: var(--accent); color: #fff; }
+    .btn.danger { border-color: var(--danger); color: var(--danger); }
+    .btn:disabled { opacity: 0.4; cursor: not-allowed; }
+    .slide-num { flex: 1; text-align: center; font-weight: 600; }
+    .actions { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .panel {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 12px;
+      margin-bottom: 12px;
+    }
+    .panel h2 {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--muted);
+      margin-bottom: 8px;
+    }
+    .script { line-height: 1.6; font-size: 0.88rem; max-height: 160px; overflow-y: auto; }
+    .faq-list { display: flex; flex-wrap: wrap; gap: 6px; }
+    .faq-chip {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 5px 10px;
+      font-size: 0.75rem;
+      cursor: pointer;
+    }
+    .faq-chip:hover { border-color: var(--accent); }
+    .transcript { min-height: 56px; font-size: 0.85rem; color: var(--muted); line-height: 1.5; }
+    .transcript .final { color: var(--text); }
+    .transcript .interim { opacity: 0.6; font-style: italic; }
+    .reply {
+      margin-top: 8px;
+      padding-top: 8px;
+      border-top: 1px solid var(--border);
+      color: var(--accent);
+      font-size: 0.85rem;
+    }
+    .settings summary { cursor: pointer; color: var(--muted); font-size: 0.82rem; }
+    .settings label { display: block; font-size: 0.75rem; color: var(--muted); margin: 8px 0 4px; }
+    .settings input {
+      width: 100%;
+      padding: 7px 9px;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      color: var(--text);
+      font-size: 0.82rem;
+    }
+    .unsupported { color: var(--danger); font-size: 0.82rem; display: none; margin-bottom: 8px; }
+    .hint { font-size: 0.75rem; color: var(--muted); margin-bottom: 12px; }
+    .hint code { color: var(--accent); }
+  </style>
+</head>
+<body>
+  <div class="layout">
+    <section>
+      <h1 id="deckTitle">PPT 语音播放器</h1>
+      <p class="sub" id="deckSub">幻灯片 + 语音讲解 + 可打断问答</p>
+      <div class="slide-stage">
+        <img id="slideImage" alt="当前幻灯片" />
+      </div>
+      <p class="slide-title" id="slideTitle">—</p>
+      <p class="hint">快捷键：← → 翻页 · 空格 讲解 · Esc 停止</p>
+    </section>
+
+    <aside>
+      <p class="unsupported" id="unsupported"></p>
+
+      <div class="status-bar">
+        <div class="dot idle" id="statusDot"></div>
+        <div class="status-text">
+          <span id="statusLabel">待命</span>
+          <small id="statusHint">连续聆听时，说话可随时打断播报</small>
+        </div>
+      </div>
+
+      <div class="slide-nav">
+        <button type="button" id="btnPrev">上一页</button>
+        <div class="slide-num"><span id="slideIndex">1</span> / <span id="slideTotal">1</span></div>
+        <button type="button" id="btnNext">下一页</button>
+      </div>
+
+      <div class="actions">
+        <button type="button" class="btn primary" id="btnSpeak">讲解本页</button>
+        <button type="button" class="btn" id="btnListen">连续聆听</button>
+        <button type="button" class="btn danger" id="btnStop">停止</button>
+      </div>
+
+      <div class="panel">
+        <h2>讲解脚本</h2>
+        <p class="script" id="scriptText">—</p>
+      </div>
+
+      <div class="panel">
+        <h2>常见问题</h2>
+        <div class="faq-list" id="faqList"></div>
+      </div>
+
+      <div class="panel">
+        <h2>对话</h2>
+        <div class="transcript" id="transcript">等待语音输入…</div>
+        <div class="reply" id="reply" hidden></div>
+      </div>
+
+      <details class="panel settings">
+        <summary>可选 LLM API</summary>
+        <label>API Base</label>
+        <input type="text" id="apiBase" placeholder="https://api.openai.com/v1" />
+        <label>API Key</label>
+        <input type="password" id="apiKey" placeholder="sk-..." />
+        <label>Model</label>
+        <input type="text" id="apiModel" value="gpt-4o-mini" />
+      </details>
+    </aside>
+  </div>
+
+  <script>
+    const params = new URLSearchParams(location.search);
+    const PROJECT = params.get("project") || "nsgf-publication";
+    const BASE = `projects/${PROJECT}/`;
+
+    const State = { IDLE: "idle", LISTENING: "listening", SPEAKING: "speaking", THINKING: "thinking" };
+    let state = State.IDLE;
+    let deck = { title: "", slides: [] };
+    let slides = [];
+    let currentSlide = 0;
+    let listenEnabled = false;
+    let abortCtrl = null;
+    let speakGen = 0;
+
+    const synth = window.speechSynthesis;
+    const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+    let recognition = null;
+
+    const $ = (id) => document.getElementById(id);
+
+    function setState(s, hint) {
+      state = s;
+      $("statusDot").className = "dot " + s;
+      const labels = { idle: "待命", listening: "聆听中", speaking: "播报中", thinking: "思考中" };
+      $("statusLabel").textContent = labels[s] || s;
+      if (hint) $("statusHint").textContent = hint;
+    }
+
+    function getZhVoice() {
+      return synth.getVoices().find((v) => v.lang.startsWith("zh")) || null;
+    }
+
+    function splitSentences(text) {
+      return text.split(/(?<=[。！？；\n])/g).map((s) => s.trim()).filter(Boolean);
+    }
+
+    function speakOne(sentence, gen) {
+      return new Promise((resolve, reject) => {
+        if (gen !== speakGen) return reject(new DOMException("Aborted", "AbortError"));
+        synth.cancel();
+        const u = new SpeechSynthesisUtterance(sentence);
+        u.lang = "zh-CN";
+        u.rate = 1.12;
+        const voice = getZhVoice();
+        if (voice) u.voice = voice;
+        u.onend = () => resolve();
+        u.onerror = (e) => (e.error === "interrupted" ? reject(new DOMException("Aborted", "AbortError")) : reject(e));
+        synth.speak(u);
+      });
+    }
+
+    async function speakStream(text) {
+      const gen = ++speakGen;
+      abortCtrl = new AbortController();
+      setState(State.SPEAKING, "播报中 — 说话即可打断");
+      try {
+        for (const part of splitSentences(text)) {
+          if (abortCtrl.signal.aborted || gen !== speakGen) break;
+          await speakOne(part, gen);
+        }
+      } catch (e) {
+        if (e.name !== "AbortError") console.warn(e);
+      } finally {
+        if (gen === speakGen) {
+          synth.cancel();
+          setState(listenEnabled ? State.LISTENING : State.IDLE);
+        }
+      }
+    }
+
+    function hardStop() {
+      speakGen++;
+      abortCtrl?.abort();
+      synth.cancel();
+      setState(listenEnabled ? State.LISTENING : State.IDLE);
+    }
+
+    function slideImageUrl(slide, index) {
+      const rel = slide?.image || `slides/slide_${String(index + 1).padStart(2, "0")}.png`;
+      return BASE + rel;
+    }
+
+    function renderSlide() {
+      const slide = slides[currentSlide];
+      $("slideIndex").textContent = currentSlide + 1;
+      $("slideTotal").textContent = slides.length;
+      $("scriptText").textContent = slide?.script || "—";
+      $("slideTitle").textContent = slide?.title || `Slide ${currentSlide + 1}`;
+      const img = $("slideImage");
+      img.src = slideImageUrl(slide, currentSlide);
+      img.alt = slide?.title || `Slide ${currentSlide + 1}`;
+      const faqEl = $("faqList");
+      faqEl.innerHTML = "";
+      (slide?.faq || []).forEach((item) => {
+        const chip = document.createElement("button");
+        chip.type = "button";
+        chip.className = "faq-chip";
+        chip.textContent = item.q;
+        chip.addEventListener("click", () => handleUserText(item.q));
+        faqEl.appendChild(chip);
+      });
+    }
+
+    function matchFaq(text) {
+      const slide = slides[currentSlide];
+      for (const item of slide?.faq || []) {
+        const keys = item.q.replace(/[？?，,。.！!\s]/g, "").split("").filter(Boolean);
+        let hit = 0;
+        for (const k of keys) if (text.includes(k)) hit++;
+        if (hit >= Math.min(3, keys.length)) return item.a;
+      }
+      for (const item of slide?.faq || []) {
+        if (text.includes(item.q.slice(0, 4))) return item.a;
+      }
+      return null;
+    }
+
+    async function askLLM(userText) {
+      const base = $("apiBase").value.trim().replace(/\/$/, "");
+      const key = $("apiKey").value.trim();
+      const model = $("apiModel").value.trim() || "gpt-4o-mini";
+      if (!base || !key) return null;
+      const slide = slides[currentSlide];
+      const system = [
+        "你是现场 PPT 讲解助手，口语化，最多 3 句话。",
+        `第 ${currentSlide + 1} 页：${slide?.title || ""}`,
+        `脚本：${slide?.script || ""}`,
+        `FAQ：${(slide?.faq || []).map((f) => f.q + "→" + f.a).join("；")}`,
+      ].join("\n");
+      const res = await fetch(`${base}/chat/completions`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Authorization: `Bearer ${key}` },
+        body: JSON.stringify({
+          model, stream: false, max_tokens: 200,
+          messages: [{ role: "system", content: system }, { role: "user", content: userText }],
+        }),
+        signal: abortCtrl?.signal,
+      });
+      if (!res.ok) throw new Error(`LLM ${res.status}`);
+      const j = await res.json();
+      return j.choices?.[0]?.message?.content?.trim() || null;
+    }
+
+    async function handleUserText(text) {
+      if (!text?.trim()) return;
+      hardStop();
+      $("reply").hidden = false;
+      $("reply").textContent = "…";
+      setState(State.THINKING);
+      abortCtrl = new AbortController();
+      let answer = matchFaq(text);
+      try {
+        if (!answer) answer = await askLLM(text);
+      } catch (e) {
+        if (e.name === "AbortError") return;
+        console.warn(e);
+      }
+      if (!answer) answer = "这个问题我记一下，演示后给您详细说明。";
+      $("reply").textContent = "AI：" + answer;
+      await speakStream(answer);
+    }
+
+    function initRecognition() {
+      if (!SpeechRecognition) {
+        $("unsupported").style.display = "block";
+        $("unsupported").textContent = "请使用 Chrome 或 Edge 以启用语音识别。";
+        $("btnListen").disabled = true;
+        return;
+      }
+      recognition = new SpeechRecognition();
+      recognition.continuous = true;
+      recognition.interimResults = true;
+      recognition.lang = "zh-CN";
+      recognition.onresult = (ev) => {
+        let interim = "", final = "";
+        for (let i = ev.resultIndex; i < ev.results.length; i++) {
+          const r = ev.results[i];
+          if (r.isFinal) final += r[0].transcript;
+          else interim += r[0].transcript;
+        }
+        if (state === State.SPEAKING && (interim || final)) hardStop();
+        if (final) {
+          $("transcript").innerHTML = `<span class="final">${escapeHtml(final)}</span>`;
+          handleUserText(final.trim());
+        } else if (interim) {
+          $("transcript").innerHTML = `<span class="interim">${escapeHtml(interim)}</span>`;
+        }
+      };
+      recognition.onerror = (e) => {
+        if (e.error !== "no-speech" && e.error !== "aborted") console.warn(e.error);
+      };
+      recognition.onend = () => {
+        if (listenEnabled) try { recognition.start(); } catch (_) {}
+      };
+    }
+
+    function escapeHtml(s) {
+      return s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+    }
+
+    function toggleListen() {
+      listenEnabled = !listenEnabled;
+      const btn = $("btnListen");
+      if (listenEnabled) {
+        btn.textContent = "停止聆听";
+        btn.classList.add("primary");
+        setState(State.LISTENING);
+        try { recognition.start(); } catch (_) {}
+      } else {
+        btn.textContent = "连续聆听";
+        btn.classList.remove("primary");
+        recognition?.stop();
+        setState(State.IDLE);
+      }
+    }
+
+    async function loadDeck() {
+      const res = await fetch(`${BASE}slides.json`, { cache: "no-store" });
+      if (!res.ok) throw new Error(`无法加载 ${BASE}slides.json`);
+      deck = await res.json();
+      slides = deck.slides || [];
+      $("deckTitle").textContent = deck.title || PROJECT;
+      $("deckSub").textContent = `${slides.length} 页 · project=${PROJECT}`;
+      document.title = (deck.title || "PPT") + " · 语音播放器";
+      currentSlide = 0;
+      renderSlide();
+    }
+
+    $("btnPrev").addEventListener("click", () => {
+      hardStop();
+      currentSlide = Math.max(0, currentSlide - 1);
+      renderSlide();
+    });
+    $("btnNext").addEventListener("click", () => {
+      hardStop();
+      currentSlide = Math.min(slides.length - 1, currentSlide + 1);
+      renderSlide();
+    });
+    $("btnSpeak").addEventListener("click", () => {
+      const s = slides[currentSlide]?.script;
+      if (s) speakStream(s);
+    });
+    $("btnListen").addEventListener("click", toggleListen);
+    $("btnStop").addEventListener("click", hardStop);
+
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "ArrowRight") $("btnNext").click();
+      if (e.key === "ArrowLeft") $("btnPrev").click();
+      if (e.key === " ") { e.preventDefault(); $("btnSpeak").click(); }
+      if (e.key === "Escape") hardStop();
+    });
+
+    speechSynthesis.onvoiceschanged = () => getZhVoice();
+    initRecognition();
+    loadDeck().catch((e) => {
+      $("deckSub").textContent = "加载失败：" + e.message;
+      console.error(e);
+    });
+  </script>
+</body>
+</html>

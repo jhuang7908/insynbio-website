@@ -1,0 +1,67 @@
+{
+  "title": "NSGF Publication",
+  "source": "D:\\PPT\\nsgf publication.pptx",
+  "slide_count": 6,
+  "slides": [
+    {
+      "title": "Background — FLT3 & Human Hematopoiesis",
+      "image": "slides/slide_01.png",
+      "script": "本报告介绍 NSGF 小鼠模型相关研究。FLT3 是调控造血与免疫分化的关键受体。既往文献表明，FLT3 在造血干细胞区室选择性表达；FLT3L 缺陷会影响 B 细胞、单核细胞和树突状细胞的分化。我们的核心问题是：敲除 FLT3 能否为 human hematopoiesis 腾出空间，并改善免疫治疗响应。",
+      "faq": [
+        { "q": "FLT3 是什么", "a": "FLT3 是 III 型受体酪氨酸激酶，调控髓系和淋巴系前体细胞分化，对 DC 发育尤为重要。" },
+        { "q": "NSGF 和 NVG 区别", "a": "NVG 是免疫缺陷基础品系；NSGF 或 NVGF 是在 NVG 背景上敲除 FLT3，用于评估 human engraftment 和免疫治疗。" },
+        { "q": "研究背景", "a": "两篇文章分别来自 Int J Mol Sci 2017 和 Cell 2024，提示 FLT3 通路与人源免疫细胞分化密切相关。" }
+      ]
+    },
+    {
+      "title": "Generation and Validation of FLT3 Knockout NVG (NVGF) Mice",
+      "image": "slides/slide_02.png",
+      "script": "这一页展示 NVGF 小鼠的构建与验证。A 图是 FLT3 野生型与敲除等位基因示意。B 图显示 NVGF 小鼠血清 mFLT3LG 显著升高，说明受体缺失后配体反馈上调。C 图 RT-PCR 证实骨髓和脾脏中 FLT3 基因表达缺失。D 图可见 NVGF 小鼠体重轻度下降，但整体可饲养。综合以上，我们确认 FLT3 敲除模型建立成功。",
+      "faq": [
+        { "q": "怎么验证敲除成功", "a": "RT-PCR 显示 FLT3 条带消失，同时血清 mFLT3LG 显著升高，是敲除成功的双重证据。" },
+        { "q": "mFLT3LG 升高说明什么", "a": "FLT3 受体缺失后，配体 mFLT3LG 负反馈减弱而升高，这是常见的敲除表型。" },
+        { "q": "体重下降严重吗", "a": "仅有统计学显著但幅度较小的体重下降，不影响后续 PBMC 植入和药效实验。" }
+      ]
+    },
+    {
+      "title": "FLT3 Knockout Impairs Bone Marrow Innate Immunity",
+      "image": "slides/slide_03.png",
+      "script": "FLT3 敲除显著影响骨髓固有免疫。A 图显示 NVGF 小鼠每根股骨总骨髓细胞数明显下降。B 图 CD11c 阳性 CD45 阳性树突状细胞频率大幅下挫。C 图 DC 绝对计数几乎被清除。这说明 FLT3 对骨髓 DC 发育是必需的，也为后续 human PBMC 植入创造了免疫空位。",
+      "faq": [
+        { "q": "骨髓细胞为什么变少", "a": "FLT3 信号缺失导致 DC 等 innate 细胞发育受阻，总骨髓细胞计数随之下降。" },
+        { "q": "DC 几乎没了会影响实验吗", "a": "这正是设计目的——减少鼠源 innate 细胞竞争，有利于 human PBMC 重建。" },
+        { "q": "CD11c 代表什么", "a": "CD11c 是经典 DC 标志，这里用于量化骨髓中 DC 频率和绝对数。" }
+      ]
+    },
+    {
+      "title": "Splenic and Bone Marrow Immune Cell Subsets",
+      "image": "slides/slide_04.png",
+      "script": "这一页总览 FLT3 敲除后脾脏和骨髓免疫细胞亚群的变化。左侧是 splenocytes，右侧是 bone marrow cells。可以看到多个细胞群频率和绝对数发生重塑。整体趋势是鼠源 innate 和部分 adaptive 细胞减少，为 human 细胞植入让出 niche。具体 panel 和统计详见原图。",
+      "faq": [
+        { "q": "脾脏和骨髓变化一致吗", "a": "大趋势一致，都是 immune subset 重塑，但各细胞群变化幅度组织间有差异。" },
+        { "q": "哪些细胞受影响最大", "a": "DC 和部分髓系细胞变化最显著，与 FLT3 在 hematopoiesis 中的角色一致。" },
+        { "q": "这页怎么讲给客户", "a": "强调 FLT3 KO 不是简单免疫缺陷，而是精准腾出 human engraftment 空间。" }
+      ]
+    },
+    {
+      "title": "FLT3 Knockout Enhances PBMC Engraftment Without Aggravating GVHD",
+      "image": "slides/slide_05.png",
+      "script": "这是关键功能性结果。A 图显示 PBMC 植入 14 天后，NVGF 小鼠 human CD45 阳性细胞比例显著高于 NVG 对照，说明 human engraftment 增强。B 图体重变化稳定，C 图生存率改善。重要的是，没有看到 GVHD 加重迹象。FLT3 敲除在提升人源细胞植入的同时，保持了可接受的安全性。",
+      "faq": [
+        { "q": "PBMC 植入为什么更好", "a": "鼠源 DC 等细胞减少后，human hematopoietic cells 获得更大重建空间，hCD45 比例升高。" },
+        { "q": "会不会加重 GVHD", "a": "数据显示体重稳定、生存改善，无 GVHD 恶化证据。" },
+        { "q": "14 天够吗", "a": "14 天是 early engraftment 窗口，足以比较 NVG 与 NVGF 的植入效率差异。" }
+      ]
+    },
+    {
+      "title": "FLT3KO Enhances Anti-PD-1 Efficacy Against Tumor Xenografts",
+      "image": "slides/slide_06.png",
+      "script": "最后一页是肿瘤免疫治疗结果。A 图显示 PBMC 输注后 21 天体重监测稳定。B 图 PD-1 抗体治疗下，NVGF 小鼠肿瘤体积显著缩小，TGI 达到 111.29%，优于 NVG 背景。结论：FLT3 敲除不仅增强 human engraftment，还显著提升 anti-PD-1 抗肿瘤疗效，NSGF 是更优的 humanized 药效评价平台。",
+      "faq": [
+        { "q": "TGI 111% 什么意思", "a": "TGI 是肿瘤生长抑制率；超过 100% 表示肿瘤体积相对基线缩小，而不只是减缓生长。" },
+        { "q": "为什么 PD-1 更有效", "a": "更好的 human immune engraftment 和优化的免疫微环境，使 PD-1 阻断更有效。" },
+        { "q": "核心结论", "a": "NSGF 平台：更强的 PBMC 植入 + 不加重 GVHD + 更好的 PD-1 药效，适合 human tumor xenograft 研究。" }
+      ]
+    }
+  ]
+}
