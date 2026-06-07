@@ -6,74 +6,21 @@
   <title>PPT 语音播放器</title>
   <style>
     :root {
-      --bg: #0f1419;
-      --panel: #1a2332;
-      --border: #2d3a4f;
-      --text: #e8edf4;
-      --muted: #8b9cb3;
-      --accent: #3b82f6;
-      --accent-dim: #2563eb33;
-      --ok: #22c55e;
-      --warn: #f59e0b;
-      --danger: #ef4444;
-      --speaking: #8b5cf6;
+      --bg: #0f1419; --panel: #1a2332; --border: #2d3a4f; --text: #e8edf4;
+      --muted: #8b9cb3; --accent: #3b82f6; --ok: #22c55e; --warn: #f59e0b;
+      --danger: #ef4444; --speaking: #8b5cf6;
     }
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    body {
-      font-family: "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      min-height: 100vh;
-      padding: 16px;
-    }
-    .layout {
-      display: grid;
-      grid-template-columns: 1fr 380px;
-      gap: 16px;
-      max-width: 1280px;
-      margin: 0 auto;
-    }
-    @media (max-width: 960px) {
-      .layout { grid-template-columns: 1fr; }
-    }
+    body { font-family: "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; padding: 16px; }
+    .layout { display: grid; grid-template-columns: 1fr 380px; gap: 16px; max-width: 1280px; margin: 0 auto; }
+    @media (max-width: 960px) { .layout { grid-template-columns: 1fr; } }
     h1 { font-size: 1.15rem; font-weight: 600; }
     .sub { color: var(--muted); font-size: 0.82rem; margin: 4px 0 12px; }
-    .slide-stage {
-      background: #000;
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      overflow: hidden;
-      aspect-ratio: 16 / 9;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .slide-stage img {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-    }
-    .slide-title {
-      margin-top: 10px;
-      font-size: 0.85rem;
-      color: var(--muted);
-      line-height: 1.4;
-    }
-    .status-bar {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      padding: 10px 14px;
-      background: var(--panel);
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      margin-bottom: 12px;
-    }
-    .dot {
-      width: 10px; height: 10px; border-radius: 50%;
-      background: var(--muted);
-      flex-shrink: 0;
-    }
+    .slide-stage { background: #000; border: 1px solid var(--border); border-radius: 10px; overflow: hidden; aspect-ratio: 16 / 9; display: flex; align-items: center; justify-content: center; }
+    .slide-stage img { width: 100%; height: 100%; object-fit: contain; }
+    .slide-title { margin-top: 10px; font-size: 0.85rem; color: var(--muted); line-height: 1.4; }
+    .status-bar { display: flex; align-items: center; gap: 10px; padding: 10px 14px; background: var(--panel); border: 1px solid var(--border); border-radius: 10px; margin-bottom: 12px; }
+    .dot { width: 10px; height: 10px; border-radius: 50%; background: var(--muted); flex-shrink: 0; }
     .dot.idle { background: var(--muted); }
     .dot.listening { background: var(--ok); box-shadow: 0 0 8px var(--ok); animation: pulse 1.2s infinite; }
     .dot.speaking { background: var(--speaking); box-shadow: 0 0 8px var(--speaking); animation: pulse 0.8s infinite; }
@@ -81,76 +28,31 @@
     @keyframes pulse { 50% { opacity: 0.5; } }
     .status-text { font-size: 0.85rem; }
     .status-text small { color: var(--muted); display: block; margin-top: 2px; font-size: 0.75rem; }
-    .slide-nav {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      margin-bottom: 12px;
-    }
-    .slide-nav button, .btn {
-      background: var(--panel);
-      border: 1px solid var(--border);
-      color: var(--text);
-      padding: 8px 12px;
-      border-radius: 8px;
-      cursor: pointer;
-      font-size: 0.82rem;
-    }
+    .slide-nav { display: flex; align-items: center; gap: 8px; margin-bottom: 12px; }
+    .slide-nav button, .btn { background: var(--panel); border: 1px solid var(--border); color: var(--text); padding: 8px 12px; border-radius: 8px; cursor: pointer; font-size: 0.82rem; }
     .slide-nav button:hover, .btn:hover { border-color: var(--accent); }
     .btn.primary { background: var(--accent); border-color: var(--accent); color: #fff; }
     .btn.danger { border-color: var(--danger); color: var(--danger); }
     .btn:disabled { opacity: 0.4; cursor: not-allowed; }
     .slide-num { flex: 1; text-align: center; font-weight: 600; }
     .actions { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
-    .panel {
-      background: var(--panel);
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 12px;
-      margin-bottom: 12px;
-    }
-    .panel h2 {
-      font-size: 0.7rem;
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-      color: var(--muted);
-      margin-bottom: 8px;
-    }
+    .panel { background: var(--panel); border: 1px solid var(--border); border-radius: 10px; padding: 12px; margin-bottom: 12px; }
+    .panel h2 { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); margin-bottom: 8px; }
     .script { line-height: 1.6; font-size: 0.88rem; max-height: 160px; overflow-y: auto; }
     .faq-list { display: flex; flex-wrap: wrap; gap: 6px; }
-    .faq-chip {
-      background: var(--bg);
-      border: 1px solid var(--border);
-      border-radius: 20px;
-      padding: 5px 10px;
-      font-size: 0.75rem;
-      cursor: pointer;
-    }
+    .faq-chip { background: var(--bg); border: 1px solid var(--border); border-radius: 20px; padding: 5px 10px; font-size: 0.75rem; cursor: pointer; }
     .faq-chip:hover { border-color: var(--accent); }
     .transcript { min-height: 56px; font-size: 0.85rem; color: var(--muted); line-height: 1.5; }
     .transcript .final { color: var(--text); }
     .transcript .interim { opacity: 0.6; font-style: italic; }
-    .reply {
-      margin-top: 8px;
-      padding-top: 8px;
-      border-top: 1px solid var(--border);
-      color: var(--accent);
-      font-size: 0.85rem;
-    }
+    .reply { margin-top: 8px; padding-top: 8px; border-top: 1px solid var(--border); color: var(--accent); font-size: 0.85rem; }
     .settings summary { cursor: pointer; color: var(--muted); font-size: 0.82rem; }
     .settings label { display: block; font-size: 0.75rem; color: var(--muted); margin: 8px 0 4px; }
-    .settings input {
-      width: 100%;
-      padding: 7px 9px;
-      background: var(--bg);
-      border: 1px solid var(--border);
-      border-radius: 6px;
-      color: var(--text);
-      font-size: 0.82rem;
-    }
+    .settings input { width: 100%; padding: 7px 9px; background: var(--bg); border: 1px solid var(--border); border-radius: 6px; color: var(--text); font-size: 0.82rem; }
     .unsupported { color: var(--danger); font-size: 0.82rem; display: none; margin-bottom: 8px; }
     .hint { font-size: 0.75rem; color: var(--muted); margin-bottom: 12px; }
     .hint code { color: var(--accent); }
+    .toggle-row { display: flex; align-items: center; gap: 8px; font-size: 0.78rem; color: var(--muted); margin-top: 8px; }
   </style>
 </head>
 <body>
@@ -158,70 +60,55 @@
     <section>
       <h1 id="deckTitle">PPT 语音播放器</h1>
       <p class="sub" id="deckSub">幻灯片 + 语音讲解 + 可打断问答</p>
-      <div class="slide-stage">
-        <img id="slideImage" alt="当前幻灯片" />
-      </div>
+      <div class="slide-stage"><img id="slideImage" alt="当前幻灯片" /></div>
       <p class="slide-title" id="slideTitle">—</p>
-      <p class="hint">快捷键：← → 翻页 · 空格 讲解 · Esc 停止</p>
+      <p class="hint">← → 翻页 · 空格讲解 · 说「继续」恢复讲解 · Esc 停止</p>
     </section>
-
     <aside>
       <p class="unsupported" id="unsupported"></p>
-
       <div class="status-bar">
         <div class="dot idle" id="statusDot"></div>
         <div class="status-text">
           <span id="statusLabel">待命</span>
-          <small id="statusHint">连续聆听时，说话可随时打断播报</small>
+          <small id="statusHint">建议先点「连续聆听」，打断后会现场回答并自动续讲</small>
         </div>
       </div>
-
       <div class="slide-nav">
         <button type="button" id="btnPrev">上一页</button>
         <div class="slide-num"><span id="slideIndex">1</span> / <span id="slideTotal">1</span></div>
         <button type="button" id="btnNext">下一页</button>
       </div>
-
       <div class="actions">
         <button type="button" class="btn primary" id="btnSpeak">讲解本页</button>
         <button type="button" class="btn" id="btnListen">连续聆听</button>
+        <button type="button" class="btn" id="btnResume">继续讲解</button>
         <button type="button" class="btn danger" id="btnStop">停止</button>
       </div>
-
-      <div class="panel">
-        <h2>讲解脚本</h2>
-        <p class="script" id="scriptText">—</p>
-      </div>
-
-      <div class="panel">
-        <h2>常见问题</h2>
-        <div class="faq-list" id="faqList"></div>
-      </div>
-
+      <div class="panel"><h2>讲解脚本</h2><p class="script" id="scriptText">—</p></div>
+      <div class="panel"><h2>常见问题（也可直接问）</h2><div class="faq-list" id="faqList"></div></div>
       <div class="panel">
         <h2>对话</h2>
         <div class="transcript" id="transcript">等待语音输入…</div>
         <div class="reply" id="reply" hidden></div>
       </div>
-
       <details class="panel settings">
-        <summary>可选 LLM API</summary>
+        <summary>可选：接入 LLM（回答更灵活）</summary>
         <label>API Base</label>
         <input type="text" id="apiBase" placeholder="https://api.openai.com/v1" />
         <label>API Key</label>
         <input type="password" id="apiKey" placeholder="sk-..." />
         <label>Model</label>
         <input type="text" id="apiModel" value="gpt-4o-mini" />
+        <label class="toggle-row"><input type="checkbox" id="autoResume" checked /> 答完自动续讲剩余内容</label>
       </details>
     </aside>
   </div>
-
   <script>
     const params = new URLSearchParams(location.search);
     const PROJECT = params.get("project") || "nsgf-publication";
     const BASE = `projects/${PROJECT}/`;
-
     const State = { IDLE: "idle", LISTENING: "listening", SPEAKING: "speaking", THINKING: "thinking" };
+
     let state = State.IDLE;
     let deck = { title: "", slides: [] };
     let slides = [];
@@ -229,12 +116,20 @@
     let listenEnabled = false;
     let abortCtrl = null;
     let speakGen = 0;
+    let narration = { active: false, parts: [], index: 0 };
+    let lastSpokenChunk = "";
+    let ttsStartedAt = 0;
+    let handlingQuestion = false;
 
     const synth = window.speechSynthesis;
     const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
     let recognition = null;
-
     const $ = (id) => document.getElementById(id);
+
+    const RESUME_RE = /^(继续|接着讲|继续讲|继续讲解|go on|continue|接着说|往下讲)/i;
+    const NEXT_RE = /^(下一页|下一张|next)/i;
+    const PREV_RE = /^(上一页|上一张|previous|back)/i;
+    const STOP_RE = /^(停止|暂停|别说了|stop)/i;
 
     function setState(s, hint) {
       state = s;
@@ -252,30 +147,48 @@
       return text.split(/(?<=[。！？；\n])/g).map((s) => s.trim()).filter(Boolean);
     }
 
+    function normalize(s) {
+      return (s || "").toLowerCase().replace(/[\s？?，,。.！!；;：:""''（）()]/g, "");
+    }
+
+    function tokens(s) {
+      const t = new Set();
+      (s || "").replace(/[a-zA-Z0-9]+/g, (m) => t.add(m.toLowerCase()));
+      (s || "").replace(/[\u4e00-\u9fff]{2,}/g, (m) => { for (let i = 0; i < m.length - 1; i++) t.add(m.slice(i, i + 2)); });
+      return t;
+    }
+
     function speakOne(sentence, gen) {
       return new Promise((resolve, reject) => {
         if (gen !== speakGen) return reject(new DOMException("Aborted", "AbortError"));
         synth.cancel();
+        lastSpokenChunk = sentence;
         const u = new SpeechSynthesisUtterance(sentence);
         u.lang = "zh-CN";
-        u.rate = 1.12;
+        u.rate = 1.1;
         const voice = getZhVoice();
         if (voice) u.voice = voice;
+        u.onstart = () => { ttsStartedAt = Date.now(); };
         u.onend = () => resolve();
         u.onerror = (e) => (e.error === "interrupted" ? reject(new DOMException("Aborted", "AbortError")) : reject(e));
         synth.speak(u);
       });
     }
 
-    async function speakStream(text) {
+    async function speakParts(parts, { trackNarration = false, startAt = 0 } = {}) {
       const gen = ++speakGen;
       abortCtrl = new AbortController();
-      setState(State.SPEAKING, "播报中 — 说话即可打断");
+      if (trackNarration) {
+        narration = { active: true, parts, index: startAt };
+      }
+      setState(State.SPEAKING, trackNarration ? "讲解中 — 可随时提问，答完自动续讲" : "播报中");
       try {
-        for (const part of splitSentences(text)) {
+        for (let i = startAt; i < parts.length; i++) {
           if (abortCtrl.signal.aborted || gen !== speakGen) break;
-          await speakOne(part, gen);
+          if (trackNarration) narration.index = i;
+          await speakOne(parts[i], gen);
         }
+        if (gen === speakGen && trackNarration) narration.active = false;
       } catch (e) {
         if (e.name !== "AbortError") console.warn(e);
       } finally {
@@ -286,11 +199,31 @@
       }
     }
 
-    function hardStop() {
+    async function speakStream(text, opts) {
+      return speakParts(splitSentences(text), opts);
+    }
+
+    function hardStop(clearNarration = true) {
       speakGen++;
       abortCtrl?.abort();
       synth.cancel();
+      if (clearNarration) narration.active = false;
       setState(listenEnabled ? State.LISTENING : State.IDLE);
+    }
+
+    function interruptForQuestion() {
+      speakGen++;
+      abortCtrl?.abort();
+      synth.cancel();
+    }
+
+    async function resumeNarration() {
+      if (!narration.active || narration.index >= narration.parts.length) {
+        const script = slides[currentSlide]?.script;
+        if (script) return speakStream(script, { trackNarration: true, startAt: 0 });
+        return;
+      }
+      await speakParts(narration.parts, { trackNarration: true, startAt: narration.index });
     }
 
     function slideImageUrl(slide, index) {
@@ -304,9 +237,8 @@
       $("slideTotal").textContent = slides.length;
       $("scriptText").textContent = slide?.script || "—";
       $("slideTitle").textContent = slide?.title || `Slide ${currentSlide + 1}`;
-      const img = $("slideImage");
-      img.src = slideImageUrl(slide, currentSlide);
-      img.alt = slide?.title || `Slide ${currentSlide + 1}`;
+      $("slideImage").src = slideImageUrl(slide, currentSlide);
+      $("slideImage").alt = slide?.title || `Slide ${currentSlide + 1}`;
       const faqEl = $("faqList");
       faqEl.innerHTML = "";
       (slide?.faq || []).forEach((item) => {
@@ -314,23 +246,79 @@
         chip.type = "button";
         chip.className = "faq-chip";
         chip.textContent = item.q;
-        chip.addEventListener("click", () => handleUserText(item.q));
+        chip.addEventListener("click", () => handleUserText(item.q, { fromClick: true }));
         faqEl.appendChild(chip);
       });
+      narration = { active: false, parts: [], index: 0 };
+    }
+
+    function scoreFaq(userText, item) {
+      const u = normalize(userText);
+      const q = normalize(item.q);
+      if (!u || u.length < 2) return 0;
+      if (u.includes(q) || q.includes(u)) return 100;
+      let score = 0;
+      const ut = tokens(userText);
+      const qt = tokens(item.q);
+      const at = tokens(item.a);
+      for (const t of ut) {
+        if (qt.has(t)) score += 3;
+        if (at.has(t)) score += 2;
+      }
+      for (const kw of extractKeywords(item.q)) {
+        if (u.includes(normalize(kw))) score += 5;
+      }
+      return score;
+    }
+
+    function extractKeywords(q) {
+      const kws = [];
+      const m = q.match(/[A-Za-z0-9]{2,}/g);
+      if (m) kws.push(...m);
+      q.replace(/[A-Za-z0-9\s？?，,。.！!]/g, " ").split(/\s+/).filter((w) => w.length >= 2).forEach((w) => kws.push(w));
+      return kws;
     }
 
     function matchFaq(text) {
       const slide = slides[currentSlide];
-      for (const item of slide?.faq || []) {
-        const keys = item.q.replace(/[？?，,。.！!\s]/g, "").split("").filter(Boolean);
-        let hit = 0;
-        for (const k of keys) if (text.includes(k)) hit++;
-        if (hit >= Math.min(3, keys.length)) return item.a;
+      const items = slide?.faq || [];
+      let best = null, bestScore = 0;
+      for (const item of items) {
+        const s = scoreFaq(text, item);
+        if (s > bestScore) { bestScore = s; best = item; }
       }
-      for (const item of slide?.faq || []) {
-        if (text.includes(item.q.slice(0, 4))) return item.a;
+      if (best && bestScore >= 4) return best.a;
+
+      for (const item of items) {
+        for (const kw of extractKeywords(item.q + item.a)) {
+          if (text.toLowerCase().includes(kw.toLowerCase()) || normalize(text).includes(normalize(kw))) {
+            return item.a;
+          }
+        }
       }
       return null;
+    }
+
+    function answerFromScript(text) {
+      const slide = slides[currentSlide];
+      const script = slide?.script || "";
+      if (!script) return null;
+      const parts = splitSentences(script);
+      const ut = tokens(text);
+      let best = null, bestScore = 0;
+      for (const p of parts) {
+        let s = 0;
+        for (const t of ut) if (tokens(p).has(t)) s++;
+        if (s > bestScore) { bestScore = s; best = p; }
+      }
+      if (best && bestScore >= 2) return best;
+      if (parts.length) return `根据本页内容：${parts[0]}`;
+      return null;
+    }
+
+    function buildLiveAnswer(text) {
+      return matchFaq(text) || answerFromScript(text) ||
+        `关于「${text.slice(0, 20)}」，本页重点是：${(slides[currentSlide]?.script || "").slice(0, 120)}… 如需更细节我们可以会后展开。`;
     }
 
     async function askLLM(userText) {
@@ -340,7 +328,8 @@
       if (!base || !key) return null;
       const slide = slides[currentSlide];
       const system = [
-        "你是现场 PPT 讲解助手，口语化，最多 3 句话。",
+        "你是现场 PPT 讲解员，必须当场回答，禁止说「以后再答」「会后讨论」。",
+        "口语化，最多 3 句话，只基于本页脚本和 FAQ。",
         `第 ${currentSlide + 1} 页：${slide?.title || ""}`,
         `脚本：${slide?.script || ""}`,
         `FAQ：${(slide?.faq || []).map((f) => f.q + "→" + f.a).join("；")}`,
@@ -359,23 +348,54 @@
       return j.choices?.[0]?.message?.content?.trim() || null;
     }
 
-    async function handleUserText(text) {
-      if (!text?.trim()) return;
-      hardStop();
+    function isEcho(text) {
+      if (!text || text.length < 2) return true;
+      if (Date.now() - ttsStartedAt < 400 && state === State.SPEAKING) return true;
+      const n = normalize(text);
+      const chunk = normalize(lastSpokenChunk);
+      if (chunk && chunk.length > 6 && (chunk.includes(n) || n.includes(chunk.slice(0, 8)))) return true;
+      return false;
+    }
+
+    async function handleUserText(text, { fromClick = false } = {}) {
+      if (!text?.trim() || handlingQuestion) return;
+      if (!fromClick && isEcho(text)) return;
+
+      text = text.trim();
+
+      if (RESUME_RE.test(text)) { interruptForQuestion(); await resumeNarration(); return; }
+      if (NEXT_RE.test(text)) { hardStop(true); $("btnNext").click(); return; }
+      if (PREV_RE.test(text)) { hardStop(true); $("btnPrev").click(); return; }
+      if (STOP_RE.test(text)) { hardStop(true); return; }
+
+      const wasNarrating = narration.active && narration.index < narration.parts.length;
+      interruptForQuestion();
+
+      handlingQuestion = true;
       $("reply").hidden = false;
-      $("reply").textContent = "…";
-      setState(State.THINKING);
+      $("reply").textContent = "正在思考…";
+      setState(State.THINKING, "理解您的问题…");
       abortCtrl = new AbortController();
+
       let answer = matchFaq(text);
       try {
         if (!answer) answer = await askLLM(text);
       } catch (e) {
-        if (e.name === "AbortError") return;
+        if (e.name === "AbortError") { handlingQuestion = false; return; }
         console.warn(e);
       }
-      if (!answer) answer = "这个问题我记一下，演示后给您详细说明。";
-      $("reply").textContent = "AI：" + answer;
-      await speakStream(answer);
+      if (!answer) answer = buildLiveAnswer(text);
+
+      $("reply").textContent = "答：" + answer;
+      await speakParts([answer]);
+
+      if ($("autoResume").checked && wasNarrating) {
+        await speakParts(["好，我继续讲。"]);
+        await resumeNarration();
+      } else if (wasNarrating) {
+        setState(listenEnabled ? State.LISTENING : State.IDLE, "说「继续」可接着讲");
+      }
+      handlingQuestion = false;
     }
 
     function initRecognition() {
@@ -389,6 +409,7 @@
       recognition.continuous = true;
       recognition.interimResults = true;
       recognition.lang = "zh-CN";
+
       recognition.onresult = (ev) => {
         let interim = "", final = "";
         for (let i = ev.resultIndex; i < ev.results.length; i++) {
@@ -396,8 +417,10 @@
           if (r.isFinal) final += r[0].transcript;
           else interim += r[0].transcript;
         }
-        if (state === State.SPEAKING && (interim || final)) hardStop();
-        if (final) {
+        if (state === State.SPEAKING && (interim || final) && Date.now() - ttsStartedAt > 350) {
+          interruptForQuestion();
+        }
+        if (final && final.trim().length >= 2) {
           $("transcript").innerHTML = `<span class="final">${escapeHtml(final)}</span>`;
           handleUserText(final.trim());
         } else if (interim) {
@@ -422,7 +445,7 @@
       if (listenEnabled) {
         btn.textContent = "停止聆听";
         btn.classList.add("primary");
-        setState(State.LISTENING);
+        setState(State.LISTENING, "请提问 — 打断后会现场回答");
         try { recognition.start(); } catch (_) {}
       } else {
         btn.textContent = "连续聆听";
@@ -438,42 +461,35 @@
       deck = await res.json();
       slides = deck.slides || [];
       $("deckTitle").textContent = deck.title || PROJECT;
-      $("deckSub").textContent = `${slides.length} 页 · project=${PROJECT}`;
+      $("deckSub").textContent = `${slides.length} 页 · 打断问答 + 自动续讲`;
       document.title = (deck.title || "PPT") + " · 语音播放器";
       currentSlide = 0;
       renderSlide();
     }
 
-    $("btnPrev").addEventListener("click", () => {
-      hardStop();
-      currentSlide = Math.max(0, currentSlide - 1);
-      renderSlide();
-    });
-    $("btnNext").addEventListener("click", () => {
-      hardStop();
-      currentSlide = Math.min(slides.length - 1, currentSlide + 1);
-      renderSlide();
-    });
+    $("btnPrev").addEventListener("click", () => { hardStop(true); currentSlide = Math.max(0, currentSlide - 1); renderSlide(); });
+    $("btnNext").addEventListener("click", () => { hardStop(true); currentSlide = Math.min(slides.length - 1, currentSlide + 1); renderSlide(); });
     $("btnSpeak").addEventListener("click", () => {
       const s = slides[currentSlide]?.script;
-      if (s) speakStream(s);
+      if (s) {
+        if (!listenEnabled) toggleListen();
+        speakStream(s, { trackNarration: true, startAt: 0 });
+      }
     });
     $("btnListen").addEventListener("click", toggleListen);
-    $("btnStop").addEventListener("click", hardStop);
+    $("btnResume").addEventListener("click", () => resumeNarration());
+    $("btnStop").addEventListener("click", () => hardStop(true));
 
     document.addEventListener("keydown", (e) => {
       if (e.key === "ArrowRight") $("btnNext").click();
       if (e.key === "ArrowLeft") $("btnPrev").click();
       if (e.key === " ") { e.preventDefault(); $("btnSpeak").click(); }
-      if (e.key === "Escape") hardStop();
+      if (e.key === "Escape") hardStop(true);
     });
 
     speechSynthesis.onvoiceschanged = () => getZhVoice();
     initRecognition();
-    loadDeck().catch((e) => {
-      $("deckSub").textContent = "加载失败：" + e.message;
-      console.error(e);
-    });
+    loadDeck().catch((e) => { $("deckSub").textContent = "加载失败：" + e.message; console.error(e); });
   </script>
 </body>
 </html>
