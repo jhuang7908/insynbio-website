@@ -62,7 +62,7 @@
       <p class="sub" id="deckSub">幻灯片 + 语音讲解 + 可打断问答</p>
       <div class="slide-stage"><img id="slideImage" alt="当前幻灯片" /></div>
       <p class="slide-title" id="slideTitle">—</p>
-      <p class="hint">← → 翻页 · 空格讲解 · 说「继续」恢复讲解 · Esc 停止</p>
+      <p class="hint">← → 翻页 · 空格本页 · 「全场演讲」自动翻页连讲 · Esc 停止</p>
     </section>
     <aside>
       <p class="unsupported" id="unsupported"></p>
@@ -79,7 +79,8 @@
         <button type="button" id="btnNext">下一页</button>
       </div>
       <div class="actions">
-        <button type="button" class="btn primary" id="btnSpeak">讲解本页</button>
+        <button type="button" class="btn primary" id="btnPresent">全场演讲</button>
+        <button type="button" class="btn" id="btnSpeak">讲解本页</button>
         <button type="button" class="btn" id="btnListen">连续聆听</button>
         <button type="button" class="btn" id="btnResume">继续讲解</button>
         <button type="button" class="btn danger" id="btnStop">停止</button>
@@ -135,6 +136,9 @@
     let ttsPrefetch = { gen: 0, cache: new Map() };
     let audioPrimed = false;
     let lastPlayError = "";
+    let presentation = { active: false };
+
+    const delay = (ms) => new Promise((r) => setTimeout(r, ms));
 
     const synth = window.speechSynthesis;
     const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
@@ -368,16 +372,18 @@
       return "播报中";
     }
 
-    async function speakParts(parts, { trackNarration = false, startAt = 0 } = {}) {
+    async function speakParts(parts, { trackNarration = false, startAt = 0, deckLabel = "" } = {}) {
       const gen = ++speakGen;
       abortCtrl = new AbortController();
       clearTtsPrefetch(gen);
       if (trackNarration) {
         narration = { active: true, parts, index: startAt };
       }
-      const speakLabel = trackNarration ? "讲解中" : "播报中";
+      const speakLabel = deckLabel || (trackNarration ? "讲解中" : "播报中");
       setState(State.SPEAKING, speakingHint(trackNarration), speakLabel);
+      let finishedAll = false;
       try {
+        let spoke = 0;
         for (let i = startAt; i < parts.length; i++) {
           if (abortCtrl.signal.aborted || gen !== speakGen) break;
           if (trackNarration) narration.index = i;
@@ -386,8 +392,10 @@
             prefetchCloudChunk(parts[i + 1], `${gen}:${i + 1}`, gen);
           }
           await speakOne(parts[i], gen, `${gen}:${i}`, progress);
+          spoke++;
         }
-        if (gen === speakGen && trackNarration) narration.active = false;
+        finishedAll = gen === speakGen && spoke === parts.length - startAt && parts.length > 0;
+        if (gen === speakGen && trackNarration && finishedAll) narration.active = false;
       } catch (e) {
         if (e.name !== "AbortError") {
           console.warn(e);
@@ -398,16 +406,80 @@
           clearTtsPrefetch(gen);
           synth.cancel();
           stopPlayer();
-          setState(listenEnabled ? State.LISTENING : State.IDLE, listenEnabled ? "请提问" : "讲解结束 · 可翻页或继续讲解");
+          if (!presentation.active) {
+            setState(listenEnabled ? State.LISTENING : State.IDLE, listenEnabled ? "请提问" : "讲解结束 · 可翻页或继续讲解");
+          }
         }
       }
+      return finishedAll && gen === speakGen;
     }
 
-    async function speakStream(text, opts) {
+    async function speakStream(text, opts = {}) {
       return speakParts(chunkForTts(text), opts);
     }
 
+    function updatePresentButton() {
+      const btn = $("btnPresent");
+      if (presentation.active) {
+        btn.textContent = "演讲进行中…";
+        btn.classList.add("primary");
+      } else {
+        btn.textContent = "全场演讲";
+        btn.classList.remove("primary");
+      }
+    }
+
+    function endPresentation(msg) {
+      presentation.active = false;
+      updatePresentButton();
+      setState(listenEnabled ? State.LISTENING : State.IDLE, msg || "演讲结束");
+    }
+
+    async function presentSlide(slideIndex) {
+      if (!presentation.active || slideIndex >= slides.length) {
+        endPresentation(slideIndex >= slides.length ? "全部讲完 · 感谢聆听" : "演讲已停止");
+        return;
+      }
+      currentSlide = slideIndex;
+      renderSlide();
+      const script = slides[slideIndex]?.script;
+      if (!script) return presentSlide(slideIndex + 1);
+
+      setState(State.SPEAKING, `第 ${slideIndex + 1}/${slides.length} 页 · 自动翻页`, "演讲");
+      const done = await speakStream(script, { trackNarration: true, startAt: 0, deckLabel: "演讲" });
+      if (!presentation.active) return;
+      if (!done) return; // interrupted — resume hook will continue
+
+      if (slideIndex >= slides.length - 1) {
+        endPresentation("全部讲完 · 感谢聆听");
+        return;
+      }
+      await delay(700);
+      return presentSlide(slideIndex + 1);
+    }
+
+    async function startPresentation(from = currentSlide) {
+      presentation.active = true;
+      updatePresentButton();
+      primePlayerOnClick();
+      showError("");
+      await presentSlide(from);
+    }
+
+    async function continuePresentationIfNeeded() {
+      if (!presentation.active || narration.active) return;
+      const next = currentSlide + 1;
+      if (next >= slides.length) {
+        endPresentation("全部讲完 · 感谢聆听");
+        return;
+      }
+      await delay(500);
+      await presentSlide(next);
+    }
+
     function hardStop(clearNarration = true) {
+      presentation.active = false;
+      updatePresentButton();
       speakGen++;
       clearTtsPrefetch(speakGen);
       abortCtrl?.abort();
@@ -571,7 +643,12 @@
 
       text = text.trim();
 
-      if (RESUME_RE.test(text)) { interruptForQuestion(); await resumeNarration(); return; }
+      if (RESUME_RE.test(text)) {
+        interruptForQuestion();
+        await resumeNarration();
+        await continuePresentationIfNeeded();
+        return;
+      }
       if (NEXT_RE.test(text)) { hardStop(true); $("btnNext").click(); return; }
       if (PREV_RE.test(text)) { hardStop(true); $("btnPrev").click(); return; }
       if (STOP_RE.test(text)) { hardStop(true); return; }
@@ -600,6 +677,7 @@
       if ($("autoResume").checked && wasNarrating) {
         await speakParts(["好，我继续讲。"]);
         await resumeNarration();
+        await continuePresentationIfNeeded();
       } else if (wasNarrating) {
         setState(listenEnabled ? State.LISTENING : State.IDLE, "说「继续」可接着讲");
       }
@@ -670,7 +748,7 @@
       deck = await res.json();
       slides = deck.slides || [];
       $("deckTitle").textContent = deck.title || PROJECT;
-      $("deckSub").textContent = `${slides.length} 页 · 打断问答 + 自动续讲`;
+      $("deckSub").textContent = `${slides.length} 页 · 全场演讲自动翻页 · 可打断问答`;
       document.title = (deck.title || "PPT") + " · 语音播放器";
       currentSlide = 0;
       renderSlide();
@@ -678,7 +756,13 @@
 
     $("btnPrev").addEventListener("click", () => { hardStop(true); currentSlide = Math.max(0, currentSlide - 1); renderSlide(); });
     $("btnNext").addEventListener("click", () => { hardStop(true); currentSlide = Math.min(slides.length - 1, currentSlide + 1); renderSlide(); });
+    $("btnPresent").addEventListener("click", () => {
+      if (presentation.active) { hardStop(true); return; }
+      startPresentation(currentSlide);
+    });
     $("btnSpeak").addEventListener("click", () => {
+      presentation.active = false;
+      updatePresentButton();
       const s = slides[currentSlide]?.script;
       if (!s) {
         showError("本页没有讲解脚本，请检查 slides.json");
@@ -689,13 +773,16 @@
       speakStream(s, { trackNarration: true, startAt: 0 });
     });
     $("btnListen").addEventListener("click", toggleListen);
-    $("btnResume").addEventListener("click", () => resumeNarration());
+    $("btnResume").addEventListener("click", async () => {
+      await resumeNarration();
+      await continuePresentationIfNeeded();
+    });
     $("btnStop").addEventListener("click", () => hardStop(true));
 
     document.addEventListener("keydown", (e) => {
       if (e.key === "ArrowRight") $("btnNext").click();
       if (e.key === "ArrowLeft") $("btnPrev").click();
-      if (e.key === " ") { e.preventDefault(); $("btnSpeak").click(); }
+      if (e.key === " ") { e.preventDefault(); $("btnPresent").click(); }
       if (e.key === "Escape") hardStop(true);
     });
 
