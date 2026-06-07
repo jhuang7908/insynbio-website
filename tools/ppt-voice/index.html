@@ -49,7 +49,7 @@
     .settings summary { cursor: pointer; color: var(--muted); font-size: 0.82rem; }
     .settings label { display: block; font-size: 0.75rem; color: var(--muted); margin: 8px 0 4px; }
     .settings input { width: 100%; padding: 7px 9px; background: var(--bg); border: 1px solid var(--border); border-radius: 6px; color: var(--text); font-size: 0.82rem; }
-    .unsupported { color: var(--danger); font-size: 0.82rem; display: none; margin-bottom: 8px; }
+    .unsupported { color: var(--danger); font-size: 0.82rem; display: none; margin-bottom: 8px; padding: 8px 10px; background: rgba(239,68,68,0.12); border-radius: 8px; line-height: 1.45; }
     .hint { font-size: 0.75rem; color: var(--muted); margin-bottom: 12px; }
     .hint code { color: var(--accent); }
     .toggle-row { display: flex; align-items: center; gap: 8px; font-size: 0.78rem; color: var(--muted); margin-top: 8px; }
@@ -110,9 +110,11 @@
     const TTS_API = (() => {
       const q = params.get("tts_api");
       if (q) return q.replace(/\/$/, "");
+      if (location.hostname === "write.insynbio.com") return `${location.origin}/ppt-voice-api`;
       if (location.hostname.includes("insynbio.com")) return "https://write.insynbio.com/ppt-voice-api";
       return "";
     })();
+    const SILENT_WAV = "data:audio/wav;base64,UklGRigAAABXQVZFZm10IBIAAAABAAEARKwAAIhYAQACABAAZGF0YQQAAAAAAA==";
     const State = { IDLE: "idle", LISTENING: "listening", SPEAKING: "speaking", THINKING: "thinking" };
 
     let state = State.IDLE;
@@ -126,8 +128,13 @@
     let lastSpokenChunk = "";
     let ttsStartedAt = 0;
     let handlingQuestion = false;
-    let cloudAudio = null;
+    const player = new Audio();
+    player.preload = "auto";
+    let audioCtx = null;
     let useCloudTts = true;
+    let ttsPrefetch = { gen: 0, cache: new Map() };
+    let audioPrimed = false;
+    let lastPlayError = "";
 
     const synth = window.speechSynthesis;
     const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
@@ -139,12 +146,12 @@
     const PREV_RE = /^(上一页|上一张|previous|back)/i;
     const STOP_RE = /^(停止|暂停|别说了|stop)/i;
 
-    function setState(s, hint) {
+    function setState(s, hint, labelOverride) {
       state = s;
       $("statusDot").className = "dot " + s;
       const labels = { idle: "待命", listening: "聆听中", speaking: "播报中", thinking: "思考中" };
-      $("statusLabel").textContent = labels[s] || s;
-      if (hint) $("statusHint").textContent = hint;
+      $("statusLabel").textContent = labelOverride || labels[s] || s;
+      if (hint !== undefined) $("statusHint").textContent = hint;
     }
 
     function getZhVoice() {
@@ -153,6 +160,23 @@
 
     function splitSentences(text) {
       return text.split(/(?<=[。！？；\n])/g).map((s) => s.trim()).filter(Boolean);
+    }
+
+    /** Fewer TTS round-trips → less pause between phrases */
+    function chunkForTts(text, maxLen = 320) {
+      const sentences = splitSentences(text);
+      const chunks = [];
+      let buf = "";
+      for (const s of sentences) {
+        if (buf && (buf + s).length > maxLen) {
+          chunks.push(buf);
+          buf = s;
+        } else {
+          buf += s;
+        }
+      }
+      if (buf) chunks.push(buf);
+      return chunks.length ? chunks : [text];
     }
 
     function normalize(s) {
@@ -166,37 +190,142 @@
       return t;
     }
 
-    function stopCloudAudio() {
-      if (cloudAudio) {
-        cloudAudio.pause();
-        cloudAudio.src = "";
-        cloudAudio = null;
-      }
+    function showError(msg) {
+      lastPlayError = msg || "";
+      const el = $("unsupported");
+      if (!msg) { el.style.display = "none"; el.textContent = ""; return; }
+      el.style.display = "block";
+      el.textContent = msg;
     }
 
-    async function speakOneCloud(sentence, gen) {
+    /** Must run synchronously inside click — before any await — or browser blocks play() */
+    function primePlayerOnClick() {
+      if (audioPrimed) return;
+      try {
+        player.muted = true;
+        player.src = SILENT_WAV;
+        const p = player.play();
+        if (p && typeof p.then === "function") {
+          p.then(() => {
+            player.pause();
+            player.currentTime = 0;
+            player.muted = false;
+            audioPrimed = true;
+          }).catch((e) => console.warn("prime play", e));
+        } else {
+          audioPrimed = true;
+          player.muted = false;
+        }
+      } catch (e) {
+        console.warn("primePlayer", e);
+      }
+      try {
+        if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        if (audioCtx.state === "suspended") audioCtx.resume();
+      } catch (_) {}
+    }
+
+    function stopPlayer() {
+      player.pause();
+      player.removeAttribute("src");
+      player.load();
+    }
+
+    function clearTtsPrefetch(gen) {
+      for (const v of ttsPrefetch.cache.values()) {
+        if (typeof v === "string") URL.revokeObjectURL(v);
+      }
+      ttsPrefetch.cache.clear();
+      ttsPrefetch.gen = gen;
+    }
+
+    function mergeAbortSignals() {
+      const signals = [abortCtrl?.signal, typeof AbortSignal.timeout === "function" ? AbortSignal.timeout(90000) : null].filter(Boolean);
+      if (!signals.length) return undefined;
+      if (signals.length === 1) return signals[0];
+      return typeof AbortSignal.any === "function" ? AbortSignal.any(signals) : signals[0];
+    }
+
+    async function fetchCloudAudioUrl(sentence, gen) {
       if (gen !== speakGen) throw new DOMException("Aborted", "AbortError");
-      stopCloudAudio();
-      synth.cancel();
-      lastSpokenChunk = sentence;
       const res = await fetch(`${TTS_API}/speak`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ text: sentence, voice: "nova", model: "tts-1", speed: 1.05 }),
-        signal: abortCtrl?.signal,
+        body: JSON.stringify({ text: sentence, voice: "onyx", model: "tts-1-hd", speed: 1.0 }),
+        signal: mergeAbortSignals(),
       });
       if (!res.ok) throw new Error(`TTS ${res.status}`);
       const blob = await res.blob();
       if (gen !== speakGen) throw new DOMException("Aborted", "AbortError");
-      const url = URL.createObjectURL(blob);
-      cloudAudio = new Audio(url);
+      return URL.createObjectURL(blob);
+    }
+
+    function prefetchCloudChunk(sentence, key, gen) {
+      if (!useCloudTts || !TTS_API || ttsPrefetch.cache.has(key)) return;
+      ttsPrefetch.cache.set(
+        key,
+        fetchCloudAudioUrl(sentence, gen).catch((e) => {
+          ttsPrefetch.cache.delete(key);
+          throw e;
+        })
+      );
+    }
+
+    async function playBlobUrl(url, gen) {
+      if (gen !== speakGen) { URL.revokeObjectURL(url); throw new DOMException("Aborted", "AbortError"); }
+      stopPlayer();
+      player.src = url;
+      player.currentTime = 0;
+      player.muted = false;
       ttsStartedAt = Date.now();
+      try {
+        await player.play();
+      } catch (e) {
+        if (audioCtx) {
+          try {
+            const res = await fetch(url);
+            const buf = await res.arrayBuffer();
+            const audioBuf = await audioCtx.decodeAudioData(buf.slice(0));
+            const src = audioCtx.createBufferSource();
+            src.buffer = audioBuf;
+            src.connect(audioCtx.destination);
+            await new Promise((resolve, reject) => {
+              if (gen !== speakGen) return reject(new DOMException("Aborted", "AbortError"));
+              src.onended = resolve;
+              src.start(0);
+            });
+            return;
+          } catch (webErr) {
+            console.warn("WebAudio fallback", webErr);
+          }
+        }
+        throw new Error(e.name === "NotAllowedError"
+          ? "浏览器阻止播放：请再点一次「讲解本页」，并确认页面标签未被静音"
+          : `播放失败 (${e.name || e.message})`);
+      }
       await new Promise((resolve, reject) => {
-        if (gen !== speakGen) { URL.revokeObjectURL(url); return reject(new DOMException("Aborted", "AbortError")); }
-        cloudAudio.onended = () => { URL.revokeObjectURL(url); resolve(); };
-        cloudAudio.onerror = () => { URL.revokeObjectURL(url); reject(new Error("audio play failed")); };
-        cloudAudio.play().catch(reject);
+        if (gen !== speakGen) return reject(new DOMException("Aborted", "AbortError"));
+        player.onended = () => resolve();
+        player.onerror = () => reject(new Error("audio element error"));
       });
+    }
+
+    async function speakOneCloud(sentence, gen, cacheKey, progressHint) {
+      if (gen !== speakGen) throw new DOMException("Aborted", "AbortError");
+      synth.cancel();
+      lastSpokenChunk = sentence;
+      if (progressHint) setState(State.SPEAKING, progressHint + " · 合成中…", "讲解中");
+      let url;
+      const cached = cacheKey != null ? ttsPrefetch.cache.get(cacheKey) : null;
+      if (cached) {
+        ttsPrefetch.cache.delete(cacheKey);
+        url = await cached;
+      } else {
+        url = await fetchCloudAudioUrl(sentence, gen);
+      }
+      if (progressHint) setState(State.SPEAKING, progressHint + " · 播放中", "讲解中");
+      await playBlobUrl(url, gen);
+      URL.revokeObjectURL(url);
     }
 
     function speakOneBrowser(sentence, gen) {
@@ -216,63 +345,84 @@
       });
     }
 
-    async function speakOne(sentence, gen) {
+    async function speakOne(sentence, gen, cacheKey, progressHint) {
       if (useCloudTts && TTS_API) {
         try {
-          await speakOneCloud(sentence, gen);
+          await speakOneCloud(sentence, gen, cacheKey, progressHint);
+          showError("");
           return;
         } catch (e) {
           if (e.name === "AbortError") throw e;
-          console.warn("cloud TTS fallback to browser", e);
-          useCloudTts = false;
+          console.warn("cloud TTS", e);
+          showError(String(e.message || e));
         }
       }
+      setState(State.SPEAKING, "浏览器语音播放中…", "讲解中");
       await speakOneBrowser(sentence, gen);
+      showError("");
+    }
+
+    function speakingHint(trackNarration) {
+      if (trackNarration && listenEnabled) return "可随时提问 · 答完自动续讲";
+      if (trackNarration) return "播放中 · 提问请先点「连续聆听」";
+      return "播报中";
     }
 
     async function speakParts(parts, { trackNarration = false, startAt = 0 } = {}) {
       const gen = ++speakGen;
       abortCtrl = new AbortController();
+      clearTtsPrefetch(gen);
       if (trackNarration) {
         narration = { active: true, parts, index: startAt };
       }
-      setState(State.SPEAKING, trackNarration ? "讲解中 — 可随时提问，答完自动续讲" : "播报中");
+      const speakLabel = trackNarration ? "讲解中" : "播报中";
+      setState(State.SPEAKING, speakingHint(trackNarration), speakLabel);
       try {
         for (let i = startAt; i < parts.length; i++) {
           if (abortCtrl.signal.aborted || gen !== speakGen) break;
           if (trackNarration) narration.index = i;
-          await speakOne(parts[i], gen);
+          const progress = parts.length > 1 ? `第 ${i + 1}/${parts.length} 段` : "";
+          if (useCloudTts && TTS_API && i + 1 < parts.length) {
+            prefetchCloudChunk(parts[i + 1], `${gen}:${i + 1}`, gen);
+          }
+          await speakOne(parts[i], gen, `${gen}:${i}`, progress);
         }
         if (gen === speakGen && trackNarration) narration.active = false;
       } catch (e) {
-        if (e.name !== "AbortError") console.warn(e);
+        if (e.name !== "AbortError") {
+          console.warn(e);
+          if (gen === speakGen) setState(State.IDLE, e.message || "播放失败，请重试");
+        }
       } finally {
         if (gen === speakGen) {
+          clearTtsPrefetch(gen);
           synth.cancel();
-          stopCloudAudio();
-          setState(listenEnabled ? State.LISTENING : State.IDLE);
+          stopPlayer();
+          setState(listenEnabled ? State.LISTENING : State.IDLE, listenEnabled ? "请提问" : "讲解结束 · 可翻页或继续讲解");
         }
       }
     }
 
     async function speakStream(text, opts) {
-      return speakParts(splitSentences(text), opts);
+      return speakParts(chunkForTts(text), opts);
     }
 
     function hardStop(clearNarration = true) {
       speakGen++;
+      clearTtsPrefetch(speakGen);
       abortCtrl?.abort();
       synth.cancel();
-      stopCloudAudio();
+      stopPlayer();
       if (clearNarration) narration.active = false;
       setState(listenEnabled ? State.LISTENING : State.IDLE);
     }
 
     function interruptForQuestion() {
       speakGen++;
+      clearTtsPrefetch(speakGen);
       abortCtrl?.abort();
       synth.cancel();
-      stopCloudAudio();
+      stopPlayer();
     }
 
     async function resumeNarration() {
@@ -408,10 +558,10 @@
 
     function isEcho(text) {
       if (!text || text.length < 2) return true;
-      if (Date.now() - ttsStartedAt < 400 && state === State.SPEAKING) return true;
+      if (state === State.SPEAKING && Date.now() - ttsStartedAt < 2200) return true;
       const n = normalize(text);
       const chunk = normalize(lastSpokenChunk);
-      if (chunk && chunk.length > 6 && (chunk.includes(n) || n.includes(chunk.slice(0, 8)))) return true;
+      if (chunk && chunk.length > 6 && (chunk.includes(n) || n.includes(chunk.slice(0, Math.min(12, chunk.length))))) return true;
       return false;
     }
 
@@ -475,13 +625,14 @@
           if (r.isFinal) final += r[0].transcript;
           else interim += r[0].transcript;
         }
-        if (state === State.SPEAKING && (interim || final) && Date.now() - ttsStartedAt > 350) {
-          interruptForQuestion();
-        }
         if (final && final.trim().length >= 2) {
-          $("transcript").innerHTML = `<span class="final">${escapeHtml(final)}</span>`;
-          handleUserText(final.trim());
-        } else if (interim) {
+          const ft = final.trim();
+          $("transcript").innerHTML = `<span class="final">${escapeHtml(ft)}</span>`;
+          if (state === State.SPEAKING && listenEnabled && !isEcho(ft)) {
+            interruptForQuestion();
+          }
+          if (listenEnabled) handleUserText(ft);
+        } else if (interim && listenEnabled) {
           $("transcript").innerHTML = `<span class="interim">${escapeHtml(interim)}</span>`;
         }
       };
@@ -529,10 +680,13 @@
     $("btnNext").addEventListener("click", () => { hardStop(true); currentSlide = Math.min(slides.length - 1, currentSlide + 1); renderSlide(); });
     $("btnSpeak").addEventListener("click", () => {
       const s = slides[currentSlide]?.script;
-      if (s) {
-        if (!listenEnabled) toggleListen();
-        speakStream(s, { trackNarration: true, startAt: 0 });
+      if (!s) {
+        showError("本页没有讲解脚本，请检查 slides.json");
+        return;
       }
+      primePlayerOnClick();
+      showError("");
+      speakStream(s, { trackNarration: true, startAt: 0 });
     });
     $("btnListen").addEventListener("click", toggleListen);
     $("btnResume").addEventListener("click", () => resumeNarration());
