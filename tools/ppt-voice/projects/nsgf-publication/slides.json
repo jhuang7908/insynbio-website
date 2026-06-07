@@ -2,6 +2,8 @@
   "title": "NSGF Publication",
   "source": "D:\\PPT\\nsgf publication.pptx",
   "slide_count": 6,
+  "intro": "各位好，欢迎参加今天的学术汇报。我是讲解员，接下来将为大家介绍 NSGF 小鼠模型及其在 human engraftment 与 PD-1 免疫治疗中的应用。汇报共六页，过程中如有疑问，欢迎随时打断提问，我会当场解答。现在我们开始。",
+  "outro": "以上六页内容汇报完毕。核心结论是：FLT3 敲除的 NSGF 平台能显著增强 human PBMC 植入，不加重 GVHD，并提升 anti-PD-1 抗肿瘤疗效。感谢各位的聆听。现在进入提问环节，欢迎大家就模型构建、药效数据或应用场景提出任何问题。",
   "slides": [
     {
       "title": "Background — FLT3 & Human Hematopoiesis",

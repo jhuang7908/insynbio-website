@@ -429,6 +429,40 @@
       }
     }
 
+    function getDeckIntro() {
+      if (deck.intro === "") return null;
+      if (deck.intro) return deck.intro;
+      const t = deck.title || "本次研究";
+      return `各位好，欢迎参加今天的汇报。接下来我将为大家介绍${t}。讲解过程中如有疑问，欢迎随时提问，我会尽力当场解答。现在我们开始。`;
+    }
+
+    function getDeckOutro() {
+      if (deck.outro === "") return null;
+      if (deck.outro) return deck.outro;
+      return `以上是我的汇报内容，感谢各位的聆听。现在进入提问环节，欢迎大家就任何相关内容提出问题，我很乐意与您进一步讨论。`;
+    }
+
+    async function speakAside(text, hint, label = "演讲") {
+      if (!text || !presentation.active) return true;
+      setState(State.SPEAKING, hint, label);
+      return speakStream(text, { deckLabel: label });
+    }
+
+    async function speakOutroIfNeeded() {
+      const outro = getDeckOutro();
+      if (!outro || !presentation.active) {
+        endPresentation("全部讲完 · 感谢聆听");
+        return;
+      }
+      await delay(500);
+      const ok = await speakAside(outro, "结束语 · 欢迎提问", "结束");
+      if (!presentation.active || !ok) return;
+      const wantQa = listenEnabled;
+      endPresentation("汇报结束 · 欢迎提问");
+      if (!wantQa) toggleListen();
+      else setState(State.LISTENING, "提问环节 · 请直接说话或点常见问题");
+    }
+
     function endPresentation(msg) {
       presentation.active = false;
       updatePresentButton();
@@ -451,7 +485,8 @@
       if (!done) return; // interrupted — resume hook will continue
 
       if (slideIndex >= slides.length - 1) {
-        endPresentation("全部讲完 · 感谢聆听");
+        if (!done) return;
+        await speakOutroIfNeeded();
         return;
       }
       await delay(700);
@@ -463,6 +498,16 @@
       updatePresentButton();
       primePlayerOnClick();
       showError("");
+      if (from === 0) {
+        const intro = getDeckIntro();
+        if (intro) {
+          currentSlide = 0;
+          renderSlide();
+          const ok = await speakAside(intro, "开场白", "开场");
+          if (!presentation.active || !ok) return;
+          await delay(600);
+        }
+      }
       await presentSlide(from);
     }
 
@@ -470,7 +515,7 @@
       if (!presentation.active || narration.active) return;
       const next = currentSlide + 1;
       if (next >= slides.length) {
-        endPresentation("全部讲完 · 感谢聆听");
+        await speakOutroIfNeeded();
         return;
       }
       await delay(500);
