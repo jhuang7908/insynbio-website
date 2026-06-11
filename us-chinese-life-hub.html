@@ -3,17 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>美东华人生活圈 — 官方资讯一站式中文聚合 | East Coast Chinese Life Hub</title>
+  <title>美东华人生活圈 — 官方资讯与同城分类大厅 | East Coast Chinese Life Hub</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
-    tailwind.config = {{
-      theme: {{
-        extend: {{
-          colors: {{
-            brand: {{
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
               50: '#fff7ed',
               100: '#ffedd5',
               500: '#f97316',
@@ -21,20 +21,20 @@
               700: '#c2410c',
               800: '#9a3412',
               900: '#7c2d12',
-            }}
-          }},
-          fontFamily: {{
+            }
+          },
+          fontFamily: {
             sans: ['Inter', 'sans-serif'],
             space: ['Space Grotesk', 'sans-serif'],
-          }}
-        }}
-      }}
-    }}
+          }
+        }
+      }
+    }
   </script>
   <style>
-    body {{
+    body {
       font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    }}
+    }
   </style>
 </head>
 <body class="bg-slate-50 text-slate-800 antialiased flex flex-col min-h-screen">
@@ -49,7 +49,7 @@
         </div>
         <div>
           <h1 class="text-base font-bold text-slate-900 leading-tight" id="ui-brand-title">美东华人生活圈</h1>
-          <p class="text-[9px] text-slate-400 font-semibold uppercase tracking-wider" id="ui-brand-sub">美东官方资讯 · 智能聚合与双语对照</p>
+          <p class="text-[9px] text-slate-400 font-semibold uppercase tracking-wider" id="ui-brand-sub">官方民生资讯 · 同城分类广告 · 智能双语对照</p>
         </div>
       </div>
       
@@ -73,7 +73,7 @@
         <!-- Action Button -->
         <div class="flex items-center gap-2">
           <a href="us-chinese-life-plan.html" class="px-3 py-1.5 text-xs font-bold text-slate-600 bg-slate-100 hover:bg-slate-200 rounded-lg transition no-underline" id="ui-btn-plan">返回规划案</a>
-          <a href="#feedback" class="hidden sm:inline-block px-4 py-2 text-xs font-bold text-white bg-brand-600 hover:bg-brand-700 rounded-lg transition shadow-md shadow-brand-600/10" id="ui-btn-feedback">提交意见</a>
+          <button onclick="openPostAdModal()" class="px-4 py-2 text-xs font-bold text-white bg-brand-600 hover:bg-brand-700 rounded-lg transition shadow-md shadow-brand-600/10" id="ui-btn-feedback">发布信息</button>
         </div>
       </div>
     </div>
@@ -83,13 +83,13 @@
   <section class="bg-gradient-to-b from-brand-50 via-white to-slate-50 py-12 border-b border-slate-100">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
       <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-brand-100 text-brand-800 mb-4" id="ui-hero-tag">
-        📢 100% 官方真实来源 · 智能双语对照
+        📢 官方民生精选 + 现代同城分类大厅
       </span>
       <h2 class="text-2xl sm:text-4xl font-extrabold tracking-tight text-slate-900 mb-4 font-space" id="ui-hero-title">
-        省时省力，直达美东官方福利与活动
+        美东华人生活圈 · 现代同城分类大厅
       </h2>
       <p class="text-xs sm:text-sm text-slate-500 max-w-2xl mx-auto leading-relaxed" id="ui-hero-desc">
-        我们每天自动监控纽约市政府、MTA、公共图书馆等公开渠道，为您整理并重写高价值的本地民生资讯。支持一键开启官方网页中文翻译，告别繁琐检索。
+        左手官方民生福利，右手同城分类广告。我们用最现代的卡片美学重塑 Craigslist，为您提供最干净、最真实、无虚假中介的租房、二手、生意转让与求职信息。
       </p>
     </div>
   </section>
@@ -102,7 +102,7 @@
       <div class="flex flex-col lg:flex-row gap-4">
         <!-- Search Bar -->
         <div class="relative flex-1">
-          <input type="text" id="search-input" placeholder="搜索福利、活动、讲座、官方来源或区域（如：法拉盛、半价）..." class="w-full pl-10 pr-4 py-3 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-brand-500 text-sm">
+          <input type="text" id="search-input" placeholder="搜索福利、活动、租房、二手、生意转让、招聘或区域..." class="w-full pl-10 pr-4 py-3 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-brand-500 text-sm">
           <span class="absolute left-3.5 top-3.5 text-slate-400">🔍</span>
         </div>
         <!-- Borough Filter -->
@@ -123,7 +123,7 @@
 
     <!-- Stats Bar -->
     <div class="flex justify-between items-center text-xs text-slate-400 mb-6 px-2">
-      <span id="results-count">已加载 32 条真实历史及最新资讯</span>
+      <span id="results-count">已加载 38 条真实资讯与分类广告</span>
       <span id="ui-results-range">数据范围：过去30天至未来一周</span>
     </div>
 
@@ -220,6 +220,81 @@
     </div>
   </div>
 
+  <!-- ===== POST AD MODAL (CLASSIFIEDS REGISTRATION & PAYMENT FLOW) ===== -->
+  <div id="post-ad-modal" class="fixed inset-0 bg-black/60 backdrop-filter backdrop-blur-sm hidden items-center justify-center z-[9999] p-4">
+    <div class="bg-white rounded-2xl max-w-lg w-full p-6 shadow-xl border border-slate-100 space-y-4 overflow-y-auto max-h-[90vh]">
+      <div class="flex justify-between items-start">
+        <h4 class="font-bold text-slate-900 text-lg" id="post-modal-title">发布分类信息 (Post Classified Ad)</h4>
+        <button onclick="closePostAdModal()" class="text-slate-400 hover:text-slate-600 text-xl font-bold">&times;</button>
+      </div>
+      <p class="text-xs text-slate-500 leading-relaxed" id="post-modal-desc">
+        为了杜绝虚假中介、欺诈广告，保障社区生态健康，「美东华人生活圈」采用「付费发布 + 人工审核」机制。所有个人和商家信息需交纳小额费用后发布，支持置顶推广。
+      </p>
+      
+      <!-- Steps Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 pt-2">
+        <div class="p-3 bg-slate-50 rounded-xl border border-slate-100 space-y-1">
+          <h5 class="font-bold text-xs text-brand-600" id="post-step1">1. 注册/登录账户</h5>
+          <p class="text-[11px] text-slate-500 leading-relaxed" id="post-step1-desc">通过微信扫码或邮箱注册，绑定美国手机号完成实名认证。</p>
+        </div>
+        <div class="p-3 bg-slate-50 rounded-xl border border-slate-100 space-y-1">
+          <h5 class="font-bold text-xs text-brand-600" id="post-step2">2. 填写信息并选择套餐</h5>
+          <p class="text-[11px] text-slate-500 leading-relaxed" id="post-step2-desc">填写标题、描述、区域、价格及联系方式，上传实景图片。</p>
+        </div>
+        <div class="p-3 bg-slate-50 rounded-xl border border-slate-100 space-y-1">
+          <h5 class="font-bold text-xs text-brand-600" id="post-step3">3. 在线支付发布费</h5>
+          <p class="text-[11px] text-slate-500 leading-relaxed" id="post-step3-desc">支持 Stripe、微信支付或支付宝。普通广告 $5/月，置顶广告 $20/周（置顶于大厅首屏）。</p>
+        </div>
+        <div class="p-3 bg-slate-50 rounded-xl border border-slate-100 space-y-1">
+          <h5 class="font-bold text-xs text-brand-600" id="post-step4">4. 人工审核上线</h5>
+          <p class="text-[11px] text-slate-500 leading-relaxed" id="post-step4-desc">客服将在 2 小时内完成内容合规性审核，审核通过后即刻上线并同步推送至微信社群。</p>
+        </div>
+      </div>
+
+      <div class="flex flex-col gap-2 pt-4">
+        <button onclick="alert('测试环境：线上自助发布系统正在开发中，目前请联系微信客服手动提交发布。')" class="w-full text-center py-3 bg-brand-600 hover:bg-brand-700 text-white text-xs font-bold rounded-xl transition shadow-md shadow-brand-600/10" id="btn-start-post">
+          立即在线发布 ($5 起) ➔
+        </button>
+        <button onclick="closePostAdModal()" class="w-full text-center py-2.5 bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-semibold rounded-xl transition" id="btn-post-cancel">
+          取消
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== CONTACT PUBLISHER MODAL ===== -->
+  <div id="contact-modal" class="fixed inset-0 bg-black/60 backdrop-filter backdrop-blur-sm hidden items-center justify-center z-[9999] p-4">
+    <div class="bg-white rounded-2xl max-w-md w-full p-6 shadow-xl border border-slate-100 space-y-4">
+      <div class="flex justify-between items-start">
+        <h4 class="font-bold text-slate-900 text-base" id="contact-modal-title">联系发布人信息</h4>
+        <button onclick="closeContactModal()" class="text-slate-400 hover:text-slate-600 text-xl font-bold">&times;</button>
+      </div>
+      <p class="text-xs text-slate-500 leading-relaxed" id="contact-modal-desc">为了保障隐私，请通过以下方式直接联系发布人。联系时请说明来自「美东华人生活圈」。</p>
+      
+      <div class="bg-slate-50 p-4 rounded-xl border border-slate-100 space-y-3 text-xs text-slate-700">
+        <div class="flex justify-between items-center py-1 border-b border-slate-200/60">
+          <span class="text-slate-400 font-medium" id="lbl-contact-person">发布人</span>
+          <strong class="text-slate-900 font-bold" id="val-contact-person">-</strong>
+        </div>
+        <div class="flex justify-between items-center py-1 border-b border-slate-200/60">
+          <span class="text-slate-400 font-medium" id="lbl-wechat">微信 (WeChat)</span>
+          <div class="flex items-center gap-2">
+            <strong class="text-slate-900 font-bold" id="val-wechat">-</strong>
+            <button onclick="copyWeChat()" class="px-2 py-0.5 bg-slate-200 hover:bg-slate-300 text-slate-600 text-[10px] font-bold rounded transition">复制</button>
+          </div>
+        </div>
+        <div class="flex justify-between items-center py-1">
+          <span class="text-slate-400 font-medium" id="lbl-phone">电话 (Phone)</span>
+          <a href="#" id="val-phone-link" class="text-brand-600 hover:text-brand-700 font-bold no-underline">-</a>
+        </div>
+      </div>
+
+      <div class="flex justify-end pt-2">
+        <button onclick="closeContactModal()" class="px-4 py-2 text-xs font-semibold text-slate-400 hover:text-slate-600 transition" id="btn-contact-close">关闭</button>
+      </div>
+    </div>
+  </div>
+
   <!-- ===== FOOTER ===== -->
   <footer class="bg-white border-t border-slate-200 py-8 text-center text-xs text-slate-400">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-2">
@@ -233,28 +308,29 @@
     // Injected Multilingual UI Strings
     var uiStrings = {
   "zh": {
-    "title": "美东华人生活圈 — 官方资讯一站式中文聚合",
-    "brand_sub": "美东官方资讯 · 智能聚合与双语对照",
+    "title": "美东华人生活圈 — 官方资讯与同城分类大厅",
+    "brand_sub": "官方民生资讯 · 同城分类广告 · 智能双语对照",
     "nav_hub": "信息大厅",
     "nav_about": "关于我们",
     "nav_feedback": "意见反馈",
     "btn_plan": "返回规划案",
-    "btn_feedback": "提交意见",
-    "hero_tag": "📢 100% 官方真实来源 · 智能双语对照",
-    "hero_title": "省时省力，直达美东官方福利与活动",
-    "hero_desc": "我们每天自动监控纽约市政府、MTA、公共图书馆等公开渠道，为您整理并重写高价值的本地民生资讯。支持一键开启官方网页中文翻译，告别繁琐检索。",
-    "search_placeholder": "搜索福利、活动、讲座、官方来源或区域（如：法拉盛、半价）...",
+    "btn_feedback": "发布信息",
+    "hero_tag": "📢 官方民生精选 + 现代同城分类大厅",
+    "hero_title": "美东华人生活圈 · 现代同城分类大厅",
+    "hero_desc": "左手官方民生福利，右手同城分类广告。我们用最现代的卡片美学重塑 Craigslist，为您提供最干净、最真实、无虚假中介的租房、二手、生意转让与求职信息。",
+    "search_placeholder": "搜索福利、活动、租房、二手、生意转让、招聘或区域...",
     "boro_all": "所有区域 (All Boroughs)",
     "boro_citywide": "纽约全市 (Citywide)",
     "boro_queens": "皇后区 (Queens)",
     "boro_brooklyn": "布鲁克林 (Brooklyn)",
     "boro_manhattan": "曼哈顿 (Manhattan)",
     "results_prefix": "已筛选出",
-    "results_suffix": "条真实资讯",
+    "results_suffix": "条真实资讯与分类广告",
     "results_range": "数据范围：过去30天至未来一周",
     "source_label": "来源",
     "boro_label": "区域",
     "btn_get_link": "获取官方链接 ➔",
+    "btn_contact": "联系发布人 ➔",
     "about_title": "关于美东华人生活圈",
     "about_p1": "在美东生活，及时获取官方资讯是保障切身权益、享受公共福利的关键。然而，散落在各大政府网站、公共图书馆和社区机构的英文公告繁多，逐个检索费时费力。",
     "about_p2": "「美东华人生活圈」坚持「100% 官方真实、100% 干净无噪、100% 免费公益」的原则，通过技术手段智能聚合最新资讯，并提供保姆级中文重写。更重要的是，我们集成了智能网页翻译通道，让您在点击官方链接时，能直接阅读经过翻译的中文官方网页，彻底消除信息获取门槛。",
@@ -280,35 +356,54 @@
     "link_option_title": "请选择打开链接的方式：",
     "link_option_raw": "打开官方英文原网页",
     "link_option_trans": "打开智能翻译网页（中文）",
-    "cancel": "取消"
+    "cancel": "取消",
+    "price_label": "价格",
+    "contact_person": "发布人",
+    "wechat_label": "微信",
+    "phone_label": "电话",
+    "verified_badge": "付费已核实",
+    "post_modal_title": "发布分类信息 (Post Classified Ad)",
+    "post_modal_desc": "为了杜绝虚假中介、欺诈广告，保障社区生态健康，「美东华人生活圈」采用「付费发布 + 人工审核」机制。所有个人和商家信息需交纳小额费用后发布，支持置顶推广。",
+    "post_step1": "1. 注册/登录账户",
+    "post_step1_desc": "通过微信扫码或邮箱注册，绑定美国手机号完成实名认证。",
+    "post_step2": "2. 填写信息并选择套餐",
+    "post_step2_desc": "填写标题、描述、区域、价格及联系方式，上传实景图片。",
+    "post_step3": "3. 在线支付发布费",
+    "post_step3_desc": "支持 Stripe、微信支付或支付宝。普通广告 $5/月，置顶广告 $20/周（置顶于大厅首屏）。",
+    "post_step4": "4. 人工审核上线",
+    "post_step4_desc": "客服将在 2 小时内完成内容合规性审核，审核通过后即刻上线并同步推送至微信社群。",
+    "btn_start_post": "立即在线发布 ($5 起) ➔",
+    "contact_modal_title": "联系发布人信息",
+    "contact_modal_desc": "为了保障隐私，请通过以下方式直接联系发布人。联系时请说明来自「美东华人生活圈」。"
   },
   "zht": {
-    "title": "美東華人生活圈 — 官方資訊一站式中文聚合",
-    "brand_sub": "美東官方資訊 · 智能聚合與雙語對照",
+    "title": "美東華人生活圈 — 官方資訊與同城分類大廳",
+    "brand_sub": "官方民生資訊 · 同城分類廣告 · 智能雙語對照",
     "nav_hub": "資訊大廳",
     "nav_about": "關於我們",
     "nav_feedback": "意見反饋",
     "btn_plan": "返回規劃案",
-    "btn_feedback": "提交意見",
-    "hero_tag": "📢 100% 官方真實來源 · 智能雙語對照",
-    "hero_title": "省時省力，直達美東官方福利與活動",
-    "hero_desc": "我們每天自動監控紐約市政府、MTA、公共圖書館等公開渠道，為您整理並重寫高價值的本地民生資訊。支持一鍵開啟官方網頁中文翻譯，告別繁瑣檢索。",
-    "search_placeholder": "搜索福利、活動、講座、官方來源或區域（如：法拉盛、半價）...",
+    "btn_feedback": "發布信息",
+    "hero_tag": "📢 官方民生精選 + 現代同城分類大廳",
+    "hero_title": "美東華人生活圈 · 現代同城分類大廳",
+    "hero_desc": "左手官方民生福利，右手同城分類廣告。我們用最現代的卡片美學重塑 Craigslist，為您提供最乾淨、最真實、無虛假中介的租房、二手、生意轉讓與求職信息。",
+    "search_placeholder": "搜索福利、活動、租房、二手、生意轉讓、招聘或區域...",
     "boro_all": "所有區域 (All Boroughs)",
     "boro_citywide": "紐約全市 (Citywide)",
     "boro_queens": "皇后區 (Queens)",
     "boro_brooklyn": "布魯克林 (Brooklyn)",
     "boro_manhattan": "曼哈頓 (Manhattan)",
     "results_prefix": "已篩選出",
-    "results_suffix": "條真實資訊",
+    "results_suffix": "條真實資訊與分類廣告",
     "results_range": "數據範圍：過去30天至未來一周",
     "source_label": "來源",
     "boro_label": "區域",
     "btn_get_link": "獲取官方鏈接 ➔",
+    "btn_contact": "聯繫發布人 ➔",
     "about_title": "關於美東華人生活圈",
     "about_p1": "在美東生活，及時獲取官方資訊是保障切身權益、享受公共福利的關鍵。然而，散落在各大政府網站、公共圖書館和社區機構的英文公告繁多，逐個檢索費時費力。",
     "about_p2": "「美東華人生活圈」堅持「100% 官方真實、100% 乾淨無噪、100% 免費公益」的原則，通過技術手段智能聚合最新資訊，並提供保姆級中文重寫。更重要的是，我們集成了智能網頁翻譯通道，讓您在點擊官方鏈接時，能直接閱讀經過翻譯的中文官方網頁，徹底消除信息獲取門檻。",
-    "about_tag1": "🛡️ 官方數據源核實",
+    "about_tag1": "🛡️ 官方數據源核实",
     "about_tag2": "🚫 絕無虛假廣告",
     "about_tag3": "🤝 純粹公益民生",
     "feedback_title": "在線意見反饋",
@@ -330,31 +425,50 @@
     "link_option_title": "請選擇打開鏈接的方式：",
     "link_option_raw": "打開官方英文原網頁",
     "link_option_trans": "打開智能翻譯網頁（繁體中文）",
-    "cancel": "取消"
+    "cancel": "取消",
+    "price_label": "價格",
+    "contact_person": "發布人",
+    "wechat_label": "微信",
+    "phone_label": "電話",
+    "verified_badge": "付費已核實",
+    "post_modal_title": "發布分類信息 (Post Classified Ad)",
+    "post_modal_desc": "為了杜絕虛假中介、欺詐廣告，保障社區生態健康，「美東華人生活圈」採用「付費發布 + 人工審核」機制。所有個人和商家信息需交納小額費用後發布，支持置頂推廣。",
+    "post_step1": "1. 註冊/登錄賬戶",
+    "post_step1_desc": "通過微信掃碼或郵箱註冊，綁定美國手機號完成實名認證。",
+    "post_step2": "2. 填寫信息並選擇套餐",
+    "post_step2_desc": "填寫標題、描述、區域、價格及聯繫方式，上傳實景圖片。",
+    "post_step3": "3. 在線支付發布費",
+    "post_step3_desc": "支持 Stripe、微信支付或支付寶。普通廣告 $5/月，置頂廣告 $20/週（置頂於大廳首屏）。",
+    "post_step4": "4. 人工審核上線",
+    "post_step4_desc": "客服將在 2 小時內完成內容合規性審核，審核通過後即刻上線並同步推送至微信社群。",
+    "btn_start_post": "立即在線發布 ($5 起) ➔",
+    "contact_modal_title": "聯繫發布人信息",
+    "contact_modal_desc": "為了保障隱私，請通過以下方式直接聯繫發布人。聯繫時請說明來自「美東華人生活圈」。"
   },
   "en": {
-    "title": "East Coast Chinese Life Hub — One-Stop Official Info Aggregator",
-    "brand_sub": "Official NYC Info · Smart Aggregation & Bilingual Access",
+    "title": "East Coast Chinese Life Hub — Official Info & Local Classifieds",
+    "brand_sub": "Official NYC Info · Local Classifieds · Smart Bilingual Access",
     "nav_hub": "Info Hub",
     "nav_about": "About Us",
     "nav_feedback": "Feedback",
     "btn_plan": "Back to Plan",
-    "btn_feedback": "Give Feedback",
-    "hero_tag": "📢 100% Verified Official Sources · Smart Bilingual Access",
-    "hero_title": "Save Time, Direct Access to NYC Benefits & Events",
-    "hero_desc": "We monitor NYC government, MTA, public libraries, and civic portals daily to aggregate high-value local updates. Access official pages with automatic translation in one click.",
-    "search_placeholder": "Search benefits, events, workshops, official sources or areas (e.g., Flushing, Fair Fares)...",
+    "btn_feedback": "Post an Ad",
+    "hero_tag": "📢 Official Benefits + Modern Classifieds Hub",
+    "hero_title": "East Coast Chinese Life Hub · Modern Classifieds",
+    "hero_desc": "Official benefits on the left, local classifieds on the right. We redesign Craigslist with modern card aesthetics to provide clean, verified listings for rentals, second-hand items, business transfers, and jobs.",
+    "search_placeholder": "Search benefits, events, rentals, second-hand, business transfers, jobs or areas...",
     "boro_all": "All Boroughs",
     "boro_citywide": "Citywide",
     "boro_queens": "Queens",
     "boro_brooklyn": "Brooklyn",
     "boro_manhattan": "Manhattan",
     "results_prefix": "Found",
-    "results_suffix": "verified updates",
+    "results_suffix": "verified updates & classifieds",
     "results_range": "Timeframe: Past 30 days to next 7 days",
     "source_label": "Source",
     "boro_label": "Area",
     "btn_get_link": "Get Official Link ➔",
+    "btn_contact": "Contact Seller ➔",
     "about_title": "About East Coast Chinese Life Hub",
     "about_p1": "Living in the US East Coast, staying updated with official announcements is crucial for protecting your rights and enjoying public benefits. However, English notices scattered across government websites, libraries, and civic organizations can be time-consuming to track down.",
     "about_p2": "We adhere to the principles of '100% Verified, 100% Noise-Free, and 100% Free Public Service.' We use technology to aggregate the latest updates and rewrite them into clear, actionable guides. More importantly, we integrate smart translation routing so that when you click official links, you can read translated official pages directly, removing all information barriers.",
@@ -380,11 +494,29 @@
     "link_option_title": "Select how you want to open the link:",
     "link_option_raw": "Open Official English Page",
     "link_option_trans": "Open Translated Page (Chinese)",
-    "cancel": "Cancel"
+    "cancel": "Cancel",
+    "price_label": "Price",
+    "contact_person": "Contact",
+    "wechat_label": "WeChat",
+    "phone_label": "Phone",
+    "verified_badge": "Paid & Verified",
+    "post_modal_title": "Post Classified Ad",
+    "post_modal_desc": "To eliminate fake brokers and fraudulent ads, we implement a 'Paid Post + Manual Audit' mechanism. All listings require a small fee and pass compliance checks before going live.",
+    "post_step1": "1. Register/Login Account",
+    "post_step1_desc": "Sign up via WeChat scan or email, and verify with a US phone number.",
+    "post_step2": "2. Fill Ad Details & Choose Plan",
+    "post_step2_desc": "Enter title, description, area, price, contact info, and upload photos.",
+    "post_step3": "3. Online Payment",
+    "post_step3_desc": "Pay securely via Stripe, WeChat Pay, or Alipay. Basic ad is $5/month, Featured ad is $20/week (top of the hub).",
+    "post_step4": "4. Manual Review & Live",
+    "post_step4_desc": "Our team reviews the listing within 2 hours. Once approved, it goes live and syncs to WeChat groups.",
+    "btn_start_post": "Post Ad Now (Starts at $5) ➔",
+    "contact_modal_title": "Contact Publisher Information",
+    "contact_modal_desc": "To protect privacy, please contact the publisher directly using the details below. Mention 'East Coast Chinese Life Hub' when calling."
   }
 };
 
-    // Injected 32 Multilingual Events
+    // Injected 38 Multilingual Events (32 events + 6 classifieds)
     var eventsData = [
   {
     "id": "e1",
@@ -483,7 +615,7 @@
     },
     "desc": {
       "zh": "纽约市教育局宣布，今年暑期将继续在全市数百个学校、公园和图书馆向所有 18 岁及以下的学生免费提供早餐和午餐，无需注册或提供身份证明。",
-      "zht": "紐約市教育局宣布，今年暑期將繼續在全市數百個學校、公園和圖書館向所有 18 歲及以下的學生免費提供早餐和午餐，無需註冊或提供身份證明。",
+      "zht": "紐約市教育局宣佈，今年暑期將繼續在全市數百個學校、公園和圖書館向所有 18 歲及以下的學生免費提供早餐和午餐，無需註冊或提供身份證明。",
       "en": "NYC Department of Education provides free breakfast and lunch to all children 18 and under at hundreds of schools, parks, and libraries citywide this summer. No registration or ID required."
     },
     "source": "NYC DOE",
@@ -537,7 +669,7 @@
     },
     "desc": {
       "zh": "只要起点和终点都在纽约市内（如法拉盛往返曼哈顿中城），非高峰期单程仅需 $5.00，高峰期 $7.00。18分钟直达，空调充足，人人有座。",
-      "zht": "只要起點和終點都在紐約市內（如法拉盛往返曼哈頓中城），非高峰期單程僅需 $5.00，高峰期 $7.00。18分鐘直達，空調充足，人人有座。",
+      "zht": "單程僅需 $5.00，高峰期 $7.00。18分鐘直達，空調充足，人人有座。",
       "en": "For travel entirely within NYC (e.g., Flushing to Midtown Manhattan), LIRR offers flat-fare tickets: $5.00 off-peak, $7.00 peak. 18-minute direct trip with guaranteed seats."
     },
     "source": "MTA",
@@ -1023,7 +1155,7 @@
     },
     "desc": {
       "zh": "NYC Parks 宣布在全市数十个公共公园举办免费露天电影放映活动。包含多部迪士尼动画片、好莱坞大片，无需预约，带上野餐垫即可前往观影。",
-      "zht": "NYC Parks 宣布在全市數十個公共公園舉辦免費露天電影放映活動。包含多部迪士尼動畫片、好萊塢大片，無需預約，帶上野餐墊即可前往觀影。",
+      "zht": "NYC Parks 宣佈在全市數十個公共公園舉辦免費露天電影放映活動。包含多部迪士尼動畫片、好萊塢大片，無需預約，帶上野餐墊即可前往觀影。",
       "en": "NYC Parks hosts free outdoor movie screenings across parks in all five boroughs. Features Disney animations and blockbuster hits. No registration required."
     },
     "source": "NYC Parks",
@@ -1104,7 +1236,7 @@
     },
     "desc": {
       "zh": "持有纽约州 ID 或显示纽约地址的账单，即可在大都会博物馆售票处享受「任意付费」(Pay-What-You-Wish) 政策，哪怕付 $1 分钱也能入馆参观。",
-      "zht": "持有紐約州 ID 或顯示紐約地址的賬單，即可在大都會博物館售票處享受「任意付費」(Pay-What-You-Wish) 政策，哪怕付 $1 分錢也能入館參觀。",
+      "zht": "持有紐約州 ID 或顯示紐約地址的賬單，即可在大會堂博物館售票處享受「任意付費」(Pay-What-You-Wish) 政策，哪怕付 $1 分錢也能入館參觀。",
       "en": "With a valid NY State ID or bill showing NY address, residents can enjoy 'Pay-What-You-Wish' admission at Met ticket counters. Even $0.01 is accepted."
     },
     "source": "The Met Museum",
@@ -1239,7 +1371,7 @@
     },
     "desc": {
       "zh": "法拉盛地标新世界商城地下超市本周最新折扣海报。涵盖游水海鲜、新鲜时蔬、南北杂货特价，帮华人家庭精打细算省下买菜钱。",
-      "zht": "法拉盛地標新世界商城地下超市本周最新折扣海報。涵蓋遊水海鮮、新鮮時蔬、南北雜貨特價，幫華人家庭精打細算省下買菜錢。",
+      "zht": "法拉盛地標新世界商城地下超市本周最新特價促銷海報。涵蓋遊水海鮮、新鮮時蔬、南北雜貨特價，幫華人家庭精打細算省下買菜錢。",
       "en": "Weekly discount catalog from New World Supermarket in Flushing. Save on fresh seafood, vegetables, and Asian groceries to help families budget effectively."
     },
     "source": "New World Mall",
@@ -1248,6 +1380,228 @@
       "zh": "皇后区",
       "zht": "皇后區",
       "en": "Queens"
+    }
+  },
+  {
+    "id": "c1",
+    "is_classified": true,
+    "category": {
+      "zh": "房屋出租",
+      "zht": "房屋出租",
+      "en": "Rentals"
+    },
+    "bg_color": "bg-amber-50 text-amber-700 border-amber-200",
+    "date": "2026-06-11",
+    "title": {
+      "zh": "【法拉盛中心】全新公寓单房出租 · 近地铁站/超市",
+      "zht": "【法拉盛中心】全新公寓單房出租 · 近地鐵站/超市",
+      "en": "[Flushing Center] Brand New Apartment Single Room for Rent"
+    },
+    "desc": {
+      "zh": "法拉盛 Main St 步行 5 分钟，全新电梯公寓，大单房带独立卫浴，光线极佳。限一人居住，无烟无宠。租金含水网，随时入住。",
+      "zht": "法拉盛 Main St 步行 5 分鐘，全新電梯公寓，大單房帶獨立衛浴，光線極佳。限一人居住，無煙無寵。租金含水網，隨時入住。",
+      "en": "5-min walk to Flushing Main St, elevator building. Large bedroom with private bath, excellent sunlight. Single occupant only, no smoking/pets. Utilities included."
+    },
+    "source": "房东直租",
+    "price": {
+      "zh": "$950 /月",
+      "zht": "$950 /月",
+      "en": "$950 /mo"
+    },
+    "contact": {
+      "person": "李女士 (Ms. Li)",
+      "wechat": "nyclife_li",
+      "phone": "917-555-0192"
+    },
+    "borough": {
+      "zh": "皇后区",
+      "zht": "皇后區",
+      "en": "Queens"
+    }
+  },
+  {
+    "id": "c2",
+    "is_classified": true,
+    "category": {
+      "zh": "生意转让",
+      "zht": "生意轉讓",
+      "en": "Business Transfer"
+    },
+    "bg_color": "bg-amber-50 text-amber-700 border-amber-200",
+    "date": "2026-06-10",
+    "title": {
+      "zh": "【贝赛 Bayside】旺铺奶茶甜品店低价转让 · 客源稳定",
+      "zht": "【貝賽 Bayside】旺鋪奶茶甜品店低價轉讓 · 客源穩定",
+      "en": "[Bayside] High-Traffic Bubble Tea & Dessert Shop for Sale"
+    },
+    "desc": {
+      "zh": "位于贝赛 Northern Blvd 繁华地段，周边多所高中，客源极其稳定。设备齐全（制冰机、封口机、冷柜等），接手即可盈利，因店主回国忍痛转让。",
+      "zht": "位於貝賽 Northern Blvd 繁華地段，周邊多所高中，客源極其穩定。設備齊全（製冰機、封口機、冷櫃等），接手即可盈利，因店主回國忍痛轉讓。",
+      "en": "Prime location on Northern Blvd, Bayside. Stable customer base with nearby high schools. Fully equipped. Turnkey operation. Selling due to relocation."
+    },
+    "source": "独家代理",
+    "price": {
+      "zh": "$45,000 (可议)",
+      "zht": "$45,000 (可議)",
+      "en": "$45,000 (OBO)"
+    },
+    "contact": {
+      "person": "陈经纪 (Agent Chen)",
+      "wechat": "bayside_broker",
+      "phone": "718-555-0143"
+    },
+    "borough": {
+      "zh": "皇后区",
+      "zht": "皇后區",
+      "en": "Queens"
+    }
+  },
+  {
+    "id": "c3",
+    "is_classified": true,
+    "category": {
+      "zh": "二手闲置",
+      "zht": "二手閒置",
+      "en": "Second-hand"
+    },
+    "bg_color": "bg-amber-50 text-amber-700 border-amber-200",
+    "date": "2026-06-09",
+    "title": {
+      "zh": "【九成新】2024款 MacBook Pro 14寸 M3 芯片 16G+512G",
+      "zht": "【九成新】2024款 MacBook Pro 14寸 M3 芯片 16G+512G",
+      "en": "[95% New] 2024 MacBook Pro 14' M3 Chip 16G+512G"
+    },
+    "desc": {
+      "zh": "自用九九新，无任何划痕，电池健康度 98%，带原装充电器和包装盒。法拉盛面交，支持当场验机，非诚勿扰。",
+      "zht": "自用九九新，無任何劃痕，電池健康度 98%，帶原裝充電器和包裝盒。法拉盛面交，支持當場驗機，非誠勿擾。",
+      "en": "Personal use, mint condition, zero scratches. 98% battery health. Comes with original charger and box. Cash meet-up in Flushing only."
+    },
+    "source": "个人闲置",
+    "price": {
+      "zh": "$1,250",
+      "zht": "$1,250",
+      "en": "$1,250"
+    },
+    "contact": {
+      "person": "Alex",
+      "wechat": "alex_tech_ny",
+      "phone": "646-555-0188"
+    },
+    "borough": {
+      "zh": "皇后区",
+      "zht": "皇后區",
+      "en": "Queens"
+    }
+  },
+  {
+    "id": "c4",
+    "is_classified": true,
+    "category": {
+      "zh": "求职招聘",
+      "zht": "求職招聘",
+      "en": "Jobs"
+    },
+    "bg_color": "bg-amber-50 text-amber-700 border-amber-200",
+    "date": "2026-06-08",
+    "title": {
+      "zh": "【招聘】法拉盛中心齿科诊所招聘双语前台/前台助理",
+      "zht": "【招聘】法拉盛中心齒科診所招聘雙語前台/前台助理",
+      "en": "[Hiring] Bilingual Dental Receptionist in Flushing Center"
+    },
+    "desc": {
+      "zh": "法拉盛齿科诊所诚聘全职/兼职前台。需流利中英文，做事细心，有责任心，有诊所经验者优先，无经验可培训。薪优，提供带薪假及健康保险。",
+      "zht": "法拉盛齒科診所誠聘全職/兼職前台。需流利中英文，做事細心，有責任心，有診所經驗者優先，無經驗可培訓。薪優，提供帶薪假及健康保險。",
+      "en": "Flushing dental clinic seeks full-time/part-time receptionist. Must be fluent in English & Chinese, detail-oriented. Experience preferred but will train. Paid leave & insurance."
+    },
+    "source": "诊所直聘",
+    "price": {
+      "zh": "$20 - $25 /小时",
+      "zht": "$20 - $25 /小時",
+      "en": "$20 - $25 /hr"
+    },
+    "contact": {
+      "person": "Dr. Wang Office",
+      "wechat": "flushing_dental",
+      "phone": "347-555-0112"
+    },
+    "borough": {
+      "zh": "皇后区",
+      "zht": "皇后區",
+      "en": "Queens"
+    }
+  },
+  {
+    "id": "c5",
+    "is_classified": true,
+    "category": {
+      "zh": "房屋出租",
+      "zht": "房屋出租",
+      "en": "Rentals"
+    },
+    "bg_color": "bg-amber-50 text-amber-700 border-amber-200",
+    "date": "2026-06-07",
+    "title": {
+      "zh": "【布鲁克林八大道】独栋住宅二楼整套出租 · 独立门户",
+      "zht": "【布魯克林八大道】獨棟住宅二樓整套出租 · 獨立門戶",
+      "en": "[Brooklyn 8th Ave] House 2nd Floor Apartment for Rent"
+    },
+    "desc": {
+      "zh": "位于布鲁克林八大道华人区，2房1厅1卫，独立出入。光线充足，交通便利，近N线地铁站和各大华人超市，适合小家庭或留学生合租。",
+      "zht": "位於布魯克林八大道華人區，2房1廳1衛，獨立出入。光線充足，交通便利，近N線地鐵站和各大華人超市，適合小家庭或留學生合租。",
+      "en": "Sunset Park 8th Ave area. 2 bedrooms, 1 living room, 1 bath. Private entrance. Bright and clean. Close to N-train and supermarkets. Ideal for small family or students."
+    },
+    "source": "房东直租",
+    "price": {
+      "zh": "$1,850 /月",
+      "zht": "$1,850 /月",
+      "en": "$1,850 /mo"
+    },
+    "contact": {
+      "person": "林先生 (Mr. Lin)",
+      "wechat": "bk_owner_lin",
+      "phone": "917-555-0155"
+    },
+    "borough": {
+      "zh": "布鲁克林",
+      "zht": "布魯克林",
+      "en": "Brooklyn"
+    }
+  },
+  {
+    "id": "c6",
+    "is_classified": true,
+    "category": {
+      "zh": "生意转让",
+      "zht": "生意轉讓",
+      "en": "Business Transfer"
+    },
+    "bg_color": "bg-amber-50 text-amber-700 border-amber-200",
+    "date": "2026-06-06",
+    "title": {
+      "zh": "【曼哈顿唐人街】美容美甲老店转让 · 租金便宜",
+      "zht": "【曼哈頓唐人街】美容美甲老店轉讓 · 租金便宜",
+      "en": "[Manhattan Chinatown] Established Nail Salon for Sale"
+    },
+    "desc": {
+      "zh": "位于华埠核心街道，经营多年，老客极多，口碑绝佳。租金在周边属于极低水平，租约长。包含所有美甲桌椅、美容床及库存，接手即可营业。",
+      "zht": "位於華埠核心街道，經營多年，老客極多，口碑絕佳。租金在周邊屬於極低水平，租約長。包含所有美甲桌椅、美容床及庫存，接手即可營業。",
+      "en": "Heart of Chinatown. Long-established nail salon with loyal local clientele. Low rent, long lease. Includes all manicure tables, spa chairs, and inventory."
+    },
+    "source": "店主直转",
+    "price": {
+      "zh": "$32,000",
+      "zht": "$32,000",
+      "en": "$32,000"
+    },
+    "contact": {
+      "person": "张店主 (Owner Zhang)",
+      "wechat": "chinatown_nail",
+      "phone": "212-555-0177"
+    },
+    "borough": {
+      "zh": "曼哈顿",
+      "zht": "曼哈頓",
+      "en": "Manhattan"
     }
   }
 ];
@@ -1270,6 +1624,15 @@
     var modalLinkTrans = document.getElementById('modal-link-trans');
     var modalLinkRaw = document.getElementById('modal-link-raw');
     var modalCancelBtn = document.getElementById('modal-cancel-btn');
+
+    // Post Ad Modal Elements
+    var postAdModal = document.getElementById('post-ad-modal');
+    
+    // Contact Modal Elements
+    var contactModal = document.getElementById('contact-modal');
+    var valContactPerson = document.getElementById('val-contact-person');
+    var valWeChat = document.getElementById('val-wechat');
+    var valPhoneLink = document.getElementById('val-phone-link');
 
     // --- Translate UI Elements ---
     function translateUI() {
@@ -1335,6 +1698,28 @@
       modalLinkTrans.textContent = strings.link_option_trans;
       modalCancelBtn.textContent = strings.cancel;
 
+      // Post Ad Modal
+      document.getElementById('post-modal-title').textContent = strings.post_modal_title;
+      document.getElementById('post-modal-desc').textContent = strings.post_modal_desc;
+      document.getElementById('post-step1').textContent = strings.post_step1;
+      document.getElementById('post-step1-desc').textContent = strings.post_step1_desc;
+      document.getElementById('post-step2').textContent = strings.post_step2;
+      document.getElementById('post-step2-desc').textContent = strings.post_step2_desc;
+      document.getElementById('post-step3').textContent = strings.post_step3;
+      document.getElementById('post-step3-desc').textContent = strings.post_step3_desc;
+      document.getElementById('post-step4').textContent = strings.post_step4;
+      document.getElementById('post-step4-desc').textContent = strings.post_step4_desc;
+      document.getElementById('btn-start-post').textContent = strings.btn_start_post;
+      document.getElementById('btn-post-cancel').textContent = strings.cancel;
+
+      // Contact Modal
+      document.getElementById('contact-modal-title').textContent = strings.contact_modal_title;
+      document.getElementById('contact-modal-desc').textContent = strings.contact_modal_desc;
+      document.getElementById('lbl-contact-person').textContent = strings.contact_person;
+      document.getElementById('lbl-wechat').textContent = strings.wechat_label + ' (WeChat)';
+      document.getElementById('lbl-phone').textContent = strings.phone_label + ' (Phone)';
+      document.getElementById('btn-contact-close').textContent = strings.cancel;
+
       // Re-render categories and events to match language
       renderCategoryFilters();
       renderEvents();
@@ -1342,14 +1727,14 @@
 
     // --- Render Category Filters ---
     var categoriesMap = {
-      'zh': ['全部频道', '福利申请', '交通出行', '语言教育', '社区安全', '公园亲子', '文化展览', '市政议员', '公益志愿', '消费促销'],
-      'zht': ['全部頻道', '福利申請', '交通出行', '語言教育', '社區安全', '公園親子', '文化展覽', '市政議員', '公益志願', '消費促銷'],
-      'en': ['All Channels', 'Benefits', 'Transit', 'Education', 'Safety', 'Recreation', 'Culture', 'Civic', 'Charity', 'Promos']
+      'zh': ['全部频道', '福利申请', '交通出行', '语言教育', '社区安全', '公园亲子', '文化展览', '市政议员', '公益志愿', '消费促销', '房屋出租', '生意转让', '二手闲置', '求职招聘'],
+      'zht': ['全部頻道', '福利申請', '交通出行', '語言教育', '社區安全', '公園親子', '文化展覽', '市政議員', '公益志願', '消費促銷', '房屋出租', '生意轉讓', '二手閒置', '求職招聘'],
+      'en': ['All Channels', 'Benefits', 'Transit', 'Education', 'Safety', 'Recreation', 'Culture', 'Civic', 'Charity', 'Promos', 'Rentals', 'Business Sale', 'Second-hand', 'Jobs']
     };
 
     function renderCategoryFilters() {
       var cats = categoriesMap[currentLang];
-      var keys = ['all', '福利申请', '交通出行', '语言教育', '社区安全', '公园亲子', '文化展览', '市政议员', '公益志愿', '消费促销'];
+      var keys = ['all', '福利申请', '交通出行', '语言教育', '社区安全', '公园亲子', '文化展览', '市政议员', '公益志愿', '消费促销', '房屋出租', '生意转让', '二手闲置', '求职招聘'];
       
       var html = "";
       cats.forEach(function(cat, idx) {
@@ -1400,6 +1785,45 @@
     modalLinkRaw.addEventListener('click', closeSmartLinkModal);
     modalLinkTrans.addEventListener('click', closeSmartLinkModal);
 
+    // --- Post Ad Modal ---
+    function openPostAdModal() {
+      postAdModal.classList.remove('hidden');
+      postAdModal.classList.add('flex');
+    }
+
+    function closePostAdModal() {
+      postAdModal.classList.remove('flex');
+      postAdModal.classList.add('hidden');
+    }
+
+    // --- Contact Modal ---
+    function openContactModal(adId) {
+      var ad = eventsData.find(function(item) { return item.id === adId; });
+      if (!ad) return;
+
+      valContactPerson.textContent = ad.contact.person;
+      valWeChat.textContent = ad.contact.wechat;
+      valPhoneLink.textContent = ad.contact.phone;
+      valPhoneLink.setAttribute('href', 'tel:' + ad.contact.phone.replace(/-/g, ''));
+
+      contactModal.classList.remove('hidden');
+      contactModal.classList.add('flex');
+    }
+
+    function closeContactModal() {
+      contactModal.classList.remove('flex');
+      contactModal.classList.add('hidden');
+    }
+
+    function copyWeChat() {
+      var wechatId = valWeChat.textContent;
+      navigator.clipboard.writeText(wechatId).then(function() {
+        alert('微信 ID 已复制到剪贴板: ' + wechatId);
+      }, function() {
+        alert('复制失败，请手动复制: ' + wechatId);
+      });
+    }
+
     // --- Render Event Cards ---
     function renderEvents() {
       var query = searchInput.value.toLowerCase();
@@ -1424,25 +1848,56 @@
 
         if (matchesSearch && matchesCat && matchesBoro) {
           visibleCount++;
-          html += '<div class="bg-white rounded-2xl border border-slate-200 shadow-sm hover:shadow-md transition overflow-hidden flex flex-col">';
-          html += '  <div class="p-6 flex-1 flex flex-col justify-between">';
-          html += '    <div>';
-          html += '      <div class="flex justify-between items-start gap-2 mb-3">';
-          html += '        <span class="inline-block px-2.5 py-0.5 rounded text-[10px] font-bold border ' + ev.bg_color + '">' + category + '</span>';
-          html += '        <span class="text-[10px] text-slate-400 font-semibold">' + ev.date + '</span>';
-          html += '      </div>';
-          html += '      <h4 class="font-bold text-slate-900 text-sm mb-2 hover:text-brand-600 transition">' + title + '</h4>';
-          html += '      <p class="text-xs text-slate-600 leading-relaxed mb-4">' + desc + '</p>';
-          html += '    </div>';
-          html += '    <div class="pt-4 border-t border-slate-100 flex items-center justify-between text-[10px]">';
-          html += '      <div class="flex flex-col gap-0.5">';
-          html += '        <span class="text-slate-400 font-medium">' + strings.source_label + ': <strong class="text-slate-600">' + ev.source + '</strong></span>';
-          html += '        <span class="text-slate-400 font-medium">' + strings.boro_label + ': <strong class="text-slate-600">' + borough + '</strong></span>';
-          html += '      </div>';
-          html += '      <button onclick="openSmartLink('' + ev.url + '')" class="px-3 py-2 bg-brand-50 hover:bg-brand-100 text-brand-700 font-bold rounded-lg transition">' + strings.btn_get_link + '</button>';
-          html += '    </div>';
-          html += '  </div>';
-          html += '</div>';
+          
+          if (ev.is_classified) {
+            // Render Classified Ad Card
+            var price = ev.price[currentLang] || ev.price['zh'];
+            html += '<div class="bg-white rounded-2xl border-2 border-amber-200 shadow-sm hover:shadow-md transition overflow-hidden flex flex-col relative">';
+            html += '  <div class="absolute top-0 right-0 bg-amber-500 text-white text-[9px] font-bold px-2 py-0.5 rounded-bl-lg uppercase tracking-wider">' + strings.verified_badge + '</div>';
+            html += '  <div class="p-6 flex-1 flex flex-col justify-between">';
+            html += '    <div>';
+            html += '      <div class="flex justify-between items-center gap-2 mb-3">';
+            html += '        <span class="inline-block px-2.5 py-0.5 rounded text-[10px] font-bold border bg-amber-50 text-amber-800 border-amber-200">同城分类 · ' + category + '</span>';
+            html += '        <span class="text-[10px] text-slate-400 font-semibold">' + ev.date + '</span>';
+            html += '      </div>';
+            html += '      <h4 class="font-bold text-slate-900 text-sm mb-2 hover:text-brand-600 transition">' + title + '</h4>';
+            html += '      <p class="text-xs text-slate-600 leading-relaxed mb-4">' + desc + '</p>';
+            html += '      <div class="mb-4 flex items-center gap-1.5 text-xs font-bold text-orange-600 bg-orange-50 px-3 py-1.5 rounded-lg w-max">';
+            html += '        <span>💰 ' + strings.price_label + ':</span>';
+            html += '        <span>' + price + '</span>';
+            html += '      </div>';
+            html += '    </div>';
+            html += '    <div class="pt-4 border-t border-slate-100 flex items-center justify-between text-[10px]">';
+            html += '      <div class="flex flex-col gap-0.5">';
+            html += '        <span class="text-slate-400 font-medium">' + strings.source_label + ': <strong class="text-slate-600">' + ev.source + '</strong></span>';
+            html += '        <span class="text-slate-400 font-medium">' + strings.boro_label + ': <strong class="text-slate-600">' + borough + '</strong></span>';
+            html += '      </div>';
+            html += '      <button onclick="openContactModal('' + ev.id + '')" class="px-3 py-2 bg-amber-100 hover:bg-amber-200 text-amber-800 font-bold rounded-lg transition">' + strings.btn_contact + '</button>';
+            html += '    </div>';
+            html += '  </div>';
+            html += '</div>';
+          } else {
+            // Render Official Curated Event Card
+            html += '<div class="bg-white rounded-2xl border border-slate-200 shadow-sm hover:shadow-md transition overflow-hidden flex flex-col">';
+            html += '  <div class="p-6 flex-1 flex flex-col justify-between">';
+            html += '    <div>';
+            html += '      <div class="flex justify-between items-start gap-2 mb-3">';
+            html += '        <span class="inline-block px-2.5 py-0.5 rounded text-[10px] font-bold border ' + ev.bg_color + '">' + category + '</span>';
+            html += '        <span class="text-[10px] text-slate-400 font-semibold">' + ev.date + '</span>';
+            html += '      </div>';
+            html += '      <h4 class="font-bold text-slate-900 text-sm mb-2 hover:text-brand-600 transition">' + title + '</h4>';
+            html += '      <p class="text-xs text-slate-600 leading-relaxed mb-4">' + desc + '</p>';
+            html += '    </div>';
+            html += '    <div class="pt-4 border-t border-slate-100 flex items-center justify-between text-[10px]">';
+            html += '      <div class="flex flex-col gap-0.5">';
+            html += '        <span class="text-slate-400 font-medium">' + strings.source_label + ': <strong class="text-slate-600">' + ev.source + '</strong></span>';
+            html += '        <span class="text-slate-400 font-medium">' + strings.boro_label + ': <strong class="text-slate-600">' + borough + '</strong></span>';
+            html += '      </div>';
+            html += '      <button onclick="openSmartLink('' + ev.url + '')" class="px-3 py-2 bg-brand-50 hover:bg-brand-100 text-brand-700 font-bold rounded-lg transition">' + strings.btn_get_link + '</button>';
+            html += '    </div>';
+            html += '  </div>';
+            html += '</div>';
+          }
         }
       });
 
@@ -1510,6 +1965,7 @@
 
     // --- Initial Boot ---
     translateUI();
+    renderFeedbackList();
   </script>
 
 </body>
