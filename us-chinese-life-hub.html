@@ -250,8 +250,9 @@
         <span class="stream-label" id="stream-label">今日更新</span>
         <span class="stream-count" id="stream-count"></span>
       </div>
-      <div class="stream-right">
+      <div class="stream-right" style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;">
         <span class="stream-date" id="stream-date"></span>
+        <span id="verify-badge" style="font-size:11px;font-weight:700;color:#16a34a;">⏳ 链接验证中…</span>
       </div>
     </div>
 
@@ -864,10 +865,52 @@ function evictExpiredItems() {
   }
 }
 
+// ── Verification Badge (reads link_audit.json if co-hosted, else static) ─────
+function initVerifyBadge() {
+  const badge = document.getElementById('verify-badge');
+  if (!badge) return;
+
+  // Try to load link_audit.json from same origin (co-hosted static)
+  fetch('/outputs/nyc_community_events/link_audit.json', { cache: 'no-store' })
+    .then(r => r.ok ? r.json() : Promise.reject(r.status))
+    .then(audit => {
+      const m = audit.meta;
+      const rate = m.pass_rate_pct;
+      const color = rate >= 90 ? '#16a34a' : rate >= 70 ? '#d97706' : '#dc2626';
+      const icon  = rate >= 90 ? '✔' : rate >= 70 ? '⚠' : '✗';
+      badge.style.color = color;
+      badge.textContent = `${icon} 链接验证 ${m.g1_pass}/${m.total} (${rate}%) · ${m.verified_at_et} ET`;
+    })
+    .catch(() => {
+      // Fallback: derive from ITEMS count embedded in page
+      const total = ITEMS.length;
+      badge.style.color = '#64748b';
+      badge.textContent = `📋 共 ${total} 条信息 · 每日 07:30 ET 自动更新并验证`;
+    });
+}
+
+// ── Update Schedule Notice ─────────────────────────────────────────────────
+function renderScheduleNotice() {
+  // Show "下次更新" countdown in stream-date
+  const dateEl = document.getElementById('stream-date');
+  if (!dateEl) return;
+  const now = new Date();
+  // Next 07:30 ET (UTC-4 in summer, UTC-5 in winter) — approximate as UTC-4
+  const nextUpdate = new Date(now);
+  nextUpdate.setUTCHours(11, 30, 0, 0); // 07:30 ET = 11:30 UTC
+  if (nextUpdate <= now) nextUpdate.setUTCDate(nextUpdate.getUTCDate() + 1);
+  const diffH = Math.round((nextUpdate - now) / 3600000);
+  const diffText = diffH < 1 ? '< 1小时后' : diffH < 24 ? `约 ${diffH} 小时后` : `明日 07:30 ET`;
+  const existing = dateEl.textContent || '';
+  dateEl.textContent = existing + (existing ? '  ·  ' : '') + `⏰ ${diffText} 更新`;
+}
+
 // Initial Boot
 evictExpiredItems();
 initPreference();
 renderStreamSections();
+initVerifyBadge();
+renderScheduleNotice();
 
 // ── Subscription System ──────────────────────────────────────────────────────
 
