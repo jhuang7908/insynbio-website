@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>美东华人生活圈 — 本地生活与公共信息集散平台</title>
+  <title>美东华人生活圈 — 官方资讯一站式中文聚合 | East Coast Chinese Life Hub</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
@@ -37,9 +37,9 @@
     }}
   </style>
 </head>
-<body class="bg-slate-50 text-slate-800 antialiased">
+<body class="bg-slate-50 text-slate-800 antialiased flex flex-col min-h-screen">
 
-  <!-- ===== TOP HEADER (100% Standalone Community Branding) ===== -->
+  <!-- ===== TOP HEADER ===== -->
   <header class="bg-white border-b border-slate-200 sticky top-0 z-50 shadow-sm">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
       <div class="flex items-center gap-3">
@@ -48,22 +48,33 @@
           圈
         </div>
         <div>
-          <h1 class="text-lg font-bold text-slate-900 leading-tight">美东华人生活圈</h1>
-          <p class="text-[10px] text-slate-400 font-semibold uppercase tracking-wider">East Coast Chinese Life Hub</p>
+          <h1 class="text-base font-bold text-slate-900 leading-tight" id="ui-brand-title">美东华人生活圈</h1>
+          <p class="text-[9px] text-slate-400 font-semibold uppercase tracking-wider" id="ui-brand-sub">美东官方资讯 · 智能聚合与双语对照</p>
         </div>
       </div>
       
-      <!-- Navigation -->
-      <nav class="hidden md:flex items-center gap-6 text-sm font-semibold text-slate-600">
-        <a href="#hub" class="text-brand-600 hover:text-brand-700 transition">信息大厅</a>
-        <a href="#about" class="hover:text-brand-600 transition">关于我们</a>
-        <a href="#feedback" class="hover:text-brand-600 transition">意见反馈</a>
-      </nav>
+      <!-- Navigation & Language Switcher -->
+      <div class="flex items-center gap-4 sm:gap-6">
+        <nav class="hidden md:flex items-center gap-6 text-sm font-semibold text-slate-600">
+          <a href="#hub" class="text-brand-600 hover:text-brand-700 transition" id="ui-nav-hub">信息大厅</a>
+          <a href="#about" class="hover:text-brand-600 transition" id="ui-nav-about">关于我们</a>
+          <a href="#feedback" class="hover:text-brand-600 transition" id="ui-nav-feedback">意见反馈</a>
+        </nav>
 
-      <!-- Action Button -->
-      <div class="flex items-center gap-2">
-        <a href="us-chinese-life-plan.html" class="px-3.5 py-1.5 text-xs font-bold text-slate-600 bg-slate-100 hover:bg-slate-200 rounded-lg transition no-underline">返回商业计划书</a>
-        <a href="#feedback" class="px-4 py-2 text-xs font-bold text-white bg-brand-600 hover:bg-brand-700 rounded-lg transition shadow-md shadow-brand-600/10">提交意见</a>
+        <!-- Language Switcher Dropdown -->
+        <div class="relative inline-block text-left">
+          <select id="lang-switcher" class="px-3 py-1.5 border border-slate-200 rounded-lg text-xs font-bold text-slate-700 bg-slate-50 focus:outline-none focus:ring-2 focus:ring-brand-500 cursor-pointer">
+            <option value="zh">简体中文</option>
+            <option value="zht">繁體中文</option>
+            <option value="en">English</option>
+          </select>
+        </div>
+
+        <!-- Action Button -->
+        <div class="flex items-center gap-2">
+          <a href="us-chinese-life-plan.html" class="px-3 py-1.5 text-xs font-bold text-slate-600 bg-slate-100 hover:bg-slate-200 rounded-lg transition no-underline" id="ui-btn-plan">返回规划案</a>
+          <a href="#feedback" class="hidden sm:inline-block px-4 py-2 text-xs font-bold text-white bg-brand-600 hover:bg-brand-700 rounded-lg transition shadow-md shadow-brand-600/10" id="ui-btn-feedback">提交意见</a>
+        </div>
       </div>
     </div>
   </header>
@@ -71,20 +82,20 @@
   <!-- ===== HERO BANNER ===== -->
   <section class="bg-gradient-to-b from-brand-50 via-white to-slate-50 py-12 border-b border-slate-100">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-      <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-brand-100 text-brand-800 mb-4">
-        📢 100% 官方真实来源 · 每日自动更新
+      <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-brand-100 text-brand-800 mb-4" id="ui-hero-tag">
+        📢 100% 官方真实来源 · 智能双语对照
       </span>
-      <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight text-slate-900 mb-4">
-        打破语言障碍，告别信息孤岛
+      <h2 class="text-2xl sm:text-4xl font-extrabold tracking-tight text-slate-900 mb-4 font-space" id="ui-hero-title">
+        省时省力，直达美东官方福利与活动
       </h2>
-      <p class="text-sm sm:text-base text-slate-500 max-w-2xl mx-auto leading-relaxed">
-        我们每天从纽约市政府、MTA、公共图书馆、警局等公开渠道抓取最新资讯，人工翻译并重写为“保姆级手把手指南”，为您提供最干净、最实用的美东本地生活服务。
+      <p class="text-xs sm:text-sm text-slate-500 max-w-2xl mx-auto leading-relaxed" id="ui-hero-desc">
+        我们每天自动监控纽约市政府、MTA、公共图书馆等公开渠道，为您整理并重写高价值的本地民生资讯。支持一键开启官方网页中文翻译，告别繁琐检索。
       </p>
     </div>
   </section>
 
   <!-- ===== MAIN INFORMATION HUB ===== -->
-  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10" id="hub">
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 flex-1" id="hub">
     
     <!-- Search and Filters -->
     <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm mb-8">
@@ -95,666 +106,46 @@
           <span class="absolute left-3.5 top-3.5 text-slate-400">🔍</span>
         </div>
         <!-- Borough Filter -->
-        <select id="borough-filter" class="px-4 py-3 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-brand-500 text-sm text-slate-600 bg-white">
-          <option value="all">所有区域 (All Boroughs)</option>
-          <option value="全市">纽约全市 (Citywide)</option>
-          <option value="皇后区">皇后区 (Queens)</option>
-          <option value="布鲁克林">布鲁克林 (Brooklyn)</option>
-          <option value="曼哈顿">曼哈顿 (Manhattan)</option>
+        <select id="borough-filter" class="px-4 py-3 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-brand-500 text-sm text-slate-600 bg-white cursor-pointer">
+          <option value="all" id="opt-boro-all">所有区域 (All Boroughs)</option>
+          <option value="全市" id="opt-boro-citywide">纽约全市 (Citywide)</option>
+          <option value="皇后区" id="opt-boro-queens">皇后区 (Queens)</option>
+          <option value="布鲁克林" id="opt-boro-brooklyn">布鲁克林 (Brooklyn)</option>
+          <option value="曼哈顿" id="opt-boro-manhattan">曼哈顿 (Manhattan)</option>
         </select>
       </div>
 
       <!-- Category Filter Buttons -->
       <div class="flex flex-wrap gap-1.5 mt-4 pt-4 border-t border-slate-100" id="category-filters">
-        <button class="cat-btn px-4 py-2 text-xs font-semibold rounded-lg bg-brand-600 text-white shadow-sm" data-filter="all">全部频道</button>
-        <button class="cat-btn px-4 py-2 text-xs font-semibold rounded-lg bg-slate-50 text-slate-600 hover:bg-slate-100 border border-slate-200" data-filter="福利申请">福利申请</button>
-        <button class="cat-btn px-4 py-2 text-xs font-semibold rounded-lg bg-slate-50 text-slate-600 hover:bg-slate-100 border border-slate-200" data-filter="交通出行">交通出行</button>
-        <button class="cat-btn px-4 py-2 text-xs font-semibold rounded-lg bg-slate-50 text-slate-600 hover:bg-slate-100 border border-slate-200" data-filter="语言教育">语言教育</button>
-        <button class="cat-btn px-4 py-2 text-xs font-semibold rounded-lg bg-slate-50 text-slate-600 hover:bg-slate-100 border border-slate-200" data-filter="社区安全">社区安全</button>
-        <button class="cat-btn px-4 py-2 text-xs font-semibold rounded-lg bg-slate-50 text-slate-600 hover:bg-slate-100 border border-slate-200" data-filter="公园亲子">公园亲子</button>
-        <button class="cat-btn px-4 py-2 text-xs font-semibold rounded-lg bg-slate-50 text-slate-600 hover:bg-slate-100 border border-slate-200" data-filter="文化展览">文化展览</button>
-        <button class="cat-btn px-4 py-2 text-xs font-semibold rounded-lg bg-slate-50 text-slate-600 hover:bg-slate-100 border border-slate-200" data-filter="市政议员">市政议员</button>
-        <button class="cat-btn px-4 py-2 text-xs font-semibold rounded-lg bg-slate-50 text-slate-600 hover:bg-slate-100 border border-slate-200" data-filter="公益志愿">公益志愿</button>
-        <button class="cat-btn px-4 py-2 text-xs font-semibold rounded-lg bg-slate-50 text-slate-600 hover:bg-slate-100 border border-slate-200" data-filter="消费促销">消费促销</button>
+        <!-- Dynamic Category Buttons will be injected here -->
       </div>
     </div>
 
     <!-- Stats Bar -->
     <div class="flex justify-between items-center text-xs text-slate-400 mb-6 px-2">
       <span id="results-count">已加载 32 条真实历史及最新资讯</span>
-      <span>数据范围：过去30天至未来一周</span>
+      <span id="ui-results-range">数据范围：过去30天至未来一周</span>
     </div>
 
     <!-- Events Grid -->
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16" id="events-grid">
-      
-      <div class="bg-white rounded-2xl border border-slate-200 shadow-sm hover:shadow-md transition overflow-hidden flex flex-col" data-category="福利申请" data-borough="全市">
-        <div class="p-6 flex-1 flex flex-col justify-between">
-          <div>
-            <div class="flex justify-between items-start gap-2 mb-3">
-              <span class="inline-block px-2.5 py-0.5 rounded text-[10px] font-bold border bg-emerald-50 text-emerald-700 border-emerald-200">福利申请</span>
-              <span class="text-[10px] text-slate-400 font-semibold">2026-06-11 (长期有效)</span>
-            </div>
-            <h4 class="font-bold text-slate-900 text-sm mb-2 hover:text-brand-600 transition">纽约半价地铁卡 Fair Fares NYC 申请指南</h4>
-            <p class="text-xs text-slate-600 leading-relaxed mb-4">符合条件的低收入纽约居民（18-64岁，单身年收入低于 $21,120，两口之家低于 $28,500）可申请半价地铁卡，单程仅需 $1.45。不属于公共负担，不影响绿卡申请。</p>
-          </div>
-          <div class="pt-4 border-t border-slate-100 flex items-center justify-between text-[10px]">
-            <div class="flex flex-col gap-0.5">
-              <span class="text-slate-400 font-medium">来源: <strong class="text-slate-600">ACCESS HRA 官方</strong></span>
-              <span class="text-slate-400 font-medium">区域: <strong class="text-slate-600">全市</strong></span>
-            </div>
-            <a href="https://access.nyc.gov/programs/fair-fares/" target="_blank" class="px-3 py-2 bg-brand-50 hover:bg-brand-100 text-brand-700 font-bold rounded-lg transition no-underline">获取官方链接 ➔</a>
-          </div>
-        </div>
-      </div>
-      <div class="bg-white rounded-2xl border border-slate-200 shadow-sm hover:shadow-md transition overflow-hidden flex flex-col" data-category="福利申请" data-borough="全市">
-        <div class="p-6 flex-1 flex flex-col justify-between">
-          <div>
-            <div class="flex justify-between items-start gap-2 mb-3">
-              <span class="inline-block px-2.5 py-0.5 rounded text-[10px] font-bold border bg-emerald-50 text-emerald-700 border-emerald-200">福利申请</span>
-              <span class="text-[10px] text-slate-400 font-semibold">2026-06-11 (长期有效)</span>
-            </div>
-            <h4 class="font-bold text-slate-900 text-sm mb-2 hover:text-brand-600 transition">纽约 SNAP 粮食券福利标准与申请通道</h4>
-            <p class="text-xs text-slate-600 leading-relaxed mb-4">低收入家庭每月可获得食品补助金，直接充值到 EBT 卡中，可在各大华人超市（如大中华、新世界）购买食材。单身月收入低于 $1,580 即可申请。</p>
-          </div>
-          <div class="pt-4 border-t border-slate-100 flex items-center justify-between text-[10px]">
-            <div class="flex flex-col gap-0.5">
-              <span class="text-slate-400 font-medium">来源: <strong class="text-slate-600">ACCESS HRA 官方</strong></span>
-              <span class="text-slate-400 font-medium">区域: <strong class="text-slate-600">全市</strong></span>
-            </div>
-            <a href="https://access.nyc.gov/programs/snap/" target="_blank" class="px-3 py-2 bg-brand-50 hover:bg-brand-100 text-brand-700 font-bold rounded-lg transition no-underline">获取官方链接 ➔</a>
-          </div>
-        </div>
-      </div>
-      <div class="bg-white rounded-2xl border border-slate-200 shadow-sm hover:shadow-md transition overflow-hidden flex flex-col" data-category="福利申请" data-borough="全市">
-        <div class="p-6 flex-1 flex flex-col justify-between">
-          <div>
-            <div class="flex justify-between items-start gap-2 mb-3">
-              <span class="inline-block px-2.5 py-0.5 rounded text-[10px] font-bold border bg-emerald-50 text-emerald-700 border-emerald-200">福利申请</span>
-              <span class="text-[10px] text-slate-400 font-semibold">2026-05-20 (夏季降温补助)</span>
-            </div>
-            <h4 class="font-bold text-slate-900 text-sm mb-2 hover:text-brand-600 transition">HEAP 暖气与夏季避暑空调补助申请</h4>
-            <p class="text-xs text-slate-600 leading-relaxed mb-4">纽约州低收入家庭能源补助计划（HEAP）现已开放夏季降温补助申请。符合条件的家庭可获得免费空调安装或电费补贴，帮助平稳度过酷暑。</p>
-          </div>
-          <div class="pt-4 border-t border-slate-100 flex items-center justify-between text-[10px]">
-            <div class="flex flex-col gap-0.5">
-              <span class="text-slate-400 font-medium">来源: <strong class="text-slate-600">HEAP 官方</strong></span>
-              <span class="text-slate-400 font-medium">区域: <strong class="text-slate-600">全市</strong></span>
-            </div>
-            <a href="https://access.nyc.gov/programs/heap/" target="_blank" class="px-3 py-2 bg-brand-50 hover:bg-brand-100 text-brand-700 font-bold rounded-lg transition no-underline">获取官方链接 ➔</a>
-          </div>
-        </div>
-      </div>
-      <div class="bg-white rounded-2xl border border-slate-200 shadow-sm hover:shadow-md transition overflow-hidden flex flex-col" data-category="福利申请" data-borough="全市">
-        <div class="p-6 flex-1 flex flex-col justify-between">
-          <div>
-            <div class="flex justify-between items-start gap-2 mb-3">
-              <span class="inline-block px-2.5 py-0.5 rounded text-[10px] font-bold border bg-emerald-50 text-emerald-700 border-emerald-200">福利申请</span>
-              <span class="text-[10px] text-slate-400 font-semibold">2026-06-01 (暑期福利)</span>
-            </div>
-            <h4 class="font-bold text-slate-900 text-sm mb-2 hover:text-brand-600 transition">NYC Free Summer Meals 纽约市暑期免费学生餐计划</h4>
-            <p class="text-xs text-slate-600 leading-relaxed mb-4">纽约市教育局宣布，今年暑期将继续在全市数百个学校、公园和图书馆向所有 18 岁及以下的学生免费提供早餐和午餐，无需注册或提供身份证明。</p>
-          </div>
-          <div class="pt-4 border-t border-slate-100 flex items-center justify-between text-[10px]">
-            <div class="flex flex-col gap-0.5">
-              <span class="text-slate-400 font-medium">来源: <strong class="text-slate-600">纽约市教育局</strong></span>
-              <span class="text-slate-400 font-medium">区域: <strong class="text-slate-600">全市</strong></span>
-            </div>
-            <a href="https://www.schools.nyc.gov/school-life/food/summer-meals" target="_blank" class="px-3 py-2 bg-brand-50 hover:bg-brand-100 text-brand-700 font-bold rounded-lg transition no-underline">获取官方链接 ➔</a>
-          </div>
-        </div>
-      </div>
-      <div class="bg-white rounded-2xl border border-slate-200 shadow-sm hover:shadow-md transition overflow-hidden flex flex-col" data-category="福利申请" data-borough="全市">
-        <div class="p-6 flex-1 flex flex-col justify-between">
-          <div>
-            <div class="flex justify-between items-start gap-2 mb-3">
-              <span class="inline-block px-2.5 py-0.5 rounded text-[10px] font-bold border bg-emerald-50 text-emerald-700 border-emerald-200">福利申请</span>
-              <span class="text-[10px] text-slate-400 font-semibold">2026-06-11 (长期有效)</span>
-            </div>
-            <h4 class="font-bold text-slate-900 text-sm mb-2 hover:text-brand-600 transition">纽约市免费手机与无限通话计划 (Lifeline)</h4>
-            <p class="text-xs text-slate-600 leading-relaxed mb-4">符合特定低收入标准或已获得 Medicaid/SNAP 的纽约居民，可申请免费智能手机、每月免费流量和无限通话，帮助新移民保持与社会的联系。</p>
-          </div>
-          <div class="pt-4 border-t border-slate-100 flex items-center justify-between text-[10px]">
-            <div class="flex flex-col gap-0.5">
-              <span class="text-slate-400 font-medium">来源: <strong class="text-slate-600">ACCESS NYC</strong></span>
-              <span class="text-slate-400 font-medium">区域: <strong class="text-slate-600">全市</strong></span>
-            </div>
-            <a href="https://access.nyc.gov/programs/lifeline/" target="_blank" class="px-3 py-2 bg-brand-50 hover:bg-brand-100 text-brand-700 font-bold rounded-lg transition no-underline">获取官方链接 ➔</a>
-          </div>
-        </div>
-      </div>
-      <div class="bg-white rounded-2xl border border-slate-200 shadow-sm hover:shadow-md transition overflow-hidden flex flex-col" data-category="交通出行" data-borough="皇后区/曼哈顿">
-        <div class="p-6 flex-1 flex flex-col justify-between">
-          <div>
-            <div class="flex justify-between items-start gap-2 mb-3">
-              <span class="inline-block px-2.5 py-0.5 rounded text-[10px] font-bold border bg-sky-50 text-sky-700 border-sky-200">交通出行</span>
-              <span class="text-[10px] text-slate-400 font-semibold">2026-06-11 (长期有效)</span>
-            </div>
-            <h4 class="font-bold text-slate-900 text-sm mb-2 hover:text-brand-600 transition">LIRR CityTicket 市内火车 $5 特惠票政策</h4>
-            <p class="text-xs text-slate-600 leading-relaxed mb-4">只要起点和终点都在纽约市内（如法拉盛往返曼哈顿中城），非高峰期单程仅需 $5.00，高峰期 $7.00。18分钟直达，空调充足，人人有座。</p>
-          </div>
-          <div class="pt-4 border-t border-slate-100 flex items-center justify-between text-[10px]">
-            <div class="flex flex-col gap-0.5">
-              <span class="text-slate-400 font-medium">来源: <strong class="text-slate-600">MTA 官方</strong></span>
-              <span class="text-slate-400 font-medium">区域: <strong class="text-slate-600">皇后区/曼哈顿</strong></span>
-            </div>
-            <a href="https://new.mta.info/fares/cityticket" target="_blank" class="px-3 py-2 bg-brand-50 hover:bg-brand-100 text-brand-700 font-bold rounded-lg transition no-underline">获取官方链接 ➔</a>
-          </div>
-        </div>
-      </div>
-      <div class="bg-white rounded-2xl border border-slate-200 shadow-sm hover:shadow-md transition overflow-hidden flex flex-col" data-category="交通出行" data-borough="全市">
-        <div class="p-6 flex-1 flex flex-col justify-between">
-          <div>
-            <div class="flex justify-between items-start gap-2 mb-3">
-              <span class="inline-block px-2.5 py-0.5 rounded text-[10px] font-bold border bg-sky-50 text-sky-700 border-sky-200">交通出行</span>
-              <span class="text-[10px] text-slate-400 font-semibold">2026-06-11 (长期有效)</span>
-            </div>
-            <h4 class="font-bold text-slate-900 text-sm mb-2 hover:text-brand-600 transition">MTA OMNY 刷满 12 次后免费乘车政策</h4>
-            <p class="text-xs text-slate-600 leading-relaxed mb-4">使用同一张信用卡、手机或 OMNY 卡，在周一至周日的 7 天内刷满 12 次（共 $34.80）后，本周内接下来的所有乘车均完全免费，自动生效。</p>
-          </div>
-          <div class="pt-4 border-t border-slate-100 flex items-center justify-between text-[10px]">
-            <div class="flex flex-col gap-0.5">
-              <span class="text-slate-400 font-medium">来源: <strong class="text-slate-600">MTA OMNY</strong></span>
-              <span class="text-slate-400 font-medium">区域: <strong class="text-slate-600">全市</strong></span>
-            </div>
-            <a href="https://omny.info/" target="_blank" class="px-3 py-2 bg-brand-50 hover:bg-brand-100 text-brand-700 font-bold rounded-lg transition no-underline">获取官方链接 ➔</a>
-          </div>
-        </div>
-      </div>
-      <div class="bg-white rounded-2xl border border-slate-200 shadow-sm hover:shadow-md transition overflow-hidden flex flex-col" data-category="交通出行" data-borough="全市">
-        <div class="p-6 flex-1 flex flex-col justify-between">
-          <div>
-            <div class="flex justify-between items-start gap-2 mb-3">
-              <span class="inline-block px-2.5 py-0.5 rounded text-[10px] font-bold border bg-sky-50 text-sky-700 border-sky-200">交通出行</span>
-              <span class="text-[10px] text-slate-400 font-semibold">2026-06-10 (周末出行提示)</span>
-            </div>
-            <h4 class="font-bold text-slate-900 text-sm mb-2 hover:text-brand-600 transition">MTA 地铁周末改线与延误实时查询</h4>
-            <p class="text-xs text-slate-600 leading-relaxed mb-4">由于夏季轨道维护，纽约地铁周末改线频繁。建议出行前通过 MTA 官方 Alerts 页面查询最新动态，避免在站台盲目等待，耽误行程。</p>
-          </div>
-          <div class="pt-4 border-t border-slate-100 flex items-center justify-between text-[10px]">
-            <div class="flex flex-col gap-0.5">
-              <span class="text-slate-400 font-medium">来源: <strong class="text-slate-600">MTA Alerts</strong></span>
-              <span class="text-slate-400 font-medium">区域: <strong class="text-slate-600">全市</strong></span>
-            </div>
-            <a href="https://new.mta.info/alerts" target="_blank" class="px-3 py-2 bg-brand-50 hover:bg-brand-100 text-brand-700 font-bold rounded-lg transition no-underline">获取官方链接 ➔</a>
-          </div>
-        </div>
-      </div>
-      <div class="bg-white rounded-2xl border border-slate-200 shadow-sm hover:shadow-md transition overflow-hidden flex flex-col" data-category="交通出行" data-borough="皇后区/曼哈顿">
-        <div class="p-6 flex-1 flex flex-col justify-between">
-          <div>
-            <div class="flex justify-between items-start gap-2 mb-3">
-              <span class="inline-block px-2.5 py-0.5 rounded text-[10px] font-bold border bg-sky-50 text-sky-700 border-sky-200">交通出行</span>
-              <span class="text-[10px] text-slate-400 font-semibold">2026-06-11 (长期有效)</span>
-            </div>
-            <h4 class="font-bold text-slate-900 text-sm mb-2 hover:text-brand-600 transition">JFK 肯尼迪机场快线巴士 (Express Bus) 乘车指南</h4>
-            <p class="text-xs text-slate-600 leading-relaxed mb-4">往返曼哈顿中城与 JFK 机场的最省钱公共交通方式之一。单程仅需 $19.00，配有行李架和免费 Wi-Fi，比打车省下近 $60 美元。</p>
-          </div>
-          <div class="pt-4 border-t border-slate-100 flex items-center justify-between text-[10px]">
-            <div class="flex flex-col gap-0.5">
-              <span class="text-slate-400 font-medium">来源: <strong class="text-slate-600">JFK Airport</strong></span>
-              <span class="text-slate-400 font-medium">区域: <strong class="text-slate-600">皇后区/曼哈顿</strong></span>
-            </div>
-            <a href="https://www.jfkairport.com/to-from-airport/public-transportation" target="_blank" class="px-3 py-2 bg-brand-50 hover:bg-brand-100 text-brand-700 font-bold rounded-lg transition no-underline">获取官方链接 ➔</a>
-          </div>
-        </div>
-      </div>
-      <div class="bg-white rounded-2xl border border-slate-200 shadow-sm hover:shadow-md transition overflow-hidden flex flex-col" data-category="交通出行" data-borough="全市">
-        <div class="p-6 flex-1 flex flex-col justify-between">
-          <div>
-            <div class="flex justify-between items-start gap-2 mb-3">
-              <span class="inline-block px-2.5 py-0.5 rounded text-[10px] font-bold border bg-sky-50 text-sky-700 border-sky-200">交通出行</span>
-              <span class="text-[10px] text-slate-400 font-semibold">2026-05-25 (夏季航线)</span>
-            </div>
-            <h4 class="font-bold text-slate-900 text-sm mb-2 hover:text-brand-600 transition">NYC Ferry 纽约东河渡轮夏季时刻表启用</h4>
-            <p class="text-xs text-slate-600 leading-relaxed mb-4">纽约渡轮（NYC Ferry）正式启用夏季时刻表，增加了往返皇后区 Astoria、长岛市、曼哈顿华埠及布鲁克林 DUMBO 的航班频次，单程票价仅 $4.00。</p>
-          </div>
-          <div class="pt-4 border-t border-slate-100 flex items-center justify-between text-[10px]">
-            <div class="flex flex-col gap-0.5">
-              <span class="text-slate-400 font-medium">来源: <strong class="text-slate-600">NYC Ferry</strong></span>
-              <span class="text-slate-400 font-medium">区域: <strong class="text-slate-600">全市</strong></span>
-            </div>
-            <a href="https://www.ferry.nyc/routes-and-schedules/" target="_blank" class="px-3 py-2 bg-brand-50 hover:bg-brand-100 text-brand-700 font-bold rounded-lg transition no-underline">获取官方链接 ➔</a>
-          </div>
-        </div>
-      </div>
-      <div class="bg-white rounded-2xl border border-slate-200 shadow-sm hover:shadow-md transition overflow-hidden flex flex-col" data-category="语言教育" data-borough="皇后区">
-        <div class="p-6 flex-1 flex flex-col justify-between">
-          <div>
-            <div class="flex justify-between items-start gap-2 mb-3">
-              <span class="inline-block px-2.5 py-0.5 rounded text-[10px] font-bold border bg-indigo-50 text-indigo-700 border-indigo-200">语言教育</span>
-              <span class="text-[10px] text-slate-400 font-semibold">2026-06-15 (新一期登记)</span>
-            </div>
-            <h4 class="font-bold text-slate-900 text-sm mb-2 hover:text-brand-600 transition">皇后区公共图书馆免费成人 ESL 英语班</h4>
-            <p class="text-xs text-slate-600 leading-relaxed mb-4">面向 17 岁以上纽约居民，完全免费。不限移民身份，教材全免。提供白天、晚间及周末班，在法拉盛主馆、Elmhurst、Bayside 等分馆上课。</p>
-          </div>
-          <div class="pt-4 border-t border-slate-100 flex items-center justify-between text-[10px]">
-            <div class="flex flex-col gap-0.5">
-              <span class="text-slate-400 font-medium">来源: <strong class="text-slate-600">QPL 官方</strong></span>
-              <span class="text-slate-400 font-medium">区域: <strong class="text-slate-600">皇后区</strong></span>
-            </div>
-            <a href="https://www.queenslibrary.org/programs-services/esol-family-literacy/esol" target="_blank" class="px-3 py-2 bg-brand-50 hover:bg-brand-100 text-brand-700 font-bold rounded-lg transition no-underline">获取官方链接 ➔</a>
-          </div>
-        </div>
-      </div>
-      <div class="bg-white rounded-2xl border border-slate-200 shadow-sm hover:shadow-md transition overflow-hidden flex flex-col" data-category="语言教育" data-borough="曼哈顿">
-        <div class="p-6 flex-1 flex flex-col justify-between">
-          <div>
-            <div class="flex justify-between items-start gap-2 mb-3">
-              <span class="inline-block px-2.5 py-0.5 rounded text-[10px] font-bold border bg-indigo-50 text-indigo-700 border-indigo-200">语言教育</span>
-              <span class="text-[10px] text-slate-400 font-semibold">2026-06-16 (滚动招生)</span>
-            </div>
-            <h4 class="font-bold text-slate-900 text-sm mb-2 hover:text-brand-600 transition">纽约公共图书馆 (NYPL) 免费成人英语与入籍辅导班</h4>
-            <p class="text-xs text-slate-600 leading-relaxed mb-4">曼哈顿、布朗士及史泰登岛居民免费英语课程。包含听说读写全方位提升，并设有专门的入籍英语辅导班，同样不限身份，完全免费。</p>
-          </div>
-          <div class="pt-4 border-t border-slate-100 flex items-center justify-between text-[10px]">
-            <div class="flex flex-col gap-0.5">
-              <span class="text-slate-400 font-medium">来源: <strong class="text-slate-600">NYPL 官方</strong></span>
-              <span class="text-slate-400 font-medium">区域: <strong class="text-slate-600">曼哈顿</strong></span>
-            </div>
-            <a href="https://www.nypl.org/help/community-outreach/immigrant-services/learn-english" target="_blank" class="px-3 py-2 bg-brand-50 hover:bg-brand-100 text-brand-700 font-bold rounded-lg transition no-underline">获取官方链接 ➔</a>
-          </div>
-        </div>
-      </div>
-      <div class="bg-white rounded-2xl border border-slate-200 shadow-sm hover:shadow-md transition overflow-hidden flex flex-col" data-category="语言教育" data-borough="布鲁克林">
-        <div class="p-6 flex-1 flex flex-col justify-between">
-          <div>
-            <div class="flex justify-between items-start gap-2 mb-3">
-              <span class="inline-block px-2.5 py-0.5 rounded text-[10px] font-bold border bg-indigo-50 text-indigo-700 border-indigo-200">语言教育</span>
-              <span class="text-[10px] text-slate-400 font-semibold">2026-06-05 (最新课程)</span>
-            </div>
-            <h4 class="font-bold text-slate-900 text-sm mb-2 hover:text-brand-600 transition">布鲁克林公共图书馆 (BPL) 免费成人基础读写班</h4>
-            <p class="text-xs text-slate-600 leading-relaxed mb-4">专为新移民和成人设计的英语基础读写与口语班。在布鲁克林八大道（Sunset Park）等华人聚居区分馆设有线下授课点，名额有限，需提前登记。</p>
-          </div>
-          <div class="pt-4 border-t border-slate-100 flex items-center justify-between text-[10px]">
-            <div class="flex flex-col gap-0.5">
-              <span class="text-slate-400 font-medium">来源: <strong class="text-slate-600">BPL 官方</strong></span>
-              <span class="text-slate-400 font-medium">区域: <strong class="text-slate-600">布鲁克林</strong></span>
-            </div>
-            <a href="https://www.bklynlibrary.org/calendar/adult-basic-education" target="_blank" class="px-3 py-2 bg-brand-50 hover:bg-brand-100 text-brand-700 font-bold rounded-lg transition no-underline">获取官方链接 ➔</a>
-          </div>
-        </div>
-      </div>
-      <div class="bg-white rounded-2xl border border-slate-200 shadow-sm hover:shadow-md transition overflow-hidden flex flex-col" data-category="语言教育" data-borough="皇后区">
-        <div class="p-6 flex-1 flex flex-col justify-between">
-          <div>
-            <div class="flex justify-between items-start gap-2 mb-3">
-              <span class="inline-block px-2.5 py-0.5 rounded text-[10px] font-bold border bg-indigo-50 text-indigo-700 border-indigo-200">语言教育</span>
-              <span class="text-[10px] text-slate-400 font-semibold">2026-06-01 (少儿活动)</span>
-            </div>
-            <h4 class="font-bold text-slate-900 text-sm mb-2 hover:text-brand-600 transition">皇后区图书馆 2026 暑期少儿阅读挑战赛开放</h4>
-            <p class="text-xs text-slate-600 leading-relaxed mb-4">鼓励 5-12 岁少儿在暑期保持阅读习惯。参与挑战并记录阅读进度的孩子可免费获得精美图书、纪念章，并有机会参与分馆举办的暑期派对。</p>
-          </div>
-          <div class="pt-4 border-t border-slate-100 flex items-center justify-between text-[10px]">
-            <div class="flex flex-col gap-0.5">
-              <span class="text-slate-400 font-medium">来源: <strong class="text-slate-600">QPL 官方</strong></span>
-              <span class="text-slate-400 font-medium">区域: <strong class="text-slate-600">皇后区</strong></span>
-            </div>
-            <a href="https://www.queenslibrary.org/" target="_blank" class="px-3 py-2 bg-brand-50 hover:bg-brand-100 text-brand-700 font-bold rounded-lg transition no-underline">获取官方链接 ➔</a>
-          </div>
-        </div>
-      </div>
-      <div class="bg-white rounded-2xl border border-slate-200 shadow-sm hover:shadow-md transition overflow-hidden flex flex-col" data-category="社区安全" data-borough="皇后区">
-        <div class="p-6 flex-1 flex flex-col justify-between">
-          <div>
-            <div class="flex justify-between items-start gap-2 mb-3">
-              <span class="inline-block px-2.5 py-0.5 rounded text-[10px] font-bold border bg-rose-50 text-red-700 border-rose-200">社区安全</span>
-              <span class="text-[10px] text-slate-400 font-semibold">2026-06-17 19:00 (下周三)</span>
-            </div>
-            <h4 class="font-bold text-slate-900 text-sm mb-2 hover:text-brand-600 transition">法拉盛 109 警局社区协调委员会月度会议</h4>
-            <p class="text-xs text-slate-600 leading-relaxed mb-4">法拉盛 109 警局举办的月度警民会议，向居民通报近期治安情况、防诈骗提示，并现场解答居民关于社区治安、违章停车等问题的提问，现场提供中文翻译。</p>
-          </div>
-          <div class="pt-4 border-t border-slate-100 flex items-center justify-between text-[10px]">
-            <div class="flex flex-col gap-0.5">
-              <span class="text-slate-400 font-medium">来源: <strong class="text-slate-600">NYPD 109 Precinct</strong></span>
-              <span class="text-slate-400 font-medium">区域: <strong class="text-slate-600">皇后区</strong></span>
-            </div>
-            <a href="https://www.nyc.gov/site/nypd/bureaus/patrol/precincts/109th-precinct.page" target="_blank" class="px-3 py-2 bg-brand-50 hover:bg-brand-100 text-brand-700 font-bold rounded-lg transition no-underline">获取官方链接 ➔</a>
-          </div>
-        </div>
-      </div>
-      <div class="bg-white rounded-2xl border border-slate-200 shadow-sm hover:shadow-md transition overflow-hidden flex flex-col" data-category="社区安全" data-borough="布鲁克林">
-        <div class="p-6 flex-1 flex flex-col justify-between">
-          <div>
-            <div class="flex justify-between items-start gap-2 mb-3">
-              <span class="inline-block px-2.5 py-0.5 rounded text-[10px] font-bold border bg-rose-50 text-red-700 border-rose-200">社区安全</span>
-              <span class="text-[10px] text-slate-400 font-semibold">2026-05-28 (往期回顾)</span>
-            </div>
-            <h4 class="font-bold text-slate-900 text-sm mb-2 hover:text-brand-600 transition">布鲁克林 72 警局防诈骗与入室盗窃宣讲会</h4>
-            <p class="text-xs text-slate-600 leading-relaxed mb-4">针对布鲁克林八大道（Sunset Park）近期频发的针对华人的电信诈骗和入室盗窃，72警局举办专题宣讲会，手把手教居民如何识别诈骗电话、加固住宅防盗。</p>
-          </div>
-          <div class="pt-4 border-t border-slate-100 flex items-center justify-between text-[10px]">
-            <div class="flex flex-col gap-0.5">
-              <span class="text-slate-400 font-medium">来源: <strong class="text-slate-600">NYPD 72 Precinct</strong></span>
-              <span class="text-slate-400 font-medium">区域: <strong class="text-slate-600">布鲁克林</strong></span>
-            </div>
-            <a href="https://www.nyc.gov/site/nypd/bureaus/patrol/precincts/72nd-precinct.page" target="_blank" class="px-3 py-2 bg-brand-50 hover:bg-brand-100 text-brand-700 font-bold rounded-lg transition no-underline">获取官方链接 ➔</a>
-          </div>
-        </div>
-      </div>
-      <div class="bg-white rounded-2xl border border-slate-200 shadow-sm hover:shadow-md transition overflow-hidden flex flex-col" data-category="社区安全" data-borough="全市">
-        <div class="p-6 flex-1 flex flex-col justify-between">
-          <div>
-            <div class="flex justify-between items-start gap-2 mb-3">
-              <span class="inline-block px-2.5 py-0.5 rounded text-[10px] font-bold border bg-rose-50 text-red-700 border-rose-200">社区安全</span>
-              <span class="text-[10px] text-slate-400 font-semibold">2026-06-02 (防灾指南)</span>
-            </div>
-            <h4 class="font-bold text-slate-900 text-sm mb-2 hover:text-brand-600 transition">纽约市紧急管理局飓风季节防灾准备指南</h4>
-            <p class="text-xs text-slate-600 leading-relaxed mb-4">纽约市紧急管理局（NYCEM）发布 2026 年度飓风季防灾指南。详细列出了全市各区的疏散避难所地图、紧急物资打包清单，并提供中文版 PDF 下载。</p>
-          </div>
-          <div class="pt-4 border-t border-slate-100 flex items-center justify-between text-[10px]">
-            <div class="flex flex-col gap-0.5">
-              <span class="text-slate-400 font-medium">来源: <strong class="text-slate-600">NYCEM 官方</strong></span>
-              <span class="text-slate-400 font-medium">区域: <strong class="text-slate-600">全市</strong></span>
-            </div>
-            <a href="https://www.nyc.gov/site/em/ready/hurricane-guides.page" target="_blank" class="px-3 py-2 bg-brand-50 hover:bg-brand-100 text-brand-700 font-bold rounded-lg transition no-underline">获取官方链接 ➔</a>
-          </div>
-        </div>
-      </div>
-      <div class="bg-white rounded-2xl border border-slate-200 shadow-sm hover:shadow-md transition overflow-hidden flex flex-col" data-category="社区安全" data-borough="曼哈顿">
-        <div class="p-6 flex-1 flex flex-col justify-between">
-          <div>
-            <div class="flex justify-between items-start gap-2 mb-3">
-              <span class="inline-block px-2.5 py-0.5 rounded text-[10px] font-bold border bg-rose-50 text-red-700 border-rose-200">社区安全</span>
-              <span class="text-[10px] text-slate-400 font-semibold">2026-05-15 (往期回顾)</span>
-            </div>
-            <h4 class="font-bold text-slate-900 text-sm mb-2 hover:text-brand-600 transition">曼哈顿华埠 5 警局治安警报与防抢劫讲座</h4>
-            <p class="text-xs text-slate-600 leading-relaxed mb-4">五分局在华埠中华公所举办治安讲座，向社区商家和居民通报近期街头抢劫趋势，并演示遭遇抢劫时的自救与报警流程，现场发放防狼喷雾和警报器。</p>
-          </div>
-          <div class="pt-4 border-t border-slate-100 flex items-center justify-between text-[10px]">
-            <div class="flex flex-col gap-0.5">
-              <span class="text-slate-400 font-medium">来源: <strong class="text-slate-600">NYPD 5 Precinct</strong></span>
-              <span class="text-slate-400 font-medium">区域: <strong class="text-slate-600">曼哈顿</strong></span>
-            </div>
-            <a href="https://www.nyc.gov/site/nypd/bureaus/patrol/precincts/5th-precinct.page" target="_blank" class="px-3 py-2 bg-brand-50 hover:bg-brand-100 text-brand-700 font-bold rounded-lg transition no-underline">获取官方链接 ➔</a>
-          </div>
-        </div>
-      </div>
-      <div class="bg-white rounded-2xl border border-slate-200 shadow-sm hover:shadow-md transition overflow-hidden flex flex-col" data-category="市政议员" data-borough="皇后区">
-        <div class="p-6 flex-1 flex flex-col justify-between">
-          <div>
-            <div class="flex justify-between items-start gap-2 mb-3">
-              <span class="inline-block px-2.5 py-0.5 rounded text-[10px] font-bold border bg-amber-50 text-amber-700 border-amber-200">市政议员</span>
-              <span class="text-[10px] text-slate-400 font-semibold">每周四 10:00-16:00 (需预约)</span>
-            </div>
-            <h4 class="font-bold text-slate-900 text-sm mb-2 hover:text-brand-600 transition">市议员黄敏仪办公室免费法律咨询服务</h4>
-            <p class="text-xs text-slate-600 leading-relaxed mb-4">法拉盛市议员黄敏仪（Sandra Ung）办公室联合专业公益律师，为选区居民提供免费的法律咨询，涵盖租务纠纷、移民、家庭法等。提供中文翻译服务。</p>
-          </div>
-          <div class="pt-4 border-t border-slate-100 flex items-center justify-between text-[10px]">
-            <div class="flex flex-col gap-0.5">
-              <span class="text-slate-400 font-medium">来源: <strong class="text-slate-600">Sandra Ung Office</strong></span>
-              <span class="text-slate-400 font-medium">区域: <strong class="text-slate-600">皇后区</strong></span>
-            </div>
-            <a href="https://council.nyc.gov/sandra-ung/" target="_blank" class="px-3 py-2 bg-brand-50 hover:bg-brand-100 text-brand-700 font-bold rounded-lg transition no-underline">获取官方链接 ➔</a>
-          </div>
-        </div>
-      </div>
-      <div class="bg-white rounded-2xl border border-slate-200 shadow-sm hover:shadow-md transition overflow-hidden flex flex-col" data-category="市政议员" data-borough="皇后区">
-        <div class="p-6 flex-1 flex flex-col justify-between">
-          <div>
-            <div class="flex justify-between items-start gap-2 mb-3">
-              <span class="inline-block px-2.5 py-0.5 rounded text-[10px] font-bold border bg-amber-50 text-amber-700 border-amber-200">市政议员</span>
-              <span class="text-[10px] text-slate-400 font-semibold">2026-05-18 (往期回顾)</span>
-            </div>
-            <h4 class="font-bold text-slate-900 text-sm mb-2 hover:text-brand-600 transition">州参议员刘醇逸办公室免费选民登记协助</h4>
-            <p class="text-xs text-slate-600 leading-relaxed mb-4">刘醇逸（John Liu）议员办公室在法拉盛主街设立临时服务台，协助符合条件的华人居民填写选民登记表，并解答关于邮寄选票、投票站查询等疑问。</p>
-          </div>
-          <div class="pt-4 border-t border-slate-100 flex items-center justify-between text-[10px]">
-            <div class="flex flex-col gap-0.5">
-              <span class="text-slate-400 font-medium">来源: <strong class="text-slate-600">John Liu Office</strong></span>
-              <span class="text-slate-400 font-medium">区域: <strong class="text-slate-600">皇后区</strong></span>
-            </div>
-            <a href="https://www.nysenate.gov/senators/john-c-liu" target="_blank" class="px-3 py-2 bg-brand-50 hover:bg-brand-100 text-brand-700 font-bold rounded-lg transition no-underline">获取官方链接 ➔</a>
-          </div>
-        </div>
-      </div>
-      <div class="bg-white rounded-2xl border border-slate-200 shadow-sm hover:shadow-md transition overflow-hidden flex flex-col" data-category="市政议员" data-borough="全市">
-        <div class="p-6 flex-1 flex flex-col justify-between">
-          <div>
-            <div class="flex justify-between items-start gap-2 mb-3">
-              <span class="inline-block px-2.5 py-0.5 rounded text-[10px] font-bold border bg-amber-50 text-amber-700 border-amber-200">市政议员</span>
-              <span class="text-[10px] text-slate-400 font-semibold">2026-06-11 (长期有效)</span>
-            </div>
-            <h4 class="font-bold text-slate-900 text-sm mb-2 hover:text-brand-600 transition">纽约市选民登记截止日期与投票站查询系统</h4>
-            <p class="text-xs text-slate-600 leading-relaxed mb-4">纽约市选举局官方查询系统。输入您的纽约居住地址，即可一键查询您专属的投票站地址、开放时间，以及本选区内所有的候选人名单。</p>
-          </div>
-          <div class="pt-4 border-t border-slate-100 flex items-center justify-between text-[10px]">
-            <div class="flex flex-col gap-0.5">
-              <span class="text-slate-400 font-medium">来源: <strong class="text-slate-600">纽约市选举局</strong></span>
-              <span class="text-slate-400 font-medium">区域: <strong class="text-slate-600">全市</strong></span>
-            </div>
-            <a href="https://vote.nyc/" target="_blank" class="px-3 py-2 bg-brand-50 hover:bg-brand-100 text-brand-700 font-bold rounded-lg transition no-underline">获取官方链接 ➔</a>
-          </div>
-        </div>
-      </div>
-      <div class="bg-white rounded-2xl border border-slate-200 shadow-sm hover:shadow-md transition overflow-hidden flex flex-col" data-category="公园亲子" data-borough="皇后区">
-        <div class="p-6 flex-1 flex flex-col justify-between">
-          <div>
-            <div class="flex justify-between items-start gap-2 mb-3">
-              <span class="inline-block px-2.5 py-0.5 rounded text-[10px] font-bold border bg-teal-50 text-teal-700 border-teal-200">公园亲子</span>
-              <span class="text-[10px] text-slate-400 font-semibold">每周三 15:00-18:00 / 周日 09:00-11:00</span>
-            </div>
-            <h4 class="font-bold text-slate-900 text-sm mb-2 hover:text-brand-600 transition">皇后区植物园 (QGB) 免费开放时段</h4>
-            <p class="text-xs text-slate-600 leading-relaxed mb-4">皇后区植物园在指定时段对公众免费开放，无需购买门票。非常适合法拉盛本地家庭带孩子亲近自然、散步休闲。地址：43-50 Main St, Flushing。</p>
-          </div>
-          <div class="pt-4 border-t border-slate-100 flex items-center justify-between text-[10px]">
-            <div class="flex flex-col gap-0.5">
-              <span class="text-slate-400 font-medium">来源: <strong class="text-slate-600">Queens Botanical Garden</strong></span>
-              <span class="text-slate-400 font-medium">区域: <strong class="text-slate-600">皇后区</strong></span>
-            </div>
-            <a href="https://queensbotanical.org/hours-admission/" target="_blank" class="px-3 py-2 bg-brand-50 hover:bg-brand-100 text-brand-700 font-bold rounded-lg transition no-underline">获取官方链接 ➔</a>
-          </div>
-        </div>
-      </div>
-      <div class="bg-white rounded-2xl border border-slate-200 shadow-sm hover:shadow-md transition overflow-hidden flex flex-col" data-category="公园亲子" data-borough="全市">
-        <div class="p-6 flex-1 flex flex-col justify-between">
-          <div>
-            <div class="flex justify-between items-start gap-2 mb-3">
-              <span class="inline-block px-2.5 py-0.5 rounded text-[10px] font-bold border bg-teal-50 text-teal-700 border-teal-200">公园亲子</span>
-              <span class="text-[10px] text-slate-400 font-semibold">2026-06-27 起 (夏季开放)</span>
-            </div>
-            <h4 class="font-bold text-slate-900 text-sm mb-2 hover:text-brand-600 transition">纽约市公共室外游泳池免费开放通知</h4>
-            <p class="text-xs text-slate-600 leading-relaxed mb-4">纽约市公园局（NYC Parks）宣布全市公共室外泳池将于6月27日起免费对公众开放。法拉盛附近的 Fisher Pool 等均在列，是夏季消暑亲子的绝佳免费去处。</p>
-          </div>
-          <div class="pt-4 border-t border-slate-100 flex items-center justify-between text-[10px]">
-            <div class="flex flex-col gap-0.5">
-              <span class="text-slate-400 font-medium">来源: <strong class="text-slate-600">NYC Parks 官方</strong></span>
-              <span class="text-slate-400 font-medium">区域: <strong class="text-slate-600">全市</strong></span>
-            </div>
-            <a href="https://www.nycgovparks.org/facilities/outdoor-pools" target="_blank" class="px-3 py-2 bg-brand-50 hover:bg-brand-100 text-brand-700 font-bold rounded-lg transition no-underline">获取官方链接 ➔</a>
-          </div>
-        </div>
-      </div>
-      <div class="bg-white rounded-2xl border border-slate-200 shadow-sm hover:shadow-md transition overflow-hidden flex flex-col" data-category="公园亲子" data-borough="全市">
-        <div class="p-6 flex-1 flex flex-col justify-between">
-          <div>
-            <div class="flex justify-between items-start gap-2 mb-3">
-              <span class="inline-block px-2.5 py-0.5 rounded text-[10px] font-bold border bg-teal-50 text-teal-700 border-teal-200">公园亲子</span>
-              <span class="text-[10px] text-slate-400 font-semibold">2026-06-01 起 (夏季活动)</span>
-            </div>
-            <h4 class="font-bold text-slate-900 text-sm mb-2 hover:text-brand-600 transition">纽约市公园局免费夏季露天电影节排片表</h4>
-            <p class="text-xs text-slate-600 leading-relaxed mb-4">NYC Parks 宣布在全市数十个公共公园举办免费露天电影放映活动。包含多部迪士尼动画片、好莱坞大片，无需预约，带上野餐垫即可前往观影。</p>
-          </div>
-          <div class="pt-4 border-t border-slate-100 flex items-center justify-between text-[10px]">
-            <div class="flex flex-col gap-0.5">
-              <span class="text-slate-400 font-medium">来源: <strong class="text-slate-600">NYC Parks 官方</strong></span>
-              <span class="text-slate-400 font-medium">区域: <strong class="text-slate-600">全市</strong></span>
-            </div>
-            <a href="https://www.nycgovparks.org/events/free-summer-movies" target="_blank" class="px-3 py-2 bg-brand-50 hover:bg-brand-100 text-brand-700 font-bold rounded-lg transition no-underline">获取官方链接 ➔</a>
-          </div>
-        </div>
-      </div>
-      <div class="bg-white rounded-2xl border border-slate-200 shadow-sm hover:shadow-md transition overflow-hidden flex flex-col" data-category="公园亲子" data-borough="布鲁克林">
-        <div class="p-6 flex-1 flex flex-col justify-between">
-          <div>
-            <div class="flex justify-between items-start gap-2 mb-3">
-              <span class="inline-block px-2.5 py-0.5 rounded text-[10px] font-bold border bg-teal-50 text-teal-700 border-teal-200">公园亲子</span>
-              <span class="text-[10px] text-slate-400 font-semibold">2026-06-13 10:00 (本周六)</span>
-            </div>
-            <h4 class="font-bold text-slate-900 text-sm mb-2 hover:text-brand-600 transition">布鲁克林展望公园 (Prospect Park) 免费亲子手工课</h4>
-            <p class="text-xs text-slate-600 leading-relaxed mb-4">展望公园联盟举办的周末亲子自然探索与手工制作课程。专业导师带领孩子们认识公园植物，并利用落叶和树枝制作创意手工作品，完全免费。</p>
-          </div>
-          <div class="pt-4 border-t border-slate-100 flex items-center justify-between text-[10px]">
-            <div class="flex flex-col gap-0.5">
-              <span class="text-slate-400 font-medium">来源: <strong class="text-slate-600">Prospect Park Alliance</strong></span>
-              <span class="text-slate-400 font-medium">区域: <strong class="text-slate-600">布鲁克林</strong></span>
-            </div>
-            <a href="https://www.prospectpark.org/" target="_blank" class="px-3 py-2 bg-brand-50 hover:bg-brand-100 text-brand-700 font-bold rounded-lg transition no-underline">获取官方链接 ➔</a>
-          </div>
-        </div>
-      </div>
-      <div class="bg-white rounded-2xl border border-slate-200 shadow-sm hover:shadow-md transition overflow-hidden flex flex-col" data-category="文化展览" data-borough="皇后区">
-        <div class="p-6 flex-1 flex flex-col justify-between">
-          <div>
-            <div class="flex justify-between items-start gap-2 mb-3">
-              <span class="inline-block px-2.5 py-0.5 rounded text-[10px] font-bold border bg-purple-50 text-purple-700 border-purple-200">文化展览</span>
-              <span class="text-[10px] text-slate-400 font-semibold">2026-06-20 14:00 (下周六)</span>
-            </div>
-            <h4 class="font-bold text-slate-900 text-sm mb-2 hover:text-brand-600 transition">法拉盛市政厅 (Flushing Town Hall) 免费社区音乐会</h4>
-            <p class="text-xs text-slate-600 leading-relaxed mb-4">法拉盛文艺中心举办的多元文化音乐会，邀请华人传统民乐艺术家现场演奏，旨在促进社区文化交流。门票免费，但需提前在线登记预约名额。</p>
-          </div>
-          <div class="pt-4 border-t border-slate-100 flex items-center justify-between text-[10px]">
-            <div class="flex flex-col gap-0.5">
-              <span class="text-slate-400 font-medium">来源: <strong class="text-slate-600">Flushing Town Hall</strong></span>
-              <span class="text-slate-400 font-medium">区域: <strong class="text-slate-600">皇后区</strong></span>
-            </div>
-            <a href="https://www.flushingtownhall.org/" target="_blank" class="px-3 py-2 bg-brand-50 hover:bg-brand-100 text-brand-700 font-bold rounded-lg transition no-underline">获取官方链接 ➔</a>
-          </div>
-        </div>
-      </div>
-      <div class="bg-white rounded-2xl border border-slate-200 shadow-sm hover:shadow-md transition overflow-hidden flex flex-col" data-category="文化展览" data-borough="曼哈顿">
-        <div class="p-6 flex-1 flex flex-col justify-between">
-          <div>
-            <div class="flex justify-between items-start gap-2 mb-3">
-              <span class="inline-block px-2.5 py-0.5 rounded text-[10px] font-bold border bg-purple-50 text-purple-700 border-purple-200">文化展览</span>
-              <span class="text-[10px] text-slate-400 font-semibold">2026-06-11 (长期有效)</span>
-            </div>
-            <h4 class="font-bold text-slate-900 text-sm mb-2 hover:text-brand-600 transition">大都会艺术博物馆 (The Met) 纽约居民任意付费政策</h4>
-            <p class="text-xs text-slate-600 leading-relaxed mb-4">持有纽约州 ID 或显示纽约地址的账单，即可在大都会博物馆售票处享受「任意付费」(Pay-What-You-Wish) 政策，哪怕付 $1 分钱也能入馆参观。</p>
-          </div>
-          <div class="pt-4 border-t border-slate-100 flex items-center justify-between text-[10px]">
-            <div class="flex flex-col gap-0.5">
-              <span class="text-slate-400 font-medium">来源: <strong class="text-slate-600">The Met 官方</strong></span>
-              <span class="text-slate-400 font-medium">区域: <strong class="text-slate-600">曼哈顿</strong></span>
-            </div>
-            <a href="https://www.metmuseum.org/visit/plan-your-visit" target="_blank" class="px-3 py-2 bg-brand-50 hover:bg-brand-100 text-brand-700 font-bold rounded-lg transition no-underline">获取官方链接 ➔</a>
-          </div>
-        </div>
-      </div>
-      <div class="bg-white rounded-2xl border border-slate-200 shadow-sm hover:shadow-md transition overflow-hidden flex flex-col" data-category="文化展览" data-borough="曼哈顿">
-        <div class="p-6 flex-1 flex flex-col justify-between">
-          <div>
-            <div class="flex justify-between items-start gap-2 mb-3">
-              <span class="inline-block px-2.5 py-0.5 rounded text-[10px] font-bold border bg-purple-50 text-purple-700 border-purple-200">文化展览</span>
-              <span class="text-[10px] text-slate-400 font-semibold">每周五 16:00-20:00</span>
-            </div>
-            <h4 class="font-bold text-slate-900 text-sm mb-2 hover:text-brand-600 transition">纽约现代艺术博物馆 (MoMA) 免费开放夜</h4>
-            <p class="text-xs text-slate-600 leading-relaxed mb-4">MoMA 针对纽约市居民提供每周五下午的免费入馆时段。需提前在官网预约免费门票，现场需出示纽约居住证明，是欣赏世界级现代艺术的绝佳机会。</p>
-          </div>
-          <div class="pt-4 border-t border-slate-100 flex items-center justify-between text-[10px]">
-            <div class="flex flex-col gap-0.5">
-              <span class="text-slate-400 font-medium">来源: <strong class="text-slate-600">MoMA 官方</strong></span>
-              <span class="text-slate-400 font-medium">区域: <strong class="text-slate-600">曼哈顿</strong></span>
-            </div>
-            <a href="https://www.moma.org/calendar/programs/159" target="_blank" class="px-3 py-2 bg-brand-50 hover:bg-brand-100 text-brand-700 font-bold rounded-lg transition no-underline">获取官方链接 ➔</a>
-          </div>
-        </div>
-      </div>
-      <div class="bg-white rounded-2xl border border-slate-200 shadow-sm hover:shadow-md transition overflow-hidden flex flex-col" data-category="文化展览" data-borough="皇后区">
-        <div class="p-6 flex-1 flex flex-col justify-between">
-          <div>
-            <div class="flex justify-between items-start gap-2 mb-3">
-              <span class="inline-block px-2.5 py-0.5 rounded text-[10px] font-bold border bg-purple-50 text-purple-700 border-purple-200">文化展览</span>
-              <span class="text-[10px] text-slate-400 font-semibold">每周五 14:00-17:00</span>
-            </div>
-            <h4 class="font-bold text-slate-900 text-sm mb-2 hover:text-brand-600 transition">纽约科学馆 (NYSCI) 皇后区居民免费开放时段</h4>
-            <p class="text-xs text-slate-600 leading-relaxed mb-4">位于 Corona 公园的纽约科学馆，每周五下午向皇后区居民免费开放。馆内拥有数百个互动科学展项，非常适合周末带孩子进行科普探索。</p>
-          </div>
-          <div class="pt-4 border-t border-slate-100 flex items-center justify-between text-[10px]">
-            <div class="flex flex-col gap-0.5">
-              <span class="text-slate-400 font-medium">来源: <strong class="text-slate-600">NYSCI 官方</strong></span>
-              <span class="text-slate-400 font-medium">区域: <strong class="text-slate-600">皇后区</strong></span>
-            </div>
-            <a href="https://nysci.org/visit" target="_blank" class="px-3 py-2 bg-brand-50 hover:bg-brand-100 text-brand-700 font-bold rounded-lg transition no-underline">获取官方链接 ➔</a>
-          </div>
-        </div>
-      </div>
-      <div class="bg-white rounded-2xl border border-slate-200 shadow-sm hover:shadow-md transition overflow-hidden flex flex-col" data-category="公益志愿" data-borough="皇后区">
-        <div class="p-6 flex-1 flex flex-col justify-between">
-          <div>
-            <div class="flex justify-between items-start gap-2 mb-3">
-              <span class="inline-block px-2.5 py-0.5 rounded text-[10px] font-bold border bg-fuchsia-50 text-fuchsia-700 border-fuchsia-200">公益志愿</span>
-              <span class="text-[10px] text-slate-400 font-semibold">每周五 09:00-12:00</span>
-            </div>
-            <h4 class="font-bold text-slate-900 text-sm mb-2 hover:text-brand-600 transition">纽约慈济基金会 (Tzu Chi) 食物发放志愿服务</h4>
-            <p class="text-xs text-slate-600 leading-relaxed mb-4">慈济纽约分会每周五在法拉盛会所向低收入家庭免费分发新鲜蔬菜、水果和干粮。同时招募双语志愿者协助现场秩序与物资搬运，欢迎报名奉献爱心。</p>
-          </div>
-          <div class="pt-4 border-t border-slate-100 flex items-center justify-between text-[10px]">
-            <div class="flex flex-col gap-0.5">
-              <span class="text-slate-400 font-medium">来源: <strong class="text-slate-600">Tzu Chi New York</strong></span>
-              <span class="text-slate-400 font-medium">区域: <strong class="text-slate-600">皇后区</strong></span>
-            </div>
-            <a href="https://tzuchi.us/offices/new-york" target="_blank" class="px-3 py-2 bg-brand-50 hover:bg-brand-100 text-brand-700 font-bold rounded-lg transition no-underline">获取官方链接 ➔</a>
-          </div>
-        </div>
-      </div>
-      <div class="bg-white rounded-2xl border border-slate-200 shadow-sm hover:shadow-md transition overflow-hidden flex flex-col" data-category="公益志愿" data-borough="全市">
-        <div class="p-6 flex-1 flex flex-col justify-between">
-          <div>
-            <div class="flex justify-between items-start gap-2 mb-3">
-              <span class="inline-block px-2.5 py-0.5 rounded text-[10px] font-bold border bg-fuchsia-50 text-fuchsia-700 border-fuchsia-200">公益志愿</span>
-              <span class="text-[10px] text-slate-400 font-semibold">2026-06-11 (长期有效)</span>
-            </div>
-            <h4 class="font-bold text-slate-900 text-sm mb-2 hover:text-brand-600 transition">纽约市食物银行 (Food Bank For NYC) 社区厨房志愿招募</h4>
-            <p class="text-xs text-slate-600 leading-relaxed mb-4">纽约市最大的扶贫公益组织，长期在曼哈顿华埠、布鲁克林等社区厨房招募志愿者，协助包装和发放免费餐食，欢迎华人青年和留学生参与，可开具义工证明。</p>
-          </div>
-          <div class="pt-4 border-t border-slate-100 flex items-center justify-between text-[10px]">
-            <div class="flex flex-col gap-0.5">
-              <span class="text-slate-400 font-medium">来源: <strong class="text-slate-600">Food Bank For NYC</strong></span>
-              <span class="text-slate-400 font-medium">区域: <strong class="text-slate-600">全市</strong></span>
-            </div>
-            <a href="https://www.foodbanknyc.org/volunteer/" target="_blank" class="px-3 py-2 bg-brand-50 hover:bg-brand-100 text-brand-700 font-bold rounded-lg transition no-underline">获取官方链接 ➔</a>
-          </div>
-        </div>
-      </div>
-      <div class="bg-white rounded-2xl border border-slate-200 shadow-sm hover:shadow-md transition overflow-hidden flex flex-col" data-category="消费促销" data-borough="皇后区">
-        <div class="p-6 flex-1 flex flex-col justify-between">
-          <div>
-            <div class="flex justify-between items-start gap-2 mb-3">
-              <span class="inline-block px-2.5 py-0.5 rounded text-[10px] font-bold border bg-orange-50 text-orange-700 border-orange-200">消费促销</span>
-              <span class="text-[10px] text-slate-400 font-semibold">每周五更新</span>
-            </div>
-            <h4 class="font-bold text-slate-900 text-sm mb-2 hover:text-brand-600 transition">法拉盛新世界超市本周特价促销海报 (民间搜集)</h4>
-            <p class="text-xs text-slate-600 leading-relaxed mb-4">法拉盛地标新世界商城地下超市本周最新折扣海报。涵盖游水海鲜、新鲜时蔬、南北杂货特价，帮华人家庭精打细算省下买菜钱。</p>
-          </div>
-          <div class="pt-4 border-t border-slate-100 flex items-center justify-between text-[10px]">
-            <div class="flex flex-col gap-0.5">
-              <span class="text-slate-400 font-medium">来源: <strong class="text-slate-600">新世界商城</strong></span>
-              <span class="text-slate-400 font-medium">区域: <strong class="text-slate-600">皇后区</strong></span>
-            </div>
-            <a href="https://www.newworldmallny.com/" target="_blank" class="px-3 py-2 bg-brand-50 hover:bg-brand-100 text-brand-700 font-bold rounded-lg transition no-underline">获取官方链接 ➔</a>
-          </div>
-        </div>
-      </div>
+      <!-- Dynamic Event Cards will be injected here -->
     </div>
 
     <!-- ===== ABOUT US SECTION ===== -->
     <section class="bg-white rounded-2xl border border-slate-200 p-8 md:p-12 shadow-sm mb-16" id="about">
       <div class="max-w-3xl mx-auto text-center space-y-6">
-        <h3 class="text-2xl font-bold text-slate-900">关于美东华人生活圈</h3>
-        <p class="text-sm text-slate-600 leading-relaxed">
-          我们深知，许多华人初到美国，因为语言不通、信息封闭，错过了大量本该享受的政府福利、免费教育和社区活动。
-          同时，现有的中文网络充斥着虚假、灰色广告，让人真假难辨。
+        <h3 class="text-2xl font-bold text-slate-900" id="ui-about-title">关于美东华人生活圈</h3>
+        <p class="text-sm text-slate-600 leading-relaxed" id="ui-about-p1">
+          在美东生活，及时获取官方资讯是保障切身权益、享受公共福利的关键。然而，散落在各大政府网站、公共图书馆和社区机构的英文公告繁多，逐个检索费时费力。
         </p>
-        <p class="text-sm text-slate-600 leading-relaxed">
-          <strong>美东华人生活圈</strong> 坚持「100% 官方真实、100% 干净无噪、100% 免费公益」的原则，
-          通过技术抓取与人工校对，将复杂的英文政策和分散的社区活动整理成一目了然的中文指南，并直接提供官方出处链接。
-          我们致力于成为美东华人最值得信赖的本地生活信息集散地。
+        <p class="text-sm text-slate-600 leading-relaxed" id="ui-about-p2">
+          「美东华人生活圈」坚持「100% 官方真实、100% 干净无噪、100% 免费公益」的原则，通过技术手段智能聚合最新资讯，并提供保姆级中文重写。更重要的是，我们集成了智能网页翻译通道，让您在点击官方链接时，能直接阅读经过翻译的中文官方网页，彻底消除信息获取门槛。
         </p>
-        <div class="pt-4 flex justify-center gap-8 text-xs text-slate-500 font-semibold">
-          <div class="flex items-center gap-2">🛡️ 官方数据源核实</div>
-          <div class="flex items-center gap-2">🚫 绝无虚假广告</div>
-          <div class="flex items-center gap-2">🤝 纯粹公益民生</div>
+        <div class="pt-4 flex flex-wrap justify-center gap-6 sm:gap-8 text-xs text-slate-500 font-semibold">
+          <div class="flex items-center gap-2" id="ui-about-tag1">🛡️ 官方数据源核实</div>
+          <div class="flex items-center gap-2" id="ui-about-tag2">🚫 绝无虚假广告</div>
+          <div class="flex items-center gap-2" id="ui-about-tag3">🤝 纯粹公益民生</div>
         </div>
       </div>
     </section>
@@ -762,47 +153,47 @@
     <!-- ===== FEEDBACK FORM SECTION ===== -->
     <section class="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-10" id="feedback">
       <div class="lg:col-span-2 bg-white p-6 rounded-2xl border border-slate-200 shadow-sm">
-        <h3 class="text-lg font-bold text-slate-900 mb-2">在线意见反馈</h3>
-        <p class="text-xs text-slate-500 mb-6">
+        <h3 class="text-lg font-bold text-slate-900 mb-2" id="ui-feedback-title">在线意见反馈</h3>
+        <p class="text-xs text-slate-500 mb-6" id="ui-feedback-desc">
           您对我们的平台有什么意见或建议？您希望我们接入哪些新的信息源？请在下方留言，您的反馈对我们至关重要！
         </p>
         <form id="feedback-form" class="space-y-4">
           <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
-              <label class="block text-xs font-semibold text-slate-700 mb-1">您的姓名 / 昵称 *</label>
+              <label class="block text-xs font-semibold text-slate-700 mb-1" id="ui-fb-name">您的姓名 / 昵称 *</label>
               <input type="text" id="fb-name" required class="w-full px-3 py-2 border border-slate-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-brand-500">
             </div>
             <div>
-              <label class="block text-xs font-semibold text-slate-700 mb-1">联系方式 (Email/微信) *</label>
+              <label class="block text-xs font-semibold text-slate-700 mb-1" id="ui-fb-contact">联系方式 (Email/微信) *</label>
               <input type="text" id="fb-contact" required class="w-full px-3 py-2 border border-slate-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-brand-500">
             </div>
           </div>
           <div>
-            <label class="block text-xs font-semibold text-slate-700 mb-1">您的宝贵意见 *</label>
+            <label class="block text-xs font-semibold text-slate-700 mb-1" id="ui-fb-content">您的宝贵意见 *</label>
             <textarea id="fb-content" rows="4" required class="w-full px-3 py-2 border border-slate-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-brand-500" placeholder="请写下您的建议或合作意向..."></textarea>
           </div>
           <div class="flex justify-between items-center pt-2">
-            <span class="text-xs text-slate-400">* 为必填项</span>
-            <button type="submit" class="px-6 py-2 text-sm font-semibold text-white bg-brand-600 hover:bg-brand-700 rounded-lg transition shadow-md shadow-brand-600/10">提交反馈</button>
+            <span class="text-xs text-slate-400" id="ui-fb-required">* 为必填项</span>
+            <button type="submit" class="px-6 py-2 text-sm font-semibold text-white bg-brand-600 hover:bg-brand-700 rounded-lg transition shadow-md shadow-brand-600/10" id="ui-fb-submit">提交反馈</button>
           </div>
         </form>
       </div>
 
       <div class="lg:col-span-1 space-y-6">
         <div class="bg-slate-900 text-white p-6 rounded-2xl">
-          <h4 class="font-bold text-sm mb-2">直接联系项目组</h4>
-          <p class="text-xs text-slate-300 leading-relaxed mb-4">
+          <h4 class="font-bold text-sm mb-2" id="ui-contact-title">直接联系项目组</h4>
+          <p class="text-xs text-slate-300 leading-relaxed mb-4" id="ui-contact-desc">
             如果您有深度的合作意向、媒体资源对接、或者想加入我们的志愿编辑团队，欢迎直接发送邮件与我们取得联系。
           </p>
-          <a href="mailto:contact@insynbio.com" class="block text-center py-2.5 bg-brand-600 hover:bg-brand-700 text-white text-xs font-semibold rounded-lg transition shadow-md shadow-brand-600/10 no-underline">
+          <a href="mailto:contact@insynbio.com" class="block text-center py-2.5 bg-brand-600 hover:bg-brand-700 text-white text-xs font-semibold rounded-lg transition shadow-md shadow-brand-600/10 no-underline" id="ui-contact-btn">
             发送邮件：contact@insynbio.com
           </a>
         </div>
 
         <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm">
-          <h4 class="font-bold text-slate-900 text-sm mb-3">最新提交的意见 (本地模拟)</h4>
+          <h4 class="font-bold text-slate-900 text-sm mb-3" id="ui-feedback-latest">最新提交的意见 (本地模拟)</h4>
           <div id="feedback-list" class="space-y-3 max-h-[200px] overflow-y-auto text-xs text-slate-600">
-            <p class="text-slate-400 italic">暂无提交记录，提交表单后将保存在您的浏览器本地。</p>
+            <p class="text-slate-400 italic" id="ui-feedback-empty">暂无提交记录，提交表单后将保存在您的浏览器本地。</p>
           </div>
         </div>
       </div>
@@ -810,84 +201,1285 @@
 
   </main>
 
+  <!-- ===== SMART LINK MODAL ===== -->
+  <div id="link-modal" class="fixed inset-0 bg-black/60 backdrop-filter backdrop-blur-sm hidden items-center justify-center z-[9999] p-4">
+    <div class="bg-white rounded-2xl max-w-md w-full p-6 shadow-xl border border-slate-100 space-y-4">
+      <h4 class="font-bold text-slate-900 text-base" id="modal-title">请选择打开链接的方式：</h4>
+      <p class="text-xs text-slate-500 leading-relaxed" id="modal-desc">官方原网页为英文。我们为您提供了智能翻译通道，可直接打开中文翻译版网页。</p>
+      <div class="flex flex-col gap-2 pt-2">
+        <a id="modal-link-trans" href="#" target="_blank" class="w-full text-center py-3 bg-brand-600 hover:bg-brand-700 text-white text-xs font-bold rounded-xl transition shadow-md shadow-brand-600/10 no-underline">
+          打开智能翻译网页（中文）
+        </a>
+        <a id="modal-link-raw" href="#" target="_blank" class="w-full text-center py-3 bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold rounded-xl transition no-underline">
+          打开官方英文原网页
+        </a>
+      </div>
+      <div class="flex justify-end pt-2">
+        <button id="modal-cancel-btn" class="px-4 py-2 text-xs font-semibold text-slate-400 hover:text-slate-600 transition">取消</button>
+      </div>
+    </div>
+  </div>
+
   <!-- ===== FOOTER ===== -->
   <footer class="bg-white border-t border-slate-200 py-8 text-center text-xs text-slate-400">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-2">
-      <p class="font-semibold text-slate-500">美东华人生活圈 — 本地生活与公共信息集散平台</p>
-      <p>© 2026 East Coast Chinese Life Hub · 仅提供公开渠道信息聚合 · 最终解释权归官方发布机构所有</p>
+      <p class="font-semibold text-slate-500" id="ui-footer-sub">美东华人生活圈 — 本地生活与公共信息集散平台</p>
+      <p id="ui-footer-copy">© 2026 East Coast Chinese Life Hub · 仅提供公开渠道信息聚合 · 最终解释权归官方发布机构所有</p>
     </div>
   </footer>
 
-  <!-- ===== JAVASCRIPT ===== -->
+  <!-- ===== JAVASCRIPT DATA & LOGIC ===== -->
   <script>
-    // Data filtering and search logic
-    var searchInput = document.getElementById('search-input');
-    var boroFilter = document.getElementById('borough-filter');
-    var catBtns = document.querySelectorAll('.cat-btn');
-    var eventCards = document.querySelectorAll('#events-grid > div');
+    // Injected Multilingual UI Strings
+    var uiStrings = {
+  "zh": {
+    "title": "美东华人生活圈 — 官方资讯一站式中文聚合",
+    "brand_sub": "美东官方资讯 · 智能聚合与双语对照",
+    "nav_hub": "信息大厅",
+    "nav_about": "关于我们",
+    "nav_feedback": "意见反馈",
+    "btn_plan": "返回规划案",
+    "btn_feedback": "提交意见",
+    "hero_tag": "📢 100% 官方真实来源 · 智能双语对照",
+    "hero_title": "省时省力，直达美东官方福利与活动",
+    "hero_desc": "我们每天自动监控纽约市政府、MTA、公共图书馆等公开渠道，为您整理并重写高价值的本地民生资讯。支持一键开启官方网页中文翻译，告别繁琐检索。",
+    "search_placeholder": "搜索福利、活动、讲座、官方来源或区域（如：法拉盛、半价）...",
+    "boro_all": "所有区域 (All Boroughs)",
+    "boro_citywide": "纽约全市 (Citywide)",
+    "boro_queens": "皇后区 (Queens)",
+    "boro_brooklyn": "布鲁克林 (Brooklyn)",
+    "boro_manhattan": "曼哈顿 (Manhattan)",
+    "results_prefix": "已筛选出",
+    "results_suffix": "条真实资讯",
+    "results_range": "数据范围：过去30天至未来一周",
+    "source_label": "来源",
+    "boro_label": "区域",
+    "btn_get_link": "获取官方链接 ➔",
+    "about_title": "关于美东华人生活圈",
+    "about_p1": "在美东生活，及时获取官方资讯是保障切身权益、享受公共福利的关键。然而，散落在各大政府网站、公共图书馆和社区机构的英文公告繁多，逐个检索费时费力。",
+    "about_p2": "「美东华人生活圈」坚持「100% 官方真实、100% 干净无噪、100% 免费公益」的原则，通过技术手段智能聚合最新资讯，并提供保姆级中文重写。更重要的是，我们集成了智能网页翻译通道，让您在点击官方链接时，能直接阅读经过翻译的中文官方网页，彻底消除信息获取门槛。",
+    "about_tag1": "🛡️ 官方数据源核实",
+    "about_tag2": "🚫 绝无虚假广告",
+    "about_tag3": "🤝 纯粹公益民生",
+    "feedback_title": "在线意见反馈",
+    "feedback_desc": "您对我们的平台有什么意见或建议？您希望我们接入哪些新的信息源？请在下方留言，您的反馈对我们至关重要！",
+    "fb_name": "您的姓名 / 昵称 *",
+    "fb_contact": "联系方式 (Email/微信) *",
+    "fb_content": "您的宝贵意见 *",
+    "fb_placeholder": "请写下您的建议或合作意向...",
+    "fb_required": "* 为必填项",
+    "fb_submit": "提交反馈",
+    "contact_title": "直接联系项目组",
+    "contact_desc": "如果您有深度的合作意向、媒体资源对接、或者想加入我们的志愿编辑团队，欢迎直接发送邮件与我们取得联系。",
+    "contact_btn": "发送邮件：contact@insynbio.com",
+    "feedback_latest": "最新提交的意见 (本地模拟)",
+    "feedback_empty": "暂无提交记录，提交表单后将保存在您的浏览器本地。",
+    "footer_sub": "美东华人生活圈 — 本地生活与公共信息集散平台",
+    "footer_copy": "© 2026 East Coast Chinese Life Hub · 仅提供公开渠道信息聚合 · 最终解释权归官方发布机构所有",
+    "toast_success": "感谢您的宝贵建议！您的意见已成功保存在本地浏览器缓存中。",
+    "link_option_title": "请选择打开链接的方式：",
+    "link_option_raw": "打开官方英文原网页",
+    "link_option_trans": "打开智能翻译网页（中文）",
+    "cancel": "取消"
+  },
+  "zht": {
+    "title": "美東華人生活圈 — 官方資訊一站式中文聚合",
+    "brand_sub": "美東官方資訊 · 智能聚合與雙語對照",
+    "nav_hub": "資訊大廳",
+    "nav_about": "關於我們",
+    "nav_feedback": "意見反饋",
+    "btn_plan": "返回規劃案",
+    "btn_feedback": "提交意見",
+    "hero_tag": "📢 100% 官方真實來源 · 智能雙語對照",
+    "hero_title": "省時省力，直達美東官方福利與活動",
+    "hero_desc": "我們每天自動監控紐約市政府、MTA、公共圖書館等公開渠道，為您整理並重寫高價值的本地民生資訊。支持一鍵開啟官方網頁中文翻譯，告別繁瑣檢索。",
+    "search_placeholder": "搜索福利、活動、講座、官方來源或區域（如：法拉盛、半價）...",
+    "boro_all": "所有區域 (All Boroughs)",
+    "boro_citywide": "紐約全市 (Citywide)",
+    "boro_queens": "皇后區 (Queens)",
+    "boro_brooklyn": "布魯克林 (Brooklyn)",
+    "boro_manhattan": "曼哈頓 (Manhattan)",
+    "results_prefix": "已篩選出",
+    "results_suffix": "條真實資訊",
+    "results_range": "數據範圍：過去30天至未來一周",
+    "source_label": "來源",
+    "boro_label": "區域",
+    "btn_get_link": "獲取官方鏈接 ➔",
+    "about_title": "關於美東華人生活圈",
+    "about_p1": "在美東生活，及時獲取官方資訊是保障切身權益、享受公共福利的關鍵。然而，散落在各大政府網站、公共圖書館和社區機構的英文公告繁多，逐個檢索費時費力。",
+    "about_p2": "「美東華人生活圈」堅持「100% 官方真實、100% 乾淨無噪、100% 免費公益」的原則，通過技術手段智能聚合最新資訊，並提供保姆級中文重寫。更重要的是，我們集成了智能網頁翻譯通道，讓您在點擊官方鏈接時，能直接閱讀經過翻譯的中文官方網頁，徹底消除信息獲取門檻。",
+    "about_tag1": "🛡️ 官方數據源核實",
+    "about_tag2": "🚫 絕無虛假廣告",
+    "about_tag3": "🤝 純粹公益民生",
+    "feedback_title": "在線意見反饋",
+    "feedback_desc": "您對我們的平台有什麼意見或建議？您希望我們接入哪些新的信息源？請在下方留言，您的反饋對我們至關重要！",
+    "fb_name": "您的姓名 / 暱稱 *",
+    "fb_contact": "聯繫方式 (Email/微信) *",
+    "fb_content": "您的寶貴意見 *",
+    "fb_placeholder": "請寫下您的建議或合作意向...",
+    "fb_required": "* 為必填項",
+    "fb_submit": "提交反饋",
+    "contact_title": "直接聯繫項目組",
+    "contact_desc": "如果您有深度的合作意向、媒體資源對接、或者想加入我們的志願編輯團隊，歡迎直接發送郵件與我們取得聯繫。",
+    "contact_btn": "發送郵件：contact@insynbio.com",
+    "feedback_latest": "最新提交的意見 (本地模擬)",
+    "feedback_empty": "暫無提交記錄，提交表單後將保存在您的瀏覽器本地。",
+    "footer_sub": "美東華人生活圈 — 本地生活與公共信息集散平台",
+    "footer_copy": "© 2026 East Coast Chinese Life Hub · 僅提供公開渠道信息聚合 · 最終解釋權歸官方發布機構所有",
+    "toast_success": "感謝您的寶貴建議！您的意見已成功保存在本地瀏覽器緩存中。",
+    "link_option_title": "請選擇打開鏈接的方式：",
+    "link_option_raw": "打開官方英文原網頁",
+    "link_option_trans": "打開智能翻譯網頁（繁體中文）",
+    "cancel": "取消"
+  },
+  "en": {
+    "title": "East Coast Chinese Life Hub — One-Stop Official Info Aggregator",
+    "brand_sub": "Official NYC Info · Smart Aggregation & Bilingual Access",
+    "nav_hub": "Info Hub",
+    "nav_about": "About Us",
+    "nav_feedback": "Feedback",
+    "btn_plan": "Back to Plan",
+    "btn_feedback": "Give Feedback",
+    "hero_tag": "📢 100% Verified Official Sources · Smart Bilingual Access",
+    "hero_title": "Save Time, Direct Access to NYC Benefits & Events",
+    "hero_desc": "We monitor NYC government, MTA, public libraries, and civic portals daily to aggregate high-value local updates. Access official pages with automatic translation in one click.",
+    "search_placeholder": "Search benefits, events, workshops, official sources or areas (e.g., Flushing, Fair Fares)...",
+    "boro_all": "All Boroughs",
+    "boro_citywide": "Citywide",
+    "boro_queens": "Queens",
+    "boro_brooklyn": "Brooklyn",
+    "boro_manhattan": "Manhattan",
+    "results_prefix": "Found",
+    "results_suffix": "verified updates",
+    "results_range": "Timeframe: Past 30 days to next 7 days",
+    "source_label": "Source",
+    "boro_label": "Area",
+    "btn_get_link": "Get Official Link ➔",
+    "about_title": "About East Coast Chinese Life Hub",
+    "about_p1": "Living in the US East Coast, staying updated with official announcements is crucial for protecting your rights and enjoying public benefits. However, English notices scattered across government websites, libraries, and civic organizations can be time-consuming to track down.",
+    "about_p2": "We adhere to the principles of '100% Verified, 100% Noise-Free, and 100% Free Public Service.' We use technology to aggregate the latest updates and rewrite them into clear, actionable guides. More importantly, we integrate smart translation routing so that when you click official links, you can read translated official pages directly, removing all information barriers.",
+    "about_tag1": "🛡️ Verified Official Sources",
+    "about_tag2": "🚫 Zero Fake Ads",
+    "about_tag3": "🤝 Pure Public Service",
+    "feedback_title": "Online Feedback",
+    "feedback_desc": "What are your thoughts or suggestions for our platform? What new information sources would you like us to connect? Let us know below!",
+    "fb_name": "Your Name / Nickname *",
+    "fb_contact": "Contact Info (Email/WeChat) *",
+    "fb_content": "Your Feedback *",
+    "fb_placeholder": "Write your suggestions or cooperation intentions here...",
+    "fb_required": "* Required fields",
+    "fb_submit": "Submit Feedback",
+    "contact_title": "Contact Project Team",
+    "contact_desc": "If you have deep cooperation intentions, media resource connections, or want to join our volunteer editorial team, feel free to email us directly.",
+    "contact_btn": "Email Us: contact@insynbio.com",
+    "feedback_latest": "Latest Feedback (Local Mock)",
+    "feedback_empty": "No feedback submitted yet. Your submissions will be saved in your local browser cache.",
+    "footer_sub": "East Coast Chinese Life Hub — Local Life & Public Information Aggregator",
+    "footer_copy": "© 2026 East Coast Chinese Life Hub · Public information aggregation only · Final interpretation belongs to official publishing agencies",
+    "toast_success": "Thank you for your valuable feedback! Your suggestions have been saved locally.",
+    "link_option_title": "Select how you want to open the link:",
+    "link_option_raw": "Open Official English Page",
+    "link_option_trans": "Open Translated Page (Chinese)",
+    "cancel": "Cancel"
+  }
+};
+
+    // Injected 32 Multilingual Events
+    var eventsData = [
+  {
+    "id": "e1",
+    "category": {
+      "zh": "福利申请",
+      "zht": "福利申請",
+      "en": "Benefits"
+    },
+    "bg_color": "bg-emerald-50 text-emerald-700 border-emerald-200",
+    "date": "2026-06-11",
+    "title": {
+      "zh": "纽约半价地铁卡 Fair Fares NYC 申请指南",
+      "zht": "紐約半價地鐵卡 Fair Fares NYC 申請指南",
+      "en": "Fair Fares NYC Half-Fare Transit Application Guide"
+    },
+    "desc": {
+      "zh": "符合条件的低收入纽约居民（18-64岁，单身年收入低于 $21,120，两口之家低于 $28,500）可申请半价地铁卡，单程仅需 $1.45。不属于公共负担，不影响绿卡申请。",
+      "zht": "符合條件的低收入紐約居民（18-64歲，單身年收入低於 $21,120，兩口之家低於 $28,500）可申請半價地鐵卡，單程僅需 $1.45。不屬於公共負擔，不影響綠卡申請。",
+      "en": "Eligible low-income NYC residents (aged 18-64, annual income under $21,120 for single, $28,500 for 2-person household) can apply for 50% discount on subway and bus fares ($1.45 per ride). Not a public charge."
+    },
+    "source": "ACCESS HRA",
+    "url": "https://access.nyc.gov/programs/fair-fares/",
+    "borough": {
+      "zh": "全市",
+      "zht": "全市",
+      "en": "Citywide"
+    }
+  },
+  {
+    "id": "e2",
+    "category": {
+      "zh": "福利申请",
+      "zht": "福利申請",
+      "en": "Benefits"
+    },
+    "bg_color": "bg-emerald-50 text-emerald-700 border-emerald-200",
+    "date": "2026-06-11",
+    "title": {
+      "zh": "纽约 SNAP 粮食券福利标准与申请通道",
+      "zht": "紐約 SNAP 糧食券福利標準與申請通道",
+      "en": "NYC SNAP Food Stamp Eligibility & Application Portal"
+    },
+    "desc": {
+      "zh": "低收入家庭每月可获得食品补助金，直接充值到 EBT 卡中，可在各大华人超市（如大中华、新世界）购买食材。单身月收入低于 $1,580 即可申请。",
+      "zht": "低收入家庭每月可獲得食品補助金，直接充值到 EBT 卡中，可在各大華人超市（如大中華、新世界）購買食材。單身月收入低於 $1,580 即可申請。",
+      "en": "Low-income households receive monthly food assistance on an EBT card, accepted at major Chinese supermarkets. Single individuals with monthly income under $1,580 are eligible to apply."
+    },
+    "source": "ACCESS HRA",
+    "url": "https://access.nyc.gov/programs/snap/",
+    "borough": {
+      "zh": "全市",
+      "zht": "全市",
+      "en": "Citywide"
+    }
+  },
+  {
+    "id": "e3",
+    "category": {
+      "zh": "福利申请",
+      "zht": "福利申請",
+      "en": "Benefits"
+    },
+    "bg_color": "bg-emerald-50 text-emerald-700 border-emerald-200",
+    "date": "2026-05-20",
+    "title": {
+      "zh": "HEAP 暖气与夏季避暑空调补助申请",
+      "zht": "HEAP 暖氣與夏季避暑空調補助申請",
+      "en": "HEAP Heating & Summer Air Conditioner Cooling Assistance"
+    },
+    "desc": {
+      "zh": "纽约州低收入家庭能源补助计划（HEAP）现已开放夏季降温补助申请。符合条件的家庭可获得免费空调安装或电费补贴，帮助平稳度过酷暑。",
+      "zht": "紐約州低收入家庭能源補助計劃（HEAP）現已開放夏季降溫補助申請。符合條件的家庭可獲得免費空調安裝或電費補貼，幫助平穩度過酷暑。",
+      "en": "The Home Energy Assistance Program (HEAP) is now open for summer cooling applications. Eligible households can receive free air conditioner installation or utility bill credits to beat the heat."
+    },
+    "source": "HEAP NY",
+    "url": "https://access.nyc.gov/programs/heap/",
+    "borough": {
+      "zh": "全市",
+      "zht": "全市",
+      "en": "Citywide"
+    }
+  },
+  {
+    "id": "e4",
+    "category": {
+      "zh": "福利申请",
+      "zht": "福利申請",
+      "en": "Benefits"
+    },
+    "bg_color": "bg-emerald-50 text-emerald-700 border-emerald-200",
+    "date": "2026-06-01",
+    "title": {
+      "zh": "NYC Free Summer Meals 纽约市暑期免费学生餐计划",
+      "zht": "NYC Free Summer Meals 紐約市暑期免費學生餐計劃",
+      "en": "NYC Free Summer Meals Program for Students"
+    },
+    "desc": {
+      "zh": "纽约市教育局宣布，今年暑期将继续在全市数百个学校、公园和图书馆向所有 18 岁及以下的学生免费提供早餐和午餐，无需注册或提供身份证明。",
+      "zht": "紐約市教育局宣布，今年暑期將繼續在全市數百個學校、公園和圖書館向所有 18 歲及以下的學生免費提供早餐和午餐，無需註冊或提供身份證明。",
+      "en": "NYC Department of Education provides free breakfast and lunch to all children 18 and under at hundreds of schools, parks, and libraries citywide this summer. No registration or ID required."
+    },
+    "source": "NYC DOE",
+    "url": "https://www.schools.nyc.gov/school-life/food/summer-meals",
+    "borough": {
+      "zh": "全市",
+      "zht": "全市",
+      "en": "Citywide"
+    }
+  },
+  {
+    "id": "e5",
+    "category": {
+      "zh": "福利申请",
+      "zht": "福利申請",
+      "en": "Benefits"
+    },
+    "bg_color": "bg-emerald-50 text-emerald-700 border-emerald-200",
+    "date": "2026-06-11",
+    "title": {
+      "zh": "纽约市免费手机与无限通话计划 (Lifeline)",
+      "zht": "紐約市免費手機與無限通話計劃 (Lifeline)",
+      "en": "NYC Free Smartphone & Unlimited Talk Plan (Lifeline)"
+    },
+    "desc": {
+      "zh": "符合特定低收入标准或已获得 Medicaid/SNAP 的纽约居民，可申请免费智能手机、每月免费流量和无限通话，帮助新移民保持与社会的联系。",
+      "zht": "符合特定低收入標準或已獲得 Medicaid/SNAP 的紐約居民，可申請免費智能手機、每月免費流量和無限通話，幫助新移民保持與社會的聯絡。",
+      "en": "NYC residents meeting low-income criteria or receiving Medicaid/SNAP can apply for a free smartphone with monthly data and unlimited talk time to help stay connected."
+    },
+    "source": "ACCESS NYC",
+    "url": "https://access.nyc.gov/programs/lifeline/",
+    "borough": {
+      "zh": "全市",
+      "zht": "全市",
+      "en": "Citywide"
+    }
+  },
+  {
+    "id": "e6",
+    "category": {
+      "zh": "交通出行",
+      "zht": "交通出行",
+      "en": "Transit"
+    },
+    "bg_color": "bg-sky-50 text-sky-700 border-sky-200",
+    "date": "2026-06-11",
+    "title": {
+      "zh": "LIRR CityTicket 市内火车 $5 特惠票政策",
+      "zht": "LIRR CityTicket 市內火車 $5 特惠票政策",
+      "en": "LIRR CityTicket $5 Flat Fare in NYC"
+    },
+    "desc": {
+      "zh": "只要起点和终点都在纽约市内（如法拉盛往返曼哈顿中城），非高峰期单程仅需 $5.00，高峰期 $7.00。18分钟直达，空调充足，人人有座。",
+      "zht": "只要起點和終點都在紐約市內（如法拉盛往返曼哈頓中城），非高峰期單程僅需 $5.00，高峰期 $7.00。18分鐘直達，空調充足，人人有座。",
+      "en": "For travel entirely within NYC (e.g., Flushing to Midtown Manhattan), LIRR offers flat-fare tickets: $5.00 off-peak, $7.00 peak. 18-minute direct trip with guaranteed seats."
+    },
+    "source": "MTA",
+    "url": "https://new.mta.info/fares/cityticket",
+    "borough": {
+      "zh": "皇后区",
+      "zht": "皇后區",
+      "en": "Queens"
+    }
+  },
+  {
+    "id": "e7",
+    "category": {
+      "zh": "交通出行",
+      "zht": "交通出行",
+      "en": "Transit"
+    },
+    "bg_color": "bg-sky-50 text-sky-700 border-sky-200",
+    "date": "2026-06-11",
+    "title": {
+      "zh": "MTA OMNY 刷满 12 次后免费乘车政策",
+      "zht": "MTA OMNY 刷滿 12 次後免費乘車政策",
+      "en": "MTA OMNY Fare Cap: Free Rides After 12 Trips"
+    },
+    "desc": {
+      "zh": "使用同一张信用卡、手机或 OMNY 卡，在周一至周日的 7 天内刷满 12 次（共 $34.80）后，本周内接下来的所有乘车均完全免费，自动生效。",
+      "zht": "使用同一張信用卡、手機或 OMNY 卡，在週一至週日的 7 天內刷滿 12 次（共 $34.80）後，本週內接下來的所有乘車均完全免費，自動生效。",
+      "en": "Using the same card or device, once you pay for 12 rides ($34.80) between Monday and Sunday, all subsequent rides for the rest of the week are completely free."
+    },
+    "source": "MTA OMNY",
+    "url": "https://omny.info/",
+    "borough": {
+      "zh": "全市",
+      "zht": "全市",
+      "en": "Citywide"
+    }
+  },
+  {
+    "id": "e8",
+    "category": {
+      "zh": "交通出行",
+      "zht": "交通出行",
+      "en": "Transit"
+    },
+    "bg_color": "bg-sky-50 text-sky-700 border-sky-200",
+    "date": "2026-06-10",
+    "title": {
+      "zh": "MTA 地铁周末改线与延误实时查询",
+      "zht": "MTA 地鐵週末改線與延誤實時查詢",
+      "en": "MTA Subway Weekend Service Changes & Alerts"
+    },
+    "desc": {
+      "zh": "由于夏季轨道维护，纽约地铁周末改线频繁。建议出行前通过 MTA 官方 Alerts 页面查询最新动态，避免在站台盲目等待，耽误行程。",
+      "zht": "由於夏季軌道維護，紐約地鐵週末改線頻繁。建議出行前通過 MTA 官方 Alerts 頁面查詢最新動態，避免在站台盲目等待，耽誤行程。",
+      "en": "Due to summer track maintenance, weekend subway service changes are frequent. Check the official MTA Alerts page before traveling to avoid long platform waits."
+    },
+    "source": "MTA Alerts",
+    "url": "https://new.mta.info/alerts",
+    "borough": {
+      "zh": "全市",
+      "zht": "全市",
+      "en": "Citywide"
+    }
+  },
+  {
+    "id": "e9",
+    "category": {
+      "zh": "交通出行",
+      "zht": "交通出行",
+      "en": "Transit"
+    },
+    "bg_color": "bg-sky-50 text-sky-700 border-sky-200",
+    "date": "2026-06-11",
+    "title": {
+      "zh": "JFK 肯尼迪机场快线巴士 (Express Bus) 乘车指南",
+      "zht": "JFK 肯尼迪機場快線巴士 (Express Bus) 乘車指南",
+      "en": "JFK Airport Express Bus Travel Guide"
+    },
+    "desc": {
+      "zh": "往返曼哈顿中城与 JFK 机场的最省钱公共交通方式之一。单程仅需 $19.00，配有行李架和免费 Wi-Fi，比打车省下近 $60 美元。",
+      "zht": "往返曼哈頓中城與 JFK 機場的最省錢公共交通方式之一。單程僅需 $19.00，配有行李架和免費 Wi-Fi，比打車省下近 $60 美元。",
+      "en": "One of the most cost-effective ways to travel between Midtown Manhattan and JFK Airport. Single ticket is $19.00, featuring luggage racks and free Wi-Fi."
+    },
+    "source": "JFK Airport",
+    "url": "https://www.jfkairport.com/to-from-airport/public-transportation",
+    "borough": {
+      "zh": "全市",
+      "zht": "全市",
+      "en": "Citywide"
+    }
+  },
+  {
+    "id": "e10",
+    "category": {
+      "zh": "交通出行",
+      "zht": "交通出行",
+      "en": "Transit"
+    },
+    "bg_color": "bg-sky-50 text-sky-700 border-sky-200",
+    "date": "2026-05-25",
+    "title": {
+      "zh": "NYC Ferry 纽约东河渡轮夏季时刻表启用",
+      "zht": "NYC Ferry 紐約東河渡輪夏季時刻表啟用",
+      "en": "NYC Ferry Summer Schedule Activation"
+    },
+    "desc": {
+      "zh": "纽约渡轮（NYC Ferry）正式启用夏季时刻表，增加了往返皇后区 Astoria、长岛市、曼哈顿华埠及布鲁克林 DUMBO 的航班频次，单程票价仅 $4.00。",
+      "zht": "紐約渡輪（NYC Ferry）正式啟用夏季時刻表，增加了往返皇后區 Astoria、長島市、曼哈頓華埠及布魯克林 DUMBO 的航班頻次，單程票價僅 $4.00。",
+      "en": "NYC Ferry has launched its summer schedule, increasing frequencies between Astoria, Long Island City, Manhattan Chinatown, and Brooklyn DUMBO. Single ticket is $4.00."
+    },
+    "source": "NYC Ferry",
+    "url": "https://www.ferry.nyc/routes-and-schedules/",
+    "borough": {
+      "zh": "全市",
+      "zht": "全市",
+      "en": "Citywide"
+    }
+  },
+  {
+    "id": "e11",
+    "category": {
+      "zh": "语言教育",
+      "zht": "語言教育",
+      "en": "Education"
+    },
+    "bg_color": "bg-indigo-50 text-indigo-700 border-indigo-200",
+    "date": "2026-06-15",
+    "title": {
+      "zh": "皇后区公共图书馆免费成人 ESL 英语班",
+      "zht": "皇后區公共圖書館免費成人 ESL 英語班",
+      "en": "Queens Public Library Free Adult ESL Classes"
+    },
+    "desc": {
+      "zh": "面向 17 岁以上纽约居民，完全免费。不限移民身份，教材全免。提供白天、晚间及周末班，在法拉盛主馆、Elmhurst、Bayside 等分馆上课。",
+      "zht": "面向 17 歲以上紐約居民，完全免費。不限移民身份，教材全免。提供白天、晚間及週末班，在法拉盛主館、Elmhurst、Bayside 等分館上課。",
+      "en": "Free English classes for NYC residents aged 17+. No immigration status required, free textbooks. Day, evening, and weekend sessions available at Flushing, Elmhurst, and Bayside."
+    },
+    "source": "Queens Library",
+    "url": "https://www.queenslibrary.org/programs-services/esol-family-literacy/esol",
+    "borough": {
+      "zh": "皇后区",
+      "zht": "皇后區",
+      "en": "Queens"
+    }
+  },
+  {
+    "id": "e12",
+    "category": {
+      "zh": "语言教育",
+      "zht": "語言教育",
+      "en": "Education"
+    },
+    "bg_color": "bg-indigo-50 text-indigo-700 border-indigo-200",
+    "date": "2026-06-16",
+    "title": {
+      "zh": "纽约公共图书馆 (NYPL) 免费成人英语与入籍辅导班",
+      "zht": "紐約公共圖書館 (NYPL) 免費成人英語與入籍輔導班",
+      "en": "NYPL Free Adult English & Citizenship Classes"
+    },
+    "desc": {
+      "zh": "曼哈顿、布朗士及史泰登岛居民免费英语课程。包含听说读写全方位提升，并设有专门的入籍英语辅导班，同样不限身份，完全免费。",
+      "zht": "曼哈頓、布朗士及史泰登島居民免費英語課程。包含聽說讀寫全方位提升，並設有專門的入籍英語輔導班，同樣不限身份，完全免費。",
+      "en": "Free English classes for Manhattan, Bronx, and Staten Island residents. Includes ESOL and citizenship preparation classes. Completely free and confidential."
+    },
+    "source": "NYPL",
+    "url": "https://www.nypl.org/help/community-outreach/immigrant-services/learn-english",
+    "borough": {
+      "zh": "曼哈顿",
+      "zht": "曼哈頓",
+      "en": "Manhattan"
+    }
+  },
+  {
+    "id": "e13",
+    "category": {
+      "zh": "语言教育",
+      "zht": "語言教育",
+      "en": "Education"
+    },
+    "bg_color": "bg-indigo-50 text-indigo-700 border-indigo-200",
+    "date": "2026-06-05",
+    "title": {
+      "zh": "布鲁克林公共图书馆 (BPL) 免费成人基础读写班",
+      "zht": "布魯克林公共圖書館 (BPL) 免費成人基礎讀寫班",
+      "en": "Brooklyn Public Library Free Adult Literacy Classes"
+    },
+    "desc": {
+      "zh": "专为新移民和成人设计的英语基础读写与口语班。在布鲁克林八大道（Sunset Park）等华人聚居区分馆设有线下授课点，名额有限，需提前登记。",
+      "zht": "專為新移民和成人設計的英語基礎讀寫與口語班。在布魯克林八大道（Sunset Park）等華人聚居區分館設有線下授課點，名額有限，需提前登記。",
+      "en": "Designed for adult learners and new immigrants to improve basic literacy and speaking skills. Classes available at Sunset Park and other Brooklyn branches. Registration required."
+    },
+    "source": "Brooklyn Library",
+    "url": "https://www.bklynlibrary.org/calendar/adult-basic-education",
+    "borough": {
+      "zh": "布鲁克林",
+      "zht": "布魯克林",
+      "en": "Brooklyn"
+    }
+  },
+  {
+    "id": "e14",
+    "category": {
+      "zh": "语言教育",
+      "zht": "語言教育",
+      "en": "Education"
+    },
+    "bg_color": "bg-indigo-50 text-indigo-700 border-indigo-200",
+    "date": "2026-06-01",
+    "title": {
+      "zh": "皇后区图书馆 2026 暑期少儿阅读挑战赛开放",
+      "zht": "皇后區圖書館 2026 暑期少兒閱讀挑戰賽開放",
+      "en": "Queens Library 2026 Summer Reading Challenge"
+    },
+    "desc": {
+      "zh": "鼓励 5-12 岁少儿在暑期保持阅读习惯。参与挑战并记录阅读进度的孩子可免费获得精美图书、纪念章，并有机会参与分馆举办的暑期派对。",
+      "zht": "鼓勵 5-12 歲少兒在暑期保持閱讀習慣。參與挑戰並記錄閱讀進度的孩子可免費獲得精美圖書、紀念章，並有機會參與分館舉辦的暑期派對。",
+      "en": "Encourages children aged 5-12 to read during summer. Kids tracking their reading progress can win free books, badges, and invitations to branch summer parties."
+    },
+    "source": "Queens Library",
+    "url": "https://www.queenslibrary.org/",
+    "borough": {
+      "zh": "皇后区",
+      "zht": "皇后區",
+      "en": "Queens"
+    }
+  },
+  {
+    "id": "e15",
+    "category": {
+      "zh": "社区安全",
+      "zht": "社區安全",
+      "en": "Safety"
+    },
+    "bg_color": "bg-rose-50 text-red-700 border-rose-200",
+    "date": "2026-06-17",
+    "title": {
+      "zh": "法拉盛 109 警局社区协调委员会月度会议",
+      "zht": "法拉盛 109 警局社區協調委員會月度會議",
+      "en": "NYPD 109th Precinct Community Council Meeting"
+    },
+    "desc": {
+      "zh": "法拉盛 109 警局举办的月度警民会议，向居民通报近期治安情况、防诈骗提示，并现场解答居民关于社区治安、违章停车等问题的提问，现场提供中文翻译。",
+      "zht": "法拉盛 109 警局舉辦的月度警民會議，向居民通報近期治安情況、防詐騙提示，並現場解答居民關於社區治安、違章停車等問題的提問，現場提供中文翻譯。",
+      "en": "Monthly public meeting at the 109th Precinct in Flushing. Get updates on local crime trends, safety tips, and ask questions directly to precinct leadership. Chinese translation provided."
+    },
+    "source": "NYPD 109 Precinct",
+    "url": "https://www.nyc.gov/site/nypd/bureaus/patrol/precincts/109th-precinct.page",
+    "borough": {
+      "zh": "皇后区",
+      "zht": "皇后區",
+      "en": "Queens"
+    }
+  },
+  {
+    "id": "e16",
+    "category": {
+      "zh": "社区安全",
+      "zht": "社區安全",
+      "en": "Safety"
+    },
+    "bg_color": "bg-rose-50 text-red-700 border-rose-200",
+    "date": "2026-05-28",
+    "title": {
+      "zh": "布鲁克林 72 警局防诈骗与入室盗窃宣讲会",
+      "zht": "布魯克林 72 警局防詐騙與入室盜竊宣講會",
+      "en": "NYPD 72nd Precinct Anti-Scam & Burglary Seminar"
+    },
+    "desc": {
+      "zh": "针对布鲁克林八大道（Sunset Park）近期频发的针对华人的电信诈骗和入室盗窃，72警局举办专题宣讲会，手把手教居民如何识别诈骗电话、加固住宅防盗。",
+      "zht": "針對布魯克林八大道（Sunset Park）近期頻發的針對華人的電信詐騙和入室盜竊，72警局舉辦專題宣講會，手把手教居民如何識別詐騙電話、加固住宅防盜。",
+      "en": "Addressing recent scams and burglaries targeting Chinese residents in Sunset Park, the 72nd Precinct hosts a seminar on identifying phone scams and securing homes."
+    },
+    "source": "NYPD 72 Precinct",
+    "url": "https://www.nyc.gov/site/nypd/bureaus/patrol/precincts/72nd-precinct.page",
+    "borough": {
+      "zh": "布鲁克林",
+      "zht": "布魯克林",
+      "en": "Brooklyn"
+    }
+  },
+  {
+    "id": "e17",
+    "category": {
+      "zh": "社区安全",
+      "zht": "社區安全",
+      "en": "Safety"
+    },
+    "bg_color": "bg-rose-50 text-red-700 border-rose-200",
+    "date": "2026-06-02",
+    "title": {
+      "zh": "纽约市紧急管理局飓风季节防灾准备指南",
+      "zht": "紐約市緊急管理局颶風季節防災準備指南",
+      "en": "NYC Emergency Management Hurricane Season Guide"
+    },
+    "desc": {
+      "zh": "纽约市紧急管理局（NYCEM）发布 2026 年度飓风季防灾指南。详细列出了全市各区的疏散避难所地图、紧急物资打包清单，并提供中文版 PDF 下载。",
+      "zht": "紐約市緊急管理局（NYCEM）發布 2026 年度颶風季防災指南。詳細列出了全市各區的疏散避難所地圖、緊急物資打包清單，並提供中文版 PDF 下載。",
+      "en": "NYC Emergency Management has released the 2026 Hurricane Guide, detailing evacuation zone maps, emergency supply checklists, and safety protocols. Chinese PDF available."
+    },
+    "source": "NYC Emergency Mgmt",
+    "url": "https://www.nyc.gov/site/em/ready/hurricane-guides.page",
+    "borough": {
+      "zh": "全市",
+      "zht": "全市",
+      "en": "Citywide"
+    }
+  },
+  {
+    "id": "e18",
+    "category": {
+      "zh": "社区安全",
+      "zht": "社區安全",
+      "en": "Safety"
+    },
+    "bg_color": "bg-rose-50 text-red-700 border-rose-200",
+    "date": "2026-05-15",
+    "title": {
+      "zh": "曼哈顿华埠 5 警局治安警报与防抢劫讲座",
+      "zht": "曼哈頓華埠 5 警局治安警報與防搶劫講座",
+      "en": "NYPD 5th Precinct Safety Alert & Robbery Prevention"
+    },
+    "desc": {
+      "zh": "五分局在华埠中华公所举办治安讲座，向社区商家和居民通报近期街头抢劫趋势，并演示遭遇抢劫时的自救与报警流程，现场发放防狼喷雾和警报器。",
+      "zht": "五分局在華埠中華公所舉辦治安講座，向社區商家和居民通報近期街頭搶劫趨勢，並演示遭遇搶劫時的自救與報警流程，現場發放防狼噴霧和警報器。",
+      "en": "The 5th Precinct hosts a safety seminar at CCBA Chinatown, updating residents on street robbery trends and demonstrating self-defense and reporting protocols."
+    },
+    "source": "NYPD 5 Precinct",
+    "url": "https://www.nyc.gov/site/nypd/bureaus/patrol/precincts/5th-precinct.page",
+    "borough": {
+      "zh": "曼哈顿",
+      "zht": "曼哈頓",
+      "en": "Manhattan"
+    }
+  },
+  {
+    "id": "e19",
+    "category": {
+      "zh": "市政议员",
+      "zht": "市政議員",
+      "en": "Civic"
+    },
+    "bg_color": "bg-amber-50 text-amber-700 border-amber-200",
+    "date": "每周四",
+    "title": {
+      "zh": "市议员黄敏仪办公室免费法律咨询服务",
+      "zht": "市議員黃敏儀辦公室免費法律諮詢服務",
+      "en": "Council Member Sandra Ung Free Legal Clinic"
+    },
+    "desc": {
+      "zh": "法拉盛市议员黄敏仪（Sandra Ung）办公室联合专业公益律师，为选区居民提供免费的法律咨询，涵盖租务纠纷、移民、家庭法等。提供中文翻译服务。",
+      "zht": "法拉盛市議員黃敏儀（Sandra Ung）辦公室聯合專業公益律師，為選區居民提供免費的法律諮詢，涵蓋租務糾紛、移民、家庭法等。提供中文翻譯服務。",
+      "en": "Council Member Sandra Ung's office hosts a free legal consultation clinic in Flushing covering housing disputes, immigration, and family law. Chinese translation available."
+    },
+    "source": "Sandra Ung Office",
+    "url": "https://council.nyc.gov/sandra-ung/",
+    "borough": {
+      "zh": "皇后区",
+      "zht": "皇后區",
+      "en": "Queens"
+    }
+  },
+  {
+    "id": "e20",
+    "category": {
+      "zh": "市政议员",
+      "zht": "市政議員",
+      "en": "Civic"
+    },
+    "bg_color": "bg-amber-50 text-amber-700 border-amber-200",
+    "date": "2026-05-18",
+    "title": {
+      "zh": "州参议员刘醇逸办公室免费选民登记协助",
+      "zht": "州參議員劉醇逸辦公室免費選民登記協助",
+      "en": "Senator John Liu Free Voter Registration Drive"
+    },
+    "desc": {
+      "zh": "刘醇逸（John Liu）议员办公室在法拉盛主街设立临时服务台，协助符合条件的华人居民填写选民登记表，并解答关于邮寄选票、投票站查询等疑问。",
+      "zht": "劉醇逸（John Liu）議員辦公室在法拉盛主街設立臨時服務台，協助符合條件的華人居民填寫選民登記表，並解答關於郵寄選票、投票站查詢等疑問。",
+      "en": "Senator John Liu's office hosts a mobile voter registration drive on Flushing Main Street, helping eligible residents register to vote and find polling sites."
+    },
+    "source": "John Liu Office",
+    "url": "https://www.nysenate.gov/senators/john-c-liu",
+    "borough": {
+      "zh": "皇后区",
+      "zht": "皇后區",
+      "en": "Queens"
+    }
+  },
+  {
+    "id": "e21",
+    "category": {
+      "zh": "市政议员",
+      "zht": "市政議員",
+      "en": "Civic"
+    },
+    "bg_color": "bg-amber-50 text-amber-700 border-amber-200",
+    "date": "2026-06-11",
+    "title": {
+      "zh": "纽约市选民登记截止日期与投票站查询系统",
+      "zht": "紐約市選民登記截止日期與投票站查詢系統",
+      "en": "NYC Voter Registration & Polling Site Locator"
+    },
+    "desc": {
+      "zh": "纽约市选举局官方查询系统。输入您的纽约居住地址，即可一键查询您专属的投票站地址、开放时间，以及本选区内所有的候选人名单。",
+      "zht": "紐約市選舉局官方查詢系統。輸入您的紐約居住地址，即可一鍵查詢您專屬的投票站地址、開放時間，以及本選區內所有的候選人名單。",
+      "en": "Official NYC Board of Elections portal. Enter your home address to instantly find your assigned polling location, hours, and sample ballots."
+    },
+    "source": "NYC Board of Elections",
+    "url": "https://vote.nyc/",
+    "borough": {
+      "zh": "全市",
+      "zht": "全市",
+      "en": "Citywide"
+    }
+  },
+  {
+    "id": "e22",
+    "category": {
+      "zh": "公园亲子",
+      "zht": "公園親子",
+      "en": "Recreation"
+    },
+    "bg_color": "bg-teal-50 text-teal-700 border-teal-200",
+    "date": "每周三/周日",
+    "title": {
+      "zh": "皇后区植物园 (QGB) 免费开放时段",
+      "zht": "皇后區植物園 (QGB) 免費開放時段",
+      "en": "Queens Botanical Garden Free Admission Hours"
+    },
+    "desc": {
+      "zh": "皇后区植物园在指定时段对公众免费开放，无需购买门票。非常适合法拉盛本地家庭带孩子亲近自然、散步休闲。地址：43-50 Main St, Flushing。",
+      "zht": "皇后區植物園在指定時段對公眾免費開放，無需購買門票。非常適合法拉盛本地家庭帶孩子親近自然、散步休閒。地址：43-50 Main St, Flushing。",
+      "en": "Queens Botanical Garden offers free admission during designated hours (Wed 3-6 PM, Sun 9-11 AM). Perfect for Flushing families to enjoy nature. Location: 43-50 Main St."
+    },
+    "source": "Queens Botanical Garden",
+    "url": "https://queensbotanical.org/hours-admission/",
+    "borough": {
+      "zh": "皇后区",
+      "zht": "皇后區",
+      "en": "Queens"
+    }
+  },
+  {
+    "id": "e23",
+    "category": {
+      "zh": "公园亲子",
+      "zht": "公園親子",
+      "en": "Recreation"
+    },
+    "bg_color": "bg-teal-50 text-teal-700 border-teal-200",
+    "date": "2026-06-27",
+    "title": {
+      "zh": "纽约市公共室外游泳池免费开放通知",
+      "zht": "紐約市公共室外游泳池免費開放通知",
+      "en": "NYC Public Outdoor Pools Free Summer Opening"
+    },
+    "desc": {
+      "zh": "纽约市公园局（NYC Parks）宣布全市公共室外泳池将于6月27日起免费对公众开放。法拉盛附近的 Fisher Pool 等均在列，是夏季消暑亲子的绝佳免费去处。",
+      "zht": "紐約市公園局（NYC Parks）宣布全市公共室外泳池將於6月27日起免費對公眾開放。法拉盛附近的 Fisher Pool 等均在列，是夏季消暑親子的絕佳免費去處。",
+      "en": "NYC Parks outdoor pools open for the summer season starting June 27. Admission is completely free at all locations, including Fisher Pool near Flushing."
+    },
+    "source": "NYC Parks",
+    "url": "https://www.nycgovparks.org/facilities/outdoor-pools",
+    "borough": {
+      "zh": "全市",
+      "zht": "全市",
+      "en": "Citywide"
+    }
+  },
+  {
+    "id": "e24",
+    "category": {
+      "zh": "公园亲子",
+      "zht": "公園親子",
+      "en": "Recreation"
+    },
+    "bg_color": "bg-teal-50 text-teal-700 border-teal-200",
+    "date": "2026-06-01",
+    "title": {
+      "zh": "纽约市公园局免费夏季露天电影节排片表",
+      "zht": "紐約市公園局免費夏季露天電影節排片表",
+      "en": "NYC Parks Free Summer Movies Under the Stars"
+    },
+    "desc": {
+      "zh": "NYC Parks 宣布在全市数十个公共公园举办免费露天电影放映活动。包含多部迪士尼动画片、好莱坞大片，无需预约，带上野餐垫即可前往观影。",
+      "zht": "NYC Parks 宣布在全市數十個公共公園舉辦免費露天電影放映活動。包含多部迪士尼動畫片、好萊塢大片，無需預約，帶上野餐墊即可前往觀影。",
+      "en": "NYC Parks hosts free outdoor movie screenings across parks in all five boroughs. Features Disney animations and blockbuster hits. No registration required."
+    },
+    "source": "NYC Parks",
+    "url": "https://www.nycgovparks.org/events/free-summer-movies",
+    "borough": {
+      "zh": "全市",
+      "zht": "全市",
+      "en": "Citywide"
+    }
+  },
+  {
+    "id": "e25",
+    "category": {
+      "zh": "公园亲子",
+      "zht": "公園親子",
+      "en": "Recreation"
+    },
+    "bg_color": "bg-teal-50 text-teal-700 border-teal-200",
+    "date": "2026-06-13",
+    "title": {
+      "zh": "布鲁克林展望公园 (Prospect Park) 免费亲子手工课",
+      "zht": "布魯克林展望公園 (Prospect Park) 免費親子手工課",
+      "en": "Prospect Park Free Family Nature Craft Workshop"
+    },
+    "desc": {
+      "zh": "展望公园联盟举办的周末亲子自然探索与手工制作课程。专业导师带领孩子们认识公园植物，并利用落叶和树枝制作创意手工作品，完全免费。",
+      "zht": "展望公園聯盟舉辦的週末親子自然探索與手工製作課程。專業導師帶領孩子們認識公園植物，並利用落葉和樹枝製作創意手工作品，完全免費。",
+      "en": "Prospect Park Alliance hosts a weekend nature exploration and craft workshop. Kids learn about local plants and make creative crafts using leaves and twigs."
+    },
+    "source": "Prospect Park",
+    "url": "https://www.prospectpark.org/",
+    "borough": {
+      "zh": "布鲁克林",
+      "zht": "布魯克林",
+      "en": "Brooklyn"
+    }
+  },
+  {
+    "id": "e26",
+    "category": {
+      "zh": "文化展览",
+      "zht": "文化展覽",
+      "en": "Culture"
+    },
+    "bg_color": "bg-purple-50 text-purple-700 border-purple-200",
+    "date": "2026-06-20",
+    "title": {
+      "zh": "法拉盛市政厅 (Flushing Town Hall) 免费社区音乐会",
+      "zht": "法拉盛市政廳 (Flushing Town Hall) 免費社區音樂會",
+      "en": "Flushing Town Hall Free Community Concert"
+    },
+    "desc": {
+      "zh": "法拉盛文艺中心举办的多元文化音乐会，邀请华人传统民乐艺术家现场演奏，旨在促进社区文化交流。门票免费，但需提前在线登记预约名额。",
+      "zht": "法拉盛文藝中心舉辦的多元文化音樂會，邀請華人傳統民樂藝術家現場演奏，旨在促進社區文化交流。門票免費，但需提前在線登記預約名額。",
+      "en": "Flushing Town Hall hosts a free multicultural concert featuring traditional Chinese instruments to promote cultural exchange. Free ticket RSVP required."
+    },
+    "source": "Flushing Town Hall",
+    "url": "https://www.flushingtownhall.org/",
+    "borough": {
+      "zh": "皇后区",
+      "zht": "皇后區",
+      "en": "Queens"
+    }
+  },
+  {
+    "id": "e27",
+    "category": {
+      "zh": "文化展览",
+      "zht": "文化展覽",
+      "en": "Culture"
+    },
+    "bg_color": "bg-purple-50 text-purple-700 border-purple-200",
+    "date": "2026-06-11",
+    "title": {
+      "zh": "大都会艺术博物馆 (The Met) 纽约居民任意付费政策",
+      "zht": "大都會藝術博物館 (The Met) 紐約居民任意付費政策",
+      "en": "The Met Museum Pay-What-You-Wish for NY Residents"
+    },
+    "desc": {
+      "zh": "持有纽约州 ID 或显示纽约地址的账单，即可在大都会博物馆售票处享受「任意付费」(Pay-What-You-Wish) 政策，哪怕付 $1 分钱也能入馆参观。",
+      "zht": "持有紐約州 ID 或顯示紐約地址的賬單，即可在大都會博物館售票處享受「任意付費」(Pay-What-You-Wish) 政策，哪怕付 $1 分錢也能入館參觀。",
+      "en": "With a valid NY State ID or bill showing NY address, residents can enjoy 'Pay-What-You-Wish' admission at Met ticket counters. Even $0.01 is accepted."
+    },
+    "source": "The Met Museum",
+    "url": "https://www.metmuseum.org/visit/plan-your-visit",
+    "borough": {
+      "zh": "曼哈顿",
+      "zht": "曼哈頓",
+      "en": "Manhattan"
+    }
+  },
+  {
+    "id": "e28",
+    "category": {
+      "zh": "文化展览",
+      "zht": "文化展覽",
+      "en": "Culture"
+    },
+    "bg_color": "bg-purple-50 text-purple-700 border-purple-200",
+    "date": "每周五",
+    "title": {
+      "zh": "纽约现代艺术博物馆 (MoMA) 免费开放夜",
+      "zht": "紐約現代藝術博物館 (MoMA) 免費開放夜",
+      "en": "MoMA Free Friday Admission for NYC Residents"
+    },
+    "desc": {
+      "zh": "MoMA 针对纽约市居民提供每周五下午的免费入馆时段。需提前在官网预约免费门票，现场需出示纽约居住证明，是欣赏世界级现代艺术的绝佳机会。",
+      "zht": "MoMA 針對紐約市居民提供每週五下午的免費入館時段。需提前在官網預約免費門票，現場需出示紐約居住證明，是欣賞世界級現代藝術的絕佳機會。",
+      "en": "MoMA offers free admission for NYC residents on Friday afternoons (4:00 - 8:00 PM). Tickets must be reserved online in advance with proof of residency."
+    },
+    "source": "MoMA",
+    "url": "https://www.moma.org/calendar/programs/159",
+    "borough": {
+      "zh": "曼哈顿",
+      "zht": "曼哈頓",
+      "en": "Manhattan"
+    }
+  },
+  {
+    "id": "e29",
+    "category": {
+      "zh": "文化展览",
+      "zht": "文化展覽",
+      "en": "Culture"
+    },
+    "bg_color": "bg-purple-50 text-purple-700 border-purple-200",
+    "date": "每周五",
+    "title": {
+      "zh": "纽约科学馆 (NYSCI) 皇后区居民免费开放时段",
+      "zht": "紐約科學館 (NYSCI) 皇后區居民免費開放時段",
+      "en": "New York Hall of Science Free Hours for Queens Residents"
+    },
+    "desc": {
+      "zh": "位于 Corona 公园的纽约科学馆，每周五下午向皇后区居民免费开放。馆内拥有数百个互动科学展项，非常适合周末带孩子进行科普探索。",
+      "zht": "位於 Corona 公園的紐約科學館，每週五下午向皇后區居民免費開放。館內擁有數百個互動科學展項，非常適合週末帶孩子進行科普探索。",
+      "en": "NYSCI in Flushing Meadows Corona Park offers free admission to Queens residents on Friday afternoons (2:00 - 5:00 PM). Features hundreds of interactive science exhibits."
+    },
+    "source": "NYSCI",
+    "url": "https://nysci.org/visit",
+    "borough": {
+      "zh": "皇后区",
+      "zht": "皇后區",
+      "en": "Queens"
+    }
+  },
+  {
+    "id": "e30",
+    "category": {
+      "zh": "公益志愿",
+      "zht": "公益志願",
+      "en": "Charity"
+    },
+    "bg_color": "bg-fuchsia-50 text-fuchsia-700 border-fuchsia-200",
+    "date": "每周五",
+    "title": {
+      "zh": "纽约慈济基金会 (Tzu Chi) 食物发放志愿服务",
+      "zht": "紐約慈濟基金會 (Tzu Chi) 食物發放志願服務",
+      "en": "Tzu Chi New York Free Food Distribution Volunteering"
+    },
+    "desc": {
+      "zh": "慈济纽约分会每周五在法拉盛会所向低收入家庭免费分发新鲜蔬菜、水果和干粮。同时招募双语志愿者协助现场秩序与物资搬运，欢迎报名奉献爱心。",
+      "zht": "慈濟紐約分會每週五在法拉盛會所向低收入家庭免費分發新鮮蔬菜、水果和乾糧。同時招募雙語志願者協助現場秩序與物資搬運，歡迎報名奉獻愛心。",
+      "en": "Tzu Chi NY distributes free fresh produce and groceries to low-income families in Flushing every Friday. Bilingual volunteers are needed to help pack and distribute."
+    },
+    "source": "Tzu Chi NY",
+    "url": "https://tzuchi.us/offices/new-york",
+    "borough": {
+      "zh": "皇后区",
+      "zht": "皇后區",
+      "en": "Queens"
+    }
+  },
+  {
+    "id": "e31",
+    "category": {
+      "zh": "公益志愿",
+      "zht": "公益志願",
+      "en": "Charity"
+    },
+    "bg_color": "bg-fuchsia-50 text-fuchsia-700 border-fuchsia-200",
+    "date": "2026-06-11",
+    "title": {
+      "zh": "纽约市食物银行 (Food Bank For NYC) 社区厨房志愿招募",
+      "zht": "紐約市食物銀行 (Food Bank For NYC) 社區廚房志願招募",
+      "en": "Food Bank For NYC Community Kitchen Volunteer Drive"
+    },
+    "desc": {
+      "zh": "纽约市最大的扶贫公益组织，长期在曼哈顿华埠、布鲁克林等社区厨房招募志愿者，协助包装和发放免费餐食，欢迎华人青年和留学生参与，可开具义工证明。",
+      "zht": "紐約市最大的扶貧公益組織，長期在曼哈頓華埠、布魯克林等社區廚房招募志願者，協助包裝和發放免費餐食，歡迎華人青年和留學生參與，可開具義工證明。",
+      "en": "NYC's largest hunger-relief organization recruits volunteers for community kitchens in Chinatown and Brooklyn to pack and distribute free meals. Volunteer certificates provided."
+    },
+    "source": "Food Bank For NYC",
+    "url": "https://www.foodbanknyc.org/volunteer/",
+    "borough": {
+      "zh": "全市",
+      "zht": "全市",
+      "en": "Citywide"
+    }
+  },
+  {
+    "id": "e32",
+    "category": {
+      "zh": "消费促销",
+      "zht": "消費促销",
+      "en": "Promos"
+    },
+    "bg_color": "bg-orange-50 text-orange-700 border-orange-200",
+    "date": "每周五更新",
+    "title": {
+      "zh": "法拉盛新世界超市本周特价促销海报 (民间搜集)",
+      "zht": "法拉盛新世界超市本周特價促銷海報 (民間搜集)",
+      "en": "Flushing New World Supermarket Weekly Specials"
+    },
+    "desc": {
+      "zh": "法拉盛地标新世界商城地下超市本周最新折扣海报。涵盖游水海鲜、新鲜时蔬、南北杂货特价，帮华人家庭精打细算省下买菜钱。",
+      "zht": "法拉盛地標新世界商城地下超市本周最新折扣海報。涵蓋遊水海鮮、新鮮時蔬、南北雜貨特價，幫華人家庭精打細算省下買菜錢。",
+      "en": "Weekly discount catalog from New World Supermarket in Flushing. Save on fresh seafood, vegetables, and Asian groceries to help families budget effectively."
+    },
+    "source": "New World Mall",
+    "url": "https://www.newworldmallny.com/",
+    "borough": {
+      "zh": "皇后区",
+      "zht": "皇后區",
+      "en": "Queens"
+    }
+  }
+];
+
+    // Global App State
+    var currentLang = 'zh'; // Default to Simplified Chinese
     var activeCategory = 'all';
 
-    function filterEvents() {
+    // DOM Elements
+    var langSwitcher = document.getElementById('lang-switcher');
+    var searchInput = document.getElementById('search-input');
+    var boroFilter = document.getElementById('borough-filter');
+    var categoryFiltersContainer = document.getElementById('category-filters');
+    var eventsGrid = document.getElementById('events-grid');
+    var resultsCount = document.getElementById('results-count');
+
+    // Modal Elements
+    var linkModal = document.getElementById('link-modal');
+    var modalTitle = document.getElementById('modal-title');
+    var modalLinkTrans = document.getElementById('modal-link-trans');
+    var modalLinkRaw = document.getElementById('modal-link-raw');
+    var modalCancelBtn = document.getElementById('modal-cancel-btn');
+
+    // --- Translate UI Elements ---
+    function translateUI() {
+      var strings = uiStrings[currentLang];
+      
+      // Document Title
+      document.title = strings.title;
+
+      // Header & Brand
+      document.getElementById('ui-brand-title').textContent = strings.title.split('—')[0].trim();
+      document.getElementById('ui-brand-sub').textContent = strings.brand_sub;
+      document.getElementById('ui-nav-hub').textContent = strings.nav_hub;
+      document.getElementById('ui-nav-about').textContent = strings.nav_about;
+      document.getElementById('ui-nav-feedback').textContent = strings.nav_feedback;
+      document.getElementById('ui-btn-plan').textContent = strings.btn_plan;
+      document.getElementById('ui-btn-feedback').textContent = strings.btn_feedback;
+
+      // Hero Banner
+      document.getElementById('ui-hero-tag').innerHTML = '📢 ' + strings.hero_tag.replace('📢', '').trim();
+      document.getElementById('ui-hero-title').textContent = strings.hero_title;
+      document.getElementById('ui-hero-desc').textContent = strings.hero_desc;
+
+      // Search & Filters
+      searchInput.placeholder = strings.search_placeholder;
+      document.getElementById('opt-boro-all').textContent = strings.boro_all;
+      document.getElementById('opt-boro-citywide').textContent = strings.boro_citywide;
+      document.getElementById('opt-boro-queens').textContent = strings.boro_queens;
+      document.getElementById('opt-boro-brooklyn').textContent = strings.boro_brooklyn;
+      document.getElementById('opt-boro-manhattan').textContent = strings.boro_manhattan;
+      document.getElementById('ui-results-range').textContent = strings.results_range;
+
+      // About Us
+      document.getElementById('ui-about-title').textContent = strings.about_title;
+      document.getElementById('ui-about-p1').textContent = strings.about_p1;
+      document.getElementById('ui-about-p2').textContent = strings.about_p2;
+      document.getElementById('ui-about-tag1').textContent = strings.about_tag1;
+      document.getElementById('ui-about-tag2').textContent = strings.about_tag2;
+      document.getElementById('ui-about-tag3').textContent = strings.about_tag3;
+
+      // Feedback Form
+      document.getElementById('ui-feedback-title').textContent = strings.feedback_title;
+      document.getElementById('ui-feedback-desc').textContent = strings.feedback_desc;
+      document.getElementById('ui-fb-name').textContent = strings.fb_name;
+      document.getElementById('ui-fb-contact').textContent = strings.fb_contact;
+      document.getElementById('ui-fb-content').textContent = strings.fb_content;
+      document.getElementById('fb-content').placeholder = strings.fb_placeholder;
+      document.getElementById('ui-fb-required').textContent = strings.fb_required;
+      document.getElementById('ui-fb-submit').textContent = strings.fb_submit;
+
+      // Contact Column
+      document.getElementById('ui-contact-title').textContent = strings.contact_title;
+      document.getElementById('ui-contact-desc').textContent = strings.contact_desc;
+      document.getElementById('ui-contact-btn').textContent = strings.contact_btn;
+      document.getElementById('ui-feedback-latest').textContent = strings.feedback_latest;
+
+      // Footer
+      document.getElementById('ui-footer-sub').textContent = strings.footer_sub;
+      document.getElementById('ui-footer-copy').textContent = strings.footer_copy;
+
+      // Modal
+      modalTitle.textContent = strings.link_option_title;
+      modalLinkRaw.textContent = strings.link_option_raw;
+      modalLinkTrans.textContent = strings.link_option_trans;
+      modalCancelBtn.textContent = strings.cancel;
+
+      // Re-render categories and events to match language
+      renderCategoryFilters();
+      renderEvents();
+    }
+
+    // --- Render Category Filters ---
+    var categoriesMap = {
+      'zh': ['全部频道', '福利申请', '交通出行', '语言教育', '社区安全', '公园亲子', '文化展览', '市政议员', '公益志愿', '消费促销'],
+      'zht': ['全部頻道', '福利申請', '交通出行', '語言教育', '社區安全', '公園親子', '文化展覽', '市政議員', '公益志願', '消費促銷'],
+      'en': ['All Channels', 'Benefits', 'Transit', 'Education', 'Safety', 'Recreation', 'Culture', 'Civic', 'Charity', 'Promos']
+    };
+
+    function renderCategoryFilters() {
+      var cats = categoriesMap[currentLang];
+      var keys = ['all', '福利申请', '交通出行', '语言教育', '社区安全', '公园亲子', '文化展览', '市政议员', '公益志愿', '消费促销'];
+      
+      var html = "";
+      cats.forEach(function(cat, idx) {
+        var key = keys[idx];
+        var isActive = activeCategory === key;
+        var activeClass = isActive ? 'bg-brand-600 text-white shadow-sm' : 'bg-slate-50 text-slate-600 border border-slate-200 hover:bg-slate-100';
+        html += '<button class="cat-btn px-4 py-2 text-xs font-semibold rounded-lg transition ' + activeClass + '" data-filter="' + key + '">' + cat + '</button>\n';
+      });
+      categoryFiltersContainer.innerHTML = html;
+
+      // Re-bind click events
+      document.querySelectorAll('.cat-btn').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+          activeCategory = this.getAttribute('data-filter');
+          renderCategoryFilters();
+          renderEvents();
+        });
+      });
+    }
+
+    // --- Open Smart Link Modal ---
+    function openSmartLink(url) {
+      // Generate Google Translate Proxy URLs
+      var simplifiedTransUrl = 'https://translate.google.com/translate?sl=en&tl=zh-CN&u=' + encodeURIComponent(url);
+      var traditionalTransUrl = 'https://translate.google.com/translate?sl=en&tl=zh-TW&u=' + encodeURIComponent(url);
+      
+      var transUrl = currentLang === 'zht' ? traditionalTransUrl : simplifiedTransUrl;
+
+      modalLinkRaw.setAttribute('href', url);
+      modalLinkTrans.setAttribute('href', transUrl);
+
+      // If language is English, bypass modal and open raw link directly
+      if (currentLang === 'en') {
+        window.open(url, '_blank');
+        return;
+      }
+
+      linkModal.classList.remove('hidden');
+      linkModal.classList.add('flex');
+    }
+
+    function closeSmartLinkModal() {
+      linkModal.classList.remove('flex');
+      linkModal.classList.add('hidden');
+    }
+
+    modalCancelBtn.addEventListener('click', closeSmartLinkModal);
+    modalLinkRaw.addEventListener('click', closeSmartLinkModal);
+    modalLinkTrans.addEventListener('click', closeSmartLinkModal);
+
+    // --- Render Event Cards ---
+    function renderEvents() {
       var query = searchInput.value.toLowerCase();
       var boro = boroFilter.value;
+      var strings = uiStrings[currentLang];
+      
+      var html = "";
       var visibleCount = 0;
 
-      eventCards.forEach(function(card) {
-        var text = card.textContent.toLowerCase();
-        var cardCat = card.getAttribute('data-category');
-        var cardBoro = card.getAttribute('data-borough');
-
-        var matchesSearch = text.indexOf(query) > -1;
-        var matchesCat = activeCategory === 'all' || cardCat === activeCategory;
-        var matchesBoro = boro === 'all' || cardBoro === boro || cardBoro === '全市';
+      eventsData.forEach(function(ev) {
+        // Fetch translated fields
+        var title = ev.title[currentLang] || ev.title['zh'];
+        var desc = ev.desc[currentLang] || ev.desc['zh'];
+        var category = ev.category[currentLang] || ev.category['zh'];
+        var borough = ev.borough[currentLang] || ev.borough['zh'];
+        
+        // Match Search & Filters
+        var textToSearch = (title + ' ' + desc + ' ' + ev.source + ' ' + borough + ' ' + category).toLowerCase();
+        var matchesSearch = textToSearch.indexOf(query) > -1;
+        var matchesCat = activeCategory === 'all' || ev.category['zh'] === activeCategory;
+        var matchesBoro = boro === 'all' || ev.borough['zh'] === boro || ev.borough['zh'] === '全市';
 
         if (matchesSearch && matchesCat && matchesBoro) {
-          card.style.display = 'flex';
           visibleCount++;
-        } else {
-          card.style.display = 'none';
+          html += '<div class="bg-white rounded-2xl border border-slate-200 shadow-sm hover:shadow-md transition overflow-hidden flex flex-col">';
+          html += '  <div class="p-6 flex-1 flex flex-col justify-between">';
+          html += '    <div>';
+          html += '      <div class="flex justify-between items-start gap-2 mb-3">';
+          html += '        <span class="inline-block px-2.5 py-0.5 rounded text-[10px] font-bold border ' + ev.bg_color + '">' + category + '</span>';
+          html += '        <span class="text-[10px] text-slate-400 font-semibold">' + ev.date + '</span>';
+          html += '      </div>';
+          html += '      <h4 class="font-bold text-slate-900 text-sm mb-2 hover:text-brand-600 transition">' + title + '</h4>';
+          html += '      <p class="text-xs text-slate-600 leading-relaxed mb-4">' + desc + '</p>';
+          html += '    </div>';
+          html += '    <div class="pt-4 border-t border-slate-100 flex items-center justify-between text-[10px]">';
+          html += '      <div class="flex flex-col gap-0.5">';
+          html += '        <span class="text-slate-400 font-medium">' + strings.source_label + ': <strong class="text-slate-600">' + ev.source + '</strong></span>';
+          html += '        <span class="text-slate-400 font-medium">' + strings.boro_label + ': <strong class="text-slate-600">' + borough + '</strong></span>';
+          html += '      </div>';
+          html += '      <button onclick="openSmartLink('' + ev.url + '')" class="px-3 py-2 bg-brand-50 hover:bg-brand-100 text-brand-700 font-bold rounded-lg transition">' + strings.btn_get_link + '</button>';
+          html += '    </div>';
+          html += '  </div>';
+          html += '</div>';
         }
       });
 
-      document.getElementById('results-count').textContent = '已筛选出 ' + visibleCount + ' 条真实资讯';
+      eventsGrid.innerHTML = html;
+      resultsCount.textContent = strings.results_prefix + ' ' + visibleCount + ' ' + strings.results_suffix;
     }
 
-    if (searchInput) searchInput.addEventListener('input', filterEvents);
-    if (boroFilter) boroFilter.addEventListener('change', filterEvents);
-
-    catBtns.forEach(function(btn) {
-      btn.addEventListener('click', function() {
-        catBtns.forEach(function(b) {
-          b.classList.remove('bg-brand-600', 'text-white', 'shadow-sm');
-          b.classList.add('bg-slate-50', 'text-slate-600', 'border', 'border-slate-200');
-        });
-        this.classList.remove('bg-slate-50', 'text-slate-600', 'border', 'border-slate-200');
-        this.classList.add('bg-brand-600', 'text-white', 'shadow-sm');
-
-        activeCategory = this.getAttribute('data-filter');
-        filterEvents();
-      });
+    // --- Event Listeners ---
+    langSwitcher.addEventListener('change', function() {
+      currentLang = this.value;
+      translateUI();
     });
 
-    // Feedback form submission with localStorage
+    searchInput.addEventListener('input', renderEvents);
+    boroFilter.addEventListener('change', renderEvents);
+
+    // --- Feedback Form Logic ---
     var feedbackForm = document.getElementById('feedback-form');
     var feedbackList = document.getElementById('feedback-list');
 
     function renderFeedbackList() {
       var submissions = JSON.parse(localStorage.getItem('us_chinese_life_hub_feedback') || '[]');
+      var strings = uiStrings[currentLang];
+      
       if (submissions.length === 0) {
-        feedbackList.innerHTML = '<p class="text-slate-400 italic">暂无提交记录，提交表单后将保存在您的浏览器本地。</p>';
+        feedbackList.innerHTML = '<p class="text-slate-400 italic">' + strings.feedback_empty + '</p>';
         return;
       }
 
       var html = "";
       submissions.forEach(function(sub) {
         html += "<div class='bg-slate-50 p-3 rounded-lg border border-slate-100'>";
-        html += "<div class='flex justify-between font-semibold text-slate-900 mb-1'>";
-        html += "<span>" + sub.name + "</span>";
-        html += "<span class='text-[10px] text-slate-400'>" + sub.date + "</span>";
-        html += "</div>";
-        html += "<p class='text-slate-600 leading-relaxed text-[11px]'>" + sub.content + "</p>";
+        html += "  <div class='flex justify-between font-semibold text-slate-900 mb-1'>";
+        html += "    <span>" + sub.name + "</span>";
+        html += "    <span class='text-[10px] text-slate-400'>" + sub.date + "</span>";
+        html += "  </div>";
+        html += "  <p class='text-slate-600 leading-relaxed text-[11px]'>" + sub.content + "</p>";
         html += "</div>";
       });
       feedbackList.innerHTML = html;
@@ -912,12 +1504,12 @@
         feedbackForm.reset();
         renderFeedbackList();
 
-        alert('感谢您的宝贵建议！您的意见已成功保存在本地浏览器缓存中。');
+        alert(uiStrings[currentLang].toast_success);
       });
     }
 
-    // Initial render
-    renderFeedbackList();
+    // --- Initial Boot ---
+    translateUI();
   </script>
 
 </body>
