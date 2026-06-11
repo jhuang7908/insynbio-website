@@ -385,6 +385,17 @@
       </div>
 
       <!-- Case Content Grid -->
+      <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm mb-6 flex flex-col md:flex-row items-center justify-between gap-4">
+        <div>
+          <h4 class="font-bold text-slate-900 text-sm">🌐 真实发布单篇网页版预览</h4>
+          <p class="text-xs text-slate-500 mt-1">我们为该案例生成了微信公众号、小红书、抖音三个平台的真实发布排版，点击右侧按钮直接打开独立网页预览。</p>
+        </div>
+        <div class="flex flex-wrap gap-2">
+          <a id="link-wechat" href="us-chinese-life-i1-wechat.html" target="_blank" class="px-4 py-2 bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-semibold rounded-lg transition shadow-sm no-underline">微信公众号单篇 ➔</a>
+          <a id="link-xhs" href="us-chinese-life-i1-xhs.html" target="_blank" class="px-4 py-2 bg-red-500 hover:bg-red-600 text-white text-xs font-semibold rounded-lg transition shadow-sm no-underline">小红书单篇 ➔</a>
+          <a id="link-douyin" href="us-chinese-life-i1-douyin.html" target="_blank" class="px-4 py-2 bg-slate-900 hover:bg-slate-800 text-white text-xs font-semibold rounded-lg transition shadow-sm no-underline">抖音视频脚本 ➔</a>
+        </div>
+      </div>
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
         
         <!-- Left Column: WeChat Mockup -->
@@ -807,6 +818,17 @@
 
       // Update XHS Redirection
       document.getElementById('xhs-redirection').textContent = data.redirection;
+
+      // Update separate HTML links dynamically
+      var keyMap = {
+        'cityticket': 'i1',
+        'esl': 'i2',
+        'fairfares': 'i3'
+      };
+      var key = keyMap[caseId];
+      document.getElementById('link-wechat').setAttribute('href', 'us-chinese-life-' + key + '-wechat.html');
+      document.getElementById('link-xhs').setAttribute('href', 'us-chinese-life-' + key + '-xhs.html');
+      document.getElementById('link-douyin').setAttribute('href', 'us-chinese-life-' + key + '-douyin.html');
     }
 
     // Bind Case Buttons
