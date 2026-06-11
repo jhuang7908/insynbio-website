@@ -189,7 +189,7 @@
     .stream-right { font-size: 11px; color: #78716c; font-weight: 600; }
     /* Collapsible module grid */
     .module-grid.collapsed { max-height: 0; overflow: hidden; margin: 0; transition: max-height 0.3s ease; }
-    .module-grid.expanded { max-height: 2000px; margin-top: 12px; }
+    .module-grid.expanded { max-height: 3000px; margin-top: 12px; }
 
     @media (max-width: 900px) {
       .search-panel { grid-template-columns: 1fr 1fr; }
@@ -298,12 +298,12 @@
       </select>
     </div>
 
-    <!-- ═══ 9 CORE CHANNELS (collapsible) ═══ -->
+    <!-- ═══ 11 CORE CHANNELS (expanded by default) ═══ -->
     <div class="section-title" style="cursor:pointer" onclick="toggleChannels()">
-      <div class="section-title-left" id="channels-title">📂 9大民生频道 · 按类别浏览</div>
-      <span id="channels-toggle" style="font-size:12px;color:#64748b;font-weight:600">展开 ▼</span>
+      <div class="section-title-left" id="channels-title">📂 11大民生频道 · 按类别浏览</div>
+      <span id="channels-toggle" style="font-size:12px;color:#64748b;font-weight:600">收起 ▲</span>
     </div>
-    <div class="module-grid collapsed" id="module-grid"></div>
+    <div class="module-grid expanded" id="module-grid"></div>
 
     <!-- ═══ ALL INFO FEED (30-day window) ═══ -->
     <div class="section-title" id="feed-section">
