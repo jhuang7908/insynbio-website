@@ -1,2275 +1,539 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>美东华人生活圈 — 官方资讯与同城分类大厅 | East Coast Chinese Life Hub</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            brand: {
-              50: '#fff7ed',
-              100: '#ffedd5',
-              500: '#f97316',
-              600: '#ea580c',
-              700: '#c2410c',
-              800: '#9a3412',
-              900: '#7c2d12',
-            }
-          },
-          fontFamily: {
-            sans: ['Inter', 'sans-serif'],
-            space: ['Space Grotesk', 'sans-serif'],
-          }
-        }
-      }
-    }
-  </script>
-  <style>
-    body {
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-      -webkit-tap-highlight-color: transparent;
-    }
-    /* Hide scrollbar for Chrome, Safari and Opera */
-    .no-scrollbar::-webkit-scrollbar {
-      display: none;
-    }
-    /* Hide scrollbar for IE, Edge and Firefox */
-    .no-scrollbar {
-      -ms-overflow-style: none;  /* IE and Edge */
-      scrollbar-width: none;  /* Firefox */
-    }
-    .active-tab-btn {
-      color: #ea580c !important;
-      border-bottom: 2px solid #ea580c !important;
-    }
-    .mobile-nav-active {
-      color: #ea580c !important;
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>美东华人生活圈 · 官方资讯 + 同城分类</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans SC', sans-serif; background:#f8fafc; }
+.row-link { display:flex; align-items:baseline; gap:6px; padding:6px 10px; border-bottom:1px solid #e2e8f0; cursor:pointer; text-decoration:none; color:inherit; }
+.row-link:hover { background:#fef3c7; }
+.row-link:active { background:#fde68a; }
+.cat-badge { display:inline-block; font-size:10px; font-weight:700; padding:1px 5px; border-radius:4px; white-space:nowrap; min-width:34px; text-align:center; }
+.price-badge { color:#b45309; font-weight:700; font-size:11px; white-space:nowrap; }
+.area-txt { color:#94a3b8; font-size:10px; white-space:nowrap; }
+.date-txt { color:#94a3b8; font-size:10px; white-space:nowrap; }
+.title-txt { flex:1; font-size:13px; font-weight:500; color:#1e293b; line-height:1.4; }
+.modal-overlay { display:none; position:fixed; inset:0; background:rgba(0,0,0,.55); z-index:9999; align-items:center; justify-content:center; padding:16px; }
+.modal-overlay.open { display:flex; }
+.modal-box { background:#fff; border-radius:16px; padding:20px; max-width:420px; width:100%; max-height:90vh; overflow-y:auto; box-shadow:0 20px 60px rgba(0,0,0,.3); }
+.filter-btn { padding:4px 10px; border-radius:20px; font-size:11px; font-weight:700; border:1px solid #e2e8f0; background:#fff; cursor:pointer; white-space:nowrap; color:#475569; }
+.filter-btn.active { background:#ea580c; color:#fff; border-color:#ea580c; }
+.section-hd { background:#1e293b; color:#fff; padding:8px 12px; display:flex; justify-content:space-between; align-items:center; border-radius:10px 10px 0 0; }
+.cl-section-hd { background:#92400e; color:#fff; padding:8px 12px; display:flex; justify-content:space-between; align-items:center; border-radius:10px 10px 0 0; }
+.section-body { background:#fff; border:1px solid #e2e8f0; border-top:none; border-radius:0 0 10px 10px; }
+.cl-cat-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:6px; padding:8px; background:#fffbeb; border-bottom:1px solid #fde68a; }
+.cl-cat-item { background:#fff; border:1px solid #fde68a; border-radius:8px; padding:6px 4px; text-align:center; cursor:pointer; }
+.cl-cat-item:hover { background:#fef3c7; }
+.cl-cat-item .icon { font-size:16px; }
+.cl-cat-item .label { font-size:10px; font-weight:700; color:#92400e; margin-top:2px; }
+.input-base { width:100%; border:1px solid #e2e8f0; border-radius:8px; padding:7px 10px; font-size:12px; outline:none; }
+.input-base:focus { border-color:#ea580c; box-shadow:0 0 0 2px rgba(234,88,12,.15); }
+.btn-primary { background:#ea580c; color:#fff; border:none; border-radius:8px; padding:9px 16px; font-size:13px; font-weight:700; cursor:pointer; width:100%; }
+.btn-primary:hover { background:#c2410c; }
+.btn-sec { background:#f1f5f9; color:#475569; border:none; border-radius:8px; padding:9px 16px; font-size:13px; font-weight:700; cursor:pointer; width:100%; }
+.auth-tab { flex:1; padding:8px; text-align:center; font-size:12px; font-weight:700; color:#94a3b8; border-bottom:2px solid transparent; cursor:pointer; }
+.auth-tab.active { color:#ea580c; border-bottom-color:#ea580c; }
+</style>
 </head>
-<body class="bg-slate-50 text-slate-800 antialiased flex flex-col min-h-screen pb-16 md:pb-0">
+<body class="pb-16">
 
-  <!-- ===== TOP HEADER (Desktop & Mobile) ===== -->
-  <header class="bg-white border-b border-slate-200 sticky top-0 z-50 shadow-sm">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-14 md:h-16 flex items-center justify-between">
-      <div class="flex items-center gap-2 md:gap-3">
-        <!-- Logo -->
-        <div class="w-8 h-8 md:w-10 md:h-10 rounded-lg md:rounded-xl bg-gradient-to-br from-brand-500 to-brand-700 flex items-center justify-center text-white font-bold text-lg md:text-xl shadow-md shadow-brand-500/20">
-          圈
+<!-- ═══ TOP HEADER ═══ -->
+<header style="background:#fff;border-bottom:1px solid #e2e8f0;position:sticky;top:0;z-index:100;box-shadow:0 1px 3px rgba(0,0,0,.08);">
+  <div style="max-width:720px;margin:0 auto;padding:0 12px;height:48px;display:flex;align-items:center;justify-content:space-between;">
+    <div style="display:flex;align-items:center;gap:8px;">
+      <div style="width:32px;height:32px;border-radius:8px;background:linear-gradient(135deg,#f97316,#c2410c);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:900;font-size:16px;">圈</div>
+      <div>
+        <div style="font-size:13px;font-weight:800;color:#0f172a;">美东华人生活圈</div>
+        <div style="font-size:9px;color:#94a3b8;font-weight:600;">官方民生资讯 · 同城分类广告</div>
+      </div>
+    </div>
+    <div style="display:flex;align-items:center;gap:8px;">
+      <select id="lang-sel" onchange="changeLang(this.value)" style="border:1px solid #e2e8f0;border-radius:6px;padding:3px 6px;font-size:11px;font-weight:700;background:#f8fafc;color:#475569;outline:none;">
+        <option value="zh">简体</option>
+        <option value="zht">繁體</option>
+        <option value="en">EN</option>
+      </select>
+      <button onclick="openAccountModal()" style="background:#f1f5f9;border:1px solid #e2e8f0;border-radius:6px;padding:4px 10px;font-size:11px;font-weight:700;color:#475569;cursor:pointer;" id="nav-login-btn">👤 登录/认证</button>
+    </div>
+  </div>
+</header>
+
+<!-- ═══ SEARCH + CITY FILTER ═══ -->
+<div style="max-width:720px;margin:10px auto;padding:0 10px;">
+  <div style="background:#fff;border:1px solid #e2e8f0;border-radius:10px;padding:8px 10px;display:flex;gap:8px;align-items:center;">
+    <span style="color:#94a3b8;font-size:14px;">🔍</span>
+    <input type="text" id="search-box" placeholder="搜索福利、租房、招聘、活动..." oninput="applyFilters()" style="flex:1;border:none;outline:none;font-size:13px;color:#1e293b;" />
+    <select id="city-sel" onchange="applyFilters()" style="border:1px solid #e2e8f0;border-radius:6px;padding:3px 6px;font-size:11px;font-weight:700;background:#f8fafc;color:#475569;outline:none;">
+      <option value="all">所有城市</option>
+      <option value="纽约" selected>纽约 NY</option>
+      <option value="波士顿">波士顿 BOS</option>
+      <option value="洛杉矶">洛杉矶 LA</option>
+    </select>
+  </div>
+</div>
+
+<!-- ═══ SECTION 1: 官方资讯 ═══ -->
+<div style="max-width:720px;margin:0 auto 16px;padding:0 10px;" id="sec-official">
+  <div class="section-hd">
+    <div style="display:flex;align-items:center;gap:6px;">
+      <span style="font-size:14px;">📰</span>
+      <span style="font-size:13px;font-weight:800;">官方民生精选 · Verified Public Feed</span>
+    </div>
+    <span style="font-size:10px;background:#ea580c;padding:2px 7px;border-radius:4px;font-weight:700;">每日更新</span>
+  </div>
+  <!-- Category filter bar -->
+  <div style="background:#f8fafc;border:1px solid #e2e8f0;border-top:none;padding:8px 8px 4px;display:flex;gap:5px;overflow-x:auto;flex-wrap:nowrap;" id="official-cats">
+    <button class="filter-btn active" onclick="filterOfficial('all',this)">全部</button>
+    <button class="filter-btn" onclick="filterOfficial('福利',this)">💚 福利</button>
+    <button class="filter-btn" onclick="filterOfficial('交通',this)">🚇 交通</button>
+    <button class="filter-btn" onclick="filterOfficial('教育',this)">📚 教育</button>
+    <button class="filter-btn" onclick="filterOfficial('安全',this)">🚨 安全</button>
+    <button class="filter-btn" onclick="filterOfficial('市政',this)">🏛️ 市政</button>
+    <button class="filter-btn" onclick="filterOfficial('亲子',this)">🌳 亲子</button>
+    <button class="filter-btn" onclick="filterOfficial('文化',this)">🎨 文化</button>
+    <button class="filter-btn" onclick="filterOfficial('公益',this)">🤝 公益</button>
+    <button class="filter-btn" onclick="filterOfficial('促销',this)">🛒 促销</button>
+  </div>
+  <div class="section-body" id="official-list">
+    <!-- rows injected by JS -->
+  </div>
+  <div style="padding:6px 10px;border:1px solid #e2e8f0;border-top:none;border-radius:0 0 10px 10px;background:#f8fafc;">
+    <span style="font-size:10px;color:#94a3b8;" id="official-count"></span>
+  </div>
+</div>
+
+<!-- ═══ SECTION 2: 同城分类 ═══ -->
+<div style="max-width:720px;margin:0 auto 80px;padding:0 10px;" id="sec-classifieds">
+  <div class="cl-section-hd">
+    <div style="display:flex;align-items:center;gap:6px;">
+      <span style="font-size:14px;">🤝</span>
+      <span style="font-size:13px;font-weight:800;">同城分类大厅 · Local Classifieds</span>
+    </div>
+    <button onclick="openPostModal()" style="background:#1e293b;border:none;color:#fbbf24;font-size:11px;font-weight:700;padding:3px 10px;border-radius:5px;cursor:pointer;">➕ 发布信息</button>
+  </div>
+  <!-- Craigslist-style category directory -->
+  <div class="cl-cat-grid">
+    <div class="cl-cat-item" onclick="filterCL('all')">
+      <div class="icon">📋</div>
+      <div class="label">全部</div>
+    </div>
+    <div class="cl-cat-item" onclick="filterCL('房屋出租')">
+      <div class="icon">🏠</div>
+      <div class="label">房屋租售</div>
+    </div>
+    <div class="cl-cat-item" onclick="filterCL('求职招聘')">
+      <div class="icon">💼</div>
+      <div class="label">求职招聘</div>
+    </div>
+    <div class="cl-cat-item" onclick="filterCL('二手闲置')">
+      <div class="icon">🛒</div>
+      <div class="label">二手闲置</div>
+    </div>
+    <div class="cl-cat-item" onclick="filterCL('生意转让')">
+      <div class="icon">📈</div>
+      <div class="label">生意转让</div>
+    </div>
+    <div class="cl-cat-item" onclick="openPostModal()">
+      <div class="icon">📝</div>
+      <div class="label">我要发布</div>
+    </div>
+    <div class="cl-cat-item" onclick="openAccountModal()">
+      <div class="icon">👤</div>
+      <div class="label">注册认证</div>
+    </div>
+    <div class="cl-cat-item" onclick="openAccountModal()">
+      <div class="icon">💳</div>
+      <div class="label">会员支付</div>
+    </div>
+  </div>
+  <div class="section-body" style="border-radius:0 0 10px 10px;" id="cl-list">
+    <!-- rows injected by JS -->
+  </div>
+  <div style="padding:6px 10px;border:1px solid #e2e8f0;border-top:none;border-radius:0 0 10px 10px;background:#fffbeb;">
+    <span style="font-size:10px;color:#92400e;font-weight:600;" id="cl-count"></span>
+    <span style="font-size:10px;color:#94a3b8;margin-left:8px;">付费发布 · 人工审核 · 防虚假中介</span>
+  </div>
+</div>
+
+<!-- ═══ STICKY BOTTOM NAV (mobile) ═══ -->
+<div style="position:fixed;bottom:0;left:0;right:0;background:#fff;border-top:1px solid #e2e8f0;height:52px;display:flex;justify-content:space-around;align-items:center;z-index:200;box-shadow:0 -2px 8px rgba(0,0,0,.08);">
+  <button onclick="scrollToSection('sec-official')" style="display:flex;flex-direction:column;align-items:center;gap:1px;background:none;border:none;color:#64748b;cursor:pointer;font-size:9px;font-weight:700;">
+    <span style="font-size:18px;">📰</span>官方资讯
+  </button>
+  <button onclick="scrollToSection('sec-classifieds')" style="display:flex;flex-direction:column;align-items:center;gap:1px;background:none;border:none;color:#64748b;cursor:pointer;font-size:9px;font-weight:700;">
+    <span style="font-size:18px;">🤝</span>同城分类
+  </button>
+  <button onclick="openPostModal()" style="display:flex;flex-direction:column;align-items:center;gap:1px;background:none;border:none;cursor:pointer;font-size:9px;font-weight:700;">
+    <span style="font-size:22px;line-height:1;">➕</span>
+    <span style="background:#ea580c;color:#fff;border-radius:4px;padding:1px 5px;">发布信息</span>
+  </button>
+  <button onclick="openAccountModal()" style="display:flex;flex-direction:column;align-items:center;gap:1px;background:none;border:none;color:#64748b;cursor:pointer;font-size:9px;font-weight:700;">
+    <span style="font-size:18px;">👤</span>我的账户
+  </button>
+</div>
+
+<!-- ═══ MODAL: Smart Link ═══ -->
+<div id="modal-link" class="modal-overlay">
+  <div class="modal-box">
+    <div style="font-size:14px;font-weight:800;color:#0f172a;margin-bottom:8px;">请选择打开方式</div>
+    <p style="font-size:12px;color:#64748b;margin-bottom:16px;">官方原页为英文。推荐通过智能翻译通道阅读中文版。</p>
+    <a id="link-trans" href="#" target="_blank" onclick="closeModal('modal-link')" class="btn-primary" style="display:block;text-align:center;text-decoration:none;margin-bottom:8px;">🌐 打开智能中文翻译网页</a>
+    <a id="link-raw" href="#" target="_blank" onclick="closeModal('modal-link')" class="btn-sec" style="display:block;text-align:center;text-decoration:none;margin-bottom:8px;">打开官方英文原网页</a>
+    <button onclick="closeModal('modal-link')" class="btn-sec" style="margin-top:4px;">取消</button>
+  </div>
+</div>
+
+<!-- ═══ MODAL: Contact ═══ -->
+<div id="modal-contact" class="modal-overlay">
+  <div class="modal-box">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;">
+      <div style="font-size:14px;font-weight:800;color:#0f172a;">联系发布人</div>
+      <button onclick="closeModal('modal-contact')" style="background:none;border:none;font-size:20px;color:#94a3b8;cursor:pointer;">✕</button>
+    </div>
+    <p style="font-size:11px;color:#64748b;margin-bottom:14px;">请通过以下方式联系，联系时请说明来自「美东华人生活圈」。</p>
+    <div style="background:#f8fafc;border-radius:10px;padding:12px;font-size:13px;line-height:2;">
+      <div style="display:flex;justify-content:space-between;border-bottom:1px solid #e2e8f0;padding-bottom:8px;margin-bottom:8px;">
+        <span style="color:#64748b;">发布人</span>
+        <strong id="ct-person" style="color:#0f172a;">-</strong>
+      </div>
+      <div style="display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #e2e8f0;padding-bottom:8px;margin-bottom:8px;">
+        <span style="color:#64748b;">微信 (WeChat)</span>
+        <div style="display:flex;align-items:center;gap:8px;">
+          <strong id="ct-wechat" style="color:#0f172a;">-</strong>
+          <button onclick="doCopy(document.getElementById('ct-wechat').textContent)" style="background:#e2e8f0;border:none;border-radius:4px;padding:2px 8px;font-size:10px;font-weight:700;cursor:pointer;">复制</button>
+        </div>
+      </div>
+      <div style="display:flex;justify-content:space-between;align-items:center;">
+        <span style="color:#64748b;">电话 (Phone)</span>
+        <a id="ct-phone" href="#" style="color:#ea580c;font-weight:700;text-decoration:none;">-</a>
+      </div>
+    </div>
+    <button onclick="closeModal('modal-contact')" class="btn-sec" style="margin-top:14px;">关闭</button>
+  </div>
+</div>
+
+<!-- ═══ MODAL: Post Ad ═══ -->
+<div id="modal-post" class="modal-overlay">
+  <div class="modal-box">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;">
+      <div style="font-size:14px;font-weight:800;color:#0f172a;">📝 发布分类信息</div>
+      <button onclick="closeModal('modal-post')" style="background:none;border:none;font-size:20px;color:#94a3b8;cursor:pointer;">✕</button>
+    </div>
+    <p style="font-size:11px;color:#64748b;margin-bottom:14px;">「付费发布 + 人工审核」机制，杜绝虚假广告。支持 Stripe 信用卡 / 微信支付 / 支付宝。</p>
+    <form id="post-form" onsubmit="submitAd(event)">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:8px;">
+        <div>
+          <label style="font-size:10px;font-weight:700;color:#475569;display:block;margin-bottom:4px;">分类 *</label>
+          <select id="f-cat" required class="input-base">
+            <option value="房屋出租">🏠 房屋出租 $5/月</option>
+            <option value="求职招聘">💼 求职招聘 $5/月</option>
+            <option value="二手闲置">🛒 二手闲置 $2/月</option>
+            <option value="生意转让">📈 生意转让 $10/月</option>
+          </select>
         </div>
         <div>
-          <h1 class="text-xs md:text-base font-bold text-slate-900 leading-tight" id="ui-brand-title">美东华人生活圈</h1>
-          <p class="text-[8px] md:text-[9px] text-slate-400 font-semibold uppercase tracking-wider" id="ui-brand-sub">官方民生资讯 · 同城分类广告 · 智能双语对照</p>
+          <label style="font-size:10px;font-weight:700;color:#475569;display:block;margin-bottom:4px;">城市 *</label>
+          <select id="f-city" required class="input-base">
+            <option value="纽约">纽约 (New York)</option>
+            <option value="波士顿">波士顿 (Boston)</option>
+            <option value="洛杉矶">洛杉矶 (Los Angeles)</option>
+          </select>
         </div>
       </div>
-      
-      <!-- Navigation & Language Switcher -->
-      <div class="flex items-center gap-2 md:gap-4">
-        <!-- Language Switcher Dropdown -->
-        <select id="lang-switcher" class="px-2 py-1 border border-slate-200 rounded-lg text-[10px] md:text-xs font-bold text-slate-700 bg-slate-50 focus:outline-none focus:ring-2 focus:ring-brand-500 cursor-pointer">
-          <option value="zh">简体</option>
-          <option value="zht">繁體</option>
-          <option value="en">EN</option>
-        </select>
-
-        <!-- Desktop Action Buttons -->
-        <div class="hidden md:flex items-center gap-2">
-          <a href="us-chinese-life-plan.html" class="px-3 py-1.5 text-xs font-bold text-slate-600 bg-slate-100 hover:bg-slate-200 rounded-lg transition no-underline" id="ui-btn-plan">返回规划案</a>
-          <button onclick="openPostAdModal()" class="px-4 py-2 text-xs font-bold text-white bg-brand-600 hover:bg-brand-700 rounded-lg transition shadow-md shadow-brand-600/10" id="ui-btn-feedback">发布信息</button>
-        </div>
-        
-        <!-- User Profile Button (Mock Login) -->
-        <button onclick="openAccountModal()" class="flex items-center gap-1 px-2 py-1 border border-slate-200 hover:bg-slate-50 rounded-lg text-[10px] md:text-xs font-bold text-slate-600 transition">
-          👤 <span id="nav-user-status">登录 / 认证</span>
-        </button>
+      <div style="margin-bottom:8px;">
+        <label style="font-size:10px;font-weight:700;color:#475569;display:block;margin-bottom:4px;">标题 *</label>
+        <input type="text" id="f-title" required placeholder="例：法拉盛中心 单房出租 近地铁" class="input-base" />
       </div>
-    </div>
-  </header>
-
-  <!-- ===== MOBILE NAVIGATION TABS (Top of Page) ===== -->
-  <div class="bg-white border-b border-slate-200 sticky top-14 z-40 md:hidden flex justify-around text-xs font-bold text-slate-500">
-    <button onclick="switchMobileSection('official')" id="btn-tab-official" class="flex-1 py-3 text-center border-b-2 border-transparent active-tab-btn">📰 官方资讯</button>
-    <button onclick="switchMobileSection('classifieds')" id="btn-tab-classifieds" class="flex-1 py-3 text-center border-b-2 border-transparent">🤝 同城分类</button>
-  </div>
-
-  <!-- ===== MAIN GRID CONTAINER (Desktop: Side-by-Side, Mobile: Tabbed/Stacked) ===== -->
-  <main class="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8 py-4 flex-1 flex flex-col gap-4">
-    
-    <!-- Search Bar & City Selector (High Density) -->
-    <div class="bg-white p-3 md:p-4 rounded-xl border border-slate-200 shadow-sm flex flex-col md:flex-row gap-2">
-      <div class="relative flex-1">
-        <input type="text" id="search-input" placeholder="搜索福利、活动、租房、二手、生意转让、招聘或区域..." class="w-full pl-8 pr-4 py-2 border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-500 text-xs md:text-sm">
-        <span class="absolute left-2.5 top-2.5 text-slate-400 text-xs">🔍</span>
-      </div>
-      <div class="flex gap-2">
-        <!-- City Selector (Craigslist Style) -->
-        <select id="city-filter" class="flex-1 md:flex-initial px-3 py-2 border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-500 text-xs text-slate-600 bg-white cursor-pointer font-semibold">
-          <option value="all">📍 所有城市 (All Cities)</option>
-          <option value="纽约" selected>纽约 (New York)</option>
-          <option value="波士顿">波士顿 (Boston)</option>
-          <option value="洛杉矶">洛杉矶 (Los Angeles)</option>
-        </select>
-        <!-- Borough/Area Selector -->
-        <select id="borough-filter" class="flex-1 md:flex-initial px-3 py-2 border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-500 text-xs text-slate-600 bg-white cursor-pointer font-semibold">
-          <option value="all">🗺️ 所有区域 (All Areas)</option>
-          <option value="全市" id="opt-boro-citywide">纽约全市 (Citywide)</option>
-          <option value="皇后区" id="opt-boro-queens">皇后区 (Queens)</option>
-          <option value="布鲁克林" id="opt-boro-brooklyn">布鲁克林 (Brooklyn)</option>
-          <option value="曼哈顿" id="opt-boro-manhattan">曼哈顿 (Manhattan)</option>
-        </select>
-      </div>
-    </div>
-
-    <!-- Dual Column Layout for Desktop, Tab-controlled for Mobile -->
-    <div class="grid grid-cols-1 lg:grid-cols-12 gap-4">
-      
-      <!-- LEFT COLUMN: OFFICIAL PUBLIC INFO FEED (lg:col-span-5) -->
-      <section id="sec-official" class="lg:col-span-5 flex flex-col gap-3">
-        <div class="bg-slate-900 text-white p-3 rounded-xl flex justify-between items-center shadow-sm">
-          <div class="flex items-center gap-1.5">
-            <span class="text-sm">📰</span>
-            <h3 class="font-bold text-xs md:text-sm uppercase tracking-wider">官方民生精选 (Verified Public Feed)</h3>
-          </div>
-          <span class="text-[10px] bg-brand-600 px-2 py-0.5 rounded font-bold">每日更新</span>
-        </div>
-
-        <!-- Category Horizontal Scrollbar (High Density) -->
-        <div class="flex gap-1 overflow-x-auto no-scrollbar pb-1" id="official-category-filters">
-          <!-- Dynamic Category Buttons will be injected here -->
-        </div>
-
-        <!-- High Density Official Feed List -->
-        <div class="flex flex-col gap-2 max-h-[75vh] overflow-y-auto pr-1" id="official-feed-list">
-          <!-- Dynamic compact list items will be injected here -->
-        </div>
-      </section>
-
-      <!-- RIGHT COLUMN: CRAIGSLIST/WENXUECITY STYLE CLASSIFIEDS DIRECTORY (lg:col-span-7) -->
-      <section id="sec-classifieds" class="lg:col-span-7 flex flex-col gap-3 hidden lg:flex">
-        <div class="bg-amber-600 text-white p-3 rounded-xl flex justify-between items-center shadow-sm">
-          <div class="flex items-center gap-1.5">
-            <span class="text-sm">🤝</span>
-            <h3 class="font-bold text-xs md:text-sm uppercase tracking-wider">同城分类大厅 (Local Classifieds)</h3>
-          </div>
-          <button onclick="openPostAdModal()" class="text-[10px] bg-slate-900 hover:bg-slate-800 text-white px-2 py-1 rounded font-bold transition">➕ 免费/付费发布</button>
-        </div>
-
-        <!-- Craigslist Style Category Directory Grid (High Density) -->
-        <div class="bg-white p-3 rounded-xl border border-slate-200 shadow-sm grid grid-cols-2 sm:grid-cols-4 gap-2 text-xs">
-          <div class="p-2 bg-amber-50/50 rounded-lg border border-amber-100/60">
-            <h4 class="font-bold text-amber-800 mb-1 flex items-center gap-1">🏠 房屋租售</h4>
-            <ul class="space-y-1 text-slate-600 pl-1">
-              <li><button onclick="filterClassifieds('房屋出租')" class="hover:text-brand-600 hover:underline">房屋出租</button></li>
-              <li><button onclick="filterClassifieds('单房分租')" class="hover:text-brand-600 hover:underline">单房分租</button></li>
-              <li><button onclick="filterClassifieds('商铺转让')" class="hover:text-brand-600 hover:underline">商铺写字楼</button></li>
-            </ul>
-          </div>
-          <div class="p-2 bg-amber-50/50 rounded-lg border border-amber-100/60">
-            <h4 class="font-bold text-amber-800 mb-1 flex items-center gap-1">💼 求职招聘</h4>
-            <ul class="space-y-1 text-slate-600 pl-1">
-              <li><button onclick="filterClassifieds('求职招聘')" class="hover:text-brand-600 hover:underline">餐馆直聘</button></li>
-              <li><button onclick="filterClassifieds('求职招聘')" class="hover:text-brand-600 hover:underline">诊所/办公室</button></li>
-              <li><button onclick="filterClassifieds('求职招聘')" class="hover:text-brand-600 hover:underline">家政/司机</button></li>
-            </ul>
-          </div>
-          <div class="p-2 bg-amber-50/50 rounded-lg border border-amber-100/60">
-            <h4 class="font-bold text-amber-800 mb-1 flex items-center gap-1">🛒 二手闲置</h4>
-            <ul class="space-y-1 text-slate-600 pl-1">
-              <li><button onclick="filterClassifieds('二手闲置')" class="hover:text-brand-600 hover:underline">数码电子</button></li>
-              <li><button onclick="filterClassifieds('二手闲置')" class="hover:text-brand-600 hover:underline">家具家电</button></li>
-              <li><button onclick="filterClassifieds('二手闲置')" class="hover:text-brand-600 hover:underline">二手汽车</button></li>
-            </ul>
-          </div>
-          <div class="p-2 bg-amber-50/50 rounded-lg border border-amber-100/60">
-            <h4 class="font-bold text-amber-800 mb-1 flex items-center gap-1">📈 生意转让</h4>
-            <ul class="space-y-1 text-slate-600 pl-1">
-              <li><button onclick="filterClassifieds('生意转让')" class="hover:text-brand-600 hover:underline">奶茶甜品店</button></li>
-              <li><button onclick="filterClassifieds('生意转让')" class="hover:text-brand-600 hover:underline">美甲美容院</button></li>
-              <li><button onclick="filterClassifieds('生意转让')" class="hover:text-brand-600 hover:underline">中餐馆/外卖</button></li>
-            </ul>
-          </div>
-        </div>
-
-        <!-- Classifieds Listings Grid (High Density) -->
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3" id="classifieds-list">
-          <!-- Dynamic classified cards will be injected here -->
-        </div>
-      </section>
-
-    </div>
-
-    <!-- ===== ABOUT US SECTION (Compact) ===== -->
-    <section class="bg-white rounded-xl border border-slate-200 p-4 shadow-sm" id="about">
-      <div class="max-w-3xl mx-auto text-center space-y-3">
-        <h3 class="text-sm font-bold text-slate-900" id="ui-about-title">关于美东华人生活圈</h3>
-        <p class="text-[11px] text-slate-500 leading-relaxed" id="ui-about-p1">
-          在美东生活，及时获取官方资讯是保障切身权益、享受公共福利的关键。然而，散落在各大政府网站、公共图书馆和社区机构的英文公告繁多，逐个检索费时费力。
-        </p>
-        <p class="text-[11px] text-slate-500 leading-relaxed hidden md:block" id="ui-about-p2">
-          「美东华人生活圈」坚持「100% 官方真实、100% 干净无噪、100% 免费公益」的原则，通过技术手段智能聚合最新资讯，并提供保姆级中文重写。更重要的是，我们集成了智能网页翻译通道，让您在点击官方链接时，能直接阅读经过翻译的中文官方网页，彻底消除信息获取门槛。
-        </p>
-        <div class="flex justify-center gap-4 text-[10px] text-slate-400 font-semibold">
-          <span id="ui-about-tag1">🛡️ 官方数据源核实</span>
-          <span id="ui-about-tag2">🚫 绝无虚假广告</span>
-          <span id="ui-about-tag3">🤝 纯粹公益民生</span>
-        </div>
-      </div>
-    </section>
-
-  </main>
-
-  <!-- ===== STICKY BOTTOM NAVIGATION BAR FOR EXTREME MOBILE OPTIMIZATION ===== -->
-  <div class="fixed bottom-0 left-0 right-0 bg-white border-t border-slate-200 h-14 md:hidden flex justify-around items-center z-50 shadow-lg">
-    <button onclick="switchMobileSection('official')" class="flex flex-col items-center gap-0.5 text-slate-400 active:text-brand-600" id="m-nav-official">
-      <span class="text-lg">📰</span>
-      <span class="text-[9px] font-bold">官方资讯</span>
-    </button>
-    <button onclick="switchMobileSection('classifieds')" class="flex flex-col items-center gap-0.5 text-slate-400" id="m-nav-classifieds">
-      <span class="text-lg">🤝</span>
-      <span class="text-[9px] font-bold">同城分类</span>
-    </button>
-    <button onclick="openPostAdModal()" class="flex flex-col items-center gap-0.5 text-slate-400">
-      <span class="text-lg">➕</span>
-      <span class="text-[9px] font-bold">发布信息</span>
-    </button>
-    <button onclick="openAccountModal()" class="flex flex-col items-center gap-0.5 text-slate-400" id="m-nav-account">
-      <span class="text-lg">👤</span>
-      <span class="text-[9px] font-bold">我的账户</span>
-    </button>
-  </div>
-
-  <!-- ===== SMART LINK MODAL ===== -->
-  <div id="link-modal" class="fixed inset-0 bg-black/60 backdrop-filter backdrop-blur-sm hidden items-center justify-center z-[9999] p-4">
-    <div class="bg-white rounded-2xl max-w-md w-full p-6 shadow-xl border border-slate-100 space-y-4">
-      <h4 class="font-bold text-slate-900 text-base" id="modal-title">请选择打开链接的方式：</h4>
-      <p class="text-xs text-slate-500 leading-relaxed" id="modal-desc">官方原网页为英文。我们为您提供了智能翻译通道，可直接打开中文翻译版网页。</p>
-      <div class="flex flex-col gap-2 pt-2">
-        <a id="modal-link-trans" href="#" target="_blank" class="w-full text-center py-3 bg-brand-600 hover:bg-brand-700 text-white text-xs font-bold rounded-xl transition shadow-md shadow-brand-600/10 no-underline">
-          打开智能翻译网页（中文）
-        </a>
-        <a id="modal-link-raw" href="#" target="_blank" class="w-full text-center py-3 bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold rounded-xl transition no-underline">
-          打开官方英文原网页
-        </a>
-      </div>
-      <div class="flex justify-end pt-2">
-        <button id="modal-cancel-btn" class="px-4 py-2 text-xs font-semibold text-slate-400 hover:text-slate-600 transition">取消</button>
-      </div>
-    </div>
-  </div>
-
-  <!-- ===== POST AD MODAL (CLASSIFIEDS REGISTRATION & PAYMENT FLOW) ===== -->
-  <div id="post-ad-modal" class="fixed inset-0 bg-black/60 backdrop-filter backdrop-blur-sm hidden items-center justify-center z-[9999] p-4">
-    <div class="bg-white rounded-2xl max-w-lg w-full p-5 shadow-xl border border-slate-100 space-y-4 overflow-y-auto max-h-[90vh]">
-      <div class="flex justify-between items-start">
-        <h4 class="font-bold text-slate-900 text-base" id="post-modal-title">发布分类信息 (Post Classified Ad)</h4>
-        <button onclick="closePostAdModal()" class="text-slate-400 hover:text-slate-600 text-xl font-bold">&times;</button>
-      </div>
-      <p class="text-[11px] text-slate-500 leading-relaxed" id="post-modal-desc">
-        为了杜绝虚假中介、欺诈广告，保障社区生态健康，「美东华人生活圈」采用「付费发布 + 人工审核」机制。所有个人和商家信息需交纳小额费用后发布，支持置顶推广。
-      </p>
-      
-      <!-- Interactive Ad Form -->
-      <form id="ad-post-form" class="space-y-3" onsubmit="handleAdSubmit(event)">
-        <div class="grid grid-cols-2 gap-2">
-          <div>
-            <label class="block text-[10px] font-bold text-slate-700 mb-1">选择分类 *</label>
-            <select id="form-category" required class="w-full px-2 py-1.5 border border-slate-200 rounded-lg text-xs bg-white">
-              <option value="房屋出租">🏠 房屋出租 ($5/月)</option>
-              <option value="求职招聘">💼 求职招聘 ($5/月)</option>
-              <option value="二手闲置">🛒 二手闲置 ($2/月)</option>
-              <option value="生意转让">📈 生意转让 ($10/月)</option>
-            </select>
-          </div>
-          <div>
-            <label class="block text-[10px] font-bold text-slate-700 mb-1">选择城市 *</label>
-            <select id="form-city" required class="w-full px-2 py-1.5 border border-slate-200 rounded-lg text-xs bg-white">
-              <option value="纽约">纽约 (New York)</option>
-              <option value="波士顿">波士顿 (Boston)</option>
-              <option value="洛杉矶">洛杉矶 (Los Angeles)</option>
-            </select>
-          </div>
-        </div>
-        
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:8px;">
         <div>
-          <label class="block text-[10px] font-bold text-slate-700 mb-1">广告标题 *</label>
-          <input type="text" id="form-title" required placeholder="例如：法拉盛中心全新公寓单房出租" class="w-full px-2 py-1.5 border border-slate-200 rounded-lg text-xs focus:outline-none focus:ring-2 focus:ring-brand-500">
-        </div>
-
-        <div>
-          <label class="block text-[10px] font-bold text-slate-700 mb-1">详细描述 *</label>
-          <textarea id="form-desc" required rows="3" placeholder="请详细描述您的出租房源、转让生意或招聘要求..." class="w-full px-2 py-1.5 border border-slate-200 rounded-lg text-xs focus:outline-none focus:ring-2 focus:ring-brand-500"></textarea>
-        </div>
-
-        <div class="grid grid-cols-2 gap-2">
-          <div>
-            <label class="block text-[10px] font-bold text-slate-700 mb-1">价格 / 薪资 *</label>
-            <input type="text" id="form-price" required placeholder="例如：$950/月 或 $20/小时" class="w-full px-2 py-1.5 border border-slate-200 rounded-lg text-xs focus:outline-none focus:ring-2 focus:ring-brand-500">
-          </div>
-          <div>
-            <label class="block text-[10px] font-bold text-slate-700 mb-1">具体区域 *</label>
-            <input type="text" id="form-borough" required placeholder="例如：法拉盛、Malden、罗兰岗" class="w-full px-2 py-1.5 border border-slate-200 rounded-lg text-xs focus:outline-none focus:ring-2 focus:ring-brand-500">
-          </div>
-        </div>
-
-        <div class="grid grid-cols-3 gap-2">
-          <div>
-            <label class="block text-[10px] font-bold text-slate-700 mb-1">联系人 *</label>
-            <input type="text" id="form-contact-person" required placeholder="李女士" class="w-full px-2 py-1.5 border border-slate-200 rounded-lg text-xs focus:outline-none focus:ring-2 focus:ring-brand-500">
-          </div>
-          <div>
-            <label class="block text-[10px] font-bold text-slate-700 mb-1">微信 (WeChat)</label>
-            <input type="text" id="form-wechat" placeholder="wx_id" class="w-full px-2 py-1.5 border border-slate-200 rounded-lg text-xs focus:outline-none focus:ring-2 focus:ring-brand-500">
-          </div>
-          <div>
-            <label class="block text-[10px] font-bold text-slate-700 mb-1">电话 *</label>
-            <input type="tel" id="form-phone" required placeholder="917-555-0100" class="w-full px-2 py-1.5 border border-slate-200 rounded-lg text-xs focus:outline-none focus:ring-2 focus:ring-brand-500">
-          </div>
-        </div>
-
-        <!-- Payment Selection (Stripe / WeChat Pay) -->
-        <div class="bg-slate-50 p-3 rounded-xl border border-slate-100 space-y-2">
-          <label class="block text-[10px] font-bold text-slate-700">选择支付方式 (Select Payment Method)</label>
-          <div class="grid grid-cols-2 gap-2">
-            <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-brand-500 transition">
-              <input type="radio" name="payment_method" value="wechat" checked class="text-brand-600 focus:ring-brand-500">
-              <span class="text-xs font-semibold flex items-center gap-1">🟢 微信支付 (WeChat)</span>
-            </label>
-            <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-brand-500 transition">
-              <input type="radio" name="payment_method" value="stripe" class="text-brand-600 focus:ring-brand-500">
-              <span class="text-xs font-semibold flex items-center gap-1">💳 信用卡 (Stripe)</span>
-            </label>
-          </div>
-        </div>
-
-        <div class="flex flex-col gap-2 pt-2">
-          <button type="submit" class="w-full text-center py-2.5 bg-brand-600 hover:bg-brand-700 text-white text-xs font-bold rounded-xl transition shadow-md shadow-brand-600/10">
-            确认并在线支付 (Stripe / 微信) ➔
-          </button>
-          <button type="button" onclick="closePostAdModal()" class="w-full text-center py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-semibold rounded-xl transition">
-            取消
-          </button>
-        </div>
-      </form>
-    </div>
-  </div>
-
-  <!-- ===== CONTACT PUBLISHER MODAL ===== -->
-  <div id="contact-modal" class="fixed inset-0 bg-black/60 backdrop-filter backdrop-blur-sm hidden items-center justify-center z-[9999] p-4">
-    <div class="bg-white rounded-2xl max-w-md w-full p-6 shadow-xl border border-slate-100 space-y-4">
-      <div class="flex justify-between items-start">
-        <h4 class="font-bold text-slate-900 text-base" id="contact-modal-title">联系发布人信息</h4>
-        <button onclick="closeContactModal()" class="text-slate-400 hover:text-slate-600 text-xl font-bold">&times;</button>
-      </div>
-      <p class="text-xs text-slate-500 leading-relaxed" id="contact-modal-desc">为了保障隐私，请通过以下方式直接联系发布人。联系时请说明来自「美东华人生活圈」。</p>
-      
-      <div class="bg-slate-50 p-4 rounded-xl border border-slate-100 space-y-3 text-xs text-slate-700">
-        <div class="flex justify-between items-center py-1 border-b border-slate-200/60">
-          <span class="text-slate-400 font-medium" id="lbl-contact-person">发布人</span>
-          <strong class="text-slate-900 font-bold" id="val-contact-person">-</strong>
-        </div>
-        <div class="flex justify-between items-center py-1 border-b border-slate-200/60">
-          <span class="text-slate-400 font-medium" id="lbl-wechat">微信 (WeChat)</span>
-          <div class="flex items-center gap-2">
-            <strong class="text-slate-900 font-bold" id="val-wechat">-</strong>
-            <button onclick="copyWeChat()" class="px-2 py-0.5 bg-slate-200 hover:bg-slate-300 text-slate-600 text-[10px] font-bold rounded transition">复制</button>
-          </div>
-        </div>
-        <div class="flex justify-between items-center py-1">
-          <span class="text-slate-400 font-medium" id="lbl-phone">电话 (Phone)</span>
-          <a href="#" id="val-phone-link" class="text-brand-600 hover:text-brand-700 font-bold no-underline">-</a>
-        </div>
-      </div>
-
-      <div class="flex justify-end pt-2">
-        <button onclick="closeContactModal()" class="px-4 py-2 text-xs font-semibold text-slate-400 hover:text-slate-600 transition" id="btn-contact-close">关闭</button>
-      </div>
-    </div>
-  </div>
-
-  <!-- ===== ACCOUNT LOGIN & VERIFICATION MODAL ===== -->
-  <div id="account-modal" class="fixed inset-0 bg-black/60 backdrop-filter backdrop-blur-sm hidden items-center justify-center z-[9999] p-4">
-    <div class="bg-white rounded-2xl max-w-md w-full p-5 shadow-xl border border-slate-100 space-y-4">
-      <div class="flex justify-between items-start">
-        <h4 class="font-bold text-slate-900 text-base">👤 用户注册与认证中心</h4>
-        <button onclick="closeAccountModal()" class="text-slate-400 hover:text-slate-600 text-xl font-bold">&times;</button>
-      </div>
-      <p class="text-xs text-slate-500 leading-relaxed">
-        为了保障平台信息真实性，所有发布信息的用户必须通过微信扫码认证或美国手机短信实名认证。
-      </p>
-
-      <!-- Tab Switcher for Auth Method -->
-      <div class="flex border-b border-slate-200 text-xs font-bold text-slate-500 mb-2">
-        <button onclick="switchAuthTab('wechat')" id="btn-auth-wechat" class="flex-1 py-2 text-center border-b-2 border-brand-600 text-brand-600">🟢 微信扫码认证</button>
-        <button onclick="switchAuthTab('phone')" id="btn-auth-phone" class="flex-1 py-2 text-center border-b-2 border-transparent">📱 手机短信验证</button>
-      </div>
-
-      <!-- WeChat Auth Panel -->
-      <div id="panel-auth-wechat" class="flex flex-col items-center py-4 space-y-3">
-        <div class="w-40 h-40 bg-slate-100 border border-slate-200 rounded-xl flex items-center justify-center relative overflow-hidden">
-          <!-- Mock QR Code -->
-          <div class="absolute inset-0 bg-gradient-to-br from-emerald-500/10 to-teal-500/10 flex flex-col items-center justify-center p-4 text-center">
-            <span class="text-4xl">💬</span>
-            <span class="text-[10px] text-emerald-700 font-bold mt-2">微信扫码关注公众号</span>
-            <span class="text-[8px] text-slate-400 mt-1">自动完成安全实名认证</span>
-          </div>
-        </div>
-        <button onclick="simulateWeChatLogin()" class="px-6 py-2 bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold rounded-lg transition shadow-md">
-          模拟微信扫码成功 ➔
-        </button>
-      </div>
-
-      <!-- Phone Auth Panel -->
-      <div id="panel-auth-phone" class="space-y-3 hidden">
-        <div>
-          <label class="block text-[10px] font-bold text-slate-700 mb-1">美国手机号 (US Phone Number) *</label>
-          <div class="flex gap-2">
-            <span class="px-3 py-2 bg-slate-100 border border-slate-200 rounded-lg text-xs font-bold text-slate-600">+1</span>
-            <input type="tel" id="auth-phone-input" placeholder="917-555-0100" class="flex-1 px-3 py-2 border border-slate-200 rounded-lg text-xs focus:outline-none focus:ring-2 focus:ring-brand-500">
-          </div>
+          <label style="font-size:10px;font-weight:700;color:#475569;display:block;margin-bottom:4px;">价格/薪资 *</label>
+          <input type="text" id="f-price" required placeholder="$950/月" class="input-base" />
         </div>
         <div>
-          <label class="block text-[10px] font-bold text-slate-700 mb-1">短信验证码 (SMS Code) *</label>
-          <div class="flex gap-2">
-            <input type="text" id="auth-code-input" placeholder="输入6位验证码" class="flex-1 px-3 py-2 border border-slate-200 rounded-lg text-xs focus:outline-none focus:ring-2 focus:ring-brand-500">
-            <button type="button" onclick="sendMockSMS()" class="px-3 py-2 bg-slate-100 hover:bg-slate-200 border border-slate-200 rounded-lg text-[10px] font-bold text-slate-600 transition">获取验证码</button>
-          </div>
+          <label style="font-size:10px;font-weight:700;color:#475569;display:block;margin-bottom:4px;">区域 *</label>
+          <input type="text" id="f-area" required placeholder="法拉盛/Malden/罗兰岗" class="input-base" />
         </div>
-        <button onclick="simulatePhoneLogin()" class="w-full py-2.5 bg-brand-600 hover:bg-brand-700 text-white text-xs font-bold rounded-lg transition shadow-md">
-          验证并登录账户 ➔
-        </button>
       </div>
+      <div style="margin-bottom:8px;">
+        <label style="font-size:10px;font-weight:700;color:#475569;display:block;margin-bottom:4px;">详细描述</label>
+        <textarea id="f-desc" rows="2" placeholder="请详细描述房源/招聘要求/转让条件..." class="input-base" style="resize:none;"></textarea>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;margin-bottom:12px;">
+        <div>
+          <label style="font-size:10px;font-weight:700;color:#475569;display:block;margin-bottom:4px;">联系人 *</label>
+          <input type="text" id="f-person" required placeholder="李女士" class="input-base" />
+        </div>
+        <div>
+          <label style="font-size:10px;font-weight:700;color:#475569;display:block;margin-bottom:4px;">微信 ID</label>
+          <input type="text" id="f-wechat" placeholder="wechat_id" class="input-base" />
+        </div>
+        <div>
+          <label style="font-size:10px;font-weight:700;color:#475569;display:block;margin-bottom:4px;">手机 *</label>
+          <input type="tel" id="f-phone" required placeholder="917-555-xxxx" class="input-base" />
+        </div>
+      </div>
+      <!-- Payment method -->
+      <div style="background:#fffbeb;border:1px solid #fde68a;border-radius:8px;padding:10px;margin-bottom:12px;">
+        <div style="font-size:11px;font-weight:700;color:#92400e;margin-bottom:8px;">选择支付方式</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;">
+          <label style="display:flex;align-items:center;gap:6px;background:#fff;border:1px solid #fde68a;border-radius:6px;padding:7px 10px;cursor:pointer;font-size:12px;font-weight:600;">
+            <input type="radio" name="pay" value="wechat" checked> 🟢 微信支付
+          </label>
+          <label style="display:flex;align-items:center;gap:6px;background:#fff;border:1px solid #fde68a;border-radius:6px;padding:7px 10px;cursor:pointer;font-size:12px;font-weight:600;">
+            <input type="radio" name="pay" value="stripe"> 💳 信用卡
+          </label>
+        </div>
+      </div>
+      <button type="submit" class="btn-primary">确认并支付发布 ➔</button>
+      <button type="button" onclick="closeModal('modal-post')" class="btn-sec" style="margin-top:6px;">取消</button>
+    </form>
+  </div>
+</div>
+
+<!-- ═══ MODAL: Account / Auth ═══ -->
+<div id="modal-account" class="modal-overlay">
+  <div class="modal-box">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;">
+      <div style="font-size:14px;font-weight:800;color:#0f172a;">👤 注册 / 实名认证</div>
+      <button onclick="closeModal('modal-account')" style="background:none;border:none;font-size:20px;color:#94a3b8;cursor:pointer;">✕</button>
+    </div>
+    <p style="font-size:11px;color:#64748b;margin-bottom:12px;">为保障平台信息真实，发布信息需先完成微信扫码或美国手机短信实名认证。</p>
+    <!-- Auth Tabs -->
+    <div style="display:flex;border-bottom:1px solid #e2e8f0;margin-bottom:12px;">
+      <div class="auth-tab active" id="tab-wechat" onclick="switchAuthTab('wechat')">🟢 微信扫码认证</div>
+      <div class="auth-tab" id="tab-phone" onclick="switchAuthTab('phone')">📱 手机短信验证</div>
+    </div>
+    <!-- WeChat Panel -->
+    <div id="panel-wechat" style="display:flex;flex-direction:column;align-items:center;padding:12px 0;gap:12px;">
+      <div style="width:140px;height:140px;background:#f0fdf4;border:2px dashed #86efac;border-radius:12px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;">
+        <span style="font-size:36px;">💬</span>
+        <span style="font-size:10px;color:#16a34a;font-weight:700;text-align:center;">微信扫码关注公众号<br>自动完成实名认证</span>
+      </div>
+      <button onclick="mockWeChatLogin()" class="btn-primary" style="max-width:220px;">模拟微信扫码认证成功 ▶</button>
+    </div>
+    <!-- Phone Panel -->
+    <div id="panel-phone" style="display:none;gap:10px;flex-direction:column;">
+      <div>
+        <label style="font-size:10px;font-weight:700;color:#475569;display:block;margin-bottom:4px;">美国手机号 (+1) *</label>
+        <input type="tel" id="auth-phone" placeholder="917-555-0100" class="input-base" />
+      </div>
+      <div style="display:flex;gap:8px;">
+        <input type="text" id="auth-code" placeholder="输入6位短信验证码" class="input-base" style="flex:1;" />
+        <button type="button" onclick="sendSMS()" style="background:#f1f5f9;border:1px solid #e2e8f0;border-radius:8px;padding:7px 12px;font-size:11px;font-weight:700;cursor:pointer;white-space:nowrap;color:#475569;">获取验证码</button>
+      </div>
+      <button onclick="mockPhoneLogin()" class="btn-primary">验证并登录 ▶</button>
     </div>
   </div>
+</div>
 
-  <!-- ===== JAVASCRIPT DATA & LOGIC ===== -->
-  <script>
-    // Injected Multilingual UI Strings
-    var uiStrings = {
-  "zh": {
-    "title": "美东华人生活圈 — 官方资讯与同城分类大厅",
-    "brand_sub": "官方民生资讯 · 同城分类广告 · 智能双语对照",
-    "nav_hub": "信息大厅",
-    "nav_about": "关于我们",
-    "nav_feedback": "意见反馈",
-    "btn_plan": "返回规划案",
-    "btn_feedback": "发布信息",
-    "hero_tag": "📢 官方民生精选 + 现代同城分类大厅",
-    "hero_title": "美东华人生活圈 · 现代同城分类大厅",
-    "hero_desc": "左手官方民生福利，右手同城分类广告。我们用最现代的卡片美学重塑 Craigslist，为您提供最干净、最真实、无虚假中介的租房、二手、生意转让与求职信息。",
-    "search_placeholder": "搜索福利、活动、租房、二手、生意转让、招聘或区域...",
-    "boro_all": "所有区域 (All Boroughs)",
-    "boro_citywide": "纽约全市 (Citywide)",
-    "boro_queens": "皇后区 (Queens)",
-    "boro_brooklyn": "布鲁克林 (Brooklyn)",
-    "boro_manhattan": "曼哈顿 (Manhattan)",
-    "results_prefix": "已筛选出",
-    "results_suffix": "条真实资讯与分类广告",
-    "results_range": "数据范围：过去30天至未来一周",
-    "source_label": "来源",
-    "boro_label": "区域",
-    "btn_get_link": "获取官方链接 ➔",
-    "btn_contact": "联系发布人 ➔",
-    "about_title": "关于美东华人生活圈",
-    "about_p1": "在美东生活，及时获取官方资讯是保障切身权益、享受公共福利的关键。然而，散落在各大政府网站、公共图书馆和社区机构的英文公告繁多，逐个检索费时费力。",
-    "about_p2": "「美东华人生活圈」坚持「100% 官方真实、100% 干净无噪、100% 免费公益」的原则，通过技术手段智能聚合最新资讯，并提供保姆级中文重写。更重要的是，我们集成了智能网页翻译通道，让您在点击官方链接时，能直接阅读经过翻译的中文官方网页，彻底消除信息获取门槛。",
-    "about_tag1": "🛡️ 官方数据源核实",
-    "about_tag2": "🚫 绝无虚假广告",
-    "about_tag3": "🤝 纯粹公益民生",
-    "feedback_title": "在线意见反馈",
-    "feedback_desc": "您对我们的平台有什么意见或建议？您希望我们接入哪些新的信息源？请在下方留言，您的反馈对我们至关重要！",
-    "fb_name": "您的姓名 / 昵称 *",
-    "fb_contact": "联系方式 (Email/微信) *",
-    "fb_content": "您的宝贵意见 *",
-    "fb_placeholder": "请写下您的建议或合作意向...",
-    "fb_required": "* 为必填项",
-    "fb_submit": "提交反馈",
-    "contact_title": "直接联系项目组",
-    "contact_desc": "如果您有深度的合作意向、媒体资源对接、或者想加入我们的志愿编辑团队，欢迎直接发送邮件与我们取得联系。",
-    "contact_btn": "发送邮件：contact@insynbio.com",
-    "feedback_latest": "最新提交的意见 (本地模拟)",
-    "feedback_empty": "暂无提交记录，提交表单后将保存在您的浏览器本地。",
-    "footer_sub": "美东华人生活圈 — 本地生活与公共信息集散平台",
-    "footer_copy": "© 2026 East Coast Chinese Life Hub · 仅提供公开渠道信息聚合 · 最终解释权归官方发布机构所有",
-    "toast_success": "感谢您的宝贵建议！您的意见已成功保存在本地浏览器缓存中。",
-    "link_option_title": "请选择打开链接的方式：",
-    "link_option_raw": "打开官方英文原网页",
-    "link_option_trans": "打开智能翻译网页（中文）",
-    "cancel": "取消",
-    "price_label": "价格",
-    "contact_person": "发布人",
-    "wechat_label": "微信",
-    "phone_label": "电话",
-    "verified_badge": "付费已核实",
-    "post_modal_title": "发布分类信息 (Post Classified Ad)",
-    "post_modal_desc": "为了杜绝虚假中介、欺诈广告，保障社区生态健康，「美东华人生活圈」采用「付费发布 + 人工审核」机制。所有个人和商家信息需交纳小额费用后发布，支持置顶推广。",
-    "post_step1": "1. 注册/登录账户",
-    "post_step1_desc": "通过微信扫码或邮箱注册，绑定美国手机号完成实名认证。",
-    "post_step2": "2. 填写信息并选择套餐",
-    "post_step2_desc": "填写标题、描述、区域、价格及联系方式，上传实景图片。",
-    "post_step3": "3. 在线支付发布费",
-    "post_step3_desc": "支持 Stripe、微信支付或支付宝。普通广告 $5/月，置顶广告 $20/周（置顶于大厅首屏）。",
-    "post_step4": "4. 人工审核上线",
-    "post_step4_desc": "客服将在 2 小时内完成内容合规性审核，审核通过后即刻上线并同步推送至微信社群。",
-    "btn_start_post": "立即在线发布 ($5 起) ➔",
-    "contact_modal_title": "联系发布人信息",
-    "contact_modal_desc": "为了保障隐私，请通过以下方式直接联系发布人。联系时请说明来自「美东华人生活圈」。"
-  },
-  "zht": {
-    "title": "美東華人生活圈 — 官方資訊與同城分類大廳",
-    "brand_sub": "官方民生資訊 · 同城分類廣告 · 智能雙語對照",
-    "nav_hub": "資訊大廳",
-    "nav_about": "關於我們",
-    "nav_feedback": "意見反饋",
-    "btn_plan": "返回規劃案",
-    "btn_feedback": "發布信息",
-    "hero_tag": "📢 官方民生精選 + 現代同城分類大廳",
-    "hero_title": "美東華人生活圈 · 現代同城分類大廳",
-    "hero_desc": "左手官方民生福利，右手同城分類廣告。我們用最現代的卡片美學重塑 Craigslist，為您提供最乾淨、最真實、無虛假中介的租房、二手、生意轉讓與求職信息。",
-    "search_placeholder": "搜索福利、活動、租房、二手、生意轉讓、招聘或區域...",
-    "boro_all": "所有區域 (All Boroughs)",
-    "boro_citywide": "紐約全市 (Citywide)",
-    "boro_queens": "皇后區 (Queens)",
-    "boro_brooklyn": "布魯克林 (Brooklyn)",
-    "boro_manhattan": "曼哈頓 (Manhattan)",
-    "results_prefix": "已篩選出",
-    "results_suffix": "條真實資訊與分類廣告",
-    "results_range": "數據範圍：過去30天至未來一周",
-    "source_label": "來源",
-    "boro_label": "區域",
-    "btn_get_link": "獲取官方鏈接 ➔",
-    "btn_contact": "聯繫發布人 ➔",
-    "about_title": "關於美東華人生活圈",
-    "about_p1": "在美東生活，及時獲取官方資訊是保障切身權益、享受公共福利的關鍵。然而，散落在各大政府網站、公共圖書館和社區機構的英文公告繁多，逐個檢索費時費力。",
-    "about_p2": "「美東華人生活圈」堅持「100% 官方真實、100% 乾淨無噪、100% 免費公益」的原則，通過技術手段智能聚合最新資訊，並提供保姆級中文重寫。更重要的是，我們集成了智能網頁翻譯通道，讓您在點擊官方鏈接時，能直接閱讀經過翻譯的中文官方網頁，徹底消除信息獲取門檻。",
-    "about_tag1": "🛡️ 官方數據源核实",
-    "about_tag2": "🚫 絕無虛假廣告",
-    "about_tag3": "🤝 純粹公益民生",
-    "feedback_title": "在線意見反饋",
-    "feedback_desc": "您對我們的平台有什麼意見或建議？您希望我們接入哪些新的信息源？請在下方留言，您的反饋對我們至關重要！",
-    "fb_name": "您的姓名 / 暱稱 *",
-    "fb_contact": "聯繫方式 (Email/微信) *",
-    "fb_content": "您的寶貴意見 *",
-    "fb_placeholder": "請寫下您的建議或合作意向...",
-    "fb_required": "* 為必填項",
-    "fb_submit": "提交反饋",
-    "contact_title": "直接聯繫項目組",
-    "contact_desc": "如果您有深度的合作意向、媒體資源對接、或者想加入我們的志願編輯團隊，歡迎直接發送郵件與我們取得聯繫。",
-    "contact_btn": "發送郵件：contact@insynbio.com",
-    "feedback_latest": "最新提交的意見 (本地模擬)",
-    "feedback_empty": "暫無提交記錄，提交表單後將保存在您的瀏覽器本地。",
-    "footer_sub": "美東華人生活圈 — 本地生活與公共信息集散平台",
-    "footer_copy": "© 2026 East Coast Chinese Life Hub · 僅提供公開渠道信息聚合 · 最終解釋權歸官方發布機構所有",
-    "toast_success": "感謝您的寶貴建議！您的意見已成功保存在本地瀏覽器緩存中。",
-    "link_option_title": "請選擇打開鏈接的方式：",
-    "link_option_raw": "打開官方英文原網頁",
-    "link_option_trans": "打開智能翻譯網頁（繁體中文）",
-    "cancel": "取消",
-    "price_label": "價格",
-    "contact_person": "發布人",
-    "wechat_label": "微信",
-    "phone_label": "電話",
-    "verified_badge": "付費已核實",
-    "post_modal_title": "發布分類信息 (Post Classified Ad)",
-    "post_modal_desc": "為了杜絕虛假中介、欺詐廣告，保障社區生態健康，「美東華人生活圈」採用「付費發布 + 人工審核」機制。所有個人和商家信息需交納小額費用後發布，支持置頂推廣。",
-    "post_step1": "1. 註冊/登錄賬戶",
-    "post_step1_desc": "通過微信掃碼或郵箱註冊，綁定美國手機號完成實名認證。",
-    "post_step2": "2. 填寫信息並選擇套餐",
-    "post_step2_desc": "填寫標題、描述、區域、價格及聯繫方式，上傳實景圖片。",
-    "post_step3": "3. 在線支付發布費",
-    "post_step3_desc": "支持 Stripe、微信支付或支付寶。普通廣告 $5/月，置頂廣告 $20/週（置頂於大廳首屏）。",
-    "post_step4": "4. 人工審核上線",
-    "post_step4_desc": "客服將在 2 小時內完成內容合規性審核，審核通過後即刻上線並同步推送至微信社群。",
-    "btn_start_post": "立即在線發布 ($5 起) ➔",
-    "contact_modal_title": "聯繫發布人信息",
-    "contact_modal_desc": "為了保障隱私，請通過以下方式直接聯繫發布人。聯繫時請說明來自「美東華人生活圈」。"
-  },
-  "en": {
-    "title": "East Coast Chinese Life Hub — Official Info & Local Classifieds",
-    "brand_sub": "Official NYC Info · Local Classifieds · Smart Bilingual Access",
-    "nav_hub": "Info Hub",
-    "nav_about": "About Us",
-    "nav_feedback": "Feedback",
-    "btn_plan": "Back to Plan",
-    "btn_feedback": "Post an Ad",
-    "hero_tag": "📢 Official Benefits + Modern Classifieds Hub",
-    "hero_title": "East Coast Chinese Life Hub · Modern Classifieds",
-    "hero_desc": "Official benefits on the left, local classifieds on the right. We redesign Craigslist with modern card aesthetics to provide clean, verified listings for rentals, second-hand items, business transfers, and jobs.",
-    "search_placeholder": "Search benefits, events, rentals, second-hand, business transfers, jobs or areas...",
-    "boro_all": "All Boroughs",
-    "boro_citywide": "Citywide",
-    "boro_queens": "Queens",
-    "boro_brooklyn": "Brooklyn",
-    "boro_manhattan": "Manhattan",
-    "results_prefix": "Found",
-    "results_suffix": "verified updates & classifieds",
-    "results_range": "Timeframe: Past 30 days to next 7 days",
-    "source_label": "Source",
-    "boro_label": "Area",
-    "btn_get_link": "Get Official Link ➔",
-    "btn_contact": "Contact Seller ➔",
-    "about_title": "About East Coast Chinese Life Hub",
-    "about_p1": "Living in the US East Coast, staying updated with official announcements is crucial for protecting your rights and enjoying public benefits. However, English notices scattered across government websites, libraries, and civic organizations can be time-consuming to track down.",
-    "about_p2": "We adhere to the principles of '100% Verified, 100% Noise-Free, and 100% Free Public Service.' We use technology to aggregate the latest updates and rewrite them into clear, actionable guides. More importantly, we integrate smart translation routing so that when you click official links, you can read translated official pages directly, removing all information barriers.",
-    "about_tag1": "🛡️ Verified Official Sources",
-    "about_tag2": "🚫 Zero Fake Ads",
-    "about_tag3": "🤝 Pure Public Service",
-    "feedback_title": "Online Feedback",
-    "feedback_desc": "What are your thoughts or suggestions for our platform? What new information sources would you like us to connect? Let us know below!",
-    "fb_name": "Your Name / Nickname *",
-    "fb_contact": "Contact Info (Email/WeChat) *",
-    "fb_content": "Your Feedback *",
-    "fb_placeholder": "Write your suggestions or cooperation intentions here...",
-    "fb_required": "* Required fields",
-    "fb_submit": "Submit Feedback",
-    "contact_title": "Contact Project Team",
-    "contact_desc": "If you have deep cooperation intentions, media resource connections, or want to join our volunteer editorial team, feel free to email us directly.",
-    "contact_btn": "Email Us: contact@insynbio.com",
-    "feedback_latest": "Latest Feedback (Local Mock)",
-    "feedback_empty": "No feedback submitted yet. Your submissions will be saved in your local browser cache.",
-    "footer_sub": "East Coast Chinese Life Hub — Local Life & Public Information Aggregator",
-    "footer_copy": "© 2026 East Coast Chinese Life Hub · Public information aggregation only · Final interpretation belongs to official publishing agencies",
-    "toast_success": "Thank you for your valuable feedback! Your suggestions have been saved locally.",
-    "link_option_title": "Select how you want to open the link:",
-    "link_option_raw": "Open Official English Page",
-    "link_option_trans": "Open Translated Page (Chinese)",
-    "cancel": "Cancel",
-    "price_label": "Price",
-    "contact_person": "Contact",
-    "wechat_label": "WeChat",
-    "phone_label": "Phone",
-    "verified_badge": "Paid & Verified",
-    "post_modal_title": "Post Classified Ad",
-    "post_modal_desc": "To eliminate fake brokers and fraudulent ads, we implement a 'Paid Post + Manual Audit' mechanism. All listings require a small fee and pass compliance checks before going live.",
-    "post_step1": "1. Register/Login Account",
-    "post_step1_desc": "Sign up via WeChat scan or email, and verify with a US phone number.",
-    "post_step2": "2. Fill Ad Details & Choose Plan",
-    "post_step2_desc": "Enter title, description, area, price, contact info, and upload photos.",
-    "post_step3": "3. Online Payment",
-    "post_step3_desc": "Pay securely via Stripe, WeChat Pay, or Alipay. Basic ad is $5/month, Featured ad is $20/week (top of the hub).",
-    "post_step4": "4. Manual Review & Live",
-    "post_step4_desc": "Our team reviews the listing within 2 hours. Once approved, it goes live and syncs to WeChat groups.",
-    "btn_start_post": "Post Ad Now (Starts at $5) ➔",
-    "contact_modal_title": "Contact Publisher Information",
-    "contact_modal_desc": "To protect privacy, please contact the publisher directly using the details below. Mention 'East Coast Chinese Life Hub' when calling."
-  }
+<!-- ═══ JAVASCRIPT ═══ -->
+<script>
+var OFFICIAL = [{"id": "e1", "cat": "福利", "date": "06-11", "title": "Fair Fares NYC 半价地铁卡申请", "area": "全市", "url": "https://access.nyc.gov/programs/fair-fares/", "desc": "低收入居民单程仅 $1.45，不影响绿卡申请。单身年收入 < $21,120 可申请。"}, {"id": "e2", "cat": "福利", "date": "06-11", "title": "SNAP 粮食券 EBT 卡申请", "area": "全市", "url": "https://access.nyc.gov/programs/snap/", "desc": "单身月收入 < $1,580 可申请，可在各大华人超市（新世界、大中华）使用。"}, {"id": "e3", "cat": "福利", "date": "06-01", "title": "NYC 暑期免费学生餐（18岁以下）", "area": "全市", "url": "https://www.schools.nyc.gov/school-life/food/summer-meals", "desc": "全市学校/公园/图书馆免费早午餐，无需注册，无需身份证明。"}, {"id": "e4", "cat": "福利", "date": "05-20", "title": "HEAP 夏季免费空调安装/电费补贴", "area": "全市", "url": "https://access.nyc.gov/programs/heap/", "desc": "低收入家庭可申请免费空调安装或电费补贴，帮助度过酷暑。"}, {"id": "e5", "cat": "福利", "date": "06-11", "title": "Lifeline 免费智能手机+无限通话", "area": "全市", "url": "https://access.nyc.gov/programs/lifeline/", "desc": "持 Medicaid/SNAP 的居民可申请免费手机和每月流量。"}, {"id": "e6", "cat": "交通", "date": "06-11", "title": "LIRR CityTicket 市内 $5 特惠票（法拉盛→中城 18分钟）", "area": "Queens", "url": "https://new.mta.info/fares/cityticket", "desc": "纽约市内起终点，非高峰 $5，高峰 $7，人人有座空调足。"}, {"id": "e7", "cat": "交通", "date": "06-11", "title": "MTA OMNY 刷满12次后本周免费", "area": "全市", "url": "https://omny.info/", "desc": "同一设备周一到周日刷满12次（$34.80）后，本周所有车程全免费。"}, {"id": "e8", "cat": "交通", "date": "06-10", "title": "MTA 地铁周末改线实时查询", "area": "全市", "url": "https://new.mta.info/alerts", "desc": "夏季维护期改线频繁，出行前务必查官网 Alerts 页面。"}, {"id": "e9", "cat": "交通", "date": "05-25", "title": "NYC Ferry 东河渡轮夏季班表启用（$4/次）", "area": "全市", "url": "https://www.ferry.nyc/routes-and-schedules/", "desc": "法拉盛-华埠-DUMBO 增班，单程 $4。"}, {"id": "e10", "cat": "教育", "date": "06-15", "title": "皇后区图书馆 免费成人 ESL 英语班", "area": "Queens", "url": "https://www.queenslibrary.org/programs-services/esol-family-literacy/esol", "desc": "17岁以上居民免费，不限身份，有白天/晚间/周末班，教材全免。"}, {"id": "e11", "cat": "教育", "date": "06-16", "title": "NYPL 免费成人英语 + 入籍辅导班", "area": "Manhattan", "url": "https://www.nypl.org/help/community-outreach/immigrant-services/learn-english", "desc": "曼哈顿/布朗士/史泰登岛居民，含入籍英文专项班，完全免费保密。"}, {"id": "e12", "cat": "教育", "date": "06-01", "title": "皇后区图书馆 2026 暑期少儿阅读挑战", "area": "Queens", "url": "https://www.queenslibrary.org/", "desc": "5-12岁，记录阅读进度获免费图书和纪念章，有暑期派对。"}, {"id": "e13", "cat": "安全", "date": "06-17", "title": "法拉盛 109 警局 警民月度会议（含中文翻译）", "area": "Queens", "url": "https://www.nyc.gov/site/nypd/bureaus/patrol/precincts/109th-precinct.page", "desc": "通报近期治安/防诈骗，现场解答停车违章问题，提供中文翻译。"}, {"id": "e14", "cat": "安全", "date": "05-28", "title": "布鲁克林 72 警局 防诈骗入室盗窃宣讲会", "area": "Brooklyn", "url": "https://www.nyc.gov/site/nypd/bureaus/patrol/precincts/72nd-precinct.page", "desc": "八大道华人区针对电信诈骗和入室盗窃，讲识别方法和防盗措施。"}, {"id": "e15", "cat": "安全", "date": "06-02", "title": "NYC 紧急管理局 飓风季防灾指南（中文版）", "area": "全市", "url": "https://www.nyc.gov/site/em/ready/hurricane-guides.page", "desc": "2026 年飓风季指南，含疏散避难所地图，提供中文 PDF 下载。"}, {"id": "e16", "cat": "市政", "date": "每周四", "title": "市议员黄敏仪办公室 免费法律咨询（租务/移民/家庭）", "area": "Queens", "url": "https://council.nyc.gov/sandra-ung/", "desc": "法拉盛 Sandra Ung 联合公益律师，免费，提供中文翻译。"}, {"id": "e17", "cat": "市政", "date": "06-11", "title": "NYC 选民登记查询 + 投票站一键查询", "area": "全市", "url": "https://vote.nyc/", "desc": "输入地址查投票站、开放时间及候选人名单。"}, {"id": "e18", "cat": "亲子", "date": "06-27", "title": "NYC 公共室外泳池全市免费开放（6/27起）", "area": "全市", "url": "https://www.nycgovparks.org/facilities/outdoor-pools", "desc": "包括 Fisher Pool（法拉盛附近），完全免费，无需预约。"}, {"id": "e19", "cat": "亲子", "date": "06-01", "title": "NYC Parks 免费露天电影节（全市各公园）", "area": "全市", "url": "https://www.nycgovparks.org/events/free-summer-movies", "desc": "迪士尼动画 + 好莱坞大片，无需预约，带野餐垫即去。"}, {"id": "e20", "cat": "亲子", "date": "每三/日", "title": "皇后区植物园 免费开放时段（法拉盛 Main St）", "area": "Queens", "url": "https://queensbotanical.org/hours-admission/", "desc": "周三 3-6PM / 周日 9-11AM 免费，地址：43-50 Main St, Flushing。"}, {"id": "e21", "cat": "文化", "date": "06-20", "title": "法拉盛市政厅 免费多元文化音乐会（需网上预约）", "area": "Queens", "url": "https://www.flushingtownhall.org/", "desc": "华人传统民乐演奏，促进社区文化交流，免费但需提前在线登记。"}, {"id": "e22", "cat": "文化", "date": "06-11", "title": "大都会博物馆 纽约居民任意付费（$1 可入场）", "area": "Manhattan", "url": "https://www.metmuseum.org/visit/plan-your-visit", "desc": "持纽约州 ID 或账单地址，售票处 Pay-What-You-Wish，$1 起。"}, {"id": "e23", "cat": "文化", "date": "每周五", "title": "MoMA 纽约居民免费夜（每周五 4-8PM）", "area": "Manhattan", "url": "https://www.moma.org/calendar/programs/159", "desc": "需提前官网预约免费票，现场出示纽约居住证明即可。"}, {"id": "e24", "cat": "文化", "date": "每周五", "title": "纽约科学馆 皇后区居民免费（周五 2-5PM）", "area": "Queens", "url": "https://nysci.org/visit", "desc": "Corona 公园内，数百个互动科学展项，适合带孩子周末探索。"}, {"id": "e25", "cat": "公益", "date": "每周五", "title": "纽约慈济基金会 食物发放 + 双语志愿者招募", "area": "Queens", "url": "https://tzuchi.us/offices/new-york", "desc": "每周五法拉盛会所免费发蔬菜水果，招募双语志愿者协助。"}, {"id": "e26", "cat": "公益", "date": "06-11", "title": "纽约食物银行 社区厨房志愿招募（华埠/布鲁克林）", "area": "全市", "url": "https://www.foodbanknyc.org/volunteer/", "desc": "可开具义工证明，欢迎留学生和华人青年参与。"}, {"id": "e27", "cat": "促销", "date": "每周五", "title": "法拉盛新世界超市 本周特价海报（海鲜/时蔬）", "area": "Queens", "url": "https://www.newworldmallny.com/", "desc": "华人家庭省钱必看，游水海鲜/新鲜时蔬/南北杂货折扣海报。"}];
+var CLASSIFIEDS = [{"id": "c1", "cat": "房屋出租", "date": "06-11", "city": "纽约", "area": "皇后区·法拉盛", "title": "法拉盛中心 全新公寓单房出租 近地铁/超市", "price": "$950/月", "contact": {"person": "李女士 (Ms. Li)", "wechat": "nyclife_li", "phone": "917-555-0192"}, "desc": "Main St 步行5分钟，电梯楼，大单房独卫，含水网，随时入住，限一人，无烟无宠。"}, {"id": "c2", "cat": "生意转让", "date": "06-10", "city": "纽约", "area": "皇后区·Bayside", "title": "Bayside Northern Blvd 旺铺奶茶甜品店低价转让", "price": "$45,000 可议", "contact": {"person": "陈经纪 (Agent Chen)", "wechat": "bayside_broker", "phone": "718-555-0143"}, "desc": "周边多所高中客源稳定，设备齐全，接手即可盈利，因店主回国转让。"}, {"id": "c3", "cat": "二手闲置", "date": "06-09", "city": "纽约", "area": "皇后区·法拉盛", "title": "【九成新】2024 MacBook Pro 14寸 M3 16G+512G", "price": "$1,250", "contact": {"person": "Alex", "wechat": "alex_tech_ny", "phone": "646-555-0188"}, "desc": "自用无划痕，电池98%，带原装充电器和包装，法拉盛面交当场验机。"}, {"id": "c4", "cat": "求职招聘", "date": "06-08", "city": "纽约", "area": "皇后区·法拉盛", "title": "【招聘】法拉盛齿科诊所 双语前台 全职/兼职", "price": "$20-$25/小时", "contact": {"person": "Dr. Wang Office", "wechat": "flushing_dental", "phone": "347-555-0112"}, "desc": "需流利中英文，有经验优先，无经验可培训，提供带薪假和健康保险。"}, {"id": "c5", "cat": "房屋出租", "date": "06-07", "city": "纽约", "area": "布鲁克林·八大道", "title": "布鲁克林八大道 独栋二楼整套 2房1厅 独立门户", "price": "$1,850/月", "contact": {"person": "林先生 (Mr. Lin)", "wechat": "bk_owner_lin", "phone": "917-555-0155"}, "desc": "近N线地铁站和华人超市，光线充足，适合小家庭或留学生合租。"}, {"id": "c6", "cat": "生意转让", "date": "06-06", "city": "纽约", "area": "曼哈顿·唐人街", "title": "唐人街 美甲美容老店转让 租金低 租约长", "price": "$32,000", "contact": {"person": "张店主 (Owner Zhang)", "wechat": "chinatown_nail", "phone": "212-555-0177"}, "desc": "华埠核心街道，经营多年，口碑好，老客多，设备齐全接手即营业。"}, {"id": "c7", "cat": "房屋出租", "date": "06-05", "city": "波士顿", "area": "Boston·Malden", "title": "波士顿 Malden 近地铁大两房一厅出租", "price": "$2,400/月", "contact": {"person": "王先生 (Mr. Wang)", "wechat": "boston_rent_wang", "phone": "617-555-0133"}, "desc": "Malden Center 步行8分钟，高档公寓，带独立洗衣烘干机，周边中餐馆超市。"}, {"id": "c8", "cat": "求职招聘", "date": "06-04", "city": "洛杉矶", "area": "LA·罗兰岗", "title": "【招聘】洛杉矶罗兰岗中餐馆 熟手企台/后厨打杂", "price": "$4,500-$6,000/月", "contact": {"person": "刘经理 (Manager Liu)", "wechat": "la_food_liu", "phone": "626-555-0122"}, "desc": "罗兰岗繁华商区，待遇优厚，小费好，包食宿，需报税，手脚勤快。"}];
+var officialCatFilter = 'all';
+var clCatFilter = 'all';
+var isLoggedIn = false;
+var userName = '';
+
+// ─── Render Official Feed ───────────────────────────────────────────────────
+var CAT_COLOR = {
+  '福利':'background:#d1fae5;color:#065f46',
+  '交通':'background:#dbeafe;color:#1e40af',
+  '教育':'background:#ede9fe;color:#4c1d95',
+  '安全':'background:#fee2e2;color:#991b1b',
+  '市政':'background:#fef3c7;color:#92400e',
+  '亲子':'background:#d1fae5;color:#065f46',
+  '文化':'background:#fae8ff;color:#6b21a8',
+  '公益':'background:#f0fdf4;color:#15803d',
+  '促销':'background:#fff7ed;color:#9a3412',
 };
 
-    // Injected 38 Multilingual Events (32 events + 8 classifieds)
-    var eventsData = [
-  {
-    "id": "e1",
-    "category": {
-      "zh": "福利申请",
-      "zht": "福利申請",
-      "en": "Benefits"
-    },
-    "bg_color": "bg-emerald-50 text-emerald-700 border-emerald-200",
-    "date": "2026-06-11",
-    "title": {
-      "zh": "纽约半价地铁卡 Fair Fares NYC 申请指南",
-      "zht": "紐約半價地鐵卡 Fair Fares NYC 申請指南",
-      "en": "Fair Fares NYC Half-Fare Transit Application Guide"
-    },
-    "desc": {
-      "zh": "符合条件的低收入纽约居民（18-64岁，单身年收入低于 $21,120，两口之家低于 $28,500）可申请半价地铁卡，单程仅需 $1.45。不属于公共负担，不影响绿卡申请。",
-      "zht": "符合條件的低收入紐約居民（18-64歲，單身年收入低於 $21,120，兩口之家低於 $28,500）可申請半價地鐵卡，單程僅需 $1.45。不屬於公共負擔，不影響綠卡申請。",
-      "en": "Eligible low-income NYC residents (aged 18-64, annual income under $21,120 for single, $28,500 for 2-person household) can apply for 50% discount on subway and bus fares ($1.45 per ride). Not a public charge."
-    },
-    "source": "ACCESS HRA",
-    "url": "https://access.nyc.gov/programs/fair-fares/",
-    "borough": {
-      "zh": "全市",
-      "zht": "全市",
-      "en": "Citywide"
+function renderOfficial() {
+  var q = document.getElementById('search-box').value.toLowerCase();
+  var list = document.getElementById('official-list');
+  var count = 0;
+  var html = '';
+  OFFICIAL.forEach(function(ev) {
+    if (officialCatFilter !== 'all' && ev.cat !== officialCatFilter) return;
+    var text = (ev.title + ev.desc + ev.area).toLowerCase();
+    if (q && text.indexOf(q) === -1) return;
+    count++;
+    var cs = CAT_COLOR[ev.cat] || 'background:#f1f5f9;color:#475569';
+    html += '<a class="row-link" onclick="openLink(\''+ev.url+'\')">'+
+      '<span class="cat-badge" style="'+cs+'">'+ev.cat+'</span>'+
+      '<span class="date-txt">'+ev.date+'</span>'+
+      '<span class="title-txt">'+ev.title+'</span>'+
+      '<span class="area-txt">'+ev.area+'</span>'+
+      '<span style="color:#94a3b8;font-size:11px;">→</span>'+
+      '</a>';
+  });
+  list.innerHTML = html || '<div style="padding:16px;text-align:center;color:#94a3b8;font-size:12px;">暂无符合条件的官方资讯</div>';
+  document.getElementById('official-count').textContent = '已筛选 ' + count + ' 条官方资讯（数据来源：NYC.gov / MTA / Queens Library 等官方渠道）';
+}
+
+// ─── Render Classifieds ─────────────────────────────────────────────────────
+function renderCL() {
+  var q = document.getElementById('search-box').value.toLowerCase();
+  var city = document.getElementById('city-sel').value;
+  var list = document.getElementById('cl-list');
+  var count = 0;
+  var html = '';
+  CLASSIFIEDS.forEach(function(ad) {
+    if (clCatFilter !== 'all' && ad.cat !== clCatFilter) return;
+    if (city !== 'all' && ad.city !== city) return;
+    var text = (ad.title + ad.desc + ad.area + ad.city).toLowerCase();
+    if (q && text.indexOf(q) === -1) return;
+    count++;
+    html += '<div class="row-link" onclick="openContact(\''+ad.id+'\')">'+
+      '<span class="cat-badge" style="background:#fef3c7;color:#92400e;">'+ad.cat+'</span>'+
+      '<span class="date-txt">'+ad.date+'</span>'+
+      '<span class="title-txt">'+ad.title+'</span>'+
+      '<span class="price-badge">'+ad.price+'</span>'+
+      '<span class="area-txt">'+ad.city+'·'+ad.area.split('·')[1]+'</span>'+
+      '<span style="color:#ea580c;font-size:11px;font-weight:700;">联系→</span>'+
+      '</div>';
+  });
+  list.innerHTML = html || '<div style="padding:16px;text-align:center;color:#94a3b8;font-size:12px;">暂无符合条件的分类广告</div>';
+  document.getElementById('cl-count').textContent = '共 ' + count + ' 条付费认证广告';
+}
+
+function applyFilters() { renderOfficial(); renderCL(); }
+
+function filterOfficial(cat, btn) {
+  officialCatFilter = cat;
+  document.querySelectorAll('#official-cats .filter-btn').forEach(function(b){ b.classList.remove('active'); });
+  if (btn) btn.classList.add('active');
+  renderOfficial();
+}
+
+function filterCL(cat) {
+  clCatFilter = cat;
+  scrollToSection('sec-classifieds');
+  renderCL();
+}
+
+// ─── Open Smart Link Modal ──────────────────────────────────────────────────
+function openLink(url) {
+  var transUrl = 'https://translate.google.com/translate?sl=en&tl=zh-CN&u=' + encodeURIComponent(url);
+  document.getElementById('link-trans').href = transUrl;
+  document.getElementById('link-raw').href = url;
+  openModal('modal-link');
+}
+
+// ─── Open Contact Modal ─────────────────────────────────────────────────────
+function openContact(adId) {
+  var ad = CLASSIFIEDS.find(function(a){ return a.id === adId; });
+  if (!ad) return;
+  document.getElementById('ct-person').textContent = ad.contact.person;
+  document.getElementById('ct-wechat').textContent = ad.contact.wechat || '无';
+  var phoneEl = document.getElementById('ct-phone');
+  phoneEl.textContent = ad.contact.phone;
+  phoneEl.href = 'tel:' + ad.contact.phone.replace(/-/g,'');
+  openModal('modal-contact');
+}
+
+// ─── Post Ad Modal ──────────────────────────────────────────────────────────
+function openPostModal() {
+  if (!isLoggedIn) {
+    if (confirm('发布信息需先完成实名认证。
+是否现在前往注册/认证？')) {
+      openAccountModal();
     }
-  },
-  {
-    "id": "e2",
-    "category": {
-      "zh": "福利申请",
-      "zht": "福利申請",
-      "en": "Benefits"
-    },
-    "bg_color": "bg-emerald-50 text-emerald-700 border-emerald-200",
-    "date": "2026-06-11",
-    "title": {
-      "zh": "纽约 SNAP 粮食券福利标准与申请通道",
-      "zht": "紐約 SNAP 糧食券福利標準與申請通道",
-      "en": "NYC SNAP Food Stamp Eligibility & Application Portal"
-    },
-    "desc": {
-      "zh": "低收入家庭每月可获得食品补助金，直接充值到 EBT 卡中，可在各大华人超市（如大中华、新世界）购买食材。单身月收入低于 $1,580 即可申请。",
-      "zht": "低收入家庭每月可獲得食品補助金，直接充值到 EBT 卡中，可在各大華人超市（如大中華、新世界）購買食材。單身月收入低於 $1,580 即可申請。",
-      "en": "Low-income households receive monthly food assistance on an EBT card, accepted at major Chinese supermarkets. Single individuals with monthly income under $1,580 are eligible to apply."
-    },
-    "source": "ACCESS HRA",
-    "url": "https://access.nyc.gov/programs/snap/",
-    "borough": {
-      "zh": "全市",
-      "zht": "全市",
-      "en": "Citywide"
-    }
-  },
-  {
-    "id": "e3",
-    "category": {
-      "zh": "福利申请",
-      "zht": "福利申請",
-      "en": "Benefits"
-    },
-    "bg_color": "bg-emerald-50 text-emerald-700 border-emerald-200",
-    "date": "2026-05-20",
-    "title": {
-      "zh": "HEAP 暖气与夏季避暑空调补助申请",
-      "zht": "HEAP 暖氣與夏季避暑空調補助申請",
-      "en": "HEAP Heating & Summer Air Conditioner Cooling Assistance"
-    },
-    "desc": {
-      "zh": "纽约州低收入家庭能源补助计划（HEAP）现已开放夏季降温补助申请。符合条件的家庭可获得免费空调安装或电费补贴，帮助平稳度过酷暑。",
-      "zht": "紐約州低收入家庭能源補助計劃（HEAP）現已開放夏季降溫補助申請。符合條件的家庭可獲得免費空調安裝或電費補貼，幫助平穩度過酷暑。",
-      "en": "The Home Energy Assistance Program (HEAP) is now open for summer cooling applications. Eligible households can receive free air conditioner installation or utility bill credits to beat the heat."
-    },
-    "source": "HEAP NY",
-    "url": "https://access.nyc.gov/programs/heap/",
-    "borough": {
-      "zh": "全市",
-      "zht": "全市",
-      "en": "Citywide"
-    }
-  },
-  {
-    "id": "e4",
-    "category": {
-      "zh": "福利申请",
-      "zht": "福利申請",
-      "en": "Benefits"
-    },
-    "bg_color": "bg-emerald-50 text-emerald-700 border-emerald-200",
-    "date": "2026-06-01",
-    "title": {
-      "zh": "NYC Free Summer Meals 纽约市暑期免费学生餐计划",
-      "zht": "NYC Free Summer Meals 紐約市暑期免費學生餐計劃",
-      "en": "NYC Free Summer Meals Program for Students"
-    },
-    "desc": {
-      "zh": "纽约市教育局宣布，今年暑期将继续在全市数百个学校、公园和图书馆向所有 18 岁及以下的学生免费提供早餐和午餐，无需注册或提供身份证明。",
-      "zht": "紐約市教育局宣佈，今年暑期將繼續在全市數百個學校、公園和圖書館向所有 18 歲及以下的學生免費提供早餐和午餐，無需註冊或提供身份證明。",
-      "en": "NYC Department of Education provides free breakfast and lunch to all children 18 and under at hundreds of schools, parks, and libraries citywide this summer. No registration or ID required."
-    },
-    "source": "NYC DOE",
-    "url": "https://www.schools.nyc.gov/school-life/food/summer-meals",
-    "borough": {
-      "zh": "全市",
-      "zht": "全市",
-      "en": "Citywide"
-    }
-  },
-  {
-    "id": "e5",
-    "category": {
-      "zh": "福利申请",
-      "zht": "福利申請",
-      "en": "Benefits"
-    },
-    "bg_color": "bg-emerald-50 text-emerald-700 border-emerald-200",
-    "date": "2026-06-11",
-    "title": {
-      "zh": "纽约市免费手机与无限通话计划 (Lifeline)",
-      "zht": "紐約市免費手機與無限通話計劃 (Lifeline)",
-      "en": "NYC Free Smartphone & Unlimited Talk Plan (Lifeline)"
-    },
-    "desc": {
-      "zh": "符合特定低收入标准或已获得 Medicaid/SNAP 的纽约居民，可申请免费智能手机、每月免费流量和无限通话，帮助新移民保持与社会的联系。",
-      "zht": "符合特定低收入標準或已獲得 Medicaid/SNAP 的紐約居民，可申請免費智能手機、每月免費流量和無限通話，幫助新移民保持與社會的聯絡。",
-      "en": "NYC residents meeting low-income criteria or receiving Medicaid/SNAP can apply for a free smartphone with monthly data and unlimited talk time to help stay connected."
-    },
-    "source": "ACCESS NYC",
-    "url": "https://access.nyc.gov/programs/lifeline/",
-    "borough": {
-      "zh": "全市",
-      "zht": "全市",
-      "en": "Citywide"
-    }
-  },
-  {
-    "id": "e6",
-    "category": {
-      "zh": "交通出行",
-      "zht": "交通出行",
-      "en": "Transit"
-    },
-    "bg_color": "bg-sky-50 text-sky-700 border-sky-200",
-    "date": "2026-06-11",
-    "title": {
-      "zh": "LIRR CityTicket 市内火车 $5 特惠票政策",
-      "zht": "LIRR CityTicket 市內火車 $5 特惠票政策",
-      "en": "LIRR CityTicket $5 Flat Fare in NYC"
-    },
-    "desc": {
-      "zh": "只要起点和终点都在纽约市内（如法拉盛往返曼哈顿中城），非高峰期单程仅需 $5.00，高峰期 $7.00。18分钟直达，空调充足，人人有座。",
-      "zht": "單程僅需 $5.00，高峰期 $7.00。18分鐘直達，空調充足，人人有座。",
-      "en": "For travel entirely within NYC (e.g., Flushing to Midtown Manhattan), LIRR offers flat-fare tickets: $5.00 off-peak, $7.00 peak. 18-minute direct trip with guaranteed seats."
-    },
-    "source": "MTA",
-    "url": "https://new.mta.info/fares/cityticket",
-    "borough": {
-      "zh": "皇后区",
-      "zht": "皇后區",
-      "en": "Queens"
-    }
-  },
-  {
-    "id": "e7",
-    "category": {
-      "zh": "交通出行",
-      "zht": "交通出行",
-      "en": "Transit"
-    },
-    "bg_color": "bg-sky-50 text-sky-700 border-sky-200",
-    "date": "2026-06-11",
-    "title": {
-      "zh": "MTA OMNY 刷满 12 次后免费乘车政策",
-      "zht": "MTA OMNY 刷滿 12 次後免費乘車政策",
-      "en": "MTA OMNY Fare Cap: Free Rides After 12 Trips"
-    },
-    "desc": {
-      "zh": "使用同一张信用卡、手机或 OMNY 卡，在周一至周日的 7 天内刷满 12 次（共 $34.80）后，本周内接下来的所有乘车均完全免费，自动生效。",
-      "zht": "使用同一張信用卡、手機或 OMNY 卡，在週一至週日的 7 天內刷滿 12 次（共 $34.80）後，本週內接下來的所有乘車均完全免費，自動生效。",
-      "en": "Using the same card or device, once you pay for 12 rides ($34.80) between Monday and Sunday, all subsequent rides for the rest of the week are completely free."
-    },
-    "source": "MTA OMNY",
-    "url": "https://omny.info/",
-    "borough": {
-      "zh": "全市",
-      "zht": "全市",
-      "en": "Citywide"
-    }
-  },
-  {
-    "id": "e8",
-    "category": {
-      "zh": "交通出行",
-      "zht": "交通出行",
-      "en": "Transit"
-    },
-    "bg_color": "bg-sky-50 text-sky-700 border-sky-200",
-    "date": "2026-06-10",
-    "title": {
-      "zh": "MTA 地铁周末改线与延误实时查询",
-      "zht": "MTA 地鐵週末改線與延誤實時查詢",
-      "en": "MTA Subway Weekend Service Changes & Alerts"
-    },
-    "desc": {
-      "zh": "由于夏季轨道维护，纽约地铁周末改线频繁。建议出行前通过 MTA 官方 Alerts 页面查询最新动态，避免在站台盲目等待，耽误行程。",
-      "zht": "由於夏季軌道維護，紐約地鐵週末改線頻繁。建議出行前通過 MTA 官方 Alerts 頁面查詢最新動態，避免在站台盲目等待，耽誤行程。",
-      "en": "Due to summer track maintenance, weekend subway service changes are frequent. Check the official MTA Alerts page before traveling to avoid long platform waits."
-    },
-    "source": "MTA Alerts",
-    "url": "https://new.mta.info/alerts",
-    "borough": {
-      "zh": "全市",
-      "zht": "全市",
-      "en": "Citywide"
-    }
-  },
-  {
-    "id": "e9",
-    "category": {
-      "zh": "交通出行",
-      "zht": "交通出行",
-      "en": "Transit"
-    },
-    "bg_color": "bg-sky-50 text-sky-700 border-sky-200",
-    "date": "2026-06-11",
-    "title": {
-      "zh": "JFK 肯尼迪机场快线巴士 (Express Bus) 乘车指南",
-      "zht": "JFK 肯尼迪機場快線巴士 (Express Bus) 乘車指南",
-      "en": "JFK Airport Express Bus Travel Guide"
-    },
-    "desc": {
-      "zh": "往返曼哈顿中城与 JFK 机场的最省钱公共交通方式之一。单程仅需 $19.00，配有行李架和免费 Wi-Fi，比打车省下近 $60 美元。",
-      "zht": "往返曼哈頓中城與 JFK 機場的最省錢公共交通方式之一。單程僅需 $19.00，配有行李架和免費 Wi-Fi，比打車省下近 $60 美元。",
-      "en": "One of the most cost-effective ways to travel between Midtown Manhattan and JFK Airport. Single ticket is $19.00, featuring luggage racks and free Wi-Fi."
-    },
-    "source": "JFK Airport",
-    "url": "https://www.jfkairport.com/to-from-airport/public-transportation",
-    "borough": {
-      "zh": "全市",
-      "zht": "全市",
-      "en": "Citywide"
-    }
-  },
-  {
-    "id": "e10",
-    "category": {
-      "zh": "交通出行",
-      "zht": "交通出行",
-      "en": "Transit"
-    },
-    "bg_color": "bg-sky-50 text-sky-700 border-sky-200",
-    "date": "2026-05-25",
-    "title": {
-      "zh": "NYC Ferry 纽约东河渡轮夏季时刻表启用",
-      "zht": "NYC Ferry 紐約東河渡輪夏季時刻表啟用",
-      "en": "NYC Ferry Summer Schedule Activation"
-    },
-    "desc": {
-      "zh": "纽约渡轮（NYC Ferry）正式启用夏季时刻表，增加了往返皇后区 Astoria、长岛市、曼哈顿华埠及布鲁克林 DUMBO 的航班频次，单程票价仅 $4.00。",
-      "zht": "紐約渡輪（NYC Ferry）正式啟用夏季時刻表，增加了往返皇后區 Astoria、長島市、曼哈頓華埠及布魯克林 DUMBO 的航班頻次，單程票價僅 $4.00。",
-      "en": "NYC Ferry has launched its summer schedule, increasing frequencies between Astoria, Long Island City, Manhattan Chinatown, and Brooklyn DUMBO. Single ticket is $4.00."
-    },
-    "source": "NYC Ferry",
-    "url": "https://www.ferry.nyc/routes-and-schedules/",
-    "borough": {
-      "zh": "全市",
-      "zht": "全市",
-      "en": "Citywide"
-    }
-  },
-  {
-    "id": "e11",
-    "category": {
-      "zh": "语言教育",
-      "zht": "語言教育",
-      "en": "Education"
-    },
-    "bg_color": "bg-indigo-50 text-indigo-700 border-indigo-200",
-    "date": "2026-06-15",
-    "title": {
-      "zh": "皇后区公共图书馆免费成人 ESL 英语班",
-      "zht": "皇后區公共圖書館免費成人 ESL 英語班",
-      "en": "Queens Public Library Free Adult ESL Classes"
-    },
-    "desc": {
-      "zh": "面向 17 岁以上纽约居民，完全免费。不限移民身份，教材全免。提供白天、晚间及周末班，在法拉盛主馆、Elmhurst、Bayside 等分馆上课。",
-      "zht": "面向 17 歲以上紐約居民，完全免費。不限移民身份，教材全免。提供白天、晚間及週末班，在法拉盛主館、Elmhurst、Bayside 等分館上課。",
-      "en": "Free English classes for NYC residents aged 17+. No immigration status required, free textbooks. Day, evening, and weekend sessions available at Flushing, Elmhurst, and Bayside."
-    },
-    "source": "Queens Library",
-    "url": "https://www.queenslibrary.org/programs-services/esol-family-literacy/esol",
-    "borough": {
-      "zh": "皇后区",
-      "zht": "皇后區",
-      "en": "Queens"
-    }
-  },
-  {
-    "id": "e12",
-    "category": {
-      "zh": "语言教育",
-      "zht": "語言教育",
-      "en": "Education"
-    },
-    "bg_color": "bg-indigo-50 text-indigo-700 border-indigo-200",
-    "date": "2026-06-16",
-    "title": {
-      "zh": "纽约公共图书馆 (NYPL) 免费成人英语与入籍辅导班",
-      "zht": "紐約公共圖書館 (NYPL) 免費成人英語與入籍輔導班",
-      "en": "NYPL Free Adult English & Citizenship Classes"
-    },
-    "desc": {
-      "zh": "曼哈顿、布朗士及史泰登岛居民免费英语课程。包含听说读写全方位提升，并设有专门的入籍英语辅导班，同样不限身份，完全免费。",
-      "zht": "曼哈頓、布朗士及史泰登島居民免費英語課程。包含聽說讀寫全方位提升，並設有專門的入籍英語輔導班，同樣不限身份，完全免費。",
-      "en": "Free English classes for Manhattan, Bronx, and Staten Island residents. Includes ESOL and citizenship preparation classes. Completely free and confidential."
-    },
-    "source": "NYPL",
-    "url": "https://www.nypl.org/help/community-outreach/immigrant-services/learn-english",
-    "borough": {
-      "zh": "曼哈顿",
-      "zht": "曼哈頓",
-      "en": "Manhattan"
-    }
-  },
-  {
-    "id": "e13",
-    "category": {
-      "zh": "语言教育",
-      "zht": "語言教育",
-      "en": "Education"
-    },
-    "bg_color": "bg-indigo-50 text-indigo-700 border-indigo-200",
-    "date": "2026-06-05",
-    "title": {
-      "zh": "布鲁克林公共图书馆 (BPL) 免费成人基础读写班",
-      "zht": "布魯克林公共圖書館 (BPL) 免費成人基礎讀寫班",
-      "en": "Brooklyn Public Library Free Adult Literacy Classes"
-    },
-    "desc": {
-      "zh": "专为新移民和成人设计的英语基础读写与口语班。在布鲁克林八大道（Sunset Park）等华人聚居区分馆设有线下授课点，名额有限，需提前登记。",
-      "zht": "專為新移民和成人設計的英語基礎讀寫與口語班。在布魯克林八大道（Sunset Park）等華人聚居區分館設有線下授課點，名額有限，需提前登記。",
-      "en": "Designed for adult learners and new immigrants to improve basic literacy and speaking skills. Classes available at Sunset Park and other Brooklyn branches. Registration required."
-    },
-    "source": "Brooklyn Library",
-    "url": "https://www.bklynlibrary.org/calendar/adult-basic-education",
-    "borough": {
-      "zh": "布鲁克林",
-      "zht": "布魯克林",
-      "en": "Brooklyn"
-    }
-  },
-  {
-    "id": "e14",
-    "category": {
-      "zh": "语言教育",
-      "zht": "語言教育",
-      "en": "Education"
-    },
-    "bg_color": "bg-indigo-50 text-indigo-700 border-indigo-200",
-    "date": "2026-06-01",
-    "title": {
-      "zh": "皇后区图书馆 2026 暑期少儿阅读挑战赛开放",
-      "zht": "皇后區圖書館 2026 暑期少兒閱讀挑戰賽開放",
-      "en": "Queens Library 2026 Summer Reading Challenge"
-    },
-    "desc": {
-      "zh": "鼓励 5-12 岁少儿在暑期保持阅读习惯。参与挑战并记录阅读进度的孩子可免费获得精美图书、纪念章，并有机会参与分馆举办的暑期派对。",
-      "zht": "鼓勵 5-12 歲少兒在暑期保持閱讀習慣。參與挑戰並記錄閱讀進度的孩子可免費獲得精美圖書、紀念章，並有機會參與分館舉辦的暑期派對。",
-      "en": "Encourages children aged 5-12 to read during summer. Kids tracking their reading progress can win free books, badges, and invitations to branch summer parties."
-    },
-    "source": "Queens Library",
-    "url": "https://www.queenslibrary.org/",
-    "borough": {
-      "zh": "皇后区",
-      "zht": "皇后區",
-      "en": "Queens"
-    }
-  },
-  {
-    "id": "e15",
-    "category": {
-      "zh": "社区安全",
-      "zht": "社區安全",
-      "en": "Safety"
-    },
-    "bg_color": "bg-rose-50 text-red-700 border-rose-200",
-    "date": "2026-06-17",
-    "title": {
-      "zh": "法拉盛 109 警局社区协调委员会月度会议",
-      "zht": "法拉盛 109 警局社區協調委員會月度會議",
-      "en": "NYPD 109th Precinct Community Council Meeting"
-    },
-    "desc": {
-      "zh": "法拉盛 109 警局举办的月度警民会议，向居民通报近期治安情况、防诈骗提示，并现场解答居民关于社区治安、违章停车等问题的提问，现场提供中文翻译。",
-      "zht": "法拉盛 109 警局舉辦的月度警民會議，向居民通報近期治安情況、防詐騙提示，並現場解答居民關於社區治安、違章停車等問題的提問，現場提供中文翻譯。",
-      "en": "Monthly public meeting at the 109th Precinct in Flushing. Get updates on local crime trends, safety tips, and ask questions directly to precinct leadership. Chinese translation provided."
-    },
-    "source": "NYPD 109 Precinct",
-    "url": "https://www.nyc.gov/site/nypd/bureaus/patrol/precincts/109th-precinct.page",
-    "borough": {
-      "zh": "皇后区",
-      "zht": "皇后區",
-      "en": "Queens"
-    }
-  },
-  {
-    "id": "e16",
-    "category": {
-      "zh": "社区安全",
-      "zht": "社區安全",
-      "en": "Safety"
-    },
-    "bg_color": "bg-rose-50 text-red-700 border-rose-200",
-    "date": "2026-05-28",
-    "title": {
-      "zh": "布鲁克林 72 警局防诈骗与入室盗窃宣讲会",
-      "zht": "布魯克林 72 警局防詐騙與入室盜竊宣講會",
-      "en": "NYPD 72nd Precinct Anti-Scam & Burglary Seminar"
-    },
-    "desc": {
-      "zh": "针对布鲁克林八大道（Sunset Park）近期频发的针对华人的电信诈骗和入室盗窃，72警局举办专题宣讲会，手把手教居民如何识别诈骗电话、加固住宅防盗。",
-      "zht": "針對布魯克林八大道（Sunset Park）近期頻發的針對華人的電信詐騙和入室盜竊，72警局舉辦專題宣講會，手把手教居民如何識別詐騙電話、加固住宅防盜。",
-      "en": "Addressing recent scams and burglaries targeting Chinese residents in Sunset Park, the 72nd Precinct hosts a seminar on identifying phone scams and securing homes."
-    },
-    "source": "NYPD 72 Precinct",
-    "url": "https://www.nyc.gov/site/nypd/bureaus/patrol/precincts/72nd-precinct.page",
-    "borough": {
-      "zh": "布鲁克林",
-      "zht": "布魯克林",
-      "en": "Brooklyn"
-    }
-  },
-  {
-    "id": "e17",
-    "category": {
-      "zh": "社区安全",
-      "zht": "社區安全",
-      "en": "Safety"
-    },
-    "bg_color": "bg-rose-50 text-red-700 border-rose-200",
-    "date": "2026-06-02",
-    "title": {
-      "zh": "纽约市紧急管理局飓风季节防灾准备指南",
-      "zht": "紐約市緊急管理局颶風季節防災準備指南",
-      "en": "NYC Emergency Management Hurricane Season Guide"
-    },
-    "desc": {
-      "zh": "纽约市紧急管理局（NYCEM）发布 2026 年度飓风季防灾指南。详细列出了全市各区的疏散避难所地图、紧急物资打包清单，并提供中文版 PDF 下载。",
-      "zht": "紐約市緊急管理局（NYCEM）發布 2026 年度颶風季防災指南。詳細列出了全市各區的疏散避難所地圖、緊急物資打包清單，並提供中文版 PDF 下載。",
-      "en": "NYC Emergency Management has released the 2026 Hurricane Guide, detailing evacuation zone maps, emergency supply checklists, and safety protocols. Chinese PDF available."
-    },
-    "source": "NYC Emergency Mgmt",
-    "url": "https://www.nyc.gov/site/em/ready/hurricane-guides.page",
-    "borough": {
-      "zh": "全市",
-      "zht": "全市",
-      "en": "Citywide"
-    }
-  },
-  {
-    "id": "e18",
-    "category": {
-      "zh": "社区安全",
-      "zht": "社區安全",
-      "en": "Safety"
-    },
-    "bg_color": "bg-rose-50 text-red-700 border-rose-200",
-    "date": "2026-05-15",
-    "title": {
-      "zh": "曼哈顿华埠 5 警局治安警报与防抢劫讲座",
-      "zht": "曼哈頓華埠 5 警局治安警報與防搶劫講座",
-      "en": "NYPD 5th Precinct Safety Alert & Robbery Prevention"
-    },
-    "desc": {
-      "zh": "五分局在华埠中华公所举办治安讲座，向社区商家和居民通报近期街头抢劫趋势，并演示遭遇抢劫时的自救与报警流程，现场发放防狼喷雾和警报器。",
-      "zht": "五分局在華埠中華公所舉辦治安講座，向社區商家和居民通報近期街頭搶劫趨勢，並演示遭遇搶劫時的自救與報警流程，現場發放防狼噴霧和警報器。",
-      "en": "The 5th Precinct hosts a safety seminar at CCBA Chinatown, updating residents on street robbery trends and demonstrating self-defense and reporting protocols."
-    },
-    "source": "NYPD 5 Precinct",
-    "url": "https://www.nyc.gov/site/nypd/bureaus/patrol/precincts/5th-precinct.page",
-    "borough": {
-      "zh": "曼哈顿",
-      "zht": "曼哈頓",
-      "en": "Manhattan"
-    }
-  },
-  {
-    "id": "e19",
-    "category": {
-      "zh": "市政议员",
-      "zht": "市政議員",
-      "en": "Civic"
-    },
-    "bg_color": "bg-amber-50 text-amber-700 border-amber-200",
-    "date": "每周四",
-    "title": {
-      "zh": "市议员黄敏仪办公室免费法律咨询服务",
-      "zht": "市議員黃敏儀辦公室免費法律諮詢服務",
-      "en": "Council Member Sandra Ung Free Legal Clinic"
-    },
-    "desc": {
-      "zh": "法拉盛市议员黄敏仪（Sandra Ung）办公室联合专业公益律师，为选区居民提供免费的法律咨询，涵盖租务纠纷、移民、家庭法等。提供中文翻译服务。",
-      "zht": "法拉盛市議員黃敏儀（Sandra Ung）辦公室聯合專業公益律師，為選區居民提供免費的法律諮詢，涵蓋租務糾紛、移民、家庭法等。提供中文翻譯服務。",
-      "en": "Council Member Sandra Ung's office hosts a free legal consultation clinic in Flushing covering housing disputes, immigration, and family law. Chinese translation available."
-    },
-    "source": "Sandra Ung Office",
-    "url": "https://council.nyc.gov/sandra-ung/",
-    "borough": {
-      "zh": "皇后区",
-      "zht": "皇后區",
-      "en": "Queens"
-    }
-  },
-  {
-    "id": "e20",
-    "category": {
-      "zh": "市政议员",
-      "zht": "市政議員",
-      "en": "Civic"
-    },
-    "bg_color": "bg-amber-50 text-amber-700 border-amber-200",
-    "date": "2026-05-18",
-    "title": {
-      "zh": "州参议员刘醇逸办公室免费选民登记协助",
-      "zht": "州參議員劉醇逸辦公室免費選民登記協助",
-      "en": "Senator John Liu Free Voter Registration Drive"
-    },
-    "desc": {
-      "zh": "刘醇逸（John Liu）议员办公室在法拉盛主街设立临时服务台，协助符合条件的华人居民填写选民登记表，并解答关于邮寄选票、投票站查询等疑问。",
-      "zht": "劉醇逸（John Liu）議員辦公室在法拉盛主街設立臨時服務台，協助符合條件的華人居民填寫選民登記表，並解答關於郵寄選票、投票站查詢等疑問。",
-      "en": "Senator John Liu's office hosts a mobile voter registration drive on Flushing Main Street, helping eligible residents register to vote and find polling sites."
-    },
-    "source": "John Liu Office",
-    "url": "https://www.nysenate.gov/senators/john-c-liu",
-    "borough": {
-      "zh": "皇后区",
-      "zht": "皇后區",
-      "en": "Queens"
-    }
-  },
-  {
-    "id": "e21",
-    "category": {
-      "zh": "市政议员",
-      "zht": "市政議員",
-      "en": "Civic"
-    },
-    "bg_color": "bg-amber-50 text-amber-700 border-amber-200",
-    "date": "2026-06-11",
-    "title": {
-      "zh": "纽约市选民登记截止日期与投票站查询系统",
-      "zht": "紐約市選民登記截止日期與投票站查詢系統",
-      "en": "NYC Voter Registration & Polling Site Locator"
-    },
-    "desc": {
-      "zh": "纽约市选举局官方查询系统。输入您的纽约居住地址，即可一键查询您专属的投票站地址、开放时间，以及本选区内所有的候选人名单。",
-      "zht": "紐約市選舉局官方查詢系統。輸入您的紐約居住地址，即可一鍵查詢您專屬的投票站地址、開放時間，以及本選區內所有的候選人名單。",
-      "en": "Official NYC Board of Elections portal. Enter your home address to instantly find your assigned polling location, hours, and sample ballots."
-    },
-    "source": "NYC Board of Elections",
-    "url": "https://vote.nyc/",
-    "borough": {
-      "zh": "全市",
-      "zht": "全市",
-      "en": "Citywide"
-    }
-  },
-  {
-    "id": "e22",
-    "category": {
-      "zh": "公园亲子",
-      "zht": "公園親子",
-      "en": "Recreation"
-    },
-    "bg_color": "bg-teal-50 text-teal-700 border-teal-200",
-    "date": "每周三/周日",
-    "title": {
-      "zh": "皇后区植物园 (QGB) 免费开放时段",
-      "zht": "皇后區植物園 (QGB) 免費開放時段",
-      "en": "Queens Botanical Garden Free Admission Hours"
-    },
-    "desc": {
-      "zh": "皇后区植物园在指定时段对公众免费开放，无需购买门票。非常适合法拉盛本地家庭带孩子亲近自然、散步休闲。地址：43-50 Main St, Flushing。",
-      "zht": "皇后區植物園在指定時段對公眾免費開放，無需購買門票。非常適合法拉盛本地家庭帶孩子親近自然、散步休閒。地址：43-50 Main St, Flushing。",
-      "en": "Queens Botanical Garden offers free admission during designated hours (Wed 3-6 PM, Sun 9-11 AM). Perfect for Flushing families to enjoy nature. Location: 43-50 Main St."
-    },
-    "source": "Queens Botanical Garden",
-    "url": "https://queensbotanical.org/hours-admission/",
-    "borough": {
-      "zh": "皇后区",
-      "zht": "皇后區",
-      "en": "Queens"
-    }
-  },
-  {
-    "id": "e23",
-    "category": {
-      "zh": "公园亲子",
-      "zht": "公園親子",
-      "en": "Recreation"
-    },
-    "bg_color": "bg-teal-50 text-teal-700 border-teal-200",
-    "date": "2026-06-27",
-    "title": {
-      "zh": "纽约市公共室外游泳池免费开放通知",
-      "zht": "紐約市公共室外游泳池免費開放通知",
-      "en": "NYC Public Outdoor Pools Free Summer Opening"
-    },
-    "desc": {
-      "zh": "纽约市公园局（NYC Parks）宣布全市公共室外泳池将于6月27日起免费对公众开放。法拉盛附近的 Fisher Pool 等均在列，是夏季消暑亲子的绝佳免费去处。",
-      "zht": "紐約市公園局（NYC Parks）宣布全市公共室外泳池將於6月27日起免費對公眾開放。法拉盛附近的 Fisher Pool 等均在列，是夏季消暑親子的絕佳免費去處。",
-      "en": "NYC Parks outdoor pools open for the summer season starting June 27. Admission is completely free at all locations, including Fisher Pool near Flushing."
-    },
-    "source": "NYC Parks",
-    "url": "https://www.nycgovparks.org/facilities/outdoor-pools",
-    "borough": {
-      "zh": "全市",
-      "zht": "全市",
-      "en": "Citywide"
-    }
-  },
-  {
-    "id": "e24",
-    "category": {
-      "zh": "公园亲子",
-      "zht": "公園親子",
-      "en": "Recreation"
-    },
-    "bg_color": "bg-teal-50 text-teal-700 border-teal-200",
-    "date": "2026-06-01",
-    "title": {
-      "zh": "纽约市公园局免费夏季露天电影节排片表",
-      "zht": "紐約市公園局免費夏季露天電影節排片表",
-      "en": "NYC Parks Free Summer Movies Under the Stars"
-    },
-    "desc": {
-      "zh": "NYC Parks 宣布在全市数十个公共公园举办免费露天电影放映活动。包含多部迪士尼动画片、好莱坞大片，无需预约，带上野餐垫即可前往观影。",
-      "zht": "NYC Parks 宣佈在全市數十個公共公園舉辦免費露天電影放映活動。包含多部迪士尼動畫片、好萊塢大片，無需預約，帶上野餐墊即可前往觀影。",
-      "en": "NYC Parks hosts free outdoor movie screenings across parks in all five boroughs. Features Disney animations and blockbuster hits. No registration required."
-    },
-    "source": "NYC Parks",
-    "url": "https://www.nycgovparks.org/events/free-summer-movies",
-    "borough": {
-      "zh": "全市",
-      "zht": "全市",
-      "en": "Citywide"
-    }
-  },
-  {
-    "id": "e25",
-    "category": {
-      "zh": "公园亲子",
-      "zht": "公園親子",
-      "en": "Recreation"
-    },
-    "bg_color": "bg-teal-50 text-teal-700 border-teal-200",
-    "date": "2026-06-13",
-    "title": {
-      "zh": "布鲁克林展望公园 (Prospect Park) 免费亲子手工课",
-      "zht": "布魯克林展望公園 (Prospect Park) 免費親子手工課",
-      "en": "Prospect Park Free Family Nature Craft Workshop"
-    },
-    "desc": {
-      "zh": "展望公园联盟举办的周末亲子自然探索与手工制作课程。专业导师带领孩子们认识公园植物，并利用落叶和树枝制作创意手工作品，完全免费。",
-      "zht": "展望公園聯盟舉辦的週末親子自然探索與手工製作課程。專業導師帶領孩子們認識公園植物，並利用落葉和樹枝製作創意手工作品，完全免費。",
-      "en": "Prospect Park Alliance hosts a weekend nature exploration and craft workshop. Kids learn about local plants and make creative crafts using leaves and twigs."
-    },
-    "source": "Prospect Park",
-    "url": "https://www.prospectpark.org/",
-    "borough": {
-      "zh": "布鲁克林",
-      "zht": "布魯克林",
-      "en": "Brooklyn"
-    }
-  },
-  {
-    "id": "e26",
-    "category": {
-      "zh": "文化展览",
-      "zht": "文化展覽",
-      "en": "Culture"
-    },
-    "bg_color": "bg-purple-50 text-purple-700 border-purple-200",
-    "date": "2026-06-20",
-    "title": {
-      "zh": "法拉盛市政厅 (Flushing Town Hall) 免费社区音乐会",
-      "zht": "法拉盛市政廳 (Flushing Town Hall) 免費社區音樂會",
-      "en": "Flushing Town Hall Free Community Concert"
-    },
-    "desc": {
-      "zh": "法拉盛文艺中心举办的多元文化音乐会，邀请华人传统民乐艺术家现场演奏，旨在促进社区文化交流。门票免费，但需提前在线登记预约名额。",
-      "zht": "法拉盛文藝中心舉辦的多元文化音樂會，邀請華人傳統民樂藝術家現場演奏，旨在促進社區文化交流。門票免費，但需提前在線登記預約名額。",
-      "en": "Flushing Town Hall hosts a free multicultural concert featuring traditional Chinese instruments to promote cultural exchange. Free ticket RSVP required."
-    },
-    "source": "Flushing Town Hall",
-    "url": "https://www.flushingtownhall.org/",
-    "borough": {
-      "zh": "皇后区",
-      "zht": "皇后區",
-      "en": "Queens"
-    }
-  },
-  {
-    "id": "e27",
-    "category": {
-      "zh": "文化展览",
-      "zht": "文化展覽",
-      "en": "Culture"
-    },
-    "bg_color": "bg-purple-50 text-purple-700 border-purple-200",
-    "date": "2026-06-11",
-    "title": {
-      "zh": "大都会艺术博物馆 (The Met) 纽约居民任意付费政策",
-      "zht": "大都會藝術博物館 (The Met) 紐約居民任意付費政策",
-      "en": "The Met Museum Pay-What-You-Wish for NY Residents"
-    },
-    "desc": {
-      "zh": "持有纽约州 ID 或显示纽约地址的账单，即可在大都会博物馆售票处享受「任意付费」(Pay-What-You-Wish) 政策，哪怕付 $1 分钱也能入馆参观。",
-      "zht": "持有紐約州 ID 或顯示紐約地址的賬單，即可在大會堂博物館售票處享受「任意付費」(Pay-What-You-Wish) 政策，哪怕付 $1 分錢也能入館參觀。",
-      "en": "With a valid NY State ID or bill showing NY address, residents can enjoy 'Pay-What-You-Wish' admission at Met ticket counters. Even $0.01 is accepted."
-    },
-    "source": "The Met Museum",
-    "url": "https://www.metmuseum.org/visit/plan-your-visit",
-    "borough": {
-      "zh": "曼哈顿",
-      "zht": "曼哈頓",
-      "en": "Manhattan"
-    }
-  },
-  {
-    "id": "e28",
-    "category": {
-      "zh": "文化展览",
-      "zht": "文化展覽",
-      "en": "Culture"
-    },
-    "bg_color": "bg-purple-50 text-purple-700 border-purple-200",
-    "date": "每周五",
-    "title": {
-      "zh": "纽约现代艺术博物馆 (MoMA) 免费开放夜",
-      "zht": "紐約現代藝術博物館 (MoMA) 免費開放夜",
-      "en": "MoMA Free Friday Admission for NYC Residents"
-    },
-    "desc": {
-      "zh": "MoMA 针对纽约市居民提供每周五下午的免费入馆时段。需提前在官网预约免费门票，现场需出示纽约居住证明，是欣赏世界级现代艺术的绝佳机会。",
-      "zht": "MoMA 針對紐約市居民提供每週五下午的免費入館時段。需提前在官網預約免費門票，現場需出示紐約居住證明，是欣賞世界級現代藝術的絕佳機會。",
-      "en": "MoMA offers free admission for NYC residents on Friday afternoons (4:00 - 8:00 PM). Tickets must be reserved online in advance with proof of residency."
-    },
-    "source": "MoMA",
-    "url": "https://www.moma.org/calendar/programs/159",
-    "borough": {
-      "zh": "曼哈顿",
-      "zht": "曼哈頓",
-      "en": "Manhattan"
-    }
-  },
-  {
-    "id": "e29",
-    "category": {
-      "zh": "文化展览",
-      "zht": "文化展覽",
-      "en": "Culture"
-    },
-    "bg_color": "bg-purple-50 text-purple-700 border-purple-200",
-    "date": "每周五",
-    "title": {
-      "zh": "纽约科学馆 (NYSCI) 皇后区居民免费开放时段",
-      "zht": "紐約科學館 (NYSCI) 皇后區居民免費開放時段",
-      "en": "New York Hall of Science Free Hours for Queens Residents"
-    },
-    "desc": {
-      "zh": "位于 Corona 公园的纽约科学馆，每周五下午向皇后区居民免费开放。馆内拥有数百个互动科学展项，非常适合周末带孩子进行科普探索。",
-      "zht": "位於 Corona 公園的紐約科學館，每週五下午向皇后區居民免費開放。館內擁有數百個互動科學展項，非常適合週末帶孩子進行科普探索。",
-      "en": "NYSCI in Flushing Meadows Corona Park offers free admission to Queens residents on Friday afternoons (2:00 - 5:00 PM). Features hundreds of interactive science exhibits."
-    },
-    "source": "NYSCI",
-    "url": "https://nysci.org/visit",
-    "borough": {
-      "zh": "皇后区",
-      "zht": "皇后區",
-      "en": "Queens"
-    }
-  },
-  {
-    "id": "e30",
-    "category": {
-      "zh": "公益志愿",
-      "zht": "公益志願",
-      "en": "Charity"
-    },
-    "bg_color": "bg-fuchsia-50 text-fuchsia-700 border-fuchsia-200",
-    "date": "每周五",
-    "title": {
-      "zh": "纽约慈济基金会 (Tzu Chi) 食物发放志愿服务",
-      "zht": "紐約慈濟基金會 (Tzu Chi) 食物發放志願服務",
-      "en": "Tzu Chi New York Free Food Distribution Volunteering"
-    },
-    "desc": {
-      "zh": "慈济纽约分会每周五在法拉盛会所向低收入家庭免费分发新鲜蔬菜、水果和干粮。同时招募双语志愿者协助现场秩序与物资搬运，欢迎报名奉献爱心。",
-      "zht": "慈濟紐約分會每週五在法拉盛會所向低收入家庭免費分發新鮮蔬菜、水果和乾糧。同時招募雙語志願者協助現場秩序與物資搬運，歡迎報名奉獻愛心。",
-      "en": "Tzu Chi NY distributes free fresh produce and groceries to low-income families in Flushing every Friday. Bilingual volunteers are needed to help pack and distribute."
-    },
-    "source": "Tzu Chi NY",
-    "url": "https://tzuchi.us/offices/new-york",
-    "borough": {
-      "zh": "皇后区",
-      "zht": "皇后區",
-      "en": "Queens"
-    }
-  },
-  {
-    "id": "e31",
-    "category": {
-      "zh": "公益志愿",
-      "zht": "公益志願",
-      "en": "Charity"
-    },
-    "bg_color": "bg-fuchsia-50 text-fuchsia-700 border-fuchsia-200",
-    "date": "2026-06-11",
-    "title": {
-      "zh": "纽约市食物银行 (Food Bank For NYC) 社区厨房志愿招募",
-      "zht": "紐約市食物銀行 (Food Bank For NYC) 社區廚房志願招募",
-      "en": "Food Bank For NYC Community Kitchen Volunteer Drive"
-    },
-    "desc": {
-      "zh": "纽约市最大的扶贫公益组织，长期在曼哈顿华埠、布鲁克林等社区厨房招募志愿者，协助包装和发放免费餐食，欢迎华人青年和留学生参与，可开具义工证明。",
-      "zht": "紐約市最大的扶貧公益組織，長期在曼哈頓華埠、布魯克林等社區廚房招募志願者，協助包裝和發放免費餐食，歡迎華人青年和留學生參與，可開具義工證明。",
-      "en": "NYC's largest hunger-relief organization recruits volunteers for community kitchens in Chinatown and Brooklyn to pack and distribute free meals. Volunteer certificates provided."
-    },
-    "source": "Food Bank For NYC",
-    "url": "https://www.foodbanknyc.org/volunteer/",
-    "borough": {
-      "zh": "全市",
-      "zht": "全市",
-      "en": "Citywide"
-    }
-  },
-  {
-    "id": "e32",
-    "category": {
-      "zh": "消费促销",
-      "zht": "消費促销",
-      "en": "Promos"
-    },
-    "bg_color": "bg-orange-50 text-orange-700 border-orange-200",
-    "date": "每周五更新",
-    "title": {
-      "zh": "法拉盛新世界超市本周特价促销海报 (民间搜集)",
-      "zht": "法拉盛新世界超市本周特價促銷海報 (民間搜集)",
-      "en": "Flushing New World Supermarket Weekly Specials"
-    },
-    "desc": {
-      "zh": "法拉盛地标新世界商城地下超市本周最新折扣海报。涵盖游水海鲜、新鲜时蔬、南北杂货特价，帮华人家庭精打细算省下买菜钱。",
-      "zht": "法拉盛地標新世界商城地下超市本周最新特價促銷海報。涵蓋遊水海鮮、新鮮時蔬、南北雜貨特價，幫華人家庭精打細算省下買菜錢。",
-      "en": "Weekly discount catalog from New World Supermarket in Flushing. Save on fresh seafood, vegetables, and Asian groceries to help families budget effectively."
-    },
-    "source": "New World Mall",
-    "url": "https://www.newworldmallny.com/",
-    "borough": {
-      "zh": "皇后区",
-      "zht": "皇后區",
-      "en": "Queens"
-    }
-  },
-  {
-    "id": "c1",
-    "is_classified": true,
-    "category": {
-      "zh": "房屋出租",
-      "zht": "房屋出租",
-      "en": "Rentals"
-    },
-    "bg_color": "bg-amber-50 text-amber-700 border-amber-200",
-    "date": "2026-06-11",
-    "title": {
-      "zh": "【法拉盛中心】全新公寓单房出租 · 近地铁站/超市",
-      "zht": "【法拉盛中心】全新公寓單房出租 · 近地鐵站/超市",
-      "en": "[Flushing Center] Brand New Apartment Single Room for Rent"
-    },
-    "desc": {
-      "zh": "法拉盛 Main St 步行 5 分钟，全新电梯公寓，大单房带独立卫浴，光线极佳。限一人居住，无烟无宠。租金含水网，随时入住。",
-      "zht": "法拉盛 Main St 步行 5 分鐘，全新電梯公寓，大單房帶獨立衛浴，光線極佳。限一人居住，無煙無寵。租金含水網，隨時入住。",
-      "en": "5-min walk to Flushing Main St, elevator building. Large bedroom with private bath, excellent sunlight. Single occupant only, no smoking/pets. Utilities included."
-    },
-    "source": "房东直租",
-    "price": {
-      "zh": "$950 /月",
-      "zht": "$950 /月",
-      "en": "$950 /mo"
-    },
-    "contact": {
-      "person": "李女士 (Ms. Li)",
-      "wechat": "nyclife_li",
-      "phone": "917-555-0192"
-    },
-    "borough": {
-      "zh": "皇后区",
-      "zht": "皇后區",
-      "en": "Queens"
-    },
-    "city": "纽约"
-  },
-  {
-    "id": "c2",
-    "is_classified": true,
-    "category": {
-      "zh": "生意转让",
-      "zht": "生意轉讓",
-      "en": "Business Transfer"
-    },
-    "bg_color": "bg-amber-50 text-amber-700 border-amber-200",
-    "date": "2026-06-10",
-    "title": {
-      "zh": "【贝赛 Bayside】旺铺奶茶甜品店低价转让 · 客源稳定",
-      "zht": "【貝賽 Bayside】旺鋪奶茶甜品店低價轉讓 · 客源穩定",
-      "en": "[Bayside] High-Traffic Bubble Tea & Dessert Shop for Sale"
-    },
-    "desc": {
-      "zh": "位于贝赛 Northern Blvd 繁华地段，周边多所高中，客源极其稳定。设备齐全（制冰机、封口机、冷柜等），接手即可盈利，因店主回国忍痛转让。",
-      "zht": "位於貝賽 Northern Blvd 繁華地段，周邊多所高中，客源極其穩定。設備齊全（製冰機、封口機、冷櫃等），接手即可盈利，因店主回國忍痛轉讓。",
-      "en": "Prime location on Northern Blvd, Bayside. Stable customer base with nearby high schools. Fully equipped. Turnkey operation. Selling due to relocation."
-    },
-    "source": "独家代理",
-    "price": {
-      "zh": "$45,000 (可议)",
-      "zht": "$45,000 (可議)",
-      "en": "$45,000 (OBO)"
-    },
-    "contact": {
-      "person": "陈经纪 (Agent Chen)",
-      "wechat": "bayside_broker",
-      "phone": "718-555-0143"
-    },
-    "borough": {
-      "zh": "皇后区",
-      "zht": "皇后區",
-      "en": "Queens"
-    },
-    "city": "纽约"
-  },
-  {
-    "id": "c3",
-    "is_classified": true,
-    "category": {
-      "zh": "二手闲置",
-      "zht": "二手閒置",
-      "en": "Second-hand"
-    },
-    "bg_color": "bg-amber-50 text-amber-700 border-amber-200",
-    "date": "2026-06-09",
-    "title": {
-      "zh": "【九成新】2024款 MacBook Pro 14寸 M3 芯片 16G+512G",
-      "zht": "【九成新】2024款 MacBook Pro 14寸 M3 芯片 16G+512G",
-      "en": "[95% New] 2024 MacBook Pro 14' M3 Chip 16G+512G"
-    },
-    "desc": {
-      "zh": "自用九九新，无任何划痕，电池健康度 98%，带原装充电器和包装盒。法拉盛面交，支持当场验机，非诚勿扰。",
-      "zht": "自用九九新，無任何劃痕，電池健康度 98%，帶原裝充電器和包裝盒。法拉盛面交，支持當場驗機，非誠勿擾。",
-      "en": "Personal use, mint condition, zero scratches. 98% battery health. Comes with original charger and box. Cash meet-up in Flushing only."
-    },
-    "source": "个人闲置",
-    "price": {
-      "zh": "$1,250",
-      "zht": "$1,250",
-      "en": "$1,250"
-    },
-    "contact": {
-      "person": "Alex",
-      "wechat": "alex_tech_ny",
-      "phone": "646-555-0188"
-    },
-    "borough": {
-      "zh": "皇后区",
-      "zht": "皇后區",
-      "en": "Queens"
-    },
-    "city": "纽约"
-  },
-  {
-    "id": "c4",
-    "is_classified": true,
-    "category": {
-      "zh": "求职招聘",
-      "zht": "求職招聘",
-      "en": "Jobs"
-    },
-    "bg_color": "bg-amber-50 text-amber-700 border-amber-200",
-    "date": "2026-06-08",
-    "title": {
-      "zh": "【招聘】法拉盛中心齿科诊所招聘双语前台/前台助理",
-      "zht": "【招聘】法拉盛中心齒科診所招聘雙語前台/前台助理",
-      "en": "[Hiring] Bilingual Dental Receptionist in Flushing Center"
-    },
-    "desc": {
-      "zh": "法拉盛齿科诊所诚聘全职/兼职前台。需流利中英文，做事细心，有责任心，有诊所经验者优先，无经验可培训。薪优，提供带薪假及健康保险。",
-      "zht": "法拉盛齒科診所誠聘全職/兼職前台。需流利中英文，做事細心，有責任心，有診所經驗者優先，無經驗可培訓。薪優，提供帶薪假及健康保險。",
-      "en": "Flushing dental clinic seeks full-time/part-time receptionist. Must be fluent in English & Chinese, detail-oriented. Experience preferred but will train. Paid leave & insurance."
-    },
-    "source": "诊所直聘",
-    "price": {
-      "zh": "$20 - $25 /小时",
-      "zht": "$20 - $25 /小時",
-      "en": "$20 - $25 /hr"
-    },
-    "contact": {
-      "person": "Dr. Wang Office",
-      "wechat": "flushing_dental",
-      "phone": "347-555-0112"
-    },
-    "borough": {
-      "zh": "皇后区",
-      "zht": "皇后區",
-      "en": "Queens"
-    },
-    "city": "纽约"
-  },
-  {
-    "id": "c5",
-    "is_classified": true,
-    "category": {
-      "zh": "房屋出租",
-      "zht": "房屋出租",
-      "en": "Rentals"
-    },
-    "bg_color": "bg-amber-50 text-amber-700 border-amber-200",
-    "date": "2026-06-07",
-    "title": {
-      "zh": "【布鲁克林八大道】独栋住宅二楼整套出租 · 独立门户",
-      "zht": "【布魯克林八大道】獨棟住宅二樓整套出租 · 獨立門戶",
-      "en": "[Brooklyn 8th Ave] House 2nd Floor Apartment for Rent"
-    },
-    "desc": {
-      "zh": "位于布鲁克林八大道华人区，2房1厅1卫，独立出入。光线充足，交通便利，近N线地铁站和各大华人超市，适合小家庭或留学生合租。",
-      "zht": "位於布魯克林八大道華人區，2房1廳1衛，獨立出入。光線充足，交通便利，近N線地鐵站和各大華人超市，適合小家庭或留學生合租。",
-      "en": "Sunset Park 8th Ave area. 2 bedrooms, 1 living room, 1 bath. Private entrance. Bright and clean. Close to N-train and supermarkets. Ideal for small family or students."
-    },
-    "source": "房东直租",
-    "price": {
-      "zh": "$1,850 /月",
-      "zht": "$1,850 /月",
-      "en": "$1,850 /mo"
-    },
-    "contact": {
-      "person": "林先生 (Mr. Lin)",
-      "wechat": "bk_owner_lin",
-      "phone": "917-555-0155"
-    },
-    "borough": {
-      "zh": "布鲁克林",
-      "zht": "布魯克林",
-      "en": "Brooklyn"
-    },
-    "city": "纽约"
-  },
-  {
-    "id": "c6",
-    "is_classified": true,
-    "category": {
-      "zh": "生意转让",
-      "zht": "生意轉讓",
-      "en": "Business Transfer"
-    },
-    "bg_color": "bg-amber-50 text-amber-700 border-amber-200",
-    "date": "2026-06-06",
-    "title": {
-      "zh": "【曼哈顿唐人街】美容美甲老店转让 · 租金便宜",
-      "zht": "【曼哈頓唐人街】美容美甲老店轉讓 · 租金便宜",
-      "en": "[Manhattan Chinatown] Established Nail Salon for Sale"
-    },
-    "desc": {
-      "zh": "位于华埠核心街道，经营多年，老客极多，口碑绝佳。租金在周边属于极低水平，租约长。包含所有美甲桌椅、美容床及库存，接手即可营业。",
-      "zht": "位於華埠核心街道，經營多年，老客極多，口碑絕佳。租金在周邊屬於極低水平，租約長。包含所有美甲桌椅、美容床及庫存，接手即可營業。",
-      "en": "Heart of Chinatown. Long-established nail salon with loyal local clientele. Low rent, long lease. Includes all manicure tables, spa chairs, and inventory."
-    },
-    "source": "店主直转",
-    "price": {
-      "zh": "$32,000",
-      "zht": "$32,000",
-      "en": "$32,000"
-    },
-    "contact": {
-      "person": "张店主 (Owner Zhang)",
-      "wechat": "chinatown_nail",
-      "phone": "212-555-0177"
-    },
-    "borough": {
-      "zh": "曼哈顿",
-      "zht": "曼哈頓",
-      "en": "Manhattan"
-    },
-    "city": "纽约"
-  },
-  {
-    "id": "c7",
-    "is_classified": true,
-    "category": {
-      "zh": "房屋出租",
-      "zht": "房屋出租",
-      "en": "Rentals"
-    },
-    "bg_color": "bg-amber-50 text-amber-700 border-amber-200",
-    "date": "2026-06-05",
-    "title": {
-      "zh": "【波士顿 Malden】近地铁站超大两房一厅出租 · 采光极佳",
-      "zht": "【波士頓 Malden】近地鐵站超大兩房一廳出租 · 採光極佳",
-      "en": "[Boston Malden] Huge 2B1B Apartment Near T-Station for Rent"
-    },
-    "desc": {
-      "zh": "Malden Center 步行 8 分钟，高档公寓两房一厅，带独立洗衣烘干机，周边中餐馆、超市林立，适合留学生或上班族，随时入住。",
-      "zht": "Malden Center 步行 8 分鐘，高檔公寓兩房一廳，帶獨立洗衣烘乾機，周邊中餐館、超市林立，適合留學生或上班族，隨時入住。",
-      "en": "8-min walk to Malden Center T. Luxury 2B1B with in-unit washer/dryer. Close to Chinese supermarkets and restaurants. Ideal for students or professionals."
-    },
-    "source": "房东直租",
-    "price": {
-      "zh": "$2,400 /月",
-      "zht": "$2,400 /月",
-      "en": "$2,400 /mo"
-    },
-    "contact": {
-      "person": "王先生 (Mr. Wang)",
-      "wechat": "boston_rent_wang",
-      "phone": "617-555-0133"
-    },
-    "borough": {
-      "zh": "Malden",
-      "zht": "Malden",
-      "en": "Malden"
-    },
-    "city": "波士顿"
-  },
-  {
-    "id": "c8",
-    "is_classified": true,
-    "category": {
-      "zh": "求职招聘",
-      "zht": "求職招聘",
-      "en": "Jobs"
-    },
-    "bg_color": "bg-amber-50 text-amber-700 border-amber-200",
-    "date": "2026-06-04",
-    "title": {
-      "zh": "【招聘】洛杉矶罗兰岗中餐馆诚聘全职熟手企台/打杂",
-      "zht": "【招聘】洛杉磯羅蘭崗中餐館誠聘全職熟手企台/打雜",
-      "en": "[Hiring] Experienced Waiter/Helper in Rowland Heights, LA"
-    },
-    "desc": {
-      "zh": "罗兰岗繁华商业区中餐馆，诚聘全职熟手企台、后厨打杂各一名。需报税，工作态度认真，手脚勤快。待遇优厚，小费好，包食宿。",
-      "zht": "羅蘭崗繁華商業區中餐館，誠聘全職熟手企台、後廚打雜各一名。需報稅，工作態度認真，手腳勤快。待遇優厚，小費好，包食宿。",
-      "en": "Rowland Heights Chinese restaurant seeks full-time waiter and kitchen helper. Tax reporting required. Hardworking and detail-oriented. Great tips, room & board provided."
-    },
-    "source": "餐馆直聘",
-    "price": {
-      "zh": "$4,500 - $6,000 /月",
-      "zht": "$4,500 - $6,000 /月",
-      "en": "$4,500 - $6,000 /mo"
-    },
-    "contact": {
-      "person": "刘经理 (Manager Liu)",
-      "wechat": "la_food_liu",
-      "phone": "626-555-0122"
-    },
-    "borough": {
-      "zh": "罗兰岗",
-      "zht": "羅蘭崗",
-      "en": "Rowland Heights"
-    },
-    "city": "洛杉矶"
+    return;
   }
-];
+  openModal('modal-post');
+}
 
-    // Global App State
-    var currentLang = 'zh'; // Default to Simplified Chinese
-    var activeCategory = 'all';
-    var activeClassifiedCategory = 'all';
-    var selectedCity = '纽约';
-    var isUserLoggedIn = false;
-    var userProfile = null;
+function submitAd(e) {
+  e.preventDefault();
+  var cat = document.getElementById('f-cat').value;
+  var city = document.getElementById('f-city').value;
+  var title = document.getElementById('f-title').value;
+  var price = document.getElementById('f-price').value;
+  var area = document.getElementById('f-area').value;
+  var desc = document.getElementById('f-desc').value;
+  var person = document.getElementById('f-person').value;
+  var wechat = document.getElementById('f-wechat').value || '无';
+  var phone = document.getElementById('f-phone').value;
+  var payMethod = document.querySelector('input[name="pay"]:checked').value;
+  var payLabel = payMethod === 'wechat' ? '微信支付' : '信用卡 (Stripe)';
 
-    // DOM Elements
-    var langSwitcher = document.getElementById('lang-switcher');
-    var searchInput = document.getElementById('search-input');
-    var boroFilter = document.getElementById('borough-filter');
-    var cityFilter = document.getElementById('city-filter');
-    var officialCategoryContainer = document.getElementById('official-category-filters');
-    var officialFeedList = document.getElementById('official-feed-list');
-    var classifiedsList = document.getElementById('classifieds-list');
-    var resultsCount = document.getElementById('results-count');
+  if (!confirm('【支付确认】\n支付方式：' + payLabel + '\n金额：$5.00/月\n\n点击确定模拟支付成功并发布。')) return;
 
-    // Modals
-    var linkModal = document.getElementById('link-modal');
-    var modalTitle = document.getElementById('modal-title');
-    var modalLinkTrans = document.getElementById('modal-link-trans');
-    var modalLinkRaw = document.getElementById('modal-link-raw');
-    var modalCancelBtn = document.getElementById('modal-cancel-btn');
+  var today = new Date();
+  var dateStr = (today.getMonth()+1).toString().padStart(2,'0') + '-' + today.getDate().toString().padStart(2,'0');
+  var newAd = {
+    id: 'u' + Date.now(),
+    cat: cat,
+    date: dateStr,
+    city: city,
+    area: city + '·' + area,
+    title: title,
+    price: price,
+    desc: desc,
+    contact: { person: person, wechat: wechat, phone: phone }
+  };
+  CLASSIFIEDS.unshift(newAd);
+  alert('🎉 发布成功！您的广告已加入同城分类大厅，审核通过后将推送至微信社群。');
+  closeModal('modal-post');
+  document.getElementById('post-form').reset();
+  renderCL();
+  scrollToSection('sec-classifieds');
+}
 
-    var postAdModal = document.getElementById('post-ad-modal');
-    var contactModal = document.getElementById('contact-modal');
-    var accountModal = document.getElementById('account-modal');
+// ─── Account / Auth ─────────────────────────────────────────────────────────
+function openAccountModal() { openModal('modal-account'); }
 
-    // --- Switch Mobile Navigation Sections ---
-    function switchMobileSection(section) {
-      var secOfficial = document.getElementById('sec-official');
-      var secClassifieds = document.getElementById('sec-classifieds');
-      var btnOfficial = document.getElementById('btn-tab-official');
-      var btnClassifieds = document.getElementById('btn-tab-classifieds');
-      
-      var mNavOfficial = document.getElementById('m-nav-official');
-      var mNavClassifieds = document.getElementById('m-nav-classifieds');
+function switchAuthTab(tab) {
+  document.getElementById('tab-wechat').className = 'auth-tab' + (tab==='wechat'?' active':'');
+  document.getElementById('tab-phone').className = 'auth-tab' + (tab==='phone'?' active':'');
+  document.getElementById('panel-wechat').style.display = tab==='wechat' ? 'flex' : 'none';
+  document.getElementById('panel-phone').style.display = tab==='phone' ? 'flex' : 'none';
+}
 
-      if (section === 'official') {
-        secOfficial.classList.remove('hidden');
-        secClassifieds.classList.add('hidden');
-        btnOfficial.classList.add('active-tab-btn');
-        btnClassifieds.classList.remove('active-tab-btn');
-        
-        mNavOfficial.classList.add('text-brand-600');
-        mNavClassifieds.classList.remove('text-brand-600');
-      } else {
-        secOfficial.classList.add('hidden');
-        secClassifieds.classList.remove('hidden');
-        secClassifieds.classList.add('flex');
-        btnOfficial.classList.remove('active-tab-btn');
-        btnClassifieds.classList.add('active-tab-btn');
-        
-        mNavOfficial.classList.remove('text-brand-600');
-        mNavClassifieds.classList.add('text-brand-600');
-      }
-    }
+function sendSMS() {
+  var ph = document.getElementById('auth-phone').value;
+  if (!ph) { alert('请先输入手机号！'); return; }
+  alert('验证码已发送至 +1 ' + ph + '
+（模拟验证码：123456）');
+}
 
-    // --- Auth Tab Switching ---
-    function switchAuthTab(tab) {
-      var btnWeChat = document.getElementById('btn-auth-wechat');
-      var btnPhone = document.getElementById('btn-auth-phone');
-      var panelWeChat = document.getElementById('panel-auth-wechat');
-      var panelPhone = document.getElementById('panel-auth-phone');
+function mockWeChatLogin() {
+  isLoggedIn = true;
+  userName = '微信用户_' + Math.floor(Math.random()*9000+1000);
+  document.getElementById('nav-login-btn').textContent = '✅ ' + userName;
+  alert('微信认证成功！您现在可以发布分类信息了。');
+  closeModal('modal-account');
+}
 
-      if (tab === 'wechat') {
-        btnWeChat.classList.add('border-brand-600', 'text-brand-600');
-        btnPhone.classList.remove('border-brand-600', 'text-brand-600');
-        panelWeChat.classList.remove('hidden');
-        panelPhone.classList.add('hidden');
-      } else {
-        btnPhone.classList.add('border-brand-600', 'text-brand-600');
-        btnWeChat.classList.remove('border-brand-600', 'text-brand-600');
-        panelPhone.classList.remove('hidden');
-        panelWeChat.classList.add('hidden');
-      }
-    }
+function mockPhoneLogin() {
+  var code = document.getElementById('auth-code').value;
+  if (code !== '123456') { alert('验证码错误，请输入 123456 测试'); return; }
+  isLoggedIn = true;
+  var ph = document.getElementById('auth-phone').value || 'XXXX';
+  userName = '手机用户_' + ph.slice(-4);
+  document.getElementById('nav-login-btn').textContent = '✅ ' + userName;
+  alert('手机认证成功！您现在可以发布分类信息了。');
+  closeModal('modal-account');
+}
 
-    // --- Mock Authentication Handlers ---
-    function openAccountModal() {
-      accountModal.classList.remove('hidden');
-      accountModal.classList.add('flex');
-    }
-    function closeAccountModal() {
-      accountModal.classList.remove('flex');
-      accountModal.classList.add('hidden');
-    }
-    function sendMockSMS() {
-      var phone = document.getElementById('auth-phone-input').value;
-      if (!phone) {
-        alert('请输入您的美国手机号！');
-        return;
-      }
-      alert('【美东生活圈】验证码已发送至 +1 ' + phone + '，请注意查收（模拟验证码：123456）。');
-    }
-    function simulateWeChatLogin() {
-      isUserLoggedIn = true;
-      userProfile = { name: "微信用户_3829", method: "WeChat" };
-      document.getElementById('nav-user-status').textContent = "已认证: " + userProfile.name;
-      alert('微信扫码认证成功！您现在可以发布分类信息了。');
-      closeAccountModal();
-    }
-    def simulatePhoneLogin() {
-      var code = document.getElementById('auth-code-input').value;
-      if (code !== '123456') {
-        alert('验证码错误，请输入 123456 模拟登录！');
-        return;
-      }
-      isUserLoggedIn = true;
-      var phone = document.getElementById('auth-phone-input').value;
-      userProfile = { name: "手机用户_" + phone.slice(-4), method: "SMS" };
-      document.getElementById('nav-user-status').textContent = "已认证: " + userProfile.name;
-      alert('手机短信实名认证成功！您现在可以发布分类信息了。');
-      closeAccountModal();
-    }
+// ─── Utility ────────────────────────────────────────────────────────────────
+function openModal(id) { document.getElementById(id).classList.add('open'); }
+function closeModal(id) { document.getElementById(id).classList.remove('open'); }
+function scrollToSection(id) { document.getElementById(id).scrollIntoView({behavior:'smooth', block:'start'}); }
+function doCopy(text) {
+  navigator.clipboard.writeText(text).then(function(){ alert('已复制: ' + text); }, function(){ alert('请手动复制: ' + text); });
+}
+function changeLang(lang) {
+  // Language switching: placeholder for future full i18n
+  if (lang !== 'zh') alert('繁體中文 / English 切換功能即將上線');
+}
 
-    // --- Translate UI Elements ---
-    function translateUI() {
-      var strings = uiStrings[currentLang];
-      
-      // Document Title
-      document.title = strings.title;
-
-      // Header & Brand
-      document.getElementById('ui-brand-title').textContent = strings.title.split('—')[0].trim();
-      document.getElementById('ui-brand-sub').textContent = strings.brand_sub;
-      document.getElementById('ui-btn-plan').textContent = strings.btn_plan;
-      document.getElementById('ui-btn-feedback').textContent = strings.btn_feedback;
-
-      // Search & Filters
-      searchInput.placeholder = strings.search_placeholder;
-      document.getElementById('opt-boro-citywide').textContent = strings.boro_citywide;
-      document.getElementById('opt-boro-queens').textContent = strings.boro_queens;
-      document.getElementById('opt-boro-brooklyn').textContent = strings.boro_brooklyn;
-      document.getElementById('opt-boro-manhattan').textContent = strings.boro_manhattan;
-      document.getElementById('ui-results-range').textContent = strings.results_range;
-
-      // About Us
-      document.getElementById('ui-about-title').textContent = strings.about_title;
-      document.getElementById('ui-about-p1').textContent = strings.about_p1;
-      document.getElementById('ui-about-p2').textContent = strings.about_p2;
-      document.getElementById('ui-about-tag1').textContent = strings.about_tag1;
-      document.getElementById('ui-about-tag2').textContent = strings.about_tag2;
-      document.getElementById('ui-about-tag3').textContent = strings.about_tag3;
-
-      // Modal
-      modalTitle.textContent = strings.link_option_title;
-      modalLinkRaw.textContent = strings.link_option_raw;
-      modalLinkTrans.textContent = strings.link_option_trans;
-      modalCancelBtn.textContent = strings.cancel;
-
-      // Post Ad Modal
-      document.getElementById('post-modal-title').textContent = strings.post_modal_title;
-      document.getElementById('post-modal-desc').textContent = strings.post_modal_desc;
-      document.getElementById('post-step1').textContent = strings.post_step1;
-      document.getElementById('post-step1-desc').textContent = strings.post_step1_desc;
-      document.getElementById('post-step2').textContent = strings.post_step2;
-      document.getElementById('post-step2-desc').textContent = strings.post_step2_desc;
-      document.getElementById('post-step3').textContent = strings.post_step3;
-      document.getElementById('post-step3-desc').textContent = strings.post_step3_desc;
-      document.getElementById('post-step4').textContent = strings.post_step4;
-      document.getElementById('post-step4-desc').textContent = strings.post_step4_desc;
-      document.getElementById('btn-start-post').textContent = strings.btn_start_post;
-      document.getElementById('btn-post-cancel').textContent = strings.cancel;
-
-      // Contact Modal
-      document.getElementById('contact-modal-title').textContent = strings.contact_modal_title;
-      document.getElementById('contact-modal-desc').textContent = strings.contact_modal_desc;
-      document.getElementById('lbl-contact-person').textContent = strings.contact_person;
-      document.getElementById('lbl-wechat').textContent = strings.wechat_label + ' (WeChat)';
-      document.getElementById('lbl-phone').textContent = strings.phone_label + ' (Phone)';
-      document.getElementById('btn-contact-close').textContent = strings.cancel;
-
-      // Re-render categories and events to match language
-      renderCategoryFilters();
-      renderEvents();
-    }
-
-    // --- Render Category Filters (Horizontal Scrollbar) ---
-    var categoriesMap = {
-      'zh': ['全部', '福利申请', '交通出行', '语言教育', '社区安全', '公园亲子', '文化展览', '市政议员', '公益志愿', '消费促销'],
-      'zht': ['全部', '福利申請', '交通出行', '語言教育', '社區安全', '公園親子', '文化展覽', '市政議員', '公益志願', '消費促銷'],
-      'en': ['All', 'Benefits', 'Transit', 'Education', 'Safety', 'Recreation', 'Culture', 'Civic', 'Charity', 'Promos']
-    };
-
-    function renderCategoryFilters() {
-      var cats = categoriesMap[currentLang];
-      var keys = ['all', '福利申请', '交通出行', '语言教育', '社区安全', '公园亲子', '文化展览', '市政议员', '公益志愿', '消费促销'];
-      
-      var html = "";
-      cats.forEach(function(cat, idx) {
-        var key = keys[idx];
-        var isActive = activeCategory === key;
-        var activeClass = isActive ? 'bg-brand-600 text-white shadow-sm' : 'bg-white text-slate-600 border border-slate-200 hover:bg-slate-100';
-        html += '<button class="cat-btn px-3 py-1.5 text-[11px] font-bold rounded-full transition whitespace-nowrap ' + activeClass + '" data-filter="' + key + '">' + cat + '</button>\n';
-      });
-      officialCategoryContainer.innerHTML = html;
-
-      // Re-bind click events
-      document.querySelectorAll('.cat-btn').forEach(function(btn) {
-        btn.addEventListener('click', function() {
-          activeCategory = this.getAttribute('data-filter');
-          renderCategoryFilters();
-          renderEvents();
-        });
-      });
-    }
-
-    // --- Open Smart Link Modal ---
-    function openSmartLink(url) {
-      var simplifiedTransUrl = 'https://translate.google.com/translate?sl=en&tl=zh-CN&u=' + encodeURIComponent(url);
-      var traditionalTransUrl = 'https://translate.google.com/translate?sl=en&tl=zh-TW&u=' + encodeURIComponent(url);
-      var transUrl = currentLang === 'zht' ? traditionalTransUrl : simplifiedTransUrl;
-
-      modalLinkRaw.setAttribute('href', url);
-      modalLinkTrans.setAttribute('href', transUrl);
-
-      if (currentLang === 'en') {
-        window.open(url, '_blank');
-        return;
-      }
-
-      linkModal.classList.remove('hidden');
-      linkModal.classList.add('flex');
-    }
-
-    function closeSmartLinkModal() {
-      linkModal.classList.remove('flex');
-      linkModal.classList.add('hidden');
-    }
-
-    modalCancelBtn.addEventListener('click', closeSmartLinkModal);
-    modalLinkRaw.addEventListener('click', closeSmartLinkModal);
-    modalLinkTrans.addEventListener('click', closeSmartLinkModal);
-
-    // --- Post Ad Modal ---
-    function openPostAdModal() {
-      if (!isUserLoggedIn) {
-        alert('为了保证分类大厅环境真实，发布信息前请先进行微信或手机实名认证！');
-        openAccountModal();
-        return;
-      }
-      postAdModal.classList.remove('hidden');
-      postAdModal.classList.add('flex');
-    }
-
-    function closePostAdModal() {
-      postAdModal.classList.remove('flex');
-      postAdModal.classList.add('hidden');
-    }
-
-    // --- Contact Modal ---
-    function openContactModal(adId) {
-      var ad = eventsData.find(function(item) { return item.id === adId; });
-      if (!ad) return;
-
-      valContactPerson.textContent = ad.contact.person;
-      valWeChat.textContent = ad.contact.wechat;
-      valPhoneLink.textContent = ad.contact.phone;
-      valPhoneLink.setAttribute('href', 'tel:' + ad.contact.phone.replace(/-/g, ''));
-
-      contactModal.classList.remove('hidden');
-      contactModal.classList.add('flex');
-    }
-
-    function closeContactModal() {
-      contactModal.classList.remove('flex');
-      contactModal.classList.add('hidden');
-    }
-
-    function copyWeChat() {
-      var wechatId = valWeChat.textContent;
-      navigator.clipboard.writeText(wechatId).then(function() {
-        alert('微信 ID 已复制到剪贴板: ' + wechatId);
-      }, function() {
-        alert('复制失败，请手动复制: ' + wechatId);
-      });
-    }
-
-    // --- Filter Classifieds by Category ---
-    function filterClassifieds(cat) {
-      activeClassifiedCategory = cat;
-      renderEvents();
-    }
-
-    // --- Handle Interactive Ad Submission & Mock Payment ---
-    function handleAdSubmit(e) {
-      e.preventDefault();
-      
-      var category = document.getElementById('form-category').value;
-      var city = document.getElementById('form-city').value;
-      var title = document.getElementById('form-title').value;
-      var desc = document.getElementById('form-desc').value;
-      var price = document.getElementById('form-price').value;
-      var borough = document.getElementById('form-borough').value;
-      var person = document.getElementById('form-contact-person').value;
-      var wechat = document.getElementById('form-wechat').value || "无";
-      var phone = document.getElementById('form-phone').value;
-      
-      var payMethod = document.querySelector('input[name="payment_method"]:checked').value;
-      var payText = payMethod === 'wechat' ? '🟢 微信支付 (WeChat Pay)' : '💳 信用卡支付 (Stripe)';
-
-      // Simulate Payment Screen
-      var confirmPay = confirm('【支付确认】\n您正在通过 ' + payText + ' 支付发布费。\n套餐：同城分类大厅普通发布\n金额：$5.00 / 月\n\n点击“确定”模拟支付成功并提交审核。');
-      
-      if (confirmPay) {
-        // Create new mock ad listing
-        var newAd = {
-          "id": "c" + (eventsData.length + 1),
-          "is_classified": true,
-          "category": {"zh": category, "zht": category, "en": category},
-          "bg_color": "bg-amber-50 text-amber-700 border-amber-200",
-          "date": "刚刚 (Just Now)",
-          "title": {"zh": title, "zht": title, "en": title},
-          "desc": {"zh": desc, "zht": desc, "en": desc},
-          "source": "用户自发 (Verified)",
-          "price": {"zh": price, "zht": price, "en": price},
-          "contact": {"person": person, "wechat": wechat, "phone": phone},
-          "borough": {"zh": borough, "zht": borough, "en": borough},
-          "city": city
-        };
-
-        eventsData.unshift(newAd);
-        alert('🎉 支付成功！您的分类广告已成功发布，并打上了“付费已核实”标签。');
-        closePostAdModal();
-        renderEvents();
-      }
-    }
-
-    // --- Render Event Cards (High Density Compact Layout) ---
-    function renderEvents() {
-      var query = searchInput.value.toLowerCase();
-      var boro = boroFilter.value;
-      var city = cityFilter.value;
-      var strings = uiStrings[currentLang];
-      
-      var officialHtml = "";
-      var classifiedsHtml = "";
-      var officialCount = 0;
-      var classifiedsCount = 0;
-
-      eventsData.forEach(function(ev) {
-        var title = ev.title[currentLang] || ev.title['zh'];
-        var desc = ev.desc[currentLang] || ev.desc['zh'];
-        var category = ev.category[currentLang] || ev.category['zh'];
-        var borough = ev.borough[currentLang] || ev.borough['zh'];
-        var evCity = ev.city || "纽约";
-        
-        // Match Search & Filters
-        var textToSearch = (title + ' ' + desc + ' ' + ev.source + ' ' + borough + ' ' + category).toLowerCase();
-        var matchesSearch = textToSearch.indexOf(query) > -1;
-        var matchesBoro = boro === 'all' || ev.borough['zh'] === boro || ev.borough['zh'] === '全市';
-        var matchesCity = city === 'all' || evCity === city;
-
-        if (matchesSearch && matchesBoro && matchesCity) {
-          if (ev.is_classified) {
-            // Classified Ad Card (Compact List Style)
-            var matchesCat = activeClassifiedCategory === 'all' || ev.category['zh'] === activeClassifiedCategory;
-            if (matchesCat) {
-              classifiedsCount++;
-              var price = ev.price[currentLang] || ev.price['zh'];
-              classifiedsHtml += '<div class="bg-white p-3 rounded-xl border border-amber-200 hover:border-amber-400 shadow-sm hover:shadow transition flex flex-col justify-between relative">';
-              classifiedsHtml += '  <div class="absolute top-0 right-0 bg-amber-500 text-white text-[8px] font-bold px-1.5 py-0.5 rounded-bl-lg uppercase tracking-wider">' + strings.verified_badge + '</div>';
-              classifiedsHtml += '  <div class="space-y-1.5">';
-              classifiedsHtml += '    <div class="flex items-center gap-1.5 text-[9px] font-bold text-amber-800">';
-              classifiedsHtml += '      <span>🏷️ ' + category + '</span>';
-              classifiedsHtml += '      <span class="text-slate-300">|</span>';
-              classifiedsHtml += '      <span class="text-slate-400">' + ev.date + '</span>';
-              classifiedsHtml += '    </div>';
-              classifiedsHtml += '    <h4 class="font-bold text-slate-900 text-xs leading-snug hover:text-brand-600 transition">' + title + '</h4>';
-              classifiedsHtml += '    <p class="text-[10px] text-slate-500 leading-relaxed line-clamp-2">' + desc + '</p>';
-              classifiedsHtml += '    <div class="text-[10px] font-bold text-orange-600 bg-orange-50 px-2 py-1 rounded w-max">💰 ' + price + '</div>';
-              classifiedsHtml += '  </div>';
-              classifiedsHtml += '  <div class="pt-2 mt-2 border-t border-slate-100 flex items-center justify-between text-[9px] text-slate-400">';
-              classifiedsHtml += '    <span>📍 ' + evCity + ' · ' + borough + '</span>';
-              classifiedsHtml += '    <button onclick="openContactModal('' + ev.id + '')" class="px-2 py-1 bg-amber-100 hover:bg-amber-200 text-amber-800 font-bold rounded transition">' + strings.btn_contact + '</button>';
-              classifiedsHtml += '  </div>';
-              classifiedsHtml += '</div>';
-            }
-          } else {
-            // Official Curated Event (Extremely Compact List Row)
-            var matchesCat = activeCategory === 'all' || ev.category['zh'] === activeCategory;
-            if (matchesCat) {
-              officialCount++;
-              officialHtml += '<div class="bg-white p-3 rounded-xl border border-slate-200 hover:border-brand-300 shadow-sm transition flex flex-col justify-between">';
-              officialHtml += '  <div class="space-y-1">';
-              officialHtml += '    <div class="flex justify-between items-center text-[9px] font-semibold text-slate-400">';
-              officialHtml += '      <span class="px-1.5 py-0.5 rounded font-bold border ' + ev.bg_color + '">' + category + '</span>';
-              officialHtml += '      <span>' + ev.date + '</span>';
-              officialHtml += '    </div>';
-              officialHtml += '    <h4 class="font-bold text-slate-900 text-xs leading-snug hover:text-brand-600 transition">' + title + '</h4>';
-              officialHtml += '    <p class="text-[10px] text-slate-500 leading-relaxed line-clamp-2">' + desc + '</p>';
-              officialHtml += '  </div>';
-              officialHtml += '  <div class="pt-2 mt-2 border-t border-slate-100 flex items-center justify-between text-[9px] text-slate-400">';
-              officialHtml += '    <span>🏢 ' + ev.source + ' · ' + borough + '</span>';
-              officialHtml += '    <button onclick="openSmartLink('' + ev.url + '')" class="px-2.5 py-1 bg-brand-50 hover:bg-brand-100 text-brand-700 font-bold rounded transition">' + strings.btn_get_link + '</button>';
-              officialHtml += '  </div>';
-              officialHtml += '</div>';
-            }
-          }
-        }
-      });
-
-      officialFeedList.innerHTML = officialHtml || '<p class="text-xs text-slate-400 italic p-4 text-center">暂无符合条件的官方资讯</p>';
-      classifiedsList.innerHTML = classifiedsHtml || '<p class="text-xs text-slate-400 italic p-4 text-center">暂无符合条件的同城分类广告</p>';
-      
-      resultsCount.textContent = strings.results_prefix + ' ' + (officialCount + classifiedsCount) + ' ' + strings.results_suffix;
-    }
-
-    // --- Event Listeners ---
-    langSwitcher.addEventListener('change', function() {
-      currentLang = this.value;
-      translateUI();
-    });
-
-    searchInput.addEventListener('input', renderEvents);
-    boroFilter.addEventListener('change', renderEvents);
-    cityFilter.addEventListener('change', function() {
-      selectedCity = this.value;
-      // Automatically update borough options based on city
-      var boroSelect = document.getElementById('borough-filter');
-      if (selectedCity === '纽约') {
-        boroSelect.innerHTML = '<option value="all">🗺️ 所有区域 (All Areas)</option><option value="全市">纽约全市 (Citywide)</option><option value="皇后区">皇后区 (Queens)</option><option value="布鲁克林">布鲁克林 (Brooklyn)</option><option value="曼哈顿">曼哈顿 (Manhattan)</option>';
-      } else if (selectedCity === '波士顿') {
-        boroSelect.innerHTML = '<option value="all">🗺️ 所有区域 (All Areas)</option><option value="Malden">Malden</option><option value="Allston">Allston</option><option value="Quincy">Quincy</option>';
-      } else if (selectedCity === '洛杉矶') {
-        boroSelect.innerHTML = '<option value="all">🗺️ 所有区域 (All Areas)</option><option value="罗兰岗">罗兰岗 (Rowland Heights)</option><option value="圣盖博">圣盖博 (San Gabriel)</option><option value="尔湾">尔湾 (Irvine)</option>';
-      } else {
-        boroSelect.innerHTML = '<option value="all">🗺️ 所有区域 (All Areas)</option>';
-      }
-      renderEvents();
-    });
-
-    // --- Initial Boot ---
-    translateUI();
-  </script>
-
+// ─── Init ────────────────────────────────────────────────────────────────────
+renderOfficial();
+renderCL();
+</script>
 </body>
 </html>
