@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>美东华人生活圈 · 纽约公共信息发布</title>
+  <title id="page-title">美东华人生活圈 · 纽约公共信息发布</title>
   <style>
     * { box-sizing: border-box; }
     body {
@@ -19,10 +19,11 @@
     .top-inner { height: 60px; display: flex; align-items: center; justify-content: space-between; }
     .logo { display: flex; align-items: center; gap: 10px; font-weight: 900; }
     .logo-box { width: 34px; height: 34px; border-radius: 8px; background: #ea580c; color: #ffffff; display: flex; align-items: center; justify-content: center; font-size: 18px; }
-    .logo-text { font-size: 16px; color: #0f172a; }
+    .logo-text { font-size: 16px; color: #0f172a; font-weight: 800; }
     .sub { font-size: 11px; color: #64748b; font-weight: 600; margin-top: 1px; }
 
-    /* Preference Selector */
+    /* Controls Bar */
+    .controls-bar { display: flex; align-items: center; gap: 16px; }
     .pref-selector { display: flex; align-items: center; gap: 8px; font-size: 12px; font-weight: 700; color: #475569; }
     .pref-select { border: 1px solid #cbd5e1; border-radius: 6px; padding: 4px 8px; font-size: 12px; font-weight: 700; background: #f8fafc; color: #1e293b; outline: none; cursor: pointer; }
 
@@ -73,6 +74,7 @@
     @media (max-width: 640px) {
       .feed-grid, .module-grid { grid-template-columns: 1fr; }
       .searchbar { flex-direction: column; }
+      .controls-bar { flex-direction: column; gap: 8px; align-items: flex-end; }
     }
   </style>
 </head>
@@ -84,19 +86,31 @@
       <div class="logo">
         <div class="logo-box">圈</div>
         <div>
-          <div class="logo-text">美东华人生活圈</div>
-          <div class="sub">纽约地区 · 公共信息发布</div>
+          <div class="logo-text" id="logo-text">美东华人生活圈</div>
+          <div class="sub" id="logo-sub">纽约地区 · 公共信息发布</div>
         </div>
       </div>
       
-      <!-- Preference Selector (Saves to localStorage) -->
-      <div class="pref-selector">
-        <span>默认打开语言:</span>
-        <select id="pref-lang" class="pref-select" onchange="savePreference(this.value)">
-          <option value="trans_zh">自动翻译中文(简体)</option>
-          <option value="trans_zht">自動翻譯中文(繁體)</option>
-          <option value="raw_en">英文原文</option>
-        </select>
+      <div class="controls-bar">
+        <!-- UI Display Language Selector -->
+        <div class="pref-selector">
+          <span id="ui-lang-label">界面语言:</span>
+          <select id="ui-lang" class="pref-select" onchange="changeUILanguage(this.value)">
+            <option value="zh">简体中文</option>
+            <option value="zht">繁體中文</option>
+            <option value="en">English</option>
+          </select>
+        </div>
+
+        <!-- Default Link Language Preference (Saves to localStorage) -->
+        <div class="pref-selector">
+          <span id="pref-lang-label">默认打开链接:</span>
+          <select id="pref-lang" class="pref-select" onchange="savePreference(this.value)">
+            <option value="trans_zh">自动翻译中文(简体)</option>
+            <option value="trans_zht">自動翻譯中文(繁體)</option>
+            <option value="raw_en">英文原文</option>
+          </select>
+        </div>
       </div>
     </div>
   </header>
@@ -107,32 +121,32 @@
     <div class="searchbar">
       <input id="q" placeholder="输入关键词搜索福利、交通、教育、活动..." oninput="renderFeed()" />
       <select id="city" onchange="renderFeed()">
-        <option value="all">所有城市</option>
-        <option value="纽约" selected>纽约 NY</option>
+        <option value="all" id="opt-all-cities">所有城市</option>
+        <option value="纽约" selected id="opt-ny-city">纽约 NY</option>
       </select>
     </div>
 
     <!-- ═══ FIRST MODULE: 9 CORE CHANNELS ═══ -->
     <div class="section-title">
-      <div class="section-title-left">1️⃣ 9大核心民生频道</div>
+      <div class="section-title-left" id="channels-title">1️⃣ 9大核心民生频道</div>
     </div>
-    <p class="muted">点击下方频道方框，可快速过滤并定位下方的具体真实信息。</p>
+    <p class="muted" id="channels-sub">点击下方频道方框，可快速过滤并定位下方的具体真实信息。</p>
     <div class="module-grid" id="module-grid"></div>
 
     <!-- ═══ SECOND MODULE: REAL INFO FEED ═══ -->
     <div class="section-title" id="feed-section">
-      <div class="section-title-left">2️⃣ 纽约地区真实信息发布</div>
+      <div class="section-title-left" id="feed-title">2️⃣ 纽约地区真实信息发布</div>
       <button id="reset-filters" class="reset-btn" onclick="resetAllFilters()">🔄 重置所有筛选</button>
     </div>
-    <p class="muted">所有信息均经过人工核验，不公开来源以防照抄。点击“查看链接”直接在新页面打开。</p>
+    <p class="muted" id="feed-sub">所有信息均经过人工核验，不公开来源以防照抄。点击“查看链接”直接在新页面打开。</p>
     
     <!-- Neighborhood filters -->
     <div class="pillbar" id="neighborhood-filters">
-      <button class="pill active" onclick="setNeighborhoodFilter('all', this)">📍 全部社区</button>
-      <button class="pill" onclick="setNeighborhoodFilter('纽约全市', this)">纽约全市</button>
-      <button class="pill" onclick="setNeighborhoodFilter('法拉盛 Flushing', this)">法拉盛 Flushing</button>
-      <button class="pill" onclick="setNeighborhoodFilter('唐人街 Chinatown', this)">唐人街 Chinatown</button>
-      <button class="pill" onclick="setNeighborhoodFilter('八大道 Sunset Park', this)">八大道 Sunset Park</button>
+      <button class="pill active" onclick="setNeighborhoodFilter('all', this)" id="pill-all">📍 全部社区</button>
+      <button class="pill" onclick="setNeighborhoodFilter('纽约全市', this)" id="pill-citywide">纽约全市</button>
+      <button class="pill" onclick="setNeighborhoodFilter('法拉盛 Flushing', this)" id="pill-flushing">法拉盛 Flushing</button>
+      <button class="pill" onclick="setNeighborhoodFilter('唐人街 Chinatown', this)" id="pill-chinatown">唐人街 Chinatown</button>
+      <button class="pill" onclick="setNeighborhoodFilter('八大道 Sunset Park', this)" id="pill-sunset">八大道 Sunset Park</button>
     </div>
 
     <!-- Cards Feed -->
@@ -142,39 +156,175 @@
   </main>
 
 <script>
-const MODULES = [{"id": "benefits", "name": "福利申请", "en": "Welfare", "desc": "半价地铁卡、粮食券、平价屋申请、暖气补助等官方政策解读。", "color": "#16a34a"}, {"id": "transit", "name": "交通出行", "en": "Transit", "desc": "LIRR CityTicket 优惠、地铁周末改线、机场巴士指南，解决出行难题。", "color": "#0ea5e9"}, {"id": "education", "name": "语言教育", "en": "Education", "desc": "免费成人 ESL 英语班、入籍班、周末中文学校，突破语言障碍。", "color": "#6366f1"}, {"id": "safety", "name": "社区安全", "en": "Safety", "desc": "警局防诈骗讲座、治安警报、紧急避难指引，保障人身财产安全。", "color": "#dc2626"}, {"id": "civic", "name": "市政议员", "en": "Civic", "desc": "议员免费法律咨询、选民登记、社区听证会，维护合法权益。", "color": "#a16207"}, {"id": "recreation", "name": "公园亲子", "en": "Recreation", "desc": "免费亲子手工、公园运动课、公共泳池开放，享受免费公共设施。", "color": "#0d9488"}, {"id": "culture", "name": "文化展览", "en": "Culture", "desc": "图书馆中文音乐会、华人艺术展、博物馆免费日，丰富精神生活。", "color": "#9333ea"}, {"id": "charity", "name": "公益志愿", "en": "Charity", "desc": "慈济义卖、社区清洁、食物银行志愿服务，融入当地社会。", "color": "#c026d3"}, {"id": "promos", "name": "消费促销", "en": "Promos", "desc": "华人超市折扣、商场促销、新店探店（严格标注商业广告）。", "color": "#ea580c"}];
-const ITEMS = [{"id": "e1", "module": "福利申请", "city": "纽约", "area": "纽约全市", "date": "2026-06-11", "title": "Fair Fares NYC 半价地铁卡申请", "summary": "符合条件的低收入纽约居民可申请半价地铁卡，单程仅需 $1.45。不属于公共负担，不影响绿卡申请。", "url": "https://access.nyc.gov/programs/fair-fares/"}, {"id": "e2", "module": "福利申请", "city": "纽约", "area": "纽约全市", "date": "2026-06-11", "title": "SNAP 粮食券福利申请通道", "summary": "低收入家庭每月可获得食品补助金，直接充值到 EBT 卡中，可在各大华人超市购买食材。", "url": "https://access.nyc.gov/programs/snap/"}, {"id": "e3", "module": "福利申请", "city": "纽约", "area": "纽约全市", "date": "2026-06-01", "title": "NYC Free Summer Meals 暑期免费学生餐", "summary": "今年暑期将继续在全市数百个学校、公园和图书馆向所有 18 岁及以下的学生免费提供早餐和午餐，无需注册或提供身份证明。", "url": "https://www.schools.nyc.gov/school-life/food/summer-meals"}, {"id": "e4", "module": "福利申请", "city": "纽约", "area": "纽约全市", "date": "2026-05-20", "title": "HEAP 暖气与夏季避暑空调补助申请", "summary": "纽约州低收入家庭能源补助计划（HEAP）现已开放夏季降温补助申请。符合条件的家庭可获得免费空调安装或电费补贴。", "url": "https://access.nyc.gov/programs/heap/"}, {"id": "e5", "module": "福利申请", "city": "纽约", "area": "纽约全市", "date": "2026-06-11", "title": "纽约市免费手机与无限通话计划 (Lifeline)", "summary": "符合特定低收入标准或已获得 Medicaid/SNAP 的纽约居民，可申请免费智能手机、每月免费流量和无限通话。", "url": "https://access.nyc.gov/programs/lifeline/"}, {"id": "e6", "module": "福利申请", "city": "纽约", "area": "纽约全市", "date": "2026-06-11", "title": "NYC Housing Connect 平价住宅（廉租房）申请系统", "summary": "纽约市平价屋（Affordable Housing）官方申请平台，符合收入标准的居民可通过抽签获得远低于市场价的优质公寓。", "url": "https://housingconnect.nyc.gov/PublicWeb/"}, {"id": "e7", "module": "福利申请", "city": "纽约", "area": "纽约全市", "date": "2026-06-11", "title": "IDNYC 纽约市民卡免费申请通道", "summary": "面向所有 10 岁以上纽约居民（不限移民身份），可作为官方身份证件，并享受全市数十家博物馆、动物园免费会员卡福利。", "url": "https://www.nyc.gov/site/idnyc/index.page"}, {"id": "e8", "module": "交通出行", "city": "纽约", "area": "法拉盛 Flushing", "date": "2026-06-11", "title": "LIRR CityTicket 市内火车 $5 特惠票政策", "summary": "只要起点和终点都在纽约市内（如法拉盛往返曼哈顿中城），非高峰期单程仅需 $5.00，高峰期 $7.00。18分钟直达。", "url": "https://new.mta.info/fares/cityticket"}, {"id": "e9", "module": "交通出行", "city": "纽约", "area": "纽约全市", "date": "2026-06-11", "title": "MTA OMNY 刷满 12 次后免费乘车政策", "summary": "使用同一张信用卡、手机或 OMNY 卡，在周一至周日的 7 天内刷满 12 次后，本周内接下来的所有乘车均完全免费。", "url": "https://omny.info/"}, {"id": "e10", "module": "交通出行", "city": "纽约", "area": "纽约全市", "date": "2026-06-10", "title": "MTA 地铁周末改线与延误实时查询", "summary": "由于夏季轨道维护，纽约地铁周末改线频繁。建议出行前通过 MTA 官方 Alerts 页面查询最新动态。", "url": "https://new.mta.info/alerts"}, {"id": "e11", "module": "交通出行", "city": "纽约", "area": "纽约全市", "date": "2026-05-25", "title": "NYC Ferry 纽约东河渡轮夏季时刻表启用", "summary": "纽约渡轮正式启用夏季时刻表，增加了往返皇后区 Astoria、长岛市、曼哈顿华埠及布鲁克林 DUMBO 的航班频次。", "url": "https://www.ferry.nyc/routes-and-schedules/"}, {"id": "e12", "module": "语言教育", "city": "纽约", "area": "法拉盛 Flushing", "date": "2026-06-15", "title": "皇后区公共图书馆免费成人 ESL 英语班", "summary": "面向 17 岁以上纽约居民，完全免费。不限移民身份，教材全免。提供白天、晚间及周末班。", "url": "https://www.queenslibrary.org/programs-services/esol-family-literacy/esol"}, {"id": "e13", "module": "语言教育", "city": "纽约", "area": "唐人街 Chinatown", "date": "2026-06-16", "title": "纽约公共图书馆 (NYPL) 免费成人英语与入籍辅导", "summary": "曼哈顿、布朗士及史泰登岛居民免费英语课程。包含听说读写全方位提升，并设有专门的入籍英语辅导班。", "url": "https://www.nypl.org/help/community-outreach/immigrant-services/learn-english"}, {"id": "e14", "module": "语言教育", "city": "纽约", "area": "法拉盛 Flushing", "date": "2026-06-01", "title": "皇后区图书馆 2026 暑期少儿阅读挑战赛开放", "summary": "鼓励 5-12 岁少儿在暑期保持阅读习惯。参与挑战并记录阅读进度的孩子可免费获得精美图书、纪念章。", "url": "https://www.queenslibrary.org/"}, {"id": "e15", "module": "社区安全", "city": "纽约", "area": "法拉盛 Flushing", "date": "2026-06-17", "title": "法拉盛 109 警局社区协调委员会月度会议", "summary": "法拉盛 109 警局举办的月度警民会议，向居民通报近期治安情况、防诈骗提示，现场提供中文翻译。", "url": "https://www.nyc.gov/site/nypd/bureaus/patrol/precincts/109th-precinct.page"}, {"id": "e16", "module": "社区安全", "city": "纽约", "area": "八大道 Sunset Park", "date": "2026-05-28", "title": "布鲁克林 72 警局防诈骗与入室盗窃宣讲会", "summary": "针对布鲁克林八大道近期频发的针对华人的电信诈骗和入室盗窃，72警局举办专题宣讲会。", "url": "https://www.nyc.gov/site/nypd/bureaus/patrol/precincts/72nd-precinct.page"}, {"id": "e17", "module": "社区安全", "city": "纽约", "area": "纽约全市", "date": "2026-06-02", "title": "纽约市紧急管理局飓风季节防灾准备指南", "summary": "纽约市紧急管理局发布 2026 年度飓风季防灾指南。详细列出了疏散避难所地图，并提供中文版 PDF 下载。", "url": "https://www.nyc.gov/site/em/ready/hurricane-guides.page"}, {"id": "e18", "module": "市政议员", "city": "纽约", "area": "法拉盛 Flushing", "date": "2026-06-13", "title": "市议员黄敏仪办公室免费法律咨询服务", "summary": "联合专业公益律师，为选区居民提供免费的法律咨询，涵盖租务纠纷、移民、家庭法等。提供中文翻译。", "url": "https://council.nyc.gov/sandra-ung/"}, {"id": "e19", "module": "市政议员", "city": "纽约", "area": "纽约全市", "date": "2026-06-11", "title": "纽约市选民登记截止日期与投票站查询系统", "summary": "输入您的纽约居住地址，即可一键查询您专属的投票站地址、开放时间，以及本选区内所有的候选人名单。", "url": "https://vote.nyc/"}, {"id": "e20", "module": "公园亲子", "city": "纽约", "area": "纽约全市", "date": "2026-06-27", "title": "纽约市公共室外游泳池免费开放通知", "summary": "纽约市公园局宣布全市公共室外泳池将于6月27日起免费对公众开放。法拉盛附近的 Fisher Pool 等均在列。", "url": "https://www.nycgovparks.org/facilities/outdoor-pools"}, {"id": "e21", "module": "公园亲子", "city": "纽约", "area": "纽约全市", "date": "2026-06-01", "title": "纽约市公园局免费夏季露天电影节排片表", "summary": "在全市数十个公共公园举办免费露天电影放映活动。包含多部迪士尼动画片、好莱坞大片，无需预约。", "url": "https://www.nycgovparks.org/events/free-summer-movies"}, {"id": "e22", "module": "公园亲子", "city": "纽约", "area": "法拉盛 Flushing", "date": "2026-06-09", "title": "皇后区植物园 (QGB) 免费开放时段", "summary": "皇后区植物园在指定时段对公众免费开放，无需购买门票。非常适合法拉盛本地家庭带孩子亲近自然。", "url": "https://queensbotanical.org/hours-admission/"}, {"id": "e23", "module": "文化展览", "city": "纽约", "area": "法拉盛 Flushing", "date": "2026-06-20", "title": "法拉盛市政厅 (Flushing Town Hall) 免费社区音乐会", "summary": "法拉盛文艺中心举办的多元文化音乐会，邀请华人传统民乐艺术家现场演奏。门票免费，需提前预约。", "url": "https://www.flushingtownhall.org/"}, {"id": "e24", "module": "文化展览", "city": "纽约", "area": "唐人街 Chinatown", "date": "2026-06-11", "title": "大都会艺术博物馆 (The Met) 纽约居民任意付费政策", "summary": "持有纽约州 ID 或显示纽约地址的账单，即可在售票处享受「任意付费」政策，付任意金额即可入馆。", "url": "https://www.metmuseum.org/visit/plan-your-visit"}, {"id": "e25", "module": "文化展览", "city": "纽约", "area": "唐人街 Chinatown", "date": "2026-06-14", "title": "纽约现代艺术博物馆 (MoMA) 免费开放夜", "summary": "MoMA 针对纽约市居民提供每周五下午的免费入馆时段。需提前在官网预约免费门票。", "url": "https://www.moma.org/calendar/programs/159"}, {"id": "e26", "module": "公益志愿", "city": "纽约", "area": "法拉盛 Flushing", "date": "2026-06-07", "title": "纽约慈济基金会 (Tzu Chi) 食物发放志愿服务", "summary": "慈济纽约分会每周五在法拉盛会所向低收入家庭免费分发新鲜蔬菜、水果。同时招募双语志愿者。", "url": "https://tzuchi.us/offices/new-york"}, {"id": "e27", "module": "公益志愿", "city": "纽约", "area": "纽约全市", "date": "2026-06-11", "title": "纽约市食物银行 (Food Bank For NYC) 社区厨房志愿招募", "summary": "长期在曼哈顿华埠、布鲁克林等社区厨房招募志愿者，协助包装和发放免费餐食，可开具义工证明。", "url": "https://www.foodbanknyc.org/volunteer/"}, {"id": "e28", "module": "消费促销", "city": "纽约", "area": "法拉盛 Flushing", "date": "2026-06-08", "title": "法拉盛新世界超市本周特价促销海报", "summary": "法拉盛地标新世界商城地下超市本周最新折扣海报。涵盖游水海鲜、新鲜时蔬特价，帮华人家庭省钱。", "url": "https://www.newworldmallny.com/"}];
+const MODULES = [{"id": "benefits", "zh": "福利申请", "zht": "福利申請", "en": "Welfare", "desc_zh": "半价地铁卡、粮食券、平价屋申请、暖气补助等官方政策解读。", "desc_zht": "半價地鐵卡、糧食券、平價屋申請、暖氣補助等官方政策解讀。", "desc_en": "Interpretation of official policies such as half-fare MetroCards, SNAP, affordable housing, and HEAP.", "color": "#16a34a"}, {"id": "transit", "zh": "交通出行", "zht": "交通出行", "en": "Transit", "desc_zh": "LIRR CityTicket 优惠、地铁周末改线、机场巴士指南，解决出行难题。", "desc_zht": "LIRR CityTicket 優惠、地鐵週末改線、機場巴士指南，解決出行難題。", "desc_en": "LIRR CityTicket discounts, subway weekend service changes, airport shuttles, and transit guides.", "color": "#0ea5e9"}, {"id": "education", "zh": "语言教育", "zht": "語言教育", "en": "Education", "desc_zh": "免费成人 ESL 英语班、入籍班、周末中文学校，突破语言障碍。", "desc_zht": "免費成人 ESL 英語班、入籍班、週末中文學校，突破語言障礙。", "desc_en": "Free adult ESL classes, citizenship prep, and weekend Chinese schools to break language barriers.", "color": "#6366f1"}, {"id": "safety", "zh": "社区安全", "zht": "社區安全", "en": "Safety", "desc_zh": "警局防诈骗讲座、治安警报、紧急避难指引，保障人身财产安全。", "desc_zht": "警局防詐騙講座、治安警報、緊急避難指引，保障人身財產安全。", "desc_en": "Police fraud prevention seminars, safety alerts, and emergency shelter guides to protect lives and assets.", "color": "#dc2626"}, {"id": "civic", "zh": "市政议员", "zht": "市政議員", "en": "Civic", "desc_zh": "议员免费法律咨询、选民登记、社区听证会，维护合法权益。", "desc_zht": "議員免費法律諮詢、選民登記、社區聽證會，維護合法權益。", "desc_en": "Free legal consultations from council members, voter registration, and community hearings.", "color": "#a16207"}, {"id": "recreation", "zh": "公园亲子", "zht": "公園親子", "en": "Recreation", "desc_zh": "免费亲子手工、公园运动课、公共泳池开放，享受免费公共设施。", "desc_zht": "免費親子手工、公園運動課、公共泳池開放，享受免費公共設施。", "desc_en": "Free parent-child crafts, park sports classes, and public pool openings to enjoy public facilities.", "color": "#0d9488"}, {"id": "culture", "zh": "文化展览", "zht": "文化展覽", "en": "Culture", "desc_zh": "图书馆中文音乐会、华人艺术展、博物馆免费日，丰富精神生活。", "desc_zht": "圖書館中文音樂會、華人藝術展、博物館免費日，豐富精神生活。", "desc_en": "Library Chinese concerts, Chinese art exhibitions, and museum free days to enrich spiritual life.", "color": "#9333ea"}, {"id": "charity", "zh": "公益志愿", "zht": "公益志願", "en": "Charity", "desc_zh": "慈济义卖、社区清洁、食物银行志愿服务，融入当地社会。", "desc_zht": "慈濟義賣、社區清潔、食物銀行志願服務，融入當地社會。", "desc_en": "Tzu Chi charity sales, community cleanups, and food bank volunteering to integrate into local society.", "color": "#c026d3"}, {"id": "promos", "zh": "消费促销", "zht": "消費促銷", "en": "Promos", "desc_zh": "华人超市折扣、商场促销、新店探店（严格标注商业广告）。", "desc_zht": "華人超市折扣、商場促銷、新店探店（嚴格標註商業廣告）。", "desc_en": "Chinese supermarket discounts, mall sales, and new store explorations (strictly marked as ads).", "color": "#ea580c"}];
+const ITEMS = [{"id": "e1", "module": "福利申请", "city": "纽约", "area_zh": "纽约全市", "area_zht": "紐約全市", "area_en": "NYC Citywide", "date": "2026-06-11", "title_zh": "Fair Fares NYC 半价地铁卡申请", "title_zht": "Fair Fares NYC 半價地鐵卡申請", "title_en": "Fair Fares NYC Half-Fare MetroCard Application", "summary_zh": "符合条件的低收入纽约居民可申请半价地铁卡，单程仅需 $1.45。不属于公共负担，不影响绿卡申请。", "summary_zht": "符合條件的低收入紐約居民可申請半價地鐵卡，單程僅需 $1.45。不屬於公共負擔，不影響綠卡申請。", "summary_en": "Eligible low-income NYC residents can apply for a half-fare MetroCard, making a single ride only $1.45. Not a public charge.", "url": "https://access.nyc.gov/programs/fair-fares/"}, {"id": "e2", "module": "福利申请", "city": "纽约", "area_zh": "纽约全市", "area_zht": "紐約全市", "area_en": "NYC Citywide", "date": "2026-06-11", "title_zh": "SNAP 粮食券福利申请通道", "title_zht": "SNAP 糧食券福利申請通道", "title_en": "SNAP Food Stamps Benefits Application", "summary_zh": "低收入家庭每月可获得食品补助金，直接充值到 EBT 卡中，可在各大华人超市购买食材。", "summary_zht": "低收入家庭每月可獲得食品補助金，直接充值到 EBT 卡中，可在各大華人超市購買食材。", "summary_en": "Low-income families receive monthly food assistance directly credited to an EBT card, accepted at major Chinese supermarkets.", "url": "https://access.nyc.gov/programs/snap/"}, {"id": "e3", "module": "福利申请", "city": "纽约", "area_zh": "纽约全市", "area_zht": "紐約全市", "area_en": "NYC Citywide", "date": "2026-06-01", "title_zh": "NYC Free Summer Meals 暑期免费学生餐", "title_zht": "NYC Free Summer Meals 暑期免費學生餐", "title_en": "NYC Free Summer Meals for Students", "summary_zh": "今年暑期将继续在全市数百个学校、公园和图书馆向所有 18 岁及以下的学生免费提供早餐和午餐，无需注册或提供身份证明。", "summary_zht": "今年暑期將繼續在全市數百個學校、公園和圖書館向所有 18 歲及以下的學生免費提供早餐和午餐，無需註冊或提供身份證明。", "summary_en": "Free breakfast and lunch will be provided to all children 18 and under at hundreds of schools, parks, and libraries this summer.", "url": "https://www.schools.nyc.gov/school-life/food/summer-meals"}, {"id": "e4", "module": "福利申请", "city": "纽约", "area_zh": "纽约全市", "area_zht": "紐約全市", "area_en": "NYC Citywide", "date": "2026-05-20", "title_zh": "HEAP 暖气与夏季避暑空调补助申请", "title_zht": "HEAP 暖氣與夏季避暑空調補助申請", "title_en": "HEAP Cooling Assistance (Free AC)", "summary_zh": "纽约州低收入家庭能源补助计划（HEAP）现已开放夏季降温补助申请。符合条件的家庭可获得免费空调安装或电费补贴。", "summary_zht": "紐約州低收入家庭能源補助計劃（HEAP）現已開放夏季降溫補助申請。符合條件的家庭可獲得免費空調安裝或電費補貼。", "summary_en": "The Home Energy Assistance Program (HEAP) is open for cooling assistance. Eligible households can get a free air conditioner installed.", "url": "https://access.nyc.gov/programs/heap/"}, {"id": "e5", "module": "福利申请", "city": "纽约", "area_zh": "纽约全市", "area_zht": "紐約全市", "area_en": "NYC Citywide", "date": "2026-06-11", "title_zh": "纽约市免费手机与无限通话计划 (Lifeline)", "title_zht": "紐約市免費手機與無限通話計劃 (Lifeline)", "title_en": "NYC Free Smartphone & Unlimited Plan (Lifeline)", "summary_zh": "符合特定低收入标准或已获得 Medicaid/SNAP 的纽约居民，可申请免费智能手机、每月免费流量和无限通话。", "summary_zht": "符合特定低收入標準或已獲得 Medicaid/SNAP 的紐約居民，可申請免費智慧手機、每月免費流量和無限通話。", "summary_en": "Eligible low-income NYC residents or Medicaid/SNAP recipients can get a free smartphone, monthly data, and unlimited talk.", "url": "https://access.nyc.gov/programs/lifeline/"}, {"id": "e6", "module": "福利申请", "city": "纽约", "area_zh": "纽约全市", "area_zht": "紐約全市", "area_en": "NYC Citywide", "date": "2026-06-11", "title_zh": "NYC Housing Connect 平价住宅（廉租房）申请系统", "title_zht": "NYC Housing Connect 平價住宅（廉租房）申請系統", "title_en": "NYC Housing Connect Affordable Housing", "summary_zh": "纽约市平价屋（Affordable Housing）官方申请平台，符合收入标准的居民可通过抽签获得远低于市场价的优质公寓。", "summary_zht": "紐約市平價屋（Affordable Housing）官方申請平台，符合收入標準的居民可通過抽籤獲得遠低於市場價的優質公寓。", "summary_en": "The official portal to find and apply for affordable housing in NYC. Eligible residents can enter lotteries for below-market apartments.", "url": "https://housingconnect.nyc.gov/PublicWeb/"}, {"id": "e7", "module": "福利申请", "city": "纽约", "area_zh": "纽约全市", "area_zht": "紐約全市", "area_en": "NYC Citywide", "date": "2026-06-11", "title_zh": "IDNYC 纽约市民卡免费申请通道", "title_zht": "IDNYC 紐約市民卡免費申請通道", "title_en": "IDNYC Free Card Application Portal", "summary_zh": "面向所有 10 岁以上纽约居民（不限移民身份），可作为官方身份证件，并享受全市数十家博物馆、动物园免费会员卡福利。", "summary_zht": "面向所有 10 歲以上紐約居民（不限移民身份），可作為官方身份證件，並享受全市數十家博物館、動物園免費會員卡福利。", "summary_en": "A free government-issued photo ID card for all NYC residents 10 and older, offering free memberships to museums and zoos.", "url": "https://www.nyc.gov/site/idnyc/index.page"}, {"id": "e8", "module": "交通出行", "city": "纽约", "area_zh": "法拉盛 Flushing", "area_zht": "法拉盛 Flushing", "area_en": "Flushing", "date": "2026-06-11", "title_zh": "LIRR CityTicket 市内火车 $5 特惠票政策", "title_zht": "LIRR CityTicket 市內火車 $5 特惠票政策", "title_en": "LIRR CityTicket $5 Flat Fare Policy", "summary_zh": "只要起点和终点都在纽约市内（如法拉盛往返曼哈顿中城），非高峰期单程仅需 $5.00，高峰期 $7.00。18分钟直达。", "summary_zht": "只要起點和終點都在紐約市內（如法拉盛往返曼哈頓中城），非高峰期單程僅需 $5.00，高峰期 $7.00。18分鐘直達。", "summary_en": "Flat fare for LIRR travel within NYC (e.g., Flushing to Midtown). Only $5.00 during off-peak hours and $7.00 during peak hours.", "url": "https://new.mta.info/fares/cityticket"}, {"id": "e9", "module": "交通出行", "city": "纽约", "area_zh": "纽约全市", "area_zht": "紐約全市", "area_en": "NYC Citywide", "date": "2026-06-11", "title_zh": "MTA OMNY 刷满 12 次后免费乘车政策", "title_zht": "MTA OMNY 刷滿 12 次後免費乘車政策", "title_en": "MTA OMNY Fare Capping (12 Rides & Free)", "summary_zh": "使用同一张信用卡、手机或 OMNY 卡，在周一至周日的 7 天内刷满 12 次后，本周内接下来的所有乘车均完全免费。", "summary_zht": "使用同一張信用卡、手機或 OMNY 卡，在週一至週日的 7 天內刷滿 12 次後，本週內接下來的所有乘車均完全免費。", "summary_en": "Pay with the same card or device. After 12 taps from Monday to Sunday, all subsequent rides for the rest of the week are free.", "url": "https://omny.info/"}, {"id": "e10", "module": "交通出行", "city": "纽约", "area_zh": "纽约全市", "area_zht": "紐約全市", "area_en": "NYC Citywide", "date": "2026-06-10", "title_zh": "MTA 地铁周末改线与延误实时查询", "title_zht": "MTA 地鐵週末改線與延誤實時查詢", "title_en": "MTA Subway Weekend Service Changes & Alerts", "summary_zh": "由于夏季轨道维护，纽约地铁周末改线频繁。建议出行前通过 MTA 官方 Alerts 页面查询最新动态。", "summary_zht": "由於夏季軌道維護，紐約地鐵週末改線頻繁。建議出行前通過 MTA 官方 Alerts 頁面查詢最新動態。", "summary_en": "Subway service changes are frequent on weekends due to maintenance. Check the official MTA Alerts page before traveling.", "url": "https://new.mta.info/alerts"}, {"id": "e11", "module": "交通出行", "city": "纽约", "area_zh": "纽约全市", "area_zht": "紐約全市", "area_en": "NYC Citywide", "date": "2026-05-25", "title_zh": "NYC Ferry 纽约东河渡轮夏季时刻表启用", "title_zht": "NYC Ferry 紐約東河渡輪夏季時刻表啟用", "title_en": "NYC Ferry Summer Schedule Activation", "summary_zh": "纽约渡轮正式启用夏季时刻表，增加了往返皇后区 Astoria、长岛市、曼哈顿华埠及布鲁克林 DUMBO 的航班频次。", "summary_zht": "紐約渡輪正式啟用夏季時刻表，增加了往返皇后區 Astoria、長島市、曼哈頓華埠及布魯克林 DUMBO 的航班頻次。", "summary_en": "NYC Ferry has launched its summer schedule, increasing frequency for routes connecting Astoria, Long Island City, Chinatown, and DUMBO.", "url": "https://www.ferry.nyc/routes-and-schedules/"}, {"id": "e12", "module": "语言教育", "city": "纽约", "area_zh": "法拉盛 Flushing", "area_zht": "法拉盛 Flushing", "area_en": "Flushing", "date": "2026-06-15", "title_zh": "皇后区公共图书馆免费成人 ESL 英语班", "title_zht": "皇后區公共圖書館免費成人 ESL 英語班", "title_en": "Queens Public Library Free Adult ESL Classes", "summary_zh": "面向 17 岁以上纽约居民，完全免费。不限移民身份，教材全免。提供白天、晚间及周末班。", "summary_zht": "面向 17 歲以上紐約居民，完全免費。不限移民身份，教材全免。提供白天、晚間及週末班。", "summary_en": "Free English classes for adults 17 and older. No immigration status required. Materials are free. Morning, evening, and weekend slots available.", "url": "https://www.queenslibrary.org/programs-services/esol-family-literacy/esol"}, {"id": "e13", "module": "语言教育", "city": "纽约", "area_zh": "唐人街 Chinatown", "area_zht": "唐人街 Chinatown", "area_en": "Chinatown", "date": "2026-06-16", "title_zh": "纽约公共图书馆 (NYPL) 免费成人英语与入籍辅导", "title_zht": "紐約公共圖書館 (NYPL) 免費成人英語與入籍輔導", "title_en": "NYPL Free Adult English & Citizenship Classes", "summary_zh": "曼哈顿、布朗士及史泰登岛居民免费英语课程。包含听说读写全方位提升，并设有专门的入籍英语辅导班。", "summary_zht": "曼哈頓、布朗士及史泰登島居民免費英語課程。包含聽說讀寫全方位提升，並設有專門的入籍英語輔導班。", "summary_en": "Free English classes in Manhattan, Bronx, and Staten Island. Offers comprehensive language training and specialized citizenship prep.", "url": "https://www.nypl.org/help/community-outreach/immigrant-services/learn-english"}, {"id": "e14", "module": "语言教育", "city": "纽约", "area_zh": "法拉盛 Flushing", "area_zht": "法拉盛 Flushing", "area_en": "Flushing", "date": "2026-06-01", "title_zh": "皇后区图书馆 2026 暑期少儿阅读挑战赛开放", "title_zht": "皇后區圖書館 2026 暑期少兒閱讀挑戰賽開放", "title_en": "Queens Library 2026 Summer Reading Challenge", "summary_zh": "鼓励 5-12 岁少儿在暑期保持阅读习惯。参与挑战并记录阅读进度的孩子可免费获得精美图书、纪念章。", "summary_zht": "鼓勵 5-12 歲少兒在暑期保持閱讀習慣。參與挑戰並記錄閱讀進度的孩子可免費獲得精美圖書、紀念章。", "summary_en": "Encourages children aged 5-12 to read during summer. Kids who log their reading can receive free books and badges.", "url": "https://www.queenslibrary.org/"}, {"id": "e15", "module": "社区安全", "city": "纽约", "area_zh": "法拉盛 Flushing", "area_zht": "法拉盛 Flushing", "area_en": "Flushing", "date": "2026-06-17", "title_zh": "法拉盛 109 警局社区协调委员会月度会议", "title_zht": "法拉盛 109 警局社區協調委員會月度會議", "title_en": "Flushing 109th Precinct Monthly Community Meeting", "summary_zh": "法拉盛 109 警局举办的月度警民会议，向居民通报近期治安情况、防诈骗提示，现场提供中文翻译。", "summary_zht": "法拉盛 109 警局舉辦的月度警民會議，向居民通報近期治安情況、防詐騙提示，現場提供中文翻譯。", "summary_en": "Monthly community meeting hosted by the 109th Precinct. Provides safety updates and fraud prevention tips with Chinese translation.", "url": "https://www.nyc.gov/site/nypd/bureaus/patrol/precincts/109th-precinct.page"}, {"id": "e16", "module": "社区安全", "city": "纽约", "area_zh": "八大道 Sunset Park", "area_zht": "八大道 Sunset Park", "area_en": "Sunset Park", "date": "2026-05-28", "title_zh": "布鲁克林 72 警局防诈骗与入室盗窃宣讲会", "title_zht": "布魯克林 72 警局防詐騙與入室盜竊宣講會", "title_en": "Brooklyn 72nd Precinct Fraud & Theft Prevention Seminar", "summary_zh": "针对布鲁克林八大道近期频发的针对华人的电信诈骗和入室盗窃，72警局举办专题宣讲会。", "summary_zht": "針對布魯克林八大道近期頻發的針對華人的電信詐騙和入室盜竊，72警局舉辦專題宣講會。", "summary_en": "Special safety seminar addressing recent phone scams and burglaries targeting the Chinese community in Sunset Park.", "url": "https://www.nyc.gov/site/nypd/bureaus/patrol/precincts/72nd-precinct.page"}, {"id": "e17", "module": "社区安全", "city": "纽约", "area_zh": "纽约全市", "area_zht": "紐約全市", "area_en": "NYC Citywide", "date": "2026-06-02", "title_zh": "纽约市紧急管理局飓风季节防灾准备指南", "title_zht": "紐約市緊急管理局颶風季節防災準備指南", "title_en": "NYC Emergency Management Hurricane Preparedness Guide", "summary_zh": "纽约市紧急管理局发布 2026 年度飓风季防灾指南。详细列出了疏散避难所地图，并提供中文版 PDF 下载。", "summary_zht": "紐約市緊急管理局發佈 2026 年度颶風季防災指南。詳細列出了疏散避難所地圖，並提供中文版 PDF 下載。", "summary_en": "NYC Emergency Management has released the 2026 Hurricane Guide, including evacuation zone maps and a Chinese PDF version.", "url": "https://www.nyc.gov/site/em/ready/hurricane-guides.page"}, {"id": "e18", "module": "市政议员", "city": "纽约", "area_zh": "法拉盛 Flushing", "area_zht": "法拉盛 Flushing", "area_en": "Flushing", "date": "2026-06-13", "title_zh": "市议员黄敏仪办公室免费法律咨询服务", "title_zht": "市議員黃敏儀辦公室免費法律諮詢服務", "title_en": "Council Member Sandra Ung Free Legal Consultation", "summary_zh": "联合专业公益律师，为选区居民提供免费的法律咨询，涵盖租务纠纷、移民、家庭法等。提供中文翻译。", "summary_zht": "聯合專業公益律師，為選區居民提供免費的法律諮詢，涵蓋租務糾紛、移民、家庭法等。提供中文翻譯。", "summary_en": "Free legal consultation services for constituents covering housing disputes, immigration, and family law. Chinese translation provided.", "url": "https://council.nyc.gov/sandra-ung/"}, {"id": "e19", "module": "市政议员", "city": "纽约", "area_zh": "纽约全市", "area_zht": "紐約全市", "area_en": "NYC Citywide", "date": "2026-06-11", "title_zh": "纽约市选民登记截止日期与投票站查询系统", "title_zht": "紐約市選民登記截止日期與投票站查詢系統", "title_en": "NYC Voter Registration & Poll Site Locator", "summary_zh": "输入您的纽约居住地址，即可一键查询您专属的投票站地址、开放时间，以及本选区内所有的候选人名单。", "summary_zht": "輸入您的紐約居住地址，即可一鍵查詢您專屬的投票站地址、開放時間，以及本選區內所有的候選人名單。", "summary_en": "Enter your NYC residential address to instantly find your assigned polling place, operating hours, and sample ballots.", "url": "https://vote.nyc/"}, {"id": "e20", "module": "公园亲子", "city": "纽约", "area_zh": "纽约全市", "area_zht": "紐約全市", "area_en": "NYC Citywide", "date": "2026-06-27", "title_zh": "纽约市公共室外游泳池免费开放通知", "title_zht": "紐約市公共室外游泳池免費開放通知", "title_en": "NYC Public Outdoor Pools Free Opening", "summary_zh": "纽约市公园局宣布全市公共室外泳池将于6月27日起免费对公众开放。法拉盛附近的 Fisher Pool 等均在列。", "summary_zht": "紐約市公園局宣布全市公共室外泳池將於6月27日起免費對公眾開放。法拉盛附近的 Fisher Pool 等均在列。", "summary_en": "NYC Parks Department announced that all public outdoor pools will open for free starting June 27, including Fisher Pool near Flushing.", "url": "https://www.nycgovparks.org/facilities/outdoor-pools"}, {"id": "e21", "module": "公园亲子", "city": "纽约", "area_zh": "纽约全市", "area_zht": "紐約全市", "area_en": "NYC Citywide", "date": "2026-06-01", "title_zh": "纽约市公园局免费夏季露天电影节排片表", "title_zht": "紐約市公園局免費夏季露天電影節排片表", "title_en": "NYC Parks Free Outdoor Movie Screenings Schedule", "summary_zh": "在全市数十个公共公园举办免费露天电影放映活动。包含多部迪士尼动画片、好莱坞大片，无需预约。", "summary_zht": "在全市數十個公共公園舉辦免費露天電影放映活動。包含多部迪士尼動畫片、好萊塢大片，無需預約。", "summary_en": "Free outdoor movie screenings in dozens of public parks across NYC. Features Disney animations and Hollywood blockbusters. No RSVP required.", "url": "https://www.nycgovparks.org/events/free-summer-movies"}, {"id": "e22", "module": "公园亲子", "city": "纽约", "area_zh": "法拉盛 Flushing", "area_zht": "法拉盛 Flushing", "area_en": "Flushing", "date": "2026-06-09", "title_zh": "皇后区植物园 (QGB) 免费开放时段", "title_zht": "皇后區植物園 (QGB) 免費開放時段", "title_en": "Queens Botanical Garden (QGB) Free Admission Hours", "summary_zh": "皇后区植物园在指定时段对公众免费开放，无需购买门票。非常适合法拉盛本地家庭带孩子亲近自然。", "summary_zht": "皇后區植物園在指定時段對公眾免費開放，無需購買門票。非常適合法拉盛本地家庭帶孩子親近自然。", "summary_en": "Queens Botanical Garden offers free admission during designated hours. Perfect for local families in Flushing to enjoy nature.", "url": "https://queensbotanical.org/hours-admission/"}, {"id": "e23", "module": "文化展览", "city": "纽约", "area_zh": "法拉盛 Flushing", "area_zht": "法拉盛 Flushing", "area_en": "Flushing", "date": "2026-06-20", "title_zh": "法拉盛市政厅 (Flushing Town Hall) 免费社区音乐会", "title_zht": "法拉盛市政廳 (Flushing Town Hall) 免費社區音樂會", "title_en": "Flushing Town Hall Free Community Concert", "summary_zh": "法拉盛文艺中心举办的多元文化音乐会，邀请华人传统民乐艺术家现场演奏。门票免费，需提前预约。", "summary_zht": "法拉盛文藝中心舉辦的多元文化音樂會，邀請華人傳統民樂藝術家現場演奏。門票免費，需提前預約。", "summary_en": "Multicultural concert at Flushing Town Hall featuring traditional Chinese folk musicians. Admission is free, RSVP required.", "url": "https://www.flushingtownhall.org/"}, {"id": "e24", "module": "文化展览", "city": "纽约", "area_zh": "唐人街 Chinatown", "area_zht": "唐人街 Chinatown", "area_en": "Chinatown", "date": "2026-06-11", "title_zh": "大都会艺术博物馆 (The Met) 纽约居民任意付费政策", "title_zht": "大都會藝術博物館 (The Met) 紐約居民任意付費政策", "title_en": "The Met Museum 'Pay-As-You-Wish' for NY Residents", "summary_zh": "持有纽约州 ID 或显示纽约地址的账单，即可在售票处享受「任意付费」政策，付任意金额即可入馆。", "summary_zht": "持有紐約州 ID 或顯示紐約地址的賬單，即可在售票處享受「任意付費」政策，付任意金額即可入館。", "summary_en": "NY State residents with a valid ID or utility bill can pay any amount they wish at the ticket counter for admission.", "url": "https://www.metmuseum.org/visit/plan-your-visit"}, {"id": "e25", "module": "文化展览", "city": "纽约", "area_zh": "唐人街 Chinatown", "area_zht": "唐人街 Chinatown", "area_en": "Chinatown", "date": "2026-06-14", "title_zh": "纽约现代艺术博物馆 (MoMA) 免费开放夜", "title_zht": "紐約現代藝術博物館 (MoMA) 免費開放夜", "title_en": "MoMA Free Friday Nights for NYC Residents", "summary_zh": "MoMA 针对纽约市居民提供每周五下午的免费入馆时段。需提前在官网预约免费门票。", "summary_zht": "MoMA 針對紐約市居民提供每週五下午的免費入館時段。需提前在官網預約免費門票。", "summary_en": "MoMA offers free admission for NYC residents on Friday afternoons. Tickets must be reserved online in advance.", "url": "https://www.moma.org/calendar/programs/159"}, {"id": "e26", "module": "公益志愿", "city": "纽约", "area_zh": "法拉盛 Flushing", "area_zht": "法拉盛 Flushing", "area_en": "Flushing", "date": "2026-06-07", "title_zh": "纽约慈济基金会 (Tzu Chi) 食物发放志愿服务", "title_zht": "紐約慈濟基金會 (Tzu Chi) 食物發放志願服務", "title_en": "Tzu Chi Foundation Free Food Distribution Volunteering", "summary_zh": "慈济纽约分会每周五在法拉盛会所向低收入家庭免费分发新鲜蔬菜、水果。同时招募双语志愿者。", "summary_zht": "慈濟紐約分會每週五在法拉盛會所向低收入家庭免費分發新鮮蔬菜、水果。同時招募雙語志願者。", "summary_en": "Tzu Chi NY distributes free fresh vegetables and fruits to low-income families in Flushing every Friday. Recruiting bilingual volunteers.", "url": "https://tzuchi.us/offices/new-york"}, {"id": "e27", "module": "公益志愿", "city": "纽约", "area_zh": "纽约全市", "area_zht": "紐約全市", "area_en": "NYC Citywide", "date": "2026-06-11", "title_zh": "纽约市食物银行 (Food Bank For NYC) 社区厨房志愿招募", "title_zht": "紐約市食物銀行 (Food Bank For NYC) 社區廚房志願招募", "title_en": "Food Bank For NYC Community Kitchen Volunteering", "summary_zh": "长期在曼哈顿华埠、布鲁克林等社区厨房招募志愿者，协助包装 and 发放免费餐食，可开具义工证明。", "summary_zht": "長期在曼哈頓華埠、布魯克林等社區廚房招募志願者，協助包裝與發放免費餐食，可開具義工證明。", "summary_en": "Recruiting volunteers for community kitchens in Chinatown and Brooklyn to help pack and distribute free meals. Volunteer certificates provided.", "url": "https://www.foodbanknyc.org/volunteer/"}, {"id": "e28", "module": "消费促销", "city": "纽约", "area_zh": "法拉盛 Flushing", "area_zht": "法拉盛 Flushing", "area_en": "Flushing", "date": "2026-06-08", "title_zh": "法拉盛新世界超市本周特价促销海报", "title_zht": "法拉盛新世界超市本週特價促銷海報", "title_en": "Flushing New World Supermarket Weekly Sales Flyer", "summary_zh": "法拉盛地标新世界商城地下超市本周最新折扣海报。涵盖游水海鲜、新鲜时蔬特价，帮华人家庭省钱。", "summary_zht": "法拉盛地標新世界商城地下超市本週最新折扣海報。涵蓋遊水海鮮、新鮮時蔬特價，幫華人家庭省錢。", "summary_en": "Weekly sales flyer for the New World Supermarket in Flushing. Features discounts on live seafood and fresh vegetables.", "url": "https://www.newworldmallny.com/"}];
 
+const UI_STRINGS = {
+  zh: {
+    title: "美东华人生活圈 · 纽约公共信息发布",
+    logo_text: "美东华人生活圈",
+    logo_sub: "纽约地区 · 公共信息发布",
+    ui_lang_label: "界面语言:",
+    pref_lang_label: "默认打开链接:",
+    trans_zh: "自动翻译中文(简体)",
+    trans_zht: "自動翻譯中文(繁體)",
+    raw_en: "英文原文",
+    q_placeholder: "输入关键词搜索福利、交通、教育、活动...",
+    all_cities: "所有城市",
+    ny_city: "纽约 NY",
+    channels_title: "1️⃣ 9大核心民生频道",
+    channels_sub: "点击下方频道方框，可快速过滤并定位下方的具体真实信息。",
+    feed_title: "2️⃣ 纽约地区真实信息发布",
+    feed_sub: "所有信息均经过人工核验，不公开来源以防照抄。点击“查看链接”直接在新页面打开。",
+    reset_btn: "🔄 重置所有筛选",
+    all_neighborhoods: "📍 全部社区",
+    citywide: "纽约全市",
+    flushing: "法拉盛 Flushing",
+    chinatown: "唐人街 Chinatown",
+    sunset_park: "八大道 Sunset Park",
+    verified: "已核验",
+    view_link: "查看链接 ➔",
+    no_results: "没有符合条件的信息，请换个关键词或选择其他频道。"
+  },
+  zht: {
+    title: "美東華人生活圈 · 紐約公共信息發佈",
+    logo_text: "美東華人生活圈",
+    logo_sub: "紐約地區 · 公共信息發佈",
+    ui_lang_label: "界面語言:",
+    pref_lang_label: "默認打開鏈接:",
+    trans_zh: "自動翻譯中文(簡體)",
+    trans_zht: "自動翻譯中文(繁體)",
+    raw_en: "英文原文",
+    q_placeholder: "輸入關鍵詞搜索福利、交通、教育、活動...",
+    all_cities: "所有城市",
+    ny_city: "紐約 NY",
+    channels_title: "1️⃣ 9大核心民生頻道",
+    channels_sub: "點擊下方頻道方框，可快速過濾並定位下方的具體真實信息。",
+    feed_title: "2️⃣ 紐約地區真實信息發佈",
+    feed_sub: "所有信息均經過人工核驗，不公開來源以防照抄。點擊“查看鏈接”直接在新頁面打開。",
+    reset_btn: "🔄 重置所有篩選",
+    all_neighborhoods: "📍 全部社區",
+    citywide: "紐約全市",
+    flushing: "法拉盛 Flushing",
+    chinatown: "唐人街 Chinatown",
+    sunset_park: "八大道 Sunset Park",
+    verified: "已核驗",
+    view_link: "查看鏈接 ➔",
+    no_results: "沒有符合條件的信息，請換個關鍵詞或選擇其他頻道。"
+  },
+  en: {
+    title: "US East Chinese Life Hub · NYC Public Info",
+    logo_text: "US East Chinese Life Hub",
+    logo_sub: "NYC Area · Public Information",
+    ui_lang_label: "Language:",
+    pref_lang_label: "Default Link:",
+    trans_zh: "Auto-Translate to Chinese (Simplified)",
+    trans_zht: "Auto-Translate to Chinese (Traditional)",
+    raw_en: "Original English",
+    q_placeholder: "Search welfare, transit, education, safety...",
+    all_cities: "All Cities",
+    ny_city: "New York NY",
+    channels_title: "1️⃣ 9 Core Public Channels",
+    channels_sub: "Click a channel box below to filter and locate specific verified information.",
+    feed_title: "2️⃣ NYC Real-time Verified Feed",
+    feed_sub: "All information is manually verified. Sources are hidden to prevent copying. Click 'View Link' to open directly.",
+    reset_btn: "🔄 Reset All Filters",
+    all_neighborhoods: "📍 All Neighborhoods",
+    citywide: "NYC Citywide",
+    flushing: "Flushing",
+    chinatown: "Chinatown",
+    sunset_park: "Sunset Park",
+    verified: "Verified",
+    view_link: "View Link ➔",
+    no_results: "No matching information found. Please try another keyword or channel."
+  }
+};
+
+let currentLang = 'zh';
 let activeModuleFilter = 'all';
 let activeNeighborhoodFilter = 'all';
 
 // Load language preference from localStorage
 function initPreference() {
-  const saved = localStorage.getItem('pref_lang_mode') || 'trans_zh';
-  document.getElementById('pref-lang').value = saved;
+  const savedPref = localStorage.getItem('pref_lang_mode') || 'trans_zh';
+  document.getElementById('pref-lang').value = savedPref;
+
+  currentLang = localStorage.getItem('ui_lang_mode') || 'zh';
+  document.getElementById('ui-lang').value = currentLang;
+  
+  applyUILanguage();
 }
 
 function savePreference(val) {
   localStorage.setItem('pref_lang_mode', val);
 }
 
+function changeUILanguage(lang) {
+  currentLang = lang;
+  localStorage.setItem('ui_lang_mode', lang);
+  applyUILanguage();
+}
+
+function applyUILanguage() {
+  const s = UI_STRINGS[currentLang];
+  
+  // Update static texts
+  document.getElementById('page-title').textContent = s.title;
+  document.getElementById('logo-text').textContent = s.logo_text;
+  document.getElementById('logo-sub').textContent = s.logo_sub;
+  document.getElementById('ui-lang-label').textContent = s.ui_lang_label;
+  document.getElementById('pref-lang-label').textContent = s.pref_lang_label;
+  
+  // Update select options for link preferences
+  const prefSelect = document.getElementById('pref-lang');
+  prefSelect.options[0].text = s.trans_zh;
+  prefSelect.options[1].text = s.trans_zht;
+  prefSelect.options[2].text = s.raw_en;
+  
+  // Update search bar
+  document.getElementById('q').placeholder = s.q_placeholder;
+  document.getElementById('opt-all-cities').textContent = s.all_cities;
+  document.getElementById('opt-ny-city').textContent = s.ny_city;
+  
+  // Update section titles
+  document.getElementById('channels-title').textContent = s.channels_title;
+  document.getElementById('channels-sub').textContent = s.channels_sub;
+  document.getElementById('feed-title').innerHTML = `${s.feed_title} <button id="reset-filters" class="reset-btn" onclick="resetAllFilters()">${s.reset_btn}</button>`;
+  document.getElementById('feed-sub').textContent = s.feed_sub;
+  
+  // Update neighborhood pills
+  document.getElementById('pill-all').textContent = s.all_neighborhoods;
+  document.getElementById('pill-citywide').textContent = s.citywide;
+  document.getElementById('pill-flushing').textContent = s.flushing;
+  document.getElementById('pill-chinatown').textContent = s.chinatown;
+  document.getElementById('pill-sunset').textContent = s.sunset_park;
+  
+  renderModules();
+  renderFeed();
+}
+
 function badgeColor(modName) {
-  const m = MODULES.find(x => x.name === modName);
+  const m = MODULES.find(x => x.zh === modName || x.en === modName);
   return m ? m.color : '#475569';
 }
 
 // Render 9 Core Channels
 function renderModules() {
   const box = document.getElementById('module-grid');
-  box.innerHTML = MODULES.map(m => `
-    <div class="module-card ${activeModuleFilter === m.name ? 'active' : ''}" onclick="selectModule('${m.name}')">
-      <div class="module-name" style="color:${m.color}">
-        <span>${m.name}</span>
-        <span style="font-size:11px;color:#94a3b8;font-weight:normal;">${m.en}</span>
+  box.innerHTML = MODULES.map(m => {
+    const name = m[currentLang] || m.zh;
+    const desc = m[`desc_${currentLang}`] || m.desc_zh;
+    const isActive = activeModuleFilter === m.zh;
+    return `
+      <div class="module-card ${isActive ? 'active' : ''}" onclick="selectModule('${m.zh}')">
+        <div class="module-name" style="color:${m.color}">
+          <span>${name}</span>
+          <span style="font-size:11px;color:#94a3b8;font-weight:normal;">${m.en}</span>
+        </div>
+        <div class="module-desc">${desc}</div>
       </div>
-      <div class="module-desc">${m.desc}</div>
-    </div>
-  `).join('');
+    `;
+  }).join('');
 }
 
 function selectModule(name) {
@@ -224,35 +374,65 @@ function updateResetButton() {
 function renderFeed() {
   const q = document.getElementById('q').value.toLowerCase();
   const city = document.getElementById('city').value;
+  const s = UI_STRINGS[currentLang];
   
   const filtered = ITEMS.filter(i => {
     const matchesModule = (activeModuleFilter === 'all' || i.module === activeModuleFilter);
-    const matchesNeighborhood = (activeNeighborhoodFilter === 'all' || i.area === activeNeighborhoodFilter);
+    
+    // Neighborhood matching
+    let matchesNeighborhood = false;
+    if (activeNeighborhoodFilter === 'all') {
+      matchesNeighborhood = true;
+    } else if (activeNeighborhoodFilter === '纽约全市' && (i.area_zh === '纽约全市' || i.area_en === 'NYC Citywide')) {
+      matchesNeighborhood = true;
+    } else if (activeNeighborhoodFilter === '法拉盛 Flushing' && (i.area_zh === '法拉盛 Flushing' || i.area_en === 'Flushing')) {
+      matchesNeighborhood = true;
+    } else if (activeNeighborhoodFilter === '唐人街 Chinatown' && (i.area_zh === '唐人街 Chinatown' || i.area_en === 'Chinatown')) {
+      matchesNeighborhood = true;
+    } else if (activeNeighborhoodFilter === '八大道 Sunset Park' && (i.area_zh === '八大道 Sunset Park' || i.area_en === 'Sunset Park')) {
+      matchesNeighborhood = true;
+    }
+    
     const matchesCity = (city === 'all' || i.city === city);
-    const matchesSearch = `${i.title} ${i.summary} ${i.area} ${i.module}`.toLowerCase().includes(q);
+    
+    const title = i[`title_${currentLang}`] || i.title_zh;
+    const summary = i[`summary_${currentLang}`] || i.summary_zh;
+    const area = i[`area_${currentLang}`] || i.area_zh;
+    const matchesSearch = `${title} ${summary} ${area}`.toLowerCase().includes(q);
+    
     return matchesModule && matchesNeighborhood && matchesCity && matchesSearch;
   });
 
   const feed = document.getElementById('feed');
-  feed.innerHTML = filtered.map(i => `
-    <article class="feed-card">
-      <div class="meta">
-        <span class="tag" style="background:${badgeColor(i.module)}15;color:${badgeColor(i.module)}">${i.module}</span>
-        <span class="date">${i.date}</span>
-      </div>
-      <div class="title">${i.title}</div>
-      <div class="summary">${i.summary}</div>
-      <div class="foot">
-        <span>📍 ${i.area} · 已核验</span>
-        <button class="btn" onclick="openLinkDirect('${i.url.replace(/'/g, "\'")}')">查看链接 ➔</button>
-      </div>
-    </article>
-  `).join('');
+  feed.innerHTML = filtered.map(i => {
+    const title = i[`title_${currentLang}`] || i.title_zh;
+    const summary = i[`summary_${currentLang}`] || i.summary_zh;
+    const area = i[`area_${currentLang}`] || i.area_zh;
+    
+    // Find matching module to display correct language tag
+    const modObj = MODULES.find(m => m.zh === i.module);
+    const modName = modObj ? (modObj[currentLang] || modObj.zh) : i.module;
+
+    return `
+      <article class="feed-card">
+        <div class="meta">
+          <span class="tag" style="background:${badgeColor(i.module)}15;color:${badgeColor(i.module)}">${modName}</span>
+          <span class="date">${i.date}</span>
+        </div>
+        <div class="title">${title}</div>
+        <div class="summary">${summary}</div>
+        <div class="foot">
+          <span>📍 ${area} · ${s.verified}</span>
+          <button class="btn" onclick="openLinkDirect('${i.url.replace(/'/g, "\'")}')">${s.view_link}</button>
+        </div>
+      </article>
+    `;
+  }).join('');
 
   if (!filtered.length) {
     feed.innerHTML = `
       <div style="grid-column: 1/-1; padding: 24px; background: #ffffff; border: 1px solid #e2e8f0; border-radius: 12px; text-align: center; color: #64748b; font-size: 13px;">
-        没有符合条件的信息，请换个关键词或选择其他频道。
+        ${s.no_results}
       </div>
     `;
   }
@@ -275,8 +455,6 @@ function openLinkDirect(url) {
 
 // Initial Boot
 initPreference();
-renderModules();
-renderFeed();
 </script>
 </body>
 </html>
