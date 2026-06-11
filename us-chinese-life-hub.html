@@ -4,68 +4,102 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>美东华人生活圈 · 官方资讯 + 同城分类</title>
-<script src="https://cdn.tailwindcss.com"></script>
 <style>
-body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans SC', sans-serif; background:#f8fafc; }
-.row-link { display:flex; align-items:baseline; gap:6px; padding:6px 10px; border-bottom:1px solid #e2e8f0; cursor:pointer; text-decoration:none; color:inherit; }
-.row-link:hover { background:#fef3c7; }
-.row-link:active { background:#fde68a; }
-.cat-badge { display:inline-block; font-size:10px; font-weight:700; padding:1px 5px; border-radius:4px; white-space:nowrap; min-width:34px; text-align:center; }
-.price-badge { color:#b45309; font-weight:700; font-size:11px; white-space:nowrap; }
-.area-txt { color:#94a3b8; font-size:10px; white-space:nowrap; }
-.date-txt { color:#94a3b8; font-size:10px; white-space:nowrap; }
-.title-txt { flex:1; font-size:13px; font-weight:500; color:#1e293b; line-height:1.4; }
-.modal-overlay { display:none; position:fixed; inset:0; background:rgba(0,0,0,.55); z-index:9999; align-items:center; justify-content:center; padding:16px; }
+* { box-sizing:border-box; }
+body { margin:0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans SC', sans-serif; background:#f1f5f9; color:#1e293b; }
+.wrap { max-width:1080px; margin:0 auto; padding:0 12px; }
+
+/* card grid */
+.card-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(240px,1fr)); gap:10px; }
+@media(max-width:520px){ .card-grid { grid-template-columns:repeat(2,1fr); gap:8px; } }
+.card { background:#fff; border:1px solid #e2e8f0; border-radius:12px; padding:12px; cursor:pointer; transition:.12s; display:flex; flex-direction:column; gap:6px; position:relative; }
+.card:hover { border-color:#fb923c; box-shadow:0 6px 18px rgba(234,88,12,.12); transform:translateY(-2px); }
+.card-top { display:flex; align-items:center; justify-content:space-between; }
+.cat-badge { font-size:10px; font-weight:800; padding:2px 7px; border-radius:5px; }
+.date-txt { font-size:10px; color:#94a3b8; font-weight:600; }
+.card-title { font-size:13px; font-weight:700; color:#0f172a; line-height:1.4; min-height:36px; }
+.card-desc { font-size:11px; color:#64748b; line-height:1.5; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; }
+.card-foot { display:flex; align-items:center; justify-content:space-between; border-top:1px solid #f1f5f9; padding-top:6px; margin-top:auto; }
+.foot-meta { font-size:10px; color:#94a3b8; }
+.foot-act { font-size:10px; font-weight:800; color:#ea580c; }
+.price-tag { font-size:12px; font-weight:800; color:#b45309; background:#fffbeb; padding:2px 8px; border-radius:6px; align-self:flex-start; }
+.verified { position:absolute; top:0; right:0; background:#f59e0b; color:#fff; font-size:8px; font-weight:800; padding:2px 6px; border-radius:0 12px 0 8px; }
+
+/* filter pills */
+.pillbar { display:flex; gap:6px; overflow-x:auto; padding-bottom:4px; }
+.pill { padding:5px 12px; border-radius:20px; font-size:12px; font-weight:700; border:1px solid #e2e8f0; background:#fff; cursor:pointer; white-space:nowrap; color:#475569; }
+.pill.active { background:#ea580c; color:#fff; border-color:#ea580c; }
+
+/* section header */
+.sec-hd { display:flex; align-items:center; justify-content:space-between; padding:10px 0 8px; }
+.sec-hd .ttl { font-size:15px; font-weight:900; color:#0f172a; display:flex; align-items:center; gap:7px; }
+
+/* modal */
+.modal-overlay { display:none; position:fixed; inset:0; background:rgba(15,23,42,.6); z-index:9999; align-items:flex-end; justify-content:center; }
+@media(min-width:560px){ .modal-overlay { align-items:center; padding:16px; } }
 .modal-overlay.open { display:flex; }
-.modal-box { background:#fff; border-radius:16px; padding:20px; max-width:420px; width:100%; max-height:90vh; overflow-y:auto; box-shadow:0 20px 60px rgba(0,0,0,.3); }
-.filter-btn { padding:4px 10px; border-radius:20px; font-size:11px; font-weight:700; border:1px solid #e2e8f0; background:#fff; cursor:pointer; white-space:nowrap; color:#475569; }
-.filter-btn.active { background:#ea580c; color:#fff; border-color:#ea580c; }
-.section-hd { background:#1e293b; color:#fff; padding:8px 12px; display:flex; justify-content:space-between; align-items:center; border-radius:10px 10px 0 0; }
-.cl-section-hd { background:#92400e; color:#fff; padding:8px 12px; display:flex; justify-content:space-between; align-items:center; border-radius:10px 10px 0 0; }
-.section-body { background:#fff; border:1px solid #e2e8f0; border-top:none; border-radius:0 0 10px 10px; }
-.cl-cat-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:6px; padding:8px; background:#fffbeb; border-bottom:1px solid #fde68a; }
-.cl-cat-item { background:#fff; border:1px solid #fde68a; border-radius:8px; padding:6px 4px; text-align:center; cursor:pointer; }
-.cl-cat-item:hover { background:#fef3c7; }
-.cl-cat-item .icon { font-size:16px; }
-.cl-cat-item .label { font-size:10px; font-weight:700; color:#92400e; margin-top:2px; }
-.input-base { width:100%; border:1px solid #e2e8f0; border-radius:8px; padding:7px 10px; font-size:12px; outline:none; }
+.modal-box { background:#fff; border-radius:18px 18px 0 0; padding:20px; max-width:480px; width:100%; max-height:92vh; overflow-y:auto; box-shadow:0 -10px 50px rgba(0,0,0,.3); }
+@media(min-width:560px){ .modal-box { border-radius:18px; } }
+
+/* forum/BBS detail */
+.bbs-head { border-bottom:2px solid #f1f5f9; padding-bottom:12px; margin-bottom:12px; }
+.bbs-title { font-size:17px; font-weight:900; color:#0f172a; line-height:1.4; margin:6px 0; }
+.bbs-meta { display:flex; flex-wrap:wrap; gap:10px; font-size:11px; color:#94a3b8; }
+.bbs-body { font-size:14px; line-height:1.8; color:#334155; white-space:pre-wrap; margin-bottom:14px; }
+.bbs-box { background:#f8fafc; border:1px solid #e2e8f0; border-radius:10px; padding:12px; margin-bottom:12px; }
+.bbs-box .lbl { font-size:11px; color:#64748b; }
+.reply { background:#fff; border:1px solid #f1f5f9; border-radius:8px; padding:8px 10px; margin-bottom:6px; font-size:12px; }
+.reply .who { font-weight:700; color:#475569; }
+.reply .when { font-size:10px; color:#cbd5e1; float:right; }
+
+.input-base { width:100%; border:1px solid #e2e8f0; border-radius:8px; padding:8px 10px; font-size:13px; outline:none; }
 .input-base:focus { border-color:#ea580c; box-shadow:0 0 0 2px rgba(234,88,12,.15); }
-.btn-primary { background:#ea580c; color:#fff; border:none; border-radius:8px; padding:9px 16px; font-size:13px; font-weight:700; cursor:pointer; width:100%; }
+.btn-primary { background:#ea580c; color:#fff; border:none; border-radius:9px; padding:11px 16px; font-size:14px; font-weight:800; cursor:pointer; width:100%; }
 .btn-primary:hover { background:#c2410c; }
-.btn-sec { background:#f1f5f9; color:#475569; border:none; border-radius:8px; padding:9px 16px; font-size:13px; font-weight:700; cursor:pointer; width:100%; }
-.auth-tab { flex:1; padding:8px; text-align:center; font-size:12px; font-weight:700; color:#94a3b8; border-bottom:2px solid transparent; cursor:pointer; }
+.btn-sec { background:#f1f5f9; color:#475569; border:none; border-radius:9px; padding:11px 16px; font-size:14px; font-weight:800; cursor:pointer; width:100%; }
+.auth-tab { flex:1; padding:9px; text-align:center; font-size:13px; font-weight:800; color:#94a3b8; border-bottom:2px solid transparent; cursor:pointer; }
 .auth-tab.active { color:#ea580c; border-bottom-color:#ea580c; }
+.cl-cat-grid { display:grid; grid-template-columns:repeat(5,1fr); gap:6px; margin-bottom:10px; }
+@media(max-width:520px){ .cl-cat-grid { grid-template-columns:repeat(5,1fr); } }
+.cl-cat { background:#fff; border:1px solid #fde68a; border-radius:10px; padding:8px 2px; text-align:center; cursor:pointer; }
+.cl-cat.active { background:#fef3c7; border-color:#f59e0b; }
+.cl-cat .ic { font-size:18px; }
+.cl-cat .lb { font-size:10px; font-weight:800; color:#92400e; margin-top:2px; }
+.submod { display:flex; align-items:center; gap:5px; font-size:12px; font-weight:700; color:#475569; background:#f8fafc; border:1px solid #e2e8f0; border-radius:8px; padding:8px 6px; cursor:pointer; }
+.submod input { accent-color:#ea580c; }
+.subch { flex:1; text-align:center; font-size:12px; font-weight:800; color:#64748b; background:#f8fafc; border:1px solid #e2e8f0; border-radius:9px; padding:10px 4px; cursor:pointer; }
+.subch.active { background:#fff7ed; border-color:#ea580c; color:#ea580c; }
 </style>
 </head>
-<body class="pb-16">
+<body style="padding-bottom:64px;">
 
 <!-- ═══ TOP HEADER ═══ -->
 <header style="background:#fff;border-bottom:1px solid #e2e8f0;position:sticky;top:0;z-index:100;box-shadow:0 1px 3px rgba(0,0,0,.08);">
-  <div style="max-width:720px;margin:0 auto;padding:0 12px;height:48px;display:flex;align-items:center;justify-content:space-between;">
+  <div class="wrap" style="height:50px;display:flex;align-items:center;justify-content:space-between;">
     <div style="display:flex;align-items:center;gap:8px;">
-      <div style="width:32px;height:32px;border-radius:8px;background:linear-gradient(135deg,#f97316,#c2410c);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:900;font-size:16px;">圈</div>
+      <div style="width:34px;height:34px;border-radius:9px;background:linear-gradient(135deg,#f97316,#c2410c);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:900;font-size:17px;">圈</div>
       <div>
-        <div style="font-size:13px;font-weight:800;color:#0f172a;">美东华人生活圈</div>
-        <div style="font-size:9px;color:#94a3b8;font-weight:600;">官方民生资讯 · 同城分类广告</div>
+        <div style="font-size:14px;font-weight:900;color:#0f172a;">美东华人生活圈</div>
+        <div style="font-size:9px;color:#94a3b8;font-weight:600;">官方民生资讯 · 同城信息发布</div>
       </div>
     </div>
     <div style="display:flex;align-items:center;gap:8px;">
-      <select id="lang-sel" onchange="changeLang(this.value)" style="border:1px solid #e2e8f0;border-radius:6px;padding:3px 6px;font-size:11px;font-weight:700;background:#f8fafc;color:#475569;outline:none;">
+      <select id="lang-sel" onchange="changeLang(this.value)" style="border:1px solid #e2e8f0;border-radius:6px;padding:4px 7px;font-size:11px;font-weight:700;background:#f8fafc;color:#475569;outline:none;">
         <option value="zh">简体</option>
         <option value="zht">繁體</option>
         <option value="en">EN</option>
       </select>
-      <button onclick="openAccountModal()" style="background:#f1f5f9;border:1px solid #e2e8f0;border-radius:6px;padding:4px 10px;font-size:11px;font-weight:700;color:#475569;cursor:pointer;" id="nav-login-btn">👤 登录/认证</button>
+      <button onclick="openAccountModal()" style="background:#f1f5f9;border:1px solid #e2e8f0;border-radius:6px;padding:5px 11px;font-size:11px;font-weight:700;color:#475569;cursor:pointer;" id="nav-login-btn">👤 登录/认证</button>
     </div>
   </div>
 </header>
 
 <!-- ═══ SEARCH + CITY FILTER ═══ -->
-<div style="max-width:720px;margin:10px auto;padding:0 10px;">
-  <div style="background:#fff;border:1px solid #e2e8f0;border-radius:10px;padding:8px 10px;display:flex;gap:8px;align-items:center;">
-    <span style="color:#94a3b8;font-size:14px;">🔍</span>
-    <input type="text" id="search-box" placeholder="搜索福利、租房、招聘、活动..." oninput="applyFilters()" style="flex:1;border:none;outline:none;font-size:13px;color:#1e293b;" />
-    <select id="city-sel" onchange="applyFilters()" style="border:1px solid #e2e8f0;border-radius:6px;padding:3px 6px;font-size:11px;font-weight:700;background:#f8fafc;color:#475569;outline:none;">
+<div class="wrap" style="margin-top:12px;">
+  <div style="background:#fff;border:1px solid #e2e8f0;border-radius:11px;padding:9px 12px;display:flex;gap:8px;align-items:center;box-shadow:0 1px 2px rgba(0,0,0,.04);">
+    <span style="color:#94a3b8;font-size:15px;">🔍</span>
+    <input type="text" id="search-box" placeholder="搜索福利、交通、教育、活动..." oninput="applyFilters()" style="flex:1;border:none;outline:none;font-size:13px;color:#1e293b;background:none;" />
+    <select id="city-sel" onchange="applyFilters()" style="border:1px solid #e2e8f0;border-radius:7px;padding:5px 8px;font-size:12px;font-weight:700;background:#f8fafc;color:#475569;outline:none;">
       <option value="all">所有城市</option>
       <option value="纽约" selected>纽约 NY</option>
       <option value="波士顿">波士顿 BOS</option>
@@ -74,86 +108,67 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helv
   </div>
 </div>
 
-<!-- ═══ SECTION 1: 官方资讯 ═══ -->
-<div style="max-width:720px;margin:0 auto 16px;padding:0 10px;" id="sec-official">
-  <div class="section-hd">
-    <div style="display:flex;align-items:center;gap:6px;">
-      <span style="font-size:14px;">📰</span>
-      <span style="font-size:13px;font-weight:800;">官方民生精选 · Verified Public Feed</span>
+<!-- ═══ 订阅进度 + 模块订阅入口 ═══ -->
+<div class="wrap" style="margin-top:12px;">
+  <div style="background:linear-gradient(135deg,#fff7ed,#ffedd5);border:1px solid #fed7aa;border-radius:12px;padding:12px 14px;">
+    <div style="display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;">
+      <div>
+        <div style="font-size:13px;font-weight:900;color:#9a3412;">🔔 订阅你关心的模块，每周收到精选推送</div>
+        <div style="font-size:11px;color:#b45309;margin-top:2px;">当前订阅用户 <strong id="sub-count">386</strong> / <span id="sub-target">500</span> 人 · 达标后开放「同城信息发布」论坛</div>
+      </div>
+      <button onclick="openSubModal()" style="background:#ea580c;border:none;color:#fff;font-size:12px;font-weight:800;padding:8px 16px;border-radius:9px;cursor:pointer;white-space:nowrap;">订阅资讯模块 ➔</button>
     </div>
-    <span style="font-size:10px;background:#ea580c;padding:2px 7px;border-radius:4px;font-weight:700;">每日更新</span>
-  </div>
-  <!-- Category filter bar -->
-  <div style="background:#f8fafc;border:1px solid #e2e8f0;border-top:none;padding:8px 8px 4px;display:flex;gap:5px;overflow-x:auto;flex-wrap:nowrap;" id="official-cats">
-    <button class="filter-btn active" onclick="filterOfficial('all',this)">全部</button>
-    <button class="filter-btn" onclick="filterOfficial('福利',this)">💚 福利</button>
-    <button class="filter-btn" onclick="filterOfficial('交通',this)">🚇 交通</button>
-    <button class="filter-btn" onclick="filterOfficial('教育',this)">📚 教育</button>
-    <button class="filter-btn" onclick="filterOfficial('安全',this)">🚨 安全</button>
-    <button class="filter-btn" onclick="filterOfficial('市政',this)">🏛️ 市政</button>
-    <button class="filter-btn" onclick="filterOfficial('亲子',this)">🌳 亲子</button>
-    <button class="filter-btn" onclick="filterOfficial('文化',this)">🎨 文化</button>
-    <button class="filter-btn" onclick="filterOfficial('公益',this)">🤝 公益</button>
-    <button class="filter-btn" onclick="filterOfficial('促销',this)">🛒 促销</button>
-  </div>
-  <div class="section-body" id="official-list">
-    <!-- rows injected by JS -->
-  </div>
-  <div style="padding:6px 10px;border:1px solid #e2e8f0;border-top:none;border-radius:0 0 10px 10px;background:#f8fafc;">
-    <span style="font-size:10px;color:#94a3b8;" id="official-count"></span>
+    <div style="margin-top:10px;height:8px;background:#fed7aa;border-radius:6px;overflow:hidden;">
+      <div id="sub-progress" style="height:100%;background:linear-gradient(90deg,#f97316,#ea580c);border-radius:6px;width:77%;transition:.4s;"></div>
+    </div>
   </div>
 </div>
 
-<!-- ═══ SECTION 2: 同城分类 ═══ -->
-<div style="max-width:720px;margin:0 auto 80px;padding:0 10px;" id="sec-classifieds">
-  <div class="cl-section-hd">
-    <div style="display:flex;align-items:center;gap:6px;">
-      <span style="font-size:14px;">🤝</span>
-      <span style="font-size:13px;font-weight:800;">同城分类大厅 · Local Classifieds</span>
-    </div>
-    <button onclick="openPostModal()" style="background:#1e293b;border:none;color:#fbbf24;font-size:11px;font-weight:700;padding:3px 10px;border-radius:5px;cursor:pointer;">➕ 发布信息</button>
+<!-- ═══ SECTION 1: 官方公共信息（方框卡片网格）═══ -->
+<div class="wrap" id="sec-official" style="margin-top:14px;">
+  <div class="sec-hd">
+    <div class="ttl">📰 官方公共信息 <span style="font-size:11px;font-weight:700;color:#94a3b8;">每日更新 · 点开看详情</span></div>
   </div>
-  <!-- Craigslist-style category directory -->
+  <div class="pillbar" id="official-cats" style="margin-bottom:10px;">
+    <button class="pill active" onclick="filterOfficial('all',this)">全部</button>
+    <button class="pill" onclick="filterOfficial('福利',this)">💚 福利</button>
+    <button class="pill" onclick="filterOfficial('交通',this)">🚇 交通</button>
+    <button class="pill" onclick="filterOfficial('教育',this)">📚 教育</button>
+    <button class="pill" onclick="filterOfficial('安全',this)">🚨 安全</button>
+    <button class="pill" onclick="filterOfficial('市政',this)">🏛️ 市政</button>
+    <button class="pill" onclick="filterOfficial('亲子',this)">🌳 亲子</button>
+    <button class="pill" onclick="filterOfficial('文化',this)">🎨 文化</button>
+    <button class="pill" onclick="filterOfficial('公益',this)">🤝 公益</button>
+    <button class="pill" onclick="filterOfficial('促销',this)">🛒 促销</button>
+  </div>
+  <div class="card-grid" id="official-list"></div>
+  <div style="font-size:11px;color:#94a3b8;margin-top:8px;" id="official-count"></div>
+</div>
+
+<!-- ═══ SECTION 2: 同城信息发布（论坛/Craigslist 方框网格）═══ -->
+<div class="wrap" id="sec-classifieds" style="margin-top:22px;position:relative;">
+  <div class="sec-hd">
+    <div class="ttl">🤝 同城信息发布 <span style="font-size:11px;font-weight:700;color:#94a3b8;">论坛式 · 点开看正文留言</span></div>
+    <button onclick="openPostModal()" style="background:#ea580c;border:none;color:#fff;font-size:12px;font-weight:800;padding:6px 14px;border-radius:8px;cursor:pointer;">➕ 我要发布</button>
+  </div>
+  <!-- forum-style category board entrances -->
   <div class="cl-cat-grid">
-    <div class="cl-cat-item" onclick="filterCL('all')">
-      <div class="icon">📋</div>
-      <div class="label">全部</div>
-    </div>
-    <div class="cl-cat-item" onclick="filterCL('房屋出租')">
-      <div class="icon">🏠</div>
-      <div class="label">房屋租售</div>
-    </div>
-    <div class="cl-cat-item" onclick="filterCL('求职招聘')">
-      <div class="icon">💼</div>
-      <div class="label">求职招聘</div>
-    </div>
-    <div class="cl-cat-item" onclick="filterCL('二手闲置')">
-      <div class="icon">🛒</div>
-      <div class="label">二手闲置</div>
-    </div>
-    <div class="cl-cat-item" onclick="filterCL('生意转让')">
-      <div class="icon">📈</div>
-      <div class="label">生意转让</div>
-    </div>
-    <div class="cl-cat-item" onclick="openPostModal()">
-      <div class="icon">📝</div>
-      <div class="label">我要发布</div>
-    </div>
-    <div class="cl-cat-item" onclick="openAccountModal()">
-      <div class="icon">👤</div>
-      <div class="label">注册认证</div>
-    </div>
-    <div class="cl-cat-item" onclick="openAccountModal()">
-      <div class="icon">💳</div>
-      <div class="label">会员支付</div>
-    </div>
+    <div class="cl-cat active" id="clc-all" onclick="filterCL('all',this)"><div class="ic">📋</div><div class="lb">全部</div></div>
+    <div class="cl-cat" id="clc-房屋出租" onclick="filterCL('房屋出租',this)"><div class="ic">🏠</div><div class="lb">房屋租售</div></div>
+    <div class="cl-cat" id="clc-求职招聘" onclick="filterCL('求职招聘',this)"><div class="ic">💼</div><div class="lb">求职招聘</div></div>
+    <div class="cl-cat" id="clc-二手闲置" onclick="filterCL('二手闲置',this)"><div class="ic">🛒</div><div class="lb">二手闲置</div></div>
+    <div class="cl-cat" id="clc-生意转让" onclick="filterCL('生意转让',this)"><div class="ic">📈</div><div class="lb">生意转让</div></div>
   </div>
-  <div class="section-body" style="border-radius:0 0 10px 10px;" id="cl-list">
-    <!-- rows injected by JS -->
-  </div>
-  <div style="padding:6px 10px;border:1px solid #e2e8f0;border-top:none;border-radius:0 0 10px 10px;background:#fffbeb;">
-    <span style="font-size:10px;color:#92400e;font-weight:600;" id="cl-count"></span>
-    <span style="font-size:10px;color:#94a3b8;margin-left:8px;">付费发布 · 人工审核 · 防虚假中介</span>
+  <div class="card-grid" id="cl-list"></div>
+  <div style="font-size:11px;color:#92400e;font-weight:600;margin-top:8px;" id="cl-count"></div>
+
+  <!-- LOCK overlay: 订阅人数未达标时锁定 -->
+  <div id="cl-lock" style="position:absolute;inset:34px 0 0;background:rgba(248,250,252,.92);backdrop-filter:blur(3px);border-radius:14px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:24px;border:2px dashed #cbd5e1;">
+    <div style="font-size:40px;">🔒</div>
+    <div style="font-size:16px;font-weight:900;color:#0f172a;margin-top:8px;">同城信息发布论坛 · 即将开放</div>
+    <div style="font-size:12px;color:#64748b;margin-top:6px;max-width:380px;line-height:1.7;">为保证社区质量与真实度，论坛将在订阅用户达到 <strong id="lock-target">500</strong> 人后开放发布与浏览。<br>当前 <strong id="lock-count" style="color:#ea580c;">386</strong> 人，仅差 <strong id="lock-remain" style="color:#ea580c;">114</strong> 人！</div>
+    <button onclick="openSubModal()" style="margin-top:14px;background:#ea580c;border:none;color:#fff;font-size:13px;font-weight:800;padding:10px 22px;border-radius:10px;cursor:pointer;">🔔 立即订阅，助力解锁</button>
+    <button onclick="demoUnlock()" style="margin-top:8px;background:none;border:none;color:#94a3b8;font-size:11px;text-decoration:underline;cursor:pointer;">（演示：模拟达标解锁预览）</button>
   </div>
 </div>
 
@@ -174,43 +189,73 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helv
   </button>
 </div>
 
-<!-- ═══ MODAL: Smart Link ═══ -->
-<div id="modal-link" class="modal-overlay">
+<!-- ═══ MODAL: 官方信息 BBS 详情 ═══ -->
+<div id="modal-official" class="modal-overlay">
   <div class="modal-box">
-    <div style="font-size:14px;font-weight:800;color:#0f172a;margin-bottom:8px;">请选择打开方式</div>
-    <p style="font-size:12px;color:#64748b;margin-bottom:16px;">官方原页为英文。推荐通过智能翻译通道阅读中文版。</p>
-    <a id="link-trans" href="#" target="_blank" onclick="closeModal('modal-link')" class="btn-primary" style="display:block;text-align:center;text-decoration:none;margin-bottom:8px;">🌐 打开智能中文翻译网页</a>
-    <a id="link-raw" href="#" target="_blank" onclick="closeModal('modal-link')" class="btn-sec" style="display:block;text-align:center;text-decoration:none;margin-bottom:8px;">打开官方英文原网页</a>
-    <button onclick="closeModal('modal-link')" class="btn-sec" style="margin-top:4px;">取消</button>
+    <div style="display:flex;justify-content:flex-end;"><button onclick="closeModal('modal-official')" style="background:none;border:none;font-size:22px;color:#94a3b8;cursor:pointer;">✕</button></div>
+    <div class="bbs-head">
+      <span id="of-cat" class="cat-badge">-</span>
+      <div id="of-title" class="bbs-title">-</div>
+      <div class="bbs-meta">
+        <span>🏢 <span id="of-source">-</span></span>
+        <span>📍 <span id="of-area">-</span></span>
+        <span>🗓️ <span id="of-date">-</span></span>
+      </div>
+    </div>
+    <div id="of-body" class="bbs-body">-</div>
+    <div class="bbs-box">
+      <div class="lbl">官方来源链接（点击可看中文翻译版）</div>
+      <a id="of-trans" href="#" target="_blank" onclick="closeModal('modal-official')" class="btn-primary" style="display:block;text-align:center;text-decoration:none;margin-top:8px;">🌐 打开智能中文翻译网页</a>
+      <a id="of-raw" href="#" target="_blank" onclick="closeModal('modal-official')" class="btn-sec" style="display:block;text-align:center;text-decoration:none;margin-top:6px;">打开官方英文原网页</a>
+    </div>
+    <p style="font-size:10px;color:#cbd5e1;text-align:center;">信息来自官方公开渠道聚合，最终以官方页面为准</p>
   </div>
 </div>
 
-<!-- ═══ MODAL: Contact ═══ -->
-<div id="modal-contact" class="modal-overlay">
+<!-- ═══ MODAL: 同城发布 BBS 帖子详情（论坛式）═══ -->
+<div id="modal-post-detail" class="modal-overlay">
   <div class="modal-box">
-    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;">
-      <div style="font-size:14px;font-weight:800;color:#0f172a;">联系发布人</div>
-      <button onclick="closeModal('modal-contact')" style="background:none;border:none;font-size:20px;color:#94a3b8;cursor:pointer;">✕</button>
-    </div>
-    <p style="font-size:11px;color:#64748b;margin-bottom:14px;">请通过以下方式联系，联系时请说明来自「美东华人生活圈」。</p>
-    <div style="background:#f8fafc;border-radius:10px;padding:12px;font-size:13px;line-height:2;">
-      <div style="display:flex;justify-content:space-between;border-bottom:1px solid #e2e8f0;padding-bottom:8px;margin-bottom:8px;">
-        <span style="color:#64748b;">发布人</span>
-        <strong id="ct-person" style="color:#0f172a;">-</strong>
+    <div style="display:flex;justify-content:flex-end;"><button onclick="closeModal('modal-post-detail')" style="background:none;border:none;font-size:22px;color:#94a3b8;cursor:pointer;">✕</button></div>
+    <div class="bbs-head">
+      <div style="display:flex;align-items:center;gap:8px;">
+        <span id="pd-cat" class="cat-badge" style="background:#fef3c7;color:#92400e;">-</span>
+        <span id="pd-price" class="price-tag" style="margin:0;">-</span>
       </div>
-      <div style="display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #e2e8f0;padding-bottom:8px;margin-bottom:8px;">
-        <span style="color:#64748b;">微信 (WeChat)</span>
+      <div id="pd-title" class="bbs-title">-</div>
+      <div class="bbs-meta">
+        <span>👤 楼主 <strong id="pd-person" style="color:#475569;">-</strong></span>
+        <span>📍 <span id="pd-area">-</span></span>
+        <span>🗓️ <span id="pd-date">-</span></span>
+        <span style="color:#16a34a;font-weight:700;">✅ 付费已核实</span>
+      </div>
+    </div>
+    <div id="pd-body" class="bbs-body">-</div>
+
+    <!-- contact box -->
+    <div class="bbs-box">
+      <div style="font-size:12px;font-weight:800;color:#0f172a;margin-bottom:8px;">📞 联系楼主（请说明来自美东华人生活圈）</div>
+      <div style="display:flex;justify-content:space-between;align-items:center;padding:5px 0;border-bottom:1px solid #e2e8f0;">
+        <span style="font-size:12px;color:#64748b;">微信 (WeChat)</span>
         <div style="display:flex;align-items:center;gap:8px;">
-          <strong id="ct-wechat" style="color:#0f172a;">-</strong>
-          <button onclick="doCopy(document.getElementById('ct-wechat').textContent)" style="background:#e2e8f0;border:none;border-radius:4px;padding:2px 8px;font-size:10px;font-weight:700;cursor:pointer;">复制</button>
+          <strong id="pd-wechat" style="font-size:13px;">-</strong>
+          <button onclick="doCopy(document.getElementById('pd-wechat').textContent)" style="background:#e2e8f0;border:none;border-radius:5px;padding:3px 9px;font-size:10px;font-weight:700;cursor:pointer;">复制</button>
         </div>
       </div>
-      <div style="display:flex;justify-content:space-between;align-items:center;">
-        <span style="color:#64748b;">电话 (Phone)</span>
-        <a id="ct-phone" href="#" style="color:#ea580c;font-weight:700;text-decoration:none;">-</a>
+      <div style="display:flex;justify-content:space-between;align-items:center;padding:5px 0;">
+        <span style="font-size:12px;color:#64748b;">电话 (Phone)</span>
+        <a id="pd-phone" href="#" style="color:#ea580c;font-weight:800;font-size:13px;text-decoration:none;">-</a>
       </div>
     </div>
-    <button onclick="closeModal('modal-contact')" class="btn-sec" style="margin-top:14px;">关闭</button>
+
+    <!-- BBS-style replies/comments -->
+    <div style="margin-bottom:10px;">
+      <div style="font-size:12px;font-weight:800;color:#0f172a;margin-bottom:8px;">💬 留言咨询 <span id="pd-reply-count" style="color:#94a3b8;font-weight:600;">(0)</span></div>
+      <div id="pd-replies"></div>
+      <div style="display:flex;gap:6px;margin-top:8px;">
+        <input type="text" id="pd-reply-input" placeholder="写下您的咨询/留言..." class="input-base" style="flex:1;" />
+        <button onclick="addReply()" style="background:#ea580c;border:none;color:#fff;border-radius:8px;padding:0 16px;font-size:13px;font-weight:800;cursor:pointer;">发送</button>
+      </div>
+    </div>
   </div>
 </div>
 
@@ -292,6 +337,53 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helv
   </div>
 </div>
 
+<!-- ═══ MODAL: 订阅资讯模块 ═══ -->
+<div id="modal-sub" class="modal-overlay">
+  <div class="modal-box">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
+      <div style="font-size:15px;font-weight:900;color:#0f172a;">🔔 订阅资讯模块</div>
+      <button onclick="closeModal('modal-sub')" style="background:none;border:none;font-size:22px;color:#94a3b8;cursor:pointer;">✕</button>
+    </div>
+    <p style="font-size:12px;color:#64748b;margin-bottom:14px;line-height:1.7;">选择你关心的模块，我们每周把精选官方资讯通过你选择的渠道推送给你。完全免费。</p>
+
+    <!-- 选择模块 -->
+    <div style="font-size:12px;font-weight:800;color:#0f172a;margin-bottom:8px;">1️⃣ 选择关心的模块（可多选）</div>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:7px;margin-bottom:16px;" id="sub-modules">
+      <label class="submod"><input type="checkbox" value="福利" checked> 💚 福利</label>
+      <label class="submod"><input type="checkbox" value="交通"> 🚇 交通</label>
+      <label class="submod"><input type="checkbox" value="教育"> 📚 教育</label>
+      <label class="submod"><input type="checkbox" value="安全"> 🚨 安全</label>
+      <label class="submod"><input type="checkbox" value="市政"> 🏛️ 市政</label>
+      <label class="submod"><input type="checkbox" value="亲子"> 🌳 亲子</label>
+      <label class="submod"><input type="checkbox" value="文化"> 🎨 文化</label>
+      <label class="submod"><input type="checkbox" value="公益"> 🤝 公益</label>
+      <label class="submod"><input type="checkbox" value="促销"> 🛒 促销</label>
+    </div>
+
+    <!-- 选择渠道 -->
+    <div style="font-size:12px;font-weight:800;color:#0f172a;margin-bottom:8px;">2️⃣ 选择推送渠道</div>
+    <div style="display:flex;gap:7px;margin-bottom:12px;" id="sub-channels">
+      <div class="subch active" data-ch="sms" onclick="pickChannel(this)">📱 手机短信</div>
+      <div class="subch" data-ch="whatsapp" onclick="pickChannel(this)">🟢 WhatsApp</div>
+      <div class="subch" data-ch="wechat" onclick="pickChannel(this)">💬 微信推送</div>
+    </div>
+
+    <!-- 联系方式 -->
+    <div style="margin-bottom:14px;">
+      <div style="font-size:12px;font-weight:800;color:#0f172a;margin-bottom:6px;">3️⃣ 填写接收账号</div>
+      <input type="text" id="sub-contact" class="input-base" placeholder="手机号 / WhatsApp 号 / 微信号" />
+    </div>
+
+    <button onclick="submitSub()" class="btn-primary">免费订阅 ➔</button>
+
+    <!-- 商业推送说明 -->
+    <div style="margin-top:14px;background:#f8fafc;border:1px solid #e2e8f0;border-radius:10px;padding:10px 12px;">
+      <div style="font-size:11px;font-weight:800;color:#475569;margin-bottom:4px;">💼 商家须知（订阅用户达标后开放）</div>
+      <div style="font-size:11px;color:#94a3b8;line-height:1.7;">当订阅用户形成规模后，商家可付费向特定模块/城市的订阅用户进行精准广告推送（短信 / WhatsApp / 微信），并在「同城信息发布」论坛置顶展示。</div>
+    </div>
+  </div>
+</div>
+
 <!-- ═══ MODAL: Account / Auth ═══ -->
 <div id="modal-account" class="modal-overlay">
   <div class="modal-box">
@@ -361,19 +453,18 @@ function renderOfficial() {
     if (q && text.indexOf(q) === -1) return;
     count++;
     var cs = CAT_COLOR[ev.cat] || 'background:#f1f5f9;color:#475569';
-    html += '<a class="row-link" onclick="openLink(\''+ev.url+'\')">'+
-      '<span class="cat-badge" style="'+cs+'">'+ev.cat+'</span>'+
-      '<span class="date-txt">'+ev.date+'</span>'+
-      '<span class="title-txt">'+ev.title+'</span>'+
-      '<span class="area-txt">'+ev.area+'</span>'+
-      '<span style="color:#94a3b8;font-size:11px;">→</span>'+
-      '</a>';
+    html += '<div class="card" onclick="openOfficialDetail(\''+ev.id+'\')">'+
+      '<div class="card-top"><span class="cat-badge" style="'+cs+'">'+ev.cat+'</span><span class="date-txt">'+ev.date+'</span></div>'+
+      '<div class="card-title">'+ev.title+'</div>'+
+      '<div class="card-desc">'+ev.desc+'</div>'+
+      '<div class="card-foot"><span class="foot-meta">🏢 '+ev.source+' · '+ev.area+'</span><span class="foot-act">查看详情 →</span></div>'+
+      '</div>';
   });
-  list.innerHTML = html || '<div style="padding:16px;text-align:center;color:#94a3b8;font-size:12px;">暂无符合条件的官方资讯</div>';
-  document.getElementById('official-count').textContent = '已筛选 ' + count + ' 条官方资讯（数据来源：NYC.gov / MTA / Queens Library 等官方渠道）';
+  list.innerHTML = html || '<div style="grid-column:1/-1;padding:24px;text-align:center;color:#94a3b8;font-size:13px;">暂无符合条件的官方信息</div>';
+  document.getElementById('official-count').textContent = '已筛选 ' + count + ' 条 · 数据来源：NYC.gov / MTA / Queens Library / NYPD 等官方渠道';
 }
 
-// ─── Render Classifieds ─────────────────────────────────────────────────────
+// ─── Render Classifieds (card grid) ─────────────────────────────────────────
 function renderCL() {
   var q = document.getElementById('search-box').value.toLowerCase();
   var city = document.getElementById('city-sel').value;
@@ -386,56 +477,114 @@ function renderCL() {
     var text = (ad.title + ad.desc + ad.area + ad.city).toLowerCase();
     if (q && text.indexOf(q) === -1) return;
     count++;
-    html += '<div class="row-link" onclick="openContact(\''+ad.id+'\')">'+
-      '<span class="cat-badge" style="background:#fef3c7;color:#92400e;">'+ad.cat+'</span>'+
-      '<span class="date-txt">'+ad.date+'</span>'+
-      '<span class="title-txt">'+ad.title+'</span>'+
-      '<span class="price-badge">'+ad.price+'</span>'+
-      '<span class="area-txt">'+ad.city+'·'+ad.area.split('·')[1]+'</span>'+
-      '<span style="color:#ea580c;font-size:11px;font-weight:700;">联系→</span>'+
+    html += '<div class="card" onclick="openPostDetail(\''+ad.id+'\')">'+
+      '<span class="verified">✅ 已核实</span>'+
+      '<div class="card-top"><span class="cat-badge" style="background:#fef3c7;color:#92400e;">'+ad.cat+'</span><span class="date-txt">'+ad.date+'</span></div>'+
+      '<div class="card-title">'+ad.title+'</div>'+
+      '<div class="price-tag">💰 '+ad.price+'</div>'+
+      '<div class="card-desc">'+ad.desc+'</div>'+
+      '<div class="card-foot"><span class="foot-meta">📍 '+ad.area+'</span><span class="foot-act">进帖联系 →</span></div>'+
       '</div>';
   });
-  list.innerHTML = html || '<div style="padding:16px;text-align:center;color:#94a3b8;font-size:12px;">暂无符合条件的分类广告</div>';
-  document.getElementById('cl-count').textContent = '共 ' + count + ' 条付费认证广告';
+  list.innerHTML = html || '<div style="grid-column:1/-1;padding:24px;text-align:center;color:#94a3b8;font-size:13px;">暂无符合条件的发布信息，点击「我要发布」成为第一个</div>';
+  document.getElementById('cl-count').textContent = '共 ' + count + ' 条付费认证发布 · 防虚假中介';
 }
 
 function applyFilters() { renderOfficial(); renderCL(); }
 
 function filterOfficial(cat, btn) {
   officialCatFilter = cat;
-  document.querySelectorAll('#official-cats .filter-btn').forEach(function(b){ b.classList.remove('active'); });
+  document.querySelectorAll('#official-cats .pill').forEach(function(b){ b.classList.remove('active'); });
   if (btn) btn.classList.add('active');
   renderOfficial();
 }
 
-function filterCL(cat) {
+function filterCL(cat, el) {
   clCatFilter = cat;
-  scrollToSection('sec-classifieds');
+  document.querySelectorAll('.cl-cat').forEach(function(b){ b.classList.remove('active'); });
+  if (el) el.classList.add('active');
   renderCL();
 }
 
-// ─── Open Smart Link Modal ──────────────────────────────────────────────────
-function openLink(url) {
-  var transUrl = 'https://translate.google.com/translate?sl=en&tl=zh-CN&u=' + encodeURIComponent(url);
-  document.getElementById('link-trans').href = transUrl;
-  document.getElementById('link-raw').href = url;
-  openModal('modal-link');
+// ─── Official Info BBS Detail ───────────────────────────────────────────────
+function openOfficialDetail(id) {
+  var ev = OFFICIAL.find(function(e){ return e.id === id; });
+  if (!ev) return;
+  var cs = CAT_COLOR[ev.cat] || 'background:#f1f5f9;color:#475569';
+  var c = document.getElementById('of-cat');
+  c.textContent = ev.cat; c.style.cssText = cs + ';font-size:10px;font-weight:800;padding:2px 7px;border-radius:5px;';
+  document.getElementById('of-title').textContent = ev.title;
+  document.getElementById('of-source').textContent = ev.source;
+  document.getElementById('of-area').textContent = ev.area;
+  document.getElementById('of-date').textContent = ev.date;
+  document.getElementById('of-body').textContent = ev.desc;
+  var transUrl = 'https://translate.google.com/translate?sl=en&tl=zh-CN&u=' + encodeURIComponent(ev.url);
+  document.getElementById('of-trans').href = transUrl;
+  document.getElementById('of-raw').href = ev.url;
+  openModal('modal-official');
 }
 
-// ─── Open Contact Modal ─────────────────────────────────────────────────────
-function openContact(adId) {
-  var ad = CLASSIFIEDS.find(function(a){ return a.id === adId; });
+// ─── Classified Post BBS Detail (forum thread) ──────────────────────────────
+var replyStore = {};
+var currentPostId = null;
+function openPostDetail(id) {
+  var ad = CLASSIFIEDS.find(function(a){ return a.id === id; });
   if (!ad) return;
-  document.getElementById('ct-person').textContent = ad.contact.person;
-  document.getElementById('ct-wechat').textContent = ad.contact.wechat || '无';
-  var phoneEl = document.getElementById('ct-phone');
-  phoneEl.textContent = ad.contact.phone;
-  phoneEl.href = 'tel:' + ad.contact.phone.replace(/-/g,'');
-  openModal('modal-contact');
+  currentPostId = id;
+  document.getElementById('pd-cat').textContent = ad.cat;
+  document.getElementById('pd-price').textContent = '💰 ' + ad.price;
+  document.getElementById('pd-title').textContent = ad.title;
+  document.getElementById('pd-person').textContent = ad.contact.person;
+  document.getElementById('pd-area').textContent = ad.area;
+  document.getElementById('pd-date').textContent = ad.date;
+  document.getElementById('pd-body').textContent = ad.desc;
+  document.getElementById('pd-wechat').textContent = ad.contact.wechat || '无';
+  var ph = document.getElementById('pd-phone');
+  ph.textContent = ad.contact.phone;
+  ph.href = 'tel:' + ad.contact.phone.replace(/-/g,'');
+  renderReplies();
+  openModal('modal-post-detail');
+}
+
+function renderReplies() {
+  var box = document.getElementById('pd-replies');
+  var arr = replyStore[currentPostId] || [];
+  if (arr.length === 0) {
+    box.innerHTML = '<div style="font-size:12px;color:#cbd5e1;padding:6px 0;">暂无留言，来做第一个咨询的人吧～</div>';
+  } else {
+    box.innerHTML = arr.map(function(r){
+      return '<div class="reply"><span class="who">'+r.who+'</span><span class="when">'+r.when+'</span><div style="margin-top:2px;color:#334155;">'+r.text+'</div></div>';
+    }).join('');
+  }
+  document.getElementById('pd-reply-count').textContent = '(' + arr.length + ')';
+}
+
+function addReply() {
+  var inp = document.getElementById('pd-reply-input');
+  var txt = inp.value.trim();
+  if (!txt) return;
+  if (!isLoggedIn) {
+    if (confirm('留言需先完成实名认证，是否前往认证？')) openAccountModal();
+    return;
+  }
+  if (!replyStore[currentPostId]) replyStore[currentPostId] = [];
+  var t = new Date();
+  replyStore[currentPostId].push({ who: userName || '匿名用户', when: t.getHours()+':'+t.getMinutes().toString().padStart(2,'0'), text: txt });
+  inp.value = '';
+  renderReplies();
 }
 
 // ─── Post Ad Modal ──────────────────────────────────────────────────────────
 function openPostModal() {
+  if (!forumUnlocked) {
+    if (confirm('「同城信息发布」论坛将在订阅用户达到 ' + SUB_TARGET + ' 人后开放。
+当前 ' + subCount + ' 人。
+
+是否现在订阅，助力解锁？')) {
+      openSubModal();
+    }
+    return;
+  }
   if (!isLoggedIn) {
     if (confirm('发布信息需先完成实名认证。
 是否现在前往注册/认证？')) {
@@ -481,6 +630,62 @@ function submitAd(e) {
   document.getElementById('post-form').reset();
   renderCL();
   scrollToSection('sec-classifieds');
+}
+
+// ─── Subscription (模块订阅 + 三渠道 + 解锁逻辑) ─────────────────────────────
+var SUB_TARGET = 500;
+var subCount = 386;
+var subChannel = 'sms';
+var forumUnlocked = false;
+
+function openSubModal() { openModal('modal-sub'); }
+
+function pickChannel(el) {
+  document.querySelectorAll('#sub-channels .subch').forEach(function(c){ c.classList.remove('active'); });
+  el.classList.add('active');
+  subChannel = el.getAttribute('data-ch');
+  var inp = document.getElementById('sub-contact');
+  if (subChannel === 'sms') inp.placeholder = '美国手机号，如 917-555-0100';
+  else if (subChannel === 'whatsapp') inp.placeholder = 'WhatsApp 号码（含国家码）';
+  else inp.placeholder = '微信号 WeChat ID';
+}
+
+function submitSub() {
+  var mods = [];
+  document.querySelectorAll('#sub-modules input:checked').forEach(function(c){ mods.push(c.value); });
+  var contact = document.getElementById('sub-contact').value.trim();
+  if (mods.length === 0) { alert('请至少选择一个关心的模块！'); return; }
+  if (!contact) { alert('请填写接收账号！'); return; }
+  var chName = subChannel === 'sms' ? '手机短信' : (subChannel === 'whatsapp' ? 'WhatsApp' : '微信推送');
+  subCount++;
+  updateSubUI();
+  alert('🎉 订阅成功！
+模块：' + mods.join('、') + '
+渠道：' + chName + '
+账号：' + contact + '
+
+我们将每周通过' + chName + '为您推送精选资讯。');
+  closeModal('modal-sub');
+}
+
+function updateSubUI() {
+  var pct = Math.min(100, Math.round(subCount / SUB_TARGET * 100));
+  document.getElementById('sub-count').textContent = subCount;
+  document.getElementById('sub-target').textContent = SUB_TARGET;
+  document.getElementById('sub-progress').style.width = pct + '%';
+  document.getElementById('lock-count').textContent = subCount;
+  document.getElementById('lock-target').textContent = SUB_TARGET;
+  document.getElementById('lock-remain').textContent = Math.max(0, SUB_TARGET - subCount);
+  if (subCount >= SUB_TARGET && !forumUnlocked) {
+    forumUnlocked = true;
+    document.getElementById('cl-lock').style.display = 'none';
+  }
+}
+
+function demoUnlock() {
+  subCount = SUB_TARGET;
+  updateSubUI();
+  alert('🎉 演示：订阅人数已达标，「同城信息发布」论坛已开放！现在可以浏览和发布信息了。');
 }
 
 // ─── Account / Auth ─────────────────────────────────────────────────────────
@@ -534,6 +739,7 @@ function changeLang(lang) {
 // ─── Init ────────────────────────────────────────────────────────────────────
 renderOfficial();
 renderCL();
+updateSubUI();
 </script>
 </body>
 </html>
