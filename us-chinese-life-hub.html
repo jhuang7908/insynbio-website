@@ -2,7 +2,7 @@
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>美东华人生活圈 — 官方资讯与同城分类大厅 | East Coast Chinese Life Hub</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -34,172 +34,216 @@
   <style>
     body {
       font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      -webkit-tap-highlight-color: transparent;
+    }
+    /* Hide scrollbar for Chrome, Safari and Opera */
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    /* Hide scrollbar for IE, Edge and Firefox */
+    .no-scrollbar {
+      -ms-overflow-style: none;  /* IE and Edge */
+      scrollbar-width: none;  /* Firefox */
+    }
+    .active-tab-btn {
+      color: #ea580c !important;
+      border-bottom: 2px solid #ea580c !important;
+    }
+    .mobile-nav-active {
+      color: #ea580c !important;
     }
   </style>
 </head>
-<body class="bg-slate-50 text-slate-800 antialiased flex flex-col min-h-screen">
+<body class="bg-slate-50 text-slate-800 antialiased flex flex-col min-h-screen pb-16 md:pb-0">
 
-  <!-- ===== TOP HEADER ===== -->
+  <!-- ===== TOP HEADER (Desktop & Mobile) ===== -->
   <header class="bg-white border-b border-slate-200 sticky top-0 z-50 shadow-sm">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-      <div class="flex items-center gap-3">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-14 md:h-16 flex items-center justify-between">
+      <div class="flex items-center gap-2 md:gap-3">
         <!-- Logo -->
-        <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-brand-500 to-brand-700 flex items-center justify-center text-white font-bold text-xl shadow-md shadow-brand-500/20">
+        <div class="w-8 h-8 md:w-10 md:h-10 rounded-lg md:rounded-xl bg-gradient-to-br from-brand-500 to-brand-700 flex items-center justify-center text-white font-bold text-lg md:text-xl shadow-md shadow-brand-500/20">
           圈
         </div>
         <div>
-          <h1 class="text-base font-bold text-slate-900 leading-tight" id="ui-brand-title">美东华人生活圈</h1>
-          <p class="text-[9px] text-slate-400 font-semibold uppercase tracking-wider" id="ui-brand-sub">官方民生资讯 · 同城分类广告 · 智能双语对照</p>
+          <h1 class="text-xs md:text-base font-bold text-slate-900 leading-tight" id="ui-brand-title">美东华人生活圈</h1>
+          <p class="text-[8px] md:text-[9px] text-slate-400 font-semibold uppercase tracking-wider" id="ui-brand-sub">官方民生资讯 · 同城分类广告 · 智能双语对照</p>
         </div>
       </div>
       
       <!-- Navigation & Language Switcher -->
-      <div class="flex items-center gap-4 sm:gap-6">
-        <nav class="hidden md:flex items-center gap-6 text-sm font-semibold text-slate-600">
-          <a href="#hub" class="text-brand-600 hover:text-brand-700 transition" id="ui-nav-hub">信息大厅</a>
-          <a href="#about" class="hover:text-brand-600 transition" id="ui-nav-about">关于我们</a>
-          <a href="#feedback" class="hover:text-brand-600 transition" id="ui-nav-feedback">意见反馈</a>
-        </nav>
-
+      <div class="flex items-center gap-2 md:gap-4">
         <!-- Language Switcher Dropdown -->
-        <div class="relative inline-block text-left">
-          <select id="lang-switcher" class="px-3 py-1.5 border border-slate-200 rounded-lg text-xs font-bold text-slate-700 bg-slate-50 focus:outline-none focus:ring-2 focus:ring-brand-500 cursor-pointer">
-            <option value="zh">简体中文</option>
-            <option value="zht">繁體中文</option>
-            <option value="en">English</option>
-          </select>
-        </div>
+        <select id="lang-switcher" class="px-2 py-1 border border-slate-200 rounded-lg text-[10px] md:text-xs font-bold text-slate-700 bg-slate-50 focus:outline-none focus:ring-2 focus:ring-brand-500 cursor-pointer">
+          <option value="zh">简体</option>
+          <option value="zht">繁體</option>
+          <option value="en">EN</option>
+        </select>
 
-        <!-- Action Button -->
-        <div class="flex items-center gap-2">
+        <!-- Desktop Action Buttons -->
+        <div class="hidden md:flex items-center gap-2">
           <a href="us-chinese-life-plan.html" class="px-3 py-1.5 text-xs font-bold text-slate-600 bg-slate-100 hover:bg-slate-200 rounded-lg transition no-underline" id="ui-btn-plan">返回规划案</a>
           <button onclick="openPostAdModal()" class="px-4 py-2 text-xs font-bold text-white bg-brand-600 hover:bg-brand-700 rounded-lg transition shadow-md shadow-brand-600/10" id="ui-btn-feedback">发布信息</button>
         </div>
+        
+        <!-- User Profile Button (Mock Login) -->
+        <button onclick="openAccountModal()" class="flex items-center gap-1 px-2 py-1 border border-slate-200 hover:bg-slate-50 rounded-lg text-[10px] md:text-xs font-bold text-slate-600 transition">
+          👤 <span id="nav-user-status">登录 / 认证</span>
+        </button>
       </div>
     </div>
   </header>
 
-  <!-- ===== HERO BANNER ===== -->
-  <section class="bg-gradient-to-b from-brand-50 via-white to-slate-50 py-12 border-b border-slate-100">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-      <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-brand-100 text-brand-800 mb-4" id="ui-hero-tag">
-        📢 官方民生精选 + 现代同城分类大厅
-      </span>
-      <h2 class="text-2xl sm:text-4xl font-extrabold tracking-tight text-slate-900 mb-4 font-space" id="ui-hero-title">
-        美东华人生活圈 · 现代同城分类大厅
-      </h2>
-      <p class="text-xs sm:text-sm text-slate-500 max-w-2xl mx-auto leading-relaxed" id="ui-hero-desc">
-        左手官方民生福利，右手同城分类广告。我们用最现代的卡片美学重塑 Craigslist，为您提供最干净、最真实、无虚假中介的租房、二手、生意转让与求职信息。
-      </p>
-    </div>
-  </section>
+  <!-- ===== MOBILE NAVIGATION TABS (Top of Page) ===== -->
+  <div class="bg-white border-b border-slate-200 sticky top-14 z-40 md:hidden flex justify-around text-xs font-bold text-slate-500">
+    <button onclick="switchMobileSection('official')" id="btn-tab-official" class="flex-1 py-3 text-center border-b-2 border-transparent active-tab-btn">📰 官方资讯</button>
+    <button onclick="switchMobileSection('classifieds')" id="btn-tab-classifieds" class="flex-1 py-3 text-center border-b-2 border-transparent">🤝 同城分类</button>
+  </div>
 
-  <!-- ===== MAIN INFORMATION HUB ===== -->
-  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 flex-1" id="hub">
+  <!-- ===== MAIN GRID CONTAINER (Desktop: Side-by-Side, Mobile: Tabbed/Stacked) ===== -->
+  <main class="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8 py-4 flex-1 flex flex-col gap-4">
     
-    <!-- Search and Filters -->
-    <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm mb-8">
-      <div class="flex flex-col lg:flex-row gap-4">
-        <!-- Search Bar -->
-        <div class="relative flex-1">
-          <input type="text" id="search-input" placeholder="搜索福利、活动、租房、二手、生意转让、招聘或区域..." class="w-full pl-10 pr-4 py-3 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-brand-500 text-sm">
-          <span class="absolute left-3.5 top-3.5 text-slate-400">🔍</span>
-        </div>
-        <!-- Borough Filter -->
-        <select id="borough-filter" class="px-4 py-3 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-brand-500 text-sm text-slate-600 bg-white cursor-pointer">
-          <option value="all" id="opt-boro-all">所有区域 (All Boroughs)</option>
+    <!-- Search Bar & City Selector (High Density) -->
+    <div class="bg-white p-3 md:p-4 rounded-xl border border-slate-200 shadow-sm flex flex-col md:flex-row gap-2">
+      <div class="relative flex-1">
+        <input type="text" id="search-input" placeholder="搜索福利、活动、租房、二手、生意转让、招聘或区域..." class="w-full pl-8 pr-4 py-2 border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-500 text-xs md:text-sm">
+        <span class="absolute left-2.5 top-2.5 text-slate-400 text-xs">🔍</span>
+      </div>
+      <div class="flex gap-2">
+        <!-- City Selector (Craigslist Style) -->
+        <select id="city-filter" class="flex-1 md:flex-initial px-3 py-2 border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-500 text-xs text-slate-600 bg-white cursor-pointer font-semibold">
+          <option value="all">📍 所有城市 (All Cities)</option>
+          <option value="纽约" selected>纽约 (New York)</option>
+          <option value="波士顿">波士顿 (Boston)</option>
+          <option value="洛杉矶">洛杉矶 (Los Angeles)</option>
+        </select>
+        <!-- Borough/Area Selector -->
+        <select id="borough-filter" class="flex-1 md:flex-initial px-3 py-2 border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-500 text-xs text-slate-600 bg-white cursor-pointer font-semibold">
+          <option value="all">🗺️ 所有区域 (All Areas)</option>
           <option value="全市" id="opt-boro-citywide">纽约全市 (Citywide)</option>
           <option value="皇后区" id="opt-boro-queens">皇后区 (Queens)</option>
           <option value="布鲁克林" id="opt-boro-brooklyn">布鲁克林 (Brooklyn)</option>
           <option value="曼哈顿" id="opt-boro-manhattan">曼哈顿 (Manhattan)</option>
         </select>
       </div>
-
-      <!-- Category Filter Buttons -->
-      <div class="flex flex-wrap gap-1.5 mt-4 pt-4 border-t border-slate-100" id="category-filters">
-        <!-- Dynamic Category Buttons will be injected here -->
-      </div>
     </div>
 
-    <!-- Stats Bar -->
-    <div class="flex justify-between items-center text-xs text-slate-400 mb-6 px-2">
-      <span id="results-count">已加载 38 条真实资讯与分类广告</span>
-      <span id="ui-results-range">数据范围：过去30天至未来一周</span>
+    <!-- Dual Column Layout for Desktop, Tab-controlled for Mobile -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-4">
+      
+      <!-- LEFT COLUMN: OFFICIAL PUBLIC INFO FEED (lg:col-span-5) -->
+      <section id="sec-official" class="lg:col-span-5 flex flex-col gap-3">
+        <div class="bg-slate-900 text-white p-3 rounded-xl flex justify-between items-center shadow-sm">
+          <div class="flex items-center gap-1.5">
+            <span class="text-sm">📰</span>
+            <h3 class="font-bold text-xs md:text-sm uppercase tracking-wider">官方民生精选 (Verified Public Feed)</h3>
+          </div>
+          <span class="text-[10px] bg-brand-600 px-2 py-0.5 rounded font-bold">每日更新</span>
+        </div>
+
+        <!-- Category Horizontal Scrollbar (High Density) -->
+        <div class="flex gap-1 overflow-x-auto no-scrollbar pb-1" id="official-category-filters">
+          <!-- Dynamic Category Buttons will be injected here -->
+        </div>
+
+        <!-- High Density Official Feed List -->
+        <div class="flex flex-col gap-2 max-h-[75vh] overflow-y-auto pr-1" id="official-feed-list">
+          <!-- Dynamic compact list items will be injected here -->
+        </div>
+      </section>
+
+      <!-- RIGHT COLUMN: CRAIGSLIST/WENXUECITY STYLE CLASSIFIEDS DIRECTORY (lg:col-span-7) -->
+      <section id="sec-classifieds" class="lg:col-span-7 flex flex-col gap-3 hidden lg:flex">
+        <div class="bg-amber-600 text-white p-3 rounded-xl flex justify-between items-center shadow-sm">
+          <div class="flex items-center gap-1.5">
+            <span class="text-sm">🤝</span>
+            <h3 class="font-bold text-xs md:text-sm uppercase tracking-wider">同城分类大厅 (Local Classifieds)</h3>
+          </div>
+          <button onclick="openPostAdModal()" class="text-[10px] bg-slate-900 hover:bg-slate-800 text-white px-2 py-1 rounded font-bold transition">➕ 免费/付费发布</button>
+        </div>
+
+        <!-- Craigslist Style Category Directory Grid (High Density) -->
+        <div class="bg-white p-3 rounded-xl border border-slate-200 shadow-sm grid grid-cols-2 sm:grid-cols-4 gap-2 text-xs">
+          <div class="p-2 bg-amber-50/50 rounded-lg border border-amber-100/60">
+            <h4 class="font-bold text-amber-800 mb-1 flex items-center gap-1">🏠 房屋租售</h4>
+            <ul class="space-y-1 text-slate-600 pl-1">
+              <li><button onclick="filterClassifieds('房屋出租')" class="hover:text-brand-600 hover:underline">房屋出租</button></li>
+              <li><button onclick="filterClassifieds('单房分租')" class="hover:text-brand-600 hover:underline">单房分租</button></li>
+              <li><button onclick="filterClassifieds('商铺转让')" class="hover:text-brand-600 hover:underline">商铺写字楼</button></li>
+            </ul>
+          </div>
+          <div class="p-2 bg-amber-50/50 rounded-lg border border-amber-100/60">
+            <h4 class="font-bold text-amber-800 mb-1 flex items-center gap-1">💼 求职招聘</h4>
+            <ul class="space-y-1 text-slate-600 pl-1">
+              <li><button onclick="filterClassifieds('求职招聘')" class="hover:text-brand-600 hover:underline">餐馆直聘</button></li>
+              <li><button onclick="filterClassifieds('求职招聘')" class="hover:text-brand-600 hover:underline">诊所/办公室</button></li>
+              <li><button onclick="filterClassifieds('求职招聘')" class="hover:text-brand-600 hover:underline">家政/司机</button></li>
+            </ul>
+          </div>
+          <div class="p-2 bg-amber-50/50 rounded-lg border border-amber-100/60">
+            <h4 class="font-bold text-amber-800 mb-1 flex items-center gap-1">🛒 二手闲置</h4>
+            <ul class="space-y-1 text-slate-600 pl-1">
+              <li><button onclick="filterClassifieds('二手闲置')" class="hover:text-brand-600 hover:underline">数码电子</button></li>
+              <li><button onclick="filterClassifieds('二手闲置')" class="hover:text-brand-600 hover:underline">家具家电</button></li>
+              <li><button onclick="filterClassifieds('二手闲置')" class="hover:text-brand-600 hover:underline">二手汽车</button></li>
+            </ul>
+          </div>
+          <div class="p-2 bg-amber-50/50 rounded-lg border border-amber-100/60">
+            <h4 class="font-bold text-amber-800 mb-1 flex items-center gap-1">📈 生意转让</h4>
+            <ul class="space-y-1 text-slate-600 pl-1">
+              <li><button onclick="filterClassifieds('生意转让')" class="hover:text-brand-600 hover:underline">奶茶甜品店</button></li>
+              <li><button onclick="filterClassifieds('生意转让')" class="hover:text-brand-600 hover:underline">美甲美容院</button></li>
+              <li><button onclick="filterClassifieds('生意转让')" class="hover:text-brand-600 hover:underline">中餐馆/外卖</button></li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Classifieds Listings Grid (High Density) -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3" id="classifieds-list">
+          <!-- Dynamic classified cards will be injected here -->
+        </div>
+      </section>
+
     </div>
 
-    <!-- Events Grid -->
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16" id="events-grid">
-      <!-- Dynamic Event Cards will be injected here -->
-    </div>
-
-    <!-- ===== ABOUT US SECTION ===== -->
-    <section class="bg-white rounded-2xl border border-slate-200 p-8 md:p-12 shadow-sm mb-16" id="about">
-      <div class="max-w-3xl mx-auto text-center space-y-6">
-        <h3 class="text-2xl font-bold text-slate-900" id="ui-about-title">关于美东华人生活圈</h3>
-        <p class="text-sm text-slate-600 leading-relaxed" id="ui-about-p1">
+    <!-- ===== ABOUT US SECTION (Compact) ===== -->
+    <section class="bg-white rounded-xl border border-slate-200 p-4 shadow-sm" id="about">
+      <div class="max-w-3xl mx-auto text-center space-y-3">
+        <h3 class="text-sm font-bold text-slate-900" id="ui-about-title">关于美东华人生活圈</h3>
+        <p class="text-[11px] text-slate-500 leading-relaxed" id="ui-about-p1">
           在美东生活，及时获取官方资讯是保障切身权益、享受公共福利的关键。然而，散落在各大政府网站、公共图书馆和社区机构的英文公告繁多，逐个检索费时费力。
         </p>
-        <p class="text-sm text-slate-600 leading-relaxed" id="ui-about-p2">
+        <p class="text-[11px] text-slate-500 leading-relaxed hidden md:block" id="ui-about-p2">
           「美东华人生活圈」坚持「100% 官方真实、100% 干净无噪、100% 免费公益」的原则，通过技术手段智能聚合最新资讯，并提供保姆级中文重写。更重要的是，我们集成了智能网页翻译通道，让您在点击官方链接时，能直接阅读经过翻译的中文官方网页，彻底消除信息获取门槛。
         </p>
-        <div class="pt-4 flex flex-wrap justify-center gap-6 sm:gap-8 text-xs text-slate-500 font-semibold">
-          <div class="flex items-center gap-2" id="ui-about-tag1">🛡️ 官方数据源核实</div>
-          <div class="flex items-center gap-2" id="ui-about-tag2">🚫 绝无虚假广告</div>
-          <div class="flex items-center gap-2" id="ui-about-tag3">🤝 纯粹公益民生</div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ===== FEEDBACK FORM SECTION ===== -->
-    <section class="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-10" id="feedback">
-      <div class="lg:col-span-2 bg-white p-6 rounded-2xl border border-slate-200 shadow-sm">
-        <h3 class="text-lg font-bold text-slate-900 mb-2" id="ui-feedback-title">在线意见反馈</h3>
-        <p class="text-xs text-slate-500 mb-6" id="ui-feedback-desc">
-          您对我们的平台有什么意见或建议？您希望我们接入哪些新的信息源？请在下方留言，您的反馈对我们至关重要！
-        </p>
-        <form id="feedback-form" class="space-y-4">
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div>
-              <label class="block text-xs font-semibold text-slate-700 mb-1" id="ui-fb-name">您的姓名 / 昵称 *</label>
-              <input type="text" id="fb-name" required class="w-full px-3 py-2 border border-slate-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-brand-500">
-            </div>
-            <div>
-              <label class="block text-xs font-semibold text-slate-700 mb-1" id="ui-fb-contact">联系方式 (Email/微信) *</label>
-              <input type="text" id="fb-contact" required class="w-full px-3 py-2 border border-slate-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-brand-500">
-            </div>
-          </div>
-          <div>
-            <label class="block text-xs font-semibold text-slate-700 mb-1" id="ui-fb-content">您的宝贵意见 *</label>
-            <textarea id="fb-content" rows="4" required class="w-full px-3 py-2 border border-slate-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-brand-500" placeholder="请写下您的建议或合作意向..."></textarea>
-          </div>
-          <div class="flex justify-between items-center pt-2">
-            <span class="text-xs text-slate-400" id="ui-fb-required">* 为必填项</span>
-            <button type="submit" class="px-6 py-2 text-sm font-semibold text-white bg-brand-600 hover:bg-brand-700 rounded-lg transition shadow-md shadow-brand-600/10" id="ui-fb-submit">提交反馈</button>
-          </div>
-        </form>
-      </div>
-
-      <div class="lg:col-span-1 space-y-6">
-        <div class="bg-slate-900 text-white p-6 rounded-2xl">
-          <h4 class="font-bold text-sm mb-2" id="ui-contact-title">直接联系项目组</h4>
-          <p class="text-xs text-slate-300 leading-relaxed mb-4" id="ui-contact-desc">
-            如果您有深度的合作意向、媒体资源对接、或者想加入我们的志愿编辑团队，欢迎直接发送邮件与我们取得联系。
-          </p>
-          <a href="mailto:contact@insynbio.com" class="block text-center py-2.5 bg-brand-600 hover:bg-brand-700 text-white text-xs font-semibold rounded-lg transition shadow-md shadow-brand-600/10 no-underline" id="ui-contact-btn">
-            发送邮件：contact@insynbio.com
-          </a>
-        </div>
-
-        <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm">
-          <h4 class="font-bold text-slate-900 text-sm mb-3" id="ui-feedback-latest">最新提交的意见 (本地模拟)</h4>
-          <div id="feedback-list" class="space-y-3 max-h-[200px] overflow-y-auto text-xs text-slate-600">
-            <p class="text-slate-400 italic" id="ui-feedback-empty">暂无提交记录，提交表单后将保存在您的浏览器本地。</p>
-          </div>
+        <div class="flex justify-center gap-4 text-[10px] text-slate-400 font-semibold">
+          <span id="ui-about-tag1">🛡️ 官方数据源核实</span>
+          <span id="ui-about-tag2">🚫 绝无虚假广告</span>
+          <span id="ui-about-tag3">🤝 纯粹公益民生</span>
         </div>
       </div>
     </section>
 
   </main>
+
+  <!-- ===== STICKY BOTTOM NAVIGATION BAR FOR EXTREME MOBILE OPTIMIZATION ===== -->
+  <div class="fixed bottom-0 left-0 right-0 bg-white border-t border-slate-200 h-14 md:hidden flex justify-around items-center z-50 shadow-lg">
+    <button onclick="switchMobileSection('official')" class="flex flex-col items-center gap-0.5 text-slate-400 active:text-brand-600" id="m-nav-official">
+      <span class="text-lg">📰</span>
+      <span class="text-[9px] font-bold">官方资讯</span>
+    </button>
+    <button onclick="switchMobileSection('classifieds')" class="flex flex-col items-center gap-0.5 text-slate-400" id="m-nav-classifieds">
+      <span class="text-lg">🤝</span>
+      <span class="text-[9px] font-bold">同城分类</span>
+    </button>
+    <button onclick="openPostAdModal()" class="flex flex-col items-center gap-0.5 text-slate-400">
+      <span class="text-lg">➕</span>
+      <span class="text-[9px] font-bold">发布信息</span>
+    </button>
+    <button onclick="openAccountModal()" class="flex flex-col items-center gap-0.5 text-slate-400" id="m-nav-account">
+      <span class="text-lg">👤</span>
+      <span class="text-[9px] font-bold">我的账户</span>
+    </button>
+  </div>
 
   <!-- ===== SMART LINK MODAL ===== -->
   <div id="link-modal" class="fixed inset-0 bg-black/60 backdrop-filter backdrop-blur-sm hidden items-center justify-center z-[9999] p-4">
@@ -222,43 +266,97 @@
 
   <!-- ===== POST AD MODAL (CLASSIFIEDS REGISTRATION & PAYMENT FLOW) ===== -->
   <div id="post-ad-modal" class="fixed inset-0 bg-black/60 backdrop-filter backdrop-blur-sm hidden items-center justify-center z-[9999] p-4">
-    <div class="bg-white rounded-2xl max-w-lg w-full p-6 shadow-xl border border-slate-100 space-y-4 overflow-y-auto max-h-[90vh]">
+    <div class="bg-white rounded-2xl max-w-lg w-full p-5 shadow-xl border border-slate-100 space-y-4 overflow-y-auto max-h-[90vh]">
       <div class="flex justify-between items-start">
-        <h4 class="font-bold text-slate-900 text-lg" id="post-modal-title">发布分类信息 (Post Classified Ad)</h4>
+        <h4 class="font-bold text-slate-900 text-base" id="post-modal-title">发布分类信息 (Post Classified Ad)</h4>
         <button onclick="closePostAdModal()" class="text-slate-400 hover:text-slate-600 text-xl font-bold">&times;</button>
       </div>
-      <p class="text-xs text-slate-500 leading-relaxed" id="post-modal-desc">
+      <p class="text-[11px] text-slate-500 leading-relaxed" id="post-modal-desc">
         为了杜绝虚假中介、欺诈广告，保障社区生态健康，「美东华人生活圈」采用「付费发布 + 人工审核」机制。所有个人和商家信息需交纳小额费用后发布，支持置顶推广。
       </p>
       
-      <!-- Steps Grid -->
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 pt-2">
-        <div class="p-3 bg-slate-50 rounded-xl border border-slate-100 space-y-1">
-          <h5 class="font-bold text-xs text-brand-600" id="post-step1">1. 注册/登录账户</h5>
-          <p class="text-[11px] text-slate-500 leading-relaxed" id="post-step1-desc">通过微信扫码或邮箱注册，绑定美国手机号完成实名认证。</p>
+      <!-- Interactive Ad Form -->
+      <form id="ad-post-form" class="space-y-3" onsubmit="handleAdSubmit(event)">
+        <div class="grid grid-cols-2 gap-2">
+          <div>
+            <label class="block text-[10px] font-bold text-slate-700 mb-1">选择分类 *</label>
+            <select id="form-category" required class="w-full px-2 py-1.5 border border-slate-200 rounded-lg text-xs bg-white">
+              <option value="房屋出租">🏠 房屋出租 ($5/月)</option>
+              <option value="求职招聘">💼 求职招聘 ($5/月)</option>
+              <option value="二手闲置">🛒 二手闲置 ($2/月)</option>
+              <option value="生意转让">📈 生意转让 ($10/月)</option>
+            </select>
+          </div>
+          <div>
+            <label class="block text-[10px] font-bold text-slate-700 mb-1">选择城市 *</label>
+            <select id="form-city" required class="w-full px-2 py-1.5 border border-slate-200 rounded-lg text-xs bg-white">
+              <option value="纽约">纽约 (New York)</option>
+              <option value="波士顿">波士顿 (Boston)</option>
+              <option value="洛杉矶">洛杉矶 (Los Angeles)</option>
+            </select>
+          </div>
         </div>
-        <div class="p-3 bg-slate-50 rounded-xl border border-slate-100 space-y-1">
-          <h5 class="font-bold text-xs text-brand-600" id="post-step2">2. 填写信息并选择套餐</h5>
-          <p class="text-[11px] text-slate-500 leading-relaxed" id="post-step2-desc">填写标题、描述、区域、价格及联系方式，上传实景图片。</p>
+        
+        <div>
+          <label class="block text-[10px] font-bold text-slate-700 mb-1">广告标题 *</label>
+          <input type="text" id="form-title" required placeholder="例如：法拉盛中心全新公寓单房出租" class="w-full px-2 py-1.5 border border-slate-200 rounded-lg text-xs focus:outline-none focus:ring-2 focus:ring-brand-500">
         </div>
-        <div class="p-3 bg-slate-50 rounded-xl border border-slate-100 space-y-1">
-          <h5 class="font-bold text-xs text-brand-600" id="post-step3">3. 在线支付发布费</h5>
-          <p class="text-[11px] text-slate-500 leading-relaxed" id="post-step3-desc">支持 Stripe、微信支付或支付宝。普通广告 $5/月，置顶广告 $20/周（置顶于大厅首屏）。</p>
-        </div>
-        <div class="p-3 bg-slate-50 rounded-xl border border-slate-100 space-y-1">
-          <h5 class="font-bold text-xs text-brand-600" id="post-step4">4. 人工审核上线</h5>
-          <p class="text-[11px] text-slate-500 leading-relaxed" id="post-step4-desc">客服将在 2 小时内完成内容合规性审核，审核通过后即刻上线并同步推送至微信社群。</p>
-        </div>
-      </div>
 
-      <div class="flex flex-col gap-2 pt-4">
-        <button onclick="alert('测试环境：线上自助发布系统正在开发中，目前请联系微信客服手动提交发布。')" class="w-full text-center py-3 bg-brand-600 hover:bg-brand-700 text-white text-xs font-bold rounded-xl transition shadow-md shadow-brand-600/10" id="btn-start-post">
-          立即在线发布 ($5 起) ➔
-        </button>
-        <button onclick="closePostAdModal()" class="w-full text-center py-2.5 bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-semibold rounded-xl transition" id="btn-post-cancel">
-          取消
-        </button>
-      </div>
+        <div>
+          <label class="block text-[10px] font-bold text-slate-700 mb-1">详细描述 *</label>
+          <textarea id="form-desc" required rows="3" placeholder="请详细描述您的出租房源、转让生意或招聘要求..." class="w-full px-2 py-1.5 border border-slate-200 rounded-lg text-xs focus:outline-none focus:ring-2 focus:ring-brand-500"></textarea>
+        </div>
+
+        <div class="grid grid-cols-2 gap-2">
+          <div>
+            <label class="block text-[10px] font-bold text-slate-700 mb-1">价格 / 薪资 *</label>
+            <input type="text" id="form-price" required placeholder="例如：$950/月 或 $20/小时" class="w-full px-2 py-1.5 border border-slate-200 rounded-lg text-xs focus:outline-none focus:ring-2 focus:ring-brand-500">
+          </div>
+          <div>
+            <label class="block text-[10px] font-bold text-slate-700 mb-1">具体区域 *</label>
+            <input type="text" id="form-borough" required placeholder="例如：法拉盛、Malden、罗兰岗" class="w-full px-2 py-1.5 border border-slate-200 rounded-lg text-xs focus:outline-none focus:ring-2 focus:ring-brand-500">
+          </div>
+        </div>
+
+        <div class="grid grid-cols-3 gap-2">
+          <div>
+            <label class="block text-[10px] font-bold text-slate-700 mb-1">联系人 *</label>
+            <input type="text" id="form-contact-person" required placeholder="李女士" class="w-full px-2 py-1.5 border border-slate-200 rounded-lg text-xs focus:outline-none focus:ring-2 focus:ring-brand-500">
+          </div>
+          <div>
+            <label class="block text-[10px] font-bold text-slate-700 mb-1">微信 (WeChat)</label>
+            <input type="text" id="form-wechat" placeholder="wx_id" class="w-full px-2 py-1.5 border border-slate-200 rounded-lg text-xs focus:outline-none focus:ring-2 focus:ring-brand-500">
+          </div>
+          <div>
+            <label class="block text-[10px] font-bold text-slate-700 mb-1">电话 *</label>
+            <input type="tel" id="form-phone" required placeholder="917-555-0100" class="w-full px-2 py-1.5 border border-slate-200 rounded-lg text-xs focus:outline-none focus:ring-2 focus:ring-brand-500">
+          </div>
+        </div>
+
+        <!-- Payment Selection (Stripe / WeChat Pay) -->
+        <div class="bg-slate-50 p-3 rounded-xl border border-slate-100 space-y-2">
+          <label class="block text-[10px] font-bold text-slate-700">选择支付方式 (Select Payment Method)</label>
+          <div class="grid grid-cols-2 gap-2">
+            <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-brand-500 transition">
+              <input type="radio" name="payment_method" value="wechat" checked class="text-brand-600 focus:ring-brand-500">
+              <span class="text-xs font-semibold flex items-center gap-1">🟢 微信支付 (WeChat)</span>
+            </label>
+            <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer hover:border-brand-500 transition">
+              <input type="radio" name="payment_method" value="stripe" class="text-brand-600 focus:ring-brand-500">
+              <span class="text-xs font-semibold flex items-center gap-1">💳 信用卡 (Stripe)</span>
+            </label>
+          </div>
+        </div>
+
+        <div class="flex flex-col gap-2 pt-2">
+          <button type="submit" class="w-full text-center py-2.5 bg-brand-600 hover:bg-brand-700 text-white text-xs font-bold rounded-xl transition shadow-md shadow-brand-600/10">
+            确认并在线支付 (Stripe / 微信) ➔
+          </button>
+          <button type="button" onclick="closePostAdModal()" class="w-full text-center py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-semibold rounded-xl transition">
+            取消
+          </button>
+        </div>
+      </form>
     </div>
   </div>
 
@@ -295,13 +393,60 @@
     </div>
   </div>
 
-  <!-- ===== FOOTER ===== -->
-  <footer class="bg-white border-t border-slate-200 py-8 text-center text-xs text-slate-400">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-2">
-      <p class="font-semibold text-slate-500" id="ui-footer-sub">美东华人生活圈 — 本地生活与公共信息集散平台</p>
-      <p id="ui-footer-copy">© 2026 East Coast Chinese Life Hub · 仅提供公开渠道信息聚合 · 最终解释权归官方发布机构所有</p>
+  <!-- ===== ACCOUNT LOGIN & VERIFICATION MODAL ===== -->
+  <div id="account-modal" class="fixed inset-0 bg-black/60 backdrop-filter backdrop-blur-sm hidden items-center justify-center z-[9999] p-4">
+    <div class="bg-white rounded-2xl max-w-md w-full p-5 shadow-xl border border-slate-100 space-y-4">
+      <div class="flex justify-between items-start">
+        <h4 class="font-bold text-slate-900 text-base">👤 用户注册与认证中心</h4>
+        <button onclick="closeAccountModal()" class="text-slate-400 hover:text-slate-600 text-xl font-bold">&times;</button>
+      </div>
+      <p class="text-xs text-slate-500 leading-relaxed">
+        为了保障平台信息真实性，所有发布信息的用户必须通过微信扫码认证或美国手机短信实名认证。
+      </p>
+
+      <!-- Tab Switcher for Auth Method -->
+      <div class="flex border-b border-slate-200 text-xs font-bold text-slate-500 mb-2">
+        <button onclick="switchAuthTab('wechat')" id="btn-auth-wechat" class="flex-1 py-2 text-center border-b-2 border-brand-600 text-brand-600">🟢 微信扫码认证</button>
+        <button onclick="switchAuthTab('phone')" id="btn-auth-phone" class="flex-1 py-2 text-center border-b-2 border-transparent">📱 手机短信验证</button>
+      </div>
+
+      <!-- WeChat Auth Panel -->
+      <div id="panel-auth-wechat" class="flex flex-col items-center py-4 space-y-3">
+        <div class="w-40 h-40 bg-slate-100 border border-slate-200 rounded-xl flex items-center justify-center relative overflow-hidden">
+          <!-- Mock QR Code -->
+          <div class="absolute inset-0 bg-gradient-to-br from-emerald-500/10 to-teal-500/10 flex flex-col items-center justify-center p-4 text-center">
+            <span class="text-4xl">💬</span>
+            <span class="text-[10px] text-emerald-700 font-bold mt-2">微信扫码关注公众号</span>
+            <span class="text-[8px] text-slate-400 mt-1">自动完成安全实名认证</span>
+          </div>
+        </div>
+        <button onclick="simulateWeChatLogin()" class="px-6 py-2 bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold rounded-lg transition shadow-md">
+          模拟微信扫码成功 ➔
+        </button>
+      </div>
+
+      <!-- Phone Auth Panel -->
+      <div id="panel-auth-phone" class="space-y-3 hidden">
+        <div>
+          <label class="block text-[10px] font-bold text-slate-700 mb-1">美国手机号 (US Phone Number) *</label>
+          <div class="flex gap-2">
+            <span class="px-3 py-2 bg-slate-100 border border-slate-200 rounded-lg text-xs font-bold text-slate-600">+1</span>
+            <input type="tel" id="auth-phone-input" placeholder="917-555-0100" class="flex-1 px-3 py-2 border border-slate-200 rounded-lg text-xs focus:outline-none focus:ring-2 focus:ring-brand-500">
+          </div>
+        </div>
+        <div>
+          <label class="block text-[10px] font-bold text-slate-700 mb-1">短信验证码 (SMS Code) *</label>
+          <div class="flex gap-2">
+            <input type="text" id="auth-code-input" placeholder="输入6位验证码" class="flex-1 px-3 py-2 border border-slate-200 rounded-lg text-xs focus:outline-none focus:ring-2 focus:ring-brand-500">
+            <button type="button" onclick="sendMockSMS()" class="px-3 py-2 bg-slate-100 hover:bg-slate-200 border border-slate-200 rounded-lg text-[10px] font-bold text-slate-600 transition">获取验证码</button>
+          </div>
+        </div>
+        <button onclick="simulatePhoneLogin()" class="w-full py-2.5 bg-brand-600 hover:bg-brand-700 text-white text-xs font-bold rounded-lg transition shadow-md">
+          验证并登录账户 ➔
+        </button>
+      </div>
     </div>
-  </footer>
+  </div>
 
   <!-- ===== JAVASCRIPT DATA & LOGIC ===== -->
   <script>
@@ -516,7 +661,7 @@
   }
 };
 
-    // Injected 38 Multilingual Events (32 events + 6 classifieds)
+    // Injected 38 Multilingual Events (32 events + 8 classifieds)
     var eventsData = [
   {
     "id": "e1",
@@ -1417,7 +1562,8 @@
       "zh": "皇后区",
       "zht": "皇后區",
       "en": "Queens"
-    }
+    },
+    "city": "纽约"
   },
   {
     "id": "c2",
@@ -1454,7 +1600,8 @@
       "zh": "皇后区",
       "zht": "皇后區",
       "en": "Queens"
-    }
+    },
+    "city": "纽约"
   },
   {
     "id": "c3",
@@ -1491,7 +1638,8 @@
       "zh": "皇后区",
       "zht": "皇后區",
       "en": "Queens"
-    }
+    },
+    "city": "纽约"
   },
   {
     "id": "c4",
@@ -1528,7 +1676,8 @@
       "zh": "皇后区",
       "zht": "皇后區",
       "en": "Queens"
-    }
+    },
+    "city": "纽约"
   },
   {
     "id": "c5",
@@ -1565,7 +1714,8 @@
       "zh": "布鲁克林",
       "zht": "布魯克林",
       "en": "Brooklyn"
-    }
+    },
+    "city": "纽约"
   },
   {
     "id": "c6",
@@ -1602,37 +1752,203 @@
       "zh": "曼哈顿",
       "zht": "曼哈頓",
       "en": "Manhattan"
-    }
+    },
+    "city": "纽约"
+  },
+  {
+    "id": "c7",
+    "is_classified": true,
+    "category": {
+      "zh": "房屋出租",
+      "zht": "房屋出租",
+      "en": "Rentals"
+    },
+    "bg_color": "bg-amber-50 text-amber-700 border-amber-200",
+    "date": "2026-06-05",
+    "title": {
+      "zh": "【波士顿 Malden】近地铁站超大两房一厅出租 · 采光极佳",
+      "zht": "【波士頓 Malden】近地鐵站超大兩房一廳出租 · 採光極佳",
+      "en": "[Boston Malden] Huge 2B1B Apartment Near T-Station for Rent"
+    },
+    "desc": {
+      "zh": "Malden Center 步行 8 分钟，高档公寓两房一厅，带独立洗衣烘干机，周边中餐馆、超市林立，适合留学生或上班族，随时入住。",
+      "zht": "Malden Center 步行 8 分鐘，高檔公寓兩房一廳，帶獨立洗衣烘乾機，周邊中餐館、超市林立，適合留學生或上班族，隨時入住。",
+      "en": "8-min walk to Malden Center T. Luxury 2B1B with in-unit washer/dryer. Close to Chinese supermarkets and restaurants. Ideal for students or professionals."
+    },
+    "source": "房东直租",
+    "price": {
+      "zh": "$2,400 /月",
+      "zht": "$2,400 /月",
+      "en": "$2,400 /mo"
+    },
+    "contact": {
+      "person": "王先生 (Mr. Wang)",
+      "wechat": "boston_rent_wang",
+      "phone": "617-555-0133"
+    },
+    "borough": {
+      "zh": "Malden",
+      "zht": "Malden",
+      "en": "Malden"
+    },
+    "city": "波士顿"
+  },
+  {
+    "id": "c8",
+    "is_classified": true,
+    "category": {
+      "zh": "求职招聘",
+      "zht": "求職招聘",
+      "en": "Jobs"
+    },
+    "bg_color": "bg-amber-50 text-amber-700 border-amber-200",
+    "date": "2026-06-04",
+    "title": {
+      "zh": "【招聘】洛杉矶罗兰岗中餐馆诚聘全职熟手企台/打杂",
+      "zht": "【招聘】洛杉磯羅蘭崗中餐館誠聘全職熟手企台/打雜",
+      "en": "[Hiring] Experienced Waiter/Helper in Rowland Heights, LA"
+    },
+    "desc": {
+      "zh": "罗兰岗繁华商业区中餐馆，诚聘全职熟手企台、后厨打杂各一名。需报税，工作态度认真，手脚勤快。待遇优厚，小费好，包食宿。",
+      "zht": "羅蘭崗繁華商業區中餐館，誠聘全職熟手企台、後廚打雜各一名。需報稅，工作態度認真，手腳勤快。待遇優厚，小費好，包食宿。",
+      "en": "Rowland Heights Chinese restaurant seeks full-time waiter and kitchen helper. Tax reporting required. Hardworking and detail-oriented. Great tips, room & board provided."
+    },
+    "source": "餐馆直聘",
+    "price": {
+      "zh": "$4,500 - $6,000 /月",
+      "zht": "$4,500 - $6,000 /月",
+      "en": "$4,500 - $6,000 /mo"
+    },
+    "contact": {
+      "person": "刘经理 (Manager Liu)",
+      "wechat": "la_food_liu",
+      "phone": "626-555-0122"
+    },
+    "borough": {
+      "zh": "罗兰岗",
+      "zht": "羅蘭崗",
+      "en": "Rowland Heights"
+    },
+    "city": "洛杉矶"
   }
 ];
 
     // Global App State
     var currentLang = 'zh'; // Default to Simplified Chinese
     var activeCategory = 'all';
+    var activeClassifiedCategory = 'all';
+    var selectedCity = '纽约';
+    var isUserLoggedIn = false;
+    var userProfile = null;
 
     // DOM Elements
     var langSwitcher = document.getElementById('lang-switcher');
     var searchInput = document.getElementById('search-input');
     var boroFilter = document.getElementById('borough-filter');
-    var categoryFiltersContainer = document.getElementById('category-filters');
-    var eventsGrid = document.getElementById('events-grid');
+    var cityFilter = document.getElementById('city-filter');
+    var officialCategoryContainer = document.getElementById('official-category-filters');
+    var officialFeedList = document.getElementById('official-feed-list');
+    var classifiedsList = document.getElementById('classifieds-list');
     var resultsCount = document.getElementById('results-count');
 
-    // Modal Elements
+    // Modals
     var linkModal = document.getElementById('link-modal');
     var modalTitle = document.getElementById('modal-title');
     var modalLinkTrans = document.getElementById('modal-link-trans');
     var modalLinkRaw = document.getElementById('modal-link-raw');
     var modalCancelBtn = document.getElementById('modal-cancel-btn');
 
-    // Post Ad Modal Elements
     var postAdModal = document.getElementById('post-ad-modal');
-    
-    // Contact Modal Elements
     var contactModal = document.getElementById('contact-modal');
-    var valContactPerson = document.getElementById('val-contact-person');
-    var valWeChat = document.getElementById('val-wechat');
-    var valPhoneLink = document.getElementById('val-phone-link');
+    var accountModal = document.getElementById('account-modal');
+
+    // --- Switch Mobile Navigation Sections ---
+    function switchMobileSection(section) {
+      var secOfficial = document.getElementById('sec-official');
+      var secClassifieds = document.getElementById('sec-classifieds');
+      var btnOfficial = document.getElementById('btn-tab-official');
+      var btnClassifieds = document.getElementById('btn-tab-classifieds');
+      
+      var mNavOfficial = document.getElementById('m-nav-official');
+      var mNavClassifieds = document.getElementById('m-nav-classifieds');
+
+      if (section === 'official') {
+        secOfficial.classList.remove('hidden');
+        secClassifieds.classList.add('hidden');
+        btnOfficial.classList.add('active-tab-btn');
+        btnClassifieds.classList.remove('active-tab-btn');
+        
+        mNavOfficial.classList.add('text-brand-600');
+        mNavClassifieds.classList.remove('text-brand-600');
+      } else {
+        secOfficial.classList.add('hidden');
+        secClassifieds.classList.remove('hidden');
+        secClassifieds.classList.add('flex');
+        btnOfficial.classList.remove('active-tab-btn');
+        btnClassifieds.classList.add('active-tab-btn');
+        
+        mNavOfficial.classList.remove('text-brand-600');
+        mNavClassifieds.classList.add('text-brand-600');
+      }
+    }
+
+    // --- Auth Tab Switching ---
+    function switchAuthTab(tab) {
+      var btnWeChat = document.getElementById('btn-auth-wechat');
+      var btnPhone = document.getElementById('btn-auth-phone');
+      var panelWeChat = document.getElementById('panel-auth-wechat');
+      var panelPhone = document.getElementById('panel-auth-phone');
+
+      if (tab === 'wechat') {
+        btnWeChat.classList.add('border-brand-600', 'text-brand-600');
+        btnPhone.classList.remove('border-brand-600', 'text-brand-600');
+        panelWeChat.classList.remove('hidden');
+        panelPhone.classList.add('hidden');
+      } else {
+        btnPhone.classList.add('border-brand-600', 'text-brand-600');
+        btnWeChat.classList.remove('border-brand-600', 'text-brand-600');
+        panelPhone.classList.remove('hidden');
+        panelWeChat.classList.add('hidden');
+      }
+    }
+
+    // --- Mock Authentication Handlers ---
+    function openAccountModal() {
+      accountModal.classList.remove('hidden');
+      accountModal.classList.add('flex');
+    }
+    function closeAccountModal() {
+      accountModal.classList.remove('flex');
+      accountModal.classList.add('hidden');
+    }
+    function sendMockSMS() {
+      var phone = document.getElementById('auth-phone-input').value;
+      if (!phone) {
+        alert('请输入您的美国手机号！');
+        return;
+      }
+      alert('【美东生活圈】验证码已发送至 +1 ' + phone + '，请注意查收（模拟验证码：123456）。');
+    }
+    function simulateWeChatLogin() {
+      isUserLoggedIn = true;
+      userProfile = { name: "微信用户_3829", method: "WeChat" };
+      document.getElementById('nav-user-status').textContent = "已认证: " + userProfile.name;
+      alert('微信扫码认证成功！您现在可以发布分类信息了。');
+      closeAccountModal();
+    }
+    def simulatePhoneLogin() {
+      var code = document.getElementById('auth-code-input').value;
+      if (code !== '123456') {
+        alert('验证码错误，请输入 123456 模拟登录！');
+        return;
+      }
+      isUserLoggedIn = true;
+      var phone = document.getElementById('auth-phone-input').value;
+      userProfile = { name: "手机用户_" + phone.slice(-4), method: "SMS" };
+      document.getElementById('nav-user-status').textContent = "已认证: " + userProfile.name;
+      alert('手机短信实名认证成功！您现在可以发布分类信息了。');
+      closeAccountModal();
+    }
 
     // --- Translate UI Elements ---
     function translateUI() {
@@ -1644,20 +1960,11 @@
       // Header & Brand
       document.getElementById('ui-brand-title').textContent = strings.title.split('—')[0].trim();
       document.getElementById('ui-brand-sub').textContent = strings.brand_sub;
-      document.getElementById('ui-nav-hub').textContent = strings.nav_hub;
-      document.getElementById('ui-nav-about').textContent = strings.nav_about;
-      document.getElementById('ui-nav-feedback').textContent = strings.nav_feedback;
       document.getElementById('ui-btn-plan').textContent = strings.btn_plan;
       document.getElementById('ui-btn-feedback').textContent = strings.btn_feedback;
 
-      // Hero Banner
-      document.getElementById('ui-hero-tag').innerHTML = '📢 ' + strings.hero_tag.replace('📢', '').trim();
-      document.getElementById('ui-hero-title').textContent = strings.hero_title;
-      document.getElementById('ui-hero-desc').textContent = strings.hero_desc;
-
       // Search & Filters
       searchInput.placeholder = strings.search_placeholder;
-      document.getElementById('opt-boro-all').textContent = strings.boro_all;
       document.getElementById('opt-boro-citywide').textContent = strings.boro_citywide;
       document.getElementById('opt-boro-queens').textContent = strings.boro_queens;
       document.getElementById('opt-boro-brooklyn').textContent = strings.boro_brooklyn;
@@ -1671,26 +1978,6 @@
       document.getElementById('ui-about-tag1').textContent = strings.about_tag1;
       document.getElementById('ui-about-tag2').textContent = strings.about_tag2;
       document.getElementById('ui-about-tag3').textContent = strings.about_tag3;
-
-      // Feedback Form
-      document.getElementById('ui-feedback-title').textContent = strings.feedback_title;
-      document.getElementById('ui-feedback-desc').textContent = strings.feedback_desc;
-      document.getElementById('ui-fb-name').textContent = strings.fb_name;
-      document.getElementById('ui-fb-contact').textContent = strings.fb_contact;
-      document.getElementById('ui-fb-content').textContent = strings.fb_content;
-      document.getElementById('fb-content').placeholder = strings.fb_placeholder;
-      document.getElementById('ui-fb-required').textContent = strings.fb_required;
-      document.getElementById('ui-fb-submit').textContent = strings.fb_submit;
-
-      // Contact Column
-      document.getElementById('ui-contact-title').textContent = strings.contact_title;
-      document.getElementById('ui-contact-desc').textContent = strings.contact_desc;
-      document.getElementById('ui-contact-btn').textContent = strings.contact_btn;
-      document.getElementById('ui-feedback-latest').textContent = strings.feedback_latest;
-
-      // Footer
-      document.getElementById('ui-footer-sub').textContent = strings.footer_sub;
-      document.getElementById('ui-footer-copy').textContent = strings.footer_copy;
 
       // Modal
       modalTitle.textContent = strings.link_option_title;
@@ -1725,25 +2012,25 @@
       renderEvents();
     }
 
-    // --- Render Category Filters ---
+    // --- Render Category Filters (Horizontal Scrollbar) ---
     var categoriesMap = {
-      'zh': ['全部频道', '福利申请', '交通出行', '语言教育', '社区安全', '公园亲子', '文化展览', '市政议员', '公益志愿', '消费促销', '房屋出租', '生意转让', '二手闲置', '求职招聘'],
-      'zht': ['全部頻道', '福利申請', '交通出行', '語言教育', '社區安全', '公園親子', '文化展覽', '市政議員', '公益志願', '消費促銷', '房屋出租', '生意轉讓', '二手閒置', '求職招聘'],
-      'en': ['All Channels', 'Benefits', 'Transit', 'Education', 'Safety', 'Recreation', 'Culture', 'Civic', 'Charity', 'Promos', 'Rentals', 'Business Sale', 'Second-hand', 'Jobs']
+      'zh': ['全部', '福利申请', '交通出行', '语言教育', '社区安全', '公园亲子', '文化展览', '市政议员', '公益志愿', '消费促销'],
+      'zht': ['全部', '福利申請', '交通出行', '語言教育', '社區安全', '公園親子', '文化展覽', '市政議員', '公益志願', '消費促銷'],
+      'en': ['All', 'Benefits', 'Transit', 'Education', 'Safety', 'Recreation', 'Culture', 'Civic', 'Charity', 'Promos']
     };
 
     function renderCategoryFilters() {
       var cats = categoriesMap[currentLang];
-      var keys = ['all', '福利申请', '交通出行', '语言教育', '社区安全', '公园亲子', '文化展览', '市政议员', '公益志愿', '消费促销', '房屋出租', '生意转让', '二手闲置', '求职招聘'];
+      var keys = ['all', '福利申请', '交通出行', '语言教育', '社区安全', '公园亲子', '文化展览', '市政议员', '公益志愿', '消费促销'];
       
       var html = "";
       cats.forEach(function(cat, idx) {
         var key = keys[idx];
         var isActive = activeCategory === key;
-        var activeClass = isActive ? 'bg-brand-600 text-white shadow-sm' : 'bg-slate-50 text-slate-600 border border-slate-200 hover:bg-slate-100';
-        html += '<button class="cat-btn px-4 py-2 text-xs font-semibold rounded-lg transition ' + activeClass + '" data-filter="' + key + '">' + cat + '</button>\n';
+        var activeClass = isActive ? 'bg-brand-600 text-white shadow-sm' : 'bg-white text-slate-600 border border-slate-200 hover:bg-slate-100';
+        html += '<button class="cat-btn px-3 py-1.5 text-[11px] font-bold rounded-full transition whitespace-nowrap ' + activeClass + '" data-filter="' + key + '">' + cat + '</button>\n';
       });
-      categoryFiltersContainer.innerHTML = html;
+      officialCategoryContainer.innerHTML = html;
 
       // Re-bind click events
       document.querySelectorAll('.cat-btn').forEach(function(btn) {
@@ -1757,16 +2044,13 @@
 
     // --- Open Smart Link Modal ---
     function openSmartLink(url) {
-      // Generate Google Translate Proxy URLs
       var simplifiedTransUrl = 'https://translate.google.com/translate?sl=en&tl=zh-CN&u=' + encodeURIComponent(url);
       var traditionalTransUrl = 'https://translate.google.com/translate?sl=en&tl=zh-TW&u=' + encodeURIComponent(url);
-      
       var transUrl = currentLang === 'zht' ? traditionalTransUrl : simplifiedTransUrl;
 
       modalLinkRaw.setAttribute('href', url);
       modalLinkTrans.setAttribute('href', transUrl);
 
-      // If language is English, bypass modal and open raw link directly
       if (currentLang === 'en') {
         window.open(url, '_blank');
         return;
@@ -1787,6 +2071,11 @@
 
     // --- Post Ad Modal ---
     function openPostAdModal() {
+      if (!isUserLoggedIn) {
+        alert('为了保证分类大厅环境真实，发布信息前请先进行微信或手机实名认证！');
+        openAccountModal();
+        return;
+      }
       postAdModal.classList.remove('hidden');
       postAdModal.classList.add('flex');
     }
@@ -1824,85 +2113,134 @@
       });
     }
 
-    // --- Render Event Cards ---
+    // --- Filter Classifieds by Category ---
+    function filterClassifieds(cat) {
+      activeClassifiedCategory = cat;
+      renderEvents();
+    }
+
+    // --- Handle Interactive Ad Submission & Mock Payment ---
+    function handleAdSubmit(e) {
+      e.preventDefault();
+      
+      var category = document.getElementById('form-category').value;
+      var city = document.getElementById('form-city').value;
+      var title = document.getElementById('form-title').value;
+      var desc = document.getElementById('form-desc').value;
+      var price = document.getElementById('form-price').value;
+      var borough = document.getElementById('form-borough').value;
+      var person = document.getElementById('form-contact-person').value;
+      var wechat = document.getElementById('form-wechat').value || "无";
+      var phone = document.getElementById('form-phone').value;
+      
+      var payMethod = document.querySelector('input[name="payment_method"]:checked').value;
+      var payText = payMethod === 'wechat' ? '🟢 微信支付 (WeChat Pay)' : '💳 信用卡支付 (Stripe)';
+
+      // Simulate Payment Screen
+      var confirmPay = confirm('【支付确认】\n您正在通过 ' + payText + ' 支付发布费。\n套餐：同城分类大厅普通发布\n金额：$5.00 / 月\n\n点击“确定”模拟支付成功并提交审核。');
+      
+      if (confirmPay) {
+        // Create new mock ad listing
+        var newAd = {
+          "id": "c" + (eventsData.length + 1),
+          "is_classified": true,
+          "category": {"zh": category, "zht": category, "en": category},
+          "bg_color": "bg-amber-50 text-amber-700 border-amber-200",
+          "date": "刚刚 (Just Now)",
+          "title": {"zh": title, "zht": title, "en": title},
+          "desc": {"zh": desc, "zht": desc, "en": desc},
+          "source": "用户自发 (Verified)",
+          "price": {"zh": price, "zht": price, "en": price},
+          "contact": {"person": person, "wechat": wechat, "phone": phone},
+          "borough": {"zh": borough, "zht": borough, "en": borough},
+          "city": city
+        };
+
+        eventsData.unshift(newAd);
+        alert('🎉 支付成功！您的分类广告已成功发布，并打上了“付费已核实”标签。');
+        closePostAdModal();
+        renderEvents();
+      }
+    }
+
+    // --- Render Event Cards (High Density Compact Layout) ---
     function renderEvents() {
       var query = searchInput.value.toLowerCase();
       var boro = boroFilter.value;
+      var city = cityFilter.value;
       var strings = uiStrings[currentLang];
       
-      var html = "";
-      var visibleCount = 0;
+      var officialHtml = "";
+      var classifiedsHtml = "";
+      var officialCount = 0;
+      var classifiedsCount = 0;
 
       eventsData.forEach(function(ev) {
-        // Fetch translated fields
         var title = ev.title[currentLang] || ev.title['zh'];
         var desc = ev.desc[currentLang] || ev.desc['zh'];
         var category = ev.category[currentLang] || ev.category['zh'];
         var borough = ev.borough[currentLang] || ev.borough['zh'];
+        var evCity = ev.city || "纽约";
         
         // Match Search & Filters
         var textToSearch = (title + ' ' + desc + ' ' + ev.source + ' ' + borough + ' ' + category).toLowerCase();
         var matchesSearch = textToSearch.indexOf(query) > -1;
-        var matchesCat = activeCategory === 'all' || ev.category['zh'] === activeCategory;
         var matchesBoro = boro === 'all' || ev.borough['zh'] === boro || ev.borough['zh'] === '全市';
+        var matchesCity = city === 'all' || evCity === city;
 
-        if (matchesSearch && matchesCat && matchesBoro) {
-          visibleCount++;
-          
+        if (matchesSearch && matchesBoro && matchesCity) {
           if (ev.is_classified) {
-            // Render Classified Ad Card
-            var price = ev.price[currentLang] || ev.price['zh'];
-            html += '<div class="bg-white rounded-2xl border-2 border-amber-200 shadow-sm hover:shadow-md transition overflow-hidden flex flex-col relative">';
-            html += '  <div class="absolute top-0 right-0 bg-amber-500 text-white text-[9px] font-bold px-2 py-0.5 rounded-bl-lg uppercase tracking-wider">' + strings.verified_badge + '</div>';
-            html += '  <div class="p-6 flex-1 flex flex-col justify-between">';
-            html += '    <div>';
-            html += '      <div class="flex justify-between items-center gap-2 mb-3">';
-            html += '        <span class="inline-block px-2.5 py-0.5 rounded text-[10px] font-bold border bg-amber-50 text-amber-800 border-amber-200">同城分类 · ' + category + '</span>';
-            html += '        <span class="text-[10px] text-slate-400 font-semibold">' + ev.date + '</span>';
-            html += '      </div>';
-            html += '      <h4 class="font-bold text-slate-900 text-sm mb-2 hover:text-brand-600 transition">' + title + '</h4>';
-            html += '      <p class="text-xs text-slate-600 leading-relaxed mb-4">' + desc + '</p>';
-            html += '      <div class="mb-4 flex items-center gap-1.5 text-xs font-bold text-orange-600 bg-orange-50 px-3 py-1.5 rounded-lg w-max">';
-            html += '        <span>💰 ' + strings.price_label + ':</span>';
-            html += '        <span>' + price + '</span>';
-            html += '      </div>';
-            html += '    </div>';
-            html += '    <div class="pt-4 border-t border-slate-100 flex items-center justify-between text-[10px]">';
-            html += '      <div class="flex flex-col gap-0.5">';
-            html += '        <span class="text-slate-400 font-medium">' + strings.source_label + ': <strong class="text-slate-600">' + ev.source + '</strong></span>';
-            html += '        <span class="text-slate-400 font-medium">' + strings.boro_label + ': <strong class="text-slate-600">' + borough + '</strong></span>';
-            html += '      </div>';
-            html += '      <button onclick="openContactModal('' + ev.id + '')" class="px-3 py-2 bg-amber-100 hover:bg-amber-200 text-amber-800 font-bold rounded-lg transition">' + strings.btn_contact + '</button>';
-            html += '    </div>';
-            html += '  </div>';
-            html += '</div>';
+            // Classified Ad Card (Compact List Style)
+            var matchesCat = activeClassifiedCategory === 'all' || ev.category['zh'] === activeClassifiedCategory;
+            if (matchesCat) {
+              classifiedsCount++;
+              var price = ev.price[currentLang] || ev.price['zh'];
+              classifiedsHtml += '<div class="bg-white p-3 rounded-xl border border-amber-200 hover:border-amber-400 shadow-sm hover:shadow transition flex flex-col justify-between relative">';
+              classifiedsHtml += '  <div class="absolute top-0 right-0 bg-amber-500 text-white text-[8px] font-bold px-1.5 py-0.5 rounded-bl-lg uppercase tracking-wider">' + strings.verified_badge + '</div>';
+              classifiedsHtml += '  <div class="space-y-1.5">';
+              classifiedsHtml += '    <div class="flex items-center gap-1.5 text-[9px] font-bold text-amber-800">';
+              classifiedsHtml += '      <span>🏷️ ' + category + '</span>';
+              classifiedsHtml += '      <span class="text-slate-300">|</span>';
+              classifiedsHtml += '      <span class="text-slate-400">' + ev.date + '</span>';
+              classifiedsHtml += '    </div>';
+              classifiedsHtml += '    <h4 class="font-bold text-slate-900 text-xs leading-snug hover:text-brand-600 transition">' + title + '</h4>';
+              classifiedsHtml += '    <p class="text-[10px] text-slate-500 leading-relaxed line-clamp-2">' + desc + '</p>';
+              classifiedsHtml += '    <div class="text-[10px] font-bold text-orange-600 bg-orange-50 px-2 py-1 rounded w-max">💰 ' + price + '</div>';
+              classifiedsHtml += '  </div>';
+              classifiedsHtml += '  <div class="pt-2 mt-2 border-t border-slate-100 flex items-center justify-between text-[9px] text-slate-400">';
+              classifiedsHtml += '    <span>📍 ' + evCity + ' · ' + borough + '</span>';
+              classifiedsHtml += '    <button onclick="openContactModal('' + ev.id + '')" class="px-2 py-1 bg-amber-100 hover:bg-amber-200 text-amber-800 font-bold rounded transition">' + strings.btn_contact + '</button>';
+              classifiedsHtml += '  </div>';
+              classifiedsHtml += '</div>';
+            }
           } else {
-            // Render Official Curated Event Card
-            html += '<div class="bg-white rounded-2xl border border-slate-200 shadow-sm hover:shadow-md transition overflow-hidden flex flex-col">';
-            html += '  <div class="p-6 flex-1 flex flex-col justify-between">';
-            html += '    <div>';
-            html += '      <div class="flex justify-between items-start gap-2 mb-3">';
-            html += '        <span class="inline-block px-2.5 py-0.5 rounded text-[10px] font-bold border ' + ev.bg_color + '">' + category + '</span>';
-            html += '        <span class="text-[10px] text-slate-400 font-semibold">' + ev.date + '</span>';
-            html += '      </div>';
-            html += '      <h4 class="font-bold text-slate-900 text-sm mb-2 hover:text-brand-600 transition">' + title + '</h4>';
-            html += '      <p class="text-xs text-slate-600 leading-relaxed mb-4">' + desc + '</p>';
-            html += '    </div>';
-            html += '    <div class="pt-4 border-t border-slate-100 flex items-center justify-between text-[10px]">';
-            html += '      <div class="flex flex-col gap-0.5">';
-            html += '        <span class="text-slate-400 font-medium">' + strings.source_label + ': <strong class="text-slate-600">' + ev.source + '</strong></span>';
-            html += '        <span class="text-slate-400 font-medium">' + strings.boro_label + ': <strong class="text-slate-600">' + borough + '</strong></span>';
-            html += '      </div>';
-            html += '      <button onclick="openSmartLink('' + ev.url + '')" class="px-3 py-2 bg-brand-50 hover:bg-brand-100 text-brand-700 font-bold rounded-lg transition">' + strings.btn_get_link + '</button>';
-            html += '    </div>';
-            html += '  </div>';
-            html += '</div>';
+            // Official Curated Event (Extremely Compact List Row)
+            var matchesCat = activeCategory === 'all' || ev.category['zh'] === activeCategory;
+            if (matchesCat) {
+              officialCount++;
+              officialHtml += '<div class="bg-white p-3 rounded-xl border border-slate-200 hover:border-brand-300 shadow-sm transition flex flex-col justify-between">';
+              officialHtml += '  <div class="space-y-1">';
+              officialHtml += '    <div class="flex justify-between items-center text-[9px] font-semibold text-slate-400">';
+              officialHtml += '      <span class="px-1.5 py-0.5 rounded font-bold border ' + ev.bg_color + '">' + category + '</span>';
+              officialHtml += '      <span>' + ev.date + '</span>';
+              officialHtml += '    </div>';
+              officialHtml += '    <h4 class="font-bold text-slate-900 text-xs leading-snug hover:text-brand-600 transition">' + title + '</h4>';
+              officialHtml += '    <p class="text-[10px] text-slate-500 leading-relaxed line-clamp-2">' + desc + '</p>';
+              officialHtml += '  </div>';
+              officialHtml += '  <div class="pt-2 mt-2 border-t border-slate-100 flex items-center justify-between text-[9px] text-slate-400">';
+              officialHtml += '    <span>🏢 ' + ev.source + ' · ' + borough + '</span>';
+              officialHtml += '    <button onclick="openSmartLink('' + ev.url + '')" class="px-2.5 py-1 bg-brand-50 hover:bg-brand-100 text-brand-700 font-bold rounded transition">' + strings.btn_get_link + '</button>';
+              officialHtml += '  </div>';
+              officialHtml += '</div>';
+            }
           }
         }
       });
 
-      eventsGrid.innerHTML = html;
-      resultsCount.textContent = strings.results_prefix + ' ' + visibleCount + ' ' + strings.results_suffix;
+      officialFeedList.innerHTML = officialHtml || '<p class="text-xs text-slate-400 italic p-4 text-center">暂无符合条件的官方资讯</p>';
+      classifiedsList.innerHTML = classifiedsHtml || '<p class="text-xs text-slate-400 italic p-4 text-center">暂无符合条件的同城分类广告</p>';
+      
+      resultsCount.textContent = strings.results_prefix + ' ' + (officialCount + classifiedsCount) + ' ' + strings.results_suffix;
     }
 
     // --- Event Listeners ---
@@ -1913,59 +2251,24 @@
 
     searchInput.addEventListener('input', renderEvents);
     boroFilter.addEventListener('change', renderEvents);
-
-    // --- Feedback Form Logic ---
-    var feedbackForm = document.getElementById('feedback-form');
-    var feedbackList = document.getElementById('feedback-list');
-
-    function renderFeedbackList() {
-      var submissions = JSON.parse(localStorage.getItem('us_chinese_life_hub_feedback') || '[]');
-      var strings = uiStrings[currentLang];
-      
-      if (submissions.length === 0) {
-        feedbackList.innerHTML = '<p class="text-slate-400 italic">' + strings.feedback_empty + '</p>';
-        return;
+    cityFilter.addEventListener('change', function() {
+      selectedCity = this.value;
+      // Automatically update borough options based on city
+      var boroSelect = document.getElementById('borough-filter');
+      if (selectedCity === '纽约') {
+        boroSelect.innerHTML = '<option value="all">🗺️ 所有区域 (All Areas)</option><option value="全市">纽约全市 (Citywide)</option><option value="皇后区">皇后区 (Queens)</option><option value="布鲁克林">布鲁克林 (Brooklyn)</option><option value="曼哈顿">曼哈顿 (Manhattan)</option>';
+      } else if (selectedCity === '波士顿') {
+        boroSelect.innerHTML = '<option value="all">🗺️ 所有区域 (All Areas)</option><option value="Malden">Malden</option><option value="Allston">Allston</option><option value="Quincy">Quincy</option>';
+      } else if (selectedCity === '洛杉矶') {
+        boroSelect.innerHTML = '<option value="all">🗺️ 所有区域 (All Areas)</option><option value="罗兰岗">罗兰岗 (Rowland Heights)</option><option value="圣盖博">圣盖博 (San Gabriel)</option><option value="尔湾">尔湾 (Irvine)</option>';
+      } else {
+        boroSelect.innerHTML = '<option value="all">🗺️ 所有区域 (All Areas)</option>';
       }
-
-      var html = "";
-      submissions.forEach(function(sub) {
-        html += "<div class='bg-slate-50 p-3 rounded-lg border border-slate-100'>";
-        html += "  <div class='flex justify-between font-semibold text-slate-900 mb-1'>";
-        html += "    <span>" + sub.name + "</span>";
-        html += "    <span class='text-[10px] text-slate-400'>" + sub.date + "</span>";
-        html += "  </div>";
-        html += "  <p class='text-slate-600 leading-relaxed text-[11px]'>" + sub.content + "</p>";
-        html += "</div>";
-      });
-      feedbackList.innerHTML = html;
-    }
-
-    if (feedbackForm) {
-      feedbackForm.addEventListener('submit', function(e) {
-        e.preventDefault();
-        var name = document.getElementById('fb-name').value;
-        var contact = document.getElementById('fb-contact').value;
-        var content = document.getElementById('fb-content').value;
-
-        var submissions = JSON.parse(localStorage.getItem('us_chinese_life_hub_feedback') || '[]');
-        submissions.unshift({
-          name: name,
-          contact: contact,
-          content: content,
-          date: new Date().toLocaleDateString()
-        });
-
-        localStorage.setItem('us_chinese_life_hub_feedback', JSON.stringify(submissions));
-        feedbackForm.reset();
-        renderFeedbackList();
-
-        alert(uiStrings[currentLang].toast_success);
-      });
-    }
+      renderEvents();
+    });
 
     // --- Initial Boot ---
     translateUI();
-    renderFeedbackList();
   </script>
 
 </body>
