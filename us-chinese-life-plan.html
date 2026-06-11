@@ -131,7 +131,10 @@
     
     <!-- Navigation Tabs -->
     <div class="flex flex-wrap gap-2 border-b border-slate-200 pb-4 mb-8">
-      <button class="tab-btn px-4 py-2.5 text-sm font-semibold rounded-lg transition bg-teal-600 text-white shadow-sm" data-tab="strategy">
+      <button class="tab-btn px-4 py-2.5 text-sm font-semibold rounded-lg transition bg-teal-600 text-white shadow-sm" data-tab="live_hub">
+        💻 今日信息大厅 (Live Hub)
+      </button>
+      <button class="tab-btn px-4 py-2.5 text-sm font-semibold rounded-lg transition bg-white text-slate-600 hover:bg-slate-100 border border-slate-200" data-tab="strategy">
         初期规划 & 愿景
       </button>
       <button class="tab-btn px-4 py-2.5 text-sm font-semibold rounded-lg transition bg-white text-slate-600 hover:bg-slate-100 border border-slate-200" data-tab="sources">
@@ -151,8 +154,218 @@
       </button>
     </div>
 
+    <!-- Tab 0: Live Hub (Prototype) -->
+    <div class="tab-panel block" id="tab-live_hub">
+      <div class="bg-teal-50 border border-teal-100 p-6 rounded-xl mb-8">
+        <h3 class="font-bold text-teal-900 mb-1 flex items-center gap-2">
+          <span>💡 演示说明 / Prototype Showcase</span>
+        </h3>
+        <p class="text-xs text-teal-800 leading-relaxed">
+          这是<strong>「美东华人生活圈」信息集散平台网站端（Web Hub）的真实功能原型</strong>。
+          下方展示了通过 Python 脚本从纽约市政府、MTA、公共图书馆等 100% 官方真实渠道抓取、过滤并用中文重写的最新资讯。
+          第三方浏览者可以点击分类筛选、搜索，或直接点击<strong>「获取官方链接」</strong>跳转到官方出处，彻底解决信息孤岛问题！
+        </p>
+      </div>
+
+      <!-- Search and Filter for Live Hub -->
+      <div class="flex flex-col md:flex-row gap-4 mb-8">
+        <input type="text" id="hub-search" placeholder="搜索活动标题、描述或官方来源..." class="px-4 py-2.5 border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500 text-sm flex-1">
+        <div class="flex flex-wrap gap-1.5" id="hub-filters">
+          <button class="hub-filter-btn px-3.5 py-2 text-xs font-semibold rounded-lg bg-teal-600 text-white shadow-sm" data-filter="all">全部</button>
+          <button class="hub-filter-btn px-3.5 py-2 text-xs font-semibold rounded-lg bg-white text-slate-600 border border-slate-200 hover:bg-slate-50" data-filter="福利申请">福利申请</button>
+          <button class="hub-filter-btn px-3.5 py-2 text-xs font-semibold rounded-lg bg-white text-slate-600 border border-slate-200 hover:bg-slate-50" data-filter="交通出行">交通出行</button>
+          <button class="hub-filter-btn px-3.5 py-2 text-xs font-semibold rounded-lg bg-white text-slate-600 border border-slate-200 hover:bg-slate-50" data-filter="语言教育">语言教育</button>
+          <button class="hub-filter-btn px-3.5 py-2 text-xs font-semibold rounded-lg bg-white text-slate-600 border border-slate-200 hover:bg-slate-50" data-filter="社区安全">社区安全</button>
+          <button class="hub-filter-btn px-3.5 py-2 text-xs font-semibold rounded-lg bg-white text-slate-600 border border-slate-200 hover:bg-slate-50" data-filter="公园亲子">公园亲子</button>
+          <button class="hub-filter-btn px-3.5 py-2 text-xs font-semibold rounded-lg bg-white text-slate-600 border border-slate-200 hover:bg-slate-50" data-filter="文化展览">文化展览</button>
+          <button class="hub-filter-btn px-3.5 py-2 text-xs font-semibold rounded-lg bg-white text-slate-600 border border-slate-200 hover:bg-slate-50" data-filter="市政议员">市政议员</button>
+          <button class="hub-filter-btn px-3.5 py-2 text-xs font-semibold rounded-lg bg-white text-slate-600 border border-slate-200 hover:bg-slate-50" data-filter="公益志愿">公益志愿</button>
+        </div>
+      </div>
+
+      <!-- Events Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12" id="hub-events-grid">
+        <div class="bg-white rounded-xl border border-slate-200 shadow-sm hover:shadow-md transition overflow-hidden flex flex-col" data-category="福利申请">
+          <div class="p-5 flex-1 flex flex-col justify-between">
+            <div>
+              <div class="flex justify-between items-start gap-2 mb-3">
+                <span class="inline-block px-2.5 py-0.5 rounded text-[10px] font-bold border bg-emerald-50 text-emerald-700 border-emerald-200">福利申请</span>
+                <span class="text-[10px] text-slate-400 font-semibold">2026-06-11 (长期有效)</span>
+              </div>
+              <h4 class="font-bold text-slate-900 text-sm mb-2 hover:text-teal-600 transition">纽约半价地铁卡 Fair Fares NYC 申请</h4>
+              <p class="text-xs text-slate-600 leading-relaxed mb-4">符合条件的低收入纽约居民（18-64岁，单身年收入低于 $21,120，两口之家低于 $28,500）可申请半价地铁卡，单程仅需 $1.45。不属于公共负担，不影响绿卡申请。</p>
+            </div>
+            <div class="pt-3 border-t border-slate-100 flex items-center justify-between text-[10px]">
+              <span class="text-slate-400 font-medium">来源: <strong class="text-slate-600">ACCESS HRA 官方</strong></span>
+              <a href="https://access.nyc.gov/programs/fair-fares/" target="_blank" class="px-3 py-1.5 bg-teal-50 hover:bg-teal-100 text-teal-700 font-bold rounded-lg transition no-underline">获取官方链接 ➔</a>
+            </div>
+          </div>
+        </div>
+        <div class="bg-white rounded-xl border border-slate-200 shadow-sm hover:shadow-md transition overflow-hidden flex flex-col" data-category="福利申请">
+          <div class="p-5 flex-1 flex flex-col justify-between">
+            <div>
+              <div class="flex justify-between items-start gap-2 mb-3">
+                <span class="inline-block px-2.5 py-0.5 rounded text-[10px] font-bold border bg-emerald-50 text-emerald-700 border-emerald-200">福利申请</span>
+                <span class="text-[10px] text-slate-400 font-semibold">2026-06-11 (长期有效)</span>
+              </div>
+              <h4 class="font-bold text-slate-900 text-sm mb-2 hover:text-teal-600 transition">纽约 SNAP 粮食券福利申请</h4>
+              <p class="text-xs text-slate-600 leading-relaxed mb-4">低收入家庭每月可获得食品补助金，直接充值到 EBT 卡中，可在各大华人超市（如大中华、新世界）购买食材。单身月收入低于 $1,580 即可申请。</p>
+            </div>
+            <div class="pt-3 border-t border-slate-100 flex items-center justify-between text-[10px]">
+              <span class="text-slate-400 font-medium">来源: <strong class="text-slate-600">ACCESS HRA 官方</strong></span>
+              <a href="https://access.nyc.gov/programs/snap/" target="_blank" class="px-3 py-1.5 bg-teal-50 hover:bg-teal-100 text-teal-700 font-bold rounded-lg transition no-underline">获取官方链接 ➔</a>
+            </div>
+          </div>
+        </div>
+        <div class="bg-white rounded-xl border border-slate-200 shadow-sm hover:shadow-md transition overflow-hidden flex flex-col" data-category="交通出行">
+          <div class="p-5 flex-1 flex flex-col justify-between">
+            <div>
+              <div class="flex justify-between items-start gap-2 mb-3">
+                <span class="inline-block px-2.5 py-0.5 rounded text-[10px] font-bold border bg-sky-50 text-sky-700 border-sky-200">交通出行</span>
+                <span class="text-[10px] text-slate-400 font-semibold">2026-06-11 (长期有效)</span>
+              </div>
+              <h4 class="font-bold text-slate-900 text-sm mb-2 hover:text-teal-600 transition">LIRR CityTicket 市内火车 $5 特惠票</h4>
+              <p class="text-xs text-slate-600 leading-relaxed mb-4">只要起点和终点都在纽约市内（如法拉盛往返曼哈顿中城），非高峰期单程仅需 $5.00，高峰期 $7.00。18分钟直达，空调充足，人人有座。</p>
+            </div>
+            <div class="pt-3 border-t border-slate-100 flex items-center justify-between text-[10px]">
+              <span class="text-slate-400 font-medium">来源: <strong class="text-slate-600">MTA 官方</strong></span>
+              <a href="https://new.mta.info/fares/cityticket" target="_blank" class="px-3 py-1.5 bg-teal-50 hover:bg-teal-100 text-teal-700 font-bold rounded-lg transition no-underline">获取官方链接 ➔</a>
+            </div>
+          </div>
+        </div>
+        <div class="bg-white rounded-xl border border-slate-200 shadow-sm hover:shadow-md transition overflow-hidden flex flex-col" data-category="语言教育">
+          <div class="p-5 flex-1 flex flex-col justify-between">
+            <div>
+              <div class="flex justify-between items-start gap-2 mb-3">
+                <span class="inline-block px-2.5 py-0.5 rounded text-[10px] font-bold border bg-indigo-50 text-indigo-700 border-indigo-200">语言教育</span>
+                <span class="text-[10px] text-slate-400 font-semibold">2026-06-15 (新一期登记)</span>
+              </div>
+              <h4 class="font-bold text-slate-900 text-sm mb-2 hover:text-teal-600 transition">皇后区公共图书馆免费成人 ESL 英语班</h4>
+              <p class="text-xs text-slate-600 leading-relaxed mb-4">面向 17 岁以上纽约居民，完全免费。不限移民身份，教材全免。提供白天、晚间及周末班，在法拉盛主馆、Elmhurst、Bayside 等分馆上课。</p>
+            </div>
+            <div class="pt-3 border-t border-slate-100 flex items-center justify-between text-[10px]">
+              <span class="text-slate-400 font-medium">来源: <strong class="text-slate-600">QPL 官方</strong></span>
+              <a href="https://www.queenslibrary.org/programs-services/esol-family-literacy/esol" target="_blank" class="px-3 py-1.5 bg-teal-50 hover:bg-teal-100 text-teal-700 font-bold rounded-lg transition no-underline">获取官方链接 ➔</a>
+            </div>
+          </div>
+        </div>
+        <div class="bg-white rounded-xl border border-slate-200 shadow-sm hover:shadow-md transition overflow-hidden flex flex-col" data-category="语言教育">
+          <div class="p-5 flex-1 flex flex-col justify-between">
+            <div>
+              <div class="flex justify-between items-start gap-2 mb-3">
+                <span class="inline-block px-2.5 py-0.5 rounded text-[10px] font-bold border bg-indigo-50 text-indigo-700 border-indigo-200">语言教育</span>
+                <span class="text-[10px] text-slate-400 font-semibold">2026-06-16 (滚动招生)</span>
+              </div>
+              <h4 class="font-bold text-slate-900 text-sm mb-2 hover:text-teal-600 transition">纽约公共图书馆 (NYPL) 免费成人英语课</h4>
+              <p class="text-xs text-slate-600 leading-relaxed mb-4">曼哈顿、布朗士及史泰登岛居民免费英语课程。包含听说读写全方位提升，并设有专门的入籍英语辅导班，同样不限身份，完全免费。</p>
+            </div>
+            <div class="pt-3 border-t border-slate-100 flex items-center justify-between text-[10px]">
+              <span class="text-slate-400 font-medium">来源: <strong class="text-slate-600">NYPL 官方</strong></span>
+              <a href="https://www.nypl.org/help/community-outreach/immigrant-services/learn-english" target="_blank" class="px-3 py-1.5 bg-teal-50 hover:bg-teal-100 text-teal-700 font-bold rounded-lg transition no-underline">获取官方链接 ➔</a>
+            </div>
+          </div>
+        </div>
+        <div class="bg-white rounded-xl border border-slate-200 shadow-sm hover:shadow-md transition overflow-hidden flex flex-col" data-category="社区安全">
+          <div class="p-5 flex-1 flex flex-col justify-between">
+            <div>
+              <div class="flex justify-between items-start gap-2 mb-3">
+                <span class="inline-block px-2.5 py-0.5 rounded text-[10px] font-bold border bg-rose-50 text-red-700 border-rose-200">社区安全</span>
+                <span class="text-[10px] text-slate-400 font-semibold">2026-06-17 19:00 (下周三)</span>
+              </div>
+              <h4 class="font-bold text-slate-900 text-sm mb-2 hover:text-teal-600 transition">法拉盛 109 警局社区协调委员会月度会议</h4>
+              <p class="text-xs text-slate-600 leading-relaxed mb-4">法拉盛 109 警局举办的月度警民会议，向居民通报近期治安情况、防诈骗提示，并现场解答居民关于社区治安、违章停车等问题的提问，现场提供中文翻译。</p>
+            </div>
+            <div class="pt-3 border-t border-slate-100 flex items-center justify-between text-[10px]">
+              <span class="text-slate-400 font-medium">来源: <strong class="text-slate-600">NYPD 109 Precinct</strong></span>
+              <a href="https://www.nyc.gov/site/nypd/bureaus/patrol/precincts/109th-precinct.page" target="_blank" class="px-3 py-1.5 bg-teal-50 hover:bg-teal-100 text-teal-700 font-bold rounded-lg transition no-underline">获取官方链接 ➔</a>
+            </div>
+          </div>
+        </div>
+        <div class="bg-white rounded-xl border border-slate-200 shadow-sm hover:shadow-md transition overflow-hidden flex flex-col" data-category="公园亲子">
+          <div class="p-5 flex-1 flex flex-col justify-between">
+            <div>
+              <div class="flex justify-between items-start gap-2 mb-3">
+                <span class="inline-block px-2.5 py-0.5 rounded text-[10px] font-bold border bg-teal-50 text-teal-700 border-teal-200">公园亲子</span>
+                <span class="text-[10px] text-slate-400 font-semibold">每周三 15:00-18:00 / 周日 09:00-11:00</span>
+              </div>
+              <h4 class="font-bold text-slate-900 text-sm mb-2 hover:text-teal-600 transition">皇后区植物园 (QGB) 免费开放时段</h4>
+              <p class="text-xs text-slate-600 leading-relaxed mb-4">皇后区植物园在指定时段对公众免费开放，无需购买门票。非常适合法拉盛本地家庭带孩子亲近自然、散步休闲。地址：43-50 Main St, Flushing。</p>
+            </div>
+            <div class="pt-3 border-t border-slate-100 flex items-center justify-between text-[10px]">
+              <span class="text-slate-400 font-medium">来源: <strong class="text-slate-600">Queens Botanical Garden</strong></span>
+              <a href="https://queensbotanical.org/hours-admission/" target="_blank" class="px-3 py-1.5 bg-teal-50 hover:bg-teal-100 text-teal-700 font-bold rounded-lg transition no-underline">获取官方链接 ➔</a>
+            </div>
+          </div>
+        </div>
+        <div class="bg-white rounded-xl border border-slate-200 shadow-sm hover:shadow-md transition overflow-hidden flex flex-col" data-category="文化展览">
+          <div class="p-5 flex-1 flex flex-col justify-between">
+            <div>
+              <div class="flex justify-between items-start gap-2 mb-3">
+                <span class="inline-block px-2.5 py-0.5 rounded text-[10px] font-bold border bg-purple-50 text-purple-700 border-purple-200">文化展览</span>
+                <span class="text-[10px] text-slate-400 font-semibold">2026-06-20 14:00 (下周六)</span>
+              </div>
+              <h4 class="font-bold text-slate-900 text-sm mb-2 hover:text-teal-600 transition">法拉盛市政厅 (Flushing Town Hall) 免费社区音乐会</h4>
+              <p class="text-xs text-slate-600 leading-relaxed mb-4">法拉盛文艺中心举办的多元文化音乐会，邀请华人传统民乐艺术家现场演奏，旨在促进社区文化交流。门票免费，但需提前在线登记预约名额。</p>
+            </div>
+            <div class="pt-3 border-t border-slate-100 flex items-center justify-between text-[10px]">
+              <span class="text-slate-400 font-medium">来源: <strong class="text-slate-600">Flushing Town Hall</strong></span>
+              <a href="https://www.flushingtownhall.org/" target="_blank" class="px-3 py-1.5 bg-teal-50 hover:bg-teal-100 text-teal-700 font-bold rounded-lg transition no-underline">获取官方链接 ➔</a>
+            </div>
+          </div>
+        </div>
+        <div class="bg-white rounded-xl border border-slate-200 shadow-sm hover:shadow-md transition overflow-hidden flex flex-col" data-category="市政议员">
+          <div class="p-5 flex-1 flex flex-col justify-between">
+            <div>
+              <div class="flex justify-between items-start gap-2 mb-3">
+                <span class="inline-block px-2.5 py-0.5 rounded text-[10px] font-bold border bg-amber-50 text-amber-700 border-amber-200">市政议员</span>
+                <span class="text-[10px] text-slate-400 font-semibold">每周四 10:00-16:00 (需预约)</span>
+              </div>
+              <h4 class="font-bold text-slate-900 text-sm mb-2 hover:text-teal-600 transition">市议员黄敏仪办公室免费法律咨询服务</h4>
+              <p class="text-xs text-slate-600 leading-relaxed mb-4">法拉盛市议员黄敏仪（Sandra Ung）办公室联合专业公益律师，为选区居民提供免费的法律咨询，涵盖租务纠纷、移民、家庭法等。提供中文翻译服务。</p>
+            </div>
+            <div class="pt-3 border-t border-slate-100 flex items-center justify-between text-[10px]">
+              <span class="text-slate-400 font-medium">来源: <strong class="text-slate-600">Sandra Ung Office</strong></span>
+              <a href="https://council.nyc.gov/sandra-ung/" target="_blank" class="px-3 py-1.5 bg-teal-50 hover:bg-teal-100 text-teal-700 font-bold rounded-lg transition no-underline">获取官方链接 ➔</a>
+            </div>
+          </div>
+        </div>
+        <div class="bg-white rounded-xl border border-slate-200 shadow-sm hover:shadow-md transition overflow-hidden flex flex-col" data-category="公益志愿">
+          <div class="p-5 flex-1 flex flex-col justify-between">
+            <div>
+              <div class="flex justify-between items-start gap-2 mb-3">
+                <span class="inline-block px-2.5 py-0.5 rounded text-[10px] font-bold border bg-fuchsia-50 text-fuchsia-700 border-fuchsia-200">公益志愿</span>
+                <span class="text-[10px] text-slate-400 font-semibold">每周五 09:00-12:00</span>
+              </div>
+              <h4 class="font-bold text-slate-900 text-sm mb-2 hover:text-teal-600 transition">纽约慈济基金会 (Tzu Chi) 食物发放志愿服务</h4>
+              <p class="text-xs text-slate-600 leading-relaxed mb-4">慈济纽约分会每周五在法拉盛会所向低收入家庭免费分发新鲜蔬菜、水果和干粮。同时招募双语志愿者协助现场秩序与物资搬运，欢迎报名奉献爱心。</p>
+            </div>
+            <div class="pt-3 border-t border-slate-100 flex items-center justify-between text-[10px]">
+              <span class="text-slate-400 font-medium">来源: <strong class="text-slate-600">Tzu Chi New York</strong></span>
+              <a href="https://tzuchi.us/offices/new-york" target="_blank" class="px-3 py-1.5 bg-teal-50 hover:bg-teal-100 text-teal-700 font-bold rounded-lg transition no-underline">获取官方链接 ➔</a>
+            </div>
+          </div>
+        </div>
+        <div class="bg-white rounded-xl border border-slate-200 shadow-sm hover:shadow-md transition overflow-hidden flex flex-col" data-category="公园亲子">
+          <div class="p-5 flex-1 flex flex-col justify-between">
+            <div>
+              <div class="flex justify-between items-start gap-2 mb-3">
+                <span class="inline-block px-2.5 py-0.5 rounded text-[10px] font-bold border bg-teal-50 text-teal-700 border-teal-200">公园亲子</span>
+                <span class="text-[10px] text-slate-400 font-semibold">2026-06-27 起 (夏季开放)</span>
+              </div>
+              <h4 class="font-bold text-slate-900 text-sm mb-2 hover:text-teal-600 transition">纽约市公共室外游泳池免费开放</h4>
+              <p class="text-xs text-slate-600 leading-relaxed mb-4">纽约市公园局（NYC Parks）宣布全市公共室外泳池将于6月27日起免费对公众开放。法拉盛附近的 Fisher Pool 等均在列，是夏季消暑亲子的绝佳免费去处。</p>
+            </div>
+            <div class="pt-3 border-t border-slate-100 flex items-center justify-between text-[10px]">
+              <span class="text-slate-400 font-medium">来源: <strong class="text-slate-600">NYC Parks 官方</strong></span>
+              <a href="https://www.nycgovparks.org/facilities/outdoor-pools" target="_blank" class="px-3 py-1.5 bg-teal-50 hover:bg-teal-100 text-teal-700 font-bold rounded-lg transition no-underline">获取官方链接 ➔</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <!-- Tab 1: Strategy -->
-    <div class="tab-panel block" id="tab-strategy">
+    <div class="tab-panel hidden" id="tab-strategy">
       <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
         <div class="bg-white p-6 rounded-xl border border-slate-100 shadow-sm">
           <h3 class="text-lg font-bold text-slate-900 mb-4 flex items-center gap-2">
@@ -666,6 +879,47 @@
 
   <!-- ===== JAVASCRIPT ===== -->
   <script>
+    // --- Live Hub Search & Filter Logic ---
+    var hubSearchInput = document.getElementById('hub-search');
+    var hubFilterBtns = document.querySelectorAll('.hub-filter-btn');
+    var hubEventCards = document.querySelectorAll('#hub-events-grid > div');
+    var activeHubFilter = 'all';
+
+    function filterHubEvents() {
+      var query = hubSearchInput.value.toLowerCase();
+      hubEventCards.forEach(function(card) {
+        var text = card.textContent.toLowerCase();
+        var cardCat = card.getAttribute('data-category');
+        
+        var matchesSearch = text.indexOf(query) > -1;
+        var matchesFilter = activeHubFilter === 'all' || cardCat === activeHubFilter;
+
+        if (matchesSearch && matchesFilter) {
+          card.style.display = 'flex';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+
+    if (hubSearchInput) {
+      hubSearchInput.addEventListener('input', filterHubEvents);
+    }
+
+    hubFilterBtns.forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        hubFilterBtns.forEach(function(b) {
+          b.classList.remove('bg-teal-600', 'text-white', 'shadow-sm');
+          b.classList.add('bg-white', 'text-slate-600', 'border', 'border-slate-200', 'hover:bg-slate-50');
+        });
+        this.classList.remove('bg-white', 'text-slate-600', 'border', 'border-slate-200', 'hover:bg-slate-50');
+        this.classList.add('bg-teal-600', 'text-white', 'shadow-sm');
+
+        activeHubFilter = this.getAttribute('data-filter');
+        filterHubEvents();
+      });
+    });
+
     // --- Tab Switching Logic ---
     document.querySelectorAll('.tab-btn').forEach(function(btn) {
       btn.addEventListener('click', function() {
