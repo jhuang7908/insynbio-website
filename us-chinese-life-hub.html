@@ -1,766 +1,186 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>美东华人生活圈 · 官方资讯 + 同城分类</title>
-<style>
-* { box-sizing:border-box; }
-body { margin:0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans SC', sans-serif; background:#f1f5f9; color:#1e293b; }
-.wrap { max-width:1080px; margin:0 auto; padding:0 12px; }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>美东华人生活圈 · 纽约公共信息发布</title>
+  <style>
+    * { box-sizing:border-box; }
+    body { margin:0; font-family: -apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,'Noto Sans SC',sans-serif; background:#f4f6f8; color:#111827; }
+    .wrap { max-width:1280px; margin:0 auto; padding:0 14px; }
+    .top { background:#fff; border-bottom:1px solid #e5e7eb; position:sticky; top:0; z-index:20; }
+    .top-inner { height:56px; display:flex; align-items:center; justify-content:space-between; }
+    .logo { display:flex; align-items:center; gap:10px; font-weight:900; }
+    .logo-box { width:30px;height:30px;border-radius:8px;background:#f97316;color:#fff;display:flex;align-items:center;justify-content:center;font-size:16px; }
+    .sub { font-size:11px; color:#9ca3af; font-weight:600; }
 
-/* card grid */
-.card-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(240px,1fr)); gap:10px; }
-@media(max-width:520px){ .card-grid { grid-template-columns:repeat(2,1fr); gap:8px; } }
-.card { background:#fff; border:1px solid #e2e8f0; border-radius:12px; padding:12px; cursor:pointer; transition:.12s; display:flex; flex-direction:column; gap:6px; position:relative; }
-.card:hover { border-color:#fb923c; box-shadow:0 6px 18px rgba(234,88,12,.12); transform:translateY(-2px); }
-.card-top { display:flex; align-items:center; justify-content:space-between; }
-.cat-badge { font-size:10px; font-weight:800; padding:2px 7px; border-radius:5px; }
-.date-txt { font-size:10px; color:#94a3b8; font-weight:600; }
-.card-title { font-size:13px; font-weight:700; color:#0f172a; line-height:1.4; min-height:36px; }
-.card-desc { font-size:11px; color:#64748b; line-height:1.5; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; }
-.card-foot { display:flex; align-items:center; justify-content:space-between; border-top:1px solid #f1f5f9; padding-top:6px; margin-top:auto; }
-.foot-meta { font-size:10px; color:#94a3b8; }
-.foot-act { font-size:10px; font-weight:800; color:#ea580c; }
-.price-tag { font-size:12px; font-weight:800; color:#b45309; background:#fffbeb; padding:2px 8px; border-radius:6px; align-self:flex-start; }
-.verified { position:absolute; top:0; right:0; background:#f59e0b; color:#fff; font-size:8px; font-weight:800; padding:2px 6px; border-radius:0 12px 0 8px; }
+    .searchbar { background:#fff; border:1px solid #e5e7eb; border-radius:10px; padding:10px; display:flex; gap:10px; margin-top:12px; }
+    .searchbar input,.searchbar select { border:1px solid #e5e7eb; border-radius:8px; padding:8px 10px; font-size:13px; }
+    .searchbar input{ flex:1; }
 
-/* filter pills */
-.pillbar { display:flex; gap:6px; overflow-x:auto; padding-bottom:4px; }
-.pill { padding:5px 12px; border-radius:20px; font-size:12px; font-weight:700; border:1px solid #e2e8f0; background:#fff; cursor:pointer; white-space:nowrap; color:#475569; }
-.pill.active { background:#ea580c; color:#fff; border-color:#ea580c; }
+    .section-title { font-size:30px; font-weight:900; margin:20px 0 10px; }
+    .muted { color:#6b7280; font-size:14px; }
 
-/* section header */
-.sec-hd { display:flex; align-items:center; justify-content:space-between; padding:10px 0 8px; }
-.sec-hd .ttl { font-size:15px; font-weight:900; color:#0f172a; display:flex; align-items:center; gap:7px; }
+    .module-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin-top:12px; }
+    .module-card { background:#fff; border:1px solid #e5e7eb; border-radius:12px; padding:16px; }
+    .module-name { font-size:15px; font-weight:800; margin-bottom:8px; }
+    .module-desc { font-size:14px; color:#4b5563; line-height:1.6; }
 
-/* modal */
-.modal-overlay { display:none; position:fixed; inset:0; background:rgba(15,23,42,.6); z-index:9999; align-items:flex-end; justify-content:center; }
-@media(min-width:560px){ .modal-overlay { align-items:center; padding:16px; } }
-.modal-overlay.open { display:flex; }
-.modal-box { background:#fff; border-radius:18px 18px 0 0; padding:20px; max-width:480px; width:100%; max-height:92vh; overflow-y:auto; box-shadow:0 -10px 50px rgba(0,0,0,.3); }
-@media(min-width:560px){ .modal-box { border-radius:18px; } }
+    .source-wrap { background:#fff; border:1px solid #e5e7eb; border-radius:12px; overflow:hidden; margin-top:12px; }
+    table { width:100%; border-collapse:collapse; }
+    th,td { padding:12px 14px; border-bottom:1px solid #f0f2f4; font-size:14px; text-align:left; }
+    th { background:#f8fafc; font-weight:800; color:#374151; }
 
-/* forum/BBS detail */
-.bbs-head { border-bottom:2px solid #f1f5f9; padding-bottom:12px; margin-bottom:12px; }
-.bbs-title { font-size:17px; font-weight:900; color:#0f172a; line-height:1.4; margin:6px 0; }
-.bbs-meta { display:flex; flex-wrap:wrap; gap:10px; font-size:11px; color:#94a3b8; }
-.bbs-body { font-size:14px; line-height:1.8; color:#334155; white-space:pre-wrap; margin-bottom:14px; }
-.bbs-box { background:#f8fafc; border:1px solid #e2e8f0; border-radius:10px; padding:12px; margin-bottom:12px; }
-.bbs-box .lbl { font-size:11px; color:#64748b; }
-.reply { background:#fff; border:1px solid #f1f5f9; border-radius:8px; padding:8px 10px; margin-bottom:6px; font-size:12px; }
-.reply .who { font-weight:700; color:#475569; }
-.reply .when { font-size:10px; color:#cbd5e1; float:right; }
+    .pillbar { display:flex; flex-wrap:wrap; gap:8px; margin:14px 0; }
+    .pill { border:1px solid #d1d5db; background:#fff; border-radius:999px; padding:6px 12px; font-size:12px; font-weight:700; cursor:pointer; }
+    .pill.active { background:#111827; color:#fff; border-color:#111827; }
 
-.input-base { width:100%; border:1px solid #e2e8f0; border-radius:8px; padding:8px 10px; font-size:13px; outline:none; }
-.input-base:focus { border-color:#ea580c; box-shadow:0 0 0 2px rgba(234,88,12,.15); }
-.btn-primary { background:#ea580c; color:#fff; border:none; border-radius:9px; padding:11px 16px; font-size:14px; font-weight:800; cursor:pointer; width:100%; }
-.btn-primary:hover { background:#c2410c; }
-.btn-sec { background:#f1f5f9; color:#475569; border:none; border-radius:9px; padding:11px 16px; font-size:14px; font-weight:800; cursor:pointer; width:100%; }
-.auth-tab { flex:1; padding:9px; text-align:center; font-size:13px; font-weight:800; color:#94a3b8; border-bottom:2px solid transparent; cursor:pointer; }
-.auth-tab.active { color:#ea580c; border-bottom-color:#ea580c; }
-.cl-cat-grid { display:grid; grid-template-columns:repeat(5,1fr); gap:6px; margin-bottom:10px; }
-@media(max-width:520px){ .cl-cat-grid { grid-template-columns:repeat(5,1fr); } }
-.cl-cat { background:#fff; border:1px solid #fde68a; border-radius:10px; padding:8px 2px; text-align:center; cursor:pointer; }
-.cl-cat.active { background:#fef3c7; border-color:#f59e0b; }
-.cl-cat .ic { font-size:18px; }
-.cl-cat .lb { font-size:10px; font-weight:800; color:#92400e; margin-top:2px; }
-.submod { display:flex; align-items:center; gap:5px; font-size:12px; font-weight:700; color:#475569; background:#f8fafc; border:1px solid #e2e8f0; border-radius:8px; padding:8px 6px; cursor:pointer; }
-.submod input { accent-color:#ea580c; }
-.subch { flex:1; text-align:center; font-size:12px; font-weight:800; color:#64748b; background:#f8fafc; border:1px solid #e2e8f0; border-radius:9px; padding:10px 4px; cursor:pointer; }
-.subch.active { background:#fff7ed; border-color:#ea580c; color:#ea580c; }
-</style>
+    .feed-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:12px; }
+    .feed-card { background:#fff; border:1px solid #e5e7eb; border-radius:12px; padding:12px; display:flex; flex-direction:column; min-height:170px; }
+    .meta { display:flex; justify-content:space-between; align-items:center; margin-bottom:8px; }
+    .tag { font-size:11px; font-weight:800; padding:2px 8px; border-radius:999px; background:#eef2ff; color:#4338ca; }
+    .date { font-size:11px; color:#9ca3af; }
+    .title { font-size:15px; font-weight:800; line-height:1.4; margin-bottom:8px; }
+    .summary { font-size:13px; color:#4b5563; line-height:1.6; flex:1; }
+    .foot { margin-top:8px; display:flex; justify-content:space-between; align-items:center; font-size:11px; color:#9ca3af; }
+    .btn { border:none; background:#111827; color:#fff; border-radius:6px; padding:6px 10px; font-size:11px; font-weight:800; cursor:pointer; }
+
+    .modal { position:fixed; inset:0; display:none; align-items:center; justify-content:center; background:rgba(15,23,42,.6); z-index:80; }
+    .modal.open{ display:flex; }
+    .modal-box{ width:min(460px,92vw); background:#fff; border-radius:14px; padding:18px; }
+    .modal-title{ font-size:16px; font-weight:900; margin-bottom:8px; }
+
+    @media (max-width: 1000px){ .feed-grid,.module-grid{ grid-template-columns:repeat(2,1fr);} }
+    @media (max-width: 680px){ .feed-grid,.module-grid{ grid-template-columns:1fr;} .section-title{font-size:24px;} }
+  </style>
 </head>
-<body style="padding-bottom:64px;">
-
-<!-- ═══ TOP HEADER ═══ -->
-<header style="background:#fff;border-bottom:1px solid #e2e8f0;position:sticky;top:0;z-index:100;box-shadow:0 1px 3px rgba(0,0,0,.08);">
-  <div class="wrap" style="height:50px;display:flex;align-items:center;justify-content:space-between;">
-    <div style="display:flex;align-items:center;gap:8px;">
-      <div style="width:34px;height:34px;border-radius:9px;background:linear-gradient(135deg,#f97316,#c2410c);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:900;font-size:17px;">圈</div>
+<body>
+  <header class="top">
+    <div class="wrap top-inner">
+      <div class="logo">
+        <div class="logo-box">圈</div>
+        <div>
+          <div>美东华人生活圈</div>
+          <div class="sub">纽约地区 · 公共信息发布（高密度可读版）</div>
+        </div>
+      </div>
       <div>
-        <div style="font-size:14px;font-weight:900;color:#0f172a;">美东华人生活圈</div>
-        <div style="font-size:9px;color:#94a3b8;font-weight:600;">官方民生资讯 · 同城信息发布</div>
+        <select id="lang" onchange="changeLang(this.value)" style="border:1px solid #e5e7eb;border-radius:8px;padding:6px 8px;font-size:12px;">
+          <option value="zh">简体</option><option value="zht">繁體</option><option value="en">EN</option>
+        </select>
       </div>
     </div>
-    <div style="display:flex;align-items:center;gap:8px;">
-      <select id="lang-sel" onchange="changeLang(this.value)" style="border:1px solid #e2e8f0;border-radius:6px;padding:4px 7px;font-size:11px;font-weight:700;background:#f8fafc;color:#475569;outline:none;">
-        <option value="zh">简体</option>
-        <option value="zht">繁體</option>
-        <option value="en">EN</option>
-      </select>
-      <button onclick="openAccountModal()" style="background:#f1f5f9;border:1px solid #e2e8f0;border-radius:6px;padding:5px 11px;font-size:11px;font-weight:700;color:#475569;cursor:pointer;" id="nav-login-btn">👤 登录/认证</button>
+  </header>
+
+  <main class="wrap">
+    <div class="searchbar">
+      <input id="q" placeholder="搜索福利、交通、教育、活动关键词..." oninput="renderFeed()" />
+      <select id="city" onchange="renderFeed()"><option value="all">所有城市</option><option value="纽约" selected>纽约 NY</option></select>
+    </div>
+
+    <h2 class="section-title">9大核心频道划分</h2>
+    <div class="module-grid" id="module-grid"></div>
+
+    <h2 class="section-title">稳定可靠的信息来源地图</h2>
+    <p class="muted">为避免来源资产被复制，前台仅展示来源代号与抓取通道，完整来源清单仅后台可见。</p>
+    <div class="source-wrap">
+      <table>
+        <thead><tr><th>来源代号</th><th>覆盖频道</th><th>抓取通道</th><th>更新频率</th><th>可靠度</th></tr></thead>
+        <tbody id="source-body"></tbody>
+      </table>
+    </div>
+
+    <h2 class="section-title">纽约地区真实信息发布</h2>
+    <p class="muted">按模块持续发布真实信息，每条都有简介与链接；点击可选择原文或自动翻译阅读。</p>
+    <div class="pillbar" id="module-filters"></div>
+    <div class="feed-grid" id="feed"></div>
+    <div style="height:28px"></div>
+  </main>
+
+  <div id="link-modal" class="modal">
+    <div class="modal-box">
+      <div class="modal-title">请选择打开方式</div>
+      <p class="muted" style="margin-top:0;margin-bottom:10px;">建议先看中文翻译版，再看官方原文。</p>
+      <a id="link-trans" target="_blank" class="btn" style="display:block;text-align:center;text-decoration:none;margin-bottom:8px;" onclick="closeModal()">打开中文翻译网页</a>
+      <a id="link-raw" target="_blank" class="btn" style="display:block;text-align:center;text-decoration:none;background:#374151;margin-bottom:8px;" onclick="closeModal()">打开官方原文网页</a>
+      <button class="btn" style="background:#e5e7eb;color:#374151;width:100%;" onclick="closeModal()">取消</button>
     </div>
   </div>
-</header>
 
-<!-- ═══ SEARCH + CITY FILTER ═══ -->
-<div class="wrap" style="margin-top:12px;">
-  <div style="background:#fff;border:1px solid #e2e8f0;border-radius:11px;padding:9px 12px;display:flex;gap:8px;align-items:center;box-shadow:0 1px 2px rgba(0,0,0,.04);">
-    <span style="color:#94a3b8;font-size:15px;">🔍</span>
-    <input type="text" id="search-box" placeholder="搜索福利、交通、教育、活动..." oninput="applyFilters()" style="flex:1;border:none;outline:none;font-size:13px;color:#1e293b;background:none;" />
-    <select id="city-sel" onchange="applyFilters()" style="border:1px solid #e2e8f0;border-radius:7px;padding:5px 8px;font-size:12px;font-weight:700;background:#f8fafc;color:#475569;outline:none;">
-      <option value="all">所有城市</option>
-      <option value="纽约" selected>纽约 NY</option>
-      <option value="波士顿">波士顿 BOS</option>
-      <option value="洛杉矶">洛杉矶 LA</option>
-    </select>
-  </div>
-</div>
-
-<!-- ═══ 订阅进度 + 模块订阅入口 ═══ -->
-<div class="wrap" style="margin-top:12px;">
-  <div style="background:linear-gradient(135deg,#fff7ed,#ffedd5);border:1px solid #fed7aa;border-radius:12px;padding:12px 14px;">
-    <div style="display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;">
-      <div>
-        <div style="font-size:13px;font-weight:900;color:#9a3412;">🔔 订阅你关心的模块，每周收到精选推送</div>
-        <div style="font-size:11px;color:#b45309;margin-top:2px;">当前订阅用户 <strong id="sub-count">386</strong> / <span id="sub-target">500</span> 人 · 达标后开放「同城信息发布」论坛</div>
-      </div>
-      <button onclick="openSubModal()" style="background:#ea580c;border:none;color:#fff;font-size:12px;font-weight:800;padding:8px 16px;border-radius:9px;cursor:pointer;white-space:nowrap;">订阅资讯模块 ➔</button>
-    </div>
-    <div style="margin-top:10px;height:8px;background:#fed7aa;border-radius:6px;overflow:hidden;">
-      <div id="sub-progress" style="height:100%;background:linear-gradient(90deg,#f97316,#ea580c);border-radius:6px;width:77%;transition:.4s;"></div>
-    </div>
-  </div>
-</div>
-
-<!-- ═══ 三阶段路线图 ═══ -->
-<div class="wrap" style="margin-top:12px;">
-  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;">
-    <div style="background:#ecfdf5;border:1px solid #a7f3d0;border-radius:11px;padding:10px;">
-      <div style="font-size:11px;font-weight:900;color:#047857;">✅ 第一阶段 · 进行中</div>
-      <div style="font-size:11px;font-weight:800;color:#0f172a;margin-top:3px;">免费公共资讯</div>
-      <div style="font-size:10px;color:#64748b;margin-top:2px;line-height:1.5;">聚合官方可靠来源，免费公告，无广告。</div>
-    </div>
-    <div style="background:#fff7ed;border:1px solid #fed7aa;border-radius:11px;padding:10px;">
-      <div style="font-size:11px;font-weight:900;color:#c2410c;">🔔 第二阶段 · 开放中</div>
-      <div style="font-size:11px;font-weight:800;color:#0f172a;margin-top:3px;">订阅推送 + 平台代发广告</div>
-      <div style="font-size:10px;color:#64748b;margin-top:2px;line-height:1.5;">短信/WhatsApp/微信推送；广告由平台统一代发。</div>
-    </div>
-    <div style="background:#f8fafc;border:1px solid #e2e8f0;border-radius:11px;padding:10px;">
-      <div style="font-size:11px;font-weight:900;color:#64748b;">🔒 第三阶段 · 待解锁</div>
-      <div style="font-size:11px;font-weight:800;color:#0f172a;margin-top:3px;">个人缴费论坛发布</div>
-      <div style="font-size:10px;color:#64748b;margin-top:2px;line-height:1.5;">订阅达标后开放，个人付费自助发布信息。</div>
-    </div>
-  </div>
-</div>
-
-<!-- ═══ SECTION 1: 官方公共信息（方框卡片网格）═══ -->
-<div class="wrap" id="sec-official" style="margin-top:14px;">
-  <div class="sec-hd">
-    <div class="ttl">📰 官方公共信息 <span style="font-size:11px;font-weight:700;color:#94a3b8;">每日更新 · 点开看详情</span></div>
-  </div>
-  <div class="pillbar" id="official-cats" style="margin-bottom:10px;">
-    <button class="pill active" onclick="filterOfficial('all',this)">全部</button>
-    <button class="pill" onclick="filterOfficial('福利',this)">💚 福利</button>
-    <button class="pill" onclick="filterOfficial('交通',this)">🚇 交通</button>
-    <button class="pill" onclick="filterOfficial('教育',this)">📚 教育</button>
-    <button class="pill" onclick="filterOfficial('安全',this)">🚨 安全</button>
-    <button class="pill" onclick="filterOfficial('市政',this)">🏛️ 市政</button>
-    <button class="pill" onclick="filterOfficial('亲子',this)">🌳 亲子</button>
-    <button class="pill" onclick="filterOfficial('文化',this)">🎨 文化</button>
-    <button class="pill" onclick="filterOfficial('公益',this)">🤝 公益</button>
-    <button class="pill" onclick="filterOfficial('促销',this)">🛒 促销</button>
-  </div>
-  <div class="card-grid" id="official-list"></div>
-  <div style="font-size:11px;color:#94a3b8;margin-top:8px;" id="official-count"></div>
-</div>
-
-<!-- ═══ SECTION 2: 同城信息发布（论坛/Craigslist 方框网格）═══ -->
-<div class="wrap" id="sec-classifieds" style="margin-top:22px;position:relative;">
-  <div class="sec-hd">
-    <div class="ttl">🤝 同城信息发布 <span style="font-size:11px;font-weight:700;color:#94a3b8;">论坛式 · 点开看正文留言</span></div>
-    <button onclick="openPostModal()" style="background:#ea580c;border:none;color:#fff;font-size:12px;font-weight:800;padding:6px 14px;border-radius:8px;cursor:pointer;">➕ 我要发布</button>
-  </div>
-  <!-- forum-style category board entrances -->
-  <div class="cl-cat-grid">
-    <div class="cl-cat active" id="clc-all" onclick="filterCL('all',this)"><div class="ic">📋</div><div class="lb">全部</div></div>
-    <div class="cl-cat" id="clc-房屋出租" onclick="filterCL('房屋出租',this)"><div class="ic">🏠</div><div class="lb">房屋租售</div></div>
-    <div class="cl-cat" id="clc-求职招聘" onclick="filterCL('求职招聘',this)"><div class="ic">💼</div><div class="lb">求职招聘</div></div>
-    <div class="cl-cat" id="clc-二手闲置" onclick="filterCL('二手闲置',this)"><div class="ic">🛒</div><div class="lb">二手闲置</div></div>
-    <div class="cl-cat" id="clc-生意转让" onclick="filterCL('生意转让',this)"><div class="ic">📈</div><div class="lb">生意转让</div></div>
-  </div>
-  <div class="card-grid" id="cl-list"></div>
-  <div style="font-size:11px;color:#92400e;font-weight:600;margin-top:8px;" id="cl-count"></div>
-
-  <!-- LOCK overlay: 订阅人数未达标时锁定 -->
-  <div id="cl-lock" style="position:absolute;inset:34px 0 0;background:rgba(248,250,252,.92);backdrop-filter:blur(3px);border-radius:14px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:24px;border:2px dashed #cbd5e1;">
-    <div style="font-size:40px;">🔒</div>
-    <div style="font-size:16px;font-weight:900;color:#0f172a;margin-top:8px;">第三阶段 · 个人缴费论坛（即将开放）</div>
-    <div style="font-size:12px;color:#64748b;margin-top:6px;max-width:400px;line-height:1.7;">论坛允许个人付费后自助发布租房、招聘、二手、生意转让等信息。为保证质量与真实度，将在订阅用户达到 <strong id="lock-target">500</strong> 人后开放。<br>当前 <strong id="lock-count" style="color:#ea580c;">386</strong> 人，仅差 <strong id="lock-remain" style="color:#ea580c;">114</strong> 人！</div>
-    <button onclick="openSubModal()" style="margin-top:14px;background:#ea580c;border:none;color:#fff;font-size:13px;font-weight:800;padding:10px 22px;border-radius:10px;cursor:pointer;">🔔 立即订阅，助力解锁</button>
-    <button onclick="demoUnlock()" style="margin-top:8px;background:none;border:none;color:#94a3b8;font-size:11px;text-decoration:underline;cursor:pointer;">（演示：模拟达标解锁预览）</button>
-  </div>
-</div>
-
-<!-- ═══ STICKY BOTTOM NAV (mobile) ═══ -->
-<div style="position:fixed;bottom:0;left:0;right:0;background:#fff;border-top:1px solid #e2e8f0;height:52px;display:flex;justify-content:space-around;align-items:center;z-index:200;box-shadow:0 -2px 8px rgba(0,0,0,.08);">
-  <button onclick="scrollToSection('sec-official')" style="display:flex;flex-direction:column;align-items:center;gap:1px;background:none;border:none;color:#64748b;cursor:pointer;font-size:9px;font-weight:700;">
-    <span style="font-size:18px;">📰</span>官方资讯
-  </button>
-  <button onclick="scrollToSection('sec-classifieds')" style="display:flex;flex-direction:column;align-items:center;gap:1px;background:none;border:none;color:#64748b;cursor:pointer;font-size:9px;font-weight:700;">
-    <span style="font-size:18px;">🤝</span>同城分类
-  </button>
-  <button onclick="openPostModal()" style="display:flex;flex-direction:column;align-items:center;gap:1px;background:none;border:none;cursor:pointer;font-size:9px;font-weight:700;">
-    <span style="font-size:22px;line-height:1;">➕</span>
-    <span style="background:#ea580c;color:#fff;border-radius:4px;padding:1px 5px;">发布信息</span>
-  </button>
-  <button onclick="openAccountModal()" style="display:flex;flex-direction:column;align-items:center;gap:1px;background:none;border:none;color:#64748b;cursor:pointer;font-size:9px;font-weight:700;">
-    <span style="font-size:18px;">👤</span>我的账户
-  </button>
-</div>
-
-<!-- ═══ MODAL: 官方信息 BBS 详情 ═══ -->
-<div id="modal-official" class="modal-overlay">
-  <div class="modal-box">
-    <div style="display:flex;justify-content:flex-end;"><button onclick="closeModal('modal-official')" style="background:none;border:none;font-size:22px;color:#94a3b8;cursor:pointer;">✕</button></div>
-    <div class="bbs-head">
-      <span id="of-cat" class="cat-badge">-</span>
-      <div id="of-title" class="bbs-title">-</div>
-      <div class="bbs-meta">
-        <span>🏢 <span id="of-source">-</span></span>
-        <span>📍 <span id="of-area">-</span></span>
-        <span>🗓️ <span id="of-date">-</span></span>
-      </div>
-    </div>
-    <div id="of-body" class="bbs-body">-</div>
-    <div class="bbs-box">
-      <div class="lbl">官方来源链接（点击可看中文翻译版）</div>
-      <a id="of-trans" href="#" target="_blank" onclick="closeModal('modal-official')" class="btn-primary" style="display:block;text-align:center;text-decoration:none;margin-top:8px;">🌐 打开智能中文翻译网页</a>
-      <a id="of-raw" href="#" target="_blank" onclick="closeModal('modal-official')" class="btn-sec" style="display:block;text-align:center;text-decoration:none;margin-top:6px;">打开官方英文原网页</a>
-    </div>
-    <p style="font-size:10px;color:#cbd5e1;text-align:center;">信息来自官方公开渠道聚合，最终以官方页面为准</p>
-  </div>
-</div>
-
-<!-- ═══ MODAL: 同城发布 BBS 帖子详情（论坛式）═══ -->
-<div id="modal-post-detail" class="modal-overlay">
-  <div class="modal-box">
-    <div style="display:flex;justify-content:flex-end;"><button onclick="closeModal('modal-post-detail')" style="background:none;border:none;font-size:22px;color:#94a3b8;cursor:pointer;">✕</button></div>
-    <div class="bbs-head">
-      <div style="display:flex;align-items:center;gap:8px;">
-        <span id="pd-cat" class="cat-badge" style="background:#fef3c7;color:#92400e;">-</span>
-        <span id="pd-price" class="price-tag" style="margin:0;">-</span>
-      </div>
-      <div id="pd-title" class="bbs-title">-</div>
-      <div class="bbs-meta">
-        <span>👤 楼主 <strong id="pd-person" style="color:#475569;">-</strong></span>
-        <span>📍 <span id="pd-area">-</span></span>
-        <span>🗓️ <span id="pd-date">-</span></span>
-        <span style="color:#16a34a;font-weight:700;">✅ 付费已核实</span>
-      </div>
-    </div>
-    <div id="pd-body" class="bbs-body">-</div>
-
-    <!-- contact box -->
-    <div class="bbs-box">
-      <div style="font-size:12px;font-weight:800;color:#0f172a;margin-bottom:8px;">📞 联系楼主（请说明来自美东华人生活圈）</div>
-      <div style="display:flex;justify-content:space-between;align-items:center;padding:5px 0;border-bottom:1px solid #e2e8f0;">
-        <span style="font-size:12px;color:#64748b;">微信 (WeChat)</span>
-        <div style="display:flex;align-items:center;gap:8px;">
-          <strong id="pd-wechat" style="font-size:13px;">-</strong>
-          <button onclick="doCopy(document.getElementById('pd-wechat').textContent)" style="background:#e2e8f0;border:none;border-radius:5px;padding:3px 9px;font-size:10px;font-weight:700;cursor:pointer;">复制</button>
-        </div>
-      </div>
-      <div style="display:flex;justify-content:space-between;align-items:center;padding:5px 0;">
-        <span style="font-size:12px;color:#64748b;">电话 (Phone)</span>
-        <a id="pd-phone" href="#" style="color:#ea580c;font-weight:800;font-size:13px;text-decoration:none;">-</a>
-      </div>
-    </div>
-
-    <!-- BBS-style replies/comments -->
-    <div style="margin-bottom:10px;">
-      <div style="font-size:12px;font-weight:800;color:#0f172a;margin-bottom:8px;">💬 留言咨询 <span id="pd-reply-count" style="color:#94a3b8;font-weight:600;">(0)</span></div>
-      <div id="pd-replies"></div>
-      <div style="display:flex;gap:6px;margin-top:8px;">
-        <input type="text" id="pd-reply-input" placeholder="写下您的咨询/留言..." class="input-base" style="flex:1;" />
-        <button onclick="addReply()" style="background:#ea580c;border:none;color:#fff;border-radius:8px;padding:0 16px;font-size:13px;font-weight:800;cursor:pointer;">发送</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- ═══ MODAL: Post Ad ═══ -->
-<div id="modal-post" class="modal-overlay">
-  <div class="modal-box">
-    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;">
-      <div style="font-size:14px;font-weight:800;color:#0f172a;">📝 发布分类信息</div>
-      <button onclick="closeModal('modal-post')" style="background:none;border:none;font-size:20px;color:#94a3b8;cursor:pointer;">✕</button>
-    </div>
-    <p style="font-size:11px;color:#64748b;margin-bottom:14px;">「付费发布 + 人工审核」机制，杜绝虚假广告。支持 Stripe 信用卡 / 微信支付 / 支付宝。</p>
-    <form id="post-form" onsubmit="submitAd(event)">
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:8px;">
-        <div>
-          <label style="font-size:10px;font-weight:700;color:#475569;display:block;margin-bottom:4px;">分类 *</label>
-          <select id="f-cat" required class="input-base">
-            <option value="房屋出租">🏠 房屋出租 $5/月</option>
-            <option value="求职招聘">💼 求职招聘 $5/月</option>
-            <option value="二手闲置">🛒 二手闲置 $2/月</option>
-            <option value="生意转让">📈 生意转让 $10/月</option>
-          </select>
-        </div>
-        <div>
-          <label style="font-size:10px;font-weight:700;color:#475569;display:block;margin-bottom:4px;">城市 *</label>
-          <select id="f-city" required class="input-base">
-            <option value="纽约">纽约 (New York)</option>
-            <option value="波士顿">波士顿 (Boston)</option>
-            <option value="洛杉矶">洛杉矶 (Los Angeles)</option>
-          </select>
-        </div>
-      </div>
-      <div style="margin-bottom:8px;">
-        <label style="font-size:10px;font-weight:700;color:#475569;display:block;margin-bottom:4px;">标题 *</label>
-        <input type="text" id="f-title" required placeholder="例：法拉盛中心 单房出租 近地铁" class="input-base" />
-      </div>
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:8px;">
-        <div>
-          <label style="font-size:10px;font-weight:700;color:#475569;display:block;margin-bottom:4px;">价格/薪资 *</label>
-          <input type="text" id="f-price" required placeholder="$950/月" class="input-base" />
-        </div>
-        <div>
-          <label style="font-size:10px;font-weight:700;color:#475569;display:block;margin-bottom:4px;">区域 *</label>
-          <input type="text" id="f-area" required placeholder="法拉盛/Malden/罗兰岗" class="input-base" />
-        </div>
-      </div>
-      <div style="margin-bottom:8px;">
-        <label style="font-size:10px;font-weight:700;color:#475569;display:block;margin-bottom:4px;">详细描述</label>
-        <textarea id="f-desc" rows="2" placeholder="请详细描述房源/招聘要求/转让条件..." class="input-base" style="resize:none;"></textarea>
-      </div>
-      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;margin-bottom:12px;">
-        <div>
-          <label style="font-size:10px;font-weight:700;color:#475569;display:block;margin-bottom:4px;">联系人 *</label>
-          <input type="text" id="f-person" required placeholder="李女士" class="input-base" />
-        </div>
-        <div>
-          <label style="font-size:10px;font-weight:700;color:#475569;display:block;margin-bottom:4px;">微信 ID</label>
-          <input type="text" id="f-wechat" placeholder="wechat_id" class="input-base" />
-        </div>
-        <div>
-          <label style="font-size:10px;font-weight:700;color:#475569;display:block;margin-bottom:4px;">手机 *</label>
-          <input type="tel" id="f-phone" required placeholder="917-555-xxxx" class="input-base" />
-        </div>
-      </div>
-      <!-- Payment method -->
-      <div style="background:#fffbeb;border:1px solid #fde68a;border-radius:8px;padding:10px;margin-bottom:12px;">
-        <div style="font-size:11px;font-weight:700;color:#92400e;margin-bottom:8px;">选择支付方式</div>
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;">
-          <label style="display:flex;align-items:center;gap:6px;background:#fff;border:1px solid #fde68a;border-radius:6px;padding:7px 10px;cursor:pointer;font-size:12px;font-weight:600;">
-            <input type="radio" name="pay" value="wechat" checked> 🟢 微信支付
-          </label>
-          <label style="display:flex;align-items:center;gap:6px;background:#fff;border:1px solid #fde68a;border-radius:6px;padding:7px 10px;cursor:pointer;font-size:12px;font-weight:600;">
-            <input type="radio" name="pay" value="stripe"> 💳 信用卡
-          </label>
-        </div>
-      </div>
-      <button type="submit" class="btn-primary">确认并支付发布 ➔</button>
-      <button type="button" onclick="closeModal('modal-post')" class="btn-sec" style="margin-top:6px;">取消</button>
-    </form>
-  </div>
-</div>
-
-<!-- ═══ MODAL: 订阅资讯模块 ═══ -->
-<div id="modal-sub" class="modal-overlay">
-  <div class="modal-box">
-    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
-      <div style="font-size:15px;font-weight:900;color:#0f172a;">🔔 订阅资讯模块</div>
-      <button onclick="closeModal('modal-sub')" style="background:none;border:none;font-size:22px;color:#94a3b8;cursor:pointer;">✕</button>
-    </div>
-    <p style="font-size:12px;color:#64748b;margin-bottom:14px;line-height:1.7;">选择你关心的模块，我们每周把精选官方资讯通过你选择的渠道推送给你。完全免费。</p>
-
-    <!-- 选择模块 -->
-    <div style="font-size:12px;font-weight:800;color:#0f172a;margin-bottom:8px;">1️⃣ 选择关心的模块（可多选）</div>
-    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:7px;margin-bottom:16px;" id="sub-modules">
-      <label class="submod"><input type="checkbox" value="福利" checked> 💚 福利</label>
-      <label class="submod"><input type="checkbox" value="交通"> 🚇 交通</label>
-      <label class="submod"><input type="checkbox" value="教育"> 📚 教育</label>
-      <label class="submod"><input type="checkbox" value="安全"> 🚨 安全</label>
-      <label class="submod"><input type="checkbox" value="市政"> 🏛️ 市政</label>
-      <label class="submod"><input type="checkbox" value="亲子"> 🌳 亲子</label>
-      <label class="submod"><input type="checkbox" value="文化"> 🎨 文化</label>
-      <label class="submod"><input type="checkbox" value="公益"> 🤝 公益</label>
-      <label class="submod"><input type="checkbox" value="促销"> 🛒 促销</label>
-    </div>
-
-    <!-- 选择渠道 -->
-    <div style="font-size:12px;font-weight:800;color:#0f172a;margin-bottom:8px;">2️⃣ 选择推送渠道</div>
-    <div style="display:flex;gap:7px;margin-bottom:12px;" id="sub-channels">
-      <div class="subch active" data-ch="sms" onclick="pickChannel(this)">📱 手机短信</div>
-      <div class="subch" data-ch="whatsapp" onclick="pickChannel(this)">🟢 WhatsApp</div>
-      <div class="subch" data-ch="wechat" onclick="pickChannel(this)">💬 微信推送</div>
-    </div>
-
-    <!-- 联系方式 -->
-    <div style="margin-bottom:14px;">
-      <div style="font-size:12px;font-weight:800;color:#0f172a;margin-bottom:6px;">3️⃣ 填写接收账号</div>
-      <input type="text" id="sub-contact" class="input-base" placeholder="手机号 / WhatsApp 号 / 微信号" />
-    </div>
-
-    <button onclick="submitSub()" class="btn-primary">免费订阅 ➔</button>
-
-    <!-- 商业推送说明 -->
-    <div style="margin-top:14px;background:#f8fafc;border:1px solid #e2e8f0;border-radius:10px;padding:10px 12px;">
-      <div style="font-size:11px;font-weight:800;color:#475569;margin-bottom:4px;">💼 商家须知（第二阶段 · 平台代发）</div>
-      <div style="font-size:11px;color:#94a3b8;line-height:1.7;">本阶段广告一律由平台统一代发：商家提交内容，经审核后由平台向特定模块/城市的订阅用户精准推送（短信 / WhatsApp / 微信），不开放商家自助发布。个人自助缴费发布将在第三阶段论坛开放。合作请联系 contact@insynbio.com。</div>
-    </div>
-  </div>
-</div>
-
-<!-- ═══ MODAL: Account / Auth ═══ -->
-<div id="modal-account" class="modal-overlay">
-  <div class="modal-box">
-    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;">
-      <div style="font-size:14px;font-weight:800;color:#0f172a;">👤 注册 / 实名认证</div>
-      <button onclick="closeModal('modal-account')" style="background:none;border:none;font-size:20px;color:#94a3b8;cursor:pointer;">✕</button>
-    </div>
-    <p style="font-size:11px;color:#64748b;margin-bottom:12px;">为保障平台信息真实，发布信息需先完成微信扫码或美国手机短信实名认证。</p>
-    <!-- Auth Tabs -->
-    <div style="display:flex;border-bottom:1px solid #e2e8f0;margin-bottom:12px;">
-      <div class="auth-tab active" id="tab-wechat" onclick="switchAuthTab('wechat')">🟢 微信扫码认证</div>
-      <div class="auth-tab" id="tab-phone" onclick="switchAuthTab('phone')">📱 手机短信验证</div>
-    </div>
-    <!-- WeChat Panel -->
-    <div id="panel-wechat" style="display:flex;flex-direction:column;align-items:center;padding:12px 0;gap:12px;">
-      <div style="width:140px;height:140px;background:#f0fdf4;border:2px dashed #86efac;border-radius:12px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;">
-        <span style="font-size:36px;">💬</span>
-        <span style="font-size:10px;color:#16a34a;font-weight:700;text-align:center;">微信扫码关注公众号<br>自动完成实名认证</span>
-      </div>
-      <button onclick="mockWeChatLogin()" class="btn-primary" style="max-width:220px;">模拟微信扫码认证成功 ▶</button>
-    </div>
-    <!-- Phone Panel -->
-    <div id="panel-phone" style="display:none;gap:10px;flex-direction:column;">
-      <div>
-        <label style="font-size:10px;font-weight:700;color:#475569;display:block;margin-bottom:4px;">美国手机号 (+1) *</label>
-        <input type="tel" id="auth-phone" placeholder="917-555-0100" class="input-base" />
-      </div>
-      <div style="display:flex;gap:8px;">
-        <input type="text" id="auth-code" placeholder="输入6位短信验证码" class="input-base" style="flex:1;" />
-        <button type="button" onclick="sendSMS()" style="background:#f1f5f9;border:1px solid #e2e8f0;border-radius:8px;padding:7px 12px;font-size:11px;font-weight:700;cursor:pointer;white-space:nowrap;color:#475569;">获取验证码</button>
-      </div>
-      <button onclick="mockPhoneLogin()" class="btn-primary">验证并登录 ▶</button>
-    </div>
-  </div>
-</div>
-
-<!-- ═══ JAVASCRIPT ═══ -->
 <script>
-var OFFICIAL = [{"id": "e1", "cat": "福利", "date": "06-11", "title": "Fair Fares NYC 半价地铁卡申请", "area": "全市", "url": "https://access.nyc.gov/programs/fair-fares/", "desc": "低收入居民单程仅 $1.45，不影响绿卡申请。单身年收入 < $21,120 可申请。"}, {"id": "e2", "cat": "福利", "date": "06-11", "title": "SNAP 粮食券 EBT 卡申请", "area": "全市", "url": "https://access.nyc.gov/programs/snap/", "desc": "单身月收入 < $1,580 可申请，可在各大华人超市（新世界、大中华）使用。"}, {"id": "e3", "cat": "福利", "date": "06-01", "title": "NYC 暑期免费学生餐（18岁以下）", "area": "全市", "url": "https://www.schools.nyc.gov/school-life/food/summer-meals", "desc": "全市学校/公园/图书馆免费早午餐，无需注册，无需身份证明。"}, {"id": "e4", "cat": "福利", "date": "05-20", "title": "HEAP 夏季免费空调安装/电费补贴", "area": "全市", "url": "https://access.nyc.gov/programs/heap/", "desc": "低收入家庭可申请免费空调安装或电费补贴，帮助度过酷暑。"}, {"id": "e5", "cat": "福利", "date": "06-11", "title": "Lifeline 免费智能手机+无限通话", "area": "全市", "url": "https://access.nyc.gov/programs/lifeline/", "desc": "持 Medicaid/SNAP 的居民可申请免费手机和每月流量。"}, {"id": "e6", "cat": "交通", "date": "06-11", "title": "LIRR CityTicket 市内 $5 特惠票（法拉盛→中城 18分钟）", "area": "Queens", "url": "https://new.mta.info/fares/cityticket", "desc": "纽约市内起终点，非高峰 $5，高峰 $7，人人有座空调足。"}, {"id": "e7", "cat": "交通", "date": "06-11", "title": "MTA OMNY 刷满12次后本周免费", "area": "全市", "url": "https://omny.info/", "desc": "同一设备周一到周日刷满12次（$34.80）后，本周所有车程全免费。"}, {"id": "e8", "cat": "交通", "date": "06-10", "title": "MTA 地铁周末改线实时查询", "area": "全市", "url": "https://new.mta.info/alerts", "desc": "夏季维护期改线频繁，出行前务必查官网 Alerts 页面。"}, {"id": "e9", "cat": "交通", "date": "05-25", "title": "NYC Ferry 东河渡轮夏季班表启用（$4/次）", "area": "全市", "url": "https://www.ferry.nyc/routes-and-schedules/", "desc": "法拉盛-华埠-DUMBO 增班，单程 $4。"}, {"id": "e10", "cat": "教育", "date": "06-15", "title": "皇后区图书馆 免费成人 ESL 英语班", "area": "Queens", "url": "https://www.queenslibrary.org/programs-services/esol-family-literacy/esol", "desc": "17岁以上居民免费，不限身份，有白天/晚间/周末班，教材全免。"}, {"id": "e11", "cat": "教育", "date": "06-16", "title": "NYPL 免费成人英语 + 入籍辅导班", "area": "Manhattan", "url": "https://www.nypl.org/help/community-outreach/immigrant-services/learn-english", "desc": "曼哈顿/布朗士/史泰登岛居民，含入籍英文专项班，完全免费保密。"}, {"id": "e12", "cat": "教育", "date": "06-01", "title": "皇后区图书馆 2026 暑期少儿阅读挑战", "area": "Queens", "url": "https://www.queenslibrary.org/", "desc": "5-12岁，记录阅读进度获免费图书和纪念章，有暑期派对。"}, {"id": "e13", "cat": "安全", "date": "06-17", "title": "法拉盛 109 警局 警民月度会议（含中文翻译）", "area": "Queens", "url": "https://www.nyc.gov/site/nypd/bureaus/patrol/precincts/109th-precinct.page", "desc": "通报近期治安/防诈骗，现场解答停车违章问题，提供中文翻译。"}, {"id": "e14", "cat": "安全", "date": "05-28", "title": "布鲁克林 72 警局 防诈骗入室盗窃宣讲会", "area": "Brooklyn", "url": "https://www.nyc.gov/site/nypd/bureaus/patrol/precincts/72nd-precinct.page", "desc": "八大道华人区针对电信诈骗和入室盗窃，讲识别方法和防盗措施。"}, {"id": "e15", "cat": "安全", "date": "06-02", "title": "NYC 紧急管理局 飓风季防灾指南（中文版）", "area": "全市", "url": "https://www.nyc.gov/site/em/ready/hurricane-guides.page", "desc": "2026 年飓风季指南，含疏散避难所地图，提供中文 PDF 下载。"}, {"id": "e16", "cat": "市政", "date": "每周四", "title": "市议员黄敏仪办公室 免费法律咨询（租务/移民/家庭）", "area": "Queens", "url": "https://council.nyc.gov/sandra-ung/", "desc": "法拉盛 Sandra Ung 联合公益律师，免费，提供中文翻译。"}, {"id": "e17", "cat": "市政", "date": "06-11", "title": "NYC 选民登记查询 + 投票站一键查询", "area": "全市", "url": "https://vote.nyc/", "desc": "输入地址查投票站、开放时间及候选人名单。"}, {"id": "e18", "cat": "亲子", "date": "06-27", "title": "NYC 公共室外泳池全市免费开放（6/27起）", "area": "全市", "url": "https://www.nycgovparks.org/facilities/outdoor-pools", "desc": "包括 Fisher Pool（法拉盛附近），完全免费，无需预约。"}, {"id": "e19", "cat": "亲子", "date": "06-01", "title": "NYC Parks 免费露天电影节（全市各公园）", "area": "全市", "url": "https://www.nycgovparks.org/events/free-summer-movies", "desc": "迪士尼动画 + 好莱坞大片，无需预约，带野餐垫即去。"}, {"id": "e20", "cat": "亲子", "date": "每三/日", "title": "皇后区植物园 免费开放时段（法拉盛 Main St）", "area": "Queens", "url": "https://queensbotanical.org/hours-admission/", "desc": "周三 3-6PM / 周日 9-11AM 免费，地址：43-50 Main St, Flushing。"}, {"id": "e21", "cat": "文化", "date": "06-20", "title": "法拉盛市政厅 免费多元文化音乐会（需网上预约）", "area": "Queens", "url": "https://www.flushingtownhall.org/", "desc": "华人传统民乐演奏，促进社区文化交流，免费但需提前在线登记。"}, {"id": "e22", "cat": "文化", "date": "06-11", "title": "大都会博物馆 纽约居民任意付费（$1 可入场）", "area": "Manhattan", "url": "https://www.metmuseum.org/visit/plan-your-visit", "desc": "持纽约州 ID 或账单地址，售票处 Pay-What-You-Wish，$1 起。"}, {"id": "e23", "cat": "文化", "date": "每周五", "title": "MoMA 纽约居民免费夜（每周五 4-8PM）", "area": "Manhattan", "url": "https://www.moma.org/calendar/programs/159", "desc": "需提前官网预约免费票，现场出示纽约居住证明即可。"}, {"id": "e24", "cat": "文化", "date": "每周五", "title": "纽约科学馆 皇后区居民免费（周五 2-5PM）", "area": "Queens", "url": "https://nysci.org/visit", "desc": "Corona 公园内，数百个互动科学展项，适合带孩子周末探索。"}, {"id": "e25", "cat": "公益", "date": "每周五", "title": "纽约慈济基金会 食物发放 + 双语志愿者招募", "area": "Queens", "url": "https://tzuchi.us/offices/new-york", "desc": "每周五法拉盛会所免费发蔬菜水果，招募双语志愿者协助。"}, {"id": "e26", "cat": "公益", "date": "06-11", "title": "纽约食物银行 社区厨房志愿招募（华埠/布鲁克林）", "area": "全市", "url": "https://www.foodbanknyc.org/volunteer/", "desc": "可开具义工证明，欢迎留学生和华人青年参与。"}, {"id": "e27", "cat": "促销", "date": "每周五", "title": "法拉盛新世界超市 本周特价海报（海鲜/时蔬）", "area": "Queens", "url": "https://www.newworldmallny.com/", "desc": "华人家庭省钱必看，游水海鲜/新鲜时蔬/南北杂货折扣海报。"}];
-var CLASSIFIEDS = [{"id": "c1", "cat": "房屋出租", "date": "06-11", "city": "纽约", "area": "皇后区·法拉盛", "title": "法拉盛中心 全新公寓单房出租 近地铁/超市", "price": "$950/月", "contact": {"person": "李女士 (Ms. Li)", "wechat": "nyclife_li", "phone": "917-555-0192"}, "desc": "Main St 步行5分钟，电梯楼，大单房独卫，含水网，随时入住，限一人，无烟无宠。"}, {"id": "c2", "cat": "生意转让", "date": "06-10", "city": "纽约", "area": "皇后区·Bayside", "title": "Bayside Northern Blvd 旺铺奶茶甜品店低价转让", "price": "$45,000 可议", "contact": {"person": "陈经纪 (Agent Chen)", "wechat": "bayside_broker", "phone": "718-555-0143"}, "desc": "周边多所高中客源稳定，设备齐全，接手即可盈利，因店主回国转让。"}, {"id": "c3", "cat": "二手闲置", "date": "06-09", "city": "纽约", "area": "皇后区·法拉盛", "title": "【九成新】2024 MacBook Pro 14寸 M3 16G+512G", "price": "$1,250", "contact": {"person": "Alex", "wechat": "alex_tech_ny", "phone": "646-555-0188"}, "desc": "自用无划痕，电池98%，带原装充电器和包装，法拉盛面交当场验机。"}, {"id": "c4", "cat": "求职招聘", "date": "06-08", "city": "纽约", "area": "皇后区·法拉盛", "title": "【招聘】法拉盛齿科诊所 双语前台 全职/兼职", "price": "$20-$25/小时", "contact": {"person": "Dr. Wang Office", "wechat": "flushing_dental", "phone": "347-555-0112"}, "desc": "需流利中英文，有经验优先，无经验可培训，提供带薪假和健康保险。"}, {"id": "c5", "cat": "房屋出租", "date": "06-07", "city": "纽约", "area": "布鲁克林·八大道", "title": "布鲁克林八大道 独栋二楼整套 2房1厅 独立门户", "price": "$1,850/月", "contact": {"person": "林先生 (Mr. Lin)", "wechat": "bk_owner_lin", "phone": "917-555-0155"}, "desc": "近N线地铁站和华人超市，光线充足，适合小家庭或留学生合租。"}, {"id": "c6", "cat": "生意转让", "date": "06-06", "city": "纽约", "area": "曼哈顿·唐人街", "title": "唐人街 美甲美容老店转让 租金低 租约长", "price": "$32,000", "contact": {"person": "张店主 (Owner Zhang)", "wechat": "chinatown_nail", "phone": "212-555-0177"}, "desc": "华埠核心街道，经营多年，口碑好，老客多，设备齐全接手即营业。"}, {"id": "c7", "cat": "房屋出租", "date": "06-05", "city": "波士顿", "area": "Boston·Malden", "title": "波士顿 Malden 近地铁大两房一厅出租", "price": "$2,400/月", "contact": {"person": "王先生 (Mr. Wang)", "wechat": "boston_rent_wang", "phone": "617-555-0133"}, "desc": "Malden Center 步行8分钟，高档公寓，带独立洗衣烘干机，周边中餐馆超市。"}, {"id": "c8", "cat": "求职招聘", "date": "06-04", "city": "洛杉矶", "area": "LA·罗兰岗", "title": "【招聘】洛杉矶罗兰岗中餐馆 熟手企台/后厨打杂", "price": "$4,500-$6,000/月", "contact": {"person": "刘经理 (Manager Liu)", "wechat": "la_food_liu", "phone": "626-555-0122"}, "desc": "罗兰岗繁华商区，待遇优厚，小费好，包食宿，需报税，手脚勤快。"}];
-var officialCatFilter = 'all';
-var clCatFilter = 'all';
-var isLoggedIn = false;
-var userName = '';
+const MODULES = [{"id": "benefits", "name": "福利申请", "en": "Welfare", "desc": "半价地铁卡、粮食券、平价屋申请、暖气补助等官方政策解读。", "color": "#16a34a"}, {"id": "transit", "name": "交通出行", "en": "Transit", "desc": "LIRR CityTicket 优惠、地铁周末改线、机场巴士指南，解决出行难题。", "color": "#0ea5e9"}, {"id": "education", "name": "语言教育", "en": "Education", "desc": "免费成人 ESL 英语班、入籍班、周末中文学校，突破语言障碍。", "color": "#6366f1"}, {"id": "safety", "name": "社区安全", "en": "Safety", "desc": "警局防诈骗讲座、治安警报、紧急避难指引，保障人身财产安全。", "color": "#dc2626"}, {"id": "civic", "name": "市政议员", "en": "Civic", "desc": "议员免费法律咨询、选民登记、社区听证会，维护合法权益。", "color": "#a16207"}, {"id": "recreation", "name": "公园亲子", "en": "Recreation", "desc": "免费亲子手工、公园运动课、公共泳池开放，享受免费公共设施。", "color": "#0d9488"}, {"id": "culture", "name": "文化展览", "en": "Culture", "desc": "图书馆中文音乐会、华人艺术展、博物馆免费日，丰富精神生活。", "color": "#9333ea"}, {"id": "charity", "name": "公益志愿", "en": "Charity", "desc": "慈济义卖、社区清洁、食物银行志愿服务，融入当地社会。", "color": "#c026d3"}, {"id": "promos", "name": "消费促销", "en": "Promos", "desc": "华人超市折扣、商场促销、新店探店（严格标注商业广告）。", "color": "#ea580c"}];
+const SOURCES = [{"code": "OFFICIAL-NYC-01", "module": "公园与休闲", "channel": "nycgovparks.org/events", "freq": "每日 / 实时", "cred": "极高（官方）"}, {"code": "OFFICIAL-NYC-02", "module": "教育与图书馆", "channel": "queenslibrary.org/calendar", "freq": "每周", "cred": "极高（官方）"}, {"code": "OFFICIAL-NYC-03", "module": "教育与图书馆", "channel": "nypl.org/events", "freq": "每周", "cred": "极高（官方）"}, {"code": "OFFICIAL-NYC-04", "module": "社区安全", "channel": "nyc.gov/nypd", "freq": "不定期发布", "cred": "极高（官方）"}, {"code": "OFFICIAL-NYC-05", "module": "交通出行", "channel": "new.mta.info/alerts", "freq": "实时", "cred": "极高（官方）"}, {"code": "OFFICIAL-NYC-06", "module": "福利申请", "channel": "access.nyc.gov", "freq": "每月/政策调整", "cred": "极高（官方）"}, {"code": "COMMUNITY-NYC-01", "module": "社区与侨团", "channel": "ccbanyc.org", "freq": "每周", "cred": "中等（民间）"}, {"code": "COMMUNITY-NYC-02", "module": "社区与侨团", "channel": "tzuchi.us", "freq": "每周", "cred": "中等（民间）"}, {"code": "OFFICIAL-NYC-07", "module": "市政与议员", "channel": "council.nyc.gov", "freq": "每周", "cred": "极高（官方）"}];
+const ITEMS = [{"id": "e1", "module": "福利申请", "city": "纽约", "area": "全市", "date": "2026-06-11", "title": "Fair Fares NYC 半价地铁卡申请", "summary": "低收入居民单程仅 $1.45，不影响绿卡申请。单身年收入 < $21,120 可申请。", "url": "https://access.nyc.gov/programs/fair-fares/"}, {"id": "e2", "module": "福利申请", "city": "纽约", "area": "全市", "date": "2026-06-11", "title": "SNAP 粮食券 EBT 卡申请", "summary": "单身月收入 < $1,580 可申请，可在主要华人超市使用。", "url": "https://access.nyc.gov/programs/snap/"}, {"id": "e3", "module": "福利申请", "city": "纽约", "area": "全市", "date": "2026-06-01", "title": "NYC 暑期免费学生餐（18岁以下）", "summary": "学校、公园、图书馆免费早午餐，无需注册。", "url": "https://www.schools.nyc.gov/school-life/food/summer-meals"}, {"id": "e4", "module": "福利申请", "city": "纽约", "area": "全市", "date": "2026-05-20", "title": "HEAP 夏季免费空调安装/电费补贴", "summary": "低收入家庭可申请免费空调安装或电费补贴。", "url": "https://access.nyc.gov/programs/heap/"}, {"id": "e5", "module": "交通出行", "city": "纽约", "area": "Queens", "date": "2026-06-11", "title": "LIRR CityTicket 市内 $5 特惠票", "summary": "纽约市内起终点，非高峰 $5，高峰 $7，适合法拉盛到中城通勤。", "url": "https://new.mta.info/fares/cityticket"}, {"id": "e6", "module": "交通出行", "city": "纽约", "area": "全市", "date": "2026-06-11", "title": "MTA OMNY 刷满12次后本周免费", "summary": "同一设备刷满12次后，当周剩余乘车免费。", "url": "https://omny.info/"}, {"id": "e7", "module": "交通出行", "city": "纽约", "area": "全市", "date": "2026-06-10", "title": "MTA 地铁周末改线实时查询", "summary": "夏季维护期改线频繁，出行前务必先查 Alerts。", "url": "https://new.mta.info/alerts"}, {"id": "e8", "module": "交通出行", "city": "纽约", "area": "全市", "date": "2026-05-25", "title": "NYC Ferry 东河渡轮夏季班表启用", "summary": "法拉盛-华埠-DUMBO 增班，单程 $4。", "url": "https://www.ferry.nyc/routes-and-schedules/"}, {"id": "e9", "module": "语言教育", "city": "纽约", "area": "Queens", "date": "2026-06-15", "title": "皇后区图书馆 免费成人 ESL 英语班", "summary": "17岁以上居民免费，不限身份，有白天/晚间/周末班。", "url": "https://www.queenslibrary.org/programs-services/esol-family-literacy/esol"}, {"id": "e10", "module": "语言教育", "city": "纽约", "area": "Manhattan", "date": "2026-06-16", "title": "NYPL 免费成人英语 + 入籍辅导班", "summary": "包含入籍英文专项班，完全免费。", "url": "https://www.nypl.org/help/community-outreach/immigrant-services/learn-english"}, {"id": "e11", "module": "语言教育", "city": "纽约", "area": "Queens", "date": "2026-06-01", "title": "皇后区图书馆 2026 暑期少儿阅读挑战", "summary": "5-12岁，记录阅读进度可获得免费图书和纪念章。", "url": "https://www.queenslibrary.org/"}, {"id": "e12", "module": "社区安全", "city": "纽约", "area": "Queens", "date": "2026-06-17", "title": "法拉盛 109 警局警民月度会议（含中文翻译）", "summary": "通报近期治安、防诈骗提示，现场问答。", "url": "https://www.nyc.gov/site/nypd/bureaus/patrol/precincts/109th-precinct.page"}, {"id": "e13", "module": "社区安全", "city": "纽约", "area": "Brooklyn", "date": "2026-05-28", "title": "布鲁克林 72 警局防诈骗与防盗宣讲", "summary": "针对华人社区高发诈骗与入室盗窃场景。", "url": "https://www.nyc.gov/site/nypd/bureaus/patrol/precincts/72nd-precinct.page"}, {"id": "e14", "module": "社区安全", "city": "纽约", "area": "全市", "date": "2026-06-02", "title": "NYC 飓风季防灾指南（中文版）", "summary": "疏散地图与应急物资清单，官方中文版。", "url": "https://www.nyc.gov/site/em/ready/hurricane-guides.page"}, {"id": "e15", "module": "市政议员", "city": "纽约", "area": "Queens", "date": "2026-06-13", "title": "市议员办公室免费法律咨询（租务/移民）", "summary": "社区公益律师驻点，含中文支持。", "url": "https://council.nyc.gov/sandra-ung/"}, {"id": "e16", "module": "市政议员", "city": "纽约", "area": "全市", "date": "2026-06-11", "title": "NYC 选民登记与投票站查询", "summary": "输入地址快速查询投票站、时间与候选人。", "url": "https://vote.nyc/"}, {"id": "e17", "module": "公园亲子", "city": "纽约", "area": "全市", "date": "2026-06-27", "title": "NYC 公共室外泳池免费开放", "summary": "全市室外泳池开放，适合亲子夏季活动。", "url": "https://www.nycgovparks.org/facilities/outdoor-pools"}, {"id": "e18", "module": "公园亲子", "city": "纽约", "area": "全市", "date": "2026-06-01", "title": "NYC Parks 免费露天电影节", "summary": "多个公园放映亲子电影，无需预约。", "url": "https://www.nycgovparks.org/events/free-summer-movies"}, {"id": "e19", "module": "公园亲子", "city": "纽约", "area": "Queens", "date": "2026-06-09", "title": "皇后区植物园免费开放时段", "summary": "周三和周日特定时段免费入园。", "url": "https://queensbotanical.org/hours-admission/"}, {"id": "e20", "module": "文化展览", "city": "纽约", "area": "Queens", "date": "2026-06-20", "title": "法拉盛市政厅免费多元文化音乐会", "summary": "华人传统民乐演出，需提前线上登记。", "url": "https://www.flushingtownhall.org/"}, {"id": "e21", "module": "文化展览", "city": "纽约", "area": "Manhattan", "date": "2026-06-11", "title": "大都会博物馆纽约居民任意付费政策", "summary": "持NY地址证明可按意愿付费入馆。", "url": "https://www.metmuseum.org/visit/plan-your-visit"}, {"id": "e22", "module": "文化展览", "city": "纽约", "area": "Manhattan", "date": "2026-06-14", "title": "MoMA 每周五纽约居民免费时段", "summary": "指定时段免费，建议提前预约。", "url": "https://www.moma.org/calendar/programs/159"}, {"id": "e23", "module": "公益志愿", "city": "纽约", "area": "Queens", "date": "2026-06-07", "title": "慈济纽约分会食物发放志愿服务", "summary": "法拉盛每周固定公益发放并招募双语志愿者。", "url": "https://tzuchi.us/offices/new-york"}, {"id": "e24", "module": "公益志愿", "city": "纽约", "area": "全市", "date": "2026-06-11", "title": "Food Bank NYC 社区厨房志愿者招募", "summary": "华埠/布鲁克林点位，提供志愿证明。", "url": "https://www.foodbanknyc.org/volunteer/"}, {"id": "e25", "module": "消费促销", "city": "纽约", "area": "Queens", "date": "2026-06-08", "title": "法拉盛新世界超市本周折扣海报", "summary": "海鲜、蔬菜、杂货促销信息更新。", "url": "https://www.newworldmallny.com/"}];
+let moduleFilter = 'all';
 
-// ─── Render Official Feed ───────────────────────────────────────────────────
-var CAT_COLOR = {
-  '福利':'background:#d1fae5;color:#065f46',
-  '交通':'background:#dbeafe;color:#1e40af',
-  '教育':'background:#ede9fe;color:#4c1d95',
-  '安全':'background:#fee2e2;color:#991b1b',
-  '市政':'background:#fef3c7;color:#92400e',
-  '亲子':'background:#d1fae5;color:#065f46',
-  '文化':'background:#fae8ff;color:#6b21a8',
-  '公益':'background:#f0fdf4;color:#15803d',
-  '促销':'background:#fff7ed;color:#9a3412',
-};
-
-function renderOfficial() {
-  var q = document.getElementById('search-box').value.toLowerCase();
-  var list = document.getElementById('official-list');
-  var count = 0;
-  var html = '';
-  OFFICIAL.forEach(function(ev) {
-    if (officialCatFilter !== 'all' && ev.cat !== officialCatFilter) return;
-    var text = (ev.title + ev.desc + ev.area).toLowerCase();
-    if (q && text.indexOf(q) === -1) return;
-    count++;
-    var cs = CAT_COLOR[ev.cat] || 'background:#f1f5f9;color:#475569';
-    html += '<div class="card" onclick="openOfficialDetail(\''+ev.id+'\')">'+
-      '<div class="card-top"><span class="cat-badge" style="'+cs+'">'+ev.cat+'</span><span class="date-txt">'+ev.date+'</span></div>'+
-      '<div class="card-title">'+ev.title+'</div>'+
-      '<div class="card-desc">'+ev.desc+'</div>'+
-      '<div class="card-foot"><span class="foot-meta">🏢 '+ev.source+' · '+ev.area+'</span><span class="foot-act">查看详情 →</span></div>'+
-      '</div>';
-  });
-  list.innerHTML = html || '<div style="grid-column:1/-1;padding:24px;text-align:center;color:#94a3b8;font-size:13px;">暂无符合条件的官方信息</div>';
-  document.getElementById('official-count').textContent = '已筛选 ' + count + ' 条 · 数据来源：NYC.gov / MTA / Queens Library / NYPD 等官方渠道';
+function badgeColor(mod){
+  const m = MODULES.find(x=>x.name===mod); return m ? m.color : '#374151';
 }
 
-// ─── Render Classifieds (card grid) ─────────────────────────────────────────
-function renderCL() {
-  var q = document.getElementById('search-box').value.toLowerCase();
-  var city = document.getElementById('city-sel').value;
-  var list = document.getElementById('cl-list');
-  var count = 0;
-  var html = '';
-  CLASSIFIEDS.forEach(function(ad) {
-    if (clCatFilter !== 'all' && ad.cat !== clCatFilter) return;
-    if (city !== 'all' && ad.city !== city) return;
-    var text = (ad.title + ad.desc + ad.area + ad.city).toLowerCase();
-    if (q && text.indexOf(q) === -1) return;
-    count++;
-    html += '<div class="card" onclick="openPostDetail(\''+ad.id+'\')">'+
-      '<span class="verified">✅ 已核实</span>'+
-      '<div class="card-top"><span class="cat-badge" style="background:#fef3c7;color:#92400e;">'+ad.cat+'</span><span class="date-txt">'+ad.date+'</span></div>'+
-      '<div class="card-title">'+ad.title+'</div>'+
-      '<div class="price-tag">💰 '+ad.price+'</div>'+
-      '<div class="card-desc">'+ad.desc+'</div>'+
-      '<div class="card-foot"><span class="foot-meta">📍 '+ad.area+'</span><span class="foot-act">进帖联系 →</span></div>'+
-      '</div>';
-  });
-  list.innerHTML = html || '<div style="grid-column:1/-1;padding:24px;text-align:center;color:#94a3b8;font-size:13px;">暂无符合条件的发布信息，点击「我要发布」成为第一个</div>';
-  document.getElementById('cl-count').textContent = '共 ' + count + ' 条付费认证发布 · 防虚假中介';
+function renderModules(){
+  const box = document.getElementById('module-grid');
+  box.innerHTML = MODULES.map(m => `
+    <div class="module-card">
+      <div class="module-name" style="color:${m.color}">${m.name} (${m.en})</div>
+      <div class="module-desc">${m.desc}</div>
+    </div>
+  `).join('');
 }
 
-function applyFilters() { renderOfficial(); renderCL(); }
-
-function filterOfficial(cat, btn) {
-  officialCatFilter = cat;
-  document.querySelectorAll('#official-cats .pill').forEach(function(b){ b.classList.remove('active'); });
-  if (btn) btn.classList.add('active');
-  renderOfficial();
+function renderSourceMap(){
+  document.getElementById('source-body').innerHTML = SOURCES.map(s => `
+    <tr><td><strong>${s.code}</strong></td><td>${s.module}</td><td><code>${s.channel}</code></td><td>${s.freq}</td><td>${s.cred}</td></tr>
+  `).join('');
 }
 
-function filterCL(cat, el) {
-  clCatFilter = cat;
-  document.querySelectorAll('.cl-cat').forEach(function(b){ b.classList.remove('active'); });
-  if (el) el.classList.add('active');
-  renderCL();
+function renderFilters(){
+  const wrap = document.getElementById('module-filters');
+  const names = ['all', ...MODULES.map(m=>m.name)];
+  wrap.innerHTML = names.map(n=>`<button class="pill ${n===moduleFilter?'active':''}" onclick="setModuleFilter('${n}')">${n==='all'?'全部':n}</button>`).join('');
 }
 
-// ─── Official Info BBS Detail ───────────────────────────────────────────────
-function openOfficialDetail(id) {
-  var ev = OFFICIAL.find(function(e){ return e.id === id; });
-  if (!ev) return;
-  var cs = CAT_COLOR[ev.cat] || 'background:#f1f5f9;color:#475569';
-  var c = document.getElementById('of-cat');
-  c.textContent = ev.cat; c.style.cssText = cs + ';font-size:10px;font-weight:800;padding:2px 7px;border-radius:5px;';
-  document.getElementById('of-title').textContent = ev.title;
-  document.getElementById('of-source').textContent = ev.source;
-  document.getElementById('of-area').textContent = ev.area;
-  document.getElementById('of-date').textContent = ev.date;
-  document.getElementById('of-body').textContent = ev.desc;
-  var transUrl = 'https://translate.google.com/translate?sl=en&tl=zh-CN&u=' + encodeURIComponent(ev.url);
-  document.getElementById('of-trans').href = transUrl;
-  document.getElementById('of-raw').href = ev.url;
-  openModal('modal-official');
-}
+function setModuleFilter(n){ moduleFilter=n; renderFilters(); renderFeed(); }
 
-// ─── Classified Post BBS Detail (forum thread) ──────────────────────────────
-var replyStore = {};
-var currentPostId = null;
-function openPostDetail(id) {
-  var ad = CLASSIFIEDS.find(function(a){ return a.id === id; });
-  if (!ad) return;
-  currentPostId = id;
-  document.getElementById('pd-cat').textContent = ad.cat;
-  document.getElementById('pd-price').textContent = '💰 ' + ad.price;
-  document.getElementById('pd-title').textContent = ad.title;
-  document.getElementById('pd-person').textContent = ad.contact.person;
-  document.getElementById('pd-area').textContent = ad.area;
-  document.getElementById('pd-date').textContent = ad.date;
-  document.getElementById('pd-body').textContent = ad.desc;
-  document.getElementById('pd-wechat').textContent = ad.contact.wechat || '无';
-  var ph = document.getElementById('pd-phone');
-  ph.textContent = ad.contact.phone;
-  ph.href = 'tel:' + ad.contact.phone.replace(/-/g,'');
-  renderReplies();
-  openModal('modal-post-detail');
-}
-
-function renderReplies() {
-  var box = document.getElementById('pd-replies');
-  var arr = replyStore[currentPostId] || [];
-  if (arr.length === 0) {
-    box.innerHTML = '<div style="font-size:12px;color:#cbd5e1;padding:6px 0;">暂无留言，来做第一个咨询的人吧～</div>';
-  } else {
-    box.innerHTML = arr.map(function(r){
-      return '<div class="reply"><span class="who">'+r.who+'</span><span class="when">'+r.when+'</span><div style="margin-top:2px;color:#334155;">'+r.text+'</div></div>';
-    }).join('');
-  }
-  document.getElementById('pd-reply-count').textContent = '(' + arr.length + ')';
-}
-
-function addReply() {
-  var inp = document.getElementById('pd-reply-input');
-  var txt = inp.value.trim();
-  if (!txt) return;
-  if (!isLoggedIn) {
-    if (confirm('留言需先完成实名认证，是否前往认证？')) openAccountModal();
-    return;
-  }
-  if (!replyStore[currentPostId]) replyStore[currentPostId] = [];
-  var t = new Date();
-  replyStore[currentPostId].push({ who: userName || '匿名用户', when: t.getHours()+':'+t.getMinutes().toString().padStart(2,'0'), text: txt });
-  inp.value = '';
-  renderReplies();
-}
-
-// ─── Post Ad Modal ──────────────────────────────────────────────────────────
-function openPostModal() {
-  if (!forumUnlocked) {
-    if (confirm('「同城信息发布」论坛将在订阅用户达到 ' + SUB_TARGET + ' 人后开放。
-当前 ' + subCount + ' 人。
-
-是否现在订阅，助力解锁？')) {
-      openSubModal();
-    }
-    return;
-  }
-  if (!isLoggedIn) {
-    if (confirm('发布信息需先完成实名认证。
-是否现在前往注册/认证？')) {
-      openAccountModal();
-    }
-    return;
-  }
-  openModal('modal-post');
-}
-
-function submitAd(e) {
-  e.preventDefault();
-  var cat = document.getElementById('f-cat').value;
-  var city = document.getElementById('f-city').value;
-  var title = document.getElementById('f-title').value;
-  var price = document.getElementById('f-price').value;
-  var area = document.getElementById('f-area').value;
-  var desc = document.getElementById('f-desc').value;
-  var person = document.getElementById('f-person').value;
-  var wechat = document.getElementById('f-wechat').value || '无';
-  var phone = document.getElementById('f-phone').value;
-  var payMethod = document.querySelector('input[name="pay"]:checked').value;
-  var payLabel = payMethod === 'wechat' ? '微信支付' : '信用卡 (Stripe)';
-
-  if (!confirm('【支付确认】\n支付方式：' + payLabel + '\n金额：$5.00/月\n\n点击确定模拟支付成功并发布。')) return;
-
-  var today = new Date();
-  var dateStr = (today.getMonth()+1).toString().padStart(2,'0') + '-' + today.getDate().toString().padStart(2,'0');
-  var newAd = {
-    id: 'u' + Date.now(),
-    cat: cat,
-    date: dateStr,
-    city: city,
-    area: city + '·' + area,
-    title: title,
-    price: price,
-    desc: desc,
-    contact: { person: person, wechat: wechat, phone: phone }
-  };
-  CLASSIFIEDS.unshift(newAd);
-  alert('🎉 发布成功！您的广告已加入同城分类大厅，审核通过后将推送至微信社群。');
-  closeModal('modal-post');
-  document.getElementById('post-form').reset();
-  renderCL();
-  scrollToSection('sec-classifieds');
-}
-
-// ─── Subscription (模块订阅 + 三渠道 + 解锁逻辑) ─────────────────────────────
-var SUB_TARGET = 500;
-var subCount = 386;
-var subChannel = 'sms';
-var forumUnlocked = false;
-
-function openSubModal() { openModal('modal-sub'); }
-
-function pickChannel(el) {
-  document.querySelectorAll('#sub-channels .subch').forEach(function(c){ c.classList.remove('active'); });
-  el.classList.add('active');
-  subChannel = el.getAttribute('data-ch');
-  var inp = document.getElementById('sub-contact');
-  if (subChannel === 'sms') inp.placeholder = '美国手机号，如 917-555-0100';
-  else if (subChannel === 'whatsapp') inp.placeholder = 'WhatsApp 号码（含国家码）';
-  else inp.placeholder = '微信号 WeChat ID';
-}
-
-function submitSub() {
-  var mods = [];
-  document.querySelectorAll('#sub-modules input:checked').forEach(function(c){ mods.push(c.value); });
-  var contact = document.getElementById('sub-contact').value.trim();
-  if (mods.length === 0) { alert('请至少选择一个关心的模块！'); return; }
-  if (!contact) { alert('请填写接收账号！'); return; }
-  var chName = subChannel === 'sms' ? '手机短信' : (subChannel === 'whatsapp' ? 'WhatsApp' : '微信推送');
-  subCount++;
-  updateSubUI();
-  alert('🎉 订阅成功！
-模块：' + mods.join('、') + '
-渠道：' + chName + '
-账号：' + contact + '
-
-我们将每周通过' + chName + '为您推送精选资讯。');
-  closeModal('modal-sub');
-}
-
-function updateSubUI() {
-  var pct = Math.min(100, Math.round(subCount / SUB_TARGET * 100));
-  document.getElementById('sub-count').textContent = subCount;
-  document.getElementById('sub-target').textContent = SUB_TARGET;
-  document.getElementById('sub-progress').style.width = pct + '%';
-  document.getElementById('lock-count').textContent = subCount;
-  document.getElementById('lock-target').textContent = SUB_TARGET;
-  document.getElementById('lock-remain').textContent = Math.max(0, SUB_TARGET - subCount);
-  if (subCount >= SUB_TARGET && !forumUnlocked) {
-    forumUnlocked = true;
-    document.getElementById('cl-lock').style.display = 'none';
+function renderFeed(){
+  const q = document.getElementById('q').value.toLowerCase();
+  const city = document.getElementById('city').value;
+  const data = ITEMS.filter(i => (moduleFilter==='all' || i.module===moduleFilter) && (city==='all'||i.city===city))
+    .filter(i => (`${i.title} ${i.summary} ${i.area} ${i.module}`.toLowerCase().includes(q)));
+  const feed = document.getElementById('feed');
+  feed.innerHTML = data.map(i => `
+    <article class="feed-card">
+      <div class="meta">
+        <span class="tag" style="background:${badgeColor(i.module)}22;color:${badgeColor(i.module)}">${i.module}</span>
+        <span class="date">${i.date}</span>
+      </div>
+      <div class="title">${i.title}</div>
+      <div class="summary">${i.summary}</div>
+      <div class="foot">
+        <span>${i.city} · ${i.area} · 已核验</span>
+        <button class="btn" onclick="openLink('${i.url.replace(/'/g, "&#39;")}')">查看链接</button>
+      </div>
+    </article>
+  `).join('');
+  if(!data.length){
+    feed.innerHTML = `<div class="muted" style="padding:18px;background:#fff;border:1px solid #e5e7eb;border-radius:12px;">没有符合条件的信息，请换关键词或模块。</div>`;
   }
 }
 
-function demoUnlock() {
-  subCount = SUB_TARGET;
-  updateSubUI();
-  alert('🎉 演示：订阅人数已达标，「同城信息发布」论坛已开放！现在可以浏览和发布信息了。');
+function openLink(url){
+  document.getElementById('link-raw').href = url;
+  document.getElementById('link-trans').href = 'https://translate.google.com/translate?sl=en&tl=zh-CN&u=' + encodeURIComponent(url);
+  document.getElementById('link-modal').classList.add('open');
+}
+function closeModal(){ document.getElementById('link-modal').classList.remove('open'); }
+
+function changeLang(lang){
+  if(lang!=='zh') alert('页面主文案多语言版下一步接入，当前先保证信息密度与可读性。');
 }
 
-// ─── Account / Auth ─────────────────────────────────────────────────────────
-function openAccountModal() { openModal('modal-account'); }
-
-function switchAuthTab(tab) {
-  document.getElementById('tab-wechat').className = 'auth-tab' + (tab==='wechat'?' active':'');
-  document.getElementById('tab-phone').className = 'auth-tab' + (tab==='phone'?' active':'');
-  document.getElementById('panel-wechat').style.display = tab==='wechat' ? 'flex' : 'none';
-  document.getElementById('panel-phone').style.display = tab==='phone' ? 'flex' : 'none';
-}
-
-function sendSMS() {
-  var ph = document.getElementById('auth-phone').value;
-  if (!ph) { alert('请先输入手机号！'); return; }
-  alert('验证码已发送至 +1 ' + ph + '
-（模拟验证码：123456）');
-}
-
-function mockWeChatLogin() {
-  isLoggedIn = true;
-  userName = '微信用户_' + Math.floor(Math.random()*9000+1000);
-  document.getElementById('nav-login-btn').textContent = '✅ ' + userName;
-  alert('微信认证成功！您现在可以发布分类信息了。');
-  closeModal('modal-account');
-}
-
-function mockPhoneLogin() {
-  var code = document.getElementById('auth-code').value;
-  if (code !== '123456') { alert('验证码错误，请输入 123456 测试'); return; }
-  isLoggedIn = true;
-  var ph = document.getElementById('auth-phone').value || 'XXXX';
-  userName = '手机用户_' + ph.slice(-4);
-  document.getElementById('nav-login-btn').textContent = '✅ ' + userName;
-  alert('手机认证成功！您现在可以发布分类信息了。');
-  closeModal('modal-account');
-}
-
-// ─── Utility ────────────────────────────────────────────────────────────────
-function openModal(id) { document.getElementById(id).classList.add('open'); }
-function closeModal(id) { document.getElementById(id).classList.remove('open'); }
-function scrollToSection(id) { document.getElementById(id).scrollIntoView({behavior:'smooth', block:'start'}); }
-function doCopy(text) {
-  navigator.clipboard.writeText(text).then(function(){ alert('已复制: ' + text); }, function(){ alert('请手动复制: ' + text); });
-}
-function changeLang(lang) {
-  // Language switching: placeholder for future full i18n
-  if (lang !== 'zh') alert('繁體中文 / English 切換功能即將上線');
-}
-
-// ─── Init ────────────────────────────────────────────────────────────────────
-renderOfficial();
-renderCL();
-updateSubUI();
+renderModules();
+renderSourceMap();
+renderFilters();
+renderFeed();
 </script>
 </body>
 </html>
