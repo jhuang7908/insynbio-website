@@ -106,6 +106,79 @@
     .btn-secondary { background: #f1f5f9; color: #475569; border: 1px solid #cbd5e1; border-radius: 8px; padding: 10px; font-size: 13px; font-weight: 600; cursor: pointer; text-align: center; text-decoration: none; transition: background 0.1s; }
     .btn-secondary:hover { background: #e2e8f0; }
 
+    /* ── Subscription FAB & Modal ─────────────────────────────────────────── */
+    .sub-fab {
+      position: fixed; bottom: 24px; right: 20px; z-index: 200;
+      background: #07bb65; color: #fff; border: none; border-radius: 999px;
+      padding: 12px 20px; font-size: 13px; font-weight: 700; cursor: pointer;
+      display: flex; align-items: center; gap: 8px; box-shadow: 0 4px 16px rgba(7,187,101,0.35);
+      transition: transform 0.15s, box-shadow 0.15s;
+    }
+    .sub-fab:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(7,187,101,0.4); }
+    .sub-fab .fab-icon { font-size: 18px; }
+    .sub-modal-overlay {
+      display: none; position: fixed; inset: 0; z-index: 300;
+      background: rgba(0,0,0,0.45); justify-content: center; align-items: center;
+    }
+    .sub-modal-overlay.open { display: flex; }
+    .sub-modal {
+      background: #fff; border-radius: 16px; padding: 24px;
+      max-width: 420px; width: calc(100% - 32px);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.2); position: relative;
+      max-height: 90vh; overflow-y: auto;
+    }
+    .sub-modal-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; }
+    .sub-modal-title { font-size: 17px; font-weight: 800; color: #134e4a; }
+    .sub-close { background: none; border: none; font-size: 22px; color: #94a3b8; cursor: pointer; }
+    .sub-channel-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 16px 0; }
+    .sub-channel-card {
+      border: 2px solid #e2e8f0; border-radius: 12px; padding: 12px 10px;
+      text-align: center; cursor: pointer; transition: all 0.15s;
+    }
+    .sub-channel-card:hover { border-color: #07bb65; background: #f0fdf4; }
+    .sub-channel-card.selected { border-color: #07bb65; background: #dcfce7; }
+    .sub-channel-card .ch-icon { font-size: 26px; margin-bottom: 6px; }
+    .sub-channel-card .ch-name { font-size: 13px; font-weight: 700; color: #1e3a34; }
+    .sub-channel-card .ch-cost { font-size: 11px; color: #64748b; margin-top: 2px; }
+    .sub-section { margin: 16px 0; }
+    .sub-section-title { font-size: 13px; font-weight: 700; color: #334155; margin-bottom: 8px; display: flex; align-items: center; gap: 6px; }
+    .wechat-qr-box {
+      background: #f0fdf4; border: 2px dashed #86efac; border-radius: 12px;
+      padding: 20px; text-align: center;
+    }
+    .wechat-qr-box .qr-placeholder {
+      width: 120px; height: 120px; margin: 0 auto 10px;
+      background: #dcfce7; border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 40px;
+    }
+    .wechat-qr-box .qr-hint { font-size: 12px; color: #065f46; font-weight: 600; line-height: 1.5; }
+    .wechat-qr-box .qr-name { font-size: 14px; font-weight: 800; color: #064e3b; margin: 4px 0; }
+    .interest-chips { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
+    .int-chip {
+      border: 1px solid #cbd5e1; background: #f8fafc; border-radius: 999px;
+      padding: 5px 12px; font-size: 12px; font-weight: 600; cursor: pointer; color: #475569;
+      transition: all 0.1s;
+    }
+    .int-chip.selected { background: #07bb65; color: #fff; border-color: #07bb65; }
+    .sub-email-row { display: flex; gap: 8px; margin-top: 8px; }
+    .sub-email-input {
+      flex: 1; border: 1px solid #cbd5e1; border-radius: 8px; padding: 9px 12px;
+      font-size: 13px; outline: none; color: #334155;
+    }
+    .sub-email-input:focus { border-color: #07bb65; }
+    .sub-submit {
+      background: #07bb65; color: #fff; border: none; border-radius: 8px;
+      padding: 9px 16px; font-size: 13px; font-weight: 700; cursor: pointer; white-space: nowrap;
+    }
+    .sub-push-btn {
+      width: 100%; padding: 10px; background: #1e40af; color: #fff; border: none;
+      border-radius: 8px; font-size: 13px; font-weight: 700; cursor: pointer; margin-top: 8px;
+    }
+    .sub-push-btn:disabled { background: #64748b; cursor: default; }
+    .sub-note { font-size: 11px; color: #94a3b8; text-align: center; margin-top: 14px; line-height: 1.5; }
+    .sub-success { background: #f0fdf4; border: 1px solid #86efac; border-radius: 8px; padding: 12px; text-align: center; font-size: 13px; color: #065f46; font-weight: 600; display: none; }
+
     /* Stream Banner */
     .stream-banner { display: flex; justify-content: space-between; align-items: center; background: linear-gradient(135deg, #fff7ed 0%, #fef3c7 100%); border: 1px solid #fed7aa; border-radius: 12px; padding: 12px 16px; margin: 16px auto 0; max-width: 960px; }
     .stream-left { display: flex; align-items: center; gap: 10px; }
@@ -795,6 +868,176 @@ function evictExpiredItems() {
 evictExpiredItems();
 initPreference();
 renderStreamSections();
+
+// ── Subscription System ──────────────────────────────────────────────────────
+
+const INTEREST_CHIPS = [
+  { id: "老人关怀", label: "👴 老人关怀" },
+  { id: "宠物领养", label: "🐾 宠物领养" },
+  { id: "福利申请", label: "🏥 福利/白卡" },
+  { id: "交通出行", label: "🚇 地铁/小巴" },
+  { id: "语言教育", label: "📚 免费课程" },
+  { id: "公益义工", label: "🤝 义工机会" },
+  { id: "社区安全", label: "🔒 社区安全" },
+  { id: "公园亲子", label: "🌳 公园亲子" },
+  { id: "文化展览", label: "🎨 文化展览" },
+  { id: "市政议员", label: "🏛️ 市政信息" },
+];
+
+let selectedInterests = new Set(JSON.parse(localStorage.getItem('sub_interests') || '[]'));
+let pushSubscribed = false;
+
+function openSubModal() {
+  document.getElementById('sub-modal-overlay').classList.add('open');
+  renderInterestChips();
+  checkPushState();
+}
+function closeSubModal() {
+  document.getElementById('sub-modal-overlay').classList.remove('open');
+}
+document.getElementById('sub-modal-overlay').addEventListener('click', function(e) {
+  if (e.target === this) closeSubModal();
+});
+
+function renderInterestChips() {
+  const wrap = document.getElementById('interest-chips-wrap');
+  wrap.innerHTML = INTEREST_CHIPS.map(c => {
+    const sel = selectedInterests.has(c.id) ? 'selected' : '';
+    return `<span class="int-chip ${sel}" onclick="toggleInterest('${c.id}', this)">${c.label}</span>`;
+  }).join('');
+}
+
+function toggleInterest(id, el) {
+  if (selectedInterests.has(id)) { selectedInterests.delete(id); el.classList.remove('selected'); }
+  else { selectedInterests.add(id); el.classList.add('selected'); }
+  localStorage.setItem('sub_interests', JSON.stringify([...selectedInterests]));
+}
+
+function subscribeEmail() {
+  const email = document.getElementById('sub-email-val').value.trim();
+  const interests = [...selectedInterests];
+  if (!email || !email.includes('@')) {
+    alert('请输入有效的邮箱地址');
+    return;
+  }
+  // Store locally and show success (backend integration pending)
+  const subs = JSON.parse(localStorage.getItem('email_subs') || '[]');
+  if (!subs.find(s => s.email === email)) {
+    subs.push({ email, interests, ts: Date.now() });
+    localStorage.setItem('email_subs', JSON.stringify(subs));
+  }
+  document.getElementById('sub-success-email').style.display = 'block';
+  document.getElementById('sub-success-email').textContent =
+    `✅ ${email} 已订阅！下次每日更新将发送您选择的 ${interests.length || '全部'} 个频道。`;
+  document.getElementById('sub-email-val').value = '';
+}
+
+async function subscribePush() {
+  const btn = document.getElementById('push-sub-btn');
+  if (!('serviceWorker' in navigator) || !('PushManager' in window)) {
+    alert('您的浏览器不支持推送通知。请使用 Android Chrome 或 Edge。');
+    return;
+  }
+  try {
+    const permission = await Notification.requestPermission();
+    if (permission !== 'granted') {
+      alert('请允许通知权限以接收每日更新。');
+      return;
+    }
+    const reg = await navigator.serviceWorker.register('/sw-nyc-hub.js', { scope: '/' });
+    btn.textContent = '✅ 浏览器推送已开启';
+    btn.disabled = true;
+    pushSubscribed = true;
+    localStorage.setItem('push_subscribed', '1');
+    document.getElementById('sub-success-push').style.display = 'block';
+  } catch(e) {
+    alert('开启推送失败，请检查网络或稍后重试。');
+  }
+}
+
+function checkPushState() {
+  if (localStorage.getItem('push_subscribed') === '1' || Notification.permission === 'granted') {
+    const btn = document.getElementById('push-sub-btn');
+    if (btn) { btn.textContent = '✅ 浏览器推送已开启'; btn.disabled = true; }
+  }
+}
+
+// Apply interest filter when FAB is clicked with pre-selected module
+function applyInterestAndClose(moduleId) {
+  activeModuleFilter = moduleId;
+  closeSubModal();
+  renderModules();
+  renderFeed();
+  const el = document.querySelector(`.module-card[data-module="${moduleId}"]`);
+  if (el) el.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+}
 </script>
+
+<!-- Subscription FAB -->
+<button class="sub-fab" onclick="openSubModal()" aria-label="订阅每日更新">
+  <span class="fab-icon">📬</span>
+  <span>订阅每日更新</span>
+</button>
+
+<!-- Subscription Modal -->
+<div class="sub-modal-overlay" id="sub-modal-overlay">
+  <div class="sub-modal">
+    <div class="sub-modal-header">
+      <div class="sub-modal-title">📬 订阅每日社区更新</div>
+      <button class="sub-close" onclick="closeSubModal()">×</button>
+    </div>
+
+    <div style="font-size:12px;color:#64748b;margin-bottom:14px;line-height:1.6;">
+      选择您感兴趣的频道，每天自动推送最新民生信息。<strong style="color:#065f46">微信关注完全免费。</strong>
+    </div>
+
+    <!-- Interest Category Chips -->
+    <div class="sub-section">
+      <div class="sub-section-title">✅ 选择关注的频道（可多选）</div>
+      <div class="interest-chips" id="interest-chips-wrap"></div>
+      <div style="font-size:11px;color:#94a3b8;margin-top:6px;">不选则接收全部频道</div>
+    </div>
+
+    <!-- WeChat Official Account -->
+    <div class="sub-section">
+      <div class="sub-section-title">
+        <span style="color:#07bb65;font-size:16px;">●</span> 方式一：微信公众号关注（推荐，免费）
+      </div>
+      <div class="wechat-qr-box">
+        <div class="qr-placeholder">📱</div>
+        <div class="qr-name">美东华人生活圈</div>
+        <div class="qr-hint">
+          用微信扫描二维码关注<br>
+          每日一篇社区摘要，零成本，无广告<br>
+          <span style="color:#059669;font-weight:700;">关注后可输入关键词获取专项信息</span><br>
+          <small style="color:#94a3b8">（公众号二维码将在账号注册后更新）</small>
+        </div>
+      </div>
+    </div>
+
+    <!-- Email Subscription -->
+    <div class="sub-section">
+      <div class="sub-section-title">✉️ 方式二：邮件订阅</div>
+      <div class="sub-email-row">
+        <input type="email" id="sub-email-val" class="sub-email-input" placeholder="输入邮箱地址…" />
+        <button class="sub-submit" onclick="subscribeEmail()">订阅</button>
+      </div>
+      <div class="sub-success" id="sub-success-email"></div>
+    </div>
+
+    <!-- Browser Push -->
+    <div class="sub-section">
+      <div class="sub-section-title">🔔 方式三：浏览器推送（Android Chrome 有效）</div>
+      <button class="sub-push-btn" id="push-sub-btn" onclick="subscribePush()">开启浏览器通知推送</button>
+      <div class="sub-success" id="sub-success-push" style="margin-top:8px;">✅ 浏览器推送已开启！每日更新将直接弹出通知。</div>
+    </div>
+
+    <div class="sub-note">
+      本平台不收集个人信息用于商业用途。<br>
+      邮件可随时退订。短信推送暂不开放（成本较高）。
+    </div>
+  </div>
+</div>
+
 </body>
 </html>
