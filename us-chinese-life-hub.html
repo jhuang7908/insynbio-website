@@ -124,6 +124,27 @@ body { margin:0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Rob
   </div>
 </div>
 
+<!-- ═══ 三阶段路线图 ═══ -->
+<div class="wrap" style="margin-top:12px;">
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;">
+    <div style="background:#ecfdf5;border:1px solid #a7f3d0;border-radius:11px;padding:10px;">
+      <div style="font-size:11px;font-weight:900;color:#047857;">✅ 第一阶段 · 进行中</div>
+      <div style="font-size:11px;font-weight:800;color:#0f172a;margin-top:3px;">免费公共资讯</div>
+      <div style="font-size:10px;color:#64748b;margin-top:2px;line-height:1.5;">聚合官方可靠来源，免费公告，无广告。</div>
+    </div>
+    <div style="background:#fff7ed;border:1px solid #fed7aa;border-radius:11px;padding:10px;">
+      <div style="font-size:11px;font-weight:900;color:#c2410c;">🔔 第二阶段 · 开放中</div>
+      <div style="font-size:11px;font-weight:800;color:#0f172a;margin-top:3px;">订阅推送 + 平台代发广告</div>
+      <div style="font-size:10px;color:#64748b;margin-top:2px;line-height:1.5;">短信/WhatsApp/微信推送；广告由平台统一代发。</div>
+    </div>
+    <div style="background:#f8fafc;border:1px solid #e2e8f0;border-radius:11px;padding:10px;">
+      <div style="font-size:11px;font-weight:900;color:#64748b;">🔒 第三阶段 · 待解锁</div>
+      <div style="font-size:11px;font-weight:800;color:#0f172a;margin-top:3px;">个人缴费论坛发布</div>
+      <div style="font-size:10px;color:#64748b;margin-top:2px;line-height:1.5;">订阅达标后开放，个人付费自助发布信息。</div>
+    </div>
+  </div>
+</div>
+
 <!-- ═══ SECTION 1: 官方公共信息（方框卡片网格）═══ -->
 <div class="wrap" id="sec-official" style="margin-top:14px;">
   <div class="sec-hd">
@@ -165,8 +186,8 @@ body { margin:0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Rob
   <!-- LOCK overlay: 订阅人数未达标时锁定 -->
   <div id="cl-lock" style="position:absolute;inset:34px 0 0;background:rgba(248,250,252,.92);backdrop-filter:blur(3px);border-radius:14px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:24px;border:2px dashed #cbd5e1;">
     <div style="font-size:40px;">🔒</div>
-    <div style="font-size:16px;font-weight:900;color:#0f172a;margin-top:8px;">同城信息发布论坛 · 即将开放</div>
-    <div style="font-size:12px;color:#64748b;margin-top:6px;max-width:380px;line-height:1.7;">为保证社区质量与真实度，论坛将在订阅用户达到 <strong id="lock-target">500</strong> 人后开放发布与浏览。<br>当前 <strong id="lock-count" style="color:#ea580c;">386</strong> 人，仅差 <strong id="lock-remain" style="color:#ea580c;">114</strong> 人！</div>
+    <div style="font-size:16px;font-weight:900;color:#0f172a;margin-top:8px;">第三阶段 · 个人缴费论坛（即将开放）</div>
+    <div style="font-size:12px;color:#64748b;margin-top:6px;max-width:400px;line-height:1.7;">论坛允许个人付费后自助发布租房、招聘、二手、生意转让等信息。为保证质量与真实度，将在订阅用户达到 <strong id="lock-target">500</strong> 人后开放。<br>当前 <strong id="lock-count" style="color:#ea580c;">386</strong> 人，仅差 <strong id="lock-remain" style="color:#ea580c;">114</strong> 人！</div>
     <button onclick="openSubModal()" style="margin-top:14px;background:#ea580c;border:none;color:#fff;font-size:13px;font-weight:800;padding:10px 22px;border-radius:10px;cursor:pointer;">🔔 立即订阅，助力解锁</button>
     <button onclick="demoUnlock()" style="margin-top:8px;background:none;border:none;color:#94a3b8;font-size:11px;text-decoration:underline;cursor:pointer;">（演示：模拟达标解锁预览）</button>
   </div>
@@ -378,8 +399,8 @@ body { margin:0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Rob
 
     <!-- 商业推送说明 -->
     <div style="margin-top:14px;background:#f8fafc;border:1px solid #e2e8f0;border-radius:10px;padding:10px 12px;">
-      <div style="font-size:11px;font-weight:800;color:#475569;margin-bottom:4px;">💼 商家须知（订阅用户达标后开放）</div>
-      <div style="font-size:11px;color:#94a3b8;line-height:1.7;">当订阅用户形成规模后，商家可付费向特定模块/城市的订阅用户进行精准广告推送（短信 / WhatsApp / 微信），并在「同城信息发布」论坛置顶展示。</div>
+      <div style="font-size:11px;font-weight:800;color:#475569;margin-bottom:4px;">💼 商家须知（第二阶段 · 平台代发）</div>
+      <div style="font-size:11px;color:#94a3b8;line-height:1.7;">本阶段广告一律由平台统一代发：商家提交内容，经审核后由平台向特定模块/城市的订阅用户精准推送（短信 / WhatsApp / 微信），不开放商家自助发布。个人自助缴费发布将在第三阶段论坛开放。合作请联系 contact@insynbio.com。</div>
     </div>
   </div>
 </div>
