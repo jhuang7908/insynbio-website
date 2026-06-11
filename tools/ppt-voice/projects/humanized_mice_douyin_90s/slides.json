@@ -1,0 +1,36 @@
+{
+  "title": "人源化小鼠肿瘤免疫 (1.5分抖音)",
+  "slide_count": 6,
+  "slides": [
+    {
+      "title": "Slide 1",
+      "script": "哈喽大家下午好！新药研发九死一生，怎么跨越临床前研发的死亡之谷？今天带大家看一辆肿瘤免疫研发的黄金战车——人源化小鼠模型！",
+      "audio": "audio/slide_01.mp3"
+    },
+    {
+      "title": "Slide 2",
+      "script": "小鼠模型有两大门派：一是Hu-CD34⁺造血干细胞移植，重建多谱系免疫，适合长期药效；二是Hu-PBMC外周血移植，两周内快速拉起大量T细胞，适合短期爆发评估！",
+      "audio": "audio/slide_02.mp3"
+    },
+    {
+      "title": "Slide 3",
+      "script": "注意！最新研究敲响警钟：过度表达人类细胞因子的明星小鼠SGM3，在十到十七周伴随着高达百分之三十九的致命骨髓毒性！实验生存率骤降至百分之六十一！选择模型必须谨慎！",
+      "audio": "audio/slide_03.mp3"
+    },
+    {
+      "title": "Slide 4",
+      "script": "药效评估显示，PD-1单抗在Hu-CD34+模型中表现异质性极大；而EpCAM-CD3双特异性抗体绕过APC瓶颈，展现出降维打击！在九只小鼠中实现了三只的肿瘤体积归零！",
+      "audio": "audio/slide_04.mp3"
+    },
+    {
+      "title": "Slide 5",
+      "script": "未来改进有两大方向：一是MHC一二类双敲除，彻底消除GvHD毒性并将实验窗口延长到二十周以上；二是自体免疫Avatar，以患者自身PBMC与PDX共移植，开启精准药研新纪元！",
+      "audio": "audio/slide_05.mp3"
+    },
+    {
+      "title": "Slide 6",
+      "script": "本报告所有数据均来自国际顶级同行评审期刊。三篇核心文献已附带PubMed ID和DOI，可支持第三方机构深度审计与精确反向检索。感谢收看！",
+      "audio": "audio/slide_06.mp3"
+    }
+  ]
+}

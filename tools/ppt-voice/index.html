@@ -2,24 +2,432 @@
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#0f1419" />
   <title>PPT 语音播放器</title>
   <style>
     :root {
       --bg: #0f1419; --panel: #1a2332; --border: #2d3a4f; --text: #e8edf4;
       --muted: #8b9cb3; --accent: #3b82f6; --ok: #22c55e; --warn: #f59e0b;
       --danger: #ef4444; --speaking: #8b5cf6;
+      
+      --panel-caption-border: rgba(139, 92, 246, 0.35);
+      --panel-caption-bg: rgba(30, 27, 75, 0.35);
+      --panel-ask-border: rgba(59, 130, 246, 0.45);
+      --panel-ask-bg: rgba(15, 23, 42, 0.6);
+      --panel-question-border: rgba(34, 197, 94, 0.35);
+      --panel-question-bg: rgba(10, 32, 26, 0.45);
+      --panel-answer-border: rgba(59, 130, 246, 0.35);
+      --panel-answer-bg: rgba(16, 30, 52, 0.45);
+      
+      --text-accent: #93c5fd;
+      --text-reply: #bfdbfe;
+      --q-label-color: #86efac;
+      --live-caption-color: #f8fafc;
+      --live-caption-bg: rgba(0,0,0,0.28);
+      --qa-log-bg: rgba(0,0,0,0.22);
+      --qa-log-border: rgba(148, 163, 184, 0.2);
+    }
+    html[data-theme="beige"] {
+      --bg: #fdf6e3; --panel: #eee8d5; --border: #d5cdb3; --text: #073642;
+      --muted: #586e75; --accent: #b58900; --ok: #627400; --warn: #b58900;
+      --danger: #dc322f; --speaking: #6c71c4;
+
+      --panel-caption-border: rgba(108, 113, 196, 0.22);
+      --panel-caption-bg: rgba(238, 232, 213, 0.95);
+      --panel-ask-border: rgba(181, 137, 0, 0.22);
+      --panel-ask-bg: rgba(253, 246, 227, 0.95);
+      --panel-question-border: rgba(98, 116, 0, 0.22);
+      --panel-question-bg: rgba(245, 242, 220, 0.95);
+      --panel-answer-border: rgba(181, 137, 0, 0.22);
+      --panel-answer-bg: rgba(253, 246, 227, 0.95);
+
+      --text-accent: #b58900;
+      --text-reply: #073642;
+      --q-label-color: #627400;
+      --live-caption-color: #073642;
+      --live-caption-bg: rgba(238, 232, 213, 0.85);
+      --qa-log-bg: rgba(253, 246, 227, 0.95);
+      --qa-log-border: rgba(213, 205, 179, 0.25);
+    }
+    html[data-theme="ivory"] {
+      --bg: #f2f2f0; --panel: #fcfcfb; --border: #cccccc; --text: #1a1a19;
+      --muted: #5a5a58; --accent: #1e3a8a; --ok: #15803d; --warn: #b45309;
+      --danger: #b91c1c; --speaking: #6d28d9;
+      
+      --panel-caption-border: rgba(109, 40, 217, 0.22);
+      --panel-caption-bg: rgba(245, 243, 255, 0.95);
+      --panel-ask-border: rgba(30, 64, 175, 0.22);
+      --panel-ask-bg: rgba(241, 245, 249, 0.95);
+      --panel-question-border: rgba(21, 128, 61, 0.22);
+      --panel-question-bg: rgba(240, 253, 244, 0.95);
+      --panel-answer-border: rgba(30, 64, 175, 0.22);
+      --panel-answer-bg: rgba(239, 246, 255, 0.95);
+      
+      --text-accent: #1e3a8a;
+      --text-reply: #1e3a8a;
+      --q-label-color: #15803d;
+      --live-caption-color: #1a1a19;
+      --live-caption-bg: rgba(241, 245, 249, 0.85);
+      --qa-log-bg: rgba(248, 250, 252, 0.95);
+      --qa-log-border: rgba(148, 163, 184, 0.25);
+    }
+    html[data-theme="gruvbox"] {
+      --bg: #282828; --panel: #3c3836; --border: #665c54; --text: #ebdbb2;
+      --muted: #a89984; --accent: #fabd2f; --ok: #b8bb26; --warn: #fabd2f;
+      --danger: #fb4934; --speaking: #d3869b;
+      
+      --panel-caption-border: rgba(211, 134, 155, 0.25);
+      --panel-caption-bg: rgba(60, 56, 54, 0.95);
+      --panel-ask-border: rgba(250, 189, 47, 0.25);
+      --panel-ask-bg: rgba(40, 40, 40, 0.95);
+      --panel-question-border: rgba(184, 187, 38, 0.25);
+      --panel-question-bg: rgba(50, 45, 41, 0.95);
+      --panel-answer-border: rgba(250, 189, 47, 0.25);
+      --panel-answer-bg: rgba(40, 40, 40, 0.95);
+      
+      --text-accent: #fabd2f;
+      --text-reply: #ebdbb2;
+      --q-label-color: #b8bb26;
+      --live-caption-color: #ebdbb2;
+      --live-caption-bg: rgba(60, 56, 54, 0.85);
+      --qa-log-bg: rgba(40, 40, 40, 0.95);
+      --qa-log-border: rgba(102, 92, 84, 0.25);
     }
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    body { font-family: "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; padding: 16px; }
-    .layout { display: grid; grid-template-columns: 1fr 380px; gap: 16px; max-width: 1280px; margin: 0 auto; }
-    @media (max-width: 960px) { .layout { grid-template-columns: 1fr; } }
-    h1 { font-size: 1.15rem; font-weight: 600; }
-    .sub { color: var(--muted); font-size: 0.82rem; margin: 4px 0 12px; }
-    .slide-stage { background: #000; border: 1px solid var(--border); border-radius: 10px; overflow: hidden; aspect-ratio: 16 / 9; display: flex; align-items: center; justify-content: center; }
+    body {
+      font-family: "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+      background: var(--bg); color: var(--text);
+      height: 100dvh; overflow: hidden; margin: 0;
+    }
+    .app {
+      display: flex; flex-direction: column; height: 100dvh; max-width: 1400px;
+      margin: 0 auto; padding: 6px 12px; gap: 6px; min-height: 0;
+    }
+    .app-header {
+      flex-shrink: 0; display: flex; align-items: center; justify-content: space-between;
+      gap: 12px; padding: 6px 0; border-bottom: 1px solid var(--border);
+      margin-bottom: 4px; flex-wrap: wrap;
+    }
+    .header-left { display: flex; flex-direction: column; gap: 2px; }
+    .header-right { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+    .header-checks { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+    .app-header h1 { margin: 0; font-size: 1.15rem; font-weight: 700; color: var(--text); }
+    .app-header .sub { margin: 0; font-size: 0.82rem; color: var(--muted); }
+    .main-area {
+      flex: 1; min-height: 0;
+      display: flex; gap: 0; overflow: hidden;
+    }
+    .stage-column { flex: 1; min-width: 0; display: flex; flex-direction: column; min-height: 0; height: 100%; padding-right: 10px; }
+    .qa-panel {
+      width: 440px; min-width: 280px; max-width: 60%;
+      min-height: 0; overflow: hidden; display: flex; flex-direction: column;
+      gap: 8px; padding-left: 10px; padding-right: 2px; flex-shrink: 0;
+    }
+    .resize-handle {
+      width: 8px;
+      cursor: col-resize;
+      background: transparent;
+      align-self: stretch;
+      flex-shrink: 0;
+      position: relative;
+      transition: background 0.15s;
+      z-index: 100;
+      margin: 0 -4px;
+    }
+    .resize-handle:hover, .resize-handle.dragging {
+      background: rgba(59, 130, 246, 0.15);
+    }
+    .resize-handle::after {
+      content: "";
+      position: absolute;
+      left: 3px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 2px;
+      height: 30px;
+      background: var(--border);
+      border-radius: 1px;
+      transition: background 0.15s, height 0.15s;
+    }
+    .resize-handle:hover::after, .resize-handle.dragging::after {
+      background: var(--accent);
+      height: 44px;
+    }
+    .qa-stack {
+      flex: 1; min-height: 0;
+      display: grid;
+      grid-template-rows: 1.2fr 0.8fr 1fr 1.2fr;
+      gap: 8px;
+    }
+    .bottom-bar {
+      flex-shrink: 0; display: flex; flex-direction: column; gap: 6px;
+      padding-top: 6px; border-top: 1px solid var(--border);
+      padding-bottom: env(safe-area-inset-bottom); background: var(--bg);
+    }
+    .bottom-row1 { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+    .bottom-row2 { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; }
+    .bottom-bar .status-bar { background: transparent; border: none; padding: 0; gap: 8px; }
+    .bottom-bar .status-text { font-size: 0.8rem; }
+    .bottom-bar .status-text small { display: inline; margin: 0 0 0 6px; }
+    .bottom-row1 .slide-num { font-size: 0.82rem; color: var(--muted); white-space: nowrap; padding: 0 4px; flex: none; }
+    .slide-controls {
+      flex-shrink: 0; display: flex; flex-direction: column; gap: 6px;
+      margin-top: 6px; padding-top: 8px; border-top: 1px solid var(--border);
+    }
+    .ctrl-transport {
+      display: flex; align-items: center; gap: 4px; width: 100%; flex-wrap: nowrap;
+    }
+    .ctrl-transport .btn,
+    .ctrl-transport .ptt-btn,
+    .ctrl-transport select,
+    .transport-nav {
+      height: 32px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      border-radius: 6px;
+      border: 1px solid var(--border);
+      background: var(--panel);
+      color: var(--text);
+      box-sizing: border-box;
+      transition: border-color 0.12s, background 0.12s;
+    }
+    .ctrl-transport .btn,
+    .ctrl-transport .ptt-btn,
+    .ctrl-transport select {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+      padding: 0 8px;
+      cursor: pointer;
+      text-decoration: none;
+      max-width: 140px;
+    }
+    .ctrl-transport .btn:hover,
+    .ctrl-transport .ptt-btn:hover,
+    .ctrl-transport select:hover {
+      border-color: var(--accent);
+      background: rgba(255, 255, 255, 0.02);
+    }
+    .ctrl-transport .btn:disabled {
+      opacity: 0.4; cursor: not-allowed;
+    }
+    .transport-nav {
+      display: inline-flex; align-items: center; gap: 2px; padding: 0 4px; flex-shrink: 0;
+    }
+    .transport-nav .nav-btn {
+      height: 26px; width: 26px; display: inline-flex; align-items: center; justify-content: center;
+      font-size: 1rem; border: none; background: transparent; font-weight: 700; color: var(--text);
+      cursor: pointer; border-radius: 4px; transition: background 0.12s;
+    }
+    .transport-nav .nav-btn:hover { background: rgba(255,255,255,0.08); }
+    .transport-nav .slide-num { min-width: 40px; text-align: center; font-weight: 600; font-size: 0.82rem; color: var(--text); white-space: nowrap; }
+
+    .ctrl-transport .ptt-btn {
+      width: auto;
+      flex-shrink: 0;
+      margin-top: 0;
+      background: var(--panel);
+      color: var(--text);
+      box-shadow: none;
+      transform: none;
+      flex-direction: row;
+      align-items: center;
+      gap: 4px;
+      max-width: none;
+    }
+    .ctrl-transport .ptt-icon { font-size: 0.9rem; }
+    .ctrl-transport .ptt-label { font-size: 0.82rem; font-weight: 600; letter-spacing: 0; }
+    .ctrl-transport .ptt-hint { display: none; }
+    .ctrl-transport .ptt-ring { display: none; }
+    .ctrl-transport .ptt-btn.holding,
+    .ctrl-transport .ptt-btn:active {
+      background: rgba(59, 130, 246, 0.2);
+      border-color: var(--accent);
+      transform: none;
+      box-shadow: none;
+    }
+    .ctrl-transport select.project-select {
+      appearance: none;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      padding-right: 24px;
+      max-width: 140px;
+      text-overflow: ellipsis;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%238b9cb3'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2.5' d='M19 9l-7 7-7-7'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 8px center;
+      background-size: 12px;
+    }
+    .ctrl-transport .status-inline {
+      display: inline-flex; align-items: center; gap: 6px; font-size: 0.8rem;
+      color: var(--muted); white-space: nowrap; flex: none; padding: 0 4px;
+    }
+    .opt-sep { width: 1px; align-self: stretch; min-height: 22px; background: var(--border); margin: 0 2px; }
+
+    /* console-style theme switcher button */
+    .theme-toggle-btn {
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 0 10px; font-size: 0.82rem; font-weight: 600;
+      background: var(--panel); border: 1px solid var(--border);
+      color: var(--text); border-radius: 8px; cursor: pointer;
+      transition: border-color 0.12s, background 0.12s, transform 0.12s;
+      height: 32px; box-sizing: border-box;
+    }
+    .theme-toggle-btn:hover {
+      border-color: var(--accent);
+      background: rgba(59, 130, 246, 0.08);
+      transform: translateY(-1px);
+    }
+    .theme-toggle-btn:active {
+      transform: translateY(0);
+    }
+    .header-selectors { display: flex; align-items: center; gap: 8px; }
+    .header-select-label {
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 0 10px; font-size: 0.82rem; font-weight: 600;
+      background: var(--panel); border: 1px solid var(--border);
+      color: var(--text); border-radius: 8px; cursor: pointer;
+      height: 32px; box-sizing: border-box;
+    }
+    .header-select-label select {
+      background: transparent; border: none; color: var(--text);
+      font-size: 0.82rem; font-weight: 600; cursor: pointer; outline: none;
+      padding: 0; margin: 0; max-width: 130px;
+    }
+    .header-checks .opt-check {
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 0 10px; font-size: 0.82rem; font-weight: 600;
+      background: var(--panel); border: 1px solid var(--border);
+      color: var(--text); border-radius: 8px; cursor: pointer;
+      height: 32px; box-sizing: border-box;
+      user-select: none;
+    }
+    .header-checks .opt-check input {
+      margin: 0; cursor: pointer; width: 14px; height: 14px;
+    }
+
+    .ctrl-hint { color: var(--muted); font-size: 0.74rem; line-height: 1.4; }
+    @media (max-width: 960px) {
+      body { overflow-y: auto; height: auto; }
+      .app { height: auto; min-height: 100dvh; overflow: visible; padding: 8px 10px 12px; gap: 12px; }
+      .main-area { display: flex; flex-direction: column; overflow: visible; flex: none; gap: 12px; }
+      .stage-column { height: auto; padding-right: 0; }
+      .slide-frame { flex: none; min-height: unset; width: 100%; }
+      .slide-stage { max-height: none; border-radius: 8px; width: 100%; aspect-ratio: 16 / 9; }
+      .slide-caption { display: none !important; }
+      .qa-panel { overflow: visible; max-height: none; width: 100% !important; max-width: 100% !important; padding-left: 0; padding-right: 0; }
+      .qa-stack { display: flex; flex-direction: column; gap: 12px; }
+      .app-header { flex-direction: column; align-items: flex-start; gap: 8px; border-bottom: none; margin-bottom: 0; }
+      .header-right { width: 100%; justify-content: flex-start; gap: 8px; flex-wrap: wrap; }
+      .header-checks { gap: 6px; width: 100%; justify-content: flex-start; }
+      .header-checks .opt-check { flex: 1; min-width: 70px; justify-content: center; font-size: 0.76rem; padding: 0 6px; }
+      .ctrl-transport { flex-wrap: wrap; gap: 8px; justify-content: space-between; }
+      .transport-nav { flex: none; width: 100%; justify-content: center; order: -1; background: var(--panel-caption-bg); border-color: var(--panel-caption-border); }
+      .ctrl-transport .btn, .ctrl-transport .ptt-btn, .ctrl-transport select { flex: 1; min-width: 60px; max-width: 140px; height: 38px; font-size: 0.82rem; }
+      .ctrl-transport select.project-select { flex-basis: auto; max-width: 150px; }
+      .ctrl-transport .btn.primary { background: #2563eb; border-color: #2563eb; color: #fff; font-weight: 700; box-shadow: 0 4px 12px rgba(37, 99, 235, 0.25); }
+      .ctrl-transport #btnSpeak { background: var(--panel-caption-bg); border-color: var(--panel-caption-border); font-weight: 600; }
+      .ctrl-transport #btnPtt { background: linear-gradient(135deg, #2563eb, #7c3aed); border: none; color: #fff; font-weight: 700; box-shadow: 0 4px 12px rgba(37, 99, 235, 0.25); }
+      .ctrl-transport .status-inline { flex: 1; justify-content: flex-end; }
+      .presenter { width: 48px; }
+      .doc-svg { width: 48px; height: 56px; }
+      .highlight-spot { width: 18px; height: 18px; }
+      h1 { font-size: 1.1rem; }
+      .sub { font-size: 0.76rem; margin-bottom: 4px; }
+      .hint { display: none; }
+      .slide-title { font-size: 0.78rem; margin-top: 4px; }
+      .slide-nav button, .btn { min-height: 38px; font-size: 0.82rem; }
+      .faq-list { grid-template-columns: 1fr; }
+      .faq-list .faq-chip:last-child:nth-child(odd) { grid-column: span 1; }
+      .faq-chip { min-height: 44px; padding: 10px 12px; }
+      .ask-row textarea { font-size: 16px; padding: 12px; min-height: 88px; }
+      .ask-actions { width: 100px; }
+      .ask-actions .btn, .ask-actions .side-ptt-btn { min-height: 40px; padding: 10px 12px; }
+      .live-caption { font-size: 0.88rem; min-height: 72px; max-height: 140px; }
+      .qa-log { max-height: 160px; }
+      .resize-handle { display: none !important; }
+    }
+    h1 { font-size: 1.15rem; font-weight: 600; flex-shrink: 0; }
+    .sub { color: var(--muted); font-size: 0.82rem; margin: 4px 0 8px; flex-shrink: 0; }
+    .stage-column { display: flex; flex-direction: column; min-height: 0; height: 100%; }
+    .slide-frame { flex: 1; min-height: 0; display: flex; align-items: center; justify-content: center; }
+    .slide-stage {
+      background: #000; border: 1px solid var(--border); border-radius: 10px;
+      overflow: hidden; aspect-ratio: 16 / 9;
+      width: 100%; max-width: 100%; max-height: 100%;
+      display: flex; align-items: center; justify-content: center; position: relative;
+    }
     .slide-stage img { width: 100%; height: 100%; object-fit: contain; }
-    .slide-title { margin-top: 10px; font-size: 0.85rem; color: var(--muted); line-height: 1.4; }
-    .status-bar { display: flex; align-items: center; gap: 10px; padding: 10px 14px; background: var(--panel); border: 1px solid var(--border); border-radius: 10px; margin-bottom: 12px; }
+    .slide-caption {
+      display: none !important; /* Hide globally as requested */
+      position: absolute; left: 0; right: 0; bottom: 0; z-index: 2;
+      padding: 10px 14px; background: linear-gradient(transparent, rgba(0,0,0,0.82) 28%);
+      color: #f8fafc; font-size: clamp(0.78rem, 2.2vw, 0.92rem); line-height: 1.45;
+      max-height: 32%; overflow-y: auto; pointer-events: none;
+    }
+    .slide-caption[hidden] { display: none; }
+    .highlight-spot {
+      position: absolute; z-index: 2; width: 22px; height: 22px;
+      border: 2px solid rgba(250, 204, 21, 0.9); border-radius: 50%;
+      box-shadow: 0 0 0 3px rgba(250, 204, 21, 0.16), 0 0 10px rgba(250, 204, 21, 0.4);
+      transform: translate(-50%, -50%); pointer-events: none;
+      transition: left 0.55s ease, top 0.55s ease;
+      animation: highlight-pulse 0.85s ease-in-out infinite;
+    }
+    .highlight-spot[hidden] { display: none; }
+    .highlight-spot::after {
+      content: ""; position: absolute; inset: 30%;
+      background: #fde047; border-radius: 50%;
+    }
+    @keyframes highlight-pulse {
+      0%, 100% { box-shadow: 0 0 0 3px rgba(250, 204, 21, 0.16), 0 0 10px rgba(250, 204, 21, 0.4); }
+      50% { box-shadow: 0 0 0 5px rgba(250, 204, 21, 0.26), 0 0 15px rgba(250, 204, 21, 0.5); transform: translate(-50%, -50%) scale(1.08); }
+    }
+    
+    .doc-svg { display: block; width: 80px; height: 94px; overflow: visible; }
+    .doc-svg .arm-group {
+      transform-origin: 76px 96px;
+      transform: rotate(var(--arm-rot, -55deg));
+      transition: transform 0.55s cubic-bezier(0.34, 1.2, 0.64, 1);
+    }
+    .presenter.speaking .doc-svg .mouth { animation: doc-talk-svg 0.28s ease-in-out infinite alternate; }
+    .presenter.speaking .doc-svg .arm-group { animation: doc-point-sway-svg 2.6s ease-in-out infinite; }
+    .presenter.speaking { animation: doc-bob 0.6s ease-in-out infinite; }
+    .presenter.listening .doc-svg .head-group { animation: doc-tilt-svg 1.3s ease-in-out infinite; }
+    .presenter.thinking .doc-svg .head-group { animation: doc-think-svg 0.95s ease-in-out infinite; }
+    @keyframes doc-talk-svg { from { ry: 2; } to { ry: 5; } }
+    @keyframes doc-tilt-svg { 0%, 100% { transform: rotate(0deg); } 50% { transform: rotate(-4deg); } }
+    @keyframes doc-think-svg { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-2px); } }
+    @keyframes doc-point-sway-svg {
+      0%, 100% { transform: rotate(var(--arm-rot, -55deg)); }
+      50% { transform: rotate(calc(var(--arm-rot, -55deg) - 8deg)); }
+    }
+    .presenter {
+      --arm-rot: -55deg;
+      position: absolute; right: 10px; bottom: 10px; z-index: 5;
+      display: flex; flex-direction: column; align-items: center; gap: 3px;
+      pointer-events: none;
+      filter: drop-shadow(0 2px 8px rgba(0,0,0,.5));
+    }
+    .presenter-badge {
+      font-size: 0.68rem; color: #fef3c7; background: rgba(30, 58, 95, 0.82);
+      padding: 3px 10px; border-radius: 999px; white-space: nowrap;
+      border: 1px solid rgba(251, 191, 36, 0.35);
+    }
+    @keyframes doc-bob { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-3px); } }
+    .qa-banner {
+      display: none; align-items: center; justify-content: space-between; gap: 10px;
+      padding: 10px 12px; background: rgba(34, 197, 94, 0.12);
+      border: 1px solid rgba(34, 197, 94, 0.35); border-radius: 10px;
+      font-size: 0.82rem; color: #bbf7d0;
+    }
+    .qa-banner.active { display: flex; }
+    .qa-banner strong { color: #4ade80; font-size: 1.05rem; min-width: 2ch; text-align: center; }
+    .qa-banner small { color: #86efac; font-size: 0.72rem; display: block; margin-top: 2px; }
+    .slide-title { margin-top: 8px; font-size: 0.85rem; color: var(--muted); line-height: 1.4; flex-shrink: 0; }
+    .status-bar { display: flex; align-items: center; gap: 10px; padding: 8px 12px; background: var(--panel); border: 1px solid var(--border); border-radius: 10px; }
     .dot { width: 10px; height: 10px; border-radius: 50%; background: var(--muted); flex-shrink: 0; }
     .dot.idle { background: var(--muted); }
     .dot.listening { background: var(--ok); box-shadow: 0 0 8px var(--ok); animation: pulse 1.2s infinite; }
@@ -28,26 +436,212 @@
     @keyframes pulse { 50% { opacity: 0.5; } }
     .status-text { font-size: 0.85rem; }
     .status-text small { color: var(--muted); display: block; margin-top: 2px; font-size: 0.75rem; }
-    .slide-nav { display: flex; align-items: center; gap: 8px; margin-bottom: 12px; }
+    .slide-nav { display: flex; align-items: center; gap: 8px; }
     .slide-nav button, .btn { background: var(--panel); border: 1px solid var(--border); color: var(--text); padding: 8px 12px; border-radius: 8px; cursor: pointer; font-size: 0.82rem; }
     .slide-nav button:hover, .btn:hover { border-color: var(--accent); }
     .btn.primary { background: var(--accent); border-color: var(--accent); color: #fff; }
     .btn.danger { border-color: var(--danger); color: var(--danger); }
     .btn:disabled { opacity: 0.4; cursor: not-allowed; }
     .slide-num { flex: 1; text-align: center; font-weight: 600; }
-    .actions { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 12px; }
-    .actions .span2 { grid-column: span 2; }
-    .actions .btn { width: 100%; text-align: center; }
-    .panel { background: var(--panel); border: 1px solid var(--border); border-radius: 10px; padding: 12px; margin-bottom: 12px; }
-    .panel h2 { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); margin-bottom: 8px; }
-    .script { line-height: 1.6; font-size: 0.88rem; max-height: 160px; overflow-y: auto; }
-    .faq-list { display: flex; flex-wrap: wrap; gap: 6px; }
-    .faq-chip { background: var(--bg); border: 1px solid var(--border); border-radius: 20px; padding: 5px 10px; font-size: 0.75rem; cursor: pointer; }
-    .faq-chip:hover { border-color: var(--accent); }
+    .actions { display: none; }
+    .panel { background: var(--panel); border: 1px solid var(--border); border-radius: 10px; padding: 10px 12px; flex-shrink: 0; }
+    .panel-live-caption { border-color: var(--panel-caption-border); background: var(--panel-caption-bg); }
+    .panel-ask { border-color: var(--panel-ask-border); background: var(--panel-ask-bg); }
+    .panel-question { border-color: var(--panel-question-border); background: var(--panel-question-bg); }
+    .panel-answer { border-color: var(--panel-answer-border); background: var(--panel-answer-bg); }
+    .panel-ask h2 { color: var(--text-accent); margin-bottom: 8px; }
+    .live-caption {
+      font-size: 0.9rem; line-height: 1.55; color: var(--live-caption-color);
+      min-height: 80px; max-height: 180px; overflow-y: auto;
+      padding: 10px; background: var(--live-caption-bg); border-radius: 8px;
+    }
+    .live-caption.empty { color: #94a3b8; font-style: italic; }
+    .panel-chat { min-height: 0; display: flex; flex-direction: column; }
+    .qa-log {
+      min-height: 88px; max-height: 220px; overflow-y: auto;
+      padding: 8px; border-radius: 8px; background: var(--qa-log-bg);
+      border: 1px solid var(--qa-log-border);
+    }
+    .question-log { border-color: var(--panel-question-border); }
+    .answer-log { border-color: var(--panel-answer-border); }
+    .panel h2 {
+      font-size: 0.72rem; font-weight: 600; letter-spacing: 0.04em;
+      color: #c5d4e8; margin-bottom: 8px;
+    }
+    .panel h2.muted-cap { letter-spacing: 0.06em; font-weight: 600; }
+    .reply {
+      padding: 2px 0; border-radius: 0;
+      background: transparent; border: none;
+      color: var(--text-reply); font-size: 0.85rem; line-height: 1.55;
+      box-shadow: none;
+    }
+    .reply.empty { color: var(--muted); font-style: italic; }
+    .transcript .q-label { color: var(--q-label-color); font-weight: 600; margin-right: 4px; }
+
+    /* --- Four-panel role color coding (engineering UI) --- */
+    .panel-live-caption { border-left: 3px solid var(--speaking); }
+    .panel-ask { border-left: 3px solid var(--accent); }
+    .panel-question { border-left: 3px solid var(--ok); }
+    .panel-answer { border-left: 3px solid var(--accent); }
+    .panel h2 { display: flex; align-items: center; gap: 6px; }
+    .role-tag {
+      display: inline-flex; align-items: center; justify-content: center;
+      font-size: 0.62rem; font-weight: 700; letter-spacing: 0.02em;
+      padding: 2px 7px; border-radius: 999px; line-height: 1.4;
+      text-transform: none;
+    }
+    .panel-live-caption h2 { color: var(--speaking); }
+    .panel-live-caption .role-tag { background: rgba(139,92,246,0.18); color: var(--speaking); border: 1px solid var(--panel-caption-border); }
+    .panel-ask h2 { color: var(--text-accent); }
+    .panel-ask .role-tag { background: rgba(59,130,246,0.18); color: var(--text-accent); border: 1px solid var(--panel-ask-border); }
+    .panel-question h2 { color: var(--ok); }
+    .panel-question .role-tag { background: rgba(34,197,94,0.18); color: var(--ok); border: 1px solid var(--panel-question-border); }
+    .panel-answer h2 { color: var(--text-accent); }
+    .panel-answer .role-tag { background: rgba(59,130,246,0.18); color: var(--text-accent); border: 1px solid var(--panel-answer-border); }
+    .panel-script { flex-shrink: 0; }
+    .panel-script summary {
+      cursor: pointer; font-size: 0.72rem; font-weight: 600; color: #94a3b8;
+      letter-spacing: 0.04em; list-style: none; user-select: none;
+    }
+    .panel-script summary::-webkit-details-marker { display: none; }
+    .panel-script summary::before { content: "▸ "; }
+    .panel-script[open] summary::before { content: "▾ "; }
+    .panel-script .script { margin-top: 8px; max-height: 88px; }
+    .panel-faq h2 { margin-bottom: 8px; font-size: 0.78rem; color: #dbeafe; }
+    .script { line-height: 1.55; font-size: 0.82rem; color: #b8c5d6; overflow-y: auto; }
+    .faq-list { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
+    .faq-chip {
+      background: #1e2a3d; border: 1px solid #6b849e; border-radius: 8px;
+      padding: 8px 10px; font-size: 0.78rem; cursor: pointer; color: #f1f5f9;
+      line-height: 1.35; text-align: left; width: 100%;
+      transition: background 0.15s, border-color 0.15s;
+    }
+    .faq-chip:hover { background: rgba(59,130,246,0.2); border-color: #60a5fa; color: #fff; }
+    .faq-list .faq-chip:last-child:nth-child(odd) { grid-column: span 2; }
+    .prefs-row {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 6px 10px; align-items: center;
+      padding: 8px 10px; background: var(--panel); border: 1px solid var(--border);
+      border-radius: 10px; font-size: 0.75rem;
+    }
+    .prefs-row label { display: flex; align-items: center; gap: 8px; color: #cbd5e1; cursor: pointer; line-height: 1.3; }
+    .prefs-row label:hover { color: var(--text); }
+    .prefs-row input[type="checkbox"] { accent-color: var(--accent); width: 14px; height: 14px; margin: 0; }
+    .voice-bar span { color: var(--text); flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: 0.8rem; }
+    .voice-bar span em { color: var(--muted); font-style: normal; }
+    .actions-compact { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
+    .actions-compact .span2 { grid-column: span 2; }
+    .actions-compact .btn { width: 100%; text-align: center; padding: 9px 10px; }
+    .actions-dynamic { display: contents; }
     .transcript { min-height: 56px; font-size: 0.85rem; color: var(--muted); line-height: 1.5; }
     .transcript .final { color: var(--text); }
-    .transcript .interim { opacity: 0.6; font-style: italic; }
-    .reply { margin-top: 8px; padding-top: 8px; border-top: 1px solid var(--border); color: var(--accent); font-size: 0.85rem; }
+    .transcript .interim { opacity: 0.75; font-style: italic; color: #cbd5e1; }
+    .ask-row { display: flex; gap: 6px; align-items: stretch; }
+    .ask-row textarea {
+      flex: 1; min-width: 0; padding: 11px 12px; background: var(--bg);
+      border: 2px solid var(--accent); border-radius: 8px; color: var(--text);
+      font-size: 0.95rem; line-height: 1.5; resize: vertical; min-height: 76px;
+      font-family: inherit;
+    }
+    .ask-row textarea:focus { outline: none; border-color: var(--accent); }
+    .ask-row textarea::placeholder { color: #64748b; }
+    .ask-row .btn {
+      flex-shrink: 0;
+      width: 60px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.82rem;
+      font-weight: 600;
+      border-radius: 8px;
+      cursor: pointer;
+      box-sizing: border-box;
+      border: 1px solid var(--accent);
+      background: var(--accent);
+      color: #fff;
+      transition: background 0.12s, border-color 0.12s;
+    }
+    .ask-row .btn:hover {
+      filter: brightness(1.08);
+    }
+
+    .question-row {
+      display: flex;
+      gap: 6px;
+      align-items: stretch;
+      flex: 1;
+      min-height: 0;
+    }
+    .question-row .question-log {
+      flex: 1;
+      min-width: 0;
+    }
+    .question-row .side-ptt-btn {
+      width: 60px;
+      flex-shrink: 0;
+      display: inline-flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      border-radius: 8px;
+      cursor: pointer;
+      box-sizing: border-box;
+      position: relative;
+      background: linear-gradient(135deg, #2563eb, #7c3aed);
+      color: #fff;
+      border: none;
+      box-shadow: 0 4px 12px rgba(37, 99, 235, 0.2);
+      transition: background 0.12s, border-color 0.12s, transform 0.12s;
+      padding: 8px;
+    }
+    .question-row .side-ptt-btn.holding,
+    .question-row .side-ptt-btn:active {
+      background: linear-gradient(135deg, #1d4ed8, #6d28d9);
+      box-shadow: 0 2px 6px rgba(124, 58, 237, 0.3);
+      transform: scale(0.97);
+    }
+    .question-row .side-ptt-btn .ptt-icon {
+      font-size: 1.15rem;
+      line-height: 1;
+    }
+    .question-row .side-ptt-btn .ptt-label {
+      font-size: 0.78rem;
+      font-weight: 600;
+      text-align: center;
+      line-height: 1.25;
+    }
+    .ptt-btn {
+      position: relative; width: 100%; margin-top: 10px; padding: 14px 16px 12px;
+      border: none; border-radius: 999px; cursor: pointer; user-select: none; touch-action: none;
+      background: linear-gradient(135deg, #2563eb, #7c3aed);
+      color: #fff; display: flex; flex-direction: column; align-items: center; gap: 2px;
+      box-shadow: 0 8px 24px rgba(37, 99, 235, 0.35);
+      transition: transform 0.12s ease, box-shadow 0.12s ease, filter 0.12s ease;
+    }
+    .ptt-btn:hover { filter: brightness(1.06); }
+    .ptt-btn:active, .ptt-btn.holding {
+      transform: scale(0.97);
+      box-shadow: 0 4px 14px rgba(124, 58, 237, 0.45);
+      background: linear-gradient(135deg, #1d4ed8, #6d28d9);
+    }
+    .ptt-btn:disabled { opacity: 0.45; cursor: not-allowed; transform: none; }
+    .ptt-ring {
+      position: absolute; inset: -4px; border-radius: 999px; border: 2px solid rgba(255,255,255,0.35);
+      opacity: 0; pointer-events: none;
+    }
+    .ptt-btn.holding .ptt-ring {
+      opacity: 1; animation: ptt-pulse 1.1s ease-out infinite;
+    }
+    @keyframes ptt-pulse {
+      0% { transform: scale(1); opacity: 0.85; }
+      100% { transform: scale(1.12); opacity: 0; }
+    }
+    .ptt-icon { font-size: 1.35rem; line-height: 1; }
+    .ptt-label { font-size: 1rem; font-weight: 700; letter-spacing: 0.02em; }
+    .ptt-hint { font-size: 0.72rem; opacity: 0.88; font-weight: 400; }
+    .panel-ask { flex-shrink: 0; }
     .settings summary { cursor: pointer; color: var(--muted); font-size: 0.82rem; }
     .settings label { display: block; font-size: 0.75rem; color: var(--muted); margin: 8px 0 4px; }
     .settings input { width: 100%; padding: 7px 9px; background: var(--bg); border: 1px solid var(--border); border-radius: 6px; color: var(--text); font-size: 0.82rem; }
@@ -56,12 +650,11 @@
     .voice-row select { flex: 1; }
     .voice-row .btn { flex-shrink: 0; padding: 7px 10px; }
     .unsupported { color: var(--danger); font-size: 0.82rem; display: none; margin-bottom: 8px; padding: 8px 10px; background: rgba(239,68,68,0.12); border-radius: 8px; line-height: 1.45; }
-    .hint { font-size: 0.75rem; color: var(--muted); margin-bottom: 12px; }
+    .hint { font-size: 0.75rem; color: var(--muted); margin-top: 6px; flex-shrink: 0; }
     .hint code { color: var(--accent); }
     .toggle-row { display: flex; align-items: center; gap: 8px; font-size: 0.78rem; color: var(--muted); margin-top: 8px; }
-    .voice-bar { display: flex; align-items: center; justify-content: space-between; gap: 8px; padding: 8px 12px; background: var(--panel); border: 1px solid var(--border); border-radius: 10px; margin-bottom: 12px; font-size: 0.82rem; }
-    .voice-bar span { color: var(--muted); flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-    .voice-bar .btn { flex-shrink: 0; padding: 6px 12px; }
+    .voice-bar { display: flex; align-items: center; justify-content: space-between; gap: 8px; padding: 7px 10px; background: var(--panel); border: 1px solid var(--border); border-radius: 10px; font-size: 0.8rem; }
+    .voice-bar .btn { flex-shrink: 0; padding: 6px 12px; font-size: 0.78rem; }
     .modal { position: fixed; inset: 0; z-index: 1000; display: flex; align-items: center; justify-content: center; padding: 16px; }
     .modal[hidden] { display: none; }
     .modal-backdrop { position: absolute; inset: 0; background: rgba(0,0,0,0.65); }
@@ -93,62 +686,183 @@
     .modal-actions .btn { flex: 1; }
     .modal-options label { display: block; font-size: 0.75rem; color: var(--muted); margin: 8px 0 4px; }
     .modal-options select { width: 100%; padding: 7px 9px; background: var(--bg); border: 1px solid var(--border); border-radius: 6px; color: var(--text); font-size: 0.82rem; }
+    .tip-content { display: flex; flex-direction: column; gap: 10px; margin-top: 8px; }
+    .tip-line {
+      font-size: 0.84rem; color: #dbeafe; background: rgba(59,130,246,0.12);
+      border: 1px solid rgba(59,130,246,0.25); border-radius: 8px; padding: 8px 10px;
+    }
+    .tip-line small { color: #93c5fd; display: block; margin-bottom: 3px; }
   </style>
 </head>
 <body>
-  <div class="layout">
-    <section>
-      <h1 id="deckTitle">PPT 语音播放器</h1>
-      <p class="sub" id="deckSub">幻灯片 + 语音讲解 + 可打断问答</p>
-      <div class="slide-stage"><img id="slideImage" alt="当前幻灯片" /></div>
-      <p class="slide-title" id="slideTitle">—</p>
-      <p class="hint">← → 翻页 · 空格全场演讲 · Esc 停止</p>
-    </section>
-    <aside>
-      <p class="unsupported" id="unsupported"></p>
-      <div class="status-bar">
-        <div class="dot idle" id="statusDot"></div>
-        <div class="status-text">
-          <span id="statusLabel">待命</span>
-          <small id="statusHint">线上使用 OpenAI 语音（无需 MiniMax）；本地可浏览器备用</small>
+  <div class="app">
+    <header class="app-header">
+      <div class="header-left">
+        <h1 id="deckTitle">PPT 语音播放器</h1>
+        <p class="sub" id="deckSub" style="display: none;">幻灯片 + 小博士讲解 + 问答</p>
+      </div>
+      <div class="header-right">
+        <div class="header-selectors">
+          <label class="header-select-label">🗣️
+            <select id="voiceQuick" title="选择解说员"></select>
+          </label>
+          <label class="header-select-label">⚡
+            <select id="speedQuick" title="选择语速">
+              <option value="0.92">较慢 0.92</option>
+              <option value="1.0">正常 1.0</option>
+              <option value="1.05">稍快 1.05</option>
+              <option value="1.08">更快 1.08</option>
+            </select>
+          </label>
+          <button type="button" class="theme-toggle-btn" id="btnThemeToggle" title="切换主题">
+            🌓 <span id="themeLabel">深邃星空</span>
+          </button>
+        </div>
+        <div class="header-checks">
+          <label class="opt-check"><input type="checkbox" id="autoResume" checked /> 答完续讲</label>
+          <label class="opt-check"><input type="checkbox" id="qaAutoListen" checked /> 播完开麦</label>
+          <label class="opt-check"><input type="checkbox" id="showPresenterChk" checked /> 小博士</label>
+          <label class="opt-check"><input type="checkbox" id="showPointerChk" checked /> 光标</label>
         </div>
       </div>
-      <div class="slide-nav">
-        <button type="button" id="btnPrev">上一页</button>
-        <div class="slide-num"><span id="slideIndex">1</span> / <span id="slideTotal">1</span></div>
-        <button type="button" id="btnNext">下一页</button>
-      </div>
-      <div class="actions">
-        <button type="button" class="btn primary span2" id="btnPresent">全场演讲</button>
-        <button type="button" class="btn" id="btnSpeak">讲本页</button>
-        <button type="button" class="btn" id="btnContinue" hidden>继续</button>
-        <button type="button" class="btn" id="btnRestart" hidden>重新讲解</button>
-        <button type="button" class="btn" id="btnListen">提问</button>
-        <button type="button" class="btn danger" id="btnStop">停止</button>
-      </div>
-      <div class="voice-bar">
-        <span id="voiceCurrentLabel">播音员：onyx · 男声 · 稳重</span>
-        <button type="button" class="btn" id="btnOpenVoiceModal">选择播音员</button>
-      </div>
-      <div class="panel"><h2>讲解脚本</h2><p class="script" id="scriptText">—</p></div>
-      <div class="panel"><h2>常见问题（也可直接问）</h2><div class="faq-list" id="faqList"></div></div>
-      <div class="panel">
-        <h2>对话</h2>
-        <div class="transcript" id="transcript">等待语音输入…</div>
-        <div class="reply" id="reply" hidden></div>
-      </div>
-      <details class="panel settings">
-        <summary>可选：接入 LLM（回答更灵活）</summary>
-        <label>API Base</label>
-        <input type="text" id="apiBase" placeholder="https://api.openai.com/v1" />
-        <label>API Key</label>
-        <input type="password" id="apiKey" placeholder="sk-..." />
-        <label>Model</label>
-        <input type="text" id="apiModel" value="gpt-4o-mini" />
-        <label class="toggle-row"><input type="checkbox" id="autoResume" checked /> 答完自动续讲剩余内容</label>
-        <label class="toggle-row"><input type="checkbox" id="qaAutoListen" checked /> 演讲/讲本页时自动开麦克风</label>
-      </details>
-    </aside>
+    </header>
+
+    <div class="main-area">
+      <section class="stage-column">
+        <div class="slide-frame">
+          <div class="slide-stage">
+            <img id="slideImage" alt="当前幻灯片" />
+            <div class="slide-caption" id="slideCaption" hidden></div>
+            <div class="highlight-spot" id="highlightSpot" hidden></div>
+            <div class="presenter idle" id="presenter" aria-hidden="true">
+              <svg class="doc-svg" viewBox="0 0 120 140" aria-label="小博士">
+                <defs>
+                  <linearGradient id="docSkin" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stop-color="#ffe8c8"/>
+                    <stop offset="100%" stop-color="#fdba74"/>
+                  </linearGradient>
+                </defs>
+                <rect x="46" y="118" width="11" height="14" rx="2" fill="#334155"/>
+                <rect x="63" y="118" width="11" height="14" rx="2" fill="#334155"/>
+                <rect x="44" y="88" width="32" height="32" rx="6" fill="#f1f5f9" stroke="#cbd5e1" stroke-width="2"/>
+                <line x1="60" y1="92" x2="60" y2="114" stroke="#94a3b8" stroke-width="2"/>
+                <g class="arm-group">
+                  <line x1="76" y1="96" x2="14" y2="38" stroke="#57534e" stroke-width="3.5" stroke-linecap="round"/>
+                  <line x1="14" y1="38" x2="8" y2="28" stroke="#78716c" stroke-width="2.5" stroke-linecap="round"/>
+                  <circle cx="6" cy="24" r="7" fill="#fde047" stroke="#facc15" stroke-width="2" class="stick-tip"/>
+                </g>
+                <g class="head-group">
+                  <circle cx="60" cy="48" r="34" fill="url(#docSkin)" stroke="rgba(255,255,255,0.45)" stroke-width="2"/>
+                  <rect x="38" y="12" width="44" height="13" rx="3" fill="#1e3a5f"/>
+                  <circle cx="60" cy="22" r="4.5" fill="#fbbf24"/>
+                  <rect x="36" y="43" width="18" height="13" rx="4" fill="rgba(191,219,254,0.35)" stroke="#334155" stroke-width="2"/>
+                  <rect x="66" y="43" width="18" height="13" rx="4" fill="rgba(191,219,254,0.35)" stroke="#334155" stroke-width="2"/>
+                  <line x1="54" y1="50" x2="66" y2="50" stroke="#334155" stroke-width="2"/>
+                  <circle cx="45" cy="50" r="3.5" fill="#0f172a" class="doc-eye"/>
+                  <circle cx="75" cy="50" r="3.5" fill="#0f172a" class="doc-eye"/>
+                  <ellipse class="mouth" cx="60" cy="66" rx="9" ry="3.5" fill="#c2410c"/>
+                </g>
+              </svg>
+              <span class="presenter-badge" id="presenterBadge">小博士</span>
+            </div>
+          </div>
+        </div>
+        <div class="unsupported" id="unsupported" style="display: none;"></div>
+        <p class="slide-title" id="slideTitle">—</p>
+        <div class="slide-controls">
+          <div class="ctrl-row ctrl-transport">
+            <div class="transport-nav">
+              <button type="button" id="btnPrev" class="nav-btn" title="上一页">‹</button>
+              <span class="slide-num"><span id="slideIndex">1</span>/<span id="slideTotal">1</span><span class="dot idle" id="statusDot"></span></span>
+              <button type="button" id="btnNext" class="nav-btn" title="下一页">›</button>
+            </div>
+
+            <button type="button" class="btn primary" id="btnPresent">▶ 全场演讲</button>
+            <button type="button" class="btn" id="btnSpeak">播当前页</button>
+            <button type="button" id="btnPtt" class="ptt-btn" aria-label="按住提问">
+              <span class="ptt-ring" aria-hidden="true"></span>
+              <span class="ptt-icon">🎤</span>
+              <span class="ptt-label" id="pttLabel">按住提问</span>
+              <span class="ptt-hint">松手发送</span>
+            </button>
+
+            <select id="projectSelect" class="project-select" aria-label="下一个项目" title="切换项目">
+              <option value="" disabled selected>🗂 下一个项目</option>
+              <option value="humanized_mice_douyin_90s">人源化小鼠肿瘤免疫 (1.5分抖音)</option>
+              <option value="nsgf-publication">FLT3 免疫细胞分化 (当前)</option>
+              <option value="s41467_hiv_douyin_90s">Nature 艾滋病彻底清除 (1.5分抖音)</option>
+              <option value="antibody-humanization">抗体人源化汇报 (演示)</option>
+              <option value="bispecific-vhh">双抗 VHH 研发 (演示)</option>
+              <option value="car-t-design">CAR-T 细胞治疗 (演示)</option>
+            </select>
+
+            <button type="button" class="btn danger" id="btnStop">■ 停止</button>
+
+            <span id="statusLabel" hidden>待命</span>
+
+            <span class="opt-sep" aria-hidden="true"></span>
+
+            <button type="button" class="btn ghost" id="btnOpenVoiceModal">试听/更多</button>
+            <button type="button" class="btn util" id="btnDownloadQa" title="下载问答对话">⬇ 对话</button>
+            <button type="button" class="btn util" id="btnDownloadScript" title="下载解说词">⬇ 解说词</button>
+            <button type="button" class="btn util" id="btnTip" title="打赏支持">♡ 打赏</button>
+          </div>
+          <small id="statusHint" class="ctrl-hint">右侧按住「提问」键说话 · 松手回答 · 2 秒后自动续讲</small>
+        </div>
+      </section>
+
+      <div class="resize-handle" id="resizeHandle" title="拖拽调整面板宽度"></div>
+
+      <aside class="qa-panel">
+        <div class="qa-banner" id="qaBanner">
+          <div>
+            <span id="qaBannerText">提问环节</span>
+            <small>输入或语音提问 · 30 秒无提问自动结束</small>
+          </div>
+          <strong id="qaCountdown">30</strong>
+        </div>
+
+        <div class="qa-stack">
+          <div class="panel panel-live-caption">
+            <h2><span class="role-tag">🔊 解说</span>演说辞</h2>
+            <div class="live-caption empty" id="liveCaption">等待讲解…</div>
+          </div>
+
+          <div class="panel panel-ask">
+            <h2><span class="role-tag">✍ 你</span>输入提问</h2>
+            <div class="ask-row">
+              <textarea id="askInput" rows="3" placeholder="请输入您的问题…（Enter 发送 · Shift+Enter 换行）" enterkeyhint="send"></textarea>
+              <button type="button" class="btn primary" id="btnAskSend">发送</button>
+            </div>
+          </div>
+
+          <div class="panel panel-chat panel-question">
+            <h2 class="muted-cap"><span class="role-tag">🙋 提问</span>我的提问</h2>
+            <div class="question-row">
+              <div class="qa-log question-log">
+                <div class="transcript" id="transcript">手写和口头提问会显示在这里</div>
+              </div>
+              <button type="button" id="btnSidePtt" class="ptt-btn side-ptt-btn" aria-label="按住提问">
+                <span class="ptt-ring" aria-hidden="true"></span>
+                <span class="ptt-icon">🎤</span>
+                <span class="ptt-label" id="sidePttLabel">按住提问</span>
+              </button>
+            </div>
+          </div>
+
+          <div class="panel panel-chat panel-answer">
+            <h2 class="muted-cap"><span class="role-tag">🤖 AI</span>AI 回答</h2>
+            <div class="qa-log answer-log">
+              <div class="reply empty" id="reply"></div>
+            </div>
+          </div>
+        </div>
+      </aside>
+    </div>
+
+    <input type="hidden" id="apiBase" />
+    <input type="hidden" id="apiKey" />
+    <input type="hidden" id="apiModel" value="gpt-4o-mini" />
   </div>
   <div id="voiceModal" class="modal" hidden role="dialog" aria-labelledby="voiceModalTitle" aria-modal="true">
     <div class="modal-backdrop" id="voiceModalBackdrop"></div>
@@ -176,6 +890,19 @@
       </div>
     </div>
   </div>
+  <div id="tipModal" class="modal" hidden role="dialog" aria-labelledby="tipModalTitle" aria-modal="true">
+    <div class="modal-backdrop" id="tipModalBackdrop"></div>
+    <div class="modal-box">
+      <h3 id="tipModalTitle">感谢支持</h3>
+      <div class="tip-content">
+        <p class="tip-line"><small>打赏说明</small>感谢认可！可在此放置微信/支付宝收款码或支付链接。</p>
+        <p class="tip-line"><small>当前状态</small>收款方式待配置（可在后端或页面配置真实二维码）。</p>
+      </div>
+      <div class="modal-actions">
+        <button type="button" class="btn primary" id="btnTipClose">知道了</button>
+      </div>
+    </div>
+  </div>
   <script>
     const params = new URLSearchParams(location.search);
     const PROJECT = params.get("project") || "nsgf-publication";
@@ -188,7 +915,7 @@
       return "";
     })();
     const SILENT_WAV = "data:audio/wav;base64,UklGRigAAABXQVZFZm10IBIAAAABAAEARKwAAIhYAQACABAAZGF0YQQAAAAAAA==";
-    const TTS_VOICES = ["onyx", "echo", "fable", "alloy", "nova", "shimmer"];
+    const TTS_VOICES = ["onyx", "echo", "fable", "alloy", "nova", "shimmer", "shuangkuaisisi", "yunzhou", "dayi", "liuchangnv"];
     const VOICE_LABELS = {
       onyx: "男声 · 稳重",
       echo: "男声 · 清晰",
@@ -196,6 +923,10 @@
       alloy: "中性 · 通用",
       nova: "女声 · 明亮",
       shimmer: "女声 · 柔和",
+      shuangkuaisisi: "爽快思思 · 活泼",
+      yunzhou: "云舟 · 活力",
+      dayi: "大壹 · 磁性",
+      liuchangnv: "流畅女声 · 亲切",
     };
     let ttsVoice = (() => {
       const fromUrl = params.get("voice")?.toLowerCase();
@@ -218,7 +949,12 @@
       if (!Number.isNaN(saved)) return Math.min(2, Math.max(0.5, saved));
       return 1.05;
     })();
-    const SLIDE_PAUSE_MS = 250;
+    const SLIDE_PAUSE_MS = 100;
+    const SLIDE_QA_PAUSE_MS = 800;
+    const QA_SENTENCE_GAP_MS = 600;
+    const NARR_GROUP_TARGET = 200;
+    const NARR_GROUP_MIN = 90;
+    const QA_IDLE_CLOSE_MS = 30_000;
     const TTS_MAX_CHARS = 4096;
     const State = { IDLE: "idle", LISTENING: "listening", SPEAKING: "speaking", THINKING: "thinking" };
 
@@ -227,6 +963,9 @@
     let slides = [];
     let currentSlide = 0;
     let listenEnabled = false;
+    let pttActive = false;
+    let pttFinalParts = [];
+    let pttInterim = "";
     let abortCtrl = null;
     let speakGen = 0;
     let narration = { active: false, parts: [], index: 0 };
@@ -235,17 +974,51 @@
     let handlingQuestion = false;
     const player = new Audio();
     player.preload = "auto";
+    player.ontimeupdate = () => {
+      if (state === State.SPEAKING && narration.active && showPointer) {
+        const currentPartProgress = player.duration ? player.currentTime / player.duration : 0;
+        const numParts = narration.parts.length || 1;
+        const partIdx = narration.index;
+        const overallProgress = (partIdx + currentPartProgress) / numParts;
+        setDocPointerProgress(overallProgress);
+      }
+    };
     let audioCtx = null;
     let useCloudTts = true;
+    let consecutiveTtsFailures = 0;
     let ttsPrefetch = { gen: 0, cache: new Map() };
     let audioPrimed = false;
     let lastPlayError = "";
     let presentation = { active: false };
+    let presAdvanceTaken = false;
+    let pointerTimer = null;
+    let pointerIdx = 0;
+    // Reading-order sweep path across a typical slide (top row L→R, then bottom row L→R).
+    const POINTER_PATH = [
+      { x: 24, y: 30 }, { x: 42, y: 28 }, { x: 60, y: 30 }, { x: 78, y: 30 },
+      { x: 24, y: 60 }, { x: 42, y: 62 }, { x: 60, y: 60 }, { x: 78, y: 60 },
+    ];
+    let currentTheme = localStorage.getItem("ppt-voice-theme") || "dark";
+    document.documentElement.setAttribute("data-theme", currentTheme);
+    let showPresenter = localStorage.getItem("ppt-voice-show-presenter") !== "0";
+    let showPointer = localStorage.getItem("ppt-voice-show-pointer") !== "0";
     let qaAutoListen = localStorage.getItem("ppt-voice-qa-auto") !== "0";
+    let micResumeTimer = null;
+    let qaIdleTimer = null;
+    let qaIdleTickTimer = null;
+    let qaIdleDeadline = 0;
+    let postExplainQaOpen = false;
+    const qaHistory = [];
 
     const delay = (ms) => new Promise((r) => setTimeout(r, ms));
 
-    const synth = window.speechSynthesis;
+    const synth = window.speechSynthesis || {
+      speak: () => {},
+      cancel: () => {},
+      pause: () => {},
+      resume: () => {},
+      getVoices: () => []
+    };
     const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
     let recognition = null;
     const $ = (id) => document.getElementById(id);
@@ -261,28 +1034,302 @@
       const labels = { idle: "待命", listening: "聆听中", speaking: "播报中", thinking: "思考中" };
       $("statusLabel").textContent = labelOverride || labels[s] || s;
       if (hint !== undefined) $("statusHint").textContent = hint;
+      updatePresenterAvatar(s);
       updateActionButtons();
+      syncMicWithState();
+    }
+
+    // Move the highlight to a fixed path waypoint (forward-only, calm).
+    function placeDocPointer(idx) {
+      const spot = $("highlightSpot");
+      const pres = $("presenter");
+      if (!spot || !pres) return;
+      const path = POINTER_PATH;
+      const t = path[Math.min(path.length - 1, Math.max(0, idx))];
+      spot.hidden = false;
+      spot.style.left = `${t.x}%`;
+      spot.style.top = `${t.y}%`;
+      pres.style.setProperty("--arm-rot", `${-38 - t.x * 0.45}deg`);
+    }
+
+    function startDocPointing() {
+      stopDocPointing();
+      if (!showPointer) return;
+      pointerIdx = 0;
+      placeDocPointer(pointerIdx);
+    }
+
+    function setDocPointerProgress(progress) {
+      if (!showPointer || state !== State.SPEAKING) return;
+      const idx = Math.max(0, Math.min(POINTER_PATH.length - 1, Math.round(progress * (POINTER_PATH.length - 1))));
+      if (idx === pointerIdx) return;
+      pointerIdx = idx;
+      placeDocPointer(pointerIdx);
+    }
+
+    function stopDocPointing() {
+      clearInterval(pointerTimer);
+      pointerTimer = null;
+      pointerIdx = 0;
+      const spot = $("highlightSpot");
+      if (spot) spot.hidden = true;
+      const pres = $("presenter");
+      if (pres) pres.style.setProperty("--arm-rot", "-55deg");
+    }
+
+    function updatePresenterAvatar(s) {
+      const el = $("presenter");
+      const badge = $("presenterBadge");
+      const st = s || state;
+      if (!el) return;
+      el.className = "presenter " + st;
+      el.style.display = showPresenter ? "" : "none";
+      const badges = {
+        idle: "小博士",
+        listening: "在听您说",
+        speaking: "讲解中",
+        thinking: "思考中",
+      };
+      if (badge) badge.textContent = badges[st] || "小博士";
+      
+      if (st === State.SPEAKING) startDocPointing();
+      else stopDocPointing();
+    }
+
+    function updateQaCountdownUi() {
+      const sec = qaIdleDeadline
+        ? Math.max(0, Math.ceil((qaIdleDeadline - Date.now()) / 1000))
+        : Math.round(QA_IDLE_CLOSE_MS / 1000);
+      const cd = $("qaCountdown");
+      if (cd) cd.textContent = String(sec);
+      const hint = $("statusHint");
+      if (postExplainQaOpen && hint) hint.textContent = qaIdleHintText();
+    }
+
+    function showQaBanner(show) {
+      const banner = $("qaBanner");
+      if (banner) banner.classList.toggle("active", Boolean(show));
+    }
+
+    function qaIdleHintText() {
+      const sec = qaIdleDeadline
+        ? Math.max(0, Math.ceil((qaIdleDeadline - Date.now()) / 1000))
+        : Math.round(QA_IDLE_CLOSE_MS / 1000);
+      return `提问环节 · ${sec} 秒无提问将自动结束`;
+    }
+
+    function cancelQaIdleClose() {
+      clearTimeout(qaIdleTimer);
+      clearInterval(qaIdleTickTimer);
+      qaIdleTimer = null;
+      qaIdleTickTimer = null;
+      qaIdleDeadline = 0;
+      showQaBanner(false);
+    }
+
+    function startQaIdleClose() {
+      cancelQaIdleClose();
+      postExplainQaOpen = true;
+      listenEnabled = true;
+      updateActionButtons();
+      qaIdleDeadline = Date.now() + QA_IDLE_CLOSE_MS;
+      showQaBanner(true);
+      updateQaCountdownUi();
+      setState(State.LISTENING, qaIdleHintText(), "提问环节");
+      $("askInput")?.focus({ preventScroll: true });
+      clearTimeout(micResumeTimer);
+      try { recognition?.stop(); } catch (_) {}
+      micResumeTimer = setTimeout(() => {
+        if (listenEnabled && state !== State.SPEAKING && state !== State.THINKING) {
+          try { recognition.start(); } catch (e) { console.warn("mic", e); }
+        }
+      }, 300);
+      qaIdleTickTimer = setInterval(updateQaCountdownUi, 500);
+      qaIdleTimer = setTimeout(() => autoCloseAfterQa(), QA_IDLE_CLOSE_MS);
+    }
+
+    function bumpQaIdleClose() {
+      if (!postExplainQaOpen) return;
+      startQaIdleClose();
+    }
+
+    async function autoCloseAfterQa() {
+      cancelQaIdleClose();
+      postExplainQaOpen = false;
+      listenEnabled = false;
+      recognition?.stop();
+      presentation.active = false;
+      narration.active = false;
+      updateActionButtons();
+      setState(State.SPEAKING, "结束语…", "结束");
+      try {
+        await speakParts(["感谢各位聆听，本次讲解结束，再见。"], { deckLabel: "结束" });
+      } catch (_) {}
+      setSlideCaption("");
+      stopDocPointing();
+      $("transcript").textContent = "讲解已结束";
+      $("reply").textContent = "";
+      $("reply").classList.add("empty");
+      setState(State.IDLE, "30 秒无提问 · 已自动结束");
+    }
+
+    function finishPresentationWithQa() {
+      endPresentation("全部讲完 · 进入提问环节");
+      startQaIdleClose();
+    }
+
+    function pauseMicForTts() {
+      clearTimeout(micResumeTimer);
+      try { recognition?.stop(); } catch (_) {}
+    }
+
+    function syncMicWithState() {
+      if (!recognition || pttActive) return;
+      clearTimeout(micResumeTimer);
+      const shouldListen = (listenEnabled || postExplainQaOpen) && state !== State.THINKING && state !== State.SPEAKING;
+      if (!shouldListen) {
+        try { recognition.stop(); } catch (_) {}
+        return;
+      }
+      micResumeTimer = setTimeout(() => {
+        if ((listenEnabled || postExplainQaOpen) && state !== State.SPEAKING && state !== State.THINKING) {
+          try { recognition.start(); } catch (e) { console.warn("mic start", e); }
+        }
+      }, 150);
     }
 
     function updateActionButtons() {
       const canContinue = narration.active && narration.index < narration.parts.length && state !== State.SPEAKING;
       const speaking = state === State.SPEAKING;
-      $("btnContinue").hidden = !canContinue;
-      $("btnSpeak").hidden = canContinue || speaking;
-      $("btnRestart").hidden = !speaking && !canContinue;
+      const speakBtn = $("btnSpeak");
+      const listenBtn = $("btnListen");
+      if (canContinue) {
+        speakBtn.textContent = "继续";
+        speakBtn.classList.add("primary");
+      } else if (speaking) {
+        speakBtn.textContent = "重新讲解";
+        speakBtn.classList.remove("primary");
+      } else {
+        speakBtn.textContent = "讲本页";
+        speakBtn.classList.remove("primary");
+      }
       $("btnPresent").textContent = presentation.active ? "停止演讲" : "全场演讲";
       $("btnPresent").classList.toggle("primary", !presentation.active);
       $("btnPresent").classList.toggle("danger", presentation.active);
-      $("btnListen").textContent = listenEnabled ? "停止提问" : "提问";
-      $("btnListen").classList.toggle("primary", listenEnabled);
+      if (listenBtn) {
+        listenBtn.textContent = listenEnabled ? "🎤 聆听中·点此结束" : "🎤 提问";
+        listenBtn.classList.toggle("primary", listenEnabled);
+        listenBtn.hidden = false;
+      }
+      speakBtn.hidden = presentation.active && speaking && !canContinue;
+      $("btnStop").hidden = presentation.active || (state === State.IDLE && !listenEnabled);
+    }
+
+    function initLlmConfig() {
+      const fromUrl = {
+        base: params.get("api_base") || params.get("apiBase") || "",
+        key: params.get("api_key") || params.get("apiKey") || "",
+        model: params.get("api_model") || params.get("model") || "",
+      };
+      const stored = {
+        base: localStorage.getItem("ppt-voice-api-base") || "",
+        key: localStorage.getItem("ppt-voice-api-key") || "",
+        model: localStorage.getItem("ppt-voice-api-model") || "",
+      };
+      $("apiBase").value = fromUrl.base || stored.base || "https://api.openai.com/v1";
+      $("apiKey").value = fromUrl.key || stored.key || "";
+      $("apiModel").value = fromUrl.model || stored.model || "gpt-4o-mini";
+      if (fromUrl.base) localStorage.setItem("ppt-voice-api-base", fromUrl.base);
+      if (fromUrl.key) localStorage.setItem("ppt-voice-api-key", fromUrl.key);
+      if (fromUrl.model) localStorage.setItem("ppt-voice-api-model", fromUrl.model);
+    }
+
+    async function syncLlmFromServer() {
+      if (!TTS_API) return;
+      try {
+        const h = await fetch(`${TTS_API}/health`);
+        const j = await h.json();
+        if (j.api_base) $("apiBase").value = j.api_base;
+        if (j.model) $("apiModel").value = j.model;
+        if (j.has_key) {
+          appendVoiceToSub();
+          if (j.llm) $("deckSub").textContent += " · AI 问答已启用";
+        } else {
+          $("deckSub").textContent += " · 云端未配置，用浏览器音";
+        }
+      } catch (_) {
+        useCloudTts = false;
+      }
+    }
+
+    function handleSpeakClick() {
+      const canContinue = narration.active && narration.index < narration.parts.length && state !== State.SPEAKING;
+      if (canContinue) {
+        resumeNarration().then(() => continuePresentationIfNeeded());
+        return;
+      }
+      if (state === State.SPEAKING) {
+        speakCurrentSlide({ restart: true });
+        return;
+      }
+      speakCurrentSlide();
     }
 
     function getZhVoice() {
-      return synth.getVoices().find((v) => v.lang.startsWith("zh")) || null;
+      const voices = synth.getVoices();
+      const zhVoices = voices.filter((v) => v.lang.startsWith("zh") || v.lang.includes("CN") || v.lang.includes("ZH"));
+      if (!zhVoices.length) return null;
+
+      // Determine target gender based on selected cloud voice
+      const isMaleTarget = ["onyx", "echo"].includes(ttsVoice);
+      const isFemaleTarget = ["nova", "shimmer"].includes(ttsVoice);
+
+      if (isMaleTarget) {
+        // Try to find a male Chinese voice
+        const maleVoice = zhVoices.find((v) => {
+          const name = v.name.toLowerCase();
+          return name.includes("kangkang") || name.includes("yunyang") || name.includes("yunjian") || name.includes("yunxi") || name.includes("sinji") || name.includes("male") || name.includes("男");
+        });
+        if (maleVoice) return maleVoice;
+      } else if (isFemaleTarget) {
+        // Try to find a female Chinese voice
+        const femaleVoice = zhVoices.find((v) => {
+          const name = v.name.toLowerCase();
+          return name.includes("huihui") || name.includes("yaoyao") || name.includes("xiaoxiao") || name.includes("xiaoyi") || name.includes("tingting") || name.includes("meijia") || name.includes("female") || name.includes("女");
+        });
+        if (femaleVoice) return femaleVoice;
+      }
+
+      // If no gender-specific voice found, or target is neutral, try to find a high-quality one or just return the first one
+      const preferred = zhVoices.find((v) => v.name.includes("Google") || v.name.includes("Microsoft") || v.name.includes("Natural"));
+      return preferred || zhVoices[0];
     }
 
     function splitSentences(text) {
-      return text.split(/(?<=[。！？；\n])/g).map((s) => s.trim()).filter(Boolean);
+      return text.split(/(?<=[。！？\n])/g).map((s) => s.trim()).filter(Boolean);
+    }
+
+    /** Merge sentences into longer narration paragraphs (fewer TTS calls, smoother speech) */
+    function groupForNarration(text, targetLen = NARR_GROUP_TARGET, minLen = NARR_GROUP_MIN) {
+      const sentences = splitSentences(text);
+      if (!sentences.length) return text ? [text] : [];
+      if (sentences.length === 1) return sentences;
+      const groups = [];
+      let buf = "";
+      for (const s of sentences) {
+        if (!buf) {
+          buf = s;
+          continue;
+        }
+        if ((buf + s).length <= targetLen || buf.length < minLen) {
+          buf += s;
+        } else {
+          groups.push(buf);
+          buf = s;
+        }
+      }
+      if (buf) groups.push(buf);
+      return groups;
     }
 
     /** One API call per slide when script fits in TTS_MAX_CHARS */
@@ -317,6 +1364,7 @@
     function showError(msg) {
       lastPlayError = msg || "";
       const el = $("unsupported");
+      if (!el) return;
       if (!msg) { el.style.display = "none"; el.textContent = ""; return; }
       el.style.display = "block";
       el.textContent = msg;
@@ -350,21 +1398,25 @@
     }
 
     function stopPlayer() {
+      player.onended = null;
+      player.onerror = null;
       player.pause();
       player.removeAttribute("src");
       player.load();
     }
 
     function clearTtsPrefetch(gen) {
-      for (const v of ttsPrefetch.cache.values()) {
+      for (const key of [...ttsPrefetch.cache.keys()]) {
+        if (String(key).startsWith("slide:")) continue;
+        const v = ttsPrefetch.cache.get(key);
         if (typeof v === "string") URL.revokeObjectURL(v);
+        ttsPrefetch.cache.delete(key);
       }
-      ttsPrefetch.cache.clear();
       ttsPrefetch.gen = gen;
     }
 
     function mergeAbortSignals() {
-      const signals = [abortCtrl?.signal, typeof AbortSignal.timeout === "function" ? AbortSignal.timeout(90000) : null].filter(Boolean);
+      const signals = [abortCtrl?.signal, typeof AbortSignal.timeout === "function" ? AbortSignal.timeout(12000) : null].filter(Boolean);
       if (!signals.length) return undefined;
       if (signals.length === 1) return signals[0];
       return typeof AbortSignal.any === "function" ? AbortSignal.any(signals) : signals[0];
@@ -375,7 +1427,7 @@
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ text, voice: ttsVoice, model: ttsModel, speed: ttsSpeed }),
-        signal: typeof AbortSignal.timeout === "function" ? AbortSignal.timeout(90000) : undefined,
+        signal: typeof AbortSignal.timeout === "function" ? AbortSignal.timeout(12000) : undefined,
       });
       if (!res.ok) throw new Error(`TTS ${res.status}`);
       const blob = await res.blob();
@@ -394,6 +1446,45 @@
       const blob = await res.blob();
       if (gen !== speakGen) throw new DOMException("Aborted", "AbortError");
       return URL.createObjectURL(blob);
+    }
+
+    function setSlideCaption(text) {
+      const el = $("slideCaption");
+      const live = $("liveCaption");
+      if (live) {
+        live.textContent = text || "等待讲解…";
+        live.classList.toggle("empty", !text);
+        live.scrollTop = live.scrollHeight;
+      }
+      if (!el) return;
+      if (!text) { el.hidden = true; el.textContent = ""; return; }
+      el.hidden = false;
+      el.textContent = text;
+    }
+
+    function scrollChatLog() {
+      document.querySelectorAll(".qa-log").forEach((log) => {
+        log.scrollTop = log.scrollHeight;
+      });
+    }
+
+    function setTranscriptHtml(html) {
+      const el = $("transcript");
+      el.innerHTML = html;
+      scrollChatLog();
+    }
+
+    function prefetchSlideImages(from = 0) {
+      for (let i = from; i < slides.length; i++) {
+        const img = new Image();
+        img.decoding = "async";
+        img.src = slideImageUrl(slides[i], i);
+      }
+    }
+
+    function prefetchAllSlidesAudio() {
+      if (!useCloudTts || !TTS_API) return;
+      for (let i = 0; i < slides.length; i++) prefetchSlideAudio(i);
     }
 
     function prefetchSlideAudio(slideIndex) {
@@ -429,9 +1520,11 @@
       player.currentTime = 0;
       player.muted = false;
       ttsStartedAt = Date.now();
+      const cleanup = () => { player.onended = null; player.onerror = null; };
       try {
         await player.play();
       } catch (e) {
+        if (gen !== speakGen) { cleanup(); URL.revokeObjectURL(url); throw new DOMException("Aborted", "AbortError"); }
         if (audioCtx) {
           try {
             const res = await fetch(url);
@@ -445,29 +1538,44 @@
               src.onended = resolve;
               src.start(0);
             });
+            cleanup();
             return;
           } catch (webErr) {
             console.warn("WebAudio fallback", webErr);
           }
         }
+        cleanup();
         throw new Error(e.name === "NotAllowedError"
           ? "浏览器阻止播放：请再点一次「讲解本页」，并确认页面标签未被静音"
           : `播放失败 (${e.name || e.message})`);
       }
-      await new Promise((resolve, reject) => {
-        if (gen !== speakGen) return reject(new DOMException("Aborted", "AbortError"));
-        player.onended = () => resolve();
-        player.onerror = () => reject(new Error("audio element error"));
-      });
+      try {
+        await new Promise((resolve, reject) => {
+          if (gen !== speakGen) return reject(new DOMException("Aborted", "AbortError"));
+          player.onended = () => { cleanup(); resolve(); };
+          player.onerror = () => {
+            cleanup();
+            if (gen !== speakGen) return reject(new DOMException("Aborted", "AbortError"));
+            reject(new Error("audio element error"));
+          };
+        });
+      } catch (e) {
+        cleanup();
+        throw e;
+      }
     }
 
     async function speakOneCloud(sentence, gen, cacheKey, progressHint) {
       if (gen !== speakGen) throw new DOMException("Aborted", "AbortError");
+      pauseMicForTts();
       synth.cancel();
       lastSpokenChunk = sentence;
-      if (progressHint) setState(State.SPEAKING, progressHint + " · 合成中…", "讲解中");
-      let url;
+      setSlideCaption(sentence);
       const cached = cacheKey != null ? ttsPrefetch.cache.get(cacheKey) : null;
+      const hasCached = Boolean(cached);
+      if (progressHint && !hasCached) setState(State.SPEAKING, progressHint + " · 合成中…", "讲解中");
+      else if (progressHint) setState(State.SPEAKING, progressHint + " · 播放中", "讲解中");
+      let url;
       if (cached) {
         ttsPrefetch.cache.delete(cacheKey);
         url = await cached;
@@ -480,6 +1588,8 @@
     }
 
     function speakOneBrowser(sentence, gen) {
+      pauseMicForTts();
+      setSlideCaption(sentence);
       return new Promise((resolve, reject) => {
         if (gen !== speakGen) return reject(new DOMException("Aborted", "AbortError"));
         synth.cancel();
@@ -489,9 +1599,43 @@
         u.rate = 1.1;
         const voice = getZhVoice();
         if (voice) u.voice = voice;
-        u.onstart = () => { ttsStartedAt = Date.now(); };
-        u.onend = () => resolve();
-        u.onerror = (e) => (e.error === "interrupted" ? reject(new DOMException("Aborted", "AbortError")) : reject(e));
+
+        clearInterval(pointerTimer);
+        let startTime = Date.now();
+        const charCount = sentence.length;
+        const estimatedDurationMs = (charCount / (4.5 * u.rate)) * 1000;
+
+        if (narration.active && showPointer) {
+          pointerTimer = setInterval(() => {
+            if (gen !== speakGen || state !== State.SPEAKING || !showPointer) {
+              clearInterval(pointerTimer);
+              return;
+            }
+            const elapsed = Date.now() - startTime;
+            const currentPartProgress = Math.min(0.99, elapsed / estimatedDurationMs);
+            const numParts = narration.parts.length || 1;
+            const partIdx = narration.index;
+            const overallProgress = (partIdx + currentPartProgress) / numParts;
+            setDocPointerProgress(overallProgress);
+          }, 100);
+        }
+
+        u.onstart = () => {
+          ttsStartedAt = Date.now();
+          startTime = Date.now();
+        };
+        u.onend = () => {
+          clearInterval(pointerTimer);
+          resolve();
+        };
+        u.onerror = (e) => {
+          clearInterval(pointerTimer);
+          if (e.error === "interrupted") {
+            reject(new DOMException("Aborted", "AbortError"));
+          } else {
+            reject(e);
+          }
+        };
         synth.speak(u);
       });
     }
@@ -501,11 +1645,18 @@
         try {
           await speakOneCloud(sentence, gen, cacheKey, progressHint);
           showError("");
+          consecutiveTtsFailures = 0; // 成功时重置连续失败计数
           return;
         } catch (e) {
-          if (e.name === "AbortError") throw e;
+          if (abortCtrl?.signal?.aborted || gen !== speakGen) throw e;
           console.warn("cloud TTS", e);
-          showError(String(e.message || e));
+          consecutiveTtsFailures++;
+          if (consecutiveTtsFailures >= 2) {
+            useCloudTts = false;
+            showError("云端语音服务超时，已自动切换为浏览器本地语音播报。");
+          } else {
+            showError(`云端语音连接失败 (${e.message || e})，正在尝试本地播放...`);
+          }
         }
       }
       setState(State.SPEAKING, "浏览器语音播放中…", "讲解中");
@@ -514,18 +1665,30 @@
     }
 
     function speakingHint(trackNarration) {
-      if (trackNarration && listenEnabled) return "可随时语音提问 · 答完自动续讲";
-      if (trackNarration) return "播放中 · 点「提问」可打断";
+      if (trackNarration && listenEnabled) return "播报中 · 段末/页末可提问 · 或点常见问题";
+      if (trackNarration) return "播放中 · 点「提问」或常见问题";
       return "播报中";
+    }
+
+    async function waitForQaWindow(ms) {
+      pauseMicForTts();
+      await delay(30);
+      try { recognition?.start(); } catch (_) {}
+      $("askInput")?.focus({ preventScroll: true });
+      const deadline = Date.now() + ms;
+      while (Date.now() < deadline || handlingQuestion) {
+        if (handlingQuestion) await delay(100);
+        else await delay(50);
+      }
     }
 
     function ensureListen(on, hint) {
       if (on && !listenEnabled) {
         listenEnabled = true;
-        try { recognition?.start(); } catch (_) {}
         updateActionButtons();
       }
-      if (hint && listenEnabled) setState(state, hint);
+      syncMicWithState();
+      if (hint && listenEnabled && state !== State.SPEAKING) setState(state, hint);
     }
 
     async function speakParts(parts, { trackNarration = false, startAt = 0, deckLabel = "", slideIndex = null } = {}) {
@@ -537,12 +1700,17 @@
       }
       const speakLabel = deckLabel || (trackNarration ? "讲解中" : "播报中");
       setState(State.SPEAKING, speakingHint(trackNarration), speakLabel);
+      pauseMicForTts();
       let finishedAll = false;
       try {
         let spoke = 0;
         for (let i = startAt; i < parts.length; i++) {
           if (abortCtrl.signal.aborted || gen !== speakGen) break;
           if (trackNarration) narration.index = i;
+          if (trackNarration) {
+            const denom = Math.max(1, parts.length - 1);
+            setDocPointerProgress(i / denom);
+          }
           const progress = parts.length > 1 ? `第 ${i + 1}/${parts.length} 段` : "";
           const cacheKey = slideIndex != null && parts.length === 1 ? `slide:${slideIndex}` : `${gen}:${i}`;
           if (slideIndex != null && presentation.active) {
@@ -550,23 +1718,48 @@
           } else if (useCloudTts && TTS_API && i + 1 < parts.length) {
             prefetchCloudChunk(parts[i + 1], `${gen}:${i + 1}`, gen);
           }
+          pauseMicForTts();
           await speakOne(parts[i], gen, cacheKey, progress);
           spoke++;
+          if (trackNarration) narration.index = i + 1;
+          if (trackNarration && listenEnabled && qaAutoListen && i + 1 < parts.length && gen === speakGen && !presentation.active) {
+            setState(State.LISTENING, `可提问 · ${(QA_SENTENCE_GAP_MS / 1000).toFixed(1)} 秒后继续`, speakLabel);
+            await waitForQaWindow(QA_SENTENCE_GAP_MS);
+            if (gen !== speakGen || handlingQuestion) break;
+            setState(State.SPEAKING, speakingHint(trackNarration), speakLabel);
+          }
+        }
+        if (trackNarration && listenEnabled && qaAutoListen && gen === speakGen && spoke > 0 && !handlingQuestion && !presentation.active) {
+          setState(State.LISTENING, `本段讲完 · 请提问 · ${(QA_SENTENCE_GAP_MS / 1000).toFixed(1)} 秒`, speakLabel);
+          await waitForQaWindow(QA_SENTENCE_GAP_MS);
         }
         finishedAll = gen === speakGen && spoke === parts.length - startAt && parts.length > 0;
-        if (gen === speakGen && trackNarration && finishedAll) narration.active = false;
+        if (gen === speakGen && trackNarration && finishedAll) {
+          narration.active = false;
+          setDocPointerProgress(1);
+        }
       } catch (e) {
-        if (e.name !== "AbortError") {
+        if (e.name === "AbortError") {
+          showError("");
+        } else {
           console.warn(e);
-          if (gen === speakGen) setState(State.IDLE, e.message || "播放失败，请重试");
+          if (gen === speakGen) {
+            showError(e.message || "播放失败，请重试");
+            setState(listenEnabled ? State.LISTENING : State.IDLE, e.message || "播放失败，请重试");
+          }
         }
       } finally {
         if (gen === speakGen) {
           clearTtsPrefetch(gen);
           synth.cancel();
           stopPlayer();
-          if (!presentation.active) {
-            setState(listenEnabled ? State.LISTENING : State.IDLE, listenEnabled ? "请提问" : "讲解结束 · 可翻页或继续讲解");
+          if (presentation.active && trackNarration && finishedAll) {
+            setState(State.LISTENING, "本页讲完 · 可提问 · 即将翻页", "演讲");
+          } else if (!presentation.active) {
+            if (!handlingQuestion) setSlideCaption("");
+            const skipPostIdle = ["结束", "开场", "试听", "答疑"].includes(speakLabel);
+            if (!skipPostIdle && (listenEnabled || qaAutoListen)) startQaIdleClose();
+            else setState(State.IDLE, "讲解结束 · 可翻页或继续讲解");
           }
         }
       }
@@ -574,7 +1767,17 @@
     }
 
     async function speakStream(text, opts = {}) {
-      return speakParts(chunkForTts(text), opts);
+      let parts;
+      const oneShot = opts.singleChunk || (opts.trackNarration && presentation.active && text.length <= TTS_MAX_CHARS);
+      if (oneShot) {
+        parts = [text];
+      } else if (opts.trackNarration) {
+        parts = groupForNarration(text);
+        if (!parts.length) parts = [text];
+      } else {
+        parts = chunkForTts(text);
+      }
+      return speakParts(parts, opts);
     }
 
     function updatePresentButton() {
@@ -587,6 +1790,8 @@
         showError("本页没有讲解脚本，请检查 slides.json");
         return;
       }
+      consecutiveTtsFailures = 0; // 重置失败计数
+      if (TTS_API) useCloudTts = true; // 重新尝试云端
       if (restart) {
         speakGen++;
         clearTtsPrefetch(speakGen);
@@ -617,35 +1822,43 @@
     }
 
     async function speakAside(text, hint, label = "演讲") {
-      if (!text || !presentation.active) return true;
+      if (!text) return true;
       setState(State.SPEAKING, hint, label);
       return speakStream(text, { deckLabel: label });
     }
 
     async function speakOutroIfNeeded() {
       const outro = getDeckOutro();
-      if (!outro || !presentation.active) {
-        endPresentation("全部讲完 · 感谢聆听");
+      presentation.active = false;
+      updatePresentButton();
+      if (!outro) {
+        finishPresentationWithQa();
         return;
       }
       await delay(200);
       const ok = await speakAside(outro, "结束语 · 欢迎提问", "结束");
-      if (!presentation.active || !ok) return;
-      const wantQa = listenEnabled;
-      endPresentation("汇报结束 · 欢迎提问");
-      if (!wantQa) toggleListen();
-      else setState(State.LISTENING, "提问环节 · 请直接说话或点常见问题");
+      finishPresentationWithQa();
+      if (!ok) console.warn("outro playback incomplete");
     }
 
     function endPresentation(msg) {
       presentation.active = false;
       updatePresentButton();
-      setState(listenEnabled ? State.LISTENING : State.IDLE, msg || "演讲结束");
+      if (!postExplainQaOpen && msg) {
+        $("statusHint").textContent = msg;
+      }
+    }
+
+    function takePresAdvance() {
+      if (!presAdvanceTaken) return false;
+      presAdvanceTaken = false;
+      return true;
     }
 
     async function presentSlide(slideIndex) {
       if (!presentation.active || slideIndex >= slides.length) {
-        endPresentation(slideIndex >= slides.length ? "全部讲完 · 感谢聆听" : "演讲已停止");
+        if (slideIndex >= slides.length) finishPresentationWithQa();
+        else endPresentation("演讲已停止");
         return;
       }
       currentSlide = slideIndex;
@@ -654,27 +1867,50 @@
       if (!script) return presentSlide(slideIndex + 1);
 
       setState(State.SPEAKING, `第 ${slideIndex + 1}/${slides.length} 页 · 自动翻页`, "演讲");
+      setSlideCaption(script.length > 160 ? script.slice(0, 160) + "…" : script);
       prefetchSlideAudio(slideIndex);
-      const done = await speakStream(script, {
+      prefetchSlideAudio(slideIndex + 1);
+      await speakStream(script, {
         trackNarration: true, startAt: 0, deckLabel: "演讲", slideIndex,
       });
       if (!presentation.active) return;
-      if (!done) return;
+      if (takePresAdvance()) return;
+      if (handlingQuestion) return;
+      if (narration.active && narration.index < narration.parts.length) return;
 
       if (slideIndex >= slides.length - 1) {
         await speakOutroIfNeeded();
         return;
       }
+      if (presentation.active && qaAutoListen && listenEnabled) {
+        setState(
+          State.LISTENING,
+          `第 ${slideIndex + 1} 页讲完 · 可提问 · ${(SLIDE_QA_PAUSE_MS / 1000).toFixed(1)} 秒后翻页`,
+          "演讲"
+        );
+        await waitForQaWindow(SLIDE_QA_PAUSE_MS);
+        if (!presentation.active) return;
+        if (takePresAdvance()) return;
+        if (handlingQuestion) return;
+      }
       await delay(SLIDE_PAUSE_MS);
+      if (!presentation.active || takePresAdvance() || handlingQuestion) return;
       return presentSlide(slideIndex + 1);
     }
 
     async function startPresentation(from = currentSlide) {
+      cancelQaIdleClose();
+      postExplainQaOpen = false;
+      presAdvanceTaken = false;
       presentation.active = true;
+      consecutiveTtsFailures = 0; // 重置失败计数
+      if (TTS_API) useCloudTts = true; // 重新尝试云端
       updatePresentButton();
       primePlayerOnClick();
       showError("");
       if (qaAutoListen) ensureListen(true);
+      prefetchAllSlidesAudio();
+      prefetchSlideImages(from);
       prefetchSlideAudio(from);
       if (from === 0) {
         const intro = getDeckIntro();
@@ -691,17 +1927,49 @@
     }
 
     async function continuePresentationIfNeeded() {
-      if (!presentation.active || narration.active) return;
+      if (!presentation.active) return;
+      if (narration.active && narration.index < narration.parts.length) return;
       const next = currentSlide + 1;
       if (next >= slides.length) {
         await speakOutroIfNeeded();
         return;
       }
+      presAdvanceTaken = true;
       await delay(SLIDE_PAUSE_MS);
       await presentSlide(next);
     }
 
+    async function resumeAfterAnswer(wasNarrating, wasPresenting, { resumeDelayMs = 0, forceResume = false } = {}) {
+      const shouldResume = forceResume || $("autoResume").checked;
+      if (!shouldResume) {
+        if (wasNarrating || wasPresenting) {
+          setState(listenEnabled ? State.LISTENING : State.IDLE, "说「继续」可接着讲");
+        }
+        return;
+      }
+      if (resumeDelayMs > 0) {
+        setState(State.IDLE, `${Math.round(resumeDelayMs / 1000)} 秒后继续讲解…`);
+        await delay(resumeDelayMs);
+      }
+      const label = wasPresenting ? "演讲" : "讲解";
+      if (wasNarrating) {
+        if (!forceResume) await speakParts(["好，继续。"], { deckLabel: label });
+        await resumeNarration();
+      }
+      if (wasPresenting && presentation.active) {
+        if (!wasNarrating) {
+          // 如果提问前讲解已经放完了，答疑结束后等待 3 秒再翻页，给用户充足的时间看答案
+          setState(State.IDLE, "3 秒后进入下一页…", "答疑");
+          await delay(3000);
+        }
+        await continuePresentationIfNeeded();
+      }
+    }
+
     function hardStop(clearNarration = true) {
+      cancelQaIdleClose();
+      postExplainQaOpen = false;
+      presAdvanceTaken = false;
       presentation.active = false;
       updatePresentButton();
       speakGen++;
@@ -709,6 +1977,8 @@
       abortCtrl?.abort();
       synth.cancel();
       stopPlayer();
+      setSlideCaption("");
+      stopDocPointing();
       if (clearNarration) narration.active = false;
       setState(listenEnabled ? State.LISTENING : State.IDLE);
     }
@@ -722,12 +1992,16 @@
     }
 
     async function resumeNarration() {
+      const deckLabel = presentation.active ? "演讲" : "讲解中";
+      const slideIndex = currentSlide;
       if (!narration.active || narration.index >= narration.parts.length) {
         const script = slides[currentSlide]?.script;
-        if (script) return speakStream(script, { trackNarration: true, startAt: 0 });
-        return;
+        if (!script) return false;
+        return speakStream(script, { trackNarration: true, startAt: 0, slideIndex, deckLabel });
       }
-      await speakParts(narration.parts, { trackNarration: true, startAt: narration.index });
+      return speakParts(narration.parts, {
+        trackNarration: true, startAt: narration.index, slideIndex, deckLabel,
+      });
     }
 
     function slideImageUrl(slide, index) {
@@ -739,20 +2013,23 @@
       const slide = slides[currentSlide];
       $("slideIndex").textContent = currentSlide + 1;
       $("slideTotal").textContent = slides.length;
-      $("scriptText").textContent = slide?.script || "—";
+      const scriptEl = $("scriptText");
+      if (scriptEl) scriptEl.textContent = slide?.script || "—";
       $("slideTitle").textContent = slide?.title || `Slide ${currentSlide + 1}`;
       $("slideImage").src = slideImageUrl(slide, currentSlide);
       $("slideImage").alt = slide?.title || `Slide ${currentSlide + 1}`;
       const faqEl = $("faqList");
-      faqEl.innerHTML = "";
-      (slide?.faq || []).forEach((item) => {
-        const chip = document.createElement("button");
-        chip.type = "button";
-        chip.className = "faq-chip";
-        chip.textContent = item.q;
-        chip.addEventListener("click", () => handleUserText(item.q, { fromClick: true }));
-        faqEl.appendChild(chip);
-      });
+      if (faqEl) {
+        faqEl.innerHTML = "";
+        (slide?.faq || []).forEach((item) => {
+          const chip = document.createElement("button");
+          chip.type = "button";
+          chip.className = "faq-chip";
+          chip.textContent = item.q;
+          chip.addEventListener("click", () => handleUserText(item.q, { fromClick: true }));
+          faqEl.appendChild(chip);
+        });
+      }
       narration = { active: false, parts: [], index: 0 };
       updateActionButtons();
     }
@@ -808,7 +2085,7 @@
       const slide = slides[currentSlide];
       const script = slide?.script || "";
       if (!script) return null;
-      const parts = splitSentences(script);
+      const parts = groupForNarration(script);
       const ut = tokens(text);
       let best = null, bestScore = 0;
       for (const p of parts) {
@@ -817,33 +2094,56 @@
         if (s > bestScore) { bestScore = s; best = p; }
       }
       if (best && bestScore >= 2) return best;
-      if (parts.length) return `根据本页内容：${parts[0]}`;
+      if (parts.length) return parts[0];
       return null;
     }
 
     function buildLiveAnswer(text) {
-      return matchFaq(text) || answerFromScript(text) ||
-        `关于「${text.slice(0, 20)}」，本页重点是：${(slides[currentSlide]?.script || "").slice(0, 120)}… 如需更细节我们可以会后展开。`;
+      const faq = matchFaq(text);
+      if (faq) return faq;
+      const fromScript = answerFromScript(text);
+      if (fromScript) return fromScript;
+      const script = slides[currentSlide]?.script || "";
+      const groups = groupForNarration(script);
+      const excerpt = groups.slice(0, 2).join("") || script.slice(0, 280);
+      return `关于「${text.slice(0, 24)}」：${excerpt}`;
     }
 
-    async function askLLM(userText) {
-      const base = $("apiBase").value.trim().replace(/\/$/, "");
-      const key = $("apiKey").value.trim();
-      const model = $("apiModel").value.trim() || "gpt-4o-mini";
-      if (!base || !key) return null;
+    async function askLLM(userText, faqHint = "") {
       const slide = slides[currentSlide];
       const system = [
-        "你是现场 PPT 讲解员，必须当场回答，禁止说「以后再答」「会后讨论」。",
-        "口语化，最多 3 句话，只基于本页脚本和 FAQ。",
-        `第 ${currentSlide + 1} 页：${slide?.title || ""}`,
-        `脚本：${slide?.script || ""}`,
-        `FAQ：${(slide?.faq || []).map((f) => f.q + "→" + f.a).join("；")}`,
-      ].join("\n");
+        "你是一位资深的抗体工程与免疫学专家，正在进行一场高水平的学术汇报并解答听众提问。",
+        "请用专业、严谨且口语化的中文回答听众的问题，字数控制在 3-5 句话内，通俗易懂且富有洞察力并直接回答。",
+        "【关键智能容错规则】：听众提问是通过语音识别（ASR）输入的，可能存在同音字或拼写错误（例如将「FLT3」识别为「福利的水」或「福利特三」，将「pDC」识别为「皮迪西」等）。请结合当前幻灯片上下文，智能推测听众的真实意图，并在回答开头委婉纠正（例如：『您问的应该是 FLT3（Fms样酪氨酸激酶3）...』）。",
+        "【专业知识扩展】：虽然你应该以当前幻灯片内容、脚本和FAQ为核心上下文，但如果听众提问了幻灯片中涉及的专业学术名词（如靶点、细胞亚群、技术术语等），你必须结合你深厚的生物医药专业背景，给出准确、前沿的学术定义和机制解释，不要局限于脚本中已有的字面内容，但也不要捏造与本页数据冲突的数字。",
+        `当前幻灯片（第 ${currentSlide + 1} 页）：${slide?.title || ""}`,
+        `当前页讲解脚本：${slide?.script || ""}`,
+        `当前页预设FAQ：${(slide?.faq || []).map((f) => f.q + "→" + f.a).join("；")}`,
+        faqHint ? `参考提示（请结合专业知识进行扩写，不要生硬复述）：${faqHint}` : "",
+      ].filter(Boolean).join("\n");
+      const model = $("apiModel").value.trim() || "gpt-4o-mini";
+      const maxTokens = 420;
+
+      if (TTS_API) {
+        const res = await fetch(`${TTS_API}/chat`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ system, user: userText, model, max_tokens: maxTokens }),
+          signal: abortCtrl?.signal,
+        });
+        if (!res.ok) throw new Error(`LLM ${res.status}`);
+        const j = await res.json();
+        return j.text?.trim() || null;
+      }
+
+      const base = $("apiBase").value.trim().replace(/\/$/, "");
+      const key = $("apiKey").value.trim();
+      if (!base || !key) return null;
       const res = await fetch(`${base}/chat/completions`, {
         method: "POST",
         headers: { "Content-Type": "application/json", Authorization: `Bearer ${key}` },
         body: JSON.stringify({
-          model, stream: false, max_tokens: 200,
+          model, stream: false, max_tokens: maxTokens,
           messages: [{ role: "system", content: system }, { role: "user", content: userText }],
         }),
         signal: abortCtrl?.signal,
@@ -855,6 +2155,7 @@
 
     function isEcho(text) {
       if (!text || text.length < 2) return true;
+      if (postExplainQaOpen || state === State.LISTENING) return false;
       if (state === State.SPEAKING && Date.now() - ttsStartedAt < 1200) return true;
       const n = normalize(text);
       const chunk = normalize(lastSpokenChunk);
@@ -875,11 +2176,25 @@
       return text.trim().length >= 2;
     }
 
-    async function handleUserText(text, { fromClick = false } = {}) {
+    function submitAskInput() {
+      const input = $("askInput");
+      if (!input) return;
+      const text = input.value.trim();
+      if (!text) return;
+      input.value = "";
+      if (!listenEnabled && !postExplainQaOpen) {
+        listenEnabled = true;
+        updateActionButtons();
+      }
+      handleUserText(text, { fromClick: true });
+    }
+
+    async function handleUserText(text, { fromClick = false, fromPtt = false } = {}) {
       if (!text?.trim() || handlingQuestion) return;
       if (!fromClick && isEcho(text)) return;
 
       text = text.trim();
+      cancelQaIdleClose();
 
       if (RESUME_RE.test(text)) {
         interruptForQuestion();
@@ -891,42 +2206,174 @@
       if (PREV_RE.test(text)) { hardStop(true); $("btnPrev").click(); return; }
       if (STOP_RE.test(text)) { hardStop(true); return; }
 
+      const wasPresenting = presentation.active;
       const wasNarrating = narration.active && narration.index < narration.parts.length;
+      const inPostQa = postExplainQaOpen;
+      listenEnabled = true;
+      updateActionButtons();
       interruptForQuestion();
 
       handlingQuestion = true;
-      $("reply").hidden = false;
       $("reply").textContent = "正在思考…";
+      $("reply").classList.remove("empty");
+      setTranscriptHtml(`<span class="q-label">问：</span><span class="final">${escapeHtml(text)}</span>`);
       setState(State.THINKING, "理解您的问题…");
       abortCtrl = new AbortController();
 
-      let answer = matchFaq(text);
+      let answer = null;
+      const faqHint = matchFaq(text);
       try {
-        if (!answer) answer = await askLLM(text);
+        answer = await askLLM(text, faqHint || "");
       } catch (e) {
         if (e.name === "AbortError") { handlingQuestion = false; return; }
-        console.warn(e);
+        console.warn("LLM", e);
+        showError(`问答 API 异常：${e.message || e} · 已改用本地要点`);
       }
-      if (!answer) answer = buildLiveAnswer(text);
-
-      $("reply").textContent = "答：" + answer;
-      await speakParts([answer]);
-
-      if ($("autoResume").checked && wasNarrating) {
-        await speakParts(["好，我继续讲。"]);
-        await resumeNarration();
-        await continuePresentationIfNeeded();
-      } else if (wasNarrating) {
-        setState(listenEnabled ? State.LISTENING : State.IDLE, "说「继续」可接着讲");
+      if (!answer) answer = faqHint || buildLiveAnswer(text);
+      if (!answer) {
+        answer = "抱歉，我暂时无法回答这个问题，请换个方式提问或点击上方常见问题。";
       }
+
+      $("reply").textContent = answer;
+      $("reply").classList.remove("empty");
+      qaHistory.push({
+        t: new Date().toISOString(),
+        slide: currentSlide + 1,
+        q: text,
+        a: answer,
+      });
+      scrollChatLog();
+      setSlideCaption(answer);
+      showError("");
+      primePlayerOnClick();
+      await speakParts([answer], { deckLabel: inPostQa || wasPresenting ? "答疑" : "讲解" });
+
+      await resumeAfterAnswer(wasNarrating, wasPresenting, {
+        resumeDelayMs: fromPtt ? 2000 : 0,
+        forceResume: fromPtt,
+      });
       handlingQuestion = false;
+      if (inPostQa || postExplainQaOpen) {
+        bumpQaIdleClose();
+      } else if (!wasPresenting && !wasNarrating) {
+        startQaIdleClose();
+      }
+    }
+
+    function pttCombinedText() {
+      return (pttFinalParts.join("") + pttInterim).trim();
+    }
+
+    function resetPttBuffer() {
+      pttFinalParts = [];
+      pttInterim = "";
+    }
+
+    function setPttUi(holding) {
+      const btn = $("btnPtt");
+      const label = $("pttLabel");
+      const sideBtn = $("btnSidePtt");
+      const sideLabel = $("sidePttLabel");
+      if (btn) btn.classList.toggle("holding", holding);
+      if (label) label.textContent = "按住提问";
+      if (sideBtn) sideBtn.classList.toggle("holding", holding);
+      if (sideLabel) sideLabel.textContent = "按住提问";
+    }
+
+    function startPtt() {
+      if (!recognition || handlingQuestion || pttActive) return;
+      primePlayerOnClick();
+      cancelQaIdleClose();
+      pttActive = true;
+      resetPttBuffer();
+      listenEnabled = true;
+      postExplainQaOpen = true;
+      if (state === State.SPEAKING) interruptForQuestion();
+      setPttUi(true);
+      setState(State.LISTENING, "按住说话…松手即发送");
+      clearTimeout(micResumeTimer);
+      try { recognition.abort(); } catch (_) {}
+      try { recognition.stop(); } catch (_) {}
+      micResumeTimer = setTimeout(() => {
+        if (!pttActive) return;
+        try { recognition.start(); } catch (e) {
+          showError("无法启动麦克风，请允许浏览器使用麦克风");
+          endPtt(true);
+        }
+      }, 80);
+      updateActionButtons();
+    }
+
+    async function endPtt(cancelled = false) {
+      if (!pttActive) return;
+      pttActive = false;
+      setPttUi(false);
+      clearTimeout(micResumeTimer);
+      try { recognition?.stop(); } catch (_) {}
+      listenEnabled = false;
+      postExplainQaOpen = false;
+      updateActionButtons();
+
+      const text = pttCombinedText();
+      resetPttBuffer();
+
+      if (cancelled) {
+        setState(State.IDLE, "已取消提问");
+        return;
+      }
+      if (!text || text.length < 2) {
+        setState(State.IDLE, "未听到问题，请再按住说话");
+        setTranscriptHtml(`<span class="interim">${escapeHtml("（未识别到语音，请再试）")}</span>`);
+        return;
+      }
+
+      setTranscriptHtml(`<span class="q-label">问：</span><span class="final">${escapeHtml(text)}</span>`);
+      await handleUserText(text, { fromClick: true, fromPtt: true });
+    }
+
+    function initPttButton() {
+      const btns = [ $("btnPtt"), $("btnSidePtt") ].filter(Boolean);
+      if (btns.length === 0) return;
+      if (!recognition) {
+        btns.forEach(btn => {
+          btn.disabled = true;
+          btn.title = "请使用 Chrome/Edge 并允许麦克风";
+        });
+        return;
+      }
+      const onDown = (e) => {
+        e.preventDefault();
+        startPtt();
+      };
+      const onUp = (e) => {
+        e.preventDefault();
+        endPtt(false);
+      };
+      btns.forEach(btn => {
+        btn.addEventListener("mousedown", onDown);
+        btn.addEventListener("mouseup", onUp);
+        btn.addEventListener("mouseleave", () => { if (pttActive) endPtt(false); });
+        btn.addEventListener("touchstart", onDown, { passive: false });
+        btn.addEventListener("touchend", onUp, { passive: false });
+        btn.addEventListener("touchcancel", () => endPtt(true));
+      });
+      window.addEventListener("mouseup", () => { if (pttActive) endPtt(false); });
+      window.addEventListener("touchend", (e) => {
+        if (pttActive && !btns.some(btn => btn.contains(e.target))) endPtt(false);
+      }, { passive: false });
     }
 
     function initRecognition() {
       if (!SpeechRecognition) {
-        $("unsupported").style.display = "block";
-        $("unsupported").textContent = "请使用 Chrome 或 Edge 以启用语音识别。";
-        $("btnListen").disabled = true;
+        const el = $("unsupported");
+        if (el) {
+          el.style.display = "block";
+          el.textContent = "请使用 Chrome 或 Edge 以启用语音识别。";
+        }
+        const listenBtn = $("btnListen");
+        if (listenBtn) listenBtn.disabled = true;
+        $("btnPtt") && ($("btnPtt").disabled = true);
+        $("btnSidePtt") && ($("btnSidePtt").disabled = true);
         return;
       }
       recognition = new SpeechRecognition();
@@ -935,6 +2382,24 @@
       recognition.lang = "zh-CN";
 
       recognition.onresult = (ev) => {
+        if (state === State.THINKING) return;
+        if (pttActive) {
+          let interim = "", final = "";
+          for (let i = ev.resultIndex; i < ev.results.length; i++) {
+            const r = ev.results[i];
+            if (r.isFinal) final += r[0].transcript;
+            else interim += r[0].transcript;
+          }
+          if (final) pttFinalParts.push(final);
+          pttInterim = interim;
+          const live = pttCombinedText();
+          if (live) {
+            setTranscriptHtml(`<span class="q-label">问：</span><span class="interim">${escapeHtml(live)}</span>`);
+          }
+          return;
+        }
+        if (state === State.SPEAKING) return;
+        if (!listenEnabled && !postExplainQaOpen) return;
         let interim = "", final = "";
         for (let i = ev.resultIndex; i < ev.results.length; i++) {
           const r = ev.results[i];
@@ -942,30 +2407,39 @@
           else interim += r[0].transcript;
         }
         const live = (final || interim).trim();
-        if (live && listenEnabled) {
-          if (shouldInterrupt(live) && state === State.SPEAKING) {
-            interruptForQuestion();
-          }
-        }
+        if (!live) return;
         if (final && final.trim().length >= 2) {
           const ft = final.trim();
-          $("transcript").innerHTML = `<span class="final">${escapeHtml(ft)}</span>`;
-          if (listenEnabled) handleUserText(ft);
-        } else if (interim && listenEnabled) {
-          $("transcript").innerHTML = `<span class="interim">${escapeHtml(interim)}</span>`;
+          setTranscriptHtml(`<span class="q-label">问：</span><span class="final">${escapeHtml(ft)}</span>`);
+          handleUserText(ft);
+        } else {
+          setTranscriptHtml(`<span class="interim">${escapeHtml(live)}</span>`);
         }
       };
       recognition.onerror = (e) => {
         if (e.error === "not-allowed") {
-          showError("麦克风未授权：请在浏览器地址栏允许麦克风，再点「提问」");
+          showError("麦克风未授权：请在浏览器地址栏允许麦克风");
           listenEnabled = false;
+          if (pttActive) endPtt(true);
           updateActionButtons();
         } else if (e.error !== "no-speech" && e.error !== "aborted") {
           console.warn(e.error);
         }
       };
       recognition.onend = () => {
-        if (listenEnabled) try { recognition.start(); } catch (_) {}
+        if (pttActive) {
+          clearTimeout(micResumeTimer);
+          micResumeTimer = setTimeout(() => {
+            if (pttActive) {
+              try { recognition.start(); } catch (_) {}
+            }
+          }, 120);
+          return;
+        }
+        const ok = (listenEnabled || postExplainQaOpen) && state !== State.THINKING && state !== State.SPEAKING;
+        if (ok) {
+          try { recognition.start(); } catch (_) {}
+        }
       };
     }
 
@@ -975,28 +2449,40 @@
 
     function toggleListen() {
       const turningOn = !listenEnabled;
-      if (turningOn && state === State.SPEAKING) {
-        interruptForQuestion();
-      }
-      listenEnabled = turningOn;
-      if (listenEnabled) {
-        setState(State.LISTENING, "请提问 — 可直接说话打断");
-        try { recognition.start(); } catch (_) {}
+      if (turningOn) {
+        primePlayerOnClick();
+        // Stop any narration/playback so the mic can actually hear the user.
+        if (state === State.SPEAKING) interruptForQuestion();
+        listenEnabled = true;
+        postExplainQaOpen = true;
+        setState(State.LISTENING, "请说出您的问题…（或在右侧输入）");
+        clearTimeout(micResumeTimer);
+        try { recognition?.stop(); } catch (_) {}
+        micResumeTimer = setTimeout(() => {
+          try { recognition?.start(); } catch (_) {}
+        }, 220);
+        $("askInput")?.focus({ preventScroll: true });
       } else {
-        recognition?.stop();
+        listenEnabled = false;
+        postExplainQaOpen = false;
+        try { recognition?.stop(); } catch (_) {}
         setState(State.IDLE, "提问已关闭");
       }
       updateActionButtons();
     }
 
     function appendVoiceToSub() {
+      // Safely do nothing or update hidden sub
+      if (!$("deckSub")) return;
       const base = $("deckSub").textContent.replace(/ · 播音员：.*$/, "").replace(/ · 云端语音 OK · .*$/, "");
       $("deckSub").textContent = `${base} · 播音员：${ttsVoice}（${VOICE_LABELS[ttsVoice] || ttsVoice}）`;
     }
 
     function updateVoiceLabel() {
       const el = $("voiceCurrentLabel");
-      if (el) el.textContent = `播音员：${ttsVoice} · ${VOICE_LABELS[ttsVoice] || ttsVoice}`;
+      if (el) el.innerHTML = `<em>播音员</em> ${ttsVoice} · ${VOICE_LABELS[ttsVoice] || ttsVoice}`;
+      const vq = $("voiceQuick");
+      if (vq && vq.value !== ttsVoice) vq.value = ttsVoice;
       appendVoiceToSub();
     }
 
@@ -1011,12 +2497,73 @@
       $("voiceModal").hidden = true;
     }
 
+    function openTipModal() {
+      $("tipModal").hidden = false;
+    }
+
+    function closeTipModal() {
+      $("tipModal").hidden = true;
+    }
+
+    function safeName(s) {
+      return String(s || "").replace(/[\\/:*?"<>|]+/g, "_").slice(0, 80) || "ppt";
+    }
+
+    function downloadTextFile(filename, content) {
+      const blob = new Blob([content], { type: "text/plain;charset=utf-8" });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = filename;
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      URL.revokeObjectURL(url);
+    }
+
+    function downloadQaLog() {
+      const title = deck?.title || PROJECT || "PPT";
+      const ts = new Date().toISOString().replace(/[:.]/g, "-");
+      const lines = [];
+      lines.push(`# ${title} 问答记录`);
+      lines.push(`导出时间: ${new Date().toLocaleString()}`);
+      lines.push("");
+      if (!qaHistory.length) {
+        lines.push("暂无问答记录。");
+      } else {
+        qaHistory.forEach((item, idx) => {
+          lines.push(`## ${idx + 1}. Slide ${item.slide}`);
+          lines.push(`问: ${item.q}`);
+          lines.push(`答: ${item.a}`);
+          lines.push("");
+        });
+      }
+      downloadTextFile(`${safeName(title)}_qa_${ts}.txt`, lines.join("\n"));
+    }
+
+    function downloadScript() {
+      const title = deck?.title || PROJECT || "PPT";
+      const ts = new Date().toISOString().replace(/[:.]/g, "-");
+      const lines = [];
+      lines.push(`# ${title} 解说词`);
+      lines.push(`导出时间: ${new Date().toLocaleString()}`);
+      lines.push("");
+      (slides || []).forEach((s, i) => {
+        lines.push(`## Slide ${i + 1} - ${s?.title || ""}`);
+        lines.push(s?.script || "（无解说词）");
+        lines.push("");
+      });
+      downloadTextFile(`${safeName(title)}_script_${ts}.txt`, lines.join("\n"));
+    }
+
     function selectVoice(id) {
       if (!TTS_VOICES.includes(id)) return;
       ttsVoice = id;
       localStorage.setItem("ppt-voice-voice", ttsVoice);
       renderVoiceCards();
       updateVoiceLabel();
+      consecutiveTtsFailures = 0; // 重置失败计数
+      if (TTS_API) useCloudTts = true; // 重新尝试云端
     }
 
     function renderVoiceCards() {
@@ -1036,6 +2583,26 @@
     }
 
     function initVoicePicker() {
+      const vq = $("voiceQuick");
+      if (vq) {
+        vq.innerHTML = TTS_VOICES.map((id) =>
+          `<option value="${id}">${id} · ${VOICE_LABELS[id] || id}</option>`).join("");
+        vq.value = ttsVoice;
+        vq.addEventListener("change", (e) => selectVoice(e.target.value));
+      }
+      const sq = $("speedQuick");
+      if (sq) {
+        if (!["0.92", "1.0", "1.05", "1.08"].includes(String(ttsSpeed))) {
+          sq.innerHTML = `<option value="${ttsSpeed}">自定义 ${ttsSpeed}</option>` + sq.innerHTML;
+        }
+        sq.value = String(ttsSpeed);
+        sq.addEventListener("change", (e) => {
+          ttsSpeed = parseFloat(e.target.value) || 1.0;
+          localStorage.setItem("ppt-voice-speed", String(ttsSpeed));
+          const modalSel = $("ttsSpeedSelect");
+          if (modalSel) modalSel.value = String(ttsSpeed);
+        });
+      }
       $("ttsModelSelect").value = ttsModel;
       const speedSel = $("ttsSpeedSelect");
       if (!["0.92", "1.0", "1.05", "1.08"].includes(String(ttsSpeed))) {
@@ -1048,6 +2615,11 @@
       $("btnVoiceClose").addEventListener("click", closeVoiceModal);
       $("voiceModalBackdrop").addEventListener("click", closeVoiceModal);
       $("btnVoiceConfirm").addEventListener("click", closeVoiceModal);
+      $("btnTip").addEventListener("click", openTipModal);
+      $("btnTipClose").addEventListener("click", closeTipModal);
+      $("tipModalBackdrop").addEventListener("click", closeTipModal);
+      $("btnDownloadQa").addEventListener("click", downloadQaLog);
+      $("btnDownloadScript").addEventListener("click", downloadScript);
       $("ttsModelSelect").addEventListener("change", (e) => {
         ttsModel = e.target.value;
         localStorage.setItem("ppt-voice-model", ttsModel);
@@ -1055,11 +2627,62 @@
       speedSel.addEventListener("change", (e) => {
         ttsSpeed = parseFloat(e.target.value) || 1.0;
         localStorage.setItem("ppt-voice-speed", String(ttsSpeed));
+        const sq2 = $("speedQuick");
+        if (sq2 && ["0.92", "1.0", "1.05", "1.08"].includes(String(ttsSpeed))) sq2.value = String(ttsSpeed);
       });
       $("btnVoicePreview").addEventListener("click", () => {
         presentation.active = false;
         primePlayerOnClick();
         speakParts(["各位好，这是当前播音员试听。"], { deckLabel: "试听" });
+      });
+    }
+
+    function initResizableSidebar() {
+      const handle = $("resizeHandle");
+      const sidebar = document.querySelector(".qa-panel");
+      const mainArea = document.querySelector(".main-area");
+      if (!handle || !sidebar || !mainArea) return;
+
+      let isDragging = false;
+      let startX = 0;
+      let startWidth = 0;
+
+      // Load saved width
+      const savedWidth = localStorage.getItem("ppt-voice-sidebar-width");
+      if (savedWidth) {
+        sidebar.style.width = savedWidth + "px";
+      }
+
+      handle.addEventListener("mousedown", (e) => {
+        isDragging = true;
+        startX = e.clientX;
+        startWidth = sidebar.getBoundingClientRect().width;
+        handle.classList.add("dragging");
+        document.body.style.cursor = "col-resize";
+        document.body.style.userSelect = "none";
+      });
+
+      document.addEventListener("mousemove", (e) => {
+        if (!isDragging) return;
+        const dx = startX - e.clientX;
+        let newWidth = startWidth + dx;
+        
+        if (newWidth < 280) newWidth = 280;
+        if (newWidth > mainArea.getBoundingClientRect().width * 0.6) {
+          newWidth = mainArea.getBoundingClientRect().width * 0.6;
+        }
+
+        sidebar.style.width = newWidth + "px";
+        localStorage.setItem("ppt-voice-sidebar-width", String(newWidth));
+      });
+
+      document.addEventListener("mouseup", () => {
+        if (isDragging) {
+          isDragging = false;
+          handle.classList.remove("dragging");
+          document.body.style.cursor = "";
+          document.body.style.userSelect = "";
+        }
       });
     }
 
@@ -1069,26 +2692,39 @@
       deck = await res.json();
       slides = deck.slides || [];
       $("deckTitle").textContent = deck.title || PROJECT;
-      $("deckSub").textContent = `${slides.length} 页 · 全场演讲自动翻页 · 可打断问答`;
+      $("deckSub").textContent = `${slides.length} 页 · 全场演讲自动翻页 · 段末/页末可提问`;
       document.title = (deck.title || "PPT") + " · 语音播放器";
       currentSlide = 0;
       renderSlide();
+      prefetchSlideImages(0);
+      if (TTS_API) prefetchAllSlidesAudio();
     }
 
     $("btnPrev").addEventListener("click", () => { hardStop(true); currentSlide = Math.max(0, currentSlide - 1); renderSlide(); });
     $("btnNext").addEventListener("click", () => { hardStop(true); currentSlide = Math.min(slides.length - 1, currentSlide + 1); renderSlide(); });
+    const projectSelect = $("projectSelect");
+    if (projectSelect) {
+      projectSelect.value = PROJECT;
+      projectSelect.addEventListener("change", (e) => {
+        const val = e.target.value;
+        if (val) {
+          hardStop(true);
+          window.location.search = "?project=" + val;
+        }
+      });
+    }
     $("btnPresent").addEventListener("click", () => {
       if (presentation.active) { hardStop(true); return; }
+      primePlayerOnClick();
       startPresentation(currentSlide);
     });
-    $("btnSpeak").addEventListener("click", () => speakCurrentSlide());
-    $("btnContinue").addEventListener("click", async () => {
-      await resumeNarration();
-      await continuePresentationIfNeeded();
-    });
-    $("btnRestart").addEventListener("click", () => speakCurrentSlide({ restart: true }));
-    $("btnListen").addEventListener("click", toggleListen);
+    $("btnSpeak").addEventListener("click", handleSpeakClick);
+    $("btnListen")?.addEventListener("click", toggleListen);
     $("btnStop").addEventListener("click", () => hardStop(true));
+    $("btnAskSend").addEventListener("click", submitAskInput);
+    $("askInput").addEventListener("keydown", (e) => {
+      if (e.key === "Enter" && !e.shiftKey) { e.preventDefault(); submitAskInput(); }
+    });
 
     document.addEventListener("keydown", (e) => {
       if (e.key === "Escape") {
@@ -1101,27 +2737,98 @@
       if (e.key === " ") { e.preventDefault(); $("btnPresent").click(); }
     });
 
+    initLlmConfig();
     speechSynthesis.onvoiceschanged = () => getZhVoice();
     initRecognition();
+    initPttButton();
     initVoicePicker();
+    initResizableSidebar();
+    const THEMES = ["dark", "ivory", "beige", "gruvbox"];
+    const THEME_LABELS = {
+      "dark": "深邃星空",
+      "ivory": "学术象牙",
+      "beige": "极客沙色",
+      "gruvbox": "怀旧复古"
+    };
+    const btnThemeToggle = $("btnThemeToggle");
+    const themeLabel = $("themeLabel");
+    const updateThemeUi = (theme) => {
+      document.documentElement.setAttribute("data-theme", theme);
+      if (themeLabel) themeLabel.textContent = THEME_LABELS[theme] || theme;
+    };
+    if (btnThemeToggle) {
+      updateThemeUi(currentTheme);
+      btnThemeToggle.addEventListener("click", () => {
+        let idx = THEMES.indexOf(currentTheme);
+        currentTheme = THEMES[(idx + 1) % THEMES.length];
+        localStorage.setItem("ppt-voice-theme", currentTheme);
+        updateThemeUi(currentTheme);
+      });
+    }
+    updatePresenterAvatar(State.IDLE);
     $("qaAutoListen").checked = qaAutoListen;
     $("qaAutoListen").addEventListener("change", (e) => {
       qaAutoListen = e.target.checked;
       localStorage.setItem("ppt-voice-qa-auto", qaAutoListen ? "1" : "0");
+      updateActionButtons();
     });
-    loadDeck().then(async () => {
-      if (TTS_API) {
-        try {
-          const h = await fetch(`${TTS_API}/health`);
-          const j = await h.json();
-          if (j.has_key) appendVoiceToSub();
-          else $("deckSub").textContent += " · 云端未配置，用浏览器音";
-        } catch (_) {
-          useCloudTts = false;
+    $("showPresenterChk").checked = showPresenter;
+    $("showPresenterChk").addEventListener("change", (e) => {
+      showPresenter = e.target.checked;
+      localStorage.setItem("ppt-voice-show-presenter", showPresenter ? "1" : "0");
+      const pres = $("presenter");
+      if (pres) pres.style.display = showPresenter ? "" : "none";
+    });
+    $("showPointerChk").checked = showPointer;
+    $("showPointerChk").addEventListener("change", (e) => {
+      showPointer = e.target.checked;
+      localStorage.setItem("ppt-voice-show-pointer", showPointer ? "1" : "0");
+      if (!showPointer) stopDocPointing();
+      else if (state === State.SPEAKING) startDocPointing();
+    });
+
+    // 监听标签页可见性变化，解决切后台导致播放中断或暂停的问题
+    document.addEventListener("visibilitychange", () => {
+      if (document.visibilityState === "visible") {
+        if (state === State.SPEAKING) {
+          if (useCloudTts && TTS_API) {
+            // 云端语音：如果音频被浏览器暂停了，切回来时自动恢复播放
+            if (player && player.paused && !player.ended && player.src && player.src !== SILENT_WAV) {
+              player.play().catch((e) => console.warn("Player background resume error", e));
+            }
+          } else {
+            // 本地浏览器语音：如果被浏览器强制暂停或挂起，切回来时自动恢复或重播当前句
+            try {
+              if (synth.paused) {
+                synth.resume();
+              } else {
+                const txt = lastSpokenChunk;
+                if (txt) {
+                  synth.cancel();
+                  const u = new SpeechSynthesisUtterance(txt);
+                  u.lang = "zh-CN";
+                  u.rate = 1.1;
+                  const voice = getZhVoice();
+                  if (voice) u.voice = voice;
+                  u.onstart = () => { ttsStartedAt = Date.now(); };
+                  u.onend = () => {
+                    continuePresentationIfNeeded();
+                  };
+                  synth.speak(u);
+                }
+              }
+            } catch (e) {
+              console.warn("SpeechSynthesis background resume error", e);
+            }
+          }
         }
-      } else {
-        appendVoiceToSub();
       }
+    });
+
+    updateActionButtons();
+    loadDeck().then(async () => {
+      await syncLlmFromServer();
+      if (!TTS_API) appendVoiceToSub();
     }).catch((e) => { $("deckSub").textContent = "加载失败：" + e.message; console.error(e); });
   </script>
 </body>

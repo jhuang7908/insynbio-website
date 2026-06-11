@@ -1,0 +1,67 @@
+{
+  "title": "抖音1分半极客：Nature重磅突破！彻底清除HIV病毒",
+  "source": "D:\\InSynBio-AI-Research\\Antibody_Engineer_Suite\\outputs\\s41467_hiv_douyin_90s\\HIV_NC_2019_Douyin_90s.pptx",
+  "speaker": "zh_male_ruyayichen_uranus_bigtts",
+  "speaker_name": "儒雅逸辰 2.0",
+  "style_prefix": "[新闻播报，庄重沉稳] ",
+  "slide_count": 5,
+  "slides": [
+    {
+      "index": 1,
+      "title": "彻底清除HIV病毒",
+      "bullets": [
+        "Nature Communications 重磅发表",
+        "首次在活体动物中完全清除 HIV-1 病毒",
+        "序贯应用纳米前药与 CRISPR 基因剪刀"
+      ],
+      "script": "艾滋病，真的能被彻底治愈吗？Nature子刊重磅突破，科学家首次在活体动物体内，将HIV病毒连根拔起！",
+      "audio": "audio/slide_01.mp3"
+    },
+    {
+      "index": 2,
+      "title": "为什么以前治不好？",
+      "bullets": [
+        "传统抗病毒治疗（ART）只能抑制复制",
+        "无法清除整合进宿主基因组的前病毒 DNA",
+        "停药后病毒立即反弹，导致无法根治"
+      ],
+      "script": "传统药物只能抑制血液中的病毒，却对躲在免疫细胞基因组里的“前病毒DNA”束手无策。一旦停药，潜伏的病毒就会立刻疯狂反弹！",
+      "audio": "audio/slide_02.mp3"
+    },
+    {
+      "index": 3,
+      "title": "终极双重武器：LASER + CRISPR",
+      "bullets": [
+        "长效缓释纳米药物（LASER ART）死死封锁病毒",
+        "CRISPR-Cas9 基因剪刀精准靶向 LTR 和 Gag 区域",
+        "双管齐下：先封锁、后剪切，实现协同清除"
+      ],
+      "script": "这次，科学家祭出了双重杀招！先用“长效缓释纳米药物（LASER ART）”把病毒死死封锁在细胞内，延长药物半衰期；再用“CRISPR基因剪刀”，精准定位并彻底切除HIV基因片段！",
+      "audio": "audio/slide_03.mp3"
+    },
+    {
+      "index": 4,
+      "title": "震撼的实验数据",
+      "bullets": [
+        "序贯双重治疗组约 30% 动物无病毒反弹",
+        "脾脏、淋巴结、脑等组织中均未检测到病毒 DNA/RNA",
+        "过继转移实验证实：受体小鼠 30 天内无任何感染"
+      ],
+      "script": "在人源化小鼠实验中，序贯双重治疗组中竟然有约30%的动物，体内所有组织都检测不到任何病毒！过继转移实验证实：病毒已被彻底清除！",
+      "audio": "audio/slide_04.mp3"
+    },
+    {
+      "index": 5,
+      "title": "迈向临床功能性治愈",
+      "bullets": [
+        "首次在活体动物中证明 HIV-1 永久清除的可行性",
+        "为人类 HIV-1 临床功能性治愈提供重要理论基础",
+        "InSynBio 平台持续追踪前沿生物医药奇迹"
+      ],
+      "script": "这是人类历史上首次证明，活体动物体内的HIV病毒是可以被彻底清除的。虽然距离人体临床还有路要走，但曙光已现。关注我，带你见证生物医药的下一个奇迹！",
+      "audio": "audio/slide_05.mp3"
+    }
+  ],
+  "intro": "",
+  "outro": ""
+}
