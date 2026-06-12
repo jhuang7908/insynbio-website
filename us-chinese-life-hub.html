@@ -245,19 +245,19 @@
     /* Yellow Pages — unified phone directory */
     .yp-toolbar { display: flex; gap: 6px; margin-bottom: 8px; flex-wrap: wrap; }
     .yp-toolbar input { flex: 1; min-width: 140px; padding: 7px 10px; border: 1px solid #cbd5e1; border-radius: 8px; font-size: 12px; outline: none; }
-    .yp-industry-bar { display: flex; gap: 5px; flex-wrap: wrap; margin-bottom: 10px; }
-    .yp-pill { font-size: 11px; font-weight: 600; padding: 4px 10px; border-radius: 14px; border: 1px solid #cbd5e1; background: #fff; color: #475569; cursor: pointer; white-space: nowrap; }
+    .yp-industry-bar { display: flex; gap: 4px; flex-wrap: wrap; margin-bottom: 6px; }
+    .yp-pill { font-size: 10px; font-weight: 600; padding: 3px 8px; border-radius: 12px; border: 1px solid #cbd5e1; background: #fff; color: #475569; cursor: pointer; white-space: nowrap; }
     .yp-pill.active { background: #ea580c; color: #fff; border-color: #ea580c; }
     .yp-scroll { max-height: 520px; overflow-y: auto; }
-    .yp-industry-section { margin-bottom: 12px; }
-    .yp-industry-title { font-size: 11px; font-weight: 700; color: #64748b; margin-bottom: 6px; padding-bottom: 4px; border-bottom: 1px solid #e2e8f0; }
-    .yp-cards-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(128px, 1fr)); gap: 6px; }
-    .yp-card { background: #fff; border: 1px solid #cbd5e1; border-radius: 8px; padding: 8px; text-decoration: none; color: inherit; min-height: 86px; display: flex; flex-direction: column; transition: border-color 0.15s, box-shadow 0.15s; }
-    .yp-card:hover { border-color: #07bb65; box-shadow: 0 2px 8px rgba(7,187,101,0.08); }
-    .yp-card-name { font-size: 11px; font-weight: 700; color: #0f172a; line-height: 1.25; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
-    .yp-card-sub { font-size: 9px; color: #94a3b8; line-height: 1.2; margin-top: 3px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-    .yp-card-phone { font-size: 12px; font-weight: 800; color: #ea580c; margin-top: auto; padding-top: 4px; }
-    .yp-more { text-align: center; font-size: 11px; color: #94a3b8; padding: 8px; }
+    .yp-industry-section { margin-bottom: 8px; }
+    .yp-industry-title { font-size: 10px; font-weight: 700; color: #64748b; margin-bottom: 4px; padding-bottom: 3px; border-bottom: 1px solid #e2e8f0; }
+    .yp-cards-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(96px, 1fr)); gap: 4px; }
+    .yp-card { background: #fff; border: 1px solid #e2e8f0; border-radius: 5px; padding: 5px 6px; text-decoration: none; color: inherit; min-height: 0; display: flex; flex-direction: column; gap: 1px; transition: border-color 0.12s; }
+    .yp-card:hover { border-color: #07bb65; background: #fafffe; }
+    .yp-card-name { font-size: 10px; font-weight: 700; color: #0f172a; line-height: 1.2; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+    .yp-card-sub { font-size: 8px; color: #94a3b8; line-height: 1.15; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .yp-card-phone { font-size: 10px; font-weight: 800; color: #ea580c; margin-top: 2px; letter-spacing: -0.02em; }
+    .yp-more { text-align: center; font-size: 10px; color: #94a3b8; padding: 4px; }
 
     @media (max-width: 900px) {
       .search-panel { grid-template-columns: 1fr 1fr; }
@@ -274,7 +274,13 @@
     }
     @media (max-width: 480px) {
       .forecast-grid { grid-template-columns: repeat(3, 1fr); }
-      .phones-grid, .yp-cards-grid { grid-template-columns: repeat(2, 1fr); }
+      .yp-cards-grid { grid-template-columns: repeat(3, 1fr); gap: 3px; }
+      .yp-card { padding: 4px 5px; }
+      .yp-card-name { font-size: 9px; }
+      .yp-card-phone { font-size: 9px; }
+    }
+    @media (min-width: 640px) {
+      .yp-cards-grid { grid-template-columns: repeat(auto-fill, minmax(108px, 1fr)); }
     }
   </style>
   <script src="https://cdn.jsdelivr.net/npm/lunar-javascript/lunar.min.js"></script>
@@ -1073,8 +1079,11 @@ function ypCardHtml(href, name, sub, phone, external) {
 
 function ypBizCard(item) {
   const tel = item.phone.replace(/[^\d+]/g, '');
-  const addr = shortAddr(item.address);
-  return ypCardHtml(`tel:${tel}`, item.name, addr ? '📍 ' + addr : item.category, item.phone, false);
+  let addr = shortAddr(item.address);
+  if (addr.length > 28) addr = addr.slice(0, 26) + '…';
+  let name = item.name;
+  if (name.length > 32) name = name.slice(0, 30) + '…';
+  return ypCardHtml(`tel:${tel}`, name, addr ? addr : item.category, item.phone, false);
 }
 
 function renderEssentialPhones(filter) {
@@ -1194,7 +1203,7 @@ function renderYellowPages() {
     return;
   }
 
-  const LIMIT = 36;
+  const LIMIT = 48;
   let html = '';
 
   if (group.id === 'all') {
