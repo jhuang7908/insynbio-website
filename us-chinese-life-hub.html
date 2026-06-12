@@ -269,6 +269,7 @@
     .yp-star { font-size: 13px; color: #e2e8f0; cursor: default; line-height: 1; user-select: none; }
     .yp-star.on { color: #f59e0b; }
     .yp-star.clickable { cursor: pointer; }
+    .yp-star.locked { cursor: default; opacity: 1; }
     .yp-star.clickable:hover { color: #fbbf24; }
     .yp-rating-meta { font-size: 9px; color: #94a3b8; margin-left: 4px; }
     .yp-rating-hint { font-size: 9px; color: #94a3b8; line-height: 1.2; }
@@ -1166,6 +1167,7 @@ function ypBizCard(item) {
 // ── Member registration & business ratings (7-day gate) ─────────────────────
 const YP_RATINGS_AGG = {};
 const MIN_MEMBER_DAYS = 7;
+const MAX_DAILY_RATINGS = 3;
 const HUB_RATINGS_JSON = 'yellow_page_ratings.json';
 
 function bizKey(item) {
@@ -1219,13 +1221,63 @@ function getMyRatings() {
 
 function setMyRating(key, score) {
   const all = getMyRatings();
-  all[key] = { score, ts: Date.now() };
+  if (all[key]) return false;
+  all[key] = { score, ts: Date.now(), day: localRatingDateKey() };
   localStorage.setItem('yp_my_ratings', JSON.stringify(all));
+  return true;
+}
+
+function localRatingDateKey() {
+  const d = new Date();
+  const tz = d.getTimezoneOffset() * 60000;
+  return new Date(d - tz).toISOString().slice(0, 10);
+}
+
+function getDailyRatingLog() {
+  try { return JSON.parse(localStorage.getItem('yp_rating_daily') || '{}'); }
+  catch { return {}; }
+}
+
+function getTodayRatedBizKeys() {
+  return getDailyRatingLog()[localRatingDateKey()] || [];
+}
+
+function ratingsTodayCount() {
+  return getTodayRatedBizKeys().length;
+}
+
+function recordDailyRating(key) {
+  const day = localRatingDateKey();
+  const log = getDailyRatingLog();
+  const list = log[day] ? [...log[day]] : [];
+  if (!list.includes(key)) {
+    list.push(key);
+    log[day] = list;
+    localStorage.setItem('yp_rating_daily', JSON.stringify(log));
+  }
+}
+
+function hasRatedBusiness(key) {
+  return !!getMyRatings()[key];
+}
+
+function canRateNewBusinessToday(key) {
+  if (hasRatedBusiness(key)) return false;
+  const todayKeys = getTodayRatedBizKeys();
+  if (todayKeys.includes(key)) return true;
+  return todayKeys.length < MAX_DAILY_RATINGS;
+}
+
+function dailyRatingHint() {
+  const n = ratingsTodayCount();
+  if (n >= MAX_DAILY_RATINGS) return `今日已评 ${MAX_DAILY_RATINGS} 家，明日可再评`;
+  return `今日还可评 ${MAX_DAILY_RATINGS - n} 家（每商家仅一次）`;
 }
 
 function ypRatingBlock(key) {
   const agg = YP_RATINGS_AGG[key];
-  const my = getMyRatings()[key]?.score;
+  const myEntry = getMyRatings()[key];
+  const my = myEntry?.score;
   const avgTxt = agg && agg.count ? `${agg.avg}★ · ${agg.count}人` : '';
 
   if (!isMember()) {
@@ -1234,12 +1286,20 @@ function ypRatingBlock(key) {
   if (!canRateBusinesses()) {
     return `<div class="yp-rating-row"><div class="yp-rating-hint">还需 ${daysUntilCanRate()} 天可评 ${avgTxt ? '· ' + avgTxt : ''}</div></div>`;
   }
+  if (my) {
+    const stars = [1, 2, 3, 4, 5].map(n => {
+      const on = my >= n ? ' on' : '';
+      return `<span class="yp-star locked${on}">★</span>`;
+    }).join('');
+    return `<div class="yp-rating-row"><div class="yp-rating-stars">${stars}<span class="yp-rating-meta">${avgTxt} · 您已评 ${my}★</span></div></div>`;
+  }
+  if (!canRateNewBusinessToday(key)) {
+    return `<div class="yp-rating-row"><div class="yp-rating-hint">${dailyRatingHint()} ${avgTxt ? '· ' + avgTxt : ''}</div></div>`;
+  }
   const stars = [1, 2, 3, 4, 5].map(n => {
-    const on = (my || 0) >= n ? ' on' : '';
-    return `<span class="yp-star clickable${on}" data-biz="${escapeHtml(key)}" data-score="${n}" onclick="rateBusiness(event)">★</span>`;
+    return `<span class="yp-star clickable" data-biz="${escapeHtml(key)}" data-score="${n}" onclick="rateBusiness(event)">★</span>`;
   }).join('');
-  const mine = my ? ` · 您:${my}★` : '';
-  return `<div class="yp-rating-row"><div class="yp-rating-stars">${stars}<span class="yp-rating-meta">${avgTxt}${mine}</span></div></div>`;
+  return `<div class="yp-rating-row"><div class="yp-rating-stars">${stars}<span class="yp-rating-meta">${avgTxt} · ${dailyRatingHint()}</span></div></div>`;
 }
 
 function rateBusiness(ev) {
@@ -1254,7 +1314,20 @@ function rateBusiness(ev) {
   const score = parseInt(t.dataset.score, 10);
   if (!key || !score) return;
 
-  setMyRating(key, score);
+  if (hasRatedBusiness(key)) {
+    alert('您已评价过该商家，每家只能评一次');
+    return;
+  }
+  if (!canRateNewBusinessToday(key)) {
+    alert(`为防止恶意刷评，每天最多评价 ${MAX_DAILY_RATINGS} 家商家。${dailyRatingHint()}`);
+    return;
+  }
+  if (!setMyRating(key, score)) {
+    alert('您已评价过该商家，每家只能评一次');
+    return;
+  }
+  recordDailyRating(key);
+
   const mid = ensureMemberId();
   if (!YP_RATINGS_AGG[key]) YP_RATINGS_AGG[key] = { sum: 0, count: 0, avg: 0, votes: {} };
   const entry = YP_RATINGS_AGG[key];
@@ -1262,13 +1335,12 @@ function rateBusiness(ev) {
   if (!votes[mid]) {
     entry.sum = (entry.sum || 0) + score;
     entry.count = (entry.count || 0) + 1;
-  } else {
-    entry.sum = (entry.sum || 0) - votes[mid] + score;
+    votes[mid] = score;
+    entry.votes = votes;
+    entry.avg = Math.round(entry.sum / entry.count * 10) / 10;
   }
-  votes[mid] = score;
-  entry.votes = votes;
-  entry.avg = Math.round(entry.sum / entry.count * 10) / 10;
   renderYellowPages();
+  updateMemberStatusUI();
 
   const api = window.HUB_RATINGS_API;
   if (api) {
@@ -1281,14 +1353,24 @@ function rateBusiness(ev) {
         member_id: mid,
         member_registered_at: getMemberRegisteredAt(),
       }),
-    }).catch(() => {});
+    }).then(r => {
+      if (!r.ok) return r.json().then(j => { throw new Error(j.detail || r.statusText); });
+    }).catch(err => {
+      alert(err.message || '评分提交失败，请稍后重试');
+    });
   }
 }
 
 async function loadRatingsAggregate() {
   try {
     const r = await fetch(HUB_RATINGS_JSON + '?t=' + Date.now());
-    if (r.ok) Object.assign(YP_RATINGS_AGG, await r.json());
+    if (r.ok) {
+      const data = await r.json();
+      for (const [k, v] of Object.entries(data)) {
+        if (k.startsWith('_')) continue;
+        YP_RATINGS_AGG[k] = v;
+      }
+    }
   } catch (_) {}
 }
 
@@ -1298,13 +1380,13 @@ function updateMemberStatusUI() {
   if (!isMember()) {
     el.style.display = 'block';
     el.className = 'member-status';
-    el.innerHTML = '💡 <a href="#" onclick="openSubModal();return false;" style="color:#ea580c">注册会员</a>（邮箱订阅即注册）· 满7天可为商家评分';
+    el.innerHTML = '💡 <a href="#" onclick="openSubModal();return false;" style="color:#ea580c">注册会员</a>（邮箱订阅即注册）· 满7天可评分';
     return;
   }
   el.style.display = 'block';
   if (canRateBusinesses()) {
     el.className = 'member-status eligible';
-    el.textContent = '✅ 会员已激活 · 您可为商家评分（1–5星，点击星星）';
+    el.textContent = `✅ 会员已激活 · ${dailyRatingHint()} · 每家商家仅可评一次`;
   } else {
     el.className = 'member-status';
     el.textContent = `⏳ 会员 · 还需 ${daysUntilCanRate()} 天可评分（注册满7天防刷）`;
@@ -1849,7 +1931,7 @@ function applyInterestAndClose(moduleId) {
 
     <div class="sub-note">
       本平台不收集个人信息用于商业用途。<br>
-      邮件可随时退订。<strong>会员评分：</strong>邮箱订阅即注册，满 <strong>7天</strong> 后可给黄页商家打 1–5 星。
+      邮件可随时退订。<strong>会员评分：</strong>注册满 <strong>7天</strong> 后可评；<strong>每家商家仅一次</strong>，<strong>每天最多3家</strong>。
     </div>
   </div>
 </div>
