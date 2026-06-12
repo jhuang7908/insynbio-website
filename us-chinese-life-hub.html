@@ -814,7 +814,10 @@ function toggleChannels() {
 // ─── Today/This Week Info Stream ───
 function renderStreamSections() {
   const todayObj = new Date();
-  const todayStr = todayObj.toISOString().slice(0, 10);
+  // We need to adjust for timezone offset to get the correct local date string
+  const tzOffset = todayObj.getTimezoneOffset() * 60000; // offset in milliseconds
+  const localISOTime = (new Date(todayObj - tzOffset)).toISOString().slice(0, 10);
+  const todayStr = localISOTime;
   const s = UI_STRINGS[currentLang];
 
   // Today's items
@@ -822,7 +825,8 @@ function renderStreamSections() {
   // This week items (within 7 days forward, excluding today)
   const weekItems = ITEMS.filter(i => {
     const d = new Date(i.date);
-    const diff = (d - todayObj) / (1000*60*60*24);
+    // Use UTC dates for diff calculation to avoid timezone issues
+    const diff = (Date.UTC(d.getFullYear(), d.getMonth(), d.getDate()) - Date.UTC(todayObj.getFullYear(), todayObj.getMonth(), todayObj.getDate())) / (1000*60*60*24);
     return diff > 0 && diff <= 7;
   });
 
