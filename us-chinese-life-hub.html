@@ -811,8 +811,7 @@ function toggleChannels() {
 
 // ─── Today/This Week Info Stream ───
 function renderStreamSections() {
-  const today = new Date('2026-06-11');
-  const todayStr = '2026-06-11';
+  const todayStr = new Date().toISOString().slice(0, 10);
   const s = UI_STRINGS[currentLang];
 
   // Today's items
