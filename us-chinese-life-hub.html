@@ -673,15 +673,19 @@ function renderFeed() {
     // 2. Administrative Borough Filter
     const matchesBorough = (b === 'all' || i.borough === b);
     
-    // 3. Time Freshness Filter (Today is June 11, 2026)
+    // 3. Time Freshness Filter
     let matchesTime = true;
     const diff = getDaysDiff(i.date);
-    if (t === 'today' && diff !== 0) {
-      matchesTime = false;
-    } else if (t === '3days' && diff > 3) {
-      matchesTime = false;
-    } else if (t === 'week' && diff > 7) {
-      matchesTime = false;
+    // For future events (diff < 0), we always show them regardless of time filter
+    // because they are upcoming. The time filter is meant to filter PAST events.
+    if (diff >= 0) {
+      if (t === 'today' && diff > 0) {
+        matchesTime = false;
+      } else if (t === '3days' && diff > 3) {
+        matchesTime = false;
+      } else if (t === 'week' && diff > 7) {
+        matchesTime = false;
+      }
     }
     
     // 4. Neighborhood/Enclave Pills Filter
