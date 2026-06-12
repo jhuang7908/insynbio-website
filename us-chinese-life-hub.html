@@ -396,6 +396,13 @@
     <div class="feed-grid" id="feed"></div>
     
     <div style="height: 40px"></div>
+
+    <!-- Hidden filter-state elements (referenced by JS filter logic; not visible to user) -->
+    <input type="hidden" id="q" value="">
+    <select id="borough" style="display:none"><option value="all" selected>all</option></select>
+    <select id="category" style="display:none"><option value="all" selected>all</option></select>
+    <select id="time-freshness" style="display:none"><option value="all" selected>all</option></select>
+
   </main>
 
   <!-- ═══ AI SMART GUIDE MODAL (智能中文导读模态框) ═══ -->
@@ -591,20 +598,20 @@ function applyUILanguage() {
   prefSelect.options[1].text = s.trans_zht;
   prefSelect.options[2].text = s.raw_en;
   
-  // Update search panel controls
-  document.getElementById('q').placeholder = s.q_placeholder;
-  document.getElementById('opt-all-boroughs').textContent = s.all_boroughs;
-  document.getElementById('opt-citywide').textContent = s.citywide_option;
-  document.getElementById('opt-manhattan').textContent = s.manhattan_option;
-  document.getElementById('opt-queens').textContent = s.queens_option;
-  document.getElementById('opt-brooklyn').textContent = s.brooklyn_option;
-  document.getElementById('opt-bronx').textContent = s.bronx_option;
-  document.getElementById('opt-staten').textContent = s.staten_option;
-  
-  document.getElementById('opt-all-time').textContent = s.all_time;
-  document.getElementById('opt-today').textContent = s.today;
-  document.getElementById('opt-3days').textContent = s.last_3days;
-  document.getElementById('opt-week').textContent = s.this_week;
+  // Update search panel controls (elements may be absent — guard with ?.)
+  const _e = id => document.getElementById(id);
+  if (_e('q')) _e('q').placeholder = s.q_placeholder;
+  if (_e('opt-all-boroughs')) _e('opt-all-boroughs').textContent = s.all_boroughs;
+  if (_e('opt-citywide')) _e('opt-citywide').textContent = s.citywide_option;
+  if (_e('opt-manhattan')) _e('opt-manhattan').textContent = s.manhattan_option;
+  if (_e('opt-queens')) _e('opt-queens').textContent = s.queens_option;
+  if (_e('opt-brooklyn')) _e('opt-brooklyn').textContent = s.brooklyn_option;
+  if (_e('opt-bronx')) _e('opt-bronx').textContent = s.bronx_option;
+  if (_e('opt-staten')) _e('opt-staten').textContent = s.staten_option;
+  if (_e('opt-all-time')) _e('opt-all-time').textContent = s.all_time;
+  if (_e('opt-today')) _e('opt-today').textContent = s.today;
+  if (_e('opt-3days')) _e('opt-3days').textContent = s.last_3days;
+  if (_e('opt-week')) _e('opt-week').textContent = s.this_week;
   
   // Update section titles
   const channelsTitle = document.getElementById('channels-title');
@@ -633,17 +640,14 @@ function applyUILanguage() {
 
 function renderCategoryDropdown() {
   const catSelect = document.getElementById('category');
+  if (!catSelect) return;
   const s = UI_STRINGS[currentLang];
-  
-  // Preserve current selection
   const currentVal = catSelect.value;
-  
   catSelect.innerHTML = `<option value="all">${s.all_categories}</option>` + 
     MODULES.map(m => {
       const name = m[currentLang] || m.zh;
       return `<option value="${m.zh}">${name}</option>`;
     }).join('');
-    
   catSelect.value = currentVal;
 }
 
@@ -677,7 +681,8 @@ function selectModule(name) {
   } else {
     activeModuleFilter = name;
   }
-  document.getElementById('category').value = activeModuleFilter;
+  const _cat = document.getElementById('category');
+  if (_cat) _cat.value = activeModuleFilter;
   renderModules();
   renderFeed();
   updateResetButton();
@@ -704,13 +709,15 @@ function setNeighborhoodFilter(boro, btn) {
 function resetAllFilters() {
   activeModuleFilter = 'all';
   activeNeighborhoodFilter = 'all';
-  document.getElementById('q').value = '';
-  document.getElementById('borough').value = 'all';
-  document.getElementById('category').value = 'all';
-  document.getElementById('time-freshness').value = 'all';
+  const _g = id => document.getElementById(id);
+  if (_g('q')) _g('q').value = '';
+  if (_g('borough')) _g('borough').value = 'all';
+  if (_g('category')) _g('category').value = 'all';
+  if (_g('time-freshness')) _g('time-freshness').value = 'all';
   
   document.querySelectorAll('#neighborhood-filters .pill').forEach(b => b.classList.remove('active'));
-  document.querySelector('#neighborhood-filters .pill').classList.add('active');
+  const firstPill = document.querySelector('#neighborhood-filters .pill');
+  if (firstPill) firstPill.classList.add('active');
   
   renderModules();
   renderFeed();
@@ -719,9 +726,11 @@ function resetAllFilters() {
 
 function updateResetButton() {
   const btn = document.getElementById('reset-filters');
-  const q = document.getElementById('q').value;
-  const b = document.getElementById('borough').value;
-  const t = document.getElementById('time-freshness').value;
+  if (!btn) return;
+  const _gv = (id, def) => { const el = document.getElementById(id); return el ? el.value : def; };
+  const q = _gv('q', '');
+  const b = _gv('borough', 'all');
+  const t = _gv('time-freshness', 'all');
   
   if (activeModuleFilter !== 'all' || activeNeighborhoodFilter !== 'all' || q !== '' || b !== 'all' || t !== 'all') {
     btn.style.display = 'flex';
@@ -739,9 +748,10 @@ function getDaysDiff(dateStr) {
 
 // Render high-density cards
 function renderFeed() {
-  const q = document.getElementById('q').value.toLowerCase();
-  const b = document.getElementById('borough').value;
-  const t = document.getElementById('time-freshness').value;
+  const _gv = (id, def) => { const el = document.getElementById(id); return el ? el.value : def; };
+  const q = _gv('q', '').toLowerCase();
+  const b = _gv('borough', 'all');
+  const t = _gv('time-freshness', 'all');
   const s = UI_STRINGS[currentLang];
   
   const filtered = ITEMS.filter(i => {
