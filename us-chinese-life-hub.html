@@ -1344,7 +1344,6 @@ function renderStreamSections() {
   renderHubStreamStats(stats);
 
   const todayFeed = document.getElementById('today-feed');
-  const s = UI_STRINGS[currentLang];
   if (todayItems.length > 0) {
     todayFeed.innerHTML = todayItems.slice(0, 6).map(i => renderCard(i)).join('');
   } else {
