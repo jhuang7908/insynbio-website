@@ -202,13 +202,19 @@
     .daily-dashboard { background: linear-gradient(135deg, #fff7ed 0%, #fef3c7 100%); border: 1px solid #fed7aa; border-radius: 10px; margin: 10px auto 0; max-width: 960px; overflow: hidden; }
     .dashboard-summary { display: flex; justify-content: space-between; align-items: flex-start; padding: 10px 12px; cursor: pointer; list-style: none; user-select: none; gap: 8px; }
     .dashboard-summary::-webkit-details-marker { display: none; }
-    .dash-head { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 4px; }
+    .dash-head { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 0; }
     .dash-row { display: flex; align-items: center; gap: 6px; min-width: 0; }
-    .dash-row-hub, .dash-row-market {
+    .dash-row-market {
       flex-wrap: nowrap; overflow-x: auto; width: 100%;
       padding-bottom: 1px; scrollbar-width: none;
     }
-    .dash-row-hub::-webkit-scrollbar, .dash-row-market::-webkit-scrollbar { display: none; }
+    .dash-row-market::-webkit-scrollbar { display: none; }
+    .dash-stats-right {
+      display: flex; align-items: center; gap: 5px; flex-shrink: 0;
+      margin-left: auto; padding-left: 8px;
+    }
+    .dash-stats-right .dash-meta-inline { margin-left: 0; display: block; width: 100%; text-align: right; line-height: 1.2; }
+    .dash-stats-block { display: flex; flex-direction: column; align-items: flex-end; gap: 2px; flex-shrink: 0; }
     .dash-vsep { width: 1px; height: 14px; background: #fdba74; flex-shrink: 0; opacity: 0.7; }
     .dash-stat {
       display: inline-flex; align-items: baseline; gap: 4px;
@@ -259,11 +265,19 @@
     .forecast-day .fd-temp { font-weight: 700; color: #334155; font-size: 10px; }
     .forecast-day .fd-holi { color: #ea580c; font-size: 9px; margin-top: 2px; overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; }
 
-    .phones-card { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 10px; margin-top: 10px; overflow: hidden; }
-    .phones-summary { display: flex; justify-content: space-between; align-items: center; padding: 10px 12px; cursor: pointer; list-style: none; user-select: none; background: #f1f5f9; }
+    .phones-card { background: transparent; border: none; border-radius: 0; margin: 0; overflow: visible; }
+    .phones-summary {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 0; cursor: pointer; list-style: none; user-select: none;
+      font-size: 16px; font-weight: 700; color: #334155;
+      margin: 20px 0 12px; background: none; border: none;
+    }
     .phones-summary::-webkit-details-marker { display: none; }
-    .phones-title { font-size: 13px; font-weight: 700; color: #334155; margin: 0; }
-    .phones-body { padding: 0 12px 12px; }
+    .phones-summary .section-title-left { font-size: 16px; font-weight: 700; color: #334155; }
+    .phones-toggle { font-size: 12px; color: #64748b; font-weight: 600; flex-shrink: 0; }
+    details[open] .phones-toggle::before { content: '收起 '; }
+    details:not([open]) .phones-toggle::before { content: '展开 '; }
+    .phones-body-wrap { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 10px; padding: 10px 12px; margin-bottom: 4px; }
     .phone-category { margin-top: 10px; }
     .phone-category:first-child { margin-top: 8px; }
     .phone-cat-title { font-size: 11px; font-weight: 700; color: #64748b; text-transform: uppercase; letter-spacing: 0.03em; margin-bottom: 6px; padding-bottom: 4px; border-bottom: 1px solid #e2e8f0; }
@@ -380,23 +394,25 @@
     <details class="daily-dashboard" open>
       <summary class="dashboard-summary">
         <div class="dash-head">
-          <div class="dash-row dash-row-hub">
-            <span class="stream-dot"></span>
-            <span class="dash-stat dash-stat-new" id="stream-new-stat">
-              <span class="dash-stat-label" id="stream-new-label">24h新公布</span>
-              <strong id="stream-new-count">—</strong><span class="dash-stat-unit" id="stream-new-unit">条</span>
-            </span>
-            <span class="dash-stat dash-stat-week" id="stream-week-stat">
-              <span class="dash-stat-label" id="stream-week-label">7日场次</span>
-              <strong id="stream-week-count">—</strong><span class="dash-stat-unit" id="stream-week-unit">场</span>
-            </span>
-            <span id="verify-badge" class="dash-verify">✔</span>
-            <span id="hub-auto-update" class="dash-meta-inline"></span>
-          </div>
           <div class="dash-row dash-row-market">
             <span id="weather-info" class="dash-chip">🌤️ …</span>
             <button type="button" class="unit-toggle" id="unit-toggle" onclick="event.preventDefault(); toggleTempUnit();" title="切换华氏/摄氏">°F</button>
             <div class="dash-market" id="market-strip" aria-label="美股行情"></div>
+            <div class="dash-stats-block">
+              <div class="dash-stats-right">
+                <span class="stream-dot"></span>
+                <span class="dash-stat dash-stat-new" id="stream-new-stat">
+                  <span class="dash-stat-label" id="stream-new-label">24h新公布</span>
+                  <strong id="stream-new-count">—</strong><span class="dash-stat-unit" id="stream-new-unit">条</span>
+                </span>
+                <span class="dash-stat dash-stat-week" id="stream-week-stat">
+                  <span class="dash-stat-label" id="stream-week-label">7日场次</span>
+                  <strong id="stream-week-count">—</strong><span class="dash-stat-unit" id="stream-week-unit">场</span>
+                </span>
+                <span id="verify-badge" class="dash-verify">✔</span>
+              </div>
+              <span id="hub-auto-update" class="dash-meta-inline"></span>
+            </div>
           </div>
         </div>
         <span class="dash-toggle">▼</span>
@@ -422,11 +438,12 @@
 
     <!-- ═══ COMMUNITY PHONE DIRECTORY (常用电话 + 商家黄页) ═══ -->
     <details class="phones-card" id="yellow-pages-card" ontoggle="if(this.open) { initYellowPages(); }">
-      <summary class="phones-summary">
-        <span class="phones-title" style="margin:0;">📒 社区电话黄页 · 常用电话 + 1800+ 商家</span>
-        <span class="dash-toggle">▼</span>
+      <summary class="phones-summary section-title">
+        <span class="section-title-left phones-title">📒 社区电话黄页 · 常用电话 + 1800+ 商家</span>
+        <span class="phones-toggle">▼</span>
       </summary>
-      <div class="phones-body" style="padding: 10px 12px;">
+      <div class="phones-body-wrap">
+      <div class="phones-body" style="padding: 0;">
         <div class="yp-toolbar">
           <input type="text" id="yp-search" placeholder="搜商家名、地址、电话…" oninput="renderYellowPages()">
         </div>
@@ -438,10 +455,11 @@
           <div id="yp-content"></div>
         </div>
       </div>
+      </div>
     </details>
 
     <!-- ═══ TODAY'S HIGHLIGHTS (第一屏核心) ═══ -->
-    <div class="section-title" style="margin-top:20px">
+    <div class="section-title" style="margin-top:12px">
       <div class="section-title-left" id="today-title">🔥 24小时内新公布 · 纽约</div>
     </div>
     <div class="feed-grid" id="today-feed"></div>
@@ -548,6 +566,8 @@ const UI_STRINGS = {
     stream_new_label: "24h新公布",
     stream_new_suffix: "条",
     stream_new_title: "官方来源过去24小时内新发布/新公告的信息（非本平台检索时间）",
+    stream_new_no_pub: "当前条目多来自公园活动页，官网未标注公布时间，暂无法计入；RSS/新闻源更新后会自动统计",
+    stream_new_empty: "过去24小时暂无带官方公布时间的新信息（≠纽约无动态；活动见下方7日场次）",
     stream_week_label: "7日场次",
     stream_week_suffix: "场",
     stream_week_title: "未来7日内有明确活动日期的官方场次（不含长期服务页）",
@@ -600,6 +620,8 @@ const UI_STRINGS = {
     stream_new_label: "24h新公布",
     stream_new_suffix: "條",
     stream_new_title: "官方來源過去24小時內新發布/新公告的信息（非本平台檢索時間）",
+    stream_new_no_pub: "當前條目多來自公園活動頁，官網未標注公布時間，暫無法計入；RSS/新聞源更新後會自動統計",
+    stream_new_empty: "過去24小時暫無帶官方公布時間的新信息（≠紐約無動態；活動見下方7日場次）",
     stream_week_label: "7日場次",
     stream_week_suffix: "場",
     stream_week_title: "未來7日內有明確活動日期的官方場次（不含長期服務頁）",
@@ -652,6 +674,8 @@ const UI_STRINGS = {
     stream_new_label: "24h published",
     stream_new_suffix: "",
     stream_new_title: "Officially published/announced in the last 24h (source date, not our crawl time)",
+    stream_new_no_pub: "Most items are park events without official publish timestamps; RSS/news sources will populate this count.",
+    stream_new_empty: "No items with official publish time in the last 24h (NYC may still have activity—see 7-day events below).",
     stream_week_label: "7d events",
     stream_week_suffix: "",
     stream_week_title: "Official event sessions dated in the next 7 days (excludes ongoing service pages)",
@@ -872,10 +896,16 @@ function hubHoursSinceLastUpdate() {
 }
 
 function renderHubStreamStats(stats) {
+  const s = UI_STRINGS[currentLang];
   const nc = document.getElementById('stream-new-count');
   const wc = document.getElementById('stream-week-count');
+  const snStat = document.getElementById('stream-new-stat');
   if (nc) nc.textContent = String(stats.published_24h ?? 0);
   if (wc) wc.textContent = String(stats.events_7d ?? 0);
+  if (snStat) {
+    const noPub = (stats.published_known === 0) || ((stats.published_24h === 0) && !ITEMS.some(i => i.source_published_at || i.published_at));
+    snStat.title = noPub ? (s.stream_new_title + ' · ' + (s.stream_new_no_pub || '')) : s.stream_new_title;
+  }
 }
 
 function daysFromToday(dateStr) {
@@ -1294,10 +1324,11 @@ function renderStreamSections() {
   renderHubStreamStats(stats);
 
   const todayFeed = document.getElementById('today-feed');
+  const s = UI_STRINGS[currentLang];
   if (todayItems.length > 0) {
     todayFeed.innerHTML = todayItems.slice(0, 6).map(i => renderCard(i)).join('');
   } else {
-    todayFeed.innerHTML = '<div style="grid-column:1/-1;padding:16px;text-align:center;color:#64748b;font-size:13px;">过去24小时暂无官方新公布信息（活动场次见下方）</div>';
+    todayFeed.innerHTML = '<div style="grid-column:1/-1;padding:16px;text-align:center;color:#64748b;font-size:13px;line-height:1.55;">' + (s.stream_new_empty || '过去24小时暂无官方新公布信息') + '</div>';
   }
 
   const weekFeed = document.getElementById('week-feed');
