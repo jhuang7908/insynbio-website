@@ -193,34 +193,54 @@
     .module-grid.collapsed { max-height: 0; overflow: hidden; margin: 0; transition: max-height 0.3s ease; }
     .module-grid.expanded { max-height: 3000px; margin-top: 12px; }
 
-    /* Almanac & Phones */
-    .daily-dashboard { background: linear-gradient(135deg, #fff7ed 0%, #fef3c7 100%); border: 1px solid #fed7aa; border-radius: 12px; margin: 16px auto 0; max-width: 960px; overflow: hidden; }
-    .dashboard-summary { display: flex; justify-content: space-between; align-items: center; padding: 12px 16px; cursor: pointer; list-style: none; user-select: none; }
+    /* Almanac & Phones — compact calendar dashboard */
+    .daily-dashboard { background: linear-gradient(135deg, #fff7ed 0%, #fef3c7 100%); border: 1px solid #fed7aa; border-radius: 10px; margin: 10px auto 0; max-width: 960px; overflow: hidden; }
+    .dashboard-summary { display: flex; justify-content: space-between; align-items: center; padding: 8px 12px; cursor: pointer; list-style: none; user-select: none; gap: 8px; }
     .dashboard-summary::-webkit-details-marker { display: none; }
-    .dash-left { display: flex; align-items: center; gap: 10px; }
-    .dash-right { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
-    .dash-toggle { font-size: 10px; color: #ea580c; transition: transform 0.2s; }
+    .dash-compact-row { display: flex; align-items: center; gap: 6px; flex: 1; min-width: 0; flex-wrap: wrap; font-size: 11px; }
+    .dash-chip { font-size: 11px; font-weight: 600; color: #334155; background: rgba(255,255,255,0.75); padding: 2px 7px; border-radius: 10px; white-space: nowrap; }
+    .dash-meta { font-size: 11px; color: #78716c; font-weight: 600; white-space: nowrap; }
+    .unit-toggle { font-size: 10px; font-weight: 700; color: #ea580c; background: #fff; border: 1px solid #fdba74; border-radius: 8px; padding: 1px 6px; cursor: pointer; line-height: 1.4; }
+    .unit-toggle:hover { background: #fff7ed; }
+    .dash-toggle { font-size: 9px; color: #ea580c; flex-shrink: 0; transition: transform 0.2s; }
     details[open] .dash-toggle { transform: rotate(180deg); }
-    .dashboard-body { padding: 0 16px 16px; border-top: 1px dashed #fed7aa; margin-top: 4px; }
-    
-    .almanac-card { background: rgba(255,255,255,0.6); border-radius: 8px; padding: 12px; margin-top: 12px; display: flex; flex-direction: column; gap: 8px; }
-    .almanac-header { display: flex; justify-content: space-between; font-size: 14px; font-weight: 700; color: #92400e; border-bottom: 1px dashed #fdba74; padding-bottom: 8px; }
-    .almanac-body { display: flex; gap: 16px; font-size: 13px; margin-top: 4px; }
-    .almanac-item { display: flex; align-items: flex-start; gap: 6px; flex: 1; }
-    .almanac-item .yi { background: #dcfce7; color: #16a34a; padding: 2px 6px; border-radius: 4px; font-weight: 700; font-size: 12px; white-space: nowrap; }
-    .almanac-item .ji { background: #fee2e2; color: #dc2626; padding: 2px 6px; border-radius: 4px; font-weight: 700; font-size: 12px; white-space: nowrap; }
-    .almanac-holidays { font-size: 12px; color: #ea580c; font-weight: 600; margin-top: 4px; display: none; }
+    .dashboard-body { padding: 0 10px 10px; border-top: 1px dashed #fed7aa; }
 
-    .phones-card { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; margin-top: 16px; overflow: hidden; }
-    .phones-summary { display: flex; justify-content: space-between; align-items: center; padding: 16px; cursor: pointer; list-style: none; user-select: none; background: #f1f5f9; }
+    .cal-today { background: rgba(255,255,255,0.65); border-radius: 8px; padding: 8px 10px; margin-top: 8px; }
+    .cal-date-btn { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; width: 100%; background: none; border: none; padding: 0; cursor: pointer; text-align: left; font: inherit; color: #92400e; }
+    .cal-date-btn:hover .cal-expand-hint { color: #ea580c; }
+    #almanac-date { font-size: 13px; font-weight: 700; }
+    .cal-lunar { font-size: 11px; color: #a16207; font-weight: 600; }
+    .cal-expand-hint { font-size: 10px; color: #78716c; font-weight: 600; margin-left: auto; }
+    .almanac-inline { display: flex; gap: 10px; margin-top: 6px; font-size: 12px; line-height: 1.35; flex-wrap: wrap; }
+    .almanac-inline .yi, .almanac-inline .ji { padding: 1px 5px; border-radius: 3px; font-weight: 700; font-size: 11px; flex-shrink: 0; }
+    .almanac-inline .yi { background: #dcfce7; color: #16a34a; }
+    .almanac-inline .ji { background: #fee2e2; color: #dc2626; }
+    .almanac-holidays-today { font-size: 11px; color: #ea580c; font-weight: 600; margin-top: 4px; }
+    .cal-forecast { margin-top: 8px; }
+    .cal-forecast[hidden] { display: none; }
+    .forecast-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 4px; }
+    .forecast-day { background: #fff; border: 1px solid #fde68a; border-radius: 6px; padding: 6px 4px; text-align: center; font-size: 10px; line-height: 1.3; }
+    .forecast-day.is-today { border-color: #ea580c; background: #fff7ed; }
+    .forecast-day .fd-wd { font-weight: 700; color: #92400e; }
+    .forecast-day .fd-dt { color: #78716c; font-size: 9px; }
+    .forecast-day .fd-icon { font-size: 14px; margin: 2px 0; }
+    .forecast-day .fd-temp { font-weight: 700; color: #334155; font-size: 10px; }
+    .forecast-day .fd-holi { color: #ea580c; font-size: 9px; margin-top: 2px; overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; }
+
+    .phones-card { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 10px; margin-top: 10px; overflow: hidden; }
+    .phones-summary { display: flex; justify-content: space-between; align-items: center; padding: 10px 12px; cursor: pointer; list-style: none; user-select: none; background: #f1f5f9; }
     .phones-summary::-webkit-details-marker { display: none; }
-    .phones-title { font-size: 14px; font-weight: 700; color: #334155; margin: 0; }
-    .phones-body { padding: 0 16px 16px; }
-    .phones-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 10px; }
-    .phone-item { background: #fff; border: 1px solid #cbd5e1; border-radius: 8px; padding: 10px; text-decoration: none; color: inherit; transition: all 0.15s; display: flex; flex-direction: column; justify-content: center; }
-    .phone-item:hover { border-color: #07bb65; box-shadow: 0 4px 12px rgba(7,187,101,0.1); transform: translateY(-1px); }
-    .phone-name { font-size: 11px; color: #64748b; margin-bottom: 4px; line-height: 1.2; }
-    .phone-num { font-size: 14px; font-weight: 800; color: #0f172a; }
+    .phones-title { font-size: 13px; font-weight: 700; color: #334155; margin: 0; }
+    .phones-body { padding: 0 12px 12px; }
+    .phone-category { margin-top: 10px; }
+    .phone-category:first-child { margin-top: 8px; }
+    .phone-cat-title { font-size: 11px; font-weight: 700; color: #64748b; text-transform: uppercase; letter-spacing: 0.03em; margin-bottom: 6px; padding-bottom: 4px; border-bottom: 1px solid #e2e8f0; }
+    .phones-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 6px; }
+    .phone-item { background: #fff; border: 1px solid #cbd5e1; border-radius: 6px; padding: 8px; text-decoration: none; color: inherit; transition: all 0.15s; display: flex; flex-direction: column; justify-content: center; }
+    .phone-item:hover { border-color: #07bb65; box-shadow: 0 2px 8px rgba(7,187,101,0.1); }
+    .phone-name { font-size: 10px; color: #64748b; margin-bottom: 2px; line-height: 1.2; }
+    .phone-num { font-size: 13px; font-weight: 800; color: #0f172a; }
 
     @media (max-width: 900px) {
       .search-panel { grid-template-columns: 1fr 1fr; }
@@ -232,8 +252,12 @@
       .feed-grid, .module-grid { grid-template-columns: 1fr; }
       .search-panel { grid-template-columns: 1fr; }
       .controls-bar { flex-direction: column; gap: 8px; align-items: flex-end; }
-      .almanac-header { flex-direction: column; gap: 4px; }
-      .almanac-body { flex-direction: column; gap: 8px; }
+      .forecast-grid { grid-template-columns: repeat(4, 1fr); }
+      .dash-compact-row { gap: 4px; }
+    }
+    @media (max-width: 480px) {
+      .forecast-grid { grid-template-columns: repeat(3, 1fr); }
+      .phones-grid { grid-template-columns: 1fr 1fr; }
     }
   </style>
   <script src="https://cdn.jsdelivr.net/npm/lunar-javascript/lunar.min.js"></script>
@@ -280,58 +304,78 @@
     <!-- ═══ DAILY DASHBOARD (Calendar, Weather, Stock, Almanac) ═══ -->
     <details class="daily-dashboard" open>
       <summary class="dashboard-summary">
-        <div class="dash-left">
+        <div class="dash-compact-row">
           <span class="stream-dot"></span>
           <span class="stream-label" id="stream-label">今日更新</span>
-          <span class="stream-count" id="stream-count"></span>
+          <span class="stream-count dash-meta" id="stream-count"></span>
+          <span id="weather-info" class="dash-chip">🌤️ …</span>
+          <button type="button" class="unit-toggle" id="unit-toggle" onclick="event.preventDefault(); toggleTempUnit();" title="切换华氏/摄氏">°F</button>
+          <span id="stock-info" class="dash-chip">📈 …</span>
+          <span class="stream-date dash-meta" id="stream-date"></span>
+          <span id="verify-badge" class="dash-meta" style="color:#16a34a;">✔</span>
         </div>
-        <div class="dash-right">
-          <span id="weather-info" style="font-size:12px;font-weight:600;color:#334155;background:#f1f5f9;padding:2px 8px;border-radius:12px;">🌤️ 获取天气中...</span>
-          <span id="stock-info" style="font-size:12px;font-weight:600;color:#334155;background:#f1f5f9;padding:2px 8px;border-radius:12px;">📈 获取股市中...</span>
-          <span class="stream-date" id="stream-date"></span>
-          <span id="verify-badge" style="font-size:11px;font-weight:700;color:#16a34a;">⏳ 链接验证中…</span>
-          <span class="dash-toggle">▼</span>
-        </div>
+        <span class="dash-toggle">▼</span>
       </summary>
-      
       <div class="dashboard-body">
-        <div class="almanac-card" id="almanac-card">
-          <div class="almanac-header">
-            <span id="almanac-date"></span>
-            <span id="almanac-lunar"></span>
+        <div class="cal-today">
+          <button type="button" class="cal-date-btn" id="cal-expand-btn" onclick="toggleCalForecast(event)">
+            <span id="almanac-date">—</span>
+            <span id="almanac-lunar" class="cal-lunar"></span>
+            <span class="cal-expand-hint" id="cal-expand-hint">▸ 未来7天天气·假日</span>
+          </button>
+          <div class="almanac-inline">
+            <span class="yi">宜</span><span id="almanac-yi">—</span>
+            <span class="ji">忌</span><span id="almanac-ji">—</span>
           </div>
-          <div class="almanac-body">
-            <div class="almanac-item"><span class="yi">宜</span> <span id="almanac-yi"></span></div>
-            <div class="almanac-item"><span class="ji">忌</span> <span id="almanac-ji"></span></div>
-          </div>
-          <div class="almanac-holidays" id="almanac-holidays"></div>
+          <div class="almanac-holidays-today" id="almanac-holidays" style="display:none;"></div>
+        </div>
+        <div class="cal-forecast" id="cal-forecast" hidden>
+          <div class="forecast-grid" id="forecast-grid"></div>
         </div>
       </div>
     </details>
 
-    <!-- ═══ ESSENTIAL PHONES (Collapsible) ═══ -->
+    <!-- ═══ ESSENTIAL PHONES (Collapsible, by category) ═══ -->
     <details class="phones-card">
       <summary class="phones-summary">
-        <span class="phones-title" style="margin:0;">☎️ 纽约生活常用电话 (点击展开)</span>
+        <span class="phones-title" style="margin:0;">☎️ 纽约生活常用电话</span>
         <span class="dash-toggle">▼</span>
       </summary>
       <div class="phones-body">
-        <div class="phones-grid" style="margin-top:12px;">
-          <a href="tel:911" class="phone-item"><div class="phone-name">急救/报警 (紧急)</div><div class="phone-num">911</div></a>
-          <a href="tel:311" class="phone-item"><div class="phone-name">市政服务/非紧急报警/投诉</div><div class="phone-num">311</div></a>
-          <a href="tel:988" class="phone-item"><div class="phone-name">心理危机干预</div><div class="phone-num">988</div></a>
-          <a href="tel:2122449392" class="phone-item"><div class="phone-name">中国驻纽约总领馆</div><div class="phone-num">212-244-9392</div></a>
-          <a href="tel:2123177300" class="phone-item"><div class="phone-name">驻纽约台北经济文化办事处</div><div class="phone-num">212-317-7300</div></a>
-          <a href="tel:2122266280" class="phone-item"><div class="phone-name">纽约中华公所 (CCBA)</div><div class="phone-num">212-226-6280</div></a>
-          <a href="tel:2126953125" class="phone-item"><div class="phone-name">领事保护专线 (24h)</div><div class="phone-num">212-695-3125</div></a>
-          <a href="tel:18002221222" class="phone-item"><div class="phone-name">防毒急救中心</div><div class="phone-num">1-800-222-1222</div></a>
-          <a href="https://council.nyc.gov/districts/" target="_blank" class="phone-item"><div class="phone-name">查找我的市议员</div><div class="phone-num">在线查询 ↗</div></a>
-          <a href="tel:2127887100" class="phone-item"><div class="phone-name">纽约市议会总机</div><div class="phone-num">212-788-7100</div></a>
-          <a href="tel:2129410920" class="phone-item"><div class="phone-name">华策会 CPC (曼哈顿)</div><div class="phone-num">212-941-0920</div></a>
-          <a href="tel:7183588899" class="phone-item"><div class="phone-name">华策会 CPC (皇后区)</div><div class="phone-num">718-358-8899</div></a>
-          <a href="tel:7184920409" class="phone-item"><div class="phone-name">华策会 CPC (布鲁克林)</div><div class="phone-num">718-492-0409</div></a>
-          <a href="tel:2129798381" class="phone-item"><div class="phone-name">亚洲人平等会 AAFE</div><div class="phone-num">212-979-8381</div></a>
-          <a href="tel:2123796998" class="phone-item"><div class="phone-name">王嘉廉社区医疗中心</div><div class="phone-num">212-379-6998</div></a>
+        <div class="phone-category">
+          <div class="phone-cat-title">🚨 紧急求助</div>
+          <div class="phones-grid">
+            <a href="tel:911" class="phone-item"><div class="phone-name">急救 / 报警</div><div class="phone-num">911</div></a>
+            <a href="tel:988" class="phone-item"><div class="phone-name">心理危机干预</div><div class="phone-num">988</div></a>
+            <a href="tel:18002221222" class="phone-item"><div class="phone-name">防毒急救中心</div><div class="phone-num">1-800-222-1222</div></a>
+          </div>
+        </div>
+        <div class="phone-category">
+          <div class="phone-cat-title">🏛️ 市政 · 投诉</div>
+          <div class="phones-grid">
+            <a href="tel:311" class="phone-item"><div class="phone-name">市政服务 / 非紧急报警</div><div class="phone-num">311</div></a>
+            <a href="tel:2127887100" class="phone-item"><div class="phone-name">纽约市议会总机</div><div class="phone-num">212-788-7100</div></a>
+            <a href="https://council.nyc.gov/districts/" target="_blank" class="phone-item"><div class="phone-name">查找我的市议员</div><div class="phone-num">在线查询 ↗</div></a>
+          </div>
+        </div>
+        <div class="phone-category">
+          <div class="phone-cat-title">🇨🇳 领事 · 外交</div>
+          <div class="phones-grid">
+            <a href="tel:2122449392" class="phone-item"><div class="phone-name">中国驻纽约总领馆</div><div class="phone-num">212-244-9392</div></a>
+            <a href="tel:2126953125" class="phone-item"><div class="phone-name">领事保护专线 (24h)</div><div class="phone-num">212-695-3125</div></a>
+            <a href="tel:2123177300" class="phone-item"><div class="phone-name">台北经济文化办事处</div><div class="phone-num">212-317-7300</div></a>
+          </div>
+        </div>
+        <div class="phone-category">
+          <div class="phone-cat-title">🏮 华人社区组织</div>
+          <div class="phones-grid">
+            <a href="tel:2122266280" class="phone-item"><div class="phone-name">纽约中华公所 (CCBA)</div><div class="phone-num">212-226-6280</div></a>
+            <a href="tel:2129410920" class="phone-item"><div class="phone-name">华策会 CPC · 曼哈顿</div><div class="phone-num">212-941-0920</div></a>
+            <a href="tel:7183588899" class="phone-item"><div class="phone-name">华策会 CPC · 皇后区</div><div class="phone-num">718-358-8899</div></a>
+            <a href="tel:7184920409" class="phone-item"><div class="phone-name">华策会 CPC · 布鲁克林</div><div class="phone-num">718-492-0409</div></a>
+            <a href="tel:2129798381" class="phone-item"><div class="phone-name">亚洲人平等会 AAFE</div><div class="phone-num">212-979-8381</div></a>
+            <a href="tel:2123796998" class="phone-item"><div class="phone-name">王嘉廉社区医疗中心</div><div class="phone-num">212-379-6998</div></a>
+          </div>
         </div>
       </div>
     </details>
@@ -917,8 +961,8 @@ function renderStreamSections() {
   });
 
   // Update stream banner
-  document.getElementById('stream-count').textContent = todayItems.length + ' 条今日信息 | ' + weekItems.length + ' 条本周预告';
-  document.getElementById('stream-date').textContent = '最后更新: ' + todayStr + ' (已校验)';
+  document.getElementById('stream-count').textContent = `${todayItems.length}条·周${weekItems.length}`;
+  document.getElementById('stream-date').textContent = todayStr;
 
   // Render today feed
   const todayFeed = document.getElementById('today-feed');
@@ -974,30 +1018,17 @@ function initVerifyBadge() {
       const color = rate >= 90 ? '#16a34a' : rate >= 70 ? '#d97706' : '#dc2626';
       const icon  = rate >= 90 ? '✔' : rate >= 70 ? '⚠' : '✗';
       badge.style.color = color;
-      badge.textContent = `${icon} 链接验证 ${m.g1_pass}/${m.total} (${rate}%) · ${m.verified_at_et} ET`;
+      badge.textContent = `${icon}${m.g1_pass}/${m.total}`;
     })
     .catch(() => {
-      // Fallback: derive from ITEMS count embedded in page
-      const total = ITEMS.length;
       badge.style.color = '#64748b';
-      badge.textContent = `📋 共 ${total} 条信息 · 每日 07:30 ET 自动更新并验证`;
+      badge.textContent = `${ITEMS.length}条`;
     });
 }
 
 // ── Update Schedule Notice ─────────────────────────────────────────────────
 function renderScheduleNotice() {
-  // Show "下次更新" countdown in stream-date
-  const dateEl = document.getElementById('stream-date');
-  if (!dateEl) return;
-  const now = new Date();
-  // Next 07:30 ET (UTC-4 in summer, UTC-5 in winter) — approximate as UTC-4
-  const nextUpdate = new Date(now);
-  nextUpdate.setUTCHours(11, 30, 0, 0); // 07:30 ET = 11:30 UTC
-  if (nextUpdate <= now) nextUpdate.setUTCDate(nextUpdate.getUTCDate() + 1);
-  const diffH = Math.round((nextUpdate - now) / 3600000);
-  const diffText = diffH < 1 ? '< 1小时后' : diffH < 24 ? `约 ${diffH} 小时后` : `明日 07:30 ET`;
-  const existing = dateEl.textContent || '';
-  dateEl.textContent = existing + (existing ? '  ·  ' : '') + `⏰ ${diffText} 更新`;
+  /* countdown removed from header — keep header compact */
 }
 
 // ── Community Smart Yellow Pages ───────────────────────────────────────────
@@ -1091,96 +1122,168 @@ function renderYellowPages() {
   }
 }
 
-// ── Fetch Weather and Stock Data ───────────────────────────────────────────
+// ── Weather / Stock / 7-day forecast ─────────────────────────────────────────
+let WEATHER_CURRENT = null;
+let WEATHER_DAILY = null;
+let TEMP_UNIT = localStorage.getItem('temp_unit') || 'F';
+
+function weatherIcon(code) {
+  if (code <= 3) return '☀️';
+  if (code <= 48) return '☁️';
+  if (code <= 67) return '🌧️';
+  if (code <= 77) return '❄️';
+  if (code <= 99) return '⛈️';
+  return '🌤️';
+}
+
+function fmtTemp(c, unit) {
+  if (unit === 'F') return `${Math.round(c * 9/5 + 32)}°F`;
+  return `${Math.round(c)}°C`;
+}
+
+function fmtTempRange(minC, maxC, unit) {
+  return `${fmtTemp(minC, unit)}/${fmtTemp(maxC, unit)}`;
+}
+
+function updateWeatherDisplay() {
+  const el = document.getElementById('weather-info');
+  const btn = document.getElementById('unit-toggle');
+  if (!el) return;
+  if (btn) btn.textContent = TEMP_UNIT === 'F' ? '°F' : '°C';
+  if (!WEATHER_CURRENT) { el.textContent = '🌤️ 纽约'; return; }
+  const { tempC, code } = WEATHER_CURRENT;
+  el.textContent = `${weatherIcon(code)} 纽约 ${fmtTemp(tempC, TEMP_UNIT)}`;
+}
+
+function toggleTempUnit() {
+  TEMP_UNIT = TEMP_UNIT === 'F' ? 'C' : 'F';
+  localStorage.setItem('temp_unit', TEMP_UNIT);
+  updateWeatherDisplay();
+  renderForecastGrid();
+}
+
+function toggleCalForecast(e) {
+  if (e) e.stopPropagation();
+  const panel = document.getElementById('cal-forecast');
+  const hint = document.getElementById('cal-expand-hint');
+  if (!panel) return;
+  const open = panel.hasAttribute('hidden');
+  if (open) {
+    panel.removeAttribute('hidden');
+    if (hint) hint.textContent = '▾ 收起预报';
+    renderForecastGrid();
+  } else {
+    panel.setAttribute('hidden', '');
+    if (hint) hint.textContent = '▸ 未来7天天气·假日';
+  }
+}
+
+function getHolidaysForDate(d) {
+  const holidays = [];
+  if (typeof Lunar === 'undefined' || typeof Solar === 'undefined') return holidays;
+  const lunar = Lunar.fromDate(d);
+  const solar = Solar.fromDate(d);
+  holidays.push(...(lunar.getFestivals() || []));
+  const jq = lunar.getJieQi();
+  if (jq) holidays.push(jq);
+  holidays.push(...(solar.getFestivals() || []));
+  const m = d.getMonth() + 1, day = d.getDate(), wd = d.getDay();
+  const wom = Math.ceil(day / 7);
+  if (m === 1 && day === 1) holidays.push('元旦');
+  if (m === 1 && wd === 1 && wom === 3) holidays.push('马丁·路德·金日');
+  if (m === 2 && wd === 1 && wom === 3) holidays.push('总统日');
+  if (m === 5 && wd === 1 && day >= 25) holidays.push('阵亡将士纪念日');
+  if (m === 6 && day === 19) holidays.push('六月节');
+  if (m === 7 && day === 4) holidays.push('独立日');
+  if (m === 9 && wd === 1 && wom === 1) holidays.push('劳工节');
+  if (m === 11 && day === 11) holidays.push('退伍军人节');
+  if (m === 11 && wd === 4 && wom === 4) holidays.push('感恩节');
+  if (m === 12 && day === 25) holidays.push('圣诞节');
+  if (m === 6 && day === 1) holidays.push('儿童节');
+  if (m === 10 && day === 1) holidays.push('国庆节');
+  return [...new Set(holidays)];
+}
+
+function renderForecastGrid() {
+  const grid = document.getElementById('forecast-grid');
+  if (!grid || !WEATHER_DAILY) return;
+  const days = ['日','一','二','三','四','五','六'];
+  const todayStr = (() => {
+    const t = new Date();
+    const off = t.getTimezoneOffset() * 60000;
+    return new Date(t - off).toISOString().slice(0, 10);
+  })();
+  grid.innerHTML = WEATHER_DAILY.time.map((dateStr, i) => {
+    const d = new Date(dateStr + 'T12:00:00');
+    const minC = WEATHER_DAILY.temperature_2m_min[i];
+    const maxC = WEATHER_DAILY.temperature_2m_max[i];
+    const code = WEATHER_DAILY.weathercode[i];
+    const holi = getHolidaysForDate(d);
+    const isToday = dateStr === todayStr;
+    const label = isToday ? '今天' : '周' + days[d.getDay()];
+    return `<div class="forecast-day${isToday ? ' is-today' : ''}">
+      <div class="fd-wd">${label}</div>
+      <div class="fd-dt">${d.getMonth()+1}/${d.getDate()}</div>
+      <div class="fd-icon">${weatherIcon(code)}</div>
+      <div class="fd-temp">${fmtTempRange(minC, maxC, TEMP_UNIT)}</div>
+      ${holi.length ? `<div class="fd-holi">${holi.join('·')}</div>` : ''}
+    </div>`;
+  }).join('');
+}
+
 function fetchWeatherAndStock() {
-  // Weather (NYC) using Open-Meteo
-  fetch('https://api.open-meteo.com/v1/forecast?latitude=40.7143&longitude=-74.006&current_weather=true')
+  const wxUrl = 'https://api.open-meteo.com/v1/forecast?latitude=40.7143&longitude=-74.006'
+    + '&current_weather=true'
+    + '&daily=weathercode,temperature_2m_max,temperature_2m_min'
+    + '&forecast_days=7&timezone=America%2FNew_York';
+  fetch(wxUrl)
     .then(r => r.json())
     .then(data => {
       if (data && data.current_weather) {
-        const tempC = data.current_weather.temperature;
-        const tempF = Math.round((tempC * 9/5) + 32);
-        const code = data.current_weather.weathercode;
-        let icon = '🌤️';
-        if (code <= 3) icon = '☀️';
-        else if (code <= 48) icon = '☁️';
-        else if (code <= 67) icon = '🌧️';
-        else if (code <= 77) icon = '❄️';
-        else if (code <= 99) icon = '⛈️';
-        document.getElementById('weather-info').textContent = `${icon} 纽约 ${tempF}°F (${tempC}°C)`;
+        WEATHER_CURRENT = { tempC: data.current_weather.temperature, code: data.current_weather.weathercode };
+        updateWeatherDisplay();
+      }
+      if (data && data.daily) {
+        WEATHER_DAILY = data.daily;
+        if (!document.getElementById('cal-forecast').hasAttribute('hidden')) renderForecastGrid();
       }
     })
-    .catch(() => { document.getElementById('weather-info').textContent = '🌤️ 纽约天气'; });
+    .catch(() => { document.getElementById('weather-info').textContent = '🌤️ 纽约'; });
 
-  // Stock (S&P 500 proxy via Yahoo Finance or similar is hard without API key)
-  // We'll use a public proxy or just show a static placeholder if API fails
-  // Since most free stock APIs require keys, we'll use a simple mock or hide it if it fails
   fetch('https://query1.finance.yahoo.com/v8/finance/chart/%5EGSPC?interval=1d&range=1d')
     .then(r => r.json())
     .then(data => {
       try {
         const meta = data.chart.result[0].meta;
-        const price = meta.regularMarketPrice.toFixed(2);
+        const price = meta.regularMarketPrice.toFixed(0);
         const prev = meta.previousClose;
-        const change = (price - prev).toFixed(2);
-        const pct = ((change / prev) * 100).toFixed(2);
-        const icon = change >= 0 ? '📈' : '📉';
-        const color = change >= 0 ? '#16a34a' : '#dc2626';
-        document.getElementById('stock-info').innerHTML = `${icon} 标普500 <span style="color:${color}">${price} (${change >= 0 ? '+' : ''}${pct}%)</span>`;
+        const pct = (((price - prev) / prev) * 100).toFixed(1);
+        const icon = pct >= 0 ? '📈' : '📉';
+        const color = pct >= 0 ? '#16a34a' : '#dc2626';
+        document.getElementById('stock-info').innerHTML = `${icon} 标普 <span style="color:${color}">${pct >= 0 ? '+' : ''}${pct}%</span>`;
       } catch(e) {
-        document.getElementById('stock-info').style.display = 'none';
+        document.getElementById('stock-info').textContent = '📈 美股';
       }
     })
-    .catch(() => { document.getElementById('stock-info').textContent = '📈 美股行情'; });
+    .catch(() => { document.getElementById('stock-info').textContent = '📈 美股'; });
 }
 
-// ── Almanac & Holidays ─────────────────────────────────────────────────────
+// ── Almanac (today) ──────────────────────────────────────────────────────────
 function renderAlmanac() {
   if (typeof Lunar === 'undefined' || typeof Solar === 'undefined') return;
   const today = new Date();
   const lunar = Lunar.fromDate(today);
-  const solar = Solar.fromDate(today);
-  
   const days = ['日','一','二','三','四','五','六'];
-  document.getElementById('almanac-date').textContent = `${today.getFullYear()}年${today.getMonth()+1}月${today.getDate()}日 星期${days[today.getDay()]}`;
-  document.getElementById('almanac-lunar').textContent = `农历 ${lunar.getMonthInChinese()}月${lunar.getDayInChinese()} · ${lunar.getYearInGanZhi()}年 ${lunar.getMonthInGanZhi()}月 ${lunar.getDayInGanZhi()}日`;
-  
+  document.getElementById('almanac-date').textContent =
+    `${today.getFullYear()}年${today.getMonth()+1}月${today.getDate()}日 周${days[today.getDay()]}`;
+  document.getElementById('almanac-lunar').textContent =
+    `农历${lunar.getMonthInChinese()}月${lunar.getDayInChinese()}`;
   document.getElementById('almanac-yi').textContent = lunar.getDayYi().join('、') || '无';
   document.getElementById('almanac-ji').textContent = lunar.getDayJi().join('、') || '无';
-  
-  const holidays = [];
-  
-  // Chinese/Lunar festivals
-  const lunarFests = lunar.getFestivals();
-  if (lunarFests.length > 0) holidays.push(...lunarFests);
-  const jieqi = lunar.getJieQi();
-  if (jieqi) holidays.push(jieqi);
-  
-  // Solar/US festivals
-  const solarFests = solar.getFestivals();
-  if (solarFests.length > 0) holidays.push(...solarFests);
-  
-  // Add specific US holidays not covered by default
-  const m = today.getMonth() + 1;
-  const d = today.getDate();
-  const day = today.getDay();
-  const weekOfMonth = Math.ceil(d / 7);
-  
-  if (m === 1 && d === 1) holidays.push("元旦 (New Year's Day)");
-  if (m === 1 && day === 1 && weekOfMonth === 3) holidays.push("马丁·路德·金纪念日");
-  if (m === 2 && day === 1 && weekOfMonth === 3) holidays.push("总统日 (Presidents' Day)");
-  if (m === 5 && day === 1 && d >= 25) holidays.push("阵亡将士纪念日 (Memorial Day)");
-  if (m === 6 && d === 19) holidays.push("六月节 (Juneteenth)");
-  if (m === 7 && d === 4) holidays.push("美国独立日 (Independence Day)");
-  if (m === 9 && day === 1 && weekOfMonth === 1) holidays.push("劳工节 (Labor Day)");
-  if (m === 10 && day === 1 && weekOfMonth === 2) holidays.push("哥伦布日 (Columbus Day)");
-  if (m === 11 && d === 11) holidays.push("退伍军人节 (Veterans Day)");
-  if (m === 11 && day === 4 && weekOfMonth === 4) holidays.push("感恩节 (Thanksgiving)");
-  if (m === 12 && d === 25) holidays.push("圣诞节 (Christmas)");
-
+  const holidays = getHolidaysForDate(today);
   const holiEl = document.getElementById('almanac-holidays');
   if (holidays.length > 0) {
-    holiEl.textContent = '🎉 今日节日/节气：' + [...new Set(holidays)].join(' | ');
+    holiEl.textContent = '🎉 ' + holidays.join(' · ');
     holiEl.style.display = 'block';
   } else {
     holiEl.style.display = 'none';
@@ -1194,6 +1297,7 @@ renderStreamSections();
 initVerifyBadge();
 renderScheduleNotice();
 fetchWeatherAndStock();
+document.getElementById('unit-toggle').textContent = TEMP_UNIT === 'F' ? '°F' : '°C';
 // Almanac: try immediately, retry up to 3s if lunar library not yet loaded
 (function tryAlmanac(attempt) {
   if (typeof Lunar !== 'undefined' && typeof Solar !== 'undefined') {
