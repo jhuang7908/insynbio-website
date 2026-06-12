@@ -369,7 +369,7 @@
     <div class="feed-grid" id="week-feed"></div>
     
     <!-- ═══ COMPACT COMPOSITE SEARCH PANEL (复合检索面板) ═══ -->
-    <div class="search-panel">
+    
     <div class="section-title" style="cursor:pointer" onclick="toggleChannels()">
       <div class="section-title-left" id="channels-title">📂 11大民生频道 · 按类别浏览</div>
       <span id="channels-toggle" style="font-size:12px;color:#64748b;font-weight:600">收起 ▲</span>
@@ -1100,7 +1100,7 @@ function fetchWeatherAndStock() {
         document.getElementById('weather-info').textContent = `${icon} 纽约 ${tempF}°F (${tempC}°C)`;
       }
     })
-    .catch(() => document.getElementById('weather-info').style.display = 'none');
+    .catch(() => { document.getElementById('weather-info').textContent = '🌤️ 纽约天气'; });
 
   // Stock (S&P 500 proxy via Yahoo Finance or similar is hard without API key)
   // We'll use a public proxy or just show a static placeholder if API fails
@@ -1121,7 +1121,7 @@ function fetchWeatherAndStock() {
         document.getElementById('stock-info').style.display = 'none';
       }
     })
-    .catch(() => document.getElementById('stock-info').style.display = 'none');
+    .catch(() => { document.getElementById('stock-info').textContent = '📈 美股行情'; });
 }
 
 // ── Almanac & Holidays ─────────────────────────────────────────────────────
@@ -1184,7 +1184,14 @@ renderStreamSections();
 initVerifyBadge();
 renderScheduleNotice();
 fetchWeatherAndStock();
-renderAlmanac();
+// Almanac: try immediately, retry up to 3s if lunar library not yet loaded
+(function tryAlmanac(attempt) {
+  if (typeof Lunar !== 'undefined' && typeof Solar !== 'undefined') {
+    renderAlmanac();
+  } else if (attempt < 10) {
+    setTimeout(() => tryAlmanac(attempt + 1), 300);
+  }
+})(0);
 
 // ── Subscription System ──────────────────────────────────────────────────────
 
