@@ -425,9 +425,6 @@
               <span id="verify-badge" class="dash-verify">✔</span>
             </div>
           </div>
-          <div class="dash-row dash-row-meta">
-            <span id="hub-auto-update" class="dash-meta-inline"></span>
-          </div>
         </div>
         <span class="dash-toggle">▼</span>
       </summary>
@@ -832,17 +829,43 @@ function applyUILanguage() {
 }
 
 function renderAutoUpdateBadge() {
-  const el = document.getElementById('hub-auto-update');
-  if (!el || typeof HUB_AUTO_UPDATE === 'undefined') return;
-  const parts = [];
-  const hrs = hubHoursSinceLastUpdate();
-  if (hrs !== null && hrs <= 24) parts.push(`${hrs}h前更新`);
-  if (HUB_AUTO_UPDATE.last_full) parts.push('全量 ' + HUB_AUTO_UPDATE.last_full);
-  if (HUB_AUTO_UPDATE.last_incremental) parts.push('交通 ' + HUB_AUTO_UPDATE.last_incremental);
-  el.textContent = parts.length ? '🤖 纽约 · ' + parts.join(' · ') : '';
-  el.title = (typeof HUB_INDEX_STATS !== 'undefined' && HUB_INDEX_STATS.scan_schedule_et)
-    ? ('美东 ' + HUB_INDEX_STATS.scan_schedule_et + ' · 52源扫描去重')
-    : '美东07:30全量扫描52源 · 18:00交通增量';
+  /* scan timestamps kept in pipeline artifacts only — not shown in UI */
+}
+
+const HUB_NEIGHBORHOOD_IDS = {
+  '法拉盛 Flushing': 'flushing',
+  '唐人街 Chinatown': 'chinatown',
+  '八大道 Sunset Park': 'sunset',
+  '艾姆赫斯特 Elmhurst': 'elmhurst',
+};
+
+function inferHubNeighborhoods(item) {
+  const blob = [
+    item.area_zh, item.area_en, item.borough,
+    item.title_zh, item.title_en, item.summary_zh, item.summary_en,
+    item.url, item.location || '',
+  ].join(' ').toLowerCase();
+  const hits = new Set();
+  if (/flushing|11354|11355|11358|bowne|kissena|college point|fresh meadows|murray hill|法拉盛|whitestone/.test(blob)) {
+    hits.add('flushing');
+  }
+  if (/chinatown|canal st|mott st|bayard|10013|10002|唐人街|grand st.*100|lower east side.*100/.test(blob)) {
+    hits.add('chinatown');
+  }
+  if (/sunset park|8th ave|八大道|11220|11232|4812|bay ridge|bensonhurst|dyker/.test(blob)) {
+    hits.add('sunset');
+  }
+  if (/elmhurst|11373|jackson heights|11372|11368|艾姆赫斯特|corona|rego park|woodside/.test(blob)) {
+    hits.add('elmhurst');
+  }
+  return hits;
+}
+
+function matchesHubNeighborhood(item, filterKey) {
+  if (filterKey === 'all') return true;
+  const id = HUB_NEIGHBORHOOD_IDS[filterKey];
+  if (!id) return false;
+  return inferHubNeighborhoods(item).has(id);
 }
 
 function parseItemIndexMs(raw, fallbackDate) {
@@ -1172,19 +1195,8 @@ function renderFeed() {
       }
     }
     
-    // 4. Neighborhood/Enclave Pills Filter
-    let matchesNeighborhood = false;
-    if (activeNeighborhoodFilter === 'all') {
-      matchesNeighborhood = true;
-    } else if (activeNeighborhoodFilter === '法拉盛 Flushing' && (i.area_zh === '法拉盛 Flushing' || i.area_en === 'Flushing')) {
-      matchesNeighborhood = true;
-    } else if (activeNeighborhoodFilter === '唐人街 Chinatown' && (i.area_zh === '唐人街 Chinatown' || i.area_en === 'Chinatown')) {
-      matchesNeighborhood = true;
-    } else if (activeNeighborhoodFilter === '八大道 Sunset Park' && (i.area_zh === '八大道 Sunset Park' || i.area_en === 'Sunset Park')) {
-      matchesNeighborhood = true;
-    } else if (activeNeighborhoodFilter === '艾姆赫斯特 Elmhurst' && (i.area_zh === '艾姆赫斯特 Elmhurst' || i.area_en === 'Elmhurst')) {
-      matchesNeighborhood = true;
-    }
+    // 4. Neighborhood/Enclave Pills Filter (keyword + location inference)
+    const matchesNeighborhood = matchesHubNeighborhood(i, activeNeighborhoodFilter);
     
     // 5. Keyword Search
     const title = i[`title_${currentLang}`] || i.title_zh;
