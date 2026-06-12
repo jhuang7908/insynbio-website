@@ -253,6 +253,8 @@
         <span class="stream-count" id="stream-count"></span>
       </div>
       <div class="stream-right" style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;">
+        <span id="weather-info" style="font-size:12px;font-weight:600;color:#334155;background:#f1f5f9;padding:2px 8px;border-radius:12px;">🌤️ 获取天气中...</span>
+        <span id="stock-info" style="font-size:12px;font-weight:600;color:#334155;background:#f1f5f9;padding:2px 8px;border-radius:12px;">📈 获取股市中...</span>
         <span class="stream-date" id="stream-date"></span>
         <span id="verify-badge" style="font-size:11px;font-weight:700;color:#16a34a;">⏳ 链接验证中…</span>
       </div>
@@ -914,12 +916,56 @@ function renderScheduleNotice() {
   dateEl.textContent = existing + (existing ? '  ·  ' : '') + `⏰ ${diffText} 更新`;
 }
 
+// ── Fetch Weather and Stock Data ───────────────────────────────────────────
+function fetchWeatherAndStock() {
+  // Weather (NYC) using Open-Meteo
+  fetch('https://api.open-meteo.com/v1/forecast?latitude=40.7143&longitude=-74.006&current_weather=true')
+    .then(r => r.json())
+    .then(data => {
+      if (data && data.current_weather) {
+        const tempC = data.current_weather.temperature;
+        const tempF = Math.round((tempC * 9/5) + 32);
+        const code = data.current_weather.weathercode;
+        let icon = '🌤️';
+        if (code <= 3) icon = '☀️';
+        else if (code <= 48) icon = '☁️';
+        else if (code <= 67) icon = '🌧️';
+        else if (code <= 77) icon = '❄️';
+        else if (code <= 99) icon = '⛈️';
+        document.getElementById('weather-info').textContent = `${icon} 纽约 ${tempF}°F (${tempC}°C)`;
+      }
+    })
+    .catch(() => document.getElementById('weather-info').style.display = 'none');
+
+  // Stock (S&P 500 proxy via Yahoo Finance or similar is hard without API key)
+  // We'll use a public proxy or just show a static placeholder if API fails
+  // Since most free stock APIs require keys, we'll use a simple mock or hide it if it fails
+  fetch('https://query1.finance.yahoo.com/v8/finance/chart/%5EGSPC?interval=1d&range=1d')
+    .then(r => r.json())
+    .then(data => {
+      try {
+        const meta = data.chart.result[0].meta;
+        const price = meta.regularMarketPrice.toFixed(2);
+        const prev = meta.previousClose;
+        const change = (price - prev).toFixed(2);
+        const pct = ((change / prev) * 100).toFixed(2);
+        const icon = change >= 0 ? '📈' : '📉';
+        const color = change >= 0 ? '#16a34a' : '#dc2626';
+        document.getElementById('stock-info').innerHTML = `${icon} 标普500 <span style="color:${color}">${price} (${change >= 0 ? '+' : ''}${pct}%)</span>`;
+      } catch(e) {
+        document.getElementById('stock-info').style.display = 'none';
+      }
+    })
+    .catch(() => document.getElementById('stock-info').style.display = 'none');
+}
+
 // Initial Boot
 evictExpiredItems();
 initPreference();
 renderStreamSections();
 initVerifyBadge();
 renderScheduleNotice();
+fetchWeatherAndStock();
 
 // ── Subscription System ──────────────────────────────────────────────────────
 
