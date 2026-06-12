@@ -652,9 +652,8 @@ function updateResetButton() {
   }
 }
 
-// Calculate days difference from June 11, 2026
+// Calculate days difference from today
 function getDaysDiff(dateStr) {
-  const today = new Date('2026-06-11');
   const itemDate = new Date(dateStr);
   const diffTime = today - itemDate;
   return Math.ceil(diffTime / (1000 * 60 * 60 * 24));
