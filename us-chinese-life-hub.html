@@ -92,6 +92,18 @@
     .date-chip { font-size: 9px; font-weight: 600; white-space: nowrap; line-height: 1.25; }
     .date-chip.event { color: #0d9488; }
     .date-chip.publish { color: #94a3b8; }
+    .date-chip.indexed { color: #7c3aed; }
+    .hub-search-panel {
+      display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+      margin: 8px 0 10px; padding: 10px 12px;
+      background: #fff; border: 1px solid #e2e8f0; border-radius: 10px;
+    }
+    .hub-search-panel input {
+      flex: 1; min-width: 180px; padding: 8px 12px; border: 1px solid #cbd5e1;
+      border-radius: 8px; font-size: 13px; outline: none;
+    }
+    .hub-search-panel input:focus { border-color: #ea580c; box-shadow: 0 0 0 2px rgba(234,88,12,0.12); }
+    .hub-search-count { font-size: 11px; color: #64748b; font-weight: 600; white-space: nowrap; }
     .title { font-size: 13px; font-weight: 700; line-height: 1.35; margin-bottom: 4px; color: #334155; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
     .summary { font-size: 11px; color: #64748b; line-height: 1.45; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
     .foot { margin-top: 6px; display: flex; justify-content: space-between; align-items: center; font-size: 10px; color: #64748b; border-top: 1px solid #f1f5f9; padding-top: 6px; gap: 6px; }
@@ -502,7 +514,14 @@
       <div class="section-title-left" id="feed-title">📋 全部信息（按发布日期保留30天）</div>
       <button id="reset-filters" class="reset-btn" onclick="resetAllFilters()">🔄 重置所有筛选</button>
     </div>
-    <p class="muted" id="feed-sub">52源每日07:30扫描 · 24h滚动新增 · 活动=场次</p>
+    <p class="muted" id="feed-sub">52源每日07:30扫描 · 检索库含收录/发布/活动/地点/正文</p>
+
+    <div class="hub-search-panel" id="hub-search-panel">
+      <input type="search" id="hub-search" autocomplete="off"
+        placeholder="检索：标题、内容、地点、收录时间、发布时间、活动日期…"
+        oninput="hubSearchInput()">
+      <span class="hub-search-count" id="hub-search-count"></span>
+    </div>
     
     <!-- Neighborhood filters -->
     <div class="pillbar" id="neighborhood-filters">
@@ -609,11 +628,16 @@ const UI_STRINGS = {
     verified_badge: "已核验",
     date_event: "活动",
     date_published: "发布",
+    date_source_published: "官方发布",
+    date_first_indexed: "首次收录",
     date_ongoing: "长期有效",
     date_tbd: "时间见官网",
+    hub_search_placeholder: "检索：标题、内容、地点、收录时间、发布时间、活动日期…",
+    hub_search_count: "共 {n} 条可检索",
+    hub_search_match: "匹配 {n} 条",
     channels_title: "1️⃣ 8大民生频道",
     feed_title: "2️⃣ 纽约福利与华人服务信息",
-    feed_sub: "52源每日07:30扫描 · 24h滚动新增 · 活动=场次",
+    feed_sub: "52源每日07:30扫描 · 检索库含收录/发布/活动/地点/正文",
     reset_btn: "🔄 重置所有筛选",
     all_neighborhoods: "📍 全部社区（纽约全市）",
     citywide: "纽约全市",
@@ -664,11 +688,16 @@ const UI_STRINGS = {
     verified_badge: "已核驗",
     date_event: "活動",
     date_published: "發布",
+    date_source_published: "官方發布",
+    date_first_indexed: "首次收錄",
     date_ongoing: "長期有效",
     date_tbd: "時間見官網",
+    hub_search_placeholder: "檢索：標題、內容、地點、收錄時間、發布時間、活動日期…",
+    hub_search_count: "共 {n} 條可檢索",
+    hub_search_match: "匹配 {n} 條",
     channels_title: "1️⃣ 8大民生頻道",
     feed_title: "2️⃣ 紐約福利與華人服務信息",
-    feed_sub: "52源每日07:30掃描 · 24h滾動新增 · 活動=場次",
+    feed_sub: "52源每日07:30掃描 · 檢索庫含收錄/發布/活動/地點/正文",
     reset_btn: "🔄 重置所有篩選",
     all_neighborhoods: "📍 全部社區（紐約全市）",
     citywide: "紐約全市",
@@ -719,11 +748,16 @@ const UI_STRINGS = {
     verified_badge: "Verified",
     date_event: "Event",
     date_published: "Posted",
+    date_source_published: "Official post",
+    date_first_indexed: "First indexed",
     date_ongoing: "Ongoing",
     date_tbd: "See official site",
+    hub_search_placeholder: "Search title, content, location, indexed/posted/event dates…",
+    hub_search_count: "{n} records indexed",
+    hub_search_match: "{n} matches",
     channels_title: "1️⃣ 8 Public Channels",
     feed_title: "2️⃣ NYC Benefits & Chinese Community",
-    feed_sub: "52 sources · 07:30 ET scan · 24h rolling new · Event = session",
+    feed_sub: "52 sources · search index: indexed/posted/event/location/content",
     reset_btn: "🔄 Reset All Filters",
     all_neighborhoods: "📍 All Communities (NYC)",
     citywide: "NYC Citywide",
@@ -807,6 +841,9 @@ function applyUILanguage() {
   
   const feedSub = document.getElementById('feed-sub');
   if (feedSub) feedSub.textContent = s.feed_sub;
+  const hubSearchInputEl = document.getElementById('hub-search');
+  if (hubSearchInputEl) hubSearchInputEl.placeholder = s.hub_search_placeholder || hubSearchInputEl.placeholder;
+  updateHubSearchCount();
 
   const todayTitle = document.getElementById('today-title');
   if (todayTitle) todayTitle.textContent = s.today_title;
@@ -1136,8 +1173,89 @@ function formatPublishDateLabel(i) {
   return `<span class="date-chip publish">${s.date_published}: ${pub}</span>`;
 }
 
+function formatSourcePublishedLabel(i) {
+  const s = UI_STRINGS[currentLang];
+  const raw = (i.source_published_at || '').trim();
+  if (!raw) return '';
+  const shown = raw.includes('T') ? raw.slice(0, 16).replace('T', ' ') : raw.slice(0, 10);
+  return `<span class="date-chip publish">${s.date_source_published}: ${shown}</span>`;
+}
+
+function formatFirstIndexedLabel(i) {
+  const s = UI_STRINGS[currentLang];
+  const raw = (i.first_indexed_at || '').trim();
+  if (!raw) return '';
+  const shown = raw.includes('T') ? raw.slice(0, 16).replace('T', ' ') : raw.slice(0, 10);
+  return `<span class="date-chip indexed">${s.date_first_indexed}: ${shown}</span>`;
+}
+
 function formatDateMeta(i) {
-  return `<div class="date-row">${formatEventDateLabel(i)}${formatPublishDateLabel(i)}</div>`;
+  const pubLine = formatSourcePublishedLabel(i) || formatPublishDateLabel(i);
+  return `<div class="date-row">${formatEventDateLabel(i)}${pubLine}${formatFirstIndexedLabel(i)}</div>`;
+}
+
+let HUB_SEARCH_BY_ID = new Map();
+
+function hubItemSearchBlob(item) {
+  enrichItemLocationFields(item);
+  if (HUB_SEARCH_BY_ID.has(item.id)) {
+    return HUB_SEARCH_BY_ID.get(item.id);
+  }
+  const venue = (item.location || '').trim();
+  const parts = [
+    item.id, item.module,
+    item.title_zh, item.title_en, item.title_zht,
+    item.summary_zh, item.summary_en,
+    resolveHubLocationLabel(item), item.area_zh, item.area_en, item.borough,
+    venue, item.event_date, item.event_time,
+    item.published_at, item.source_published_at, item.first_indexed_at, item.last_seen_at,
+    item.url,
+  ];
+  const blob = parts.filter(Boolean).join(' ').toLowerCase();
+  HUB_SEARCH_BY_ID.set(item.id, blob);
+  return blob;
+}
+
+function buildHubSearchIndexFromItems() {
+  HUB_SEARCH_BY_ID = new Map();
+  for (const item of ITEMS) {
+    HUB_SEARCH_BY_ID.set(item.id, hubItemSearchBlob(item));
+  }
+}
+
+async function loadHubSearchIndexFile() {
+  try {
+    const resp = await fetch('hub_search_index.json', { cache: 'no-store' });
+    if (!resp.ok) return;
+    const data = await resp.json();
+    if (!data || !Array.isArray(data.records)) return;
+    for (const rec of data.records) {
+      if (rec.id && rec.search_text) {
+        HUB_SEARCH_BY_ID.set(rec.id, String(rec.search_text).toLowerCase());
+      }
+    }
+    updateHubSearchCount();
+  } catch (_) { /* offline / static embed only */ }
+}
+
+function hubSearchInput() {
+  const hubInput = document.getElementById('hub-search');
+  const hiddenQ = document.getElementById('q');
+  if (hubInput && hiddenQ) hiddenQ.value = hubInput.value;
+  renderFeed();
+}
+
+function updateHubSearchCount(filteredLen) {
+  const el = document.getElementById('hub-search-count');
+  if (!el) return;
+  const s = UI_STRINGS[currentLang];
+  const total = ITEMS.length;
+  const q = (document.getElementById('hub-search')?.value || '').trim();
+  if (q && filteredLen !== undefined) {
+    el.textContent = (s.hub_search_match || '匹配 {n} 条').replace('{n}', String(filteredLen));
+  } else {
+    el.textContent = (s.hub_search_count || '共 {n} 条可检索').replace('{n}', String(total));
+  }
 }
 
 function hubLinkMeta(item) {
@@ -1255,6 +1373,8 @@ function resetAllFilters() {
   activeNeighborhoodFilter = 'all';
   const _g = id => document.getElementById(id);
   if (_g('q')) _g('q').value = '';
+  const hubSearch = _g('hub-search');
+  if (hubSearch) hubSearch.value = '';
   if (_g('borough')) _g('borough').value = 'all';
   if (_g('category')) _g('category').value = 'all';
   if (_g('time-freshness')) _g('time-freshness').value = 'all';
@@ -1327,7 +1447,8 @@ function renderFeed() {
     const summary = i[`summary_${currentLang}`] || i.summary_zh;
     const area = i[`area_${currentLang}`] || i.area_zh;
     const loc = resolveHubLocationLabel(i);
-    const matchesSearch = `${title} ${summary} ${area} ${loc}`.toLowerCase().includes(q);
+    const venue = (i.location || '').trim();
+    const matchesSearch = !q || hubItemSearchBlob(i).includes(q);
     
     return matchesModule && matchesBorough && matchesTime && matchesNeighborhood && matchesSearch;
   });
@@ -1371,6 +1492,7 @@ function renderFeed() {
       </div>
     `;
   }
+  updateHubSearchCount(filtered.length);
   updateResetButton();
 }
 
@@ -2429,6 +2551,8 @@ function hubBoot() {
   try {
     evictExpiredItems();
     enrichAllItemLocations();
+    buildHubSearchIndexFromItems();
+    loadHubSearchIndexFile();
     initPreference();
     renderStreamSections();
     renderAutoUpdateBadge();
