@@ -194,16 +194,28 @@
     .module-grid.expanded { max-height: 3000px; margin-top: 12px; }
 
     /* Almanac & Phones */
-    .almanac-card { background: #fff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 12px 16px; margin-top: 12px; display: flex; flex-direction: column; gap: 8px; }
-    .almanac-header { display: flex; justify-content: space-between; font-size: 14px; font-weight: 700; color: #1e293b; border-bottom: 1px dashed #e2e8f0; padding-bottom: 8px; }
+    .daily-dashboard { background: linear-gradient(135deg, #fff7ed 0%, #fef3c7 100%); border: 1px solid #fed7aa; border-radius: 12px; margin: 16px auto 0; max-width: 960px; overflow: hidden; }
+    .dashboard-summary { display: flex; justify-content: space-between; align-items: center; padding: 12px 16px; cursor: pointer; list-style: none; user-select: none; }
+    .dashboard-summary::-webkit-details-marker { display: none; }
+    .dash-left { display: flex; align-items: center; gap: 10px; }
+    .dash-right { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+    .dash-toggle { font-size: 10px; color: #ea580c; transition: transform 0.2s; }
+    details[open] .dash-toggle { transform: rotate(180deg); }
+    .dashboard-body { padding: 0 16px 16px; border-top: 1px dashed #fed7aa; margin-top: 4px; }
+    
+    .almanac-card { background: rgba(255,255,255,0.6); border-radius: 8px; padding: 12px; margin-top: 12px; display: flex; flex-direction: column; gap: 8px; }
+    .almanac-header { display: flex; justify-content: space-between; font-size: 14px; font-weight: 700; color: #92400e; border-bottom: 1px dashed #fdba74; padding-bottom: 8px; }
     .almanac-body { display: flex; gap: 16px; font-size: 13px; margin-top: 4px; }
     .almanac-item { display: flex; align-items: flex-start; gap: 6px; flex: 1; }
     .almanac-item .yi { background: #dcfce7; color: #16a34a; padding: 2px 6px; border-radius: 4px; font-weight: 700; font-size: 12px; white-space: nowrap; }
     .almanac-item .ji { background: #fee2e2; color: #dc2626; padding: 2px 6px; border-radius: 4px; font-weight: 700; font-size: 12px; white-space: nowrap; }
     .almanac-holidays { font-size: 12px; color: #ea580c; font-weight: 600; margin-top: 4px; display: none; }
 
-    .phones-card { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 16px; margin-top: 16px; }
-    .phones-title { font-size: 14px; font-weight: 700; color: #334155; margin-bottom: 12px; }
+    .phones-card { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; margin-top: 16px; overflow: hidden; }
+    .phones-summary { display: flex; justify-content: space-between; align-items: center; padding: 16px; cursor: pointer; list-style: none; user-select: none; background: #f1f5f9; }
+    .phones-summary::-webkit-details-marker { display: none; }
+    .phones-title { font-size: 14px; font-weight: 700; color: #334155; margin: 0; }
+    .phones-body { padding: 0 16px 16px; }
     .phones-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 10px; }
     .phone-item { background: #fff; border: 1px solid #cbd5e1; border-radius: 8px; padding: 10px; text-decoration: none; color: inherit; transition: all 0.15s; display: flex; flex-direction: column; justify-content: center; }
     .phone-item:hover { border-color: #07bb65; box-shadow: 0 4px 12px rgba(7,187,101,0.1); transform: translateY(-1px); }
@@ -265,80 +277,45 @@
 
   <main class="wrap">
 
-    <!-- ═══ LIVE STREAM BANNER ═══ -->
-    <div class="stream-banner">
-      <div class="stream-left">
-        <span class="stream-dot"></span>
-        <span class="stream-label" id="stream-label">今日更新</span>
-        <span class="stream-count" id="stream-count"></span>
-      </div>
-      <div class="stream-right" style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;">
-        <span id="weather-info" style="font-size:12px;font-weight:600;color:#334155;background:#f1f5f9;padding:2px 8px;border-radius:12px;">🌤️ 获取天气中...</span>
-        <span id="stock-info" style="font-size:12px;font-weight:600;color:#334155;background:#f1f5f9;padding:2px 8px;border-radius:12px;">📈 获取股市中...</span>
-        <span class="stream-date" id="stream-date"></span>
-        <span id="verify-badge" style="font-size:11px;font-weight:700;color:#16a34a;">⏳ 链接验证中…</span>
-      </div>
-    </div>
-
-    <!-- ═══ ALMANAC & HOLIDAYS ═══ -->
-    <div class="almanac-card" id="almanac-card">
-      <div class="almanac-header">
-        <span id="almanac-date"></span>
-        <span id="almanac-lunar"></span>
-      </div>
-      <div class="almanac-body">
-        <div class="almanac-item"><span class="yi">宜</span> <span id="almanac-yi"></span></div>
-        <div class="almanac-item"><span class="ji">忌</span> <span id="almanac-ji"></span></div>
-      </div>
-      <div class="almanac-holidays" id="almanac-holidays"></div>
-    </div>
-
-    <!-- ═══ TODAY'S HIGHLIGHTS (第一屏核心) ═══ -->
-    <div class="section-title" style="margin-top:20px">
-      <div class="section-title-left" id="today-title">🔥 今日重点 · Today's Highlights</div>
-    </div>
-    <div class="feed-grid" id="today-feed"></div>
-
-    <!-- ═══ THIS WEEK UPCOMING ═══ -->
-    <div class="section-title">
-      <div class="section-title-left" id="week-title">📅 本周活动 · This Week</div>
-    </div>
-    <div class="feed-grid" id="week-feed"></div>
-    
-    <!-- ═══ COMPACT COMPOSITE SEARCH PANEL (复合检索面板) ═══ -->
-    <div class="search-panel">
-      <!-- 1. Keyword search -->
-      <input id="q" placeholder="输入关键词搜索福利、交通、教育、活动..." oninput="renderFeed()" />
+    <!-- ═══ DAILY DASHBOARD (Calendar, Weather, Stock, Almanac) ═══ -->
+    <details class="daily-dashboard" open>
+      <summary class="dashboard-summary">
+        <div class="dash-left">
+          <span class="stream-dot"></span>
+          <span class="stream-label" id="stream-label">今日更新</span>
+          <span class="stream-count" id="stream-count"></span>
+        </div>
+        <div class="dash-right">
+          <span id="weather-info" style="font-size:12px;font-weight:600;color:#334155;background:#f1f5f9;padding:2px 8px;border-radius:12px;">🌤️ 获取天气中...</span>
+          <span id="stock-info" style="font-size:12px;font-weight:600;color:#334155;background:#f1f5f9;padding:2px 8px;border-radius:12px;">📈 获取股市中...</span>
+          <span class="stream-date" id="stream-date"></span>
+          <span id="verify-badge" style="font-size:11px;font-weight:700;color:#16a34a;">⏳ 链接验证中…</span>
+          <span class="dash-toggle">▼</span>
+        </div>
+      </summary>
       
-      <!-- 2. Administrative Region / Borough Filter -->
-      <select id="borough" onchange="renderFeed()">
-        <option value="all" id="opt-all-boroughs">所有区域 (All Boroughs)</option>
-        <option value="Citywide" id="opt-citywide">纽约全市 (NYC Citywide)</option>
-        <option value="Manhattan" id="opt-manhattan">曼哈顿 (Manhattan)</option>
-        <option value="Queens" id="opt-queens">皇后区 (Queens)</option>
-        <option value="Brooklyn" id="opt-brooklyn">布鲁克林 (Brooklyn)</option>
-        <option value="Bronx" id="opt-bronx">布朗士 (Bronx)</option>
-        <option value="Staten Island" id="opt-staten">史泰登岛 (Staten Island)</option>
-      </select>
+      <div class="dashboard-body">
+        <div class="almanac-card" id="almanac-card">
+          <div class="almanac-header">
+            <span id="almanac-date"></span>
+            <span id="almanac-lunar"></span>
+          </div>
+          <div class="almanac-body">
+            <div class="almanac-item"><span class="yi">宜</span> <span id="almanac-yi"></span></div>
+            <div class="almanac-item"><span class="ji">忌</span> <span id="almanac-ji"></span></div>
+          </div>
+          <div class="almanac-holidays" id="almanac-holidays"></div>
+        </div>
+      </div>
+    </details>
 
-      <!-- 3. Category Filter -->
-      <select id="category" onchange="syncCategoryFilter(this.value)">
-        <option value="all" id="opt-all-categories">所有频道 (All Channels)</option>
-      </select>
-
-      <!-- 4. Time Freshness Filter -->
-      <select id="time-freshness" onchange="renderFeed()">
-        <option value="all" id="opt-all-time">所有时间 (All Time)</option>
-        <option value="today" id="opt-today">今日更新 (Today)</option>
-        <option value="3days" id="opt-3days">最近3天 (Last 3 Days)</option>
-        <option value="week" id="opt-week">本周新增 (This Week)</option>
-      </select>
-    </div>
-
-    <!-- ═══ ESSENTIAL PHONES ═══ -->
-    <div class="phones-card">
-      <div class="phones-title">☎️ 纽约生活常用电话 (点击拨打)</div>
-      <div class="phones-grid">
+    <!-- ═══ ESSENTIAL PHONES (Collapsible) ═══ -->
+    <details class="phones-card">
+      <summary class="phones-summary">
+        <span class="phones-title" style="margin:0;">☎️ 纽约生活常用电话 (点击展开)</span>
+        <span class="dash-toggle">▼</span>
+      </summary>
+      <div class="phones-grid" style="margin-top:12px;">
         <a href="tel:911" class="phone-item"><div class="phone-name">急救/报警 (紧急)</div><div class="phone-num">911</div></a>
         <a href="tel:311" class="phone-item"><div class="phone-name">市政服务/非紧急报警/投诉</div><div class="phone-num">311</div></a>
         <a href="tel:988" class="phone-item"><div class="phone-name">心理危机干预</div><div class="phone-num">988</div></a>
@@ -355,9 +332,22 @@
         <a href="tel:2129798381" class="phone-item"><div class="phone-name">亚洲人平等会 AAFE</div><div class="phone-num">212-979-8381</div></a>
         <a href="tel:2123796998" class="phone-item"><div class="phone-name">王嘉廉社区医疗中心</div><div class="phone-num">212-379-6998</div></a>
       </div>
-    </div>
+    </details>
 
-    <!-- ═══ 11 CORE CHANNELS (expanded by default) ═══ -->
+    <!-- ═══ TODAY'S HIGHLIGHTS (第一屏核心) ═══ -->
+    <div class="section-title" style="margin-top:20px">
+      <div class="section-title-left" id="today-title">🔥 今日重点 · Today's Highlights</div>
+    </div>
+    <div class="feed-grid" id="today-feed"></div>
+
+    <!-- ═══ THIS WEEK UPCOMING ═══ -->
+    <div class="section-title">
+      <div class="section-title-left" id="week-title">📅 本周活动 · This Week</div>
+    </div>
+    <div class="feed-grid" id="week-feed"></div>
+    
+    <!-- ═══ COMPACT COMPOSITE SEARCH PANEL (复合检索面板) ═══ -->
+    <div class="search-panel">
     <div class="section-title" style="cursor:pointer" onclick="toggleChannels()">
       <div class="section-title-left" id="channels-title">📂 11大民生频道 · 按类别浏览</div>
       <span id="channels-toggle" style="font-size:12px;color:#64748b;font-weight:600">收起 ▲</span>
