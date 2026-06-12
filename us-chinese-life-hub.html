@@ -242,22 +242,24 @@
     .phone-name { font-size: 10px; color: #64748b; margin-bottom: 2px; line-height: 1.2; }
     .phone-num { font-size: 13px; font-weight: 800; color: #0f172a; }
 
-    /* Yellow Pages — industry groups */
+    /* Yellow Pages — unified phone directory */
     .yp-toolbar { display: flex; gap: 6px; margin-bottom: 8px; flex-wrap: wrap; }
     .yp-toolbar input { flex: 1; min-width: 140px; padding: 7px 10px; border: 1px solid #cbd5e1; border-radius: 8px; font-size: 12px; outline: none; }
     .yp-industry-bar { display: flex; gap: 5px; flex-wrap: wrap; margin-bottom: 10px; }
     .yp-pill { font-size: 11px; font-weight: 600; padding: 4px 10px; border-radius: 14px; border: 1px solid #cbd5e1; background: #fff; color: #475569; cursor: pointer; white-space: nowrap; }
     .yp-pill.active { background: #ea580c; color: #fff; border-color: #ea580c; }
-    .yp-scroll { max-height: 480px; overflow-y: auto; }
+    .yp-scroll { max-height: 520px; overflow-y: auto; }
     .yp-industry-section { margin-bottom: 12px; }
-    .yp-industry-title { font-size: 12px; font-weight: 700; color: #334155; margin-bottom: 6px; padding-bottom: 4px; border-bottom: 1px solid #e2e8f0; }
-    .yp-list { display: flex; flex-direction: column; gap: 4px; }
-    .yp-item { display: grid; grid-template-columns: 1fr auto; gap: 2px 10px; background: #fff; border: 1px solid #e2e8f0; border-radius: 6px; padding: 8px 10px; text-decoration: none; color: inherit; transition: border-color 0.15s; }
-    .yp-item:hover { border-color: #07bb65; }
-    .yp-biz-name { font-size: 13px; font-weight: 700; color: #0f172a; line-height: 1.3; grid-column: 1; }
-    .yp-biz-addr { font-size: 11px; color: #64748b; line-height: 1.3; grid-column: 1; }
-    .yp-biz-phone { font-size: 13px; font-weight: 800; color: #ea580c; grid-column: 2; grid-row: 1 / span 2; align-self: center; white-space: nowrap; }
+    .yp-industry-title { font-size: 11px; font-weight: 700; color: #64748b; margin-bottom: 6px; padding-bottom: 4px; border-bottom: 1px solid #e2e8f0; }
+    .yp-cards-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(128px, 1fr)); gap: 6px; }
+    .yp-card { background: #fff; border: 1px solid #cbd5e1; border-radius: 8px; padding: 8px; text-decoration: none; color: inherit; min-height: 86px; display: flex; flex-direction: column; transition: border-color 0.15s, box-shadow 0.15s; }
+    .yp-card:hover { border-color: #07bb65; box-shadow: 0 2px 8px rgba(7,187,101,0.08); }
+    .yp-card-name { font-size: 11px; font-weight: 700; color: #0f172a; line-height: 1.25; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+    .yp-card-sub { font-size: 9px; color: #94a3b8; line-height: 1.2; margin-top: 3px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .yp-card-phone { font-size: 12px; font-weight: 800; color: #ea580c; margin-top: auto; padding-top: 4px; }
     .yp-more { text-align: center; font-size: 11px; color: #94a3b8; padding: 8px; }
+
+    @media (max-width: 900px) {
       .search-panel { grid-template-columns: 1fr 1fr; }
     }
     @media (max-width: 1000px) {
@@ -272,9 +274,7 @@
     }
     @media (max-width: 480px) {
       .forecast-grid { grid-template-columns: repeat(3, 1fr); }
-      .phones-grid { grid-template-columns: 1fr 1fr; }
-      .yp-item { grid-template-columns: 1fr; }
-      .yp-biz-phone { grid-column: 1; grid-row: auto; margin-top: 2px; }
+      .phones-grid, .yp-cards-grid { grid-template-columns: repeat(2, 1fr); }
     }
   </style>
   <script src="https://cdn.jsdelivr.net/npm/lunar-javascript/lunar.min.js"></script>
@@ -352,55 +352,10 @@
       </div>
     </details>
 
-    <!-- ═══ ESSENTIAL PHONES (Collapsible, by category) ═══ -->
-    <details class="phones-card">
+    <!-- ═══ COMMUNITY PHONE DIRECTORY (常用电话 + 商家黄页) ═══ -->
+    <details class="phones-card" id="yellow-pages-card" ontoggle="if(this.open) { initYellowPages(); }">
       <summary class="phones-summary">
-        <span class="phones-title" style="margin:0;">☎️ 纽约生活常用电话</span>
-        <span class="dash-toggle">▼</span>
-      </summary>
-      <div class="phones-body">
-        <div class="phone-category">
-          <div class="phone-cat-title">🚨 紧急求助</div>
-          <div class="phones-grid">
-            <a href="tel:911" class="phone-item"><div class="phone-name">急救 / 报警</div><div class="phone-num">911</div></a>
-            <a href="tel:988" class="phone-item"><div class="phone-name">心理危机干预</div><div class="phone-num">988</div></a>
-            <a href="tel:18002221222" class="phone-item"><div class="phone-name">防毒急救中心</div><div class="phone-num">1-800-222-1222</div></a>
-          </div>
-        </div>
-        <div class="phone-category">
-          <div class="phone-cat-title">🏛️ 市政 · 投诉</div>
-          <div class="phones-grid">
-            <a href="tel:311" class="phone-item"><div class="phone-name">市政服务 / 非紧急报警</div><div class="phone-num">311</div></a>
-            <a href="tel:2127887100" class="phone-item"><div class="phone-name">纽约市议会总机</div><div class="phone-num">212-788-7100</div></a>
-            <a href="https://council.nyc.gov/districts/" target="_blank" class="phone-item"><div class="phone-name">查找我的市议员</div><div class="phone-num">在线查询 ↗</div></a>
-          </div>
-        </div>
-        <div class="phone-category">
-          <div class="phone-cat-title">🇨🇳 领事 · 外交</div>
-          <div class="phones-grid">
-            <a href="tel:2122449392" class="phone-item"><div class="phone-name">中国驻纽约总领馆</div><div class="phone-num">212-244-9392</div></a>
-            <a href="tel:2126953125" class="phone-item"><div class="phone-name">领事保护专线 (24h)</div><div class="phone-num">212-695-3125</div></a>
-            <a href="tel:2123177300" class="phone-item"><div class="phone-name">台北经济文化办事处</div><div class="phone-num">212-317-7300</div></a>
-          </div>
-        </div>
-        <div class="phone-category">
-          <div class="phone-cat-title">🏮 华人社区组织</div>
-          <div class="phones-grid">
-            <a href="tel:2122266280" class="phone-item"><div class="phone-name">纽约中华公所 (CCBA)</div><div class="phone-num">212-226-6280</div></a>
-            <a href="tel:2129410920" class="phone-item"><div class="phone-name">华策会 CPC · 曼哈顿</div><div class="phone-num">212-941-0920</div></a>
-            <a href="tel:7183588899" class="phone-item"><div class="phone-name">华策会 CPC · 皇后区</div><div class="phone-num">718-358-8899</div></a>
-            <a href="tel:7184920409" class="phone-item"><div class="phone-name">华策会 CPC · 布鲁克林</div><div class="phone-num">718-492-0409</div></a>
-            <a href="tel:2129798381" class="phone-item"><div class="phone-name">亚洲人平等会 AAFE</div><div class="phone-num">212-979-8381</div></a>
-            <a href="tel:2123796998" class="phone-item"><div class="phone-name">王嘉廉社区医疗中心</div><div class="phone-num">212-379-6998</div></a>
-          </div>
-        </div>
-      </div>
-    </details>
-
-    <!-- ═══ COMMUNITY SMART YELLOW PAGES (智能黄页) ═══ -->
-    <details class="phones-card" id="yellow-pages-card" ontoggle="if(this.open && !window.ypLoaded) { loadYellowPages(); window.ypLoaded=true; }">
-      <summary class="phones-summary">
-        <span class="phones-title" style="margin:0;">📒 社区智能黄页 (1800+ 华人商家电话)</span>
+        <span class="phones-title" style="margin:0;">📒 社区电话黄页 · 常用电话 + 1800+ 商家</span>
         <span class="dash-toggle">▼</span>
       </summary>
       <div class="phones-body" style="padding: 10px 12px;">
@@ -408,8 +363,8 @@
           <input type="text" id="yp-search" placeholder="搜商家名、地址、电话…" oninput="renderYellowPages()">
         </div>
         <div class="yp-industry-bar" id="yp-industry-bar"></div>
-        <div id="yp-loading" style="font-size: 12px; color: #64748b; text-align: center; padding: 16px;">点击展开后自动加载…</div>
-        <div class="yp-scroll" id="yp-scroll" style="display:none;">
+        <div id="yp-loading" style="font-size: 12px; color: #64748b; text-align: center; padding: 16px; display:none;">加载商家数据…</div>
+        <div class="yp-scroll" id="yp-scroll">
           <div id="yp-content"></div>
         </div>
       </div>
@@ -1046,13 +1001,41 @@ function renderScheduleNotice() {
   /* countdown removed from header — keep header compact */
 }
 
-// ── Community Smart Yellow Pages ───────────────────────────────────────────
+// ── Community Phone Directory (常用电话 + 商家黄页) ─────────────────────────
 let YELLOW_PAGES_DATA = {};
 let YELLOW_PAGES_FLAT = [];
-let YP_ACTIVE_INDUSTRY = 'all';
+let YP_ACTIVE_INDUSTRY = 'essential';
+let YP_JSON_LOADED = false;
+
+const ESSENTIAL_PHONES = [
+  { title: '🚨 紧急求助', items: [
+    { name: '急救 / 报警', sub: '24小时', phone: '911', href: 'tel:911' },
+    { name: '心理危机干预', sub: '24小时', phone: '988', href: 'tel:988' },
+    { name: '防毒急救中心', sub: '全国', phone: '1-800-222-1222', href: 'tel:18002221222' },
+  ]},
+  { title: '🏛️ 市政 · 投诉', items: [
+    { name: '市政服务', sub: '非紧急报警/投诉', phone: '311', href: 'tel:311' },
+    { name: '市议会总机', sub: 'Manhattan', phone: '212-788-7100', href: 'tel:2127887100' },
+    { name: '查找市议员', sub: '在线查询', phone: '在线 ↗', href: 'https://council.nyc.gov/districts/' },
+  ]},
+  { title: '🇨🇳 领事 · 外交', items: [
+    { name: '中国驻纽约总领馆', sub: 'Consulate', phone: '212-244-9392', href: 'tel:2122449392' },
+    { name: '领事保护专线', sub: '24小时', phone: '212-695-3125', href: 'tel:2126953125' },
+    { name: '台北经文处', sub: 'TECO NY', phone: '212-317-7300', href: 'tel:2123177300' },
+  ]},
+  { title: '🏮 华人社区组织', items: [
+    { name: '纽约中华公所', sub: 'CCBA', phone: '212-226-6280', href: 'tel:2122266280' },
+    { name: '华策会 CPC', sub: '曼哈顿', phone: '212-941-0920', href: 'tel:2129410920' },
+    { name: '华策会 CPC', sub: '皇后区', phone: '718-358-8899', href: 'tel:7183588899' },
+    { name: '华策会 CPC', sub: '布鲁克林', phone: '718-492-0409', href: 'tel:7184920409' },
+    { name: '亚洲人平等会', sub: 'AAFE', phone: '212-979-8381', href: 'tel:2129798381' },
+    { name: '王嘉廉医疗中心', sub: 'Flushing', phone: '212-379-6998', href: 'tel:2123796998' },
+  ]},
+];
 
 const YP_INDUSTRY_GROUPS = [
-  { id: 'all', label: '全部' },
+  { id: 'essential', label: '📞 常用电话', essential: true },
+  { id: 'all', label: '全部商家' },
   { id: 'food', label: '🍜 餐馆', cats: ['中餐馆'] },
   { id: 'reno', label: '🔧 装修', cats: ['装修公司', '建材公司'] },
   { id: 'law', label: '⚖️ 律师', cats: ['律师事务所'] },
@@ -1071,7 +1054,7 @@ const YP_INDUSTRY_GROUPS = [
 ];
 
 function shortAddr(addr) {
-  if (!addr) return '地址待补充';
+  if (!addr) return '';
   return addr.replace(/美国$/, '').replace(/, USA$/, '').trim();
 }
 
@@ -1079,19 +1062,51 @@ function escapeHtml(s) {
   return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
 }
 
-function ypItemHtml(item) {
-  const tel = item.phone.replace(/[^\d+]/g, '');
-  return `<a href="tel:${tel}" class="yp-item">
-    <div class="yp-biz-name">${escapeHtml(item.name)}</div>
-    <div class="yp-biz-addr">📍 ${escapeHtml(shortAddr(item.address))}</div>
-    <div class="yp-biz-phone">${escapeHtml(item.phone)}</div>
+function ypCardHtml(href, name, sub, phone, external) {
+  const ext = external ? ' target="_blank" rel="noopener"' : '';
+  return `<a href="${href}" class="yp-card"${ext}>
+    <div class="yp-card-name">${escapeHtml(name)}</div>
+    ${sub ? `<div class="yp-card-sub">${escapeHtml(sub)}</div>` : ''}
+    <div class="yp-card-phone">${escapeHtml(phone)}</div>
   </a>`;
+}
+
+function ypBizCard(item) {
+  const tel = item.phone.replace(/[^\d+]/g, '');
+  const addr = shortAddr(item.address);
+  return ypCardHtml(`tel:${tel}`, item.name, addr ? '📍 ' + addr : item.category, item.phone, false);
+}
+
+function renderEssentialPhones(filter) {
+  let html = '';
+  ESSENTIAL_PHONES.forEach(sec => {
+    let items = sec.items;
+    if (filter) {
+      items = items.filter(it =>
+        it.name.toLowerCase().includes(filter) ||
+        it.phone.toLowerCase().includes(filter) ||
+        (it.sub && it.sub.toLowerCase().includes(filter))
+      );
+    }
+    if (!items.length) return;
+    html += `<div class="yp-industry-section">
+      <div class="yp-industry-title">${sec.title}</div>
+      <div class="yp-cards-grid">${items.map(it =>
+        ypCardHtml(it.href, it.name, it.sub, it.phone, it.href.startsWith('http'))
+      ).join('')}</div>
+    </div>`;
+  });
+  return html || '<div style="text-align:center;color:#64748b;font-size:12px;padding:20px;">未找到匹配电话</div>';
 }
 
 function renderIndustryBar() {
   const bar = document.getElementById('yp-industry-bar');
   if (!bar) return;
   bar.innerHTML = YP_INDUSTRY_GROUPS.map(g => {
+    if (g.essential) {
+      return `<button type="button" class="yp-pill${YP_ACTIVE_INDUSTRY === g.id ? ' active' : ''}" onclick="setYpIndustry('${g.id}')">${g.label}</button>`;
+    }
+    if (!YP_JSON_LOADED && g.id !== 'essential') return '';
     const count = g.id === 'all'
       ? YELLOW_PAGES_FLAT.length
       : YELLOW_PAGES_FLAT.filter(i => g.cats && g.cats.includes(i.category)).length;
@@ -1107,7 +1122,15 @@ function setYpIndustry(id) {
   renderYellowPages();
 }
 
-async function loadYellowPages() {
+function initYellowPages() {
+  renderIndustryBar();
+  renderYellowPages();
+  if (!YP_JSON_LOADED) loadYellowPagesJson();
+}
+
+async function loadYellowPagesJson() {
+  const loading = document.getElementById('yp-loading');
+  if (loading) loading.style.display = 'block';
   try {
     const response = await fetch('yellow_pages.json');
     if (!response.ok) throw new Error('Network response was not ok');
@@ -1116,33 +1139,54 @@ async function loadYellowPages() {
     for (const [category, items] of Object.entries(YELLOW_PAGES_DATA)) {
       items.forEach(item => YELLOW_PAGES_FLAT.push({ ...item, category }));
     }
-    document.getElementById('yp-loading').style.display = 'none';
-    document.getElementById('yp-scroll').style.display = 'block';
+    YP_JSON_LOADED = true;
+    if (loading) loading.style.display = 'none';
     renderIndustryBar();
     renderYellowPages();
   } catch (error) {
     console.error('Failed to load yellow pages:', error);
-    document.getElementById('yp-loading').textContent = '加载黄页数据失败，请稍后再试。';
+    if (loading) loading.textContent = '商家数据加载失败，常用电话仍可使用。';
   }
 }
 
 function renderYellowPages() {
   const container = document.getElementById('yp-content');
   if (!container) return;
-  const searchTerm = (document.getElementById('yp-search').value || '').toLowerCase();
+  const searchTerm = (document.getElementById('yp-search').value || '').toLowerCase().trim();
   const group = YP_INDUSTRY_GROUPS.find(g => g.id === YP_ACTIVE_INDUSTRY) || YP_INDUSTRY_GROUPS[0];
+
+  if (group.essential || (searchTerm && YP_ACTIVE_INDUSTRY === 'essential')) {
+    container.innerHTML = renderEssentialPhones(searchTerm);
+    return;
+  }
+
+  if (!YP_JSON_LOADED) {
+    container.innerHTML = '<div style="text-align:center;color:#64748b;font-size:12px;padding:20px;">商家数据加载中…</div>';
+    return;
+  }
 
   let filtered = YELLOW_PAGES_FLAT;
   if (group.id !== 'all' && group.cats) {
     filtered = filtered.filter(item => group.cats.includes(item.category));
   }
   if (searchTerm) {
+    const essHtml = renderEssentialPhones(searchTerm);
     filtered = filtered.filter(item =>
       item.name.toLowerCase().includes(searchTerm) ||
       item.phone.toLowerCase().includes(searchTerm) ||
       item.address.toLowerCase().includes(searchTerm) ||
       item.category.toLowerCase().includes(searchTerm)
     );
+    let bizHtml = '';
+    if (filtered.length) {
+      bizHtml = `<div class="yp-industry-section">
+        <div class="yp-industry-title">商家 (${filtered.length})</div>
+        <div class="yp-cards-grid">${filtered.slice(0, 60).map(ypBizCard).join('')}</div>
+      </div>`;
+    }
+    container.innerHTML = (essHtml.includes('未找到') ? '' : essHtml) + bizHtml
+      || '<div style="text-align:center;color:#64748b;font-size:12px;padding:20px;">未找到匹配结果</div>';
+    return;
   }
 
   if (filtered.length === 0) {
@@ -1150,30 +1194,29 @@ function renderYellowPages() {
     return;
   }
 
-  const LIMIT_PER_SECTION = 30;
+  const LIMIT = 36;
   let html = '';
 
-  if (group.id === 'all' && !searchTerm) {
+  if (group.id === 'all') {
     const byCat = {};
     filtered.forEach(item => {
       if (!byCat[item.category]) byCat[item.category] = [];
       byCat[item.category].push(item);
     });
     Object.keys(byCat).sort((a, b) => byCat[b].length - byCat[a].length).forEach(cat => {
-      const items = byCat[cat].slice(0, LIMIT_PER_SECTION);
+      const items = byCat[cat].slice(0, LIMIT);
       html += `<div class="yp-industry-section">
         <div class="yp-industry-title">${escapeHtml(cat)} (${byCat[cat].length})</div>
-        <div class="yp-list">${items.map(ypItemHtml).join('')}</div>
-        ${byCat[cat].length > LIMIT_PER_SECTION ? `<div class="yp-more">还有 ${byCat[cat].length - LIMIT_PER_SECTION} 家，请点上方行业标签或搜索</div>` : ''}
+        <div class="yp-cards-grid">${items.map(ypBizCard).join('')}</div>
+        ${byCat[cat].length > LIMIT ? `<div class="yp-more">还有 ${byCat[cat].length - LIMIT} 家 · 点行业标签筛选</div>` : ''}
       </div>`;
     });
   } else {
     const display = filtered.slice(0, 100);
-    const title = searchTerm ? `搜索结果 (${filtered.length})` : `${group.label} (${filtered.length})`;
     html = `<div class="yp-industry-section">
-      <div class="yp-industry-title">${title}</div>
-      <div class="yp-list">${display.map(ypItemHtml).join('')}</div>
-      ${filtered.length > 100 ? `<div class="yp-more">仅显示前 100 条，请缩小搜索范围</div>` : ''}
+      <div class="yp-industry-title">${group.label} (${filtered.length})</div>
+      <div class="yp-cards-grid">${display.map(ypBizCard).join('')}</div>
+      ${filtered.length > 100 ? `<div class="yp-more">仅显示前 100 条</div>` : ''}
     </div>`;
   }
   container.innerHTML = html;
