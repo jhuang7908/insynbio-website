@@ -242,7 +242,22 @@
     .phone-name { font-size: 10px; color: #64748b; margin-bottom: 2px; line-height: 1.2; }
     .phone-num { font-size: 13px; font-weight: 800; color: #0f172a; }
 
-    @media (max-width: 900px) {
+    /* Yellow Pages — industry groups */
+    .yp-toolbar { display: flex; gap: 6px; margin-bottom: 8px; flex-wrap: wrap; }
+    .yp-toolbar input { flex: 1; min-width: 140px; padding: 7px 10px; border: 1px solid #cbd5e1; border-radius: 8px; font-size: 12px; outline: none; }
+    .yp-industry-bar { display: flex; gap: 5px; flex-wrap: wrap; margin-bottom: 10px; }
+    .yp-pill { font-size: 11px; font-weight: 600; padding: 4px 10px; border-radius: 14px; border: 1px solid #cbd5e1; background: #fff; color: #475569; cursor: pointer; white-space: nowrap; }
+    .yp-pill.active { background: #ea580c; color: #fff; border-color: #ea580c; }
+    .yp-scroll { max-height: 480px; overflow-y: auto; }
+    .yp-industry-section { margin-bottom: 12px; }
+    .yp-industry-title { font-size: 12px; font-weight: 700; color: #334155; margin-bottom: 6px; padding-bottom: 4px; border-bottom: 1px solid #e2e8f0; }
+    .yp-list { display: flex; flex-direction: column; gap: 4px; }
+    .yp-item { display: grid; grid-template-columns: 1fr auto; gap: 2px 10px; background: #fff; border: 1px solid #e2e8f0; border-radius: 6px; padding: 8px 10px; text-decoration: none; color: inherit; transition: border-color 0.15s; }
+    .yp-item:hover { border-color: #07bb65; }
+    .yp-biz-name { font-size: 13px; font-weight: 700; color: #0f172a; line-height: 1.3; grid-column: 1; }
+    .yp-biz-addr { font-size: 11px; color: #64748b; line-height: 1.3; grid-column: 1; }
+    .yp-biz-phone { font-size: 13px; font-weight: 800; color: #ea580c; grid-column: 2; grid-row: 1 / span 2; align-self: center; white-space: nowrap; }
+    .yp-more { text-align: center; font-size: 11px; color: #94a3b8; padding: 8px; }
       .search-panel { grid-template-columns: 1fr 1fr; }
     }
     @media (max-width: 1000px) {
@@ -258,6 +273,8 @@
     @media (max-width: 480px) {
       .forecast-grid { grid-template-columns: repeat(3, 1fr); }
       .phones-grid { grid-template-columns: 1fr 1fr; }
+      .yp-item { grid-template-columns: 1fr; }
+      .yp-biz-phone { grid-column: 1; grid-row: auto; margin-top: 2px; }
     }
   </style>
   <script src="https://cdn.jsdelivr.net/npm/lunar-javascript/lunar.min.js"></script>
@@ -386,16 +403,14 @@
         <span class="phones-title" style="margin:0;">📒 社区智能黄页 (1800+ 华人商家电话)</span>
         <span class="dash-toggle">▼</span>
       </summary>
-      <div class="phones-body" style="padding: 12px 16px;">
-        <div style="display:flex; gap: 8px; margin-bottom: 12px;">
-          <input type="text" id="yp-search" placeholder="搜索商家名称、电话或地址..." style="flex:1; padding:8px 12px; border:1px solid #cbd5e1; border-radius:8px; font-size:13px; outline:none;" oninput="renderYellowPages()">
-          <select id="yp-category" style="padding:8px 12px; border:1px solid #cbd5e1; border-radius:8px; font-size:13px; outline:none; max-width: 150px;" onchange="renderYellowPages()">
-            <option value="all">所有分类</option>
-          </select>
+      <div class="phones-body" style="padding: 10px 12px;">
+        <div class="yp-toolbar">
+          <input type="text" id="yp-search" placeholder="搜商家名、地址、电话…" oninput="renderYellowPages()">
         </div>
-        <div id="yp-loading" style="font-size: 13px; color: #64748b; text-align: center; padding: 20px;">点击展开后自动加载黄页数据...</div>
-        <div class="phones-grid" id="yp-grid" style="margin-top:12px; max-height: 400px; overflow-y: auto; display: none; align-content: start;">
-          <!-- Yellow pages items will be rendered here -->
+        <div class="yp-industry-bar" id="yp-industry-bar"></div>
+        <div id="yp-loading" style="font-size: 12px; color: #64748b; text-align: center; padding: 16px;">点击展开后自动加载…</div>
+        <div class="yp-scroll" id="yp-scroll" style="display:none;">
+          <div id="yp-content"></div>
         </div>
       </div>
     </details>
@@ -1034,29 +1049,76 @@ function renderScheduleNotice() {
 // ── Community Smart Yellow Pages ───────────────────────────────────────────
 let YELLOW_PAGES_DATA = {};
 let YELLOW_PAGES_FLAT = [];
+let YP_ACTIVE_INDUSTRY = 'all';
+
+const YP_INDUSTRY_GROUPS = [
+  { id: 'all', label: '全部' },
+  { id: 'food', label: '🍜 餐馆', cats: ['中餐馆'] },
+  { id: 'reno', label: '🔧 装修', cats: ['装修公司', '建材公司'] },
+  { id: 'law', label: '⚖️ 律师', cats: ['律师事务所'] },
+  { id: 'nail', label: '💅 美甲', cats: ['指甲店', '美容院'] },
+  { id: 'realestate', label: '🏠 地产', cats: ['地产公司'] },
+  { id: 'travel', label: '✈️ 旅行社', cats: ['旅行社'] },
+  { id: 'auto', label: '🚗 汽修', cats: ['汽车修理'] },
+  { id: 'health', label: '💆 按摩', cats: ['按摩店'] },
+  { id: 'account', label: '📊 会计', cats: ['会计事务所'] },
+  { id: 'pharmacy', label: '💊 药店', cats: ['中国人药店'] },
+  { id: 'laundry', label: '👔 洗衣', cats: ['洗衣店'] },
+  { id: 'hair', label: '💇 理发', cats: ['理发店'] },
+  { id: 'market', label: '🛒 超市', cats: ['华裔超市'] },
+  { id: 'jewelry', label: '💎 珠宝', cats: ['珠宝店'] },
+  { id: 'express', label: '📦 快递', cats: ['快递公司'] },
+];
+
+function shortAddr(addr) {
+  if (!addr) return '地址待补充';
+  return addr.replace(/美国$/, '').replace(/, USA$/, '').trim();
+}
+
+function escapeHtml(s) {
+  return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+function ypItemHtml(item) {
+  const tel = item.phone.replace(/[^\d+]/g, '');
+  return `<a href="tel:${tel}" class="yp-item">
+    <div class="yp-biz-name">${escapeHtml(item.name)}</div>
+    <div class="yp-biz-addr">📍 ${escapeHtml(shortAddr(item.address))}</div>
+    <div class="yp-biz-phone">${escapeHtml(item.phone)}</div>
+  </a>`;
+}
+
+function renderIndustryBar() {
+  const bar = document.getElementById('yp-industry-bar');
+  if (!bar) return;
+  bar.innerHTML = YP_INDUSTRY_GROUPS.map(g => {
+    const count = g.id === 'all'
+      ? YELLOW_PAGES_FLAT.length
+      : YELLOW_PAGES_FLAT.filter(i => g.cats && g.cats.includes(i.category)).length;
+    if (g.id !== 'all' && count === 0) return '';
+    const lbl = g.id === 'all' ? g.label : `${g.label} ${count}`;
+    return `<button type="button" class="yp-pill${YP_ACTIVE_INDUSTRY === g.id ? ' active' : ''}" onclick="setYpIndustry('${g.id}')">${lbl}</button>`;
+  }).join('');
+}
+
+function setYpIndustry(id) {
+  YP_ACTIVE_INDUSTRY = id;
+  renderIndustryBar();
+  renderYellowPages();
+}
 
 async function loadYellowPages() {
   try {
     const response = await fetch('yellow_pages.json');
     if (!response.ok) throw new Error('Network response was not ok');
     YELLOW_PAGES_DATA = await response.json();
-    
     YELLOW_PAGES_FLAT = [];
-    const catSelect = document.getElementById('yp-category');
-    
     for (const [category, items] of Object.entries(YELLOW_PAGES_DATA)) {
-      const option = document.createElement('option');
-      option.value = category;
-      option.textContent = `${category} (${items.length})`;
-      catSelect.appendChild(option);
-      
-      items.forEach(item => {
-        YELLOW_PAGES_FLAT.push({ ...item, category });
-      });
+      items.forEach(item => YELLOW_PAGES_FLAT.push({ ...item, category }));
     }
-    
     document.getElementById('yp-loading').style.display = 'none';
-    document.getElementById('yp-grid').style.display = 'grid';
+    document.getElementById('yp-scroll').style.display = 'block';
+    renderIndustryBar();
     renderYellowPages();
   } catch (error) {
     console.error('Failed to load yellow pages:', error);
@@ -1065,61 +1127,56 @@ async function loadYellowPages() {
 }
 
 function renderYellowPages() {
-  const grid = document.getElementById('yp-grid');
-  const searchTerm = document.getElementById('yp-search').value.toLowerCase();
-  const selectedCategory = document.getElementById('yp-category').value;
-  
-  grid.innerHTML = '';
-  
+  const container = document.getElementById('yp-content');
+  if (!container) return;
+  const searchTerm = (document.getElementById('yp-search').value || '').toLowerCase();
+  const group = YP_INDUSTRY_GROUPS.find(g => g.id === YP_ACTIVE_INDUSTRY) || YP_INDUSTRY_GROUPS[0];
+
   let filtered = YELLOW_PAGES_FLAT;
-  
-  if (selectedCategory !== 'all') {
-    filtered = filtered.filter(item => item.category === selectedCategory);
+  if (group.id !== 'all' && group.cats) {
+    filtered = filtered.filter(item => group.cats.includes(item.category));
   }
-  
   if (searchTerm) {
-    filtered = filtered.filter(item => 
-      item.name.toLowerCase().includes(searchTerm) || 
-      item.phone.toLowerCase().includes(searchTerm) || 
-      item.address.toLowerCase().includes(searchTerm)
+    filtered = filtered.filter(item =>
+      item.name.toLowerCase().includes(searchTerm) ||
+      item.phone.toLowerCase().includes(searchTerm) ||
+      item.address.toLowerCase().includes(searchTerm) ||
+      item.category.toLowerCase().includes(searchTerm)
     );
   }
-  
-  const displayItems = filtered.slice(0, 100);
-  
-  if (displayItems.length === 0) {
-    grid.innerHTML = '<div style="grid-column: 1/-1; text-align: center; color: #64748b; font-size: 13px; padding: 20px;">未找到匹配的商家</div>';
+
+  if (filtered.length === 0) {
+    container.innerHTML = '<div style="text-align:center;color:#64748b;font-size:12px;padding:20px;">未找到匹配的商家</div>';
     return;
   }
-  
-  displayItems.forEach(item => {
-    const a = document.createElement('a');
-    a.href = `tel:${item.phone.replace(/[^\d+]/g, '')}`;
-    a.className = 'phone-item';
-    a.style.display = 'flex';
-    a.style.flexDirection = 'column';
-    a.style.gap = '4px';
-    
-    a.innerHTML = `
-      <div style="display:flex; justify-content:space-between; align-items:flex-start;">
-        <div class="phone-name" style="font-size:13px; white-space:normal; line-height:1.3;">${item.name}</div>
-        <div class="phone-num" style="font-size:13px;">${item.phone}</div>
-      </div>
-      <div style="font-size:11px; color:#94a3b8; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">${item.category} | ${item.address}</div>
-    `;
-    grid.appendChild(a);
-  });
-  
-  if (filtered.length > 100) {
-    const more = document.createElement('div');
-    more.style.gridColumn = '1/-1';
-    more.style.textAlign = 'center';
-    more.style.color = '#94a3b8';
-    more.style.fontSize = '12px';
-    more.style.padding = '10px';
-    more.textContent = `只显示前100条结果，请使用搜索或分类缩小范围 (共 ${filtered.length} 条)`;
-    grid.appendChild(more);
+
+  const LIMIT_PER_SECTION = 30;
+  let html = '';
+
+  if (group.id === 'all' && !searchTerm) {
+    const byCat = {};
+    filtered.forEach(item => {
+      if (!byCat[item.category]) byCat[item.category] = [];
+      byCat[item.category].push(item);
+    });
+    Object.keys(byCat).sort((a, b) => byCat[b].length - byCat[a].length).forEach(cat => {
+      const items = byCat[cat].slice(0, LIMIT_PER_SECTION);
+      html += `<div class="yp-industry-section">
+        <div class="yp-industry-title">${escapeHtml(cat)} (${byCat[cat].length})</div>
+        <div class="yp-list">${items.map(ypItemHtml).join('')}</div>
+        ${byCat[cat].length > LIMIT_PER_SECTION ? `<div class="yp-more">还有 ${byCat[cat].length - LIMIT_PER_SECTION} 家，请点上方行业标签或搜索</div>` : ''}
+      </div>`;
+    });
+  } else {
+    const display = filtered.slice(0, 100);
+    const title = searchTerm ? `搜索结果 (${filtered.length})` : `${group.label} (${filtered.length})`;
+    html = `<div class="yp-industry-section">
+      <div class="yp-industry-title">${title}</div>
+      <div class="yp-list">${display.map(ypItemHtml).join('')}</div>
+      ${filtered.length > 100 ? `<div class="yp-more">仅显示前 100 条，请缩小搜索范围</div>` : ''}
+    </div>`;
   }
+  container.innerHTML = html;
 }
 
 // ── Weather / Stock / 7-day forecast ─────────────────────────────────────────
