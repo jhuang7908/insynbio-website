@@ -82,6 +82,10 @@
     .meta { display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px; gap: 6px; }
     .tag { font-size: 9px; font-weight: 700; padding: 2px 6px; border-radius: 4px; white-space: nowrap; flex-shrink: 0; }
     .tag.citywide-tag { background: #f1f5f9; color: #475569; border: 1px solid #e2e8f0; }
+    .tag.loc-tag { font-size: 9px; font-weight: 700; border: 1px solid transparent; }
+    .tag.loc-citywide { background: #f1f5f9; color: #475569; border-color: #e2e8f0; }
+    .tag.loc-enclave { background: #fff7ed; color: #c2410c; border-color: #fed7aa; }
+    .tag.loc-borough { background: #eff6ff; color: #1d4ed8; border-color: #bfdbfe; }
     .neighborhood-hint { font-size: 11px; color: #78716c; margin: 6px 0 10px; line-height: 1.45; }
     .date { font-size: 10px; color: #94a3b8; font-weight: 600; }
     .date-row { display: flex; flex-direction: column; align-items: flex-end; gap: 2px; flex-shrink: 0; max-width: 52%; }
@@ -894,13 +898,83 @@ function hubNeighborhoodSortRank(item, filterKey) {
   return 2;
 }
 
+function resolveHubLocationKind(item) {
+  if (item.location_kind) return item.location_kind;
+  if (isHubCitywideService(item)) return 'citywide';
+  const hits = inferHubNeighborhoods(item);
+  if (hits.size) return 'enclave';
+  if (item.borough && item.borough !== 'Citywide') return 'borough';
+  return 'citywide';
+}
+
+function resolveHubLocationLabel(item) {
+  const lang = currentLang === 'zht' ? 'zht' : (currentLang === 'en' ? 'en' : 'zh');
+  const key = 'location_tag_' + (lang === 'zh' ? 'zh' : lang);
+  if (item[key]) return item[key];
+  if (lang === 'zht' && item.location_tag_zht) return item.location_tag_zht;
+  if (lang === 'en' && item.location_tag_en) return item.location_tag_en;
+  if (item.location_tag_zh) return item.location_tag_zh;
+  const hits = inferHubNeighborhoods(item);
+  const enclaveLabels = {
+    flushing: { zh: '法拉盛 Flushing', zht: '法拉盛 Flushing', en: 'Flushing' },
+    chinatown: { zh: '唐人街 Chinatown', zht: '唐人街 Chinatown', en: 'Chinatown' },
+    sunset: { zh: '八大道 Sunset Park', zht: '八大道 Sunset Park', en: 'Sunset Park' },
+    elmhurst: { zh: '艾姆赫斯特 Elmhurst', zht: '艾姆赫斯特 Elmhurst', en: 'Elmhurst' },
+  };
+  for (const id of ['flushing', 'chinatown', 'sunset', 'elmhurst']) {
+    if (hits.has(id)) return enclaveLabels[id][lang] || enclaveLabels[id].zh;
+  }
+  if (isHubCitywideService(item)) {
+    return lang === 'en' ? 'Citywide' : '全市';
+  }
+  return item['area_' + lang] || item.area_zh || (lang === 'en' ? 'Citywide' : '全市');
+}
+
+function enrichItemLocationFields(item) {
+  if (item.location_kind && item.location_tag_zh) return item;
+  const hits = inferHubNeighborhoods(item);
+  let kind = 'citywide';
+  let tagZh = '全市';
+  let tagZht = '全市';
+  let tagEn = 'Citywide';
+  if (isHubCitywideService(item)) {
+    kind = 'citywide';
+  } else if (hits.has('flushing')) {
+    kind = 'enclave'; tagZh = tagZht = '法拉盛 Flushing'; tagEn = 'Flushing';
+  } else if (hits.has('chinatown')) {
+    kind = 'enclave'; tagZh = tagZht = '唐人街 Chinatown'; tagEn = 'Chinatown';
+  } else if (hits.has('sunset')) {
+    kind = 'enclave'; tagZh = tagZht = '八大道 Sunset Park'; tagEn = 'Sunset Park';
+  } else if (hits.has('elmhurst')) {
+    kind = 'enclave'; tagZh = tagZht = '艾姆赫斯特 Elmhurst'; tagEn = 'Elmhurst';
+  } else if (item.borough && item.borough !== 'Citywide') {
+    kind = 'borough';
+    tagZh = item.area_zh || '纽约全市';
+    tagZht = item.area_zht || tagZh;
+    tagEn = item.area_en || item.borough;
+  }
+  item.location_kind = kind;
+  item.location_tag_zh = tagZh;
+  item.location_tag_zht = tagZht;
+  item.location_tag_en = tagEn;
+  return item;
+}
+
+function enrichAllItemLocations() {
+  for (let i = 0; i < ITEMS.length; i++) {
+    ITEMS[i] = enrichItemLocationFields(ITEMS[i]);
+  }
+}
+
+function hubLocationTagHtml(item) {
+  const kind = resolveHubLocationKind(item);
+  const label = resolveHubLocationLabel(item);
+  const cls = kind === 'citywide' ? 'loc-citywide' : (kind === 'enclave' ? 'loc-enclave' : 'loc-borough');
+  return `<span class="tag loc-tag ${cls}">📍 ${escapeHtml(label)}</span>`;
+}
+
 function hubCitywideBadgeHtml(item) {
-  if (activeNeighborhoodFilter === 'all') return '';
-  const id = HUB_NEIGHBORHOOD_IDS[activeNeighborhoodFilter];
-  if (id && inferHubNeighborhoods(item).has(id)) return '';
-  if (!isHubCitywideService(item)) return '';
-  const s = UI_STRINGS[currentLang];
-  return `<span class="tag citywide-tag">${s.citywide_tag || '全市适用'}</span>`;
+  return '';
 }
 
 function updateNeighborhoodHint() {
@@ -1252,7 +1326,8 @@ function renderFeed() {
     const title = i[`title_${currentLang}`] || i.title_zh;
     const summary = i[`summary_${currentLang}`] || i.summary_zh;
     const area = i[`area_${currentLang}`] || i.area_zh;
-    const matchesSearch = `${title} ${summary} ${area}`.toLowerCase().includes(q);
+    const loc = resolveHubLocationLabel(i);
+    const matchesSearch = `${title} ${summary} ${area} ${loc}`.toLowerCase().includes(q);
     
     return matchesModule && matchesBorough && matchesTime && matchesNeighborhood && matchesSearch;
   });
@@ -1276,13 +1351,13 @@ function renderFeed() {
       <article class="feed-card">
         <div class="meta">
           <span class="tag" style="background:${badgeColor(i.module)}15;color:${badgeColor(i.module)}">${modName}</span>
-          ${hubCitywideBadgeHtml(i)}
+          ${hubLocationTagHtml(i)}
           ${formatDateMeta(i)}
         </div>
         <div class="title">${title}</div>
         <div class="summary">${summary}</div>
         <div class="foot">
-          <span>📍 ${area} · ${s.verified}</span>
+          <span>${s.verified}</span>
           <button class="btn" onclick="openGuideModal('${i.id}')">${s.view_link}</button>
         </div>
       </article>
@@ -1359,7 +1434,7 @@ function openGuideModal(itemId) {
   document.getElementById('modal-item-title').textContent = title;
   document.getElementById('modal-guide-header').textContent = s.modal_title;
   document.getElementById('modal-guide-content').innerHTML =
-    `<div style="margin-bottom:8px;font-size:12px;color:#64748b;line-height:1.5;">${formatEventDateLabel(item)}<br>${formatPublishDateLabel(item)}</div>` + guide;
+    `<div style="margin-bottom:8px;font-size:12px;color:#64748b;line-height:1.5;">${hubLocationTagHtml(item)} ${formatEventDateLabel(item)}<br>${formatPublishDateLabel(item)}</div>` + guide;
   
   // Build translate URLs
   const translateZhUrl = 'https://translate.google.com/translate?sl=auto&tl=zh-CN&u=' + encodeURIComponent(item.url);
@@ -1461,10 +1536,9 @@ function renderCard(i) {
   const s = UI_STRINGS[currentLang];
   const title = i['title_' + currentLang] || i.title_zh;
   const summary = i['summary_' + currentLang] || i.summary_zh;
-  const area = i['area_' + currentLang] || i.area_zh;
   const modObj = MODULES.find(m => m.zh === i.module);
   const modName = modObj ? (modObj[currentLang] || modObj.zh) : i.module;
-  return '<article class="feed-card"><div class="meta"><span class="tag" style="background:' + badgeColor(i.module) + '15;color:' + badgeColor(i.module) + '">' + modName + '</span>' + formatDateMeta(i) + '</div><div class="title">' + title + '</div><div class="summary">' + summary + '</div><div class="foot"><span>📍 ' + area + ' · ' + s.verified + '</span><button class="btn" onclick="openGuideModal(\'' + i.id + '\')">' + s.view_link + '</button></div></article>';
+  return '<article class="feed-card"><div class="meta"><span class="tag" style="background:' + badgeColor(i.module) + '15;color:' + badgeColor(i.module) + '">' + modName + '</span>' + hubLocationTagHtml(i) + formatDateMeta(i) + '</div><div class="title">' + title + '</div><div class="summary">' + summary + '</div><div class="foot"><span>' + s.verified + '</span><button class="btn" onclick="openGuideModal(\'' + i.id + '\')">' + s.view_link + '</button></div></article>';
 }
 
 // ─── 30-day auto-eviction (by publish date, not event date) ───
@@ -2354,6 +2428,7 @@ function renderAlmanac() {
 function hubBoot() {
   try {
     evictExpiredItems();
+    enrichAllItemLocations();
     initPreference();
     renderStreamSections();
     renderAutoUpdateBadge();
