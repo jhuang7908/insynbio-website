@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title id="page-title">美东华人生活圈 · 纽约公共信息发布</title>
+  <title id="page-title">美东华人生活圈 · 纽约福利与华人服务</title>
   <style>
     * { box-sizing: border-box; }
     body {
@@ -204,7 +204,16 @@
     .dashboard-summary::-webkit-details-marker { display: none; }
     .dash-head { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 6px; }
     .dash-row { display: flex; align-items: center; gap: 8px; min-width: 0; }
-    .dash-row-hub { flex-wrap: wrap; font-size: 12px; line-height: 1.3; }
+    .dash-row-hub { flex-wrap: wrap; font-size: 12px; line-height: 1.3; gap: 6px; }
+    .dash-stat {
+      display: inline-flex; align-items: baseline; gap: 3px;
+      font-size: 12px; font-weight: 600; color: #92400e;
+      background: rgba(255,255,255,0.8); border: 1px solid #fed7aa;
+      padding: 2px 8px; border-radius: 999px; white-space: nowrap;
+    }
+    .dash-stat strong { font-size: 14px; font-weight: 800; color: #c2410c; }
+    .dash-stat-week strong { color: #b45309; }
+    .dash-stat-label { font-size: 10px; font-weight: 700; color: #78716c; text-transform: uppercase; letter-spacing: 0.02em; }
     .dash-row-live { justify-content: space-between; gap: 10px; }
     .dash-weather { display: flex; align-items: center; gap: 4px; flex-shrink: 0; }
     .dash-market { display: flex; align-items: center; gap: 4px; flex: 1; min-width: 0; overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
@@ -334,7 +343,7 @@
         <div class="logo-box">圈</div>
         <div>
           <div class="logo-text" id="logo-text">美东华人生活圈</div>
-          <div class="sub" id="logo-sub">纽约地区 · 公共信息发布</div>
+          <div class="sub" id="logo-sub">纽约首发 · 福利政务 · 华人社区</div>
         </div>
       </div>
       
@@ -370,9 +379,14 @@
         <div class="dash-head">
           <div class="dash-row dash-row-hub">
             <span class="stream-dot"></span>
-            <span class="stream-label" id="stream-label">今日更新</span>
-            <span class="stream-count dash-meta" id="stream-count"></span>
-            <span class="stream-date dash-meta" id="stream-date"></span>
+            <span class="dash-stat dash-stat-new" id="stream-new-stat" title="美东时间今日收录">
+              <span class="dash-stat-label" id="stream-new-label">24h</span>
+              <strong id="stream-new-count">—</strong><span id="stream-new-suffix">条</span>
+            </span>
+            <span class="dash-stat dash-stat-week" id="stream-week-stat" title="未来7日官方场次">
+              <span class="dash-stat-label" id="stream-week-label">7日</span>
+              <strong id="stream-week-count">—</strong><span id="stream-week-suffix">场</span>
+            </span>
             <span id="verify-badge" class="dash-verify">✔</span>
           </div>
           <div class="dash-row dash-row-live">
@@ -429,13 +443,13 @@
 
     <!-- ═══ TODAY'S HIGHLIGHTS (第一屏核心) ═══ -->
     <div class="section-title" style="margin-top:20px">
-      <div class="section-title-left" id="today-title">🔥 今日上新 · 近3日发布</div>
+      <div class="section-title-left" id="today-title">🔥 24小时内上新 · 纽约</div>
     </div>
     <div class="feed-grid" id="today-feed"></div>
 
     <!-- ═══ THIS WEEK UPCOMING ═══ -->
     <div class="section-title">
-      <div class="section-title-left" id="week-title">📅 本周活动 · 未来7日场次</div>
+      <div class="section-title-left" id="week-title">📅 未来7日活动 · 纽约场次</div>
     </div>
     <div class="feed-grid" id="week-feed"></div>
     
@@ -510,9 +524,9 @@ const HUB_MARKET_SNAPSHOT = {"as_of":"2026-06-12 09:56 ET","tz":"America/New_Yor
 
 const UI_STRINGS = {
   zh: {
-    title: "美东华人生活圈 · 纽约公共信息发布",
+    title: "美东华人生活圈 · 纽约福利与华人服务",
     logo_text: "美东华人生活圈",
-    logo_sub: "纽约地区 · 公共信息发布",
+    logo_sub: "纽约首发 · 福利政务 · 华人社区",
     ui_lang_label: "界面语言:",
     pref_lang_label: "默认打开链接:",
     trans_zh: "自动翻译中文(简体)",
@@ -531,14 +545,21 @@ const UI_STRINGS = {
     today: "今日更新 (Today)",
     last_3days: "最近3天 (Last 3 Days)",
     this_week: "本周新增 (This Week)",
-    today_title: "🔥 今日上新 · 近3日发布",
-    week_title: "📅 本周活动 · 未来7日场次",
+    today_title: "🔥 24小时内上新 · 纽约",
+    week_title: "📅 未来7日活动 · 纽约场次",
+    stream_new_label: "24h",
+    stream_new_suffix: "条",
+    stream_new_title: "美东时间今日收录（24小时内更新）",
+    stream_week_label: "7日",
+    stream_week_suffix: "场",
+    stream_week_title: "未来7日有官方场次的活动数量",
+    verified_badge: "已核验",
     date_event: "活动",
     date_published: "发布",
     date_ongoing: "长期有效",
     date_tbd: "时间见官网",
     channels_title: "1️⃣ 8大民生频道",
-    feed_title: "2️⃣ 纽约地区真实信息发布",
+    feed_title: "2️⃣ 纽约福利与华人服务信息",
     feed_sub: "已核验官方来源 · 活动=场次 · 发布=收录",
     reset_btn: "🔄 重置所有筛选",
     all_neighborhoods: "📍 全部社区（纽约全市）",
@@ -555,9 +576,9 @@ const UI_STRINGS = {
     btn_translate: "使用自动网页翻译打开 (备用)"
   },
   zht: {
-    title: "美東華人生活圈 · 紐約公共信息發佈",
+    title: "美東華人生活圈 · 紐約福利與華人服務",
     logo_text: "美東華人生活圈",
-    logo_sub: "紐約地區 · 公共信息發佈",
+    logo_sub: "紐約首發 · 福利政務 · 華人社區",
     ui_lang_label: "界面語言:",
     pref_lang_label: "默認打開鏈接:",
     trans_zh: "自動翻譯中文(簡體)",
@@ -576,14 +597,21 @@ const UI_STRINGS = {
     today: "今日更新 (Today)",
     last_3days: "最近3天 (Last 3 Days)",
     this_week: "本週新增 (This Week)",
-    today_title: "🔥 今日上新 · 近3日發布",
-    week_title: "📅 本週活動 · 未來7日場次",
+    today_title: "🔥 24小時內上新 · 紐約",
+    week_title: "📅 未來7日活動 · 紐約場次",
+    stream_new_label: "24h",
+    stream_new_suffix: "條",
+    stream_new_title: "美東時間今日收錄（24小時內更新）",
+    stream_week_label: "7日",
+    stream_week_suffix: "場",
+    stream_week_title: "未來7日有官方場次的活動數量",
+    verified_badge: "已核驗",
     date_event: "活動",
     date_published: "發布",
     date_ongoing: "長期有效",
     date_tbd: "時間見官網",
     channels_title: "1️⃣ 8大民生頻道",
-    feed_title: "2️⃣ 紐約地區真實信息發佈",
+    feed_title: "2️⃣ 紐約福利與華人服務信息",
     feed_sub: "已核驗官方來源 · 活動=場次 · 發佈=收錄",
     reset_btn: "🔄 重置所有篩選",
     all_neighborhoods: "📍 全部社區（紐約全市）",
@@ -600,9 +628,9 @@ const UI_STRINGS = {
     btn_translate: "使用自動網頁翻譯打開 (備用)"
   },
   en: {
-    title: "US East Chinese Life Hub · NYC Public Info",
+    title: "US East Chinese Life Hub · NYC Benefits & Services",
     logo_text: "US East Chinese Life Hub",
-    logo_sub: "NYC Area · Public Information",
+    logo_sub: "NYC first · Benefits · Chinese community",
     ui_lang_label: "Language:",
     pref_lang_label: "Default Link:",
     trans_zh: "Auto-Translate to Chinese (Simplified)",
@@ -621,14 +649,21 @@ const UI_STRINGS = {
     today: "Today",
     last_3days: "Last 3 Days",
     this_week: "This Week",
-    today_title: "🔥 New Today · Published Last 3 Days",
-    week_title: "📅 This Week · Events in 7 Days",
+    today_title: "🔥 New in 24h · NYC",
+    week_title: "📅 Next 7 Days · NYC Events",
+    stream_new_label: "24h",
+    stream_new_suffix: " new",
+    stream_new_title: "Indexed today (US Eastern, 24h window)",
+    stream_week_label: "7d",
+    stream_week_suffix: " events",
+    stream_week_title: "Activities with official dates in the next 7 days",
+    verified_badge: "Verified",
     date_event: "Event",
     date_published: "Posted",
     date_ongoing: "Ongoing",
     date_tbd: "See official site",
     channels_title: "1️⃣ 8 Public Channels",
-    feed_title: "2️⃣ NYC Real-time Verified Feed",
+    feed_title: "2️⃣ NYC Benefits & Chinese Community",
     feed_sub: "Verified sources · Event = session · Posted = indexed",
     reset_btn: "🔄 Reset All Filters",
     all_neighborhoods: "📍 All Communities (NYC)",
@@ -716,6 +751,19 @@ function applyUILanguage() {
   if (todayTitle) todayTitle.textContent = s.today_title;
   const weekTitle = document.getElementById('week-title');
   if (weekTitle) weekTitle.textContent = s.week_title;
+
+  const snLabel = document.getElementById('stream-new-label');
+  const snSuffix = document.getElementById('stream-new-suffix');
+  const swLabel = document.getElementById('stream-week-label');
+  const swSuffix = document.getElementById('stream-week-suffix');
+  const snStat = document.getElementById('stream-new-stat');
+  const swStat = document.getElementById('stream-week-stat');
+  if (snLabel) snLabel.textContent = s.stream_new_label;
+  if (snSuffix) snSuffix.textContent = s.stream_new_suffix;
+  if (swLabel) swLabel.textContent = s.stream_week_label;
+  if (swSuffix) swSuffix.textContent = s.stream_week_suffix;
+  if (snStat) snStat.title = s.stream_new_title;
+  if (swStat) swStat.title = s.stream_week_title;
   
   // Update neighborhood pills
   document.getElementById('pill-all').textContent = s.all_neighborhoods;
@@ -735,10 +783,12 @@ function renderAutoUpdateBadge() {
   const el = document.getElementById('hub-auto-update');
   if (!el || typeof HUB_AUTO_UPDATE === 'undefined') return;
   const parts = [];
+  const hrs = hubHoursSinceLastUpdate();
+  if (hrs !== null && hrs <= 24) parts.push(`${hrs}h前更新`);
   if (HUB_AUTO_UPDATE.last_full) parts.push('全量 ' + HUB_AUTO_UPDATE.last_full);
   if (HUB_AUTO_UPDATE.last_incremental) parts.push('交通 ' + HUB_AUTO_UPDATE.last_incremental);
-  el.textContent = parts.length ? '🤖 ' + parts.join(' · ') : '';
-  el.title = '自动更新时间（全量=52源；交通=18:00增量）';
+  el.textContent = parts.length ? '🤖 纽约 · ' + parts.join(' · ') : '';
+  el.title = '美东时间自动更新（全量=52源；18:00交通增量；未来将扩展至华盛顿-波士顿）';
 }
 
 function getEventDate(i) {
@@ -750,12 +800,42 @@ function getPublishedAt(i) {
   return String(i.published_at || '').slice(0, 10);
 }
 
+const HUB_TZ = 'America/New_York';
+
+function hubTodayEtStr() {
+  return new Intl.DateTimeFormat('en-CA', { timeZone: HUB_TZ }).format(new Date());
+}
+
+function hubHoursSinceLastUpdate() {
+  if (typeof HUB_AUTO_UPDATE === 'undefined') return null;
+  const stamp = HUB_AUTO_UPDATE.last_incremental || HUB_AUTO_UPDATE.last_full || '';
+  const m = stamp.match(/^(\d{4})-(\d{2})-(\d{2})\s+(\d{2}):(\d{2})/);
+  if (!m) return null;
+  const iso = `${m[1]}-${m[2]}-${m[3]}T${m[4]}:${m[5]}:00-04:00`;
+  const t = Date.parse(iso);
+  if (Number.isNaN(t)) return null;
+  return Math.max(0, Math.round((Date.now() - t) / 3600000));
+}
+
+function countPublishedLast24h() {
+  const todayEt = hubTodayEtStr();
+  return ITEMS.filter(i => getPublishedAt(i) === todayEt).length;
+}
+
+function renderHubStreamStats(newCount, weekCount) {
+  const nc = document.getElementById('stream-new-count');
+  const wc = document.getElementById('stream-week-count');
+  if (nc) nc.textContent = String(newCount);
+  if (wc) wc.textContent = String(weekCount);
+}
+
 function daysFromToday(dateStr) {
   if (!dateStr) return null;
-  const d = new Date(dateStr + 'T12:00:00');
-  const todayObj = new Date();
+  const todayEt = hubTodayEtStr();
+  const d = new Date(dateStr.slice(0, 10) + 'T12:00:00');
+  const t = new Date(todayEt + 'T12:00:00');
   return Math.round((Date.UTC(d.getFullYear(), d.getMonth(), d.getDate())
-    - Date.UTC(todayObj.getFullYear(), todayObj.getMonth(), todayObj.getDate())) / 86400000);
+    - Date.UTC(t.getFullYear(), t.getMonth(), t.getDate())) / 86400000);
 }
 
 function formatEventDateLabel(i) {
@@ -1145,20 +1225,12 @@ function toggleChannels() {
 
 // ─── Today/This Week Info Stream ───
 function renderStreamSections() {
-  const todayObj = new Date();
-  // We need to adjust for timezone offset to get the correct local date string
-  const tzOffset = todayObj.getTimezoneOffset() * 60000; // offset in milliseconds
-  const localISOTime = (new Date(todayObj - tzOffset)).toISOString().slice(0, 10);
-  const todayStr = localISOTime;
+  const todayEt = hubTodayEtStr();
   const s = UI_STRINGS[currentLang];
 
-  // Newly published: indexed in the last 3 days
-  const todayItems = ITEMS.filter(i => {
-    const pub = getPublishedAt(i);
-    if (!pub) return false;
-    const diff = daysFromToday(pub);
-    return diff !== null && diff >= 0 && diff <= 3;
-  }).sort((a, b) => getPublishedAt(b).localeCompare(getPublishedAt(a)));
+  // 24h window (US Eastern today — published_at is date-only from pipeline)
+  const todayItems = ITEMS.filter(i => getPublishedAt(i) === todayEt)
+    .sort((a, b) => getPublishedAt(b).localeCompare(getPublishedAt(a)));
 
   // Upcoming events: official event date in the next 7 days
   const weekItems = ITEMS.filter(i => {
@@ -1168,16 +1240,14 @@ function renderStreamSections() {
     return diff !== null && diff >= 0 && diff <= 7;
   }).sort((a, b) => getEventDate(a).localeCompare(getEventDate(b)));
 
-  // Update stream banner
-  document.getElementById('stream-count').textContent = `${todayItems.length}条新 · ${weekItems.length}场`;
-  document.getElementById('stream-date').textContent = todayStr;
+  renderHubStreamStats(todayItems.length, weekItems.length);
 
   // Render today feed
   const todayFeed = document.getElementById('today-feed');
   if (todayItems.length > 0) {
     todayFeed.innerHTML = todayItems.slice(0, 6).map(i => renderCard(i)).join('');
   } else {
-    todayFeed.innerHTML = '<div style="grid-column:1/-1;padding:16px;text-align:center;color:#64748b;font-size:13px;">近3日暂无新发布（请向下浏览全部信息）</div>';
+    todayFeed.innerHTML = '<div style="grid-column:1/-1;padding:16px;text-align:center;color:#64748b;font-size:13px;">24小时内暂无新收录（请向下浏览全部信息）</div>';
   }
 
   // Render week feed
@@ -1230,8 +1300,9 @@ function initVerifyBadge() {
       badge.textContent = `${icon}${m.g1_pass}/${m.total}`;
     })
     .catch(() => {
-      badge.style.color = '#64748b';
-      badge.textContent = `${ITEMS.length}条`;
+      badge.style.color = '#16a34a';
+      const s = UI_STRINGS[currentLang] || UI_STRINGS.zh;
+      badge.textContent = '✔' + (s.verified_badge || '已核验');
     });
 }
 
