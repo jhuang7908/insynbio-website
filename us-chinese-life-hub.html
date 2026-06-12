@@ -2113,10 +2113,16 @@ function ypRatingBlock(key) {
   const avgTxt = agg && agg.count ? `${agg.avg}★ · ${agg.count}人` : '';
 
   if (!isMember()) {
-    return `<div class="yp-rating-row"><div class="yp-rating-hint"><a href="#" onclick="openSubModal();return false;">注册会员</a> · 满7天可评分</div></div>`;
+    if (avgTxt) {
+      return `<div class="yp-rating-row"><div class="yp-rating-meta">${avgTxt}</div></div>`;
+    }
+    return '';
   }
   if (!canRateBusinesses()) {
-    return `<div class="yp-rating-row"><div class="yp-rating-hint">还需 ${daysUntilCanRate()} 天可评 ${avgTxt ? '· ' + avgTxt : ''}</div></div>`;
+    if (avgTxt) {
+      return `<div class="yp-rating-row"><div class="yp-rating-meta">${avgTxt}</div></div>`;
+    }
+    return '';
   }
   if (my) {
     const stars = [1, 2, 3, 4, 5].map(n => {
@@ -2212,7 +2218,9 @@ function updateMemberStatusUI() {
   if (!isMember()) {
     el.style.display = 'block';
     el.className = 'member-status';
-    el.innerHTML = '💡 <a href="#" onclick="openSubModal();return false;" style="color:#ea580c">注册会员</a>（邮箱订阅即注册）· 满7天可评分';
+    el.innerHTML =
+      '📬 即时推送：点右下角 <strong>订阅每日更新</strong>（微信 / 邮件 / 浏览器，<strong>用户免费</strong>）<br>' +
+      '⭐ 商家评分：<a href="#" onclick="openSubModal();return false;" style="color:#ea580c">邮箱订阅即注册会员</a>，满 <strong>7天</strong> 后可评（防刷）';
     return;
   }
   el.style.display = 'block';
@@ -2982,8 +2990,8 @@ function applyInterestAndClose(moduleId) {
       <button class="sub-close" onclick="closeSubModal()">×</button>
     </div>
 
-    <div style="font-size:12px;color:#64748b;margin-bottom:14px;line-height:1.6;">
-      选择您感兴趣的频道，每天自动推送最新民生信息。<strong style="color:#065f46">微信关注完全免费。</strong>
+    <div style="font-size:13px;color:#64748b;margin-bottom:14px;line-height:1.65;">
+      选择频道后，每日自动推送社区民生更新。<strong style="color:#065f46">对用户全部免费</strong>（微信 / 邮件 / 浏览器推送）。
     </div>
 
     <!-- Interest Category Chips -->
@@ -3012,7 +3020,10 @@ function applyInterestAndClose(moduleId) {
 
     <!-- Email Subscription -->
     <div class="sub-section">
-      <div class="sub-section-title">✉️ 方式二：邮件订阅</div>
+      <div class="sub-section-title">✉️ 方式二：邮件订阅（免费 · 同时注册会员）</div>
+      <div style="font-size:12px;color:#64748b;margin-bottom:8px;line-height:1.5;">
+        用户<strong>不收费</strong>。平台发送成本约 <strong>$0–20/月</strong>（Brevo 等，订阅量 &lt;2000 时通常免费档够用）。
+      </div>
       <div class="sub-email-row">
         <input type="email" id="sub-email-val" class="sub-email-input" placeholder="输入邮箱地址…" />
         <button class="sub-submit" onclick="subscribeEmail()">订阅</button>
@@ -3022,14 +3033,24 @@ function applyInterestAndClose(moduleId) {
 
     <!-- Browser Push -->
     <div class="sub-section">
-      <div class="sub-section-title">🔔 方式三：浏览器推送（Android Chrome 有效）</div>
+      <div class="sub-section-title">🔔 方式三：浏览器推送（免费 · Android Chrome / Edge）</div>
+      <div style="font-size:12px;color:#64748b;margin-bottom:8px;line-height:1.5;">
+        用户<strong>不收费</strong>。Web Push 无短信费；需后续接入 Firebase 等（平台侧免费额度通常够用）。
+      </div>
       <button class="sub-push-btn" id="push-sub-btn" onclick="subscribePush()">开启浏览器通知推送</button>
       <div class="sub-success" id="sub-success-push" style="margin-top:8px;">✅ 浏览器推送已开启！每日更新将直接弹出通知。</div>
     </div>
 
+    <div class="sub-section" style="background:#f8fafc;border:1px solid #e2e8f0;border-radius:10px;padding:10px 12px;">
+      <div class="sub-section-title" style="margin-bottom:4px;">📱 手机短信推送</div>
+      <div style="font-size:12px;color:#64748b;line-height:1.55;">
+        <strong>暂未开通。</strong>美国 SMS 约 <strong>$0.01–0.04/条</strong>（Twilio 等），1000 人每日推送成本过高，不建议早期采用。优先用微信 + 邮件 + 浏览器推送。
+      </div>
+    </div>
+
     <div class="sub-note">
       本平台不收集个人信息用于商业用途。<br>
-      邮件可随时退订。<strong>会员评分：</strong>注册满 <strong>7天</strong> 后可评；<strong>每家商家仅一次</strong>，<strong>每天最多3家</strong>。
+      邮件可随时退订。<strong>会员评分</strong>（与推送无关）：邮箱订阅即注册，满 <strong>7天</strong> 后可评商家；<strong>每家仅一次</strong>，<strong>每天最多3家</strong>。
     </div>
   </div>
 </div>
