@@ -811,7 +811,8 @@ function toggleChannels() {
 
 // ─── Today/This Week Info Stream ───
 function renderStreamSections() {
-  const todayStr = new Date().toISOString().slice(0, 10);
+  const todayObj = new Date();
+  const todayStr = todayObj.toISOString().slice(0, 10);
   const s = UI_STRINGS[currentLang];
 
   // Today's items
@@ -819,13 +820,13 @@ function renderStreamSections() {
   // This week items (within 7 days forward, excluding today)
   const weekItems = ITEMS.filter(i => {
     const d = new Date(i.date);
-    const diff = (d - today) / (1000*60*60*24);
+    const diff = (d - todayObj) / (1000*60*60*24);
     return diff > 0 && diff <= 7;
   });
 
   // Update stream banner
   document.getElementById('stream-count').textContent = todayItems.length + ' 条今日信息 | ' + weekItems.length + ' 条本周预告';
-  document.getElementById('stream-date').textContent = '最后更新: 2026-06-11 23:59 (已校验);
+  document.getElementById('stream-date').textContent = '最后更新: ' + todayStr + ' (已校验)';
 
   // Render today feed
   const todayFeed = document.getElementById('today-feed');
