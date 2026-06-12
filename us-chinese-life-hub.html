@@ -81,6 +81,8 @@
     .feed-card:hover { border-color: #cbd5e1; box-shadow: 0 2px 8px rgba(0,0,0,0.03); }
     .meta { display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px; gap: 6px; }
     .tag { font-size: 9px; font-weight: 700; padding: 2px 6px; border-radius: 4px; white-space: nowrap; flex-shrink: 0; }
+    .tag.citywide-tag { background: #f1f5f9; color: #475569; border: 1px solid #e2e8f0; }
+    .neighborhood-hint { font-size: 11px; color: #78716c; margin: 6px 0 10px; line-height: 1.45; }
     .date { font-size: 10px; color: #94a3b8; font-weight: 600; }
     .date-row { display: flex; flex-direction: column; align-items: flex-end; gap: 2px; flex-shrink: 0; max-width: 52%; }
     .date-chip { font-size: 9px; font-weight: 600; white-space: nowrap; line-height: 1.25; }
@@ -506,6 +508,7 @@
       <button class="pill" onclick="setNeighborhoodFilter('八大道 Sunset Park', this)" id="pill-sunset">八大道 Sunset Park</button>
       <button class="pill" onclick="setNeighborhoodFilter('艾姆赫斯特 Elmhurst', this)" id="pill-elmhurst">艾姆赫斯特 Elmhurst</button>
     </div>
+    <p class="neighborhood-hint" id="neighborhood-hint" style="display:none"></p>
 
     <!-- Cards Feed -->
     <div class="feed-grid" id="feed"></div>
@@ -617,6 +620,8 @@ const UI_STRINGS = {
     verified: "已核验",
     view_link: "查看链接 ➔",
     no_results: "没有符合条件的信息，请换个关键词或选择其他频道。",
+    citywide_tag: "全市适用",
+    neighborhood_hint: "本区活动优先显示；福利/政务等全市服务也会列出（不限地点，全市居民均可申请）。",
     modal_title: "💡 官方页面中文报名指引",
     btn_direct: "直达官方报名/详情页面 ➔",
     btn_translate: "使用自动网页翻译打开 (备用)"
@@ -670,6 +675,8 @@ const UI_STRINGS = {
     verified: "已核驗",
     view_link: "查看鏈接 ➔",
     no_results: "沒有符合條件的信息，請換個關鍵詞或選擇其他頻道。",
+    citywide_tag: "全市適用",
+    neighborhood_hint: "本區活動優先顯示；福利/政務等全市服務也會列出（不限地點，全市居民均可申請）。",
     modal_title: "💡 官方頁面中文報名指引",
     btn_direct: "直達官方報名/詳情頁面 ➔",
     btn_translate: "使用自動網頁翻譯打開 (備用)"
@@ -723,6 +730,8 @@ const UI_STRINGS = {
     verified: "Verified",
     view_link: "View Link ➔",
     no_results: "No matching information found. Please try another keyword or channel.",
+    citywide_tag: "Citywide",
+    neighborhood_hint: "Local events first; citywide benefits/services also shown (not tied to one neighborhood).",
     modal_title: "💡 Official Page Guide & Steps",
     btn_direct: "Go to Official Page ➔",
     btn_translate: "Open with Auto-Translate (Backup)"
@@ -823,6 +832,7 @@ function applyUILanguage() {
   
   renderCategoryDropdown();
   renderModules();
+  updateNeighborhoodHint();
   renderFeed();
   renderStreamSections();
   renderAutoUpdateBadge();
@@ -861,11 +871,49 @@ function inferHubNeighborhoods(item) {
   return hits;
 }
 
+function isHubCitywideService(item) {
+  if (item.date_kind === 'event' && getEventDate(item)) return false;
+  if (item.borough === 'Citywide') return true;
+  const area = String(item.area_zh || item.area_en || '');
+  return /全市|Citywide/i.test(area);
+}
+
 function matchesHubNeighborhood(item, filterKey) {
   if (filterKey === 'all') return true;
   const id = HUB_NEIGHBORHOOD_IDS[filterKey];
   if (!id) return false;
-  return inferHubNeighborhoods(item).has(id);
+  if (inferHubNeighborhoods(item).has(id)) return true;
+  return isHubCitywideService(item);
+}
+
+function hubNeighborhoodSortRank(item, filterKey) {
+  if (filterKey === 'all') return 0;
+  const id = HUB_NEIGHBORHOOD_IDS[filterKey];
+  if (id && inferHubNeighborhoods(item).has(id)) return 0;
+  if (isHubCitywideService(item)) return 1;
+  return 2;
+}
+
+function hubCitywideBadgeHtml(item) {
+  if (activeNeighborhoodFilter === 'all') return '';
+  const id = HUB_NEIGHBORHOOD_IDS[activeNeighborhoodFilter];
+  if (id && inferHubNeighborhoods(item).has(id)) return '';
+  if (!isHubCitywideService(item)) return '';
+  const s = UI_STRINGS[currentLang];
+  return `<span class="tag citywide-tag">${s.citywide_tag || '全市适用'}</span>`;
+}
+
+function updateNeighborhoodHint() {
+  const el = document.getElementById('neighborhood-hint');
+  if (!el) return;
+  const s = UI_STRINGS[currentLang];
+  if (activeNeighborhoodFilter === 'all') {
+    el.style.display = 'none';
+    el.textContent = '';
+  } else {
+    el.style.display = 'block';
+    el.textContent = s.neighborhood_hint || '';
+  }
 }
 
 function parseItemIndexMs(raw, fallbackDate) {
@@ -1123,6 +1171,7 @@ function setNeighborhoodFilter(boro, btn) {
   activeNeighborhoodFilter = boro;
   document.querySelectorAll('#neighborhood-filters .pill').forEach(b => b.classList.remove('active'));
   if (btn) btn.classList.add('active');
+  updateNeighborhoodHint();
   renderFeed();
   updateResetButton();
 }
@@ -1140,6 +1189,7 @@ function resetAllFilters() {
   const firstPill = document.querySelector('#neighborhood-filters .pill');
   if (firstPill) firstPill.classList.add('active');
   
+  updateNeighborhoodHint();
   renderModules();
   renderFeed();
   updateResetButton();
@@ -1207,6 +1257,11 @@ function renderFeed() {
     return matchesModule && matchesBorough && matchesTime && matchesNeighborhood && matchesSearch;
   });
 
+  if (activeNeighborhoodFilter !== 'all') {
+    filtered.sort((a, b) =>
+      hubNeighborhoodSortRank(a, activeNeighborhoodFilter) - hubNeighborhoodSortRank(b, activeNeighborhoodFilter));
+  }
+
   const feed = document.getElementById('feed');
   feed.innerHTML = filtered.map(i => {
     const title = i[`title_${currentLang}`] || i.title_zh;
@@ -1221,6 +1276,7 @@ function renderFeed() {
       <article class="feed-card">
         <div class="meta">
           <span class="tag" style="background:${badgeColor(i.module)}15;color:${badgeColor(i.module)}">${modName}</span>
+          ${hubCitywideBadgeHtml(i)}
           ${formatDateMeta(i)}
         </div>
         <div class="title">${title}</div>
