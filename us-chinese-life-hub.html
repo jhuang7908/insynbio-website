@@ -465,7 +465,7 @@
       <div class="section-title-left" id="feed-title">📋 全部信息（按发布日期保留30天）</div>
       <button id="reset-filters" class="reset-btn" onclick="resetAllFilters()">🔄 重置所有筛选</button>
     </div>
-    <p class="muted" id="feed-sub">已核验官方来源 · 活动=场次 · 发布=收录</p>
+    <p class="muted" id="feed-sub">已核验官方来源 · 活动=场次 · 发布=官方公布日期</p>
     
     <!-- Neighborhood filters -->
     <div class="pillbar" id="neighborhood-filters">
@@ -2111,14 +2111,28 @@ function renderAlmanac() {
 }
 
 // Initial Boot
-evictExpiredItems();
-initPreference();
-renderStreamSections();
-renderAutoUpdateBadge();
-initVerifyBadge();
-renderScheduleNotice();
-fetchWeatherAndStock();
-document.getElementById('unit-toggle').textContent = TEMP_UNIT === 'F' ? '°F' : '°C';
+function hubBoot() {
+  try {
+    evictExpiredItems();
+    initPreference();
+    renderStreamSections();
+    renderAutoUpdateBadge();
+    initVerifyBadge();
+    renderScheduleNotice();
+    fetchWeatherAndStock();
+    const ut = document.getElementById('unit-toggle');
+    if (ut) ut.textContent = TEMP_UNIT === 'F' ? '°F' : '°C';
+    initSubModalOverlay();
+    checkPushState();
+  } catch (err) {
+    console.error('[hub] boot failed', err);
+    const feed = document.getElementById('feed');
+    if (feed && typeof ITEMS !== 'undefined') {
+      feed.innerHTML = ITEMS.slice(0, 20).map(i => renderCard(i)).join('');
+    }
+  }
+}
+hubBoot();
 // Almanac: try immediately, retry up to 3s if lunar library not yet loaded
 (function tryAlmanac(attempt) {
   if (typeof Lunar !== 'undefined' && typeof Solar !== 'undefined') {
@@ -2154,19 +2168,30 @@ let selectedInterests = new Set(JSON.parse(localStorage.getItem('sub_interests')
 let pushSubscribed = false;
 
 function openSubModal() {
-  document.getElementById('sub-modal-overlay').classList.add('open');
+  initSubModalOverlay();
+  const el = document.getElementById('sub-modal-overlay');
+  if (!el) return;
+  el.classList.add('open');
   renderInterestChips();
   checkPushState();
 }
 function closeSubModal() {
-  document.getElementById('sub-modal-overlay').classList.remove('open');
+  const el = document.getElementById('sub-modal-overlay');
+  if (el) el.classList.remove('open');
 }
-document.getElementById('sub-modal-overlay').addEventListener('click', function(e) {
-  if (e.target === this) closeSubModal();
-});
+
+function initSubModalOverlay() {
+  const overlay = document.getElementById('sub-modal-overlay');
+  if (!overlay || overlay.dataset.bound === '1') return;
+  overlay.dataset.bound = '1';
+  overlay.addEventListener('click', function(e) {
+    if (e.target === this) closeSubModal();
+  });
+}
 
 function renderInterestChips() {
   const wrap = document.getElementById('interest-chips-wrap');
+  if (!wrap) return;
   wrap.innerHTML = INTEREST_CHIPS.map(c => {
     const sel = selectedInterests.has(c.id) ? 'selected' : '';
     return `<span class="int-chip ${sel}" onclick="toggleInterest('${c.id}', this)">${c.label}</span>`;
@@ -2306,6 +2331,8 @@ function applyInterestAndClose(moduleId) {
     </div>
   </div>
 </div>
+
+<script>if (typeof initSubModalOverlay === 'function') initSubModalOverlay();</script>
 
 </body>
 </html>
