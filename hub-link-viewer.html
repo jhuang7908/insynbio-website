@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="referrer" content="no-referrer-when-downgrade" />
+  <title>官方页面 · 美东华人生活圈</title>
+  <style>
+    * { box-sizing: border-box; }
+    html, body { margin: 0; height: 100%; background: #f1f5f9; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Noto Sans SC', sans-serif; }
+    .bar {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; gap: 8px;
+      padding: max(8px, env(safe-area-inset-top)) 10px 8px;
+      background: #ffffff; border-bottom: 1px solid #e2e8f0;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+    }
+    .btn-back {
+      flex-shrink: 0; border: none; background: #fff7ed; color: #c2410c;
+      font-size: 14px; font-weight: 700; padding: 8px 12px; border-radius: 8px;
+      cursor: pointer;
+    }
+    .title {
+      flex: 1; min-width: 0; font-size: 12px; font-weight: 600; color: #475569;
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    }
+    .btn-open {
+      flex-shrink: 0; font-size: 12px; font-weight: 700; color: #2563eb;
+      text-decoration: none; padding: 8px 10px;
+    }
+    .main {
+      position: fixed; top: 52px; left: 0; right: 0; bottom: 0;
+      padding-top: env(safe-area-inset-top);
+    }
+    .hint {
+      margin: 10px 12px; padding: 10px 12px; background: #fff7ed;
+      border: 1px solid #fed7aa; border-radius: 10px;
+      font-size: 12px; line-height: 1.5; color: #9a3412;
+    }
+    .frame-wrap {
+      position: absolute; left: 0; right: 0; bottom: 56px; top: 0;
+    }
+    .frame-wrap.with-hint { top: 72px; }
+    iframe {
+      width: 100%; height: 100%; border: 0; background: #fff;
+    }
+    .dock {
+      position: fixed; left: 0; right: 0; bottom: 0; z-index: 101;
+      display: flex; gap: 8px; padding: 8px 12px max(8px, env(safe-area-inset-bottom));
+      background: rgba(255,255,255,0.96); border-top: 1px solid #e2e8f0;
+      backdrop-filter: blur(8px);
+    }
+    .dock button, .dock a {
+      flex: 1; text-align: center; border: none; border-radius: 10px;
+      padding: 12px 8px; font-size: 14px; font-weight: 700; text-decoration: none;
+    }
+    .dock .primary { background: #ea580c; color: #fff; }
+    .dock .secondary { background: #f1f5f9; color: #334155; }
+    .fallback {
+      display: none; padding: 24px 16px; text-align: center; color: #64748b;
+    }
+    .fallback.show { display: block; }
+    .fallback p { font-size: 14px; line-height: 1.6; margin: 0 0 16px; }
+    .spinner {
+      position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
+      background: rgba(255,255,255,0.85); font-size: 13px; color: #64748b;
+    }
+    .spinner.hide { display: none; }
+  </style>
+</head>
+<body>
+  <header class="bar">
+    <button type="button" class="btn-back" id="btn-back">← 返回生活圈</button>
+    <span class="title" id="page-title">官方页面</span>
+    <a class="btn-open" id="btn-ext" href="#" rel="noopener">外链 ↗</a>
+  </header>
+
+  <main class="main">
+    <div class="hint" id="hint">
+      手机端已启用「内嵌浏览 + 返回」模式。若页面显示不全，请点下方「全屏打开官网」；完成后用系统返回键或顶部「返回生活圈」。
+    </div>
+    <div class="frame-wrap with-hint" id="frame-wrap">
+      <div class="spinner" id="spinner">正在加载官方页面…</div>
+      <iframe id="frame" title="官方页面" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+    <div class="fallback" id="fallback">
+      <p>该官网不允许内嵌预览（常见于 nyc.gov 等政府站）。请全屏打开；浏览结束后点「返回生活圈」即可回来。</p>
+    </div>
+  </main>
+
+  <div class="dock">
+    <button type="button" class="secondary" id="btn-back-dock">← 返回生活圈</button>
+    <a class="primary" id="btn-full" href="#">全屏打开官网</a>
+  </div>
+
+  <script>
+    (function () {
+      const qs = new URLSearchParams(location.search);
+      const rawUrl = qs.get('url') || '';
+      const returnPage = qs.get('return') || 'us-chinese-life-hub.html';
+      const title = qs.get('title') || '官方页面';
+      const useTranslate = qs.get('translate') === '1';
+
+      if (!rawUrl || !/^https?:\/\//i.test(rawUrl)) {
+        document.body.innerHTML = '<p style="padding:20px">链接无效。<a href="' + returnPage + '">返回生活圈</a></p>';
+        return;
+      }
+
+      let targetUrl = rawUrl;
+      if (useTranslate) {
+        targetUrl = 'https://translate.google.com/translate?sl=auto&tl=zh-CN&u=' + encodeURIComponent(rawUrl);
+      }
+
+      document.getElementById('page-title').textContent = title;
+      document.title = title + ' · 生活圈';
+
+      function goBack() {
+        if (history.length > 1) {
+          history.back();
+        } else {
+          location.href = returnPage;
+        }
+      }
+
+      document.getElementById('btn-back').onclick = goBack;
+      document.getElementById('btn-back-dock').onclick = goBack;
+
+      const ext = document.getElementById('btn-ext');
+      const full = document.getElementById('btn-full');
+      ext.href = rawUrl;
+      full.href = rawUrl;
+      full.addEventListener('click', function (e) {
+        e.preventDefault();
+        location.assign(rawUrl);
+      });
+
+      const frame = document.getElementById('frame');
+      const spinner = document.getElementById('spinner');
+      const fallback = document.getElementById('fallback');
+      let loaded = false;
+
+      frame.addEventListener('load', function () {
+        loaded = true;
+        spinner.classList.add('hide');
+      });
+
+      frame.src = targetUrl;
+
+      setTimeout(function () {
+        spinner.classList.add('hide');
+        if (!loaded) {
+          fallback.classList.add('show');
+          document.getElementById('frame-wrap').style.display = 'none';
+        }
+      }, 8000);
+
+      // Gov sites often block iframe — show hint to use full screen after short delay
+      setTimeout(function () {
+        if (loaded && /nyc\.gov|mta\.info|state\.ny\.us/i.test(rawUrl)) {
+          fallback.classList.add('show');
+        }
+      }, 2500);
+    })();
+  </script>
+</body>
+</html>

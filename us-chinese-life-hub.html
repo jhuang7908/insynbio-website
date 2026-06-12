@@ -468,8 +468,9 @@
       </div>
       
       <div class="modal-buttons">
-        <a id="modal-btn-direct" target="_blank" class="btn-primary" onclick="closeGuideModal()">直达官方报名/详情页面 ➔</a>
-        <a id="modal-btn-translate" target="_blank" class="btn-secondary" onclick="closeGuideModal()">使用自动网页翻译打开 (备用)</a>
+        <a id="modal-btn-direct" href="#" class="btn-primary">直达官方报名/详情页面 ➔</a>
+        <a id="modal-btn-translate" href="#" class="btn-secondary">使用自动网页翻译打开 (备用)</a>
+        <p id="modal-mobile-hint" class="modal-mobile-hint" style="display:none;font-size:11px;color:#64748b;margin:0;line-height:1.5;"></p>
       </div>
     </div>
   </div>
@@ -979,6 +980,45 @@ function renderFeed() {
   updateResetButton();
 }
 
+// ── External link routing (mobile in-app viewer vs desktop new tab) ───────────
+function isMobileLinkMode() {
+  return window.matchMedia('(max-width: 768px)').matches
+    || /Android|iPhone|iPad|iPod|Mobile|webOS|BlackBerry/i.test(navigator.userAgent);
+}
+
+function hubViewerPageUrl(targetUrl, opts) {
+  opts = opts || {};
+  const params = new URLSearchParams();
+  params.set('url', targetUrl);
+  params.set('return', 'us-chinese-life-hub.html');
+  if (opts.title) params.set('title', opts.title.slice(0, 80));
+  if (opts.translate) params.set('translate', '1');
+  return 'hub-link-viewer.html?' + params.toString();
+}
+
+function openHubExternal(rawUrl, opts) {
+  opts = opts || {};
+  const desktopUrl = opts.desktopUrl || rawUrl;
+  if (!rawUrl || !/^https?:\/\//i.test(rawUrl)) return;
+  if (isMobileLinkMode()) {
+    closeGuideModal();
+    location.href = hubViewerPageUrl(rawUrl, { title: opts.title, translate: !!opts.translate });
+    return;
+  }
+  window.open(desktopUrl, '_blank', 'noopener,noreferrer');
+  closeGuideModal();
+}
+
+function wireExternalAnchor(anchor, rawUrl, opts) {
+  if (!anchor) return;
+  anchor.href = '#';
+  anchor.removeAttribute('target');
+  anchor.onclick = function (ev) {
+    ev.preventDefault();
+    openHubExternal(rawUrl, opts || {});
+  };
+}
+
 // AI Smart Guide Modal Operations
 function openGuideModal(itemId) {
   const item = ITEMS.find(x => x.id === itemId);
@@ -1000,24 +1040,42 @@ function openGuideModal(itemId) {
   const pref = localStorage.getItem('pref_lang_mode') || 'trans_zh';
   const btnDirect = document.getElementById('modal-btn-direct');
   const btnTrans = document.getElementById('modal-btn-translate');
+  const mobileHint = document.getElementById('modal-mobile-hint');
+
+  let primaryDesktop;
+  let secondaryDesktop;
 
   if (pref === 'raw_en') {
-    // User explicitly wants English — direct is primary, translate is backup
     btnDirect.textContent = s.btn_direct;
-    btnDirect.href = item.url;
-    btnDirect.className = 'btn-primary';
     btnTrans.textContent = s.btn_translate;
-    btnTrans.href = translateZhUrl;
-    btnTrans.className = 'btn-secondary';
+    primaryDesktop = item.url;
+    secondaryDesktop = translateZhUrl;
   } else {
-    // Default: Chinese translation is PRIMARY, English original is backup
     const transUrl = (pref === 'trans_zht') ? translateZhtUrl : translateZhUrl;
     btnDirect.textContent = pref === 'trans_zht' ? '🌐 用中文翻译打开（推荐）' : '🌐 用简体中文打开（推荐）';
-    btnDirect.href = transUrl;
-    btnDirect.className = 'btn-primary';
     btnTrans.textContent = '查看英文原始页面 ↗';
-    btnTrans.href = item.url;
-    btnTrans.className = 'btn-secondary';
+    primaryDesktop = transUrl;
+    secondaryDesktop = item.url;
+  }
+
+  wireExternalAnchor(btnDirect, item.url, {
+    title,
+    translate: pref !== 'raw_en',
+    desktopUrl: primaryDesktop,
+  });
+  wireExternalAnchor(btnTrans, item.url, {
+    title,
+    translate: false,
+    desktopUrl: secondaryDesktop,
+  });
+
+  if (mobileHint) {
+    if (isMobileLinkMode()) {
+      mobileHint.style.display = 'block';
+      mobileHint.textContent = '📱 手机端：将在本站内打开并显示「返回生活圈」按钮，避免关掉后无法回到本页。';
+    } else {
+      mobileHint.style.display = 'none';
+    }
   }
   
   document.getElementById('guide-modal').classList.add('open');
@@ -1233,8 +1291,12 @@ function escapeHtml(s) {
 }
 
 function ypCardHtml(href, name, sub, phone, external) {
-  const ext = external ? ' target="_blank" rel="noopener"' : '';
-  return `<a href="${href}" class="yp-card"${ext}>
+  const isHttp = external && /^https?:\/\//i.test(href);
+  const ext = (external && !isMobileLinkMode()) ? ' target="_blank" rel="noopener"' : '';
+  const clickAttr = isHttp
+    ? ` onclick="event.preventDefault();openHubExternal(${JSON.stringify(href)},{title:${JSON.stringify(String(name).slice(0,40))}});"`
+    : '';
+  return `<a href="${isHttp ? '#' : href}" class="yp-card"${ext}${clickAttr}>
     <div class="yp-card-name">${escapeHtml(name)}</div>
     ${sub ? `<div class="yp-card-sub">${escapeHtml(sub)}</div>` : ''}
     <div class="yp-card-phone">${escapeHtml(phone)}</div>
@@ -1247,8 +1309,9 @@ function ypBizCard(item) {
   const key = bizKey(item);
   let name = item.name;
   if (name.length > 40) name = name.slice(0, 38) + '…';
+  const mapHref = googleMapsUrl(addr);
   const mapLink = addr
-    ? `<a href="${googleMapsUrl(addr)}" target="_blank" rel="noopener" class="yp-card-map">📍 ${escapeHtml(addr)} · 地图↗</a>`
+    ? `<a href="#" class="yp-card-map" onclick="event.stopPropagation();event.preventDefault();openHubExternal(${JSON.stringify(mapHref)},{title:'地图'});">📍 ${escapeHtml(addr)} · 地图↗</a>`
     : `<div class="yp-card-sub">${escapeHtml(item.category)}</div>`;
   return `<div class="yp-card">
     <a href="tel:${tel}" class="yp-card-main">
