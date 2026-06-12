@@ -347,6 +347,11 @@
         <a href="tel:18002221222" class="phone-item"><div class="phone-name">防毒急救中心</div><div class="phone-num">1-800-222-1222</div></a>
         <a href="https://council.nyc.gov/districts/" target="_blank" class="phone-item"><div class="phone-name">查找我的市议员</div><div class="phone-num">在线查询 ↗</div></a>
         <a href="tel:2127887100" class="phone-item"><div class="phone-name">纽约市议会总机</div><div class="phone-num">212-788-7100</div></a>
+        <a href="tel:2129410920" class="phone-item"><div class="phone-name">华策会 CPC (曼哈顿)</div><div class="phone-num">212-941-0920</div></a>
+        <a href="tel:7183588899" class="phone-item"><div class="phone-name">华策会 CPC (皇后区)</div><div class="phone-num">718-358-8899</div></a>
+        <a href="tel:7184920409" class="phone-item"><div class="phone-name">华策会 CPC (布鲁克林)</div><div class="phone-num">718-492-0409</div></a>
+        <a href="tel:2129798381" class="phone-item"><div class="phone-name">亚洲人平等会 AAFE</div><div class="phone-num">212-979-8381</div></a>
+        <a href="tel:2123796998" class="phone-item"><div class="phone-name">王嘉廉社区医疗中心</div><div class="phone-num">212-379-6998</div></a>
       </div>
     </div>
 
@@ -588,10 +593,17 @@ function applyUILanguage() {
   document.getElementById('opt-week').textContent = s.this_week;
   
   // Update section titles
-  document.getElementById('channels-title').textContent = s.channels_title;
-  document.getElementById('channels-sub').textContent = s.channels_sub;
-  document.getElementById('feed-title').innerHTML = `${s.feed_title} <button id="reset-filters" class="reset-btn" onclick="resetAllFilters()">${s.reset_btn}</button>`;
-  document.getElementById('feed-sub').textContent = s.feed_sub;
+  const channelsTitle = document.getElementById('channels-title');
+  if (channelsTitle) channelsTitle.textContent = s.channels_title;
+  
+  const channelsSub = document.getElementById('channels-sub');
+  if (channelsSub) channelsSub.textContent = s.channels_sub;
+  
+  const feedTitle = document.getElementById('feed-title');
+  if (feedTitle) feedTitle.innerHTML = `${s.feed_title} <button id="reset-filters" class="reset-btn" onclick="resetAllFilters()">${s.reset_btn}</button>`;
+  
+  const feedSub = document.getElementById('feed-sub');
+  if (feedSub) feedSub.textContent = s.feed_sub;
   
   // Update neighborhood pills
   document.getElementById('pill-all').textContent = s.all_neighborhoods;
