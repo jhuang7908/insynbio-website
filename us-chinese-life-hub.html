@@ -655,7 +655,7 @@ function updateResetButton() {
 // Calculate days difference from today
 function getDaysDiff(dateStr) {
   const itemDate = new Date(dateStr);
-  const diffTime = today - itemDate;
+  const diffTime = Date.now() - itemDate.getTime();
   return Math.ceil(diffTime / (1000 * 60 * 60 * 24));
 }
 
