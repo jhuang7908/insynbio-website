@@ -632,6 +632,7 @@ const UI_STRINGS = {
     date_first_indexed: "首次收录",
     date_ongoing: "长期有效",
     date_tbd: "时间见官网",
+    date_event_tip: "举办时间（非发布日期；无确认日期时见官网）",
     hub_search_placeholder: "检索：标题、内容、地点、收录时间、发布时间、活动日期…",
     hub_search_count: "共 {n} 条可检索",
     hub_search_match: "匹配 {n} 条",
@@ -692,6 +693,7 @@ const UI_STRINGS = {
     date_first_indexed: "首次收錄",
     date_ongoing: "長期有效",
     date_tbd: "時間見官網",
+    date_event_tip: "舉辦時間（非發布日期；無確認日期時見官網）",
     hub_search_placeholder: "檢索：標題、內容、地點、收錄時間、發布時間、活動日期…",
     hub_search_count: "共 {n} 條可檢索",
     hub_search_match: "匹配 {n} 條",
@@ -752,6 +754,7 @@ const UI_STRINGS = {
     date_first_indexed: "First indexed",
     date_ongoing: "Ongoing",
     date_tbd: "See official site",
+    date_event_tip: "Event time (not publish date)",
     hub_search_placeholder: "Search title, content, location, indexed/posted/event dates…",
     hub_search_count: "{n} records indexed",
     hub_search_match: "{n} matches",
@@ -913,7 +916,7 @@ function inferHubNeighborhoods(item) {
 }
 
 function isHubCitywideService(item) {
-  if (item.date_kind === 'event' && getEventDate(item)) return false;
+  if (item.date_kind === 'event' && getDisplayEventDate(item)) return false;
   if (item.borough === 'Citywide') return true;
   const area = String(item.area_zh || item.area_en || '');
   return /全市|Citywide/i.test(area);
@@ -1078,7 +1081,7 @@ function resolveHubIndexStats() {
       featured.push(i);
     }
     if (i.date_kind !== 'event') continue;
-    const ed = getEventDate(i);
+    const ed = getDisplayEventDate(i);
     if (!ed) continue;
     const diff = daysFromToday(ed);
     if (diff !== null && diff >= 0 && diff <= 7) events_7d += 1;
@@ -1103,6 +1106,29 @@ function applyHubStreamStatLabels() {
 function getEventDate(i) {
   const d = (i.event_date !== undefined && i.event_date !== null) ? i.event_date : (i.date || '');
   return String(d).slice(0, 10);
+}
+
+function inferEventDateSource(i) {
+  if (i.event_date_source) return i.event_date_source;
+  const u = i.url || '';
+  if (/nycgovparks\.org\/events\/20\d{2}\/\d{2}\/\d{2}/i.test(u)) return 'url';
+  if (/eventbrite\.com|cpc-nyc\.org\/events|nyc\.gov\/site|on\.nyc\.gov/i.test(u)) return 'none';
+  const ed = getEventDate(i);
+  return ed ? 'listing' : 'none';
+}
+
+function isReliableEventDate(i) {
+  const src = inferEventDateSource(i);
+  if (src === 'url') return !!getEventDate(i);
+  if (src === 'none') return false;
+  const ed = getEventDate(i);
+  if (!ed) return false;
+  if (ed === hubTodayEtStr()) return false;
+  return true;
+}
+
+function getDisplayEventDate(i) {
+  return isReliableEventDate(i) ? getEventDate(i) : '';
 }
 
 function getPublishedAt(i) {
@@ -1156,14 +1182,15 @@ function daysFromToday(dateStr) {
 
 function formatEventDateLabel(i) {
   const s = UI_STRINGS[currentLang];
-  const ed = getEventDate(i);
+  const tip = s.date_event_tip || '';
+  const ed = getDisplayEventDate(i);
   if (!ed) {
     const lbl = (i.date_kind === 'service') ? s.date_ongoing : s.date_tbd;
-    return `<span class="date-chip event">${s.date_event}: ${lbl}</span>`;
+    return `<span class="date-chip event" title="${tip}">${s.date_event}: ${lbl}</span>`;
   }
   const time = (i.event_time || '').trim();
   const timeTxt = time ? ` ${time}` : '';
-  return `<span class="date-chip event">${s.date_event}: ${ed}${timeTxt}</span>`;
+  return `<span class="date-chip event" title="${tip}">${s.date_event}: ${ed}${timeTxt}</span>`;
 }
 
 function formatPublishDateLabel(i) {
@@ -1631,11 +1658,11 @@ function renderStreamSections() {
 
   const weekItems = ITEMS.filter(i => {
     if (i.date_kind !== 'event') return false;
-    const ed = getEventDate(i);
+    const ed = getDisplayEventDate(i);
     if (!ed) return false;
     const diff = daysFromToday(ed);
     return diff !== null && diff >= 0 && diff <= 7;
-  }).sort((a, b) => getEventDate(a).localeCompare(getEventDate(b)));
+  }).sort((a, b) => getDisplayEventDate(a).localeCompare(getDisplayEventDate(b)));
 
   renderHubStreamStats(stats);
 
