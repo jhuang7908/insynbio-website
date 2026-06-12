@@ -1,0 +1,22 @@
+/yp_data/*
+  X-Robots-Tag: noindex, nofollow, noarchive, nosnippet
+  Cache-Control: private, no-store
+  Referrer-Policy: same-origin
+
+/yellow_pages.json
+  X-Robots-Tag: noindex, nofollow, noarchive
+  Cache-Control: private, no-store
+
+/yellow_pages_full.json
+  X-Robots-Tag: noindex, nofollow, noarchive
+  Cache-Control: private, no-store
+
+/yellow_page_ratings.json
+  X-Robots-Tag: noindex, nofollow
+
+/us-chinese-life-hub.html
+  X-Robots-Tag: index, follow
+  Referrer-Policy: strict-origin-when-cross-origin
+
+/sitemap.xml
+  Cache-Control: public, max-age=3600

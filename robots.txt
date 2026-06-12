@@ -1,125 +1,24 @@
-# robots.txt — insynbio.com
-# Last updated: April 2026
+User-agent: *
+Allow: /us-chinese-life-hub.html
+Allow: /sitemap.xml
+Disallow: /yp_data/
+Disallow: /yellow_pages.json
+Disallow: /yellow_pages_full.json
+Disallow: /yellow_pages_by_region.json
+Disallow: /yellow_page_ratings.json
 
-# Allow legitimate search engines
-User-agent: Googlebot
-Allow: /
+Sitemap: https://insynbio.com/sitemap.xml
 
-User-agent: Bingbot
-Allow: /
-
-User-agent: Slurp
-Allow: /
-
-User-agent: DuckDuckBot
-Allow: /
-
-# ── Block AI training crawlers ──────────────────────────────────────────────
-
-# OpenAI
+# AI training crawlers — block site-wide (optional; hub HTML still indexable via Google/Bing)
 User-agent: GPTBot
 Disallow: /
-
 User-agent: ChatGPT-User
 Disallow: /
-
-User-agent: OAI-SearchBot
-Disallow: /
-
-# Google AI (Gemini / Vertex training)
 User-agent: Google-Extended
-Disallow: /
-
-# Anthropic
-User-agent: anthropic-ai
-Disallow: /
-
-User-agent: ClaudeBot
-Disallow: /
-
-User-agent: Claude-Web
-Disallow: /
-
-# Common Crawl (source for most AI training datasets)
+Disallow: /yp_data/
 User-agent: CCBot
-Disallow: /
-
-# Perplexity AI
-User-agent: PerplexityBot
-Disallow: /
-
-# Amazon Alexa / AWS AI
-User-agent: Amazonbot
-Disallow: /
-
-# Meta AI
-User-agent: FacebookBot
-Disallow: /
-
-User-agent: Meta-ExternalAgent
-Disallow: /
-
-# Apple
-User-agent: Applebot-Extended
-Disallow: /
-
-# Cohere
-User-agent: cohere-ai
-Disallow: /
-
-# ByteDance / Doubao
+Disallow: /yp_data/
+User-agent: anthropic-ai
+Disallow: /yp_data/
 User-agent: Bytespider
-Disallow: /
-
-# DataForSEO / data harvesters
-User-agent: DataForSeoBot
-Disallow: /
-
-User-agent: MJ12bot
-Disallow: /
-
-User-agent: AhrefsBot
-Disallow: /
-
-User-agent: SemrushBot
-Disallow: /
-
-User-agent: DotBot
-Disallow: /
-
-User-agent: BLEXBot
-Disallow: /
-
-# Generic AI / research scrapers
-User-agent: omgilibot
-Disallow: /
-
-User-agent: Omgilibot
-Disallow: /
-
-User-agent: img2dataset
-Disallow: /
-
-User-agent: Diffbot
-Disallow: /
-
-User-agent: YouBot
-Disallow: /
-
-User-agent: PetalBot
-Disallow: /
-
-# ── Protect sensitive research pages + raw datasets (generic crawlers) ───
-# Major search User-agents above still Allow: / (see top of file).
-User-agent: *
-Disallow: /immunogenicity_study.html
-Disallow: /antibody-guide.html
-Disallow: /component-browser.html
-Disallow: /ada_database.html
-Disallow: /vaccine_kb_data.html
-Disallow: /ada_db_data.json
-Disallow: /vaccine_kb_data.json
-Disallow: /component_library_public.json
-
-# ── Sitemap ────────────────────────────────────────────────────────────────
-Sitemap: https://www.insynbio.com/sitemap.xml
+Disallow: /yp_data/
