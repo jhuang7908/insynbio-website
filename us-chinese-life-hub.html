@@ -857,7 +857,7 @@ function renderCard(i) {
 
 // ─── 30-day auto-eviction (filter items older than 30 days) ───
 function evictExpiredItems() {
-  const today = new Date('2026-06-11');
+  const today = new Date();
   const cutoff = new Date(today);
   cutoff.setDate(cutoff.getDate() - 30);
   const cutoffStr = cutoff.toISOString().slice(0, 10);
