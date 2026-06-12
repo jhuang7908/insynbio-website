@@ -193,6 +193,23 @@
     .module-grid.collapsed { max-height: 0; overflow: hidden; margin: 0; transition: max-height 0.3s ease; }
     .module-grid.expanded { max-height: 3000px; margin-top: 12px; }
 
+    /* Almanac & Phones */
+    .almanac-card { background: #fff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 12px 16px; margin-top: 12px; display: flex; flex-direction: column; gap: 8px; }
+    .almanac-header { display: flex; justify-content: space-between; font-size: 14px; font-weight: 700; color: #1e293b; border-bottom: 1px dashed #e2e8f0; padding-bottom: 8px; }
+    .almanac-body { display: flex; gap: 16px; font-size: 13px; margin-top: 4px; }
+    .almanac-item { display: flex; align-items: flex-start; gap: 6px; flex: 1; }
+    .almanac-item .yi { background: #dcfce7; color: #16a34a; padding: 2px 6px; border-radius: 4px; font-weight: 700; font-size: 12px; white-space: nowrap; }
+    .almanac-item .ji { background: #fee2e2; color: #dc2626; padding: 2px 6px; border-radius: 4px; font-weight: 700; font-size: 12px; white-space: nowrap; }
+    .almanac-holidays { font-size: 12px; color: #ea580c; font-weight: 600; margin-top: 4px; display: none; }
+
+    .phones-card { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 16px; margin-top: 16px; }
+    .phones-title { font-size: 14px; font-weight: 700; color: #334155; margin-bottom: 12px; }
+    .phones-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 10px; }
+    .phone-item { background: #fff; border: 1px solid #cbd5e1; border-radius: 8px; padding: 10px; text-decoration: none; color: inherit; transition: all 0.15s; display: flex; flex-direction: column; justify-content: center; }
+    .phone-item:hover { border-color: #07bb65; box-shadow: 0 4px 12px rgba(7,187,101,0.1); transform: translateY(-1px); }
+    .phone-name { font-size: 11px; color: #64748b; margin-bottom: 4px; line-height: 1.2; }
+    .phone-num { font-size: 14px; font-weight: 800; color: #0f172a; }
+
     @media (max-width: 900px) {
       .search-panel { grid-template-columns: 1fr 1fr; }
     }
@@ -203,8 +220,11 @@
       .feed-grid, .module-grid { grid-template-columns: 1fr; }
       .search-panel { grid-template-columns: 1fr; }
       .controls-bar { flex-direction: column; gap: 8px; align-items: flex-end; }
+      .almanac-header { flex-direction: column; gap: 4px; }
+      .almanac-body { flex-direction: column; gap: 8px; }
     }
   </style>
+  <script src="https://cdn.jsdelivr.net/npm/lunar-javascript/lunar.min.js"></script>
 </head>
 <body>
 
@@ -260,6 +280,19 @@
       </div>
     </div>
 
+    <!-- ═══ ALMANAC & HOLIDAYS ═══ -->
+    <div class="almanac-card" id="almanac-card">
+      <div class="almanac-header">
+        <span id="almanac-date"></span>
+        <span id="almanac-lunar"></span>
+      </div>
+      <div class="almanac-body">
+        <div class="almanac-item"><span class="yi">宜</span> <span id="almanac-yi"></span></div>
+        <div class="almanac-item"><span class="ji">忌</span> <span id="almanac-ji"></span></div>
+      </div>
+      <div class="almanac-holidays" id="almanac-holidays"></div>
+    </div>
+
     <!-- ═══ TODAY'S HIGHLIGHTS (第一屏核心) ═══ -->
     <div class="section-title" style="margin-top:20px">
       <div class="section-title-left" id="today-title">🔥 今日重点 · Today's Highlights</div>
@@ -300,6 +333,21 @@
         <option value="3days" id="opt-3days">最近3天 (Last 3 Days)</option>
         <option value="week" id="opt-week">本周新增 (This Week)</option>
       </select>
+    </div>
+
+    <!-- ═══ ESSENTIAL PHONES ═══ -->
+    <div class="phones-card">
+      <div class="phones-title">☎️ 纽约生活常用电话 (点击拨打)</div>
+      <div class="phones-grid">
+        <a href="tel:911" class="phone-item"><div class="phone-name">急救/报警 (紧急)</div><div class="phone-num">911</div></a>
+        <a href="tel:311" class="phone-item"><div class="phone-name">市政服务/非紧急报警/投诉</div><div class="phone-num">311</div></a>
+        <a href="tel:988" class="phone-item"><div class="phone-name">心理危机干预</div><div class="phone-num">988</div></a>
+        <a href="tel:2122449392" class="phone-item"><div class="phone-name">中国驻纽约总领馆</div><div class="phone-num">212-244-9392</div></a>
+        <a href="tel:2126953125" class="phone-item"><div class="phone-name">领事保护专线 (24h)</div><div class="phone-num">212-695-3125</div></a>
+        <a href="tel:18002221222" class="phone-item"><div class="phone-name">防毒急救中心</div><div class="phone-num">1-800-222-1222</div></a>
+        <a href="https://council.nyc.gov/districts/" target="_blank" class="phone-item"><div class="phone-name">查找我的市议员</div><div class="phone-num">在线查询 ↗</div></a>
+        <a href="tel:2127887100" class="phone-item"><div class="phone-name">纽约市议会总机</div><div class="phone-num">212-788-7100</div></a>
+      </div>
     </div>
 
     <!-- ═══ 11 CORE CHANNELS (expanded by default) ═══ -->
@@ -959,6 +1007,59 @@ function fetchWeatherAndStock() {
     .catch(() => document.getElementById('stock-info').style.display = 'none');
 }
 
+// ── Almanac & Holidays ─────────────────────────────────────────────────────
+function renderAlmanac() {
+  if (typeof Lunar === 'undefined' || typeof Solar === 'undefined') return;
+  const today = new Date();
+  const lunar = Lunar.fromDate(today);
+  const solar = Solar.fromDate(today);
+  
+  const days = ['日','一','二','三','四','五','六'];
+  document.getElementById('almanac-date').textContent = `${today.getFullYear()}年${today.getMonth()+1}月${today.getDate()}日 星期${days[today.getDay()]}`;
+  document.getElementById('almanac-lunar').textContent = `农历 ${lunar.getMonthInChinese()}月${lunar.getDayInChinese()} · ${lunar.getYearInGanZhi()}年 ${lunar.getMonthInGanZhi()}月 ${lunar.getDayInGanZhi()}日`;
+  
+  document.getElementById('almanac-yi').textContent = lunar.getDayYi().join('、') || '无';
+  document.getElementById('almanac-ji').textContent = lunar.getDayJi().join('、') || '无';
+  
+  const holidays = [];
+  
+  // Chinese/Lunar festivals
+  const lunarFests = lunar.getFestivals();
+  if (lunarFests.length > 0) holidays.push(...lunarFests);
+  const jieqi = lunar.getJieQi();
+  if (jieqi) holidays.push(jieqi);
+  
+  // Solar/US festivals
+  const solarFests = solar.getFestivals();
+  if (solarFests.length > 0) holidays.push(...solarFests);
+  
+  // Add specific US holidays not covered by default
+  const m = today.getMonth() + 1;
+  const d = today.getDate();
+  const day = today.getDay();
+  const weekOfMonth = Math.ceil(d / 7);
+  
+  if (m === 1 && d === 1) holidays.push("元旦 (New Year's Day)");
+  if (m === 1 && day === 1 && weekOfMonth === 3) holidays.push("马丁·路德·金纪念日");
+  if (m === 2 && day === 1 && weekOfMonth === 3) holidays.push("总统日 (Presidents' Day)");
+  if (m === 5 && day === 1 && d >= 25) holidays.push("阵亡将士纪念日 (Memorial Day)");
+  if (m === 6 && d === 19) holidays.push("六月节 (Juneteenth)");
+  if (m === 7 && d === 4) holidays.push("美国独立日 (Independence Day)");
+  if (m === 9 && day === 1 && weekOfMonth === 1) holidays.push("劳工节 (Labor Day)");
+  if (m === 10 && day === 1 && weekOfMonth === 2) holidays.push("哥伦布日 (Columbus Day)");
+  if (m === 11 && d === 11) holidays.push("退伍军人节 (Veterans Day)");
+  if (m === 11 && day === 4 && weekOfMonth === 4) holidays.push("感恩节 (Thanksgiving)");
+  if (m === 12 && d === 25) holidays.push("圣诞节 (Christmas)");
+
+  const holiEl = document.getElementById('almanac-holidays');
+  if (holidays.length > 0) {
+    holiEl.textContent = '🎉 今日节日/节气：' + [...new Set(holidays)].join(' | ');
+    holiEl.style.display = 'block';
+  } else {
+    holiEl.style.display = 'none';
+  }
+}
+
 // Initial Boot
 evictExpiredItems();
 initPreference();
@@ -966,6 +1067,7 @@ renderStreamSections();
 initVerifyBadge();
 renderScheduleNotice();
 fetchWeatherAndStock();
+renderAlmanac();
 
 // ── Subscription System ──────────────────────────────────────────────────────
 
