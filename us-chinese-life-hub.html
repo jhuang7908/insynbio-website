@@ -207,12 +207,18 @@
     .dash-row-market {
       flex-wrap: nowrap; overflow-x: auto; width: 100%;
       padding-bottom: 1px; scrollbar-width: none;
+      align-items: center;
     }
     .dash-row-market::-webkit-scrollbar { display: none; }
     .dash-stats-right {
       display: flex; align-items: center; gap: 5px; flex-shrink: 0;
       margin-left: auto; padding-left: 8px;
     }
+    .dash-row-meta {
+      display: flex; justify-content: flex-end; align-items: center;
+      width: 100%; margin-top: 3px; min-height: 14px;
+    }
+    .dash-row-meta .dash-meta-inline { margin-left: 0; text-align: right; }
     .dash-stats-right .dash-meta-inline { margin-left: 0; display: block; width: 100%; text-align: right; line-height: 1.2; }
     .dash-stats-block { display: flex; flex-direction: column; align-items: flex-end; gap: 2px; flex-shrink: 0; }
     .dash-vsep { width: 1px; height: 14px; background: #fdba74; flex-shrink: 0; opacity: 0.7; }
@@ -288,7 +294,15 @@
     .phone-num { font-size: 13px; font-weight: 800; color: #0f172a; }
 
     /* Yellow Pages — unified phone directory */
-    .yp-toolbar { display: flex; gap: 6px; margin-bottom: 8px; flex-wrap: wrap; }
+    .yp-toolbar { display: flex; gap: 6px; margin-bottom: 8px; flex-wrap: wrap; align-items: center; }
+    .yp-map-all-btn {
+      font-size: 10px; font-weight: 700; padding: 6px 10px; border-radius: 8px;
+      border: 1px solid #bfdbfe; background: #eff6ff; color: #1d4ed8; cursor: pointer; white-space: nowrap;
+    }
+    .yp-map-all-btn:hover { background: #dbeafe; }
+    .yp-map-embed { margin: 8px 0 10px; border: 1px solid #e2e8f0; border-radius: 10px; overflow: hidden; background: #fff; }
+    .yp-map-embed iframe { width: 100%; height: 280px; border: 0; display: block; }
+    .yp-card { cursor: pointer; }
     .yp-toolbar input { flex: 1; min-width: 140px; padding: 7px 10px; border: 1px solid #cbd5e1; border-radius: 8px; font-size: 12px; outline: none; }
     .yp-industry-bar { display: flex; gap: 4px; flex-wrap: wrap; margin-bottom: 4px; }
     .yp-area-bar { display: flex; gap: 4px; flex-wrap: wrap; margin-bottom: 8px; }
@@ -398,21 +412,21 @@
             <span id="weather-info" class="dash-chip">🌤️ …</span>
             <button type="button" class="unit-toggle" id="unit-toggle" onclick="event.preventDefault(); toggleTempUnit();" title="切换华氏/摄氏">°F</button>
             <div class="dash-market" id="market-strip" aria-label="美股行情"></div>
-            <div class="dash-stats-block">
-              <div class="dash-stats-right">
-                <span class="stream-dot"></span>
-                <span class="dash-stat dash-stat-new" id="stream-new-stat">
-                  <span class="dash-stat-label" id="stream-new-label">24h新增</span>
-                  <strong id="stream-new-count">—</strong><span class="dash-stat-unit" id="stream-new-unit">条</span>
-                </span>
-                <span class="dash-stat dash-stat-week" id="stream-week-stat">
-                  <span class="dash-stat-label" id="stream-week-label">7日场次</span>
-                  <strong id="stream-week-count">—</strong><span class="dash-stat-unit" id="stream-week-unit">场</span>
-                </span>
-                <span id="verify-badge" class="dash-verify">✔</span>
-              </div>
-              <span id="hub-auto-update" class="dash-meta-inline"></span>
+            <div class="dash-stats-right">
+              <span class="stream-dot"></span>
+              <span class="dash-stat dash-stat-new" id="stream-new-stat">
+                <span class="dash-stat-label" id="stream-new-label">24h新增</span>
+                <strong id="stream-new-count">—</strong><span class="dash-stat-unit" id="stream-new-unit">条</span>
+              </span>
+              <span class="dash-stat dash-stat-week" id="stream-week-stat">
+                <span class="dash-stat-label" id="stream-week-label">7日场次</span>
+                <strong id="stream-week-count">—</strong><span class="dash-stat-unit" id="stream-week-unit">场</span>
+              </span>
+              <span id="verify-badge" class="dash-verify">✔</span>
             </div>
+          </div>
+          <div class="dash-row dash-row-meta">
+            <span id="hub-auto-update" class="dash-meta-inline"></span>
           </div>
         </div>
         <span class="dash-toggle">▼</span>
@@ -446,9 +460,11 @@
       <div class="phones-body" style="padding: 0;">
         <div class="yp-toolbar">
           <input type="text" id="yp-search" placeholder="搜商家名、地址、电话…" oninput="renderYellowPages()">
+          <button type="button" id="yp-map-all-btn" class="yp-map-all-btn" style="display:none" onclick="toggleYpMapPanel()">🗺️ 地图看全部</button>
         </div>
         <div class="yp-industry-bar" id="yp-industry-bar"></div>
         <div class="yp-area-bar" id="yp-area-bar"></div>
+        <div id="yp-map-panel-wrap" style="display:none"></div>
         <div class="member-status" id="yp-member-status" style="display:none;"></div>
         <div id="yp-loading" style="font-size: 12px; color: #64748b; text-align: center; padding: 16px; display:none;">加载商家数据…</div>
         <div class="yp-scroll" id="yp-scroll">
@@ -529,6 +545,21 @@
         <a id="modal-btn-direct" href="#" class="btn-primary">直达官方报名/详情页面 ➔</a>
         <a id="modal-btn-translate" href="#" class="btn-secondary">使用自动网页翻译打开 (备用)</a>
       </div>
+    </div>
+  </div>
+
+  <div id="yp-biz-modal" class="modal" onclick="if(event.target===this)closeYpBizModal()">
+    <div class="modal-box">
+      <div class="modal-header">
+        <div class="modal-title" id="yp-modal-title">商家详情</div>
+        <button type="button" class="modal-close" onclick="closeYpBizModal()">×</button>
+      </div>
+      <div id="yp-modal-body" style="font-size:13px;color:#475569;line-height:1.55"></div>
+      <div class="modal-buttons">
+        <a id="yp-modal-call" class="btn-primary" href="#">📞 拨打电话</a>
+        <button type="button" id="yp-modal-map" class="btn-secondary" onclick="openYpBizMapFromModal()">🗺️ 查看地图位置</button>
+      </div>
+      <p style="font-size:10px;color:#94a3b8;margin:0;line-height:1.4">手机：优先拨号；电脑：弹窗内选电话或地图。地址行也可单独打开地图。</p>
     </div>
   </div>
 
@@ -1523,18 +1554,104 @@ function ypBizCard(item) {
   const key = bizKey(item);
   let name = item.name;
   if (name.length > 40) name = name.slice(0, 38) + '…';
-  const mapHref = googleMapsUrl(addr);
+  const mapHref = googleMapsUrl(addr || item.name + ' New York');
   const mapLink = addr
     ? `<a href="#" class="yp-card-map" onclick="event.stopPropagation();event.preventDefault();openHubExternal(${JSON.stringify(mapHref)},{title:'地图'});">📍 ${escapeHtml(addr)} · 地图↗</a>`
     : `<div class="yp-card-sub">${escapeHtml(item.category)}</div>`;
-  return `<div class="yp-card">
-    <a href="tel:${tel}" class="yp-card-main">
+  return `<div class="yp-card" data-yp-key="${escapeHtml(key)}" onclick="openYpBizModal(this.dataset.ypKey)" role="button" tabindex="0">
+    <div class="yp-card-main">
       <div class="yp-card-name">${escapeHtml(name)}</div>
       <div class="yp-card-phone">${escapeHtml(item.phone)}</div>
-    </a>
+    </div>
     ${mapLink}
     ${ypRatingBlock(key)}
   </div>`;
+}
+
+let YP_MODAL_ITEM = null;
+
+function openYpBizModal(key) {
+  const item = YELLOW_PAGES_FLAT.find(x => bizKey(x) === key);
+  if (!item) return;
+  YP_MODAL_ITEM = item;
+  const tel = item.phone.replace(/[^\d+]/g, '');
+  const addr = shortAddr(item.address);
+  document.getElementById('yp-modal-title').textContent = item.name;
+  document.getElementById('yp-modal-body').innerHTML =
+    `<div><strong>${escapeHtml(item.category)}</strong></div>` +
+    (addr ? `<div style="margin-top:6px">📍 ${escapeHtml(addr)}</div>` : '') +
+    `<div style="margin-top:6px;font-weight:800;color:#ea580c">${escapeHtml(item.phone)}</div>`;
+  const callBtn = document.getElementById('yp-modal-call');
+  callBtn.href = 'tel:' + tel;
+  if (isMobileLinkMode()) {
+    callBtn.textContent = '📞 拨打电话（手机一键拨号）';
+  } else {
+    callBtn.textContent = '📞 拨打电话（电脑将唤起默认拨号/Handoff）';
+  }
+  document.getElementById('yp-biz-modal').classList.add('open');
+}
+
+function closeYpBizModal() {
+  document.getElementById('yp-biz-modal').classList.remove('open');
+  YP_MODAL_ITEM = null;
+}
+
+function openYpBizMapFromModal() {
+  if (!YP_MODAL_ITEM) return;
+  const addr = shortAddr(YP_MODAL_ITEM.address);
+  const q = addr || (YP_MODAL_ITEM.name + ' New York');
+  openHubExternal(googleMapsUrl(q), { title: YP_MODAL_ITEM.name });
+}
+
+function ypMapSearchQuery(group, areaId) {
+  const area = YP_AREA_GROUPS.find(a => a.id === areaId);
+  let cat = '华人商家';
+  if (group && group.cats && group.cats.length) cat = group.cats[0];
+  const areaPart = (areaId && areaId !== 'all' && area) ? area.label : '纽约';
+  return `${cat} ${areaPart} NY`;
+}
+
+function toggleYpMapPanel() {
+  const wrap = document.getElementById('yp-map-panel-wrap');
+  if (!wrap || !wrap.dataset.query) return;
+  if (wrap.style.display === 'none' || !wrap.innerHTML) {
+    const q = encodeURIComponent(wrap.dataset.query);
+    wrap.innerHTML = `<div class="yp-map-embed"><iframe loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="商家地图" src="https://maps.google.com/maps?q=${q}&hl=zh-CN&z=13&output=embed"></iframe></div><div style="font-size:10px;color:#64748b;margin:4px 0 8px">页面内为 Google 区域搜索预览；点右上角「地图看全部」可在外部 Google 地图查看完整列表。</div>`;
+    wrap.style.display = 'block';
+    const btn = document.getElementById('yp-map-all-btn');
+    if (btn) btn.textContent = btn.textContent.replace('地图看全部', '收起地图');
+  } else {
+    wrap.style.display = 'none';
+    wrap.innerHTML = '';
+    const btn = document.getElementById('yp-map-all-btn');
+    if (btn && btn.textContent.includes('收起')) {
+      const m = btn.textContent.match(/\((\d+)\)/);
+      btn.textContent = `🗺️ 地图看全部${m ? ' (' + m[1] + ')' : ''}`;
+    }
+  }
+}
+
+function updateYpMapToolbar(filtered, group) {
+  const mapBtn = document.getElementById('yp-map-all-btn');
+  const mapWrap = document.getElementById('yp-map-panel-wrap');
+  if (!mapBtn || !mapWrap) return;
+  if (!group.essential && filtered.length > 0 && YP_JSON_LOADED) {
+    mapBtn.style.display = '';
+    mapBtn.textContent = `🗺️ 地图看全部 (${filtered.length})`;
+    mapWrap.dataset.query = ypMapSearchQuery(group, YP_ACTIVE_AREA);
+    mapBtn.onclick = function () {
+      toggleYpMapPanel();
+    };
+    mapBtn.oncontextmenu = function (ev) {
+      ev.preventDefault();
+      openHubExternal(googleMapsUrl(ypMapSearchQuery(group, YP_ACTIVE_AREA)), { title: '商家地图' });
+    };
+    mapBtn.title = '左键：页面内嵌地图；右键：在 Google 地图打开';
+  } else {
+    mapBtn.style.display = 'none';
+    mapWrap.style.display = 'none';
+    mapWrap.innerHTML = '';
+  }
 }
 
 // ── Member registration & business ratings (7-day gate) ─────────────────────
@@ -1892,11 +2009,13 @@ function renderYellowPages() {
 
   if (group.essential || (searchTerm && YP_ACTIVE_INDUSTRY === 'essential')) {
     container.innerHTML = renderEssentialPhones(searchTerm);
+    updateYpMapToolbar([], group);
     return;
   }
 
   if (!YP_JSON_LOADED) {
     container.innerHTML = '<div style="text-align:center;color:#64748b;font-size:12px;padding:20px;">商家数据加载中…</div>';
+    updateYpMapToolbar([], group);
     return;
   }
 
@@ -1918,12 +2037,14 @@ function renderYellowPages() {
     }
     container.innerHTML = (essHtml.includes('未找到') ? '' : essHtml) + bizHtml
       || '<div style="text-align:center;color:#64748b;font-size:12px;padding:20px;">未找到匹配结果</div>';
+    updateYpMapToolbar(filtered, group);
     return;
   }
 
   if (filtered.length === 0) {
     const areaLbl = YP_AREA_GROUPS.find(a => a.id === YP_ACTIVE_AREA)?.label || '';
     container.innerHTML = `<div style="text-align:center;color:#64748b;font-size:12px;padding:20px;">${areaLbl && YP_ACTIVE_AREA !== 'all' ? areaLbl + ' ' : ''}暂无匹配的${group.label.replace(/^[^\s]+\s/, '')}商家</div>`;
+    updateYpMapToolbar([], group);
     return;
   }
 
@@ -1956,6 +2077,7 @@ function renderYellowPages() {
     </div>`;
   }
   container.innerHTML = html;
+  updateYpMapToolbar(filtered, group);
 }
 
 // ── Weather / Stock / 7-day forecast ─────────────────────────────────────────
