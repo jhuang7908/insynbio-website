@@ -136,7 +136,8 @@
     }
     .hub-search-panel input:focus { border-color: #ea580c; box-shadow: 0 0 0 2px rgba(234,88,12,0.12); }
     .hub-search-count { font-size: var(--text-sm); color: #64748b; font-weight: var(--weight-medium); white-space: nowrap; }
-    .title { font-size: var(--text-base); font-weight: var(--weight-bold); line-height: var(--leading-tight); margin-bottom: 5px; color: #1e293b; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+    .title { font-size: var(--text-base); font-weight: var(--weight-bold); line-height: var(--leading-tight); margin-bottom: 5px; color: #1e293b; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; cursor: pointer; transition: color 0.1s; }
+    .title:hover { color: #ea580c; text-decoration: underline; }
     .summary { font-size: var(--text-sm); color: #64748b; line-height: var(--leading-relaxed); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
     .foot { margin-top: 8px; display: flex; justify-content: space-between; align-items: center; font-size: var(--text-xs); color: #64748b; border-top: 1px solid #f1f5f9; padding-top: 7px; gap: 6px; }
     .foot span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; min-width: 0; }
@@ -329,7 +330,7 @@
       margin: 20px 0 12px; background: none; border: none;
     }
     .phones-summary::-webkit-details-marker { display: none; }
-    .phones-summary .section-title-left { font-size: var(--text-lg); font-weight: var(--weight-bold); color: #1e293b; }
+    .phones-summary .section-title-left { display: inline; font-size: var(--text-lg); font-weight: var(--weight-bold); color: #1e293b; }
     .phones-toggle { font-size: var(--text-sm); color: #64748b; font-weight: var(--weight-medium); flex-shrink: 0; }
     details[open] .phones-toggle::before { content: '收起 '; }
     details:not([open]) .phones-toggle::before { content: '展开 '; }
@@ -414,7 +415,7 @@
       body { font-size: var(--text-base); }
       .feed-grid, .module-grid { grid-template-columns: 1fr; }
       .search-panel { grid-template-columns: 1fr; }
-      .top-inner { height: auto; min-height: 52px; padding: 8px 0; align-items: flex-start; }
+      .top-inner { height: auto; min-height: 52px; padding: 8px 0; align-items: center; }
       .logo-text { font-size: var(--text-base); line-height: var(--leading-tight); }
       .sub { font-size: var(--text-sm); }
       .controls-bar { flex-direction: row; flex-wrap: wrap; justify-content: flex-end; gap: 6px; max-width: 52%; }
@@ -427,6 +428,8 @@
     }
     @media (max-width: 480px) {
       .forecast-grid { grid-template-columns: repeat(3, 1fr); }
+      .phones-summary .section-title-left { font-size: 15px !important; }
+      .phones-toggle { font-size: 12px !important; }
     }
     @media (min-width: 641px) {
       .yp-cards-grid { grid-template-columns: repeat(auto-fill, minmax(148px, 1fr)); }
@@ -519,7 +522,7 @@
     <!-- ═══ COMMUNITY PHONE DIRECTORY (常用电话 + 商家黄页) ═══ -->
     <details class="phones-card" id="yellow-pages-card" ontoggle="if(this.open) { initYellowPages(); }">
       <summary class="phones-summary section-title">
-        <span class="section-title-left phones-title">📒 社区电话黄页 · 常用电话 + <span id="yp-total-badge">4300+</span> 商家</span>
+        <span class="section-title-left phones-title">📒 社区黄页 · 常用电话 + <span id="yp-total-badge">4300+</span> 商家</span>
         <span class="phones-toggle">▼</span>
       </summary>
       <div class="phones-body-wrap">
@@ -1556,11 +1559,11 @@ function renderFeed() {
           ${hubLocationTagHtml(i)}
           ${formatDateMeta(i)}
         </div>
-        <div class="title">${title}</div>
+        <div class="title" onclick="openGuideModal('${i.id}')" title="点击查看中文导读">${title}</div>
         <div class="summary">${summary}</div>
         <div class="foot">
           <span>${s.verified}</span>
-          <button class="btn" onclick="openGuideModal('${i.id}')">${s.view_link}</button>
+          <button class="btn" onclick="openEventLinkDirect('${i.id}')">${s.view_link}</button>
         </div>
       </article>
     `;
@@ -1596,19 +1599,34 @@ function hubViewerPageUrl(targetUrl, opts) {
   return 'hub-link-viewer.html?' + params.toString();
 }
 
+function openEventLinkDirect(itemId) {
+  const item = ITEMS.find(x => x.id === itemId);
+  if (!item) return;
+  const pref = localStorage.getItem('pref_lang_mode') || 'trans_zh';
+  let url = item.url;
+  let translate = false;
+  if (pref === 'trans_zh') {
+    translate = true;
+  } else if (pref === 'trans_zht') {
+    translate = true;
+  }
+  openHubExternal(url, {
+    title: item.title_zh,
+    translate: translate
+  });
+}
+
 function openHubExternal(rawUrl, opts) {
   opts = opts || {};
-  const desktopUrl = opts.desktopUrl || rawUrl;
+  let targetUrl = rawUrl;
+  if (opts.translate) {
+    targetUrl = 'https://translate.google.com/translate?sl=auto&tl=zh-CN&u=' + encodeURIComponent(rawUrl);
+  }
+  const desktopUrl = opts.desktopUrl || targetUrl;
   if (!rawUrl || !/^https?:\/\//i.test(rawUrl)) return;
   if (isMobileLinkMode()) {
     closeGuideModal();
-    location.href = hubViewerPageUrl(rawUrl, {
-      title: opts.title,
-      module: opts.module,
-      summary: opts.summary,
-      meta: opts.meta,
-      translate: !!opts.translate,
-    });
+    location.href = targetUrl; // Direct navigation!
     return;
   }
   window.open(desktopUrl, '_blank', 'noopener,noreferrer');
@@ -1682,10 +1700,16 @@ function openGuideModal(itemId) {
   });
 
   document.getElementById('guide-modal').classList.add('open');
+  if (window.history && window.history.pushState) {
+    window.history.pushState({ modal: 'guide' }, '');
+  }
 }
 
-function closeGuideModal() {
+function closeGuideModal(fromPopState) {
   document.getElementById('guide-modal').classList.remove('open');
+  if (!fromPopState && window.history && window.history.state && window.history.state.modal === 'guide') {
+    window.history.back();
+  }
 }
 
 // ─── Collapsible Channels ───
@@ -1741,7 +1765,7 @@ function renderCard(i) {
   const summary = i['summary_' + currentLang] || i.summary_zh;
   const modObj = MODULES.find(m => m.zh === i.module);
   const modName = modObj ? (modObj[currentLang] || modObj.zh) : i.module;
-  return '<article class="feed-card"><div class="meta"><span class="tag" style="background:' + badgeColor(i.module) + '15;color:' + badgeColor(i.module) + '">' + modName + '</span>' + hubLocationTagHtml(i) + formatDateMeta(i) + '</div><div class="title">' + title + '</div><div class="summary">' + summary + '</div><div class="foot"><span>' + s.verified + '</span><button class="btn" onclick="openGuideModal(\'' + i.id + '\')">' + s.view_link + '</button></div></article>';
+  return '<article class="feed-card"><div class="meta"><span class="tag" style="background:' + badgeColor(i.module) + '15;color:' + badgeColor(i.module) + '">' + modName + '</span>' + hubLocationTagHtml(i) + formatDateMeta(i) + '</div><div class="title" onclick="openGuideModal(\'' + i.id + '\')" title="点击查看中文导读">' + title + '</div><div class="summary">' + summary + '</div><div class="foot"><span>' + s.verified + '</span><button class="btn" onclick="openEventLinkDirect(\'' + i.id + '\')">' + s.view_link + '</button></div></article>';
 }
 
 // ─── 30-day auto-eviction (by publish date, not event date) ───
@@ -1790,6 +1814,64 @@ function renderScheduleNotice() {
 // ── Community Phone Directory (常用电话 + 商家黄页) ─────────────────────────
 let YELLOW_PAGES_DATA = {};
 let YELLOW_PAGES_FLAT = [];
+const YP_SEARCH_SYNONYMS = {
+  "美甲": ["指甲店", "nail", "nails", "lash", "beauty"],
+  "指甲": ["指甲店", "nail", "nails"],
+  "修车": ["汽车修理", "auto", "car", "repair", "body", "collision"],
+  "汽修": ["汽车修理", "auto", "car", "repair", "body", "collision"],
+  "汽车": ["汽车修理", "auto", "car", "repair"],
+  "理发": ["理发店", "hair", "barber", "salon", "stylist"],
+  "剪发": ["理发店", "hair", "barber", "salon", "stylist"],
+  "美发": ["理发店", "hair", "barber", "salon", "stylist"],
+  "头发": ["理发店", "hair", "barber", "salon", "stylist"],
+  "美容": ["美容院", "beauty", "skin", "facial", "spa", "aesthetic"],
+  "护肤": ["美容院", "beauty", "skin", "facial", "spa"],
+  "按摩": ["按摩店", "massage", "spa", "reflexology", "foot"],
+  "推拿": ["按摩店", "massage", "spa", "reflexology", "foot"],
+  "足疗": ["按摩店", "massage", "spa", "reflexology", "foot"],
+  "餐馆": ["中餐馆", "restaurant", "food", "kitchen", "eatery", "bistro", "diner"],
+  "餐厅": ["中餐馆", "restaurant", "food", "kitchen", "eatery", "bistro", "diner"],
+  "中餐": ["中餐馆", "restaurant", "food", "kitchen"],
+  "吃饭": ["中餐馆", "restaurant", "food", "kitchen"],
+  "美食": ["中餐馆", "restaurant", "food", "kitchen"],
+  "火锅": ["中餐馆", "hot pot", "hotpot"],
+  "麻辣烫": ["中餐馆", "spicy", "hot pot", "hotpot"],
+  "饺子": ["中餐馆", "dumpling", "dumplings"],
+  "包子": ["中餐馆", "dumpling", "dumplings", "bun", "buns"],
+  "幼儿园": ["幼儿园", "daycare", "day care", "preschool", "pre-k", "prek", "childcare"],
+  "托儿": ["幼儿园", "daycare", "day care", "preschool", "pre-k", "prek", "childcare"],
+  "托班": ["幼儿园", "daycare", "day care", "preschool", "pre-k", "prek", "childcare"],
+  "早教": ["幼儿园", "daycare", "day care", "preschool", "pre-k", "prek", "childcare"],
+  "补习": ["补习学校", "tutor", "tutoring", "after school", "learning", "education", "academy"],
+  "课后": ["补习学校", "tutor", "tutoring", "after school", "learning", "education", "academy"],
+  "升学": ["补习学校", "tutor", "tutoring", "after school", "learning", "education", "academy"],
+  "培训": ["补习学校", "tutor", "tutoring", "after school", "learning", "education", "academy"],
+  "诊所": ["医疗诊所", "clinic", "medical", "doctor", "dr.", "physician"],
+  "医生": ["医疗诊所", "clinic", "medical", "doctor", "dr.", "physician"],
+  "牙医": ["医疗诊所", "dental", "dentist", "dentistry", "牙科"],
+  "牙科": ["医疗诊所", "dental", "dentist", "dentistry", "牙科"],
+  "中医": ["医疗诊所", "acupuncture", "herbal", "针灸", "中医"],
+  "针灸": ["医疗诊所", "acupuncture", "herbal", "针灸", "中医"],
+  "银行": ["银行金融", "bank", "mortgage", "credit union", "financial"],
+  "贷款": ["银行金融", "bank", "mortgage", "credit union", "financial"],
+  "金融": ["银行金融", "bank", "mortgage", "credit union", "financial"],
+  "保险": ["保险", "insurance", "insur."],
+  "超市": ["华裔超市", "supermarket", "grocery", "market"],
+  "买菜": ["华裔超市", "supermarket", "grocery", "market"],
+  "同乡会": ["同乡会", "association", "society", "club"],
+  "乡会": ["同乡会", "association", "society", "club"],
+  "商会": ["商会", "chamber", "commerce"],
+  "地产": ["地产公司", "realty", "real estate", "broker"],
+  "买房": ["地产公司", "realty", "real estate", "broker"],
+  "租房": ["地产公司", "realty", "real estate", "broker"],
+  "律师": ["律师事务所", "law", "attorney", "legal"],
+  "会计": ["会计事务所", "accountant", "cpa", "tax"],
+  "报税": ["会计事务所", "accountant", "cpa", "tax"],
+  "旅行社": ["旅行社", "travel", "tour", "ticket"],
+  "机票": ["旅行社", "travel", "tour", "ticket"],
+  "快递": ["快递公司", "express", "courier", "shipping", "delivery"],
+  "邮寄": ["快递公司", "express", "courier", "shipping", "delivery"]
+};
 let YP_ACTIVE_INDUSTRY = 'essential';
 let YP_ACTIVE_AREA = 'all';
 let YP_JSON_LOADED = false;
@@ -2001,12 +2083,29 @@ function openYpBizModal(key) {
     callBtn.textContent = '📞 拨打电话（电脑将唤起默认拨号/Handoff）';
   }
   document.getElementById('yp-biz-modal').classList.add('open');
+  if (window.history && window.history.pushState) {
+    window.history.pushState({ modal: 'yp-biz' }, '');
+  }
 }
 
-function closeYpBizModal() {
+function closeYpBizModal(fromPopState) {
   document.getElementById('yp-biz-modal').classList.remove('open');
   YP_MODAL_ITEM = null;
+  if (!fromPopState && window.history && window.history.state && window.history.state.modal === 'yp-biz') {
+    window.history.back();
+  }
 }
+
+window.addEventListener('popstate', function(event) {
+  const ypModal = document.getElementById('yp-biz-modal');
+  if (ypModal && ypModal.classList.contains('open')) {
+    closeYpBizModal(true);
+  }
+  const guideModal = document.getElementById('guide-modal');
+  if (guideModal && guideModal.classList.contains('open')) {
+    closeGuideModal(true);
+  }
+});
 
 function openYpBizMapFromModal() {
   if (!YP_MODAL_ITEM) return;
@@ -2725,12 +2824,26 @@ function renderYellowPages() {
   let filtered = filterYpByArea(filterYpByIndustry(YELLOW_PAGES_FLAT));
   if (searchTerm) {
     const essHtml = renderEssentialPhones(searchTerm);
-    filtered = filtered.filter(item =>
-      item.name.toLowerCase().includes(searchTerm) ||
-      item.phone.toLowerCase().includes(searchTerm) ||
-      item.address.toLowerCase().includes(searchTerm) ||
-      item.category.toLowerCase().includes(searchTerm)
-    );
+    let expandedTerms = [searchTerm];
+    for (const [key, list] of Object.entries(YP_SEARCH_SYNONYMS)) {
+      if (searchTerm.includes(key) || key.includes(searchTerm)) {
+        expandedTerms = expandedTerms.concat(list);
+      }
+    }
+    expandedTerms = Array.from(new Set(expandedTerms));
+
+    filtered = filtered.filter(item => {
+      const nameLower = item.name.toLowerCase();
+      const phoneLower = item.phone.toLowerCase();
+      const addressLower = item.address.toLowerCase();
+      const catLower = item.category.toLowerCase();
+      return expandedTerms.some(term => 
+        nameLower.includes(term) ||
+        phoneLower.includes(term) ||
+        addressLower.includes(term) ||
+        catLower.includes(term)
+      );
+    });
     let bizHtml = '';
     if (filtered.length) {
       bizHtml = `<div class="yp-industry-section">
