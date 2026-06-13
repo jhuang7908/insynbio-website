@@ -1,12 +1,12 @@
 {
   "version": "1.2.0",
-  "generated_at": "2026-06-13T03:37:37.008269+00:00",
-  "public_total_label": "3700+",
+  "generated_at": "2026-06-13T05:15:25.525130+00:00",
+  "public_total_label": "4100+",
   "areas": [
     {
       "id": "flushing",
       "label": "法拉盛",
-      "public_label": "1200+"
+      "public_label": "1300+"
     },
     {
       "id": "chinatown",
@@ -21,17 +21,17 @@
     {
       "id": "elmhurst",
       "label": "艾姆赫斯特",
-      "public_label": "200+"
+      "public_label": "300+"
     },
     {
       "id": "manhattan",
       "label": "曼哈顿",
-      "public_label": "300+"
+      "public_label": "400+"
     },
     {
       "id": "brooklyn",
       "label": "布鲁克林",
-      "public_label": "300+"
+      "public_label": "400+"
     },
     {
       "id": "queens",
@@ -46,7 +46,7 @@
     {
       "id": "longisland",
       "label": "长岛",
-      "public_label": "50+"
+      "public_label": "60+"
     },
     {
       "id": "other",
