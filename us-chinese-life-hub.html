@@ -1834,13 +1834,41 @@ const ESSENTIAL_PHONES = [
     { name: '华策会 CPC', sub: '皇后区', phone: '718-358-8899', href: 'tel:7183588899' },
     { name: '华策会 CPC', sub: '布鲁克林', phone: '718-492-0409', href: 'tel:7184920409' },
     { name: '亚洲人平等会', sub: 'AAFE', phone: '212-979-8381', href: 'tel:2129798381' },
-    { name: '王嘉廉医疗中心', sub: 'Flushing', phone: '212-379-6998', href: 'tel:2123796998' },
+    { name: '王嘉廉医疗中心', sub: '唐人街预约', phone: '212-379-6988', href: 'tel:2123796988' },
+    { name: '王嘉廉医疗中心', sub: '法拉盛', phone: '718-886-1200', href: 'tel:7188861200' },
+  ]},
+  { title: '🏦 银行 · 金融', items: [
+    { name: '华美银行 East West Bank', sub: '客服', phone: '888-895-5650', href: 'tel:8888955650' },
+    { name: '中国银行纽约分行', sub: 'Bank of China NY', phone: '212-935-3101', href: 'tel:2129353101' },
+    { name: '国泰银行 Cathay Bank', sub: '客服', phone: '626-582-7338', href: 'tel:6265827338' },
+    { name: '查找 FDIC 成员银行', sub: '在线', phone: '在线 ↗', href: 'https://banks.data.fdic.gov/bankfind-suite/bankfind' },
+  ]},
+  { title: '🏥 医疗 · 诊所', items: [
+    { name: '纽约长老会皇后区医院', sub: 'Flushing Hospital', phone: '718-670-8000', href: 'tel:7186708000' },
+    { name: 'NYC Health + Hospitals', sub: '市政公立医院', phone: '844-692-4692', href: 'tel:8446924692' },
+    { name: 'NYC 免费诊所预约', sub: 'NYC Care', phone: '646-692-2273', href: 'tel:6466922273' },
+    { name: '查找附近诊所', sub: 'NYC Health Map', phone: '在线 ↗', href: 'https://a816-healthpsi.nyc.gov/DOHMHVenueMap/VenueMapMain.aspx' },
+  ]},
+  { title: '🛡️ 保险', items: [
+    { name: '纽约州健康计划', sub: 'NY State of Health 官方', phone: '855-355-5777', href: 'tel:8553555777' },
+    { name: 'Medicare 联邦医疗保险', sub: '官方咨询', phone: '800-633-4227', href: 'tel:8006334227' },
+    { name: 'Medicaid 纽约州', sub: '医疗补助咨询', phone: '800-541-2831', href: 'tel:8005412831' },
+  ]},
+  { title: '📚 补习 · 幼儿园', items: [
+    { name: '纽约市教育局 DOE', sub: '入学 · 学校咨询', phone: '718-935-2000', href: 'tel:7189352000' },
+    { name: 'MySchools', sub: '3-K / Pre-K / K 报名', phone: '在线 ↗', href: 'https://www.myschools.nyc/' },
+    { name: 'OCFS 托儿查询', sub: '州政府 licensed daycare', phone: '在线 ↗', href: 'https://ocfs.ny.gov/programs/childcare/daycare/' },
   ]},
 ];
 
 const YP_INDUSTRY_GROUPS = [
   { id: 'essential', label: '📞 常用电话', essential: true },
   { id: 'all', label: '全部商家' },
+  { id: 'bank', label: '🏦 银行', cats: ['银行金融'] },
+  { id: 'clinic', label: '🏥 诊所', cats: ['医疗诊所'] },
+  { id: 'insurance', label: '🛡️ 保险', cats: ['保险'] },
+  { id: 'tutor', label: '📚 补习', cats: ['补习学校'] },
+  { id: 'daycare', label: '🧒 幼儿园', cats: ['幼儿园'] },
   { id: 'food', label: '🍜 餐馆', cats: ['中餐馆'] },
   { id: 'reno', label: '🔧 装修', cats: ['装修公司', '建材公司'] },
   { id: 'law', label: '⚖️ 律师', cats: ['律师事务所'] },
