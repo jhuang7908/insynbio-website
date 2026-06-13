@@ -1,7 +1,7 @@
 {
   "version": "1.2.0",
-  "generated_at": "2026-06-13T05:15:25.525130+00:00",
-  "public_total_label": "4100+",
+  "generated_at": "2026-06-13T05:25:15.692889+00:00",
+  "public_total_label": "4300+",
   "areas": [
     {
       "id": "flushing",
@@ -36,22 +36,27 @@
     {
       "id": "queens",
       "label": "皇后区",
-      "public_label": "200+"
+      "public_label": "800+"
     },
     {
       "id": "bronx",
       "label": "Bronx",
-      "public_label": "100+"
+      "public_label": "200+"
     },
     {
       "id": "longisland",
       "label": "长岛",
-      "public_label": "60+"
+      "public_label": "100+"
+    },
+    {
+      "id": "staten",
+      "label": "史坦顿岛",
+      "public_label": "90+"
     },
     {
       "id": "other",
       "label": "其他区域",
-      "public_label": "700+"
+      "public_label": "70+"
     }
   ],
   "has_pending_review": false,
