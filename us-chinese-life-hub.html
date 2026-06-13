@@ -376,6 +376,13 @@
     .yp-card-map { font-size: var(--text-xs); color: #64748b; text-decoration: none; line-height: var(--leading-normal); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; border-top: 1px dashed #f1f5f9; padding-top: 4px; margin-top: 2px; }
     .yp-card-map:hover { color: #2563eb; }
     a.yp-card { text-decoration: none; }
+    .yp-fresh-badge { display: inline-block; font-size: 10px; font-weight: 600; padding: 1px 5px; border-radius: 4px; margin-top: 2px; line-height: 1.3; }
+    .yp-fresh-badge.stale { background: #fef3c7; color: #b45309; }
+    .yp-fresh-badge.closed { background: #fee2e2; color: #b91c1c; }
+    .yp-fresh-badge.new { background: #dbeafe; color: #1d4ed8; }
+    .yp-fresh-badge.ok { background: #ecfdf5; color: #047857; }
+    .yp-report-btn { margin-top: 10px; width: 100%; font-size: 12px; padding: 8px 10px; border: 1px dashed #cbd5e1; background: #f8fafc; color: #64748b; border-radius: 8px; cursor: pointer; }
+    .yp-report-btn:hover { border-color: #94a3b8; color: #475569; }
     .yp-rating-row { margin-top: 4px; padding-top: 4px; border-top: 1px dashed #f1f5f9; }
     .yp-rating-stars { display: flex; gap: 1px; align-items: center; flex-wrap: wrap; }
     .yp-star { font-size: 13px; color: #e2e8f0; cursor: default; line-height: 1; user-select: none; }
@@ -512,7 +519,7 @@
     <!-- ═══ COMMUNITY PHONE DIRECTORY (常用电话 + 商家黄页) ═══ -->
     <details class="phones-card" id="yellow-pages-card" ontoggle="if(this.open) { initYellowPages(); }">
       <summary class="phones-summary section-title">
-        <span class="section-title-left phones-title">📒 社区电话黄页 · 常用电话 + <span id="yp-total-badge">3764</span> 商家</span>
+        <span class="section-title-left phones-title">📒 社区电话黄页 · 常用电话 + <span id="yp-total-badge">3700+</span> 商家</span>
         <span class="phones-toggle">▼</span>
       </summary>
       <div class="phones-body-wrap">
@@ -628,7 +635,8 @@
         <a id="yp-modal-call" class="btn-primary" href="#">📞 拨打电话</a>
         <button type="button" id="yp-modal-map" class="btn-secondary" onclick="openYpBizMapFromModal()">🗺️ 查看地图位置</button>
       </div>
-      <p style="font-size:10px;color:#94a3b8;margin:0;line-height:1.4">手机：优先拨号；电脑：弹窗内选电话或地图。地址行也可单独打开地图。</p>
+      <button type="button" id="yp-modal-report" class="yp-report-btn" onclick="openYpReportDialog()">⚠️ 报告信息错误（电话/地址/已关门等）</button>
+      <p style="font-size:10px;color:#94a3b8;margin:8px 0 0;line-height:1.4">手机：优先拨号；电脑：弹窗内选电话或地图。纠错无需会员，每天最多 5 条，半年机器+人工复核。</p>
     </div>
   </div>
 
@@ -1890,6 +1898,27 @@ function ypCardHtml(href, name, sub, phone, external) {
   </a>`;
 }
 
+function ypFreshnessLabel(status) {
+  const map = {
+    active: { text: '已核实', cls: 'ok' },
+    likely_active: { text: '已核实', cls: 'ok' },
+    machine_verified: { text: '已核实', cls: 'ok' },
+    merchant_claimed: { text: '商家认领', cls: 'ok' },
+    new: { text: '新收录', cls: 'new' },
+    unverified: { text: '待核实', cls: 'stale' },
+    stale_6m: { text: '超6月未更新', cls: 'stale' },
+    stale_12m: { text: '超12月未更新', cls: 'stale' },
+    reported_closed: { text: '用户报关门', cls: 'closed' },
+  };
+  return map[status] || null;
+}
+
+function ypFreshnessBadgeHtml(item) {
+  const info = ypFreshnessLabel(item.freshness_status);
+  if (!info || info.cls === 'ok') return '';
+  return `<span class="yp-fresh-badge ${info.cls}">${info.text}</span>`;
+}
+
 function ypBizCard(item) {
   const tel = item.phone.replace(/[^\d+]/g, '');
   const addr = shortAddr(item.address);
@@ -1904,6 +1933,7 @@ function ypBizCard(item) {
     <div class="yp-card-main">
       <div class="yp-card-name">${escapeHtml(name)}</div>
       <div class="yp-card-phone">${escapeHtml(item.phone)}</div>
+      ${ypFreshnessBadgeHtml(item)}
     </div>
     ${mapLink}
     ${ypRatingBlock(key)}
@@ -1918,11 +1948,14 @@ function openYpBizModal(key) {
   YP_MODAL_ITEM = item;
   const tel = item.phone.replace(/[^\d+]/g, '');
   const addr = shortAddr(item.address);
+  const fresh = ypFreshnessLabel(item.freshness_status);
+  const checked = item.last_checked_at ? ` · 最近核实 ${item.last_checked_at}` : '';
   document.getElementById('yp-modal-title').textContent = item.name;
   document.getElementById('yp-modal-body').innerHTML =
-    `<div><strong>${escapeHtml(item.category)}</strong></div>` +
+    `<div><strong>${escapeHtml(item.category)}</strong>${fresh ? ` · <span class="yp-fresh-badge ${fresh.cls}">${fresh.text}</span>` : ''}</div>` +
     (addr ? `<div style="margin-top:6px">📍 ${escapeHtml(addr)}</div>` : '') +
-    `<div style="margin-top:6px;font-weight:800;color:#ea580c">${escapeHtml(item.phone)}</div>`;
+    `<div style="margin-top:6px;font-weight:800;color:#ea580c">${escapeHtml(item.phone)}</div>` +
+    (checked ? `<div style="margin-top:4px;font-size:11px;color:#94a3b8">${escapeHtml(checked.slice(3))}</div>` : '');
   const callBtn = document.getElementById('yp-modal-call');
   callBtn.href = 'tel:' + tel;
   if (isMobileLinkMode()) {
@@ -1943,6 +1976,107 @@ function openYpBizMapFromModal() {
   const addr = shortAddr(YP_MODAL_ITEM.address);
   const q = addr || (YP_MODAL_ITEM.name + ' New York');
   openHubExternal(googleMapsUrl(q), { title: YP_MODAL_ITEM.name });
+}
+
+const MAX_DAILY_YP_REPORTS = 5;
+const YP_REPORT_REASONS = [
+  { id: 'wrong_phone', label: '电话错误' },
+  { id: 'wrong_address', label: '地址错误' },
+  { id: 'closed', label: '已关门/不存在' },
+  { id: 'wrong_category', label: '行业分类不对' },
+  { id: 'duplicate', label: '重复条目' },
+  { id: 'other', label: '其他' },
+];
+
+function ypReporterKey() {
+  let k = localStorage.getItem('yp_reporter_key');
+  if (!k) {
+    k = (typeof crypto !== 'undefined' && crypto.randomUUID) ? crypto.randomUUID() : ('r' + Date.now());
+    localStorage.setItem('yp_reporter_key', k);
+  }
+  return k;
+}
+
+function ypReportsTodayCount() {
+  const raw = localStorage.getItem('yp_reports_daily');
+  if (!raw) return 0;
+  try {
+    const obj = JSON.parse(raw);
+    const today = new Date().toISOString().slice(0, 10);
+    return (obj[today] || []).length;
+  } catch (_) { return 0; }
+}
+
+function recordYpReportDaily(bizKey) {
+  const today = new Date().toISOString().slice(0, 10);
+  let obj = {};
+  try { obj = JSON.parse(localStorage.getItem('yp_reports_daily') || '{}'); } catch (_) {}
+  const list = obj[today] || [];
+  if (!list.includes(bizKey)) list.push(bizKey);
+  obj[today] = list;
+  localStorage.setItem('yp_reports_daily', JSON.stringify(obj));
+}
+
+function hasReportedYpToday(bizKey) {
+  const today = new Date().toISOString().slice(0, 10);
+  try {
+    const obj = JSON.parse(localStorage.getItem('yp_reports_daily') || '{}');
+    return (obj[today] || []).includes(bizKey);
+  } catch (_) { return false; }
+}
+
+function openYpReportDialog() {
+  if (!YP_MODAL_ITEM) return;
+  if (hasReportedYpToday(bizKey(YP_MODAL_ITEM))) {
+    alert('您今天已报告过该商家，明日可再提交');
+    return;
+  }
+  if (ypReportsTodayCount() >= MAX_DAILY_YP_REPORTS) {
+    alert(`每天最多提交 ${MAX_DAILY_YP_REPORTS} 条纠错，请明日再试`);
+    return;
+  }
+  const opts = YP_REPORT_REASONS.map((r, i) => `${i + 1}. ${r.label}`).join('\n');
+  const pick = prompt(`请选择问题类型（输入序号 1–${YP_REPORT_REASONS.length}）：\n${opts}`);
+  if (pick === null) return;
+  const idx = parseInt(pick, 10) - 1;
+  if (Number.isNaN(idx) || idx < 0 || idx >= YP_REPORT_REASONS.length) {
+    alert('无效选项');
+    return;
+  }
+  const reason = YP_REPORT_REASONS[idx];
+  const note = prompt('补充说明（可选，最多300字）：') || '';
+  submitYpReport(YP_MODAL_ITEM, reason.id, note.slice(0, 300));
+}
+
+async function submitYpReport(item, reason, note) {
+  const key = bizKey(item);
+  recordYpReportDaily(key);
+  const apiBase = window.HUB_COMMUNITY_API || '';
+  if (!apiBase) {
+    alert('已记录本地反馈。服务器同步需连接 API；您的报告将在下次核实周期合并处理。');
+    closeYpBizModal();
+    return;
+  }
+  try {
+    const r = await fetch(apiBase + '/yellow-pages/report', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', ...ypFetchHeaders() },
+      body: JSON.stringify({
+        biz_key: key,
+        biz_name: item.name,
+        reason,
+        note,
+        member_id: localStorage.getItem('member_id') || '',
+        reporter_key: ypReporterKey(),
+      }),
+    });
+    const data = await r.json().catch(() => ({}));
+    if (!r.ok) throw new Error(data.detail || r.statusText);
+    alert('感谢反馈！平台将在半年核实周期或凑够多人报告后更新状态。');
+    closeYpBizModal();
+  } catch (err) {
+    alert(err.message || '提交失败，请稍后重试');
+  }
 }
 
 function ypMapSearchQuery(group, areaId) {
@@ -1979,7 +2113,7 @@ function updateYpMapToolbar(filtered, group) {
   if (!mapBtn || !mapWrap) return;
   if (!group.essential && filtered.length > 0 && YP_JSON_LOADED) {
     mapBtn.style.display = '';
-    mapBtn.textContent = `🗺️ 地图看全部 (${filtered.length})`;
+    mapBtn.textContent = `🗺️ 地图看全部 (${ypPublicCountLabel(filtered.length)})`;
     mapWrap.dataset.query = ypMapSearchQuery(group, YP_ACTIVE_AREA);
     mapBtn.onclick = function () {
       toggleYpMapPanel();
@@ -2220,7 +2354,7 @@ function updateMemberStatusUI() {
     el.className = 'member-status';
     el.innerHTML =
       '📬 即时推送：点右下角 <strong>订阅每日更新</strong>（微信 / 邮件 / 浏览器，<strong>用户免费</strong>）<br>' +
-      '⭐ 商家评分：<a href="#" onclick="openSubModal();return false;" style="color:#ea580c">邮箱订阅即注册会员</a>，满 <strong>7天</strong> 后可评（防刷）';
+      '⭐ 商家评分：<a href="#" onclick="openSubModal();return false;" style="color:#ea580c">邮箱订阅即注册会员</a>，满 <strong>7天</strong> 后点击卡片上 <strong>1–5 星</strong> 打分（无需留言）';
     return;
   }
   el.style.display = 'block';
@@ -2245,26 +2379,34 @@ function filterYpByArea(items) {
   return items.filter(i => i.area === YP_ACTIVE_AREA);
 }
 
+function ypPublicCountLabel(n) {
+  if (!n || n <= 0) return '0';
+  if (n < 10) return '若干';
+  if (n < 100) return `${Math.floor(n / 10) * 10}+`;
+  const bucket = Math.max(100, Math.floor(n / 100) * 100);
+  return `${bucket}+`;
+}
+
+function ypPublicTotalLabel() {
+  if (YP_MANIFEST && YP_MANIFEST.public_total_label) return YP_MANIFEST.public_total_label;
+  if (YELLOW_PAGES_FLAT.length) return ypPublicCountLabel(YELLOW_PAGES_FLAT.length);
+  return '3700+';
+}
+
+function ypAreaPublicLabel(areaId) {
+  if (!YP_MANIFEST || areaId === 'all') return '';
+  const area = (YP_MANIFEST.areas || []).find(x => x.id === areaId);
+  return (area && area.public_label) ? area.public_label : '';
+}
+
 function ypManifestIndustryCount(g) {
-  if (!YP_MANIFEST || g.essential) return null;
-  const areas = YP_ACTIVE_AREA === 'all'
-    ? (YP_MANIFEST.areas || [])
-    : (YP_MANIFEST.areas || []).filter(a => a.id === YP_ACTIVE_AREA);
-  if (g.id === 'all') return areas.reduce((s, a) => s + (a.total || 0), 0);
-  if (!g.cats) return 0;
-  return areas.reduce((sum, a) => {
-    const cats = a.categories || {};
-    return sum + g.cats.reduce((s, c) => s + (cats[c] || 0), 0);
-  }, 0);
+  return null;
 }
 
 function ypManifestAreaCount(areaId, group) {
   if (!YP_MANIFEST || areaId === 'all') return null;
-  const area = (YP_MANIFEST.areas || []).find(x => x.id === areaId);
-  if (!area) return 0;
-  if (!group || group.id === 'all' || !group.cats) return area.total || 0;
-  const cats = area.categories || {};
-  return group.cats.reduce((s, c) => s + (cats[c] || 0), 0);
+  if (group && group.id !== 'all' && group.cats) return null;
+  return ypAreaPublicLabel(areaId) || null;
 }
 
 function renderEssentialPhones(filter) {
@@ -2297,15 +2439,15 @@ function renderIndustryBar() {
       return `<button type="button" class="yp-pill${YP_ACTIVE_INDUSTRY === g.id ? ' active' : ''}" onclick="setYpIndustry('${g.id}')">${g.label}</button>`;
     }
     if (!YP_JSON_LOADED && !YP_MANIFEST) return '';
-    let count = ypManifestIndustryCount(g);
-    if (count === null) {
+    let count = null;
+    if (YP_JSON_LOADED) {
       const pool = filterYpByArea(YELLOW_PAGES_FLAT);
       count = g.id === 'all'
         ? pool.length
         : pool.filter(i => g.cats && g.cats.includes(i.category)).length;
     }
     if (g.id !== 'all' && count === 0) return '';
-    const lbl = g.id === 'all' ? g.label : `${g.label} ${count}`;
+    const lbl = g.id === 'all' ? g.label : (count != null ? `${g.label} ${ypPublicCountLabel(count)}` : g.label);
     return `<button type="button" class="yp-pill${YP_ACTIVE_INDUSTRY === g.id ? ' active' : ''}" onclick="setYpIndustry('${g.id}')">${lbl}</button>`;
   }).join('');
 }
@@ -2320,13 +2462,20 @@ function renderAreaBar() {
   }
   bar.style.display = 'flex';
   bar.innerHTML = YP_AREA_GROUPS.map(a => {
-    let count = ypManifestAreaCount(a.id, group);
-    if (count === null) {
-      const pool = filterYpByIndustry(YELLOW_PAGES_FLAT);
-      count = a.id === 'all' ? pool.length : pool.filter(i => i.area === a.id).length;
+    let lbl = a.label;
+    if (a.id !== 'all') {
+      let count = null;
+      if (YP_JSON_LOADED) {
+        const pool = filterYpByIndustry(YELLOW_PAGES_FLAT);
+        count = pool.filter(i => i.area === a.id).length;
+        if (count === 0) return '';
+        lbl = `${a.label} ${ypPublicCountLabel(count)}`;
+      } else {
+        const pl = ypAreaPublicLabel(a.id);
+        if (!pl) return '';
+        lbl = `${a.label} ${pl}`;
+      }
     }
-    if (a.id !== 'all' && count === 0) return '';
-    const lbl = a.id === 'all' ? a.label : `${a.label} ${count}`;
     return `<button type="button" class="yp-pill area-pill${YP_ACTIVE_AREA === a.id ? ' active' : ''}" onclick="setYpArea('${a.id}')">${lbl}</button>`;
   }).join('');
 }
@@ -2439,19 +2588,23 @@ async function ensureYpAreasLoaded(areaIds) {
   mergeYpFlatFromCache();
 }
 
-function updateYpTotalBadge(total) {
+function updateYpTotalBadge() {
   const badge = document.getElementById('yp-total-badge');
-  if (badge && total) badge.textContent = String(total);
+  if (badge) badge.textContent = ypPublicTotalLabel();
 }
 
 function renderYpStatsLine() {
   const el = document.getElementById('yp-stats-line');
   if (!YP_MANIFEST) return;
-  const total = YP_MANIFEST.total || YELLOW_PAGES_FLAT.length;
-  updateYpTotalBadge(total);
+  updateYpTotalBadge();
   if (!el) return;
-  const parts = (YP_MANIFEST.areas || []).slice(0, 6).map(a => `${a.label} ${a.total}`);
-  el.textContent = `共 ${total} 家 · 按区域×行业浏览 · ${parts.join(' · ')}${(YP_MANIFEST.areas || []).length > 6 ? ' …' : ''}`;
+  const parts = (YP_MANIFEST.areas || []).slice(0, 6).map(a => {
+    const pl = a.public_label || ypAreaPublicLabel(a.id);
+    return pl ? `${a.label} ${pl}` : a.label;
+  });
+  const verifyNote = YP_MANIFEST.has_pending_review ? ' · 部分条目待复核' : '';
+  const gen = YP_MANIFEST.generated_at ? YP_MANIFEST.generated_at.slice(0, 10) : '';
+  el.textContent = `目录 ${ypPublicTotalLabel()} 家华人商户${verifyNote} · 按区域×行业浏览 · ${parts.join(' · ')}${(YP_MANIFEST.areas || []).length > 6 ? ' …' : ''}${gen ? ' · 数据更新 ' + gen : ''}`;
 }
 
 async function loadYellowPagesJson() {
@@ -2494,12 +2647,12 @@ async function loadYellowPagesJson() {
         });
       }
       YP_MANIFEST = {
-        total: YELLOW_PAGES_FLAT.length,
-        areas: YP_AREA_GROUPS.filter(a => a.id !== 'all').map(a => ({
-          id: a.id,
-          label: a.label,
-          total: YELLOW_PAGES_FLAT.filter(i => i.area === a.id).length,
-        })),
+        public_total_label: ypPublicCountLabel(YELLOW_PAGES_FLAT.length),
+        generated_at: new Date().toISOString(),
+        areas: YP_AREA_GROUPS.filter(a => a.id !== 'all').map(a => {
+          const n = YELLOW_PAGES_FLAT.filter(i => i.area === a.id).length;
+          return { id: a.id, label: a.label, public_label: n ? ypPublicCountLabel(n) : '' };
+        }).filter(a => a.public_label),
       };
       YP_JSON_LOADED = true;
       if (loading) loading.style.display = 'none';
@@ -2544,7 +2697,7 @@ function renderYellowPages() {
     let bizHtml = '';
     if (filtered.length) {
       bizHtml = `<div class="yp-industry-section">
-        <div class="yp-industry-title">商家 (${filtered.length})</div>
+        <div class="yp-industry-title">商家 ${searchTerm ? `(${ypPublicCountLabel(filtered.length)})` : ''}</div>
         <div class="yp-cards-grid">${filtered.slice(0, 60).map(ypBizCard).join('')}</div>
       </div>`;
     }
@@ -2573,7 +2726,7 @@ function renderYellowPages() {
       const areaItems = filtered.filter(i => i.area === areaId);
       if (!areaItems.length) return;
       const areaLbl = YP_AREA_GROUPS.find(a => a.id === areaId)?.label || areaId;
-      html += `<div class="yp-region-section"><div class="yp-region-title">📍 ${escapeHtml(areaLbl)} (${areaItems.length})</div>`;
+      html += `<div class="yp-region-section"><div class="yp-region-title">📍 ${escapeHtml(areaLbl)} ${ypPublicCountLabel(areaItems.length)}</div>`;
       const byCat = {};
       areaItems.forEach(item => {
         if (!byCat[item.category]) byCat[item.category] = [];
@@ -2582,9 +2735,9 @@ function renderYellowPages() {
       Object.keys(byCat).sort((a, b) => byCat[b].length - byCat[a].length).forEach(cat => {
         const items = byCat[cat].slice(0, LIMIT);
         html += `<div class="yp-industry-section">
-          <div class="yp-industry-title">${escapeHtml(cat)} (${byCat[cat].length})</div>
+          <div class="yp-industry-title">${escapeHtml(cat)} ${ypPublicCountLabel(byCat[cat].length)}</div>
           <div class="yp-cards-grid">${items.map(ypBizCard).join('')}</div>
-          ${byCat[cat].length > LIMIT ? `<div class="yp-more">还有 ${byCat[cat].length - LIMIT} 家 · 可选区域或行业筛选</div>` : ''}
+          ${byCat[cat].length > LIMIT ? `<div class="yp-more">当前仅展示部分 · 可选区域或行业筛选</div>` : ''}
         </div>`;
       });
       html += '</div>';
@@ -2598,17 +2751,17 @@ function renderYellowPages() {
     Object.keys(byCat).sort((a, b) => byCat[b].length - byCat[a].length).forEach(cat => {
       const items = byCat[cat].slice(0, LIMIT);
       html += `<div class="yp-industry-section">
-        <div class="yp-industry-title">${escapeHtml(cat)} (${byCat[cat].length})</div>
+        <div class="yp-industry-title">${escapeHtml(cat)} ${ypPublicCountLabel(byCat[cat].length)}</div>
         <div class="yp-cards-grid">${items.map(ypBizCard).join('')}</div>
-        ${byCat[cat].length > LIMIT ? `<div class="yp-more">还有 ${byCat[cat].length - LIMIT} 家 · 点行业标签筛选</div>` : ''}
+        ${byCat[cat].length > LIMIT ? `<div class="yp-more">当前仅展示部分 · 点行业标签筛选</div>` : ''}
       </div>`;
     });
   } else {
     const display = filtered.slice(0, 80);
     html = `<div class="yp-industry-section">
-      <div class="yp-industry-title">${areaNote}${group.label} (${filtered.length})</div>
+      <div class="yp-industry-title">${areaNote}${group.label} ${ypPublicCountLabel(filtered.length)}</div>
       <div class="yp-cards-grid">${display.map(ypBizCard).join('')}</div>
-      ${filtered.length > 80 ? `<div class="yp-more">仅显示前 80 条 · 可换区域或搜索缩小范围</div>` : ''}
+      ${filtered.length > 80 ? `<div class="yp-more">当前仅展示部分 · 可换区域或搜索缩小范围</div>` : ''}
     </div>`;
   }
   container.innerHTML = html;
@@ -3041,16 +3194,9 @@ function applyInterestAndClose(moduleId) {
       <div class="sub-success" id="sub-success-push" style="margin-top:8px;">✅ 浏览器推送已开启！每日更新将直接弹出通知。</div>
     </div>
 
-    <div class="sub-section" style="background:#f8fafc;border:1px solid #e2e8f0;border-radius:10px;padding:10px 12px;">
-      <div class="sub-section-title" style="margin-bottom:4px;">📱 手机短信推送</div>
-      <div style="font-size:12px;color:#64748b;line-height:1.55;">
-        <strong>暂未开通。</strong>美国 SMS 约 <strong>$0.01–0.04/条</strong>（Twilio 等），1000 人每日推送成本过高，不建议早期采用。优先用微信 + 邮件 + 浏览器推送。
-      </div>
-    </div>
-
     <div class="sub-note">
       本平台不收集个人信息用于商业用途。<br>
-      邮件可随时退订。<strong>会员评分</strong>（与推送无关）：邮箱订阅即注册，满 <strong>7天</strong> 后可评商家；<strong>每家仅一次</strong>，<strong>每天最多3家</strong>。
+      邮件可随时退订。<strong>会员评分</strong>（与推送无关）：邮箱订阅即注册，满 <strong>7天</strong> 后点星打分（<strong>1–5 星，无需留言</strong>）；<strong>每家仅一次</strong>，<strong>每天最多3家</strong>。
     </div>
   </div>
 </div>

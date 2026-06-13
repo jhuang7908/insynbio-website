@@ -2,6 +2,7 @@ User-agent: *
 Allow: /us-chinese-life-hub.html
 Allow: /sitemap.xml
 Disallow: /yp_data/
+Disallow: /yp_data/manifest_internal.json
 Disallow: /yellow_pages.json
 Disallow: /yellow_pages_full.json
 Disallow: /yellow_pages_by_region.json

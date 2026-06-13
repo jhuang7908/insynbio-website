@@ -3,6 +3,15 @@
   Cache-Control: private, no-store
   Referrer-Policy: same-origin
 
+/yp_data/manifest_internal.json
+  X-Robots-Tag: noindex, nofollow, noarchive, nosnippet
+  Cache-Control: private, no-store
+
+/yp_data/yellow_pages_by_region.json
+  X-Robots-Tag: noindex, nofollow, noarchive, nosnippet
+  Cache-Control: private, no-store
+  Referrer-Policy: same-origin
+
 /yellow_pages.json
   X-Robots-Tag: noindex, nofollow, noarchive
   Cache-Control: private, no-store
