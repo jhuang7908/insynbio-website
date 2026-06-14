@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- hub-build: 2026-06-14T15:28-deals-clean-nolinks -->
+<!-- hub-build: 2026-06-14T15:38-green-edu-broaden -->
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8" />
@@ -2201,20 +2201,23 @@ function pickWeekItemsBalanced(maxTotal, maxPerDay, excludeIds) {
 }
 
 function itemMatchesEnrollmentAdvance(i) {
+  // 凡教育/报名/升学/暑期类，不限来源，统一归入绿色「官方报名与长期规划」栏目
   const blob = (
     (i.title_zh || '') + ' ' + (i.title_en || '') + ' ' +
-    (i.summary_zh || '') + ' ' + (i.url || '') + ' ' + (i.source_id || '')
+    (i.summary_zh || '') + ' ' + (i.summary_en || '') + ' ' +
+    (i.url || '') + ' ' + (i.module || '') + ' ' + (i.source_id || '')
   ).toLowerCase();
-  
-  // 1. 严格白名单：只允许官方来源进入此板块
-  const src = String(i.source_id || i.source || '');
-  const isOfficialSource = /doe_summer|rec_shapeup|nyc_parks|nyc_gov|cuny|schools\.nyc\.gov/i.test(src);
-  
-  if (!isOfficialSource) return false;
 
-  // 2. 关键词匹配
+  // 1. 教育类模块直接归入
+  if (/语言|教育/.test(i.module || '')) return true;
+
+  // 2. 报名/夏令营/常年项目关键词
   if (ENROLLMENT_KW.some(kw => blob.includes(kw.toLowerCase()))) return true;
-  return /summer_camp|shapeup|recreation|enroll|admission/i.test(src);
+
+  // 3. 升学/课程/入学等扩展关键词
+  if (/esl|esol|ged|hse|equivalency|continuing education|college prep|tuition|admission|pre-?k|kindergarten|enrollment|literacy|adult education|学区|入学|升学|课程|招生|培训班/.test(blob)) return true;
+
+  return false;
 }
 
 function pickAdvanceEnrollmentItems(maxTotal, excludeIds) {
