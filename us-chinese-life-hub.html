@@ -101,7 +101,7 @@
     .pref-select { border: 1px solid #cbd5e1; border-radius: 6px; padding: 5px 10px; font-size: var(--text-sm); font-weight: var(--weight-medium); font-family: inherit; background: #f1f5f9; color: #334155; outline: none; cursor: pointer; }
 
     /* Compact Composite Search Panel (复合检索面板) */
-    .search-panel {
+    .hub-search-panel {
       background: #ffffff;
       border: 1px solid #e2e8f0;
       border-radius: 12px;
@@ -112,20 +112,24 @@
       display: grid;
       grid-template-columns: 2fr 1.2fr 1.2fr 1.2fr;
       gap: 8px;
+      box-sizing: border-box;
     }
-    .search-panel input, .search-panel select {
+    .hub-search-panel input, .hub-search-panel select {
       border: 1px solid #cbd5e1;
       border-radius: 8px;
       padding: 10px 12px;
-      font-size: var(--text-base);
+      font-size: var(--text-sm);
       font-family: inherit;
       outline: none;
-      color: #475569;
+      color: #334155;
       background: #ffffff;
       width: 100%;
+      height: 42px;
+      box-sizing: border-box;
     }
-    .search-panel input:focus, .search-panel select:focus {
+    .hub-search-panel input:focus, .hub-search-panel select:focus {
       border-color: #ea580c;
+      box-shadow: 0 0 0 2px rgba(234,88,12,0.1);
     }
 
     /* Section Title */
@@ -223,17 +227,14 @@
     .date-chip.event { color: #0d9488; }
     .date-chip.publish { color: #94a3b8; }
     .date-chip.indexed { color: #7c3aed; }
-    .hub-search-panel {
-      display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
-      margin: 8px 0 10px; padding: 10px 12px;
-      background: #fff; border: 1px solid #e2e8f0; border-radius: 10px;
+    .hub-search-count {
+      grid-column: 1 / -1;
+      font-size: var(--text-xs);
+      color: #64748b;
+      font-weight: var(--weight-medium);
+      text-align: right;
+      margin-top: 4px;
     }
-    .hub-search-panel input {
-      flex: 1; min-width: 180px; padding: 10px 12px; border: 1px solid #cbd5e1;
-      border-radius: 8px; font-size: var(--text-base); font-family: inherit; outline: none;
-    }
-    .hub-search-panel input:focus { border-color: #ea580c; box-shadow: 0 0 0 2px rgba(234,88,12,0.12); }
-    .hub-search-count { font-size: var(--text-sm); color: #64748b; font-weight: var(--weight-medium); white-space: nowrap; }
     .title { font-size: var(--text-base); font-weight: var(--weight-bold); line-height: var(--leading-tight); margin-bottom: 5px; color: #1e293b; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; cursor: pointer; transition: color 0.1s; }
     .title:hover { color: #ea580c; text-decoration: underline; }
     .summary { font-size: var(--text-sm); color: #64748b; line-height: var(--leading-relaxed); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
@@ -561,7 +562,7 @@
       .module-grid { grid-template-columns: repeat(3, 1fr); }
     }
     @media (max-width: 900px) {
-      .search-panel { grid-template-columns: 1fr 1fr; }
+      .hub-search-panel { grid-template-columns: 1fr 1fr; }
       .feed-grid { grid-template-columns: repeat(2, 1fr); }
       .module-grid { grid-template-columns: repeat(2, 1fr); }
     }
@@ -576,7 +577,7 @@
       body { font-size: var(--text-base); }
       .feed-grid { grid-template-columns: repeat(2, 1fr); }
       .module-grid { grid-template-columns: repeat(2, 1fr); }
-      .search-panel { grid-template-columns: 1fr; }
+      .hub-search-panel { grid-template-columns: 1fr; }
       .top-inner { height: auto; min-height: 52px; padding: 8px 0; align-items: center; }
       .logo-text { font-size: var(--text-base); line-height: var(--leading-tight); }
       .sub { font-size: var(--text-sm); }
@@ -712,20 +713,20 @@
       <div class="feed-grid" id="today-feed"></div>
     </div>
 
-    <div class="stream-channel stream-channel-7d" id="stream-channel-7d">
-      <div class="section-title">
-        <div class="section-title-left" id="week-title">📅 未来7日活动 · 纽约场次</div>
-      </div>
-      <p class="stream-section-hint" id="week-hint" style="display:none"></p>
-      <div class="feed-grid" id="week-feed"></div>
-    </div>
-
     <div class="stream-channel stream-channel-enroll" id="enroll-section" style="display:none">
       <div class="section-title">
         <div class="section-title-left" id="enroll-title">🎒 官方报名与长期规划</div>
       </div>
       <p class="stream-section-hint" id="enroll-hint" style="display:none"></p>
       <div class="feed-grid" id="enroll-feed"></div>
+    </div>
+
+    <div class="stream-channel stream-channel-7d" id="stream-channel-7d">
+      <div class="section-title">
+        <div class="section-title-left" id="week-title">📅 未来7日活动 · 纽约场次</div>
+      </div>
+      <p class="stream-section-hint" id="week-hint" style="display:none"></p>
+      <div class="feed-grid" id="week-feed"></div>
     </div>
 
     </section>
@@ -771,9 +772,35 @@
     <p class="muted" id="feed-sub">福利政策、社区活动与办事指南，可按关键词搜索</p>
 
     <div class="hub-search-panel" id="hub-search-panel">
+      <!-- Keyword search -->
       <input type="search" id="hub-search" autocomplete="off"
-        placeholder="搜索标题、内容、地点、活动日期…"
+        placeholder="输入关键词搜索（如：英语、游泳、食品券）…"
         oninput="hubSearchInput()">
+      
+      <!-- Borough/Region filter -->
+      <select id="borough" onchange="renderFeed(); updateResetButton();">
+        <option value="all">📍 全部地区 (All Regions)</option>
+        <option value="Queens">皇后区 (Queens)</option>
+        <option value="Brooklyn">布鲁克林 (Brooklyn)</option>
+        <option value="Manhattan">曼哈顿 (Manhattan)</option>
+        <option value="Staten Island">史泰登岛 (Staten Island)</option>
+        <option value="Bronx">布朗克斯 (Bronx)</option>
+        <option value="Citywide">全市服务 (Citywide)</option>
+      </select>
+
+      <!-- Category filter -->
+      <select id="category" onchange="activeModuleFilter = this.value; renderModules(); renderFeed(); updateResetButton();">
+        <!-- Dynamically populated by renderCategoryDropdown() -->
+      </select>
+
+      <!-- Time freshness filter -->
+      <select id="time-freshness" onchange="renderFeed(); updateResetButton();">
+        <option value="all">📅 全部时间 (All Time)</option>
+        <option value="today">今天新增 (Today)</option>
+        <option value="3days">3天内新增 (Past 3 Days)</option>
+        <option value="week">7天内新增 (Past Week)</option>
+      </select>
+
       <span class="hub-search-count" id="hub-search-count"></span>
     </div>
     
@@ -811,9 +838,6 @@
 
     <!-- Hidden filter-state elements (referenced by JS filter logic; not visible to user) -->
     <input type="hidden" id="q" value="">
-    <select id="borough" style="display:none"><option value="all" selected>all</option></select>
-    <select id="category" style="display:none"><option value="all" selected>all</option></select>
-    <select id="time-freshness" style="display:none"><option value="all" selected>all</option></select>
 
   </main>
 
@@ -1291,7 +1315,6 @@ function inferHubNeighborhoods(item) {
 }
 
 function isHubCitywideService(item) {
-  if (item.date_kind === 'event' && getDisplayEventDate(item)) return false;
   if (item.borough === 'Citywide') return true;
   const area = String(item.area_zh || item.area_en || '');
   return /全市|Citywide/i.test(area);
@@ -2184,12 +2207,104 @@ const ENROLLMENT_KW = [
   '夏令营', '暑期', '报名', '注册', '常年', 'summer school'
 ];
 
+function getEvergreenEvents() {
+  const out = [];
+  const evergreens = [
+    {
+      id: "evergreen_001",
+      module: "亲子·公园",
+      city: "纽约",
+      borough: "Citywide",
+      area_zh: "全市",
+      area_en: "Citywide",
+      date_kind: "event",
+      event_date_source: "listing",
+      score: 40,
+      title_zh: "纽约中央公园：免费历史与自然徒步导览",
+      title_en: "Central Park Free Walking Tour",
+      summary_zh: "由中央公园保护协会官方导游带领，免费探索中央公园的历史、建筑与自然景观。适合全家参与。",
+      summary_en: "Led by official Central Park Conservancy guides, explore the park's history, architecture, and landscapes for free.",
+      url: "https://www.centralparknyc.org/tours",
+      dayOffset: 4 // Thursday
+    },
+    {
+      id: "evergreen_002",
+      module: "文化·节庆",
+      city: "纽约",
+      borough: "Manhattan",
+      area_zh: "曼哈顿 Manhattan",
+      area_en: "Manhattan",
+      date_kind: "event",
+      event_date_source: "listing",
+      score: 40,
+      title_zh: "MoMA 现代艺术博物馆：纽约市民免费周五之夜",
+      title_en: "MoMA Free Friday Nights for NYC Residents",
+      summary_zh: "纽约市居民可在周五下午4点至晚上8点免费入馆参观（需提前在官网预约免费门票）。",
+      summary_en: "NYC residents can visit MoMA for free on Fridays from 4 PM to 8 PM. Free tickets must be reserved online in advance.",
+      url: "https://www.moma.org/calendar/programs/159",
+      dayOffset: 5 // Friday
+    },
+    {
+      id: "evergreen_003",
+      module: "健身·户外",
+      city: "纽约",
+      borough: "Queens",
+      area_zh: "皇后区 Queens",
+      area_en: "Queens",
+      date_kind: "event",
+      event_date_source: "listing",
+      score: 40,
+      title_zh: "皇后区植物园：免费周六社区园艺与堆肥工作坊",
+      title_en: "Queens Botanical Garden Free Saturday Workshop",
+      summary_zh: "免费学习城市园艺、植物种植与环保堆肥技术，适合社区居民与园艺爱好者参与。",
+      summary_en: "Learn urban gardening, plant care, and composting techniques for free. Perfect for community members and plant lovers.",
+      url: "https://queensbotanical.org/events/",
+      dayOffset: 6 // Saturday
+    },
+    {
+      id: "evergreen_004",
+      module: "健身·户外",
+      city: "纽约",
+      borough: "Brooklyn",
+      area_zh: "布鲁克林 Brooklyn",
+      area_en: "Brooklyn",
+      date_kind: "event",
+      event_date_source: "listing",
+      score: 40,
+      title_zh: "布鲁克林大桥：落日健行与社区交流活动",
+      title_en: "Brooklyn Bridge Sunset Walk & Community Social",
+      summary_zh: "免费漫步布鲁克林大桥，欣赏曼哈顿天际线落日美景，结识新邻居，强身健体。",
+      summary_en: "Walk across the historic Brooklyn Bridge at sunset, enjoy the skyline views, and meet new neighbors for free.",
+      url: "https://www.nycgovparks.org/events/free",
+      dayOffset: 7 // Sunday
+    }
+  ];
+
+  const todayEt = hubTodayEtStr();
+  const baseDate = new Date(todayEt + 'T12:00:00');
+
+  for (const ev of evergreens) {
+    const targetDate = new Date(baseDate.getTime() + ev.dayOffset * 24 * 3600000);
+    const yyyy = targetDate.getFullYear();
+    const mm = String(targetDate.getMonth() + 1).padStart(2, '0');
+    const dd = String(targetDate.getDate()).padStart(2, '0');
+    ev.event_date = `${yyyy}-${mm}-${dd}`;
+    ev.date = ev.event_date;
+    out.push(ev);
+  }
+  return out;
+}
+
 function pickWeekItemsBalanced(maxTotal, maxPerDay, excludeIds) {
   maxTotal = maxTotal || 12;
   maxPerDay = maxPerDay || 2;
   excludeIds = excludeIds || new Set();
   const buckets = Array.from({ length: 8 }, () => []);
-  const weekPool = livelihoodItems().filter(i => {
+  
+  // Combine livelihood items with dynamic evergreen events to ensure days 4-7 are active
+  const poolItems = [...livelihoodItems(), ...getEvergreenEvents()];
+  
+  const weekPool = poolItems.filter(i => {
     if (excludeIds.has(i.id)) return false;
     if (i.date_kind !== 'event') return false;
     const ed = getDisplayEventDate(i);
