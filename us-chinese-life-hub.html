@@ -534,7 +534,7 @@
         <div class="yp-stats-line" id="yp-stats-line"></div>
         <div class="yp-industry-bar" id="yp-industry-bar"></div>
         <div class="yp-area-bar" id="yp-area-bar"></div>
-        <div class="yp-anti-scrape" data-nosnippet>商户数据按区域分片加载 · 禁止批量抓取 · 仅供社区查阅</div>
+        <div class="yp-anti-scrape" data-nosnippet>按区域与行业浏览华人商户 · 支持中文搜索</div>
         <div id="yp-map-panel-wrap" style="display:none"></div>
         <div class="member-status" id="yp-member-status" style="display:none;"></div>
         <div id="yp-loading" style="font-size: 12px; color: #64748b; text-align: center; padding: 16px; display:none;">加载商家数据…</div>
@@ -570,11 +570,11 @@
       <div class="section-title-left" id="feed-title">📋 全部信息（按发布日期保留30天）</div>
       <button id="reset-filters" class="reset-btn" onclick="resetAllFilters()">🔄 重置所有筛选</button>
     </div>
-    <p class="muted" id="feed-sub">52源每日07:30扫描 · 检索库含收录/发布/活动/地点/正文</p>
+    <p class="muted" id="feed-sub">福利政策、社区活动与办事指南，可按关键词搜索</p>
 
     <div class="hub-search-panel" id="hub-search-panel">
       <input type="search" id="hub-search" autocomplete="off"
-        placeholder="检索：标题、内容、地点、收录时间、发布时间、活动日期…"
+        placeholder="搜索标题、内容、地点、活动日期…"
         oninput="hubSearchInput()">
       <span class="hub-search-count" id="hub-search-count"></span>
     </div>
@@ -677,25 +677,25 @@ const UI_STRINGS = {
     week_title: "📅 未来7日活动 · 纽约场次",
     stream_new_label: "24h新增",
     stream_new_suffix: "条",
-    stream_new_title: "滚动24小时：每日07:30美东扫描52固定源去重；首次收录或官方公布在24h内",
-    stream_new_empty: "过去24小时暂无新增（52源已扫描；重要条目见下方7日场次）",
+    stream_new_title: "过去24小时内新发布或更新的官方信息",
+    stream_new_empty: "过去24小时暂无新内容，请查看下方7日活动",
     stream_week_label: "7日场次",
     stream_week_suffix: "场",
-    stream_week_title: "未来7日内有明确活动日期的官方场次（不含长期服务页）",
+    stream_week_title: "未来7日内有明确活动时间的官方场次",
     verified_badge: "已核验",
     date_event: "活动",
     date_published: "发布",
     date_source_published: "官方发布",
-    date_first_indexed: "首次收录",
+    date_first_indexed: "更新",
     date_ongoing: "长期有效",
     date_tbd: "时间见官网",
-    date_event_tip: "举办时间（非发布日期；无确认日期时见官网）",
-    hub_search_placeholder: "检索：标题、内容、地点、收录时间、发布时间、活动日期…",
-    hub_search_count: "共 {n} 条可检索",
-    hub_search_match: "匹配 {n} 条",
-    channels_title: "1️⃣ 8大民生频道",
-    feed_title: "2️⃣ 纽约福利与华人服务信息",
-    feed_sub: "52源每日07:30扫描 · 检索库含收录/发布/活动/地点/正文",
+    date_event_tip: "举办时间（以官网为准）",
+    hub_search_placeholder: "搜索标题、内容、地点、活动日期…",
+    hub_search_count: "共 {n} 条",
+    hub_search_match: "找到 {n} 条",
+    channels_title: "8大民生频道",
+    feed_title: "纽约福利与华人服务信息",
+    feed_sub: "福利政策、社区活动与办事指南，可按关键词搜索",
     reset_btn: "🔄 重置所有筛选",
     all_neighborhoods: "📍 全部社区（纽约全市）",
     citywide: "纽约全市",
@@ -738,25 +738,25 @@ const UI_STRINGS = {
     week_title: "📅 未來7日活動 · 紐約場次",
     stream_new_label: "24h新增",
     stream_new_suffix: "條",
-    stream_new_title: "滾動24小時：每日07:30美東掃描52固定源去重；首次收錄或官方公布在24h內",
-    stream_new_empty: "過去24小時暫無新增（52源已掃描；重要條目見下方7日場次）",
+    stream_new_title: "過去24小時內新發布或更新的官方信息",
+    stream_new_empty: "過去24小時暫無新內容，請查看下方7日活動",
     stream_week_label: "7日場次",
     stream_week_suffix: "場",
-    stream_week_title: "未來7日內有明確活動日期的官方場次（不含長期服務頁）",
+    stream_week_title: "未來7日內有明確活動時間的官方場次",
     verified_badge: "已核驗",
     date_event: "活動",
     date_published: "發布",
     date_source_published: "官方發布",
-    date_first_indexed: "首次收錄",
+    date_first_indexed: "更新",
     date_ongoing: "長期有效",
     date_tbd: "時間見官網",
-    date_event_tip: "舉辦時間（非發布日期；無確認日期時見官網）",
-    hub_search_placeholder: "檢索：標題、內容、地點、收錄時間、發布時間、活動日期…",
-    hub_search_count: "共 {n} 條可檢索",
-    hub_search_match: "匹配 {n} 條",
-    channels_title: "1️⃣ 8大民生頻道",
-    feed_title: "2️⃣ 紐約福利與華人服務信息",
-    feed_sub: "52源每日07:30掃描 · 檢索庫含收錄/發布/活動/地點/正文",
+    date_event_tip: "舉辦時間（以官網為準）",
+    hub_search_placeholder: "搜索標題、內容、地點、活動日期…",
+    hub_search_count: "共 {n} 條",
+    hub_search_match: "找到 {n} 條",
+    channels_title: "8大民生頻道",
+    feed_title: "紐約福利與華人服務信息",
+    feed_sub: "福利政策、社區活動與辦事指南，可按關鍵詞搜索",
     reset_btn: "🔄 重置所有篩選",
     all_neighborhoods: "📍 全部社區（紐約全市）",
     citywide: "紐約全市",
@@ -799,25 +799,25 @@ const UI_STRINGS = {
     week_title: "📅 Next 7 Days · NYC Events",
     stream_new_label: "24h new",
     stream_new_suffix: "",
-    stream_new_title: "Rolling 24h window: 07:30 ET daily scan of 52 sources, deduped; first indexed or official publish within 24h",
-    stream_new_empty: "No new items in the past 24h (52 sources scanned; see 7-day events below).",
+    stream_new_title: "Official items newly posted or updated in the past 24 hours",
+    stream_new_empty: "No new items in the past 24h — see upcoming 7-day events below",
     stream_week_label: "7d events",
     stream_week_suffix: "",
-    stream_week_title: "Official event sessions dated in the next 7 days (excludes ongoing service pages)",
+    stream_week_title: "Official events with confirmed dates in the next 7 days",
     verified_badge: "Verified",
     date_event: "Event",
     date_published: "Posted",
     date_source_published: "Official post",
-    date_first_indexed: "First indexed",
+    date_first_indexed: "Updated",
     date_ongoing: "Ongoing",
     date_tbd: "See official site",
-    date_event_tip: "Event time (not publish date)",
-    hub_search_placeholder: "Search title, content, location, indexed/posted/event dates…",
-    hub_search_count: "{n} records indexed",
+    date_event_tip: "Event time (see official site)",
+    hub_search_placeholder: "Search title, content, location, event date…",
+    hub_search_count: "{n} items",
     hub_search_match: "{n} matches",
-    channels_title: "1️⃣ 8 Public Channels",
-    feed_title: "2️⃣ NYC Benefits & Chinese Community",
-    feed_sub: "52 sources · search index: indexed/posted/event/location/content",
+    channels_title: "8 Public Channels",
+    feed_title: "NYC Benefits & Community Services",
+    feed_sub: "Benefits, events, and service guides — search by keyword",
     reset_btn: "🔄 Reset All Filters",
     all_neighborhoods: "📍 All Communities (NYC)",
     citywide: "NYC Citywide",
@@ -1978,8 +1978,7 @@ const ESSENTIAL_PHONES = [
     { name: '华策会 CPC', sub: '皇后区', phone: '718-358-8899', href: 'tel:7183588899' },
     { name: '华策会 CPC', sub: '布鲁克林', phone: '718-492-0409', href: 'tel:7184920409' },
     { name: '亚洲人平等会', sub: 'AAFE', phone: '212-979-8381', href: 'tel:2129798381' },
-    { name: '王嘉廉医疗中心', sub: '唐人街预约', phone: '212-379-6988', href: 'tel:2123796988' },
-    { name: '王嘉廉医疗中心', sub: '法拉盛', phone: '718-886-1200', href: 'tel:7188861200' },
+    { name: '慈济纽约分会', sub: 'Tzu Chi', phone: '718-888-0866', href: 'tel:7188880866' },
   ]},
   { title: '🏦 银行 · 金融', items: [
     { name: '华美银行 East West Bank', sub: '客服', phone: '888-895-5650', href: 'tel:8888955650' },
@@ -1988,6 +1987,8 @@ const ESSENTIAL_PHONES = [
     { name: '查找 FDIC 成员银行', sub: '在线', phone: '在线 ↗', href: 'https://banks.data.fdic.gov/bankfind-suite/bankfind' },
   ]},
   { title: '🏥 医疗 · 诊所', items: [
+    { name: '王嘉廉医疗中心', sub: '唐人街', phone: '212-379-6988', href: 'tel:2123796988' },
+    { name: '王嘉廉医疗中心', sub: '法拉盛', phone: '718-886-1200', href: 'tel:7188861200' },
     { name: '纽约长老会皇后区医院', sub: 'Flushing Hospital', phone: '718-670-8000', href: 'tel:7186708000' },
     { name: 'NYC Health + Hospitals', sub: '市政公立医院', phone: '844-692-4692', href: 'tel:8446924692' },
     { name: 'NYC 免费诊所预约', sub: 'NYC Care', phone: '646-692-2273', href: 'tel:6466922273' },
@@ -2008,26 +2009,25 @@ const ESSENTIAL_PHONES = [
 const YP_INDUSTRY_GROUPS = [
   { id: 'essential', label: '📞 常用电话', essential: true },
   { id: 'all', label: '全部商家' },
-  { id: 'bank', label: '🏦 银行', cats: ['银行金融'] },
-  { id: 'clinic', label: '🏥 诊所', cats: ['医疗诊所'] },
-  { id: 'insurance', label: '🛡️ 保险', cats: ['保险'] },
-  { id: 'tutor', label: '📚 补习', cats: ['补习学校'] },
-  { id: 'daycare', label: '🧒 幼儿园', cats: ['幼儿园'] },
   { id: 'food', label: '🍜 餐馆', cats: ['中餐馆'] },
-  { id: 'reno', label: '🔧 装修', cats: ['装修公司', '建材公司'] },
-  { id: 'law', label: '⚖️ 律师', cats: ['律师事务所'] },
-  { id: 'nail', label: '💅 美甲', cats: ['指甲店', '美容院'] },
-  { id: 'realestate', label: '🏠 地产', cats: ['地产公司'] },
-  { id: 'travel', label: '✈️ 旅行社', cats: ['旅行社'] },
-  { id: 'auto', label: '🚗 汽修', cats: ['汽车修理'] },
-  { id: 'health', label: '💆 按摩', cats: ['按摩店'] },
-  { id: 'account', label: '📊 会计', cats: ['会计事务所'] },
-  { id: 'pharmacy', label: '💊 药店', cats: ['中国人药店'] },
-  { id: 'laundry', label: '👔 洗衣', cats: ['洗衣店'] },
-  { id: 'hair', label: '💇 理发', cats: ['理发店'] },
   { id: 'market', label: '🛒 超市', cats: ['华裔超市'] },
+  { id: 'clinic', label: '🏥 诊所', cats: ['医疗诊所'] },
+  { id: 'pharmacy', label: '💊 药店', cats: ['中国人药店'] },
+  { id: 'daycare', label: '🧒 幼儿园', cats: ['幼儿园'] },
+  { id: 'tutor', label: '📚 补习', cats: ['补习学校'] },
+  { id: 'reno', label: '🔧 装修', cats: ['装修公司', '建材公司'] },
+  { id: 'auto', label: '🚗 汽修', cats: ['汽车修理'] },
+  { id: 'law', label: '⚖️ 律师', cats: ['律师事务所'] },
+  { id: 'account', label: '📊 会计', cats: ['会计事务所'] },
+  { id: 'realestate', label: '🏠 地产', cats: ['地产公司'] },
+  { id: 'bank', label: '🏦 银行', cats: ['银行金融'] },
+  { id: 'insurance', label: '🛡️ 保险', cats: ['保险'] },
+  { id: 'nail', label: '💅 美甲', cats: ['指甲店', '美容院'] },
+  { id: 'hair', label: '💇 理发', cats: ['理发店'] },
+  { id: 'health', label: '💆 按摩', cats: ['按摩店'] },
+  { id: 'laundry', label: '👔 洗衣', cats: ['洗衣店'] },
+  { id: 'travel', label: '✈️ 旅行社', cats: ['旅行社'] },
   { id: 'jewelry', label: '💎 珠宝', cats: ['珠宝店'] },
-  { id: 'express', label: '📦 快递', cats: ['快递公司'] },
   { id: 'community', label: '🏮 乡会', cats: ['商会', '同乡会'] },
   { id: 'misc_zh', label: '🏪 其他华人', cats: ['其他华人生意'] },
 ];
@@ -2084,7 +2084,7 @@ function ypFreshnessLabel(status) {
     likely_active: { text: '已核实', cls: 'ok' },
     machine_verified: { text: '已核实', cls: 'ok' },
     merchant_claimed: { text: '商家认领', cls: 'ok' },
-    new: { text: '新收录', cls: 'new' },
+    new: { text: '新上线', cls: 'new' },
     unverified: { text: '待核实', cls: 'stale' },
     stale_6m: { text: '超6月未更新', cls: 'stale' },
     stale_12m: { text: '超12月未更新', cls: 'stale' },
@@ -2289,7 +2289,7 @@ function toggleYpMapPanel() {
   if (!wrap || !wrap.dataset.query) return;
   if (wrap.style.display === 'none' || !wrap.innerHTML) {
     const q = encodeURIComponent(wrap.dataset.query);
-    wrap.innerHTML = `<div class="yp-map-embed"><iframe loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="商家地图" src="https://maps.google.com/maps?q=${q}&hl=zh-CN&z=13&output=embed"></iframe></div><div style="font-size:10px;color:#64748b;margin:4px 0 8px">页面内为 Google 区域搜索预览；点右上角「地图看全部」可在外部 Google 地图查看完整列表。</div>`;
+    wrap.innerHTML = `<div class="yp-map-embed"><iframe loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="商家地图" src="https://maps.google.com/maps?q=${q}&hl=zh-CN&z=13&output=embed"></iframe></div>`;
     wrap.style.display = 'block';
     const btn = document.getElementById('yp-map-all-btn');
     if (btn) btn.textContent = btn.textContent.replace('地图看全部', '收起地图');
@@ -2631,19 +2631,20 @@ function renderEssentialPhones(filter) {
 function renderIndustryBar() {
   const bar = document.getElementById('yp-industry-bar');
   if (!bar) return;
+  const hasBizData = YP_JSON_LOADED && YELLOW_PAGES_FLAT.length > 0;
   bar.innerHTML = YP_INDUSTRY_GROUPS.map(g => {
     if (g.essential) {
       return `<button type="button" class="yp-pill${YP_ACTIVE_INDUSTRY === g.id ? ' active' : ''}" onclick="setYpIndustry('${g.id}')">${g.label}</button>`;
     }
     if (!YP_JSON_LOADED && !YP_MANIFEST) return '';
     let count = null;
-    if (YP_JSON_LOADED) {
+    if (hasBizData) {
       const pool = filterYpByArea(YELLOW_PAGES_FLAT);
       count = g.id === 'all'
         ? pool.length
         : pool.filter(i => g.cats && g.cats.includes(i.category)).length;
     }
-    if (g.id !== 'all' && count === 0) return '';
+    if (hasBizData && g.id !== 'all' && count === 0) return '';
     const lbl = g.id === 'all' ? g.label : (count != null ? `${g.label} ${ypPublicCountLabel(count)}` : g.label);
     return `<button type="button" class="yp-pill${YP_ACTIVE_INDUSTRY === g.id ? ' active' : ''}" onclick="setYpIndustry('${g.id}')">${lbl}</button>`;
   }).join('');
@@ -2799,9 +2800,7 @@ function renderYpStatsLine() {
     const pl = a.public_label || ypAreaPublicLabel(a.id);
     return pl ? `${a.label} ${pl}` : a.label;
   });
-  const verifyNote = YP_MANIFEST.has_pending_review ? ' · 部分条目待复核' : '';
-  const gen = YP_MANIFEST.generated_at ? YP_MANIFEST.generated_at.slice(0, 10) : '';
-  el.textContent = `目录 ${ypPublicTotalLabel()} 家华人商户${verifyNote} · 按区域×行业浏览 · ${parts.join(' · ')}${(YP_MANIFEST.areas || []).length > 6 ? ' …' : ''}${gen ? ' · 数据更新 ' + gen : ''}`;
+  el.textContent = `${ypPublicTotalLabel()} 家华人商户 · ${parts.join(' · ')}${(YP_MANIFEST.areas || []).length > 6 ? ' …' : ''}`;
 }
 
 async function loadYellowPagesJson() {
