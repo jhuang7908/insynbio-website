@@ -31140,6 +31140,24 @@
       "category_source": "google_places_types"
     },
     {
+      "name": "CPC Chrystie Street School-age Center \"Garment Industry Early Childhood Center\"",
+      "phone": "(212) 219-2286",
+      "address": "115 Chrystie St, New York, NY 10002美国",
+      "rating": "3.4",
+      "reviews": "5",
+      "area": "chinatown",
+      "place_id": "ChIJ5aiIw4dZwokRcz28W_4YxGc",
+      "google_primary_type": "child_care_agency",
+      "google_types": [
+        "child_care_agency",
+        "point_of_interest",
+        "service",
+        "establishment"
+      ],
+      "source": "google_places_backfill",
+      "category_source": "google_places_types"
+    },
+    {
       "name": "CPC Tribeca Early Childhood Center",
       "phone": "(212) 925-5641",
       "address": "21 St Johns Ln, New York, NY 10013美国",
@@ -38903,6 +38921,27 @@
       "category_source": "google_places_types"
     },
     {
+      "name": "Transfiguration School- Early Childhood Campus",
+      "phone": "(212) 431-8769",
+      "address": "10 Confucius Plz, New York, NY 10002美国",
+      "rating": "4.3",
+      "reviews": "6",
+      "area": "chinatown",
+      "place_id": "ChIJT7BmSiZawokR6wm7A97Gk2A",
+      "google_primary_type": "preschool",
+      "google_types": [
+        "preschool",
+        "school",
+        "child_care_agency",
+        "educational_institution",
+        "service",
+        "point_of_interest",
+        "establishment"
+      ],
+      "source": "google_places_backfill",
+      "category_source": "google_places_types"
+    },
+    {
       "name": "Treasure Island",
       "phone": "(718) 238-7676",
       "address": "8715 5th Ave, Brooklyn, NY 11209美国",
@@ -39912,24 +39951,6 @@
         "point_of_interest",
         "car_dealer",
         "store",
-        "establishment"
-      ],
-      "source": "google_places_backfill",
-      "category_source": "google_places_types"
-    },
-    {
-      "name": "CPC Chrystie Street School-age Center \"Garment Industry Early Childhood Center\"",
-      "phone": "(212) 219-2286",
-      "address": "115 Chrystie St, New York, NY 10002美国",
-      "rating": "3.4",
-      "reviews": "5",
-      "area": "chinatown",
-      "place_id": "ChIJ5aiIw4dZwokRcz28W_4YxGc",
-      "google_primary_type": "child_care_agency",
-      "google_types": [
-        "child_care_agency",
-        "point_of_interest",
-        "service",
         "establishment"
       ],
       "source": "google_places_backfill",
@@ -41190,27 +41211,6 @@
       "category_source": "google_places_types"
     },
     {
-      "name": "Transfiguration School- Early Childhood Campus",
-      "phone": "(212) 431-8769",
-      "address": "10 Confucius Plz, New York, NY 10002美国",
-      "rating": "4.3",
-      "reviews": "6",
-      "area": "chinatown",
-      "place_id": "ChIJT7BmSiZawokR6wm7A97Gk2A",
-      "google_primary_type": "preschool",
-      "google_types": [
-        "preschool",
-        "school",
-        "child_care_agency",
-        "educational_institution",
-        "service",
-        "point_of_interest",
-        "establishment"
-      ],
-      "source": "google_places_backfill",
-      "category_source": "google_places_types"
-    },
-    {
       "name": "TriBeCa Community School",
       "phone": "(212) 226-9070",
       "address": "22 Ericsson Pl, New York, NY 10013美国",
@@ -41628,24 +41628,6 @@
       "category_source": "google_places_types"
     },
     {
-      "name": "Architectural Sign Group Inc.",
-      "phone": "(516) 326-1800",
-      "address": "145 Meacham Avenue, Elmont, NY 11003美国",
-      "rating": "4.7",
-      "reviews": "3",
-      "area": "longisland",
-      "place_id": "ChIJ16ATagVjwokRl9-wy_kTRJg",
-      "google_primary_type": "store",
-      "google_types": [
-        "store",
-        "point_of_interest",
-        "service",
-        "establishment"
-      ],
-      "source": "google_places_backfill",
-      "category_source": "google_places_types"
-    },
-    {
       "name": "Asia Society and Museum",
       "phone": "(212) 288-6400",
       "address": "725 Park Ave, New York, NY 10021美国",
@@ -41727,24 +41709,6 @@
         "consultant",
         "service",
         "point_of_interest",
-        "establishment"
-      ],
-      "source": "google_places_backfill",
-      "category_source": "google_places_types"
-    },
-    {
-      "name": "CAPITAL SIGNS",
-      "phone": "(212) 564-1185",
-      "address": "264 West 40th St. Rm 701, New York, NY 10018美国",
-      "rating": "",
-      "reviews": "",
-      "area": "manhattan",
-      "place_id": "ChIJE4-28alZwokR82biNodsJqc",
-      "google_primary_type": "store",
-      "google_types": [
-        "store",
-        "point_of_interest",
-        "service",
         "establishment"
       ],
       "source": "google_places_backfill",
@@ -42092,25 +42056,6 @@
       "category_source": "google_places_types"
     },
     {
-      "name": "Eddington Security Inc.",
-      "phone": "(718) 904-1559",
-      "address": "2268 Story Avenue, Bronx, NY 10473美国",
-      "rating": "5",
-      "reviews": "1",
-      "area": "bronx",
-      "place_id": "ChIJh-saZQD1wokRzQ0mtPMhYlI",
-      "google_primary_type": "manufacturer",
-      "google_types": [
-        "manufacturer",
-        "supplier",
-        "point_of_interest",
-        "service",
-        "establishment"
-      ],
-      "source": "google_places_backfill",
-      "category_source": "google_places_types"
-    },
-    {
       "name": "Edward C. Kang LLC",
       "phone": "(212) 710-5840",
       "address": "800 Third Avenue, New York, NY 10022美国",
@@ -42155,25 +42100,6 @@
       "google_primary_type": "consultant",
       "google_types": [
         "consultant",
-        "service",
-        "point_of_interest",
-        "establishment"
-      ],
-      "source": "google_places_backfill",
-      "category_source": "google_places_types"
-    },
-    {
-      "name": "Express Printing Copy",
-      "phone": "(718) 651-6578",
-      "address": "6719 Roosevelt Avenue, Woodside, NY 11377美国",
-      "rating": "3",
-      "reviews": "23",
-      "area": "queens",
-      "place_id": "ChIJd6-MMgFfwokRhIMxLxwNzvA",
-      "google_primary_type": "service",
-      "google_types": [
-        "wholesaler",
-        "store",
         "service",
         "point_of_interest",
         "establishment"
@@ -42255,23 +42181,6 @@
       "category_source": "google_places_types"
     },
     {
-      "name": "Frontline Security Solutions Inc",
-      "phone": "(506) 754-6123",
-      "address": "208 Centre Street, New York, NY 10013美国",
-      "rating": "5",
-      "reviews": "1",
-      "area": "chinatown",
-      "place_id": "ChIJ24ml1XQZpkwRUIRji2Tvvh8",
-      "google_primary_type": "service",
-      "google_types": [
-        "point_of_interest",
-        "service",
-        "establishment"
-      ],
-      "source": "google_places_backfill",
-      "category_source": "google_places_types"
-    },
-    {
       "name": "GA Industries Inc.",
       "phone": "(718) 352-0100",
       "address": "214-41 42nd Avenue, Bayside, NY 11361美国",
@@ -42281,23 +42190,6 @@
       "place_id": "ChIJ__8DMeBhwokRnRESmPp-pzY",
       "google_primary_type": "point_of_interest",
       "google_types": [
-        "point_of_interest",
-        "establishment"
-      ],
-      "source": "google_places_backfill",
-      "category_source": "google_places_types"
-    },
-    {
-      "name": "GRAMERCY SIGNS, LLC",
-      "phone": "(347) 853-1399",
-      "address": "531 East 20th Street, New York, NY 10010美国",
-      "rating": "",
-      "reviews": "",
-      "area": "manhattan",
-      "place_id": "ChIJPdEYmRhZwokRr2jDaNekE3A",
-      "google_primary_type": "market",
-      "google_types": [
-        "market",
         "point_of_interest",
         "establishment"
       ],
@@ -42553,24 +42445,6 @@
       "google_primary_type": "service",
       "google_types": [
         "consultant",
-        "point_of_interest",
-        "service",
-        "establishment"
-      ],
-      "source": "google_places_backfill",
-      "category_source": "google_places_types"
-    },
-    {
-      "name": "Interboro Signs & Electric Inc.",
-      "phone": "(718) 366-7901",
-      "address": "39-16 23rd Street, Long Island City, NY 11101美国",
-      "rating": "5",
-      "reviews": "16",
-      "area": "longisland",
-      "place_id": "ChIJbdsyOMtZwokR9908BMEzqmM",
-      "google_primary_type": "store",
-      "google_types": [
-        "store",
         "point_of_interest",
         "service",
         "establishment"
@@ -42848,25 +42722,6 @@
       "category_source": "google_places_types"
     },
     {
-      "name": "M&M Printing & Stationery Inc.",
-      "phone": "(718) 417-0053",
-      "address": "68-29 Fresh Pond Road, Ridgewood, NY 11385美国",
-      "rating": "4.9",
-      "reviews": "22",
-      "area": "queens",
-      "place_id": "ChIJXc-EPIJewokRCM3j26aGtNY",
-      "google_primary_type": "service",
-      "google_types": [
-        "clothing_store",
-        "store",
-        "point_of_interest",
-        "service",
-        "establishment"
-      ],
-      "source": "google_places_backfill",
-      "category_source": "google_places_types"
-    },
-    {
       "name": "MR. LEE'S",
       "phone": "(917) 754-8431",
       "address": "471 MYRTLE AVENUE, Brooklyn, NY 11205美国",
@@ -43094,23 +42949,6 @@
       "category_source": "google_places_types"
     },
     {
-      "name": "Narrow Security",
-      "phone": "(888) 627-7697",
-      "address": "87-83 139th Street, Jamaica, NY 11435美国",
-      "rating": "4.3",
-      "reviews": "30",
-      "area": "queens",
-      "place_id": "ChIJ3fcQjedhwokRht8qUftgeys",
-      "google_primary_type": "service",
-      "google_types": [
-        "point_of_interest",
-        "service",
-        "establishment"
-      ],
-      "source": "google_places_backfill",
-      "category_source": "google_places_types"
-    },
-    {
       "name": "Narula Development Corp.",
       "phone": "(516) 644-9481",
       "address": "389 OLD COURTHOUSE RD, NEW HYDE PARK, NY 11040美国",
@@ -43122,23 +42960,6 @@
       "google_types": [
         "service",
         "point_of_interest",
-        "establishment"
-      ],
-      "source": "google_places_backfill",
-      "category_source": "google_places_types"
-    },
-    {
-      "name": "New York Property Agent, Weimin Tan",
-      "phone": "(212) 380-6134",
-      "address": "641 Lexington Ave 22nd floor, New York, NY 10022美国",
-      "rating": "5",
-      "reviews": "51",
-      "area": "manhattan",
-      "place_id": "ChIJ5YSCIOVYwokRLtSCoznx9Vc",
-      "google_primary_type": "service",
-      "google_types": [
-        "point_of_interest",
-        "service",
         "establishment"
       ],
       "source": "google_places_backfill",
@@ -43348,22 +43169,6 @@
       "google_types": [
         "juice_shop",
         "food",
-        "point_of_interest",
-        "establishment"
-      ],
-      "source": "google_places_backfill",
-      "category_source": "google_places_types"
-    },
-    {
-      "name": "RISING SUN ALARM INC.",
-      "phone": "(718) 439-6895",
-      "address": "6310 5TH AVE, Brooklyn, NY 11220美国",
-      "rating": "",
-      "reviews": "",
-      "area": "sunset",
-      "place_id": "ChIJS7SiClJFwokRyt5Xvl_YXC8",
-      "google_primary_type": "point_of_interest",
-      "google_types": [
         "point_of_interest",
         "establishment"
       ],
@@ -43650,26 +43455,6 @@
       "place_id": "ChIJ7eu7svhZwokROqSoXCUGHAs",
       "google_primary_type": "manufacturer",
       "google_types": [
-        "manufacturer",
-        "point_of_interest",
-        "service",
-        "establishment"
-      ],
-      "source": "google_places_backfill",
-      "category_source": "google_places_types"
-    },
-    {
-      "name": "Sign-A-Rama Forest Hills",
-      "phone": "(718) 268-8180",
-      "address": "101-09 Jamaica Ave, forest hills, NY 11375美国",
-      "rating": "4.8",
-      "reviews": "127",
-      "area": "queens",
-      "place_id": "ChIJ43YqWphgwokRRZ5tqv2OiVs",
-      "google_primary_type": "store",
-      "google_types": [
-        "home_goods_store",
-        "store",
         "manufacturer",
         "point_of_interest",
         "service",
@@ -44040,25 +43825,6 @@
         "playground",
         "tourist_attraction",
         "amusement_center",
-        "point_of_interest",
-        "establishment"
-      ],
-      "source": "google_places_backfill",
-      "category_source": "google_places_types"
-    },
-    {
-      "name": "Tyme Property Management 泰明物業管理",
-      "phone": "(646) 893-8963",
-      "address": "141-07 20th Ave SUITE 303, Whitestone, NY 11357美国",
-      "rating": "4.9",
-      "reviews": "63",
-      "area": "flushing",
-      "place_id": "ChIJl-OarU5hwokREySj-5EPdaI",
-      "google_primary_type": "service",
-      "google_types": [
-        "condominium_complex",
-        "service",
-        "association_or_organization",
         "point_of_interest",
         "establishment"
       ],
@@ -45002,6 +44768,2907 @@
       "google_primary_type": "",
       "google_types": [
         "point_of_interest",
+        "establishment"
+      ],
+      "source": "google_places_backfill",
+      "category_source": "google_places_types"
+    }
+  ],
+  "印刷招牌": [
+    {
+      "name": "Architectural Sign Group Inc.",
+      "phone": "(516) 326-1800",
+      "address": "145 Meacham Avenue, Elmont, NY 11003美国",
+      "rating": "4.7",
+      "reviews": "3",
+      "area": "longisland",
+      "place_id": "ChIJ16ATagVjwokRl9-wy_kTRJg",
+      "google_primary_type": "store",
+      "google_types": [
+        "store",
+        "point_of_interest",
+        "service",
+        "establishment"
+      ],
+      "source": "google_places_backfill",
+      "category_source": "google_places_types"
+    },
+    {
+      "name": "CAPITAL SIGNS",
+      "phone": "(212) 564-1185",
+      "address": "264 West 40th St. Rm 701, New York, NY 10018美国",
+      "rating": "",
+      "reviews": "",
+      "area": "manhattan",
+      "place_id": "ChIJE4-28alZwokR82biNodsJqc",
+      "google_primary_type": "store",
+      "google_types": [
+        "store",
+        "point_of_interest",
+        "service",
+        "establishment"
+      ],
+      "source": "google_places_backfill",
+      "category_source": "google_places_types"
+    },
+    {
+      "name": "Express Printing Copy",
+      "phone": "(718) 651-6578",
+      "address": "6719 Roosevelt Avenue, Woodside, NY 11377美国",
+      "rating": "3",
+      "reviews": "23",
+      "area": "queens",
+      "place_id": "ChIJd6-MMgFfwokRhIMxLxwNzvA",
+      "google_primary_type": "service",
+      "google_types": [
+        "wholesaler",
+        "store",
+        "service",
+        "point_of_interest",
+        "establishment"
+      ],
+      "source": "google_places_backfill",
+      "category_source": "google_places_types"
+    },
+    {
+      "name": "GRAMERCY SIGNS, LLC",
+      "phone": "(347) 853-1399",
+      "address": "531 East 20th Street, New York, NY 10010美国",
+      "rating": "",
+      "reviews": "",
+      "area": "manhattan",
+      "place_id": "ChIJPdEYmRhZwokRr2jDaNekE3A",
+      "google_primary_type": "market",
+      "google_types": [
+        "market",
+        "point_of_interest",
+        "establishment"
+      ],
+      "source": "google_places_backfill",
+      "category_source": "google_places_types"
+    },
+    {
+      "name": "Interboro Signs & Electric Inc.",
+      "phone": "(718) 366-7901",
+      "address": "39-16 23rd Street, Long Island City, NY 11101美国",
+      "rating": "5",
+      "reviews": "16",
+      "area": "longisland",
+      "place_id": "ChIJbdsyOMtZwokR9908BMEzqmM",
+      "google_primary_type": "store",
+      "google_types": [
+        "store",
+        "point_of_interest",
+        "service",
+        "establishment"
+      ],
+      "source": "google_places_backfill",
+      "category_source": "google_places_types"
+    },
+    {
+      "name": "M&M Printing & Stationery Inc.",
+      "phone": "(718) 417-0053",
+      "address": "68-29 Fresh Pond Road, Ridgewood, NY 11385美国",
+      "rating": "4.9",
+      "reviews": "22",
+      "area": "queens",
+      "place_id": "ChIJXc-EPIJewokRCM3j26aGtNY",
+      "google_primary_type": "service",
+      "google_types": [
+        "clothing_store",
+        "store",
+        "point_of_interest",
+        "service",
+        "establishment"
+      ],
+      "source": "google_places_backfill",
+      "category_source": "google_places_types"
+    },
+    {
+      "name": "Sign-A-Rama Forest Hills",
+      "phone": "(718) 268-8180",
+      "address": "101-09 Jamaica Ave, forest hills, NY 11375美国",
+      "rating": "4.8",
+      "reviews": "127",
+      "area": "queens",
+      "place_id": "ChIJ43YqWphgwokRRZ5tqv2OiVs",
+      "google_primary_type": "store",
+      "google_types": [
+        "home_goods_store",
+        "store",
+        "manufacturer",
+        "point_of_interest",
+        "service",
+        "establishment"
+      ],
+      "source": "google_places_backfill",
+      "category_source": "google_places_types"
+    }
+  ],
+  "安保物业": [
+    {
+      "name": "Eddington Security Inc.",
+      "phone": "(718) 904-1559",
+      "address": "2268 Story Avenue, Bronx, NY 10473美国",
+      "rating": "5",
+      "reviews": "1",
+      "area": "bronx",
+      "place_id": "ChIJh-saZQD1wokRzQ0mtPMhYlI",
+      "google_primary_type": "manufacturer",
+      "google_types": [
+        "manufacturer",
+        "supplier",
+        "point_of_interest",
+        "service",
+        "establishment"
+      ],
+      "source": "google_places_backfill",
+      "category_source": "google_places_types"
+    },
+    {
+      "name": "Frontline Security Solutions Inc",
+      "phone": "(506) 754-6123",
+      "address": "208 Centre Street, New York, NY 10013美国",
+      "rating": "5",
+      "reviews": "1",
+      "area": "chinatown",
+      "place_id": "ChIJ24ml1XQZpkwRUIRji2Tvvh8",
+      "google_primary_type": "service",
+      "google_types": [
+        "point_of_interest",
+        "service",
+        "establishment"
+      ],
+      "source": "google_places_backfill",
+      "category_source": "google_places_types"
+    },
+    {
+      "name": "Henry He 何亨利 纽约地产买卖和物业管理",
+      "phone": "(646) 338-8518",
+      "address": "141-07 20th Ave, Whitestone, NY 11357美国",
+      "rating": "",
+      "reviews": "",
+      "area": "flushing",
+      "place_id": "ChIJhxSNKqWKwokR-tHi1HLW6rM",
+      "google_primary_type": "service",
+      "google_types": [
+        "point_of_interest",
+        "service",
+        "establishment"
+      ],
+      "source": "google_places_backfill",
+      "category_source": "google_places_types"
+    },
+    {
+      "name": "Narrow Security",
+      "phone": "(888) 627-7697",
+      "address": "87-83 139th Street, Jamaica, NY 11435美国",
+      "rating": "4.3",
+      "reviews": "30",
+      "area": "queens",
+      "place_id": "ChIJ3fcQjedhwokRht8qUftgeys",
+      "google_primary_type": "service",
+      "google_types": [
+        "point_of_interest",
+        "service",
+        "establishment"
+      ],
+      "source": "google_places_backfill",
+      "category_source": "google_places_types"
+    },
+    {
+      "name": "RISING SUN ALARM INC.",
+      "phone": "(718) 439-6895",
+      "address": "6310 5TH AVE, Brooklyn, NY 11220美国",
+      "rating": "",
+      "reviews": "",
+      "area": "sunset",
+      "place_id": "ChIJS7SiClJFwokRyt5Xvl_YXC8",
+      "google_primary_type": "point_of_interest",
+      "google_types": [
+        "point_of_interest",
+        "establishment"
+      ],
+      "source": "google_places_backfill",
+      "category_source": "google_places_types"
+    },
+    {
+      "name": "Tyme Property Management 泰明物業管理",
+      "phone": "(646) 893-8963",
+      "address": "141-07 20th Ave SUITE 303, Whitestone, NY 11357美国",
+      "rating": "4.9",
+      "reviews": "63",
+      "area": "flushing",
+      "place_id": "ChIJl-OarU5hwokREySj-5EPdaI",
+      "google_primary_type": "service",
+      "google_types": [
+        "condominium_complex",
+        "service",
+        "association_or_organization",
+        "point_of_interest",
+        "establishment"
+      ],
+      "source": "google_places_backfill",
+      "category_source": "google_places_types"
+    }
+  ],
+  "地产公司": [
+    {
+      "name": "1 Home Realty",
+      "phone": "(718) 888-0188",
+      "address": "142-11 37th Ave Fl 1, Flushing, NY 11354美国",
+      "rating": "3.6",
+      "reviews": "8",
+      "area": "flushing",
+      "place_id": "ChIJJS6tfxpgwokRP7DuhtbdciA",
+      "google_primary_type": "real_estate_agency",
+      "google_types": [
+        "real_estate_agency",
+        "point_of_interest",
+        "service",
+        "establishment"
+      ],
+      "source": "google_places_backfill",
+      "category_source": "google_places_types"
+    },
+    {
+      "name": "18 Realty",
+      "phone": "(718) 268-0908",
+      "address": "76-13 113th St #1f, Forest Hills, NY 11375美国",
+      "rating": "3.8",
+      "reviews": "20",
+      "area": "queens",
+      "place_id": "ChIJ12nGDJlgwokRLGXSKPfkm6Y",
+      "google_primary_type": "real_estate_agency",
+      "google_types": [
+        "real_estate_agency",
+        "point_of_interest",
+        "service",
+        "establishment"
+      ],
+      "source": "google_places_backfill",
+      "category_source": "google_places_types"
+    },
+    {
+      "name": "ACJ International Realty",
+      "phone": "(917) 295-2102",
+      "address": "154-17A Riverside Dr., Whitestone, NY 11375美国",
+      "rating": "",
+      "reviews": "",
+      "area": "flushing"
+    },
+    {
+      "name": "ADA Real Estate Team at Keller Williams",
+      "phone": "(917) 972-9597",
+      "address": "75-25 31st Ave #202, Queens, NY 11370美国",
+      "rating": "5",
+      "reviews": "79",
+      "area": "queens",
+      "place_id": "ChIJxSc5BwtfwokRoValBb9ycbQ",
+      "google_primary_type": "real_estate_agency",
+      "google_types": [
+        "real_estate_agency",
+        "point_of_interest",
+        "service",
+        "establishment"
+      ],
+      "source": "google_places_backfill",
+      "category_source": "google_places_types"
+    },
+    {
+      "name": "Acre NY Realty Inc.",
+      "phone": "(212) 653-8880",
+      "address": "45-10 Ct Square W 1st floor, Long Island City, NY 11101美国",
+      "rating": "4.4",
+      "reviews": "31",
+      "area": "longisland",
+      "place_id": "ChIJORLv0_BLwokR6BdPV-VFsfo",
+      "google_primary_type": "real_estate_agency",
+      "google_types": [
+        "real_estate_agency",
+        "service",
+        "point_of_interest",
+        "establishment"
+      ],
+      "source": "google_places_backfill",
+      "category_source": "google_places_types"
+    },
+    {
+      "name": "Alex Baron Realtor at Keller Williams Real Estate",
+      "phone": "(718) 490-4523",
+      "address": "32-55 Francis Lewis Blvd, Flushing, NY 11358美国",
+      "rating": "4.9",
+      "reviews": "118",
+      "area": "flushing",
+      "place_id": "ChIJFT5Ib3-KwokRew8C0XCyOJc",
+      "google_primary_type": "real_estate_agency",
+      "google_types": [
+        "real_estate_agency",
+        "point_of_interest",
+        "service",
+        "establishment"
+      ],
+      "source": "google_places_backfill",
+      "category_source": "google_places_types"
+    },
+    {
+      "name": "Amanda Li at Winzone Realty Inc.",
+      "phone": "(917) 399-3725",
+      "address": "81-15 Queens Blvd Ste 2A, Elmhurst, NY 11373美国",
+      "rating": "5",
+      "reviews": "1",
+      "area": "elmhurst",
+      "place_id": "ChIJv1qxMB9gwokRdRQtbj6LRd4",
+      "google_primary_type": "real_estate_agency",
+      "google_types": [
+        "real_estate_agency",
+        "point_of_interest",
+        "service",
+        "establishment"
+      ],
+      "source": "google_places_backfill",
+      "category_source": "google_places_types"
+    },
+    {
+      "name": "Anna Pinto Realty",
+      "phone": "(917) 515-4704",
+      "address": "71-21 Austin St, Forest Hills, NY 11375美国",
+      "rating": "4.4",
+      "reviews": "21",
+      "area": "queens",
+      "place_id": "ChIJi0vKziBewokR-VUvXqKu0vM",
+      "google_primary_type": "real_estate_agency",
+      "google_types": [
+        "real_estate_agency",
+        "point_of_interest",
+        "service",
+        "establishment"
+      ],
+      "source": "google_places_backfill",
+      "category_source": "google_places_types"
+    },
+    {
+      "name": "Anthony Testani at Keller Williams Realty Landmark",
+      "phone": "(718) 475-2748",
+      "address": "32-55 Francis Lewis Blvd, Flushing, NY 11358美国",
+      "rating": "5",
+      "reviews": "63",
+      "area": "flushing",
+      "place_id": "ChIJKe2zBYiLwokR1E2ZAGXzsb8",
+      "google_primary_type": "consultant",
+      "google_types": [
+        "real_estate_agency",
+        "consultant",
+        "service",
+        "point_of_interest",
+        "establishment"
+      ],
+      "source": "google_places_backfill",
+      "category_source": "google_places_types"
+    },
+    {
+      "name": "Apple Luo 纽约专业地产经纪罗小姐 New York Luxury Real Estate Agent Apple Luo",
+      "phone": "(917) 325-9241",
+      "address": "445 Park Ave, New York, NY 10022美国",
+      "rating": "5",
+      "reviews": "29",
+      "area": "manhattan",
+      "place_id": "ChIJ6UaC6xNZwokRjHCOFW7_klk",
+      "google_primary_type": "service",
+      "google_types": [
+        "point_of_interest",
+        "service",
+        "establishment"
+      ],
+      "source": "google_places_backfill",
+      "category_source": "google_places_types"
+    },
+    {
+      "name": "Armas Group NYC Real Estate | Elmhurst | Jackson Heights | East Elmhurst NY",
+      "phone": "(347) 525-1799",
+      "address": "72-07 35th Ave, Jackson Heights, NY 11372美国",
+      "rating": "5",
+      "reviews": "19",
+      "area": "elmhurst",
+      "place_id": "ChIJX0RpCw1fwokRUeWS43WtZQg",
+      "google_primary_type": "real_estate_agency",
+      "google_types": [
+        "real_estate_agency",
+        "consultant",
+        "finance",
+        "educational_institution",
+        "point_of_interest",
+        "service",
+        "establishment"
+      ],
+      "source": "google_places_backfill",
+      "category_source": "google_places_types"
+    },
+    {
+      "name": "Astro Realty",
+      "phone": "(718) 478-2600",
+      "address": "92-29 Queens Blvd, Rego Park, NY 11374美国",
+      "rating": "4.4",
+      "reviews": "5",
+      "area": "queens",
+      "place_id": "ChIJCbJdu0lewokRyqY34MCdgB0",
+      "google_primary_type": "real_estate_agency",
+      "google_types": [
+        "real_estate_agency",
+        "service",
+        "point_of_interest",
+        "establishment"
+      ],
+      "source": "google_places_backfill",
+      "category_source": "google_places_types"
+    },
+    {
+      "name": "B Square Realty",
+      "phone": "(718) 939-8388",
+      "address": "136-20 38th Ave APT 3E, Flushing, NY 11354美国",
+      "rating": "4",
+      "reviews": "34",
+      "area": "flushing",
+      "place_id": "ChIJOzR27j5hwokR4kvGMZVTOyc",
+      "google_primary_type": "real_estate_agency",
+      "google_types": [
+        "real_estate_agency",
+        "point_of_interest",
+        "service",
+        "establishment"
+      ],
+      "source": "google_places_backfill",
+      "category_source": "google_places_types"
+    },
+    {
+      "name": "BJH Advisors, LLC",
+      "phone": "(646) 573-9588",
+      "address": "25 Park Place, New York, NY 10007美国",
+      "rating": "",
+      "reviews": "",
+      "area": "manhattan",
+      "place_id": "ChIJ1UGTuolZwokR-jRr7D1XJLw",
+      "google_primary_type": "consultant",
+      "google_types": [
+        "real_estate_agency",
+        "consultant",
+        "service",
+        "point_of_interest",
+        "establishment"
+      ],
+      "source": "google_places_backfill",
+      "category_source": "google_places_types"
+    },
+    {
+      "name": "BYC Projects LLC",
+      "phone": "(646) 228-6889",
+      "address": "434 Greenwich Street, New York, NY 10013美国",
+      "rating": "",
+      "reviews": "",
+      "area": "chinatown"
+    },
+    {
+      "name": "Beaudoin Realty Group, Inc.",
+      "phone": "(718) 505-9220",
+      "address": "78-27 37th Ave #5, Jackson Heights, NY 11372美国",
+      "rating": "4.8",
+      "reviews": "25",
+      "area": "elmhurst"
+    },
+    {
+      "name": "Benjamin Realty Since 1980",
+      "phone": "(718) 263-1600",
+      "address": "108-16 72nd Ave, Forest Hills, NY 11375美国",
+      "rating": "3.5",
+      "reviews": "11",
+      "area": "queens",
+      "place_id": "ChIJOdm7SWhfwokRnJe575YxZ9U",
+      "google_primary_type": "real_estate_agency",
+      "google_types": [
+        "real_estate_agency",
+        "service",
+        "point_of_interest",
+        "establishment"
+      ],
+      "source": "google_places_backfill",
+      "category_source": "google_places_types"
+    },
+    {
+      "name": "Betsy Mak Appraisal Group, LLC",
+      "phone": "(718) 886-2800",
+      "address": "135-15 40th Road, Flushing, NY 11354美国",
+      "rating": "",
+      "reviews": "",
+      "area": "flushing"
+    },
+    {
+      "name": "Betsy Pollak Real Estate Broker",
+      "phone": "(347) 489-9595",
+      "address": "214-08 41st Ave, Bayside, NY 11361美国",
+      "rating": "4.7",
+      "reviews": "24",
+      "area": "queens",
+      "place_id": "ChIJicO1JmyKwokRUKBYoa1XTlw",
+      "google_primary_type": "real_estate_agency",
+      "google_types": [
+        "real_estate_agency",
+        "service",
+        "point_of_interest",
+        "establishment"
+      ],
+      "source": "google_places_backfill",
+      "category_source": "google_places_types"
+    },
+    {
+      "name": "Better Haven LLC",
+      "phone": "(917) 364-1806",
+      "address": "404 East 66th Street, New York, NY 10065美国",
+      "rating": "",
+      "reviews": "",
+      "area": "manhattan"
+    },
+    {
+      "name": "Butts Realty Inc",
+      "phone": "(718) 899-8717",
+      "address": "26-05 94th St, East Elmhurst, NY 11369美国",
+      "rating": "4.5",
+      "reviews": "12",
+      "area": "elmhurst",
+      "place_id": "ChIJ40goDpdfwokRBdx0EEMpd4Q",
+      "google_primary_type": "real_estate_agency",
+      "google_types": [
+        "real_estate_agency",
+        "service",
+        "point_of_interest",
+        "establishment"
+      ],
+      "source": "google_places_backfill",
+      "category_source": "google_places_types"
+    },
+    {
+      "name": "Catherine Zhang, Keller Williams Realty Greater凯瑟琳纽约地产",
+      "phone": "(917) 669-6887",
+      "address": "400 Garden City Plaza Ste 438, Garden City, NY 11530美国",
+      "rating": "5",
+      "reviews": "83",
+      "area": "longisland",
+      "place_id": "ChIJQymIH4B9wokRp6aBBZzuPE4",
+      "google_primary_type": "service",
+      "google_types": [
+        "point_of_interest",
+        "service",
+        "establishment"
+      ],
+      "source": "google_places_backfill",
+      "category_source": "google_places_types"
+    },
+    {
+      "name": "Century Homes Realty Group LLC.",
+      "phone": "(718) 886-6800",
+      "address": "34-36 Union St Ste.201, Flushing, NY 11354美国",
+      "rating": "4.4",
+      "reviews": "25",
+      "area": "flushing",
+      "place_id": "ChIJP7fSDRtgwokRiMdVdmCdtnY",
+      "google_primary_type": "real_estate_agency",
+      "google_types": [
+        "real_estate_agency",
+        "service",
+        "point_of_interest",
+        "establishment"
+      ],
+      "source": "google_places_backfill",
+      "category_source": "google_places_types"
+    },
+    {
+      "name": "Chase Global Realty (凯业地产)",
+      "phone": "(718) 355-8788",
+      "address": "140-75 Ash Ave # 2e, Flushing, NY 11355美国",
+      "rating": "3.9",
+      "reviews": "32",
+      "area": "flushing",
+      "place_id": "ChIJc0uAJRRgwokRxcdR0OTq72Y",
+      "google_primary_type": "real_estate_agency",
+      "google_types": [
+        "real_estate_agency",
+        "lawyer",
+        "consultant",
+        "point_of_interest",
+        "service",
+        "establishment"
+      ],
+      "source": "google_places_backfill",
+      "category_source": "google_places_types"
+    },
+    {
+      "name": "City Homes Realty Group",
+      "phone": "(718) 255-9888",
+      "address": "32-41 Junction Blvd, East Elmhurst, NY 11369美国",
+      "rating": "5",
+      "reviews": "302",
+      "area": "elmhurst",
+      "place_id": "ChIJ9fHGdKpfwokRp5nF7fch8mw",
+      "google_primary_type": "real_estate_agency",
+      "google_types": [
+        "real_estate_agency",
+        "corporate_office",
+        "point_of_interest",
+        "service",
+        "establishment"
+      ],
+      "source": "google_places_backfill",
+      "category_source": "google_places_types"
+    },
+    {
+      "name": "City Scaffolding",
+      "phone": "(929) 499-5654",
+      "address": "104-35 205th place, St. Albans, NY 11412美国",
+      "rating": "",
+      "reviews": "",
+      "area": "queens"
+    },
+    {
+      "name": "Commerce Realty Group",
+      "phone": "(718) 751-5799",
+      "address": "77-11 164th St 2nd Floor, Fresh Meadows, NY 11366美国",
+      "rating": "5",
+      "reviews": "49",
+      "area": "flushing",
+      "place_id": "ChIJ98dA7NJhwokR8UlQEJdc9Yk",
+      "google_primary_type": "real_estate_agency",
+      "google_types": [
+        "real_estate_agency",
+        "point_of_interest",
+        "service",
+        "establishment"
+      ],
+      "source": "google_places_backfill",
+      "category_source": "google_places_types"
+    },
+    {
+      "name": "Core Realty Success",
+      "phone": "(718) 592-2356",
+      "address": "106-12 Corona Ave., Corona, NY 11368美国",
+      "rating": "4.3",
+      "reviews": "20",
+      "area": "elmhurst",
+      "place_id": "ChIJq5qy985fwokRg21BI_rmgDw",
+      "google_primary_type": "real_estate_agency",
+      "google_types": [
+        "real_estate_agency",
+        "service",
+        "point_of_interest",
+        "establishment"
+      ],
+      "source": "google_places_backfill",
+      "category_source": "google_places_types"
+    },
+    {
+      "name": "Cruse Realty",
+      "phone": "(718) 335-4040",
+      "address": "92-15 Roosevelt Ave, Jackson Heights, NY 11372美国",
+      "rating": "3.4",
+      "reviews": "16",
+      "area": "elmhurst",
+      "place_id": "ChIJw_ZChrBfwokReeoNRKanYFI",
+      "google_primary_type": "real_estate_agency",
+      "google_types": [
+        "real_estate_agency",
+        "service",
+        "point_of_interest",
+        "establishment"
+      ],
+      "source": "google_places_backfill",
+      "category_source": "google_places_types"
+    },
+    {
+      "name": "DG Technology and Business Solution",
+      "phone": "(917) 557-0027",
+      "address": "3424 IRWIN AVE 2FL, BRONX, NY 10463美国",
+      "rating": "",
+      "reviews": "",
+      "area": "bronx"
+    },
+    {
+      "name": "DNLS REAL ESTATE MANAGEMENT LLC",
+      "phone": "(718) 717-3232",
+      "address": "95-20 63rd Rd, Rego Park, NY 11374美国",
+      "rating": "5",
+      "reviews": "79",
+      "area": "queens",
+      "place_id": "ChIJjzk5Ub9fwokRN1dVuC26rzw",
+      "google_primary_type": "real_estate_agency",
+      "google_types": [
+        "real_estate_agency",
+        "point_of_interest",
+        "service",
+        "establishment"
+      ],
+      "source": "google_places_backfill",
+      "category_source": "google_places_types"
+    },
+    {
+      "name": "Dana Team Long Island Real Estate 长岛华人地产经纪团队房地产中介",
+      "phone": "(516) 274-2644",
+      "address": "45 N Station Plaza Suite #310, Great Neck, NY 11021美国",
+      "rating": "5",
+      "reviews": "121",
+      "area": "longisland",
+      "place_id": "ChIJ301ZofmJwokRGPEo3Lxz4sk",
+      "google_primary_type": "real_estate_agency",
+      "google_types": [
+        "real_estate_agency",
+        "point_of_interest",
+        "service",
+        "establishment"
+      ],
+      "source": "google_places_backfill",
+      "category_source": "google_places_types"
+    },
+    {
+      "name": "Dean Graber Licensed Real Estate Salesperson",
+      "phone": "(516) 527-9549",
+      "address": "32-55 Francis Lewis Blvd, Flushing, NY 11358美国",
+      "rating": "4.9",
+      "reviews": "81",
+      "area": "flushing",
+      "place_id": "ChIJ__9van-KwokRcGlVgGBt6HQ",
+      "google_primary_type": "real_estate_agency",
+      "google_types": [
+        "real_estate_agency",
+        "consultant",
+        "point_of_interest",
+        "service",
+        "establishment"
+      ],
+      "source": "google_places_backfill",
+      "category_source": "google_places_types"
+    },
+    {
+      "name": "Deirdre Folan - Keller Williams Realty Landmark",
+      "phone": "(917) 251-4499",
+      "address": "32-55 Francis Lewis Blvd, Flushing, NY 11358美国",
+      "rating": "4.8",
+      "reviews": "132",
+      "area": "flushing",
+      "place_id": "ChIJ3ToSBWuLwokRkLGsGAyfAcw",
+      "google_primary_type": "real_estate_agency",
+      "google_types": [
+        "real_estate_agency",
+        "service",
+        "point_of_interest",
+        "establishment"
+      ],
+      "source": "google_places_backfill",
+      "category_source": "google_places_types"
+    },
+    {
+      "name": "Denise li 纽约地产",
+      "phone": "(347) 350-0059",
+      "address": "140-75 Ash Ave, Flushing, NY 11355美国",
+      "rating": "",
+      "reviews": "",
+      "area": "flushing",
+      "place_id": "ChIJ75nMEfJhwokR6BminUosroQ",
+      "google_primary_type": "service",
+      "google_types": [
+        "point_of_interest",
+        "service",
+        "establishment"
+      ],
+      "source": "google_places_backfill",
+      "category_source": "google_places_types"
+    },
+    {
+      "name": "Devaykanan Rishudeo",
+      "phone": "(917) 470-1053",
+      "address": "1320 Fulton St, Brooklyn, NY 11216美国",
+      "rating": "",
+      "reviews": "",
+      "area": "brooklyn"
+    },
+    {
+      "name": "Douglas Elliman Real Estate Office in Bayside, NY",
+      "phone": "(718) 631-8900",
+      "address": "36-29 Bell Blvd, Bayside, NY 11361美国",
+      "rating": "4.4",
+      "reviews": "33",
+      "area": "queens",
+      "place_id": "ChIJI_ySbQ9gwokRSGu3tRCRsPM",
+      "google_primary_type": "real_estate_agency",
+      "google_types": [
+        "real_estate_agency",
+        "consultant",
+        "service",
+        "point_of_interest",
+        "establishment"
+      ],
+      "source": "google_places_backfill",
+      "category_source": "google_places_types"
+    },
+    {
+      "name": "Du Rite Realty Co",
+      "phone": "(718) 359-5800",
+      "address": "168-01 26th Ave, Flushing, NY 11358美国",
+      "rating": "3.3",
+      "reviews": "4",
+      "area": "flushing",
+      "place_id": "ChIJ3Z7OS4eKwokRJm8CUIobXxQ",
+      "google_primary_type": "real_estate_agency",
+      "google_types": [
+        "real_estate_agency",
+        "consultant",
+        "finance",
+        "point_of_interest",
+        "service",
+        "establishment"
+      ],
+      "source": "google_places_backfill",
+      "category_source": "google_places_types"
+    },
+    {
+      "name": "DynamicEdge Realty",
+      "phone": "(516) 875-5840",
+      "address": "61-43 186th St, Flushing, NY 11365美国",
+      "rating": "4.2",
+      "reviews": "6",
+      "area": "flushing",
+      "place_id": "ChIJxTONmLFhwokRD_ySuztDxYk",
+      "google_primary_type": "service",
+      "google_types": [
+        "consultant",
+        "point_of_interest",
+        "real_estate_agency",
+        "service",
+        "establishment"
+      ],
+      "source": "google_places_backfill",
+      "category_source": "google_places_types"
+    },
+    {
+      "name": "E House Realty & Management",
+      "phone": "(718) 680-2776",
+      "address": "6005 7th Ave, Brooklyn, NY 11220美国",
+      "rating": "3",
+      "reviews": "20",
+      "area": "sunset",
+      "place_id": "ChIJNeMY8ktFwokR60tuj2k6-jU",
+      "google_primary_type": "real_estate_agency",
+      "google_types": [
+        "real_estate_agency",
+        "point_of_interest",
+        "service",
+        "establishment"
+      ],
+      "source": "google_places_backfill",
+      "category_source": "google_places_types"
+    },
+    {
+      "name": "E Realty International Corp.",
+      "phone": "(718) 886-8110",
+      "address": "39-07, 39-07 Prince St Ste 4D, Flushing, NY 11354美国",
+      "rating": "2.5",
+      "reviews": "35",
+      "area": "flushing",
+      "place_id": "ChIJfcJqD1VhwokRmZwMnwqnjGU",
+      "google_primary_type": "real_estate_agency",
+      "google_types": [
+        "real_estate_agency",
+        "service",
+        "point_of_interest",
+        "establishment"
+      ],
+      "source": "google_places_backfill",
+      "category_source": "google_places_types"
+    },
+    {
+      "name": "E-Z Sell Realty",
+      "phone": "(718) 396-6666",
+      "address": "92-29 Queens Blvd CU18, Rego Park, NY 11374美国",
+      "rating": "3.9",
+      "reviews": "33",
+      "area": "queens",
+      "place_id": "ChIJveReuklewokRTe7ujpqUugY",
+      "google_primary_type": "real_estate_agency",
+      "google_types": [
+        "real_estate_agency",
+        "consultant",
+        "point_of_interest",
+        "service",
+        "establishment"
+      ],
+      "source": "google_places_backfill",
+      "category_source": "google_places_types"
+    },
+    {
+      "name": "EAGLE HOME DEVELOPER INC",
+      "phone": "(929) 293-5544",
+      "address": "19515A 67TH AVE APT 2B, QUEENS, NY 11365美国",
+      "rating": "",
+      "reviews": "",
+      "area": "flushing"
+    },
+    {
+      "name": "EK Plus, Inc",
+      "phone": "(718) 415-4043",
+      "address": "210-20 33rd Avenue, Bayside, NY 11361美国",
+      "rating": "",
+      "reviews": "",
+      "area": "queens"
+    },
+    {
+      "name": "EXIT Realty First Choice",
+      "phone": "(718) 380-2500",
+      "address": "80-15 188th St 3rd Floor, Fresh Meadows, NY 11366美国",
+      "rating": "4.8",
+      "reviews": "124",
+      "area": "flushing",
+      "place_id": "ChIJLds_YAdhwokRsp4FC0W1gXE",
+      "google_primary_type": "real_estate_agency",
+      "google_types": [
+        "real_estate_agency",
+        "point_of_interest",
+        "service",
+        "establishment"
+      ],
+      "source": "google_places_backfill",
+      "category_source": "google_places_types"
+    },
+    {
+      "name": "East Coast Realty by Zarina",
+      "phone": "(718) 271-2121",
+      "address": "96-14 Queens Blvd, Rego Park, NY 11374美国",
+      "rating": "4.8",
+      "reviews": "170",
+      "area": "queens",
+      "place_id": "ChIJFwafbzRewokRAo2f_9Wnm7E",
+      "google_primary_type": "real_estate_agency",
+      "google_types": [
+        "real_estate_agency",
+        "point_of_interest",
+        "service",
+        "establishment"
+      ],
+      "source": "google_places_backfill",
+      "category_source": "google_places_types"
+    },
+    {
+      "name": "East Egg Project Management",
+      "phone": "(516) 314-8054",
+      "address": "135 Reid Avenue, Port Washington, NY 11050美国",
+      "rating": "",
+      "reviews": "",
+      "area": "longisland"
+    },
+    {
+      "name": "Elemint LLC",
+      "phone": "(212) 843-0844",
+      "address": "1214 5th Avenue, New York, NY 10029美国",
+      "rating": "",
+      "reviews": "",
+      "area": "manhattan"
+    },
+    {
+      "name": "Energized Realty Group - Queens Real Estate Company",
+      "phone": "(718) 353-6001",
+      "address": "33-44 167th St, Flushing, NY 11358美国",
+      "rating": "4.7",
+      "reviews": "70",
+      "area": "flushing",
+      "place_id": "ChIJHw8hHX6KwokRWLJdW3PtSv0",
+      "google_primary_type": "real_estate_agency",
+      "google_types": [
+        "real_estate_agency",
+        "point_of_interest",
+        "service",
+        "establishment"
+      ],
+      "source": "google_places_backfill",
+      "category_source": "google_places_types"
+    },
+    {
+      "name": "Evantz Saint-Gerard: Licensed Real Estate Salesperson",
+      "phone": "(917) 975-5985",
+      "address": "32-55 Francis Lewis Blvd 2nd Floor, Flushing, NY 11358美国",
+      "rating": "5",
+      "reviews": "25",
+      "area": "flushing",
+      "place_id": "ChIJq6jMQ3-KwokR9isEHMouto4",
+      "google_primary_type": "real_estate_agency",
+      "google_types": [
+        "real_estate_agency",
+        "consultant",
+        "service",
+        "point_of_interest",
+        "establishment"
+      ],
+      "source": "google_places_backfill",
+      "category_source": "google_places_types"
+    },
+    {
+      "name": "FORENZI INC.",
+      "phone": "(646) 821-3180",
+      "address": "39-39 21ST STREET, LONG ISLAND CITY, NY 11101美国",
+      "rating": "",
+      "reviews": "",
+      "area": "longisland"
+    },
+    {
+      "name": "Fang Fang Realty Inc. 芳芳地產",
+      "phone": "(718) 676-2518",
+      "address": "816 59th St 2 FL, Brooklyn, NY 11220美国",
+      "rating": "5",
+      "reviews": "8",
+      "area": "sunset",
+      "place_id": "ChIJlSzWT1hFwokR5M8Rl25naGQ",
+      "google_primary_type": "real_estate_agency",
+      "google_types": [
+        "real_estate_agency",
+        "consultant",
+        "point_of_interest",
+        "service",
+        "establishment"
+      ],
+      "source": "google_places_backfill",
+      "category_source": "google_places_types"
+    },
+    {
+      "name": "Fultonex Realty",
+      "phone": "(718) 395-8266",
+      "address": "136-20 38th Ave APT 11A, Flushing, NY 11354美国",
+      "rating": "4.7",
+      "reviews": "3",
+      "area": "flushing",
+      "place_id": "ChIJkeyGKBBgwokR_XPuAFy9rsQ",
+      "google_primary_type": "real_estate_agency",
+      "google_types": [
+        "real_estate_agency",
+        "service",
+        "point_of_interest",
+        "establishment"
+      ],
+      "source": "google_places_backfill",
+      "category_source": "google_places_types"
+    },
+    {
+      "name": "Geoffrey Stevens Realty",
+      "phone": "(347) 249-9884",
+      "address": "11361美国紐約貝賽",
+      "rating": "5",
+      "reviews": "6",
+      "area": "queens",
+      "place_id": "ChIJXT5NOgmKwokRb0o7jXbGJSE",
+      "google_primary_type": "real_estate_agency",
+      "google_types": [
+        "real_estate_agency",
+        "service",
+        "point_of_interest",
+        "establishment"
+      ],
+      "source": "google_places_backfill",
+      "category_source": "google_places_types"
+    },
+    {
+      "name": "George Realty Group LLC",
+      "phone": "(718) 224-2440",
+      "address": "214-26 41st Ave #208, Bayside, NY 11361美国",
+      "rating": "3.7",
+      "reviews": "12",
+      "area": "queens"
+    },
+    {
+      "name": "Global Connect Realty LLC",
+      "phone": "(917) 821-6789",
+      "address": "131-04 40th Rd, Flushing, NY 11354美国",
+      "rating": "5",
+      "reviews": "1",
+      "area": "flushing",
+      "place_id": "ChIJCbVSvuthwokRrgwwpZdfq4U",
+      "google_primary_type": "real_estate_agency",
+      "google_types": [
+        "real_estate_agency",
+        "point_of_interest",
+        "service",
+        "establishment"
+      ],
+      "source": "google_places_backfill",
+      "category_source": "google_places_types"
+    },
+    {
+      "name": "Graceful Realty LLC",
+      "phone": "(718) 353-0068",
+      "address": "140-75 Ash Ave Suite 2C, Flushing, NY 11355美国",
+      "rating": "4.7",
+      "reviews": "21",
+      "area": "flushing",
+      "place_id": "ChIJa8bfWeJhwokRIKuW2sV5nzE",
+      "google_primary_type": "real_estate_agency",
+      "google_types": [
+        "real_estate_agency",
+        "service",
+        "point_of_interest",
+        "establishment"
+      ],
+      "source": "google_places_backfill",
+      "category_source": "google_places_types"
+    },
+    {
+      "name": "Grove Street Investment, LLC",
+      "phone": "(917) 453-3989",
+      "address": "205 East 42nd Street, New York, NY 10017美国",
+      "rating": "",
+      "reviews": "",
+      "area": "manhattan",
+      "place_id": "ChIJpf-x64pZwokRHxpD_ZnLgLA",
+      "google_primary_type": "consultant",
+      "google_types": [
+        "real_estate_agency",
+        "consultant",
+        "service",
+        "point_of_interest",
+        "establishment"
+      ],
+      "source": "google_places_backfill",
+      "category_source": "google_places_types"
+    },
+    {
+      "name": "Grovesend Realty LLC",
+      "phone": "(718) 975-8299",
+      "address": "2632 West 13th Street, Brooklyn, NY 11223美国",
+      "rating": "4.1",
+      "reviews": "493",
+      "area": "brooklyn",
+      "place_id": "ChIJ3zy-2UxEwokRF3Xq989NCjM",
+      "google_primary_type": "hotel",
+      "google_types": [
+        "hotel",
+        "lodging",
+        "point_of_interest",
+        "establishment"
+      ],
+      "source": "google_places_backfill",
+      "category_source": "google_places_types"
+    },
+    {
+      "name": "Harper Solutions LLC",
+      "phone": "(347) 603-8844",
+      "address": "42 West St, Brooklyn, NY 11222美国",
+      "rating": "",
+      "reviews": "",
+      "area": "brooklyn"
+    },
+    {
+      "name": "Home Court Real Estate LLC",
+      "phone": "(718) 683-7912",
+      "address": "100-31 Metropolitan Ave, Forest Hills, NY 11375美国",
+      "rating": "5",
+      "reviews": "21",
+      "area": "queens",
+      "place_id": "ChIJ7XS7PRpewokRPV6HUIKq5Fs",
+      "google_primary_type": "real_estate_agency",
+      "google_types": [
+        "real_estate_agency",
+        "consultant",
+        "general_contractor",
+        "finance",
+        "point_of_interest",
+        "service",
+        "establishment"
+      ],
+      "source": "google_places_backfill",
+      "category_source": "google_places_types"
+    },
+    {
+      "name": "Homieland Realty Inc.",
+      "phone": "(646) 402-5245",
+      "address": "31-38 137th St, Flushing, NY 11354美国",
+      "rating": "1",
+      "reviews": "1",
+      "area": "flushing",
+      "place_id": "ChIJTYacqmJhwokRdk-5rQH0fp4",
+      "google_primary_type": "real_estate_agency",
+      "google_types": [
+        "real_estate_agency",
+        "service",
+        "point_of_interest",
+        "establishment"
+      ],
+      "source": "google_places_backfill",
+      "category_source": "google_places_types"
+    },
+    {
+      "name": "Infrastructure Advisors LLC",
+      "phone": "(917) 238-5468",
+      "address": "40 West 116 Street #B1104, New York, NY 10026美国",
+      "rating": "",
+      "reviews": "",
+      "area": "manhattan"
+    },
+    {
+      "name": "J E Fabio Realty Inc",
+      "phone": "(718) 359-2366",
+      "address": "150-66 Bayside Ave, Flushing, NY 11354美国",
+      "rating": "3.2",
+      "reviews": "20",
+      "area": "flushing",
+      "place_id": "ChIJww0mEp6KwokRhDhnkHgc0M4",
+      "google_primary_type": "real_estate_agency",
+      "google_types": [
+        "real_estate_agency",
+        "service",
+        "point_of_interest",
+        "establishment"
+      ],
+      "source": "google_places_backfill",
+      "category_source": "google_places_types"
+    },
+    {
+      "name": "Jamie Realty Group in Queens and Long Island",
+      "phone": "(718) 886-0668",
+      "address": "200-11 32nd Ave, Flushing, NY 11361美国",
+      "rating": "4.8",
+      "reviews": "61",
+      "area": "flushing",
+      "place_id": "ChIJtbg7Nv-LwokROQxPnDimoXM",
+      "google_primary_type": "real_estate_agency",
+      "google_types": [
+        "real_estate_agency",
+        "service",
+        "point_of_interest",
+        "establishment"
+      ],
+      "source": "google_places_backfill",
+      "category_source": "google_places_types"
+    },
+    {
+      "name": "Janice Wei 魏云熙| Luxury Real Estate Advisor – B Square Realty NY",
+      "phone": "(518) 990-9999",
+      "address": "136-20 38th Ave #3e, Flushing, NY 11354美国",
+      "rating": "",
+      "reviews": "",
+      "area": "flushing",
+      "place_id": "ChIJB7CWMTFhwokRCWtxpkbFNtQ",
+      "google_primary_type": "service",
+      "google_types": [
+        "point_of_interest",
+        "service",
+        "establishment"
+      ],
+      "source": "google_places_backfill",
+      "category_source": "google_places_types"
+    },
+    {
+      "name": "Jasmine Ji, Real Estate Agent 纽约金牌地产经纪",
+      "phone": "(917) 808-5286",
+      "address": "90 5th Ave, New York, NY 10011美国",
+      "rating": "5",
+      "reviews": "14",
+      "area": "manhattan",
+      "place_id": "ChIJGfo3OFNZwokRMjF9vsDM3hw",
+      "google_primary_type": "service",
+      "google_types": [
+        "point_of_interest",
+        "service",
+        "establishment"
+      ],
+      "source": "google_places_backfill",
+      "category_source": "google_places_types"
+    },
+    {
+      "name": "Jelin Zhao | Real Estate Professional || BUY & SELL (Español, 中文)",
+      "phone": "(917) 285-5383",
+      "address": "34-36 Union St Ste.201, Flushing, NY 11354美国",
+      "rating": "5",
+      "reviews": "24",
+      "area": "flushing",
+      "place_id": "ChIJg3lUBo5hwokRHxhocMSft_g",
+      "google_primary_type": "service",
+      "google_types": [
+        "point_of_interest",
+        "service",
+        "establishment"
+      ],
+      "source": "google_places_backfill",
+      "category_source": "google_places_types"
+    },
+    {
+      "name": "Jennifer Lu - NYC Real Estate agent at compass, English and Mandarin Chinese speaking",
+      "phone": "(805) 728-7017",
+      "address": "110 5th Ave 3rd fl, New York, NY 10011美国",
+      "rating": "5",
+      "reviews": "14",
+      "area": "manhattan",
+      "place_id": "ChIJ8az4TfNZwokR77QQdAcWqaw",
+      "google_primary_type": "service",
+      "google_types": [
+        "service",
+        "point_of_interest",
+        "establishment"
+      ],
+      "source": "google_places_backfill",
+      "category_source": "google_places_types"
+    },
+    {
+      "name": "Joe Zhu Remax Edge Real Estate",
+      "phone": "(917) 967-5966",
+      "address": "9425 3rd Ave, Brooklyn, NY 11209美国",
+      "rating": "5",
+      "reviews": "9",
+      "area": "brooklyn",
+      "place_id": "ChIJm1ENzkNPwokRaPwzknv962M",
+      "google_primary_type": "service",
+      "google_types": [
+        "real_estate_agency",
+        "service",
+        "point_of_interest",
+        "establishment"
+      ],
+      "source": "google_places_backfill",
+      "category_source": "google_places_types"
+    },
+    {
+      "name": "Josh Kellerman - Real Estate Team",
+      "phone": "(917) 848-4201",
+      "address": "42-40 Bell Blvd, Bayside, NY 11361美国",
+      "rating": "4.9",
+      "reviews": "13",
+      "area": "queens",
+      "place_id": "ChIJZdreyhhhwokRvfr0jU-XAoQ",
+      "google_primary_type": "real_estate_agency",
+      "google_types": [
+        "real_estate_agency",
+        "point_of_interest",
+        "service",
+        "establishment"
+      ],
+      "source": "google_places_backfill",
+      "category_source": "google_places_types"
+    },
+    {
+      "name": "June Chang, Realtor - JuneNYC Team - E Realty International Corp",
+      "phone": "(929) 560-6086",
+      "address": "39-07 Prince St Ste 4D, Flushing, NY 11354美国",
+      "rating": "5",
+      "reviews": "77",
+      "area": "flushing"
+    },
+    {
+      "name": "KHL Retail LLC",
+      "phone": "(646) 434-8234",
+      "address": "312 East 23rd Street, New York, NY 10010美国",
+      "rating": "",
+      "reviews": "",
+      "area": "manhattan"
+    },
+    {
+      "name": "KONKRETE LLC",
+      "phone": "(631) 774-5913",
+      "address": "134-30 157th STREET, JAMAICA, NY 11434美国",
+      "rating": "",
+      "reviews": "",
+      "area": "queens"
+    },
+    {
+      "name": "Karten Real Estate Services",
+      "phone": "(917) 502-2635",
+      "address": "214-05 39th Ave, Bayside, NY 11361美国",
+      "rating": "4.9",
+      "reviews": "38",
+      "area": "queens",
+      "place_id": "ChIJYZ8SyAqKwokRWNMIIFAZcPQ",
+      "google_primary_type": "real_estate_agency",
+      "google_types": [
+        "real_estate_agency",
+        "point_of_interest",
+        "service",
+        "establishment"
+      ],
+      "source": "google_places_backfill",
+      "category_source": "google_places_types"
+    },
+    {
+      "name": "Katrina Wang -Chase Global Realty Agent 纽约地产销冠",
+      "phone": "(718) 757-6068",
+      "address": "140-75 Ash Ave # 2e, Flushing, NY 11355美国",
+      "rating": "5",
+      "reviews": "21",
+      "area": "flushing",
+      "place_id": "ChIJ-e4kBD9hwokRnCcsnJAAPd8",
+      "google_primary_type": "service",
+      "google_types": [
+        "point_of_interest",
+        "service",
+        "establishment"
+      ],
+      "source": "google_places_backfill",
+      "category_source": "google_places_types"
+    },
+    {
+      "name": "Keller Williams Realty Landmark",
+      "phone": "(718) 475-2700",
+      "address": "32-55 Francis Lewis Blvd, Flushing, NY 11358美国",
+      "rating": "3.4",
+      "reviews": "58",
+      "area": "flushing",
+      "place_id": "ChIJI7xgyjBgwokRnUNBAhBC0Ro",
+      "google_primary_type": "real_estate_agency",
+      "google_types": [
+        "real_estate_agency",
+        "point_of_interest",
+        "service",
+        "establishment"
+      ],
+      "source": "google_places_backfill",
+      "category_source": "google_places_types"
+    },
+    {
+      "name": "Keller Williams Realty Landmark II",
+      "phone": "(347) 846-1200",
+      "address": "75-35 31st Ave Ste 202, East Elmhurst, NY 11370美国",
+      "rating": "4.4",
+      "reviews": "64",
+      "area": "elmhurst",
+      "place_id": "ChIJ32dD4QpfwokRRqJhHjIqQqE",
+      "google_primary_type": "real_estate_agency",
+      "google_types": [
+        "real_estate_agency",
+        "service",
+        "point_of_interest",
+        "establishment"
+      ],
+      "source": "google_places_backfill",
+      "category_source": "google_places_types"
+    },
+    {
+      "name": "Kwan Cheung - Associate Real Estate Broker at Century Homes Realty Group",
+      "phone": "(516) 822-6688",
+      "address": "34-36 Union St Ste.201, Flushing, NY 11354美国",
+      "rating": "",
+      "reviews": "",
+      "area": "flushing",
+      "place_id": "ChIJC9NaP95hwokRs4x9KbAI5PE",
+      "google_primary_type": "service",
+      "google_types": [
+        "point_of_interest",
+        "service",
+        "establishment"
+      ],
+      "source": "google_places_backfill",
+      "category_source": "google_places_types"
+    },
+    {
+      "name": "LDM Real Estate LLC",
+      "phone": "(718) 746-1600",
+      "address": "11-13 154th St, Whitestone, NY 11357美国",
+      "rating": "3.8",
+      "reviews": "4",
+      "area": "flushing",
+      "place_id": "ChIJ4UUwg-2KwokRLQtQaTWZN3w",
+      "google_primary_type": "service",
+      "google_types": [
+        "real_estate_agency",
+        "general_contractor",
+        "point_of_interest",
+        "service",
+        "establishment"
+      ],
+      "source": "google_places_backfill",
+      "category_source": "google_places_types"
+    },
+    {
+      "name": "Liberty Chateau Realty Inc",
+      "phone": "(347) 542-3913",
+      "address": "141-07 20th Ave, Whitestone, NY 11357美国",
+      "rating": "4.8",
+      "reviews": "4",
+      "area": "flushing",
+      "place_id": "ChIJF1A9KKWKwokR612I7iQBNjE",
+      "google_primary_type": "real_estate_agency",
+      "google_types": [
+        "real_estate_agency",
+        "point_of_interest",
+        "service",
+        "establishment"
+      ],
+      "source": "google_places_backfill",
+      "category_source": "google_places_types"
+    },
+    {
+      "name": "Lily Tran Team - Forest Hills Realtor with eXp Realty New York",
+      "phone": "(917) 279-0177",
+      "address": "Groton St, Forest Hills, NY 11375美国",
+      "rating": "4.8",
+      "reviews": "56",
+      "area": "queens",
+      "place_id": "ChIJ8VOxlyJewokRzPlIvgbk_Po",
+      "google_primary_type": "service",
+      "google_types": [
+        "real_estate_agency",
+        "finance",
+        "consultant",
+        "service",
+        "point_of_interest",
+        "establishment"
+      ],
+      "source": "google_places_backfill",
+      "category_source": "google_places_types"
+    },
+    {
+      "name": "Lily Xiaoli Xie - Lily Realty Group 莉利地产集团 - 纽约长岛房地产中介",
+      "phone": "(516) 714-2678",
+      "address": "1129 Northern Blvd Ste 410, Manhasset, NY 11030美国",
+      "rating": "4.9",
+      "reviews": "42",
+      "area": "longisland",
+      "place_id": "ChIJAQBAoquJwokRkJgnXEeiLYI",
+      "google_primary_type": "service",
+      "google_types": [
+        "point_of_interest",
+        "real_estate_agency",
+        "service",
+        "establishment"
+      ],
+      "source": "google_places_backfill",
+      "category_source": "google_places_types"
+    },
+    {
+      "name": "Lovett Realty",
+      "phone": "(718) 445-9500",
+      "address": "109-15 14th Ave, Queens, NY 11356美国",
+      "rating": "3.6",
+      "reviews": "66",
+      "area": "queens",
+      "place_id": "ChIJ-btOQFv1wokROUVXkvd3KBk",
+      "google_primary_type": "real_estate_agency",
+      "google_types": [
+        "real_estate_agency",
+        "point_of_interest",
+        "service",
+        "establishment"
+      ],
+      "source": "google_places_backfill",
+      "category_source": "google_places_types"
+    },
+    {
+      "name": "Madison Realty",
+      "phone": "(347) 229-4918",
+      "address": "71-25 Austin St #203, Forest Hills, NY 11375美国",
+      "rating": "4.6",
+      "reviews": "31",
+      "area": "queens",
+      "place_id": "ChIJPY3k4ZhgwokRnZWvjaVubYY",
+      "google_primary_type": "real_estate_agency",
+      "google_types": [
+        "real_estate_agency",
+        "service",
+        "point_of_interest",
+        "establishment"
+      ],
+      "source": "google_places_backfill",
+      "category_source": "google_places_types"
+    },
+    {
+      "name": "Maureen Folan Real Estate Group",
+      "phone": "(718) 767-8200",
+      "address": "61-43 186th St, Fresh Meadows, NY 11365美国",
+      "rating": "4.9",
+      "reviews": "343",
+      "area": "flushing",
+      "place_id": "ChIJH9EmhcxhwokRnIwQibz6K_Y",
+      "google_primary_type": "real_estate_agency",
+      "google_types": [
+        "real_estate_agency",
+        "consultant",
+        "point_of_interest",
+        "service",
+        "establishment"
+      ],
+      "source": "google_places_backfill",
+      "category_source": "google_places_types"
+    },
+    {
+      "name": "Mayflower Realty Associates Inc",
+      "phone": "(718) 961-6551",
+      "address": "132-44 Booth Memorial Ave, Flushing, NY 11355美国",
+      "rating": "1.9",
+      "reviews": "12",
+      "area": "flushing",
+      "place_id": "ChIJXZ14Lm5gwokRZj0ImRPY1X8",
+      "google_primary_type": "real_estate_agency",
+      "google_types": [
+        "real_estate_agency",
+        "point_of_interest",
+        "service",
+        "establishment"
+      ],
+      "source": "google_places_backfill",
+      "category_source": "google_places_types"
+    },
+    {
+      "name": "N & H Realty Group",
+      "phone": "(718) 902-8992",
+      "address": "66-47 Grand Ave 2nd Fl, Queens, NY 11378美国",
+      "rating": "5",
+      "reviews": "208",
+      "area": "queens",
+      "place_id": "ChIJp89o7iFhwokRALa-DkY5Wmw",
+      "google_primary_type": "real_estate_agency",
+      "google_types": [
+        "real_estate_agency",
+        "consultant",
+        "finance",
+        "point_of_interest",
+        "service",
+        "establishment"
+      ],
+      "source": "google_places_backfill",
+      "category_source": "google_places_types"
+    },
+    {
+      "name": "NY Empire Real Estate",
+      "phone": "(718) 520-0120",
+      "address": "110-06 69th Ave #1A, Forest Hills, NY 11375美国",
+      "rating": "4.9",
+      "reviews": "85",
+      "area": "queens",
+      "place_id": "ChIJLZDVAilewokRsgF3CS2kyNw",
+      "google_primary_type": "real_estate_agency",
+      "google_types": [
+        "real_estate_agency",
+        "service",
+        "point_of_interest",
+        "establishment"
+      ],
+      "source": "google_places_backfill",
+      "category_source": "google_places_types"
+    },
+    {
+      "name": "NY Superior Realty",
+      "phone": "(718) 205-7770",
+      "address": "55-13 69th St Suite B, Maspeth, NY 11378美国",
+      "rating": "4.8",
+      "reviews": "86",
+      "area": "queens",
+      "place_id": "ChIJbQg49_NewokRxt5Jw2K3kgI",
+      "google_primary_type": "real_estate_agency",
+      "google_types": [
+        "real_estate_agency",
+        "point_of_interest",
+        "service",
+        "establishment"
+      ],
+      "source": "google_places_backfill",
+      "category_source": "google_places_types"
+    },
+    {
+      "name": "Naomi Klein Realty",
+      "phone": "(917) 447-8884",
+      "address": "61-43 186th St, Fresh Meadows, NY 11365美国",
+      "rating": "3.7",
+      "reviews": "14",
+      "area": "flushing",
+      "place_id": "ChIJh2v0mLFhwokRJmZOxwUDGc4",
+      "google_primary_type": "service",
+      "google_types": [
+        "condominium_complex",
+        "apartment_building",
+        "real_estate_agency",
+        "association_or_organization",
+        "point_of_interest",
+        "service",
+        "establishment"
+      ],
+      "source": "google_places_backfill",
+      "category_source": "google_places_types"
+    },
+    {
+      "name": "New Home Mega Real Estate Management Corp | Houses for Sale - Expert Real Estate Local Realtor",
+      "phone": "(718) 808-2030",
+      "address": "158-11 78th Ave, Fresh Meadows, NY 11366美国",
+      "rating": "4.8",
+      "reviews": "43",
+      "area": "flushing",
+      "place_id": "ChIJBbCDVPBgwokRk2GU3W958wE",
+      "google_primary_type": "real_estate_agency",
+      "google_types": [
+        "real_estate_agency",
+        "consultant",
+        "general_contractor",
+        "finance",
+        "point_of_interest",
+        "service",
+        "establishment"
+      ],
+      "source": "google_places_backfill",
+      "category_source": "google_places_types"
+    },
+    {
+      "name": "New Ocean Realty | 新洋地产",
+      "phone": "(917) 818-1388",
+      "address": "135-50 Roosevelt Ave # 302, Flushing, NY 11354美国",
+      "rating": "",
+      "reviews": "",
+      "area": "flushing",
+      "place_id": "ChIJ4-yRdafVjGwRtaRLlWWsbFo",
+      "google_primary_type": "real_estate_agency",
+      "google_types": [
+        "real_estate_agency",
+        "service",
+        "point_of_interest",
+        "establishment"
+      ],
+      "source": "google_places_backfill",
+      "category_source": "google_places_types"
+    },
+    {
+      "name": "New York One Real Estate Group",
+      "phone": "(718) 755-2882",
+      "address": "91-06 63rd Dr 1st Floor, Rego Park, NY 11374美国",
+      "rating": "4.8",
+      "reviews": "51",
+      "area": "queens",
+      "place_id": "ChIJ91LhZDhewokRM6Y_WnNWiCo",
+      "google_primary_type": "real_estate_agency",
+      "google_types": [
+        "real_estate_agency",
+        "point_of_interest",
+        "service",
+        "establishment"
+      ],
+      "source": "google_places_backfill",
+      "category_source": "google_places_types"
+    },
+    {
+      "name": "New York Property Agent, Weimin Tan",
+      "phone": "(212) 380-6134",
+      "address": "641 Lexington Ave 22nd floor, New York, NY 10022美国",
+      "rating": "5",
+      "reviews": "51",
+      "area": "manhattan",
+      "place_id": "ChIJ5YSCIOVYwokRLtSCoznx9Vc",
+      "google_primary_type": "service",
+      "google_types": [
+        "point_of_interest",
+        "service",
+        "establishment"
+      ],
+      "source": "google_places_backfill",
+      "category_source": "google_places_types"
+    },
+    {
+      "name": "Nikolas Chen | 纽约地产经纪 | Manhattan Agent | Brown Harris Stevens",
+      "phone": "(646) 995-0544",
+      "address": "360 Madison Ave 9th Floor, New York, NY 10017美国",
+      "rating": "5",
+      "reviews": "3",
+      "area": "manhattan",
+      "place_id": "ChIJa2twtu9ZwokRNyyoiCdvOWs",
+      "google_primary_type": "real_estate_agency",
+      "google_types": [
+        "real_estate_agency",
+        "service",
+        "point_of_interest",
+        "establishment"
+      ],
+      "source": "google_places_backfill",
+      "category_source": "google_places_types"
+    },
+    {
+      "name": "Nina Lai at VORO | Real Estate agents 长岛华人地产经济 房地产中介",
+      "phone": "(315) 566-1378",
+      "address": "1129 Northern Blvd #404, Manhasset, NY 11030美国",
+      "rating": "",
+      "reviews": "",
+      "area": "longisland",
+      "place_id": "ChIJ9Zda-NmJwokRoZoEwGY4NYg",
+      "google_primary_type": "service",
+      "google_types": [
+        "point_of_interest",
+        "service",
+        "establishment"
+      ],
+      "source": "google_places_backfill",
+      "category_source": "google_places_types"
+    },
+    {
+      "name": "Olam Realty Group",
+      "phone": "(718) 831-2891",
+      "address": "141-24 Jewel Ave, Flushing, NY 11367美国",
+      "rating": "5",
+      "reviews": "183",
+      "area": "flushing",
+      "place_id": "ChIJgwydMopgwokRZCbfNdaoPrY",
+      "google_primary_type": "real_estate_agency",
+      "google_types": [
+        "real_estate_agency",
+        "point_of_interest",
+        "service",
+        "establishment"
+      ],
+      "source": "google_places_backfill",
+      "category_source": "google_places_types"
+    },
+    {
+      "name": "Olga Mayayeva | Real Estate Broker-eXp Realty",
+      "phone": "(718) 781-3074",
+      "address": "68-56 Groton St, Forest Hills, NY 11375美国",
+      "rating": "4.9",
+      "reviews": "79",
+      "area": "queens",
+      "place_id": "ChIJQ-YBqBZfwokRZ9LJwLEtYbg",
+      "google_primary_type": "real_estate_agency",
+      "google_types": [
+        "real_estate_agency",
+        "consultant",
+        "finance",
+        "service",
+        "point_of_interest",
+        "establishment"
+      ],
+      "source": "google_places_backfill",
+      "category_source": "google_places_types"
+    },
+    {
+      "name": "Papa Realty",
+      "phone": "(718) 767-3148",
+      "address": "12-61 150th St, Flushing, NY 11357美国",
+      "rating": "5",
+      "reviews": "2",
+      "area": "flushing",
+      "place_id": "ChIJR3dsvpSKwokRYG7qbOUi99s",
+      "google_primary_type": "real_estate_agency",
+      "google_types": [
+        "real_estate_agency",
+        "point_of_interest",
+        "service",
+        "establishment"
+      ],
+      "source": "google_places_backfill",
+      "category_source": "google_places_types"
+    },
+    {
+      "name": "Parker Kennedy Realty Corp.",
+      "phone": "(718) 964-6400",
+      "address": "24716 Union Tpke, Bellerose, NY 11426美国",
+      "rating": "",
+      "reviews": "",
+      "area": "other",
+      "place_id": "ChIJi3JkZGtiwokRRtVD-cHULgQ",
+      "google_primary_type": "real_estate_agency",
+      "google_types": [
+        "real_estate_agency",
+        "point_of_interest",
+        "service",
+        "establishment"
+      ],
+      "source": "google_places_backfill",
+      "category_source": "google_places_types"
+    },
+    {
+      "name": "Parkview Realty LLC",
+      "phone": "(718) 699-2500",
+      "address": "50-07 108th St, Corona, NY 11368美国",
+      "rating": "4.5",
+      "reviews": "15",
+      "area": "elmhurst",
+      "place_id": "ChIJ2cl7tc9fwokRk-zMSngMgec",
+      "google_primary_type": "real_estate_agency",
+      "google_types": [
+        "real_estate_agency",
+        "service",
+        "point_of_interest",
+        "establishment"
+      ],
+      "source": "google_places_backfill",
+      "category_source": "google_places_types"
+    },
+    {
+      "name": "Paula Caruso Annarumma Realtor - Real Estate Agent in New York - RE/MAX TEAM",
+      "phone": "(718) 781-3055",
+      "address": "27-04 Francis Lewis Blvd, Flushing, NY 11358美国",
+      "rating": "5",
+      "reviews": "47",
+      "area": "flushing",
+      "place_id": "ChIJh9a4B3-KwokRXbcMgC-e25o",
+      "google_primary_type": "service",
+      "google_types": [
+        "point_of_interest",
+        "real_estate_agency",
+        "service",
+        "establishment"
+      ],
+      "source": "google_places_backfill",
+      "category_source": "google_places_types"
+    },
+    {
+      "name": "Prime America Real Estate, Inc.",
+      "phone": "(347) 725-3142",
+      "address": "61-23 Fresh Pond Rd, Middle Village, NY 11379美国",
+      "rating": "4.8",
+      "reviews": "43",
+      "area": "queens",
+      "place_id": "ChIJ__9z9BxcwokR3eUnAbMCV58",
+      "google_primary_type": "real_estate_agency",
+      "google_types": [
+        "real_estate_agency",
+        "service",
+        "point_of_interest",
+        "establishment"
+      ],
+      "source": "google_places_backfill",
+      "category_source": "google_places_types"
+    },
+    {
+      "name": "Promise Realty",
+      "phone": "(718) 445-0000",
+      "address": "188-02 Northern Blvd 2nd fl, Flushing, NY 11358美国",
+      "rating": "2.8",
+      "reviews": "23",
+      "area": "flushing",
+      "place_id": "ChIJN3-XYs1hwokRpfiOcCYAO3A",
+      "google_primary_type": "real_estate_agency",
+      "google_types": [
+        "real_estate_agency",
+        "point_of_interest",
+        "service",
+        "establishment"
+      ],
+      "source": "google_places_backfill",
+      "category_source": "google_places_types"
+    },
+    {
+      "name": "Prospes Real Estate Corp 凯盛地产",
+      "phone": "(718) 321-2800",
+      "address": "Back Office, 198-08 33rd Ave, Flushing, NY 11358美国",
+      "rating": "5",
+      "reviews": "3",
+      "area": "flushing",
+      "place_id": "ChIJVycyx8lhwokRPOD4azMfXrY",
+      "google_primary_type": "real_estate_agency",
+      "google_types": [
+        "real_estate_agency",
+        "service",
+        "point_of_interest",
+        "establishment"
+      ],
+      "source": "google_places_backfill",
+      "category_source": "google_places_types"
+    },
+    {
+      "name": "Queens Home Team at Keller Williams Realty Landmark II",
+      "phone": "(718) 968-5538",
+      "address": "75-35 31st Ave Suite 202, East Elmhurst, NY 11370美国",
+      "rating": "4.9",
+      "reviews": "219",
+      "area": "elmhurst",
+      "place_id": "ChIJoQubBgtfwokRPWrsXQWL4VA",
+      "google_primary_type": "real_estate_agency",
+      "google_types": [
+        "real_estate_agency",
+        "point_of_interest",
+        "service",
+        "establishment"
+      ],
+      "source": "google_places_backfill",
+      "category_source": "google_places_types"
+    },
+    {
+      "name": "RE/MAX Team 恒富地产",
+      "phone": "(929) 460-0008",
+      "address": "6212 5th Ave, Brooklyn, NY 11220美国",
+      "rating": "4",
+      "reviews": "4",
+      "area": "sunset",
+      "place_id": "ChIJ_6rFqwBFwokRgYpWwGmTN7c",
+      "google_primary_type": "real_estate_agency",
+      "google_types": [
+        "real_estate_agency",
+        "point_of_interest",
+        "service",
+        "establishment"
+      ],
+      "source": "google_places_backfill",
+      "category_source": "google_places_types"
+    },
+    {
+      "name": "ROMMEL VAZQUEZ License Associate Real Estate Broker",
+      "phone": "(917) 734-9706",
+      "address": "81-15 Queens Blvd, Elmhurst, NY 11373美国",
+      "rating": "5",
+      "reviews": "24",
+      "area": "elmhurst",
+      "place_id": "ChIJ_7lCDxNfwokRN_XMtO6Svrk",
+      "google_primary_type": "real_estate_agency",
+      "google_types": [
+        "real_estate_agency",
+        "service",
+        "point_of_interest",
+        "establishment"
+      ],
+      "source": "google_places_backfill",
+      "category_source": "google_places_types"
+    },
+    {
+      "name": "Realty One Group Dynasty",
+      "phone": "(718) 747-7747",
+      "address": "11-05 154th St, Whitestone, NY 11357美国",
+      "rating": "4.7",
+      "reviews": "196",
+      "area": "flushing",
+      "place_id": "ChIJ94YTj-2KwokRIhKSeVpIk-I",
+      "google_primary_type": "real_estate_agency",
+      "google_types": [
+        "real_estate_agency",
+        "service",
+        "point_of_interest",
+        "establishment"
+      ],
+      "source": "google_places_backfill",
+      "category_source": "google_places_types"
+    },
+    {
+      "name": "Richard Polanco Licensed Real Estate Salesperson",
+      "phone": "(347) 651-2076",
+      "address": "75-35 31st Ave Ste 202, East Elmhurst, NY 11370美国",
+      "rating": "4.9",
+      "reviews": "37",
+      "area": "elmhurst",
+      "place_id": "ChIJa6TzPyRfwokRuHg7Ogbphp4",
+      "google_primary_type": "consultant",
+      "google_types": [
+        "real_estate_agency",
+        "consultant",
+        "point_of_interest",
+        "service",
+        "establishment"
+      ],
+      "source": "google_places_backfill",
+      "category_source": "google_places_types"
+    },
+    {
+      "name": "Rock Realty",
+      "phone": "(718) 478-4545",
+      "address": "75-47 31st Ave, East Elmhurst, NY 11370美国",
+      "rating": "4.9",
+      "reviews": "24",
+      "area": "elmhurst",
+      "place_id": "ChIJQbBWD5hfwokRaUiKwANRAYI",
+      "google_primary_type": "real_estate_agency",
+      "google_types": [
+        "real_estate_agency",
+        "point_of_interest",
+        "service",
+        "establishment"
+      ],
+      "source": "google_places_backfill",
+      "category_source": "google_places_types"
+    },
+    {
+      "name": "Rosen Jacob Realty Services",
+      "phone": "(212) 602-1515",
+      "address": "3418 Northern Boulevard, Queens, NY 11101美国",
+      "rating": "5",
+      "reviews": "1",
+      "area": "queens",
+      "place_id": "ChIJrS0xMNRfwokRYJ2UQfqGaXY",
+      "google_primary_type": "real_estate_agency",
+      "google_types": [
+        "real_estate_agency",
+        "finance",
+        "service",
+        "point_of_interest",
+        "establishment"
+      ],
+      "source": "google_places_backfill",
+      "category_source": "google_places_types"
+    },
+    {
+      "name": "Rosu Appraisal Management Corp.",
+      "phone": "(833) 476-7826",
+      "address": "2324 Healy Ave, Far Rockaway, NY 11691美国",
+      "rating": "",
+      "reviews": "",
+      "area": "queens"
+    },
+    {
+      "name": "Royalux Realty LLC",
+      "phone": "(718) 666-6066",
+      "address": "131-12 40th Rd FL 2, Flushing, NY 11354美国",
+      "rating": "3.7",
+      "reviews": "6",
+      "area": "flushing",
+      "place_id": "ChIJ0b96e7NhwokR_gb-Qgro8Ss",
+      "google_primary_type": "real_estate_agency",
+      "google_types": [
+        "real_estate_agency",
+        "service",
+        "point_of_interest",
+        "establishment"
+      ],
+      "source": "google_places_backfill",
+      "category_source": "google_places_types"
+    },
+    {
+      "name": "Russo Realty Properties",
+      "phone": "(718) 406-9018",
+      "address": "82-14 Eliot Ave, Middle Village, NY 11379美国",
+      "rating": "5",
+      "reviews": "3",
+      "area": "queens",
+      "place_id": "ChIJPUlbrm5ewokRGBzpf_NWUZY",
+      "google_primary_type": "real_estate_agency",
+      "google_types": [
+        "real_estate_agency",
+        "service",
+        "point_of_interest",
+        "establishment"
+      ],
+      "source": "google_places_backfill",
+      "category_source": "google_places_types"
+    },
+    {
+      "name": "SKYLUX REALTY (朝阳地产)",
+      "phone": "(718) 500-2231",
+      "address": "55 Northern Blvd Ste 302, Great Neck, NY 11021美国",
+      "rating": "5",
+      "reviews": "3",
+      "area": "longisland",
+      "place_id": "ChIJk8ZOBtZhwokRx7FSizzu3nU",
+      "google_primary_type": "real_estate_agency",
+      "google_types": [
+        "real_estate_agency",
+        "service",
+        "point_of_interest",
+        "establishment"
+      ],
+      "source": "google_places_backfill",
+      "category_source": "google_places_types"
+    },
+    {
+      "name": "Showcase Realty Inc",
+      "phone": "(718) 520-0000",
+      "address": "113-25 Queens Blvd # 112, Flushing, NY 11375美国",
+      "rating": "4.7",
+      "reviews": "15",
+      "area": "flushing",
+      "place_id": "ChIJibHnHJlgwokRo7dAJz85qco",
+      "google_primary_type": "real_estate_agency",
+      "google_types": [
+        "real_estate_agency",
+        "service",
+        "point_of_interest",
+        "establishment"
+      ],
+      "source": "google_places_backfill",
+      "category_source": "google_places_types"
+    },
+    {
+      "name": "Silver Key Realty",
+      "phone": "(347) 445-0118",
+      "address": "150-29 72nd Rd Suite 2C, Flushing, NY 11367美国",
+      "rating": "4.9",
+      "reviews": "64",
+      "area": "flushing",
+      "place_id": "ChIJA90vPIdhwokRUJwTzAG15OY",
+      "google_primary_type": "real_estate_agency",
+      "google_types": [
+        "real_estate_agency",
+        "point_of_interest",
+        "service",
+        "establishment"
+      ],
+      "source": "google_places_backfill",
+      "category_source": "google_places_types"
+    },
+    {
+      "name": "Sool Realty Corporation",
+      "phone": "(718) 426-8904",
+      "address": "40-28 Junction Blvd, Corona, NY 11368美国",
+      "rating": "4.6",
+      "reviews": "98",
+      "area": "elmhurst",
+      "place_id": "ChIJYZzjZLdfwokRj6Y_FN6XvaU",
+      "google_primary_type": "real_estate_agency",
+      "google_types": [
+        "real_estate_agency",
+        "point_of_interest",
+        "service",
+        "establishment"
+      ],
+      "source": "google_places_backfill",
+      "category_source": "google_places_types"
+    },
+    {
+      "name": "Sovereign Realty of NY, Inc",
+      "phone": "(347) 838-3200",
+      "address": "114-06 Queens Blvd Ste A8, Forest Hills, NY 11375美国",
+      "rating": "5",
+      "reviews": "29",
+      "area": "queens",
+      "place_id": "ChIJq6r-GPVdwokRxinzd-zqclc",
+      "google_primary_type": "real_estate_agency",
+      "google_types": [
+        "real_estate_agency",
+        "consultant",
+        "service",
+        "point_of_interest",
+        "establishment"
+      ],
+      "source": "google_places_backfill",
+      "category_source": "google_places_types"
+    },
+    {
+      "name": "Strictly Realty",
+      "phone": "(718) 459-2920",
+      "address": "95-20 63rd Rd suite 2 A, Rego Park, NY 11374美国",
+      "rating": "4.2",
+      "reviews": "10",
+      "area": "queens",
+      "place_id": "ChIJC12T4DZewokRDMd24MyG-1A",
+      "google_primary_type": "real_estate_agency",
+      "google_types": [
+        "real_estate_agency",
+        "point_of_interest",
+        "service",
+        "establishment"
+      ],
+      "source": "google_places_backfill",
+      "category_source": "google_places_types"
+    },
+    {
+      "name": "Susanne Gutermuth - Douglas Elliman Real Estate",
+      "phone": "(917) 225-5196",
+      "address": "36-29 Bell Blvd, Bayside, NY 11361美国",
+      "rating": "5",
+      "reviews": "26",
+      "area": "queens",
+      "place_id": "ChIJodfulxdZwokRr5pq9RMhrhU",
+      "google_primary_type": "service",
+      "google_types": [
+        "real_estate_agency",
+        "consultant",
+        "service",
+        "point_of_interest",
+        "establishment"
+      ],
+      "source": "google_places_backfill",
+      "category_source": "google_places_types"
+    },
+    {
+      "name": "Sze Guan Tan Real Estate Salesperson",
+      "phone": "(518) 288-8896",
+      "address": "136-20 38th Ave #3e, Flushing, NY 11354美国",
+      "rating": "4.9",
+      "reviews": "7",
+      "area": "flushing",
+      "place_id": "ChIJy4b7c8t9wokRKQGjxrHHrjg",
+      "google_primary_type": "real_estate_agency",
+      "google_types": [
+        "real_estate_agency",
+        "consultant",
+        "point_of_interest",
+        "service",
+        "establishment"
+      ],
+      "source": "google_places_backfill",
+      "category_source": "google_places_types"
+    },
+    {
+      "name": "Tammy Blau - Associate Real Estate Broker at Signature Premier Properties",
+      "phone": "(917) 428-3663",
+      "address": "One Bay Club Dr #12D, Bay Terrace, NY 11360美国",
+      "rating": "5",
+      "reviews": "4",
+      "area": "queens",
+      "place_id": "ChIJb4IX83SKwokRAXbGFIfyf8A",
+      "google_primary_type": "real_estate_agency",
+      "google_types": [
+        "real_estate_agency",
+        "service",
+        "point_of_interest",
+        "establishment"
+      ],
+      "source": "google_places_backfill",
+      "category_source": "google_places_types"
+    },
+    {
+      "name": "Telemundo Realty",
+      "phone": "(718) 205-3737",
+      "address": "102-01 Northern Blvd, Flushing, NY 11368美国",
+      "rating": "4.5",
+      "reviews": "72",
+      "area": "flushing",
+      "place_id": "ChIJd2fd5b9fwokRATJE0oQ19QU",
+      "google_primary_type": "real_estate_agency",
+      "google_types": [
+        "real_estate_agency",
+        "point_of_interest",
+        "service",
+        "establishment"
+      ],
+      "source": "google_places_backfill",
+      "category_source": "google_places_types"
+    },
+    {
+      "name": "Terrace Sotheby's International Realty",
+      "phone": "(718) 268-1045",
+      "address": "16 Station Square, Forest Hills, NY 11375美国",
+      "rating": "4.4",
+      "reviews": "24",
+      "area": "queens",
+      "place_id": "ChIJ1-AYHiFewokRqT5m3V5w6k0",
+      "google_primary_type": "real_estate_agency",
+      "google_types": [
+        "real_estate_agency",
+        "point_of_interest",
+        "service",
+        "establishment"
+      ],
+      "source": "google_places_backfill",
+      "category_source": "google_places_types"
+    },
+    {
+      "name": "The Ariel Group Realty Corp.",
+      "phone": "(917) 319-8856",
+      "address": "801 2nd Avenue, New York, NY 10017美国",
+      "rating": "",
+      "reviews": "",
+      "area": "manhattan",
+      "place_id": "ChIJN5bFOgNZwokRgp1dbb0Fp1Y",
+      "google_primary_type": "real_estate_agency",
+      "google_types": [
+        "real_estate_agency",
+        "point_of_interest",
+        "service",
+        "establishment"
+      ],
+      "source": "google_places_backfill",
+      "category_source": "google_places_types"
+    },
+    {
+      "name": "The Chang Team @ EXIT Realty Team (Queens & Nassau)",
+      "phone": "(718) 358-4000",
+      "address": "45-66 162nd St, Flushing, NY 11358美国",
+      "rating": "4.8",
+      "reviews": "68",
+      "area": "flushing",
+      "place_id": "ChIJiYdnyjBgwokR23Z6YRY3L5Y",
+      "google_primary_type": "real_estate_agency",
+      "google_types": [
+        "real_estate_agency",
+        "consultant",
+        "point_of_interest",
+        "service",
+        "establishment"
+      ],
+      "source": "google_places_backfill",
+      "category_source": "google_places_types"
+    },
+    {
+      "name": "The Proptech Scout",
+      "phone": "(631) 678-8864",
+      "address": "424 W 47th St, New York, NY 10036美国",
+      "rating": "",
+      "reviews": "",
+      "area": "manhattan"
+    },
+    {
+      "name": "The Realty Depot",
+      "phone": "(718) 896-0777",
+      "address": "103-13 Queens Blvd, Forest Hills, NY 11375美国",
+      "rating": "4.8",
+      "reviews": "825",
+      "area": "queens",
+      "place_id": "ChIJ_y121udgwokRciUxdY0JPbw",
+      "google_primary_type": "real_estate_agency",
+      "google_types": [
+        "real_estate_agency",
+        "consultant",
+        "point_of_interest",
+        "service",
+        "establishment"
+      ],
+      "source": "google_places_backfill",
+      "category_source": "google_places_types"
+    },
+    {
+      "name": "The Team B-纽约专业房地产置业安家团队",
+      "phone": "(732) 998-7777",
+      "address": "138 E 50th St #30B, New York, NY 10022美国",
+      "rating": "5",
+      "reviews": "7",
+      "area": "manhattan"
+    },
+    {
+      "name": "Tim Ho Team at Keller Williams Realty Landmark",
+      "phone": "(917) 592-8536",
+      "address": "32-55 Francis Lewis Blvd, Flushing, NY 11358美国",
+      "rating": "5",
+      "reviews": "42",
+      "area": "flushing",
+      "place_id": "ChIJs6jMQ3-KwokRBB4h99b7Z_g",
+      "google_primary_type": "real_estate_agency",
+      "google_types": [
+        "real_estate_agency",
+        "point_of_interest",
+        "service",
+        "establishment"
+      ],
+      "source": "google_places_backfill",
+      "category_source": "google_places_types"
+    },
+    {
+      "name": "Tony Huang, E Realty International Corp",
+      "phone": "(917) 593-3822",
+      "address": "39-07 Prince St Ste 4D, Flushing, NY 11354美国",
+      "rating": "5",
+      "reviews": "1",
+      "area": "flushing",
+      "place_id": "ChIJP5Dk6QdhwokRfSVG_I5wu-0",
+      "google_primary_type": "service",
+      "google_types": [
+        "point_of_interest",
+        "service",
+        "establishment"
+      ],
+      "source": "google_places_backfill",
+      "category_source": "google_places_types"
+    },
+    {
+      "name": "Totem Advisory LLC",
+      "phone": "(718) 355-8942",
+      "address": "634 Dean Street, Brooklyn, NY 11238美国",
+      "rating": "",
+      "reviews": "",
+      "area": "brooklyn"
+    },
+    {
+      "name": "Tscherne Realty, Inc.",
+      "phone": "(718) 672-7400",
+      "address": "80-14 Eliot Ave, Middle Village, NY 11379美国",
+      "rating": "4.8",
+      "reviews": "56",
+      "area": "queens",
+      "place_id": "ChIJJwTXj1xewokRjg_Ni5HpXsI",
+      "google_primary_type": "real_estate_agency",
+      "google_types": [
+        "real_estate_agency",
+        "service",
+        "point_of_interest",
+        "establishment"
+      ],
+      "source": "google_places_backfill",
+      "category_source": "google_places_types"
+    },
+    {
+      "name": "Tyme Realty 泰明不動產",
+      "phone": "(917) 705-1115",
+      "address": "141-07 20th Ave SUITE 303, Whitestone, NY 11357美国",
+      "rating": "4.8",
+      "reviews": "23",
+      "area": "flushing",
+      "place_id": "ChIJm9hGhC9hwokR3-jJGWhq4SI",
+      "google_primary_type": "real_estate_agency",
+      "google_types": [
+        "real_estate_agency",
+        "service",
+        "point_of_interest",
+        "establishment"
+      ],
+      "source": "google_places_backfill",
+      "category_source": "google_places_types"
+    },
+    {
+      "name": "United Realty",
+      "phone": "(718) 631-1900",
+      "address": "45-57 Bell Blvd, Flushing, NY 11361美国",
+      "rating": "4.8",
+      "reviews": "21",
+      "area": "flushing",
+      "place_id": "ChIJgWKF1eZhwokR7GA8RRndQXs",
+      "google_primary_type": "real_estate_agency",
+      "google_types": [
+        "real_estate_agency",
+        "point_of_interest",
+        "service",
+        "establishment"
+      ],
+      "source": "google_places_backfill",
+      "category_source": "google_places_types"
+    },
+    {
+      "name": "Urban Strategies and Solutions LLC",
+      "phone": "(201) 895-1702",
+      "address": "303 East 57th Street, New York, NY 10022美国",
+      "rating": "",
+      "reviews": "",
+      "area": "manhattan"
+    },
+    {
+      "name": "VAL-ADD RE Partners LLC",
+      "phone": "(917) 439-2108",
+      "address": "104 W 40th ST STE 401, New York, NY 10018美国",
+      "rating": "",
+      "reviews": "",
+      "area": "manhattan"
+    },
+    {
+      "name": "VNB Business Brokers, LLC",
+      "phone": "(917) 924-0234",
+      "address": "60 East 42nd Street, New York, NY 10165美国",
+      "rating": "",
+      "reviews": "",
+      "area": "other"
+    },
+    {
+      "name": "Wei Lin, Chase Global Realty Corp",
+      "phone": "(718) 313-7899",
+      "address": "140-75 Ash Ave ofc 2e, Flushing, NY 11355美国",
+      "rating": "5",
+      "reviews": "2",
+      "area": "flushing",
+      "place_id": "ChIJ-VHD-m1hwokRbtvSCE-wEJU",
+      "google_primary_type": "service",
+      "google_types": [
+        "point_of_interest",
+        "service",
+        "establishment"
+      ],
+      "source": "google_places_backfill",
+      "category_source": "google_places_types"
+    },
+    {
+      "name": "White Zinfandel",
+      "phone": "(646) 284-0838",
+      "address": "203 Lafayette Street, New York, NY 10012美国",
+      "rating": "",
+      "reviews": "",
+      "area": "manhattan"
+    },
+    {
+      "name": "Xiao \"Annie\" Zheng at Century Homes Realty Group LLC",
+      "phone": "(347) 882-7788",
+      "address": "34-36 Union St, Flushing, NY 11354美国",
+      "rating": "",
+      "reviews": "",
+      "area": "flushing",
+      "place_id": "ChIJKVAhlK5hwokRLIV86K9hjqc",
+      "google_primary_type": "real_estate_agency",
+      "google_types": [
+        "real_estate_agency",
+        "point_of_interest",
+        "service",
+        "establishment"
+      ],
+      "source": "google_places_backfill",
+      "category_source": "google_places_types"
+    },
+    {
+      "name": "Xzeller Realty, Manuel Vargas Broker & Owner",
+      "phone": "(917) 559-2002",
+      "address": "61-43 186th St Suite 568, Fresh Meadows, NY 11365美国",
+      "rating": "5",
+      "reviews": "44",
+      "area": "flushing",
+      "place_id": "ChIJs6jMQ3-KwokRqrnTOy77U1M",
+      "google_primary_type": "real_estate_agency",
+      "google_types": [
+        "real_estate_agency",
+        "point_of_interest",
+        "service",
+        "establishment"
+      ],
+      "source": "google_places_backfill",
+      "category_source": "google_places_types"
+    },
+    {
+      "name": "YI LIN, Licensed Associate Real Estate Broker",
+      "phone": "(917) 703-3737",
+      "address": "34-36 Union St Ste.201, Flushing, NY 11354美国",
+      "rating": "5",
+      "reviews": "12",
+      "area": "flushing",
+      "place_id": "ChIJ_RWwMChhwokRa-PrqQRDQAQ",
+      "google_primary_type": "real_estate_agency",
+      "google_types": [
+        "real_estate_agency",
+        "service",
+        "point_of_interest",
+        "establishment"
+      ],
+      "source": "google_places_backfill",
+      "category_source": "google_places_types"
+    },
+    {
+      "name": "Yvonne Pho Inc.",
+      "phone": "(347) 206-9121",
+      "address": "606 West 57th Street, 3507, New York, NY 10019美国",
+      "rating": "",
+      "reviews": "",
+      "area": "manhattan"
+    },
+    {
+      "name": "Zemu Realty择木地产 | New York City Real Estate Agency",
+      "phone": "(212) 661-0161",
+      "address": "515 Madison Ave 8th floor 8060, New York, NY 10022美国",
+      "rating": "5",
+      "reviews": "1",
+      "area": "manhattan",
+      "place_id": "ChIJtcesTORZwokR1vAaqtl6jAQ",
+      "google_primary_type": "real_estate_agency",
+      "google_types": [
+        "real_estate_agency",
+        "point_of_interest",
+        "service",
+        "establishment"
+      ],
+      "source": "google_places_backfill",
+      "category_source": "google_places_types"
+    },
+    {
+      "name": "Zhen Chen, E Realty International Corp",
+      "phone": "(917) 815-1188",
+      "address": "39-07 Prince St Ste 4D, Flushing, NY 11354美国",
+      "rating": "",
+      "reviews": "",
+      "area": "flushing",
+      "place_id": "ChIJk6vjERlhwokR-sD86OqxBqo",
+      "google_primary_type": "service",
+      "google_types": [
+        "point_of_interest",
+        "service",
+        "establishment"
+      ],
+      "source": "google_places_backfill",
+      "category_source": "google_places_types"
+    },
+    {
+      "name": "Zhen Hu Realtor | Key Impact Realty Group, Inc. - Queens, NY - Real Estate Agent",
+      "phone": "(917) 776-7588",
+      "address": "131-06 40th Rd 4 fl, Flushing, NY 11354美国",
+      "rating": "5",
+      "reviews": "19",
+      "area": "flushing",
+      "place_id": "ChIJl4jr7dBBtI4Rv7VEFNQXL_M",
+      "google_primary_type": "service",
+      "google_types": [
+        "consultant",
+        "point_of_interest",
+        "real_estate_agency",
+        "service",
+        "establishment"
+      ],
+      "source": "google_places_backfill",
+      "category_source": "google_places_types"
+    },
+    {
+      "name": "地产经纪 | 商业地产买卖租赁 |（ Jon ）Jun Yan | Realtor | XYZ THE ONE LLC",
+      "phone": "(917) 854-7777",
+      "address": "44-06 Kissena Blvd Rear, Flushing, NY 11355美国",
+      "rating": "",
+      "reviews": "",
+      "area": "flushing",
+      "place_id": "ChIJH3Ms0fBhwokR6Sqm-_rw5GE",
+      "google_primary_type": "service",
+      "google_types": [
+        "service",
+        "point_of_interest",
+        "establishment"
+      ],
+      "source": "google_places_backfill",
+      "category_source": "google_places_types"
+    },
+    {
+      "name": "安家纽约陈东——纽约资深地产顾问",
+      "phone": "(917) 330-0899",
+      "address": "1460 Broadway, New York, NY 10036美国",
+      "rating": "5",
+      "reviews": "3",
+      "area": "manhattan",
+      "place_id": "ChIJo8o_o25ZwokRPaZBgZWEYpI",
+      "google_primary_type": "service",
+      "google_types": [
+        "service",
+        "point_of_interest",
+        "establishment"
+      ],
+      "source": "google_places_backfill",
+      "category_source": "google_places_types"
+    },
+    {
+      "name": "建 峰 地产",
+      "phone": "(718) 775-5588",
+      "address": "131-08 40th Rd, Flushing, NY 11354美国",
+      "rating": "1",
+      "reviews": "1",
+      "area": "flushing",
+      "place_id": "ChIJvePSYgtgwokRNiUdaQqxkZE",
+      "google_primary_type": "real_estate_agency",
+      "google_types": [
+        "real_estate_agency",
+        "point_of_interest",
+        "service",
+        "establishment"
+      ],
+      "source": "google_places_backfill",
+      "category_source": "google_places_types"
+    },
+    {
+      "name": "李林 | LI LIN 商业|住宅 纽约地产顾问 NY REALTOR - B SQARE REALTY",
+      "phone": "(929) 300-1552",
+      "address": "136-20 38th Ave #3e, Flushing, NY 11354美国",
+      "rating": "5",
+      "reviews": "16",
+      "area": "flushing",
+      "place_id": "ChIJg6KYCbTUYEwRLvssKMub6nw",
+      "google_primary_type": "service",
+      "google_types": [
+        "real_estate_agency",
+        "consultant",
+        "service",
+        "point_of_interest",
+        "establishment"
+      ],
+      "source": "google_places_backfill",
+      "category_source": "google_places_types"
+    },
+    {
+      "name": "百通法商中心",
+      "phone": "(929) 977-5977",
+      "address": "136-20 38th Ave #3a, Flushing, NY 11354美国",
+      "rating": "",
+      "reviews": "",
+      "area": "flushing",
+      "place_id": "ChIJV2lpilxhwokRiZZc52yML0A",
+      "google_primary_type": "real_estate_agency",
+      "google_types": [
+        "real_estate_agency",
+        "service",
+        "point_of_interest",
+        "establishment"
+      ],
+      "source": "google_places_backfill",
+      "category_source": "google_places_types"
+    },
+    {
+      "name": "盛世地产 B Square Realty - 最专业房地产经纪中介_BARBIE LI REAL ESTATE TEAM",
+      "phone": "(646) 889-9988",
+      "address": "136-20 38th Ave APT 3E, Flushing, NY 11354美国",
+      "rating": "5",
+      "reviews": "39",
+      "area": "flushing",
+      "place_id": "ChIJtTdTknNhwokRJiv6AlO2jZo",
+      "google_primary_type": "service",
+      "google_types": [
+        "consultant",
+        "real_estate_agency",
+        "service",
+        "point_of_interest",
+        "establishment"
+      ],
+      "source": "google_places_backfill",
+      "category_source": "google_places_types"
+    },
+    {
+      "name": "纽约专业地产顾问Janice Shao-B Square Realty",
+      "phone": "(347) 379-3843",
+      "address": "136-20 38th Ave #3e, Flushing, NY 11354美国",
+      "rating": "5",
+      "reviews": "12",
+      "area": "flushing",
+      "place_id": "ChIJlUd1KxRhwokRWEVxruhu2a4",
+      "google_primary_type": "service",
+      "google_types": [
+        "point_of_interest",
+        "service",
+        "establishment"
+      ],
+      "source": "google_places_backfill",
+      "category_source": "google_places_types"
+    },
+    {
+      "name": "纽约地产 纽约房产 纽约地产经纪／纽约学区房 纽约二手房 纽约房地产／纽约房屋买卖 纽约法拍屋 纽约房产中介 纽约地产中介",
+      "phone": "(917) 580-2382",
+      "address": "210 Targee St, Staten Island, NY 10304美国",
+      "rating": "4",
+      "reviews": "3",
+      "area": "staten",
+      "place_id": "ChIJ8-mzxilPwokRHA2rSTFMNwM",
+      "google_primary_type": "real_estate_agency",
+      "google_types": [
+        "real_estate_agency",
+        "service",
+        "point_of_interest",
+        "establishment"
+      ],
+      "source": "google_places_backfill",
+      "category_source": "google_places_types"
+    },
+    {
+      "name": "纽约房地产网 | 地产经纪 | 房屋出租 | 房屋出售 | 房屋买卖 |房地产信息中心",
+      "phone": "(212) 966-8888",
+      "address": "37-07 147th St #3D, Flushing, NY 11354美国",
+      "rating": "5",
+      "reviews": "4",
+      "area": "flushing",
+      "place_id": "ChIJIdUBmxhgwokRRJrapSBs5kU",
+      "google_primary_type": "real_estate_agency",
+      "google_types": [
+        "real_estate_agency",
+        "service",
+        "point_of_interest",
+        "establishment"
+      ],
+      "source": "google_places_backfill",
+      "category_source": "google_places_types"
+    },
+    {
+      "name": "纽约福临门地产",
+      "phone": "(917) 370-1688",
+      "address": "295 Madison Ave, New York, NY 10017美国",
+      "rating": "5",
+      "reviews": "1",
+      "area": "manhattan",
+      "place_id": "ChIJZzRWBAFZwokRKZ-80P-jq_Y",
+      "google_primary_type": "real_estate_agency",
+      "google_types": [
+        "real_estate_agency",
+        "service",
+        "point_of_interest",
+        "establishment"
+      ],
+      "source": "google_places_backfill",
+      "category_source": "google_places_types"
+    },
+    {
+      "name": "纽约金牌地产经纪罗先生 Martin Long Luo NY Realtor - B Square Realty",
+      "phone": "(973) 666-8666",
+      "address": "136-20 38th Ave #3e, Flushing, NY 11354美国",
+      "rating": "5",
+      "reviews": "4",
+      "area": "flushing",
+      "place_id": "ChIJ4Qja9qRhwokR7BuU5HFLVdo",
+      "google_primary_type": "service",
+      "google_types": [
+        "point_of_interest",
+        "service",
+        "establishment"
+      ],
+      "source": "google_places_backfill",
+      "category_source": "google_places_types"
+    },
+    {
+      "name": "金牌地产经纪鲍博士 Jersey City Newport Hoboken Realtor",
+      "phone": "(201) 881-6897",
+      "address": "101 Hudson St #2100, Jersey City, NJ 07302美国",
+      "rating": "5",
+      "reviews": "16",
+      "area": "other",
+      "place_id": "ChIJx0r1MgxRwokRIV21NpyM_II",
+      "google_primary_type": "service",
+      "google_types": [
+        "point_of_interest",
+        "service",
         "establishment"
       ],
       "source": "google_places_backfill",
@@ -47763,2669 +50430,6 @@
       "google_types": [
         "lawyer",
         "consultant",
-        "point_of_interest",
-        "service",
-        "establishment"
-      ],
-      "source": "google_places_backfill",
-      "category_source": "google_places_types"
-    }
-  ],
-  "地产公司": [
-    {
-      "name": "1 Home Realty",
-      "phone": "(718) 888-0188",
-      "address": "142-11 37th Ave Fl 1, Flushing, NY 11354美国",
-      "rating": "3.6",
-      "reviews": "8",
-      "area": "flushing",
-      "place_id": "ChIJJS6tfxpgwokRP7DuhtbdciA",
-      "google_primary_type": "real_estate_agency",
-      "google_types": [
-        "real_estate_agency",
-        "point_of_interest",
-        "service",
-        "establishment"
-      ],
-      "source": "google_places_backfill",
-      "category_source": "google_places_types"
-    },
-    {
-      "name": "18 Realty",
-      "phone": "(718) 268-0908",
-      "address": "76-13 113th St #1f, Forest Hills, NY 11375美国",
-      "rating": "3.8",
-      "reviews": "20",
-      "area": "queens",
-      "place_id": "ChIJ12nGDJlgwokRLGXSKPfkm6Y",
-      "google_primary_type": "real_estate_agency",
-      "google_types": [
-        "real_estate_agency",
-        "point_of_interest",
-        "service",
-        "establishment"
-      ],
-      "source": "google_places_backfill",
-      "category_source": "google_places_types"
-    },
-    {
-      "name": "ACJ International Realty",
-      "phone": "(917) 295-2102",
-      "address": "154-17A Riverside Dr., Whitestone, NY 11375美国",
-      "rating": "",
-      "reviews": "",
-      "area": "flushing"
-    },
-    {
-      "name": "ADA Real Estate Team at Keller Williams",
-      "phone": "(917) 972-9597",
-      "address": "75-25 31st Ave #202, Queens, NY 11370美国",
-      "rating": "5",
-      "reviews": "79",
-      "area": "queens",
-      "place_id": "ChIJxSc5BwtfwokRoValBb9ycbQ",
-      "google_primary_type": "real_estate_agency",
-      "google_types": [
-        "real_estate_agency",
-        "point_of_interest",
-        "service",
-        "establishment"
-      ],
-      "source": "google_places_backfill",
-      "category_source": "google_places_types"
-    },
-    {
-      "name": "Acre NY Realty Inc.",
-      "phone": "(212) 653-8880",
-      "address": "45-10 Ct Square W 1st floor, Long Island City, NY 11101美国",
-      "rating": "4.4",
-      "reviews": "31",
-      "area": "longisland",
-      "place_id": "ChIJORLv0_BLwokR6BdPV-VFsfo",
-      "google_primary_type": "real_estate_agency",
-      "google_types": [
-        "real_estate_agency",
-        "service",
-        "point_of_interest",
-        "establishment"
-      ],
-      "source": "google_places_backfill",
-      "category_source": "google_places_types"
-    },
-    {
-      "name": "Alex Baron Realtor at Keller Williams Real Estate",
-      "phone": "(718) 490-4523",
-      "address": "32-55 Francis Lewis Blvd, Flushing, NY 11358美国",
-      "rating": "4.9",
-      "reviews": "118",
-      "area": "flushing",
-      "place_id": "ChIJFT5Ib3-KwokRew8C0XCyOJc",
-      "google_primary_type": "real_estate_agency",
-      "google_types": [
-        "real_estate_agency",
-        "point_of_interest",
-        "service",
-        "establishment"
-      ],
-      "source": "google_places_backfill",
-      "category_source": "google_places_types"
-    },
-    {
-      "name": "Amanda Li at Winzone Realty Inc.",
-      "phone": "(917) 399-3725",
-      "address": "81-15 Queens Blvd Ste 2A, Elmhurst, NY 11373美国",
-      "rating": "5",
-      "reviews": "1",
-      "area": "elmhurst",
-      "place_id": "ChIJv1qxMB9gwokRdRQtbj6LRd4",
-      "google_primary_type": "real_estate_agency",
-      "google_types": [
-        "real_estate_agency",
-        "point_of_interest",
-        "service",
-        "establishment"
-      ],
-      "source": "google_places_backfill",
-      "category_source": "google_places_types"
-    },
-    {
-      "name": "Anna Pinto Realty",
-      "phone": "(917) 515-4704",
-      "address": "71-21 Austin St, Forest Hills, NY 11375美国",
-      "rating": "4.4",
-      "reviews": "21",
-      "area": "queens",
-      "place_id": "ChIJi0vKziBewokR-VUvXqKu0vM",
-      "google_primary_type": "real_estate_agency",
-      "google_types": [
-        "real_estate_agency",
-        "point_of_interest",
-        "service",
-        "establishment"
-      ],
-      "source": "google_places_backfill",
-      "category_source": "google_places_types"
-    },
-    {
-      "name": "Anthony Testani at Keller Williams Realty Landmark",
-      "phone": "(718) 475-2748",
-      "address": "32-55 Francis Lewis Blvd, Flushing, NY 11358美国",
-      "rating": "5",
-      "reviews": "63",
-      "area": "flushing",
-      "place_id": "ChIJKe2zBYiLwokR1E2ZAGXzsb8",
-      "google_primary_type": "consultant",
-      "google_types": [
-        "real_estate_agency",
-        "consultant",
-        "service",
-        "point_of_interest",
-        "establishment"
-      ],
-      "source": "google_places_backfill",
-      "category_source": "google_places_types"
-    },
-    {
-      "name": "Apple Luo 纽约专业地产经纪罗小姐 New York Luxury Real Estate Agent Apple Luo",
-      "phone": "(917) 325-9241",
-      "address": "445 Park Ave, New York, NY 10022美国",
-      "rating": "5",
-      "reviews": "29",
-      "area": "manhattan",
-      "place_id": "ChIJ6UaC6xNZwokRjHCOFW7_klk",
-      "google_primary_type": "service",
-      "google_types": [
-        "point_of_interest",
-        "service",
-        "establishment"
-      ],
-      "source": "google_places_backfill",
-      "category_source": "google_places_types"
-    },
-    {
-      "name": "Armas Group NYC Real Estate | Elmhurst | Jackson Heights | East Elmhurst NY",
-      "phone": "(347) 525-1799",
-      "address": "72-07 35th Ave, Jackson Heights, NY 11372美国",
-      "rating": "5",
-      "reviews": "19",
-      "area": "elmhurst",
-      "place_id": "ChIJX0RpCw1fwokRUeWS43WtZQg",
-      "google_primary_type": "real_estate_agency",
-      "google_types": [
-        "real_estate_agency",
-        "consultant",
-        "finance",
-        "educational_institution",
-        "point_of_interest",
-        "service",
-        "establishment"
-      ],
-      "source": "google_places_backfill",
-      "category_source": "google_places_types"
-    },
-    {
-      "name": "Astro Realty",
-      "phone": "(718) 478-2600",
-      "address": "92-29 Queens Blvd, Rego Park, NY 11374美国",
-      "rating": "4.4",
-      "reviews": "5",
-      "area": "queens",
-      "place_id": "ChIJCbJdu0lewokRyqY34MCdgB0",
-      "google_primary_type": "real_estate_agency",
-      "google_types": [
-        "real_estate_agency",
-        "service",
-        "point_of_interest",
-        "establishment"
-      ],
-      "source": "google_places_backfill",
-      "category_source": "google_places_types"
-    },
-    {
-      "name": "B Square Realty",
-      "phone": "(718) 939-8388",
-      "address": "136-20 38th Ave APT 3E, Flushing, NY 11354美国",
-      "rating": "4",
-      "reviews": "34",
-      "area": "flushing",
-      "place_id": "ChIJOzR27j5hwokR4kvGMZVTOyc",
-      "google_primary_type": "real_estate_agency",
-      "google_types": [
-        "real_estate_agency",
-        "point_of_interest",
-        "service",
-        "establishment"
-      ],
-      "source": "google_places_backfill",
-      "category_source": "google_places_types"
-    },
-    {
-      "name": "BJH Advisors, LLC",
-      "phone": "(646) 573-9588",
-      "address": "25 Park Place, New York, NY 10007美国",
-      "rating": "",
-      "reviews": "",
-      "area": "manhattan",
-      "place_id": "ChIJ1UGTuolZwokR-jRr7D1XJLw",
-      "google_primary_type": "consultant",
-      "google_types": [
-        "real_estate_agency",
-        "consultant",
-        "service",
-        "point_of_interest",
-        "establishment"
-      ],
-      "source": "google_places_backfill",
-      "category_source": "google_places_types"
-    },
-    {
-      "name": "BYC Projects LLC",
-      "phone": "(646) 228-6889",
-      "address": "434 Greenwich Street, New York, NY 10013美国",
-      "rating": "",
-      "reviews": "",
-      "area": "chinatown"
-    },
-    {
-      "name": "Beaudoin Realty Group, Inc.",
-      "phone": "(718) 505-9220",
-      "address": "78-27 37th Ave #5, Jackson Heights, NY 11372美国",
-      "rating": "4.8",
-      "reviews": "25",
-      "area": "elmhurst"
-    },
-    {
-      "name": "Benjamin Realty Since 1980",
-      "phone": "(718) 263-1600",
-      "address": "108-16 72nd Ave, Forest Hills, NY 11375美国",
-      "rating": "3.5",
-      "reviews": "11",
-      "area": "queens",
-      "place_id": "ChIJOdm7SWhfwokRnJe575YxZ9U",
-      "google_primary_type": "real_estate_agency",
-      "google_types": [
-        "real_estate_agency",
-        "service",
-        "point_of_interest",
-        "establishment"
-      ],
-      "source": "google_places_backfill",
-      "category_source": "google_places_types"
-    },
-    {
-      "name": "Betsy Mak Appraisal Group, LLC",
-      "phone": "(718) 886-2800",
-      "address": "135-15 40th Road, Flushing, NY 11354美国",
-      "rating": "",
-      "reviews": "",
-      "area": "flushing"
-    },
-    {
-      "name": "Betsy Pollak Real Estate Broker",
-      "phone": "(347) 489-9595",
-      "address": "214-08 41st Ave, Bayside, NY 11361美国",
-      "rating": "4.7",
-      "reviews": "24",
-      "area": "queens",
-      "place_id": "ChIJicO1JmyKwokRUKBYoa1XTlw",
-      "google_primary_type": "real_estate_agency",
-      "google_types": [
-        "real_estate_agency",
-        "service",
-        "point_of_interest",
-        "establishment"
-      ],
-      "source": "google_places_backfill",
-      "category_source": "google_places_types"
-    },
-    {
-      "name": "Better Haven LLC",
-      "phone": "(917) 364-1806",
-      "address": "404 East 66th Street, New York, NY 10065美国",
-      "rating": "",
-      "reviews": "",
-      "area": "manhattan"
-    },
-    {
-      "name": "Butts Realty Inc",
-      "phone": "(718) 899-8717",
-      "address": "26-05 94th St, East Elmhurst, NY 11369美国",
-      "rating": "4.5",
-      "reviews": "12",
-      "area": "elmhurst",
-      "place_id": "ChIJ40goDpdfwokRBdx0EEMpd4Q",
-      "google_primary_type": "real_estate_agency",
-      "google_types": [
-        "real_estate_agency",
-        "service",
-        "point_of_interest",
-        "establishment"
-      ],
-      "source": "google_places_backfill",
-      "category_source": "google_places_types"
-    },
-    {
-      "name": "Catherine Zhang, Keller Williams Realty Greater凯瑟琳纽约地产",
-      "phone": "(917) 669-6887",
-      "address": "400 Garden City Plaza Ste 438, Garden City, NY 11530美国",
-      "rating": "5",
-      "reviews": "83",
-      "area": "longisland",
-      "place_id": "ChIJQymIH4B9wokRp6aBBZzuPE4",
-      "google_primary_type": "service",
-      "google_types": [
-        "point_of_interest",
-        "service",
-        "establishment"
-      ],
-      "source": "google_places_backfill",
-      "category_source": "google_places_types"
-    },
-    {
-      "name": "Century Homes Realty Group LLC.",
-      "phone": "(718) 886-6800",
-      "address": "34-36 Union St Ste.201, Flushing, NY 11354美国",
-      "rating": "4.4",
-      "reviews": "25",
-      "area": "flushing",
-      "place_id": "ChIJP7fSDRtgwokRiMdVdmCdtnY",
-      "google_primary_type": "real_estate_agency",
-      "google_types": [
-        "real_estate_agency",
-        "service",
-        "point_of_interest",
-        "establishment"
-      ],
-      "source": "google_places_backfill",
-      "category_source": "google_places_types"
-    },
-    {
-      "name": "Chase Global Realty (凯业地产)",
-      "phone": "(718) 355-8788",
-      "address": "140-75 Ash Ave # 2e, Flushing, NY 11355美国",
-      "rating": "3.9",
-      "reviews": "32",
-      "area": "flushing",
-      "place_id": "ChIJc0uAJRRgwokRxcdR0OTq72Y",
-      "google_primary_type": "real_estate_agency",
-      "google_types": [
-        "real_estate_agency",
-        "lawyer",
-        "consultant",
-        "point_of_interest",
-        "service",
-        "establishment"
-      ],
-      "source": "google_places_backfill",
-      "category_source": "google_places_types"
-    },
-    {
-      "name": "City Homes Realty Group",
-      "phone": "(718) 255-9888",
-      "address": "32-41 Junction Blvd, East Elmhurst, NY 11369美国",
-      "rating": "5",
-      "reviews": "302",
-      "area": "elmhurst",
-      "place_id": "ChIJ9fHGdKpfwokRp5nF7fch8mw",
-      "google_primary_type": "real_estate_agency",
-      "google_types": [
-        "real_estate_agency",
-        "corporate_office",
-        "point_of_interest",
-        "service",
-        "establishment"
-      ],
-      "source": "google_places_backfill",
-      "category_source": "google_places_types"
-    },
-    {
-      "name": "City Scaffolding",
-      "phone": "(929) 499-5654",
-      "address": "104-35 205th place, St. Albans, NY 11412美国",
-      "rating": "",
-      "reviews": "",
-      "area": "queens"
-    },
-    {
-      "name": "Commerce Realty Group",
-      "phone": "(718) 751-5799",
-      "address": "77-11 164th St 2nd Floor, Fresh Meadows, NY 11366美国",
-      "rating": "5",
-      "reviews": "49",
-      "area": "flushing",
-      "place_id": "ChIJ98dA7NJhwokR8UlQEJdc9Yk",
-      "google_primary_type": "real_estate_agency",
-      "google_types": [
-        "real_estate_agency",
-        "point_of_interest",
-        "service",
-        "establishment"
-      ],
-      "source": "google_places_backfill",
-      "category_source": "google_places_types"
-    },
-    {
-      "name": "Core Realty Success",
-      "phone": "(718) 592-2356",
-      "address": "106-12 Corona Ave., Corona, NY 11368美国",
-      "rating": "4.3",
-      "reviews": "20",
-      "area": "elmhurst",
-      "place_id": "ChIJq5qy985fwokRg21BI_rmgDw",
-      "google_primary_type": "real_estate_agency",
-      "google_types": [
-        "real_estate_agency",
-        "service",
-        "point_of_interest",
-        "establishment"
-      ],
-      "source": "google_places_backfill",
-      "category_source": "google_places_types"
-    },
-    {
-      "name": "Cruse Realty",
-      "phone": "(718) 335-4040",
-      "address": "92-15 Roosevelt Ave, Jackson Heights, NY 11372美国",
-      "rating": "3.4",
-      "reviews": "16",
-      "area": "elmhurst",
-      "place_id": "ChIJw_ZChrBfwokReeoNRKanYFI",
-      "google_primary_type": "real_estate_agency",
-      "google_types": [
-        "real_estate_agency",
-        "service",
-        "point_of_interest",
-        "establishment"
-      ],
-      "source": "google_places_backfill",
-      "category_source": "google_places_types"
-    },
-    {
-      "name": "DG Technology and Business Solution",
-      "phone": "(917) 557-0027",
-      "address": "3424 IRWIN AVE 2FL, BRONX, NY 10463美国",
-      "rating": "",
-      "reviews": "",
-      "area": "bronx"
-    },
-    {
-      "name": "DNLS REAL ESTATE MANAGEMENT LLC",
-      "phone": "(718) 717-3232",
-      "address": "95-20 63rd Rd, Rego Park, NY 11374美国",
-      "rating": "5",
-      "reviews": "79",
-      "area": "queens",
-      "place_id": "ChIJjzk5Ub9fwokRN1dVuC26rzw",
-      "google_primary_type": "real_estate_agency",
-      "google_types": [
-        "real_estate_agency",
-        "point_of_interest",
-        "service",
-        "establishment"
-      ],
-      "source": "google_places_backfill",
-      "category_source": "google_places_types"
-    },
-    {
-      "name": "Dana Team Long Island Real Estate 长岛华人地产经纪团队房地产中介",
-      "phone": "(516) 274-2644",
-      "address": "45 N Station Plaza Suite #310, Great Neck, NY 11021美国",
-      "rating": "5",
-      "reviews": "121",
-      "area": "longisland",
-      "place_id": "ChIJ301ZofmJwokRGPEo3Lxz4sk",
-      "google_primary_type": "real_estate_agency",
-      "google_types": [
-        "real_estate_agency",
-        "point_of_interest",
-        "service",
-        "establishment"
-      ],
-      "source": "google_places_backfill",
-      "category_source": "google_places_types"
-    },
-    {
-      "name": "Dean Graber Licensed Real Estate Salesperson",
-      "phone": "(516) 527-9549",
-      "address": "32-55 Francis Lewis Blvd, Flushing, NY 11358美国",
-      "rating": "4.9",
-      "reviews": "81",
-      "area": "flushing",
-      "place_id": "ChIJ__9van-KwokRcGlVgGBt6HQ",
-      "google_primary_type": "real_estate_agency",
-      "google_types": [
-        "real_estate_agency",
-        "consultant",
-        "point_of_interest",
-        "service",
-        "establishment"
-      ],
-      "source": "google_places_backfill",
-      "category_source": "google_places_types"
-    },
-    {
-      "name": "Deirdre Folan - Keller Williams Realty Landmark",
-      "phone": "(917) 251-4499",
-      "address": "32-55 Francis Lewis Blvd, Flushing, NY 11358美国",
-      "rating": "4.8",
-      "reviews": "132",
-      "area": "flushing",
-      "place_id": "ChIJ3ToSBWuLwokRkLGsGAyfAcw",
-      "google_primary_type": "real_estate_agency",
-      "google_types": [
-        "real_estate_agency",
-        "service",
-        "point_of_interest",
-        "establishment"
-      ],
-      "source": "google_places_backfill",
-      "category_source": "google_places_types"
-    },
-    {
-      "name": "Denise li 纽约地产",
-      "phone": "(347) 350-0059",
-      "address": "140-75 Ash Ave, Flushing, NY 11355美国",
-      "rating": "",
-      "reviews": "",
-      "area": "flushing",
-      "place_id": "ChIJ75nMEfJhwokR6BminUosroQ",
-      "google_primary_type": "service",
-      "google_types": [
-        "point_of_interest",
-        "service",
-        "establishment"
-      ],
-      "source": "google_places_backfill",
-      "category_source": "google_places_types"
-    },
-    {
-      "name": "Devaykanan Rishudeo",
-      "phone": "(917) 470-1053",
-      "address": "1320 Fulton St, Brooklyn, NY 11216美国",
-      "rating": "",
-      "reviews": "",
-      "area": "brooklyn"
-    },
-    {
-      "name": "Douglas Elliman Real Estate Office in Bayside, NY",
-      "phone": "(718) 631-8900",
-      "address": "36-29 Bell Blvd, Bayside, NY 11361美国",
-      "rating": "4.4",
-      "reviews": "33",
-      "area": "queens",
-      "place_id": "ChIJI_ySbQ9gwokRSGu3tRCRsPM",
-      "google_primary_type": "real_estate_agency",
-      "google_types": [
-        "real_estate_agency",
-        "consultant",
-        "service",
-        "point_of_interest",
-        "establishment"
-      ],
-      "source": "google_places_backfill",
-      "category_source": "google_places_types"
-    },
-    {
-      "name": "Du Rite Realty Co",
-      "phone": "(718) 359-5800",
-      "address": "168-01 26th Ave, Flushing, NY 11358美国",
-      "rating": "3.3",
-      "reviews": "4",
-      "area": "flushing",
-      "place_id": "ChIJ3Z7OS4eKwokRJm8CUIobXxQ",
-      "google_primary_type": "real_estate_agency",
-      "google_types": [
-        "real_estate_agency",
-        "consultant",
-        "finance",
-        "point_of_interest",
-        "service",
-        "establishment"
-      ],
-      "source": "google_places_backfill",
-      "category_source": "google_places_types"
-    },
-    {
-      "name": "DynamicEdge Realty",
-      "phone": "(516) 875-5840",
-      "address": "61-43 186th St, Flushing, NY 11365美国",
-      "rating": "4.2",
-      "reviews": "6",
-      "area": "flushing",
-      "place_id": "ChIJxTONmLFhwokRD_ySuztDxYk",
-      "google_primary_type": "service",
-      "google_types": [
-        "consultant",
-        "point_of_interest",
-        "real_estate_agency",
-        "service",
-        "establishment"
-      ],
-      "source": "google_places_backfill",
-      "category_source": "google_places_types"
-    },
-    {
-      "name": "E House Realty & Management",
-      "phone": "(718) 680-2776",
-      "address": "6005 7th Ave, Brooklyn, NY 11220美国",
-      "rating": "3",
-      "reviews": "20",
-      "area": "sunset",
-      "place_id": "ChIJNeMY8ktFwokR60tuj2k6-jU",
-      "google_primary_type": "real_estate_agency",
-      "google_types": [
-        "real_estate_agency",
-        "point_of_interest",
-        "service",
-        "establishment"
-      ],
-      "source": "google_places_backfill",
-      "category_source": "google_places_types"
-    },
-    {
-      "name": "E Realty International Corp.",
-      "phone": "(718) 886-8110",
-      "address": "39-07, 39-07 Prince St Ste 4D, Flushing, NY 11354美国",
-      "rating": "2.5",
-      "reviews": "35",
-      "area": "flushing",
-      "place_id": "ChIJfcJqD1VhwokRmZwMnwqnjGU",
-      "google_primary_type": "real_estate_agency",
-      "google_types": [
-        "real_estate_agency",
-        "service",
-        "point_of_interest",
-        "establishment"
-      ],
-      "source": "google_places_backfill",
-      "category_source": "google_places_types"
-    },
-    {
-      "name": "E-Z Sell Realty",
-      "phone": "(718) 396-6666",
-      "address": "92-29 Queens Blvd CU18, Rego Park, NY 11374美国",
-      "rating": "3.9",
-      "reviews": "33",
-      "area": "queens",
-      "place_id": "ChIJveReuklewokRTe7ujpqUugY",
-      "google_primary_type": "real_estate_agency",
-      "google_types": [
-        "real_estate_agency",
-        "consultant",
-        "point_of_interest",
-        "service",
-        "establishment"
-      ],
-      "source": "google_places_backfill",
-      "category_source": "google_places_types"
-    },
-    {
-      "name": "EAGLE HOME DEVELOPER INC",
-      "phone": "(929) 293-5544",
-      "address": "19515A 67TH AVE APT 2B, QUEENS, NY 11365美国",
-      "rating": "",
-      "reviews": "",
-      "area": "flushing"
-    },
-    {
-      "name": "EK Plus, Inc",
-      "phone": "(718) 415-4043",
-      "address": "210-20 33rd Avenue, Bayside, NY 11361美国",
-      "rating": "",
-      "reviews": "",
-      "area": "queens"
-    },
-    {
-      "name": "EXIT Realty First Choice",
-      "phone": "(718) 380-2500",
-      "address": "80-15 188th St 3rd Floor, Fresh Meadows, NY 11366美国",
-      "rating": "4.8",
-      "reviews": "124",
-      "area": "flushing",
-      "place_id": "ChIJLds_YAdhwokRsp4FC0W1gXE",
-      "google_primary_type": "real_estate_agency",
-      "google_types": [
-        "real_estate_agency",
-        "point_of_interest",
-        "service",
-        "establishment"
-      ],
-      "source": "google_places_backfill",
-      "category_source": "google_places_types"
-    },
-    {
-      "name": "East Coast Realty by Zarina",
-      "phone": "(718) 271-2121",
-      "address": "96-14 Queens Blvd, Rego Park, NY 11374美国",
-      "rating": "4.8",
-      "reviews": "170",
-      "area": "queens",
-      "place_id": "ChIJFwafbzRewokRAo2f_9Wnm7E",
-      "google_primary_type": "real_estate_agency",
-      "google_types": [
-        "real_estate_agency",
-        "point_of_interest",
-        "service",
-        "establishment"
-      ],
-      "source": "google_places_backfill",
-      "category_source": "google_places_types"
-    },
-    {
-      "name": "East Egg Project Management",
-      "phone": "(516) 314-8054",
-      "address": "135 Reid Avenue, Port Washington, NY 11050美国",
-      "rating": "",
-      "reviews": "",
-      "area": "longisland"
-    },
-    {
-      "name": "Elemint LLC",
-      "phone": "(212) 843-0844",
-      "address": "1214 5th Avenue, New York, NY 10029美国",
-      "rating": "",
-      "reviews": "",
-      "area": "manhattan"
-    },
-    {
-      "name": "Energized Realty Group - Queens Real Estate Company",
-      "phone": "(718) 353-6001",
-      "address": "33-44 167th St, Flushing, NY 11358美国",
-      "rating": "4.7",
-      "reviews": "70",
-      "area": "flushing",
-      "place_id": "ChIJHw8hHX6KwokRWLJdW3PtSv0",
-      "google_primary_type": "real_estate_agency",
-      "google_types": [
-        "real_estate_agency",
-        "point_of_interest",
-        "service",
-        "establishment"
-      ],
-      "source": "google_places_backfill",
-      "category_source": "google_places_types"
-    },
-    {
-      "name": "Evantz Saint-Gerard: Licensed Real Estate Salesperson",
-      "phone": "(917) 975-5985",
-      "address": "32-55 Francis Lewis Blvd 2nd Floor, Flushing, NY 11358美国",
-      "rating": "5",
-      "reviews": "25",
-      "area": "flushing",
-      "place_id": "ChIJq6jMQ3-KwokR9isEHMouto4",
-      "google_primary_type": "real_estate_agency",
-      "google_types": [
-        "real_estate_agency",
-        "consultant",
-        "service",
-        "point_of_interest",
-        "establishment"
-      ],
-      "source": "google_places_backfill",
-      "category_source": "google_places_types"
-    },
-    {
-      "name": "FORENZI INC.",
-      "phone": "(646) 821-3180",
-      "address": "39-39 21ST STREET, LONG ISLAND CITY, NY 11101美国",
-      "rating": "",
-      "reviews": "",
-      "area": "longisland"
-    },
-    {
-      "name": "Fang Fang Realty Inc. 芳芳地產",
-      "phone": "(718) 676-2518",
-      "address": "816 59th St 2 FL, Brooklyn, NY 11220美国",
-      "rating": "5",
-      "reviews": "8",
-      "area": "sunset",
-      "place_id": "ChIJlSzWT1hFwokR5M8Rl25naGQ",
-      "google_primary_type": "real_estate_agency",
-      "google_types": [
-        "real_estate_agency",
-        "consultant",
-        "point_of_interest",
-        "service",
-        "establishment"
-      ],
-      "source": "google_places_backfill",
-      "category_source": "google_places_types"
-    },
-    {
-      "name": "Fultonex Realty",
-      "phone": "(718) 395-8266",
-      "address": "136-20 38th Ave APT 11A, Flushing, NY 11354美国",
-      "rating": "4.7",
-      "reviews": "3",
-      "area": "flushing",
-      "place_id": "ChIJkeyGKBBgwokR_XPuAFy9rsQ",
-      "google_primary_type": "real_estate_agency",
-      "google_types": [
-        "real_estate_agency",
-        "service",
-        "point_of_interest",
-        "establishment"
-      ],
-      "source": "google_places_backfill",
-      "category_source": "google_places_types"
-    },
-    {
-      "name": "Geoffrey Stevens Realty",
-      "phone": "(347) 249-9884",
-      "address": "11361美国紐約貝賽",
-      "rating": "5",
-      "reviews": "6",
-      "area": "queens",
-      "place_id": "ChIJXT5NOgmKwokRb0o7jXbGJSE",
-      "google_primary_type": "real_estate_agency",
-      "google_types": [
-        "real_estate_agency",
-        "service",
-        "point_of_interest",
-        "establishment"
-      ],
-      "source": "google_places_backfill",
-      "category_source": "google_places_types"
-    },
-    {
-      "name": "George Realty Group LLC",
-      "phone": "(718) 224-2440",
-      "address": "214-26 41st Ave #208, Bayside, NY 11361美国",
-      "rating": "3.7",
-      "reviews": "12",
-      "area": "queens"
-    },
-    {
-      "name": "Global Connect Realty LLC",
-      "phone": "(917) 821-6789",
-      "address": "131-04 40th Rd, Flushing, NY 11354美国",
-      "rating": "5",
-      "reviews": "1",
-      "area": "flushing",
-      "place_id": "ChIJCbVSvuthwokRrgwwpZdfq4U",
-      "google_primary_type": "real_estate_agency",
-      "google_types": [
-        "real_estate_agency",
-        "point_of_interest",
-        "service",
-        "establishment"
-      ],
-      "source": "google_places_backfill",
-      "category_source": "google_places_types"
-    },
-    {
-      "name": "Graceful Realty LLC",
-      "phone": "(718) 353-0068",
-      "address": "140-75 Ash Ave Suite 2C, Flushing, NY 11355美国",
-      "rating": "4.7",
-      "reviews": "21",
-      "area": "flushing",
-      "place_id": "ChIJa8bfWeJhwokRIKuW2sV5nzE",
-      "google_primary_type": "real_estate_agency",
-      "google_types": [
-        "real_estate_agency",
-        "service",
-        "point_of_interest",
-        "establishment"
-      ],
-      "source": "google_places_backfill",
-      "category_source": "google_places_types"
-    },
-    {
-      "name": "Grove Street Investment, LLC",
-      "phone": "(917) 453-3989",
-      "address": "205 East 42nd Street, New York, NY 10017美国",
-      "rating": "",
-      "reviews": "",
-      "area": "manhattan",
-      "place_id": "ChIJpf-x64pZwokRHxpD_ZnLgLA",
-      "google_primary_type": "consultant",
-      "google_types": [
-        "real_estate_agency",
-        "consultant",
-        "service",
-        "point_of_interest",
-        "establishment"
-      ],
-      "source": "google_places_backfill",
-      "category_source": "google_places_types"
-    },
-    {
-      "name": "Grovesend Realty LLC",
-      "phone": "(718) 975-8299",
-      "address": "2632 West 13th Street, Brooklyn, NY 11223美国",
-      "rating": "4.1",
-      "reviews": "493",
-      "area": "brooklyn",
-      "place_id": "ChIJ3zy-2UxEwokRF3Xq989NCjM",
-      "google_primary_type": "hotel",
-      "google_types": [
-        "hotel",
-        "lodging",
-        "point_of_interest",
-        "establishment"
-      ],
-      "source": "google_places_backfill",
-      "category_source": "google_places_types"
-    },
-    {
-      "name": "Harper Solutions LLC",
-      "phone": "(347) 603-8844",
-      "address": "42 West St, Brooklyn, NY 11222美国",
-      "rating": "",
-      "reviews": "",
-      "area": "brooklyn"
-    },
-    {
-      "name": "Henry He 何亨利 纽约地产买卖和物业管理",
-      "phone": "(646) 338-8518",
-      "address": "141-07 20th Ave, Whitestone, NY 11357美国",
-      "rating": "",
-      "reviews": "",
-      "area": "flushing",
-      "place_id": "ChIJhxSNKqWKwokR-tHi1HLW6rM",
-      "google_primary_type": "service",
-      "google_types": [
-        "point_of_interest",
-        "service",
-        "establishment"
-      ],
-      "source": "google_places_backfill",
-      "category_source": "google_places_types"
-    },
-    {
-      "name": "Home Court Real Estate LLC",
-      "phone": "(718) 683-7912",
-      "address": "100-31 Metropolitan Ave, Forest Hills, NY 11375美国",
-      "rating": "5",
-      "reviews": "21",
-      "area": "queens",
-      "place_id": "ChIJ7XS7PRpewokRPV6HUIKq5Fs",
-      "google_primary_type": "real_estate_agency",
-      "google_types": [
-        "real_estate_agency",
-        "consultant",
-        "general_contractor",
-        "finance",
-        "point_of_interest",
-        "service",
-        "establishment"
-      ],
-      "source": "google_places_backfill",
-      "category_source": "google_places_types"
-    },
-    {
-      "name": "Homieland Realty Inc.",
-      "phone": "(646) 402-5245",
-      "address": "31-38 137th St, Flushing, NY 11354美国",
-      "rating": "1",
-      "reviews": "1",
-      "area": "flushing",
-      "place_id": "ChIJTYacqmJhwokRdk-5rQH0fp4",
-      "google_primary_type": "real_estate_agency",
-      "google_types": [
-        "real_estate_agency",
-        "service",
-        "point_of_interest",
-        "establishment"
-      ],
-      "source": "google_places_backfill",
-      "category_source": "google_places_types"
-    },
-    {
-      "name": "Infrastructure Advisors LLC",
-      "phone": "(917) 238-5468",
-      "address": "40 West 116 Street #B1104, New York, NY 10026美国",
-      "rating": "",
-      "reviews": "",
-      "area": "manhattan"
-    },
-    {
-      "name": "J E Fabio Realty Inc",
-      "phone": "(718) 359-2366",
-      "address": "150-66 Bayside Ave, Flushing, NY 11354美国",
-      "rating": "3.2",
-      "reviews": "20",
-      "area": "flushing",
-      "place_id": "ChIJww0mEp6KwokRhDhnkHgc0M4",
-      "google_primary_type": "real_estate_agency",
-      "google_types": [
-        "real_estate_agency",
-        "service",
-        "point_of_interest",
-        "establishment"
-      ],
-      "source": "google_places_backfill",
-      "category_source": "google_places_types"
-    },
-    {
-      "name": "Jamie Realty Group in Queens and Long Island",
-      "phone": "(718) 886-0668",
-      "address": "200-11 32nd Ave, Flushing, NY 11361美国",
-      "rating": "4.8",
-      "reviews": "61",
-      "area": "flushing",
-      "place_id": "ChIJtbg7Nv-LwokROQxPnDimoXM",
-      "google_primary_type": "real_estate_agency",
-      "google_types": [
-        "real_estate_agency",
-        "service",
-        "point_of_interest",
-        "establishment"
-      ],
-      "source": "google_places_backfill",
-      "category_source": "google_places_types"
-    },
-    {
-      "name": "Janice Wei 魏云熙| Luxury Real Estate Advisor – B Square Realty NY",
-      "phone": "(518) 990-9999",
-      "address": "136-20 38th Ave #3e, Flushing, NY 11354美国",
-      "rating": "",
-      "reviews": "",
-      "area": "flushing",
-      "place_id": "ChIJB7CWMTFhwokRCWtxpkbFNtQ",
-      "google_primary_type": "service",
-      "google_types": [
-        "point_of_interest",
-        "service",
-        "establishment"
-      ],
-      "source": "google_places_backfill",
-      "category_source": "google_places_types"
-    },
-    {
-      "name": "Jasmine Ji, Real Estate Agent 纽约金牌地产经纪",
-      "phone": "(917) 808-5286",
-      "address": "90 5th Ave, New York, NY 10011美国",
-      "rating": "5",
-      "reviews": "14",
-      "area": "manhattan",
-      "place_id": "ChIJGfo3OFNZwokRMjF9vsDM3hw",
-      "google_primary_type": "service",
-      "google_types": [
-        "point_of_interest",
-        "service",
-        "establishment"
-      ],
-      "source": "google_places_backfill",
-      "category_source": "google_places_types"
-    },
-    {
-      "name": "Jelin Zhao | Real Estate Professional || BUY & SELL (Español, 中文)",
-      "phone": "(917) 285-5383",
-      "address": "34-36 Union St Ste.201, Flushing, NY 11354美国",
-      "rating": "5",
-      "reviews": "24",
-      "area": "flushing",
-      "place_id": "ChIJg3lUBo5hwokRHxhocMSft_g",
-      "google_primary_type": "service",
-      "google_types": [
-        "point_of_interest",
-        "service",
-        "establishment"
-      ],
-      "source": "google_places_backfill",
-      "category_source": "google_places_types"
-    },
-    {
-      "name": "Jennifer Lu - NYC Real Estate agent at compass, English and Mandarin Chinese speaking",
-      "phone": "(805) 728-7017",
-      "address": "110 5th Ave 3rd fl, New York, NY 10011美国",
-      "rating": "5",
-      "reviews": "14",
-      "area": "manhattan",
-      "place_id": "ChIJ8az4TfNZwokR77QQdAcWqaw",
-      "google_primary_type": "service",
-      "google_types": [
-        "service",
-        "point_of_interest",
-        "establishment"
-      ],
-      "source": "google_places_backfill",
-      "category_source": "google_places_types"
-    },
-    {
-      "name": "Joe Zhu Remax Edge Real Estate",
-      "phone": "(917) 967-5966",
-      "address": "9425 3rd Ave, Brooklyn, NY 11209美国",
-      "rating": "5",
-      "reviews": "9",
-      "area": "brooklyn",
-      "place_id": "ChIJm1ENzkNPwokRaPwzknv962M",
-      "google_primary_type": "service",
-      "google_types": [
-        "real_estate_agency",
-        "service",
-        "point_of_interest",
-        "establishment"
-      ],
-      "source": "google_places_backfill",
-      "category_source": "google_places_types"
-    },
-    {
-      "name": "Josh Kellerman - Real Estate Team",
-      "phone": "(917) 848-4201",
-      "address": "42-40 Bell Blvd, Bayside, NY 11361美国",
-      "rating": "4.9",
-      "reviews": "13",
-      "area": "queens",
-      "place_id": "ChIJZdreyhhhwokRvfr0jU-XAoQ",
-      "google_primary_type": "real_estate_agency",
-      "google_types": [
-        "real_estate_agency",
-        "point_of_interest",
-        "service",
-        "establishment"
-      ],
-      "source": "google_places_backfill",
-      "category_source": "google_places_types"
-    },
-    {
-      "name": "June Chang, Realtor - JuneNYC Team - E Realty International Corp",
-      "phone": "(929) 560-6086",
-      "address": "39-07 Prince St Ste 4D, Flushing, NY 11354美国",
-      "rating": "5",
-      "reviews": "77",
-      "area": "flushing"
-    },
-    {
-      "name": "KHL Retail LLC",
-      "phone": "(646) 434-8234",
-      "address": "312 East 23rd Street, New York, NY 10010美国",
-      "rating": "",
-      "reviews": "",
-      "area": "manhattan"
-    },
-    {
-      "name": "KONKRETE LLC",
-      "phone": "(631) 774-5913",
-      "address": "134-30 157th STREET, JAMAICA, NY 11434美国",
-      "rating": "",
-      "reviews": "",
-      "area": "queens"
-    },
-    {
-      "name": "Karten Real Estate Services",
-      "phone": "(917) 502-2635",
-      "address": "214-05 39th Ave, Bayside, NY 11361美国",
-      "rating": "4.9",
-      "reviews": "38",
-      "area": "queens",
-      "place_id": "ChIJYZ8SyAqKwokRWNMIIFAZcPQ",
-      "google_primary_type": "real_estate_agency",
-      "google_types": [
-        "real_estate_agency",
-        "point_of_interest",
-        "service",
-        "establishment"
-      ],
-      "source": "google_places_backfill",
-      "category_source": "google_places_types"
-    },
-    {
-      "name": "Katrina Wang -Chase Global Realty Agent 纽约地产销冠",
-      "phone": "(718) 757-6068",
-      "address": "140-75 Ash Ave # 2e, Flushing, NY 11355美国",
-      "rating": "5",
-      "reviews": "21",
-      "area": "flushing",
-      "place_id": "ChIJ-e4kBD9hwokRnCcsnJAAPd8",
-      "google_primary_type": "service",
-      "google_types": [
-        "point_of_interest",
-        "service",
-        "establishment"
-      ],
-      "source": "google_places_backfill",
-      "category_source": "google_places_types"
-    },
-    {
-      "name": "Keller Williams Realty Landmark",
-      "phone": "(718) 475-2700",
-      "address": "32-55 Francis Lewis Blvd, Flushing, NY 11358美国",
-      "rating": "3.4",
-      "reviews": "58",
-      "area": "flushing",
-      "place_id": "ChIJI7xgyjBgwokRnUNBAhBC0Ro",
-      "google_primary_type": "real_estate_agency",
-      "google_types": [
-        "real_estate_agency",
-        "point_of_interest",
-        "service",
-        "establishment"
-      ],
-      "source": "google_places_backfill",
-      "category_source": "google_places_types"
-    },
-    {
-      "name": "Keller Williams Realty Landmark II",
-      "phone": "(347) 846-1200",
-      "address": "75-35 31st Ave Ste 202, East Elmhurst, NY 11370美国",
-      "rating": "4.4",
-      "reviews": "64",
-      "area": "elmhurst",
-      "place_id": "ChIJ32dD4QpfwokRRqJhHjIqQqE",
-      "google_primary_type": "real_estate_agency",
-      "google_types": [
-        "real_estate_agency",
-        "service",
-        "point_of_interest",
-        "establishment"
-      ],
-      "source": "google_places_backfill",
-      "category_source": "google_places_types"
-    },
-    {
-      "name": "Kwan Cheung - Associate Real Estate Broker at Century Homes Realty Group",
-      "phone": "(516) 822-6688",
-      "address": "34-36 Union St Ste.201, Flushing, NY 11354美国",
-      "rating": "",
-      "reviews": "",
-      "area": "flushing",
-      "place_id": "ChIJC9NaP95hwokRs4x9KbAI5PE",
-      "google_primary_type": "service",
-      "google_types": [
-        "point_of_interest",
-        "service",
-        "establishment"
-      ],
-      "source": "google_places_backfill",
-      "category_source": "google_places_types"
-    },
-    {
-      "name": "LDM Real Estate LLC",
-      "phone": "(718) 746-1600",
-      "address": "11-13 154th St, Whitestone, NY 11357美国",
-      "rating": "3.8",
-      "reviews": "4",
-      "area": "flushing",
-      "place_id": "ChIJ4UUwg-2KwokRLQtQaTWZN3w",
-      "google_primary_type": "service",
-      "google_types": [
-        "real_estate_agency",
-        "general_contractor",
-        "point_of_interest",
-        "service",
-        "establishment"
-      ],
-      "source": "google_places_backfill",
-      "category_source": "google_places_types"
-    },
-    {
-      "name": "Liberty Chateau Realty Inc",
-      "phone": "(347) 542-3913",
-      "address": "141-07 20th Ave, Whitestone, NY 11357美国",
-      "rating": "4.8",
-      "reviews": "4",
-      "area": "flushing",
-      "place_id": "ChIJF1A9KKWKwokR612I7iQBNjE",
-      "google_primary_type": "real_estate_agency",
-      "google_types": [
-        "real_estate_agency",
-        "point_of_interest",
-        "service",
-        "establishment"
-      ],
-      "source": "google_places_backfill",
-      "category_source": "google_places_types"
-    },
-    {
-      "name": "Lily Tran Team - Forest Hills Realtor with eXp Realty New York",
-      "phone": "(917) 279-0177",
-      "address": "Groton St, Forest Hills, NY 11375美国",
-      "rating": "4.8",
-      "reviews": "56",
-      "area": "queens",
-      "place_id": "ChIJ8VOxlyJewokRzPlIvgbk_Po",
-      "google_primary_type": "service",
-      "google_types": [
-        "real_estate_agency",
-        "finance",
-        "consultant",
-        "service",
-        "point_of_interest",
-        "establishment"
-      ],
-      "source": "google_places_backfill",
-      "category_source": "google_places_types"
-    },
-    {
-      "name": "Lily Xiaoli Xie - Lily Realty Group 莉利地产集团 - 纽约长岛房地产中介",
-      "phone": "(516) 714-2678",
-      "address": "1129 Northern Blvd Ste 410, Manhasset, NY 11030美国",
-      "rating": "4.9",
-      "reviews": "42",
-      "area": "longisland",
-      "place_id": "ChIJAQBAoquJwokRkJgnXEeiLYI",
-      "google_primary_type": "service",
-      "google_types": [
-        "point_of_interest",
-        "real_estate_agency",
-        "service",
-        "establishment"
-      ],
-      "source": "google_places_backfill",
-      "category_source": "google_places_types"
-    },
-    {
-      "name": "Lovett Realty",
-      "phone": "(718) 445-9500",
-      "address": "109-15 14th Ave, Queens, NY 11356美国",
-      "rating": "3.6",
-      "reviews": "66",
-      "area": "queens",
-      "place_id": "ChIJ-btOQFv1wokROUVXkvd3KBk",
-      "google_primary_type": "real_estate_agency",
-      "google_types": [
-        "real_estate_agency",
-        "point_of_interest",
-        "service",
-        "establishment"
-      ],
-      "source": "google_places_backfill",
-      "category_source": "google_places_types"
-    },
-    {
-      "name": "Madison Realty",
-      "phone": "(347) 229-4918",
-      "address": "71-25 Austin St #203, Forest Hills, NY 11375美国",
-      "rating": "4.6",
-      "reviews": "31",
-      "area": "queens",
-      "place_id": "ChIJPY3k4ZhgwokRnZWvjaVubYY",
-      "google_primary_type": "real_estate_agency",
-      "google_types": [
-        "real_estate_agency",
-        "service",
-        "point_of_interest",
-        "establishment"
-      ],
-      "source": "google_places_backfill",
-      "category_source": "google_places_types"
-    },
-    {
-      "name": "Maureen Folan Real Estate Group",
-      "phone": "(718) 767-8200",
-      "address": "61-43 186th St, Fresh Meadows, NY 11365美国",
-      "rating": "4.9",
-      "reviews": "343",
-      "area": "flushing",
-      "place_id": "ChIJH9EmhcxhwokRnIwQibz6K_Y",
-      "google_primary_type": "real_estate_agency",
-      "google_types": [
-        "real_estate_agency",
-        "consultant",
-        "point_of_interest",
-        "service",
-        "establishment"
-      ],
-      "source": "google_places_backfill",
-      "category_source": "google_places_types"
-    },
-    {
-      "name": "Mayflower Realty Associates Inc",
-      "phone": "(718) 961-6551",
-      "address": "132-44 Booth Memorial Ave, Flushing, NY 11355美国",
-      "rating": "1.9",
-      "reviews": "12",
-      "area": "flushing",
-      "place_id": "ChIJXZ14Lm5gwokRZj0ImRPY1X8",
-      "google_primary_type": "real_estate_agency",
-      "google_types": [
-        "real_estate_agency",
-        "point_of_interest",
-        "service",
-        "establishment"
-      ],
-      "source": "google_places_backfill",
-      "category_source": "google_places_types"
-    },
-    {
-      "name": "N & H Realty Group",
-      "phone": "(718) 902-8992",
-      "address": "66-47 Grand Ave 2nd Fl, Queens, NY 11378美国",
-      "rating": "5",
-      "reviews": "208",
-      "area": "queens",
-      "place_id": "ChIJp89o7iFhwokRALa-DkY5Wmw",
-      "google_primary_type": "real_estate_agency",
-      "google_types": [
-        "real_estate_agency",
-        "consultant",
-        "finance",
-        "point_of_interest",
-        "service",
-        "establishment"
-      ],
-      "source": "google_places_backfill",
-      "category_source": "google_places_types"
-    },
-    {
-      "name": "NY Empire Real Estate",
-      "phone": "(718) 520-0120",
-      "address": "110-06 69th Ave #1A, Forest Hills, NY 11375美国",
-      "rating": "4.9",
-      "reviews": "85",
-      "area": "queens",
-      "place_id": "ChIJLZDVAilewokRsgF3CS2kyNw",
-      "google_primary_type": "real_estate_agency",
-      "google_types": [
-        "real_estate_agency",
-        "service",
-        "point_of_interest",
-        "establishment"
-      ],
-      "source": "google_places_backfill",
-      "category_source": "google_places_types"
-    },
-    {
-      "name": "NY Superior Realty",
-      "phone": "(718) 205-7770",
-      "address": "55-13 69th St Suite B, Maspeth, NY 11378美国",
-      "rating": "4.8",
-      "reviews": "86",
-      "area": "queens",
-      "place_id": "ChIJbQg49_NewokRxt5Jw2K3kgI",
-      "google_primary_type": "real_estate_agency",
-      "google_types": [
-        "real_estate_agency",
-        "point_of_interest",
-        "service",
-        "establishment"
-      ],
-      "source": "google_places_backfill",
-      "category_source": "google_places_types"
-    },
-    {
-      "name": "Naomi Klein Realty",
-      "phone": "(917) 447-8884",
-      "address": "61-43 186th St, Fresh Meadows, NY 11365美国",
-      "rating": "3.7",
-      "reviews": "14",
-      "area": "flushing",
-      "place_id": "ChIJh2v0mLFhwokRJmZOxwUDGc4",
-      "google_primary_type": "service",
-      "google_types": [
-        "condominium_complex",
-        "apartment_building",
-        "real_estate_agency",
-        "association_or_organization",
-        "point_of_interest",
-        "service",
-        "establishment"
-      ],
-      "source": "google_places_backfill",
-      "category_source": "google_places_types"
-    },
-    {
-      "name": "New Home Mega Real Estate Management Corp | Houses for Sale - Expert Real Estate Local Realtor",
-      "phone": "(718) 808-2030",
-      "address": "158-11 78th Ave, Fresh Meadows, NY 11366美国",
-      "rating": "4.8",
-      "reviews": "43",
-      "area": "flushing",
-      "place_id": "ChIJBbCDVPBgwokRk2GU3W958wE",
-      "google_primary_type": "real_estate_agency",
-      "google_types": [
-        "real_estate_agency",
-        "consultant",
-        "general_contractor",
-        "finance",
-        "point_of_interest",
-        "service",
-        "establishment"
-      ],
-      "source": "google_places_backfill",
-      "category_source": "google_places_types"
-    },
-    {
-      "name": "New Ocean Realty | 新洋地产",
-      "phone": "(917) 818-1388",
-      "address": "135-50 Roosevelt Ave # 302, Flushing, NY 11354美国",
-      "rating": "",
-      "reviews": "",
-      "area": "flushing",
-      "place_id": "ChIJ4-yRdafVjGwRtaRLlWWsbFo",
-      "google_primary_type": "real_estate_agency",
-      "google_types": [
-        "real_estate_agency",
-        "service",
-        "point_of_interest",
-        "establishment"
-      ],
-      "source": "google_places_backfill",
-      "category_source": "google_places_types"
-    },
-    {
-      "name": "New York One Real Estate Group",
-      "phone": "(718) 755-2882",
-      "address": "91-06 63rd Dr 1st Floor, Rego Park, NY 11374美国",
-      "rating": "4.8",
-      "reviews": "51",
-      "area": "queens",
-      "place_id": "ChIJ91LhZDhewokRM6Y_WnNWiCo",
-      "google_primary_type": "real_estate_agency",
-      "google_types": [
-        "real_estate_agency",
-        "point_of_interest",
-        "service",
-        "establishment"
-      ],
-      "source": "google_places_backfill",
-      "category_source": "google_places_types"
-    },
-    {
-      "name": "Nikolas Chen | 纽约地产经纪 | Manhattan Agent | Brown Harris Stevens",
-      "phone": "(646) 995-0544",
-      "address": "360 Madison Ave 9th Floor, New York, NY 10017美国",
-      "rating": "5",
-      "reviews": "3",
-      "area": "manhattan",
-      "place_id": "ChIJa2twtu9ZwokRNyyoiCdvOWs",
-      "google_primary_type": "real_estate_agency",
-      "google_types": [
-        "real_estate_agency",
-        "service",
-        "point_of_interest",
-        "establishment"
-      ],
-      "source": "google_places_backfill",
-      "category_source": "google_places_types"
-    },
-    {
-      "name": "Nina Lai at VORO | Real Estate agents 长岛华人地产经济 房地产中介",
-      "phone": "(315) 566-1378",
-      "address": "1129 Northern Blvd #404, Manhasset, NY 11030美国",
-      "rating": "",
-      "reviews": "",
-      "area": "longisland",
-      "place_id": "ChIJ9Zda-NmJwokRoZoEwGY4NYg",
-      "google_primary_type": "service",
-      "google_types": [
-        "point_of_interest",
-        "service",
-        "establishment"
-      ],
-      "source": "google_places_backfill",
-      "category_source": "google_places_types"
-    },
-    {
-      "name": "Olam Realty Group",
-      "phone": "(718) 831-2891",
-      "address": "141-24 Jewel Ave, Flushing, NY 11367美国",
-      "rating": "5",
-      "reviews": "183",
-      "area": "flushing",
-      "place_id": "ChIJgwydMopgwokRZCbfNdaoPrY",
-      "google_primary_type": "real_estate_agency",
-      "google_types": [
-        "real_estate_agency",
-        "point_of_interest",
-        "service",
-        "establishment"
-      ],
-      "source": "google_places_backfill",
-      "category_source": "google_places_types"
-    },
-    {
-      "name": "Olga Mayayeva | Real Estate Broker-eXp Realty",
-      "phone": "(718) 781-3074",
-      "address": "68-56 Groton St, Forest Hills, NY 11375美国",
-      "rating": "4.9",
-      "reviews": "79",
-      "area": "queens",
-      "place_id": "ChIJQ-YBqBZfwokRZ9LJwLEtYbg",
-      "google_primary_type": "real_estate_agency",
-      "google_types": [
-        "real_estate_agency",
-        "consultant",
-        "finance",
-        "service",
-        "point_of_interest",
-        "establishment"
-      ],
-      "source": "google_places_backfill",
-      "category_source": "google_places_types"
-    },
-    {
-      "name": "Papa Realty",
-      "phone": "(718) 767-3148",
-      "address": "12-61 150th St, Flushing, NY 11357美国",
-      "rating": "5",
-      "reviews": "2",
-      "area": "flushing",
-      "place_id": "ChIJR3dsvpSKwokRYG7qbOUi99s",
-      "google_primary_type": "real_estate_agency",
-      "google_types": [
-        "real_estate_agency",
-        "point_of_interest",
-        "service",
-        "establishment"
-      ],
-      "source": "google_places_backfill",
-      "category_source": "google_places_types"
-    },
-    {
-      "name": "Parker Kennedy Realty Corp.",
-      "phone": "(718) 964-6400",
-      "address": "24716 Union Tpke, Bellerose, NY 11426美国",
-      "rating": "",
-      "reviews": "",
-      "area": "other",
-      "place_id": "ChIJi3JkZGtiwokRRtVD-cHULgQ",
-      "google_primary_type": "real_estate_agency",
-      "google_types": [
-        "real_estate_agency",
-        "point_of_interest",
-        "service",
-        "establishment"
-      ],
-      "source": "google_places_backfill",
-      "category_source": "google_places_types"
-    },
-    {
-      "name": "Parkview Realty LLC",
-      "phone": "(718) 699-2500",
-      "address": "50-07 108th St, Corona, NY 11368美国",
-      "rating": "4.5",
-      "reviews": "15",
-      "area": "elmhurst",
-      "place_id": "ChIJ2cl7tc9fwokRk-zMSngMgec",
-      "google_primary_type": "real_estate_agency",
-      "google_types": [
-        "real_estate_agency",
-        "service",
-        "point_of_interest",
-        "establishment"
-      ],
-      "source": "google_places_backfill",
-      "category_source": "google_places_types"
-    },
-    {
-      "name": "Paula Caruso Annarumma Realtor - Real Estate Agent in New York - RE/MAX TEAM",
-      "phone": "(718) 781-3055",
-      "address": "27-04 Francis Lewis Blvd, Flushing, NY 11358美国",
-      "rating": "5",
-      "reviews": "47",
-      "area": "flushing",
-      "place_id": "ChIJh9a4B3-KwokRXbcMgC-e25o",
-      "google_primary_type": "service",
-      "google_types": [
-        "point_of_interest",
-        "real_estate_agency",
-        "service",
-        "establishment"
-      ],
-      "source": "google_places_backfill",
-      "category_source": "google_places_types"
-    },
-    {
-      "name": "Prime America Real Estate, Inc.",
-      "phone": "(347) 725-3142",
-      "address": "61-23 Fresh Pond Rd, Middle Village, NY 11379美国",
-      "rating": "4.8",
-      "reviews": "43",
-      "area": "queens",
-      "place_id": "ChIJ__9z9BxcwokR3eUnAbMCV58",
-      "google_primary_type": "real_estate_agency",
-      "google_types": [
-        "real_estate_agency",
-        "service",
-        "point_of_interest",
-        "establishment"
-      ],
-      "source": "google_places_backfill",
-      "category_source": "google_places_types"
-    },
-    {
-      "name": "Promise Realty",
-      "phone": "(718) 445-0000",
-      "address": "188-02 Northern Blvd 2nd fl, Flushing, NY 11358美国",
-      "rating": "2.8",
-      "reviews": "23",
-      "area": "flushing",
-      "place_id": "ChIJN3-XYs1hwokRpfiOcCYAO3A",
-      "google_primary_type": "real_estate_agency",
-      "google_types": [
-        "real_estate_agency",
-        "point_of_interest",
-        "service",
-        "establishment"
-      ],
-      "source": "google_places_backfill",
-      "category_source": "google_places_types"
-    },
-    {
-      "name": "Prospes Real Estate Corp 凯盛地产",
-      "phone": "(718) 321-2800",
-      "address": "Back Office, 198-08 33rd Ave, Flushing, NY 11358美国",
-      "rating": "5",
-      "reviews": "3",
-      "area": "flushing",
-      "place_id": "ChIJVycyx8lhwokRPOD4azMfXrY",
-      "google_primary_type": "real_estate_agency",
-      "google_types": [
-        "real_estate_agency",
-        "service",
-        "point_of_interest",
-        "establishment"
-      ],
-      "source": "google_places_backfill",
-      "category_source": "google_places_types"
-    },
-    {
-      "name": "Queens Home Team at Keller Williams Realty Landmark II",
-      "phone": "(718) 968-5538",
-      "address": "75-35 31st Ave Suite 202, East Elmhurst, NY 11370美国",
-      "rating": "4.9",
-      "reviews": "219",
-      "area": "elmhurst",
-      "place_id": "ChIJoQubBgtfwokRPWrsXQWL4VA",
-      "google_primary_type": "real_estate_agency",
-      "google_types": [
-        "real_estate_agency",
-        "point_of_interest",
-        "service",
-        "establishment"
-      ],
-      "source": "google_places_backfill",
-      "category_source": "google_places_types"
-    },
-    {
-      "name": "RE/MAX Team 恒富地产",
-      "phone": "(929) 460-0008",
-      "address": "6212 5th Ave, Brooklyn, NY 11220美国",
-      "rating": "4",
-      "reviews": "4",
-      "area": "sunset",
-      "place_id": "ChIJ_6rFqwBFwokRgYpWwGmTN7c",
-      "google_primary_type": "real_estate_agency",
-      "google_types": [
-        "real_estate_agency",
-        "point_of_interest",
-        "service",
-        "establishment"
-      ],
-      "source": "google_places_backfill",
-      "category_source": "google_places_types"
-    },
-    {
-      "name": "ROMMEL VAZQUEZ License Associate Real Estate Broker",
-      "phone": "(917) 734-9706",
-      "address": "81-15 Queens Blvd, Elmhurst, NY 11373美国",
-      "rating": "5",
-      "reviews": "24",
-      "area": "elmhurst",
-      "place_id": "ChIJ_7lCDxNfwokRN_XMtO6Svrk",
-      "google_primary_type": "real_estate_agency",
-      "google_types": [
-        "real_estate_agency",
-        "service",
-        "point_of_interest",
-        "establishment"
-      ],
-      "source": "google_places_backfill",
-      "category_source": "google_places_types"
-    },
-    {
-      "name": "Realty One Group Dynasty",
-      "phone": "(718) 747-7747",
-      "address": "11-05 154th St, Whitestone, NY 11357美国",
-      "rating": "4.7",
-      "reviews": "196",
-      "area": "flushing",
-      "place_id": "ChIJ94YTj-2KwokRIhKSeVpIk-I",
-      "google_primary_type": "real_estate_agency",
-      "google_types": [
-        "real_estate_agency",
-        "service",
-        "point_of_interest",
-        "establishment"
-      ],
-      "source": "google_places_backfill",
-      "category_source": "google_places_types"
-    },
-    {
-      "name": "Richard Polanco Licensed Real Estate Salesperson",
-      "phone": "(347) 651-2076",
-      "address": "75-35 31st Ave Ste 202, East Elmhurst, NY 11370美国",
-      "rating": "4.9",
-      "reviews": "37",
-      "area": "elmhurst",
-      "place_id": "ChIJa6TzPyRfwokRuHg7Ogbphp4",
-      "google_primary_type": "consultant",
-      "google_types": [
-        "real_estate_agency",
-        "consultant",
-        "point_of_interest",
-        "service",
-        "establishment"
-      ],
-      "source": "google_places_backfill",
-      "category_source": "google_places_types"
-    },
-    {
-      "name": "Rock Realty",
-      "phone": "(718) 478-4545",
-      "address": "75-47 31st Ave, East Elmhurst, NY 11370美国",
-      "rating": "4.9",
-      "reviews": "24",
-      "area": "elmhurst",
-      "place_id": "ChIJQbBWD5hfwokRaUiKwANRAYI",
-      "google_primary_type": "real_estate_agency",
-      "google_types": [
-        "real_estate_agency",
-        "point_of_interest",
-        "service",
-        "establishment"
-      ],
-      "source": "google_places_backfill",
-      "category_source": "google_places_types"
-    },
-    {
-      "name": "Rosen Jacob Realty Services",
-      "phone": "(212) 602-1515",
-      "address": "3418 Northern Boulevard, Queens, NY 11101美国",
-      "rating": "5",
-      "reviews": "1",
-      "area": "queens",
-      "place_id": "ChIJrS0xMNRfwokRYJ2UQfqGaXY",
-      "google_primary_type": "real_estate_agency",
-      "google_types": [
-        "real_estate_agency",
-        "finance",
-        "service",
-        "point_of_interest",
-        "establishment"
-      ],
-      "source": "google_places_backfill",
-      "category_source": "google_places_types"
-    },
-    {
-      "name": "Rosu Appraisal Management Corp.",
-      "phone": "(833) 476-7826",
-      "address": "2324 Healy Ave, Far Rockaway, NY 11691美国",
-      "rating": "",
-      "reviews": "",
-      "area": "queens"
-    },
-    {
-      "name": "Royalux Realty LLC",
-      "phone": "(718) 666-6066",
-      "address": "131-12 40th Rd FL 2, Flushing, NY 11354美国",
-      "rating": "3.7",
-      "reviews": "6",
-      "area": "flushing",
-      "place_id": "ChIJ0b96e7NhwokR_gb-Qgro8Ss",
-      "google_primary_type": "real_estate_agency",
-      "google_types": [
-        "real_estate_agency",
-        "service",
-        "point_of_interest",
-        "establishment"
-      ],
-      "source": "google_places_backfill",
-      "category_source": "google_places_types"
-    },
-    {
-      "name": "Russo Realty Properties",
-      "phone": "(718) 406-9018",
-      "address": "82-14 Eliot Ave, Middle Village, NY 11379美国",
-      "rating": "5",
-      "reviews": "3",
-      "area": "queens",
-      "place_id": "ChIJPUlbrm5ewokRGBzpf_NWUZY",
-      "google_primary_type": "real_estate_agency",
-      "google_types": [
-        "real_estate_agency",
-        "service",
-        "point_of_interest",
-        "establishment"
-      ],
-      "source": "google_places_backfill",
-      "category_source": "google_places_types"
-    },
-    {
-      "name": "SKYLUX REALTY (朝阳地产)",
-      "phone": "(718) 500-2231",
-      "address": "55 Northern Blvd Ste 302, Great Neck, NY 11021美国",
-      "rating": "5",
-      "reviews": "3",
-      "area": "longisland",
-      "place_id": "ChIJk8ZOBtZhwokRx7FSizzu3nU",
-      "google_primary_type": "real_estate_agency",
-      "google_types": [
-        "real_estate_agency",
-        "service",
-        "point_of_interest",
-        "establishment"
-      ],
-      "source": "google_places_backfill",
-      "category_source": "google_places_types"
-    },
-    {
-      "name": "Showcase Realty Inc",
-      "phone": "(718) 520-0000",
-      "address": "113-25 Queens Blvd # 112, Flushing, NY 11375美国",
-      "rating": "4.7",
-      "reviews": "15",
-      "area": "flushing",
-      "place_id": "ChIJibHnHJlgwokRo7dAJz85qco",
-      "google_primary_type": "real_estate_agency",
-      "google_types": [
-        "real_estate_agency",
-        "service",
-        "point_of_interest",
-        "establishment"
-      ],
-      "source": "google_places_backfill",
-      "category_source": "google_places_types"
-    },
-    {
-      "name": "Silver Key Realty",
-      "phone": "(347) 445-0118",
-      "address": "150-29 72nd Rd Suite 2C, Flushing, NY 11367美国",
-      "rating": "4.9",
-      "reviews": "64",
-      "area": "flushing",
-      "place_id": "ChIJA90vPIdhwokRUJwTzAG15OY",
-      "google_primary_type": "real_estate_agency",
-      "google_types": [
-        "real_estate_agency",
-        "point_of_interest",
-        "service",
-        "establishment"
-      ],
-      "source": "google_places_backfill",
-      "category_source": "google_places_types"
-    },
-    {
-      "name": "Sool Realty Corporation",
-      "phone": "(718) 426-8904",
-      "address": "40-28 Junction Blvd, Corona, NY 11368美国",
-      "rating": "4.6",
-      "reviews": "98",
-      "area": "elmhurst",
-      "place_id": "ChIJYZzjZLdfwokRj6Y_FN6XvaU",
-      "google_primary_type": "real_estate_agency",
-      "google_types": [
-        "real_estate_agency",
-        "point_of_interest",
-        "service",
-        "establishment"
-      ],
-      "source": "google_places_backfill",
-      "category_source": "google_places_types"
-    },
-    {
-      "name": "Sovereign Realty of NY, Inc",
-      "phone": "(347) 838-3200",
-      "address": "114-06 Queens Blvd Ste A8, Forest Hills, NY 11375美国",
-      "rating": "5",
-      "reviews": "29",
-      "area": "queens",
-      "place_id": "ChIJq6r-GPVdwokRxinzd-zqclc",
-      "google_primary_type": "real_estate_agency",
-      "google_types": [
-        "real_estate_agency",
-        "consultant",
-        "service",
-        "point_of_interest",
-        "establishment"
-      ],
-      "source": "google_places_backfill",
-      "category_source": "google_places_types"
-    },
-    {
-      "name": "Strictly Realty",
-      "phone": "(718) 459-2920",
-      "address": "95-20 63rd Rd suite 2 A, Rego Park, NY 11374美国",
-      "rating": "4.2",
-      "reviews": "10",
-      "area": "queens",
-      "place_id": "ChIJC12T4DZewokRDMd24MyG-1A",
-      "google_primary_type": "real_estate_agency",
-      "google_types": [
-        "real_estate_agency",
-        "point_of_interest",
-        "service",
-        "establishment"
-      ],
-      "source": "google_places_backfill",
-      "category_source": "google_places_types"
-    },
-    {
-      "name": "Susanne Gutermuth - Douglas Elliman Real Estate",
-      "phone": "(917) 225-5196",
-      "address": "36-29 Bell Blvd, Bayside, NY 11361美国",
-      "rating": "5",
-      "reviews": "26",
-      "area": "queens",
-      "place_id": "ChIJodfulxdZwokRr5pq9RMhrhU",
-      "google_primary_type": "service",
-      "google_types": [
-        "real_estate_agency",
-        "consultant",
-        "service",
-        "point_of_interest",
-        "establishment"
-      ],
-      "source": "google_places_backfill",
-      "category_source": "google_places_types"
-    },
-    {
-      "name": "Sze Guan Tan Real Estate Salesperson",
-      "phone": "(518) 288-8896",
-      "address": "136-20 38th Ave #3e, Flushing, NY 11354美国",
-      "rating": "4.9",
-      "reviews": "7",
-      "area": "flushing",
-      "place_id": "ChIJy4b7c8t9wokRKQGjxrHHrjg",
-      "google_primary_type": "real_estate_agency",
-      "google_types": [
-        "real_estate_agency",
-        "consultant",
-        "point_of_interest",
-        "service",
-        "establishment"
-      ],
-      "source": "google_places_backfill",
-      "category_source": "google_places_types"
-    },
-    {
-      "name": "Tammy Blau - Associate Real Estate Broker at Signature Premier Properties",
-      "phone": "(917) 428-3663",
-      "address": "One Bay Club Dr #12D, Bay Terrace, NY 11360美国",
-      "rating": "5",
-      "reviews": "4",
-      "area": "queens",
-      "place_id": "ChIJb4IX83SKwokRAXbGFIfyf8A",
-      "google_primary_type": "real_estate_agency",
-      "google_types": [
-        "real_estate_agency",
-        "service",
-        "point_of_interest",
-        "establishment"
-      ],
-      "source": "google_places_backfill",
-      "category_source": "google_places_types"
-    },
-    {
-      "name": "Telemundo Realty",
-      "phone": "(718) 205-3737",
-      "address": "102-01 Northern Blvd, Flushing, NY 11368美国",
-      "rating": "4.5",
-      "reviews": "72",
-      "area": "flushing",
-      "place_id": "ChIJd2fd5b9fwokRATJE0oQ19QU",
-      "google_primary_type": "real_estate_agency",
-      "google_types": [
-        "real_estate_agency",
-        "point_of_interest",
-        "service",
-        "establishment"
-      ],
-      "source": "google_places_backfill",
-      "category_source": "google_places_types"
-    },
-    {
-      "name": "Terrace Sotheby's International Realty",
-      "phone": "(718) 268-1045",
-      "address": "16 Station Square, Forest Hills, NY 11375美国",
-      "rating": "4.4",
-      "reviews": "24",
-      "area": "queens",
-      "place_id": "ChIJ1-AYHiFewokRqT5m3V5w6k0",
-      "google_primary_type": "real_estate_agency",
-      "google_types": [
-        "real_estate_agency",
-        "point_of_interest",
-        "service",
-        "establishment"
-      ],
-      "source": "google_places_backfill",
-      "category_source": "google_places_types"
-    },
-    {
-      "name": "The Ariel Group Realty Corp.",
-      "phone": "(917) 319-8856",
-      "address": "801 2nd Avenue, New York, NY 10017美国",
-      "rating": "",
-      "reviews": "",
-      "area": "manhattan",
-      "place_id": "ChIJN5bFOgNZwokRgp1dbb0Fp1Y",
-      "google_primary_type": "real_estate_agency",
-      "google_types": [
-        "real_estate_agency",
-        "point_of_interest",
-        "service",
-        "establishment"
-      ],
-      "source": "google_places_backfill",
-      "category_source": "google_places_types"
-    },
-    {
-      "name": "The Chang Team @ EXIT Realty Team (Queens & Nassau)",
-      "phone": "(718) 358-4000",
-      "address": "45-66 162nd St, Flushing, NY 11358美国",
-      "rating": "4.8",
-      "reviews": "68",
-      "area": "flushing",
-      "place_id": "ChIJiYdnyjBgwokR23Z6YRY3L5Y",
-      "google_primary_type": "real_estate_agency",
-      "google_types": [
-        "real_estate_agency",
-        "consultant",
-        "point_of_interest",
-        "service",
-        "establishment"
-      ],
-      "source": "google_places_backfill",
-      "category_source": "google_places_types"
-    },
-    {
-      "name": "The Proptech Scout",
-      "phone": "(631) 678-8864",
-      "address": "424 W 47th St, New York, NY 10036美国",
-      "rating": "",
-      "reviews": "",
-      "area": "manhattan"
-    },
-    {
-      "name": "The Realty Depot",
-      "phone": "(718) 896-0777",
-      "address": "103-13 Queens Blvd, Forest Hills, NY 11375美国",
-      "rating": "4.8",
-      "reviews": "825",
-      "area": "queens",
-      "place_id": "ChIJ_y121udgwokRciUxdY0JPbw",
-      "google_primary_type": "real_estate_agency",
-      "google_types": [
-        "real_estate_agency",
-        "consultant",
-        "point_of_interest",
-        "service",
-        "establishment"
-      ],
-      "source": "google_places_backfill",
-      "category_source": "google_places_types"
-    },
-    {
-      "name": "The Team B-纽约专业房地产置业安家团队",
-      "phone": "(732) 998-7777",
-      "address": "138 E 50th St #30B, New York, NY 10022美国",
-      "rating": "5",
-      "reviews": "7",
-      "area": "manhattan"
-    },
-    {
-      "name": "Tim Ho Team at Keller Williams Realty Landmark",
-      "phone": "(917) 592-8536",
-      "address": "32-55 Francis Lewis Blvd, Flushing, NY 11358美国",
-      "rating": "5",
-      "reviews": "42",
-      "area": "flushing",
-      "place_id": "ChIJs6jMQ3-KwokRBB4h99b7Z_g",
-      "google_primary_type": "real_estate_agency",
-      "google_types": [
-        "real_estate_agency",
-        "point_of_interest",
-        "service",
-        "establishment"
-      ],
-      "source": "google_places_backfill",
-      "category_source": "google_places_types"
-    },
-    {
-      "name": "Tony Huang, E Realty International Corp",
-      "phone": "(917) 593-3822",
-      "address": "39-07 Prince St Ste 4D, Flushing, NY 11354美国",
-      "rating": "5",
-      "reviews": "1",
-      "area": "flushing",
-      "place_id": "ChIJP5Dk6QdhwokRfSVG_I5wu-0",
-      "google_primary_type": "service",
-      "google_types": [
-        "point_of_interest",
-        "service",
-        "establishment"
-      ],
-      "source": "google_places_backfill",
-      "category_source": "google_places_types"
-    },
-    {
-      "name": "Totem Advisory LLC",
-      "phone": "(718) 355-8942",
-      "address": "634 Dean Street, Brooklyn, NY 11238美国",
-      "rating": "",
-      "reviews": "",
-      "area": "brooklyn"
-    },
-    {
-      "name": "Tscherne Realty, Inc.",
-      "phone": "(718) 672-7400",
-      "address": "80-14 Eliot Ave, Middle Village, NY 11379美国",
-      "rating": "4.8",
-      "reviews": "56",
-      "area": "queens",
-      "place_id": "ChIJJwTXj1xewokRjg_Ni5HpXsI",
-      "google_primary_type": "real_estate_agency",
-      "google_types": [
-        "real_estate_agency",
-        "service",
-        "point_of_interest",
-        "establishment"
-      ],
-      "source": "google_places_backfill",
-      "category_source": "google_places_types"
-    },
-    {
-      "name": "Tyme Realty 泰明不動產",
-      "phone": "(917) 705-1115",
-      "address": "141-07 20th Ave SUITE 303, Whitestone, NY 11357美国",
-      "rating": "4.8",
-      "reviews": "23",
-      "area": "flushing",
-      "place_id": "ChIJm9hGhC9hwokR3-jJGWhq4SI",
-      "google_primary_type": "real_estate_agency",
-      "google_types": [
-        "real_estate_agency",
-        "service",
-        "point_of_interest",
-        "establishment"
-      ],
-      "source": "google_places_backfill",
-      "category_source": "google_places_types"
-    },
-    {
-      "name": "United Realty",
-      "phone": "(718) 631-1900",
-      "address": "45-57 Bell Blvd, Flushing, NY 11361美国",
-      "rating": "4.8",
-      "reviews": "21",
-      "area": "flushing",
-      "place_id": "ChIJgWKF1eZhwokR7GA8RRndQXs",
-      "google_primary_type": "real_estate_agency",
-      "google_types": [
-        "real_estate_agency",
-        "point_of_interest",
-        "service",
-        "establishment"
-      ],
-      "source": "google_places_backfill",
-      "category_source": "google_places_types"
-    },
-    {
-      "name": "Urban Strategies and Solutions LLC",
-      "phone": "(201) 895-1702",
-      "address": "303 East 57th Street, New York, NY 10022美国",
-      "rating": "",
-      "reviews": "",
-      "area": "manhattan"
-    },
-    {
-      "name": "VAL-ADD RE Partners LLC",
-      "phone": "(917) 439-2108",
-      "address": "104 W 40th ST STE 401, New York, NY 10018美国",
-      "rating": "",
-      "reviews": "",
-      "area": "manhattan"
-    },
-    {
-      "name": "VNB Business Brokers, LLC",
-      "phone": "(917) 924-0234",
-      "address": "60 East 42nd Street, New York, NY 10165美国",
-      "rating": "",
-      "reviews": "",
-      "area": "other"
-    },
-    {
-      "name": "Wei Lin, Chase Global Realty Corp",
-      "phone": "(718) 313-7899",
-      "address": "140-75 Ash Ave ofc 2e, Flushing, NY 11355美国",
-      "rating": "5",
-      "reviews": "2",
-      "area": "flushing",
-      "place_id": "ChIJ-VHD-m1hwokRbtvSCE-wEJU",
-      "google_primary_type": "service",
-      "google_types": [
-        "point_of_interest",
-        "service",
-        "establishment"
-      ],
-      "source": "google_places_backfill",
-      "category_source": "google_places_types"
-    },
-    {
-      "name": "White Zinfandel",
-      "phone": "(646) 284-0838",
-      "address": "203 Lafayette Street, New York, NY 10012美国",
-      "rating": "",
-      "reviews": "",
-      "area": "manhattan"
-    },
-    {
-      "name": "Xiao \"Annie\" Zheng at Century Homes Realty Group LLC",
-      "phone": "(347) 882-7788",
-      "address": "34-36 Union St, Flushing, NY 11354美国",
-      "rating": "",
-      "reviews": "",
-      "area": "flushing",
-      "place_id": "ChIJKVAhlK5hwokRLIV86K9hjqc",
-      "google_primary_type": "real_estate_agency",
-      "google_types": [
-        "real_estate_agency",
-        "point_of_interest",
-        "service",
-        "establishment"
-      ],
-      "source": "google_places_backfill",
-      "category_source": "google_places_types"
-    },
-    {
-      "name": "Xzeller Realty, Manuel Vargas Broker & Owner",
-      "phone": "(917) 559-2002",
-      "address": "61-43 186th St Suite 568, Fresh Meadows, NY 11365美国",
-      "rating": "5",
-      "reviews": "44",
-      "area": "flushing",
-      "place_id": "ChIJs6jMQ3-KwokRqrnTOy77U1M",
-      "google_primary_type": "real_estate_agency",
-      "google_types": [
-        "real_estate_agency",
-        "point_of_interest",
-        "service",
-        "establishment"
-      ],
-      "source": "google_places_backfill",
-      "category_source": "google_places_types"
-    },
-    {
-      "name": "YI LIN, Licensed Associate Real Estate Broker",
-      "phone": "(917) 703-3737",
-      "address": "34-36 Union St Ste.201, Flushing, NY 11354美国",
-      "rating": "5",
-      "reviews": "12",
-      "area": "flushing",
-      "place_id": "ChIJ_RWwMChhwokRa-PrqQRDQAQ",
-      "google_primary_type": "real_estate_agency",
-      "google_types": [
-        "real_estate_agency",
-        "service",
-        "point_of_interest",
-        "establishment"
-      ],
-      "source": "google_places_backfill",
-      "category_source": "google_places_types"
-    },
-    {
-      "name": "Yvonne Pho Inc.",
-      "phone": "(347) 206-9121",
-      "address": "606 West 57th Street, 3507, New York, NY 10019美国",
-      "rating": "",
-      "reviews": "",
-      "area": "manhattan"
-    },
-    {
-      "name": "Zemu Realty择木地产 | New York City Real Estate Agency",
-      "phone": "(212) 661-0161",
-      "address": "515 Madison Ave 8th floor 8060, New York, NY 10022美国",
-      "rating": "5",
-      "reviews": "1",
-      "area": "manhattan",
-      "place_id": "ChIJtcesTORZwokR1vAaqtl6jAQ",
-      "google_primary_type": "real_estate_agency",
-      "google_types": [
-        "real_estate_agency",
-        "point_of_interest",
-        "service",
-        "establishment"
-      ],
-      "source": "google_places_backfill",
-      "category_source": "google_places_types"
-    },
-    {
-      "name": "Zhen Chen, E Realty International Corp",
-      "phone": "(917) 815-1188",
-      "address": "39-07 Prince St Ste 4D, Flushing, NY 11354美国",
-      "rating": "",
-      "reviews": "",
-      "area": "flushing",
-      "place_id": "ChIJk6vjERlhwokR-sD86OqxBqo",
-      "google_primary_type": "service",
-      "google_types": [
-        "point_of_interest",
-        "service",
-        "establishment"
-      ],
-      "source": "google_places_backfill",
-      "category_source": "google_places_types"
-    },
-    {
-      "name": "Zhen Hu Realtor | Key Impact Realty Group, Inc. - Queens, NY - Real Estate Agent",
-      "phone": "(917) 776-7588",
-      "address": "131-06 40th Rd 4 fl, Flushing, NY 11354美国",
-      "rating": "5",
-      "reviews": "19",
-      "area": "flushing",
-      "place_id": "ChIJl4jr7dBBtI4Rv7VEFNQXL_M",
-      "google_primary_type": "service",
-      "google_types": [
-        "consultant",
-        "point_of_interest",
-        "real_estate_agency",
-        "service",
-        "establishment"
-      ],
-      "source": "google_places_backfill",
-      "category_source": "google_places_types"
-    },
-    {
-      "name": "地产经纪 | 商业地产买卖租赁 |（ Jon ）Jun Yan | Realtor | XYZ THE ONE LLC",
-      "phone": "(917) 854-7777",
-      "address": "44-06 Kissena Blvd Rear, Flushing, NY 11355美国",
-      "rating": "",
-      "reviews": "",
-      "area": "flushing",
-      "place_id": "ChIJH3Ms0fBhwokR6Sqm-_rw5GE",
-      "google_primary_type": "service",
-      "google_types": [
-        "service",
-        "point_of_interest",
-        "establishment"
-      ],
-      "source": "google_places_backfill",
-      "category_source": "google_places_types"
-    },
-    {
-      "name": "安家纽约陈东——纽约资深地产顾问",
-      "phone": "(917) 330-0899",
-      "address": "1460 Broadway, New York, NY 10036美国",
-      "rating": "5",
-      "reviews": "3",
-      "area": "manhattan",
-      "place_id": "ChIJo8o_o25ZwokRPaZBgZWEYpI",
-      "google_primary_type": "service",
-      "google_types": [
-        "service",
-        "point_of_interest",
-        "establishment"
-      ],
-      "source": "google_places_backfill",
-      "category_source": "google_places_types"
-    },
-    {
-      "name": "建 峰 地产",
-      "phone": "(718) 775-5588",
-      "address": "131-08 40th Rd, Flushing, NY 11354美国",
-      "rating": "1",
-      "reviews": "1",
-      "area": "flushing",
-      "place_id": "ChIJvePSYgtgwokRNiUdaQqxkZE",
-      "google_primary_type": "real_estate_agency",
-      "google_types": [
-        "real_estate_agency",
-        "point_of_interest",
-        "service",
-        "establishment"
-      ],
-      "source": "google_places_backfill",
-      "category_source": "google_places_types"
-    },
-    {
-      "name": "李林 | LI LIN 商业|住宅 纽约地产顾问 NY REALTOR - B SQARE REALTY",
-      "phone": "(929) 300-1552",
-      "address": "136-20 38th Ave #3e, Flushing, NY 11354美国",
-      "rating": "5",
-      "reviews": "16",
-      "area": "flushing",
-      "place_id": "ChIJg6KYCbTUYEwRLvssKMub6nw",
-      "google_primary_type": "service",
-      "google_types": [
-        "real_estate_agency",
-        "consultant",
-        "service",
-        "point_of_interest",
-        "establishment"
-      ],
-      "source": "google_places_backfill",
-      "category_source": "google_places_types"
-    },
-    {
-      "name": "百通法商中心",
-      "phone": "(929) 977-5977",
-      "address": "136-20 38th Ave #3a, Flushing, NY 11354美国",
-      "rating": "",
-      "reviews": "",
-      "area": "flushing",
-      "place_id": "ChIJV2lpilxhwokRiZZc52yML0A",
-      "google_primary_type": "real_estate_agency",
-      "google_types": [
-        "real_estate_agency",
-        "service",
-        "point_of_interest",
-        "establishment"
-      ],
-      "source": "google_places_backfill",
-      "category_source": "google_places_types"
-    },
-    {
-      "name": "盛世地产 B Square Realty - 最专业房地产经纪中介_BARBIE LI REAL ESTATE TEAM",
-      "phone": "(646) 889-9988",
-      "address": "136-20 38th Ave APT 3E, Flushing, NY 11354美国",
-      "rating": "5",
-      "reviews": "39",
-      "area": "flushing",
-      "place_id": "ChIJtTdTknNhwokRJiv6AlO2jZo",
-      "google_primary_type": "service",
-      "google_types": [
-        "consultant",
-        "real_estate_agency",
-        "service",
-        "point_of_interest",
-        "establishment"
-      ],
-      "source": "google_places_backfill",
-      "category_source": "google_places_types"
-    },
-    {
-      "name": "纽约专业地产顾问Janice Shao-B Square Realty",
-      "phone": "(347) 379-3843",
-      "address": "136-20 38th Ave #3e, Flushing, NY 11354美国",
-      "rating": "5",
-      "reviews": "12",
-      "area": "flushing",
-      "place_id": "ChIJlUd1KxRhwokRWEVxruhu2a4",
-      "google_primary_type": "service",
-      "google_types": [
-        "point_of_interest",
-        "service",
-        "establishment"
-      ],
-      "source": "google_places_backfill",
-      "category_source": "google_places_types"
-    },
-    {
-      "name": "纽约地产 纽约房产 纽约地产经纪／纽约学区房 纽约二手房 纽约房地产／纽约房屋买卖 纽约法拍屋 纽约房产中介 纽约地产中介",
-      "phone": "(917) 580-2382",
-      "address": "210 Targee St, Staten Island, NY 10304美国",
-      "rating": "4",
-      "reviews": "3",
-      "area": "staten",
-      "place_id": "ChIJ8-mzxilPwokRHA2rSTFMNwM",
-      "google_primary_type": "real_estate_agency",
-      "google_types": [
-        "real_estate_agency",
-        "service",
-        "point_of_interest",
-        "establishment"
-      ],
-      "source": "google_places_backfill",
-      "category_source": "google_places_types"
-    },
-    {
-      "name": "纽约房地产网 | 地产经纪 | 房屋出租 | 房屋出售 | 房屋买卖 |房地产信息中心",
-      "phone": "(212) 966-8888",
-      "address": "37-07 147th St #3D, Flushing, NY 11354美国",
-      "rating": "5",
-      "reviews": "4",
-      "area": "flushing",
-      "place_id": "ChIJIdUBmxhgwokRRJrapSBs5kU",
-      "google_primary_type": "real_estate_agency",
-      "google_types": [
-        "real_estate_agency",
-        "service",
-        "point_of_interest",
-        "establishment"
-      ],
-      "source": "google_places_backfill",
-      "category_source": "google_places_types"
-    },
-    {
-      "name": "纽约福临门地产",
-      "phone": "(917) 370-1688",
-      "address": "295 Madison Ave, New York, NY 10017美国",
-      "rating": "5",
-      "reviews": "1",
-      "area": "manhattan",
-      "place_id": "ChIJZzRWBAFZwokRKZ-80P-jq_Y",
-      "google_primary_type": "real_estate_agency",
-      "google_types": [
-        "real_estate_agency",
-        "service",
-        "point_of_interest",
-        "establishment"
-      ],
-      "source": "google_places_backfill",
-      "category_source": "google_places_types"
-    },
-    {
-      "name": "纽约金牌地产经纪罗先生 Martin Long Luo NY Realtor - B Square Realty",
-      "phone": "(973) 666-8666",
-      "address": "136-20 38th Ave #3e, Flushing, NY 11354美国",
-      "rating": "5",
-      "reviews": "4",
-      "area": "flushing",
-      "place_id": "ChIJ4Qja9qRhwokR7BuU5HFLVdo",
-      "google_primary_type": "service",
-      "google_types": [
-        "point_of_interest",
-        "service",
-        "establishment"
-      ],
-      "source": "google_places_backfill",
-      "category_source": "google_places_types"
-    },
-    {
-      "name": "金牌地产经纪鲍博士 Jersey City Newport Hoboken Realtor",
-      "phone": "(201) 881-6897",
-      "address": "101 Hudson St #2100, Jersey City, NJ 07302美国",
-      "rating": "5",
-      "reviews": "16",
-      "area": "other",
-      "place_id": "ChIJx0r1MgxRwokRIV21NpyM_II",
-      "google_primary_type": "service",
-      "google_types": [
         "point_of_interest",
         "service",
         "establishment"
