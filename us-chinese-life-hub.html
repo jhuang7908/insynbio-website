@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- hub-build: 2026-06-14T15:15-deals-4plus-expand-singledate -->
+<!-- hub-build: 2026-06-14T15:28-deals-clean-nolinks -->
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8" />
@@ -2427,10 +2427,9 @@ function renderCard(i, opts) {
   const s = UI_STRINGS[currentLang];
   let title = i['title_' + currentLang] || i.title_zh;
   if (opts.deal) title = title.replace(/^🔥\s*/, '');
-  const summaryRaw = i['summary_' + currentLang] || i.summary_zh;
   const brief = opts.deal ? dealBriefZh(i) : cardBriefZh(i);
   const briefHtml = brief ? ('<div class="card-brief-zh">' + brief + '</div>') : '';
-  const summaryHtml = opts.deal && summaryRaw ? ('<div class="summary summary-muted">' + summaryRaw + '</div>') : '';
+  const summaryHtml = '';
   const modObj = MODULES.find(m => m.zh === i.module);
   const modName = opts.deal
     ? (s.deals_tag || '生活参考')
