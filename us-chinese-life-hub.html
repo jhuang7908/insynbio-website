@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- hub-build: 2026-06-14T12:30-huangli-orange -->
+<!-- hub-build: 2026-06-14T12:35-nyc-holidays-3cat -->
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8" />
@@ -402,8 +402,15 @@
     .almanac-inline .yi, .almanac-inline .ji { padding: 2px 6px; border-radius: 4px; font-weight: 800; font-size: 12px; flex-shrink: 0; }
     .almanac-inline .yi { background: #fde68a; color: #92400e; border: 1px solid #fbbf24; }
     .almanac-inline .ji { background: #fecaca; color: #991b1b; border: 1px solid #fca5a5; }
-    .almanac-holidays-today { font-size: 13px; color: #c2410c; font-weight: 700; margin-top: 6px; line-height: 1.45; }
-    .almanac-holidays-today .tag-school { color: #1e40af; font-weight: 700; }
+    .almanac-holidays-today { font-size: 13px; color: #431407; font-weight: 700; margin-top: 6px; line-height: 1.55; }
+    .almanac-holidays-today .tag-cn { color: #c2410c; font-weight: 800; }
+    .almanac-holidays-today .tag-us { color: #1e40af; font-weight: 800; }
+    .almanac-holidays-today .tag-school { color: #15803d; font-weight: 800; }
+    .almanac-holidays-today .holiday-sep { color: #a8a29e; font-weight: 400; margin: 0 2px; }
+    .almanac-scope { font-size: 11px; color: #78350f; font-weight: 600; margin-top: 4px; }
+    .forecast-day .fd-holi .tag-cn { color: #c2410c; }
+    .forecast-day .fd-holi .tag-us { color: #1e40af; }
+    .forecast-day .fd-holi .tag-school { color: #15803d; }
     .cal-forecast { margin-top: 8px; }
     .cal-forecast[hidden] { display: none; }
     .forecast-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 4px; }
@@ -619,6 +626,7 @@
             <span class="ji">忌</span><span id="almanac-ji">—</span>
           </div>
           <div class="almanac-holidays-today" id="almanac-holidays" style="display:none;"></div>
+          <div class="almanac-scope">范围：纽约市 · 中国传统假日 · 美国法定假日 · NYC 公立学校</div>
         </div>
         <div class="cal-forecast" id="cal-forecast" hidden>
           <div class="forecast-grid" id="forecast-grid"></div>
@@ -812,7 +820,7 @@ const DEAL_ITEMS = [{"id":"deal_001","module":"促销·折扣","content_kind":"d
 const HUB_AUTO_UPDATE = {"last_full":"2026-06-14 11:53 ET","last_incremental":"","tz":"America/New_York"};
 const HUB_MARKET_SNAPSHOT = {"as_of":"2026-06-14 11:53 ET","tz":"America/New_York","quotes":[{"kind":"index","symbol":"^GSPC","label":"标普","change_pct":0.65,"price":7431.46},{"kind":"index","symbol":"^IXIC","label":"纳指","change_pct":0.7,"price":25888.844},{"kind":"index","symbol":"^TNX","label":"10Y","change_pct":-1.43,"price":4.487},{"kind":"index","symbol":"GC=F","label":"黄金","change_pct":-0.5,"price":4238.8},{"kind":"mortgage","symbol":"OBMMIC30YF","label":"30Y房贷","value_pct":6.532,"change_bp":0.6,"date":"2026-06-11"}],"mortgage":{"kind":"mortgage","series":"OBMMIC30YF","label":"30Y房贷","value_pct":6.532,"date":"2026-06-11","change_bp":0.6,"source":"FRED·OBMMI"}};
 const HUB_WEATHER_SNAPSHOT = {"as_of":"2026-06-14 12:08 ET","tz":"America/New_York","city":"纽约","temp_c":30.8,"code":2};
-const HUB_SCHOOL_CALENDAR = {"school_year":"2025-26","updated":"2026-06-14","source_zh":"NYC DOE 校历","source_url":"https://www.schools.nyc.gov/calendar/2025-2026-school-year-calendar","school_closed":{"2025-09-25":["公立学校停课·犹太新年"],"2025-09-26":["公立学校停课·犹太新年"],"2025-10-02":["公立学校停课·赎罪日"],"2025-10-13":["公立学校停课·哥伦布/原住民日"],"2025-11-04":["公立学校·选举日无课"],"2025-11-11":["公立学校停课·退伍军人节"],"2025-11-27":["公立学校停课·感恩节"],"2025-11-28":["公立学校停课·感恩节"],"2025-12-24":["公立学校·寒假开始"],"2025-12-25":["公立学校停课·圣诞节"],"2025-12-26":["公立学校·寒假"],"2025-12-29":["公立学校·寒假"],"2025-12-30":["公立学校·寒假"],"2025-12-31":["公立学校·寒假"],"2026-01-01":["公立学校停课·元旦"],"2026-01-19":["公立学校停课·马丁·路德·金日"],"2026-02-16":["公立学校·冬假"],"2026-02-17":["公立学校停课·农历新年"],"2026-02-18":["公立学校·冬假"],"2026-02-19":["公立学校·冬假"],"2026-02-20":["公立学校·冬假"],"2026-03-20":["公立学校停课·开斋节"],"2026-03-30":["公立学校·春假开始"],"2026-03-31":["公立学校·春假"],"2026-04-01":["公立学校·春假"],"2026-04-02":["公立学校·春假"],"2026-04-03":["公立学校·春假"],"2026-04-06":["公立学校·春假结束"],"2026-05-25":["公立学校停课·阵亡将士纪念日"],"2026-06-04":["公立学校·学年结束(小学)"],"2026-06-19":["公立学校停课·六月节"]}};
+const HUB_SCHOOL_CALENDAR = {"scope":"NYC","scope_zh":"仅限纽约市（Five Boroughs）","categories_zh":["中国传统假日","美国法定假日","NYC DOE 公立学校"],"school_year":"2025-26","updated":"2026-06-14","source_zh":"NYC DOE 校历","source_url":"https://www.schools.nyc.gov/calendar/2025-2026-school-year-calendar","school_closed":{"2025-09-25":["犹太新年停课"],"2025-09-26":["犹太新年停课"],"2025-10-02":["赎罪日停课"],"2025-10-13":["哥伦布/原住民日停课"],"2025-11-04":["选举日无课"],"2025-11-11":["退伍军人节停课"],"2025-11-27":["感恩节停课"],"2025-11-28":["感恩节停课"],"2025-12-24":["寒假开始"],"2025-12-25":["圣诞节停课"],"2025-12-26":["寒假"],"2025-12-29":["寒假"],"2025-12-30":["寒假"],"2025-12-31":["寒假"],"2026-01-01":["元旦停课"],"2026-01-19":["马丁·路德·金日停课"],"2026-02-16":["冬假"],"2026-02-17":["农历新年停课"],"2026-02-18":["冬假"],"2026-02-19":["冬假"],"2026-02-20":["冬假"],"2026-03-20":["开斋节停课"],"2026-03-30":["春假开始"],"2026-03-31":["春假"],"2026-04-01":["春假"],"2026-04-02":["春假"],"2026-04-03":["春假"],"2026-04-06":["春假结束"],"2026-05-25":["阵亡将士纪念日停课"],"2026-06-04":["学年结束(小学)"],"2026-06-19":["六月节停课"]}};
 const HUB_INDEX_STATS = {"computed_at":"2026-06-14 11:53 ET","tz":"America/New_York","new_24h":25,"featured_24h_ids":["live_027","live_028","live_029","live_030","live_031","live_032"],"recent_3d":35,"featured_recent3d_ids":["live_053","live_003","live_084","live_085","live_028","live_029"],"events_7d":24,"total":108,"scan_schedule_et":"07:30 ET daily","sources_scanned":55};
 
 const UI_STRINGS = {
@@ -3647,42 +3655,77 @@ function getSchoolHolidaysForDate(d) {
   return HUB_SCHOOL_CALENDAR.school_closed[hubDateKey(d)] || [];
 }
 
-function getHolidaysForDate(d) {
-  const holidays = [];
-  if (typeof Lunar === 'undefined' || typeof Solar === 'undefined') {
-    holidays.push(...getSchoolHolidaysForDate(d));
-    return [...new Set(holidays)];
-  }
-  const lunar = Lunar.fromDate(d);
-  const solar = Solar.fromDate(d);
-  holidays.push(...(lunar.getFestivals() || []));
-  const jq = lunar.getJieQi();
-  if (jq) holidays.push(jq);
-  holidays.push(...(solar.getFestivals() || []));
+function getUSFederalHolidays(d) {
+  const out = [];
   const m = d.getMonth() + 1, day = d.getDate(), wd = d.getDay();
   const wom = Math.ceil(day / 7);
-  if (m === 1 && day === 1) holidays.push('元旦');
-  if (m === 1 && wd === 1 && wom === 3) holidays.push('马丁·路德·金日');
-  if (m === 2 && wd === 1 && wom === 3) holidays.push('总统日');
-  if (m === 5 && wd === 1 && day >= 25) holidays.push('阵亡将士纪念日');
-  if (m === 6 && day === 19) holidays.push('六月节');
-  if (m === 7 && day === 4) holidays.push('独立日');
-  if (m === 9 && wd === 1 && wom === 1) holidays.push('劳工节');
-  if (m === 11 && day === 11) holidays.push('退伍军人节');
-  if (m === 11 && wd === 4 && wom === 4) holidays.push('感恩节');
-  if (m === 12 && day === 25) holidays.push('圣诞节');
-  if (m === 6 && day === 1) holidays.push('儿童节');
-  if (m === 10 && day === 1) holidays.push('国庆节');
-  holidays.push(...getSchoolHolidaysForDate(d));
-  return [...new Set(holidays)];
+  if (m === 1 && day === 1) out.push('元旦');
+  if (m === 1 && wd === 1 && wom === 3) out.push('马丁·路德·金日');
+  if (m === 2 && wd === 1 && wom === 3) out.push('总统日');
+  if (m === 5 && wd === 1 && day >= 25) out.push('阵亡将士纪念日');
+  if (m === 6 && day === 19) out.push('六月节');
+  if (m === 7 && day === 4) out.push('独立日');
+  if (m === 9 && wd === 1 && wom === 1) out.push('劳工节');
+  if (m === 11 && day === 11) out.push('退伍军人节');
+  if (m === 11 && wd === 4 && wom === 4) out.push('感恩节');
+  if (m === 12 && day === 25) out.push('圣诞节');
+  return out;
+}
+
+function getHolidayBundlesForDate(d) {
+  const cn = [];
+  const us = getUSFederalHolidays(d);
+  const school = getSchoolHolidaysForDate(d).map(s =>
+    s.replace(/^公立学校停课·/, '').replace(/^公立学校·/, '')
+  );
+
+  if (typeof Lunar !== 'undefined' && typeof Solar !== 'undefined') {
+    const lunar = Lunar.fromDate(d);
+    const solar = Solar.fromDate(d);
+    cn.push(...(lunar.getFestivals() || []));
+    const jq = lunar.getJieQi();
+    if (jq) cn.push(jq);
+    const m = d.getMonth() + 1, day = d.getDate();
+    if (m === 10 && day === 1) cn.push('国庆节');
+    if (m === 6 && day === 1) cn.push('儿童节');
+    for (const f of (solar.getFestivals() || [])) {
+      if (f && !cn.includes(f) && !us.includes(f)) us.push(f);
+    }
+  }
+
+  const dedupe = arr => [...new Set(arr.filter(Boolean))];
+  return { cn: dedupe(cn), us: dedupe(us), school: dedupe(school) };
+}
+
+function getHolidaysForDate(d) {
+  const b = getHolidayBundlesForDate(d);
+  return [...b.cn, ...b.us, ...b.school];
+}
+
+function formatHolidayBundles(b, compact) {
+  const parts = [];
+  if (b.cn.length) {
+    parts.push(compact
+      ? '<span class="tag-cn">中:' + b.cn.join('·') + '</span>'
+      : '<span class="tag-cn">中国 ' + b.cn.join(' · ') + '</span>');
+  }
+  if (b.us.length) {
+    parts.push(compact
+      ? '<span class="tag-us">美:' + b.us.join('·') + '</span>'
+      : '<span class="tag-us">美国 ' + b.us.join(' · ') + '</span>');
+  }
+  if (b.school.length) {
+    parts.push(compact
+      ? '<span class="tag-school">校:' + b.school.join('·') + '</span>'
+      : '<span class="tag-school">学校 ' + b.school.join(' · ') + '</span>');
+  }
+  if (!parts.length) return '';
+  return parts.join(compact ? ' ' : ' <span class="holiday-sep">|</span> ');
 }
 
 function formatHolidayLine(holidays) {
   if (!holidays.length) return '';
-  return holidays.map(h => {
-    if (/公立学校/.test(h)) return '<span class="tag-school">' + h + '</span>';
-    return h;
-  }).join(' · ');
+  return holidays.join(' · ');
 }
 
 function renderForecastGrid() {
@@ -3699,7 +3742,8 @@ function renderForecastGrid() {
     const minC = WEATHER_DAILY.temperature_2m_min[i];
     const maxC = WEATHER_DAILY.temperature_2m_max[i];
     const code = WEATHER_DAILY.weathercode[i];
-    const holi = getHolidaysForDate(d);
+    const holi = getHolidayBundlesForDate(d);
+    const holiHtml = formatHolidayBundles(holi, true);
     const isToday = dateStr === todayStr;
     const label = isToday ? '今天' : '周' + days[d.getDay()];
     return `<div class="forecast-day${isToday ? ' is-today' : ''}">
@@ -3707,7 +3751,7 @@ function renderForecastGrid() {
       <div class="fd-dt">${d.getMonth()+1}/${d.getDate()}</div>
       <div class="fd-icon">${weatherIcon(code)}</div>
       <div class="fd-temp">${fmtTempRange(minC, maxC, TEMP_UNIT)}</div>
-      ${holi.length ? `<div class="fd-holi">${holi.join('·')}</div>` : ''}
+      ${holiHtml ? `<div class="fd-holi">${holiHtml}</div>` : ''}
     </div>`;
   }).join('');
 }
@@ -3818,10 +3862,11 @@ function renderAlmanac() {
     `农历${lunar.getMonthInChinese()}月${lunar.getDayInChinese()}`;
   document.getElementById('almanac-yi').textContent = lunar.getDayYi().join('、') || '无';
   document.getElementById('almanac-ji').textContent = lunar.getDayJi().join('、') || '无';
-  const holidays = getHolidaysForDate(today);
+  const bundles = getHolidayBundlesForDate(today);
   const holiEl = document.getElementById('almanac-holidays');
-  if (holidays.length > 0) {
-    holiEl.innerHTML = '🎉 ' + formatHolidayLine(holidays);
+  const holiHtml = formatHolidayBundles(bundles, false);
+  if (holiHtml) {
+    holiEl.innerHTML = '🎉 ' + holiHtml;
     holiEl.style.display = 'block';
   } else {
     holiEl.style.display = 'none';
