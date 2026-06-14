@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- hub-build: 2026-06-14T16:45-clean-shortcut-selftalk -->
+<!-- hub-build: 2026-06-14T17:00-mobile-compact-1col -->
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8" />
@@ -551,10 +551,11 @@
     }
     @media (max-width: 640px) {
       :root {
-        --text-xs: 12px;
-        --text-sm: 13px;
-        --text-base: 15px;
-        --text-lg: 18px;
+        --text-xs: 11px;
+        --text-sm: 12px;
+        --text-base: 13.5px;
+        --text-lg: 15px;
+        --text-xl: 17px;
       }
       body { font-size: var(--text-base); }
       .feed-grid { grid-template-columns: repeat(2, 1fr); }
@@ -570,6 +571,9 @@
       .forecast-grid { grid-template-columns: repeat(4, 1fr); }
       .yp-cards-grid { grid-template-columns: 1fr; }
       .yp-pill { padding: 6px 12px; }
+    }
+    @media (max-width: 560px) {
+      .feed-grid { grid-template-columns: 1fr; }
     }
     @media (max-width: 480px) {
       .forecast-grid { grid-template-columns: repeat(3, 1fr); }
