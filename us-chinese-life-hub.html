@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- hub-build: 2026-06-14T13:16-enroll-card-border -->
+<!-- hub-build: 2026-06-14T13:28-enroll-fix-width -->
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8" />
@@ -56,7 +56,7 @@
       background: var(--hub-bg);
       color: var(--hub-text);
     }
-    .wrap { max-width: 1200px; margin: 0 auto; padding: 0 16px; }
+    .wrap { max-width: 960px; margin: 0 auto; padding: 0 16px; }
     
     /* Header */
     .top { background: var(--hub-surface); border-bottom: 1px solid var(--hub-border-soft); position: sticky; top: 0; z-index: 100; box-shadow: 0 1px 2px rgba(44,52,64,0.03); }
@@ -1442,16 +1442,18 @@ function recent3dRank(i) {
   return eventBoost * 10000 + fiMs + itemImportance(i);
 }
 
-function pickRecent3dItemsClient() {
+function pickRecent3dItemsClient(excludeIds) {
+  excludeIds = excludeIds || new Set();
   return livelihoodItems()
-    .filter(i => isRecentIn3d(i))
+    .filter(i => isRecentIn3d(i) && !excludeIds.has(i.id))
     .sort((a, b) => recent3dRank(b) - recent3dRank(a));
 }
 
-function pickFeaturedStreamItems(stats) {
+function pickFeaturedStreamItems(stats, excludeIds) {
+  excludeIds = excludeIds || new Set();
   const byId = new Map(livelihoodItems().map(i => [i.id, i]));
   const new24Count = (stats && stats.new_24h) || 0;
-  const ids24 = ((stats && stats.featured_24h_ids) || []).filter(id => byId.has(id));
+  const ids24 = ((stats && stats.featured_24h_ids) || []).filter(id => byId.has(id) && !excludeIds.has(id));
   if (new24Count > 0 && ids24.length) {
     return {
       mode: '24h',
@@ -1459,15 +1461,15 @@ function pickFeaturedStreamItems(stats) {
     };
   }
   if (new24Count > 0) {
-    const live24 = [...byId.values()].filter(i => isNewIn24h(i)).sort((a, b) => itemImportance(b) - itemImportance(a));
+    const live24 = [...byId.values()].filter(i => isNewIn24h(i) && !excludeIds.has(i.id)).sort((a, b) => itemImportance(b) - itemImportance(a));
     if (live24.length) return { mode: '24h', items: live24 };
   }
   const ids3 = (stats && stats.featured_recent3d_ids) || [];
   if (ids3.length) {
-    const fromStats = ids3.map(id => byId.get(id)).filter(i => i && !isDealItem(i));
+    const fromStats = ids3.map(id => byId.get(id)).filter(i => i && !isDealItem(i) && !excludeIds.has(i.id));
     if (fromStats.length) return { mode: 'recent3d', items: fromStats };
   }
-  return { mode: 'recent3d', items: pickRecent3dItemsClient() };
+  return { mode: 'recent3d', items: pickRecent3dItemsClient(excludeIds) };
 }
 
 function resolveHubIndexStats() {
@@ -2126,11 +2128,13 @@ const ENROLLMENT_KW = [
   '夏令营', '暑期', '报名', '注册', '常年', 'summer school'
 ];
 
-function pickWeekItemsBalanced(maxTotal, maxPerDay) {
+function pickWeekItemsBalanced(maxTotal, maxPerDay, excludeIds) {
   maxTotal = maxTotal || 12;
   maxPerDay = maxPerDay || 2;
+  excludeIds = excludeIds || new Set();
   const buckets = Array.from({ length: 8 }, () => []);
   const weekPool = livelihoodItems().filter(i => {
+    if (excludeIds.has(i.id)) return false;
     if (i.date_kind !== 'event') return false;
     const ed = getDisplayEventDate(i);
     if (!ed) return false;
@@ -2186,13 +2190,6 @@ function pickAdvanceEnrollmentItems(maxTotal, excludeIds) {
   const pool = livelihoodItems().filter(i => {
     if (excludeIds.has(i.id)) return false;
     if (!itemMatchesEnrollmentAdvance(i)) return false;
-    if (i.date_kind === 'event') {
-      const ed = getDisplayEventDate(i);
-      if (ed) {
-        const diff = daysFromToday(ed);
-        if (diff !== null && diff >= 0 && diff <= 7) return false;
-      }
-    }
     return true;
   });
   pool.sort((a, b) => {
@@ -2207,11 +2204,16 @@ function renderStreamSections() {
   const stats = resolveHubIndexStats();
   const s = UI_STRINGS[currentLang];
 
-  const streamPick = pickFeaturedStreamItems(stats);
+  const enrollItems = pickAdvanceEnrollmentItems(4);
+  const enrollIds = new Set(enrollItems.map(i => i.id));
+
+  const streamPick = pickFeaturedStreamItems(stats, enrollIds);
   const todayItems = streamPick.items.slice(0, 6);
   updateTodayStreamHeading(streamPick.mode);
 
-  const weekItems = pickWeekItemsBalanced(12, 2);
+  const todayIds = new Set(todayItems.map(i => i.id));
+  const weekExclude = new Set([...enrollIds, ...todayIds]);
+  const weekItems = pickWeekItemsBalanced(12, 2, weekExclude);
   const weekHintEl = document.getElementById('week-hint');
   if (weekHintEl) {
     if (weekItems.length > 0) {
@@ -2238,12 +2240,11 @@ function renderStreamSections() {
     weekFeed.innerHTML = '<div style="grid-column:1/-1;padding:16px;text-align:center;color:#64748b;font-size:13px;">未来7日暂无预告活动</div>';
   }
 
-  const enrollItems = pickAdvanceEnrollmentItems(6, new Set(weekItems.map(i => i.id)));
   const enrollSection = document.getElementById('enroll-section');
   const enrollFeed = document.getElementById('enroll-feed');
   const enrollHintEl = document.getElementById('enroll-hint');
   const enrollTitleEl = document.getElementById('enroll-title');
-  if (enrollTitleEl) enrollTitleEl.textContent = s.enroll_title || '📌 报名·夏令营·常年项目';
+  if (enrollTitleEl) enrollTitleEl.textContent = s.enroll_title || '🎒 官方报名与长期规划';
   if (enrollHintEl) {
     enrollHintEl.textContent = s.enroll_hint || '';
     enrollHintEl.style.display = enrollItems.length > 0 ? 'block' : 'none';
