@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- hub-build: 2026-06-14T13:54-hero-width-fix -->
+<!-- hub-build: 2026-06-14T14:15-hero-narrow-center -->
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8" />
@@ -56,7 +56,10 @@
       background: var(--hub-bg);
       color: var(--hub-text);
     }
-    .wrap { max-width: 960px; margin: 0 auto; padding: 0 16px; }
+    .wrap { max-width: 1280px; margin: 0 auto; padding: 0 120px; }
+    @media (max-width: 1400px) { .wrap { padding: 0 60px; } }
+    @media (max-width: 1100px) { .wrap { padding: 0 24px; } }
+    @media (max-width: 640px)  { .wrap { padding: 0 12px; } }
     
     /* Header */
     .top { background: var(--hub-surface); border-bottom: 1px solid var(--hub-border-soft); position: sticky; top: 0; z-index: 100; box-shadow: 0 1px 2px rgba(44,52,64,0.03); }
@@ -322,6 +325,7 @@
       border: 1px solid #fdba74;
       border-radius: 10px;
       margin: 10px auto 0;
+      max-width: 840px;
       overflow: hidden;
       box-shadow: 0 2px 8px rgba(234, 88, 12, 0.08);
     }
