@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- hub-build: 2026-06-14T15:38-green-edu-broaden -->
+<!-- hub-build: 2026-06-14T16:00-green-edu-curated-4cat -->
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8" />
@@ -1677,6 +1677,9 @@ function formatFirstIndexedLabel(i) {
 
 function formatDateMeta(i) {
   // 只显示一个最有意义的日期，避免「官方发布」与「更新」重复
+  if (i.date_kind === 'service' || i.content_kind === 'anchor') {
+    return `<div class="date-row">${formatEventDateLabel(i)}</div>`;
+  }
   const ed = getDisplayEventDate(i);
   let chip;
   if (ed) {
@@ -2200,40 +2203,170 @@ function pickWeekItemsBalanced(maxTotal, maxPerDay, excludeIds) {
   return out;
 }
 
+const ENROLL_CAT_TAGS = {
+  zh: {
+    cat1: "教育·学校",
+    cat2: "暑期·夏令营",
+    cat3: "公园·常年活动",
+    cat4: "房屋·长期规划"
+  },
+  zht: {
+    cat1: "教育·學校",
+    cat2: "暑期·夏令營",
+    cat3: "公園·常年活動",
+    cat4: "房屋·長期規劃"
+  },
+  en: {
+    cat1: "Education",
+    cat2: "Summer & Camp",
+    cat3: "Parks & Rec",
+    cat4: "Housing & Plan"
+  }
+};
+
+const ENROLL_TITLE_TRANSLATIONS = {
+  "Community English as a second language": "QCC 社区英语课程 (ESL)",
+  "ESL and College Prep": "BMCC 英语与大学预备班",
+  "ESL Training Programs": "BMCC 英语培训课程",
+  "HSE (GED) and ESOL Programs": "BMCC 高中同等学历与英语课程",
+  "Math and Literacy Programs": "BMCC 数学与识字课程",
+  "High School Equivalency (HSE/GED)": "Kingsborough 高中同等学历班 (GED)",
+  "QCC Continuing Education Swim Program": "QCC 继续教育游泳项目",
+  "Continuing Education Workforce Development": "QCC 继续教育与职业培训",
+  "Center for Continuing Education Workforce Development": "BMCC 继续教育与职业发展中心",
+  "New York Workforce Resources": "BMCC 纽约职业资源汇总",
+  "Enrollment Flyer": "布鲁克林图书馆：招生简章",
+  "Open Enrollment.pdf": "布鲁克林图书馆：开放招生指南",
+  "Kids In Motion: Bowne Playground": "动感儿童：鲍恩游乐场",
+  "Kids In Motion: Alley/Springfield Playground": "动感儿童：斯普林菲尔德游乐场",
+  "Kids in Motion: Anne Loftus Playground": "动感儿童：安妮·洛夫图斯游乐场",
+  "Kids In Motion: Austin J. McDonald's Playground": "动感儿童：麦克唐纳游乐场",
+  "Kids In Motion: Arrochar": "动感儿童：阿罗查尔游乐场",
+  "Kids In Motion: Faber": "动感儿童：法伯游乐场",
+  "Kids in Motion: Tie Dye": "动感儿童：扎染手工活动"
+};
+
 function itemMatchesEnrollmentAdvance(i) {
-  // 凡教育/报名/升学/暑期类，不限来源，统一归入绿色「官方报名与长期规划」栏目
-  const blob = (
-    (i.title_zh || '') + ' ' + (i.title_en || '') + ' ' +
-    (i.summary_zh || '') + ' ' + (i.summary_en || '') + ' ' +
-    (i.url || '') + ' ' + (i.module || '') + ' ' + (i.source_id || '')
-  ).toLowerCase();
+  const url = String(i.url || '').toLowerCase();
+  
+  // 1. 必须是官方或正规教育/政府机构来源
+  const isOfficial = /schools\.nyc\.gov|nyc\.gov|cuny\.edu|\.gov|\.edu|nycgovparks\.org|bklynlibrary\.org|queenslibrary\.org|nypl\.org/i.test(url);
+  if (!isOfficial) return false;
 
-  // 1. 教育类模块直接归入
-  if (/语言|教育/.test(i.module || '')) return true;
+  const title = ((i.title_zh || '') + ' ' + (i.title_en || '')).toLowerCase();
+  const summary = ((i.summary_zh || '') + ' ' + (i.summary_en || '')).toLowerCase();
+  const combined = title + ' ' + summary;
 
-  // 2. 报名/夏令营/常年项目关键词
-  if (ENROLLMENT_KW.some(kw => blob.includes(kw.toLowerCase()))) return true;
+  // 2. 必须含有明确的“报名/注册/入学/夏令营/常年项目/招生”等规划类动作特征，排除单次普通游玩活动
+  const hasEnrollmentAction = /enroll|register|apply|admission|matriculation|sign up|rec center|recreation center|membership|summer rising|summer camp|after-?school|learn to swim|shape up|ged|esl|esol|adult education|continuing education|workforce|housing connect|fair fares|snap|child care|rent freeze|scrie|drie|入学|报名|注册|申请|招生|夏令营|暑期项目|常年项目|会员卡|游泳班|健身班|学区|升学|课程|培训班|职业中心|平价房|抽签|租金冻结|交通优惠|福利申请|儿童保育/i.test(combined);
+  
+  // 排除纯单次一日游、单次节日庆典、单次讲座（除非是招生说明会）
+  const isSingleEvent = /festival|parade|celebration|workshop|one-day|一日游|单次|节庆|游行|庆祝|美食节/i.test(combined) && !/enroll|register|apply|报名|注册|申请/i.test(combined);
 
-  // 3. 升学/课程/入学等扩展关键词
-  if (/esl|esol|ged|hse|equivalency|continuing education|college prep|tuition|admission|pre-?k|kindergarten|enrollment|literacy|adult education|学区|入学|升学|课程|招生|培训班/.test(blob)) return true;
-
-  return false;
+  return hasEnrollmentAction && !isSingleEvent;
 }
 
 function pickAdvanceEnrollmentItems(maxTotal, excludeIds) {
-  maxTotal = maxTotal || 4; // 降级为只展示 4 个
+  maxTotal = maxTotal || 4;
   excludeIds = excludeIds || new Set();
+  
+  // Clear any existing customModuleTag
+  ITEMS.forEach(item => delete item.customModuleTag);
+
+  // Get all matching official items
   const pool = livelihoodItems().filter(i => {
     if (excludeIds.has(i.id)) return false;
-    if (!itemMatchesEnrollmentAdvance(i)) return false;
-    return true;
+    return itemMatchesEnrollmentAdvance(i);
   });
-  pool.sort((a, b) => {
-    const da = getDisplayEventDate(a) || '9999-12-31';
-    const db = getDisplayEventDate(b) || '9999-12-31';
-    return da.localeCompare(db);
+
+  const cat1_school = []; // 教育与学校
+  const cat2_summer = []; // 暑期与夏令营
+  const cat3_parks = [];  // 公园与常年活动
+  const cat4_housing = []; // 房屋与长期规划
+
+  pool.forEach(i => {
+    const url = String(i.url || '').toLowerCase();
+    const title = ((i.title_zh || '') + ' ' + (i.title_en || '')).toLowerCase();
+    const summary = ((i.summary_zh || '') + ' ' + (i.summary_en || '')).toLowerCase();
+    const combined = title + ' ' + summary;
+
+    // Category 2: 暑期与夏令营
+    if (/summer|camp|rising|暑期|夏令营|summer school|summer ebt|额外杂货补助/.test(combined)) {
+      cat2_summer.push(i);
+    }
+    // Category 3: 公园局常年活动与泳课
+    else if (/nycgovparks\.org/.test(url) || /swim|recreation center|rec center|membership|shape up|parks|游泳|健身|常年活动|公园局/.test(combined)) {
+      cat3_parks.push(i);
+    }
+    // Category 4: 平价房抽签与长期规划
+    else if (/housingconnect\.nyc\.gov|access\.nyc\.gov/.test(url) || /housing connect|fair fares|snap|child care|rent freeze|scrie|drie|平价房|抽签|租金冻结|儿童保育|交通优惠|福利申请/.test(combined)) {
+      cat4_housing.push(i);
+    }
+    // Category 1: 教育与学校 (Fallback)
+    else {
+      cat1_school.push(i);
+    }
   });
-  return pool.slice(0, maxTotal);
+
+  // Sort each category so that "service" (anchor) items are prioritized, then by score descending
+  const sortFn = (a, b) => {
+    const aIsService = (a.date_kind === 'service' || a.content_kind === 'anchor') ? 1 : 0;
+    const bIsService = (b.date_kind === 'service' || b.content_kind === 'anchor') ? 1 : 0;
+    if (aIsService !== bIsService) {
+      return bIsService - aIsService; // Service items first
+    }
+    const scoreA = a.score || 0;
+    const scoreB = b.score || 0;
+    return scoreB - scoreA;
+  };
+
+  cat1_school.sort(sortFn);
+  cat2_summer.sort(sortFn);
+  cat3_parks.sort(sortFn);
+  cat4_housing.sort(sortFn);
+
+  const selected = [];
+  const lang = currentLang || 'zh';
+  const tags = ENROLL_CAT_TAGS[lang] || ENROLL_CAT_TAGS.zh;
+
+  if (cat1_school.length > 0) {
+    cat1_school[0].customModuleTag = tags.cat1;
+    selected.push(cat1_school[0]);
+  }
+  if (cat2_summer.length > 0) {
+    cat2_summer[0].customModuleTag = tags.cat2;
+    selected.push(cat2_summer[0]);
+  }
+  if (cat3_parks.length > 0) {
+    cat3_parks[0].customModuleTag = tags.cat3;
+    selected.push(cat3_parks[0]);
+  }
+  if (cat4_housing.length > 0) {
+    cat4_housing[0].customModuleTag = tags.cat4;
+    selected.push(cat4_housing[0]);
+  }
+
+  // Fallback if we have fewer than 4 items (fill from other categories)
+  const fallbacks = [
+    ...cat1_school.slice(1),
+    ...cat2_summer.slice(1),
+    ...cat3_parks.slice(1),
+    ...cat4_housing.slice(1)
+  ];
+  fallbacks.sort(sortFn);
+
+  while (selected.length < 4 && fallbacks.length > 0) {
+    const fb = fallbacks.shift();
+    if (!selected.some(s => s.id === fb.id)) {
+      if (cat1_school.includes(fb)) fb.customModuleTag = tags.cat1;
+      else if (cat2_summer.includes(fb)) fb.customModuleTag = tags.cat2;
+      else if (cat3_parks.includes(fb)) fb.customModuleTag = tags.cat3;
+      else if (cat4_housing.includes(fb)) fb.customModuleTag = tags.cat4;
+      selected.push(fb);
+    }
+  }
+
+  return selected.slice(0, 4);
 }
 
 function renderStreamSections() {
@@ -2430,13 +2563,19 @@ function renderCard(i, opts) {
   const s = UI_STRINGS[currentLang];
   let title = i['title_' + currentLang] || i.title_zh;
   if (opts.deal) title = title.replace(/^🔥\s*/, '');
+  if (currentLang !== 'en' && typeof ENROLL_TITLE_TRANSLATIONS !== 'undefined' && ENROLL_TITLE_TRANSLATIONS[title]) {
+    title = ENROLL_TITLE_TRANSLATIONS[title];
+  }
   const brief = opts.deal ? dealBriefZh(i) : cardBriefZh(i);
   const briefHtml = brief ? ('<div class="card-brief-zh">' + brief + '</div>') : '';
   const summaryHtml = '';
   const modObj = MODULES.find(m => m.zh === i.module);
-  const modName = opts.deal
+  let modName = opts.deal
     ? (s.deals_tag || '生活参考')
     : (modObj ? (modObj[currentLang] || modObj.zh) : i.module);
+  if (i.customModuleTag) {
+    modName = i.customModuleTag;
+  }
   const dealCls = opts.deal ? ' deal-card' : '';
   const tagBg = opts.deal ? '#64748b' : badgeColor(i.module);
   const linkLabel = opts.deal ? (s.view_link_deal || '查看') : s.view_link;
