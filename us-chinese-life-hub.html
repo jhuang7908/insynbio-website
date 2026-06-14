@@ -1948,6 +1948,7 @@ let YP_JSON_LOADED = false;
 let YP_MANIFEST = null;
 let YP_AREA_CACHE = {};
 const YP_DATA_BASE = 'yp_data/';
+const YP_STATIC_FALLBACK = 'https://uslifehub.pages.dev/';
 const YP_GATE_KEY = 'yp_access_v1';
 
 const YP_AREA_GROUPS = [
@@ -2737,9 +2738,23 @@ function ypFetchHeaders() {
 }
 
 async function ypFetchJson(url) {
-  const r = await fetch(url, { cache: 'no-store', headers: ypFetchHeaders() });
-  if (!r.ok) throw new Error('HTTP ' + r.status);
-  return r.json();
+  const tryOne = async (u) => {
+    const r = await fetch(u, { cache: 'no-store', headers: ypFetchHeaders() });
+    if (!r.ok) throw new Error('HTTP ' + r.status);
+    const text = await r.text();
+    const trimmed = text.trim();
+    if (!trimmed || trimmed.startsWith('<')) throw new Error('HTML instead of JSON');
+    return JSON.parse(trimmed);
+  };
+  try {
+    return await tryOne(url);
+  } catch (err) {
+    const rel = String(url).replace(/^https?:\/\/[^/]+\//, '');
+    if (rel && rel !== url && !String(url).includes('uslifehub.pages.dev')) {
+      return await tryOne(YP_STATIC_FALLBACK + rel);
+    }
+    throw err;
+  }
 }
 
 function flattenYpAreaBlock(areaId, block) {
