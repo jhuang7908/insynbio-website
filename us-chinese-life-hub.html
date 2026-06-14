@@ -2746,13 +2746,18 @@ async function ypFetchJson(url) {
     if (!trimmed || trimmed.startsWith('<')) throw new Error('HTML instead of JSON');
     return JSON.parse(trimmed);
   };
+  const fallbackFor = (u) => {
+    if (String(u).includes('uslifehub.pages.dev')) return null;
+    const rel = /^https?:\/\//i.test(u)
+      ? String(u).replace(/^https?:\/\/[^/]+\//, '')
+      : String(u).replace(/^\//, '');
+    return rel ? YP_STATIC_FALLBACK + rel : null;
+  };
   try {
     return await tryOne(url);
   } catch (err) {
-    const rel = String(url).replace(/^https?:\/\/[^/]+\//, '');
-    if (rel && rel !== url && !String(url).includes('uslifehub.pages.dev')) {
-      return await tryOne(YP_STATIC_FALLBACK + rel);
-    }
+    const fb = fallbackFor(url);
+    if (fb) return await tryOne(fb);
     throw err;
   }
 }
