@@ -72,7 +72,7 @@
       background: var(--hub-bg);
       color: var(--hub-text);
     }
-    .wrap { max-width: 1040px; margin: 0 auto; padding: 0 24px; }
+    .wrap { max-width: 840px; margin: 0 auto; padding: 0 16px; }
     @media (max-width: 640px)  { .wrap { padding: 0 12px; } }
 
     /* 两侧赞助广告位（仅宽屏显示，居中内容两边的留白里） */
@@ -83,8 +83,8 @@
       color: #c2410c; font-size: 13px; font-weight: 700; line-height: 1.6;
       box-shadow: 0 2px 8px rgba(234,88,12,0.06);
     }
-    .ad-rail-left  { left: max(16px, calc(50% - 520px - 156px)); }
-    .ad-rail-right { right: max(16px, calc(50% - 520px - 156px)); }
+    .ad-rail-left  { left: max(16px, calc(50% - 420px - 156px)); }
+    .ad-rail-right { right: max(16px, calc(50% - 420px - 156px)); }
     /* 广告位预留但不显示占位框；接入广告时改为 display:flex */
     
     /* Header */
@@ -354,7 +354,7 @@
       border: 1px solid #fdba74;
       border-radius: 10px;
       margin: 10px auto 0;
-      max-width: 840px;
+      max-width: 100%;
       overflow: hidden;
       box-shadow: 0 2px 8px rgba(234, 88, 12, 0.08);
     }
@@ -557,12 +557,12 @@
     .member-status.eligible { color: #065f46; background: #f0fdf4; border-color: #bbf7d0; }
     .yp-more { text-align: center; font-size: var(--text-sm); color: #94a3b8; padding: 6px; }
 
-    @media (max-width: 1100px) {
+    @media (max-width: 840px) {
       .feed-grid { grid-template-columns: repeat(3, 1fr); }
       .module-grid { grid-template-columns: repeat(3, 1fr); }
-    }
-    @media (max-width: 900px) {
       .hub-search-panel { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 680px) {
       .feed-grid { grid-template-columns: repeat(2, 1fr); }
       .module-grid { grid-template-columns: repeat(2, 1fr); }
     }
