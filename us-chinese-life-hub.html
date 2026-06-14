@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- hub-build: 2026-06-14T16:00-green-edu-curated-4cat -->
+<!-- hub-build: 2026-06-14T16:30-green-exclude-all-stream -->
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8" />
@@ -2329,41 +2329,52 @@ function pickAdvanceEnrollmentItems(maxTotal, excludeIds) {
   const lang = currentLang || 'zh';
   const tags = ENROLL_CAT_TAGS[lang] || ENROLL_CAT_TAGS.zh;
 
+  // Use current date (day of month, 1-31) as seed to rotate items daily ("每天循环播放")
+  const seed = new Date().getDate();
+
   if (cat1_school.length > 0) {
-    cat1_school[0].customModuleTag = tags.cat1;
-    selected.push(cat1_school[0]);
+    const idx = seed % cat1_school.length;
+    const item = cat1_school[idx];
+    item.customModuleTag = tags.cat1;
+    selected.push(item);
   }
   if (cat2_summer.length > 0) {
-    cat2_summer[0].customModuleTag = tags.cat2;
-    selected.push(cat2_summer[0]);
+    const idx = seed % cat2_summer.length;
+    const item = cat2_summer[idx];
+    item.customModuleTag = tags.cat2;
+    selected.push(item);
   }
   if (cat3_parks.length > 0) {
-    cat3_parks[0].customModuleTag = tags.cat3;
-    selected.push(cat3_parks[0]);
+    const idx = seed % cat3_parks.length;
+    const item = cat3_parks[idx];
+    item.customModuleTag = tags.cat3;
+    selected.push(item);
   }
   if (cat4_housing.length > 0) {
-    cat4_housing[0].customModuleTag = tags.cat4;
-    selected.push(cat4_housing[0]);
+    const idx = seed % cat4_housing.length;
+    const item = cat4_housing[idx];
+    item.customModuleTag = tags.cat4;
+    selected.push(item);
   }
 
   // Fallback if we have fewer than 4 items (fill from other categories)
+  const selectedIds = new Set(selected.map(s => s.id));
   const fallbacks = [
-    ...cat1_school.slice(1),
-    ...cat2_summer.slice(1),
-    ...cat3_parks.slice(1),
-    ...cat4_housing.slice(1)
-  ];
+    ...cat1_school,
+    ...cat2_summer,
+    ...cat3_parks,
+    ...cat4_housing
+  ].filter(i => !selectedIds.has(i.id));
   fallbacks.sort(sortFn);
 
   while (selected.length < 4 && fallbacks.length > 0) {
-    const fb = fallbacks.shift();
-    if (!selected.some(s => s.id === fb.id)) {
-      if (cat1_school.includes(fb)) fb.customModuleTag = tags.cat1;
-      else if (cat2_summer.includes(fb)) fb.customModuleTag = tags.cat2;
-      else if (cat3_parks.includes(fb)) fb.customModuleTag = tags.cat3;
-      else if (cat4_housing.includes(fb)) fb.customModuleTag = tags.cat4;
-      selected.push(fb);
-    }
+    const idx = seed % fallbacks.length;
+    const fb = fallbacks.splice(idx, 1)[0];
+    if (cat1_school.includes(fb)) fb.customModuleTag = tags.cat1;
+    else if (cat2_summer.includes(fb)) fb.customModuleTag = tags.cat2;
+    else if (cat3_parks.includes(fb)) fb.customModuleTag = tags.cat3;
+    else if (cat4_housing.includes(fb)) fb.customModuleTag = tags.cat4;
+    selected.push(fb);
   }
 
   return selected.slice(0, 4);
@@ -2374,14 +2385,17 @@ function renderStreamSections() {
   const s = UI_STRINGS[currentLang];
 
   const enrollItems = pickAdvanceEnrollmentItems(4);
-  const enrollIds = new Set(enrollItems.map(i => i.id));
+  
+  // 找出所有符合长期官方报名通道条件的项目，将它们彻底从“最新动态”和“未来7日活动”中排除
+  const allEnrollmentItems = livelihoodItems().filter(itemMatchesEnrollmentAdvance);
+  const allEnrollmentIds = new Set(allEnrollmentItems.map(i => i.id));
 
-  const streamPick = pickFeaturedStreamItems(stats, enrollIds);
+  const streamPick = pickFeaturedStreamItems(stats, allEnrollmentIds);
   const todayItems = streamPick.items.slice(0, 6);
   updateTodayStreamHeading(streamPick.mode);
 
   const todayIds = new Set(todayItems.map(i => i.id));
-  const weekExclude = new Set([...enrollIds, ...todayIds]);
+  const weekExclude = new Set([...allEnrollmentIds, ...todayIds]);
   const weekItems = pickWeekItemsBalanced(12, 2, weekExclude);
   const weekHintEl = document.getElementById('week-hint');
   if (weekHintEl) {
