@@ -106,6 +106,7 @@
     .livelihood-hot { margin-top: 4px; padding: 12px 14px 4px; border-radius: 14px;
       background: linear-gradient(180deg, #fffbeb 0%, #ffffff 72%); border: 1px solid #fde68a; }
     .livelihood-hot .section-title { margin-top: 8px; }
+    .stream-section-hint { font-size: var(--text-sm); color: #64748b; margin: -4px 0 10px; line-height: 1.5; font-weight: var(--weight-medium); }
     .deals-section-wrap { margin-top: 20px; padding-top: 12px; border-top: 1px solid #f1f5f9; }
     .deals-section-wrap summary { display: flex; align-items: center; justify-content: space-between; cursor: pointer; list-style: none; padding: 4px 0; }
     .deals-section-wrap summary::-webkit-details-marker { display: none; }
@@ -575,6 +576,7 @@
     <div class="section-title" style="margin-top:4px">
       <div class="section-title-left" id="today-title">🔥 过去24小时新增 · 纽约</div>
     </div>
+    <p class="stream-section-hint" id="today-hint" style="display:none"></p>
     <div class="feed-grid" id="today-feed"></div>
 
     <div class="section-title">
@@ -743,6 +745,8 @@ const UI_STRINGS = {
     last_3days: "最近3天 (Last 3 Days)",
     this_week: "本周新增 (This Week)",
     today_title: "🔥 过去24小时新增 · 纽约",
+    today_title_recent3d: "📋 近3日精选 · 纽约",
+    today_hint_recent3d: "今日暂无新入库，以下为近3日社区公益精选",
     week_title: "📅 未来7日活动 · 纽约场次",
     stream_new_label: "24h新增",
     stream_new_suffix: "条",
@@ -816,6 +820,8 @@ const UI_STRINGS = {
     last_3days: "最近3天 (Last 3 Days)",
     this_week: "本週新增 (This Week)",
     today_title: "🔥 過去24小時新增 · 紐約",
+    today_title_recent3d: "📋 近3日精選 · 紐約",
+    today_hint_recent3d: "今日暫無新入庫，以下為近3日社區公益精選",
     week_title: "📅 未來7日活動 · 紐約場次",
     stream_new_label: "24h新增",
     stream_new_suffix: "條",
@@ -889,6 +895,8 @@ const UI_STRINGS = {
     last_3days: "Last 3 Days",
     this_week: "This Week",
     today_title: "🔥 New in 24h · NYC",
+    today_title_recent3d: "📋 Featured · Last 3 Days",
+    today_hint_recent3d: "No new listings today — community picks from the past 3 days",
     week_title: "📅 Next 7 Days · NYC Events",
     stream_new_label: "24h new",
     stream_new_suffix: "",
@@ -931,6 +939,7 @@ const UI_STRINGS = {
     elmhurst: "Elmhurst",
     verified: "Verified",
     view_link: "View Link ➔",
+    view_link_deal: "View",
     no_results: "No matching information found. Please try another keyword or channel.",
     citywide_tag: "Citywide",
     neighborhood_hint: "Local events first; citywide benefits/services also shown (not tied to one neighborhood).",
@@ -1265,32 +1274,102 @@ function isNewIn24h(i) {
   return pubMs !== null && pubMs >= cut24;
 }
 
-function resolveHubIndexStats() {
-  if (typeof HUB_INDEX_STATS !== 'undefined' && HUB_INDEX_STATS && HUB_INDEX_STATS.events_7d !== undefined) {
-    return HUB_INDEX_STATS;
-  }
-  let new_24h = 0, events_7d = 0;
-  const featured = [];
-  for (const i of livelihoodItems()) {
-    if (isNewIn24h(i)) {
-      new_24h += 1;
-      featured.push(i);
-    }
-    if (i.date_kind !== 'event') continue;
-    const ed = getDisplayEventDate(i);
-    if (!ed) continue;
+function isRecentIn3d(i) {
+  if (isDealItem(i)) return false;
+  const cut3 = Date.now() - 3 * 24 * 3600000;
+  const fiMs = parseItemIndexMs(i.first_indexed_at, null);
+  if (fiMs && fiMs >= cut3) return true;
+  const pubMs = getSourcePublishedMs(i);
+  if (pubMs && pubMs >= cut3) return true;
+  const ed = getDisplayEventDate(i) || getEventDate(i);
+  if (!ed) return false;
+  const diff = daysFromToday(ed);
+  return diff !== null && diff >= 0 && diff <= 3;
+}
+
+function recent3dRank(i) {
+  const ed = getDisplayEventDate(i) || getEventDate(i);
+  let eventBoost = 0;
+  if (ed) {
     const diff = daysFromToday(ed);
-    if (diff !== null && diff >= 0 && diff <= 7) events_7d += 1;
+    if (diff !== null && diff >= 0 && diff <= 3) eventBoost = 1000 - diff * 100;
   }
-  featured.sort((a, b) => itemImportance(b) - itemImportance(a));
-  return {
-    new_24h,
-    featured_24h_ids: featured.slice(0, 6).map(x => x.id),
-    events_7d,
-    sources_scanned: 52,
-    scan_schedule_et: '07:30 ET daily',
-    total: ITEMS.length,
-  };
+  const fiMs = parseItemIndexMs(i.first_indexed_at, null) || 0;
+  return eventBoost * 10000 + fiMs + itemImportance(i);
+}
+
+function pickRecent3dItemsClient() {
+  return livelihoodItems()
+    .filter(i => isRecentIn3d(i))
+    .sort((a, b) => recent3dRank(b) - recent3dRank(a));
+}
+
+function pickFeaturedStreamItems(stats) {
+  const byId = new Map(livelihoodItems().map(i => [i.id, i]));
+  const new24Count = (stats && stats.new_24h) || 0;
+  const ids24 = ((stats && stats.featured_24h_ids) || []).filter(id => byId.has(id));
+  if (new24Count > 0 && ids24.length) {
+    return {
+      mode: '24h',
+      items: ids24.map(id => byId.get(id)).filter(i => i && !isDealItem(i)),
+    };
+  }
+  if (new24Count > 0) {
+    const live24 = [...byId.values()].filter(i => isNewIn24h(i)).sort((a, b) => itemImportance(b) - itemImportance(a));
+    if (live24.length) return { mode: '24h', items: live24 };
+  }
+  const ids3 = (stats && stats.featured_recent3d_ids) || [];
+  if (ids3.length) {
+    const fromStats = ids3.map(id => byId.get(id)).filter(i => i && !isDealItem(i));
+    if (fromStats.length) return { mode: 'recent3d', items: fromStats };
+  }
+  return { mode: 'recent3d', items: pickRecent3dItemsClient() };
+}
+
+function resolveHubIndexStats() {
+  let clientStats = null;
+  function computeClient() {
+    if (clientStats) return clientStats;
+    let new_24h = 0, recent_3d = 0, events_7d = 0;
+    const featured = [];
+    const recent3d = [];
+    for (const i of livelihoodItems()) {
+      if (isNewIn24h(i)) {
+        new_24h += 1;
+        featured.push(i);
+      }
+      if (isRecentIn3d(i)) {
+        recent_3d += 1;
+        recent3d.push(i);
+      }
+      if (i.date_kind !== 'event') continue;
+      const ed = getDisplayEventDate(i);
+      if (!ed) continue;
+      const diff = daysFromToday(ed);
+      if (diff !== null && diff >= 0 && diff <= 7) events_7d += 1;
+    }
+    featured.sort((a, b) => itemImportance(b) - itemImportance(a));
+    recent3d.sort((a, b) => recent3dRank(b) - recent3dRank(a));
+    clientStats = {
+      new_24h,
+      featured_24h_ids: featured.slice(0, 6).map(x => x.id),
+      recent_3d,
+      featured_recent3d_ids: recent3d.slice(0, 6).map(x => x.id),
+      events_7d,
+      sources_scanned: 52,
+      scan_schedule_et: '07:30 ET daily',
+      total: ITEMS.length,
+    };
+    return clientStats;
+  }
+  if (typeof HUB_INDEX_STATS !== 'undefined' && HUB_INDEX_STATS && HUB_INDEX_STATS.events_7d !== undefined) {
+    const client = computeClient();
+    return Object.assign({}, HUB_INDEX_STATS, {
+      recent_3d: client.recent_3d,
+      featured_recent3d_ids: client.featured_recent3d_ids,
+    });
+  }
+  return computeClient();
 }
 
 function applyHubStreamStatLabels() {
@@ -1359,12 +1438,27 @@ function renderHubStreamStats(stats) {
 }
 
 function pickFeatured24hItems(stats) {
-  const ids = (stats && stats.featured_24h_ids) || [];
-  const byId = new Map(livelihoodItems().map(i => [i.id, i]));
-  if (ids.length) {
-    return ids.map(id => byId.get(id)).filter(i => i && !isDealItem(i));
+  return pickFeaturedStreamItems(stats).items;
+}
+
+function updateTodayStreamHeading(mode) {
+  const s = UI_STRINGS[currentLang];
+  const titleEl = document.getElementById('today-title');
+  const hintEl = document.getElementById('today-hint');
+  if (titleEl) {
+    titleEl.textContent = mode === 'recent3d'
+      ? (s.today_title_recent3d || '📋 近3日精选 · 纽约')
+      : (s.today_title || '🔥 过去24小时新增 · 纽约');
   }
-  return [...byId.values()].filter(i => isNewIn24h(i)).sort((a, b) => itemImportance(b) - itemImportance(a));
+  if (hintEl) {
+    if (mode === 'recent3d') {
+      hintEl.textContent = s.today_hint_recent3d || '';
+      hintEl.style.display = hintEl.textContent ? 'block' : 'none';
+    } else {
+      hintEl.textContent = '';
+      hintEl.style.display = 'none';
+    }
+  }
 }
 
 function daysFromToday(dateStr) {
@@ -1880,7 +1974,9 @@ function renderStreamSections() {
   const stats = resolveHubIndexStats();
   const s = UI_STRINGS[currentLang];
 
-  const todayItems = pickFeatured24hItems(stats).slice(0, 6);
+  const streamPick = pickFeaturedStreamItems(stats);
+  const todayItems = streamPick.items.slice(0, 6);
+  updateTodayStreamHeading(streamPick.mode);
 
   const weekItems = livelihoodItems().filter(i => {
     if (i.date_kind !== 'event') return false;
