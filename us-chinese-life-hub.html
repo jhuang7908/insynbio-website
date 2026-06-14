@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- hub-build: 2026-06-14T13:00-stream-channels-brief -->
+<!-- hub-build: 2026-06-14T13:10-enroll-guide-update -->
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8" />
@@ -129,7 +129,13 @@
     .stream-channel:first-child { margin-top: 4px; }
     .stream-channel-24h { border-left-color: #ea580c; }
     .stream-channel-7d { border-left-color: #2563eb; }
-    .stream-channel-enroll { border-left-color: #15803d; }
+    .stream-channel-enroll { 
+      border-left-color: #15803d; 
+      background: #f0fdf4; /* 浅绿底色，弱化为专题区 */
+      border-color: #bbf7d0;
+    }
+    .stream-channel-enroll .section-title-left { color: #166534; font-size: 14px; }
+    .stream-channel-enroll .stream-section-hint { color: #15803d; }
     .stream-channel .section-title { margin-top: 0; }
     .stream-channel .section-title + .stream-section-hint { margin-top: 2px; }
     .livelihood-hot .section-title { margin-top: 8px; }
@@ -679,7 +685,7 @@
 
     <div class="stream-channel stream-channel-enroll" id="enroll-section" style="display:none">
       <div class="section-title">
-        <div class="section-title-left" id="enroll-title">📌 报名·夏令营·常年项目</div>
+        <div class="section-title-left" id="enroll-title">🎒 官方报名与长期规划</div>
       </div>
       <p class="stream-section-hint" id="enroll-hint" style="display:none"></p>
       <div class="feed-grid" id="enroll-feed"></div>
@@ -876,9 +882,9 @@ const UI_STRINGS = {
     today_hint_recent3d: "今日暂无新入库，以下为近3日社区公益精选",
     week_title: "📅 未来7日活动 · 纽约场次",
     week_hint_balanced: "按日均衡展示（每日最多2条），共 {n} 场",
-    enroll_title: "📌 报名·夏令营·常年项目",
-    enroll_hint: "公园 REC、Shape Up、DOE 暑期等提前公告（时间见官网）",
-    enroll_empty: "暂无提前公告，请查看上方7日活动或12大频道",
+    enroll_title: "🎒 官方报名与长期规划",
+    enroll_hint: "公立学校入学、暑期项目、公园局常年活动等官方报名通道",
+    enroll_empty: "暂无官方报名公告，请查看上方7日活动或12大频道",
     stream_new_label: "24h新增",
     stream_new_suffix: "条",
     stream_new_title: "过去24小时内新发布的社区公益、福利与官方活动（不含商业促销）",
@@ -954,9 +960,9 @@ const UI_STRINGS = {
     today_hint_recent3d: "今日暫無新入庫，以下為近3日社區公益精選",
     week_title: "📅 未來7日活動 · 紐約場次",
     week_hint_balanced: "按日均衡展示（每日最多2條），共 {n} 場",
-    enroll_title: "📌 報名·夏令營·常年項目",
-    enroll_hint: "公園 REC、Shape Up、DOE 暑期等提前公告（時間見官網）",
-    enroll_empty: "暫無提前公告，請查看上方7日活動或12大頻道",
+    enroll_title: "🎒 官方報名與長期規劃",
+    enroll_hint: "公立學校入學、暑期項目、公園局常年活動等官方報名通道",
+    enroll_empty: "暫無官方報名公告，請查看上方7日活動或12大頻道",
     stream_new_label: "24h新增",
     stream_new_suffix: "條",
     stream_new_title: "過去24小時內新發布或更新的官方信息",
@@ -1032,9 +1038,9 @@ const UI_STRINGS = {
     today_hint_recent3d: "No new listings today — community picks from the past 3 days",
     week_title: "📅 Next 7 Days · NYC Events",
     week_hint_balanced: "Balanced by day (up to 2 per day), {n} events total",
-    enroll_title: "📌 Enrollment · Summer Camp · Year-round",
-    enroll_hint: "Advance notices: REC centers, Shape Up, DOE summer programs (dates on official sites)",
-    enroll_empty: "No advance notices yet — see 7-day events or 12 channels above",
+    enroll_title: "🎒 Official Enrollment & Planning",
+    enroll_hint: "Public school enrollment, summer programs, and ongoing Parks Dept activities",
+    enroll_empty: "No official enrollment notices yet — see 7-day events or 12 channels above",
     stream_new_label: "24h new",
     stream_new_suffix: "",
     stream_new_title: "Official items newly posted or updated in the past 24 hours",
@@ -2160,13 +2166,20 @@ function itemMatchesEnrollmentAdvance(i) {
     (i.title_zh || '') + ' ' + (i.title_en || '') + ' ' +
     (i.summary_zh || '') + ' ' + (i.url || '') + ' ' + (i.source_id || '')
   ).toLowerCase();
-  if (ENROLLMENT_KW.some(kw => blob.includes(kw.toLowerCase()))) return true;
+  
+  // 1. 严格白名单：只允许官方来源进入此板块
   const src = String(i.source_id || i.source || '');
-  return /doe_summer|rec_shapeup|summer_camp|shapeup|recreation/i.test(src);
+  const isOfficialSource = /doe_summer|rec_shapeup|nyc_parks|nyc_gov|cuny|schools\.nyc\.gov/i.test(src);
+  
+  if (!isOfficialSource) return false;
+
+  // 2. 关键词匹配
+  if (ENROLLMENT_KW.some(kw => blob.includes(kw.toLowerCase()))) return true;
+  return /summer_camp|shapeup|recreation|enroll|admission/i.test(src);
 }
 
 function pickAdvanceEnrollmentItems(maxTotal, excludeIds) {
-  maxTotal = maxTotal || 6;
+  maxTotal = maxTotal || 4; // 降级为只展示 4 个
   excludeIds = excludeIds || new Set();
   const pool = livelihoodItems().filter(i => {
     if (excludeIds.has(i.id)) return false;
