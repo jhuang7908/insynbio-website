@@ -419,8 +419,7 @@
     .yp-card-name { font-size: var(--text-base); font-weight: var(--weight-semibold); color: #0f172a; line-height: var(--leading-tight); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
     .yp-card-sub { font-size: var(--text-xs); color: #94a3b8; line-height: var(--leading-tight); }
     .yp-card-phone { font-size: var(--text-base); font-weight: var(--weight-bold); color: #ea580c; letter-spacing: 0.01em; font-variant-numeric: tabular-nums; }
-    .yp-card-map { font-size: var(--text-xs); color: #64748b; text-decoration: none; line-height: var(--leading-normal); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; border-top: 1px dashed #f1f5f9; padding-top: 4px; margin-top: 2px; }
-    .yp-card-map:hover { color: #2563eb; }
+    .yp-card-map { font-size: var(--text-xs); color: #64748b; line-height: var(--leading-normal); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; border-top: 1px dashed #f1f5f9; padding-top: 4px; margin-top: 2px; pointer-events: none; }
     a.yp-card { text-decoration: none; }
     .yp-fresh-badge { display: inline-block; font-size: 10px; font-weight: 600; padding: 1px 5px; border-radius: 4px; margin-top: 2px; line-height: 1.3; }
     .yp-fresh-badge.stale { background: #fef3c7; color: #b45309; }
@@ -429,6 +428,13 @@
     .yp-fresh-badge.ok { background: #ecfdf5; color: #047857; }
     .yp-report-btn { margin-top: 10px; width: 100%; font-size: 12px; padding: 8px 10px; border: 1px dashed #cbd5e1; background: #f8fafc; color: #64748b; border-radius: 8px; cursor: pointer; }
     .yp-report-btn:hover { border-color: #94a3b8; color: #475569; }
+    .yp-form-label { font-size: 12px; font-weight: 700; color: #334155; margin: 4px 0 4px; display: block; }
+    .yp-form-hint { font-size: 11px; font-weight: 400; color: #94a3b8; }
+    .yp-form-input, .yp-form-select, .yp-form-textarea {
+      width: 100%; box-sizing: border-box; padding: 9px 10px; border: 1px solid #cbd5e1; border-radius: 8px;
+      font-size: 13px; color: #1e293b; background: #fff; margin-bottom: 8px;
+    }
+    .yp-form-textarea { min-height: 72px; resize: vertical; line-height: 1.45; }
     .yp-rating-row { margin-top: 4px; padding-top: 4px; border-top: 1px dashed #f1f5f9; }
     .yp-rating-stars { display: flex; gap: 1px; align-items: center; flex-wrap: wrap; }
     .yp-star { font-size: 13px; color: #e2e8f0; cursor: default; line-height: 1; user-select: none; }
@@ -604,7 +610,7 @@
         <div class="yp-stats-line" id="yp-stats-line"></div>
         <div class="yp-industry-bar" id="yp-industry-bar"></div>
         <div class="yp-area-bar" id="yp-area-bar"></div>
-        <div class="yp-anti-scrape" data-nosnippet>按区域与行业浏览华人商户 · 支持中文搜索</div>
+        <div class="yp-anti-scrape" data-nosnippet>按区域与行业浏览华人商户 · 支持中文搜索 · 点击卡片可选<strong>电话或地图</strong> · 商家更新：<a href="mailto:community@insynbio.com">community@insynbio.com</a></div>
         <div id="yp-map-panel-wrap" style="display:none"></div>
         <div class="member-status" id="yp-member-status" style="display:none;"></div>
         <div id="yp-loading" style="font-size: 12px; color: #64748b; text-align: center; padding: 16px; display:none;">加载商家数据…</div>
@@ -709,10 +715,31 @@
       <div id="yp-modal-body" style="font-size:13px;color:#475569;line-height:1.55"></div>
       <div class="modal-buttons">
         <a id="yp-modal-call" class="btn-primary" href="#">📞 拨打电话</a>
-        <button type="button" id="yp-modal-map" class="btn-secondary" onclick="openYpBizMapFromModal()">🗺️ 查看地图位置</button>
+        <button type="button" id="yp-modal-map" class="btn-secondary" onclick="openYpBizMapFromModal()">🗺️ 打开地图</button>
       </div>
       <button type="button" id="yp-modal-report" class="yp-report-btn" onclick="openYpReportDialog()">⚠️ 报告信息错误（电话/地址/已关门等）</button>
-      <p style="font-size:10px;color:#94a3b8;margin:8px 0 0;line-height:1.4">手机：优先拨号；电脑：弹窗内选电话或地图。纠错无需会员，每天最多 5 条，半年机器+人工复核。</p>
+      <p id="yp-modal-policy" style="font-size:10px;color:#94a3b8;margin:8px 0 0;line-height:1.5">手机与电脑均可选择<strong>电话或地图</strong>。纠错<strong>无需会员</strong>，请按格式填写正确信息并留下联系电话，每天最多 5 条，半年内机器+人工复核。商家可发邮件 <a href="mailto:community@insynbio.com" style="color:#64748b">community@insynbio.com</a> 主动更新。</p>
+    </div>
+  </div>
+
+  <!-- 黄页纠错表单（结构化 · 无需会员） -->
+  <div id="yp-report-modal" class="modal" onclick="if(event.target===this)closeYpReportModal()">
+    <div class="modal-box">
+      <div class="modal-header">
+        <div class="modal-title">信息纠错</div>
+        <button type="button" class="modal-close" onclick="closeYpReportModal()">×</button>
+      </div>
+      <p id="yp-report-biz-name" style="font-size:13px;color:#64748b;margin:0;line-height:1.45"></p>
+      <label class="yp-form-label" for="yp-report-reason">问题类型</label>
+      <select id="yp-report-reason" class="yp-form-select"></select>
+      <label class="yp-form-label" for="yp-report-correct">正确信息 <span class="yp-form-hint">（必填 · 格式：店名 / 电话 / 地址）</span></label>
+      <textarea id="yp-report-correct" class="yp-form-textarea" maxlength="400" placeholder="例：张记中餐 / 718-888-1234 / 138-xx Main St, Flushing NY 11355"></textarea>
+      <label class="yp-form-label" for="yp-report-phone">您的联系电话 <span class="yp-form-hint">（必填 · 仅用于核实）</span></label>
+      <input type="tel" id="yp-report-phone" class="yp-form-input" maxlength="24" placeholder="手机或座机，便于回访核实">
+      <label class="yp-form-label" for="yp-report-note">补充说明 <span class="yp-form-hint">（可选）</span></label>
+      <textarea id="yp-report-note" class="yp-form-textarea" maxlength="300" placeholder="如：原电话已停用、已搬迁至新址等"></textarea>
+      <button type="button" class="btn-primary" onclick="submitYpReportForm()">提交纠错</button>
+      <p style="font-size:10px;color:#94a3b8;margin:0;line-height:1.45">无需会员 · 每天最多 5 条 · 半年内机器+人工复核 · 商家主动更新请发邮件 community@insynbio.com</p>
     </div>
   </div>
 
@@ -2393,9 +2420,8 @@ function ypBizCard(item) {
   const key = bizKey(item);
   let name = item.name;
   if (name.length > 40) name = name.slice(0, 38) + '…';
-  const mapHref = googleMapsUrl(addr || item.name + ' New York');
   const mapLink = addr
-    ? `<a href="#" class="yp-card-map" onclick="event.stopPropagation();event.preventDefault();openHubExternal(${JSON.stringify(mapHref)},{title:'地图'});">📍 ${escapeHtml(addr)} · 地图↗</a>`
+    ? `<div class="yp-card-map">📍 ${escapeHtml(addr)}</div>`
     : `<div class="yp-card-sub">${escapeHtml(item.category)}</div>`;
   return `<div class="yp-card" data-yp-key="${escapeHtml(key)}" onclick="openYpBizModal(this.dataset.ypKey)" role="button" tabindex="0">
     <div class="yp-card-main">
@@ -2426,11 +2452,7 @@ function openYpBizModal(key) {
     (checked ? `<div style="margin-top:4px;font-size:11px;color:#94a3b8">${escapeHtml(checked.slice(3))}</div>` : '');
   const callBtn = document.getElementById('yp-modal-call');
   callBtn.href = 'tel:' + tel;
-  if (isMobileLinkMode()) {
-    callBtn.textContent = '📞 拨打电话（手机一键拨号）';
-  } else {
-    callBtn.textContent = '📞 拨打电话（电脑将唤起默认拨号/Handoff）';
-  }
+  callBtn.textContent = '📞 拨打电话';
   document.getElementById('yp-biz-modal').classList.add('open');
   if (window.history && window.history.pushState) {
     window.history.pushState({ modal: 'yp-biz' }, '');
@@ -2520,25 +2542,72 @@ function openYpReportDialog() {
     alert(`每天最多提交 ${MAX_DAILY_YP_REPORTS} 条纠错，请明日再试`);
     return;
   }
-  const opts = YP_REPORT_REASONS.map((r, i) => `${i + 1}. ${r.label}`).join('\n');
-  const pick = prompt(`请选择问题类型（输入序号 1–${YP_REPORT_REASONS.length}）：\n${opts}`);
-  if (pick === null) return;
-  const idx = parseInt(pick, 10) - 1;
-  if (Number.isNaN(idx) || idx < 0 || idx >= YP_REPORT_REASONS.length) {
-    alert('无效选项');
-    return;
+  const sel = document.getElementById('yp-report-reason');
+  if (sel && !sel.options.length) {
+    YP_REPORT_REASONS.forEach(r => {
+      const opt = document.createElement('option');
+      opt.value = r.id;
+      opt.textContent = r.label;
+      sel.appendChild(opt);
+    });
   }
-  const reason = YP_REPORT_REASONS[idx];
-  const note = prompt('补充说明（可选，最多300字）：') || '';
-  submitYpReport(YP_MODAL_ITEM, reason.id, note.slice(0, 300));
+  document.getElementById('yp-report-biz-name').textContent = '商家：' + YP_MODAL_ITEM.name;
+  document.getElementById('yp-report-correct').value = '';
+  document.getElementById('yp-report-phone').value = '';
+  document.getElementById('yp-report-note').value = '';
+  document.getElementById('yp-report-modal').classList.add('open');
 }
 
-async function submitYpReport(item, reason, note) {
+function closeYpReportModal() {
+  document.getElementById('yp-report-modal').classList.remove('open');
+}
+
+function normalizeContactPhone(raw) {
+  return String(raw || '').replace(/[^\d+]/g, '');
+}
+
+function validateYpReportCorrect(text) {
+  const t = String(text || '').trim();
+  if (t.length < 8) return false;
+  const hasPhone = /\d{3,}/.test(t);
+  const hasSep = /[\/／|，,]/.test(t) || (t.includes('店') && t.includes('电话'));
+  return hasPhone && (hasSep || t.length >= 15);
+}
+
+function submitYpReportForm() {
+  if (!YP_MODAL_ITEM) return;
+  const reasonEl = document.getElementById('yp-report-reason');
+  const reason = reasonEl ? reasonEl.value : 'other';
+  const correct = (document.getElementById('yp-report-correct').value || '').trim();
+  const contactPhone = normalizeContactPhone(document.getElementById('yp-report-phone').value);
+  const note = (document.getElementById('yp-report-note').value || '').trim().slice(0, 300);
+  if (!validateYpReportCorrect(correct)) {
+    alert('请按格式填写正确信息，例如：店名 / 电话 / 地址');
+    return;
+  }
+  if (contactPhone.length < 10) {
+    alert('请留下有效的联系电话（至少10位数字），便于核实');
+    return;
+  }
+  submitYpReport(YP_MODAL_ITEM, reason, note, correct, contactPhone);
+  closeYpReportModal();
+}
+
+async function submitYpReport(item, reason, note, correctInfo, contactPhone) {
   const key = bizKey(item);
   recordYpReportDaily(key);
+  const payload = {
+    biz_key: key,
+    biz_name: item.name,
+    reason,
+    note,
+    correct_info: correctInfo || '',
+    contact_phone: contactPhone || '',
+    reporter_key: ypReporterKey(),
+  };
   const apiBase = window.HUB_COMMUNITY_API || '';
   if (!apiBase) {
-    alert('已记录本地反馈。服务器同步需连接 API；您的报告将在下次核实周期合并处理。');
+    alert('已记录本地反馈。服务器同步需连接 API；您的报告将在半年核实周期内合并处理。');
     closeYpBizModal();
     return;
   }
@@ -2546,18 +2615,11 @@ async function submitYpReport(item, reason, note) {
     const r = await fetch(apiBase + '/yellow-pages/report', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', ...ypFetchHeaders() },
-      body: JSON.stringify({
-        biz_key: key,
-        biz_name: item.name,
-        reason,
-        note,
-        member_id: localStorage.getItem('member_id') || '',
-        reporter_key: ypReporterKey(),
-      }),
+      body: JSON.stringify(payload),
     });
     const data = await r.json().catch(() => ({}));
     if (!r.ok) throw new Error(data.detail || r.statusText);
-    alert('感谢反馈！平台将在半年核实周期或凑够多人报告后更新状态。');
+    alert('感谢反馈！平台将在半年内通过机器+人工复核后更新。');
     closeYpBizModal();
   } catch (err) {
     alert(err.message || '提交失败，请稍后重试');
@@ -2615,7 +2677,8 @@ function updateYpMapToolbar(filtered, group) {
   }
 }
 
-// ── Member registration & business ratings (7-day gate) ─────────────────────
+// ── Member subscription (push only; user ratings paused) ────────────────────
+const YP_MEMBER_RATINGS_ENABLED = false;
 const YP_RATINGS_AGG = {};
 const MIN_MEMBER_DAYS = 7;
 const MAX_DAILY_RATINGS = 3;
@@ -2726,6 +2789,7 @@ function dailyRatingHint() {
 }
 
 function ypRatingBlock(key) {
+  if (!YP_MEMBER_RATINGS_ENABLED) return '';
   const agg = YP_RATINGS_AGG[key];
   const myEntry = getMyRatings()[key];
   const my = myEntry?.score;
@@ -2834,22 +2898,17 @@ async function loadRatingsAggregate() {
 function updateMemberStatusUI() {
   const el = document.getElementById('yp-member-status');
   if (!el) return;
+  el.style.display = 'block';
   if (!isMember()) {
-    el.style.display = 'block';
     el.className = 'member-status';
     el.innerHTML =
-      '📬 即时推送：点右下角 <strong>订阅每日更新</strong>（微信 / 邮件 / 浏览器，<strong>用户免费</strong>）<br>' +
-      '⭐ 商家评分：<a href="#" onclick="openSubModal();return false;" style="color:#ea580c">邮箱订阅即注册会员</a>，满 <strong>7天</strong> 后点击卡片上 <strong>1–5 星</strong> 打分（无需留言）';
+      '📬 <strong>订阅会员</strong>（免费）：接收最新社区动态与促销推送 · ' +
+      '<a href="#" onclick="openSubModal();return false;" style="color:#ea580c">点右下角订阅</a><br>' +
+      '⭐ 商家展示以<strong>平台推荐与核实</strong>为主，暂不开放用户点评。纠错无需会员；商家更新请发邮件 <a href="mailto:community@insynbio.com" style="color:#64748b">community@insynbio.com</a>';
     return;
   }
-  el.style.display = 'block';
-  if (canRateBusinesses()) {
-    el.className = 'member-status eligible';
-    el.textContent = `✅ 会员已激活 · ${dailyRatingHint()} · 每家商家仅可评一次`;
-  } else {
-    el.className = 'member-status';
-    el.textContent = `⏳ 会员 · 还需 ${daysUntilCanRate()} 天可评分（注册满7天防刷）`;
-  }
+  el.className = 'member-status eligible';
+  el.innerHTML = '✅ 已订阅 · 将收到最新动态与促销推送。商家信息以平台推荐为主，暂不支持用户点评。';
 }
 
 function filterYpByIndustry(items) {
@@ -3606,7 +3665,7 @@ function subscribeEmail() {
   registerMember(email);
   document.getElementById('sub-success-email').style.display = 'block';
   document.getElementById('sub-success-email').textContent =
-    `✅ ${email} 已注册会员并订阅！7天后可为黄页商家评分。`;
+    `✅ ${email} 已订阅！将收到最新社区动态与促销推送。`;
   document.getElementById('sub-email-val').value = '';
 }
 
@@ -3748,7 +3807,7 @@ function initHubChapterNav() {
 
     <!-- Email Subscription -->
     <div class="sub-section">
-      <div class="sub-section-title">✉️ 方式二：邮件订阅（免费 · 同时注册会员）</div>
+      <div class="sub-section-title">✉️ 方式二：邮件订阅（免费 · 接收动态推送）</div>
       <div style="font-size:12px;color:#64748b;margin-bottom:8px;line-height:1.5;">
         用户<strong>不收费</strong>。平台发送成本约 <strong>$0–20/月</strong>（Brevo 等，订阅量 &lt;2000 时通常免费档够用）。
       </div>
@@ -3771,7 +3830,7 @@ function initHubChapterNav() {
 
     <div class="sub-note">
       本平台不收集个人信息用于商业用途。<br>
-      邮件可随时退订。<strong>会员评分</strong>（与推送无关）：邮箱订阅即注册，满 <strong>7天</strong> 后点星打分（<strong>1–5 星，无需留言</strong>）；<strong>每家仅一次</strong>，<strong>每天最多3家</strong>。
+      邮件可随时退订。会员仅用于接收<strong>最新动态与促销推送</strong>（免费），暂不包含商家点评功能。
     </div>
   </div>
 </div>
