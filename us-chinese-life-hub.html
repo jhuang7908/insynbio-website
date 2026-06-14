@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- hub-build: 2026-06-14T12:10-hero-v3 -->
+<!-- hub-build: 2026-06-14T12:30-huangli-orange -->
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8" />
@@ -297,22 +297,22 @@
     .module-grid.collapsed { max-height: 0; overflow: hidden; margin: 0; transition: max-height 0.3s ease; }
     .module-grid.expanded { max-height: 3000px; margin-top: 12px; }
 
-    /* Almanac & Phones — compact calendar dashboard (senior-friendly contrast) */
+    /* Almanac & Phones — 皇历·桔黄主题（华人习惯，长辈可读） */
     .daily-dashboard {
-      background: #ffffff;
-      border: 1px solid #b8aea0;
+      background: #fffdf8;
+      border: 1px solid #fdba74;
       border-radius: 10px;
       margin: 10px auto 0;
       max-width: 960px;
       overflow: hidden;
-      box-shadow: 0 1px 3px rgba(44, 40, 36, 0.06);
+      box-shadow: 0 2px 8px rgba(234, 88, 12, 0.08);
     }
     .dashboard-summary {
       display: flex; justify-content: space-between; align-items: flex-start;
       padding: 10px 12px; cursor: pointer; list-style: none; user-select: none; gap: 8px;
-      background: #2f3a45;
-      color: #f3f4f6;
-      border-bottom: 2px solid #1e293b;
+      background: linear-gradient(135deg, #fef3c7 0%, #ffedd5 55%, #fed7aa 100%);
+      color: #431407;
+      border-bottom: 2px solid #ea580c;
     }
     .dashboard-summary::-webkit-details-marker { display: none; }
     .dash-head { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 0; }
@@ -329,8 +329,8 @@
       align-items: center;
       gap: 5px;
       flex-shrink: 0;
-      background: rgba(255,255,255,0.14);
-      border: 1px solid rgba(255,255,255,0.28);
+      background: #fffbeb;
+      border: 1px solid #fdba74;
       border-radius: 10px;
       padding: 5px 10px 5px 8px;
     }
@@ -338,11 +338,11 @@
     .dash-wx-temp {
       font-size: 20px;
       font-weight: 800;
-      color: #ffffff;
+      color: #c2410c;
       letter-spacing: -0.02em;
       min-width: 3.5em;
     }
-    .dash-wx-city { font-size: 13px; font-weight: 700; color: #e5e7eb; }
+    .dash-wx-city { font-size: 13px; font-weight: 700; color: #78350f; }
     .dash-stats-inline {
       display: inline-flex;
       align-items: center;
@@ -366,14 +366,14 @@
     .dash-vsep { width: 1px; height: 16px; background: #9ca3af; flex-shrink: 0; opacity: 0.85; }
     .dash-stat {
       display: inline-flex; align-items: baseline; gap: 4px;
-      font-size: 12px; font-weight: 700; color: #1f2937;
-      background: #fff; border: 1px solid #b8aea0;
+      font-size: 12px; font-weight: 700; color: #431407;
+      background: #fffbeb; border: 1px solid #fdba74;
       padding: 4px 9px; border-radius: 999px; white-space: nowrap; flex-shrink: 0;
     }
     .dash-stat strong { font-size: 15px; font-weight: 800; color: #c2410c; }
-    .dash-stat-unit { font-size: 11px; font-weight: 700; color: #57534e; margin-left: 1px; }
+    .dash-stat-unit { font-size: 11px; font-weight: 700; color: #78350f; margin-left: 1px; }
     .dash-stat-week strong { color: #15803d; }
-    .dash-stat-label { font-size: 11px; font-weight: 700; color: #44403c; letter-spacing: 0.01em; }
+    .dash-stat-label { font-size: 11px; font-weight: 700; color: #57534e; letter-spacing: 0.01em; }
     .dash-market { display: inline-flex; align-items: center; gap: 5px; flex: 1 1 120px; min-width: 0; overflow-x: auto; scrollbar-width: none; }
     .dash-market::-webkit-scrollbar { display: none; }
     .dash-meta-inline { font-size: var(--text-xs); color: #57534e; font-weight: var(--weight-semibold); white-space: nowrap; flex-shrink: 0; margin-left: auto; }
@@ -385,28 +385,30 @@
     .mkt-chip.flat { color: #374151; background: #f9fafb; border-color: #d1d5db; }
     .dash-meta { font-size: 12px; color: #57534e; font-weight: 600; white-space: nowrap; }
     .dash-verify { font-size: 11px; font-weight: 700; color: #15803d; white-space: nowrap; flex-shrink: 0; }
-    .unit-toggle { font-size: 11px; font-weight: 700; color: #1f2937; background: #e5e7eb; border: 1px solid #cbd5e1; border-radius: 8px; padding: 3px 8px; cursor: pointer; line-height: 1.4; flex-shrink: 0; }
+    .unit-toggle { font-size: 11px; font-weight: 700; color: #c2410c; background: #fffbeb; border: 1px solid #fdba74; border-radius: 8px; padding: 3px 8px; cursor: pointer; line-height: 1.4; flex-shrink: 0; }
     .unit-toggle:hover { background: #fff; }
-    .dash-toggle { font-size: 11px; color: #e5e7eb; flex-shrink: 0; transition: transform 0.2s; margin-top: 2px; }
+    .dash-toggle { font-size: 11px; color: #c2410c; flex-shrink: 0; transition: transform 0.2s; margin-top: 2px; }
     details[open] .dash-toggle { transform: rotate(180deg); }
-    .dashboard-body { padding: 0 10px 10px; border-top: 1px solid #d6cfc4; background: #fff; }
+    .dashboard-body { padding: 0 10px 10px; border-top: 1px solid #fed7aa; background: #fffdf8; }
 
-    .cal-today { background: #f8f5f0; border: 1px solid #c4b8a8; border-radius: 8px; padding: 10px 12px; margin-top: 8px; }
-    .cal-date-btn { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; width: 100%; background: none; border: none; padding: 0; cursor: pointer; text-align: left; font: inherit; color: #292524; }
+    .cal-today { background: linear-gradient(180deg, #fffbeb 0%, #fef3c7 100%); border: 1px solid #fdba74; border-radius: 8px; padding: 10px 12px; margin-top: 8px; }
+    .cal-date-btn { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; width: 100%; background: none; border: none; padding: 0; cursor: pointer; text-align: left; font: inherit; color: #431407; }
     .cal-date-btn:hover .cal-expand-hint { color: #c2410c; }
-    #almanac-date { font-size: 14px; font-weight: 800; color: #1c1917; }
-    .cal-lunar { font-size: 12px; color: #78350f; font-weight: 700; }
-    .cal-expand-hint { font-size: 11px; color: #57534e; font-weight: 700; margin-left: auto; }
+    .cal-huangli-badge { font-size: 12px; font-weight: 800; color: #fff; background: #ea580c; padding: 2px 8px; border-radius: 6px; letter-spacing: 0.04em; }
+    #almanac-date { font-size: 14px; font-weight: 800; color: #431407; }
+    .cal-lunar { font-size: 12px; color: #92400e; font-weight: 700; }
+    .cal-expand-hint { font-size: 11px; color: #78350f; font-weight: 700; margin-left: auto; }
     .almanac-inline { display: flex; gap: 10px; margin-top: 8px; font-size: 13px; line-height: 1.45; flex-wrap: wrap; color: #292524; }
     .almanac-inline .yi, .almanac-inline .ji { padding: 2px 6px; border-radius: 4px; font-weight: 800; font-size: 12px; flex-shrink: 0; }
-    .almanac-inline .yi { background: #bbf7d0; color: #14532d; }
-    .almanac-inline .ji { background: #fecaca; color: #991b1b; }
-    .almanac-holidays-today { font-size: 12px; color: #c2410c; font-weight: 700; margin-top: 6px; }
+    .almanac-inline .yi { background: #fde68a; color: #92400e; border: 1px solid #fbbf24; }
+    .almanac-inline .ji { background: #fecaca; color: #991b1b; border: 1px solid #fca5a5; }
+    .almanac-holidays-today { font-size: 13px; color: #c2410c; font-weight: 700; margin-top: 6px; line-height: 1.45; }
+    .almanac-holidays-today .tag-school { color: #1e40af; font-weight: 700; }
     .cal-forecast { margin-top: 8px; }
     .cal-forecast[hidden] { display: none; }
     .forecast-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 4px; }
-    .forecast-day { background: var(--hub-surface); border: 1px solid var(--hub-border-soft); border-radius: 6px; padding: 6px 4px; text-align: center; font-size: 10px; line-height: 1.3; }
-    .forecast-day.is-today { border-color: #ea580c; background: #fff9f3; }
+    .forecast-day { background: #fffbeb; border: 1px solid #fde68a; border-radius: 6px; padding: 6px 4px; text-align: center; font-size: 10px; line-height: 1.3; }
+    .forecast-day.is-today { border-color: #ea580c; background: #fef3c7; }
     .forecast-day .fd-wd { font-weight: 700; color: #92400e; }
     .forecast-day .fd-dt { color: #78716c; font-size: 9px; }
     .forecast-day .fd-icon { font-size: 14px; margin: 2px 0; }
@@ -607,6 +609,7 @@
       <div class="dashboard-body">
         <div class="cal-today">
           <button type="button" class="cal-date-btn" id="cal-expand-btn" onclick="toggleCalForecast(event)">
+            <span class="cal-huangli-badge">皇历</span>
             <span id="almanac-date">—</span>
             <span id="almanac-lunar" class="cal-lunar"></span>
             <span class="cal-expand-hint" id="cal-expand-hint">▸ 未来7天天气·假日</span>
@@ -809,6 +812,7 @@ const DEAL_ITEMS = [{"id":"deal_001","module":"促销·折扣","content_kind":"d
 const HUB_AUTO_UPDATE = {"last_full":"2026-06-14 11:53 ET","last_incremental":"","tz":"America/New_York"};
 const HUB_MARKET_SNAPSHOT = {"as_of":"2026-06-14 11:53 ET","tz":"America/New_York","quotes":[{"kind":"index","symbol":"^GSPC","label":"标普","change_pct":0.65,"price":7431.46},{"kind":"index","symbol":"^IXIC","label":"纳指","change_pct":0.7,"price":25888.844},{"kind":"index","symbol":"^TNX","label":"10Y","change_pct":-1.43,"price":4.487},{"kind":"index","symbol":"GC=F","label":"黄金","change_pct":-0.5,"price":4238.8},{"kind":"mortgage","symbol":"OBMMIC30YF","label":"30Y房贷","value_pct":6.532,"change_bp":0.6,"date":"2026-06-11"}],"mortgage":{"kind":"mortgage","series":"OBMMIC30YF","label":"30Y房贷","value_pct":6.532,"date":"2026-06-11","change_bp":0.6,"source":"FRED·OBMMI"}};
 const HUB_WEATHER_SNAPSHOT = {"as_of":"2026-06-14 12:08 ET","tz":"America/New_York","city":"纽约","temp_c":30.8,"code":2};
+const HUB_SCHOOL_CALENDAR = {"school_year":"2025-26","updated":"2026-06-14","source_zh":"NYC DOE 校历","source_url":"https://www.schools.nyc.gov/calendar/2025-2026-school-year-calendar","school_closed":{"2025-09-25":["公立学校停课·犹太新年"],"2025-09-26":["公立学校停课·犹太新年"],"2025-10-02":["公立学校停课·赎罪日"],"2025-10-13":["公立学校停课·哥伦布/原住民日"],"2025-11-04":["公立学校·选举日无课"],"2025-11-11":["公立学校停课·退伍军人节"],"2025-11-27":["公立学校停课·感恩节"],"2025-11-28":["公立学校停课·感恩节"],"2025-12-24":["公立学校·寒假开始"],"2025-12-25":["公立学校停课·圣诞节"],"2025-12-26":["公立学校·寒假"],"2025-12-29":["公立学校·寒假"],"2025-12-30":["公立学校·寒假"],"2025-12-31":["公立学校·寒假"],"2026-01-01":["公立学校停课·元旦"],"2026-01-19":["公立学校停课·马丁·路德·金日"],"2026-02-16":["公立学校·冬假"],"2026-02-17":["公立学校停课·农历新年"],"2026-02-18":["公立学校·冬假"],"2026-02-19":["公立学校·冬假"],"2026-02-20":["公立学校·冬假"],"2026-03-20":["公立学校停课·开斋节"],"2026-03-30":["公立学校·春假开始"],"2026-03-31":["公立学校·春假"],"2026-04-01":["公立学校·春假"],"2026-04-02":["公立学校·春假"],"2026-04-03":["公立学校·春假"],"2026-04-06":["公立学校·春假结束"],"2026-05-25":["公立学校停课·阵亡将士纪念日"],"2026-06-04":["公立学校·学年结束(小学)"],"2026-06-19":["公立学校停课·六月节"]}};
 const HUB_INDEX_STATS = {"computed_at":"2026-06-14 11:53 ET","tz":"America/New_York","new_24h":25,"featured_24h_ids":["live_027","live_028","live_029","live_030","live_031","live_032"],"recent_3d":35,"featured_recent3d_ids":["live_053","live_003","live_084","live_085","live_028","live_029"],"events_7d":24,"total":108,"scan_schedule_et":"07:30 ET daily","sources_scanned":55};
 
 const UI_STRINGS = {
@@ -3631,9 +3635,24 @@ function toggleCalForecast(e) {
   }
 }
 
+function hubDateKey(d) {
+  const y = d.getFullYear();
+  const m = String(d.getMonth() + 1).padStart(2, '0');
+  const day = String(d.getDate()).padStart(2, '0');
+  return y + '-' + m + '-' + day;
+}
+
+function getSchoolHolidaysForDate(d) {
+  if (typeof HUB_SCHOOL_CALENDAR === 'undefined' || !HUB_SCHOOL_CALENDAR || !HUB_SCHOOL_CALENDAR.school_closed) return [];
+  return HUB_SCHOOL_CALENDAR.school_closed[hubDateKey(d)] || [];
+}
+
 function getHolidaysForDate(d) {
   const holidays = [];
-  if (typeof Lunar === 'undefined' || typeof Solar === 'undefined') return holidays;
+  if (typeof Lunar === 'undefined' || typeof Solar === 'undefined') {
+    holidays.push(...getSchoolHolidaysForDate(d));
+    return [...new Set(holidays)];
+  }
   const lunar = Lunar.fromDate(d);
   const solar = Solar.fromDate(d);
   holidays.push(...(lunar.getFestivals() || []));
@@ -3654,7 +3673,16 @@ function getHolidaysForDate(d) {
   if (m === 12 && day === 25) holidays.push('圣诞节');
   if (m === 6 && day === 1) holidays.push('儿童节');
   if (m === 10 && day === 1) holidays.push('国庆节');
+  holidays.push(...getSchoolHolidaysForDate(d));
   return [...new Set(holidays)];
+}
+
+function formatHolidayLine(holidays) {
+  if (!holidays.length) return '';
+  return holidays.map(h => {
+    if (/公立学校/.test(h)) return '<span class="tag-school">' + h + '</span>';
+    return h;
+  }).join(' · ');
 }
 
 function renderForecastGrid() {
@@ -3793,7 +3821,7 @@ function renderAlmanac() {
   const holidays = getHolidaysForDate(today);
   const holiEl = document.getElementById('almanac-holidays');
   if (holidays.length > 0) {
-    holiEl.textContent = '🎉 ' + holidays.join(' · ');
+    holiEl.innerHTML = '🎉 ' + formatHolidayLine(holidays);
     holiEl.style.display = 'block';
   } else {
     holiEl.style.display = 'none';
