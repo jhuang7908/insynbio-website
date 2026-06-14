@@ -94,6 +94,7 @@
     .hub-chapter-nav {
       display: flex; flex-wrap: wrap; gap: 8px; margin: 16px 0 8px;
       padding: 10px 12px; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px;
+      position: sticky; top: 60px; z-index: 90;
     }
     .hub-chapter-nav a {
       flex: 1; min-width: 96px; text-align: center; padding: 10px 12px; border-radius: 10px;
@@ -105,11 +106,27 @@
     .livelihood-hot { margin-top: 4px; padding: 12px 14px 4px; border-radius: 14px;
       background: linear-gradient(180deg, #fffbeb 0%, #ffffff 72%); border: 1px solid #fde68a; }
     .livelihood-hot .section-title { margin-top: 8px; }
-    .deals-section-wrap { margin-top: 8px; padding-top: 4px; border-top: 1px dashed #e2e8f0; }
-    .deals-section-wrap summary { display: flex; align-items: center; justify-content: space-between; }
+    .deals-section-wrap { margin-top: 20px; padding-top: 12px; border-top: 1px solid #f1f5f9; }
+    .deals-section-wrap summary { display: flex; align-items: center; justify-content: space-between; cursor: pointer; list-style: none; padding: 4px 0; }
     .deals-section-wrap summary::-webkit-details-marker { display: none; }
-    .deals-disclaimer { font-size: var(--text-sm); color: #64748b; margin: 0 0 10px; line-height: 1.55; }
-    .feed-card.deal-card { border-color: #fed7aa; }
+    .deals-summary-title { font-size: var(--text-sm); font-weight: var(--weight-medium); color: #64748b; }
+    .deals-expand-hint { font-size: var(--text-xs); color: #94a3b8; font-weight: var(--weight-medium); }
+    .deals-disclaimer { font-size: var(--text-xs); color: #94a3b8; margin: 6px 0 10px; line-height: 1.55; }
+    .deals-feed-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+    @media (max-width: 900px) { .deals-feed-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 640px) { .deals-feed-grid { grid-template-columns: 1fr; } }
+    .feed-card.deal-card { border-color: #e2e8f0; background: #fafafa; }
+    .feed-card.deal-card .title { font-size: var(--text-sm); font-weight: var(--weight-semibold); }
+    .feed-card.deal-card .summary { font-size: var(--text-xs); color: #94a3b8; }
+    .feed-card.deal-card .btn { background: #f1f5f9; color: #475569; border: 1px solid #e2e8f0; font-size: var(--text-xs); }
+    .livelihood-block { margin-bottom: 8px; }
+    .hub-site-footer {
+      margin: 28px 0 20px; padding: 18px 0 8px; border-top: 1px solid #e2e8f0;
+      font-size: var(--text-sm); color: #64748b; line-height: 1.65; text-align: center;
+    }
+    .hub-site-footer .footer-mission { margin: 0 0 6px; color: #475569; }
+    .hub-site-footer a { color: #64748b; text-decoration: none; }
+    .hub-site-footer a:hover { color: #334155; text-decoration: underline; }
     .muted { color: #64748b; font-size: var(--text-base); line-height: var(--leading-relaxed); margin: -8px 0 16px; }
 
     /* Module Grid (First Part) */
@@ -543,14 +560,17 @@
       </div>
     </details>
 
-    <!-- ═══ 三大章节导航：民生 · 黄页 · 促销 ═══ -->
+    <!-- ═══ 章节导航（民生按序 · 黄页独立） ═══ -->
     <nav class="hub-chapter-nav" aria-label="首页章节">
       <a href="#livelihood-hot" class="primary" id="nav-livelihood">📋 民生热点</a>
+      <a href="#channels-section" id="nav-channels">📂 12频道</a>
+      <a href="#feed-section" id="nav-feed">📋 全部信息</a>
       <a href="#yellow-pages-card" id="nav-yellow-pages">📒 社区黄页</a>
-      <a href="#deals-section" id="nav-deals">💰 促销折扣</a>
     </nav>
 
-    <!-- ═══ 民生热点：24h + 7日（首页核心） ═══ -->
+    <section class="livelihood-block" id="livelihood-section" aria-label="民生信息">
+
+    <!-- ═══ 民生热点：24h + 7日 ═══ -->
     <section class="livelihood-hot" id="livelihood-hot">
     <div class="section-title" style="margin-top:4px">
       <div class="section-title-left" id="today-title">🔥 过去24小时新增 · 纽约</div>
@@ -561,6 +581,51 @@
       <div class="section-title-left" id="week-title">📅 未来7日活动 · 纽约场次</div>
     </div>
     <div class="feed-grid" id="week-feed"></div>
+    </section>
+
+    <div class="section-title" style="cursor:pointer;margin-top:16px" id="channels-section" onclick="toggleChannels()">
+      <div class="section-title-left" id="channels-title">📂 12大民生频道 · 按类别浏览</div>
+      <span id="channels-toggle" style="font-size:12px;color:#64748b;font-weight:600">收起 ▲</span>
+    </div>
+    <div class="module-grid expanded" id="module-grid"></div>
+    
+    <!-- ═══ ALL INFO FEED (30-day window) ═══ -->
+    <div class="section-title" id="feed-section">
+      <div class="section-title-left" id="feed-title">📋 全部信息（按发布日期保留30天）</div>
+      <button id="reset-filters" class="reset-btn" onclick="resetAllFilters()">🔄 重置所有筛选</button>
+    </div>
+    <p class="muted" id="feed-sub">福利政策、社区活动与办事指南，可按关键词搜索</p>
+
+    <div class="hub-search-panel" id="hub-search-panel">
+      <input type="search" id="hub-search" autocomplete="off"
+        placeholder="搜索标题、内容、地点、活动日期…"
+        oninput="hubSearchInput()">
+      <span class="hub-search-count" id="hub-search-count"></span>
+    </div>
+    
+    <!-- Neighborhood filters -->
+    <div class="pillbar" id="neighborhood-filters">
+      <button class="pill active" onclick="setNeighborhoodFilter('all', this)" id="pill-all">📍 全部社区</button>
+      <button class="pill" onclick="setNeighborhoodFilter('法拉盛 Flushing', this)" id="pill-flushing">法拉盛 Flushing</button>
+      <button class="pill" onclick="setNeighborhoodFilter('唐人街 Chinatown', this)" id="pill-chinatown">唐人街 Chinatown</button>
+      <button class="pill" onclick="setNeighborhoodFilter('八大道 Sunset Park', this)" id="pill-sunset">八大道 Sunset Park</button>
+      <button class="pill" onclick="setNeighborhoodFilter('艾姆赫斯特 Elmhurst', this)" id="pill-elmhurst">艾姆赫斯特 Elmhurst</button>
+    </div>
+    <p class="neighborhood-hint" id="neighborhood-hint" style="display:none"></p>
+
+    <!-- Cards Feed -->
+    <div class="feed-grid" id="feed"></div>
+
+    <!-- ═══ 生活参考（民生末位 · 默认折叠 · 低干扰） ═══ -->
+    <details class="deals-section-wrap" id="deals-section">
+      <summary class="deals-summary">
+        <span class="deals-summary-title" id="deals-title">生活参考 · 近期优惠</span>
+        <span class="deals-expand-hint" id="deals-expand-hint">展开 ▼</span>
+      </summary>
+      <p class="deals-disclaimer" id="deals-disclaimer">第三方公开优惠信息，仅供参考；本平台以社区公益与官方民生信息为主。</p>
+      <div class="deals-feed-grid" id="deals-feed"></div>
+    </details>
+
     </section>
 
     <!-- ═══ COMMUNITY PHONE DIRECTORY (常用电话 + 商家黄页) ═══ -->
@@ -589,49 +654,12 @@
       </div>
     </details>
 
-    <div class="section-title" style="cursor:pointer;margin-top:16px" onclick="toggleChannels()">
-      <div class="section-title-left" id="channels-title">📂 12大民生频道 · 按类别浏览</div>
-      <span id="channels-toggle" style="font-size:12px;color:#64748b;font-weight:600">收起 ▲</span>
-    </div>
-    <div class="module-grid expanded" id="module-grid"></div>
+    <footer class="hub-site-footer" id="hub-footer">
+      <p class="footer-mission" id="footer-mission">美东华人生活圈 · 公开渠道社区信息聚合，公益导向</p>
+      <p id="footer-org"><a href="https://www.insynbio.com/us-chinese-life-hub.html" id="footer-org-link">www.insynbio.com</a></p>
+      <p id="footer-contact"><span id="footer-contact-label">信息纠错 / 活动投稿：</span><a href="mailto:community@insynbio.com" id="footer-email">community@insynbio.com</a></p>
+    </footer>
 
-    <!-- ═══ 促销折扣（默认折叠，与民生公益分开展示） ═══ -->
-    <details class="deals-section-wrap" id="deals-section">
-      <summary class="section-title" style="cursor:pointer;list-style:none">
-        <div class="section-title-left" id="deals-title">💰 促销·折扣 · 精选优惠</div>
-        <span style="font-size:12px;color:#64748b;font-weight:600">展开 ▼</span>
-      </summary>
-      <p class="deals-disclaimer" id="deals-disclaimer">商业促销信息，与上方民生公益内容分开展示；价格与库存以商家页面为准。</p>
-      <div class="feed-grid" id="deals-feed"></div>
-    </details>
-    
-    <!-- ═══ ALL INFO FEED (30-day window) ═══ -->
-    <div class="section-title" id="feed-section">
-      <div class="section-title-left" id="feed-title">📋 全部信息（按发布日期保留30天）</div>
-      <button id="reset-filters" class="reset-btn" onclick="resetAllFilters()">🔄 重置所有筛选</button>
-    </div>
-    <p class="muted" id="feed-sub">福利政策、社区活动与办事指南，可按关键词搜索</p>
-
-    <div class="hub-search-panel" id="hub-search-panel">
-      <input type="search" id="hub-search" autocomplete="off"
-        placeholder="搜索标题、内容、地点、活动日期…"
-        oninput="hubSearchInput()">
-      <span class="hub-search-count" id="hub-search-count"></span>
-    </div>
-    
-    <!-- Neighborhood filters -->
-    <div class="pillbar" id="neighborhood-filters">
-      <button class="pill active" onclick="setNeighborhoodFilter('all', this)" id="pill-all">📍 全部社区</button>
-      <button class="pill" onclick="setNeighborhoodFilter('法拉盛 Flushing', this)" id="pill-flushing">法拉盛 Flushing</button>
-      <button class="pill" onclick="setNeighborhoodFilter('唐人街 Chinatown', this)" id="pill-chinatown">唐人街 Chinatown</button>
-      <button class="pill" onclick="setNeighborhoodFilter('八大道 Sunset Park', this)" id="pill-sunset">八大道 Sunset Park</button>
-      <button class="pill" onclick="setNeighborhoodFilter('艾姆赫斯特 Elmhurst', this)" id="pill-elmhurst">艾姆赫斯特 Elmhurst</button>
-    </div>
-    <p class="neighborhood-hint" id="neighborhood-hint" style="display:none"></p>
-
-    <!-- Cards Feed -->
-    <div class="feed-grid" id="feed"></div>
-    
     <div style="height: 40px"></div>
 
     <!-- Hidden filter-state elements (referenced by JS filter logic; not visible to user) -->
@@ -735,13 +763,18 @@ const UI_STRINGS = {
     hub_search_count: "共 {n} 条",
     hub_search_match: "找到 {n} 条",
     channels_title: "📂 12大民生频道 · 按类别浏览",
-    deals_title: "💰 促销·折扣 · 精选优惠",
-    deals_disclaimer: "商业促销信息，与上方民生公益内容分开展示；价格与库存以商家页面为准。",
-    deals_empty: "暂无促销信息，请稍后再看。",
+    deals_title: "生活参考 · 近期优惠",
+    deals_tag: "生活参考",
+    deals_disclaimer: "第三方公开优惠信息，仅供参考；本平台以社区公益与官方民生信息为主。",
+    deals_empty: "暂无相关内容。",
+    deals_expand: "展开 ▼",
     nav_livelihood: "📋 民生热点",
+    nav_channels: "📂 12频道",
+    nav_feed: "📋 全部信息",
     nav_yellow_pages: "📒 社区黄页",
-    nav_deals: "💰 促销折扣",
-    feed_title: "纽约福利与华人服务信息",
+    footer_mission: "美东华人生活圈 · 公开渠道社区信息聚合，公益导向",
+    footer_contact_label: "信息纠错 / 活动投稿：",
+    feed_title: "📋 全部信息（按发布日期保留30天）",
     feed_sub: "福利政策、社区活动与办事指南，可按关键词搜索",
     reset_btn: "🔄 重置所有筛选",
     all_neighborhoods: "📍 全部社区（纽约全市）",
@@ -752,6 +785,7 @@ const UI_STRINGS = {
     elmhurst: "艾姆赫斯特 Elmhurst",
     verified: "已核验",
     view_link: "查看链接 ➔",
+    view_link_deal: "查看",
     no_results: "没有符合条件的信息，请换个关键词或选择其他频道。",
     citywide_tag: "全市适用",
     neighborhood_hint: "本区活动优先显示；福利/政务等全市服务也会列出（不限地点，全市居民均可申请）。",
@@ -802,13 +836,18 @@ const UI_STRINGS = {
     hub_search_count: "共 {n} 條",
     hub_search_match: "找到 {n} 條",
     channels_title: "📂 12大民生頻道 · 按類別瀏覽",
-    deals_title: "💰 促銷·折扣 · 精選優惠",
-    deals_disclaimer: "商業促銷信息，與上方民生公益內容分開展示；價格與庫存以商家頁面為準。",
-    deals_empty: "暫無促銷信息，請稍後再看。",
+    deals_title: "生活參考 · 近期優惠",
+    deals_tag: "生活參考",
+    deals_disclaimer: "第三方公開優惠信息，僅供參考；本平台以社區公益與官方民生信息為主。",
+    deals_empty: "暫無相關內容。",
+    deals_expand: "展開 ▼",
     nav_livelihood: "📋 民生熱點",
+    nav_channels: "📂 12頻道",
+    nav_feed: "📋 全部信息",
     nav_yellow_pages: "📒 社區黃頁",
-    nav_deals: "💰 促銷折扣",
-    feed_title: "紐約福利與華人服務信息",
+    footer_mission: "美東華人生活圈 · 公開渠道社區信息聚合，公益導向",
+    footer_contact_label: "信息糾錯 / 活動投稿：",
+    feed_title: "📋 全部信息（按發布日期保留30天）",
     feed_sub: "福利政策、社區活動與辦事指南，可按關鍵詞搜索",
     reset_btn: "🔄 重置所有篩選",
     all_neighborhoods: "📍 全部社區（紐約全市）",
@@ -819,6 +858,7 @@ const UI_STRINGS = {
     elmhurst: "艾姆赫斯特 Elmhurst",
     verified: "已核驗",
     view_link: "查看鏈接 ➔",
+    view_link_deal: "查看",
     no_results: "沒有符合條件的信息，請換個關鍵詞或選擇其他頻道。",
     citywide_tag: "全市適用",
     neighborhood_hint: "本區活動優先顯示；福利/政務等全市服務也會列出（不限地點，全市居民均可申請）。",
@@ -869,13 +909,18 @@ const UI_STRINGS = {
     hub_search_count: "{n} items",
     hub_search_match: "{n} matches",
     channels_title: "📂 12 Public Channels · Browse by Topic",
-    deals_title: "💰 Deals & Discounts",
-    deals_disclaimer: "Commercial offers shown separately from community and public-service listings.",
-    deals_empty: "No deals right now — check back later.",
-    nav_livelihood: "📋 Community Hub",
+    deals_title: "Reference · Recent Offers",
+    deals_tag: "Reference",
+    deals_disclaimer: "Third-party offers for reference only; community and public-service listings remain the focus.",
+    deals_empty: "Nothing here right now.",
+    deals_expand: "Expand ▼",
+    nav_livelihood: "📋 Highlights",
+    nav_channels: "📂 Channels",
+    nav_feed: "📋 All Listings",
     nav_yellow_pages: "📒 Yellow Pages",
-    nav_deals: "💰 Deals",
-    feed_title: "NYC Benefits & Community Services",
+    footer_mission: "East Coast Chinese Life Hub · Public-source community information",
+    footer_contact_label: "Corrections / submissions:",
+    feed_title: "📋 All Listings (30-day window)",
     feed_sub: "Benefits, events, and service guides — search by keyword",
     reset_btn: "🔄 Reset All Filters",
     all_neighborhoods: "📍 All Communities (NYC)",
@@ -958,15 +1003,23 @@ function applyUILanguage() {
   if (dealsTitle) dealsTitle.textContent = s.deals_title;
   const dealsDisclaimer = document.getElementById('deals-disclaimer');
   if (dealsDisclaimer) dealsDisclaimer.textContent = s.deals_disclaimer;
+  const dealsExpand = document.getElementById('deals-expand-hint');
+  if (dealsExpand) dealsExpand.textContent = s.deals_expand || '展开 ▼';
   const navLivelihood = document.getElementById('nav-livelihood');
   if (navLivelihood) navLivelihood.textContent = s.nav_livelihood;
+  const navChannels = document.getElementById('nav-channels');
+  if (navChannels) navChannels.textContent = s.nav_channels;
+  const navFeed = document.getElementById('nav-feed');
+  if (navFeed) navFeed.textContent = s.nav_feed;
   const navYellowPages = document.getElementById('nav-yellow-pages');
   if (navYellowPages) navYellowPages.textContent = s.nav_yellow_pages;
-  const navDeals = document.getElementById('nav-deals');
-  if (navDeals) navDeals.textContent = s.nav_deals;
+  const footerMission = document.getElementById('footer-mission');
+  if (footerMission) footerMission.textContent = s.footer_mission;
+  const footerContactLabel = document.getElementById('footer-contact-label');
+  if (footerContactLabel) footerContactLabel.textContent = s.footer_contact_label;
   
   const feedTitle = document.getElementById('feed-title');
-  if (feedTitle) feedTitle.innerHTML = `${s.feed_title} <button id="reset-filters" class="reset-btn" onclick="resetAllFilters()">${s.reset_btn}</button>`;
+  if (feedTitle) feedTitle.textContent = s.feed_title;
   
   const feedSub = document.getElementById('feed-sub');
   if (feedSub) feedSub.textContent = s.feed_sub;
@@ -1872,12 +1925,17 @@ function renderDealsSection() {
 function renderCard(i, opts) {
   opts = opts || {};
   const s = UI_STRINGS[currentLang];
-  const title = i['title_' + currentLang] || i.title_zh;
+  let title = i['title_' + currentLang] || i.title_zh;
+  if (opts.deal) title = title.replace(/^🔥\s*/, '');
   const summary = i['summary_' + currentLang] || i.summary_zh;
   const modObj = MODULES.find(m => m.zh === i.module);
-  const modName = modObj ? (modObj[currentLang] || modObj.zh) : (opts.deal ? (s.nav_deals || '促销·折扣') : i.module);
+  const modName = opts.deal
+    ? (s.deals_tag || '生活参考')
+    : (modObj ? (modObj[currentLang] || modObj.zh) : i.module);
   const dealCls = opts.deal ? ' deal-card' : '';
-  return '<article class="feed-card' + dealCls + '"><div class="meta"><span class="tag" style="background:' + badgeColor(i.module) + '15;color:' + badgeColor(i.module) + '">' + modName + '</span>' + hubLocationTagHtml(i) + formatDateMeta(i) + '</div><div class="title" onclick="openGuideModal(\'' + i.id + '\')" title="点击查看中文导读">' + title + '</div><div class="summary">' + summary + '</div><div class="foot"><span>' + s.verified + '</span><button class="btn" onclick="openEventLinkDirect(\'' + i.id + '\')">' + s.view_link + '</button></div></article>';
+  const tagBg = opts.deal ? '#64748b' : badgeColor(i.module);
+  const linkLabel = opts.deal ? (s.view_link_deal || '查看') : s.view_link;
+  return '<article class="feed-card' + dealCls + '"><div class="meta"><span class="tag" style="background:' + tagBg + '15;color:' + tagBg + '">' + modName + '</span>' + hubLocationTagHtml(i) + formatDateMeta(i) + '</div><div class="title" onclick="openGuideModal(\'' + i.id + '\')" title="点击查看中文导读">' + title + '</div><div class="summary">' + summary + '</div><div class="foot"><span>' + s.verified + '</span><button class="btn" onclick="openEventLinkDirect(\'' + i.id + '\')">' + linkLabel + '</button></div></article>';
 }
 
 // ─── 30-day auto-eviction (by publish date, not event date) ───
