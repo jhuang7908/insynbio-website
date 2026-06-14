@@ -293,63 +293,105 @@
     .module-grid.collapsed { max-height: 0; overflow: hidden; margin: 0; transition: max-height 0.3s ease; }
     .module-grid.expanded { max-height: 3000px; margin-top: 12px; }
 
-    /* Almanac & Phones — compact calendar dashboard */
-    .daily-dashboard { background: var(--hub-panel); border: 1px solid var(--hub-border); border-radius: 10px; margin: 10px auto 0; max-width: 960px; overflow: hidden; }
-    .dashboard-summary { display: flex; justify-content: space-between; align-items: flex-start; padding: 10px 12px; cursor: pointer; list-style: none; user-select: none; gap: 8px; }
+    /* Almanac & Phones — compact calendar dashboard (senior-friendly contrast) */
+    .daily-dashboard {
+      background: #ffffff;
+      border: 1px solid #b8aea0;
+      border-radius: 10px;
+      margin: 10px auto 0;
+      max-width: 960px;
+      overflow: hidden;
+      box-shadow: 0 1px 3px rgba(44, 40, 36, 0.06);
+    }
+    .dashboard-summary { display: flex; justify-content: space-between; align-items: flex-start; padding: 10px 12px; cursor: pointer; list-style: none; user-select: none; gap: 8px; background: #f3efe8; }
     .dashboard-summary::-webkit-details-marker { display: none; }
     .dash-head { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 0; }
-    .dash-row { display: flex; align-items: center; gap: 6px; min-width: 0; }
-    .dash-row-market { flex-wrap: wrap; width: 100%; gap: 6px; align-items: center; }
-    .dash-row-stats {
-      display: flex; align-items: center; gap: 5px; flex-shrink: 0;
-      width: 100%; justify-content: flex-end; margin-top: 6px;
+    .dash-row { display: flex; align-items: center; gap: 8px; min-width: 0; }
+    .dash-row-top {
+      flex-wrap: wrap;
+      width: 100%;
+      gap: 8px;
+      align-items: center;
+      row-gap: 6px;
+    }
+    .dash-weather-group {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      flex-shrink: 0;
+      background: #fff;
+      border: 1px solid #b8aea0;
+      border-radius: 10px;
+      padding: 4px 8px 4px 6px;
+    }
+    .dash-wx-icon { font-size: 16px; line-height: 1; }
+    .dash-wx-temp {
+      font-size: 16px;
+      font-weight: 800;
+      color: #1a1a1a;
+      letter-spacing: -0.02em;
+      min-width: 3.2em;
+    }
+    .dash-wx-city { font-size: 12px; font-weight: 700; color: #374151; }
+    .dash-stats-inline {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      flex-shrink: 0;
+      margin-left: auto;
+    }
+    @media (max-width: 720px) {
+      .dash-row-top { gap: 6px; }
+      .dash-market { order: 3; flex: 1 1 100%; }
+      .dash-stats-inline { order: 2; margin-left: auto; }
+      .dash-weather-group { order: 0; }
+      .unit-toggle { order: 1; }
     }
     .dash-row-meta {
       display: flex; justify-content: flex-end; align-items: center;
       width: 100%; margin-top: 3px; min-height: 14px;
     }
     .dash-row-meta .dash-meta-inline { margin-left: 0; text-align: right; }
-    .dash-stats-right .dash-meta-inline { margin-left: 0; display: block; width: 100%; text-align: right; line-height: 1.2; }
     .dash-stats-block { display: flex; flex-direction: column; align-items: flex-end; gap: 2px; flex-shrink: 0; }
-    .dash-vsep { width: 1px; height: 14px; background: #fdba74; flex-shrink: 0; opacity: 0.7; }
+    .dash-vsep { width: 1px; height: 16px; background: #9ca3af; flex-shrink: 0; opacity: 0.85; }
     .dash-stat {
       display: inline-flex; align-items: baseline; gap: 4px;
-      font-size: 11px; font-weight: 600; color: #6b5d4f;
-      background: rgba(255,252,248,0.92); border: 1px solid var(--hub-border);
-      padding: 2px 7px; border-radius: 999px; white-space: nowrap; flex-shrink: 0;
+      font-size: 12px; font-weight: 700; color: #1f2937;
+      background: #fff; border: 1px solid #b8aea0;
+      padding: 4px 9px; border-radius: 999px; white-space: nowrap; flex-shrink: 0;
     }
-    .dash-stat strong { font-size: 13px; font-weight: 800; color: #c2410c; }
-    .dash-stat-unit { font-size: 10px; font-weight: 700; color: #92400e; margin-left: 1px; }
-    .dash-stat-week strong { color: #b45309; }
-    .dash-stat-label { font-size: 10px; font-weight: 700; color: #78716c; letter-spacing: 0.01em; }
-    .dash-weather { display: inline-flex; align-items: center; gap: 3px; flex-shrink: 0; }
-    .dash-market { display: inline-flex; align-items: center; gap: 4px; flex: 1 1 180px; min-width: 0; overflow-x: auto; scrollbar-width: none; }
+    .dash-stat strong { font-size: 15px; font-weight: 800; color: #c2410c; }
+    .dash-stat-unit { font-size: 11px; font-weight: 700; color: #57534e; margin-left: 1px; }
+    .dash-stat-week strong { color: #15803d; }
+    .dash-stat-label { font-size: 11px; font-weight: 700; color: #44403c; letter-spacing: 0.01em; }
+    .dash-market { display: inline-flex; align-items: center; gap: 5px; flex: 1 1 120px; min-width: 0; overflow-x: auto; scrollbar-width: none; }
     .dash-market::-webkit-scrollbar { display: none; }
-    .dash-meta-inline { font-size: var(--text-xs); color: #78716c; font-weight: var(--weight-medium); white-space: nowrap; flex-shrink: 0; margin-left: auto; }
-    .dash-chip { font-size: 11px; font-weight: 600; color: var(--hub-heading); background: rgba(255,252,248,0.92); padding: 3px 8px; border-radius: 10px; white-space: nowrap; border: 1px solid var(--hub-border-soft); }
-    .mkt-chip { font-size: 10px; font-weight: 700; padding: 3px 7px; border-radius: 8px; white-space: nowrap; background: rgba(255,252,248,0.95); border: 1px solid var(--hub-border-soft); color: var(--hub-heading); }
-    .mkt-chip.up { color: #15803d; background: #f0fdf4; border-color: #bbf7d0; }
-    .mkt-chip.down { color: #b91c1c; background: #fef2f2; border-color: #fecaca; }
-    .mkt-chip.rate { color: #1e40af; background: #eff6ff; border-color: #bfdbfe; }
-    .dash-meta { font-size: 11px; color: #78716c; font-weight: 600; white-space: nowrap; }
-    .dash-verify { font-size: 10px; font-weight: 700; color: #16a34a; white-space: nowrap; flex-shrink: 0; }
-    .unit-toggle { font-size: 10px; font-weight: 700; color: #ea580c; background: var(--hub-surface); border: 1px solid var(--hub-border); border-radius: 8px; padding: 1px 6px; cursor: pointer; line-height: 1.4; }
-    .unit-toggle:hover { background: #fff9f3; }
-    .dash-toggle { font-size: 9px; color: #ea580c; flex-shrink: 0; transition: transform 0.2s; }
+    .dash-meta-inline { font-size: var(--text-xs); color: #57534e; font-weight: var(--weight-semibold); white-space: nowrap; flex-shrink: 0; margin-left: auto; }
+    .dash-chip { font-size: 12px; font-weight: 700; color: #1f2937; background: #fff; padding: 4px 9px; border-radius: 10px; white-space: nowrap; border: 1px solid #b8aea0; }
+    .mkt-chip { font-size: 11px; font-weight: 700; padding: 4px 8px; border-radius: 8px; white-space: nowrap; background: #fff; border: 1px solid #c4b8a8; color: #1f2937; }
+    .mkt-chip.up { color: #14532d; background: #ecfdf5; border-color: #86efac; }
+    .mkt-chip.down { color: #991b1b; background: #fef2f2; border-color: #fca5a5; }
+    .mkt-chip.rate { color: #1e3a8a; background: #eff6ff; border-color: #93c5fd; }
+    .mkt-chip.flat { color: #374151; background: #f9fafb; border-color: #d1d5db; }
+    .dash-meta { font-size: 12px; color: #57534e; font-weight: 600; white-space: nowrap; }
+    .dash-verify { font-size: 11px; font-weight: 700; color: #15803d; white-space: nowrap; flex-shrink: 0; }
+    .unit-toggle { font-size: 11px; font-weight: 700; color: #1f2937; background: #fff; border: 1px solid #b8aea0; border-radius: 8px; padding: 2px 7px; cursor: pointer; line-height: 1.4; flex-shrink: 0; }
+    .unit-toggle:hover { background: #f3efe8; }
+    .dash-toggle { font-size: 10px; color: #57534e; flex-shrink: 0; transition: transform 0.2s; margin-top: 2px; }
     details[open] .dash-toggle { transform: rotate(180deg); }
-    .dashboard-body { padding: 0 10px 10px; border-top: 1px dashed #fed7aa; }
+    .dashboard-body { padding: 0 10px 10px; border-top: 1px solid #d6cfc4; background: #fff; }
 
-    .cal-today { background: rgba(255,252,248,0.72); border: 1px solid var(--hub-border-soft); border-radius: 8px; padding: 8px 10px; margin-top: 8px; }
-    .cal-date-btn { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; width: 100%; background: none; border: none; padding: 0; cursor: pointer; text-align: left; font: inherit; color: #5c4a3a; }
-    .cal-date-btn:hover .cal-expand-hint { color: #ea580c; }
-    #almanac-date { font-size: 13px; font-weight: 700; }
-    .cal-lunar { font-size: 11px; color: #a16207; font-weight: 600; }
-    .cal-expand-hint { font-size: 10px; color: #78716c; font-weight: 600; margin-left: auto; }
-    .almanac-inline { display: flex; gap: 10px; margin-top: 6px; font-size: 12px; line-height: 1.35; flex-wrap: wrap; }
-    .almanac-inline .yi, .almanac-inline .ji { padding: 1px 5px; border-radius: 3px; font-weight: 700; font-size: 11px; flex-shrink: 0; }
-    .almanac-inline .yi { background: #dcfce7; color: #16a34a; }
-    .almanac-inline .ji { background: #fee2e2; color: #dc2626; }
-    .almanac-holidays-today { font-size: 11px; color: #ea580c; font-weight: 600; margin-top: 4px; }
+    .cal-today { background: #f8f5f0; border: 1px solid #c4b8a8; border-radius: 8px; padding: 10px 12px; margin-top: 8px; }
+    .cal-date-btn { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; width: 100%; background: none; border: none; padding: 0; cursor: pointer; text-align: left; font: inherit; color: #292524; }
+    .cal-date-btn:hover .cal-expand-hint { color: #c2410c; }
+    #almanac-date { font-size: 14px; font-weight: 800; color: #1c1917; }
+    .cal-lunar { font-size: 12px; color: #78350f; font-weight: 700; }
+    .cal-expand-hint { font-size: 11px; color: #57534e; font-weight: 700; margin-left: auto; }
+    .almanac-inline { display: flex; gap: 10px; margin-top: 8px; font-size: 13px; line-height: 1.45; flex-wrap: wrap; color: #292524; }
+    .almanac-inline .yi, .almanac-inline .ji { padding: 2px 6px; border-radius: 4px; font-weight: 800; font-size: 12px; flex-shrink: 0; }
+    .almanac-inline .yi { background: #bbf7d0; color: #14532d; }
+    .almanac-inline .ji { background: #fecaca; color: #991b1b; }
+    .almanac-holidays-today { font-size: 12px; color: #c2410c; font-weight: 700; margin-top: 6px; }
     .cal-forecast { margin-top: 8px; }
     .cal-forecast[hidden] { display: none; }
     .forecast-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 4px; }
@@ -528,22 +570,26 @@
     <details class="daily-dashboard" open>
       <summary class="dashboard-summary">
         <div class="dash-head">
-          <div class="dash-row dash-row-market">
-            <span id="weather-info" class="dash-chip dash-weather-chip">🌤️ 纽约 …</span>
+          <div class="dash-row dash-row-top">
+            <div class="dash-weather-group" id="weather-info" aria-label="纽约天气">
+              <span class="dash-wx-icon" id="weather-icon">🌤️</span>
+              <span class="dash-wx-temp" id="weather-temp">--°</span>
+              <span class="dash-wx-city">纽约</span>
+            </div>
             <button type="button" class="unit-toggle" id="unit-toggle" onclick="event.preventDefault(); toggleTempUnit();" title="切换华氏/摄氏">°F</button>
             <div class="dash-market" id="market-strip" aria-label="美股行情"></div>
-          </div>
-          <div class="dash-row dash-row-stats">
-            <span class="stream-dot"></span>
-            <span class="dash-stat dash-stat-new" id="stream-new-stat">
-              <span class="dash-stat-label" id="stream-new-label">24h新增</span>
-              <strong id="stream-new-count">—</strong><span class="dash-stat-unit" id="stream-new-unit">条</span>
-            </span>
-            <span class="dash-stat dash-stat-week" id="stream-week-stat">
-              <span class="dash-stat-label" id="stream-week-label">7日场次</span>
-              <strong id="stream-week-count">—</strong><span class="dash-stat-unit" id="stream-week-unit">场</span>
-            </span>
-            <span id="verify-badge" class="dash-verify">✔</span>
+            <div class="dash-stats-inline">
+              <span class="stream-dot"></span>
+              <span class="dash-stat dash-stat-new" id="stream-new-stat">
+                <span class="dash-stat-label" id="stream-new-label">24h新增</span>
+                <strong id="stream-new-count">—</strong><span class="dash-stat-unit" id="stream-new-unit">条</span>
+              </span>
+              <span class="dash-stat dash-stat-week" id="stream-week-stat">
+                <span class="dash-stat-label" id="stream-week-label">7日场次</span>
+                <strong id="stream-week-count">—</strong><span class="dash-stat-unit" id="stream-week-unit">场</span>
+              </span>
+              <span id="verify-badge" class="dash-verify">✔</span>
+            </div>
           </div>
         </div>
         <span class="dash-toggle">▼</span>
@@ -3501,8 +3547,15 @@ function writeWeatherCache(current, daily) {
 function applyWeatherSnapshot(current, daily) {
   if (current) {
     WEATHER_CURRENT = current;
-    updateWeatherDisplay();
+  } else if (daily && daily.time && daily.time.length) {
+    const idx = daily.time.indexOf(hubTodayEtStr());
+    if (idx >= 0 && daily.temperature_2m_max && daily.temperature_2m_min) {
+      const avg = (daily.temperature_2m_max[idx] + daily.temperature_2m_min[idx]) / 2;
+      const code = (daily.weathercode && daily.weathercode[idx]) || 0;
+      WEATHER_CURRENT = { tempC: avg, code };
+    }
   }
+  if (WEATHER_CURRENT) updateWeatherDisplay();
   if (daily) {
     WEATHER_DAILY = daily;
     const panel = document.getElementById('cal-forecast');
@@ -3529,13 +3582,19 @@ function fmtTempRange(minC, maxC, unit) {
 }
 
 function updateWeatherDisplay() {
-  const el = document.getElementById('weather-info');
+  const iconEl = document.getElementById('weather-icon');
+  const tempEl = document.getElementById('weather-temp');
   const btn = document.getElementById('unit-toggle');
-  if (!el) return;
   if (btn) btn.textContent = TEMP_UNIT === 'F' ? '°F' : '°C';
-  if (!WEATHER_CURRENT) { el.textContent = '🌤️ 纽约'; return; }
+  if (!tempEl) return;
+  if (!WEATHER_CURRENT) {
+    if (iconEl) iconEl.textContent = '🌤️';
+    tempEl.textContent = '--°';
+    return;
+  }
   const { tempC, code } = WEATHER_CURRENT;
-  el.textContent = `${weatherIcon(code)} 纽约 ${fmtTemp(tempC, TEMP_UNIT)}`;
+  if (iconEl) iconEl.textContent = weatherIcon(code);
+  tempEl.textContent = fmtTemp(tempC, TEMP_UNIT);
 }
 
 function toggleTempUnit() {
@@ -3691,8 +3750,8 @@ function fetchWeatherAndStock() {
       }
     })
     .catch(() => {
-      const el = document.getElementById('weather-info');
-      if (el && !WEATHER_CURRENT) el.textContent = '🌤️ 纽约 · 暂不可用';
+      const tempEl = document.getElementById('weather-temp');
+      if (tempEl && !WEATHER_CURRENT) tempEl.textContent = '—°';
     })
     .finally(() => { if (timer) clearTimeout(timer); });
 }
