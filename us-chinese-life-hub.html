@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- hub-build: 2026-06-14T14:58-align-grids-hide-ads -->
+<!-- hub-build: 2026-06-14T15:15-deals-4plus-expand-singledate -->
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8" />
@@ -152,6 +152,13 @@
     .feed-card .summary.summary-muted { font-size: var(--text-xs); color: #94a3b8; -webkit-line-clamp: 1; }
     .stream-section-hint { font-size: var(--text-sm); color: #64748b; margin: -4px 0 10px; line-height: 1.5; font-weight: var(--weight-medium); }
     .deals-disclaimer { font-size: var(--text-xs); color: #8a8f98; margin: 0 0 10px; line-height: 1.55; }
+    .deals-more-btn {
+      display: block; margin: 12px auto 0; padding: 8px 20px;
+      background: #f8fafc; color: #475569; border: 1px solid #e2e8f0; border-radius: 999px;
+      font-size: var(--text-sm); font-weight: var(--weight-semibold); font-family: inherit; cursor: pointer;
+      transition: background .15s, border-color .15s;
+    }
+    .deals-more-btn:hover { background: #f1f5f9; border-color: #cbd5e1; }
     .feed-card.deal-card { border-color: var(--hub-border-soft); background: var(--hub-surface); }
     .feed-card.deal-card .title { font-size: var(--text-sm); font-weight: var(--weight-semibold); }
     .feed-card.deal-card .summary { font-size: var(--text-xs); color: #94a3b8; }
@@ -763,17 +770,16 @@
     <!-- Cards Feed -->
     <div class="feed-grid" id="feed"></div>
 
-    <!-- ═══ 打折促销（与黄页同版式） ═══ -->
-    <details class="phones-card" id="deals-section">
-      <summary class="phones-summary">
-        <span class="section-title-left" id="deals-title">💰 打折促销 · 生活参考</span>
-        <span class="phones-toggle">▼</span>
-      </summary>
-      <div class="phones-body-wrap">
-        <p class="deals-disclaimer" id="deals-disclaimer">第三方公开优惠信息，仅供参考；本平台以社区公益与官方民生信息为主。</p>
-        <div class="feed-grid" id="deals-feed"></div>
+    <!-- ═══ 打折促销（首屏4个，其余点击展开） ═══ -->
+    <section class="deals-section" id="deals-section">
+      <div class="section-title">
+        <div class="section-title-left" id="deals-title">💰 打折促销 · 生活参考</div>
       </div>
-    </details>
+      <p class="deals-disclaimer" id="deals-disclaimer">第三方公开优惠信息，仅供参考；本平台以社区公益与官方民生信息为主。</p>
+      <div class="feed-grid" id="deals-feed"></div>
+      <div class="feed-grid" id="deals-feed-more" style="display:none; margin-top:8px;"></div>
+      <button type="button" class="deals-more-btn" id="deals-more-btn" style="display:none" onclick="toggleMoreDeals()"></button>
+    </section>
 
     <footer class="hub-site-footer" id="hub-footer">
       <p class="footer-mission" id="footer-mission">美东华人生活圈 · 公开渠道社区信息聚合，公益导向</p>
@@ -918,6 +924,9 @@ const UI_STRINGS = {
     deals_tag: "生活参考",
     deals_disclaimer: "第三方公开优惠信息，仅供参考；本平台以社区公益与官方民生信息为主。",
     deals_empty: "暂无促销信息",
+    deals_more: "查看更多促销",
+    deals_less: "收起促销",
+    deal_brief_zh: "第三方商家促销，价格与库存以商家页面为准，点击查看详情。",
     nav_latest: "📋 最新动态",
     nav_channels: "📂 12大民生频道",
     nav_deals: "💰 打折促销",
@@ -996,6 +1005,9 @@ const UI_STRINGS = {
     deals_tag: "生活參考",
     deals_disclaimer: "第三方公開優惠信息，僅供參考；本平台以社區公益與官方民生信息為主。",
     deals_empty: "暫無相關內容。",
+    deals_more: "查看更多促銷",
+    deals_less: "收起促銷",
+    deal_brief_zh: "第三方商家促銷，價格與庫存以商家頁面為準，點擊查看詳情。",
     nav_latest: "📋 最新動態",
     nav_channels: "📂 12大民生频道",
     nav_deals: "💰 打折促銷",
@@ -1074,6 +1086,9 @@ const UI_STRINGS = {
     deals_tag: "Reference",
     deals_disclaimer: "Third-party offers for reference only; community and public-service listings remain the focus.",
     deals_empty: "Nothing here right now.",
+    deals_more: "Show more deals",
+    deals_less: "Show less",
+    deal_brief_zh: "Third-party retailer promotion; price and stock per the merchant page. Click for details.",
     nav_latest: "📋 Latest",
     nav_channels: "📂 12 Channels",
     nav_deals: "💰 Deals",
@@ -1661,8 +1676,18 @@ function formatFirstIndexedLabel(i) {
 }
 
 function formatDateMeta(i) {
-  const pubLine = formatSourcePublishedLabel(i) || formatPublishDateLabel(i);
-  return `<div class="date-row">${formatEventDateLabel(i)}${pubLine}${formatFirstIndexedLabel(i)}</div>`;
+  // 只显示一个最有意义的日期，避免「官方发布」与「更新」重复
+  const ed = getDisplayEventDate(i);
+  let chip;
+  if (ed) {
+    chip = formatEventDateLabel(i);
+  } else {
+    chip = formatSourcePublishedLabel(i)
+        || formatPublishDateLabel(i)
+        || formatFirstIndexedLabel(i)
+        || formatEventDateLabel(i);
+  }
+  return `<div class="date-row">${chip}</div>`;
 }
 
 let HUB_SEARCH_BY_ID = new Map();
@@ -2272,14 +2297,49 @@ function renderStreamSections() {
 function renderDealsSection() {
   const s = UI_STRINGS[currentLang];
   const feed = document.getElementById('deals-feed');
+  const moreFeed = document.getElementById('deals-feed-more');
+  const moreBtn = document.getElementById('deals-more-btn');
   if (!feed) return;
   const deals = (typeof DEAL_ITEMS !== 'undefined' && Array.isArray(DEAL_ITEMS) && DEAL_ITEMS.length)
     ? DEAL_ITEMS
     : ITEMS.filter(isDealItem);
-  if (deals.length > 0) {
-    feed.innerHTML = deals.slice(0, 12).map(i => renderCard(i, { deal: true })).join('');
-  } else {
+  if (!deals.length) {
     feed.innerHTML = '<div style="grid-column:1/-1;padding:16px;text-align:center;color:#64748b;font-size:13px;line-height:1.55;">' + (s.deals_empty || '暂无促销信息') + '</div>';
+    if (moreFeed) moreFeed.innerHTML = '';
+    if (moreBtn) moreBtn.style.display = 'none';
+    return;
+  }
+  // 首屏只放 4 个，其余点击展开
+  feed.innerHTML = deals.slice(0, 4).map(i => renderCard(i, { deal: true })).join('');
+  const rest = deals.slice(4, 24);
+  if (moreFeed) moreFeed.innerHTML = rest.map(i => renderCard(i, { deal: true })).join('');
+  if (moreBtn) {
+    if (rest.length) {
+      moreBtn.style.display = '';
+      moreBtn.dataset.expanded = '0';
+      moreBtn.textContent = (s.deals_more || '查看更多促销') + ' (' + rest.length + ') ▼';
+      if (moreFeed) moreFeed.style.display = 'none';
+    } else {
+      moreBtn.style.display = 'none';
+      if (moreFeed) moreFeed.style.display = 'none';
+    }
+  }
+}
+
+function toggleMoreDeals() {
+  const s = UI_STRINGS[currentLang];
+  const moreFeed = document.getElementById('deals-feed-more');
+  const moreBtn = document.getElementById('deals-more-btn');
+  if (!moreFeed || !moreBtn) return;
+  const expanded = moreBtn.dataset.expanded === '1';
+  if (expanded) {
+    moreFeed.style.display = 'none';
+    moreBtn.dataset.expanded = '0';
+    moreBtn.textContent = (s.deals_more || '查看更多促销') + ' (' + moreFeed.childElementCount + ') ▼';
+  } else {
+    moreFeed.style.display = 'grid';
+    moreBtn.dataset.expanded = '1';
+    moreBtn.textContent = (s.deals_less || '收起促销') + ' ▲';
   }
 }
 
@@ -2302,6 +2362,31 @@ const CARD_BRIEF_BY_MODULE = {
   '交通·出行': '纽约地铁、巴士或出行变更通知，出行前请查阅。',
   '安全·突发': '纽约公共安全或应急提示，请以官方发布为准。',
 };
+
+function dealBriefZh(i) {
+  const s = UI_STRINGS[currentLang];
+  const blob = ((i.title_zh || '') + ' ' + (i.title_en || '') + ' ' + (i.summary_en || '')).toLowerCase();
+  if (currentLang === 'en') {
+    return s.deal_brief_zh;
+  }
+  const zht = currentLang === 'zht';
+  if (/laptop|tv|monitor|headphone|earbuds|ssd|router|camera|tablet|phone|charger|电子|相机|耳机/.test(blob)) {
+    return zht ? '電子數碼類促銷，下單前請比價並確認保固。' : '电子数码类促销，下单前请比价并确认保修。';
+  }
+  if (/kitchen|cookware|fryer|vacuum|furniture|mattress|home|家居|厨房|家具/.test(blob)) {
+    return zht ? '家居/廚房用品促銷，注意尺寸與退換貨政策。' : '家居/厨房用品促销，注意尺寸与退换货政策。';
+  }
+  if (/grocery|food|snack|coffee|食品|零食|咖啡/.test(blob)) {
+    return zht ? '食品/雜貨類優惠，請留意有效期與份量。' : '食品/杂货类优惠，请留意保质期与份量。';
+  }
+  if (/clothing|shoes|apparel|jacket|服饰|鞋|外套/.test(blob)) {
+    return zht ? '服飾鞋類促銷，下單前確認尺碼與退換政策。' : '服饰鞋类促销，下单前确认尺码与退换政策。';
+  }
+  if (/baby|kids|toy|stroller|母婴|玩具|童/.test(blob)) {
+    return zht ? '母嬰/兒童用品優惠，請核對適用年齡與安全標準。' : '母婴/儿童用品优惠，请核对适用年龄与安全标准。';
+  }
+  return s.deal_brief_zh;
+}
 
 function cardBriefZh(i) {
   const lang = currentLang === 'zht' ? 'zht' : (currentLang === 'en' ? 'en' : 'zh');
@@ -2343,9 +2428,9 @@ function renderCard(i, opts) {
   let title = i['title_' + currentLang] || i.title_zh;
   if (opts.deal) title = title.replace(/^🔥\s*/, '');
   const summaryRaw = i['summary_' + currentLang] || i.summary_zh;
-  const brief = opts.deal ? '' : cardBriefZh(i);
+  const brief = opts.deal ? dealBriefZh(i) : cardBriefZh(i);
   const briefHtml = brief ? ('<div class="card-brief-zh">' + brief + '</div>') : '';
-  const summaryHtml = opts.deal && summaryRaw ? ('<div class="summary">' + summaryRaw + '</div>') : '';
+  const summaryHtml = opts.deal && summaryRaw ? ('<div class="summary summary-muted">' + summaryRaw + '</div>') : '';
   const modObj = MODULES.find(m => m.zh === i.module);
   const modName = opts.deal
     ? (s.deals_tag || '生活参考')
@@ -4143,7 +4228,7 @@ const HUB_NAV_SECTIONS = [
   { id: 'livelihood-hot', navId: 'nav-latest' },
   { id: 'yellow-pages-card', navId: 'nav-yellow-pages', openDetails: true },
   { id: 'channels-section', navId: 'nav-channels' },
-  { id: 'deals-section', navId: 'nav-deals', openDetails: true },
+  { id: 'deals-section', navId: 'nav-deals' },
 ];
 
 function setHubNavPrimary(activeId) {
