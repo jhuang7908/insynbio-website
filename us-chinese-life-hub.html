@@ -399,11 +399,13 @@
     .yp-more { text-align: center; font-size: var(--text-sm); color: #94a3b8; padding: 6px; }
 
     @media (max-width: 1200px) {
-      .feed-grid, .module-grid { grid-template-columns: repeat(3, 1fr); }
+      .feed-grid { grid-template-columns: repeat(3, 1fr); }
+      .module-grid { grid-template-columns: repeat(3, 1fr); }
     }
     @media (max-width: 900px) {
       .search-panel { grid-template-columns: 1fr 1fr; }
-      .feed-grid, .module-grid { grid-template-columns: repeat(2, 1fr); }
+      .feed-grid { grid-template-columns: repeat(2, 1fr); }
+      .module-grid { grid-template-columns: repeat(3, 1fr); }
     }
     @media (max-width: 640px) {
       :root {
@@ -413,7 +415,8 @@
         --text-lg: 18px;
       }
       body { font-size: var(--text-base); }
-      .feed-grid, .module-grid { grid-template-columns: 1fr; }
+      .feed-grid { grid-template-columns: 1fr; }
+      .module-grid { grid-template-columns: repeat(2, 1fr); }
       .search-panel { grid-template-columns: 1fr; }
       .top-inner { height: auto; min-height: 52px; padding: 8px 0; align-items: center; }
       .logo-text { font-size: var(--text-base); line-height: var(--leading-tight); }
@@ -560,7 +563,7 @@
     <!-- ═══ COMPACT COMPOSITE SEARCH PANEL (复合检索面板) ═══ -->
     
     <div class="section-title" style="cursor:pointer" onclick="toggleChannels()">
-      <div class="section-title-left" id="channels-title">📂 8大民生频道 · 按类别浏览</div>
+      <div class="section-title-left" id="channels-title">📂 9大民生频道 · 按类别浏览</div>
       <span id="channels-toggle" style="font-size:12px;color:#64748b;font-weight:600">收起 ▲</span>
     </div>
     <div class="module-grid expanded" id="module-grid"></div>
@@ -693,7 +696,7 @@ const UI_STRINGS = {
     hub_search_placeholder: "搜索标题、内容、地点、活动日期…",
     hub_search_count: "共 {n} 条",
     hub_search_match: "找到 {n} 条",
-    channels_title: "8大民生频道",
+    channels_title: "9大民生频道",
     feed_title: "纽约福利与华人服务信息",
     feed_sub: "福利政策、社区活动与办事指南，可按关键词搜索",
     reset_btn: "🔄 重置所有筛选",
@@ -754,7 +757,7 @@ const UI_STRINGS = {
     hub_search_placeholder: "搜索標題、內容、地點、活動日期…",
     hub_search_count: "共 {n} 條",
     hub_search_match: "找到 {n} 條",
-    channels_title: "8大民生頻道",
+    channels_title: "9大民生頻道",
     feed_title: "紐約福利與華人服務信息",
     feed_sub: "福利政策、社區活動與辦事指南，可按關鍵詞搜索",
     reset_btn: "🔄 重置所有篩選",
@@ -815,7 +818,7 @@ const UI_STRINGS = {
     hub_search_placeholder: "Search title, content, location, event date…",
     hub_search_count: "{n} items",
     hub_search_match: "{n} matches",
-    channels_title: "8 Public Channels",
+    channels_title: "9 Public Channels",
     feed_title: "NYC Benefits & Community Services",
     feed_sub: "Benefits, events, and service guides — search by keyword",
     reset_btn: "🔄 Reset All Filters",
@@ -1931,7 +1934,11 @@ const YP_SEARCH_SYNONYMS = {
   "旅行社": ["旅行社", "travel", "tour", "ticket"],
   "机票": ["旅行社", "travel", "tour", "ticket"],
   "快递": ["快递公司", "express", "courier", "shipping", "delivery"],
-  "邮寄": ["快递公司", "express", "courier", "shipping", "delivery"]
+  "邮寄": ["快递公司", "express", "courier", "shipping", "delivery"],
+  "游行": ["游行", "抗议", "集会", "parade", "protest", "march", "rally", "demonstration"],
+  "抗议": ["游行", "抗议", "集会", "parade", "protest", "march", "rally", "demonstration"],
+  "安全": ["安全", "治安", "警报", "safety", "alert", "crime", "police", "nypd", "emergency"],
+  "治安": ["安全", "治安", "警报", "safety", "alert", "crime", "police", "nypd", "emergency"]
 };
 let YP_ACTIVE_INDUSTRY = 'essential';
 let YP_ACTIVE_AREA = 'all';
