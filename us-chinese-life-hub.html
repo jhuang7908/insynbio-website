@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- hub-build: 2026-06-14T13:28-enroll-fix-width -->
+<!-- hub-build: 2026-06-14T13:48-enroll-fix-width-gap -->
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8" />
@@ -121,24 +121,20 @@
     .hub-chapter-nav a.primary:hover { border-color: #9a3412; color: #fff; }
     .livelihood-hot { margin-top: 4px; padding: 0; background: transparent; border: none; box-shadow: none; }
     .stream-channel {
-      margin-top: 12px; padding: 12px 14px 10px; border-radius: 14px;
-      background: var(--hub-surface); border: 1px solid var(--hub-border-soft);
-      border-left: 4px solid #ea580c;
-      box-shadow: 0 1px 3px rgba(44,52,64,0.04);
+      margin-top: 16px;
     }
-    .stream-channel:first-child { margin-top: 4px; }
-    .stream-channel-24h { border-left-color: #ea580c; }
-    .stream-channel-7d { border-left-color: #2563eb; }
-    .stream-channel-enroll { 
-      border-left-color: #15803d; 
-      background: #f0fdf4; /* 浅绿底色，弱化为专题区 */
-      border-color: #bbf7d0;
+    .stream-channel:first-child { margin-top: 8px; }
+    .stream-channel .section-title {
+      border-left: 4px solid transparent;
+      padding-left: 10px;
     }
+    .stream-channel-24h .section-title { border-left-color: #ea580c; }
+    .stream-channel-7d .section-title { border-left-color: #2563eb; }
+    .stream-channel-enroll .section-title { border-left-color: #15803d; }
     .stream-channel-enroll .section-title-left { color: #166534; font-size: 14px; }
-    .stream-channel-enroll .stream-section-hint { color: #15803d; }
-    .stream-channel-enroll .feed-card { border-color: #86efac; }
+    .stream-channel-enroll .stream-section-hint { color: #15803d; padding-left: 14px; }
+    .stream-channel-enroll .feed-card { border-color: #86efac; background: #f0fdf4; }
     .stream-channel-enroll .feed-card:hover { border-color: #22c55e; box-shadow: 0 2px 8px rgba(34,197,94,0.1); }
-    .stream-channel .section-title { margin-top: 0; }
     .stream-channel .section-title + .stream-section-hint { margin-top: 2px; }
     .livelihood-hot .section-title { margin-top: 8px; }
     .card-brief-zh {
@@ -163,7 +159,7 @@
     .muted { color: #64748b; font-size: var(--text-base); line-height: var(--leading-relaxed); margin: -8px 0 16px; }
 
     /* Module Grid (First Part) */
-    .module-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 12px; transition: max-height 0.3s ease-out, opacity 0.3s ease-out; overflow: hidden; }
+    .module-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin-top: 12px; transition: max-height 0.3s ease-out, opacity 0.3s ease-out; overflow: hidden; }
     .module-grid.collapsed { max-height: 0; opacity: 0; margin-top: 0; pointer-events: none; }
     .module-grid.expanded { max-height: 3000px; opacity: 1; }
     .module-card { background: var(--hub-surface); border: 1px solid var(--hub-border-soft); border-radius: 12px; padding: 14px; cursor: pointer; transition: all 0.15s; }
