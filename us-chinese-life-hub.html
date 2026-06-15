@@ -73,6 +73,7 @@
       text-rendering: optimizeLegibility;
       background: var(--hub-bg);
       color: var(--hub-text);
+      overflow-x: hidden; /* Prevent horizontal scrollbar and layout shifting */
     }
     .wrap { max-width: 840px; margin: 0 auto; padding: 0 16px; }
     @media (max-width: 640px)  { .wrap { padding: 0 12px; } }
@@ -215,7 +216,7 @@
     .feed-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
     .feed-card { background: var(--hub-surface); border: 1px solid var(--hub-border-soft); border-radius: 10px; padding: 10px 11px; display: flex; flex-direction: column; min-height: 0; transition: all 0.15s; }
     .feed-card:hover { border-color: #cbd5e1; box-shadow: 0 2px 8px rgba(0,0,0,0.03); }
-    .meta { display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px; gap: 6px; }
+    .meta { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; margin-bottom: 6px; gap: 4px; }
     .tag { font-size: var(--text-xs); font-weight: var(--weight-semibold); padding: 2px 7px; border-radius: 4px; white-space: nowrap; flex-shrink: 0; }
     .tag.citywide-tag { background: #f1f5f9; color: #475569; border: 1px solid #e2e8f0; }
     .tag.loc-tag { font-size: var(--text-xs); font-weight: var(--weight-semibold); border: 1px solid transparent; }
