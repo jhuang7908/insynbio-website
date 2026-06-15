@@ -7,6 +7,8 @@
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
   <meta http-equiv="Pragma" content="no-cache" />
   <meta http-equiv="Expires" content="0" />
+  <meta name="theme-color" content="#ea580c" />
+  <link rel="manifest" href="manifest.json" />
   <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large" />
   <meta name="googlebot" content="index, follow" />
   <meta name="description" content="纽约华人社区生活信息：活动资讯、福利政策、12大民生频道与4300+华人商家黄页（幼儿园·银行·诊所·按区域与行业浏览）。" />
@@ -4420,6 +4422,7 @@ function hubBoot() {
     if (ut) ut.textContent = TEMP_UNIT === 'F' ? '°F' : '°C';
     initSubModalOverlay();
     checkPushState();
+    registerServiceWorkerOnBoot();
   } catch (err) {
     console.error('[hub] boot failed', err);
     const feed = document.getElementById('feed');
@@ -4546,6 +4549,66 @@ function checkPushState() {
     if (btn) { btn.textContent = '✅ 浏览器推送已开启'; btn.disabled = true; }
   }
 }
+
+// Register Service Worker and handle PWA installation prompt
+let deferredPrompt;
+function registerServiceWorkerOnBoot() {
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('/sw-nyc-hub.js', { scope: '/' })
+        .then(reg => {
+          console.log('[PWA] Service Worker registered with scope:', reg.scope);
+        })
+        .catch(err => {
+          console.error('[PWA] Service Worker registration failed:', err);
+        });
+    });
+  }
+
+  // Listen for the beforeinstallprompt event
+  window.addEventListener('beforeinstallprompt', (e) => {
+    // Prevent Chrome 67 and earlier from automatically showing the prompt
+    e.preventDefault();
+    // Stash the event so it can be triggered later.
+    deferredPrompt = e;
+    // Show the install button container in UI
+    const installContainer = document.getElementById('pwa-install-container');
+    if (installContainer) {
+      installContainer.style.display = 'block';
+    }
+  });
+
+  // Handle successful installation
+  window.addEventListener('appinstalled', (evt) => {
+    console.log('[PWA] App successfully installed on device!');
+    const installContainer = document.getElementById('pwa-install-container');
+    if (installContainer) {
+      installContainer.style.display = 'none';
+    }
+  });
+}
+
+// DOMContentLoaded initialization for PWA install button click
+document.addEventListener('DOMContentLoaded', () => {
+  const installBtn = document.getElementById('pwa-install-btn');
+  if (installBtn) {
+    installBtn.addEventListener('click', async () => {
+      if (!deferredPrompt) return;
+      // Show the native browser install prompt
+      deferredPrompt.prompt();
+      // Wait for the user to respond to the prompt
+      const { outcome } = await deferredPrompt.userChoice;
+      console.log(`[PWA] User response to install prompt: ${outcome}`);
+      // Clear the deferred prompt so it can't be used again
+      deferredPrompt = null;
+      // Hide our custom install button
+      const installContainer = document.getElementById('pwa-install-container');
+      if (installContainer) {
+        installContainer.style.display = 'none';
+      }
+    });
+  }
+});
 
 // Apply interest filter when FAB is clicked with pre-selected module
 function applyInterestAndClose(moduleId) {
@@ -4680,6 +4743,12 @@ function initHubChapterNav() {
       <div class="sub-section-title">📱 添加到手机桌面（一键直达）</div>
       <div style="font-size:12px;color:#64748b;margin-bottom:8px;line-height:1.5;">
         您可以将本站保存为手机桌面图标，像 App 一样一键快速打开：
+      </div>
+      <!-- PWA Install Button (Hidden by default, shown dynamically via JS) -->
+      <div id="pwa-install-container" style="display:none;margin-bottom:12px;">
+        <button id="pwa-install-btn" style="width:100%;background:#ea580c;color:#fff;border:none;border-radius:8px;padding:10px;font-size:13px;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:6px;box-shadow:0 2px 4px rgba(234,88,12,0.2);">
+          ✨ 一键安装“美东生活圈” App
+        </button>
       </div>
       <div style="background:#f8fafc;border:1px solid #e2e8f0;border-radius:6px;padding:10px;font-size:12px;color:#475569;line-height:1.6;">
         <strong>苹果手机 (iOS Safari)：</strong><br>
