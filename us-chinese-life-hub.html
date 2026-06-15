@@ -404,12 +404,32 @@
       flex-shrink: 0;
       margin-left: auto;
     }
-    @media (max-width: 720px) {
-      .dash-row-top { gap: 6px; }
+    @media (max-width: 840px) {
+      .dash-row-top { flex-wrap: wrap; gap: 6px; }
       .dash-market { order: 3; flex: 1 1 100%; }
       .dash-stats-inline { order: 2; margin-left: auto; }
       .dash-weather-group { order: 0; }
       .unit-toggle { order: 1; }
+      
+      /* Make top bar fonts more compact on medium screens */
+      .dash-head, .dash-market, .dash-stat, .dash-chip, .mkt-chip,
+      .dash-wx-temp, .dash-wx-city, .unit-toggle, .dash-toggle, .dash-verify,
+      .dash-wx-icon {
+        font-size: 12px;
+      }
+      .mkt-chip { padding: 3px 6px; border-radius: 6px; }
+      .dash-stat { padding: 3px 7px; }
+      .dash-weather-group { padding: 4px 8px 4px 6px; border-radius: 8px; }
+    }
+    @media (max-width: 480px) {
+      .dash-head, .dash-market, .dash-stat, .dash-chip, .mkt-chip,
+      .dash-wx-temp, .dash-wx-city, .unit-toggle, .dash-toggle, .dash-verify,
+      .dash-wx-icon {
+        font-size: 11px;
+      }
+      .mkt-chip { padding: 2px 5px; border-radius: 5px; }
+      .dash-stat { padding: 2px 6px; }
+      .dash-weather-group { padding: 3px 6px 3px 4px; border-radius: 6px; }
     }
     .dash-row-meta {
       display: flex; justify-content: flex-end; align-items: center;
@@ -2067,7 +2087,13 @@ function hubFindItem(itemId) {
   let item = ITEMS.find(x => x.id === itemId);
   if (item) return item;
   if (typeof DEAL_ITEMS !== 'undefined' && Array.isArray(DEAL_ITEMS)) {
-    return DEAL_ITEMS.find(x => x.id === itemId);
+    const dItem = DEAL_ITEMS.find(x => x.id === itemId);
+    if (dItem) return dItem;
+  }
+  if (itemId && itemId.startsWith('evergreen_')) {
+    const evergreens = getEvergreenEvents();
+    const evItem = evergreens.find(x => x.id === itemId);
+    if (evItem) return evItem;
   }
   return null;
 }
@@ -2093,7 +2119,9 @@ function openHubExternal(rawUrl, opts) {
   opts = opts || {};
   let targetUrl = rawUrl;
   if (opts.translate) {
-    targetUrl = 'https://translate.google.com/translate?sl=auto&tl=zh-CN&u=' + encodeURIComponent(rawUrl);
+    const pref = localStorage.getItem('pref_lang_mode') || 'trans_zh';
+    const tl = (pref === 'trans_zht') ? 'zh-TW' : 'zh-CN';
+    targetUrl = 'https://translate.google.com/translate?sl=auto&tl=' + tl + '&u=' + encodeURIComponent(rawUrl);
   }
   const desktopUrl = opts.desktopUrl || targetUrl;
   if (!rawUrl || !/^https?:\/\//i.test(rawUrl)) return;
@@ -2123,7 +2151,7 @@ function openGuideModal(itemId) {
   
   const s = UI_STRINGS[currentLang];
   const title = item[`title_${currentLang}`] || item.title_zh;
-  const guide = item[`guide_${currentLang}`] || item.guide_zh;
+  const guide = item[`guide_${currentLang}`] || item.guide_zh || item[`summary_${currentLang}`] || item.summary_zh || '';
   
   document.getElementById('modal-item-title').textContent = title;
   document.getElementById('modal-guide-header').textContent = s.modal_title;
@@ -2304,13 +2332,18 @@ function pickWeekItemsBalanced(maxTotal, maxPerDay, excludeIds) {
   // Combine livelihood items with dynamic evergreen events to ensure days 4-7 are active
   const poolItems = [...livelihoodItems(), ...getEvergreenEvents()];
   
+  const seenWeekTitles = new Set();
   const weekPool = poolItems.filter(i => {
     if (excludeIds.has(i.id)) return false;
     if (i.date_kind !== 'event') return false;
     const ed = getDisplayEventDate(i);
     if (!ed) return false;
     const diff = daysFromToday(ed);
-    return diff !== null && diff >= 0 && diff <= 7;
+    if (diff === null || diff < 0 || diff > 7) return false;
+    const title = (i.title_zh || i.title_en || '').trim();
+    if (seenWeekTitles.has(title)) return false;
+    seenWeekTitles.add(title);
+    return true;
   });
   for (const i of weekPool) {
     const diff = daysFromToday(getDisplayEventDate(i));
@@ -2408,10 +2441,15 @@ function pickAdvanceEnrollmentItems(maxTotal, excludeIds) {
   // Clear any existing customModuleTag
   ITEMS.forEach(item => delete item.customModuleTag);
 
-  // Get all matching official items
+  // Get all matching official items, deduplicating by title to prevent duplicate cards
+  const seenTitles = new Set();
   const pool = livelihoodItems().filter(i => {
     if (excludeIds.has(i.id)) return false;
-    return itemMatchesEnrollmentAdvance(i);
+    if (!itemMatchesEnrollmentAdvance(i)) return false;
+    const title = (i.title_zh || i.title_en || '').trim();
+    if (seenTitles.has(title)) return false;
+    seenTitles.add(title);
+    return true;
   });
 
   const cat1_school = []; // 教育与学校
@@ -2526,7 +2564,17 @@ function renderStreamSections() {
   const allEnrollmentIds = new Set(allEnrollmentItems.map(i => i.id));
 
   const streamPick = pickFeaturedStreamItems(stats, allEnrollmentIds);
-  const todayItems = streamPick.items.slice(0, 6);
+  // Deduplicate streamPick.items by title to prevent duplicate cards
+  const seenTodayTitles = new Set();
+  const uniqueTodayItems = [];
+  for (const item of streamPick.items) {
+    const title = (item.title_zh || item.title_en || '').trim();
+    if (!seenTodayTitles.has(title)) {
+      seenTodayTitles.add(title);
+      uniqueTodayItems.push(item);
+    }
+  }
+  const todayItems = uniqueTodayItems.slice(0, 6);
   updateTodayStreamHeading(streamPick.mode);
 
   const todayIds = new Set(todayItems.map(i => i.id));
@@ -3571,11 +3619,11 @@ function updateMemberStatusUI() {
     el.innerHTML =
       '📬 <strong>订阅会员</strong>（免费）：接收最新社区动态与促销推送 · ' +
       '<a href="#" onclick="openSubModal();return false;" style="color:#ea580c">点右下角订阅</a><br>' +
-      '⭐ 商家展示以<strong>平台推荐与核实</strong>为主，暂不开放用户点评。纠错无需会员；商家更新请发邮件 <a href="mailto:info@uslifehub.org" style="color:#64748b">info@uslifehub.org</a>';
+      '⭐ 为平台推荐与核实商家，欢迎商家纠错信息和更新记录。联系email: <a href="mailto:info@uslifehub.org" style="color:#64748b">info@uslifehub.org</a>';
     return;
   }
   el.className = 'member-status eligible';
-  el.innerHTML = '✅ 已订阅 · 将收到最新动态与促销推送。商家信息以平台推荐为主，暂不支持用户点评。';
+  el.innerHTML = '✅ 已订阅 · 将收到最新动态与促销推送。<br>⭐ 为平台推荐与核实商家，欢迎商家纠错信息和更新记录。联系email: <a href="mailto:info@uslifehub.org" style="color:#64748b">info@uslifehub.org</a>';
 }
 
 function filterYpByIndustry(items) {
