@@ -802,10 +802,10 @@
 
     <!-- ═══ 章节导航 ═══ -->
     <nav class="hub-chapter-nav" aria-label="首页章节">
-      <a href="latest.html" class="primary" id="nav-latest">📋 最新动态</a>
-      <a href="yellow-pages.html" id="nav-yellow-pages">📒 社区黄页</a>
-      <a href="channels.html" id="nav-channels">📂 民生频道</a>
-      <a href="deals.html" id="nav-deals">💰 打折促销</a>
+      <a href="us-chinese-life-hub.html?view=latest" class="primary" id="nav-latest">📋 最新动态</a>
+      <a href="us-chinese-life-hub.html?view=yellowpages" id="nav-yellow-pages">📒 社区黄页</a>
+      <a href="us-chinese-life-hub.html?view=channels" id="nav-channels">📂 民生频道</a>
+      <a href="us-chinese-life-hub.html?view=deals" id="nav-deals">💰 打折促销</a>
     </nav>
 
     <!-- ═══ 最新动态：24h + 7日 两频道 ═══ -->
@@ -5363,10 +5363,10 @@ function setHubNavPrimary(activeId) {
       return;
     }
     const byView = (
-      (HUB_PAGE_VIEW === 'latest' && href.includes('latest.html')) ||
-      (HUB_PAGE_VIEW === 'channels' && href.includes('channels.html')) ||
-      (HUB_PAGE_VIEW === 'deals' && href.includes('deals.html')) ||
-      (HUB_PAGE_VIEW === 'yellowpages' && href.includes('yellow-pages.html'))
+      (HUB_PAGE_VIEW === 'latest' && href.includes('view=latest')) ||
+      (HUB_PAGE_VIEW === 'channels' && href.includes('view=channels')) ||
+      (HUB_PAGE_VIEW === 'deals' && href.includes('view=deals')) ||
+      (HUB_PAGE_VIEW === 'yellowpages' && href.includes('view=yellowpages'))
     );
     a.classList.toggle('primary', byView);
   });
@@ -5394,6 +5394,13 @@ function initHubChapterNav() {
         if (hash === 'yellow-pages-card' && typeof initYellowPages === 'function') initYellowPages();
       }
       setTimeout(() => setHubNavPrimary(hash), 80);
+    });
+  });
+  nav.querySelectorAll('a[href*="view="]').forEach(a => {
+    a.addEventListener('click', (ev) => {
+      ev.preventDefault();
+      const href = a.getAttribute('href');
+      if (href) location.href = href;
     });
   });
   let ticking = false;
