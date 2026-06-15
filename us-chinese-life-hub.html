@@ -182,6 +182,49 @@
       transition: background .15s, border-color .15s;
     }
     .deals-more-btn:hover { background: #f1f5f9; border-color: #cbd5e1; }
+    .deals-tabs {
+      display: flex;
+      gap: 8px;
+      margin: 12px 0 16px;
+      overflow-x: auto;
+      padding-bottom: 4px;
+      -webkit-overflow-scrolling: touch;
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+    .deals-tabs::-webkit-scrollbar {
+      display: none;
+    }
+    .deals-tab {
+      border: 1px solid var(--hub-border);
+      background: var(--hub-surface);
+      border-radius: 999px;
+      padding: 6px 16px;
+      font-size: var(--text-sm);
+      font-weight: var(--weight-medium);
+      font-family: inherit;
+      cursor: pointer;
+      color: #475569;
+      transition: all 0.15s;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+    .deals-tab:hover {
+      background: #f1f5f9;
+      border-color: #cbd5e1;
+    }
+    .deals-tab.active {
+      background: #ea580c;
+      color: #ffffff;
+      border-color: #ea580c;
+    }
+    .deals-tab-content {
+      animation: dealsFadeIn 0.2s ease-in-out;
+    }
+    @keyframes dealsFadeIn {
+      from { opacity: 0; transform: translateY(4px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
     .feed-card.deal-card { border-color: var(--hub-border-soft); background: var(--hub-surface); }
     .feed-card.deal-card .title { font-size: var(--text-sm); font-weight: var(--weight-semibold); }
     .feed-card.deal-card .summary { font-size: var(--text-xs); color: #94a3b8; }
@@ -847,9 +890,30 @@
         <div class="section-title-left" id="deals-title">💰 打折促销 · 生活参考</div>
       </div>
       <p class="deals-disclaimer" id="deals-disclaimer">第三方公开优惠信息，仅供参考；本平台以社区公益与官方民生信息为主。</p>
-      <div class="feed-grid" id="deals-feed"></div>
-      <div class="feed-grid" id="deals-feed-more" style="display:none; margin-top:8px;"></div>
-      <button type="button" class="deals-more-btn" id="deals-more-btn" style="display:none" onclick="toggleMoreDeals()"></button>
+      
+      <!-- Sub-tabs for Deals Section -->
+      <div class="deals-tabs" id="deals-tabs">
+        <button type="button" class="deals-tab active" onclick="switchDealsTab('flyers', this)" id="tab-btn-flyers">🛒 超市海报</button>
+        <button type="button" class="deals-tab" onclick="switchDealsTab('seasons', this)" id="tab-btn-seasons">💄 消费大促</button>
+        <button type="button" class="deals-tab" onclick="switchDealsTab('dining', this)" id="tab-btn-dining">🍔 美食特惠</button>
+        <button type="button" class="deals-tab" onclick="switchDealsTab('online', this)" id="tab-btn-online">📦 线上折扣</button>
+      </div>
+
+      <!-- Tab Content Containers -->
+      <div id="deals-tab-flyers" class="deals-tab-content">
+        <div class="feed-grid" id="flyers-feed"></div>
+      </div>
+      <div id="deals-tab-seasons" class="deals-tab-content" style="display:none;">
+        <div class="feed-grid" id="seasons-feed"></div>
+      </div>
+      <div id="deals-tab-dining" class="deals-tab-content" style="display:none;">
+        <div class="feed-grid" id="dining-feed"></div>
+      </div>
+      <div id="deals-tab-online" class="deals-tab-content" style="display:none;">
+        <div class="feed-grid" id="deals-feed"></div>
+        <div class="feed-grid" id="deals-feed-more" style="display:none; margin-top:8px;"></div>
+        <button type="button" class="deals-more-btn" id="deals-more-btn" style="display:none" onclick="toggleMoreDeals()"></button>
+      </div>
     </section>
 
     <footer class="hub-site-footer" id="hub-footer">
@@ -2661,6 +2725,239 @@ function renderDealsSection() {
       if (moreFeed) moreFeed.style.display = 'none';
     }
   }
+
+  // Render our custom tabs and switch to the currently active tab
+  renderCustomDealsTabs();
+  switchDealsTab(CURRENT_DEALS_TAB);
+}
+
+let CURRENT_DEALS_TAB = 'flyers';
+
+function switchDealsTab(tabId, btn) {
+  CURRENT_DEALS_TAB = tabId;
+  
+  // Update active button class
+  const buttons = document.querySelectorAll('.deals-tab');
+  buttons.forEach(b => b.classList.remove('active'));
+  if (btn) {
+    btn.classList.add('active');
+  } else {
+    const targetBtn = document.getElementById('tab-btn-' + tabId);
+    if (targetBtn) targetBtn.classList.add('active');
+  }
+
+  // Hide all tab contents, show active one
+  const contents = document.querySelectorAll('.deals-tab-content');
+  contents.forEach(c => c.style.display = 'none');
+  
+  const activeContent = document.getElementById('deals-tab-' + tabId);
+  if (activeContent) {
+    activeContent.style.display = 'block';
+  }
+}
+
+function renderCustomDealsTabs() {
+  const zht = currentLang === 'zht';
+  const en = currentLang === 'en';
+
+  // 1. Weekly Flyers (超市海报)
+  const flyersFeed = document.getElementById('flyers-feed');
+  if (flyersFeed) {
+    const flyersData = [
+      {
+        id: "flyer_jmart",
+        module: zht ? "超市海報" : (en ? "Flyers" : "超市海报"),
+        title_zh: "🛒 新世界超市 (Jmart) · 本周特价海报",
+        title_zht: "🛒 新世界超市 (Jmart) · 本週特價海報",
+        title_en: "🛒 Jmart Supermarket · Weekly Specials Flyer",
+        brief_zh: "🔥 本周爆款：温哥华大蟹 $6.99/磅，游水龙虾 $7.99/磅，红富士苹果 $0.99/磅。法拉盛新世界美食广场地下，买菜首选！",
+        brief_zht: "🔥 本週爆款：溫哥華大蟹 $6.99/磅，遊水龍蝦 $7.99/磅，紅富士蘋果 $0.99/磅。法拉盛新世界美食廣場地下，買菜首選！",
+        brief_en: "🔥 Weekly Specials: Dungeness Crab $6.99/lb, Live Lobster $7.99/lb, Red Fuji Apple $0.99/lb. Located inside New World Mall, Flushing.",
+        date: "06/12 - 06/18",
+        url: "https://www.newworldmallnyc.com/jmart-weekly-special",
+        area_zh: "法拉盛 Flushing",
+        area_zht: "法拉盛 Flushing",
+        area_en: "Flushing"
+      },
+      {
+        id: "flyer_gw",
+        module: zht ? "超市海報" : (en ? "Flyers" : "超市海报"),
+        title_zh: "🛒 大中华超市 (GW) · 本周特惠海报",
+        title_zht: "🛒 大中華超市 (GW) · 本週特惠海報",
+        title_en: "🛒 Great Wall Supermarket · Weekly Deals Flyer",
+        brief_zh: "🔥 本周精选：新鲜排骨 $2.49/磅，游水侧鱼 $3.99/磅，红樱桃 $1.99/磅。法拉盛与Corona门店同步，新鲜实惠！",
+        brief_zht: "🔥 本週精選：新鮮排骨 $2.49/磅，遊水側魚 $3.99/磅，紅櫻桃 $1.99/磅。法拉盛與Corona門店同步，新鮮實惠！",
+        brief_en: "🔥 Weekly Deals: Fresh Pork Ribs $2.49/lb, Live Tilapia $3.99/lb, Red Cherries $1.99/lb. Valid at Flushing and Corona locations.",
+        date: "06/10 - 06/16",
+        url: "https://www.gw-supermarket.com/deal/",
+        area_zh: "皇后区 Queens",
+        area_zht: "皇后區 Queens",
+        area_en: "Queens"
+      },
+      {
+        id: "flyer_hmart",
+        module: zht ? "超市海報" : (en ? "Flyers" : "超市海报"),
+        title_zh: "🛒 H Mart (韩亚龙) · 本周精选特惠",
+        title_zht: "🛒 H Mart (韓亞龍) · 本週精選特惠",
+        title_en: "🛒 H Mart · Weekly Savings Circular",
+        brief_zh: "🔥 本周爆款：韩国巨峰葡萄 $5.99/盒，牛五花烤肉片 $8.99/磅，辛拉面 5包入 $3.99。高品质亚洲食材，全美连锁！",
+        brief_zht: "🔥 本週爆款：韓國巨峰葡萄 $5.99/盒，牛五花烤肉片 $8.99/磅，辛拉麵 5包入 $3.99。高品質亞洲食材，全美連鎖！",
+        brief_en: "🔥 Weekly Savings: Korean Kyoho Grapes $5.99/box, Beef Thin Sliced for BBQ $8.99/lb, Shin Ramyun 5-pack $3.99. Premium Asian groceries.",
+        date: "06/12 - 06/18",
+        url: "https://www.hmart.com/weekly-ads/new-york-new-jersey",
+        area_zh: "全市 Citywide",
+        area_zht: "全市 Citywide",
+        area_en: "Citywide"
+      },
+      {
+        id: "flyer_feilong",
+        module: zht ? "超市海報" : (en ? "Flyers" : "超市海报"),
+        title_zh: "🛒 飞龙超市 (Fei Long) · 布鲁克林特价海报",
+        title_zht: "🛒 飛龍超市 (Fei Long) · 布魯克林特價海報",
+        title_en: "🛒 Fei Long Market · Brooklyn Weekly Circular",
+        brief_zh: "🔥 本周爆款：游水温哥华蟹 $6.59/磅，特大新鲜大虾 $4.99/磅，上海青 $0.79/磅。布鲁克林八大道华人买菜地标！",
+        brief_zht: "🔥 本週爆款：遊水溫哥華蟹 $6.59/磅，特大新鮮大蝦 $4.99/磅，上海青 $0.79/磅。布魯克林八大道華人買菜地標！",
+        brief_en: "🔥 Brooklyn Specials: Live Dungeness Crab $6.59/lb, Extra Large Fresh Shrimp $4.99/lb, Shanghai Choy $0.79/lb. Located on 8th Ave, Brooklyn.",
+        date: "06/12 - 06/18",
+        url: "https://fei-long-market.com/weekly-ad",
+        area_zh: "八大道 Sunset Park",
+        area_zht: "八大道 Sunset Park",
+        area_en: "Sunset Park"
+      }
+    ];
+    flyersFeed.innerHTML = flyersData.map(item => renderCustomDealCard(item)).join('');
+  }
+
+  // 2. Shopping Seasons (消费大促)
+  const seasonsFeed = document.getElementById('seasons-feed');
+  if (seasonsFeed) {
+    const seasonsData = [
+      {
+        id: "season_macys",
+        module: zht ? "消費大促" : (en ? "Shopping" : "消费大促"),
+        title_zh: "💄 Macy's (梅西百货) · 雅诗兰黛满赠豪华礼包",
+        title_zht: "💄 Macy's (梅西百貨) · 雅詩蘭黛滿贈豪華禮包",
+        title_en: "💄 Macy's · Estée Lauder Gift with Purchase",
+        brief_zh: "🔥 消费福利：购买 Estée Lauder 满 $45 即送价值 $165 豪华 7 件套礼包，包含小棕瓶精华、眼霜、口红等。满 $85 再送正装好礼！",
+        brief_zht: "🔥 消費福利：購買 Estée Lauder 滿 $45 即送價值 $165 豪華 7 件套禮包，包含小棕瓶精華、眼霜、口紅等。滿 $85 再送正裝好禮！",
+        brief_en: "🔥 Gift with Purchase: Spend $45 on Estée Lauder and get a free 7-piece gift set (worth $165), featuring Advanced Night Repair and more.",
+        date: "06/10 - 06/25",
+        url: "https://www.macys.com",
+        area_zh: "全市 Citywide",
+        area_zht: "全市 Citywide",
+        area_en: "Citywide"
+      },
+      {
+        id: "season_sephora",
+        module: zht ? "消費大促" : (en ? "Shopping" : "消费大促"),
+        title_zh: "💄 Sephora (丝芙兰) · 仲夏会员尊享 8 折大促",
+        title_zht: "💄 Sephora (絲芙蘭) · 仲夏會員尊享 8 折大促",
+        title_en: "💄 Sephora · Mid-Summer VIB Savings Event",
+        brief_zh: "🔥 会员福利：VIB Rouge 会员享全场 8 折，VIB 会员享 85 折，普通会员 9 折。精选大牌护肤、彩妆、香水囤货最佳时机！折扣码：SUMMERSAVE。",
+        brief_zht: "🔥 會員福利：VIB Rouge 會員享全場 8 折，VIB 會員享 85 折，普通會員 9 折。精選大牌護膚、彩妝、香水囤貨最佳時機！折扣碼：SUMMERSAVE。",
+        brief_en: "🔥 VIB Savings: Rouge members get 20% off, VIB 15% off, and Insiders 10% off storewide. Use promo code: SUMMERSAVE.",
+        date: "06/15 - 06/22",
+        url: "https://www.sephora.com",
+        area_zh: "全市 Citywide",
+        area_zht: "全市 Citywide",
+        area_en: "Citywide"
+      },
+      {
+        id: "season_nordstrom",
+        module: zht ? "消費大促" : (en ? "Shopping" : "消费大促"),
+        title_zh: "💄 Nordstrom (诺德斯特龙) · 周年庆美妆买赠特惠",
+        title_zht: "💄 Nordstrom (諾德斯特龍) · 週年慶美妝買贈特惠",
+        title_en: "💄 Nordstrom · Anniversary Sale Beauty Exclusives",
+        brief_zh: "🔥 独家特惠：精选美妆、服饰、家居低至 6 折，美妆买赠礼包（La Mer, Lancôme, Clinique）限时上线，全美免邮！",
+        brief_zht: "🔥 獨家特惠：精選美妝、服飾、家居低至 6 折，美妝買贈禮包（La Mer, Lancôme, Clinique）限時上線，全美免郵！",
+        brief_en: "🔥 Beauty Exclusives: Up to 40% off select beauty, fashion, and home items. Plus, exclusive gift-with-purchase sets from top brands.",
+        date: "06/12 - 06/30",
+        url: "https://www.nordstrom.com",
+        area_zh: "全市 Citywide",
+        area_zht: "全市 Citywide",
+        area_en: "Citywide"
+      }
+    ];
+    seasonsFeed.innerHTML = seasonsData.map(item => renderCustomDealCard(item)).join('');
+  }
+
+  // 3. Dining & Restaurant Week (美食特惠)
+  const diningFeed = document.getElementById('dining-feed');
+  if (diningFeed) {
+    const diningData = [
+      {
+        id: "dining_restweek",
+        module: zht ? "美食特惠" : (en ? "Dining" : "美食特惠"),
+        title_zh: "🍔 纽约夏季餐馆周 (NYC Restaurant Week) · 预告",
+        title_zht: "🍔 紐約夏季餐館周 (NYC Restaurant Week) · 預告",
+        title_en: "🍔 NYC Summer Restaurant Week · Preview",
+        brief_zh: "🔥 美食盛宴：2026 纽约夏季餐馆周即将开启！全市数百家顶级餐厅提供 $30/$45/$60 固定价格三道菜特惠。精选米其林推荐、高档中餐、日料、牛排馆中文菜单导读即将上线！",
+        brief_zht: "🔥 美食盛宴：2026 紐約夏季餐館周即將開啟！全市數百家頂級餐廳提供 $30/$45/$60 固定價格三道菜特惠。精選米其林推薦、高檔中餐、日料、牛排館中文菜單導讀即將上線！",
+        brief_en: "🔥 Dining Event: NYC Summer Restaurant Week is coming! Hundreds of top restaurants offer $30/$45/$60 three-course prix fixe menus. Chinese guide and recommendations coming soon.",
+        date: "07/15 - 08/16",
+        url: "https://www.nyctourism.com/restaurant-week",
+        area_zh: "全市 Citywide",
+        area_zht: "全市 Citywide",
+        area_en: "Citywide"
+      },
+      {
+        id: "dining_jmartfood",
+        module: zht ? "美食特惠" : (en ? "Dining" : "美食特惠"),
+        title_zh: "🍔 新世界美食广场 · 仲夏街头美食特惠",
+        title_zht: "🍔 新世界美食廣場 · 仲夏街頭美食特惠",
+        title_en: "🍔 New World Mall Food Court · Mid-Summer Specials",
+        brief_zh: "🔥 街头美食：凭本网页或微信推送，在美食广场指定摊位（麻辣烫、兰州拉面、章鱼小丸子等）消费满 $15 立减 $2，体验最地道的法拉盛街头美食！",
+        brief_zht: "🔥 街頭美食：憑本網頁或微信推送，在美食廣場指定攤位（麻辣燙、蘭州拉麵、章魚小丸子等）消費滿 $15 立減 $2，體驗最地道的法拉盛街頭美食！",
+        brief_en: "🔥 Food Court Promo: Show this page or WeChat post to get $2 off on purchases over $15 at participating vendors. Taste authentic Flushing street food!",
+        date: "06/12 - 06/30",
+        url: "https://www.newworldmallnyc.com",
+        area_zh: "法拉盛 Flushing",
+        area_zht: "法拉盛 Flushing",
+        area_en: "Flushing"
+      },
+      {
+        id: "dining_liuyishou",
+        module: zht ? "美食特惠" : (en ? "Dining" : "美食特惠"),
+        title_zh: "🍔 刘一手火锅 (Liu Yi Shou) · 周一至周四午市自助特惠",
+        title_zht: "🍔 劉一手火鍋 (Liu Yi Shou) · 週一至週四午市自助特惠",
+        title_en: "🍔 Liu Yi Shou Hotpot · Mon-Thu Lunch Buffet Special",
+        brief_zh: "🔥 火锅特惠：刘一手火锅法拉盛店周一至周四午市自助火锅特惠 $28.99/位，无限量和牛、肥牛、海鲜，纯正川味红油锅底，夏日开胃首选！",
+        brief_zht: "🔥 火鍋特惠：劉一手火鍋法拉盛店週一至週四午市自助火鍋特惠 $28.99/位，無限量和牛、肥牛、海鮮，純正川味紅油鍋底，夏日開胃首選！",
+        brief_en: "🔥 Hotpot Special: Liu Yi Shou Flushing offers Mon-Thu lunch buffet for $28.99/person. Unlimited Wagyu beef, seafood, and authentic Sichuan spicy broth.",
+        date: "06/12 - 06/30",
+        url: "https://www.liuyishou.com",
+        area_zh: "法拉盛 Flushing",
+        area_zht: "法拉盛 Flushing",
+        area_en: "Flushing"
+      }
+    ];
+    diningFeed.innerHTML = diningData.map(item => renderCustomDealCard(item)).join('');
+  }
+}
+
+function renderCustomDealCard(i) {
+  const s = UI_STRINGS[currentLang];
+  const title = i['title_' + currentLang] || i.title_zh;
+  const brief = i['brief_' + currentLang] || i.brief_zh;
+  const area = i['area_' + currentLang] || i.area_zh;
+  const dateStr = i.date;
+  
+  const tagBg = '#ea580c';
+  const linkLabel = s.view_link_deal || '查看';
+  
+  return `<article class="feed-card deal-card">
+    <div class="meta">
+      <span class="tag" style="background:${tagBg}15;color:${tagBg}">${i.module}</span>
+      <span class="tag loc-tag loc-enclave">${area}</span>
+      <span class="date">${dateStr}</span>
+    </div>
+    <div class="title" onclick="window.open('${i.url}', '_blank')" title="点击查看详情">${title}</div>
+    <div class="card-brief-zh">${brief}</div>
+    <div class="foot">
+      <span>${s.verified}</span>
+      <button class="btn" onclick="window.open('${i.url}', '_blank')">${linkLabel}</button>
+    </div>
+  </article>`;
 }
 
 function toggleMoreDeals() {
