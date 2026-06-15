@@ -623,6 +623,14 @@
     .member-status.eligible { color: #065f46; background: #f0fdf4; border-color: #bbf7d0; }
     .yp-more { text-align: center; font-size: var(--text-sm); color: #94a3b8; padding: 6px; }
 
+    /* Custom columns preference (only applies to desktop/tablet screens > 768px) */
+    @media (min-width: 769px) {
+      body.grid-cols-1 .feed-grid { grid-template-columns: minmax(0, 1fr) !important; }
+      body.grid-cols-2 .feed-grid { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; }
+      body.grid-cols-3 .feed-grid { grid-template-columns: repeat(3, minmax(0, 1fr)) !important; }
+      body.grid-cols-4 .feed-grid { grid-template-columns: repeat(4, minmax(0, 1fr)) !important; }
+    }
+
     @media (max-width: 1080px) {
       .feed-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
       .module-grid { grid-template-columns: repeat(3, 1fr); }
@@ -705,6 +713,17 @@
             <option value="trans_zh">🌐 中文简体（默认）</option>
             <option value="trans_zht">🌐 中文繁體</option>
             <option value="raw_en">英文原文</option>
+          </select>
+        </div>
+
+        <!-- Layout Column Preference (Saves to localStorage) -->
+        <div class="pref-selector">
+          <span id="layout-cols-label">卡片排版:</span>
+          <select id="layout-cols" class="pref-select" onchange="changeLayoutColumns(this.value)">
+            <option value="4" id="opt-cols-4">四列一行</option>
+            <option value="3" id="opt-cols-3">三列一行</option>
+            <option value="2" id="opt-cols-2">双列一行</option>
+            <option value="1" id="opt-cols-1">单列一行</option>
           </select>
         </div>
       </div>
@@ -1015,6 +1034,11 @@ const UI_STRINGS = {
     logo_sub: "纽约首发 · 福利政务 · 华人社区",
     ui_lang_label: "界面语言:",
     pref_lang_label: "默认打开链接:",
+    layout_cols_label: "卡片排版:",
+    layout_cols_4: "四列一行",
+    layout_cols_3: "三列一行",
+    layout_cols_2: "双列一行",
+    layout_cols_1: "单列一行",
     trans_zh: "自动翻译中文(简体)",
     trans_zht: "自動翻譯中文(繁體)",
     raw_en: "英文原文",
@@ -1096,6 +1120,11 @@ const UI_STRINGS = {
     logo_sub: "紐約首發 · 福利政務 · 華人社區",
     ui_lang_label: "界面語言:",
     pref_lang_label: "默認打開鏈接:",
+    layout_cols_label: "卡片排版:",
+    layout_cols_4: "四列一行",
+    layout_cols_3: "三列一行",
+    layout_cols_2: "雙列一行",
+    layout_cols_1: "單列一行",
     trans_zh: "自動翻譯中文(簡體)",
     trans_zht: "自動翻譯中文(繁體)",
     raw_en: "英文原文",
@@ -1177,6 +1206,11 @@ const UI_STRINGS = {
     logo_sub: "NYC first · Benefits · Chinese community",
     ui_lang_label: "Language:",
     pref_lang_label: "Default Link:",
+    layout_cols_label: "Layout:",
+    layout_cols_4: "4 Columns",
+    layout_cols_3: "3 Columns",
+    layout_cols_2: "2 Columns",
+    layout_cols_1: "1 Column",
     trans_zh: "Auto-Translate to Chinese (Simplified)",
     trans_zht: "Auto-Translate to Chinese (Traditional)",
     raw_en: "Original English",
@@ -1267,6 +1301,21 @@ function initPreference() {
   document.getElementById('ui-lang').value = currentLang;
   
   applyUILanguage();
+
+  const savedCols = localStorage.getItem('layout_cols_pref') || '4';
+  applyLayoutColumns(savedCols);
+}
+
+function changeLayoutColumns(cols) {
+  localStorage.setItem('layout_cols_pref', cols);
+  applyLayoutColumns(cols);
+}
+
+function applyLayoutColumns(cols) {
+  document.body.classList.remove('grid-cols-1', 'grid-cols-2', 'grid-cols-3', 'grid-cols-4');
+  document.body.classList.add('grid-cols-' + cols);
+  const select = document.getElementById('layout-cols');
+  if (select) select.value = cols;
 }
 
 function savePreference(val) {
@@ -1288,6 +1337,17 @@ function applyUILanguage() {
   document.getElementById('logo-sub').textContent = s.logo_sub;
   document.getElementById('ui-lang-label').textContent = s.ui_lang_label;
   document.getElementById('pref-lang-label').textContent = s.pref_lang_label;
+  
+  const layoutColsLabel = document.getElementById('layout-cols-label');
+  if (layoutColsLabel) layoutColsLabel.textContent = s.layout_cols_label;
+  const optCols4 = document.getElementById('opt-cols-4');
+  if (optCols4) optCols4.textContent = s.layout_cols_4;
+  const optCols3 = document.getElementById('opt-cols-3');
+  if (optCols3) optCols3.textContent = s.layout_cols_3;
+  const optCols2 = document.getElementById('opt-cols-2');
+  if (optCols2) optCols2.textContent = s.layout_cols_2;
+  const optCols1 = document.getElementById('opt-cols-1');
+  if (optCols1) optCols1.textContent = s.layout_cols_1;
   
   // Update select options for link preferences
   const prefSelect = document.getElementById('pref-lang');
