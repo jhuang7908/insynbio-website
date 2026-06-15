@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- hub-build: v1.1.0-20260615-B (Deals 4-in-a-row Grid) -->
+<!-- hub-build: v2.0.0-20260615 (Independent Pages + Single Row Layout) -->
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8" />
@@ -11,7 +11,7 @@
   <link rel="manifest" href="manifest.json" />
   <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large" />
   <meta name="googlebot" content="index, follow" />
-  <meta name="description" content="纽约华人社区生活信息：活动资讯、福利政策、12大民生频道与4300+华人商家黄页（幼儿园·银行·诊所·按区域与行业浏览）。" />
+  <meta name="description" content="纽约华人社区生活信息：活动资讯、福利政策、民生频道与4300+华人商家黄页（幼儿园·银行·诊所·按区域与行业浏览）。" />
   <link rel="canonical" href="https://insynbio.com/us-chinese-life-hub.html" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -260,7 +260,7 @@
     .pill.active { background: #ea580c; color: #ffffff; border-color: #ea580c; }
 
     /* Feed Grid (Second Part) — compact 4-col cards */
-    .feed-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; }
+    .feed-grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: 8px; }
     .feed-card { background: var(--hub-surface); border: 1px solid var(--hub-border-soft); border-radius: 10px; padding: 10px 11px; display: flex; flex-direction: column; min-height: 0; transition: all 0.15s; }
     .feed-card:hover { border-color: #cbd5e1; box-shadow: 0 2px 8px rgba(0,0,0,0.03); }
     .meta { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; margin-bottom: 6px; gap: 4px; }
@@ -606,7 +606,7 @@
     .yp-industry-title { font-size: var(--text-sm); font-weight: var(--weight-semibold); color: #64748b; margin-bottom: 6px; padding-bottom: 4px; border-bottom: 1px solid #e2e8f0; }
     .yp-stats-line { font-size: var(--text-sm); color: #64748b; margin: 0 0 10px; line-height: var(--leading-relaxed); }
     .yp-anti-scrape { font-size: var(--text-xs); color: #94a3b8; margin-top: 8px; line-height: var(--leading-normal); }
-    .yp-cards-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 8px; }
+    .yp-cards-grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: 8px; }
     .yp-card { background: #fff; border: 1px solid #e2e8f0; border-radius: 8px; padding: 10px; color: inherit; min-height: 0; display: flex; flex-direction: column; gap: 4px; transition: border-color 0.12s; }
     .yp-card:hover { border-color: #07bb65; background: #fafffe; }
     .yp-card-main { text-decoration: none; color: inherit; display: flex; flex-direction: column; gap: 3px; }
@@ -646,18 +646,18 @@
     /* Custom columns preference (only applies to desktop/tablet screens > 768px) */
     @media (min-width: 769px) {
       body.grid-cols-1 .feed-grid { grid-template-columns: minmax(0, 1fr) !important; }
-      body.grid-cols-2 .feed-grid { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; }
-      body.grid-cols-3 .feed-grid { grid-template-columns: repeat(3, minmax(0, 1fr)) !important; }
-      body.grid-cols-4 .feed-grid { grid-template-columns: repeat(4, minmax(0, 1fr)) !important; }
+      body.grid-cols-2 .feed-grid { grid-template-columns: minmax(0, 1fr) !important; }
+      body.grid-cols-3 .feed-grid { grid-template-columns: minmax(0, 1fr) !important; }
+      body.grid-cols-4 .feed-grid { grid-template-columns: minmax(0, 1fr) !important; }
     }
 
     @media (max-width: 1080px) {
-      .feed-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+      .feed-grid { grid-template-columns: minmax(0, 1fr); }
       .module-grid { grid-template-columns: repeat(3, 1fr); }
       .hub-search-panel { grid-template-columns: 1fr 1fr; }
     }
     @media (max-width: 780px) {
-      .feed-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .feed-grid { grid-template-columns: minmax(0, 1fr); }
       .module-grid { grid-template-columns: repeat(2, 1fr); }
     }
     @media (max-width: 640px) {
@@ -669,7 +669,7 @@
         --text-xl: 17px;
       }
       body { font-size: var(--text-base); }
-      .feed-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .feed-grid { grid-template-columns: minmax(0, 1fr); }
       .module-grid { grid-template-columns: repeat(2, 1fr); }
       .hub-search-panel { grid-template-columns: 1fr; }
       .top-inner { height: auto; min-height: 52px; padding: 8px 0; align-items: center; }
@@ -693,7 +693,7 @@
       .phones-toggle { font-size: 12px !important; }
     }
     @media (min-width: 641px) {
-      .yp-cards-grid { grid-template-columns: repeat(auto-fill, minmax(148px, 1fr)); }
+      .yp-cards-grid { grid-template-columns: minmax(0, 1fr); }
     }
   </style>
   <script src="https://cdn.jsdelivr.net/npm/lunar-javascript/lunar.min.js"></script>
@@ -753,7 +753,7 @@
   <main class="wrap">
 
     <!-- ═══ DAILY DASHBOARD (Calendar, Weather, Stock, Almanac) ═══ -->
-    <details class="daily-dashboard" open>
+    <details class="daily-dashboard">
       <summary class="dashboard-summary">
         <div class="dash-head">
           <div class="dash-row dash-row-top">
@@ -802,10 +802,10 @@
 
     <!-- ═══ 章节导航 ═══ -->
     <nav class="hub-chapter-nav" aria-label="首页章节">
-      <a href="#livelihood-hot" class="primary" id="nav-latest">📋 最新动态</a>
-      <a href="#yellow-pages-card" id="nav-yellow-pages">📒 社区黄页</a>
-      <a href="#channels-section" id="nav-channels">📂 12大民生频道</a>
-      <a href="#deals-section" id="nav-deals">💰 打折促销</a>
+      <a href="latest.html" class="primary" id="nav-latest">📋 最新动态</a>
+      <a href="yellow-pages.html" id="nav-yellow-pages">📒 社区黄页</a>
+      <a href="channels.html" id="nav-channels">📂 民生频道</a>
+      <a href="deals.html" id="nav-deals">💰 打折促销</a>
     </nav>
 
     <!-- ═══ 最新动态：24h + 7日 两频道 ═══ -->
@@ -863,9 +863,9 @@
       </div>
     </details>
 
-    <!-- ═══ 12大民生频道 ═══ -->
+    <!-- ═══ 民生频道 ═══ -->
     <div class="section-title" style="cursor:pointer;margin-top:16px" id="channels-section" onclick="toggleChannels()">
-      <div class="section-title-left" id="channels-title">📂 12大民生频道 · 按类别浏览</div>
+      <div class="section-title-left" id="channels-title">📂 民生频道 · 按类别浏览</div>
       <span id="channels-toggle" style="font-size:12px;color:#64748b;font-weight:600">收起 ▲</span>
     </div>
     <div class="module-grid expanded" id="module-grid"></div>
@@ -1011,7 +1011,7 @@
         <button type="button" id="yp-modal-map" class="btn-secondary" onclick="openYpBizMapFromModal()">🗺️ 打开地图</button>
       </div>
       <button type="button" id="yp-modal-report" class="yp-report-btn" onclick="openYpReportDialog()">⚠️ 报告信息错误（电话/地址/已关门等）</button>
-      <p id="yp-modal-policy" style="font-size:10px;color:#94a3b8;margin:8px 0 0;line-height:1.5">手机与电脑均可选择<strong>电话或地图</strong>。欢迎提交<strong>信息纠错</strong>，我们将在 1-3 个工作日内完成核实。商家主动更新请发送邮件至 <a href="mailto:info@uslifehub.org" style="color:#64748b">info@uslifehub.org</a>。</p>
+      <p id="yp-modal-policy" style="font-size:10px;color:#94a3b8;margin:8px 0 0;line-height:1.5">手机端可选择<strong>电话或地图</strong>；电脑端默认<strong>地图</strong>。欢迎提交<strong>信息纠错</strong>，我们将在 1-3 个工作日内完成核实。商家主动更新请发送邮件至 <a href="mailto:info@uslifehub.org" style="color:#64748b">info@uslifehub.org</a>。</p>
     </div>
   </div>
 
@@ -1082,7 +1082,7 @@ const UI_STRINGS = {
     week_hint_balanced: "按日均衡展示（每日最多2条），共 {n} 场",
     enroll_title: "🎒 官方报名与长期规划",
     enroll_hint: "公立学校入学、暑期项目、公园局常年活动等官方报名通道",
-    enroll_empty: "暂无官方报名公告，请查看上方7日活动或12大频道",
+    enroll_empty: "暂无官方报名公告，请查看上方7日活动或民生频道",
     stream_new_label: "24h新增",
     stream_new_suffix: "条",
     stream_new_title: "过去24小时内新发布的社区公益、福利与官方活动（不含商业促销）",
@@ -1101,7 +1101,7 @@ const UI_STRINGS = {
     hub_search_placeholder: "搜索标题、内容、地点、活动日期…",
     hub_search_count: "共 {n} 条",
     hub_search_match: "找到 {n} 条",
-    channels_title: "📂 12大民生频道 · 按类别浏览",
+    channels_title: "📂 民生频道 · 按类别浏览",
     deals_title: "💰 打折促销 · 生活参考",
     deals_tag: "生活参考",
     deals_disclaimer: "第三方公开优惠信息，仅供参考；本平台以社区公益与官方民生信息为主。",
@@ -1110,7 +1110,7 @@ const UI_STRINGS = {
     deals_less: "收起促销",
     deal_brief_zh: "第三方商家促销，价格与库存以商家页面为准，点击查看详情。",
     nav_latest: "📋 最新动态",
-    nav_channels: "📂 12大民生频道",
+    nav_channels: "📂 民生频道",
     nav_deals: "💰 打折促销",
     nav_yellow_pages: "📒 社区黄页",
     footer_mission: "美东华人生活圈 · 公开渠道社区信息聚合，公益导向",
@@ -1168,7 +1168,7 @@ const UI_STRINGS = {
     week_hint_balanced: "按日均衡展示（每日最多2條），共 {n} 場",
     enroll_title: "🎒 官方報名與長期規劃",
     enroll_hint: "公立學校入學、暑期項目、公園局常年活動等官方報名通道",
-    enroll_empty: "暫無官方報名公告，請查看上方7日活動或12大頻道",
+    enroll_empty: "暫無官方報名公告，請查看上方7日活動或民生頻道",
     stream_new_label: "24h新增",
     stream_new_suffix: "條",
     stream_new_title: "過去24小時內新發布或更新的官方信息",
@@ -1187,7 +1187,7 @@ const UI_STRINGS = {
     hub_search_placeholder: "搜索標題、內容、地點、活動日期…",
     hub_search_count: "共 {n} 條",
     hub_search_match: "找到 {n} 條",
-    channels_title: "📂 12大民生頻道 · 按類別瀏覽",
+    channels_title: "📂 民生頻道 · 按類別瀏覽",
     deals_title: "💰 打折促銷 · 生活參考",
     deals_tag: "生活參考",
     deals_disclaimer: "第三方公開優惠信息，僅供參考；本平台以社區公益與官方民生信息為主。",
@@ -1196,7 +1196,7 @@ const UI_STRINGS = {
     deals_less: "收起促銷",
     deal_brief_zh: "第三方商家促銷，價格與庫存以商家頁面為準，點擊查看詳情。",
     nav_latest: "📋 最新動態",
-    nav_channels: "📂 12大民生频道",
+    nav_channels: "📂 民生頻道",
     nav_deals: "💰 打折促銷",
     nav_yellow_pages: "📒 社區黃頁",
     footer_mission: "美東華人生活圈 · 公開渠道社區信息聚合，公益導向",
@@ -1273,7 +1273,7 @@ const UI_STRINGS = {
     hub_search_placeholder: "Search title, content, location, event date…",
     hub_search_count: "{n} items",
     hub_search_match: "{n} matches",
-    channels_title: "📂 12 Public Channels · Browse by Topic",
+    channels_title: "📂 Public Channels · Browse by Topic",
     deals_title: "💰 Deals · Reference",
     deals_tag: "Reference",
     deals_disclaimer: "Third-party offers for reference only; community and public-service listings remain the focus.",
@@ -1282,7 +1282,7 @@ const UI_STRINGS = {
     deals_less: "Show less",
     deal_brief_zh: "Third-party retailer promotion; price and stock per the merchant page. Click for details.",
     nav_latest: "📋 Latest",
-    nav_channels: "📂 12 Channels",
+    nav_channels: "📂 Channels",
     nav_deals: "💰 Deals",
     nav_yellow_pages: "📒 Yellow Pages",
     footer_mission: "East Coast Chinese Life Hub · Public-source community information",
@@ -2256,7 +2256,7 @@ function openEventLinkDirect(itemId) {
   const item = hubFindItem(itemId);
   if (!item) return;
   const pref = localStorage.getItem('pref_lang_mode') || 'trans_zh';
-  let url = item.url;
+  let url = sanitizeExternalUrl(item.url);
   let translate = false;
   if (pref === 'trans_zh') {
     translate = true;
@@ -2269,16 +2269,29 @@ function openEventLinkDirect(itemId) {
   });
 }
 
+function sanitizeExternalUrl(rawUrl) {
+  let u = String(rawUrl || '').trim();
+  if (!u) return '';
+  u = u.replace(/[)）]\s*$/, '');
+  u = u.replace(/（[^）]*$/, '');
+  u = u.replace(/\([^)]*商业促销信息[^)]*$/i, '');
+  u = u.replace(/（商业促销信息.*$/i, '');
+  u = u.replace(/\s+$/g, '');
+  return u;
+}
+
 function openHubExternal(rawUrl, opts) {
   opts = opts || {};
-  let targetUrl = rawUrl;
-  if (opts.translate) {
+  const cleanRawUrl = sanitizeExternalUrl(rawUrl);
+  let targetUrl = cleanRawUrl;
+  const isHighSecurityOfficial = /schools\.nyc\.gov|nyc\.gov|cuny\.edu|\.gov|\.edu|nycgovparks\.org|bklynlibrary\.org|queenslibrary\.org|nypl\.org/i.test(cleanRawUrl);
+  if (opts.translate && !isHighSecurityOfficial) {
     const pref = localStorage.getItem('pref_lang_mode') || 'trans_zh';
     const tl = (pref === 'trans_zht') ? 'zh-TW' : 'zh-CN';
-    targetUrl = 'https://translate.google.com/translate?sl=auto&tl=' + tl + '&u=' + encodeURIComponent(rawUrl);
+    targetUrl = 'https://translate.google.com/translate?sl=auto&tl=' + tl + '&u=' + encodeURIComponent(cleanRawUrl);
   }
   const desktopUrl = opts.desktopUrl || targetUrl;
-  if (!rawUrl || !/^https?:\/\//i.test(rawUrl)) return;
+  if (!cleanRawUrl || !/^https?:\/\//i.test(cleanRawUrl)) return;
   if (isMobileLinkMode()) {
     closeGuideModal();
     location.href = targetUrl; // Direct navigation!
@@ -3686,8 +3699,12 @@ function openYpBizModal(key) {
     `<div style="margin-top:6px;font-weight:800;color:#ea580c">${escapeHtml(item.phone)}</div>` +
     (checked ? `<div style="margin-top:4px;font-size:11px;color:#94a3b8">${escapeHtml(checked.slice(3))}</div>` : '');
   const callBtn = document.getElementById('yp-modal-call');
+  const mapBtn = document.getElementById('yp-modal-map');
+  const mobileMode = isMobileLinkMode();
   callBtn.href = 'tel:' + tel;
-  callBtn.textContent = '📞 拨打电话';
+  callBtn.textContent = mobileMode ? '📞 拨打电话' : '📞 电话仅手机可拨打';
+  callBtn.style.display = mobileMode ? 'inline-flex' : 'none';
+  if (mapBtn) mapBtn.textContent = mobileMode ? '🗺️ 打开地图' : '🗺️ 电脑端打开地图';
   document.getElementById('yp-biz-modal').classList.add('open');
   if (window.history && window.history.pushState) {
     window.history.pushState({ modal: 'yp-biz' }, '');
@@ -4488,6 +4505,8 @@ function renderYellowPages() {
   }
 
   let filtered = filterYpByArea(filterYpByIndustry(YELLOW_PAGES_FLAT));
+  const byNameAsc = (a, b) => String(a.name || '').localeCompare(String(b.name || ''), 'en', { sensitivity: 'base' });
+  filtered.sort(byNameAsc);
   if (searchTerm) {
     const essHtml = renderEssentialPhones(searchTerm);
     let expandedTerms = [searchTerm];
@@ -4512,6 +4531,7 @@ function renderYellowPages() {
     });
     let bizHtml = '';
     if (filtered.length) {
+      filtered.sort(byNameAsc);
       bizHtml = `<div class="yp-industry-section">
         <div class="yp-industry-title">商家 ${searchTerm ? `(${ypPublicCountLabel(filtered.length)})` : ''}</div>
         <div class="yp-cards-grid">${filtered.slice(0, 60).map(ypBizCard).join('')}</div>
@@ -4549,6 +4569,7 @@ function renderYellowPages() {
         byCat[item.category].push(item);
       });
       Object.keys(byCat).sort((a, b) => byCat[b].length - byCat[a].length).forEach(cat => {
+        byCat[cat].sort(byNameAsc);
         const items = byCat[cat].slice(0, LIMIT);
         html += `<div class="yp-industry-section">
           <div class="yp-industry-title">${escapeHtml(cat)} ${ypPublicCountLabel(byCat[cat].length)}</div>
@@ -4565,6 +4586,7 @@ function renderYellowPages() {
       byCat[item.category].push(item);
     });
     Object.keys(byCat).sort((a, b) => byCat[b].length - byCat[a].length).forEach(cat => {
+      byCat[cat].sort(byNameAsc);
       const items = byCat[cat].slice(0, LIMIT);
       html += `<div class="yp-industry-section">
         <div class="yp-industry-title">${escapeHtml(cat)} ${ypPublicCountLabel(byCat[cat].length)}</div>
@@ -4573,6 +4595,7 @@ function renderYellowPages() {
       </div>`;
     });
   } else {
+    filtered.sort(byNameAsc);
     const display = filtered.slice(0, 80);
     html = `<div class="yp-industry-section">
       <div class="yp-industry-title">${areaNote}${group.label} ${ypPublicCountLabel(filtered.length)}</div>
@@ -4926,6 +4949,7 @@ function hubBoot() {
     initPreference();
     initHubChapterNav();
     renderStreamSections();
+    applyPageViewMode();
     renderAutoUpdateBadge();
     initVerifyBadge();
     renderScheduleNotice();
@@ -5328,10 +5352,22 @@ const HUB_NAV_SECTIONS = [
   { id: 'channels-section', navId: 'nav-channels' },
   { id: 'deals-section', navId: 'nav-deals' },
 ];
+let HUB_PAGE_VIEW = 'latest';
 
 function setHubNavPrimary(activeId) {
   document.querySelectorAll('.hub-chapter-nav a').forEach(a => {
-    a.classList.toggle('primary', a.getAttribute('href') === '#' + activeId);
+    const href = (a.getAttribute('href') || '').toLowerCase();
+    if (href.startsWith('#')) {
+      a.classList.toggle('primary', href === '#' + activeId);
+      return;
+    }
+    const byView = (
+      (HUB_PAGE_VIEW === 'latest' && href.includes('latest.html')) ||
+      (HUB_PAGE_VIEW === 'channels' && href.includes('channels.html')) ||
+      (HUB_PAGE_VIEW === 'deals' && href.includes('deals.html')) ||
+      (HUB_PAGE_VIEW === 'yellowpages' && href.includes('yellow-pages.html'))
+    );
+    a.classList.toggle('primary', byView);
   });
 }
 
@@ -5372,6 +5408,47 @@ function initHubChapterNav() {
     if (sec && sec.tagName === 'DETAILS') sec.open = true;
     setHubNavPrimary(hash);
   }
+}
+
+function resolveHubPageView() {
+  const q = new URLSearchParams(location.search).get('view');
+  const normalized = String(q || '').toLowerCase();
+  if (normalized === 'latest' || normalized === 'channels' || normalized === 'deals' || normalized === 'yellowpages') {
+    return normalized;
+  }
+  return 'latest';
+}
+
+function setSectionVisible(id, visible) {
+  const el = document.getElementById(id);
+  if (!el) return;
+  el.style.display = visible ? '' : 'none';
+}
+
+function applyPageViewMode() {
+  HUB_PAGE_VIEW = resolveHubPageView();
+  const isLatest = HUB_PAGE_VIEW === 'latest';
+  const isChannels = HUB_PAGE_VIEW === 'channels';
+  const isDeals = HUB_PAGE_VIEW === 'deals';
+  const isYellow = HUB_PAGE_VIEW === 'yellowpages';
+
+  setSectionVisible('livelihood-hot', isLatest);
+  setSectionVisible('yellow-pages-card', isYellow);
+  setSectionVisible('channels-section', isChannels);
+  setSectionVisible('module-grid', isChannels);
+  setSectionVisible('deals-section', isDeals);
+
+  setSectionVisible('feed-section', false);
+  setSectionVisible('feed-sub', false);
+  setSectionVisible('hub-search-panel', false);
+  setSectionVisible('feed', false);
+
+  if (isYellow) {
+    const yp = document.getElementById('yellow-pages-card');
+    if (yp) yp.open = true;
+    if (typeof initYellowPages === 'function') initYellowPages();
+  }
+  setHubNavPrimary(isLatest ? 'livelihood-hot' : '');
 }
 </script>
 

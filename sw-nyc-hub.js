@@ -1,7 +1,11 @@
-const CACHE_NAME = 'us-chinese-life-hub-v14';
+const CACHE_NAME = 'us-chinese-life-hub-v15';
 const ASSETS = [
   '/',
   '/us-chinese-life-hub.html',
+  '/latest.html',
+  '/channels.html',
+  '/deals.html',
+  '/yellow-pages.html',
   'https://cdn.jsdelivr.net/npm/lunar-javascript/lunar.min.js'
 ];
 
