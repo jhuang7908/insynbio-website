@@ -4155,6 +4155,12 @@ function toggleCalForecast(e) {
   const panel = document.getElementById('cal-forecast');
   const hint = document.getElementById('cal-expand-hint');
   if (!panel) return;
+  
+  // If WEATHER_DAILY is not loaded yet, fetch it immediately first
+  if (!WEATHER_DAILY) {
+    fetchWeatherAndStock();
+  }
+
   const open = panel.hasAttribute('hidden');
   if (open) {
     panel.removeAttribute('hidden');
@@ -4253,7 +4259,11 @@ function formatHolidayLine(holidays) {
 
 function renderForecastGrid() {
   const grid = document.getElementById('forecast-grid');
-  if (!grid || !WEATHER_DAILY) return;
+  if (!grid) return;
+  if (!WEATHER_DAILY) {
+    grid.innerHTML = '<div style="grid-column: 1/-1; text-align: center; padding: 12px; color: #94a3b8; font-size: 12px;">正在加载天气预报数据...</div>';
+    return;
+  }
   const days = ['日','一','二','三','四','五','六'];
   const todayStr = (() => {
     const t = new Date();
