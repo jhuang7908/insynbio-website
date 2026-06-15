@@ -372,9 +372,9 @@
     .dash-head { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 0; }
     .dash-row { display: flex; align-items: center; gap: 8px; min-width: 0; }
     .dash-row-top {
-      flex-wrap: nowrap;
+      flex-wrap: wrap; /* Always wrap by default since dashboard is max 840px */
       width: 100%;
-      gap: 8px;
+      gap: 6px;
       align-items: center;
       row-gap: 6px;
     }
@@ -385,17 +385,18 @@
       flex-shrink: 0;
       background: #fffbeb;
       border: 1px solid #fdba74;
-      border-radius: 10px;
-      padding: 5px 10px 5px 8px;
+      border-radius: 8px;
+      padding: 4px 8px 4px 6px;
+      order: 0;
     }
-    /* Dashboard 统一字号：13px 正文 + 字重区分层级 */
+    /* Dashboard 统一字号：12px 紧凑正文 + 字重区分层级 */
     .dash-head, .dashboard-body, .dash-market, .dash-stat, .dash-chip, .mkt-chip,
     .dash-wx-temp, .dash-wx-city, .unit-toggle, .dash-toggle, .dash-verify,
     .cal-today, .cal-date-btn, #almanac-date, .cal-lunar, .cal-expand-hint,
     .cal-huangli-badge, .almanac-inline, .almanac-holidays-today,
     .forecast-day, .forecast-day .fd-wd, .forecast-day .fd-dt,
     .forecast-day .fd-temp, .forecast-day .fd-holi, .dash-wx-icon {
-      font-size: 13px;
+      font-size: 12px;
       line-height: 1.4;
     }
     .dash-wx-temp { font-weight: 700; color: #c2410c; min-width: 3em; }
@@ -406,23 +407,7 @@
       gap: 6px;
       flex-shrink: 0;
       margin-left: auto;
-    }
-    @media (max-width: 1040px) {
-      .dash-row-top { flex-wrap: wrap; gap: 6px; }
-      .dash-market { order: 3; flex: 1 1 100%; }
-      .dash-stats-inline { order: 2; margin-left: auto; }
-      .dash-weather-group { order: 0; }
-      .unit-toggle { order: 1; }
-      
-      /* Make top bar fonts more compact on medium screens */
-      .dash-head, .dash-market, .dash-stat, .dash-chip, .mkt-chip,
-      .dash-wx-temp, .dash-wx-city, .unit-toggle, .dash-toggle, .dash-verify,
-      .dash-wx-icon {
-        font-size: 12px;
-      }
-      .mkt-chip { padding: 3px 6px; border-radius: 6px; }
-      .dash-stat { padding: 3px 7px; }
-      .dash-weather-group { padding: 4px 8px 4px 6px; border-radius: 8px; }
+      order: 2;
     }
     @media (max-width: 480px) {
       .dash-head, .dash-market, .dash-stat, .dash-chip, .mkt-chip,
@@ -445,24 +430,24 @@
       display: inline-flex; align-items: baseline; gap: 4px;
       font-weight: 700; color: #431407;
       background: #fffbeb; border: 1px solid #fdba74;
-      padding: 4px 9px; border-radius: 999px; white-space: nowrap; flex-shrink: 0;
+      padding: 3px 7px; border-radius: 999px; white-space: nowrap; flex-shrink: 0;
     }
     .dash-stat strong { font-weight: 800; color: #c2410c; }
     .dash-stat-unit { font-weight: 700; color: #78350f; margin-left: 1px; }
     .dash-stat-week strong { color: #15803d; }
     .dash-stat-label { font-weight: 700; color: #57534e; letter-spacing: 0.01em; }
-    .dash-market { display: inline-flex; align-items: center; gap: 5px; flex: 1 1 120px; min-width: 0; overflow-x: auto; scrollbar-width: none; }
+    .dash-market { display: inline-flex; align-items: center; gap: 5px; flex: 1 1 100%; order: 3; min-width: 0; overflow-x: auto; scrollbar-width: none; }
     .dash-market::-webkit-scrollbar { display: none; }
     .dash-meta-inline { font-size: var(--text-xs); color: #57534e; font-weight: var(--weight-semibold); white-space: nowrap; flex-shrink: 0; margin-left: auto; }
-    .dash-chip { font-weight: 700; color: #1f2937; background: #fff; padding: 4px 9px; border-radius: 10px; white-space: nowrap; border: 1px solid #b8aea0; }
-    .mkt-chip { font-weight: 700; padding: 4px 8px; border-radius: 8px; white-space: nowrap; background: #fff; border: 1px solid #c4b8a8; color: #1f2937; }
+    .dash-chip { font-weight: 700; color: #1f2937; background: #fff; padding: 3px 7px; border-radius: 10px; white-space: nowrap; border: 1px solid #b8aea0; }
+    .mkt-chip { font-weight: 700; padding: 3px 6px; border-radius: 6px; white-space: nowrap; background: #fff; border: 1px solid #c4b8a8; color: #1f2937; }
     .mkt-chip.up { color: #14532d; background: #ecfdf5; border-color: #86efac; }
     .mkt-chip.down { color: #991b1b; background: #fef2f2; border-color: #fca5a5; }
     .mkt-chip.rate { color: #1e3a8a; background: #eff6ff; border-color: #93c5fd; }
     .mkt-chip.flat { color: #374151; background: #f9fafb; border-color: #d1d5db; }
     .dash-meta { color: #57534e; font-weight: 600; white-space: nowrap; }
     .dash-verify { font-weight: 700; color: #15803d; white-space: nowrap; flex-shrink: 0; }
-    .unit-toggle { font-weight: 700; color: #c2410c; background: #fffbeb; border: 1px solid #fdba74; border-radius: 8px; padding: 3px 8px; cursor: pointer; line-height: 1.4; flex-shrink: 0; }
+    .unit-toggle { font-weight: 700; color: #c2410c; background: #fffbeb; border: 1px solid #fdba74; border-radius: 8px; padding: 3px 8px; cursor: pointer; line-height: 1.4; flex-shrink: 0; order: 1; }
     .unit-toggle:hover { background: #fff; }
     .dash-toggle { color: #c2410c; flex-shrink: 0; transition: transform 0.2s; margin-top: 2px; }
     details[open] .dash-toggle { transform: rotate(180deg); }
