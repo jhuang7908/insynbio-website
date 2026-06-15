@@ -272,7 +272,7 @@
       background: #07bb65; color: #fff; border: none; border-radius: 999px;
       padding: 12px 20px; font-size: 13px; font-weight: 700; cursor: pointer;
       display: flex; align-items: center; gap: 8px; box-shadow: 0 4px 16px rgba(7,187,101,0.35);
-      transition: transform 0.15s, box-shadow 0.15s;
+      transition: box-shadow 0.15s;
       transform-origin: right bottom;
     }
     /* Ensure FAB scales properly and stays inside viewport on mobile */
@@ -284,7 +284,7 @@
         font-size: 12px;
       }
     }
-    .sub-fab:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(7,187,101,0.4); }
+    .sub-fab:hover { box-shadow: 0 6px 20px rgba(7,187,101,0.4); }
     .sub-fab .fab-icon { font-size: 18px; }
     .sub-modal-overlay {
       display: none; position: fixed; inset: 0; z-index: 300;
@@ -4419,6 +4419,7 @@ function hubBoot() {
     initSubModalOverlay();
     checkPushState();
     registerServiceWorkerOnBoot();
+    initVisualViewportSync();
   } catch (err) {
     console.error('[hub] boot failed', err);
     const feed = document.getElementById('feed');
@@ -4546,6 +4547,37 @@ function checkPushState() {
   }
 }
 
+// Keep the green registration button (.sub-fab) fixed relative to the visual viewport when zoomed
+function initVisualViewportSync() {
+  const fab = document.querySelector('.sub-fab');
+  if (!fab) return;
+  const viewport = window.visualViewport;
+  if (!viewport) return;
+
+  function syncFabPosition() {
+    const layoutWidth = document.documentElement.clientWidth;
+    const layoutHeight = document.documentElement.clientHeight;
+    const scale = viewport.scale;
+
+    // Calculate translation to keep it fixed relative to the visual viewport
+    const translateX = viewport.offsetLeft + (viewport.width - layoutWidth);
+    const translateY = viewport.offsetTop + (viewport.height - layoutHeight);
+
+    // Apply translation and scale inversely so it keeps its physical size on screen
+    fab.style.transform = `translate(${translateX}px, ${translateY}px) scale(${1 / scale})`;
+  }
+
+  // Sync on visual viewport scroll and resize
+  viewport.addEventListener('resize', syncFabPosition);
+  viewport.addEventListener('scroll', syncFabPosition);
+
+  // Sync on regular window scroll to ensure it stays locked
+  window.addEventListener('scroll', syncFabPosition);
+
+  // Run immediately to initialize positioning
+  syncFabPosition();
+}
+
 // Register Service Worker and handle PWA installation prompt
 let deferredPrompt;
 function registerServiceWorkerOnBoot() {
@@ -4670,9 +4702,9 @@ function initHubChapterNav() {
 </script>
 
 <!-- Subscription FAB -->
-<button class="sub-fab" onclick="openSubModal()" aria-label="订阅社区更新">
+<button class="sub-fab" onclick="openSubModal()" aria-label="订阅与手机桌面App">
   <span class="fab-icon">📬</span>
-  <span>订阅社区更新</span>
+  <span>订阅/桌面App</span>
 </button>
 
 <!-- Subscription Modal -->
@@ -4685,6 +4717,16 @@ function initHubChapterNav() {
 
     <div style="font-size:13px;color:#64748b;margin-bottom:14px;line-height:1.65;">
       选择频道后，定时自动推送社区民生更新。<strong style="color:#065f46">对用户全部免费</strong>（微信 / 邮件 / 浏览器推送）。
+    </div>
+
+    <div class="sub-section" style="border: 2px solid #fed7aa; background: #fff7ed; padding: 12px; border-radius: 10px; margin: 0 0 14px;">
+      <div class="sub-section-title" style="color:#c2410c;font-size:14px;margin-bottom:6px;">📱 手机桌面 App 设置</div>
+      <div style="font-size:12px;color:#7c2d12;line-height:1.55;margin-bottom:8px;">
+        想把网站放到手机桌面？点下面按钮查看苹果和安卓的具体步骤。
+      </div>
+      <button type="button" onclick="document.getElementById('pwa-guide-card').scrollIntoView({behavior:'smooth',block:'start'});" style="width:100%;background:#ea580c;color:#fff;border:none;border-radius:8px;padding:10px;font-size:13px;font-weight:700;cursor:pointer;">
+        查看手机桌面 App 设置方法
+      </button>
     </div>
 
     <!-- Interest Category Chips -->
@@ -4735,7 +4777,7 @@ function initHubChapterNav() {
     </div>
 
     <!-- Mobile Shortcut Guide -->
-    <div class="sub-section" style="border: 2px solid #fed7aa; background: #fffdf8; padding: 12px; border-radius: 10px; margin-top: 16px;">
+    <div class="sub-section" id="pwa-guide-card" style="border: 2px solid #fed7aa; background: #fffdf8; padding: 12px; border-radius: 10px; margin-top: 16px;">
       <div class="sub-section-title" style="color: #c2410c; font-size: 14px; margin-bottom: 6px;">📱 手机桌面 App 设置（一键直达，无需下载）</div>
       <div style="font-size:12px;color:#7c2d12;margin-bottom:8px;line-height:1.5;font-weight:600;">
         本平台为轻量级网页 App。您可以直接将它“添加”到手机桌面，像普通手机软件一样一键打开，不需要去应用商店下载安装包：
