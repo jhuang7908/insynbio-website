@@ -3,7 +3,7 @@
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
   <meta http-equiv="Pragma" content="no-cache" />
   <meta http-equiv="Expires" content="0" />
@@ -273,6 +273,16 @@
       padding: 12px 20px; font-size: 13px; font-weight: 700; cursor: pointer;
       display: flex; align-items: center; gap: 8px; box-shadow: 0 4px 16px rgba(7,187,101,0.35);
       transition: transform 0.15s, box-shadow 0.15s;
+      transform-origin: right bottom;
+    }
+    /* Ensure FAB scales properly and stays inside viewport on mobile */
+    @media (max-width: 640px) {
+      .sub-fab {
+        bottom: 16px;
+        right: 16px;
+        padding: 10px 16px;
+        font-size: 12px;
+      }
     }
     .sub-fab:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(7,187,101,0.4); }
     .sub-fab .fab-icon { font-size: 18px; }
@@ -4725,24 +4735,27 @@ function initHubChapterNav() {
     </div>
 
     <!-- Mobile Shortcut Guide -->
-    <div class="sub-section">
-      <div class="sub-section-title">📱 添加到手机桌面（一键直达）</div>
-      <div style="font-size:12px;color:#64748b;margin-bottom:8px;line-height:1.5;">
-        您可以将本站保存为手机桌面图标，像 App 一样一键快速打开：
+    <div class="sub-section" style="border: 2px solid #fed7aa; background: #fffdf8; padding: 12px; border-radius: 10px; margin-top: 16px;">
+      <div class="sub-section-title" style="color: #c2410c; font-size: 14px; margin-bottom: 6px;">📱 手机桌面 App 设置（一键直达，无需下载）</div>
+      <div style="font-size:12px;color:#7c2d12;margin-bottom:8px;line-height:1.5;font-weight:600;">
+        本平台为轻量级网页 App。您可以直接将它“添加”到手机桌面，像普通手机软件一样一键打开，不需要去应用商店下载安装包：
       </div>
       <!-- PWA Install Button (Hidden by default, shown dynamically via JS) -->
       <div id="pwa-install-container" style="display:none;margin-bottom:12px;">
-        <button id="pwa-install-btn" style="width:100%;background:#ea580c;color:#fff;border:none;border-radius:8px;padding:10px;font-size:13px;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:6px;box-shadow:0 2px 4px rgba(234,88,12,0.2);">
-          ✨ 一键安装“美东生活圈” App
+        <button id="pwa-install-btn" style="width:100%;background:#ea580c;color:#fff;border:none;border-radius:8px;padding:12px;font-size:14px;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:6px;box-shadow:0 2px 4px rgba(234,88,12,0.2);">
+          ✨ 立即一键安装“美东生活圈” App
         </button>
       </div>
-      <div style="background:#f8fafc;border:1px solid #e2e8f0;border-radius:6px;padding:10px;font-size:12px;color:#475569;line-height:1.6;">
-        <strong>苹果手机 (iOS Safari)：</strong><br>
-        1. 点击浏览器底部的<strong>“分享”按钮</strong>（⬆️ 图标）<br>
-        2. 选择<strong>“添加到主屏幕”</strong>（➕ 图标）并点击右上角“添加”。<br><br>
-        <strong>安卓手机 (Android Chrome/Edge)：</strong><br>
-        1. 点击浏览器右上角的<strong>“菜单”按钮</strong>（三个点图标）<br>
-        2. 选择<strong>“添加到主屏幕”</strong>或<strong>“安装应用”</strong>。
+      <div style="background:#fff;border:1px solid #fed7aa;border-radius:8px;padding:10px;font-size:12px;color:#431407;line-height:1.65;">
+        <strong style="color: #ea580c; font-size: 13px;">🍎 苹果手机 (iPhone) 安装方法：</strong><br>
+        1. 使用自带的 <strong>Safari 浏览器</strong>打开本网站。<br>
+        2. 点击屏幕最下方的<strong>“分享”按钮</strong>（即带有向上箭头的方框图标 <span style="font-size:14px;">⬆️</span>）。<br>
+        3. 向上滑动菜单，找到并点击<strong>“添加到主屏幕”</strong>（带有加号的方框图标 <span style="font-size:14px;">➕</span>）。<br>
+        4. 点击右上角的<strong>“添加”</strong>，您的手机桌面上就会多出一个“美东生活圈”的图标，以后点开即用！<br><br>
+        <strong style="color: #ea580c; font-size: 13px;">🤖 安卓手机 (华为/小米/OPPO/Vivo等) 安装方法：</strong><br>
+        1. 使用自带浏览器或 <strong>Chrome 浏览器</strong>打开本网站。<br>
+        2. 点击浏览器右上角或右下角的<strong>“菜单”按钮</strong>（通常是三个点 <span style="font-size:14px;">⋮</span> 或三条横线）。<br>
+        3. 选择<strong>“添加到主屏幕”</strong>或点击<strong>“安装应用”</strong>即可一键生成桌面图标。
       </div>
     </div>
 
