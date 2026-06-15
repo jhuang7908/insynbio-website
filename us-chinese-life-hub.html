@@ -5349,12 +5349,14 @@ function applyInterestAndClose(moduleId) {
   if (el) el.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
 }
 
-const HUB_NAV_SECTIONS = [
-  { id: 'livelihood-hot', navId: 'nav-latest' },
-  { id: 'yellow-pages-card', navId: 'nav-yellow-pages', openDetails: true },
-  { id: 'channels-section', navId: 'nav-channels' },
-  { id: 'deals-section', navId: 'nav-deals' },
-];
+function hubNavSections() {
+  return [
+    { id: 'livelihood-hot', navId: 'nav-latest' },
+    { id: 'yellow-pages-card', navId: 'nav-yellow-pages', openDetails: true },
+    { id: 'channels-section', navId: 'nav-channels' },
+    { id: 'deals-section', navId: 'nav-deals' },
+  ];
+}
 let HUB_PAGE_VIEW = 'latest';
 
 function setHubNavPrimary(activeId) {
@@ -5375,6 +5377,7 @@ function setHubNavPrimary(activeId) {
 }
 
 function updateHubNavOnScroll() {
+  const HUB_NAV_SECTIONS = hubNavSections();
   const offset = 130;
   let active = HUB_NAV_SECTIONS[0].id;
   for (const { id } of HUB_NAV_SECTIONS) {
