@@ -4948,9 +4948,20 @@ function hubBoot() {
     buildHubSearchIndexFromItems();
     loadHubSearchIndexFile();
     initPreference();
-    initHubChapterNav();
-    renderStreamSections();
+    HUB_PAGE_VIEW = resolveHubPageView();
     applyPageViewMode();
+    initHubChapterNav();
+    if (HUB_PAGE_VIEW === 'latest') {
+      renderStreamSections();
+    } else if (HUB_PAGE_VIEW === 'channels') {
+      renderModules();
+    } else if (HUB_PAGE_VIEW === 'deals') {
+      renderDealsSection();
+    } else if (HUB_PAGE_VIEW === 'yellowpages') {
+      if (typeof initYellowPages === 'function') initYellowPages();
+    } else {
+      renderStreamSections();
+    }
     renderAutoUpdateBadge();
     initVerifyBadge();
     renderScheduleNotice();
@@ -5475,6 +5486,14 @@ function applyPageViewMode() {
     if (typeof initYellowPages === 'function') initYellowPages();
   }
   setHubNavPrimary(isLatest ? 'livelihood-hot' : '');
+
+  const titleMap = {
+    latest: '美东华人生活圈 · 最新动态',
+    channels: '美东华人生活圈 · 民生频道',
+    deals: '美东华人生活圈 · 打折促销',
+    yellowpages: '美东华人生活圈 · 社区黄页',
+  };
+  if (titleMap[HUB_PAGE_VIEW]) document.title = titleMap[HUB_PAGE_VIEW];
 }
 </script>
 
