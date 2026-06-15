@@ -4970,7 +4970,9 @@ function hubBoot() {
   }
 }
 initDashboardWidgets();
-hubBoot();
+setTimeout(() => {
+  hubBoot();
+}, 0);
 // Almanac: try immediately, retry up to 3s if lunar library not yet loaded
 (function tryAlmanac(attempt) {
   if (typeof Lunar !== 'undefined' && typeof Solar !== 'undefined') {
