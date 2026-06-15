@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- hub-build: 2026-06-15T15:49TET -->
+<!-- hub-build: v1.1.0-20260615-B (Deals 4-in-a-row Grid) -->
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8" />
@@ -183,23 +183,16 @@
     }
     .deals-more-btn:hover { background: #f1f5f9; border-color: #cbd5e1; }
     .deals-tabs {
-      display: flex;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
       gap: 8px;
       margin: 12px 0 16px;
-      overflow-x: auto;
-      padding-bottom: 4px;
-      -webkit-overflow-scrolling: touch;
-      -ms-overflow-style: none;
-      scrollbar-width: none;
-    }
-    .deals-tabs::-webkit-scrollbar {
-      display: none;
     }
     .deals-tab {
       border: 1px solid var(--hub-border);
       background: var(--hub-surface);
       border-radius: 999px;
-      padding: 6px 16px;
+      padding: 6px 4px;
       font-size: var(--text-sm);
       font-weight: var(--weight-medium);
       font-family: inherit;
@@ -207,7 +200,18 @@
       color: #475569;
       transition: all 0.15s;
       white-space: nowrap;
-      flex-shrink: 0;
+      text-align: center;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    @media (max-width: 480px) {
+      .deals-tabs {
+        gap: 4px;
+      }
+      .deals-tab {
+        font-size: 11px;
+        padding: 5px 2px;
+      }
     }
     .deals-tab:hover {
       background: #f1f5f9;
