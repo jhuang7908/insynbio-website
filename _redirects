@@ -1,4 +1,8 @@
 /yp_data/*  /yp_data/:splat  200
 /yellow_pages_full.json  /yellow_pages_full.json  200
 /yellow_page_ratings.json  /yellow_page_ratings.json  200
+/latest.html  /us-chinese-life-hub.html?view=latest  302
+/channels.html  /us-chinese-life-hub.html?view=channels  302
+/deals.html  /us-chinese-life-hub.html?view=deals  302
+/yellow-pages.html  /us-chinese-life-hub.html?view=yellowpages  302
 / /us-chinese-life-hub.html 302
