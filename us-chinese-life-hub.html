@@ -5363,10 +5363,10 @@ function setHubNavPrimary(activeId) {
       return;
     }
     const byView = (
-      (HUB_PAGE_VIEW === 'latest' && href.includes('view=latest')) ||
-      (HUB_PAGE_VIEW === 'channels' && href.includes('view=channels')) ||
-      (HUB_PAGE_VIEW === 'deals' && href.includes('view=deals')) ||
-      (HUB_PAGE_VIEW === 'yellowpages' && href.includes('view=yellowpages'))
+      (HUB_PAGE_VIEW === 'latest' && (href.includes('view=latest') || href.includes('latest.html'))) ||
+      (HUB_PAGE_VIEW === 'channels' && (href.includes('view=channels') || href.includes('channels.html'))) ||
+      (HUB_PAGE_VIEW === 'deals' && (href.includes('view=deals') || href.includes('deals.html'))) ||
+      (HUB_PAGE_VIEW === 'yellowpages' && (href.includes('view=yellowpages') || href.includes('yellow-pages.html')))
     );
     a.classList.toggle('primary', byView);
   });
@@ -5419,6 +5419,12 @@ function initHubChapterNav() {
 }
 
 function resolveHubPageView() {
+  const path = String(location.pathname || '').toLowerCase();
+  if (path.endsWith('/latest.html') || path.endsWith('latest.html')) return 'latest';
+  if (path.endsWith('/channels.html') || path.endsWith('channels.html')) return 'channels';
+  if (path.endsWith('/deals.html') || path.endsWith('deals.html')) return 'deals';
+  if (path.endsWith('/yellow-pages.html') || path.endsWith('yellow-pages.html')) return 'yellowpages';
+
   const q = new URLSearchParams(location.search).get('view');
   const normalized = String(q || '').toLowerCase();
   if (normalized === 'latest' || normalized === 'channels' || normalized === 'deals' || normalized === 'yellowpages') {
