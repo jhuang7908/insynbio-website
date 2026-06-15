@@ -4516,6 +4516,10 @@ async function subscribeEmail() {
   successEl.style.color = '#475569';
   successEl.textContent = '正在提交订阅请求...';
   
+  const selectedLabels = interests.length > 0 
+    ? INTEREST_CHIPS.filter(c => interests.includes(c.id)).map(c => c.label).join('、')
+    : '全部频道';
+  
   const apiBase = window.HUB_COMMUNITY_API || '/api';
   try {
     const response = await fetch(apiBase + '/community-hub/subscribe', {
@@ -4526,15 +4530,64 @@ async function subscribeEmail() {
     const data = await response.json().catch(() => ({}));
     if (response.ok) {
       successEl.style.color = '#16a34a';
-      successEl.innerHTML = `✅ <b>${email}</b> 已成功订阅！<br><span style="font-size:13px;color:#4b5563;display:block;margin-top:4px;">我们已向您的邮箱发送了欢迎信，请注意查收（如未收到，请检查垃圾邮件箱）。</span>`;
+      successEl.innerHTML = `
+        <div style="text-align: left; background: #f0fdf4; border: 1px solid #bbf7d0; padding: 16px; border-radius: 12px; margin-top: 10px;">
+          <div style="font-size: 14px; font-weight: 800; color: #15803d; margin-bottom: 8px; display: flex; align-items: center; gap: 6px;">
+            🎉 欢迎加入美东华人生活圈！
+          </div>
+          <div style="font-size: 12px; color: #166534; line-height: 1.6; margin-bottom: 12px;">
+            您已成功使用邮箱 <strong>${email}</strong> 订阅了以下频道：
+            <div style="margin: 6px 0; background: #fff; border: 1px solid #dcfce7; padding: 6px 10px; border-radius: 8px; font-weight: 700; color: #14532d;">
+              ${selectedLabels}
+            </div>
+          </div>
+          <div style="font-size: 11px; color: #1e3a1e; border-top: 1px dashed #bbf7d0; padding-top: 10px; line-height: 1.55;">
+            <strong>为您开启的服务：</strong><br>
+            📬 <strong>每周两次精选民生简报</strong>：我们将根据您的选择，每周定期将最新动态、福利政策、交通出行等精选内容发送到您的邮箱。<br>
+            📧 <strong>欢迎信已发送</strong>：我们已向您的邮箱发送了欢迎信，请注意查收（如未收到，请检查垃圾邮件箱）。
+          </div>
+        </div>
+      `;
     } else {
       successEl.style.color = '#ea580c';
-      successEl.innerHTML = `✅ <b>${email}</b> 已记录本地订阅！<br><span style="font-size:13px;color:#4b5563;display:block;margin-top:4px;">我们将尽快为您同步并推送最新动态。</span>`;
+      successEl.innerHTML = `
+        <div style="text-align: left; background: #fff7ed; border: 1px solid #ffedd5; padding: 16px; border-radius: 12px; margin-top: 10px;">
+          <div style="font-size: 14px; font-weight: 800; color: #c2410c; margin-bottom: 8px; display: flex; align-items: center; gap: 6px;">
+            📝 订阅已记录本地！
+          </div>
+          <div style="font-size: 12px; color: #9a3412; line-height: 1.6; margin-bottom: 12px;">
+            您已成功将邮箱 <strong>${email}</strong> 记录在本地订阅中，关注频道：
+            <div style="margin: 6px 0; background: #fff; border: 1px solid #ffedd5; padding: 6px 10px; border-radius: 8px; font-weight: 700; color: #7c2d12;">
+              ${selectedLabels}
+            </div>
+          </div>
+          <div style="font-size: 11px; color: #431407; border-top: 1px dashed #ffedd5; padding-top: 10px; line-height: 1.55;">
+            <strong>为您开启的服务：</strong><br>
+            📬 <strong>民生动态同步</strong>：我们将尽快为您同步并推送最新动态。由于目前处于离线/本地记录状态，我们将在网络同步后为您补发欢迎信并开启定期邮件服务。
+          </div>
+        </div>
+      `;
       console.warn('Subscription API error:', data.detail || response.statusText);
     }
   } catch (err) {
     successEl.style.color = '#ea580c';
-    successEl.innerHTML = `✅ <b>${email}</b> 已记录本地订阅！<br><span style="font-size:13px;color:#4b5563;display:block;margin-top:4px;">我们将尽快为您同步并推送最新动态。</span>`;
+    successEl.innerHTML = `
+      <div style="text-align: left; background: #fff7ed; border: 1px solid #ffedd5; padding: 16px; border-radius: 12px; margin-top: 10px;">
+        <div style="font-size: 14px; font-weight: 800; color: #c2410c; margin-bottom: 8px; display: flex; align-items: center; gap: 6px;">
+          📝 订阅已记录本地！
+        </div>
+        <div style="font-size: 12px; color: #9a3412; line-height: 1.6; margin-bottom: 12px;">
+          您已成功将邮箱 <strong>${email}</strong> 记录在本地订阅中，关注频道：
+          <div style="margin: 6px 0; background: #fff; border: 1px solid #ffedd5; padding: 6px 10px; border-radius: 8px; font-weight: 700; color: #7c2d12;">
+            ${selectedLabels}
+          </div>
+        </div>
+        <div style="font-size: 11px; color: #431407; border-top: 1px dashed #ffedd5; padding-top: 10px; line-height: 1.55;">
+          <strong>为您开启的服务：</strong><br>
+          📬 <strong>民生动态同步</strong>：我们将尽快为您同步并推送最新动态。由于目前处于离线/本地记录状态，我们将在网络同步后为您补发欢迎信并开启定期邮件服务。
+        </div>
+      </div>
+    `;
     console.warn('Subscription API offline:', err);
   }
   document.getElementById('sub-email-val').value = '';
@@ -4559,16 +4612,96 @@ async function subscribePush() {
     localStorage.setItem('push_subscribed', '1');
     registerMember(localStorage.getItem('member_email') || '');
     document.getElementById('sub-success-push').style.display = 'block';
+    
+    // Hide any previous unsub success message and show unsub button
+    const unsubSuccess = document.getElementById('unsub-success-push');
+    if (unsubSuccess) unsubSuccess.style.display = 'none';
+    const unsubBtn = document.getElementById('push-unsub-btn');
+    if (unsubBtn) unsubBtn.style.display = 'block';
   } catch(e) {
     alert('开启推送失败，请检查网络或稍后重试。');
   }
 }
 
 function checkPushState() {
-  if (localStorage.getItem('push_subscribed') === '1' || Notification.permission === 'granted') {
-    const btn = document.getElementById('push-sub-btn');
+  const btn = document.getElementById('push-sub-btn');
+  const unsubBtn = document.getElementById('push-unsub-btn');
+  const successPush = document.getElementById('sub-success-push');
+  
+  if (localStorage.getItem('push_subscribed') === '1') {
     if (btn) { btn.textContent = '✅ 浏览器推送已开启'; btn.disabled = true; }
+    if (successPush) successPush.style.display = 'block';
+    if (unsubBtn) unsubBtn.style.display = 'block';
+  } else {
+    if (btn) { btn.textContent = '开启浏览器通知推送'; btn.disabled = false; }
+    if (successPush) successPush.style.display = 'none';
+    if (unsubBtn) unsubBtn.style.display = 'none';
   }
+}
+
+async function unsubscribeEmail() {
+  const email = document.getElementById('unsub-email-val').value.trim();
+  if (!email || !email.includes('@')) {
+    alert('请输入有效的邮箱地址');
+    return;
+  }
+  const successEl = document.getElementById('unsub-success-email');
+  successEl.style.display = 'block';
+  successEl.style.color = '#475569';
+  successEl.textContent = '正在提交退订请求...';
+
+  // Remove from local storage
+  let subs = JSON.parse(localStorage.getItem('email_subs') || '[]');
+  subs = subs.filter(s => s.email !== email);
+  localStorage.setItem('email_subs', JSON.stringify(subs));
+
+  if (localStorage.getItem('member_email') === email) {
+    localStorage.removeItem('member_email');
+  }
+
+  const apiBase = window.HUB_COMMUNITY_API || '/api';
+  try {
+    const response = await fetch(apiBase + '/community-hub/unsubscribe', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email })
+    });
+    if (response.ok) {
+      successEl.style.color = '#b91c1c';
+      successEl.innerHTML = `✅ <b>${email}</b> 已成功退订邮件推送。<br><span style="font-size:11px;color:#4b5563;display:block;margin-top:4px;">您将不再收到我们的定期精选邮件。如果以后想重新订阅，欢迎随时在上方登记。</span>`;
+    } else {
+      successEl.style.color = '#b91c1c';
+      successEl.innerHTML = `✅ <b>${email}</b> 已从本地退订！<br><span style="font-size:11px;color:#4b5563;display:block;margin-top:4px;">本地订阅记录已清除。我们将尽快为您同步退订状态。</span>`;
+    }
+  } catch (err) {
+    successEl.style.color = '#b91c1c';
+    successEl.innerHTML = `✅ <b>${email}</b> 已从本地退订！<br><span style="font-size:11px;color:#4b5563;display:block;margin-top:4px;">本地订阅记录已清除。我们将尽快为您同步退订状态。</span>`;
+  }
+  document.getElementById('unsub-email-val').value = '';
+}
+
+async function unsubscribePush() {
+  const successEl = document.getElementById('unsub-success-push');
+  successEl.style.display = 'block';
+  successEl.style.color = '#475569';
+  successEl.textContent = '正在关闭推送...';
+
+  localStorage.setItem('push_subscribed', '0');
+  pushSubscribed = false;
+
+  // Restore push subscription button state
+  const btn = document.getElementById('push-sub-btn');
+  if (btn) {
+    btn.textContent = '开启浏览器通知推送';
+    btn.disabled = false;
+    document.getElementById('sub-success-push').style.display = 'none';
+  }
+  
+  const unsubBtn = document.getElementById('push-unsub-btn');
+  if (unsubBtn) unsubBtn.style.display = 'none';
+
+  successEl.style.color = '#334155';
+  successEl.innerHTML = `✅ <b>浏览器推送已关闭！</b><br><span style="font-size:11px;color:#4b5563;display:block;margin-top:4px;">本站将不再向您发送浏览器通知。若要彻底撤销浏览器的通知授权，请点击浏览器地址栏左侧的「锁/设置」图标，并在「权限」中将「通知」设为「询问」或「屏蔽」。</span>`;
 }
 
 // Keep the green registration button (.sub-fab) fixed relative to the visual viewport when zoomed
@@ -4797,6 +4930,39 @@ function initHubChapterNav() {
       </div>
       <button class="sub-push-btn" id="push-sub-btn" onclick="subscribePush()">开启浏览器通知推送</button>
       <div class="sub-success" id="sub-success-push" style="margin-top:8px;">✅ 浏览器推送已开启！最新动态将直接弹出通知。</div>
+    </div>
+
+    <!-- Unsubscribe & Settings -->
+    <div class="sub-section" style="border-top: 1px solid #e2e8f0; padding-top: 16px; margin-top: 20px;">
+      <div class="sub-section-title" style="color: #475569; font-size: 13px;">⚙️ 退订与订阅管理 (Unsubscribe & Settings)</div>
+      <div style="font-size:12px;color:#64748b;margin-bottom:8px;line-height:1.5;">
+        如果您需要退订某项推送或修改订阅，请在下方进行操作。
+      </div>
+      
+      <!-- Email Unsubscribe -->
+      <div style="margin-bottom: 12px; background: #f8fafc; border: 1px solid #e2e8f0; padding: 10px; border-radius: 8px;">
+        <div style="font-size:12px; font-weight:700; color:#475569; margin-bottom:6px;">✉️ 邮件退订</div>
+        <div class="sub-email-row" style="margin-top:0;">
+          <input type="email" id="unsub-email-val" class="sub-email-input" placeholder="输入已订阅的邮箱…" style="padding: 6px 10px; font-size:12px;" />
+          <button class="sub-submit" onclick="unsubscribeEmail()" style="padding: 6px 12px; font-size:12px; background: #ef4444;">退订邮件</button>
+        </div>
+        <div class="sub-success" id="unsub-success-email" style="margin-top:6px; background: #fef2f2; border-color: #fca5a5; color: #991b1b; font-size:12px; padding: 8px;"></div>
+      </div>
+
+      <!-- Browser Push Unsubscribe -->
+      <div style="margin-bottom: 12px; background: #f8fafc; border: 1px solid #e2e8f0; padding: 10px; border-radius: 8px;">
+        <div style="font-size:12px; font-weight:700; color:#475569; margin-bottom:6px;">🔔 浏览器推送退订</div>
+        <button class="sub-push-btn" id="push-unsub-btn" onclick="unsubscribePush()" style="padding: 6px; font-size:12px; background: #475569; margin-top:0; display:none;">关闭浏览器通知推送</button>
+        <div class="sub-success" id="unsub-success-push" style="margin-top:6px; background: #f1f5f9; border-color: #cbd5e1; color: #334155; font-size:12px; padding: 8px;"></div>
+      </div>
+
+      <!-- WeChat Unsubscribe Instructions -->
+      <div style="background: #f8fafc; border: 1px solid #e2e8f0; padding: 10px; border-radius: 8px;">
+        <div style="font-size:12px; font-weight:700; color:#475569; margin-bottom:4px;">📱 微信公众号退订</div>
+        <div style="font-size:11px; color:#64748b; line-height:1.5;">
+          请在微信中打开<strong>「美东华人生活圈」</strong>公众号，点击右上角<strong>「...」</strong>并选择<strong>「不再关注」</strong>，即可随时退订。
+        </div>
+      </div>
     </div>
 
     <!-- Mobile Shortcut Guide -->
