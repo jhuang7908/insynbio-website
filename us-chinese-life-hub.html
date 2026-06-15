@@ -2760,69 +2760,110 @@ function renderCustomDealsTabs() {
   const zht = currentLang === 'zht';
   const en = currentLang === 'en';
 
-  // 1. Weekly Flyers (超市海报)
+  // Translate tab buttons dynamically based on language preference
+  const btnFlyers = document.getElementById('tab-btn-flyers');
+  const btnSeasons = document.getElementById('tab-btn-seasons');
+  const btnDining = document.getElementById('tab-btn-dining');
+  const btnOnline = document.getElementById('tab-btn-online');
+
+  if (btnFlyers) btnFlyers.textContent = zht ? "🛒 超市海報" : (en ? "🛒 Flyers" : "🛒 超市海报");
+  if (btnSeasons) btnSeasons.textContent = zht ? "💄 消費大促" : (en ? "💄 Shopping" : "💄 消费大促");
+  if (btnDining) btnDining.textContent = zht ? "🍔 美食特惠" : (en ? "🍔 Dining" : "🍔 美食特惠");
+  if (btnOnline) btnOnline.textContent = zht ? "📦 線上折扣" : (en ? "📦 Online Deals" : "📦 线上折扣");
+
+  // 1. Weekly Flyers (超市海报) - Balanced across all NYC enclaves (Brooklyn, Chinatown, Elmhurst, Flushing, Long Island, NJ)
   const flyersFeed = document.getElementById('flyers-feed');
   if (flyersFeed) {
     const flyersData = [
-      {
-        id: "flyer_jmart",
-        module: zht ? "超市海報" : (en ? "Flyers" : "超市海报"),
-        title_zh: "🛒 新世界超市 (Jmart) · 本周特价海报",
-        title_zht: "🛒 新世界超市 (Jmart) · 本週特價海報",
-        title_en: "🛒 Jmart Supermarket · Weekly Specials Flyer",
-        brief_zh: "🔥 本周爆款：温哥华大蟹 $6.99/磅，游水龙虾 $7.99/磅，红富士苹果 $0.99/磅。法拉盛新世界美食广场地下，买菜首选！",
-        brief_zht: "🔥 本週爆款：溫哥華大蟹 $6.99/磅，遊水龍蝦 $7.99/磅，紅富士蘋果 $0.99/磅。法拉盛新世界美食廣場地下，買菜首選！",
-        brief_en: "🔥 Weekly Specials: Dungeness Crab $6.99/lb, Live Lobster $7.99/lb, Red Fuji Apple $0.99/lb. Located inside New World Mall, Flushing.",
-        date: "06/12 - 06/18",
-        url: "https://www.newworldmallnyc.com/jmart-weekly-special",
-        area_zh: "法拉盛 Flushing",
-        area_zht: "法拉盛 Flushing",
-        area_en: "Flushing"
-      },
-      {
-        id: "flyer_gw",
-        module: zht ? "超市海報" : (en ? "Flyers" : "超市海报"),
-        title_zh: "🛒 大中华超市 (GW) · 本周特惠海报",
-        title_zht: "🛒 大中華超市 (GW) · 本週特惠海報",
-        title_en: "🛒 Great Wall Supermarket · Weekly Deals Flyer",
-        brief_zh: "🔥 本周精选：新鲜排骨 $2.49/磅，游水侧鱼 $3.99/磅，红樱桃 $1.99/磅。法拉盛与Corona门店同步，新鲜实惠！",
-        brief_zht: "🔥 本週精選：新鮮排骨 $2.49/磅，遊水側魚 $3.99/磅，紅櫻桃 $1.99/磅。法拉盛與Corona門店同步，新鮮實惠！",
-        brief_en: "🔥 Weekly Deals: Fresh Pork Ribs $2.49/lb, Live Tilapia $3.99/lb, Red Cherries $1.99/lb. Valid at Flushing and Corona locations.",
-        date: "06/10 - 06/16",
-        url: "https://www.gw-supermarket.com/deal/",
-        area_zh: "皇后区 Queens",
-        area_zht: "皇后區 Queens",
-        area_en: "Queens"
-      },
-      {
-        id: "flyer_hmart",
-        module: zht ? "超市海報" : (en ? "Flyers" : "超市海报"),
-        title_zh: "🛒 H Mart (韩亚龙) · 本周精选特惠",
-        title_zht: "🛒 H Mart (韓亞龍) · 本週精選特惠",
-        title_en: "🛒 H Mart · Weekly Savings Circular",
-        brief_zh: "🔥 本周爆款：韩国巨峰葡萄 $5.99/盒，牛五花烤肉片 $8.99/磅，辛拉面 5包入 $3.99。高品质亚洲食材，全美连锁！",
-        brief_zht: "🔥 本週爆款：韓國巨峰葡萄 $5.99/盒，牛五花烤肉片 $8.99/磅，辛拉麵 5包入 $3.99。高品質亞洲食材，全美連鎖！",
-        brief_en: "🔥 Weekly Savings: Korean Kyoho Grapes $5.99/box, Beef Thin Sliced for BBQ $8.99/lb, Shin Ramyun 5-pack $3.99. Premium Asian groceries.",
-        date: "06/12 - 06/18",
-        url: "https://www.hmart.com/weekly-ads/new-york-new-jersey",
-        area_zh: "全市 Citywide",
-        area_zht: "全市 Citywide",
-        area_en: "Citywide"
-      },
       {
         id: "flyer_feilong",
         module: zht ? "超市海報" : (en ? "Flyers" : "超市海报"),
         title_zh: "🛒 飞龙超市 (Fei Long) · 布鲁克林特价海报",
         title_zht: "🛒 飛龍超市 (Fei Long) · 布魯克林特價海報",
         title_en: "🛒 Fei Long Market · Brooklyn Weekly Circular",
-        brief_zh: "🔥 本周爆款：游水温哥华蟹 $6.59/磅，特大新鲜大虾 $4.99/磅，上海青 $0.79/磅。布鲁克林八大道华人买菜地标！",
-        brief_zht: "🔥 本週爆款：遊水溫哥華蟹 $6.59/磅，特大新鮮大蝦 $4.99/磅，上海青 $0.79/磅。布魯克林八大道華人買菜地標！",
+        brief_zh: "🔥 本周爆款：游水温哥华蟹 $6.59/磅，特大新鲜大虾 $4.99/磅，上海青 $0.79/磅。布鲁克林八大道华人买菜首选地标！",
+        brief_zht: "🔥 本週爆款：遊水溫哥華蟹 $6.59/磅，特大新鮮大蝦 $4.99/磅，上海青 $0.79/磅。布魯克林八大道華人買菜首選地標！",
         brief_en: "🔥 Brooklyn Specials: Live Dungeness Crab $6.59/lb, Extra Large Fresh Shrimp $4.99/lb, Shanghai Choy $0.79/lb. Located on 8th Ave, Brooklyn.",
         date: "06/12 - 06/18",
         url: "https://fei-long-market.com/weekly-ad",
         area_zh: "八大道 Sunset Park",
         area_zht: "八大道 Sunset Park",
         area_en: "Sunset Park"
+      },
+      {
+        id: "flyer_newkamman",
+        module: zht ? "超市海報" : (en ? "Flyers" : "超市海报"),
+        title_zh: "🛒 金门食品 (New Kam Man) · 唐人街精选特惠",
+        title_zht: "🛒 金門食品 (New Kam Man) · 唐人街精選特惠",
+        title_en: "🛒 New Kam Man · Chinatown Weekly Specials",
+        brief_zh: "🔥 本周精选：优质亚洲调料、港式腊味、新鲜中式糕点特惠。曼哈顿华埠历史悠久的一站式亚洲精品超市！",
+        brief_zht: "🔥 本週精選：優質亞洲調料、港式臘味、新鮮中式糕點特惠。曼哈頓華埠歷史悠久的一站式亞洲精品超市！",
+        brief_en: "🔥 Chinatown Specials: Premium Asian condiments, Cantonese cured meats, and fresh Chinese pastries. Historic one-stop shop on Canal St.",
+        date: "06/12 - 06/18",
+        url: "https://gofresh365.com/weekly-special-offers/",
+        area_zh: "唐人街 Chinatown",
+        area_zht: "唐人街 Chinatown",
+        area_en: "Chinatown"
+      },
+      {
+        id: "flyer_gw",
+        module: zht ? "超市海報" : (en ? "Flyers" : "超市海报"),
+        title_zh: "🛒 大中华超市 (GW) · 艾姆赫斯特与皇后区海报",
+        title_zht: "🛒 大中華超市 (GW) · 艾姆赫斯特與皇后區海報",
+        title_en: "🛒 Great Wall Supermarket · Queens Weekly Flyer",
+        brief_zh: "🔥 本周精选：新鲜排骨 $2.49/磅，游水侧鱼 $3.99/磅，红樱桃 $1.99/磅。Elmhurst及Corona门店同步，新鲜实惠！",
+        brief_zht: "🔥 本週精選：新鮮排骨 $2.49/磅，遊水側魚 $3.99/磅，紅櫻桃 $1.99/磅。Elmhurst及Corona門店同步，新鮮實惠！",
+        brief_en: "🔥 Queens Specials: Fresh Pork Ribs $2.49/lb, Live Tilapia $3.99/lb, Red Cherries $1.99/lb. Valid at Elmhurst and Corona locations.",
+        date: "06/10 - 06/16",
+        url: "https://www.gw-supermarket.com/deal/",
+        area_zh: "艾姆赫斯特 Elmhurst",
+        area_zht: "艾姆赫斯特 Elmhurst",
+        area_en: "Elmhurst"
+      },
+      {
+        id: "flyer_hmart",
+        module: zht ? "超市海報" : (en ? "Flyers" : "超市海报"),
+        title_zh: "🛒 H Mart (韩亚龙) · 贝赛与长岛精选特惠",
+        title_zht: "🛒 H Mart (韓亞龍) · 貝賽與長島精選特惠",
+        title_en: "🛒 H Mart · Bayside & Long Island Savings",
+        brief_zh: "🔥 本周爆款：韩国巨峰葡萄 $5.99/盒，牛五花烤肉片 $8.99/磅，辛拉面 5包入 $3.99。高品质食材，贝赛、长岛门店同步！",
+        brief_zht: "🔥 本週爆款：韓國巨峰葡萄 $5.99/盒，牛五花烤肉片 $8.99/磅，辛拉麵 5包入 $3.99。高品質食材，貝賽、長島門店同步！",
+        brief_en: "🔥 Suburb Savings: Korean Kyoho Grapes $5.99/box, Beef Thin Sliced for BBQ $8.99/lb, Shin Ramyun 5-pack $3.99. Valid at Bayside & LI.",
+        date: "06/12 - 06/18",
+        url: "https://www.hmart.com/weekly-ads/new-york-new-jersey",
+        area_zh: "长岛 Long Island",
+        area_zht: "長島 Long Island",
+        area_en: "Long Island"
+      },
+      {
+        id: "flyer_99ranch",
+        module: zht ? "超市海報" : (en ? "Flyers" : "超市海报"),
+        title_zh: "🛒 大华超市 (99 Ranch) · 泽西市与长岛特惠",
+        title_zht: "🛒 大華超市 (99 Ranch) · 澤西市與長島特惠",
+        title_en: "🛒 99 Ranch Market · NJ & Long Island Weekly Ad",
+        brief_zh: "🔥 本周精选：新鲜游水海鲜、亚洲零食、精选大米买一送一。新泽西Jersey City与长岛Westbury门店超值特惠！",
+        brief_zht: "🔥 本週精選：新鮮遊水海鮮、亞洲零食、精選大米買一送一。新澤西Jersey City與長島Westbury門店超值特惠！",
+        brief_en: "🔥 Regional Deals: Fresh live seafood, Asian snacks, and BOGO rice specials. Valid at Jersey City, NJ and Westbury, Long Island.",
+        date: "06/12 - 06/18",
+        url: "https://www.99ranch.com/store-ads",
+        area_zh: "新泽西 New Jersey",
+        area_zht: "新澤西 New Jersey",
+        area_en: "New Jersey"
+      },
+      {
+        id: "flyer_jmart",
+        module: zht ? "超市海報" : (en ? "Flyers" : "超市海报"),
+        title_zh: "🛒 新世界超市 (Jmart) · 法拉盛与宾臣墟海报",
+        title_zht: "🛒 新世界超市 (Jmart) · 法拉盛與賓臣墟海報",
+        title_en: "🛒 Jmart Supermarket · Flushing & Brooklyn Specials",
+        brief_zh: "🔥 本周爆款：温哥华大蟹 $6.99/磅，游水龙虾 $7.99/磅，红富士苹果 $0.99/磅。法拉盛新世界及布鲁克林Bensonhurst店同步！",
+        brief_zht: "🔥 本週爆款：溫哥華大蟹 $6.99/磅，遊水龍蝦 $7.99/磅，紅富士蘋果 $0.99/磅。法拉盛新世界及布魯克林Bensonhurst店同步！",
+        brief_en: "🔥 Enclave Specials: Dungeness Crab $6.99/lb, Live Lobster $7.99/lb, Red Fuji Apple $0.99/lb. Valid at Flushing & Bensonhurst, Brooklyn.",
+        date: "06/12 - 06/18",
+        url: "https://www.newworldmallnyc.com/jmart-weekly-special",
+        area_zh: "法拉盛 Flushing",
+        area_zht: "法拉盛 Flushing",
+        area_en: "Flushing"
       }
     ];
     flyersFeed.innerHTML = flyersData.map(item => renderCustomDealCard(item)).join('');
