@@ -2290,7 +2290,7 @@ function openHubExternal(rawUrl, opts) {
     const tl = (pref === 'trans_zht') ? 'zh-TW' : 'zh-CN';
     targetUrl = 'https://translate.google.com/translate?sl=auto&tl=' + tl + '&u=' + encodeURIComponent(cleanRawUrl);
   }
-  const desktopUrl = opts.desktopUrl || targetUrl;
+  const desktopUrl = isHighSecurityOfficial ? targetUrl : (opts.desktopUrl || targetUrl);
   if (!cleanRawUrl || !/^https?:\/\//i.test(cleanRawUrl)) return;
   if (isMobileLinkMode()) {
     closeGuideModal();
@@ -2315,6 +2315,7 @@ function wireExternalAnchor(anchor, rawUrl, opts) {
 function openGuideModal(itemId) {
   const item = hubFindItem(itemId);
   if (!item) return;
+  const cleanItemUrl = sanitizeExternalUrl(item.url);
   
   const s = UI_STRINGS[currentLang];
   const title = item[`title_${currentLang}`] || item.title_zh;
@@ -2326,8 +2327,8 @@ function openGuideModal(itemId) {
     `<div style="margin-bottom:8px;font-size:12px;color:#64748b;line-height:1.5;">${hubLocationTagHtml(item)} ${formatEventDateLabel(item)}<br>${formatPublishDateLabel(item)}</div>` + guide;
   
   // Build translate URLs
-  const translateZhUrl = 'https://translate.google.com/translate?sl=auto&tl=zh-CN&u=' + encodeURIComponent(item.url);
-  const translateZhtUrl = 'https://translate.google.com/translate?sl=auto&tl=zh-TW&u=' + encodeURIComponent(item.url);
+  const translateZhUrl = 'https://translate.google.com/translate?sl=auto&tl=zh-CN&u=' + encodeURIComponent(cleanItemUrl);
+  const translateZhtUrl = 'https://translate.google.com/translate?sl=auto&tl=zh-TW&u=' + encodeURIComponent(cleanItemUrl);
 
   const pref = localStorage.getItem('pref_lang_mode') || 'trans_zh';
   const btnDirect = document.getElementById('modal-btn-direct');
@@ -2339,14 +2340,14 @@ function openGuideModal(itemId) {
   if (pref === 'raw_en') {
     btnDirect.textContent = s.btn_direct;
     btnTrans.textContent = s.btn_translate;
-    primaryDesktop = item.url;
+    primaryDesktop = cleanItemUrl;
     secondaryDesktop = translateZhUrl;
   } else {
     const transUrl = (pref === 'trans_zht') ? translateZhtUrl : translateZhUrl;
     btnDirect.textContent = pref === 'trans_zht' ? '🌐 用中文翻译打开（推荐）' : '🌐 用简体中文打开（推荐）';
     btnTrans.textContent = '查看英文原始页面 ↗';
     primaryDesktop = transUrl;
-    secondaryDesktop = item.url;
+    secondaryDesktop = cleanItemUrl;
   }
 
   const linkOpts = {
@@ -2356,12 +2357,12 @@ function openGuideModal(itemId) {
     meta: hubLinkMeta(item),
   };
 
-  wireExternalAnchor(btnDirect, item.url, {
+  wireExternalAnchor(btnDirect, cleanItemUrl, {
     ...linkOpts,
     translate: pref !== 'raw_en',
     desktopUrl: primaryDesktop,
   });
-  wireExternalAnchor(btnTrans, item.url, {
+  wireExternalAnchor(btnTrans, cleanItemUrl, {
     ...linkOpts,
     translate: false,
     desktopUrl: secondaryDesktop,
