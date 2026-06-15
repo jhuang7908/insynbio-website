@@ -902,12 +902,18 @@
       <!-- Tab Content Containers -->
       <div id="deals-tab-flyers" class="deals-tab-content">
         <div class="feed-grid" id="flyers-feed"></div>
+        <div class="feed-grid" id="flyers-feed-more" style="display:none; margin-top:8px;"></div>
+        <button type="button" class="deals-more-btn" id="flyers-more-btn" style="display:none" onclick="toggleCustomDealsMore('flyers')"></button>
       </div>
       <div id="deals-tab-seasons" class="deals-tab-content" style="display:none;">
         <div class="feed-grid" id="seasons-feed"></div>
+        <div class="feed-grid" id="seasons-feed-more" style="display:none; margin-top:8px;"></div>
+        <button type="button" class="deals-more-btn" id="seasons-more-btn" style="display:none" onclick="toggleCustomDealsMore('seasons')"></button>
       </div>
       <div id="deals-tab-dining" class="deals-tab-content" style="display:none;">
         <div class="feed-grid" id="dining-feed"></div>
+        <div class="feed-grid" id="dining-feed-more" style="display:none; margin-top:8px;"></div>
+        <button type="button" class="deals-more-btn" id="dining-more-btn" style="display:none" onclick="toggleCustomDealsMore('dining')"></button>
       </div>
       <div id="deals-tab-online" class="deals-tab-content" style="display:none;">
         <div class="feed-grid" id="deals-feed"></div>
@@ -2773,6 +2779,8 @@ function renderCustomDealsTabs() {
 
   // 1. Weekly Flyers (超市海报) - Balanced across all NYC enclaves (Brooklyn, Chinatown, Elmhurst, Flushing, Long Island, NJ)
   const flyersFeed = document.getElementById('flyers-feed');
+  const flyersFeedMore = document.getElementById('flyers-feed-more');
+  const flyersMoreBtn = document.getElementById('flyers-more-btn');
   if (flyersFeed) {
     const flyersData = [
       {
@@ -2842,7 +2850,7 @@ function renderCustomDealsTabs() {
         title_zht: "🛒 大華超市 (99 Ranch) · 澤西市與長島特惠",
         title_en: "🛒 99 Ranch Market · NJ & Long Island Weekly Ad",
         brief_zh: "🔥 本周精选：新鲜游水海鲜、亚洲零食、精选大米买一送一。新泽西Jersey City与长岛Westbury门店超值特惠！",
-        brief_zht: "🔥 本週精選：新鮮遊水海鮮、亞洲零食、精選大米買一送一。新澤西Jersey City與長島Westbury門店超值特惠！",
+        brief_zht: "🔥 本週精選：新鮮遊水海鮮、亞洲零食、精選大米買一送一。新澤西Jersey City與長岛Westbury門店超值特惠！",
         brief_en: "🔥 Regional Deals: Fresh live seafood, Asian snacks, and BOGO rice specials. Valid at Jersey City, NJ and Westbury, Long Island.",
         date: "06/12 - 06/18",
         url: "https://www.99ranch.com/store-ads",
@@ -2866,11 +2874,29 @@ function renderCustomDealsTabs() {
         area_en: "Flushing"
       }
     ];
-    flyersFeed.innerHTML = flyersData.map(item => renderCustomDealCard(item)).join('');
+    
+    // Render first 4 items in main feed, rest in more feed
+    flyersFeed.innerHTML = flyersData.slice(0, 4).map(item => renderCustomDealCard(item)).join('');
+    const rest = flyersData.slice(4);
+    if (flyersFeedMore) {
+      flyersFeedMore.innerHTML = rest.map(item => renderCustomDealCard(item)).join('');
+    }
+    if (flyersMoreBtn) {
+      if (rest.length > 0) {
+        flyersMoreBtn.style.display = 'block';
+        flyersMoreBtn.dataset.expanded = '0';
+        const label = zht ? '查看更多促銷' : (en ? 'View More Deals' : '查看更多促销');
+        flyersMoreBtn.textContent = `${label} (${rest.length}) ▼`;
+      } else {
+        flyersMoreBtn.style.display = 'none';
+      }
+    }
   }
 
   // 2. Shopping Seasons (消费大促)
   const seasonsFeed = document.getElementById('seasons-feed');
+  const seasonsFeedMore = document.getElementById('seasons-feed-more');
+  const seasonsMoreBtn = document.getElementById('seasons-more-btn');
   if (seasonsFeed) {
     const seasonsData = [
       {
@@ -2919,11 +2945,28 @@ function renderCustomDealsTabs() {
         area_en: "Citywide"
       }
     ];
-    seasonsFeed.innerHTML = seasonsData.map(item => renderCustomDealCard(item)).join('');
+    
+    seasonsFeed.innerHTML = seasonsData.slice(0, 4).map(item => renderCustomDealCard(item)).join('');
+    const rest = seasonsData.slice(4);
+    if (seasonsFeedMore) {
+      seasonsFeedMore.innerHTML = rest.map(item => renderCustomDealCard(item)).join('');
+    }
+    if (seasonsMoreBtn) {
+      if (rest.length > 0) {
+        seasonsMoreBtn.style.display = 'block';
+        seasonsMoreBtn.dataset.expanded = '0';
+        const label = zht ? '查看更多促銷' : (en ? 'View More Deals' : '查看更多促销');
+        seasonsMoreBtn.textContent = `${label} (${rest.length}) ▼`;
+      } else {
+        seasonsMoreBtn.style.display = 'none';
+      }
+    }
   }
 
   // 3. Dining & Restaurant Week (美食特惠)
   const diningFeed = document.getElementById('dining-feed');
+  const diningFeedMore = document.getElementById('dining-feed-more');
+  const diningMoreBtn = document.getElementById('dining-more-btn');
   if (diningFeed) {
     const diningData = [
       {
@@ -2972,9 +3015,47 @@ function renderCustomDealsTabs() {
         area_en: "Flushing"
       }
     ];
-    diningFeed.innerHTML = diningData.map(item => renderCustomDealCard(item)).join('');
+    
+    diningFeed.innerHTML = diningData.slice(0, 4).map(item => renderCustomDealCard(item)).join('');
+    const rest = diningData.slice(4);
+    if (diningFeedMore) {
+      diningFeedMore.innerHTML = rest.map(item => renderCustomDealCard(item)).join('');
+    }
+    if (diningMoreBtn) {
+      if (rest.length > 0) {
+        diningMoreBtn.style.display = 'block';
+        diningMoreBtn.dataset.expanded = '0';
+        const label = zht ? '查看更多促銷' : (en ? 'View More Deals' : '查看更多促销');
+        diningMoreBtn.textContent = `${label} (${rest.length}) ▼`;
+      } else {
+        diningMoreBtn.style.display = 'none';
+      }
+    }
   }
 }
+
+function toggleCustomDealsMore(tabId) {
+  const zht = currentLang === 'zht';
+  const en = currentLang === 'en';
+  
+  const moreFeed = document.getElementById(`${tabId}-feed-more`);
+  const moreBtn = document.getElementById(`${tabId}-more-btn`);
+  if (!moreFeed || !moreBtn) return;
+  
+  const expanded = moreBtn.dataset.expanded === '1';
+  if (expanded) {
+    moreFeed.style.display = 'none';
+    moreBtn.dataset.expanded = '0';
+    const label = zht ? '查看更多促銷' : (en ? 'View More Deals' : '查看更多促销');
+    moreBtn.textContent = `${label} (${moreFeed.childElementCount}) ▼`;
+  } else {
+    moreFeed.style.display = 'grid';
+    moreBtn.dataset.expanded = '1';
+    const label = zht ? '收起促銷' : (en ? 'Hide Deals' : '收起促销');
+    moreBtn.textContent = `${label} ▲`;
+  }
+}
+
 
 function renderCustomDealCard(i) {
   const s = UI_STRINGS[currentLang];
