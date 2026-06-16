@@ -1,5 +1,12 @@
 # NYC Hub Release Notes
 
+## v2.0.5-20260615
+
+- Restored hub archive from 112-item snapshot (accidental drop to 28 on 2026-06-15 PM run).
+- Channels page now shows full 30-day link list + search/filters (was hidden after page split).
+- Client + pipeline: explicit 30-day retention by last activity; merge safeguard against mass data loss.
+- Recent-3-day stream includes events from past 3 days and upcoming week.
+
 ## v2.0.4-20260615
 
 - DOH vaccines link → `nyc.gov/.../immunization-clinics.page` (specific clinic page).
