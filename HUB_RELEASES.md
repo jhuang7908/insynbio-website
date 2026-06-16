@@ -1,5 +1,11 @@
 # NYC Hub Release Notes
 
+## v2.1.0-20260615
+
+- Homepage is now **4 portal tiles only** (no stream/dashboard clutter).
+- Latest sub-page: single forum-style feed (removed 24h/7d/enroll split and vague redirect hints).
+- Sub-pages show compact chapter nav with Home link.
+
 ## v2.0.5-20260615
 
 - Restored hub archive from 112-item snapshot (accidental drop to 28 on 2026-06-15 PM run).
