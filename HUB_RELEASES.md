@@ -1,5 +1,9 @@
 # NYC Hub Release Notes
 
+## v2.5.2-20260615
+
+- **Removed the WeChat subscribe funnel button from the hero** (owner request): the hero first screen is now tagline → weather bar → search. Subscription remains available via the bottom-right floating FAB (same `openSubModal`). SW cache → v35.
+
 ## v2.5.1-20260615
 
 Hero layout tweaks (owner request):
