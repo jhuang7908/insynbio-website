@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0",
-  "generated_at": "2026-06-15 restore",
-  "count": 112,
+  "generated_at": "2026-06-16 16:12",
+  "count": 120,
   "fields": [
     "first_indexed_at",
     "source_published_at",
@@ -17,7 +17,7 @@
     {
       "id": "live_001",
       "module": "语言·教育",
-      "title_zh": "Community English as a second language",
+      "title_zh": "社区英语作为第二语言",
       "summary_zh": "Education program on www.qcc.cuny.edu — click to enroll or learn more.（来源类型：纽约市立大学 — 继续教育、英语课及成人学习）",
       "location_tag_zh": "全市",
       "location_kind": "citywide",
@@ -29,15 +29,15 @@
       "published_at": "",
       "source_published_at": "",
       "first_indexed_at": "2026-06-15 20:30:26",
-      "last_seen_at": "2026-06-15 20:30:26",
+      "last_seen_at": "2026-06-16 12:11:50",
       "date_kind": "service",
       "url": "https://www.qcc.cuny.edu/ce/programs/community-english-as-a-second-language.html",
-      "search_text": "live_001 语言·教育 community english as a second language community english as a second language education program on www.qcc.cuny.edu — click to enroll or learn more.（来源类型：纽约市立大学 — 继续教育、英语课及成人学习） 全市 纽约全市 citywide new york city 2026-06-15 20:30:26 https://www.qcc.cuny.edu/ce/programs/community-english-as-a-second-language.html"
+      "search_text": "live_001 语言·教育 社区英语作为第二语言 community english as a second language education program on www.qcc.cuny.edu — click to enroll or learn more.（来源类型：纽约市立大学 — 继续教育、英语课及成人学习） 全市 纽约全市 citywide new york city 2026-06-15 20:30:26 https://www.qcc.cuny.edu/ce/programs/community-english-as-a-second-language.html"
     },
     {
       "id": "live_002",
       "module": "语言·教育",
-      "title_zh": "ESL and College Prep",
+      "title_zh": "英语作为第二语言与大学预备课程",
       "summary_zh": "Education program on www.bmcc.cuny.edu — click to enroll or learn more.（来源类型：纽约市立大学 — 继续教育、英语课及成人学习）",
       "location_tag_zh": "全市",
       "location_kind": "citywide",
@@ -49,15 +49,15 @@
       "published_at": "",
       "source_published_at": "",
       "first_indexed_at": "2026-06-15 20:30:26",
-      "last_seen_at": "2026-06-15 20:30:26",
+      "last_seen_at": "2026-06-16 12:11:50",
       "date_kind": "event",
       "url": "https://www.bmcc.cuny.edu/ce/esl-college-prep/",
-      "search_text": "live_002 语言·教育 esl and college prep esl and college prep education program on www.bmcc.cuny.edu — click to enroll or learn more.（来源类型：纽约市立大学 — 继续教育、英语课及成人学习） 全市 纽约全市 citywide new york city 2026-06-15 20:30:26 2026-06-22 https://www.bmcc.cuny.edu/ce/esl-college-prep/"
+      "search_text": "live_002 语言·教育 英语作为第二语言与大学预备课程 esl and college prep education program on www.bmcc.cuny.edu — click to enroll or learn more.（来源类型：纽约市立大学 — 继续教育、英语课及成人学习） 全市 纽约全市 citywide new york city 2026-06-15 20:30:26 2026-06-22 https://www.bmcc.cuny.edu/ce/esl-college-prep/"
     },
     {
       "id": "live_003",
       "module": "语言·教育",
-      "title_zh": "ESL Training Programs",
+      "title_zh": "ESL培训项目",
       "summary_zh": "Education program on www.bmcc.cuny.edu — click to enroll or learn more.（来源类型：纽约市立大学 — 继续教育、英语课及成人学习）",
       "location_tag_zh": "全市",
       "location_kind": "citywide",
@@ -69,15 +69,15 @@
       "published_at": "",
       "source_published_at": "",
       "first_indexed_at": "2026-06-15 20:30:26",
-      "last_seen_at": "2026-06-15 20:30:26",
+      "last_seen_at": "2026-06-16 12:11:50",
       "date_kind": "event",
       "url": "https://www.bmcc.cuny.edu/ce/esl-training-programs/",
-      "search_text": "live_003 语言·教育 esl training programs esl training programs education program on www.bmcc.cuny.edu — click to enroll or learn more.（来源类型：纽约市立大学 — 继续教育、英语课及成人学习） 全市 纽约全市 citywide new york city 2026-06-15 20:30:26 2026-06-22 https://www.bmcc.cuny.edu/ce/esl-training-programs/"
+      "search_text": "live_003 语言·教育 esl培训项目 esl training programs education program on www.bmcc.cuny.edu — click to enroll or learn more.（来源类型：纽约市立大学 — 继续教育、英语课及成人学习） 全市 纽约全市 citywide new york city 2026-06-15 20:30:26 2026-06-22 https://www.bmcc.cuny.edu/ce/esl-training-programs/"
     },
     {
       "id": "live_004",
       "module": "语言·教育",
-      "title_zh": "HSE (GED) and ESOL Programs",
+      "title_zh": "HSE（GED）与ESOL项目",
       "summary_zh": "Education program on www.bmcc.cuny.edu — click to enroll or learn more.（来源类型：纽约市立大学 — 继续教育、英语课及成人学习）",
       "location_tag_zh": "全市",
       "location_kind": "citywide",
@@ -89,15 +89,15 @@
       "published_at": "",
       "source_published_at": "",
       "first_indexed_at": "2026-06-15 20:30:26",
-      "last_seen_at": "2026-06-15 20:30:26",
+      "last_seen_at": "2026-06-16 12:11:50",
       "date_kind": "event",
       "url": "https://www.bmcc.cuny.edu/ce/hse-ged-and-esol-programs/",
-      "search_text": "live_004 语言·教育 hse (ged) and esol programs hse (ged) and esol programs education program on www.bmcc.cuny.edu — click to enroll or learn more.（来源类型：纽约市立大学 — 继续教育、英语课及成人学习） 全市 纽约全市 citywide new york city 2026-06-15 20:30:26 2026-06-22 https://www.bmcc.cuny.edu/ce/hse-ged-and-esol-programs/"
+      "search_text": "live_004 语言·教育 hse（ged）与esol项目 hse (ged) and esol programs education program on www.bmcc.cuny.edu — click to enroll or learn more.（来源类型：纽约市立大学 — 继续教育、英语课及成人学习） 全市 纽约全市 citywide new york city 2026-06-15 20:30:26 2026-06-22 https://www.bmcc.cuny.edu/ce/hse-ged-and-esol-programs/"
     },
     {
       "id": "live_005",
       "module": "语言·教育",
-      "title_zh": "Math and Literacy Programs",
+      "title_zh": "数学与读写能力项目",
       "summary_zh": "Education program on www.bmcc.cuny.edu — click to enroll or learn more.（来源类型：纽约市立大学 — 继续教育、英语课及成人学习）",
       "location_tag_zh": "全市",
       "location_kind": "citywide",
@@ -109,15 +109,15 @@
       "published_at": "",
       "source_published_at": "",
       "first_indexed_at": "2026-06-15 20:30:26",
-      "last_seen_at": "2026-06-15 20:30:26",
+      "last_seen_at": "2026-06-16 12:11:50",
       "date_kind": "service",
       "url": "https://www.bmcc.cuny.edu/ce/programs/",
-      "search_text": "live_005 语言·教育 math and literacy programs math and literacy programs education program on www.bmcc.cuny.edu — click to enroll or learn more.（来源类型：纽约市立大学 — 继续教育、英语课及成人学习） 全市 纽约全市 citywide new york city 2026-06-15 20:30:26 https://www.bmcc.cuny.edu/ce/programs/"
+      "search_text": "live_005 语言·教育 数学与读写能力项目 math and literacy programs education program on www.bmcc.cuny.edu — click to enroll or learn more.（来源类型：纽约市立大学 — 继续教育、英语课及成人学习） 全市 纽约全市 citywide new york city 2026-06-15 20:30:26 https://www.bmcc.cuny.edu/ce/programs/"
     },
     {
       "id": "live_006",
       "module": "语言·教育",
-      "title_zh": "High School Equivalency (HSE/GED)",
+      "title_zh": "高中同等学历（HSE/GED）",
       "summary_zh": "Education program on www.kingsborough.edu — click to enroll or learn more.（来源类型：纽约市立大学 — 继续教育、英语课及成人学习）",
       "location_tag_zh": "全市",
       "location_kind": "citywide",
@@ -129,10 +129,10 @@
       "published_at": "",
       "source_published_at": "",
       "first_indexed_at": "2026-06-15 20:30:26",
-      "last_seen_at": "2026-06-15 20:30:26",
+      "last_seen_at": "2026-06-16 12:11:50",
       "date_kind": "event",
       "url": "https://www.kingsborough.edu/ce/hse_courses.html",
-      "search_text": "live_006 语言·教育 high school equivalency (hse/ged) high school equivalency (hse/ged) education program on www.kingsborough.edu — click to enroll or learn more.（来源类型：纽约市立大学 — 继续教育、英语课及成人学习） 全市 纽约全市 citywide new york city 2026-06-15 20:30:26 2026-06-22 https://www.kingsborough.edu/ce/hse_courses.html"
+      "search_text": "live_006 语言·教育 高中同等学历（hse/ged） high school equivalency (hse/ged) education program on www.kingsborough.edu — click to enroll or learn more.（来源类型：纽约市立大学 — 继续教育、英语课及成人学习） 全市 纽约全市 citywide new york city 2026-06-15 20:30:26 2026-06-22 https://www.kingsborough.edu/ce/hse_courses.html"
     },
     {
       "id": "live_007",
@@ -157,7 +157,7 @@
     {
       "id": "live_008",
       "module": "语言·教育",
-      "title_zh": "QCC Continuing Education Swim Program",
+      "title_zh": "QCC 继续教育游泳项目",
       "summary_zh": "Education program on www.qcc.cuny.edu — click to enroll or learn more.（来源类型：纽约市立大学 — 继续教育、英语课及成人学习）",
       "location_tag_zh": "全市",
       "location_kind": "citywide",
@@ -169,15 +169,15 @@
       "published_at": "",
       "source_published_at": "",
       "first_indexed_at": "2026-06-15 20:30:26",
-      "last_seen_at": "2026-06-15 20:30:26",
+      "last_seen_at": "2026-06-16 12:11:50",
       "date_kind": "event",
       "url": "https://www.qcc.cuny.edu/ce/courses/qcc-continuing-education-swim-program.html",
-      "search_text": "live_008 语言·教育 qcc continuing education swim program qcc continuing education swim program education program on www.qcc.cuny.edu — click to enroll or learn more.（来源类型：纽约市立大学 — 继续教育、英语课及成人学习） 全市 纽约全市 citywide new york city 2026-06-15 20:30:26 2026-06-22 https://www.qcc.cuny.edu/ce/courses/qcc-continuing-education-swim-program.html"
+      "search_text": "live_008 语言·教育 qcc 继续教育游泳项目 qcc continuing education swim program education program on www.qcc.cuny.edu — click to enroll or learn more.（来源类型：纽约市立大学 — 继续教育、英语课及成人学习） 全市 纽约全市 citywide new york city 2026-06-15 20:30:26 2026-06-22 https://www.qcc.cuny.edu/ce/courses/qcc-continuing-education-swim-program.html"
     },
     {
       "id": "live_009",
       "module": "就业·培训",
-      "title_zh": "Continuing Education Workforce Development",
+      "title_zh": "继续教育与劳动力发展",
       "summary_zh": "Education program on www.qcc.cuny.edu — click to enroll or learn more.（来源类型：纽约市立大学 — 继续教育、英语课及成人学习）",
       "location_tag_zh": "全市",
       "location_kind": "citywide",
@@ -189,15 +189,15 @@
       "published_at": "",
       "source_published_at": "",
       "first_indexed_at": "2026-06-15 20:30:26",
-      "last_seen_at": "2026-06-15 20:30:26",
+      "last_seen_at": "2026-06-16 12:11:50",
       "date_kind": "event",
       "url": "https://www.qcc.cuny.edu/ce/index.html",
-      "search_text": "live_009 就业·培训 continuing education workforce development continuing education workforce development education program on www.qcc.cuny.edu — click to enroll or learn more.（来源类型：纽约市立大学 — 继续教育、英语课及成人学习） 全市 纽约全市 citywide new york city 2026-06-15 20:30:26 2026-06-22 https://www.qcc.cuny.edu/ce/index.html"
+      "search_text": "live_009 就业·培训 继续教育与劳动力发展 continuing education workforce development education program on www.qcc.cuny.edu — click to enroll or learn more.（来源类型：纽约市立大学 — 继续教育、英语课及成人学习） 全市 纽约全市 citywide new york city 2026-06-15 20:30:26 2026-06-22 https://www.qcc.cuny.edu/ce/index.html"
     },
     {
       "id": "live_010",
       "module": "就业·培训",
-      "title_zh": "Center for Continuing Education Workforce Development",
+      "title_zh": "继续教育与劳动力发展中心",
       "summary_zh": "Education program on www.bmcc.cuny.edu — click to enroll or learn more.（来源类型：纽约市立大学 — 继续教育、英语课及成人学习）",
       "location_tag_zh": "全市",
       "location_kind": "citywide",
@@ -209,15 +209,15 @@
       "published_at": "",
       "source_published_at": "",
       "first_indexed_at": "2026-06-15 20:30:26",
-      "last_seen_at": "2026-06-15 20:30:26",
+      "last_seen_at": "2026-06-16 12:11:50",
       "date_kind": "service",
       "url": "https://www.bmcc.cuny.edu/ce/contact/",
-      "search_text": "live_010 就业·培训 center for continuing education workforce development center for continuing education workforce development education program on www.bmcc.cuny.edu — click to enroll or learn more.（来源类型：纽约市立大学 — 继续教育、英语课及成人学习） 全市 纽约全市 citywide new york city 2026-06-15 20:30:26 https://www.bmcc.cuny.edu/ce/contact/"
+      "search_text": "live_010 就业·培训 继续教育与劳动力发展中心 center for continuing education workforce development education program on www.bmcc.cuny.edu — click to enroll or learn more.（来源类型：纽约市立大学 — 继续教育、英语课及成人学习） 全市 纽约全市 citywide new york city 2026-06-15 20:30:26 https://www.bmcc.cuny.edu/ce/contact/"
     },
     {
       "id": "live_011",
       "module": "就业·培训",
-      "title_zh": "New York Workforce Resources",
+      "title_zh": "纽约劳动力资源",
       "summary_zh": "Education program on www.bmcc.cuny.edu — click to enroll or learn more.（来源类型：纽约市立大学 — 继续教育、英语课及成人学习）",
       "location_tag_zh": "全市",
       "location_kind": "citywide",
@@ -229,10 +229,10 @@
       "published_at": "",
       "source_published_at": "",
       "first_indexed_at": "2026-06-15 20:30:26",
-      "last_seen_at": "2026-06-15 20:30:26",
+      "last_seen_at": "2026-06-16 12:11:50",
       "date_kind": "event",
       "url": "https://www.bmcc.cuny.edu/ce/bmcc-nyc-workforce-resources/",
-      "search_text": "live_011 就业·培训 new york workforce resources new york workforce resources education program on www.bmcc.cuny.edu — click to enroll or learn more.（来源类型：纽约市立大学 — 继续教育、英语课及成人学习） 全市 纽约全市 citywide new york city 2026-06-15 20:30:26 2026-06-22 https://www.bmcc.cuny.edu/ce/bmcc-nyc-workforce-resources/"
+      "search_text": "live_011 就业·培训 纽约劳动力资源 new york workforce resources education program on www.bmcc.cuny.edu — click to enroll or learn more.（来源类型：纽约市立大学 — 继续教育、英语课及成人学习） 全市 纽约全市 citywide new york city 2026-06-15 20:30:26 2026-06-22 https://www.bmcc.cuny.edu/ce/bmcc-nyc-workforce-resources/"
     },
     {
       "id": "live_012",
@@ -1337,7 +1337,7 @@
     {
       "id": "live_067",
       "module": "文化·节庆",
-      "title_zh": "Queens Jazz Trail Concert: Itai Kriss & Televanna",
+      "title_zh": "皇后区爵士音乐会：Itai Kriss & Televanna",
       "summary_zh": "queens jazz trail concert itai kriss televanna（来源类型：纽约市公园局 — 节庆、音乐会及免费活动（主力来源））",
       "location_tag_zh": "皇后区 Queens",
       "location_kind": "borough",
@@ -1349,13 +1349,53 @@
       "published_at": "",
       "source_published_at": "",
       "first_indexed_at": "2026-06-15 20:30:26",
-      "last_seen_at": "2026-06-15 20:30:26",
+      "last_seen_at": "2026-06-16 09:02:54",
       "date_kind": "event",
       "url": "https://www.nycgovparks.org/events/2026/07/09/queens-jazz-trail-concert-itai-kriss-televanna",
-      "search_text": "live_067 文化·节庆 queens jazz trail concert: itai kriss & televanna queens jazz trail concert: itai kriss & televanna queens jazz trail concert itai kriss televanna（来源类型：纽约市公园局 — 节庆、音乐会及免费活动（主力来源）） 皇后区 queens 皇后区 queens queens at 2026-06-15 20:30:26 2026-07-09 https://www.nycgovparks.org/events/2026/07/09/queens-jazz-trail-concert-itai-kriss-televanna"
+      "search_text": "live_067 文化·节庆 皇后区爵士音乐会：itai kriss & televanna queens jazz trail concert: itai kriss & televanna queens jazz trail concert itai kriss televanna（来源类型：纽约市公园局 — 节庆、音乐会及免费活动（主力来源）） 皇后区 queens 皇后区 queens queens at 2026-06-15 20:30:26 2026-07-09 https://www.nycgovparks.org/events/2026/07/09/queens-jazz-trail-concert-itai-kriss-televanna"
     },
     {
       "id": "live_068",
+      "module": "亲子·公园",
+      "title_zh": "动感儿童：Bowne 游乐场",
+      "summary_zh": "kids in motion bowne playground（来源类型：纽约市公园局 — 节庆、音乐会及免费活动（主力来源））",
+      "location_tag_zh": "法拉盛 Flushing",
+      "location_kind": "enclave",
+      "area_zh": "法拉盛 Flushing",
+      "borough": "Queens",
+      "location": "at",
+      "event_date": "2026-06-17",
+      "event_time": "",
+      "published_at": "",
+      "source_published_at": "",
+      "first_indexed_at": "2026-06-15 20:30:26",
+      "last_seen_at": "2026-06-16 09:02:54",
+      "date_kind": "event",
+      "url": "https://www.nycgovparks.org/events/2026/06/17/kids-in-motion-bowne-playground",
+      "search_text": "live_068 亲子·公园 动感儿童：bowne 游乐场 kids in motion: bowne playground kids in motion bowne playground（来源类型：纽约市公园局 — 节庆、音乐会及免费活动（主力来源）） 法拉盛 flushing 法拉盛 flushing queens at 2026-06-15 20:30:26 2026-06-17 https://www.nycgovparks.org/events/2026/06/17/kids-in-motion-bowne-playground"
+    },
+    {
+      "id": "live_069",
+      "module": "亲子·公园",
+      "title_zh": "动感儿童：Bowne 游乐场",
+      "summary_zh": "kids in motion bowne playground（来源类型：纽约市公园局 — 节庆、音乐会及免费活动（主力来源））",
+      "location_tag_zh": "法拉盛 Flushing",
+      "location_kind": "enclave",
+      "area_zh": "法拉盛 Flushing",
+      "borough": "Queens",
+      "location": "at",
+      "event_date": "2026-06-16",
+      "event_time": "",
+      "published_at": "",
+      "source_published_at": "",
+      "first_indexed_at": "2026-06-15 20:30:26",
+      "last_seen_at": "2026-06-16 09:02:54",
+      "date_kind": "event",
+      "url": "https://www.nycgovparks.org/events/2026/06/16/kids-in-motion-bowne-playground",
+      "search_text": "live_069 亲子·公园 动感儿童：bowne 游乐场 kids in motion: bowne playground kids in motion bowne playground（来源类型：纽约市公园局 — 节庆、音乐会及免费活动（主力来源）） 法拉盛 flushing 法拉盛 flushing queens at 2026-06-15 20:30:26 2026-06-16 https://www.nycgovparks.org/events/2026/06/16/kids-in-motion-bowne-playground"
+    },
+    {
+      "id": "live_070",
       "module": "亲子·公园",
       "title_zh": "动感儿童：Bowne Playground 鲍恩游乐场",
       "summary_zh": "kids in motion bowne playground（来源类型：纽约市公园局 — 节庆、音乐会及免费活动（主力来源））",
@@ -1372,10 +1412,10 @@
       "last_seen_at": "2026-06-15 20:30:26",
       "date_kind": "event",
       "url": "https://www.nycgovparks.org/events/2026/06/13/kids-in-motion-bowne-playground",
-      "search_text": "live_068 亲子·公园 动感儿童：bowne playground 鲍恩游乐场 kids in motion: bowne playground kids in motion bowne playground（来源类型：纽约市公园局 — 节庆、音乐会及免费活动（主力来源）） 皇后区 queens 皇后区 queens queens 2026-06-15 20:30:26 2026-06-13 https://www.nycgovparks.org/events/2026/06/13/kids-in-motion-bowne-playground"
+      "search_text": "live_070 亲子·公园 动感儿童：bowne playground 鲍恩游乐场 kids in motion: bowne playground kids in motion bowne playground（来源类型：纽约市公园局 — 节庆、音乐会及免费活动（主力来源）） 皇后区 queens 皇后区 queens queens 2026-06-15 20:30:26 2026-06-13 https://www.nycgovparks.org/events/2026/06/13/kids-in-motion-bowne-playground"
     },
     {
-      "id": "live_069",
+      "id": "live_071",
       "module": "亲子·公园",
       "title_zh": "Lentol Garden 的第四届家庭骄傲派对",
       "summary_zh": "lentol gardens 4th annual family pride party（来源类型：纽约市公园局 — 节庆、音乐会及免费活动（主力来源））",
@@ -1392,10 +1432,10 @@
       "last_seen_at": "2026-06-15 20:30:26",
       "date_kind": "event",
       "url": "https://www.nycgovparks.org/events/2026/06/13/lentol-gardens-4th-annual-family-pride-party",
-      "search_text": "live_069 亲子·公园 lentol garden 的第四届家庭骄傲派对 lentol garden's 4th annual family pride party lentol gardens 4th annual family pride party（来源类型：纽约市公园局 — 节庆、音乐会及免费活动（主力来源）） 纽约全市 纽约全市 citywide 2026-06-15 20:30:26 2026-06-13 https://www.nycgovparks.org/events/2026/06/13/lentol-gardens-4th-annual-family-pride-party"
+      "search_text": "live_071 亲子·公园 lentol garden 的第四届家庭骄傲派对 lentol garden's 4th annual family pride party lentol gardens 4th annual family pride party（来源类型：纽约市公园局 — 节庆、音乐会及免费活动（主力来源）） 纽约全市 纽约全市 citywide 2026-06-15 20:30:26 2026-06-13 https://www.nycgovparks.org/events/2026/06/13/lentol-gardens-4th-annual-family-pride-party"
     },
     {
-      "id": "live_070",
+      "id": "live_072",
       "module": "亲子·公园",
       "title_zh": "动感儿童：Bowne Playground 鲍恩游乐场",
       "summary_zh": "kids in motion bowne playground（来源类型：纽约市公园局 — 节庆、音乐会及免费活动（主力来源））",
@@ -1412,36 +1452,16 @@
       "last_seen_at": "2026-06-15 20:30:26",
       "date_kind": "event",
       "url": "https://www.nycgovparks.org/events/2026/06/12/kids-in-motion-bowne-playground",
-      "search_text": "live_070 亲子·公园 动感儿童：bowne playground 鲍恩游乐场 kids in motion: bowne playground kids in motion bowne playground（来源类型：纽约市公园局 — 节庆、音乐会及免费活动（主力来源）） 皇后区 queens 皇后区 queens queens 2026-06-15 20:30:26 2026-06-12 https://www.nycgovparks.org/events/2026/06/12/kids-in-motion-bowne-playground"
+      "search_text": "live_072 亲子·公园 动感儿童：bowne playground 鲍恩游乐场 kids in motion: bowne playground kids in motion bowne playground（来源类型：纽约市公园局 — 节庆、音乐会及免费活动（主力来源）） 皇后区 queens 皇后区 queens queens 2026-06-15 20:30:26 2026-06-12 https://www.nycgovparks.org/events/2026/06/12/kids-in-motion-bowne-playground"
     },
     {
-      "id": "live_071",
-      "module": "亲子·公园",
-      "title_zh": "Kids In Motion: Bowne Playground",
-      "summary_zh": "kids in motion bowne playground（来源类型：纽约市公园局 — 节庆、音乐会及免费活动（主力来源））",
-      "location_tag_zh": "法拉盛 Flushing",
-      "location_kind": "enclave",
-      "area_zh": "法拉盛 Flushing",
-      "borough": "Queens",
-      "location": "at",
-      "event_date": "2026-06-17",
-      "event_time": "",
-      "published_at": "",
-      "source_published_at": "",
-      "first_indexed_at": "2026-06-15 20:30:26",
-      "last_seen_at": "2026-06-15 20:30:26",
-      "date_kind": "event",
-      "url": "https://www.nycgovparks.org/events/2026/06/17/kids-in-motion-bowne-playground",
-      "search_text": "live_071 亲子·公园 kids in motion: bowne playground kids in motion: bowne playground kids in motion bowne playground（来源类型：纽约市公园局 — 节庆、音乐会及免费活动（主力来源）） 法拉盛 flushing 法拉盛 flushing queens at 2026-06-15 20:30:26 2026-06-17 https://www.nycgovparks.org/events/2026/06/17/kids-in-motion-bowne-playground"
-    },
-    {
-      "id": "live_072",
-      "module": "亲子·公园",
-      "title_zh": "Kids In Motion: Bowne Playground",
-      "summary_zh": "kids in motion bowne playground（来源类型：纽约市公园局 — 节庆、音乐会及免费活动（主力来源））",
-      "location_tag_zh": "法拉盛 Flushing",
-      "location_kind": "enclave",
-      "area_zh": "法拉盛 Flushing",
+      "id": "live_073",
+      "module": "健身·户外",
+      "title_zh": "皇后区夏季体育体验",
+      "summary_zh": "queens recreation summer sports experience（来源类型：纽约市公园局 — 节庆、音乐会及免费活动（主力来源））",
+      "location_tag_zh": "皇后区 Queens",
+      "location_kind": "borough",
+      "area_zh": "皇后区 Queens",
       "borough": "Queens",
       "location": "at",
       "event_date": "2026-06-16",
@@ -1449,13 +1469,33 @@
       "published_at": "",
       "source_published_at": "",
       "first_indexed_at": "2026-06-15 20:30:26",
-      "last_seen_at": "2026-06-15 20:30:26",
+      "last_seen_at": "2026-06-16 09:02:54",
       "date_kind": "event",
-      "url": "https://www.nycgovparks.org/events/2026/06/16/kids-in-motion-bowne-playground",
-      "search_text": "live_072 亲子·公园 kids in motion: bowne playground kids in motion: bowne playground kids in motion bowne playground（来源类型：纽约市公园局 — 节庆、音乐会及免费活动（主力来源）） 法拉盛 flushing 法拉盛 flushing queens at 2026-06-15 20:30:26 2026-06-16 https://www.nycgovparks.org/events/2026/06/16/kids-in-motion-bowne-playground"
+      "url": "https://www.nycgovparks.org/events/2026/06/16/queens-recreation-summer-sports-experience",
+      "search_text": "live_073 健身·户外 皇后区夏季体育体验 queens recreation summer sports experience queens recreation summer sports experience（来源类型：纽约市公园局 — 节庆、音乐会及免费活动（主力来源）） 皇后区 queens 皇后区 queens queens at 2026-06-15 20:30:26 2026-06-16 https://www.nycgovparks.org/events/2026/06/16/queens-recreation-summer-sports-experience"
     },
     {
-      "id": "live_073",
+      "id": "live_074",
+      "module": "健身·户外",
+      "title_zh": "皇后区夏季体育体验",
+      "summary_zh": "queens recreation summer sports experience（来源类型：纽约市公园局 — 节庆、音乐会及免费活动（主力来源））",
+      "location_tag_zh": "皇后区 Queens",
+      "location_kind": "borough",
+      "area_zh": "皇后区 Queens",
+      "borough": "Queens",
+      "location": "at",
+      "event_date": "2026-06-17",
+      "event_time": "",
+      "published_at": "",
+      "source_published_at": "",
+      "first_indexed_at": "2026-06-16 09:02:54",
+      "last_seen_at": "2026-06-16 09:02:54",
+      "date_kind": "event",
+      "url": "https://www.nycgovparks.org/events/2026/06/17/queens-recreation-summer-sports-experience",
+      "search_text": "live_074 健身·户外 皇后区夏季体育体验 queens recreation summer sports experience queens recreation summer sports experience（来源类型：纽约市公园局 — 节庆、音乐会及免费活动（主力来源）） 皇后区 queens 皇后区 queens queens at 2026-06-16 09:02:54 2026-06-17 https://www.nycgovparks.org/events/2026/06/17/queens-recreation-summer-sports-experience"
+    },
+    {
+      "id": "live_075",
       "module": "亲子·公园",
       "title_zh": "本森赫斯特家庭乐趣日",
       "summary_zh": "family fun day at bensonhurst（来源类型：纽约市公园局 — 节庆、音乐会及免费活动（主力来源））",
@@ -1472,10 +1512,10 @@
       "last_seen_at": "2026-06-15 20:30:26",
       "date_kind": "event",
       "url": "https://www.nycgovparks.org/events/2026/06/14/family-fun-day-at-bensonhurst",
-      "search_text": "live_073 亲子·公园 本森赫斯特家庭乐趣日 family fun day at bensonhurst family fun day at bensonhurst（来源类型：纽约市公园局 — 节庆、音乐会及免费活动（主力来源）） 布鲁克林 brooklyn 布鲁克林 brooklyn brooklyn 2026-06-15 20:30:26 2026-06-14 https://www.nycgovparks.org/events/2026/06/14/family-fun-day-at-bensonhurst"
+      "search_text": "live_075 亲子·公园 本森赫斯特家庭乐趣日 family fun day at bensonhurst family fun day at bensonhurst（来源类型：纽约市公园局 — 节庆、音乐会及免费活动（主力来源）） 布鲁克林 brooklyn 布鲁克林 brooklyn brooklyn 2026-06-15 20:30:26 2026-06-14 https://www.nycgovparks.org/events/2026/06/14/family-fun-day-at-bensonhurst"
     },
     {
-      "id": "live_074",
+      "id": "live_076",
       "module": "健身·户外",
       "title_zh": "皇后区夏季运动体验",
       "summary_zh": "queens recreation summer sports experience（来源类型：纽约市公园局 — 节庆、音乐会及免费活动（主力来源））",
@@ -1492,10 +1532,10 @@
       "last_seen_at": "2026-06-15 20:30:26",
       "date_kind": "event",
       "url": "https://www.nycgovparks.org/events/2026/06/13/queens-recreation-summer-sports-experience",
-      "search_text": "live_074 健身·户外 皇后区夏季运动体验 queens recreation summer sports experience queens recreation summer sports experience（来源类型：纽约市公园局 — 节庆、音乐会及免费活动（主力来源）） 皇后区 queens 皇后区 queens queens 2026-06-15 20:30:26 2026-06-13 https://www.nycgovparks.org/events/2026/06/13/queens-recreation-summer-sports-experience"
+      "search_text": "live_076 健身·户外 皇后区夏季运动体验 queens recreation summer sports experience queens recreation summer sports experience（来源类型：纽约市公园局 — 节庆、音乐会及免费活动（主力来源）） 皇后区 queens 皇后区 queens queens 2026-06-15 20:30:26 2026-06-13 https://www.nycgovparks.org/events/2026/06/13/queens-recreation-summer-sports-experience"
     },
     {
-      "id": "live_075",
+      "id": "live_077",
       "module": "健身·户外",
       "title_zh": "皇后区夏季运动体验",
       "summary_zh": "queens recreation summer sports experience（来源类型：纽约市公园局 — 节庆、音乐会及免费活动（主力来源））",
@@ -1512,32 +1552,12 @@
       "last_seen_at": "2026-06-15 20:30:26",
       "date_kind": "event",
       "url": "https://www.nycgovparks.org/events/2026/06/12/queens-recreation-summer-sports-experience",
-      "search_text": "live_075 健身·户外 皇后区夏季运动体验 queens recreation summer sports experience queens recreation summer sports experience（来源类型：纽约市公园局 — 节庆、音乐会及免费活动（主力来源）） 皇后区 queens 皇后区 queens queens 2026-06-15 20:30:26 2026-06-12 https://www.nycgovparks.org/events/2026/06/12/queens-recreation-summer-sports-experience"
+      "search_text": "live_077 健身·户外 皇后区夏季运动体验 queens recreation summer sports experience queens recreation summer sports experience（来源类型：纽约市公园局 — 节庆、音乐会及免费活动（主力来源）） 皇后区 queens 皇后区 queens queens 2026-06-15 20:30:26 2026-06-12 https://www.nycgovparks.org/events/2026/06/12/queens-recreation-summer-sports-experience"
     },
     {
-      "id": "live_076",
-      "module": "健身·户外",
-      "title_zh": "Queens Recreation Summer Sports Experience",
-      "summary_zh": "queens recreation summer sports experience（来源类型：纽约市公园局 — 节庆、音乐会及免费活动（主力来源））",
-      "location_tag_zh": "皇后区 Queens",
-      "location_kind": "borough",
-      "area_zh": "皇后区 Queens",
-      "borough": "Queens",
-      "location": "at",
-      "event_date": "2026-06-16",
-      "event_time": "",
-      "published_at": "",
-      "source_published_at": "",
-      "first_indexed_at": "2026-06-15 20:30:26",
-      "last_seen_at": "2026-06-15 20:30:26",
-      "date_kind": "event",
-      "url": "https://www.nycgovparks.org/events/2026/06/16/queens-recreation-summer-sports-experience",
-      "search_text": "live_076 健身·户外 queens recreation summer sports experience queens recreation summer sports experience queens recreation summer sports experience（来源类型：纽约市公园局 — 节庆、音乐会及免费活动（主力来源）） 皇后区 queens 皇后区 queens queens at 2026-06-15 20:30:26 2026-06-16 https://www.nycgovparks.org/events/2026/06/16/queens-recreation-summer-sports-experience"
-    },
-    {
-      "id": "live_077",
+      "id": "live_078",
       "module": "亲子·公园",
-      "title_zh": "Kids in Motion: Tie Dye",
+      "title_zh": "动感儿童：扎染",
       "summary_zh": "kids in motion tie dye（来源类型：纽约市公园局 — 节庆、音乐会及免费活动（主力来源））",
       "location_tag_zh": "全市",
       "location_kind": "citywide",
@@ -1549,15 +1569,15 @@
       "published_at": "",
       "source_published_at": "",
       "first_indexed_at": "2026-06-15 20:30:26",
-      "last_seen_at": "2026-06-15 20:30:26",
+      "last_seen_at": "2026-06-16 09:02:54",
       "date_kind": "event",
       "url": "https://www.nycgovparks.org/events/2026/07/11/kids-in-motion-tie-dye",
-      "search_text": "live_077 亲子·公园 kids in motion: tie dye kids in motion: tie dye kids in motion tie dye（来源类型：纽约市公园局 — 节庆、音乐会及免费活动（主力来源）） 全市 纽约全市 citywide at 2026-06-15 20:30:26 2026-07-11 https://www.nycgovparks.org/events/2026/07/11/kids-in-motion-tie-dye"
+      "search_text": "live_078 亲子·公园 动感儿童：扎染 kids in motion: tie dye kids in motion tie dye（来源类型：纽约市公园局 — 节庆、音乐会及免费活动（主力来源）） 全市 纽约全市 citywide at 2026-06-15 20:30:26 2026-07-11 https://www.nycgovparks.org/events/2026/07/11/kids-in-motion-tie-dye"
     },
     {
-      "id": "live_078",
+      "id": "live_079",
       "module": "亲子·公园",
-      "title_zh": "Kids in Motion: Tie Dye",
+      "title_zh": "动感儿童：扎染",
       "summary_zh": "kids in motion tie dye（来源类型：纽约市公园局 — 节庆、音乐会及免费活动（主力来源））",
       "location_tag_zh": "全市",
       "location_kind": "citywide",
@@ -1569,13 +1589,193 @@
       "published_at": "",
       "source_published_at": "",
       "first_indexed_at": "2026-06-15 20:30:26",
-      "last_seen_at": "2026-06-15 20:30:26",
+      "last_seen_at": "2026-06-16 09:02:54",
       "date_kind": "event",
       "url": "https://www.nycgovparks.org/events/2026/07/03/kids-in-motion-tie-dye",
-      "search_text": "live_078 亲子·公园 kids in motion: tie dye kids in motion: tie dye kids in motion tie dye（来源类型：纽约市公园局 — 节庆、音乐会及免费活动（主力来源）） 全市 纽约全市 citywide at 2026-06-15 20:30:26 2026-07-03 https://www.nycgovparks.org/events/2026/07/03/kids-in-motion-tie-dye"
+      "search_text": "live_079 亲子·公园 动感儿童：扎染 kids in motion: tie dye kids in motion tie dye（来源类型：纽约市公园局 — 节庆、音乐会及免费活动（主力来源）） 全市 纽约全市 citywide at 2026-06-15 20:30:26 2026-07-03 https://www.nycgovparks.org/events/2026/07/03/kids-in-motion-tie-dye"
     },
     {
-      "id": "live_079",
+      "id": "live_080",
+      "module": "亲子·公园",
+      "title_zh": "动感儿童：Alley/Springfield 游乐场",
+      "summary_zh": "kids in motion alleyspringfield playground（来源类型：纽约市公园局 — 节庆、音乐会及免费活动（主力来源））",
+      "location_tag_zh": "全市",
+      "location_kind": "citywide",
+      "area_zh": "纽约全市",
+      "borough": "Citywide",
+      "location": "at",
+      "event_date": "2026-06-17",
+      "event_time": "",
+      "published_at": "",
+      "source_published_at": "",
+      "first_indexed_at": "2026-06-15 20:30:26",
+      "last_seen_at": "2026-06-16 09:02:54",
+      "date_kind": "event",
+      "url": "https://www.nycgovparks.org/events/2026/06/17/kids-in-motion-alleyspringfield-playground",
+      "search_text": "live_080 亲子·公园 动感儿童：alley/springfield 游乐场 kids in motion: alley/springfield playground kids in motion alleyspringfield playground（来源类型：纽约市公园局 — 节庆、音乐会及免费活动（主力来源）） 全市 纽约全市 citywide at 2026-06-15 20:30:26 2026-06-17 https://www.nycgovparks.org/events/2026/06/17/kids-in-motion-alleyspringfield-playground"
+    },
+    {
+      "id": "live_081",
+      "module": "亲子·公园",
+      "title_zh": "动感儿童：Anne Loftus 游乐场",
+      "summary_zh": "kids in motion anne loftus playground（来源类型：纽约市公园局 — 节庆、音乐会及免费活动（主力来源））",
+      "location_tag_zh": "全市",
+      "location_kind": "citywide",
+      "area_zh": "纽约全市",
+      "borough": "Citywide",
+      "location": "at",
+      "event_date": "2026-06-17",
+      "event_time": "",
+      "published_at": "",
+      "source_published_at": "",
+      "first_indexed_at": "2026-06-15 20:30:26",
+      "last_seen_at": "2026-06-16 09:02:54",
+      "date_kind": "event",
+      "url": "https://www.nycgovparks.org/events/2026/06/17/kids-in-motion-anne-loftus-playground",
+      "search_text": "live_081 亲子·公园 动感儿童：anne loftus 游乐场 kids in motion: anne loftus playground kids in motion anne loftus playground（来源类型：纽约市公园局 — 节庆、音乐会及免费活动（主力来源）） 全市 纽约全市 citywide at 2026-06-15 20:30:26 2026-06-17 https://www.nycgovparks.org/events/2026/06/17/kids-in-motion-anne-loftus-playground"
+    },
+    {
+      "id": "live_082",
+      "module": "文化·节庆",
+      "title_zh": "动感儿童：Arrochar",
+      "summary_zh": "kim arrochar（来源类型：纽约市公园局 — 节庆、音乐会及免费活动（主力来源））",
+      "location_tag_zh": "全市",
+      "location_kind": "citywide",
+      "area_zh": "纽约全市",
+      "borough": "Citywide",
+      "location": "at",
+      "event_date": "2026-06-17",
+      "event_time": "",
+      "published_at": "",
+      "source_published_at": "",
+      "first_indexed_at": "2026-06-15 20:30:26",
+      "last_seen_at": "2026-06-16 09:02:54",
+      "date_kind": "event",
+      "url": "https://www.nycgovparks.org/events/2026/06/17/kim-arrochar",
+      "search_text": "live_082 文化·节庆 动感儿童：arrochar kids in motion: arrochar kim arrochar（来源类型：纽约市公园局 — 节庆、音乐会及免费活动（主力来源）） 全市 纽约全市 citywide at 2026-06-15 20:30:26 2026-06-17 https://www.nycgovparks.org/events/2026/06/17/kim-arrochar"
+    },
+    {
+      "id": "live_083",
+      "module": "亲子·公园",
+      "title_zh": "动感儿童：扎染",
+      "summary_zh": "kids in motion tie dye（来源类型：纽约市公园局 — 节庆、音乐会及免费活动（主力来源））",
+      "location_tag_zh": "全市",
+      "location_kind": "citywide",
+      "area_zh": "纽约全市",
+      "borough": "Citywide",
+      "location": "at",
+      "event_date": "2026-07-25",
+      "event_time": "",
+      "published_at": "",
+      "source_published_at": "",
+      "first_indexed_at": "2026-06-15 20:30:26",
+      "last_seen_at": "2026-06-16 09:02:54",
+      "date_kind": "event",
+      "url": "https://www.nycgovparks.org/events/2026/07/25/kids-in-motion-tie-dye",
+      "search_text": "live_083 亲子·公园 动感儿童：扎染 kids in motion: tie dye kids in motion tie dye（来源类型：纽约市公园局 — 节庆、音乐会及免费活动（主力来源）） 全市 纽约全市 citywide at 2026-06-15 20:30:26 2026-07-25 https://www.nycgovparks.org/events/2026/07/25/kids-in-motion-tie-dye"
+    },
+    {
+      "id": "live_084",
+      "module": "文化·节庆",
+      "title_zh": "动感儿童：Faber",
+      "summary_zh": "kim faber（来源类型：纽约市公园局 — 节庆、音乐会及免费活动（主力来源））",
+      "location_tag_zh": "全市",
+      "location_kind": "citywide",
+      "area_zh": "纽约全市",
+      "borough": "Citywide",
+      "location": "at",
+      "event_date": "2026-06-17",
+      "event_time": "",
+      "published_at": "",
+      "source_published_at": "",
+      "first_indexed_at": "2026-06-15 20:30:26",
+      "last_seen_at": "2026-06-16 09:02:54",
+      "date_kind": "event",
+      "url": "https://www.nycgovparks.org/events/2026/06/17/kim-faber",
+      "search_text": "live_084 文化·节庆 动感儿童：faber kids in motion: faber kim faber（来源类型：纽约市公园局 — 节庆、音乐会及免费活动（主力来源）） 全市 纽约全市 citywide at 2026-06-15 20:30:26 2026-06-17 https://www.nycgovparks.org/events/2026/06/17/kim-faber"
+    },
+    {
+      "id": "live_085",
+      "module": "健身·户外",
+      "title_zh": "Zumba",
+      "summary_zh": "zumba（来源类型：纽约市公园局 — 节庆、音乐会及免费活动（主力来源））",
+      "location_tag_zh": "全市",
+      "location_kind": "citywide",
+      "area_zh": "纽约全市",
+      "borough": "Citywide",
+      "location": "at",
+      "event_date": "2026-06-18",
+      "event_time": "",
+      "published_at": "",
+      "source_published_at": "",
+      "first_indexed_at": "2026-06-16 09:02:54",
+      "last_seen_at": "2026-06-16 09:02:54",
+      "date_kind": "event",
+      "url": "https://www.nycgovparks.org/events/2026/06/18/zumba",
+      "search_text": "live_085 健身·户外 zumba zumba zumba（来源类型：纽约市公园局 — 节庆、音乐会及免费活动（主力来源）） 全市 纽约全市 citywide at 2026-06-16 09:02:54 2026-06-18 https://www.nycgovparks.org/events/2026/06/18/zumba"
+    },
+    {
+      "id": "live_086",
+      "module": "健身·户外",
+      "title_zh": "尊巴舞：夏季启动",
+      "summary_zh": "zumba summer kickoff（来源类型：纽约市公园局 — 节庆、音乐会及免费活动（主力来源））",
+      "location_tag_zh": "全市",
+      "location_kind": "citywide",
+      "area_zh": "纽约全市",
+      "borough": "Citywide",
+      "location": "at",
+      "event_date": "2026-06-18",
+      "event_time": "",
+      "published_at": "",
+      "source_published_at": "",
+      "first_indexed_at": "2026-06-16 09:02:54",
+      "last_seen_at": "2026-06-16 09:02:54",
+      "date_kind": "event",
+      "url": "https://www.nycgovparks.org/events/2026/06/18/zumba-summer-kickoff",
+      "search_text": "live_086 健身·户外 尊巴舞：夏季启动 zumba: summer kickoff zumba summer kickoff（来源类型：纽约市公园局 — 节庆、音乐会及免费活动（主力来源）） 全市 纽约全市 citywide at 2026-06-16 09:02:54 2026-06-18 https://www.nycgovparks.org/events/2026/06/18/zumba-summer-kickoff"
+    },
+    {
+      "id": "live_087",
+      "module": "健身·户外",
+      "title_zh": "排舞健身",
+      "summary_zh": "line dance fitness1（来源类型：纽约市公园局 — 节庆、音乐会及免费活动（主力来源））",
+      "location_tag_zh": "全市",
+      "location_kind": "citywide",
+      "area_zh": "纽约全市",
+      "borough": "Citywide",
+      "location": "at",
+      "event_date": "2026-06-17",
+      "event_time": "",
+      "published_at": "",
+      "source_published_at": "",
+      "first_indexed_at": "2026-06-16 09:02:54",
+      "last_seen_at": "2026-06-16 09:02:54",
+      "date_kind": "event",
+      "url": "https://www.nycgovparks.org/events/2026/06/17/line-dance-fitness1",
+      "search_text": "live_087 健身·户外 排舞健身 line dance fitness line dance fitness1（来源类型：纽约市公园局 — 节庆、音乐会及免费活动（主力来源）） 全市 纽约全市 citywide at 2026-06-16 09:02:54 2026-06-17 https://www.nycgovparks.org/events/2026/06/17/line-dance-fitness1"
+    },
+    {
+      "id": "live_088",
+      "module": "健身·户外",
+      "title_zh": "Zumba",
+      "summary_zh": "zumba（来源类型：纽约市公园局 — 节庆、音乐会及免费活动（主力来源））",
+      "location_tag_zh": "全市",
+      "location_kind": "citywide",
+      "area_zh": "纽约全市",
+      "borough": "Citywide",
+      "location": "at",
+      "event_date": "2026-06-17",
+      "event_time": "",
+      "published_at": "",
+      "source_published_at": "",
+      "first_indexed_at": "2026-06-16 09:02:54",
+      "last_seen_at": "2026-06-16 09:02:54",
+      "date_kind": "event",
+      "url": "https://www.nycgovparks.org/events/2026/06/17/zumba",
+      "search_text": "live_088 健身·户外 zumba zumba zumba（来源类型：纽约市公园局 — 节庆、音乐会及免费活动（主力来源）） 全市 纽约全市 citywide at 2026-06-16 09:02:54 2026-06-17 https://www.nycgovparks.org/events/2026/06/17/zumba"
+    },
+    {
+      "id": "live_089",
       "module": "亲子·公园",
       "title_zh": "动感儿童：Gertrude Ederle Playground 格特鲁德·埃德尔游乐场",
       "summary_zh": "kids in motion gertrude ederle playground（来源类型：纽约市公园局 — 节庆、音乐会及免费活动（主力来源））",
@@ -1592,10 +1792,10 @@
       "last_seen_at": "2026-06-15 20:30:26",
       "date_kind": "event",
       "url": "https://www.nycgovparks.org/events/2026/06/13/kids-in-motion-gertrude-ederle-playground",
-      "search_text": "live_079 亲子·公园 动感儿童：gertrude ederle playground 格特鲁德·埃德尔游乐场 kids in motion: gertrude ederle playground kids in motion gertrude ederle playground（来源类型：纽约市公园局 — 节庆、音乐会及免费活动（主力来源）） 纽约全市 纽约全市 citywide 2026-06-15 20:30:26 2026-06-13 https://www.nycgovparks.org/events/2026/06/13/kids-in-motion-gertrude-ederle-playground"
+      "search_text": "live_089 亲子·公园 动感儿童：gertrude ederle playground 格特鲁德·埃德尔游乐场 kids in motion: gertrude ederle playground kids in motion gertrude ederle playground（来源类型：纽约市公园局 — 节庆、音乐会及免费活动（主力来源）） 纽约全市 纽约全市 citywide 2026-06-15 20:30:26 2026-06-13 https://www.nycgovparks.org/events/2026/06/13/kids-in-motion-gertrude-ederle-playground"
     },
     {
-      "id": "live_080",
+      "id": "live_090",
       "module": "亲子·公园",
       "title_zh": "动感儿童：Alley/Springfield Playground 阿利/斯普林菲尔德游乐场",
       "summary_zh": "kids in motion alleyspringfield playground（来源类型：纽约市公园局 — 节庆、音乐会及免费活动（主力来源））",
@@ -1612,10 +1812,10 @@
       "last_seen_at": "2026-06-15 20:30:26",
       "date_kind": "event",
       "url": "https://www.nycgovparks.org/events/2026/06/13/kids-in-motion-alleyspringfield-playground",
-      "search_text": "live_080 亲子·公园 动感儿童：alley/springfield playground 阿利/斯普林菲尔德游乐场 kids in motion: alley/springfield playground kids in motion alleyspringfield playground（来源类型：纽约市公园局 — 节庆、音乐会及免费活动（主力来源）） 纽约全市 纽约全市 citywide 2026-06-15 20:30:26 2026-06-13 https://www.nycgovparks.org/events/2026/06/13/kids-in-motion-alleyspringfield-playground"
+      "search_text": "live_090 亲子·公园 动感儿童：alley/springfield playground 阿利/斯普林菲尔德游乐场 kids in motion: alley/springfield playground kids in motion alleyspringfield playground（来源类型：纽约市公园局 — 节庆、音乐会及免费活动（主力来源）） 纽约全市 纽约全市 citywide 2026-06-15 20:30:26 2026-06-13 https://www.nycgovparks.org/events/2026/06/13/kids-in-motion-alleyspringfield-playground"
     },
     {
-      "id": "live_081",
+      "id": "live_091",
       "module": "亲子·公园",
       "title_zh": "动感儿童：Anne Loftus Playground 安妮·洛夫图斯游乐场",
       "summary_zh": "kids in motion anne loftus playground（来源类型：纽约市公园局 — 节庆、音乐会及免费活动（主力来源））",
@@ -1632,10 +1832,10 @@
       "last_seen_at": "2026-06-15 20:30:26",
       "date_kind": "event",
       "url": "https://www.nycgovparks.org/events/2026/06/13/kids-in-motion-anne-loftus-playground",
-      "search_text": "live_081 亲子·公园 动感儿童：anne loftus playground 安妮·洛夫图斯游乐场 kids in motion: anne loftus playground kids in motion anne loftus playground（来源类型：纽约市公园局 — 节庆、音乐会及免费活动（主力来源）） 纽约全市 纽约全市 citywide 2026-06-15 20:30:26 2026-06-13 https://www.nycgovparks.org/events/2026/06/13/kids-in-motion-anne-loftus-playground"
+      "search_text": "live_091 亲子·公园 动感儿童：anne loftus playground 安妮·洛夫图斯游乐场 kids in motion: anne loftus playground kids in motion anne loftus playground（来源类型：纽约市公园局 — 节庆、音乐会及免费活动（主力来源）） 纽约全市 纽约全市 citywide 2026-06-15 20:30:26 2026-06-13 https://www.nycgovparks.org/events/2026/06/13/kids-in-motion-anne-loftus-playground"
     },
     {
-      "id": "live_082",
+      "id": "live_092",
       "module": "亲子·公园",
       "title_zh": "动感儿童：Austin J. McDonald 的游乐场",
       "summary_zh": "kim austin j mcdonalds playground（来源类型：纽约市公园局 — 节庆、音乐会及免费活动（主力来源））",
@@ -1652,10 +1852,10 @@
       "last_seen_at": "2026-06-15 20:30:26",
       "date_kind": "event",
       "url": "https://www.nycgovparks.org/events/2026/06/13/kim-austin-j-mcdonalds-playground",
-      "search_text": "live_082 亲子·公园 动感儿童：austin j. mcdonald 的游乐场 kids in motion: austin j. mcdonald's playground kim austin j mcdonalds playground（来源类型：纽约市公园局 — 节庆、音乐会及免费活动（主力来源）） 纽约全市 纽约全市 citywide 2026-06-15 20:30:26 2026-06-13 https://www.nycgovparks.org/events/2026/06/13/kim-austin-j-mcdonalds-playground"
+      "search_text": "live_092 亲子·公园 动感儿童：austin j. mcdonald 的游乐场 kids in motion: austin j. mcdonald's playground kim austin j mcdonalds playground（来源类型：纽约市公园局 — 节庆、音乐会及免费活动（主力来源）） 纽约全市 纽约全市 citywide 2026-06-15 20:30:26 2026-06-13 https://www.nycgovparks.org/events/2026/06/13/kim-austin-j-mcdonalds-playground"
     },
     {
-      "id": "live_083",
+      "id": "live_093",
       "module": "亲子·公园",
       "title_zh": "动感儿童：Bloomingdale Playground 布鲁明代尔游乐场",
       "summary_zh": "kids in motion bloomingdale playground（来源类型：纽约市公园局 — 节庆、音乐会及免费活动（主力来源））",
@@ -1672,10 +1872,10 @@
       "last_seen_at": "2026-06-15 20:30:26",
       "date_kind": "event",
       "url": "https://www.nycgovparks.org/events/2026/06/13/kids-in-motion-bloomingdale-playground",
-      "search_text": "live_083 亲子·公园 动感儿童：bloomingdale playground 布鲁明代尔游乐场 kids in motion: bloomingdale playground kids in motion bloomingdale playground（来源类型：纽约市公园局 — 节庆、音乐会及免费活动（主力来源）） 纽约全市 纽约全市 citywide 2026-06-15 20:30:26 2026-06-13 https://www.nycgovparks.org/events/2026/06/13/kids-in-motion-bloomingdale-playground"
+      "search_text": "live_093 亲子·公园 动感儿童：bloomingdale playground 布鲁明代尔游乐场 kids in motion: bloomingdale playground kids in motion bloomingdale playground（来源类型：纽约市公园局 — 节庆、音乐会及免费活动（主力来源）） 纽约全市 纽约全市 citywide 2026-06-15 20:30:26 2026-06-13 https://www.nycgovparks.org/events/2026/06/13/kids-in-motion-bloomingdale-playground"
     },
     {
-      "id": "live_084",
+      "id": "live_094",
       "module": "福利·政务",
       "title_zh": "购买食物的资金",
       "summary_zh": "来自ACCESS NYC - 福利申请和政府项目的官方/正式机构页面，具体时间、地点、报名要求以官网为准。（来源类型：ACCESS NYC - 福利申请和政府项目）",
@@ -1692,10 +1892,10 @@
       "last_seen_at": "2026-06-15 20:30:26",
       "date_kind": "service",
       "url": "https://access.nyc.gov/programs/supplemental-nutrition-assistance-program-snap/",
-      "search_text": "live_084 福利·政务 购买食物的资金 money to buy food 来自access nyc - 福利申请和政府项目的官方/正式机构页面，具体时间、地点、报名要求以官网为准。（来源类型：access nyc - 福利申请和政府项目） 纽约全市 纽约全市 citywide 2026-06-15 20:30:26 https://access.nyc.gov/programs/supplemental-nutrition-assistance-program-snap/"
+      "search_text": "live_094 福利·政务 购买食物的资金 money to buy food 来自access nyc - 福利申请和政府项目的官方/正式机构页面，具体时间、地点、报名要求以官网为准。（来源类型：access nyc - 福利申请和政府项目） 纽约全市 纽约全市 citywide 2026-06-15 20:30:26 https://access.nyc.gov/programs/supplemental-nutrition-assistance-program-snap/"
     },
     {
-      "id": "live_085",
+      "id": "live_095",
       "module": "住房·安居",
       "title_zh": "可负担住房抽签",
       "summary_zh": "来自ACCESS NYC - 福利申请和政府项目的官方/正式机构页面，具体时间、地点、报名要求以官网为准。（来源类型：ACCESS NYC - 福利申请和政府项目）",
@@ -1712,10 +1912,10 @@
       "last_seen_at": "2026-06-15 20:30:26",
       "date_kind": "service",
       "url": "https://access.nyc.gov/programs/nyc-housing-connect/",
-      "search_text": "live_085 住房·安居 可负担住房抽签 affordable housing lotteries 来自access nyc - 福利申请和政府项目的官方/正式机构页面，具体时间、地点、报名要求以官网为准。（来源类型：access nyc - 福利申请和政府项目） 纽约全市 纽约全市 citywide 2026-06-15 20:30:26 https://access.nyc.gov/programs/nyc-housing-connect/"
+      "search_text": "live_095 住房·安居 可负担住房抽签 affordable housing lotteries 来自access nyc - 福利申请和政府项目的官方/正式机构页面，具体时间、地点、报名要求以官网为准。（来源类型：access nyc - 福利申请和政府项目） 纽约全市 纽约全市 citywide 2026-06-15 20:30:26 https://access.nyc.gov/programs/nyc-housing-connect/"
     },
     {
-      "id": "live_086",
+      "id": "live_096",
       "module": "福利·政务",
       "title_zh": "SNAP 和 CA",
       "summary_zh": "来自纽约市人力资源管理局的官方/正式机构页面，具体时间、地点、报名要求以官网为准。（来源类型：纽约市人力资源管理局）",
@@ -1732,10 +1932,10 @@
       "last_seen_at": "2026-06-15 20:30:26",
       "date_kind": "service",
       "url": "https://www.nyc.gov/site/hra/help/i-need-help.page",
-      "search_text": "live_086 福利·政务 snap 和 ca snap & ca 来自纽约市人力资源管理局的官方/正式机构页面，具体时间、地点、报名要求以官网为准。（来源类型：纽约市人力资源管理局） 纽约全市 纽约全市 citywide 2026-06-15 20:30:26 https://www.nyc.gov/site/hra/help/i-need-help.page"
+      "search_text": "live_096 福利·政务 snap 和 ca snap & ca 来自纽约市人力资源管理局的官方/正式机构页面，具体时间、地点、报名要求以官网为准。（来源类型：纽约市人力资源管理局） 纽约全市 纽约全市 citywide 2026-06-15 20:30:26 https://www.nyc.gov/site/hra/help/i-need-help.page"
     },
     {
-      "id": "live_087",
+      "id": "live_097",
       "module": "安全·突发",
       "title_zh": "福利欺诈预防",
       "summary_zh": "来自纽约市人力资源管理局的官方/正式机构页面，具体时间、地点、报名要求以官网为准。（来源类型：纽约市人力资源管理局）",
@@ -1752,10 +1952,10 @@
       "last_seen_at": "2026-06-15 20:30:26",
       "date_kind": "service",
       "url": "https://www.nyc.gov/site/hra/help/fraud-prevention.page",
-      "search_text": "live_087 安全·突发 福利欺诈预防 welfare fraud prevention 来自纽约市人力资源管理局的官方/正式机构页面，具体时间、地点、报名要求以官网为准。（来源类型：纽约市人力资源管理局） 纽约全市 纽约全市 citywide 2026-06-15 20:30:26 https://www.nyc.gov/site/hra/help/fraud-prevention.page"
+      "search_text": "live_097 安全·突发 福利欺诈预防 welfare fraud prevention 来自纽约市人力资源管理局的官方/正式机构页面，具体时间、地点、报名要求以官网为准。（来源类型：纽约市人力资源管理局） 纽约全市 纽约全市 citywide 2026-06-15 20:30:26 https://www.nyc.gov/site/hra/help/fraud-prevention.page"
     },
     {
-      "id": "live_088",
+      "id": "live_098",
       "module": "福利·政务",
       "title_zh": "住房与预防服务",
       "summary_zh": "来自纽约市人力资源管理局的官方/正式机构页面，具体时间、地点、报名要求以官网为准。（来源类型：纽约市人力资源管理局）",
@@ -1772,10 +1972,10 @@
       "last_seen_at": "2026-06-15 20:30:26",
       "date_kind": "service",
       "url": "https://www.nyc.gov/site/hra/help/homelessness-prevention.page",
-      "search_text": "live_088 福利·政务 住房与预防服务 housing & prevention services 来自纽约市人力资源管理局的官方/正式机构页面，具体时间、地点、报名要求以官网为准。（来源类型：纽约市人力资源管理局） 纽约全市 纽约全市 citywide 2026-06-15 20:30:26 https://www.nyc.gov/site/hra/help/homelessness-prevention.page"
+      "search_text": "live_098 福利·政务 住房与预防服务 housing & prevention services 来自纽约市人力资源管理局的官方/正式机构页面，具体时间、地点、报名要求以官网为准。（来源类型：纽约市人力资源管理局） 纽约全市 纽约全市 citywide 2026-06-15 20:30:26 https://www.nyc.gov/site/hra/help/homelessness-prevention.page"
     },
     {
-      "id": "live_089",
+      "id": "live_099",
       "module": "福利·政务",
       "title_zh": "其他福利与服务",
       "summary_zh": "来自纽约市人力资源管理局的官方/正式机构页面，具体时间、地点、报名要求以官网为准。（来源类型：纽约市人力资源管理局）",
@@ -1792,10 +1992,10 @@
       "last_seen_at": "2026-06-15 20:30:26",
       "date_kind": "service",
       "url": "https://www.nyc.gov/site/hra/help/other-services.page",
-      "search_text": "live_089 福利·政务 其他福利与服务 other benefits & services 来自纽约市人力资源管理局的官方/正式机构页面，具体时间、地点、报名要求以官网为准。（来源类型：纽约市人力资源管理局） 纽约全市 纽约全市 citywide 2026-06-15 20:30:26 https://www.nyc.gov/site/hra/help/other-services.page"
+      "search_text": "live_099 福利·政务 其他福利与服务 other benefits & services 来自纽约市人力资源管理局的官方/正式机构页面，具体时间、地点、报名要求以官网为准。（来源类型：纽约市人力资源管理局） 纽约全市 纽约全市 citywide 2026-06-15 20:30:26 https://www.nyc.gov/site/hra/help/other-services.page"
     },
     {
-      "id": "live_090",
+      "id": "live_100",
       "module": "福利·政务",
       "title_zh": "福利替代",
       "summary_zh": "来自纽约市人力资源管理局的官方/正式机构页面，具体时间、地点、报名要求以官网为准。（来源类型：纽约市人力资源管理局）",
@@ -1812,10 +2012,10 @@
       "last_seen_at": "2026-06-15 20:30:26",
       "date_kind": "service",
       "url": "https://www.nyc.gov/site/hra/help/benefitreplacement.page",
-      "search_text": "live_090 福利·政务 福利替代 benefit replacement 来自纽约市人力资源管理局的官方/正式机构页面，具体时间、地点、报名要求以官网为准。（来源类型：纽约市人力资源管理局） 纽约全市 纽约全市 citywide 2026-06-15 20:30:26 https://www.nyc.gov/site/hra/help/benefitreplacement.page"
+      "search_text": "live_100 福利·政务 福利替代 benefit replacement 来自纽约市人力资源管理局的官方/正式机构页面，具体时间、地点、报名要求以官网为准。（来源类型：纽约市人力资源管理局） 纽约全市 纽约全市 citywide 2026-06-15 20:30:26 https://www.nyc.gov/site/hra/help/benefitreplacement.page"
     },
     {
-      "id": "live_091",
+      "id": "live_101",
       "module": "福利·政务",
       "title_zh": "儿童保育服务",
       "summary_zh": "来自纽约市人力资源管理局的官方/正式机构页面，具体时间、地点、报名要求以官网为准。（来源类型：纽约市人力资源管理局）",
@@ -1832,10 +2032,10 @@
       "last_seen_at": "2026-06-15 20:30:26",
       "date_kind": "service",
       "url": "https://www.nyc.gov/site/hra/help/child-care-benefits.page",
-      "search_text": "live_091 福利·政务 儿童保育服务 child care services 来自纽约市人力资源管理局的官方/正式机构页面，具体时间、地点、报名要求以官网为准。（来源类型：纽约市人力资源管理局） 纽约全市 纽约全市 citywide 2026-06-15 20:30:26 https://www.nyc.gov/site/hra/help/child-care-benefits.page"
+      "search_text": "live_101 福利·政务 儿童保育服务 child care services 来自纽约市人力资源管理局的官方/正式机构页面，具体时间、地点、报名要求以官网为准。（来源类型：纽约市人力资源管理局） 纽约全市 纽约全市 citywide 2026-06-15 20:30:26 https://www.nyc.gov/site/hra/help/child-care-benefits.page"
     },
     {
-      "id": "live_092",
+      "id": "live_102",
       "module": "福利·政务",
       "title_zh": "SNAP 常见问题",
       "summary_zh": "来自纽约市人力资源管理局的官方/正式机构页面，具体时间、地点、报名要求以官网为准。（来源类型：纽约市人力资源管理局）",
@@ -1852,10 +2052,10 @@
       "last_seen_at": "2026-06-15 20:30:26",
       "date_kind": "service",
       "url": "https://www.nyc.gov/site/hra/help/snap-application-frequently-asked-questions.page",
-      "search_text": "live_092 福利·政务 snap 常见问题 snap frequently asked questions 来自纽约市人力资源管理局的官方/正式机构页面，具体时间、地点、报名要求以官网为准。（来源类型：纽约市人力资源管理局） 纽约全市 纽约全市 citywide 2026-06-15 20:30:26 https://www.nyc.gov/site/hra/help/snap-application-frequently-asked-questions.page"
+      "search_text": "live_102 福利·政务 snap 常见问题 snap frequently asked questions 来自纽约市人力资源管理局的官方/正式机构页面，具体时间、地点、报名要求以官网为准。（来源类型：纽约市人力资源管理局） 纽约全市 纽约全市 citywide 2026-06-15 20:30:26 https://www.nyc.gov/site/hra/help/snap-application-frequently-asked-questions.page"
     },
     {
-      "id": "live_093",
+      "id": "live_103",
       "module": "亲子·公园",
       "title_zh": "动感儿童：哥伦布公园",
       "summary_zh": "kids in motion columbus park（来源类型：纽约市公园局 — 节庆、音乐会及免费活动（主力来源））",
@@ -1872,50 +2072,10 @@
       "last_seen_at": "2026-06-15 20:30:26",
       "date_kind": "event",
       "url": "https://www.nycgovparks.org/events/2026/06/13/kids-in-motion-columbus-park",
-      "search_text": "live_093 亲子·公园 动感儿童：哥伦布公园 kids in motion: columbus park kids in motion columbus park（来源类型：纽约市公园局 — 节庆、音乐会及免费活动（主力来源）） 纽约全市 纽约全市 citywide 2026-06-15 20:30:26 2026-06-13 https://www.nycgovparks.org/events/2026/06/13/kids-in-motion-columbus-park"
+      "search_text": "live_103 亲子·公园 动感儿童：哥伦布公园 kids in motion: columbus park kids in motion columbus park（来源类型：纽约市公园局 — 节庆、音乐会及免费活动（主力来源）） 纽约全市 纽约全市 citywide 2026-06-15 20:30:26 2026-06-13 https://www.nycgovparks.org/events/2026/06/13/kids-in-motion-columbus-park"
     },
     {
-      "id": "live_094",
-      "module": "亲子·公园",
-      "title_zh": "Kids In Motion: Alley/Springfield Playground",
-      "summary_zh": "kids in motion alleyspringfield playground（来源类型：纽约市公园局 — 节庆、音乐会及免费活动（主力来源））",
-      "location_tag_zh": "全市",
-      "location_kind": "citywide",
-      "area_zh": "纽约全市",
-      "borough": "Citywide",
-      "location": "at",
-      "event_date": "2026-06-17",
-      "event_time": "",
-      "published_at": "",
-      "source_published_at": "",
-      "first_indexed_at": "2026-06-15 20:30:26",
-      "last_seen_at": "2026-06-15 20:30:26",
-      "date_kind": "event",
-      "url": "https://www.nycgovparks.org/events/2026/06/17/kids-in-motion-alleyspringfield-playground",
-      "search_text": "live_094 亲子·公园 kids in motion: alley/springfield playground kids in motion: alley/springfield playground kids in motion alleyspringfield playground（来源类型：纽约市公园局 — 节庆、音乐会及免费活动（主力来源）） 全市 纽约全市 citywide at 2026-06-15 20:30:26 2026-06-17 https://www.nycgovparks.org/events/2026/06/17/kids-in-motion-alleyspringfield-playground"
-    },
-    {
-      "id": "live_095",
-      "module": "亲子·公园",
-      "title_zh": "Kids in Motion: Anne Loftus Playground",
-      "summary_zh": "kids in motion anne loftus playground（来源类型：纽约市公园局 — 节庆、音乐会及免费活动（主力来源））",
-      "location_tag_zh": "全市",
-      "location_kind": "citywide",
-      "area_zh": "纽约全市",
-      "borough": "Citywide",
-      "location": "at",
-      "event_date": "2026-06-17",
-      "event_time": "",
-      "published_at": "",
-      "source_published_at": "",
-      "first_indexed_at": "2026-06-15 20:30:26",
-      "last_seen_at": "2026-06-15 20:30:26",
-      "date_kind": "event",
-      "url": "https://www.nycgovparks.org/events/2026/06/17/kids-in-motion-anne-loftus-playground",
-      "search_text": "live_095 亲子·公园 kids in motion: anne loftus playground kids in motion: anne loftus playground kids in motion anne loftus playground（来源类型：纽约市公园局 — 节庆、音乐会及免费活动（主力来源）） 全市 纽约全市 citywide at 2026-06-15 20:30:26 2026-06-17 https://www.nycgovparks.org/events/2026/06/17/kids-in-motion-anne-loftus-playground"
-    },
-    {
-      "id": "live_096",
+      "id": "live_104",
       "module": "亲子·公园",
       "title_zh": "动感儿童：Austin J. McDonald 游乐场",
       "summary_zh": "kim austin j mcdonalds playground（来源类型：纽约市公园局 — 节庆、音乐会及免费活动（主力来源））",
@@ -1932,10 +2092,10 @@
       "last_seen_at": "2026-06-15 20:30:26",
       "date_kind": "event",
       "url": "https://www.nycgovparks.org/events/2026/06/17/kim-austin-j-mcdonalds-playground",
-      "search_text": "live_096 亲子·公园 动感儿童：austin j. mcdonald 游乐场 kids in motion: austin j. mcdonald's playground kim austin j mcdonalds playground（来源类型：纽约市公园局 — 节庆、音乐会及免费活动（主力来源）） 全市 纽约全市 citywide at 2026-06-15 20:30:26 2026-06-17 https://www.nycgovparks.org/events/2026/06/17/kim-austin-j-mcdonalds-playground"
+      "search_text": "live_104 亲子·公园 动感儿童：austin j. mcdonald 游乐场 kids in motion: austin j. mcdonald's playground kim austin j mcdonalds playground（来源类型：纽约市公园局 — 节庆、音乐会及免费活动（主力来源）） 全市 纽约全市 citywide at 2026-06-15 20:30:26 2026-06-17 https://www.nycgovparks.org/events/2026/06/17/kim-austin-j-mcdonalds-playground"
     },
     {
-      "id": "live_097",
+      "id": "live_105",
       "module": "健身·户外",
       "title_zh": "Zumba Gold®",
       "summary_zh": "zumba gold（来源类型：纽约市公园局 — 节庆、音乐会及免费活动（主力来源））",
@@ -1952,10 +2112,10 @@
       "last_seen_at": "2026-06-15 20:30:26",
       "date_kind": "event",
       "url": "https://www.nycgovparks.org/events/2026/06/16/zumba-gold",
-      "search_text": "live_097 健身·户外 zumba gold® zumba gold® zumba gold（来源类型：纽约市公园局 — 节庆、音乐会及免费活动（主力来源）） 全市 纽约全市 citywide at 2026-06-15 20:30:26 2026-06-16 https://www.nycgovparks.org/events/2026/06/16/zumba-gold"
+      "search_text": "live_105 健身·户外 zumba gold® zumba gold® zumba gold（来源类型：纽约市公园局 — 节庆、音乐会及免费活动（主力来源）） 全市 纽约全市 citywide at 2026-06-15 20:30:26 2026-06-16 https://www.nycgovparks.org/events/2026/06/16/zumba-gold"
     },
     {
-      "id": "live_098",
+      "id": "live_106",
       "module": "健身·户外",
       "title_zh": "排舞健身",
       "summary_zh": "line dance fitness（来源类型：纽约市公园局 — 节庆、音乐会及免费活动（主力来源））",
@@ -1972,10 +2132,10 @@
       "last_seen_at": "2026-06-15 20:30:26",
       "date_kind": "event",
       "url": "https://www.nycgovparks.org/events/2026/06/15/line-dance-fitness",
-      "search_text": "live_098 健身·户外 排舞健身 line dance fitness line dance fitness（来源类型：纽约市公园局 — 节庆、音乐会及免费活动（主力来源）） 全市 纽约全市 citywide at 2026-06-15 20:30:26 2026-06-15 https://www.nycgovparks.org/events/2026/06/15/line-dance-fitness"
+      "search_text": "live_106 健身·户外 排舞健身 line dance fitness line dance fitness（来源类型：纽约市公园局 — 节庆、音乐会及免费活动（主力来源）） 全市 纽约全市 citywide at 2026-06-15 20:30:26 2026-06-15 https://www.nycgovparks.org/events/2026/06/15/line-dance-fitness"
     },
     {
-      "id": "live_099",
+      "id": "live_107",
       "module": "健身·户外",
       "title_zh": "Zumba Gold®",
       "summary_zh": "zumba gold（来源类型：纽约市公园局 — 节庆、音乐会及免费活动（主力来源））",
@@ -1992,30 +2152,10 @@
       "last_seen_at": "2026-06-15 20:30:26",
       "date_kind": "event",
       "url": "https://www.nycgovparks.org/events/2026/06/15/zumba-gold",
-      "search_text": "live_099 健身·户外 zumba gold® zumba gold® zumba gold（来源类型：纽约市公园局 — 节庆、音乐会及免费活动（主力来源）） 全市 纽约全市 citywide at 2026-06-15 20:30:26 2026-06-15 https://www.nycgovparks.org/events/2026/06/15/zumba-gold"
+      "search_text": "live_107 健身·户外 zumba gold® zumba gold® zumba gold（来源类型：纽约市公园局 — 节庆、音乐会及免费活动（主力来源）） 全市 纽约全市 citywide at 2026-06-15 20:30:26 2026-06-15 https://www.nycgovparks.org/events/2026/06/15/zumba-gold"
     },
     {
-      "id": "live_100",
-      "module": "文化·节庆",
-      "title_zh": "Kids In Motion: Arrochar",
-      "summary_zh": "kim arrochar（来源类型：纽约市公园局 — 节庆、音乐会及免费活动（主力来源））",
-      "location_tag_zh": "全市",
-      "location_kind": "citywide",
-      "area_zh": "纽约全市",
-      "borough": "Citywide",
-      "location": "at",
-      "event_date": "2026-06-17",
-      "event_time": "",
-      "published_at": "",
-      "source_published_at": "",
-      "first_indexed_at": "2026-06-15 20:30:26",
-      "last_seen_at": "2026-06-15 20:30:26",
-      "date_kind": "event",
-      "url": "https://www.nycgovparks.org/events/2026/06/17/kim-arrochar",
-      "search_text": "live_100 文化·节庆 kids in motion: arrochar kids in motion: arrochar kim arrochar（来源类型：纽约市公园局 — 节庆、音乐会及免费活动（主力来源）） 全市 纽约全市 citywide at 2026-06-15 20:30:26 2026-06-17 https://www.nycgovparks.org/events/2026/06/17/kim-arrochar"
-    },
-    {
-      "id": "live_101",
+      "id": "live_108",
       "module": "文化·节庆",
       "title_zh": "动感儿童：Arrochar",
       "summary_zh": "kim arrochar（来源类型：纽约市公园局 — 节庆、音乐会及免费活动（主力来源））",
@@ -2032,10 +2172,10 @@
       "last_seen_at": "2026-06-15 20:30:26",
       "date_kind": "event",
       "url": "https://www.nycgovparks.org/events/2026/06/16/kim-arrochar",
-      "search_text": "live_101 文化·节庆 动感儿童：arrochar kids in motion: arrochar kim arrochar（来源类型：纽约市公园局 — 节庆、音乐会及免费活动（主力来源）） 全市 纽约全市 citywide at 2026-06-15 20:30:26 2026-06-16 https://www.nycgovparks.org/events/2026/06/16/kim-arrochar"
+      "search_text": "live_108 文化·节庆 动感儿童：arrochar kids in motion: arrochar kim arrochar（来源类型：纽约市公园局 — 节庆、音乐会及免费活动（主力来源）） 全市 纽约全市 citywide at 2026-06-15 20:30:26 2026-06-16 https://www.nycgovparks.org/events/2026/06/16/kim-arrochar"
     },
     {
-      "id": "live_102",
+      "id": "live_109",
       "module": "文化·节庆",
       "title_zh": "动感儿童：Faber",
       "summary_zh": "kim faber（来源类型：纽约市公园局 — 节庆、音乐会及免费活动（主力来源））",
@@ -2052,52 +2192,12 @@
       "last_seen_at": "2026-06-15 20:30:26",
       "date_kind": "event",
       "url": "https://www.nycgovparks.org/events/2026/06/16/kim-faber",
-      "search_text": "live_102 文化·节庆 动感儿童：faber kids in motion: faber kim faber（来源类型：纽约市公园局 — 节庆、音乐会及免费活动（主力来源）） 全市 纽约全市 citywide at 2026-06-15 20:30:26 2026-06-16 https://www.nycgovparks.org/events/2026/06/16/kim-faber"
+      "search_text": "live_109 文化·节庆 动感儿童：faber kids in motion: faber kim faber（来源类型：纽约市公园局 — 节庆、音乐会及免费活动（主力来源）） 全市 纽约全市 citywide at 2026-06-15 20:30:26 2026-06-16 https://www.nycgovparks.org/events/2026/06/16/kim-faber"
     },
     {
-      "id": "live_103",
-      "module": "亲子·公园",
-      "title_zh": "Kids in Motion: Tie Dye",
-      "summary_zh": "kids in motion tie dye（来源类型：纽约市公园局 — 节庆、音乐会及免费活动（主力来源））",
-      "location_tag_zh": "全市",
-      "location_kind": "citywide",
-      "area_zh": "纽约全市",
-      "borough": "Citywide",
-      "location": "at",
-      "event_date": "2026-07-25",
-      "event_time": "",
-      "published_at": "",
-      "source_published_at": "",
-      "first_indexed_at": "2026-06-15 20:30:26",
-      "last_seen_at": "2026-06-15 20:30:26",
-      "date_kind": "event",
-      "url": "https://www.nycgovparks.org/events/2026/07/25/kids-in-motion-tie-dye",
-      "search_text": "live_103 亲子·公园 kids in motion: tie dye kids in motion: tie dye kids in motion tie dye（来源类型：纽约市公园局 — 节庆、音乐会及免费活动（主力来源）） 全市 纽约全市 citywide at 2026-06-15 20:30:26 2026-07-25 https://www.nycgovparks.org/events/2026/07/25/kids-in-motion-tie-dye"
-    },
-    {
-      "id": "live_104",
-      "module": "文化·节庆",
-      "title_zh": "Kids In Motion: Faber",
-      "summary_zh": "kim faber（来源类型：纽约市公园局 — 节庆、音乐会及免费活动（主力来源））",
-      "location_tag_zh": "全市",
-      "location_kind": "citywide",
-      "area_zh": "纽约全市",
-      "borough": "Citywide",
-      "location": "at",
-      "event_date": "2026-06-17",
-      "event_time": "",
-      "published_at": "",
-      "source_published_at": "",
-      "first_indexed_at": "2026-06-15 20:30:26",
-      "last_seen_at": "2026-06-15 20:30:26",
-      "date_kind": "event",
-      "url": "https://www.nycgovparks.org/events/2026/06/17/kim-faber",
-      "search_text": "live_104 文化·节庆 kids in motion: faber kids in motion: faber kim faber（来源类型：纽约市公园局 — 节庆、音乐会及免费活动（主力来源）） 全市 纽约全市 citywide at 2026-06-15 20:30:26 2026-06-17 https://www.nycgovparks.org/events/2026/06/17/kim-faber"
-    },
-    {
-      "id": "live_105",
+      "id": "live_110",
       "module": "健身·户外",
-      "title_zh": "Chair Yoga at Greeley Square Park",
+      "title_zh": "Greeley Square 公园的椅子瑜伽",
       "summary_zh": "chair yoga at greeley square park（来源类型：纽约市公园局 — 节庆、音乐会及免费活动（主力来源））",
       "location_tag_zh": "全市",
       "location_kind": "citywide",
@@ -2109,15 +2209,15 @@
       "published_at": "",
       "source_published_at": "",
       "first_indexed_at": "2026-06-15 20:30:26",
-      "last_seen_at": "2026-06-15 20:30:26",
+      "last_seen_at": "2026-06-16 09:02:54",
       "date_kind": "event",
       "url": "https://www.nycgovparks.org/events/2026/07/01/chair-yoga-at-greeley-square-park",
-      "search_text": "live_105 健身·户外 chair yoga at greeley square park chair yoga at greeley square park chair yoga at greeley square park（来源类型：纽约市公园局 — 节庆、音乐会及免费活动（主力来源）） 全市 纽约全市 citywide at 2026-06-15 20:30:26 2026-07-01 https://www.nycgovparks.org/events/2026/07/01/chair-yoga-at-greeley-square-park"
+      "search_text": "live_110 健身·户外 greeley square 公园的椅子瑜伽 chair yoga at greeley square park chair yoga at greeley square park（来源类型：纽约市公园局 — 节庆、音乐会及免费活动（主力来源）） 全市 纽约全市 citywide at 2026-06-15 20:30:26 2026-07-01 https://www.nycgovparks.org/events/2026/07/01/chair-yoga-at-greeley-square-park"
     },
     {
-      "id": "live_106",
+      "id": "live_111",
       "module": "健身·户外",
-      "title_zh": "Chair Yoga at Greeley Square Park",
+      "title_zh": "Greeley Square 公园的椅子瑜伽",
       "summary_zh": "chair yoga at greeley square park（来源类型：纽约市公园局 — 节庆、音乐会及免费活动（主力来源））",
       "location_tag_zh": "全市",
       "location_kind": "citywide",
@@ -2132,12 +2232,12 @@
       "last_seen_at": "2026-06-15 20:30:26",
       "date_kind": "event",
       "url": "https://www.nycgovparks.org/events/2026/06/24/chair-yoga-at-greeley-square-park",
-      "search_text": "live_106 健身·户外 chair yoga at greeley square park chair yoga at greeley square park chair yoga at greeley square park（来源类型：纽约市公园局 — 节庆、音乐会及免费活动（主力来源）） 全市 纽约全市 citywide at 2026-06-15 20:30:26 2026-06-24 https://www.nycgovparks.org/events/2026/06/24/chair-yoga-at-greeley-square-park"
+      "search_text": "live_111 健身·户外 greeley square 公园的椅子瑜伽 chair yoga at greeley square park chair yoga at greeley square park（来源类型：纽约市公园局 — 节庆、音乐会及免费活动（主力来源）） 全市 纽约全市 citywide at 2026-06-15 20:30:26 2026-06-24 https://www.nycgovparks.org/events/2026/06/24/chair-yoga-at-greeley-square-park"
     },
     {
-      "id": "live_107",
+      "id": "live_112",
       "module": "健身·户外",
-      "title_zh": "Summer Sports Experience: Pickleball",
+      "title_zh": "夏季体育体验：乒乓球",
       "summary_zh": "summer sports experience pickleball2（来源类型：纽约市公园局 — 节庆、音乐会及免费活动（主力来源））",
       "location_tag_zh": "全市",
       "location_kind": "citywide",
@@ -2152,12 +2252,12 @@
       "last_seen_at": "2026-06-15 20:30:26",
       "date_kind": "event",
       "url": "https://www.nycgovparks.org/events/2026/06/17/summer-sports-experience-pickleball2",
-      "search_text": "live_107 健身·户外 summer sports experience: pickleball summer sports experience: pickleball summer sports experience pickleball2（来源类型：纽约市公园局 — 节庆、音乐会及免费活动（主力来源）） 全市 纽约全市 citywide at 2026-06-15 20:30:26 2026-06-17 https://www.nycgovparks.org/events/2026/06/17/summer-sports-experience-pickleball2"
+      "search_text": "live_112 健身·户外 夏季体育体验：乒乓球 summer sports experience: pickleball summer sports experience pickleball2（来源类型：纽约市公园局 — 节庆、音乐会及免费活动（主力来源）） 全市 纽约全市 citywide at 2026-06-15 20:30:26 2026-06-17 https://www.nycgovparks.org/events/2026/06/17/summer-sports-experience-pickleball2"
     },
     {
-      "id": "live_108",
+      "id": "live_113",
       "module": "健身·户外",
-      "title_zh": "Sound Bath w/ Stephanie for YogaSole",
+      "title_zh": "与Stephanie的声音浴：YogaSole",
       "summary_zh": "sound bath w stephanie for yogasole（来源类型：纽约市公园局 — 节庆、音乐会及免费活动（主力来源））",
       "location_tag_zh": "全市",
       "location_kind": "citywide",
@@ -2172,12 +2272,12 @@
       "last_seen_at": "2026-06-15 20:30:26",
       "date_kind": "event",
       "url": "https://www.nycgovparks.org/events/2026/06/24/sound-bath-w-stephanie-for-yogasole",
-      "search_text": "live_108 健身·户外 sound bath w/ stephanie for yogasole sound bath w/ stephanie for yogasole sound bath w stephanie for yogasole（来源类型：纽约市公园局 — 节庆、音乐会及免费活动（主力来源）） 全市 纽约全市 citywide at 2026-06-15 20:30:26 2026-06-24 https://www.nycgovparks.org/events/2026/06/24/sound-bath-w-stephanie-for-yogasole"
+      "search_text": "live_113 健身·户外 与stephanie的声音浴：yogasole sound bath w/ stephanie for yogasole sound bath w stephanie for yogasole（来源类型：纽约市公园局 — 节庆、音乐会及免费活动（主力来源）） 全市 纽约全市 citywide at 2026-06-15 20:30:26 2026-06-24 https://www.nycgovparks.org/events/2026/06/24/sound-bath-w-stephanie-for-yogasole"
     },
     {
-      "id": "live_109",
+      "id": "live_114",
       "module": "健身·户外",
-      "title_zh": "Summer Sports Experience: Basketball",
+      "title_zh": "夏季体育体验：篮球",
       "summary_zh": "summer sports experience basketball1（来源类型：纽约市公园局 — 节庆、音乐会及免费活动（主力来源））",
       "location_tag_zh": "全市",
       "location_kind": "citywide",
@@ -2192,10 +2292,10 @@
       "last_seen_at": "2026-06-15 20:30:26",
       "date_kind": "event",
       "url": "https://www.nycgovparks.org/events/2026/06/17/summer-sports-experience-basketball1",
-      "search_text": "live_109 健身·户外 summer sports experience: basketball summer sports experience: basketball summer sports experience basketball1（来源类型：纽约市公园局 — 节庆、音乐会及免费活动（主力来源）） 全市 纽约全市 citywide at 2026-06-15 20:30:26 2026-06-17 https://www.nycgovparks.org/events/2026/06/17/summer-sports-experience-basketball1"
+      "search_text": "live_114 健身·户外 夏季体育体验：篮球 summer sports experience: basketball summer sports experience basketball1（来源类型：纽约市公园局 — 节庆、音乐会及免费活动（主力来源）） 全市 纽约全市 citywide at 2026-06-15 20:30:26 2026-06-17 https://www.nycgovparks.org/events/2026/06/17/summer-sports-experience-basketball1"
     },
     {
-      "id": "live_110",
+      "id": "live_115",
       "module": "文化·节庆",
       "title_zh": "暑假期间家庭额外杂货补助",
       "summary_zh": "来自ACCESS NYC - 福利申请和政府项目的官方/正式机构页面，具体时间、地点、报名要求以官网为准。（来源类型：ACCESS NYC - 福利申请和政府项目）",
@@ -2212,10 +2312,10 @@
       "last_seen_at": "2026-06-15 20:30:26",
       "date_kind": "service",
       "url": "https://access.nyc.gov/programs/summer-ebt/",
-      "search_text": "live_110 文化·节庆 暑假期间家庭额外杂货补助 extra grocery money for families over summer break 来自access nyc - 福利申请和政府项目的官方/正式机构页面，具体时间、地点、报名要求以官网为准。（来源类型：access nyc - 福利申请和政府项目） 纽约全市 纽约全市 citywide 2026-06-15 20:30:26 https://access.nyc.gov/programs/summer-ebt/"
+      "search_text": "live_115 文化·节庆 暑假期间家庭额外杂货补助 extra grocery money for families over summer break 来自access nyc - 福利申请和政府项目的官方/正式机构页面，具体时间、地点、报名要求以官网为准。（来源类型：access nyc - 福利申请和政府项目） 纽约全市 纽约全市 citywide 2026-06-15 20:30:26 https://access.nyc.gov/programs/summer-ebt/"
     },
     {
-      "id": "live_111",
+      "id": "live_116",
       "module": "文化·节庆",
       "title_zh": "紧急情况下的现金帮助",
       "summary_zh": "来自ACCESS NYC - 福利申请和政府项目的官方/正式机构页面，具体时间、地点、报名要求以官网为准。（来源类型：ACCESS NYC - 福利申请和政府项目）",
@@ -2232,10 +2332,10 @@
       "last_seen_at": "2026-06-15 20:30:26",
       "date_kind": "service",
       "url": "https://access.nyc.gov/programs/one-shot-deal/",
-      "search_text": "live_111 文化·节庆 紧急情况下的现金帮助 cash help during an emergency 来自access nyc - 福利申请和政府项目的官方/正式机构页面，具体时间、地点、报名要求以官网为准。（来源类型：access nyc - 福利申请和政府项目） 纽约全市 纽约全市 citywide 2026-06-15 20:30:26 https://access.nyc.gov/programs/one-shot-deal/"
+      "search_text": "live_116 文化·节庆 紧急情况下的现金帮助 cash help during an emergency 来自access nyc - 福利申请和政府项目的官方/正式机构页面，具体时间、地点、报名要求以官网为准。（来源类型：access nyc - 福利申请和政府项目） 纽约全市 纽约全市 citywide 2026-06-15 20:30:26 https://access.nyc.gov/programs/one-shot-deal/"
     },
     {
-      "id": "live_112",
+      "id": "live_117",
       "module": "文化·节庆",
       "title_zh": "KIPP AMP 小学与中学的免费家庭乐趣日",
       "summary_zh": "来自Eventbrite 纽约华人社区组织活动汇总的官方/正式机构页面，具体时间、地点、报名要求以官网为准。（来源类型：Eventbrite 纽约华人社区组织活动汇总）",
@@ -2252,7 +2352,67 @@
       "last_seen_at": "2026-06-15 20:30:26",
       "date_kind": "event",
       "url": "https://www.eventbrite.com/e/free-family-fun-day-kipp-amp-elementary-middle-school-tickets-1987925708307?aff=ebdssbdestsearch",
-      "search_text": "live_112 文化·节庆 kipp amp 小学与中学的免费家庭乐趣日 free family fun day @ kipp amp elementary & middle school 来自eventbrite 纽约华人社区组织活动汇总的官方/正式机构页面，具体时间、地点、报名要求以官网为准。（来源类型：eventbrite 纽约华人社区组织活动汇总） 布鲁克林 brooklyn 布鲁克林 brooklyn brooklyn 2026-06-15 20:30:26 2026-06-12 https://www.eventbrite.com/e/free-family-fun-day-kipp-amp-elementary-middle-school-tickets-1987925708307?aff=ebdssbdestsearch"
+      "search_text": "live_117 文化·节庆 kipp amp 小学与中学的免费家庭乐趣日 free family fun day @ kipp amp elementary & middle school 来自eventbrite 纽约华人社区组织活动汇总的官方/正式机构页面，具体时间、地点、报名要求以官网为准。（来源类型：eventbrite 纽约华人社区组织活动汇总） 布鲁克林 brooklyn 布鲁克林 brooklyn brooklyn 2026-06-15 20:30:26 2026-06-12 https://www.eventbrite.com/e/free-family-fun-day-kipp-amp-elementary-middle-school-tickets-1987925708307?aff=ebdssbdestsearch"
+    },
+    {
+      "id": "live_118",
+      "module": "亲子·公园",
+      "title_zh": "志愿者日：曼哈顿家庭社区花园",
+      "summary_zh": "家庭社区花园（来源类型：nyc_parks_opendata_fallback）",
+      "location_tag_zh": "曼哈顿 Manhattan",
+      "location_kind": "borough",
+      "area_zh": "曼哈顿 Manhattan",
+      "borough": "Manhattan",
+      "location": "Family Community Garden",
+      "event_date": "2026-06-16",
+      "event_time": "",
+      "published_at": "",
+      "source_published_at": "",
+      "first_indexed_at": "2026-06-16 12:11:50",
+      "last_seen_at": "2026-06-16 12:11:50",
+      "date_kind": "event",
+      "url": "https://www.nycgovparks.org/events/2026/06/16/volunteer-day-family-community-garden-manhattan",
+      "search_text": "live_118 亲子·公园 志愿者日：曼哈顿家庭社区花园 volunteer day: family community garden manhattan 家庭社区花园（来源类型：nyc_parks_opendata_fallback） 曼哈顿 manhattan 曼哈顿 manhattan manhattan family community garden 2026-06-16 12:11:50 2026-06-16 https://www.nycgovparks.org/events/2026/06/16/volunteer-day-family-community-garden-manhattan"
+    },
+    {
+      "id": "live_119",
+      "module": "亲子·公园",
+      "title_zh": "志愿者工作日：Robert L. Clinkscales 社区花园",
+      "summary_zh": "Robert L. Clinkscales 游乐场与社区花园（来源类型：nyc_parks_opendata_fallback）",
+      "location_tag_zh": "全市",
+      "location_kind": "citywide",
+      "area_zh": "纽约全市",
+      "borough": "Citywide",
+      "location": "Robert L. Clinkscales Playground and Community Garden",
+      "event_date": "2026-06-16",
+      "event_time": "",
+      "published_at": "",
+      "source_published_at": "",
+      "first_indexed_at": "2026-06-16 12:11:50",
+      "last_seen_at": "2026-06-16 12:11:50",
+      "date_kind": "event",
+      "url": "https://www.nycgovparks.org/events/2026/06/16/volunteer-workday-robert-l-clinkscales-community-garden",
+      "search_text": "live_119 亲子·公园 志愿者工作日：robert l. clinkscales 社区花园 volunteer workday: robert l. clinkscales community garden robert l. clinkscales 游乐场与社区花园（来源类型：nyc_parks_opendata_fallback） 全市 纽约全市 citywide robert l. clinkscales playground and community garden 2026-06-16 12:11:50 2026-06-16 https://www.nycgovparks.org/events/2026/06/16/volunteer-workday-robert-l-clinkscales-community-garden"
+    },
+    {
+      "id": "live_120",
+      "module": "亲子·公园",
+      "title_zh": "我的公园：Seth Low 游乐场/ Bealin 广场",
+      "summary_zh": "Seth Low 游乐场（在Seth Low 游乐场/ Bealin 广场）（来源类型：nyc_parks_opendata_fallback）",
+      "location_tag_zh": "全市",
+      "location_kind": "citywide",
+      "area_zh": "纽约全市",
+      "borough": "Citywide",
+      "location": "Seth Low Playground (in Seth Low Playground/ Bealin Square)",
+      "event_date": "2026-06-16",
+      "event_time": "",
+      "published_at": "",
+      "source_published_at": "",
+      "first_indexed_at": "2026-06-16 12:11:50",
+      "last_seen_at": "2026-06-16 12:11:50",
+      "date_kind": "event",
+      "url": "https://www.nycgovparks.org/events/2026/06/16/it-s-my-park-at-seth-low-playground-bealin-square",
+      "search_text": "live_120 亲子·公园 我的公园：seth low 游乐场/ bealin 广场 it's my park at seth low playground/ bealin square seth low 游乐场（在seth low 游乐场/ bealin 广场）（来源类型：nyc_parks_opendata_fallback） 全市 纽约全市 citywide seth low playground (in seth low playground/ bealin square) 2026-06-16 12:11:50 2026-06-16 https://www.nycgovparks.org/events/2026/06/16/it-s-my-park-at-seth-low-playground-bealin-square"
     }
   ]
 }
