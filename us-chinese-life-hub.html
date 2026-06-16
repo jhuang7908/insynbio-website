@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- hub-build: v2.5.2-20260615 (Removed WeChat subscribe funnel button from hero; subscribe still via bottom-right FAB) -->
+<!-- hub-build: v2.6.0-20260615 (Multi-column feed: AUTO responsive columns so wide screens show more items; layout selector now works + Auto default) -->
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8" />
@@ -422,7 +422,7 @@
     .title { font-size: 15px; font-weight: var(--weight-bold); line-height: 1.42; margin-bottom: 4px; color: #1f2937; display: -webkit-box; -webkit-line-clamp: 2; line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; cursor: pointer; transition: color 0.1s; }
     .title:hover { color: #ea580c; text-decoration: underline; }
     .summary { font-size: 13.5px; color: #52606d; line-height: var(--leading-relaxed); display: -webkit-box; -webkit-line-clamp: 2; line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
-    .foot { margin-top: 8px; display: flex; justify-content: space-between; align-items: center; font-size: 12px; color: #6b7280; border-top: 1px solid #f1f5f9; padding-top: 7px; gap: 8px; }
+    .foot { margin-top: auto; padding-top: 7px; display: flex; justify-content: space-between; align-items: center; font-size: 12px; color: #6b7280; border-top: 1px solid #f1f5f9; gap: 8px; }
     .foot span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; min-width: 0; }
     .btn { border: none; background: #ea580c; color: #ffffff; border-radius: 7px; padding: 6px 13px; font-size: 12.5px; font-weight: var(--weight-bold); font-family: inherit; cursor: pointer; transition: background 0.1s; flex-shrink: 0; white-space: nowrap; }
     .btn:hover { background: #c2410c; }
@@ -777,21 +777,21 @@
     .member-status.eligible { color: #065f46; background: #f0fdf4; border-color: #bbf7d0; }
     .yp-more { text-align: center; font-size: var(--text-sm); color: #94a3b8; padding: 6px; }
 
-    /* Custom columns preference (only applies to desktop/tablet screens > 768px) */
+    /* Feed columns. Default = AUTO: wider screens show more items per row instead of
+       one very wide column; phones stay single column. Users can force a fixed count. */
+    .feed-grid { grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); }
     @media (min-width: 769px) {
       body.grid-cols-1 .feed-grid { grid-template-columns: minmax(0, 1fr) !important; }
-      body.grid-cols-2 .feed-grid { grid-template-columns: minmax(0, 1fr) !important; }
-      body.grid-cols-3 .feed-grid { grid-template-columns: minmax(0, 1fr) !important; }
-      body.grid-cols-4 .feed-grid { grid-template-columns: minmax(0, 1fr) !important; }
+      body.grid-cols-2 .feed-grid { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; }
+      body.grid-cols-3 .feed-grid { grid-template-columns: repeat(3, minmax(0, 1fr)) !important; }
+      body.grid-cols-4 .feed-grid { grid-template-columns: repeat(4, minmax(0, 1fr)) !important; }
     }
 
     @media (max-width: 1080px) {
-      .feed-grid { grid-template-columns: minmax(0, 1fr); }
       .module-grid { grid-template-columns: repeat(3, 1fr); }
       .hub-search-panel { grid-template-columns: 1fr 1fr; }
     }
     @media (max-width: 780px) {
-      .feed-grid { grid-template-columns: minmax(0, 1fr); }
       .module-grid { grid-template-columns: repeat(2, 1fr); }
     }
     @media (max-width: 640px) {
@@ -881,6 +881,7 @@
             <div class="pref-selector">
               <span id="layout-cols-label">卡片排版:</span>
               <select id="layout-cols" class="pref-select" onchange="changeLayoutColumns(this.value)">
+                <option value="auto" id="opt-cols-auto">自动（推荐）</option>
                 <option value="4" id="opt-cols-4">四列一行</option>
                 <option value="3" id="opt-cols-3">三列一行</option>
                 <option value="2" id="opt-cols-2">双列一行</option>
@@ -1239,6 +1240,7 @@ const UI_STRINGS = {
     ui_lang_label: "界面语言:",
     pref_lang_label: "默认打开链接:",
     layout_cols_label: "卡片排版:",
+    layout_cols_auto: "自动（推荐）",
     layout_cols_4: "四列一行",
     layout_cols_3: "三列一行",
     layout_cols_2: "双列一行",
@@ -1354,6 +1356,7 @@ const UI_STRINGS = {
     ui_lang_label: "界面語言:",
     pref_lang_label: "默認打開鏈接:",
     layout_cols_label: "卡片排版:",
+    layout_cols_auto: "自動（推薦）",
     layout_cols_4: "四列一行",
     layout_cols_3: "三列一行",
     layout_cols_2: "雙列一行",
@@ -1460,6 +1463,7 @@ const UI_STRINGS = {
     ui_lang_label: "Language:",
     pref_lang_label: "Default Link:",
     layout_cols_label: "Layout:",
+    layout_cols_auto: "Auto (recommended)",
     layout_cols_4: "4 Columns",
     layout_cols_3: "3 Columns",
     layout_cols_2: "2 Columns",
@@ -1575,7 +1579,7 @@ function initPreference() {
   
   applyUILanguage();
 
-  const savedCols = localStorage.getItem('layout_cols_pref') || '4';
+  const savedCols = localStorage.getItem('layout_cols_pref') || 'auto';
   applyLayoutColumns(savedCols);
 }
 
@@ -1585,7 +1589,7 @@ function changeLayoutColumns(cols) {
 }
 
 function applyLayoutColumns(cols) {
-  document.body.classList.remove('grid-cols-1', 'grid-cols-2', 'grid-cols-3', 'grid-cols-4');
+  document.body.classList.remove('grid-cols-auto', 'grid-cols-1', 'grid-cols-2', 'grid-cols-3', 'grid-cols-4');
   document.body.classList.add('grid-cols-' + cols);
   const select = document.getElementById('layout-cols');
   if (select) select.value = cols;
@@ -1633,6 +1637,8 @@ function applyUILanguage() {
   
   const layoutColsLabel = document.getElementById('layout-cols-label');
   if (layoutColsLabel) layoutColsLabel.textContent = s.layout_cols_label;
+  const optColsAuto = document.getElementById('opt-cols-auto');
+  if (optColsAuto && s.layout_cols_auto) optColsAuto.textContent = s.layout_cols_auto;
   const optCols4 = document.getElementById('opt-cols-4');
   if (optCols4) optCols4.textContent = s.layout_cols_4;
   const optCols3 = document.getElementById('opt-cols-3');

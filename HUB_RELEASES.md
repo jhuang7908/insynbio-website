@@ -1,5 +1,14 @@
 # NYC Hub Release Notes
 
+## v2.6.0-20260615
+
+Feed density fix (owner: "信息页太宽，一屏看不了多少信息"):
+- **Root cause**: the feed grid was hard-forced to a single 1040px-wide column on desktop — the `body.grid-cols-*` CSS overrode every layout option to one column, so each row was very wide and few items fit per screen.
+- **Fix**: feed now uses **AUTO responsive columns** — `repeat(auto-fill, minmax(300px, 1fr))` — so wide screens show 3 columns, tablets ~2, phones stay 1. More items per view without manual tuning.
+- **Layout selector now actually works**: 自动（推荐）/ 四列 / 三列 / 双列 / 单列. Added an **Auto (recommended)** option, set as the new default. Fixed counts (1–4) apply on desktop (≥769px); phones remain single column.
+- **Grid alignment**: card footer (查看链接 button) anchored to the bottom (`margin-top:auto`) so buttons line up across equal-height cards.
+- SW cache → v36.
+
 ## v2.5.2-20260615
 
 - **Removed the WeChat subscribe funnel button from the hero** (owner request): the hero first screen is now tagline → weather bar → search. Subscription remains available via the bottom-right floating FAB (same `openSubModal`). SW cache → v35.
