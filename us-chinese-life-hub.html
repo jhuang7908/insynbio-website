@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- hub-build: v3.0.3-20260616 (民生频道feed强制单列) -->
+<!-- hub-build: v3.0.4-20260616 (民生频道按活动日近→远排序) -->
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8" />
@@ -3050,6 +3050,51 @@ function getDaysDiff(dateStr) {
   return diff === null ? 9999 : Math.max(0, -diff);
 }
 
+/** Event date for feed sort (field + nycgovparks URL path). */
+function getSortEventDate(i) {
+  const ed = getEventDate(i);
+  if (ed) return ed;
+  const u = i.url || '';
+  const m = u.match(/nycgovparks\.org\/events\/(20\d{2})\/(\d{2})\/(\d{2})/i);
+  if (m) return `${m[1]}-${m[2]}-${m[3]}`;
+  return '';
+}
+
+/** 民生频道默认排序：活动日由近到远（将来），对齐 NYC Parks 活动列表习惯。 */
+function hubEventDateSortCompare(a, b) {
+  const edA = getSortEventDate(a);
+  const edB = getSortEventDate(b);
+  const diffA = edA ? daysFromToday(edA) : null;
+  const diffB = edB ? daysFromToday(edB) : null;
+
+  const bucket = (diff, item) => {
+    if (diff !== null && diff >= 0) return 0;
+    if (item.date_kind === 'service' || item.content_kind === 'anchor') return 1;
+    if (diff === null) return 2;
+    return 3;
+  };
+  const ba = bucket(diffA, a);
+  const bb = bucket(diffB, b);
+  if (ba !== bb) return ba - bb;
+
+  if (ba === 0 && diffA !== diffB) return diffA - diffB;
+  if (ba === 3 && diffA !== diffB) return diffB - diffA;
+
+  const fiA = parseItemIndexMs(a.first_indexed_at, null) || 0;
+  const fiB = parseItemIndexMs(b.first_indexed_at, null) || 0;
+  if (fiA !== fiB) return fiB - fiA;
+  return itemImportance(b) - itemImportance(a);
+}
+
+function hubFeedSortCompare(a, b) {
+  if (activeNeighborhoodFilter !== 'all') {
+    const nr = hubNeighborhoodSortRank(a, activeNeighborhoodFilter)
+      - hubNeighborhoodSortRank(b, activeNeighborhoodFilter);
+    if (nr !== 0) return nr;
+  }
+  return hubEventDateSortCompare(a, b);
+}
+
 // Render high-density cards
 function renderFeed() {
   const _gv = (id, def) => { const el = document.getElementById(id); return el ? el.value : def; };
@@ -3093,10 +3138,7 @@ function renderFeed() {
     return matchesModule && matchesBorough && matchesTime && matchesNeighborhood && matchesSearch;
   });
 
-  if (activeNeighborhoodFilter !== 'all') {
-    filtered.sort((a, b) =>
-      hubNeighborhoodSortRank(a, activeNeighborhoodFilter) - hubNeighborhoodSortRank(b, activeNeighborhoodFilter));
-  }
+  filtered.sort(hubFeedSortCompare);
 
   const feed = document.getElementById('feed');
   feed.innerHTML = filtered.map(i => renderCard(i)).join('');
