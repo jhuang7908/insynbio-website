@@ -1,4 +1,4 @@
-const CACHE_NAME = 'us-chinese-life-hub-v38';
+const CACHE_NAME = 'us-chinese-life-hub-v39';
 const ASSETS = [
   '/',
   '/us-chinese-life-hub.html',

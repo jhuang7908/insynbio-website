@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- hub-build: v2.6.2-20260615 (Ultra-compact: 600px reading width, 2-3 lines per item with 1-line brief, tight margins, and smaller cards) -->
+<!-- hub-build: v2.7.0-20260615 (Grid alignment: category menu, weather bar, search box, and feed constrained to same width; layout toggle supports 1-col and 2-col) -->
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8" />
@@ -41,6 +41,7 @@
   <style>
     :root {
       --font-sans: 'Noto Sans SC', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      --feed-width: 600px;
       --hub-bg: #faf7f2;
       --hub-surface: #fffcf8;
       --hub-panel: #f5f1ea;
@@ -63,6 +64,9 @@
       --weight-bold: 700;
     }
     * { box-sizing: border-box; }
+    body.grid-cols-2 {
+      --feed-width: 900px;
+    }
     body {
       margin: 0;
       font-family: var(--font-sans);
@@ -139,9 +143,10 @@
     .hub-hero { margin: 14px auto 8px; text-align: center; }
     .hub-hero-tagline { font-size: 15px; font-weight: 700; color: #c2410c; margin: 0 0 10px; letter-spacing: .01em; }
     .hub-hero-search {
-      display: flex; align-items: center; gap: 0; max-width: 640px; margin: 0 auto;
+      display: flex; align-items: center; gap: 0; max-width: var(--feed-width); margin: 0 auto;
       border: 2px solid #fdba74; border-radius: 999px; background: #fff;
       box-shadow: 0 2px 10px rgba(234,88,12,.10); overflow: hidden;
+      width: 100%;
     }
     .hub-hero-search:focus-within { border-color: #ea580c; box-shadow: 0 3px 14px rgba(234,88,12,.20); }
     .hub-hero-search-icon { padding: 0 6px 0 16px; font-size: 16px; color: #ea580c; }
@@ -154,7 +159,7 @@
       padding: 0 22px; align-self: stretch; cursor: pointer; font-family: inherit;
     }
     .hub-hero-go:hover { background: #c2410c; }
-    .hub-hero-chips { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin: 12px auto 0; max-width: 640px; }
+    .hub-hero-chips { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin: 12px auto 0; max-width: var(--feed-width); width: 100%; }
     .hub-hero-chips button {
       border: 1px solid #fed7aa; background: #fff7ed; color: #9a3412;
       border-radius: 999px; padding: 7px 14px; font-size: 13px; font-weight: 700;
@@ -163,15 +168,16 @@
     .hub-hero-chips button:hover { border-color: #ea580c; background: #ffedd5; }
     .hub-hero-trust { font-size: 12.5px; color: #15803d; font-weight: 600; margin: 12px 0 0; }
     .hub-search-fallback {
-      max-width: 640px; margin: 8px auto 0; padding: 8px 12px;
+      max-width: var(--feed-width); margin: 8px auto 0; padding: 8px 12px;
       background: #fff7ed; border: 1px solid #fed7aa; border-radius: 10px;
       font-size: 13px; color: #9a3412; text-align: center; line-height: 1.5;
+      width: 100%;
     }
     .hub-search-fallback a { color: #c2410c; font-weight: 800; text-decoration: none; cursor: pointer; }
     .hub-search-fallback a:hover { text-decoration: underline; }
 
     /* First-screen funnel hooks (XHS landing) — one row, above the search box */
-    .hub-funnel { display: flex; gap: 10px; max-width: 640px; margin: 10px auto 12px; }
+    .hub-funnel { display: flex; gap: 10px; max-width: var(--feed-width); margin: 10px auto 12px; width: 100%; }
     .hub-funnel-item {
       flex: 1; border: 1px solid #d1fae5; background: linear-gradient(180deg,#ecfdf5 0%,#fff 100%);
       color: #065f46; border-radius: 12px; padding: 11px 10px; font-size: 13px; font-weight: 700;
@@ -242,6 +248,7 @@
       padding: 10px;
       margin: 16px auto;
       width: 100%;
+      max-width: var(--feed-width);
       box-shadow: 0 1px 3px rgba(0,0,0,0.02);
       display: grid;
       grid-template-columns: 2fr 1.2fr 1.2fr 1.2fr;
@@ -270,9 +277,11 @@
     .section-title { font-size: var(--text-lg); font-weight: var(--weight-bold); color: #1e293b; margin: 24px 0 12px; display: flex; align-items: center; justify-content: space-between; letter-spacing: -0.01em; }
     .section-title-left { display: flex; align-items: center; gap: 8px; }
     .hub-chapter-nav {
-      display: flex; flex-wrap: wrap; gap: 8px; margin: 16px 0 8px;
+      display: flex; flex-wrap: wrap; gap: 8px; margin: 16px auto 8px;
       padding: 10px 12px; background: var(--hub-panel); border: 1px solid var(--hub-border); border-radius: 12px;
       position: sticky; top: 60px; z-index: 90;
+      max-width: var(--feed-width);
+      width: 100%;
     }
     .hub-chapter-nav a {
       flex: 1; min-width: 96px; text-align: center; padding: 10px 12px; border-radius: 10px;
@@ -378,6 +387,12 @@
     .muted { color: #64748b; font-size: var(--text-base); line-height: var(--leading-relaxed); margin: -8px 0 16px; }
 
     /* Module Grid (First Part) */
+    .module-grid, #channels-section {
+      max-width: var(--feed-width);
+      margin-left: auto;
+      margin-right: auto;
+      width: 100%;
+    }
     .module-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin-top: 12px; transition: max-height 0.3s ease-out, opacity 0.3s ease-out; overflow: hidden; }
     .module-grid.collapsed { max-height: 0; opacity: 0; margin-top: 0; pointer-events: none; }
     .module-grid.expanded { max-height: 3000px; opacity: 1; }
@@ -388,7 +403,7 @@
     .module-desc { font-size: var(--text-sm); color: #64748b; line-height: var(--leading-relaxed); }
 
     /* Neighborhood Pillbar */
-    .pillbar { display: flex; flex-wrap: wrap; gap: 8px; margin: 12px 0; }
+    .pillbar { display: flex; flex-wrap: wrap; gap: 8px; margin: 12px auto; max-width: var(--feed-width); width: 100%; }
     .pill { border: 1px solid var(--hub-border); background: var(--hub-surface); border-radius: 999px; padding: 6px 14px; font-size: var(--text-sm); font-weight: var(--weight-medium); font-family: inherit; cursor: pointer; color: #475569; transition: all 0.1s; }
     .pill:hover { background: #f1f5f9; }
     .pill.active { background: #ea580c; color: #ffffff; border-color: #ea580c; }
@@ -564,7 +579,8 @@
       border: 1px solid #fdba74;
       border-radius: 10px;
       margin: 10px auto 0;
-      max-width: 840px; /* Hero section is narrower and centered */
+      max-width: var(--feed-width);
+      width: 100%;
       overflow: hidden;
       box-shadow: 0 2px 8px rgba(234, 88, 12, 0.08);
     }
@@ -695,7 +711,7 @@
     .forecast-day .fd-temp { font-weight: 700; color: #334155; }
     .forecast-day .fd-holi { color: #431407; margin-top: 4px; overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 2; line-clamp: 2; -webkit-box-orient: vertical; }
 
-    .phones-card { background: transparent; border: none; border-radius: 0; margin: 0; overflow: visible; }
+    .phones-card { background: transparent; border: none; border-radius: 0; margin: 0 auto; overflow: visible; max-width: var(--feed-width); width: 100%; }
     .phones-summary {
       display: flex; justify-content: space-between; align-items: center;
       padding: 0; cursor: pointer; list-style: none; user-select: none;
@@ -779,8 +795,22 @@
 
     /* Single-column reading feed (less-is-more). Constrained reading width so rows are
        not too wide; one clean card per row, vertical scroll. */
-    .feed-grid { grid-template-columns: minmax(0, 1fr); }
-    .livelihood-hot, .deals-section { max-width: 600px; margin-left: auto; margin-right: auto; }
+    .feed-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      gap: 8px;
+    }
+    @media (min-width: 641px) {
+      body.grid-cols-2 .feed-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+        gap: 10px;
+      }
+      body.grid-cols-2 .yp-cards-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+        gap: 10px;
+      }
+    }
+    .livelihood-hot, .deals-section { max-width: var(--feed-width); margin-left: auto; margin-right: auto; width: 100%; }
 
     @media (max-width: 1080px) {
       .module-grid { grid-template-columns: repeat(3, 1fr); }
@@ -869,6 +899,15 @@
                 <option value="trans_zh">🌐 中文简体（默认）</option>
                 <option value="trans_zht">🌐 中文繁體</option>
                 <option value="raw_en">英文原文</option>
+              </select>
+            </div>
+
+            <!-- Layout Column Preference (Saves to localStorage) -->
+            <div class="pref-selector">
+              <span id="layout-cols-label">卡片排版:</span>
+              <select id="layout-cols" class="pref-select" onchange="changeLayoutColumns(this.value)">
+                <option value="1" id="opt-cols-1">单列排版 (精简)</option>
+                <option value="2" id="opt-cols-2">双列排版 (高效)</option>
               </select>
             </div>
 
@@ -1223,11 +1262,8 @@ const UI_STRINGS = {
     ui_lang_label: "界面语言:",
     pref_lang_label: "默认打开链接:",
     layout_cols_label: "卡片排版:",
-    layout_cols_auto: "自动（推荐）",
-    layout_cols_4: "四列一行",
-    layout_cols_3: "三列一行",
-    layout_cols_2: "双列一行",
-    layout_cols_1: "单列一行",
+    layout_cols_2: "双列排版 (高效)",
+    layout_cols_1: "单列排版 (精简)",
     trans_zh: "自动翻译中文(简体)",
     trans_zht: "自動翻譯中文(繁體)",
     raw_en: "英文原文",
@@ -1339,11 +1375,8 @@ const UI_STRINGS = {
     ui_lang_label: "界面語言:",
     pref_lang_label: "默認打開鏈接:",
     layout_cols_label: "卡片排版:",
-    layout_cols_auto: "自動（推薦）",
-    layout_cols_4: "四列一行",
-    layout_cols_3: "三列一行",
-    layout_cols_2: "雙列一行",
-    layout_cols_1: "單列一行",
+    layout_cols_2: "雙列排版 (高效)",
+    layout_cols_1: "單列排版 (精簡)",
     trans_zh: "自動翻譯中文(簡體)",
     trans_zht: "自動翻譯中文(繁體)",
     raw_en: "英文原文",
@@ -1446,11 +1479,8 @@ const UI_STRINGS = {
     ui_lang_label: "Language:",
     pref_lang_label: "Default Link:",
     layout_cols_label: "Layout:",
-    layout_cols_auto: "Auto (recommended)",
-    layout_cols_4: "4 Columns",
-    layout_cols_3: "3 Columns",
-    layout_cols_2: "2 Columns",
-    layout_cols_1: "1 Column",
+    layout_cols_2: "2 Columns (Efficient)",
+    layout_cols_1: "1 Column (Compact)",
     trans_zh: "Auto-Translate to Chinese (Simplified)",
     trans_zht: "Auto-Translate to Chinese (Traditional)",
     raw_en: "Original English",
@@ -1562,8 +1592,9 @@ function initPreference() {
   
   applyUILanguage();
 
-  const savedCols = localStorage.getItem('layout_cols_pref') || 'auto';
-  applyLayoutColumns(savedCols);
+  const savedCols = localStorage.getItem('layout_cols_pref') || '1';
+  const finalCols = (savedCols === '2') ? '2' : '1';
+  applyLayoutColumns(finalCols);
 }
 
 function changeLayoutColumns(cols) {
@@ -1572,10 +1603,11 @@ function changeLayoutColumns(cols) {
 }
 
 function applyLayoutColumns(cols) {
+  const finalCols = (cols === '2') ? '2' : '1';
   document.body.classList.remove('grid-cols-auto', 'grid-cols-1', 'grid-cols-2', 'grid-cols-3', 'grid-cols-4');
-  document.body.classList.add('grid-cols-' + cols);
+  document.body.classList.add('grid-cols-' + finalCols);
   const select = document.getElementById('layout-cols');
-  if (select) select.value = cols;
+  if (select) select.value = finalCols;
 }
 
 function savePreference(val) {
@@ -1620,12 +1652,6 @@ function applyUILanguage() {
   
   const layoutColsLabel = document.getElementById('layout-cols-label');
   if (layoutColsLabel) layoutColsLabel.textContent = s.layout_cols_label;
-  const optColsAuto = document.getElementById('opt-cols-auto');
-  if (optColsAuto && s.layout_cols_auto) optColsAuto.textContent = s.layout_cols_auto;
-  const optCols4 = document.getElementById('opt-cols-4');
-  if (optCols4) optCols4.textContent = s.layout_cols_4;
-  const optCols3 = document.getElementById('opt-cols-3');
-  if (optCols3) optCols3.textContent = s.layout_cols_3;
   const optCols2 = document.getElementById('opt-cols-2');
   if (optCols2) optCols2.textContent = s.layout_cols_2;
   const optCols1 = document.getElementById('opt-cols-1');

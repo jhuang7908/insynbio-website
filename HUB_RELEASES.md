@@ -1,5 +1,18 @@
 # NYC Hub Release Notes
 
+## v2.7.0-20260615
+
+Grid alignment & layout preference (owner direction: "分栏菜单太宽，要和下面两头对齐。另外给一个菜单分别给出两列和一列两种选项"):
+- **Perfect alignment across all views**:
+  - Constrained the tab menu (`.hub-chapter-nav`), daily weather dashboard (`.daily-dashboard`), search fallback (`.hub-search-fallback`), composite search panel (`.hub-search-panel`), filter pillbar (`.pillbar`), and yellow pages card (`.phones-card`) to the exact same width as the main feed column (`--feed-width`).
+  - Centered all of them using `margin: 0 auto` or `margin: 16px auto`. Now, the entire page aligns perfectly on the left and right edges on desktop.
+- **Two layout options in the settings menu**:
+  - Added the **Layout (卡片排版)** selector back to the ⚙️ settings menu with exactly two options:
+    1. **单列排版 (精简)**: Constrains content width to **600px** for a focused, ultra-compact vertical reading feed.
+    2. **双列排版 (高效)**: Widens content width to **900px** and displays cards in a 2-column grid side-by-side on desktop (retains 1 column on mobile).
+  - The tab menu, weather bar, search box, and other elements automatically resize and realign to match the chosen width (600px or 900px) dynamically!
+- SW cache → v39.
+
 ## v2.6.2-20260615
 
 Ultra-compact layout (owner direction: "窄一些。2-3行一个信息"):
