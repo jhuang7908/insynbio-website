@@ -1,5 +1,13 @@
 # NYC Hub Release Notes
 
+## v2.3.0-20260615
+
+P1 batch (lead + GPT + Gemini consensus):
+- **Mobile sticky bottom tab bar** (最新/黄页/频道/打折): icon+label, ≥54px tap height, iOS `safe-area-inset` padding, FAB bumped above bar, top chapter-nav hidden on mobile to avoid redundancy.
+- **"即将举行" countdown badge** on event cards — honest semantics (event date, not application deadline; data has no deadline field). Shows 今天/明天/X天后 only for reliable dates within 7 days (reuses `isReliableEventDate`); past events & ongoing services get no badge. Data audit: 75/112 items have event_date; 24 fall within 7 days.
+- **A-/A+ font-size toggle** in ⚙️ menu (accessibility for older readers); scales content area via persisted zoom level.
+- i18n (zh/zht/en) for badge + tabs + font label; SW cache → v30.
+
 ## v2.2.0-20260615
 
 Synthesized P0 from三方评审 (lead + GPT + Gemini):

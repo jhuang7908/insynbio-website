@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- hub-build: v2.2.0-20260615 (Search-first hero + ⚙️ settings menu + slim dashboard + XHS funnel hooks) -->
+<!-- hub-build: v2.3.0-20260615 (Mobile bottom tab bar + upcoming-event countdown badge + A-/A+ font scale) -->
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8" />
@@ -173,6 +173,51 @@
     }
     /* US stock ticker removed from first-screen dashboard (low livelihood relevance) */
     .dash-market { display: none !important; }
+
+    /* Font-size A-/A+ control in settings menu */
+    .font-size-ctrl { display: inline-flex; gap: 6px; }
+    .font-size-ctrl button {
+      border: 1px solid #cbd5e1; background: #fff; border-radius: 6px;
+      min-width: 34px; height: 30px; cursor: pointer; font-family: inherit; color: #334155;
+    }
+    .font-size-ctrl button.af-sm { font-size: 12px; font-weight: 700; }
+    .font-size-ctrl button.af-lg { font-size: 17px; font-weight: 800; }
+    .font-size-ctrl button:hover { border-color: #ea580c; color: #c2410c; }
+
+    /* "即将举行" upcoming-event countdown badge (honest semantics: event date, not deadline) */
+    .upcoming-badge {
+      display: inline-flex; align-items: center; gap: 2px;
+      font-size: 11.5px; font-weight: 800; padding: 2px 8px; border-radius: 999px;
+      white-space: nowrap; line-height: 1.4;
+    }
+    .upcoming-badge.urgent { color: #b91c1c; background: #fef2f2; border: 1px solid #fca5a5; }
+    .upcoming-badge.soon { color: #b45309; background: #fffbeb; border: 1px solid #fcd34d; }
+
+    /* Mobile sticky bottom tab bar (one-thumb nav) */
+    .hub-bottom-tabs {
+      display: none;
+      position: fixed; left: 0; right: 0; bottom: 0; z-index: 150;
+      background: #ffffff; border-top: 1px solid #e2e8f0;
+      box-shadow: 0 -2px 10px rgba(15,23,42,.06);
+      padding-bottom: env(safe-area-inset-bottom, 0px);
+    }
+    .hub-bottom-tabs nav { display: flex; }
+    .hub-bottom-tabs a {
+      flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center;
+      gap: 2px; min-height: 54px; text-decoration: none; color: #64748b;
+      font-size: 11px; font-weight: 700; padding: 6px 2px;
+    }
+    .hub-bottom-tabs a .bt-icon { font-size: 20px; line-height: 1; }
+    .hub-bottom-tabs a.active { color: #ea580c; }
+    .hub-bottom-tabs a.active .bt-icon { transform: translateY(-1px); }
+    @media (max-width: 767px) {
+      .hub-bottom-tabs { display: block; }
+      body { padding-bottom: calc(58px + env(safe-area-inset-bottom, 0px)); }
+      /* avoid top nav + bottom tab redundancy on mobile */
+      .hub-chapter-nav { display: none !important; }
+      /* keep subscription FAB above the tab bar */
+      .sub-fab { bottom: calc(70px + env(safe-area-inset-bottom, 0px)) !important; }
+    }
 
     /* Compact Composite Search Panel (复合检索面板) */
     .hub-search-panel {
@@ -824,6 +869,15 @@
                 <option value="1" id="opt-cols-1">单列一行</option>
               </select>
             </div>
+
+            <!-- Font size (accessibility for older readers) -->
+            <div class="pref-selector">
+              <span id="font-size-label">字号大小:</span>
+              <div class="font-size-ctrl">
+                <button type="button" class="af-sm" onclick="setFontLevel(-1)" aria-label="缩小字号">A-</button>
+                <button type="button" class="af-lg" onclick="setFontLevel(1)" aria-label="放大字号">A+</button>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -1205,6 +1259,11 @@ const UI_STRINGS = {
     hero_go: "搜索",
     funnel_wechat: "📲 加微信群 · 订阅每周纽约福利清单",
     funnel_pwa: "📱 加到手机桌面（像 App 一样一键直达）",
+    badge_today: "今天",
+    badge_tomorrow: "明天",
+    badge_in_days: "{n}天后",
+    font_size_label: "字号大小:",
+    bt_latest: "最新", bt_yellow: "黄页", bt_channels: "频道", bt_deals: "打折",
     stream_week_label: "7日场次",
     stream_week_suffix: "场",
     stream_week_title: "未来7日内有明确活动时间的官方场次",
@@ -1308,6 +1367,11 @@ const UI_STRINGS = {
     hero_go: "搜尋",
     funnel_wechat: "📲 加微信群 · 訂閱每週紐約福利清單",
     funnel_pwa: "📱 加到手機桌面（像 App 一樣一鍵直達）",
+    badge_today: "今天",
+    badge_tomorrow: "明天",
+    badge_in_days: "{n}天後",
+    font_size_label: "字號大小:",
+    bt_latest: "最新", bt_yellow: "黃頁", bt_channels: "頻道", bt_deals: "打折",
     stream_week_label: "7日場次",
     stream_week_suffix: "場",
     stream_week_title: "未來7日內有明確活動時間的官方場次",
@@ -1402,6 +1466,11 @@ const UI_STRINGS = {
     hero_go: "Search",
     funnel_wechat: "📲 Join WeChat group · Weekly NYC benefits digest",
     funnel_pwa: "📱 Add to home screen (one-tap, app-like access)",
+    badge_today: "Today",
+    badge_tomorrow: "Tomorrow",
+    badge_in_days: "in {n}d",
+    font_size_label: "Font size:",
+    bt_latest: "Latest", bt_yellow: "Directory", bt_channels: "Channels", bt_deals: "Deals",
     stream_week_label: "7d events",
     stream_week_suffix: "",
     stream_week_title: "Official events with confirmed dates in the next 7 days",
@@ -1515,6 +1584,12 @@ function applyUILanguage() {
   if (funnelWechat && s.funnel_wechat) funnelWechat.textContent = s.funnel_wechat;
   const funnelPwa = document.getElementById('funnel-pwa-btn');
   if (funnelPwa && s.funnel_pwa) funnelPwa.textContent = s.funnel_pwa;
+  const fontSizeLabel = document.getElementById('font-size-label');
+  if (fontSizeLabel && s.font_size_label) fontSizeLabel.textContent = s.font_size_label;
+  [['bt-latest-label', 'bt_latest'], ['bt-yellow-label', 'bt_yellow'], ['bt-channels-label', 'bt_channels'], ['bt-deals-label', 'bt_deals']].forEach(([id, key]) => {
+    const el = document.getElementById(id);
+    if (el && s[key]) el.textContent = s[key];
+  });
   if (typeof syncLangQuickLabel === 'function') syncLangQuickLabel();
   
   const layoutColsLabel = document.getElementById('layout-cols-label');
@@ -3577,7 +3652,7 @@ function renderCard(i, opts) {
   const dealCls = opts.deal ? ' deal-card' : '';
   const tagBg = opts.deal ? '#64748b' : badgeColor(i.module);
   const linkLabel = opts.deal ? (s.view_link_deal || '查看') : s.view_link;
-  return '<article class="feed-card' + dealCls + '"><div class="meta"><span class="tag" style="background:' + tagBg + '15;color:' + tagBg + '">' + modName + '</span>' + hubLocationTagHtml(i) + formatDateMeta(i) + '</div><div class="title" onclick="openGuideModal(\'' + i.id + '\')" title="点击查看中文导读">' + title + '</div>' + briefHtml + summaryHtml + '<div class="foot"><span>' + s.verified + '</span><button class="btn" onclick="openEventLinkDirect(\'' + i.id + '\')">' + linkLabel + '</button></div></article>';
+  return '<article class="feed-card' + dealCls + '"><div class="meta">' + upcomingBadgeHtml(i, opts) + '<span class="tag" style="background:' + tagBg + '15;color:' + tagBg + '">' + modName + '</span>' + hubLocationTagHtml(i) + formatDateMeta(i) + '</div><div class="title" onclick="openGuideModal(\'' + i.id + '\')" title="点击查看中文导读">' + title + '</div>' + briefHtml + summaryHtml + '<div class="foot"><span>' + s.verified + '</span><button class="btn" onclick="openEventLinkDirect(\'' + i.id + '\')">' + linkLabel + '</button></div></article>';
 }
 
 // ─── 30-day auto-eviction (by last activity, not event date alone) ───
@@ -5264,6 +5339,7 @@ function hubBoot() {
     registerServiceWorkerOnBoot();
     initVisualViewportSync();
     syncLangQuickLabel();
+    initFontScale();
     document.addEventListener('click', (e) => {
       const wrap = document.querySelector('.settings-wrap');
       if (wrap && !wrap.contains(e.target)) closeSettingsMenu();
@@ -5803,6 +5879,52 @@ function closeSettingsMenu() {
   if (m) m.classList.remove('open');
 }
 
+// Bottom tab bar active state (mirrors HUB_PAGE_VIEW)
+function setBottomTabActive() {
+  const map = { latest: 'bt-latest', yellowpages: 'bt-yellow', channels: 'bt-channels', deals: 'bt-deals' };
+  ['bt-latest', 'bt-yellow', 'bt-channels', 'bt-deals'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.classList.toggle('active', map[HUB_PAGE_VIEW] === id);
+  });
+}
+
+// Font-size accessibility scale (A-/A+); scales content area only, keeps chrome stable
+let HUB_FONT_LEVEL = 0;
+const HUB_FONT_SCALES = [1, 1.15, 1.3];
+function applyFontScale() {
+  const main = document.querySelector('main.wrap');
+  if (main) main.style.zoom = String(HUB_FONT_SCALES[HUB_FONT_LEVEL] || 1);
+}
+function setFontLevel(delta) {
+  HUB_FONT_LEVEL = Math.max(0, Math.min(HUB_FONT_SCALES.length - 1, HUB_FONT_LEVEL + delta));
+  try { localStorage.setItem('hub_font_level', String(HUB_FONT_LEVEL)); } catch (_) {}
+  applyFontScale();
+}
+function initFontScale() {
+  try {
+    const saved = parseInt(localStorage.getItem('hub_font_level') || '0', 10);
+    if (!isNaN(saved)) HUB_FONT_LEVEL = Math.max(0, Math.min(HUB_FONT_SCALES.length - 1, saved));
+  } catch (_) {}
+  applyFontScale();
+}
+
+// "即将举行" upcoming-event countdown badge — honest semantics (event date, not application deadline)
+function upcomingBadgeHtml(i, opts) {
+  if (opts && opts.deal) return '';
+  if (!i || i.date_kind === 'service' || i.content_kind === 'anchor') return '';
+  const ed = getDisplayEventDate(i);
+  if (!ed) return '';
+  const diff = daysFromToday(ed);
+  if (diff === null || diff < 0 || diff > 7) return '';
+  const s = UI_STRINGS[currentLang] || {};
+  let label;
+  if (diff === 0) label = s.badge_today || '今天';
+  else if (diff === 1) label = s.badge_tomorrow || '明天';
+  else label = (s.badge_in_days || '{n}天后').replace('{n}', String(diff));
+  const cls = diff <= 2 ? 'urgent' : 'soon';
+  return '<span class="upcoming-badge ' + cls + '">\u23f0 ' + label + '</span>';
+}
+
 // Reuse the existing PWA / desktop-app guidance
 function showAddToHomeGuide() {
   const card = document.getElementById('pwa-guide-card');
@@ -5844,6 +5966,7 @@ function applyPageViewMode() {
     if (typeof initYellowPages === 'function') initYellowPages();
   }
   setHubNavPrimary(isLatest ? 'livelihood-hot' : '');
+  setBottomTabActive();
 
   const titleMap = {
     latest: '美东华人生活圈 · 最新动态',
@@ -5854,6 +5977,16 @@ function applyPageViewMode() {
   if (titleMap[HUB_PAGE_VIEW]) document.title = titleMap[HUB_PAGE_VIEW];
 }
 </script>
+
+<!-- Mobile sticky bottom tab bar (one-thumb navigation) -->
+<div class="hub-bottom-tabs" id="hub-bottom-tabs">
+  <nav aria-label="主导航">
+    <a href="latest.html" id="bt-latest"><span class="bt-icon">📋</span><span id="bt-latest-label">最新</span></a>
+    <a href="yellow-pages.html" id="bt-yellow"><span class="bt-icon">📒</span><span id="bt-yellow-label">黄页</span></a>
+    <a href="channels.html" id="bt-channels"><span class="bt-icon">📂</span><span id="bt-channels-label">频道</span></a>
+    <a href="deals.html" id="bt-deals"><span class="bt-icon">💰</span><span id="bt-deals-label">打折</span></a>
+  </nav>
+</div>
 
 <!-- Subscription FAB -->
 <button class="sub-fab" onclick="openSubModal()" aria-label="订阅与手机桌面App">
