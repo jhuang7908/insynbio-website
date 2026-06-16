@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- hub-build: v2.1.1-20260615 (Latest is homepage; no portal landing) -->
+<!-- hub-build: v2.2.0-20260615 (Search-first hero + ⚙️ settings menu + slim dashboard + XHS funnel hooks) -->
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8" />
@@ -102,6 +102,77 @@
     .controls-bar { display: flex; align-items: center; gap: 16px; }
     .pref-selector { display: flex; align-items: center; gap: 8px; font-size: var(--text-sm); font-weight: var(--weight-medium); color: #475569; }
     .pref-select { border: 1px solid #cbd5e1; border-radius: 6px; padding: 5px 10px; font-size: var(--text-sm); font-weight: var(--weight-medium); font-family: inherit; background: #f1f5f9; color: #334155; outline: none; cursor: pointer; }
+
+    /* Settings popover (合并语言/排版选择器) */
+    .lang-quick {
+      border: 1px solid #cbd5e1; background: #fff; color: #334155;
+      border-radius: 8px; padding: 6px 10px; font-size: var(--text-sm);
+      font-weight: 700; cursor: pointer; font-family: inherit; white-space: nowrap;
+    }
+    .lang-quick:hover { border-color: #ea580c; color: #c2410c; }
+    .settings-wrap { position: relative; display: inline-flex; }
+    .settings-btn {
+      border: 1px solid #cbd5e1; background: #fff; border-radius: 8px;
+      width: 36px; height: 34px; font-size: 16px; cursor: pointer; line-height: 1;
+      display: inline-flex; align-items: center; justify-content: center;
+    }
+    .settings-btn:hover { border-color: #ea580c; }
+    .settings-menu {
+      position: absolute; top: calc(100% + 8px); right: 0; z-index: 200;
+      background: #fff; border: 1px solid #e2e8f0; border-radius: 12px;
+      box-shadow: 0 8px 24px rgba(15,23,42,.14); padding: 12px;
+      display: none; flex-direction: column; gap: 12px; min-width: 220px;
+    }
+    .settings-menu.open { display: flex; }
+    .settings-menu .pref-selector { flex-direction: column; align-items: flex-start; gap: 4px; }
+    .settings-menu .pref-selector > span { display: inline; font-size: 12px; color: #64748b; }
+    .settings-menu .pref-select { width: 100%; }
+
+    /* Hero search-first block */
+    .hub-hero { margin: 14px auto 8px; text-align: center; }
+    .hub-hero-tagline { font-size: 15px; font-weight: 700; color: #c2410c; margin: 0 0 10px; letter-spacing: .01em; }
+    .hub-hero-search {
+      display: flex; align-items: center; gap: 0; max-width: 640px; margin: 0 auto;
+      border: 2px solid #fdba74; border-radius: 999px; background: #fff;
+      box-shadow: 0 2px 10px rgba(234,88,12,.10); overflow: hidden;
+    }
+    .hub-hero-search:focus-within { border-color: #ea580c; box-shadow: 0 3px 14px rgba(234,88,12,.20); }
+    .hub-hero-search-icon { padding: 0 6px 0 16px; font-size: 16px; color: #ea580c; }
+    .hub-hero-search input {
+      flex: 1; border: 0; outline: none; font-size: 15px; padding: 13px 8px;
+      font-family: inherit; background: transparent; min-width: 0; color: #1e293b;
+    }
+    .hub-hero-go {
+      border: 0; background: #ea580c; color: #fff; font-weight: 800; font-size: 15px;
+      padding: 0 22px; align-self: stretch; cursor: pointer; font-family: inherit;
+    }
+    .hub-hero-go:hover { background: #c2410c; }
+    .hub-hero-chips { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin: 12px auto 0; max-width: 640px; }
+    .hub-hero-chips button {
+      border: 1px solid #fed7aa; background: #fff7ed; color: #9a3412;
+      border-radius: 999px; padding: 7px 14px; font-size: 13px; font-weight: 700;
+      cursor: pointer; font-family: inherit;
+    }
+    .hub-hero-chips button:hover { border-color: #ea580c; background: #ffedd5; }
+    .hub-hero-trust { font-size: 12.5px; color: #15803d; font-weight: 600; margin: 12px 0 0; }
+
+    /* First-screen funnel hooks (XHS landing) */
+    .hub-funnel { display: flex; gap: 10px; max-width: 640px; margin: 14px auto 0; }
+    .hub-funnel-item {
+      flex: 1; border: 1px solid #d1fae5; background: linear-gradient(180deg,#ecfdf5 0%,#fff 100%);
+      color: #065f46; border-radius: 12px; padding: 11px 10px; font-size: 13px; font-weight: 700;
+      cursor: pointer; font-family: inherit; line-height: 1.35; text-align: center;
+    }
+    .hub-funnel-item:hover { border-color: #059669; box-shadow: 0 2px 8px rgba(5,150,105,.12); }
+    .hub-funnel-pwa { border-color: #fde68a; background: linear-gradient(180deg,#fffbeb 0%,#fff 100%); color: #92400e; }
+    .hub-funnel-pwa:hover { border-color: #d97706; box-shadow: 0 2px 8px rgba(217,119,6,.12); }
+    @media (max-width: 520px) {
+      .hub-funnel { flex-direction: column; gap: 8px; }
+      .hub-hero-go { padding: 0 16px; }
+      .hub-hero-search input { font-size: 14px; padding: 12px 6px; }
+    }
+    /* US stock ticker removed from first-screen dashboard (low livelihood relevance) */
+    .dash-market { display: none !important; }
 
     /* Compact Composite Search Panel (复合检索面板) */
     .hub-search-panel {
@@ -719,35 +790,41 @@
       </div>
       
       <div class="controls-bar">
-        <!-- UI Display Language Selector -->
-        <div class="pref-selector">
-          <span id="ui-lang-label">界面语言:</span>
-          <select id="ui-lang" class="pref-select" onchange="changeUILanguage(this.value)">
-            <option value="zh">简体中文</option>
-            <option value="zht">繁體中文</option>
-            <option value="en">English</option>
-          </select>
-        </div>
+        <button type="button" class="lang-quick" id="lang-quick" onclick="quickToggleLang()" title="中文 / English">中 | EN</button>
+        <div class="settings-wrap">
+          <button type="button" class="settings-btn" id="settings-btn" onclick="toggleSettingsMenu(event)" aria-label="显示与语言设置" title="显示与语言">⚙️</button>
+          <div class="settings-menu" id="settings-menu">
+            <!-- UI Display Language Selector -->
+            <div class="pref-selector">
+              <span id="ui-lang-label">界面语言:</span>
+              <select id="ui-lang" class="pref-select" onchange="changeUILanguage(this.value)">
+                <option value="zh">简体中文</option>
+                <option value="zht">繁體中文</option>
+                <option value="en">English</option>
+              </select>
+            </div>
 
-        <!-- Default Link Language Preference (Saves to localStorage) -->
-        <div class="pref-selector">
-          <span id="pref-lang-label">链接语言:</span>
-          <select id="pref-lang" class="pref-select" onchange="savePreference(this.value)">
-            <option value="trans_zh">🌐 中文简体（默认）</option>
-            <option value="trans_zht">🌐 中文繁體</option>
-            <option value="raw_en">英文原文</option>
-          </select>
-        </div>
+            <!-- Default Link Language Preference (Saves to localStorage) -->
+            <div class="pref-selector">
+              <span id="pref-lang-label">链接语言:</span>
+              <select id="pref-lang" class="pref-select" onchange="savePreference(this.value)">
+                <option value="trans_zh">🌐 中文简体（默认）</option>
+                <option value="trans_zht">🌐 中文繁體</option>
+                <option value="raw_en">英文原文</option>
+              </select>
+            </div>
 
-        <!-- Layout Column Preference (Saves to localStorage) -->
-        <div class="pref-selector">
-          <span id="layout-cols-label">卡片排版:</span>
-          <select id="layout-cols" class="pref-select" onchange="changeLayoutColumns(this.value)">
-            <option value="4" id="opt-cols-4">四列一行</option>
-            <option value="3" id="opt-cols-3">三列一行</option>
-            <option value="2" id="opt-cols-2">双列一行</option>
-            <option value="1" id="opt-cols-1">单列一行</option>
-          </select>
+            <!-- Layout Column Preference (Saves to localStorage) -->
+            <div class="pref-selector">
+              <span id="layout-cols-label">卡片排版:</span>
+              <select id="layout-cols" class="pref-select" onchange="changeLayoutColumns(this.value)">
+                <option value="4" id="opt-cols-4">四列一行</option>
+                <option value="3" id="opt-cols-3">三列一行</option>
+                <option value="2" id="opt-cols-2">双列一行</option>
+                <option value="1" id="opt-cols-1">单列一行</option>
+              </select>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -755,7 +832,32 @@
 
   <main class="wrap">
 
-    <!-- ═══ DAILY DASHBOARD (Calendar, Weather, Stock, Almanac) ═══ -->
+    <!-- ═══ HERO：搜索优先（5秒原则） ═══ -->
+    <section class="hub-hero" id="hub-hero" aria-label="搜索">
+      <p class="hub-hero-tagline" id="hero-tagline">纽约华人一站式 · 福利 · 活动 · 黄页 · 打折</p>
+      <div class="hub-hero-search">
+        <span class="hub-hero-search-icon" aria-hidden="true">🔍</span>
+        <input type="search" id="hero-search" autocomplete="off"
+          placeholder="搜：平价房、粮食券、半价地铁卡、免费遛娃…"
+          onkeydown="if(event.key==='Enter'){ goHubSearch(this.value); }">
+        <button type="button" class="hub-hero-go" id="hero-go" onclick="goHubSearch(document.getElementById('hero-search').value)">搜索</button>
+      </div>
+      <div class="hub-hero-chips" id="hero-chips">
+        <button type="button" onclick="goHubSearch('平价房')">🏠 平价房</button>
+        <button type="button" onclick="goHubSearch('粮食券')">🥬 粮食券/EBT</button>
+        <button type="button" onclick="goHubSearch('地铁')">🚇 半价地铁卡</button>
+        <button type="button" onclick="goHubSearch('免费 亲子')">🧒 免费遛娃</button>
+      </div>
+      <p class="hub-hero-trust" id="hero-trust">✔ 官方链接逐条人工核验 · 零广告 · 永久免费</p>
+    </section>
+
+    <!-- ═══ 引流钩子（小红书落地承接） ═══ -->
+    <div class="hub-funnel" id="hub-funnel">
+      <button type="button" class="hub-funnel-item" onclick="openSubModal()">📲 加微信群 · 订阅每周纽约福利清单</button>
+      <button type="button" class="hub-funnel-item hub-funnel-pwa" id="funnel-pwa-btn" onclick="showAddToHomeGuide()">📱 加到手机桌面（像 App 一样一键直达）</button>
+    </div>
+
+    <!-- ═══ DAILY DASHBOARD (Calendar, Weather, Almanac) ═══ -->
     <details class="daily-dashboard">
       <summary class="dashboard-summary">
         <div class="dash-head">
@@ -1097,6 +1199,12 @@ const UI_STRINGS = {
     stream_new_title: "过去24小时内新发布的社区公益、福利与官方活动（不含商业促销）",
     stream_new_empty: "暂无新的社区动态",
     latest_empty: "暂无最新动态，请稍后再来",
+    hero_tagline: "纽约华人一站式 · 福利 · 活动 · 黄页 · 打折",
+    hero_search_ph: "搜：平价房、粮食券、半价地铁卡、免费遛娃…",
+    hero_trust: "✔ 官方链接逐条人工核验 · 零广告 · 永久免费",
+    hero_go: "搜索",
+    funnel_wechat: "📲 加微信群 · 订阅每周纽约福利清单",
+    funnel_pwa: "📱 加到手机桌面（像 App 一样一键直达）",
     stream_week_label: "7日场次",
     stream_week_suffix: "场",
     stream_week_title: "未来7日内有明确活动时间的官方场次",
@@ -1194,6 +1302,12 @@ const UI_STRINGS = {
     stream_new_title: "過去24小時內新發布或更新的官方信息",
     stream_new_empty: "暫無新的社區動態",
     latest_empty: "暫無最新動態，請稍後再來",
+    hero_tagline: "紐約華人一站式 · 福利 · 活動 · 黃頁 · 打折",
+    hero_search_ph: "搜：平價房、糧食券、半價地鐵卡、免費遛娃…",
+    hero_trust: "✔ 官方連結逐條人工核驗 · 零廣告 · 永久免費",
+    hero_go: "搜尋",
+    funnel_wechat: "📲 加微信群 · 訂閱每週紐約福利清單",
+    funnel_pwa: "📱 加到手機桌面（像 App 一樣一鍵直達）",
     stream_week_label: "7日場次",
     stream_week_suffix: "場",
     stream_week_title: "未來7日內有明確活動時間的官方場次",
@@ -1282,6 +1396,12 @@ const UI_STRINGS = {
     stream_new_title: "Official items newly posted or updated in the past 24 hours",
     stream_new_empty: "No new community updates",
     latest_empty: "No latest updates yet — check back soon",
+    hero_tagline: "Your one-stop hub for NYC Chinese life · Benefits · Events · Directory · Deals",
+    hero_search_ph: "Search: affordable housing, SNAP/EBT, half-fare MetroCard, free kids' events…",
+    hero_trust: "✔ Official links manually verified · No ads · Always free",
+    hero_go: "Search",
+    funnel_wechat: "📲 Join WeChat group · Weekly NYC benefits digest",
+    funnel_pwa: "📱 Add to home screen (one-tap, app-like access)",
     stream_week_label: "7d events",
     stream_week_suffix: "",
     stream_week_title: "Official events with confirmed dates in the next 7 days",
@@ -1381,6 +1501,21 @@ function applyUILanguage() {
   document.getElementById('logo-sub').textContent = s.logo_sub;
   document.getElementById('ui-lang-label').textContent = s.ui_lang_label;
   document.getElementById('pref-lang-label').textContent = s.pref_lang_label;
+
+  // Hero + funnel i18n
+  const heroTagline = document.getElementById('hero-tagline');
+  if (heroTagline && s.hero_tagline) heroTagline.textContent = s.hero_tagline;
+  const heroSearch = document.getElementById('hero-search');
+  if (heroSearch && s.hero_search_ph) heroSearch.placeholder = s.hero_search_ph;
+  const heroTrust = document.getElementById('hero-trust');
+  if (heroTrust && s.hero_trust) heroTrust.textContent = s.hero_trust;
+  const heroGo = document.getElementById('hero-go');
+  if (heroGo && s.hero_go) heroGo.textContent = s.hero_go;
+  const funnelWechat = document.querySelector('#hub-funnel .hub-funnel-item:not(.hub-funnel-pwa)');
+  if (funnelWechat && s.funnel_wechat) funnelWechat.textContent = s.funnel_wechat;
+  const funnelPwa = document.getElementById('funnel-pwa-btn');
+  if (funnelPwa && s.funnel_pwa) funnelPwa.textContent = s.funnel_pwa;
+  if (typeof syncLangQuickLabel === 'function') syncLangQuickLabel();
   
   const layoutColsLabel = document.getElementById('layout-cols-label');
   if (layoutColsLabel) layoutColsLabel.textContent = s.layout_cols_label;
@@ -5051,7 +5186,7 @@ function initDashboardWidgets() {
 
 function fetchWeatherAndStock() {
   initDashboardWidgets();
-  loadMarketSnapshot();
+  // US stock ticker removed from first-screen dashboard (low livelihood relevance for target users)
   const wxUrl = 'https://api.open-meteo.com/v1/forecast?latitude=40.7143&longitude=-74.006'
     + '&current_weather=true'
     + '&daily=weathercode,temperature_2m_max,temperature_2m_min'
@@ -5128,6 +5263,11 @@ function hubBoot() {
     checkPushState();
     registerServiceWorkerOnBoot();
     initVisualViewportSync();
+    syncLangQuickLabel();
+    document.addEventListener('click', (e) => {
+      const wrap = document.querySelector('.settings-wrap');
+      if (wrap && !wrap.contains(e.target)) closeSettingsMenu();
+    });
   } catch (err) {
     console.error('[hub] boot failed', err);
     const feed = document.getElementById('feed');
@@ -5625,6 +5765,54 @@ function setSectionVisible(id, visible) {
   el.style.display = visible ? '' : 'none';
 }
 
+// Hero search → jump to 民生频道 feed with query (reuses existing search pipeline)
+function goHubSearch(q) {
+  const query = String(q || '').trim();
+  try { localStorage.setItem('hub_view_pref', 'channels'); } catch (_) {}
+  HUB_PAGE_VIEW = 'channels';
+  applyPageViewMode();
+  const hs = document.getElementById('hub-search'); if (hs) hs.value = query;
+  const hq = document.getElementById('q'); if (hq) hq.value = query;
+  if (typeof renderModules === 'function') renderModules();
+  if (typeof renderFeed === 'function') renderFeed();
+  if (typeof updateResetButton === 'function') { try { updateResetButton(); } catch (_) {} }
+  const target = document.getElementById('hub-search-panel') || document.getElementById('feed-section');
+  if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  if (hs) { try { hs.focus(); } catch (_) {} }
+}
+
+// Quick 中/EN toggle in header (full language set still in ⚙️ menu)
+function quickToggleLang() {
+  const next = (currentLang === 'en') ? 'zh' : 'en';
+  if (typeof changeUILanguage === 'function') changeUILanguage(next);
+  const sel = document.getElementById('ui-lang'); if (sel) sel.value = next;
+  syncLangQuickLabel();
+}
+function syncLangQuickLabel() {
+  const btn = document.getElementById('lang-quick');
+  if (btn) btn.textContent = (currentLang === 'en') ? 'EN | 中' : '中 | EN';
+}
+
+function toggleSettingsMenu(ev) {
+  if (ev) ev.stopPropagation();
+  const m = document.getElementById('settings-menu');
+  if (m) m.classList.toggle('open');
+}
+function closeSettingsMenu() {
+  const m = document.getElementById('settings-menu');
+  if (m) m.classList.remove('open');
+}
+
+// Reuse the existing PWA / desktop-app guidance
+function showAddToHomeGuide() {
+  const card = document.getElementById('pwa-guide-card');
+  if (card) {
+    card.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  } else if (typeof openSubModal === 'function') {
+    openSubModal();
+  }
+}
+
 function applyPageViewMode() {
   HUB_PAGE_VIEW = resolveHubPageView();
   const isLatest = HUB_PAGE_VIEW === 'latest';
@@ -5633,6 +5821,8 @@ function applyPageViewMode() {
   const isYellow = HUB_PAGE_VIEW === 'yellowpages';
 
   setSectionVisible('hub-chapter-nav', true);
+  setSectionVisible('hub-hero', isLatest);
+  setSectionVisible('hub-funnel', isLatest);
   setSectionVisible('livelihood-hot', isLatest);
   setSectionVisible('latest-page-head', isLatest);
   setSectionVisible('latest-unified-feed', isLatest);

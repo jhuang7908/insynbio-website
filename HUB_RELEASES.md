@@ -1,5 +1,14 @@
 # NYC Hub Release Notes
 
+## v2.2.0-20260615
+
+Synthesized P0 from三方评审 (lead + GPT + Gemini):
+- **Search-first hero** on homepage: tagline + full-width global search + preset chips (平价房/粮食券/半价地铁卡/免费遛娃) + trust line; search jumps to 民生频道 feed.
+- **Header simplified**: 3 selectors (UI lang / link lang / layout) moved into a ⚙️ settings menu; kept a visible 中|EN quick toggle.
+- **Slim dashboard**: removed US stock ticker (kept weather + 24h/7d + ✔核验); dashboard stays collapsed by default.
+- **XHS funnel hooks** on first screen: 加微信群/订阅 + 加到手机桌面 (PWA).
+- i18n strings added for hero/funnel (zh/zht/en); SW cache → v29.
+
 ## v2.1.1-20260615
 
 - Removed four-tile portal landing; **最新动态 is the homepage** (`/` → `?view=latest`).
