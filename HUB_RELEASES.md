@@ -1,5 +1,12 @@
 # NYC Hub Release Notes
 
+## v2.4.0-20260615
+
+- **Search box now persists on every view** (latest/channels/deals/yellow pages); the hero decorations (tagline/funnel/chips/trust) stay homepage-only.
+- **Section-scoped search**: placeholder + results match the current section — livelihood (最新/民生), businesses (黄页), deals (打折). Deals search filters `DEAL_ITEMS` into the online tab (shows all matches).
+- **Cross-section fallback**: when the current section returns 0 results, a notice shows hit counts in the other sections (民生/黄页/打折) with one-tap jump (`globalGo`). Note: 黄页 counts depend on lazy-loaded YP data.
+- i18n placeholders + fallback copy (zh/zht/en); SW cache → v32.
+
 ## v2.3.0-20260615
 
 P1 batch (lead + GPT + Gemini consensus):

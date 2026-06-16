@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- hub-build: v2.3.1-20260615 (Funnel hooks moved above search box, single row) -->
+<!-- hub-build: v2.4.0-20260615 (Persistent per-section search on every view + cross-section fallback) -->
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8" />
@@ -155,6 +155,13 @@
     }
     .hub-hero-chips button:hover { border-color: #ea580c; background: #ffedd5; }
     .hub-hero-trust { font-size: 12.5px; color: #15803d; font-weight: 600; margin: 12px 0 0; }
+    .hub-search-fallback {
+      max-width: 640px; margin: 8px auto 0; padding: 8px 12px;
+      background: #fff7ed; border: 1px solid #fed7aa; border-radius: 10px;
+      font-size: 13px; color: #9a3412; text-align: center; line-height: 1.5;
+    }
+    .hub-search-fallback a { color: #c2410c; font-weight: 800; text-decoration: none; cursor: pointer; }
+    .hub-search-fallback a:hover { text-decoration: underline; }
 
     /* First-screen funnel hooks (XHS landing) — one row, above the search box */
     .hub-funnel { display: flex; gap: 10px; max-width: 640px; margin: 10px auto 12px; }
@@ -887,30 +894,36 @@
 
   <main class="wrap">
 
-    <!-- ═══ HERO：搜索优先（5秒原则） ═══ -->
+    <!-- ═══ HERO：搜索优先（5秒原则）· 搜索框每页常驻，装饰仅首页 ═══ -->
     <section class="hub-hero" id="hub-hero" aria-label="搜索">
-      <p class="hub-hero-tagline" id="hero-tagline">纽约华人一站式 · 福利 · 活动 · 黄页 · 打折</p>
+      <div id="hero-decor-top">
+        <p class="hub-hero-tagline" id="hero-tagline">纽约华人一站式 · 福利 · 活动 · 黄页 · 打折</p>
 
-      <!-- 引流钩子（小红书落地承接）— 置于搜索框上方，一排 -->
-      <div class="hub-funnel" id="hub-funnel">
-        <button type="button" class="hub-funnel-item" onclick="openSubModal()">📲 加微信群 · 订阅每周纽约福利清单</button>
-        <button type="button" class="hub-funnel-item hub-funnel-pwa" id="funnel-pwa-btn" onclick="showAddToHomeGuide()">📱 加到手机桌面（像 App 一样一键直达）</button>
+        <!-- 引流钩子（小红书落地承接）— 置于搜索框上方，一排 -->
+        <div class="hub-funnel" id="hub-funnel">
+          <button type="button" class="hub-funnel-item" onclick="openSubModal()">📲 加微信群 · 订阅每周纽约福利清单</button>
+          <button type="button" class="hub-funnel-item hub-funnel-pwa" id="funnel-pwa-btn" onclick="showAddToHomeGuide()">📱 加到手机桌面（像 App 一样一键直达）</button>
+        </div>
       </div>
 
       <div class="hub-hero-search">
         <span class="hub-hero-search-icon" aria-hidden="true">🔍</span>
         <input type="search" id="hero-search" autocomplete="off"
           placeholder="搜：平价房、粮食券、半价地铁卡、免费遛娃…"
-          onkeydown="if(event.key==='Enter'){ goHubSearch(this.value); }">
-        <button type="button" class="hub-hero-go" id="hero-go" onclick="goHubSearch(document.getElementById('hero-search').value)">搜索</button>
+          onkeydown="if(event.key==='Enter'){ hubSectionSearch(this.value); }">
+        <button type="button" class="hub-hero-go" id="hero-go" onclick="hubSectionSearch(document.getElementById('hero-search').value)">搜索</button>
       </div>
-      <div class="hub-hero-chips" id="hero-chips">
-        <button type="button" onclick="goHubSearch('平价房')">🏠 平价房</button>
-        <button type="button" onclick="goHubSearch('粮食券')">🥬 粮食券/EBT</button>
-        <button type="button" onclick="goHubSearch('地铁')">🚇 半价地铁卡</button>
-        <button type="button" onclick="goHubSearch('免费 亲子')">🧒 免费遛娃</button>
+      <div class="hub-search-fallback" id="hub-search-fallback" style="display:none"></div>
+
+      <div id="hero-decor-bottom">
+        <div class="hub-hero-chips" id="hero-chips">
+          <button type="button" onclick="heroChipSearch('平价房')">🏠 平价房</button>
+          <button type="button" onclick="heroChipSearch('粮食券')">🥬 粮食券/EBT</button>
+          <button type="button" onclick="heroChipSearch('地铁')">🚇 半价地铁卡</button>
+          <button type="button" onclick="heroChipSearch('免费 亲子')">🧒 免费遛娃</button>
+        </div>
+        <p class="hub-hero-trust" id="hero-trust">✔ 官方链接逐条人工核验 · 零广告 · 永久免费</p>
       </div>
-      <p class="hub-hero-trust" id="hero-trust">✔ 官方链接逐条人工核验 · 零广告 · 永久免费</p>
     </section>
 
     <!-- ═══ DAILY DASHBOARD (Calendar, Weather, Almanac) ═══ -->
@@ -1266,6 +1279,12 @@ const UI_STRINGS = {
     badge_in_days: "{n}天后",
     font_size_label: "字号大小:",
     bt_latest: "最新", bt_yellow: "黄页", bt_channels: "频道", bt_deals: "打折",
+    hero_ph_live: "搜福利·活动：平价房、粮食券、半价地铁卡、免费遛娃…",
+    hero_ph_yellow: "在黄页里搜商户：名称、地址、电话…",
+    hero_ph_deals: "搜优惠：超市、折扣、品类…",
+    sec_live: "民生频道", sec_yellow: "社区黄页", sec_deals: "打折促销",
+    search_scoped_empty: "本栏目无结果 · 在全站找到：",
+    search_none_all: "全站暂无「{q}」相关结果，换个关键词试试",
     stream_week_label: "7日场次",
     stream_week_suffix: "场",
     stream_week_title: "未来7日内有明确活动时间的官方场次",
@@ -1374,6 +1393,12 @@ const UI_STRINGS = {
     badge_in_days: "{n}天後",
     font_size_label: "字號大小:",
     bt_latest: "最新", bt_yellow: "黃頁", bt_channels: "頻道", bt_deals: "打折",
+    hero_ph_live: "搜福利·活動：平價房、糧食券、半價地鐵卡、免費遛娃…",
+    hero_ph_yellow: "在黃頁裡搜商戶：名稱、地址、電話…",
+    hero_ph_deals: "搜優惠：超市、折扣、品類…",
+    sec_live: "民生頻道", sec_yellow: "社區黃頁", sec_deals: "打折促銷",
+    search_scoped_empty: "本欄目無結果 · 在全站找到：",
+    search_none_all: "全站暫無「{q}」相關結果，換個關鍵詞試試",
     stream_week_label: "7日場次",
     stream_week_suffix: "場",
     stream_week_title: "未來7日內有明確活動時間的官方場次",
@@ -1473,6 +1498,12 @@ const UI_STRINGS = {
     badge_in_days: "in {n}d",
     font_size_label: "Font size:",
     bt_latest: "Latest", bt_yellow: "Directory", bt_channels: "Channels", bt_deals: "Deals",
+    hero_ph_live: "Search benefits & events: housing, SNAP, MetroCard, free kids' events…",
+    hero_ph_yellow: "Search the directory: business name, address, phone…",
+    hero_ph_deals: "Search deals: stores, discounts, categories…",
+    sec_live: "Channels", sec_yellow: "Directory", sec_deals: "Deals",
+    search_scoped_empty: "No results in this section · Found site-wide in:",
+    search_none_all: "No site-wide results for \u201c{q}\u201d — try another keyword",
     stream_week_label: "7d events",
     stream_week_suffix: "",
     stream_week_title: "Official events with confirmed dates in the next 7 days",
@@ -1576,8 +1607,7 @@ function applyUILanguage() {
   // Hero + funnel i18n
   const heroTagline = document.getElementById('hero-tagline');
   if (heroTagline && s.hero_tagline) heroTagline.textContent = s.hero_tagline;
-  const heroSearch = document.getElementById('hero-search');
-  if (heroSearch && s.hero_search_ph) heroSearch.placeholder = s.hero_search_ph;
+  if (typeof updateHeroSearchPlaceholder === 'function') updateHeroSearchPlaceholder();
   const heroTrust = document.getElementById('hero-trust');
   if (heroTrust && s.hero_trust) heroTrust.textContent = s.hero_trust;
   const heroGo = document.getElementById('hero-go');
@@ -3162,18 +3192,24 @@ function renderDealsSection() {
   const moreFeed = document.getElementById('deals-feed-more');
   const moreBtn = document.getElementById('deals-more-btn');
   if (!feed) return;
-  const deals = (typeof DEAL_ITEMS !== 'undefined' && Array.isArray(DEAL_ITEMS) && DEAL_ITEMS.length)
+  let deals = (typeof DEAL_ITEMS !== 'undefined' && Array.isArray(DEAL_ITEMS) && DEAL_ITEMS.length)
     ? DEAL_ITEMS
     : ITEMS.filter(isDealItem);
+  // Section-scoped keyword search (set by the persistent top search bar)
+  const dealsSearching = !!HUB_DEALS_QUERY;
+  if (dealsSearching) {
+    deals = deals.filter(i => dealSearchBlob(i).includes(HUB_DEALS_QUERY));
+  }
   if (!deals.length) {
     feed.innerHTML = '<div style="grid-column:1/-1;padding:16px;text-align:center;color:#64748b;font-size:13px;line-height:1.55;">' + (s.deals_empty || '暂无促销信息') + '</div>';
     if (moreFeed) moreFeed.innerHTML = '';
     if (moreBtn) moreBtn.style.display = 'none';
     return;
   }
-  // 首屏只放 4 个，其余点击展开
-  feed.innerHTML = deals.slice(0, 4).map(i => renderCard(i, { deal: true })).join('');
-  const rest = deals.slice(4, 24);
+  // 首屏只放 4 个（搜索时展示全部匹配，不折叠）
+  const headCount = dealsSearching ? deals.length : 4;
+  feed.innerHTML = deals.slice(0, headCount).map(i => renderCard(i, { deal: true })).join('');
+  const rest = dealsSearching ? [] : deals.slice(4, 24);
   if (moreFeed) moreFeed.innerHTML = rest.map(i => renderCard(i, { deal: true })).join('');
   if (moreBtn) {
     if (rest.length) {
@@ -5859,6 +5895,111 @@ function goHubSearch(q) {
   if (hs) { try { hs.focus(); } catch (_) {} }
 }
 
+// ── Section-scoped search (search box lives on every view; results match the current section) ──
+let HUB_DEALS_QUERY = '';
+
+function dealSearchBlob(i) {
+  return [i.title_zh, i.title_en, i.title_zht, i.summary_zh, i.summary_en, i.module, i.url]
+    .map(x => String(x || '')).join(' ').toLowerCase();
+}
+function bizSearchBlob(b) {
+  return [b.name, b.address, b.phone, b.category, b.area]
+    .map(x => String(x || '')).join(' ').toLowerCase();
+}
+function hubSearchCounts(q) {
+  const ql = String(q || '').toLowerCase().trim();
+  if (!ql) return { live: 0, biz: 0, deals: 0 };
+  let live = 0, biz = 0, deals = 0;
+  try { live = livelihoodItems().filter(i => hubItemSearchBlob(i).includes(ql)).length; } catch (_) {}
+  try { biz = (Array.isArray(YELLOW_PAGES_FLAT) ? YELLOW_PAGES_FLAT : []).filter(b => bizSearchBlob(b).includes(ql)).length; } catch (_) {}
+  try {
+    const dl = (typeof DEAL_ITEMS !== 'undefined' && Array.isArray(DEAL_ITEMS)) ? DEAL_ITEMS : [];
+    deals = dl.filter(i => dealSearchBlob(i).includes(ql)).length;
+  } catch (_) {}
+  return { live, biz, deals };
+}
+
+function updateHeroSearchPlaceholder() {
+  const input = document.getElementById('hero-search');
+  if (!input) return;
+  const s = UI_STRINGS[currentLang] || {};
+  let ph;
+  if (HUB_PAGE_VIEW === 'yellowpages') ph = s.hero_ph_yellow;
+  else if (HUB_PAGE_VIEW === 'deals') ph = s.hero_ph_deals;
+  else ph = s.hero_ph_live || s.hero_search_ph;
+  if (ph) input.placeholder = ph;
+}
+
+function hubSectionSearch(q) {
+  const query = String(q || '').trim();
+  const fb = document.getElementById('hub-search-fallback');
+  if (fb) { fb.style.display = 'none'; fb.innerHTML = ''; }
+
+  if (!query) {
+    if (HUB_PAGE_VIEW === 'deals') { HUB_DEALS_QUERY = ''; if (typeof renderDealsSection === 'function') renderDealsSection(); }
+    else if (HUB_PAGE_VIEW === 'yellowpages') { const yp = document.getElementById('yp-search'); if (yp) yp.value = ''; if (typeof renderYellowPages === 'function') renderYellowPages(); }
+    else { goHubSearch(''); }
+    return;
+  }
+
+  let scopedCount = 0;
+  const counts = hubSearchCounts(query);
+  if (HUB_PAGE_VIEW === 'yellowpages') {
+    const yp = document.getElementById('yp-search'); if (yp) yp.value = query;
+    if (typeof renderYellowPages === 'function') renderYellowPages();
+    scopedCount = counts.biz;
+  } else if (HUB_PAGE_VIEW === 'deals') {
+    HUB_DEALS_QUERY = query.toLowerCase();
+    CURRENT_DEALS_TAB = 'online';
+    if (typeof renderDealsSection === 'function') renderDealsSection();
+    const dealsSec = document.getElementById('deals-section');
+    if (dealsSec) dealsSec.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    scopedCount = counts.deals;
+  } else {
+    goHubSearch(query); // livelihood (latest/channels)
+    scopedCount = counts.live;
+  }
+
+  if (scopedCount === 0) showSearchFallback(query);
+}
+
+// chips always search the livelihood corpus (their topics are 民生/活动)
+function heroChipSearch(q) {
+  if (HUB_PAGE_VIEW !== 'latest' && HUB_PAGE_VIEW !== 'channels') {
+    const hs = document.getElementById('hero-search'); if (hs) hs.value = q;
+  }
+  goHubSearch(q);
+}
+
+function showSearchFallback(q) {
+  const fb = document.getElementById('hub-search-fallback');
+  if (!fb) return;
+  const c = hubSearchCounts(q);
+  const s = UI_STRINGS[currentLang] || {};
+  const links = [];
+  if (HUB_PAGE_VIEW !== 'channels' && HUB_PAGE_VIEW !== 'latest' && c.live > 0)
+    links.push('<a onclick="globalGo(\'channels\')">' + (s.sec_live || '民生频道') + ' ' + c.live + '</a>');
+  if (HUB_PAGE_VIEW !== 'yellowpages' && c.biz > 0)
+    links.push('<a onclick="globalGo(\'yellowpages\')">' + (s.sec_yellow || '社区黄页') + ' ' + c.biz + '</a>');
+  if (HUB_PAGE_VIEW !== 'deals' && c.deals > 0)
+    links.push('<a onclick="globalGo(\'deals\')">' + (s.sec_deals || '打折促销') + ' ' + c.deals + '</a>');
+
+  if (!links.length) {
+    fb.innerHTML = (s.search_none_all || '全站暂无「{q}」相关结果，换个关键词试试').replace('{q}', q);
+  } else {
+    fb.innerHTML = (s.search_scoped_empty || '本栏目无结果 · 在全站找到：') + ' ' + links.join(' · ');
+  }
+  fb.style.display = '';
+}
+
+function globalGo(view) {
+  const q = (document.getElementById('hero-search')?.value || '').trim();
+  try { localStorage.setItem('hub_view_pref', view); } catch (_) {}
+  HUB_PAGE_VIEW = view;
+  applyPageViewMode();
+  hubSectionSearch(q);
+}
+
 // Quick 中/EN toggle in header (full language set still in ⚙️ menu)
 function quickToggleLang() {
   const next = (currentLang === 'en') ? 'zh' : 'en';
@@ -5945,8 +6086,12 @@ function applyPageViewMode() {
   const isYellow = HUB_PAGE_VIEW === 'yellowpages';
 
   setSectionVisible('hub-chapter-nav', true);
-  setSectionVisible('hub-hero', isLatest);
-  setSectionVisible('hub-funnel', isLatest);
+  setSectionVisible('hub-hero', true);           // search box persists on every view
+  setSectionVisible('hero-decor-top', isLatest); // tagline + funnel: homepage only
+  setSectionVisible('hero-decor-bottom', isLatest); // chips + trust: homepage only
+  const fb = document.getElementById('hub-search-fallback');
+  if (fb) { fb.style.display = 'none'; fb.innerHTML = ''; }
+  if (typeof updateHeroSearchPlaceholder === 'function') updateHeroSearchPlaceholder();
   setSectionVisible('livelihood-hot', isLatest);
   setSectionVisible('latest-page-head', isLatest);
   setSectionVisible('latest-unified-feed', isLatest);
