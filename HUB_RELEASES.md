@@ -1,5 +1,15 @@
 # NYC Hub Release Notes
 
+## v2.5.0-20260615
+
+Typography & color polish (referencing commercial content sites: Dealmoon/省钱快报, The Skint, Yelp, Stripe/Linear neutral systems):
+- **Larger, more readable text**: base 14→15px; card titles 13.5→15px; card brief/summary 12→13.5px; card footer 10.5→12px; "搜索" button 11→12.5px; yellow-page name 14→15px. Improves legibility for older readers without relying on the A+ toggle.
+- **Looser CJK line-height**: titles 1.32→1.42; brief 1.45→1.6; global relaxed 1.6→1.7; normal 1.5→1.55 (Chinese text needs more leading than Latin).
+- **Roomier cards** (less "大杂烩"): feed-card padding 7→12–14px, grid gap 5→9px, radius 8→10px; yellow-page cards padding 8→11–13px, gap 6→8px. Softer hover shadow.
+- **Unified neutral-slate palette + single orange accent**: body text #5c6470→#4b5563 (stronger contrast); removed off-brand warm brown (#431407) from card brief → neutral #475569; headings standardized to #1f2937; muted text token added (#6b7280).
+- **iOS input zoom fix**: hero search input forced to 16px so focusing it no longer auto-zooms the page on iPhone.
+- Lint: added standard `line-clamp` alongside `-webkit-line-clamp` everywhere; SW cache → v33.
+
 ## v2.4.0-20260615
 
 - **Search box now persists on every view** (latest/channels/deals/yellow pages); the hero decorations (tagline/funnel/chips/trust) stay homepage-only.
