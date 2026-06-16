@@ -1,5 +1,11 @@
 # NYC Hub Release Notes
 
+## v2.0.4-20260615
+
+- DOH vaccines link → `nyc.gov/.../immunization-clinics.page` (specific clinic page).
+- Housing Connect → `nyc.gov/housingconnect` (same domain pattern as working rentfreeze link).
+- External links: iframe breakout + `<a target=_blank>` fallback when popup blocked.
+
 ## v2.0.3-20260615
 
 - Replaced 14 broken official URLs (ACCESS NYC cash assistance, NYC.gov pages, Parks programs, GW Supermarket).
