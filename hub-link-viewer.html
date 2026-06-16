@@ -66,8 +66,8 @@
     <div class="meta" id="card-meta"></div>
     <p class="summary" id="card-summary" hidden></p>
     <div class="actions">
-      <a class="primary" id="btn-primary" href="#">打开官网</a>
-      <a class="secondary" id="btn-secondary" href="#">中文翻译</a>
+      <a class="primary" id="btn-primary" href="#">打开页面</a>
+      <a class="secondary" id="btn-secondary" href="#">备用打开方式</a>
     </div>
     <div class="source" id="card-source"></div>
   </main>
@@ -81,14 +81,22 @@
       const module = qs.get('module') || '';
       const summary = qs.get('summary') || '';
       const meta = qs.get('meta') || '';
-      const primaryTranslate = qs.get('translate') === '1';
+      const pref = qs.get('pref') || 'trans_zh';
 
       if (!rawUrl || !/^https?:\/\//i.test(rawUrl)) {
         document.body.innerHTML = '<p style="padding:20px">链接无效。<a href="' + returnPage + '">返回生活圈</a></p>';
         return;
       }
 
-      const translateUrl = 'https://translate.google.com/translate?sl=auto&tl=zh-CN&u=' + encodeURIComponent(rawUrl);
+      function translateUrl(url, p) {
+        if (p === 'raw_en') return url;
+        const tl = (p === 'trans_zht') ? 'zh-TW' : 'zh-CN';
+        return 'https://translate.google.com/translate?sl=auto&tl=' + tl + '&u=' + encodeURIComponent(url);
+      }
+
+      const primaryUrl = translateUrl(rawUrl, pref);
+      const altPref = (pref === 'raw_en') ? 'trans_zh' : 'raw_en';
+      const secondaryUrl = translateUrl(rawUrl, altPref);
 
       document.getElementById('card-title').textContent = title;
       document.title = title + ' · 生活圈';
@@ -118,25 +126,27 @@
       const btnPrimary = document.getElementById('btn-primary');
       const btnSecondary = document.getElementById('btn-secondary');
 
-      if (primaryTranslate) {
-        btnPrimary.textContent = '中文翻译打开';
-        btnPrimary.href = translateUrl;
+      if (pref === 'raw_en') {
+        btnPrimary.textContent = '打开英文原文';
+        btnSecondary.textContent = '简体中文翻译';
+      } else if (pref === 'trans_zht') {
+        btnPrimary.textContent = '繁體中文翻译打开';
         btnSecondary.textContent = '英文原文';
-        btnSecondary.href = rawUrl;
       } else {
-        btnPrimary.textContent = '打开官网';
-        btnPrimary.href = rawUrl;
-        btnSecondary.textContent = '中文翻译';
-        btnSecondary.href = translateUrl;
+        btnPrimary.textContent = '简体中文翻译打开';
+        btnSecondary.textContent = '英文原文';
       }
+
+      btnPrimary.href = primaryUrl;
+      btnSecondary.href = secondaryUrl;
 
       btnPrimary.addEventListener('click', function (e) {
         e.preventDefault();
-        location.assign(btnPrimary.href);
+        location.assign(primaryUrl);
       });
       btnSecondary.addEventListener('click', function (e) {
         e.preventDefault();
-        location.assign(btnSecondary.href);
+        location.assign(secondaryUrl);
       });
     })();
   </script>

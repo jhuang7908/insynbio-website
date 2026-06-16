@@ -1,5 +1,20 @@
 # NYC Hub Release Notes
 
+## v3.0.0-20260616 · uslifehub.org production
+
+Major release for **www.uslifehub.org** (Cloudflare Pages):
+- **薅羊毛** rebrand: 「打折促销」→ 薅羊毛；线上 Tab → **网购薅羊毛**
+- **Deal cards**: left-text / right-image layout; real merchant `<a href>` links for Skimlinks affiliate
+- **Category image pools**: hotpot 🍲, dimsum 🥟, street food 🍜, etc. — no more burger fallback for dining
+- **Page dedupe**: unique Pexels per card from topic pools (`DEAL_TOPIC_IMAGE_POOLS`)
+- **Online deals**: Slickdeals RSS → clean merchant URLs (Amazon, Walmart, …); Skimlinks-only tracking
+- **Canonical / footer**: primary domain **www.uslifehub.org** · v3.0 badge in footer
+- **SW cache** → v41; shell iframe cache bust → `v=3.0.0`
+
+## v2.9.x-20260616 (pre-release)
+
+- v2.9.14–2.9.22: deals layout, DEAL_ITEMS pipeline, media QA gate, image pool wiring
+
 ## v2.8.0-20260616
 
 Primary vs secondary navigation (owner: "一级目录复原到搜索框下方方框；下面分类简约化"):
