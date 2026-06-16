@@ -1,5 +1,18 @@
 # NYC Hub Release Notes
 
+## v2.6.2-20260615
+
+Ultra-compact layout (owner direction: "窄一些。2-3行一个信息"):
+- **Narrower reading column**: constrained reading width from 760px to **600px max-width** (centered) on desktop.
+- **Ultra-compact cards (2-3 lines of text height)**:
+  - Reduced padding from 16-18px to **10px 14px**.
+  - Tightened grid gap from 11px to **8px**.
+  - Reduced margins between meta, title, brief, and footer.
+  - Title font size reduced from 16.5px to **15px** with tighter 1.4 line-height.
+  - **1-line brief snippet**: changed `.card-brief-zh` line-clamp from 2 to **1 line** (13px font, 1.5 line-height) to keep the text footprint strictly to 2-3 lines of content.
+  - Foot border changed to a subtle dashed separator with tighter padding.
+- SW cache → v38.
+
 ## v2.6.1-20260615
 
 Less-is-more reading layout (owner direction: single column, bigger/cleaner cards):
