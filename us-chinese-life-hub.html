@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- hub-build: v2.3.0-20260615 (Mobile bottom tab bar + upcoming-event countdown badge + A-/A+ font scale) -->
+<!-- hub-build: v2.3.1-20260615 (Funnel hooks moved above search box, single row) -->
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8" />
@@ -156,8 +156,8 @@
     .hub-hero-chips button:hover { border-color: #ea580c; background: #ffedd5; }
     .hub-hero-trust { font-size: 12.5px; color: #15803d; font-weight: 600; margin: 12px 0 0; }
 
-    /* First-screen funnel hooks (XHS landing) */
-    .hub-funnel { display: flex; gap: 10px; max-width: 640px; margin: 14px auto 0; }
+    /* First-screen funnel hooks (XHS landing) — one row, above the search box */
+    .hub-funnel { display: flex; gap: 10px; max-width: 640px; margin: 10px auto 12px; }
     .hub-funnel-item {
       flex: 1; border: 1px solid #d1fae5; background: linear-gradient(180deg,#ecfdf5 0%,#fff 100%);
       color: #065f46; border-radius: 12px; padding: 11px 10px; font-size: 13px; font-weight: 700;
@@ -167,7 +167,8 @@
     .hub-funnel-pwa { border-color: #fde68a; background: linear-gradient(180deg,#fffbeb 0%,#fff 100%); color: #92400e; }
     .hub-funnel-pwa:hover { border-color: #d97706; box-shadow: 0 2px 8px rgba(217,119,6,.12); }
     @media (max-width: 520px) {
-      .hub-funnel { flex-direction: column; gap: 8px; }
+      .hub-funnel { gap: 8px; }
+      .hub-funnel-item { padding: 9px 6px; font-size: 12px; line-height: 1.3; border-radius: 10px; }
       .hub-hero-go { padding: 0 16px; }
       .hub-hero-search input { font-size: 14px; padding: 12px 6px; }
     }
@@ -889,6 +890,13 @@
     <!-- ═══ HERO：搜索优先（5秒原则） ═══ -->
     <section class="hub-hero" id="hub-hero" aria-label="搜索">
       <p class="hub-hero-tagline" id="hero-tagline">纽约华人一站式 · 福利 · 活动 · 黄页 · 打折</p>
+
+      <!-- 引流钩子（小红书落地承接）— 置于搜索框上方，一排 -->
+      <div class="hub-funnel" id="hub-funnel">
+        <button type="button" class="hub-funnel-item" onclick="openSubModal()">📲 加微信群 · 订阅每周纽约福利清单</button>
+        <button type="button" class="hub-funnel-item hub-funnel-pwa" id="funnel-pwa-btn" onclick="showAddToHomeGuide()">📱 加到手机桌面（像 App 一样一键直达）</button>
+      </div>
+
       <div class="hub-hero-search">
         <span class="hub-hero-search-icon" aria-hidden="true">🔍</span>
         <input type="search" id="hero-search" autocomplete="off"
@@ -904,12 +912,6 @@
       </div>
       <p class="hub-hero-trust" id="hero-trust">✔ 官方链接逐条人工核验 · 零广告 · 永久免费</p>
     </section>
-
-    <!-- ═══ 引流钩子（小红书落地承接） ═══ -->
-    <div class="hub-funnel" id="hub-funnel">
-      <button type="button" class="hub-funnel-item" onclick="openSubModal()">📲 加微信群 · 订阅每周纽约福利清单</button>
-      <button type="button" class="hub-funnel-item hub-funnel-pwa" id="funnel-pwa-btn" onclick="showAddToHomeGuide()">📱 加到手机桌面（像 App 一样一键直达）</button>
-    </div>
 
     <!-- ═══ DAILY DASHBOARD (Calendar, Weather, Almanac) ═══ -->
     <details class="daily-dashboard">
