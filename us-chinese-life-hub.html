@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- hub-build: v3.0.4-20260616 (民生频道按活动日近→远排序) -->
+<!-- hub-build: v3.0.5-20260616 (手机底栏导航+黄页小屏单列) -->
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8" />
@@ -211,7 +211,7 @@
     .upcoming-badge.urgent { color: #b91c1c; background: #fef2f2; border: 1px solid #fca5a5; }
     .upcoming-badge.soon { color: #b45309; background: #fffbeb; border: 1px solid #fcd34d; }
 
-    /* Mobile sticky bottom tab bar (one-thumb nav) */
+    /* Mobile sticky bottom tab bar (one-thumb nav) — desktop hidden */
     .hub-bottom-tabs {
       display: none;
       position: fixed; left: 0; right: 0; bottom: 0; z-index: 150;
@@ -229,11 +229,11 @@
     .hub-bottom-tabs a.active { color: #ea580c; }
     .hub-bottom-tabs a.active .bt-icon { transform: translateY(-1px); }
     @media (max-width: 767px) {
-      .hub-bottom-tabs { display: none; }
-      body { padding-bottom: env(safe-area-inset-bottom, 0px); }
-      .hub-chapter-nav { position: static; margin-top: 10px; padding: 8px 10px; gap: 6px; }
-      .hub-chapter-nav a { min-width: 0; flex: 1 1 calc(50% - 6px); padding: 9px 8px; font-size: 13px; border-radius: 8px; }
-      .sub-fab { bottom: calc(16px + env(safe-area-inset-bottom, 0px)) !important; }
+      .hub-bottom-tabs { display: block; }
+      body { padding-bottom: calc(58px + env(safe-area-inset-bottom, 0px)); }
+      /* 底栏已覆盖四频道切换，隐藏顶部重复导航 */
+      .hub-chapter-nav { display: none !important; }
+      .sub-fab { bottom: calc(72px + env(safe-area-inset-bottom, 0px)) !important; }
     }
     /* iframe 内同样显示 Hub 一级导航（橙色四栏） */
     /* 栏目内独立搜索框（社区黄页 / 民生频道） */
@@ -730,8 +730,6 @@
     /* Ensure FAB scales properly and stays inside viewport on mobile */
     @media (max-width: 640px) {
       .sub-fab {
-        bottom: 16px;
-        right: 16px;
         padding: 10px 16px;
         font-size: 12px;
       }
@@ -1090,6 +1088,13 @@
       body.grid-cols-3 .yp-cards-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
       body.grid-cols-4 .feed-grid,
       body.grid-cols-4 .yp-cards-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      /* 黄页小屏强制单列（不受用户列数偏好影响） */
+      body.grid-cols-2 .yp-cards-grid,
+      body.grid-cols-3 .yp-cards-grid,
+      body.grid-cols-4 .yp-cards-grid,
+      body:not(.grid-cols-1):not(.grid-cols-2):not(.grid-cols-3):not(.grid-cols-4) .yp-cards-grid {
+        grid-template-columns: minmax(0, 1fr) !important;
+      }
       .module-grid { grid-template-columns: repeat(2, 1fr); }
       .hub-search-panel { grid-template-columns: 1fr; }
       .top-inner { height: auto; min-height: 52px; padding: 8px 0; align-items: center; }
