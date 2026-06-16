@@ -1,5 +1,13 @@
 # NYC Hub Release Notes
 
+## v2.6.1-20260615
+
+Less-is-more reading layout (owner direction: single column, bigger/cleaner cards):
+- **Back to single column** for the feed; **constrained reading width to 760px** (centered) so rows are no longer too wide. One clean card per row, scan vertically.
+- **Bigger, roomier cards**: padding 12–14 → 16–18px, radius 10 → 12, title 15 → 16.5px, brief 13.5 → 14px / line-height 1.65, more vertical spacing between meta/title/brief.
+- **Removed the column-layout selector** from settings (收敛选项 — no longer meaningful with a fixed single-column design). Card content stays lean (one category tag, one location, one date, title, brief, verified + action).
+- SW cache → v37. (Supersedes the v2.6.0 multi-column experiment.)
+
 ## v2.6.0-20260615
 
 Feed density fix (owner: "信息页太宽，一屏看不了多少信息"):
