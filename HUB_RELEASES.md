@@ -1,5 +1,16 @@
 # NYC Hub Release Notes
 
+## v2.8.0-20260616
+
+Primary vs secondary navigation (owner: "一级目录复原到搜索框下方方框；下面分类简约化"):
+- **Primary nav (最新动态 / 社区黄页 / 民生频道 / 打折促销)** moved back **directly below the search box** inside the hero, in the original **boxed tab row** (`.hub-chapter-nav`).
+- **Mobile**: bottom tab bar hidden; primary boxed nav shown below search (2×2 grid on narrow screens).
+- **Secondary UI simplified** — removed duplicate section titles that repeated the primary nav:
+  - Hidden `#latest-page-head`, `#channels-section`, `#deals-section > .section-title`, yellow-pages collapsible summary.
+  - Stream sub-tabs (24h / 7d / enroll), deals sub-tabs, and channel filters kept as **small pill tabs** (`.hub-light-tabs`).
+  - Channel feed title/subtitle hidden; reset button row retained.
+- SW cache → v40.
+
 ## v2.7.0-20260615
 
 Grid alignment & layout preference (owner direction: "分栏菜单太宽，要和下面两头对齐。另外给一个菜单分别给出两列和一列两种选项"):
