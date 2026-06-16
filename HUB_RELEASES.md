@@ -1,5 +1,12 @@
 # NYC Hub Release Notes
 
+## v2.5.1-20260615
+
+Hero layout tweaks (owner request):
+- **Weather/daily bar moved above the search box**: the slim 天气 + 24h新增/7日场次 dashboard now sits directly above the search input on every view (relocated into the hero at boot via `relocateDashboardAboveSearch`). Stays collapsed by default.
+- **"加到手机桌面" demoted from hero to a compact header button**: removed the large PWA funnel button from the first screen; added a small 📱 加桌面 button in the top "生活圈" header row (icon-only on mobile). The 微信群订阅 button is now the single prominent hero CTA. Rationale: add-to-home is a one-time, low-frequency action and shouldn't occupy prime hero space.
+- i18n `pwa_quick` (zh/zht/en); SW cache → v34.
+
 ## v2.5.0-20260615
 
 Typography & color polish (referencing commercial content sites: Dealmoon/省钱快报, The Skint, Yelp, Stripe/Linear neutral systems):
