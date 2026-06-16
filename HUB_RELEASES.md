@@ -1,5 +1,12 @@
 # NYC Hub Release Notes
 
+## v2.0.3-20260615
+
+- Replaced 14 broken official URLs (ACCESS NYC cash assistance, NYC.gov pages, Parks programs, GW Supermarket).
+- Added runtime `HUB_URL_FIXES` map so legacy cached links redirect to verified endpoints.
+- Official government links in guide modal now open directly (no Google Translate proxy).
+- Updated `hub_channel_anchors.json` to v1.0.2 with verified URLs.
+
 ## v2.0.0-20260615
 
 - Default home view set to `latest` (`us-chinese-life-hub.html?view=latest`).
