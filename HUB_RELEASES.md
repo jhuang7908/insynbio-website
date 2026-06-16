@@ -1,5 +1,10 @@
 # NYC Hub Release Notes
 
+## v2.1.1-20260615
+
+- Removed four-tile portal landing; **最新动态 is the homepage** (`/` → `?view=latest`).
+- Chapter nav is four sections only (no separate 首页).
+
 ## v2.1.0-20260615
 
 - Homepage is now **4 portal tiles only** (no stream/dashboard clutter).
