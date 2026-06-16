@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- hub-build: v3.0.1-20260616 (加宽版心·减少两侧留白) -->
+<!-- hub-build: v3.0.2-20260616 (版心回退900px·对齐本地预览) -->
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8" />
@@ -65,12 +65,12 @@
     }
     * { box-sizing: border-box; }
     body.grid-cols-1 {
-      --feed-width: 960px;
+      --feed-width: 760px;
     }
     body.grid-cols-2,
     body.grid-cols-3,
     body.grid-cols-4 {
-      --feed-width: 1200px;
+      --feed-width: 900px;
     }
     body {
       margin: 0;
@@ -85,7 +85,7 @@
       color: var(--hub-text);
       overflow-x: hidden; /* Prevent horizontal scrollbar and layout shifting */
     }
-    .wrap { max-width: 1240px; margin: 0 auto; padding: 0 20px; }
+    .wrap { max-width: 1040px; margin: 0 auto; padding: 0 16px; }
     @media (max-width: 640px)  { .wrap { padding: 0 12px; } }
 
     /* 两侧赞助广告位（仅宽屏显示，居中内容两边的留白里） */
