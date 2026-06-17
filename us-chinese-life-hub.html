@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- hub-build: v3.1.8-20260616 (搜索：停用陈旧index+别名+黄页/常用电话) -->
+<!-- hub-build: v3.1.9-20260616 (黄页二次分类+行业标签) -->
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8" />
@@ -1500,7 +1500,7 @@
 
     <footer class="hub-site-footer" id="hub-footer">
       <p class="footer-mission" id="footer-mission">美东华人生活圈 · 公开渠道社区信息聚合，公益导向</p>
-      <p id="footer-org"><a href="https://www.uslifehub.org/" id="footer-org-link">www.uslifehub.org</a> · v3.1.8</p>
+      <p id="footer-org"><a href="https://www.uslifehub.org/" id="footer-org-link">www.uslifehub.org</a> · v3.1.9</p>
       <p id="footer-contact"><span id="footer-contact-label">联系 / 注册 / 投稿：</span><a href="mailto:info@uslifehub.org" id="footer-email">info@uslifehub.org</a></p>
     </footer>
 
@@ -5227,6 +5227,15 @@ const YP_SEARCH_SYNONYMS = {
   "地产": ["地产公司", "realty", "real estate", "broker"],
   "买房": ["地产公司", "realty", "real estate", "broker"],
   "租房": ["地产公司", "realty", "real estate", "broker"],
+  "药店": ["中国人药店", "pharmacy", "drugstore", "herbal", "参茸", "药房"],
+  "药房": ["中国人药店", "pharmacy", "drugstore", "herbal", "参茸", "药房"],
+  "慈济": ["宗教机构", "tzu chi", "buddhist", "nonprofit"],
+  "罚单": ["律师事务所", "traffic ticket", "summons", "violation", "交通"],
+  "交通罚单": ["律师事务所", "traffic ticket", "summons", "violation"],
+  "钢铁": ["钢铁金属", "steel", "iron", "metal", "建材公司"],
+  "钢铁公司": ["钢铁金属", "steel", "iron", "metal"],
+  "协会": ["华人协会", "商会", "同乡会", "association", "coalition"],
+  "律师楼": ["律师事务所", "law", "attorney", "legal"],
   "律师": ["律师事务所", "law", "attorney", "legal"],
   "会计": ["会计事务所", "accountant", "cpa", "tax"],
   "报税": ["会计事务所", "accountant", "cpa", "tax"],
@@ -5325,8 +5334,10 @@ const YP_INDUSTRY_GROUPS = [
   { id: 'adultcare', label: '🧓 成人日托', cats: ['成人日托'] },
   { id: 'tutor', label: '📚 补习', cats: ['补习学校'] },
   { id: 'reno', label: '🔧 装修', cats: ['装修公司', '建材公司'] },
+  { id: 'steel', label: '🏭 钢铁金属', cats: ['钢铁金属'] },
   { id: 'auto', label: '🚗 汽修', cats: ['汽车修理'] },
   { id: 'law', label: '⚖️ 律师', cats: ['律师事务所'] },
+  { id: 'traffic_law', label: '🚗 交通罚单', cats: ['律师事务所'], keywords: ['罚单', 'traffic ticket', 'summons', 'violation', '交通'] },
   { id: 'account', label: '📊 会计', cats: ['会计事务所'] },
   { id: 'realestate', label: '🏠 地产', cats: ['地产公司'] },
   { id: 'bank', label: '🏦 银行', cats: ['银行金融'] },
@@ -5342,7 +5353,7 @@ const YP_INDUSTRY_GROUPS = [
   { id: 'sign', label: '🪧 印刷招牌', cats: ['印刷招牌'] },
   { id: 'security', label: '🛡️ 安保物业', cats: ['安保物业'] },
   { id: 'jewelry', label: '💎 珠宝', cats: ['珠宝店'] },
-  { id: 'community', label: '🏮 乡会', cats: ['商会', '同乡会'] },
+  { id: 'community', label: '🏮 乡会', cats: ['商会', '同乡会', '华人协会'] },
   { id: 'misc_zh', label: '🏪 其他华人', cats: ['其他华人生意'] },
 ];
 
@@ -5950,6 +5961,15 @@ function updateMemberStatusUI() {
 function filterYpByIndustry(items) {
   const group = YP_INDUSTRY_GROUPS.find(g => g.id === YP_ACTIVE_INDUSTRY);
   if (!group || group.id === 'all' || group.essential) return items;
+  if (group.keywords && group.keywords.length) {
+    const kws = group.keywords.map(k => String(k).toLowerCase());
+    const cats = group.cats || [];
+    return items.filter(i => {
+      const blob = [i.name, i.category, i.address].filter(Boolean).join(' ').toLowerCase();
+      const catOk = !cats.length || cats.includes(i.category);
+      return catOk && kws.some(k => blob.includes(k));
+    });
+  }
   if (group.cats) return items.filter(i => group.cats.includes(i.category));
   return items;
 }
