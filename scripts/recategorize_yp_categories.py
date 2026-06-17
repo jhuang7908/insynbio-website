@@ -1,12 +1,58 @@
 #!/usr/bin/env python3
-"""Reclassify yp_data entries from 其他华人生意 / misfiled buckets into proper categories."""
+"""Reclassify yp_data entries from 其他华人生意 / misfiled buckets into proper categories.
+
+Classification priority (name-first):
+  1) MISFILE_FIXES for known wrong buckets
+  2) NAME_READ_RULES — read business name literally (中文店名 + English suffixes)
+  3) RULES on name + google types
+  4) PASS2 / PASS3 fallbacks
+"""
 from __future__ import annotations
 
 import json
+import re
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 YP_DIR = ROOT / "yp_data"
+
+# Name-only rules: (needles, category, exclude_if_any_needle_in_name)
+NAME_READ_RULES: list[tuple[list[str], str, list[str]]] = [
+    (["酒牌申请", "酒牌", "liquor license"], "律师事务所", []),
+    (["交通罚单", "罚单中心", "traffic ticket", "summons defense"], "律师事务所", []),
+    (["移民律", "律师楼", "律师事务所", "律所", "联合律", "联合律师", "law group", "law office", "law firm", "attorney at law", "attorneys", "compliance and investigation"], "律师事务所", ["architect", "architecture", "engineering", "engineer", "seinuk", "setty", "structural", "appraisal", "design"]),
+    (["pllc"], "律师事务所", ["architect", "architecture", "engineering", "engineer", "seinuk", "setty", "structural", "design", "landscape"]),
+    ([" p.c.", " esq"], "律师事务所", ["architect", "architecture", "engineering", "engineer", "seinuk", "setty", "structural", "appraisal", "accounting", "consulting"]),
+    (["参茸", "參茸", "药材", "藥材", "药房", "药堂", "同仁堂", "tong ren tang", "herbs", "herbal"], "中国人药店", []),
+    (["地产中介", "房产中介", "地产经纪", "房地产", "房屋买卖", "法拍屋", "realty", "real estate", "realtor", "broker", "appraisal service", "development corp", "development llc", " housing llc", "gt development"], "地产公司", []),
+    (["钢铁", "steel", " iron inc", "state iron", "metal inc"], "钢铁金属", []),
+    (["慈济", "tzu chi", "tzuchi", "buddhist", "church", "mosque", "synagogue", "佛教", "教会"], "宗教机构", []),
+    (["社区中心", "华人协会", "同乡会", "联谊会"], "华人协会", ["chamber of commerce"]),
+    (["旅行社", "travel inc", "travel corp", "travel service", "circle line", "cruise", "机票", "航空票务"], "旅行社", []),
+    (["会计", "accountant", " cpa", "tax prep", "bookkeeping", "bookkeep"], "会计事务所", []),
+    (["保险", "insurance agency", "insurance broker"], "保险", []),
+    (["超市", "supermarket", "grocery store", "grocery market"], "华裔超市", []),
+    (["参茸", "速运", "速運", "快递", "courier", "freight forward", "logistics", "shipping co", "expediting"], "快递公司", ["restaurant", "express chinese", "noodle", "kitchen", "food"]),
+    (["express"], "快递公司", ["restaurant", "chinese", "noodle", "kitchen", "food", "chef"]),
+    (["按摩", "massage", "足疗", "reflexology", "spa &"], "按摩店", []),
+    (["理发", "barber", "hair salon", "hair studio"], "理发店", []),
+    (["美甲", "nail salon", "nails &"], "指甲店", []),
+    (["诊所", "dental", "dentist", "acupuncture", "针灸", "正骨", "chiropractic"], "医疗诊所", []),
+    (["餐馆", "restaurant", "kitchen", "dumpling", "noodle", "bistro", "cafe", "caterer", "catering", "kimchi", "masala", " foods", "amah food", "bakery", "deli"], "中餐馆", ["tech", "digital", "software"]),
+    (["餐", "饭店", "酒楼", "食坊", "火锅", "烧烤"], "中餐馆", []),
+    (["珠宝", "jewelry", "jeweller", "奢侈品", "luxury", "名表", "二手奢侈品"], "珠宝店", []),
+    (["印刷", "sign shop", "banner", "imaging", "creative, llc", "creative llc", "designs,", "designs llc", "we-designs", "communications, inc", "communiations"], "印刷招牌", []),
+    (["装修", "contractor", "construction", "renovation", "remodeling", "painting inc", "scaffolding", "elevator inc", " gci", "general contractor", "building solutions", "maintenance ny"], "装修公司", []),
+    (["electric inc", "electric, inc", "electric of new", "technical services", "power inc", "mechanical inc", "plumbing", "stone builders", "wild stone"], "建材公司", []),
+    (["supplies inc", "supply inc", "tent supplies", "building supply", "hardware", "建材", "materials"], "建材公司", []),
+    (["safety training", "safety llc", "tactical solutions", "fire protection", "security service"], "安保物业", []),
+    (["安达国际", "business international", "international group", "trading", "wholesale", "enterprises inc", "industries", "hua hong", "lozier"], "批发贸易", ["hotel", "consulting corp", "tech inc", "digital", "software", "communications"]),
+    (["职介", "劳务", "staffing", "recruiting", "employment agency"], "职介劳务", []),
+    (["补习", "tutor", "tutoring", "learning center", "education center"], "补习学校", []),
+    (["幼儿园", "daycare", "preschool", "child care", "托儿"], "幼儿园", []),
+    (["auto repair", "auto body", "car repair", "汽修"], "汽车修理", []),
+    (["商会", "chamber of commerce"], "商会", []),
+]
 
 RULES: list[tuple[list[str], str]] = [
     (["慈济", "tzu chi", "tzuchi", "buddhist"], "宗教机构"),
@@ -95,6 +141,25 @@ def name_blob(item: dict) -> str:
     return (item.get("name") or "").lower()
 
 
+def is_hotel_name(name: str) -> bool:
+    n = name.lower()
+    return any(h in n for h in HOTEL_SKIP) or bool(re.search(r"\binn\b", n))
+
+
+def suggest_from_name_read(item: dict) -> str | None:
+    """Classify by reading the business name only (primary path for 其他华人生意)."""
+    name = name_blob(item)
+    if not name or is_hotel_name(name):
+        return None
+    for needles, cat, excludes in NAME_READ_RULES:
+        if excludes and any(ex.lower() in name for ex in excludes):
+            continue
+        for needle in needles:
+            if needle.lower() in name:
+                return cat
+    return None
+
+
 def suggest_pass3(item: dict) -> str | None:
     text = name_blob(item)
     if not text:
@@ -138,16 +203,23 @@ def suggest_category(item: dict, old_cat: str) -> str | None:
     fix = suggest_misfile_fix(item, old_cat)
     if fix:
         return fix
-    text = blob(item)
     name = name_blob(item)
-    # Skip hotels / lodging
-    if any(h in text for h in HOTEL_SKIP):
+    text = blob(item)
+    if is_hotel_name(name) or any(h in text for h in HOTEL_SKIP):
         return None
+
+    # Name-first: read 店名 literally before google types
+    if old_cat == "其他华人生意" or old_cat in MISFILED_SOURCE:
+        by_name = suggest_from_name_read(item)
+        if by_name:
+            return by_name
+
     for needles, cat in RULES:
         for n in needles:
             if n.lower() in text:
-                # Avoid classifying architects as law firms
-                if cat == "律师事务所" and "architectural" in name:
+                if cat == "律师事务所" and any(
+                    x in name for x in ("architect", "architecture", "engineering", "seinuk", "setty", "structural")
+                ):
                     continue
                 return cat
     if old_cat == "其他华人生意":
@@ -185,7 +257,7 @@ def process_file(path: Path) -> tuple[int, dict[str, int]]:
             if should_move:
                 moved = dict(item)
                 moved["category"] = new_cat
-                moved["category_source"] = "recategorize_v3"
+                moved["category_source"] = "recategorize_v4_name"
                 out.setdefault(new_cat, []).append(moved)
                 changed += 1
                 by_target[new_cat] = by_target.get(new_cat, 0) + 1
