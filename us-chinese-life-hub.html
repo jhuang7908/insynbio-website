@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- hub-build: v3.0.7-20260616 (薅羊毛单列+恢复网购链接) -->
+<!-- hub-build: v3.0.8-20260616 (网购薅羊毛桌面双列) -->
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8" />
@@ -440,11 +440,24 @@
     .feed-card.deal-card .summary { font-size: var(--text-xs); color: #94a3b8; }
     .feed-card.deal-card .btn { background: #f1f5f9; color: #475569; border: 1px solid #e2e8f0; font-size: var(--text-xs); }
 
-    /* 薅羊毛 — 左字右图；全部 Tab 单列（信息量少，易读） */
-    .deals-section .deals-single-grid,
-    .deals-section .deals-compact-grid {
+    /* 薅羊毛 — 超市/大促/美食：单列（文案长、条数少） */
+    .deals-section .deals-single-grid {
       grid-template-columns: minmax(0, 1fr) !important;
       gap: 10px !important;
+    }
+    /* 网购薅羊毛：手机单列 / 桌面双列（条数多、卡片同质） */
+    .deals-section .deals-online-grid {
+      grid-template-columns: minmax(0, 1fr) !important;
+      gap: 10px !important;
+    }
+    @media (min-width: 640px) {
+      .deals-section .deals-online-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+      }
+      .deals-section .deals-online-grid .deal-compact-media-wrap {
+        width: 96px;
+        height: 96px;
+      }
     }
     .deal-compact-card {
       display: flex;
@@ -1380,8 +1393,8 @@
         <button type="button" class="deals-more-btn" id="dining-more-btn" style="display:none" onclick="toggleCustomDealsMore('dining')"></button>
       </div>
       <div id="deals-tab-online" class="deals-tab-content" style="display:none;">
-        <div class="feed-grid deals-single-grid" id="deals-feed"></div>
-        <div class="feed-grid deals-single-grid" id="deals-feed-more" style="display:none; margin-top:8px;"></div>
+        <div class="feed-grid deals-online-grid" id="deals-feed"></div>
+        <div class="feed-grid deals-online-grid" id="deals-feed-more" style="display:none; margin-top:8px;"></div>
         <button type="button" class="deals-more-btn" id="deals-more-btn" style="display:none" onclick="toggleMoreDeals()"></button>
       </div>
     </section>
