@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- hub-build: v3.2.0-20260616 (黄页pass2再分类116其他) -->
+<!-- hub-build: v3.2.1-20260616 (黄页pass3名称分类+卡片行业标签) -->
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8" />
@@ -1106,6 +1106,7 @@
     .yp-org-badge { font-size: 10px; font-weight: 600; padding: 2px 6px; border-radius: 4px; flex-shrink: 0; line-height: 1.35; letter-spacing: 0.02em; }
     .yp-org-gov { background: rgba(37, 99, 235, 0.11); color: #1d4ed8; }
     .yp-org-nonprofit { background: rgba(5, 150, 105, 0.11); color: #047857; }
+    .yp-cat-badge { font-size: 10px; font-weight: 600; padding: 2px 6px; border-radius: 4px; flex-shrink: 0; line-height: 1.35; background: rgba(100, 116, 139, 0.12); color: #475569; max-width: 42%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
     .yp-card-tip { font-size: 11.5px; color: #6b7280; line-height: 1.4; border-top: 1px dashed #f1f5f9; padding-top: 5px; margin-top: 2px; }
     .yp-stats-line { font-size: var(--text-sm); color: #64748b; margin: 0 0 10px; line-height: var(--leading-relaxed); }
     .yp-anti-scrape { font-size: var(--text-xs); color: #94a3b8; margin-top: 8px; line-height: var(--leading-normal); }
@@ -1500,7 +1501,7 @@
 
     <footer class="hub-site-footer" id="hub-footer">
       <p class="footer-mission" id="footer-mission">美东华人生活圈 · 公开渠道社区信息聚合，公益导向</p>
-      <p id="footer-org"><a href="https://www.uslifehub.org/" id="footer-org-link">www.uslifehub.org</a> · v3.2.0</p>
+      <p id="footer-org"><a href="https://www.uslifehub.org/" id="footer-org-link">www.uslifehub.org</a> · v3.2.1</p>
       <p id="footer-contact"><span id="footer-contact-label">联系 / 注册 / 投稿：</span><a href="mailto:info@uslifehub.org" id="footer-email">info@uslifehub.org</a></p>
     </footer>
 
@@ -5460,6 +5461,12 @@ function ypFreshnessBadgeHtml(item) {
   return `<span class="yp-fresh-badge ${info.cls}">${info.text}</span>`;
 }
 
+function ypCategoryBadgeHtml(cat) {
+  if (!cat) return '';
+  const label = String(cat).replace(/其他华人生意/, '其他');
+  return `<span class="yp-cat-badge">${escapeHtml(label)}</span>`;
+}
+
 function ypBizCard(item) {
   const tel = item.phone.replace(/[^\d+]/g, '');
   const addr = shortAddr(item.address);
@@ -5468,10 +5475,13 @@ function ypBizCard(item) {
   if (name.length > 40) name = name.slice(0, 38) + '…';
   const mapLink = addr
     ? `<div class="yp-card-map">📍 ${escapeHtml(addr)}</div>`
-    : `<div class="yp-card-sub">${escapeHtml(item.category)}</div>`;
+    : '';
   return `<div class="yp-card" data-yp-key="${escapeHtml(key)}" onclick="openYpBizModal(this.dataset.ypKey)" role="button" tabindex="0">
     <div class="yp-card-main">
-      <div class="yp-card-name">${escapeHtml(name)}</div>
+      <div class="yp-card-name-row">
+        <div class="yp-card-name">${escapeHtml(name)}</div>
+        ${ypCategoryBadgeHtml(item.category)}
+      </div>
       <div class="yp-card-phone">${escapeHtml(item.phone)}</div>
       ${ypFreshnessBadgeHtml(item)}
     </div>
