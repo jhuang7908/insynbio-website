@@ -1,9 +1,11 @@
-const CACHE_NAME = 'us-chinese-life-hub-v64';
+const CACHE_NAME = 'us-chinese-life-hub-v76';
 const ASSETS = [
   '/',
   '/us-chinese-life-hub.html',
   '/uslifehub-icon.svg',
   '/uslifehub-og.svg',
+  '/m.html',
+  '/preview-mobile.html',
   '/manifest.json',
   '/latest.html',
   '/channels.html',
@@ -47,6 +49,27 @@ self.addEventListener('fetch', event => {
 
   // For dynamic data, use Network-First to ensure freshness, fall back to cache if offline
   if (isLivelihoodData) {
+    event.respondWith(
+      fetch(event.request)
+        .then(response => {
+          if (response.status === 200) {
+            const copy = response.clone();
+            caches.open(CACHE_NAME).then(cache => cache.put(event.request, copy));
+          }
+          return response;
+        })
+        .catch(() => caches.match(event.request))
+    );
+    return;
+  }
+
+  const isHtmlDoc = event.request.mode === 'navigate'
+    || event.request.destination === 'document'
+    || url.pathname.endsWith('.html')
+    || url.pathname === '/';
+
+  // HTML：Network-First，避免手机长期卡在旧版布局
+  if (isHtmlDoc && isSameOrigin) {
     event.respondWith(
       fetch(event.request)
         .then(response => {

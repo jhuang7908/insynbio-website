@@ -26,6 +26,16 @@
 /us-chinese-life-hub.html
   X-Robots-Tag: index, follow
   Referrer-Policy: strict-origin-when-cross-origin
+  Cache-Control: no-cache, no-store, must-revalidate
+
+/m.html
+  Cache-Control: no-cache, no-store, must-revalidate
+
+/preview-mobile.html
+  Cache-Control: no-cache, no-store, must-revalidate
+
+/
+  Cache-Control: no-cache, no-store, must-revalidate
 
 /sitemap.xml
   Cache-Control: public, max-age=3600

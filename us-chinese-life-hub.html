@@ -1,13 +1,35 @@
 <!DOCTYPE html>
-<!-- hub-build: 2026-06-17T14:38TET -->
+<!-- hub-build: 2026-06-17T19:00TET mobile-v3.3.6 -->
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <script>
+    window.HUB_APP_VERSION = '3.3.6';
+    (function () {
+      var coarse = window.matchMedia('(pointer: coarse)').matches;
+      var narrow = window.matchMedia('(max-width: 820px)').matches;
+      if (coarse || narrow) document.documentElement.classList.add('hub-coarse');
+      var key = 'hub_app_version';
+      var prev = localStorage.getItem(key);
+      localStorage.setItem(key, window.HUB_APP_VERSION);
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.getRegistrations().then(function (regs) {
+          if (!regs.length) return;
+          if (prev === window.HUB_APP_VERSION) return;
+          return Promise.all(regs.map(function (r) { return r.unregister(); }));
+        }).then(function () {
+          if (prev && prev !== window.HUB_APP_VERSION) location.reload();
+        });
+      }
+    })();
+  </script>
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
   <meta http-equiv="Pragma" content="no-cache" />
   <meta http-equiv="Expires" content="0" />
   <meta name="theme-color" content="#ea580c" />
+  <meta name="color-scheme" content="light only" />
+  <meta name="supported-color-schemes" content="light" />
   <!-- uslifehub.org 当前全站返回同一 HTML，静态图标须走 insynbio.com -->
   <link rel="icon" href="https://insynbio.com/favicon.ico?v=312" sizes="48x48" />
   <link rel="icon" href="https://insynbio.com/uslifehub-icon-32.png?v=312" type="image/png" sizes="32x32" />
@@ -96,6 +118,7 @@
       --weight-bold: 700;
     }
     * { box-sizing: border-box; }
+    html { color-scheme: light only; }
     body.grid-cols-1 {
       --feed-width: 760px;
     }
@@ -276,15 +299,106 @@
       gap: 2px; min-height: 54px; text-decoration: none; color: #64748b;
       font-size: 11px; font-weight: 700; padding: 6px 2px;
     }
+    .hub-bottom-tabs a.bt-subscribe { color: #15803d; }
+    .hub-bottom-tabs a.bt-subscribe .bt-icon { font-size: 19px; }
     .hub-bottom-tabs a .bt-icon { font-size: 20px; line-height: 1; }
     .hub-bottom-tabs a.active { color: #ea580c; }
     .hub-bottom-tabs a.active .bt-icon { transform: translateY(-1px); }
-    @media (max-width: 767px) {
+
+    /* 手机/触屏：隐藏搜索上下提示词；搜索+三 Tab 合并吸顶 */
+    html.hub-coarse #hero-decor-top,
+    html.hub-coarse .hub-desktop-only,
+    html.hub-coarse #hero-trust,
+    html.hub-coarse #hero-search-chips,
+    html.hub-coarse .hub-hero-more-btn,
+    html.hub-coarse .stream-section-hint,
+    html.hub-coarse .header-meta,
+    html.hub-coarse .logo .sub,
+    html.hub-coarse .controls-bar .pwa-quick,
+    html.hub-coarse .controls-bar .lang-quick,
+    html.hub-coarse .controls-bar .settings-wrap,
+    html.hub-coarse .hub-chapter-nav,
+    html.hub-coarse .sub-fab { display: none !important; }
+    html.hub-coarse .mobile-menu-btn { display: inline-flex !important; }
+    html.hub-coarse .hub-bottom-tabs { display: block !important; }
+    html.hub-coarse body { padding-bottom: calc(72px + env(safe-area-inset-bottom, 0px)) !important; }
+    html.hub-coarse .hub-mobile-fixed-bar {
+      position: fixed;
+      left: 0; right: 0;
+      top: var(--hub-header-h, 46px);
+      z-index: 105;
+      background: #faf7f2;
+      padding: 4px 12px 6px;
+      margin: 0;
+      border-bottom: 1px solid #ece6dc;
+      box-shadow: 0 2px 8px rgba(44,52,64,.08);
+    }
+    html.hub-coarse.hub-has-fixed-bar main.wrap {
+      padding-top: var(--hub-fixed-pad, 0px);
+    }
+    html.hub-coarse .sub-fab { display: none !important; visibility: hidden !important; pointer-events: none !important; }
+    html.hub-coarse .hub-mobile-fixed-bar .hub-hero-search {
+      display: grid; grid-template-columns: 1fr auto; gap: 6px; margin: 0 0 6px;
+    }
+    html.hub-coarse .hub-mobile-fixed-bar .hub-light-tabs { margin: 0; padding: 0 2px; gap: 5px 8px; }
+    html.hub-coarse .hub-mobile-fixed-bar .hub-light-tabs button { font-size: 12px; padding: 4px 10px; }
+
+    @media (max-width: 820px) {
       .hub-bottom-tabs { display: block; }
-      body { padding-bottom: calc(58px + env(safe-area-inset-bottom, 0px)); }
-      /* 底栏已覆盖四频道切换，隐藏顶部重复导航 */
+      body { padding-bottom: calc(72px + env(safe-area-inset-bottom, 0px)) !important; }
       .hub-chapter-nav { display: none !important; }
-      .sub-fab { bottom: calc(72px + env(safe-area-inset-bottom, 0px)) !important; }
+      .sub-fab { display: none !important; }
+      .header-meta { display: none !important; }
+      .logo .sub { display: none !important; }
+      .controls-bar .pwa-quick,
+      .controls-bar .lang-quick,
+      .controls-bar .settings-wrap { display: none !important; }
+      .mobile-menu-btn { display: inline-flex !important; }
+      .top-inner { flex-wrap: nowrap; min-height: 46px; padding: 5px 0; }
+      #hero-decor-top,
+      .hub-desktop-only,
+      #hero-trust,
+      #hero-search-chips,
+      .hub-hero-more-btn,
+      .stream-section-hint { display: none !important; }
+      .hub-hero { margin: 4px auto 2px; text-align: left; }
+      .hub-mobile-fixed-bar {
+        position: fixed;
+        left: 0; right: 0;
+        top: var(--hub-header-h, 46px);
+        z-index: 105;
+        background: #faf7f2;
+        padding: 4px 12px 6px;
+        margin: 0;
+        border-bottom: 1px solid #ece6dc;
+        box-shadow: 0 2px 8px rgba(44,52,64,.08);
+      }
+      html.hub-has-fixed-bar main.wrap,
+      body.hub-has-fixed-bar main.wrap {
+        padding-top: var(--hub-fixed-pad, 0px);
+      }
+      .hub-mobile-fixed-bar .hub-hero-search {
+        display: grid; grid-template-columns: 1fr auto; gap: 6px; margin: 0 0 6px;
+      }
+      .hub-mobile-fixed-bar .hub-hero-search input { padding: 9px 11px; font-size: 14px; }
+      .hub-mobile-fixed-bar .hub-hero-go { padding: 9px 12px; font-size: 13px; }
+      .hub-mobile-fixed-bar .hub-light-tabs { margin: 0; padding: 0 2px; gap: 5px 8px; }
+      .hub-mobile-fixed-bar .hub-light-tabs button { font-size: 12px; padding: 4px 10px; }
+      html, body {
+        background: #faf7f2 !important;
+        color: #4b5563 !important;
+      }
+      .top, .hub-bottom-tabs {
+        background: #fffcf8 !important;
+        border-color: #e6dfd3 !important;
+      }
+      .hub-bottom-tabs {
+        border-top: 2px solid #e6dfd3 !important;
+        box-shadow: 0 -4px 14px rgba(44,52,64,0.07) !important;
+        z-index: 200 !important;
+      }
+      .hub-bottom-tabs a { min-height: 56px; font-size: 10.5px; padding: 5px 1px; }
+      .hub-bottom-tabs a .bt-icon { font-size: 18px; }
     }
     /* iframe 内同样显示 Hub 一级导航（橙色四栏） */
     /* 栏目内独立搜索框（社区黄页 / 民生频道） */
@@ -755,7 +869,12 @@
     @media (max-width: 560px) {
       .parks-event-row { flex-wrap: wrap; gap: 10px; }
       .parks-event-media { width: 100%; height: 140px; order: 3; }
+      .parks-event-media.is-placeholder { display: none; }
     }
+    body.hub-mobile .parks-event-media.is-placeholder { display: none !important; }
+    body.hub-mobile .hub-site-footer { margin: 8px 0 0; padding: 10px 0 2px; }
+    body.hub-mobile main.wrap { min-height: 0 !important; padding-bottom: 0 !important; }
+    html.hub-coarse .hub-site-footer { margin: 8px 0 0; padding: 10px 0 2px; }
     .feed-card { background: var(--hub-surface); border: 1px solid var(--hub-border-soft); border-radius: 10px; padding: 10px 14px; display: flex; flex-direction: column; min-height: 0; transition: all 0.15s; }
     .feed-card.has-thumb { flex-direction: row; gap: 12px; align-items: flex-start; }
     .feed-card-thumb { width: 96px; height: 72px; flex-shrink: 0; border-radius: 8px; object-fit: cover; background: #f1f5f9; border: 1px solid #e2e8f0; }
@@ -1107,6 +1226,38 @@
     .yp-org-gov { background: rgba(37, 99, 235, 0.11); color: #1d4ed8; }
     .yp-org-nonprofit { background: rgba(5, 150, 105, 0.11); color: #047857; }
     .yp-cat-badge { font-size: 10px; font-weight: 600; padding: 2px 6px; border-radius: 4px; flex-shrink: 0; line-height: 1.35; background: rgba(100, 116, 139, 0.12); color: #475569; max-width: 42%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .yp-picks-section { margin: 0 12px 12px; padding: 12px; background: linear-gradient(135deg, #fffbeb 0%, #fff7ed 100%); border: 1px solid #fed7aa; border-radius: 12px; }
+    .yp-picks-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 8px; margin-bottom: 8px; }
+    .yp-picks-title { font-size: var(--text-sm); font-weight: var(--weight-bold); color: #9a3412; line-height: 1.4; }
+    .yp-picks-disclaimer { font-size: 11px; color: #78716c; line-height: 1.45; margin-bottom: 10px; }
+    .yp-picks-grid { display: grid; gap: 8px; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); }
+    .yp-pick-card { background: #fff; border: 1px solid #fde68a; border-radius: 10px; padding: 10px 12px; cursor: pointer; transition: border-color 0.12s, box-shadow 0.12s; }
+    .yp-pick-card:hover { border-color: #ea580c; box-shadow: 0 2px 8px rgba(234, 88, 12, 0.08); }
+    .yp-pick-top { display: flex; align-items: center; justify-content: space-between; gap: 6px; margin-bottom: 6px; }
+    .yp-pick-recommender { font-size: 11px; font-weight: 600; color: #b45309; }
+    .yp-pick-tag { font-size: 10px; font-weight: 600; padding: 1px 6px; border-radius: 999px; background: rgba(234, 88, 12, 0.12); color: #c2410c; flex-shrink: 0; }
+    .yp-pick-note { font-size: 12px; color: #57534e; line-height: 1.5; margin-bottom: 8px; display: -webkit-box; -webkit-line-clamp: 2; line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+    .yp-pick-biz-name { font-size: 14px; font-weight: var(--weight-bold); color: #1f2937; line-height: 1.35; }
+    .yp-pick-biz-meta { font-size: 11px; color: #78716c; margin-top: 2px; }
+    .yp-pick-phone { font-size: var(--text-base); font-weight: var(--weight-bold); color: #ea580c; margin-top: 4px; font-variant-numeric: tabular-nums; }
+    .yp-pick-card.is-hot { border-color: #fb923c; background: #fffaf5; }
+    .yp-pick-card.is-claimed { border-color: #86efac; background: #f0fdf4; }
+    .yp-pick-count { font-size: 10px; font-weight: 700; padding: 1px 6px; border-radius: 999px; background: #fef2f2; color: #dc2626; flex-shrink: 0; }
+    .yp-pick-pressure { font-size: 11px; font-weight: 600; color: #c2410c; margin-bottom: 6px; line-height: 1.4; }
+    .yp-picks-stats { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 8px; font-size: 11px; color: #57534e; }
+    .yp-picks-stat { background: #fff; border: 1px solid #fde68a; border-radius: 999px; padding: 3px 8px; }
+    .yp-picks-merchant-cta { font-size: 11.5px; font-weight: 600; color: #9a3412; background: #fff; border: 1px dashed #fdba74; border-radius: 8px; padding: 8px 10px; margin-bottom: 10px; line-height: 1.5; }
+    .yp-picks-merchant-cta a { color: #c2410c; }
+    .yp-policy-block { margin-top: 12px; padding-top: 12px; border-top: 1px solid #fde68a; }
+    .yp-policy-title { font-size: 12px; font-weight: var(--weight-bold); color: #78350f; margin-bottom: 6px; }
+    .yp-policy-trial { font-size: 11px; color: #78716c; margin-bottom: 10px; line-height: 1.45; }
+    .yp-policy-col-title { font-size: 11px; font-weight: 700; margin: 8px 0 4px; }
+    .yp-policy-col-title.free { color: #047857; }
+    .yp-policy-col-title.paid { color: #b45309; }
+    .yp-policy-list { margin: 0; padding: 0; list-style: none; display: grid; gap: 6px; }
+    .yp-policy-item { font-size: 11px; line-height: 1.45; color: #44403c; background: #fff; border-radius: 8px; padding: 7px 9px; border: 1px solid #f5f5f4; }
+    .yp-policy-item strong { color: #1f2937; font-weight: 600; }
+    .yp-policy-contact { font-size: 11px; color: #78716c; margin-top: 8px; }
     .yp-card-tip { font-size: 11.5px; color: #6b7280; line-height: 1.4; border-top: 1px dashed #f1f5f9; padding-top: 5px; margin-top: 2px; }
     .yp-stats-line { font-size: var(--text-sm); color: #64748b; margin: 0 0 10px; line-height: var(--leading-relaxed); }
     .yp-anti-scrape { font-size: var(--text-xs); color: #94a3b8; margin-top: 8px; line-height: var(--leading-normal); }
@@ -1220,6 +1371,242 @@
       .phones-summary .section-title-left { font-size: 15px !important; }
       .phones-toggle { font-size: 12px !important; }
     }
+
+    /* ── Mobile app shell (≤767px / ?mobile=1) ───────────────────────────── */
+    .mobile-menu-btn {
+      display: none;
+      border: 1px solid #cbd5e1; background: #fff; border-radius: 8px;
+      width: 38px; height: 34px; font-size: 18px; cursor: pointer; line-height: 1;
+      align-items: center; justify-content: center; font-family: inherit; color: #334155;
+    }
+    .mobile-drawer-overlay {
+      display: none; position: fixed; inset: 0; z-index: 400;
+      background: rgba(15,23,42,0.45);
+    }
+    .mobile-drawer-overlay.open { display: block; }
+    .mobile-drawer {
+      position: fixed; top: 0; right: 0; bottom: 0; width: min(300px, 88vw);
+      background: #fffcf8; border-left: 1px solid #e6dfd3;
+      box-shadow: -8px 0 28px rgba(15,23,42,0.12);
+      padding: 16px 14px calc(16px + env(safe-area-inset-bottom, 0px));
+      overflow-y: auto; transform: translateX(100%);
+      transition: transform 0.22s ease;
+    }
+    .mobile-drawer-overlay.open .mobile-drawer { transform: translateX(0); }
+    .mobile-drawer-head {
+      display: flex; align-items: center; justify-content: space-between;
+      margin-bottom: 14px; padding-bottom: 10px; border-bottom: 1px solid #ece6dc;
+    }
+    .mobile-drawer-title { font-size: 15px; font-weight: 700; color: #1e293b; }
+    .mobile-drawer-close {
+      background: none; border: none; font-size: 24px; color: #94a3b8; cursor: pointer; line-height: 1;
+    }
+    .mobile-drawer-stats {
+      font-size: 12px; color: #64748b; line-height: 1.6; margin-bottom: 12px;
+      padding: 10px; background: #f5f1ea; border-radius: 10px;
+    }
+    .mobile-drawer-stats strong { color: #ea580c; }
+    .mobile-drawer-item {
+      display: flex; align-items: center; gap: 10px; width: 100%;
+      border: none; background: #fff; border-radius: 10px; padding: 12px 14px;
+      margin-bottom: 8px; font-size: 14px; font-weight: 600; color: #334155;
+      text-align: left; cursor: pointer; font-family: inherit;
+      border: 1px solid #e2e8f0;
+    }
+    .mobile-drawer-item:hover { border-color: #ea580c; color: #c2410c; }
+    .mobile-drawer-item .mdi { font-size: 18px; width: 22px; text-align: center; }
+    .yp-industry-mobile-select {
+      display: none; width: calc(100% - 24px); margin: 0 12px 10px;
+      border: 1px solid #cbd5e1; border-radius: 10px; padding: 11px 12px;
+      font-size: 14px; font-family: inherit; color: #334155; background: #fff;
+    }
+    .hub-hero-more-btn {
+      display: none; border: 1px solid #cbd5e1; background: #fff; border-radius: 8px;
+      padding: 10px 12px; font-size: 16px; cursor: pointer; line-height: 1; color: #64748b;
+    }
+    /* 手机：仅子栏目 Tab 吸顶 */
+    .hub-sticky-toolbar { display: contents; }
+    @media (max-width: 767px) {
+      .yp-mobile-sticky {
+        position: sticky;
+        top: 46px;
+        z-index: 95;
+        background: #faf7f2;
+        padding: 6px 0 8px;
+        margin: 0 0 6px;
+        border-bottom: 1px solid #ece6dc;
+        box-shadow: 0 2px 8px rgba(44,52,64,.05);
+      }
+    }
+    .pwa-mobile-sheet-overlay {
+      display: none; position: fixed; inset: 0; z-index: 450;
+      background: rgba(15,23,42,0.5); align-items: flex-end; justify-content: center;
+    }
+    .pwa-mobile-sheet-overlay.open { display: flex; }
+    .pwa-mobile-sheet {
+      width: 100%; max-width: 480px; background: #fff; border-radius: 16px 16px 0 0;
+      padding: 18px 18px calc(18px + env(safe-area-inset-bottom, 0px));
+      box-shadow: 0 -8px 32px rgba(15,23,42,0.18);
+      max-height: 85vh; overflow-y: auto;
+    }
+    .pwa-sheet-title { font-size: 17px; font-weight: 800; color: #1e293b; margin: 0 0 8px; }
+    .pwa-sheet-body { font-size: 13px; color: #475569; line-height: 1.65; margin-bottom: 14px; }
+    .pwa-sheet-steps { margin: 0; padding-left: 18px; }
+    .pwa-sheet-steps li { margin-bottom: 6px; }
+    .pwa-sheet-install-btn {
+      width: 100%; background: #ea580c; color: #fff; border: none; border-radius: 10px;
+      padding: 13px; font-size: 15px; font-weight: 700; cursor: pointer; margin-bottom: 10px;
+    }
+    .pwa-sheet-close {
+      width: 100%; background: #f1f5f9; color: #475569; border: 1px solid #cbd5e1;
+      border-radius: 10px; padding: 11px; font-size: 14px; font-weight: 600; cursor: pointer;
+    }
+
+    body.hub-mobile {
+      background: #faf7f2 !important;
+      color: #4b5563 !important;
+      --feed-width: 100%;
+    }
+    body.hub-mobile .top { background: #fffcf8 !important; border-color: #e6dfd3 !important; }
+    body.hub-mobile .header-meta { display: none !important; }
+    body.hub-mobile .logo .sub { display: none !important; }
+    body.hub-mobile .controls-bar .pwa-quick,
+    body.hub-mobile .controls-bar .lang-quick,
+    body.hub-mobile .controls-bar .settings-wrap { display: none !important; }
+    body.hub-mobile .mobile-menu-btn { display: inline-flex !important; }
+    body.hub-mobile .top-inner { flex-wrap: nowrap; min-height: 48px; padding: 6px 0; }
+    body.hub-mobile .logo-text { font-size: 15px; }
+    body.hub-mobile .controls-bar { gap: 8px; max-width: none; margin-left: auto; }
+
+    body.hub-mobile .hub-hero { margin: 8px auto 4px; text-align: left; }
+    body.hub-mobile #hero-decor-top,
+    body.hub-mobile #hero-trust,
+    body.hub-mobile #hero-search-chips,
+    body.hub-mobile .hub-hero-more-btn,
+    body.hub-mobile .stream-section-hint { display: none !important; }
+    body.hub-mobile .hub-chapter-nav { display: none !important; }
+    body.hub-mobile .hub-hero { margin: 4px auto 2px; text-align: left; }
+    body.hub-mobile .hub-hero-subtitle,
+    body.hub-mobile .hub-hero-trust { display: none !important; }
+    body.hub-mobile .hub-hero-chips { display: none !important; }
+    body.hub-mobile .hub-mobile-fixed-bar {
+      position: fixed;
+      left: 0; right: 0;
+      top: var(--hub-header-h, 46px);
+      z-index: 105;
+      background: #faf7f2;
+      padding: 4px 12px 6px;
+      margin: 0;
+      border-bottom: 1px solid #ece6dc;
+      box-shadow: 0 2px 8px rgba(44,52,64,.08);
+    }
+    body.hub-mobile.hub-has-fixed-bar main.wrap {
+      padding-top: var(--hub-fixed-pad, 0px);
+    }
+    body.hub-mobile .hub-mobile-fixed-bar .hub-hero-search {
+      display: grid; grid-template-columns: 1fr auto; gap: 6px; align-items: stretch;
+      max-width: none; margin: 0 0 6px;
+    }
+    body.hub-mobile .hub-mobile-fixed-bar .hub-light-tabs { margin: 0; padding: 0 2px; }
+
+    body.hub-mobile .sub-fab { display: none !important; }
+    body.hub-mobile .hub-bottom-tabs {
+      display: block !important;
+      background: #fffcf8 !important;
+      border-top: 2px solid #e6dfd3 !important;
+      box-shadow: 0 -4px 16px rgba(44,52,64,0.08) !important;
+      z-index: 200 !important;
+    }
+    body.hub-mobile .hub-bottom-tabs a {
+      min-height: 56px; font-size: 11.5px; color: #64748b !important;
+    }
+    body.hub-mobile .hub-bottom-tabs a.active { color: #ea580c !important; font-weight: 800; }
+    body.hub-mobile { padding-bottom: calc(62px + env(safe-area-inset-bottom, 0px)) !important; }
+
+    body.hub-mobile .yp-industry-bar { display: none !important; }
+    .yp-mobile-sticky .yp-industry-mobile-select {
+      display: none;
+      width: 100%;
+      margin: 6px 12px 0;
+      box-sizing: border-box;
+    }
+    @media (max-width: 767px) {
+      .yp-mobile-sticky .yp-industry-mobile-select { display: block !important; }
+    }
+    body.hub-mobile .yp-industry-mobile-select { display: block !important; }
+    body.hub-mobile .yp-pill,
+    body.hub-mobile .hub-light-tabs button,
+    body.hub-mobile .hub-card,
+    body.hub-mobile .hub-search-panel,
+    body.hub-mobile .yp-search-row input,
+    body.hub-mobile .yp-search-row select {
+      background: #fff !important;
+      color: #334155 !important;
+    }
+    body.hub-mobile .feed-grid,
+    body.hub-mobile .yp-cards-grid {
+      grid-template-columns: minmax(0, 1fr) !important;
+    }
+    body.hub-mobile .hub-light-tabs { margin-top: 6px; margin-bottom: 8px; }
+
+    @media (prefers-color-scheme: dark) {
+      body.hub-mobile,
+      body.hub-mobile .top,
+      body.hub-mobile .hub-bottom-tabs,
+      body.hub-mobile .mobile-drawer,
+      body.hub-mobile .pwa-mobile-sheet {
+        background: #faf7f2 !important;
+        color: #4b5563 !important;
+      }
+      body.hub-mobile .hub-bottom-tabs a { color: #64748b !important; }
+      body.hub-mobile .hub-bottom-tabs a.active { color: #ea580c !important; }
+    }
+
+    /* 电脑宽屏 + ?mobile=1：居中「手机框」预览 */
+    @media (min-width: 768px) {
+      body.hub-mobile.hub-desktop-preview {
+        background: #9ca3af !important;
+        padding-top: 36px !important;
+      }
+      body.hub-mobile.hub-desktop-preview::before {
+        content: '电脑手机预览 · 居中模拟 420px 屏宽 · 恢复电脑版请加 ?mobile=0';
+        position: fixed; top: 0; left: 0; right: 0; z-index: 500;
+        display: block; text-align: center; font-size: 12px; font-weight: 600;
+        color: #fff; background: #475569; padding: 8px 12px;
+        box-shadow: 0 2px 8px rgba(15,23,42,.2);
+      }
+      body.hub-mobile.hub-desktop-preview .top,
+      body.hub-mobile.hub-desktop-preview .hub-bottom-tabs {
+        max-width: 420px; width: 100%;
+        left: 50%; right: auto;
+        transform: translateX(-50%);
+      }
+      body.hub-mobile.hub-desktop-preview .top {
+        border-radius: 12px 12px 0 0;
+        border: 1px solid #e6dfd3;
+        border-bottom: 1px solid #e6dfd3;
+      }
+      body.hub-mobile.hub-desktop-preview .hub-bottom-tabs {
+        border-radius: 0 0 12px 12px;
+        border: 1px solid #e6dfd3;
+        border-top: 2px solid #e6dfd3 !important;
+      }
+      body.hub-mobile.hub-desktop-preview main.wrap {
+        max-width: 420px;
+        margin-left: auto; margin-right: auto;
+        background: #faf7f2;
+        box-shadow: 0 0 0 1px #e6dfd3, 0 12px 40px rgba(15,23,42,.15);
+        min-height: auto;
+      }
+      body.hub-mobile.hub-desktop-preview .mobile-drawer {
+        max-width: 300px;
+        right: calc(50% - 210px);
+      }
+      body.hub-mobile.hub-desktop-preview .pwa-mobile-sheet {
+        max-width: 420px;
+        margin: 0 auto;
+      }
+    }
   </style>
   <script defer src="https://cdn.jsdelivr.net/npm/lunar-javascript/lunar.min.js"></script>
 </head>
@@ -1243,7 +1630,7 @@
       <div class="header-meta" aria-label="天气与更新">
         <div class="dash-weather-group" id="weather-info" aria-label="纽约天气">
           <span class="dash-wx-icon" id="weather-icon">🌤️</span>
-          <span class="dash-wx-temp" id="weather-temp">74°F</span>
+          <span class="dash-wx-temp" id="weather-temp">71°F</span>
           <span class="dash-wx-city">纽约</span>
         </div>
         <button type="button" class="unit-toggle" id="unit-toggle" onclick="toggleTempUnit();" title="切换华氏/摄氏">°F</button>
@@ -1260,6 +1647,7 @@
       </div>
       
       <div class="controls-bar">
+        <button type="button" class="mobile-menu-btn" id="mobile-menu-btn" onclick="toggleMobileDrawer()" aria-label="打开菜单" title="菜单">☰</button>
         <button type="button" class="pwa-quick" id="pwa-quick" onclick="showAddToHomeGuide()" title="加到手机桌面（像 App 一样一键直达）">📱<span class="pwa-quick-text" id="pwa-quick-text"> 加桌面</span></button>
         <button type="button" class="lang-quick" id="lang-quick" onclick="quickToggleLang()" title="中文 / English">中 | EN</button>
         <div class="settings-wrap">
@@ -1310,22 +1698,44 @@
     </div>
   </header>
 
+  <!-- Mobile side drawer (订阅 / 加桌面 / 设置) -->
+  <div class="mobile-drawer-overlay" id="mobile-drawer-overlay" onclick="if(event.target===this)closeMobileDrawer()">
+    <aside class="mobile-drawer" role="dialog" aria-label="手机菜单">
+      <div class="mobile-drawer-head">
+        <span class="mobile-drawer-title" id="mobile-drawer-title">菜单</span>
+        <button type="button" class="mobile-drawer-close" onclick="closeMobileDrawer()" aria-label="关闭">×</button>
+      </div>
+      <div class="mobile-drawer-stats" id="mobile-drawer-stats"></div>
+      <button type="button" class="mobile-drawer-item" onclick="closeMobileDrawer();showAddToHomeGuide();"><span class="mdi">📱</span><span id="mobile-drawer-pwa">加到手机桌面</span></button>
+      <button type="button" class="mobile-drawer-item" onclick="closeMobileDrawer();openSubModal();"><span class="mdi">📬</span><span id="mobile-drawer-sub">订阅更新</span></button>
+      <button type="button" class="mobile-drawer-item" onclick="closeMobileDrawer();quickToggleLang();"><span class="mdi">🌐</span><span id="mobile-drawer-lang">中 | EN</span></button>
+      <button type="button" class="mobile-drawer-item" onclick="openMobileSettings()"><span class="mdi">⚙️</span><span id="mobile-drawer-settings">显示与字号</span></button>
+    </aside>
+  </div>
+
   <main class="wrap">
 
     <!-- ═══ HERO：全站搜索 + 信任文案 + 一级导航 ═══ -->
     <section class="hub-hero" id="hub-hero" aria-label="导航">
-      <div id="hero-decor-top">
+      <div id="hero-decor-top" class="hub-desktop-only">
         <p class="hub-hero-tagline" id="hero-tagline">美东华人生活圈 · 纽约华人民生信息聚合</p>
         <p class="hub-hero-subtitle" id="hero-subtitle">搜福利、活动、社区黄页与超市海报——收录自政府与社区公开渠道，外链人工核验</p>
       </div>
+      <div class="hub-mobile-fixed-bar" id="hub-mobile-fixed-bar">
       <div class="hub-hero-search" id="hub-hero-search">
         <input type="search" id="hero-search" autocomplete="off"
-          placeholder="搜：平价房、粮食券、半价地铁卡、免费遛娃…"
+          placeholder="搜福利、活动、黄页…"
           onkeydown="if(event.key==='Enter'){event.preventDefault();goHubSearch(this.value);}" />
         <button type="button" class="btn hub-hero-go" id="hero-search-go" onclick="goHubSearch(document.getElementById('hero-search').value)">搜索</button>
       </div>
-      <div class="hub-hero-chips" id="hero-search-chips" aria-label="热门搜索"></div>
-      <p class="hub-hero-trust" id="hero-trust"><strong>www.uslifehub.org</strong> · 公益免费 · 公开渠道聚合</p>
+    <nav class="stream-sub-tabs hub-light-tabs" id="stream-sub-tabs" aria-label="最新动态子栏目">
+      <button type="button" class="stream-sub-tab active" id="stream-tab-24h" onclick="switchStreamTab('24h', this)">24小时更新</button>
+      <button type="button" class="stream-sub-tab" id="stream-tab-7d" onclick="switchStreamTab('7d', this)">未来7天活动</button>
+      <button type="button" class="stream-sub-tab" id="stream-tab-enroll" onclick="switchStreamTab('enroll', this)">常年报名项目</button>
+    </nav>
+      </div>
+      <div class="hub-hero-chips hub-desktop-only" id="hero-search-chips" aria-label="热门搜索"></div>
+      <p class="hub-hero-trust hub-desktop-only" id="hero-trust"><strong>www.uslifehub.org</strong> · 公益免费 · 公开渠道聚合</p>
 
       <!-- 一级目录：方框导航（最新/黄页/频道/打折） -->
       <nav class="hub-chapter-nav" id="hub-chapter-nav" aria-label="章节导航">
@@ -1341,11 +1751,6 @@
     <div class="section-title" id="latest-page-head">
       <div class="section-title-left" id="latest-page-title">📋 最新动态</div>
     </div>
-    <nav class="stream-sub-tabs hub-light-tabs" id="stream-sub-tabs" aria-label="最新动态子栏目">
-      <button type="button" class="stream-sub-tab active" id="stream-tab-24h" onclick="switchStreamTab('24h', this)">24小时更新</button>
-      <button type="button" class="stream-sub-tab" id="stream-tab-7d" onclick="switchStreamTab('7d', this)">未来7天活动</button>
-      <button type="button" class="stream-sub-tab" id="stream-tab-enroll" onclick="switchStreamTab('enroll', this)">常年报名项目</button>
-    </nav>
     <div id="stream-legacy-wrap">
     <div class="stream-panel stream-panel-24h" id="stream-panel-24h">
     <div class="stream-channel stream-channel-24h" id="stream-channel-24h">
@@ -1389,6 +1794,7 @@
       </summary>
       <div class="phones-body-wrap">
       <div class="phones-body" style="padding: 0;">
+        <div class="yp-mobile-sticky" id="yp-mobile-sticky">
         <div class="yp-search-row" id="yp-search-panel">
           <input type="search" id="yp-search" autocomplete="off"
             placeholder="商业名称" oninput="renderYellowPages()">
@@ -1396,9 +1802,12 @@
             <option value="all">📍 全部区域</option>
           </select>
         </div>
+        <select id="yp-industry-mobile" class="yp-industry-mobile-select" aria-label="选择行业" onchange="setYpIndustry(this.value)"></select>
+        </div>
         <button type="button" id="yp-map-all-btn" class="yp-map-all-btn" style="display:none" onclick="toggleYpMapPanel()">🗺️ 地图看全部</button>
         <div class="yp-stats-line" id="yp-stats-line" style="padding: 0 12px;"></div>
         <div class="yp-industry-bar" id="yp-industry-bar"></div>
+        <div id="yp-picks-wrap"></div>
         <div id="yp-loading" style="font-size: 12px; color: #64748b; text-align: center; padding: 16px; display:none;">加载商家数据…</div>
         <div class="member-status" id="yp-member-status" style="display:none;margin:8px 12px 10px;"></div>
         <div id="yp-content" style="padding: 0 12px;"></div>
@@ -1501,7 +1910,7 @@
 
     <footer class="hub-site-footer" id="hub-footer">
       <p class="footer-mission" id="footer-mission">美东华人生活圈 · 公开渠道社区信息聚合，公益导向</p>
-      <p id="footer-org"><a href="https://www.uslifehub.org/" id="footer-org-link">www.uslifehub.org</a> · v3.2.3</p>
+      <p id="footer-org"><a href="https://www.uslifehub.org/" id="footer-org-link">www.uslifehub.org</a> · v3.3.6</p>
       <p id="footer-contact"><span id="footer-contact-label">联系 / 注册 / 投稿：</span><a href="mailto:info@uslifehub.org" id="footer-email">info@uslifehub.org</a></p>
     </footer>
 
@@ -2642,6 +3051,19 @@ function renderHubStreamStats(stats) {
   if (nc) nc.textContent = String(stats.new_24h ?? 0);
   if (wc) wc.textContent = String(stats.events_7d ?? 0);
   if (snStat) snStat.title = s.stream_new_title;
+  syncMobileDrawerStats(stats);
+}
+
+function syncMobileDrawerStats(stats) {
+  const el = document.getElementById('mobile-drawer-stats');
+  if (!el) return;
+  const wx = document.getElementById('weather-temp');
+  const city = document.querySelector('.dash-wx-city');
+  const temp = wx ? wx.textContent : '—';
+  const place = city ? city.textContent : '纽约';
+  const n24 = stats?.new_24h ?? document.getElementById('stream-new-count')?.textContent ?? '—';
+  const n7 = stats?.events_7d ?? document.getElementById('stream-week-count')?.textContent ?? '—';
+  el.innerHTML = `🌤 ${escapeHtml(temp)} ${escapeHtml(place)}<br>24h 新增 <strong>${escapeHtml(String(n24))}</strong> 条 · 7日 <strong>${escapeHtml(String(n7))}</strong> 场`;
 }
 
 function pickFeatured24hItems(stats) {
@@ -5263,8 +5685,9 @@ let YP_ACTIVE_INDUSTRY = 'essential';
 let YP_ACTIVE_AREA = 'all';
 let YP_JSON_LOADED = false;
 let YP_MANIFEST = null;
+let YP_MERCHANT_PICKS = null;
 let YP_AREA_CACHE = {};
-const YP_DATA_REV = '1.4.1';
+const YP_DATA_REV = '1.4.4';
 const YP_DATA_BASE = 'https://uslifehub.pages.dev/yp_data/';
 const YP_STATIC_FALLBACK = 'https://uslifehub.pages.dev/';
 const YP_GATE_KEY = 'yp_access_v1';
@@ -5466,6 +5889,142 @@ function ypFreshnessBadgeHtml(item) {
   const info = ypFreshnessLabel(item.freshness_status);
   if (!info || info.cls === 'ok') return '';
   return `<span class="yp-fresh-badge ${info.cls}">${info.text}</span>`;
+}
+
+function ypMerchantPolicyHtml(policy) {
+  if (!policy) return '';
+  const freeItems = (policy.free_examples || []).map(x =>
+    `<li class="yp-policy-item"><strong>${escapeHtml(x.title)}</strong> — ${escapeHtml(x.example)}</li>`
+  ).join('');
+  const paidItems = (policy.paid_examples || []).map(x =>
+    `<li class="yp-policy-item"><strong>${escapeHtml(x.title)}</strong> — ${escapeHtml(x.example)}</li>`
+  ).join('');
+  return `<div class="yp-policy-block">
+    <div class="yp-policy-title">${escapeHtml(policy.title || '商家政策')}</div>
+    ${policy.trial_note ? `<div class="yp-policy-trial">${escapeHtml(policy.trial_note)}</div>` : ''}
+    <div class="yp-policy-col-title free">${escapeHtml(policy.free_heading || '永久免费')}</div>
+    <ul class="yp-policy-list">${freeItems}</ul>
+    <div class="yp-policy-col-title paid">${escapeHtml(policy.paid_heading || '可选付费')}</div>
+    <ul class="yp-policy-list">${paidItems}</ul>
+    ${policy.contact ? `<div class="yp-policy-contact">${escapeHtml(policy.contact)}</div>` : ''}
+  </div>`;
+}
+
+function ypPickCardHtml(pick) {
+  const cat = pick.category || '';
+  const areaLbl = YP_AREA_GROUPS.find(a => a.id === pick.area)?.label || pick.area || '';
+  const countBadge = pick.pick_count > 1
+    ? `<span class="yp-pick-count">${pick.pick_count}人推荐</span>`
+    : '';
+  const pressure = pick.pressure_line
+    ? `<div class="yp-pick-pressure">${escapeHtml(pick.pressure_line)}</div>`
+    : '';
+  const foot = pick.claimed
+    ? (pick.demo_claimed ? '✅ 认领展示样例 · 真实认领免费' : '已认领 · 信息由商家核实')
+    : '尚未认领 · 店主可能还不知道 · 免费认领';
+  const cls = ['yp-pick-card', pick.hot ? 'is-hot' : '', pick.claimed ? 'is-claimed' : ''].filter(Boolean).join(' ');
+  return `<div class="${cls}" data-yp-key="${escapeHtml(pick.match_key || '')}" onclick="openYpPickCard(this.dataset.ypKey)" role="button" tabindex="0">
+    <div class="yp-pick-top">
+      <div class="yp-pick-recommender">${escapeHtml(pick.recommender || '圈友推荐')}</div>
+      ${countBadge}<span class="yp-pick-tag">${escapeHtml(pick.recommender_tag || '个人推荐')}</span>
+    </div>
+    ${pressure}
+    <div class="yp-pick-note">${escapeHtml(pick.note || '')}</div>
+    <div class="yp-pick-biz-name">${escapeHtml(pick.name || '')}</div>
+    <div class="yp-pick-biz-meta">${escapeHtml([areaLbl, cat].filter(Boolean).join(' · '))}</div>
+    <div class="yp-pick-phone">${escapeHtml(pick.phone || '')}</div>
+    <div class="yp-pick-foot">${escapeHtml(foot)}</div>
+  </div>`;
+}
+
+function openYpPickCard(key) {
+  if (!key) return;
+  const item = YELLOW_PAGES_FLAT.find(x => bizKey(x) === key);
+  if (item) {
+    openYpBizModal(key);
+    return;
+  }
+  const pick = (YP_MERCHANT_PICKS?.picks || []).find(p => p.match_key === key);
+  if (!pick) return;
+  YP_MODAL_ITEM = {
+    name: pick.name,
+    phone: pick.phone,
+    address: pick.address || '',
+    category: pick.category || '',
+    area: pick.area || '',
+    freshness_status: pick.claimed ? 'merchant_claimed' : 'unverified',
+  };
+  document.getElementById('yp-modal-title').textContent = pick.name;
+  document.getElementById('yp-modal-body').innerHTML =
+    `<div><strong>${escapeHtml(pick.category || '')}</strong> · <span class="yp-pick-tag">${escapeHtml(pick.recommender_tag || '个人推荐')}</span></div>` +
+    `<div style="margin-top:6px;font-size:12px;color:#57534e;line-height:1.5">${escapeHtml(pick.note || '')}</div>` +
+    `<div style="margin-top:6px;font-size:11px;color:#78716c">推荐人：${escapeHtml(pick.recommender || '')}</div>` +
+    (pick.address ? `<div style="margin-top:6px">📍 ${escapeHtml(shortAddr(pick.address))}</div>` : '') +
+    `<div style="margin-top:6px;font-weight:800;color:#ea580c">${escapeHtml(pick.phone || '')}</div>` +
+    `<div style="margin-top:6px;font-size:10px;color:#a8a29e">${pick.pressure_line ? escapeHtml(pick.pressure_line) + '<br>' : ''}${pick.claimed ? (pick.demo_claimed ? '此为认领展示样例 · 真实认领免费：info@uslifehub.org' : '商家已认领') : '商户可能尚未知晓 · 店主免费认领：info@uslifehub.org'}</div>`;
+  const tel = (pick.phone || '').replace(/[^\d+]/g, '');
+  const callBtn = document.getElementById('yp-modal-call');
+  if (callBtn) callBtn.href = tel ? 'tel:' + tel : '#';
+  document.getElementById('yp-modal').classList.add('open');
+}
+
+function renderYpMerchantPicks() {
+  const wrap = document.getElementById('yp-picks-wrap');
+  if (!wrap) return;
+  const searchTerm = (document.getElementById('yp-search')?.value || '').trim();
+  const picks = YP_MERCHANT_PICKS?.picks;
+  if (!picks?.length || searchTerm || YP_ACTIVE_INDUSTRY === 'essential') {
+    wrap.innerHTML = '';
+    wrap.style.display = 'none';
+    return;
+  }
+  let list = picks.slice();
+  if (YP_ACTIVE_AREA !== 'all') list = list.filter(p => p.area === YP_ACTIVE_AREA);
+  const group = YP_INDUSTRY_GROUPS.find(g => g.id === YP_ACTIVE_INDUSTRY);
+  if (group && group.id !== 'all' && group.cats) {
+    list = list.filter(p => group.cats.includes(p.category));
+  }
+  if (!list.length) {
+    wrap.innerHTML = '';
+    wrap.style.display = 'none';
+    return;
+  }
+  wrap.style.display = 'block';
+  const meta = YP_MERCHANT_PICKS;
+  const headline = meta.headline_zh || '🔥 圈友正在推荐这些店';
+  const disclaimer = meta.disclaimer_zh || '个人推荐示例，商户可能尚未认领。';
+  const merchantCta = meta.merchant_cta_zh || '';
+  const stats = meta.stats_demo || {};
+  const statsHtml = stats.picks_this_week
+    ? `<div class="yp-picks-stats">
+        <span class="yp-picks-stat">本周 ${stats.picks_this_week}+ 条推荐</span>
+        <span class="yp-picks-stat">${stats.merchants_named || list.length} 家被点名</span>
+        <span class="yp-picks-stat">${stats.claimed_demo || 0} 家已认领（含样例）</span>
+      </div>`
+    : '';
+  const ctaHtml = merchantCta
+    ? `<div class="yp-picks-merchant-cta">${escapeHtml(merchantCta)} <a href="mailto:info@uslifehub.org?subject=${encodeURIComponent('商家免费认领')}">立即认领 →</a></div>`
+    : '';
+  list.sort((a, b) => (b.featured ? 1 : 0) - (a.featured ? 1 : 0) || (b.pick_count || 0) - (a.pick_count || 0));
+  wrap.innerHTML = `<div class="yp-picks-section">
+    <div class="yp-picks-head">
+      <div class="yp-picks-title">${escapeHtml(headline)}</div>
+      <a href="mailto:info@uslifehub.org?subject=${encodeURIComponent('我要推荐一家店')}" style="font-size:11px;color:#c2410c;white-space:nowrap;text-decoration:none;font-weight:600">我也要推荐 →</a>
+    </div>
+    ${statsHtml}
+    ${ctaHtml}
+    <div class="yp-picks-disclaimer">${escapeHtml(disclaimer)}</div>
+    <div class="yp-picks-grid">${list.map(ypPickCardHtml).join('')}</div>
+    ${ypMerchantPolicyHtml(meta.policy)}
+  </div>`;
+}
+
+async function loadYpMerchantPicks() {
+  try {
+    YP_MERCHANT_PICKS = await ypFetchJson(ypDataUrl('merchant_picks.json'));
+  } catch (_) {
+    YP_MERCHANT_PICKS = null;
+  }
 }
 
 function ypCategoryBadgeHtml(cat) {
@@ -6097,11 +6656,14 @@ function renderEssentialPhones(filter) {
 
 function renderIndustryBar() {
   const bar = document.getElementById('yp-industry-bar');
+  const mobSel = document.getElementById('yp-industry-mobile');
   if (!bar) return;
   const hasBizData = YP_JSON_LOADED && YELLOW_PAGES_FLAT.length > 0;
   const areaPool = filterYpByArea(YELLOW_PAGES_FLAT);
-  bar.innerHTML = YP_INDUSTRY_GROUPS.map(g => {
+  const mobileOpts = [];
+  const pills = YP_INDUSTRY_GROUPS.map(g => {
     if (g.essential) {
+      mobileOpts.push({ id: g.id, lbl: g.label });
       return `<button type="button" class="yp-pill${YP_ACTIVE_INDUSTRY === g.id ? ' active' : ''}" onclick="setYpIndustry('${g.id}')">${g.label}</button>`;
     }
     if (!YP_JSON_LOADED && !YP_MANIFEST) return '';
@@ -6122,12 +6684,21 @@ function renderIndustryBar() {
     if (count == null) count = ypManifestIndustryCount(g);
     if (hasBizData && g.id !== 'all' && count === 0) return '';
     const lbl = g.id === 'all' ? g.label : (count != null ? `${g.label} ${ypPublicCountLabel(count)}` : g.label);
+    mobileOpts.push({ id: g.id, lbl });
     return `<button type="button" class="yp-pill${YP_ACTIVE_INDUSTRY === g.id ? ' active' : ''}" onclick="setYpIndustry('${g.id}')">${lbl}</button>`;
   }).join('');
+  bar.innerHTML = pills;
+  if (mobSel) {
+    mobSel.innerHTML = mobileOpts.map(o =>
+      `<option value="${o.id}"${YP_ACTIVE_INDUSTRY === o.id ? ' selected' : ''}>${escapeHtml(o.lbl)}</option>`
+    ).join('');
+  }
 }
 
 function setYpIndustry(id) {
   YP_ACTIVE_INDUSTRY = id;
+  const mobSel = document.getElementById('yp-industry-mobile');
+  if (mobSel) mobSel.value = id;
   if (id === 'essential') {
     YP_ACTIVE_AREA = 'all';
     const areaSel = document.getElementById('yp-area-select');
@@ -6135,6 +6706,7 @@ function setYpIndustry(id) {
   }
   renderYpAreaDropdown();
   renderIndustryBar();
+  renderYpMerchantPicks();
   renderYellowPages();
 }
 
@@ -6310,10 +6882,12 @@ async function loadYellowPagesJson() {
     await ensureYpAreasLoaded(
       YP_ACTIVE_AREA !== 'all' ? [YP_ACTIVE_AREA] : (YP_MANIFEST.areas || []).map(a => a.id)
     );
+    await loadYpMerchantPicks();
     YP_JSON_LOADED = true;
     if (loading) loading.style.display = 'none';
     renderYpAreaDropdown();
     renderIndustryBar();
+    renderYpMerchantPicks();
     renderYellowPages();
   } catch (error) {
     console.warn('yp_data load failed, trying legacy full JSON:', error);
@@ -6380,6 +6954,7 @@ function ypItemMatchesSearch(item, rawQuery) {
 }
 
 function renderYellowPages() {
+  renderYpMerchantPicks();
   const container = document.getElementById('yp-content');
   if (!container) return;
   const searchTerm = (document.getElementById('yp-search').value || '').toLowerCase().trim();
@@ -6819,6 +7394,7 @@ function renderAlmanac() {
 // Initial Boot
 function hubBoot() {
   try {
+    initMobileHub();
     markHubEmbedded();
     evictExpiredItems();
     enrichAllItemLocations();
@@ -7149,7 +7725,7 @@ async function unsubscribePush() {
 // Keep the green registration button (.sub-fab) fixed relative to the visual viewport when zoomed
 function initVisualViewportSync() {
   const fab = document.querySelector('.sub-fab');
-  if (!fab) return;
+  if (!fab || isMobileViewport()) return;
   const viewport = window.visualViewport;
   if (!viewport) return;
 
@@ -7182,7 +7758,7 @@ let deferredPrompt;
 function registerServiceWorkerOnBoot() {
   if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => {
-      navigator.serviceWorker.register('/sw-nyc-hub.js', { scope: '/' })
+      navigator.serviceWorker.register('/sw-nyc-hub.js?v=76', { scope: '/' })
         .then(reg => {
           console.log('[PWA] Service Worker registered with scope:', reg.scope);
         })
@@ -7198,7 +7774,7 @@ function registerServiceWorkerOnBoot() {
     e.preventDefault();
     // Stash the event so it can be triggered later.
     deferredPrompt = e;
-    // Show the install button container in UI
+    if (typeof updatePwaSheetContent === 'function') updatePwaSheetContent();
     const installContainer = document.getElementById('pwa-install-container');
     if (installContainer) {
       installContainer.style.display = 'block';
@@ -7603,12 +8179,160 @@ function upcomingBadgeHtml(i, opts) {
 
 // Reuse the existing PWA / desktop-app guidance
 function showAddToHomeGuide() {
-  const card = document.getElementById('pwa-guide-card');
-  if (card) {
-    card.scrollIntoView({ behavior: 'smooth', block: 'start' });
-  } else if (typeof openSubModal === 'function') {
-    openSubModal();
+  if (deferredPrompt) {
+    (async () => {
+      try {
+        await deferredPrompt.prompt();
+        const { outcome } = await deferredPrompt.userChoice;
+        console.log('[PWA] User response to install prompt:', outcome);
+        deferredPrompt = null;
+        closePwaMobileSheet();
+      } catch (err) {
+        openPwaMobileSheet();
+      }
+    })();
+    return;
   }
+  openPwaMobileSheet();
+}
+
+function isHubMobile() {
+  return document.body.classList.contains('hub-mobile');
+}
+
+function isMobileViewport() {
+  return document.documentElement.classList.contains('hub-coarse')
+    || isHubMobile()
+    || window.matchMedia('(max-width: 820px)').matches;
+}
+
+function syncMobileFixedOffsets() {
+  const bar = document.getElementById('hub-mobile-fixed-bar');
+  const topEl = document.querySelector('.top');
+  const latest = HUB_PAGE_VIEW === 'latest';
+  const mobile = isMobileViewport();
+  const showBar = mobile && latest && bar && bar.style.display !== 'none';
+  document.documentElement.classList.toggle('hub-has-fixed-bar', !!showBar);
+  document.body.classList.toggle('hub-has-fixed-bar', !!showBar);
+  if (!showBar || !topEl || !bar) {
+    document.documentElement.style.removeProperty('--hub-header-h');
+    document.documentElement.style.removeProperty('--hub-fixed-pad');
+    return;
+  }
+  const th = topEl.getBoundingClientRect().height;
+  const bh = bar.getBoundingClientRect().height;
+  document.documentElement.style.setProperty('--hub-header-h', th + 'px');
+  document.documentElement.style.setProperty('--hub-fixed-pad', (th + bh + 4) + 'px');
+}
+
+function initMobileHub() {
+  const mq = window.matchMedia('(max-width: 820px)');
+  const touchCoarse = window.matchMedia('(pointer: coarse)').matches;
+  const forceMobile = /[?&]mobile=1(?:&|$)/.test(location.search);
+  const forceDesktop = /[?&]mobile=0(?:&|$)/.test(location.search);
+  function applyMobile(on) {
+    const active = !forceDesktop && (on || forceMobile || (touchCoarse && window.innerWidth < 900));
+    document.body.classList.toggle('hub-mobile', active);
+    document.body.classList.toggle('hub-desktop-preview', active && window.innerWidth >= 768);
+    if (active) {
+      document.body.classList.add('grid-cols-1');
+      document.body.classList.remove('grid-cols-2', 'grid-cols-3', 'grid-cols-4');
+      const lc = document.getElementById('layout-cols');
+      if (lc) lc.value = '1';
+      if (!forceMobile && !/[?&]mobile=/.test(location.search)) {
+        try {
+          const u = new URL(location.href);
+          u.searchParams.set('mobile', '1');
+          history.replaceState(null, '', u.pathname + u.search + u.hash);
+        } catch (_) { /* ignore */ }
+      }
+    }
+    if (typeof applyPageViewMode === 'function') applyPageViewMode();
+    syncMobileFixedOffsets();
+  }
+  applyMobile(mq.matches);
+  if (typeof mq.addEventListener === 'function') {
+    mq.addEventListener('change', (e) => applyMobile(e.matches));
+  } else if (typeof mq.addListener === 'function') {
+    mq.addListener((e) => applyMobile(e.matches));
+  }
+  window.addEventListener('resize', syncMobileFixedOffsets);
+  const fab = document.querySelector('.sub-fab');
+  if (fab && isMobileViewport()) {
+    fab.style.display = 'none';
+    fab.style.visibility = 'hidden';
+    fab.style.pointerEvents = 'none';
+  }
+  const sheetBtn = document.getElementById('pwa-sheet-install-btn');
+  if (sheetBtn && !sheetBtn.dataset.bound) {
+    sheetBtn.dataset.bound = '1';
+    sheetBtn.addEventListener('click', async () => {
+      if (!deferredPrompt) { updatePwaSheetContent(); return; }
+      deferredPrompt.prompt();
+      const { outcome } = await deferredPrompt.userChoice;
+      console.log('[PWA] Sheet install outcome:', outcome);
+      deferredPrompt = null;
+      closePwaMobileSheet();
+    });
+  }
+}
+
+function toggleMobileDrawer() {
+  const el = document.getElementById('mobile-drawer-overlay');
+  if (!el) return;
+  el.classList.toggle('open');
+  if (el.classList.contains('open')) syncMobileDrawerStats(resolveHubIndexStats?.() || {});
+}
+function closeMobileDrawer() {
+  const el = document.getElementById('mobile-drawer-overlay');
+  if (el) el.classList.remove('open');
+}
+function openMobileSettings() {
+  closeMobileDrawer();
+  const m = document.getElementById('settings-menu');
+  if (!m) return;
+  m.classList.add('open');
+  m.style.position = 'fixed';
+  m.style.top = '56px';
+  m.style.right = '12px';
+  m.style.left = '12px';
+  m.style.zIndex = '500';
+}
+function toggleHubHeroExpand() {
+  document.body.classList.toggle('hub-hero-expanded');
+  setSectionVisible('hero-search-chips', document.body.classList.contains('hub-hero-expanded'));
+}
+
+function hubIsIOS() {
+  return /iPad|iPhone|iPod/.test(navigator.userAgent)
+    || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+}
+
+function updatePwaSheetContent() {
+  const wrap = document.getElementById('pwa-sheet-install-wrap');
+  const guide = document.getElementById('pwa-sheet-guide');
+  if (!guide) return;
+  if (wrap) wrap.style.display = deferredPrompt ? 'block' : 'none';
+  if (hubIsIOS()) {
+    guide.innerHTML = '<ol class="pwa-sheet-steps"><li>点 Safari 底部分享按钮 <strong>□↑</strong></li><li>向下滑，选 <strong>「添加到主屏幕」</strong></li><li>点右上角 <strong>添加</strong> 即可</li></ol>';
+  } else {
+    guide.innerHTML = '<ol class="pwa-sheet-steps"><li>点浏览器右上角 <strong>⋮</strong> 菜单</li><li>选 <strong>「添加到主屏幕」</strong> 或 <strong>「安装应用」</strong></li><li>若上方有橙色按钮，可直接点「立即安装」</li></ol>';
+  }
+}
+
+function openPwaMobileSheet() {
+  const sheet = document.getElementById('pwa-mobile-sheet');
+  if (!sheet) {
+    if (typeof openSubModal === 'function') openSubModal();
+    setTimeout(() => document.getElementById('pwa-guide-card')?.scrollIntoView({ behavior: 'smooth', block: 'start' }), 300);
+    return;
+  }
+  updatePwaSheetContent();
+  sheet.classList.add('open');
+}
+function closePwaMobileSheet() {
+  const sheet = document.getElementById('pwa-mobile-sheet');
+  if (sheet) sheet.classList.remove('open');
 }
 
 function applyPageViewMode(forcedView) {
@@ -7623,9 +8347,14 @@ function applyPageViewMode(forcedView) {
   const isDeals = HUB_PAGE_VIEW === 'deals';
   const isYellow = HUB_PAGE_VIEW === 'yellowpages';
 
+  document.body.classList.remove('hub-view-latest', 'hub-view-channels', 'hub-view-deals', 'hub-view-yellowpages');
+  document.body.classList.add('hub-view-' + HUB_PAGE_VIEW);
+
+  const isMobileView = isMobileViewport();
+
   setSectionVisible('hub-chapter-nav', true);
   setSectionVisible('hub-hero', true);
-  setSectionVisible('hero-decor-top', isLatest);
+  setSectionVisible('hero-decor-top', isLatest && !isMobileView);
   if (typeof updateHubSearchPlaceholder === 'function') updateHubSearchPlaceholder();
   setSectionVisible('livelihood-hot', isLatest);
   setSectionVisible('latest-page-head', false);
@@ -7636,6 +8365,27 @@ function applyPageViewMode(forcedView) {
   setSectionVisible('channels-section', isChannels);
   setSectionVisible('module-grid', isChannels);
   setSectionVisible('deals-section', isDeals);
+
+  if (isMobileView) {
+    setSectionVisible('hero-decor-top', false);
+    setSectionVisible('hero-trust', false);
+    setSectionVisible('hero-search-chips', false);
+    setSectionVisible('hub-chapter-nav', false);
+    ['today-hint', 'week-hint', 'enroll-hint'].forEach(id => setSectionVisible(id, false));
+  }
+
+  if (isHubMobile()) {
+    if (!isLatest) {
+      setSectionVisible('hub-hero', false);
+    } else {
+      setSectionVisible('hub-hero', true);
+      setSectionVisible('hub-hero-search', true);
+    }
+  } else if (isMobileView) {
+    setSectionVisible('hero-decor-top', false);
+    setSectionVisible('hero-trust', false);
+    setSectionVisible('hero-search-chips', false);
+  }
 
   setSectionVisible('feed-section', isChannels);
   setSectionVisible('feed-sub', isChannels);
@@ -7653,6 +8403,7 @@ function applyPageViewMode(forcedView) {
   }
   setHubNavPrimary('');
   setBottomTabActive();
+  syncMobileFixedOffsets();
 
   const titleMap = {
     latest: '美东华人生活圈 · 最新动态',
@@ -7671,7 +8422,21 @@ function applyPageViewMode(forcedView) {
     <a href="us-chinese-life-hub.html?view=yellowpages" id="bt-yellow" onclick="return navigateHubView('yellowpages', event)"><span class="bt-icon">📒</span><span id="bt-yellow-label">黄页</span></a>
     <a href="us-chinese-life-hub.html?view=channels" id="bt-channels" onclick="return navigateHubView('channels', event)"><span class="bt-icon">📂</span><span id="bt-channels-label">频道</span></a>
     <a href="us-chinese-life-hub.html?view=deals" id="bt-deals" onclick="return navigateHubView('deals', event)"><span class="bt-icon">🐑</span><span id="bt-deals-label">薅羊毛</span></a>
+    <a href="#" id="bt-subscribe" class="bt-subscribe" onclick="openSubModal();return false;"><span class="bt-icon">📬</span><span id="bt-subscribe-label">订阅</span></a>
   </nav>
+</div>
+
+<!-- PWA 加桌面说明（手机底部弹层，不依赖订阅弹窗） -->
+<div class="pwa-mobile-sheet-overlay" id="pwa-mobile-sheet" onclick="if(event.target===this)closePwaMobileSheet()">
+  <div class="pwa-mobile-sheet" role="dialog" aria-labelledby="pwa-sheet-title">
+    <h2 class="pwa-sheet-title" id="pwa-sheet-title">📱 加到手机桌面</h2>
+    <p class="pwa-sheet-body" id="pwa-sheet-lead">像 App 一样一键打开，无需每次输入网址。</p>
+    <div id="pwa-sheet-install-wrap" style="display:none">
+      <button type="button" class="pwa-sheet-install-btn" id="pwa-sheet-install-btn">立即安装到桌面</button>
+    </div>
+    <div id="pwa-sheet-guide"></div>
+    <button type="button" class="pwa-sheet-close" onclick="closePwaMobileSheet()">关闭</button>
+  </div>
 </div>
 
 <!-- Subscription FAB -->
