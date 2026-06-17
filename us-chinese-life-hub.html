@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- hub-build: v3.0.8-20260616 (网购薅羊毛桌面双列) -->
+<!-- hub-build: v3.0.9-20260616 (favicon+OG分享图+商家图标) -->
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8" />
@@ -8,19 +8,33 @@
   <meta http-equiv="Pragma" content="no-cache" />
   <meta http-equiv="Expires" content="0" />
   <meta name="theme-color" content="#ea580c" />
+  <link rel="icon" href="/uslifehub-icon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="/uslifehub-icon.svg" />
   <link rel="manifest" href="manifest.json" />
   <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large" />
   <meta name="googlebot" content="index, follow" />
   <meta name="description" content="纽约华人社区生活信息：活动资讯、福利政策、民生频道与4300+华人商家黄页（幼儿园·银行·诊所·按区域与行业浏览）。" />
-  <link rel="canonical" href="https://insynbio.com/us-chinese-life-hub.html" />
+  <link rel="canonical" href="https://www.uslifehub.org/us-chinese-life-hub.html" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="美东华人生活圈" />
+  <meta property="og:url" content="https://www.uslifehub.org/us-chinese-life-hub.html" />
+  <meta property="og:title" content="美东华人生活圈 · 纽约华人福利与社区信息" />
+  <meta property="og:description" content="纽约华人社区活动、政府福利、4300+ 华人黄页、民生频道与薅羊毛。支持中文搜索。" />
+  <meta property="og:image" content="https://www.uslifehub.org/uslifehub-og.svg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:locale" content="zh_CN" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="美东华人生活圈 · 纽约华人福利与社区信息" />
+  <meta name="twitter:description" content="纽约华人社区活动、政府福利、4300+ 华人黄页、民生频道与薅羊毛。" />
+  <meta name="twitter:image" content="https://www.uslifehub.org/uslifehub-og.svg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <title id="page-title">美东华人生活圈 · 纽约福利与华人服务</title>
   <meta name="description" content="美东华人生活圈为您提供最新、最全的纽约华人社区活动、政府福利、公立学校入学、暑期项目、公园局免费活动等民生信息聚合。支持中文搜索与智能导读。" />
   <meta name="keywords" content="美东华人生活圈,纽约华人福利,纽约社区活动,法拉盛活动,唐人街活动,纽约公立学校入学,纽约夏令营,纽约公园局免费游泳课,纽约低收入福利" />
-  <meta name="robots" content="index, follow" />
-  <link rel="canonical" href="https://www.uslifehub.org/us-chinese-life-hub.html" />
+  <link rel="alternate" href="https://insynbio.com/us-chinese-life-hub.html" hreflang="zh-CN" />
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -551,6 +565,15 @@
     }
     .deal-merchant-link a:hover { text-decoration: underline; }
     .deal-merchant-host { color: #94a3b8; font-size: 10.5px; }
+    .deal-merchant-favicon {
+      width: 16px;
+      height: 16px;
+      border-radius: 3px;
+      flex-shrink: 0;
+      object-fit: contain;
+      background: #fff;
+      border: 1px solid #e2e8f0;
+    }
     .deal-compact-body .foot-compact { margin-top: auto; }
     .deal-compact-body .foot-compact .btn { padding: 4px 10px; font-size: 11px; }
     .livelihood-block { margin-bottom: 8px; }
@@ -3861,11 +3884,19 @@ function renderStreamSections() {
 function renderFullDealsGrid(feed, moreFeed, moreBtn, items, renderItem, gridOpts) {
   if (!feed) return;
   const layout = (gridOpts && gridOpts.layout) || 'compact';
-  feed.classList.remove('deals-single-grid', 'deals-compact-grid');
-  feed.classList.add(layout === 'single' ? 'deals-single-grid' : 'deals-compact-grid');
+  feed.classList.remove('deals-single-grid', 'deals-compact-grid', 'deals-online-grid');
+  if (layout === 'online') {
+    feed.classList.add('deals-online-grid');
+  } else {
+    feed.classList.add(layout === 'single' ? 'deals-single-grid' : 'deals-compact-grid');
+  }
   if (moreFeed) {
-    moreFeed.classList.remove('deals-single-grid', 'deals-compact-grid');
-    moreFeed.classList.add(layout === 'single' ? 'deals-single-grid' : 'deals-compact-grid');
+    moreFeed.classList.remove('deals-single-grid', 'deals-compact-grid', 'deals-online-grid');
+    if (layout === 'online') {
+      moreFeed.classList.add('deals-online-grid');
+    } else {
+      moreFeed.classList.add(layout === 'single' ? 'deals-single-grid' : 'deals-compact-grid');
+    }
   }
   feed.innerHTML = items.map(renderItem).join('');
   if (moreFeed) {
@@ -4134,6 +4165,12 @@ function dealMerchantHost(url) {
   try { return new URL(url).hostname.replace(/^www\./, ''); } catch (e) { return ''; }
 }
 
+function dealMerchantFaviconUrl(url) {
+  const host = dealMerchantHost(url);
+  if (!host) return '';
+  return 'https://www.google.com/s2/favicons?domain=' + encodeURIComponent(host) + '&sz=32';
+}
+
 function dealMerchantLinkHtml(item) {
   const s = UI_STRINGS[currentLang];
   const url = (item.url || '').trim();
@@ -4142,7 +4179,11 @@ function dealMerchantLinkHtml(item) {
   const host = dealMerchantHost(url);
   const label = s.deal_merchant_link || '商家官网';
   const hostSuffix = host && host !== name ? ` · ${escapeHtml(host)}` : '';
-  return `<div class="deal-merchant-link"><span class="deal-merchant-host">${escapeHtml(label)}：</span><a href="${escapeHtml(url)}" target="_blank" rel="noopener noreferrer">${escapeHtml(name)}</a><span class="deal-merchant-host">${hostSuffix}</span></div>`;
+  const fav = dealMerchantFaviconUrl(url);
+  const favHtml = fav
+    ? `<img class="deal-merchant-favicon" src="${escapeHtml(fav)}" alt="" width="16" height="16" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.style.display='none'" />`
+    : '';
+  return `<div class="deal-merchant-link">${favHtml}<span class="deal-merchant-host">${escapeHtml(label)}：</span><a href="${escapeHtml(url)}" target="_blank" rel="noopener noreferrer sponsored">${escapeHtml(name)}</a><span class="deal-merchant-host">${hostSuffix}</span></div>`;
 }
 
 function dealTopicEmoji(item) {
@@ -4246,7 +4287,7 @@ function renderDealsSection() {
       deals = deals.filter(i => dealSearchBlob(i).includes(HUB_DEALS_QUERY));
     }
     if (deals.length) {
-      renderFullDealsGrid(feed, moreFeed, moreBtn, deals.slice(0, 24), i => renderDealCompactCard(i, { briefFn: dealItemBrief }), { layout: 'single' });
+      renderFullDealsGrid(feed, moreFeed, moreBtn, deals.slice(0, 24), i => renderDealCompactCard(i, { briefFn: dealItemBrief }), { layout: 'online' });
     } else {
       feed.innerHTML = '<div style="grid-column:1/-1;padding:16px;text-align:center;color:#64748b;font-size:13px;line-height:1.55;">' + (s.deals_empty || '暂无促销信息') + '</div>';
       if (moreFeed) moreFeed.innerHTML = '';

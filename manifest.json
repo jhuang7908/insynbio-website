@@ -4,19 +4,21 @@
   "description": "提供纽约最及时的民生福利、升学教育、暑期项目、公园局常年活动、平价房抽签及打折促销等官方报名与长期规划信息。",
   "start_url": "/us-chinese-life-hub.html?view=latest",
   "display": "standalone",
-  "background_color": "#fffbeb",
+  "background_color": "#faf7f2",
   "theme_color": "#ea580c",
   "orientation": "portrait-primary",
   "icons": [
     {
-      "src": "https://img.icons8.com/color/192/000000/china.png",
-      "type": "image/png",
-      "sizes": "192x192"
+      "src": "/uslifehub-icon.svg",
+      "type": "image/svg+xml",
+      "sizes": "any",
+      "purpose": "any"
     },
     {
-      "src": "https://img.icons8.com/color/512/000000/china.png",
-      "type": "image/png",
-      "sizes": "512x512"
+      "src": "/uslifehub-icon.svg",
+      "type": "image/svg+xml",
+      "sizes": "512x512",
+      "purpose": "maskable"
     }
   ]
 }

@@ -1,7 +1,10 @@
-const CACHE_NAME = 'us-chinese-life-hub-v49';
+const CACHE_NAME = 'us-chinese-life-hub-v50';
 const ASSETS = [
   '/',
   '/us-chinese-life-hub.html',
+  '/uslifehub-icon.svg',
+  '/uslifehub-og.svg',
+  '/manifest.json',
   '/latest.html',
   '/channels.html',
   '/deals.html',
@@ -86,8 +89,8 @@ self.addEventListener('push', event => {
   }
   const options = {
     body: data.body,
-    icon: 'https://img.icons8.com/color/192/000000/china.png',
-    badge: 'https://insynbio.com/favicon.ico',
+    icon: '/uslifehub-icon.svg',
+    badge: '/uslifehub-icon.svg',
     vibrate: [100, 50, 100],
     data: {
       url: data.url || '/us-chinese-life-hub.html'
