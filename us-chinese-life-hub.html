@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<!-- hub-build: 2026-06-18T01:20TET mobile-v3.3.12 -->
+<!-- hub-build: 2026-06-18T02:10TET mobile-v3.3.13 -->
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <script>
-    window.HUB_APP_VERSION = '3.3.12';
+    window.HUB_APP_VERSION = '3.3.13';
     (function () {
       var coarse = window.matchMedia('(pointer: coarse)').matches;
       var narrow = window.matchMedia('(max-width: 820px)').matches;
@@ -3508,6 +3508,7 @@ const HUB_SEARCH_ALIASES = {
   'free kids events': ['亲子', 'family', 'kids', 'playground', 'story time'],
   'fei long': ['fei long', '飞龙', 'feilong'],
   'flushing': ['flushing', '法拉盛'],
+  '李与白': ['lee & bai', 'lee and bai', 'chinese buns'],
 };
 
 const HUB_YP_AREA_QUERY = {
@@ -5744,7 +5745,7 @@ const YP_SEARCH_SYNONYMS = {
   "八大道": ["8th ave", "8th avenue"],
   
   // 知名中餐馆及华人商户中英文映射
-  "李与白": ["lee & bai", "lee and bai"],
+  "李与白": ["lee & bai", "lee and bai", "chinese buns shop", "chinese buns"],
   "川山甲": ["szechuan mountain house"],
   "南翔": ["nan xiang"],
   "豫园": ["you garden"],
@@ -7128,8 +7129,42 @@ function byYpNameAsc(a, b) {
   return ka.localeCompare(kb, 'zh-Hans-CN', { sensitivity: 'base', numeric: true });
 }
 
+/** YP-specific term expansion: merges hero aliases + YP_SEARCH_SYNONYMS (CN↔EN merchant names). */
+function ypExpandSearchTerms(raw) {
+  const terms = new Set(hubExpandSearchTerms(raw));
+  const q = hubNormalizeSearchBlob(raw);
+  if (!q) return [...terms];
+  const addTerm = (t) => {
+    if (!t) return;
+    terms.add(String(t).toLowerCase());
+    terms.add(hubCompactSearchBlob(t));
+    const d = hubDigitsOnly(t);
+    if (d.length >= 3) terms.add(d);
+  };
+  for (const [key, aliases] of Object.entries(YP_SEARCH_SYNONYMS)) {
+    const kl = hubNormalizeSearchBlob(key);
+    const keyHit = q === kl || (kl.length >= 2 && (q.includes(kl) || kl.includes(q)));
+    if (keyHit) {
+      addTerm(kl);
+      (aliases || []).forEach(addTerm);
+      continue;
+    }
+    for (const a of aliases || []) {
+      const al = hubNormalizeSearchBlob(a);
+      if (!al) continue;
+      if (q === al || (al.length >= 2 && (q.includes(al) || al.includes(q)))) {
+        addTerm(kl);
+        addTerm(al);
+        (aliases || []).forEach(addTerm);
+        break;
+      }
+    }
+  }
+  return [...terms].filter(t => t && t.length >= 1);
+}
+
 function ypItemMatchesSearch(item, rawQuery) {
-  const terms = hubExpandSearchTerms(rawQuery);
+  const terms = ypExpandSearchTerms(rawQuery);
   if (!terms.length) return true;
   const blob = [
     item.name, item.phone, item.name_zh, ypExtractZh(item.name),
@@ -7158,7 +7193,8 @@ function renderYellowPages() {
     return;
   }
 
-  let filtered = filterYpByArea(filterYpByIndustry(YELLOW_PAGES_FLAT));
+  let filtered = filterYpByArea(YELLOW_PAGES_FLAT);
+  if (!searchTerm) filtered = filterYpByIndustry(filtered);
   filtered.sort(byYpNameAsc);
 
   if (searchTerm) {
