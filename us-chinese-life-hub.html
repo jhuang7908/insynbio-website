@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<!-- hub-build: 2026-06-18T01:00TET mobile-v3.3.11 -->
+<!-- hub-build: 2026-06-18T01:20TET mobile-v3.3.12 -->
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <script>
-    window.HUB_APP_VERSION = '3.3.11';
+    window.HUB_APP_VERSION = '3.3.12';
     (function () {
       var coarse = window.matchMedia('(pointer: coarse)').matches;
       var narrow = window.matchMedia('(max-width: 820px)').matches;
@@ -2129,7 +2129,7 @@ const UI_STRINGS = {
     latest_empty: "暂无最新动态，请稍后再来",
     hero_tagline: "美东华人生活圈 · 纽约华人民生信息聚合",
     hero_subtitle: "搜福利、活动、社区黄页与超市海报——收录自政府与社区公开渠道，外链人工核验",
-    hero_search_ph: "搜：平价房、粮食券、半价地铁卡、免费遛娃…",
+    hero_search_ph: "搜福利、活动、商家名、电话…",
     hero_trust: "www.uslifehub.org · 公益免费 · 公开渠道聚合",
     hero_go: "搜索",
     hero_chips: ["粮食券", "平价房", "半价地铁卡", "免费遛娃", "飞龙超市", "法拉盛"],
@@ -2277,7 +2277,7 @@ const UI_STRINGS = {
     latest_empty: "暫無最新動態，請稍後再來",
     hero_tagline: "美東華人生活圈 · 紐約華人民生信息聚合",
     hero_subtitle: "搜福利、活動、社區黃頁與超市海報——收錄自首方與社區公開渠道，外鏈人工核驗",
-    hero_search_ph: "搜：平價房、糧食券、半價地鐵卡、免費遛娃…",
+    hero_search_ph: "搜福利、活動、商家名、電話…",
     hero_trust: "www.uslifehub.org · 公益免費 · 公開渠道聚合",
     hero_go: "搜尋",
     hero_chips: ["糧食券", "平價房", "半價地鐵卡", "免費遛娃", "飛龍超市", "法拉盛"],
@@ -2416,7 +2416,7 @@ const UI_STRINGS = {
     latest_empty: "No latest updates yet — check back soon",
     hero_tagline: "East Coast Chinese Life Hub · NYC public-benefits & community digest",
     hero_subtitle: "Search benefits, events, local businesses, and store flyers—sourced from public channels; outbound links manually checked",
-    hero_search_ph: "Search: affordable housing, SNAP/EBT, half-fare MetroCard, free kids' events…",
+    hero_search_ph: "Benefits, events, business name, phone…",
     hero_trust: "www.uslifehub.org · Free · Public-source aggregation",
     hero_go: "Search",
     hero_chips: ["SNAP/EBT", "affordable housing", "half-fare MetroCard", "free kids events", "Fei Long", "Flushing"],
@@ -3522,10 +3522,39 @@ const HUB_YP_AREA_QUERY = {
   '布朗士': 'bronx', 'bronx': 'bronx',
 };
 
+function hubNormalizeSearchBlob(text) {
+  return String(text || '').toLowerCase().replace(/\s+/g, ' ').trim();
+}
+
+function hubCompactSearchBlob(text) {
+  return hubNormalizeSearchBlob(text).replace(/[\s\-_.(),，。／/|]+/g, '');
+}
+
+function hubDigitsOnly(text) {
+  return String(text || '').replace(/\D/g, '');
+}
+
+function hubQueryLooksLikeMerchant(raw) {
+  const q = String(raw || '').trim();
+  if (!q) return false;
+  if (hubDigitsOnly(q).length >= 7) return true;
+  const hints = ['律', '餐', '馆', '館', '店', '超市', '药', '藥', '医', '醫', '齿', '裝修', '装修', '会计', '會計', '律师', '律師', 'cafe', 'restaurant', 'law', 'pharmacy', 'plumber', 'dental', 'clinic'];
+  const ql = q.toLowerCase();
+  return hints.some(h => ql.includes(h));
+}
+
 function hubExpandSearchTerms(raw) {
-  const q = String(raw || '').trim().toLowerCase();
+  const q = hubNormalizeSearchBlob(raw);
   if (!q) return [];
-  const terms = new Set([q]);
+  const terms = new Set([q, hubCompactSearchBlob(q)]);
+  const digits = hubDigitsOnly(q);
+  if (digits.length >= 3) terms.add(digits);
+  q.split(/\s+/).filter(Boolean).forEach(tok => {
+    terms.add(tok);
+    terms.add(hubCompactSearchBlob(tok));
+    const d = hubDigitsOnly(tok);
+    if (d.length >= 3) terms.add(d);
+  });
   for (const [key, aliases] of Object.entries(HUB_SEARCH_ALIASES)) {
     const kl = key.toLowerCase();
     if (q === kl || q.includes(kl) || kl.includes(q)) {
@@ -3539,13 +3568,24 @@ function hubExpandSearchTerms(raw) {
       if (q === al || q.includes(al) || al.includes(q)) terms.add(al);
     }
   }
-  return [...terms].filter(Boolean);
+  return [...terms].filter(t => t && t.length >= 1);
 }
 
 function hubTextMatchesAnyTerms(text, terms) {
-  const blob = String(text || '').toLowerCase();
+  const blob = hubNormalizeSearchBlob(text);
+  const compact = hubCompactSearchBlob(text);
+  const digits = hubDigitsOnly(text);
   if (!blob || !terms || !terms.length) return false;
-  return terms.some(t => t && blob.includes(t));
+  return terms.some(t => {
+    if (!t) return false;
+    if (blob.includes(t)) return true;
+    const tc = hubCompactSearchBlob(t);
+    if (tc.length >= 2 && compact.includes(tc)) return true;
+    const td = hubDigitsOnly(t);
+    if (td.length >= 7 && digits.includes(td)) return true;
+    if (td.length >= 3 && td.length < 7 && digits.includes(td)) return true;
+    return false;
+  });
 }
 
 function hubItemMatchesQuery(item, rawQuery) {
@@ -8182,6 +8222,24 @@ function hubPushViewToUrl(view) {
   } catch (_) {}
 }
 
+async function ensureYpSearchReady() {
+  if (YP_JSON_LOADED && YELLOW_PAGES_FLAT.length) return;
+  if (typeof loadYellowPagesJson === 'function') {
+    try {
+      await loadYellowPagesJson();
+      if (YELLOW_PAGES_FLAT.length) return;
+    } catch (_) { /* fallback below */ }
+  }
+  if (!YP_MANIFEST) {
+    try {
+      YP_MANIFEST = await ypFetchJson(ypDataUrl('manifest.json'));
+    } catch (_) { /* ignore */ }
+  }
+  if (typeof ensureYpAreasLoaded === 'function') {
+    await ensureYpAreasLoaded();
+  }
+}
+
 // Hero search → route to 民生频道 / 薅羊毛 / 黄页（复用现有检索）
 async function goHubSearch(q) {
   const query = String(q || '').trim();
@@ -8191,26 +8249,25 @@ async function goHubSearch(q) {
     try { renderCustomDealsTabs(); } catch (_) {}
   }
 
-  if (!YP_JSON_LOADED && typeof ensureYpAreasLoaded === 'function') {
-    try { await ensureYpAreasLoaded(); } catch (_) {}
-  }
+  try { await ensureYpSearchReady(); } catch (_) {}
 
   const nCh = countHubChannelMatches(query);
   const nDeal = countHubDealMatches(query);
   const nYp = countHubYpMatches(query);
   const areaHit = hubResolveYpAreaFromQuery(query);
   const nEss = countEssentialPhoneMatches(query);
+  const merchantLike = hubQueryLooksLikeMerchant(query);
 
   let view = 'channels';
-  if (areaHit && nYp > 0) {
+  if (nYp > 0 && (merchantLike || areaHit || nYp >= nCh)) {
     view = 'yellowpages';
   } else if (nDeal > 0 && nDeal >= nCh && nDeal >= nYp) {
     view = 'deals';
-  } else if (nYp > 0 && nYp >= nCh) {
+  } else if (nYp > 0) {
     view = 'yellowpages';
   } else if (nCh > 0) {
     view = 'channels';
-  } else if (nEss > 0 || nYp > 0) {
+  } else if (nEss > 0 || merchantLike || areaHit) {
     view = 'yellowpages';
   } else if (nDeal > 0) {
     view = 'deals';
