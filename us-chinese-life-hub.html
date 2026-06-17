@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<!-- hub-build: 2026-06-17T23:55TET mobile-v3.3.8 -->
+<!-- hub-build: 2026-06-18T00:15TET mobile-v3.3.9 -->
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <script>
-    window.HUB_APP_VERSION = '3.3.8';
+    window.HUB_APP_VERSION = '3.3.9';
     (function () {
       var coarse = window.matchMedia('(pointer: coarse)').matches;
       var narrow = window.matchMedia('(max-width: 820px)').matches;
@@ -599,7 +599,7 @@
         grid-template-columns: repeat(4, minmax(0, 1fr));
         flex-wrap: nowrap;
         gap: 4px;
-        margin: 8px 0 12px;
+        margin: 0;
         padding: 0;
         width: 100%;
         max-width: 100%;
@@ -617,6 +617,34 @@
       html.hub-coarse #deals-tabs.hub-light-tabs button.active,
       body.hub-mobile #deals-tabs.hub-light-tabs button.active {
         padding: 8px 2px;
+      }
+      html.hub-coarse.hub-view-deals .deals-mobile-sticky,
+      body.hub-mobile.hub-view-deals .deals-mobile-sticky {
+        position: sticky;
+        top: var(--hub-header-h, 46px);
+        z-index: 95;
+        background: #fffcf8;
+        padding: 6px 12px 8px;
+        margin: 0 0 8px;
+        border-bottom: 1px solid #ece6dc;
+        box-shadow: 0 2px 8px rgba(44,52,64,.06);
+      }
+      html.hub-coarse.hub-view-deals .deals-disclaimer,
+      body.hub-mobile.hub-view-deals .deals-disclaimer {
+        margin: 0 0 6px;
+        font-size: 10px;
+        line-height: 1.4;
+      }
+      html.hub-coarse.hub-view-channels #module-grid,
+      body.hub-mobile.hub-view-channels #module-grid {
+        display: none !important;
+      }
+      html.hub-coarse.hub-view-channels #hub-search-panel,
+      body.hub-mobile.hub-view-channels #hub-search-panel {
+        position: sticky;
+        top: var(--hub-header-h, 46px);
+        z-index: 94;
+        margin: 8px auto 10px;
       }
     }
     .deals-tab { /* legacy class; styled via .hub-light-tabs button */ }
@@ -1892,14 +1920,14 @@
       <div class="section-title">
         <div class="section-title-left" id="deals-title">🐑 薅羊毛 · 生活参考</div>
       </div>
+      <div class="deals-mobile-sticky" id="deals-mobile-sticky">
       <p class="deals-disclaimer" id="deals-disclaimer">第三方公开优惠信息，仅供参考；本平台以社区公益与官方民生信息为主。</p>
-      
-      <!-- Sub-tabs for Deals Section -->
       <div class="deals-tabs hub-light-tabs" id="deals-tabs">
         <button type="button" class="deals-tab active" onclick="switchDealsTab('flyers', this)" id="tab-btn-flyers">🛒 超市海报</button>
         <button type="button" class="deals-tab" onclick="switchDealsTab('seasons', this)" id="tab-btn-seasons">💄 消费大促</button>
         <button type="button" class="deals-tab" onclick="switchDealsTab('dining', this)" id="tab-btn-dining">🥢 美食特惠</button>
         <button type="button" class="deals-tab" onclick="switchDealsTab('online', this)" id="tab-btn-online">📦 网购薅羊毛</button>
+      </div>
       </div>
 
       <!-- Tab Content Containers -->
@@ -8234,15 +8262,20 @@ function syncMobileFixedOffsets() {
   const showBar = mobile && latest && bar && bar.style.display !== 'none';
   document.documentElement.classList.toggle('hub-has-fixed-bar', !!showBar);
   document.body.classList.toggle('hub-has-fixed-bar', !!showBar);
-  if (!showBar || !topEl || !bar) {
+
+  if (topEl && mobile) {
+    const th = topEl.getBoundingClientRect().height;
+    document.documentElement.style.setProperty('--hub-header-h', th + 'px');
+    if (showBar && bar) {
+      const bh = bar.getBoundingClientRect().height;
+      document.documentElement.style.setProperty('--hub-fixed-pad', (th + bh + 4) + 'px');
+    } else {
+      document.documentElement.style.removeProperty('--hub-fixed-pad');
+    }
+  } else {
     document.documentElement.style.removeProperty('--hub-header-h');
     document.documentElement.style.removeProperty('--hub-fixed-pad');
-    return;
   }
-  const th = topEl.getBoundingClientRect().height;
-  const bh = bar.getBoundingClientRect().height;
-  document.documentElement.style.setProperty('--hub-header-h', th + 'px');
-  document.documentElement.style.setProperty('--hub-fixed-pad', (th + bh + 4) + 'px');
 }
 
 function initMobileHub() {
@@ -8384,7 +8417,7 @@ function applyPageViewMode(forcedView) {
   setSectionVisible('stream-legacy-wrap', isLatest);
   setSectionVisible('yellow-pages-card', isYellow);
   setSectionVisible('channels-section', isChannels);
-  setSectionVisible('module-grid', isChannels);
+  setSectionVisible('module-grid', isChannels && !isMobileView);
   setSectionVisible('deals-section', isDeals);
 
   if (isMobileView) {
