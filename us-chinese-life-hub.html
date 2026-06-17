@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<!-- hub-build: 2026-06-17T23:30TET mobile-v3.3.7 -->
+<!-- hub-build: 2026-06-17T23:55TET mobile-v3.3.8 -->
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <script>
-    window.HUB_APP_VERSION = '3.3.7';
+    window.HUB_APP_VERSION = '3.3.8';
     (function () {
       var coarse = window.matchMedia('(pointer: coarse)').matches;
       var narrow = window.matchMedia('(max-width: 820px)').matches;
@@ -591,6 +591,33 @@
     .deals-tabs {
       /* uses .hub-light-tabs — see HTML */
       margin: 12px 0 16px;
+    }
+    @media (max-width: 820px) {
+      html.hub-coarse #deals-tabs.hub-light-tabs,
+      body.hub-mobile #deals-tabs.hub-light-tabs {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        flex-wrap: nowrap;
+        gap: 4px;
+        margin: 8px 0 12px;
+        padding: 0;
+        width: 100%;
+        max-width: 100%;
+      }
+      html.hub-coarse #deals-tabs.hub-light-tabs button,
+      body.hub-mobile #deals-tabs.hub-light-tabs button {
+        width: 100%;
+        min-width: 0;
+        padding: 8px 2px;
+        font-size: 11px;
+        line-height: 1.2;
+        white-space: nowrap;
+        text-align: center;
+      }
+      html.hub-coarse #deals-tabs.hub-light-tabs button.active,
+      body.hub-mobile #deals-tabs.hub-light-tabs button.active {
+        padding: 8px 2px;
+      }
     }
     .deals-tab { /* legacy class; styled via .hub-light-tabs button */ }
     .deals-tab-content {
@@ -4938,21 +4965,52 @@ function switchDealsTab(tabId, btn) {
   }
 }
 
+function dealsTabLabelSet() {
+  const zht = currentLang === 'zht';
+  const en = currentLang === 'en';
+  const compact = typeof isMobileViewport === 'function' && isMobileViewport();
+  if (en) {
+    return {
+      flyers: compact ? '🛒 Flyers' : '🛒 Flyers',
+      seasons: compact ? '💄 Sales' : '💄 Shopping',
+      dining: compact ? '🥢 Food' : '🥢 Dining',
+      online: compact ? '📦 Online' : '📦 Online Deals',
+      titles: { flyers: 'Weekly Flyers', seasons: 'Seasonal Sales', dining: 'Dining Deals', online: 'Online Deals' },
+    };
+  }
+  if (zht) {
+    return {
+      flyers: compact ? '🛒 超市' : '🛒 超市海報',
+      seasons: compact ? '💄 大促' : '💄 消費大促',
+      dining: compact ? '🥢 美食' : '🥢 美食特惠',
+      online: compact ? '📦 網購' : '📦 網購薅羊毛',
+      titles: { flyers: '超市海報', seasons: '消費大促', dining: '美食特惠', online: '網購薅羊毛' },
+    };
+  }
+  return {
+    flyers: compact ? '🛒 超市' : '🛒 超市海报',
+    seasons: compact ? '💄 大促' : '💄 消费大促',
+    dining: compact ? '🥢 美食' : '🥢 美食特惠',
+    online: compact ? '📦 网购' : '📦 网购薅羊毛',
+    titles: { flyers: '超市海报', seasons: '消费大促', dining: '美食特惠', online: '网购薅羊毛' },
+  };
+}
+
 function renderCustomDealsTabs() {
   const zht = currentLang === 'zht';
   const en = currentLang === 'en';
   let hubCuratedDealsCache = [];
 
-  // Translate tab buttons dynamically based on language preference
+  const labels = dealsTabLabelSet();
   const btnFlyers = document.getElementById('tab-btn-flyers');
   const btnSeasons = document.getElementById('tab-btn-seasons');
   const btnDining = document.getElementById('tab-btn-dining');
   const btnOnline = document.getElementById('tab-btn-online');
 
-  if (btnFlyers) btnFlyers.textContent = zht ? "🛒 超市海報" : (en ? "🛒 Flyers" : "🛒 超市海报");
-  if (btnSeasons) btnSeasons.textContent = zht ? "💄 消費大促" : (en ? "💄 Shopping" : "💄 消费大促");
-  if (btnDining) btnDining.textContent = zht ? "🥢 美食特惠" : (en ? "🥢 Dining" : "🥢 美食特惠");
-  if (btnOnline) btnOnline.textContent = zht ? "📦 網購薅羊毛" : (en ? "📦 Online Deals" : "📦 网购薅羊毛");
+  if (btnFlyers) { btnFlyers.textContent = labels.flyers; btnFlyers.title = labels.titles.flyers; }
+  if (btnSeasons) { btnSeasons.textContent = labels.seasons; btnSeasons.title = labels.titles.seasons; }
+  if (btnDining) { btnDining.textContent = labels.dining; btnDining.title = labels.titles.dining; }
+  if (btnOnline) { btnOnline.textContent = labels.online; btnOnline.title = labels.titles.online; }
 
   // 1. Weekly Flyers (超市海报) - Balanced across all NYC enclaves (Brooklyn, Chinatown, Elmhurst, Flushing, Long Island, NJ)
   const flyersFeed = document.getElementById('flyers-feed');
@@ -8211,6 +8269,7 @@ function initMobileHub() {
     }
     if (typeof applyPageViewMode === 'function') applyPageViewMode();
     syncMobileFixedOffsets();
+    if (typeof renderCustomDealsTabs === 'function') renderCustomDealsTabs();
   }
   applyMobile(mq.matches);
   if (typeof mq.addEventListener === 'function') {
