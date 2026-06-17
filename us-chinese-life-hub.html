@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- hub-build: v3.2.2-20260617 (黄页pass4店名优先分类) -->
+<!-- hub-build: v3.2.3-20260617 (部署yp_data+manifest行业计数) -->
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8" />
@@ -1501,7 +1501,7 @@
 
     <footer class="hub-site-footer" id="hub-footer">
       <p class="footer-mission" id="footer-mission">美东华人生活圈 · 公开渠道社区信息聚合，公益导向</p>
-      <p id="footer-org"><a href="https://www.uslifehub.org/" id="footer-org-link">www.uslifehub.org</a> · v3.2.2</p>
+      <p id="footer-org"><a href="https://www.uslifehub.org/" id="footer-org-link">www.uslifehub.org</a> · v3.2.3</p>
       <p id="footer-contact"><span id="footer-contact-label">联系 / 注册 / 投稿：</span><a href="mailto:info@uslifehub.org" id="footer-email">info@uslifehub.org</a></p>
     </footer>
 
@@ -5264,9 +5264,16 @@ let YP_ACTIVE_AREA = 'all';
 let YP_JSON_LOADED = false;
 let YP_MANIFEST = null;
 let YP_AREA_CACHE = {};
+const YP_DATA_REV = '1.4.1';
 const YP_DATA_BASE = 'https://uslifehub.pages.dev/yp_data/';
 const YP_STATIC_FALLBACK = 'https://uslifehub.pages.dev/';
 const YP_GATE_KEY = 'yp_access_v1';
+
+function ypDataUrl(path) {
+  const p = String(path || '').replace(/^\//, '');
+  const sep = p.includes('?') ? '&' : '?';
+  return `${YP_DATA_BASE}${p}${sep}v=${encodeURIComponent(YP_DATA_REV)}`;
+}
 
 const YP_AREA_GROUPS = [
   { id: 'all', label: '📍 全部区域' },
@@ -6044,7 +6051,13 @@ function ypAreaPublicLabel(areaId) {
 }
 
 function ypManifestIndustryCount(g) {
-  return null;
+  if (!YP_MANIFEST || !YP_MANIFEST.industries || !g.cats || g.keywords) return null;
+  let n = 0;
+  for (const cat of g.cats) {
+    const block = YP_MANIFEST.industries[cat];
+    if (block && typeof block.count === 'number') n += block.count;
+  }
+  return n > 0 ? n : null;
 }
 
 function ypManifestAreaCount(areaId, group) {
@@ -6097,7 +6110,16 @@ function renderIndustryBar() {
       count = g.id === 'all'
         ? areaPool.length
         : areaPool.filter(i => g.cats && g.cats.includes(i.category)).length;
+      if (g.keywords && g.keywords.length && g.cats) {
+        const kws = g.keywords.map(k => String(k).toLowerCase());
+        count = areaPool.filter(i => {
+          if (!g.cats.includes(i.category)) return false;
+          const blob = [i.name, i.category, i.address].filter(Boolean).join(' ').toLowerCase();
+          return kws.some(k => blob.includes(k));
+        }).length;
+      }
     }
+    if (count == null) count = ypManifestIndustryCount(g);
     if (hasBizData && g.id !== 'all' && count === 0) return '';
     const lbl = g.id === 'all' ? g.label : (count != null ? `${g.label} ${ypPublicCountLabel(count)}` : g.label);
     return `<button type="button" class="yp-pill${YP_ACTIVE_INDUSTRY === g.id ? ' active' : ''}" onclick="setYpIndustry('${g.id}')">${lbl}</button>`;
@@ -6232,7 +6254,7 @@ async function loadYpAreaChunk(areaId) {
     } catch (_) { /* fallback to static */ }
   }
   if (!block) {
-    block = await ypFetchJson(YP_DATA_BASE + areaId + '.json');
+    block = await ypFetchJson(ypDataUrl(areaId + '.json'));
   }
   YP_AREA_CACHE[areaId] = block;
   return block;
@@ -6280,7 +6302,7 @@ async function loadYellowPagesJson() {
       } catch (_) { /* static fallback */ }
     }
     if (!YP_MANIFEST) {
-      YP_MANIFEST = await ypFetchJson(YP_DATA_BASE + 'manifest.json');
+      YP_MANIFEST = await ypFetchJson(ypDataUrl('manifest.json'));
     }
     renderYpStatsLine();
     renderYpAreaDropdown();

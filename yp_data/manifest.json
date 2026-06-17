@@ -1,61 +1,210 @@
 {
-  "version": "1.4.0",
-  "generated_at": "2026-06-16T18:00:00+00:00",
+  "version": "1.4.1",
+  "generated_at": "2026-06-17T04:50:01+00:00",
   "public_total_label": "4300+",
+  "industries": {
+    "中餐馆": {
+      "count": 940,
+      "public_label": "900+"
+    },
+    "装修公司": {
+      "count": 885,
+      "public_label": "800+"
+    },
+    "幼儿园": {
+      "count": 543,
+      "public_label": "500+"
+    },
+    "美容院": {
+      "count": 194,
+      "public_label": "100+"
+    },
+    "地产公司": {
+      "count": 174,
+      "public_label": "100+"
+    },
+    "旅行社": {
+      "count": 128,
+      "public_label": "100+"
+    },
+    "律师事务所": {
+      "count": 124,
+      "public_label": "100+"
+    },
+    "汽车修理": {
+      "count": 120,
+      "public_label": "100+"
+    },
+    "会计事务所": {
+      "count": 117,
+      "public_label": "100+"
+    },
+    "建材公司": {
+      "count": 110,
+      "public_label": "100+"
+    },
+    "指甲店": {
+      "count": 104,
+      "public_label": "100+"
+    },
+    "洗衣店": {
+      "count": 97,
+      "public_label": "90+"
+    },
+    "理发店": {
+      "count": 88,
+      "public_label": "80+"
+    },
+    "按摩店": {
+      "count": 81,
+      "public_label": "80+"
+    },
+    "补习学校": {
+      "count": 75,
+      "public_label": "70+"
+    },
+    "珠宝店": {
+      "count": 64,
+      "public_label": "60+"
+    },
+    "华裔超市": {
+      "count": 63,
+      "public_label": "60+"
+    },
+    "医疗诊所": {
+      "count": 61,
+      "public_label": "60+"
+    },
+    "商会": {
+      "count": 53,
+      "public_label": "50+"
+    },
+    "快递公司": {
+      "count": 52,
+      "public_label": "50+"
+    },
+    "其他华人生意": {
+      "count": 47,
+      "public_label": "40+"
+    },
+    "中国人药店": {
+      "count": 47,
+      "public_label": "40+"
+    },
+    "批发贸易": {
+      "count": 34,
+      "public_label": "30+"
+    },
+    "同乡会": {
+      "count": 32,
+      "public_label": "30+"
+    },
+    "银行金融": {
+      "count": 22,
+      "public_label": "20+"
+    },
+    "华人协会": {
+      "count": 13,
+      "public_label": "10+"
+    },
+    "印刷招牌": {
+      "count": 13,
+      "public_label": "10+"
+    },
+    "成人日托": {
+      "count": 12,
+      "public_label": "10+"
+    },
+    "钢铁金属": {
+      "count": 12,
+      "public_label": "10+"
+    },
+    "宗教机构": {
+      "count": 11,
+      "public_label": "10+"
+    },
+    "安保物业": {
+      "count": 10,
+      "public_label": "10+"
+    },
+    "政务机构": {
+      "count": 10,
+      "public_label": "10+"
+    },
+    "保险": {
+      "count": 8,
+      "public_label": "若干"
+    },
+    "职介劳务": {
+      "count": 4,
+      "public_label": "若干"
+    }
+  },
   "areas": [
     {
       "id": "flushing",
       "label": "法拉盛",
+      "count": 1361,
       "public_label": "1300+"
     },
     {
       "id": "chinatown",
       "label": "唐人街",
+      "count": 167,
       "public_label": "100+"
     },
     {
       "id": "sunset",
       "label": "八大道",
+      "count": 178,
       "public_label": "100+"
     },
     {
       "id": "elmhurst",
       "label": "艾姆赫斯特",
+      "count": 314,
       "public_label": "300+"
     },
     {
       "id": "manhattan",
       "label": "曼哈顿",
+      "count": 443,
       "public_label": "400+"
     },
     {
       "id": "brooklyn",
       "label": "布鲁克林",
+      "count": 474,
       "public_label": "400+"
     },
     {
       "id": "queens",
       "label": "皇后区",
+      "count": 834,
       "public_label": "800+"
     },
     {
       "id": "bronx",
       "label": "Bronx",
+      "count": 232,
       "public_label": "200+"
     },
     {
       "id": "longisland",
       "label": "长岛",
+      "count": 186,
       "public_label": "100+"
     },
     {
       "id": "staten",
       "label": "史坦顿岛",
+      "count": 90,
       "public_label": "90+"
     },
     {
       "id": "other",
       "label": "其他区域",
+      "count": 69,
       "public_label": "60+"
     }
   ],
