@@ -9,14 +9,26 @@
   "orientation": "portrait-primary",
   "icons": [
     {
+      "src": "/uslifehub-icon-192.png",
+      "type": "image/png",
+      "sizes": "192x192",
+      "purpose": "any"
+    },
+    {
+      "src": "/uslifehub-icon-512.png",
+      "type": "image/png",
+      "sizes": "512x512",
+      "purpose": "any"
+    },
+    {
       "src": "/uslifehub-icon.svg",
       "type": "image/svg+xml",
       "sizes": "any",
       "purpose": "any"
     },
     {
-      "src": "/uslifehub-icon.svg",
-      "type": "image/svg+xml",
+      "src": "/uslifehub-icon-512.png",
+      "type": "image/png",
       "sizes": "512x512",
       "purpose": "maskable"
     }
