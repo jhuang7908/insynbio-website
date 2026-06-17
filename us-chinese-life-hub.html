@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- hub-build: v3.1.2-20260616 (矢量圈图标+页头CSS圈字) -->
+<!-- hub-build: v3.1.8-20260616 (搜索：停用陈旧index+别名+黄页/常用电话) -->
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8" />
@@ -204,9 +204,27 @@
     .settings-menu .pref-selector > span { display: inline; font-size: 12px; color: #64748b; }
     .settings-menu .pref-select { width: 100%; }
 
-    /* Hero block — tagline + primary nav (no global search) */
+    /* Hero block — tagline + global search + trust */
     .hub-hero { margin: 14px auto 8px; text-align: center; }
-    .hub-hero-tagline { font-size: 15px; font-weight: 700; color: #c2410c; margin: 0 0 10px; letter-spacing: .01em; }
+    .hub-hero-tagline { font-size: 15px; font-weight: 700; color: #c2410c; margin: 0 0 6px; letter-spacing: .01em; }
+    .hub-hero-subtitle { font-size: 13px; color: #64748b; margin: 0 auto 12px; line-height: 1.55; max-width: 520px; padding: 0 4px; }
+    .hub-hero-search {
+      display: flex; gap: 8px; max-width: 520px; width: 100%; margin: 0 auto 8px; padding: 0 4px;
+    }
+    .hub-hero-search input {
+      flex: 1; min-width: 0; padding: 10px 14px; border: 1px solid #e2e8f0; border-radius: 8px;
+      font-size: 14px; font-family: inherit; background: #fff; color: #1e293b;
+    }
+    .hub-hero-search input:focus { outline: none; border-color: #ea580c; box-shadow: 0 0 0 2px rgba(234,88,12,.12); }
+    .hub-hero-go { padding: 10px 16px; font-size: 14px; border-radius: 8px; }
+    .hub-hero-trust { font-size: 12px; color: #64748b; margin: 0 0 12px; line-height: 1.45; }
+    .hub-hero-trust strong { color: #475569; font-weight: 700; }
+    .hub-hero-chips { display: flex; flex-wrap: wrap; gap: 6px; justify-content: center; max-width: 520px; margin: 0 auto 12px; padding: 0 4px; }
+    .hub-hero-chip {
+      border: 1px solid #fed7aa; background: #fff7ed; color: #c2410c; border-radius: 999px;
+      padding: 4px 10px; font-size: 11.5px; font-weight: 600; cursor: pointer; font-family: inherit;
+    }
+    .hub-hero-chip:hover { background: #ffedd5; border-color: #fdba74; }
 
     /* First-screen funnel hooks (XHS landing) */
     .hub-funnel { display: flex; gap: 10px; max-width: var(--feed-width); margin: 10px auto 12px; width: 100%; }
@@ -471,7 +489,6 @@
     .feed-card.deal-card { border-color: var(--hub-border-soft); background: var(--hub-surface); }
     .feed-card.deal-card .title { font-size: var(--text-sm); font-weight: var(--weight-semibold); }
     .feed-card.deal-card .summary { font-size: var(--text-xs); color: #94a3b8; }
-    .feed-card.deal-card .btn { background: #f1f5f9; color: #475569; border: 1px solid #e2e8f0; font-size: var(--text-xs); }
 
     /* 薅羊毛 — 超市/大促/美食：单列（文案长、条数少） */
     .deals-section .deals-single-grid {
@@ -520,13 +537,22 @@
       width: 128px;
       height: 128px;
     }
-    a.deal-out-link { color: inherit; text-decoration: none; }
-    a.deal-out-link:hover .title,
+    a.deal-out-link:not(.btn) { color: inherit; text-decoration: none; }
+    a.deal-out-link:not(.btn):hover .title,
     .deal-compact-body .title.deal-out-link:hover { color: #ea580c; }
-    .deal-compact-body .foot-compact .btn.deal-out-link {
+    .deal-compact-body .foot-compact .btn.deal-out-link,
+    a.btn.deal-out-link {
       display: inline-block;
       text-decoration: none;
       text-align: center;
+      background: #ea580c;
+      color: #ffffff;
+      border: none;
+    }
+    .deal-compact-body .foot-compact .btn.deal-out-link:hover,
+    a.btn.deal-out-link:hover {
+      background: #c2410c;
+      color: #ffffff;
     }
     a.deal-compact-media-wrap { display: block; text-decoration: none; color: inherit; }
     .deal-compact-media {
@@ -594,7 +620,29 @@
       border: 1px solid #e2e8f0;
     }
     .deal-compact-body .foot-compact { margin-top: auto; }
-    .deal-compact-body .foot-compact .btn { padding: 4px 10px; font-size: 11px; }
+    .deal-compact-body .foot-compact .btn,
+    .deal-compact-body .foot-compact a.btn,
+    a.btn.btn-view-link,
+    a.btn.deal-out-link,
+    button.btn.btn-view-link {
+      padding: 4px 10px;
+      font-size: 11px;
+      background: #ea580c !important;
+      color: #ffffff !important;
+      border: none !important;
+    }
+    a.btn.btn-view-link:visited,
+    a.btn.deal-out-link:visited {
+      color: #ffffff !important;
+    }
+    .deal-compact-body .foot-compact .btn:hover,
+    .deal-compact-body .foot-compact a.btn:hover,
+    a.btn.btn-view-link:hover,
+    a.btn.deal-out-link:hover,
+    button.btn.btn-view-link:hover {
+      background: #c2410c !important;
+      color: #ffffff !important;
+    }
     .livelihood-block { margin-bottom: 8px; }
     .hub-site-footer {
       margin: 28px 0 20px; padding: 18px 0 8px; border-top: 1px solid #e2e8f0;
@@ -748,7 +796,7 @@
     .foot.foot-compact { justify-content: flex-end; border-top: none; padding-top: 4px; }
     .foot span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; min-width: 0; }
     .btn { border: none; background: #ea580c; color: #ffffff; border-radius: 5px; padding: 4px 10px; font-size: 11.5px; font-weight: var(--weight-bold); font-family: inherit; cursor: pointer; transition: background 0.1s; flex-shrink: 0; white-space: nowrap; }
-    .btn:hover { background: #c2410c; }
+    .btn:hover { background: #c2410c; color: #ffffff; }
 
     /* Reset Button */
     .reset-btn { font-size: 12px; font-weight: 700; color: #ea580c; background: none; border: none; cursor: pointer; display: none; align-items: center; gap: 4px; }
@@ -1187,7 +1235,7 @@
         <div class="logo-box" aria-hidden="true"><span class="logo-char">圈</span></div>
         <div>
           <div class="logo-text" id="logo-text">美东华人生活圈</div>
-          <div class="sub" id="logo-sub">纽约首发 · 福利政务 · 华人社区</div>
+          <div class="sub" id="logo-sub">纽约华人民生 · 福利 · 黄页 · 活动</div>
         </div>
       </div>
 
@@ -1263,11 +1311,20 @@
 
   <main class="wrap">
 
-    <!-- ═══ HERO：一级导航 + 信任文案（搜索仅在黄页 / 民生频道内） ═══ -->
+    <!-- ═══ HERO：全站搜索 + 信任文案 + 一级导航 ═══ -->
     <section class="hub-hero" id="hub-hero" aria-label="导航">
       <div id="hero-decor-top">
-        <p class="hub-hero-tagline" id="hero-tagline">纽约华人一站式 · 福利 · 活动 · 黄页 · 薅羊毛</p>
+        <p class="hub-hero-tagline" id="hero-tagline">美东华人生活圈 · 纽约华人民生信息聚合</p>
+        <p class="hub-hero-subtitle" id="hero-subtitle">搜福利、活动、社区黄页与超市海报——收录自政府与社区公开渠道，外链人工核验</p>
       </div>
+      <div class="hub-hero-search" id="hub-hero-search">
+        <input type="search" id="hero-search" autocomplete="off"
+          placeholder="搜：平价房、粮食券、半价地铁卡、免费遛娃…"
+          onkeydown="if(event.key==='Enter'){event.preventDefault();goHubSearch(this.value);}" />
+        <button type="button" class="btn hub-hero-go" id="hero-search-go" onclick="goHubSearch(document.getElementById('hero-search').value)">搜索</button>
+      </div>
+      <div class="hub-hero-chips" id="hero-search-chips" aria-label="热门搜索"></div>
+      <p class="hub-hero-trust" id="hero-trust"><strong>www.uslifehub.org</strong> · 公益免费 · 公开渠道聚合</p>
 
       <!-- 一级目录：方框导航（最新/黄页/频道/打折） -->
       <nav class="hub-chapter-nav" id="hub-chapter-nav" aria-label="章节导航">
@@ -1443,7 +1500,7 @@
 
     <footer class="hub-site-footer" id="hub-footer">
       <p class="footer-mission" id="footer-mission">美东华人生活圈 · 公开渠道社区信息聚合，公益导向</p>
-      <p id="footer-org"><a href="https://www.uslifehub.org/" id="footer-org-link">www.uslifehub.org</a> · v3.1.2</p>
+      <p id="footer-org"><a href="https://www.uslifehub.org/" id="footer-org-link">www.uslifehub.org</a> · v3.1.8</p>
       <p id="footer-contact"><span id="footer-contact-label">联系 / 注册 / 投稿：</span><a href="mailto:info@uslifehub.org" id="footer-email">info@uslifehub.org</a></p>
     </footer>
 
@@ -1531,7 +1588,7 @@ const UI_STRINGS = {
   zh: {
     title: "美东华人生活圈 · 纽约福利与华人服务",
     logo_text: "美东华人生活圈",
-    logo_sub: "纽约首发 · 福利政务 · 华人社区",
+    logo_sub: "纽约华人民生 · 福利 · 黄页 · 活动",
     ui_lang_label: "界面语言:",
     pref_lang_label: "默认打开链接:",
     layout_cols_label: "卡片排版:",
@@ -1568,10 +1625,12 @@ const UI_STRINGS = {
     stream_new_title: "过去24小时内新发布的社区公益、福利与官方活动（不含商业促销）",
     stream_new_empty: "暂无新的社区动态",
     latest_empty: "暂无最新动态，请稍后再来",
-    hero_tagline: "纽约华人一站式 · 福利 · 活动 · 黄页 · 薅羊毛",
+    hero_tagline: "美东华人生活圈 · 纽约华人民生信息聚合",
+    hero_subtitle: "搜福利、活动、社区黄页与超市海报——收录自政府与社区公开渠道，外链人工核验",
     hero_search_ph: "搜：平价房、粮食券、半价地铁卡、免费遛娃…",
-    hero_trust: "✔ 官方链接逐条人工核验 · 零广告 · 永久免费",
+    hero_trust: "www.uslifehub.org · 公益免费 · 公开渠道聚合",
     hero_go: "搜索",
+    hero_chips: ["粮食券", "平价房", "半价地铁卡", "免费遛娃", "飞龙超市", "法拉盛"],
     funnel_wechat: "📲 加微信群 · 订阅每周纽约福利清单",
     funnel_pwa: "📱 加到手机桌面（像 App 一样一键直达）",
     pwa_quick: " 加桌面",
@@ -1614,11 +1673,11 @@ const UI_STRINGS = {
     channels_title: "📂 民生频道 · 按类别浏览",
     deals_title: "🐑 薅羊毛 · 生活参考",
     deals_tag: "生活参考",
-    deals_disclaimer: "第三方公开优惠信息，仅供参考；网购链接由 Skimlinks 追踪，本平台以社区公益与官方民生信息为主。",
+    deals_disclaimer: "第三方公开优惠信息，仅供参考；本平台以社区公益与官方民生信息为主。",
     deals_empty: "暂无羊毛信息",
     deals_more: "查看更多",
     deals_less: "收起",
-    deal_brief_zh: "点击直达商家页面（Skimlinks 联盟链接）；价格与库存以商家为准。",
+    deal_brief_zh: "点击直达商家页面；价格与库存以商家为准。",
     nav_latest: "📋 最新动态",
     nav_home: "🏠 首页",
     nav_channels: "📂 民生频道",
@@ -1649,7 +1708,6 @@ const UI_STRINGS = {
     elmhurst: "艾姆赫斯特 Elmhurst",
     verified: "已核验",
     view_link: "查看链接 ➔",
-    view_link_deal: "查看",
     deal_merchant_link: "商家官网",
     no_results: "没有符合条件的信息，请换个关键词或选择其他频道。",
     citywide_tag: "全市适用",
@@ -1678,7 +1736,7 @@ const UI_STRINGS = {
   zht: {
     title: "美東華人生活圈 · 紐約福利與華人服務",
     logo_text: "美東華人生活圈",
-    logo_sub: "紐約首發 · 福利政務 · 華人社區",
+    logo_sub: "紐約華人民生 · 福利 · 黃頁 · 活動",
     ui_lang_label: "界面語言:",
     pref_lang_label: "默認打開鏈接:",
     layout_cols_label: "卡片排版:",
@@ -1715,10 +1773,12 @@ const UI_STRINGS = {
     stream_new_title: "過去24小時內新發布或更新的官方信息",
     stream_new_empty: "暫無新的社區動態",
     latest_empty: "暫無最新動態，請稍後再來",
-    hero_tagline: "紐約華人一站式 · 福利 · 活動 · 黃頁 · 薅羊毛",
+    hero_tagline: "美東華人生活圈 · 紐約華人民生信息聚合",
+    hero_subtitle: "搜福利、活動、社區黃頁與超市海報——收錄自首方與社區公開渠道，外鏈人工核驗",
     hero_search_ph: "搜：平價房、糧食券、半價地鐵卡、免費遛娃…",
-    hero_trust: "✔ 官方連結逐條人工核驗 · 零廣告 · 永久免費",
+    hero_trust: "www.uslifehub.org · 公益免費 · 公開渠道聚合",
     hero_go: "搜尋",
+    hero_chips: ["糧食券", "平價房", "半價地鐵卡", "免費遛娃", "飛龍超市", "法拉盛"],
     funnel_wechat: "📲 加微信群 · 訂閱每週紐約福利清單",
     funnel_pwa: "📱 加到手機桌面（像 App 一樣一鍵直達）",
     pwa_quick: " 加桌面",
@@ -1764,11 +1824,11 @@ const UI_STRINGS = {
     channels_title: "📂 民生頻道 · 按類別瀏覽",
     deals_title: "🐑 薅羊毛 · 生活參考",
     deals_tag: "生活參考",
-    deals_disclaimer: "第三方公開優惠信息，僅供參考；網購鏈接由 Skimlinks 追蹤，本平台以社區公益與官方民生信息為主。",
+    deals_disclaimer: "第三方公開優惠信息，僅供參考；本平台以社區公益與官方民生信息為主。",
     deals_empty: "暫無羊毛信息",
     deals_more: "查看更多",
     deals_less: "收起",
-    deal_brief_zh: "點擊直達商家頁面（Skimlinks 聯盟連結）；價格與庫存以商家為準。",
+    deal_brief_zh: "點擊直達商家頁面；價格與庫存以商家為準。",
     nav_latest: "📋 最新動態",
     nav_home: "🏠 首頁",
     nav_channels: "📂 民生頻道",
@@ -1787,7 +1847,6 @@ const UI_STRINGS = {
     elmhurst: "艾姆赫斯特 Elmhurst",
     verified: "已核驗",
     view_link: "查看鏈接 ➔",
-    view_link_deal: "查看",
     deal_merchant_link: "商家官網",
     no_results: "沒有符合條件的信息，請換個關鍵詞或選擇其他頻道。",
     citywide_tag: "全市適用",
@@ -1816,7 +1875,7 @@ const UI_STRINGS = {
   en: {
     title: "US East Chinese Life Hub · NYC Benefits & Services",
     logo_text: "US East Chinese Life Hub",
-    logo_sub: "NYC first · Benefits · Chinese community",
+    logo_sub: "NYC Chinese life · Benefits · Directory · Events",
     ui_lang_label: "Language:",
     pref_lang_label: "Default Link:",
     layout_cols_label: "Layout:",
@@ -1853,10 +1912,12 @@ const UI_STRINGS = {
     stream_new_title: "Official items newly posted or updated in the past 24 hours",
     stream_new_empty: "No new community updates",
     latest_empty: "No latest updates yet — check back soon",
-    hero_tagline: "Your one-stop hub for NYC Chinese life · Benefits · Events · Directory · Deals",
+    hero_tagline: "East Coast Chinese Life Hub · NYC public-benefits & community digest",
+    hero_subtitle: "Search benefits, events, local businesses, and store flyers—sourced from public channels; outbound links manually checked",
     hero_search_ph: "Search: affordable housing, SNAP/EBT, half-fare MetroCard, free kids' events…",
-    hero_trust: "✔ Official links manually verified · No ads · Always free",
+    hero_trust: "www.uslifehub.org · Free · Public-source aggregation",
     hero_go: "Search",
+    hero_chips: ["SNAP/EBT", "affordable housing", "half-fare MetroCard", "free kids events", "Fei Long", "Flushing"],
     funnel_wechat: "📲 Join WeChat group · Weekly NYC benefits digest",
     funnel_pwa: "📱 Add to home screen (one-tap, app-like access)",
     pwa_quick: " Add to Home",
@@ -1899,11 +1960,11 @@ const UI_STRINGS = {
     channels_title: "📂 Public Channels · Browse by Topic",
     deals_title: "🐑 Deal Finds · Reference",
     deals_tag: "Reference",
-    deals_disclaimer: "Third-party offers for reference; online links tracked via Skimlinks. Community listings remain the focus.",
+    deals_disclaimer: "Third-party offers for reference only. Community benefits and official civic information remain the focus.",
     deals_empty: "No deals right now.",
     deals_more: "Show more",
     deals_less: "Show less",
-    deal_brief_zh: "Opens the merchant store directly (Skimlinks affiliate). Price and stock per the store.",
+    deal_brief_zh: "Opens the merchant page directly. Price and stock per the store.",
     nav_latest: "📋 Latest",
     nav_home: "🏠 Home",
     nav_channels: "📂 Channels",
@@ -1925,7 +1986,6 @@ const UI_STRINGS = {
     elmhurst: "Elmhurst",
     verified: "Verified",
     view_link: "View Link ➔",
-    view_link_deal: "View",
     deal_merchant_link: "Official site",
     no_results: "No matching information found. Please try another keyword or channel.",
     citywide_tag: "Citywide",
@@ -2009,6 +2069,18 @@ function applyUILanguage() {
   // Hero + funnel i18n
   const heroTagline = document.getElementById('hero-tagline');
   if (heroTagline && s.hero_tagline) heroTagline.textContent = s.hero_tagline;
+  const heroSubtitle = document.getElementById('hero-subtitle');
+  if (heroSubtitle && s.hero_subtitle) heroSubtitle.textContent = s.hero_subtitle;
+  const heroTrust = document.getElementById('hero-trust');
+  if (heroTrust && s.hero_trust) {
+    heroTrust.innerHTML = String(s.hero_trust).replace(
+      'www.uslifehub.org',
+      '<strong>www.uslifehub.org</strong>'
+    );
+  }
+  const heroGo = document.getElementById('hero-search-go');
+  if (heroGo && s.hero_go) heroGo.textContent = s.hero_go;
+  if (typeof renderHeroSearchChips === 'function') renderHeroSearchChips();
   if (typeof updateHubSearchPlaceholder === 'function') updateHubSearchPlaceholder();
   const funnelWechat = document.querySelector('#hub-funnel .hub-funnel-item:not(.hub-funnel-pwa)');
   if (funnelWechat && s.funnel_wechat) funnelWechat.textContent = s.funnel_wechat;
@@ -2820,7 +2892,7 @@ function hubParksActionRow(item, linkLabel) {
   const contact = hubParksContactText(item);
   const left = [meta, contact].filter(Boolean).join(' · ');
   return `<div class="parks-event-actions"><span class="parks-event-actions-meta">${escapeHtml(left)}</span>`
-    + `<button class="btn" onclick="openEventLinkDirect('${item.id}')">${linkLabel}</button></div>`;
+    + `<button class="btn btn-view-link" onclick="openEventLinkDirect('${item.id}')">${linkLabel}</button></div>`;
 }
 
 function hubCardImageHtml(item, opts) {
@@ -2906,6 +2978,120 @@ function hubItemSearchBlob(item) {
   return blob;
 }
 
+/** Hero chip / colloquial term → index tokens (ITEMS text is mostly EN official titles). */
+const HUB_SEARCH_ALIASES = {
+  '粮食券': ['snap', 'food stamp', 'ebt', '购买食物', 'nutrition assistance', 'supplemental nutrition'],
+  '平价房': ['housing connect', 'affordable housing', '可负担住房', 'housingconnect', 'housing·安居', '住房·安居'],
+  '半价地铁卡': ['fair fares', 'fairfares', 'fair fare', '交通优惠', '半价', 'metrocard', 'reduced fare', 'omny'],
+  '免费遛娃': ['亲子', 'family', 'kids', 'kid', 'children', 'story time', 'storytime', 'playground', 'toddler', 'baby', '儿童', '幼儿'],
+  '飞龙超市': ['fei long', '飞龙', 'feilong', 'fei-long'],
+  '法拉盛': ['flushing'],
+  'affordable housing': ['housing connect', 'affordable housing', '可负担住房', '平价房'],
+  'snap/ebt': ['snap', 'food stamp', 'ebt', '粮食券', '购买食物'],
+  'half-fare metrocard': ['fair fares', 'fairfares', '半价', 'metrocard', '交通优惠'],
+  'free kids events': ['亲子', 'family', 'kids', 'playground', 'story time'],
+  'fei long': ['fei long', '飞龙', 'feilong'],
+  'flushing': ['flushing', '法拉盛'],
+};
+
+const HUB_YP_AREA_QUERY = {
+  '法拉盛': 'flushing', 'flushing': 'flushing',
+  '唐人街': 'chinatown', 'chinatown': 'chinatown',
+  '八大道': 'sunset', 'sunset park': 'sunset', 'sunset': 'sunset',
+  '艾姆赫斯特': 'elmhurst', 'elmhurst': 'elmhurst',
+  '曼哈顿': 'manhattan', 'manhattan': 'manhattan',
+  '布鲁克林': 'brooklyn', 'brooklyn': 'brooklyn',
+  '皇后区': 'queens', 'queens': 'queens',
+  '长岛': 'longisland', 'long island': 'longisland',
+  '布朗士': 'bronx', 'bronx': 'bronx',
+};
+
+function hubExpandSearchTerms(raw) {
+  const q = String(raw || '').trim().toLowerCase();
+  if (!q) return [];
+  const terms = new Set([q]);
+  for (const [key, aliases] of Object.entries(HUB_SEARCH_ALIASES)) {
+    const kl = key.toLowerCase();
+    if (q === kl || q.includes(kl) || kl.includes(q)) {
+      terms.add(kl);
+      aliases.forEach(a => terms.add(String(a).toLowerCase()));
+    }
+  }
+  for (const [, aliases] of Object.entries(HUB_SEARCH_ALIASES)) {
+    for (const a of aliases) {
+      const al = String(a).toLowerCase();
+      if (q === al || q.includes(al) || al.includes(q)) terms.add(al);
+    }
+  }
+  return [...terms].filter(Boolean);
+}
+
+function hubTextMatchesAnyTerms(text, terms) {
+  const blob = String(text || '').toLowerCase();
+  if (!blob || !terms || !terms.length) return false;
+  return terms.some(t => t && blob.includes(t));
+}
+
+function hubItemMatchesQuery(item, rawQuery) {
+  const terms = hubExpandSearchTerms(rawQuery);
+  if (!terms.length) return true;
+  return hubTextMatchesAnyTerms(hubItemSearchBlob(item), terms);
+}
+
+function hubDealMatchesQuery(item, rawQuery) {
+  const terms = hubExpandSearchTerms(rawQuery);
+  if (!terms.length) return true;
+  return hubTextMatchesAnyTerms(dealSearchBlob(item), terms);
+}
+
+function hubResolveYpAreaFromQuery(rawQuery) {
+  const q = String(rawQuery || '').trim().toLowerCase();
+  if (!q) return null;
+  for (const [label, areaId] of Object.entries(HUB_YP_AREA_QUERY)) {
+    if (q === label || q.includes(label) || label.includes(q)) return areaId;
+  }
+  return null;
+}
+
+function countEssentialPhoneMatches(rawQuery) {
+  const terms = hubExpandSearchTerms(rawQuery);
+  if (!terms.length || typeof ESSENTIAL_PHONES === 'undefined') return 0;
+  let n = 0;
+  for (const sec of ESSENTIAL_PHONES) {
+    for (const item of sec.items || []) {
+      const blob = [item.name, item.sub, item.tip, item.phone].filter(Boolean).join(' ').toLowerCase();
+      if (hubTextMatchesAnyTerms(blob, terms)) n++;
+    }
+  }
+  return n;
+}
+
+function hubSearchRank(item, rawQuery) {
+  const terms = hubExpandSearchTerms(rawQuery);
+  const title = String(item['title_' + currentLang] || item.title_zh || '').toLowerCase();
+  const mod = String(item.module || '').toLowerCase();
+  const blob = hubItemSearchBlob(item);
+  let score = 0;
+  for (const t of terms) {
+    if (!t) continue;
+    if (title.includes(t)) score += 120;
+    if (mod.includes(t)) score += 40;
+    if (blob.includes(t)) score += 15;
+  }
+  return score;
+}
+
+function hubConfigureYpSearchFromQuery(rawQuery) {
+  const terms = hubExpandSearchTerms(rawQuery);
+  const areaId = hubResolveYpAreaFromQuery(rawQuery);
+  if (areaId) YP_ACTIVE_AREA = areaId;
+  const benefitNeedle = ['平价房', 'housing connect', 'affordable', '粮食券', 'snap', 'food stamp', '半价', 'fair fare', '交通优惠'];
+  const wantsEssential = terms.some(t => benefitNeedle.some(b => t.includes(b) || b.includes(t)));
+  if (wantsEssential && countEssentialPhoneMatches(rawQuery) > 0) {
+    YP_ACTIVE_INDUSTRY = 'essential';
+  }
+}
+
 function buildHubSearchIndexFromItems() {
   HUB_SEARCH_BY_ID = new Map();
   for (const item of ITEMS) {
@@ -2914,18 +3100,9 @@ function buildHubSearchIndexFromItems() {
 }
 
 async function loadHubSearchIndexFile() {
-  try {
-    const resp = await fetch('hub_search_index.json', { cache: 'no-store' });
-    if (!resp.ok) return;
-    const data = await resp.json();
-    if (!data || !Array.isArray(data.records)) return;
-    for (const rec of data.records) {
-      if (rec.id && rec.search_text) {
-        HUB_SEARCH_BY_ID.set(rec.id, String(rec.search_text).toLowerCase());
-      }
-    }
-    updateHubSearchCount();
-  } catch (_) { /* offline / static embed only */ }
+  // External hub_search_index.json must stay in sync with embedded ITEMS ids.
+  // Stale index caused wrong hits (e.g. 平价房 → tennis). Index rebuilt via scripts/build_hub_search_index.js
+  return;
 }
 
 function hubSearchInput() {
@@ -3076,6 +3253,9 @@ function resetAllFilters() {
   if (_g('q')) _g('q').value = '';
   const hubSearch = _g('hub-search');
   if (hubSearch) hubSearch.value = '';
+  const heroSearch = _g('hero-search');
+  if (heroSearch) heroSearch.value = '';
+  HUB_DEALS_QUERY = '';
   if (_g('borough')) _g('borough').value = 'all';
   if (_g('category')) _g('category').value = 'all';
   if (_g('time-freshness')) _g('time-freshness').value = 'all';
@@ -3095,10 +3275,12 @@ function updateResetButton() {
   if (!btn) return;
   const _gv = (id, def) => { const el = document.getElementById(id); return el ? el.value : def; };
   const q = _gv('q', '');
+  const hubQ = _gv('hub-search', '');
+  const heroQ = _gv('hero-search', '');
   const b = _gv('borough', 'all');
   const t = _gv('time-freshness', 'all');
   
-  if (activeModuleFilter !== 'all' || activeNeighborhoodFilter !== 'all' || q !== '' || b !== 'all' || t !== 'all') {
+  if (activeModuleFilter !== 'all' || activeNeighborhoodFilter !== 'all' || q !== '' || hubQ !== '' || heroQ !== '' || b !== 'all' || t !== 'all') {
     btn.style.display = 'flex';
   } else {
     btn.style.display = 'none';
@@ -3159,7 +3341,8 @@ function hubFeedSortCompare(a, b) {
 // Render high-density cards
 function renderFeed() {
   const _gv = (id, def) => { const el = document.getElementById(id); return el ? el.value : def; };
-  const q = _gv('q', '').toLowerCase();
+  const rawQ = _gv('q', '').trim();
+  const searchActive = !!rawQ;
   const b = _gv('borough', 'all');
   const t = _gv('time-freshness', 'all');
   const s = UI_STRINGS[currentLang];
@@ -3189,18 +3372,17 @@ function renderFeed() {
     const matchesNeighborhood = matchesHubNeighborhood(i, activeNeighborhoodFilter);
     
     // 5. Keyword Search
-    const title = i[`title_${currentLang}`] || i.title_zh;
-    const summary = i[`summary_${currentLang}`] || i.summary_zh;
-    const area = i[`area_${currentLang}`] || i.area_zh;
-    const loc = resolveHubLocationLabel(i);
-    const venue = (i.location || '').trim();
-    const matchesSearch = !q || hubItemSearchBlob(i).includes(q);
+    const matchesSearch = !searchActive || hubItemMatchesQuery(i, rawQ);
     
     return matchesModule && matchesBorough && matchesTime && matchesNeighborhood && matchesSearch;
   });
 
   const deduped = hubFeedDedupeItems(filtered);
-  deduped.sort(hubFeedSortCompare);
+  if (searchActive) {
+    deduped.sort((a, b) => hubSearchRank(b, rawQ) - hubSearchRank(a, rawQ) || hubFeedSortCompare(a, b));
+  } else {
+    deduped.sort(hubFeedSortCompare);
+  }
 
   const feed = document.getElementById('feed');
   feed.innerHTML = deduped.map(i => renderCard(i)).join('');
@@ -4247,15 +4429,15 @@ function renderDealCompactCard(i, opts) {
   const dateStr = i.date || '';
   const modName = i.module || (s.deals_tag || '生活参考');
   const tagBg = '#ea580c';
-  const linkLabel = s.view_link_deal || '查看';
+  const linkLabel = s.view_link || '查看链接 ➔';
   const out = dealOutboundHref(i.url || '');
   const metaHtml = `<div class="meta"><span class="tag" style="background:${tagBg}15;color:${tagBg}">${escapeHtml(modName)}</span>${area ? `<span class="tag loc-tag loc-enclave">${escapeHtml(area)}</span>` : hubLocationTagHtml(i)}${dateStr ? `<span class="date" style="margin-left:auto">${escapeHtml(dateStr)}</span>` : ''}</div>`;
   const titleHtml = out
     ? `<a class="title deal-out-link" href="${escapeHtml(out)}" target="_blank" rel="noopener noreferrer sponsored" title="点击查看详情">${escapeHtml(title)}</a>`
     : `<div class="title">${escapeHtml(title)}</div>`;
   const btnHtml = out
-    ? `<a class="btn deal-out-link" href="${escapeHtml(out)}" target="_blank" rel="noopener noreferrer sponsored">${linkLabel}</a>`
-    : `<button class="btn" type="button" disabled>${linkLabel}</button>`;
+    ? `<a class="btn btn-view-link deal-out-link" href="${escapeHtml(out)}" target="_blank" rel="noopener noreferrer sponsored">${linkLabel}</a>`
+    : `<button class="btn btn-view-link" type="button" disabled>${linkLabel}</button>`;
   return `<article class="deal-compact-card">`
     + `<div class="deal-compact-body">${metaHtml}`
     + titleHtml
@@ -4303,7 +4485,7 @@ function renderDealsSection() {
     let deals = hubDealItems();
     const dealsSearching = !!HUB_DEALS_QUERY;
     if (dealsSearching) {
-      deals = deals.filter(i => dealSearchBlob(i).includes(HUB_DEALS_QUERY));
+      deals = deals.filter(i => hubDealMatchesQuery(i, HUB_DEALS_QUERY));
     }
     if (deals.length) {
       renderFullDealsGrid(feed, moreFeed, moreBtn, deals.slice(0, 24), i => renderDealCompactCard(i, { briefFn: dealItemBrief }), { layout: 'online' });
@@ -4476,7 +4658,7 @@ function renderCustomDealsTabs() {
     ];
     
     hubCuratedDealsCache = hubCuratedDealsCache.concat(flyersData);
-    renderFullDealsGrid(flyersFeed, flyersFeedMore, flyersMoreBtn, flyersData, i => renderDealCompactCard(i, { briefFn: (row) => row['brief_' + currentLang] || row.brief_zh }), { layout: 'single' });
+    renderFullDealsGrid(flyersFeed, flyersFeedMore, flyersMoreBtn, filterCuratedDealsByQuery(flyersData), i => renderDealCompactCard(i, { briefFn: (row) => row['brief_' + currentLang] || row.brief_zh }), { layout: 'single' });
   }
 
   // 2. Shopping Seasons (消费大促)
@@ -4560,7 +4742,7 @@ function renderCustomDealsTabs() {
     ];
     
     hubCuratedDealsCache = hubCuratedDealsCache.concat(seasonsData);
-    renderFullDealsGrid(seasonsFeed, seasonsFeedMore, seasonsMoreBtn, seasonsData, i => renderDealCompactCard(i, { briefFn: (row) => row['brief_' + currentLang] || row.brief_zh }), { layout: 'single' });
+    renderFullDealsGrid(seasonsFeed, seasonsFeedMore, seasonsMoreBtn, filterCuratedDealsByQuery(seasonsData), i => renderDealCompactCard(i, { briefFn: (row) => row['brief_' + currentLang] || row.brief_zh }), { layout: 'single' });
   }
 
   // 3. Dining & Restaurant Week (美食特惠)
@@ -4644,7 +4826,7 @@ function renderCustomDealsTabs() {
     ];
     
     hubCuratedDealsCache = hubCuratedDealsCache.concat(diningData);
-    renderFullDealsGrid(diningFeed, diningFeedMore, diningMoreBtn, diningData, i => renderDealCompactCard(i, { briefFn: (row) => row['brief_' + currentLang] || row.brief_zh }), { layout: 'single' });
+    renderFullDealsGrid(diningFeed, diningFeedMore, diningMoreBtn, filterCuratedDealsByQuery(diningData), i => renderDealCompactCard(i, { briefFn: (row) => row['brief_' + currentLang] || row.brief_zh }), { layout: 'single' });
   }
   window._hubCuratedDealsCache = hubCuratedDealsCache;
 }
@@ -4834,10 +5016,10 @@ function renderCard(i, opts) {
   }
   const dealCls = opts.deal ? ' deal-card' : '';
   const tagBg = opts.deal ? '#64748b' : badgeColor(i.module);
-  const linkLabel = opts.deal ? (s.view_link_deal || '查看') : s.view_link;
+  const linkLabel = s.view_link || '查看链接 ➔';
   const metaHtml = '<div class="meta">' + upcomingBadgeHtml(i, opts) + '<span class="tag" style="background:' + tagBg + '15;color:' + tagBg + '">' + modName + '</span>' + hubLocationTagHtml(i) + '</div>';
   const titleHtml = '<div class="title" onclick="openGuideModal(\'' + i.id + '\')" title="点击查看中文导读">' + title + '</div>';
-  const footHtml = '<div class="foot foot-compact"><button class="btn" onclick="openEventLinkDirect(\'' + i.id + '\')">' + linkLabel + '</button></div>';
+  const footHtml = '<div class="foot foot-compact"><button class="btn btn-view-link" onclick="openEventLinkDirect(\'' + i.id + '\')">' + linkLabel + '</button></div>';
   if (opts.deal) {
     return renderDealCompactCard(i, { briefFn: dealBriefZh });
   }
@@ -6132,15 +6314,14 @@ function byYpNameAsc(a, b) {
   return ka.localeCompare(kb, 'zh-Hans-CN', { sensitivity: 'base', numeric: true });
 }
 
-function ypItemMatchesSearch(item, searchTerm) {
-  const nameLower = String(item.name || '').toLowerCase();
-  const phoneLower = String(item.phone || '').toLowerCase();
-  const zhLower = String(item.name_zh || ypExtractZh(item.name) || '').toLowerCase();
-  const pyLower = ypSortPinyinKey(item);
-  return nameLower.includes(searchTerm)
-    || phoneLower.includes(searchTerm)
-    || zhLower.includes(searchTerm)
-    || pyLower.includes(searchTerm);
+function ypItemMatchesSearch(item, rawQuery) {
+  const terms = hubExpandSearchTerms(rawQuery);
+  if (!terms.length) return true;
+  const blob = [
+    item.name, item.phone, item.name_zh, ypExtractZh(item.name),
+    item.address, item.category, item.area, ypSortPinyinKey(item),
+  ].filter(Boolean).join(' ').toLowerCase();
+  return hubTextMatchesAnyTerms(blob, terms);
 }
 
 function renderYellowPages() {
@@ -7021,14 +7202,69 @@ function hubNavSections() {
 }
 let HUB_PAGE_VIEW = 'latest';
 let CURRENT_STREAM_TAB = '24h';
+let HUB_DEALS_QUERY = '';
+
+function dealSearchBlob(i) {
+  return [i.title_zh, i.title_en, i.title_zht, i.summary_zh, i.summary_en, i.brief_zh, i.brief_zht, i.brief_en, i.module, i.url, i.merchant_zh, i.merchant_zht, i.merchant_en, i.area_zh, i.area_en]
+    .map(x => String(x || '')).join(' ').toLowerCase();
+}
 
 function updateHubSearchPlaceholder() {
   const s = UI_STRINGS[currentLang] || {};
   const hubInput = document.getElementById('hub-search');
   if (hubInput) hubInput.placeholder = s.hub_search_placeholder || hubInput.placeholder;
+  const heroInput = document.getElementById('hero-search');
+  if (heroInput) heroInput.placeholder = s.hero_search_ph || heroInput.placeholder;
   const ypInput = document.getElementById('yp-search');
   if (ypInput) ypInput.placeholder = s.hero_ph_yellow || '商业名称';
   if (typeof renderYpAreaDropdown === 'function') renderYpAreaDropdown();
+}
+
+function renderHeroSearchChips() {
+  const box = document.getElementById('hero-search-chips');
+  if (!box) return;
+  const s = UI_STRINGS[currentLang] || {};
+  const chips = Array.isArray(s.hero_chips) ? s.hero_chips : [];
+  box.innerHTML = chips.map(c =>
+    `<button type="button" class="hub-hero-chip" data-q="${escapeHtml(c)}">${escapeHtml(c)}</button>`
+  ).join('');
+  box.querySelectorAll('.hub-hero-chip').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const q = btn.getAttribute('data-q') || '';
+      const heroInput = document.getElementById('hero-search');
+      if (heroInput) heroInput.value = q;
+      goHubSearch(q);
+    });
+  });
+}
+
+function countHubChannelMatches(rawQuery) {
+  if (!String(rawQuery || '').trim()) return 0;
+  return livelihoodItems().filter(i => hubItemMatchesQuery(i, rawQuery)).length;
+}
+
+function filterCuratedDealsByQuery(arr) {
+  if (!HUB_DEALS_QUERY || !Array.isArray(arr)) return arr;
+  return arr.filter(i => hubDealMatchesQuery(i, HUB_DEALS_QUERY));
+}
+
+function countHubDealMatches(rawQuery) {
+  if (!String(rawQuery || '').trim()) return 0;
+  let n = hubDealItems().filter(i => hubDealMatchesQuery(i, rawQuery)).length;
+  const curated = window._hubCuratedDealsCache;
+  if (Array.isArray(curated) && curated.length) {
+    n += curated.filter(i => hubDealMatchesQuery(i, rawQuery)).length;
+  }
+  return n;
+}
+
+function countHubYpMatches(rawQuery) {
+  if (!String(rawQuery || '').trim()) return 0;
+  let n = countEssentialPhoneMatches(rawQuery);
+  if (YELLOW_PAGES_FLAT.length) {
+    n += YELLOW_PAGES_FLAT.filter(item => ypItemMatchesSearch(item, rawQuery)).length;
+  }
+  return n;
 }
 
 function switchStreamTab(tab, btn) {
@@ -7139,6 +7375,12 @@ function resolveHubPageView() {
     return normalized;
   }
   if (path.endsWith('us-chinese-life-hub.html') && !normalized) {
+    try {
+      const remembered = String(localStorage.getItem('hub_view_pref') || '').toLowerCase();
+      if (remembered === 'latest' || remembered === 'channels' || remembered === 'deals' || remembered === 'yellowpages') {
+        return remembered;
+      }
+    } catch (_) {}
     return 'latest';
   }
   try {
@@ -7156,27 +7398,81 @@ function setSectionVisible(id, visible) {
   el.style.display = visible ? '' : 'none';
 }
 
-// Hero search → jump to 民生频道 feed with query (reuses existing search pipeline)
-function goHubSearch(q) {
+function hubPushViewToUrl(view) {
+  try {
+    const u = new URL(window.location.href);
+    u.searchParams.set('view', view);
+    history.replaceState(null, '', u.pathname + u.search + u.hash);
+  } catch (_) {}
+}
+
+// Hero search → route to 民生频道 / 薅羊毛 / 黄页（复用现有检索）
+async function goHubSearch(q) {
   const query = String(q || '').trim();
-  try { localStorage.setItem('hub_view_pref', 'channels'); } catch (_) {}
-  HUB_PAGE_VIEW = 'channels';
-  applyPageViewMode();
+  if (!query) return;
+
+  if (typeof renderCustomDealsTabs === 'function' && !(window._hubCuratedDealsCache || []).length) {
+    try { renderCustomDealsTabs(); } catch (_) {}
+  }
+
+  if (!YP_JSON_LOADED && typeof ensureYpAreasLoaded === 'function') {
+    try { await ensureYpAreasLoaded(); } catch (_) {}
+  }
+
+  const nCh = countHubChannelMatches(query);
+  const nDeal = countHubDealMatches(query);
+  const nYp = countHubYpMatches(query);
+  const areaHit = hubResolveYpAreaFromQuery(query);
+  const nEss = countEssentialPhoneMatches(query);
+
+  let view = 'channels';
+  if (areaHit && nYp > 0) {
+    view = 'yellowpages';
+  } else if (nDeal > 0 && nDeal >= nCh && nDeal >= nYp) {
+    view = 'deals';
+  } else if (nYp > 0 && nYp >= nCh) {
+    view = 'yellowpages';
+  } else if (nCh > 0) {
+    view = 'channels';
+  } else if (nEss > 0 || nYp > 0) {
+    view = 'yellowpages';
+  } else if (nDeal > 0) {
+    view = 'deals';
+  }
+
+  try { localStorage.setItem('hub_view_pref', view); } catch (_) {}
+  hubPushViewToUrl(view);
+  applyPageViewMode(view);
+
   const hs = document.getElementById('hub-search'); if (hs) hs.value = query;
   const hq = document.getElementById('q'); if (hq) hq.value = query;
+  const hero = document.getElementById('hero-search'); if (hero) hero.value = query;
+  HUB_DEALS_QUERY = query;
+
+  if (view === 'yellowpages') {
+    if (typeof hubConfigureYpSearchFromQuery === 'function') hubConfigureYpSearchFromQuery(query);
+    const yp = document.getElementById('yp-search'); if (yp) yp.value = query;
+    if (typeof renderYellowPages === 'function') renderYellowPages();
+    if (typeof renderYpAreaDropdown === 'function') renderYpAreaDropdown();
+    const target = document.getElementById('yellow-pages-card');
+    if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    if (typeof updateResetButton === 'function') updateResetButton();
+    return;
+  }
+
+  if (view === 'deals') {
+    if (typeof renderDealsSection === 'function') renderDealsSection();
+    const target = document.getElementById('deals-section');
+    if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    if (typeof updateResetButton === 'function') updateResetButton();
+    return;
+  }
+
   if (typeof renderModules === 'function') renderModules();
   if (typeof renderFeed === 'function') renderFeed();
   if (typeof updateResetButton === 'function') { try { updateResetButton(); } catch (_) {} }
   const target = document.getElementById('feed-section') || document.getElementById('feed');
   if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-}
-
-// ── Deals filter state (no search UI on 打折促销; kept for programmatic use) ──
-let HUB_DEALS_QUERY = '';
-
-function dealSearchBlob(i) {
-  return [i.title_zh, i.title_en, i.title_zht, i.summary_zh, i.summary_en, i.module, i.url]
-    .map(x => String(x || '')).join(' ').toLowerCase();
 }
 
 // Quick 中/EN toggle in header (full language set still in ⚙️ menu)
@@ -7260,8 +7556,13 @@ function showAddToHomeGuide() {
   }
 }
 
-function applyPageViewMode() {
-  HUB_PAGE_VIEW = resolveHubPageView();
+function applyPageViewMode(forcedView) {
+  const allowed = ['latest', 'channels', 'deals', 'yellowpages'];
+  if (forcedView && allowed.includes(forcedView)) {
+    HUB_PAGE_VIEW = forcedView;
+  } else {
+    HUB_PAGE_VIEW = resolveHubPageView();
+  }
   const isLatest = HUB_PAGE_VIEW === 'latest';
   const isChannels = HUB_PAGE_VIEW === 'channels';
   const isDeals = HUB_PAGE_VIEW === 'deals';
