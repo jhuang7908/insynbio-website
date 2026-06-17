@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- hub-build: v3.1.9-20260616 (黄页二次分类+行业标签) -->
+<!-- hub-build: v3.2.0-20260616 (黄页pass2再分类116其他) -->
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8" />
@@ -1500,7 +1500,7 @@
 
     <footer class="hub-site-footer" id="hub-footer">
       <p class="footer-mission" id="footer-mission">美东华人生活圈 · 公开渠道社区信息聚合，公益导向</p>
-      <p id="footer-org"><a href="https://www.uslifehub.org/" id="footer-org-link">www.uslifehub.org</a> · v3.1.9</p>
+      <p id="footer-org"><a href="https://www.uslifehub.org/" id="footer-org-link">www.uslifehub.org</a> · v3.2.0</p>
       <p id="footer-contact"><span id="footer-contact-label">联系 / 注册 / 投稿：</span><a href="mailto:info@uslifehub.org" id="footer-email">info@uslifehub.org</a></p>
     </footer>
 
@@ -5243,8 +5243,10 @@ const YP_SEARCH_SYNONYMS = {
   "机票": ["旅行社", "travel", "tour", "ticket"],
   "快递": ["快递公司", "express", "courier", "shipping", "delivery"],
   "邮寄": ["快递公司", "express", "courier", "shipping", "delivery"],
-  "物流": ["快递公司", "logistics", "freight", "cargo", "delivery", "shipping"],
-  "货运": ["快递公司", "logistics", "freight", "cargo", "delivery", "shipping"],
+  "物流": ["快递公司", "批发贸易", "logistics", "freight", "cargo", "delivery", "shipping", "贸易", "批发"],
+  "货运": ["快递公司", "批发贸易", "logistics", "freight", "cargo", "delivery", "shipping"],
+  "批发": ["批发贸易", "wholesale", "trading", "trade"],
+  "职介": ["职介劳务", "staffing", "employment", "recruiting", "劳务"],
   "宗教": ["宗教机构", "temple", "church", "mosque", "synagogue"],
   "教会": ["宗教机构", "temple", "church", "mosque", "synagogue"],
   "寺庙": ["宗教机构", "temple", "church", "mosque", "synagogue"],
@@ -5347,7 +5349,8 @@ const YP_INDUSTRY_GROUPS = [
   { id: 'health', label: '💆 按摩', cats: ['按摩店'] },
   { id: 'laundry', label: '👔 洗衣', cats: ['洗衣店'] },
   { id: 'travel', label: '✈️ 旅行社', cats: ['旅行社'] },
-  { id: 'logistics', label: '📦 物流快递', cats: ['快递公司'] },
+  { id: 'logistics', label: '📦 物流快递', cats: ['快递公司', '批发贸易'] },
+  { id: 'staffing', label: '👔 职介劳务', cats: ['职介劳务'] },
   { id: 'religion', label: '⛩️ 宗教机构', cats: ['宗教机构'] },
   { id: 'civic', label: '🏛️ 政务机构', cats: ['政务机构'] },
   { id: 'sign', label: '🪧 印刷招牌', cats: ['印刷招牌'] },

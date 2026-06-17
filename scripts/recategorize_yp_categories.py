@@ -12,8 +12,8 @@ RULES: list[tuple[list[str], str]] = [
     (["慈济", "tzu chi", "tzuchi", "buddhist"], "宗教机构"),
     (["交通罚单", "traffic ticket", "traffic tickets", "summons", "violation", "dwi defense"], "律师事务所"),
     (["钢铁", "steel", " iron ", "metal indust", "stainless steel", "iron inc"], "钢铁金属"),
-    (["华人协会", "association", "coalition", "federa", "foundation", "社团", "联谊会"], "华人协会"),
-    (["travel agency", "travel corp", "travel service", " tour ", " tours", "机票", "航空"], "旅行社"),
+    (["华人协会", "association", "coalition", "federa", "foundation", "社团", "联谊会", "公所"], "华人协会"),
+    (["travel agency", "travel corp", "travel service", " tour ", " tours", "机票", "航空", "一帆旅游"], "旅行社"),
     (["pharmacy", "drugstore", "drug store", "药房", "参茸", "herbal pharmacy", "medicine shop"], "中国人药店"),
     (["law office", "attorney", "law firm", "legal", " esq", " llp", "律师", "律师事务所"], "律师事务所"),
     (["accounting", "accountant", " cpa", "tax prep", "会计"], "会计事务所"),
@@ -30,7 +30,7 @@ RULES: list[tuple[list[str], str]] = [
     (["massage", "spa", "reflexology", "按摩", "足疗"], "按摩店"),
     (["laundry", "dry clean", "洗衣"], "洗衣店"),
     (["jewelry", "jeweller", "珠宝"], "珠宝店"),
-    (["courier", "express", "shipping", "freight", "logistics", "快递", "物流"], "快递公司"),
+    (["courier", "express", "shipping", "freight", "logistics", "快递", "物流", "速运"], "快递公司"),
     (["temple", "church", "mosque", "synagogue", "佛教", "教会"], "宗教机构"),
     (["chamber of commerce", "商会"], "商会"),
     (["general contractor", "construction", "contracting", "renovation", "装修", "工程"], "装修公司"),
@@ -38,8 +38,25 @@ RULES: list[tuple[list[str], str]] = [
     (["auto repair", "auto body", "car repair", "汽修"], "汽车修理"),
 ]
 
+# Pass-2: google_type / name hints for remaining 其他华人生意 only
+PASS2_RULES: list[tuple[list[str], str]] = [
+    (["保健品", "灵芝", "中药", "health_food", "health food", "medicine (group)", "wong fung medicine"], "中国人药店"),
+    (["employment_agency", "staffing", "recruiting", "职介", "劳务", "人力", "bookkeep"], "职介劳务"),
+    (["community_center", "community services", "selfhelp community"], "华人协会"),
+    (["wholesaler", " trading", "trading", "trade co", "trade inc", "商行", "distribution inc"], "批发贸易"),
+    (["courier_service", "shipping company", "freight", "logistics company"], "快递公司"),
+    (["旅游", "travel", " tour", "tours", "巴士", "bus line", "ebisu store"], "旅行社"),
+    (["deli", "food_store", "catering_service", "bakery", "meal_delivery", "food_delivery"], "中餐馆"),
+    (["bar", "pub", "lounge", "night_club"], "中餐馆"),
+    (["supplier", "fire-proof", "fireproof", "building_materials", "hardware_store", "home_goods_store"], "建材公司"),
+    (["beauty_salon", "hair_salon", "nail_salon"], "美容院"),
+    (["laundry", "dry_cleaning"], "洗衣店"),
+    (["transportation_service"], "快递公司"),
+]
+
 MISFILED_SOURCE = {"其他华人生意", "装修公司", "建材公司"}
-STEEL_FROM_CONTRACTOR = {"钢铁金属", "旅行社", "律师事务所", "华人协会", "宗教机构", "中国人药店", "会计事务所", "地产公司"}
+STEEL_FROM_CONTRACTOR = {"钢铁金属", "旅行社", "律师事务所", "华人协会", "宗教机构", "中国人药店", "会计事务所", "地产公司", "批发贸易", "职介劳务"}
+HOTEL_SKIP = ["hotel", " inn", "motel", "marriott", "fairfield", "renaissance", "suites"]
 
 
 def blob(item: dict) -> str:
@@ -51,12 +68,29 @@ def blob(item: dict) -> str:
     return " ".join(parts).lower()
 
 
-def suggest_category(item: dict) -> str | None:
+def suggest_pass2(item: dict) -> str | None:
+    text = blob(item)
+    if any(h in text for h in HOTEL_SKIP):
+        return None
+    if "manufacturer" in text or "manufacturing" in text:
+        if any(m in text for m in ["steel", "iron", "metal", "钢铁", "金属", "electric corp"]):
+            return "钢铁金属"
+        return None
+    for needles, cat in PASS2_RULES:
+        for n in needles:
+            if n.lower() in text:
+                return cat
+    return None
+
+
+def suggest_category(item: dict, old_cat: str) -> str | None:
     text = blob(item)
     for needles, cat in RULES:
         for n in needles:
             if n.lower() in text:
                 return cat
+    if old_cat == "其他华人生意":
+        return suggest_pass2(item)
     return None
 
 
@@ -74,7 +108,7 @@ def process_file(path: Path) -> tuple[int, dict[str, int]]:
             if not isinstance(item, dict):
                 out.setdefault(old_cat, []).append(item)
                 continue
-            new_cat = suggest_category(item)
+            new_cat = suggest_category(item, old_cat)
             should_move = (
                 new_cat
                 and new_cat != old_cat
@@ -86,7 +120,7 @@ def process_file(path: Path) -> tuple[int, dict[str, int]]:
             if should_move:
                 moved = dict(item)
                 moved["category"] = new_cat
-                moved["category_source"] = "recategorize_v1"
+                moved["category_source"] = "recategorize_v2"
                 out.setdefault(new_cat, []).append(moved)
                 changed += 1
                 by_target[new_cat] = by_target.get(new_cat, 0) + 1
