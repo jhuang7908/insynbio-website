@@ -34,18 +34,25 @@ def load_font(size: int, bold: bool = False) -> ImageFont.FreeTypeFont:
     return ImageFont.load_default()
 
 
+def draw_centered_glyph(
+    draw: ImageDraw.ImageDraw,
+    center: tuple[float, float],
+    char: str,
+    font_size: int,
+    fill: str = "#ffffff",
+    optical_y_nudge: float = 0,
+) -> None:
+    font = load_font(font_size)
+    cx, cy = center
+    draw.text((cx, cy + optical_y_nudge), char, fill=fill, font=font, anchor="mm")
+
+
 def draw_icon(size: int) -> Image.Image:
     img = Image.new("RGBA", (size, size), (0, 0, 0, 0))
     draw = ImageDraw.Draw(img)
     radius = max(8, size // 8)
     draw.rounded_rectangle((0, 0, size - 1, size - 1), radius=radius, fill=ORANGE)
-    font = load_font(int(size * 0.52))
-    char = "圈"
-    bbox = draw.textbbox((0, 0), char, font=font)
-    tw, th = bbox[2] - bbox[0], bbox[3] - bbox[1]
-    x = (size - tw) / 2 - bbox[0]
-    y = (size - th) / 2 - bbox[1] + size * 0.04
-    draw.text((x, y), char, fill="#ffffff", font=font)
+    draw_centered_glyph(draw, (size / 2, size / 2), "圈", int(size * 0.46), optical_y_nudge=size * 0.028)
     return img
 
 
@@ -54,9 +61,11 @@ def draw_og() -> Image.Image:
     img = Image.new("RGB", (w, h), BG)
     draw = ImageDraw.Draw(img)
     draw.rectangle((0, 0, w, 8), fill=ORANGE)
-    draw.rounded_rectangle((80, 120, 200, 240), radius=24, fill=ORANGE)
-    icon_font = load_font(72)
-    draw.text((140, 148), "圈", fill="#ffffff", font=icon_font, anchor="mm")
+    icon_box = (80, 120, 200, 240)
+    draw.rounded_rectangle(icon_box, radius=24, fill=ORANGE)
+    icon_cx = (icon_box[0] + icon_box[2]) / 2
+    icon_cy = (icon_box[1] + icon_box[3]) / 2
+    draw_centered_glyph(draw, (icon_cx, icon_cy), "圈", 68, optical_y_nudge=5)
     title_font = load_font(56)
     sub_font = load_font(32)
     url_font = load_font(28)
