@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- hub-build: v3.1.1-20260616 (favicon走insynbio静态源+logo图标) -->
+<!-- hub-build: v3.1.2-20260616 (矢量圈图标+页头CSS圈字) -->
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8" />
@@ -9,10 +9,10 @@
   <meta http-equiv="Expires" content="0" />
   <meta name="theme-color" content="#ea580c" />
   <!-- uslifehub.org 当前全站返回同一 HTML，静态图标须走 insynbio.com -->
-  <link rel="icon" href="https://insynbio.com/favicon.ico" sizes="48x48" />
-  <link rel="icon" href="https://insynbio.com/uslifehub-icon-32.png" type="image/png" sizes="32x32" />
-  <link rel="icon" href="https://insynbio.com/uslifehub-icon-192.png" type="image/png" sizes="192x192" />
-  <link rel="apple-touch-icon" href="https://insynbio.com/uslifehub-icon-192.png" />
+  <link rel="icon" href="https://insynbio.com/favicon.ico?v=312" sizes="48x48" />
+  <link rel="icon" href="https://insynbio.com/uslifehub-icon-32.png?v=312" type="image/png" sizes="32x32" />
+  <link rel="icon" href="https://insynbio.com/uslifehub-icon-192.png?v=312" type="image/png" sizes="192x192" />
+  <link rel="apple-touch-icon" href="https://insynbio.com/uslifehub-icon-192.png?v=312" />
   <link rel="manifest" href="manifest.json" />
   <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large" />
   <meta name="googlebot" content="index, follow" />
@@ -23,7 +23,7 @@
   <meta property="og:url" content="https://www.uslifehub.org/us-chinese-life-hub.html" />
   <meta property="og:title" content="美东华人生活圈 · 纽约华人福利与社区信息" />
   <meta property="og:description" content="纽约华人社区活动、政府福利、4300+ 华人黄页、民生频道与薅羊毛。支持中文搜索。" />
-  <meta property="og:image" content="https://insynbio.com/uslifehub-og.png" />
+  <meta property="og:image" content="https://insynbio.com/uslifehub-og.png?v=312" />
   <meta property="og:image:type" content="image/png" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
@@ -32,7 +32,7 @@
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="美东华人生活圈 · 纽约华人福利与社区信息" />
   <meta name="twitter:description" content="纽约华人社区活动、政府福利、4300+ 华人黄页、民生频道与薅羊毛。" />
-  <meta name="twitter:image" content="https://insynbio.com/uslifehub-og.png" />
+  <meta name="twitter:image" content="https://insynbio.com/uslifehub-og.png?v=312" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet" />
@@ -163,8 +163,8 @@
       .controls-bar { order: 2; margin-left: auto; }
     }
     .logo { display: flex; align-items: center; gap: 10px; font-weight: 700; }
-    .logo-box { width: 34px; height: 34px; border-radius: 8px; background: #ea580c; flex-shrink: 0; overflow: hidden; display: flex; align-items: center; justify-content: center; padding: 0; }
-    .logo-box .logo-mark { display: block; width: 34px; height: 34px; border-radius: 8px; object-fit: cover; }
+    .logo-box { width: 34px; height: 34px; border-radius: 8px; background: #ea580c; flex-shrink: 0; display: flex; align-items: center; justify-content: center; color: #ffffff; font-weight: 700; font-size: 19px; line-height: 1; font-family: var(--font-sans); user-select: none; }
+    .logo-box .logo-char { display: block; transform: translateY(0.5px); }
     .logo-text { font-size: var(--text-lg); color: #1e293b; font-weight: var(--weight-bold); letter-spacing: -0.01em; }
     .sub { font-size: var(--text-sm); color: #64748b; font-weight: var(--weight-medium); margin-top: 2px; }
 
@@ -1184,7 +1184,7 @@
   <header class="top">
     <div class="wrap top-inner">
       <div class="logo">
-        <div class="logo-box" aria-hidden="true"><img class="logo-mark" src="https://insynbio.com/uslifehub-icon-32.png" alt="" width="34" height="34" decoding="async" /></div>
+        <div class="logo-box" aria-hidden="true"><span class="logo-char">圈</span></div>
         <div>
           <div class="logo-text" id="logo-text">美东华人生活圈</div>
           <div class="sub" id="logo-sub">纽约首发 · 福利政务 · 华人社区</div>
@@ -1443,7 +1443,7 @@
 
     <footer class="hub-site-footer" id="hub-footer">
       <p class="footer-mission" id="footer-mission">美东华人生活圈 · 公开渠道社区信息聚合，公益导向</p>
-      <p id="footer-org"><a href="https://www.uslifehub.org/" id="footer-org-link">www.uslifehub.org</a> · v3.1.1</p>
+      <p id="footer-org"><a href="https://www.uslifehub.org/" id="footer-org-link">www.uslifehub.org</a> · v3.1.2</p>
       <p id="footer-contact"><span id="footer-contact-label">联系 / 注册 / 投稿：</span><a href="mailto:info@uslifehub.org" id="footer-email">info@uslifehub.org</a></p>
     </footer>
 
