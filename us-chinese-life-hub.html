@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<!-- hub-build: 2026-06-18T00:40TET mobile-v3.3.10 -->
+<!-- hub-build: 2026-06-18T01:00TET mobile-v3.3.11 -->
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <script>
-    window.HUB_APP_VERSION = '3.3.10';
+    window.HUB_APP_VERSION = '3.3.11';
     (function () {
       var coarse = window.matchMedia('(pointer: coarse)').matches;
       var narrow = window.matchMedia('(max-width: 820px)').matches;
@@ -479,17 +479,21 @@
       border-color: #ea580c;
       box-shadow: 0 0 0 2px rgba(234,88,12,0.1);
     }
-    .yp-search-row {
+    .yp-search-panel {
       display: grid;
-      grid-template-columns: 1fr minmax(132px, 38%);
-      gap: 8px;
+      gap: 6px;
       margin: 10px 12px 8px;
       width: auto;
       position: relative;
       z-index: 5;
     }
-    .yp-search-row input,
-    .yp-search-row select {
+    .yp-filter-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6px;
+    }
+    .yp-search-panel input.yp-search-name,
+    .yp-search-panel .yp-filter-row select {
       width: 100%;
       box-sizing: border-box;
       border: 1px solid #cbd5e1;
@@ -501,10 +505,10 @@
       color: #1e293b;
       background: #fff;
       height: 44px;
-      cursor: pointer;
     }
-    .yp-search-row input { cursor: text; }
-    .yp-search-row select {
+    .yp-search-panel input.yp-search-name { cursor: text; }
+    .yp-search-panel .yp-filter-row select {
+      cursor: pointer;
       appearance: auto;
       -webkit-appearance: menulist;
       padding-right: 28px;
@@ -512,10 +516,22 @@
       z-index: 12;
       pointer-events: auto;
     }
-    .yp-search-row input:focus,
-    .yp-search-row select:focus {
+    .yp-search-panel input.yp-search-name:focus,
+    .yp-search-panel .yp-filter-row select:focus {
       border-color: #ea580c;
       box-shadow: 0 0 0 2px rgba(234,88,12,0.12);
+    }
+    @media (min-width: 768px) {
+      .yp-search-panel {
+        grid-template-columns: 1fr minmax(140px, 36%);
+        align-items: stretch;
+      }
+      .yp-search-name { grid-column: 1; grid-row: 1; }
+      .yp-filter-row {
+        grid-column: 2; grid-row: 1;
+        grid-template-columns: 1fr;
+      }
+      .yp-industry-mobile-select { display: none !important; }
     }
     .yp-industry-bar {
       display: flex;
@@ -1429,7 +1445,16 @@
       .pwa-quick { padding: 6px 8px; }
       .forecast-grid { grid-template-columns: repeat(4, 1fr); }
       .yp-pill { padding: 6px 12px; }
-      .yp-search-row { grid-template-columns: 1fr 1fr; gap: 6px; }
+      .yp-search-panel .yp-filter-row select,
+      .yp-search-panel input.yp-search-name {
+        height: 40px;
+        padding: 8px 10px;
+        font-size: 13px;
+      }
+      .yp-search-panel .yp-filter-row select {
+        padding: 8px 4px;
+        font-size: 11px;
+      }
       .deals-section .deal-compact-media-wrap { width: 96px; height: 96px; }
     }
     @media (max-width: 560px) {
@@ -1485,9 +1510,13 @@
     .mobile-drawer-item:hover { border-color: #ea580c; color: #c2410c; }
     .mobile-drawer-item .mdi { font-size: 18px; width: 22px; text-align: center; }
     .yp-industry-mobile-select {
-      display: none; width: calc(100% - 24px); margin: 0 12px 10px;
-      border: 1px solid #cbd5e1; border-radius: 10px; padding: 11px 12px;
-      font-size: 14px; font-family: inherit; color: #334155; background: #fff;
+      display: none;
+      border: 1px solid #cbd5e1;
+      border-radius: 10px;
+      font-size: 14px;
+      font-family: inherit;
+      color: #334155;
+      background: #fff;
     }
     .hub-hero-more-btn {
       display: none; border: 1px solid #cbd5e1; background: #fff; border-radius: 8px;
@@ -1498,7 +1527,7 @@
     @media (max-width: 767px) {
       .yp-mobile-sticky {
         position: sticky;
-        top: 46px;
+        top: var(--hub-header-h, 46px);
         z-index: 95;
         background: #faf7f2;
         padding: 6px 0 8px;
@@ -1506,6 +1535,7 @@
         border-bottom: 1px solid #ece6dc;
         box-shadow: 0 2px 8px rgba(44,52,64,.05);
       }
+      .yp-industry-mobile-select { display: block !important; }
     }
     .pwa-mobile-sheet-overlay {
       display: none; position: fixed; inset: 0; z-index: 450;
@@ -1593,22 +1623,13 @@
     body.hub-mobile { padding-bottom: calc(62px + env(safe-area-inset-bottom, 0px)) !important; }
 
     body.hub-mobile .yp-industry-bar { display: none !important; }
-    .yp-mobile-sticky .yp-industry-mobile-select {
-      display: none;
-      width: 100%;
-      margin: 6px 12px 0;
-      box-sizing: border-box;
-    }
-    @media (max-width: 767px) {
-      .yp-mobile-sticky .yp-industry-mobile-select { display: block !important; }
-    }
     body.hub-mobile .yp-industry-mobile-select { display: block !important; }
     body.hub-mobile .yp-pill,
     body.hub-mobile .hub-light-tabs button,
     body.hub-mobile .hub-card,
     body.hub-mobile .hub-search-panel,
-    body.hub-mobile .yp-search-row input,
-    body.hub-mobile .yp-search-row select {
+    body.hub-mobile .yp-search-panel input.yp-search-name,
+    body.hub-mobile .yp-search-panel .yp-filter-row select {
       background: #fff !important;
       color: #334155 !important;
     }
@@ -1864,14 +1885,16 @@
       <div class="phones-body-wrap">
       <div class="phones-body" style="padding: 0;">
         <div class="yp-mobile-sticky" id="yp-mobile-sticky">
-        <div class="yp-search-row" id="yp-search-panel">
-          <input type="search" id="yp-search" autocomplete="off"
+        <div class="yp-search-panel" id="yp-search-panel">
+          <input type="search" id="yp-search" class="yp-search-name" autocomplete="off"
             placeholder="商业名称" oninput="renderYellowPages()">
-          <select id="yp-area-select" aria-label="地区" onchange="setYpArea(this.value)">
-            <option value="all">📍 全部区域</option>
-          </select>
+          <div class="yp-filter-row">
+            <select id="yp-area-select" aria-label="地区" onchange="setYpArea(this.value)">
+              <option value="all">📍 全部区域</option>
+            </select>
+            <select id="yp-industry-mobile" class="yp-industry-mobile-select" aria-label="选择行业" onchange="setYpIndustry(this.value)"></select>
+          </div>
         </div>
-        <select id="yp-industry-mobile" class="yp-industry-mobile-select" aria-label="选择行业" onchange="setYpIndustry(this.value)"></select>
         </div>
         <button type="button" id="yp-map-all-btn" class="yp-map-all-btn" style="display:none" onclick="toggleYpMapPanel()">🗺️ 地图看全部</button>
         <div class="yp-stats-line" id="yp-stats-line" style="padding: 0 12px;"></div>
@@ -6680,12 +6703,15 @@ function renderYpAreaDropdown() {
   if (!sel) return;
   const s = UI_STRINGS[currentLang] || UI_STRINGS.zh;
   const prev = YP_ACTIVE_AREA || 'all';
+  const compact = typeof isMobileViewport === 'function' && isMobileViewport();
   sel.disabled = false;
   sel.removeAttribute('disabled');
   const hasCounts = YP_JSON_LOADED || YP_MANIFEST;
   sel.innerHTML = YP_AREA_GROUPS.map(a => {
-    let lbl = a.id === 'all' ? (s.yp_all_areas || a.label) : a.label;
-    if (a.id !== 'all' && hasCounts) {
+    let lbl = a.id === 'all'
+      ? (compact ? '📍 区域' : (s.yp_all_areas || a.label))
+      : a.label;
+    if (!compact && a.id !== 'all' && hasCounts) {
       if (YP_JSON_LOADED) {
         const pool = filterYpByIndustry(YELLOW_PAGES_FLAT);
         const count = pool.filter(i => i.area === a.id).length;
@@ -6775,6 +6801,7 @@ function renderIndustryBar() {
   const bar = document.getElementById('yp-industry-bar');
   const mobSel = document.getElementById('yp-industry-mobile');
   if (!bar) return;
+  const compact = typeof isMobileViewport === 'function' && isMobileViewport();
   const hasBizData = YP_JSON_LOADED && YELLOW_PAGES_FLAT.length > 0;
   const areaPool = filterYpByArea(YELLOW_PAGES_FLAT);
   const mobileOpts = [];
@@ -6801,7 +6828,8 @@ function renderIndustryBar() {
     if (count == null) count = ypManifestIndustryCount(g);
     if (hasBizData && g.id !== 'all' && count === 0) return '';
     const lbl = g.id === 'all' ? g.label : (count != null ? `${g.label} ${ypPublicCountLabel(count)}` : g.label);
-    mobileOpts.push({ id: g.id, lbl });
+    const mobLbl = compact ? g.label : lbl;
+    mobileOpts.push({ id: g.id, lbl: mobLbl });
     return `<button type="button" class="yp-pill${YP_ACTIVE_INDUSTRY === g.id ? ' active' : ''}" onclick="setYpIndustry('${g.id}')">${lbl}</button>`;
   }).join('');
   bar.innerHTML = pills;
@@ -8373,6 +8401,8 @@ function initMobileHub() {
     syncMobileFixedOffsets();
     if (typeof renderCustomDealsTabs === 'function') renderCustomDealsTabs();
     syncChannelFilterSelectLabels();
+    if (typeof renderYpAreaDropdown === 'function') renderYpAreaDropdown();
+    if (typeof renderIndustryBar === 'function') renderIndustryBar();
   }
   applyMobile(mq.matches);
   if (typeof mq.addEventListener === 'function') {
