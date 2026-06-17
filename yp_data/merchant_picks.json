@@ -1,63 +1,18 @@
 {
-  "version": "1.1.0",
+  "version": "1.2.0",
   "updated_at": "2026-06-17",
-  "headline_zh": "🔥 圈友正在推荐这些店 · 已有电话被拨打",
-  "disclaimer_zh": "以下为真实收录商户 + 圈友推荐语示例。推荐人数为展示样例；店主尚未认领的，信息以公开数据为准。",
-  "merchant_cta_zh": "您是店主？同行已被圈友点名推荐。免费认领后显示「商家认领」，电话地址由您确认。",
-  "policy": {
-    "title": "商家政策 · 举例说明",
-    "trial_note": "现阶段全部免费试运行；下列「付费项」为将来可选服务，尚未开通收款。",
-    "free_heading": "✅ 永久免费",
-    "paid_heading": "💼 可选付费（精选推广 · 尚未开通）",
-    "free_examples": [
-      {
-        "title": "黄页收录",
-        "example": "例：「城峰钢铁」已在法拉盛钢铁类展示，电话地图可查 — 不收费。"
-      },
-      {
-        "title": "商家认领",
-        "example": "例：律师楼发邮件核实执照，卡片显示「商家认领」— 不收费。"
-      },
-      {
-        "title": "信息纠错",
-        "example": "例：电话换号、搬址、已关门 — 邮件更正，不收费。"
-      },
-      {
-        "title": "圈友真实推荐",
-        "example": "例：顾客/朋友写「我常去安发律所问罚单」投稿 — 不收费。"
-      }
-    ],
-    "paid_examples": [
-      {
-        "title": "圈友推荐 · 区域置顶",
-        "example": "例：法拉盛律师类推荐区排第一，带「精选」角标 — 将来按月收费（价格待定）。"
-      },
-      {
-        "title": "店主自荐加强包",
-        "example": "例：认领后加 Logo、微信、营业时间、一句店主介绍 — 将来可选套餐。"
-      },
-      {
-        "title": "新店开业曝光",
-        "example": "例：新餐馆开业，推送到订阅用户 + 黄页「本周新店」— 将来单次推广。"
-      }
-    ],
-    "contact": "咨询付费推广（尚未开通）：info@uslifehub.org"
-  },
-  "stats_demo": {
-    "picks_this_week": 12,
-    "merchants_named": 8,
-    "claimed_demo": 2
-  },
+  "headline_zh": "圈友常去的店",
+  "disclaimer_zh": "来自社区投稿与编辑整理，电话地址建议先致电确认。",
+  "merchant_cta_zh": "",
+  "policy": null,
   "picks": [
     {
       "id": "pick_anfa_law",
       "featured": true,
-      "hot": true,
       "pick_count": 3,
       "recommender": "Flushing 宝妈群 · 李女士",
-      "recommender_tag": "多人点名",
-      "note": "交通罚单、房东纠纷群里至少三个人推过这家。我先电话问，再决定要不要去。",
-      "pressure_line": "⚠️ 已被点名推荐 · 店主尚未认领",
+      "recommender_tag": "圈友分享",
+      "note": "交通罚单、房东纠纷群里好几个人推过这家。我一般先电话问清楚再去。",
       "area": "flushing",
       "category": "律师事务所",
       "name": "安发律师事务所",
@@ -71,9 +26,8 @@
       "featured": true,
       "pick_count": 2,
       "recommender": "新移民向导 · 陈先生",
-      "recommender_tag": "个人推荐",
-      "note": "移民、民事合同咨询。同街律师楼不少，这家是朋友介绍先打电话的那家。",
-      "pressure_line": "同区律师楼已被推荐 · 您的那家还未上榜",
+      "recommender_tag": "圈友分享",
+      "note": "移民、民事合同咨询。同街律师楼不少，这家是朋友介绍、会先打电话问的那家。",
       "area": "flushing",
       "category": "律师事务所",
       "name": "戴维利联合律师事务所 – Davlei & Associates",
@@ -85,12 +39,10 @@
     {
       "id": "pick_prince_cafe",
       "featured": true,
-      "hot": true,
       "pick_count": 4,
       "recommender": "吃货地图 · 匿名圈友",
-      "recommender_tag": "高频推荐",
-      "note": "早茶周末排队。外地朋友来法拉盛，我会带来这里，先电话问要不要等位。",
-      "pressure_line": "🔥 本周最多人推荐餐馆 · 未认领",
+      "recommender_tag": "圈友分享",
+      "note": "早茶周末常排队。外地朋友来法拉盛，我会带来这里，先电话问要不要等位。",
       "area": "flushing",
       "category": "中餐馆",
       "name": "39 Prince Cafe 利苑食坊",
@@ -103,9 +55,8 @@
       "id": "pick_tongrentang",
       "pick_count": 2,
       "recommender": "Flushing 老居民 · 王阿姨",
-      "recommender_tag": "个人推荐",
+      "recommender_tag": "圈友分享",
       "note": "买参茸、送长辈礼盒常来这里。品牌店，比随便找小铺放心。",
-      "pressure_line": "药店类已被推荐 · 隔壁店还在等第一条",
       "area": "flushing",
       "category": "中国人药店",
       "name": "Beijing Tong Ren Tang 北京同仁堂",
@@ -117,18 +68,16 @@
     {
       "id": "pick_claimed_demo",
       "pick_count": 1,
-      "recommender": "生活圈编辑 · 示范",
-      "recommender_tag": "已认领样例",
-      "note": "这是「商家认领」后的展示样子：电话地址经店主确认，圈友推荐仍保留。",
-      "pressure_line": "✅ 认领样例 · 同行可照此办理（免费）",
+      "recommender": "生活圈 · 圈友",
+      "recommender_tag": "已核实",
+      "note": "办交通罚单咨询来过几次，前台中文沟通没问题，电话打过去响应比较快。",
       "area": "flushing",
       "category": "律师事务所",
       "name": "诚誉交通罚单中心",
       "phone": "(646) 339-8348",
       "address": "136-68 Roosevelt Ave #723, Flushing, NY 11354",
       "match_key": "6463398348_诚誉交通罚单中心",
-      "claimed": true,
-      "demo_claimed": true
+      "claimed": true
     }
   ]
 }
