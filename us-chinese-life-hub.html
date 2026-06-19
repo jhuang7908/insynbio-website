@@ -523,15 +523,15 @@
     }
     @media (min-width: 768px) {
       .yp-search-panel {
-        grid-template-columns: 1fr minmax(140px, 36%);
+        grid-template-columns: 1fr minmax(280px, 46%);
         align-items: stretch;
       }
       .yp-search-name { grid-column: 1; grid-row: 1; }
       .yp-filter-row {
         grid-column: 2; grid-row: 1;
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr 1fr;
       }
-      .yp-industry-mobile-select { display: none !important; }
+      .yp-industry-mobile-select { display: block !important; }
     }
     .yp-industry-bar {
       display: flex;
@@ -6840,6 +6840,9 @@ function renderEssentialPhones(filter) {
   return html || `<div style="text-align:center;color:#64748b;font-size:12px;padding:20px;">${escapeHtml(s.essential_phones_empty || '未找到匹配电话')}</div>`;
 }
 
+// 桌面端快捷标签：仅展示高频行业，其余行业收进下拉菜单
+const YP_FEATURED_INDUSTRIES = ['all', 'essential', 'food', 'market', 'clinic', 'pharmacy', 'nail', 'law'];
+
 function renderIndustryBar() {
   const bar = document.getElementById('yp-industry-bar');
   const mobSel = document.getElementById('yp-industry-mobile');
@@ -6847,11 +6850,13 @@ function renderIndustryBar() {
   const compact = typeof isMobileViewport === 'function' && isMobileViewport();
   const hasBizData = YP_JSON_LOADED && YELLOW_PAGES_FLAT.length > 0;
   const areaPool = filterYpByArea(YELLOW_PAGES_FLAT);
-  const mobileOpts = [];
+  const dropdownOpts = [];
   const pills = YP_INDUSTRY_GROUPS.map(g => {
+    // 当前选中的行业即使非高频也显示为标签，给用户明确反馈
+    const showPill = YP_FEATURED_INDUSTRIES.includes(g.id) || YP_ACTIVE_INDUSTRY === g.id;
     if (g.essential) {
-      mobileOpts.push({ id: g.id, lbl: g.label });
-      return `<button type="button" class="yp-pill${YP_ACTIVE_INDUSTRY === g.id ? ' active' : ''}" onclick="setYpIndustry('${g.id}')">${g.label}</button>`;
+      dropdownOpts.push({ id: g.id, lbl: g.label });
+      return showPill ? `<button type="button" class="yp-pill${YP_ACTIVE_INDUSTRY === g.id ? ' active' : ''}" onclick="setYpIndustry('${g.id}')">${g.label}</button>` : '';
     }
     if (!YP_JSON_LOADED && !YP_MANIFEST) return '';
     let count = null;
@@ -6872,12 +6877,12 @@ function renderIndustryBar() {
     if (hasBizData && g.id !== 'all' && count === 0) return '';
     const lbl = g.id === 'all' ? g.label : (count != null ? `${g.label} ${ypPublicCountLabel(count)}` : g.label);
     const mobLbl = compact ? g.label : lbl;
-    mobileOpts.push({ id: g.id, lbl: mobLbl });
-    return `<button type="button" class="yp-pill${YP_ACTIVE_INDUSTRY === g.id ? ' active' : ''}" onclick="setYpIndustry('${g.id}')">${lbl}</button>`;
+    dropdownOpts.push({ id: g.id, lbl: mobLbl });
+    return showPill ? `<button type="button" class="yp-pill${YP_ACTIVE_INDUSTRY === g.id ? ' active' : ''}" onclick="setYpIndustry('${g.id}')">${lbl}</button>` : '';
   }).join('');
   bar.innerHTML = pills;
   if (mobSel) {
-    mobSel.innerHTML = mobileOpts.map(o =>
+    mobSel.innerHTML = dropdownOpts.map(o =>
       `<option value="${o.id}"${YP_ACTIVE_INDUSTRY === o.id ? ' selected' : ''}>${escapeHtml(o.lbl)}</option>`
     ).join('');
   }
