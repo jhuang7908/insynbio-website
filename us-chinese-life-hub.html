@@ -1355,6 +1355,16 @@
     .yp-card-phone { font-size: var(--text-base); font-weight: var(--weight-bold); color: #ea580c; letter-spacing: 0.01em; font-variant-numeric: tabular-nums; }
     .yp-card-map { font-size: 11.5px; color: #6b7280; line-height: 1.4; display: -webkit-box; -webkit-line-clamp: 1; line-clamp: 1; -webkit-box-orient: vertical; overflow: hidden; border-top: 1px dashed #f1f5f9; padding-top: 5px; margin-top: 2px; pointer-events: none; }
     a.yp-card { text-decoration: none; }
+    /* 商家分层：认证商家 */
+    .yp-verified-badge { display: inline-flex; align-items: center; gap: 2px; font-size: 10px; font-weight: 800; color: #0369a1; background: #e0f2fe; border: 1px solid #bae6fd; border-radius: 6px; padding: 1px 6px; line-height: 1.5; white-space: nowrap; }
+    .yp-card.is-verified { border-color: #7dd3fc; box-shadow: 0 1px 6px rgba(2,132,199,0.10); }
+    .yp-card.is-verified:hover { border-color: #0ea5e9; background: #f8fdff; }
+    .yp-modal-verified { display: flex; align-items: center; gap: 6px; background: #f0f9ff; border: 1px solid #bae6fd; color: #0369a1; font-size: 12px; font-weight: 700; border-radius: 8px; padding: 6px 10px; margin-top: 8px; }
+    .yp-detail-row { margin-top: 6px; font-size: 12px; color: #475569; line-height: 1.5; }
+    .yp-detail-row .lbl { color: #94a3b8; margin-right: 4px; }
+    .yp-coupon { margin-top: 8px; background: #fff7ed; border: 1px dashed #fdba74; color: #c2410c; font-size: 12px; font-weight: 700; border-radius: 8px; padding: 6px 10px; }
+    .yp-claim-btn { display: block; width: 100%; margin-top: 8px; background: #fff; border: 1px solid #cbd5e1; color: #475569; font-size: 12px; font-weight: 700; border-radius: 8px; padding: 8px; cursor: pointer; }
+    .yp-claim-btn:hover { border-color: #0ea5e9; color: #0369a1; }
     .yp-fresh-badge { display: inline-block; font-size: 10px; font-weight: 600; padding: 1px 5px; border-radius: 4px; margin-top: 2px; line-height: 1.3; }
     .yp-fresh-badge.stale { background: #fef3c7; color: #b45309; }
     .yp-fresh-badge.closed { background: #fee2e2; color: #b91c1c; }
@@ -2050,7 +2060,8 @@
         <button type="button" id="yp-modal-map" class="btn-secondary" onclick="openYpBizMapFromModal()">🗺️ 打开地图</button>
       </div>
       <button type="button" id="yp-modal-report" class="yp-report-btn" onclick="openYpReportDialog()">⚠️ 报告信息错误（电话/地址/已关门等）</button>
-      <p id="yp-modal-policy" style="font-size:10px;color:#94a3b8;margin:8px 0 0;line-height:1.5">手机端可选择<strong>电话或地图</strong>；电脑端默认<strong>地图</strong>。欢迎提交<strong>信息纠错</strong>，我们将在 1-3 个工作日内完成核实。商家主动更新请发送邮件至 <a href="mailto:info@uslifehub.org" style="color:#64748b">info@uslifehub.org</a>。</p>
+      <button type="button" id="yp-modal-claim" class="yp-claim-btn" onclick="openYpClaim()">🏷️ 我是商家 · 认领并更新这家店</button>
+      <p id="yp-modal-policy" style="font-size:10px;color:#94a3b8;margin:8px 0 0;line-height:1.5">手机端可选择<strong>电话或地图</strong>；电脑端默认<strong>地图</strong>。欢迎提交<strong>信息纠错</strong>，我们将在 1-3 个工作日内完成核实。商家认领或主动更新请发送邮件至 <a href="mailto:info@uslifehub.org" style="color:#64748b">info@uslifehub.org</a>。</p>
     </div>
   </div>
 
@@ -6118,6 +6129,43 @@ function ypFreshnessBadgeHtml(item) {
   return `<span class="yp-fresh-badge ${info.cls}">${info.text}</span>`;
 }
 
+// 商家分层：认证商家（付费/官方核实层级）
+function ypIsVerified(item) {
+  const q = String((item && item.qualification_status) || '').toLowerCase();
+  return q === 'verified' || q === 'certified' || q === 'merchant_verified';
+}
+
+function ypVerifiedBadgeHtml(item) {
+  return ypIsVerified(item) ? '<span class="yp-verified-badge">✓ 认证商家</span>' : '';
+}
+
+// 认领/更新申请：结构化邮件（无需后端，官方核实后标记为认证商家）
+function ypClaimMailto(item) {
+  const name = (item && item.name) || '';
+  const addr = item ? shortAddr(item.address) : '';
+  const subj = encodeURIComponent('商家认领/信息更新：' + name);
+  const body = encodeURIComponent(
+    '【商家认领与信息更新申请】\n\n' +
+    '商家名称：' + name + '\n' +
+    '当前地址：' + (addr || '（未收录）') + '\n' +
+    '当前电话：' + ((item && item.phone) || '') + '\n' +
+    '\n------ 请补全以下信息 ------\n' +
+    '认领人姓名：\n' +
+    '与商家关系（店主 / 负责人 / 授权员工）：\n' +
+    '联系电话：\n' +
+    '联系邮箱：\n' +
+    '需更新内容（电话 / 地址 / 营业时间 / 简介 / 优惠）：\n' +
+    '官网或社媒链接（可选）：\n' +
+    '\n提交后平台将在 1–3 个工作日内核实，并标记为「认证商家」。'
+  );
+  return 'mailto:' + HUB_CONTACT_EMAIL + '?subject=' + subj + '&body=' + body;
+}
+
+function openYpClaim() {
+  if (!YP_MODAL_ITEM) return;
+  window.location.href = ypClaimMailto(YP_MODAL_ITEM);
+}
+
 function ypPickShareMailto() {
   const subj = encodeURIComponent('分享一家常去的店');
   const body = encodeURIComponent('店名：\n电话：\n区/地址：\n一句话推荐理由：\n（可选）您的称呼：');
@@ -6241,11 +6289,12 @@ function ypBizCard(item) {
   const mapLink = addr
     ? `<div class="yp-card-map">📍 ${escapeHtml(addr)}</div>`
     : '';
-  return `<div class="yp-card" data-yp-key="${escapeHtml(key)}" onclick="openYpBizModal(this.dataset.ypKey)" role="button" tabindex="0">
+  const verified = ypIsVerified(item);
+  return `<div class="yp-card${verified ? ' is-verified' : ''}" data-yp-key="${escapeHtml(key)}" onclick="openYpBizModal(this.dataset.ypKey)" role="button" tabindex="0">
     <div class="yp-card-main">
       <div class="yp-card-name-row">
         <div class="yp-card-name">${escapeHtml(name)}</div>
-        ${ypCategoryBadgeHtml(item.category)}
+        ${ypVerifiedBadgeHtml(item)}${ypCategoryBadgeHtml(item.category)}
       </div>
       <div class="yp-card-phone">${escapeHtml(item.phone)}</div>
       ${ypFreshnessBadgeHtml(item)}
@@ -6266,10 +6315,23 @@ function openYpBizModal(key) {
   const fresh = ypFreshnessLabel(item.freshness_status);
   const checked = item.last_checked_at ? ` · 最近核实 ${item.last_checked_at}` : '';
   document.getElementById('yp-modal-title').textContent = item.name;
+  const verified = ypIsVerified(item);
+  const hours = item.hours || item['营业时间'] || '';
+  const feature = item.feature || item['特色'] || item.intro || item['简介'] || '';
+  const website = item.website || item['官网'] || (typeof item.url === 'string' && /^https?:/i.test(item.url) ? item.url : '');
+  const coupon = item.coupon || item['优惠'] || '';
+  const rating = item.rating ? String(item.rating).trim() : '';
+  const reviews = item.reviews ? String(item.reviews).trim() : '';
   document.getElementById('yp-modal-body').innerHTML =
     `<div><strong>${escapeHtml(item.category)}</strong>${fresh ? ` · <span class="yp-fresh-badge ${fresh.cls}">${fresh.text}</span>` : ''}</div>` +
+    (verified ? `<div class="yp-modal-verified">✓ 认证商家 · 信息经平台核实</div>` : '') +
+    (rating ? `<div class="yp-detail-row"><span class="lbl">评分</span>⭐ ${escapeHtml(rating)}${reviews ? `（${escapeHtml(reviews)} 条评价）` : ''}</div>` : '') +
     (addr ? `<div style="margin-top:6px">📍 ${escapeHtml(addr)}</div>` : '') +
     `<div style="margin-top:6px;font-weight:800;color:#ea580c">${escapeHtml(item.phone)}</div>` +
+    (hours ? `<div class="yp-detail-row"><span class="lbl">营业时间</span>${escapeHtml(hours)}</div>` : '') +
+    (feature ? `<div class="yp-detail-row"><span class="lbl">简介</span>${escapeHtml(feature)}</div>` : '') +
+    (website ? `<div class="yp-detail-row"><span class="lbl">官网</span><a href="${escapeHtml(website)}" target="_blank" rel="noopener noreferrer sponsored" style="color:#0369a1">${escapeHtml(website.replace(/^https?:\/\//, '').slice(0, 40))}</a></div>` : '') +
+    (coupon ? `<div class="yp-coupon">🎟️ ${escapeHtml(coupon)}</div>` : '') +
     (checked ? `<div style="margin-top:4px;font-size:11px;color:#94a3b8">${escapeHtml(checked.slice(3))}</div>` : '');
   const callBtn = document.getElementById('yp-modal-call');
   const mapBtn = document.getElementById('yp-modal-map');
@@ -7166,6 +7228,10 @@ function ypSortPinyinKey(item) {
 }
 
 function byYpNameAsc(a, b) {
+  // 认证商家全局置顶，其余按拼音/名称排序
+  const va = ypIsVerified(a) ? 0 : 1;
+  const vb = ypIsVerified(b) ? 0 : 1;
+  if (va !== vb) return va - vb;
   const ka = ypSortPinyinKey(a);
   const kb = ypSortPinyinKey(b);
   return ka.localeCompare(kb, 'zh-Hans-CN', { sensitivity: 'base', numeric: true });
