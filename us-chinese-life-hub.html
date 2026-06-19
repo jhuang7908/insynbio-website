@@ -1887,7 +1887,7 @@
         <div class="yp-mobile-sticky" id="yp-mobile-sticky">
         <div class="yp-search-panel" id="yp-search-panel">
           <input type="search" id="yp-search" class="yp-search-name" autocomplete="off"
-            placeholder="商业名称" oninput="renderYellowPages()">
+            placeholder="商业名称" oninput="handleYpSearchInput()">
           <div class="yp-filter-row">
             <select id="yp-area-select" aria-label="地区" onchange="setYpArea(this.value)">
               <option value="all">📍 全部区域</option>
@@ -3646,6 +3646,8 @@ function hubConfigureYpSearchFromQuery(rawQuery) {
   const wantsEssential = terms.some(t => benefitNeedle.some(b => t.includes(b) || b.includes(t)));
   if (wantsEssential && countEssentialPhoneMatches(rawQuery) > 0) {
     YP_ACTIVE_INDUSTRY = 'essential';
+  } else if (String(rawQuery || '').trim()) {
+    YP_ACTIVE_INDUSTRY = 'all';
   }
 }
 
@@ -5890,7 +5892,7 @@ const YP_SEARCH_SYNONYMS = {
   "安全": ["安全", "治安", "警报", "safety", "alert", "crime", "police", "nypd", "emergency"],
   "治安": ["安全", "治安", "警报", "safety", "alert", "crime", "police", "nypd", "emergency"]
 };
-let YP_ACTIVE_INDUSTRY = 'essential';
+let YP_ACTIVE_INDUSTRY = 'all';
 let YP_ACTIVE_AREA = 'all';
 let YP_JSON_LOADED = false;
 let YP_MANIFEST = null;
@@ -5966,8 +5968,8 @@ const ESSENTIAL_PHONES = [
 ];
 
 const YP_INDUSTRY_GROUPS = [
-  { id: 'essential', label: '📞 常用电话', essential: true },
   { id: 'all', label: '全部商家' },
+  { id: 'essential', label: '📞 常用电话', essential: true },
   { id: 'food', label: '🍜 餐馆', cats: ['中餐馆'] },
   { id: 'market', label: '🛒 超市', cats: ['华裔超市'] },
   { id: 'clinic', label: '🏥 诊所', cats: ['医疗诊所'] },
@@ -6918,8 +6920,27 @@ function setYpArea(id) {
   renderYellowPages();
 }
 
+async function handleYpSearchInput() {
+  const q = (document.getElementById('yp-search')?.value || '').trim();
+  if (q && YP_ACTIVE_INDUSTRY === 'essential') {
+    YP_ACTIVE_INDUSTRY = 'all';
+    renderIndustryBar();
+    renderYpAreaDropdown();
+  }
+  if (q && (!YP_JSON_LOADED || !YELLOW_PAGES_FLAT.length)) {
+    const container = document.getElementById('yp-content');
+    if (container) {
+      container.innerHTML = '<div style="text-align:center;color:#64748b;font-size:12px;padding:20px;">商家数据加载中…</div>';
+    }
+    try { await ensureYpSearchReady(); } catch (_) {}
+  }
+  renderYellowPages();
+}
+
 function initYellowPages() {
   updateMemberStatusUI();
+  const q = (document.getElementById('yp-search')?.value || '').trim();
+  if (q && YP_ACTIVE_INDUSTRY === 'essential') YP_ACTIVE_INDUSTRY = 'all';
   renderYpAreaDropdown();
   renderIndustryBar();
   renderYellowPages();
@@ -7178,9 +7199,14 @@ function renderYellowPages() {
   const container = document.getElementById('yp-content');
   if (!container) return;
   const searchTerm = (document.getElementById('yp-search').value || '').toLowerCase().trim();
+  if (searchTerm && YP_ACTIVE_INDUSTRY === 'essential') {
+    YP_ACTIVE_INDUSTRY = 'all';
+    renderIndustryBar();
+    renderYpAreaDropdown();
+  }
   const group = YP_INDUSTRY_GROUPS.find(g => g.id === YP_ACTIVE_INDUSTRY) || YP_INDUSTRY_GROUPS[0];
 
-  if (group.essential || (searchTerm && YP_ACTIVE_INDUSTRY === 'essential')) {
+  if (group.essential && !searchTerm) {
     container.innerHTML = renderEssentialPhones(searchTerm);
     renderYpStatsLine();
     updateYpMapToolbar([], group);
@@ -7200,6 +7226,7 @@ function renderYellowPages() {
   if (searchTerm) {
     const essHtml = renderEssentialPhones(searchTerm);
     filtered = filtered.filter(item => ypItemMatchesSearch(item, searchTerm));
+    const searchGroup = group.essential ? (YP_INDUSTRY_GROUPS.find(g => g.id === 'all') || group) : group;
     let bizHtml = '';
     if (filtered.length) {
       filtered.sort(byYpNameAsc);
@@ -7210,7 +7237,7 @@ function renderYellowPages() {
     }
     container.innerHTML = (essHtml.includes('未找到') ? '' : essHtml) + bizHtml
       || '<div style="text-align:center;color:#64748b;font-size:12px;padding:20px;">未找到匹配结果</div>';
-    updateYpMapToolbar(filtered, group);
+    updateYpMapToolbar(filtered, searchGroup);
     return;
   }
 
