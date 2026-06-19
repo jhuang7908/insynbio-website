@@ -3544,6 +3544,22 @@ function hubQueryLooksLikeMerchant(raw) {
   return hints.some(h => ql.includes(h));
 }
 
+// 福利/活动意图：这类查询应进入民生频道/最新动态，而非社区黄页商户
+function hubQueryLooksLikeBenefit(raw) {
+  const q = hubNormalizeSearchBlob(raw);
+  if (!q) return false;
+  const needles = [
+    '平价房', '可负担住房', 'housing connect', 'housingconnect', 'affordable',
+    '粮食券', 'snap', 'food stamp', 'foodstamp', 'ebt',
+    '半价地铁', '半价', 'fair fare', 'fairfares', 'fair fares', '交通优惠', 'metrocard', '地铁卡',
+    '免费遛娃', '遛娃', '亲子', 'story time', 'storytime', 'playground', 'toddler',
+    '夏令营', 'summer rising', '报名', 'enroll', '入学', '抽签',
+    '租金冻结', 'rent freeze', 'scrie', 'drie', '福利申请', '儿童保育', 'child care', 'childcare',
+    'esl', 'ged', '入籍', 'citizenship', '图书馆课程', '医疗补助', 'medicaid', '低收入'
+  ];
+  return needles.some(n => q.includes(n) || (n.length >= 2 && q.length >= 2 && n.includes(q)));
+}
+
 function hubExpandSearchTerms(raw) {
   const q = hubNormalizeSearchBlob(raw);
   if (!q) return [];
@@ -8325,20 +8341,29 @@ async function goHubSearch(q) {
   const areaHit = hubResolveYpAreaFromQuery(query);
   const nEss = countEssentialPhoneMatches(query);
   const merchantLike = hubQueryLooksLikeMerchant(query);
+  const benefitLike = hubQueryLooksLikeBenefit(query);
 
   let view = 'channels';
-  if (nYp > 0 && (merchantLike || areaHit || nYp >= nCh)) {
-    view = 'yellowpages';
+  if (merchantLike || areaHit) {
+    // 明确的商家名/区域浏览意图 → 社区黄页优先
+    view = nYp > 0 ? 'yellowpages'
+         : nCh > 0 ? 'channels'
+         : nDeal > 0 ? 'deals'
+         : nEss > 0 ? 'yellowpages' : 'channels';
+  } else if (benefitLike && nCh > 0) {
+    // 福利/活动查询 → 民生频道（避免被幼儿园/地产等类目商户淹没）
+    view = 'channels';
   } else if (nDeal > 0 && nDeal >= nCh && nDeal >= nYp) {
     view = 'deals';
-  } else if (nYp > 0) {
-    view = 'yellowpages';
   } else if (nCh > 0) {
-    view = 'channels';
-  } else if (nEss > 0 || merchantLike || areaHit) {
+    // 频道与商户都命中时，默认频道；仅当商户数量压倒性领先才转黄页
+    view = (nYp >= nCh * 3 && !benefitLike) ? 'yellowpages' : 'channels';
+  } else if (nYp > 0) {
     view = 'yellowpages';
   } else if (nDeal > 0) {
     view = 'deals';
+  } else if (nEss > 0) {
+    view = 'yellowpages';
   }
 
   try { localStorage.setItem('hub_view_pref', view); } catch (_) {}
