@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<!-- hub-build: 2026-06-20T17:30ET mobile-v3.3.24 enroll-channels-expand-r1 -->
+<!-- hub-build: 2026-06-20T18:15ET mobile-v3.3.25 enroll-12-cat-labels-r1 -->
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <script>
-    window.HUB_APP_VERSION = '3.3.24';
+    window.HUB_APP_VERSION = '3.3.25';
     (function () {
       var coarse = window.matchMedia('(pointer: coarse)').matches;
       var narrow = window.matchMedia('(max-width: 820px)').matches;
@@ -902,6 +902,28 @@
       grid-template-columns: minmax(0, 1fr) !important;
       gap: 0 !important;
     }
+    .enroll-card-wrap {
+      border-bottom: 1px solid #e5e7eb;
+      background: var(--hub-surface);
+    }
+    .enroll-card-wrap:last-child { border-bottom: none; }
+    .enroll-card-wrap .parks-event-row {
+      border-bottom: none;
+      padding-top: 4px;
+    }
+    .enroll-cat-label {
+      display: inline-block;
+      margin: 10px 0 0 0;
+      padding: 3px 11px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.03em;
+      color: #0f766e;
+      background: rgba(13, 148, 136, 0.12);
+      border: 1px solid rgba(13, 148, 136, 0.22);
+      border-radius: 999px;
+    }
+    .enroll-card-wrap .enroll-cat-label { margin-left: 0; }
     #feed-section,
     #hub-search-panel,
     #neighborhood-filters,
@@ -4676,6 +4698,57 @@ const ENROLLMENT_CURATED_ANCHORS = [
     summary_en: "Half-price MTA transit for eligible low-income residents.",
     url: "https://www.nyc.gov/site/fairfares/index.page",
     enroll_cat: "cat4"
+  },
+  {
+    id: "enroll_bpl_adult",
+    module: "语言·教育",
+    city: "纽约",
+    borough: "Brooklyn",
+    area_zh: "布鲁克林 Brooklyn",
+    area_en: "Brooklyn",
+    date_kind: "service",
+    content_kind: "anchor",
+    score: 102,
+    title_zh: "布鲁克林图书馆成人学习与 ESL",
+    title_en: "Brooklyn Public Library Adult Learning & ESL",
+    summary_zh: "免费成人识字、GED、ESL 与职业课程常年报名。",
+    summary_en: "Free adult literacy, GED, ESL, and workforce courses.",
+    url: "https://www.bklynlibrary.org/adult-learning",
+    enroll_cat: "cat1"
+  },
+  {
+    id: "enroll_scrie",
+    module: "住房·安居",
+    city: "纽约",
+    borough: "Citywide",
+    area_zh: "全市",
+    area_en: "Citywide",
+    date_kind: "service",
+    content_kind: "anchor",
+    score: 100,
+    title_zh: "SCRIE/DRIE 长者租金冻结申请",
+    title_en: "SCRIE/DRIE Senior Rent Freeze",
+    summary_zh: "62 岁及以上符合条件的租户可申请租金冻结（需每年续期）。",
+    summary_en: "Eligible seniors 62+ may apply for rent freeze programs.",
+    url: "https://www.nyc.gov/site/dca/consumers/scrie-drie.page",
+    enroll_cat: "cat4"
+  },
+  {
+    id: "enroll_moma_free",
+    module: "文化·节庆",
+    city: "纽约",
+    borough: "Manhattan",
+    area_zh: "曼哈顿 Manhattan",
+    area_en: "Manhattan",
+    date_kind: "service",
+    content_kind: "anchor",
+    score: 95,
+    title_zh: "MoMA 纽约市民免费周五夜场",
+    title_en: "MoMA Free Friday Nights (NYC Residents)",
+    summary_zh: "每周五下午市民免费入馆（需官网预约）；属常年固定福利。",
+    summary_en: "Weekly Friday free admission for NYC residents; reserve online.",
+    url: "https://www.moma.org/visit/tickets",
+    enroll_cat: "cat3"
   }
 ];
 
@@ -4730,7 +4803,7 @@ function itemMatchesEnrollmentAdvance(i) {
 }
 
 function pickAdvanceEnrollmentItems(maxTotal, excludeIds) {
-  maxTotal = maxTotal || 8;
+  maxTotal = maxTotal || 12;
   excludeIds = excludeIds || new Set();
 
   ITEMS.forEach(item => delete item.customModuleTag);
@@ -4809,14 +4882,15 @@ function pickAdvanceEnrollmentItems(maxTotal, excludeIds) {
   const tags = ENROLL_CAT_TAGS[lang] || ENROLL_CAT_TAGS.zh;
 
   const seed = new Date().getDate();
-  const perCat = 2;
+  const perCat = 3;
 
-  function pickFromCat(list, tagKey, tagLabel) {
+  function pickFromCat(list, catId, tagLabel) {
     if (!list.length) return;
     for (let n = 0; n < perCat && selected.length < maxTotal; n++) {
       const idx = (seed + n) % list.length;
       const item = list[idx];
       if (selected.some(s => s.id === item.id)) continue;
+      item.enroll_cat = item.enroll_cat || catId;
       item.customModuleTag = tagLabel;
       selected.push(item);
     }
@@ -4875,7 +4949,7 @@ function renderLatestUnifiedFeed() {
 
   (streamPick.items || []).forEach(pushItem);
   pickRecent3dItemsClient(allEnrollmentIds).slice(0, 16).forEach(pushItem);
-  pickAdvanceEnrollmentItems(4).forEach(pushItem);
+  pickAdvanceEnrollmentItems(12).forEach(pushItem);
   weekItems.forEach(pushItem);
 
   if (merged.length < 12) {
@@ -4899,7 +4973,7 @@ function renderStreamSections() {
   const stats = resolveHubIndexStats();
   const s = UI_STRINGS[currentLang];
 
-  const enrollItems = pickAdvanceEnrollmentItems(4);
+  const enrollItems = pickAdvanceEnrollmentItems(12);
   
   // 找出所有符合长期官方报名通道条件的项目，将它们彻底从“最新动态”和“未来7日活动”中排除
   const allEnrollmentItems = livelihoodItems().filter(itemMatchesEnrollmentAdvance);
@@ -4960,7 +5034,7 @@ function renderStreamSections() {
   }
   if (enrollSection && enrollFeed) {
     if (enrollItems.length > 0) {
-      enrollFeed.innerHTML = enrollItems.map(i => renderCard(i)).join('');
+      enrollFeed.innerHTML = enrollItems.map(i => renderEnrollCard(i)).join('');
     } else {
       enrollFeed.innerHTML = '<div style="grid-column:1/-1;padding:16px;text-align:center;color:#64748b;font-size:13px;line-height:1.55;">' + (s.enroll_empty || '暂无官方报名公告') + '</div>';
     }
@@ -5911,6 +5985,17 @@ function cardBriefZh(i) {
   if (tpl) return tpl;
   if (mod) return '纽约「' + mod + '」类官方信息，详情与报名见链接。';
   return '纽约社区官方信息，点击可查看中文导读。';
+}
+
+function renderEnrollCard(i) {
+  const tags = ENROLL_CAT_TAGS[currentLang] || ENROLL_CAT_TAGS.zh;
+  const label = i.customModuleTag || (i.enroll_cat ? tags[i.enroll_cat] : '');
+  const inner = Object.assign({}, i);
+  delete inner.customModuleTag;
+  const catHtml = label
+    ? '<div class="enroll-cat-label" aria-label="类别">' + escapeHtml(label) + '</div>'
+    : '';
+  return '<div class="enroll-card-wrap">' + catHtml + renderCard(inner) + '</div>';
 }
 
 function renderWeekCard(i) {
