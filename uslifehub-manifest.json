@@ -1,0 +1,31 @@
+{
+  "name": "美东华人生活圈",
+  "short_name": "华人生活圈",
+  "description": "纽约华人福利、社区活动、民生频道与社区黄页",
+  "start_url": "https://www.uslifehub.org/us-chinese-life-hub.html?view=latest",
+  "scope": "https://www.uslifehub.org/",
+  "display": "standalone",
+  "background_color": "#faf7f2",
+  "theme_color": "#dc2626",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "https://insynbio.com/uslifehub-icon-192.png?v=314",
+      "type": "image/png",
+      "sizes": "192x192",
+      "purpose": "any"
+    },
+    {
+      "src": "https://insynbio.com/uslifehub-icon-512.png?v=314",
+      "type": "image/png",
+      "sizes": "512x512",
+      "purpose": "any"
+    },
+    {
+      "src": "https://insynbio.com/uslifehub-icon-512.png?v=314",
+      "type": "image/png",
+      "sizes": "512x512",
+      "purpose": "maskable"
+    }
+  ]
+}
