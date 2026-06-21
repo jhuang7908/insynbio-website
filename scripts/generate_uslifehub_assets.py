@@ -17,6 +17,8 @@ TEXT_MID = "#64748b"
 TEXT_URL = "#475569"
 TEXT_FOOT = "#78716c"
 HIRES = 512
+ICON_MARK = "华"
+ICON_CDN_VERSION = "315"
 
 FONT_CANDIDATES = [
     Path(r"C:\Windows\Fonts\simhei.ttf"),
@@ -40,40 +42,40 @@ def load_font(size: int) -> ImageFont.FreeTypeFont:
 
 
 def draw_ring_mark(draw: ImageDraw.ImageDraw, size: int) -> None:
-    """Vector 圈 mark — crisp at 16–512 px (no CJK font raster artifacts)."""
+    """Red circle + white「华」— readable at 60–180 px home-screen sizes."""
     cx = cy = size / 2
-    stroke = max(2, round(size * 0.07))
-    outer = size * 0.31
-    inner = size * 0.17
-    draw.ellipse(
-        (cx - outer, cy - outer, cx + outer, cy + outer),
-        outline=WHITE,
-        width=stroke,
-    )
-    draw.ellipse(
-        (cx - inner, cy - inner, cx + inner, cy + inner),
-        outline=WHITE,
-        width=max(2, round(stroke * 0.85)),
-    )
+    font = load_font(max(12, int(size * 0.44)))
+    draw.text((cx, cy), ICON_MARK, fill=WHITE, font=font, anchor="mm")
 
 
-def draw_icon_hires(size: int = HIRES) -> Image.Image:
-    """Red circle + white double-ring mark (crisp at all PWA sizes)."""
+def draw_icon_hires(size: int = HIRES, *, maskable: bool = False) -> Image.Image:
+    """Red circle + white mark; maskable variant keeps mark inside Android safe zone."""
     img = Image.new("RGBA", (size, size), (0, 0, 0, 0))
     draw = ImageDraw.Draw(img)
-    pad = size * 0.06
-    draw.ellipse((pad, pad, size - pad, size - pad), fill=RED_RGB + (255,))
-    draw_ring_mark(draw, size)
+    if maskable:
+        pad = size * 0.12
+        draw.ellipse((pad, pad, size - pad, size - pad), fill=RED_RGB + (255,))
+        inner = size * 0.76
+        ox = (size - inner) / 2
+        font = load_font(max(12, int(inner * 0.44)))
+        draw.text((size / 2, size / 2), ICON_MARK, fill=WHITE, font=font, anchor="mm")
+    else:
+        pad = size * 0.06
+        draw.ellipse((pad, pad, size - pad, size - pad), fill=RED_RGB + (255,))
+        draw_ring_mark(draw, size)
     bg = Image.new("RGB", (size, size), WHITE)
     bg.paste(img, mask=img.split()[3])
     return bg
 
 
-def draw_icon(size: int) -> Image.Image:
-    hires = draw_icon_hires(HIRES)
-    if size == HIRES:
+def draw_icon(size: int, *, maskable: bool = False) -> Image.Image:
+    hires = draw_icon_hires(HIRES, maskable=maskable)
+    if size == HIRES and not maskable:
         return hires
-    return hires.resize((size, size), Image.Resampling.LANCZOS)
+    if size == HIRES and maskable:
+        return draw_icon_hires(HIRES, maskable=True)
+    src = draw_icon_hires(HIRES, maskable=maskable)
+    return src.resize((size, size), Image.Resampling.LANCZOS)
 
 
 def draw_og() -> Image.Image:
@@ -112,8 +114,14 @@ def main() -> None:
     out = args.out_dir
     out.mkdir(parents=True, exist_ok=True)
 
-    for size, name in [(32, "uslifehub-icon-32.png"), (192, "uslifehub-icon-192.png"), (512, "uslifehub-icon-512.png")]:
+    for size, name in [
+        (32, "uslifehub-icon-32.png"),
+        (180, "uslifehub-icon-180.png"),
+        (192, "uslifehub-icon-192.png"),
+        (512, "uslifehub-icon-512.png"),
+    ]:
         draw_icon(size).save(out / name, "PNG", optimize=True)
+    draw_icon(512, maskable=True).save(out / "uslifehub-icon-512-maskable.png", "PNG", optimize=True)
 
     draw_og().save(out / "uslifehub-og.png", "PNG", optimize=True)
     save_favicon_ico([16, 32, 48], out / "favicon.ico")
