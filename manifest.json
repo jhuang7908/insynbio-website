@@ -5,23 +5,23 @@
   "start_url": "/us-chinese-life-hub.html?view=latest",
   "display": "standalone",
   "background_color": "#faf7f2",
-  "theme_color": "#ea580c",
+  "theme_color": "#dc2626",
   "orientation": "portrait-primary",
   "icons": [
     {
-      "src": "https://insynbio.com/uslifehub-icon-192.png?v=312",
+      "src": "/uslifehub-icon-192.png?v=313",
       "type": "image/png",
       "sizes": "192x192",
       "purpose": "any"
     },
     {
-      "src": "https://insynbio.com/uslifehub-icon-512.png?v=312",
+      "src": "/uslifehub-icon-512.png?v=313",
       "type": "image/png",
       "sizes": "512x512",
       "purpose": "any"
     },
     {
-      "src": "https://insynbio.com/uslifehub-icon-512.png?v=312",
+      "src": "/uslifehub-icon-512.png?v=313",
       "type": "image/png",
       "sizes": "512x512",
       "purpose": "maskable"

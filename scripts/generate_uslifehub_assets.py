@@ -8,7 +8,8 @@ from pathlib import Path
 from PIL import Image, ImageDraw, ImageFont
 
 ROOT = Path(__file__).resolve().parents[1]
-ORANGE_RGB = (234, 88, 12)
+RED_RGB = (220, 38, 38)  # red-600 — 手机桌面「红圈」品牌色
+ORANGE_RGB = RED_RGB  # legacy alias
 WHITE = (255, 255, 255)
 BG = "#faf7f2"
 TEXT_DARK = "#1f2937"
@@ -57,12 +58,15 @@ def draw_ring_mark(draw: ImageDraw.ImageDraw, size: int) -> None:
 
 
 def draw_icon_hires(size: int = HIRES) -> Image.Image:
-    img = Image.new("RGB", (size, size), ORANGE_RGB)
+    """Red circle + white double-ring mark (crisp at all PWA sizes)."""
+    img = Image.new("RGBA", (size, size), (0, 0, 0, 0))
     draw = ImageDraw.Draw(img)
-    radius = max(12, size // 6)
-    draw.rounded_rectangle((0, 0, size - 1, size - 1), radius=radius, fill=ORANGE_RGB)
+    pad = size * 0.06
+    draw.ellipse((pad, pad, size - pad, size - pad), fill=RED_RGB + (255,))
     draw_ring_mark(draw, size)
-    return img
+    bg = Image.new("RGB", (size, size), WHITE)
+    bg.paste(img, mask=img.split()[3])
+    return bg
 
 
 def draw_icon(size: int) -> Image.Image:

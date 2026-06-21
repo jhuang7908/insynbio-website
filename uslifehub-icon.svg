@@ -1,4 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512" fill="none">
-  <rect width="512" height="512" rx="96" fill="#ea580c"/>
-  <text x="256" y="270" text-anchor="middle" dominant-baseline="central" font-family="'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="236" font-weight="700" fill="#ffffff">圈</text>
+  <circle cx="256" cy="256" r="240" fill="#dc2626"/>
+  <circle cx="256" cy="256" r="158" stroke="#ffffff" stroke-width="36" fill="none"/>
+  <circle cx="256" cy="256" r="86" stroke="#ffffff" stroke-width="30" fill="none"/>
 </svg>
