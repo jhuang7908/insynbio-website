@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<!-- hub-build: 2026-06-21T12:00ET mobile-v3.3.26 hub-image-cdn-fix-r1 -->
+<!-- hub-build: 2026-06-21T14:30ET mobile-v3.3.27 hub-img-fallback-http-r1 -->
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <script>
-    window.HUB_APP_VERSION = '3.3.26';
+    window.HUB_APP_VERSION = '3.3.27';
     (function () {
       var coarse = window.matchMedia('(pointer: coarse)').matches;
       var narrow = window.matchMedia('(max-width: 820px)').matches;
@@ -3410,11 +3410,14 @@ function hubModuleFallbackPick(item) {
   const mod = (item && item.module) || '文化·节庆';
   const pool = (typeof HUB_MODULE_FALLBACK_POOL !== 'undefined' && HUB_MODULE_FALLBACK_POOL[mod]) || [];
   if (!pool.length) return HUB_IMAGE_FALLBACK;
+  const httpPool = pool.filter(u => String(u).startsWith('http'));
+  const pickFrom = httpPool.length ? httpPool : pool;
   let h = 0;
   const key = String((item && item.id) || (item && item.title_zh) || mod);
   for (let i = 0; i < key.length; i++) h = ((h << 5) - h) + key.charCodeAt(i);
-  const idx = Math.abs(h) % pool.length;
-  return hubAbsolutizeImageUrl(pool[idx] || pool[0] || HUB_IMAGE_FALLBACK);
+  const idx = Math.abs(h) % pickFrom.length;
+  const picked = pickFrom[idx] || pickFrom[0] || HUB_IMAGE_FALLBACK;
+  return hubAbsolutizeImageUrl(picked);
 }
 
 function hubSanitizeImageUrl(url, item) {
