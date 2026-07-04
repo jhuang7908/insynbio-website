@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0",
-  "generated_at": "2026-07-03 17:10",
+  "generated_at": "2026-07-04 12:45",
   "count": 120,
   "fields": [
     "first_indexed_at",
@@ -117,7 +117,7 @@
     {
       "id": "live_006",
       "module": "语言·教育",
-      "title_zh": "社区英语作为第二语言课程",
+      "title_zh": "社区英语作为第二语言",
       "summary_zh": "Education program on www.qcc.cuny.edu — click to enroll or learn more.（来源类型：纽约市立大学 — 继续教育、英语课及成人学习）",
       "location_tag_zh": "全市",
       "location_kind": "citywide",
@@ -129,15 +129,15 @@
       "published_at": "",
       "source_published_at": "",
       "first_indexed_at": "2026-06-15 20:30:26",
-      "last_seen_at": "2026-07-03 13:10:37",
+      "last_seen_at": "2026-07-04 08:45:20",
       "date_kind": "service",
       "url": "https://www.qcc.cuny.edu/ce/programs/community-english-as-a-second-language.html",
-      "search_text": "live_006 语言·教育 社区英语作为第二语言课程 community english as a second language education program on www.qcc.cuny.edu — click to enroll or learn more.（来源类型：纽约市立大学 — 继续教育、英语课及成人学习） 全市 纽约全市 citywide new york city 2026-06-15 20:30:26 https://www.qcc.cuny.edu/ce/programs/community-english-as-a-second-language.html"
+      "search_text": "live_006 语言·教育 社区英语作为第二语言 community english as a second language education program on www.qcc.cuny.edu — click to enroll or learn more.（来源类型：纽约市立大学 — 继续教育、英语课及成人学习） 全市 纽约全市 citywide new york city 2026-06-15 20:30:26 https://www.qcc.cuny.edu/ce/programs/community-english-as-a-second-language.html"
     },
     {
       "id": "live_007",
       "module": "语言·教育",
-      "title_zh": "ESL 和大学预备课程",
+      "title_zh": "英语作为第二语言及大学预备课程",
       "summary_zh": "Education program on www.bmcc.cuny.edu — click to enroll or learn more.（来源类型：纽约市立大学 — 继续教育、英语课及成人学习）",
       "location_tag_zh": "全市",
       "location_kind": "citywide",
@@ -149,15 +149,15 @@
       "published_at": "",
       "source_published_at": "",
       "first_indexed_at": "2026-06-15 20:30:26",
-      "last_seen_at": "2026-07-03 13:10:37",
+      "last_seen_at": "2026-07-04 08:45:20",
       "date_kind": "event",
       "url": "https://www.bmcc.cuny.edu/ce/esl-college-prep/",
-      "search_text": "live_007 语言·教育 esl 和大学预备课程 esl and college prep education program on www.bmcc.cuny.edu — click to enroll or learn more.（来源类型：纽约市立大学 — 继续教育、英语课及成人学习） 全市 纽约全市 citywide new york city 2026-06-15 20:30:26 2026-07-06 https://www.bmcc.cuny.edu/ce/esl-college-prep/"
+      "search_text": "live_007 语言·教育 英语作为第二语言及大学预备课程 esl and college prep education program on www.bmcc.cuny.edu — click to enroll or learn more.（来源类型：纽约市立大学 — 继续教育、英语课及成人学习） 全市 纽约全市 citywide new york city 2026-06-15 20:30:26 2026-07-06 https://www.bmcc.cuny.edu/ce/esl-college-prep/"
     },
     {
       "id": "live_008",
       "module": "语言·教育",
-      "title_zh": "ESL 培训项目",
+      "title_zh": "英语作为第二语言培训项目",
       "summary_zh": "Education program on www.bmcc.cuny.edu — click to enroll or learn more.（来源类型：纽约市立大学 — 继续教育、英语课及成人学习）",
       "location_tag_zh": "全市",
       "location_kind": "citywide",
@@ -169,15 +169,15 @@
       "published_at": "",
       "source_published_at": "",
       "first_indexed_at": "2026-06-15 20:30:26",
-      "last_seen_at": "2026-07-03 13:10:37",
+      "last_seen_at": "2026-07-04 08:45:20",
       "date_kind": "event",
       "url": "https://www.bmcc.cuny.edu/ce/esl-training-programs/",
-      "search_text": "live_008 语言·教育 esl 培训项目 esl training programs education program on www.bmcc.cuny.edu — click to enroll or learn more.（来源类型：纽约市立大学 — 继续教育、英语课及成人学习） 全市 纽约全市 citywide new york city 2026-06-15 20:30:26 2026-07-06 https://www.bmcc.cuny.edu/ce/esl-training-programs/"
+      "search_text": "live_008 语言·教育 英语作为第二语言培训项目 esl training programs education program on www.bmcc.cuny.edu — click to enroll or learn more.（来源类型：纽约市立大学 — 继续教育、英语课及成人学习） 全市 纽约全市 citywide new york city 2026-06-15 20:30:26 2026-07-06 https://www.bmcc.cuny.edu/ce/esl-training-programs/"
     },
     {
       "id": "live_009",
       "module": "语言·教育",
-      "title_zh": "HSE (GED) 和 ESOL 课程",
+      "title_zh": "高中同等学历考试 (GED) 和英语为第二语言 (ESOL) 项目",
       "summary_zh": "Education program on www.bmcc.cuny.edu — click to enroll or learn more.（来源类型：纽约市立大学 — 继续教育、英语课及成人学习）",
       "location_tag_zh": "全市",
       "location_kind": "citywide",
@@ -189,15 +189,15 @@
       "published_at": "",
       "source_published_at": "",
       "first_indexed_at": "2026-06-15 20:30:26",
-      "last_seen_at": "2026-07-03 13:10:37",
+      "last_seen_at": "2026-07-04 08:45:20",
       "date_kind": "event",
       "url": "https://www.bmcc.cuny.edu/ce/hse-ged-and-esol-programs/",
-      "search_text": "live_009 语言·教育 hse (ged) 和 esol 课程 hse (ged) and esol programs education program on www.bmcc.cuny.edu — click to enroll or learn more.（来源类型：纽约市立大学 — 继续教育、英语课及成人学习） 全市 纽约全市 citywide new york city 2026-06-15 20:30:26 2026-07-06 https://www.bmcc.cuny.edu/ce/hse-ged-and-esol-programs/"
+      "search_text": "live_009 语言·教育 高中同等学历考试 (ged) 和英语为第二语言 (esol) 项目 hse (ged) and esol programs education program on www.bmcc.cuny.edu — click to enroll or learn more.（来源类型：纽约市立大学 — 继续教育、英语课及成人学习） 全市 纽约全市 citywide new york city 2026-06-15 20:30:26 2026-07-06 https://www.bmcc.cuny.edu/ce/hse-ged-and-esol-programs/"
     },
     {
       "id": "live_010",
       "module": "语言·教育",
-      "title_zh": "数学和读写能力课程",
+      "title_zh": "数学和读写能力项目",
       "summary_zh": "Education program on www.bmcc.cuny.edu — click to enroll or learn more.（来源类型：纽约市立大学 — 继续教育、英语课及成人学习）",
       "location_tag_zh": "全市",
       "location_kind": "citywide",
@@ -209,15 +209,15 @@
       "published_at": "",
       "source_published_at": "",
       "first_indexed_at": "2026-06-15 20:30:26",
-      "last_seen_at": "2026-07-03 13:10:37",
+      "last_seen_at": "2026-07-04 08:45:20",
       "date_kind": "service",
       "url": "https://www.bmcc.cuny.edu/ce/programs/",
-      "search_text": "live_010 语言·教育 数学和读写能力课程 math and literacy programs education program on www.bmcc.cuny.edu — click to enroll or learn more.（来源类型：纽约市立大学 — 继续教育、英语课及成人学习） 全市 纽约全市 citywide new york city 2026-06-15 20:30:26 https://www.bmcc.cuny.edu/ce/programs/"
+      "search_text": "live_010 语言·教育 数学和读写能力项目 math and literacy programs education program on www.bmcc.cuny.edu — click to enroll or learn more.（来源类型：纽约市立大学 — 继续教育、英语课及成人学习） 全市 纽约全市 citywide new york city 2026-06-15 20:30:26 https://www.bmcc.cuny.edu/ce/programs/"
     },
     {
       "id": "live_011",
       "module": "语言·教育",
-      "title_zh": "高中同等学历 (HSE/GED)",
+      "title_zh": "高中同等学历考试 (HSE/GED)",
       "summary_zh": "Education program on www.kingsborough.edu — click to enroll or learn more.（来源类型：纽约市立大学 — 继续教育、英语课及成人学习）",
       "location_tag_zh": "全市",
       "location_kind": "citywide",
@@ -229,10 +229,10 @@
       "published_at": "2026-04-24",
       "source_published_at": "2026-04-24 06:13:09",
       "first_indexed_at": "2026-06-15 20:30:26",
-      "last_seen_at": "2026-07-03 13:10:37",
+      "last_seen_at": "2026-07-04 08:45:20",
       "date_kind": "event",
       "url": "https://www.kingsborough.edu/ce/hse_courses.html",
-      "search_text": "live_011 语言·教育 高中同等学历 (hse/ged) high school equivalency (hse/ged) education program on www.kingsborough.edu — click to enroll or learn more.（来源类型：纽约市立大学 — 继续教育、英语课及成人学习） 全市 纽约全市 citywide new york city 2026-06-15 20:30:26 2026-04-24 06:13:09 2026-07-06 https://www.kingsborough.edu/ce/hse_courses.html"
+      "search_text": "live_011 语言·教育 高中同等学历考试 (hse/ged) high school equivalency (hse/ged) education program on www.kingsborough.edu — click to enroll or learn more.（来源类型：纽约市立大学 — 继续教育、英语课及成人学习） 全市 纽约全市 citywide new york city 2026-06-15 20:30:26 2026-04-24 06:13:09 2026-07-06 https://www.kingsborough.edu/ce/hse_courses.html"
     },
     {
       "id": "live_012",
@@ -377,7 +377,7 @@
     {
       "id": "live_019",
       "module": "语言·教育",
-      "title_zh": "QCC 皇后区社区学院继续教育游泳项目",
+      "title_zh": "皇后区社区学院 (QCC) 继续教育游泳项目",
       "summary_zh": "Education program on www.qcc.cuny.edu — click to enroll or learn more.（来源类型：纽约市立大学 — 继续教育、英语课及成人学习）",
       "location_tag_zh": "全市",
       "location_kind": "citywide",
@@ -389,10 +389,10 @@
       "published_at": "",
       "source_published_at": "",
       "first_indexed_at": "2026-06-15 20:30:26",
-      "last_seen_at": "2026-07-03 13:10:37",
+      "last_seen_at": "2026-07-04 08:45:20",
       "date_kind": "event",
       "url": "https://www.qcc.cuny.edu/ce/courses/qcc-continuing-education-swim-program.html",
-      "search_text": "live_019 语言·教育 qcc 皇后区社区学院继续教育游泳项目 qcc continuing education swim program education program on www.qcc.cuny.edu — click to enroll or learn more.（来源类型：纽约市立大学 — 继续教育、英语课及成人学习） 全市 纽约全市 citywide new york city 2026-06-15 20:30:26 2026-07-06 https://www.qcc.cuny.edu/ce/courses/qcc-continuing-education-swim-program.html"
+      "search_text": "live_019 语言·教育 皇后区社区学院 (qcc) 继续教育游泳项目 qcc continuing education swim program education program on www.qcc.cuny.edu — click to enroll or learn more.（来源类型：纽约市立大学 — 继续教育、英语课及成人学习） 全市 纽约全市 citywide new york city 2026-06-15 20:30:26 2026-07-06 https://www.qcc.cuny.edu/ce/courses/qcc-continuing-education-swim-program.html"
     },
     {
       "id": "live_020",
@@ -409,7 +409,7 @@
       "published_at": "",
       "source_published_at": "",
       "first_indexed_at": "2026-06-15 20:30:26",
-      "last_seen_at": "2026-07-03 13:10:37",
+      "last_seen_at": "2026-07-04 08:45:20",
       "date_kind": "event",
       "url": "https://www.qcc.cuny.edu/ce/index.html",
       "search_text": "live_020 就业·培训 继续教育劳动力发展 continuing education workforce development education program on www.qcc.cuny.edu — click to enroll or learn more.（来源类型：纽约市立大学 — 继续教育、英语课及成人学习） 全市 纽约全市 citywide new york city 2026-06-15 20:30:26 2026-07-06 https://www.qcc.cuny.edu/ce/index.html"
@@ -429,7 +429,7 @@
       "published_at": "",
       "source_published_at": "",
       "first_indexed_at": "2026-06-15 20:30:26",
-      "last_seen_at": "2026-07-03 13:10:37",
+      "last_seen_at": "2026-07-04 08:45:20",
       "date_kind": "service",
       "url": "https://www.bmcc.cuny.edu/ce/contact/",
       "search_text": "live_021 就业·培训 继续教育劳动力发展中心 center for continuing education workforce development education program on www.bmcc.cuny.edu — click to enroll or learn more.（来源类型：纽约市立大学 — 继续教育、英语课及成人学习） 全市 纽约全市 citywide new york city 2026-06-15 20:30:26 https://www.bmcc.cuny.edu/ce/contact/"
@@ -449,7 +449,7 @@
       "published_at": "",
       "source_published_at": "",
       "first_indexed_at": "2026-06-15 20:30:26",
-      "last_seen_at": "2026-07-03 13:10:37",
+      "last_seen_at": "2026-07-04 08:45:20",
       "date_kind": "event",
       "url": "https://www.bmcc.cuny.edu/ce/bmcc-nyc-workforce-resources/",
       "search_text": "live_022 就业·培训 纽约劳动力资源 new york workforce resources education program on www.bmcc.cuny.edu — click to enroll or learn more.（来源类型：纽约市立大学 — 继续教育、英语课及成人学习） 全市 纽约全市 citywide new york city 2026-06-15 20:30:26 2026-07-06 https://www.bmcc.cuny.edu/ce/bmcc-nyc-workforce-resources/"
@@ -717,7 +717,7 @@
     {
       "id": "live_036",
       "module": "文化·节庆",
-      "title_zh": "皇后区爵士音乐会：Itai Kriss & Televanna",
+      "title_zh": "皇后区爵士音乐之旅音乐会：Itai Kriss & Televanna",
       "summary_zh": "queens jazz trail concert itai kriss televanna（来源类型：纽约市公园局 — 节庆、音乐会及免费活动（主力来源））",
       "location_tag_zh": "皇后区 Queens",
       "location_kind": "borough",
@@ -729,10 +729,10 @@
       "published_at": "",
       "source_published_at": "",
       "first_indexed_at": "2026-06-15 20:30:26",
-      "last_seen_at": "2026-07-02 09:18:03",
+      "last_seen_at": "2026-07-04 08:45:20",
       "date_kind": "event",
       "url": "https://www.nycgovparks.org/events/2026/07/09/queens-jazz-trail-concert-itai-kriss-televanna",
-      "search_text": "live_036 文化·节庆 皇后区爵士音乐会：itai kriss & televanna queens jazz trail concert: itai kriss & televanna queens jazz trail concert itai kriss televanna（来源类型：纽约市公园局 — 节庆、音乐会及免费活动（主力来源）） 皇后区 queens 皇后区 queens queens at 2026-06-15 20:30:26 2026-07-09 https://www.nycgovparks.org/events/2026/07/09/queens-jazz-trail-concert-itai-kriss-televanna"
+      "search_text": "live_036 文化·节庆 皇后区爵士音乐之旅音乐会：itai kriss & televanna queens jazz trail concert: itai kriss & televanna queens jazz trail concert itai kriss televanna（来源类型：纽约市公园局 — 节庆、音乐会及免费活动（主力来源）） 皇后区 queens 皇后区 queens queens at 2026-06-15 20:30:26 2026-07-09 https://www.nycgovparks.org/events/2026/07/09/queens-jazz-trail-concert-itai-kriss-televanna"
     },
     {
       "id": "live_037",
@@ -1923,16 +1923,16 @@
       "location_kind": "citywide",
       "area_zh": "纽约全市",
       "borough": "Citywide",
-      "location": "Kids In Motion Tie Dye",
+      "location": "at",
       "event_date": "2026-07-11",
-      "event_time": "11:00",
+      "event_time": "",
       "published_at": "",
       "source_published_at": "",
       "first_indexed_at": "2026-06-15 20:30:26",
-      "last_seen_at": "2026-06-16 09:02:54",
+      "last_seen_at": "2026-07-04 08:45:20",
       "date_kind": "event",
       "url": "https://www.nycgovparks.org/events/2026/07/11/kids-in-motion-tie-dye",
-      "search_text": "live_096 亲子·公园 动感儿童：扎染 kids in motion: tie dye kids in motion tie dye（来源类型：纽约市公园局 — 节庆、音乐会及免费活动（主力来源）） 全市 纽约全市 citywide kids in motion tie dye 2026-06-15 20:30:26 2026-07-11 https://www.nycgovparks.org/events/2026/07/11/kids-in-motion-tie-dye"
+      "search_text": "live_096 亲子·公园 动感儿童：扎染 kids in motion: tie dye kids in motion tie dye（来源类型：纽约市公园局 — 节庆、音乐会及免费活动（主力来源）） 全市 纽约全市 citywide at 2026-06-15 20:30:26 2026-07-11 https://www.nycgovparks.org/events/2026/07/11/kids-in-motion-tie-dye"
     },
     {
       "id": "live_097",
