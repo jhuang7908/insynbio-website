@@ -5,7 +5,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <script>
-    window.HUB_APP_VERSION = '3.3.28';
+    window.HUB_APP_VERSION = '3.3.29';
     (function () {
       var coarse = window.matchMedia('(pointer: coarse)').matches;
       var narrow = window.matchMedia('(max-width: 820px)').matches;
@@ -2164,7 +2164,7 @@ const UI_STRINGS = {
     week_title: "📅 未来7日活动 · 纽约场次",
     week_hint_balanced: "按活动举办日期：今天起7日内、过期前持续展示（与24h新发布无关），共 {n} 场",
     enroll_title: "🎒 官方报名与长期规划",
-    enroll_hint: "公校入学、成人/中文班、夏令营、公园泳课与健身、福利申请（SNAP/平价房/交通优惠）等官方常年通道",
+    enroll_hint: "公校入学、成人/中文班、夏令营、公园泳课与健身、福利申请等官方通道；有明确活动日期的条目也会出现在上方「7日预告」",
     enroll_empty: "暂无官方报名公告",
     stream_new_label: "24h新增",
     stream_new_suffix: "条",
@@ -2312,7 +2312,7 @@ const UI_STRINGS = {
     week_title: "📅 未來7日活動 · 紐約場次",
     week_hint_balanced: "按活動舉辦日期：今天起7日內、過期前持續展示（與24h新發布無關），共 {n} 場",
     enroll_title: "🎒 官方報名與長期規劃",
-    enroll_hint: "公校入學、成人/中文班、夏令營、公園泳課與健身、福利申請（SNAP/平價房/交通優惠）等官方常年通道",
+    enroll_hint: "公校入學、成人/中文班、夏令營、公園泳課與健身、福利申請等官方通道；有明確活動日期的條目亦會出現在上方「7日預告」",
     enroll_empty: "暫無官方報名公告",
     stream_new_label: "24h新增",
     stream_new_suffix: "條",
@@ -2451,7 +2451,7 @@ const UI_STRINGS = {
     week_title: "📅 Next 7 Days · NYC Events",
     week_hint_balanced: "By event date: today through +7 days; stays listed until the event day passes (independent of 24h new posts) — {n} total",
     enroll_title: "🎒 Official Enrollment & Planning",
-    enroll_hint: "School enrollment, ESL/Chinese classes, summer camps, Parks swim & fitness, benefits (SNAP/housing/transit)",
+    enroll_hint: "School enrollment, classes, camps, Parks programs, benefits — dated sessions also appear in the 7-day preview above when applicable",
     enroll_empty: "No official enrollment notices yet",
     stream_new_label: "24h new",
     stream_new_suffix: "",
@@ -4945,11 +4945,9 @@ function renderLatestUnifiedFeed() {
   if (!feed) return;
 
   const stats = resolveHubIndexStats();
-  const allEnrollmentIds = new Set(
-    livelihoodItems().filter(itemMatchesEnrollmentAdvance).map(i => i.id)
-  );
-  const streamPick = pickFeaturedStreamItems(stats, allEnrollmentIds);
-  const weekItems = pickWeekItemsUpcoming(allEnrollmentIds);
+  // Time-based feeds only — enrollment items may also appear in 官方报名 (no cross-section exclusion).
+  const streamPick = pickFeaturedStreamItems(stats);
+  const weekItems = pickWeekItemsUpcoming();
 
   const seen = new Set();
   const merged = [];
@@ -4962,7 +4960,7 @@ function renderLatestUnifiedFeed() {
   };
 
   (streamPick.items || []).forEach(pushItem);
-  pickRecent3dItemsClient(allEnrollmentIds).slice(0, 16).forEach(pushItem);
+  pickRecent3dItemsClient().slice(0, 16).forEach(pushItem);
   pickAdvanceEnrollmentItems(12).forEach(pushItem);
   weekItems.forEach(pushItem);
 
@@ -4988,13 +4986,10 @@ function renderStreamSections() {
   const s = UI_STRINGS[currentLang];
 
   const enrollItems = pickAdvanceEnrollmentItems(12);
-  
-  // 找出所有符合长期官方报名通道条件的项目，将它们彻底从“最新动态”和“未来7日活动”中排除
-  const allEnrollmentItems = livelihoodItems().filter(itemMatchesEnrollmentAdvance);
-  const allEnrollmentIds = new Set(allEnrollmentItems.map(i => i.id));
 
   // ── 24h 子栏：按「新发布/收录时间」(isNewIn24h)，与活动举办日期无关 ──
-  const streamPick = pickFeaturedStreamItems(stats, allEnrollmentIds);
+  // 报名/课程可与「官方报名」重复展示，各栏仅按时间规则筛选。
+  const streamPick = pickFeaturedStreamItems(stats);
   // Deduplicate streamPick.items by title to prevent duplicate cards
   const seenTodayTitles = new Set();
   const uniqueTodayItems = [];
@@ -5009,8 +5004,7 @@ function renderStreamSections() {
   updateTodayStreamHeading(streamPick.mode);
 
   // ── 7天子栏：按「活动举办日期」(getWeekEventDate)；不因曾出现在24h栏而撤下 ──
-  const weekExclude = new Set([...allEnrollmentIds]);
-  const weekItems = pickWeekItemsUpcoming(weekExclude);
+  const weekItems = pickWeekItemsUpcoming();
   const weekHintEl = document.getElementById('week-hint');
   if (weekHintEl) {
     if (weekItems.length > 0) {
