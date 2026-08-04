@@ -6,6 +6,38 @@
 
 ---
 
+## [2026-08-03] VHH CMC AbNatiV 文案/阈值一致性 + 前端 stale-preset-label + 部署卫生
+
+**类型:** `[OBSERVATION]`  
+**状态:** LOGGED（生产已部署 `7a70bd24`；部分后续债仍为 WARN）
+
+### 背景
+客户序列经 Therasik / 本地 CMC 对照时发现：(1) VH-like sdAb（engineered_vh / transgenic 等）负 AbNatiV Δ 在引擎侧已按 origin 标 PASS，但 HTML 报告 verdict 仍写「needs engineering」；(2) 本地 `vhh_profiler` 的 TNP-approx PSH 与官方 CMC 报告的 clinical SASA PSH 数值不可比；(3) 网页 demo 预设名（如 7D12）在用户直接粘贴自定义序列时未清空。Owner 要求前后端与线上共用唯一算法真实源。
+
+### 已执行修复（origin/master）
+1. **`e4abb873`** — `api/routers/cmc.py`：`_delta_interp()` 增加 origin-aware 分支，与 `core/cmc/vhh_cmc_engine.py` 的 `_is_vh_like_sdab` 六值集合对齐（`engineered_vh`, `atlas24`, `engineered`, `transgenic_sdab`, `transgenic`, `porustobart`）。`core/vhh/vhh_profiler.py` 新增（并委托）`compute_vhh_structural_metrics` / `flag_metric` 输出 `psh_clinical_sasa` 等，与官方 CMC 阈值同源；保留 `tnp_psh` 为 advisory 另一尺度。
+2. **`7a70bd24`** — `api/static/console.html`（build v814）与 `api/static/therasik_console.html`（build v840）：前端 `_isVhLikeSdAb` 由 3 值补全为同上 6 值；新增 `handleSeqManualEdit` + `cmc-vh`/`cmc-vl`/`vhh-cmc-seq` 的 `oninput`，手动改序列时清空 demo 下拉与名称。
+3. **生产部署：** Hetzner `~/Antibody-Engineer-Suite-MVP`，服务名为 **`insynbio-api.service`**（非文档旧称 `abenginecore`）。`git pull` + `systemctl restart insynbio-api` 后 health `git_sha=7a70bd24`；静态页版本号已核实。
+
+### 推送方式观察（仓库卫生）
+- 本地 `master` 严重偏离（当时约 ahead 8 / behind 138）且工作区大量无关脏文件；小修复采用 **detached worktree off `origin/master` → 只拷目标文件 → 精确 add → push**，避免把本地分叉一并推上。
+- 本地 tip `6aa016a9` 与远端 `e4abb873` 对 `cmc.py` 的改动经 diff 为空，属**同逻辑双 hash 重复提交**——未来若 reconcile 本地 master 需跳过/合并该重复点。
+- 生产机 pull 曾被大量未跟踪同名文件挡住；整批挪至 `/root/_pull_blockers_*` 后 `--ff-only` 成功。
+
+### 专家评估残留（WARN，非本轮阻塞）
+- **Camelid 路径：** 前端仍用简化三档（Δ≥0 PASS / ≥−0.05 WARN / else FAIL）本地重算 badge，与后端 `abnativ_naturalness_layer` 五档（含 ±0.020 / −0.074）在边界值可能分叉（UI 偏严、报告偏松）。VH-like 路径已一致。建议后续 JSON 返回 `abnativ_delta_flag`/`verdict`，前端只渲染（SSOT）。
+- **`scripts/run_vhh_profiler.py` CSV** 仍缺 `*_clinical_sasa` 数值列。
+- **`core/cmc/vhh_fr_mutation_sites.py`** 仍手抄同一 origin 六值（第三份副本）；内容当前对齐，有漂移风险。
+- **入口：** `console.therasik.com` / `console.insynbio.com` 正常；合同中的 `insynbio.com/console` 线上仍 404。
+- **文档债：** `VHVL_WEB_CONSOLE_CONTRACT.md` §8 仍写 `systemctl restart abenginecore`，与生产 `insynbio-api` 不一致，易误导运维。
+
+### 不涉及
+本观察**未**改 LOCKED 标准/阈值文件；`e4abb873`/`7a70bd24` 为一致性 bugfix，不触发 UPGRADE PROTOCOL 版本 bump。
+
+---
+
+---
+
 ## 文件分类体系
 
 | 分类 | 标记 | Agent 权限 | 示例 |
