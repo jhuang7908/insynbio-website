@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0",
-  "generated_at": "2026-08-12 12:10",
-  "count": 103,
+  "generated_at": "2026-08-12 12:27",
+  "count": 102,
   "fields": [
     "first_indexed_at",
     "source_published_at",
@@ -37,7 +37,7 @@
     {
       "id": "live_002",
       "module": "语言·教育",
-      "title_zh": "英语作为第二语言和大学预备",
+      "title_zh": "ESL and College Prep",
       "summary_zh": "Education program on www.bmcc.cuny.edu — click to enroll or learn more.（来源类型：纽约市立大学 — 继续教育、英语课及成人学习）",
       "location_tag_zh": "全市",
       "location_kind": "citywide",
@@ -49,15 +49,15 @@
       "published_at": "",
       "source_published_at": "",
       "first_indexed_at": "2026-06-15 20:30:26",
-      "last_seen_at": "2026-08-12 08:10:02",
+      "last_seen_at": "2026-08-12 08:27:42",
       "date_kind": "event",
       "url": "https://www.bmcc.cuny.edu/ce/esl-college-prep/",
-      "search_text": "live_002 语言·教育 英语作为第二语言和大学预备 esl and college prep education program on www.bmcc.cuny.edu — click to enroll or learn more.（来源类型：纽约市立大学 — 继续教育、英语课及成人学习） 全市 纽约全市 citywide new york city 2026-06-15 20:30:26 2026-08-17 https://www.bmcc.cuny.edu/ce/esl-college-prep/"
+      "search_text": "live_002 语言·教育 esl and college prep esl and college prep education program on www.bmcc.cuny.edu — click to enroll or learn more.（来源类型：纽约市立大学 — 继续教育、英语课及成人学习） 全市 纽约全市 citywide new york city 2026-06-15 20:30:26 2026-08-17 https://www.bmcc.cuny.edu/ce/esl-college-prep/"
     },
     {
       "id": "live_003",
       "module": "语言·教育",
-      "title_zh": "英语作为第二语言培训项目",
+      "title_zh": "ESL Training Programs",
       "summary_zh": "Education program on www.bmcc.cuny.edu — click to enroll or learn more.（来源类型：纽约市立大学 — 继续教育、英语课及成人学习）",
       "location_tag_zh": "全市",
       "location_kind": "citywide",
@@ -69,15 +69,15 @@
       "published_at": "",
       "source_published_at": "",
       "first_indexed_at": "2026-06-15 20:30:26",
-      "last_seen_at": "2026-08-12 08:10:02",
+      "last_seen_at": "2026-08-12 08:27:42",
       "date_kind": "event",
       "url": "https://www.bmcc.cuny.edu/ce/esl-training-programs/",
-      "search_text": "live_003 语言·教育 英语作为第二语言培训项目 esl training programs education program on www.bmcc.cuny.edu — click to enroll or learn more.（来源类型：纽约市立大学 — 继续教育、英语课及成人学习） 全市 纽约全市 citywide new york city 2026-06-15 20:30:26 2026-08-17 https://www.bmcc.cuny.edu/ce/esl-training-programs/"
+      "search_text": "live_003 语言·教育 esl training programs esl training programs education program on www.bmcc.cuny.edu — click to enroll or learn more.（来源类型：纽约市立大学 — 继续教育、英语课及成人学习） 全市 纽约全市 citywide new york city 2026-06-15 20:30:26 2026-08-17 https://www.bmcc.cuny.edu/ce/esl-training-programs/"
     },
     {
       "id": "live_004",
       "module": "语言·教育",
-      "title_zh": "HSE（GED）和ESOL项目",
+      "title_zh": "HSE (GED) and ESOL Programs",
       "summary_zh": "Education program on www.bmcc.cuny.edu — click to enroll or learn more.（来源类型：纽约市立大学 — 继续教育、英语课及成人学习）",
       "location_tag_zh": "全市",
       "location_kind": "citywide",
@@ -89,15 +89,15 @@
       "published_at": "",
       "source_published_at": "",
       "first_indexed_at": "2026-06-15 20:30:26",
-      "last_seen_at": "2026-08-12 08:10:02",
+      "last_seen_at": "2026-08-12 08:27:42",
       "date_kind": "event",
       "url": "https://www.bmcc.cuny.edu/ce/hse-ged-and-esol-programs/",
-      "search_text": "live_004 语言·教育 hse（ged）和esol项目 hse (ged) and esol programs education program on www.bmcc.cuny.edu — click to enroll or learn more.（来源类型：纽约市立大学 — 继续教育、英语课及成人学习） 全市 纽约全市 citywide new york city 2026-06-15 20:30:26 2026-08-17 https://www.bmcc.cuny.edu/ce/hse-ged-and-esol-programs/"
+      "search_text": "live_004 语言·教育 hse (ged) and esol programs hse (ged) and esol programs education program on www.bmcc.cuny.edu — click to enroll or learn more.（来源类型：纽约市立大学 — 继续教育、英语课及成人学习） 全市 纽约全市 citywide new york city 2026-06-15 20:30:26 2026-08-17 https://www.bmcc.cuny.edu/ce/hse-ged-and-esol-programs/"
     },
     {
       "id": "live_005",
       "module": "语言·教育",
-      "title_zh": "高中同等学历（HSE/GED）",
+      "title_zh": "High School Equivalency (HSE/GED)",
       "summary_zh": "Education program on www.kingsborough.edu — click to enroll or learn more.（来源类型：纽约市立大学 — 继续教育、英语课及成人学习）",
       "location_tag_zh": "全市",
       "location_kind": "citywide",
@@ -109,10 +109,10 @@
       "published_at": "2026-04-24",
       "source_published_at": "2026-04-24 06:13:09",
       "first_indexed_at": "2026-06-15 20:30:26",
-      "last_seen_at": "2026-08-12 08:10:02",
+      "last_seen_at": "2026-08-12 08:27:42",
       "date_kind": "event",
       "url": "https://www.kingsborough.edu/ce/hse_courses.html",
-      "search_text": "live_005 语言·教育 高中同等学历（hse/ged） high school equivalency (hse/ged) education program on www.kingsborough.edu — click to enroll or learn more.（来源类型：纽约市立大学 — 继续教育、英语课及成人学习） 全市 纽约全市 citywide new york city 2026-06-15 20:30:26 2026-04-24 06:13:09 2026-08-17 https://www.kingsborough.edu/ce/hse_courses.html"
+      "search_text": "live_005 语言·教育 high school equivalency (hse/ged) high school equivalency (hse/ged) education program on www.kingsborough.edu — click to enroll or learn more.（来源类型：纽约市立大学 — 继续教育、英语课及成人学习） 全市 纽约全市 citywide new york city 2026-06-15 20:30:26 2026-04-24 06:13:09 2026-08-17 https://www.kingsborough.edu/ce/hse_courses.html"
     },
     {
       "id": "live_006",
@@ -157,8 +157,8 @@
     {
       "id": "live_008",
       "module": "亲子·公园",
-      "title_zh": "动感儿童：艾尔姆赫斯特公园",
-      "summary_zh": "游乐场（位于艾姆赫斯特公园 Elmhurst Park）（来源类型：nyc_parks_opendata_fallback）",
+      "title_zh": "Kids In Motion: Elmhurst Park",
+      "summary_zh": "Playground (in Elmhurst Park)（来源类型：nyc_parks_opendata_fallback）",
       "location_tag_zh": "艾姆赫斯特 Elmhurst",
       "location_kind": "enclave",
       "area_zh": "艾姆赫斯特 Elmhurst",
@@ -169,10 +169,10 @@
       "published_at": "",
       "source_published_at": "",
       "first_indexed_at": "2026-08-11 23:03:58",
-      "last_seen_at": "2026-08-12 08:10:02",
+      "last_seen_at": "2026-08-12 08:27:42",
       "date_kind": "event",
       "url": "https://www.nycgovparks.org/events/2026/08/12/kids-in-motion-elmhurst-park",
-      "search_text": "live_008 亲子·公园 动感儿童：艾尔姆赫斯特公园 kids in motion: elmhurst park 游乐场（位于艾姆赫斯特公园 elmhurst park）（来源类型：nyc_parks_opendata_fallback） 艾姆赫斯特 elmhurst 艾姆赫斯特 elmhurst queens playground (in elmhurst park) 2026-08-11 23:03:58 2026-08-12 https://www.nycgovparks.org/events/2026/08/12/kids-in-motion-elmhurst-park"
+      "search_text": "live_008 亲子·公园 kids in motion: elmhurst park kids in motion: elmhurst park playground (in elmhurst park)（来源类型：nyc_parks_opendata_fallback） 艾姆赫斯特 elmhurst 艾姆赫斯特 elmhurst queens playground (in elmhurst park) 2026-08-11 23:03:58 2026-08-12 https://www.nycgovparks.org/events/2026/08/12/kids-in-motion-elmhurst-park"
     },
     {
       "id": "live_009",
@@ -237,7 +237,7 @@
     {
       "id": "live_012",
       "module": "就业·培训",
-      "title_zh": "纽约劳动力资源",
+      "title_zh": "New York Workforce Resources",
       "summary_zh": "Education program on www.bmcc.cuny.edu — click to enroll or learn more.（来源类型：纽约市立大学 — 继续教育、英语课及成人学习）",
       "location_tag_zh": "全市",
       "location_kind": "citywide",
@@ -249,10 +249,10 @@
       "published_at": "",
       "source_published_at": "",
       "first_indexed_at": "2026-06-15 20:30:26",
-      "last_seen_at": "2026-08-12 08:10:02",
+      "last_seen_at": "2026-08-12 08:27:42",
       "date_kind": "event",
       "url": "https://www.bmcc.cuny.edu/ce/bmcc-nyc-workforce-resources/",
-      "search_text": "live_012 就业·培训 纽约劳动力资源 new york workforce resources education program on www.bmcc.cuny.edu — click to enroll or learn more.（来源类型：纽约市立大学 — 继续教育、英语课及成人学习） 全市 纽约全市 citywide new york city 2026-06-15 20:30:26 2026-08-17 https://www.bmcc.cuny.edu/ce/bmcc-nyc-workforce-resources/"
+      "search_text": "live_012 就业·培训 new york workforce resources new york workforce resources education program on www.bmcc.cuny.edu — click to enroll or learn more.（来源类型：纽约市立大学 — 继续教育、英语课及成人学习） 全市 纽约全市 citywide new york city 2026-06-15 20:30:26 2026-08-17 https://www.bmcc.cuny.edu/ce/bmcc-nyc-workforce-resources/"
     },
     {
       "id": "live_013",
@@ -457,8 +457,8 @@
     {
       "id": "live_023",
       "module": "健身·户外",
-      "title_zh": "与Maria Assis一起的Zumba",
-      "summary_zh": "在高线公园 30 街（位于高线 The High Line）（来源类型：nyc_parks_opendata_fallback）",
+      "title_zh": "Zumba with Maria Assis",
+      "summary_zh": "On the High Line at 30th St. (in The High Line)（来源类型：nyc_parks_opendata_fallback）",
       "location_tag_zh": "全市",
       "location_kind": "citywide",
       "area_zh": "纽约全市",
@@ -469,10 +469,10 @@
       "published_at": "",
       "source_published_at": "",
       "first_indexed_at": "2026-08-11 23:03:58",
-      "last_seen_at": "2026-08-12 08:10:02",
+      "last_seen_at": "2026-08-12 08:27:42",
       "date_kind": "event",
       "url": "https://www.nycgovparks.org/events/2026/08/12/zumba-with-maria-assis",
-      "search_text": "live_023 健身·户外 与maria assis一起的zumba zumba with maria assis 在高线公园 30 街（位于高线 the high line）（来源类型：nyc_parks_opendata_fallback） 全市 纽约全市 citywide on the high line at 30th st. (in the high line) 2026-08-11 23:03:58 2026-08-12 https://www.nycgovparks.org/events/2026/08/12/zumba-with-maria-assis"
+      "search_text": "live_023 健身·户外 zumba with maria assis zumba with maria assis on the high line at 30th st. (in the high line)（来源类型：nyc_parks_opendata_fallback） 全市 纽约全市 citywide on the high line at 30th st. (in the high line) 2026-08-11 23:03:58 2026-08-12 https://www.nycgovparks.org/events/2026/08/12/zumba-with-maria-assis"
     },
     {
       "id": "live_024",
@@ -596,7 +596,7 @@
     },
     {
       "id": "live_030",
-      "module": "健身·户外",
+      "module": "文化·节庆",
       "title_zh": "已取消：Rise&Restore 循环训练",
       "summary_zh": "这个循环训练课程结合了自身体重的抗阻训练和体能训练，为您提供动态的全身锻炼。无论您是初学者还是寻求挑战；这个课程适合所有健身水平…",
       "location_tag_zh": "全市",
@@ -612,7 +612,7 @@
       "last_seen_at": "2026-08-11 23:03:58",
       "date_kind": "event",
       "url": "https://www.nycgovparks.org/events/2026/08/15/riserestore-circuit-training",
-      "search_text": "live_030 健身·户外 已取消：rise&restore 循环训练 canceled: rise&restore circuit training 这个循环训练课程结合了自身体重的抗阻训练和体能训练，为您提供动态的全身锻炼。无论您是初学者还是寻求挑战；这个课程适合所有健身水平… 全市 纽约全市 citywide dance room (in highbridge park) 2026-08-11 23:03:58 2026-08-15 https://www.nycgovparks.org/events/2026/08/15/riserestore-circuit-training"
+      "search_text": "live_030 文化·节庆 已取消：rise&restore 循环训练 canceled: rise&restore circuit training 这个循环训练课程结合了自身体重的抗阻训练和体能训练，为您提供动态的全身锻炼。无论您是初学者还是寻求挑战；这个课程适合所有健身水平… 全市 纽约全市 citywide dance room (in highbridge park) 2026-08-11 23:03:58 2026-08-15 https://www.nycgovparks.org/events/2026/08/15/riserestore-circuit-training"
     },
     {
       "id": "live_031",
@@ -636,7 +636,7 @@
     },
     {
       "id": "live_032",
-      "module": "健身·户外",
+      "module": "文化·节庆",
       "title_zh": "已取消：intenSati",
       "summary_zh": "在 intenSati 中，我们将通过这堂流汗、心跳加速、提升情绪的有氧课程来激发您的身体、心灵和心。课程在 Myrt… 的 Schaefer 上士草坪举行。（来源类型：nyc_parks_opendata_fallback）",
       "location_tag_zh": "全市",
@@ -652,7 +652,7 @@
       "last_seen_at": "2026-08-11 23:03:58",
       "date_kind": "event",
       "url": "https://www.nycgovparks.org/events/2026/08/12/intensati",
-      "search_text": "live_032 健身·户外 已取消：intensati canceled: intensati 在 intensati 中，我们将通过这堂流汗、心跳加速、提升情绪的有氧课程来激发您的身体、心灵和心。课程在 myrt… 的 schaefer 上士草坪举行。（来源类型：nyc_parks_opendata_fallback） 全市 纽约全市 citywide myrtle avenue and park lane south (in forest park) 2026-08-11 23:03:58 2026-08-12 https://www.nycgovparks.org/events/2026/08/12/intensati"
+      "search_text": "live_032 文化·节庆 已取消：intensati canceled: intensati 在 intensati 中，我们将通过这堂流汗、心跳加速、提升情绪的有氧课程来激发您的身体、心灵和心。课程在 myrt… 的 schaefer 上士草坪举行。（来源类型：nyc_parks_opendata_fallback） 全市 纽约全市 citywide myrtle avenue and park lane south (in forest park) 2026-08-11 23:03:58 2026-08-12 https://www.nycgovparks.org/events/2026/08/12/intensati"
     },
     {
       "id": "live_033",
@@ -697,7 +697,7 @@
     {
       "id": "live_035",
       "module": "语言·教育",
-      "title_zh": "数学和读写能力项目",
+      "title_zh": "Math and Literacy Programs",
       "summary_zh": "Education program on www.bmcc.cuny.edu — click to enroll or learn more.（来源类型：纽约市立大学 — 继续教育、英语课及成人学习）",
       "location_tag_zh": "全市",
       "location_kind": "citywide",
@@ -709,10 +709,10 @@
       "published_at": "",
       "source_published_at": "",
       "first_indexed_at": "2026-06-15 20:30:26",
-      "last_seen_at": "2026-08-12 08:10:02",
+      "last_seen_at": "2026-08-12 08:27:42",
       "date_kind": "service",
       "url": "https://www.bmcc.cuny.edu/ce/programs/",
-      "search_text": "live_035 语言·教育 数学和读写能力项目 math and literacy programs education program on www.bmcc.cuny.edu — click to enroll or learn more.（来源类型：纽约市立大学 — 继续教育、英语课及成人学习） 全市 纽约全市 citywide new york city 2026-06-15 20:30:26 https://www.bmcc.cuny.edu/ce/programs/"
+      "search_text": "live_035 语言·教育 math and literacy programs math and literacy programs education program on www.bmcc.cuny.edu — click to enroll or learn more.（来源类型：纽约市立大学 — 继续教育、英语课及成人学习） 全市 纽约全市 citywide new york city 2026-06-15 20:30:26 https://www.bmcc.cuny.edu/ce/programs/"
     },
     {
       "id": "live_036",
@@ -737,7 +737,7 @@
     {
       "id": "live_037",
       "module": "就业·培训",
-      "title_zh": "继续教育与劳动力发展中心",
+      "title_zh": "Center for Continuing Education Workforce Development",
       "summary_zh": "Education program on www.bmcc.cuny.edu — click to enroll or learn more.（来源类型：纽约市立大学 — 继续教育、英语课及成人学习）",
       "location_tag_zh": "全市",
       "location_kind": "citywide",
@@ -749,10 +749,10 @@
       "published_at": "",
       "source_published_at": "",
       "first_indexed_at": "2026-06-15 20:30:26",
-      "last_seen_at": "2026-08-12 08:10:02",
+      "last_seen_at": "2026-08-12 08:27:42",
       "date_kind": "service",
       "url": "https://www.bmcc.cuny.edu/ce/contact/",
-      "search_text": "live_037 就业·培训 继续教育与劳动力发展中心 center for continuing education workforce development education program on www.bmcc.cuny.edu — click to enroll or learn more.（来源类型：纽约市立大学 — 继续教育、英语课及成人学习） 全市 纽约全市 citywide new york city 2026-06-15 20:30:26 https://www.bmcc.cuny.edu/ce/contact/"
+      "search_text": "live_037 就业·培训 center for continuing education workforce development center for continuing education workforce development education program on www.bmcc.cuny.edu — click to enroll or learn more.（来源类型：纽约市立大学 — 继续教育、英语课及成人学习） 全市 纽约全市 citywide new york city 2026-06-15 20:30:26 https://www.bmcc.cuny.edu/ce/contact/"
     },
     {
       "id": "live_038",
@@ -1317,26 +1317,6 @@
     {
       "id": "live_066",
       "module": "交通·出行",
-      "title_zh": "委员会",
-      "summary_zh": "来自纽约市议会 - 社区活动的官方/正式机构页面，具体时间、地点、报名要求以官网为准。（来源类型：纽约市议会 - 社区活动）",
-      "location_tag_zh": "全市",
-      "location_kind": "citywide",
-      "area_zh": "纽约全市",
-      "borough": "Citywide",
-      "location": "",
-      "event_date": "",
-      "event_time": "",
-      "published_at": "",
-      "source_published_at": "",
-      "first_indexed_at": "2026-08-11 23:03:58",
-      "last_seen_at": "2026-08-11 23:03:58",
-      "date_kind": "service",
-      "url": "https://council.nyc.gov/committees/",
-      "search_text": "live_066 交通·出行 委员会 committees 来自纽约市议会 - 社区活动的官方/正式机构页面，具体时间、地点、报名要求以官网为准。（来源类型：纽约市议会 - 社区活动） 全市 纽约全市 citywide 2026-08-11 23:03:58 https://council.nyc.gov/committees/"
-    },
-    {
-      "id": "live_067",
-      "module": "交通·出行",
       "title_zh": "土地使用",
       "summary_zh": "来自纽约市议会 - 社区活动的官方/正式机构页面，具体时间、地点、报名要求以官网为准。（来源类型：纽约市议会 - 社区活动）",
       "location_tag_zh": "全市",
@@ -1352,50 +1332,10 @@
       "last_seen_at": "2026-08-11 23:03:58",
       "date_kind": "service",
       "url": "https://council.nyc.gov/land-use/",
-      "search_text": "live_067 交通·出行 土地使用 land use 来自纽约市议会 - 社区活动的官方/正式机构页面，具体时间、地点、报名要求以官网为准。（来源类型：纽约市议会 - 社区活动） 全市 纽约全市 citywide 2026-08-11 23:03:58 https://council.nyc.gov/land-use/"
+      "search_text": "live_066 交通·出行 土地使用 land use 来自纽约市议会 - 社区活动的官方/正式机构页面，具体时间、地点、报名要求以官网为准。（来源类型：纽约市议会 - 社区活动） 全市 纽约全市 citywide 2026-08-11 23:03:58 https://council.nyc.gov/land-use/"
     },
     {
-      "id": "live_068",
-      "module": "交通·出行",
-      "title_zh": "立法",
-      "summary_zh": "来自纽约市议会 - 社区活动的官方/正式机构页面，具体时间、地点、报名要求以官网为准。（来源类型：纽约市议会 - 社区活动）",
-      "location_tag_zh": "全市",
-      "location_kind": "citywide",
-      "area_zh": "纽约全市",
-      "borough": "Citywide",
-      "location": "",
-      "event_date": "",
-      "event_time": "",
-      "published_at": "",
-      "source_published_at": "",
-      "first_indexed_at": "2026-08-11 23:03:58",
-      "last_seen_at": "2026-08-11 23:03:58",
-      "date_kind": "service",
-      "url": "https://legistar.council.nyc.gov/Legislation.aspx",
-      "search_text": "live_068 交通·出行 立法 legislation 来自纽约市议会 - 社区活动的官方/正式机构页面，具体时间、地点、报名要求以官网为准。（来源类型：纽约市议会 - 社区活动） 全市 纽约全市 citywide 2026-08-11 23:03:58 https://legistar.council.nyc.gov/legislation.aspx"
-    },
-    {
-      "id": "live_069",
-      "module": "交通·出行",
-      "title_zh": "直播",
-      "summary_zh": "来自纽约市议会 - 社区活动的官方/正式机构页面，具体时间、地点、报名要求以官网为准。（来源类型：纽约市议会 - 社区活动）",
-      "location_tag_zh": "全市",
-      "location_kind": "citywide",
-      "area_zh": "纽约全市",
-      "borough": "Citywide",
-      "location": "",
-      "event_date": "",
-      "event_time": "",
-      "published_at": "",
-      "source_published_at": "",
-      "first_indexed_at": "2026-08-11 23:03:58",
-      "last_seen_at": "2026-08-11 23:03:58",
-      "date_kind": "service",
-      "url": "https://council.nyc.gov/livestream/",
-      "search_text": "live_069 交通·出行 直播 livestream 来自纽约市议会 - 社区活动的官方/正式机构页面，具体时间、地点、报名要求以官网为准。（来源类型：纽约市议会 - 社区活动） 全市 纽约全市 citywide 2026-08-11 23:03:58 https://council.nyc.gov/livestream/"
-    },
-    {
-      "id": "live_070",
+      "id": "live_067",
       "module": "交通·出行",
       "title_zh": "党团会议",
       "summary_zh": "来自纽约市议会 - 社区活动的官方/正式机构页面，具体时间、地点、报名要求以官网为准。（来源类型：纽约市议会 - 社区活动）",
@@ -1412,10 +1352,10 @@
       "last_seen_at": "2026-08-11 23:03:58",
       "date_kind": "service",
       "url": "https://council.nyc.gov/caucuses/",
-      "search_text": "live_070 交通·出行 党团会议 caucuses 来自纽约市议会 - 社区活动的官方/正式机构页面，具体时间、地点、报名要求以官网为准。（来源类型：纽约市议会 - 社区活动） 全市 纽约全市 citywide 2026-08-11 23:03:58 https://council.nyc.gov/caucuses/"
+      "search_text": "live_067 交通·出行 党团会议 caucuses 来自纽约市议会 - 社区活动的官方/正式机构页面，具体时间、地点、报名要求以官网为准。（来源类型：纽约市议会 - 社区活动） 全市 纽约全市 citywide 2026-08-11 23:03:58 https://council.nyc.gov/caucuses/"
     },
     {
-      "id": "live_071",
+      "id": "live_068",
       "module": "交通·出行",
       "title_zh": "访问市议会",
       "summary_zh": "来自纽约市议会 - 社区活动的官方/正式机构页面，具体时间、地点、报名要求以官网为准。（来源类型：纽约市议会 - 社区活动）",
@@ -1432,30 +1372,10 @@
       "last_seen_at": "2026-08-11 23:03:58",
       "date_kind": "service",
       "url": "https://council.nyc.gov/visit-the-council/",
-      "search_text": "live_071 交通·出行 访问市议会 visit the council 来自纽约市议会 - 社区活动的官方/正式机构页面，具体时间、地点、报名要求以官网为准。（来源类型：纽约市议会 - 社区活动） 全市 纽约全市 citywide 2026-08-11 23:03:58 https://council.nyc.gov/visit-the-council/"
+      "search_text": "live_068 交通·出行 访问市议会 visit the council 来自纽约市议会 - 社区活动的官方/正式机构页面，具体时间、地点、报名要求以官网为准。（来源类型：纽约市议会 - 社区活动） 全市 纽约全市 citywide 2026-08-11 23:03:58 https://council.nyc.gov/visit-the-council/"
     },
     {
-      "id": "live_072",
-      "module": "安全·突发",
-      "title_zh": "老年人",
-      "summary_zh": "来自纽约市应急管理局的官方/正式机构页面，具体时间、地点、报名要求以官网为准。（来源类型：纽约市应急管理局）",
-      "location_tag_zh": "全市",
-      "location_kind": "citywide",
-      "area_zh": "纽约全市",
-      "borough": "Citywide",
-      "location": "",
-      "event_date": "",
-      "event_time": "",
-      "published_at": "",
-      "source_published_at": "",
-      "first_indexed_at": "2026-08-11 23:03:58",
-      "last_seen_at": "2026-08-11 23:03:58",
-      "date_kind": "service",
-      "url": "https://www.nyc.gov/site/em/ready/seniors.page",
-      "search_text": "live_072 安全·突发 老年人 older adults 来自纽约市应急管理局的官方/正式机构页面，具体时间、地点、报名要求以官网为准。（来源类型：纽约市应急管理局） 全市 纽约全市 citywide 2026-08-11 23:03:58 https://www.nyc.gov/site/em/ready/seniors.page"
-    },
-    {
-      "id": "live_073",
+      "id": "live_069",
       "module": "公益·义工",
       "title_zh": "纽约市CERT志愿者",
       "summary_zh": "来自纽约市应急管理局的官方/正式机构页面，具体时间、地点、报名要求以官网为准。（来源类型：纽约市应急管理局）",
@@ -1472,10 +1392,10 @@
       "last_seen_at": "2026-08-11 23:03:58",
       "date_kind": "service",
       "url": "https://www.nyc.gov/site/em/ready/nyc-cert.page",
-      "search_text": "live_073 公益·义工 纽约市cert志愿者 nyc cert volunteers 来自纽约市应急管理局的官方/正式机构页面，具体时间、地点、报名要求以官网为准。（来源类型：纽约市应急管理局） 全市 纽约全市 citywide 2026-08-11 23:03:58 https://www.nyc.gov/site/em/ready/nyc-cert.page"
+      "search_text": "live_069 公益·义工 纽约市cert志愿者 nyc cert volunteers 来自纽约市应急管理局的官方/正式机构页面，具体时间、地点、报名要求以官网为准。（来源类型：纽约市应急管理局） 全市 纽约全市 citywide 2026-08-11 23:03:58 https://www.nyc.gov/site/em/ready/nyc-cert.page"
     },
     {
-      "id": "live_074",
+      "id": "live_070",
       "module": "福利·政务",
       "title_zh": "购买食品的资金",
       "summary_zh": "来自ACCESS NYC - 福利申请和政府项目的官方/正式机构页面，具体时间、地点、报名要求以官网为准。（来源类型：ACCESS NYC - 福利申请和政府项目）",
@@ -1492,10 +1412,10 @@
       "last_seen_at": "2026-08-11 23:03:58",
       "date_kind": "service",
       "url": "https://access.nyc.gov/programs/supplemental-nutrition-assistance-program-snap/",
-      "search_text": "live_074 福利·政务 购买食品的资金 money to buy food 来自access nyc - 福利申请和政府项目的官方/正式机构页面，具体时间、地点、报名要求以官网为准。（来源类型：access nyc - 福利申请和政府项目） 全市 纽约全市 citywide 2026-08-11 23:03:58 https://access.nyc.gov/programs/supplemental-nutrition-assistance-program-snap/"
+      "search_text": "live_070 福利·政务 购买食品的资金 money to buy food 来自access nyc - 福利申请和政府项目的官方/正式机构页面，具体时间、地点、报名要求以官网为准。（来源类型：access nyc - 福利申请和政府项目） 全市 纽约全市 citywide 2026-08-11 23:03:58 https://access.nyc.gov/programs/supplemental-nutrition-assistance-program-snap/"
     },
     {
-      "id": "live_075",
+      "id": "live_071",
       "module": "安全·突发",
       "title_zh": "福利欺诈预防",
       "summary_zh": "来自纽约市人力资源管理局的官方/正式机构页面，具体时间、地点、报名要求以官网为准。（来源类型：纽约市人力资源管理局）",
@@ -1512,10 +1432,10 @@
       "last_seen_at": "2026-08-11 23:03:58",
       "date_kind": "service",
       "url": "https://www.nyc.gov/site/hra/help/fraud-prevention.page",
-      "search_text": "live_075 安全·突发 福利欺诈预防 welfare fraud prevention 来自纽约市人力资源管理局的官方/正式机构页面，具体时间、地点、报名要求以官网为准。（来源类型：纽约市人力资源管理局） 全市 纽约全市 citywide 2026-08-11 23:03:58 https://www.nyc.gov/site/hra/help/fraud-prevention.page"
+      "search_text": "live_071 安全·突发 福利欺诈预防 welfare fraud prevention 来自纽约市人力资源管理局的官方/正式机构页面，具体时间、地点、报名要求以官网为准。（来源类型：纽约市人力资源管理局） 全市 纽约全市 citywide 2026-08-11 23:03:58 https://www.nyc.gov/site/hra/help/fraud-prevention.page"
     },
     {
-      "id": "live_076",
+      "id": "live_072",
       "module": "安全·突发",
       "title_zh": "信息日历与工具包",
       "summary_zh": "来自纽约市应急管理局的官方/正式机构页面，具体时间、地点、报名要求以官网为准。（来源类型：纽约市应急管理局）",
@@ -1532,10 +1452,10 @@
       "last_seen_at": "2026-08-11 23:03:58",
       "date_kind": "service",
       "url": "https://www.nyc.gov/site/em/ready/calendar-toolkits.page",
-      "search_text": "live_076 安全·突发 信息日历与工具包 messaging calendar & toolkits 来自纽约市应急管理局的官方/正式机构页面，具体时间、地点、报名要求以官网为准。（来源类型：纽约市应急管理局） 全市 纽约全市 citywide 2026-08-11 23:03:58 https://www.nyc.gov/site/em/ready/calendar-toolkits.page"
+      "search_text": "live_072 安全·突发 信息日历与工具包 messaging calendar & toolkits 来自纽约市应急管理局的官方/正式机构页面，具体时间、地点、报名要求以官网为准。（来源类型：纽约市应急管理局） 全市 纽约全市 citywide 2026-08-11 23:03:58 https://www.nyc.gov/site/em/ready/calendar-toolkits.page"
     },
     {
-      "id": "live_077",
+      "id": "live_073",
       "module": "住房·安居",
       "title_zh": "可负担住房抽签",
       "summary_zh": "来自ACCESS NYC - 福利申请和政府项目的官方/正式机构页面，具体时间、地点、报名要求以官网为准。（来源类型：ACCESS NYC - 福利申请和政府项目）",
@@ -1552,10 +1472,10 @@
       "last_seen_at": "2026-08-11 23:03:58",
       "date_kind": "service",
       "url": "https://access.nyc.gov/programs/nyc-housing-connect/",
-      "search_text": "live_077 住房·安居 可负担住房抽签 affordable housing lotteries 来自access nyc - 福利申请和政府项目的官方/正式机构页面，具体时间、地点、报名要求以官网为准。（来源类型：access nyc - 福利申请和政府项目） 全市 纽约全市 citywide 2026-08-11 23:03:58 https://access.nyc.gov/programs/nyc-housing-connect/"
+      "search_text": "live_073 住房·安居 可负担住房抽签 affordable housing lotteries 来自access nyc - 福利申请和政府项目的官方/正式机构页面，具体时间、地点、报名要求以官网为准。（来源类型：access nyc - 福利申请和政府项目） 全市 纽约全市 citywide 2026-08-11 23:03:58 https://access.nyc.gov/programs/nyc-housing-connect/"
     },
     {
-      "id": "live_078",
+      "id": "live_074",
       "module": "福利·政务",
       "title_zh": "SNAP与CA",
       "summary_zh": "来自纽约市人力资源管理局的官方/正式机构页面，具体时间、地点、报名要求以官网为准。（来源类型：纽约市人力资源管理局）",
@@ -1572,10 +1492,10 @@
       "last_seen_at": "2026-08-11 23:03:58",
       "date_kind": "service",
       "url": "https://www.nyc.gov/site/hra/help/i-need-help.page",
-      "search_text": "live_078 福利·政务 snap与ca snap & ca 来自纽约市人力资源管理局的官方/正式机构页面，具体时间、地点、报名要求以官网为准。（来源类型：纽约市人力资源管理局） 全市 纽约全市 citywide 2026-08-11 23:03:58 https://www.nyc.gov/site/hra/help/i-need-help.page"
+      "search_text": "live_074 福利·政务 snap与ca snap & ca 来自纽约市人力资源管理局的官方/正式机构页面，具体时间、地点、报名要求以官网为准。（来源类型：纽约市人力资源管理局） 全市 纽约全市 citywide 2026-08-11 23:03:58 https://www.nyc.gov/site/hra/help/i-need-help.page"
     },
     {
-      "id": "live_079",
+      "id": "live_075",
       "module": "福利·政务",
       "title_zh": "住房与预防服务",
       "summary_zh": "来自纽约市人力资源管理局的官方/正式机构页面，具体时间、地点、报名要求以官网为准。（来源类型：纽约市人力资源管理局）",
@@ -1592,10 +1512,10 @@
       "last_seen_at": "2026-08-11 23:03:58",
       "date_kind": "service",
       "url": "https://www.nyc.gov/site/hra/help/homelessness-prevention.page",
-      "search_text": "live_079 福利·政务 住房与预防服务 housing & prevention services 来自纽约市人力资源管理局的官方/正式机构页面，具体时间、地点、报名要求以官网为准。（来源类型：纽约市人力资源管理局） 全市 纽约全市 citywide 2026-08-11 23:03:58 https://www.nyc.gov/site/hra/help/homelessness-prevention.page"
+      "search_text": "live_075 福利·政务 住房与预防服务 housing & prevention services 来自纽约市人力资源管理局的官方/正式机构页面，具体时间、地点、报名要求以官网为准。（来源类型：纽约市人力资源管理局） 全市 纽约全市 citywide 2026-08-11 23:03:58 https://www.nyc.gov/site/hra/help/homelessness-prevention.page"
     },
     {
-      "id": "live_080",
+      "id": "live_076",
       "module": "福利·政务",
       "title_zh": "其他福利与服务",
       "summary_zh": "来自纽约市人力资源管理局的官方/正式机构页面，具体时间、地点、报名要求以官网为准。（来源类型：纽约市人力资源管理局）",
@@ -1612,10 +1532,10 @@
       "last_seen_at": "2026-08-11 23:03:58",
       "date_kind": "service",
       "url": "https://www.nyc.gov/site/hra/help/other-services.page",
-      "search_text": "live_080 福利·政务 其他福利与服务 other benefits & services 来自纽约市人力资源管理局的官方/正式机构页面，具体时间、地点、报名要求以官网为准。（来源类型：纽约市人力资源管理局） 全市 纽约全市 citywide 2026-08-11 23:03:58 https://www.nyc.gov/site/hra/help/other-services.page"
+      "search_text": "live_076 福利·政务 其他福利与服务 other benefits & services 来自纽约市人力资源管理局的官方/正式机构页面，具体时间、地点、报名要求以官网为准。（来源类型：纽约市人力资源管理局） 全市 纽约全市 citywide 2026-08-11 23:03:58 https://www.nyc.gov/site/hra/help/other-services.page"
     },
     {
-      "id": "live_081",
+      "id": "live_077",
       "module": "福利·政务",
       "title_zh": "福利替代",
       "summary_zh": "来自纽约市人力资源管理局的官方/正式机构页面，具体时间、地点、报名要求以官网为准。（来源类型：纽约市人力资源管理局）",
@@ -1632,10 +1552,10 @@
       "last_seen_at": "2026-08-11 23:03:58",
       "date_kind": "service",
       "url": "https://www.nyc.gov/site/hra/help/benefitreplacement.page",
-      "search_text": "live_081 福利·政务 福利替代 benefit replacement 来自纽约市人力资源管理局的官方/正式机构页面，具体时间、地点、报名要求以官网为准。（来源类型：纽约市人力资源管理局） 全市 纽约全市 citywide 2026-08-11 23:03:58 https://www.nyc.gov/site/hra/help/benefitreplacement.page"
+      "search_text": "live_077 福利·政务 福利替代 benefit replacement 来自纽约市人力资源管理局的官方/正式机构页面，具体时间、地点、报名要求以官网为准。（来源类型：纽约市人力资源管理局） 全市 纽约全市 citywide 2026-08-11 23:03:58 https://www.nyc.gov/site/hra/help/benefitreplacement.page"
     },
     {
-      "id": "live_082",
+      "id": "live_078",
       "module": "安全·突发",
       "title_zh": "严重天气",
       "summary_zh": "来自纽约市 311 - 城市服务指南的官方/正式机构页面，具体时间、地点、报名要求以官网为准。（来源类型：纽约市 311 - 城市服务指南）",
@@ -1652,10 +1572,10 @@
       "last_seen_at": "2026-08-11 23:03:58",
       "date_kind": "service",
       "url": "https://portal.311.nyc.gov/article/?kanumber=KA-03457",
-      "search_text": "live_082 安全·突发 严重天气 severe weather 来自纽约市 311 - 城市服务指南的官方/正式机构页面，具体时间、地点、报名要求以官网为准。（来源类型：纽约市 311 - 城市服务指南） 全市 纽约全市 citywide 2026-08-11 23:03:58 https://portal.311.nyc.gov/article/?kanumber=ka-03457"
+      "search_text": "live_078 安全·突发 严重天气 severe weather 来自纽约市 311 - 城市服务指南的官方/正式机构页面，具体时间、地点、报名要求以官网为准。（来源类型：纽约市 311 - 城市服务指南） 全市 纽约全市 citywide 2026-08-11 23:03:58 https://portal.311.nyc.gov/article/?kanumber=ka-03457"
     },
     {
-      "id": "live_083",
+      "id": "live_079",
       "module": "安全·突发",
       "title_zh": "通知纽约市",
       "summary_zh": "来自纽约市 311 - 城市服务指南的官方/正式机构页面，具体时间、地点、报名要求以官网为准。（来源类型：纽约市 311 - 城市服务指南）",
@@ -1672,10 +1592,10 @@
       "last_seen_at": "2026-08-11 23:03:58",
       "date_kind": "service",
       "url": "https://portal.311.nyc.gov/article/?kanumber=KA-01082",
-      "search_text": "live_083 安全·突发 通知纽约市 notify nyc 来自纽约市 311 - 城市服务指南的官方/正式机构页面，具体时间、地点、报名要求以官网为准。（来源类型：纽约市 311 - 城市服务指南） 全市 纽约全市 citywide 2026-08-11 23:03:58 https://portal.311.nyc.gov/article/?kanumber=ka-01082"
+      "search_text": "live_079 安全·突发 通知纽约市 notify nyc 来自纽约市 311 - 城市服务指南的官方/正式机构页面，具体时间、地点、报名要求以官网为准。（来源类型：纽约市 311 - 城市服务指南） 全市 纽约全市 citywide 2026-08-11 23:03:58 https://portal.311.nyc.gov/article/?kanumber=ka-01082"
     },
     {
-      "id": "live_084",
+      "id": "live_080",
       "module": "安全·突发",
       "title_zh": "提示与链接",
       "summary_zh": "来自纽约市应急管理局的官方/正式机构页面，具体时间、地点、报名要求以官网为准。（来源类型：纽约市应急管理局）",
@@ -1692,10 +1612,10 @@
       "last_seen_at": "2026-08-11 23:03:58",
       "date_kind": "service",
       "url": "https://www.nyc.gov/site/em/resources/tips-links.page",
-      "search_text": "live_084 安全·突发 提示与链接 tips & links 来自纽约市应急管理局的官方/正式机构页面，具体时间、地点、报名要求以官网为准。（来源类型：纽约市应急管理局） 全市 纽约全市 citywide 2026-08-11 23:03:58 https://www.nyc.gov/site/em/resources/tips-links.page"
+      "search_text": "live_080 安全·突发 提示与链接 tips & links 来自纽约市应急管理局的官方/正式机构页面，具体时间、地点、报名要求以官网为准。（来源类型：纽约市应急管理局） 全市 纽约全市 citywide 2026-08-11 23:03:58 https://www.nyc.gov/site/em/resources/tips-links.page"
     },
     {
-      "id": "live_085",
+      "id": "live_081",
       "module": "安全·突发",
       "title_zh": "制定您的计划",
       "summary_zh": "来自纽约市应急管理局的官方/正式机构页面，具体时间、地点、报名要求以官网为准。（来源类型：纽约市应急管理局）",
@@ -1712,10 +1632,10 @@
       "last_seen_at": "2026-08-11 23:03:58",
       "date_kind": "service",
       "url": "https://www.nyc.gov/site/em/ready/ready-new-york.page",
-      "search_text": "live_085 安全·突发 制定您的计划 make your plan 来自纽约市应急管理局的官方/正式机构页面，具体时间、地点、报名要求以官网为准。（来源类型：纽约市应急管理局） 全市 纽约全市 citywide 2026-08-11 23:03:58 https://www.nyc.gov/site/em/ready/ready-new-york.page"
+      "search_text": "live_081 安全·突发 制定您的计划 make your plan 来自纽约市应急管理局的官方/正式机构页面，具体时间、地点、报名要求以官网为准。（来源类型：纽约市应急管理局） 全市 纽约全市 citywide 2026-08-11 23:03:58 https://www.nyc.gov/site/em/ready/ready-new-york.page"
     },
     {
-      "id": "live_086",
+      "id": "live_082",
       "module": "安全·突发",
       "title_zh": "社区计划",
       "summary_zh": "来自纽约市应急管理局的官方/正式机构页面，具体时间、地点、报名要求以官网为准。（来源类型：纽约市应急管理局）",
@@ -1732,10 +1652,10 @@
       "last_seen_at": "2026-08-11 23:03:58",
       "date_kind": "service",
       "url": "https://www.nyc.gov/site/em/ready/community-preparedness.page",
-      "search_text": "live_086 安全·突发 社区计划 community plan 来自纽约市应急管理局的官方/正式机构页面，具体时间、地点、报名要求以官网为准。（来源类型：纽约市应急管理局） 全市 纽约全市 citywide 2026-08-11 23:03:58 https://www.nyc.gov/site/em/ready/community-preparedness.page"
+      "search_text": "live_082 安全·突发 社区计划 community plan 来自纽约市应急管理局的官方/正式机构页面，具体时间、地点、报名要求以官网为准。（来源类型：纽约市应急管理局） 全市 纽约全市 citywide 2026-08-11 23:03:58 https://www.nyc.gov/site/em/ready/community-preparedness.page"
     },
     {
-      "id": "live_087",
+      "id": "live_083",
       "module": "安全·突发",
       "title_zh": "针对企业",
       "summary_zh": "来自纽约市应急管理局的官方/正式机构页面，具体时间、地点、报名要求以官网为准。（来源类型：纽约市应急管理局）",
@@ -1752,10 +1672,10 @@
       "last_seen_at": "2026-08-11 23:03:58",
       "date_kind": "service",
       "url": "https://www.nyc.gov/site/em/ready/businesses.page ",
-      "search_text": "live_087 安全·突发 针对企业 for businesses 来自纽约市应急管理局的官方/正式机构页面，具体时间、地点、报名要求以官网为准。（来源类型：纽约市应急管理局） 全市 纽约全市 citywide 2026-08-11 23:03:58 https://www.nyc.gov/site/em/ready/businesses.page "
+      "search_text": "live_083 安全·突发 针对企业 for businesses 来自纽约市应急管理局的官方/正式机构页面，具体时间、地点、报名要求以官网为准。（来源类型：纽约市应急管理局） 全市 纽约全市 citywide 2026-08-11 23:03:58 https://www.nyc.gov/site/em/ready/businesses.page "
     },
     {
-      "id": "live_088",
+      "id": "live_084",
       "module": "安全·突发",
       "title_zh": "危害规划",
       "summary_zh": "来自纽约市应急管理局的官方/正式机构页面，具体时间、地点、报名要求以官网为准。（来源类型：纽约市应急管理局）",
@@ -1772,13 +1692,13 @@
       "last_seen_at": "2026-08-11 23:03:58",
       "date_kind": "service",
       "url": "https://www.nyc.gov/site/em/ready/plan-hazards.page",
-      "search_text": "live_088 安全·突发 危害规划 plan for hazards 来自纽约市应急管理局的官方/正式机构页面，具体时间、地点、报名要求以官网为准。（来源类型：纽约市应急管理局） 全市 纽约全市 citywide 2026-08-11 23:03:58 https://www.nyc.gov/site/em/ready/plan-hazards.page"
+      "search_text": "live_084 安全·突发 危害规划 plan for hazards 来自纽约市应急管理局的官方/正式机构页面，具体时间、地点、报名要求以官网为准。（来源类型：纽约市应急管理局） 全市 纽约全市 citywide 2026-08-11 23:03:58 https://www.nyc.gov/site/em/ready/plan-hazards.page"
     },
     {
-      "id": "live_089",
+      "id": "live_085",
       "module": "亲子·公园",
-      "title_zh": "夏季音乐会：Hippo游乐场，特邀Flor Bromley",
-      "summary_zh": "河滨公园的河马游乐场（Hippo Playground）（来源类型：nyc_parks_opendata_fallback）",
+      "title_zh": "Hippo Playground Summer Concerts featuring Flor Bromley",
+      "summary_zh": "Hippo Playground (in Riverside Park)（来源类型：nyc_parks_opendata_fallback）",
       "location_tag_zh": "全市",
       "location_kind": "citywide",
       "area_zh": "纽约全市",
@@ -1789,16 +1709,16 @@
       "published_at": "",
       "source_published_at": "",
       "first_indexed_at": "2026-08-12 08:10:02",
-      "last_seen_at": "2026-08-12 08:10:02",
+      "last_seen_at": "2026-08-12 08:27:42",
       "date_kind": "event",
       "url": "https://www.nycgovparks.org/events/2026/08/12/hippo-playground-summer-concerts-featuring-flor-bromley",
-      "search_text": "live_089 亲子·公园 夏季音乐会：hippo游乐场，特邀flor bromley hippo playground summer concerts featuring flor bromley 河滨公园的河马游乐场（hippo playground）（来源类型：nyc_parks_opendata_fallback） 全市 纽约全市 citywide hippo playground (in riverside park) 2026-08-12 08:10:02 2026-08-12 https://www.nycgovparks.org/events/2026/08/12/hippo-playground-summer-concerts-featuring-flor-bromley"
+      "search_text": "live_085 亲子·公园 hippo playground summer concerts featuring flor bromley hippo playground summer concerts featuring flor bromley hippo playground (in riverside park)（来源类型：nyc_parks_opendata_fallback） 全市 纽约全市 citywide hippo playground (in riverside park) 2026-08-12 08:10:02 2026-08-12 https://www.nycgovparks.org/events/2026/08/12/hippo-playground-summer-concerts-featuring-flor-bromley"
     },
     {
-      "id": "live_090",
+      "id": "live_086",
       "module": "亲子·公园",
-      "title_zh": "动感儿童：科罗娜高尔夫游乐场",
-      "summary_zh": "游乐场（位于 Corona 高尔夫游乐场）（来源类型：nyc_parks_opendata_fallback）",
+      "title_zh": "Kids In Motion: Corona Golf Playground",
+      "summary_zh": "Playground (in Corona Golf Playground)（来源类型：nyc_parks_opendata_fallback）",
       "location_tag_zh": "艾姆赫斯特 Elmhurst",
       "location_kind": "enclave",
       "area_zh": "艾姆赫斯特 Elmhurst",
@@ -1809,16 +1729,16 @@
       "published_at": "",
       "source_published_at": "",
       "first_indexed_at": "2026-08-12 08:10:02",
-      "last_seen_at": "2026-08-12 08:10:02",
+      "last_seen_at": "2026-08-12 08:27:42",
       "date_kind": "event",
       "url": "https://www.nycgovparks.org/events/2026/08/12/kids-in-motion-corona-golf-playground",
-      "search_text": "live_090 亲子·公园 动感儿童：科罗娜高尔夫游乐场 kids in motion: corona golf playground 游乐场（位于 corona 高尔夫游乐场）（来源类型：nyc_parks_opendata_fallback） 艾姆赫斯特 elmhurst 艾姆赫斯特 elmhurst queens playground (in corona golf playground) 2026-08-12 08:10:02 2026-08-12 https://www.nycgovparks.org/events/2026/08/12/kids-in-motion-corona-golf-playground"
+      "search_text": "live_086 亲子·公园 kids in motion: corona golf playground kids in motion: corona golf playground playground (in corona golf playground)（来源类型：nyc_parks_opendata_fallback） 艾姆赫斯特 elmhurst 艾姆赫斯特 elmhurst queens playground (in corona golf playground) 2026-08-12 08:10:02 2026-08-12 https://www.nycgovparks.org/events/2026/08/12/kids-in-motion-corona-golf-playground"
     },
     {
-      "id": "live_091",
+      "id": "live_087",
       "module": "亲子·公园",
-      "title_zh": "动动小孩：德马蒂游乐场",
-      "summary_zh": "德马蒂游乐场（De Matti Playground）（位于德马蒂公园 De Matti Park）（来源类型：nyc_parks_opendata_fallback）",
+      "title_zh": "Kids In Motion: De Matti Playground",
+      "summary_zh": "De Matti Playground (in De Matti Park)（来源类型：nyc_parks_opendata_fallback）",
       "location_tag_zh": "全市",
       "location_kind": "citywide",
       "area_zh": "纽约全市",
@@ -1829,16 +1749,16 @@
       "published_at": "",
       "source_published_at": "",
       "first_indexed_at": "2026-08-12 08:10:02",
-      "last_seen_at": "2026-08-12 08:10:02",
+      "last_seen_at": "2026-08-12 08:27:42",
       "date_kind": "event",
       "url": "https://www.nycgovparks.org/events/2026/08/12/kids-in-motion-de-matti-playground",
-      "search_text": "live_091 亲子·公园 动动小孩：德马蒂游乐场 kids in motion: de matti playground 德马蒂游乐场（de matti playground）（位于德马蒂公园 de matti park）（来源类型：nyc_parks_opendata_fallback） 全市 纽约全市 citywide de matti playground (in de matti park) 2026-08-12 08:10:02 2026-08-12 https://www.nycgovparks.org/events/2026/08/12/kids-in-motion-de-matti-playground"
+      "search_text": "live_087 亲子·公园 kids in motion: de matti playground kids in motion: de matti playground de matti playground (in de matti park)（来源类型：nyc_parks_opendata_fallback） 全市 纽约全市 citywide de matti playground (in de matti park) 2026-08-12 08:10:02 2026-08-12 https://www.nycgovparks.org/events/2026/08/12/kids-in-motion-de-matti-playground"
     },
     {
-      "id": "live_092",
+      "id": "live_088",
       "module": "亲子·公园",
-      "title_zh": "动动小孩：Schmul",
-      "summary_zh": "游乐场（Schmul Park）",
+      "title_zh": "Kids In Motion: Schmul",
+      "summary_zh": "Playground (in Schmul Park)（来源类型：nyc_parks_opendata_fallback）",
       "location_tag_zh": "全市",
       "location_kind": "citywide",
       "area_zh": "纽约全市",
@@ -1849,16 +1769,16 @@
       "published_at": "",
       "source_published_at": "",
       "first_indexed_at": "2026-08-12 08:10:02",
-      "last_seen_at": "2026-08-12 08:10:02",
+      "last_seen_at": "2026-08-12 08:27:42",
       "date_kind": "event",
       "url": "https://www.nycgovparks.org/events/2026/08/12/kids-in-motion-schmul",
-      "search_text": "live_092 亲子·公园 动动小孩：schmul kids in motion: schmul 游乐场（schmul park） 全市 纽约全市 citywide playground (in schmul park) 2026-08-12 08:10:02 2026-08-12 https://www.nycgovparks.org/events/2026/08/12/kids-in-motion-schmul"
+      "search_text": "live_088 亲子·公园 kids in motion: schmul kids in motion: schmul playground (in schmul park)（来源类型：nyc_parks_opendata_fallback） 全市 纽约全市 citywide playground (in schmul park) 2026-08-12 08:10:02 2026-08-12 https://www.nycgovparks.org/events/2026/08/12/kids-in-motion-schmul"
     },
     {
-      "id": "live_093",
+      "id": "live_089",
       "module": "亲子·公园",
-      "title_zh": "动感儿童：大公园",
-      "summary_zh": "入口 - 大陆广场和大景大道（位于大公园 The Big Park）（来源类型：nyc_parks_opendata_fallback）",
+      "title_zh": "Kids In Motion: The Big Park",
+      "summary_zh": "Entrance - Continental Place and Grandview Avenue (in The Big Park)（来源类型：nyc_parks_opendata_fallback）",
       "location_tag_zh": "全市",
       "location_kind": "citywide",
       "area_zh": "纽约全市",
@@ -1869,16 +1789,16 @@
       "published_at": "",
       "source_published_at": "",
       "first_indexed_at": "2026-08-12 08:10:02",
-      "last_seen_at": "2026-08-12 08:10:02",
+      "last_seen_at": "2026-08-12 08:27:42",
       "date_kind": "event",
       "url": "https://www.nycgovparks.org/events/2026/08/12/kids-in-motion-the-big-park",
-      "search_text": "live_093 亲子·公园 动感儿童：大公园 kids in motion: the big park 入口 - 大陆广场和大景大道（位于大公园 the big park）（来源类型：nyc_parks_opendata_fallback） 全市 纽约全市 citywide entrance - continental place and grandview avenue (in the big park) 2026-08-12 08:10:02 2026-08-12 https://www.nycgovparks.org/events/2026/08/12/kids-in-motion-the-big-park"
+      "search_text": "live_089 亲子·公园 kids in motion: the big park kids in motion: the big park entrance - continental place and grandview avenue (in the big park)（来源类型：nyc_parks_opendata_fallback） 全市 纽约全市 citywide entrance - continental place and grandview avenue (in the big park) 2026-08-12 08:10:02 2026-08-12 https://www.nycgovparks.org/events/2026/08/12/kids-in-motion-the-big-park"
     },
     {
-      "id": "live_094",
+      "id": "live_090",
       "module": "亲子·公园",
-      "title_zh": "动感儿童：阿罗查",
-      "summary_zh": "游乐区（位于阿罗查游乐场 Arrochar Playground）（来源类型：nyc_parks_opendata_fallback）",
+      "title_zh": "Kids In Motion: Arrochar",
+      "summary_zh": "Play Area (in Arrochar Playground)（来源类型：nyc_parks_opendata_fallback）",
       "location_tag_zh": "全市",
       "location_kind": "citywide",
       "area_zh": "纽约全市",
@@ -1889,16 +1809,16 @@
       "published_at": "",
       "source_published_at": "",
       "first_indexed_at": "2026-08-12 08:10:02",
-      "last_seen_at": "2026-08-12 08:10:02",
+      "last_seen_at": "2026-08-12 08:27:42",
       "date_kind": "event",
       "url": "https://www.nycgovparks.org/events/2026/08/12/kids-in-motion-arrochar",
-      "search_text": "live_094 亲子·公园 动感儿童：阿罗查 kids in motion: arrochar 游乐区（位于阿罗查游乐场 arrochar playground）（来源类型：nyc_parks_opendata_fallback） 全市 纽约全市 citywide play area (in arrochar playground) 2026-08-12 08:10:02 2026-08-12 https://www.nycgovparks.org/events/2026/08/12/kids-in-motion-arrochar"
+      "search_text": "live_090 亲子·公园 kids in motion: arrochar kids in motion: arrochar play area (in arrochar playground)（来源类型：nyc_parks_opendata_fallback） 全市 纽约全市 citywide play area (in arrochar playground) 2026-08-12 08:10:02 2026-08-12 https://www.nycgovparks.org/events/2026/08/12/kids-in-motion-arrochar"
     },
     {
-      "id": "live_095",
+      "id": "live_091",
       "module": "健身·户外",
-      "title_zh": "公园中的 Zumba",
-      "summary_zh": "福特华盛顿（Fort Washington）地铁站190号A线的露台（Fort Tryon Park）",
+      "title_zh": "Zumba in the Park",
+      "summary_zh": "Fort Washington (Subway) Terrace at the 190th A Train Subway Station (in Fort Tryon Park)（来源类型：nyc_parks_opendata_fallback）",
       "location_tag_zh": "全市",
       "location_kind": "citywide",
       "area_zh": "纽约全市",
@@ -1909,16 +1829,16 @@
       "published_at": "",
       "source_published_at": "",
       "first_indexed_at": "2026-08-12 08:10:02",
-      "last_seen_at": "2026-08-12 08:10:02",
+      "last_seen_at": "2026-08-12 08:27:42",
       "date_kind": "event",
       "url": "https://www.nycgovparks.org/events/2026/08/12/zumba-in-the-park",
-      "search_text": "live_095 健身·户外 公园中的 zumba zumba in the park 福特华盛顿（fort washington）地铁站190号a线的露台（fort tryon park） 全市 纽约全市 citywide fort washington (subway) terrace at the 190th a train subway station (in fort tryon park) 2026-08-12 08:10:02 2026-08-12 https://www.nycgovparks.org/events/2026/08/12/zumba-in-the-park"
+      "search_text": "live_091 健身·户外 zumba in the park zumba in the park fort washington (subway) terrace at the 190th a train subway station (in fort tryon park)（来源类型：nyc_parks_opendata_fallback） 全市 纽约全市 citywide fort washington (subway) terrace at the 190th a train subway station (in fort tryon park) 2026-08-12 08:10:02 2026-08-12 https://www.nycgovparks.org/events/2026/08/12/zumba-in-the-park"
     },
     {
-      "id": "live_096",
+      "id": "live_092",
       "module": "健身·户外",
-      "title_zh": "舞蹈健身",
-      "summary_zh": "皇后公共图书馆 - Corona（来源类型：nyc_parks_opendata_fallback）",
+      "title_zh": "Dance Fitness",
+      "summary_zh": "Queens Public Library - Corona（来源类型：nyc_parks_opendata_fallback）",
       "location_tag_zh": "艾姆赫斯特 Elmhurst",
       "location_kind": "enclave",
       "area_zh": "艾姆赫斯特 Elmhurst",
@@ -1929,16 +1849,16 @@
       "published_at": "",
       "source_published_at": "",
       "first_indexed_at": "2026-08-12 08:10:02",
-      "last_seen_at": "2026-08-12 08:10:02",
+      "last_seen_at": "2026-08-12 08:27:42",
       "date_kind": "event",
       "url": "https://www.nycgovparks.org/events/2026/08/12/dance-fitness",
-      "search_text": "live_096 健身·户外 舞蹈健身 dance fitness 皇后公共图书馆 - corona（来源类型：nyc_parks_opendata_fallback） 艾姆赫斯特 elmhurst 艾姆赫斯特 elmhurst queens queens public library - corona 2026-08-12 08:10:02 2026-08-12 https://www.nycgovparks.org/events/2026/08/12/dance-fitness"
+      "search_text": "live_092 健身·户外 dance fitness dance fitness queens public library - corona（来源类型：nyc_parks_opendata_fallback） 艾姆赫斯特 elmhurst 艾姆赫斯特 elmhurst queens queens public library - corona 2026-08-12 08:10:02 2026-08-12 https://www.nycgovparks.org/events/2026/08/12/dance-fitness"
     },
     {
-      "id": "live_097",
+      "id": "live_093",
       "module": "健身·户外",
       "title_zh": "Zumba Gold®",
-      "summary_zh": "多功能室（Williamsbridge Oval）",
+      "summary_zh": "Multi-Use Room (in Williamsbridge Oval)（来源类型：nyc_parks_opendata_fallback）",
       "location_tag_zh": "全市",
       "location_kind": "citywide",
       "area_zh": "纽约全市",
@@ -1949,16 +1869,16 @@
       "published_at": "",
       "source_published_at": "",
       "first_indexed_at": "2026-08-12 08:10:02",
-      "last_seen_at": "2026-08-12 08:10:02",
+      "last_seen_at": "2026-08-12 08:27:42",
       "date_kind": "event",
       "url": "https://www.nycgovparks.org/events/2026/08/12/zumba-gold-174",
-      "search_text": "live_097 健身·户外 zumba gold® zumba gold® 多功能室（williamsbridge oval） 全市 纽约全市 citywide multi-use room (in williamsbridge oval) 2026-08-12 08:10:02 2026-08-12 https://www.nycgovparks.org/events/2026/08/12/zumba-gold-174"
+      "search_text": "live_093 健身·户外 zumba gold® zumba gold® multi-use room (in williamsbridge oval)（来源类型：nyc_parks_opendata_fallback） 全市 纽约全市 citywide multi-use room (in williamsbridge oval) 2026-08-12 08:10:02 2026-08-12 https://www.nycgovparks.org/events/2026/08/12/zumba-gold-174"
     },
     {
-      "id": "live_098",
+      "id": "live_094",
       "module": "健身·户外",
       "title_zh": "Zumba",
-      "summary_zh": "多功能室（位于血根谷 Blood Root Valley）（来源类型：nyc_parks_opendata_fallback）",
+      "summary_zh": "Multi-Use Room (in Blood Root Valley)（来源类型：nyc_parks_opendata_fallback）",
       "location_tag_zh": "全市",
       "location_kind": "citywide",
       "area_zh": "纽约全市",
@@ -1969,16 +1889,16 @@
       "published_at": "",
       "source_published_at": "",
       "first_indexed_at": "2026-08-12 08:10:02",
-      "last_seen_at": "2026-08-12 08:10:02",
+      "last_seen_at": "2026-08-12 08:27:42",
       "date_kind": "event",
       "url": "https://www.nycgovparks.org/events/2026/08/12/zumba",
-      "search_text": "live_098 健身·户外 zumba zumba 多功能室（位于血根谷 blood root valley）（来源类型：nyc_parks_opendata_fallback） 全市 纽约全市 citywide multi-use room (in blood root valley) 2026-08-12 08:10:02 2026-08-12 https://www.nycgovparks.org/events/2026/08/12/zumba"
+      "search_text": "live_094 健身·户外 zumba zumba multi-use room (in blood root valley)（来源类型：nyc_parks_opendata_fallback） 全市 纽约全市 citywide multi-use room (in blood root valley) 2026-08-12 08:10:02 2026-08-12 https://www.nycgovparks.org/events/2026/08/12/zumba"
     },
     {
-      "id": "live_099",
+      "id": "live_095",
       "module": "健身·户外",
-      "title_zh": "星光下的Zumba舞蹈课程与Lisa G",
-      "summary_zh": "海滩17号 O'Donohue 公园（位于洛克威海滩和木板路 Rockaway Beach and Boardwalk）（来源类型：nyc_parks_opendata_fallback）",
+      "title_zh": "Zumba under the Stars w/Lisa G",
+      "summary_zh": "Beach 17 O'Donohue Park (in Rockaway Beach and Boardwalk)（来源类型：nyc_parks_opendata_fallback）",
       "location_tag_zh": "全市",
       "location_kind": "citywide",
       "area_zh": "纽约全市",
@@ -1989,16 +1909,16 @@
       "published_at": "",
       "source_published_at": "",
       "first_indexed_at": "2026-08-12 08:10:02",
-      "last_seen_at": "2026-08-12 08:10:02",
+      "last_seen_at": "2026-08-12 08:27:42",
       "date_kind": "event",
       "url": "https://www.nycgovparks.org/events/2026/08/12/zumba-under-the-stars-w-lisa-g",
-      "search_text": "live_099 健身·户外 星光下的zumba舞蹈课程与lisa g zumba under the stars w/lisa g 海滩17号 o'donohue 公园（位于洛克威海滩和木板路 rockaway beach and boardwalk）（来源类型：nyc_parks_opendata_fallback） 全市 纽约全市 citywide beach 17 o'donohue park (in rockaway beach and boardwalk) 2026-08-12 08:10:02 2026-08-12 https://www.nycgovparks.org/events/2026/08/12/zumba-under-the-stars-w-lisa-g"
+      "search_text": "live_095 健身·户外 zumba under the stars w/lisa g zumba under the stars w/lisa g beach 17 o'donohue park (in rockaway beach and boardwalk)（来源类型：nyc_parks_opendata_fallback） 全市 纽约全市 citywide beach 17 o'donohue park (in rockaway beach and boardwalk) 2026-08-12 08:10:02 2026-08-12 https://www.nycgovparks.org/events/2026/08/12/zumba-under-the-stars-w-lisa-g"
     },
     {
-      "id": "live_100",
+      "id": "live_096",
       "module": "健身·户外",
-      "title_zh": "排舞健身",
-      "summary_zh": "手球场（Betsy Head Park）",
+      "title_zh": "Line Dance Fitness",
+      "summary_zh": "Handball Court (in Betsy Head Park)（来源类型：nyc_parks_opendata_fallback）",
       "location_tag_zh": "全市",
       "location_kind": "citywide",
       "area_zh": "纽约全市",
@@ -2009,16 +1929,16 @@
       "published_at": "",
       "source_published_at": "",
       "first_indexed_at": "2026-08-12 08:10:02",
-      "last_seen_at": "2026-08-12 08:10:02",
+      "last_seen_at": "2026-08-12 08:27:42",
       "date_kind": "event",
       "url": "https://www.nycgovparks.org/events/2026/08/12/line-dance-fitness",
-      "search_text": "live_100 健身·户外 排舞健身 line dance fitness 手球场（betsy head park） 全市 纽约全市 citywide handball court (in betsy head park) 2026-08-12 08:10:02 2026-08-12 https://www.nycgovparks.org/events/2026/08/12/line-dance-fitness"
+      "search_text": "live_096 健身·户外 line dance fitness line dance fitness handball court (in betsy head park)（来源类型：nyc_parks_opendata_fallback） 全市 纽约全市 citywide handball court (in betsy head park) 2026-08-12 08:10:02 2026-08-12 https://www.nycgovparks.org/events/2026/08/12/line-dance-fitness"
     },
     {
-      "id": "live_101",
+      "id": "live_097",
       "module": "文化·节庆",
-      "title_zh": "海洋微风运动中心开放日",
-      "summary_zh": "海洋微风田径运动中心（Ocean Breeze Track & Field Athletic Complex）",
+      "title_zh": "Open House at Ocean Breeze Athletic Complex",
+      "summary_zh": "Ocean Breeze Track & Field Athletic Complex (in Ocean Breeze Park)（来源类型：nyc_parks_opendata_fallback）",
       "location_tag_zh": "全市",
       "location_kind": "citywide",
       "area_zh": "纽约全市",
@@ -2029,16 +1949,16 @@
       "published_at": "",
       "source_published_at": "",
       "first_indexed_at": "2026-08-12 08:10:02",
-      "last_seen_at": "2026-08-12 08:10:02",
+      "last_seen_at": "2026-08-12 08:27:42",
       "date_kind": "event",
       "url": "https://www.nycgovparks.org/events/2026/08/12/open-house-at-ocean-breeze-athletic-complex",
-      "search_text": "live_101 文化·节庆 海洋微风运动中心开放日 open house at ocean breeze athletic complex 海洋微风田径运动中心（ocean breeze track & field athletic complex） 全市 纽约全市 citywide ocean breeze track & field athletic complex (in ocean breeze park) 2026-08-12 08:10:02 2026-08-12 https://www.nycgovparks.org/events/2026/08/12/open-house-at-ocean-breeze-athletic-complex"
+      "search_text": "live_097 文化·节庆 open house at ocean breeze athletic complex open house at ocean breeze athletic complex ocean breeze track & field athletic complex (in ocean breeze park)（来源类型：nyc_parks_opendata_fallback） 全市 纽约全市 citywide ocean breeze track & field athletic complex (in ocean breeze park) 2026-08-12 08:10:02 2026-08-12 https://www.nycgovparks.org/events/2026/08/12/open-house-at-ocean-breeze-athletic-complex"
     },
     {
-      "id": "live_102",
+      "id": "live_098",
       "module": "文化·节庆",
-      "title_zh": "展览：全球思考，本地行动。",
-      "summary_zh": "访客中心 - 萨特利街与海兰大道（Conference House Park）",
+      "title_zh": "Exhibition: Think Global. Act Local.",
+      "summary_zh": "Visitor Center - Satterlee Street and Hylan Boulevard (in Conference House Park)（来源类型：nyc_parks_opendata_fallback）",
       "location_tag_zh": "全市",
       "location_kind": "citywide",
       "area_zh": "纽约全市",
@@ -2049,16 +1969,16 @@
       "published_at": "",
       "source_published_at": "",
       "first_indexed_at": "2026-08-12 08:10:02",
-      "last_seen_at": "2026-08-12 08:10:02",
+      "last_seen_at": "2026-08-12 08:27:42",
       "date_kind": "event",
       "url": "https://www.nycgovparks.org/events/2026/08/12/exhibition-think-global-act-local",
-      "search_text": "live_102 文化·节庆 展览：全球思考，本地行动。 exhibition: think global. act local. 访客中心 - 萨特利街与海兰大道（conference house park） 全市 纽约全市 citywide visitor center - satterlee street and hylan boulevard (in conference house park) 2026-08-12 08:10:02 2026-08-12 https://www.nycgovparks.org/events/2026/08/12/exhibition-think-global-act-local"
+      "search_text": "live_098 文化·节庆 exhibition: think global. act local. exhibition: think global. act local. visitor center - satterlee street and hylan boulevard (in conference house park)（来源类型：nyc_parks_opendata_fallback） 全市 纽约全市 citywide visitor center - satterlee street and hylan boulevard (in conference house park) 2026-08-12 08:10:02 2026-08-12 https://www.nycgovparks.org/events/2026/08/12/exhibition-think-global-act-local"
     },
     {
-      "id": "live_103",
+      "id": "live_099",
       "module": "文化·节庆",
-      "title_zh": "哈德逊河上的夏天：运动表达工作坊",
-      "summary_zh": "格兰特国家纪念馆（Grant's Tomb）（位于河滨公园 Riverside Park）（来源类型：nyc_parks_opendata_fallback）",
+      "title_zh": "Summer on the Hudson: Movement Speaks Workshop",
+      "summary_zh": "General Grant National Memorial (Grant's Tomb) (in Riverside Park)（来源类型：nyc_parks_opendata_fallback）",
       "location_tag_zh": "全市",
       "location_kind": "citywide",
       "area_zh": "纽约全市",
@@ -2069,10 +1989,70 @@
       "published_at": "",
       "source_published_at": "",
       "first_indexed_at": "2026-08-12 08:10:02",
-      "last_seen_at": "2026-08-12 08:10:02",
+      "last_seen_at": "2026-08-12 08:27:42",
       "date_kind": "event",
       "url": "https://www.nycgovparks.org/events/2026/08/12/summer-on-the-hudson-movement-speaks-workshop",
-      "search_text": "live_103 文化·节庆 哈德逊河上的夏天：运动表达工作坊 summer on the hudson: movement speaks workshop 格兰特国家纪念馆（grant's tomb）（位于河滨公园 riverside park）（来源类型：nyc_parks_opendata_fallback） 全市 纽约全市 citywide general grant national memorial (grant's tomb) (in riverside park) 2026-08-12 08:10:02 2026-08-12 https://www.nycgovparks.org/events/2026/08/12/summer-on-the-hudson-movement-speaks-workshop"
+      "search_text": "live_099 文化·节庆 summer on the hudson: movement speaks workshop summer on the hudson: movement speaks workshop general grant national memorial (grant's tomb) (in riverside park)（来源类型：nyc_parks_opendata_fallback） 全市 纽约全市 citywide general grant national memorial (grant's tomb) (in riverside park) 2026-08-12 08:10:02 2026-08-12 https://www.nycgovparks.org/events/2026/08/12/summer-on-the-hudson-movement-speaks-workshop"
+    },
+    {
+      "id": "live_100",
+      "module": "就业·培训",
+      "title_zh": "Cannabis Workforce and Business Development Program",
+      "summary_zh": "Education program on www.bmcc.cuny.edu — click to enroll or learn more.（来源类型：纽约市立大学 — 继续教育、英语课及成人学习）",
+      "location_tag_zh": "全市",
+      "location_kind": "citywide",
+      "area_zh": "纽约全市",
+      "borough": "Citywide",
+      "location": "New York City",
+      "event_date": "2026-08-17",
+      "event_time": "",
+      "published_at": "",
+      "source_published_at": "",
+      "first_indexed_at": "2026-08-12 08:27:42",
+      "last_seen_at": "2026-08-12 08:27:42",
+      "date_kind": "event",
+      "url": "https://www.bmcc.cuny.edu/ce/cannabis-workforce-development-training-program/",
+      "search_text": "live_100 就业·培训 cannabis workforce and business development program cannabis workforce and business development program education program on www.bmcc.cuny.edu — click to enroll or learn more.（来源类型：纽约市立大学 — 继续教育、英语课及成人学习） 全市 纽约全市 citywide new york city 2026-08-12 08:27:42 2026-08-17 https://www.bmcc.cuny.edu/ce/cannabis-workforce-development-training-program/"
+    },
+    {
+      "id": "live_101",
+      "module": "就业·培训",
+      "title_zh": "Rapid Response Workforce Training",
+      "summary_zh": "Education program on www.bmcc.cuny.edu — click to enroll or learn more.（来源类型：纽约市立大学 — 继续教育、英语课及成人学习）",
+      "location_tag_zh": "全市",
+      "location_kind": "citywide",
+      "area_zh": "纽约全市",
+      "borough": "Citywide",
+      "location": "New York City",
+      "event_date": "2026-08-17",
+      "event_time": "",
+      "published_at": "",
+      "source_published_at": "",
+      "first_indexed_at": "2026-08-12 08:27:42",
+      "last_seen_at": "2026-08-12 08:27:42",
+      "date_kind": "event",
+      "url": "https://www.bmcc.cuny.edu/ce/rapid-response-workforce-training/",
+      "search_text": "live_101 就业·培训 rapid response workforce training rapid response workforce training education program on www.bmcc.cuny.edu — click to enroll or learn more.（来源类型：纽约市立大学 — 继续教育、英语课及成人学习） 全市 纽约全市 citywide new york city 2026-08-12 08:27:42 2026-08-17 https://www.bmcc.cuny.edu/ce/rapid-response-workforce-training/"
+    },
+    {
+      "id": "live_102",
+      "module": "语言·教育",
+      "title_zh": "English as a Second Language (ESL)",
+      "summary_zh": "Education program on www.kingsborough.edu — click to enroll or learn more.（来源类型：纽约市立大学 — 继续教育、英语课及成人学习）",
+      "location_tag_zh": "全市",
+      "location_kind": "citywide",
+      "area_zh": "纽约全市",
+      "borough": "Citywide",
+      "location": "New York City",
+      "event_date": "2026-08-17",
+      "event_time": "",
+      "published_at": "",
+      "source_published_at": "",
+      "first_indexed_at": "2026-08-12 08:27:42",
+      "last_seen_at": "2026-08-12 08:27:42",
+      "date_kind": "event",
+      "url": "https://www.kingsborough.edu/ce/esl.html",
+      "search_text": "live_102 语言·教育 english as a second language (esl) english as a second language (esl) education program on www.kingsborough.edu — click to enroll or learn more.（来源类型：纽约市立大学 — 继续教育、英语课及成人学习） 全市 纽约全市 citywide new york city 2026-08-12 08:27:42 2026-08-17 https://www.kingsborough.edu/ce/esl.html"
     }
   ]
 }
