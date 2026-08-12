@@ -3723,6 +3723,12 @@ const HUB_SEARCH_ALIASES = {
   '美中药协': ['sapa', '美中药协', '药协', '制药'],
   'castgny': ['castgny', 'cast-gny', 'cast gny', '旅美科技', '科技协会'],
   '旅美科技协会': ['castgny', 'cast-gny', 'cast gny', '旅美科技'],
+  'cmp': ['cmp', 'cmpny', '唐人街人力', '人力中心', 'job bank', '职业培训'],
+  '唐人街人力': ['cmp', 'cmpny', '人力中心', 'job bank'],
+  'aafe': ['aafe', '亚美权益', '亚美平等', 'asian americans for equality'],
+  '亚美权益': ['aafe', '亚美权益促进会'],
+  'cacf': ['cacf', '亚美儿童', '儿童与家庭联盟'],
+  'cpc招聘': ['cpc', '华人策划', 'cpc-nyc', 'jobs'],
 };
 
 const HUB_YP_AREA_QUERY = {
@@ -3770,7 +3776,8 @@ function hubQueryLooksLikeBenefit(raw) {
     '夏令营', 'summer rising', '报名', 'enroll', '入学', '抽签',
     '租金冻结', 'rent freeze', 'scrie', 'drie', '福利申请', '儿童保育', 'child care', 'childcare',
     'esl', 'ged', '入籍', 'citizenship', '图书馆课程', '医疗补助', 'medicaid', '低收入',
-    'sapa', '美中药协', '药协', 'castgny', 'cast-gny', '旅美科技', '年会', 'career fair', '职业论坛'
+    'sapa', '美中药协', '药协', 'castgny', 'cast-gny', '旅美科技', '年会', 'career fair', '职业论坛',
+    'cmp', '唐人街人力', '人力中心', 'job bank', 'aafe', '亚美权益', 'cacf', 'cpc招聘', '职业培训'
   ];
   return needles.some(n => q.includes(n) || (n.length >= 2 && q.length >= 2 && n.includes(q)));
 }
