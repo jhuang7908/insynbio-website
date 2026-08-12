@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- hub-build: 2026-08-12T16:02TET -->
+<!-- hub-build: 2026-08-12T18:30TET-p2 -->
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8" />
@@ -251,6 +251,18 @@
       padding: 4px 10px; font-size: 11.5px; font-weight: 600; cursor: pointer; font-family: inherit;
     }
     .hub-hero-chip:hover { background: #ffedd5; border-color: #fdba74; }
+    .hub-search-scope {
+      display: flex; flex-wrap: wrap; gap: 6px; justify-content: center; max-width: 520px;
+      margin: 0 auto 8px; padding: 0 4px;
+    }
+    .hub-scope-chip {
+      border: 1px solid #e2e8f0; background: #f8fafc; color: #475569; border-radius: 999px;
+      padding: 4px 11px; font-size: 11.5px; font-weight: 600; cursor: pointer; font-family: inherit;
+    }
+    .hub-scope-chip:hover { border-color: #cbd5e1; background: #f1f5f9; }
+    .hub-scope-chip.active {
+      border-color: #fb923c; background: #fff7ed; color: #c2410c;
+    }
 
     /* First-screen funnel hooks (XHS landing) */
     .hub-funnel { display: flex; gap: 10px; max-width: var(--feed-width); margin: 10px auto 12px; width: 100%; }
@@ -1863,6 +1875,11 @@
           onkeydown="if(event.key==='Enter'){event.preventDefault();goHubSearch(this.value);}" />
         <button type="button" class="btn hub-hero-go" id="hero-search-go" onclick="goHubSearch(document.getElementById('hero-search').value)">搜索</button>
       </div>
+      <div class="hub-search-scope" id="hub-search-scope" role="group" aria-label="搜索范围">
+        <button type="button" class="hub-scope-chip active" data-scope="livelihood" id="scope-livelihood" onclick="setHubSearchScope('livelihood')">民生</button>
+        <button type="button" class="hub-scope-chip" data-scope="yellowpages" id="scope-yellowpages" onclick="setHubSearchScope('yellowpages')">黄页</button>
+        <button type="button" class="hub-scope-chip" data-scope="all" id="scope-all" onclick="setHubSearchScope('all')">全部</button>
+      </div>
       </div>
       <div class="hub-hero-chips hub-desktop-only" id="hero-search-chips" aria-label="热门搜索"></div>
       <p class="hub-hero-trust hub-desktop-only" id="hero-trust"><strong>www.uslifehub.org</strong> · 公益免费 · 公开渠道聚合</p>
@@ -2177,6 +2194,9 @@ const UI_STRINGS = {
     hero_tagline: "美东华人生活圈 · 纽约华人民生信息聚合",
     hero_subtitle: "搜福利、活动、社区黄页与超市海报——收录自政府与社区公开渠道，外链人工核验",
     hero_search_ph: "搜福利、活动、商家名、电话…",
+    search_scope_livelihood: "民生",
+    search_scope_yellow: "黄页",
+    search_scope_all: "全部",
     hero_trust: "www.uslifehub.org · 公益免费 · 公开渠道聚合",
     hero_go: "搜索",
     hero_chips: ["粮食券", "平价房", "半价地铁卡", "免费遛娃", "飞龙超市", "法拉盛"],
@@ -2325,6 +2345,9 @@ const UI_STRINGS = {
     hero_tagline: "美東華人生活圈 · 紐約華人民生信息聚合",
     hero_subtitle: "搜福利、活動、社區黃頁與超市海報——收錄自首方與社區公開渠道，外鏈人工核驗",
     hero_search_ph: "搜福利、活動、商家名、電話…",
+    search_scope_livelihood: "民生",
+    search_scope_yellow: "黃頁",
+    search_scope_all: "全部",
     hero_trust: "www.uslifehub.org · 公益免費 · 公開渠道聚合",
     hero_go: "搜尋",
     hero_chips: ["糧食券", "平價房", "半價地鐵卡", "免費遛娃", "飛龍超市", "法拉盛"],
@@ -2464,6 +2487,9 @@ const UI_STRINGS = {
     hero_tagline: "East Coast Chinese Life Hub · NYC public-benefits & community digest",
     hero_subtitle: "Search benefits, events, local businesses, and store flyers—sourced from public channels; outbound links manually checked",
     hero_search_ph: "Benefits, events, business name, phone…",
+    search_scope_livelihood: "Livelihood",
+    search_scope_yellow: "Yellow Pages",
+    search_scope_all: "All",
     hero_trust: "www.uslifehub.org · Free · Public-source aggregation",
     hero_go: "Search",
     hero_chips: ["SNAP/EBT", "affordable housing", "half-fare MetroCard", "free kids events", "Fei Long", "Flushing"],
@@ -8143,6 +8169,7 @@ function hubBoot() {
     HUB_PAGE_VIEW = resolveHubPageView();
     initPreference();
     applyPageViewMode();
+    if (typeof syncHubSearchScopeUI === 'function') syncHubSearchScopeUI();
     initHubChapterNav();
     renderHubStreamStats(resolveHubIndexStats());
     initDashboardWidgets();
@@ -8587,6 +8614,12 @@ function updateHubSearchPlaceholder() {
   if (hubInput) hubInput.placeholder = s.hub_search_placeholder || hubInput.placeholder;
   const heroInput = document.getElementById('hero-search');
   if (heroInput) heroInput.placeholder = s.hero_search_ph || heroInput.placeholder;
+  const scLiv = document.getElementById('scope-livelihood');
+  if (scLiv) scLiv.textContent = s.search_scope_livelihood || '民生';
+  const scYp = document.getElementById('scope-yellowpages');
+  if (scYp) scYp.textContent = s.search_scope_yellow || '黄页';
+  const scAll = document.getElementById('scope-all');
+  if (scAll) scAll.textContent = s.search_scope_all || '全部';
   const ypInput = document.getElementById('yp-search');
   if (ypInput) ypInput.placeholder = s.hero_ph_yellow || '商业名称';
   if (typeof renderYpAreaDropdown === 'function') renderYpAreaDropdown();
@@ -8796,6 +8829,35 @@ async function ensureYpSearchReady() {
   }
 }
 
+// Hero search scope: livelihood (default) | yellowpages | all — reduces YP noise on benefit queries
+let HUB_SEARCH_SCOPE = 'livelihood';
+try {
+  const savedScope = localStorage.getItem('hub_search_scope');
+  if (savedScope === 'livelihood' || savedScope === 'yellowpages' || savedScope === 'all') {
+    HUB_SEARCH_SCOPE = savedScope;
+  }
+} catch (_) {}
+
+function setHubSearchScope(scope, opts) {
+  const next = (scope === 'yellowpages' || scope === 'all') ? scope : 'livelihood';
+  HUB_SEARCH_SCOPE = next;
+  try { localStorage.setItem('hub_search_scope', next); } catch (_) {}
+  document.querySelectorAll('#hub-search-scope .hub-scope-chip').forEach(btn => {
+    btn.classList.toggle('active', btn.getAttribute('data-scope') === next);
+  });
+  const run = !(opts && opts.skipSearch);
+  if (run) {
+    const q = (document.getElementById('hero-search') || {}).value || '';
+    if (String(q).trim()) goHubSearch(q);
+  }
+}
+
+function syncHubSearchScopeUI() {
+  document.querySelectorAll('#hub-search-scope .hub-scope-chip').forEach(btn => {
+    btn.classList.toggle('active', btn.getAttribute('data-scope') === HUB_SEARCH_SCOPE);
+  });
+}
+
 // Hero search → route to 民生频道 / 薅羊毛 / 黄页（复用现有检索）
 async function goHubSearch(q) {
   const query = String(q || '').trim();
@@ -8814,21 +8876,41 @@ async function goHubSearch(q) {
   const nEss = countEssentialPhoneMatches(query);
   const merchantLike = hubQueryLooksLikeMerchant(query);
   const benefitLike = hubQueryLooksLikeBenefit(query);
+  const scope = HUB_SEARCH_SCOPE || 'livelihood';
 
   let view = 'channels';
-  if (merchantLike || areaHit) {
-    // 明确的商家名/区域浏览意图 → 社区黄页优先
+  if (scope === 'yellowpages') {
+    view = 'yellowpages';
+  } else if (scope === 'livelihood') {
+    // Default: 民生 — only jump to 黄页 for clear merchant / phone / area browse intent
+    if (merchantLike || (areaHit && !benefitLike)) {
+      view = nYp > 0 || nEss > 0 ? 'yellowpages'
+           : nCh > 0 ? 'channels'
+           : nDeal > 0 ? 'deals' : 'channels';
+    } else if (benefitLike && nCh > 0) {
+      view = 'channels';
+    } else if (nDeal > 0 && nDeal >= nCh) {
+      view = 'deals';
+    } else if (nCh > 0) {
+      view = 'channels';
+    } else if (nDeal > 0) {
+      view = 'deals';
+    } else if (merchantLike && (nYp > 0 || nEss > 0)) {
+      view = 'yellowpages';
+    } else {
+      view = 'channels';
+    }
+  } else if (merchantLike || areaHit) {
+    // scope=all: prior auto-route
     view = nYp > 0 ? 'yellowpages'
          : nCh > 0 ? 'channels'
          : nDeal > 0 ? 'deals'
          : nEss > 0 ? 'yellowpages' : 'channels';
   } else if (benefitLike && nCh > 0) {
-    // 福利/活动查询 → 民生频道（避免被幼儿园/地产等类目商户淹没）
     view = 'channels';
   } else if (nDeal > 0 && nDeal >= nCh && nDeal >= nYp) {
     view = 'deals';
   } else if (nCh > 0) {
-    // 频道与商户都命中时，默认频道；仅当商户数量压倒性领先才转黄页
     view = (nYp >= nCh * 3 && !benefitLike) ? 'yellowpages' : 'channels';
   } else if (nYp > 0) {
     view = 'yellowpages';
