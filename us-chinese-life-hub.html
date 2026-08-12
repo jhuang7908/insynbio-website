@@ -182,6 +182,7 @@
     .header-meta .dash-stat { color: #475569; }
     .header-meta .dash-stat strong { color: #ea580c; }
     .header-meta .dash-stat-week strong { color: #15803d; }
+    .header-meta .dash-stat-sources strong { color: #1d4ed8; }
     .header-meta .dash-stat-unit { color: #64748b; }
     @media (max-width: 720px) {
       .header-meta { order: 3; flex: 1 1 100%; margin-left: 0; margin-right: 0; justify-content: flex-start; }
@@ -3249,7 +3250,10 @@ function hubTodayEtStr() {
 
 function hubHoursSinceLastUpdate() {
   if (typeof HUB_AUTO_UPDATE === 'undefined') return null;
-  const stamp = HUB_AUTO_UPDATE.last_incremental || HUB_AUTO_UPDATE.last_full || '';
+  const stamp = HUB_AUTO_UPDATE.last_incremental
+    || HUB_AUTO_UPDATE.last_full
+    || HUB_AUTO_UPDATE.last_partial
+    || '';
   const m = stamp.match(/^(\d{4})-(\d{2})-(\d{2})\s+(\d{2}):(\d{2})/);
   if (!m) return null;
   const iso = `${m[1]}-${m[2]}-${m[3]}T${m[4]}:${m[5]}:00-04:00`;
@@ -3258,14 +3262,36 @@ function hubHoursSinceLastUpdate() {
   return Math.max(0, Math.round((Date.now() - t) / 3600000));
 }
 
+function hubSourcesHealthLabel() {
+  const cfg = Number(HUB_AUTO_UPDATE?.sources_configured || HUB_INDEX_STATS?.sources_configured || HUB_INDEX_STATS?.sources_scanned || 0);
+  const ok = Number(HUB_AUTO_UPDATE?.sources_ok || HUB_INDEX_STATS?.sources_ok || 0);
+  if (!cfg) return '';
+  const status = HUB_AUTO_UPDATE?.update_status || HUB_INDEX_STATS?.update_status || '';
+  if (status === 'partial' || ok < cfg) return `${ok}/${cfg} 源成功`;
+  return `${ok}/${cfg} 源`;
+}
+
 function renderHubStreamStats(stats) {
   const s = UI_STRINGS[currentLang];
   const nc = document.getElementById('stream-new-count');
   const wc = document.getElementById('stream-week-count');
   const snStat = document.getElementById('stream-new-stat');
+  const srcCount = document.getElementById('stream-sources-count');
+  const srcUnit = document.getElementById('stream-sources-unit');
+  const srcStat = document.getElementById('stream-sources-stat');
   if (nc) nc.textContent = String(stats.new_24h ?? 0);
   if (wc) wc.textContent = String(stats.events_7d ?? 0);
   if (snStat) snStat.title = s.stream_new_title;
+  const cfg = Number(stats.sources_configured || stats.sources_scanned || HUB_AUTO_UPDATE?.sources_configured || 0);
+  const ok = Number(stats.sources_ok ?? HUB_AUTO_UPDATE?.sources_ok ?? 0);
+  if (srcCount && cfg) srcCount.textContent = String(ok);
+  if (srcUnit && cfg) srcUnit.textContent = '/' + String(cfg);
+  if (srcStat && cfg) {
+    const partial = (stats.update_status || HUB_AUTO_UPDATE?.update_status) === 'partial' || ok < cfg;
+    srcStat.title = partial
+      ? `本次抓取 ${ok}/${cfg} 个源成功（部分成功）`
+      : `本次抓取 ${ok}/${cfg} 个源成功`;
+  }
   syncMobileDrawerStats(stats);
 }
 
@@ -3278,7 +3304,9 @@ function syncMobileDrawerStats(stats) {
   const place = city ? city.textContent : '纽约';
   const n24 = stats?.new_24h ?? document.getElementById('stream-new-count')?.textContent ?? '—';
   const n7 = stats?.events_7d ?? document.getElementById('stream-week-count')?.textContent ?? '—';
-  el.innerHTML = `🌤 ${escapeHtml(temp)} ${escapeHtml(place)}<br>24h 新增 <strong>${escapeHtml(String(n24))}</strong> 条 · 7日 <strong>${escapeHtml(String(n7))}</strong> 场`;
+  const src = hubSourcesHealthLabel();
+  const srcLine = src ? `<br>源健康 <strong>${escapeHtml(src)}</strong>` : '';
+  el.innerHTML = `🌤 ${escapeHtml(temp)} ${escapeHtml(place)}<br>24h 新增 <strong>${escapeHtml(String(n24))}</strong> 条 · 7日 <strong>${escapeHtml(String(n7))}</strong> 场${srcLine}`;
 }
 
 function pickFeatured24hItems(stats) {
