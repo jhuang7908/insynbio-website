@@ -3742,6 +3742,15 @@ const HUB_SEARCH_ALIASES = {
   '公所': ['ccba', '中华公所'],
   '布鲁克林华人': ['bca', 'bca.net', '八大道', 'sunset park'],
   'oca': ['oca', 'oca-ny', '亚裔公民', '公民权益'],
+  'carea': ['carea', '华人地产', '地产协会', '房地产', 'real estate'],
+  '华人地产': ['carea', '地产协会', '房地产', '经纪人'],
+  'carsa': ['carsa', '华人餐饮', '餐饮业协会', '餐馆协会'],
+  '华人餐饮': ['carsa', '餐饮业协会', '餐馆'],
+  '法拉盛bid': ['flushing bid', 'flushingbid', '法拉盛商圈', 'food tour'],
+  '海南同乡会': ['hainan', '海南', 'hainanassociation'],
+  '上海同乡会': ['shanghai', '上海同乡', 'shanghaiusa'],
+  '老乡会': ['同乡会', 'hainan', 'shanghai', '海南', '上海', '公所'],
+  '装修': ['装修', '建筑', '施工', 'contractor', 'construction', '商会', 'fcba', 'cbany'],
 };
 
 const HUB_YP_AREA_QUERY = {
@@ -3792,7 +3801,8 @@ function hubQueryLooksLikeBenefit(raw) {
     'sapa', '美中药协', '药协', 'castgny', 'cast-gny', '旅美科技', '年会', 'career fair', '职业论坛',
     'cmp', '唐人街人力', '人力中心', 'job bank', 'aafe', '亚美权益', 'cacf', 'cpc招聘', '职业培训',
     'aabany', '亚裔律师', 'nycaba', '华人银行', 'cascpa', '华人会计', 'areaa', '商会', '华人总商会',
-    '中华公所', '公所', 'fcba', '布鲁克林华人', 'oca'
+    '中华公所', '公所', 'fcba', '布鲁克林华人', 'oca',
+    'carea', '华人地产', '房地产', 'carsa', '华人餐饮', '餐馆', '法拉盛bid', '海南同乡会', '上海同乡会', '老乡会', '装修'
   ];
   return needles.some(n => q.includes(n) || (n.length >= 2 && q.length >= 2 && n.includes(q)));
 }
