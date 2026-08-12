@@ -3729,6 +3729,19 @@ const HUB_SEARCH_ALIASES = {
   '亚美权益': ['aafe', '亚美权益促进会'],
   'cacf': ['cacf', '亚美儿童', '儿童与家庭联盟'],
   'cpc招聘': ['cpc', '华人策划', 'cpc-nyc', 'jobs'],
+  'aabany': ['aabany', '亚裔律师', '律师协会', 'bar association'],
+  '亚裔律师': ['aabany', '亚裔律师协会', '律师协会'],
+  'nycaba': ['nycaba', '华人银行', '银行家协会', 'bankers'],
+  '华人银行家': ['nycaba', '华人银行', '银行家'],
+  'cascpa': ['cascpa', '华人会计', '会计师协会', 'cpa'],
+  '华人会计': ['cascpa', '会计师协会', 'cpa'],
+  'areaa': ['areaa', '亚裔地产', '地产协会'],
+  '华人总商会': ['cbany', '总商会', '商会', 'chinese chamber', 'cccofny'],
+  '商会': ['cbany', 'fcba', '总商会', 'chamber', 'cccofny', '法拉盛华商'],
+  '中华公所': ['ccba', '公所', 'ccbanyc'],
+  '公所': ['ccba', '中华公所'],
+  '布鲁克林华人': ['bca', 'bca.net', '八大道', 'sunset park'],
+  'oca': ['oca', 'oca-ny', '亚裔公民', '公民权益'],
 };
 
 const HUB_YP_AREA_QUERY = {
@@ -3777,7 +3790,9 @@ function hubQueryLooksLikeBenefit(raw) {
     '租金冻结', 'rent freeze', 'scrie', 'drie', '福利申请', '儿童保育', 'child care', 'childcare',
     'esl', 'ged', '入籍', 'citizenship', '图书馆课程', '医疗补助', 'medicaid', '低收入',
     'sapa', '美中药协', '药协', 'castgny', 'cast-gny', '旅美科技', '年会', 'career fair', '职业论坛',
-    'cmp', '唐人街人力', '人力中心', 'job bank', 'aafe', '亚美权益', 'cacf', 'cpc招聘', '职业培训'
+    'cmp', '唐人街人力', '人力中心', 'job bank', 'aafe', '亚美权益', 'cacf', 'cpc招聘', '职业培训',
+    'aabany', '亚裔律师', 'nycaba', '华人银行', 'cascpa', '华人会计', 'areaa', '商会', '华人总商会',
+    '中华公所', '公所', 'fcba', '布鲁克林华人', 'oca'
   ];
   return needles.some(n => q.includes(n) || (n.length >= 2 && q.length >= 2 && n.includes(q)));
 }
