@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0",
-  "generated_at": "2026-08-12 16:02",
+  "generated_at": "2026-08-12 18:49",
   "count": 59,
   "fields": [
     "first_indexed_at",
@@ -17,8 +17,8 @@
     {
       "id": "live_001",
       "module": "文化·节庆",
-      "title_zh": "皇后区爵士音乐会：华莱士·罗尼 Jr.",
-      "summary_zh": "体验这个夏天在皇后区心脏地带的爵士乐生动遗产！受标志性皇后区爵士音乐地图的启发，这个免费的音乐会系列在美丽的社区公园中将该区丰富的爵士历史带入生活…（来源类型：nyc_parks_opendata_fallback）",
+      "title_zh": "皇后爵士之旅音乐会：Wallace Roney Jr.",
+      "summary_zh": "这个夏天，在皇后区的心脏地带体验爵士乐的生动遗产！受标志性Queens Jazz Trail Map的启发，这个免费的音乐会系列将该区丰富的爵士历史带入美丽的社区公园…",
       "location_tag_zh": "法拉盛 Flushing",
       "location_kind": "enclave",
       "area_zh": "法拉盛 Flushing",
@@ -29,15 +29,15 @@
       "published_at": "",
       "source_published_at": "",
       "first_indexed_at": "2026-08-11 23:03:58",
-      "last_seen_at": "2026-08-12 12:02:27",
+      "last_seen_at": "2026-08-12 14:48:42",
       "date_kind": "event",
       "url": "https://www.nycgovparks.org/events/2026/08/13/queens-jazz-trail-concert-wallace-roney-jr",
-      "search_text": "live_001 文化·节庆 皇后区爵士音乐会：华莱士·罗尼 jr. queens jazz trail concert: wallace roney jr. 体验这个夏天在皇后区心脏地带的爵士乐生动遗产！受标志性皇后区爵士音乐地图的启发，这个免费的音乐会系列在美丽的社区公园中将该区丰富的爵士历史带入生活…（来源类型：nyc_parks_opendata_fallback） 法拉盛 flushing 法拉盛 flushing queens st. albans park (in archie spigner park) 2026-08-11 23:03:58 2026-08-13 https://www.nycgovparks.org/events/2026/08/13/queens-jazz-trail-concert-wallace-roney-jr"
+      "search_text": "live_001 文化·节庆 皇后爵士之旅音乐会：wallace roney jr. queens jazz trail concert: wallace roney jr. 这个夏天，在皇后区的心脏地带体验爵士乐的生动遗产！受标志性queens jazz trail map的启发，这个免费的音乐会系列将该区丰富的爵士历史带入美丽的社区公园… 法拉盛 flushing 法拉盛 flushing queens st. albans park (in archie spigner park) 2026-08-11 23:03:58 2026-08-13 https://www.nycgovparks.org/events/2026/08/13/queens-jazz-trail-concert-wallace-roney-jr"
     },
     {
       "id": "live_002",
       "module": "语言·教育",
-      "title_zh": "英语作为第二语言和大学预备课程",
+      "title_zh": "ESL和大学预备",
       "summary_zh": "Education program on www.bmcc.cuny.edu — click to enroll or learn more.（来源类型：纽约市立大学 — 继续教育、英语课及成人学习）",
       "location_tag_zh": "全市",
       "location_kind": "citywide",
@@ -49,10 +49,10 @@
       "published_at": "",
       "source_published_at": "",
       "first_indexed_at": "2026-06-15 20:30:26",
-      "last_seen_at": "2026-08-12 12:02:27",
+      "last_seen_at": "2026-08-12 14:48:42",
       "date_kind": "event",
       "url": "https://www.bmcc.cuny.edu/ce/esl-college-prep/",
-      "search_text": "live_002 语言·教育 英语作为第二语言和大学预备课程 esl and college prep education program on www.bmcc.cuny.edu — click to enroll or learn more.（来源类型：纽约市立大学 — 继续教育、英语课及成人学习） 全市 纽约全市 citywide new york city 2026-06-15 20:30:26 2026-08-17 https://www.bmcc.cuny.edu/ce/esl-college-prep/"
+      "search_text": "live_002 语言·教育 esl和大学预备 esl and college prep education program on www.bmcc.cuny.edu — click to enroll or learn more.（来源类型：纽约市立大学 — 继续教育、英语课及成人学习） 全市 纽约全市 citywide new york city 2026-06-15 20:30:26 2026-08-17 https://www.bmcc.cuny.edu/ce/esl-college-prep/"
     },
     {
       "id": "live_003",
@@ -69,7 +69,7 @@
       "published_at": "",
       "source_published_at": "",
       "first_indexed_at": "2026-06-15 20:30:26",
-      "last_seen_at": "2026-08-12 12:02:27",
+      "last_seen_at": "2026-08-12 14:48:42",
       "date_kind": "event",
       "url": "https://www.bmcc.cuny.edu/ce/esl-training-programs/",
       "search_text": "live_003 语言·教育 esl培训项目 esl training programs education program on www.bmcc.cuny.edu — click to enroll or learn more.（来源类型：纽约市立大学 — 继续教育、英语课及成人学习） 全市 纽约全市 citywide new york city 2026-06-15 20:30:26 2026-08-17 https://www.bmcc.cuny.edu/ce/esl-training-programs/"
@@ -89,7 +89,7 @@
       "published_at": "",
       "source_published_at": "",
       "first_indexed_at": "2026-06-15 20:30:26",
-      "last_seen_at": "2026-08-12 12:02:27",
+      "last_seen_at": "2026-08-12 14:48:42",
       "date_kind": "event",
       "url": "https://www.bmcc.cuny.edu/ce/hse-ged-and-esol-programs/",
       "search_text": "live_004 语言·教育 hse（ged）和esol项目 hse (ged) and esol programs education program on www.bmcc.cuny.edu — click to enroll or learn more.（来源类型：纽约市立大学 — 继续教育、英语课及成人学习） 全市 纽约全市 citywide new york city 2026-06-15 20:30:26 2026-08-17 https://www.bmcc.cuny.edu/ce/hse-ged-and-esol-programs/"
@@ -109,7 +109,7 @@
       "published_at": "2026-04-24",
       "source_published_at": "2026-04-24 06:13:09",
       "first_indexed_at": "2026-06-15 20:30:26",
-      "last_seen_at": "2026-08-12 12:02:27",
+      "last_seen_at": "2026-08-12 14:48:42",
       "date_kind": "event",
       "url": "https://www.kingsborough.edu/ce/hse_courses.html",
       "search_text": "live_005 语言·教育 高中同等学历（hse/ged） high school equivalency (hse/ged) education program on www.kingsborough.edu — click to enroll or learn more.（来源类型：纽约市立大学 — 继续教育、英语课及成人学习） 全市 纽约全市 citywide new york city 2026-06-15 20:30:26 2026-04-24 06:13:09 2026-08-17 https://www.kingsborough.edu/ce/hse_courses.html"
@@ -117,8 +117,8 @@
     {
       "id": "live_006",
       "module": "亲子·公园",
-      "title_zh": "动感儿童：艾姆赫斯特公园",
-      "summary_zh": "动感儿童项目让孩子们参与积极的户外游戏。纽约公园的工作人员带领4到7小时的免费活动，包括组织运动、游戏、健身演示、棋盘游戏…（来源类型：nyc_parks_opendata_fallback）",
+      "title_zh": "动感儿童：Elmhurst 公园",
+      "summary_zh": "动感儿童项目让孩子们参与积极的户外游戏。纽约市公园工作人员带领在纽约市游乐场进行四到七小时的免费活动，包括组织体育、游戏、健身演示、棋盘游戏…",
       "location_tag_zh": "艾姆赫斯特 Elmhurst",
       "location_kind": "enclave",
       "area_zh": "艾姆赫斯特 Elmhurst",
@@ -129,16 +129,16 @@
       "published_at": "",
       "source_published_at": "",
       "first_indexed_at": "2026-08-12 10:30:40",
-      "last_seen_at": "2026-08-12 12:02:27",
+      "last_seen_at": "2026-08-12 14:48:42",
       "date_kind": "event",
       "url": "https://www.nycgovparks.org/events/2026/08/14/kids-in-motion-elmhurst-park",
-      "search_text": "live_006 亲子·公园 动感儿童：艾姆赫斯特公园 kids in motion: elmhurst park 动感儿童项目让孩子们参与积极的户外游戏。纽约公园的工作人员带领4到7小时的免费活动，包括组织运动、游戏、健身演示、棋盘游戏…（来源类型：nyc_parks_opendata_fallback） 艾姆赫斯特 elmhurst 艾姆赫斯特 elmhurst queens playground (in elmhurst park) 2026-08-12 10:30:40 2026-08-14 https://www.nycgovparks.org/events/2026/08/14/kids-in-motion-elmhurst-park"
+      "search_text": "live_006 亲子·公园 动感儿童：elmhurst 公园 kids in motion: elmhurst park 动感儿童项目让孩子们参与积极的户外游戏。纽约市公园工作人员带领在纽约市游乐场进行四到七小时的免费活动，包括组织体育、游戏、健身演示、棋盘游戏… 艾姆赫斯特 elmhurst 艾姆赫斯特 elmhurst queens playground (in elmhurst park) 2026-08-12 10:30:40 2026-08-14 https://www.nycgovparks.org/events/2026/08/14/kids-in-motion-elmhurst-park"
     },
     {
       "id": "live_007",
       "module": "亲子·公园",
-      "title_zh": "动感儿童：科罗娜高尔夫游乐场",
-      "summary_zh": "动感儿童项目让孩子们参与积极的户外游戏。纽约公园的工作人员带领4到7小时的免费活动，包括组织运动、游戏、健身演示、棋盘游戏…（来源类型：nyc_parks_opendata_fallback）",
+      "title_zh": "动感儿童：Corona 高尔夫游乐场",
+      "summary_zh": "动感儿童项目让孩子们参与积极的户外游戏。纽约市公园工作人员带领在纽约市游乐场进行四到七小时的免费活动，包括组织体育、游戏、健身演示、棋盘游戏…",
       "location_tag_zh": "艾姆赫斯特 Elmhurst",
       "location_kind": "enclave",
       "area_zh": "艾姆赫斯特 Elmhurst",
@@ -149,10 +149,10 @@
       "published_at": "",
       "source_published_at": "",
       "first_indexed_at": "2026-08-12 10:30:40",
-      "last_seen_at": "2026-08-12 12:02:27",
+      "last_seen_at": "2026-08-12 14:48:42",
       "date_kind": "event",
       "url": "https://www.nycgovparks.org/events/2026/08/14/kids-in-motion-corona-golf-playground",
-      "search_text": "live_007 亲子·公园 动感儿童：科罗娜高尔夫游乐场 kids in motion: corona golf playground 动感儿童项目让孩子们参与积极的户外游戏。纽约公园的工作人员带领4到7小时的免费活动，包括组织运动、游戏、健身演示、棋盘游戏…（来源类型：nyc_parks_opendata_fallback） 艾姆赫斯特 elmhurst 艾姆赫斯特 elmhurst queens playground (in corona golf playground) 2026-08-12 10:30:40 2026-08-14 https://www.nycgovparks.org/events/2026/08/14/kids-in-motion-corona-golf-playground"
+      "search_text": "live_007 亲子·公园 动感儿童：corona 高尔夫游乐场 kids in motion: corona golf playground 动感儿童项目让孩子们参与积极的户外游戏。纽约市公园工作人员带领在纽约市游乐场进行四到七小时的免费活动，包括组织体育、游戏、健身演示、棋盘游戏… 艾姆赫斯特 elmhurst 艾姆赫斯特 elmhurst queens playground (in corona golf playground) 2026-08-12 10:30:40 2026-08-14 https://www.nycgovparks.org/events/2026/08/14/kids-in-motion-corona-golf-playground"
     },
     {
       "id": "live_008",
@@ -169,7 +169,7 @@
       "published_at": "",
       "source_published_at": "",
       "first_indexed_at": "2026-06-15 20:30:26",
-      "last_seen_at": "2026-08-12 12:02:27",
+      "last_seen_at": "2026-08-12 14:48:42",
       "date_kind": "event",
       "url": "https://www.qcc.cuny.edu/ce/courses/qcc-continuing-education-swim-program.html",
       "search_text": "live_008 语言·教育 qcc继续教育游泳项目 qcc continuing education swim program education program on www.qcc.cuny.edu — click to enroll or learn more.（来源类型：纽约市立大学 — 继续教育、英语课及成人学习） 全市 纽约全市 citywide new york city 2026-06-15 20:30:26 2026-08-17 https://www.qcc.cuny.edu/ce/courses/qcc-continuing-education-swim-program.html"
@@ -189,7 +189,7 @@
       "published_at": "",
       "source_published_at": "",
       "first_indexed_at": "2026-06-15 20:30:26",
-      "last_seen_at": "2026-08-12 12:02:27",
+      "last_seen_at": "2026-08-12 14:48:42",
       "date_kind": "event",
       "url": "https://www.qcc.cuny.edu/ce/index.html",
       "search_text": "live_009 就业·培训 继续教育与劳动力发展 continuing education workforce development education program on www.qcc.cuny.edu — click to enroll or learn more.（来源类型：纽约市立大学 — 继续教育、英语课及成人学习） 全市 纽约全市 citywide new york city 2026-06-15 20:30:26 2026-08-17 https://www.qcc.cuny.edu/ce/index.html"
@@ -209,7 +209,7 @@
       "published_at": "",
       "source_published_at": "",
       "first_indexed_at": "2026-06-15 20:30:26",
-      "last_seen_at": "2026-08-12 12:02:27",
+      "last_seen_at": "2026-08-12 14:48:42",
       "date_kind": "event",
       "url": "https://www.bmcc.cuny.edu/ce/bmcc-nyc-workforce-resources/",
       "search_text": "live_010 就业·培训 纽约劳动力资源 new york workforce resources education program on www.bmcc.cuny.edu — click to enroll or learn more.（来源类型：纽约市立大学 — 继续教育、英语课及成人学习） 全市 纽约全市 citywide new york city 2026-06-15 20:30:26 2026-08-17 https://www.bmcc.cuny.edu/ce/bmcc-nyc-workforce-resources/"
@@ -217,7 +217,7 @@
     {
       "id": "live_011",
       "module": "交通·出行",
-      "title_zh": "MTA：前往法拉盛的[7X]快车在皇后区从74街-百老汇到梅茨-威利特斯点运行本地服务",
+      "title_zh": "MTA：前往法拉盛的[7X]快车在皇后区从74 St-Broadway到Mets-Willets Point运行本地服务",
       "summary_zh": "What's happening? Mets Home Game（来源类型：MTA 大都会交通局 - 服务变更）",
       "location_tag_zh": "全市",
       "location_kind": "citywide",
@@ -229,16 +229,16 @@
       "published_at": "",
       "source_published_at": "",
       "first_indexed_at": "2026-08-12 11:55:06",
-      "last_seen_at": "2026-08-12 12:02:27",
+      "last_seen_at": "2026-08-12 14:48:42",
       "date_kind": "event",
       "url": "https://www.mta.info/#alert-779b9d650420",
-      "search_text": "live_011 交通·出行 mta：前往法拉盛的[7x]快车在皇后区从74街-百老汇到梅茨-威利特斯点运行本地服务 mta：flushing-bound [7x] express trains run local in queens from 74 st-broadway to mets-willets point what's happening? mets home game（来源类型：mta 大都会交通局 - 服务变更） 全市 法拉盛 flushing citywide nyc 2026-08-12 11:55:06 2026-08-12 https://www.mta.info/#alert-779b9d650420"
+      "search_text": "live_011 交通·出行 mta：前往法拉盛的[7x]快车在皇后区从74 st-broadway到mets-willets point运行本地服务 mta：flushing-bound [7x] express trains run local in queens from 74 st-broadway to mets-willets point what's happening? mets home game（来源类型：mta 大都会交通局 - 服务变更） 全市 法拉盛 flushing citywide nyc 2026-08-12 11:55:06 2026-08-12 https://www.mta.info/#alert-779b9d650420"
     },
     {
       "id": "live_012",
       "module": "文化·节庆",
-      "title_zh": "布莱恩特公园野餐表演：纽约吉他节",
-      "summary_zh": "8月14日和15日，纽约吉他节将在布莱恩特公园举办两场免费活动，内容丰富多样，偶尔电气化，始终令人振奋。从古典吉他经典到巴西…（来源类型：nyc_parks_opendata_fallback）",
+      "title_zh": "Bryant Park野餐表演：纽约吉他节",
+      "summary_zh": "8月14日和15日，纽约吉他节将回到Bryant Park，举办两场通常是多元化、偶尔电气化且总是令人振奋的免费活动。从古典吉他经典到巴西…",
       "location_tag_zh": "全市",
       "location_kind": "citywide",
       "area_zh": "纽约全市",
@@ -249,16 +249,16 @@
       "published_at": "",
       "source_published_at": "",
       "first_indexed_at": "2026-08-12 10:30:40",
-      "last_seen_at": "2026-08-12 12:02:27",
+      "last_seen_at": "2026-08-12 14:48:42",
       "date_kind": "event",
       "url": "https://www.nycgovparks.org/events/2026/08/15/bryant-park-picnic-performance-new-york-guitar-festival-the",
-      "search_text": "live_012 文化·节庆 布莱恩特公园野餐表演：纽约吉他节 bryant park picnic performance: new york guitar festival 8月14日和15日，纽约吉他节将在布莱恩特公园举办两场免费活动，内容丰富多样，偶尔电气化，始终令人振奋。从古典吉他经典到巴西…（来源类型：nyc_parks_opendata_fallback） 全市 纽约全市 citywide bryant park lawn (in bryant park) 2026-08-12 10:30:40 2026-08-15 https://www.nycgovparks.org/events/2026/08/15/bryant-park-picnic-performance-new-york-guitar-festival-the"
+      "search_text": "live_012 文化·节庆 bryant park野餐表演：纽约吉他节 bryant park picnic performance: new york guitar festival 8月14日和15日，纽约吉他节将回到bryant park，举办两场通常是多元化、偶尔电气化且总是令人振奋的免费活动。从古典吉他经典到巴西… 全市 纽约全市 citywide bryant park lawn (in bryant park) 2026-08-12 10:30:40 2026-08-15 https://www.nycgovparks.org/events/2026/08/15/bryant-park-picnic-performance-new-york-guitar-festival-the"
     },
     {
       "id": "live_013",
       "module": "亲子·公园",
-      "title_zh": "动感儿童：鲍恩游乐场",
-      "summary_zh": "动感儿童项目让孩子们参与积极的户外游戏。纽约公园的工作人员带领4到7小时的免费活动，包括组织运动、游戏、健身演示、棋盘游戏…（来源类型：nyc_parks_opendata_fallback）",
+      "title_zh": "动感儿童：Bowne 游乐场",
+      "summary_zh": "动感儿童项目让孩子们参与积极的户外游戏。纽约市公园工作人员带领在纽约市游乐场进行四到七小时的免费活动，包括组织体育、游戏、健身演示、棋盘游戏…",
       "location_tag_zh": "法拉盛 Flushing",
       "location_kind": "enclave",
       "area_zh": "法拉盛 Flushing",
@@ -269,16 +269,16 @@
       "published_at": "",
       "source_published_at": "",
       "first_indexed_at": "2026-08-12 10:30:40",
-      "last_seen_at": "2026-08-12 12:02:27",
+      "last_seen_at": "2026-08-12 14:48:42",
       "date_kind": "event",
       "url": "https://www.nycgovparks.org/events/2026/08/14/kids-in-motion-bowne-playground",
-      "search_text": "live_013 亲子·公园 动感儿童：鲍恩游乐场 kids in motion: bowne playground 动感儿童项目让孩子们参与积极的户外游戏。纽约公园的工作人员带领4到7小时的免费活动，包括组织运动、游戏、健身演示、棋盘游戏…（来源类型：nyc_parks_opendata_fallback） 法拉盛 flushing 法拉盛 flushing queens play area (in bowne playground) 2026-08-12 10:30:40 2026-08-14 https://www.nycgovparks.org/events/2026/08/14/kids-in-motion-bowne-playground"
+      "search_text": "live_013 亲子·公园 动感儿童：bowne 游乐场 kids in motion: bowne playground 动感儿童项目让孩子们参与积极的户外游戏。纽约市公园工作人员带领在纽约市游乐场进行四到七小时的免费活动，包括组织体育、游戏、健身演示、棋盘游戏… 法拉盛 flushing 法拉盛 flushing queens play area (in bowne playground) 2026-08-12 10:30:40 2026-08-14 https://www.nycgovparks.org/events/2026/08/14/kids-in-motion-bowne-playground"
     },
     {
       "id": "live_014",
       "module": "亲子·公园",
-      "title_zh": "动感儿童：鲍恩公园",
-      "summary_zh": "动感儿童项目让孩子们参与积极的户外游戏。纽约公园的工作人员带领4到7小时的免费活动，包括组织运动、游戏、健身演示、棋盘游戏…（来源类型：nyc_parks_opendata_fallback）",
+      "title_zh": "动感儿童：Bowne 公园",
+      "summary_zh": "动感儿童项目让孩子们参与积极的户外游戏。纽约市公园工作人员带领在纽约市游乐场进行四到七小时的免费活动，包括组织体育、游戏、健身演示、棋盘游戏…",
       "location_tag_zh": "法拉盛 Flushing",
       "location_kind": "enclave",
       "area_zh": "法拉盛 Flushing",
@@ -289,16 +289,16 @@
       "published_at": "",
       "source_published_at": "",
       "first_indexed_at": "2026-08-12 10:30:40",
-      "last_seen_at": "2026-08-12 12:02:27",
+      "last_seen_at": "2026-08-12 14:48:42",
       "date_kind": "event",
       "url": "https://www.nycgovparks.org/events/2026/08/14/kids-in-motion-bowne-park",
-      "search_text": "live_014 亲子·公园 动感儿童：鲍恩公园 kids in motion: bowne park 动感儿童项目让孩子们参与积极的户外游戏。纽约公园的工作人员带领4到7小时的免费活动，包括组织运动、游戏、健身演示、棋盘游戏…（来源类型：nyc_parks_opendata_fallback） 法拉盛 flushing 法拉盛 flushing queens bowne park playground (in bowne park) 2026-08-12 10:30:40 2026-08-14 https://www.nycgovparks.org/events/2026/08/14/kids-in-motion-bowne-park"
+      "search_text": "live_014 亲子·公园 动感儿童：bowne 公园 kids in motion: bowne park 动感儿童项目让孩子们参与积极的户外游戏。纽约市公园工作人员带领在纽约市游乐场进行四到七小时的免费活动，包括组织体育、游戏、健身演示、棋盘游戏… 法拉盛 flushing 法拉盛 flushing queens bowne park playground (in bowne park) 2026-08-12 10:30:40 2026-08-14 https://www.nycgovparks.org/events/2026/08/14/kids-in-motion-bowne-park"
     },
     {
       "id": "live_015",
       "module": "亲子·公园",
-      "title_zh": "动感儿童：苏厄德公园",
-      "summary_zh": "动感儿童项目让孩子们参与积极的户外游戏。纽约公园的工作人员带领4到7小时的免费活动，包括组织运动、游戏、健身演示、棋盘游戏…（来源类型：nyc_parks_opendata_fallback）",
+      "title_zh": "动感儿童：Seward 公园",
+      "summary_zh": "动感儿童项目让孩子们参与积极的户外游戏。纽约市公园工作人员带领在纽约市游乐场进行四到七小时的免费活动，包括组织体育、游戏、健身演示、棋盘游戏…",
       "location_tag_zh": "曼哈顿 Manhattan",
       "location_kind": "borough",
       "area_zh": "曼哈顿 Manhattan",
@@ -309,16 +309,16 @@
       "published_at": "",
       "source_published_at": "",
       "first_indexed_at": "2026-08-12 10:30:40",
-      "last_seen_at": "2026-08-12 12:02:27",
+      "last_seen_at": "2026-08-12 14:48:42",
       "date_kind": "event",
       "url": "https://www.nycgovparks.org/events/2026/08/14/kids-in-motion-seward-park",
-      "search_text": "live_015 亲子·公园 动感儿童：苏厄德公园 kids in motion: seward park 动感儿童项目让孩子们参与积极的户外游戏。纽约公园的工作人员带领4到7小时的免费活动，包括组织运动、游戏、健身演示、棋盘游戏…（来源类型：nyc_parks_opendata_fallback） 曼哈顿 manhattan 曼哈顿 manhattan manhattan entrance - east broadway & essex st (in seward park) 2026-08-12 10:30:40 2026-08-14 https://www.nycgovparks.org/events/2026/08/14/kids-in-motion-seward-park"
+      "search_text": "live_015 亲子·公园 动感儿童：seward 公园 kids in motion: seward park 动感儿童项目让孩子们参与积极的户外游戏。纽约市公园工作人员带领在纽约市游乐场进行四到七小时的免费活动，包括组织体育、游戏、健身演示、棋盘游戏… 曼哈顿 manhattan 曼哈顿 manhattan manhattan entrance - east broadway & essex st (in seward park) 2026-08-12 10:30:40 2026-08-14 https://www.nycgovparks.org/events/2026/08/14/kids-in-motion-seward-park"
     },
     {
       "id": "live_016",
       "module": "亲子·公园",
-      "title_zh": "动感儿童：鲍恩游乐场",
-      "summary_zh": "动感儿童项目让孩子们参与积极的户外游戏。纽约公园的工作人员带领4到7小时的免费活动，包括组织运动、游戏、健身演示、棋盘游戏…（来源类型：nyc_parks_opendata_fallback）",
+      "title_zh": "动感儿童：Bowne 游乐场",
+      "summary_zh": "动感儿童项目让孩子们参与积极的户外游戏。纽约市公园工作人员带领在纽约市游乐场进行四到七小时的免费活动，包括组织体育、游戏、健身演示、棋盘游戏…",
       "location_tag_zh": "法拉盛 Flushing",
       "location_kind": "enclave",
       "area_zh": "法拉盛 Flushing",
@@ -329,16 +329,16 @@
       "published_at": "",
       "source_published_at": "",
       "first_indexed_at": "2026-08-11 23:03:58",
-      "last_seen_at": "2026-08-12 12:02:27",
+      "last_seen_at": "2026-08-12 14:48:42",
       "date_kind": "event",
       "url": "https://www.nycgovparks.org/events/2026/08/13/kids-in-motion-bowne-playground",
-      "search_text": "live_016 亲子·公园 动感儿童：鲍恩游乐场 kids in motion: bowne playground 动感儿童项目让孩子们参与积极的户外游戏。纽约公园的工作人员带领4到7小时的免费活动，包括组织运动、游戏、健身演示、棋盘游戏…（来源类型：nyc_parks_opendata_fallback） 法拉盛 flushing 法拉盛 flushing queens play area (in bowne playground) 2026-08-11 23:03:58 2026-08-13 https://www.nycgovparks.org/events/2026/08/13/kids-in-motion-bowne-playground"
+      "search_text": "live_016 亲子·公园 动感儿童：bowne 游乐场 kids in motion: bowne playground 动感儿童项目让孩子们参与积极的户外游戏。纽约市公园工作人员带领在纽约市游乐场进行四到七小时的免费活动，包括组织体育、游戏、健身演示、棋盘游戏… 法拉盛 flushing 法拉盛 flushing queens play area (in bowne playground) 2026-08-11 23:03:58 2026-08-13 https://www.nycgovparks.org/events/2026/08/13/kids-in-motion-bowne-playground"
     },
     {
       "id": "live_017",
       "module": "亲子·公园",
-      "title_zh": "动感儿童：鲍恩公园",
-      "summary_zh": "动感儿童项目让孩子们参与积极的户外游戏。纽约公园的工作人员带领4到7小时的免费活动，包括组织运动、游戏、健身演示、棋盘游戏…（来源类型：nyc_parks_opendata_fallback）",
+      "title_zh": "动感儿童：Bowne 公园",
+      "summary_zh": "动感儿童项目让孩子们参与积极的户外游戏。纽约市公园工作人员带领在纽约市游乐场进行四到七小时的免费活动，包括组织体育、游戏、健身演示、棋盘游戏…",
       "location_tag_zh": "法拉盛 Flushing",
       "location_kind": "enclave",
       "area_zh": "法拉盛 Flushing",
@@ -349,16 +349,16 @@
       "published_at": "",
       "source_published_at": "",
       "first_indexed_at": "2026-08-11 23:03:58",
-      "last_seen_at": "2026-08-12 12:02:27",
+      "last_seen_at": "2026-08-12 14:48:42",
       "date_kind": "event",
       "url": "https://www.nycgovparks.org/events/2026/08/13/kids-in-motion-bowne-park",
-      "search_text": "live_017 亲子·公园 动感儿童：鲍恩公园 kids in motion: bowne park 动感儿童项目让孩子们参与积极的户外游戏。纽约公园的工作人员带领4到7小时的免费活动，包括组织运动、游戏、健身演示、棋盘游戏…（来源类型：nyc_parks_opendata_fallback） 法拉盛 flushing 法拉盛 flushing queens bowne park playground (in bowne park) 2026-08-11 23:03:58 2026-08-13 https://www.nycgovparks.org/events/2026/08/13/kids-in-motion-bowne-park"
+      "search_text": "live_017 亲子·公园 动感儿童：bowne 公园 kids in motion: bowne park 动感儿童项目让孩子们参与积极的户外游戏。纽约市公园工作人员带领在纽约市游乐场进行四到七小时的免费活动，包括组织体育、游戏、健身演示、棋盘游戏… 法拉盛 flushing 法拉盛 flushing queens bowne park playground (in bowne park) 2026-08-11 23:03:58 2026-08-13 https://www.nycgovparks.org/events/2026/08/13/kids-in-motion-bowne-park"
     },
     {
       "id": "live_018",
       "module": "健身·户外",
       "title_zh": "全身健身",
-      "summary_zh": "这个有趣的低冲击全身锻炼包括有氧、力量和平衡练习，以改善您的整体健康。（来源类型：nyc_parks_opendata_fallback）",
+      "summary_zh": "这个有趣的低冲击全身锻炼包括有氧、力量和平衡练习，以改善您的整体健康。",
       "location_tag_zh": "全市",
       "location_kind": "citywide",
       "area_zh": "纽约全市",
@@ -369,16 +369,16 @@
       "published_at": "",
       "source_published_at": "",
       "first_indexed_at": "2026-08-12 10:30:40",
-      "last_seen_at": "2026-08-12 12:02:27",
+      "last_seen_at": "2026-08-12 14:48:42",
       "date_kind": "event",
       "url": "https://www.nycgovparks.org/events/2026/08/14/total-body-fitness",
-      "search_text": "live_018 健身·户外 全身健身 total body fitness 这个有趣的低冲击全身锻炼包括有氧、力量和平衡练习，以改善您的整体健康。（来源类型：nyc_parks_opendata_fallback） 全市 纽约全市 citywide tilden senior center 2026-08-12 10:30:40 2026-08-14 https://www.nycgovparks.org/events/2026/08/14/total-body-fitness"
+      "search_text": "live_018 健身·户外 全身健身 total body fitness 这个有趣的低冲击全身锻炼包括有氧、力量和平衡练习，以改善您的整体健康。 全市 纽约全市 citywide tilden senior center 2026-08-12 10:30:40 2026-08-14 https://www.nycgovparks.org/events/2026/08/14/total-body-fitness"
     },
     {
       "id": "live_019",
       "module": "文化·节庆",
-      "title_zh": "哈德逊河上的夏天：飞翔纽约",
-      "summary_zh": "在这个庆祝简单乐趣的全龄节日中，音乐和风筝充满空气。为孩子们提供免费的风筝套件（数量有限），或者从家里带上您最喜欢的风筝。特色表演来自L Tra…（来源类型：nyc_parks_opendata_fallback）",
+      "title_zh": "哈德逊河上的夏天：Fly NYC",
+      "summary_zh": "音乐和风筝在这个庆祝简单乐趣的全龄节日中充满空气。为孩子们提供免费的风筝套件（数量有限），或者带上您自己最喜欢的风筝。特色表演来自L Tra…",
       "location_tag_zh": "全市",
       "location_kind": "citywide",
       "area_zh": "纽约全市",
@@ -389,16 +389,16 @@
       "published_at": "",
       "source_published_at": "",
       "first_indexed_at": "2026-08-11 23:03:58",
-      "last_seen_at": "2026-08-12 12:02:27",
+      "last_seen_at": "2026-08-12 14:48:42",
       "date_kind": "event",
       "url": "https://www.nycgovparks.org/events/2026/08/15/fly-nyc",
-      "search_text": "live_019 文化·节庆 哈德逊河上的夏天：飞翔纽约 summer on the hudson: fly nyc 在这个庆祝简单乐趣的全龄节日中，音乐和风筝充满空气。为孩子们提供免费的风筝套件（数量有限），或者从家里带上您最喜欢的风筝。特色表演来自l tra…（来源类型：nyc_parks_opendata_fallback） 全市 纽约全市 citywide pier i (in riverside park south) 2026-08-11 23:03:58 2026-08-15 https://www.nycgovparks.org/events/2026/08/15/fly-nyc"
+      "search_text": "live_019 文化·节庆 哈德逊河上的夏天：fly nyc summer on the hudson: fly nyc 音乐和风筝在这个庆祝简单乐趣的全龄节日中充满空气。为孩子们提供免费的风筝套件（数量有限），或者带上您自己最喜欢的风筝。特色表演来自l tra… 全市 纽约全市 citywide pier i (in riverside park south) 2026-08-11 23:03:58 2026-08-15 https://www.nycgovparks.org/events/2026/08/15/fly-nyc"
     },
     {
       "id": "live_020",
       "module": "健身·户外",
-      "title_zh": "与玛丽亚·阿西斯的Zumba",
-      "summary_zh": "来加入我们在高线公园跳舞吧！Zumba是一种拉丁风格的舞蹈健身课程，结合了拉丁和国际音乐及舞蹈动作，如萨尔萨、梅伦格、库姆比亚、巴查塔等。此活动…（来源类型：nyc_parks_opendata_fallback）",
+      "title_zh": "与Maria Assis一起Zumba",
+      "summary_zh": "来加入我们在High Line上跳舞吧！Zumba是一种拉丁风格的舞蹈健身课程，结合拉丁和国际音乐及舞蹈动作，如萨尔萨、梅伦格、库姆比亚、巴查塔等。此活动…",
       "location_tag_zh": "全市",
       "location_kind": "citywide",
       "area_zh": "纽约全市",
@@ -409,16 +409,16 @@
       "published_at": "",
       "source_published_at": "",
       "first_indexed_at": "2026-08-11 23:03:58",
-      "last_seen_at": "2026-08-12 12:02:27",
+      "last_seen_at": "2026-08-12 14:48:42",
       "date_kind": "event",
       "url": "https://www.nycgovparks.org/events/2026/08/12/zumba-with-maria-assis",
-      "search_text": "live_020 健身·户外 与玛丽亚·阿西斯的zumba zumba with maria assis 来加入我们在高线公园跳舞吧！zumba是一种拉丁风格的舞蹈健身课程，结合了拉丁和国际音乐及舞蹈动作，如萨尔萨、梅伦格、库姆比亚、巴查塔等。此活动…（来源类型：nyc_parks_opendata_fallback） 全市 纽约全市 citywide on the high line at 30th st. (in the high line) 2026-08-11 23:03:58 2026-08-12 https://www.nycgovparks.org/events/2026/08/12/zumba-with-maria-assis"
+      "search_text": "live_020 健身·户外 与maria assis一起zumba zumba with maria assis 来加入我们在high line上跳舞吧！zumba是一种拉丁风格的舞蹈健身课程，结合拉丁和国际音乐及舞蹈动作，如萨尔萨、梅伦格、库姆比亚、巴查塔等。此活动… 全市 纽约全市 citywide on the high line at 30th st. (in the high line) 2026-08-11 23:03:58 2026-08-12 https://www.nycgovparks.org/events/2026/08/12/zumba-with-maria-assis"
     },
     {
       "id": "live_021",
       "module": "健身·户外",
       "title_zh": "舞蹈健身",
-      "summary_zh": "加入Shape Up NYC（纽约健身）每周六在West Harlem Piers Park（西哈莱姆码头公园）参加免费的舞蹈健身课程！本课程的教练每周会更换。这个夏天将有以下教练参与：Donnette \"Sonnia…",
+      "summary_zh": "加入Shape Up NYC，每周六在西哈莱姆码头公园参加免费的舞蹈健身课程！本课程的讲师每周更换。今年夏天将有以下讲师参与：Donnette \"Sonnia…",
       "location_tag_zh": "全市",
       "location_kind": "citywide",
       "area_zh": "纽约全市",
@@ -429,16 +429,16 @@
       "published_at": "",
       "source_published_at": "",
       "first_indexed_at": "2026-08-11 23:03:58",
-      "last_seen_at": "2026-08-12 12:02:27",
+      "last_seen_at": "2026-08-12 14:48:42",
       "date_kind": "event",
       "url": "https://www.nycgovparks.org/events/2026/08/15/dance-fitness",
-      "search_text": "live_021 健身·户外 舞蹈健身 dance fitness 加入shape up nyc（纽约健身）每周六在west harlem piers park（西哈莱姆码头公园）参加免费的舞蹈健身课程！本课程的教练每周会更换。这个夏天将有以下教练参与：donnette \"sonnia… 全市 纽约全市 citywide 125th street and marginal street (in west harlem piers) 2026-08-11 23:03:58 2026-08-15 https://www.nycgovparks.org/events/2026/08/15/dance-fitness"
+      "search_text": "live_021 健身·户外 舞蹈健身 dance fitness 加入shape up nyc，每周六在西哈莱姆码头公园参加免费的舞蹈健身课程！本课程的讲师每周更换。今年夏天将有以下讲师参与：donnette \"sonnia… 全市 纽约全市 citywide 125th street and marginal street (in west harlem piers) 2026-08-11 23:03:58 2026-08-15 https://www.nycgovparks.org/events/2026/08/15/dance-fitness"
     },
     {
       "id": "live_022",
       "module": "健身·户外",
-      "title_zh": "公园中的Zumba",
-      "summary_zh": "动起来，感受节拍！加入Samantha Muyet，在Fort Tryon Park（福特·崔昂公园）参加周二晚上的Zumba——适合所有水平，免费参与！准备好每周二晚上在公园中动起来和享受Zumba吧！",
+      "title_zh": "公园里的Zumba",
+      "summary_zh": "移动、律动，感受节拍！加入Samantha Muyet在Fort Tryon Park的周二晚Zumba - 适合所有水平，免费参加！准备好每周二晚上在公园里动起来和律动吧！",
       "location_tag_zh": "全市",
       "location_kind": "citywide",
       "area_zh": "纽约全市",
@@ -449,16 +449,16 @@
       "published_at": "",
       "source_published_at": "",
       "first_indexed_at": "2026-08-12 10:30:40",
-      "last_seen_at": "2026-08-12 12:02:27",
+      "last_seen_at": "2026-08-12 14:48:42",
       "date_kind": "event",
       "url": "https://www.nycgovparks.org/events/2026/08/18/zumba-in-the-park",
-      "search_text": "live_022 健身·户外 公园中的zumba zumba in the park 动起来，感受节拍！加入samantha muyet，在fort tryon park（福特·崔昂公园）参加周二晚上的zumba——适合所有水平，免费参与！准备好每周二晚上在公园中动起来和享受zumba吧！ 全市 纽约全市 citywide fort washington (subway) terrace at the 190th a train subway station (in fort tryon park) 2026-08-12 10:30:40 2026-08-18 https://www.nycgovparks.org/events/2026/08/18/zumba-in-the-park"
+      "search_text": "live_022 健身·户外 公园里的zumba zumba in the park 移动、律动，感受节拍！加入samantha muyet在fort tryon park的周二晚zumba - 适合所有水平，免费参加！准备好每周二晚上在公园里动起来和律动吧！ 全市 纽约全市 citywide fort washington (subway) terrace at the 190th a train subway station (in fort tryon park) 2026-08-12 10:30:40 2026-08-18 https://www.nycgovparks.org/events/2026/08/18/zumba-in-the-park"
     },
     {
       "id": "live_023",
       "module": "健身·户外",
-      "title_zh": "水边锻炼：Amp'd训练营",
-      "summary_zh": "在布鲁克林大桥公园参加这个免费的Amp’d训练营课程，挑战自己！这个适合所有水平的一个小时健身课程对所有年龄和能力开放，由切尔西码头健身的教练带领。这是布鲁克林…（来源类型：nyc_parks_opendata_fallback）",
+      "title_zh": "水边锻炼：Amp'd Bootcamp",
+      "summary_zh": "在布鲁克林大桥公园参加这个免费的Amp’d Bootcamp课程，挑战自己！这个适合所有年龄和能力的一个小时健身课程由Chelsea Piers Fitness的教练主导。这是布鲁克林…",
       "location_tag_zh": "布鲁克林 Brooklyn",
       "location_kind": "borough",
       "area_zh": "布鲁克林 Brooklyn",
@@ -469,16 +469,16 @@
       "published_at": "",
       "source_published_at": "",
       "first_indexed_at": "2026-08-12 10:30:40",
-      "last_seen_at": "2026-08-12 12:02:27",
+      "last_seen_at": "2026-08-12 14:48:42",
       "date_kind": "event",
       "url": "https://www.nycgovparks.org/events/2026/08/19/waterfront-workouts-ampd-bootcamp",
-      "search_text": "live_023 健身·户外 水边锻炼：amp'd训练营 waterfront workouts: amp'd bootcamp 在布鲁克林大桥公园参加这个免费的amp’d训练营课程，挑战自己！这个适合所有水平的一个小时健身课程对所有年龄和能力开放，由切尔西码头健身的教练带领。这是布鲁克林…（来源类型：nyc_parks_opendata_fallback） 布鲁克林 brooklyn 布鲁克林 brooklyn brooklyn pier 2 (in brooklyn bridge park),brooklyn bridge park 2026-08-12 10:30:40 2026-08-19 https://www.nycgovparks.org/events/2026/08/19/waterfront-workouts-ampd-bootcamp"
+      "search_text": "live_023 健身·户外 水边锻炼：amp'd bootcamp waterfront workouts: amp'd bootcamp 在布鲁克林大桥公园参加这个免费的amp’d bootcamp课程，挑战自己！这个适合所有年龄和能力的一个小时健身课程由chelsea piers fitness的教练主导。这是布鲁克林… 布鲁克林 brooklyn 布鲁克林 brooklyn brooklyn pier 2 (in brooklyn bridge park),brooklyn bridge park 2026-08-12 10:30:40 2026-08-19 https://www.nycgovparks.org/events/2026/08/19/waterfront-workouts-ampd-bootcamp"
     },
     {
       "id": "live_024",
       "module": "健身·户外",
-      "title_zh": "第三节：范科特兰特游泳池 - 家长与幼儿学习游泳（A类）",
-      "summary_zh": "学习游泳项目将乐趣融入基础，教授基本的游泳和安全技能。该项目为1岁半到5岁的幼儿提供在水中感到舒适并为…（来源类型：nyc_parks_opendata_fallback）",
+      "title_zh": "第三节：Van Cortlandt 游泳池 - 家长与幼儿游泳学习（A班）",
+      "summary_zh": "学习游泳项目将乐趣融入基础知识，教授基本游泳和安全技能。该项目为1岁半至5岁的幼儿提供在水中变得舒适并准备…",
       "location_tag_zh": "布朗士 Bronx",
       "location_kind": "borough",
       "area_zh": "布朗士 Bronx",
@@ -489,16 +489,16 @@
       "published_at": "",
       "source_published_at": "",
       "first_indexed_at": "2026-08-11 23:03:58",
-      "last_seen_at": "2026-08-12 12:02:27",
+      "last_seen_at": "2026-08-12 14:48:42",
       "date_kind": "event",
       "url": "https://www.nycgovparks.org/events/2026/08/18/session-3-van-cortlandt-pool-parent-and-tots-learn-to-swim-class-a",
-      "search_text": "live_024 健身·户外 第三节：范科特兰特游泳池 - 家长与幼儿学习游泳（a类） session 3: van cortlandt pool - parent and tots learn to swim (class a) 学习游泳项目将乐趣融入基础，教授基本的游泳和安全技能。该项目为1岁半到5岁的幼儿提供在水中感到舒适并为…（来源类型：nyc_parks_opendata_fallback） 布朗士 bronx 布朗士 bronx bronx van cortlandt park pool (in van cortlandt park) 2026-08-11 23:03:58 2026-08-18 https://www.nycgovparks.org/events/2026/08/18/session-3-van-cortlandt-pool-parent-and-tots-learn-to-swim-class-a"
+      "search_text": "live_024 健身·户外 第三节：van cortlandt 游泳池 - 家长与幼儿游泳学习（a班） session 3: van cortlandt pool - parent and tots learn to swim (class a) 学习游泳项目将乐趣融入基础知识，教授基本游泳和安全技能。该项目为1岁半至5岁的幼儿提供在水中变得舒适并准备… 布朗士 bronx 布朗士 bronx bronx van cortlandt park pool (in van cortlandt park) 2026-08-11 23:03:58 2026-08-18 https://www.nycgovparks.org/events/2026/08/18/session-3-van-cortlandt-pool-parent-and-tots-learn-to-swim-class-a"
     },
     {
       "id": "live_025",
       "module": "健身·户外",
-      "title_zh": "第三期：McCarren Pool（麦卡伦游泳池）- 家长与幼儿游泳学习（A班）",
-      "summary_zh": "学习游泳项目将乐趣融入基础，教授基本的游泳和安全技能。该项目为1岁半到5岁的幼儿提供在水中感到舒适并为…（来源类型：nyc_parks_opendata_fallback）",
+      "title_zh": "第三节：McCarren 游泳池 - 家长与幼儿游泳学习（A班）",
+      "summary_zh": "学习游泳项目将乐趣融入基础知识，教授基本游泳和安全技能。该项目为1岁半至5岁的幼儿提供在水中变得舒适并准备…",
       "location_tag_zh": "全市",
       "location_kind": "citywide",
       "area_zh": "纽约全市",
@@ -509,16 +509,16 @@
       "published_at": "",
       "source_published_at": "",
       "first_indexed_at": "2026-08-11 23:03:58",
-      "last_seen_at": "2026-08-12 12:02:27",
+      "last_seen_at": "2026-08-12 14:48:42",
       "date_kind": "event",
       "url": "https://www.nycgovparks.org/events/2026/08/18/session-3-mccarren-pool-parent-and-tots-learn-to-swim-class-a",
-      "search_text": "live_025 健身·户外 第三期：mccarren pool（麦卡伦游泳池）- 家长与幼儿游泳学习（a班） session 3: mccarren pool - parent and tots learn to swim (class a) 学习游泳项目将乐趣融入基础，教授基本的游泳和安全技能。该项目为1岁半到5岁的幼儿提供在水中感到舒适并为…（来源类型：nyc_parks_opendata_fallback） 全市 纽约全市 citywide mccarren park pool (in mccarren park) 2026-08-11 23:03:58 2026-08-18 https://www.nycgovparks.org/events/2026/08/18/session-3-mccarren-pool-parent-and-tots-learn-to-swim-class-a"
+      "search_text": "live_025 健身·户外 第三节：mccarren 游泳池 - 家长与幼儿游泳学习（a班） session 3: mccarren pool - parent and tots learn to swim (class a) 学习游泳项目将乐趣融入基础知识，教授基本游泳和安全技能。该项目为1岁半至5岁的幼儿提供在水中变得舒适并准备… 全市 纽约全市 citywide mccarren park pool (in mccarren park) 2026-08-11 23:03:58 2026-08-18 https://www.nycgovparks.org/events/2026/08/18/session-3-mccarren-pool-parent-and-tots-learn-to-swim-class-a"
     },
     {
       "id": "live_026",
       "module": "交通·出行",
-      "title_zh": "MTA：[B][Q]在两个方向上运行延误。一些向上的列车从斯蒂尔韦尔大道改道到德卡尔布大道。我们…",
-      "summary_zh": "服务变更：一些前往布莱顿海滩的[B]列车将通过[Q]从布莱顿海滩到斯蒂尔韦尔大道，然后通过[D]向上行驶到德卡尔布大道。一些向上的[Q]通过[N]从斯蒂尔韦尔大道到德卡尔布大道。请注意（来源类型：MTA 大都会交通局 - 服务变更）",
+      "title_zh": "MTA：布鲁克林，Myrtle-Wyckoff Avs和Atlantic Av之间没有[L]线",
+      "summary_zh": "[L]线分为两个部分运行：1. 在8 Av和Myrtle-Wyckoff Avs之间，每8分钟一次 2. 在Atlantic Av和Canarsie-Rockaway Pkwy之间，每10分钟一次。[shuttle bus icon] 免费B111接驳巴士在…",
       "location_tag_zh": "全市",
       "location_kind": "citywide",
       "area_zh": "纽约全市",
@@ -528,17 +528,17 @@
       "event_time": "",
       "published_at": "",
       "source_published_at": "",
-      "first_indexed_at": "2026-08-12 12:02:27",
-      "last_seen_at": "2026-08-12 12:02:27",
+      "first_indexed_at": "2026-08-12 14:33:25",
+      "last_seen_at": "2026-08-12 14:48:42",
       "date_kind": "event",
-      "url": "https://www.mta.info/#alert-b0d0f963f065",
-      "search_text": "live_026 交通·出行 mta：[b][q]在两个方向上运行延误。一些向上的列车从斯蒂尔韦尔大道改道到德卡尔布大道。我们… mta：[b][q] running with delays in both directions. some uptown trains are rerouted from stillwell av to dekalb av. we a… 服务变更：一些前往布莱顿海滩的[b]列车将通过[q]从布莱顿海滩到斯蒂尔韦尔大道，然后通过[d]向上行驶到德卡尔布大道。一些向上的[q]通过[n]从斯蒂尔韦尔大道到德卡尔布大道。请注意（来源类型：mta 大都会交通局 - 服务变更） 全市 纽约全市 citywide nyc 2026-08-12 12:02:27 2026-08-12 https://www.mta.info/#alert-b0d0f963f065"
+      "url": "https://www.mta.info/#alert-4663ed7085aa",
+      "search_text": "live_026 交通·出行 mta：布鲁克林，myrtle-wyckoff avs和atlantic av之间没有[l]线 mta：in brooklyn, no [l] between myrtle-wyckoff avs and atlantic av [l]线分为两个部分运行：1. 在8 av和myrtle-wyckoff avs之间，每8分钟一次 2. 在atlantic av和canarsie-rockaway pkwy之间，每10分钟一次。[shuttle bus icon] 免费b111接驳巴士在… 全市 纽约全市 citywide nyc 2026-08-12 14:33:25 2026-08-12 https://www.mta.info/#alert-4663ed7085aa"
     },
     {
       "id": "live_027",
       "module": "交通·出行",
-      "title_zh": "MTA：在布鲁克林，克雷森特街与百老汇交汇处之间没有[J]列车",
-      "summary_zh": "[J]列车分为两个部分：1. 在牙买加中心-帕森斯/阿彻与新月街之间，每12分钟一班（白天/晚上）2. 在百老汇交汇处与宽街之间，每12分钟一班（白天/晚上）[接驳巴士图标] 免费T43（来源类型：MTA 大都会交通局 - 服务变更）",
+      "title_zh": "MTA：布鲁克林，Coney Island-Stillwell Av站没有[D]线",
+      "summary_zh": "[D]线在Norwood-205 St和Bay 50 St之间运行，最后一站。[shuttle bus icon] 免费D99接驳巴士在Bay 50 St和Coney Island-Stillwell Av之间运行。旅行替代方案：请转乘[F][N][Q]。",
       "location_tag_zh": "全市",
       "location_kind": "citywide",
       "area_zh": "纽约全市",
@@ -548,17 +548,17 @@
       "event_time": "",
       "published_at": "",
       "source_published_at": "",
-      "first_indexed_at": "2026-08-12 11:55:06",
-      "last_seen_at": "2026-08-12 12:02:27",
+      "first_indexed_at": "2026-08-12 14:33:25",
+      "last_seen_at": "2026-08-12 14:48:42",
       "date_kind": "event",
-      "url": "https://www.mta.info/#alert-ac5bc10147fe",
-      "search_text": "live_027 交通·出行 mta：在布鲁克林，克雷森特街与百老汇交汇处之间没有[j]列车 mta：in brooklyn, no [j] between crescent st and broadway junction [j]列车分为两个部分：1. 在牙买加中心-帕森斯/阿彻与新月街之间，每12分钟一班（白天/晚上）2. 在百老汇交汇处与宽街之间，每12分钟一班（白天/晚上）[接驳巴士图标] 免费t43（来源类型：mta 大都会交通局 - 服务变更） 全市 纽约全市 citywide nyc 2026-08-12 11:55:06 2026-08-12 https://www.mta.info/#alert-ac5bc10147fe"
+      "url": "https://www.mta.info/#alert-a1f13931656c",
+      "search_text": "live_027 交通·出行 mta：布鲁克林，coney island-stillwell av站没有[d]线 mta：in brooklyn, no [d] at coney island-stillwell av [d]线在norwood-205 st和bay 50 st之间运行，最后一站。[shuttle bus icon] 免费d99接驳巴士在bay 50 st和coney island-stillwell av之间运行。旅行替代方案：请转乘[f][n][q]。 全市 纽约全市 citywide nyc 2026-08-12 14:33:25 2026-08-12 https://www.mta.info/#alert-a1f13931656c"
     },
     {
       "id": "live_028",
       "module": "交通·出行",
-      "title_zh": "MTA：在布鲁克林，康尼岛-斯蒂尔韦尔大道没有[N]列车",
-      "summary_zh": "[N]列车在阿斯托里亚-迪特马斯大道与86街之间运行，最后一站。[接驳巴士图标] 免费接驳巴士在86街与康尼岛-斯蒂尔韦尔大道之间运行。要在曼哈顿与康尼岛-斯蒂尔韦尔大道之间服务，请乘坐（来源类型：MTA 大都会交通局 - 服务变更）",
+      "title_zh": "MTA：布鲁克林，Crescent St和Broadway Junction之间没有[J]线",
+      "summary_zh": "[J]线分为两个部分运行：1. 在Jamaica Center-Parsons/Archer和Crescent St之间，每12分钟一次（白天/晚上） 2. 在Broadway Junction和Broad St之间，每12分钟一次（白天/晚上）。[shuttle bus icon] 免费T43…",
       "location_tag_zh": "全市",
       "location_kind": "citywide",
       "area_zh": "纽约全市",
@@ -569,16 +569,16 @@
       "published_at": "",
       "source_published_at": "",
       "first_indexed_at": "2026-08-12 11:55:06",
-      "last_seen_at": "2026-08-12 12:02:27",
+      "last_seen_at": "2026-08-12 14:48:42",
       "date_kind": "event",
-      "url": "https://www.mta.info/#alert-ca5a325c2083",
-      "search_text": "live_028 交通·出行 mta：在布鲁克林，康尼岛-斯蒂尔韦尔大道没有[n]列车 mta：in brooklyn, no [n] at coney island-stillwell av [n]列车在阿斯托里亚-迪特马斯大道与86街之间运行，最后一站。[接驳巴士图标] 免费接驳巴士在86街与康尼岛-斯蒂尔韦尔大道之间运行。要在曼哈顿与康尼岛-斯蒂尔韦尔大道之间服务，请乘坐（来源类型：mta 大都会交通局 - 服务变更） 全市 纽约全市 citywide nyc 2026-08-12 11:55:06 2026-08-12 https://www.mta.info/#alert-ca5a325c2083"
+      "url": "https://www.mta.info/#alert-ac5bc10147fe",
+      "search_text": "live_028 交通·出行 mta：布鲁克林，crescent st和broadway junction之间没有[j]线 mta：in brooklyn, no [j] between crescent st and broadway junction [j]线分为两个部分运行：1. 在jamaica center-parsons/archer和crescent st之间，每12分钟一次（白天/晚上） 2. 在broadway junction和broad st之间，每12分钟一次（白天/晚上）。[shuttle bus icon] 免费t43… 全市 纽约全市 citywide nyc 2026-08-12 11:55:06 2026-08-12 https://www.mta.info/#alert-ac5bc10147fe"
     },
     {
       "id": "live_029",
       "module": "交通·出行",
-      "title_zh": "MTA：在皇后区，洛克威大道与臭氧公园-莱弗茨大道之间没有[A]列车，莱弗茨大道的[A]列车被改道到洛克威…",
-      "summary_zh": "[A]列车在因伍德-207街与法洛克威-莫特大道或洛克威公园-海滩116街之间运行。（曼哈顿方向的[A]跳过洛克威大道和88街。）[接驳巴士图标] 免费接驳巴士在80街和臭氧公园之间停靠（来源类型：MTA 大都会交通局 - 服务变更）",
+      "title_zh": "MTA：布鲁克林，Coney Island-Stillwell Av站没有[N]线",
+      "summary_zh": "[N]线在Astoria-Ditmars Blvd和86 St之间运行，最后一站。[shuttle bus icon] 免费接驳巴士在86 St和Coney Island-Stillwell Av之间运行。要前往曼哈顿和Coney Island-Stillwell Av，请乘坐…",
       "location_tag_zh": "全市",
       "location_kind": "citywide",
       "area_zh": "纽约全市",
@@ -589,16 +589,16 @@
       "published_at": "",
       "source_published_at": "",
       "first_indexed_at": "2026-08-12 11:55:06",
-      "last_seen_at": "2026-08-12 12:02:27",
+      "last_seen_at": "2026-08-12 14:48:42",
       "date_kind": "event",
-      "url": "https://www.mta.info/#alert-41ed60bb3125",
-      "search_text": "live_029 交通·出行 mta：在皇后区，洛克威大道与臭氧公园-莱弗茨大道之间没有[a]列车，莱弗茨大道的[a]列车被改道到洛克威… mta：in queens, no [a] between rockaway blvd and ozone park-lefferts blvd lefferts blvd [a] trains are rerouted to rocka… [a]列车在因伍德-207街与法洛克威-莫特大道或洛克威公园-海滩116街之间运行。（曼哈顿方向的[a]跳过洛克威大道和88街。）[接驳巴士图标] 免费接驳巴士在80街和臭氧公园之间停靠（来源类型：mta 大都会交通局 - 服务变更） 全市 纽约全市 citywide nyc 2026-08-12 11:55:06 2026-08-12 https://www.mta.info/#alert-41ed60bb3125"
+      "url": "https://www.mta.info/#alert-ca5a325c2083",
+      "search_text": "live_029 交通·出行 mta：布鲁克林，coney island-stillwell av站没有[n]线 mta：in brooklyn, no [n] at coney island-stillwell av [n]线在astoria-ditmars blvd和86 st之间运行，最后一站。[shuttle bus icon] 免费接驳巴士在86 st和coney island-stillwell av之间运行。要前往曼哈顿和coney island-stillwell av，请乘坐… 全市 纽约全市 citywide nyc 2026-08-12 11:55:06 2026-08-12 https://www.mta.info/#alert-ca5a325c2083"
     },
     {
       "id": "live_030",
       "module": "交通·出行",
-      "title_zh": "MTA：在曼哈顿的57街-7大道与皇后区的阿斯托里亚-迪特马斯大道之间没有[W]列车，请改乘[N]",
-      "summary_zh": "[W]列车每20分钟在白厅街-南渡轮与57街-7大道之间运行，并通过[Q]往返于96街。可在57街-7大道之间转乘[N]与[W] [无障碍图标]（在对面月台）。旅行提示：[R]服务是（来源类型：MTA 大都会交通局 - 服务变更）",
+      "title_zh": "MTA：布鲁克林，Kings Hwy和Brighton Beach之间没有[B]线 - 请乘坐[Q]线",
+      "summary_zh": "[B]线在Bedford Park Blvd和Kings Hwy之间运行，最后一站。请在Kings Hwy站转乘[B]和[Q]。发生了什么？我们正在更换轨道。",
       "location_tag_zh": "全市",
       "location_kind": "citywide",
       "area_zh": "纽约全市",
@@ -608,17 +608,17 @@
       "event_time": "",
       "published_at": "",
       "source_published_at": "",
-      "first_indexed_at": "2026-08-12 11:55:06",
-      "last_seen_at": "2026-08-12 12:02:27",
+      "first_indexed_at": "2026-08-12 14:33:25",
+      "last_seen_at": "2026-08-12 14:48:42",
       "date_kind": "event",
-      "url": "https://www.mta.info/#alert-91891cd2104d",
-      "search_text": "live_030 交通·出行 mta：在曼哈顿的57街-7大道与皇后区的阿斯托里亚-迪特马斯大道之间没有[w]列车，请改乘[n] mta：no [w] between 57 st-7 av, manhattan and astoria-ditmars blvd, queens, take the [n] instead [w]列车每20分钟在白厅街-南渡轮与57街-7大道之间运行，并通过[q]往返于96街。可在57街-7大道之间转乘[n]与[w] [无障碍图标]（在对面月台）。旅行提示：[r]服务是（来源类型：mta 大都会交通局 - 服务变更） 全市 纽约全市 citywide nyc 2026-08-12 11:55:06 2026-08-12 https://www.mta.info/#alert-91891cd2104d"
+      "url": "https://www.mta.info/#alert-2b7ac46b1c97",
+      "search_text": "live_030 交通·出行 mta：布鲁克林，kings hwy和brighton beach之间没有[b]线 - 请乘坐[q]线 mta：in brooklyn, no [b] between kings hwy and brighton beach - take the [q] [b]线在bedford park blvd和kings hwy之间运行，最后一站。请在kings hwy站转乘[b]和[q]。发生了什么？我们正在更换轨道。 全市 纽约全市 citywide nyc 2026-08-12 14:33:25 2026-08-12 https://www.mta.info/#alert-2b7ac46b1c97"
     },
     {
       "id": "live_031",
       "module": "交通·出行",
-      "title_zh": "MTA：[W]服务提前结束",
-      "summary_zh": "曼哈顿的[N][Q][R][W]车站在晚上9:30后没有列车。请使用8大道的[A][C][E]、7大道的[1][2][3]、6大道的[D][F]和列克星敦大道的[4][5][6]线路附近的车站。注意：[Q]和[R]列车在晚上9:30后通过6大道运行。（来源类型：MTA 大都会交通局 - 服务变更）",
+      "title_zh": "MTA：在皇后区，前往牙买加中心的[E]线在75 Av和Briarwood停靠",
+      "summary_zh": "注意：在这些车站的其他时间按计划运行。发生了什么？信号维护。",
       "location_tag_zh": "全市",
       "location_kind": "citywide",
       "area_zh": "纽约全市",
@@ -628,31 +628,31 @@
       "event_time": "",
       "published_at": "",
       "source_published_at": "",
-      "first_indexed_at": "2026-08-12 11:55:06",
-      "last_seen_at": "2026-08-12 12:02:27",
+      "first_indexed_at": "2026-08-12 14:33:25",
+      "last_seen_at": "2026-08-12 14:48:42",
       "date_kind": "event",
-      "url": "https://www.mta.info/#alert-ce8b8035bde5",
-      "search_text": "live_031 交通·出行 mta：[w]服务提前结束 mta：[w] service ends early 曼哈顿的[n][q][r][w]车站在晚上9:30后没有列车。请使用8大道的[a][c][e]、7大道的[1][2][3]、6大道的[d][f]和列克星敦大道的[4][5][6]线路附近的车站。注意：[q]和[r]列车在晚上9:30后通过6大道运行。（来源类型：mta 大都会交通局 - 服务变更） 全市 纽约全市 citywide nyc 2026-08-12 11:55:06 2026-08-12 https://www.mta.info/#alert-ce8b8035bde5"
+      "url": "https://www.mta.info/#alert-03b84d6a9687",
+      "search_text": "live_031 交通·出行 mta：在皇后区，前往牙买加中心的[e]线在75 av和briarwood停靠 mta：in queens, jamaica center-bound [e] stops at 75 av and briarwood 注意：在这些车站的其他时间按计划运行。发生了什么？信号维护。 全市 纽约全市 citywide nyc 2026-08-12 14:33:25 2026-08-12 https://www.mta.info/#alert-03b84d6a9687"
     },
     {
       "id": "live_032",
       "module": "交通·出行",
-      "title_zh": "MTA：白厅街-南渡轮与大西洋大道-巴克莱中心之间没有晚间[R]列车， [R]在大西洋大道之间运行快车…",
-      "summary_zh": "[R]列车在湾岭-95街与36街之间运行，并快车往返于大西洋大道-巴克莱中心，最后一站。前往白厅街-南渡轮，请使用附近的[2][4]车站。前往法院街和杰伊街-地铁科技，请乘坐[N]。前往德卡尔…（来源类型：MTA 大都会交通局 - 服务变更）",
+      "title_zh": "MTA：在皇后区，前往牙买加中心的[F]线跳过75 Av、Briarwood和Sutphin Blvd",
+      "summary_zh": "要前往这些车站，请乘坐[F]线到Kew Gardens-Union Tpke或Parsons Blvd，并转乘前往曼哈顿的[F]线。要从这些车站出发，请乘坐[F]线到Kew Gardens-Union Tpke或Forest Hills-71 Av…",
       "location_tag_zh": "全市",
       "location_kind": "citywide",
-      "area_zh": "八大道 Sunset Park",
+      "area_zh": "纽约全市",
       "borough": "Citywide",
       "location": "NYC",
       "event_date": "2026-08-12",
       "event_time": "",
       "published_at": "",
       "source_published_at": "",
-      "first_indexed_at": "2026-08-12 12:02:27",
-      "last_seen_at": "2026-08-12 12:02:27",
+      "first_indexed_at": "2026-08-12 14:33:25",
+      "last_seen_at": "2026-08-12 14:48:42",
       "date_kind": "event",
-      "url": "https://www.mta.info/#alert-4408ddf0406d",
-      "search_text": "live_032 交通·出行 mta：白厅街-南渡轮与大西洋大道-巴克莱中心之间没有晚间[r]列车， [r]在大西洋大道之间运行快车… mta：no late night [r] between whitehall st-south ferry and atlantic av-barclays ctr [r] runs express between atlantic a… [r]列车在湾岭-95街与36街之间运行，并快车往返于大西洋大道-巴克莱中心，最后一站。前往白厅街-南渡轮，请使用附近的[2][4]车站。前往法院街和杰伊街-地铁科技，请乘坐[n]。前往德卡尔…（来源类型：mta 大都会交通局 - 服务变更） 全市 八大道 sunset park citywide nyc 2026-08-12 12:02:27 2026-08-12 https://www.mta.info/#alert-4408ddf0406d"
+      "url": "https://www.mta.info/#alert-e769b69dbec2",
+      "search_text": "live_032 交通·出行 mta：在皇后区，前往牙买加中心的[f]线跳过75 av、briarwood和sutphin blvd mta：in queens, jamaica-bound [f] skips 75 av, briarwood and sutphin blvd 要前往这些车站，请乘坐[f]线到kew gardens-union tpke或parsons blvd，并转乘前往曼哈顿的[f]线。要从这些车站出发，请乘坐[f]线到kew gardens-union tpke或forest hills-71 av… 全市 纽约全市 citywide nyc 2026-08-12 14:33:25 2026-08-12 https://www.mta.info/#alert-e769b69dbec2"
     },
     {
       "id": "live_033",
@@ -669,7 +669,7 @@
       "published_at": "",
       "source_published_at": "",
       "first_indexed_at": "2026-06-15 20:30:26",
-      "last_seen_at": "2026-08-12 12:02:27",
+      "last_seen_at": "2026-08-12 14:48:42",
       "date_kind": "service",
       "url": "https://www.qcc.cuny.edu/ce/programs/community-english-as-a-second-language.html",
       "search_text": "live_033 语言·教育 社区英语作为第二语言 community english as a second language education program on www.qcc.cuny.edu — click to enroll or learn more.（来源类型：纽约市立大学 — 继续教育、英语课及成人学习） 全市 纽约全市 citywide new york city 2026-06-15 20:30:26 https://www.qcc.cuny.edu/ce/programs/community-english-as-a-second-language.html"
@@ -677,7 +677,7 @@
     {
       "id": "live_034",
       "module": "语言·教育",
-      "title_zh": "数学与读写能力项目",
+      "title_zh": "数学和读写能力项目",
       "summary_zh": "Education program on www.bmcc.cuny.edu — click to enroll or learn more.（来源类型：纽约市立大学 — 继续教育、英语课及成人学习）",
       "location_tag_zh": "全市",
       "location_kind": "citywide",
@@ -689,10 +689,10 @@
       "published_at": "",
       "source_published_at": "",
       "first_indexed_at": "2026-06-15 20:30:26",
-      "last_seen_at": "2026-08-12 12:02:27",
+      "last_seen_at": "2026-08-12 14:48:42",
       "date_kind": "service",
       "url": "https://www.bmcc.cuny.edu/ce/programs/",
-      "search_text": "live_034 语言·教育 数学与读写能力项目 math and literacy programs education program on www.bmcc.cuny.edu — click to enroll or learn more.（来源类型：纽约市立大学 — 继续教育、英语课及成人学习） 全市 纽约全市 citywide new york city 2026-06-15 20:30:26 https://www.bmcc.cuny.edu/ce/programs/"
+      "search_text": "live_034 语言·教育 数学和读写能力项目 math and literacy programs education program on www.bmcc.cuny.edu — click to enroll or learn more.（来源类型：纽约市立大学 — 继续教育、英语课及成人学习） 全市 纽约全市 citywide new york city 2026-06-15 20:30:26 https://www.bmcc.cuny.edu/ce/programs/"
     },
     {
       "id": "live_035",
@@ -709,7 +709,7 @@
       "published_at": "",
       "source_published_at": "",
       "first_indexed_at": "2026-06-15 20:30:26",
-      "last_seen_at": "2026-08-12 12:02:27",
+      "last_seen_at": "2026-08-12 14:48:42",
       "date_kind": "service",
       "url": "https://www.bmcc.cuny.edu/ce/contact/",
       "search_text": "live_035 就业·培训 继续教育与劳动力发展中心 center for continuing education workforce development education program on www.bmcc.cuny.edu — click to enroll or learn more.（来源类型：纽约市立大学 — 继续教育、英语课及成人学习） 全市 纽约全市 citywide new york city 2026-06-15 20:30:26 https://www.bmcc.cuny.edu/ce/contact/"
@@ -717,7 +717,7 @@
     {
       "id": "live_036",
       "module": "语言·教育",
-      "title_zh": "NYPL法拉盛图书馆",
+      "title_zh": "纽约公共图书馆法拉盛分馆",
       "summary_zh": "Official Flushing branch page for Chinese collections and ESL programs.（来源类型：纽约公共图书馆法拉盛分馆（皇后区华人社区））",
       "location_tag_zh": "法拉盛 Flushing",
       "location_kind": "enclave",
@@ -729,15 +729,15 @@
       "published_at": "",
       "source_published_at": "",
       "first_indexed_at": "2026-08-12 11:55:06",
-      "last_seen_at": "2026-08-12 12:02:27",
+      "last_seen_at": "2026-08-12 14:48:42",
       "date_kind": "service",
       "url": "https://www.nypl.org/locations/flushing",
-      "search_text": "live_036 语言·教育 nypl法拉盛图书馆 nypl flushing library official flushing branch page for chinese collections and esl programs.（来源类型：纽约公共图书馆法拉盛分馆（皇后区华人社区）） 法拉盛 flushing 法拉盛 flushing queens queens 2026-08-12 11:55:06 https://www.nypl.org/locations/flushing"
+      "search_text": "live_036 语言·教育 纽约公共图书馆法拉盛分馆 nypl flushing library official flushing branch page for chinese collections and esl programs.（来源类型：纽约公共图书馆法拉盛分馆（皇后区华人社区）） 法拉盛 flushing 法拉盛 flushing queens queens 2026-08-12 11:55:06 https://www.nypl.org/locations/flushing"
     },
     {
       "id": "live_037",
       "module": "语言·教育",
-      "title_zh": "布鲁克林公共图书馆 — 日落公园",
+      "title_zh": "布鲁克林公共图书馆 — Sunset Park",
       "summary_zh": "Official Sunset Park branch page for Chinese community programs.（来源类型：布鲁克林图书馆日落公园分馆（布鲁克林华人社区））",
       "location_tag_zh": "八大道 Sunset Park",
       "location_kind": "enclave",
@@ -748,11 +748,11 @@
       "event_time": "",
       "published_at": "",
       "source_published_at": "",
-      "first_indexed_at": "",
-      "last_seen_at": "2026-08-12 12:02:27",
+      "first_indexed_at": "2026-08-12 12:02:27",
+      "last_seen_at": "2026-08-12 14:48:42",
       "date_kind": "service",
       "url": "https://www.bklynlibrary.org/locations/sunset-park",
-      "search_text": "live_037 语言·教育 布鲁克林公共图书馆 — 日落公园 brooklyn public library — sunset park official sunset park branch page for chinese community programs.（来源类型：布鲁克林图书馆日落公园分馆（布鲁克林华人社区）） 八大道 sunset park 八大道 sunset park brooklyn brooklyn https://www.bklynlibrary.org/locations/sunset-park"
+      "search_text": "live_037 语言·教育 布鲁克林公共图书馆 — sunset park brooklyn public library — sunset park official sunset park branch page for chinese community programs.（来源类型：布鲁克林图书馆日落公园分馆（布鲁克林华人社区）） 八大道 sunset park 八大道 sunset park brooklyn brooklyn 2026-08-12 12:02:27 https://www.bklynlibrary.org/locations/sunset-park"
     },
     {
       "id": "live_038",
@@ -769,7 +769,7 @@
       "published_at": "",
       "source_published_at": "",
       "first_indexed_at": "2026-08-12 11:55:06",
-      "last_seen_at": "2026-08-12 12:02:27",
+      "last_seen_at": "2026-08-12 14:48:42",
       "date_kind": "service",
       "url": "https://www.queenslibrary.org/calendar?searchField=%2A&amp;category=calendar&amp;fromlink=calendar&amp;searchFilter=sm_pSsnVirtua:91400000",
       "search_text": "live_038 语言·教育 查看法拉盛的活动 view the events at flushing 来自皇后区图书馆法拉盛分馆（华人社区主要图书馆）的官方/正式机构页面，具体时间、地点、报名要求以官网为准。（来源类型：皇后区图书馆法拉盛分馆（华人社区主要图书馆）） 法拉盛 flushing 法拉盛 flushing queens .org/lamps/images/default/programtype/event_small/defaultwebimage_259x396_turquo 2026-08-12 11:55:06 https://www.queenslibrary.org/calendar?searchfield=%2a&amp;category=calendar&amp;fromlink=calendar&amp;searchfilter=sm_pssnvirtua:91400000"
@@ -789,7 +789,7 @@
       "published_at": "",
       "source_published_at": "",
       "first_indexed_at": "2026-08-12 11:55:06",
-      "last_seen_at": "2026-08-12 12:02:27",
+      "last_seen_at": "2026-08-12 14:48:42",
       "date_kind": "service",
       "url": "https://www.queenslibrary.org/calendar?searchField=*&amp;category=calendar&amp;fromlink=calendar&amp;searchFilter=",
       "search_text": "live_039 语言·教育 查看完整日历 view the full calendar 来自皇后区图书馆法拉盛分馆（华人社区主要图书馆）的官方/正式机构页面，具体时间、地点、报名要求以官网为准。（来源类型：皇后区图书馆法拉盛分馆（华人社区主要图书馆）） 皇后区 queens 皇后区 queens queens .org/calendar?searchfield=*&category=calendar&fromlink=calendar&sear 2026-08-12 11:55:06 https://www.queenslibrary.org/calendar?searchfield=*&amp;category=calendar&amp;fromlink=calendar&amp;searchfilter="
@@ -797,7 +797,7 @@
     {
       "id": "live_040",
       "module": "语言·教育",
-      "title_zh": "NYPL查塔姆广场图书馆（唐人街）",
+      "title_zh": "NYPL Chatham Square 图书馆（唐人街）",
       "summary_zh": "Official Chatham Square branch page. NYPL site may block automated scrapers.（来源类型：纽约公共图书馆唐人街分馆（曼哈顿华人社区核心图书馆））",
       "location_tag_zh": "唐人街 Chinatown",
       "location_kind": "enclave",
@@ -809,10 +809,10 @@
       "published_at": "",
       "source_published_at": "",
       "first_indexed_at": "2026-08-12 11:55:06",
-      "last_seen_at": "2026-08-12 12:02:27",
+      "last_seen_at": "2026-08-12 14:48:42",
       "date_kind": "service",
       "url": "https://www.nypl.org/locations/chatham-square",
-      "search_text": "live_040 语言·教育 nypl查塔姆广场图书馆（唐人街） nypl chatham square library (chinatown) official chatham square branch page. nypl site may block automated scrapers.（来源类型：纽约公共图书馆唐人街分馆（曼哈顿华人社区核心图书馆）） 唐人街 chinatown 唐人街 chinatown manhattan manhattan 2026-08-12 11:55:06 https://www.nypl.org/locations/chatham-square"
+      "search_text": "live_040 语言·教育 nypl chatham square 图书馆（唐人街） nypl chatham square library (chinatown) official chatham square branch page. nypl site may block automated scrapers.（来源类型：纽约公共图书馆唐人街分馆（曼哈顿华人社区核心图书馆）） 唐人街 chinatown 唐人街 chinatown manhattan manhattan 2026-08-12 11:55:06 https://www.nypl.org/locations/chatham-square"
     },
     {
       "id": "live_041",
@@ -829,7 +829,7 @@
       "published_at": "",
       "source_published_at": "",
       "first_indexed_at": "2026-06-15 20:30:26",
-      "last_seen_at": "2026-08-12 12:02:27",
+      "last_seen_at": "2026-08-12 14:48:42",
       "date_kind": "service",
       "url": "https://www.nyc.gov/site/immigrants/about/press-releases/moia-launches-immigrant-legal-services-community-support-network-20250722.page",
       "search_text": "live_041 福利·政务 宣布市政移民法律服务和社区支持网络 announcing municipal immigrant legal services and community support network 来自纽约市长移民事务办公室的官方/正式机构页面，具体时间、地点、报名要求以官网为准。（来源类型：纽约市长移民事务办公室） 全市 纽约全市 citywide 2026-06-15 20:30:26 https://www.nyc.gov/site/immigrants/about/press-releases/moia-launches-immigrant-legal-services-community-support-network-20250722.page"
@@ -837,7 +837,7 @@
     {
       "id": "live_042",
       "module": "福利·政务",
-      "title_zh": "使用您的IDNYC卡享受折扣酒店、主题公园和其他娱乐的优惠！",
+      "title_zh": "使用您的IDNYC卡在折扣酒店、主题公园和其他娱乐活动中节省开支！",
       "summary_zh": "来自IDNYC - 免费市民卡的官方/正式机构页面，具体时间、地点、报名要求以官网为准。（来源类型：IDNYC - 免费市民卡）",
       "location_tag_zh": "全市",
       "location_kind": "citywide",
@@ -849,10 +849,10 @@
       "published_at": "",
       "source_published_at": "",
       "first_indexed_at": "2026-08-12 11:20:41",
-      "last_seen_at": "2026-08-12 12:02:27",
+      "last_seen_at": "2026-08-12 14:48:42",
       "date_kind": "service",
       "url": "https://www1.nyc.gov/site/idnyc/benefits/entertainment-discounts.page",
-      "search_text": "live_042 福利·政务 使用您的idnyc卡享受折扣酒店、主题公园和其他娱乐的优惠！ save on discounted hotels, theme parks and other entertainment with your idnyc card! 来自idnyc - 免费市民卡的官方/正式机构页面，具体时间、地点、报名要求以官网为准。（来源类型：idnyc - 免费市民卡） 全市 纽约全市 citywide 2026-08-12 11:20:41 https://www1.nyc.gov/site/idnyc/benefits/entertainment-discounts.page"
+      "search_text": "live_042 福利·政务 使用您的idnyc卡在折扣酒店、主题公园和其他娱乐活动中节省开支！ save on discounted hotels, theme parks and other entertainment with your idnyc card! 来自idnyc - 免费市民卡的官方/正式机构页面，具体时间、地点、报名要求以官网为准。（来源类型：idnyc - 免费市民卡） 全市 纽约全市 citywide 2026-08-12 11:20:41 https://www1.nyc.gov/site/idnyc/benefits/entertainment-discounts.page"
     },
     {
       "id": "live_043",
@@ -869,7 +869,7 @@
       "published_at": "2026-02-20",
       "source_published_at": "2026-02-20 12:42:52",
       "first_indexed_at": "2026-06-15 20:30:26",
-      "last_seen_at": "2026-08-12 12:02:27",
+      "last_seen_at": "2026-08-12 14:48:42",
       "date_kind": "service",
       "url": "https://www.cpc-nyc.org/events/connecting-dots-data-informed-community-stories",
       "search_text": "live_043 公益·义工 连接点滴：数据驱动的社区故事 connecting the dots: data-informed community stories 来自华人策划协会 (cpc)的官方/正式机构页面，具体时间、地点、报名要求以官网为准。（来源类型：华人策划协会 (cpc)） 全市 纽约全市 citywide 2026-06-15 20:30:26 2026-02-20 12:42:52 https://www.cpc-nyc.org/events/connecting-dots-data-informed-community-stories"
@@ -889,7 +889,7 @@
       "published_at": "",
       "source_published_at": "",
       "first_indexed_at": "2026-08-12 10:30:40",
-      "last_seen_at": "2026-08-12 12:02:27",
+      "last_seen_at": "2026-08-12 14:48:42",
       "date_kind": "service",
       "url": "https://www.cpc-nyc.org/programs/community-economic-empowerment-family-support/early-childhood-learning-wellness-services",
       "search_text": "live_044 公益·义工 早期儿童学习与健康服务 early childhood learning & wellness services 来自华人策划协会 (cpc)的官方/正式机构页面，具体时间、地点、报名要求以官网为准。（来源类型：华人策划协会 (cpc)） 全市 纽约全市 citywide 2026-08-12 10:30:40 https://www.cpc-nyc.org/programs/community-economic-empowerment-family-support/early-childhood-learning-wellness-services"
@@ -909,7 +909,7 @@
       "published_at": "",
       "source_published_at": "",
       "first_indexed_at": "2026-08-11 23:03:58",
-      "last_seen_at": "2026-08-12 12:02:27",
+      "last_seen_at": "2026-08-12 14:48:42",
       "date_kind": "service",
       "url": "https://www.nyc.gov/site/hra/help/i-need-help.page",
       "search_text": "live_045 福利·政务 snap与ca snap & ca 来自纽约市人力资源管理局的官方/正式机构页面，具体时间、地点、报名要求以官网为准。（来源类型：纽约市人力资源管理局） 全市 纽约全市 citywide 2026-08-11 23:03:58 https://www.nyc.gov/site/hra/help/i-need-help.page"
@@ -929,7 +929,7 @@
       "published_at": "",
       "source_published_at": "",
       "first_indexed_at": "2026-08-11 23:03:58",
-      "last_seen_at": "2026-08-12 12:02:27",
+      "last_seen_at": "2026-08-12 14:48:42",
       "date_kind": "service",
       "url": "https://www.nyc.gov/site/hra/help/homelessness-prevention.page",
       "search_text": "live_046 福利·政务 住房与预防服务 housing & prevention services 来自纽约市人力资源管理局的官方/正式机构页面，具体时间、地点、报名要求以官网为准。（来源类型：纽约市人力资源管理局） 全市 纽约全市 citywide 2026-08-11 23:03:58 https://www.nyc.gov/site/hra/help/homelessness-prevention.page"
@@ -949,7 +949,7 @@
       "published_at": "",
       "source_published_at": "",
       "first_indexed_at": "2026-08-11 23:03:58",
-      "last_seen_at": "2026-08-12 12:02:27",
+      "last_seen_at": "2026-08-12 14:48:42",
       "date_kind": "service",
       "url": "https://www.nyc.gov/site/hra/help/other-services.page",
       "search_text": "live_047 福利·政务 其他福利与服务 other benefits & services 来自纽约市人力资源管理局的官方/正式机构页面，具体时间、地点、报名要求以官网为准。（来源类型：纽约市人力资源管理局） 全市 纽约全市 citywide 2026-08-11 23:03:58 https://www.nyc.gov/site/hra/help/other-services.page"
@@ -969,7 +969,7 @@
       "published_at": "",
       "source_published_at": "",
       "first_indexed_at": "2026-08-11 23:03:58",
-      "last_seen_at": "2026-08-12 12:02:27",
+      "last_seen_at": "2026-08-12 14:48:42",
       "date_kind": "service",
       "url": "https://www.nyc.gov/site/hra/help/benefitreplacement.page",
       "search_text": "live_048 福利·政务 福利替代 benefit replacement 来自纽约市人力资源管理局的官方/正式机构页面，具体时间、地点、报名要求以官网为准。（来源类型：纽约市人力资源管理局） 全市 纽约全市 citywide 2026-08-11 23:03:58 https://www.nyc.gov/site/hra/help/benefitreplacement.page"
@@ -989,7 +989,7 @@
       "published_at": "",
       "source_published_at": "",
       "first_indexed_at": "2026-08-12 10:30:40",
-      "last_seen_at": "2026-08-12 12:02:27",
+      "last_seen_at": "2026-08-12 14:48:42",
       "date_kind": "service",
       "url": "https://www.nyc.gov/site/hra/help/child-care-benefits.page",
       "search_text": "live_049 福利·政务 儿童保育服务 child care services 来自纽约市人力资源管理局的官方/正式机构页面，具体时间、地点、报名要求以官网为准。（来源类型：纽约市人力资源管理局） 全市 纽约全市 citywide 2026-08-12 10:30:40 https://www.nyc.gov/site/hra/help/child-care-benefits.page"
@@ -1009,7 +1009,7 @@
       "published_at": "",
       "source_published_at": "",
       "first_indexed_at": "2026-08-11 23:03:58",
-      "last_seen_at": "2026-08-12 12:02:27",
+      "last_seen_at": "2026-08-12 14:48:42",
       "date_kind": "service",
       "url": "https://www.nyc.gov/site/hra/help/fraud-prevention.page",
       "search_text": "live_050 安全·突发 福利欺诈预防 welfare fraud prevention 来自纽约市人力资源管理局的官方/正式机构页面，具体时间、地点、报名要求以官网为准。（来源类型：纽约市人力资源管理局） 全市 纽约全市 citywide 2026-08-11 23:03:58 https://www.nyc.gov/site/hra/help/fraud-prevention.page"
@@ -1029,7 +1029,7 @@
       "published_at": "",
       "source_published_at": "",
       "first_indexed_at": "2026-08-12 11:20:41",
-      "last_seen_at": "2026-08-12 12:02:27",
+      "last_seen_at": "2026-08-12 14:48:42",
       "date_kind": "service",
       "url": "https://www.nyc.gov/site/hra/help/snap-application-frequently-asked-questions.page",
       "search_text": "live_051 福利·政务 snap常见问题 snap frequently asked questions 来自纽约市人力资源管理局的官方/正式机构页面，具体时间、地点、报名要求以官网为准。（来源类型：纽约市人力资源管理局） 全市 纽约全市 citywide 2026-08-12 11:20:41 https://www.nyc.gov/site/hra/help/snap-application-frequently-asked-questions.page"
