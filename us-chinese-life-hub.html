@@ -3272,6 +3272,24 @@ function hubSourcesHealthLabel() {
   return `${ok}/${cfg} 源`;
 }
 
+function openSourceHealthModal() {
+  const health = (typeof HUB_SOURCE_HEALTH !== 'undefined' && HUB_SOURCE_HEALTH)
+    ? HUB_SOURCE_HEALTH
+    : (HUB_INDEX_STATS?.source_health || {});
+  const rows = Array.isArray(health.rows) ? health.rows : [];
+  const fails = rows.filter(r => r.fetch_status === 'fail');
+  const oks = rows.filter(r => r.fetch_status === 'ok');
+  const failLines = fails.slice(0, 30).map(r =>
+    `• ${r.source_id} — ${r.error_class || 'fail'}`
+  ).join('\n') || '（无失败源）';
+  const okSample = oks.slice(0, 12).map(r => r.source_id).join(', ');
+  const msg =
+    `源健康 ${health.n_ok ?? oks.length}/${(health.n_ok ?? 0) + (health.n_fail ?? 0) || rows.length}\n\n` +
+    `失败源 (${fails.length}):\n${failLines}\n\n` +
+    `成功源示例: ${okSample || '—'}`;
+  alert(msg);
+}
+
 function renderHubStreamStats(stats) {
   const s = UI_STRINGS[currentLang];
   const nc = document.getElementById('stream-new-count');
