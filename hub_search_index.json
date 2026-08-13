@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0",
-  "generated_at": "2026-08-13 00:43",
+  "generated_at": "2026-08-13 01:47",
   "count": 135,
   "fields": [
     "first_indexed_at",
@@ -17,8 +17,8 @@
     {
       "id": "live_001",
       "module": "文化·节庆",
-      "title_zh": "皇后区爵士乐步道音乐会：铜管皇后",
-      "summary_zh": "这个夏天，在皇后区的心脏地带体验爵士乐的生动遗产！受标志性皇后区爵士乐步道地图的启发，这个免费音乐会系列将该区丰富的爵士乐历史带入美丽的社区公园…",
+      "title_zh": "皇后区爵士音乐会：铜管女王",
+      "summary_zh": "今年夏天在皇后区（Queens）感受爵士乐的生动遗产！受标志性皇后爵士小径地图的启发，这个免费音乐会系列将在美丽的社区公园中展现该区丰富的爵士历史……",
       "location_tag_zh": "法拉盛 Flushing",
       "location_kind": "enclave",
       "area_zh": "法拉盛 Flushing",
@@ -29,15 +29,15 @@
       "published_at": "",
       "source_published_at": "",
       "first_indexed_at": "2026-08-12 20:27:28",
-      "last_seen_at": "2026-08-12 20:42:40",
+      "last_seen_at": "2026-08-12 21:47:20",
       "date_kind": "event",
       "url": "https://www.nycgovparks.org/events/2026/08/20/queens-jazz-trail-concert-the-brass-queens",
-      "search_text": "live_001 文化·节庆 皇后区爵士乐步道音乐会：铜管皇后 queens jazz trail concert: the brass queens 这个夏天，在皇后区的心脏地带体验爵士乐的生动遗产！受标志性皇后区爵士乐步道地图的启发，这个免费音乐会系列将该区丰富的爵士乐历史带入美丽的社区公园… 法拉盛 flushing 法拉盛 flushing queens cunningham park parking lot (in cunningham park) 2026-08-12 20:27:28 2026-08-20 https://www.nycgovparks.org/events/2026/08/20/queens-jazz-trail-concert-the-brass-queens"
+      "search_text": "live_001 文化·节庆 皇后区爵士音乐会：铜管女王 queens jazz trail concert: the brass queens 今年夏天在皇后区（queens）感受爵士乐的生动遗产！受标志性皇后爵士小径地图的启发，这个免费音乐会系列将在美丽的社区公园中展现该区丰富的爵士历史…… 法拉盛 flushing 法拉盛 flushing queens cunningham park parking lot (in cunningham park) 2026-08-12 20:27:28 2026-08-20 https://www.nycgovparks.org/events/2026/08/20/queens-jazz-trail-concert-the-brass-queens"
     },
     {
       "id": "live_002",
       "module": "语言·教育",
-      "title_zh": "英语作为第二语言和大学预备课程",
+      "title_zh": "ESL 和大学预备课程",
       "summary_zh": "Education program on www.bmcc.cuny.edu — click to enroll or learn more.（来源类型：纽约市立大学 — 继续教育、英语课及成人学习）",
       "location_tag_zh": "全市",
       "location_kind": "citywide",
@@ -49,15 +49,15 @@
       "published_at": "",
       "source_published_at": "",
       "first_indexed_at": "2026-06-15 20:30:26",
-      "last_seen_at": "2026-08-12 20:42:40",
+      "last_seen_at": "2026-08-12 21:47:20",
       "date_kind": "event",
       "url": "https://www.bmcc.cuny.edu/ce/esl-college-prep/",
-      "search_text": "live_002 语言·教育 英语作为第二语言和大学预备课程 esl and college prep education program on www.bmcc.cuny.edu — click to enroll or learn more.（来源类型：纽约市立大学 — 继续教育、英语课及成人学习） 全市 纽约全市 citywide new york city 2026-06-15 20:30:26 2026-08-17 https://www.bmcc.cuny.edu/ce/esl-college-prep/"
+      "search_text": "live_002 语言·教育 esl 和大学预备课程 esl and college prep education program on www.bmcc.cuny.edu — click to enroll or learn more.（来源类型：纽约市立大学 — 继续教育、英语课及成人学习） 全市 纽约全市 citywide new york city 2026-06-15 20:30:26 2026-08-17 https://www.bmcc.cuny.edu/ce/esl-college-prep/"
     },
     {
       "id": "live_003",
       "module": "语言·教育",
-      "title_zh": "ESL培训项目",
+      "title_zh": "ESL 培训项目",
       "summary_zh": "Education program on www.bmcc.cuny.edu — click to enroll or learn more.（来源类型：纽约市立大学 — 继续教育、英语课及成人学习）",
       "location_tag_zh": "全市",
       "location_kind": "citywide",
@@ -69,15 +69,15 @@
       "published_at": "",
       "source_published_at": "",
       "first_indexed_at": "2026-06-15 20:30:26",
-      "last_seen_at": "2026-08-12 20:42:40",
+      "last_seen_at": "2026-08-12 21:47:20",
       "date_kind": "event",
       "url": "https://www.bmcc.cuny.edu/ce/esl-training-programs/",
-      "search_text": "live_003 语言·教育 esl培训项目 esl training programs education program on www.bmcc.cuny.edu — click to enroll or learn more.（来源类型：纽约市立大学 — 继续教育、英语课及成人学习） 全市 纽约全市 citywide new york city 2026-06-15 20:30:26 2026-08-17 https://www.bmcc.cuny.edu/ce/esl-training-programs/"
+      "search_text": "live_003 语言·教育 esl 培训项目 esl training programs education program on www.bmcc.cuny.edu — click to enroll or learn more.（来源类型：纽约市立大学 — 继续教育、英语课及成人学习） 全市 纽约全市 citywide new york city 2026-06-15 20:30:26 2026-08-17 https://www.bmcc.cuny.edu/ce/esl-training-programs/"
     },
     {
       "id": "live_004",
       "module": "语言·教育",
-      "title_zh": "HSE（GED）和ESOL项目",
+      "title_zh": "HSE（GED）和 ESOL 项目",
       "summary_zh": "Education program on www.bmcc.cuny.edu — click to enroll or learn more.（来源类型：纽约市立大学 — 继续教育、英语课及成人学习）",
       "location_tag_zh": "全市",
       "location_kind": "citywide",
@@ -89,10 +89,10 @@
       "published_at": "",
       "source_published_at": "",
       "first_indexed_at": "2026-06-15 20:30:26",
-      "last_seen_at": "2026-08-12 20:42:40",
+      "last_seen_at": "2026-08-12 21:47:20",
       "date_kind": "event",
       "url": "https://www.bmcc.cuny.edu/ce/hse-ged-and-esol-programs/",
-      "search_text": "live_004 语言·教育 hse（ged）和esol项目 hse (ged) and esol programs education program on www.bmcc.cuny.edu — click to enroll or learn more.（来源类型：纽约市立大学 — 继续教育、英语课及成人学习） 全市 纽约全市 citywide new york city 2026-06-15 20:30:26 2026-08-17 https://www.bmcc.cuny.edu/ce/hse-ged-and-esol-programs/"
+      "search_text": "live_004 语言·教育 hse（ged）和 esol 项目 hse (ged) and esol programs education program on www.bmcc.cuny.edu — click to enroll or learn more.（来源类型：纽约市立大学 — 继续教育、英语课及成人学习） 全市 纽约全市 citywide new york city 2026-06-15 20:30:26 2026-08-17 https://www.bmcc.cuny.edu/ce/hse-ged-and-esol-programs/"
     },
     {
       "id": "live_005",
@@ -109,7 +109,7 @@
       "published_at": "2026-04-24",
       "source_published_at": "2026-04-24 06:13:09",
       "first_indexed_at": "2026-06-15 20:30:26",
-      "last_seen_at": "2026-08-12 20:42:40",
+      "last_seen_at": "2026-08-12 21:47:20",
       "date_kind": "event",
       "url": "https://www.kingsborough.edu/ce/hse_courses.html",
       "search_text": "live_005 语言·教育 高中同等学历（hse/ged） high school equivalency (hse/ged) education program on www.kingsborough.edu — click to enroll or learn more.（来源类型：纽约市立大学 — 继续教育、英语课及成人学习） 全市 纽约全市 citywide new york city 2026-06-15 20:30:26 2026-04-24 06:13:09 2026-08-17 https://www.kingsborough.edu/ce/hse_courses.html"
@@ -117,8 +117,8 @@
     {
       "id": "live_006",
       "module": "亲子·公园",
-      "title_zh": "动感儿童：Elmhurst公园",
-      "summary_zh": "动感儿童项目让孩子们参与积极的户外游戏。纽约市公园工作人员带领4到7小时的免费活动，包括组织运动、游戏、健身演示、棋盘游戏…（来源类型：nyc_parks_opendata_fallback）",
+      "title_zh": "动感儿童：艾尔姆赫斯特公园",
+      "summary_zh": "动感儿童项目让孩子们参与积极的户外活动。纽约市公园工作人员在纽约市的游乐场提供四到七小时的免费活动，包括组织运动、游戏、健身演示、棋盘游戏…（来源类型：nyc_parks_opendata_fallback）",
       "location_tag_zh": "艾姆赫斯特 Elmhurst",
       "location_kind": "enclave",
       "area_zh": "艾姆赫斯特 Elmhurst",
@@ -129,16 +129,16 @@
       "published_at": "",
       "source_published_at": "",
       "first_indexed_at": "2026-08-12 20:27:28",
-      "last_seen_at": "2026-08-12 20:42:40",
+      "last_seen_at": "2026-08-12 21:47:20",
       "date_kind": "event",
       "url": "https://www.nycgovparks.org/events/2026/08/15/kids-in-motion-elmhurst-park",
-      "search_text": "live_006 亲子·公园 动感儿童：elmhurst公园 kids in motion: elmhurst park 动感儿童项目让孩子们参与积极的户外游戏。纽约市公园工作人员带领4到7小时的免费活动，包括组织运动、游戏、健身演示、棋盘游戏…（来源类型：nyc_parks_opendata_fallback） 艾姆赫斯特 elmhurst 艾姆赫斯特 elmhurst queens playground (in elmhurst park) 2026-08-12 20:27:28 2026-08-15 https://www.nycgovparks.org/events/2026/08/15/kids-in-motion-elmhurst-park"
+      "search_text": "live_006 亲子·公园 动感儿童：艾尔姆赫斯特公园 kids in motion: elmhurst park 动感儿童项目让孩子们参与积极的户外活动。纽约市公园工作人员在纽约市的游乐场提供四到七小时的免费活动，包括组织运动、游戏、健身演示、棋盘游戏…（来源类型：nyc_parks_opendata_fallback） 艾姆赫斯特 elmhurst 艾姆赫斯特 elmhurst queens playground (in elmhurst park) 2026-08-12 20:27:28 2026-08-15 https://www.nycgovparks.org/events/2026/08/15/kids-in-motion-elmhurst-park"
     },
     {
       "id": "live_007",
       "module": "亲子·公园",
-      "title_zh": "动感儿童：Corona高尔夫游乐场",
-      "summary_zh": "动感儿童项目让孩子们参与积极的户外游戏。纽约市公园工作人员带领4到7小时的免费活动，包括组织运动、游戏、健身演示、棋盘游戏…（来源类型：nyc_parks_opendata_fallback）",
+      "title_zh": "动感儿童：科罗娜高尔夫游乐场",
+      "summary_zh": "动感儿童项目让孩子们参与积极的户外活动。纽约市公园工作人员在纽约市的游乐场提供四到七小时的免费活动，包括组织运动、游戏、健身演示、棋盘游戏…（来源类型：nyc_parks_opendata_fallback）",
       "location_tag_zh": "艾姆赫斯特 Elmhurst",
       "location_kind": "enclave",
       "area_zh": "艾姆赫斯特 Elmhurst",
@@ -149,15 +149,15 @@
       "published_at": "",
       "source_published_at": "",
       "first_indexed_at": "2026-08-12 20:27:28",
-      "last_seen_at": "2026-08-12 20:42:40",
+      "last_seen_at": "2026-08-12 21:47:20",
       "date_kind": "event",
       "url": "https://www.nycgovparks.org/events/2026/08/15/kids-in-motion-corona-golf-playground",
-      "search_text": "live_007 亲子·公园 动感儿童：corona高尔夫游乐场 kids in motion: corona golf playground 动感儿童项目让孩子们参与积极的户外游戏。纽约市公园工作人员带领4到7小时的免费活动，包括组织运动、游戏、健身演示、棋盘游戏…（来源类型：nyc_parks_opendata_fallback） 艾姆赫斯特 elmhurst 艾姆赫斯特 elmhurst queens playground (in corona golf playground) 2026-08-12 20:27:28 2026-08-15 https://www.nycgovparks.org/events/2026/08/15/kids-in-motion-corona-golf-playground"
+      "search_text": "live_007 亲子·公园 动感儿童：科罗娜高尔夫游乐场 kids in motion: corona golf playground 动感儿童项目让孩子们参与积极的户外活动。纽约市公园工作人员在纽约市的游乐场提供四到七小时的免费活动，包括组织运动、游戏、健身演示、棋盘游戏…（来源类型：nyc_parks_opendata_fallback） 艾姆赫斯特 elmhurst 艾姆赫斯特 elmhurst queens playground (in corona golf playground) 2026-08-12 20:27:28 2026-08-15 https://www.nycgovparks.org/events/2026/08/15/kids-in-motion-corona-golf-playground"
     },
     {
       "id": "live_008",
       "module": "语言·教育",
-      "title_zh": "QCC继续教育游泳项目",
+      "title_zh": "皇后区社区学院（QCC）继续教育游泳项目",
       "summary_zh": "Education program on www.qcc.cuny.edu — click to enroll or learn more.（来源类型：纽约市立大学 — 继续教育、英语课及成人学习）",
       "location_tag_zh": "全市",
       "location_kind": "citywide",
@@ -169,15 +169,15 @@
       "published_at": "",
       "source_published_at": "",
       "first_indexed_at": "2026-06-15 20:30:26",
-      "last_seen_at": "2026-08-12 20:42:40",
+      "last_seen_at": "2026-08-12 21:47:20",
       "date_kind": "event",
       "url": "https://www.qcc.cuny.edu/ce/courses/qcc-continuing-education-swim-program.html",
-      "search_text": "live_008 语言·教育 qcc继续教育游泳项目 qcc continuing education swim program education program on www.qcc.cuny.edu — click to enroll or learn more.（来源类型：纽约市立大学 — 继续教育、英语课及成人学习） 全市 纽约全市 citywide new york city 2026-06-15 20:30:26 2026-08-17 https://www.qcc.cuny.edu/ce/courses/qcc-continuing-education-swim-program.html"
+      "search_text": "live_008 语言·教育 皇后区社区学院（qcc）继续教育游泳项目 qcc continuing education swim program education program on www.qcc.cuny.edu — click to enroll or learn more.（来源类型：纽约市立大学 — 继续教育、英语课及成人学习） 全市 纽约全市 citywide new york city 2026-06-15 20:30:26 2026-08-17 https://www.qcc.cuny.edu/ce/courses/qcc-continuing-education-swim-program.html"
     },
     {
       "id": "live_009",
       "module": "就业·培训",
-      "title_zh": "继续教育与劳动力发展",
+      "title_zh": "继续教育劳动力发展",
       "summary_zh": "Education program on www.qcc.cuny.edu — click to enroll or learn more.（来源类型：纽约市立大学 — 继续教育、英语课及成人学习）",
       "location_tag_zh": "全市",
       "location_kind": "citywide",
@@ -189,15 +189,15 @@
       "published_at": "",
       "source_published_at": "",
       "first_indexed_at": "2026-06-15 20:30:26",
-      "last_seen_at": "2026-08-12 20:42:40",
+      "last_seen_at": "2026-08-12 21:47:20",
       "date_kind": "event",
       "url": "https://www.qcc.cuny.edu/ce/index.html",
-      "search_text": "live_009 就业·培训 继续教育与劳动力发展 continuing education workforce development education program on www.qcc.cuny.edu — click to enroll or learn more.（来源类型：纽约市立大学 — 继续教育、英语课及成人学习） 全市 纽约全市 citywide new york city 2026-06-15 20:30:26 2026-08-17 https://www.qcc.cuny.edu/ce/index.html"
+      "search_text": "live_009 就业·培训 继续教育劳动力发展 continuing education workforce development education program on www.qcc.cuny.edu — click to enroll or learn more.（来源类型：纽约市立大学 — 继续教育、英语课及成人学习） 全市 纽约全市 citywide new york city 2026-06-15 20:30:26 2026-08-17 https://www.qcc.cuny.edu/ce/index.html"
     },
     {
       "id": "live_010",
       "module": "就业·培训",
-      "title_zh": "纽约劳动力资源",
+      "title_zh": "纽约市劳动力资源",
       "summary_zh": "Education program on www.bmcc.cuny.edu — click to enroll or learn more.（来源类型：纽约市立大学 — 继续教育、英语课及成人学习）",
       "location_tag_zh": "全市",
       "location_kind": "citywide",
@@ -209,10 +209,10 @@
       "published_at": "",
       "source_published_at": "",
       "first_indexed_at": "2026-06-15 20:30:26",
-      "last_seen_at": "2026-08-12 20:42:40",
+      "last_seen_at": "2026-08-12 21:47:20",
       "date_kind": "event",
       "url": "https://www.bmcc.cuny.edu/ce/bmcc-nyc-workforce-resources/",
-      "search_text": "live_010 就业·培训 纽约劳动力资源 new york workforce resources education program on www.bmcc.cuny.edu — click to enroll or learn more.（来源类型：纽约市立大学 — 继续教育、英语课及成人学习） 全市 纽约全市 citywide new york city 2026-06-15 20:30:26 2026-08-17 https://www.bmcc.cuny.edu/ce/bmcc-nyc-workforce-resources/"
+      "search_text": "live_010 就业·培训 纽约市劳动力资源 new york workforce resources education program on www.bmcc.cuny.edu — click to enroll or learn more.（来源类型：纽约市立大学 — 继续教育、英语课及成人学习） 全市 纽约全市 citywide new york city 2026-06-15 20:30:26 2026-08-17 https://www.bmcc.cuny.edu/ce/bmcc-nyc-workforce-resources/"
     },
     {
       "id": "live_011",
@@ -229,7 +229,7 @@
       "published_at": "",
       "source_published_at": "",
       "first_indexed_at": "2026-08-12 20:42:40",
-      "last_seen_at": "2026-08-12 20:42:40",
+      "last_seen_at": "2026-08-12 21:47:20",
       "date_kind": "event",
       "url": "https://www.cacf.org/events/2026-catalyst-for-change-awards-gala",
       "search_text": "live_011 亲子·公园 查看活动 → view event → 来自亚美儿童与家庭联盟 (cacf)的官方/正式机构页面，具体时间、地点、报名要求以官网为准。（来源类型：亚美儿童与家庭联盟 (cacf)） 全市 纽约全市 citywide 2026-08-12 20:42:40 2026-11-13 https://www.cacf.org/events/2026-catalyst-for-change-awards-gala"
@@ -237,7 +237,7 @@
     {
       "id": "live_012",
       "module": "交通·出行",
-      "title_zh": "MTA：前往法拉盛 Flushing 的 [7X] 快速列车在皇后区 Queens 从 74 St-Broadway 到 Mets-Willets Point 运行本地服务",
+      "title_zh": "MTA：法拉盛（Flushing）方向的[7X]快车在皇后区（Queens）从74街-百老汇（74 St-Broadway）到梅茨-威利特斯点（Mets-Willets Point）运行当地服务",
       "summary_zh": "What's happening? Mets Home Game（来源类型：MTA 大都会交通局 - 服务变更）",
       "location_tag_zh": "全市",
       "location_kind": "citywide",
@@ -249,16 +249,16 @@
       "published_at": "",
       "source_published_at": "",
       "first_indexed_at": "2026-08-12 11:55:06",
-      "last_seen_at": "2026-08-12 20:42:40",
+      "last_seen_at": "2026-08-12 21:47:20",
       "date_kind": "event",
       "url": "https://www.mta.info/#alert-779b9d650420",
-      "search_text": "live_012 交通·出行 mta：前往法拉盛 flushing 的 [7x] 快速列车在皇后区 queens 从 74 st-broadway 到 mets-willets point 运行本地服务 mta：flushing-bound [7x] express trains run local in queens from 74 st-broadway to mets-willets point what's happening? mets home game（来源类型：mta 大都会交通局 - 服务变更） 全市 法拉盛 flushing citywide nyc 2026-08-12 11:55:06 2026-08-13 https://www.mta.info/#alert-779b9d650420"
+      "search_text": "live_012 交通·出行 mta：法拉盛（flushing）方向的[7x]快车在皇后区（queens）从74街-百老汇（74 st-broadway）到梅茨-威利特斯点（mets-willets point）运行当地服务 mta：flushing-bound [7x] express trains run local in queens from 74 st-broadway to mets-willets point what's happening? mets home game（来源类型：mta 大都会交通局 - 服务变更） 全市 法拉盛 flushing citywide nyc 2026-08-12 11:55:06 2026-08-13 https://www.mta.info/#alert-779b9d650420"
     },
     {
       "id": "live_013",
       "module": "文化·节庆",
       "title_zh": "布莱恩特公园野餐表演：纽约吉他节",
-      "summary_zh": "8月14日和15日，纽约吉他节将在布莱恩特公园举行两场免费的活动，内容丰富多样，偶尔电气化，始终令人振奋。从古典吉他经典到巴西音乐…",
+      "summary_zh": "8月14日和15日，纽约吉他节将在布莱恩特公园（Bryant Park）举办两场免费活动，内容丰富多样，偶尔电气化，始终令人振奋。从古典吉他经典到巴西音乐……",
       "location_tag_zh": "全市",
       "location_kind": "citywide",
       "area_zh": "纽约全市",
@@ -269,16 +269,16 @@
       "published_at": "",
       "source_published_at": "",
       "first_indexed_at": "2026-08-12 10:30:40",
-      "last_seen_at": "2026-08-12 20:42:40",
+      "last_seen_at": "2026-08-12 21:47:20",
       "date_kind": "event",
       "url": "https://www.nycgovparks.org/events/2026/08/15/bryant-park-picnic-performance-new-york-guitar-festival-the",
-      "search_text": "live_013 文化·节庆 布莱恩特公园野餐表演：纽约吉他节 bryant park picnic performance: new york guitar festival 8月14日和15日，纽约吉他节将在布莱恩特公园举行两场免费的活动，内容丰富多样，偶尔电气化，始终令人振奋。从古典吉他经典到巴西音乐… 全市 纽约全市 citywide bryant park lawn (in bryant park) 2026-08-12 10:30:40 2026-08-15 https://www.nycgovparks.org/events/2026/08/15/bryant-park-picnic-performance-new-york-guitar-festival-the"
+      "search_text": "live_013 文化·节庆 布莱恩特公园野餐表演：纽约吉他节 bryant park picnic performance: new york guitar festival 8月14日和15日，纽约吉他节将在布莱恩特公园（bryant park）举办两场免费活动，内容丰富多样，偶尔电气化，始终令人振奋。从古典吉他经典到巴西音乐…… 全市 纽约全市 citywide bryant park lawn (in bryant park) 2026-08-12 10:30:40 2026-08-15 https://www.nycgovparks.org/events/2026/08/15/bryant-park-picnic-performance-new-york-guitar-festival-the"
     },
     {
       "id": "live_014",
       "module": "亲子·公园",
-      "title_zh": "动感儿童：Bowne游乐场",
-      "summary_zh": "动感儿童项目让孩子们参与积极的户外游戏。纽约市公园工作人员带领4到7小时的免费活动，包括组织运动、游戏、健身演示、棋盘游戏…（来源类型：nyc_parks_opendata_fallback）",
+      "title_zh": "动感儿童：Bowne 游乐场",
+      "summary_zh": "动感儿童项目让孩子们参与积极的户外活动。纽约市公园工作人员在纽约市的游乐场提供四到七小时的免费活动，包括组织运动、游戏、健身演示、棋盘游戏…（来源类型：nyc_parks_opendata_fallback）",
       "location_tag_zh": "法拉盛 Flushing",
       "location_kind": "enclave",
       "area_zh": "法拉盛 Flushing",
@@ -289,16 +289,16 @@
       "published_at": "",
       "source_published_at": "",
       "first_indexed_at": "2026-08-12 20:27:28",
-      "last_seen_at": "2026-08-12 20:42:40",
+      "last_seen_at": "2026-08-12 21:47:20",
       "date_kind": "event",
       "url": "https://www.nycgovparks.org/events/2026/08/15/kids-in-motion-bowne-playground",
-      "search_text": "live_014 亲子·公园 动感儿童：bowne游乐场 kids in motion: bowne playground 动感儿童项目让孩子们参与积极的户外游戏。纽约市公园工作人员带领4到7小时的免费活动，包括组织运动、游戏、健身演示、棋盘游戏…（来源类型：nyc_parks_opendata_fallback） 法拉盛 flushing 法拉盛 flushing queens play area (in bowne playground) 2026-08-12 20:27:28 2026-08-15 https://www.nycgovparks.org/events/2026/08/15/kids-in-motion-bowne-playground"
+      "search_text": "live_014 亲子·公园 动感儿童：bowne 游乐场 kids in motion: bowne playground 动感儿童项目让孩子们参与积极的户外活动。纽约市公园工作人员在纽约市的游乐场提供四到七小时的免费活动，包括组织运动、游戏、健身演示、棋盘游戏…（来源类型：nyc_parks_opendata_fallback） 法拉盛 flushing 法拉盛 flushing queens play area (in bowne playground) 2026-08-12 20:27:28 2026-08-15 https://www.nycgovparks.org/events/2026/08/15/kids-in-motion-bowne-playground"
     },
     {
       "id": "live_015",
       "module": "亲子·公园",
-      "title_zh": "动感儿童：Bowne公园",
-      "summary_zh": "动感儿童项目让孩子们参与积极的户外游戏。纽约市公园工作人员带领4到7小时的免费活动，包括组织运动、游戏、健身演示、棋盘游戏…（来源类型：nyc_parks_opendata_fallback）",
+      "title_zh": "动感儿童：Bowne Park",
+      "summary_zh": "动感儿童项目让孩子们参与积极的户外活动。纽约市公园工作人员在纽约市的游乐场提供四到七小时的免费活动，包括组织运动、游戏、健身演示、棋盘游戏…（来源类型：nyc_parks_opendata_fallback）",
       "location_tag_zh": "法拉盛 Flushing",
       "location_kind": "enclave",
       "area_zh": "法拉盛 Flushing",
@@ -309,16 +309,16 @@
       "published_at": "",
       "source_published_at": "",
       "first_indexed_at": "2026-08-12 20:27:28",
-      "last_seen_at": "2026-08-12 20:42:40",
+      "last_seen_at": "2026-08-12 21:47:20",
       "date_kind": "event",
       "url": "https://www.nycgovparks.org/events/2026/08/15/kids-in-motion-bowne-park",
-      "search_text": "live_015 亲子·公园 动感儿童：bowne公园 kids in motion: bowne park 动感儿童项目让孩子们参与积极的户外游戏。纽约市公园工作人员带领4到7小时的免费活动，包括组织运动、游戏、健身演示、棋盘游戏…（来源类型：nyc_parks_opendata_fallback） 法拉盛 flushing 法拉盛 flushing queens bowne park playground (in bowne park) 2026-08-12 20:27:28 2026-08-15 https://www.nycgovparks.org/events/2026/08/15/kids-in-motion-bowne-park"
+      "search_text": "live_015 亲子·公园 动感儿童：bowne park kids in motion: bowne park 动感儿童项目让孩子们参与积极的户外活动。纽约市公园工作人员在纽约市的游乐场提供四到七小时的免费活动，包括组织运动、游戏、健身演示、棋盘游戏…（来源类型：nyc_parks_opendata_fallback） 法拉盛 flushing 法拉盛 flushing queens bowne park playground (in bowne park) 2026-08-12 20:27:28 2026-08-15 https://www.nycgovparks.org/events/2026/08/15/kids-in-motion-bowne-park"
     },
     {
       "id": "live_016",
       "module": "亲子·公园",
-      "title_zh": "动感儿童：Seward Park",
-      "summary_zh": "动感儿童项目让孩子们参与积极的户外游戏。纽约市公园工作人员带领4到7小时的免费活动，包括组织运动、游戏、健身演示、棋盘游戏…（来源类型：nyc_parks_opendata_fallback）",
+      "title_zh": "动感儿童：苏厄德公园",
+      "summary_zh": "动感儿童项目让孩子们参与积极的户外活动。纽约市公园工作人员在纽约市的游乐场提供四到七小时的免费活动，包括组织运动、游戏、健身演示、棋盘游戏…（来源类型：nyc_parks_opendata_fallback）",
       "location_tag_zh": "曼哈顿 Manhattan",
       "location_kind": "borough",
       "area_zh": "曼哈顿 Manhattan",
@@ -329,16 +329,16 @@
       "published_at": "",
       "source_published_at": "",
       "first_indexed_at": "2026-08-12 20:27:28",
-      "last_seen_at": "2026-08-12 20:42:40",
+      "last_seen_at": "2026-08-12 21:47:20",
       "date_kind": "event",
       "url": "https://www.nycgovparks.org/events/2026/08/15/kids-in-motion-seward-park",
-      "search_text": "live_016 亲子·公园 动感儿童：seward park kids in motion: seward park 动感儿童项目让孩子们参与积极的户外游戏。纽约市公园工作人员带领4到7小时的免费活动，包括组织运动、游戏、健身演示、棋盘游戏…（来源类型：nyc_parks_opendata_fallback） 曼哈顿 manhattan 曼哈顿 manhattan manhattan entrance - east broadway & essex st (in seward park) 2026-08-12 20:27:28 2026-08-15 https://www.nycgovparks.org/events/2026/08/15/kids-in-motion-seward-park"
+      "search_text": "live_016 亲子·公园 动感儿童：苏厄德公园 kids in motion: seward park 动感儿童项目让孩子们参与积极的户外活动。纽约市公园工作人员在纽约市的游乐场提供四到七小时的免费活动，包括组织运动、游戏、健身演示、棋盘游戏…（来源类型：nyc_parks_opendata_fallback） 曼哈顿 manhattan 曼哈顿 manhattan manhattan entrance - east broadway & essex st (in seward park) 2026-08-12 20:27:28 2026-08-15 https://www.nycgovparks.org/events/2026/08/15/kids-in-motion-seward-park"
     },
     {
       "id": "live_017",
       "module": "亲子·公园",
-      "title_zh": "动感儿童：Bowne游乐场",
-      "summary_zh": "动感儿童项目让孩子们参与积极的户外游戏。纽约市公园工作人员带领4到7小时的免费活动，包括组织运动、游戏、健身演示、棋盘游戏…（来源类型：nyc_parks_opendata_fallback）",
+      "title_zh": "动感儿童：Bowne 游乐场",
+      "summary_zh": "动感儿童项目让孩子们参与积极的户外活动。纽约市公园工作人员在纽约市的游乐场提供四到七小时的免费活动，包括组织运动、游戏、健身演示、棋盘游戏…（来源类型：nyc_parks_opendata_fallback）",
       "location_tag_zh": "法拉盛 Flushing",
       "location_kind": "enclave",
       "area_zh": "法拉盛 Flushing",
@@ -349,16 +349,16 @@
       "published_at": "",
       "source_published_at": "",
       "first_indexed_at": "2026-08-12 10:30:40",
-      "last_seen_at": "2026-08-12 20:42:40",
+      "last_seen_at": "2026-08-12 21:47:20",
       "date_kind": "event",
       "url": "https://www.nycgovparks.org/events/2026/08/14/kids-in-motion-bowne-playground",
-      "search_text": "live_017 亲子·公园 动感儿童：bowne游乐场 kids in motion: bowne playground 动感儿童项目让孩子们参与积极的户外游戏。纽约市公园工作人员带领4到7小时的免费活动，包括组织运动、游戏、健身演示、棋盘游戏…（来源类型：nyc_parks_opendata_fallback） 法拉盛 flushing 法拉盛 flushing queens play area (in bowne playground) 2026-08-12 10:30:40 2026-08-14 https://www.nycgovparks.org/events/2026/08/14/kids-in-motion-bowne-playground"
+      "search_text": "live_017 亲子·公园 动感儿童：bowne 游乐场 kids in motion: bowne playground 动感儿童项目让孩子们参与积极的户外活动。纽约市公园工作人员在纽约市的游乐场提供四到七小时的免费活动，包括组织运动、游戏、健身演示、棋盘游戏…（来源类型：nyc_parks_opendata_fallback） 法拉盛 flushing 法拉盛 flushing queens play area (in bowne playground) 2026-08-12 10:30:40 2026-08-14 https://www.nycgovparks.org/events/2026/08/14/kids-in-motion-bowne-playground"
     },
     {
       "id": "live_018",
       "module": "亲子·公园",
-      "title_zh": "动感儿童：Bowne公园",
-      "summary_zh": "动感儿童项目让孩子们参与积极的户外游戏。纽约市公园工作人员带领4到7小时的免费活动，包括组织运动、游戏、健身演示、棋盘游戏…（来源类型：nyc_parks_opendata_fallback）",
+      "title_zh": "动感儿童：Bowne Park",
+      "summary_zh": "动感儿童项目让孩子们参与积极的户外活动。纽约市公园工作人员在纽约市的游乐场提供四到七小时的免费活动，包括组织运动、游戏、健身演示、棋盘游戏…（来源类型：nyc_parks_opendata_fallback）",
       "location_tag_zh": "法拉盛 Flushing",
       "location_kind": "enclave",
       "area_zh": "法拉盛 Flushing",
@@ -369,16 +369,16 @@
       "published_at": "",
       "source_published_at": "",
       "first_indexed_at": "2026-08-12 10:30:40",
-      "last_seen_at": "2026-08-12 20:42:40",
+      "last_seen_at": "2026-08-12 21:47:20",
       "date_kind": "event",
       "url": "https://www.nycgovparks.org/events/2026/08/14/kids-in-motion-bowne-park",
-      "search_text": "live_018 亲子·公园 动感儿童：bowne公园 kids in motion: bowne park 动感儿童项目让孩子们参与积极的户外游戏。纽约市公园工作人员带领4到7小时的免费活动，包括组织运动、游戏、健身演示、棋盘游戏…（来源类型：nyc_parks_opendata_fallback） 法拉盛 flushing 法拉盛 flushing queens bowne park playground (in bowne park) 2026-08-12 10:30:40 2026-08-14 https://www.nycgovparks.org/events/2026/08/14/kids-in-motion-bowne-park"
+      "search_text": "live_018 亲子·公园 动感儿童：bowne park kids in motion: bowne park 动感儿童项目让孩子们参与积极的户外活动。纽约市公园工作人员在纽约市的游乐场提供四到七小时的免费活动，包括组织运动、游戏、健身演示、棋盘游戏…（来源类型：nyc_parks_opendata_fallback） 法拉盛 flushing 法拉盛 flushing queens bowne park playground (in bowne park) 2026-08-12 10:30:40 2026-08-14 https://www.nycgovparks.org/events/2026/08/14/kids-in-motion-bowne-park"
     },
     {
       "id": "live_019",
       "module": "健身·户外",
       "title_zh": "全身健身",
-      "summary_zh": "这个有趣的低冲击全身锻炼包括有氧运动、力量和平衡练习，以改善您的整体健康。（来源类型：nyc_parks_opendata_fallback）",
+      "summary_zh": "这项有趣的低冲击全身锻炼包括有氧、力量和平衡练习，以改善您的整体健康。",
       "location_tag_zh": "全市",
       "location_kind": "citywide",
       "area_zh": "纽约全市",
@@ -389,16 +389,16 @@
       "published_at": "",
       "source_published_at": "",
       "first_indexed_at": "2026-08-12 10:30:40",
-      "last_seen_at": "2026-08-12 20:42:40",
+      "last_seen_at": "2026-08-12 21:47:20",
       "date_kind": "event",
       "url": "https://www.nycgovparks.org/events/2026/08/14/total-body-fitness",
-      "search_text": "live_019 健身·户外 全身健身 total body fitness 这个有趣的低冲击全身锻炼包括有氧运动、力量和平衡练习，以改善您的整体健康。（来源类型：nyc_parks_opendata_fallback） 全市 纽约全市 citywide tilden senior center 2026-08-12 10:30:40 2026-08-14 https://www.nycgovparks.org/events/2026/08/14/total-body-fitness"
+      "search_text": "live_019 健身·户外 全身健身 total body fitness 这项有趣的低冲击全身锻炼包括有氧、力量和平衡练习，以改善您的整体健康。 全市 纽约全市 citywide tilden senior center 2026-08-12 10:30:40 2026-08-14 https://www.nycgovparks.org/events/2026/08/14/total-body-fitness"
     },
     {
       "id": "live_020",
       "module": "文化·节庆",
-      "title_zh": "哈德逊河上的夏天：飞越纽约",
-      "summary_zh": "音乐和风筝在这个庆祝简单乐趣的全龄节日中充满空气。为孩子们提供免费的风筝套件（数量有限），或自带您最喜欢的风筝。特色表演来自 L Tra…（来源类型：nyc_parks_opendata_fallback）",
+      "title_zh": "哈德逊河夏季活动：飞越纽约",
+      "summary_zh": "音乐和风筝在这个适合所有年龄段的节日中交织，庆祝简单的乐趣。为孩子们提供免费的风筝套件（数量有限），或者带上自己喜欢的风筝。活动中有L Tra的表演……",
       "location_tag_zh": "全市",
       "location_kind": "citywide",
       "area_zh": "纽约全市",
@@ -409,16 +409,16 @@
       "published_at": "",
       "source_published_at": "",
       "first_indexed_at": "2026-08-11 23:03:58",
-      "last_seen_at": "2026-08-12 20:42:40",
+      "last_seen_at": "2026-08-12 21:47:20",
       "date_kind": "event",
       "url": "https://www.nycgovparks.org/events/2026/08/15/fly-nyc",
-      "search_text": "live_020 文化·节庆 哈德逊河上的夏天：飞越纽约 summer on the hudson: fly nyc 音乐和风筝在这个庆祝简单乐趣的全龄节日中充满空气。为孩子们提供免费的风筝套件（数量有限），或自带您最喜欢的风筝。特色表演来自 l tra…（来源类型：nyc_parks_opendata_fallback） 全市 纽约全市 citywide pier i (in riverside park south) 2026-08-11 23:03:58 2026-08-15 https://www.nycgovparks.org/events/2026/08/15/fly-nyc"
+      "search_text": "live_020 文化·节庆 哈德逊河夏季活动：飞越纽约 summer on the hudson: fly nyc 音乐和风筝在这个适合所有年龄段的节日中交织，庆祝简单的乐趣。为孩子们提供免费的风筝套件（数量有限），或者带上自己喜欢的风筝。活动中有l tra的表演…… 全市 纽约全市 citywide pier i (in riverside park south) 2026-08-11 23:03:58 2026-08-15 https://www.nycgovparks.org/events/2026/08/15/fly-nyc"
     },
     {
       "id": "live_021",
       "module": "健身·户外",
       "title_zh": "舞蹈健身",
-      "summary_zh": "加入Shape Up NYC，每周六在西哈莱姆码头公园参加免费的舞蹈健身课程！本课程的教练每周更换。这个夏天将有以下教练参与：Donnette \"Sonnia…",
+      "summary_zh": "加入 Shape Up NYC，每周六在西哈莱姆码头公园参加免费的舞蹈健身课程！本课程的讲师每周更换。今年夏天将有以下讲师：Donnette \"Sonnia…（来源类型：nyc_parks_opendata_fallback）",
       "location_tag_zh": "全市",
       "location_kind": "citywide",
       "area_zh": "纽约全市",
@@ -429,16 +429,16 @@
       "published_at": "",
       "source_published_at": "",
       "first_indexed_at": "2026-08-11 23:03:58",
-      "last_seen_at": "2026-08-12 20:42:40",
+      "last_seen_at": "2026-08-12 21:47:20",
       "date_kind": "event",
       "url": "https://www.nycgovparks.org/events/2026/08/15/dance-fitness",
-      "search_text": "live_021 健身·户外 舞蹈健身 dance fitness 加入shape up nyc，每周六在西哈莱姆码头公园参加免费的舞蹈健身课程！本课程的教练每周更换。这个夏天将有以下教练参与：donnette \"sonnia… 全市 纽约全市 citywide 125th street and marginal street (in west harlem piers) 2026-08-11 23:03:58 2026-08-15 https://www.nycgovparks.org/events/2026/08/15/dance-fitness"
+      "search_text": "live_021 健身·户外 舞蹈健身 dance fitness 加入 shape up nyc，每周六在西哈莱姆码头公园参加免费的舞蹈健身课程！本课程的讲师每周更换。今年夏天将有以下讲师：donnette \"sonnia…（来源类型：nyc_parks_opendata_fallback） 全市 纽约全市 citywide 125th street and marginal street (in west harlem piers) 2026-08-11 23:03:58 2026-08-15 https://www.nycgovparks.org/events/2026/08/15/dance-fitness"
     },
     {
       "id": "live_022",
       "module": "健身·户外",
-      "title_zh": "公园里的Zumba",
-      "summary_zh": "动起来，感受节拍！加入 Samantha Muyet 在 Fort Tryon Park 的周二晚间 Zumba，适合所有水平，免费参加！准备好每周二晚上在公园里动起来和享受 Zumba！",
+      "title_zh": "公园Zumba",
+      "summary_zh": "动起来，摇摆起来，感受节拍！加入Samantha Muyet的周二夜Zumba课程，在福特特赖昂公园（Fort Tryon Park）——适合所有水平，免费参加！每周二晚上准备好在公园里动起来和摇摆！",
       "location_tag_zh": "全市",
       "location_kind": "citywide",
       "area_zh": "纽约全市",
@@ -449,16 +449,16 @@
       "published_at": "",
       "source_published_at": "",
       "first_indexed_at": "2026-08-12 10:30:40",
-      "last_seen_at": "2026-08-12 20:42:40",
+      "last_seen_at": "2026-08-12 21:47:20",
       "date_kind": "event",
       "url": "https://www.nycgovparks.org/events/2026/08/18/zumba-in-the-park",
-      "search_text": "live_022 健身·户外 公园里的zumba zumba in the park 动起来，感受节拍！加入 samantha muyet 在 fort tryon park 的周二晚间 zumba，适合所有水平，免费参加！准备好每周二晚上在公园里动起来和享受 zumba！ 全市 纽约全市 citywide fort washington (subway) terrace at the 190th a train subway station (in fort tryon park) 2026-08-12 10:30:40 2026-08-18 https://www.nycgovparks.org/events/2026/08/18/zumba-in-the-park"
+      "search_text": "live_022 健身·户外 公园zumba zumba in the park 动起来，摇摆起来，感受节拍！加入samantha muyet的周二夜zumba课程，在福特特赖昂公园（fort tryon park）——适合所有水平，免费参加！每周二晚上准备好在公园里动起来和摇摆！ 全市 纽约全市 citywide fort washington (subway) terrace at the 190th a train subway station (in fort tryon park) 2026-08-12 10:30:40 2026-08-18 https://www.nycgovparks.org/events/2026/08/18/zumba-in-the-park"
     },
     {
       "id": "live_023",
       "module": "健身·户外",
-      "title_zh": "第三节：Van Cortlandt游泳池 - 家长与幼儿学习游泳（A班）",
-      "summary_zh": "学习游泳项目将乐趣融入基础知识，教授基本游泳和安全技能。该项目为1岁半至5岁的幼儿提供机会，让他们在水中感到舒适并做好准备…",
+      "title_zh": "第三节：范科特兰特游泳池（Van Cortlandt Pool） - 家长与幼儿游泳学习（A班）",
+      "summary_zh": "学习游泳项目让基础变得有趣，并教授基本游泳和安全技能。该项目为1岁半到5岁的幼儿提供在水中感到舒适并准备…的机会。（来源类型：nyc_parks_opendata_fallback）",
       "location_tag_zh": "布朗士 Bronx",
       "location_kind": "borough",
       "area_zh": "布朗士 Bronx",
@@ -469,16 +469,16 @@
       "published_at": "",
       "source_published_at": "",
       "first_indexed_at": "2026-08-12 20:27:28",
-      "last_seen_at": "2026-08-12 20:42:40",
+      "last_seen_at": "2026-08-12 21:47:20",
       "date_kind": "event",
       "url": "https://www.nycgovparks.org/events/2026/08/20/session-3-van-cortlandt-pool-parent-and-tots-learn-to-swim-class-a",
-      "search_text": "live_023 健身·户外 第三节：van cortlandt游泳池 - 家长与幼儿学习游泳（a班） session 3: van cortlandt pool - parent and tots learn to swim (class a) 学习游泳项目将乐趣融入基础知识，教授基本游泳和安全技能。该项目为1岁半至5岁的幼儿提供机会，让他们在水中感到舒适并做好准备… 布朗士 bronx 布朗士 bronx bronx van cortlandt park pool (in van cortlandt park) 2026-08-12 20:27:28 2026-08-20 https://www.nycgovparks.org/events/2026/08/20/session-3-van-cortlandt-pool-parent-and-tots-learn-to-swim-class-a"
+      "search_text": "live_023 健身·户外 第三节：范科特兰特游泳池（van cortlandt pool） - 家长与幼儿游泳学习（a班） session 3: van cortlandt pool - parent and tots learn to swim (class a) 学习游泳项目让基础变得有趣，并教授基本游泳和安全技能。该项目为1岁半到5岁的幼儿提供在水中感到舒适并准备…的机会。（来源类型：nyc_parks_opendata_fallback） 布朗士 bronx 布朗士 bronx bronx van cortlandt park pool (in van cortlandt park) 2026-08-12 20:27:28 2026-08-20 https://www.nycgovparks.org/events/2026/08/20/session-3-van-cortlandt-pool-parent-and-tots-learn-to-swim-class-a"
     },
     {
       "id": "live_024",
       "module": "健身·户外",
       "title_zh": "第三节：McCarren Pool - 家长与幼儿学习游泳（A班）",
-      "summary_zh": "学习游泳项目将乐趣融入基础知识，教授基本游泳和安全技能。该项目为1岁半至5岁的幼儿提供机会，让他们在水中感到舒适并做好准备…",
+      "summary_zh": "学习游泳项目让基础变得有趣，并教授基本游泳和安全技能。该项目为1岁半到5岁的幼儿提供在水中感到舒适并准备…的机会。（来源类型：nyc_parks_opendata_fallback）",
       "location_tag_zh": "全市",
       "location_kind": "citywide",
       "area_zh": "纽约全市",
@@ -489,16 +489,16 @@
       "published_at": "",
       "source_published_at": "",
       "first_indexed_at": "2026-08-12 20:27:28",
-      "last_seen_at": "2026-08-12 20:42:40",
+      "last_seen_at": "2026-08-12 21:47:20",
       "date_kind": "event",
       "url": "https://www.nycgovparks.org/events/2026/08/20/session-3-mccarren-pool-parent-and-tots-learn-to-swim-class-a",
-      "search_text": "live_024 健身·户外 第三节：mccarren pool - 家长与幼儿学习游泳（a班） session 3: mccarren pool - parent and tots learn to swim (class a) 学习游泳项目将乐趣融入基础知识，教授基本游泳和安全技能。该项目为1岁半至5岁的幼儿提供机会，让他们在水中感到舒适并做好准备… 全市 纽约全市 citywide mccarren park pool (in mccarren park) 2026-08-12 20:27:28 2026-08-20 https://www.nycgovparks.org/events/2026/08/20/session-3-mccarren-pool-parent-and-tots-learn-to-swim-class-a"
+      "search_text": "live_024 健身·户外 第三节：mccarren pool - 家长与幼儿学习游泳（a班） session 3: mccarren pool - parent and tots learn to swim (class a) 学习游泳项目让基础变得有趣，并教授基本游泳和安全技能。该项目为1岁半到5岁的幼儿提供在水中感到舒适并准备…的机会。（来源类型：nyc_parks_opendata_fallback） 全市 纽约全市 citywide mccarren park pool (in mccarren park) 2026-08-12 20:27:28 2026-08-20 https://www.nycgovparks.org/events/2026/08/20/session-3-mccarren-pool-parent-and-tots-learn-to-swim-class-a"
     },
     {
       "id": "live_025",
       "module": "健身·户外",
-      "title_zh": "第三节：Lyons Pool - 家长与幼儿学习游泳（B班）",
-      "summary_zh": "学习游泳项目将乐趣融入基础知识，教授基本游泳和安全技能。该项目为1岁半至5岁的幼儿提供机会，让他们在水中感到舒适并做好准备…",
+      "title_zh": "第三节：莱昂斯游泳池（Lyons Pool） - 家长与幼儿游泳学习（B班）",
+      "summary_zh": "学习游泳项目让基础变得有趣，并教授基本游泳和安全技能。该项目为1岁半到5岁的幼儿提供在水中感到舒适并准备…的机会。（来源类型：nyc_parks_opendata_fallback）",
       "location_tag_zh": "全市",
       "location_kind": "citywide",
       "area_zh": "纽约全市",
@@ -509,16 +509,16 @@
       "published_at": "",
       "source_published_at": "",
       "first_indexed_at": "2026-08-12 20:27:28",
-      "last_seen_at": "2026-08-12 20:42:40",
+      "last_seen_at": "2026-08-12 21:47:20",
       "date_kind": "event",
       "url": "https://www.nycgovparks.org/events/2026/08/20/session-3-lyons-pool-parent-and-tots-learn-to-swim-class-b",
-      "search_text": "live_025 健身·户外 第三节：lyons pool - 家长与幼儿学习游泳（b班） session 3: lyons pool - parent and tots learn to swim (class b) 学习游泳项目将乐趣融入基础知识，教授基本游泳和安全技能。该项目为1岁半至5岁的幼儿提供机会，让他们在水中感到舒适并做好准备… 全市 纽约全市 citywide lyons pool 2026-08-12 20:27:28 2026-08-20 https://www.nycgovparks.org/events/2026/08/20/session-3-lyons-pool-parent-and-tots-learn-to-swim-class-b"
+      "search_text": "live_025 健身·户外 第三节：莱昂斯游泳池（lyons pool） - 家长与幼儿游泳学习（b班） session 3: lyons pool - parent and tots learn to swim (class b) 学习游泳项目让基础变得有趣，并教授基本游泳和安全技能。该项目为1岁半到5岁的幼儿提供在水中感到舒适并准备…的机会。（来源类型：nyc_parks_opendata_fallback） 全市 纽约全市 citywide lyons pool 2026-08-12 20:27:28 2026-08-20 https://www.nycgovparks.org/events/2026/08/20/session-3-lyons-pool-parent-and-tots-learn-to-swim-class-b"
     },
     {
       "id": "live_026",
       "module": "健身·户外",
-      "title_zh": "第三节：Kosciuszko Pool - 家长与幼儿学习游泳（B班）",
-      "summary_zh": "学习游泳项目将乐趣融入基础知识，教授基本游泳和安全技能。该项目为1岁半至5岁的幼儿提供机会，让他们在水中感到舒适并做好准备…",
+      "title_zh": "第三节：科斯丘什科游泳池（Kosciuszko Pool） - 家长与幼儿游泳学习（B班）",
+      "summary_zh": "学习游泳项目让基础变得有趣，并教授基本游泳和安全技能。该项目为1岁半到5岁的幼儿提供在水中感到舒适并准备…的机会。（来源类型：nyc_parks_opendata_fallback）",
       "location_tag_zh": "全市",
       "location_kind": "citywide",
       "area_zh": "纽约全市",
@@ -529,16 +529,16 @@
       "published_at": "",
       "source_published_at": "",
       "first_indexed_at": "2026-08-12 20:27:28",
-      "last_seen_at": "2026-08-12 20:42:40",
+      "last_seen_at": "2026-08-12 21:47:20",
       "date_kind": "event",
       "url": "https://www.nycgovparks.org/events/2026/08/20/session-3-kosciuszko-pool-parent-and-tots-learn-to-swim-class-b",
-      "search_text": "live_026 健身·户外 第三节：kosciuszko pool - 家长与幼儿学习游泳（b班） session 3: kosciuszko pool - parent and tots learn to swim (class b) 学习游泳项目将乐趣融入基础知识，教授基本游泳和安全技能。该项目为1岁半至5岁的幼儿提供机会，让他们在水中感到舒适并做好准备… 全市 纽约全市 citywide kosciuszko pool 2026-08-12 20:27:28 2026-08-20 https://www.nycgovparks.org/events/2026/08/20/session-3-kosciuszko-pool-parent-and-tots-learn-to-swim-class-b"
+      "search_text": "live_026 健身·户外 第三节：科斯丘什科游泳池（kosciuszko pool） - 家长与幼儿游泳学习（b班） session 3: kosciuszko pool - parent and tots learn to swim (class b) 学习游泳项目让基础变得有趣，并教授基本游泳和安全技能。该项目为1岁半到5岁的幼儿提供在水中感到舒适并准备…的机会。（来源类型：nyc_parks_opendata_fallback） 全市 纽约全市 citywide kosciuszko pool 2026-08-12 20:27:28 2026-08-20 https://www.nycgovparks.org/events/2026/08/20/session-3-kosciuszko-pool-parent-and-tots-learn-to-swim-class-b"
     },
     {
       "id": "live_027",
       "module": "交通·出行",
-      "title_zh": "MTA：在布鲁克林 Brooklyn 的 Crescent St 和曼哈顿 Manhattan 的 Broad St 之间没有 [J] 线",
-      "summary_zh": "[J]线在Jamaica Center和Crescent St之间运行，最后一站。[M]线在Myrtle Av和Broad St之间替代[J]线。[接驳巴士图标] 免费T430接驳巴士沿两条路线运行：1. 本地接驳巴士停靠所有[J]站（来源类型：MTA 大都会交通局 - 服务变更）",
+      "title_zh": "MTA：布鲁克林（Brooklyn）克雷森特街（Crescent St）与曼哈顿（Manhattan）宽街（Broad St）之间没有[J]线",
+      "summary_zh": "[J]线在牙买加中心（Jamaica Center）与克雷森特街（Crescent St）之间运行，最后一站。[M]线在迈特尔大道（Myrtle Av）与宽街（Broad St）之间替代[J]线。[接驳巴士图标] 免费T430接驳巴士沿两个路线运行：1. 本地接驳巴士停靠所有[J]站……",
       "location_tag_zh": "全市",
       "location_kind": "citywide",
       "area_zh": "纽约全市",
@@ -549,16 +549,16 @@
       "published_at": "",
       "source_published_at": "",
       "first_indexed_at": "2026-08-12 16:03:37",
-      "last_seen_at": "2026-08-12 20:42:40",
+      "last_seen_at": "2026-08-12 21:47:20",
       "date_kind": "event",
       "url": "https://www.mta.info/#alert-070f8e6ed011",
-      "search_text": "live_027 交通·出行 mta：在布鲁克林 brooklyn 的 crescent st 和曼哈顿 manhattan 的 broad st 之间没有 [j] 线 mta：no [j] between crescent st, brooklyn and broad st, manhattan [j]线在jamaica center和crescent st之间运行，最后一站。[m]线在myrtle av和broad st之间替代[j]线。[接驳巴士图标] 免费t430接驳巴士沿两条路线运行：1. 本地接驳巴士停靠所有[j]站（来源类型：mta 大都会交通局 - 服务变更） 全市 纽约全市 citywide nyc 2026-08-12 16:03:37 2026-08-13 https://www.mta.info/#alert-070f8e6ed011"
+      "search_text": "live_027 交通·出行 mta：布鲁克林（brooklyn）克雷森特街（crescent st）与曼哈顿（manhattan）宽街（broad st）之间没有[j]线 mta：no [j] between crescent st, brooklyn and broad st, manhattan [j]线在牙买加中心（jamaica center）与克雷森特街（crescent st）之间运行，最后一站。[m]线在迈特尔大道（myrtle av）与宽街（broad st）之间替代[j]线。[接驳巴士图标] 免费t430接驳巴士沿两个路线运行：1. 本地接驳巴士停靠所有[j]站…… 全市 纽约全市 citywide nyc 2026-08-12 16:03:37 2026-08-13 https://www.mta.info/#alert-070f8e6ed011"
     },
     {
       "id": "live_028",
       "module": "交通·出行",
-      "title_zh": "MTA：布鲁克林地区，Myrtle-Wyckoff Avs和Atlantic Av之间没有[L]线",
-      "summary_zh": "[L]线服务分为两个部分：1. 在8 Av和Myrtle-Wyckoff Avs之间，每8分钟一班 2. 在Atlantic Av和Canarsie-Rockaway Pkwy之间，每10分钟一班 [接驳巴士图标] 免费B111接驳巴士在…（来源类型：MTA 大都会交通局 - 服务变更）",
+      "title_zh": "MTA：在布鲁克林（Brooklyn），迈特尔-维科夫大道（Myrtle-Wyckoff Avs）与大西洋大道（Atlantic Av）之间没有[L]线",
+      "summary_zh": "[L]线分为两个区段运行：1. 在8大道（8 Av）与迈特尔-维科夫大道（Myrtle-Wyckoff Avs）之间，每8分钟一班；2. 在大西洋大道（Atlantic Av）与卡纳西-洛克威公园大道（Canarsie-Rockaway Pkwy）之间，每10分钟一班。[接驳巴士图标] 免费B111接驳巴士在……",
       "location_tag_zh": "全市",
       "location_kind": "citywide",
       "area_zh": "纽约全市",
@@ -569,16 +569,16 @@
       "published_at": "",
       "source_published_at": "",
       "first_indexed_at": "2026-08-12 14:33:25",
-      "last_seen_at": "2026-08-12 20:42:40",
+      "last_seen_at": "2026-08-12 21:47:20",
       "date_kind": "event",
       "url": "https://www.mta.info/#alert-4663ed7085aa",
-      "search_text": "live_028 交通·出行 mta：布鲁克林地区，myrtle-wyckoff avs和atlantic av之间没有[l]线 mta：in brooklyn, no [l] between myrtle-wyckoff avs and atlantic av [l]线服务分为两个部分：1. 在8 av和myrtle-wyckoff avs之间，每8分钟一班 2. 在atlantic av和canarsie-rockaway pkwy之间，每10分钟一班 [接驳巴士图标] 免费b111接驳巴士在…（来源类型：mta 大都会交通局 - 服务变更） 全市 纽约全市 citywide nyc 2026-08-12 14:33:25 2026-08-13 https://www.mta.info/#alert-4663ed7085aa"
+      "search_text": "live_028 交通·出行 mta：在布鲁克林（brooklyn），迈特尔-维科夫大道（myrtle-wyckoff avs）与大西洋大道（atlantic av）之间没有[l]线 mta：in brooklyn, no [l] between myrtle-wyckoff avs and atlantic av [l]线分为两个区段运行：1. 在8大道（8 av）与迈特尔-维科夫大道（myrtle-wyckoff avs）之间，每8分钟一班；2. 在大西洋大道（atlantic av）与卡纳西-洛克威公园大道（canarsie-rockaway pkwy）之间，每10分钟一班。[接驳巴士图标] 免费b111接驳巴士在…… 全市 纽约全市 citywide nyc 2026-08-12 14:33:25 2026-08-13 https://www.mta.info/#alert-4663ed7085aa"
     },
     {
       "id": "live_029",
       "module": "交通·出行",
-      "title_zh": "MTA：布鲁克林地区，Coney Island-Stillwell Av没有[D]线",
-      "summary_zh": "[D] 线在 Norwood-205 St 和 Bay 50 St 之间运行，最后一站为 Bay 50 St。[接驳巴士图标] 免费 D99 接驳巴士在 Bay 50 St 和 Coney Island-Stillwell Av 之间运行。出行替代方案：通过在（来源类型：MTA 大都会交通局 - 服务变更）",
+      "title_zh": "MTA：在布鲁克林（Brooklyn），康尼岛-斯蒂尔韦尔大道（Coney Island-Stillwell Av）没有[D]线",
+      "summary_zh": "[D]线在诺伍德-205街（Norwood-205 St）与贝50街（Bay 50 St）之间运行，最后一站。[接驳巴士图标] 免费D99接驳巴士在贝50街与康尼岛-斯蒂尔韦尔大道（Coney Island-Stillwell Av）之间运行。出行替代方案：通过转乘[F][N][Q]线前往……",
       "location_tag_zh": "全市",
       "location_kind": "citywide",
       "area_zh": "纽约全市",
@@ -589,16 +589,16 @@
       "published_at": "",
       "source_published_at": "",
       "first_indexed_at": "2026-08-12 14:33:25",
-      "last_seen_at": "2026-08-12 20:42:40",
+      "last_seen_at": "2026-08-12 21:47:20",
       "date_kind": "event",
       "url": "https://www.mta.info/#alert-a1f13931656c",
-      "search_text": "live_029 交通·出行 mta：布鲁克林地区，coney island-stillwell av没有[d]线 mta：in brooklyn, no [d] at coney island-stillwell av [d] 线在 norwood-205 st 和 bay 50 st 之间运行，最后一站为 bay 50 st。[接驳巴士图标] 免费 d99 接驳巴士在 bay 50 st 和 coney island-stillwell av 之间运行。出行替代方案：通过在（来源类型：mta 大都会交通局 - 服务变更） 全市 纽约全市 citywide nyc 2026-08-12 14:33:25 2026-08-13 https://www.mta.info/#alert-a1f13931656c"
+      "search_text": "live_029 交通·出行 mta：在布鲁克林（brooklyn），康尼岛-斯蒂尔韦尔大道（coney island-stillwell av）没有[d]线 mta：in brooklyn, no [d] at coney island-stillwell av [d]线在诺伍德-205街（norwood-205 st）与贝50街（bay 50 st）之间运行，最后一站。[接驳巴士图标] 免费d99接驳巴士在贝50街与康尼岛-斯蒂尔韦尔大道（coney island-stillwell av）之间运行。出行替代方案：通过转乘[f][n][q]线前往…… 全市 纽约全市 citywide nyc 2026-08-12 14:33:25 2026-08-13 https://www.mta.info/#alert-a1f13931656c"
     },
     {
       "id": "live_030",
       "module": "交通·出行",
-      "title_zh": "MTA：布鲁克林地区，Crescent St和Broadway Junction之间没有[J]线",
-      "summary_zh": "[J] 线分为两个部分运行：1. 在 Jamaica Center-Parsons/Archer 和 Crescent St 之间，每12分钟一班（白天/晚上）2. 在 Broadway Junction 和 Broad St 之间，每12分钟一班（白天/晚上）[接驳巴士图标] 免费 T43（来源类型：MTA 大都会交通局 - 服务变更）",
+      "title_zh": "MTA：在布鲁克林，Crescent St 和 Broadway Junction 之间没有 [J] 线",
+      "summary_zh": "[J]线分为两个区段运行：1. 在牙买加中心-帕森斯/阿彻（Jamaica Center-Parsons/Archer）与克雷森特街（Crescent St）之间，每12分钟一班（白天/晚上）；2. 在百老汇交汇处（Broadway Junction）与宽街（Broad St）之间，每12分钟一班（白天/晚上）。[接驳巴士图标] 免费T43……",
       "location_tag_zh": "全市",
       "location_kind": "citywide",
       "area_zh": "纽约全市",
@@ -609,16 +609,16 @@
       "published_at": "",
       "source_published_at": "",
       "first_indexed_at": "2026-08-12 11:55:06",
-      "last_seen_at": "2026-08-12 20:42:40",
+      "last_seen_at": "2026-08-12 21:47:20",
       "date_kind": "event",
       "url": "https://www.mta.info/#alert-ac5bc10147fe",
-      "search_text": "live_030 交通·出行 mta：布鲁克林地区，crescent st和broadway junction之间没有[j]线 mta：in brooklyn, no [j] between crescent st and broadway junction [j] 线分为两个部分运行：1. 在 jamaica center-parsons/archer 和 crescent st 之间，每12分钟一班（白天/晚上）2. 在 broadway junction 和 broad st 之间，每12分钟一班（白天/晚上）[接驳巴士图标] 免费 t43（来源类型：mta 大都会交通局 - 服务变更） 全市 纽约全市 citywide nyc 2026-08-12 11:55:06 2026-08-13 https://www.mta.info/#alert-ac5bc10147fe"
+      "search_text": "live_030 交通·出行 mta：在布鲁克林，crescent st 和 broadway junction 之间没有 [j] 线 mta：in brooklyn, no [j] between crescent st and broadway junction [j]线分为两个区段运行：1. 在牙买加中心-帕森斯/阿彻（jamaica center-parsons/archer）与克雷森特街（crescent st）之间，每12分钟一班（白天/晚上）；2. 在百老汇交汇处（broadway junction）与宽街（broad st）之间，每12分钟一班（白天/晚上）。[接驳巴士图标] 免费t43…… 全市 纽约全市 citywide nyc 2026-08-12 11:55:06 2026-08-13 https://www.mta.info/#alert-ac5bc10147fe"
     },
     {
       "id": "live_031",
       "module": "交通·出行",
-      "title_zh": "MTA：布鲁克林 Brooklyn 的 Coney Island-Stillwell Av 站没有 [N] 线",
-      "summary_zh": "[N] 线在 Astoria-Ditmars Blvd 和 86 St 之间运行，最后一站为 86 St。[接驳巴士图标] 免费接驳巴士在 86 St 和 Coney Island-Stillwell Av 之间运行。曼哈顿 Manhattan 和 Coney Island-Stillwell Av 之间的服务，请乘坐（来源类型：MTA 大都会交通局 - 服务变更）",
+      "title_zh": "MTA：在布鲁克林，Coney Island-Stillwell Av 没有 [N] 线",
+      "summary_zh": "[N] 线在 Astoria-Ditmars Blvd 和 86 St 之间运行，最后一站。[接驳巴士图标] 免费接驳巴士在 86 St 和 Coney Island-Stillwell Av 之间运行。要在曼哈顿和 Coney Island-Stillwell Av 之间服务，请乘坐…（来源类型：MTA 大都会交通局 - 服务变更）",
       "location_tag_zh": "全市",
       "location_kind": "citywide",
       "area_zh": "纽约全市",
@@ -629,16 +629,16 @@
       "published_at": "",
       "source_published_at": "",
       "first_indexed_at": "2026-08-12 17:57:10",
-      "last_seen_at": "2026-08-12 20:42:40",
+      "last_seen_at": "2026-08-12 21:47:20",
       "date_kind": "event",
       "url": "https://www.mta.info/#alert-ca5a325c2083",
-      "search_text": "live_031 交通·出行 mta：布鲁克林 brooklyn 的 coney island-stillwell av 站没有 [n] 线 mta：in brooklyn, no [n] at coney island-stillwell av [n] 线在 astoria-ditmars blvd 和 86 st 之间运行，最后一站为 86 st。[接驳巴士图标] 免费接驳巴士在 86 st 和 coney island-stillwell av 之间运行。曼哈顿 manhattan 和 coney island-stillwell av 之间的服务，请乘坐（来源类型：mta 大都会交通局 - 服务变更） 全市 纽约全市 citywide nyc 2026-08-12 17:57:10 2026-08-13 https://www.mta.info/#alert-ca5a325c2083"
+      "search_text": "live_031 交通·出行 mta：在布鲁克林，coney island-stillwell av 没有 [n] 线 mta：in brooklyn, no [n] at coney island-stillwell av [n] 线在 astoria-ditmars blvd 和 86 st 之间运行，最后一站。[接驳巴士图标] 免费接驳巴士在 86 st 和 coney island-stillwell av 之间运行。要在曼哈顿和 coney island-stillwell av 之间服务，请乘坐…（来源类型：mta 大都会交通局 - 服务变更） 全市 纽约全市 citywide nyc 2026-08-12 17:57:10 2026-08-13 https://www.mta.info/#alert-ca5a325c2083"
     },
     {
       "id": "live_032",
       "module": "交通·出行",
-      "title_zh": "MTA：[N][Q][R][W]列车在我们移动了一列刹车被激活的列车后，双向运行延误…",
-      "summary_zh": "[Q][R] 线已恢复在曼哈顿 Manhattan 的定点停靠。在列车恢复正常时，请考虑以下出行替代方案：在布鲁克林 Brooklyn 使用 [B][D][F] 线。在曼哈顿 Manhattan 考虑使用 [4][5][6] 线（来源类型：MTA 大都会交通局 - 服务变更）",
+      "title_zh": "MTA：[N][Q][R][W]列车在两个方向上均有延误，因为我们移动了一列刹车被激活的列车……",
+      "summary_zh": "[N][Q][R][W] 线因在 Prince St. 附近移动车辆而在两个方向上出现延误。（来源类型：MTA 大都会交通局 - 服务变更）",
       "location_tag_zh": "全市",
       "location_kind": "citywide",
       "area_zh": "纽约全市",
@@ -649,16 +649,16 @@
       "published_at": "",
       "source_published_at": "",
       "first_indexed_at": "2026-08-12 20:27:28",
-      "last_seen_at": "2026-08-12 20:42:40",
+      "last_seen_at": "2026-08-12 21:47:20",
       "date_kind": "event",
       "url": "https://www.mta.info/#alert-4b4fed6753bf",
-      "search_text": "live_032 交通·出行 mta：[n][q][r][w]列车在我们移动了一列刹车被激活的列车后，双向运行延误… mta：[n][q][r][w] trains are running with delays in both directions after we moved a train that had its brakes activated… [q][r] 线已恢复在曼哈顿 manhattan 的定点停靠。在列车恢复正常时，请考虑以下出行替代方案：在布鲁克林 brooklyn 使用 [b][d][f] 线。在曼哈顿 manhattan 考虑使用 [4][5][6] 线（来源类型：mta 大都会交通局 - 服务变更） 全市 纽约全市 citywide nyc 2026-08-12 20:27:28 2026-08-13 https://www.mta.info/#alert-4b4fed6753bf"
+      "search_text": "live_032 交通·出行 mta：[n][q][r][w]列车在两个方向上均有延误，因为我们移动了一列刹车被激活的列车…… mta：[n][q][r][w] trains are running with delays in both directions after we moved a train that had its brakes activated… [n][q][r][w] 线因在 prince st. 附近移动车辆而在两个方向上出现延误。（来源类型：mta 大都会交通局 - 服务变更） 全市 纽约全市 citywide nyc 2026-08-12 20:27:28 2026-08-13 https://www.mta.info/#alert-4b4fed6753bf"
     },
     {
       "id": "live_033",
       "module": "交通·出行",
-      "title_zh": "MTA：[F] 线在两个方向上均有延误。市区 [B][D][M] 线也有延误。",
-      "summary_zh": "发生了什么？[Q][R] 线因一列列车在 Prince St 附近刹车而被重新引导至曼哈顿的 [B][D][F][M] 线（来源类型：MTA 大都会交通局 - 服务变更）",
+      "title_zh": "MTA：市中心 [E][F][R] 线因在 36 St 附近处理信号问题而出现延误。",
+      "summary_zh": "市中心 [E][F][R] 线因在 36 St 附近处理信号问题而出现延误。（来源类型：MTA 大都会交通局 - 服务变更）",
       "location_tag_zh": "全市",
       "location_kind": "citywide",
       "area_zh": "纽约全市",
@@ -668,11 +668,11 @@
       "event_time": "",
       "published_at": "",
       "source_published_at": "",
-      "first_indexed_at": "2026-08-12 20:27:28",
-      "last_seen_at": "2026-08-12 20:42:40",
+      "first_indexed_at": "2026-08-12 21:47:20",
+      "last_seen_at": "2026-08-12 21:47:20",
       "date_kind": "event",
-      "url": "https://www.mta.info/#alert-387b8206c275",
-      "search_text": "live_033 交通·出行 mta：[f] 线在两个方向上均有延误。市区 [b][d][m] 线也有延误。 mta：[f] trains are running with delays in both directions. downtown [b][d][m] trains are running with delays. 发生了什么？[q][r] 线因一列列车在 prince st 附近刹车而被重新引导至曼哈顿的 [b][d][f][m] 线（来源类型：mta 大都会交通局 - 服务变更） 全市 纽约全市 citywide nyc 2026-08-12 20:27:28 2026-08-13 https://www.mta.info/#alert-387b8206c275"
+      "url": "https://www.mta.info/#alert-6c4eedcad535",
+      "search_text": "live_033 交通·出行 mta：市中心 [e][f][r] 线因在 36 st 附近处理信号问题而出现延误。 mta：downtown [e][f][r] trains are running with delays while we address a signal problem near 36 st. 市中心 [e][f][r] 线因在 36 st 附近处理信号问题而出现延误。（来源类型：mta 大都会交通局 - 服务变更） 全市 纽约全市 citywide nyc 2026-08-12 21:47:20 2026-08-13 https://www.mta.info/#alert-6c4eedcad535"
     },
     {
       "id": "live_034",
@@ -689,7 +689,7 @@
       "published_at": "",
       "source_published_at": "",
       "first_indexed_at": "2026-08-12 16:03:37",
-      "last_seen_at": "2026-08-12 20:42:40",
+      "last_seen_at": "2026-08-12 21:47:20",
       "date_kind": "service",
       "url": "https://www.nycgovparks.org/events/volunteer",
       "search_text": "live_034 公益·义工 nyc parks volunteer — 公园义工报名 nyc parks volunteer — 公园义工报名 official parks volunteer events (nyc service landing currently unstable).（来源类型：纽约市义工招募 — 官方志愿者机会） 全市 纽约全市 citywide citywide 2026-08-12 16:03:37 https://www.nycgovparks.org/events/volunteer"
@@ -709,7 +709,7 @@
       "published_at": "",
       "source_published_at": "",
       "first_indexed_at": "2026-06-15 20:30:26",
-      "last_seen_at": "2026-08-12 20:42:40",
+      "last_seen_at": "2026-08-12 21:47:20",
       "date_kind": "service",
       "url": "https://www.qcc.cuny.edu/ce/programs/community-english-as-a-second-language.html",
       "search_text": "live_035 语言·教育 社区英语作为第二语言 community english as a second language education program on www.qcc.cuny.edu — click to enroll or learn more.（来源类型：纽约市立大学 — 继续教育、英语课及成人学习） 全市 纽约全市 citywide new york city 2026-06-15 20:30:26 https://www.qcc.cuny.edu/ce/programs/community-english-as-a-second-language.html"
@@ -717,7 +717,7 @@
     {
       "id": "live_036",
       "module": "语言·教育",
-      "title_zh": "数学与读写能力项目",
+      "title_zh": "数学和读写能力项目",
       "summary_zh": "Education program on www.bmcc.cuny.edu — click to enroll or learn more.（来源类型：纽约市立大学 — 继续教育、英语课及成人学习）",
       "location_tag_zh": "全市",
       "location_kind": "citywide",
@@ -729,10 +729,10 @@
       "published_at": "",
       "source_published_at": "",
       "first_indexed_at": "2026-06-15 20:30:26",
-      "last_seen_at": "2026-08-12 20:42:40",
+      "last_seen_at": "2026-08-12 21:47:20",
       "date_kind": "service",
       "url": "https://www.bmcc.cuny.edu/ce/programs/",
-      "search_text": "live_036 语言·教育 数学与读写能力项目 math and literacy programs education program on www.bmcc.cuny.edu — click to enroll or learn more.（来源类型：纽约市立大学 — 继续教育、英语课及成人学习） 全市 纽约全市 citywide new york city 2026-06-15 20:30:26 https://www.bmcc.cuny.edu/ce/programs/"
+      "search_text": "live_036 语言·教育 数学和读写能力项目 math and literacy programs education program on www.bmcc.cuny.edu — click to enroll or learn more.（来源类型：纽约市立大学 — 继续教育、英语课及成人学习） 全市 纽约全市 citywide new york city 2026-06-15 20:30:26 https://www.bmcc.cuny.edu/ce/programs/"
     },
     {
       "id": "live_037",
@@ -749,7 +749,7 @@
       "published_at": "",
       "source_published_at": "",
       "first_indexed_at": "2026-06-15 20:30:26",
-      "last_seen_at": "2026-08-12 20:42:40",
+      "last_seen_at": "2026-08-12 21:47:20",
       "date_kind": "service",
       "url": "https://www.bmcc.cuny.edu/ce/contact/",
       "search_text": "live_037 就业·培训 继续教育与劳动力发展中心 center for continuing education workforce development education program on www.bmcc.cuny.edu — click to enroll or learn more.（来源类型：纽约市立大学 — 继续教育、英语课及成人学习） 全市 纽约全市 citywide new york city 2026-06-15 20:30:26 https://www.bmcc.cuny.edu/ce/contact/"
@@ -757,7 +757,7 @@
     {
       "id": "live_038",
       "module": "语言·教育",
-      "title_zh": "SAPA 2026年度会议",
+      "title_zh": "SAPA 2026 年年会",
       "summary_zh": "SAPA flagship annual conference registration / details.（来源类型：美中药协 (SAPA) — 行业年会与通告）",
       "location_tag_zh": "全市",
       "location_kind": "citywide",
@@ -768,16 +768,16 @@
       "event_time": "",
       "published_at": "",
       "source_published_at": "",
-      "first_indexed_at": "",
-      "last_seen_at": "2026-08-12 20:42:40",
+      "first_indexed_at": "2026-08-12 20:42:40",
+      "last_seen_at": "2026-08-12 21:47:20",
       "date_kind": "service",
       "url": "https://www.sapaweb.org/2026-annual-conference",
-      "search_text": "live_038 语言·教育 sapa 2026年度会议 sapa 2026 annual conference sapa flagship annual conference registration / details.（来源类型：美中药协 (sapa) — 行业年会与通告） 全市 纽约全市 citywide citywide https://www.sapaweb.org/2026-annual-conference"
+      "search_text": "live_038 语言·教育 sapa 2026 年年会 sapa 2026 annual conference sapa flagship annual conference registration / details.（来源类型：美中药协 (sapa) — 行业年会与通告） 全市 纽约全市 citywide citywide 2026-08-12 20:42:40 https://www.sapaweb.org/2026-annual-conference"
     },
     {
       "id": "live_039",
       "module": "就业·培训",
-      "title_zh": "CMP中文学校：夏季乐趣与秋季注册！",
+      "title_zh": "CMP 中文学校：夏季乐趣与秋季注册！",
       "summary_zh": "来自唐人街人力中心 (CMP) — 就业培训与招聘会的官方/正式机构页面，具体时间、地点、报名要求以官网为准。（来源类型：唐人街人力中心 (CMP) — 就业培训与招聘会）",
       "location_tag_zh": "全市",
       "location_kind": "citywide",
@@ -789,15 +789,15 @@
       "published_at": "",
       "source_published_at": "",
       "first_indexed_at": "2026-08-12 20:42:40",
-      "last_seen_at": "2026-08-12 20:42:40",
+      "last_seen_at": "2026-08-12 21:47:20",
       "date_kind": "service",
       "url": "https://www.cmpny.org/news/events/classes/2026/8/4/summer-fun-amp-fall-registration-at-cmp-chinese-school",
-      "search_text": "live_039 就业·培训 cmp中文学校：夏季乐趣与秋季注册！ cmp chinese school: summer fun & fall registration! 来自唐人街人力中心 (cmp) — 就业培训与招聘会的官方/正式机构页面，具体时间、地点、报名要求以官网为准。（来源类型：唐人街人力中心 (cmp) — 就业培训与招聘会） 全市 纽约全市 citywide 2026-08-12 20:42:40 https://www.cmpny.org/news/events/classes/2026/8/4/summer-fun-amp-fall-registration-at-cmp-chinese-school"
+      "search_text": "live_039 就业·培训 cmp 中文学校：夏季乐趣与秋季注册！ cmp chinese school: summer fun & fall registration! 来自唐人街人力中心 (cmp) — 就业培训与招聘会的官方/正式机构页面，具体时间、地点、报名要求以官网为准。（来源类型：唐人街人力中心 (cmp) — 就业培训与招聘会） 全市 纽约全市 citywide 2026-08-12 20:42:40 https://www.cmpny.org/news/events/classes/2026/8/4/summer-fun-amp-fall-registration-at-cmp-chinese-school"
     },
     {
       "id": "live_040",
       "module": "就业·培训",
-      "title_zh": "2026年夏季青年就业计划（SYEP）现已开放申请！截止日期为3月13日",
+      "title_zh": "2026年夏季青少年就业计划（SYEP）现已开放申请！截止日期为3月13日",
       "summary_zh": "来自唐人街人力中心 (CMP) — 就业培训与招聘会的官方/正式机构页面，具体时间、地点、报名要求以官网为准。（来源类型：唐人街人力中心 (CMP) — 就业培训与招聘会）",
       "location_tag_zh": "全市",
       "location_kind": "citywide",
@@ -809,10 +809,10 @@
       "published_at": "",
       "source_published_at": "",
       "first_indexed_at": "2026-08-12 20:42:40",
-      "last_seen_at": "2026-08-12 20:42:40",
+      "last_seen_at": "2026-08-12 21:47:20",
       "date_kind": "service",
       "url": "https://www.cmpny.org/news/events/classes/category/SYEP",
-      "search_text": "live_040 就业·培训 2026年夏季青年就业计划（syep）现已开放申请！截止日期为3月13日 2026 summer youth employment program (syep) is open for application now! (deadline on 3/13) 来自唐人街人力中心 (cmp) — 就业培训与招聘会的官方/正式机构页面，具体时间、地点、报名要求以官网为准。（来源类型：唐人街人力中心 (cmp) — 就业培训与招聘会） 全市 纽约全市 citywide 2026-08-12 20:42:40 https://www.cmpny.org/news/events/classes/category/syep"
+      "search_text": "live_040 就业·培训 2026年夏季青少年就业计划（syep）现已开放申请！截止日期为3月13日 2026 summer youth employment program (syep) is open for application now! (deadline on 3/13) 来自唐人街人力中心 (cmp) — 就业培训与招聘会的官方/正式机构页面，具体时间、地点、报名要求以官网为准。（来源类型：唐人街人力中心 (cmp) — 就业培训与招聘会） 全市 纽约全市 citywide 2026-08-12 20:42:40 https://www.cmpny.org/news/events/classes/category/syep"
     },
     {
       "id": "live_041",
@@ -828,16 +828,16 @@
       "event_time": "",
       "published_at": "",
       "source_published_at": "",
-      "first_indexed_at": "",
-      "last_seen_at": "2026-08-12 20:42:40",
+      "first_indexed_at": "2026-08-12 20:42:40",
+      "last_seen_at": "2026-08-12 21:47:20",
       "date_kind": "event",
       "url": "https://www.shanghaiusa.org/calendar-of-events",
-      "search_text": "live_041 文化·节庆 第三届北美瓯越文化节 北美瓯越文化节the 3rd north america ou-yue culture festival shanghai association in usa event（来源类型：美国上海同乡会） 全市 纽约全市 citywide 2026-05-03 https://www.shanghaiusa.org/calendar-of-events"
+      "search_text": "live_041 文化·节庆 第三届北美瓯越文化节 北美瓯越文化节the 3rd north america ou-yue culture festival shanghai association in usa event（来源类型：美国上海同乡会） 全市 纽约全市 citywide 2026-08-12 20:42:40 2026-05-03 https://www.shanghaiusa.org/calendar-of-events"
     },
     {
       "id": "live_042",
       "module": "文化·节庆",
-      "title_zh": "2024年农历新年游行",
+      "title_zh": "2024 年农历新年游行",
       "summary_zh": "来自法拉盛华人工商促进会 (FCBA)的官方/正式机构页面，具体时间、地点、报名要求以官网为准。（来源类型：法拉盛华人工商促进会 (FCBA)）",
       "location_tag_zh": "全市",
       "location_kind": "citywide",
@@ -849,15 +849,15 @@
       "published_at": "",
       "source_published_at": "",
       "first_indexed_at": "2026-08-12 20:42:40",
-      "last_seen_at": "2026-08-12 20:42:40",
+      "last_seen_at": "2026-08-12 21:47:20",
       "date_kind": "service",
       "url": "https://fcbainc.org//2024-lunar-new-year-parade/",
-      "search_text": "live_042 文化·节庆 2024年农历新年游行 2024 lunar new year parade 来自法拉盛华人工商促进会 (fcba)的官方/正式机构页面，具体时间、地点、报名要求以官网为准。（来源类型：法拉盛华人工商促进会 (fcba)） 全市 纽约全市 citywide 2026-08-12 20:42:40 https://fcbainc.org//2024-lunar-new-year-parade/"
+      "search_text": "live_042 文化·节庆 2024 年农历新年游行 2024 lunar new year parade 来自法拉盛华人工商促进会 (fcba)的官方/正式机构页面，具体时间、地点、报名要求以官网为准。（来源类型：法拉盛华人工商促进会 (fcba)） 全市 纽约全市 citywide 2026-08-12 20:42:40 https://fcbainc.org//2024-lunar-new-year-parade/"
     },
     {
       "id": "live_043",
       "module": "文化·节庆",
-      "title_zh": "2019年农历新年游行",
+      "title_zh": "2019 年农历新年游行",
       "summary_zh": "来自法拉盛华人工商促进会 (FCBA)的官方/正式机构页面，具体时间、地点、报名要求以官网为准。（来源类型：法拉盛华人工商促进会 (FCBA)）",
       "location_tag_zh": "全市",
       "location_kind": "citywide",
@@ -869,15 +869,15 @@
       "published_at": "",
       "source_published_at": "",
       "first_indexed_at": "2026-08-12 20:42:40",
-      "last_seen_at": "2026-08-12 20:42:40",
+      "last_seen_at": "2026-08-12 21:47:20",
       "date_kind": "service",
       "url": "https://fcbainc.org//2019-lunar-new-year-parade/",
-      "search_text": "live_043 文化·节庆 2019年农历新年游行 2019 lunar new year parade 来自法拉盛华人工商促进会 (fcba)的官方/正式机构页面，具体时间、地点、报名要求以官网为准。（来源类型：法拉盛华人工商促进会 (fcba)） 全市 纽约全市 citywide 2026-08-12 20:42:40 https://fcbainc.org//2019-lunar-new-year-parade/"
+      "search_text": "live_043 文化·节庆 2019 年农历新年游行 2019 lunar new year parade 来自法拉盛华人工商促进会 (fcba)的官方/正式机构页面，具体时间、地点、报名要求以官网为准。（来源类型：法拉盛华人工商促进会 (fcba)） 全市 纽约全市 citywide 2026-08-12 20:42:40 https://fcbainc.org//2019-lunar-new-year-parade/"
     },
     {
       "id": "live_044",
       "module": "文化·节庆",
-      "title_zh": "2017年农历新年游行",
+      "title_zh": "2017 年农历新年游行",
       "summary_zh": "来自法拉盛华人工商促进会 (FCBA)的官方/正式机构页面，具体时间、地点、报名要求以官网为准。（来源类型：法拉盛华人工商促进会 (FCBA)）",
       "location_tag_zh": "全市",
       "location_kind": "citywide",
@@ -889,15 +889,15 @@
       "published_at": "",
       "source_published_at": "",
       "first_indexed_at": "2026-08-12 20:42:40",
-      "last_seen_at": "2026-08-12 20:42:40",
+      "last_seen_at": "2026-08-12 21:47:20",
       "date_kind": "service",
       "url": "https://fcbainc.org//2017-lunar-new-year-parade/",
-      "search_text": "live_044 文化·节庆 2017年农历新年游行 2017 lunar new year parade 来自法拉盛华人工商促进会 (fcba)的官方/正式机构页面，具体时间、地点、报名要求以官网为准。（来源类型：法拉盛华人工商促进会 (fcba)） 全市 纽约全市 citywide 2026-08-12 20:42:40 https://fcbainc.org//2017-lunar-new-year-parade/"
+      "search_text": "live_044 文化·节庆 2017 年农历新年游行 2017 lunar new year parade 来自法拉盛华人工商促进会 (fcba)的官方/正式机构页面，具体时间、地点、报名要求以官网为准。（来源类型：法拉盛华人工商促进会 (fcba)） 全市 纽约全市 citywide 2026-08-12 20:42:40 https://fcbainc.org//2017-lunar-new-year-parade/"
     },
     {
       "id": "live_045",
       "module": "文化·节庆",
-      "title_zh": "2016年农历新年游行",
+      "title_zh": "2016年春节游行",
       "summary_zh": "来自法拉盛华人工商促进会 (FCBA)的官方/正式机构页面，具体时间、地点、报名要求以官网为准。（来源类型：法拉盛华人工商促进会 (FCBA)）",
       "location_tag_zh": "全市",
       "location_kind": "citywide",
@@ -909,15 +909,15 @@
       "published_at": "",
       "source_published_at": "",
       "first_indexed_at": "2026-08-12 20:42:40",
-      "last_seen_at": "2026-08-12 20:42:40",
+      "last_seen_at": "2026-08-12 21:47:20",
       "date_kind": "service",
       "url": "https://fcbainc.org//2016-lunar-new-year-parade/",
-      "search_text": "live_045 文化·节庆 2016年农历新年游行 2016 lunar new year parade 来自法拉盛华人工商促进会 (fcba)的官方/正式机构页面，具体时间、地点、报名要求以官网为准。（来源类型：法拉盛华人工商促进会 (fcba)） 全市 纽约全市 citywide 2026-08-12 20:42:40 https://fcbainc.org//2016-lunar-new-year-parade/"
+      "search_text": "live_045 文化·节庆 2016年春节游行 2016 lunar new year parade 来自法拉盛华人工商促进会 (fcba)的官方/正式机构页面，具体时间、地点、报名要求以官网为准。（来源类型：法拉盛华人工商促进会 (fcba)） 全市 纽约全市 citywide 2026-08-12 20:42:40 https://fcbainc.org//2016-lunar-new-year-parade/"
     },
     {
       "id": "live_046",
       "module": "文化·节庆",
-      "title_zh": "2014年农历新年游行",
+      "title_zh": "2014年春节游行",
       "summary_zh": "来自法拉盛华人工商促进会 (FCBA)的官方/正式机构页面，具体时间、地点、报名要求以官网为准。（来源类型：法拉盛华人工商促进会 (FCBA)）",
       "location_tag_zh": "全市",
       "location_kind": "citywide",
@@ -929,15 +929,15 @@
       "published_at": "",
       "source_published_at": "",
       "first_indexed_at": "2026-08-12 20:42:40",
-      "last_seen_at": "2026-08-12 20:42:40",
+      "last_seen_at": "2026-08-12 21:47:20",
       "date_kind": "service",
       "url": "https://fcbainc.org//2014-lunar-new-year-parade/",
-      "search_text": "live_046 文化·节庆 2014年农历新年游行 2014 lunar new year parade 来自法拉盛华人工商促进会 (fcba)的官方/正式机构页面，具体时间、地点、报名要求以官网为准。（来源类型：法拉盛华人工商促进会 (fcba)） 全市 纽约全市 citywide 2026-08-12 20:42:40 https://fcbainc.org//2014-lunar-new-year-parade/"
+      "search_text": "live_046 文化·节庆 2014年春节游行 2014 lunar new year parade 来自法拉盛华人工商促进会 (fcba)的官方/正式机构页面，具体时间、地点、报名要求以官网为准。（来源类型：法拉盛华人工商促进会 (fcba)） 全市 纽约全市 citywide 2026-08-12 20:42:40 https://fcbainc.org//2014-lunar-new-year-parade/"
     },
     {
       "id": "live_047",
       "module": "语言·教育",
-      "title_zh": "NYPL Flushing 图书馆",
+      "title_zh": "纽约公共图书馆法拉盛分馆（NYPL Flushing Library）",
       "summary_zh": "Official Flushing branch page for Chinese collections and ESL programs.（来源类型：纽约公共图书馆法拉盛分馆（皇后区华人社区））",
       "location_tag_zh": "法拉盛 Flushing",
       "location_kind": "enclave",
@@ -949,15 +949,15 @@
       "published_at": "",
       "source_published_at": "",
       "first_indexed_at": "2026-08-12 11:55:06",
-      "last_seen_at": "2026-08-12 20:42:40",
+      "last_seen_at": "2026-08-12 21:47:20",
       "date_kind": "service",
       "url": "https://www.nypl.org/locations/flushing",
-      "search_text": "live_047 语言·教育 nypl flushing 图书馆 nypl flushing library official flushing branch page for chinese collections and esl programs.（来源类型：纽约公共图书馆法拉盛分馆（皇后区华人社区）） 法拉盛 flushing 法拉盛 flushing queens queens 2026-08-12 11:55:06 https://www.nypl.org/locations/flushing"
+      "search_text": "live_047 语言·教育 纽约公共图书馆法拉盛分馆（nypl flushing library） nypl flushing library official flushing branch page for chinese collections and esl programs.（来源类型：纽约公共图书馆法拉盛分馆（皇后区华人社区）） 法拉盛 flushing 法拉盛 flushing queens queens 2026-08-12 11:55:06 https://www.nypl.org/locations/flushing"
     },
     {
       "id": "live_048",
       "module": "文化·节庆",
-      "title_zh": "2013年农历新年游行",
+      "title_zh": "2013 年农历新年游行",
       "summary_zh": "来自法拉盛华人工商促进会 (FCBA)的官方/正式机构页面，具体时间、地点、报名要求以官网为准。（来源类型：法拉盛华人工商促进会 (FCBA)）",
       "location_tag_zh": "全市",
       "location_kind": "citywide",
@@ -969,15 +969,15 @@
       "published_at": "",
       "source_published_at": "",
       "first_indexed_at": "2026-08-12 20:42:40",
-      "last_seen_at": "2026-08-12 20:42:40",
+      "last_seen_at": "2026-08-12 21:47:20",
       "date_kind": "service",
       "url": "https://fcbainc.org//2013-lunar-new-year-parade/",
-      "search_text": "live_048 文化·节庆 2013年农历新年游行 2013 lunar new year parade 来自法拉盛华人工商促进会 (fcba)的官方/正式机构页面，具体时间、地点、报名要求以官网为准。（来源类型：法拉盛华人工商促进会 (fcba)） 全市 纽约全市 citywide 2026-08-12 20:42:40 https://fcbainc.org//2013-lunar-new-year-parade/"
+      "search_text": "live_048 文化·节庆 2013 年农历新年游行 2013 lunar new year parade 来自法拉盛华人工商促进会 (fcba)的官方/正式机构页面，具体时间、地点、报名要求以官网为准。（来源类型：法拉盛华人工商促进会 (fcba)） 全市 纽约全市 citywide 2026-08-12 20:42:40 https://fcbainc.org//2013-lunar-new-year-parade/"
     },
     {
       "id": "live_049",
       "module": "语言·教育",
-      "title_zh": "布鲁克林公共图书馆 — 夕阳公园",
+      "title_zh": "布鲁克林公共图书馆 — 日落公园（Sunset Park）",
       "summary_zh": "Official Sunset Park branch page for Chinese community programs.（来源类型：布鲁克林图书馆日落公园分馆（布鲁克林华人社区））",
       "location_tag_zh": "八大道 Sunset Park",
       "location_kind": "enclave",
@@ -989,15 +989,15 @@
       "published_at": "",
       "source_published_at": "",
       "first_indexed_at": "2026-08-12 12:02:27",
-      "last_seen_at": "2026-08-12 20:42:40",
+      "last_seen_at": "2026-08-12 21:47:20",
       "date_kind": "service",
       "url": "https://www.bklynlibrary.org/locations/sunset-park",
-      "search_text": "live_049 语言·教育 布鲁克林公共图书馆 — 夕阳公园 brooklyn public library — sunset park official sunset park branch page for chinese community programs.（来源类型：布鲁克林图书馆日落公园分馆（布鲁克林华人社区）） 八大道 sunset park 八大道 sunset park brooklyn brooklyn 2026-08-12 12:02:27 https://www.bklynlibrary.org/locations/sunset-park"
+      "search_text": "live_049 语言·教育 布鲁克林公共图书馆 — 日落公园（sunset park） brooklyn public library — sunset park official sunset park branch page for chinese community programs.（来源类型：布鲁克林图书馆日落公园分馆（布鲁克林华人社区）） 八大道 sunset park 八大道 sunset park brooklyn brooklyn 2026-08-12 12:02:27 https://www.bklynlibrary.org/locations/sunset-park"
     },
     {
       "id": "live_050",
       "module": "文化·节庆",
-      "title_zh": "2012年农历新年游行",
+      "title_zh": "2012年春节游行",
       "summary_zh": "来自法拉盛华人工商促进会 (FCBA)的官方/正式机构页面，具体时间、地点、报名要求以官网为准。（来源类型：法拉盛华人工商促进会 (FCBA)）",
       "location_tag_zh": "全市",
       "location_kind": "citywide",
@@ -1009,15 +1009,15 @@
       "published_at": "",
       "source_published_at": "",
       "first_indexed_at": "2026-08-12 20:42:40",
-      "last_seen_at": "2026-08-12 20:42:40",
+      "last_seen_at": "2026-08-12 21:47:20",
       "date_kind": "service",
       "url": "https://fcbainc.org//2012-lunar-new-year-parade/",
-      "search_text": "live_050 文化·节庆 2012年农历新年游行 2012 lunar new year parade 来自法拉盛华人工商促进会 (fcba)的官方/正式机构页面，具体时间、地点、报名要求以官网为准。（来源类型：法拉盛华人工商促进会 (fcba)） 全市 纽约全市 citywide 2026-08-12 20:42:40 https://fcbainc.org//2012-lunar-new-year-parade/"
+      "search_text": "live_050 文化·节庆 2012年春节游行 2012 lunar new year parade 来自法拉盛华人工商促进会 (fcba)的官方/正式机构页面，具体时间、地点、报名要求以官网为准。（来源类型：法拉盛华人工商促进会 (fcba)） 全市 纽约全市 citywide 2026-08-12 20:42:40 https://fcbainc.org//2012-lunar-new-year-parade/"
     },
     {
       "id": "live_051",
       "module": "文化·节庆",
-      "title_zh": "2011年农历新年游行",
+      "title_zh": "2011年春节游行",
       "summary_zh": "来自法拉盛华人工商促进会 (FCBA)的官方/正式机构页面，具体时间、地点、报名要求以官网为准。（来源类型：法拉盛华人工商促进会 (FCBA)）",
       "location_tag_zh": "全市",
       "location_kind": "citywide",
@@ -1029,10 +1029,10 @@
       "published_at": "",
       "source_published_at": "",
       "first_indexed_at": "2026-08-12 20:42:40",
-      "last_seen_at": "2026-08-12 20:42:40",
+      "last_seen_at": "2026-08-12 21:47:20",
       "date_kind": "service",
       "url": "https://fcbainc.org//2011-lunar-new-year-parade/",
-      "search_text": "live_051 文化·节庆 2011年农历新年游行 2011 lunar new year parade 来自法拉盛华人工商促进会 (fcba)的官方/正式机构页面，具体时间、地点、报名要求以官网为准。（来源类型：法拉盛华人工商促进会 (fcba)） 全市 纽约全市 citywide 2026-08-12 20:42:40 https://fcbainc.org//2011-lunar-new-year-parade/"
+      "search_text": "live_051 文化·节庆 2011年春节游行 2011 lunar new year parade 来自法拉盛华人工商促进会 (fcba)的官方/正式机构页面，具体时间、地点、报名要求以官网为准。（来源类型：法拉盛华人工商促进会 (fcba)） 全市 纽约全市 citywide 2026-08-12 20:42:40 https://fcbainc.org//2011-lunar-new-year-parade/"
     },
     {
       "id": "live_052",
@@ -1049,7 +1049,7 @@
       "published_at": "",
       "source_published_at": "",
       "first_indexed_at": "2026-08-12 20:42:40",
-      "last_seen_at": "2026-08-12 20:42:40",
+      "last_seen_at": "2026-08-12 21:47:20",
       "date_kind": "service",
       "url": "https://www.areaa.org/membership-registration",
       "search_text": "live_052 语言·教育 今天加入areaa纽约东部分会！ join areaa new york east today! 来自亚裔地产协会 纽约东区分会 (areaa ny east)的官方/正式机构页面，具体时间、地点、报名要求以官网为准。（来源类型：亚裔地产协会 纽约东区分会 (areaa ny east)） 全市 纽约全市 citywide 2026-08-12 20:42:40 https://www.areaa.org/membership-registration"
@@ -1057,7 +1057,7 @@
     {
       "id": "live_053",
       "module": "文化·节庆",
-      "title_zh": "Eventbrite — 法拉盛 Flushing 华人活动",
+      "title_zh": "Eventbrite — 法拉盛（Flushing）华人活动",
       "summary_zh": "Eventbrite discovery for Chinese / Flushing events.（来源类型：Eventbrite 法拉盛及皇后区华人活动）",
       "location_tag_zh": "法拉盛 Flushing",
       "location_kind": "enclave",
@@ -1069,10 +1069,10 @@
       "published_at": "",
       "source_published_at": "",
       "first_indexed_at": "2026-08-12 16:27:49",
-      "last_seen_at": "2026-08-12 20:42:40",
+      "last_seen_at": "2026-08-12 21:47:20",
       "date_kind": "service",
       "url": "https://www.eventbrite.com/d/ny--flushing/chinese--events/",
-      "search_text": "live_053 文化·节庆 eventbrite — 法拉盛 flushing 华人活动 eventbrite — flushing chinese events eventbrite discovery for chinese / flushing events.（来源类型：eventbrite 法拉盛及皇后区华人活动） 法拉盛 flushing 法拉盛 flushing queens queens 2026-08-12 16:27:49 https://www.eventbrite.com/d/ny--flushing/chinese--events/"
+      "search_text": "live_053 文化·节庆 eventbrite — 法拉盛（flushing）华人活动 eventbrite — flushing chinese events eventbrite discovery for chinese / flushing events.（来源类型：eventbrite 法拉盛及皇后区华人活动） 法拉盛 flushing 法拉盛 flushing queens queens 2026-08-12 16:27:49 https://www.eventbrite.com/d/ny--flushing/chinese--events/"
     },
     {
       "id": "live_054",
@@ -1089,7 +1089,7 @@
       "published_at": "",
       "source_published_at": "",
       "first_indexed_at": "2026-08-12 20:42:40",
-      "last_seen_at": "2026-08-12 20:42:40",
+      "last_seen_at": "2026-08-12 21:47:20",
       "date_kind": "service",
       "url": "https://www.cmpny.org/news/events/classes/join-us-for-cmps-2026-gala-peak-potentials-careers-in-sports-athletics",
       "search_text": "live_054 就业·培训 了解更多并参与 learn more & get involved 来自唐人街人力中心 (cmp) — 就业培训与招聘会的官方/正式机构页面，具体时间、地点、报名要求以官网为准。（来源类型：唐人街人力中心 (cmp) — 就业培训与招聘会） 全市 纽约全市 citywide 2026-08-12 20:42:40 https://www.cmpny.org/news/events/classes/join-us-for-cmps-2026-gala-peak-potentials-careers-in-sports-athletics"
@@ -1098,7 +1098,7 @@
       "id": "live_055",
       "module": "公益·义工",
       "title_zh": "布鲁克林华裔美国人协会（BCA）",
-      "summary_zh": "布鲁克林华人社区协会（夕阳公园地区）服务主页。（来源类型：布鲁克林华人协会 (BCA)）",
+      "summary_zh": "布鲁克林华人社区协会（夕阳区）服务主页。（来源类型：布鲁克林华人协会 (BCA)）",
       "location_tag_zh": "八大道 Sunset Park",
       "location_kind": "enclave",
       "area_zh": "八大道 Sunset Park",
@@ -1109,15 +1109,15 @@
       "published_at": "",
       "source_published_at": "",
       "first_indexed_at": "2026-08-12 17:29:14",
-      "last_seen_at": "2026-08-12 20:42:40",
+      "last_seen_at": "2026-08-12 21:47:20",
       "date_kind": "service",
       "url": "https://www.bca.net/eng/home.html",
-      "search_text": "live_055 公益·义工 布鲁克林华裔美国人协会（bca） brooklyn chinese-american association (bca) 布鲁克林华人社区协会（夕阳公园地区）服务主页。（来源类型：布鲁克林华人协会 (bca)） 八大道 sunset park 八大道 sunset park brooklyn brooklyn 2026-08-12 17:29:14 https://www.bca.net/eng/home.html"
+      "search_text": "live_055 公益·义工 布鲁克林华裔美国人协会（bca） brooklyn chinese-american association (bca) 布鲁克林华人社区协会（夕阳区）服务主页。（来源类型：布鲁克林华人协会 (bca)） 八大道 sunset park 八大道 sunset park brooklyn brooklyn 2026-08-12 17:29:14 https://www.bca.net/eng/home.html"
     },
     {
       "id": "live_056",
       "module": "就业·培训",
-      "title_zh": "CAREA的2026年纽约市专业网络活动",
+      "title_zh": "CAREA 的 2026 年纽约市专业网络活动",
       "summary_zh": "CAREA Chinese American Real Estate Association event（来源类型：华人地产协会 (CAREA) — 房地产培训/活动）",
       "location_tag_zh": "法拉盛 Flushing",
       "location_kind": "enclave",
@@ -1129,15 +1129,15 @@
       "published_at": "",
       "source_published_at": "",
       "first_indexed_at": "2026-08-12 20:42:40",
-      "last_seen_at": "2026-08-12 20:42:40",
+      "last_seen_at": "2026-08-12 21:47:20",
       "date_kind": "event",
       "url": "https://www.careausa.com/event/careas-2026-nyc-professional-networking-event",
-      "search_text": "live_056 就业·培训 carea的2026年纽约市专业网络活动 carea's 2026 nyc professional networking event carea chinese american real estate association event（来源类型：华人地产协会 (carea) — 房地产培训/活动） 法拉盛 flushing 法拉盛 flushing queens flushing / nyc 2026-08-12 20:42:40 2026-05-14 https://www.careausa.com/event/careas-2026-nyc-professional-networking-event"
+      "search_text": "live_056 就业·培训 carea 的 2026 年纽约市专业网络活动 carea's 2026 nyc professional networking event carea chinese american real estate association event（来源类型：华人地产协会 (carea) — 房地产培训/活动） 法拉盛 flushing 法拉盛 flushing queens flushing / nyc 2026-08-12 20:42:40 2026-05-14 https://www.careausa.com/event/careas-2026-nyc-professional-networking-event"
     },
     {
       "id": "live_057",
       "module": "语言·教育",
-      "title_zh": "CAREA的继续教育研讨会",
+      "title_zh": "CAREA 的 CE 研讨会",
       "summary_zh": "CAREA Chinese American Real Estate Association event（来源类型：华人地产协会 (CAREA) — 房地产培训/活动）",
       "location_tag_zh": "法拉盛 Flushing",
       "location_kind": "enclave",
@@ -1149,10 +1149,10 @@
       "published_at": "",
       "source_published_at": "",
       "first_indexed_at": "2026-08-12 20:42:40",
-      "last_seen_at": "2026-08-12 20:42:40",
+      "last_seen_at": "2026-08-12 21:47:20",
       "date_kind": "event",
       "url": "https://www.careausa.com/event/careas-ce-seminar-april-29-2026",
-      "search_text": "live_057 语言·教育 carea的继续教育研讨会 carea's ce seminar carea chinese american real estate association event（来源类型：华人地产协会 (carea) — 房地产培训/活动） 法拉盛 flushing 法拉盛 flushing queens flushing / nyc 2026-08-12 20:42:40 2026-04-29 https://www.careausa.com/event/careas-ce-seminar-april-29-2026"
+      "search_text": "live_057 语言·教育 carea 的 ce 研讨会 carea's ce seminar carea chinese american real estate association event（来源类型：华人地产协会 (carea) — 房地产培训/活动） 法拉盛 flushing 法拉盛 flushing queens flushing / nyc 2026-08-12 20:42:40 2026-04-29 https://www.careausa.com/event/careas-ce-seminar-april-29-2026"
     },
     {
       "id": "live_058",
@@ -1169,7 +1169,7 @@
       "published_at": "",
       "source_published_at": "",
       "first_indexed_at": "2026-08-12 16:27:49",
-      "last_seen_at": "2026-08-12 20:42:40",
+      "last_seen_at": "2026-08-12 21:47:20",
       "date_kind": "service",
       "url": "https://www.eventbrite.com/d/ny--new-york/chinese-community--events/",
       "search_text": "live_058 文化·节庆 eventbrite — 纽约市华人社区活动 eventbrite — nyc chinese community events eventbrite discovery for chinese community events in nyc.（来源类型：eventbrite 纽约华人社区组织活动汇总） 全市 纽约全市 citywide citywide 2026-08-12 16:27:49 https://www.eventbrite.com/d/ny--new-york/chinese-community--events/"
@@ -1177,7 +1177,7 @@
     {
       "id": "live_059",
       "module": "就业·培训",
-      "title_zh": "SAPA 2026年度项目与活动",
+      "title_zh": "SAPA 2026年年度项目与活动",
       "summary_zh": "Official SAPA annual programs preview and calendar.（来源类型：美中药协 (SAPA) — 行业年会与通告）",
       "location_tag_zh": "全市",
       "location_kind": "citywide",
@@ -1188,11 +1188,11 @@
       "event_time": "",
       "published_at": "",
       "source_published_at": "",
-      "first_indexed_at": "",
-      "last_seen_at": "2026-08-12 20:42:40",
+      "first_indexed_at": "2026-08-12 20:42:40",
+      "last_seen_at": "2026-08-12 21:47:20",
       "date_kind": "service",
       "url": "https://www.sapaweb.org/2026annualprogramsandevent",
-      "search_text": "live_059 就业·培训 sapa 2026年度项目与活动 sapa 2026 annual programs & events official sapa annual programs preview and calendar.（来源类型：美中药协 (sapa) — 行业年会与通告） 全市 纽约全市 citywide citywide https://www.sapaweb.org/2026annualprogramsandevent"
+      "search_text": "live_059 就业·培训 sapa 2026年年度项目与活动 sapa 2026 annual programs & events official sapa annual programs preview and calendar.（来源类型：美中药协 (sapa) — 行业年会与通告） 全市 纽约全市 citywide citywide 2026-08-12 20:42:40 https://www.sapaweb.org/2026annualprogramsandevent"
     },
     {
       "id": "live_060",
@@ -1209,7 +1209,7 @@
       "published_at": "",
       "source_published_at": "",
       "first_indexed_at": "2026-08-12 20:42:40",
-      "last_seen_at": "2026-08-12 20:42:40",
+      "last_seen_at": "2026-08-12 21:47:20",
       "date_kind": "service",
       "url": "https://www.cmpny.org/news/events/classes/2026/8/12/free-online-workshop-small-business-tax-essentials",
       "search_text": "live_060 就业·培训 免费在线研讨会：小企业税务基础 free online workshop: small business tax essentials 来自唐人街人力中心 (cmp) — 就业培训与招聘会的官方/正式机构页面，具体时间、地点、报名要求以官网为准。（来源类型：唐人街人力中心 (cmp) — 就业培训与招聘会） 全市 纽约全市 citywide 2026-08-12 20:42:40 https://www.cmpny.org/news/events/classes/2026/8/12/free-online-workshop-small-business-tax-essentials"
@@ -1229,7 +1229,7 @@
       "published_at": "",
       "source_published_at": "",
       "first_indexed_at": "2026-06-15 20:30:26",
-      "last_seen_at": "2026-08-12 20:42:40",
+      "last_seen_at": "2026-08-12 21:47:20",
       "date_kind": "service",
       "url": "https://www.nyc.gov/site/immigrants/about/press-releases/moia-launches-immigrant-legal-services-community-support-network-20250722.page",
       "search_text": "live_061 福利·政务 宣布市政移民法律服务和社区支持网络 announcing municipal immigrant legal services and community support network 来自纽约市长移民事务办公室的官方/正式机构页面，具体时间、地点、报名要求以官网为准。（来源类型：纽约市长移民事务办公室） 全市 纽约全市 citywide 2026-06-15 20:30:26 https://www.nyc.gov/site/immigrants/about/press-releases/moia-launches-immigrant-legal-services-community-support-network-20250722.page"
@@ -1248,11 +1248,11 @@
       "event_time": "",
       "published_at": "",
       "source_published_at": "",
-      "first_indexed_at": "",
-      "last_seen_at": "2026-08-12 20:42:40",
+      "first_indexed_at": "2026-08-12 20:42:40",
+      "last_seen_at": "2026-08-12 21:47:20",
       "date_kind": "service",
       "url": "https://hainanassociation.com/%e6%b4%bb%e5%8a%a8%e9%a2%84%e5%91%8a-2/",
-      "search_text": "live_062 公益·义工 海南同乡会 · 活动预告 海南同乡会 · 活动预告 upcoming events page.（来源类型：纽约海南同乡会） 布鲁克林 brooklyn 布鲁克林 brooklyn brooklyn brooklyn https://hainanassociation.com/%e6%b4%bb%e5%8a%a8%e9%a2%84%e5%91%8a-2/"
+      "search_text": "live_062 公益·义工 海南同乡会 · 活动预告 海南同乡会 · 活动预告 upcoming events page.（来源类型：纽约海南同乡会） 布鲁克林 brooklyn 布鲁克林 brooklyn brooklyn brooklyn 2026-08-12 20:42:40 https://hainanassociation.com/%e6%b4%bb%e5%8a%a8%e9%a2%84%e5%91%8a-2/"
     },
     {
       "id": "live_063",
@@ -1269,7 +1269,7 @@
       "published_at": "",
       "source_published_at": "",
       "first_indexed_at": "2026-08-12 20:42:40",
-      "last_seen_at": "2026-08-12 20:42:40",
+      "last_seen_at": "2026-08-12 21:47:20",
       "date_kind": "service",
       "url": "https://hainanassociation.com/%e5%90%8c%e4%b9%a1%e4%bc%9a%e6%b4%bb%e5%8a%a8%e6%8a%a5%e9%81%93/",
       "search_text": "live_063 公益·义工 海南同乡会 · 活动报道 海南同乡会 · 活动报道 past activity reports.（来源类型：纽约海南同乡会） 布鲁克林 brooklyn 布鲁克林 brooklyn brooklyn brooklyn 2026-08-12 20:42:40 https://hainanassociation.com/%e5%90%8c%e4%b9%a1%e4%bc%9a%e6%b4%bb%e5%8a%a8%e6%8a%a5%e9%81%93/"
@@ -1277,7 +1277,7 @@
     {
       "id": "live_064",
       "module": "福利·政务",
-      "title_zh": "使用您的 IDNYC 卡享受折扣酒店、主题公园和其他娱乐活动的优惠！",
+      "title_zh": "使用您的IDNYC卡在折扣酒店、主题公园和其他娱乐活动中节省费用！",
       "summary_zh": "来自IDNYC - 免费市民卡的官方/正式机构页面，具体时间、地点、报名要求以官网为准。（来源类型：IDNYC - 免费市民卡）",
       "location_tag_zh": "全市",
       "location_kind": "citywide",
@@ -1289,15 +1289,15 @@
       "published_at": "",
       "source_published_at": "",
       "first_indexed_at": "2026-08-12 11:20:41",
-      "last_seen_at": "2026-08-12 20:42:40",
+      "last_seen_at": "2026-08-12 21:47:20",
       "date_kind": "service",
       "url": "https://www1.nyc.gov/site/idnyc/benefits/entertainment-discounts.page",
-      "search_text": "live_064 福利·政务 使用您的 idnyc 卡享受折扣酒店、主题公园和其他娱乐活动的优惠！ save on discounted hotels, theme parks and other entertainment with your idnyc card! 来自idnyc - 免费市民卡的官方/正式机构页面，具体时间、地点、报名要求以官网为准。（来源类型：idnyc - 免费市民卡） 全市 纽约全市 citywide 2026-08-12 11:20:41 https://www1.nyc.gov/site/idnyc/benefits/entertainment-discounts.page"
+      "search_text": "live_064 福利·政务 使用您的idnyc卡在折扣酒店、主题公园和其他娱乐活动中节省费用！ save on discounted hotels, theme parks and other entertainment with your idnyc card! 来自idnyc - 免费市民卡的官方/正式机构页面，具体时间、地点、报名要求以官网为准。（来源类型：idnyc - 免费市民卡） 全市 纽约全市 citywide 2026-08-12 11:20:41 https://www1.nyc.gov/site/idnyc/benefits/entertainment-discounts.page"
     },
     {
       "id": "live_065",
       "module": "就业·培训",
-      "title_zh": "多位讲普通话的…",
+      "title_zh": "多位讲普通话的演讲者",
       "summary_zh": "来自唐人街人力中心 (CMP) — 就业培训与招聘会的官方/正式机构页面，具体时间、地点、报名要求以官网为准。（来源类型：唐人街人力中心 (CMP) — 就业培训与招聘会）",
       "location_tag_zh": "全市",
       "location_kind": "citywide",
@@ -1309,10 +1309,10 @@
       "published_at": "",
       "source_published_at": "",
       "first_indexed_at": "2026-08-12 20:42:40",
-      "last_seen_at": "2026-08-12 20:42:40",
+      "last_seen_at": "2026-08-12 21:47:20",
       "date_kind": "event",
       "url": "https://www.cmpny.org/s/Dental-Office-Receptionist.pdf",
-      "search_text": "live_065 就业·培训 多位讲普通话的… everal mandarin-speaking be 来自唐人街人力中心 (cmp) — 就业培训与招聘会的官方/正式机构页面，具体时间、地点、报名要求以官网为准。（来源类型：唐人街人力中心 (cmp) — 就业培训与招聘会） 全市 纽约全市 citywide 2026-08-12 20:42:40 2026-07-24 https://www.cmpny.org/s/dental-office-receptionist.pdf"
+      "search_text": "live_065 就业·培训 多位讲普通话的演讲者 everal mandarin-speaking be 来自唐人街人力中心 (cmp) — 就业培训与招聘会的官方/正式机构页面，具体时间、地点、报名要求以官网为准。（来源类型：唐人街人力中心 (cmp) — 就业培训与招聘会） 全市 纽约全市 citywide 2026-08-12 20:42:40 2026-07-24 https://www.cmpny.org/s/dental-office-receptionist.pdf"
     },
     {
       "id": "live_066",
@@ -1329,7 +1329,7 @@
       "published_at": "",
       "source_published_at": "",
       "first_indexed_at": "2026-08-12 20:42:40",
-      "last_seen_at": "2026-08-12 20:42:40",
+      "last_seen_at": "2026-08-12 21:47:20",
       "date_kind": "service",
       "url": "https://www.cmpny.org/news/events/classes/category/Chinese+School",
       "search_text": "live_066 就业·培训 中文学校 chinese school 来自唐人街人力中心 (cmp) — 就业培训与招聘会的官方/正式机构页面，具体时间、地点、报名要求以官网为准。（来源类型：唐人街人力中心 (cmp) — 就业培训与招聘会） 全市 纽约全市 citywide 2026-08-12 20:42:40 https://www.cmpny.org/news/events/classes/category/chinese+school"
@@ -1337,7 +1337,7 @@
     {
       "id": "live_067",
       "module": "公益·义工",
-      "title_zh": "2024 CAST-GNY年度会议",
+      "title_zh": "2024 年 CAST-GNY 年会",
       "summary_zh": "来自中国旅美科技协会大纽约分会 (CAST-GNY)的官方/正式机构页面，具体时间、地点、报名要求以官网为准。（来源类型：中国旅美科技协会大纽约分会 (CAST-GNY)）",
       "location_tag_zh": "全市",
       "location_kind": "citywide",
@@ -1349,10 +1349,10 @@
       "published_at": "",
       "source_published_at": "",
       "first_indexed_at": "2026-08-12 20:42:40",
-      "last_seen_at": "2026-08-12 20:42:40",
+      "last_seen_at": "2026-08-12 21:47:20",
       "date_kind": "service",
       "url": "https://castgny.org/en/index.php/2024-cast-gny-annual-conference/",
-      "search_text": "live_067 公益·义工 2024 cast-gny年度会议 2024 cast-gny annual conference 来自中国旅美科技协会大纽约分会 (cast-gny)的官方/正式机构页面，具体时间、地点、报名要求以官网为准。（来源类型：中国旅美科技协会大纽约分会 (cast-gny)） 全市 纽约全市 citywide 2026-08-12 20:42:40 https://castgny.org/en/index.php/2024-cast-gny-annual-conference/"
+      "search_text": "live_067 公益·义工 2024 年 cast-gny 年会 2024 cast-gny annual conference 来自中国旅美科技协会大纽约分会 (cast-gny)的官方/正式机构页面，具体时间、地点、报名要求以官网为准。（来源类型：中国旅美科技协会大纽约分会 (cast-gny)） 全市 纽约全市 citywide 2026-08-12 20:42:40 https://castgny.org/en/index.php/2024-cast-gny-annual-conference/"
     },
     {
       "id": "live_068",
@@ -1369,7 +1369,7 @@
       "published_at": "",
       "source_published_at": "",
       "first_indexed_at": "2026-08-12 20:42:40",
-      "last_seen_at": "2026-08-12 20:42:40",
+      "last_seen_at": "2026-08-12 21:47:20",
       "date_kind": "service",
       "url": "https://castgny.org/en/index.php/2024-cast-gny-annual-conference/2024-castgny-congrats/",
       "search_text": "live_068 公益·义工 美国祝贺 us congratulations 来自中国旅美科技协会大纽约分会 (cast-gny)的官方/正式机构页面，具体时间、地点、报名要求以官网为准。（来源类型：中国旅美科技协会大纽约分会 (cast-gny)） 全市 纽约全市 citywide 2026-08-12 20:42:40 https://castgny.org/en/index.php/2024-cast-gny-annual-conference/2024-castgny-congrats/"
@@ -1389,7 +1389,7 @@
       "published_at": "",
       "source_published_at": "",
       "first_indexed_at": "2026-08-12 20:42:40",
-      "last_seen_at": "2026-08-12 20:42:40",
+      "last_seen_at": "2026-08-12 21:47:20",
       "date_kind": "service",
       "url": "https://castgny.org/en/index.php/2024-cast-gny-annual-conference/2024-castgny-news/",
       "search_text": "live_069 公益·义工 新闻稿 press release 来自中国旅美科技协会大纽约分会 (cast-gny)的官方/正式机构页面，具体时间、地点、报名要求以官网为准。（来源类型：中国旅美科技协会大纽约分会 (cast-gny)） 全市 纽约全市 citywide 2026-08-12 20:42:40 https://castgny.org/en/index.php/2024-cast-gny-annual-conference/2024-castgny-news/"
@@ -1397,7 +1397,7 @@
     {
       "id": "live_070",
       "module": "公益·义工",
-      "title_zh": "2023年CAST-GNY年会（纽约市）",
+      "title_zh": "2023 年 CAST-GNY 年会（纽约市）",
       "summary_zh": "来自中国旅美科技协会大纽约分会 (CAST-GNY)的官方/正式机构页面，具体时间、地点、报名要求以官网为准。（来源类型：中国旅美科技协会大纽约分会 (CAST-GNY)）",
       "location_tag_zh": "全市",
       "location_kind": "citywide",
@@ -1409,15 +1409,15 @@
       "published_at": "",
       "source_published_at": "",
       "first_indexed_at": "2026-08-12 20:42:40",
-      "last_seen_at": "2026-08-12 20:42:40",
+      "last_seen_at": "2026-08-12 21:47:20",
       "date_kind": "service",
       "url": "https://castgny.org/en/index.php/2023-cast-gny-convention-2/",
-      "search_text": "live_070 公益·义工 2023年cast-gny年会（纽约市） 2023 cast-gny annual conference (new york city) 来自中国旅美科技协会大纽约分会 (cast-gny)的官方/正式机构页面，具体时间、地点、报名要求以官网为准。（来源类型：中国旅美科技协会大纽约分会 (cast-gny)） 全市 纽约全市 citywide 2026-08-12 20:42:40 https://castgny.org/en/index.php/2023-cast-gny-convention-2/"
+      "search_text": "live_070 公益·义工 2023 年 cast-gny 年会（纽约市） 2023 cast-gny annual conference (new york city) 来自中国旅美科技协会大纽约分会 (cast-gny)的官方/正式机构页面，具体时间、地点、报名要求以官网为准。（来源类型：中国旅美科技协会大纽约分会 (cast-gny)） 全市 纽约全市 citywide 2026-08-12 20:42:40 https://castgny.org/en/index.php/2023-cast-gny-convention-2/"
     },
     {
       "id": "live_071",
       "module": "公益·义工",
-      "title_zh": "2019年CASTUSA-GNY大会（纽约市）",
+      "title_zh": "2019 CASTUSA-GNY大会（纽约市）",
       "summary_zh": "来自中国旅美科技协会大纽约分会 (CAST-GNY)的官方/正式机构页面，具体时间、地点、报名要求以官网为准。（来源类型：中国旅美科技协会大纽约分会 (CAST-GNY)）",
       "location_tag_zh": "全市",
       "location_kind": "citywide",
@@ -1429,15 +1429,15 @@
       "published_at": "",
       "source_published_at": "",
       "first_indexed_at": "2026-08-12 20:42:40",
-      "last_seen_at": "2026-08-12 20:42:40",
+      "last_seen_at": "2026-08-12 21:47:20",
       "date_kind": "service",
       "url": "http://castgny.org/en/index.php/2019-annual-conference/",
-      "search_text": "live_071 公益·义工 2019年castusa-gny大会（纽约市） 2019 castusa-gny convention (new york city) 来自中国旅美科技协会大纽约分会 (cast-gny)的官方/正式机构页面，具体时间、地点、报名要求以官网为准。（来源类型：中国旅美科技协会大纽约分会 (cast-gny)） 全市 纽约全市 citywide 2026-08-12 20:42:40 http://castgny.org/en/index.php/2019-annual-conference/"
+      "search_text": "live_071 公益·义工 2019 castusa-gny大会（纽约市） 2019 castusa-gny convention (new york city) 来自中国旅美科技协会大纽约分会 (cast-gny)的官方/正式机构页面，具体时间、地点、报名要求以官网为准。（来源类型：中国旅美科技协会大纽约分会 (cast-gny)） 全市 纽约全市 citywide 2026-08-12 20:42:40 http://castgny.org/en/index.php/2019-annual-conference/"
     },
     {
       "id": "live_072",
       "module": "公益·义工",
-      "title_zh": "欢迎参加2018年度大会",
+      "title_zh": "欢迎参加2018年年会",
       "summary_zh": "来自中国旅美科技协会大纽约分会 (CAST-GNY)的官方/正式机构页面，具体时间、地点、报名要求以官网为准。（来源类型：中国旅美科技协会大纽约分会 (CAST-GNY)）",
       "location_tag_zh": "全市",
       "location_kind": "citywide",
@@ -1449,15 +1449,15 @@
       "published_at": "",
       "source_published_at": "",
       "first_indexed_at": "2026-08-12 20:42:40",
-      "last_seen_at": "2026-08-12 20:42:40",
+      "last_seen_at": "2026-08-12 21:47:20",
       "date_kind": "service",
       "url": "https://castgny.org/en/index.php/homepage-main/2018annual-convention/",
-      "search_text": "live_072 公益·义工 欢迎参加2018年度大会 welcome to 2018 annual convention 来自中国旅美科技协会大纽约分会 (cast-gny)的官方/正式机构页面，具体时间、地点、报名要求以官网为准。（来源类型：中国旅美科技协会大纽约分会 (cast-gny)） 全市 纽约全市 citywide 2026-08-12 20:42:40 https://castgny.org/en/index.php/homepage-main/2018annual-convention/"
+      "search_text": "live_072 公益·义工 欢迎参加2018年年会 welcome to 2018 annual convention 来自中国旅美科技协会大纽约分会 (cast-gny)的官方/正式机构页面，具体时间、地点、报名要求以官网为准。（来源类型：中国旅美科技协会大纽约分会 (cast-gny)） 全市 纽约全市 citywide 2026-08-12 20:42:40 https://castgny.org/en/index.php/homepage-main/2018annual-convention/"
     },
     {
       "id": "live_073",
       "module": "公益·义工",
-      "title_zh": "特邀发言人和特别会议",
+      "title_zh": "选定演讲者和特别会议",
       "summary_zh": "来自中国旅美科技协会大纽约分会 (CAST-GNY)的官方/正式机构页面，具体时间、地点、报名要求以官网为准。（来源类型：中国旅美科技协会大纽约分会 (CAST-GNY)）",
       "location_tag_zh": "全市",
       "location_kind": "citywide",
@@ -1469,10 +1469,10 @@
       "published_at": "",
       "source_published_at": "",
       "first_indexed_at": "2026-08-12 20:42:40",
-      "last_seen_at": "2026-08-12 20:42:40",
+      "last_seen_at": "2026-08-12 21:47:20",
       "date_kind": "service",
       "url": "https://castgny.org/en/index.php/homepage-main/2018annual-convention/selected-speakers/",
-      "search_text": "live_073 公益·义工 特邀发言人和特别会议 selected speakers and special session 来自中国旅美科技协会大纽约分会 (cast-gny)的官方/正式机构页面，具体时间、地点、报名要求以官网为准。（来源类型：中国旅美科技协会大纽约分会 (cast-gny)） 全市 纽约全市 citywide 2026-08-12 20:42:40 https://castgny.org/en/index.php/homepage-main/2018annual-convention/selected-speakers/"
+      "search_text": "live_073 公益·义工 选定演讲者和特别会议 selected speakers and special session 来自中国旅美科技协会大纽约分会 (cast-gny)的官方/正式机构页面，具体时间、地点、报名要求以官网为准。（来源类型：中国旅美科技协会大纽约分会 (cast-gny)） 全市 纽约全市 citywide 2026-08-12 20:42:40 https://castgny.org/en/index.php/homepage-main/2018annual-convention/selected-speakers/"
     },
     {
       "id": "live_074",
@@ -1489,7 +1489,7 @@
       "published_at": "",
       "source_published_at": "",
       "first_indexed_at": "2026-08-12 20:42:40",
-      "last_seen_at": "2026-08-12 20:42:40",
+      "last_seen_at": "2026-08-12 21:47:20",
       "date_kind": "service",
       "url": "https://castgny.org/en/index.php/homepage-main/2018annual-convention/ai-and-data-science-forum/",
       "search_text": "live_074 公益·义工 人工智能与数据科学论坛 ai and data science forum 来自中国旅美科技协会大纽约分会 (cast-gny)的官方/正式机构页面，具体时间、地点、报名要求以官网为准。（来源类型：中国旅美科技协会大纽约分会 (cast-gny)） 全市 纽约全市 citywide 2026-08-12 20:42:40 https://castgny.org/en/index.php/homepage-main/2018annual-convention/ai-and-data-science-forum/"
@@ -1509,7 +1509,7 @@
       "published_at": "",
       "source_published_at": "",
       "first_indexed_at": "2026-08-12 20:42:40",
-      "last_seen_at": "2026-08-12 20:42:40",
+      "last_seen_at": "2026-08-12 21:47:20",
       "date_kind": "service",
       "url": "https://castgny.org/en/index.php/homepage-main/2018annual-convention/financial-technology-forum/",
       "search_text": "live_075 公益·义工 金融科技论坛 financial technology forum 来自中国旅美科技协会大纽约分会 (cast-gny)的官方/正式机构页面，具体时间、地点、报名要求以官网为准。（来源类型：中国旅美科技协会大纽约分会 (cast-gny)） 全市 纽约全市 citywide 2026-08-12 20:42:40 https://castgny.org/en/index.php/homepage-main/2018annual-convention/financial-technology-forum/"
@@ -1529,7 +1529,7 @@
       "published_at": "",
       "source_published_at": "",
       "first_indexed_at": "2026-08-12 20:42:40",
-      "last_seen_at": "2026-08-12 20:42:40",
+      "last_seen_at": "2026-08-12 21:47:20",
       "date_kind": "service",
       "url": "https://castgny.org/en/index.php/homepage-main/2018annual-convention/biotechnology-forum/",
       "search_text": "live_076 公益·义工 生物技术论坛 biotechnology forum 来自中国旅美科技协会大纽约分会 (cast-gny)的官方/正式机构页面，具体时间、地点、报名要求以官网为准。（来源类型：中国旅美科技协会大纽约分会 (cast-gny)） 全市 纽约全市 citywide 2026-08-12 20:42:40 https://castgny.org/en/index.php/homepage-main/2018annual-convention/biotechnology-forum/"
@@ -1549,7 +1549,7 @@
       "published_at": "",
       "source_published_at": "",
       "first_indexed_at": "2026-08-12 20:42:40",
-      "last_seen_at": "2026-08-12 20:42:40",
+      "last_seen_at": "2026-08-12 21:47:20",
       "date_kind": "service",
       "url": "https://www.aafe.org/missions/affordable-housing-development/",
       "search_text": "live_077 住房·安居 可负担住房开发 affordable housing development 来自亚美权益促进会 (aafe) — 社区服务与小企业的官方/正式机构页面，具体时间、地点、报名要求以官网为准。（来源类型：亚美权益促进会 (aafe) — 社区服务与小企业） 全市 纽约全市 citywide 2026-08-12 20:42:40 https://www.aafe.org/missions/affordable-housing-development/"
@@ -1569,7 +1569,7 @@
       "published_at": "",
       "source_published_at": "",
       "first_indexed_at": "2026-08-12 20:42:40",
-      "last_seen_at": "2026-08-12 20:42:40",
+      "last_seen_at": "2026-08-12 21:47:20",
       "date_kind": "service",
       "url": "https://app.etapestry.com/onlineforms/ChinatownManpowerProjct/Donation.html",
       "search_text": "live_078 就业·培训 捐赠 donate 来自唐人街人力中心 (cmp) — 就业培训与招聘会的官方/正式机构页面，具体时间、地点、报名要求以官网为准。（来源类型：唐人街人力中心 (cmp) — 就业培训与招聘会） 唐人街 chinatown 唐人街 chinatown manhattan 2026-08-12 20:42:40 https://app.etapestry.com/onlineforms/chinatownmanpowerprojct/donation.html"
@@ -1577,7 +1577,7 @@
     {
       "id": "live_079",
       "module": "就业·培训",
-      "title_zh": "皇后区的就业准备服务！",
+      "title_zh": "皇后区（Queens）工作准备服务！",
       "summary_zh": "来自唐人街人力中心 (CMP) — 就业培训与招聘会的官方/正式机构页面，具体时间、地点、报名要求以官网为准。（来源类型：唐人街人力中心 (CMP) — 就业培训与招聘会）",
       "location_tag_zh": "皇后区 Queens",
       "location_kind": "borough",
@@ -1589,10 +1589,10 @@
       "published_at": "",
       "source_published_at": "",
       "first_indexed_at": "2026-08-12 20:42:40",
-      "last_seen_at": "2026-08-12 20:42:40",
+      "last_seen_at": "2026-08-12 21:47:20",
       "date_kind": "service",
       "url": "https://www.cmpny.org/news/events/classes/2026/7/27/expanding-our-work-readiness-services-in-queens",
-      "search_text": "live_079 就业·培训 皇后区的就业准备服务！ work readiness services in queens! 来自唐人街人力中心 (cmp) — 就业培训与招聘会的官方/正式机构页面，具体时间、地点、报名要求以官网为准。（来源类型：唐人街人力中心 (cmp) — 就业培训与招聘会） 皇后区 queens 皇后区 queens queens 2026-08-12 20:42:40 https://www.cmpny.org/news/events/classes/2026/7/27/expanding-our-work-readiness-services-in-queens"
+      "search_text": "live_079 就业·培训 皇后区（queens）工作准备服务！ work readiness services in queens! 来自唐人街人力中心 (cmp) — 就业培训与招聘会的官方/正式机构页面，具体时间、地点、报名要求以官网为准。（来源类型：唐人街人力中心 (cmp) — 就业培训与招聘会） 皇后区 queens 皇后区 queens queens 2026-08-12 20:42:40 https://www.cmpny.org/news/events/classes/2026/7/27/expanding-our-work-readiness-services-in-queens"
     },
     {
       "id": "live_080",
@@ -1609,7 +1609,7 @@
       "published_at": "",
       "source_published_at": "",
       "first_indexed_at": "2026-08-12 20:42:40",
-      "last_seen_at": "2026-08-12 20:42:40",
+      "last_seen_at": "2026-08-12 21:47:20",
       "date_kind": "service",
       "url": "https://fcbainc.org/2022/09/21/%e7%ac%ac%e5%8d%81%e5%b1%86%e7%b4%90%e7%b4%84%e6%b3%95%e6%8b%89%e7%9b%9b%e8%8f%af%e5%95%86%e6%9c%83%e3%80%8c%e5%b9%b8%e7%a6%8f%e5%aa%bd%e5%aa%bd%e3%80%8d%e6%b4%bb%e5%8b%95%e9%96%8b%e5%95%9f%e5%a0%b1/",
       "search_text": "live_080 公益·义工 第十屆紐約法拉盛華商會「幸福媽媽」活動開啟報名 第十屆紐約法拉盛華商會「幸福媽媽」活動開啟報名 来自法拉盛华人工商促进会 (fcba)的官方/正式机构页面，具体时间、地点、报名要求以官网为准。（来源类型：法拉盛华人工商促进会 (fcba)） 法拉盛 flushing 法拉盛 flushing queens 2026-08-12 20:42:40 https://fcbainc.org/2022/09/21/%e7%ac%ac%e5%8d%81%e5%b1%86%e7%b4%90%e7%b4%84%e6%b3%95%e6%8b%89%e7%9b%9b%e8%8f%af%e5%95%86%e6%9c%83%e3%80%8c%e5%b9%b8%e7%a6%8f%e5%aa%bd%e5%aa%bd%e3%80%8d%e6%b4%bb%e5%8b%95%e9%96%8b%e5%95%9f%e5%a0%b1/"
@@ -1628,16 +1628,16 @@
       "event_time": "",
       "published_at": "",
       "source_published_at": "",
-      "first_indexed_at": "",
-      "last_seen_at": "2026-08-12 20:42:40",
+      "first_indexed_at": "2026-08-12 20:42:40",
+      "last_seen_at": "2026-08-12 21:47:20",
       "date_kind": "service",
       "url": "https://carsa2012.org/category/%e6%9c%80%e6%96%b0%e4%bf%a1%e6%81%af/",
-      "search_text": "live_081 就业·培训 carsa 最新信息 carsa 最新信息 industry news and activity notices.（来源类型：美国华人餐饮业协会 (carsa)） 全市 纽约全市 citywide citywide https://carsa2012.org/category/%e6%9c%80%e6%96%b0%e4%bf%a1%e6%81%af/"
+      "search_text": "live_081 就业·培训 carsa 最新信息 carsa 最新信息 industry news and activity notices.（来源类型：美国华人餐饮业协会 (carsa)） 全市 纽约全市 citywide citywide 2026-08-12 20:42:40 https://carsa2012.org/category/%e6%9c%80%e6%96%b0%e4%bf%a1%e6%81%af/"
     },
     {
       "id": "live_082",
       "module": "就业·培训",
-      "title_zh": "各类工作",
+      "title_zh": "各种工作",
       "summary_zh": "来自唐人街人力中心 (CMP) — 就业培训与招聘会的官方/正式机构页面，具体时间、地点、报名要求以官网为准。（来源类型：唐人街人力中心 (CMP) — 就业培训与招聘会）",
       "location_tag_zh": "全市",
       "location_kind": "citywide",
@@ -1649,15 +1649,15 @@
       "published_at": "",
       "source_published_at": "",
       "first_indexed_at": "2026-08-12 20:42:40",
-      "last_seen_at": "2026-08-12 20:42:40",
+      "last_seen_at": "2026-08-12 21:47:20",
       "date_kind": "event",
       "url": "https://www.cmpny.org/s/Accutime-Watch-Corp.pdf",
-      "search_text": "live_082 就业·培训 各类工作 various jobs 来自唐人街人力中心 (cmp) — 就业培训与招聘会的官方/正式机构页面，具体时间、地点、报名要求以官网为准。（来源类型：唐人街人力中心 (cmp) — 就业培训与招聘会） 全市 纽约全市 citywide 2026-08-12 20:42:40 2026-08-07 https://www.cmpny.org/s/accutime-watch-corp.pdf"
+      "search_text": "live_082 就业·培训 各种工作 various jobs 来自唐人街人力中心 (cmp) — 就业培训与招聘会的官方/正式机构页面，具体时间、地点、报名要求以官网为准。（来源类型：唐人街人力中心 (cmp) — 就业培训与招聘会） 全市 纽约全市 citywide 2026-08-12 20:42:40 2026-08-07 https://www.cmpny.org/s/accutime-watch-corp.pdf"
     },
     {
       "id": "live_083",
       "module": "就业·培训",
-      "title_zh": "2026年儿童艺术比赛：召集所有年轻艺术家！",
+      "title_zh": "儿童艺术比赛2026：召集所有年轻艺术家！",
       "summary_zh": "来自唐人街人力中心 (CMP) — 就业培训与招聘会的官方/正式机构页面，具体时间、地点、报名要求以官网为准。（来源类型：唐人街人力中心 (CMP) — 就业培训与招聘会）",
       "location_tag_zh": "全市",
       "location_kind": "citywide",
@@ -1669,10 +1669,10 @@
       "published_at": "",
       "source_published_at": "",
       "first_indexed_at": "2026-08-12 20:42:40",
-      "last_seen_at": "2026-08-12 20:42:40",
+      "last_seen_at": "2026-08-12 21:47:20",
       "date_kind": "service",
       "url": "https://www.cmpny.org/news/events/classes/2026/8/7/kids-art-contest-2026-calling-all-young-artists",
-      "search_text": "live_083 就业·培训 2026年儿童艺术比赛：召集所有年轻艺术家！ kids art contest 2026: calling all young artists! 来自唐人街人力中心 (cmp) — 就业培训与招聘会的官方/正式机构页面，具体时间、地点、报名要求以官网为准。（来源类型：唐人街人力中心 (cmp) — 就业培训与招聘会） 全市 纽约全市 citywide 2026-08-12 20:42:40 https://www.cmpny.org/news/events/classes/2026/8/7/kids-art-contest-2026-calling-all-young-artists"
+      "search_text": "live_083 就业·培训 儿童艺术比赛2026：召集所有年轻艺术家！ kids art contest 2026: calling all young artists! 来自唐人街人力中心 (cmp) — 就业培训与招聘会的官方/正式机构页面，具体时间、地点、报名要求以官网为准。（来源类型：唐人街人力中心 (cmp) — 就业培训与招聘会） 全市 纽约全市 citywide 2026-08-12 20:42:40 https://www.cmpny.org/news/events/classes/2026/8/7/kids-art-contest-2026-calling-all-young-artists"
     },
     {
       "id": "live_084",
@@ -1689,7 +1689,7 @@
       "published_at": "",
       "source_published_at": "",
       "first_indexed_at": "2026-08-12 20:42:40",
-      "last_seen_at": "2026-08-12 20:42:40",
+      "last_seen_at": "2026-08-12 21:47:20",
       "date_kind": "service",
       "url": "https://www.cacf.org/policy-advocacy",
       "search_text": "live_084 亲子·公园 政策与倡导 policy + advocacy 来自亚美儿童与家庭联盟 (cacf)的官方/正式机构页面，具体时间、地点、报名要求以官网为准。（来源类型：亚美儿童与家庭联盟 (cacf)） 全市 纽约全市 citywide 2026-08-12 20:42:40 https://www.cacf.org/policy-advocacy"
@@ -1709,7 +1709,7 @@
       "published_at": "",
       "source_published_at": "",
       "first_indexed_at": "2026-08-12 20:42:40",
-      "last_seen_at": "2026-08-12 20:42:40",
+      "last_seen_at": "2026-08-12 21:47:20",
       "date_kind": "service",
       "url": "https://www.cacf.org/capacity-building",
       "search_text": "live_085 亲子·公园 资助 grants 来自亚美儿童与家庭联盟 (cacf)的官方/正式机构页面，具体时间、地点、报名要求以官网为准。（来源类型：亚美儿童与家庭联盟 (cacf)） 全市 纽约全市 citywide 2026-08-12 20:42:40 https://www.cacf.org/capacity-building"
@@ -1729,7 +1729,7 @@
       "published_at": "",
       "source_published_at": "",
       "first_indexed_at": "2026-08-12 20:42:40",
-      "last_seen_at": "2026-08-12 20:42:40",
+      "last_seen_at": "2026-08-12 21:47:20",
       "date_kind": "service",
       "url": "https://www.cacf.org/events/asap-2025-community-briefing",
       "search_text": "live_086 亲子·公园 2025年asap社区简报 2025 asap community briefing 来自亚美儿童与家庭联盟 (cacf)的官方/正式机构页面，具体时间、地点、报名要求以官网为准。（来源类型：亚美儿童与家庭联盟 (cacf)） 全市 纽约全市 citywide 2026-08-12 20:42:40 https://www.cacf.org/events/asap-2025-community-briefing"
@@ -1749,7 +1749,7 @@
       "published_at": "",
       "source_published_at": "",
       "first_indexed_at": "2026-08-12 20:42:40",
-      "last_seen_at": "2026-08-12 20:42:40",
+      "last_seen_at": "2026-08-12 21:47:20",
       "date_kind": "service",
       "url": "https://www.cacf.org/events/aycan-our-community-our-voices",
       "search_text": "live_087 亲子·公园 我们的社区，我们的声音 our community, our voices 来自亚美儿童与家庭联盟 (cacf)的官方/正式机构页面，具体时间、地点、报名要求以官网为准。（来源类型：亚美儿童与家庭联盟 (cacf)） 全市 纽约全市 citywide 2026-08-12 20:42:40 https://www.cacf.org/events/aycan-our-community-our-voices"
@@ -1757,7 +1757,7 @@
     {
       "id": "live_088",
       "module": "亲子·公园",
-      "title_zh": "2025年亚裔美国人市长论坛",
+      "title_zh": "2025 年亚裔美国人市长论坛",
       "summary_zh": "来自亚美儿童与家庭联盟 (CACF)的官方/正式机构页面，具体时间、地点、报名要求以官网为准。（来源类型：亚美儿童与家庭联盟 (CACF)）",
       "location_tag_zh": "全市",
       "location_kind": "citywide",
@@ -1769,15 +1769,15 @@
       "published_at": "",
       "source_published_at": "",
       "first_indexed_at": "2026-08-12 20:42:40",
-      "last_seen_at": "2026-08-12 20:42:40",
+      "last_seen_at": "2026-08-12 21:47:20",
       "date_kind": "service",
       "url": "https://www.cacf.org/events/cacf-2025-aapi-mayoral-forum",
-      "search_text": "live_088 亲子·公园 2025年亚裔美国人市长论坛 2025 aapi mayoral forum 来自亚美儿童与家庭联盟 (cacf)的官方/正式机构页面，具体时间、地点、报名要求以官网为准。（来源类型：亚美儿童与家庭联盟 (cacf)） 全市 纽约全市 citywide 2026-08-12 20:42:40 https://www.cacf.org/events/cacf-2025-aapi-mayoral-forum"
+      "search_text": "live_088 亲子·公园 2025 年亚裔美国人市长论坛 2025 aapi mayoral forum 来自亚美儿童与家庭联盟 (cacf)的官方/正式机构页面，具体时间、地点、报名要求以官网为准。（来源类型：亚美儿童与家庭联盟 (cacf)） 全市 纽约全市 citywide 2026-08-12 20:42:40 https://www.cacf.org/events/cacf-2025-aapi-mayoral-forum"
     },
     {
       "id": "live_089",
       "module": "福利·政务",
-      "title_zh": "SNAP 和 CA",
+      "title_zh": "SNAP与CA",
       "summary_zh": "来自纽约市人力资源管理局的官方/正式机构页面，具体时间、地点、报名要求以官网为准。（来源类型：纽约市人力资源管理局）",
       "location_tag_zh": "全市",
       "location_kind": "citywide",
@@ -1789,10 +1789,10 @@
       "published_at": "",
       "source_published_at": "",
       "first_indexed_at": "2026-08-11 23:03:58",
-      "last_seen_at": "2026-08-12 20:42:40",
+      "last_seen_at": "2026-08-12 21:47:20",
       "date_kind": "service",
       "url": "https://www.nyc.gov/site/hra/help/i-need-help.page",
-      "search_text": "live_089 福利·政务 snap 和 ca snap & ca 来自纽约市人力资源管理局的官方/正式机构页面，具体时间、地点、报名要求以官网为准。（来源类型：纽约市人力资源管理局） 全市 纽约全市 citywide 2026-08-11 23:03:58 https://www.nyc.gov/site/hra/help/i-need-help.page"
+      "search_text": "live_089 福利·政务 snap与ca snap & ca 来自纽约市人力资源管理局的官方/正式机构页面，具体时间、地点、报名要求以官网为准。（来源类型：纽约市人力资源管理局） 全市 纽约全市 citywide 2026-08-11 23:03:58 https://www.nyc.gov/site/hra/help/i-need-help.page"
     },
     {
       "id": "live_090",
@@ -1809,7 +1809,7 @@
       "published_at": "",
       "source_published_at": "",
       "first_indexed_at": "2026-08-11 23:03:58",
-      "last_seen_at": "2026-08-12 20:42:40",
+      "last_seen_at": "2026-08-12 21:47:20",
       "date_kind": "service",
       "url": "https://www.nyc.gov/site/hra/help/homelessness-prevention.page",
       "search_text": "live_090 福利·政务 住房与预防服务 housing & prevention services 来自纽约市人力资源管理局的官方/正式机构页面，具体时间、地点、报名要求以官网为准。（来源类型：纽约市人力资源管理局） 全市 纽约全市 citywide 2026-08-11 23:03:58 https://www.nyc.gov/site/hra/help/homelessness-prevention.page"
@@ -1829,7 +1829,7 @@
       "published_at": "",
       "source_published_at": "",
       "first_indexed_at": "2026-08-11 23:03:58",
-      "last_seen_at": "2026-08-12 20:42:40",
+      "last_seen_at": "2026-08-12 21:47:20",
       "date_kind": "service",
       "url": "https://www.nyc.gov/site/hra/help/other-services.page",
       "search_text": "live_091 福利·政务 其他福利与服务 other benefits & services 来自纽约市人力资源管理局的官方/正式机构页面，具体时间、地点、报名要求以官网为准。（来源类型：纽约市人力资源管理局） 全市 纽约全市 citywide 2026-08-11 23:03:58 https://www.nyc.gov/site/hra/help/other-services.page"
@@ -1849,7 +1849,7 @@
       "published_at": "",
       "source_published_at": "",
       "first_indexed_at": "2026-08-11 23:03:58",
-      "last_seen_at": "2026-08-12 20:42:40",
+      "last_seen_at": "2026-08-12 21:47:20",
       "date_kind": "service",
       "url": "https://www.nyc.gov/site/hra/help/benefitreplacement.page",
       "search_text": "live_092 福利·政务 福利替代 benefit replacement 来自纽约市人力资源管理局的官方/正式机构页面，具体时间、地点、报名要求以官网为准。（来源类型：纽约市人力资源管理局） 全市 纽约全市 citywide 2026-08-11 23:03:58 https://www.nyc.gov/site/hra/help/benefitreplacement.page"
@@ -1869,7 +1869,7 @@
       "published_at": "",
       "source_published_at": "",
       "first_indexed_at": "2026-08-12 10:30:40",
-      "last_seen_at": "2026-08-12 20:42:40",
+      "last_seen_at": "2026-08-12 21:47:20",
       "date_kind": "service",
       "url": "https://www.nyc.gov/site/hra/help/child-care-benefits.page",
       "search_text": "live_093 福利·政务 儿童保育服务 child care services 来自纽约市人力资源管理局的官方/正式机构页面，具体时间、地点、报名要求以官网为准。（来源类型：纽约市人力资源管理局） 全市 纽约全市 citywide 2026-08-12 10:30:40 https://www.nyc.gov/site/hra/help/child-care-benefits.page"
@@ -1889,7 +1889,7 @@
       "published_at": "",
       "source_published_at": "",
       "first_indexed_at": "2026-08-11 23:03:58",
-      "last_seen_at": "2026-08-12 20:42:40",
+      "last_seen_at": "2026-08-12 21:47:20",
       "date_kind": "service",
       "url": "https://www.nyc.gov/site/hra/help/fraud-prevention.page",
       "search_text": "live_094 安全·突发 福利欺诈预防 welfare fraud prevention 来自纽约市人力资源管理局的官方/正式机构页面，具体时间、地点、报名要求以官网为准。（来源类型：纽约市人力资源管理局） 全市 纽约全市 citywide 2026-08-11 23:03:58 https://www.nyc.gov/site/hra/help/fraud-prevention.page"
@@ -1897,7 +1897,7 @@
     {
       "id": "live_095",
       "module": "住房·安居",
-      "title_zh": "有问题吗？联系住房大使！",
+      "title_zh": "有问题？联系住房大使！",
       "summary_zh": "来自纽约市住房保护局的官方/正式机构页面，具体时间、地点、报名要求以官网为准。（来源类型：纽约市住房保护局）",
       "location_tag_zh": "全市",
       "location_kind": "citywide",
@@ -1909,10 +1909,10 @@
       "published_at": "",
       "source_published_at": "",
       "first_indexed_at": "2026-08-12 16:03:37",
-      "last_seen_at": "2026-08-12 20:42:40",
+      "last_seen_at": "2026-08-12 21:47:20",
       "date_kind": "service",
       "url": "https://www.nyc.gov/site/hpd/services-and-information/housing-ambassadors.page",
-      "search_text": "live_095 住房·安居 有问题吗？联系住房大使！ have questions? contact a housing ambassador! 来自纽约市住房保护局的官方/正式机构页面，具体时间、地点、报名要求以官网为准。（来源类型：纽约市住房保护局） 全市 纽约全市 citywide 2026-08-12 16:03:37 https://www.nyc.gov/site/hpd/services-and-information/housing-ambassadors.page"
+      "search_text": "live_095 住房·安居 有问题？联系住房大使！ have questions? contact a housing ambassador! 来自纽约市住房保护局的官方/正式机构页面，具体时间、地点、报名要求以官网为准。（来源类型：纽约市住房保护局） 全市 纽约全市 citywide 2026-08-12 16:03:37 https://www.nyc.gov/site/hpd/services-and-information/housing-ambassadors.page"
     },
     {
       "id": "live_096",
@@ -1929,7 +1929,7 @@
       "published_at": "",
       "source_published_at": "",
       "first_indexed_at": "2026-08-12 16:03:37",
-      "last_seen_at": "2026-08-12 20:42:40",
+      "last_seen_at": "2026-08-12 21:47:20",
       "date_kind": "service",
       "url": "https://www.nyc.gov/site/doh/health/health-topics/health-insurance-behavioral.page",
       "search_text": "live_096 医疗·健康 健康保险：行为健康服务 health insurance: behavioral health services 来自纽约市卫生局的官方/正式机构页面，具体时间、地点、报名要求以官网为准。（来源类型：纽约市卫生局） 全市 纽约全市 citywide 2026-08-12 16:03:37 https://www.nyc.gov/site/doh/health/health-topics/health-insurance-behavioral.page"
@@ -1937,7 +1937,7 @@
     {
       "id": "live_097",
       "module": "福利·政务",
-      "title_zh": "SNAP常见问题",
+      "title_zh": "SNAP 常见问题",
       "summary_zh": "来自纽约市人力资源管理局的官方/正式机构页面，具体时间、地点、报名要求以官网为准。（来源类型：纽约市人力资源管理局）",
       "location_tag_zh": "全市",
       "location_kind": "citywide",
@@ -1949,15 +1949,15 @@
       "published_at": "",
       "source_published_at": "",
       "first_indexed_at": "2026-08-12 11:20:41",
-      "last_seen_at": "2026-08-12 20:42:40",
+      "last_seen_at": "2026-08-12 21:47:20",
       "date_kind": "service",
       "url": "https://www.nyc.gov/site/hra/help/snap-application-frequently-asked-questions.page",
-      "search_text": "live_097 福利·政务 snap常见问题 snap frequently asked questions 来自纽约市人力资源管理局的官方/正式机构页面，具体时间、地点、报名要求以官网为准。（来源类型：纽约市人力资源管理局） 全市 纽约全市 citywide 2026-08-12 11:20:41 https://www.nyc.gov/site/hra/help/snap-application-frequently-asked-questions.page"
+      "search_text": "live_097 福利·政务 snap 常见问题 snap frequently asked questions 来自纽约市人力资源管理局的官方/正式机构页面，具体时间、地点、报名要求以官网为准。（来源类型：纽约市人力资源管理局） 全市 纽约全市 citywide 2026-08-12 11:20:41 https://www.nyc.gov/site/hra/help/snap-application-frequently-asked-questions.page"
     },
     {
       "id": "live_098",
       "module": "福利·政务",
-      "title_zh": "所有纽约人都有权享受医疗保健",
+      "title_zh": "所有纽约人都有权获得医疗保健",
       "summary_zh": "来自纽约市卫生局的官方/正式机构页面，具体时间、地点、报名要求以官网为准。（来源类型：纽约市卫生局）",
       "location_tag_zh": "全市",
       "location_kind": "citywide",
@@ -1969,15 +1969,15 @@
       "published_at": "",
       "source_published_at": "",
       "first_indexed_at": "2026-08-12 16:03:37",
-      "last_seen_at": "2026-08-12 20:42:40",
+      "last_seen_at": "2026-08-12 21:47:20",
       "date_kind": "service",
       "url": "https://www.nyc.gov/site/doh/health/health-topics/immigrant-health.page",
-      "search_text": "live_098 福利·政务 所有纽约人都有权享受医疗保健 all new yorkers have a right to health care 来自纽约市卫生局的官方/正式机构页面，具体时间、地点、报名要求以官网为准。（来源类型：纽约市卫生局） 全市 纽约全市 citywide 2026-08-12 16:03:37 https://www.nyc.gov/site/doh/health/health-topics/immigrant-health.page"
+      "search_text": "live_098 福利·政务 所有纽约人都有权获得医疗保健 all new yorkers have a right to health care 来自纽约市卫生局的官方/正式机构页面，具体时间、地点、报名要求以官网为准。（来源类型：纽约市卫生局） 全市 纽约全市 citywide 2026-08-12 16:03:37 https://www.nyc.gov/site/doh/health/health-topics/immigrant-health.page"
     },
     {
       "id": "live_099",
       "module": "医疗·健康",
-      "title_zh": "COVID-19疫苗仍然是我们最好的防御",
+      "title_zh": "COVID-19 疫苗仍是我们最好的防御",
       "summary_zh": "来自纽约市卫生局的官方/正式机构页面，具体时间、地点、报名要求以官网为准。（来源类型：纽约市卫生局）",
       "location_tag_zh": "全市",
       "location_kind": "citywide",
@@ -1989,15 +1989,15 @@
       "published_at": "",
       "source_published_at": "",
       "first_indexed_at": "2026-08-12 16:03:37",
-      "last_seen_at": "2026-08-12 20:42:40",
+      "last_seen_at": "2026-08-12 21:47:20",
       "date_kind": "service",
       "url": "https://www.nyc.gov/assets/doh/downloads/pdf/covid/covid-19-vax-best-defense.pdf",
-      "search_text": "live_099 医疗·健康 covid-19疫苗仍然是我们最好的防御 covid-19 vaccines are still our best defense 来自纽约市卫生局的官方/正式机构页面，具体时间、地点、报名要求以官网为准。（来源类型：纽约市卫生局） 全市 纽约全市 citywide 2026-08-12 16:03:37 https://www.nyc.gov/assets/doh/downloads/pdf/covid/covid-19-vax-best-defense.pdf"
+      "search_text": "live_099 医疗·健康 covid-19 疫苗仍是我们最好的防御 covid-19 vaccines are still our best defense 来自纽约市卫生局的官方/正式机构页面，具体时间、地点、报名要求以官网为准。（来源类型：纽约市卫生局） 全市 纽约全市 citywide 2026-08-12 16:03:37 https://www.nyc.gov/assets/doh/downloads/pdf/covid/covid-19-vax-best-defense.pdf"
     },
     {
       "id": "live_100",
       "module": "医疗·健康",
-      "title_zh": "纽约人的心理健康状况，数据附录",
+      "title_zh": "纽约人心理健康状况，数据附录",
       "summary_zh": "来自纽约市卫生局的官方/正式机构页面，具体时间、地点、报名要求以官网为准。（来源类型：纽约市卫生局）",
       "location_tag_zh": "全市",
       "location_kind": "citywide",
@@ -2009,10 +2009,10 @@
       "published_at": "",
       "source_published_at": "",
       "first_indexed_at": "2026-08-12 16:03:37",
-      "last_seen_at": "2026-08-12 20:42:40",
+      "last_seen_at": "2026-08-12 21:47:20",
       "date_kind": "service",
       "url": "https://www.nyc.gov/assets/doh/downloads/excel/mh/state-of-mental-health-new-yorkers-appendix.xlsx",
-      "search_text": "live_100 医疗·健康 纽约人的心理健康状况，数据附录 state of mental health of new yorkers, data appendix 来自纽约市卫生局的官方/正式机构页面，具体时间、地点、报名要求以官网为准。（来源类型：纽约市卫生局） 全市 纽约全市 citywide 2026-08-12 16:03:37 https://www.nyc.gov/assets/doh/downloads/excel/mh/state-of-mental-health-new-yorkers-appendix.xlsx"
+      "search_text": "live_100 医疗·健康 纽约人心理健康状况，数据附录 state of mental health of new yorkers, data appendix 来自纽约市卫生局的官方/正式机构页面，具体时间、地点、报名要求以官网为准。（来源类型：纽约市卫生局） 全市 纽约全市 citywide 2026-08-12 16:03:37 https://www.nyc.gov/assets/doh/downloads/excel/mh/state-of-mental-health-new-yorkers-appendix.xlsx"
     },
     {
       "id": "live_101",
@@ -2029,7 +2029,7 @@
       "published_at": "",
       "source_published_at": "",
       "first_indexed_at": "2026-08-12 16:03:37",
-      "last_seen_at": "2026-08-12 20:42:40",
+      "last_seen_at": "2026-08-12 21:47:20",
       "date_kind": "service",
       "url": "https://www.nyc.gov/assets/doh/downloads/pdf/mh/social-media-mental-health-report-2024.pdf",
       "search_text": "live_101 医疗·健康 关于社交媒体与心理健康的特别报告 special report on social media and mental health 来自纽约市卫生局的官方/正式机构页面，具体时间、地点、报名要求以官网为准。（来源类型：纽约市卫生局） 全市 纽约全市 citywide 2026-08-12 16:03:37 https://www.nyc.gov/assets/doh/downloads/pdf/mh/social-media-mental-health-report-2024.pdf"
@@ -2049,7 +2049,7 @@
       "published_at": "",
       "source_published_at": "",
       "first_indexed_at": "2026-08-12 16:03:37",
-      "last_seen_at": "2026-08-12 20:42:40",
+      "last_seen_at": "2026-08-12 21:47:20",
       "date_kind": "service",
       "url": "https://www.nyc.gov/assets/doh/downloads/pdf/mh/social-media-mental-health-report-2024-data-tables.xlsx",
       "search_text": "live_102 医疗·健康 社交媒体与心理健康数据表 social media and mental health data tables 来自纽约市卫生局的官方/正式机构页面，具体时间、地点、报名要求以官网为准。（来源类型：纽约市卫生局） 全市 纽约全市 citywide 2026-08-12 16:03:37 https://www.nyc.gov/assets/doh/downloads/pdf/mh/social-media-mental-health-report-2024-data-tables.xlsx"
@@ -2069,7 +2069,7 @@
       "published_at": "",
       "source_published_at": "",
       "first_indexed_at": "2026-08-12 16:03:37",
-      "last_seen_at": "2026-08-12 20:42:40",
+      "last_seen_at": "2026-08-12 21:47:20",
       "date_kind": "service",
       "url": "https://www.nyc.gov/site/doh/providers/resources/mental-health-trainings.page",
       "search_text": "live_103 医疗·健康 医疗保健提供者的心理健康培训 mental health trainings for health care providers 来自纽约市卫生局的官方/正式机构页面，具体时间、地点、报名要求以官网为准。（来源类型：纽约市卫生局） 全市 纽约全市 citywide 2026-08-12 16:03:37 https://www.nyc.gov/site/doh/providers/resources/mental-health-trainings.page"
@@ -2077,7 +2077,7 @@
     {
       "id": "live_104",
       "module": "医疗·健康",
-      "title_zh": "关爱、社区、行动：纽约市心理健康计划",
+      "title_zh": "关怀、社区、行动：纽约市心理健康计划",
       "summary_zh": "来自纽约市卫生局的官方/正式机构页面，具体时间、地点、报名要求以官网为准。（来源类型：纽约市卫生局）",
       "location_tag_zh": "全市",
       "location_kind": "citywide",
@@ -2089,10 +2089,10 @@
       "published_at": "",
       "source_published_at": "",
       "first_indexed_at": "2026-08-12 16:03:37",
-      "last_seen_at": "2026-08-12 20:42:40",
+      "last_seen_at": "2026-08-12 21:47:20",
       "date_kind": "service",
       "url": "https://www.nyc.gov/assets/doh/care-community-action-mental-health-plan/index.html",
-      "search_text": "live_104 医疗·健康 关爱、社区、行动：纽约市心理健康计划 care, community, action: a mental health plan for new york city 来自纽约市卫生局的官方/正式机构页面，具体时间、地点、报名要求以官网为准。（来源类型：纽约市卫生局） 全市 纽约全市 citywide 2026-08-12 16:03:37 https://www.nyc.gov/assets/doh/care-community-action-mental-health-plan/index.html"
+      "search_text": "live_104 医疗·健康 关怀、社区、行动：纽约市心理健康计划 care, community, action: a mental health plan for new york city 来自纽约市卫生局的官方/正式机构页面，具体时间、地点、报名要求以官网为准。（来源类型：纽约市卫生局） 全市 纽约全市 citywide 2026-08-12 16:03:37 https://www.nyc.gov/assets/doh/care-community-action-mental-health-plan/index.html"
     },
     {
       "id": "live_105",
