@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0",
-  "generated_at": "2026-09-04 15:05",
+  "generated_at": "2026-09-05 14:00",
   "count": 120,
   "fields": [
     "first_indexed_at",
@@ -29,7 +29,7 @@
       "published_at": "",
       "source_published_at": "",
       "first_indexed_at": "2026-06-15 20:30:26",
-      "last_seen_at": "2026-09-04 11:04:58",
+      "last_seen_at": "2026-09-05 10:00:22",
       "date_kind": "event",
       "url": "https://www.bmcc.cuny.edu/ce/esl-college-prep/",
       "search_text": "live_001 语言·教育 esl and college prep esl and college prep education program on www.bmcc.cuny.edu — click to enroll or learn more.（来源类型：纽约市立大学 — 继续教育、英语课及成人学习） 全市 纽约全市 citywide new york city 2026-06-15 20:30:26 2026-09-07 https://www.bmcc.cuny.edu/ce/esl-college-prep/"
@@ -49,7 +49,7 @@
       "published_at": "",
       "source_published_at": "",
       "first_indexed_at": "2026-06-15 20:30:26",
-      "last_seen_at": "2026-09-04 11:04:58",
+      "last_seen_at": "2026-09-05 10:00:22",
       "date_kind": "event",
       "url": "https://www.bmcc.cuny.edu/ce/esl-training-programs/",
       "search_text": "live_002 语言·教育 esl training programs esl training programs education program on www.bmcc.cuny.edu — click to enroll or learn more.（来源类型：纽约市立大学 — 继续教育、英语课及成人学习） 全市 纽约全市 citywide new york city 2026-06-15 20:30:26 2026-09-07 https://www.bmcc.cuny.edu/ce/esl-training-programs/"
@@ -69,7 +69,7 @@
       "published_at": "",
       "source_published_at": "",
       "first_indexed_at": "2026-06-15 20:30:26",
-      "last_seen_at": "2026-09-04 11:04:58",
+      "last_seen_at": "2026-09-05 10:00:22",
       "date_kind": "event",
       "url": "https://www.bmcc.cuny.edu/ce/hse-ged-and-esol-programs/",
       "search_text": "live_003 语言·教育 hse (ged) and esol programs hse (ged) and esol programs education program on www.bmcc.cuny.edu — click to enroll or learn more.（来源类型：纽约市立大学 — 继续教育、英语课及成人学习） 全市 纽约全市 citywide new york city 2026-06-15 20:30:26 2026-09-07 https://www.bmcc.cuny.edu/ce/hse-ged-and-esol-programs/"
@@ -89,7 +89,7 @@
       "published_at": "2026-04-24",
       "source_published_at": "2026-04-24 06:13:09",
       "first_indexed_at": "2026-06-15 20:30:26",
-      "last_seen_at": "2026-09-04 11:04:58",
+      "last_seen_at": "2026-09-05 10:00:22",
       "date_kind": "event",
       "url": "https://www.kingsborough.edu/ce/hse_courses.html",
       "search_text": "live_004 语言·教育 high school equivalency (hse/ged) high school equivalency (hse/ged) education program on www.kingsborough.edu — click to enroll or learn more.（来源类型：纽约市立大学 — 继续教育、英语课及成人学习） 全市 纽约全市 citywide new york city 2026-06-15 20:30:26 2026-04-24 06:13:09 2026-09-07 https://www.kingsborough.edu/ce/hse_courses.html"
@@ -117,22 +117,22 @@
     {
       "id": "live_006",
       "module": "亲子·公园",
-      "title_zh": "动动小孩：Elmhurst Park",
-      "summary_zh": "动动小孩项目让孩子们参与户外活动。纽约市公园工作人员在纽约市的游乐场领导四到七小时的免费活动，包括组织体育、游戏、健身示范、棋类等。",
+      "title_zh": "Kids In Motion: Elmhurst Park",
+      "summary_zh": "Playground (in Elmhurst Park)（来源类型：nyc_parks_opendata_fallback）",
       "location_tag_zh": "艾姆赫斯特 Elmhurst",
       "location_kind": "enclave",
       "area_zh": "艾姆赫斯特 Elmhurst",
       "borough": "Queens",
       "location": "Playground (in Elmhurst Park)",
       "event_date": "2026-09-05",
-      "event_time": "10:00:00",
+      "event_time": "",
       "published_at": "",
       "source_published_at": "",
       "first_indexed_at": "2026-09-03 11:09:48",
-      "last_seen_at": "2026-09-03 11:09:48",
+      "last_seen_at": "2026-09-05 10:00:22",
       "date_kind": "event",
       "url": "https://www.nycgovparks.org/events/2026/09/05/kids-in-motion-elmhurst-park",
-      "search_text": "live_006 亲子·公园 动动小孩：elmhurst park kids in motion: elmhurst park 动动小孩项目让孩子们参与户外活动。纽约市公园工作人员在纽约市的游乐场领导四到七小时的免费活动，包括组织体育、游戏、健身示范、棋类等。 艾姆赫斯特 elmhurst 艾姆赫斯特 elmhurst queens playground (in elmhurst park) 2026-09-03 11:09:48 2026-09-05 https://www.nycgovparks.org/events/2026/09/05/kids-in-motion-elmhurst-park"
+      "search_text": "live_006 亲子·公园 kids in motion: elmhurst park kids in motion: elmhurst park playground (in elmhurst park)（来源类型：nyc_parks_opendata_fallback） 艾姆赫斯特 elmhurst 艾姆赫斯特 elmhurst queens playground (in elmhurst park) 2026-09-03 11:09:48 2026-09-05 https://www.nycgovparks.org/events/2026/09/05/kids-in-motion-elmhurst-park"
     },
     {
       "id": "live_007",
@@ -189,7 +189,7 @@
       "published_at": "",
       "source_published_at": "",
       "first_indexed_at": "2026-06-15 20:30:26",
-      "last_seen_at": "2026-09-04 11:04:58",
+      "last_seen_at": "2026-09-05 10:00:22",
       "date_kind": "event",
       "url": "https://www.qcc.cuny.edu/ce/courses/qcc-continuing-education-swim-program.html",
       "search_text": "live_009 语言·教育 qcc continuing education swim program qcc continuing education swim program education program on www.qcc.cuny.edu — click to enroll or learn more.（来源类型：纽约市立大学 — 继续教育、英语课及成人学习） 全市 纽约全市 citywide new york city 2026-06-15 20:30:26 2026-09-07 https://www.qcc.cuny.edu/ce/courses/qcc-continuing-education-swim-program.html"
@@ -209,7 +209,7 @@
       "published_at": "",
       "source_published_at": "",
       "first_indexed_at": "2026-06-15 20:30:26",
-      "last_seen_at": "2026-09-04 11:04:58",
+      "last_seen_at": "2026-09-05 10:00:22",
       "date_kind": "event",
       "url": "https://www.qcc.cuny.edu/ce/index.html",
       "search_text": "live_010 就业·培训 continuing education workforce development continuing education workforce development education program on www.qcc.cuny.edu — click to enroll or learn more.（来源类型：纽约市立大学 — 继续教育、英语课及成人学习） 全市 纽约全市 citywide new york city 2026-06-15 20:30:26 2026-09-07 https://www.qcc.cuny.edu/ce/index.html"
@@ -229,7 +229,7 @@
       "published_at": "",
       "source_published_at": "",
       "first_indexed_at": "2026-06-15 20:30:26",
-      "last_seen_at": "2026-09-04 11:04:58",
+      "last_seen_at": "2026-09-05 10:00:22",
       "date_kind": "event",
       "url": "https://www.bmcc.cuny.edu/ce/bmcc-nyc-workforce-resources/",
       "search_text": "live_011 就业·培训 new york workforce resources new york workforce resources education program on www.bmcc.cuny.edu — click to enroll or learn more.（来源类型：纽约市立大学 — 继续教育、英语课及成人学习） 全市 纽约全市 citywide new york city 2026-06-15 20:30:26 2026-09-07 https://www.bmcc.cuny.edu/ce/bmcc-nyc-workforce-resources/"
@@ -769,7 +769,7 @@
       "published_at": "",
       "source_published_at": "",
       "first_indexed_at": "2026-06-15 20:30:26",
-      "last_seen_at": "2026-09-04 11:04:58",
+      "last_seen_at": "2026-09-05 10:00:22",
       "date_kind": "service",
       "url": "https://www.qcc.cuny.edu/ce/programs/community-english-as-a-second-language.html",
       "search_text": "live_038 语言·教育 community english as a second language community english as a second language education program on www.qcc.cuny.edu — click to enroll or learn more.（来源类型：纽约市立大学 — 继续教育、英语课及成人学习） 全市 纽约全市 citywide new york city 2026-06-15 20:30:26 https://www.qcc.cuny.edu/ce/programs/community-english-as-a-second-language.html"
@@ -789,7 +789,7 @@
       "published_at": "",
       "source_published_at": "",
       "first_indexed_at": "2026-06-15 20:30:26",
-      "last_seen_at": "2026-09-04 11:04:58",
+      "last_seen_at": "2026-09-05 10:00:22",
       "date_kind": "service",
       "url": "https://www.bmcc.cuny.edu/ce/programs/",
       "search_text": "live_039 语言·教育 math and literacy programs math and literacy programs education program on www.bmcc.cuny.edu — click to enroll or learn more.（来源类型：纽约市立大学 — 继续教育、英语课及成人学习） 全市 纽约全市 citywide new york city 2026-06-15 20:30:26 https://www.bmcc.cuny.edu/ce/programs/"
@@ -809,7 +809,7 @@
       "published_at": "",
       "source_published_at": "",
       "first_indexed_at": "2026-06-15 20:30:26",
-      "last_seen_at": "2026-09-04 11:04:58",
+      "last_seen_at": "2026-09-05 10:00:22",
       "date_kind": "service",
       "url": "https://www.bmcc.cuny.edu/ce/contact/",
       "search_text": "live_040 就业·培训 center for continuing education workforce development center for continuing education workforce development education program on www.bmcc.cuny.edu — click to enroll or learn more.（来源类型：纽约市立大学 — 继续教育、英语课及成人学习） 全市 纽约全市 citywide new york city 2026-06-15 20:30:26 https://www.bmcc.cuny.edu/ce/contact/"
