@@ -8844,6 +8844,8 @@ function setSectionVisible(id, visible) {
 
 function hubPushViewToUrl(view) {
   try {
+    const path = String(window.location.pathname || '');
+    if ((path === '/' || path === '') && view === 'latest') return;
     const u = new URL(window.location.href);
     u.searchParams.set('view', view);
     history.replaceState(null, '', u.pathname + u.search + u.hash);
@@ -9135,9 +9137,12 @@ function initMobileHub() {
       if (lc) lc.value = '1';
       if (!forceMobile && !/[?&]mobile=/.test(location.search)) {
         try {
-          const u = new URL(location.href);
-          u.searchParams.set('mobile', '1');
-          history.replaceState(null, '', u.pathname + u.search + u.hash);
+          const path = String(location.pathname || '');
+          if (path !== '/' && path !== '') {
+            const u = new URL(location.href);
+            u.searchParams.set('mobile', '1');
+            history.replaceState(null, '', u.pathname + u.search + u.hash);
+          }
         } catch (_) { /* ignore */ }
       }
     }
