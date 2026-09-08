@@ -457,6 +457,19 @@ button.text-arrow {
   color: #9a3412;
   font-size: 0.92rem;
 }
+.book-next { display: grid; gap: 12px; }
+.book-next[hidden] { display: none; }
+.book-request {
+  margin: 0;
+  padding: 16px 18px;
+  background: #fff;
+  border: 1px solid var(--line);
+  color: var(--ink-2);
+  font: inherit;
+  font-size: 0.92rem;
+  line-height: 1.55;
+  white-space: pre-wrap;
+}
 
 .full-menu {
   display: grid;
