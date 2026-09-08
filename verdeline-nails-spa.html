@@ -6,7 +6,7 @@
   <title>Verdeline Nails + Spa | Short Hills, NJ</title>
   <meta name="description" content="Manicures, spa pedicures, gel services, waxing, hours, and directions for Verdeline Nails + Spa in Short Hills, New Jersey.">
   <link rel="icon" href="/verdeline-media/favicon.svg">
-  <link rel="stylesheet" href="/verdeline-media/styles.css?v=20260908c">
+  <link rel="stylesheet" href="/verdeline-media/styles.css?v=20260908d">
   <script type="application/ld+json">
   {"@context":"https://schema.org","@type":"NailSalon","name":"Verdeline Nails + Spa","telephone":"+1-973-258-0080","address":{"@type":"PostalAddress","streetAddress":"778 Morris Turnpike","addressLocality":"Short Hills","addressRegion":"NJ","postalCode":"07078","addressCountry":"US"},"sameAs":["https://www.instagram.com/verdeline_nails_short_hills/"],"openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday"],"opens":"09:30","closes":"19:00"},{"@type":"OpeningHoursSpecification","dayOfWeek":"Saturday","opens":"09:00","closes":"18:00"}]}
   </script>
@@ -39,7 +39,7 @@
         <p class="hero-lede">Manicures, spa pedicures, gel services and the small finishing details—at The Plaza at Short Hills.</p>
         <div class="action-row">
           <a class="button button-ink" href="tel:+19732580080"><svg width="17" height="17" aria-hidden="true"><use href="#i-phone"></use></svg> Call (973) 258-0080</a>
-          <button class="button button-quiet" type="button" data-nav="book">Book · Rewards <svg width="17" height="17" aria-hidden="true"><use href="#i-arrow"></use></svg></button>
+          <button class="button button-quiet" type="button" data-nav="book">Book now <svg width="17" height="17" aria-hidden="true"><use href="#i-arrow"></use></svg></button>
         </div>
         <div class="hero-facts">
           <p><svg width="17" height="17" aria-hidden="true"><use href="#i-pin"></use></svg> 778 Morris Tpke, Short Hills</p>
@@ -310,34 +310,97 @@
   <div id="book" class="view" data-view="book">
     <div class="inner-page">
       <header class="site-header" data-header></header>
-      <section class="book-hero">
-        <p class="section-kicker">Book · Rewards · Profile</p>
-        <h1>Reserve, join rewards, or save your profile.</h1>
-        <p>Call to hold a chair. Use the official Square page for the online menu, rewards at checkout, and a customer profile.</p>
+      <section class="flow-hero section-pad">
+        <div>
+          <p class="section-kicker">Book now</p>
+          <h1>Choose a service. Pick a time. Call to hold the chair.</h1>
+          <p class="lede">Same path as a neighborhood walk-in shop: salon first, then service, then time. Walk-ins are welcome when a chair is free.</p>
+        </div>
+        <figure class="page-intro-media">
+          <img src="/verdeline-media/verdeline-gallery-micro-french.webp" alt="Tailored manicure" loading="lazy">
+        </figure>
       </section>
-      <section class="book-grid" aria-label="Booking options">
-        <article class="book-card">
-          <p class="section-kicker">Online booking</p>
-          <h2>Book a time</h2>
-          <p>Appointments are confirmed by phone. Walk-ins are welcome when a chair is free.</p>
-          <a class="button button-ink" href="tel:+19732580080"><svg width="17" height="17" aria-hidden="true"><use href="#i-phone"></use></svg> Call (973) 258-0080</a>
-          <a class="button button-quiet" href="https://verdeline.square.site/s/shop" target="_blank" rel="noopener noreferrer">Open Square menu <svg width="17" height="17" aria-hidden="true"><use href="#i-arrow"></use></svg></a>
-        </article>
-        <article class="book-card">
+      <form class="book-flow section-pad" id="book-form">
+        <fieldset class="flow-step">
+          <legend>1 · Salon</legend>
+          <p class="flow-locked"><strong>Verdeline Nails + Spa</strong><br>778 Morris Turnpike, The Plaza at Short Hills</p>
+        </fieldset>
+        <fieldset class="flow-step">
+          <legend>2 · Service</legend>
+          <label for="book-service">What would you like?</label>
+          <select id="book-service" name="service" required>
+            <option value="">Select a service</option>
+            <option>Regular Manicure · $12</option>
+            <option>Spa Manicure · $24</option>
+            <option>Color Gel · $35</option>
+            <option>Regular Pedicure · $30</option>
+            <option>Gel Pedicure · $50</option>
+            <option>Spa Pedicure · $55+</option>
+            <option>Waxing</option>
+            <option>Not sure — ask the salon</option>
+          </select>
+        </fieldset>
+        <fieldset class="flow-step">
+          <legend>3 · Time</legend>
+          <div class="flow-pair">
+            <label>Preferred date<input id="book-date" name="date" type="date" required></label>
+            <label>Window
+              <select id="book-window" name="window" required>
+                <option value="">Select</option>
+                <option>Morning</option>
+                <option>Afternoon</option>
+                <option>Evening (weekdays)</option>
+                <option>First available</option>
+              </select>
+            </label>
+          </div>
+        </fieldset>
+        <fieldset class="flow-step">
+          <legend>4 · Guest</legend>
+          <div class="flow-pair">
+            <label>Name<input id="book-name" name="name" type="text" autocomplete="name" required></label>
+            <label>Phone<input id="book-phone" name="phone" type="tel" autocomplete="tel" required></label>
+          </div>
+          <label class="flow-check"><input id="book-join-rewards" type="checkbox"> Also join Rewards for this visit</label>
+        </fieldset>
+        <div class="flow-actions">
+          <button class="button button-ink" type="submit">Save request &amp; call salon</button>
+          <a class="button button-quiet" href="https://verdeline.square.site/s/shop" target="_blank" rel="noopener noreferrer">Online menu</a>
+        </div>
+        <p class="flow-note" id="book-confirm" hidden></p>
+      </form>
+      <footer class="site-footer" data-footer></footer>
+    </div>
+  </div>
+
+  <div id="rewards" class="view" data-view="rewards">
+    <div class="inner-page">
+      <header class="site-header" data-header></header>
+      <section class="flow-hero section-pad">
+        <div>
           <p class="section-kicker">Rewards</p>
-          <h2>Loyalty points</h2>
-          <p>Rewards are handled at the salon and on the official Square checkout—not as a separate points login on this site.</p>
-          <a class="button button-ink" href="https://verdeline.square.site/s/shop" target="_blank" rel="noopener noreferrer">Open Square <svg width="17" height="17" aria-hidden="true"><use href="#i-arrow"></use></svg></a>
-          <a class="button button-quiet" href="tel:+19732580080">Ask when you book</a>
-        </article>
-        <article class="book-card">
-          <p class="section-kicker">Register</p>
-          <h2>Save a profile</h2>
-          <p>There is no separate account page here. Your profile is created when you call, or when you check out on Square.</p>
-          <a class="button button-ink" href="https://verdeline.square.site/s/shop" target="_blank" rel="noopener noreferrer">Continue on Square <svg width="17" height="17" aria-hidden="true"><use href="#i-arrow"></use></svg></a>
-          <a class="button button-quiet" href="tel:+19732580080">Register by phone</a>
-        </article>
+          <h1>Join once. Earn on every visit.</h1>
+          <p class="lede">Enroll here, then show your guest card at the desk or Square checkout. Points and offers are added in the salon—not as a separate login on this site.</p>
+        </div>
+        <figure class="page-intro-media">
+          <img src="/verdeline-media/verdeline-gallery-sage.webp" alt="Quiet color manicure" loading="lazy">
+        </figure>
       </section>
+      <form class="book-flow section-pad" id="rewards-form">
+        <fieldset class="flow-step">
+          <legend>Guest card</legend>
+          <div class="flow-pair">
+            <label>Name<input id="rw-name" name="name" type="text" autocomplete="name" required></label>
+            <label>Phone<input id="rw-phone" name="phone" type="tel" autocomplete="tel" required></label>
+          </div>
+          <label>Email (optional)<input id="rw-email" name="email" type="email" autocomplete="email"></label>
+        </fieldset>
+        <div class="flow-actions">
+          <button class="button button-ink" type="submit">Start earning</button>
+          <button class="button button-quiet" type="button" data-nav="book">Book now</button>
+        </div>
+        <p class="flow-note" id="rw-confirm" hidden></p>
+      </form>
       <footer class="site-footer" data-footer></footer>
     </div>
   </div>
@@ -353,7 +416,8 @@
       <button type="button" data-nav="services">Services</button>
       <button type="button" data-nav="gallery">Gallery</button>
       <button type="button" data-nav="visit">Visit</button>
-      <button type="button" data-nav="book">Book</button>
+      <button type="button" data-nav="rewards">Rewards</button>
+      <button type="button" data-nav="book">Book now</button>
     </nav>
     <a class="button button-ink" href="tel:+19732580080"><svg width="17" height="17" aria-hidden="true"><use href="#i-phone"></use></svg> Call (973) 258-0080</a>
   </aside>
@@ -368,7 +432,7 @@
       <button type="button" class="nav-link" data-nav="services">Services</button>
       <button type="button" class="nav-link" data-nav="gallery">Gallery</button>
       <button type="button" class="nav-link" data-nav="visit">Visit</button>
-      <button type="button" class="nav-link" data-nav="book">Book</button>
+      <button type="button" class="nav-link" data-nav="rewards">Rewards</button>
       <a class="header-book" href="#book" data-nav="book">Book now</a>
     </nav>
     <div class="mobile-actions">
@@ -386,7 +450,8 @@
       <p style="margin-top:18px">A thoughtful beauty pause in Short Hills.</p>
     </div>
     <div class="footer-links">
-      <a href="#book" data-nav="book">Book · Rewards</a>
+      <a href="#book" data-nav="book">Book now</a>
+      <a href="#rewards" data-nav="rewards">Rewards</a>
       <a href="tel:+19732580080"><svg width="15" height="15" aria-hidden="true"><use href="#i-phone"></use></svg> (973) 258-0080</a>
       <a href="https://maps.app.goo.gl/27KYauVAidu3Qdm48" target="_blank" rel="noopener noreferrer"><svg width="15" height="15" aria-hidden="true"><use href="#i-pin"></use></svg> Directions</a>
       <a href="https://www.instagram.com/verdeline_nails_short_hills/" target="_blank" rel="noopener noreferrer"><svg width="15" height="15" aria-hidden="true"><use href="#i-ig"></use></svg> Instagram</a>
@@ -396,7 +461,7 @@
 
   <script>
     (function () {
-      var views = ["home", "services", "gallery", "visit", "book"];
+      var views = ["home", "services", "gallery", "visit", "book", "rewards"];
       var sheet = document.getElementById("mobile-sheet");
       var backdrop = document.getElementById("sheet-backdrop");
       var headerTpl = document.getElementById("header-template");
@@ -470,6 +535,62 @@
 
       var initial = (window.location.hash || "").replace("#", "");
       showView(initial || "home", false);
+
+      function guestCardId() {
+        return "VL-" + String(Math.floor(1000 + Math.random() * 9000));
+      }
+
+      function saveRewards(name, phone, email) {
+        var card = { name: name, phone: phone, email: email || "", id: guestCardId(), joined: new Date().toISOString().slice(0, 10) };
+        try { localStorage.setItem("verdeline_rewards", JSON.stringify(card)); } catch (_) {}
+        return card;
+      }
+
+      var bookForm = document.getElementById("book-form");
+      if (bookForm) {
+        bookForm.addEventListener("submit", function (event) {
+          event.preventDefault();
+          var service = document.getElementById("book-service").value;
+          var date = document.getElementById("book-date").value;
+          var windowPref = document.getElementById("book-window").value;
+          var name = document.getElementById("book-name").value.trim();
+          var phone = document.getElementById("book-phone").value.trim();
+          var join = document.getElementById("book-join-rewards").checked;
+          var card = join ? saveRewards(name, phone, "") : null;
+          var note = document.getElementById("book-confirm");
+          note.hidden = false;
+          note.textContent = name + " · " + service + " · " + date + " · " + windowPref +
+            (card ? " · Rewards " + card.id : "") +
+            ". Call (973) 258-0080 to confirm the chair.";
+          window.location.href = "tel:+19732580080";
+        });
+      }
+
+      var rewardsForm = document.getElementById("rewards-form");
+      if (rewardsForm) {
+        try {
+          var existing = JSON.parse(localStorage.getItem("verdeline_rewards") || "null");
+          if (existing && existing.name) {
+            document.getElementById("rw-name").value = existing.name;
+            document.getElementById("rw-phone").value = existing.phone || "";
+            document.getElementById("rw-email").value = existing.email || "";
+            var shown = document.getElementById("rw-confirm");
+            shown.hidden = false;
+            shown.textContent = "Guest card " + existing.id + " · show this at the desk.";
+          }
+        } catch (_) {}
+        rewardsForm.addEventListener("submit", function (event) {
+          event.preventDefault();
+          var card = saveRewards(
+            document.getElementById("rw-name").value.trim(),
+            document.getElementById("rw-phone").value.trim(),
+            document.getElementById("rw-email").value.trim()
+          );
+          var note = document.getElementById("rw-confirm");
+          note.hidden = false;
+          note.textContent = "Guest card " + card.id + " saved on this phone. Show it at the desk or Square checkout.";
+        });
+      }
     })();
   </script>
 </body>

@@ -369,13 +369,17 @@ button.text-arrow {
   padding: 115px var(--header-pad);
 }
 
-.inner-page { background: #ebe5da; min-height: 100vh; }
+.inner-page { background: var(--paper); min-height: 100vh; }
 .inner-page .site-header {
-  background: var(--wine-deep);
-  color: #fff;
-  border-bottom: 0;
+  background: var(--paper);
+  color: var(--ink);
+  border-bottom: 1px solid var(--line);
   position: sticky;
   top: 0;
+}
+.inner-page .header-book {
+  background: var(--ink);
+  color: #fff;
 }
 .page-intro {
   display: grid;
@@ -401,34 +405,58 @@ button.text-arrow {
   object-fit: cover;
   display: block;
 }
-.book-hero {
-  background: var(--wine-deep);
-  color: #fff;
-  padding: 56px var(--header-pad) 48px;
-}
-.book-hero .section-kicker { color: #f7d8cd; }
-.book-hero h1 { color: #fff; max-width: 760px; }
-.book-hero p { max-width: 640px; color: #ffffffd4; }
-.book-grid {
+.flow-hero {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 18px;
-  padding: 48px var(--header-pad) 80px;
-  background: #e4d8c8;
+  grid-template-columns: minmax(0, 1.05fr) minmax(240px, 0.9fr);
+  gap: clamp(24px, 5vw, 64px);
+  align-items: center;
+  padding-top: 48px;
+  padding-bottom: 28px;
 }
-.book-card {
+.book-flow {
+  display: grid;
+  gap: 16px;
+  max-width: 720px;
+  padding-bottom: 80px;
+}
+.flow-step {
+  margin: 0;
+  padding: 20px 22px;
+  border: 1px solid var(--line);
   background: #fff;
-  border-top: 4px solid var(--wine);
-  padding: 28px 24px 24px;
-  min-height: 320px;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
 }
-.book-card h2 { font-size: clamp(1.8rem, 3vw, 2.2rem); margin-bottom: 4px; }
-.book-card p { color: var(--ink-2); }
-.book-card .button { width: 100%; }
-.book-card .button + .button { margin-top: 0; }
+.flow-step legend {
+  padding: 0 8px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--wine);
+}
+.flow-step label { display: grid; gap: 8px; font-size: 0.88rem; font-weight: 700; }
+.flow-step input,
+.flow-step select {
+  width: 100%;
+  min-height: 46px;
+  border: 1px solid var(--line);
+  background: var(--paper);
+  color: var(--ink);
+  padding: 0 12px;
+  font: inherit;
+}
+.flow-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.flow-locked { margin: 0; color: var(--ink-2); line-height: 1.55; }
+.flow-check { display: flex; align-items: center; gap: 10px; margin-top: 12px; font-weight: 600; }
+.flow-check input { width: auto; min-height: 0; }
+.flow-actions { display: flex; flex-wrap: wrap; gap: 10px; }
+.flow-note {
+  margin: 0;
+  padding: 14px 16px;
+  background: #fff7ed;
+  border: 1px solid #fed7aa;
+  color: #9a3412;
+  font-size: 0.92rem;
+}
 
 .full-menu {
   display: grid;
@@ -603,7 +631,7 @@ button.text-arrow {
   .image-feature { grid-template-columns: 1fr; }
   .image-feature-copy { padding: 56px var(--header-pad); }
   .highlight-grid { grid-template-columns: 1fr; }
-  .menu-sneak, .full-menu, .review-cta, .visit-layout, .site-footer, .page-intro, .book-grid { grid-template-columns: 1fr; }
+  .menu-sneak, .full-menu, .review-cta, .visit-layout, .site-footer, .page-intro, .flow-hero, .flow-pair { grid-template-columns: 1fr; }
   .visit-cta, .slim-cta, .section-heading { flex-direction: column; align-items: flex-start; }
   .gallery-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
