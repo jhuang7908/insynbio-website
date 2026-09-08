@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<!-- hub-build: 2026-09-08T15:23TET -->
+<!-- hub-build: 2026-09-08T16:10TET -->
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <script>
-    window.HUB_APP_VERSION = '3.3.29';
+    window.HUB_APP_VERSION = '3.3.30';
     (function () {
       var coarse = window.matchMedia('(pointer: coarse)').matches;
       var narrow = window.matchMedia('(max-width: 820px)').matches;
@@ -245,7 +245,14 @@
     .hub-hero-go { padding: 10px 16px; font-size: 14px; border-radius: 8px; }
     .hub-hero-trust { font-size: 12px; color: #64748b; margin: 0 0 12px; line-height: 1.45; }
     .hub-hero-trust strong { color: #475569; font-weight: 700; }
-    .hub-hero-chips { display: flex; flex-wrap: wrap; gap: 6px; justify-content: center; max-width: 520px; margin: 0 auto 12px; padding: 0 4px; }
+    .hub-keyword-stack {
+      display: flex; flex-direction: column; align-items: stretch; gap: 5px;
+      max-width: 520px; width: 100%; margin: 0 auto 8px; padding: 0 4px; box-sizing: border-box;
+    }
+    .hub-hero-chips {
+      display: flex; flex-wrap: wrap; gap: 5px; justify-content: flex-start;
+      max-width: none; width: 100%; margin: 0; padding: 0;
+    }
     .hub-hero-chip {
       border: 1px solid #fed7aa; background: #fff7ed; color: #c2410c; border-radius: 999px;
       padding: 4px 10px; font-size: 11.5px; font-weight: 600; cursor: pointer; font-family: inherit;
@@ -253,8 +260,11 @@
     .hub-hero-chip:hover { background: #ffedd5; border-color: #fdba74; }
 
     .hub-search-scope {
-      display: flex; flex-wrap: wrap; gap: 6px; justify-content: center; max-width: 520px;
-      margin: 0 auto 8px; padding: 0 4px;
+      display: flex; flex-wrap: nowrap; gap: 5px; justify-content: flex-start;
+      max-width: none; width: 100%; margin: 0; padding: 0;
+    }
+    @media (max-width: 420px) {
+      .hub-search-scope { flex-wrap: wrap; }
     }
     .hub-scope-chip {
       border: 1px solid #e2e8f0; background: #f8fafc; color: #475569; border-radius: 999px;
@@ -1778,7 +1788,7 @@
         <div class="dash-weather-group" id="weather-info" aria-label="纽约天气">
           <span class="dash-wx-icon" id="weather-icon">🌤️</span>
           <span class="dash-wx-temp" id="weather-temp">77°F</span>
-          <span class="dash-wx-city">纽约</span>
+          <span class="dash-wx-city" id="dash-wx-city">纽约</span>
         </div>
         <button type="button" class="unit-toggle" id="unit-toggle" onclick="toggleTempUnit();" title="切换华氏/摄氏">°F</button>
         <div class="dash-stats-inline">
@@ -1876,14 +1886,16 @@
           onkeydown="if(event.key==='Enter'){event.preventDefault();goHubSearch(this.value);}" />
         <button type="button" class="btn hub-hero-go" id="hero-search-go" onclick="goHubSearch(document.getElementById('hero-search').value)">搜索</button>
       </div>
+      <div class="hub-keyword-stack" id="hub-keyword-stack">
       <div class="hub-search-scope" id="hub-search-scope" role="group" aria-label="搜索范围">
         <button type="button" class="hub-scope-chip active" data-scope="livelihood" id="scope-livelihood" onclick="setHubSearchScope('livelihood')">民生</button>
         <button type="button" class="hub-scope-chip" data-scope="yellowpages" id="scope-yellowpages" onclick="setHubSearchScope('yellowpages')">黄页</button>
         <button type="button" class="hub-scope-chip" data-scope="all" id="scope-all" onclick="setHubSearchScope('all')">全部</button>
       </div>
+      <div class="hub-hero-chips hub-desktop-only" id="hero-search-chips" aria-label="热门搜索"></div>
+      </div>
 
       </div>
-      <div class="hub-hero-chips hub-desktop-only" id="hero-search-chips" aria-label="热门搜索"></div>
       <p class="hub-hero-trust hub-desktop-only" id="hero-trust"><strong>www.uslifehub.org</strong> · 公益免费 · 公开渠道聚合</p>
 
       <!-- 一级目录：方框导航（最新/黄页/频道/打折） -->
@@ -2221,6 +2233,19 @@ const UI_STRINGS = {
     stream_week_label: "7日场次",
     stream_week_suffix: "场",
     stream_week_title: "未来7日内有明确活动时间的官方场次",
+    stream_sources_label: "源健康",
+    stream_sources_title: "本次抓取 {ok}/{cfg} 个源成功。点击查看明细。",
+    stream_sources_title_partial: "本次抓取 {ok}/{cfg} 个源成功（部分成功）。点击查看明细。",
+    stream_sources_ok: "{ok}/{cfg} 源",
+    stream_sources_partial: "{ok}/{cfg} 源成功",
+    wx_city: "纽约",
+    wx_aria: "纽约天气",
+    header_meta_aria: "天气与更新",
+    search_scope_aria: "搜索范围",
+    hero_chips_aria: "热门搜索",
+    drawer_counts: "24h 新增 <strong>{n24}</strong> 条 · 7日 <strong>{n7}</strong> 场",
+    drawer_sources: "源健康 <strong>{src}</strong>",
+    unit_toggle_title: "切换华氏/摄氏",
     verified_badge: "已核验",
     date_event: "活动",
     date_published: "发布",
@@ -2372,6 +2397,19 @@ const UI_STRINGS = {
     stream_week_label: "7日場次",
     stream_week_suffix: "場",
     stream_week_title: "未來7日內有明確活動時間的官方場次",
+    stream_sources_label: "源健康",
+    stream_sources_title: "本次抓取 {ok}/{cfg} 個源成功。點擊查看明細。",
+    stream_sources_title_partial: "本次抓取 {ok}/{cfg} 個源成功（部分成功）。點擊查看明細。",
+    stream_sources_ok: "{ok}/{cfg} 源",
+    stream_sources_partial: "{ok}/{cfg} 源成功",
+    wx_city: "紐約",
+    wx_aria: "紐約天氣",
+    header_meta_aria: "天氣與更新",
+    search_scope_aria: "搜尋範圍",
+    hero_chips_aria: "熱門搜尋",
+    drawer_counts: "24h 新增 <strong>{n24}</strong> 條 · 7日 <strong>{n7}</strong> 場",
+    drawer_sources: "源健康 <strong>{src}</strong>",
+    unit_toggle_title: "切換華氏/攝氏",
     stream_tab_24h: "24小時更新",
     stream_tab_7d: "未來7天活動",
     stream_tab_enroll: "常年報名項目",
@@ -2514,6 +2552,19 @@ const UI_STRINGS = {
     stream_week_label: "7d events",
     stream_week_suffix: "",
     stream_week_title: "Official events with confirmed dates in the next 7 days",
+    stream_sources_label: "Sources",
+    stream_sources_title: "Fetched {ok}/{cfg} sources this run. Click for details.",
+    stream_sources_title_partial: "Fetched {ok}/{cfg} sources this run (partial). Click for details.",
+    stream_sources_ok: "{ok}/{cfg} sources",
+    stream_sources_partial: "{ok}/{cfg} sources OK",
+    wx_city: "NYC",
+    wx_aria: "NYC weather",
+    header_meta_aria: "Weather and updates",
+    search_scope_aria: "Search scope",
+    hero_chips_aria: "Popular searches",
+    drawer_counts: "24h new <strong>{n24}</strong> · 7d <strong>{n7}</strong> events",
+    drawer_sources: "Sources <strong>{src}</strong>",
+    unit_toggle_title: "Switch °F / °C",
     verified_badge: "Verified",
     date_event: "Event",
     date_published: "Posted",
@@ -3098,9 +3149,23 @@ function resolveHubIndexStats() {
 }
 
 function applyHubStreamStatLabels() {
-  const s = UI_STRINGS[currentLang];
+  const s = UI_STRINGS[currentLang] || {};
   const todayTitle = document.getElementById('today-title');
-  if (todayTitle) todayTitle.textContent = s.today_title;
+  if (todayTitle && s.today_title) todayTitle.textContent = s.today_title;
+  const wxCity = document.getElementById('dash-wx-city');
+  if (wxCity && s.wx_city) wxCity.textContent = s.wx_city;
+  const wxInfo = document.getElementById('weather-info');
+  if (wxInfo && s.wx_aria) wxInfo.setAttribute('aria-label', s.wx_aria);
+  const headerMeta = document.querySelector('.header-meta');
+  if (headerMeta && s.header_meta_aria) headerMeta.setAttribute('aria-label', s.header_meta_aria);
+  const srcLabel = document.getElementById('stream-sources-label');
+  if (srcLabel && s.stream_sources_label) srcLabel.textContent = s.stream_sources_label;
+  const scopeBox = document.getElementById('hub-search-scope');
+  if (scopeBox && s.search_scope_aria) scopeBox.setAttribute('aria-label', s.search_scope_aria);
+  const chipsBox = document.getElementById('hero-search-chips');
+  if (chipsBox && s.hero_chips_aria) chipsBox.setAttribute('aria-label', s.hero_chips_aria);
+  const unitBtn = document.getElementById('unit-toggle');
+  if (unitBtn && s.unit_toggle_title) unitBtn.title = s.unit_toggle_title;
 }
 
 function getEventDate(i) {
@@ -3293,12 +3358,15 @@ function hubHoursSinceLastUpdate() {
 }
 
 function hubSourcesHealthLabel() {
+  const s = UI_STRINGS[currentLang] || {};
   const cfg = Number(HUB_AUTO_UPDATE?.sources_configured || HUB_INDEX_STATS?.sources_configured || HUB_INDEX_STATS?.sources_scanned || 0);
   const ok = Number(HUB_AUTO_UPDATE?.sources_ok || HUB_INDEX_STATS?.sources_ok || 0);
   if (!cfg) return '';
   const status = HUB_AUTO_UPDATE?.update_status || HUB_INDEX_STATS?.update_status || '';
-  if (status === 'partial' || ok < cfg) return `${ok}/${cfg} 源成功`;
-  return `${ok}/${cfg} 源`;
+  const tpl = (status === 'partial' || ok < cfg)
+    ? (s.stream_sources_partial || '{ok}/{cfg} 源成功')
+    : (s.stream_sources_ok || '{ok}/{cfg} 源');
+  return tpl.replace('{ok}', String(ok)).replace('{cfg}', String(cfg));
 }
 
 function openSourceHealthModal() {
@@ -3336,25 +3404,33 @@ function renderHubStreamStats(stats) {
   if (srcUnit && cfg) srcUnit.textContent = '/' + String(cfg);
   if (srcStat && cfg) {
     const partial = (stats.update_status || HUB_AUTO_UPDATE?.update_status) === 'partial' || ok < cfg;
-    srcStat.title = partial
-      ? `本次抓取 ${ok}/${cfg} 个源成功（部分成功）`
-      : `本次抓取 ${ok}/${cfg} 个源成功`;
+    const tpl = partial
+      ? (s.stream_sources_title_partial || '本次抓取 {ok}/{cfg} 个源成功（部分成功）')
+      : (s.stream_sources_title || '本次抓取 {ok}/{cfg} 个源成功');
+    srcStat.title = tpl.replace('{ok}', String(ok)).replace('{cfg}', String(cfg));
   }
+  applyHubStreamStatLabels();
   syncMobileDrawerStats(stats);
 }
 
 function syncMobileDrawerStats(stats) {
   const el = document.getElementById('mobile-drawer-stats');
   if (!el) return;
+  const s = UI_STRINGS[currentLang] || {};
   const wx = document.getElementById('weather-temp');
-  const city = document.querySelector('.dash-wx-city');
+  const city = document.getElementById('dash-wx-city') || document.querySelector('.dash-wx-city');
   const temp = wx ? wx.textContent : '—';
-  const place = city ? city.textContent : '纽约';
+  const place = (city && city.textContent) || s.wx_city || 'NYC';
   const n24 = stats?.new_24h ?? document.getElementById('stream-new-count')?.textContent ?? '—';
   const n7 = stats?.events_7d ?? document.getElementById('stream-week-count')?.textContent ?? '—';
   const src = hubSourcesHealthLabel();
-  const srcLine = src ? `<br>源健康 <strong>${escapeHtml(src)}</strong>` : '';
-  el.innerHTML = `🌤 ${escapeHtml(temp)} ${escapeHtml(place)}<br>24h 新增 <strong>${escapeHtml(String(n24))}</strong> 条 · 7日 <strong>${escapeHtml(String(n7))}</strong> 场${srcLine}`;
+  const counts = (s.drawer_counts || '24h new <strong>{n24}</strong> · 7d <strong>{n7}</strong>')
+    .replace('{n24}', escapeHtml(String(n24)))
+    .replace('{n7}', escapeHtml(String(n7)));
+  const srcLine = src
+    ? `<br>${(s.drawer_sources || 'Sources <strong>{src}</strong>').replace('{src}', escapeHtml(src))}`
+    : '';
+  el.innerHTML = `🌤 ${escapeHtml(temp)} ${escapeHtml(place)}<br>${counts}${srcLine}`;
 }
 
 function pickFeatured24hItems(stats) {
@@ -9006,7 +9082,10 @@ function quickToggleLang() {
 }
 function syncLangQuickLabel() {
   const btn = document.getElementById('lang-quick');
-  if (btn) btn.textContent = (currentLang === 'en') ? 'EN | 中' : '中 | EN';
+  if (!btn) return;
+  if (currentLang === 'en') btn.textContent = 'EN | ZH';
+  else if (currentLang === 'zht') btn.textContent = '繁 | EN';
+  else btn.textContent = '中 | EN';
 }
 
 function toggleSettingsMenu(ev) {
