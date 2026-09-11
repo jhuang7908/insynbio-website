@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Website &amp; Local Media Services for Small Businesses | US Life Hub</title>
+  <meta name="description" content="Website, local listings, and media setup for independent shops. Free consultation from US Life Hub.">
+  <link rel="icon" href="/uslifehub-icon.svg">
+  <style>
+    :root {
+      --ink: #1d2025;
+      --ink-2: #343038;
+      --paper: #f8f5ef;
+      --paper-deep: #ebe5da;
+      --wine: #722c3a;
+      --wine-deep: #4c1825;
+      --line: #1d202529;
+      --muted: #676166;
+      --pad: clamp(20px, 6vw, 88px);
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
+    body {
+      color: var(--ink);
+      background: var(--paper);
+      font-family: "Segoe UI", Arial, Helvetica, sans-serif;
+      line-height: 1.6;
+    }
+    a { color: inherit; }
+    h1, h2 { font-family: Georgia, "Times New Roman", serif; font-weight: 400; }
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      min-height: 58px;
+      padding: 8px var(--pad);
+      background: var(--wine-deep);
+      color: #fff;
+      border-bottom: 1px solid rgba(255,255,255,0.28);
+    }
+    .brand {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      text-decoration: none;
+    }
+    .brand strong { font-size: 0.95rem; letter-spacing: 0.04em; }
+    .brand small { font-size: 0.68rem; opacity: 0.72; }
+    .lang-switch { display: flex; gap: 6px; }
+    .lang-switch button {
+      min-height: 36px;
+      padding: 0 12px;
+      border: 1px solid rgba(255,255,255,0.35);
+      background: transparent;
+      color: #fff;
+      font: inherit;
+      font-size: 0.82rem;
+      cursor: pointer;
+    }
+    .lang-switch button[aria-pressed="true"] {
+      background: #fff;
+      color: var(--wine-deep);
+    }
+    .wrap { padding: 48px var(--pad) 32px; max-width: 980px; }
+    .kicker {
+      margin: 0 0 12px;
+      color: var(--wine);
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      font-size: 0.7rem;
+      font-weight: 700;
+    }
+    h1 {
+      margin: 0 0 18px;
+      font-size: clamp(2.2rem, 5vw, 3.6rem);
+      letter-spacing: -0.05em;
+      line-height: 1.05;
+    }
+    .lede { max-width: 640px; color: var(--ink-2); font-size: 1.08rem; }
+    .actions { display: flex; flex-wrap: wrap; gap: 10px; margin: 28px 0 8px; }
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 48px;
+      padding: 0 16px;
+      border: 1px solid var(--ink);
+      text-decoration: none;
+      font-size: 0.88rem;
+      font-weight: 700;
+    }
+    .button-ink { background: var(--ink); color: #fff; }
+    .button-quiet { background: transparent; }
+    .services {
+      display: grid;
+      gap: 12px;
+      padding: 8px var(--pad) 56px;
+      max-width: 980px;
+    }
+    .service {
+      display: grid;
+      grid-template-columns: 48px 1fr;
+      gap: 16px;
+      padding: 20px 22px;
+      background: #fff;
+      border: 1px solid var(--line);
+    }
+    .service span {
+      color: var(--wine);
+      font-weight: 700;
+      letter-spacing: 0.08em;
+    }
+    .service h2 { margin: 0 0 6px; font-size: 1.25rem; }
+    .service p { margin: 0; color: var(--ink-2); }
+    .note { padding: 0 var(--pad) 48px; max-width: 980px; color: var(--muted); }
+    .contact {
+      background: var(--wine-deep);
+      color: #fff;
+      padding: 48px var(--pad);
+    }
+    .contact h2 { margin: 0 0 16px; font-size: 2rem; }
+    .contact p, .contact a { margin: 0 0 8px; color: #fff; }
+    .contact a { font-weight: 700; }
+    .sample-link { padding: 28px var(--pad) 48px; }
+    [hidden] { display: none !important; }
+    @media (width <= 700px) {
+      .topbar { min-height: 50px; }
+      .service { grid-template-columns: 36px 1fr; padding: 16px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="https://www.uslifehub.org/">
+      <strong>US Life Hub</strong>
+      <small>Website &amp; local media</small>
+    </a>
+    <div class="lang-switch" role="group" aria-label="Language">
+      <button type="button" id="lang-en" aria-pressed="true">English</button>
+      <button type="button" id="lang-zh" aria-pressed="false">中文</button>
+    </div>
+  </header>
+
+  <div id="copy-en">
+    <section class="wrap">
+      <p class="kicker">For independent shops</p>
+      <h1>Website &amp; Local Media Services for Small Businesses</h1>
+      <p class="lede">US Life Hub builds a clear mobile website and the local listings that help a shop get found. Start with a free consultation, then choose a package that fits a nail salon or another neighborhood business.</p>
+      <div class="actions">
+        <a class="button button-ink" href="tel:+17187918973">Call 718-791-8973</a>
+        <a class="button button-quiet" href="mailto:info@uslifehub.org">info@uslifehub.org</a>
+      </div>
+    </section>
+    <section class="services" aria-label="Services">
+      <article class="service"><span>01</span><div><h2>Professional mobile-friendly website</h2><p>A clean, phone-first site with services, photos, hours, and a clear call button.</p></div></article>
+      <article class="service"><span>02</span><div><h2>Website hosted on US Life Hub or independent domain setup</h2><p>Stay on US Life Hub, or get help connecting your own domain.</p></div></article>
+      <article class="service"><span>03</span><div><h2>Business email setup</h2><p>A professional inbox that matches the shop name, ready for clients and vendors.</p></div></article>
+      <article class="service"><span>04</span><div><h2>Google Business Profile, Apple Maps, Bing, Yelp and local directory setup</h2><p>Get the shop onto the maps and directories people already use.</p></div></article>
+      <article class="service"><span>05</span><div><h2>Instagram, Facebook and booking-link setup</h2><p>Connect social profiles and a booking link so guests can reach you in one tap.</p></div></article>
+      <article class="service"><span>06</span><div><h2>Simple bilingual website and local-media promotion support</h2><p>English and Chinese pages, plus help keeping local listings consistent.</p></div></article>
+      <article class="service"><span>07</span><div><h2>Free consultation and customized service package</h2><p>Talk through what the shop needs first. Pay only for the work you choose.</p></div></article>
+    </section>
+    <p class="note">See the live sample: <a href="/verdeline-nails-spa">Lumen Nail Studio</a>, a fictional design concept on US Life Hub.</p>
+    <section class="contact">
+      <h2>Talk with US Life Hub</h2>
+      <p>Rocky · US Life Hub</p>
+      <p><a href="tel:+17187918973">Call 718-791-8973</a></p>
+      <p><a href="mailto:info@uslifehub.org">info@uslifehub.org</a></p>
+      <p>423 W 127th St, New York, NY 10027</p>
+    </section>
+  </div>
+
+  <div id="copy-zh" hidden>
+    <section class="wrap">
+      <p class="kicker">面向独立店铺</p>
+      <h1>面向本地小企业的网站与媒体推广服务</h1>
+      <p class="lede">US Life Hub 为美甲店和其他社区小店制作清晰的手机网站，并完成本地曝光所需的商家信息。先免费咨询，再按店铺情况定制方案。</p>
+      <div class="actions">
+        <a class="button button-ink" href="tel:+17187918973">Call 718-791-8973</a>
+        <a class="button button-quiet" href="mailto:info@uslifehub.org">info@uslifehub.org</a>
+      </div>
+    </section>
+    <section class="services" aria-label="服务内容">
+      <article class="service"><span>01</span><div><h2>专业移动端网站</h2><p>适合手机浏览的简洁网站，包含项目、图片、营业时间和明确的电话按钮。</p></div></article>
+      <article class="service"><span>02</span><div><h2>可托管在 US Life Hub，或协助申请独立域名</h2><p>网站可先放在 US Life Hub，也可协助绑定店铺自己的域名。</p></div></article>
+      <article class="service"><span>03</span><div><h2>商业邮箱设置</h2><p>设置与店名匹配的专业邮箱，方便接待客人与供应商。</p></div></article>
+      <article class="service"><span>04</span><div><h2>Google 商家、Apple Maps、Bing、Yelp 及本地目录设置</h2><p>把店铺放到客人已经在用的地图和本地目录上。</p></div></article>
+      <article class="service"><span>05</span><div><h2>Instagram、Facebook 与预约链接设置</h2><p>连接社媒主页和预约入口，让客人一键找到你。</p></div></article>
+      <article class="service"><span>06</span><div><h2>中英双语网站与本地媒体推广支持</h2><p>提供中英内容，并协助保持各平台信息一致。</p></div></article>
+      <article class="service"><span>07</span><div><h2>免费咨询及定制服务方案</h2><p>先沟通店铺需求，再只做你需要的部分。</p></div></article>
+    </section>
+    <p class="note">查看样品网站：<a href="/verdeline-nails-spa">Lumen Nail Studio</a>，这是 US Life Hub 上的虚构设计样品。</p>
+    <section class="contact">
+      <h2>联系 US Life Hub</h2>
+      <p>Rocky · US Life Hub</p>
+      <p><a href="tel:+17187918973">Call 718-791-8973</a></p>
+      <p><a href="mailto:info@uslifehub.org">info@uslifehub.org</a></p>
+      <p>423 W 127th St, New York, NY 10027</p>
+    </section>
+  </div>
+
+  <p class="sample-link"><a href="/verdeline-nails-spa">Back to the Lumen sample</a></p>
+
+  <script>
+    (function () {
+      var en = document.getElementById("copy-en");
+      var zh = document.getElementById("copy-zh");
+      var btnEn = document.getElementById("lang-en");
+      var btnZh = document.getElementById("lang-zh");
+      function setLang(lang) {
+        var isZh = lang === "zh";
+        en.hidden = isZh;
+        zh.hidden = !isZh;
+        btnEn.setAttribute("aria-pressed", isZh ? "false" : "true");
+        btnZh.setAttribute("aria-pressed", isZh ? "true" : "false");
+        document.documentElement.lang = isZh ? "zh-Hans" : "en";
+        document.title = isZh
+          ? "面向本地小企业的网站与媒体推广服务 | US Life Hub"
+          : "Website & Local Media Services for Small Businesses | US Life Hub";
+      }
+      btnEn.addEventListener("click", function () { setLang("en"); });
+      btnZh.addEventListener("click", function () { setLang("zh"); });
+      setLang("en");
+    })();
+  </script>
+</body>
+</html>
