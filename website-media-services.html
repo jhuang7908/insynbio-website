@@ -16,7 +16,9 @@
       --wine-deep: #4c1825;
       --line: #1d202529;
       --muted: #676166;
-      --pad: clamp(20px, 6vw, 88px);
+      --pad: clamp(24px, 5vw, 48px);
+      --page: 1080px;
+      --header-h: 72px;
     }
     * { box-sizing: border-box; }
     html, body { margin: 0; padding: 0; }
@@ -28,93 +30,151 @@
     }
     a { color: inherit; }
     h1, h2 { font-family: Georgia, "Times New Roman", serif; font-weight: 400; }
+    .shell {
+      width: min(var(--page), calc(100% - var(--pad) * 2));
+      margin-left: auto;
+      margin-right: auto;
+    }
     .topbar {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 16px;
-      min-height: 56px;
-      height: 56px;
-      padding: 0 var(--pad);
+      min-height: var(--header-h);
+      height: var(--header-h);
       background: var(--wine-deep);
       color: #fff;
       border-bottom: 1px solid rgba(255,255,255,0.28);
+    }
+    .topbar-inner {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      height: 100%;
     }
     .brand {
       display: flex;
       flex-direction: column;
       justify-content: center;
-      gap: 2px;
+      gap: 3px;
       text-decoration: none;
     }
-    .brand strong { font-size: 0.95rem; letter-spacing: 0.04em; }
-    .brand small { font-size: 0.68rem; opacity: 0.72; }
+    .brand strong { font-size: 1.05rem; letter-spacing: 0.04em; }
+    .brand small { font-size: 0.72rem; opacity: 0.72; }
     .preview-link {
       margin-right: auto;
-      margin-left: 20px;
+      margin-left: 8px;
       color: #fff;
-      font-size: 0.88rem;
+      font-size: 0.95rem;
       font-weight: 700;
       text-decoration: underline;
       text-underline-offset: 3px;
       white-space: nowrap;
     }
-    .lang-switch { display: flex; gap: 6px; }
+    .lang-switch { display: flex; gap: 8px; }
     .lang-switch button {
-      min-height: 36px;
-      padding: 0 12px;
+      min-height: 40px;
+      padding: 0 14px;
       border: 1px solid rgba(255,255,255,0.35);
       background: transparent;
       color: #fff;
       font: inherit;
-      font-size: 0.82rem;
+      font-size: 0.86rem;
       cursor: pointer;
     }
     .lang-switch button[aria-pressed="true"] {
       background: #fff;
       color: var(--wine-deep);
     }
-    .wrap { padding: 48px var(--pad) 32px; max-width: 980px; }
+    .wrap {
+      padding: 72px 0 48px;
+      text-align: center;
+    }
     .kicker {
-      margin: 0 0 12px;
+      margin: 0 0 14px;
       color: var(--wine);
-      letter-spacing: 0.14em;
+      letter-spacing: 0.16em;
       text-transform: uppercase;
-      font-size: 0.7rem;
+      font-size: 0.76rem;
       font-weight: 700;
     }
     h1 {
-      margin: 0 0 18px;
-      font-size: clamp(2.2rem, 5vw, 3.6rem);
+      margin: 0 auto 22px;
+      max-width: 16ch;
+      font-size: clamp(2.6rem, 5vw, 4.1rem);
       letter-spacing: -0.05em;
-      line-height: 1.05;
+      line-height: 1.08;
     }
-    .lede { max-width: 640px; color: var(--ink-2); font-size: 1.08rem; }
-    .actions { display: flex; flex-wrap: wrap; gap: 10px; margin: 28px 0 8px; }
+    .lede {
+      margin: 0 auto;
+      max-width: 640px;
+      color: var(--ink-2);
+      font-size: 1.18rem;
+      line-height: 1.7;
+    }
+    .actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin: 36px 0 0; }
     .button {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      min-height: 48px;
-      padding: 0 16px;
+      min-height: 52px;
+      padding: 0 22px;
       border: 1px solid var(--ink);
       text-decoration: none;
-      font-size: 0.88rem;
+      font-size: 0.92rem;
       font-weight: 700;
     }
     .button-ink { background: var(--ink); color: #fff; }
     .button-quiet { background: transparent; }
+    .packages {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+      padding: 8px 0 40px;
+    }
+    .package {
+      padding: 28px 26px 30px;
+      background: #fff;
+      border: 1px solid var(--line);
+    }
+    .package.popular {
+      border-color: var(--wine);
+      background: #fffaf8;
+    }
+    .package p { margin: 0 0 10px; color: var(--wine); font-size: 0.74rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; }
+    .package h2 { margin: 0 0 10px; font-size: 1.55rem; }
+    .package strong { display: block; margin-bottom: 16px; font-size: 2rem; letter-spacing: -0.03em; }
+    .package ul { margin: 0; padding-left: 18px; color: var(--ink-2); line-height: 1.7; }
+    .extras { padding: 8px 0 40px; }
+    .extras ul {
+      list-style: none;
+      margin: 0;
+      padding: 8px 28px 12px;
+      background: #fff;
+      border: 1px solid var(--line);
+    }
+    .extras h2, .services-title {
+      margin: 0 0 18px;
+      text-align: center;
+      font-size: clamp(1.8rem, 3vw, 2.3rem);
+    }
+    .extras li {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 24px;
+      padding: 14px 0;
+      border-bottom: 1px solid var(--line);
+      font-size: 1.02rem;
+    }
+    .extras li:last-child { border-bottom: 0; }
     .services {
       display: grid;
-      gap: 12px;
-      padding: 8px var(--pad) 56px;
-      max-width: 980px;
+      gap: 14px;
+      padding: 8px 0 40px;
     }
+    .services-title { grid-column: 1 / -1; }
     .service {
       display: grid;
-      grid-template-columns: 48px 1fr;
-      gap: 16px;
-      padding: 20px 22px;
+      grid-template-columns: 56px 1fr;
+      gap: 18px;
+      padding: 22px 26px;
       background: #fff;
       border: 1px solid var(--line);
     }
@@ -122,69 +182,54 @@
       color: var(--wine);
       font-weight: 700;
       letter-spacing: 0.08em;
+      font-size: 0.95rem;
     }
-    .service h2 { margin: 0 0 6px; font-size: 1.25rem; }
-    .service p { margin: 0; color: var(--ink-2); }
-    .packages {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 12px;
-      padding: 8px var(--pad) 28px;
-      max-width: 980px;
+    .service h2 { margin: 0 0 8px; font-size: 1.35rem; }
+    .service p { margin: 0; color: var(--ink-2); font-size: 1.02rem; }
+    .note {
+      padding: 0 0 64px;
+      color: var(--muted);
+      text-align: center;
+      max-width: 720px;
     }
-    .package {
-      padding: 20px 22px;
-      background: #fff;
-      border: 1px solid var(--line);
-    }
-    .package.popular { border-color: var(--wine); }
-    .package p { margin: 0 0 8px; color: var(--muted); font-size: 0.72rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; }
-    .package h2 { margin: 0 0 8px; font-size: 1.35rem; }
-    .package strong { display: block; margin-bottom: 10px; font-size: 1.4rem; }
-    .package ul { margin: 0; padding-left: 18px; color: var(--ink-2); }
-    .extras { padding: 0 var(--pad) 28px; max-width: 980px; }
-    .extras ul { list-style: none; margin: 0; padding: 0; }
-    .extras h2 { margin: 0 0 12px; font-size: 1.5rem; }
-    .extras li {
-      display: flex;
-      justify-content: space-between;
-      gap: 16px;
-      padding: 10px 0;
-      border-bottom: 1px solid var(--line);
-    }
-    .note { padding: 0 var(--pad) 48px; max-width: 980px; color: var(--muted); }
     .contact {
       background: var(--wine-deep);
       color: #fff;
-      padding: 48px var(--pad);
+      padding: 72px var(--pad);
+      text-align: center;
     }
-    .contact h2 { margin: 0 0 16px; font-size: 2rem; }
-    .contact p, .contact a { margin: 0 0 8px; color: #fff; }
+    .contact h2 { margin: 0 0 20px; font-size: clamp(2rem, 4vw, 2.6rem); }
+    .contact p, .contact a { margin: 0 0 10px; color: #fff; font-size: 1.08rem; }
     .contact a { font-weight: 700; }
     [hidden] { display: none !important; }
     @media (width <= 700px) {
-      .topbar { min-height: 50px; height: auto; padding: 8px var(--pad); flex-wrap: wrap; }
-      .preview-link { margin: 4px 0 0; width: 100%; }
+      .topbar { height: auto; min-height: 56px; }
+      .topbar-inner { flex-wrap: wrap; padding: 10px 0; }
+      .preview-link { margin: 0; width: 100%; }
+      .wrap { padding: 48px 0 32px; }
+      h1 { max-width: none; }
       .packages { grid-template-columns: 1fr; }
-      .service { grid-template-columns: 36px 1fr; padding: 16px; }
+      .service { grid-template-columns: 40px 1fr; padding: 18px; }
     }
   </style>
 </head>
 <body>
   <header class="topbar">
-    <a class="brand" href="https://www.uslifehub.org/">
-      <strong>US Life Hub</strong>
-      <small>Website &amp; local media</small>
-    </a>
-    <a id="preview-link" class="preview-link" href="/verdeline-nails-spa">← Back to the Lumen sample site</a>
-    <div class="lang-switch" role="group" aria-label="Language">
-      <button type="button" id="lang-en" aria-pressed="true">English</button>
-      <button type="button" id="lang-zh" aria-pressed="false">中文</button>
+    <div class="shell topbar-inner">
+      <a class="brand" href="https://www.uslifehub.org/">
+        <strong>US Life Hub</strong>
+        <small>Website &amp; local media</small>
+      </a>
+      <a id="preview-link" class="preview-link" href="/verdeline-nails-spa">← Back to the Lumen sample site</a>
+      <div class="lang-switch" role="group" aria-label="Language">
+        <button type="button" id="lang-en" aria-pressed="true">English</button>
+        <button type="button" id="lang-zh" aria-pressed="false">中文</button>
+      </div>
     </div>
   </header>
 
   <div id="copy-en">
-    <section class="wrap">
+    <section class="shell wrap">
       <p class="kicker">For independent shops</p>
       <h1>Website &amp; Local Media Services for Small Businesses</h1>
       <p class="lede">US Life Hub builds a clear mobile website and the local listings that help a shop get found. Start with a free consultation, then choose a package that fits a nail salon or another neighborhood business.</p>
@@ -193,7 +238,7 @@
         <a class="button button-quiet" href="mailto:info@uslifehub.org">info@uslifehub.org</a>
       </div>
     </section>
-    <section class="packages" aria-label="Website packages">
+    <section class="shell packages" aria-label="Website packages">
       <article class="package">
         <p>Entry</p>
         <h2>One-page site</h2>
@@ -231,7 +276,7 @@
         </ul>
       </article>
     </section>
-    <section class="extras">
+    <section class="shell extras">
       <h2>A la carte</h2>
       <ul>
         <li><span>Domain DNS, SSL + connection</span><strong>$39</strong></li>
@@ -245,7 +290,8 @@
         <li><span>US Life Hub yellow-pages listing + highlight</span><strong>Free with any website package</strong></li>
       </ul>
     </section>
-    <section class="services" aria-label="Services">
+    <section class="shell services" aria-label="Services">
+      <h2 class="services-title">What is included</h2>
       <article class="service"><span>01</span><div><h2>Professional mobile-friendly website</h2><p>A clean, phone-first site with services, photos, hours, and a clear call button.</p></div></article>
       <article class="service"><span>02</span><div><h2>Website hosted on US Life Hub or independent domain setup</h2><p>Stay on US Life Hub, or get help connecting your own domain.</p></div></article>
       <article class="service"><span>03</span><div><h2>Business email setup</h2><p>A professional inbox that matches the shop name, ready for clients and vendors.</p></div></article>
@@ -255,7 +301,7 @@
       <article class="service"><span>07</span><div><h2>Free consultation and customized service package</h2><p>Talk through what the shop needs first. Pay only for the work you choose.</p></div></article>
       <article class="service"><span>08</span><div><h2>Free highlight on the US Life Hub yellow pages</h2><p>Website clients get a listing and highlight on the Chinese community directory, so local searchers see the shop first.</p></div></article>
     </section>
-    <p class="note">These are US Life Hub entry prices for straightforward, single-location projects. Domain, email, booking and ad spend are paid directly by the shop. No media markup. Prices from the September 2026 service guide.</p>
+    <p class="shell note">These are US Life Hub entry prices for straightforward, single-location projects. Domain, email, booking and ad spend are paid directly by the shop. No media markup. Prices from the September 2026 service guide.</p>
     <section class="contact">
       <h2>Talk with US Life Hub</h2>
       <p>Rocky · US Life Hub</p>
@@ -266,7 +312,7 @@
   </div>
 
   <div id="copy-zh" hidden>
-    <section class="wrap">
+    <section class="shell wrap">
       <p class="kicker">面向独立店铺</p>
       <h1>面向本地小企业的网站与媒体推广服务</h1>
       <p class="lede">US Life Hub 为美甲店和其他社区小店制作清晰的手机网站，并完成本地曝光所需的商家信息。先免费咨询，再按店铺情况定制方案。</p>
@@ -275,7 +321,7 @@
         <a class="button button-quiet" href="mailto:info@uslifehub.org">info@uslifehub.org</a>
       </div>
     </section>
-    <section class="packages" aria-label="网站套餐">
+    <section class="shell packages" aria-label="网站套餐">
       <article class="package">
         <p>入门</p>
         <h2>单页网站</h2>
@@ -313,7 +359,7 @@
         </ul>
       </article>
     </section>
-    <section class="extras">
+    <section class="shell extras">
       <h2>单项服务</h2>
       <ul>
         <li><span>域名 DNS、SSL 与接入</span><strong>$39</strong></li>
@@ -327,7 +373,8 @@
         <li><span>US Life Hub 黄页收录 + 高亮</span><strong>网站套餐免费赠送</strong></li>
       </ul>
     </section>
-    <section class="services" aria-label="服务内容">
+    <section class="shell services" aria-label="服务内容">
+      <h2 class="services-title">包含内容</h2>
       <article class="service"><span>01</span><div><h2>专业移动端网站</h2><p>适合手机浏览的简洁网站，包含项目、图片、营业时间和明确的电话按钮。</p></div></article>
       <article class="service"><span>02</span><div><h2>可托管在 US Life Hub，或协助申请独立域名</h2><p>网站可先放在 US Life Hub，也可协助绑定店铺自己的域名。</p></div></article>
       <article class="service"><span>03</span><div><h2>商业邮箱设置</h2><p>设置与店名匹配的专业邮箱，方便接待客人与供应商。</p></div></article>
@@ -337,7 +384,7 @@
       <article class="service"><span>07</span><div><h2>免费咨询及定制服务方案</h2><p>先沟通店铺需求，再只做你需要的部分。</p></div></article>
       <article class="service"><span>08</span><div><h2>免费在 US Life Hub 黄页高亮店铺</h2><p>做网站的客户可收录进华人社区黄页并高亮展示，让附近搜索的人先看到这家店。</p></div></article>
     </section>
-    <p class="note">以上为 US Life Hub 2026 年 9 月服务指南中的入门报价，适用于流程清楚的单店项目。域名、邮箱、预约和广告投放费用由店铺直接支付，我们不加价。</p>
+    <p class="shell note">以上为 US Life Hub 2026 年 9 月服务指南中的入门报价，适用于流程清楚的单店项目。域名、邮箱、预约和广告投放费用由店铺直接支付，我们不加价。</p>
     <section class="contact">
       <h2>联系 US Life Hub</h2>
       <p>Rocky · US Life Hub</p>

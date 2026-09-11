@@ -69,8 +69,8 @@ p { margin: 0 0 16px; }
   align-items: center;
   flex-wrap: nowrap;
   gap: 20px;
-  min-height: 56px;
-  height: 56px;
+  min-height: 72px;
+  height: 72px;
   padding: 0 var(--header-pad);
   position: relative;
   overflow: hidden;
@@ -116,7 +116,7 @@ p { margin: 0 0 16px; }
 .brand {
   display: inline-flex;
   align-items: center;
-  height: 56px;
+  height: 72px;
   gap: 8px;
   flex: none;
   cursor: pointer;
@@ -136,7 +136,7 @@ p { margin: 0 0 16px; }
 }
 .brand-name {
   font-family: Georgia, "Times New Roman", serif;
-  font-size: 1.02rem;
+  font-size: 1.12rem;
   font-weight: 400;
   letter-spacing: -0.02em;
   line-height: 1;
@@ -148,9 +148,9 @@ p { margin: 0 0 16px; }
 .site-nav {
   display: flex;
   align-items: center;
-  height: 56px;
+  height: 72px;
   gap: clamp(16px, 2.2vw, 28px);
-  font-size: 0.8rem;
+  font-size: 0.88rem;
   font-weight: 500;
 }
 .site-nav a,
@@ -158,12 +158,12 @@ p { margin: 0 0 16px; }
   background: none;
   border: 0;
   padding: 0;
-  height: 56px;
+  height: 72px;
   display: inline-flex;
   align-items: center;
   color: inherit;
   cursor: pointer;
-  font-size: 0.8rem;
+  font-size: 0.88rem;
   font-weight: 500;
   line-height: 1;
 }
@@ -566,8 +566,8 @@ button.text-arrow {
   padding-bottom: 96px;
 }
 #visit .page-intro {
-  min-height: calc(100svh - 56px);
-  height: calc(100svh - 56px);
+  min-height: calc(100svh - 72px);
+  height: calc(100svh - 72px);
   padding-top: 0;
   padding-bottom: 0;
   align-items: stretch;
@@ -734,8 +734,8 @@ button.text-arrow {
   .site-nav button.nav-link { font-size: 0.74rem; }
 }
 @media (width <= 700px) {
-  .site-header { gap: 10px; min-height: 50px; height: 50px; padding-top: 0; padding-bottom: 0; }
-  .brand { height: 50px; }
+  .site-header { gap: 10px; min-height: 56px; height: 56px; padding-top: 0; padding-bottom: 0; }
+  .brand { height: 56px; }
   .brand-name { font-size: 0.92rem; }
   .brand-copy small { display: none; }
   .site-nav { height: auto; }
