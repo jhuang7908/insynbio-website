@@ -565,59 +565,41 @@ button.text-arrow {
   gap: 48px;
   padding-bottom: 96px;
 }
-#visit .inner-page {
-  min-height: 100svh;
+#visit .page-intro {
+  min-height: calc(100svh - 56px);
+  height: calc(100svh - 56px);
+  padding-top: 0;
+  padding-bottom: 0;
+  align-items: stretch;
+  overflow: hidden;
+}
+#visit .page-intro > div:first-child {
   display: flex;
   flex-direction: column;
-}
-#visit .page-intro {
-  padding-top: 20px;
-  padding-bottom: 16px;
-  gap: 24px;
+  justify-content: center;
+  padding: 36px 0;
 }
 #visit .page-intro h1 {
-  margin-bottom: 8px;
-  font-size: clamp(2rem, 3.4vw, 2.85rem);
-  line-height: 0.96;
+  margin-bottom: 18px;
+  font-size: clamp(3.2rem, 5.4vw, 5.4rem);
+  line-height: 0.9;
 }
-#visit .page-intro .lede {
-  margin-bottom: 12px;
-  font-size: 0.95rem;
-  line-height: 1.45;
-}
-#visit .page-intro .action-row { display: none; }
 #visit .page-intro-media,
 #visit .page-intro-media img {
-  min-height: 140px;
-  max-height: 168px;
+  min-height: 100%;
+  height: 100%;
+  max-height: none;
 }
-#visit .visit-layout {
-  gap: 16px;
-  padding-top: 0;
-  padding-bottom: 16px;
-}
-#visit .hours-card,
-#visit .visit-card { padding: 14px 16px; }
-#visit .hours-card div { padding: 8px 0; }
-#visit .map-cta { margin-top: 12px; padding: 12px 14px; }
-#visit .hours-card .button {
-  margin-top: 12px !important;
-  min-height: 42px;
-  padding: 8px 14px;
-}
-#visit .site-footer {
-  margin-top: auto;
-  padding-top: 16px;
-  padding-bottom: 14px;
-  gap: 16px 32px;
-}
-#visit .site-footer p { margin: 6px 0 0; font-size: 0.82rem; }
-@media (min-width: 901px) {
-  #visit.view.is-active,
-  #visit .inner-page {
-    height: 100svh;
-    max-height: 100svh;
-    overflow: hidden;
+@media (width <= 900px) {
+  #visit .page-intro {
+    height: auto;
+    min-height: 0;
+    overflow: visible;
+  }
+  #visit .page-intro-media,
+  #visit .page-intro-media img {
+    min-height: min(70svh, 560px);
+    height: min(70svh, 560px);
   }
 }
 .hours-card, .visit-card {
