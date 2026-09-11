@@ -5,7 +5,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <script>
-    window.HUB_APP_VERSION = '3.3.31';
+    window.HUB_APP_VERSION = '3.3.32';
     (function () {
       var coarse = window.matchMedia('(pointer: coarse)').matches;
       var narrow = window.matchMedia('(max-width: 820px)').matches;
@@ -30,7 +30,7 @@
   <meta name="theme-color" content="#dc2626" />
   <meta name="color-scheme" content="light only" />
   <meta name="supported-color-schemes" content="light" />
-  <script>window.HUB_COMMUNITY_API = 'https://www.insynbio.com/api';</script>
+  <script>window.HUB_COMMUNITY_API = '/api';</script>
   <!-- 图标走 uslifehub.pages.dev 静态 CDN（uslifehub.org 域名 SPA 无法直链 png/ico） -->
   <link rel="icon" href="https://uslifehub.pages.dev/favicon.ico?v=315" sizes="48x48" />
   <link rel="icon" href="https://uslifehub.pages.dev/uslifehub-icon-32.png?v=315" type="image/png" sizes="32x32" />
@@ -8433,9 +8433,8 @@ async function subscribeEmail() {
           </div>
           <div style="font-size: 11px; color: #1e3a1e; border-top: 1px dashed #bbf7d0; padding-top: 10px; line-height: 1.55;">
             <strong>为您开启的服务：</strong><br>
-            📬 <strong>每周两次精选民生简报</strong>：我们将根据您的选择，每周定期将最新动态、福利政策、交通出行等精选内容发送到您的邮箱。<br>
-            📰 <strong>关注微信公众号</strong>：微信搜索「<b>美东华人生活圈</b>」— 每周一、四精选推送，公众号内可打字查「粮食券」「平价房」等关键词。<br>
-            📧 <strong>欢迎信已发送</strong>：我们已向您的邮箱发送了欢迎信，请注意查收（如未收到，请检查垃圾邮件箱）。
+            📬 <strong>每周两次精选民生简报</strong>：周一和周四按您选择的频道发送到这个邮箱。<br>
+            📰 <strong>关注微信公众号</strong>：微信搜索「<b>美东华人生活圈</b>」— 每周一、四精选推送，公众号内可打字查「粮食券」「平价房」等关键词。
           </div>
         </div>
       `;
