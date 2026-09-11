@@ -12,21 +12,23 @@
       --ink-2: #343038;
       --paper: #f8f5ef;
       --paper-deep: #ebe5da;
+      --clay: #d5b6aa;
       --wine: #722c3a;
       --wine-deep: #4c1825;
       --line: #1d202529;
       --muted: #676166;
-      --pad: clamp(24px, 5vw, 48px);
-      --page: 1080px;
+      --pad: clamp(18px, 4.5vw, 40px);
+      --page: 1000px;
       --header-h: 72px;
     }
     * { box-sizing: border-box; }
-    html, body { margin: 0; padding: 0; }
+    html, body { margin: 0; padding: 0; overflow-x: hidden; }
     body {
       color: var(--ink);
       background: var(--paper);
       font-family: "Segoe UI", Arial, Helvetica, sans-serif;
-      line-height: 1.6;
+      line-height: 1.55;
+      -webkit-text-size-adjust: 100%;
     }
     a { color: inherit; }
     h1, h2 { font-family: Georgia, "Times New Roman", serif; font-weight: 400; }
@@ -45,171 +47,207 @@
     .topbar-inner {
       display: flex;
       align-items: center;
-      gap: 20px;
+      gap: 16px;
       height: 100%;
     }
     .brand {
       display: flex;
       flex-direction: column;
       justify-content: center;
-      gap: 3px;
+      gap: 2px;
       text-decoration: none;
+      flex: none;
     }
-    .brand strong { font-size: 1.05rem; letter-spacing: 0.04em; }
-    .brand small { font-size: 0.72rem; opacity: 0.72; }
+    .brand strong { font-size: 0.98rem; letter-spacing: 0.04em; }
+    .brand small { font-size: 0.68rem; opacity: 0.72; }
     .preview-link {
       margin-right: auto;
-      margin-left: 8px;
       color: #fff;
-      font-size: 0.95rem;
+      font-size: 0.86rem;
       font-weight: 700;
       text-decoration: underline;
       text-underline-offset: 3px;
-      white-space: nowrap;
     }
-    .lang-switch { display: flex; gap: 8px; }
+    .lang-switch { display: flex; gap: 6px; flex: none; }
     .lang-switch button {
       min-height: 40px;
-      padding: 0 14px;
+      padding: 0 12px;
       border: 1px solid rgba(255,255,255,0.35);
       background: transparent;
       color: #fff;
       font: inherit;
-      font-size: 0.86rem;
+      font-size: 0.8rem;
       cursor: pointer;
     }
     .lang-switch button[aria-pressed="true"] {
       background: #fff;
       color: var(--wine-deep);
     }
+    .hero-band {
+      background: linear-gradient(180deg, #f3ebe1 0%, var(--paper) 88%);
+      border-bottom: 1px solid var(--line);
+    }
     .wrap {
-      padding: 72px 0 48px;
+      padding: 48px 0 40px;
       text-align: center;
     }
     .kicker {
-      margin: 0 0 14px;
+      margin: 0 0 10px;
       color: var(--wine);
       letter-spacing: 0.16em;
       text-transform: uppercase;
-      font-size: 0.76rem;
+      font-size: 0.7rem;
       font-weight: 700;
     }
+    .kicker::after {
+      content: "";
+      display: block;
+      width: 32px;
+      height: 2px;
+      margin: 10px auto 0;
+      background: var(--wine);
+    }
     h1 {
-      margin: 0 auto 22px;
-      max-width: 16ch;
-      font-size: clamp(2.6rem, 5vw, 4.1rem);
-      letter-spacing: -0.05em;
-      line-height: 1.08;
+      margin: 0 auto 14px;
+      max-width: 18ch;
+      font-size: clamp(1.85rem, 3.6vw, 2.7rem);
+      letter-spacing: -0.04em;
+      line-height: 1.15;
     }
     .lede {
       margin: 0 auto;
-      max-width: 640px;
+      max-width: 580px;
       color: var(--ink-2);
-      font-size: 1.18rem;
-      line-height: 1.7;
+      font-size: 1.02rem;
+      line-height: 1.65;
     }
-    .actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin: 36px 0 0; }
+    .actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin: 26px 0 0; }
     .button {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      min-height: 52px;
-      padding: 0 22px;
+      min-height: 46px;
+      padding: 0 18px;
       border: 1px solid var(--ink);
       text-decoration: none;
-      font-size: 0.92rem;
+      font-size: 0.86rem;
       font-weight: 700;
     }
     .button-ink { background: var(--ink); color: #fff; }
     .button-quiet { background: transparent; }
+    .band {
+      background: var(--paper-deep);
+      padding: 36px 0 8px;
+    }
     .packages {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 18px;
-      padding: 8px 0 40px;
+      gap: 16px;
+      padding: 0 0 28px;
     }
     .package {
-      padding: 28px 26px 30px;
+      padding: 22px 20px 24px;
       background: #fff;
       border: 1px solid var(--line);
+      box-shadow: 0 8px 22px rgba(76, 24, 37, 0.04);
     }
     .package.popular {
       border-color: var(--wine);
-      background: #fffaf8;
+      background: #fffaf7;
+      box-shadow: 0 12px 28px rgba(76, 24, 37, 0.1);
+      position: relative;
     }
-    .package p { margin: 0 0 10px; color: var(--wine); font-size: 0.74rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; }
-    .package h2 { margin: 0 0 10px; font-size: 1.55rem; }
-    .package strong { display: block; margin-bottom: 16px; font-size: 2rem; letter-spacing: -0.03em; }
-    .package ul { margin: 0; padding-left: 18px; color: var(--ink-2); line-height: 1.7; }
-    .extras { padding: 8px 0 40px; }
+    .package.popular::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      height: 4px;
+      background: var(--wine);
+    }
+    .package p { margin: 0 0 8px; color: var(--wine); font-size: 0.68rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; }
+    .package h2 { margin: 0 0 6px; font-size: 1.28rem; }
+    .package strong { display: block; margin-bottom: 12px; font-size: 1.55rem; letter-spacing: -0.03em; color: var(--wine-deep); }
+    .package ul { margin: 0; padding-left: 17px; color: var(--ink-2); line-height: 1.6; font-size: 0.92rem; }
+    .extras { padding: 28px 0 12px; }
     .extras ul {
       list-style: none;
       margin: 0;
-      padding: 8px 28px 12px;
+      padding: 6px 22px 8px;
       background: #fff;
       border: 1px solid var(--line);
+      box-shadow: 0 8px 22px rgba(76, 24, 37, 0.04);
     }
     .extras h2, .services-title {
-      margin: 0 0 18px;
+      margin: 0 0 16px;
       text-align: center;
-      font-size: clamp(1.8rem, 3vw, 2.3rem);
+      font-size: clamp(1.35rem, 2.4vw, 1.7rem);
     }
     .extras li {
       display: flex;
       justify-content: space-between;
       align-items: baseline;
-      gap: 24px;
-      padding: 14px 0;
+      gap: 16px;
+      padding: 12px 0;
       border-bottom: 1px solid var(--line);
-      font-size: 1.02rem;
+      font-size: 0.95rem;
     }
     .extras li:last-child { border-bottom: 0; }
     .services {
       display: grid;
-      gap: 14px;
-      padding: 8px 0 40px;
+      gap: 10px;
+      padding: 28px 0 24px;
     }
     .services-title { grid-column: 1 / -1; }
     .service {
       display: grid;
-      grid-template-columns: 56px 1fr;
-      gap: 18px;
-      padding: 22px 26px;
+      grid-template-columns: 44px 1fr;
+      gap: 12px;
+      padding: 16px 18px;
       background: #fff;
       border: 1px solid var(--line);
+      border-left: 3px solid var(--clay);
     }
     .service span {
       color: var(--wine);
       font-weight: 700;
       letter-spacing: 0.08em;
-      font-size: 0.95rem;
+      font-size: 0.8rem;
     }
-    .service h2 { margin: 0 0 8px; font-size: 1.35rem; }
-    .service p { margin: 0; color: var(--ink-2); font-size: 1.02rem; }
+    .service h2 { margin: 0 0 4px; font-size: 1.08rem; }
+    .service p { margin: 0; color: var(--ink-2); font-size: 0.92rem; }
     .note {
-      padding: 0 0 64px;
+      padding: 8px 0 48px;
       color: var(--muted);
       text-align: center;
-      max-width: 720px;
+      max-width: 640px;
+      font-size: 0.88rem;
     }
     .contact {
       background: var(--wine-deep);
       color: #fff;
-      padding: 72px var(--pad);
+      padding: 52px var(--pad);
       text-align: center;
     }
-    .contact h2 { margin: 0 0 20px; font-size: clamp(2rem, 4vw, 2.6rem); }
-    .contact p, .contact a { margin: 0 0 10px; color: #fff; font-size: 1.08rem; }
+    .contact h2 { margin: 0 0 14px; font-size: clamp(1.5rem, 3vw, 2rem); }
+    .contact p, .contact a { margin: 0 0 8px; color: #fff; font-size: 0.98rem; }
     .contact a { font-weight: 700; }
     [hidden] { display: none !important; }
+    @media (width <= 900px) {
+      .packages { grid-template-columns: 1fr; }
+    }
     @media (width <= 700px) {
       .topbar { height: auto; min-height: 56px; }
-      .topbar-inner { flex-wrap: wrap; padding: 10px 0; }
-      .preview-link { margin: 0; width: 100%; }
-      .wrap { padding: 48px 0 32px; }
-      h1 { max-width: none; }
-      .packages { grid-template-columns: 1fr; }
-      .service { grid-template-columns: 40px 1fr; padding: 18px; }
+      .topbar-inner { flex-wrap: wrap; padding: 10px 0 12px; gap: 8px; }
+      .preview-link { flex: 1 1 100%; margin: 0; font-size: 0.8rem; line-height: 1.4; }
+      .wrap { padding: 32px 0 24px; }
+      h1 { max-width: none; font-size: 1.7rem; }
+      .lede { font-size: 0.98rem; }
+      .package { padding: 20px 18px; }
+      .extras li { flex-direction: column; gap: 4px; padding: 11px 0; }
+      .service { grid-template-columns: 36px 1fr; padding: 14px; }
+      .contact { padding: 40px var(--pad); }
     }
   </style>
 </head>
@@ -229,6 +267,7 @@
   </header>
 
   <div id="copy-en">
+    <div class="hero-band">
     <section class="shell wrap">
       <p class="kicker">For independent shops</p>
       <h1>Website &amp; Local Media Services for Small Businesses</h1>
@@ -238,6 +277,8 @@
         <a class="button button-quiet" href="mailto:info@uslifehub.org">info@uslifehub.org</a>
       </div>
     </section>
+    </div>
+    <div class="band">
     <section class="shell packages" aria-label="Website packages">
       <article class="package">
         <p>Entry</p>
@@ -290,6 +331,7 @@
         <li><span>US Life Hub yellow-pages listing + highlight</span><strong>Free with any website package</strong></li>
       </ul>
     </section>
+    </div>
     <section class="shell services" aria-label="Services">
       <h2 class="services-title">What is included</h2>
       <article class="service"><span>01</span><div><h2>Professional mobile-friendly website</h2><p>A clean, phone-first site with services, photos, hours, and a clear call button.</p></div></article>
@@ -312,6 +354,7 @@
   </div>
 
   <div id="copy-zh" hidden>
+    <div class="hero-band">
     <section class="shell wrap">
       <p class="kicker">面向独立店铺</p>
       <h1>面向本地小企业的网站与媒体推广服务</h1>
@@ -321,6 +364,8 @@
         <a class="button button-quiet" href="mailto:info@uslifehub.org">info@uslifehub.org</a>
       </div>
     </section>
+    </div>
+    <div class="band">
     <section class="shell packages" aria-label="网站套餐">
       <article class="package">
         <p>入门</p>
@@ -373,6 +418,7 @@
         <li><span>US Life Hub 黄页收录 + 高亮</span><strong>网站套餐免费赠送</strong></li>
       </ul>
     </section>
+    </div>
     <section class="shell services" aria-label="服务内容">
       <h2 class="services-title">包含内容</h2>
       <article class="service"><span>01</span><div><h2>专业移动端网站</h2><p>适合手机浏览的简洁网站，包含项目、图片、营业时间和明确的电话按钮。</p></div></article>
