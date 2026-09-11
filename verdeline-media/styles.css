@@ -67,10 +67,13 @@ p { margin: 0 0 16px; }
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex-wrap: nowrap;
   gap: 20px;
-  min-height: 58px;
-  padding: 8px var(--header-pad);
+  min-height: 56px;
+  height: 56px;
+  padding: 0 var(--header-pad);
   position: relative;
+  overflow: hidden;
 }
 .home-hero .site-header,
 .site-header-overlay {
@@ -83,14 +86,17 @@ p { margin: 0 0 16px; }
 .sample-chip {
   display: inline-flex;
   align-items: center;
-  margin-left: 8px;
-  padding: 1px 5px;
+  align-self: center;
+  margin-left: 6px;
+  margin-top: 0;
+  padding: 2px 5px 1px;
   border: 1px solid currentColor;
   border-radius: 2px;
   font-size: 0.52rem;
   font-weight: 500;
   letter-spacing: 0.14em;
   text-transform: uppercase;
+  line-height: 1;
   opacity: 0.48;
 }
 .sample-flag {
@@ -110,6 +116,7 @@ p { margin: 0 0 16px; }
 .brand {
   display: inline-flex;
   align-items: center;
+  height: 56px;
   gap: 8px;
   flex: none;
   cursor: pointer;
@@ -123,13 +130,16 @@ p { margin: 0 0 16px; }
   place-items: center;
   font-family: Georgia, serif;
   font-size: 0.95rem;
-  font-style: italic;
+  font-style: normal;
+  line-height: 1;
+  padding: 0;
 }
 .brand-name {
   font-family: Georgia, "Times New Roman", serif;
   font-size: 1.02rem;
   font-weight: 400;
   letter-spacing: -0.02em;
+  line-height: 1;
   white-space: nowrap;
 }
 .brand-copy { display: grid; gap: 1px; line-height: 1; }
@@ -138,6 +148,7 @@ p { margin: 0 0 16px; }
 .site-nav {
   display: flex;
   align-items: center;
+  height: 56px;
   gap: clamp(16px, 2.2vw, 28px);
   font-size: 0.8rem;
   font-weight: 500;
@@ -146,11 +157,15 @@ p { margin: 0 0 16px; }
 .site-nav button.nav-link {
   background: none;
   border: 0;
-  padding: 6px 0;
+  padding: 0;
+  height: 56px;
+  display: inline-flex;
+  align-items: center;
   color: inherit;
   cursor: pointer;
   font-size: 0.8rem;
   font-weight: 500;
+  line-height: 1;
 }
 .site-nav .nav-services {
   font-weight: 500;
@@ -550,6 +565,61 @@ button.text-arrow {
   gap: 48px;
   padding-bottom: 96px;
 }
+#visit .inner-page {
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+}
+#visit .page-intro {
+  padding-top: 20px;
+  padding-bottom: 16px;
+  gap: 24px;
+}
+#visit .page-intro h1 {
+  margin-bottom: 8px;
+  font-size: clamp(2rem, 3.4vw, 2.85rem);
+  line-height: 0.96;
+}
+#visit .page-intro .lede {
+  margin-bottom: 12px;
+  font-size: 0.95rem;
+  line-height: 1.45;
+}
+#visit .page-intro .action-row { display: none; }
+#visit .page-intro-media,
+#visit .page-intro-media img {
+  min-height: 140px;
+  max-height: 168px;
+}
+#visit .visit-layout {
+  gap: 16px;
+  padding-top: 0;
+  padding-bottom: 16px;
+}
+#visit .hours-card,
+#visit .visit-card { padding: 14px 16px; }
+#visit .hours-card div { padding: 8px 0; }
+#visit .map-cta { margin-top: 12px; padding: 12px 14px; }
+#visit .hours-card .button {
+  margin-top: 12px !important;
+  min-height: 42px;
+  padding: 8px 14px;
+}
+#visit .site-footer {
+  margin-top: auto;
+  padding-top: 16px;
+  padding-bottom: 14px;
+  gap: 16px 32px;
+}
+#visit .site-footer p { margin: 6px 0 0; font-size: 0.82rem; }
+@media (min-width: 901px) {
+  #visit.view.is-active,
+  #visit .inner-page {
+    height: 100svh;
+    max-height: 100svh;
+    overflow: hidden;
+  }
+}
 .hours-card, .visit-card {
   background: #fff;
   border: 1px solid var(--line);
@@ -682,9 +752,11 @@ button.text-arrow {
   .site-nav button.nav-link { font-size: 0.74rem; }
 }
 @media (width <= 700px) {
-  .site-header { gap: 10px; min-height: 50px; padding-top: 8px; padding-bottom: 8px; }
+  .site-header { gap: 10px; min-height: 50px; height: 50px; padding-top: 0; padding-bottom: 0; }
+  .brand { height: 50px; }
   .brand-name { font-size: 0.92rem; }
   .brand-copy small { display: none; }
+  .site-nav { height: auto; }
   .site-nav-desktop { display: none; }
   .mobile-actions { display: flex; align-items: center; gap: 7px; margin-left: auto; }
   .hero-content { padding: clamp(72px, 11vh, 120px) 20px clamp(24px, 5vh, 48px) var(--header-pad); }

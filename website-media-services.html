@@ -33,8 +33,9 @@
       justify-content: space-between;
       align-items: center;
       gap: 16px;
-      min-height: 58px;
-      padding: 8px var(--pad);
+      min-height: 56px;
+      height: 56px;
+      padding: 0 var(--pad);
       background: var(--wine-deep);
       color: #fff;
       border-bottom: 1px solid rgba(255,255,255,0.28);
@@ -42,11 +43,22 @@
     .brand {
       display: flex;
       flex-direction: column;
+      justify-content: center;
       gap: 2px;
       text-decoration: none;
     }
     .brand strong { font-size: 0.95rem; letter-spacing: 0.04em; }
     .brand small { font-size: 0.68rem; opacity: 0.72; }
+    .preview-link {
+      margin-right: auto;
+      margin-left: 20px;
+      color: #fff;
+      font-size: 0.88rem;
+      font-weight: 700;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      white-space: nowrap;
+    }
     .lang-switch { display: flex; gap: 6px; }
     .lang-switch button {
       min-height: 36px;
@@ -113,6 +125,33 @@
     }
     .service h2 { margin: 0 0 6px; font-size: 1.25rem; }
     .service p { margin: 0; color: var(--ink-2); }
+    .packages {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+      padding: 8px var(--pad) 28px;
+      max-width: 980px;
+    }
+    .package {
+      padding: 20px 22px;
+      background: #fff;
+      border: 1px solid var(--line);
+    }
+    .package.popular { border-color: var(--wine); }
+    .package p { margin: 0 0 8px; color: var(--muted); font-size: 0.72rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; }
+    .package h2 { margin: 0 0 8px; font-size: 1.35rem; }
+    .package strong { display: block; margin-bottom: 10px; font-size: 1.4rem; }
+    .package ul { margin: 0; padding-left: 18px; color: var(--ink-2); }
+    .extras { padding: 0 var(--pad) 28px; max-width: 980px; }
+    .extras ul { list-style: none; margin: 0; padding: 0; }
+    .extras h2 { margin: 0 0 12px; font-size: 1.5rem; }
+    .extras li {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 10px 0;
+      border-bottom: 1px solid var(--line);
+    }
     .note { padding: 0 var(--pad) 48px; max-width: 980px; color: var(--muted); }
     .contact {
       background: var(--wine-deep);
@@ -122,10 +161,11 @@
     .contact h2 { margin: 0 0 16px; font-size: 2rem; }
     .contact p, .contact a { margin: 0 0 8px; color: #fff; }
     .contact a { font-weight: 700; }
-    .sample-link { padding: 28px var(--pad) 48px; }
     [hidden] { display: none !important; }
     @media (width <= 700px) {
-      .topbar { min-height: 50px; }
+      .topbar { min-height: 50px; height: auto; padding: 8px var(--pad); flex-wrap: wrap; }
+      .preview-link { margin: 4px 0 0; width: 100%; }
+      .packages { grid-template-columns: 1fr; }
       .service { grid-template-columns: 36px 1fr; padding: 16px; }
     }
   </style>
@@ -136,6 +176,7 @@
       <strong>US Life Hub</strong>
       <small>Website &amp; local media</small>
     </a>
+    <a id="preview-link" class="preview-link" href="/verdeline-nails-spa">← Back to the Lumen sample site</a>
     <div class="lang-switch" role="group" aria-label="Language">
       <button type="button" id="lang-en" aria-pressed="true">English</button>
       <button type="button" id="lang-zh" aria-pressed="false">中文</button>
@@ -152,6 +193,54 @@
         <a class="button button-quiet" href="mailto:info@uslifehub.org">info@uslifehub.org</a>
       </div>
     </section>
+    <section class="packages" aria-label="Website packages">
+      <article class="package">
+        <p>Entry</p>
+        <h2>One-page site</h2>
+        <strong>$249</strong>
+        <ul>
+          <li>Up to 5 sections</li>
+          <li>Mobile-ready</li>
+          <li>Call, map + booking</li>
+          <li>1 revision</li>
+        </ul>
+      </article>
+      <article class="package popular">
+        <p>Popular</p>
+        <h2>Standard site</h2>
+        <strong>$449</strong>
+        <ul>
+          <li>Up to 5 pages</li>
+          <li>Services + gallery</li>
+          <li>Local SEO + analytics</li>
+          <li>2 revisions</li>
+        </ul>
+      </article>
+      <article class="package">
+        <p>Launch</p>
+        <h2>Local growth launch</h2>
+        <strong>$699</strong>
+        <ul>
+          <li>Standard site included</li>
+          <li>Google, Apple, Bing, Yelp</li>
+          <li>Booking + ads setup</li>
+          <li>Third-party costs paid direct</li>
+        </ul>
+      </article>
+    </section>
+    <section class="extras">
+      <h2>A la carte</h2>
+      <ul>
+        <li><span>Domain DNS, SSL + connection</span><strong>$39</strong></li>
+        <li><span>Business email setup — first inbox</span><strong>$49</strong></li>
+        <li><span>Google Business Profile setup</span><strong>$99</strong></li>
+        <li><span>Apple / Bing / Yelp — each</span><strong>$49</strong></li>
+        <li><span>Facebook + Instagram setup</span><strong>$69</strong></li>
+        <li><span>8-platform local presence bundle</span><strong>$249</strong></li>
+        <li><span>Booking-link integration</span><strong>$39</strong></li>
+        <li><span>Managed cloud hosting</span><strong>$12/mo or $120/yr</strong></li>
+      </ul>
+    </section>
     <section class="services" aria-label="Services">
       <article class="service"><span>01</span><div><h2>Professional mobile-friendly website</h2><p>A clean, phone-first site with services, photos, hours, and a clear call button.</p></div></article>
       <article class="service"><span>02</span><div><h2>Website hosted on US Life Hub or independent domain setup</h2><p>Stay on US Life Hub, or get help connecting your own domain.</p></div></article>
@@ -161,7 +250,7 @@
       <article class="service"><span>06</span><div><h2>Simple bilingual website and local-media promotion support</h2><p>English and Chinese pages, plus help keeping local listings consistent.</p></div></article>
       <article class="service"><span>07</span><div><h2>Free consultation and customized service package</h2><p>Talk through what the shop needs first. Pay only for the work you choose.</p></div></article>
     </section>
-    <p class="note">See the live sample: <a href="/verdeline-nails-spa">Lumen Nail Studio</a>, a fictional design concept on US Life Hub.</p>
+    <p class="note">These are US Life Hub entry prices for straightforward, single-location projects. Domain, email, booking and ad spend are paid directly by the shop. No media markup. Prices from the September 2026 service guide.</p>
     <section class="contact">
       <h2>Talk with US Life Hub</h2>
       <p>Rocky · US Life Hub</p>
@@ -181,6 +270,54 @@
         <a class="button button-quiet" href="mailto:info@uslifehub.org">info@uslifehub.org</a>
       </div>
     </section>
+    <section class="packages" aria-label="网站套餐">
+      <article class="package">
+        <p>入门</p>
+        <h2>单页网站</h2>
+        <strong>$249</strong>
+        <ul>
+          <li>最多 5 个板块</li>
+          <li>适配手机</li>
+          <li>电话、地图与预约入口</li>
+          <li>1 次修改</li>
+        </ul>
+      </article>
+      <article class="package popular">
+        <p>常用</p>
+        <h2>标准网站</h2>
+        <strong>$449</strong>
+        <ul>
+          <li>最多 5 个页面</li>
+          <li>服务菜单 + 图库</li>
+          <li>本地 SEO + 统计</li>
+          <li>2 次修改</li>
+        </ul>
+      </article>
+      <article class="package">
+        <p>上线</p>
+        <h2>本地增长套餐</h2>
+        <strong>$699</strong>
+        <ul>
+          <li>含标准网站</li>
+          <li>Google、Apple、Bing、Yelp</li>
+          <li>预约与广告开户</li>
+          <li>第三方费用由店铺自付</li>
+        </ul>
+      </article>
+    </section>
+    <section class="extras">
+      <h2>单项服务</h2>
+      <ul>
+        <li><span>域名 DNS、SSL 与接入</span><strong>$39</strong></li>
+        <li><span>商业邮箱设置 — 首个邮箱</span><strong>$49</strong></li>
+        <li><span>Google 商家资料设置</span><strong>$99</strong></li>
+        <li><span>Apple / Bing / Yelp — 每个</span><strong>$49</strong></li>
+        <li><span>Facebook + Instagram 设置</span><strong>$69</strong></li>
+        <li><span>8 个平台本地曝光套餐</span><strong>$249</strong></li>
+        <li><span>预约链接接入</span><strong>$39</strong></li>
+        <li><span>托管云主机</span><strong>$12/月 或 $120/年</strong></li>
+      </ul>
+    </section>
     <section class="services" aria-label="服务内容">
       <article class="service"><span>01</span><div><h2>专业移动端网站</h2><p>适合手机浏览的简洁网站，包含项目、图片、营业时间和明确的电话按钮。</p></div></article>
       <article class="service"><span>02</span><div><h2>可托管在 US Life Hub，或协助申请独立域名</h2><p>网站可先放在 US Life Hub，也可协助绑定店铺自己的域名。</p></div></article>
@@ -190,7 +327,7 @@
       <article class="service"><span>06</span><div><h2>中英双语网站与本地媒体推广支持</h2><p>提供中英内容，并协助保持各平台信息一致。</p></div></article>
       <article class="service"><span>07</span><div><h2>免费咨询及定制服务方案</h2><p>先沟通店铺需求，再只做你需要的部分。</p></div></article>
     </section>
-    <p class="note">查看样品网站：<a href="/verdeline-nails-spa">Lumen Nail Studio</a>，这是 US Life Hub 上的虚构设计样品。</p>
+    <p class="note">以上为 US Life Hub 2026 年 9 月服务指南中的入门报价，适用于流程清楚的单店项目。域名、邮箱、预约和广告投放费用由店铺直接支付，我们不加价。</p>
     <section class="contact">
       <h2>联系 US Life Hub</h2>
       <p>Rocky · US Life Hub</p>
@@ -200,14 +337,13 @@
     </section>
   </div>
 
-  <p class="sample-link"><a href="/verdeline-nails-spa">Back to the Lumen sample</a></p>
-
   <script>
     (function () {
       var en = document.getElementById("copy-en");
       var zh = document.getElementById("copy-zh");
       var btnEn = document.getElementById("lang-en");
       var btnZh = document.getElementById("lang-zh");
+      var preview = document.getElementById("preview-link");
       function setLang(lang) {
         var isZh = lang === "zh";
         en.hidden = isZh;
@@ -218,6 +354,11 @@
         document.title = isZh
           ? "面向本地小企业的网站与媒体推广服务 | US Life Hub"
           : "Website & Local Media Services for Small Businesses | US Life Hub";
+        if (preview) {
+          preview.textContent = isZh
+            ? "← 返回 Lumen 样品网站预览"
+            : "← Back to the Lumen sample site";
+        }
       }
       btnEn.addEventListener("click", function () { setLang("en"); });
       btnZh.addEventListener("click", function () { setLang("zh"); });
