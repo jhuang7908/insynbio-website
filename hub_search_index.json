@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0",
-  "generated_at": "2026-09-22 15:38",
+  "generated_at": "2026-09-23 15:33",
   "count": 120,
   "fields": [
     "first_indexed_at",
@@ -29,7 +29,7 @@
       "published_at": "",
       "source_published_at": "",
       "first_indexed_at": "2026-06-15 20:30:26",
-      "last_seen_at": "2026-09-22 11:38:29",
+      "last_seen_at": "2026-09-23 11:33:07",
       "date_kind": "event",
       "url": "https://www.bmcc.cuny.edu/ce/hse-ged-and-esol-programs/",
       "search_text": "live_001 语言·教育 hse (ged) and college prep hse (ged) and college prep education program on www.bmcc.cuny.edu — click to enroll or learn more.（来源类型：纽约市立大学 — 继续教育、英语课及成人学习） 全市 纽约全市 citywide new york city 2026-06-15 20:30:26 2026-09-28 https://www.bmcc.cuny.edu/ce/hse-ged-and-esol-programs/"
@@ -89,7 +89,7 @@
       "published_at": "",
       "source_published_at": "",
       "first_indexed_at": "2026-09-21 13:15:35",
-      "last_seen_at": "2026-09-22 11:38:29",
+      "last_seen_at": "2026-09-23 11:33:07",
       "date_kind": "event",
       "url": "https://www.kingsborough.edu/ce/hse_courses.html",
       "search_text": "live_004 语言·教育 high school equivalency (hse/ged) high school equivalency (hse/ged) education program on www.kingsborough.edu — click to enroll or learn more.（来源类型：纽约市立大学 — 继续教育、英语课及成人学习） 全市 纽约全市 citywide new york city 2026-09-21 13:15:35 2026-09-28 https://www.kingsborough.edu/ce/hse_courses.html"
@@ -109,7 +109,7 @@
       "published_at": "",
       "source_published_at": "",
       "first_indexed_at": "2026-06-15 20:30:26",
-      "last_seen_at": "2026-09-22 11:38:29",
+      "last_seen_at": "2026-09-23 11:33:07",
       "date_kind": "event",
       "url": "https://www.qcc.cuny.edu/ce/index.html",
       "search_text": "live_005 就业·培训 continuing education workforce development continuing education workforce development education program on www.qcc.cuny.edu — click to enroll or learn more.（来源类型：纽约市立大学 — 继续教育、英语课及成人学习） 全市 纽约全市 citywide new york city 2026-06-15 20:30:26 2026-09-28 https://www.qcc.cuny.edu/ce/index.html"
@@ -277,22 +277,22 @@
     {
       "id": "live_014",
       "module": "亲子·公园",
-      "title_zh": "动感儿童：苏厄德公园（Seward Park）",
-      "summary_zh": "动感儿童项目让孩子们参与户外活动。纽约市公园（NYC Parks）工作人员在纽约市的游乐场提供四到七小时的免费活动，包括组织体育、游戏、健身演示等。",
-      "location_tag_zh": "曼哈顿 Manhattan",
-      "location_kind": "borough",
-      "area_zh": "曼哈顿 Manhattan",
-      "borough": "Manhattan",
+      "title_zh": "Kids in Motion: Seward Park",
+      "summary_zh": "Entrance - East Broadway & Essex St (in Seward Park)（来源类型：nyc_parks_opendata_fallback）",
+      "location_tag_zh": "全市",
+      "location_kind": "citywide",
+      "area_zh": "纽约全市",
+      "borough": "Citywide",
       "location": "Entrance - East Broadway & Essex St (in Seward Park)",
       "event_date": "2026-09-23",
-      "event_time": "2026-09-",
+      "event_time": "",
       "published_at": "",
       "source_published_at": "",
       "first_indexed_at": "2026-09-19 10:42:23",
-      "last_seen_at": "2026-09-21 13:15:35",
+      "last_seen_at": "2026-09-23 11:33:07",
       "date_kind": "event",
       "url": "https://www.nycgovparks.org/events/2026/09/23/kids-in-motion-seward-park",
-      "search_text": "live_014 亲子·公园 动感儿童：苏厄德公园（seward park） kids in motion: seward park 动感儿童项目让孩子们参与户外活动。纽约市公园（nyc parks）工作人员在纽约市的游乐场提供四到七小时的免费活动，包括组织体育、游戏、健身演示等。 曼哈顿 manhattan 曼哈顿 manhattan manhattan entrance - east broadway & essex st (in seward park) 2026-09-19 10:42:23 2026-09-23 https://www.nycgovparks.org/events/2026/09/23/kids-in-motion-seward-park"
+      "search_text": "live_014 亲子·公园 kids in motion: seward park kids in motion: seward park entrance - east broadway & essex st (in seward park)（来源类型：nyc_parks_opendata_fallback） 全市 纽约全市 citywide entrance - east broadway & essex st (in seward park) 2026-09-19 10:42:23 2026-09-23 https://www.nycgovparks.org/events/2026/09/23/kids-in-motion-seward-park"
     },
     {
       "id": "live_015",
@@ -729,7 +729,7 @@
       "published_at": "",
       "source_published_at": "",
       "first_indexed_at": "2026-06-15 20:30:26",
-      "last_seen_at": "2026-09-22 11:38:29",
+      "last_seen_at": "2026-09-23 11:33:07",
       "date_kind": "service",
       "url": "https://www.qcc.cuny.edu/ce/programs/community-english-as-a-second-language.html",
       "search_text": "live_036 语言·教育 community english as a second language community english as a second language education program on www.qcc.cuny.edu — click to enroll or learn more.（来源类型：纽约市立大学 — 继续教育、英语课及成人学习） 全市 纽约全市 citywide new york city 2026-06-15 20:30:26 https://www.qcc.cuny.edu/ce/programs/community-english-as-a-second-language.html"
@@ -769,7 +769,7 @@
       "published_at": "",
       "source_published_at": "",
       "first_indexed_at": "2026-06-15 20:30:26",
-      "last_seen_at": "2026-09-22 11:38:29",
+      "last_seen_at": "2026-09-23 11:33:07",
       "date_kind": "service",
       "url": "https://www.bmcc.cuny.edu/ce/contact/",
       "search_text": "live_038 就业·培训 center for continuing education workforce development center for continuing education workforce development education program on www.bmcc.cuny.edu — click to enroll or learn more.（来源类型：纽约市立大学 — 继续教育、英语课及成人学习） 全市 纽约全市 citywide new york city 2026-06-15 20:30:26 https://www.bmcc.cuny.edu/ce/contact/"
