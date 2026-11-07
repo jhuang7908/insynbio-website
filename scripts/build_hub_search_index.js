@@ -5,6 +5,7 @@
  */
 const fs = require('fs');
 const path = require('path');
+const policy = require('../assets/hub-listing-policy.js');
 
 const root = path.join(__dirname, '..');
 const htmlPath = path.join(root, 'us-chinese-life-hub.html');
@@ -15,17 +16,25 @@ const marker = 'const ITEMS = ';
 const idx = html.indexOf(marker);
 if (idx < 0) throw new Error('ITEMS block not found');
 const start = html.indexOf('[', idx);
-let depth = 0;
+let arr = 0;
+let obj = 0;
+let inStr = false;
+let esc = false;
 let end = start;
 for (let i = start; i < html.length; i++) {
-  if (html[i] === '[') depth++;
-  if (html[i] === ']') {
-    depth--;
-    if (depth === 0) {
-      end = i + 1;
-      break;
-    }
+  const c = html[i];
+  if (inStr) {
+    if (esc) esc = false;
+    else if (c === '\\') esc = true;
+    else if (c === '"') inStr = false;
+    continue;
   }
+  if (c === '"') { inStr = true; continue; }
+  if (c === '[') arr++;
+  else if (c === ']') arr--;
+  else if (c === '{') obj++;
+  else if (c === '}') obj--;
+  if (i > start && arr === 0 && obj === 0) { end = i + 1; break; }
 }
 const ITEMS = JSON.parse(html.slice(start, end));
 
@@ -36,11 +45,18 @@ function searchBlob(item) {
     item.summary_zh, item.summary_en, item.summary_zht,
     item.area_zh, item.area_en, item.borough,
     item.location, item.event_date, item.url,
+    item.disclosure_zh, item.age_or_grade,
   ];
   return parts.filter(Boolean).join(' ').toLowerCase();
 }
 
-const records = ITEMS.map(item => ({
+function resolveAsOf(envValue, now) {
+  if (/^\d{4}-\d{2}-\d{2}$/.test(envValue || '')) return envValue;
+  return policy.nyCalendarDate(now || new Date());
+}
+
+const asOf = resolveAsOf(process.env.HUB_AS_OF);
+const records = ITEMS.filter(item => policy.isSearchableActivity(item, asOf)).map(item => ({
   id: item.id,
   module: item.module,
   title_zh: item.title_zh,
@@ -64,10 +80,16 @@ const records = ITEMS.map(item => ({
 const payload = {
   version: 2,
   generated_at: new Date().toISOString(),
+  as_of: asOf,
+  as_of_tz: 'America/New_York',
   source: 'us-chinese-life-hub.html ITEMS',
   count: records.length,
   records,
 };
 
-fs.writeFileSync(outPath, JSON.stringify(payload, null, 2) + '\n', 'utf8');
-console.log('Wrote', outPath, 'records:', records.length);
+if (require.main === module) {
+  fs.writeFileSync(outPath, JSON.stringify(payload, null, 2) + '\n', 'utf8');
+  console.log('Wrote', outPath, 'records:', records.length, 'as_of:', asOf);
+}
+
+module.exports = { resolveAsOf };
