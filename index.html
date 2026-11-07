@@ -1016,8 +1016,9 @@
     }
     .parks-event-media-col { flex-shrink: 0; width: 132px; }
     .hub-photo-credit {
-      margin-top: 3px; font-size: 9px; line-height: 1.3; color: #64748b; word-break: break-word;
+      margin-top: 3px; font-size: 11px; line-height: 1.35; color: #64748b; word-break: break-word; white-space: normal;
     }
+    .hub-photo-credit-label { display: block; color: #334155; font-weight: 600; }
     .hub-photo-credit a { color: #475569; text-decoration: underline; }
     .hub-feed-pager {
       display: flex; align-items: center; justify-content: center; gap: 10px;
@@ -2183,6 +2184,7 @@
 <script src="assets/hub-listing-policy.js"></script>
 <script src="assets/hub-image-catalog.js"></script>
 <script src="assets/hub-image-assign.js"></script>
+<script src="assets/hub-image-credit.js"></script>
 <script src="assets/hub-subscribe-state.js"></script>
 <script>
 const MODULES = [{"id":"family","zh":"亲子·公园","zht":"親子·公園","en":"Family & Parks","desc_zh":"儿童故事会、亲子活动、游乐场、Baby & Toddler 等公园家庭项目。另含已核实的青少年竞赛、大学本校暑期项目和童子军入口。","desc_zht":"兒童故事會、親子活動、遊樂場、Baby & Toddler 等公園家庭項目。另含已核實的青少年競賽、大學本校暑期項目和童軍入口。","desc_en":"Story time, family days, playgrounds and kid-focused park programs. Also lists verified youth contests, university summer programs, and scouting intros.","color":"#0d9488"},{"id":"fitness","zh":"健身·户外","zht":"健身·戶外","en":"Fitness & Outdoors","desc_zh":"游泳、Zumba、瑜伽、球类、徒步与自然探索等免费健身活动。","desc_zht":"游泳、Zumba、瑜伽、球類、徒步與自然探索等免費健身活動。","desc_en":"Swimming, zumba, sports, hiking and outdoor fitness programs.","color":"#0891b2"},{"id":"culture","zh":"文化·节庆","zht":"文化·節慶","en":"Culture & Festivals","desc_zh":"音乐会、节庆、电影、艺术展览、宠物领养与社区庆典。","desc_zht":"音樂會、節慶、電影、藝術展覽、寵物領養與社區慶典。","desc_en":"Concerts, festivals, film, arts and community celebrations.","color":"#7c3aed"},{"id":"education","zh":"语言·教育","zht":"語言·教育","en":"Language & Education","desc_zh":"免费 ESL、GED、公民入籍、图书馆课程与成人 literacy 项目。另含青少年竞赛和大学本校暑期项目；未核实的资格会标明。","desc_zht":"免費 ESL、GED、公民入籍、圖書館課程與成人 literacy 項目。另含青少年競賽和大學本校暑期項目；未核實的資格會標明。","desc_en":"Free ESL, GED, citizenship, library classes and adult literacy. Also lists youth contests and university summer programs with eligibility labeled.","color":"#6366f1"},{"id":"employment","zh":"就业·培训","zht":"就業·培訓","en":"Jobs & Training","desc_zh":"Workforce1 职业培训、华人社区招聘会、技能提升与就业辅导。","desc_zht":"Workforce1 職業培訓、華人社區招聘會、技能提升與就業輔導。","desc_en":"Workforce training, job fairs and career development programs.","color":"#2563eb"},{"id":"benefits","zh":"福利·政务","zht":"福利·政務","en":"Benefits & Services","desc_zh":"白卡、粮食券、长者服务、IDNYC、移民法律援助与住房资讯。","desc_zht":"白卡、糧食券、長者服務、IDNYC、移民法律援助與住房資訊。","desc_en":"Medicaid, SNAP, senior services, IDNYC, immigration and housing aid.","color":"#16a34a"},{"id":"transit","zh":"交通·出行","zht":"交通·出行","en":"Transit & Travel","desc_zh":"地铁巴士改线、道路施工、Fair Fares 与出行通知。","desc_zht":"地鐵巴士改線、道路施工、Fair Fares 與出行通知。","desc_en":"MTA alerts, road work, reduced fare programs and travel notices.","color":"#ca8a04"},{"id":"charity","zh":"公益·义工","zht":"公益·義工","en":"Volunteer","desc_zh":"官方义工招募、食物银行志愿、华人机构社区服务项目。","desc_zht":"官方義工招募、食物銀行志願、華人機構社區服務項目。","desc_en":"Official volunteer roles and Chinese org community service.","color":"#c026d3"},{"id":"safety","zh":"安全·突发","zht":"安全·突發","en":"Safety & Alerts","desc_zh":"游行集会、封街通知、治安预警与紧急求助。","desc_zht":"遊行集會、封街通知、治安預警與緊急求助。","desc_en":"Protests, street closures, safety alerts and emergency help.","color":"#dc2626"},{"id":"recreation","zh":"休闲·运动","zht":"休閒·運動","en":"Recreation & Sports","desc_zh":"滑冰、网球、高尔夫、游泳班、击剑与社区运动课程。当前收录公园局常年目录，具体课表请看官网。","desc_zht":"滑冰、網球、高爾夫、游泳班、擊劍與社區運動課程。目前收錄公園局常年目錄，具體課表請看官網。","desc_en":"Skating, tennis, golf, swim lessons, fencing and community sports. Current listings are Parks directories. Class times are on the official site.","color":"#0284c7"},{"id":"housing","zh":"住房·安居","zht":"住房·安居","en":"Housing & Living","desc_zh":"平价房抽签、租客权利、水电费减免与社区指南。","desc_zht":"平價房抽籤、租客權利、水電費減免與社區指南。","desc_en":"Affordable housing lotteries, tenant rights and utility assistance.","color":"#10b981"},{"id":"health","zh":"医疗·健康","zht":"醫療·健康","en":"Health & Medical","desc_zh":"免费筛查、疫苗接种、心理健康与红蓝卡资讯。","desc_zht":"免費篩查、疫苗接種、心理健康與紅藍卡資訊。","desc_en":"Free screenings, vaccines, mental health and Medicare info.","color":"#ef4444"}];
@@ -3807,16 +3809,8 @@ function hubCardImageHtml(item, opts) {
 }
 
 function hubPhotoCreditHtml(item) {
-  const img = item && item._assignedImage;
-  if (!img) return '';
-  const label = img.kind === 'place' ? '实地' : '主题示意';
-  const author = img.author || '作者见来源页';
-  const href = img.source_page || img.license_url || '';
-  const who = href
-    ? `<a href="${escapeHtml(href)}" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation()">${escapeHtml(author)}</a>`
-    : escapeHtml(author);
-  const note = img.note || img.depicts || '';
-  return `<div class="hub-photo-credit" title="${escapeHtml(note)}">${who} · ${escapeHtml(img.license || '')} · ${label}</div>`;
+  if (typeof HubImageCredit !== 'undefined' && HubImageCredit.html) return HubImageCredit.html(item);
+  return '';
 }
 
 function hubCardVenueHtml(item) {

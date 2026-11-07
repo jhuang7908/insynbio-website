@@ -14,6 +14,13 @@
     return list.slice(idx).concat(list.slice(0, idx));
   }
 
+  function allowed(item, image) {
+    if (!image) return false;
+    var only = image.only_item_ids;
+    if (only && only.length && only.indexOf(item.id) === -1) return false;
+    return true;
+  }
+
   function candidatesFor(item, catalog) {
     var images = catalog.images || {};
     var ids = [];
@@ -26,7 +33,9 @@
     (catalog.reserve || []).forEach(function (id) {
       if (ids.indexOf(id) === -1) ids.push(id);
     });
-    return ids.map(function (id) { return images[id]; }).filter(Boolean);
+    return ids.map(function (id) { return images[id]; }).filter(function (image) {
+      return allowed(item, image);
+    });
   }
 
   function assign(items, catalog) {
@@ -55,7 +64,7 @@
     return { ok: ok, assigned: rows };
   }
 
-  var api = { PAGE_SIZE: PAGE_SIZE, assign: assign, candidatesFor: candidatesFor };
+  var api = { PAGE_SIZE: PAGE_SIZE, assign: assign, candidatesFor: candidatesFor, allowed: allowed };
   root.HubImageAssign = api;
   if (typeof module !== 'undefined' && module.exports) module.exports = api;
 })(typeof globalThis !== 'undefined' ? globalThis : this);

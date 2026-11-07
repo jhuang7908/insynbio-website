@@ -14,7 +14,15 @@
       "depicts": "皇后区 Forest Park 树林",
       "kind": "place",
       "note": "实地照片，不是本场活动现场。",
-      "credit": "图片：Tdorante10 / CC BY-SA 4.0 / 维基共享资源。实地照片，不是本场活动现场。"
+      "credit": "图片：Tdorante10 / CC BY-SA 4.0 / 维基共享资源。实地照片，不是本场活动现场。",
+      "on_site_ids": [
+        "fpt_fairy_20261108",
+        "fpt_restore_forest_20261113",
+        "fpt_native_20261114",
+        "fpt_foliage_20261119",
+        "fpt_restore_forest_20261120"
+      ],
+      "attribution": ""
     },
     "forest-park-field": {
       "id": "forest-park-field",
@@ -28,7 +36,15 @@
       "depicts": "Forest Park Victory Field",
       "kind": "place",
       "note": "实地照片，不是本场活动现场。",
-      "credit": "图片：Tdorante10 / CC BY-SA 4.0 / 维基共享资源。实地照片，不是本场活动现场。"
+      "credit": "图片：Tdorante10 / CC BY-SA 4.0 / 维基共享资源。实地照片，不是本场活动现场。",
+      "on_site_ids": [
+        "fpt_fairy_20261108",
+        "fpt_restore_forest_20261113",
+        "fpt_native_20261114",
+        "fpt_foliage_20261119",
+        "fpt_restore_forest_20261120"
+      ],
+      "attribution": ""
     },
     "volunteer-planting": {
       "id": "volunteer-planting",
@@ -42,7 +58,9 @@
       "depicts": "志愿者栽种",
       "kind": "activity",
       "note": "主题示意，不是 Forest Park 当日现场。",
-      "credit": "图片：Hillebrand Steve, U.S. Fish and Wildlife Service / Public domain / 维基共享资源。主题示意，不是 Forest Park 当日现场。"
+      "credit": "图片：Hillebrand Steve, U.S. Fish and Wildlife Service / Public domain / 维基共享资源。主题示意，不是 Forest Park 当日现场。",
+      "on_site_ids": [],
+      "attribution": ""
     },
     "volunteer-planting-af": {
       "id": "volunteer-planting-af",
@@ -56,7 +74,9 @@
       "depicts": "志愿者植树",
       "kind": "activity",
       "note": "主题示意，不是本场活动现场。",
-      "credit": "图片：Airman 1st Class Christopher Tam / Public domain / 维基共享资源。主题示意，不是本场活动现场。"
+      "credit": "图片：Airman 1st Class Christopher Tam / Public domain / 维基共享资源。主题示意，不是本场活动现场。",
+      "on_site_ids": [],
+      "attribution": ""
     },
     "autumn-path": {
       "id": "autumn-path",
@@ -70,7 +90,9 @@
       "depicts": "秋日林间小路",
       "kind": "theme",
       "note": "主题示意，不是本场步行现场。",
-      "credit": "图片：Paxxen / CC0 / 维基共享资源。主题示意，不是本场步行现场。"
+      "credit": "图片：Paxxen / CC0 / 维基共享资源。主题示意，不是本场步行现场。",
+      "on_site_ids": [],
+      "attribution": ""
     },
     "highland-park": {
       "id": "highland-park",
@@ -84,7 +106,11 @@
       "depicts": "布鲁克林 Highland Park",
       "kind": "place",
       "note": "实地照片，不是本场活动现场。",
-      "credit": "图片：Tdorante10 / CC BY-SA 4.0 / 维基共享资源。实地照片，不是本场活动现场。"
+      "credit": "图片：Tdorante10 / CC BY-SA 4.0 / 维基共享资源。实地照片，不是本场活动现场。",
+      "on_site_ids": [
+        "fpt_restore_highland_20261120"
+      ],
+      "attribution": ""
     },
     "highland-greenway": {
       "id": "highland-greenway",
@@ -98,7 +124,11 @@
       "depicts": "Highland Park 绿道",
       "kind": "place",
       "note": "实地照片，不是本场活动现场。",
-      "credit": "图片：Tdorante10 / CC BY-SA 4.0 / 维基共享资源。实地照片，不是本场活动现场。"
+      "credit": "图片：Tdorante10 / CC BY-SA 4.0 / 维基共享资源。实地照片，不是本场活动现场。",
+      "on_site_ids": [
+        "fpt_restore_highland_20261120"
+      ],
+      "attribution": ""
     },
     "outdoor-runners": {
       "id": "outdoor-runners",
@@ -112,7 +142,9 @@
       "depicts": "户外集体跑步",
       "kind": "activity",
       "note": "主题示意，不是 Shape Up NYC 的某一节课。",
-      "credit": "图片：David Hawgood / CC BY-SA 2.0 / 维基共享资源。主题示意，不是 Shape Up NYC 的某一节课。"
+      "credit": "图片：David Hawgood / CC BY-SA 2.0 / 维基共享资源。主题示意，不是 Shape Up NYC 的某一节课。",
+      "attribution": "Runners in outdoor exercise class, Hyde Park by David Hawgood",
+      "on_site_ids": []
     },
     "outdoor-yoga": {
       "id": "outdoor-yoga",
@@ -126,7 +158,9 @@
       "depicts": "公园户外瑜伽",
       "kind": "activity",
       "note": "主题示意，不是已排期的某一节课。",
-      "credit": "图片：Vuemobi Media / CC BY-SA 2.0 / 维基共享资源。主题示意，不是已排期的某一节课。"
+      "credit": "图片：Vuemobi Media / CC BY-SA 2.0 / 维基共享资源。主题示意，不是已排期的某一节课。",
+      "on_site_ids": [],
+      "attribution": ""
     },
     "student-computer": {
       "id": "student-computer",
@@ -140,7 +174,9 @@
       "depicts": "学生使用电脑",
       "kind": "activity",
       "note": "主题示意，不是 Bebras 比赛现场。",
-      "credit": "图片：woodleywonderworks / CC BY 2.0 / 维基共享资源。主题示意，不是 Bebras 比赛现场。"
+      "credit": "图片：woodleywonderworks / CC BY 2.0 / 维基共享资源。主题示意，不是 Bebras 比赛现场。",
+      "on_site_ids": [],
+      "attribution": ""
     },
     "science-lab": {
       "id": "science-lab",
@@ -154,7 +190,9 @@
       "depicts": "学生在科学实验室",
       "kind": "activity",
       "note": "主题示意，不是 Exploravision 或 eCYBERMISSION 现场。",
-      "credit": "图片：Agbor2017 / CC BY-SA 4.0 / 维基共享资源。主题示意，不是 Exploravision 或 eCYBERMISSION 现场。"
+      "credit": "图片：Agbor2017 / CC BY-SA 4.0 / 维基共享资源。主题示意，不是 Exploravision 或 eCYBERMISSION 现场。",
+      "on_site_ids": [],
+      "attribution": ""
     },
     "science-lab-2": {
       "id": "science-lab-2",
@@ -168,7 +206,9 @@
       "depicts": "学生科学实验",
       "kind": "activity",
       "note": "主题示意，不是具体比赛现场。",
-      "credit": "图片：Agbor2017 / CC BY-SA 4.0 / 维基共享资源。主题示意，不是具体比赛现场。"
+      "credit": "图片：Agbor2017 / CC BY-SA 4.0 / 维基共享资源。主题示意，不是具体比赛现场。",
+      "on_site_ids": [],
+      "attribution": ""
     },
     "jfk-library": {
       "id": "jfk-library",
@@ -182,7 +222,14 @@
       "depicts": "肯尼迪总统图书馆建筑",
       "kind": "place",
       "note": "建筑照片，不是 2027 征文投稿现场。",
-      "credit": "图片：Fcb981, this edit (cropped to pano, corrected distortion) by mixpix 18:33, 28 December 2007 (UTC) / CC BY-SA 3.0 / 维基共享资源。建筑照片，不是 2027 征文投稿现场。"
+      "credit": "图片：Fcb981, this edit (cropped to pano, corrected distortion) by mixpix 18:33, 28 December 2007 (UTC) / CC BY-SA 3.0 / 维基共享资源。建筑照片，不是 2027 征文投稿现场。",
+      "on_site_ids": [
+        "contest_jfk2027"
+      ],
+      "only_item_ids": [
+        "contest_jfk2027"
+      ],
+      "attribution": ""
     },
     "cub-scouts": {
       "id": "cub-scouts",
@@ -196,7 +243,12 @@
       "depicts": "幼童军年龄的儿童户外活动",
       "kind": "activity",
       "note": "主题示意，不是纽约某一小队的活动。",
-      "credit": "图片：Bram Van Damme / CC BY 2.0 / 维基共享资源。主题示意，不是纽约某一小队的活动。"
+      "credit": "图片：Bram Van Damme / CC BY 2.0 / 维基共享资源。主题示意，不是纽约某一小队的活动。",
+      "on_site_ids": [],
+      "only_item_ids": [
+        "scout_cub"
+      ],
+      "attribution": ""
     },
     "scout-camp": {
       "id": "scout-camp",
@@ -207,10 +259,15 @@
       "license_url": "https://creativecommons.org/licenses/by/4.0",
       "source_page": "https://commons.wikimedia.org/wiki/File%3ARobert_W._Woodruff_Scout_Camp_near_Blairsville_in_North_Georgia_01.jpg",
       "file_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6b/Robert_W._Woodruff_Scout_Camp_near_Blairsville_in_North_Georgia_01.jpg/960px-Robert_W._Woodruff_Scout_Camp_near_Blairsville_in_North_Georgia_01.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-      "depicts": "童军营地",
+      "depicts": "佐治亚州童军营地",
       "kind": "place",
-      "note": "主题示意，不是纽约市议会的营会。",
-      "credit": "图片：Harrison Keely / CC BY 4.0 / 维基共享资源。主题示意，不是纽约市议会的营会。"
+      "note": "不是纽约市童军营地。",
+      "credit": "图片：Harrison Keely / CC BY 4.0 / 维基共享资源。主题示意，不是纽约市议会的营会。",
+      "on_site_ids": [],
+      "only_item_ids": [
+        "scout_gnyc"
+      ],
+      "attribution": ""
     },
     "scout-youth": {
       "id": "scout-youth",
@@ -224,21 +281,12 @@
       "depicts": "青少年童军户外",
       "kind": "activity",
       "note": "主题示意，不是 Scouts BSA 纽约小队现场。",
-      "credit": "图片：Noah Wulf / CC BY-SA 4.0 / 维基共享资源。主题示意，不是 Scouts BSA 纽约小队现场。"
-    },
-    "girl-guides": {
-      "id": "girl-guides",
-      "file": "assets/hub-event-images/v337/girl-guides.jpg",
-      "sha256": "27cbc0bed253834fc81da74950d4c1cc99d1ec3a481db0c653afb13cbb263024",
-      "author": "Geoff Charles",
-      "license": "CC BY-SA 4.0",
-      "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
-      "source_page": "https://commons.wikimedia.org/wiki/File%3ABala_Girl_Guides_%281455497%29.jpg",
-      "file_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e7/Bala_Girl_Guides_%281455497%29.jpg/960px-Bala_Girl_Guides_%281455497%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-      "depicts": "女童向导户外集合",
-      "kind": "activity",
-      "note": "主题示意，不是纽约女童军现场，也不使用其标志。",
-      "credit": "图片：Geoff Charles / CC BY-SA 4.0 / 维基共享资源。主题示意，不是纽约女童军现场，也不使用其标志。"
+      "credit": "图片：Noah Wulf / CC BY-SA 4.0 / 维基共享资源。主题示意，不是 Scouts BSA 纽约小队现场。",
+      "on_site_ids": [],
+      "only_item_ids": [
+        "scout_bsa"
+      ],
+      "attribution": ""
     },
     "washington-square": {
       "id": "washington-square",
@@ -252,7 +300,14 @@
       "depicts": "纽约大学附近华盛顿广场",
       "kind": "place",
       "note": "实地照片，不是 2027 课程现场。",
-      "credit": "图片：Knima04 / CC BY-SA 4.0 / 维基共享资源。实地照片，不是 2027 课程现场。"
+      "credit": "图片：Knima04 / CC BY-SA 4.0 / 维基共享资源。实地照片，不是 2027 课程现场。",
+      "on_site_ids": [
+        "camp_nyu_precollege"
+      ],
+      "only_item_ids": [
+        "camp_nyu_precollege"
+      ],
+      "attribution": ""
     },
     "library-room": {
       "id": "library-room",
@@ -263,10 +318,12 @@
       "license_url": "https://creativecommons.org/licenses/by/2.5",
       "source_page": "https://commons.wikimedia.org/wiki/File%3ANYC_Public_Library_Research_Room_Jan_2006-1-_3.jpg",
       "file_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7f/NYC_Public_Library_Research_Room_Jan_2006-1-_3.jpg/960px-NYC_Public_Library_Research_Room_Jan_2006-1-_3.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-      "depicts": "纽约公共图书馆阅览室",
+      "depicts": "纽约公共图书馆总馆研究阅览室",
       "kind": "place",
-      "note": "实地照片，主题示意。",
-      "credit": "图片：Diliff / CC BY 2.5 / 维基共享资源。实地照片，主题示意。"
+      "note": "总馆阅览室，不是法拉盛或日落公园分馆。",
+      "credit": "图片：Diliff / CC BY 2.5 / 维基共享资源。实地照片，主题示意。",
+      "on_site_ids": [],
+      "attribution": ""
     },
     "indoor-pool": {
       "id": "indoor-pool",
@@ -277,10 +334,12 @@
       "license_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
       "source_page": "https://commons.wikimedia.org/wiki/File%3ATokyo_Metropolitan_Indoor_Swimming_Pool.jpg",
       "file_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/78/Tokyo_Metropolitan_Indoor_Swimming_Pool.jpg/960px-Tokyo_Metropolitan_Indoor_Swimming_Pool.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-      "depicts": "室内公共游泳池",
+      "depicts": "东京室内游泳馆",
       "kind": "place",
-      "note": "主题示意，不是纽约某一泳课现场。",
-      "credit": "图片：Syced / CC0 / 维基共享资源。主题示意，不是纽约某一泳课现场。"
+      "note": "东京场馆，不用于纽约康乐中心。",
+      "credit": "图片：Syced / CC0 / 维基共享资源。主题示意，不是纽约某一泳课现场。",
+      "on_site_ids": [],
+      "attribution": ""
     },
     "coral": {
       "id": "coral",
@@ -294,7 +353,12 @@
       "depicts": "珊瑚礁",
       "kind": "theme",
       "note": "主题示意，不是 Science Without Borders 作品。",
-      "credit": "图片：Diego Delso / CC BY-SA 4.0 / 维基共享资源。主题示意，不是 Science Without Borders 作品。"
+      "credit": "图片：Diego Delso / CC BY-SA 4.0 / 维基共享资源。主题示意，不是 Science Without Borders 作品。",
+      "on_site_ids": [],
+      "only_item_ids": [
+        "contest_swb2027"
+      ],
+      "attribution": ""
     },
     "video-class": {
       "id": "video-class",
@@ -308,7 +372,9 @@
       "depicts": "学生拍摄",
       "kind": "activity",
       "note": "主题示意，不是 StudentCam 或 NOCTI 现场。",
-      "credit": "图片：Subhashish Panigrahi / CC BY-SA 3.0 / 维基共享资源。主题示意，不是 StudentCam 或 NOCTI 现场。"
+      "credit": "图片：Subhashish Panigrahi / CC BY-SA 3.0 / 维基共享资源。主题示意，不是 StudentCam 或 NOCTI 现场。",
+      "on_site_ids": [],
+      "attribution": ""
     },
     "history-class": {
       "id": "history-class",
@@ -322,7 +388,9 @@
       "depicts": "学生课堂",
       "kind": "activity",
       "note": "主题示意，不是 Junior Scholastic 征文现场。",
-      "credit": "图片：Unknown authorUnknown author or not provided / Public domain / 维基共享资源。主题示意，不是 Junior Scholastic 征文现场。"
+      "credit": "图片：Unknown authorUnknown author or not provided / Public domain / 维基共享资源。主题示意，不是 Junior Scholastic 征文现场。",
+      "on_site_ids": [],
+      "attribution": ""
     },
     "park-cleanup": {
       "id": "park-cleanup",
@@ -336,7 +404,9 @@
       "depicts": "公园环境整理",
       "kind": "activity",
       "note": "主题示意，不是本场修复活动现场。",
-      "credit": "图片：U.S. Army USAG-O by Natalie Stanley / Public domain / 维基共享资源。主题示意，不是本场修复活动现场。"
+      "credit": "图片：U.S. Army USAG-O by Natalie Stanley / Public domain / 维基共享资源。主题示意，不是本场修复活动现场。",
+      "on_site_ids": [],
+      "attribution": ""
     },
     "native-plants": {
       "id": "native-plants",
@@ -350,7 +420,9 @@
       "depicts": "植物与草地",
       "kind": "theme",
       "note": "主题示意，不是本场栽种现场。",
-      "credit": "图片：Forest Service - Northern Region / Public domain / 维基共享资源。主题示意，不是本场栽种现场。"
+      "credit": "图片：Forest Service - Northern Region / Public domain / 维基共享资源。主题示意，不是本场栽种现场。",
+      "on_site_ids": [],
+      "attribution": ""
     },
     "playground": {
       "id": "playground",
@@ -364,7 +436,9 @@
       "depicts": "公园儿童游乐",
       "kind": "activity",
       "note": "主题示意。",
-      "credit": "图片：Rbrechko / CC BY-SA 4.0 / 维基共享资源。主题示意。"
+      "credit": "图片：Rbrechko / CC BY-SA 4.0 / 维基共享资源。主题示意。",
+      "on_site_ids": [],
+      "attribution": ""
     },
     "family-park": {
       "id": "family-park",
@@ -375,10 +449,12 @@
       "license_url": "https://creativecommons.org/licenses/by/2.0",
       "source_page": "https://commons.wikimedia.org/wiki/File%3AMayor_John_F._Collins_and_daughters_Patricia_and_Margaret_in_foreground%2C_with_Mary_Collins_walking_in_background_on_field_at_Fenway_Park_%2811072113653%29.jpg",
       "file_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/30/Mayor_John_F._Collins_and_daughters_Patricia_and_Margaret_in_foreground%2C_with_Mary_Collins_walking_in_background_on_field_at_Fenway_Park_%2811072113653%29.jpg/960px-Mayor_John_F._Collins_and_daughters_Patricia_and_Margaret_in_foreground%2C_with_Mary_Collins_walking_in_background_on_field_at_Fenway_Park_%2811072113653%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-      "depicts": "公园散步",
+      "depicts": "1960年代波士顿芬威球场",
       "kind": "activity",
-      "note": "主题示意。",
-      "credit": "图片：City of Boston Archives from West Roxbury, United States / CC BY 2.0 / 维基共享资源。主题示意。"
+      "note": "历史照片，不是公园亲子活动。",
+      "credit": "图片：City of Boston Archives from West Roxbury, United States / CC BY 2.0 / 维基共享资源。主题示意。",
+      "on_site_ids": [],
+      "attribution": ""
     },
     "job-01": {
       "id": "job-01",
@@ -392,35 +468,41 @@
       "depicts": "职业课堂",
       "kind": "activity",
       "note": "主题示意，不是已排期的某一节课。",
-      "credit": "图片：אין מידע / Public domain / 维基共享资源。主题示意，不是已排期的某一节课。"
+      "credit": "图片：אין מידע / Public domain / 维基共享资源。主题示意，不是已排期的某一节课。",
+      "on_site_ids": [],
+      "attribution": ""
     },
     "job-02": {
       "id": "job-02",
       "file": "assets/hub-event-images/v337/job-02.jpg",
       "sha256": "3592d0d929cf2cd263befa37f6b8bf8a7ea104b7b12495e8eab568e4c3148732",
-      "author": "维基共享资源未具名作者",
+      "author": "Otava / JOKA / Museovirasto",
       "license": "CC BY 4.0",
       "license_url": "https://creativecommons.org/licenses/by/4.0",
       "source_page": "https://commons.wikimedia.org/wiki/File%3AStudents_at_Turku_vocational_school_1931_%28JOKAOT4SK1931_08-2%29.tif",
       "file_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/cb/Students_at_Turku_vocational_school_1931_%28JOKAOT4SK1931_08-2%29.tif/lossy-page1-960px-Students_at_Turku_vocational_school_1931_%28JOKAOT4SK1931_08-2%29.tif.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-      "depicts": "职业课堂",
+      "depicts": "1931年芬兰图尔库职业学校课堂",
       "kind": "activity",
       "note": "主题示意，不是已排期的某一节课。",
-      "credit": "图片：维基共享资源未具名作者 / CC BY 4.0 / 维基共享资源。主题示意，不是已排期的某一节课。"
+      "credit": "图片：维基共享资源未具名作者 / CC BY 4.0 / 维基共享资源。主题示意，不是已排期的某一节课。",
+      "attribution": "Otava / JOKA / Museovirasto（1931年图尔库职业学校；来源未提供摄影师）",
+      "on_site_ids": []
     },
     "job-03": {
       "id": "job-03",
       "file": "assets/hub-event-images/v337/job-03.jpg",
       "sha256": "f327fc11aa1925ffbc5440855384b0c6eb0f284a5391aadd05d8b4ac09bd99f7",
-      "author": "U. A. Saarinen",
+      "author": "U. A. Saarinen / JOKA / Museovirasto",
       "license": "CC BY 4.0",
       "license_url": "https://creativecommons.org/licenses/by/4.0",
       "source_page": "https://commons.wikimedia.org/wiki/File%3AVocational_school_for_girls_1961_%28JOKAUAS2_7568-8%29.tif",
       "file_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f0/Vocational_school_for_girls_1961_%28JOKAUAS2_7568-8%29.tif/lossy-page1-960px-Vocational_school_for_girls_1961_%28JOKAUAS2_7568-8%29.tif.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-      "depicts": "职业课堂",
+      "depicts": "1961年芬兰女子职业学校课堂",
       "kind": "activity",
       "note": "主题示意，不是已排期的某一节课。",
-      "credit": "图片：U. A. Saarinen / CC BY 4.0 / 维基共享资源。主题示意，不是已排期的某一节课。"
+      "credit": "图片：U. A. Saarinen / CC BY 4.0 / 维基共享资源。主题示意，不是已排期的某一节课。",
+      "attribution": "U. A. Saarinen / JOKA / Museovirasto（1961年女子职业学校）",
+      "on_site_ids": []
     },
     "job-04": {
       "id": "job-04",
@@ -434,7 +516,9 @@
       "depicts": "职业培训或成人课堂",
       "kind": "activity",
       "note": "主题示意，不是某一场已排期的招聘会或课程。",
-      "credit": "图片：U.S. Army photo by YOHAN AN / Public domain / 维基共享资源。主题示意，不是某一场已排期的招聘会或课程。"
+      "credit": "图片：U.S. Army photo by YOHAN AN / Public domain / 维基共享资源。主题示意，不是某一场已排期的招聘会或课程。",
+      "on_site_ids": [],
+      "attribution": ""
     },
     "job-05": {
       "id": "job-05",
@@ -448,7 +532,9 @@
       "depicts": "职业培训或成人课堂",
       "kind": "activity",
       "note": "主题示意，不是某一场已排期的招聘会或课程。",
-      "credit": "图片：Unknown author / Public domain / 维基共享资源。主题示意，不是某一场已排期的招聘会或课程。"
+      "credit": "图片：Unknown author / Public domain / 维基共享资源。主题示意，不是某一场已排期的招聘会或课程。",
+      "on_site_ids": [],
+      "attribution": ""
     },
     "job-06": {
       "id": "job-06",
@@ -459,10 +545,16 @@
       "license_url": "https://creativecommons.org/licenses/by/2.0",
       "source_page": "https://commons.wikimedia.org/wiki/File%3AAlmond_cookies_made_by_students_of_Baozhong_Junior_High_School_at_the_culinary_class_20121207.jpg",
       "file_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f2/Almond_cookies_made_by_students_of_Baozhong_Junior_High_School_at_the_culinary_class_20121207.jpg/960px-Almond_cookies_made_by_students_of_Baozhong_Junior_High_School_at_the_culinary_class_20121207.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-      "depicts": "职业培训或成人课堂",
+      "depicts": "台湾褒忠国中烹饪课制作杏仁饼",
       "kind": "activity",
-      "note": "主题示意，不是某一场已排期的招聘会或课程。",
-      "credit": "图片：褒忠國中 雲端網 / CC BY 2.0 / 维基共享资源。主题示意，不是某一场已排期的招聘会或课程。"
+      "note": "只用于餐饮相关条目。主题示意，不是纽约餐饮协会现场。",
+      "credit": "图片：褒忠國中 雲端網 / CC BY 2.0 / 维基共享资源。主题示意，不是某一场已排期的招聘会或课程。",
+      "on_site_ids": [],
+      "only_item_ids": [
+        "live_132",
+        "live_133"
+      ],
+      "attribution": ""
     },
     "job-07": {
       "id": "job-07",
@@ -476,13 +568,15 @@
       "depicts": "职业培训或成人课堂",
       "kind": "activity",
       "note": "主题示意，不是某一场已排期的招聘会或课程。",
-      "credit": "图片：Petty Officer 2nd Class David Kolmel / Public domain / 维基共享资源。主题示意，不是某一场已排期的招聘会或课程。"
+      "credit": "图片：Petty Officer 2nd Class David Kolmel / Public domain / 维基共享资源。主题示意，不是某一场已排期的招聘会或课程。",
+      "on_site_ids": [],
+      "attribution": ""
     },
     "job-09": {
       "id": "job-09",
       "file": "assets/hub-event-images/v337/job-09.jpg",
       "sha256": "194256e3790760fe5d98228e5b4cc95ff176ef0e8b51df9d0a4fe1677a9c629c",
-      "author": "Dominique Roger",
+      "author": "UNESCO / Dominique Roger",
       "license": "CC BY-SA 3.0 igo",
       "license_url": "https://creativecommons.org/licenses/by-sa/3.0/igo/deed.en",
       "source_page": "https://commons.wikimedia.org/wiki/File%3AAdult_students%2C_Marianao_near_Havana_-_UNESCO_-_PHOTO0000000569_0000.tiff",
@@ -490,7 +584,9 @@
       "depicts": "职业培训或成人课堂",
       "kind": "activity",
       "note": "主题示意，不是某一场已排期的招聘会或课程。",
-      "credit": "图片：Dominique Roger / CC BY-SA 3.0 igo / 维基共享资源。主题示意，不是某一场已排期的招聘会或课程。"
+      "credit": "图片：Dominique Roger / CC BY-SA 3.0 igo / 维基共享资源。主题示意，不是某一场已排期的招聘会或课程。",
+      "attribution": "UNESCO / Dominique Roger",
+      "on_site_ids": []
     },
     "job-11": {
       "id": "job-11",
@@ -504,7 +600,9 @@
       "depicts": "职业培训或成人课堂",
       "kind": "activity",
       "note": "主题示意，不是某一场已排期的招聘会或课程。",
-      "credit": "图片：U.S. Army photo by YOHAN AN / Public domain / 维基共享资源。主题示意，不是某一场已排期的招聘会或课程。"
+      "credit": "图片：U.S. Army photo by YOHAN AN / Public domain / 维基共享资源。主题示意，不是某一场已排期的招聘会或课程。",
+      "on_site_ids": [],
+      "attribution": ""
     },
     "job-12": {
       "id": "job-12",
@@ -518,7 +616,9 @@
       "depicts": "职业培训或成人课堂",
       "kind": "activity",
       "note": "主题示意，不是某一场已排期的招聘会或课程。",
-      "credit": "图片：Seattle Parks / CC BY 2.0 / 维基共享资源。主题示意，不是某一场已排期的招聘会或课程。"
+      "credit": "图片：Seattle Parks / CC BY 2.0 / 维基共享资源。主题示意，不是某一场已排期的招聘会或课程。",
+      "on_site_ids": [],
+      "attribution": ""
     },
     "civic-01": {
       "id": "civic-01",
@@ -532,7 +632,9 @@
       "depicts": "市政或社区服务场景",
       "kind": "theme",
       "note": "主题示意，不是某一条福利通知的配图现场。",
-      "credit": "图片：Momos / CC BY-SA 3.0 / 维基共享资源。主题示意，不是某一条福利通知的配图现场。"
+      "credit": "图片：Momos / CC BY-SA 3.0 / 维基共享资源。主题示意，不是某一条福利通知的配图现场。",
+      "on_site_ids": [],
+      "attribution": ""
     },
     "civic-02": {
       "id": "civic-02",
@@ -546,7 +648,9 @@
       "depicts": "市政或社区服务场景",
       "kind": "theme",
       "note": "主题示意，不是某一条福利通知的配图现场。",
-      "credit": "图片：DHSgov / Public domain / 维基共享资源。主题示意，不是某一条福利通知的配图现场。"
+      "credit": "图片：DHSgov / Public domain / 维基共享资源。主题示意，不是某一条福利通知的配图现场。",
+      "on_site_ids": [],
+      "attribution": ""
     },
     "civic-03": {
       "id": "civic-03",
@@ -560,7 +664,9 @@
       "depicts": "市政或社区服务场景",
       "kind": "theme",
       "note": "主题示意，不是某一条福利通知的配图现场。",
-      "credit": "图片：Dzyanis Kurhan / CC BY-SA 4.0 / 维基共享资源。主题示意，不是某一条福利通知的配图现场。"
+      "credit": "图片：Dzyanis Kurhan / CC BY-SA 4.0 / 维基共享资源。主题示意，不是某一条福利通知的配图现场。",
+      "on_site_ids": [],
+      "attribution": ""
     },
     "civic-04": {
       "id": "civic-04",
@@ -574,7 +680,9 @@
       "depicts": "市政或社区服务场景",
       "kind": "theme",
       "note": "主题示意，不是某一条福利通知的配图现场。",
-      "credit": "图片：Tdorante10 / CC BY-SA 4.0 / 维基共享资源。主题示意，不是某一条福利通知的配图现场。"
+      "credit": "图片：Tdorante10 / CC BY-SA 4.0 / 维基共享资源。主题示意，不是某一条福利通知的配图现场。",
+      "on_site_ids": [],
+      "attribution": ""
     },
     "civic-05": {
       "id": "civic-05",
@@ -588,7 +696,9 @@
       "depicts": "市政或社区服务场景",
       "kind": "theme",
       "note": "主题示意，不是某一条福利通知的配图现场。",
-      "credit": "图片：Anthony Velonis / Public domain / 维基共享资源。主题示意，不是某一条福利通知的配图现场。"
+      "credit": "图片：Anthony Velonis / Public domain / 维基共享资源。主题示意，不是某一条福利通知的配图现场。",
+      "on_site_ids": [],
+      "attribution": ""
     },
     "civic-06": {
       "id": "civic-06",
@@ -599,10 +709,12 @@
       "license_url": "",
       "source_page": "https://commons.wikimedia.org/wiki/File%3APeterson_Tax_Center_to_open%2C_provide_free_tax_assistance_%284125756%29.jpeg",
       "file_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/ae/Peterson_Tax_Center_to_open%2C_provide_free_tax_assistance_%284125756%29.jpeg/960px-Peterson_Tax_Center_to_open%2C_provide_free_tax_assistance_%284125756%29.jpeg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-      "depicts": "市政或社区服务场景",
+      "depicts": "彼得森太空军基地报税点",
       "kind": "theme",
-      "note": "主题示意，不是某一条福利通知的配图现场。",
-      "credit": "图片：U.S. Space Force image by Robert Lingley / Public domain / 维基共享资源。主题示意，不是某一条福利通知的配图现场。"
+      "note": "不是纽约福利窗口。",
+      "credit": "图片：U.S. Space Force image by Robert Lingley / Public domain / 维基共享资源。主题示意，不是某一条福利通知的配图现场。",
+      "on_site_ids": [],
+      "attribution": ""
     },
     "vol-01": {
       "id": "vol-01",
@@ -616,7 +728,9 @@
       "depicts": "志愿者服务",
       "kind": "activity",
       "note": "主题示意，不是本场义工现场。",
-      "credit": "图片：Jorge Auz Salazar / CC BY-SA 4.0 / 维基共享资源。主题示意，不是本场义工现场。"
+      "credit": "图片：Jorge Auz Salazar / CC BY-SA 4.0 / 维基共享资源。主题示意，不是本场义工现场。",
+      "on_site_ids": [],
+      "attribution": ""
     },
     "vol-02": {
       "id": "vol-02",
@@ -630,7 +744,9 @@
       "depicts": "志愿者服务",
       "kind": "activity",
       "note": "主题示意，不是本场义工现场。",
-      "credit": "图片：U.S. Embassy Kyiv Ukraine / Public domain / 维基共享资源。主题示意，不是本场义工现场。"
+      "credit": "图片：U.S. Embassy Kyiv Ukraine / Public domain / 维基共享资源。主题示意，不是本场义工现场。",
+      "on_site_ids": [],
+      "attribution": ""
     },
     "vol-03": {
       "id": "vol-03",
@@ -644,7 +760,9 @@
       "depicts": "志愿者服务",
       "kind": "activity",
       "note": "主题示意，不是本场义工现场。",
-      "credit": "图片：U.S. Embassy Kyiv Ukraine / Public domain / 维基共享资源。主题示意，不是本场义工现场。"
+      "credit": "图片：U.S. Embassy Kyiv Ukraine / Public domain / 维基共享资源。主题示意，不是本场义工现场。",
+      "on_site_ids": [],
+      "attribution": ""
     },
     "vol-04": {
       "id": "vol-04",
@@ -658,7 +776,9 @@
       "depicts": "志愿者服务",
       "kind": "activity",
       "note": "主题示意，不是本场义工现场。",
-      "credit": "图片：U.S. Embassy Kyiv Ukraine / Public domain / 维基共享资源。主题示意，不是本场义工现场。"
+      "credit": "图片：U.S. Embassy Kyiv Ukraine / Public domain / 维基共享资源。主题示意，不是本场义工现场。",
+      "on_site_ids": [],
+      "attribution": ""
     },
     "vol-05": {
       "id": "vol-05",
@@ -672,7 +792,9 @@
       "depicts": "志愿者服务",
       "kind": "activity",
       "note": "主题示意，不是本场义工现场。",
-      "credit": "图片：U.S. Embassy Kyiv Ukraine / Public domain / 维基共享资源。主题示意，不是本场义工现场。"
+      "credit": "图片：U.S. Embassy Kyiv Ukraine / Public domain / 维基共享资源。主题示意，不是本场义工现场。",
+      "on_site_ids": [],
+      "attribution": ""
     },
     "vol-06": {
       "id": "vol-06",
@@ -686,7 +808,9 @@
       "depicts": "志愿者服务",
       "kind": "activity",
       "note": "主题示意，不是本场义工现场。",
-      "credit": "图片：U.S. Embassy Kyiv Ukraine / Public domain / 维基共享资源。主题示意，不是本场义工现场。"
+      "credit": "图片：U.S. Embassy Kyiv Ukraine / Public domain / 维基共享资源。主题示意，不是本场义工现场。",
+      "on_site_ids": [],
+      "attribution": ""
     },
     "vol-07": {
       "id": "vol-07",
@@ -700,7 +824,9 @@
       "depicts": "志愿者服务",
       "kind": "activity",
       "note": "主题示意，不是本场义工现场。",
-      "credit": "图片：U.S. Embassy Kyiv Ukraine / Public domain / 维基共享资源。主题示意，不是本场义工现场。"
+      "credit": "图片：U.S. Embassy Kyiv Ukraine / Public domain / 维基共享资源。主题示意，不是本场义工现场。",
+      "on_site_ids": [],
+      "attribution": ""
     },
     "vol-08": {
       "id": "vol-08",
@@ -714,7 +840,9 @@
       "depicts": "志愿者服务",
       "kind": "activity",
       "note": "主题示意，不是本场义工现场。",
-      "credit": "图片：U.S. Embassy Kyiv Ukraine / Public domain / 维基共享资源。主题示意，不是本场义工现场。"
+      "credit": "图片：U.S. Embassy Kyiv Ukraine / Public domain / 维基共享资源。主题示意，不是本场义工现场。",
+      "on_site_ids": [],
+      "attribution": ""
     },
     "fest-01": {
       "id": "fest-01",
@@ -728,7 +856,9 @@
       "depicts": "户外节庆人群",
       "kind": "theme",
       "note": "主题示意，不是本场节庆现场。",
-      "credit": "图片：Andre Carrotflower / CC BY-SA 4.0 / 维基共享资源。主题示意，不是本场节庆现场。"
+      "credit": "图片：Andre Carrotflower / CC BY-SA 4.0 / 维基共享资源。主题示意，不是本场节庆现场。",
+      "on_site_ids": [],
+      "attribution": ""
     },
     "fest-02": {
       "id": "fest-02",
@@ -742,7 +872,9 @@
       "depicts": "户外节庆人群",
       "kind": "theme",
       "note": "主题示意，不是本场节庆现场。",
-      "credit": "图片：Mk2010 / CC BY-SA 3.0 / 维基共享资源。主题示意，不是本场节庆现场。"
+      "credit": "图片：Mk2010 / CC BY-SA 3.0 / 维基共享资源。主题示意，不是本场节庆现场。",
+      "on_site_ids": [],
+      "attribution": ""
     },
     "fest-03": {
       "id": "fest-03",
@@ -756,7 +888,9 @@
       "depicts": "户外节庆人群",
       "kind": "theme",
       "note": "主题示意，不是本场节庆现场。",
-      "credit": "图片：Katy Blackwood / CC BY-SA 4.0 / 维基共享资源。主题示意，不是本场节庆现场。"
+      "credit": "图片：Katy Blackwood / CC BY-SA 4.0 / 维基共享资源。主题示意，不是本场节庆现场。",
+      "on_site_ids": [],
+      "attribution": ""
     },
     "fest-04": {
       "id": "fest-04",
@@ -770,7 +904,9 @@
       "depicts": "户外节庆人群",
       "kind": "theme",
       "note": "主题示意，不是本场节庆现场。",
-      "credit": "图片：PattayaPatrol / CC BY-SA 4.0 / 维基共享资源。主题示意，不是本场节庆现场。"
+      "credit": "图片：PattayaPatrol / CC BY-SA 4.0 / 维基共享资源。主题示意，不是本场节庆现场。",
+      "on_site_ids": [],
+      "attribution": ""
     },
     "fest-05": {
       "id": "fest-05",
@@ -784,7 +920,9 @@
       "depicts": "户外节庆人群",
       "kind": "theme",
       "note": "主题示意，不是本场节庆现场。",
-      "credit": "图片：PattayaPatrol / CC BY-SA 4.0 / 维基共享资源。主题示意，不是本场节庆现场。"
+      "credit": "图片：PattayaPatrol / CC BY-SA 4.0 / 维基共享资源。主题示意，不是本场节庆现场。",
+      "on_site_ids": [],
+      "attribution": ""
     },
     "fest-06": {
       "id": "fest-06",
@@ -798,7 +936,9 @@
       "depicts": "户外节庆人群",
       "kind": "theme",
       "note": "主题示意，不是本场节庆现场。",
-      "credit": "图片：PattayaPatrol / CC BY-SA 4.0 / 维基共享资源。主题示意，不是本场节庆现场。"
+      "credit": "图片：PattayaPatrol / CC BY-SA 4.0 / 维基共享资源。主题示意，不是本场节庆现场。",
+      "on_site_ids": [],
+      "attribution": ""
     },
     "fest-07": {
       "id": "fest-07",
@@ -812,7 +952,9 @@
       "depicts": "户外节庆人群",
       "kind": "theme",
       "note": "主题示意，不是本场节庆现场。",
-      "credit": "图片：PattayaPatrol / CC BY-SA 4.0 / 维基共享资源。主题示意，不是本场节庆现场。"
+      "credit": "图片：PattayaPatrol / CC BY-SA 4.0 / 维基共享资源。主题示意，不是本场节庆现场。",
+      "on_site_ids": [],
+      "attribution": ""
     },
     "benefit-01": {
       "id": "benefit-01",
@@ -823,10 +965,12 @@
       "license_url": "",
       "source_page": "https://commons.wikimedia.org/wiki/File%3AFEMA_-_42819_-_Public_Assistance_Applicants_Briefing_in_NJ.jpg",
       "file_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7c/FEMA_-_42819_-_Public_Assistance_Applicants_Briefing_in_NJ.jpg/960px-FEMA_-_42819_-_Public_Assistance_Applicants_Briefing_in_NJ.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-      "depicts": "公共服务窗口",
+      "depicts": "公共援助申请人说明会",
       "kind": "theme",
-      "note": "主题示意，不是某一条福利通知现场。",
-      "credit": "图片：Michael Medina-Latorre / Public domain / 维基共享资源。主题示意，不是某一条福利通知现场。"
+      "note": "主题示意，不是纽约 HRA 窗口。",
+      "credit": "图片：Michael Medina-Latorre / Public domain / 维基共享资源。主题示意，不是某一条福利通知现场。",
+      "on_site_ids": [],
+      "attribution": ""
     },
     "benefit-02": {
       "id": "benefit-02",
@@ -837,10 +981,12 @@
       "license_url": "",
       "source_page": "https://commons.wikimedia.org/wiki/File%3AFEMA_-_42820_-_Public_Assistance_Applicants_Briefing_in_NJ.jpg",
       "file_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/02/FEMA_-_42820_-_Public_Assistance_Applicants_Briefing_in_NJ.jpg/960px-FEMA_-_42820_-_Public_Assistance_Applicants_Briefing_in_NJ.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-      "depicts": "公共服务窗口",
+      "depicts": "公共援助申请人说明会",
       "kind": "theme",
-      "note": "主题示意，不是某一条福利通知现场。",
-      "credit": "图片：Michael Medina-Latorre / Public domain / 维基共享资源。主题示意，不是某一条福利通知现场。"
+      "note": "主题示意，不是纽约 HRA 窗口。",
+      "credit": "图片：Michael Medina-Latorre / Public domain / 维基共享资源。主题示意，不是某一条福利通知现场。",
+      "on_site_ids": [],
+      "attribution": ""
     },
     "benefit-03": {
       "id": "benefit-03",
@@ -851,52 +997,12 @@
       "license_url": "",
       "source_page": "https://commons.wikimedia.org/wiki/File%3AFEMA_-_43333_-_Public_Assistance_summit_in_California.jpg",
       "file_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/96/FEMA_-_43333_-_Public_Assistance_summit_in_California.jpg/960px-FEMA_-_43333_-_Public_Assistance_summit_in_California.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-      "depicts": "公共服务窗口",
+      "depicts": "公共援助申请人说明会",
       "kind": "theme",
-      "note": "主题示意，不是某一条福利通知现场。",
-      "credit": "图片：Adam Dubrowa / Public domain / 维基共享资源。主题示意，不是某一条福利通知现场。"
-    },
-    "benefit-04": {
-      "id": "benefit-04",
-      "file": "assets/hub-event-images/v337/benefit-04.jpg",
-      "sha256": "d0a6a68ff2101cd8b466fdd5463d2cec93cd0c6a32c0636e58592d90aee0ea29",
-      "author": "SGT Leroy Massie",
-      "license": "Public domain",
-      "license_url": "",
-      "source_page": "https://commons.wikimedia.org/wiki/File%3AGeneral_Westmoreland_and_other_dignitaries_at_the_formal_opening_of_the_International_Military_Assistance_Office_Building.jpg",
-      "file_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5d/General_Westmoreland_and_other_dignitaries_at_the_formal_opening_of_the_International_Military_Assistance_Office_Building.jpg/960px-General_Westmoreland_and_other_dignitaries_at_the_formal_opening_of_the_International_Military_Assistance_Office_Building.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-      "depicts": "公共服务窗口",
-      "kind": "theme",
-      "note": "主题示意，不是某一条福利通知现场。",
-      "credit": "图片：SGT Leroy Massie / Public domain / 维基共享资源。主题示意，不是某一条福利通知现场。"
-    },
-    "benefit-05": {
-      "id": "benefit-05",
-      "file": "assets/hub-event-images/v337/benefit-05.jpg",
-      "sha256": "f5706c356ce7755c589676a71e8a18e585609ad977928dfd9b75ef5bc80d2f54",
-      "author": "SGT Leroy Massie",
-      "license": "Public domain",
-      "license_url": "",
-      "source_page": "https://commons.wikimedia.org/wiki/File%3AInauguration_ceremony_marking_the_formal_opening_of_the_international_military_assistance_office_building.jpg",
-      "file_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/10/Inauguration_ceremony_marking_the_formal_opening_of_the_international_military_assistance_office_building.jpg/960px-Inauguration_ceremony_marking_the_formal_opening_of_the_international_military_assistance_office_building.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-      "depicts": "公共服务窗口",
-      "kind": "theme",
-      "note": "主题示意，不是某一条福利通知现场。",
-      "credit": "图片：SGT Leroy Massie / Public domain / 维基共享资源。主题示意，不是某一条福利通知现场。"
-    },
-    "benefit-06": {
-      "id": "benefit-06",
-      "file": "assets/hub-event-images/v337/benefit-06.jpg",
-      "sha256": "fd0eb26fa51e763bbc48c154da08840cf1697add28230a24e79e21ee8c44470a",
-      "author": "Office of Massachusetts Attorney General Andrea Campbell",
-      "license": "Public domain",
-      "license_url": "",
-      "source_page": "https://commons.wikimedia.org/wiki/File%3AMassachusetts_Office_for_Victim_Assistance_2023_Victim_Rights_Award_Ceremony_342883723.jpg",
-      "file_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/15/Massachusetts_Office_for_Victim_Assistance_2023_Victim_Rights_Award_Ceremony_342883723.jpg/960px-Massachusetts_Office_for_Victim_Assistance_2023_Victim_Rights_Award_Ceremony_342883723.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-      "depicts": "公共服务窗口",
-      "kind": "theme",
-      "note": "主题示意，不是某一条福利通知现场。",
-      "credit": "图片：Office of Massachusetts Attorney General Andrea Campbell / Public domain / 维基共享资源。主题示意，不是某一条福利通知现场。"
+      "note": "主题示意，不是纽约 HRA 窗口。",
+      "credit": "图片：Adam Dubrowa / Public domain / 维基共享资源。主题示意，不是某一条福利通知现场。",
+      "on_site_ids": [],
+      "attribution": ""
     },
     "health-01": {
       "id": "health-01",
@@ -907,10 +1013,12 @@
       "license_url": "",
       "source_page": "https://commons.wikimedia.org/wiki/File%3ABehavioral_Health_Clinic_%288054678039%29.jpg",
       "file_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/ce/Behavioral_Health_Clinic_%288054678039%29.jpg/960px-Behavioral_Health_Clinic_%288054678039%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-      "depicts": "社区诊所",
+      "depicts": "美国陆军行为健康诊所建筑",
       "kind": "place",
-      "note": "主题示意，不是某一家医院的通知现场。",
-      "credit": "图片：U.S. Army Corps of Engineers Savannah District / Public domain / 维基共享资源。主题示意，不是某一家医院的通知现场。"
+      "note": "不是纽约社区诊所现场。",
+      "credit": "图片：U.S. Army Corps of Engineers Savannah District / Public domain / 维基共享资源。主题示意，不是某一家医院的通知现场。",
+      "on_site_ids": [],
+      "attribution": ""
     },
     "health-02": {
       "id": "health-02",
@@ -921,10 +1029,12 @@
       "license_url": "",
       "source_page": "https://commons.wikimedia.org/wiki/File%3ABehavioral_Health_Clinic_%288054679662%29.jpg",
       "file_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b8/Behavioral_Health_Clinic_%288054679662%29.jpg/960px-Behavioral_Health_Clinic_%288054679662%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-      "depicts": "社区诊所",
+      "depicts": "美国陆军行为健康诊所建筑",
       "kind": "place",
-      "note": "主题示意，不是某一家医院的通知现场。",
-      "credit": "图片：U.S. Army Corps of Engineers Savannah District / Public domain / 维基共享资源。主题示意，不是某一家医院的通知现场。"
+      "note": "不是纽约社区诊所现场。",
+      "credit": "图片：U.S. Army Corps of Engineers Savannah District / Public domain / 维基共享资源。主题示意，不是某一家医院的通知现场。",
+      "on_site_ids": [],
+      "attribution": ""
     },
     "health-03": {
       "id": "health-03",
@@ -935,10 +1045,12 @@
       "license_url": "",
       "source_page": "https://commons.wikimedia.org/wiki/File%3ABehavioral_Health_Clinic_%288054680792%29.jpg",
       "file_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d0/Behavioral_Health_Clinic_%288054680792%29.jpg/960px-Behavioral_Health_Clinic_%288054680792%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-      "depicts": "社区诊所",
+      "depicts": "美国陆军行为健康诊所建筑",
       "kind": "place",
-      "note": "主题示意，不是某一家医院的通知现场。",
-      "credit": "图片：U.S. Army Corps of Engineers Savannah District / Public domain / 维基共享资源。主题示意，不是某一家医院的通知现场。"
+      "note": "不是纽约社区诊所现场。",
+      "credit": "图片：U.S. Army Corps of Engineers Savannah District / Public domain / 维基共享资源。主题示意，不是某一家医院的通知现场。",
+      "on_site_ids": [],
+      "attribution": ""
     },
     "health-04": {
       "id": "health-04",
@@ -949,10 +1061,12 @@
       "license_url": "",
       "source_page": "https://commons.wikimedia.org/wiki/File%3ARD_CFDL-Lytle_Community_Health_Center_-_Community_Facility_Direct_Loan_%2820171205-RD-LSC-0091%29.jpg",
       "file_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/25/RD_CFDL-Lytle_Community_Health_Center_-_Community_Facility_Direct_Loan_%2820171205-RD-LSC-0091%29.jpg/960px-RD_CFDL-Lytle_Community_Health_Center_-_Community_Facility_Direct_Loan_%2820171205-RD-LSC-0091%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-      "depicts": "社区诊所",
+      "depicts": "得克萨斯州 Lytle 社区卫生中心",
       "kind": "place",
-      "note": "主题示意，不是某一家医院的通知现场。",
-      "credit": "图片：USDAgov / Public domain / 维基共享资源。主题示意，不是某一家医院的通知现场。"
+      "note": "不是纽约社区诊所现场。",
+      "credit": "图片：USDAgov / Public domain / 维基共享资源。主题示意，不是某一家医院的通知现场。",
+      "on_site_ids": [],
+      "attribution": ""
     },
     "house-01": {
       "id": "house-01",
@@ -966,7 +1080,9 @@
       "depicts": "住宅楼外观",
       "kind": "place",
       "note": "主题示意，不是某一处公屋现场。",
-      "credit": "图片：Architecturist / CC BY-SA 3.0 / 维基共享资源。主题示意，不是某一处公屋现场。"
+      "credit": "图片：Architecturist / CC BY-SA 3.0 / 维基共享资源。主题示意，不是某一处公屋现场。",
+      "on_site_ids": [],
+      "attribution": ""
     },
     "house-02": {
       "id": "house-02",
@@ -980,7 +1096,9 @@
       "depicts": "住宅楼外观",
       "kind": "place",
       "note": "主题示意，不是某一处公屋现场。",
-      "credit": "图片：Architecturist / CC BY-SA 3.0 / 维基共享资源。主题示意，不是某一处公屋现场。"
+      "credit": "图片：Architecturist / CC BY-SA 3.0 / 维基共享资源。主题示意，不是某一处公屋现场。",
+      "on_site_ids": [],
+      "attribution": ""
     },
     "safe-01": {
       "id": "safe-01",
@@ -994,7 +1112,9 @@
       "depicts": "街头警车",
       "kind": "theme",
       "note": "主题示意，不是某一条安全通知现场。",
-      "credit": "图片：Philip Mallis / CC BY-SA 2.0 / 维基共享资源。主题示意，不是某一条安全通知现场。"
+      "credit": "图片：Philip Mallis / CC BY-SA 2.0 / 维基共享资源。主题示意，不是某一条安全通知现场。",
+      "on_site_ids": [],
+      "attribution": ""
     },
     "safe-02": {
       "id": "safe-02",
@@ -1008,7 +1128,9 @@
       "depicts": "街头警车",
       "kind": "theme",
       "note": "主题示意，不是某一条安全通知现场。",
-      "credit": "图片：Seán Pòl Ó Creachmhaoil / CC BY-SA 4.0 / 维基共享资源。主题示意，不是某一条安全通知现场。"
+      "credit": "图片：Seán Pòl Ó Creachmhaoil / CC BY-SA 4.0 / 维基共享资源。主题示意，不是某一条安全通知现场。",
+      "on_site_ids": [],
+      "attribution": ""
     },
     "park-01": {
       "id": "park-01",
@@ -1022,7 +1144,9 @@
       "depicts": "城市公园儿童",
       "kind": "activity",
       "note": "主题示意。",
-      "credit": "图片：Oliver Dixon / CC BY-SA 2.0 / 维基共享资源。主题示意。"
+      "credit": "图片：Oliver Dixon / CC BY-SA 2.0 / 维基共享资源。主题示意。",
+      "attribution": "Children's playground in Meanwood Park by Oliver Dixon",
+      "on_site_ids": []
     },
     "park-02": {
       "id": "park-02",
@@ -1036,7 +1160,9 @@
       "depicts": "城市公园儿童",
       "kind": "activity",
       "note": "主题示意。",
-      "credit": "图片：Uncredited WPA photographer / Public domain / 维基共享资源。主题示意。"
+      "credit": "图片：Uncredited WPA photographer / Public domain / 维基共享资源。主题示意。",
+      "on_site_ids": [],
+      "attribution": ""
     },
     "park-03": {
       "id": "park-03",
@@ -1050,7 +1176,9 @@
       "depicts": "城市公园儿童",
       "kind": "activity",
       "note": "主题示意。",
-      "credit": "图片：Wpcpey / CC BY 3.0 / 维基共享资源。主题示意。"
+      "credit": "图片：Wpcpey / CC BY 3.0 / 维基共享资源。主题示意。",
+      "on_site_ids": [],
+      "attribution": ""
     },
     "park-04": {
       "id": "park-04",
@@ -1064,7 +1192,9 @@
       "depicts": "城市公园儿童",
       "kind": "activity",
       "note": "主题示意。",
-      "credit": "图片：Tdorante10 / CC BY-SA 4.0 / 维基共享资源。主题示意。"
+      "credit": "图片：Tdorante10 / CC BY-SA 4.0 / 维基共享资源。主题示意。",
+      "on_site_ids": [],
+      "attribution": ""
     },
     "culture-01": {
       "id": "culture-01",
@@ -1075,10 +1205,12 @@
       "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
       "source_page": "https://commons.wikimedia.org/wiki/File%3ACameron_Art_Museum.jpg",
       "file_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e9/Cameron_Art_Museum.jpg/960px-Cameron_Art_Museum.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-      "depicts": "美术馆观众",
+      "depicts": "北卡罗来纳 Cameron Art Museum 外观",
       "kind": "theme",
-      "note": "主题示意，不是本场展览现场。",
-      "credit": "图片：Starjelly3201 / CC BY-SA 4.0 / 维基共享资源。主题示意，不是本场展览现场。"
+      "note": "美术馆建筑，不是观众，也不是本场活动现场。",
+      "credit": "图片：Starjelly3201 / CC BY-SA 4.0 / 维基共享资源。主题示意，不是本场展览现场。",
+      "on_site_ids": [],
+      "attribution": ""
     },
     "culture-02": {
       "id": "culture-02",
@@ -1089,10 +1221,12 @@
       "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
       "source_page": "https://commons.wikimedia.org/wiki/File%3ACameron_Art_Museum_Front.jpg",
       "file_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/69/Cameron_Art_Museum_Front.jpg/960px-Cameron_Art_Museum_Front.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-      "depicts": "美术馆观众",
+      "depicts": "北卡罗来纳 Cameron Art Museum 正立面",
       "kind": "theme",
-      "note": "主题示意，不是本场展览现场。",
-      "credit": "图片：Edward Orde / CC BY-SA 4.0 / 维基共享资源。主题示意，不是本场展览现场。"
+      "note": "美术馆建筑，不是观众，也不是本场活动现场。",
+      "credit": "图片：Edward Orde / CC BY-SA 4.0 / 维基共享资源。主题示意，不是本场展览现场。",
+      "on_site_ids": [],
+      "attribution": ""
     },
     "culture-03": {
       "id": "culture-03",
@@ -1103,10 +1237,12 @@
       "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
       "source_page": "https://commons.wikimedia.org/wiki/File%3ACameron_Art_Museum_Rear.jpg",
       "file_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9b/Cameron_Art_Museum_Rear.jpg/960px-Cameron_Art_Museum_Rear.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-      "depicts": "美术馆观众",
+      "depicts": "北卡罗来纳 Cameron Art Museum 背面",
       "kind": "theme",
-      "note": "主题示意，不是本场展览现场。",
-      "credit": "图片：Edward Orde / CC BY-SA 4.0 / 维基共享资源。主题示意，不是本场展览现场。"
+      "note": "美术馆建筑，不是观众，也不是本场活动现场。",
+      "credit": "图片：Edward Orde / CC BY-SA 4.0 / 维基共享资源。主题示意，不是本场展览现场。",
+      "on_site_ids": [],
+      "attribution": ""
     },
     "culture-04": {
       "id": "culture-04",
@@ -1117,10 +1253,12 @@
       "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
       "source_page": "https://commons.wikimedia.org/wiki/File%3ACameron_Art_Museum_in_November_2022.jpg",
       "file_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/26/Cameron_Art_Museum_in_November_2022.jpg/960px-Cameron_Art_Museum_in_November_2022.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-      "depicts": "美术馆观众",
+      "depicts": "北卡罗来纳 Cameron Art Museum 外观",
       "kind": "theme",
-      "note": "主题示意，不是本场展览现场。",
-      "credit": "图片：DiscoA340 / CC BY-SA 4.0 / 维基共享资源。主题示意，不是本场展览现场。"
+      "note": "美术馆建筑，不是观众，也不是本场活动现场。",
+      "credit": "图片：DiscoA340 / CC BY-SA 4.0 / 维基共享资源。主题示意，不是本场展览现场。",
+      "on_site_ids": [],
+      "attribution": ""
     },
     "harvard-yard": {
       "id": "harvard-yard",
@@ -1134,7 +1272,14 @@
       "depicts": "哈佛校园 Massachusetts Hall",
       "kind": "place",
       "note": "校园实地照片，不是 2027 暑期项目现场。",
-      "credit": "图片：Muns (talk · contribs) / CC BY-SA 3.0 / 维基共享资源。校园实地照片，不是 2027 暑期项目现场。"
+      "credit": "图片：Muns (talk · contribs) / CC BY-SA 3.0 / 维基共享资源。校园实地照片，不是 2027 暑期项目现场。",
+      "on_site_ids": [
+        "camp_harvard_precollege_2027"
+      ],
+      "only_item_ids": [
+        "camp_harvard_precollege_2027"
+      ],
+      "attribution": ""
     },
     "yale-campus": {
       "id": "yale-campus",
@@ -1148,7 +1293,14 @@
       "depicts": "耶鲁 Old Campus",
       "kind": "place",
       "note": "校园实地照片，不是 YYGS 2027 现场。",
-      "credit": "图片：维基共享资源未具名作者 / Public domain / 维基共享资源。校园实地照片，不是 YYGS 2027 现场。"
+      "credit": "图片：维基共享资源未具名作者 / Public domain / 维基共享资源。校园实地照片，不是 YYGS 2027 现场。",
+      "on_site_ids": [
+        "camp_yale_yygs_2027"
+      ],
+      "only_item_ids": [
+        "camp_yale_yygs_2027"
+      ],
+      "attribution": ""
     },
     "mit-campus": {
       "id": "mit-campus",
@@ -1162,7 +1314,14 @@
       "depicts": "麻省理工大圆顶",
       "kind": "place",
       "note": "校园实地照片，不是 MITES 当期现场。",
-      "credit": "图片：Daderot / Public domain / 维基共享资源。校园实地照片，不是 MITES 当期现场。"
+      "credit": "图片：Daderot / Public domain / 维基共享资源。校园实地照片，不是 MITES 当期现场。",
+      "on_site_ids": [
+        "camp_mit_mites"
+      ],
+      "only_item_ids": [
+        "camp_mit_mites"
+      ],
+      "attribution": ""
     },
     "essay-writing": {
       "id": "essay-writing",
@@ -1176,7 +1335,9 @@
       "depicts": "学生记笔记",
       "kind": "activity",
       "note": "主题示意，不是具体征文投稿现场。",
-      "credit": "图片：Onwuka Glory / CC0 / 维基共享资源。主题示意，不是具体征文投稿现场。"
+      "credit": "图片：Onwuka Glory / CC0 / 维基共享资源。主题示意，不是具体征文投稿现场。",
+      "on_site_ids": [],
+      "attribution": ""
     },
     "computer-class": {
       "id": "computer-class",
@@ -1190,7 +1351,9 @@
       "depicts": "计算机课",
       "kind": "activity",
       "note": "主题示意，不是 Technovation 或 Bebras 现场。",
-      "credit": "图片：Yann / CC BY-SA 3.0 / 维基共享资源。主题示意，不是 Technovation 或 Bebras 现场。"
+      "credit": "图片：Yann / CC BY-SA 3.0 / 维基共享资源。主题示意，不是 Technovation 或 Bebras 现场。",
+      "on_site_ids": [],
+      "attribution": ""
     },
     "student-laptop": {
       "id": "student-laptop",
@@ -1204,7 +1367,9 @@
       "depicts": "学生与电脑",
       "kind": "activity",
       "note": "主题示意，不是某一场比赛现场。",
-      "credit": "图片：Courtcourtwest / CC BY-SA 4.0 / 维基共享资源。主题示意，不是某一场比赛现场。"
+      "credit": "图片：Courtcourtwest / CC BY-SA 4.0 / 维基共享资源。主题示意，不是某一场比赛现场。",
+      "on_site_ids": [],
+      "attribution": ""
     },
     "forest-playground": {
       "id": "forest-playground",
@@ -1218,7 +1383,15 @@
       "depicts": "Forest Park 儿童游乐场",
       "kind": "place",
       "note": "实地照片，不是本场活动现场。",
-      "credit": "图片：Tdorante10 / CC BY-SA 4.0 / 维基共享资源。实地照片，不是本场活动现场。"
+      "credit": "图片：Tdorante10 / CC BY-SA 4.0 / 维基共享资源。实地照片，不是本场活动现场。",
+      "on_site_ids": [
+        "fpt_fairy_20261108",
+        "fpt_restore_forest_20261113",
+        "fpt_native_20261114",
+        "fpt_foliage_20261119",
+        "fpt_restore_forest_20261120"
+      ],
+      "attribution": ""
     },
     "college-lab": {
       "id": "college-lab",
@@ -1232,7 +1405,9 @@
       "depicts": "公共电脑教室",
       "kind": "place",
       "note": "主题示意，不是已排期课程现场。",
-      "credit": "图片：JackFromWisconsin / CC0 / 维基共享资源。主题示意，不是已排期课程现场。"
+      "credit": "图片：JackFromWisconsin / CC0 / 维基共享资源。主题示意，不是已排期课程现场。",
+      "on_site_ids": [],
+      "attribution": ""
     },
     "college-campus": {
       "id": "college-campus",
@@ -1246,7 +1421,9 @@
       "depicts": "社区学院校园",
       "kind": "place",
       "note": "主题示意，不是纽约某一所学校的当期课程。",
-      "credit": "图片：Kurt Kaiser / CC0 / 维基共享资源。主题示意，不是纽约某一所学校的当期课程。"
+      "credit": "图片：Kurt Kaiser / CC0 / 维基共享资源。主题示意，不是纽约某一所学校的当期课程。",
+      "on_site_ids": [],
+      "attribution": ""
     },
     "health-05": {
       "id": "health-05",
@@ -1259,8 +1436,10 @@
       "file_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7d/Bellevue_Hospital_-_NYC_%2851709396411%29.jpg/960px-Bellevue_Hospital_-_NYC_%2851709396411%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
       "depicts": "纽约 Bellevue 医院外观",
       "kind": "place",
-      "note": "医院外观，不是某一条健康通知现场。",
-      "credit": "图片：ajay_suresh / CC BY 2.0 / 维基共享资源。医院外观，不是某一条健康通知现场。"
+      "note": "Bellevue 医院外观，不是某一条健康通知现场。",
+      "credit": "图片：ajay_suresh / CC BY 2.0 / 维基共享资源。医院外观，不是某一条健康通知现场。",
+      "on_site_ids": [],
+      "attribution": ""
     },
     "health-06": {
       "id": "health-06",
@@ -1274,7 +1453,9 @@
       "depicts": "疫苗接种诊所",
       "kind": "activity",
       "note": "主题示意，不是某一场已排期的接种。",
-      "credit": "图片：MDGovpics / CC BY 2.0 / 维基共享资源。主题示意，不是某一场已排期的接种。"
+      "credit": "图片：MDGovpics / CC BY 2.0 / 维基共享资源。主题示意，不是某一场已排期的接种。",
+      "on_site_ids": [],
+      "attribution": ""
     },
     "benefit-07": {
       "id": "benefit-07",
@@ -1287,19 +1468,269 @@
       "file_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b6/New_York_City_Hall_exterior%2C_October_2016.jpg/960px-New_York_City_Hall_exterior%2C_October_2016.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
       "depicts": "纽约市政厅外观",
       "kind": "place",
-      "note": "市政厅外观，不是某一条福利通知现场。",
-      "credit": "图片：MusikAnimal / CC BY-SA 4.0 / 维基共享资源。市政厅外观，不是某一条福利通知现场。"
+      "note": "纽约市政厅外观，不是某一条福利通知现场。",
+      "credit": "图片：MusikAnimal / CC BY-SA 4.0 / 维基共享资源。市政厅外观，不是某一条福利通知现场。",
+      "on_site_ids": [],
+      "attribution": ""
+    },
+    "asser-levy-rec": {
+      "author": "Beyond My Ken",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source_page": "https://commons.wikimedia.org/wiki/File:Asser_Levy_Recreation_Center.jpg",
+      "file_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2c/Asser_Levy_Recreation_Center.jpg/960px-Asser_Levy_Recreation_Center.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "depicts": "曼哈顿 Asser Levy 康乐中心外观（建筑刻有 Free Public Baths）",
+      "kind": "place",
+      "note": "纽约市公园局康乐中心之一，不是目录里每一家中心。",
+      "attribution": "Beyond My Ken",
+      "only_item_ids": [
+        "dir_nyc_recreation_centers"
+      ],
+      "on_site_ids": [],
+      "id": "asser-levy-rec",
+      "file": "assets/hub-event-images/v337/asser-levy-rec.jpg",
+      "sha256": "a7309d62ac988598ad9518a8ef9bc4e5230b4f5e11cf1e143a3449d5a43a7ef5"
+    },
+    "nyc-indoor-pool": {
+      "author": "Charles Smith",
+      "license": "CC BY-SA 2.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/2.0",
+      "source_page": "https://commons.wikimedia.org/wiki/File:Indoor_swimming_pool_in_New_York_City,_January_2011.jpg",
+      "file_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1a/Indoor_swimming_pool_in_New_York_City%2C_January_2011.jpg/960px-Indoor_swimming_pool_in_New_York_City%2C_January_2011.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "depicts": "2011年纽约室内公共泳池",
+      "kind": "activity",
+      "note": "纽约室内泳池，不是某一家康乐中心的当场课程。",
+      "attribution": "Indoor swimming pool in New York City by Charles Smith",
+      "on_site_ids": [],
+      "id": "nyc-indoor-pool",
+      "file": "assets/hub-event-images/v337/nyc-indoor-pool.jpg",
+      "sha256": "6c7a72323373d5b52319d2c32e24ef5f1145722a09117f625e276c242cf5429b"
+    },
+    "benefit-social-newtownards": {
+      "author": "Albert Bridge",
+      "license": "CC BY-SA 2.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/2.0",
+      "source_page": "https://commons.wikimedia.org/wiki/File:Social_Services_office,_Newtownards_(March_2018)_-_geograph.org.uk_-_5705813.jpg",
+      "file_url": "https://upload.wikimedia.org/wikipedia/commons/2/26/Social_Services_office%2C_Newtownards_%28March_2018%29_-_geograph.org.uk_-_5705813.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+      "depicts": "英国纽顿纳兹社会服务办公室",
+      "kind": "theme",
+      "note": "社会服务办公楼，不是纽约福利窗口。",
+      "attribution": "Social Services office, Newtownards (March 2018) by Albert Bridge",
+      "on_site_ids": [],
+      "id": "benefit-social-newtownards",
+      "file": "assets/hub-event-images/v337/benefit-social-newtownards.jpg",
+      "sha256": "0203a99d11c5d3e99453ecff4ed530d7f896d396e9e6674a72cfe86567581767"
+    },
+    "benefit-social-warwick": {
+      "author": "Colin Craig",
+      "license": "CC BY-SA 2.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/2.0",
+      "source_page": "https://commons.wikimedia.org/wiki/File:Social_services_office,_Warwick_-_geograph.org.uk_-_1240277.jpg",
+      "file_url": "https://upload.wikimedia.org/wikipedia/commons/e/e0/Social_services_office%2C_Warwick_-_geograph.org.uk_-_1240277.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+      "depicts": "英国沃里克社会服务办公室",
+      "kind": "theme",
+      "note": "社会服务办公楼，不是纽约福利窗口。",
+      "attribution": "Social services office, Warwick by Colin Craig",
+      "on_site_ids": [],
+      "id": "benefit-social-warwick",
+      "file": "assets/hub-event-images/v337/benefit-social-warwick.jpg",
+      "sha256": "ab1ab103f23cdca2cfcf24926a1cc96a46a1134e7aa494533b4b6db6587a6efa"
+    },
+    "benefit-social-weymouth": {
+      "author": "Mike Faherty",
+      "license": "CC BY-SA 2.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/2.0",
+      "source_page": "https://commons.wikimedia.org/wiki/File:Weymouth,_social_services_office_-_geograph.org.uk_-_3676826.jpg",
+      "file_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/42/Weymouth%2C_social_services_office_-_geograph.org.uk_-_3676826.jpg/960px-Weymouth%2C_social_services_office_-_geograph.org.uk_-_3676826.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "depicts": "英国韦茅斯社会服务办公室",
+      "kind": "theme",
+      "note": "社会服务办公楼，不是纽约福利窗口。",
+      "attribution": "Weymouth, social services office by Mike Faherty",
+      "on_site_ids": [],
+      "id": "benefit-social-weymouth",
+      "file": "assets/hub-event-images/v337/benefit-social-weymouth.jpg",
+      "sha256": "251d91cfbffa0309dee064b6720ad9d57c36a5a23683020eefe26f0e706f4931"
+    },
+    "benefit-food-pantry": {
+      "author": "Rick Obst",
+      "license": "CC BY 4.0",
+      "license_url": "https://creativecommons.org/licenses/by/4.0",
+      "source_page": "https://commons.wikimedia.org/wiki/File:Little_Food_Pantry_-_Neighbors_Helping_Neighbors.jpg",
+      "file_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e5/Little_Food_Pantry_-_Neighbors_Helping_Neighbors.jpg/960px-Little_Food_Pantry_-_Neighbors_Helping_Neighbors.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "depicts": "社区食物储藏柜",
+      "kind": "theme",
+      "note": "食物援助主题，不是纽约 HRA 窗口。",
+      "attribution": "Little Food Pantry - Neighbors Helping Neighbors by Rick Obst",
+      "on_site_ids": [],
+      "id": "benefit-food-pantry",
+      "file": "assets/hub-event-images/v337/benefit-food-pantry.jpg",
+      "sha256": "7618b50f92d27c9edb1b9e37aca5177bed6b7a9bce4e31a2be0142bd945d533c"
+    },
+    "benefit-food-bank": {
+      "author": "Betty Longbottom",
+      "license": "CC BY-SA 2.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/2.0",
+      "source_page": "https://commons.wikimedia.org/wiki/File:St_Marys_Catholic_Church_-_East_Parade_-_Food_Bank_(geograph_3417511).jpg",
+      "file_url": "https://upload.wikimedia.org/wikipedia/commons/c/cb/St_Marys_Catholic_Church_-_East_Parade_-_Food_Bank_%28geograph_3417511%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+      "depicts": "教会食物银行物资",
+      "kind": "theme",
+      "note": "食物银行主题，不是纽约粮食券窗口。",
+      "attribution": "St Mary's Catholic Church - East Parade - Food Bank by Betty Longbottom",
+      "on_site_ids": [],
+      "id": "benefit-food-bank",
+      "file": "assets/hub-event-images/v337/benefit-food-bank.jpg",
+      "sha256": "9825238cd9ca9df81b4801400d83ac1ec09a6987759bd90bc787f166d99fc052"
+    },
+    "job-fair-stem": {
+      "author": "Ryan Johnson / North Charleston",
+      "license": "CC BY-SA 2.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/2.0",
+      "source_page": "https://commons.wikimedia.org/wiki/File:STEM_Career_Fair_(30675907756).jpg",
+      "file_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c4/STEM_Career_Fair_%2830675907756%29.jpg/960px-STEM_Career_Fair_%2830675907756%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "depicts": "STEM 招聘会展位",
+      "kind": "activity",
+      "note": "招聘会主题，不是纽约某一场招聘会。",
+      "attribution": "STEM Career Fair by Ryan Johnson / North Charleston",
+      "on_site_ids": [],
+      "id": "job-fair-stem",
+      "file": "assets/hub-event-images/v337/job-fair-stem.jpg",
+      "sha256": "ca50d763f711055b064be1a39eaa12b44a475c38c70a7bf0f6c78eb7ba4e2db0"
+    },
+    "job-fair-sofia": {
+      "author": "Bianca ciw",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source_page": "https://commons.wikimedia.org/wiki/File:Job_Fair_in_Sofia_-_2015.jpg",
+      "file_url": "https://upload.wikimedia.org/wikipedia/commons/6/6b/Job_Fair_in_Sofia_-_2015.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+      "depicts": "招聘会现场展台",
+      "kind": "activity",
+      "note": "招聘会主题，不是纽约某一场招聘会。",
+      "attribution": "Job Fair in Sofia - 2015 by Bianca ciw",
+      "on_site_ids": [],
+      "id": "job-fair-sofia",
+      "file": "assets/hub-event-images/v337/job-fair-sofia.jpg",
+      "sha256": "e3046f39cdefbc5a7f2617647bea8a7e7c0de5d95a85f7c99ef50a10828c60d9"
+    },
+    "job-fair-exhibitors": {
+      "author": "German Embassy London",
+      "license": "CC BY 2.0",
+      "license_url": "https://creativecommons.org/licenses/by/2.0",
+      "source_page": "https://commons.wikimedia.org/wiki/File:Exhibitors_at_the_Career_Fair_(30983205220).jpg",
+      "file_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d6/Exhibitors_at_the_Career_Fair_%2830983205220%29.jpg/960px-Exhibitors_at_the_Career_Fair_%2830983205220%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "depicts": "招聘会展位",
+      "kind": "activity",
+      "note": "招聘会主题，不是纽约某一场招聘会。",
+      "attribution": "Exhibitors at the Career Fair by German Embassy London",
+      "on_site_ids": [],
+      "id": "job-fair-exhibitors",
+      "file": "assets/hub-event-images/v337/job-fair-exhibitors.jpg",
+      "sha256": "5918fb57f41797fbd671b050d5d7742abc7b7b11b344063b54a17d45ca37edbe"
+    },
+    "girl-scouts-flag": {
+      "author": "Villwock",
+      "license": "CC BY-SA 3.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+      "source_page": "https://commons.wikimedia.org/wiki/File:Girl_Scouts_raising_the_American_flag.jpg",
+      "file_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0a/Girl_Scouts_raising_the_American_flag.jpg/960px-Girl_Scouts_raising_the_American_flag.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "depicts": "2012年威斯康星州 Eau Claire 女童军升旗",
+      "kind": "activity",
+      "note": "不是1957年威尔士历史照，也不是纽约女童军现场。",
+      "attribution": "Girl Scouts raising the American flag by Villwock",
+      "only_item_ids": [
+        "scout_girlscouts_nyc"
+      ],
+      "on_site_ids": [],
+      "id": "girl-scouts-flag",
+      "file": "assets/hub-event-images/v337/girl-scouts-flag.jpg",
+      "sha256": "e18e1a96c57c6404470e403efcca43462e87bf28ab6dd0f35a7501f2f0ebd803"
+    },
+    "flushing-library": {
+      "author": "D. Benjamin Miller",
+      "license": "CC0",
+      "license_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+      "source_page": "https://commons.wikimedia.org/wiki/File:Queens_Library,_Flushing,_June_19,_2025.jpg",
+      "file_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1c/Queens_Library%2C_Flushing%2C_June_19%2C_2025.jpg/960px-Queens_Library%2C_Flushing%2C_June_19%2C_2025.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "depicts": "皇后区图书馆法拉盛分馆",
+      "kind": "place",
+      "note": "法拉盛分馆建筑，不是馆内某一场活动。",
+      "attribution": "D. Benjamin Miller",
+      "only_item_ids": [
+        "live_041",
+        "live_110"
+      ],
+      "on_site_ids": [
+        "live_041",
+        "live_110"
+      ],
+      "id": "flushing-library",
+      "file": "assets/hub-event-images/v337/flushing-library.jpg",
+      "sha256": "2c0c3aa11c9d86b1786ce1d02a56181b5cb7d1b2f56ea04db0ee7af6a30dda3b"
+    },
+    "sunset-park-library": {
+      "author": "Legoktm",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source_page": "https://commons.wikimedia.org/wiki/File:BPL_Sunset_Park_branch.jpg",
+      "file_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e0/BPL_Sunset_Park_branch.jpg/960px-BPL_Sunset_Park_branch.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "depicts": "布鲁克林公共图书馆日落公园分馆（原治安法院建筑）",
+      "kind": "place",
+      "note": "日落公园分馆建筑，不是总馆阅览室，也不是馆内某一场活动。",
+      "attribution": "Legoktm",
+      "only_item_ids": [
+        "live_043"
+      ],
+      "on_site_ids": [
+        "live_043"
+      ],
+      "id": "sunset-park-library",
+      "file": "assets/hub-event-images/v337/sunset-park-library.jpg",
+      "sha256": "9d4905156310f21e72cc386c74195b86d927435d8827645319afa4e3072aa931"
+    },
+    "chatham-library": {
+      "author": "Mcmillin24",
+      "license": "CC BY-SA 3.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+      "source_page": "https://commons.wikimedia.org/wiki/File:NYPL_Chatham_Square_Branch,_Manhattan.jpg",
+      "file_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1b/NYPL_Chatham_Square_Branch%2C_Manhattan.jpg/960px-NYPL_Chatham_Square_Branch%2C_Manhattan.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "depicts": "纽约公共图书馆华埠 Chatham Square 分馆",
+      "kind": "place",
+      "note": "华埠分馆建筑，不是总馆研究阅览室。",
+      "attribution": "Mcmillin24",
+      "only_item_ids": [
+        "live_111"
+      ],
+      "on_site_ids": [
+        "live_111"
+      ],
+      "id": "chatham-library",
+      "file": "assets/hub-event-images/v337/chatham-library.jpg",
+      "sha256": "a28a0a81cc0fc2c765cec4f49298d7077f076534cdc844a390734f41c96b0604"
+    },
+    "adult-classroom": {
+      "author": "Harrison Keely",
+      "license": "CC BY 4.0",
+      "license_url": "https://creativecommons.org/licenses/by/4.0",
+      "source_page": "https://commons.wikimedia.org/wiki/File:Professor_and_students_in_a_university_classroom_in_Tennessee.jpg",
+      "file_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c2/Professor_and_students_in_a_university_classroom_in_Tennessee.jpg/960px-Professor_and_students_in_a_university_classroom_in_Tennessee.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "depicts": "大学课堂",
+      "kind": "activity",
+      "note": "田纳西州课堂，不是纽约某一门课程现场。",
+      "attribution": "Professor and students in a university classroom in Tennessee by Harrison Keely",
+      "on_site_ids": [],
+      "id": "adult-classroom",
+      "file": "assets/hub-event-images/v337/adult-classroom.jpg",
+      "sha256": "a44c2a3f4cedbde8bba15b8a4290e20f76c11a7a89bc0819328db39d2ee002a6"
     }
   },
   "primaries": {
     "fpt_fairy_20261108": "forest-playground",
     "fpt_restore_forest_20261113": "volunteer-planting",
     "fpt_native_20261114": "native-plants",
-    "fpt_foliage_20261119": "autumn-path",
+    "fpt_foliage_20261119": "forest-park-queens",
     "fpt_restore_forest_20261120": "park-cleanup",
     "fpt_restore_highland_20261120": "highland-park",
     "dir_shape_up_nyc": "outdoor-runners",
-    "dir_nyc_recreation_centers": "indoor-pool",
+    "dir_nyc_recreation_centers": "asser-levy-rec",
     "contest_bebras2026": "student-computer",
     "contest_exploravision2027": "science-lab",
     "contest_ecyber2027": "science-lab-2",
@@ -1317,7 +1748,13 @@
     "scout_gnyc": "scout-camp",
     "scout_cub": "cub-scouts",
     "scout_bsa": "scout-youth",
-    "scout_girlscouts_nyc": "girl-guides"
+    "scout_girlscouts_nyc": "girl-scouts-flag",
+    "live_041": "flushing-library",
+    "live_110": "flushing-library",
+    "live_043": "sunset-park-library",
+    "live_111": "chatham-library",
+    "live_132": "job-06",
+    "live_133": "job-06"
   },
   "pools": {
     "亲子·公园": [
@@ -1327,7 +1764,6 @@
       "highland-park",
       "highland-greenway",
       "playground",
-      "family-park",
       "park-01",
       "park-02",
       "park-03",
@@ -1353,43 +1789,34 @@
       "student-computer",
       "science-lab",
       "science-lab-2",
-      "jfk-library",
       "library-room",
-      "harvard-yard",
-      "yale-campus",
-      "mit-campus",
-      "washington-square",
       "computer-class",
       "student-laptop",
       "essay-writing",
       "history-class",
       "video-class",
-      "coral",
       "college-lab",
       "college-campus",
-      "cub-scouts",
-      "scout-camp",
-      "scout-youth",
-      "girl-guides"
+      "adult-classroom"
     ],
     "就业·培训": [
       "job-01",
       "job-02",
       "job-03",
-      "job-04",
       "job-05",
-      "job-06",
-      "job-07",
       "job-09",
-      "job-11",
-      "job-12",
       "college-lab",
-      "college-campus"
+      "college-campus",
+      "computer-class",
+      "student-laptop",
+      "job-fair-stem",
+      "job-fair-sofia",
+      "job-fair-exhibitors"
     ],
     "健身·户外": [
       "outdoor-runners",
       "outdoor-yoga",
-      "indoor-pool",
+      "nyc-indoor-pool",
       "autumn-path",
       "highland-greenway"
     ],
@@ -1409,16 +1836,16 @@
     "福利·政务": [
       "civic-01",
       "benefit-07",
-      "civic-06",
       "civic-02",
-      "library-room",
       "benefit-01",
       "benefit-02",
       "benefit-03",
-      "benefit-04",
-      "benefit-05",
-      "benefit-06",
-      "civic-05"
+      "civic-05",
+      "benefit-social-newtownards",
+      "benefit-social-warwick",
+      "benefit-social-weymouth",
+      "benefit-food-pantry",
+      "benefit-food-bank"
     ],
     "住房·安居": [
       "house-01",
@@ -1442,31 +1869,30 @@
     ]
   },
   "reserve": [
+    "adult-classroom",
     "autumn-path",
     "benefit-01",
     "benefit-02",
     "benefit-03",
-    "benefit-04",
-    "benefit-05",
-    "benefit-06",
     "benefit-07",
+    "benefit-food-bank",
+    "benefit-food-pantry",
+    "benefit-social-newtownards",
+    "benefit-social-warwick",
+    "benefit-social-weymouth",
     "civic-01",
     "civic-02",
     "civic-03",
     "civic-04",
     "civic-05",
-    "civic-06",
     "college-campus",
     "college-lab",
     "computer-class",
-    "coral",
-    "cub-scouts",
     "culture-01",
     "culture-02",
     "culture-03",
     "culture-04",
     "essay-writing",
-    "family-park",
     "fest-01",
     "fest-02",
     "fest-03",
@@ -1477,8 +1903,6 @@
     "forest-park-field",
     "forest-park-queens",
     "forest-playground",
-    "girl-guides",
-    "harvard-yard",
     "health-01",
     "health-02",
     "health-03",
@@ -1490,21 +1914,17 @@
     "history-class",
     "house-01",
     "house-02",
-    "indoor-pool",
-    "jfk-library",
     "job-01",
     "job-02",
     "job-03",
-    "job-04",
     "job-05",
-    "job-06",
-    "job-07",
     "job-09",
-    "job-11",
-    "job-12",
+    "job-fair-exhibitors",
+    "job-fair-sofia",
+    "job-fair-stem",
     "library-room",
-    "mit-campus",
     "native-plants",
+    "nyc-indoor-pool",
     "outdoor-runners",
     "outdoor-yoga",
     "park-01",
@@ -1517,8 +1937,6 @@
     "safe-02",
     "science-lab",
     "science-lab-2",
-    "scout-camp",
-    "scout-youth",
     "student-computer",
     "student-laptop",
     "video-class",
@@ -1531,8 +1949,6 @@
     "vol-07",
     "vol-08",
     "volunteer-planting",
-    "volunteer-planting-af",
-    "washington-square",
-    "yale-campus"
+    "volunteer-planting-af"
   ]
 }
