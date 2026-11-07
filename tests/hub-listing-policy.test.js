@@ -136,4 +136,32 @@ const dateOnly = {
 assert.strictEqual(p.claimsOpenRegistration(dateOnly, TODAY), false);
 assert.strictEqual(p.isoDay(dateOnly.registration_deadline), '2027-03-03');
 
+const harvardOpen = {
+  id: 'camp_harvard_precollege_2027',
+  content_kind: 'camp',
+  listing_role: 'annual_edition',
+  date_kind: 'event',
+  event_date: '2027-06-21',
+  event_end_date: '2027-08-06',
+  registration_opens: '2026-12-01',
+  registration_deadline: '2027-02-10',
+  registration_state: 'opens_later'
+};
+assert.strictEqual(p.sessionEndDate(harvardOpen), '2027-08-06');
+assert.strictEqual(p.disposition(harvardOpen, '2026-12-02').action, 'show');
+assert.strictEqual(p.claimsOpenRegistration(harvardOpen, '2026-12-02'), false);
+const opensMistakenAsDeadline = Object.assign({}, harvardOpen, {
+  registration_deadline: '2026-12-01',
+  registration_state: 'official_open'
+});
+assert.strictEqual(p.sessionEndDate(opensMistakenAsDeadline), '2027-08-06');
+assert.strictEqual(p.disposition(opensMistakenAsDeadline, '2026-12-02').action, 'show');
+assert.strictEqual(p.claimsOpenRegistration(opensMistakenAsDeadline, '2026-12-02'), true);
+
+const serviceOld = { id: 'svc', date_kind: 'service', event_date: '2026-01-01' };
+assert.strictEqual(p.disposition(serviceOld, TODAY).action, 'show');
+const held = session('2026-10-30');
+assert.strictEqual(p.disposition(held, TODAY).action, 'hide');
+assert.strictEqual(p.isPublicActivity(held, TODAY), false);
+
 console.log('hub-listing-policy.test.js ok');

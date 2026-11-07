@@ -73,8 +73,11 @@ function build() {
       '公益·义工',
       'https://forestparktrust.org/events/11-13-resfriday-forest',
       {
+        location: 'Forest Park Buddy Monument',
+        registration_state: 'advance_required',
+        registration_url: 'https://forestparktrust.org/events/11-13-resfriday-forest',
         summary_zh: 'Forest Park 志愿修复，2026-11-13 10:00–12:00（美东）。不是健身课。',
-        disclosure_zh: '报名时间待公布/待更新。费用未注明，不标免费。这是志愿劳动，不是健身课程。时间：2026-11-13 10:00–12:00（美东）。与11月20日的场次分开，过期后不能改写成新场。'
+        disclosure_zh: '须提前报名；截止时间未注明；名额以官网为准。集合点 Buddy Monument。'
       }
     ),
     forest(
@@ -86,8 +89,11 @@ function build() {
       '公益·义工',
       'https://forestparktrust.org/events/native-planting-at-forest-park',
       {
+        location: 'Forest Park Buddy Monument',
+        registration_state: 'advance_required',
+        registration_url: 'https://forestparktrust.org/events/native-planting-at-forest-park',
         summary_zh: 'Forest Park 本土植物栽种，2026-11-14 10:00–12:00（美东）。志愿劳动。',
-        disclosure_zh: '报名时间待公布/待更新。费用未注明，不标免费。这是志愿栽种，不是健身课程。时间：2026-11-14 10:00–12:00（美东）。'
+        disclosure_zh: '须提前报名；截止时间未注明；名额以官网为准。集合点 Buddy Monument。'
       }
     ),
     forest(
@@ -99,8 +105,11 @@ function build() {
       '健身·户外',
       'https://forestparktrust.org/events/11-19-fallfoliage-textt-zdjxe',
       {
+        location: 'Forest Park Buddy Monument',
+        registration_state: 'advance_required',
+        registration_url: 'https://forestparktrust.org/events/11-19-fallfoliage-textt-zdjxe',
         summary_zh: 'Forest Park 自然步行，2026-11-19 10:00–11:30（美东）。',
-        disclosure_zh: '报名时间待公布/待更新。费用未注明，不标免费。这是自然步行，不是健身课程，也不是志愿劳动场。时间：2026-11-19 10:00–11:30（美东）。'
+        disclosure_zh: '须提前报名；截止时间未注明；名额以官网为准。集合点 Buddy Monument。'
       }
     ),
     forest(
@@ -112,8 +121,11 @@ function build() {
       '公益·义工',
       'https://forestparktrust.org/events/11-20-resfriday-forest',
       {
+        location: 'Forest Park Buddy Monument',
+        registration_state: 'advance_required',
+        registration_url: 'https://forestparktrust.org/events/11-20-resfriday-forest',
         summary_zh: 'Forest Park 志愿修复，2026-11-20 10:00–12:00（美东）。',
-        disclosure_zh: '报名时间待公布/待更新。费用未注明，不标免费。这是志愿劳动，不是健身课程。时间：2026-11-20 10:00–12:00（美东），地点 Forest Park。与同日 Highland Park 场次是两场。'
+        disclosure_zh: '须提前报名；截止时间未注明；名额以官网为准。集合点 Buddy Monument。'
       }
     ),
     row({
@@ -127,12 +139,13 @@ function build() {
       borough: 'Brooklyn',
       area_zh: '布鲁克林 Highland Park',
       area_en: 'Highland Park, Brooklyn',
-      location: 'Highland Park',
+      location: 'Highland Park，Vermont Place 停车场',
       location_tag_zh: '布鲁克林',
       title_zh: 'Highland Park 修复周五（11月20日）',
       title_en: 'Restoration Friday at Highland Park (Nov 20)',
       url: 'https://forestparktrust.org/events/11-20-resfriday-highland',
-      registration_state: 'to_be_announced',
+      registration_url: 'https://forestparktrust.org/events/11-20-resfriday-highland',
+      registration_state: 'advance_required',
       summary_zh: 'Highland Park 志愿修复，2026-11-20 10:00–12:00（美东）。',
       disclosure_zh: '报名时间待公布/待更新。费用未注明，不标免费。这是志愿劳动，不是健身课程。时间：2026-11-20 10:00–12:00（美东），地点 Highland Park。与同日 Forest Park 场次是两场。'
     }),
@@ -396,8 +409,10 @@ function build() {
       listing_role: 'annual_edition',
       event_date: '2027-06-21',
       event_end_date: '2027-08-06',
-      next_milestone_date: '2026-12-01',
-      registration_deadline: '2026-12-01',
+      next_milestone_date: '2027-06-21',
+      registration_opens: '2026-12-01',
+      registration_opens_precision: 'date',
+      registration_deadline: '2027-02-10',
       registration_deadline_precision: 'date',
       registration_state: 'opens_later',
       title_zh: '哈佛高中生暑期预科 2027（本校）',

@@ -55,6 +55,7 @@
   }
 
   function sessionEndDate(item) {
+    // registration_opens and registration_deadline are not the session end.
     if (!item || isOngoingIntro(item) || isDeal(item)) return '';
     const role = item.listing_role || '';
     if (role === 'annual_edition' || role === 'specific_session' || item.has_specific_window) {
@@ -116,9 +117,10 @@
     if (!item || item.registration_state !== 'official_open') return false;
     if (item.eligibility_status === 'unverified' || item.registration_state === 'status_conflict') return false;
     today = isoDay(today) || nyCalendarDate(now || new Date());
+    const opensDay = isoDay(item.registration_opens);
     const deadlineDay = isoDay(item.registration_deadline);
-    if (deadlineDay && deadlineDay < today) return false;
-    if (item.registration_deadline_at) {
+    if (deadlineDay && deadlineDay !== opensDay && deadlineDay < today) return false;
+    if (item.registration_deadline_at && deadlineDay !== opensDay) {
       const endMs = Date.parse(item.registration_deadline_at);
       const nowMs = now instanceof Date ? now.getTime() : Date.parse(now || new Date());
       if (!Number.isNaN(endMs) && !Number.isNaN(nowMs) && nowMs > endMs) return false;

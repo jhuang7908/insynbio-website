@@ -35,8 +35,8 @@ const items = JSON.parse(sliced.json).map(item => fresh.has(item.id) ? fresh.get
 html = html.slice(0, sliced.start) + JSON.stringify(items) + html.slice(sliced.end);
 html = html.replace('"events_7d":3', '"events_7d":4');
 html = html.replace(
-  '报名时间没公布会写待更新，不会写成正在报名。纯数学、机器人、纽约本地赛，以及租用校园的第三方夏令营，这次没有核实条目。',
-  '报名时间没公布时，卡片会写“尚未公布”。数学、机器人、纽约本地比赛，以及租用校园的第三方夏令营，这次没有收录。'
+  '报名时间没公布时，卡片会写“尚未公布”。',
+  '本页未核实的费用、日期或资格会写“待更新，请查官网”。'
 );
 html = html.replace(
   '公园局常年健身目录。不代表某一节未来课程已经排期，费用以官网为准。',
