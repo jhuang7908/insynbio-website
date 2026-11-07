@@ -1,0 +1,359 @@
+{
+  "as_of": "2026-11-07",
+  "timezone": "America/New_York",
+  "cutoff_delete_on_or_before": "2026-10-07",
+  "original": 134,
+  "kept_in_items": 127,
+  "public": 126,
+  "added": 26,
+  "deleted": 33,
+  "hidden": 1,
+  "stale_service_dates_cleared": 0,
+  "week_ids": [
+    "live_009",
+    "fpt_fairy_20261108",
+    "fpt_restore_forest_20261113",
+    "fpt_native_20261114"
+  ],
+  "recent_ids": [
+    "fpt_fairy_20261108",
+    "live_009",
+    "fpt_restore_forest_20261113",
+    "fpt_native_20261114"
+  ],
+  "added_ids": [
+    "fpt_fairy_20261108",
+    "fpt_restore_forest_20261113",
+    "fpt_native_20261114",
+    "fpt_foliage_20261119",
+    "fpt_restore_forest_20261120",
+    "fpt_restore_highland_20261120",
+    "dir_shape_up_nyc",
+    "dir_nyc_recreation_centers",
+    "contest_bebras2026",
+    "contest_exploravision2027",
+    "contest_ecyber2027",
+    "contest_jfk2027",
+    "contest_studentcam2027",
+    "contest_swb2027",
+    "contest_technovation2027",
+    "contest_juniorhistory2027",
+    "contest_nocti2027",
+    "contest_sealo2027",
+    "camp_harvard_precollege_2027",
+    "camp_yale_yygs_2027",
+    "camp_mit_mites",
+    "camp_nyu_precollege",
+    "scout_gnyc",
+    "scout_cub",
+    "scout_bsa",
+    "scout_girlscouts_nyc"
+  ],
+  "deleted_rows": [
+    {
+      "id": "live_001",
+      "title_zh": "HSE（GED）和大学预备课程",
+      "url": "https://www.bmcc.cuny.edu/ce/hse-ged-and-esol-programs/",
+      "module": "语言·教育",
+      "event_date": "2026-09-28",
+      "end": "2026-09-28",
+      "reason": "ended_full_calendar_month"
+    },
+    {
+      "id": "live_002",
+      "title_zh": "高中同等学历（HSE/GED）",
+      "url": "https://www.kingsborough.edu/ce/hse_courses.html",
+      "module": "语言·教育",
+      "event_date": "2026-09-28",
+      "end": "2026-09-28",
+      "reason": "ended_full_calendar_month"
+    },
+    {
+      "id": "live_003",
+      "title_zh": "继续教育与劳动力发展",
+      "url": "https://www.qcc.cuny.edu/ce/index.html",
+      "module": "就业·培训",
+      "event_date": "2026-09-28",
+      "end": "2026-09-28",
+      "reason": "ended_full_calendar_month"
+    },
+    {
+      "id": "live_005",
+      "title_zh": "英语作为第二语言（ESL）",
+      "url": "https://www.kingsborough.edu/ce/esl.html",
+      "module": "语言·教育",
+      "event_date": "2026-09-28",
+      "end": "2026-09-28",
+      "reason": "ended_full_calendar_month"
+    },
+    {
+      "id": "live_006",
+      "title_zh": "职业技能与劳动力培训",
+      "url": "https://www.laguardia.edu/ce/career-skills-training/",
+      "module": "就业·培训",
+      "event_date": "2026-09-28",
+      "end": "2026-09-28",
+      "reason": "ended_full_calendar_month"
+    },
+    {
+      "id": "live_007",
+      "title_zh": "NYRR开放跑：Flushing Meadows Corona Park",
+      "url": "https://www.nycgovparks.org/events/2026/09/24/nyrr-open-run-flushing-meadows-corona-park",
+      "module": "文化·节庆",
+      "event_date": "2026-09-24",
+      "end": "2026-09-24",
+      "reason": "ended_full_calendar_month"
+    },
+    {
+      "id": "live_008",
+      "title_zh": "MTA：在Queensboro Plaza, Queens与34 St-Hudson Yards, Manhattan之间没有[7]号列车",
+      "url": "https://www.mta.info/#alert-5da8dac67494",
+      "module": "交通·出行",
+      "event_date": "2026-09-23",
+      "end": "2026-09-23",
+      "reason": "ended_full_calendar_month"
+    },
+    {
+      "id": "live_010",
+      "title_zh": "1031 交换规则：简化版（对房地产专业人士免费）",
+      "url": "https://www.areaa.org/newyorkeast/event/1031-exchange-rules-simplified-free-to-real-estate-professional",
+      "module": "公益·义工",
+      "event_date": "2026-09-24",
+      "end": "2026-09-24",
+      "reason": "ended_full_calendar_month"
+    },
+    {
+      "id": "live_011",
+      "title_zh": "动感儿童：Seward Park",
+      "url": "https://www.nycgovparks.org/events/2026/09/25/kids-in-motion-seward-park",
+      "module": "亲子·公园",
+      "event_date": "2026-09-25",
+      "end": "2026-09-25",
+      "reason": "ended_full_calendar_month"
+    },
+    {
+      "id": "live_012",
+      "title_zh": "动感儿童：Bowne Park",
+      "url": "https://www.nycgovparks.org/events/2026/09/25/kids-in-motion-bowne-park",
+      "module": "亲子·公园",
+      "event_date": "2026-09-25",
+      "end": "2026-09-25",
+      "reason": "ended_full_calendar_month"
+    },
+    {
+      "id": "live_013",
+      "title_zh": "动感儿童：Seward Park",
+      "url": "https://www.nycgovparks.org/events/2026/09/24/kids-in-motion-seward-park",
+      "module": "亲子·公园",
+      "event_date": "2026-09-24",
+      "end": "2026-09-24",
+      "reason": "ended_full_calendar_month"
+    },
+    {
+      "id": "live_014",
+      "title_zh": "动感儿童：Bowne Park",
+      "url": "https://www.nycgovparks.org/events/2026/09/24/kids-in-motion-bowne-park",
+      "module": "亲子·公园",
+      "event_date": "2026-09-24",
+      "end": "2026-09-24",
+      "reason": "ended_full_calendar_month"
+    },
+    {
+      "id": "live_015",
+      "title_zh": "动感儿童：Seward Park",
+      "url": "https://www.nycgovparks.org/events/2026/09/23/kids-in-motion-seward-park",
+      "module": "亲子·公园",
+      "event_date": "2026-09-23",
+      "end": "2026-09-23",
+      "reason": "ended_full_calendar_month"
+    },
+    {
+      "id": "live_016",
+      "title_zh": "动感儿童：Bowne Park",
+      "url": "https://www.nycgovparks.org/events/2026/09/23/kids-in-motion-bowne-park",
+      "module": "亲子·公园",
+      "event_date": "2026-09-23",
+      "end": "2026-09-23",
+      "reason": "ended_full_calendar_month"
+    },
+    {
+      "id": "live_017",
+      "title_zh": "Morris-Jumel Mansion 的年度乔治·华盛顿晚宴",
+      "url": "https://www.nycgovparks.org/events/2026/09/24/the-morrisjumel-mansions-annual-george-washington-dinner",
+      "module": "文化·节庆",
+      "event_date": "2026-09-24",
+      "end": "2026-09-24",
+      "reason": "ended_full_calendar_month"
+    },
+    {
+      "id": "live_018",
+      "title_zh": "全身健身",
+      "url": "https://www.nycgovparks.org/events/2026/09/25/total-body-fitness",
+      "module": "健身·户外",
+      "event_date": "2026-09-25",
+      "end": "2026-09-25",
+      "reason": "ended_full_calendar_month"
+    },
+    {
+      "id": "live_019",
+      "title_zh": "与Jazz Power Initiative一起摇摆萨尔萨桑巴",
+      "url": "https://www.nycgovparks.org/events/2026/09/30/swing-salsa-samba-with-jazz-power-initiative",
+      "module": "文化·节庆",
+      "event_date": "2026-09-30",
+      "end": "2026-09-30",
+      "reason": "ended_full_calendar_month"
+    },
+    {
+      "id": "live_020",
+      "title_zh": "中城Greeley Square Park的音乐会",
+      "url": "https://www.nycgovparks.org/events/2026/09/30/midtown-music-in-greeley-square-park",
+      "module": "文化·节庆",
+      "event_date": "2026-09-30",
+      "end": "2026-09-30",
+      "reason": "ended_full_calendar_month"
+    },
+    {
+      "id": "live_021",
+      "title_zh": "Arsenal Gallery的新树木学展览",
+      "url": "https://www.nycgovparks.org/events/2026/09/25/new-dendrology-at-the-arsenal-gallery",
+      "module": "文化·节庆",
+      "event_date": "2026-09-25",
+      "end": "2026-09-25",
+      "reason": "ended_full_calendar_month"
+    },
+    {
+      "id": "live_022",
+      "title_zh": "舞蹈健身",
+      "url": "https://www.nycgovparks.org/events/2026/09/26/dance-fitness1",
+      "module": "健身·户外",
+      "event_date": "2026-09-26",
+      "end": "2026-09-26",
+      "reason": "ended_full_calendar_month"
+    },
+    {
+      "id": "live_023",
+      "title_zh": "Crotona Park合作工作星期三",
+      "url": "https://www.nycgovparks.org/events/2026/09/30/crotona-park-work-together-wednesday",
+      "module": "健身·户外",
+      "event_date": "2026-09-30",
+      "end": "2026-09-30",
+      "reason": "ended_full_calendar_month"
+    },
+    {
+      "id": "live_024",
+      "title_zh": "水边锻炼：Amp'd训练营",
+      "url": "https://www.nycgovparks.org/events/2026/09/30/waterfront-workouts-ampd-bootcamp",
+      "module": "健身·户外",
+      "event_date": "2026-09-30",
+      "end": "2026-09-30",
+      "reason": "ended_full_calendar_month"
+    },
+    {
+      "id": "live_025",
+      "title_zh": "Crotona Park 克罗托纳公园守护日",
+      "url": "https://www.nycgovparks.org/events/2026/09/26/crotona-park-stewardship-saturday",
+      "module": "公益·义工",
+      "event_date": "2026-09-26",
+      "end": "2026-09-26",
+      "reason": "ended_full_calendar_month"
+    },
+    {
+      "id": "live_026",
+      "title_zh": "舞蹈健身星期四",
+      "url": "https://www.nycgovparks.org/events/2026/09/24/dance-fitness-thursdays",
+      "module": "健身·户外",
+      "event_date": "2026-09-24",
+      "end": "2026-09-24",
+      "reason": "ended_full_calendar_month"
+    },
+    {
+      "id": "live_027",
+      "title_zh": "MTA：在布鲁克林，Brighton Beach 和 Coney Island-Stillwell Av 之间没有 [Q] 线",
+      "url": "https://www.mta.info/#alert-636e825b182b",
+      "module": "交通·出行",
+      "event_date": "2026-09-23",
+      "end": "2026-09-23",
+      "reason": "ended_full_calendar_month"
+    },
+    {
+      "id": "live_028",
+      "title_zh": "MTA：在布鲁克林，Coney Island-Stillwell Av没有[N]号列车",
+      "url": "https://www.mta.info/#alert-ca5a325c2083",
+      "module": "交通·出行",
+      "event_date": "2026-09-23",
+      "end": "2026-09-23",
+      "reason": "ended_full_calendar_month"
+    },
+    {
+      "id": "live_029",
+      "title_zh": "MTA：[7] 号列车在两个方向上均有延误，我们正在将工作设备移至 Queensboro Plaza 皇后区广场附近。",
+      "url": "https://www.mta.info/#alert-4c34265ac996",
+      "module": "交通·出行",
+      "event_date": "2026-09-23",
+      "end": "2026-09-23",
+      "reason": "ended_full_calendar_month"
+    },
+    {
+      "id": "live_030",
+      "title_zh": "MTA：在布鲁克林，前往曼哈顿的 [4] 号本地列车跳过 Eastern Pkwy-Brooklyn Museum、Grand Army Plaza 和 Bergen St",
+      "url": "https://www.mta.info/#alert-68ed01d58cbc",
+      "module": "交通·出行",
+      "event_date": "2026-09-23",
+      "end": "2026-09-23",
+      "reason": "ended_full_calendar_month"
+    },
+    {
+      "id": "live_031",
+      "title_zh": "MTA：在布鲁克林，前往曼哈顿的 [2][3] 线跳过 Eastern Pkwy-Brooklyn Museum、Grand Army Plaza 和 Bergen St",
+      "url": "https://www.mta.info/#alert-3b7867a4c8b1",
+      "module": "交通·出行",
+      "event_date": "2026-09-23",
+      "end": "2026-09-23",
+      "reason": "ended_full_calendar_month"
+    },
+    {
+      "id": "live_032",
+      "title_zh": "MTA：在布鲁克林，前往Coney Island 康尼岛的[F]线和前往Church Av的[G]线跳过4 Av-9 St、15 St-Prospect Park和Fort Hamilton P…",
+      "url": "https://www.mta.info/#alert-ac0970cc0e28",
+      "module": "交通·出行",
+      "event_date": "2026-09-23",
+      "end": "2026-09-23",
+      "reason": "ended_full_calendar_month"
+    },
+    {
+      "id": "live_033",
+      "title_zh": "MTA：在布鲁克林，Kings Hwy 和 Brighton Beach 之间没有 [B] 线 - 请乘坐 [Q] 线",
+      "url": "https://www.mta.info/#alert-2b7ac46b1c97",
+      "module": "交通·出行",
+      "event_date": "2026-09-23",
+      "end": "2026-09-23",
+      "reason": "ended_full_calendar_month"
+    },
+    {
+      "id": "live_054",
+      "title_zh": "为CAREA成员提供LinkedIn培训",
+      "url": "https://www.careausa.com/event/linkedin-training-carea",
+      "module": "就业·培训",
+      "event_date": "2026-09-17",
+      "end": "2026-09-17",
+      "reason": "ended_full_calendar_month"
+    },
+    {
+      "id": "live_065",
+      "title_zh": "多位讲普通话的Be",
+      "url": "https://www.cmpny.org/s/Dental-Office-Receptionist.pdf",
+      "module": "就业·培训",
+      "event_date": "2026-07-24",
+      "end": "2026-07-24",
+      "reason": "ended_full_calendar_month"
+    }
+  ],
+  "hidden_rows": [
+    {
+      "id": "live_004",
+      "title_zh": "2026年10月",
+      "url": "https://www.careausa.com/event/33rd-anniversary-gala",
+      "end": "2026-10-30"
+    }
+  ]
+}
