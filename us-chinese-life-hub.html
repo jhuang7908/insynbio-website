@@ -5,7 +5,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <script>
-    window.HUB_APP_VERSION = '3.3.36';
+    window.HUB_APP_VERSION = '3.3.37';
     (function () {
       var coarse = window.matchMedia('(pointer: coarse)').matches;
       var narrow = window.matchMedia('(max-width: 820px)').matches;
@@ -1014,6 +1014,19 @@
     .parks-event-media img {
       width: 100%; height: 100%; object-fit: cover; display: block;
     }
+    .parks-event-media-col { flex-shrink: 0; width: 132px; }
+    .hub-photo-credit {
+      margin-top: 3px; font-size: 9px; line-height: 1.3; color: #64748b; word-break: break-word;
+    }
+    .hub-photo-credit a { color: #475569; text-decoration: underline; }
+    .hub-feed-pager {
+      display: flex; align-items: center; justify-content: center; gap: 10px;
+      margin: 10px 0 4px; font-size: 13px; color: #334155;
+    }
+    .hub-feed-page-btn {
+      border: 1px solid #cbd5e1; background: #fff; border-radius: 8px; padding: 6px 12px; cursor: pointer;
+    }
+    .hub-feed-page-btn:disabled { opacity: 0.45; cursor: default; }
     .parks-event-media.is-placeholder {
       display: flex; align-items: center; justify-content: center;
       background: linear-gradient(135deg, #ecfdf5 0%, #f0fdf4 100%);
@@ -1021,6 +1034,7 @@
     .parks-event-media.is-placeholder img { object-fit: contain; padding: 8px; opacity: 0.85; }
     @media (max-width: 560px) {
       .parks-event-row { flex-wrap: wrap; gap: 10px; }
+      .parks-event-media-col { width: 100%; }
       .parks-event-media { width: 100%; height: 140px; order: 3; }
       .parks-event-media.is-placeholder { display: none; }
     }
@@ -2050,6 +2064,7 @@
 
     <!-- Cards Feed -->
     <div class="feed-grid" id="feed"></div>
+    <div class="hub-feed-pager" id="feed-pager" hidden></div>
 
     <!-- ═══ 薅羊毛（全部展示，不折叠） ═══ -->
     <section class="deals-section" id="deals-section">
@@ -2166,6 +2181,8 @@
   </div>
 
 <script src="assets/hub-listing-policy.js"></script>
+<script src="assets/hub-image-catalog.js"></script>
+<script src="assets/hub-image-assign.js"></script>
 <script>
 const MODULES = [{"id":"family","zh":"亲子·公园","zht":"親子·公園","en":"Family & Parks","desc_zh":"儿童故事会、亲子活动、游乐场、Baby & Toddler 等公园家庭项目。另含已核实的青少年竞赛、大学本校暑期项目和童子军入口。","desc_zht":"兒童故事會、親子活動、遊樂場、Baby & Toddler 等公園家庭項目。另含已核實的青少年競賽、大學本校暑期項目和童軍入口。","desc_en":"Story time, family days, playgrounds and kid-focused park programs. Also lists verified youth contests, university summer programs, and scouting intros.","color":"#0d9488"},{"id":"fitness","zh":"健身·户外","zht":"健身·戶外","en":"Fitness & Outdoors","desc_zh":"游泳、Zumba、瑜伽、球类、徒步与自然探索等免费健身活动。","desc_zht":"游泳、Zumba、瑜伽、球類、徒步與自然探索等免費健身活動。","desc_en":"Swimming, zumba, sports, hiking and outdoor fitness programs.","color":"#0891b2"},{"id":"culture","zh":"文化·节庆","zht":"文化·節慶","en":"Culture & Festivals","desc_zh":"音乐会、节庆、电影、艺术展览、宠物领养与社区庆典。","desc_zht":"音樂會、節慶、電影、藝術展覽、寵物領養與社區慶典。","desc_en":"Concerts, festivals, film, arts and community celebrations.","color":"#7c3aed"},{"id":"education","zh":"语言·教育","zht":"語言·教育","en":"Language & Education","desc_zh":"免费 ESL、GED、公民入籍、图书馆课程与成人 literacy 项目。另含青少年竞赛和大学本校暑期项目；未核实的资格会标明。","desc_zht":"免費 ESL、GED、公民入籍、圖書館課程與成人 literacy 項目。另含青少年競賽和大學本校暑期項目；未核實的資格會標明。","desc_en":"Free ESL, GED, citizenship, library classes and adult literacy. Also lists youth contests and university summer programs with eligibility labeled.","color":"#6366f1"},{"id":"employment","zh":"就业·培训","zht":"就業·培訓","en":"Jobs & Training","desc_zh":"Workforce1 职业培训、华人社区招聘会、技能提升与就业辅导。","desc_zht":"Workforce1 職業培訓、華人社區招聘會、技能提升與就業輔導。","desc_en":"Workforce training, job fairs and career development programs.","color":"#2563eb"},{"id":"benefits","zh":"福利·政务","zht":"福利·政務","en":"Benefits & Services","desc_zh":"白卡、粮食券、长者服务、IDNYC、移民法律援助与住房资讯。","desc_zht":"白卡、糧食券、長者服務、IDNYC、移民法律援助與住房資訊。","desc_en":"Medicaid, SNAP, senior services, IDNYC, immigration and housing aid.","color":"#16a34a"},{"id":"transit","zh":"交通·出行","zht":"交通·出行","en":"Transit & Travel","desc_zh":"地铁巴士改线、道路施工、Fair Fares 与出行通知。","desc_zht":"地鐵巴士改線、道路施工、Fair Fares 與出行通知。","desc_en":"MTA alerts, road work, reduced fare programs and travel notices.","color":"#ca8a04"},{"id":"charity","zh":"公益·义工","zht":"公益·義工","en":"Volunteer","desc_zh":"官方义工招募、食物银行志愿、华人机构社区服务项目。","desc_zht":"官方義工招募、食物銀行志願、華人機構社區服務項目。","desc_en":"Official volunteer roles and Chinese org community service.","color":"#c026d3"},{"id":"safety","zh":"安全·突发","zht":"安全·突發","en":"Safety & Alerts","desc_zh":"游行集会、封街通知、治安预警与紧急求助。","desc_zht":"遊行集會、封街通知、治安預警與緊急求助。","desc_en":"Protests, street closures, safety alerts and emergency help.","color":"#dc2626"},{"id":"recreation","zh":"休闲·运动","zht":"休閒·運動","en":"Recreation & Sports","desc_zh":"滑冰、网球、高尔夫、游泳班、击剑与社区运动课程。当前收录公园局常年目录，具体课表请看官网。","desc_zht":"滑冰、網球、高爾夫、游泳班、擊劍與社區運動課程。目前收錄公園局常年目錄，具體課表請看官網。","desc_en":"Skating, tennis, golf, swim lessons, fencing and community sports. Current listings are Parks directories. Class times are on the official site.","color":"#0284c7"},{"id":"housing","zh":"住房·安居","zht":"住房·安居","en":"Housing & Living","desc_zh":"平价房抽签、租客权利、水电费减免与社区指南。","desc_zht":"平價房抽籤、租客權利、水電費減免與社區指南。","desc_en":"Affordable housing lotteries, tenant rights and utility assistance.","color":"#10b981"},{"id":"health","zh":"医疗·健康","zht":"醫療·健康","en":"Health & Medical","desc_zh":"免费筛查、疫苗接种、心理健康与红蓝卡资讯。","desc_zht":"免費篩查、疫苗接種、心理健康與紅藍卡資訊。","desc_en":"Free screenings, vaccines, mental health and Medicare info.","color":"#ef4444"}];
 const HUB_CONTACT_EMAIL = 'info@uslifehub.org';
@@ -2657,6 +2674,8 @@ const UI_STRINGS = {
 
 let currentLang = 'zh';
 let activeModuleFilter = 'all';
+let hubFeedPage = 0;
+let hubFeedFilterKey = '';
 let activeNeighborhoodFilter = 'all';
 let activeCatalogLens = '';
 
@@ -3636,7 +3655,19 @@ function hubResolveImageUrl(item) {
   return chain[0] || HUB_IMAGE_FALLBACK;
 }
 
+function hubAssignRendered(items) {
+  if (typeof HubImageAssign !== 'undefined' && HubImageAssign.assign) {
+    HubImageAssign.assign(items, window.HUB_IMAGE_CATALOG);
+  }
+  return items;
+}
+
 function hubImageCandidates(item) {
+  if (item && item._assignedImage && item._assignedImage.file) {
+    const file = hubAbsolutizeImageUrl(item._assignedImage.file);
+    const fb = hubAbsolutizeImageUrl(HUB_IMAGE_FALLBACK);
+    return file === fb ? [file] : [file, fb];
+  }
   const primary = hubSanitizeImageUrl(item.image_url, item);
   const alts = (item.image_alternates || []).map(u => hubSanitizeImageUrl(u, item)).filter(Boolean);
   const chain = [];
@@ -3664,6 +3695,10 @@ function hubImgOnError(el) {
   }
   const itemId = el.getAttribute('data-item-id') || '';
   const item = (typeof ITEMS !== 'undefined' ? ITEMS : []).find(x => x.id === itemId);
+  if (item && item._assignedImage) {
+    el.onerror = null;
+    return;
+  }
   const extra = item ? hubModuleFallbackChain(item, 6) : [hubAbsolutizeImageUrl(HUB_IMAGE_FALLBACK)];
   const current = el.getAttribute('src') || '';
   const next = extra.find(u => u && u !== current && chain.indexOf(u) === -1);
@@ -3765,8 +3800,22 @@ function hubCardImageHtml(item, opts) {
   const wrapCls = opts.parks ? 'parks-event-media' + (isPlaceholder ? ' is-placeholder' : '') : '';
   const chainAttr = escapeHtml(JSON.stringify(chain));
   const imgTag = `<img class="${cls}" src="${escapeHtml(chain[0])}" alt="${alt}" loading="lazy" referrerpolicy="no-referrer-when-downgrade" data-item-id="${escapeHtml(item.id || '')}" data-img-chain="${chainAttr}" data-img-idx="0" onerror="hubImgOnError(this)" />`;
-  if (opts.parks) return `<div class="${wrapCls}">${imgTag}</div>`;
-  return imgTag;
+  const credit = hubPhotoCreditHtml(item);
+  if (opts.parks) return `<div class="parks-event-media-col"><div class="${wrapCls}">${imgTag}</div>${credit}</div>`;
+  return imgTag + credit;
+}
+
+function hubPhotoCreditHtml(item) {
+  const img = item && item._assignedImage;
+  if (!img) return '';
+  const label = img.kind === 'place' ? '实地' : '主题示意';
+  const author = img.author || '作者见来源页';
+  const href = img.source_page || img.license_url || '';
+  const who = href
+    ? `<a href="${escapeHtml(href)}" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation()">${escapeHtml(author)}</a>`
+    : escapeHtml(author);
+  const note = img.note || img.depicts || '';
+  return `<div class="hub-photo-credit" title="${escapeHtml(note)}">${who} · ${escapeHtml(img.license || '')} · ${label}</div>`;
 }
 
 function hubCardVenueHtml(item) {
@@ -4414,8 +4463,20 @@ function renderFeed() {
     deduped.sort(hubFeedSortCompare);
   }
 
+  const filterKey = [activeModuleFilter, rawQ, b, t, activeNeighborhoodFilter, activeCatalogLens].join('\n');
+  if (filterKey !== hubFeedFilterKey) {
+    hubFeedFilterKey = filterKey;
+    hubFeedPage = 0;
+  }
+  const pageSize = (typeof HubImageAssign !== 'undefined' && HubImageAssign.PAGE_SIZE) || 12;
+  const pages = Math.max(1, Math.ceil(deduped.length / pageSize));
+  if (hubFeedPage >= pages) hubFeedPage = pages - 1;
+  if (hubFeedPage < 0) hubFeedPage = 0;
+  const pageItems = deduped.slice(hubFeedPage * pageSize, hubFeedPage * pageSize + pageSize);
+  hubAssignRendered(pageItems);
+
   const feed = document.getElementById('feed');
-  feed.innerHTML = deduped.map(i => renderCard(i)).join('');
+  feed.innerHTML = pageItems.map(i => renderCard(i)).join('');
 
   if (!deduped.length) {
     feed.innerHTML = `
@@ -4424,8 +4485,33 @@ function renderFeed() {
       </div>
     `;
   }
+  hubRenderFeedPager(deduped.length, pageSize);
   updateHubSearchCount(deduped.length);
   updateResetButton();
+}
+
+function hubRenderFeedPager(total, pageSize) {
+  const el = document.getElementById('feed-pager');
+  if (!el) return;
+  const pages = Math.max(1, Math.ceil(total / pageSize));
+  if (total <= pageSize) {
+    el.hidden = true;
+    el.innerHTML = '';
+    return;
+  }
+  el.hidden = false;
+  const prevDis = hubFeedPage <= 0 ? ' disabled' : '';
+  const nextDis = hubFeedPage >= pages - 1 ? ' disabled' : '';
+  el.innerHTML = '<button type="button" class="hub-feed-page-btn"' + prevDis + ' onclick="hubFeedGo(-1)">上一页</button>'
+    + '<span class="hub-feed-page-status">第 ' + (hubFeedPage + 1) + ' / ' + pages + ' 页 · 共 ' + total + ' 条</span>'
+    + '<button type="button" class="hub-feed-page-btn"' + nextDis + ' onclick="hubFeedGo(1)">下一页</button>';
+}
+
+function hubFeedGo(delta) {
+  hubFeedPage += delta;
+  renderFeed();
+  const section = document.getElementById('feed-section');
+  if (section && section.scrollIntoView) section.scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
 
 // ── External link routing (desktop: new tab; mobile: in-app viewer with back) ──
@@ -5276,7 +5362,9 @@ function renderLatestUnifiedFeed() {
     feed.innerHTML = '<p class="hub-empty-state">' + (s.latest_empty || '暂无最新动态') + '</p>';
     return;
   }
-  feed.innerHTML = merged.slice(0, 40).map(i => renderCard(i)).join('');
+  const latestItems = merged.slice(0, 40);
+  hubAssignRendered(latestItems);
+  feed.innerHTML = latestItems.map(i => renderCard(i)).join('');
 }
 
 function renderStreamSections() {
@@ -5317,6 +5405,7 @@ function renderStreamSections() {
 
   const todayFeed = document.getElementById('today-feed');
   if (todayItems.length > 0) {
+    hubAssignRendered(todayItems);
     todayFeed.innerHTML = todayItems.slice(0, 6).map(i => renderCard(i)).join('');
   } else {
     todayFeed.innerHTML = '<div style="grid-column:1/-1;padding:16px;text-align:center;color:#64748b;font-size:13px;line-height:1.55;">' + (s.stream_new_empty || '过去24小时暂无官方新公布信息') + '</div>';
@@ -5324,6 +5413,7 @@ function renderStreamSections() {
 
   const weekFeed = document.getElementById('week-feed');
   if (weekItems.length > 0) {
+    hubAssignRendered(weekItems);
     weekFeed.innerHTML = weekItems.map(i => renderWeekCard(i)).join('');
   } else {
     weekFeed.innerHTML = '<div style="grid-column:1/-1;padding:16px;text-align:center;color:#64748b;font-size:13px;">未来7日暂无预告活动</div>';
@@ -5340,6 +5430,7 @@ function renderStreamSections() {
   }
   if (enrollSection && enrollFeed) {
     if (enrollItems.length > 0) {
+      hubAssignRendered(enrollItems);
       enrollFeed.innerHTML = enrollItems.map(i => renderEnrollCard(i)).join('');
     } else {
       enrollFeed.innerHTML = '<div style="grid-column:1/-1;padding:16px;text-align:center;color:#64748b;font-size:13px;line-height:1.55;">' + (s.enroll_empty || '暂无官方报名公告') + '</div>';
@@ -8519,23 +8610,15 @@ async function subscribeEmail() {
     alert('请输入有效的邮箱地址');
     return;
   }
-  // Store locally
-  const subs = JSON.parse(localStorage.getItem('email_subs') || '[]');
-  if (!subs.find(s => s.email === email)) {
-    subs.push({ email, interests, ts: Date.now() });
-    localStorage.setItem('email_subs', JSON.stringify(subs));
-  }
-  registerMember(email);
-  
   const successEl = document.getElementById('sub-success-email');
   successEl.style.display = 'block';
   successEl.style.color = '#475569';
   successEl.textContent = '正在提交订阅请求...';
-  
-  const selectedLabels = interests.length > 0 
+
+  const selectedLabels = interests.length > 0
     ? INTEREST_CHIPS.filter(c => interests.includes(c.id)).map(c => c.label).join('、')
     : '全部频道';
-  
+
   const apiBase = window.HUB_COMMUNITY_API || '/api';
   try {
     const response = await fetch(apiBase + '/community-hub/subscribe', {
@@ -8544,9 +8627,20 @@ async function subscribeEmail() {
       body: JSON.stringify({ email, interests })
     });
     const data = await response.json().catch(() => ({}));
-    if (response.ok) {
-      successEl.style.color = '#16a34a';
-      successEl.innerHTML = `
+    if (!response.ok) {
+      successEl.style.color = '#b91c1c';
+      successEl.textContent = '订阅没有保存成功，请再试一次。';
+      console.warn('Subscription API error:', data.detail || response.statusText);
+      return;
+    }
+    const subs = JSON.parse(localStorage.getItem('email_subs') || '[]');
+    if (!subs.find(s => s.email === email)) {
+      subs.push({ email, interests, ts: Date.now() });
+      localStorage.setItem('email_subs', JSON.stringify(subs));
+    }
+    registerMember(email);
+    successEl.style.color = '#16a34a';
+    successEl.innerHTML = `
         <div style="text-align: left; background: #f0fdf4; border: 1px solid #bbf7d0; padding: 16px; border-radius: 12px; margin-top: 10px;">
           <div style="font-size: 14px; font-weight: 800; color: #15803d; margin-bottom: 8px; display: flex; align-items: center; gap: 6px;">
             🎉 欢迎加入美东华人生活圈！
@@ -8564,49 +8658,12 @@ async function subscribeEmail() {
           </div>
         </div>
       `;
-    } else {
-      successEl.style.color = '#ea580c';
-      successEl.innerHTML = `
-        <div style="text-align: left; background: #fff7ed; border: 1px solid #ffedd5; padding: 16px; border-radius: 12px; margin-top: 10px;">
-          <div style="font-size: 14px; font-weight: 800; color: #c2410c; margin-bottom: 8px; display: flex; align-items: center; gap: 6px;">
-            📝 订阅已记录本地！
-          </div>
-          <div style="font-size: 12px; color: #9a3412; line-height: 1.6; margin-bottom: 12px;">
-            您已成功将邮箱 <strong>${email}</strong> 记录在本地订阅中，关注频道：
-            <div style="margin: 6px 0; background: #fff; border: 1px solid #ffedd5; padding: 6px 10px; border-radius: 8px; font-weight: 700; color: #7c2d12;">
-              ${selectedLabels}
-            </div>
-          </div>
-          <div style="font-size: 11px; color: #431407; border-top: 1px dashed #ffedd5; padding-top: 10px; line-height: 1.55;">
-            <strong>为您开启的服务：</strong><br>
-            📬 <strong>民生动态同步</strong>：我们将尽快为您同步并推送最新动态。由于目前处于离线/本地记录状态，我们将在网络同步后为您补发欢迎信并开启定期邮件服务。
-          </div>
-        </div>
-      `;
-      console.warn('Subscription API error:', data.detail || response.statusText);
-    }
+    document.getElementById('sub-email-val').value = '';
   } catch (err) {
-    successEl.style.color = '#ea580c';
-    successEl.innerHTML = `
-      <div style="text-align: left; background: #fff7ed; border: 1px solid #ffedd5; padding: 16px; border-radius: 12px; margin-top: 10px;">
-        <div style="font-size: 14px; font-weight: 800; color: #c2410c; margin-bottom: 8px; display: flex; align-items: center; gap: 6px;">
-          📝 订阅已记录本地！
-        </div>
-        <div style="font-size: 12px; color: #9a3412; line-height: 1.6; margin-bottom: 12px;">
-          您已成功将邮箱 <strong>${email}</strong> 记录在本地订阅中，关注频道：
-          <div style="margin: 6px 0; background: #fff; border: 1px solid #ffedd5; padding: 6px 10px; border-radius: 8px; font-weight: 700; color: #7c2d12;">
-            ${selectedLabels}
-          </div>
-        </div>
-        <div style="font-size: 11px; color: #431407; border-top: 1px dashed #ffedd5; padding-top: 10px; line-height: 1.55;">
-          <strong>为您开启的服务：</strong><br>
-          📬 <strong>民生动态同步</strong>：我们将尽快为您同步并推送最新动态。由于目前处于离线/本地记录状态，我们将在网络同步后为您补发欢迎信并开启定期邮件服务。
-        </div>
-      </div>
-    `;
+    successEl.style.color = '#b91c1c';
+    successEl.textContent = '网络没有连上，订阅没有保存。请再试一次。';
     console.warn('Subscription API offline:', err);
   }
-  document.getElementById('sub-email-val').value = '';
 }
 
 async function subscribePush() {
@@ -8628,13 +8685,11 @@ async function subscribePush() {
     localStorage.setItem('push_subscribed', '1');
     registerMember(localStorage.getItem('member_email') || '');
     document.getElementById('sub-success-push').style.display = 'block';
-    
-    // Hide any previous unsub success message and show unsub button
     const unsubSuccess = document.getElementById('unsub-success-push');
     if (unsubSuccess) unsubSuccess.style.display = 'none';
     const unsubBtn = document.getElementById('push-unsub-btn');
     if (unsubBtn) unsubBtn.style.display = 'block';
-  } catch(e) {
+  } catch (e) {
     alert('开启推送失败，请检查网络或稍后重试。');
   }
 }
@@ -8643,7 +8698,6 @@ function checkPushState() {
   const btn = document.getElementById('push-sub-btn');
   const unsubBtn = document.getElementById('push-unsub-btn');
   const successPush = document.getElementById('sub-success-push');
-  
   if (localStorage.getItem('push_subscribed') === '1') {
     if (btn) { btn.textContent = '✅ 浏览器推送已开启'; btn.disabled = true; }
     if (successPush) successPush.style.display = 'block';
@@ -8666,15 +8720,6 @@ async function unsubscribeEmail() {
   successEl.style.color = '#475569';
   successEl.textContent = '正在提交退订请求...';
 
-  // Remove from local storage
-  let subs = JSON.parse(localStorage.getItem('email_subs') || '[]');
-  subs = subs.filter(s => s.email !== email);
-  localStorage.setItem('email_subs', JSON.stringify(subs));
-
-  if (localStorage.getItem('member_email') === email) {
-    localStorage.removeItem('member_email');
-  }
-
   const apiBase = window.HUB_COMMUNITY_API || '/api';
   try {
     const response = await fetch(apiBase + '/community-hub/unsubscribe', {
@@ -8682,18 +8727,24 @@ async function unsubscribeEmail() {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ email })
     });
-    if (response.ok) {
+    if (!response.ok) {
       successEl.style.color = '#b91c1c';
-      successEl.innerHTML = `✅ <b>${email}</b> 已成功退订邮件推送。<br><span style="font-size:11px;color:#4b5563;display:block;margin-top:4px;">您将不再收到我们的定期精选邮件。如果以后想重新订阅，欢迎随时在上方登记。</span>`;
-    } else {
-      successEl.style.color = '#b91c1c';
-      successEl.innerHTML = `✅ <b>${email}</b> 已从本地退订！<br><span style="font-size:11px;color:#4b5563;display:block;margin-top:4px;">本地订阅记录已清除。我们将尽快为您同步退订状态。</span>`;
+      successEl.textContent = '退订没有完成，请再试一次。';
+      return;
     }
+    let subs = JSON.parse(localStorage.getItem('email_subs') || '[]');
+    subs = subs.filter(s => s.email !== email);
+    localStorage.setItem('email_subs', JSON.stringify(subs));
+    if (localStorage.getItem('member_email') === email) {
+      localStorage.removeItem('member_email');
+    }
+    successEl.style.color = '#b91c1c';
+    successEl.innerHTML = `✅ <b>${email}</b> 已成功退订邮件推送。<br><span style="font-size:11px;color:#4b5563;display:block;margin-top:4px;">您将不再收到我们的定期精选邮件。如果以后想重新订阅，欢迎随时在上方登记。</span>`;
+    document.getElementById('unsub-email-val').value = '';
   } catch (err) {
     successEl.style.color = '#b91c1c';
-    successEl.innerHTML = `✅ <b>${email}</b> 已从本地退订！<br><span style="font-size:11px;color:#4b5563;display:block;margin-top:4px;">本地订阅记录已清除。我们将尽快为您同步退订状态。</span>`;
+    successEl.textContent = '网络没有连上，退订没有完成。请再试一次。';
   }
-  document.getElementById('unsub-email-val').value = '';
 }
 
 async function unsubscribePush() {

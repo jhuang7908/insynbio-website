@@ -209,7 +209,13 @@ assert.ok(!hub.includes('precollege.sps.columbia.edu'));
 assert.ok(!hub.includes('girlscouts.org/en/members/for-girl-scouts/grade-levels.html'));
 assert.ok(hub.includes('balanceHeroChipRows'));
 assert.ok(hub.includes('functions/api/community-hub/subscribe') || fs.existsSync(path.join(root, 'functions/api/community-hub/subscribe.js')));
-assert.strictEqual(hub.includes("window.HUB_APP_VERSION = '3.3.36'"), true);
+assert.strictEqual(hub.includes("window.HUB_APP_VERSION = '3.3.37'"), true);
+assert.ok(hub.includes('assets/hub-image-assign.js'));
+assert.ok(hub.includes('hubFeedPage'));
+assert.ok(hub.includes('每周两次精选民生简报'));
+assert.ok(hub.includes('每周为您发送两次精选社区动态'));
+assert.ok(!hub.includes('补发欢迎信'));
+assert.ok(!hub.includes('订阅已记录本地'));
 
 const camps = items.filter(i => i.content_kind === 'camp');
 assert.ok(camps.every(i => i.camp_host === 'university_official'));
