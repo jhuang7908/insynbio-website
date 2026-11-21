@@ -1,0 +1,1082 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>TheraSik — AI-Enabled Drug R&amp;D and Design</title>
+  <meta name="description" content="TheraSik is a technical-demonstration MVP offering practical AI tools, workflows, and databases for immunology-focused innovative drug R&amp;D — from target analysis and candidate design to protein and DNA construct sequences. Invitation-only trial on real tasks.">
+  <meta name="robots" content="index,follow">
+  <link rel="canonical" href="https://www.insynbio.com/therasik/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="TheraSik">
+  <meta property="og:title" content="TheraSik — AI-Enabled Drug R&amp;D and Design">
+  <meta property="og:description" content="Practical AI tools, workflows, and databases for immunology-focused innovative drug R&amp;D. A technical-demonstration MVP. Invitation-only trial on real tasks.">
+  <meta property="og:url" content="https://www.insynbio.com/therasik/">
+  <meta property="og:image" content="https://www.insynbio.com/therasik/assets/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="TheraSik — AI-enabled drug R&amp;D and design. Invitation-only trial.">
+  <meta property="og:locale" content="en_US">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="TheraSik — AI-Enabled Drug R&amp;D and Design">
+  <meta name="twitter:description" content="Practical AI tools, workflows, and databases for immunology-focused innovative drug R&amp;D. A technical-demonstration MVP. Invitation-only trial on real tasks.">
+  <meta name="twitter:image" content="https://www.insynbio.com/therasik/assets/og-image.png">
+  <script type="application/json" id="site-config">
+  {
+    "brandName": "TheraSik",
+    "siteHost": "therasik.com",
+    "siteUrl": "https://therasik.com",
+    "saasHost": "saas.therasik.com",
+    "saasUrl": "https://saas.therasik.com",
+    "wechat": "rockyhj",
+    "_comment": "BRAND CONFIG — current values are the source deck defaults. To switch later (e.g. InSynBio / www.insynbio.com / saas.insynbio.com), edit this JSON, the CSS :root brand tokens, <title>/meta/canonical/Open Graph URLs, and any remaining visible brand strings together. Do not switch until confirmed."
+  }
+  </script>
+  <style>
+    /* ===== BRAND TOKENS (keep in sync with #site-config) =====
+       Current deck defaults. Future candidates: InSynBio / www.insynbio.com / saas.insynbio.com
+    */
+    :root {
+      --brand-name: "TheraSik";
+      --site-host: "therasik.com";
+      --saas-host: "saas.therasik.com";
+      --wechat: "rockyhj";
+
+      --bg: #f5f8f5;
+      --ink: #123f37;
+      --teal: #087f72;
+      --teal-hover: #06665c;
+      --body: #465952;
+      --muted: #788a83;
+      --card: #ffffff;
+      --head-bg: #e4ece7;
+      --band: #e4ece7;
+      --border: #c7d2cc;
+      --line: #d5ded9;
+      --shadow: 0 1px 2px rgba(18, 63, 55, 0.05), 0 8px 24px rgba(18, 63, 55, 0.06);
+      --radius: 10px;
+      --max: 960px;
+      --font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--body);
+      font-family: var(--font);
+      font-size: 17px;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+    img { max-width: 100%; height: auto; display: block; }
+    a { color: var(--teal); text-decoration-thickness: 1px; text-underline-offset: 2px; }
+    a:hover { color: var(--teal-hover); }
+    a:focus-visible {
+      outline: 2px solid var(--teal);
+      outline-offset: 2px;
+    }
+
+    .skip {
+      position: absolute;
+      left: -999px;
+      top: 8px;
+      background: var(--card);
+      color: var(--ink);
+      padding: 8px 12px;
+      z-index: 20;
+    }
+    .skip:focus { left: 8px; }
+
+    .wrap {
+      width: min(var(--max), calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    /* ----- Hero (slide 1) ----- */
+    .hero {
+      padding: 48px 0 56px;
+    }
+    .brand {
+      font-size: 28px;
+      font-weight: 650;
+      color: var(--teal);
+      letter-spacing: -0.02em;
+      margin: 0 0 36px;
+    }
+    .hero h1 {
+      margin: 0 0 18px;
+      color: var(--ink);
+      font-size: clamp(28px, 5vw, 42px);
+      line-height: 1.2;
+      font-weight: 700;
+      letter-spacing: -0.025em;
+    }
+    .lede {
+      margin: 0 0 10px;
+      font-size: clamp(17px, 2.2vw, 20px);
+      color: var(--ink);
+      font-weight: 500;
+    }
+    .lede + .lede { margin-bottom: 32px; font-weight: 500; }
+
+    .pills {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin: 0 0 32px;
+      padding: 0;
+      list-style: none;
+    }
+    .pills li {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 14px 12px;
+      text-align: center;
+      color: var(--teal);
+      font-weight: 600;
+      font-size: 14.5px;
+      line-height: 1.35;
+    }
+    .mvp {
+      margin: 0 0 18px;
+      color: var(--teal);
+      font-weight: 650;
+      font-size: clamp(16px, 2vw, 20px);
+      line-height: 1.45;
+    }
+    .hero-contacts {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14.5px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px 18px;
+    }
+    .hero-contacts a { color: var(--muted); }
+
+    /* ----- Sections ----- */
+    section.block {
+      padding: 8px 0 48px;
+    }
+    section.block h2 {
+      margin: 0 0 16px;
+      color: var(--ink);
+      font-size: clamp(24px, 3.4vw, 32px);
+      line-height: 1.25;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+    .intro {
+      margin: 0 0 22px;
+      font-size: 17.5px;
+      color: var(--ink);
+    }
+    h3 {
+      margin: 0 0 8px;
+      color: var(--teal);
+      font-size: 18.5px;
+      font-weight: 650;
+      letter-spacing: -0.01em;
+    }
+    p { margin: 0 0 12px; }
+    p:last-child { margin-bottom: 0; }
+
+    .split-2 {
+      display: grid;
+      gap: 24px 40px;
+      margin: 0 0 28px;
+    }
+    .role, .callout {
+      margin-top: 8px;
+    }
+    .note {
+      margin: 18px 0 0;
+      color: var(--muted);
+      font-size: 14.5px;
+      line-height: 1.55;
+    }
+
+    /* ----- Tables ----- */
+    .table-wrap { width: 100%; }
+    table.data {
+      width: 100%;
+      border-collapse: collapse;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      overflow: hidden;
+      font-size: 16px;
+    }
+    table.data th,
+    table.data td {
+      text-align: left;
+      vertical-align: top;
+      padding: 14px 16px;
+      border-bottom: 1px solid var(--border);
+    }
+    table.data tr:last-child td { border-bottom: 0; }
+    table.data th {
+      background: var(--head-bg);
+      color: var(--ink);
+      font-weight: 650;
+    }
+    table.data td.num {
+      font-variant-numeric: tabular-nums;
+      white-space: nowrap;
+    }
+
+    /* Mobile: stack tables as cards */
+    @media (max-width: 640px) {
+      table.data, table.data thead, table.data tbody, table.data tr, table.data th, table.data td {
+        display: block;
+      }
+      table.data {
+        border: 0;
+        background: transparent;
+        overflow: visible;
+      }
+      table.data thead { display: none; }
+      table.data tr {
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        margin-bottom: 12px;
+        padding: 4px 0 8px;
+      }
+      table.data td {
+        border: 0;
+        padding: 8px 16px;
+      }
+      table.data td::before {
+        content: attr(data-label);
+        display: block;
+        color: var(--teal);
+        font-weight: 650;
+        font-size: 13.5px;
+        margin-bottom: 2px;
+      }
+      table.data td.num { white-space: normal; }
+    }
+
+    /* ----- Capability layout ----- */
+    .cap {
+      display: grid;
+      gap: 24px;
+      margin-bottom: 20px;
+    }
+    .tools-list h3 { margin-top: 18px; }
+    .tools-list h3:first-child { margin-top: 0; }
+    .tools-list p { color: var(--body); }
+    .shot {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+    .shot img { width: 100%; }
+    figure { margin: 0; }
+    figcaption {
+      margin-top: 8px;
+      color: var(--muted);
+      font-size: 13.5px;
+      line-height: 1.45;
+    }
+    .diy {
+      display: grid;
+      gap: 6px 20px;
+      background: var(--band);
+      border-radius: var(--radius);
+      padding: 16px 18px;
+      margin-top: 8px;
+    }
+    .diy h3 { margin: 0; }
+    .banner-note {
+      background: var(--band);
+      border-radius: var(--radius);
+      padding: 12px 16px;
+      color: var(--ink);
+      font-weight: 600;
+      margin: 0 0 20px;
+    }
+
+    /* ----- End-to-end flow ----- */
+    .flow {
+      display: grid;
+      gap: 10px;
+    }
+    .flow-card, .flow-chip {
+      background: var(--band);
+      border: 1px solid #d4e0da;
+      border-radius: 8px;
+      padding: 14px 16px;
+      text-align: center;
+    }
+    .flow-card h3 { margin-bottom: 4px; }
+    .flow-card p { color: var(--body); font-size: 15px; }
+    .flow-chip {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 56px;
+      color: var(--teal);
+      font-weight: 650;
+      font-size: 16px;
+    }
+    .flow-arrow {
+      display: none;
+    }
+
+    /* ----- Case / workflow layouts ----- */
+    .case, .wf {
+      display: grid;
+      gap: 20px 28px;
+    }
+    .case-copy h3, .wf-copy h3 { margin-top: 16px; }
+    .case-copy h3:first-child, .wf-copy h3:first-child { margin-top: 0; }
+    .fig-grid {
+      display: grid;
+      gap: 16px;
+    }
+    .fig-grid figure .shot, .wf-shot .shot { margin: 0; }
+    .seq-figs {
+      display: grid;
+      gap: 16px;
+      justify-items: center;
+    }
+    .seq-figs .shot { width: 100%; }
+    .seq-figs .shot.narrow img {
+      margin: 0 auto;
+      width: auto;
+      max-width: 100%;
+    }
+
+    /* ----- Footer CTA ----- */
+    .cta {
+      background: var(--head-bg);
+      padding: 40px 0 48px;
+      margin-top: 8px;
+    }
+    .cta h2 {
+      margin: 0 0 8px;
+      color: var(--ink);
+      font-size: clamp(24px, 3.4vw, 32px);
+      line-height: 1.25;
+    }
+    .cta .sub {
+      margin: 0 0 22px;
+      color: var(--teal);
+      font-weight: 650;
+      font-size: 18px;
+    }
+    .cta-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px 12px;
+      margin: 0 0 20px;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px 18px;
+      border-radius: 8px;
+      font-weight: 650;
+      text-decoration: none;
+      font-size: 16px;
+    }
+    .btn-primary {
+      background: var(--teal);
+      color: #fff;
+    }
+    .btn-primary:hover { background: var(--teal-hover); color: #fff; }
+    .btn-ghost {
+      background: var(--card);
+      color: var(--teal);
+      border: 1px solid var(--border);
+    }
+    .cta-contacts {
+      margin: 0;
+      color: var(--body);
+      font-size: 16px;
+    }
+    .cta-contacts span { display: inline-block; margin-right: 18px; }
+    .fineprint {
+      margin: 14px 0 0;
+      color: var(--muted);
+      font-size: 14.5px;
+    }
+
+
+    .nowrap { white-space: nowrap; }
+    .group-label {
+      margin: 0 0 12px;
+      color: var(--ink);
+      font-size: 16px;
+      font-weight: 650;
+    }
+    .tools-list .group-label + h3 { margin-top: 0; }
+    .btn { gap: 0.35em; }
+
+    /* ----- Desktop ----- */
+    @media (min-width: 720px) {
+      .hero { padding: 64px 0 72px; }
+      .pills {
+        grid-template-columns: repeat(4, 1fr);
+      }
+      .pills li { padding: 16px 10px; font-size: 15px; }
+
+      table.data th.nowrap,
+      table.data td.nowrap { white-space: nowrap; }
+      .split-2 { grid-template-columns: 1fr 1fr; }
+      .cap { grid-template-columns: 0.9fr 1.2fr; align-items: start; }
+      .diy { grid-template-columns: auto 1fr; align-items: center; }
+      .case { grid-template-columns: 0.85fr 1.4fr; align-items: start; }
+      .wf { grid-template-columns: 0.72fr 1.5fr; align-items: start; }
+      .fig-grid.her2 {
+        grid-template-columns: 1fr 1fr;
+      }
+      .fig-grid.her2 .span-2 { grid-column: 1 / -1; }
+      .seq-figs {
+        grid-template-columns: 1fr 1fr;
+        align-items: start;
+      }
+      .seq-figs .map { grid-row: 1 / span 2; grid-column: 1; }
+      .flow {
+        grid-template-columns: repeat(12, 1fr);
+        gap: 12px;
+      }
+      .flow-target { grid-column: 1 / -1; }
+      .flow-binder { grid-column: 1 / 9; }
+      .flow-vaccine { grid-column: 9 / -1; }
+      .flow-ab { grid-column: 1 / 3; }
+      .flow-bi { grid-column: 3 / 5; }
+      .flow-adc { grid-column: 5 / 7; }
+      .flow-car { grid-column: 7 / 9; }
+      .flow-vaxdes { grid-column: 9 / -1; }
+      .flow-seq { grid-column: 2 / 12; }
+    }
+
+    @media (min-width: 900px) {
+      body { font-size: 17.5px; }
+      .wrap { width: min(var(--max), calc(100% - 48px)); }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip" href="#content">Skip to content</a>
+
+  <!-- Slide 1. Cover -->
+  <header class="hero">
+    <div class="wrap">
+      <p class="brand" data-brand="brandName">TheraSik</p>
+      <h1>AI-enabled drug R&amp;D and design</h1>
+      <p class="lede">Practical AI tools, workflows, and databases for immunology-focused innovative drug R&amp;D.</p>
+      <p class="lede">From target analysis, candidate design and comparison, through to protein and DNA construct sequence preparation.</p>
+      <ul class="pills">
+        <li>Target analysis and comparison</li>
+        <li>Antibody engineering and de novo design</li>
+        <li>Drug formats and sequence assembly</li>
+        <li>Database and workflow customization</li>
+      </ul>
+      <p class="mvp">A technical-demonstration MVP. We invite companies to trial the platform on real tasks and to validate it together.</p>
+      <p class="hero-contacts">
+        <span><a href="https://saas.therasik.com" data-brand-href="saasUrl"><span data-brand="saasHost">saas.therasik.com</span></a> (invitation only)</span>
+        <span><a href="https://therasik.com" data-brand-href="siteUrl"><span data-brand="siteHost">therasik.com</span></a></span>
+        <span>Contact: WeChat <span data-brand="wechat">rockyhj</span></span>
+      </p>
+    </div>
+  </header>
+
+  <main id="content">
+    <!-- Slide 2 -->
+    <section class="block" id="who">
+      <div class="wrap">
+        <h2>What we do, and who we serve</h2>
+        <div class="split-2">
+          <div>
+            <h3>A life-science AI implementation team</h3>
+            <p>Drawing on experience in immunology, antibody engineering, and preclinical research, we deploy suitable computational methods into our clients’ R&amp;D tasks.</p>
+          </div>
+          <div>
+            <h3>Who we serve</h3>
+            <p>Biotechnology companies, CROs, and research teams — especially projects that already have a defined target, candidate molecules, or in-house data.</p>
+          </div>
+        </div>
+        <div class="role">
+          <h3>The platform’s role in a collaboration</h3>
+          <p>We use the current MVP to demonstrate methods and how we deliver. We deploy or develop tools, build workflows, and organize client private databases according to each client’s needs.</p>
+        </div>
+        <p class="note">In this round we are looking for companies to trial the platform, starting from well-scoped real tasks, to validate practical utility together.</p>
+      </div>
+    </section>
+
+    <!-- Slide 3 -->
+    <section class="block" id="services">
+      <div class="wrap">
+        <h2>What we offer, and what we deliver</h2>
+        <div class="table-wrap">
+          <table class="data">
+            <thead>
+              <tr>
+                <th scope="col">Service</th>
+                <th scope="col">Primary deliverables</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td data-label="Service">Tool and workflow deployment</td>
+                <td data-label="Primary deliverables">Runtime environment, adapted workflows, and user documentation.</td>
+              </tr>
+              <tr>
+                <td data-label="Service">Custom tool and workflow development (DIY)</td>
+                <td data-label="Primary deliverables">Dedicated tools, workflows, or interfaces, with acceptance examples.</td>
+              </tr>
+              <tr>
+                <td data-label="Service">Custom private-database build</td>
+                <td data-label="Primary deliverables">Standardized data, search fields, sources, and update rules.</td>
+              </tr>
+              <tr>
+                <td data-label="Service">Computational services for R&amp;D projects</td>
+                <td data-label="Primary deliverables">Candidate sequences, structural models, metric comparisons, and method notes.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="note">We first confirm the research question, available inputs, and delivery goals, then agree the acceptance criteria and the scope of maintenance.</p>
+      </div>
+    </section>
+
+    <!-- Slide 4 -->
+    <section class="block" id="capabilities">
+      <div class="wrap">
+        <h2>Our development capabilities: tools, workflows, and databases</h2>
+        <p class="intro">We already have in-house tools and curated, further-processed databases, and can continue to develop and adapt them to a client’s research rules.</p>
+        <div class="cap">
+          <div class="tools-list">
+            <p class="group-label">In-house design tools</p>
+            <h3>Conventional antibody and VHH humanization</h3>
+            <p>CDR grafting, surface resurfacing, and framework selection.</p>
+            <h3>Multispecific antibody sequence design</h3>
+            <p>Assembly of binding arms, linkers, and Fc according to published rules.</p>
+            <h3>CAR construct sequence design</h3>
+            <p>Selection of binding domains, hinge, transmembrane, and signaling modules.</p>
+          </div>
+          <div>
+            <h3>Independently curated and further-processed databases</h3>
+            <figure>
+              <div class="shot">
+                <img src="assets/tools-catalog.png" alt="Platform screenshot of the in-house AI tools catalog, including planned-tool and deployment counts and example humanization and structure-prediction tools." width="1110" height="770" loading="eager" decoding="async">
+              </div>
+            </figure>
+          </div>
+        </div>
+        <p>Targets, antibodies and VHHs, 400+ ADA records, and 200+ CAR elements, as references for design.</p>
+        <div class="diy">
+          <h3>Client customization (DIY)</h3>
+          <p>Develop dedicated tools, configure drug-discovery workflows, and organize and build private databases.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Slide 5 -->
+    <section class="block" id="modalities">
+      <div class="wrap">
+        <h2>Which drugs we can analyze and design</h2>
+        <div class="table-wrap">
+          <table class="data">
+            <thead>
+              <tr>
+                <th scope="col">Drug / molecule type</th>
+                <th scope="col">Supported analysis and design</th>
+                <th scope="col">Current status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td data-label="Drug / molecule type">Conventional antibodies and VHHs</td>
+                <td data-label="Supported analysis and design">Humanization, CDR engineering, and de novo design; comparison of structure and developability.</td>
+                <td data-label="Current status">Runtime tests completed; confirm by method.</td>
+              </tr>
+              <tr>
+                <td data-label="Drug / molecule type">Bi-/multispecific antibodies</td>
+                <td data-label="Supported analysis and design">Select binding arms; assemble and check sequences according to format rules.</td>
+                <td data-label="Current status">Construct-assembly demonstration.</td>
+              </tr>
+              <tr>
+                <td data-label="Drug / molecule type">Non-antibody binders</td>
+                <td data-label="Supported analysis and design">Design binding domains; analyze complexes and binding interfaces.</td>
+                <td data-label="Current status">Example workflow built.</td>
+              </tr>
+              <tr>
+                <td data-label="Drug / molecule type">Neoantigen vaccines</td>
+                <td data-label="Supported analysis and design">Analyze variants, expression, and HLA; screen epitopes and long peptides.</td>
+                <td data-label="Current status">Example workflow built.</td>
+              </tr>
+              <tr>
+                <td data-label="Drug / molecule type">ADC</td>
+                <td data-label="Supported analysis and design">Organize antibody, linker, and payload combinations and connect the calculations.</td>
+                <td data-label="Current status">Example workflow built.</td>
+              </tr>
+              <tr>
+                <td data-label="Drug / molecule type">CAR-T</td>
+                <td data-label="Supported analysis and design">Select binding domains and CAR elements; assemble construct sequences.</td>
+                <td data-label="Current status">Construct-assembly demonstration.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="note">Trials are confirmed node by node. Some workflows are built as examples; binding, expression, function, and similar endpoints require experimental validation.</p>
+      </div>
+    </section>
+
+    <!-- Slide 6 -->
+    <section class="block" id="tools">
+      <div class="wrap">
+        <h2>Which R&amp;D areas the tool catalog covers</h2>
+        <p class="intro">The catalog lists 210 items, of which 32 are deployed. Grouped into 8 areas by R&amp;D task, including tools not yet deployed.</p>
+        <div class="table-wrap">
+          <table class="data">
+            <thead>
+              <tr>
+                <th scope="col">R&amp;D area</th>
+                <th scope="col" class="nowrap">Catalog items</th>
+                <th scope="col">Subcategories included</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td data-label="R&amp;D area">Antibody engineering and new-molecule design</td>
+                <td class="num" data-label="Catalog items">42</td>
+                <td data-label="Subcategories included">Humanization, de novo design, inverse folding, and mutation scoring.</td>
+              </tr>
+              <tr>
+                <td data-label="R&amp;D area">Structure and interaction analysis</td>
+                <td class="num" data-label="Catalog items">46</td>
+                <td data-label="Subcategories included">Structure prediction, conformation and flexibility, protein docking, and interface assessment.</td>
+              </tr>
+              <tr>
+                <td data-label="R&amp;D area">Developability and physical simulation</td>
+                <td class="num" data-label="Catalog items">31</td>
+                <td data-label="Subcategories included">Stability, aggregation, and related metrics; simulation, refinement, and energy scoring.</td>
+              </tr>
+              <tr>
+                <td data-label="R&amp;D area">Sequence search and protein language models</td>
+                <td class="num" data-label="Catalog items">44</td>
+                <td data-label="Subcategories included">Search, numbering, structure processing, sequence representation, and model scoring.</td>
+              </tr>
+              <tr>
+                <td data-label="R&amp;D area">Peptide and small-molecule extensions</td>
+                <td class="num" data-label="Catalog items">16</td>
+                <td data-label="Subcategories included">Peptide design, small-molecule docking, and related property analysis.</td>
+              </tr>
+              <tr>
+                <td data-label="R&amp;D area">Expression and complex construct design</td>
+                <td class="num" data-label="Catalog items">9</td>
+                <td data-label="Subcategories included">Expression elements, DNA constructs, and sequence generation for multispecific antibodies and CARs.</td>
+              </tr>
+              <tr>
+                <td data-label="R&amp;D area">Immunology and cell-therapy analysis</td>
+                <td class="num" data-label="Catalog items">19</td>
+                <td data-label="Subcategories included">Epitopes and HLA, immune-repertoire analysis, and CAR-related simulation.</td>
+              </tr>
+              <tr>
+                <td data-label="R&amp;D area">ADC computation and evaluation</td>
+                <td class="num" data-label="Catalog items">3</td>
+                <td data-label="Subcategories included">Linker generation and ADC combination-related calculations.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="note">Figures are from a snapshot of the current website catalog, aggregated across 18 subcategories. Catalog counts are not deployment counts or counts of scientific validation.</p>
+      </div>
+    </section>
+
+    <!-- Slide 7 -->
+    <section class="block" id="end-to-end">
+      <div class="wrap">
+        <h2>End-to-end across the platform: from evidence to construct sequences</h2>
+        <div class="flow">
+          <div class="flow-card flow-target">
+            <h3>Target evidence, specificity, and patent search</h3>
+            <p>Unify target identity; compare expression, epitopes, existing drugs, and public patents.</p>
+          </div>
+          <div class="flow-card flow-binder">
+            <h3>Antibody, VHH, and non-antibody binder candidates</h3>
+            <p>Humanization or de novo design; redesign CDRs as needed; review structure and developability.</p>
+          </div>
+          <div class="flow-card flow-vaccine">
+            <h3>Vaccine antigens and epitopes</h3>
+            <p>Neoantigens additionally require variants, RNA, and HLA.</p>
+          </div>
+          <div class="flow-chip flow-ab">Antibody / VHH</div>
+          <div class="flow-chip flow-bi">Bi-/multispecific</div>
+          <div class="flow-chip flow-adc">ADC</div>
+          <div class="flow-chip flow-car">CAR-T</div>
+          <div class="flow-chip flow-vaxdes">Vaccine design</div>
+          <div class="flow-card flow-seq">
+            <h3>Sequence design and delivery</h3>
+            <p>Protein and DNA sequences, element annotations, calculation results, and method records.</p>
+          </div>
+        </div>
+        <p class="note">The end-to-end scheme is to be validated. External patent access is not yet connected; ADCs also include a chemistry component. Linking experimental data is planned as later work.</p>
+      </div>
+    </section>
+
+    <!-- Slide 8 -->
+    <section class="block" id="databases">
+      <div class="wrap">
+        <h2>Overview of in-house specialist databases</h2>
+        <p class="intro">Independently curated, identity-checked, and further processed into 8 specialist databases, with original sources retained.</p>
+        <div class="cap">
+          <div class="tools-list">
+            <h3>Target evidence</h3>
+            <p>Target expression and tractability evidence database.</p>
+            <h3>Antibody and engineering references</h3>
+            <p>Ab CMC, VHH CMC, bi-/multispecific antibody, and Fc engineering databases.</p>
+            <h3>Immunology and cell-therapy resources</h3>
+            <p>ADA, CAR elements, and CAR clinical and research databases.</p>
+          </div>
+          <figure>
+            <div class="shot">
+              <img src="assets/databases-overview.png" alt="Platform screenshot of the specialist database catalog, including target-evidence, CMC, ADA, CAR, ADC, and external-source entries." width="1657" height="855" loading="eager" decoding="async">
+            </div>
+          </figure>
+        </div>
+        <p class="note">External sources listed separately: IEDB, Protegen, ADCdb, and patent search. Access methods, versions, and verification status follow the records.</p>
+      </div>
+    </section>
+
+    <!-- Slide 9 -->
+    <section class="block" id="her2">
+      <div class="wrap">
+        <h2>HER2 case: from database records to target analysis</h2>
+        <div class="case">
+          <div class="case-copy">
+            <h3>Verify identity and evidence</h3>
+            <p>HER2 corresponds to ERBB2; review historical scores and evidence dimensions.</p>
+            <h3>Compare tissue expression</h3>
+            <p>Inspect expression distributions by source and unit, and raise questions for risk verification.</p>
+            <h3>Related drug precedents</h3>
+            <p>Compare existing molecular formats as a reference for later design choices.</p>
+          </div>
+          <div class="fig-grid her2">
+            <figure>
+              <div class="shot">
+                <img src="assets/her2-evidence-scoring.png" alt="Platform screenshot: HER2 target identity and historical evidence-scoring table." width="641" height="486" loading="eager" decoding="async">
+              </div>
+              <figcaption>Target identity and evidence scoring</figcaption>
+            </figure>
+            <figure>
+              <div class="shot">
+                <img src="assets/her2-tissue-expression.png" alt="Platform screenshot: tissue-expression comparison bar charts from multiple sources." width="861" height="460" loading="eager" decoding="async">
+              </div>
+              <figcaption>Tissue expression comparison</figcaption>
+            </figure>
+            <figure class="span-2">
+              <div class="shot">
+                <img src="assets/her2-related-drugs.jpg" alt="Platform screenshot: related clinical drugs and data-source notes for HER2." width="1214" height="369" loading="eager" decoding="async">
+              </div>
+              <figcaption>Related drugs and data sources</figcaption>
+            </figure>
+          </div>
+        </div>
+        <p class="note">The three original figures are shown together. Scores cite Cheever et al. (2009) and are a historical reference; a project would need to add current evidence.</p>
+      </div>
+    </section>
+
+    <!-- Slide 10 -->
+    <section class="block" id="vhh">
+      <div class="wrap">
+        <h2>Difficult-target study: de novo VHH design</h2>
+        <p class="banner-note">The de novo design route has completed runtime tests; specific targets and function require project-level validation.</p>
+        <div class="wf">
+          <div class="wf-copy">
+            <h3>Target and framework conditions</h3>
+            <p>Input the target structure, hotspots or epitopes, and framework requirements.</p>
+            <h3>Candidates and delivery</h3>
+            <p>Generate VHH candidates; deliver sequences, structural models, and interface comparisons.</p>
+          </div>
+          <figure class="wf-shot">
+            <div class="shot">
+              <img src="assets/workflow-vhh-denovo.png" alt="Platform screenshot of a de novo VHH design workflow, including framework, antigen and hotspot inputs, RFantibody steps, and complex and interface evaluation nodes." width="1535" height="825" loading="eager" decoding="async">
+            </div>
+          </figure>
+        </div>
+        <p class="note">The route has completed runtime tests; binding and function on difficult targets require project-level validation.</p>
+      </div>
+    </section>
+
+    <!-- Slide 11 -->
+    <section class="block" id="car-binder">
+      <div class="wrap">
+        <h2>Non-antibody CAR-T binder design</h2>
+        <div class="wf">
+          <div class="wf-copy">
+            <h3>Target and non-antibody scaffold</h3>
+            <p>Generate and compare binding domains using routes such as BoltzGen.</p>
+            <h3>Handoff to CAR construction</h3>
+            <p>Review the complex and interface, then organize CAR elements and construct sequences.</p>
+          </div>
+          <figure class="wf-shot">
+            <div class="shot">
+              <img src="assets/workflow-car-binder.png" alt="Platform screenshot of a non-antibody CAR-T binder workflow using BoltzGen and related nodes for binding-domain generation, complex folding, and interface confidence." width="1511" height="830" loading="eager" decoding="async">
+            </div>
+          </figure>
+        </div>
+        <p class="note">An example has been built; node connection and end-to-end runs are to be validated. Binding, expression, and CAR function need to be validated separately.</p>
+      </div>
+    </section>
+
+    <!-- Slide 12 -->
+    <section class="block" id="adc">
+      <div class="wrap">
+        <h2>ADC: antibody, linker, and payload</h2>
+        <div class="wf">
+          <div class="wf-copy">
+            <h3>Study inputs</h3>
+            <p>Bring together antibody candidates, linkers, payloads, and conjugation requirements.</p>
+            <h3>Combinations and evaluation</h3>
+            <p>Organize antibody calculations and chemical-component analysis, in preparation for experimental evaluation.</p>
+          </div>
+          <figure class="wf-shot">
+            <div class="shot">
+              <img src="assets/workflow-adc.png" alt="Platform screenshot of an ADC design and evaluation workflow, with nodes for RDKit, Linker-GPT, ADCNet, and experimental-evaluation records, some marked as not yet connected." width="1530" height="816" loading="eager" decoding="async">
+            </div>
+          </figure>
+        </div>
+        <p class="note">An example has been built; some components are not yet connected. Conjugation quality and efficacy require experimental evaluation.</p>
+      </div>
+    </section>
+
+    <!-- Slide 13 -->
+    <section class="block" id="openvax">
+      <div class="wrap">
+        <h2>Neoantigen vaccines: OpenVax long-peptide design</h2>
+        <div class="wf">
+          <div class="wf-copy">
+            <h3>Sample and study inputs</h3>
+            <p>Tumor and normal exomes, RNA, <span class="nowrap">HLA-I</span>, and reference versions.</p>
+            <h3>Long-peptide candidate ranking</h3>
+            <p>Alignment, variant calling, and transcript analysis to produce long-peptide candidates.</p>
+          </div>
+          <figure class="wf-shot">
+            <div class="shot">
+              <img src="assets/workflow-openvax.png" alt="Platform screenshot of an OpenVax long-peptide design workflow, from tumor and normal exomes, RNA-seq, and HLA-I inputs through variant calling to long-peptide ranking." width="1512" height="822" loading="eager" decoding="async">
+            </div>
+          </figure>
+        </div>
+        <p class="note">An example has been built; the full chain is to be validated. Immune responses require experimental evaluation.</p>
+      </div>
+    </section>
+
+    <!-- Slide 14 -->
+    <section class="block" id="results">
+      <div class="wrap">
+        <h2>Calculation results: retained candidates, metrics, and report access</h2>
+        <div class="wf">
+          <div class="wf-copy">
+            <h3>Review task outputs</h3>
+            <p>The results list retains the tool, run time, relevant metrics, and download access.</p>
+            <h3>Next steps</h3>
+            <p>Candidates can be used for option comparison, or carried into expression-sequence preparation.</p>
+          </div>
+          <figure class="wf-shot">
+            <div class="shot">
+              <img src="assets/results-list.jpg" alt="Platform screenshot of a results list showing source tools, run times, scientific metrics, and links to reports and result files." width="870" height="600" loading="eager" decoding="async">
+            </div>
+          </figure>
+        </div>
+        <p class="note">An example of a standalone task result, showing metrics and file access. End-to-end validation is confirmed separately as a trial task.</p>
+      </div>
+    </section>
+
+    <!-- Slide 15 -->
+    <section class="block" id="sequences">
+      <div class="wrap">
+        <h2>Sequence design: handing candidates to the experimental team</h2>
+        <div class="case">
+          <div class="case-copy">
+            <h3>Define the construct</h3>
+            <p>Select a suitable host, vector, signal peptide, linker, and tags.</p>
+            <h3>Check and deliver</h3>
+            <p>Inspect protein and DNA sequences, retain element annotations, and export.</p>
+          </div>
+          <div>
+            <h3>Element and sequence annotations</h3>
+            <div class="seq-figs">
+              <figure class="map">
+                <div class="shot">
+                  <img src="assets/seq-plasmid-map.png" alt="Circular plasmid map example labeled vhh-ecoli-pelb, 5493 bp, with AmpR and T7 promoter annotations." width="330" height="370" loading="eager" decoding="async">
+                </div>
+              </figure>
+              <figure>
+                <div class="shot">
+                  <img src="assets/seq-annotations.png" alt="Element annotation chips for T7 terminator, T7 promoter, and AmpR with base-pair ranges." width="310" height="81" loading="eager" decoding="async">
+                </div>
+              </figure>
+              <figure>
+                <div class="shot">
+                  <img src="assets/seq-sequence-view.png" alt="Sequence-view screenshot with a T7 promoter feature highlighted on the DNA sequence." width="400" height="205" loading="eager" decoding="async">
+                </div>
+              </figure>
+            </div>
+          </div>
+        </div>
+        <p class="note">A public-backbone example, used to demonstrate map and annotation features. Project constructs are verified separately against the candidates.</p>
+      </div>
+    </section>
+
+    <!-- Slide 16 -->
+    <section class="block" id="status">
+      <div class="wrap">
+        <h2>Current status and trial scope</h2>
+        <div class="table-wrap">
+          <table class="data">
+            <thead>
+              <tr>
+                <th scope="col">Module</th>
+                <th scope="col">Current status</th>
+                <th scope="col">Confirm at trial</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td data-label="Module">AI tools</td>
+                <td data-label="Current status">32 items deployed, with runtime test records.</td>
+                <td data-label="Confirm at trial">Inputs, parameters, compute, and outputs.</td>
+              </tr>
+              <tr>
+                <td data-label="Module">Workflows</td>
+                <td data-label="Current status">5 marked as runnable; the others are examples.</td>
+                <td data-label="Confirm at trial">Node connection, end-to-end runs, and result handoff.</td>
+              </tr>
+              <tr>
+                <td data-label="Module">Databases</td>
+                <td data-label="Current status">10 categories deployed; 2 external entries not yet connected.</td>
+                <td data-label="Confirm at trial">Source, version, and identity-verification status.</td>
+              </tr>
+              <tr>
+                <td data-label="Module" class="nowrap">End-to-end</td>
+                <td data-label="Current status">Calculation and assembly records exist; the full chain is to be validated.</td>
+                <td data-label="Confirm at trial">Validate the full chain after staged acceptance.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="note">Status as of October 2026. The platform is an MVP; binding, expression, stability, and function are evaluated by the corresponding experiments.</p>
+      </div>
+    </section>
+
+    <!-- Slide 17 -->
+    <section class="block" id="plans">
+      <div class="wrap">
+        <h2>Future plans and client services</h2>
+        <div class="table-wrap">
+          <table class="data">
+            <thead>
+              <tr>
+                <th scope="col">Build direction</th>
+                <th scope="col">Client services and deliverables</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td data-label="Build direction">Deploy and develop ~200 AI tools</td>
+                <td data-label="Client services and deliverables">Deploy and adapt mature tools, add project-specific functions, and deliver interfaces and acceptance examples.</td>
+              </tr>
+              <tr>
+                <td data-label="Build direction">Build and validate scenario workflows</td>
+                <td data-label="Client services and deliverables">Cover antibodies, vaccines, bispecifics, ADCs, and CAR-T; deliver workflows and run records.</td>
+              </tr>
+              <tr>
+                <td data-label="Build direction">Client private experimental databases</td>
+                <td data-label="Client services and deliverables">Organize molecule, sample, and experimental data; deliver search and comparison pages that link candidates and results.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="note">Start a trial with one tool, one workflow segment, or one class of data, then expand, deploy, and maintain as needed.</p>
+      </div>
+    </section>
+
+    <!-- Slide 18 -->
+    <section class="block" id="trial">
+      <div class="wrap">
+        <h2>First trial: start with one antibody or VHH engineering task</h2>
+        <p class="intro">Suggested scope: one parental molecule and one engineering goal, first validating a segment of the computation and delivery workflow.</p>
+        <div class="table-wrap">
+          <table class="data">
+            <thead>
+              <tr>
+                <th scope="col" class="nowrap">Both sides confirm</th>
+                <th scope="col">Example first-trial plan</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td data-label="Both sides confirm">Client inputs</td>
+                <td data-label="Example first-trial plan">1 VH/VL pair or 1 VHH sequence, the engineering goal, and any available reference materials.</td>
+              </tr>
+              <tr>
+                <td data-label="Both sides confirm">Scope of work</td>
+                <td data-label="Example first-trial plan">Select a suitable humanization or sequence-engineering method; agree the number of candidates and comparison metrics.</td>
+              </tr>
+              <tr>
+                <td data-label="Both sides confirm">Deliverables</td>
+                <td data-label="Example first-trial plan">Candidate FASTA, a table of site modifications, metric comparisons, and method and parameter records.</td>
+              </tr>
+              <tr>
+                <td data-label="Both sides confirm">Acceptance</td>
+                <td data-label="Example first-trial plan">Check sequences, numbering, modified sites, and output files; review sources and calculation records.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="note">Timeline, fees, compute, and data confidentiality are agreed before kickoff; experimental outcomes are evaluated separately.</p>
+        <p class="note">Website: <a href="https://saas.therasik.com" data-brand-href="saasUrl"><span data-brand="saasHost">saas.therasik.com</span></a> &nbsp; Contact: wechat: <span data-brand="wechat">rockyhj</span></p>
+        <p class="note">Other tasks can also be trialed. We welcome co-funded validation; equity can be discussed for a longer-term collaboration.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="cta" id="request-trial">
+    <div class="wrap">
+      <h2>Request a free trial calculation</h2>
+      <p class="sub">Invitation-only trial</p>
+      <div class="cta-actions">
+        <a class="btn btn-primary" href="https://saas.therasik.com" data-brand-href="saasUrl">Open the invitation-only platform</a>
+        <a class="btn btn-ghost" href="https://therasik.com" data-brand-href="siteUrl"><span>Visit <span data-brand="siteHost">therasik.com</span></span></a>
+      </div>
+      <p class="cta-contacts">
+        <span>Website: <a href="https://saas.therasik.com" data-brand-href="saasUrl"><span data-brand="saasHost">saas.therasik.com</span></a></span>
+        <span>Contact: WeChat <span data-brand="wechat">rockyhj</span></span>
+      </p>
+      <p class="fineprint">A technical-demonstration MVP. We invite companies to trial the platform on real tasks and to validate it together.</p>
+    </div>
+  </footer>
+
+  <script>
+    /* Apply #site-config to any [data-brand] / [data-brand-href] nodes.
+       Safe no-op when the JSON still matches the default markup. */
+    (function () {
+      var el = document.getElementById("site-config");
+      if (!el) return;
+      var cfg;
+      try { cfg = JSON.parse(el.textContent); } catch (e) { return; }
+      document.querySelectorAll("[data-brand]").forEach(function (node) {
+        var key = node.getAttribute("data-brand");
+        if (key && cfg[key] != null) node.textContent = cfg[key];
+      });
+      document.querySelectorAll("[data-brand-href]").forEach(function (node) {
+        var key = node.getAttribute("data-brand-href");
+        if (key && cfg[key] != null) node.setAttribute("href", cfg[key]);
+      });
+    })();
+  </script>
+</body>
+</html>
