@@ -24,10 +24,10 @@
   <script type="application/json" id="site-config">
   {
     "brandName": "TheraSik",
-    "siteHost": "therasik.com",
-    "siteUrl": "https://therasik.com",
-    "saasHost": "saas.therasik.com",
-    "saasUrl": "https://saas.therasik.com",
+    "siteHost": "insynbio.com",
+    "siteUrl": "https://insynbio.com",
+    "saasHost": "saas.insynbio.com",
+    "saasUrl": "https://saas.insynbio.com",
     "wechat": "rockyhj",
     "_comment": "BRAND CONFIG — current values are the source deck defaults. To switch later (e.g. InSynBio / www.insynbio.com / saas.insynbio.com), edit this JSON, the CSS :root brand tokens, <title>/meta/canonical/Open Graph URLs, and any remaining visible brand strings together. Do not switch until confirmed."
   }
@@ -38,8 +38,8 @@
     */
     :root {
       --brand-name: "TheraSik";
-      --site-host: "therasik.com";
-      --saas-host: "saas.therasik.com";
+      --site-host: "insynbio.com";
+      --saas-host: "saas.insynbio.com";
       --wechat: "rockyhj";
 
       --bg: #f5f8f5;
@@ -399,6 +399,14 @@
       color: var(--teal);
       border: 1px solid var(--border);
     }
+
+    .cta-note {
+      margin: 0 0 18px;
+      color: var(--body);
+      font-size: 15.5px;
+      line-height: 1.55;
+      max-width: 40em;
+    }
     .cta-contacts {
       margin: 0;
       color: var(--body);
@@ -422,6 +430,35 @@
     .tools-list .group-label + h3 { margin-top: 0; }
     .btn { gap: 0.35em; }
 
+
+    /* ----- How it works ----- */
+    .how {
+      display: grid;
+      gap: 14px;
+    }
+    .how-step {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 18px 18px 20px;
+    }
+    .how-num {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 28px;
+      height: 28px;
+      margin: 0 0 10px;
+      border-radius: 50%;
+      background: var(--band);
+      color: var(--teal);
+      font-weight: 700;
+      font-size: 15px;
+      font-variant-numeric: tabular-nums;
+    }
+    .how-step h3 { margin: 0 0 8px; }
+    .how-step p { color: var(--body); }
+
     /* ----- Desktop ----- */
     @media (min-width: 720px) {
       .hero { padding: 64px 0 72px; }
@@ -432,6 +469,7 @@
 
       table.data th.nowrap,
       table.data td.nowrap { white-space: nowrap; }
+      .how { grid-template-columns: 1fr 1fr 1fr; align-items: stretch; }
       .split-2 { grid-template-columns: 1fr 1fr; }
       .cap { grid-template-columns: 0.9fr 1.2fr; align-items: start; }
       .diy { grid-template-columns: auto 1fr; align-items: center; }
@@ -485,8 +523,8 @@
       </ul>
       <p class="mvp">A technical-demonstration MVP. We invite companies to trial the platform on real tasks and to validate it together.</p>
       <p class="hero-contacts">
-        <span><a href="https://saas.therasik.com" data-brand-href="saasUrl"><span data-brand="saasHost">saas.therasik.com</span></a> (invitation only)</span>
-        <span><a href="https://therasik.com" data-brand-href="siteUrl"><span data-brand="siteHost">therasik.com</span></a></span>
+        <span><span data-brand="saasHost">saas.insynbio.com</span> (invitation only)</span>
+        <span><a href="https://insynbio.com" data-brand-href="siteUrl"><span data-brand="siteHost">insynbio.com</span></a></span>
         <span>Contact: WeChat <span data-brand="wechat">rockyhj</span></span>
       </p>
     </div>
@@ -1038,22 +1076,50 @@
           </table>
         </div>
         <p class="note">Timeline, fees, compute, and data confidentiality are agreed before kickoff; experimental outcomes are evaluated separately.</p>
-        <p class="note">Website: <a href="https://saas.therasik.com" data-brand-href="saasUrl"><span data-brand="saasHost">saas.therasik.com</span></a> &nbsp; Contact: wechat: <span data-brand="wechat">rockyhj</span></p>
+        <p class="note">Website: <span data-brand="saasHost">saas.insynbio.com</span> (invitation only) &nbsp; Contact: wechat: <span data-brand="wechat">rockyhj</span></p>
         <p class="note">Other tasks can also be trialed. We welcome co-funded validation; equity can be discussed for a longer-term collaboration.</p>
       </div>
     </section>
   </main>
+
+
+    <!-- How it works (not in the original deck; added for outreach preview) -->
+    <section class="block" id="how-it-works">
+      <div class="wrap">
+        <h2>How it works</h2>
+        <p class="intro">The platform already includes pre-installed tools and workflows. Because each company’s needs differ, we also build customized workflows and tool software around a project.</p>
+        <div class="how">
+          <div class="how-step">
+            <p class="how-num" aria-hidden="true">1</p>
+            <h3>Ready to use</h3>
+            <p>Pre-installed tools and workflows are available as a starting point. The catalog lists 210 items, of which 32 are deployed.</p>
+          </div>
+          <div class="how-step">
+            <p class="how-num" aria-hidden="true">2</p>
+            <h3>Tailored to you</h3>
+            <p>We build customized workflows and tools around your pipeline and requirements.</p>
+          </div>
+          <div class="how-step">
+            <p class="how-num" aria-hidden="true">3</p>
+            <h3>Validate together</h3>
+            <p>Start with one real task as a free trial calculation: one parental molecule and one engineering goal — 1 VH/VL pair or 1 VHH. After that, we can discuss customization.</p>
+          </div>
+        </div>
+        <p class="note">The platform is an MVP. Binding, expression, stability, and function are evaluated by the corresponding experiments.</p>
+      </div>
+    </section>
 
   <footer class="cta" id="request-trial">
     <div class="wrap">
       <h2>Request a free trial calculation</h2>
       <p class="sub">Invitation-only trial</p>
       <div class="cta-actions">
-        <a class="btn btn-primary" href="https://saas.therasik.com" data-brand-href="saasUrl">Open the invitation-only platform</a>
-        <a class="btn btn-ghost" href="https://therasik.com" data-brand-href="siteUrl"><span>Visit <span data-brand="siteHost">therasik.com</span></span></a>
+        <a class="btn btn-primary" href="mailto:jhuang@genomab.com?subject=TheraSik%20invitation%20request">Request an invitation</a>
+        <a class="btn btn-ghost" href="https://insynbio.com" data-brand-href="siteUrl"><span>Visit <span data-brand="siteHost">insynbio.com</span></span></a>
       </div>
+      <p class="cta-note">Request an invitation by email or WeChat (rockyhj); we will send login details for saas.insynbio.com.</p>
       <p class="cta-contacts">
-        <span>Website: <a href="https://saas.therasik.com" data-brand-href="saasUrl"><span data-brand="saasHost">saas.therasik.com</span></a></span>
+        <span>Website: <span data-brand="saasHost">saas.insynbio.com</span> (invitation only)</span>
         <span>Contact: WeChat <span data-brand="wechat">rockyhj</span></span>
       </p>
       <p class="fineprint">A technical-demonstration MVP. We invite companies to trial the platform on real tasks and to validate it together.</p>
