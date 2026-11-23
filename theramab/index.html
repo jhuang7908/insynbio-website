@@ -1,14 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>TheraMab — AI-Driven Therapeutic Antibody Developability Platform</title>
-<meta name="description" content="TheraMab: AI-driven therapeutic antibody developability platform. Humanization, developability assessment, risk-site optimization, and CMC formulation advice for humanized and fully human antibodies.">
-<link rel="canonical" href="https://insynbio.com/theramab/">
-<style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>TheraMab — AI-Driven Therapeutic Antibody Developability Platform</title>
+  <meta name="description" content="TheraMab is an AI-driven therapeutic antibody developability platform for humanized and fully human antibodies: humanization design, developability assessment, optimization, and CMC formulation advice. A technical-demonstration product.">
+  <meta name="robots" content="index,follow">
+  <link rel="canonical" href="https://insynbio.com/theramab/">
+  <meta property="og:url" content="https://insynbio.com/theramab/">
 
+  <meta name="author" content="Therasik">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="TheraMab">
+  <meta property="og:title" content="TheraMab — AI-Driven Therapeutic Antibody Developability Platform">
+  <meta property="og:description" content="Developability assessment, optimization, and development for humanized and fully human antibodies. A technical-demonstration product.">
+  <script type="application/json" id="site-config">
+  { "brandName": "TheraMab" }
+  </script>
+<style>
+    /* ===== BRAND TOKENS ===== */
     :root {
+      --brand-name: "TheraMab";
+
       --bg: #f5f8f5;
       --ink: #123f37;
       --teal: #087f72;
@@ -114,6 +127,13 @@
       font-weight: 650;
       font-size: clamp(16px, 2vw, 20px);
       line-height: 1.45;
+    }
+
+    .hero-actions {
+      margin: 22px 0 18px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
     }
     .hero-contacts {
       margin: 0;
@@ -470,264 +490,314 @@
       body { font-size: 17.5px; }
       .wrap { width: min(var(--max), calc(100% - 48px)); }
     }
-  
+  </style>
+<style>
+  /* TheraMab additions — same teal token system as the TheraSik template */
+  .kicker{margin:0 0 14px;font-size:12.5px;font-weight:700;letter-spacing:.16em;color:var(--teal-hover);text-transform:uppercase;}
+  .pill-badge{display:inline-block;font-size:13px;font-weight:700;color:var(--teal-hover);background:#fff;border:1px solid var(--border);border-radius:999px;padding:4px 12px;margin:0 0 20px;}
+  .callout{background:var(--card);border:1px solid var(--border);border-left:4px solid var(--teal);border-radius:var(--radius);padding:16px 18px;margin:0 0 20px;box-shadow:var(--shadow);}
+  .callout .label{font-size:12px;font-weight:800;letter-spacing:.1em;color:var(--teal);margin:0 0 8px;text-transform:uppercase;}
+  .callout ul{margin:0;padding-left:20px;}
+  .callout li{margin:0 0 6px;color:var(--body);}
+  .callout li:last-child{margin-bottom:0;}
+  .amber{background:#fdf6e3;border:1px solid #ecd9a6;border-radius:var(--radius);padding:14px 18px;margin:14px 0 0;color:#6b531b;font-size:15.5px;line-height:1.6;}
+  .amber strong{color:#5a4312;}
+  ol.steps{margin:0;padding-left:22px;}
+  ol.steps>li{margin:0 0 16px;line-height:1.6;}
+  figure.shot{margin:14px 0 4px;background:var(--card);border:1px solid var(--border);border-radius:12px;overflow:hidden;box-shadow:var(--shadow);}
+  figure.shot .frame-bar{height:3px;background:linear-gradient(90deg,#b7e8d6,#7dceba,#087f72);}
+  figure.shot img{width:100%;display:block;background:#f3f6f5;}
+  .video-frame{background:var(--card);border:1px solid var(--border);border-radius:12px;overflow:hidden;box-shadow:var(--shadow);}
+  .video-frame video{width:100%;display:block;background:#0b1f1b;}
+  .video-caption{margin:8px 0 0;color:var(--muted);font-size:13.5px;}
+  .cap-figs{display:grid;gap:16px;margin-top:8px;}
+  .subcap{margin:22px 0 2px;}
+  .subcap:first-child{margin-top:0;}
+  .promo-aside{background:var(--band);border:1px solid #d4e0da;border-radius:var(--radius);padding:18px 20px;margin:0 0 22px;}
+  .promo-aside h3{margin:0 0 6px;}
+  .promo-aside p{color:var(--body);font-size:15px;margin:0 0 10px;}
+  @media (min-width:720px){
+    .with-promo{display:grid;grid-template-columns:1.6fr 1fr;gap:28px;align-items:start;}
+  }
+  @media (max-width:719px){
+    /* On mobile, promo blocks go below the main content */
+    .with-promo{display:flex;flex-direction:column;}
+    .with-promo .promo-aside{order:2;}
+    .with-promo .main-col{order:1;}
+  }
 </style>
+
 </head>
+
 <body>
-<a class="skip" href="#content">Skip to content</a>
+  <a class="skip" href="#content">Skip to content</a>
 
-<header class="hero">
-  <div class="wrap">
-    <p class="brand">TheraMab</p>
-    <h1>AI-driven therapeutic antibody developability platform</h1>
-    <p class="lede">Humanization design, developability assessment, and CMC formulation advice for humanized and fully human antibodies — on one platform.</p>
-    <p class="lede">Enter one heavy chain and one light chain, and get multiple humanization designs, the risk positions in each, actionable optimized sequences, and tiered subcutaneous and intravenous formulation advice.</p>
-    <ul class="pills">
-      <li>Humanization (CDR grafting &amp; NN)</li>
-      <li>Developability &amp; manufacturability</li>
-      <li>Risk-site optimization</li>
-      <li>CMC formulation advice</li>
-    </ul>
-    <p class="mvp">A validation-stage product. Web-edition trials are opened by account invitation; we welcome teams to evaluate it on real sequences.</p>
-    <p class="hero-contacts">
-      <span>contact@insynbio.com</span>
-      <span><a href="https://insynbio.com">insynbio.com</a></span>
-      <span>Web edition: by account invitation</span>
-    </p>
-  </div>
-</header>
-
-<main id="content">
-
-  <section class="block" id="summary">
+  <!-- Cover / hero -->
+  <header class="hero">
     <div class="wrap">
-      <h2>Humanization, developability, and formulation on one platform</h2>
-      <p class="intro">TheraMab brings together on one platform the three things needed to take an antibody from a non-human sequence to a developable candidate: humanization design, developability and manufacturability assessment, and CMC formulation optimization and advice.</p>
-      <div class="split-2">
-        <div>
-          <h3>One workflow, no tool switching</h3>
-          <p>Humanization, assessment, optimization, and formulation advice all happen in one place, and an optimized sequence can go straight back into the assessment table to be re-assessed.</p>
-        </div>
-        <div>
-          <h3>Built around privacy and security</h3>
-          <p>Each client's sequences and results belong only to their own account, and neither the pages nor the interfaces expose internal details of the algorithms or databases.</p>
-        </div>
-      </div>
-      <div class="role">
-        <h3>Results with context</h3>
-        <p>Each parameter is placed within a reference range derived from our clinical observations and estimates and shown with a clear position label, not as an isolated number. Antibodies that are already fully human or humanized (including sequences designed with other software) can also go directly to developability assessment.</p>
-      </div>
-      <p class="note">This product is provided for scientific research and early R&amp;D reference only and is not a basis for clinical decisions, diagnosis, treatment, or regulatory submissions.</p>
+      <p class="brand" data-brand="brandName">TheraMab</p>
+      <p class="kicker">THERASIK · Product Whitepaper</p>
+      <h1>AI-Driven Therapeutic Antibody Developability Platform</h1>
+      <p class="lede">Developability assessment, optimization, and development for humanized and fully human antibodies.</p>
+      <p class="lede">TheraMab brings together the three things needed to take an antibody from a non-human sequence to a developable candidate: humanization design, developability assessment, and CMC formulation optimization and advice.</p>
+      <ul class="pills">
+        <li>Humanization</li>
+        <li>Developability assessment</li>
+        <li>Optimization</li>
+        <li>CMC formulation advice</li>
+      </ul>
+      <p class="mvp">This whitepaper describes the product as it is designed today and the capabilities already validated. We invite companies to trial TheraMab on real tasks.</p>
+      <p class="hero-actions">
+        <a class="btn btn-primary" href="assets/TheraMab_Whitepaper_2026_en.pdf" download="TheraMab_Whitepaper_2026_en.pdf">Download the whitepaper (PDF)</a>
+      </p>
+      <p class="hero-contacts">
+        <span>Desktop edition: data processed locally</span>
+        <span>Contact: <a href="mailto:contact@therasik.com">contact@therasik.com</a></span>
+      </p>
     </div>
-  </section>
+  </header>
 
-  <section class="block" id="demo">
+  <main id="content">
+    <!-- Abstract -->
+    <section class="block" id="abstract">
+      <div class="wrap">
+        <h2>Overview</h2>
+        <p class="intro">TheraMab brings together, on one platform, the three things needed to take an antibody from a non-human sequence to a developable candidate: humanization design, developability assessment, and CMC formulation optimization and advice. From one pair of heavy and light chains, a client obtains several humanization options, the risk positions of each option, actionable optimized sequences, and formulation advice for both subcutaneous and intravenous administration.</p>
+        <div class="callout">
+          <p class="label">Highlights</p>
+          <ul>
+            <li><strong>One continuous workflow, no tool-switching</strong>: humanization, assessment, optimization, and formulation advice are done in one place, and optimized sequences can go straight back into the assessment table to be re-evaluated.</li>
+            <li><strong>Privacy and information security as a premise</strong>: each client's sequences and results belong only to their own account, and neither pages nor interfaces expose internal details of the algorithms or databases.</li>
+            <li><strong>Results with a sense of position</strong>: each parameter is placed within a reference range derived from our clinical observations and estimates, shown with a clear position label rather than as an isolated number.</li>
+          </ul>
+        </div>
+        <p>Antibodies that are already fully human or humanized (including sequences designed by other software) can also go directly into developability assessment. This product is for scientific research and early R&amp;D reference only; it does not constitute a basis for clinical decisions, diagnosis, treatment, or regulatory submission.</p>
+      </div>
+    </section>
+
+    <!-- Demo video -->
+    <section class="block" id="demo">
+      <div class="wrap">
+        <h2>Product demo video</h2>
+        <p class="intro">A demonstration of the TheraMab web edition (about 4 min 41 s), which plays on this page. The demo uses public example antibodies and was recorded in a separate test environment; it contains no client data.</p>
+        <div class="video-frame">
+          <video controls preload="metadata" playsinline poster="assets/theramab_demo_poster.jpg">
+            <source src="assets/theramab_demo_1080p.mp4" type="video/mp4" media="(min-width: 800px)">
+            <source src="assets/theramab_demo_720p.mp4" type="video/mp4">
+            Your browser does not support video playback. Please <a href="assets/theramab_demo_1080p.mp4">download 1080p</a> or <a href="assets/theramab_demo_720p.mp4">download 720p</a> and open it locally.
+          </video>
+        </div>
+        <p class="video-caption">▲ Product demo video (web-edition walkthrough, about 4 min 41 s).</p>
+      </div>
+    </section>
+
+    <!-- Background -->
+    <section class="block" id="background">
+      <div class="wrap">
+        <h2>Background and challenges</h2>
+        <p class="intro">In early antibody R&amp;D, sequence design and developability judgement are usually split across several tools and several people. It is hard to connect the information, and three problems recur.</p>
+        <ol class="steps">
+          <li><strong>Humanization and developability are disconnected</strong>: humanization options are made in one tool and developability is assessed in another; changing a sequence means exporting and importing again, and the trade-offs of back-mutations and their effect on developability are not visible on the same chart.</li>
+          <li><strong>Risk is only numbers, with no sense of position</strong>: a single physicochemical parameter lacks a reference, so the team cannot tell whether a value is high or low, or in which direction to optimize.</li>
+          <li><strong>Formulation and sequence are considered separately</strong>: formulation is only thought about after the sequence is fixed, by which point viscosity or aggregation problems are already late; there is no direct link between risk sites and the corresponding formulation levers.</li>
+        </ol>
+        <p>There is a further concern for external use: sequences are a client's most core asset, and a tool is hard to accept if it lets multiple users' data mix together, or if it exposes internal algorithm and database details on its pages. TheraMab is designed to make the three tasks above into one continuous workflow, while treating privacy and information security as a premise of the product rather than an add-on.</p>
+      </div>
+    </section>
+
+    <!-- Overview table -->
+    <section class="block" id="editions">
+      <div class="wrap">
+        <h2>Product overview</h2>
+        <p class="intro">TheraMab is offered as a web edition and a desktop edition, serving two kinds of use and sharing the same assessment logic and result interpretation.</p>
+        <div class="table-wrap">
+          <table class="data">
+            <thead><tr><th>Edition</th><th>Suited to</th><th>Data form</th><th>Status</th></tr></thead>
+            <tbody>
+              <tr>
+                <td data-label="Edition">Web edition</td>
+                <td data-label="Suited to">Team collaboration, multi-user trials, ready to use with no install</td>
+                <td data-label="Data form">Sequences and results are kept under the account and isolated between accounts; trial example sequences are shared read-only</td>
+                <td data-label="Status">Live, opened by account invitation</td>
+              </tr>
+              <tr>
+                <td data-label="Edition">Desktop edition</td>
+                <td data-label="Suited to">Settings more sensitive about data leaving the premises; runs on the local machine</td>
+                <td data-label="Data form">Data processed locally</td>
+                <td data-label="Status">Available on request; let's talk</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p><strong>What a client receives</strong>: several humanization options; a humanness and developability assessment of each option; risk sites and substitution suggestions; optimized sequences and their re-assessment; subcutaneous and intravenous formulation advice; and exportable reports, score tables, and sequence files.</p>
+        <p><strong>Two kinds of input</strong>: one is a non-human antibody (humanize first, then assess); the other is a sequence that is already fully human or humanized by other software (go directly to developability assessment).</p>
+      </div>
+    </section>
+
+    <!-- Workflow -->
+    <section class="block" id="workflow">
+      <div class="wrap">
+        <h2>Workflow</h2>
+        <p class="intro">From input sequence to formulation advice, the client works through one connected flow, and the result of each step carries into the next.</p>
+        <ol class="steps">
+          <li><strong>Input</strong>: paste or upload heavy and light chains (CSV, FASTA, Excel; templates and format notes are provided). Non-human antibodies go through humanization; sequences that are already fully human or humanized can go directly to developability assessment.
+            <figure class="shot"><div class="frame-bar"></div><img src="assets/fig01_sequence_input.png" alt="Sequence input page with a public example antibody's heavy and light chains loaded"><figcaption>▲ Fig. 1: Sequence input page (the demo has loaded the heavy and light chains of the public example antibody).</figcaption></figure>
+          </li>
+          <li><strong>Humanization</strong>: the system offers several framework pairings, each with different back-mutation levels (none, conservative, balanced, aggressive). The client selects the pairings of interest, and later assessment is shown only for the selected pairings.
+            <figure class="shot"><div class="frame-bar"></div><img src="assets/fig02_framework_pairing.png" alt="Framework and pairing view listing candidate light chains and pairing record counts"><figcaption>▲ Fig. 2: Framework and pairing — candidate light chains and the number of pairing records.</figcaption></figure>
+          </li>
+          <li><strong>Assessment</strong>: humanness, physicochemical developability, FlashTAP, and a CMC summary. Each parameter is shown within a reference range on a position map and radar chart, with axis notes and result analysis.</li>
+          <li><strong>Optimization</strong>: risk sites are split into CDR and FR tables. FR sites carry substitution suggestions; once ticked, an optimized sequence is generated in one click, can be exported, and can be added back into the assessment table.</li>
+          <li><strong>Re-assessment</strong>: an optimized sequence added back to the assessment table is re-evaluated automatically, with results for whole-antibody, CDR-only, and FR-only views, so the client can see directly whether the optimization improved key parameters (steps 4 to 5 can be repeated).</li>
+          <li><strong>Formulation advice</strong>: tiered subcutaneous and intravenous formulation advice, formulation numbers, and marketed molecules physicochemically similar to the client's sequence; the formulation lever for each risk site links to a specific formulation entry in the knowledge base.</li>
+          <li><strong>Library and report</strong>: candidate sequences can enter the client's own account library, and a comprehensive report including the formulation advice and its rationale is generated.
+            <figure class="shot"><div class="frame-bar"></div><img src="assets/fig09_antibody_library.png" alt="Antibody library organized by target, clone, and variant, with side-by-side CMC comparison"><figcaption>▲ Fig. 3: The antibody library is organized by target, clone, and variant, and CMC parameters can be compared side by side.</figcaption></figure>
+          </li>
+        </ol>
+        <p>Analysis state is saved per job in the client's own browser, so after viewing the knowledge base or switching pages the client can return to the previous results; "New analysis" clears everything in one click to start over, without affecting sequences already in the library.</p>
+      </div>
+    </section>
+
+    <!-- Capabilities -->
+    <section class="block" id="capabilities">
+      <div class="wrap">
+        <h2>Core capabilities</h2>
+
+        <h3 class="subcap">Humanization</h3>
+        <p>For a non-human antibody, two routes are offered at once: classic CDR grafting, and a neural-network (NN) design that keeps more of the parental framework. Both routes have four back-mutation levels (none, conservative, balanced, aggressive) under the same back-mutation rules. The difference is the starting point: CDR grafting transplants the whole germline framework and so has more back-mutation positions to consider, while NN keeps most of the parental framework and has fewer. The client selects the framework pairings of interest at step 3, and later assessment is shown only for the selected pairings.</p>
+        <figure class="shot"><div class="frame-bar"></div><img src="assets/fig03_final_alignment.png" alt="Final sequence aligned to the parent, with changes in blue and back-mutation positions in yellow"><figcaption>▲ Fig. 4: The final sequence aligned to the parent (blue marks changes, yellow marks back-mutation positions).</figcaption></figure>
+
+        <h3 class="subcap">Developability assessment</h3>
+        <ul>
+          <li><strong>Physicochemical and structural parameters</strong>: instability index, hydrophobicity (GRAVY), chemical risk sites, pI, Fv net charge, the viscosity indicator FvCSP, spatial aggregation propensity (SAP), and aggregation propensity (A3D).
+            <figure class="shot"><div class="frame-bar"></div><img src="assets/fig04_physchem_table.png" alt="Physicochemical and structural parameter table, one row per candidate"><figcaption>▲ Fig. 5: Physicochemical and structural parameter table, one row per candidate.</figcaption></figure>
+          </li>
+          <li><strong>FlashTAP</strong>: a fast, TAP-like risk indicator.</li>
+          <li><strong>Position map and radar chart</strong>: each parameter is placed within a reference range derived from our clinical observations and estimates, shown with "pass, caution, exceeds, falls short" position labels, with axis notes and result analysis. These are position labels, not a pass/fail judgement from wet-lab work, and not a release criterion.
+            <figure class="shot"><div class="frame-bar"></div><img src="assets/fig05_position_map_radar.png" alt="Position map and radar chart, with the light-green band marking the common range"><figcaption>▲ Fig. 6: Position map and radar chart (the light-green band is the common range).</figcaption></figure>
+          </li>
+          <li><strong>Experimental-value entry table</strong>: clients enter their own measured values (Tm, expression, HIC, SMAC, AC-SINS, PSR, accelerated-stability slope, BVP, etc.); the system marks the position against thresholds and reminds the user to run a same-condition head-to-head comparison with a clinical antibody.</li>
+          <li><strong>Knowledge base</strong>: an "Assays and developability" page explains the meaning, risk direction, relationship to developability, and limitations of each experimental and computed parameter.
+            <figure class="shot"><div class="frame-bar"></div><img src="assets/fig06_kb_assays.png" alt="Knowledge base &quot;Assays and developability&quot; page"><figcaption>▲ Fig. 7: Knowledge base, "Assays and developability" page.</figcaption></figure>
+          </li>
+        </ul>
+
+        <h3 class="subcap">Risk-site optimization</h3>
+        <p>CDR and FR risk sites are presented separately. CDR sites involve binding, so only formulation and process hints are given; FR sites carry specific substitution suggestions and alternatives, staying conservative at positions such as conserved tryptophans. Once the client ticks a selection, an optimized sequence is generated in one click, can be exported as FASTA, and can be added back into the assessment table to be re-evaluated, using the whole-antibody, CDR-only, and FR-only views to see whether it improved.</p>
+        <figure class="shot"><div class="frame-bar"></div><img src="assets/fig07_risk_sites.png" alt="Risk sites and optimization suggestions (CDR / FR split tables, able to generate an optimized sequence)"><figcaption>▲ Fig. 8: Risk sites and optimization suggestions (CDR / FR split tables; an optimized sequence can be generated).</figcaption></figure>
+
+        <h3 class="subcap">CMC formulation optimization and advice</h3>
+        <ul>
+          <li><strong>Tiered advice</strong>: for the subcutaneous and intravenous administration routes, each with high, medium, and low concentration tiers, giving pH, buffer system, excipients, and viscosity risk.
+            <figure class="shot"><div class="frame-bar"></div><img src="assets/fig08_formulation.png" alt="Submission choices and formulation advice (subcutaneous and intravenous; high, medium, low concentration tiers)"><figcaption>▲ Fig. 9: Submission choices and formulation advice (subcutaneous and intravenous; high, medium, and low concentration tiers).</figcaption></figure>
+          </li>
+          <li><strong>Formulation numbers and comparison</strong>: a formulation number is given, along with marketed molecules physicochemically similar to the client's sequence as references.</li>
+          <li><strong>Levers linked to formulations</strong>: each risk site corresponds to a formulation lever (for example, an oxidation site corresponds to practices that suppress oxidation), linked to specific formulation entries in the knowledge base (a few references at most).</li>
+          <li><strong>Report</strong>: a "Formulation advice and rationale" page lists composition, pH, excipients, viscosity notes, and lever rationale, marked as rule-based hints that need experimental validation.
+            <figure class="shot"><div class="frame-bar"></div><img src="assets/fig10_report.png" alt="Comprehensive report, &quot;Formulation advice and rationale&quot; (rule-based hints, require experimental validation)"><figcaption>▲ Fig. 10: Comprehensive report, "Formulation advice and rationale" (rule-based hints; require experimental validation).</figcaption></figure>
+          </li>
+        </ul>
+        <p>Formulation-related output is advice based on rules and surrogate indicators; it is not a viscosity-prediction model and not an experimentally validated conclusion.</p>
+      </div>
+    </section>
+
+    <!-- Privacy -->
+    <section class="block" id="privacy">
+      <div class="wrap">
+        <h2>Privacy and information security</h2>
+        <p class="intro">Privacy and information security are a premise of the product. The table below lists the measures already implemented in the web edition; each has been independently reviewed and validated.</p>
+        <div class="table-wrap">
+          <table class="data">
+            <thead><tr><th>Aspect</th><th>Measure</th></tr></thead>
+            <tbody>
+              <tr><td data-label="Aspect">Data isolation</td><td data-label="Measure">Each client's sequence library and jobs are kept under their own account and invisible to other accounts; accessing another account's job and accessing a non-existent job return exactly the same result; trial example sequences are shared read-only.</td></tr>
+              <tr><td data-label="Aspect">Access control</td><td data-label="Measure">Login authentication, with accounts opened by our invitation; account identity is passed in and verified by the access layer, and identity headers forged by the client are discarded; without a valid identity, write operations are refused outright.</td></tr>
+              <tr><td data-label="Aspect">Algorithm and database confidentiality</td><td data-label="Measure">Pages and interfaces do not show source names, database names, sample sizes, or literature citations; external output drops internal fields and uses neutral codes for internal references; page scripts are minified and stripped of comments; public interfaces are rate-limited.</td></tr>
+              <tr><td data-label="Aspect">Network security</td><td data-label="Measure">HTTPS site-wide, with HSTS, security headers, hidden server version, rate limiting, and request-body size limits; the old direct-connect ports are closed to the outside.</td></tr>
+              <tr><td data-label="Aspect">Client-side state</td><td data-label="Measure">Analysis state and drafts are stored only in the client's own browser and not uploaded to the server; "New analysis" clears them in one click.</td></tr>
+              <tr><td data-label="Aspect">Backup and recovery</td><td data-label="Measure">Daily consistent backups of the sequence library and account information, weekly recovery tests, health checks, and alerting.</td></tr>
+              <tr><td data-label="Aspect">Audit and change</td><td data-label="Measure">Every release is first independently reviewed, then accepted in an isolated environment, independently verified by another person, with a rollback option kept ready at all times.</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p><strong>Data statement</strong>: the platform stores the sequences, computed results, and library entries a client submits. Only the client's own account can see them; operations staff access them only for operations and for deletion at the client's request. They are kept until the client asks for deletion, after which they remain in backups for at most about two more months. For deletion requests, contact the TheraMab team member who opened your account.</p>
+        <div class="amber"><strong>Boundaries, stated plainly</strong>: at present we use account-level data isolation and access control, without third-party security certification or an independent penetration test; backups are currently on the same host, with an off-site copy not yet in place; operations staff can read private data files at the server level. For highly sensitive sequences, we recommend the locally run desktop edition.</div>
+      </div>
+    </section>
+
+    <!-- IO -->
+    <section class="block" id="io">
+      <div class="wrap">
+        <h2>Inputs, outputs, and how to use</h2>
+        <div class="table-wrap">
+          <table class="data">
+            <thead><tr><th>Stage</th><th>What is supported</th></tr></thead>
+            <tbody>
+              <tr><td data-label="Stage">Input</td><td data-label="What is supported">Paste the variable region or full sequence of the heavy and light chains into the text box (signal peptide and constant region are trimmed automatically); batch-upload CSV, FASTA, or Excel, with templates and format notes; up to 12 pairs assessed at a time.</td></tr>
+              <tr><td data-label="Stage">Humanization result</td><td data-label="What is supported">Several framework pairings, with sequences for four back-mutation levels per pairing, plus a humanness and physicochemical assessment.</td></tr>
+              <tr><td data-label="Stage">Assessment result</td><td data-label="What is supported">Position map, radar chart, parameter table, risk-site table, FlashTAP, and CMC summary.</td></tr>
+              <tr><td data-label="Stage">Optimization result</td><td data-label="What is supported">Substitution suggestions and optimized sequences (exportable as FASTA, able to re-enter assessment).</td></tr>
+              <tr><td data-label="Stage">Formulation result</td><td data-label="What is supported">Tiered subcutaneous and intravenous formulation advice, formulation numbers, and similar marketed molecules.</td></tr>
+              <tr><td data-label="Stage">Export</td><td data-label="What is supported">Sequences (FASTA), score tables (CSV), and a comprehensive report (including a printable "Formulation advice and rationale" page).</td></tr>
+              <tr><td data-label="Stage">Sequence library</td><td data-label="What is supported">Candidate sequences can enter the client's own account library, organized by target, clone, and variant; duplicate sequences are flagged as "already exists" and existing records are not overwritten.</td></tr>
+              <tr><td data-label="Stage">Language</td><td data-label="What is supported">Chinese and English interfaces.</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p>Sequences that are already fully human or humanized by other software go directly into assessment, with output of physicochemical parameters, FlashTAP, SAP and A3D, risk sites with regions, and formulation advice.</p>
+      </div>
+    </section>
+
+    <!-- Limits -->
+    <section class="block" id="limits">
+      <div class="wrap">
+        <h2>Scope and limitations</h2>
+        <p class="intro">This is a reference tool for scientific research and early R&amp;D. The following boundaries should be known to the client in advance.</p>
+        <ul>
+          <li><strong>Position labels are not experimental results</strong>: "pass, caution, exceeds, falls short" indicate where a candidate sits within a reference range, not the success or failure of wet-lab work, and not a release condition. Thresholds change with experimental conditions, so a same-condition comparison with a clinical antibody is recommended.</li>
+          <li><strong>Formulation is rule-based advice</strong>: it is based on rules and surrogate indicators, not a viscosity-prediction model, and needs experimental validation.</li>
+          <li><strong>Humanness comparison for external sequences has gaps</strong>: for sequences that are already fully human or designed by other software, there is no OASis humanness score; when no parental sequence is provided, comparisons to the parent (loops, H3, Vernier, interface, back-mutations) are shown as not assessed.</li>
+          <li><strong>Unsupported molecule formats</strong>: single-chain antibodies (scFv) and nanobodies (VHH) are not supported at present.</li>
+          <li><strong>Scale limits</strong>: up to 12 pairs assessed at a time; the assessment interface allows at most 15 calls per 5 minutes.</li>
+          <li><strong>Security boundary</strong>: see "Boundaries, stated plainly" in the previous section.</li>
+        </ul>
+        <div class="amber">This product is for scientific research and early R&amp;D reference only; it does not constitute a basis for clinical decisions, diagnosis, treatment, or regulatory submission. Before any candidate enters development, it needs independent judgement by qualified personnel together with experiments and regulatory requirements.</div>
+      </div>
+    </section>
+
+    <!-- Roadmap -->
+    <section class="block" id="roadmap">
+      <div class="wrap">
+        <h2>Roadmap and statement</h2>
+        <p class="intro"><strong>Coming soon</strong> (with the next version): on page 1, an "already fully human, go directly to developability analysis" option and a "New analysis" button; format notes and a CSV template for batch upload, with automatic assessment after import; formulation numbers, similar marketed molecules, and substitution suggestions for optimized sequences; restoring analysis state from any return path; and a data-and-privacy page.</p>
+        <p><strong>Planned, scheduled as demand dictates</strong>:</p>
+        <ul>
+          <li>Connect OASis humanness scoring to the assessment of external sequences.</li>
+          <li>Save formulation and lever rationale for newly added library sequences, so the comprehensive report is more complete for them.</li>
+          <li>A feasibility study of high-concentration viscosity-prediction models (licensing, validation, compute).</li>
+          <li>An off-site backup copy.</li>
+        </ul>
+        <div class="amber"><strong>Statement</strong>: this whitepaper describes the product as it is designed today and the capabilities already validated. The content is for scientific research and early R&amp;D reference only; it does not constitute a basis for clinical decisions, diagnosis, treatment, or regulatory submission, and does not guarantee a candidate's performance in experiments. Versions and features are as actually delivered.</div>
+      </div>
+    </section>
+  </main>
+
+  <!-- CTA footer -->
+  <footer class="cta" id="trial">
     <div class="wrap">
-      <h2>Product demo video</h2>
-      <p class="intro">A walkthrough of the TheraMab web edition (about 4 min 41 s) uses a public example antibody, was recorded in an isolated test environment, and contains no client data.</p>
-      <p class="banner-note">To view the full walkthrough video, email contact@insynbio.com for access.</p>
+      <h2>Trial and contact</h2>
+      <p class="sub">A technical-demonstration product.</p>
+      <div class="cta-actions">
+        <a class="btn btn-primary" href="mailto:contact@therasik.com?subject=TheraMab%20trial%20request">Request a trial</a>
+        <a class="btn btn-ghost" href="assets/TheraMab_Whitepaper_2026_en.pdf" download="TheraMab_Whitepaper_2026_en.pdf">Download the whitepaper (PDF)</a>
+      </div>
+      <p class="cta-note">To trial TheraMab, or to request materials beyond this whitepaper, please email the TheraSik address. We open the web-edition trial by account invitation. For highly sensitive sequences, a locally run desktop edition is available on request.</p>
+      <p class="cta-contacts">
+        <span>Contact: <a href="mailto:contact@therasik.com">contact@therasik.com</a></span>
+      </p>
+      <p class="fineprint">This whitepaper describes the product as it is designed today and the capabilities already validated. It is for scientific research and early R&amp;D reference only; versions and features are as actually delivered.</p>
     </div>
-  </section>
-
-  <section class="block" id="background">
-    <div class="wrap">
-      <h2>Background and challenges</h2>
-      <p class="intro">In early antibody R&amp;D, sequence design and developability judgments are usually spread across several tools and several people, so information is hard to connect. Three problems come up again and again.</p>
-      <div class="how">
-        <div class="how-step"><p class="how-num" aria-hidden="true">1</p><h3>Humanization and developability are disconnected</h3><p>Humanization is done in one tool and developability in another; changing one sequence means exporting and re-importing, and the trade-offs of back-mutation and their effect on developability cannot be seen on the same chart.</p></div>
-        <div class="how-step"><p class="how-num" aria-hidden="true">2</p><h3>Risk is only numbers, with no sense of position</h3><p>A single physicochemical parameter lacks a reference, so the team cannot tell whether a value is high or low, nor in which direction to optimize.</p></div>
-        <div class="how-step"><p class="how-num" aria-hidden="true">3</p><h3>Formulation and sequence are considered separately</h3><p>Formulation is only considered after the sequence is fixed; by the time viscosity or aggregation problems appear it is already late, and there is no direct link between risk sites and formulation levers.</p></div>
-      </div>
-      <p class="note">Sequences are a client's most core asset. TheraMab makes the three things above a single workflow, while treating privacy and information security as a prerequisite of the product rather than an add-on.</p>
-    </div>
-  </section>
-
-  <section class="block" id="overview">
-    <div class="wrap">
-      <h2>Product overview</h2>
-      <p class="intro">TheraMab offers a web edition and a desktop edition for two kinds of use, sharing the same assessment logic and the same way of interpreting results.</p>
-      <div class="table-wrap">
-        <table class="data">
-          <thead><tr><th scope="col">Edition</th><th scope="col">Best suited for</th><th scope="col">Data handling</th><th scope="col">Status</th></tr></thead>
-          <tbody>
-            <tr><td data-label="Edition">Web edition</td><td data-label="Best suited for">Team collaboration, multi-user trials, no installation</td><td data-label="Data handling">Sequences and results stored under the account; accounts isolated; trial examples shared read-only</td><td data-label="Status">Live, by account invitation</td></tr>
-            <tr><td data-label="Edition">Desktop edition</td><td data-label="Best suited for">Settings more sensitive to data leaving the premises; runs locally</td><td data-label="Data handling">Data processed on the local machine</td><td data-label="Status">Available on request</td></tr>
-          </tbody>
-        </table>
-      </div>
-      <p><strong>What the client gets:</strong> multiple humanization designs; a humanness and developability assessment for each; risk sites and substitution suggestions; optimized sequences and their re-assessment; subcutaneous and intravenous formulation advice; and exportable reports, score tables, and sequence files.</p>
-      <p class="note">Two kinds of input: a non-human antibody (humanize first, then assess), or a sequence already fully human or humanized by other software (go directly to developability assessment).</p>
-    </div>
-  </section>
-
-  <section class="block" id="workflow">
-    <div class="wrap">
-      <h2>Workflow</h2>
-      <p class="intro">From the input sequence to the formulation advice, the client works through one continuous flow, and the result of each step carries over to the next.</p>
-      <div class="table-wrap">
-        <table class="data">
-          <thead><tr><th scope="col" class="nowrap">Step</th><th scope="col">What happens</th></tr></thead>
-          <tbody>
-            <tr><td data-label="Step">1 · Input</td><td data-label="What happens">Paste or upload the heavy and light chains (CSV, FASTA, Excel; templates provided). Non-human antibodies go through humanization; fully human or humanized sequences go directly to developability assessment.</td></tr>
-            <tr><td data-label="Step">2 · Humanization</td><td data-label="What happens">Several framework pairings, each with four back-mutation levels (none, conservative, balanced, aggressive). The client selects the pairings of interest; later assessment is shown only for those.</td></tr>
-            <tr><td data-label="Step">3 · Assessment</td><td data-label="What happens">Humanness, physicochemical developability, FlashTAP, and a CMC summary — each parameter shown within its reference range via a position map and radar chart.</td></tr>
-            <tr><td data-label="Step">4 · Optimization</td><td data-label="What happens">Risk sites split into CDR and FR tables. FR sites carry substitution suggestions; check them to generate an optimized sequence in one click.</td></tr>
-            <tr><td data-label="Step">5 · Re-assessment</td><td data-label="What happens">An optimized sequence added back is re-assessed automatically, with whole-antibody, CDR-only, and FR-only results, to see whether key parameters improved.</td></tr>
-            <tr><td data-label="Step">6 · Formulation advice</td><td data-label="What happens">Advice tiered for subcutaneous and intravenous routes, formulation codes, and physicochemically similar marketed molecules; each risk-site lever links to a formulation in the knowledge base.</td></tr>
-            <tr><td data-label="Step">7 · Library &amp; report</td><td data-label="What happens">Candidate sequences can enter the account library, and a comprehensive report including the formulation advice and its rationale is generated.</td></tr>
-          </tbody>
-        </table>
-      </div>
-      <div class="fig-grid">
-        <figure><div class="shot"><img src="whitepaper_theramab_en_assets/fig01_sequence_input.png" alt="Sequence input page (the demo has loaded the heavy and light chains of a public example antibody)." loading="lazy"></div><figcaption>Sequence input page (the demo has loaded the heavy and light chains of a public example antibody).</figcaption></figure>
-        <figure><div class="shot"><img src="whitepaper_theramab_en_assets/fig02_framework_pairing.png" alt="Frameworks and pairing — candidate light chains and the number of pairing records." loading="lazy"></div><figcaption>Frameworks and pairing — candidate light chains and the number of pairing records.</figcaption></figure>
-        <figure><div class="shot"><img src="whitepaper_theramab_en_assets/fig09_antibody_library.png" alt="The antibody library is organized by target, clone, and variant, with CMC parameters compared side by side." loading="lazy"></div><figcaption>The antibody library is organized by target, clone, and variant, with CMC parameters compared side by side.</figcaption></figure>
-      </div>
-      <p class="note">Analysis state is saved per job in the client's own browser; "New analysis" clears everything in one click without affecting sequences already in the library.</p>
-    </div>
-  </section>
-
-  <section class="block" id="capabilities">
-    <div class="wrap">
-      <h2>Core capabilities</h2>
-      <div class="cap">
-        <div class="tools-list">
-          <h3>Humanization</h3>
-          <p>Two paths in parallel: classic CDR grafting, and a neural-network (NN) design that keeps more of the parent framework. Both use four back-mutation levels and the same rules; they differ in starting point, so NN has fewer positions to consider.</p>
-        </div>
-        <figure><div class="shot"><img src="whitepaper_theramab_en_assets/fig03_final_alignment.png" alt="The final sequence aligned to the parent (blue marks changes, yellow marks back-mutation positions)." loading="lazy"></div><figcaption>The final sequence aligned to the parent (blue marks changes, yellow marks back-mutation positions).</figcaption></figure>
-      </div>
-      <div class="cap">
-        <div class="tools-list">
-          <h3>Developability and manufacturability assessment</h3>
-          <p>Physicochemical and structural parameters: instability index, hydrophobicity (GRAVY), chemical risk sites, pI, Fv net charge, the viscosity indicator FvCSP, hydrophobic patches (SAP), and aggregation propensity (A3D). FlashTAP gives a TAP-like rapid risk indicator.</p>
-          <p>Each parameter is placed in a reference range with "pass, caution, exceeds, falls short" position labels — not a pass/fail judgment from wet-lab work, and not a release criterion. Clients can also enter their own measured values (Tm, expression, HIC, SMAC, AC-SINS, PSR, accelerated-stability slope, BVP), and a knowledge-base page explains each assay.</p>
-        </div>
-        <div class="fig-grid">
-          <figure><div class="shot"><img src="whitepaper_theramab_en_assets/fig04_physchem_table.png" alt="Physicochemical and structural parameter table, one row per candidate." loading="lazy"></div><figcaption>Physicochemical and structural parameter table, one row per candidate.</figcaption></figure>
-          <figure><div class="shot"><img src="whitepaper_theramab_en_assets/fig05_position_map_radar.png" alt="Position map and radar chart (the light-green band is the common range)." loading="lazy"></div><figcaption>Position map and radar chart (the light-green band is the common range).</figcaption></figure>
-          <figure><div class="shot"><img src="whitepaper_theramab_en_assets/fig06_kb_assays.png" alt="Knowledge base, &quot;Assays and developability&quot; page." loading="lazy"></div><figcaption>Knowledge base, &quot;Assays and developability&quot; page.</figcaption></figure>
-        </div>
-      </div>
-      <div class="cap">
-        <div class="tools-list">
-          <h3>Risk-site optimization</h3>
-          <p>CDR and FR risk sites are shown separately. CDR sites (which involve binding) get formulation and process hints only; FR sites get specific substitution suggestions, with conservative handling for positions such as conserved tryptophan. Checked suggestions generate an optimized sequence that can be exported as FASTA or re-assessed.</p>
-        </div>
-        <figure><div class="shot"><img src="whitepaper_theramab_en_assets/fig07_risk_sites.png" alt="Risk sites and optimization suggestions (CDR / FR split tables; an optimized sequence can be generated)." loading="lazy"></div><figcaption>Risk sites and optimization suggestions (CDR / FR split tables; an optimized sequence can be generated).</figcaption></figure>
-      </div>
-      <div class="cap">
-        <div class="tools-list">
-          <h3>CMC formulation optimization and advice</h3>
-          <p>Tiered advice for subcutaneous and intravenous routes, each with high, medium, and low concentration tiers, giving pH, buffer system, excipients, and viscosity risk. A formulation code and physicochemically similar marketed molecules are provided, and each risk site maps to a formulation lever linked to specific knowledge-base entries.</p>
-        </div>
-        <div class="fig-grid">
-          <figure><div class="shot"><img src="whitepaper_theramab_en_assets/fig08_formulation.png" alt="Submission choices and formulation advice (subcutaneous and intravenous; high, medium, and low concentration tiers)." loading="lazy"></div><figcaption>Submission choices and formulation advice (subcutaneous and intravenous; high, medium, and low concentration tiers).</figcaption></figure>
-          <figure><div class="shot"><img src="whitepaper_theramab_en_assets/fig10_report.png" alt="Comprehensive report, &quot;Formulation advice and rationale&quot; (rule-based hints; require experimental validation)." loading="lazy"></div><figcaption>Comprehensive report, &quot;Formulation advice and rationale&quot; (rule-based hints; require experimental validation).</figcaption></figure>
-        </div>
-      </div>
-      <p class="note">The formulation-related outputs are suggestions based on rules and surrogate indicators; they are not a viscosity-prediction model and not experimentally validated conclusions.</p>
-    </div>
-  </section>
-
-  <section class="block" id="privacy">
-    <div class="wrap">
-      <h2>Privacy and information security</h2>
-      <p class="intro">Privacy and information security are a prerequisite of the product. The web edition already implements the measures below; each has been independently reviewed and validated.</p>
-      <div class="table-wrap">
-        <table class="data">
-          <thead><tr><th scope="col" class="nowrap">Aspect</th><th scope="col">Measure</th></tr></thead>
-          <tbody>
-            <tr><td data-label="Aspect">Data isolation</td><td data-label="Measure">Each client's library and jobs are stored under their own account and invisible to others; accessing another user's job and a non-existent job return the same result; trial examples are shared read-only.</td></tr>
-            <tr><td data-label="Aspect">Access control</td><td data-label="Measure">Login authentication, accounts opened by invitation; identity is verified by the access layer, client-forged identity headers are discarded, and without a valid identity all writes are rejected.</td></tr>
-            <tr><td data-label="Aspect">Algorithm &amp; database confidentiality</td><td data-label="Measure">Pages and interfaces do not show source names, database names, sample sizes, or citations; external outputs drop internal fields and use neutral codes; scripts are minified; public interfaces are rate-limited.</td></tr>
-            <tr><td data-label="Aspect">Network security</td><td data-label="Measure">Site-wide HTTPS, with HSTS, security headers, hidden server version, rate limiting, and request-body size limits; old direct-connect ports are closed.</td></tr>
-            <tr><td data-label="Aspect">Client-side state</td><td data-label="Measure">Analysis state and drafts are kept only in the client's own browser and are not uploaded; "New analysis" clears them in one click.</td></tr>
-            <tr><td data-label="Aspect">Backup &amp; recovery</td><td data-label="Measure">Daily consistency backups of the library and account information, weekly recovery tests, and health checks and alerts.</td></tr>
-            <tr><td data-label="Aspect">Audit &amp; change control</td><td data-label="Measure">Every release is independently reviewed, accepted in an isolated environment, and independently verified by another person, with a rollback method kept ready.</td></tr>
-          </tbody>
-        </table>
-      </div>
-      <p><strong>Data note:</strong> the platform stores the sequences, computed results, and library entries the client submits; only the client's own account can see them, and they are kept until deletion is requested, with at most about two more months retained in backups.</p>
-      <p class="banner-note">Boundaries, stated plainly: we currently use account-level data isolation and access control, without third-party security certification or an independent penetration test; backups are currently on the same host, with no off-site copy yet; operations staff can read private data files at the server level. For highly sensitive sequences, we recommend the locally run desktop edition.</p>
-    </div>
-  </section>
-
-  <section class="block" id="io">
-    <div class="wrap">
-      <h2>Inputs, outputs, and use</h2>
-      <div class="table-wrap">
-        <table class="data">
-          <thead><tr><th scope="col" class="nowrap">Stage</th><th scope="col">What is supported</th></tr></thead>
-          <tbody>
-            <tr><td data-label="Stage">Input</td><td data-label="What is supported">Paste variable regions or full sequences (signal peptide and constant region trimmed automatically); batch upload via CSV, FASTA, or Excel; up to 12 pairs assessed at a time.</td></tr>
-            <tr><td data-label="Stage">Humanization results</td><td data-label="What is supported">Multiple framework pairings, sequences at four back-mutation levels per pairing, with humanness and physicochemical assessment.</td></tr>
-            <tr><td data-label="Stage">Assessment results</td><td data-label="What is supported">Position maps, radar charts, parameter tables, risk-site tables, FlashTAP, and a CMC summary.</td></tr>
-            <tr><td data-label="Stage">Optimization results</td><td data-label="What is supported">Substitution suggestions and optimized sequences (exportable as FASTA, re-assessable).</td></tr>
-            <tr><td data-label="Stage">Formulation results</td><td data-label="What is supported">Advice tiered for subcutaneous and intravenous routes, formulation codes, and similar marketed molecules.</td></tr>
-            <tr><td data-label="Stage">Export</td><td data-label="What is supported">Sequences (FASTA), score table (CSV), and a comprehensive report with a printable "Formulation advice and rationale" page.</td></tr>
-            <tr><td data-label="Stage">Sequence library</td><td data-label="What is supported">Candidates organized by target, clone, and variant; a duplicate is flagged as "already exists" and does not overwrite an existing record.</td></tr>
-            <tr><td data-label="Stage">Language</td><td data-label="What is supported">Chinese and English interfaces.</td></tr>
-          </tbody>
-        </table>
-      </div>
-      <p class="note">A fully human antibody, or a sequence humanized by other software, goes directly to assessment, with physicochemical parameters, FlashTAP, SAP and A3D, region-annotated risk sites, and formulation advice as output.</p>
-    </div>
-  </section>
-
-  <section class="block" id="limits">
-    <div class="wrap">
-      <h2>Scope and limitations</h2>
-      <p class="intro">This is a reference tool for scientific research and early R&amp;D; the following boundaries should be known in advance.</p>
-      <div class="split-2">
-        <div>
-          <h3>Position labels are not experimental results</h3>
-          <p>"Pass, caution, exceeds, falls short" indicate where a candidate sits within the reference range, not wet-lab success/failure, and not a release condition. We recommend a same-condition comparison against a clinical antibody.</p>
-          <h3>Formulation is rule-based advice</h3>
-          <p>Based on rules and surrogate indicators, not a viscosity-prediction model, and needs experimental validation.</p>
-        </div>
-        <div>
-          <h3>Humanness comparison for external sequences has gaps</h3>
-          <p>For fully human or externally designed sequences there is no OASis humanness score; without a parent sequence, comparison to the parent (loops, H3, Vernier, interface, back-mutation) is shown as not assessed.</p>
-          <h3>Unsupported formats and scale</h3>
-          <p>Single-chain antibodies (scFv) and nanobodies (VHH) are not currently supported. Up to 12 pairs per run; the assessment interface allows at most 15 calls per 5 minutes.</p>
-        </div>
-      </div>
-      <p class="banner-note">This product is for scientific research and early R&amp;D reference and is not a basis for clinical decisions, diagnosis, treatment, or regulatory submissions. Before any candidate enters development, it needs an independent judgment by qualified personnel together with experiments and regulatory requirements.</p>
-    </div>
-  </section>
-
-  <section class="block" id="roadmap">
-    <div class="wrap">
-      <h2>Roadmap and disclaimer</h2>
-      <div class="split-2">
-        <div>
-          <h3>Coming soon (next release)</h3>
-          <p>An "already fully human — go straight to developability analysis" option and a "New analysis" button; format notes and a CSV template for batch upload with automatic assessment; formulation codes, similar marketed molecules, and substitution suggestions for optimized sequences; restoring analysis state from any return path; and a data and privacy page.</p>
-        </div>
-        <div>
-          <h3>Planned, as demand dictates</h3>
-          <p>Connecting the OASis humanness score into the assessment of external sequences; saving formulation and lever rationale for newly stored sequences; a feasibility study of high-concentration viscosity-prediction models (licensing, validation, compute); and an off-site backup copy.</p>
-        </div>
-      </div>
-      <p class="note">Disclaimer: this page describes the product's current design and the capabilities validated so far. It is for scientific research and early R&amp;D reference only and is not a basis for clinical decisions, diagnosis, treatment, or regulatory submissions; it does not guarantee a candidate's performance in experiments. Versions and features are as actually delivered.</p>
-    </div>
-  </section>
-
-</main>
-
-<footer class="cta" id="request-trial">
-  <div class="wrap">
-    <h2>Request a TheraMab trial</h2>
-    <p class="sub">Web edition by account invitation</p>
-    <div class="cta-actions">
-      <a class="btn btn-primary" href="mailto:contact@insynbio.com?subject=TheraMab%20trial%20request">Request a trial</a>
-      <a class="btn btn-ghost" href="https://insynbio.com"><span>Visit insynbio.com</span></a>
-    </div>
-    <p class="cta-note">To try TheraMab, or to request materials beyond this page, email contact@insynbio.com. We open web-edition trials by account invitation.</p>
-    <p class="cta-contacts"><span>Email: contact@insynbio.com</span><span>Web edition: by account invitation</span></p>
-    <p class="fineprint">A validation-stage product. For scientific research and early R&amp;D reference only; not clinical, diagnostic, therapeutic, or regulatory advice. © 2026 InSynBio</p>
-  </div>
-</footer>
+  </footer>
 </body>
+
 </html>
