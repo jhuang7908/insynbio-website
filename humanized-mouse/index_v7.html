@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Next-Generation In Vivo System for Antibody Discovery and Evaluation</title>
+  <meta name="description" content="A non-confidential introduction in three directions: limitations of human antibody transgenic in vivo model platforms, transgenic humanized mice, and human immune system (HIS) mice.">
+  <meta name="robots" content="index,follow">
+  <link rel="canonical" href="https://insynbio.com/humanized-mouse/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="InSynBio">
+  <meta property="og:title" content="Next-Generation In Vivo System for Antibody Discovery and Evaluation">
+  <meta property="og:description" content="A non-confidential introduction organized in three directions: human antibody transgenic in vivo model platforms, transgenic humanized mice, and human immune system (HIS) mice.">
+  <meta property="og:url" content="https://insynbio.com/humanized-mouse/">
+  <meta property="og:locale" content="en_US">
+  <style>
+
+
+    /* ===== BRAND TOKENS (keep in sync with #site-config) =====
+       Visual tokens and layout copied from the InSynBio public page style.
+    */
+    :root {
+      --brand-name: "InSynBio";
+      --site-host: "insynbio.com";
+      --saas-host: "";
+      --wechat: "";
+
+      --bg: #f5f8f5;
+      --ink: #123f37;
+      --teal: #087f72;
+      --teal-hover: #06665c;
+      --body: #465952;
+      --muted: #788a83;
+      --card: #ffffff;
+      --head-bg: #e4ece7;
+      --band: #e4ece7;
+      --border: #c7d2cc;
+      --line: #d5ded9;
+      --shadow: 0 1px 2px rgba(18, 63, 55, 0.05), 0 8px 24px rgba(18, 63, 55, 0.06);
+      --radius: 10px;
+      --max: 960px;
+      --font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--body);
+      font-family: var(--font);
+      font-size: 17px;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+    img { max-width: 100%; height: auto; display: block; }
+    a { color: var(--teal); text-decoration-thickness: 1px; text-underline-offset: 2px; }
+    a:hover { color: var(--teal-hover); }
+    a:focus-visible {
+      outline: 2px solid var(--teal);
+      outline-offset: 2px;
+    }
+
+    .skip {
+      position: absolute;
+      left: -999px;
+      top: 8px;
+      background: var(--card);
+      color: var(--ink);
+      padding: 8px 12px;
+      z-index: 20;
+    }
+    .skip:focus { left: 8px; }
+
+    .wrap {
+      width: min(var(--max), calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    /* ----- Hero (slide 1) ----- */
+    .hero {
+      padding: 48px 0 56px;
+    }
+    .brand {
+      font-size: 28px;
+      font-weight: 650;
+      color: var(--teal);
+      letter-spacing: -0.02em;
+      margin: 0 0 36px;
+    }
+    .hero h1 {
+      margin: 0 0 18px;
+      color: var(--ink);
+      font-size: clamp(28px, 5vw, 42px);
+      line-height: 1.2;
+      font-weight: 700;
+      letter-spacing: -0.025em;
+    }
+    .lede {
+      margin: 0 0 10px;
+      font-size: clamp(17px, 2.2vw, 20px);
+      color: var(--ink);
+      font-weight: 500;
+    }
+    .lede + .lede { margin-bottom: 32px; font-weight: 500; }
+
+    .pills {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin: 0 0 32px;
+      padding: 0;
+      list-style: none;
+    }
+    .pills li {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 14px 12px;
+      text-align: center;
+      color: var(--teal);
+      font-weight: 600;
+      font-size: 14.5px;
+      line-height: 1.35;
+    }
+    .mvp {
+      margin: 0 0 18px;
+      color: var(--teal);
+      font-weight: 650;
+      font-size: clamp(16px, 2vw, 20px);
+      line-height: 1.45;
+    }
+    .hero-contacts {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14.5px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px 18px;
+    }
+    .hero-contacts a { color: var(--muted); }
+
+    /* ----- Sections ----- */
+    section.block {
+      padding: 8px 0 48px;
+    }
+    section.block h2 {
+      margin: 0 0 16px;
+      color: var(--ink);
+      font-size: clamp(24px, 3.4vw, 32px);
+      line-height: 1.25;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+    .intro {
+      margin: 0 0 22px;
+      font-size: 17.5px;
+      color: var(--ink);
+    }
+    h3 {
+      margin: 0 0 8px;
+      color: var(--teal);
+      font-size: 18.5px;
+      font-weight: 650;
+      letter-spacing: -0.01em;
+    }
+    p { margin: 0 0 12px; }
+    p:last-child { margin-bottom: 0; }
+
+    .split-2 {
+      display: grid;
+      gap: 24px 40px;
+      margin: 0 0 28px;
+    }
+    .role, .callout {
+      margin-top: 8px;
+    }
+    .note {
+      margin: 18px 0 0;
+      color: var(--muted);
+      font-size: 14.5px;
+      line-height: 1.55;
+    }
+
+    /* ----- Tables ----- */
+    .table-wrap { width: 100%; }
+    table.data {
+      width: 100%;
+      border-collapse: collapse;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      overflow: hidden;
+      font-size: 16px;
+    }
+    table.data th,
+    table.data td {
+      text-align: left;
+      vertical-align: top;
+      padding: 14px 16px;
+      border-bottom: 1px solid var(--border);
+    }
+    table.data tr:last-child td { border-bottom: 0; }
+    table.data th {
+      background: var(--head-bg);
+      color: var(--ink);
+      font-weight: 650;
+    }
+    table.data td.num {
+      font-variant-numeric: tabular-nums;
+      white-space: nowrap;
+    }
+
+    /* Mobile: stack tables as cards */
+    @media (max-width: 640px) {
+      table.data, table.data thead, table.data tbody, table.data tr, table.data th, table.data td {
+        display: block;
+      }
+      table.data {
+        border: 0;
+        background: transparent;
+        overflow: visible;
+      }
+      table.data thead { display: none; }
+      table.data tr {
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        margin-bottom: 12px;
+        padding: 4px 0 8px;
+      }
+      table.data td {
+        border: 0;
+        padding: 8px 16px;
+      }
+      table.data td::before {
+        content: attr(data-label);
+        display: block;
+        color: var(--teal);
+        font-weight: 650;
+        font-size: 13.5px;
+        margin-bottom: 2px;
+      }
+      table.data td.num { white-space: normal; }
+    }
+
+    /* ----- Capability layout ----- */
+    .cap {
+      display: grid;
+      gap: 24px;
+      margin-bottom: 20px;
+    }
+    .tools-list h3 { margin-top: 18px; }
+    .tools-list h3:first-child { margin-top: 0; }
+    .tools-list p { color: var(--body); }
+    .shot {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+    .shot img { width: 100%; }
+    figure { margin: 0; }
+    figcaption {
+      margin-top: 8px;
+      color: var(--muted);
+      font-size: 13.5px;
+      line-height: 1.45;
+    }
+    .diy {
+      display: grid;
+      gap: 6px 20px;
+      background: var(--band);
+      border-radius: var(--radius);
+      padding: 16px 18px;
+      margin-top: 8px;
+    }
+    .diy h3 { margin: 0; }
+    .banner-note {
+      background: var(--band);
+      border-radius: var(--radius);
+      padding: 12px 16px;
+      color: var(--ink);
+      font-weight: 600;
+      margin: 0 0 20px;
+    }
+
+    /* ----- End-to-end flow ----- */
+    .flow {
+      display: grid;
+      gap: 10px;
+    }
+    .flow-card, .flow-chip {
+      background: var(--band);
+      border: 1px solid #d4e0da;
+      border-radius: 8px;
+      padding: 14px 16px;
+      text-align: center;
+    }
+    .flow-card h3 { margin-bottom: 4px; }
+    .flow-card p { color: var(--body); font-size: 15px; }
+    .flow-chip {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 56px;
+      color: var(--teal);
+      font-weight: 650;
+      font-size: 16px;
+    }
+    .flow-arrow {
+      display: none;
+    }
+
+    /* ----- Case / workflow layouts ----- */
+    .case, .wf {
+      display: grid;
+      gap: 20px 28px;
+    }
+    .case-copy h3, .wf-copy h3 { margin-top: 16px; }
+    .case-copy h3:first-child, .wf-copy h3:first-child { margin-top: 0; }
+    .fig-grid {
+      display: grid;
+      gap: 16px;
+    }
+    .fig-grid figure .shot, .wf-shot .shot { margin: 0; }
+    .seq-figs {
+      display: grid;
+      gap: 16px;
+      justify-items: center;
+    }
+    .seq-figs .shot { width: 100%; }
+    .seq-figs .shot.narrow img {
+      margin: 0 auto;
+      width: auto;
+      max-width: 100%;
+    }
+
+    /* ----- Footer CTA ----- */
+    .cta {
+      background: var(--head-bg);
+      padding: 40px 0 48px;
+      margin-top: 8px;
+    }
+    .cta h2 {
+      margin: 0 0 8px;
+      color: var(--ink);
+      font-size: clamp(24px, 3.4vw, 32px);
+      line-height: 1.25;
+    }
+    .cta .sub {
+      margin: 0 0 22px;
+      color: var(--teal);
+      font-weight: 650;
+      font-size: 18px;
+    }
+    .cta-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px 12px;
+      margin: 0 0 20px;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px 18px;
+      border-radius: 8px;
+      font-weight: 650;
+      text-decoration: none;
+      font-size: 16px;
+    }
+    .btn-primary {
+      background: var(--teal);
+      color: #fff;
+    }
+    .btn-primary:hover { background: var(--teal-hover); color: #fff; }
+    .btn-ghost {
+      background: var(--card);
+      color: var(--teal);
+      border: 1px solid var(--border);
+    }
+
+    .cta-note {
+      margin: 0 0 18px;
+      color: var(--body);
+      font-size: 15.5px;
+      line-height: 1.55;
+      max-width: 40em;
+    }
+    .cta-contacts {
+      margin: 0;
+      color: var(--body);
+      font-size: 16px;
+    }
+    .cta-contacts span { display: inline-block; margin-right: 18px; }
+    .fineprint {
+      margin: 14px 0 0;
+      color: var(--muted);
+      font-size: 14.5px;
+    }
+
+
+    .nowrap { white-space: nowrap; }
+    .group-label {
+      margin: 0 0 12px;
+      color: var(--ink);
+      font-size: 16px;
+      font-weight: 650;
+    }
+    .tools-list .group-label + h3 { margin-top: 0; }
+    .btn { gap: 0.35em; }
+
+
+    /* ----- How it works ----- */
+    .how {
+      display: grid;
+      gap: 14px;
+    }
+    .how-step {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 18px 18px 20px;
+    }
+    .how-num {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 28px;
+      height: 28px;
+      margin: 0 0 10px;
+      border-radius: 50%;
+      background: var(--band);
+      color: var(--teal);
+      font-weight: 700;
+      font-size: 15px;
+      font-variant-numeric: tabular-nums;
+    }
+    .how-step h3 { margin: 0 0 8px; }
+    .how-step p { color: var(--body); }
+
+    /* ----- Desktop ----- */
+    @media (min-width: 720px) {
+      .hero { padding: 64px 0 72px; }
+      .pills {
+        grid-template-columns: repeat(4, 1fr);
+      }
+      .pills li { padding: 16px 10px; font-size: 15px; }
+
+      table.data th.nowrap,
+      table.data td.nowrap { white-space: nowrap; }
+      .how { grid-template-columns: 1fr 1fr 1fr; align-items: stretch; }
+      .split-2 { grid-template-columns: 1fr 1fr; }
+      .cap { grid-template-columns: 0.9fr 1.2fr; align-items: start; }
+      .diy { grid-template-columns: auto 1fr; align-items: center; }
+      .case { grid-template-columns: 0.85fr 1.4fr; align-items: start; }
+      .wf { grid-template-columns: 0.72fr 1.5fr; align-items: start; }
+      .fig-grid.her2 {
+        grid-template-columns: 1fr 1fr;
+      }
+      .fig-grid.her2 .span-2 { grid-column: 1 / -1; }
+      .seq-figs {
+        grid-template-columns: 1fr 1fr;
+        align-items: start;
+      }
+      .seq-figs .map { grid-row: 1 / span 2; grid-column: 1; }
+      .flow {
+        grid-template-columns: repeat(12, 1fr);
+        gap: 12px;
+      }
+      .flow-target { grid-column: 1 / -1; }
+      .flow-binder { grid-column: 1 / 9; }
+      .flow-vaccine { grid-column: 9 / -1; }
+      .flow-ab { grid-column: 1 / 3; }
+      .flow-bi { grid-column: 3 / 5; }
+      .flow-adc { grid-column: 5 / 7; }
+      .flow-car { grid-column: 7 / 9; }
+      .flow-vaxdes { grid-column: 9 / -1; }
+      .flow-seq { grid-column: 2 / 12; }
+    }
+
+    @media (min-width: 900px) {
+      body { font-size: 17.5px; }
+      .wrap { width: min(var(--max), calc(100% - 48px)); }
+    }
+
+    /* ----- Page-specific additions (humanized-mouse) ----- */
+    .kicker {
+      display: inline-block;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: 6px 14px;
+      color: var(--teal);
+      font-weight: 650;
+      font-size: 13.5px;
+      letter-spacing: 0.01em;
+      margin: 0 0 18px;
+    }
+    .aim {
+      margin: -4px 0 18px;
+      color: var(--teal);
+      font-weight: 650;
+      font-size: clamp(16px, 2vw, 18.5px);
+      line-height: 1.45;
+    }
+    table.data td.issue {
+      font-weight: 650;
+      color: var(--ink);
+    }
+    @media (min-width: 641px) {
+      table.data td.issue,
+      table.data th.issue {
+        width: 28%;
+      }
+    }
+
+
+  
+  
+    ol.refs {
+      margin: 0;
+      padding-left: 1.4em;
+      color: var(--body);
+      font-size: 15.5px;
+      line-height: 1.55;
+    }
+    ol.refs li { margin: 0 0 10px; }
+    ol.refs li:last-child { margin-bottom: 0; }
+  </style>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <header class="hero">
+    <div class="wrap">
+      <p class="brand">InSynBio</p>
+      <p class="kicker">Non-confidential joint-development introduction</p>
+      <h1>Next-Generation In Vivo System for Antibody Discovery and Evaluation</h1>
+      <p class="lede">This project seeks joint-development partners among biopharmaceutical companies to build a next-generation in vivo system for antibody discovery and evaluation.</p>
+      <p class="lede">The tables below are organized in three directions: (1) limitations of current human antibody transgenic in vivo model platforms; (2) limitations of current transgenic humanized mice; and (3) limitations of current human immune system (HIS) mice.</p>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="block" id="discovery-gaps">
+      <div class="wrap">
+        <h2>1. Limitations of current human antibody transgenic in vivo model platforms</h2>
+        <p class="aim">Aim: obtain higher-quality candidates that are truly developable as drugs.</p>
+        <div class="table-wrap">
+          <table class="data">
+            <thead>
+              <tr>
+                <th class="issue" scope="col">Functional issue</th>
+                <th scope="col">Actual limitations of existing platforms</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="issue" data-label="Functional issue">Nanobody / single-domain antibody quality</td>
+                <td data-label="Actual limitations of existing platforms">Candidates obtained on some platforms show uneven affinity, epitope coverage, stability, and nonspecificity, and still require extensive engineering optimization afterward.</td>
+              </tr>
+              <tr>
+                <td class="issue" data-label="Functional issue">Weak antigens and difficult targets</td>
+                <td data-label="Actual limitations of existing platforms">Weakly immunogenic antigens, conserved targets, membrane proteins, and conformation-dependent epitopes make it difficult to elicit a sufficiently diverse and functionally potent antibody response.</td>
+              </tr>
+              <tr>
+                <td class="issue" data-label="Functional issue">Affinity and breadth</td>
+                <td data-label="Actual limitations of existing platforms">High affinity against a single antigen or a single epitope does not equal a functional advantage; coverage of different subtypes, mutants, or related targets may be insufficient.</td>
+              </tr>
+              <tr>
+                <td class="issue" data-label="Functional issue">Immunogenicity remains</td>
+                <td data-label="Actual limitations of existing platforms">&ldquo;Fully human&rdquo; or &ldquo;humanized&rdquo; does not equal zero immunogenicity; unique variable regions, non-natural sequences, aggregation, and nonspecific binding can all create risk.</td>
+              </tr>
+              <tr>
+                <td class="issue" data-label="Functional issue">Affinity is not developability</td>
+                <td data-label="Actual limitations of existing platforms">High-affinity antibodies may still present development risks such as low expression, aggregation, high viscosity, poor stability, polyspecificity, or abnormal clearance.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section class="block" id="other-transgenic-gaps">
+      <div class="wrap">
+        <h2>2. Limitations of current transgenic humanized mice</h2>
+        <p class="intro">This section concerns transgenic humanized mice other than human antibody transgenic in vivo models, including human target or gene knock-in mice. Related limitations in using these models for antibody-drug evaluation are included here.</p>
+        <div class="table-wrap">
+          <table class="data">
+            <thead>
+              <tr>
+                <th class="issue" scope="col">Functional issue</th>
+                <th scope="col">Actual limitations of existing platforms</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="issue" data-label="Functional issue">Single-gene humanization does not recreate human pathway or cell context</td>
+                <td data-label="Actual limitations of existing platforms">Humanizing a single target or gene does not recreate the human signaling pathway or cellular context in which that target functions.</td>
+              </tr>
+              <tr>
+                <td class="issue" data-label="Functional issue">Partial humanization</td>
+                <td data-label="Actual limitations of existing platforms">Many knock-in models humanize only the extracellular domain, or a fragment of the gene, so ligand binding may appear human while transmembrane and intracellular signaling remain murine.</td>
+              </tr>
+              <tr>
+                <td class="issue" data-label="Functional issue">Expression level and pattern differ from human</td>
+                <td data-label="Actual limitations of existing platforms">The expression level, tissue distribution, and regulation of a human or humanized gene often differ from those in humans, because the mouse genomic context, promoters, and regulatory elements are not equivalent.</td>
+              </tr>
+              <tr>
+                <td class="issue" data-label="Functional issue">Immune mismatch with the mouse immune system</td>
+                <td data-label="Actual limitations of existing platforms">A human or humanized protein still operates in a mouse immune system. Species differences in ligands, receptors, Fc receptors, cytokines, and MHC can distort binding, effector function, and downstream responses. These models cannot fully reproduce human immune-cell interactions, immune tolerance, and inflammatory responses, which limits translational evaluation of immunotherapeutic drugs.</td>
+              </tr>
+              <tr>
+                <td class="issue" data-label="Functional issue">Bias in effector and exposure ranking</td>
+                <td data-label="Actual limitations of existing platforms">Human and mouse FcRn/Fc&gamma;R differ in function and cellular expression, which can bias the ranking of the same antibody for half-life, immune effector function, efficacy, and safety.</td>
+              </tr>
+              <tr>
+                <td class="issue" data-label="Functional issue">Inadequate prediction of cytotoxicity</td>
+                <td data-label="Actual limitations of existing platforms">Species differences in target expression, immune-cell composition, and activation thresholds mean that cytotoxicity, immune overactivation, or tissue injury that does not appear in animals may appear in humans.</td>
+              </tr>
+              <tr>
+                <td class="issue" data-label="Functional issue">Nonclinical ADA interference</td>
+                <td data-label="Actual limitations of existing platforms">Human-derived antibodies can be xenogeneic proteins in mice and other animals; anti-drug antibodies (ADA) raised in the animal can accelerate clearance and reduce exposure, causing false-negative efficacy or additional toxicity.</td>
+              </tr>
+              <tr>
+                <td class="issue" data-label="Functional issue">Limited disease relevance</td>
+                <td data-label="Actual limitations of existing platforms">Transgenic and genetically engineered disease models often fail to capture human pathophysiology, tissue context, or disease heterogeneity, which limits their relevance to clinical settings.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section class="block" id="his-gaps">
+      <div class="wrap">
+        <h2>3. Limitations of current human immune system mice</h2>
+        <div class="table-wrap">
+          <table class="data">
+            <thead>
+              <tr>
+                <th class="issue" scope="col">Functional issue</th>
+                <th scope="col">Actual limitations of existing platforms</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="issue" data-label="Functional issue">Lack of lymph nodes</td>
+                <td data-label="Actual limitations of existing platforms">Current HIS mice lack proper lymph nodes, which limits modeling of the tumor immune microenvironment, induced autoimmune disease, vaccine evaluation, and tumor metastasis, and reduces clinical relevance.</td>
+              </tr>
+              <tr>
+                <td class="issue" data-label="Functional issue">Too few myeloid cells, and high overall mortality</td>
+                <td data-label="Actual limitations of existing platforms">Myeloid-cell reconstitution is too low, and overall mortality is high, including GvHD-related decline.</td>
+              </tr>
+              <tr>
+                <td class="issue" data-label="Functional issue">Inter-individual clinical responses are not adequately reflected</td>
+                <td data-label="Actual limitations of existing platforms">These models cannot adequately reflect the different responses of different individuals to a drug in the clinic.</td>
+              </tr>
+              <tr>
+                <td class="issue" data-label="Functional issue">No platform to identify clinically relevant immune markers</td>
+                <td data-label="Actual limitations of existing platforms">There is a lack of a platform to identify immune-related markers of clinical safety and efficacy, both in vivo and in vitro. Inadequate function of preclinical models can postpone human-specific toxicity, insufficient efficacy, or immune risk until first-in-human studies, with some issues becoming fully apparent only in Phase II.</td>
+              </tr>
+              <tr>
+                <td class="issue" data-label="Functional issue">Insensitive ADA detection</td>
+                <td data-label="Actual limitations of existing platforms">Anti-drug antibody (ADA) detection is insensitive.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  
+    <section class="block" id="references">
+      <div class="wrap">
+        <h2>Selected references</h2>
+        <ol class="refs">
+          <li>Van Damme KFA, Sichien D, Van der Borght K, et al. Cross-species cellular mapping and humanization of Fc&gamma; receptors to advance antibody modeling. <i>Sci Immunol</i>. 2026;11(115):eady7328. doi:<a href="https://doi.org/10.1126/sciimmunol.ady7328">10.1126/sciimmunol.ady7328</a></li>
+          <li>Ober RJ, Radu CG, Ghetie V, Ward ES. Differences in promiscuity for antibody&ndash;FcRn interactions across species: implications for therapeutic antibodies. <i>Int Immunol</i>. 2001;13(12):1551-1559. doi:<a href="https://doi.org/10.1093/intimm/13.12.1551">10.1093/intimm/13.12.1551</a></li>
+          <li>Shultz LD, Brehm MA, Garcia-Martinez JV, Greiner DL. Humanized mice for immune system investigation: progress, promise and challenges. <i>Nat Rev Immunol</i>. 2012;12(11):786-798. doi:<a href="https://doi.org/10.1038/nri3311">10.1038/nri3311</a></li>
+          <li>Rongvaux A, Willinger T, Martinek J, Strowig T, Gearty SV, Teichmann LL, et al. Development and function of human innate immune cells in a humanized mouse model. <i>Nat Biotechnol</i>. 2014;32(4):364-372. doi:<a href="https://doi.org/10.1038/nbt.2858">10.1038/nbt.2858</a></li>
+        </ol>
+      </div>
+    </section>
+
+  <footer class="cta">
+    <div class="wrap">
+      <h2>Contact</h2>
+      <p class="cta-contacts">
+        <span>Jing Huang, PhD</span>
+        <span><a href="mailto:jhuang@genomab.com">jhuang@genomab.com</a></span>
+      </p>
+      <p class="fineprint">Public sources: Jain et al., <i>PNAS</i> 2017; ICH S6(R1). Technical details and data will be provided after NDA.</p>
+    </div>
+  </footer>
+</body>
+</html>
