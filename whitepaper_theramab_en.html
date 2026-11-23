@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Space+Grotesk:ital,wght@0,500;0,600;0,700;1,700&display=swap" rel="stylesheet">
+<title>TheraMab Product Whitepaper 2026 &middot; AI-Driven Therapeutic Antibody Developability Platform</title>
+<meta name="author" content="InSynBio">
+<meta name="description" content="TheraMab: AI-Driven Therapeutic Antibody Developability Platform. Developability assessment, optimization, and development for humanized and fully human antibodies.">
+<style>
+
+    /* ══════════════════════ TOKENS ══════════════════════ */
+    :root{
+      --t9:#004d40;--t8:#00695c;--t7:#00796b;--t6:#00897b;--t5:#26a69a;--t3:#4db6ac;--t1:#e0f2f1;--t0:#e0f2f1;
+      --r7:#c62828;--r6:#d32f2f;--r1:#ffebee;
+      --a6:#d97706;--a5:#f59e0b;--a0:#fffbeb;
+      --b7:#1565c0;--b1:#e3f2fd;
+      --g9:#0f172a;--g8:#1e293b;--g7:#334155;--g5:#64748b;--g3:#cbd5e1;--g1:#f8fafc;
+      --wh:#ffffff;
+    }
+    /* ══════════════════════ BASE ══════════════════════ */
+    *{box-sizing:border-box;margin:0;padding:0;}
+    body{
+      font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
+      font-size:14px;line-height:1.7;color:var(--g9);background:#fff;
+      -webkit-font-smoothing:antialiased;
+    }
+    .doc{max-width:820px;margin:0 auto;}
+
+    /* ══════════════════════ SECTION SHELLS ══════════════════════ */
+    .pg{padding:40px 36px;}
+    .pg-cover{
+      background:#f0fdfa;
+      border-top:5px solid var(--t6);
+      position:relative;overflow:hidden;
+    }
+    /* Cover light-bg — all text dark */
+    .pg-cover h1{color:var(--t7);}
+    .pg-cover h1 em{color:var(--t5);}
+    .pg-cover .cover-sub{color:var(--g7);}
+    .pg-cover .cover-brand{color:var(--t7);}
+    .pg-cover .cover-brand b{color:var(--t5);font-style:italic;}
+    .pg-cover .cover-foot{color:var(--g5);border-color:var(--g3);}
+    .pg-cover .lbl{background:var(--t1);color:var(--t7);}
+    /* Problem cards — white on light */
+    .prob3{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:16px 0;}
+    .prob-card{background:#fff;border:1.5px solid var(--t3);border-radius:10px;padding:13px 12px;box-shadow:0 2px 8px rgba(13,148,136,.06);}
+    .pc-ico{font-size:20px;margin-bottom:6px;}
+    .pc-t{font-size:12px;font-weight:800;color:var(--g9);margin-bottom:4px;}
+    .pc-d{font-size:10.5px;color:var(--g7);line-height:1.5;}
+    /* About-us band — white on light */
+    .about-band{background:#fff;border:1.5px solid var(--t3);border-radius:12px;padding:14px 16px;margin:12px 0;box-shadow:0 2px 8px rgba(13,148,136,.06);}
+    .ab-title{font-size:10px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--t6);margin-bottom:6px;}
+    .ab-txt{font-size:12px;color:var(--g7);line-height:1.65;margin-bottom:8px;}
+    .ab-tags{display:flex;gap:8px;flex-wrap:wrap;}
+    .ab-tag{font-size:11px;color:var(--t7);font-weight:700;}
+    /* Stats strip — white cards */
+    .cv-stats{display:grid;grid-template-columns:repeat(6,1fr);gap:6px;margin:12px 0;}
+    .cv-stat{text-align:center;background:#fff;border-radius:8px;padding:8px 4px;border:1.5px solid var(--t3);}
+    .cv-sn{font-size:20px;font-weight:900;color:var(--t6);line-height:1;display:block;}
+    .cv-sl{font-size:9px;color:var(--g5);margin-top:2px;display:block;line-height:1.3;}
+    /* Service chips */
+    .cv-chips{display:flex;flex-wrap:wrap;gap:5px;margin:8px 0 16px;}
+    .cv-chip{font-size:10.5px;font-weight:700;padding:3px 10px;border-radius:14px;background:var(--t0);color:var(--t7);border:1px solid var(--t3);}
+    /* Comparison table (S1) */
+    .cmp-table{width:100%;border-collapse:separate;border-spacing:10px 0;margin-top:14px;table-layout:fixed;}
+    .cmp-col{border-radius:12px;padding:2px;background:#fff;border:1.5px solid var(--g3);vertical-align:top;}
+    .cmp-col.cmp-ai,.cmp-col.cmp-cro{background:#f8fafc;}
+    .cmp-col.cmp-us{background:linear-gradient(170deg,var(--t1) 0%,var(--t0) 100%);border-left:3px solid var(--t5);border-right:3px solid var(--t5);}
+    .cmp-table th{padding:16px 14px 0;font-weight:normal;}
+    .cmp-table td{padding:0 14px;}
+    .cmp-hd{font-size:14px;font-weight:900;text-align:center;margin-bottom:3px;}
+    .cmp-ai .cmp-hd,.cmp-cro .cmp-hd{color:var(--g9);}
+    .cmp-us .cmp-hd{color:var(--t7);}
+    .cmp-sub{font-size:10px;font-weight:600;text-align:center;padding:2px 8px;border-radius:10px;margin-bottom:10px;display:block;}
+    .cmp-ai .cmp-sub,.cmp-cro .cmp-sub{color:var(--g5);background:var(--g3);}
+    .cmp-us .cmp-sub{color:var(--t6);background:rgba(13,148,136,.12);}
+    .cmp-row{display:flex;align-items:flex-start;gap:5px;font-size:11.5px;padding:6px 0;border-bottom:1px solid rgba(0,0,0,.05);line-height:1.5;}
+    .cmp-us .cmp-row{border-bottom-color:rgba(13,148,136,.15);}
+    .cmp-table tr:last-child .cmp-row{border:none;padding-bottom:14px;}
+    .cmp-row .ck{color:var(--t5);font-weight:900;font-size:13px;flex-shrink:0;}
+    .cmp-row .cx{color:#ef4444;font-weight:900;font-size:13px;flex-shrink:0;}
+    .cmp-us .cmp-row .ck{color:var(--t6);}
+    .cmp-ai .cmp-row em,.cmp-cro .cmp-row em{font-style:normal;color:var(--g7);}
+    .cmp-us .cmp-row em{font-style:normal;color:var(--g7);}
+    .pg-wh{background:#fff;}
+    .pg-lt{background:var(--t0);}
+    .pg-g1{background:var(--g1);}
+    .pg-dk{background:var(--g8);color:#fff;}
+    .pg-cta{background:linear-gradient(160deg,var(--t0) 0%,#e6faf7 100%);}
+
+    /* ══════════════════════ LABELS ══════════════════════ */
+    .lbl{
+      display:inline-flex;align-items:center;gap:6px;
+      font-size:10px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;
+      color:var(--t7);background:var(--t1);padding:3px 12px;border-radius:20px;margin-bottom:12px;
+    }
+    .pg-dk .lbl,.pg-cta .lbl{background:rgba(13,148,136,.12);color:var(--t7);}
+    .pg-dk .lbl{background:rgba(255,255,255,.12);color:#a7f3d0;}
+
+    /* ══════════════════════ HEADINGS ══════════════════════ */
+    h1{font-size:30px;font-weight:900;line-height:1.4;letter-spacing:-.03em;color:var(--t7);margin-bottom:14px;}
+    h1 em{display:inline-block;margin-top:8px;font-style:normal;color:var(--t5);}
+    h2{font-size:19px;font-weight:900;line-height:1.4;letter-spacing:-.02em;color:var(--g9);margin-bottom:14px;}
+    h2 em{display:inline-block;margin-top:6px;font-style:normal;color:var(--t6);}
+    h3{font-size:14px;font-weight:800;color:var(--g9);margin-bottom:6px;}
+    .pg-dk h2{color:#fff;}
+    .pg-dk h2 em{color:#6ee7b7;}
+
+    /* ══════════════════════ DIVIDER ══════════════════════ */
+    .div{height:3px;background:linear-gradient(90deg,var(--t6) 0%,var(--t5) 60%,transparent 100%);}
+
+    /* ══════════════════════ COVER LAYOUT ══════════════════════ */
+    .cover-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:start;}
+    .cover-sub{font-size:13.5px;color:var(--g7);line-height:1.65;margin-bottom:18px;}
+    .cover-badge{
+      display:inline-block;font-size:11px;font-weight:700;
+      border:1.5px solid var(--t3);border-radius:20px;
+      padding:3px 12px;color:var(--t7);background:var(--t0);margin-right:5px;margin-bottom:6px;
+    }
+    .cover-stats{
+      display:grid;grid-template-columns:repeat(3,1fr);gap:8px;
+      margin-top:16px;border-top:2px solid var(--t1);padding-top:14px;
+    }
+    .cs-item{text-align:center;background:var(--t0);border-radius:8px;padding:8px 4px;}
+    .cs-n{font-size:24px;font-weight:900;color:var(--t6);line-height:1;}
+    .cs-l{font-size:10px;color:var(--g5);margin-top:3px;}
+    .cover-foot{
+      margin-top:16px;display:flex;align-items:center;justify-content:space-between;
+      font-size:11px;color:var(--g5);border-top:1px solid var(--g3);padding-top:12px;
+    }
+    .cover-brand{font-size:20px;font-weight:900;color:var(--t7);}
+    .cover-brand b{color:var(--t5);font-style:italic;}
+
+    /* ══════════════════════ CAPABILITY WHEEL (cover SVG) ══════════════════════ */
+    .cap-wheel{text-align:center;}
+    .cap-wheel svg{display:block;margin:0 auto;max-width:100%;height:auto;}
+
+    /* ══════════════════════ DIFF TABLE (3-col) ══════════════════════ */
+    .diff3{display:grid;grid-template-columns:1fr 1.2fr 1fr;gap:0;border-radius:14px;overflow:hidden;border:2px solid var(--t6);}
+    .d-col{padding:18px 14px;}
+    .d-col-ai{background:#f8fafc;}
+    .d-col-us{background:var(--t7);color:#fff;}
+    .d-col-cro{background:#f8fafc;}
+    .d-col h3{font-size:13px;margin-bottom:4px;text-align:center;}
+    .d-col-us h3{color:#fff;}
+    .d-sub{font-size:10px;font-weight:600;text-align:center;padding:3px 8px;border-radius:10px;margin-bottom:12px;display:block;}
+    .d-col-ai .d-sub{color:var(--b7);background:var(--b1);}
+    .d-col-us .d-sub{color:#a7f3d0;background:rgba(255,255,255,.12);}
+    .d-col-cro .d-sub{color:var(--g7);background:var(--g3);}
+    .d-row{display:flex;align-items:flex-start;gap:6px;font-size:12px;padding:4px 0;border-bottom:1px solid rgba(0,0,0,.05);}
+    .d-col-us .d-row{border-bottom-color:rgba(255,255,255,.12);}
+    .d-row:last-child{border:none;padding-bottom:0;}
+    .d-ok{color:#0d9488;font-weight:900;flex-shrink:0;font-size:14px;}
+    .d-no{color:#ef4444;font-weight:900;flex-shrink:0;font-size:14px;}
+    .d-col-us .d-ok{color:#6ee7b7;}
+    .d-col-us .d-no{color:#fca5a5;}
+    .d-row span{color:inherit;font-size:12px;line-height:1.5;flex:1;}
+    .d-col-us .d-row span{color:rgba(255,255,255,.88);}
+    .d-col-ai .d-row span,.d-col-cro .d-row span{color:var(--g7);}
+
+    /* ══════════════════════ SERVICE PIPELINE ══════════════════════ */
+    .svc-chain{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:12px;}
+    .sc-card{
+      background:#fff;border-radius:10px;border:1.5px solid var(--g3);overflow:hidden;
+      transition:box-shadow .2s;
+    }
+    .sc-hd{display:flex;align-items:center;gap:6px;padding:6px 8px;border-bottom:1px solid var(--g3);}
+    .sc-ico{width:26px;height:26px;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0;}
+    .sc-ico-t{background:var(--t1);}
+    .sc-ico-b{background:var(--b1);}
+    .sc-ico-o{background:#ffedd5;}
+    .sc-ico-r{background:var(--r1);}
+    .sc-ico-p{background:#fae8ff;}
+    .sc-ico-g{background:var(--g1);}
+    .sc-name{font-size:11.5px;font-weight:900;color:var(--t8);line-height:1.2;}
+    .sc-en{font-size:8.5px;color:var(--g5);font-weight:500;line-height:1.1;margin-top:2px;}
+    .sc-body{padding:6px 8px;}
+    .sc-pts{list-style:none;padding:0;margin:0;}
+    .sc-pts li{font-size:10.5px;color:var(--g7);padding:2px 0 2px 10px;position:relative;line-height:1.3;}
+    .sc-pts li::before{content:'·';position:absolute;left:2px;color:var(--t6);font-weight:900;font-size:14px;top:-2px;}
+    .sc-tag{display:inline-block;font-size:8px;font-weight:700;padding:1px 6px;border-radius:8px;margin-top:4px;margin-right:3px;}
+    .tag-t{background:var(--t1);color:var(--t7);}
+    .tag-b{background:var(--b1);color:var(--b7);}
+    .tag-o{background:#ffedd5;color:#9a3412;}
+    .tag-r{background:var(--r1);color:var(--r7);}
+
+    /* ══════════════════════ DATABASE GRID ══════════════════════ */
+    .db6{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;}
+    .db-card{
+      background:#fff;border-radius:10px;border:1.5px solid var(--g3);padding:14px 12px;
+      position:relative;overflow:hidden;
+    }
+    .db-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;}
+    .db-card.c-t::before{background:var(--t6);}
+    .db-card.c-r::before{background:var(--r6);}
+    .db-card.c-b::before{background:var(--b7);}
+    .db-card.c-o::before{background:var(--a5);}
+    .db-card.c-p::before{background:#9333ea;}
+    .db-card.c-g::before{background:var(--g7);}
+    .db-n{font-size:28px;font-weight:900;color:var(--g9);line-height:1;margin-bottom:2px;}
+    .db-n.c-t{color:var(--t6);}
+    .db-n.c-r{color:var(--r6);}
+    .db-n.c-b{color:var(--b7);}
+    .db-n.c-o{color:var(--a6);}
+    .db-n.c-p{color:#9333ea;}
+    .db-n.c-g{color:var(--g7);}
+    .db-label{font-size:12px;font-weight:800;color:var(--g9);margin-bottom:4px;display:block;}
+    .db-desc{font-size:10px;color:var(--g7);line-height:1.3;}
+    .rare-badge{
+      display:inline-block;font-size:9px;font-weight:800;letter-spacing:.06em;
+      text-transform:uppercase;background:var(--r6);color:#fff;padding:2px 7px;border-radius:8px;
+      margin-left:4px;vertical-align:middle;
+    }
+    .qual-badge{
+      display:inline-block;font-size:9px;font-weight:800;letter-spacing:.06em;
+      background:var(--t6);color:#fff;padding:2px 7px;border-radius:8px;
+      margin-left:4px;vertical-align:middle;
+    }
+    .comp-badge{
+      display:inline-block;font-size:9px;font-weight:800;letter-spacing:.06em;
+      background:#9333ea;color:#fff;padding:2px 7px;border-radius:8px;
+      margin-left:4px;vertical-align:middle;
+    }
+
+    /* ══════════════════════ TOOLS LIST ══════════════════════ */
+    .tool-cats{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+    .tool-cat{background:var(--g1);border-radius:10px;padding:12px 12px;}
+    .tc-head{font-size:11px;font-weight:800;color:var(--t7);margin-bottom:6px;text-transform:uppercase;letter-spacing:.08em;}
+    .tc-tags{display:flex;flex-wrap:wrap;gap:4px;}
+    .tc-tag{font-size:10.5px;color:var(--g8);background:#fff;border:1px solid var(--g3);border-radius:6px;padding:2px 7px;font-weight:600;}
+    .tc-tag.ih{background:#f0fdf4;border-color:var(--t5);color:var(--t7);font-weight:700;}
+    .tc-tag.ih::before{content:"★ ";font-size:8px;}
+
+    /* ══════════════════════ CASES 3x3 ══════════════════════ */
+    .cases9{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;}
+    .case-card{
+      background:#fff;border-radius:10px;border:1.5px solid var(--g3);
+      overflow:hidden;position:relative;
+    }
+    .case-hd{padding:10px 65px 8px 12px;border-bottom:1px solid var(--g3);}
+    .case-type{
+      display:inline-block;font-size:8.5px;font-weight:800;letter-spacing:.04em;
+      text-transform:uppercase;padding:2px 6px;border-radius:6px;margin-bottom:4px;
+    }
+    .ct-ab{background:var(--t1);color:var(--t7);}
+    .ct-cro{background:#fae8ff;color:#7e22ce;}
+    .ct-clt{background:#fef3c7;color:#92400e;}
+    .case-title{font-size:11.5px;font-weight:900;color:var(--t8);line-height:1.2;}
+    .case-body{padding:6px 10px;}
+    .case-result{font-size:11px;color:var(--t6);font-weight:800;margin-bottom:4px;}
+    .case-detail{font-size:10px;color:var(--g7);line-height:1.3;}
+    .case-impact{font-size:10px;color:var(--t7);font-weight:700;margin-top:5px;padding-top:5px;border-top:1px dashed var(--t3);line-height:1.4;}
+    .case-impact::before{content:"→ ";font-weight:900;}
+    .case-badge{
+      position:absolute;top:8px;right:8px;
+      font-size:8px;font-weight:800;padding:2px 6px;border-radius:6px;
+    }
+    .cb-client{background:var(--r1);color:var(--r6);}
+    .cb-demo{background:var(--t1);color:var(--t7);}
+    .cb-clt{background:var(--r1);color:var(--r6);}
+
+    /* ══════════════════════ PROCESS ══════════════════════ */
+    .proc5{display:grid;grid-template-columns:repeat(5,1fr);gap:0;margin:16px 0;}
+    .proc5-step{text-align:center;position:relative;}
+    .proc5-step::after{
+      content:'→';position:absolute;right:-8px;top:18px;
+      font-size:16px;color:var(--t5);font-weight:900;
+    }
+    .proc5-step:last-child::after{display:none;}
+    .p5-ico{width:40px;height:40px;border-radius:8px;background:var(--t1);border:2px solid var(--t5);display:flex;align-items:center;justify-content:center;margin:0 auto 8px;font-size:16px;}
+    .p5-t{font-size:11px;font-weight:800;color:var(--g9);margin-bottom:3px;}
+    .p5-d{font-size:9.5px;color:var(--g5);line-height:1.4;}
+
+    /* ══════════════════════ CONTACTS ══════════════════════ */
+    .cc3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-top:18px;}
+    .cc{background:#fff;border:1.5px solid var(--t3);border-radius:10px;padding:14px 12px;text-align:center;}
+    .cc.pri{background:var(--t0);border-color:var(--t5);box-shadow:0 2px 14px rgba(13,148,136,.18);}
+    .cc-ico{font-size:22px;margin-bottom:6px;}
+    .cc-lbl{font-size:9px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;margin-bottom:4px;}
+    .cc.pri .cc-lbl{color:var(--t6);}
+    .cc:not(.pri) .cc-lbl{color:var(--g5);}
+    .cc-val{font-size:13px;font-weight:800;}
+    .cc.pri .cc-val{color:var(--t7);}
+    .cc:not(.pri) .cc-val{color:var(--g9);}
+    .cc-hint{font-size:10px;margin-top:2px;}
+    .cc.pri .cc-hint{color:var(--t7);}
+    .cc:not(.pri) .cc-hint{color:var(--g5);}
+
+    /* ══════════════════════ MISC ══════════════════════ */
+    .pq{border-left:3px solid var(--t6);padding:8px 12px;background:var(--t0);border-radius:0 8px 8px 0;margin:12px 0;font-size:12.5px;font-weight:600;color:var(--t7);font-style:italic;line-height:1.6;}
+    .risk-note{background:var(--r1);border:1px solid #fca5a5;border-radius:10px;padding:10px 14px;font-size:12px;color:var(--r7);margin:10px 0;}
+    .risk-note b{color:var(--r6);}
+    .cols2{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
+
+    /* ══════════════════════ MOBILE ══════════════════════ */
+    @media(max-width:640px){
+      .pg{padding:28px 16px;}
+      .cols2,.tool-cats{grid-template-columns:1fr;}
+      .prob3,.db6,.cases9{grid-template-columns:1fr 1fr;}
+      .cv-stats{grid-template-columns:repeat(3,1fr);}
+      .svc-chain{grid-template-columns:1fr 1fr;}
+      .proc5{grid-template-columns:1fr 1fr;}
+      .cc3{grid-template-columns:1fr;}
+      h1{font-size:22px;}h2{font-size:16px;}
+    }
+
+    /* ══════════════════════ PRINT ══════════════════════ */
+    @media print{
+      /* ── Base ── */
+      *{-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+      body{font-size:12.5px;line-height:1.6;}
+      .doc{max-width:100%;}
+      .div{display:none;}
+
+      /* ── Heading spacing optimization ── */
+      h2 { line-height: 1.5; margin-bottom: 12px !important; }
+      h2 em { display: inline-block; margin-top: 6px; }
+
+      /* ── Allow natural pagination, protect cards from being cut ── */
+      .case-card, .db-card, .sc-card, .prob-card, .tool-cat, .proc5-step, .cc {
+        page-break-inside: avoid;
+        break-inside: avoid;
+      }
+
+      /* ── Moderately adjust padding for compact layout ── */
+      .pg { padding: 20px 24px !important; }
+      #s0 { padding: 30px 30px 20px !important; }
+
+      /* ── Reduce spacing of some large elements ── */
+      .prob3 { margin: 12px 0 !important; }
+      .about-band { margin: 12px 0 !important; padding: 12px 16px !important; }
+      .cv-stats { margin: 12px 0 !important; }
+      .cmp-table { margin-bottom: 12px !important; }
+      .svc-chain { margin-bottom: 12px !important; }
+      .db6 { margin-bottom: 12px !important; }
+      .cases9 { gap: 8px !important; }
+
+      /* ── Restore some font sizes to avoid being too large ── */
+      #s0 h1 { font-size: 26px !important; line-height: 1.4 !important; }
+      .db-n { font-size: 22px !important; }
+      .p5-ico{background:#ccfbf1 !important;border-color:#14b8a6 !important;color:#0f766e !important;}
+
+      @page{size:A4 portrait;margin:12mm 10mm;}
+    }
+  
+/* ── TheraMab additions (layered on InSynBio tokens) ── */
+.tm-pill{display:inline-block;font-size:10px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--t7);background:var(--t1);border:1px solid var(--t3);padding:3px 11px;border-radius:20px;margin-bottom:12px;}
+.tm-hero{display:grid;grid-template-columns:1fr 200px;gap:22px;align-items:center;position:relative;z-index:1;}
+.tm-hero-art img{width:100%;height:auto;border-radius:10px;}
+.tm-toc{list-style:none;margin:6px 0 0;padding:0;columns:2;column-gap:28px;}
+.tm-toc li{margin:0 0 6px;break-inside:avoid;}
+.tm-toc a{display:flex;gap:10px;font-size:12px;color:var(--g7);text-decoration:none;align-items:baseline;}
+.tm-toc a span{font-weight:800;color:var(--t6);min-width:20px;}
+.tm-ul{margin:6px 0 0;padding-left:18px;}
+.tm-ul li{font-size:12.5px;color:var(--g7);margin-bottom:6px;line-height:1.6;}
+.tm-ul li strong{color:var(--g9);}
+.tm-num{display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;border-radius:50%;background:var(--t0);color:var(--t7);font-weight:900;font-size:12px;margin-bottom:6px;}
+.tm-body p{font-size:13px;color:var(--g7);margin-bottom:12px;line-height:1.7;}
+.tm-body h3{font-size:14px;font-weight:800;color:var(--g9);margin:18px 0 6px;}
+.tm-ol{margin:4px 0 12px;padding-left:20px;}
+.tm-ol li{font-size:12.5px;color:var(--g7);margin-bottom:8px;line-height:1.65;}
+.tm-ol li strong{color:var(--g9);}
+.tm-table{width:100%;border-collapse:collapse;margin:12px 0;font-size:11.5px;}
+.tm-table th{background:var(--t8);color:#fff;text-align:left;padding:8px 10px;font-weight:700;}
+.tm-table td{border:1px solid var(--g3);padding:7px 10px;color:var(--g7);vertical-align:top;}
+.tm-table tr:nth-child(even) td{background:var(--g1);}
+.tm-amber{background:var(--a0);border:1px solid var(--a5);border-left:3px solid var(--a5);border-radius:0 8px 8px 0;padding:10px 14px;margin:12px 0;font-size:12px;color:#78350f;line-height:1.6;}
+.tm-amber strong{color:#78350f;}
+figure.tm-fig{margin:12px 0;border:1px solid var(--g3);border-radius:8px;overflow:hidden;background:#fff;page-break-inside:avoid;break-inside:avoid;}
+figure.tm-fig .bar{height:18px;background:linear-gradient(90deg,#e2e8f0,#f1f5f9);border-bottom:1px solid var(--g3);}
+figure.tm-fig img{display:block;width:100%;height:auto;}
+figure.tm-fig figcaption{font-size:10.5px;color:var(--g5);padding:6px 10px;line-height:1.5;}
+.tm-callout{border-left:3px solid var(--t6);background:var(--t0);border-radius:0 8px 8px 0;padding:8px 14px;margin:12px 0;}
+.tm-callout .label{font-size:10px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--t7);margin-bottom:4px;}
+@media print{
+  .tm-hero{grid-template-columns:1fr 170px;}
+  figure.tm-fig,.prob-card,.about-band,.tm-callout,.tm-amber{page-break-inside:avoid;break-inside:avoid;}
+  .pg{padding:18px 22px !important;}
+  #s0{padding:26px 26px 18px !important;}
+  @page{size:A4 portrait;margin:11mm 10mm;}
+}
+
+</style>
+</head>
+<body>
+<div class="doc">
+
+<div id="s0" class="pg pg-cover" style="padding:36px 38px 28px;">
+  <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;position:relative;z-index:1;">
+    <div class="cover-brand" style="font-family:'Space Grotesk','Inter',sans-serif;"><span>In</span><b style="color:#0d9488;font-style:italic;font-weight:700;">Syn</b><span>Bio</span> <span style="font-size:11px;font-weight:400;color:var(--g5);margin-left:8px;">Product Whitepaper &middot; 2026</span></div>
+    <div style="font-size:11px;color:var(--g5);text-align:right;line-height:1.6;">www.insynbio.com<br>contact@insynbio.com</div>
+  </div>
+  <div class="tm-hero">
+    <div class="tm-hero-copy">
+      <span class="tm-pill">&#10003; Validation stage</span>
+      <h1 style="font-size:28px;margin-bottom:8px;">TheraMab<br><em>AI-Driven Therapeutic Antibody Developability Platform</em></h1>
+      <p class="cover-sub" style="font-size:13.5px;margin-bottom:12px;">Developability assessment, optimization, and development for <strong style="color:var(--t7);">humanized and fully human antibodies</strong>.</p>
+      <div class="cv-chips" style="margin:8px 0 12px;"><span class="cv-chip">Humanization</span><span class="cv-chip">Developability</span><span class="cv-chip">CMC Formulation</span></div>
+      <p style="font-size:11px;color:var(--g5);margin-bottom:10px;">November 22, 2026</p>
+      <div class="pq" style="font-size:11px;font-style:normal;font-weight:500;">This whitepaper describes the product's current design and the capabilities that have been validated so far. It is provided for scientific research and early R&amp;D reference only and is not a basis for clinical decisions, diagnosis, treatment, or regulatory submissions.</div>
+    </div>
+    <div class="tm-hero-art"><img src="whitepaper_theramab_en_assets/molecule.png" alt=""></div>
+  </div>
+  <div class="about-band" style="position:relative;z-index:1;margin-top:16px;">
+    <div class="ab-title">Contents</div>
+    <ol class="tm-toc">
+      <li><a href="#s1"><span>01</span>Summary</a></li>
+      <li><a href="#s2"><span>02</span>Product Demo Video</a></li>
+      <li><a href="#s3"><span>03</span>Background and Challenges</a></li>
+      <li><a href="#s4"><span>04</span>Product Overview</a></li>
+      <li><a href="#s5"><span>05</span>Workflow</a></li>
+      <li><a href="#s6"><span>06</span>Core Capabilities</a></li>
+      <li><a href="#s7"><span>07</span>Privacy and Information Security</a></li>
+      <li><a href="#s8"><span>08</span>Inputs, Outputs, and Use</a></li>
+      <li><a href="#s9"><span>09</span>Scope and Limitations</a></li>
+      <li><a href="#s10"><span>10</span>Roadmap and Disclaimer</a></li>
+      <li><a href="#s11"><span>11</span>Trial and Contact</a></li>
+    </ol>
+    <p class="ab-txt" style="margin:8px 0 0;">The product demo video (about 4 min 41 s) is described in Section 2. To request a trial, email <strong>contact@insynbio.com</strong>.</p>
+  </div>
+</div>
+<div class="div"></div>
+
+<div id="s1" class="pg tm-body">
+  <div class="lbl">01 &middot; Summary</div>
+  <h2>Humanization, developability, and formulation &mdash; <em>on one platform</em></h2>
+  <p>TheraMab brings together on one platform the three things needed to take an antibody from a non-human sequence to a developable candidate: humanization design, developability and manufacturability assessment, and CMC formulation optimization and advice. The client enters one heavy chain and one light chain and receives multiple humanization designs, the risk positions in each design, actionable optimized sequences, and formulation advice tiered for both subcutaneous and intravenous administration.</p>
+  <div class="tm-callout"><div class="label">Key Points</div>
+    <ul class="tm-ul">
+      <li><strong>One workflow, no tool switching:</strong> humanization, assessment, optimization, and formulation advice all happen in one place, and an optimized sequence can go straight back into the assessment table to be re-assessed.</li>
+      <li><strong>Built around privacy and information security:</strong> each client's sequences and results belong only to their own account, and neither the pages nor the interfaces expose internal details of the algorithms or databases.</li>
+      <li><strong>Results with context:</strong> each parameter is placed within a reference range derived from our clinical observations and estimates and shown with a clear position label, not as an isolated number.</li>
+    </ul>
+  </div>
+  <p>Antibodies that are already fully human or humanized (including sequences designed with other software) can also go directly to developability assessment. This product is provided for scientific research and early R&amp;D reference only and is not a basis for clinical decisions, diagnosis, treatment, or regulatory submissions.</p>
+</div>
+
+<div id="s2" class="pg pg-lt tm-body">
+  <div class="lbl">02 &middot; Product Demo Video</div>
+  <h2>Web-edition walkthrough &mdash; <em>about 4 min 41 s</em></h2>
+  <p>The following is a walkthrough of the TheraMab web edition (about 4 min 41 s). The demo uses a public example antibody, was recorded in an isolated test environment, and contains no client data. To view the full video, please email <strong>contact@insynbio.com</strong>.</p>
+  <div class="tm-callout"><div class="label">Video</div><p style="margin:0;font-size:12px;color:var(--g7);">The full walkthrough video is available online. Email <strong>contact@insynbio.com</strong> for access.</p></div>
+</div>
+
+<div id="s3" class="pg tm-body">
+  <div class="lbl">03 &middot; Background and Challenges</div>
+  <h2>Why early antibody work <em>loses information between tools</em></h2>
+  <p>In early antibody R&amp;D, sequence design and developability judgments are usually spread across several tools and several people, so information is hard to connect. Three problems come up again and again.</p>
+  <div class="prob3">
+    <div class="prob-card"><div class="tm-num">1</div><div class="pc-t">Humanization and developability are disconnected</div><div class="pc-d">Humanization designs are made in one tool and developability is assessed in another. Changing one sequence means exporting and re-importing again, and the trade-offs of back-mutation and their effect on developability cannot be seen on the same chart.</div></div>
+    <div class="prob-card"><div class="tm-num">2</div><div class="pc-t">Risk is only numbers, with no sense of position</div><div class="pc-d">A single physicochemical parameter lacks a reference, so the team cannot tell whether a value is high or low, nor in which direction to optimize.</div></div>
+    <div class="prob-card"><div class="tm-num">3</div><div class="pc-t">Formulation and sequence are considered separately</div><div class="pc-d">Formulation is only considered after the sequence is fixed; by the time viscosity or aggregation problems appear it is already late. There is no direct link between risk sites and the corresponding formulation levers.</div></div>
+  </div>
+  <p>There is also a concern for external use: sequences are a client's most core asset, and a tool that lets multiple users' data mix together, or that exposes internal algorithm and database details on the page, is hard to accept. TheraMab is designed to make the three things above a single workflow, while treating privacy and information security as a prerequisite of the product rather than an add-on.</p>
+</div>
+
+<div id="s4" class="pg pg-lt tm-body">
+  <div class="lbl">04 &middot; Product Overview</div>
+  <h2>Web and desktop editions, <em>one shared way of reading results</em></h2>
+  <p>TheraMab offers a web edition and a desktop edition for two kinds of use, sharing the same assessment logic and the same way of interpreting results.</p>
+  <table class="tm-table">
+    <thead><tr><th>Edition</th><th>Best suited for</th><th>Data handling</th><th>Status</th></tr></thead>
+    <tbody>
+      <tr><td>Web edition</td><td>Team collaboration, multi-user trials, ready to use with no installation</td><td>Sequences and results are stored under the account; accounts are isolated from one another; trial example sequences are shared read-only</td><td>Live, opened by account invitation</td></tr>
+      <tr><td>Desktop edition</td><td>Settings more sensitive to data leaving the premises; runs on the local machine</td><td>Data is processed on the local machine</td><td>Available on request; inquiries welcome</td></tr>
+    </tbody>
+  </table>
+  <p><strong>What the client gets:</strong> multiple humanization designs; a humanness and developability assessment for each design; risk sites and substitution suggestions; optimized sequences and their re-assessment; subcutaneous and intravenous formulation advice; and exportable reports, score tables, and sequence files.</p>
+  <p><strong>Two kinds of input:</strong> one is a non-human antibody (humanize first, then assess); the other is a sequence that is already fully human or has been humanized by other software (go directly to developability assessment).</p>
+</div>
+
+<div id="s5" class="pg tm-body">
+  <div class="lbl">05 &middot; Workflow</div>
+  <h2>From input sequence to <em>formulation advice</em></h2>
+  <p>From the input sequence to the formulation advice, the client works through one continuous flow, and the result of each step carries over to the next.</p>
+  <ol class="tm-ol">
+    <li><strong>Input:</strong> paste or upload the heavy and light chains (CSV, FASTA, Excel; templates and format notes are provided). A non-human antibody goes through humanization; a sequence that is already fully human or humanized can go directly to developability assessment.</li>
+  </ol>
+  <figure class="tm-fig"><div class="bar"></div><img src="whitepaper_theramab_en_assets/fig01_sequence_input.png" alt="Fig. 1: Sequence input page (the demo has loaded the heavy and light chains of a public example antibody)."><figcaption>&#9650; Fig. 1: Sequence input page (the demo has loaded the heavy and light chains of a public example antibody).</figcaption></figure>
+  <ol class="tm-ol" start="2">
+    <li><strong>Humanization:</strong> the system offers several framework pairings, each with different back-mutation levels (none, conservative, balanced, aggressive). The client selects the pairings of interest, and later assessment is shown only for the selected pairings.</li>
+  </ol>
+  <figure class="tm-fig"><div class="bar"></div><img src="whitepaper_theramab_en_assets/fig02_framework_pairing.png" alt="Fig. 2: Frameworks and pairing &mdash; candidate light chains that can be paired, and the number of pairing records."><figcaption>&#9650; Fig. 2: Frameworks and pairing &mdash; candidate light chains that can be paired, and the number of pairing records.</figcaption></figure>
+  <ol class="tm-ol" start="3">
+    <li><strong>Assessment:</strong> humanness, physicochemical developability, FlashTAP, and a CMC summary. Each parameter is shown within its reference range using a position map and a radar chart, with axis notes and result analysis.</li>
+    <li><strong>Optimization:</strong> risk sites are split into a CDR table and an FR table. FR sites come with substitution suggestions; check them to generate an optimized sequence in one click, which can be exported or added back to the assessment table.</li>
+    <li><strong>Re-assessment:</strong> once an optimized sequence is added back to the assessment table it is re-assessed automatically, with results for the whole antibody, CDR-only, and FR-only, so you can see directly whether the optimization improved the key parameters (steps 4 to 5 can be repeated).</li>
+    <li><strong>Formulation advice:</strong> formulation advice tiered for subcutaneous and intravenous routes, formulation codes, and marketed molecules that are physicochemically similar; each risk site's formulation lever links to a specific formulation in the knowledge base.</li>
+    <li><strong>Library and report:</strong> candidate sequences can enter the client's own account library, and a comprehensive report is generated that includes the formulation advice and its rationale.</li>
+  </ol>
+  <figure class="tm-fig"><div class="bar"></div><img src="whitepaper_theramab_en_assets/fig09_antibody_library.png" alt="Fig. 3: The antibody library is organized by target, clone, and variant, and CMC parameters can be compared side by side."><figcaption>&#9650; Fig. 3: The antibody library is organized by target, clone, and variant, and CMC parameters can be compared side by side.</figcaption></figure>
+  <p>Analysis state is saved per job in the client's own browser, so after viewing the knowledge base or switching pages you can return to the previous results; clicking &ldquo;New analysis&rdquo; clears everything in one click to start over, without affecting sequences already in the library.</p>
+</div>
+
+<div id="s6" class="pg pg-lt tm-body">
+  <div class="lbl">06 &middot; Core Capabilities</div>
+  <h2>Humanization, assessment, optimization, <em>and formulation</em></h2>
+  <h3>Humanization</h3>
+  <p>For a non-human antibody, two paths are offered in parallel: classic CDR grafting, and a neural-network (NN) design that keeps more of the parent framework. Both paths have four back-mutation levels (none, conservative, balanced, aggressive) and use the same back-mutation rules. The difference is the starting point: CDR grafting grafts onto an entire germline framework and has more back-mutation positions to consider, while NN keeps most of the parent framework and has fewer positions to consider. At step 3 the client selects the framework pairings of interest, and later assessment is shown only for the selected pairings.</p>
+  <figure class="tm-fig"><div class="bar"></div><img src="whitepaper_theramab_en_assets/fig03_final_alignment.png" alt="Fig. 4: The final sequence aligned to the parent (blue marks changes, yellow marks back-mutation positions)."><figcaption>&#9650; Fig. 4: The final sequence aligned to the parent (blue marks changes, yellow marks back-mutation positions).</figcaption></figure>
+  <h3>Developability and manufacturability assessment</h3>
+  <ul class="tm-ul">
+    <li><strong>Physicochemical and structural parameters:</strong> instability index, hydrophobicity (GRAVY), chemical risk sites, pI, Fv net charge, the viscosity indicator FvCSP, hydrophobic patches (SAP), and aggregation propensity (A3D).</li>
+  </ul>
+  <figure class="tm-fig"><div class="bar"></div><img src="whitepaper_theramab_en_assets/fig04_physchem_table.png" alt="Fig. 5: Physicochemical and structural parameter table, one row per candidate."><figcaption>&#9650; Fig. 5: Physicochemical and structural parameter table, one row per candidate.</figcaption></figure>
+  <ul class="tm-ul">
+    <li><strong>FlashTAP:</strong> a TAP-like rapid risk indicator.</li>
+    <li><strong>Position map and radar chart:</strong> each parameter is placed within a reference range derived from our clinical observations and estimates, shown with &ldquo;pass, caution, exceeds, falls short&rdquo; position labels, with axis notes and result analysis. These are position labels, not a pass/fail judgment from wet-lab work, and not a release criterion.</li>
+  </ul>
+  <figure class="tm-fig"><div class="bar"></div><img src="whitepaper_theramab_en_assets/fig05_position_map_radar.png" alt="Fig. 6: Position map and radar chart (the light-green band is the common range)."><figcaption>&#9650; Fig. 6: Position map and radar chart (the light-green band is the common range).</figcaption></figure>
+  <ul class="tm-ul">
+    <li><strong>Experimental value entry table:</strong> the client enters their own measured values (Tm, expression level, HIC, SMAC, AC-SINS, PSR, accelerated-stability slope, BVP, and so on); the system marks the position against thresholds and reminds the user to run a head-to-head comparison against clinical antibodies under the same conditions.</li>
+    <li><strong>Knowledge base:</strong> an &ldquo;Assays and developability&rdquo; page explains the meaning, risk direction, relationship to developability, and limitations of each experimental and computed parameter.</li>
+  </ul>
+  <figure class="tm-fig"><div class="bar"></div><img src="whitepaper_theramab_en_assets/fig06_kb_assays.png" alt="Fig. 7: Knowledge base, &ldquo;Assays and developability&rdquo; page."><figcaption>&#9650; Fig. 7: Knowledge base, &ldquo;Assays and developability&rdquo; page.</figcaption></figure>
+  <h3>Risk-site optimization</h3>
+  <p>CDR and FR risk sites are presented separately. CDR sites involve binding, so only formulation and process hints are given; FR sites come with specific substitution suggestions and alternatives, and conservative handling is kept for positions such as conserved tryptophan. After the client checks the suggestions, an optimized sequence is generated in one click, which can be exported as FASTA or added back to the assessment table for re-assessment, viewed under the whole-antibody, CDR-only, and FR-only lenses to see whether it improved.</p>
+  <figure class="tm-fig"><div class="bar"></div><img src="whitepaper_theramab_en_assets/fig07_risk_sites.png" alt="Fig. 8: Risk sites and optimization suggestions (CDR / FR split tables; an optimized sequence can be generated)."><figcaption>&#9650; Fig. 8: Risk sites and optimization suggestions (CDR / FR split tables; an optimized sequence can be generated).</figcaption></figure>
+  <h3>CMC formulation optimization and advice</h3>
+  <ul class="tm-ul">
+    <li><strong>Tiered advice:</strong> for the subcutaneous and intravenous administration routes, each with high, medium, and low concentration tiers, giving pH, buffer system, excipients, and viscosity risk.</li>
+  </ul>
+  <figure class="tm-fig"><div class="bar"></div><img src="whitepaper_theramab_en_assets/fig08_formulation.png" alt="Fig. 9: Submission choices and formulation advice (subcutaneous and intravenous; high, medium, and low concentration tiers)."><figcaption>&#9650; Fig. 9: Submission choices and formulation advice (subcutaneous and intravenous; high, medium, and low concentration tiers).</figcaption></figure>
+  <ul class="tm-ul">
+    <li><strong>Formulation code and comparison:</strong> a formulation code is given, along with marketed molecules that are physicochemically similar to the client's sequence for reference.</li>
+    <li><strong>Levers linked to formulations:</strong> each risk site maps to a formulation lever (for example, an oxidation site maps to practices that suppress oxidation) and links to specific formulation entries in the knowledge base (a few references at most).</li>
+    <li><strong>Report:</strong> a &ldquo;Formulation advice and rationale&rdquo; page lists composition, pH, excipients, viscosity notes, and lever rationale, marked as rule-based hints that require experimental validation.</li>
+  </ul>
+  <figure class="tm-fig"><div class="bar"></div><img src="whitepaper_theramab_en_assets/fig10_report.png" alt="Fig. 10: Comprehensive report, &ldquo;Formulation advice and rationale&rdquo; (rule-based hints; require experimental validation)."><figcaption>&#9650; Fig. 10: Comprehensive report, &ldquo;Formulation advice and rationale&rdquo; (rule-based hints; require experimental validation).</figcaption></figure>
+  <p>The formulation-related outputs are suggestions based on rules and surrogate indicators; they are not a viscosity-prediction model and not experimentally validated conclusions.</p>
+</div>
+
+<div id="s7" class="pg tm-body">
+  <div class="lbl">07 &middot; Privacy and Information Security</div>
+  <h2>Privacy and security as <em>a prerequisite</em></h2>
+  <p>Privacy and information security are a prerequisite of the product. The table below lists the measures already implemented in the web edition; each has been independently reviewed and validated.</p>
+  <table class="tm-table">
+    <thead><tr><th>Aspect</th><th>Measure</th></tr></thead>
+    <tbody>
+      <tr><td>Data isolation</td><td>Each client's sequence library and jobs are stored under their own account and cannot be seen by other accounts; accessing another user's job and accessing a non-existent job return exactly the same result; trial example sequences are shared read-only.</td></tr>
+      <tr><td>Access control</td><td>Login authentication, with accounts opened by our invitation; account identity is passed in and verified by the access layer, and identity headers forged by the client are discarded; without a valid identity, all write operations are rejected.</td></tr>
+      <tr><td>Algorithm and database confidentiality</td><td>Pages and interfaces do not show source names, database names, sample sizes, or literature citations; external outputs drop internal fields and use neutral codes for internal references; page scripts are minified with comments removed; public interfaces are rate-limited.</td></tr>
+      <tr><td>Network security</td><td>Site-wide HTTPS, with HSTS, security headers, hidden server version, rate limiting, and request-body size limits; the old direct-connect ports are closed to the outside.</td></tr>
+      <tr><td>Client-side state</td><td>Analysis state and drafts are kept only in the client's own browser and are not uploaded to the server; &ldquo;New analysis&rdquo; clears them in one click.</td></tr>
+      <tr><td>Backup and recovery</td><td>Daily consistency backups of the sequence library and account information, weekly recovery tests, and health checks and alerts.</td></tr>
+      <tr><td>Audit and change control</td><td>Every release is first independently reviewed, then accepted in an isolated environment and independently verified by another person, with a rollback method kept ready at all times.</td></tr>
+    </tbody>
+  </table>
+  <p><strong>Data note:</strong> the platform stores the sequences, computed results, and library entries that the client submits. Only the client's own account can see them; operations staff access them only for operations and for deletion at the client's request. They are kept until the client requests deletion, with at most about two more months retained in backups. For deletion requests, contact the TheraMab team member who opened your account.</p>
+  <div class="tm-amber"><strong>Boundaries, stated plainly:</strong> we currently use account-level data isolation and access control, without third-party security certification or an independent penetration test; backups are currently on the same host, and an off-site copy is not yet in place; operations staff can read private data files at the server level. For highly sensitive sequences, we recommend the locally run desktop edition.</p>
+</div>
+
+<div id="s8" class="pg pg-lt tm-body">
+  <div class="lbl">08 &middot; Inputs, Outputs, and Use</div>
+  <h2>What goes in, <em>and what comes out</em></h2>
+  <table class="tm-table">
+    <thead><tr><th>Stage</th><th>What is supported</th></tr></thead>
+    <tbody>
+      <tr><td>Input</td><td>Paste the variable regions or full sequences of the heavy and light chains in the text box (the signal peptide and constant region are trimmed automatically); batch upload via CSV, FASTA, or Excel, with templates and format notes provided; up to 12 pairs assessed at a time.</td></tr>
+      <tr><td>Humanization results</td><td>Multiple framework pairings, with sequences at four back-mutation levels per pairing, accompanied by humanness and physicochemical assessment.</td></tr>
+      <tr><td>Assessment results</td><td>Position maps, radar charts, parameter tables, risk-site tables, FlashTAP, and a CMC summary.</td></tr>
+      <tr><td>Optimization results</td><td>Substitution suggestions and optimized sequences (exportable as FASTA, re-assessable).</td></tr>
+      <tr><td>Formulation results</td><td>Formulation advice tiered for subcutaneous and intravenous routes, formulation codes, and similar marketed molecules.</td></tr>
+      <tr><td>Export</td><td>Sequences (FASTA), score table (CSV), and a comprehensive report (including a printable &ldquo;Formulation advice and rationale&rdquo; page).</td></tr>
+      <tr><td>Sequence library</td><td>Candidate sequences can enter the library under the client's own account, organized by target, clone, and variant; a duplicate sequence is flagged as &ldquo;already exists&rdquo; and does not overwrite an existing record.</td></tr>
+      <tr><td>Language</td><td>Chinese and English interfaces.</td></tr>
+    </tbody>
+  </table>
+  <p>A fully human antibody, or a sequence humanized by other software, goes directly to assessment, with physicochemical parameters, FlashTAP, SAP and A3D, region-annotated risk sites, and formulation advice as output.</p>
+</div>
+
+<div id="s9" class="pg tm-body">
+  <div class="lbl">09 &middot; Scope and Limitations</div>
+  <h2>What clients should <em>know in advance</em></h2>
+  <p>This is a reference tool for scientific research and early R&amp;D; the following boundaries should be known to the client in advance.</p>
+  <ul class="tm-ul">
+    <li><strong>A position label is not an experimental result:</strong> &ldquo;pass, caution, exceeds, falls short&rdquo; indicate where a candidate sits within the reference range, not the success or failure of wet-lab work, and not a release condition. Thresholds change under different experimental conditions; we recommend a same-condition comparison against a clinical antibody.</li>
+    <li><strong>Formulation is rule-based advice:</strong> it is based on rules and surrogate indicators, not a viscosity-prediction model, and needs experimental validation.</li>
+    <li><strong>Humanness comparison for external sequences has gaps:</strong> for a sequence that is already fully human or designed by other software, there is no OASis humanness score; when no parent sequence is provided, comparison to the parent (loops, H3, Vernier, interface, back-mutation) is shown as not assessed.</li>
+    <li><strong>Unsupported molecule formats:</strong> single-chain antibodies (scFv) and nanobodies (VHH) are not currently supported.</li>
+    <li><strong>Scale limits:</strong> up to 12 pairs assessed at a time; the assessment interface allows at most 15 calls per 5 minutes.</li>
+    <li><strong>Security boundaries:</strong> see &ldquo;Boundaries, stated plainly&rdquo; in the previous section.</li>
+  </ul>
+  <div class="tm-amber">This product is for scientific research and early R&amp;D reference and is not a basis for clinical decisions, diagnosis, treatment, or regulatory submissions. Before any candidate enters development, it needs an independent judgment by qualified personnel together with experiments and regulatory requirements.</div>
+</div>
+
+<div id="s10" class="pg pg-lt tm-body">
+  <div class="lbl">10 &middot; Roadmap and Disclaimer</div>
+  <h2>What is <em>coming next</em></h2>
+  <p><strong>Coming soon (with the next release):</strong> on page 1, an &ldquo;Already a fully human antibody &mdash; go straight to developability analysis&rdquo; option and a &ldquo;New analysis&rdquo; button; format notes and a CSV template for batch upload, with automatic assessment after import; formulation codes, similar marketed molecules, and substitution suggestions for optimized sequences; restoring analysis state from any return path; and a data and privacy page.</p>
+  <p><strong>Planned, scheduled as demand dictates:</strong></p>
+  <ul class="tm-ul">
+    <li>Connecting the OASis humanness score into the assessment of external sequences.</li>
+    <li>Saving the formulation and lever rationale for newly stored sequences, so the comprehensive report is more complete for newly stored sequences.</li>
+    <li>A feasibility study of high-concentration viscosity-prediction models (licensing, validation, compute).</li>
+    <li>An off-site backup copy.</li>
+  </ul>
+  <div class="tm-amber"><strong>Disclaimer:</strong> this whitepaper describes the product's current design and the capabilities that have been validated so far. It is provided for scientific research and early R&amp;D reference only and is not a basis for clinical decisions, diagnosis, treatment, or regulatory submissions; it does not guarantee a candidate's performance in experiments. Versions and features are as actually delivered.</div>
+</div>
+
+<div id="s11" class="pg pg-cta tm-body" style="background:#f0fdfa;border-top:4px solid var(--t6);">
+  <div class="lbl">11 &middot; Trial and Contact</div>
+  <h2>Request a <em>TheraMab trial</em></h2>
+  <p>To try TheraMab, or to download materials beyond this whitepaper, please email InSynBio. We open web-edition trials by account invitation.</p>
+  <div class="cc3">
+    <div class="cc pri"><div class="cc-lbl">Preferred &middot; Quick Response</div><div class="cc-val">contact@insynbio.com</div><div class="cc-hint">Email us with your inquiry</div></div>
+    <div class="cc"><div class="cc-lbl">Trial Access</div><div class="cc-val">By account invitation</div><div class="cc-hint">Web-edition trial opened per account</div></div>
+    <div class="cc"><div class="cc-lbl">Online Platform</div><div class="cc-val">www.insynbio.com</div><div class="cc-hint">Product details &middot; Online inquiry</div></div>
+  </div>
+  <p style="font-size:10.5px;color:var(--g5);margin-top:18px;text-align:center;">This whitepaper describes the product's current design and validated capabilities. It is for scientific research and early R&amp;D reference only and does not constitute clinical, diagnostic, therapeutic, or regulatory advice. &copy; 2026 InSynBio</p>
+</div>
+
+</div><!-- /doc -->
+</body>
+</html>
