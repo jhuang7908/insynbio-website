@@ -503,6 +503,11 @@
       body { font-size: 17.5px; }
       .wrap { width: min(var(--max), calc(100% - 48px)); }
     }
+
+    .video-frame{background:var(--card);border:1px solid var(--border);border-radius:12px;overflow:hidden;box-shadow:var(--shadow);}
+    .video-frame video{width:100%;display:block;background:#0b1f1b;}
+    .video-caption{margin:8px 0 0;color:var(--muted);font-size:13.5px;}
+
   </style>
 </head>
 <body>
@@ -531,6 +536,23 @@
   </header>
 
   <main id="content">
+    <!-- Demo video -->
+
+    <section class="block" id="demo">
+      <div class="wrap">
+        <h2>Demo video</h2>
+        <p class="intro">A demonstration of the TheraSik web edition, which plays on this page. The demo was recorded in a separate test environment; it contains no client data.</p>
+        <div class="video-frame">
+          <video controls preload="metadata" playsinline poster="https://inlightbio.cn/therasik/assets/video/therasik_demo_en_poster.jpg">
+            <source src="https://inlightbio.cn/therasik/assets/video/therasik_demo_en_1080p.mp4" type="video/mp4" media="(min-width: 800px)">
+            <source src="https://inlightbio.cn/therasik/assets/video/therasik_demo_en_720p.mp4" type="video/mp4">
+            Your browser does not support video playback. Please <a href="https://inlightbio.cn/therasik/assets/video/therasik_demo_en_1080p.mp4">download 1080p</a> or <a href="https://inlightbio.cn/therasik/assets/video/therasik_demo_en_720p.mp4">download 720p</a> and open it locally.
+          </video>
+        </div>
+        <p class="video-caption">▲ A walkthrough of the TheraSik SaaS interface (about 4 min).</p>
+      </div>
+    </section>
+
     <!-- Slide 2 -->
     <section class="block" id="who">
       <div class="wrap">
