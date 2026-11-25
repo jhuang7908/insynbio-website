@@ -41,6 +41,14 @@ const service = {
 
 const retained = gate.applyRetention([live041, live110, oldSession, recent, service], '2026-11-25');
 assert.deepStrictEqual(retained.removedDuplicates.map((row) => row.id), ['live_041']);
+const withStale = gate.applyRetention([live041, live110, {
+  id: 'live_075',
+  url: 'https://castgny.org/en/index.php/homepage-main/2018annual-convention/financial-technology-forum/',
+  title_zh: '金融科技论坛',
+  date_kind: 'service'
+}], '2026-11-25');
+assert.deepStrictEqual(withStale.removedMismatches.map((row) => row.id), ['live_075']);
+assert.ok(!withStale.items.some((item) => item.id === 'live_075'));
 assert.deepStrictEqual(retained.deleted.map((row) => row.id), ['old']);
 assert.ok(retained.hidden.some((row) => row.id === 'recent'));
 assert.strictEqual(retained.items.find((item) => item.id === 'recent').listing_state, 'held_past');
@@ -73,11 +81,47 @@ assert.strictEqual(gate.classifyFetched(service, {
   finalUrl: service.url
 }).state, 'invalid');
 
+live110.title_en = 'Queens Public Library Flushing';
 assert.strictEqual(gate.classifyFetched(live110, {
   status: 200,
   body: '<title>Flushing Library | Queens Public Library</title><p>ESL and children programs in Flushing</p>',
   finalUrl: live110.url
 }).state, 'verified');
+
+const parksHome = gate.classifyFetched({
+  title_en: 'Forest Park volunteer day',
+  url: 'https://www.nycgovparks.org/parks/forest-park/events'
+}, {
+  status: 200,
+  body: '<title>NYC Parks</title><p>Welcome to nycgovparks. Parks are open.</p>',
+  finalUrl: 'https://www.nycgovparks.org/'
+});
+assert.notStrictEqual(parksHome.state, 'verified');
+
+const staleConvention = gate.classifyFetched({
+  id: 'live_071',
+  title_en: 'Welcome to 2018 Annual Convention',
+  title_zh: '欢迎参加2018年度大会',
+  url: 'https://castgny.org/en/index.php/homepage-main/2018annual-convention/'
+}, {
+  status: 200,
+  body: '<title>CAST GNY</title><h1>2026 Annual Convention</h1><p>Financial technology forum</p>',
+  finalUrl: 'https://castgny.org/en/index.php/homepage-main/2018annual-convention/'
+});
+assert.strictEqual(staleConvention.state, 'unverified');
+assert.strictEqual(staleConvention.reason, 'year_conflict');
+
+const forum2026 = gate.classifyFetched({
+  id: 'live_075',
+  title_en: 'Financial Technology Forum',
+  url: 'https://castgny.org/en/index.php/homepage-main/2018annual-convention/financial-technology-forum/'
+}, {
+  status: 200,
+  body: '<title>CAST GNY</title><p>2026 Annual Convention</p>',
+  finalUrl: 'https://castgny.org/en/index.php/homepage-main/2018annual-convention/financial-technology-forum/'
+});
+assert.strictEqual(forum2026.state, 'unverified');
+assert.notStrictEqual(forum2026.state, 'verified');
 
 const urls = new Set([gate.normalizeUrl(live110.url)]);
 assert.strictEqual(gate.candidateDecision({

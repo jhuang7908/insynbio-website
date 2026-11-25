@@ -5,8 +5,8 @@
   "failures": [],
   "subscribe_errors": [],
   "image_problems": [],
-  "items_kept": 124,
-  "public": 115,
+  "items_kept": 119,
+  "public": 110,
   "hidden": [
     {
       "id": "live_004",
@@ -55,39 +55,47 @@
     }
   ],
   "deleted_expired": [],
-  "removed_duplicates": [
+  "removed_duplicates": [],
+  "removed_mismatches": [
     {
-      "id": "live_041",
-      "url": "https://www.nypl.org/locations/flushing",
-      "title_zh": "NYPL Flushing Library 法拉盛图书馆",
-      "reason": "nypl_flushing_is_queens_public_library_duplicate_of_live_110"
-    }
-  ],
-  "removed_invalid": [
-    {
-      "id": "live_106",
-      "url": "https://www.nyc.gov/site/hra/help/medicaid.page",
-      "finalUrl": "https://www.nyc.gov/site/hra/help/medicaid.page",
-      "title_zh": "白卡 / Medicaid 申请（HRA 官方）",
-      "state": "invalid",
-      "reason": "error_page"
+      "id": "live_071",
+      "url": "https://castgny.org/en/index.php/homepage-main/2018annual-convention/",
+      "title_zh": "欢迎参加2018年度大会",
+      "reason": "2018_url_opens_2026_convention"
     },
     {
-      "id": "live_107",
-      "url": "https://www.nyc.gov/site/hra/help/essential-plan.page",
-      "finalUrl": "https://www.nyc.gov/site/hra/help/essential-plan.page",
-      "title_zh": "Essential Plan 医保计划（HRA）",
-      "state": "invalid",
-      "reason": "error_page"
+      "id": "live_073",
+      "url": "https://castgny.org/en/index.php/homepage-main/2018annual-convention/selected-speakers/",
+      "title_zh": "选定发言人和特别会议",
+      "reason": "2018_url_opens_2026_convention"
+    },
+    {
+      "id": "live_074",
+      "url": "https://castgny.org/en/index.php/homepage-main/2018annual-convention/ai-and-data-science-forum/",
+      "title_zh": "人工智能与数据科学论坛",
+      "reason": "2018_url_opens_2026_convention"
+    },
+    {
+      "id": "live_075",
+      "url": "https://castgny.org/en/index.php/homepage-main/2018annual-convention/financial-technology-forum/",
+      "title_zh": "金融科技论坛",
+      "reason": "2018_url_opens_2026_convention"
+    },
+    {
+      "id": "live_076",
+      "url": "https://castgny.org/en/index.php/homepage-main/2018annual-convention/biotechnology-forum/",
+      "title_zh": "生物技术论坛",
+      "reason": "2018_url_opens_2026_convention"
     }
   ],
+  "removed_invalid": [],
   "added_candidates": [],
   "skipped_candidates": [],
   "link_check": {
-    "checked": 117,
-    "verified": 70,
-    "unverified": 45,
-    "invalid": 2,
+    "checked": 110,
+    "verified": 52,
+    "unverified": 58,
+    "invalid": 0,
     "rows": [
       {
         "id": "live_034",
@@ -110,8 +118,8 @@
         "url": "https://www.bmcc.cuny.edu/ce/contact/",
         "finalUrl": "https://www.bmcc.cuny.edu/ce/contact/",
         "title_zh": "继续教育与劳动力发展中心",
-        "state": "verified",
-        "reason": "matched:bmcc,contact"
+        "state": "unverified",
+        "reason": "content_not_confirmed"
       },
       {
         "id": "live_037",
@@ -134,8 +142,8 @@
         "url": "https://www.cmpny.org/news/events/classes/category/SYEP",
         "finalUrl": "https://www.cmpny.org/news/events/classes/category/SYEP",
         "title_zh": "2026 年夏季青少年就业计划（SYEP）现已开放申请！（截止日期为3月13日）",
-        "state": "verified",
-        "reason": "matched:syep,news,classes"
+        "state": "unverified",
+        "reason": "single_token"
       },
       {
         "id": "live_040",
@@ -223,15 +231,15 @@
         "finalUrl": "https://www.eventbrite.com/d/ny--new-york/chinese--events/",
         "title_zh": "Eventbrite — 法拉盛华人活动",
         "state": "verified",
-        "reason": "matched:eventbrite,chinese,queens"
+        "reason": "matched:eventbrite,chinese"
       },
       {
         "id": "live_052",
         "url": "https://www.cmpny.org/news/events/classes/join-us-for-cmps-2026-gala-peak-potentials-careers-in-sports-athletics",
         "finalUrl": "https://www.cmpny.org/news/events/classes/join-us-for-cmps-2026-gala-peak-potentials-careers-in-sports-athletics",
         "title_zh": "了解更多并参与",
-        "state": "verified",
-        "reason": "matched:gala,peak,potentials"
+        "state": "unverified",
+        "reason": "content_not_confirmed"
       },
       {
         "id": "live_053",
@@ -326,48 +334,40 @@
         "url": "https://castgny.org/en/index.php/2024-cast-gny-annual-conference/",
         "finalUrl": "https://castgny.org/en/index.php/2024-cast-gny-annual-conference/",
         "title_zh": "2024 CAST-GNY 年度会议",
-        "state": "verified",
-        "reason": "matched:cast,annual,conference"
+        "state": "unverified",
+        "reason": "year_conflict"
       },
       {
         "id": "live_067",
         "url": "https://castgny.org/en/index.php/2024-cast-gny-annual-conference/2024-castgny-congrats/",
         "finalUrl": "https://castgny.org/en/index.php/2024-cast-gny-annual-conference/2024-castgny-congrats/",
         "title_zh": "美国祝贺",
-        "state": "verified",
-        "reason": "matched:cast,annual,conference"
+        "state": "unverified",
+        "reason": "year_conflict"
       },
       {
         "id": "live_068",
         "url": "https://castgny.org/en/index.php/2024-cast-gny-annual-conference/2024-castgny-news/",
         "finalUrl": "https://castgny.org/en/index.php/2024-cast-gny-annual-conference/2024-castgny-news/",
         "title_zh": "新闻稿",
-        "state": "verified",
-        "reason": "matched:cast,annual,conference"
+        "state": "unverified",
+        "reason": "year_conflict"
       },
       {
         "id": "live_069",
         "url": "https://castgny.org/en/index.php/2023-cast-gny-convention-2/",
         "finalUrl": "https://castgny.org/en/index.php/2023-cast-gny-convention-2/",
         "title_zh": "2023 CAST-GNY 年度会议（纽约市）",
-        "state": "verified",
-        "reason": "matched:cast,annual,conference"
+        "state": "unverified",
+        "reason": "year_conflict"
       },
       {
         "id": "live_070",
         "url": "http://castgny.org/en/index.php/2019-annual-conference/",
         "finalUrl": "https://castgny.org/en/index.php/2019-annual-conference/",
         "title_zh": "2019 CASTUSA-GNY 大会（纽约市）",
-        "state": "verified",
-        "reason": "matched:annual,conference"
-      },
-      {
-        "id": "live_071",
-        "url": "https://castgny.org/en/index.php/homepage-main/2018annual-convention/",
-        "finalUrl": "https://castgny.org/en/index.php/homepage-main/2018annual-convention/",
-        "title_zh": "欢迎参加2018年度大会",
-        "state": "verified",
-        "reason": "matched:annual"
+        "state": "unverified",
+        "reason": "year_conflict"
       },
       {
         "id": "live_072",
@@ -376,38 +376,6 @@
         "title_zh": "商业研讨会：创业入门",
         "state": "verified",
         "reason": "matched:business,workshop,introduction,entrepreneurship"
-      },
-      {
-        "id": "live_073",
-        "url": "https://castgny.org/en/index.php/homepage-main/2018annual-convention/selected-speakers/",
-        "finalUrl": "https://castgny.org/en/index.php/homepage-main/2018annual-convention/selected-speakers/",
-        "title_zh": "选定发言人和特别会议",
-        "state": "verified",
-        "reason": "matched:speakers,session,annual"
-      },
-      {
-        "id": "live_074",
-        "url": "https://castgny.org/en/index.php/homepage-main/2018annual-convention/ai-and-data-science-forum/",
-        "finalUrl": "https://castgny.org/en/index.php/homepage-main/2018annual-convention/ai-and-data-science-forum/",
-        "title_zh": "人工智能与数据科学论坛",
-        "state": "verified",
-        "reason": "matched:data,science,annual"
-      },
-      {
-        "id": "live_075",
-        "url": "https://castgny.org/en/index.php/homepage-main/2018annual-convention/financial-technology-forum/",
-        "finalUrl": "https://castgny.org/en/index.php/homepage-main/2018annual-convention/financial-technology-forum/",
-        "title_zh": "金融科技论坛",
-        "state": "verified",
-        "reason": "matched:annual"
-      },
-      {
-        "id": "live_076",
-        "url": "https://castgny.org/en/index.php/homepage-main/2018annual-convention/biotechnology-forum/",
-        "finalUrl": "https://castgny.org/en/index.php/homepage-main/2018annual-convention/biotechnology-forum/",
-        "title_zh": "生物技术论坛",
-        "state": "verified",
-        "reason": "matched:annual"
       },
       {
         "id": "live_077",
@@ -455,15 +423,15 @@
         "finalUrl": "https://www.cacf.org/policy-advocacy",
         "title_zh": "政策与倡导",
         "state": "verified",
-        "reason": "matched:policy,advocacy,cacf"
+        "reason": "matched:policy,advocacy"
       },
       {
         "id": "live_083",
         "url": "https://www.cacf.org/capacity-building",
         "finalUrl": "https://www.cacf.org/capacity-building",
         "title_zh": "资助",
-        "state": "verified",
-        "reason": "matched:grants,cacf"
+        "state": "unverified",
+        "reason": "single_token"
       },
       {
         "id": "live_084",
@@ -471,7 +439,7 @@
         "finalUrl": "https://www.cacf.org/events/asap-2025-community-briefing",
         "title_zh": "2025 ASAP 社区简报",
         "state": "verified",
-        "reason": "matched:asap,community,briefing,cacf"
+        "reason": "matched:asap,community,briefing"
       },
       {
         "id": "live_085",
@@ -479,7 +447,7 @@
         "finalUrl": "https://www.cacf.org/events/aycan-our-community-our-voices",
         "title_zh": "我们的社区，我们的声音",
         "state": "verified",
-        "reason": "matched:community,voices,cacf,aycan"
+        "reason": "matched:community,voices"
       },
       {
         "id": "live_086",
@@ -487,7 +455,7 @@
         "finalUrl": "https://www.cacf.org/events/cacf-2025-aapi-mayoral-forum",
         "title_zh": "2025 AAPI 市长论坛",
         "state": "verified",
-        "reason": "matched:aapi,mayoral,forum,cacf"
+        "reason": "matched:aapi,mayoral,forum"
       },
       {
         "id": "live_087",
@@ -582,8 +550,8 @@
         "url": "https://www.nyc.gov/assets/doh/downloads/pdf/covid/covid-19-vax-best-defense.pdf",
         "finalUrl": "https://www.nyc.gov/assets/doh/downloads/pdf/covid/covid-19-vax-best-defense.pdf",
         "title_zh": "COVID-19 疫苗仍然是我们最好的防御",
-        "state": "verified",
-        "reason": "matched:covid"
+        "state": "unverified",
+        "reason": "single_token"
       },
       {
         "id": "live_099",
@@ -642,22 +610,6 @@
         "reason": "bot_shell_or_block_page"
       },
       {
-        "id": "live_106",
-        "url": "https://www.nyc.gov/site/hra/help/medicaid.page",
-        "finalUrl": "https://www.nyc.gov/site/hra/help/medicaid.page",
-        "title_zh": "白卡 / Medicaid 申请（HRA 官方）",
-        "state": "invalid",
-        "reason": "error_page"
-      },
-      {
-        "id": "live_107",
-        "url": "https://www.nyc.gov/site/hra/help/essential-plan.page",
-        "finalUrl": "https://www.nyc.gov/site/hra/help/essential-plan.page",
-        "title_zh": "Essential Plan 医保计划（HRA）",
-        "state": "invalid",
-        "reason": "error_page"
-      },
-      {
         "id": "live_108",
         "url": "https://www.nyc.gov/site/idnyc/card/how-to-apply.page",
         "finalUrl": "https://www.nyc.gov/site/idnyc/card/how-to-apply.page",
@@ -711,7 +663,7 @@
         "finalUrl": "https://luma.com/castgny2025",
         "title_zh": "CASTGNY 年会报名页（Luma）",
         "state": "verified",
-        "reason": "matched:castgny,luma,castgny2025"
+        "reason": "matched:castgny,luma"
       },
       {
         "id": "live_115",
@@ -838,8 +790,8 @@
         "url": "https://www.oca-ny.org/",
         "finalUrl": "https://www.oca-ny.org/",
         "title_zh": "OCA 纽约分会 — 亚裔公民权益",
-        "state": "verified",
-        "reason": "matched:chapter"
+        "state": "unverified",
+        "reason": "single_token"
       },
       {
         "id": "live_131",
@@ -854,16 +806,16 @@
         "url": "https://carsa2012.org/",
         "finalUrl": "https://carsa2012.org/",
         "title_zh": "CARSA 美国华人餐饮业协会",
-        "state": "verified",
-        "reason": "matched:carsa,carsa2012"
+        "state": "unverified",
+        "reason": "single_token"
       },
       {
         "id": "live_133",
         "url": "https://www.flushingbid.com/",
         "finalUrl": "https://www.flushingbid.com/",
         "title_zh": "法拉盛 BID — 商圈餐饮与节庆活动",
-        "state": "verified",
-        "reason": "matched:flushing"
+        "state": "unverified",
+        "reason": "single_token"
       },
       {
         "id": "live_134",
@@ -871,7 +823,7 @@
         "finalUrl": "https://www.shanghaiusa.org/calendar-of-events",
         "title_zh": "美国上海同乡会 — 活动日历",
         "state": "verified",
-        "reason": "matched:shanghai,calendar,shanghaiusa"
+        "reason": "matched:shanghai,calendar"
       },
       {
         "id": "dir_shape_up_nyc",
@@ -887,7 +839,7 @@
         "finalUrl": "https://www.nycgovparks.org/facilities/recreationcenters",
         "title_zh": "NYC Parks 社区康乐中心目录",
         "state": "verified",
-        "reason": "matched:parks,recreation,center,facilities"
+        "reason": "matched:parks,recreation,center"
       },
       {
         "id": "contest_exploravision2027",
@@ -895,7 +847,7 @@
         "finalUrl": "https://www.exploravision.org/rules-requirements/",
         "title_zh": "东芝/NSTA 未来科技创想赛 2026–2027",
         "state": "verified",
-        "reason": "matched:nsta,exploravision,rules,requirements"
+        "reason": "matched:nsta,exploravision"
       },
       {
         "id": "contest_ecyber2027",
@@ -943,7 +895,7 @@
         "finalUrl": "https://junior.scholastic.com/pages/contests.html",
         "title_zh": "Junior Scholastic 历史亲历者采访赛（待核验）",
         "state": "verified",
-        "reason": "matched:junior,scholastic,history,contests"
+        "reason": "matched:junior,scholastic,history"
       },
       {
         "id": "contest_nocti2027",
@@ -967,7 +919,7 @@
         "finalUrl": "https://summer.harvard.edu/high-school-programs/pre-college-program/",
         "title_zh": "哈佛高中生暑期预科 2027（本校）",
         "state": "verified",
-        "reason": "matched:harvard,college,summer,high"
+        "reason": "matched:harvard,college"
       },
       {
         "id": "camp_yale_yygs_2027",
@@ -1023,7 +975,7 @@
         "finalUrl": "https://www.girlscoutsnyc.org/en/get-involved/join.html",
         "title_zh": "纽约女童军 Girl Scouts of Greater New York",
         "state": "verified",
-        "reason": "matched:girl,scouts,greater,involved"
+        "reason": "matched:girl,scouts,greater"
       }
     ]
   }

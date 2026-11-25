@@ -83,6 +83,7 @@ function applyRetention(items, asOf) {
   const deleted = [];
   const hidden = [];
   const removedDuplicates = [];
+  const removedMismatches = [];
   const kept = [];
   for (const item of items) {
     if (isNyplFlushingDuplicate(item, items)) {
@@ -91,6 +92,15 @@ function applyRetention(items, asOf) {
         url: item.url,
         title_zh: item.title_zh,
         reason: 'nypl_flushing_is_queens_public_library_duplicate_of_live_110'
+      });
+      continue;
+    }
+    if (isStaleConventionPage(item)) {
+      removedMismatches.push({
+        id: item.id,
+        url: item.url,
+        title_zh: item.title_zh,
+        reason: '2018_url_opens_2026_convention'
       });
       continue;
     }
@@ -113,7 +123,7 @@ function applyRetention(items, asOf) {
     }
     kept.push(item);
   }
-  return { items: kept, deleted, hidden, removedDuplicates };
+  return { items: kept, deleted, hidden, removedDuplicates, removedMismatches };
 }
 
 function subscribeUiErrors(html) {
@@ -145,10 +155,45 @@ function subscribeUiErrors(html) {
   return errors;
 }
 
+function identityText(item) {
+  return [
+    item && item.title_en,
+    item && item.title_zh,
+    item && item.institution,
+    item && item.institution_en,
+    item && item.org_en,
+    item && item.org_name,
+    item && item.source_name
+  ].filter(Boolean).join(' ');
+}
+
 function significantTokens(item) {
-  const blob = [item.title_en, item.title_zh, item.area_en, item.location, item.url].filter(Boolean).join(' ');
-  const words = blob.toLowerCase().match(/[a-z][a-z0-9]{3,}/g) || [];
+  const words = identityText(item).toLowerCase().match(/[a-z][a-z0-9]{3,}/g) || [];
   return [...new Set(words.filter((word) => !STOP.has(word)))].slice(0, 12);
+}
+
+function yearsIn(text) {
+  return new Set(String(text || '').match(/\b(?:19|20)\d{2}\b/g) || []);
+}
+
+function yearsConflict(item, body) {
+  const claimed = yearsIn([
+    item && item.title_en,
+    item && item.title_zh,
+    item && item.event_date,
+    item && item.event_end_date,
+    item && item.url
+  ].filter(Boolean).join(' '));
+  const title = (String(body || '').match(/<title>([^<]{0,180})/i) || ['', ''])[1];
+  const heading = (String(body || '').match(/<h1[^>]*>([^<]{0,180})/i) || ['', ''])[1];
+  const shown = yearsIn(title + ' ' + heading + ' ' + visibleText(body).slice(0, 4000));
+  if (!claimed.size || !shown.size) return false;
+  for (const year of claimed) if (shown.has(year)) return false;
+  return true;
+}
+
+function isStaleConventionPage(item) {
+  return /castgny\.org\/[^?\s]*2018annual-convention/i.test(String(item && item.url || ''));
 }
 
 function visibleText(html) {
@@ -195,11 +240,17 @@ function classifyFetched(item, fetched) {
   }
   if (isErrorPage(status, body)) return { state: 'invalid', reason: 'error_page', finalUrl };
   if (status !== 200) return { state: 'unverified', reason: 'http_' + status, finalUrl };
+  if (yearsConflict(item, body)) return { state: 'unverified', reason: 'year_conflict', finalUrl };
   const tokens = significantTokens(item);
   const hay = ((body.match(/<title>([^<]{0,180})/i) || ['', ''])[1] + ' ' + visibleText(body).slice(0, 7000)).toLowerCase();
   const hits = tokens.filter((token) => hay.includes(token));
-  if (!tokens.length || !hits.length) {
-    return { state: 'unverified', reason: 'content_not_confirmed', finalUrl, tokens: tokens.slice(0, 6) };
+  if (hits.length < 2) {
+    return {
+      state: 'unverified',
+      reason: hits.length === 1 ? 'single_token' : 'content_not_confirmed',
+      finalUrl,
+      tokens: tokens.slice(0, 6)
+    };
   }
   return { state: 'verified', reason: 'matched:' + hits.slice(0, 4).join(','), finalUrl };
 }
@@ -426,7 +477,7 @@ async function main() {
   }
 
   const catalog = JSON.parse(fs.readFileSync(path.join(root, 'assets', 'hub-image-catalog.json'), 'utf8'));
-  for (const row of retention.removedDuplicates.concat(removedInvalid)) dropCatalogId(catalog, row.id);
+  for (const row of retention.removedDuplicates.concat(retention.removedMismatches, removedInvalid)) dropCatalogId(catalog, row.id);
   const images = imageProblems(items, catalog, asOf);
   const stillDelete = items.filter((item) => policy.disposition(item, asOf).action === 'delete').map((item) => item.id);
   const publicCount = items.filter((item) => policy.isPublicActivity(item, asOf)).length;
@@ -435,6 +486,7 @@ async function main() {
   if (images.length) failures.push('image_uniqueness');
   if (stillDelete.length) failures.push('expired_month_still_present');
   if (items.some((item) => isNyplFlushingDuplicate(item, items))) failures.push('live_041_still_present');
+  if (items.some((item) => isStaleConventionPage(item))) failures.push('stale_convention_still_present');
   if (!args.skipNetwork && removedInvalid.length && items.some((item) => removedInvalid.some((row) => row.id === item.id))) {
     failures.push('invalid_link_still_present');
   }
@@ -451,6 +503,7 @@ async function main() {
     hidden: retention.hidden,
     deleted_expired: retention.deleted,
     removed_duplicates: retention.removedDuplicates,
+    removed_mismatches: retention.removedMismatches,
     removed_invalid: removedInvalid,
     added_candidates: added,
     skipped_candidates: skippedCandidates.slice(0, 80),
@@ -494,6 +547,7 @@ async function main() {
     hidden: retention.hidden.length,
     deleted_expired: retention.deleted.length,
     removed_duplicates: retention.removedDuplicates.map((row) => row.id),
+    removed_mismatches: retention.removedMismatches.map((row) => row.id),
     removed_invalid: removedInvalid.map((row) => row.id),
     added: added.length,
     verified: report.link_check.verified,

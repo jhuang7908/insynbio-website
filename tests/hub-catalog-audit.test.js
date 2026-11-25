@@ -42,7 +42,9 @@ const week = publicItems.filter(i => policy.includeInNext7Days(i, TODAY)).map(i 
 const removed = {
   live_041: 'nypl.org/locations/flushing',
   live_106: 'nyc.gov/site/hra/help/medicaid.page',
-  live_107: 'nyc.gov/site/hra/help/essential-plan.page'
+  live_107: 'nyc.gov/site/hra/help/essential-plan.page',
+  live_071: '2018annual-convention',
+  live_075: '2018annual-convention/financial-technology-forum'
 };
 for (const [id, urlPart] of Object.entries(removed)) {
   assert.ok(!byId.has(id), id + ' must stay out of the catalog');
