@@ -1,0 +1,1030 @@
+{
+  "as_of": "2026-11-25",
+  "timezone": "America/New_York",
+  "publish_allowed": true,
+  "failures": [],
+  "subscribe_errors": [],
+  "image_problems": [],
+  "items_kept": 124,
+  "public": 115,
+  "hidden": [
+    {
+      "id": "live_004",
+      "title_zh": "2026年10月",
+      "end": "2026-10-30"
+    },
+    {
+      "id": "live_009",
+      "title_zh": "查看活动 →",
+      "end": "2026-11-13"
+    },
+    {
+      "id": "fpt_fairy_20261108",
+      "title_zh": "Forest Park 精灵与地精日",
+      "end": "2026-11-08"
+    },
+    {
+      "id": "fpt_restore_forest_20261113",
+      "title_zh": "Forest Park 修复周五（11月13日）",
+      "end": "2026-11-13"
+    },
+    {
+      "id": "fpt_native_20261114",
+      "title_zh": "Forest Park 本土植物栽种",
+      "end": "2026-11-14"
+    },
+    {
+      "id": "fpt_foliage_20261119",
+      "title_zh": "Forest Park 秋叶步行",
+      "end": "2026-11-19"
+    },
+    {
+      "id": "fpt_restore_forest_20261120",
+      "title_zh": "Forest Park 修复周五（11月20日）",
+      "end": "2026-11-20"
+    },
+    {
+      "id": "fpt_restore_highland_20261120",
+      "title_zh": "Highland Park 修复周五（11月20日）",
+      "end": "2026-11-20"
+    },
+    {
+      "id": "contest_bebras2026",
+      "title_zh": "美国海狸计算思维挑战 2026",
+      "end": "2026-11-20"
+    }
+  ],
+  "deleted_expired": [],
+  "removed_duplicates": [
+    {
+      "id": "live_041",
+      "url": "https://www.nypl.org/locations/flushing",
+      "title_zh": "NYPL Flushing Library 法拉盛图书馆",
+      "reason": "nypl_flushing_is_queens_public_library_duplicate_of_live_110"
+    }
+  ],
+  "removed_invalid": [
+    {
+      "id": "live_106",
+      "url": "https://www.nyc.gov/site/hra/help/medicaid.page",
+      "finalUrl": "https://www.nyc.gov/site/hra/help/medicaid.page",
+      "title_zh": "白卡 / Medicaid 申请（HRA 官方）",
+      "state": "invalid",
+      "reason": "error_page"
+    },
+    {
+      "id": "live_107",
+      "url": "https://www.nyc.gov/site/hra/help/essential-plan.page",
+      "finalUrl": "https://www.nyc.gov/site/hra/help/essential-plan.page",
+      "title_zh": "Essential Plan 医保计划（HRA）",
+      "state": "invalid",
+      "reason": "error_page"
+    }
+  ],
+  "added_candidates": [],
+  "skipped_candidates": [],
+  "link_check": {
+    "checked": 117,
+    "verified": 70,
+    "unverified": 45,
+    "invalid": 2,
+    "rows": [
+      {
+        "id": "live_034",
+        "url": "https://www.nycgovparks.org/events/volunteer",
+        "finalUrl": "https://www.nycgovparks.org/events/volunteer",
+        "title_zh": "NYC Parks Volunteer — 公园义工报名",
+        "state": "verified",
+        "reason": "matched:parks,volunteer"
+      },
+      {
+        "id": "live_035",
+        "url": "https://www.qcc.cuny.edu/ce/programs/community-english-as-a-second-language.html",
+        "finalUrl": "https://www.qcc.cuny.edu/ce/programs/community-english-as-a-second-language.html",
+        "title_zh": "社区英语作为第二语言",
+        "state": "verified",
+        "reason": "matched:community,english,second,language"
+      },
+      {
+        "id": "live_036",
+        "url": "https://www.bmcc.cuny.edu/ce/contact/",
+        "finalUrl": "https://www.bmcc.cuny.edu/ce/contact/",
+        "title_zh": "继续教育与劳动力发展中心",
+        "state": "verified",
+        "reason": "matched:bmcc,contact"
+      },
+      {
+        "id": "live_037",
+        "url": "https://www.sapaweb.org/2026-annual-conference",
+        "finalUrl": "https://www.sapaweb.org/2026-annual-conference",
+        "title_zh": "SAPA 2026年年会",
+        "state": "unverified",
+        "reason": "bot_shell_or_block_page"
+      },
+      {
+        "id": "live_038",
+        "url": "https://www.cmpny.org/news/events/classes/2026/8/4/summer-fun-amp-fall-registration-at-cmp-chinese-school",
+        "finalUrl": "https://www.cmpny.org/news/events/classes/2026/8/4/summer-fun-amp-fall-registration-at-cmp-chinese-school",
+        "title_zh": "CMP 中文学校：秋季注册现已开放！",
+        "state": "verified",
+        "reason": "matched:chinese,school,fall,registration"
+      },
+      {
+        "id": "live_039",
+        "url": "https://www.cmpny.org/news/events/classes/category/SYEP",
+        "finalUrl": "https://www.cmpny.org/news/events/classes/category/SYEP",
+        "title_zh": "2026 年夏季青少年就业计划（SYEP）现已开放申请！（截止日期为3月13日）",
+        "state": "verified",
+        "reason": "matched:syep,news,classes"
+      },
+      {
+        "id": "live_040",
+        "url": "https://fcbainc.org//2024-lunar-new-year-parade/",
+        "finalUrl": "https://fcbainc.org/2024-lunar-new-year-parade/",
+        "title_zh": "2024年农历新年游行",
+        "state": "verified",
+        "reason": "matched:lunar,year,parade"
+      },
+      {
+        "id": "live_042",
+        "url": "https://fcbainc.org//2019-lunar-new-year-parade/",
+        "finalUrl": "https://fcbainc.org/2019-lunar-new-year-parade/",
+        "title_zh": "2019年农历新年游行",
+        "state": "verified",
+        "reason": "matched:lunar,year,parade"
+      },
+      {
+        "id": "live_043",
+        "url": "https://www.bklynlibrary.org/locations/sunset-park",
+        "finalUrl": "https://www.bklynlibrary.org/locations/sunset-park",
+        "title_zh": "布鲁克林公共图书馆 — Sunset Park 日落公园",
+        "state": "verified",
+        "reason": "matched:brooklyn,public,library,sunset"
+      },
+      {
+        "id": "live_044",
+        "url": "https://fcbainc.org//2017-lunar-new-year-parade/",
+        "finalUrl": "https://fcbainc.org/2017-lunar-new-year-parade/",
+        "title_zh": "2017 年农历新年游行",
+        "state": "verified",
+        "reason": "matched:lunar,year,parade"
+      },
+      {
+        "id": "live_045",
+        "url": "https://fcbainc.org//2016-lunar-new-year-parade/",
+        "finalUrl": "https://fcbainc.org/2016-lunar-new-year-parade/",
+        "title_zh": "2016年农历新年游行",
+        "state": "verified",
+        "reason": "matched:lunar,year,parade"
+      },
+      {
+        "id": "live_046",
+        "url": "https://fcbainc.org//2014-lunar-new-year-parade/",
+        "finalUrl": "https://fcbainc.org/2014-lunar-new-year-parade/",
+        "title_zh": "2014 年农历新年游行",
+        "state": "verified",
+        "reason": "matched:lunar,year,parade"
+      },
+      {
+        "id": "live_047",
+        "url": "https://fcbainc.org//2013-lunar-new-year-parade/",
+        "finalUrl": "https://fcbainc.org/2013-lunar-new-year-parade/",
+        "title_zh": "2013 年农历新年游行",
+        "state": "verified",
+        "reason": "matched:lunar,year,parade"
+      },
+      {
+        "id": "live_048",
+        "url": "https://fcbainc.org//2012-lunar-new-year-parade/",
+        "finalUrl": "https://fcbainc.org/2012-lunar-new-year-parade/",
+        "title_zh": "2012年农历新年游行",
+        "state": "verified",
+        "reason": "matched:lunar,year,parade"
+      },
+      {
+        "id": "live_049",
+        "url": "https://fcbainc.org//2011-lunar-new-year-parade/",
+        "finalUrl": "https://fcbainc.org/2011-lunar-new-year-parade/",
+        "title_zh": "2011年农历新年游行",
+        "state": "verified",
+        "reason": "matched:lunar,year,parade"
+      },
+      {
+        "id": "live_050",
+        "url": "https://www.areaa.org/membership-registration",
+        "finalUrl": "https://www.areaa.org/membership-registration",
+        "title_zh": "今天加入AREAA New York East！",
+        "state": "unverified",
+        "reason": "http_202"
+      },
+      {
+        "id": "live_051",
+        "url": "https://www.eventbrite.com/d/ny--flushing/chinese--events/",
+        "finalUrl": "https://www.eventbrite.com/d/ny--new-york/chinese--events/",
+        "title_zh": "Eventbrite — 法拉盛华人活动",
+        "state": "verified",
+        "reason": "matched:eventbrite,chinese,queens"
+      },
+      {
+        "id": "live_052",
+        "url": "https://www.cmpny.org/news/events/classes/join-us-for-cmps-2026-gala-peak-potentials-careers-in-sports-athletics",
+        "finalUrl": "https://www.cmpny.org/news/events/classes/join-us-for-cmps-2026-gala-peak-potentials-careers-in-sports-athletics",
+        "title_zh": "了解更多并参与",
+        "state": "verified",
+        "reason": "matched:gala,peak,potentials"
+      },
+      {
+        "id": "live_053",
+        "url": "https://www.bca.net/eng/home.html",
+        "finalUrl": "https://www.bca.net/eng/home.html",
+        "title_zh": "布鲁克林华人协会（BCA）",
+        "state": "unverified",
+        "reason": "ECONNRESET"
+      },
+      {
+        "id": "live_055",
+        "url": "https://www.eventbrite.com/d/ny--new-york/chinese-community--events/",
+        "finalUrl": "https://www.eventbrite.com/d/ny--new-york/chinese-community--events/",
+        "title_zh": "Eventbrite — 纽约市华人社区活动",
+        "state": "verified",
+        "reason": "matched:eventbrite,chinese,community"
+      },
+      {
+        "id": "live_056",
+        "url": "https://www.sapaweb.org/2026annualprogramsandevent",
+        "finalUrl": "https://www.sapaweb.org/2026annualprogramsandevent",
+        "title_zh": "SAPA 2026 年度项目与活动",
+        "state": "unverified",
+        "reason": "content_not_confirmed"
+      },
+      {
+        "id": "live_057",
+        "url": "https://www.cmpny.org/news/events/classes/2026/7/24/join-us-for-the-cmp-fall-job-fair-on-930",
+        "finalUrl": "https://www.cmpny.org/news/events/classes/2026/7/24/join-us-for-the-cmp-fall-job-fair-on-930",
+        "title_zh": "找工作吗？加入 CMP 的免费招聘会，时间是9月30日！",
+        "state": "verified",
+        "reason": "matched:looking,join,free,fair"
+      },
+      {
+        "id": "live_058",
+        "url": "https://www.cmpny.org/news/events/classes/2026/8/27/tampe-free-workforce-skills-training-amp-college-prep-for-youth",
+        "finalUrl": "https://www.cmpny.org/news/events/classes/2026/8/27/tampe-free-workforce-skills-training-amp-college-prep-for-youth",
+        "title_zh": "T&E：为青少年提供免费的劳动力、技能培训和大学准备",
+        "state": "verified",
+        "reason": "matched:free,workforce,skills,training"
+      },
+      {
+        "id": "live_059",
+        "url": "https://www.cmpny.org/news/events/classes/2026/8/27/free-adult-english-classes",
+        "finalUrl": "https://www.cmpny.org/news/events/classes/2026/8/27/free-adult-english-classes",
+        "title_zh": "免费成人英语课程",
+        "state": "verified",
+        "reason": "matched:free,adult,english,classes"
+      },
+      {
+        "id": "live_060",
+        "url": "https://www.cmpny.org/news/events/classes/2026/8/12/free-online-workshop-small-business-tax-essentials",
+        "finalUrl": "https://www.cmpny.org/news/events/classes/2026/8/12/free-online-workshop-small-business-tax-essentials",
+        "title_zh": "免费在线研讨会：小企业税务基础",
+        "state": "verified",
+        "reason": "matched:free,online,workshop,small"
+      },
+      {
+        "id": "live_061",
+        "url": "https://www.nyc.gov/site/immigrants/about/press-releases/moia-launches-immigrant-legal-services-community-support-network-20250722.page",
+        "finalUrl": "https://www.nyc.gov/site/immigrants/about/press-releases/moia-launches-immigrant-legal-services-community-support-network-20250722.page",
+        "title_zh": "宣布市级移民法律服务和社区支持网络",
+        "state": "unverified",
+        "reason": "bot_shell_or_block_page"
+      },
+      {
+        "id": "live_062",
+        "url": "https://hainanassociation.com/%e6%b4%bb%e5%8a%a8%e9%a2%84%e5%91%8a-2/",
+        "finalUrl": "https://hainanassociation.com/%e6%b4%bb%e5%8a%a8%e9%a2%84%e5%91%8a-2/",
+        "title_zh": "海南同乡会 · 活动预告",
+        "state": "unverified",
+        "reason": "http_403"
+      },
+      {
+        "id": "live_063",
+        "url": "https://hainanassociation.com/%e5%90%8c%e4%b9%a1%e4%bc%9a%e6%b4%bb%e5%8a%a8%e6%8a%a5%e9%81%93/",
+        "finalUrl": "https://hainanassociation.com/%e5%90%8c%e4%b9%a1%e4%bc%9a%e6%b4%bb%e5%8a%a8%e6%8a%a5%e9%81%93/",
+        "title_zh": "海南同乡会 · 活动报道",
+        "state": "unverified",
+        "reason": "http_403"
+      },
+      {
+        "id": "live_064",
+        "url": "https://www1.nyc.gov/site/idnyc/benefits/entertainment-discounts.page",
+        "finalUrl": "https://www.nyc.gov/site/idnyc/benefits/entertainment-discounts.page",
+        "title_zh": "使用您的IDNYC卡在折扣酒店、主题公园和其他娱乐场所节省费用！",
+        "state": "unverified",
+        "reason": "bot_shell_or_block_page"
+      },
+      {
+        "id": "live_066",
+        "url": "https://castgny.org/en/index.php/2024-cast-gny-annual-conference/",
+        "finalUrl": "https://castgny.org/en/index.php/2024-cast-gny-annual-conference/",
+        "title_zh": "2024 CAST-GNY 年度会议",
+        "state": "verified",
+        "reason": "matched:cast,annual,conference"
+      },
+      {
+        "id": "live_067",
+        "url": "https://castgny.org/en/index.php/2024-cast-gny-annual-conference/2024-castgny-congrats/",
+        "finalUrl": "https://castgny.org/en/index.php/2024-cast-gny-annual-conference/2024-castgny-congrats/",
+        "title_zh": "美国祝贺",
+        "state": "verified",
+        "reason": "matched:cast,annual,conference"
+      },
+      {
+        "id": "live_068",
+        "url": "https://castgny.org/en/index.php/2024-cast-gny-annual-conference/2024-castgny-news/",
+        "finalUrl": "https://castgny.org/en/index.php/2024-cast-gny-annual-conference/2024-castgny-news/",
+        "title_zh": "新闻稿",
+        "state": "verified",
+        "reason": "matched:cast,annual,conference"
+      },
+      {
+        "id": "live_069",
+        "url": "https://castgny.org/en/index.php/2023-cast-gny-convention-2/",
+        "finalUrl": "https://castgny.org/en/index.php/2023-cast-gny-convention-2/",
+        "title_zh": "2023 CAST-GNY 年度会议（纽约市）",
+        "state": "verified",
+        "reason": "matched:cast,annual,conference"
+      },
+      {
+        "id": "live_070",
+        "url": "http://castgny.org/en/index.php/2019-annual-conference/",
+        "finalUrl": "https://castgny.org/en/index.php/2019-annual-conference/",
+        "title_zh": "2019 CASTUSA-GNY 大会（纽约市）",
+        "state": "verified",
+        "reason": "matched:annual,conference"
+      },
+      {
+        "id": "live_071",
+        "url": "https://castgny.org/en/index.php/homepage-main/2018annual-convention/",
+        "finalUrl": "https://castgny.org/en/index.php/homepage-main/2018annual-convention/",
+        "title_zh": "欢迎参加2018年度大会",
+        "state": "verified",
+        "reason": "matched:annual"
+      },
+      {
+        "id": "live_072",
+        "url": "https://www.cmpny.org/news/events/classes/2026/9/2/business-workshop-introduction-to-entrepreneurship",
+        "finalUrl": "https://www.cmpny.org/news/events/classes/2026/9/2/business-workshop-introduction-to-entrepreneurship",
+        "title_zh": "商业研讨会：创业入门",
+        "state": "verified",
+        "reason": "matched:business,workshop,introduction,entrepreneurship"
+      },
+      {
+        "id": "live_073",
+        "url": "https://castgny.org/en/index.php/homepage-main/2018annual-convention/selected-speakers/",
+        "finalUrl": "https://castgny.org/en/index.php/homepage-main/2018annual-convention/selected-speakers/",
+        "title_zh": "选定发言人和特别会议",
+        "state": "verified",
+        "reason": "matched:speakers,session,annual"
+      },
+      {
+        "id": "live_074",
+        "url": "https://castgny.org/en/index.php/homepage-main/2018annual-convention/ai-and-data-science-forum/",
+        "finalUrl": "https://castgny.org/en/index.php/homepage-main/2018annual-convention/ai-and-data-science-forum/",
+        "title_zh": "人工智能与数据科学论坛",
+        "state": "verified",
+        "reason": "matched:data,science,annual"
+      },
+      {
+        "id": "live_075",
+        "url": "https://castgny.org/en/index.php/homepage-main/2018annual-convention/financial-technology-forum/",
+        "finalUrl": "https://castgny.org/en/index.php/homepage-main/2018annual-convention/financial-technology-forum/",
+        "title_zh": "金融科技论坛",
+        "state": "verified",
+        "reason": "matched:annual"
+      },
+      {
+        "id": "live_076",
+        "url": "https://castgny.org/en/index.php/homepage-main/2018annual-convention/biotechnology-forum/",
+        "finalUrl": "https://castgny.org/en/index.php/homepage-main/2018annual-convention/biotechnology-forum/",
+        "title_zh": "生物技术论坛",
+        "state": "verified",
+        "reason": "matched:annual"
+      },
+      {
+        "id": "live_077",
+        "url": "https://www.aafe.org/missions/affordable-housing-development/",
+        "finalUrl": "https://www.aafe.org/missions/affordable-housing-development/",
+        "title_zh": "可负担住房开发",
+        "state": "verified",
+        "reason": "matched:affordable,housing,development"
+      },
+      {
+        "id": "live_078",
+        "url": "https://www.aabany.org/events/event_list.asp",
+        "finalUrl": "https://www.aabany.org/events/event_list.asp",
+        "title_zh": "AABANY活动",
+        "state": "unverified",
+        "reason": "http_403"
+      },
+      {
+        "id": "live_079",
+        "url": "https://carsa2012.org/category/%e6%9c%80%e6%96%b0%e4%bf%a1%e6%81%af/",
+        "finalUrl": "https://carsa2012.org/category/%e6%9c%80%e6%96%b0%e4%bf%a1%e6%81%af/",
+        "title_zh": "CARSA 最新信息",
+        "state": "unverified",
+        "reason": "content_not_confirmed"
+      },
+      {
+        "id": "live_080",
+        "url": "https://www.nyc.gov/site/dca/workers/worker-rights.page",
+        "finalUrl": "https://www.nyc.gov/site/dca/workers/worker-rights.page",
+        "title_zh": "DCWP 为所有纽约市工人的权利而奋斗，无论工作或移民身份如何。了解工人法案…",
+        "state": "unverified",
+        "reason": "bot_shell_or_block_page"
+      },
+      {
+        "id": "live_081",
+        "url": "https://www.cmpny.org/news/events/classes/2026/8/7/kids-art-contest-2026-calling-all-young-artists",
+        "finalUrl": "https://www.cmpny.org/news/events/classes/2026/8/7/kids-art-contest-2026-calling-all-young-artists",
+        "title_zh": "2026年儿童艺术比赛：召集所有年轻艺术家！",
+        "state": "verified",
+        "reason": "matched:kids,contest,calling,young"
+      },
+      {
+        "id": "live_082",
+        "url": "https://www.cacf.org/policy-advocacy",
+        "finalUrl": "https://www.cacf.org/policy-advocacy",
+        "title_zh": "政策与倡导",
+        "state": "verified",
+        "reason": "matched:policy,advocacy,cacf"
+      },
+      {
+        "id": "live_083",
+        "url": "https://www.cacf.org/capacity-building",
+        "finalUrl": "https://www.cacf.org/capacity-building",
+        "title_zh": "资助",
+        "state": "verified",
+        "reason": "matched:grants,cacf"
+      },
+      {
+        "id": "live_084",
+        "url": "https://www.cacf.org/events/asap-2025-community-briefing",
+        "finalUrl": "https://www.cacf.org/events/asap-2025-community-briefing",
+        "title_zh": "2025 ASAP 社区简报",
+        "state": "verified",
+        "reason": "matched:asap,community,briefing,cacf"
+      },
+      {
+        "id": "live_085",
+        "url": "https://www.cacf.org/events/aycan-our-community-our-voices",
+        "finalUrl": "https://www.cacf.org/events/aycan-our-community-our-voices",
+        "title_zh": "我们的社区，我们的声音",
+        "state": "verified",
+        "reason": "matched:community,voices,cacf,aycan"
+      },
+      {
+        "id": "live_086",
+        "url": "https://www.cacf.org/events/cacf-2025-aapi-mayoral-forum",
+        "finalUrl": "https://www.cacf.org/events/cacf-2025-aapi-mayoral-forum",
+        "title_zh": "2025 AAPI 市长论坛",
+        "state": "verified",
+        "reason": "matched:aapi,mayoral,forum,cacf"
+      },
+      {
+        "id": "live_087",
+        "url": "https://www.nyc.gov/assets/nypd/downloads/pdf/community_affairs/Community_Affairs_Officers.pdf",
+        "finalUrl": "https://www.nyc.gov/assets/nypd/downloads/pdf/community_affairs/Community_Affairs_Officers.pdf",
+        "title_zh": "查找您当地的社区事务办公室",
+        "state": "unverified",
+        "reason": "content_not_confirmed"
+      },
+      {
+        "id": "live_088",
+        "url": "https://www.nyc.gov/site/hra/help/i-need-help.page",
+        "finalUrl": "https://www.nyc.gov/site/hra/help/i-need-help.page",
+        "title_zh": "SNAP与CA",
+        "state": "unverified",
+        "reason": "bot_shell_or_block_page"
+      },
+      {
+        "id": "live_089",
+        "url": "https://www.nyc.gov/site/hra/help/homelessness-prevention.page",
+        "finalUrl": "https://www.nyc.gov/site/hra/help/homelessness-prevention.page",
+        "title_zh": "住房与预防服务",
+        "state": "unverified",
+        "reason": "bot_shell_or_block_page"
+      },
+      {
+        "id": "live_090",
+        "url": "https://www.nyc.gov/site/hra/help/other-services.page",
+        "finalUrl": "https://www.nyc.gov/site/hra/help/other-services.page",
+        "title_zh": "其他福利与服务",
+        "state": "unverified",
+        "reason": "bot_shell_or_block_page"
+      },
+      {
+        "id": "live_091",
+        "url": "https://www.nyc.gov/site/hra/help/benefitreplacement.page",
+        "finalUrl": "https://www.nyc.gov/site/hra/help/benefitreplacement.page",
+        "title_zh": "福利替代",
+        "state": "unverified",
+        "reason": "bot_shell_or_block_page"
+      },
+      {
+        "id": "live_092",
+        "url": "https://www.nyc.gov/site/hra/help/child-care-benefits.page",
+        "finalUrl": "https://www.nyc.gov/site/hra/help/child-care-benefits.page",
+        "title_zh": "儿童保育服务",
+        "state": "unverified",
+        "reason": "bot_shell_or_block_page"
+      },
+      {
+        "id": "live_093",
+        "url": "https://www.nyc.gov/site/hra/help/fraud-prevention.page",
+        "finalUrl": "https://www.nyc.gov/site/hra/help/fraud-prevention.page",
+        "title_zh": "福利欺诈预防",
+        "state": "unverified",
+        "reason": "bot_shell_or_block_page"
+      },
+      {
+        "id": "live_094",
+        "url": "https://www.nyc.gov/site/hpd/services-and-information/housing-ambassadors.page",
+        "finalUrl": "https://www.nyc.gov/site/hpd/services-and-information/housing-ambassadors.page",
+        "title_zh": "有问题吗？联系住房大使！",
+        "state": "unverified",
+        "reason": "bot_shell_or_block_page"
+      },
+      {
+        "id": "live_095",
+        "url": "https://www.nyc.gov/site/doh/health/health-topics/health-insurance-behavioral.page",
+        "finalUrl": "https://www.nyc.gov/site/doh/health/health-topics/health-insurance-behavioral.page",
+        "title_zh": "健康保险：行为健康服务",
+        "state": "unverified",
+        "reason": "bot_shell_or_block_page"
+      },
+      {
+        "id": "live_096",
+        "url": "https://www.nyc.gov/site/hra/help/snap-application-frequently-asked-questions.page",
+        "finalUrl": "https://www.nyc.gov/site/hra/help/snap-application-frequently-asked-questions.page",
+        "title_zh": "SNAP常见问题",
+        "state": "unverified",
+        "reason": "bot_shell_or_block_page"
+      },
+      {
+        "id": "live_097",
+        "url": "https://www.nyc.gov/site/doh/health/health-topics/immigrant-health.page",
+        "finalUrl": "https://www.nyc.gov/site/doh/health/health-topics/immigrant-health.page",
+        "title_zh": "所有纽约人都有权获得医疗保健",
+        "state": "unverified",
+        "reason": "bot_shell_or_block_page"
+      },
+      {
+        "id": "live_098",
+        "url": "https://www.nyc.gov/assets/doh/downloads/pdf/covid/covid-19-vax-best-defense.pdf",
+        "finalUrl": "https://www.nyc.gov/assets/doh/downloads/pdf/covid/covid-19-vax-best-defense.pdf",
+        "title_zh": "COVID-19 疫苗仍然是我们最好的防御",
+        "state": "verified",
+        "reason": "matched:covid"
+      },
+      {
+        "id": "live_099",
+        "url": "https://www.nyc.gov/assets/doh/downloads/excel/mh/state-of-mental-health-new-yorkers-appendix.xlsx",
+        "finalUrl": "https://www.nyc.gov/assets/doh/downloads/excel/mh/state-of-mental-health-new-yorkers-appendix.xlsx",
+        "title_zh": "纽约人的心理健康状况，数据附录",
+        "state": "unverified",
+        "reason": "content_not_confirmed"
+      },
+      {
+        "id": "live_100",
+        "url": "https://www.nyc.gov/assets/doh/downloads/pdf/mh/social-media-mental-health-report-2024.pdf",
+        "finalUrl": "https://www.nyc.gov/assets/doh/downloads/pdf/mh/social-media-mental-health-report-2024.pdf",
+        "title_zh": "社交媒体与心理健康特别报告",
+        "state": "unverified",
+        "reason": "content_not_confirmed"
+      },
+      {
+        "id": "live_101",
+        "url": "https://www.nyc.gov/assets/doh/downloads/pdf/mh/social-media-mental-health-report-2024-data-tables.xlsx",
+        "finalUrl": "https://www.nyc.gov/assets/doh/downloads/pdf/mh/social-media-mental-health-report-2024-data-tables.xlsx",
+        "title_zh": "社交媒体与心理健康数据表",
+        "state": "unverified",
+        "reason": "content_not_confirmed"
+      },
+      {
+        "id": "live_102",
+        "url": "https://www.nyc.gov/site/doh/providers/resources/mental-health-trainings.page",
+        "finalUrl": "https://www.nyc.gov/site/doh/providers/resources/mental-health-trainings.page",
+        "title_zh": "医疗保健提供者的心理健康培训",
+        "state": "unverified",
+        "reason": "bot_shell_or_block_page"
+      },
+      {
+        "id": "live_103",
+        "url": "https://www.nyc.gov/assets/doh/care-community-action-mental-health-plan/index.html",
+        "finalUrl": "https://www.nyc.gov/assets/doh/care-community-action-mental-health-plan/index.html",
+        "title_zh": "关怀、社区、行动：纽约市心理健康计划",
+        "state": "unverified",
+        "reason": "bot_shell_or_block_page"
+      },
+      {
+        "id": "live_104",
+        "url": "https://access.nyc.gov/",
+        "finalUrl": "https://access.nyc.gov/",
+        "title_zh": "Access NYC — 一站式筛查可申请福利",
+        "state": "verified",
+        "reason": "matched:access,benefits,qualify"
+      },
+      {
+        "id": "live_105",
+        "url": "https://www.nyc.gov/site/hra/help/snap-benefits-food-program.page",
+        "finalUrl": "https://www.nyc.gov/site/hra/help/snap-benefits-food-program.page",
+        "title_zh": "粮食券 SNAP 申请（HRA 官方）",
+        "state": "unverified",
+        "reason": "bot_shell_or_block_page"
+      },
+      {
+        "id": "live_106",
+        "url": "https://www.nyc.gov/site/hra/help/medicaid.page",
+        "finalUrl": "https://www.nyc.gov/site/hra/help/medicaid.page",
+        "title_zh": "白卡 / Medicaid 申请（HRA 官方）",
+        "state": "invalid",
+        "reason": "error_page"
+      },
+      {
+        "id": "live_107",
+        "url": "https://www.nyc.gov/site/hra/help/essential-plan.page",
+        "finalUrl": "https://www.nyc.gov/site/hra/help/essential-plan.page",
+        "title_zh": "Essential Plan 医保计划（HRA）",
+        "state": "invalid",
+        "reason": "error_page"
+      },
+      {
+        "id": "live_108",
+        "url": "https://www.nyc.gov/site/idnyc/card/how-to-apply.page",
+        "finalUrl": "https://www.nyc.gov/site/idnyc/card/how-to-apply.page",
+        "title_zh": "IDNYC 市民卡申请入口",
+        "state": "unverified",
+        "reason": "bot_shell_or_block_page"
+      },
+      {
+        "id": "live_109",
+        "url": "https://www.nyc.gov/site/immigrants/index.page",
+        "finalUrl": "https://www.nyc.gov/site/immigrants/index.page",
+        "title_zh": "纽约移民事务办公室（MOIA）资源",
+        "state": "unverified",
+        "reason": "bot_shell_or_block_page"
+      },
+      {
+        "id": "live_110",
+        "url": "https://www.queenslibrary.org/about-us/locations/flushing",
+        "finalUrl": "https://www.queenslibrary.org/about-us/locations/flushing",
+        "title_zh": "皇后区图书馆法拉盛分馆 — 活动与课程入口",
+        "state": "verified",
+        "reason": "matched:queens,public,library,flushing"
+      },
+      {
+        "id": "live_111",
+        "url": "https://www.nypl.org/locations/chatham-square",
+        "finalUrl": "https://www.nypl.org/locations/chatham-square",
+        "title_zh": "纽约公共图书馆唐人街分馆（Chatham Square）",
+        "state": "unverified",
+        "reason": "content_not_confirmed"
+      },
+      {
+        "id": "live_112",
+        "url": "https://www.mta.info/",
+        "finalUrl": "https://www.mta.info/",
+        "title_zh": "MTA 服务通知 — 地铁公交延误与施工",
+        "state": "unverified",
+        "reason": "http_403"
+      },
+      {
+        "id": "live_113",
+        "url": "https://castgny.org/en/",
+        "finalUrl": "https://castgny.org/en/",
+        "title_zh": "CAST-GNY — 中国旅美科技协会大纽约（年会/论坛通告）",
+        "state": "verified",
+        "reason": "matched:cast,science"
+      },
+      {
+        "id": "live_114",
+        "url": "https://luma.com/castgny2025",
+        "finalUrl": "https://luma.com/castgny2025",
+        "title_zh": "CASTGNY 年会报名页（Luma）",
+        "state": "verified",
+        "reason": "matched:castgny,luma,castgny2025"
+      },
+      {
+        "id": "live_115",
+        "url": "https://www.sapaweb.org/",
+        "finalUrl": "https://www.sapaweb.org/",
+        "title_zh": "SAPA 美中药协 — 官网通告与活动",
+        "state": "unverified",
+        "reason": "bot_shell_or_block_page"
+      },
+      {
+        "id": "live_116",
+        "url": "https://www.cmpny.org/cmp-career-development",
+        "finalUrl": "https://www.cmpny.org/cmp-career-development",
+        "title_zh": "CMP 唐人街人力中心 — 职业培训（501c3）",
+        "state": "verified",
+        "reason": "matched:chinatown,manpower,career,development"
+      },
+      {
+        "id": "live_117",
+        "url": "https://www.cmpny.org/employersjob-seekers",
+        "finalUrl": "https://www.cmpny.org/employersjob-seekers",
+        "title_zh": "CMP 求职 / Job Bank 入口",
+        "state": "verified",
+        "reason": "matched:employers,seekers"
+      },
+      {
+        "id": "live_118",
+        "url": "https://www.cpc-nyc.org/jobs",
+        "finalUrl": "https://www.cpc-nyc.org/jobs",
+        "title_zh": "华人策划协会 (CPC) — 招聘职位",
+        "state": "verified",
+        "reason": "matched:jobs,board"
+      },
+      {
+        "id": "live_119",
+        "url": "https://www.aafe.org/",
+        "finalUrl": "https://www.aafe.org/",
+        "title_zh": "AAFE 亚美权益促进会 — 社区与小企业服务",
+        "state": "verified",
+        "reason": "matched:aafe,asian,americans,equality"
+      },
+      {
+        "id": "live_120",
+        "url": "https://www.aafe.org/missions/small-business/",
+        "finalUrl": "https://www.aafe.org/missions/small-business/",
+        "title_zh": "AAFE 小企业发展服务",
+        "state": "verified",
+        "reason": "matched:aafe,small,business"
+      },
+      {
+        "id": "live_121",
+        "url": "https://www.cacf.org/public-service-internship-program",
+        "finalUrl": "https://www.cacf.org/public-service-internship-program",
+        "title_zh": "CACF 公共服务实习计划",
+        "state": "verified",
+        "reason": "matched:cacf,public,service,internship"
+      },
+      {
+        "id": "live_122",
+        "url": "https://www.aabany.org/",
+        "finalUrl": "https://www.aabany.org/",
+        "title_zh": "AABANY 纽约亚裔律师协会（专业协会 501c6）",
+        "state": "unverified",
+        "reason": "http_403"
+      },
+      {
+        "id": "live_123",
+        "url": "https://www.nycaba.org/",
+        "finalUrl": "https://www.nycaba.org/",
+        "title_zh": "NYCABA 纽约华人银行家协会（专业协会 501c6）",
+        "state": "unverified",
+        "reason": "bot_shell_or_block_page"
+      },
+      {
+        "id": "live_124",
+        "url": "https://cascpa.org/",
+        "finalUrl": "https://cascpa.org/",
+        "title_zh": "CASCPA 美东华人会计师协会（专业协会 501c6）",
+        "state": "verified",
+        "reason": "matched:cascpa,chinese,american,society"
+      },
+      {
+        "id": "live_125",
+        "url": "https://www.areaa.org/newyorkeast",
+        "finalUrl": "https://www.areaa.org/newyorkeast",
+        "title_zh": "AREAA 亚裔地产协会 · 纽约东区分会",
+        "state": "verified",
+        "reason": "matched:areaa,east,chapter"
+      },
+      {
+        "id": "live_126",
+        "url": "https://cccofny.wordpress.com/",
+        "finalUrl": "https://cccofny.wordpress.com/",
+        "title_zh": "纽约中华总商会 (CCCNY · 华埠商会)",
+        "state": "unverified",
+        "reason": "http_403"
+      },
+      {
+        "id": "live_127",
+        "url": "https://www.cbany.org/",
+        "finalUrl": "https://www.cbany.org/",
+        "title_zh": "美国纽约华人总商会 (CBANY)",
+        "state": "unverified",
+        "reason": "content_not_confirmed"
+      },
+      {
+        "id": "live_128",
+        "url": "https://fcbainc.org/",
+        "finalUrl": "https://fcbainc.org/",
+        "title_zh": "法拉盛华人工商促进会 (FCBA)",
+        "state": "verified",
+        "reason": "matched:flushing,chinese,business,association"
+      },
+      {
+        "id": "live_129",
+        "url": "https://www.ccbanyc.org/",
+        "finalUrl": "https://www.ccbanyc.org/",
+        "title_zh": "中华公所 (CCBA) — 华埠社区总会",
+        "state": "verified",
+        "reason": "matched:chinese,consolidated,benevolent,association"
+      },
+      {
+        "id": "live_130",
+        "url": "https://www.oca-ny.org/",
+        "finalUrl": "https://www.oca-ny.org/",
+        "title_zh": "OCA 纽约分会 — 亚裔公民权益",
+        "state": "verified",
+        "reason": "matched:chapter"
+      },
+      {
+        "id": "live_131",
+        "url": "https://www.careausa.com/",
+        "finalUrl": "https://www.careausa.com/",
+        "title_zh": "CAREA 华人地产协会 — 房地产培训与活动",
+        "state": "verified",
+        "reason": "matched:carea,chinese,american,real"
+      },
+      {
+        "id": "live_132",
+        "url": "https://carsa2012.org/",
+        "finalUrl": "https://carsa2012.org/",
+        "title_zh": "CARSA 美国华人餐饮业协会",
+        "state": "verified",
+        "reason": "matched:carsa,carsa2012"
+      },
+      {
+        "id": "live_133",
+        "url": "https://www.flushingbid.com/",
+        "finalUrl": "https://www.flushingbid.com/",
+        "title_zh": "法拉盛 BID — 商圈餐饮与节庆活动",
+        "state": "verified",
+        "reason": "matched:flushing"
+      },
+      {
+        "id": "live_134",
+        "url": "https://www.shanghaiusa.org/calendar-of-events",
+        "finalUrl": "https://www.shanghaiusa.org/calendar-of-events",
+        "title_zh": "美国上海同乡会 — 活动日历",
+        "state": "verified",
+        "reason": "matched:shanghai,calendar,shanghaiusa"
+      },
+      {
+        "id": "dir_shape_up_nyc",
+        "url": "https://www.nycgovparks.org/events/shape-up-nyc",
+        "finalUrl": "https://www.nycgovparks.org/events/shape-up-nyc",
+        "title_zh": "Shape Up NYC 健身课程目录",
+        "state": "verified",
+        "reason": "matched:shape,class"
+      },
+      {
+        "id": "dir_nyc_recreation_centers",
+        "url": "https://www.nycgovparks.org/facilities/recreationcenters",
+        "finalUrl": "https://www.nycgovparks.org/facilities/recreationcenters",
+        "title_zh": "NYC Parks 社区康乐中心目录",
+        "state": "verified",
+        "reason": "matched:parks,recreation,center,facilities"
+      },
+      {
+        "id": "contest_exploravision2027",
+        "url": "https://www.exploravision.org/rules-requirements/",
+        "finalUrl": "https://www.exploravision.org/rules-requirements/",
+        "title_zh": "东芝/NSTA 未来科技创想赛 2026–2027",
+        "state": "verified",
+        "reason": "matched:nsta,exploravision,rules,requirements"
+      },
+      {
+        "id": "contest_ecyber2027",
+        "url": "https://www.ecybermission.com/ImportantDates",
+        "finalUrl": "https://www.ecybermission.com/ImportantDates",
+        "title_zh": "eCYBERMISSION 社区科学工程挑战 2026–2027",
+        "state": "unverified",
+        "reason": "http_403"
+      },
+      {
+        "id": "contest_jfk2027",
+        "url": "https://www.jfklibrary.org/learn/education/profile-in-courage-essay-contest/for-student-participants/eligibility-and-requirements",
+        "finalUrl": "https://www.jfklibrary.org/learn/education/profile-in-courage-essay-contest/for-student-participants/eligibility-and-requirements",
+        "title_zh": "肯尼迪勇气典范征文 2027",
+        "state": "unverified",
+        "reason": "http_403"
+      },
+      {
+        "id": "contest_studentcam2027",
+        "url": "https://www.studentcam.org/",
+        "finalUrl": "https://www.studentcam.org/",
+        "title_zh": "C-SPAN 学生纪录片大赛 StudentCam 2027",
+        "state": "verified",
+        "reason": "matched:span,studentcam"
+      },
+      {
+        "id": "contest_swb2027",
+        "url": "https://www.livingoceansfoundation.org/science-without-borders-challenge/contest-rules-information/",
+        "finalUrl": "https://www.livingoceansfoundation.org/science-without-borders-challenge/contest-rules-information/",
+        "title_zh": "无国界科学海洋艺术挑战 2027",
+        "state": "unverified",
+        "reason": "http_403"
+      },
+      {
+        "id": "contest_technovation2027",
+        "url": "https://technovationchallenge.org/competition/",
+        "finalUrl": "https://technovationchallenge.org/competition/",
+        "title_zh": "Technovation 青少年科技创业挑战（待核验）",
+        "state": "unverified",
+        "reason": "http_403"
+      },
+      {
+        "id": "contest_juniorhistory2027",
+        "url": "https://junior.scholastic.com/pages/contests.html",
+        "finalUrl": "https://junior.scholastic.com/pages/contests.html",
+        "title_zh": "Junior Scholastic 历史亲历者采访赛（待核验）",
+        "state": "verified",
+        "reason": "matched:junior,scholastic,history,contests"
+      },
+      {
+        "id": "contest_nocti2027",
+        "url": "https://www.nocti.org/resources/video-contest/",
+        "finalUrl": "https://www.nocti.org/resources/video-contest/",
+        "title_zh": "NOCTI 职业技术教育视频赛（待核验）",
+        "state": "verified",
+        "reason": "matched:nocti,student,video,contest"
+      },
+      {
+        "id": "contest_sealo2027",
+        "url": "https://sealoearth.org/essaycontest.html",
+        "finalUrl": "https://sealoearth.org/essaycontest.html",
+        "title_zh": "SEALOEarth 全球环保征文（待核验）",
+        "state": "verified",
+        "reason": "matched:sealoearth,global,essay,contest"
+      },
+      {
+        "id": "camp_harvard_precollege_2027",
+        "url": "https://summer.harvard.edu/high-school-programs/pre-college-program/",
+        "finalUrl": "https://summer.harvard.edu/high-school-programs/pre-college-program/",
+        "title_zh": "哈佛高中生暑期预科 2027（本校）",
+        "state": "verified",
+        "reason": "matched:harvard,college,summer,high"
+      },
+      {
+        "id": "camp_yale_yygs_2027",
+        "url": "https://globalscholars.yale.edu/",
+        "finalUrl": "https://globalscholars.yale.edu/",
+        "title_zh": "耶鲁全球青年学者 YYGS 2027（本校）",
+        "state": "verified",
+        "reason": "matched:yale,young,global,scholars"
+      },
+      {
+        "id": "camp_mit_mites",
+        "url": "https://mites.mit.edu/discover-mites/mites-summer/",
+        "finalUrl": "https://mites.mit.edu/discover-mites/mites-summer/",
+        "title_zh": "MITES 六周科学工程暑期项目（本校）",
+        "state": "verified",
+        "reason": "matched:mites,summer"
+      },
+      {
+        "id": "camp_nyu_precollege",
+        "url": "https://www.nyu.edu/admissions/high-school-and-middle-school-programs/high-school-programs/nyu-precollege/explore-precollege.html",
+        "finalUrl": "https://www.nyu.edu/admissions/high-school-and-middle-school-programs/high-school-programs/nyu-precollege/explore-precollege.html?captcha=4946b225-e93e-4c94-8b88-3bb831ec9575",
+        "title_zh": "纽约大学高中生暑期课程 Precollege（本校）",
+        "state": "unverified",
+        "reason": "bot_shell_or_block_page"
+      },
+      {
+        "id": "scout_gnyc",
+        "url": "https://nycscouting.org/",
+        "finalUrl": "https://nycscouting.org/",
+        "title_zh": "纽约市童军地区总会（Scouting America）",
+        "state": "unverified",
+        "reason": "http_403"
+      },
+      {
+        "id": "scout_cub",
+        "url": "https://www.scouting.org/programs/cub-scouts/",
+        "finalUrl": "https://www.scouting.org/programs/cub-scouts/",
+        "title_zh": "幼童军 Cub Scouts（Scouting America）",
+        "state": "unverified",
+        "reason": "http_403"
+      },
+      {
+        "id": "scout_bsa",
+        "url": "https://www.scouting.org/programs/scouts-bsa/",
+        "finalUrl": "https://www.scouting.org/programs/scouts-bsa/",
+        "title_zh": "青少年童军 Scouts BSA（Scouting America）",
+        "state": "unverified",
+        "reason": "http_403"
+      },
+      {
+        "id": "scout_girlscouts_nyc",
+        "url": "https://www.girlscoutsnyc.org/en/get-involved/join.html",
+        "finalUrl": "https://www.girlscoutsnyc.org/en/get-involved/join.html",
+        "title_zh": "纽约女童军 Girl Scouts of Greater New York",
+        "state": "verified",
+        "reason": "matched:girl,scouts,greater,involved"
+      }
+    ]
+  }
+}
