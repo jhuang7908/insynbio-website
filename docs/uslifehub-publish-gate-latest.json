@@ -5,8 +5,8 @@
   "failures": [],
   "subscribe_errors": [],
   "image_problems": [],
-  "items_kept": 119,
-  "public": 110,
+  "items_kept": 122,
+  "public": 113,
   "hidden": [
     {
       "id": "live_004",
@@ -56,45 +56,386 @@
   ],
   "deleted_expired": [],
   "removed_duplicates": [],
-  "removed_mismatches": [
+  "removed_mismatches": [],
+  "removed_invalid": [],
+  "added_candidates": [
     {
-      "id": "live_071",
-      "url": "https://castgny.org/en/index.php/homepage-main/2018annual-convention/",
-      "title_zh": "欢迎参加2018年度大会",
-      "reason": "2018_url_opens_2026_convention"
+      "id": "live_002",
+      "url": "https://www.kingsborough.edu/ce/hse_courses.html",
+      "title_zh": "High School Equivalency (HSE/GED)"
     },
     {
-      "id": "live_073",
-      "url": "https://castgny.org/en/index.php/homepage-main/2018annual-convention/selected-speakers/",
-      "title_zh": "选定发言人和特别会议",
-      "reason": "2018_url_opens_2026_convention"
+      "id": "live_003",
+      "url": "https://www.qcc.cuny.edu/ce/index.html",
+      "title_zh": "Continuing Education Workforce Development"
     },
     {
-      "id": "live_074",
-      "url": "https://castgny.org/en/index.php/homepage-main/2018annual-convention/ai-and-data-science-forum/",
-      "title_zh": "人工智能与数据科学论坛",
-      "reason": "2018_url_opens_2026_convention"
-    },
-    {
-      "id": "live_075",
-      "url": "https://castgny.org/en/index.php/homepage-main/2018annual-convention/financial-technology-forum/",
-      "title_zh": "金融科技论坛",
-      "reason": "2018_url_opens_2026_convention"
-    },
-    {
-      "id": "live_076",
-      "url": "https://castgny.org/en/index.php/homepage-main/2018annual-convention/biotechnology-forum/",
-      "title_zh": "生物技术论坛",
-      "reason": "2018_url_opens_2026_convention"
+      "id": "live_005",
+      "url": "https://www.kingsborough.edu/ce/esl.html",
+      "title_zh": "English as a Second Language (ESL)"
     }
   ],
-  "removed_invalid": [],
-  "added_candidates": [],
-  "skipped_candidates": [],
+  "skipped_candidates": [
+    {
+      "url": "https://www.bmcc.cuny.edu/ce/hse-ged-and-esol-programs/",
+      "title_zh": "HSE (GED) and College Prep",
+      "reason": "unverified:content_not_confirmed"
+    },
+    {
+      "url": "https://www.nycgovparks.org/events/2026/11/25/its-my-park-at-seth-low-playground-bealin-square",
+      "title_zh": "It's My Park at Seth Low Playground/ Bealin Square",
+      "reason": "unverified:bot_shell_or_block_page"
+    },
+    {
+      "url": "https://www.nycgovparks.org/events/2026/11/26/nyrr-open-run-flushing-meadows-corona-park",
+      "title_zh": "NYRR Open Run: Flushing Meadows Corona Park",
+      "reason": "unverified:bot_shell_or_block_page"
+    },
+    {
+      "url": "https://www.nycgovparks.org/events/2026/11/26/canceled-zumba",
+      "title_zh": "CANCELED: Zumba",
+      "reason": "unverified:bot_shell_or_block_page"
+    },
+    {
+      "url": "https://www.nycgovparks.org/events/2026/11/26/canceled-dance-fitness-thursdays",
+      "title_zh": "CANCELED: Dance Fitness Thursdays",
+      "reason": "unverified:bot_shell_or_block_page"
+    },
+    {
+      "url": "https://www.nycgovparks.org/events/2026/11/27/old-stone-house-open-hours",
+      "title_zh": "Old Stone House: Open Hours",
+      "reason": "unverified:bot_shell_or_block_page"
+    },
+    {
+      "url": "https://www.nycgovparks.org/events/2026/11/27/proximity-exhibition",
+      "title_zh": "Proximity Exhibition",
+      "reason": "unverified:bot_shell_or_block_page"
+    },
+    {
+      "url": "https://www.nycgovparks.org/events/2026/11/27/postthanksgiving-day-hike",
+      "title_zh": "Post-Thanksgiving Day Hike",
+      "reason": "unverified:bot_shell_or_block_page"
+    },
+    {
+      "url": "https://www.nycgovparks.org/events/2026/11/26/forest-fitness",
+      "title_zh": "Forest Fitness",
+      "reason": "unverified:bot_shell_or_block_page"
+    },
+    {
+      "url": "https://www.nycgovparks.org/events/2026/11/25/le-carrousel-extravaganza",
+      "title_zh": "Le Carrousel Extravaganza",
+      "reason": "unverified:bot_shell_or_block_page"
+    },
+    {
+      "url": "https://www.nycgovparks.org/events/2026/11/26/tiny-tots-session-1",
+      "title_zh": "Tiny Tots: Session 1",
+      "reason": "unverified:bot_shell_or_block_page"
+    },
+    {
+      "url": "https://www.nycgovparks.org/events/2026/11/26/tiny-tots-session-2",
+      "title_zh": "Tiny Tots: Session 2",
+      "reason": "unverified:bot_shell_or_block_page"
+    },
+    {
+      "url": "https://www.nycgovparks.org/events/2026/11/27/line-dance-fitness1",
+      "title_zh": "Line Dance Fitness",
+      "reason": "unverified:bot_shell_or_block_page"
+    },
+    {
+      "url": "https://www.qcc.cuny.edu/ce/programs/community-english-as-a-second-language.html",
+      "title_zh": "Community English as a second language",
+      "reason": "already_listed"
+    },
+    {
+      "url": "https://www.bmcc.cuny.edu/ce/contact/",
+      "title_zh": "Center for Continuing Education Workforce Development",
+      "reason": "already_listed"
+    },
+    {
+      "url": "https://www.careausa.com/event/33rd-anniversary-gala",
+      "title_zh": "33rd Anniversary Gala",
+      "reason": "already_listed"
+    },
+    {
+      "url": "https://www.cmpny.org/news/events/classes/2026/8/4/summer-fun-amp-fall-registration-at-cmp-chinese-school",
+      "title_zh": "CMP Chinese School: Fall Registration is Open!",
+      "reason": "already_listed"
+    },
+    {
+      "url": "https://fcbainc.org//2024-lunar-new-year-parade/",
+      "title_zh": "2024 Lunar New Year Parade",
+      "reason": "already_listed"
+    },
+    {
+      "url": "https://fcbainc.org//2019-lunar-new-year-parade/",
+      "title_zh": "2019 Lunar New Year Parade",
+      "reason": "already_listed"
+    },
+    {
+      "url": "https://castgny.org/en/",
+      "title_zh": "CAST-GNY — 中国旅美科技协会大纽约分会",
+      "reason": "already_listed"
+    },
+    {
+      "url": "https://www.cacf.org/events/2026-catalyst-for-change-awards-gala",
+      "title_zh": "View Event →",
+      "reason": "already_listed"
+    },
+    {
+      "url": "https://www.eventbrite.com/d/ny--flushing/chinese--events/",
+      "title_zh": "Eventbrite — Flushing Chinese events",
+      "reason": "already_listed"
+    },
+    {
+      "url": "https://www.cmpny.org/news/events/classes/join-us-for-cmps-2026-gala-peak-potentials-careers-in-sports-athletics",
+      "title_zh": "Learn More & Get Involved",
+      "reason": "already_listed"
+    },
+    {
+      "url": "https://www.careausa.com/event/linkedin-training-carea",
+      "title_zh": "LinkedIn Training for CAREA Members",
+      "reason": "not_a_future_dated_session"
+    },
+    {
+      "url": "https://www.eventbrite.com/d/ny--new-york/chinese-community--events/",
+      "title_zh": "Eventbrite — NYC Chinese community events",
+      "reason": "already_listed"
+    },
+    {
+      "url": "https://www.sapaweb.org/2026annualprogramsandevent",
+      "title_zh": "SAPA 2026 Annual Programs & Events",
+      "reason": "already_listed"
+    },
+    {
+      "url": "https://www.cmpny.org/news/events/classes/2026/11/2/workshop-on-nys-careers-on-128",
+      "title_zh": "FREE Workshop on 12/8: Careers with NYS!",
+      "reason": "not_a_future_dated_session"
+    },
+    {
+      "url": "https://www.nyc.gov/site/immigrants/about/press-releases/moia-launches-immigrant-legal-services-community-support-network-20250722.page",
+      "title_zh": "Announcing municipal immigrant legal services and community support network",
+      "reason": "already_listed"
+    },
+    {
+      "url": "https://www.cacf.org/policy-advocacy",
+      "title_zh": "Policy + Advocacy",
+      "reason": "already_listed"
+    },
+    {
+      "url": "https://www.cacf.org/capacity-building",
+      "title_zh": "Grants",
+      "reason": "already_listed"
+    },
+    {
+      "url": "https://www.cmpny.org/news/events/classes/2026/8/7/kids-art-contest-2026-calling-all-young-artists",
+      "title_zh": "Kids Art Contest 2026: Calling All Young Artists!",
+      "reason": "already_listed"
+    },
+    {
+      "url": "https://www.nyc.gov/assets/hra/downloads/pdf/services/health/MA-Delink-Oct-FAQ.pdf",
+      "title_zh": "Learn more and see what steps to take next in our Medicaid Changes FAQ",
+      "reason": "not_a_future_dated_session"
+    },
+    {
+      "url": "https://www.nyc.gov/site/hra/help/i-need-help.page",
+      "title_zh": "SNAP & CA",
+      "reason": "already_listed"
+    },
+    {
+      "url": "https://www.nyc.gov/site/hra/help/homelessness-prevention.page",
+      "title_zh": "Housing & Prevention Services",
+      "reason": "already_listed"
+    },
+    {
+      "url": "https://www.nyc.gov/site/hra/help/other-services.page",
+      "title_zh": "Other Benefits & Services",
+      "reason": "already_listed"
+    },
+    {
+      "url": "https://access.nyc.gov/",
+      "title_zh": "Access NYC — 一站式筛查可申请福利",
+      "reason": "already_listed"
+    },
+    {
+      "url": "https://www.nyc.gov/site/hra/help/snap-benefits-food-program.page",
+      "title_zh": "粮食券 SNAP 申请（HRA 官方）",
+      "reason": "already_listed"
+    },
+    {
+      "url": "https://www.nyc.gov/site/hra/help/medicaid.page",
+      "title_zh": "白卡 / Medicaid 申请（HRA 官方）",
+      "reason": "not_a_future_dated_session"
+    },
+    {
+      "url": "https://www.nyc.gov/site/hra/help/essential-plan.page",
+      "title_zh": "Essential Plan 医保计划（HRA）",
+      "reason": "not_a_future_dated_session"
+    },
+    {
+      "url": "https://www.nyc.gov/site/idnyc/card/how-to-apply.page",
+      "title_zh": "IDNYC 市民卡申请入口",
+      "reason": "already_listed"
+    },
+    {
+      "url": "https://www.nyc.gov/site/immigrants/index.page",
+      "title_zh": "纽约移民事务办公室（MOIA）资源",
+      "reason": "already_listed"
+    },
+    {
+      "url": "https://www.queenslibrary.org/about-us/locations/flushing",
+      "title_zh": "皇后区图书馆法拉盛分馆 — 活动与课程入口",
+      "reason": "already_listed"
+    },
+    {
+      "url": "https://www.nypl.org/locations/chatham-square",
+      "title_zh": "纽约公共图书馆唐人街分馆（Chatham Square）",
+      "reason": "already_listed"
+    },
+    {
+      "url": "https://www.nypl.org/locations/flushing",
+      "title_zh": "纽约公共图书馆法拉盛分馆",
+      "reason": "not_a_future_dated_session"
+    },
+    {
+      "url": "https://www.bklynlibrary.org/locations/sunset-park",
+      "title_zh": "布鲁克林图书馆日落公园分馆",
+      "reason": "already_listed"
+    },
+    {
+      "url": "https://www.mta.info/",
+      "title_zh": "MTA 服务通知 — 地铁公交延误与施工",
+      "reason": "already_listed"
+    },
+    {
+      "url": "https://luma.com/castgny2025",
+      "title_zh": "CASTGNY 年会报名页（Luma）",
+      "reason": "already_listed"
+    },
+    {
+      "url": "https://www.sapaweb.org/",
+      "title_zh": "SAPA 美中药协 — 官网通告与活动",
+      "reason": "already_listed"
+    },
+    {
+      "url": "https://www.sapaweb.org/2026-annual-conference",
+      "title_zh": "SAPA 2026 年会（报名入口）",
+      "reason": "already_listed"
+    },
+    {
+      "url": "https://www.cmpny.org/cmp-career-development",
+      "title_zh": "CMP 唐人街人力中心 — 职业培训（501c3）",
+      "reason": "already_listed"
+    },
+    {
+      "url": "https://www.cmpny.org/employersjob-seekers",
+      "title_zh": "CMP 求职 / Job Bank 入口",
+      "reason": "already_listed"
+    },
+    {
+      "url": "https://www.cpc-nyc.org/jobs",
+      "title_zh": "华人策划协会 (CPC) — 招聘职位",
+      "reason": "already_listed"
+    },
+    {
+      "url": "https://www.aafe.org/",
+      "title_zh": "AAFE 亚美权益促进会 — 社区与小企业服务",
+      "reason": "already_listed"
+    },
+    {
+      "url": "https://www.aafe.org/missions/small-business/",
+      "title_zh": "AAFE 小企业发展服务",
+      "reason": "already_listed"
+    },
+    {
+      "url": "https://www.cacf.org/public-service-internship-program",
+      "title_zh": "CACF 公共服务实习计划",
+      "reason": "already_listed"
+    },
+    {
+      "url": "https://www.aabany.org/",
+      "title_zh": "AABANY 纽约亚裔律师协会（专业协会 501c6）",
+      "reason": "already_listed"
+    },
+    {
+      "url": "https://www.aabany.org/events/event_list.asp",
+      "title_zh": "AABANY 活动日历",
+      "reason": "already_listed"
+    },
+    {
+      "url": "https://www.nycaba.org/",
+      "title_zh": "NYCABA 纽约华人银行家协会（专业协会 501c6）",
+      "reason": "already_listed"
+    },
+    {
+      "url": "https://cascpa.org/",
+      "title_zh": "CASCPA 美东华人会计师协会（专业协会 501c6）",
+      "reason": "already_listed"
+    },
+    {
+      "url": "https://www.areaa.org/newyorkeast",
+      "title_zh": "AREAA 亚裔地产协会 · 纽约东区分会",
+      "reason": "already_listed"
+    },
+    {
+      "url": "https://cccofny.wordpress.com/",
+      "title_zh": "纽约中华总商会 (CCCNY · 华埠商会)",
+      "reason": "already_listed"
+    },
+    {
+      "url": "https://www.cbany.org/",
+      "title_zh": "美国纽约华人总商会 (CBANY)",
+      "reason": "already_listed"
+    },
+    {
+      "url": "https://fcbainc.org/",
+      "title_zh": "法拉盛华人工商促进会 (FCBA)",
+      "reason": "already_listed"
+    },
+    {
+      "url": "https://www.ccbanyc.org/",
+      "title_zh": "中华公所 (CCBA) — 华埠社区总会",
+      "reason": "already_listed"
+    },
+    {
+      "url": "https://www.bca.net/eng/home.html",
+      "title_zh": "布鲁克林华人协会 (BCA)",
+      "reason": "already_listed"
+    },
+    {
+      "url": "https://www.oca-ny.org/",
+      "title_zh": "OCA 纽约分会 — 亚裔公民权益",
+      "reason": "already_listed"
+    },
+    {
+      "url": "https://www.careausa.com/",
+      "title_zh": "CAREA 华人地产协会 — 房地产培训与活动",
+      "reason": "already_listed"
+    },
+    {
+      "url": "https://carsa2012.org/",
+      "title_zh": "CARSA 美国华人餐饮业协会",
+      "reason": "already_listed"
+    },
+    {
+      "url": "https://carsa2012.org/category/%e6%9c%80%e6%96%b0%e4%bf%a1%e6%81%af/",
+      "title_zh": "CARSA 最新信息 / 活动报道",
+      "reason": "already_listed"
+    },
+    {
+      "url": "https://www.flushingbid.com/",
+      "title_zh": "法拉盛 BID — 商圈餐饮与节庆活动",
+      "reason": "already_listed"
+    },
+    {
+      "url": "https://hainanassociation.com/%e6%b4%bb%e5%8a%a8%e9%a2%84%e5%91%8a-2/",
+      "title_zh": "纽约海南同乡会 — 活动预告",
+      "reason": "already_listed"
+    }
+  ],
   "link_check": {
-    "checked": 110,
-    "verified": 52,
-    "unverified": 58,
+    "checked": 126,
+    "verified": 50,
+    "unverified": 76,
     "invalid": 0,
     "rows": [
       {
@@ -102,8 +443,8 @@
         "url": "https://www.nycgovparks.org/events/volunteer",
         "finalUrl": "https://www.nycgovparks.org/events/volunteer",
         "title_zh": "NYC Parks Volunteer — 公园义工报名",
-        "state": "verified",
-        "reason": "matched:parks,volunteer"
+        "state": "unverified",
+        "reason": "bot_shell_or_block_page"
       },
       {
         "id": "live_035",
@@ -166,8 +507,8 @@
         "url": "https://www.bklynlibrary.org/locations/sunset-park",
         "finalUrl": "https://www.bklynlibrary.org/locations/sunset-park",
         "title_zh": "布鲁克林公共图书馆 — Sunset Park 日落公园",
-        "state": "verified",
-        "reason": "matched:brooklyn,public,library,sunset"
+        "state": "unverified",
+        "reason": "http_403"
       },
       {
         "id": "live_044",
@@ -228,10 +569,10 @@
       {
         "id": "live_051",
         "url": "https://www.eventbrite.com/d/ny--flushing/chinese--events/",
-        "finalUrl": "https://www.eventbrite.com/d/ny--new-york/chinese--events/",
+        "finalUrl": "https://www.eventbrite.com/d/ny--flushing/chinese--events/",
         "title_zh": "Eventbrite — 法拉盛华人活动",
-        "state": "verified",
-        "reason": "matched:eventbrite,chinese"
+        "state": "unverified",
+        "reason": "bot_shell_or_block_page"
       },
       {
         "id": "live_052",
@@ -254,8 +595,8 @@
         "url": "https://www.eventbrite.com/d/ny--new-york/chinese-community--events/",
         "finalUrl": "https://www.eventbrite.com/d/ny--new-york/chinese-community--events/",
         "title_zh": "Eventbrite — 纽约市华人社区活动",
-        "state": "verified",
-        "reason": "matched:eventbrite,chinese,community"
+        "state": "unverified",
+        "reason": "bot_shell_or_block_page"
       },
       {
         "id": "live_056",
@@ -638,8 +979,8 @@
         "url": "https://www.nypl.org/locations/chatham-square",
         "finalUrl": "https://www.nypl.org/locations/chatham-square",
         "title_zh": "纽约公共图书馆唐人街分馆（Chatham Square）",
-        "state": "unverified",
-        "reason": "content_not_confirmed"
+        "state": "verified",
+        "reason": "matched:nypl,chatham,square,library"
       },
       {
         "id": "live_112",
@@ -671,7 +1012,7 @@
         "finalUrl": "https://www.sapaweb.org/",
         "title_zh": "SAPA 美中药协 — 官网通告与活动",
         "state": "unverified",
-        "reason": "bot_shell_or_block_page"
+        "reason": "content_not_confirmed"
       },
       {
         "id": "live_116",
@@ -735,7 +1076,7 @@
         "finalUrl": "https://www.nycaba.org/",
         "title_zh": "NYCABA 纽约华人银行家协会（专业协会 501c6）",
         "state": "unverified",
-        "reason": "bot_shell_or_block_page"
+        "reason": "content_not_confirmed"
       },
       {
         "id": "live_124",
@@ -767,7 +1108,7 @@
         "finalUrl": "https://www.cbany.org/",
         "title_zh": "美国纽约华人总商会 (CBANY)",
         "state": "unverified",
-        "reason": "content_not_confirmed"
+        "reason": "single_token"
       },
       {
         "id": "live_128",
@@ -830,16 +1171,16 @@
         "url": "https://www.nycgovparks.org/events/shape-up-nyc",
         "finalUrl": "https://www.nycgovparks.org/events/shape-up-nyc",
         "title_zh": "Shape Up NYC 健身课程目录",
-        "state": "verified",
-        "reason": "matched:shape,class"
+        "state": "unverified",
+        "reason": "bot_shell_or_block_page"
       },
       {
         "id": "dir_nyc_recreation_centers",
         "url": "https://www.nycgovparks.org/facilities/recreationcenters",
         "finalUrl": "https://www.nycgovparks.org/facilities/recreationcenters",
         "title_zh": "NYC Parks 社区康乐中心目录",
-        "state": "verified",
-        "reason": "matched:parks,recreation,center"
+        "state": "unverified",
+        "reason": "bot_shell_or_block_page"
       },
       {
         "id": "contest_exploravision2027",
@@ -940,7 +1281,7 @@
       {
         "id": "camp_nyu_precollege",
         "url": "https://www.nyu.edu/admissions/high-school-and-middle-school-programs/high-school-programs/nyu-precollege/explore-precollege.html",
-        "finalUrl": "https://www.nyu.edu/admissions/high-school-and-middle-school-programs/high-school-programs/nyu-precollege/explore-precollege.html?captcha=4946b225-e93e-4c94-8b88-3bb831ec9575",
+        "finalUrl": "https://www.nyu.edu/admissions/high-school-and-middle-school-programs/high-school-programs/nyu-precollege/explore-precollege.html",
         "title_zh": "纽约大学高中生暑期课程 Precollege（本校）",
         "state": "unverified",
         "reason": "bot_shell_or_block_page"
@@ -976,6 +1317,150 @@
         "title_zh": "纽约女童军 Girl Scouts of Greater New York",
         "state": "verified",
         "reason": "matched:girl,scouts,greater"
+      },
+      {
+        "id": "live_001",
+        "url": "https://www.bmcc.cuny.edu/ce/hse-ged-and-esol-programs/",
+        "finalUrl": "https://www.bmcc.cuny.edu/ce/hse-ged-and-esol-programs/",
+        "title_zh": "HSE (GED) and College Prep",
+        "state": "unverified",
+        "reason": "content_not_confirmed",
+        "candidate": true
+      },
+      {
+        "id": "live_002",
+        "url": "https://www.kingsborough.edu/ce/hse_courses.html",
+        "finalUrl": "https://www.kingsborough.edu/ce/hse_courses.html",
+        "title_zh": "High School Equivalency (HSE/GED)",
+        "state": "verified",
+        "reason": "matched:high,school,equivalency",
+        "candidate": true
+      },
+      {
+        "id": "live_003",
+        "url": "https://www.qcc.cuny.edu/ce/index.html",
+        "finalUrl": "https://www.qcc.cuny.edu/ce/index.html",
+        "title_zh": "Continuing Education Workforce Development",
+        "state": "verified",
+        "reason": "matched:continuing,education,workforce,development",
+        "candidate": true
+      },
+      {
+        "id": "live_004",
+        "url": "https://www.nycgovparks.org/events/2026/11/25/its-my-park-at-seth-low-playground-bealin-square",
+        "finalUrl": "https://www.nycgovparks.org/events/2026/11/25/its-my-park-at-seth-low-playground-bealin-square",
+        "title_zh": "It's My Park at Seth Low Playground/ Bealin Square",
+        "state": "unverified",
+        "reason": "bot_shell_or_block_page",
+        "candidate": true
+      },
+      {
+        "id": "live_005",
+        "url": "https://www.kingsborough.edu/ce/esl.html",
+        "finalUrl": "https://www.kingsborough.edu/ce/esl.html",
+        "title_zh": "English as a Second Language (ESL)",
+        "state": "verified",
+        "reason": "matched:english,second,language",
+        "candidate": true
+      },
+      {
+        "id": "live_006",
+        "url": "https://www.nycgovparks.org/events/2026/11/26/nyrr-open-run-flushing-meadows-corona-park",
+        "finalUrl": "https://www.nycgovparks.org/events/2026/11/26/nyrr-open-run-flushing-meadows-corona-park",
+        "title_zh": "NYRR Open Run: Flushing Meadows Corona Park",
+        "state": "unverified",
+        "reason": "bot_shell_or_block_page",
+        "candidate": true
+      },
+      {
+        "id": "live_007",
+        "url": "https://www.nycgovparks.org/events/2026/11/26/canceled-zumba",
+        "finalUrl": "https://www.nycgovparks.org/events/2026/11/26/canceled-zumba",
+        "title_zh": "CANCELED: Zumba",
+        "state": "unverified",
+        "reason": "bot_shell_or_block_page",
+        "candidate": true
+      },
+      {
+        "id": "live_008",
+        "url": "https://www.nycgovparks.org/events/2026/11/26/canceled-dance-fitness-thursdays",
+        "finalUrl": "https://www.nycgovparks.org/events/2026/11/26/canceled-dance-fitness-thursdays",
+        "title_zh": "CANCELED: Dance Fitness Thursdays",
+        "state": "unverified",
+        "reason": "bot_shell_or_block_page",
+        "candidate": true
+      },
+      {
+        "id": "live_009",
+        "url": "https://www.nycgovparks.org/events/2026/11/27/old-stone-house-open-hours",
+        "finalUrl": "https://www.nycgovparks.org/events/2026/11/27/old-stone-house-open-hours",
+        "title_zh": "Old Stone House: Open Hours",
+        "state": "unverified",
+        "reason": "bot_shell_or_block_page",
+        "candidate": true
+      },
+      {
+        "id": "live_010",
+        "url": "https://www.nycgovparks.org/events/2026/11/27/proximity-exhibition",
+        "finalUrl": "https://www.nycgovparks.org/events/2026/11/27/proximity-exhibition",
+        "title_zh": "Proximity Exhibition",
+        "state": "unverified",
+        "reason": "bot_shell_or_block_page",
+        "candidate": true
+      },
+      {
+        "id": "live_011",
+        "url": "https://www.nycgovparks.org/events/2026/11/27/postthanksgiving-day-hike",
+        "finalUrl": "https://www.nycgovparks.org/events/2026/11/27/postthanksgiving-day-hike",
+        "title_zh": "Post-Thanksgiving Day Hike",
+        "state": "unverified",
+        "reason": "bot_shell_or_block_page",
+        "candidate": true
+      },
+      {
+        "id": "live_012",
+        "url": "https://www.nycgovparks.org/events/2026/11/26/forest-fitness",
+        "finalUrl": "https://www.nycgovparks.org/events/2026/11/26/forest-fitness",
+        "title_zh": "Forest Fitness",
+        "state": "unverified",
+        "reason": "bot_shell_or_block_page",
+        "candidate": true
+      },
+      {
+        "id": "live_013",
+        "url": "https://www.nycgovparks.org/events/2026/11/25/le-carrousel-extravaganza",
+        "finalUrl": "https://www.nycgovparks.org/events/2026/11/25/le-carrousel-extravaganza",
+        "title_zh": "Le Carrousel Extravaganza",
+        "state": "unverified",
+        "reason": "bot_shell_or_block_page",
+        "candidate": true
+      },
+      {
+        "id": "live_014",
+        "url": "https://www.nycgovparks.org/events/2026/11/26/tiny-tots-session-1",
+        "finalUrl": "https://www.nycgovparks.org/events/2026/11/26/tiny-tots-session-1",
+        "title_zh": "Tiny Tots: Session 1",
+        "state": "unverified",
+        "reason": "bot_shell_or_block_page",
+        "candidate": true
+      },
+      {
+        "id": "live_015",
+        "url": "https://www.nycgovparks.org/events/2026/11/26/tiny-tots-session-2",
+        "finalUrl": "https://www.nycgovparks.org/events/2026/11/26/tiny-tots-session-2",
+        "title_zh": "Tiny Tots: Session 2",
+        "state": "unverified",
+        "reason": "bot_shell_or_block_page",
+        "candidate": true
+      },
+      {
+        "id": "live_016",
+        "url": "https://www.nycgovparks.org/events/2026/11/27/line-dance-fitness1",
+        "finalUrl": "https://www.nycgovparks.org/events/2026/11/27/line-dance-fitness1",
+        "title_zh": "Line Dance Fitness",
+        "state": "unverified",
+        "reason": "bot_shell_or_block_page",
+        "candidate": true
       }
     ]
   }
