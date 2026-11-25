@@ -45,8 +45,13 @@
     return !!(item && (item.date_kind === 'deal' || item.content_kind === 'deal'));
   }
 
+  function hasDatedWindow(item) {
+    return !!(item && item.has_specific_window && (isoDay(item.event_end_date) || isoDay(item.event_date)));
+  }
+
   function isOngoingIntro(item) {
     if (!item || isDeal(item)) return false;
+    if (hasDatedWindow(item)) return false;
     const role = item.listing_role || '';
     if (role === 'program_intro' || role === 'directory') return true;
     if (item.date_kind === 'service') return true;
@@ -75,7 +80,7 @@
     if (isOngoingIntro(item)) return { action: 'show', reason: 'ongoing_or_intro', cutoff: cutoff, end: '' };
     const end = sessionEndDate(item);
     const role = item.listing_role || '';
-    const dated = role === 'specific_session' || role === 'annual_edition' || (!role && item.date_kind === 'event');
+    const dated = role === 'specific_session' || role === 'annual_edition' || !!item.has_specific_window || (!role && item.date_kind === 'event');
     if (dated && end) {
       if (end < today) {
         if (end <= cutoff) {

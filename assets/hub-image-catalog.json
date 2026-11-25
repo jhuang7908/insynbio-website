@@ -1655,11 +1655,9 @@
       "note": "法拉盛分馆建筑，不是馆内某一场活动。",
       "attribution": "D. Benjamin Miller",
       "only_item_ids": [
-        "live_041",
         "live_110"
       ],
       "on_site_ids": [
-        "live_041",
         "live_110"
       ],
       "id": "flushing-library",
@@ -1749,7 +1747,6 @@
     "scout_cub": "cub-scouts",
     "scout_bsa": "scout-youth",
     "scout_girlscouts_nyc": "girl-scouts-flag",
-    "live_041": "flushing-library",
     "live_110": "flushing-library",
     "live_043": "sunset-park-library",
     "live_111": "chatham-library",

@@ -44,6 +44,20 @@ assert.strictEqual(p.disposition(introWithOldSession, TODAY).action, 'show');
 assert.strictEqual(p.includeInNext7Days(introWithOldSession, TODAY), false);
 assert.strictEqual(p.sessionEndDate(introWithOldSession), '');
 
+const workshop2020 = {
+  id: 'workshop-2020',
+  listing_role: 'program_intro',
+  has_specific_window: true,
+  date_kind: 'event',
+  event_date: '2020-06-01',
+  event_end_date: '2020-06-02',
+  title_zh: '2020 workshop'
+};
+assert.strictEqual(p.sessionEndDate(workshop2020), '2020-06-02');
+assert.strictEqual(p.disposition(workshop2020, TODAY).action, 'delete');
+assert.strictEqual(p.isPublicActivity(workshop2020, TODAY), false);
+assert.strictEqual(p.isSearchableActivity(workshop2020, TODAY), false);
+
 const undated = { id: 'u', date_kind: 'event', title_zh: '未公布日期' };
 assert.strictEqual(p.disposition(undated, TODAY).action, 'show');
 assert.strictEqual(p.disposition(undated, TODAY).reason, 'date_unannounced');

@@ -4,8 +4,10 @@ const path = require('path');
 const policy = require('../assets/hub-listing-policy.js');
 
 const root = path.join(__dirname, '..');
-const TODAY = '2026-11-07';
 const hub = fs.readFileSync(path.join(root, 'us-chinese-life-hub.html'), 'utf8');
+const asOfMatch = hub.match(/window\.HUB_CATALOG_AS_OF = '(\d{4}-\d{2}-\d{2})'/);
+assert.ok(asOfMatch, 'missing HUB_CATALOG_AS_OF');
+const TODAY = asOfMatch[1];
 const index = fs.readFileSync(path.join(root, 'index.html'), 'utf8');
 assert.strictEqual(hub, index, 'index and activity page diverged');
 
@@ -37,13 +39,31 @@ const byId = new Map(items.map(i => [i.id, i]));
 const publicItems = items.filter(i => policy.isPublicActivity(i, TODAY));
 const week = publicItems.filter(i => policy.includeInNext7Days(i, TODAY)).map(i => i.id);
 
-assert.strictEqual(items.length, 127);
-assert.strictEqual(publicItems.length, 126);
-assert.ok(week.includes('live_009'));
-assert.ok(week.includes('fpt_fairy_20261108'));
-assert.ok(week.includes('fpt_restore_forest_20261113'));
-assert.ok(week.includes('fpt_native_20261114'));
-for (const id of ['fpt_foliage_20261119', 'fpt_restore_forest_20261120', 'fpt_restore_highland_20261120', 'camp_harvard_precollege_2027', 'camp_yale_yygs_2027', 'camp_mit_mites', 'camp_nyu_precollege', 'contest_bebras2026', 'contest_technovation2027', 'scout_gnyc', 'dir_shape_up_nyc']) {
+const removed = {
+  live_041: 'nypl.org/locations/flushing',
+  live_106: 'nyc.gov/site/hra/help/medicaid.page',
+  live_107: 'nyc.gov/site/hra/help/essential-plan.page',
+  live_071: '2018annual-convention',
+  live_075: '2018annual-convention/financial-technology-forum'
+};
+for (const [id, urlPart] of Object.entries(removed)) {
+  assert.ok(!byId.has(id), id + ' must stay out of the catalog');
+  assert.ok(!hub.includes(urlPart), urlPart + ' must stay out of the page');
+}
+const flushing = byId.get('live_110');
+assert.ok(flushing, 'live_110');
+assert.ok(/queenslibrary\.org\/about-us\/locations\/flushing/i.test(flushing.url), flushing.url);
+const cutoff = policy.subtractCalendarMonths(TODAY, 1);
+for (const item of items) {
+  const end = policy.sessionEndDate(item);
+  if (!end) continue;
+  assert.ok(end > cutoff, item.id + ' ended ' + end + ' and should have been deleted');
+  if (end < TODAY) {
+    assert.strictEqual(policy.isPublicActivity(item, TODAY), false, item.id + ' ended and is still public');
+    assert.strictEqual(policy.isSearchableActivity(item, TODAY), false, item.id + ' ended and is still searchable');
+  }
+}
+for (const id of ['fpt_fairy_20261108', 'fpt_restore_forest_20261113', 'fpt_native_20261114', 'fpt_foliage_20261119', 'fpt_restore_forest_20261120', 'fpt_restore_highland_20261120', 'camp_harvard_precollege_2027', 'camp_yale_yygs_2027', 'camp_mit_mites', 'camp_nyu_precollege', 'contest_bebras2026', 'contest_technovation2027', 'scout_gnyc', 'dir_shape_up_nyc']) {
   assert.ok(!week.includes(id), id + ' leaked into 7-day');
 }
 
@@ -51,10 +71,6 @@ for (const item of publicItems) {
   const end = policy.sessionEndDate(item);
   if (end) assert.ok(end >= TODAY, item.id + ' public with end ' + end);
 }
-
-const hidden = items.filter(i => !policy.isPublicActivity(i, TODAY) && !policy.isSearchableActivity(i, TODAY));
-assert.deepStrictEqual(hidden.map(i => i.id), ['live_004']);
-assert.strictEqual(policy.disposition(byId.get('live_004'), TODAY).action, 'hide');
 
 const required = [
   'fpt_fairy_20261108', 'fpt_restore_forest_20261113', 'fpt_native_20261114', 'fpt_foliage_20261119',
@@ -239,6 +255,10 @@ assert.ok(hub.includes('📋 当前信息</div>') || hub.includes('feed_title: "
 assert.strictEqual(policy.isPublicActivity(byId.get('dir_shape_up_nyc'), TODAY), true);
 assert.strictEqual(policy.disposition(byId.get('dir_shape_up_nyc'), TODAY).action, 'show');
 
+const hidden = items.filter(i => {
+  const end = policy.sessionEndDate(i);
+  return end && end < TODAY;
+});
 console.log(JSON.stringify({
   items: items.length,
   public: publicItems.length,
