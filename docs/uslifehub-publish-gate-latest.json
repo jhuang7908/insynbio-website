@@ -1,12 +1,12 @@
 {
-  "as_of": "2026-11-25",
+  "as_of": "2026-11-26",
   "timezone": "America/New_York",
   "publish_allowed": true,
   "failures": [],
   "subscribe_errors": [],
   "image_problems": [],
-  "items_kept": 122,
-  "public": 113,
+  "items_kept": 142,
+  "public": 133,
   "hidden": [
     {
       "id": "live_004",
@@ -60,19 +60,104 @@
   "removed_invalid": [],
   "added_candidates": [
     {
-      "id": "live_002",
-      "url": "https://www.kingsborough.edu/ce/hse_courses.html",
-      "title_zh": "High School Equivalency (HSE/GED)"
-    },
-    {
       "id": "live_003",
-      "url": "https://www.qcc.cuny.edu/ce/index.html",
-      "title_zh": "Continuing Education Workforce Development"
+      "url": "https://www.eventbrite.com/e/asian-american-litfest-kickoff-celebration-fundraiser-with-kundiman-tickets-2005033142102",
+      "title_zh": "Asian American LitFest Kickoff Celebration & Fundraiser with Kundiman"
     },
     {
-      "id": "live_005",
-      "url": "https://www.kingsborough.edu/ce/esl.html",
-      "title_zh": "English as a Second Language (ESL)"
+      "id": "live_006",
+      "url": "https://www.nycgovparks.org/events/2026/12/03/nyrr-open-run-flushing-meadows-corona-park",
+      "title_zh": "NYRR Open Run: Flushing Meadows Corona Park"
+    },
+    {
+      "id": "live_007",
+      "url": "https://www.nycgovparks.org/events/2026/11/26/nyrr-open-run-flushing-meadows-corona-park",
+      "title_zh": "NYRR Open Run: Flushing Meadows Corona Park"
+    },
+    {
+      "id": "live_008",
+      "url": "https://www.eventbrite.com/e/tastes-of-chinatown-tour-89-w-bbq-guided-by-local-chinese-tickets-1986391436258",
+      "title_zh": "Tastes of Chinatown Tour $89 w/ BBQ (Guided by Local Chinese)"
+    },
+    {
+      "id": "live_009",
+      "url": "https://www.eventbrite.com/e/tastes-of-chinatown-tour-w-dim-sum-89-guided-by-local-chinese-sm-group-tickets-1986391685002",
+      "title_zh": "Tastes of Chinatown Tour w/ Dim Sum $89 (Guided by Local Chinese)-Sm Group"
+    },
+    {
+      "id": "live_010",
+      "url": "https://www.eventbrite.com/e/the-original-southeast-asian-chinese-food-tourtm-105-small-group-tickets-1986391959824",
+      "title_zh": "The Original Southeast Asian & Chinese Food Tour™ $105 - Small Group"
+    },
+    {
+      "id": "live_011",
+      "url": "https://www.nycgovparks.org/events/2026/11/28/park-clean-up-at-joyce-kilmer-park",
+      "title_zh": "Show Joyce Kilmer Park Your Love! Volunteer Stewardship Event!"
+    },
+    {
+      "id": "live_012",
+      "url": "https://www.nycgovparks.org/events/2026/12/02/arts-culture-fun-be-bold-ballet-programming",
+      "title_zh": "Arts, Culture & Fun: BE BOLD - Ballet Programming"
+    },
+    {
+      "id": "live_013",
+      "url": "https://www.nycgovparks.org/events/2026/11/30/arts-culture-fun-be-bold-ballet-programming",
+      "title_zh": "Arts, Culture & Fun: BE BOLD - Ballet Programming"
+    },
+    {
+      "id": "live_014",
+      "url": "https://www.nycgovparks.org/events/2026/12/02/holiday-tree-lighting",
+      "title_zh": "Holiday Tree Lighting"
+    },
+    {
+      "id": "live_015",
+      "url": "https://www.nycgovparks.org/events/2026/12/02/woodlawn-wednesdays-volunteer-forest-restoration-at-van-cortlandt-park",
+      "title_zh": "Woodlawn Wednesdays: Volunteer Forest Restoration at Van Cortlandt Park"
+    },
+    {
+      "id": "live_016",
+      "url": "https://www.nycgovparks.org/events/2026/11/29/nyrr-open-run-cunningham-park",
+      "title_zh": "NYRR Open Run: Cunningham Park"
+    },
+    {
+      "id": "live_017",
+      "url": "https://www.nycgovparks.org/events/2026/11/28/family-art-project-grateful-for-trees-canvas-bags",
+      "title_zh": "Family Art Project: Grateful for Trees Canvas Bags"
+    },
+    {
+      "id": "live_018",
+      "url": "https://www.nycgovparks.org/events/2026/11/28/nyrr-open-run-baisley-pond-park",
+      "title_zh": "NYRR Open Run: Baisley Pond Park"
+    },
+    {
+      "id": "live_019",
+      "url": "https://www.nycgovparks.org/events/2026/11/26/canceled-dance-fitness-thursdays",
+      "title_zh": "CANCELED: Dance Fitness Thursdays"
+    },
+    {
+      "id": "live_020",
+      "url": "https://www.nycgovparks.org/events/2026/11/27/old-stone-house-open-hours",
+      "title_zh": "Old Stone House: Open Hours"
+    },
+    {
+      "id": "live_021",
+      "url": "https://www.nycgovparks.org/events/2026/11/27/proximity-exhibition",
+      "title_zh": "Proximity Exhibition"
+    },
+    {
+      "id": "live_022",
+      "url": "https://www.nycgovparks.org/events/2026/12/01/forest-fitness",
+      "title_zh": "Forest Fitness"
+    },
+    {
+      "id": "live_023",
+      "url": "https://www.nycgovparks.org/events/2026/11/29/yoga-in-the-garden",
+      "title_zh": "Yoga in the Garden"
+    },
+    {
+      "id": "live_024",
+      "url": "https://www.nycgovparks.org/events/2026/11/28/nyrr-open-run-crocheron-park",
+      "title_zh": "NYRR Open Run: Crocheron Park"
     }
   ],
   "skipped_candidates": [
@@ -82,64 +167,19 @@
       "reason": "unverified:content_not_confirmed"
     },
     {
-      "url": "https://www.nycgovparks.org/events/2026/11/25/its-my-park-at-seth-low-playground-bealin-square",
-      "title_zh": "It's My Park at Seth Low Playground/ Bealin Square",
-      "reason": "unverified:bot_shell_or_block_page"
+      "url": "https://www.kingsborough.edu/ce/hse_courses.html",
+      "title_zh": "High School Equivalency (HSE/GED)",
+      "reason": "already_listed"
     },
     {
-      "url": "https://www.nycgovparks.org/events/2026/11/26/nyrr-open-run-flushing-meadows-corona-park",
-      "title_zh": "NYRR Open Run: Flushing Meadows Corona Park",
-      "reason": "unverified:bot_shell_or_block_page"
+      "url": "https://www.qcc.cuny.edu/ce/index.html",
+      "title_zh": "Continuing Education Workforce Development",
+      "reason": "already_listed"
     },
     {
-      "url": "https://www.nycgovparks.org/events/2026/11/26/canceled-zumba",
-      "title_zh": "CANCELED: Zumba",
-      "reason": "unverified:bot_shell_or_block_page"
-    },
-    {
-      "url": "https://www.nycgovparks.org/events/2026/11/26/canceled-dance-fitness-thursdays",
-      "title_zh": "CANCELED: Dance Fitness Thursdays",
-      "reason": "unverified:bot_shell_or_block_page"
-    },
-    {
-      "url": "https://www.nycgovparks.org/events/2026/11/27/old-stone-house-open-hours",
-      "title_zh": "Old Stone House: Open Hours",
-      "reason": "unverified:bot_shell_or_block_page"
-    },
-    {
-      "url": "https://www.nycgovparks.org/events/2026/11/27/proximity-exhibition",
-      "title_zh": "Proximity Exhibition",
-      "reason": "unverified:bot_shell_or_block_page"
-    },
-    {
-      "url": "https://www.nycgovparks.org/events/2026/11/27/postthanksgiving-day-hike",
-      "title_zh": "Post-Thanksgiving Day Hike",
-      "reason": "unverified:bot_shell_or_block_page"
-    },
-    {
-      "url": "https://www.nycgovparks.org/events/2026/11/26/forest-fitness",
-      "title_zh": "Forest Fitness",
-      "reason": "unverified:bot_shell_or_block_page"
-    },
-    {
-      "url": "https://www.nycgovparks.org/events/2026/11/25/le-carrousel-extravaganza",
-      "title_zh": "Le Carrousel Extravaganza",
-      "reason": "unverified:bot_shell_or_block_page"
-    },
-    {
-      "url": "https://www.nycgovparks.org/events/2026/11/26/tiny-tots-session-1",
-      "title_zh": "Tiny Tots: Session 1",
-      "reason": "unverified:bot_shell_or_block_page"
-    },
-    {
-      "url": "https://www.nycgovparks.org/events/2026/11/26/tiny-tots-session-2",
-      "title_zh": "Tiny Tots: Session 2",
-      "reason": "unverified:bot_shell_or_block_page"
-    },
-    {
-      "url": "https://www.nycgovparks.org/events/2026/11/27/line-dance-fitness1",
-      "title_zh": "Line Dance Fitness",
-      "reason": "unverified:bot_shell_or_block_page"
+      "url": "https://www.kingsborough.edu/ce/esl.html",
+      "title_zh": "English as a Second Language (ESL)",
+      "reason": "already_listed"
     },
     {
       "url": "https://www.qcc.cuny.edu/ce/programs/community-english-as-a-second-language.html",
@@ -162,28 +202,8 @@
       "reason": "already_listed"
     },
     {
-      "url": "https://fcbainc.org//2024-lunar-new-year-parade/",
-      "title_zh": "2024 Lunar New Year Parade",
-      "reason": "already_listed"
-    },
-    {
-      "url": "https://fcbainc.org//2019-lunar-new-year-parade/",
-      "title_zh": "2019 Lunar New Year Parade",
-      "reason": "already_listed"
-    },
-    {
       "url": "https://castgny.org/en/",
       "title_zh": "CAST-GNY — 中国旅美科技协会大纽约分会",
-      "reason": "already_listed"
-    },
-    {
-      "url": "https://www.cacf.org/events/2026-catalyst-for-change-awards-gala",
-      "title_zh": "View Event →",
-      "reason": "already_listed"
-    },
-    {
-      "url": "https://www.eventbrite.com/d/ny--flushing/chinese--events/",
-      "title_zh": "Eventbrite — Flushing Chinese events",
       "reason": "already_listed"
     },
     {
@@ -195,11 +215,6 @@
       "url": "https://www.careausa.com/event/linkedin-training-carea",
       "title_zh": "LinkedIn Training for CAREA Members",
       "reason": "not_a_future_dated_session"
-    },
-    {
-      "url": "https://www.eventbrite.com/d/ny--new-york/chinese-community--events/",
-      "title_zh": "Eventbrite — NYC Chinese community events",
-      "reason": "already_listed"
     },
     {
       "url": "https://www.sapaweb.org/2026annualprogramsandevent",
@@ -214,16 +229,6 @@
     {
       "url": "https://www.nyc.gov/site/immigrants/about/press-releases/moia-launches-immigrant-legal-services-community-support-network-20250722.page",
       "title_zh": "Announcing municipal immigrant legal services and community support network",
-      "reason": "already_listed"
-    },
-    {
-      "url": "https://www.cacf.org/policy-advocacy",
-      "title_zh": "Policy + Advocacy",
-      "reason": "already_listed"
-    },
-    {
-      "url": "https://www.cacf.org/capacity-building",
-      "title_zh": "Grants",
       "reason": "already_listed"
     },
     {
@@ -425,17 +430,12 @@
       "url": "https://www.flushingbid.com/",
       "title_zh": "法拉盛 BID — 商圈餐饮与节庆活动",
       "reason": "already_listed"
-    },
-    {
-      "url": "https://hainanassociation.com/%e6%b4%bb%e5%8a%a8%e9%a2%84%e5%91%8a-2/",
-      "title_zh": "纽约海南同乡会 — 活动预告",
-      "reason": "already_listed"
     }
   ],
   "link_check": {
-    "checked": 126,
-    "verified": 50,
-    "unverified": 76,
+    "checked": 134,
+    "verified": 74,
+    "unverified": 60,
     "invalid": 0,
     "rows": [
       {
@@ -443,8 +443,8 @@
         "url": "https://www.nycgovparks.org/events/volunteer",
         "finalUrl": "https://www.nycgovparks.org/events/volunteer",
         "title_zh": "NYC Parks Volunteer — 公园义工报名",
-        "state": "unverified",
-        "reason": "bot_shell_or_block_page"
+        "state": "verified",
+        "reason": "matched:parks,volunteer"
       },
       {
         "id": "live_035",
@@ -507,8 +507,8 @@
         "url": "https://www.bklynlibrary.org/locations/sunset-park",
         "finalUrl": "https://www.bklynlibrary.org/locations/sunset-park",
         "title_zh": "布鲁克林公共图书馆 — Sunset Park 日落公园",
-        "state": "unverified",
-        "reason": "http_403"
+        "state": "verified",
+        "reason": "matched:brooklyn,public,library,sunset"
       },
       {
         "id": "live_044",
@@ -569,10 +569,10 @@
       {
         "id": "live_051",
         "url": "https://www.eventbrite.com/d/ny--flushing/chinese--events/",
-        "finalUrl": "https://www.eventbrite.com/d/ny--flushing/chinese--events/",
+        "finalUrl": "https://www.eventbrite.com/d/ny--new-york/chinese--events/",
         "title_zh": "Eventbrite — 法拉盛华人活动",
-        "state": "unverified",
-        "reason": "bot_shell_or_block_page"
+        "state": "verified",
+        "reason": "matched:eventbrite,chinese"
       },
       {
         "id": "live_052",
@@ -588,15 +588,15 @@
         "finalUrl": "https://www.bca.net/eng/home.html",
         "title_zh": "布鲁克林华人协会（BCA）",
         "state": "unverified",
-        "reason": "ECONNRESET"
+        "reason": "bot_shell_or_block_page"
       },
       {
         "id": "live_055",
         "url": "https://www.eventbrite.com/d/ny--new-york/chinese-community--events/",
         "finalUrl": "https://www.eventbrite.com/d/ny--new-york/chinese-community--events/",
         "title_zh": "Eventbrite — 纽约市华人社区活动",
-        "state": "unverified",
-        "reason": "bot_shell_or_block_page"
+        "state": "verified",
+        "reason": "matched:eventbrite,chinese,community"
       },
       {
         "id": "live_056",
@@ -971,16 +971,16 @@
         "url": "https://www.queenslibrary.org/about-us/locations/flushing",
         "finalUrl": "https://www.queenslibrary.org/about-us/locations/flushing",
         "title_zh": "皇后区图书馆法拉盛分馆 — 活动与课程入口",
-        "state": "verified",
-        "reason": "matched:queens,public,library,flushing"
+        "state": "unverified",
+        "reason": "timeout"
       },
       {
         "id": "live_111",
         "url": "https://www.nypl.org/locations/chatham-square",
         "finalUrl": "https://www.nypl.org/locations/chatham-square",
         "title_zh": "纽约公共图书馆唐人街分馆（Chatham Square）",
-        "state": "verified",
-        "reason": "matched:nypl,chatham,square,library"
+        "state": "unverified",
+        "reason": "content_not_confirmed"
       },
       {
         "id": "live_112",
@@ -1012,7 +1012,7 @@
         "finalUrl": "https://www.sapaweb.org/",
         "title_zh": "SAPA 美中药协 — 官网通告与活动",
         "state": "unverified",
-        "reason": "content_not_confirmed"
+        "reason": "bot_shell_or_block_page"
       },
       {
         "id": "live_116",
@@ -1044,7 +1044,7 @@
         "finalUrl": "https://www.aafe.org/",
         "title_zh": "AAFE 亚美权益促进会 — 社区与小企业服务",
         "state": "verified",
-        "reason": "matched:aafe,asian,americans,equality"
+        "reason": "matched:asian,americans,equality"
       },
       {
         "id": "live_120",
@@ -1076,7 +1076,7 @@
         "finalUrl": "https://www.nycaba.org/",
         "title_zh": "NYCABA 纽约华人银行家协会（专业协会 501c6）",
         "state": "unverified",
-        "reason": "content_not_confirmed"
+        "reason": "bot_shell_or_block_page"
       },
       {
         "id": "live_124",
@@ -1108,7 +1108,7 @@
         "finalUrl": "https://www.cbany.org/",
         "title_zh": "美国纽约华人总商会 (CBANY)",
         "state": "unverified",
-        "reason": "single_token"
+        "reason": "content_not_confirmed"
       },
       {
         "id": "live_128",
@@ -1171,16 +1171,16 @@
         "url": "https://www.nycgovparks.org/events/shape-up-nyc",
         "finalUrl": "https://www.nycgovparks.org/events/shape-up-nyc",
         "title_zh": "Shape Up NYC 健身课程目录",
-        "state": "unverified",
-        "reason": "bot_shell_or_block_page"
+        "state": "verified",
+        "reason": "matched:shape,class"
       },
       {
         "id": "dir_nyc_recreation_centers",
         "url": "https://www.nycgovparks.org/facilities/recreationcenters",
         "finalUrl": "https://www.nycgovparks.org/facilities/recreationcenters",
         "title_zh": "NYC Parks 社区康乐中心目录",
-        "state": "unverified",
-        "reason": "bot_shell_or_block_page"
+        "state": "verified",
+        "reason": "matched:parks,recreation,center"
       },
       {
         "id": "contest_exploravision2027",
@@ -1281,10 +1281,10 @@
       {
         "id": "camp_nyu_precollege",
         "url": "https://www.nyu.edu/admissions/high-school-and-middle-school-programs/high-school-programs/nyu-precollege/explore-precollege.html",
-        "finalUrl": "https://www.nyu.edu/admissions/high-school-and-middle-school-programs/high-school-programs/nyu-precollege/explore-precollege.html",
+        "finalUrl": "https://www.nyu.edu/admissions/high-school-and-middle-school-programs/high-school-programs/nyu-precollege/explore-precollege.html?challenge=d06e90d7-4d8f-4b88-9d8c-10b73beb60f1",
         "title_zh": "纽约大学高中生暑期课程 Precollege（本校）",
         "state": "unverified",
-        "reason": "bot_shell_or_block_page"
+        "reason": "http_202"
       },
       {
         "id": "scout_gnyc",
@@ -1319,6 +1319,30 @@
         "reason": "matched:girl,scouts,greater"
       },
       {
+        "id": "live_002",
+        "url": "https://www.kingsborough.edu/ce/hse_courses.html",
+        "finalUrl": "https://www.kingsborough.edu/ce/hse_courses.html",
+        "title_zh": "High School Equivalency (HSE/GED)",
+        "state": "verified",
+        "reason": "matched:high,school,equivalency"
+      },
+      {
+        "id": "live_003",
+        "url": "https://www.qcc.cuny.edu/ce/index.html",
+        "finalUrl": "https://www.qcc.cuny.edu/ce/index.html",
+        "title_zh": "Continuing Education Workforce Development",
+        "state": "verified",
+        "reason": "matched:continuing,education,workforce,development"
+      },
+      {
+        "id": "live_005",
+        "url": "https://www.kingsborough.edu/ce/esl.html",
+        "finalUrl": "https://www.kingsborough.edu/ce/esl.html",
+        "title_zh": "English as a Second Language (ESL)",
+        "state": "verified",
+        "reason": "matched:english,second,language"
+      },
+      {
         "id": "live_001",
         "url": "https://www.bmcc.cuny.edu/ce/hse-ged-and-esol-programs/",
         "finalUrl": "https://www.bmcc.cuny.edu/ce/hse-ged-and-esol-programs/",
@@ -1328,138 +1352,183 @@
         "candidate": true
       },
       {
-        "id": "live_002",
-        "url": "https://www.kingsborough.edu/ce/hse_courses.html",
-        "finalUrl": "https://www.kingsborough.edu/ce/hse_courses.html",
-        "title_zh": "High School Equivalency (HSE/GED)",
-        "state": "verified",
-        "reason": "matched:high,school,equivalency",
-        "candidate": true
-      },
-      {
         "id": "live_003",
-        "url": "https://www.qcc.cuny.edu/ce/index.html",
-        "finalUrl": "https://www.qcc.cuny.edu/ce/index.html",
-        "title_zh": "Continuing Education Workforce Development",
+        "url": "https://www.eventbrite.com/e/asian-american-litfest-kickoff-celebration-fundraiser-with-kundiman-tickets-2005033142102",
+        "finalUrl": "https://www.eventbrite.com/e/asian-american-litfest-kickoff-celebration-fundraiser-with-kundiman-tickets-2005033142102",
+        "title_zh": "Asian American LitFest Kickoff Celebration & Fundraiser with Kundiman",
         "state": "verified",
-        "reason": "matched:continuing,education,workforce,development",
-        "candidate": true
-      },
-      {
-        "id": "live_004",
-        "url": "https://www.nycgovparks.org/events/2026/11/25/its-my-park-at-seth-low-playground-bealin-square",
-        "finalUrl": "https://www.nycgovparks.org/events/2026/11/25/its-my-park-at-seth-low-playground-bealin-square",
-        "title_zh": "It's My Park at Seth Low Playground/ Bealin Square",
-        "state": "unverified",
-        "reason": "bot_shell_or_block_page",
-        "candidate": true
-      },
-      {
-        "id": "live_005",
-        "url": "https://www.kingsborough.edu/ce/esl.html",
-        "finalUrl": "https://www.kingsborough.edu/ce/esl.html",
-        "title_zh": "English as a Second Language (ESL)",
-        "state": "verified",
-        "reason": "matched:english,second,language",
+        "reason": "matched:asian,american,litfest,kickoff",
         "candidate": true
       },
       {
         "id": "live_006",
-        "url": "https://www.nycgovparks.org/events/2026/11/26/nyrr-open-run-flushing-meadows-corona-park",
-        "finalUrl": "https://www.nycgovparks.org/events/2026/11/26/nyrr-open-run-flushing-meadows-corona-park",
+        "url": "https://www.nycgovparks.org/events/2026/12/03/nyrr-open-run-flushing-meadows-corona-park",
+        "finalUrl": "https://www.nycgovparks.org/events/2026/12/03/nyrr-open-run-flushing-meadows-corona-park",
         "title_zh": "NYRR Open Run: Flushing Meadows Corona Park",
-        "state": "unverified",
-        "reason": "bot_shell_or_block_page",
+        "state": "verified",
+        "reason": "matched:nyrr,open,flushing,meadows",
         "candidate": true
       },
       {
         "id": "live_007",
-        "url": "https://www.nycgovparks.org/events/2026/11/26/canceled-zumba",
-        "finalUrl": "https://www.nycgovparks.org/events/2026/11/26/canceled-zumba",
-        "title_zh": "CANCELED: Zumba",
-        "state": "unverified",
-        "reason": "bot_shell_or_block_page",
+        "url": "https://www.nycgovparks.org/events/2026/11/26/nyrr-open-run-flushing-meadows-corona-park",
+        "finalUrl": "https://www.nycgovparks.org/events/2026/11/26/nyrr-open-run-flushing-meadows-corona-park",
+        "title_zh": "NYRR Open Run: Flushing Meadows Corona Park",
+        "state": "verified",
+        "reason": "matched:nyrr,open,flushing,meadows",
         "candidate": true
       },
       {
         "id": "live_008",
-        "url": "https://www.nycgovparks.org/events/2026/11/26/canceled-dance-fitness-thursdays",
-        "finalUrl": "https://www.nycgovparks.org/events/2026/11/26/canceled-dance-fitness-thursdays",
-        "title_zh": "CANCELED: Dance Fitness Thursdays",
-        "state": "unverified",
-        "reason": "bot_shell_or_block_page",
+        "url": "https://www.eventbrite.com/e/tastes-of-chinatown-tour-89-w-bbq-guided-by-local-chinese-tickets-1986391436258",
+        "finalUrl": "https://www.eventbrite.com/e/tastes-of-chinatown-tour-89-w-bbq-guided-by-local-chinese-tickets-1986391436258",
+        "title_zh": "Tastes of Chinatown Tour $89 w/ BBQ (Guided by Local Chinese)",
+        "state": "verified",
+        "reason": "matched:tastes,chinatown,tour,guided",
         "candidate": true
       },
       {
         "id": "live_009",
-        "url": "https://www.nycgovparks.org/events/2026/11/27/old-stone-house-open-hours",
-        "finalUrl": "https://www.nycgovparks.org/events/2026/11/27/old-stone-house-open-hours",
-        "title_zh": "Old Stone House: Open Hours",
-        "state": "unverified",
-        "reason": "bot_shell_or_block_page",
+        "url": "https://www.eventbrite.com/e/tastes-of-chinatown-tour-w-dim-sum-89-guided-by-local-chinese-sm-group-tickets-1986391685002",
+        "finalUrl": "https://www.eventbrite.com/e/tastes-of-chinatown-tour-w-dim-sum-89-guided-by-local-chinese-sm-group-tickets-1986391685002",
+        "title_zh": "Tastes of Chinatown Tour w/ Dim Sum $89 (Guided by Local Chinese)-Sm Group",
+        "state": "verified",
+        "reason": "matched:tastes,chinatown,tour,guided",
         "candidate": true
       },
       {
         "id": "live_010",
-        "url": "https://www.nycgovparks.org/events/2026/11/27/proximity-exhibition",
-        "finalUrl": "https://www.nycgovparks.org/events/2026/11/27/proximity-exhibition",
-        "title_zh": "Proximity Exhibition",
-        "state": "unverified",
-        "reason": "bot_shell_or_block_page",
+        "url": "https://www.eventbrite.com/e/the-original-southeast-asian-chinese-food-tourtm-105-small-group-tickets-1986391959824",
+        "finalUrl": "https://www.eventbrite.com/e/the-original-southeast-asian-chinese-food-tourtm-105-small-group-tickets-1986391959824",
+        "title_zh": "The Original Southeast Asian & Chinese Food Tour™ $105 - Small Group",
+        "state": "verified",
+        "reason": "matched:original,southeast,asian,chinese",
         "candidate": true
       },
       {
         "id": "live_011",
-        "url": "https://www.nycgovparks.org/events/2026/11/27/postthanksgiving-day-hike",
-        "finalUrl": "https://www.nycgovparks.org/events/2026/11/27/postthanksgiving-day-hike",
-        "title_zh": "Post-Thanksgiving Day Hike",
-        "state": "unverified",
-        "reason": "bot_shell_or_block_page",
+        "url": "https://www.nycgovparks.org/events/2026/11/28/park-clean-up-at-joyce-kilmer-park",
+        "finalUrl": "https://www.nycgovparks.org/events/2026/11/28/park-clean-up-at-joyce-kilmer-park",
+        "title_zh": "Show Joyce Kilmer Park Your Love! Volunteer Stewardship Event!",
+        "state": "verified",
+        "reason": "matched:show,joyce,kilmer,park",
         "candidate": true
       },
       {
         "id": "live_012",
-        "url": "https://www.nycgovparks.org/events/2026/11/26/forest-fitness",
-        "finalUrl": "https://www.nycgovparks.org/events/2026/11/26/forest-fitness",
-        "title_zh": "Forest Fitness",
-        "state": "unverified",
-        "reason": "bot_shell_or_block_page",
+        "url": "https://www.nycgovparks.org/events/2026/12/02/arts-culture-fun-be-bold-ballet-programming",
+        "finalUrl": "https://www.nycgovparks.org/events/2026/12/02/arts-culture-fun-be-bold-ballet-programming",
+        "title_zh": "Arts, Culture & Fun: BE BOLD - Ballet Programming",
+        "state": "verified",
+        "reason": "matched:arts,culture,bold,ballet",
         "candidate": true
       },
       {
         "id": "live_013",
-        "url": "https://www.nycgovparks.org/events/2026/11/25/le-carrousel-extravaganza",
-        "finalUrl": "https://www.nycgovparks.org/events/2026/11/25/le-carrousel-extravaganza",
-        "title_zh": "Le Carrousel Extravaganza",
-        "state": "unverified",
-        "reason": "bot_shell_or_block_page",
+        "url": "https://www.nycgovparks.org/events/2026/11/30/arts-culture-fun-be-bold-ballet-programming",
+        "finalUrl": "https://www.nycgovparks.org/events/2026/11/30/arts-culture-fun-be-bold-ballet-programming",
+        "title_zh": "Arts, Culture & Fun: BE BOLD - Ballet Programming",
+        "state": "verified",
+        "reason": "matched:arts,culture,bold,ballet",
         "candidate": true
       },
       {
         "id": "live_014",
-        "url": "https://www.nycgovparks.org/events/2026/11/26/tiny-tots-session-1",
-        "finalUrl": "https://www.nycgovparks.org/events/2026/11/26/tiny-tots-session-1",
-        "title_zh": "Tiny Tots: Session 1",
-        "state": "unverified",
-        "reason": "bot_shell_or_block_page",
+        "url": "https://www.nycgovparks.org/events/2026/12/02/holiday-tree-lighting",
+        "finalUrl": "https://www.nycgovparks.org/events/2026/12/02/holiday-tree-lighting",
+        "title_zh": "Holiday Tree Lighting",
+        "state": "verified",
+        "reason": "matched:holiday,tree,lighting",
         "candidate": true
       },
       {
         "id": "live_015",
-        "url": "https://www.nycgovparks.org/events/2026/11/26/tiny-tots-session-2",
-        "finalUrl": "https://www.nycgovparks.org/events/2026/11/26/tiny-tots-session-2",
-        "title_zh": "Tiny Tots: Session 2",
-        "state": "unverified",
-        "reason": "bot_shell_or_block_page",
+        "url": "https://www.nycgovparks.org/events/2026/12/02/woodlawn-wednesdays-volunteer-forest-restoration-at-van-cortlandt-park",
+        "finalUrl": "https://www.nycgovparks.org/events/2026/12/02/woodlawn-wednesdays-volunteer-forest-restoration-at-van-cortlandt-park",
+        "title_zh": "Woodlawn Wednesdays: Volunteer Forest Restoration at Van Cortlandt Park",
+        "state": "verified",
+        "reason": "matched:woodlawn,wednesdays,volunteer,forest",
         "candidate": true
       },
       {
         "id": "live_016",
-        "url": "https://www.nycgovparks.org/events/2026/11/27/line-dance-fitness1",
-        "finalUrl": "https://www.nycgovparks.org/events/2026/11/27/line-dance-fitness1",
-        "title_zh": "Line Dance Fitness",
-        "state": "unverified",
-        "reason": "bot_shell_or_block_page",
+        "url": "https://www.nycgovparks.org/events/2026/11/29/nyrr-open-run-cunningham-park",
+        "finalUrl": "https://www.nycgovparks.org/events/2026/11/29/nyrr-open-run-cunningham-park",
+        "title_zh": "NYRR Open Run: Cunningham Park",
+        "state": "verified",
+        "reason": "matched:nyrr,open,cunningham,park",
+        "candidate": true
+      },
+      {
+        "id": "live_017",
+        "url": "https://www.nycgovparks.org/events/2026/11/28/family-art-project-grateful-for-trees-canvas-bags",
+        "finalUrl": "https://www.nycgovparks.org/events/2026/11/28/family-art-project-grateful-for-trees-canvas-bags",
+        "title_zh": "Family Art Project: Grateful for Trees Canvas Bags",
+        "state": "verified",
+        "reason": "matched:family,project,grateful,trees",
+        "candidate": true
+      },
+      {
+        "id": "live_018",
+        "url": "https://www.nycgovparks.org/events/2026/11/28/nyrr-open-run-baisley-pond-park",
+        "finalUrl": "https://www.nycgovparks.org/events/2026/11/28/nyrr-open-run-baisley-pond-park",
+        "title_zh": "NYRR Open Run: Baisley Pond Park",
+        "state": "verified",
+        "reason": "matched:nyrr,open,baisley,pond",
+        "candidate": true
+      },
+      {
+        "id": "live_019",
+        "url": "https://www.nycgovparks.org/events/2026/11/26/canceled-dance-fitness-thursdays",
+        "finalUrl": "https://www.nycgovparks.org/events/2026/11/26/canceled-dance-fitness-thursdays",
+        "title_zh": "CANCELED: Dance Fitness Thursdays",
+        "state": "verified",
+        "reason": "matched:canceled,dance,fitness,thursdays",
+        "candidate": true
+      },
+      {
+        "id": "live_020",
+        "url": "https://www.nycgovparks.org/events/2026/11/27/old-stone-house-open-hours",
+        "finalUrl": "https://www.nycgovparks.org/events/2026/11/27/old-stone-house-open-hours",
+        "title_zh": "Old Stone House: Open Hours",
+        "state": "verified",
+        "reason": "matched:stone,house,open,hours",
+        "candidate": true
+      },
+      {
+        "id": "live_021",
+        "url": "https://www.nycgovparks.org/events/2026/11/27/proximity-exhibition",
+        "finalUrl": "https://www.nycgovparks.org/events/2026/11/27/proximity-exhibition",
+        "title_zh": "Proximity Exhibition",
+        "state": "verified",
+        "reason": "matched:proximity,exhibition",
+        "candidate": true
+      },
+      {
+        "id": "live_022",
+        "url": "https://www.nycgovparks.org/events/2026/12/01/forest-fitness",
+        "finalUrl": "https://www.nycgovparks.org/events/2026/12/01/forest-fitness",
+        "title_zh": "Forest Fitness",
+        "state": "verified",
+        "reason": "matched:forest,fitness",
+        "candidate": true
+      },
+      {
+        "id": "live_023",
+        "url": "https://www.nycgovparks.org/events/2026/11/29/yoga-in-the-garden",
+        "finalUrl": "https://www.nycgovparks.org/events/2026/11/29/yoga-in-the-garden",
+        "title_zh": "Yoga in the Garden",
+        "state": "verified",
+        "reason": "matched:yoga,garden",
+        "candidate": true
+      },
+      {
+        "id": "live_024",
+        "url": "https://www.nycgovparks.org/events/2026/11/28/nyrr-open-run-crocheron-park",
+        "finalUrl": "https://www.nycgovparks.org/events/2026/11/28/nyrr-open-run-crocheron-park",
+        "title_zh": "NYRR Open Run: Crocheron Park",
+        "state": "verified",
+        "reason": "matched:nyrr,open,crocheron,park",
         "candidate": true
       }
     ]
